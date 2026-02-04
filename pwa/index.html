@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Os 7 Véus - Um sistema literário para identificar padrões automáticos de vida, através de leitura, testes e percursos guiados">
+    <meta name="theme-color" content="#FF1A75">
+
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="7 Véus">
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16.png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+    <title>Os 7 Véus</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-brand">
+            <a href="index.html">Os 7 Véus</a>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html" class="active">Início</a></li>
+            <li><a href="pages/os-7-veus.html">Os 7 Véus</a></li>
+            <li><a href="pages/comecar.html">Começar</a></li>
+            <li><a href="pages/recursos.html">Recursos</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Os 7 Véus</h1>
+            <p class="hero-subtitle">Um sistema literário para identificar padrões automáticos de vida, através de leitura, testes e percursos guiados</p>
+            <a href="pages/comecar.html" class="btn btn-primary">Começar a Jornada</a>
+        </div>
+        <div class="hero-decoration">
+            <div class="veil-circle"></div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Introduction Section -->
+        <section class="section intro-section">
+            <div class="container">
+                <h2 class="section-title">O Que São os 7 Véus?</h2>
+                <p class="section-text">
+                    Os 7 Véus representam camadas de percepção que filtram a nossa experiência da realidade.
+                    Cada véu é um padrão automático que nos mantém a funcionar no piloto automático,
+                    afastados de uma vida mais consciente e autêntica.
+                </p>
+                <p class="section-text">
+                    Ao identificar e compreender cada véu, começamos um processo de despertar
+                    que nos permite fazer escolhas mais alinhadas com quem realmente somos.
+                </p>
+            </div>
+        </section>
+
+        <!-- The 7 Veils Grid -->
+        <section class="section veils-section">
+            <div class="container">
+                <h2 class="section-title">Os Sete Véus do Despertar</h2>
+                <div class="veils-grid">
+                    <a href="pages/veu-ilusao.html" class="veil-card" data-veil="1">
+                        <div class="veil-number">1</div>
+                        <h3 class="veil-name">O Véu da Ilusão</h3>
+                        <p class="veil-desc">A crença de que a realidade exterior define quem somos</p>
+                    </a>
+
+                    <a href="pages/veu-medo.html" class="veil-card" data-veil="2">
+                        <div class="veil-number">2</div>
+                        <h3 class="veil-name">O Véu do Medo</h3>
+                        <p class="veil-desc">Os medos que nos paralisam e limitam as nossas escolhas</p>
+                    </a>
+
+                    <a href="pages/veu-desejo.html" class="veil-card" data-veil="3">
+                        <div class="veil-number">3</div>
+                        <h3 class="veil-name">O Véu do Desejo</h3>
+                        <p class="veil-desc">A busca incessante por algo que nos complete</p>
+                    </a>
+
+                    <a href="pages/veu-controlo.html" class="veil-card" data-veil="4">
+                        <div class="veil-number">4</div>
+                        <h3 class="veil-name">O Véu do Controlo</h3>
+                        <p class="veil-desc">A necessidade de controlar tudo à nossa volta</p>
+                    </a>
+
+                    <a href="pages/veu-culpa.html" class="veil-card" data-veil="5">
+                        <div class="veil-number">5</div>
+                        <h3 class="veil-name">O Véu da Culpa</h3>
+                        <p class="veil-desc">O peso das escolhas passadas e a auto-condenação</p>
+                    </a>
+
+                    <a href="pages/veu-identidade.html" class="veil-card" data-veil="6">
+                        <div class="veil-number">6</div>
+                        <h3 class="veil-name">O Véu da Identidade</h3>
+                        <p class="veil-desc">Os papéis e máscaras que usamos para nos definir</p>
+                    </a>
+
+                    <a href="pages/veu-separacao.html" class="veil-card" data-veil="7">
+                        <div class="veil-number">7</div>
+                        <h3 class="veil-name">O Véu da Separação</h3>
+                        <p class="veil-desc">A ilusão de que estamos separados de tudo o resto</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section cta-section">
+            <div class="container">
+                <h2 class="cta-title">Pronto para Começar?</h2>
+                <p class="cta-text">Descubra qual véu está mais ativo na sua vida e inicie o seu percurso de despertar.</p>
+                <a href="pages/comecar.html" class="btn btn-secondary">Iniciar Percurso</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Os 7 Véus. Todos os direitos reservados.</p>
+            <p class="footer-note">Um sistema literário de autoconhecimento</p>
+        </div>
+    </footer>
+
+    <!-- Install Prompt -->
+    <div class="install-prompt" id="installPrompt">
+        <div class="install-content">
+            <p>Instale a app para acesso offline</p>
+            <div class="install-buttons">
+                <button class="btn btn-small" id="installBtn">Instalar</button>
+                <button class="btn btn-small btn-ghost" id="dismissBtn">Agora não</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Offline Indicator -->
+    <div class="offline-indicator" id="offlineIndicator">
+        <span>Modo Offline</span>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

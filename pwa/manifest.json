@@ -1,0 +1,97 @@
+{
+  "name": "Os 7 Véus - Sistema de Autoconhecimento",
+  "short_name": "7 Véus",
+  "description": "Um sistema literário para identificar padrões automáticos de vida, através de leitura, testes e percursos guiados",
+  "start_url": "/pwa/index.html",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#FF1A75",
+  "orientation": "portrait-primary",
+  "scope": "/pwa/",
+  "lang": "pt",
+  "icons": [
+    {
+      "src": "icons/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "icons/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Os 7 Véus - Página Inicial"
+    },
+    {
+      "src": "icons/screenshot-narrow.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Os 7 Véus - Vista Mobile"
+    }
+  ],
+  "categories": ["books", "education", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "Começar Jornada",
+      "short_name": "Começar",
+      "description": "Inicie o seu percurso de autoconhecimento",
+      "url": "/pwa/pages/comecar.html",
+      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Os 7 Véus",
+      "short_name": "Véus",
+      "description": "Explore os sete véus do despertar",
+      "url": "/pwa/pages/os-7-veus.html",
+      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

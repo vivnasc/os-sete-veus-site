@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FF1A75">
+    <title>Offline - Os 7 Véus</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .offline-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .offline-icon {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 30px;
+            opacity: 0.6;
+        }
+
+        .offline-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .offline-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #FF1A75, #9719ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .offline-message {
+            color: #a0a0b0;
+            font-size: 1.1rem;
+            max-width: 400px;
+            margin-bottom: 30px;
+        }
+
+        .retry-btn {
+            display: inline-block;
+            padding: 15px 35px;
+            font-size: 1rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #FF1A75, #9719ff);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .retry-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(255, 26, 117, 0.4);
+        }
+
+        .cached-pages {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .cached-pages h3 {
+            font-size: 1rem;
+            color: #606070;
+            margin-bottom: 20px;
+        }
+
+        .cached-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .cached-links a {
+            padding: 10px 20px;
+            background: #12121a;
+            border-radius: 8px;
+            color: #a0a0b0;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .cached-links a:hover {
+            background: #1a1a25;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-page">
+        <div class="offline-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="1" y1="1" x2="23" y2="23"></line>
+                <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"></path>
+                <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"></path>
+                <path d="M10.71 5.05A16 16 0 0 1 22.58 9"></path>
+                <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"></path>
+                <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                <line x1="12" y1="20" x2="12.01" y2="20"></line>
+            </svg>
+        </div>
+
+        <h1 class="offline-title">Sem Ligação à Internet</h1>
+
+        <p class="offline-message">
+            Parece que perdeu a ligação à internet.
+            Verifique a sua conexão e tente novamente.
+        </p>
+
+        <button class="retry-btn" onclick="window.location.reload()">
+            Tentar Novamente
+        </button>
+
+        <div class="cached-pages">
+            <h3>Páginas disponíveis offline:</h3>
+            <div class="cached-links">
+                <a href="index.html">Início</a>
+                <a href="pages/os-7-veus.html">Os 7 Véus</a>
+                <a href="pages/comecar.html">Começar</a>
+                <a href="pages/veu-ilusao.html">Véu da Ilusão</a>
+                <a href="pages/veu-medo.html">Véu do Medo</a>
+                <a href="pages/veu-desejo.html">Véu do Desejo</a>
+                <a href="pages/veu-controlo.html">Véu do Controlo</a>
+                <a href="pages/veu-culpa.html">Véu da Culpa</a>
+                <a href="pages/veu-identidade.html">Véu da Identidade</a>
+                <a href="pages/veu-separacao.html">Véu da Separação</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
