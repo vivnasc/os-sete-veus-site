@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Os 7 Véus - Uma travessia de transmutação">
+    <meta name="theme-color" content="#0a0a0f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Travessia — Os 7 Véus</title>
+    <link rel="stylesheet" href="css/travessia.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Ecrã inicial -->
+        <section id="inicio" class="screen active">
+            <div class="inicio-content">
+                <h1 class="titulo-principal">Travessia</h1>
+                <p class="subtitulo">Sete véus. Sete personagens. Uma jornada.</p>
+
+                <div class="inicio-descricao">
+                    <p>Isto não é um livro.</p>
+                    <p>Não é uma app.</p>
+                    <p>É uma travessia.</p>
+                </div>
+
+                <button class="btn-comecar" onclick="Travessia.iniciar()">
+                    Entrar
+                </button>
+
+                <p class="nota-inicio">Os teus dados ficam apenas neste dispositivo.</p>
+            </div>
+        </section>
+
+        <!-- Mapa da Travessia -->
+        <section id="mapa" class="screen">
+            <header class="mapa-header">
+                <h2>A Travessia</h2>
+                <button class="btn-icon" onclick="Travessia.abrirDiario()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                </button>
+            </header>
+
+            <div class="mapa-container">
+                <div class="mapa-visual">
+                    <!-- Os 7 véus como pontos no mapa -->
+                    <div class="veu-node" data-veu="1" data-estado="disponivel" onclick="Travessia.abrirVeu(1)">
+                        <div class="node-circle">
+                            <span class="node-numero">1</span>
+                        </div>
+                        <span class="node-nome">Ilusão</span>
+                        <span class="node-personagem">Sara</span>
+                    </div>
+
+                    <div class="veu-node" data-veu="2" data-estado="disponivel" onclick="Travessia.abrirVeu(2)">
+                        <div class="node-circle">
+                            <span class="node-numero">2</span>
+                        </div>
+                        <span class="node-nome">Medo</span>
+                        <span class="node-personagem">Rui</span>
+                    </div>
+
+                    <div class="veu-node" data-veu="3" data-estado="bloqueado" onclick="Travessia.abrirVeu(3)">
+                        <div class="node-circle">
+                            <span class="node-numero">3</span>
+                        </div>
+                        <span class="node-nome">Desejo</span>
+                        <span class="node-personagem">Miguel</span>
+                    </div>
+
+                    <div class="veu-node" data-veu="4" data-estado="bloqueado" onclick="Travessia.abrirVeu(4)">
+                        <div class="node-circle">
+                            <span class="node-numero">4</span>
+                        </div>
+                        <span class="node-nome">Controlo</span>
+                        <span class="node-personagem">Ana</span>
+                    </div>
+
+                    <div class="veu-node" data-veu="5" data-estado="bloqueado" onclick="Travessia.abrirVeu(5)">
+                        <div class="node-circle">
+                            <span class="node-numero">5</span>
+                        </div>
+                        <span class="node-nome">Culpa</span>
+                        <span class="node-personagem">Teresa</span>
+                    </div>
+
+                    <div class="veu-node" data-veu="6" data-estado="bloqueado" onclick="Travessia.abrirVeu(6)">
+                        <div class="node-circle">
+                            <span class="node-numero">6</span>
+                        </div>
+                        <span class="node-nome">Identidade</span>
+                        <span class="node-personagem">João</span>
+                    </div>
+
+                    <div class="veu-node" data-veu="7" data-estado="bloqueado" onclick="Travessia.abrirVeu(7)">
+                        <div class="node-circle">
+                            <span class="node-numero">7</span>
+                        </div>
+                        <span class="node-nome">Separação</span>
+                        <span class="node-personagem">Marta</span>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="mapa-footer">
+                <p class="progresso-texto">
+                    <span id="progressoActual">0</span> de 7 véus atravessados
+                </p>
+            </footer>
+        </section>
+
+        <!-- Leitor de Capítulo -->
+        <section id="leitor" class="screen">
+            <header class="leitor-header">
+                <button class="btn-voltar" onclick="Travessia.voltarMapa()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <div class="leitor-info">
+                    <span id="leitorVeuNome">O Véu do Medo</span>
+                    <span id="leitorCapitulo">Capítulo 1</span>
+                </div>
+                <div class="leitor-progresso">
+                    <div class="progresso-bar">
+                        <div class="progresso-fill" id="progressoCapitulo"></div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="leitor-conteudo" id="leitorConteudo">
+                <!-- Conteúdo dinâmico -->
+            </main>
+
+            <footer class="leitor-footer">
+                <button class="btn-continuar" id="btnContinuar" onclick="Travessia.continuar()">
+                    Continuar
+                </button>
+            </footer>
+        </section>
+
+        <!-- Pausa / Reflexão -->
+        <section id="pausa" class="screen">
+            <div class="pausa-content">
+                <div class="pausa-icone">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                </div>
+                <p class="pausa-texto" id="pausaTexto">
+                    Onde obedeces ao medo?
+                </p>
+                <p class="pausa-instrucao" id="pausaInstrucao">
+                    Pensa num gesto que fazes hoje apenas por medo.
+                </p>
+            </div>
+            <button class="btn-continuar" onclick="Travessia.continuarPausa()">
+                Tenho uma resposta
+            </button>
+        </section>
+
+        <!-- Registo -->
+        <section id="registo" class="screen">
+            <div class="registo-content">
+                <p class="registo-pergunta" id="registoPergunta">
+                    Que gesto fazes por medo?
+                </p>
+                <textarea
+                    class="registo-input"
+                    id="registoInput"
+                    placeholder="Escreve aqui... (fica apenas neste dispositivo)"
+                    rows="4"
+                ></textarea>
+                <p class="registo-nota">
+                    Sê específico. Um gesto concreto. Hoje.
+                </p>
+            </div>
+            <button class="btn-continuar" onclick="Travessia.guardarRegisto()">
+                Guardar
+            </button>
+        </section>
+
+        <!-- Compromisso -->
+        <section id="compromisso" class="screen">
+            <div class="compromisso-content">
+                <p class="compromisso-intro">O teu gesto:</p>
+                <blockquote class="compromisso-gesto" id="compromissoGesto">
+                    "Ficar mais tempo no trabalho sem necessidade"
+                </blockquote>
+                <p class="compromisso-texto">
+                    Hoje, quando este gesto surgir:
+                </p>
+                <p class="compromisso-accao">
+                    Não o executo.
+                </p>
+                <p class="compromisso-nota">
+                    Sem substituir por outro.<br>
+                    Sem explicar.<br>
+                    Apenas não fazer.
+                </p>
+            </div>
+            <button class="btn-compromisso" onclick="Travessia.confirmarCompromisso()">
+                Aceito este compromisso
+            </button>
+        </section>
+
+        <!-- Check-in -->
+        <section id="checkin" class="screen">
+            <div class="checkin-content">
+                <p class="checkin-data" id="checkinData">Hoje</p>
+                <p class="checkin-gesto" id="checkinGesto">
+                    "Ficar mais tempo no trabalho"
+                </p>
+                <p class="checkin-pergunta">
+                    Executaste o gesto?
+                </p>
+                <div class="checkin-opcoes">
+                    <button class="btn-checkin" data-resposta="nao" onclick="Travessia.registarCheckin('nao')">
+                        <span class="checkin-emoji">○</span>
+                        <span>Não executei</span>
+                    </button>
+                    <button class="btn-checkin" data-resposta="sim" onclick="Travessia.registarCheckin('sim')">
+                        <span class="checkin-emoji">●</span>
+                        <span>Executei</span>
+                    </button>
+                </div>
+                <p class="checkin-nota">
+                    Sem julgamento. Apenas registo.
+                </p>
+            </div>
+        </section>
+
+        <!-- Áudio -->
+        <section id="audio" class="screen">
+            <div class="audio-content">
+                <div class="audio-visual">
+                    <div class="audio-circle" id="audioCircle">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        </svg>
+                    </div>
+                </div>
+                <p class="audio-titulo" id="audioTitulo">Exercício: Sustentar o desconforto</p>
+                <p class="audio-duracao" id="audioDuracao">5 minutos</p>
+                <div class="audio-controlos">
+                    <button class="btn-audio" onclick="Travessia.toggleAudio()">
+                        <span id="audioEstado">Iniciar</span>
+                    </button>
+                </div>
+                <p class="audio-nota">
+                    Podes ouvir agora ou mais tarde.
+                </p>
+            </div>
+            <button class="btn-continuar btn-secundario" onclick="Travessia.saltarAudio()">
+                Continuar sem ouvir
+            </button>
+        </section>
+
+        <!-- Diário -->
+        <section id="diario" class="screen">
+            <header class="diario-header">
+                <button class="btn-voltar" onclick="Travessia.fecharDiario()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <h2>O Meu Diário</h2>
+            </header>
+            <main class="diario-conteudo" id="diarioConteudo">
+                <!-- Entradas dinâmicas -->
+                <p class="diario-vazio">Ainda não há registos.</p>
+            </main>
+        </section>
+    </div>
+
+    <script src="js/travessia.js"></script>
+    <script src="js/conteudo.js"></script>
+</body>
+</html>
