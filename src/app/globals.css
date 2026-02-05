@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --color-veu-50: #f5f3ff;
+  --color-veu-100: #ede9fe;
+  --color-veu-200: #ddd6fe;
+  --color-veu-300: #c4b5fd;
+  --color-veu-400: #a78bfa;
+  --color-veu-500: #8b5cf6;
+  --color-veu-600: #7c3aed;
+  --color-veu-700: #6d28d9;
+  --color-veu-800: #5b21b6;
+  --color-veu-900: #4c1d95;
+  --color-veu-950: #2e1065;
+}
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl bg-veu-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-veu-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-veu-600 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-sm transition-all hover:bg-gray-50 active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold text-veu-600 transition-all hover:bg-veu-50 active:scale-95;
+  }
+
+  .card {
+    @apply rounded-2xl border border-gray-200 bg-white p-4 shadow-sm;
+  }
+
+  .input-field {
+    @apply block w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm shadow-sm transition-colors placeholder:text-gray-400 focus:border-veu-500 focus:outline-none focus:ring-2 focus:ring-veu-500/20;
+  }
+
+  .veu-badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-medium;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}

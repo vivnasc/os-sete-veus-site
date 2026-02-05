@@ -1,0 +1,27 @@
+{
+  "name": "Sete Ecos - Os 7 Véus",
+  "short_name": "Sete Ecos",
+  "description": "Comunidade de partilha e despertar através d'Os 7 Véus",
+  "start_url": "/feed",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#7c3aed",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["lifestyle", "education", "social"],
+  "lang": "pt-PT",
+  "dir": "ltr"
+}
