@@ -2,10 +2,6 @@
 
 import { useState } from "react";
 
-const SUPABASE_URL = "https://tdytdamtfillqyklgrmb.supabase.co";
-const SUPABASE_ANON_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRkeXRkYW10ZmlsbHF5a2xncm1iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAzNzk4ODAsImV4cCI6MjA4NTk1NTg4MH0.W1w_M7dQXgPehDP0NUWWE4QHcW214XGVRIVXtG5n9z4";
-
 export default function NewsletterForm({ dark = false }: { dark?: boolean }) {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -18,28 +14,13 @@ export default function NewsletterForm({ dark = false }: { dark?: boolean }) {
     setLoading(true);
 
     try {
-      if (SUPABASE_URL && SUPABASE_ANON_KEY) {
-        const res = await fetch(`${SUPABASE_URL}/rest/v1/newsletter`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            apikey: SUPABASE_ANON_KEY,
-            Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
-            Prefer: "return=minimal",
-          },
-          body: JSON.stringify({ email }),
-        });
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
 
-        if (!res.ok) {
-          const data = await res.json().catch(() => null);
-          if (data?.code === "23505") {
-            // Duplicate email — treat as success
-            setSubmitted(true);
-            return;
-          }
-          throw new Error("Erro ao guardar. Tenta novamente.");
-        }
-      }
+      if (!res.ok) throw new Error();
       setSubmitted(true);
     } catch {
       setError("Ocorreu um erro. Por favor, tenta novamente.");
