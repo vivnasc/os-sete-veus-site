@@ -6,6 +6,7 @@ import { chapters } from "@/data/ebook";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 import Image from "next/image";
+import VeilMap from "@/components/VeilMap";
 
 export default function MembroDashboard() {
   const { user } = useAuth();
@@ -132,6 +133,13 @@ export default function MembroDashboard() {
             </div>
           </div>
         </div>
+
+        {/* Veil Map */}
+        {!loading && (
+          <div className="mt-6">
+            <VeilMap progress={readingProgress} />
+          </div>
+        )}
 
         {/* Secondary cards */}
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
