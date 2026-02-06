@@ -37,7 +37,7 @@ export default function PayPalButton() {
             return actions.order.create({
               purchase_units: [
                 {
-                  description: "O Véu da Ilusão — Ebook (Os Sete Véus)",
+                  description: "Os 7 Véus do Despertar — Ebook",
                   amount: {
                     value: "19.00",
                     currency_code: "USD",
