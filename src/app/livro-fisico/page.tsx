@@ -119,23 +119,25 @@ export default function LivroFisicoPage() {
           <h2 className="font-serif text-3xl text-brown-900">Sobre este livro</h2>
           <div className="mt-8 space-y-6">
             <p className="leading-relaxed text-brown-700">
-              Os 7 Véus do Despertar não é um livro de respostas. É um livro de perguntas — as que
-              ficaram por fazer, as que te assustam, as que talvez te libertem.
+              Este livro não é um manual de respostas prontas, nem um guia de etapas rígidas. É um
+              convite a olhar mais profundamente para dentro, a desafiar as percepções limitadas que
+              carregamos e a atravessar os véus que obscurecem a clareza da consciência.
             </p>
             <p className="leading-relaxed text-brown-700">
-              Através de sete camadas — sete véus — este livro convida-te a olhar para os padrões
-              que te escondem de ti mesma. Não para te julgar, mas para te reconheceres. Não para te
-              consertar, mas para te devolver a escolha.
+              O despertar não é uma chegada a um ponto fixo. É um processo gradual de desapego e
+              dissolução — não sobre conquistar um novo estado, mas sobre soltar o que perdeu sentido.
+              Cada camada removida é uma revelação do que sempre foi real.
             </p>
             <p className="leading-relaxed text-brown-700">
-              Cada véu é uma travessia. Cada história é um espelho. E no fim, o que encontras
-              não é uma versão melhor de ti — é a versão que sempre esteve lá, à espera de espaço.
+              À medida que cada véu se dissolve, o limite aparente revela-se passagem. O despertar
+              deixa de ser conquista ou destino, mas espiral viva de expansão, onde cada camada que
+              cai nos devolve à clareza do que sempre fomos: presença inseparável da vida que pulsa em tudo.
             </p>
           </div>
           <div className="mt-8 rounded-r-xl border-l-[3px] border-veu-7 bg-cream px-6 py-5">
             <p className="font-serif italic leading-relaxed text-brown-700">
-              &ldquo;Não é que estejas a viver mal. É que há uma versão tua que ainda não teve
-              espaço para existir.&rdquo;
+              &ldquo;O que chamamos de realidade é, muitas vezes, apenas uma projecção da mente,
+              moldada pelas crenças que fomos acumulando ao longo da vida.&rdquo;
             </p>
           </div>
         </div>
@@ -145,21 +147,24 @@ export default function LivroFisicoPage() {
       <section className="bg-cream px-6 py-24">
         <div className="mx-auto max-w-3xl">
           <h2 className="font-serif text-3xl text-brown-900">Os sete véus</h2>
-          <div className="mt-8 space-y-4">
+          <div className="mt-8 space-y-6">
             {[
-              { n: 1, name: "O Véu da Ilusão", color: "bg-veu-1" },
-              { n: 2, name: "O Véu do Controlo", color: "bg-veu-2" },
-              { n: 3, name: "O Véu da Perfeição", color: "bg-veu-3" },
-              { n: 4, name: "O Véu do Silêncio", color: "bg-veu-4" },
-              { n: 5, name: "O Véu da Culpa", color: "bg-veu-5" },
-              { n: 6, name: "O Véu do Medo", color: "bg-veu-6" },
-              { n: 7, name: "O Véu da Separação", color: "bg-veu-7" },
+              { n: 1, name: "O Véu da Permanência", desc: "Encobre a impermanência da vida, fazendo-nos acreditar num eu fixo e imutável.", color: "bg-veu-1" },
+              { n: 2, name: "O Véu da Memória", desc: "Encobre a liberdade do presente, mantendo-nos presos às histórias do passado.", color: "bg-veu-2" },
+              { n: 3, name: "O Véu do Turbilhão", desc: "Encobre o silêncio do ser, confundindo-nos com os pensamentos e emoções que se agitam sem cessar.", color: "bg-veu-3" },
+              { n: 4, name: "O Véu do Esforço", desc: "Encobre o repouso interior, fazendo-nos acreditar que a plenitude depende da busca incessante.", color: "bg-veu-4" },
+              { n: 5, name: "O Véu da Desolação", desc: "Encobre a fertilidade do vazio, fazendo-o parecer abandono e ameaça.", color: "bg-veu-5" },
+              { n: 6, name: "O Véu do Horizonte", desc: "Encobre a infinitude da consciência, sugerindo um destino final, uma chegada definitiva.", color: "bg-veu-6" },
+              { n: 7, name: "O Véu da Dualidade", desc: "Encobre a unidade do real, mantendo a ilusão de que estamos separados.", color: "bg-veu-7" },
             ].map((veu) => (
-              <div key={veu.n} className="flex items-center gap-4">
+              <div key={veu.n} className="flex items-start gap-4">
                 <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${veu.color} font-sans text-sm font-bold text-white`}>
                   {veu.n}
                 </span>
-                <span className="font-serif text-lg text-brown-800">{veu.name}</span>
+                <div>
+                  <span className="font-serif text-lg text-brown-800">{veu.name}</span>
+                  <p className="mt-1 text-sm leading-relaxed text-brown-500">{veu.desc}</p>
+                </div>
               </div>
             ))}
           </div>
