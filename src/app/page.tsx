@@ -31,7 +31,7 @@ export default function Home() {
           </p>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
-              href="/recursos"
+              href="/comecar"
               className="inline-block rounded-md border-2 border-cream bg-cream px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-900 transition-all hover:bg-transparent hover:text-cream"
             >
               Começa por aqui
@@ -95,8 +95,53 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Author teaser — cream section with photo */}
+      {/* Integrated experience — cream section */}
       <section className="bg-cream px-6 py-24">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="font-sans text-[0.7rem] uppercase tracking-[0.2em] text-sage">
+            Uma experiência, não apenas um livro
+          </p>
+          <h2 className="mt-4 font-serif text-3xl text-brown-900 sm:text-4xl">
+            Lê, reflecte, transforma
+          </h2>
+          <p className="mx-auto mt-6 max-w-xl leading-relaxed text-brown-700">
+            O Véu da Ilusão não é um PDF para baixar e esquecer. É uma experiência de leitura
+            integrada — com pausas de reflexão, diário pessoal e checklists interactivos. Tudo
+            dentro do site. Ao teu ritmo.
+          </p>
+          <div className="mx-auto mt-10 grid max-w-lg gap-5 sm:grid-cols-3">
+            <div className="rounded-xl bg-white px-4 py-5 shadow-sm">
+              <p className="font-serif text-3xl text-[#c9b896]">7</p>
+              <p className="mt-1 font-sans text-[0.65rem] uppercase tracking-wider text-brown-400">
+                Capítulos
+              </p>
+            </div>
+            <div className="rounded-xl bg-white px-4 py-5 shadow-sm">
+              <p className="font-serif text-3xl text-[#7a8c6e]">7</p>
+              <p className="mt-1 font-sans text-[0.65rem] uppercase tracking-wider text-brown-400">
+                Reflexões guiadas
+              </p>
+            </div>
+            <div className="rounded-xl bg-white px-4 py-5 shadow-sm">
+              <p className="font-serif text-3xl text-[#b07a7a]">1</p>
+              <p className="mt-1 font-sans text-[0.65rem] uppercase tracking-wider text-brown-400">
+                Espelho final
+              </p>
+            </div>
+          </div>
+          <div className="mt-8">
+            <Link
+              href="/livro-fisico"
+              className="inline-block rounded-md border-2 border-sage bg-sage px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-white transition-all hover:bg-transparent hover:text-sage"
+            >
+              Conhece a experiência
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Author teaser — cream-dark section with photo */}
+      <section className="bg-cream-dark px-6 py-24">
         <div className="mx-auto max-w-4xl">
           <div className="items-center gap-12 md:flex">
             <div className="shrink-0 text-center md:text-left">

@@ -23,7 +23,7 @@ const cenarios = [
     title: "Quero experimentar antes de me comprometer",
     description: "Queres explorar sem compromisso, ao teu ritmo.",
     steps: [
-      { text: "Faz o teste \"Qual véu te esconde?\" — sem email", href: "/recursos/teste" },
+      { text: "Faz o teste \"Qual véu te esconde?\" — sem email, sem compromisso", href: "/recursos/teste" },
       { text: "Descarrega os recursos gratuitos", href: "/recursos" },
       { text: "Lê um artigo que te chame a atenção", href: "/artigos" },
     ],
@@ -33,9 +33,9 @@ const cenarios = [
     title: "Estou pronta para começar a ler",
     description: "Já sentes que isto é para ti. Queres mergulhar.",
     steps: [
-      { text: "Começa pelo Véu da Ilusão — o primeiro da colecção", href: "/os-sete-veus" },
-      { text: "Descarrega o Diário dos Sete Véus para acompanhar a leitura", href: "/recursos" },
-      { text: "Junta-te à lista para receber novidades", href: "/recursos" },
+      { text: "Adquire O Véu da Ilusão e lê directamente no site, capítulo a capítulo", href: "/livro-fisico" },
+      { text: "Ao leres, o diário de reflexão guia-te em cada pausa", href: "/livro-fisico" },
+      { text: "No final, O Teu Espelho mostra-te tudo o que escreveste", href: "/livro-fisico" },
     ],
   },
 ];
@@ -104,18 +104,59 @@ export default function ComecarPage() {
         </section>
       ))}
 
+      {/* What makes this different */}
+      <section className="bg-cream px-6 py-16">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-serif text-2xl text-brown-900">
+            Uma experiência, não apenas um livro
+          </h2>
+          <p className="mx-auto mt-4 max-w-lg font-serif text-base leading-relaxed text-brown-600">
+            O Véu da Ilusão não é um PDF para baixar e esquecer. É uma experiência de leitura
+            integrada, com pausas de reflexão, diário pessoal e checklists — tudo dentro do site.
+            Lês ao teu ritmo. Escreves o que sentes. E no final, O Teu Espelho mostra-te
+            as tuas palavras reunidas.
+          </p>
+          <div className="mx-auto mt-8 grid max-w-lg gap-4 sm:grid-cols-3">
+            <div className="rounded-xl bg-white px-4 py-4 shadow-sm">
+              <p className="font-serif text-2xl text-[#c9b896]">7</p>
+              <p className="mt-1 font-sans text-[0.6rem] uppercase tracking-wider text-brown-400">
+                Capítulos
+              </p>
+            </div>
+            <div className="rounded-xl bg-white px-4 py-4 shadow-sm">
+              <p className="font-serif text-2xl text-[#7a8c6e]">7</p>
+              <p className="mt-1 font-sans text-[0.6rem] uppercase tracking-wider text-brown-400">
+                Reflexões guiadas
+              </p>
+            </div>
+            <div className="rounded-xl bg-white px-4 py-4 shadow-sm">
+              <p className="font-serif text-2xl text-[#b07a7a]">1</p>
+              <p className="mt-1 font-sans text-[0.6rem] uppercase tracking-wider text-brown-400">
+                Espelho final
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="bg-gradient-to-b from-brown-800 to-brown-900 px-6 py-24">
         <div className="mx-auto max-w-3xl text-center">
           <p className="font-serif text-2xl italic leading-relaxed text-cream">
             &ldquo;Não precisas de saber para onde vais. Precisas apenas de dar o primeiro passo.&rdquo;
           </p>
-          <div className="mt-10">
+          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/recursos/teste"
-              className="inline-block rounded-md border-2 border-cream bg-cream px-10 py-4 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-900 transition-all hover:bg-transparent hover:text-cream"
+              className="inline-block rounded-md border-2 border-cream bg-cream px-8 py-3.5 font-sans text-[0.75rem] font-medium uppercase tracking-[0.15em] text-brown-900 transition-all hover:bg-transparent hover:text-cream"
             >
               Experimenta o teste gratuito
+            </Link>
+            <Link
+              href="/livro-fisico"
+              className="inline-block rounded-md border-2 border-cream/40 px-8 py-3.5 font-sans text-[0.75rem] font-medium uppercase tracking-[0.15em] text-cream/80 transition-all hover:border-cream hover:text-cream"
+            >
+              Conhece O Véu da Ilusão
             </Link>
           </div>
         </div>
