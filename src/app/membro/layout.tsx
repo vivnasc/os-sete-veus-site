@@ -6,9 +6,9 @@ import Link from "next/link";
 
 const memberNav = [
   { href: "/membro", label: "Início" },
-  { href: "/membro/experiencia", label: "Experiência 7 Dias" },
-  { href: "/membro/audiobook", label: "Audiobook" },
-  { href: "/membro/praticas", label: "Práticas em Áudio" },
+  { href: "/membro/leitura", label: "Leitura" },
+  { href: "/membro/praticas", label: "Práticas" },
+  { href: "/membro/espelho", label: "O Teu Espelho" },
 ];
 
 export default function MembroLayout({ children }: { children: React.ReactNode }) {
