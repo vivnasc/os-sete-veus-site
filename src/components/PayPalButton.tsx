@@ -79,7 +79,7 @@ export default function PayPalButton() {
           O teu ebook está pronto. Clica no botão abaixo para descarregar.
         </p>
         <a
-          href="/downloads/os-7-veus-do-despertar.pdf"
+          href="/downloads/Os_7_Veus_ebook.pdf"
           download
           className="mt-5 inline-block rounded-md bg-sage px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.12em] text-white transition-colors hover:bg-sage-dark"
         >
