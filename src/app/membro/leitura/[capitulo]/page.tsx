@@ -16,7 +16,20 @@ export default function ChapterPage({ params }: { params: Promise<{ capitulo: st
 
   const [showReflection, setShowReflection] = useState(false);
   const [completed, setCompleted] = useState(false);
+  const [nightMode, setNightMode] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
+
+  // Load night mode preference
+  useEffect(() => {
+    const saved = localStorage.getItem("reader-night-mode");
+    if (saved === "true") setNightMode(true);
+  }, []);
+
+  const toggleNightMode = () => {
+    const next = !nightMode;
+    setNightMode(next);
+    localStorage.setItem("reader-night-mode", String(next));
+  };
 
   // Track reading progress
   const markAsRead = useCallback(async () => {
@@ -97,23 +110,47 @@ export default function ChapterPage({ params }: { params: Promise<{ capitulo: st
       {/* Scroll progress tracker */}
       <ScrollProgress color={chapter.accentColor} />
 
-      <article className="px-6 py-12" style={{ backgroundColor: chapter.accentBg }}>
+      <article
+        className="px-6 py-12 transition-colors duration-500"
+        style={{
+          backgroundColor: nightMode ? "#1e1b18" : chapter.accentBg,
+        }}
+      >
         <div className="mx-auto max-w-[640px]">
-          {/* Chapter header */}
+          {/* Chapter header with controls */}
           <div className="mb-12 text-center">
-            <Link
-              href="/membro/leitura"
-              className="inline-block font-sans text-[0.65rem] uppercase tracking-[0.15em] text-brown-400 hover:text-brown-600"
-            >
-              &larr; Todos os capítulos
-            </Link>
+            <div className="flex items-center justify-between">
+              <Link
+                href="/membro/leitura"
+                className={`font-sans text-[0.65rem] uppercase tracking-[0.15em] transition-colors ${nightMode ? "text-brown-500 hover:text-brown-400" : "text-brown-400 hover:text-brown-600"}`}
+              >
+                &larr; Todos os capítulos
+              </Link>
+
+              {/* Night mode toggle */}
+              <button
+                onClick={toggleNightMode}
+                className={`flex h-8 w-8 items-center justify-center rounded-full transition-colors ${nightMode ? "bg-brown-800 text-amber-300 hover:bg-brown-700" : "bg-brown-100 text-brown-400 hover:bg-brown-200"}`}
+                title={nightMode ? "Modo claro" : "Modo nocturno"}
+              >
+                {nightMode ? (
+                  <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
+                  </svg>
+                ) : (
+                  <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                  </svg>
+                )}
+              </button>
+            </div>
             <p
               className="mt-8 font-sans text-[0.6rem] uppercase tracking-[0.3em]"
               style={{ color: chapter.accentColor }}
             >
               {chapter.title}
             </p>
-            <h1 className="mt-2 font-serif text-3xl text-brown-900">{chapter.subtitle}</h1>
+            <h1 className={`mt-2 font-serif text-3xl transition-colors ${nightMode ? "text-cream" : "text-brown-900"}`}>{chapter.subtitle}</h1>
             <div className="mx-auto mt-6 h-px w-16" style={{ backgroundColor: chapter.accentColor + "40" }} />
           </div>
 
@@ -139,15 +176,19 @@ export default function ChapterPage({ params }: { params: Promise<{ capitulo: st
               const isDialogue = paragraph.startsWith("—") || paragraph.startsWith("—");
               const isShortLine = paragraph.length < 60;
 
+              const textColor = nightMode
+                ? isShortLine ? "text-brown-400" : "text-[#d4cfc7]"
+                : isShortLine ? "text-brown-600" : "text-brown-800";
+
               return (
                 <p
                   key={i}
-                  className={`leading-[1.9] ${
+                  className={`leading-[1.9] transition-colors duration-500 ${
                     isDialogue
-                      ? "py-1 font-serif text-[1.05rem] text-brown-800"
+                      ? `py-1 font-serif text-[1.05rem] ${textColor}`
                       : isShortLine
-                        ? "py-3 text-center font-serif text-[1.05rem] italic text-brown-600"
-                        : "py-2 font-serif text-[1.05rem] text-brown-800"
+                        ? `py-3 text-center font-serif text-[1.05rem] italic ${textColor}`
+                        : `py-2 font-serif text-[1.05rem] ${textColor}`
                   }`}
                   style={{
                     textIndent: !isDialogue && !isShortLine && i > 0 ? "1.5em" : undefined,
@@ -196,7 +237,7 @@ export default function ChapterPage({ params }: { params: Promise<{ capitulo: st
           </div>
 
           {/* Navigation */}
-          <nav className="mt-16 flex items-center justify-between border-t border-brown-100 pt-8">
+          <nav className={`mt-16 flex items-center justify-between border-t pt-8 ${nightMode ? "border-brown-800" : "border-brown-100"}`}>
             {prevChapter ? (
               <Link
                 href={`/membro/leitura/${prevChapter.slug}`}

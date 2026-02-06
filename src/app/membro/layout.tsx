@@ -8,7 +8,8 @@ const memberNav = [
   { href: "/membro", label: "Início" },
   { href: "/membro/leitura", label: "Leitura" },
   { href: "/membro/praticas", label: "Práticas" },
-  { href: "/membro/espelho", label: "O Teu Espelho" },
+  { href: "/membro/espelho", label: "Espelho" },
+  { href: "/membro/conclusao", label: "Cerimónia" },
 ];
 
 export default function MembroLayout({ children }: { children: React.ReactNode }) {
