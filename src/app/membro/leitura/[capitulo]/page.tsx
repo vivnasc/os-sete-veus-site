@@ -5,6 +5,8 @@ import { chapters } from "@/data/ebook";
 import { supabase } from "@/lib/supabase";
 import InteractiveChecklist from "@/components/InteractiveChecklist";
 import ReflectionJournal from "@/components/ReflectionJournal";
+import BreathingExercise from "@/components/BreathingExercise";
+import { getReadingTime, formatReadingTime } from "@/lib/readingTime";
 import Link from "next/link";
 
 export default function ChapterPage({ params }: { params: Promise<{ capitulo: string }> }) {
@@ -151,7 +153,10 @@ export default function ChapterPage({ params }: { params: Promise<{ capitulo: st
               {chapter.title}
             </p>
             <h1 className={`mt-2 font-serif text-3xl transition-colors ${nightMode ? "text-cream" : "text-brown-900"}`}>{chapter.subtitle}</h1>
-            <div className="mx-auto mt-6 h-px w-16" style={{ backgroundColor: chapter.accentColor + "40" }} />
+            <p className={`mt-3 font-sans text-[0.65rem] tracking-wide ${nightMode ? "text-brown-600" : "text-brown-400"}`}>
+              {formatReadingTime(getReadingTime(chapter.content))}
+            </p>
+            <div className="mx-auto mt-4 h-px w-16" style={{ backgroundColor: chapter.accentColor + "40" }} />
           </div>
 
           {/* Content */}
@@ -220,6 +225,8 @@ export default function ChapterPage({ params }: { params: Promise<{ capitulo: st
 
             {showReflection && (
               <>
+                <BreathingExercise accentColor={chapter.accentColor} />
+
                 <ReflectionJournal
                   chapterSlug={chapter.slug}
                   prompt={chapter.reflection.prompt}
