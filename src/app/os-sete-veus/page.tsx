@@ -144,9 +144,12 @@ export default function OsSeteVeusPage() {
                 <p className="mt-4 leading-relaxed text-brown-700">{veu.description}</p>
                 <div className="mt-6">
                   {veu.available ? (
-                    <span className="inline-block rounded-full bg-sage/15 px-5 py-2 font-sans text-[0.75rem] font-medium uppercase tracking-wider text-sage">
-                      Disponível
-                    </span>
+                    <Link
+                      href="/livro-fisico"
+                      className="inline-block rounded-full bg-sage px-6 py-2.5 font-sans text-[0.75rem] font-medium uppercase tracking-wider text-white transition-colors hover:bg-sage-dark"
+                    >
+                      Lê agora
+                    </Link>
                   ) : (
                     <span className="inline-block rounded-full bg-brown-100/60 px-5 py-2 font-sans text-[0.75rem] font-medium uppercase tracking-wider text-brown-400">
                       Em preparação
@@ -164,14 +167,20 @@ export default function OsSeteVeusPage() {
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-serif text-3xl text-cream">Não sabes por onde começar?</h2>
           <p className="mx-auto mt-4 max-w-md leading-relaxed text-brown-200">
-            Temos recursos gratuitos que te ajudam a descobrir qual véu fala mais contigo.
+            Escolhe o cenário que mais se parece contigo — ou experimenta o teste gratuito.
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
-              href="/recursos"
+              href="/comecar"
               className="inline-block rounded-md border-2 border-cream bg-cream px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-900 transition-all hover:bg-transparent hover:text-cream"
             >
-              Explorar recursos gratuitos
+              Por onde começar
+            </Link>
+            <Link
+              href="/recursos/teste"
+              className="inline-block rounded-md border-2 border-cream/40 px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-cream/80 transition-all hover:border-cream hover:text-cream"
+            >
+              Fazer o teste gratuito
             </Link>
           </div>
         </div>

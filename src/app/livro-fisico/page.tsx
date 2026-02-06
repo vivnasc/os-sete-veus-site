@@ -43,6 +43,14 @@ export default function LivroFisicoPage() {
           </p>
 
           <p className="mt-2 text-sm text-brown-500">por Vivianne dos Santos</p>
+
+          <div className="mx-auto mt-8 flex max-w-sm items-center gap-3 rounded-xl border border-brown-600/30 bg-brown-800/50 px-5 py-3">
+            <span className="text-lg text-sage">&#10024;</span>
+            <p className="text-left text-sm leading-snug text-brown-300">
+              Agora com <span className="text-cream">reader integrado</span>, reflexões guiadas
+              e diário pessoal — tudo dentro do site.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -53,16 +61,17 @@ export default function LivroFisicoPage() {
             {/* Ebook — PayPal */}
             <div className="rounded-2xl border border-brown-100 bg-white p-8 shadow-sm">
               <p className="font-sans text-[0.7rem] font-medium uppercase tracking-[0.2em] text-sage">
-                Ebook digital
+                Experiência digital
               </p>
               <p className="mt-3 font-sans text-3xl font-bold text-brown-900">
                 $19 <span className="text-base font-normal text-brown-400">USD — Mundial</span>
               </p>
               <ul className="mt-5 space-y-2">
                 {[
-                  "Recebe imediatamente por email",
-                  "Formato PDF — lê em qualquer dispositivo",
-                  "Envio mundial",
+                  "Acesso imediato ao reader integrado",
+                  "7 capítulos com reflexões guiadas",
+                  "Checklists interactivos e diário pessoal",
+                  "O Teu Espelho — as tuas palavras reunidas",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-brown-600">
                     <span className="mt-0.5 text-sage">&#10003;</span>
@@ -175,20 +184,20 @@ export default function LivroFisicoPage() {
       <section className="bg-gradient-to-b from-brown-800 to-brown-900 px-6 py-24">
         <div className="mx-auto max-w-3xl text-center">
           <p className="font-serif text-2xl italic leading-relaxed text-cream">
-            &ldquo;Sete histórias que te devolvem a ti mesma.&rdquo;
+            &ldquo;Agora que vi, há um caminho — mesmo que ainda não saiba qual.&rdquo;
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Link
-              href="/recursos"
+              href="/comecar"
               className="inline-block rounded-md border-2 border-cream bg-cream px-8 py-3.5 text-center font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-900 transition-all hover:bg-transparent hover:text-cream"
             >
-              Experimentar grátis primeiro
+              Por onde começar
             </Link>
             <Link
-              href="/os-sete-veus"
+              href="/recursos/teste"
               className="inline-block rounded-md border-2 border-brown-300 bg-transparent px-8 py-3.5 text-center font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-200 transition-all hover:border-cream hover:bg-cream hover:text-brown-900"
             >
-              Conhecer a colecção
+              Fazer o teste gratuito
             </Link>
           </div>
         </div>
