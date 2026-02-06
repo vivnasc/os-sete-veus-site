@@ -1,53 +1,52 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-warm-200 bg-warm-100">
+    <footer className="bg-gradient-to-b from-brown-800 to-brown-900 text-brown-200">
       <div className="mx-auto max-w-6xl px-6 py-16">
         <div className="grid gap-12 md:grid-cols-3">
-          {/* Brand */}
           <div>
-            <p className="font-serif text-lg text-warm-800">Os Sete Véus</p>
-            <p className="mt-3 text-sm leading-relaxed text-warm-500">
+            <div className="flex items-center gap-3">
+              <Image
+                src="/images/logo-espiral.png.jpeg"
+                alt="Os Sete Véus"
+                width={36}
+                height={36}
+                className="rounded-full opacity-80"
+              />
+              <p className="font-serif text-lg text-cream">Os Sete Véus</p>
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-brown-300">
               Histórias para quem está pronta para se escolher.
             </p>
           </div>
 
-          {/* Navigation */}
           <div>
-            <p className="text-xs font-medium uppercase tracking-widest text-warm-400">
+            <p className="font-sans text-[0.7rem] font-medium uppercase tracking-[0.2em] text-brown-400">
               Explorar
             </p>
             <nav className="mt-4 flex flex-col gap-3">
-              <Link href="/os-sete-veus" className="text-sm text-warm-600 hover:text-warm-900">
-                A Colecção
-              </Link>
-              <Link href="/sobre" className="text-sm text-warm-600 hover:text-warm-900">
-                A Vivianne
-              </Link>
-              <Link href="/recursos" className="text-sm text-warm-600 hover:text-warm-900">
-                Recursos Gratuitos
-              </Link>
-              <Link href="/artigos" className="text-sm text-warm-600 hover:text-warm-900">
-                Artigos
-              </Link>
+              <Link href="/os-sete-veus" className="text-sm text-brown-300 hover:text-cream">A Colecção</Link>
+              <Link href="/sobre" className="text-sm text-brown-300 hover:text-cream">A Vivianne</Link>
+              <Link href="/recursos" className="text-sm text-brown-300 hover:text-cream">Recursos Gratuitos</Link>
+              <Link href="/artigos" className="text-sm text-brown-300 hover:text-cream">Artigos</Link>
             </nav>
           </div>
 
-          {/* Signature */}
           <div>
-            <p className="text-xs font-medium uppercase tracking-widest text-warm-400">
+            <p className="font-sans text-[0.7rem] font-medium uppercase tracking-[0.2em] text-brown-400">
               Da autora
             </p>
-            <p className="mt-4 font-serif text-sm italic leading-relaxed text-warm-600">
+            <p className="mt-4 font-serif text-[15px] italic leading-relaxed text-brown-200">
               &ldquo;Escrevo para quem quer viver, não apenas funcionar.&rdquo;
             </p>
-            <p className="mt-2 text-sm text-warm-500">— Vivianne dos Santos</p>
+            <p className="mt-2 text-sm text-brown-400">— Vivianne dos Santos</p>
           </div>
         </div>
 
-        <div className="mt-12 border-t border-warm-200 pt-8 text-center">
-          <p className="text-xs text-warm-400">
+        <div className="mt-12 border-t border-brown-700 pt-8 text-center">
+          <p className="font-sans text-xs text-brown-500">
             &copy; {new Date().getFullYear()} Vivianne dos Santos. Todos os direitos reservados.
           </p>
         </div>
