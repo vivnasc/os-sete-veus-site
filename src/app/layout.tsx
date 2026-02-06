@@ -12,9 +12,13 @@ export const metadata: Metadata = {
     "Sete histórias que te devolvem a ti mesma. Sem pressa. Sem fórmulas. Apenas verdade. Uma colecção de ficção psicológica por Vivianne dos Santos.",
   metadataBase: new URL("https://seteecos.com"),
   icons: {
-    icon: "/images/logo-espiral.png.jpeg",
-    apple: "/images/logo-espiral.png.jpeg",
+    icon: [
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
+  manifest: "/site.webmanifest",
   openGraph: {
     title: "Os Sete Véus — Histórias para quem está pronta para se escolher",
     description:
@@ -22,6 +26,21 @@ export const metadata: Metadata = {
     siteName: "Os Sete Véus",
     locale: "pt_PT",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Os Sete Véus — Histórias para quem está pronta para se escolher",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Os Sete Véus — Histórias para quem está pronta para se escolher",
+    description:
+      "Sete histórias que te devolvem a ti mesma. Sem pressa. Sem fórmulas. Apenas verdade.",
+    images: ["/og-image.png"],
   },
 };
 
