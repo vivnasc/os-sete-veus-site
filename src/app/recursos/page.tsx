@@ -95,9 +95,9 @@ export default function RecursosPage() {
                 <h2 className="mt-2 font-serif text-2xl text-brown-900">{freeResource.title}</h2>
                 <p className="mt-3 leading-relaxed text-brown-600">{freeResource.description}</p>
                 <div className="mt-6">
-                  <button className="rounded-md bg-sage px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.12em] text-white transition-colors hover:bg-sage-dark">
+                  <a href="/recursos/teste" className="inline-block rounded-md bg-sage px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.12em] text-white transition-colors hover:bg-sage-dark">
                     Quero descobrir
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
