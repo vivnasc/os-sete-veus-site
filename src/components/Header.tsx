@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { useAuth } from "@/components/AuthProvider";
 
 const navLinks = [
   { href: "/", label: "Início" },
@@ -15,6 +16,7 @@ const navLinks = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const { user } = useAuth();
 
   return (
     <header className="w-full border-b border-brown-100 bg-cream">
@@ -42,6 +44,12 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+          <Link
+            href={user ? "/membro" : "/entrar"}
+            className="rounded-md bg-sage px-5 py-2 font-sans text-[0.75rem] uppercase tracking-[0.12em] text-white transition-colors hover:bg-sage-dark"
+          >
+            {user ? "Minha Área" : "Entrar"}
+          </Link>
         </nav>
 
         <button
