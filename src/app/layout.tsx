@@ -11,6 +11,10 @@ export const metadata: Metadata = {
   description:
     "Sete histórias que te devolvem a ti mesma. Sem pressa. Sem fórmulas. Apenas verdade. Uma colecção de ficção psicológica por Vivianne dos Santos.",
   metadataBase: new URL("https://seteecos.com"),
+  icons: {
+    icon: "/images/logo-espiral.png.jpeg",
+    apple: "/images/logo-espiral.png.jpeg",
+  },
   openGraph: {
     title: "Os Sete Véus — Histórias para quem está pronta para se escolher",
     description:

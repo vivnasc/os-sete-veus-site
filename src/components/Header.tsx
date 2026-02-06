@@ -10,6 +10,7 @@ const navLinks = [
   { href: "/sobre", label: "A Vivianne" },
   { href: "/recursos", label: "Recursos" },
   { href: "/artigos", label: "Artigos" },
+  { href: "/comecar", label: "Começar" },
 ];
 
 export default function Header() {
