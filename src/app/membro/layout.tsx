@@ -45,15 +45,23 @@ export default function MembroLayout({ children }: { children: React.ReactNode }
               </Link>
             ))}
           </nav>
-          <button
-            onClick={async () => {
-              await signOut();
-              router.push("/");
-            }}
-            className="font-sans text-[0.7rem] uppercase tracking-[0.1em] text-brown-400 transition-colors hover:text-brown-700"
-          >
-            Sair
-          </button>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/painel"
+              className="font-sans text-[0.7rem] uppercase tracking-[0.1em] text-sage transition-colors hover:text-sage-dark"
+            >
+              Marketing
+            </Link>
+            <button
+              onClick={async () => {
+                await signOut();
+                router.push("/");
+              }}
+              className="font-sans text-[0.7rem] uppercase tracking-[0.1em] text-brown-400 transition-colors hover:text-brown-700"
+            >
+              Sair
+            </button>
+          </div>
         </div>
       </div>
       {children}

@@ -48,3 +48,18 @@ CREATE POLICY "Users manage own checklist progress"
 CREATE POLICY "Users manage own journal entries"
   ON journal_entries FOR ALL
   USING (auth.uid() = user_id);
+
+-- Referral tracking (shares and invitations)
+CREATE TABLE IF NOT EXISTS referrals (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  user_id uuid REFERENCES auth.users(id) ON DELETE CASCADE,
+  platform text NOT NULL,
+  referral_code text NOT NULL,
+  shared_at timestamp with time zone DEFAULT now()
+);
+
+ALTER TABLE referrals ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Users manage own referrals"
+  ON referrals FOR ALL
+  USING (auth.uid() = user_id);
