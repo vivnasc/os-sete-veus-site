@@ -16,42 +16,48 @@ const freeResource = {
   image: "/images/recurso-teste.png",
 };
 
-const emailResources = [
+const downloadResources = [
   {
     title: "Diário dos Sete Véus",
     description: "Sete dias, sete perguntas. Um diário de reflexão que te convida a olhar para dentro — devagar.",
     type: "PDF",
     image: "/images/recurso-diario.png",
+    href: "/recursos/03_diario_7_dias.pdf",
   },
   {
     title: "Perguntas que Ninguém te Fez",
     description: "Uma colecção de perguntas para os momentos em que precisas de companhia honesta — nem que seja a tua própria.",
     type: "PDF",
     image: "/images/recurso-perguntas.png",
+    href: "/recursos/01_7_perguntas.pdf",
   },
   {
     title: "Mini-Guia Os Sete Véus",
     description: "Uma visão geral dos sete véus e como se relacionam — para quem gosta de ver o todo antes das partes.",
     type: "PDF",
     image: "/images/recurso-miniguia.png",
+    href: "/recursos/MINI_GUIA_OS7VEUS.pdf",
   },
   {
     title: "Checklist do Véu da Ilusão",
     description: "Uma checklist gentil para perceberes se o Véu da Ilusão pode estar presente na tua vida.",
     type: "PDF",
     image: "/images/recurso-checklist.png",
+    href: "/recursos/CHECKLIST_VEU_DA_ILUSAO.pdf",
   },
   {
     title: "Glossário dos Sete Véus",
     description: "Todos os conceitos e ideias dos sete véus, explicados de forma simples e acessível.",
     type: "PDF",
     image: "/images/recurso-glossario.png",
+    href: "/recursos/04_glossario.pdf",
   },
   {
-    title: "30 Wallpapers Inspiradores",
+    title: "Wallpapers Inspiradores",
     description: "Imagens e frases para o teu telemóvel — um lembrete diário de que mereces mais.",
-    type: "Imagens",
+    type: "ZIP",
     image: "/images/recurso-wallpapers.png",
+    href: "/recursos/wallpaper_11_roxo_escuro.zip",
   },
 ];
 
@@ -105,21 +111,23 @@ export default function RecursosPage() {
         </div>
       </section>
 
-      {/* Email resources */}
+      {/* Downloadable resources */}
       <section className="bg-cream-dark px-6 py-24">
         <div className="mx-auto max-w-4xl">
           <div className="text-center">
-            <h2 className="font-serif text-3xl text-brown-900">Queres levar mais contigo?</h2>
+            <h2 className="font-serif text-3xl text-brown-900">Recursos para descarregar</h2>
             <p className="mx-auto mt-4 max-w-md leading-relaxed text-brown-600">
-              Deixa o teu email e enviamos estes recursos para o teu cantinho — também grátis.
+              Presentes pensados para ti — descarrega os que te chamarem a atenção. Sem pressa.
             </p>
           </div>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {emailResources.map((resource) => (
-              <div
+            {downloadResources.map((resource) => (
+              <a
                 key={resource.title}
-                className="overflow-hidden rounded-2xl border border-brown-100 bg-white shadow-sm transition-shadow hover:shadow-md"
+                href={resource.href}
+                download
+                className="group overflow-hidden rounded-2xl border border-brown-100 bg-white shadow-sm transition-shadow hover:shadow-md"
               >
                 <Image
                   src={resource.image}
@@ -129,19 +137,27 @@ export default function RecursosPage() {
                   className="h-48 w-full object-cover"
                 />
                 <div className="p-5">
-                  <p className="font-sans text-[0.65rem] font-medium uppercase tracking-[0.15em] text-brown-400">
-                    {resource.type}
-                  </p>
-                  <h3 className="mt-1 font-serif text-lg text-brown-900">{resource.title}</h3>
+                  <div className="flex items-center justify-between">
+                    <p className="font-sans text-[0.65rem] font-medium uppercase tracking-[0.15em] text-brown-400">
+                      {resource.type}
+                    </p>
+                    <span className="rounded-full bg-sage/10 px-3 py-1 font-sans text-[0.6rem] font-medium uppercase tracking-wider text-sage transition-colors group-hover:bg-sage group-hover:text-white">
+                      Descarregar
+                    </span>
+                  </div>
+                  <h3 className="mt-2 font-serif text-lg text-brown-900">{resource.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-brown-600">{resource.description}</p>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
 
-          <div className="mx-auto mt-12 max-w-2xl rounded-2xl bg-cream px-8 py-10 sm:px-10">
-            <p className="text-center text-brown-600">
-              Deixa o teu email. Enviamos os recursos só para ti — sem spam, sem pressão.
+          <div className="mx-auto mt-16 max-w-2xl rounded-2xl bg-cream px-8 py-10 sm:px-10">
+            <h3 className="text-center font-serif text-xl text-brown-900">
+              Queres receber novidades?
+            </h3>
+            <p className="mt-3 text-center text-brown-600">
+              Deixa o teu email. Avisamos quando houver novos recursos e livros — sem spam, sem pressão.
             </p>
             <div className="mt-6">
               <NewsletterForm />
