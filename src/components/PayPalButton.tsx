@@ -76,8 +76,17 @@ export default function PayPalButton() {
       <div className="rounded-xl bg-sage/10 px-8 py-8 text-center">
         <p className="font-serif text-2xl text-brown-900">Obrigada pela tua compra!</p>
         <p className="mt-3 leading-relaxed text-brown-600">
-          Vais receber o ebook no email associado à tua conta PayPal. Se não o encontrares,
-          verifica a pasta de spam.
+          O teu ebook está pronto. Clica no botão abaixo para descarregar.
+        </p>
+        <a
+          href="/downloads/os-7-veus-do-despertar.pdf"
+          download
+          className="mt-5 inline-block rounded-md bg-sage px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.12em] text-white transition-colors hover:bg-sage-dark"
+        >
+          Descarregar Ebook
+        </a>
+        <p className="mt-4 text-sm text-brown-400">
+          Guarda este ficheiro — é teu para sempre.
         </p>
       </div>
     );
