@@ -199,8 +199,95 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Newsletter — beige section */}
+      {/* Ecossistema teaser — sage/green accent */}
+      <section className="bg-cream-dark px-6 py-24">
+        <div className="mx-auto max-w-4xl">
+          <ScrollReveal>
+            <p className="text-center font-sans text-[0.7rem] uppercase tracking-[0.2em] text-sage">
+              Plataforma reconstruída
+            </p>
+            <h2 className="mt-3 text-center font-serif text-3xl text-brown-900 sm:text-4xl">
+              Mais do que livros — um ecossistema
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.15}>
+            <p className="mx-auto mt-6 max-w-xl text-center leading-relaxed text-brown-700">
+              Leitura integrada, diário de reflexão, práticas guiadas e recursos gratuitos
+              — tudo construído para que a transformação saia das páginas e entre na tua vida.
+            </p>
+          </ScrollReveal>
+          <div className="mt-12 grid gap-6 sm:grid-cols-3">
+            {[
+              { icon: "📖", title: "Leitura integrada", desc: "Reader no site com progresso visual e modo nocturno" },
+              { icon: "🪞", title: "Diário de reflexão", desc: "Escreve, guarda e revisita as tuas palavras" },
+              { icon: "🎧", title: "Práticas guiadas", desc: "Meditações e respiração para integrar cada véu" },
+            ].map((item, i) => (
+              <ScrollReveal key={item.title} delay={0.1 * i} variant="scale">
+                <div className="rounded-xl bg-white px-5 py-6 text-center shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-md">
+                  <span className="text-2xl">{item.icon}</span>
+                  <h3 className="mt-3 font-serif text-lg text-brown-900">{item.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-brown-500">{item.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+          <ScrollReveal delay={0.3}>
+            <div className="mt-10 text-center">
+              <Link
+                href="/ecossistema"
+                className="inline-block rounded-md border-2 border-sage bg-sage px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-white transition-all hover:bg-transparent hover:text-sage"
+              >
+                Explora o ecossistema completo
+              </Link>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Social proof */}
       <section className="bg-cream px-6 py-24">
+        <div className="mx-auto max-w-4xl">
+          <ScrollReveal>
+            <h2 className="text-center font-serif text-3xl text-brown-900">
+              Palavras de quem já começou
+            </h2>
+          </ScrollReveal>
+          <div className="mt-12 grid gap-8 sm:grid-cols-3">
+            {[
+              {
+                texto: "Não é um livro que se lê — é um livro que se vive. As pausas entre capítulos são tão importantes quanto as palavras.",
+                nome: "Carla S.",
+                local: "Lisboa, Portugal",
+              },
+              {
+                texto: "Comecei pelo teste gratuito, achei que seria superficial. Acabei por comprar o livro nesse mesmo dia.",
+                nome: "Beatriz L.",
+                local: "São Paulo, Brasil",
+              },
+              {
+                texto: "O diário de reflexão mudou a forma como leio. Nunca pensei que um livro me fizesse parar e escrever sobre mim mesma.",
+                nome: "Ana M.",
+                local: "Maputo, Moçambique",
+              },
+            ].map((dep, i) => (
+              <ScrollReveal key={dep.nome} delay={0.15 * i} variant="fadeUp">
+                <div className="flex h-full flex-col rounded-xl border border-brown-100 bg-white p-6 shadow-sm">
+                  <p className="flex-1 font-serif text-[15px] italic leading-relaxed text-brown-700">
+                    &ldquo;{dep.texto}&rdquo;
+                  </p>
+                  <div className="mt-4 border-t border-brown-100 pt-3">
+                    <p className="font-sans text-sm font-medium text-brown-900">{dep.nome}</p>
+                    <p className="font-sans text-xs text-brown-400">{dep.local}</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter — beige section */}
+      <section className="bg-cream-dark px-6 py-24">
         <div className="mx-auto max-w-2xl text-center">
           <ScrollReveal>
             <h2 className="font-serif text-3xl text-brown-900">Queres levar mais contigo?</h2>
@@ -211,6 +298,33 @@ export default function Home() {
           <ScrollReveal delay={0.2}>
             <div className="mt-8">
               <NewsletterForm />
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="hero-gradient-animated bg-gradient-to-br from-brown-800 via-[#3d3630] to-brown-900 px-6 py-24">
+        <div className="mx-auto max-w-3xl text-center">
+          <ScrollReveal>
+            <p className="font-serif text-2xl italic leading-relaxed text-cream">
+              &ldquo;Não precisas de saber para onde vais. Precisas apenas de dar o primeiro passo.&rdquo;
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.2}>
+            <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+              <Link
+                href="/recursos/teste"
+                className="animate-pulse-glow inline-block rounded-md border-2 border-cream bg-cream px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-900 transition-all hover:bg-transparent hover:text-cream"
+              >
+                Começa pelo teste gratuito
+              </Link>
+              <Link
+                href="/ecossistema"
+                className="inline-block rounded-md border-2 border-brown-300 bg-transparent px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-200 transition-all hover:border-cream hover:bg-cream hover:text-brown-900"
+              >
+                Explora o ecossistema
+              </Link>
             </div>
           </ScrollReveal>
         </div>

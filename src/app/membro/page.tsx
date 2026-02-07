@@ -7,6 +7,8 @@ import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 import Image from "next/image";
 import VeilMap from "@/components/VeilMap";
+import UpsellBridge from "@/components/UpsellBridge";
+import ReferralPrompt from "@/components/ReferralPrompt";
 
 export default function MembroDashboard() {
   const { user } = useAuth();
@@ -181,6 +183,19 @@ export default function MembroDashboard() {
             </div>
           </Link>
         </div>
+
+        {/* Upsell Bridge — contextual suggestion */}
+        {!loading && (
+          <UpsellBridge
+            journalCount={journalCount}
+            chaptersCompleted={completedChapters}
+          />
+        )}
+
+        {/* Referral Prompt — appears after engagement */}
+        {!loading && (
+          <ReferralPrompt chaptersCompleted={completedChapters} />
+        )}
 
         {/* Gentle quote */}
         <div className="mt-10 text-center">
