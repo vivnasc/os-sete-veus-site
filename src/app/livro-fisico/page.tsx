@@ -45,6 +45,68 @@ export default function LivroFisicoPage() {
         </div>
       </section>
 
+      {/* About the book */}
+      <section className="bg-cream px-6 py-24">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="font-serif text-3xl text-brown-900">Um mapa da consciência</h2>
+          <div className="mt-8 space-y-6">
+            <p className="leading-relaxed text-brown-700">
+              Este livro não é um manual de respostas prontas, nem um guia de etapas rígidas. É um
+              convite a olhar mais profundamente para dentro, a desafiar as percepções limitadas que
+              carregamos e a atravessar os véus que obscurecem a clareza da consciência.
+            </p>
+            <p className="leading-relaxed text-brown-700">
+              O despertar não é uma chegada a um ponto fixo. É um processo gradual de desapego e
+              dissolução — não sobre conquistar um novo estado, mas sobre soltar o que perdeu sentido.
+              Cada camada removida é uma revelação do que sempre foi real.
+            </p>
+            <p className="leading-relaxed text-brown-700">
+              À medida que cada véu se dissolve, o limite aparente revela-se passagem. O despertar
+              deixa de ser conquista ou destino, mas espiral viva de expansão, onde cada camada que
+              cai nos devolve à clareza do que sempre fomos: presença inseparável da vida que pulsa em tudo.
+            </p>
+          </div>
+          <div className="mt-8 rounded-r-xl border-l-[3px] border-veu-7 bg-cream-dark px-6 py-5">
+            <p className="font-serif italic leading-relaxed text-brown-700">
+              &ldquo;O que chamamos de realidade é, muitas vezes, apenas uma projecção da mente,
+              moldada pelas crenças que fomos acumulando ao longo da vida.&rdquo;
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* The 7 veils of the book */}
+      <section className="bg-cream-dark px-6 py-24">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="font-serif text-3xl text-brown-900">Os sete temas do despertar</h2>
+          <p className="mt-4 leading-relaxed text-brown-600">
+            Sete camadas de consciência que este livro atravessa — uma cartografia interior
+            para quem está pronta a dissolver o que já não serve.
+          </p>
+          <div className="mt-8 space-y-6">
+            {[
+              { n: 1, name: "Permanência", desc: "Encobre a impermanência da vida, fazendo-nos acreditar num eu fixo e imutável.", color: "bg-veu-1" },
+              { n: 2, name: "Memória", desc: "Encobre a liberdade do presente, mantendo-nos presos às histórias do passado.", color: "bg-veu-2" },
+              { n: 3, name: "Turbilhão", desc: "Encobre o silêncio do ser, confundindo-nos com os pensamentos e emoções que se agitam sem cessar.", color: "bg-veu-3" },
+              { n: 4, name: "Esforço", desc: "Encobre o repouso interior, fazendo-nos acreditar que a plenitude depende da busca incessante.", color: "bg-veu-4" },
+              { n: 5, name: "Desolação", desc: "Encobre a fertilidade do vazio, fazendo-o parecer abandono e ameaça.", color: "bg-veu-5" },
+              { n: 6, name: "Horizonte", desc: "Encobre a infinitude da consciência, sugerindo um destino final, uma chegada definitiva.", color: "bg-veu-6" },
+              { n: 7, name: "Dualidade", desc: "Encobre a unidade do real, mantendo a ilusão de que estamos separados.", color: "bg-veu-7" },
+            ].map((veu) => (
+              <div key={veu.n} className="flex items-start gap-4">
+                <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${veu.color} font-sans text-sm font-bold text-white`}>
+                  {veu.n}
+                </span>
+                <div>
+                  <span className="font-serif text-lg text-brown-800">{veu.name}</span>
+                  <p className="mt-1 text-sm leading-relaxed text-brown-500">{veu.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Purchase — Physical only */}
       <section className="bg-cream px-6 py-24">
         <div className="mx-auto max-w-xl">
@@ -60,7 +122,6 @@ export default function LivroFisicoPage() {
                 "Edição impressa de alta qualidade",
                 "Entrega em todo Moçambique",
                 "Encomenda directa via WhatsApp",
-                "Acesso digital incluído",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2 text-sm text-brown-600">
                   <span className="mt-0.5 text-sage">&#10003;</span>
@@ -82,98 +143,21 @@ export default function LivroFisicoPage() {
               </a>
             </div>
           </div>
-
-          {/* Digital nudge */}
-          <div className="mt-6 rounded-xl border border-sage/20 bg-sage/5 px-6 py-5 text-center">
-            <p className="text-sm leading-relaxed text-brown-600">
-              Preferes a experiência digital? Com reader integrado, diário de reflexão e práticas guiadas.
-            </p>
-            <Link
-              href="/experiencias"
-              className="mt-3 inline-block font-sans text-sm font-medium text-sage transition-colors hover:text-sage-dark"
-            >
-              Ver experiências digitais &rarr;
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* About the book */}
-      <section className="bg-cream-dark px-6 py-24">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="font-serif text-3xl text-brown-900">Sobre este livro</h2>
-          <div className="mt-8 space-y-6">
-            <p className="leading-relaxed text-brown-700">
-              Este livro não é um manual de respostas prontas, nem um guia de etapas rígidas. É um
-              convite a olhar mais profundamente para dentro, a desafiar as percepções limitadas que
-              carregamos e a atravessar os véus que obscurecem a clareza da consciência.
-            </p>
-            <p className="leading-relaxed text-brown-700">
-              O despertar não é uma chegada a um ponto fixo. É um processo gradual de desapego e
-              dissolução — não sobre conquistar um novo estado, mas sobre soltar o que perdeu sentido.
-              Cada camada removida é uma revelação do que sempre foi real.
-            </p>
-            <p className="leading-relaxed text-brown-700">
-              À medida que cada véu se dissolve, o limite aparente revela-se passagem. O despertar
-              deixa de ser conquista ou destino, mas espiral viva de expansão, onde cada camada que
-              cai nos devolve à clareza do que sempre fomos: presença inseparável da vida que pulsa em tudo.
-            </p>
-          </div>
-          <div className="mt-8 rounded-r-xl border-l-[3px] border-veu-7 bg-cream px-6 py-5">
-            <p className="font-serif italic leading-relaxed text-brown-700">
-              &ldquo;O que chamamos de realidade é, muitas vezes, apenas uma projecção da mente,
-              moldada pelas crenças que fomos acumulando ao longo da vida.&rdquo;
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* The 7 veils */}
-      <section className="bg-cream px-6 py-24">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="font-serif text-3xl text-brown-900">Os sete véus</h2>
-          <div className="mt-8 space-y-6">
-            {[
-              { n: 1, name: "O Véu da Permanência", desc: "Encobre a impermanência da vida, fazendo-nos acreditar num eu fixo e imutável.", color: "bg-veu-1" },
-              { n: 2, name: "O Véu da Memória", desc: "Encobre a liberdade do presente, mantendo-nos presos às histórias do passado.", color: "bg-veu-2" },
-              { n: 3, name: "O Véu do Turbilhão", desc: "Encobre o silêncio do ser, confundindo-nos com os pensamentos e emoções que se agitam sem cessar.", color: "bg-veu-3" },
-              { n: 4, name: "O Véu do Esforço", desc: "Encobre o repouso interior, fazendo-nos acreditar que a plenitude depende da busca incessante.", color: "bg-veu-4" },
-              { n: 5, name: "O Véu da Desolação", desc: "Encobre a fertilidade do vazio, fazendo-o parecer abandono e ameaça.", color: "bg-veu-5" },
-              { n: 6, name: "O Véu do Horizonte", desc: "Encobre a infinitude da consciência, sugerindo um destino final, uma chegada definitiva.", color: "bg-veu-6" },
-              { n: 7, name: "O Véu da Dualidade", desc: "Encobre a unidade do real, mantendo a ilusão de que estamos separados.", color: "bg-veu-7" },
-            ].map((veu) => (
-              <div key={veu.n} className="flex items-start gap-4">
-                <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${veu.color} font-sans text-sm font-bold text-white`}>
-                  {veu.n}
-                </span>
-                <div>
-                  <span className="font-serif text-lg text-brown-800">{veu.name}</span>
-                  <p className="mt-1 text-sm leading-relaxed text-brown-500">{veu.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
+      {/* CTA — self-contained */}
       <section className="bg-gradient-to-b from-brown-800 to-brown-900 px-6 py-24">
         <div className="mx-auto max-w-3xl text-center">
           <p className="font-serif text-2xl italic leading-relaxed text-cream">
             &ldquo;Agora que vi, há um caminho — mesmo que ainda não saiba qual.&rdquo;
           </p>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
+          <div className="mt-10">
             <Link
-              href="/comecar"
-              className="inline-block rounded-md border-2 border-cream bg-cream px-8 py-3.5 text-center font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-900 transition-all hover:bg-transparent hover:text-cream"
+              href="/sobre"
+              className="inline-block rounded-md border-2 border-cream/40 px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-cream/80 transition-all hover:border-cream hover:text-cream"
             >
-              Por onde começar
-            </Link>
-            <Link
-              href="/recursos/teste"
-              className="inline-block rounded-md border-2 border-brown-300 bg-transparent px-8 py-3.5 text-center font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-200 transition-all hover:border-cream hover:bg-cream hover:text-brown-900"
-            >
-              Fazer o teste gratuito
+              Conhece a autora
             </Link>
           </div>
         </div>

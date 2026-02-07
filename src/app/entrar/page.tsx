@@ -86,7 +86,7 @@ export default function EntrarPage() {
 
         <p className="mt-8 text-center text-sm text-brown-500">
           Ainda não tens acesso?{" "}
-          <Link href="/livro-fisico" className="text-sage underline hover:text-sage-dark">
+          <Link href="/experiencias" className="text-sage underline hover:text-sage-dark">
             Adquire a experiência aqui
           </Link>
         </p>

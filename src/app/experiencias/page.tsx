@@ -161,11 +161,11 @@ export default function ExperienciasPage() {
                         ${exp.priceUSD}
                       </span>
                       <Link
-                        href={`/experiencias/${exp.slug}`}
+                        href="/recursos/teste"
                         className="rounded-full px-5 py-2 font-sans text-[0.7rem] uppercase tracking-[0.12em] text-white transition-colors hover:opacity-90"
                         style={{ backgroundColor: exp.color }}
                       >
-                        Explorar
+                        Descobre o teu véu
                       </Link>
                     </div>
                   </div>
@@ -246,12 +246,9 @@ export default function ExperienciasPage() {
                   {/* Status */}
                   <div className="shrink-0 text-right">
                     {exp.status === "available" ? (
-                      <Link
-                        href={`/experiencias/${exp.slug}`}
-                        className="rounded-full bg-sage px-4 py-1.5 font-sans text-[0.6rem] uppercase tracking-[0.12em] text-white hover:bg-sage-dark"
-                      >
+                      <span className="rounded-full bg-sage px-4 py-1.5 font-sans text-[0.6rem] uppercase tracking-[0.12em] text-white">
                         Disponível
-                      </Link>
+                      </span>
                     ) : (
                       <span className="font-sans text-[0.65rem] text-brown-500">
                         {exp.launchLabel}

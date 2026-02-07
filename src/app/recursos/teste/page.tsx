@@ -265,7 +265,7 @@ export default function TestePage() {
                   <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
                     {experience.status === "available" ? (
                       <Link
-                        href={`/experiencias/${experience.slug}`}
+                        href="/experiencias#precos"
                         className="inline-block rounded-md bg-sage px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.12em] text-white transition-colors hover:bg-sage-dark"
                       >
                         Começar — ${experience.priceUSD}
