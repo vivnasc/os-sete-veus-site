@@ -153,7 +153,7 @@ export default function Home() {
           <ScrollReveal delay={0.3}>
             <div className="mt-8">
               <Link
-                href="/livro-fisico"
+                href="/experiencias"
                 className="inline-block rounded-md border-2 border-sage bg-sage px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-white transition-all hover:bg-transparent hover:text-sage"
               >
                 Conhece a experiência

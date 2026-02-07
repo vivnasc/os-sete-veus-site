@@ -4,60 +4,60 @@ import Link from "next/link";
 
 const modulos = [
   {
-    slug: "modulo-0",
-    dia: "Boas-vindas",
-    nome: "Materiais Completos",
-    desc: "Mini-guia, ebook e planner para a tua jornada.",
-    color: "#4a433b",
-  },
-  {
-    slug: "modulo-1",
-    dia: "Dia 1",
-    nome: "O Véu da Conformidade",
-    desc: "Quando fazer o que é esperado se tornou mais natural do que perguntar o que queres.",
+    slug: "veu-da-ilusao",
+    numero: 1,
+    nome: "O Véu da Ilusão",
+    desc: "Quando a vida que tens não foi a que escolheste.",
     color: "#c9b896",
+    disponivel: true,
   },
   {
-    slug: "modulo-2",
-    dia: "Dia 2",
-    nome: "O Véu da Repetição",
-    desc: "Os padrões que se repetem sem seres tu a escolhê-los.",
+    slug: "veu-do-medo",
+    numero: 2,
+    nome: "O Véu do Medo",
+    desc: "Quando o medo decide por ti.",
     color: "#7a8c6e",
+    disponivel: false,
   },
   {
-    slug: "modulo-3",
-    dia: "Dia 3",
-    nome: "O Véu do Silenciamento",
-    desc: "As vozes que calaste — incluindo a tua.",
+    slug: "veu-do-desejo",
+    numero: 3,
+    nome: "O Véu do Desejo",
+    desc: "Quando desejas tudo menos o que precisas.",
     color: "#b07a7a",
+    disponivel: false,
   },
   {
-    slug: "modulo-4",
-    dia: "Dia 4",
-    nome: "O Véu da Agradabilidade",
-    desc: "O preço de ser sempre agradável. O que custa agradar a todos.",
+    slug: "veu-do-controlo",
+    numero: 4,
+    nome: "O Véu do Controlo",
+    desc: "Quando segurar é a única forma que conheces.",
     color: "#8a7b6b",
+    disponivel: false,
   },
   {
-    slug: "modulo-5",
-    dia: "Dia 5",
-    nome: "O Véu da Neutralidade",
-    desc: "Quando deixaste de sentir para poder continuar a funcionar.",
+    slug: "veu-da-culpa",
+    numero: 5,
+    nome: "O Véu da Culpa",
+    desc: "Quando te castigas por querer mais.",
     color: "#6e8c7a",
+    disponivel: false,
   },
   {
-    slug: "modulo-6",
-    dia: "Dia 6",
-    nome: "O Véu da Falsa Escolha",
-    desc: "As decisões que pareciam tuas mas nasceram de expectativas.",
+    slug: "veu-da-identidade",
+    numero: 6,
+    nome: "O Véu da Identidade",
+    desc: "Quando já não sabes quem és sem os outros.",
     color: "#b8956c",
+    disponivel: false,
   },
   {
-    slug: "modulo-7",
-    dia: "Dia 7",
-    nome: "O Véu do Esquecimento",
-    desc: "Esqueceste quem eras antes de te moldares. É hora de lembrar.",
+    slug: "veu-da-separacao",
+    numero: 7,
+    nome: "O Véu da Separação",
+    desc: "Quando te afastas de ti mesma para pertencer.",
     color: "#8a7b9c",
+    disponivel: false,
   },
 ];
 
@@ -67,26 +67,17 @@ export default function ExperienciaPage() {
       <div className="mx-auto max-w-2xl">
         <div className="text-center">
           <p className="font-sans text-[0.65rem] uppercase tracking-[0.25em] text-sage">
-            Experiência dos 7 Véus
+            As Tuas Experiências
           </p>
-          <h1 className="mt-3 font-serif text-3xl text-brown-900">7 Dias, 7 Véus</h1>
+          <h1 className="mt-3 font-serif text-3xl text-brown-900">Os Sete Véus</h1>
           <p className="mx-auto mt-3 max-w-md font-serif text-base text-brown-500">
-            Cada dia é um convite a olhar para uma camada diferente.
+            Sete histórias. Sete véus. Sete formas de voltar a ti mesma.
             Vai ao teu ritmo. Sem pressa. Sem expectativas.
           </p>
         </div>
 
-        {/* Info box */}
-        <div className="mt-8 rounded-2xl border-l-[3px] border-[#7a8c6e] bg-white px-5 py-4 shadow-sm">
-          <p className="font-serif text-sm leading-relaxed text-brown-600">
-            Esta experiência está em construção. Cada módulo terá uma carta da Vivianne,
-            um checklist interactivo, uma reflexão guiada e, em alguns dias, uma prática em áudio.
-            Os primeiros módulos estarão disponíveis em breve.
-          </p>
-        </div>
-
         <div className="mt-8 space-y-3">
-          {modulos.map((mod, i) => (
+          {modulos.map((mod) => (
             <div
               key={mod.slug}
               className="flex items-start gap-4 rounded-2xl border border-brown-100 bg-white p-5 shadow-sm"
@@ -95,32 +86,38 @@ export default function ExperienciaPage() {
                 className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-sans text-sm font-bold text-white"
                 style={{ backgroundColor: mod.color }}
               >
-                {i}
+                {mod.numero}
               </span>
               <div className="flex-1">
                 <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-brown-400">
-                  {mod.dia}
+                  Véu {mod.numero} de 7
                 </p>
                 <h2 className="font-serif text-base text-brown-800">{mod.nome}</h2>
                 <p className="mt-1 font-serif text-sm text-brown-400">{mod.desc}</p>
               </div>
-              <span className="mt-1 font-sans text-[0.55rem] uppercase tracking-wider text-brown-300">
-                Em breve
-              </span>
+              {mod.disponivel ? (
+                <Link
+                  href="/membro/leitura"
+                  className="mt-1 shrink-0 rounded-full bg-sage px-4 py-1.5 font-sans text-[0.6rem] uppercase tracking-wider text-white hover:bg-sage-dark"
+                >
+                  Ler
+                </Link>
+              ) : (
+                <span className="mt-1 shrink-0 font-sans text-[0.55rem] uppercase tracking-wider text-brown-300">
+                  Em breve
+                </span>
+              )}
             </div>
           ))}
         </div>
 
-        {/* CTA to reader */}
+        {/* CTA */}
         <div className="mt-10 text-center">
-          <p className="font-serif text-sm text-brown-500">
-            Enquanto os módulos são preparados, começa pela leitura:
-          </p>
           <Link
             href="/membro/leitura"
-            className="mt-3 inline-block rounded-full bg-[#c9b896] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white hover:bg-[#b8a785]"
+            className="inline-block rounded-full bg-[#c9b896] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white hover:bg-[#b8a785]"
           >
-            Ir para a leitura
+            Continuar a leitura
           </Link>
         </div>
       </div>
