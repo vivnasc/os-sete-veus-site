@@ -20,6 +20,15 @@ export type ContentType =
 
 export type DayOfWeek = "seg" | "ter" | "qua" | "qui" | "sex" | "sab" | "dom";
 
+export type VisualGuide = {
+  background: string;
+  textColor: string;
+  accentColor: string;
+  font: string;
+  dimensions: string;
+  layout: string;
+};
+
 export type ContentTemplate = {
   id: string;
   day: DayOfWeek;
@@ -35,6 +44,7 @@ export type ContentTemplate = {
   cta: string;
   pillar: string;
   notes: string;
+  visual: VisualGuide;
 };
 
 export type WeekPlan = {
@@ -143,6 +153,59 @@ const hashtags = [
   "#saudementalfeminina", "#crescimentopessoal",
 ];
 
+// --- Visual identity per content type ---
+
+const visualGuides: Record<ContentType, VisualGuide> = {
+  reel: {
+    background: "#3d3630 (brown-900) ou #f7f5f0 (cream) — alternar semana a semana",
+    textColor: "#f7f5f0 (cream) em fundo escuro / #3d3630 (brown-900) em fundo claro",
+    accentColor: "#7a8c6e (sage) para CTA, #c9b896 (gold) para separadores",
+    font: "Playfair Display para frase principal, Inter uppercase para CTA",
+    dimensions: "1080 × 1920 px (9:16)",
+    layout: "Logo espiral top-left (40px, 60% opacity). Frase centrada. CTA em baixo.",
+  },
+  "stories-poll": {
+    background: "#f7f5f0 (cream) — fundo claro para legibilidade da poll",
+    textColor: "#3d3630 (brown-900)",
+    accentColor: "#7a8c6e (sage) para botões de poll",
+    font: "Inter para pergunta, Playfair Display para contexto",
+    dimensions: "1080 × 1920 px (9:16)",
+    layout: "Pergunta centrada. Poll nativa do Instagram. Sticker de link em baixo.",
+  },
+  "stories-testemunho": {
+    background: "#ebe7df (cream-dark) — fundo quente para testemunho",
+    textColor: "#4a433b (brown-800)",
+    accentColor: "#c9b896 (gold) para aspas",
+    font: "Playfair Display italic para citação, Inter para nome/local",
+    dimensions: "1080 × 1920 px (9:16)",
+    layout: "Aspas douradas grandes. Citação centrada. Nome + local em baixo. Link sticker.",
+  },
+  carrossel: {
+    background: "Slide 1: #3d3630 (escuro). Intermédios: #f7f5f0 (claro). Último: #ebe7df",
+    textColor: "Slide 1: #f7f5f0. Intermédios: #3d3630. Último: #7a8c6e",
+    accentColor: "#c9b896 (gold) para numeração, #7a8c6e (sage) para CTA final",
+    font: "Playfair Display para títulos, Inter para corpo",
+    dimensions: "1080 × 1080 px (1:1)",
+    layout: "Slide 1: gancho. 3-5 slides: conteúdo numerado. Último: CTA com sage.",
+  },
+  broadcast: {
+    background: "N/A — texto simples no WhatsApp",
+    textColor: "N/A",
+    accentColor: "N/A",
+    font: "Texto simples — sem formatação especial",
+    dimensions: "N/A",
+    layout: "Máximo 3-4 frases. Link no final. Tom pessoal e directo.",
+  },
+  "status-whatsapp": {
+    background: "Mesmo template que Stories Instagram OU texto simples",
+    textColor: "Mesmo que Stories",
+    accentColor: "Mesmo que Stories",
+    font: "Mesmo que Stories OU texto nativo do WhatsApp",
+    dimensions: "1080 × 1920 px ou texto",
+    layout: "Preferir texto simples no WhatsApp — é mais íntimo. Imagem só se for forte.",
+  },
+};
+
 // --- Helper functions ---
 
 function pick<T>(arr: T[], seed: number): T {
@@ -198,7 +261,7 @@ export function generateWeekPlan(weekOffset: number = 0): WeekPlan {
   const pillarKeys = Object.keys(hooks) as (keyof typeof hooks)[];
   const weekPillar = pick(pillarKeys, seed);
 
-  const templates: ContentTemplate[] = [
+  const templates: Omit<ContentTemplate, "visual">[] = [
     // Segunda — Reel Instagram + Status WhatsApp
     {
       id: `${formatDate(monday)}-seg-reel`,
@@ -320,11 +383,17 @@ export function generateWeekPlan(weekOffset: number = 0): WeekPlan {
     },
   ];
 
+  // Inject visual identity guide into each template
+  const templatesWithVisual = templates.map((t) => ({
+    ...t,
+    visual: visualGuides[t.type],
+  }));
+
   return {
     weekNumber: weekNum,
     theme,
     startDate: formatDate(monday),
-    templates,
+    templates: templatesWithVisual,
     totalMinutes: 170,
   };
 }

@@ -101,12 +101,20 @@ export default function PainelMarketing() {
               Automação Sete Ecos
             </h1>
           </div>
-          <Link
-            href="/membro"
-            className="font-sans text-sm text-brown-400 transition-colors hover:text-sage"
-          >
-            &larr; Voltar ao painel
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/painel/marca"
+              className="rounded-lg bg-sage/10 px-4 py-2 font-sans text-[0.75rem] font-medium text-sage transition hover:bg-sage/20"
+            >
+              Brand Kit
+            </Link>
+            <Link
+              href="/membro"
+              className="font-sans text-sm text-brown-400 transition-colors hover:text-sage"
+            >
+              &larr; Voltar ao painel
+            </Link>
+          </div>
         </div>
 
         {/* Tabs */}
@@ -273,6 +281,39 @@ export default function PainelMarketing() {
                             <p className="mt-1 font-sans text-sm font-medium text-sage">
                               {tmpl.cta}
                             </p>
+                          </div>
+                        )}
+
+                        {/* Visual identity guide */}
+                        {tmpl.visual && tmpl.visual.dimensions !== "N/A" && (
+                          <div className="mt-4 rounded-lg border border-veu-7/20 bg-veu-7/5 px-4 py-3">
+                            <p className="font-sans text-[0.65rem] font-medium uppercase tracking-wider text-veu-7">
+                              Identidade Visual
+                            </p>
+                            <div className="mt-2 grid gap-2 sm:grid-cols-2">
+                              <div>
+                                <p className="font-sans text-[0.55rem] uppercase tracking-wider text-brown-400">Fundo</p>
+                                <p className="font-sans text-xs text-brown-600">{tmpl.visual.background}</p>
+                              </div>
+                              <div>
+                                <p className="font-sans text-[0.55rem] uppercase tracking-wider text-brown-400">Tipografia</p>
+                                <p className="font-sans text-xs text-brown-600">{tmpl.visual.font}</p>
+                              </div>
+                              <div>
+                                <p className="font-sans text-[0.55rem] uppercase tracking-wider text-brown-400">Dimensões</p>
+                                <p className="font-sans text-xs text-brown-600">{tmpl.visual.dimensions}</p>
+                              </div>
+                              <div>
+                                <p className="font-sans text-[0.55rem] uppercase tracking-wider text-brown-400">Layout</p>
+                                <p className="font-sans text-xs text-brown-600">{tmpl.visual.layout}</p>
+                              </div>
+                            </div>
+                            <Link
+                              href="/painel/marca"
+                              className="mt-2 inline-block font-sans text-[0.65rem] font-medium text-veu-7 transition hover:text-veu-7/80"
+                            >
+                              Ver Brand Kit completo &rarr;
+                            </Link>
                           </div>
                         )}
                       </div>
