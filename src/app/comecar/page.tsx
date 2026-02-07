@@ -34,9 +34,9 @@ const cenarios = [
     title: "Estou pronta para começar a ler",
     description: "Já sentes que isto é para ti. Queres mergulhar.",
     steps: [
-      { text: "Adquire O Véu da Ilusão e lê directamente no site, capítulo a capítulo", href: "/livro-fisico" },
-      { text: "Ao leres, o diário de reflexão guia-te em cada pausa", href: "/livro-fisico" },
-      { text: "No final, O Teu Espelho mostra-te tudo o que escreveste", href: "/livro-fisico" },
+      { text: "Adquire O Véu da Ilusão e lê directamente no site, capítulo a capítulo", href: "/experiencias" },
+      { text: "Ao leres, o diário de reflexão guia-te em cada pausa", href: "/experiencias" },
+      { text: "No final, O Teu Espelho mostra-te tudo o que escreveste", href: "/experiencias" },
     ],
   },
 ];
@@ -165,10 +165,10 @@ export default function ComecarPage() {
                 Experimenta o teste gratuito
               </Link>
               <Link
-                href="/livro-fisico"
+                href="/experiencias"
                 className="inline-block rounded-md border-2 border-cream/40 px-8 py-3.5 font-sans text-[0.75rem] font-medium uppercase tracking-[0.15em] text-cream/80 transition-all hover:border-cream hover:text-cream"
               >
-                Conhece O Véu da Ilusão
+                Conhece as experiências
               </Link>
             </div>
           </ScrollReveal>

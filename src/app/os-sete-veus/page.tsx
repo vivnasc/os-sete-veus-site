@@ -145,10 +145,10 @@ export default function OsSeteVeusPage() {
                 <div className="mt-6">
                   {veu.available ? (
                     <Link
-                      href="/livro-fisico"
+                      href="/experiencias"
                       className="inline-block rounded-full bg-sage px-6 py-2.5 font-sans text-[0.75rem] font-medium uppercase tracking-wider text-white transition-colors hover:bg-sage-dark"
                     >
-                      Lê agora
+                      Explorar experiência
                     </Link>
                   ) : (
                     <span className="inline-block rounded-full bg-brown-100/60 px-5 py-2 font-sans text-[0.75rem] font-medium uppercase tracking-wider text-brown-400">

@@ -94,7 +94,7 @@ export default function CeremonyUpsell({ completedVeilSlug }: Props) {
             <div className="mt-3 flex flex-col gap-2 sm:flex-row">
               {recommended.status === "available" ? (
                 <Link
-                  href={`/experiencias/${recommended.slug}`}
+                  href="/experiencias#precos"
                   className="rounded-full px-5 py-2 text-center font-sans text-[0.65rem] uppercase tracking-[0.12em] text-white transition-colors hover:opacity-90"
                   style={{ backgroundColor: recommended.color }}
                 >
