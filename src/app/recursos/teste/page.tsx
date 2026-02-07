@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { experiences, quizVeilToExperience, PRICING } from "@/data/experiences";
 
 const questions = [
   {
@@ -122,6 +123,7 @@ export default function TestePage() {
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [result, setResult] = useState<number | null>(null);
+  const [secondVeil, setSecondVeil] = useState<number | null>(null);
 
   function handleAnswer(answer: Answer) {
     const newAnswers = [...answers, answer];
@@ -137,7 +139,26 @@ export default function TestePage() {
         scores[questions[i].veu] += weight;
       });
       const maxScore = Math.max(...scores);
-      setResult(scores.indexOf(maxScore));
+      const primaryVeil = scores.indexOf(maxScore);
+      setResult(primaryVeil);
+
+      // Find second highest veil
+      const scoresWithIndex = scores.map((s, i) => ({ score: s, index: i }));
+      scoresWithIndex.sort((a, b) => b.score - a.score);
+      const second = scoresWithIndex.find((s) => s.index !== primaryVeil);
+      if (second && second.score > 0) {
+        setSecondVeil(second.index);
+      }
+
+      // Store for personalized upsells later
+      try {
+        localStorage.setItem("quiz-primary-veil", String(primaryVeil));
+        if (second && second.score > 0) {
+          localStorage.setItem("quiz-second-veil", String(second.index));
+        }
+      } catch {
+        // localStorage not available
+      }
     }
   }
 
@@ -185,6 +206,12 @@ export default function TestePage() {
   // Result screen
   if (result !== null) {
     const veu = veus[result];
+    const experienceSlug = quizVeilToExperience[result];
+    const experience = experiences.find((e) => e.slug === experienceSlug);
+    const secondExp = secondVeil !== null
+      ? experiences.find((e) => e.slug === quizVeilToExperience[secondVeil])
+      : null;
+
     return (
       <>
         <section className="bg-gradient-to-b from-brown-800 to-brown-900 px-6 py-24">
@@ -221,12 +248,81 @@ export default function TestePage() {
               </div>
             </div>
 
-            <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:justify-center">
+            {/* Primary CTA — start this experience */}
+            {experience && (
+              <div className="mt-12 rounded-2xl border border-brown-100 bg-white p-8 shadow-sm">
+                <div className="text-center">
+                  <p className="font-sans text-[0.65rem] uppercase tracking-[0.2em] text-sage">
+                    A tua experiência
+                  </p>
+                  <h3 className="mt-2 font-serif text-2xl text-brown-900">
+                    Começa a travessia de {veu.title}
+                  </h3>
+                  <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-brown-600">
+                    7 capítulos de ficção imersiva, respiração guiada, diário de
+                    reflexão e O Teu Espelho — tudo ao teu ritmo.
+                  </p>
+                  <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+                    {experience.status === "available" ? (
+                      <Link
+                        href={`/experiencias/${experience.slug}`}
+                        className="inline-block rounded-md bg-sage px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.12em] text-white transition-colors hover:bg-sage-dark"
+                      >
+                        Começar — ${experience.priceUSD}
+                      </Link>
+                    ) : (
+                      <span className="inline-block rounded-md border-2 border-brown-200 px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.12em] text-brown-400">
+                        Disponível em {experience.launchLabel}
+                      </span>
+                    )}
+                    <Link
+                      href="/experiencias#precos"
+                      className="inline-block rounded-md border-2 border-brown-900 px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.12em] text-brown-900 transition-all hover:bg-brown-900 hover:text-cream"
+                    >
+                      Ou todas por ${PRICING.journey.usd}
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Second veil detected */}
+            {secondExp && (
+              <div className="mt-6 rounded-2xl border border-brown-100 bg-cream-dark px-6 py-5">
+                <div className="flex items-center gap-4">
+                  <span
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-serif text-sm font-bold text-white"
+                    style={{ backgroundColor: secondExp.color }}
+                  >
+                    {secondExp.number}
+                  </span>
+                  <div className="flex-1">
+                    <p className="font-sans text-xs text-brown-400">
+                      O quiz também detectou
+                    </p>
+                    <p className="font-serif text-base text-brown-800">
+                      {secondExp.title}
+                    </p>
+                    <p className="font-serif text-sm italic text-brown-500">
+                      {secondExp.subtitle}
+                    </p>
+                  </div>
+                  <Link
+                    href="/experiencias"
+                    className="shrink-0 font-sans text-xs text-sage hover:underline"
+                  >
+                    Explorar &rarr;
+                  </Link>
+                </div>
+              </div>
+            )}
+
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
               <Link
-                href="/os-sete-veus"
+                href="/experiencias"
                 className="inline-block rounded-md border-2 border-brown-900 bg-brown-900 px-8 py-3.5 text-center font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-cream transition-all hover:bg-transparent hover:text-brown-900"
               >
-                Explorar todos os véus
+                Ver todas as experiências
               </Link>
               <button
                 onClick={restart}

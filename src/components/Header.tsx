@@ -11,6 +11,7 @@ const navLinks = [
   { href: "/sobre", label: "A Vivianne" },
   { href: "/recursos", label: "Recursos" },
   { href: "/artigos", label: "Artigos" },
+  { href: "/experiencias", label: "Experiências" },
   { href: "/comecar", label: "Começar" },
 ];
 
