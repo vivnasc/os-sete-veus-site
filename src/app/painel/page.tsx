@@ -1,562 +1,675 @@
 "use client";
 
-import { useAuth } from "@/components/AuthProvider";
-import { useRouter } from "next/navigation";
-import { useEffect, useState, useCallback } from "react";
-import { generateWeekPlan, type WeekPlan, type ContentTemplate } from "@/lib/content-calendar";
+import { useState } from "react";
+import { experiences } from "@/data/experiences";
+import { allMarketing } from "@/data/marketing";
+import type { VeilMarketing, SocialPost, MarketingQuote } from "@/data/marketing";
 import Link from "next/link";
 
-// Admin email — only Vivianne can access
-const ADMIN_EMAIL = "vivianne@seteecos.com";
+type Tab = "overview" | "calendar" | "content" | "launch";
 
-type EmailSequence = {
-  id: string;
-  day: number;
-  subject: string;
-  preview: string;
-  body: string;
-};
+export default function PainelPage() {
+  const [activeTab, setActiveTab] = useState<Tab>("overview");
+  const [selectedVeil, setSelectedVeil] = useState<string | null>(null);
 
-type SubscriberStats = {
-  total: number;
-  thisWeek: number;
-};
-
-export default function PainelMarketing() {
-  const { user, loading: authLoading } = useAuth();
-  const router = useRouter();
-  const [activeTab, setActiveTab] = useState<"calendario" | "emails" | "metricas">("calendario");
-  const [weekOffset, setWeekOffset] = useState(0);
-  const [weekPlan, setWeekPlan] = useState<WeekPlan | null>(null);
-  const [emailSequences, setEmailSequences] = useState<EmailSequence[]>([]);
-  const [expandedTemplate, setExpandedTemplate] = useState<string | null>(null);
-  const [copiedId, setCopiedId] = useState<string | null>(null);
-
-  const loadWeekPlan = useCallback(() => {
-    const plan = generateWeekPlan(weekOffset);
-    setWeekPlan(plan);
-  }, [weekOffset]);
-
-  const loadEmailSequences = useCallback(async () => {
-    try {
-      const res = await fetch("/api/email-sequence");
-      const data = await res.json();
-      if (data.sequences) setEmailSequences(data.sequences);
-    } catch {
-      // Fallback: sequences already available via API
-    }
-  }, []);
-
-  useEffect(() => {
-    loadWeekPlan();
-  }, [loadWeekPlan]);
-
-  useEffect(() => {
-    if (activeTab === "emails") loadEmailSequences();
-  }, [activeTab, loadEmailSequences]);
-
-  // Auth guard
-  if (authLoading) {
-    return (
-      <section className="bg-cream px-6 py-32 text-center">
-        <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-brown-200 border-t-sage" />
-      </section>
-    );
-  }
-
-  if (!user) {
-    router.push("/entrar");
-    return null;
-  }
-
-  async function copyToClipboard(text: string, id: string) {
-    try {
-      await navigator.clipboard.writeText(text);
-      setCopiedId(id);
-      setTimeout(() => setCopiedId(null), 2000);
-    } catch {
-      // Fallback for older browsers
-    }
-  }
-
-  const typeColors: Record<string, string> = {
-    reel: "bg-veu-1 text-white",
-    "stories-poll": "bg-veu-3 text-white",
-    "stories-testemunho": "bg-veu-2 text-white",
-    carrossel: "bg-veu-4 text-white",
-    broadcast: "bg-veu-5 text-white",
-    "status-whatsapp": "bg-veu-6 text-white",
-  };
+  const tabs: { key: Tab; label: string }[] = [
+    { key: "overview", label: "Visão Geral" },
+    { key: "calendar", label: "Calendário" },
+    { key: "content", label: "Conteúdo" },
+    { key: "launch", label: "Lançamentos" },
+  ];
 
   return (
-    <section className="min-h-screen bg-cream px-6 py-10">
-      <div className="mx-auto max-w-5xl">
-        {/* Header */}
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <div className="min-h-screen bg-[#1a1714]">
+      {/* Header */}
+      <div className="border-b border-brown-800/50 bg-[#1e1b18] px-6 py-5">
+        <div className="mx-auto flex max-w-6xl items-center justify-between">
           <div>
-            <p className="font-sans text-[0.65rem] uppercase tracking-[0.25em] text-sage">
-              Painel de Marketing
+            <h1 className="font-serif text-2xl text-cream">Painel de Controlo</h1>
+            <p className="mt-1 font-sans text-xs text-brown-500">
+              Os Sete Véus — Monetização &amp; Marketing
             </p>
-            <h1 className="mt-1 font-serif text-3xl text-brown-900">
-              Automação Sete Ecos
-            </h1>
           </div>
-          <div className="flex items-center gap-4">
-            <Link
-              href="/painel/marca"
-              className="rounded-lg bg-sage/10 px-4 py-2 font-sans text-[0.75rem] font-medium text-sage transition hover:bg-sage/20"
-            >
-              Brand Kit
-            </Link>
-            <Link
-              href="/membro"
-              className="font-sans text-sm text-brown-400 transition-colors hover:text-sage"
-            >
-              &larr; Voltar ao painel
-            </Link>
-          </div>
+          <Link
+            href="/"
+            className="font-sans text-xs text-brown-500 hover:text-cream"
+          >
+            ← Voltar ao site
+          </Link>
         </div>
+      </div>
 
-        {/* Tabs */}
-        <div className="mt-8 flex gap-2 border-b border-brown-100">
-          {[
-            { id: "calendario" as const, label: "Calendário de Conteúdo" },
-            { id: "emails" as const, label: "Sequência de Emails" },
-            { id: "metricas" as const, label: "Métricas & Funil" },
-          ].map((tab) => (
+      {/* Tabs */}
+      <div className="border-b border-brown-800/30 bg-[#1e1b18]">
+        <div className="mx-auto flex max-w-6xl gap-1 px-6">
+          {tabs.map((tab) => (
             <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`rounded-t-lg px-5 py-3 font-sans text-[0.75rem] uppercase tracking-[0.1em] transition-colors ${
-                activeTab === tab.id
-                  ? "border-b-2 border-sage bg-white text-sage"
-                  : "text-brown-400 hover:text-brown-600"
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key)}
+              className={`px-5 py-3 font-sans text-[0.7rem] uppercase tracking-[0.12em] transition-colors ${
+                activeTab === tab.key
+                  ? "border-b-2 border-sage text-sage"
+                  : "text-brown-500 hover:text-brown-300"
               }`}
             >
               {tab.label}
             </button>
           ))}
         </div>
+      </div>
 
-        {/* Content */}
-        <div className="mt-8">
-          {/* === CALENDÁRIO DE CONTEÚDO === */}
-          {activeTab === "calendario" && weekPlan && (
-            <div>
-              {/* Week navigation */}
-              <div className="flex items-center justify-between rounded-xl bg-white p-5 shadow-sm">
-                <button
-                  onClick={() => setWeekOffset((o) => o - 1)}
-                  className="rounded-lg bg-cream px-4 py-2 font-sans text-sm text-brown-600 transition hover:bg-cream-dark"
-                >
-                  &larr; Semana anterior
-                </button>
-                <div className="text-center">
-                  <p className="font-serif text-lg text-brown-900">
-                    Semana {weekPlan.weekNumber}
-                  </p>
-                  <p className="font-sans text-xs text-brown-400">
-                    {weekPlan.theme} — {weekPlan.startDate}
-                  </p>
-                  <p className="mt-1 font-sans text-xs text-sage">
-                    ~{weekPlan.totalMinutes} min total (≈3h/semana)
-                  </p>
-                </div>
-                <button
-                  onClick={() => setWeekOffset((o) => o + 1)}
-                  className="rounded-lg bg-cream px-4 py-2 font-sans text-sm text-brown-600 transition hover:bg-cream-dark"
-                >
-                  Próxima semana &rarr;
-                </button>
-              </div>
+      {/* Content */}
+      <div className="mx-auto max-w-6xl px-6 py-8">
+        {activeTab === "overview" && <OverviewTab />}
+        {activeTab === "calendar" && <CalendarTab />}
+        {activeTab === "content" && (
+          <ContentTab
+            selectedVeil={selectedVeil}
+            onSelectVeil={setSelectedVeil}
+          />
+        )}
+        {activeTab === "launch" && <LaunchTab />}
+      </div>
+    </div>
+  );
+}
 
-              {/* Daily templates */}
-              <div className="mt-6 space-y-4">
-                {weekPlan.templates.map((tmpl) => (
-                  <div
-                    key={tmpl.id}
-                    className="overflow-hidden rounded-xl border border-brown-100 bg-white shadow-sm transition-shadow hover:shadow-md"
-                  >
-                    {/* Summary row */}
-                    <button
-                      onClick={() =>
-                        setExpandedTemplate(expandedTemplate === tmpl.id ? null : tmpl.id)
-                      }
-                      className="flex w-full items-center gap-4 p-5 text-left"
+// ─── OVERVIEW TAB ────────────────────────────────────────────────────────────
+
+function OverviewTab() {
+  return (
+    <div className="space-y-8">
+      {/* Status flags */}
+      <div>
+        <h2 className="mb-4 font-serif text-lg text-cream">
+          Estado das Experiências
+        </h2>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {experiences.map((exp) => {
+            const marketing = allMarketing.find((m) => m.slug === exp.slug);
+            const quotesCount = marketing?.quotes.length || 0;
+            const postsCount = marketing?.socialPosts.length || 0;
+            const emailsCount = marketing?.emailSequence.length || 0;
+
+            return (
+              <div
+                key={exp.slug}
+                className="rounded-xl border border-brown-800/30 bg-[#1e1b18] p-5"
+              >
+                <div className="flex items-start justify-between">
+                  <div className="flex items-center gap-3">
+                    <span
+                      className="flex h-9 w-9 items-center justify-center rounded-lg font-serif text-sm font-bold text-white"
+                      style={{ backgroundColor: exp.color }}
                     >
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sage font-sans text-sm font-bold text-white">
-                        {tmpl.day.toUpperCase()}
-                      </span>
-                      <div className="flex-1">
-                        <div className="flex flex-wrap items-center gap-2">
-                          <span
-                            className={`rounded-full px-2.5 py-0.5 font-sans text-[0.6rem] uppercase tracking-wider ${typeColors[tmpl.type] || "bg-brown-200 text-brown-700"}`}
-                          >
-                            {tmpl.typeLabel}
-                          </span>
-                          <span className="font-sans text-xs text-brown-400">{tmpl.duration}</span>
-                          <span className="font-sans text-xs text-brown-300">
-                            {tmpl.platform === "ambos" ? "IG + WA" : tmpl.platform === "instagram" ? "IG" : "WA"}
-                          </span>
-                        </div>
-                        <p className="mt-1 font-serif text-base text-brown-800">
-                          {tmpl.title}
-                        </p>
-                      </div>
-                      <span className="text-brown-300">
-                        {expandedTemplate === tmpl.id ? "▲" : "▼"}
-                      </span>
-                    </button>
-
-                    {/* Expanded details */}
-                    {expandedTemplate === tmpl.id && (
-                      <div className="border-t border-brown-50 bg-cream-mid px-5 pb-5">
-                        {tmpl.hook && (
-                          <div className="mt-4">
-                            <p className="font-sans text-[0.65rem] font-medium uppercase tracking-wider text-sage">
-                              Gancho
-                            </p>
-                            <p className="mt-1 font-serif text-base italic text-brown-700">
-                              &ldquo;{tmpl.hook}&rdquo;
-                            </p>
-                          </div>
-                        )}
-
-                        {tmpl.caption && (
-                          <div className="mt-4">
-                            <div className="flex items-center justify-between">
-                              <p className="font-sans text-[0.65rem] font-medium uppercase tracking-wider text-sage">
-                                Legenda / Texto
-                              </p>
-                              <button
-                                onClick={() => copyToClipboard(tmpl.caption, `caption-${tmpl.id}`)}
-                                className="rounded bg-sage/10 px-3 py-1 font-sans text-[0.65rem] text-sage transition hover:bg-sage/20"
-                              >
-                                {copiedId === `caption-${tmpl.id}` ? "Copiado!" : "Copiar"}
-                              </button>
-                            </div>
-                            <p className="mt-1 whitespace-pre-wrap rounded-lg bg-white p-4 font-sans text-sm leading-relaxed text-brown-700">
-                              {tmpl.caption}
-                            </p>
-                          </div>
-                        )}
-
-                        {tmpl.hashtags.length > 0 && (
-                          <div className="mt-4">
-                            <div className="flex items-center justify-between">
-                              <p className="font-sans text-[0.65rem] font-medium uppercase tracking-wider text-sage">
-                                Hashtags
-                              </p>
-                              <button
-                                onClick={() =>
-                                  copyToClipboard(tmpl.hashtags.join(" "), `hash-${tmpl.id}`)
-                                }
-                                className="rounded bg-sage/10 px-3 py-1 font-sans text-[0.65rem] text-sage transition hover:bg-sage/20"
-                              >
-                                {copiedId === `hash-${tmpl.id}` ? "Copiado!" : "Copiar"}
-                              </button>
-                            </div>
-                            <p className="mt-1 font-sans text-xs text-brown-500">
-                              {tmpl.hashtags.join("  ")}
-                            </p>
-                          </div>
-                        )}
-
-                        {tmpl.notes && (
-                          <div className="mt-4 rounded-lg border-l-[3px] border-sage bg-white px-4 py-3">
-                            <p className="font-sans text-[0.65rem] font-medium uppercase tracking-wider text-brown-400">
-                              Notas
-                            </p>
-                            <p className="mt-1 font-sans text-sm text-brown-600">
-                              {tmpl.notes}
-                            </p>
-                          </div>
-                        )}
-
-                        {tmpl.cta && (
-                          <div className="mt-4">
-                            <p className="font-sans text-[0.65rem] font-medium uppercase tracking-wider text-sage">
-                              CTA
-                            </p>
-                            <p className="mt-1 font-sans text-sm font-medium text-sage">
-                              {tmpl.cta}
-                            </p>
-                          </div>
-                        )}
-
-                        {/* Visual identity guide */}
-                        {tmpl.visual && tmpl.visual.dimensions !== "N/A" && (
-                          <div className="mt-4 rounded-lg border border-veu-7/20 bg-veu-7/5 px-4 py-3">
-                            <p className="font-sans text-[0.65rem] font-medium uppercase tracking-wider text-veu-7">
-                              Identidade Visual
-                            </p>
-                            <div className="mt-2 grid gap-2 sm:grid-cols-2">
-                              <div>
-                                <p className="font-sans text-[0.55rem] uppercase tracking-wider text-brown-400">Fundo</p>
-                                <p className="font-sans text-xs text-brown-600">{tmpl.visual.background}</p>
-                              </div>
-                              <div>
-                                <p className="font-sans text-[0.55rem] uppercase tracking-wider text-brown-400">Tipografia</p>
-                                <p className="font-sans text-xs text-brown-600">{tmpl.visual.font}</p>
-                              </div>
-                              <div>
-                                <p className="font-sans text-[0.55rem] uppercase tracking-wider text-brown-400">Dimensões</p>
-                                <p className="font-sans text-xs text-brown-600">{tmpl.visual.dimensions}</p>
-                              </div>
-                              <div>
-                                <p className="font-sans text-[0.55rem] uppercase tracking-wider text-brown-400">Layout</p>
-                                <p className="font-sans text-xs text-brown-600">{tmpl.visual.layout}</p>
-                              </div>
-                            </div>
-                            <Link
-                              href="/painel/marca"
-                              className="mt-2 inline-block font-sans text-[0.65rem] font-medium text-veu-7 transition hover:text-veu-7/80"
-                            >
-                              Ver Brand Kit completo &rarr;
-                            </Link>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              {/* Quick stats */}
-              <div className="mt-8 grid gap-4 sm:grid-cols-4">
-                {[
-                  { label: "Reels/semana", value: "2", color: "#c9b896" },
-                  { label: "Stories/semana", value: "2", color: "#c08aaa" },
-                  { label: "Carrosseis/semana", value: "1", color: "#8aaaca" },
-                  { label: "Tempo total", value: "~3h", color: "#7a8c6e" },
-                ].map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="rounded-xl bg-white p-4 text-center shadow-sm"
-                  >
-                    <p className="font-serif text-2xl" style={{ color: stat.color }}>
-                      {stat.value}
-                    </p>
-                    <p className="font-sans text-[0.6rem] uppercase tracking-wider text-brown-400">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* === SEQUÊNCIA DE EMAILS === */}
-          {activeTab === "emails" && (
-            <div>
-              <div className="rounded-xl bg-white p-5 shadow-sm">
-                <h2 className="font-serif text-xl text-brown-900">
-                  Sequência de Lead Nurturing
-                </h2>
-                <p className="mt-1 font-sans text-sm text-brown-500">
-                  6 emails ao longo de 18 dias — do primeiro contacto à compra
-                </p>
-                <div className="mt-4 flex gap-2">
-                  {emailSequences.map((seq, i) => (
-                    <div
-                      key={seq.id}
-                      className="flex h-8 flex-1 items-center justify-center rounded-full bg-sage/20 font-sans text-[0.6rem] text-sage"
-                    >
-                      Dia {seq.day}
+                      {exp.number}
+                    </span>
+                    <div>
+                      <h3 className="font-serif text-sm text-cream">
+                        {exp.title}
+                      </h3>
+                      <p className="font-sans text-[0.6rem] text-brown-500">
+                        {exp.subtitle}
+                      </p>
                     </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-6 space-y-4">
-                {emailSequences.map((seq, i) => (
-                  <div
-                    key={seq.id}
-                    className="overflow-hidden rounded-xl border border-brown-100 bg-white shadow-sm"
-                  >
-                    <button
-                      onClick={() =>
-                        setExpandedTemplate(
-                          expandedTemplate === `email-${seq.id}` ? null : `email-${seq.id}`
-                        )
-                      }
-                      className="flex w-full items-center gap-4 p-5 text-left"
-                    >
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-veu-4 font-sans text-sm font-bold text-white">
-                        D{seq.day}
-                      </span>
-                      <div className="flex-1">
-                        <p className="font-serif text-base text-brown-800">{seq.subject}</p>
-                        <p className="mt-0.5 font-sans text-xs text-brown-400">{seq.preview}</p>
-                      </div>
-                      <span className="text-brown-300">
-                        {expandedTemplate === `email-${seq.id}` ? "▲" : "▼"}
-                      </span>
-                    </button>
-
-                    {expandedTemplate === `email-${seq.id}` && (
-                      <div className="border-t border-brown-50 bg-cream-mid px-5 pb-5">
-                        <div className="mt-4 flex items-center justify-between">
-                          <p className="font-sans text-[0.65rem] font-medium uppercase tracking-wider text-sage">
-                            Corpo do email
-                          </p>
-                          <button
-                            onClick={() =>
-                              copyToClipboard(seq.body, `email-body-${seq.id}`)
-                            }
-                            className="rounded bg-sage/10 px-3 py-1 font-sans text-[0.65rem] text-sage transition hover:bg-sage/20"
-                          >
-                            {copiedId === `email-body-${seq.id}` ? "Copiado!" : "Copiar tudo"}
-                          </button>
-                        </div>
-                        <pre className="mt-2 whitespace-pre-wrap rounded-lg bg-white p-4 font-sans text-sm leading-relaxed text-brown-700">
-                          {seq.body}
-                        </pre>
-                      </div>
-                    )}
                   </div>
-                ))}
-              </div>
-
-              {/* Sequence funnel visual */}
-              <div className="mt-8 rounded-xl bg-gradient-to-r from-brown-800 to-brown-900 p-6">
-                <p className="font-sans text-[0.65rem] uppercase tracking-[0.2em] text-brown-400">
-                  Funil de conversão
-                </p>
-                <div className="mt-4 flex items-center gap-2">
-                  {[
-                    { label: "Subscrição", pct: "100%", color: "#7a8c6e" },
-                    { label: "Abertura", pct: "45%", color: "#8aaaca" },
-                    { label: "Clique", pct: "15%", color: "#c08aaa" },
-                    { label: "Teste", pct: "8%", color: "#c9b896" },
-                    { label: "Compra", pct: "3%", color: "#baaacc" },
-                  ].map((stage, i) => (
-                    <div key={stage.label} className="flex-1 text-center">
-                      <div
-                        className="mx-auto rounded-lg py-3"
-                        style={{
-                          backgroundColor: stage.color,
-                          width: `${100 - i * 15}%`,
-                          minWidth: "40px",
-                        }}
-                      >
-                        <p className="font-sans text-xs font-bold text-white">{stage.pct}</p>
-                      </div>
-                      <p className="mt-2 font-sans text-[0.6rem] text-brown-400">{stage.label}</p>
-                    </div>
-                  ))}
+                  <StatusBadge status={exp.status} />
                 </div>
-              </div>
-            </div>
-          )}
 
-          {/* === MÉTRICAS & FUNIL === */}
-          {activeTab === "metricas" && (
-            <div>
-              {/* KPI cards */}
-              <div className="grid gap-4 sm:grid-cols-4">
-                {[
-                  { label: "Subscritores", value: "—", delta: "+0 esta semana", color: "#7a8c6e" },
-                  { label: "Testes feitos", value: "—", delta: "Taxa: —%", color: "#c08aaa" },
-                  { label: "Compras", value: "—", delta: "Receita: —", color: "#c9b896" },
-                  { label: "Referrals", value: "—", delta: "Partilhas: —", color: "#baaacc" },
-                ].map((kpi) => (
-                  <div key={kpi.label} className="rounded-xl bg-white p-5 shadow-sm">
-                    <p className="font-sans text-[0.65rem] uppercase tracking-wider text-brown-400">
-                      {kpi.label}
+                {/* Flags */}
+                <div className="mt-4 space-y-2">
+                  <FlagRow
+                    label="Narrativa escrita"
+                    done={exp.slug === "veu-da-ilusao" || exp.slug === "veu-do-medo"}
+                  />
+                  <FlagRow
+                    label="Integrada no reader"
+                    done={exp.slug === "veu-da-ilusao"}
+                  />
+                  <FlagRow
+                    label="Práticas de áudio"
+                    done={exp.slug === "veu-da-ilusao"}
+                    partial={exp.slug === "veu-da-ilusao"}
+                  />
+                  <FlagRow
+                    label="Conteúdo marketing"
+                    done={quotesCount >= 4}
+                    partial={quotesCount >= 2 && quotesCount < 4}
+                  />
+                </div>
+
+                {/* Stats */}
+                <div className="mt-4 flex gap-4 border-t border-brown-800/30 pt-3">
+                  <MiniStat value={quotesCount} label="quotes" />
+                  <MiniStat value={postsCount} label="posts" />
+                  <MiniStat value={emailsCount} label="emails" />
+                </div>
+
+                {/* Launch date */}
+                <div className="mt-3">
+                  {exp.launchLabel ? (
+                    <p className="font-sans text-[0.6rem] text-brown-500">
+                      Lançamento: {exp.launchLabel}
                     </p>
-                    <p className="mt-2 font-serif text-3xl" style={{ color: kpi.color }}>
-                      {kpi.value}
+                  ) : (
+                    <p className="font-sans text-[0.6rem] text-sage">
+                      Disponível
                     </p>
-                    <p className="mt-1 font-sans text-xs text-brown-400">{kpi.delta}</p>
-                  </div>
-                ))}
-              </div>
-
-              {/* Marketing checklist */}
-              <div className="mt-8 rounded-xl bg-white p-6 shadow-sm">
-                <h2 className="font-serif text-xl text-brown-900">
-                  Checklist de Marketing Semanal
-                </h2>
-                <div className="mt-4 space-y-3">
-                  {[
-                    { task: "Publicar 2 Reels no Instagram", day: "Seg + Qua", time: "30 min cada" },
-                    { task: "Publicar 2 Stories (poll + testemunho)", day: "Ter + Qui", time: "15 min cada" },
-                    { task: "Publicar 1 Carrossel educativo", day: "Sexta", time: "30 min" },
-                    { task: "Responder DMs e mensagens", day: "Sábado", time: "20 min" },
-                    { task: "Planear conteúdo da semana", day: "Domingo", time: "30 min" },
-                    { task: "Enviar broadcast WhatsApp (2x)", day: "Seg + Qua", time: "5 min cada" },
-                    { task: "Actualizar Status WhatsApp (2x)", day: "Seg + Sex", time: "5 min cada" },
-                  ].map((item, i) => (
-                    <label key={i} className="flex items-start gap-3 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        className="mt-1 h-4 w-4 rounded border-brown-200 text-sage focus:ring-sage"
-                      />
-                      <div className="flex-1">
-                        <p className="font-sans text-sm text-brown-700">{item.task}</p>
-                        <p className="font-sans text-xs text-brown-400">
-                          {item.day} — {item.time}
-                        </p>
-                      </div>
-                    </label>
-                  ))}
-                </div>
-                <div className="mt-4 rounded-lg bg-sage/10 px-4 py-3">
-                  <p className="font-sans text-sm font-medium text-sage">
-                    Total: ~3 horas/semana
-                  </p>
+                  )}
                 </div>
               </div>
-
-              {/* UTM Links */}
-              <div className="mt-8 rounded-xl bg-white p-6 shadow-sm">
-                <h2 className="font-serif text-xl text-brown-900">
-                  Links com UTM para tracking
-                </h2>
-                <p className="mt-1 font-sans text-sm text-brown-500">
-                  Usa estes links para medir de onde vêm os teus visitantes
-                </p>
-                <div className="mt-4 space-y-3">
-                  {[
-                    {
-                      label: "Instagram Bio",
-                      url: "https://seteecos.com/recursos/teste?utm_source=instagram&utm_medium=bio&utm_campaign=sete-ecos",
-                    },
-                    {
-                      label: "Instagram Reel",
-                      url: "https://seteecos.com/recursos/teste?utm_source=instagram&utm_medium=reel&utm_campaign=sete-ecos",
-                    },
-                    {
-                      label: "WhatsApp Broadcast",
-                      url: "https://seteecos.com/recursos/teste?utm_source=whatsapp&utm_medium=broadcast&utm_campaign=sete-ecos",
-                    },
-                    {
-                      label: "WhatsApp Status",
-                      url: "https://seteecos.com/ecossistema?utm_source=whatsapp&utm_medium=status&utm_campaign=sete-ecos",
-                    },
-                  ].map((link) => (
-                    <div key={link.label} className="flex items-center gap-3">
-                      <span className="shrink-0 font-sans text-xs font-medium text-brown-600">
-                        {link.label}:
-                      </span>
-                      <code className="flex-1 overflow-x-auto rounded bg-cream px-3 py-1.5 font-mono text-xs text-brown-500">
-                        {link.url}
-                      </code>
-                      <button
-                        onClick={() => copyToClipboard(link.url, `utm-${link.label}`)}
-                        className="shrink-0 rounded bg-sage/10 px-3 py-1 font-sans text-[0.65rem] text-sage transition hover:bg-sage/20"
-                      >
-                        {copiedId === `utm-${link.label}` ? "Copiado!" : "Copiar"}
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
+            );
+          })}
         </div>
       </div>
-    </section>
+
+      {/* Revenue overview */}
+      <div>
+        <h2 className="mb-4 font-serif text-lg text-cream">
+          Projecção de Receita
+        </h2>
+        <div className="grid gap-4 sm:grid-cols-4">
+          <MetricCard
+            label="Experiência individual"
+            value="$29"
+            sub="1.850 MT / R$119 / €27"
+          />
+          <MetricCard
+            label="Pack de 3"
+            value="$69"
+            sub="Poupa 18%"
+          />
+          <MetricCard
+            label="Jornada completa"
+            value="$149"
+            sub="Poupa 27%"
+          />
+          <MetricCard
+            label="Total 7 véus (individual)"
+            value="$203"
+            sub="vs $149 bundle"
+          />
+        </div>
+      </div>
+
+      {/* Quick links */}
+      <div>
+        <h2 className="mb-4 font-serif text-lg text-cream">Links Rápidos</h2>
+        <div className="flex flex-wrap gap-3">
+          {[
+            { href: "/experiencias", label: "Página de Vendas" },
+            { href: "/recursos/teste", label: "Quiz" },
+            { href: "/membro/leitura", label: "Reader" },
+            { href: "/membro/conclusao", label: "Cerimónia" },
+            { href: "/membro/jornada-completa", label: "Jornada 7/7" },
+            { href: "/membro/espelho", label: "Espelho" },
+            { href: "/recursos", label: "Recursos Gratuitos" },
+          ].map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="rounded-lg border border-brown-800/30 bg-[#1e1b18] px-4 py-2 font-sans text-xs text-brown-300 transition-colors hover:border-sage/50 hover:text-sage"
+            >
+              {link.label} →
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── CALENDAR TAB ────────────────────────────────────────────────────────────
+
+function CalendarTab() {
+  const months = [
+    { name: "Fevereiro 2026", events: ["Ilusão: promoção contínua", "Medo: teaser + waitlist"] },
+    { name: "Março 2026", events: ["Medo: LANÇAMENTO (dia 1)", "Medo: conteúdo pós-lançamento", "Ilusão: 1 quote/semana"] },
+    { name: "Abril 2026", events: ["Culpa: teaser + waitlist (dia 1)", "Culpa: LANÇAMENTO (dia 15)", "Medo: testemunhos"] },
+    { name: "Maio 2026", events: ["Culpa: conteúdo pós-lançamento", "Identidade: teaser início"] },
+    { name: "Junho 2026", events: ["Identidade: LANÇAMENTO (dia 1)", "Pack de 3 promoção especial"] },
+    { name: "Julho 2026", events: ["Identidade: conteúdo pós-lançamento", "Controlo: teaser"] },
+    { name: "Agosto 2026", events: ["Controlo: LANÇAMENTO (dia 1)", "Promoção Jornada Completa"] },
+    { name: "Setembro 2026", events: ["Controlo: conteúdo pós-lançamento", "Desejo: teaser"] },
+    { name: "Outubro 2026", events: ["Desejo: LANÇAMENTO (dia 1)", "Promoção Pack de 3 outono"] },
+    { name: "Novembro 2026", events: ["Desejo: conteúdo pós-lançamento", "Separação: teaser final"] },
+    { name: "Dezembro 2026", events: ["Separação: LANÇAMENTO (dia 1)", "Promoção Jornada Completa Natal", "7/7 celebração anual"] },
+  ];
+
+  return (
+    <div className="space-y-6">
+      <h2 className="font-serif text-lg text-cream">
+        Calendário de Lançamentos 2026
+      </h2>
+      <div className="space-y-3">
+        {months.map((month) => (
+          <div
+            key={month.name}
+            className="rounded-xl border border-brown-800/30 bg-[#1e1b18] p-5"
+          >
+            <h3 className="font-serif text-base text-cream">{month.name}</h3>
+            <ul className="mt-3 space-y-1.5">
+              {month.events.map((event, i) => {
+                const isLaunch = event.includes("LANÇAMENTO");
+                return (
+                  <li key={i} className="flex items-center gap-2">
+                    <span
+                      className={`h-2 w-2 shrink-0 rounded-full ${
+                        isLaunch ? "bg-sage" : "bg-brown-600"
+                      }`}
+                    />
+                    <span
+                      className={`font-sans text-sm ${
+                        isLaunch
+                          ? "font-medium text-sage"
+                          : "text-brown-400"
+                      }`}
+                    >
+                      {event}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ─── CONTENT TAB ─────────────────────────────────────────────────────────────
+
+function ContentTab({
+  selectedVeil,
+  onSelectVeil,
+}: {
+  selectedVeil: string | null;
+  onSelectVeil: (slug: string | null) => void;
+}) {
+  const marketing = selectedVeil
+    ? allMarketing.find((m) => m.slug === selectedVeil)
+    : null;
+
+  return (
+    <div className="space-y-6">
+      <h2 className="font-serif text-lg text-cream">
+        Biblioteca de Conteúdo de Marketing
+      </h2>
+
+      {/* Veil selector */}
+      <div className="flex flex-wrap gap-2">
+        {experiences.map((exp) => (
+          <button
+            key={exp.slug}
+            onClick={() =>
+              onSelectVeil(selectedVeil === exp.slug ? null : exp.slug)
+            }
+            className={`rounded-lg px-4 py-2 font-sans text-xs transition-all ${
+              selectedVeil === exp.slug
+                ? "text-white"
+                : "border border-brown-800/30 text-brown-400 hover:text-brown-200"
+            }`}
+            style={
+              selectedVeil === exp.slug
+                ? { backgroundColor: exp.color }
+                : undefined
+            }
+          >
+            {exp.number}. {exp.title.replace("O Véu ", "")}
+          </button>
+        ))}
+      </div>
+
+      {/* Content for selected veil */}
+      {marketing ? (
+        <VeilContentPanel marketing={marketing} />
+      ) : (
+        <div className="rounded-xl border border-brown-800/20 bg-[#1e1b18] px-8 py-12 text-center">
+          <p className="font-serif text-base text-brown-400">
+            Selecciona um véu para ver o conteúdo de marketing
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function VeilContentPanel({ marketing }: { marketing: VeilMarketing }) {
+  const [section, setSection] = useState<"quotes" | "social" | "email">("quotes");
+  const exp = experiences.find((e) => e.slug === marketing.slug);
+
+  return (
+    <div className="space-y-4">
+      {/* Sub-tabs */}
+      <div className="flex gap-2">
+        {[
+          { key: "quotes" as const, label: `Quotes (${marketing.quotes.length})` },
+          { key: "social" as const, label: `Social (${marketing.socialPosts.length})` },
+          { key: "email" as const, label: `Email (${marketing.emailSequence.length})` },
+        ].map((tab) => (
+          <button
+            key={tab.key}
+            onClick={() => setSection(tab.key)}
+            className={`rounded-lg px-4 py-2 font-sans text-xs transition-all ${
+              section === tab.key
+                ? "bg-brown-800 text-cream"
+                : "text-brown-500 hover:text-brown-300"
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Quotes */}
+      {section === "quotes" && (
+        <div className="space-y-3">
+          {marketing.quotes.map((quote, i) => (
+            <QuoteCard key={i} quote={quote} color={exp?.color || "#c9b896"} />
+          ))}
+        </div>
+      )}
+
+      {/* Social posts */}
+      {section === "social" && (
+        <div className="space-y-3">
+          {marketing.socialPosts.map((post, i) => (
+            <SocialPostCard key={i} post={post} color={exp?.color || "#c9b896"} />
+          ))}
+        </div>
+      )}
+
+      {/* Email sequence */}
+      {section === "email" && (
+        <div className="space-y-3">
+          {marketing.emailSequence.map((email, i) => (
+            <div
+              key={i}
+              className="rounded-xl border border-brown-800/30 bg-[#1e1b18] p-5"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brown-800 font-sans text-xs font-bold text-brown-300">
+                    D{email.day >= 0 ? "+" : ""}
+                    {email.day}
+                  </span>
+                  <div>
+                    <p className="font-sans text-sm font-medium text-cream">
+                      {email.subject}
+                    </p>
+                    <p className="font-sans text-xs text-brown-500">
+                      {email.preview}
+                    </p>
+                  </div>
+                </div>
+                <span
+                  className={`rounded-full px-3 py-1 font-sans text-[0.55rem] uppercase tracking-wider ${
+                    email.type === "launch"
+                      ? "bg-sage/20 text-sage"
+                      : email.type === "nurture"
+                        ? "bg-[#c9b896]/20 text-[#c9b896]"
+                        : email.type === "post-purchase"
+                          ? "bg-[#baaacc]/20 text-[#baaacc]"
+                          : "bg-brown-800 text-brown-400"
+                  }`}
+                >
+                  {email.type}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── LAUNCH TAB ──────────────────────────────────────────────────────────────
+
+function LaunchTab() {
+  return (
+    <div className="space-y-6">
+      <h2 className="font-serif text-lg text-cream">
+        Planos de Lançamento
+      </h2>
+      {allMarketing.map((marketing) => {
+        const exp = experiences.find((e) => e.slug === marketing.slug);
+        if (!exp) return null;
+
+        return (
+          <div
+            key={marketing.slug}
+            className="rounded-xl border border-brown-800/30 bg-[#1e1b18] p-5"
+          >
+            <div className="flex items-center gap-3">
+              <span
+                className="flex h-9 w-9 items-center justify-center rounded-lg font-serif text-sm font-bold text-white"
+                style={{ backgroundColor: exp.color }}
+              >
+                {exp.number}
+              </span>
+              <div>
+                <h3 className="font-serif text-base text-cream">
+                  {exp.title}
+                </h3>
+                <p className="font-sans text-xs text-brown-500">
+                  {exp.status === "available"
+                    ? "Disponível"
+                    : `Lançamento: ${exp.launchLabel}`}
+                </p>
+              </div>
+              <div className="ml-auto">
+                <StatusBadge status={exp.status} />
+              </div>
+            </div>
+
+            <ol className="mt-4 space-y-2 border-l-2 border-brown-800/30 pl-4">
+              {marketing.launchPlan.map((step, i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <span
+                    className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[0.55rem] font-bold"
+                    style={{
+                      backgroundColor: exp.color + "20",
+                      color: exp.color,
+                    }}
+                  >
+                    {i + 1}
+                  </span>
+                  <span className="font-sans text-sm text-brown-300">
+                    {step}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// ─── REUSABLE COMPONENTS ─────────────────────────────────────────────────────
+
+function StatusBadge({ status }: { status: string }) {
+  const styles = {
+    available: "bg-sage/20 text-sage",
+    coming_soon: "bg-[#c9b896]/20 text-[#c9b896]",
+    waitlist: "bg-[#baaacc]/20 text-[#baaacc]",
+  };
+  const labels = {
+    available: "Disponível",
+    coming_soon: "Em breve",
+    waitlist: "Waitlist",
+  };
+
+  return (
+    <span
+      className={`rounded-full px-3 py-1 font-sans text-[0.55rem] uppercase tracking-wider ${
+        styles[status as keyof typeof styles] || styles.coming_soon
+      }`}
+    >
+      {labels[status as keyof typeof labels] || status}
+    </span>
+  );
+}
+
+function FlagRow({
+  label,
+  done,
+  partial,
+}: {
+  label: string;
+  done: boolean;
+  partial?: boolean;
+}) {
+  return (
+    <div className="flex items-center gap-2">
+      <span
+        className={`flex h-4 w-4 items-center justify-center rounded ${
+          done
+            ? "bg-sage text-white"
+            : partial
+              ? "bg-[#c9b896] text-white"
+              : "border border-brown-700 bg-transparent"
+        }`}
+      >
+        {done && (
+          <svg className="h-2.5 w-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        )}
+        {!done && partial && (
+          <span className="text-[0.5rem]">½</span>
+        )}
+      </span>
+      <span className={`font-sans text-xs ${done ? "text-brown-300" : "text-brown-600"}`}>
+        {label}
+      </span>
+    </div>
+  );
+}
+
+function MiniStat({ value, label }: { value: number; label: string }) {
+  return (
+    <div>
+      <span className="font-sans text-sm font-bold text-cream">{value}</span>
+      <span className="ml-1 font-sans text-[0.55rem] text-brown-500">{label}</span>
+    </div>
+  );
+}
+
+function MetricCard({
+  label,
+  value,
+  sub,
+}: {
+  label: string;
+  value: string;
+  sub: string;
+}) {
+  return (
+    <div className="rounded-xl border border-brown-800/30 bg-[#1e1b18] p-5">
+      <p className="font-sans text-[0.6rem] uppercase tracking-wider text-brown-500">
+        {label}
+      </p>
+      <p className="mt-1 font-sans text-2xl font-bold text-cream">{value}</p>
+      <p className="mt-1 font-sans text-[0.6rem] text-brown-500">{sub}</p>
+    </div>
+  );
+}
+
+function QuoteCard({ quote, color }: { quote: MarketingQuote; color: string }) {
+  const [copied, setCopied] = useState(false);
+
+  async function copyQuote() {
+    await navigator.clipboard.writeText(`"${quote.text}"\n\n— ${quote.source}\nseteecos.com`);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+
+  return (
+    <div className="rounded-xl border border-brown-800/30 bg-[#1e1b18] p-5">
+      <p className="font-serif text-base italic leading-relaxed text-cream">
+        &ldquo;{quote.text}&rdquo;
+      </p>
+      <div className="mt-3 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <p className="font-sans text-[0.6rem] text-brown-500">
+            {quote.source}
+          </p>
+          <div className="flex gap-1">
+            {quote.formats.map((f) => (
+              <span
+                key={f}
+                className="rounded px-1.5 py-0.5 font-sans text-[0.5rem] uppercase"
+                style={{ backgroundColor: color + "20", color }}
+              >
+                {f}
+              </span>
+            ))}
+          </div>
+        </div>
+        <button
+          onClick={copyQuote}
+          className="font-sans text-[0.6rem] text-brown-500 hover:text-sage"
+        >
+          {copied ? "Copiado!" : "Copiar"}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function SocialPostCard({ post, color }: { post: SocialPost; color: string }) {
+  const [copied, setCopied] = useState(false);
+
+  async function copyPost() {
+    const hashtagStr = post.hashtags.join(" ");
+    await navigator.clipboard.writeText(`${post.content}\n\n${hashtagStr}`);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+
+  return (
+    <div className="rounded-xl border border-brown-800/30 bg-[#1e1b18] p-5">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span
+            className="rounded px-2 py-0.5 font-sans text-[0.55rem] uppercase"
+            style={{ backgroundColor: color + "20", color }}
+          >
+            {post.format}
+          </span>
+          <span className="font-sans text-[0.55rem] text-brown-500">
+            Semana {post.scheduledWeek > 0 ? `+${post.scheduledWeek}` : post.scheduledWeek}
+          </span>
+        </div>
+        <button
+          onClick={copyPost}
+          className="font-sans text-[0.6rem] text-brown-500 hover:text-sage"
+        >
+          {copied ? "Copiado!" : "Copiar post"}
+        </button>
+      </div>
+      <pre className="mt-3 whitespace-pre-wrap font-sans text-sm leading-relaxed text-brown-300">
+        {post.content}
+      </pre>
+      <div className="mt-3 flex flex-wrap gap-1">
+        {post.hashtags.slice(0, 5).map((tag) => (
+          <span
+            key={tag}
+            className="font-sans text-[0.55rem] text-brown-600"
+          >
+            {tag}
+          </span>
+        ))}
+        {post.hashtags.length > 5 && (
+          <span className="font-sans text-[0.55rem] text-brown-700">
+            +{post.hashtags.length - 5}
+          </span>
+        )}
+      </div>
+    </div>
   );
 }

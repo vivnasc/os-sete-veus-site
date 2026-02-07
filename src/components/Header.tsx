@@ -11,6 +11,8 @@ const navLinks = [
   { href: "/os-sete-veus", label: "Os Sete Véus" },
   { href: "/para-quem", label: "Para Quem" },
   { href: "/recursos", label: "Recursos" },
+  { href: "/artigos", label: "Artigos" },
+  { href: "/experiencias", label: "Experiências" },
   { href: "/comecar", label: "Começar" },
 ];
 

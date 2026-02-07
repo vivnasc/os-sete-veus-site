@@ -4,6 +4,8 @@ import { useEffect, useState, useCallback } from "react";
 import { chapters } from "@/data/ebook";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
+import ShareCard from "@/components/ShareCard";
+import CeremonyUpsell from "@/components/CeremonyUpsell";
 
 export default function ConclusaoPage() {
   const [readCount, setReadCount] = useState(0);
@@ -214,10 +216,32 @@ export default function ConclusaoPage() {
               </Link>
             </div>
 
+            {/* Share card */}
+            <div
+              className="mt-12 transition-all duration-1000"
+              style={{ opacity: showContent ? 1 : 0, transitionDelay: "4000ms" }}
+            >
+              <ShareCard
+                veilTitle="O Véu da Ilusão"
+                veilColor="#c9b896"
+                chaptersRead={readCount}
+                reflectionsWritten={journalCount}
+                itemsCompleted={checklistCount}
+              />
+            </div>
+
+            {/* Upsell — next experience */}
+            <div
+              className="mt-12 transition-all duration-1000"
+              style={{ opacity: showContent ? 1 : 0, transitionDelay: "4500ms" }}
+            >
+              <CeremonyUpsell completedVeilSlug="veu-da-ilusao" />
+            </div>
+
             {/* Final quote */}
             <div
               className="mt-16 text-center transition-all duration-1000"
-              style={{ opacity: showContent ? 1 : 0, transitionDelay: "4000ms" }}
+              style={{ opacity: showContent ? 1 : 0, transitionDelay: "5000ms" }}
             >
               <p className="font-serif text-sm italic text-brown-400">
                 &ldquo;Há mais para ti do que aquilo que tens vivido.&rdquo;
