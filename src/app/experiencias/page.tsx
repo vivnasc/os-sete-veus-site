@@ -38,18 +38,18 @@ export default function ExperienciasPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.4}>
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <Link
-                href="/recursos/teste"
-                className="animate-pulse-glow inline-block rounded-md border-2 border-cream bg-cream px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-900 transition-all hover:bg-transparent hover:text-cream"
-              >
-                Descobre o teu véu
-              </Link>
               <a
                 href="#precos"
-                className="inline-block rounded-md border-2 border-brown-300 bg-transparent px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-200 transition-all hover:border-cream hover:text-cream"
+                className="animate-pulse-glow inline-block rounded-md border-2 border-cream bg-cream px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-900 transition-all hover:bg-transparent hover:text-cream"
               >
                 Ver preços
               </a>
+              <Link
+                href="/recursos/teste"
+                className="inline-block rounded-md border-2 border-brown-300 bg-transparent px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-200 transition-all hover:border-cream hover:text-cream"
+              >
+                Descobre o teu véu
+              </Link>
             </div>
           </ScrollReveal>
         </div>
@@ -161,11 +161,11 @@ export default function ExperienciasPage() {
                         ${exp.priceUSD}
                       </span>
                       <Link
-                        href="/recursos/teste"
+                        href="/entrar"
                         className="rounded-full px-5 py-2 font-sans text-[0.7rem] uppercase tracking-[0.12em] text-white transition-colors hover:opacity-90"
                         style={{ backgroundColor: exp.color }}
                       >
-                        Descobre o teu véu
+                        Começar
                       </Link>
                     </div>
                   </div>
@@ -246,9 +246,12 @@ export default function ExperienciasPage() {
                   {/* Status */}
                   <div className="shrink-0 text-right">
                     {exp.status === "available" ? (
-                      <span className="rounded-full bg-sage px-4 py-1.5 font-sans text-[0.6rem] uppercase tracking-[0.12em] text-white">
+                      <Link
+                        href={`/experiencias/${exp.slug}`}
+                        className="rounded-full bg-sage px-4 py-1.5 font-sans text-[0.6rem] uppercase tracking-[0.12em] text-white hover:bg-sage-dark"
+                      >
                         Disponível
-                      </span>
+                      </Link>
                     ) : (
                       <span className="font-sans text-[0.65rem] text-brown-500">
                         {exp.launchLabel}
@@ -336,10 +339,10 @@ export default function ExperienciasPage() {
           <ScrollReveal delay={0.2}>
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Link
-                href="/recursos/teste"
+                href="/entrar"
                 className="animate-pulse-glow inline-block rounded-md border-2 border-cream bg-cream px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-900 transition-all hover:bg-transparent hover:text-cream"
               >
-                Qual véu te esconde?
+                Começar agora
               </Link>
               <a
                 href="#precos"

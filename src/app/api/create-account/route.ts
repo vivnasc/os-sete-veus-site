@@ -4,6 +4,18 @@ import { createClient } from "@supabase/supabase-js";
 const supabaseUrl = "https://tdytdamtfillqyklgrmb.supabase.co";
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 
+// Author emails get full access to all experiences
+const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
+const ALL_PRODUCTS = [
+  "experiencia-veu-ilusao",
+  "experiencia-veu-medo",
+  "experiencia-veu-culpa",
+  "experiencia-veu-identidade",
+  "experiencia-veu-controlo",
+  "experiencia-veu-desejo",
+  "experiencia-veu-separacao",
+];
+
 export async function POST(request: Request) {
   try {
     const { email } = await request.json();
@@ -37,11 +49,14 @@ export async function POST(request: Request) {
     );
 
     if (existingUser) {
-      // User exists — just ensure they have a purchase record
-      await supabaseAdmin.from("purchases").upsert(
-        { user_id: existingUser.id, product: "experiencia-veu-ilusao" },
-        { onConflict: "user_id,product" }
-      );
+      const isAuthor = AUTHOR_EMAILS.includes(email.toLowerCase());
+      const products = isAuthor ? ALL_PRODUCTS : ["experiencia-veu-ilusao"];
+      for (const product of products) {
+        await supabaseAdmin.from("purchases").upsert(
+          { user_id: existingUser.id, product },
+          { onConflict: "user_id,product" }
+        );
+      }
       return NextResponse.json({
         ok: true,
         existing: true,
@@ -64,11 +79,15 @@ export async function POST(request: Request) {
       );
     }
 
-    // Create purchase record
-    await supabaseAdmin.from("purchases").insert({
-      user_id: newUser.user.id,
-      product: "experiencia-veu-ilusao",
-    });
+    // Create purchase record(s)
+    const isAuthor = AUTHOR_EMAILS.includes(email.toLowerCase());
+    const products = isAuthor ? ALL_PRODUCTS : ["experiencia-veu-ilusao"];
+    for (const product of products) {
+      await supabaseAdmin.from("purchases").insert({
+        user_id: newUser.user.id,
+        product,
+      });
+    }
 
     return NextResponse.json({
       ok: true,

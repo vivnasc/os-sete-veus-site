@@ -74,10 +74,10 @@ export default function PricingTiers() {
             ))}
           </ul>
           <Link
-            href="/recursos/teste"
+            href="/entrar"
             className="mt-6 block rounded-md border-2 border-sage bg-sage px-6 py-3 text-center font-sans text-[0.75rem] font-medium uppercase tracking-[0.12em] text-white transition-all hover:bg-transparent hover:text-sage"
           >
-            Descobre o teu véu
+            Começar agora
           </Link>
         </div>
 
@@ -113,10 +113,10 @@ export default function PricingTiers() {
             ))}
           </ul>
           <Link
-            href="/recursos/teste"
+            href="/entrar"
             className="mt-6 block rounded-md bg-sage px-6 py-3 text-center font-sans text-[0.75rem] font-medium uppercase tracking-[0.12em] text-white transition-all hover:bg-sage-dark"
           >
-            Escolher 3 véus
+            Comprar pack
           </Link>
         </div>
 
@@ -150,10 +150,10 @@ export default function PricingTiers() {
             ))}
           </ul>
           <Link
-            href="/recursos/teste"
+            href="/entrar"
             className="mt-6 block rounded-md border-2 border-brown-900 bg-brown-900 px-6 py-3 text-center font-sans text-[0.75rem] font-medium uppercase tracking-[0.12em] text-cream transition-all hover:bg-transparent hover:text-brown-900"
           >
-            A jornada completa
+            Comprar jornada
           </Link>
         </div>
       </div>

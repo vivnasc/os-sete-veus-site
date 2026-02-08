@@ -1,5 +1,7 @@
 "use client";
 
+import { useAuth } from "@/components/AuthProvider";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { experiences } from "@/data/experiences";
 import { allMarketing } from "@/data/marketing";
@@ -9,8 +11,23 @@ import Link from "next/link";
 type Tab = "overview" | "calendar" | "content" | "launch";
 
 export default function PainelPage() {
+  const { user, loading: authLoading } = useAuth();
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<Tab>("overview");
   const [selectedVeil, setSelectedVeil] = useState<string | null>(null);
+
+  if (authLoading) {
+    return (
+      <section className="bg-cream px-6 py-32 text-center">
+        <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-brown-200 border-t-sage" />
+      </section>
+    );
+  }
+
+  if (!user) {
+    router.push("/entrar");
+    return null;
+  }
 
   const tabs: { key: Tab; label: string }[] = [
     { key: "overview", label: "Visão Geral" },
@@ -20,19 +37,19 @@ export default function PainelPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#1a1714]">
+    <div className="min-h-screen bg-cream">
       {/* Header */}
-      <div className="border-b border-brown-800/50 bg-[#1e1b18] px-6 py-5">
+      <div className="border-b border-brown-100 bg-white px-6 py-5">
         <div className="mx-auto flex max-w-6xl items-center justify-between">
           <div>
-            <h1 className="font-serif text-2xl text-cream">Painel de Controlo</h1>
+            <h1 className="font-serif text-2xl text-brown-900">Painel de Controlo</h1>
             <p className="mt-1 font-sans text-xs text-brown-500">
               Os Sete Véus — Monetização &amp; Marketing
             </p>
           </div>
           <Link
             href="/"
-            className="font-sans text-xs text-brown-500 hover:text-cream"
+            className="font-sans text-xs text-brown-500 hover:text-brown-900"
           >
             ← Voltar ao site
           </Link>
@@ -40,7 +57,7 @@ export default function PainelPage() {
       </div>
 
       {/* Tabs */}
-      <div className="border-b border-brown-800/30 bg-[#1e1b18]">
+      <div className="border-b border-brown-100 bg-white">
         <div className="mx-auto flex max-w-6xl gap-1 px-6">
           {tabs.map((tab) => (
             <button
@@ -49,7 +66,7 @@ export default function PainelPage() {
               className={`px-5 py-3 font-sans text-[0.7rem] uppercase tracking-[0.12em] transition-colors ${
                 activeTab === tab.key
                   ? "border-b-2 border-sage text-sage"
-                  : "text-brown-500 hover:text-brown-300"
+                  : "text-brown-500 hover:text-brown-600"
               }`}
             >
               {tab.label}
@@ -81,7 +98,7 @@ function OverviewTab() {
     <div className="space-y-8">
       {/* Status flags */}
       <div>
-        <h2 className="mb-4 font-serif text-lg text-cream">
+        <h2 className="mb-4 font-serif text-lg text-brown-900">
           Estado das Experiências
         </h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -94,7 +111,7 @@ function OverviewTab() {
             return (
               <div
                 key={exp.slug}
-                className="rounded-xl border border-brown-800/30 bg-[#1e1b18] p-5"
+                className="rounded-xl border border-brown-100 bg-white p-5"
               >
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
@@ -105,7 +122,7 @@ function OverviewTab() {
                       {exp.number}
                     </span>
                     <div>
-                      <h3 className="font-serif text-sm text-cream">
+                      <h3 className="font-serif text-sm text-brown-900">
                         {exp.title}
                       </h3>
                       <p className="font-sans text-[0.6rem] text-brown-500">
@@ -139,7 +156,7 @@ function OverviewTab() {
                 </div>
 
                 {/* Stats */}
-                <div className="mt-4 flex gap-4 border-t border-brown-800/30 pt-3">
+                <div className="mt-4 flex gap-4 border-t border-brown-100 pt-3">
                   <MiniStat value={quotesCount} label="quotes" />
                   <MiniStat value={postsCount} label="posts" />
                   <MiniStat value={emailsCount} label="emails" />
@@ -165,7 +182,7 @@ function OverviewTab() {
 
       {/* Revenue overview */}
       <div>
-        <h2 className="mb-4 font-serif text-lg text-cream">
+        <h2 className="mb-4 font-serif text-lg text-brown-900">
           Projecção de Receita
         </h2>
         <div className="grid gap-4 sm:grid-cols-4">
@@ -194,7 +211,7 @@ function OverviewTab() {
 
       {/* Quick links */}
       <div>
-        <h2 className="mb-4 font-serif text-lg text-cream">Links Rápidos</h2>
+        <h2 className="mb-4 font-serif text-lg text-brown-900">Links Rápidos</h2>
         <div className="flex flex-wrap gap-3">
           {[
             { href: "/experiencias", label: "Página de Vendas" },
@@ -208,7 +225,7 @@ function OverviewTab() {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-lg border border-brown-800/30 bg-[#1e1b18] px-4 py-2 font-sans text-xs text-brown-300 transition-colors hover:border-sage/50 hover:text-sage"
+              className="rounded-lg border border-brown-100 bg-white px-4 py-2 font-sans text-xs text-brown-600 transition-colors hover:border-sage/50 hover:text-sage"
             >
               {link.label} →
             </Link>
@@ -238,16 +255,16 @@ function CalendarTab() {
 
   return (
     <div className="space-y-6">
-      <h2 className="font-serif text-lg text-cream">
+      <h2 className="font-serif text-lg text-brown-900">
         Calendário de Lançamentos 2026
       </h2>
       <div className="space-y-3">
         {months.map((month) => (
           <div
             key={month.name}
-            className="rounded-xl border border-brown-800/30 bg-[#1e1b18] p-5"
+            className="rounded-xl border border-brown-100 bg-white p-5"
           >
-            <h3 className="font-serif text-base text-cream">{month.name}</h3>
+            <h3 className="font-serif text-base text-brown-900">{month.name}</h3>
             <ul className="mt-3 space-y-1.5">
               {month.events.map((event, i) => {
                 const isLaunch = event.includes("LANÇAMENTO");
@@ -293,7 +310,7 @@ function ContentTab({
 
   return (
     <div className="space-y-6">
-      <h2 className="font-serif text-lg text-cream">
+      <h2 className="font-serif text-lg text-brown-900">
         Biblioteca de Conteúdo de Marketing
       </h2>
 
@@ -308,7 +325,7 @@ function ContentTab({
             className={`rounded-lg px-4 py-2 font-sans text-xs transition-all ${
               selectedVeil === exp.slug
                 ? "text-white"
-                : "border border-brown-800/30 text-brown-400 hover:text-brown-200"
+                : "border border-brown-100 text-brown-400 hover:text-brown-200"
             }`}
             style={
               selectedVeil === exp.slug
@@ -325,7 +342,7 @@ function ContentTab({
       {marketing ? (
         <VeilContentPanel marketing={marketing} />
       ) : (
-        <div className="rounded-xl border border-brown-800/20 bg-[#1e1b18] px-8 py-12 text-center">
+        <div className="rounded-xl border border-brown-800/20 bg-white px-8 py-12 text-center">
           <p className="font-serif text-base text-brown-400">
             Selecciona um véu para ver o conteúdo de marketing
           </p>
@@ -353,8 +370,8 @@ function VeilContentPanel({ marketing }: { marketing: VeilMarketing }) {
             onClick={() => setSection(tab.key)}
             className={`rounded-lg px-4 py-2 font-sans text-xs transition-all ${
               section === tab.key
-                ? "bg-brown-800 text-cream"
-                : "text-brown-500 hover:text-brown-300"
+                ? "bg-cream-dark text-brown-900"
+                : "text-brown-500 hover:text-brown-600"
             }`}
           >
             {tab.label}
@@ -386,16 +403,16 @@ function VeilContentPanel({ marketing }: { marketing: VeilMarketing }) {
           {marketing.emailSequence.map((email, i) => (
             <div
               key={i}
-              className="rounded-xl border border-brown-800/30 bg-[#1e1b18] p-5"
+              className="rounded-xl border border-brown-100 bg-white p-5"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brown-800 font-sans text-xs font-bold text-brown-300">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-cream-dark font-sans text-xs font-bold text-brown-600">
                     D{email.day >= 0 ? "+" : ""}
                     {email.day}
                   </span>
                   <div>
-                    <p className="font-sans text-sm font-medium text-cream">
+                    <p className="font-sans text-sm font-medium text-brown-900">
                       {email.subject}
                     </p>
                     <p className="font-sans text-xs text-brown-500">
@@ -411,7 +428,7 @@ function VeilContentPanel({ marketing }: { marketing: VeilMarketing }) {
                         ? "bg-[#c9b896]/20 text-[#c9b896]"
                         : email.type === "post-purchase"
                           ? "bg-[#baaacc]/20 text-[#baaacc]"
-                          : "bg-brown-800 text-brown-400"
+                          : "bg-cream-dark text-brown-400"
                   }`}
                 >
                   {email.type}
@@ -430,7 +447,7 @@ function VeilContentPanel({ marketing }: { marketing: VeilMarketing }) {
 function LaunchTab() {
   return (
     <div className="space-y-6">
-      <h2 className="font-serif text-lg text-cream">
+      <h2 className="font-serif text-lg text-brown-900">
         Planos de Lançamento
       </h2>
       {allMarketing.map((marketing) => {
@@ -440,7 +457,7 @@ function LaunchTab() {
         return (
           <div
             key={marketing.slug}
-            className="rounded-xl border border-brown-800/30 bg-[#1e1b18] p-5"
+            className="rounded-xl border border-brown-100 bg-white p-5"
           >
             <div className="flex items-center gap-3">
               <span
@@ -450,7 +467,7 @@ function LaunchTab() {
                 {exp.number}
               </span>
               <div>
-                <h3 className="font-serif text-base text-cream">
+                <h3 className="font-serif text-base text-brown-900">
                   {exp.title}
                 </h3>
                 <p className="font-sans text-xs text-brown-500">
@@ -464,7 +481,7 @@ function LaunchTab() {
               </div>
             </div>
 
-            <ol className="mt-4 space-y-2 border-l-2 border-brown-800/30 pl-4">
+            <ol className="mt-4 space-y-2 border-l-2 border-brown-100 pl-4">
               {marketing.launchPlan.map((step, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <span
@@ -476,7 +493,7 @@ function LaunchTab() {
                   >
                     {i + 1}
                   </span>
-                  <span className="font-sans text-sm text-brown-300">
+                  <span className="font-sans text-sm text-brown-600">
                     {step}
                   </span>
                 </li>
@@ -543,7 +560,7 @@ function FlagRow({
           <span className="text-[0.5rem]">½</span>
         )}
       </span>
-      <span className={`font-sans text-xs ${done ? "text-brown-300" : "text-brown-600"}`}>
+      <span className={`font-sans text-xs ${done ? "text-brown-600" : "text-brown-600"}`}>
         {label}
       </span>
     </div>
@@ -553,7 +570,7 @@ function FlagRow({
 function MiniStat({ value, label }: { value: number; label: string }) {
   return (
     <div>
-      <span className="font-sans text-sm font-bold text-cream">{value}</span>
+      <span className="font-sans text-sm font-bold text-brown-900">{value}</span>
       <span className="ml-1 font-sans text-[0.55rem] text-brown-500">{label}</span>
     </div>
   );
@@ -569,11 +586,11 @@ function MetricCard({
   sub: string;
 }) {
   return (
-    <div className="rounded-xl border border-brown-800/30 bg-[#1e1b18] p-5">
+    <div className="rounded-xl border border-brown-100 bg-white p-5">
       <p className="font-sans text-[0.6rem] uppercase tracking-wider text-brown-500">
         {label}
       </p>
-      <p className="mt-1 font-sans text-2xl font-bold text-cream">{value}</p>
+      <p className="mt-1 font-sans text-2xl font-bold text-brown-900">{value}</p>
       <p className="mt-1 font-sans text-[0.6rem] text-brown-500">{sub}</p>
     </div>
   );
@@ -589,8 +606,8 @@ function QuoteCard({ quote, color }: { quote: MarketingQuote; color: string }) {
   }
 
   return (
-    <div className="rounded-xl border border-brown-800/30 bg-[#1e1b18] p-5">
-      <p className="font-serif text-base italic leading-relaxed text-cream">
+    <div className="rounded-xl border border-brown-100 bg-white p-5">
+      <p className="font-serif text-base italic leading-relaxed text-brown-900">
         &ldquo;{quote.text}&rdquo;
       </p>
       <div className="mt-3 flex items-center justify-between">
@@ -632,7 +649,7 @@ function SocialPostCard({ post, color }: { post: SocialPost; color: string }) {
   }
 
   return (
-    <div className="rounded-xl border border-brown-800/30 bg-[#1e1b18] p-5">
+    <div className="rounded-xl border border-brown-100 bg-white p-5">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span
@@ -652,7 +669,7 @@ function SocialPostCard({ post, color }: { post: SocialPost; color: string }) {
           {copied ? "Copiado!" : "Copiar post"}
         </button>
       </div>
-      <pre className="mt-3 whitespace-pre-wrap font-sans text-sm leading-relaxed text-brown-300">
+      <pre className="mt-3 whitespace-pre-wrap font-sans text-sm leading-relaxed text-brown-600">
         {post.content}
       </pre>
       <div className="mt-3 flex flex-wrap gap-1">
