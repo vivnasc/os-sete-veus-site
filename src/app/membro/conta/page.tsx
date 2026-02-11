@@ -190,6 +190,31 @@ export default function ContaPage() {
               )}
             </div>
 
+            {/* Security */}
+            <div className="rounded-2xl bg-white p-6 shadow-sm">
+              <p className="font-sans text-[0.65rem] font-medium uppercase tracking-[0.2em] text-brown-400">
+                Segurança
+              </p>
+              <div className="mt-4 space-y-3">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="font-sans text-sm font-medium text-brown-700">
+                      Alterar senha
+                    </p>
+                    <p className="mt-0.5 font-sans text-xs text-brown-400">
+                      Cria uma nova senha para a tua conta
+                    </p>
+                  </div>
+                  <Link
+                    href="/recuperar-senha"
+                    className="shrink-0 rounded-lg border border-sage bg-white px-4 py-2 font-sans text-xs font-medium uppercase tracking-wider text-sage transition-colors hover:bg-sage/5"
+                  >
+                    Alterar
+                  </Link>
+                </div>
+              </div>
+            </div>
+
             {/* Progress */}
             <div className="rounded-2xl bg-white p-6 shadow-sm">
               <p className="font-sans text-[0.65rem] font-medium uppercase tracking-[0.2em] text-brown-400">
