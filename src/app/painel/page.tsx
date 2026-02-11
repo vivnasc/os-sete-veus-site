@@ -29,6 +29,12 @@ export default function PainelPage() {
     return null;
   }
 
+  const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
+  if (!AUTHOR_EMAILS.includes(user.email || "")) {
+    router.push("/membro");
+    return null;
+  }
+
   const tabs: { key: Tab; label: string }[] = [
     { key: "overview", label: "Visão Geral" },
     { key: "calendar", label: "Calendário" },
