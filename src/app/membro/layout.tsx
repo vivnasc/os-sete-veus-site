@@ -13,6 +13,8 @@ const memberNav = [
   { href: "/membro/conta", label: "Conta" },
 ];
 
+const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
+
 export default function MembroLayout({ children }: { children: React.ReactNode }) {
   const { user, loading, signOut } = useAuth();
   const router = useRouter();
@@ -29,6 +31,8 @@ export default function MembroLayout({ children }: { children: React.ReactNode }
     router.push("/entrar");
     return null;
   }
+
+  const isAuthor = AUTHOR_EMAILS.includes(user.email || "");
 
   return (
     <div className="min-h-screen bg-cream">
@@ -47,12 +51,14 @@ export default function MembroLayout({ children }: { children: React.ReactNode }
             ))}
           </nav>
           <div className="flex items-center gap-4">
-            <Link
-              href="/painel"
-              className="font-sans text-[0.7rem] uppercase tracking-[0.1em] text-sage transition-colors hover:text-sage-dark"
-            >
-              Marketing
-            </Link>
+            {isAuthor && (
+              <Link
+                href="/painel"
+                className="font-sans text-[0.7rem] uppercase tracking-[0.1em] text-sage transition-colors hover:text-sage-dark"
+              >
+                Painel Autora
+              </Link>
+            )}
             <button
               onClick={async () => {
                 await signOut();
