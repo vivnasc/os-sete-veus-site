@@ -35,13 +35,6 @@ export async function POST(request: Request) {
       auth: { autoRefreshToken: false, persistSession: false },
     });
 
-    // Generate a random password
-    const password =
-      "Veu" +
-      Math.random().toString(36).slice(2, 8) +
-      Math.random().toString(36).slice(2, 4).toUpperCase() +
-      "!";
-
     // Check if user already exists
     const { data: existingUsers } = await supabaseAdmin.auth.admin.listUsers();
     const existingUser = existingUsers?.users?.find(
@@ -57,18 +50,24 @@ export async function POST(request: Request) {
           { onConflict: "user_id,product" }
         );
       }
+
+      // Send magic link to existing user
+      await supabaseAdmin.auth.admin.generateLink({
+        type: "magiclink",
+        email: email.toLowerCase(),
+      });
+
       return NextResponse.json({
         ok: true,
         existing: true,
-        message: "Já tens uma conta. Faz login com o teu email.",
+        message: "Já tens uma conta. Enviámos um link para o teu email.",
       });
     }
 
-    // Create new user
+    // Create new user (no password — magic link only)
     const { data: newUser, error: createError } =
       await supabaseAdmin.auth.admin.createUser({
         email: email.toLowerCase(),
-        password,
         email_confirm: true,
       });
 
@@ -89,11 +88,16 @@ export async function POST(request: Request) {
       });
     }
 
+    // Send magic link to new user
+    await supabaseAdmin.auth.admin.generateLink({
+      type: "magiclink",
+      email: email.toLowerCase(),
+    });
+
     return NextResponse.json({
       ok: true,
       existing: false,
-      password,
-      message: "Conta criada com sucesso!",
+      message: "Link enviado para o teu email",
     });
   } catch {
     return NextResponse.json({ error: "Erro interno" }, { status: 500 });

@@ -10,6 +10,7 @@ const memberNav = [
   { href: "/membro/praticas", label: "Práticas" },
   { href: "/membro/espelho", label: "Espelho" },
   { href: "/membro/conclusao", label: "Cerimónia" },
+  { href: "/membro/conta", label: "Conta" },
 ];
 
 export default function MembroLayout({ children }: { children: React.ReactNode }) {

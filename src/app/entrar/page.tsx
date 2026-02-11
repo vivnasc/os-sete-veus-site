@@ -3,153 +3,120 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/AuthProvider";
+import { supabase } from "@/lib/supabase";
 
 export default function EntrarPage() {
-  const { signIn, user } = useAuth();
+  const { user, signIn } = useAuth();
   const router = useRouter();
-  const [mode, setMode] = useState<"login" | "register">("login");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [registerResult, setRegisterResult] = useState<{
-    password?: string;
-    existing?: boolean;
-    message: string;
-  } | null>(null);
+  const [magicLinkSent, setMagicLinkSent] = useState(false);
+  const [showPasswordFallback, setShowPasswordFallback] = useState(false);
+  const [password, setPassword] = useState("");
+  const [passwordLoading, setPasswordLoading] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
 
   if (user) {
     router.push("/membro");
     return null;
   }
 
-  async function handleLogin(e: React.FormEvent) {
+  async function handleMagicLink(e: React.FormEvent) {
     e.preventDefault();
     setError("");
     setLoading(true);
-    const { error: err } = await signIn(email, password);
-    if (err) {
-      setError("Email ou password incorrectos. Tenta novamente.");
-      setLoading(false);
-    } else {
-      router.push("/membro");
-    }
-  }
-
-  async function handleRegister(e: React.FormEvent) {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
-    setRegisterResult(null);
+    setMagicLinkSent(false);
 
     try {
-      const res = await fetch("/api/create-account", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+      const { error: otpError } = await supabase.auth.signInWithOtp({
+        email,
       });
-      const data = await res.json();
-      if (!res.ok) {
-        setError(data.error || "Erro ao criar conta");
-      } else if (data.existing) {
-        setRegisterResult({ existing: true, message: data.message });
+
+      if (otpError) {
+        setError("Erro ao enviar o link. Tenta novamente.");
       } else {
-        setRegisterResult({
-          password: data.password,
-          message: "Conta criada com sucesso!",
-        });
+        setMagicLinkSent(true);
       }
     } catch {
       setError("Erro de ligação. Tenta novamente.");
     }
+
     setLoading(false);
+  }
+
+  async function handlePasswordLogin(e: React.FormEvent) {
+    e.preventDefault();
+    setPasswordError("");
+    setPasswordLoading(true);
+
+    const { error: err } = await signIn(email, password);
+    if (err) {
+      setPasswordError("Email ou password incorrectos. Tenta novamente.");
+      setPasswordLoading(false);
+    } else {
+      router.push("/membro");
+    }
   }
 
   return (
     <section className="bg-cream px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-md">
         <h1 className="text-center font-serif text-3xl text-brown-900">
-          {mode === "login" ? "Entrar na tua área" : "Criar a tua conta"}
+          Entrar na tua área
         </h1>
         <p className="mt-3 text-center text-brown-600">
-          {mode === "login"
-            ? "Acede à tua experiência — audiobook, práticas, módulos."
-            : "Cria a tua conta em segundos. Só precisas do teu email."}
+          Acede à tua experiência — audiobook, práticas, módulos.
         </p>
 
-        {/* Mode toggle */}
-        <div className="mt-8 flex rounded-lg bg-brown-50 p-1">
-          <button
-            onClick={() => { setMode("login"); setError(""); setRegisterResult(null); }}
-            className={`flex-1 rounded-md py-2.5 font-sans text-[0.75rem] uppercase tracking-[0.1em] transition-all ${
-              mode === "login"
-                ? "bg-white text-brown-900 shadow-sm"
-                : "text-brown-400 hover:text-brown-600"
-            }`}
-          >
-            Entrar
-          </button>
-          <button
-            onClick={() => { setMode("register"); setError(""); setRegisterResult(null); }}
-            className={`flex-1 rounded-md py-2.5 font-sans text-[0.75rem] uppercase tracking-[0.1em] transition-all ${
-              mode === "register"
-                ? "bg-white text-brown-900 shadow-sm"
-                : "text-brown-400 hover:text-brown-600"
-            }`}
-          >
-            Criar conta
-          </button>
-        </div>
-
-        {mode === "login" ? (
-          <form onSubmit={handleLogin} className="mt-8 space-y-5">
-            <div>
-              <label htmlFor="login-email" className="font-sans text-sm font-medium text-brown-700">
-                Email
-              </label>
-              <input
-                id="login-email"
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={loading}
-                className="mt-1 w-full rounded-lg border border-brown-100 bg-white px-4 py-3 font-sans text-sm text-brown-900 focus:border-sage focus:outline-none focus:ring-2 focus:ring-sage/30"
-              />
+        {magicLinkSent ? (
+          <div className="mt-8 rounded-lg border border-sage/30 bg-sage/5 p-6 text-center">
+            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-sage/10">
+              <svg
+                className="h-6 w-6 text-sage"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                />
+              </svg>
             </div>
-            <div>
-              <label htmlFor="login-password" className="font-sans text-sm font-medium text-brown-700">
-                Password
-              </label>
-              <input
-                id="login-password"
-                type="password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                disabled={loading}
-                className="mt-1 w-full rounded-lg border border-brown-100 bg-white px-4 py-3 font-sans text-sm text-brown-900 focus:border-sage focus:outline-none focus:ring-2 focus:ring-sage/30"
-              />
-            </div>
-
-            {error && <p className="text-sm text-red-500">{error}</p>}
-
+            <p className="font-sans text-sm font-medium text-sage">
+              Link enviado!
+            </p>
+            <p className="mt-2 font-sans text-sm text-brown-700">
+              Enviámos um link para o teu email. Clica nele para entrar.
+            </p>
+            <p className="mt-1 font-sans text-xs text-brown-400">
+              Verifica também a pasta de spam.
+            </p>
             <button
-              type="submit"
-              disabled={loading}
-              className={`w-full rounded-lg bg-sage px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.12em] text-white transition-colors hover:bg-sage-dark ${loading ? "opacity-60" : ""}`}
+              type="button"
+              onClick={() => {
+                setMagicLinkSent(false);
+                setEmail("");
+              }}
+              className="mt-4 font-sans text-sm font-medium text-sage underline"
             >
-              {loading ? "A entrar..." : "Entrar"}
+              Usar outro email
             </button>
-          </form>
+          </div>
         ) : (
-          <form onSubmit={handleRegister} className="mt-8 space-y-5">
+          <form onSubmit={handleMagicLink} className="mt-8 space-y-5">
             <div>
-              <label htmlFor="reg-email" className="font-sans text-sm font-medium text-brown-700">
+              <label
+                htmlFor="magic-email"
+                className="font-sans text-sm font-medium text-brown-700"
+              >
                 O teu email
               </label>
               <input
-                id="reg-email"
+                id="magic-email"
                 type="email"
                 required
                 value={email}
@@ -162,55 +129,105 @@ export default function EntrarPage() {
 
             {error && <p className="text-sm text-red-500">{error}</p>}
 
-            {registerResult ? (
-              <div className="rounded-lg border border-sage/30 bg-sage/5 p-5">
-                {registerResult.existing ? (
-                  <>
-                    <p className="font-sans text-sm text-brown-700">
-                      {registerResult.message}
-                    </p>
-                    <button
-                      type="button"
-                      onClick={() => { setMode("login"); setRegisterResult(null); }}
-                      className="mt-3 font-sans text-sm font-medium text-sage underline"
-                    >
-                      Ir para login
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <p className="font-sans text-sm font-medium text-sage">
-                      Conta criada!
-                    </p>
-                    <p className="mt-2 font-sans text-sm text-brown-700">
-                      A tua password temporária:
-                    </p>
-                    <p className="mt-1 rounded bg-white px-3 py-2 font-mono text-base font-bold text-brown-900">
-                      {registerResult.password}
-                    </p>
-                    <p className="mt-2 font-sans text-xs text-brown-500">
-                      Guarda esta password. Usa-a para entrar na tua área.
-                    </p>
-                    <button
-                      type="button"
-                      onClick={() => { setMode("login"); setRegisterResult(null); }}
-                      className="mt-4 w-full rounded-lg bg-sage px-6 py-3 font-sans text-[0.8rem] font-medium uppercase tracking-[0.12em] text-white transition-colors hover:bg-sage-dark"
-                    >
-                      Entrar agora
-                    </button>
-                  </>
-                )}
-              </div>
-            ) : (
-              <button
-                type="submit"
-                disabled={loading}
-                className={`w-full rounded-lg bg-sage px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.12em] text-white transition-colors hover:bg-sage-dark ${loading ? "opacity-60" : ""}`}
-              >
-                {loading ? "A criar..." : "Criar conta grátis"}
-              </button>
-            )}
+            <button
+              type="submit"
+              disabled={loading}
+              className={`w-full rounded-lg bg-sage px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.12em] text-white transition-colors hover:bg-sage-dark ${loading ? "opacity-60" : ""}`}
+            >
+              {loading ? "A enviar..." : "Entrar com link mágico"}
+            </button>
           </form>
+        )}
+
+        {/* Divider */}
+        {!magicLinkSent && (
+          <>
+            <div className="mt-8 flex items-center gap-4">
+              <div className="h-px flex-1 bg-brown-100" />
+              <span className="font-sans text-xs uppercase tracking-widest text-brown-300">
+                ou
+              </span>
+              <div className="h-px flex-1 bg-brown-100" />
+            </div>
+
+            {/* Password fallback - collapsed by default */}
+            <div className="mt-6">
+              <button
+                type="button"
+                onClick={() => setShowPasswordFallback(!showPasswordFallback)}
+                className="flex w-full items-center justify-center gap-2 font-sans text-sm text-brown-400 transition-colors hover:text-brown-600"
+              >
+                Entrar com password
+                <svg
+                  className={`h-4 w-4 transition-transform ${showPasswordFallback ? "rotate-180" : ""}`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              </button>
+
+              {showPasswordFallback && (
+                <form
+                  onSubmit={handlePasswordLogin}
+                  className="mt-4 space-y-4 rounded-lg border border-brown-100 bg-white/50 p-5"
+                >
+                  <div>
+                    <label
+                      htmlFor="fallback-email"
+                      className="font-sans text-sm font-medium text-brown-700"
+                    >
+                      Email
+                    </label>
+                    <input
+                      id="fallback-email"
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      disabled={passwordLoading}
+                      className="mt-1 w-full rounded-lg border border-brown-100 bg-white px-4 py-3 font-sans text-sm text-brown-900 focus:border-sage focus:outline-none focus:ring-2 focus:ring-sage/30"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="fallback-password"
+                      className="font-sans text-sm font-medium text-brown-700"
+                    >
+                      Password
+                    </label>
+                    <input
+                      id="fallback-password"
+                      type="password"
+                      required
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      disabled={passwordLoading}
+                      className="mt-1 w-full rounded-lg border border-brown-100 bg-white px-4 py-3 font-sans text-sm text-brown-900 focus:border-sage focus:outline-none focus:ring-2 focus:ring-sage/30"
+                    />
+                  </div>
+
+                  {passwordError && (
+                    <p className="text-sm text-red-500">{passwordError}</p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={passwordLoading}
+                    className={`w-full rounded-lg border border-sage bg-white px-8 py-3 font-sans text-[0.8rem] font-medium uppercase tracking-[0.12em] text-sage transition-colors hover:bg-sage/5 ${passwordLoading ? "opacity-60" : ""}`}
+                  >
+                    {passwordLoading ? "A entrar..." : "Entrar"}
+                  </button>
+                </form>
+              )}
+            </div>
+          </>
         )}
       </div>
     </section>
