@@ -6,13 +6,14 @@ import Link from "next/link";
 import { useAuth } from "@/components/AuthProvider";
 
 export default function RegistarPage() {
-  const { user } = useAuth();
+  const { user, signIn } = useAuth();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   if (user) {
     router.push("/membro");
@@ -39,8 +40,22 @@ export default function RegistarPage() {
         return;
       }
 
-      // Account created successfully - redirect to login
-      router.push("/entrar?registered=true");
+      // Account created successfully! Now auto-login
+      setSuccess(true);
+
+      // Wait a moment for account to be fully created
+      await new Promise(resolve => setTimeout(resolve, 500));
+
+      // Auto-login with the credentials
+      const { error: loginError } = await signIn(email, password);
+
+      if (loginError) {
+        // Login failed, redirect to login page with success message
+        router.push("/entrar?registered=true&email=" + encodeURIComponent(email));
+      } else {
+        // Login successful! Redirect to member area
+        router.push("/membro");
+      }
     } catch {
       setError("Erro de ligação. Tenta novamente.");
       setLoading(false);
@@ -57,8 +72,33 @@ export default function RegistarPage() {
           Regista-te para acederes às experiências e conteúdos.
         </p>
 
-        <form onSubmit={handleRegister} className="mt-8 space-y-5">
-          <div>
+        {success ? (
+          <div className="mt-8 rounded-lg border border-sage/30 bg-sage/5 p-6 text-center">
+            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-sage/10">
+              <svg
+                className="h-6 w-6 text-sage"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <p className="font-sans text-sm font-medium text-sage">
+              Conta criada com sucesso!
+            </p>
+            <p className="mt-2 font-sans text-sm text-brown-700">
+              A entrar automaticamente...
+            </p>
+          </div>
+        ) : (
+          <form onSubmit={handleRegister} className="mt-8 space-y-5">
+            <div>
             <label
               htmlFor="email"
               className="font-sans text-sm font-medium text-brown-700"
@@ -154,7 +194,9 @@ export default function RegistarPage() {
             {loading ? "A criar conta..." : "Criar conta"}
           </button>
         </form>
+        )}
 
+        {!success && (
         <div className="mt-6 text-center">
           <p className="font-sans text-sm text-brown-600">
             Já tens conta?{" "}
@@ -166,6 +208,7 @@ export default function RegistarPage() {
             </Link>
           </p>
         </div>
+        )}
       </div>
     </section>
   );

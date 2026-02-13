@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/components/AuthProvider";
 import { supabase } from "@/lib/supabase";
@@ -9,6 +9,7 @@ import { supabase } from "@/lib/supabase";
 export default function EntrarPage() {
   const { user, signIn } = useAuth();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -18,6 +19,18 @@ export default function EntrarPage() {
   const [passwordLoading, setPasswordLoading] = useState(false);
   const [passwordError, setPasswordError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+  useEffect(() => {
+    if (searchParams.get("registered") === "true") {
+      setShowSuccessMessage(true);
+      const emailParam = searchParams.get("email");
+      if (emailParam) {
+        setEmail(decodeURIComponent(emailParam));
+        setShowPasswordFallback(true);
+      }
+    }
+  }, [searchParams]);
 
   if (user) {
     router.push("/membro");
@@ -70,6 +83,32 @@ export default function EntrarPage() {
         <p className="mt-3 text-center text-brown-600">
           Acede à tua experiência — audiobook, práticas, módulos.
         </p>
+
+        {showSuccessMessage && (
+          <div className="mt-6 rounded-lg border border-sage/30 bg-sage/5 p-4 text-center">
+            <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-sage/10">
+              <svg
+                className="h-5 w-5 text-sage"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <p className="font-sans text-sm font-medium text-sage">
+              Conta criada com sucesso! 🎉
+            </p>
+            <p className="mt-1 font-sans text-xs text-brown-600">
+              Agora faz login abaixo com a tua password
+            </p>
+          </div>
+        )}
 
         {magicLinkSent ? (
           <div className="mt-8 rounded-lg border border-sage/30 bg-sage/5 p-6 text-center">
