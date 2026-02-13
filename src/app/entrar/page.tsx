@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/components/AuthProvider";
 import { supabase } from "@/lib/supabase";
 
-export default function EntrarPage() {
+function EntrarContent() {
   const { user, signIn } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -335,5 +335,19 @@ export default function EntrarPage() {
         </div>
       </div>
     </section>
+  );
+}
+
+export default function EntrarPage() {
+  return (
+    <Suspense fallback={
+      <section className="bg-cream px-6 py-24 sm:py-32">
+        <div className="mx-auto max-w-md text-center">
+          <div className="h-8 w-8 animate-spin rounded-full border-4 border-sage border-t-transparent mx-auto"></div>
+        </div>
+      </section>
+    }>
+      <EntrarContent />
+    </Suspense>
   );
 }
