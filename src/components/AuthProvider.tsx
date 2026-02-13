@@ -9,6 +9,14 @@ type Profile = {
   email: string;
   is_admin: boolean;
   subscription_status: string;
+  has_book_access: boolean;
+  has_mirrors_access: boolean;
+  has_audiobook_access: boolean;
+  purchased_products: Array<{
+    type: string;
+    date: string;
+    code?: string;
+  }>;
 };
 
 type AuthContextType = {

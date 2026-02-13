@@ -44,13 +44,7 @@ export default function Header() {
             </Link>
           ))}
           <Link
-            href="/livro"
-            className="rounded-md bg-gradient-to-r from-purple-600 to-purple-800 px-5 py-2 font-sans text-[0.75rem] uppercase tracking-[0.12em] text-white transition-all hover:scale-105 hover:shadow-lg"
-          >
-            ✨ Ler Online
-          </Link>
-          <Link
-            href={user ? "/membro" : "/login"}
+            href={user ? "/membro" : "/entrar"}
             className="rounded-md bg-sage px-5 py-2 font-sans text-[0.75rem] uppercase tracking-[0.12em] text-white transition-colors hover:bg-sage-dark"
           >
             {user ? "Minha Área" : "Entrar"}
@@ -82,14 +76,7 @@ export default function Header() {
               </Link>
             ))}
             <Link
-              href="/livro"
-              onClick={() => setIsOpen(false)}
-              className="rounded-md bg-gradient-to-r from-purple-600 to-purple-800 px-5 py-3 text-center font-sans text-sm uppercase tracking-[0.1em] text-white"
-            >
-              ✨ Ler Online
-            </Link>
-            <Link
-              href={user ? "/membro" : "/login"}
+              href={user ? "/membro" : "/entrar"}
               onClick={() => setIsOpen(false)}
               className="rounded-md bg-sage px-5 py-3 text-center font-sans text-sm uppercase tracking-[0.1em] text-white"
             >

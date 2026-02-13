@@ -66,9 +66,10 @@ function EntrarContent() {
     setPasswordLoading(true);
 
     const { error: err } = await signIn(email, password);
+    setPasswordLoading(false);
+
     if (err) {
       setPasswordError("Email ou password incorrectos. Tenta novamente.");
-      setPasswordLoading(false);
     } else {
       router.push("/membro");
     }

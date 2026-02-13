@@ -14,7 +14,7 @@ export default function LivroMandalaPage() {
 
   useEffect(() => {
     if (!loading && !user) {
-      router.push('/login')
+      router.push('/entrar')
     }
   }, [user, loading, router])
 
