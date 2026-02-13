@@ -23,17 +23,20 @@ export default function ExperienciasPage() {
         <div className="mx-auto max-w-3xl text-center">
           <ScrollReveal>
             <p className="font-sans text-[0.7rem] uppercase tracking-[0.25em] text-brown-400">
-              Mais do que livros
+              Experiências digitais interativas
             </p>
             <h1 className="mt-4 font-serif text-4xl leading-tight text-cream sm:text-5xl md:text-[3.5rem]">
-              Sete experiências de transformação
+              Sete ficções que transformam
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-brown-200">
-              Cada véu é uma jornada de leitura imersiva — com ficção literária,
-              respiração guiada, diário de reflexão e um espelho que te devolve
-              as tuas próprias palavras. Não lês. Vives.
+              Não são ensaios. São <strong>histórias de ficção literária</strong> onde te reconheces.
+              Cada experiência combina narrativa imersiva, respiração guiada, diário de reflexão
+              e um espelho pessoal. Não lês. Vives.
+            </p>
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-brown-300">
+              <em>(Diferente do livro físico "Os 7 Véus do Despertar" — este é ficção interativa, aquele é filosofia)</em>
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.4}>

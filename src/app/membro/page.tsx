@@ -2,6 +2,7 @@
 
 import { useAuth } from "@/components/AuthProvider";
 import { useEffect, useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { chapters } from "@/data/ebook";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
@@ -10,14 +11,19 @@ import VeilMap from "@/components/VeilMap";
 import UpsellBridge from "@/components/UpsellBridge";
 import ReferralPrompt from "@/components/ReferralPrompt";
 
-const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
-
 export default function MembroDashboard() {
-  const { user } = useAuth();
-  const isAuthor = AUTHOR_EMAILS.includes(user?.email || "");
+  const { user, profile, loading: authLoading } = useAuth();
+  const router = useRouter();
   const [readingProgress, setReadingProgress] = useState<Record<string, boolean>>({});
   const [journalCount, setJournalCount] = useState(0);
   const [loading, setLoading] = useState(true);
+
+  // Redirect admin users to admin dashboard
+  useEffect(() => {
+    if (!authLoading && profile?.is_admin) {
+      router.push("/admin");
+    }
+  }, [profile, authLoading, router]);
 
   const loadProgress = useCallback(async () => {
     const session = await supabase.auth.getSession();
@@ -70,51 +76,15 @@ export default function MembroDashboard() {
         {/* Welcome */}
         <div className="text-center">
           <p className="font-sans text-[0.65rem] uppercase tracking-[0.25em] text-sage">
-            {isAuthor ? "Olá, Vivianne" : "Bem-vinda de volta"}
+            Bem-vinda de volta
           </p>
           <h1 className="mt-3 font-serif text-3xl text-brown-900">
-            {isAuthor ? "O teu universo" : "A tua experiência"}
+            A tua experiência
           </h1>
           <p className="mt-2 font-serif text-base text-brown-500">
-            {isAuthor
-              ? "Tudo o que criaste, ao alcance de um clique."
-              : "Vai ao teu ritmo. Sem pressa. Sem expectativas. Apenas presença."}
+            Vai ao teu ritmo. Sem pressa. Sem expectativas. Apenas presença.
           </p>
         </div>
-
-        {/* Author tools — only for author */}
-        {isAuthor && (
-          <div className="mt-8 rounded-2xl border border-sage/20 bg-sage/5 p-6">
-            <p className="font-sans text-[0.65rem] font-medium uppercase tracking-[0.2em] text-sage">
-              Ferramentas de autora
-            </p>
-            <div className="mt-4 grid gap-3 sm:grid-cols-3">
-              <Link
-                href="/painel"
-                className="rounded-xl bg-white p-4 text-center shadow-sm transition-shadow hover:shadow-md"
-              >
-                <p className="font-serif text-base text-brown-800">Painel Marketing</p>
-                <p className="mt-1 font-sans text-xs text-brown-400">Calendário, conteúdo, lançamentos</p>
-              </Link>
-              <a
-                href="/downloads/Os_7_Veus_ebook.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-xl bg-white p-4 text-center shadow-sm transition-shadow hover:shadow-md"
-              >
-                <p className="font-serif text-base text-brown-800">Ebook PDF</p>
-                <p className="mt-1 font-sans text-xs text-brown-400">Descarregar Os 7 Véus</p>
-              </a>
-              <Link
-                href="/membro/conta"
-                className="rounded-xl bg-white p-4 text-center shadow-sm transition-shadow hover:shadow-md"
-              >
-                <p className="font-serif text-base text-brown-800">A tua conta</p>
-                <p className="mt-1 font-sans text-xs text-brown-400">Perfil, acessos, progresso</p>
-              </Link>
-            </div>
-          </div>
-        )}
 
         {/* Main reading card */}
         <div className="mt-10 overflow-hidden rounded-2xl bg-white shadow-sm">
@@ -225,16 +195,16 @@ export default function MembroDashboard() {
           </Link>
         </div>
 
-        {/* Upsell Bridge — contextual suggestion (not for author) */}
-        {!loading && !isAuthor && (
+        {/* Upsell Bridge — contextual suggestion */}
+        {!loading && (
           <UpsellBridge
             journalCount={journalCount}
             chaptersCompleted={completedChapters}
           />
         )}
 
-        {/* Referral Prompt — appears after engagement (not for author) */}
-        {!loading && !isAuthor && (
+        {/* Referral Prompt — appears after engagement */}
+        {!loading && (
           <ReferralPrompt chaptersCompleted={completedChapters} />
         )}
 

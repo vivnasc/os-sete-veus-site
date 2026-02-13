@@ -36,7 +36,7 @@ export default function ComprarColecaoPage() {
           phone,
           access_type_code: "colecao-sete-veus",
           payment_method: paymentMethod,
-          amount: 2500, // MZN
+          amount: 9685, // MZN (149 USD x 65)
           currency: "MZN",
         }),
       });
@@ -79,9 +79,9 @@ export default function ComprarColecaoPage() {
                 Investimento
               </p>
               <p className="mt-2 font-serif text-5xl text-brown-900">
-                2.500<span className="text-2xl"> MZN</span>
+                9.685<span className="text-2xl"> MZN</span>
               </p>
-              <p className="mt-1 text-sm text-brown-500">≈ 50 USD</p>
+              <p className="mt-1 text-sm text-brown-500">≈ 149 USD</p>
             </div>
           </div>
 
