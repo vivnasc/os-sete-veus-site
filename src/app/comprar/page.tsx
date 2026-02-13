@@ -20,23 +20,6 @@ export default function ComprarPage() {
   const [moeda, setMoeda] = useState<'MZN' | 'USD'>('MZN')
 
   const produtos: Product[] = [
-    // LIVRO DIGITAL
-    {
-      id: 'livro-7-veus',
-      tipo: 'livro-digital',
-      nome: 'Os 7 Véus do Despertar',
-      descricao: 'Livro filosófico digital completo sobre despertar de consciência',
-      preco_mzn: 1500,
-      preco_usd: 23,
-      destaque: '📖 Livro Completo',
-      inclui: [
-        'Livro digital completo',
-        'Acesso vitalício no site',
-        'Leitura contemplativa',
-        'Modo noturno',
-      ],
-    },
-
     // COLEÇÃO COMPLETA
     {
       id: 'colecao-completa',
@@ -47,12 +30,11 @@ export default function ComprarPage() {
       preco_usd: 203,
       destaque: '🌈 MELHOR OFERTA - Poupa 30%!',
       inclui: [
-        'As 7 experiências digitais',
+        'As 7 experiências digitais completas',
         '7 capítulos de ficção por experiência',
         'Práticas de respiração guiada',
         'Diário de reflexão pessoal',
         'Acesso vitalício no site',
-        'BÓNUS: Livro Digital incluído',
       ],
     },
 
@@ -60,56 +42,56 @@ export default function ComprarPage() {
     {
       id: 'bundle-raiz',
       tipo: 'bundle',
-      nome: 'Bundle Raiz (3 Primeiros Véus)',
-      descricao: 'Véu da Ilusão + Véu do Medo + Véu do Desejo',
-      preco_mzn: 5655,
-      preco_usd: 87,
+      nome: 'Bundle Início (3 Primeiras Experiências)',
+      descricao: 'Ilusão + Medo + Desejo',
+      preco_mzn: 5085,
+      preco_usd: 78,
       destaque: 'Poupa 10%',
       inclui: [
-        'Véu 1: Permanência (Ilusão)',
-        'Véu 2: Memória (Medo)',
-        'Véu 3: Turbilhão (Desejo)',
+        'O Véu da Ilusão',
+        'O Véu do Medo',
+        'O Véu do Desejo',
         'Práticas guiadas',
         'Diário de reflexão',
       ],
     },
     {
-      id: 'bundle-coracao',
+      id: 'bundle-meio',
       tipo: 'bundle',
-      nome: 'Bundle Coração (Véus 4-5)',
-      descricao: 'Véu do Esforço + Véu da Desolação',
-      preco_mzn: 3770,
-      preco_usd: 58,
+      nome: 'Bundle Transformação (Experiências 4-5)',
+      descricao: 'Culpa + Pressa',
+      preco_mzn: 3395,
+      preco_usd: 52,
       destaque: 'Poupa 10%',
       inclui: [
-        'Véu 4: Esforço (Busca)',
-        'Véu 5: Desolação (Vazio)',
+        'O Véu da Culpa',
+        'O Véu da Pressa',
         'Práticas guiadas',
         'Diário de reflexão',
       ],
     },
     {
-      id: 'bundle-visao',
+      id: 'bundle-fim',
       tipo: 'bundle',
-      nome: 'Bundle Visão (2 Últimos Véus)',
-      descricao: 'Véu do Horizonte + Véu da Dualidade',
-      preco_mzn: 3770,
-      preco_usd: 58,
+      nome: 'Bundle Integração (2 Últimas Experiências)',
+      descricao: 'Comparação + Controlo',
+      preco_mzn: 3395,
+      preco_usd: 52,
       destaque: 'Poupa 10%',
       inclui: [
-        'Véu 6: Horizonte (Limite)',
-        'Véu 7: Dualidade (Separação)',
+        'O Véu da Comparação',
+        'O Véu do Controlo',
         'Práticas guiadas',
         'Diário de reflexão',
       ],
     },
 
-    // VÉUS INDIVIDUAIS
+    // EXPERIÊNCIAS INDIVIDUAIS
     {
-      id: 'veu-1',
+      id: 'exp-1',
       tipo: 'veu-individual',
-      nome: 'Véu 1: Permanência',
-      descricao: 'A ilusão de um "eu" fixo',
+      nome: 'O Véu da Ilusão',
+      descricao: 'Quando a vida que tens não foi a que escolheste',
       preco_mzn: 1885,
       preco_usd: 29,
       veuNumero: 1,
@@ -121,10 +103,10 @@ export default function ComprarPage() {
       ],
     },
     {
-      id: 'veu-2',
+      id: 'exp-2',
       tipo: 'veu-individual',
-      nome: 'Véu 2: Memória',
-      descricao: 'As histórias do passado',
+      nome: 'O Véu do Medo',
+      descricao: 'Quando o medo decide por ti',
       preco_mzn: 1885,
       preco_usd: 29,
       veuNumero: 2,
@@ -136,10 +118,10 @@ export default function ComprarPage() {
       ],
     },
     {
-      id: 'veu-3',
+      id: 'exp-3',
       tipo: 'veu-individual',
-      nome: 'Véu 3: Turbilhão',
-      descricao: 'A identificação com pensamentos',
+      nome: 'O Véu do Desejo',
+      descricao: 'Quando desejas tudo menos o que precisas',
       preco_mzn: 1885,
       preco_usd: 29,
       veuNumero: 3,
@@ -151,10 +133,10 @@ export default function ComprarPage() {
       ],
     },
     {
-      id: 'veu-4',
+      id: 'exp-4',
       tipo: 'veu-individual',
-      nome: 'Véu 4: Esforço',
-      descricao: 'A busca incessante',
+      nome: 'O Véu da Culpa',
+      descricao: 'Quando carregas o peso do que não é teu',
       preco_mzn: 1885,
       preco_usd: 29,
       veuNumero: 4,
@@ -166,10 +148,10 @@ export default function ComprarPage() {
       ],
     },
     {
-      id: 'veu-5',
+      id: 'exp-5',
       tipo: 'veu-individual',
-      nome: 'Véu 5: Desolação',
-      descricao: 'O medo do vazio',
+      nome: 'O Véu da Pressa',
+      descricao: 'Quando viver se torna correr',
       preco_mzn: 1885,
       preco_usd: 29,
       veuNumero: 5,
@@ -181,10 +163,10 @@ export default function ComprarPage() {
       ],
     },
     {
-      id: 'veu-6',
+      id: 'exp-6',
       tipo: 'veu-individual',
-      nome: 'Véu 6: Horizonte',
-      descricao: 'A ilusão do fim',
+      nome: 'O Véu da Comparação',
+      descricao: 'Quando a tua vida nunca é suficiente',
       preco_mzn: 1885,
       preco_usd: 29,
       veuNumero: 6,
@@ -196,10 +178,10 @@ export default function ComprarPage() {
       ],
     },
     {
-      id: 'veu-7',
+      id: 'exp-7',
       tipo: 'veu-individual',
-      nome: 'Véu 7: Dualidade',
-      descricao: 'A separação eu/mundo',
+      nome: 'O Véu do Controlo',
+      descricao: 'Quando tentas segurar o que sempre escapa',
       preco_mzn: 1885,
       preco_usd: 29,
       veuNumero: 7,
@@ -263,25 +245,6 @@ export default function ComprarPage() {
 
       {/* Produtos */}
       <div className="max-w-7xl mx-auto px-6 py-16">
-        {/* Livro Digital */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-serif text-brown-900 mb-8 text-center">
-            📖 Livro Filosófico Digital
-          </h2>
-          <div className="max-w-2xl mx-auto">
-            {produtos
-              .filter((p) => p.tipo === 'livro-digital')
-              .map((produto) => (
-                <ProductCard
-                  key={produto.id}
-                  produto={produto}
-                  moeda={moeda}
-                  onComprar={handleComprar}
-                />
-              ))}
-          </div>
-        </section>
-
         {/* Coleção Completa */}
         <section className="mb-16">
           <h2 className="text-3xl font-serif text-brown-900 mb-8 text-center">
