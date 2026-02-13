@@ -36,19 +36,7 @@ export default function LivroFisicoPage() {
             />
           </div>
 
-          <div className="mx-auto mt-8 max-w-lg rounded-xl border-2 border-sage/40 bg-sage/10 px-6 py-4">
-            <p className="text-center font-sans text-xs font-bold uppercase tracking-wider text-sage">
-              ✨ Bónus incluído ✨
-            </p>
-            <p className="mt-2 text-center font-serif text-lg leading-relaxed text-brown-900">
-              Compra este livro e ganha <strong className="text-sage">acesso GRÁTIS</strong> às 7 experiências digitais interativas
-            </p>
-            <p className="mt-1 text-center text-sm text-brown-600">
-              (valor normal: 9.685 MZN — oferecemos totalmente grátis!)
-            </p>
-          </div>
-
-          <p className="mx-auto mt-8 max-w-lg leading-relaxed text-brown-300">
+          <p className="mx-auto mt-10 max-w-lg leading-relaxed text-brown-200">
             Uma travessia de dissolução e reconhecimento. Não um manual de respostas,
             mas um convite a olhar mais fundo — e a soltar o que perdeu verdade.
           </p>
@@ -132,27 +120,16 @@ export default function LivroFisicoPage() {
             <ul className="mt-5 space-y-2">
               {[
                 "Edição impressa de alta qualidade",
+                "Versão digital do livro incluída",
                 "Entrega em todo Moçambique",
                 "Encomenda directa via WhatsApp",
               ].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-brown-600">
+                <li key={item} className="flex items-start gap-2 text-sm text-brown-700">
                   <span className="mt-0.5 text-sage">&#10003;</span>
-                  {item}
+                  <span className="font-medium">{item}</span>
                 </li>
               ))}
             </ul>
-            <div className="mt-5 rounded-lg border border-sage/30 bg-sage/5 p-4">
-              <p className="flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-wider text-sage">
-                <span>🎁</span>
-                Bónus incluído
-              </p>
-              <p className="mt-2 text-sm font-medium text-brown-900">
-                Acesso GRÁTIS às 7 experiências digitais interativas
-              </p>
-              <p className="mt-1 text-xs text-brown-500">
-                Receberás um código exclusivo para registar e aceder a todas as ficções interativas (valor: 9.685 MZN)
-              </p>
-            </div>
             <div className="mt-6">
               <a
                 href="https://wa.me/258845243875?text=Olá! Quero encomendar o livro físico Os 7 Véus do Despertar"
@@ -170,14 +147,14 @@ export default function LivroFisicoPage() {
         </div>
       </section>
 
-      {/* How to access digital after purchase */}
+      {/* How to access digital version after purchase */}
       <section className="bg-cream-dark px-6 py-24">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-center font-serif text-3xl text-brown-900">
             Depois de comprares o livro físico
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-center leading-relaxed text-brown-600">
-            Como aceder às tuas experiências digitais gratuitas
+            Como aceder à versão digital do livro
           </p>
           <div className="mt-10 grid gap-6 sm:grid-cols-3">
             {[
@@ -193,16 +170,16 @@ export default function LivroFisicoPage() {
               },
               {
                 number: "3",
-                title: "Começa a jornada",
-                desc: "Acede imediatamente às 7 experiências digitais. Para sempre.",
+                title: "Lê digitalmente",
+                desc: "Acede à versão digital do livro 'Os 7 Véus do Despertar' no site. Para sempre.",
               },
             ].map((step) => (
               <div
                 key={step.number}
                 className="rounded-xl border border-brown-100 bg-white p-6 text-center"
               >
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-sage/10">
-                  <span className="font-serif text-xl font-bold text-sage">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brown-800/10">
+                  <span className="font-serif text-xl font-bold text-brown-800">
                     {step.number}
                   </span>
                 </div>
@@ -218,7 +195,7 @@ export default function LivroFisicoPage() {
           <div className="mt-10 text-center">
             <Link
               href="/registar-livro"
-              className="inline-block rounded-lg border-2 border-sage bg-transparent px-8 py-3 font-sans text-sm font-medium uppercase tracking-wider text-sage transition-all hover:bg-sage hover:text-white"
+              className="inline-block rounded-lg border-2 border-brown-700 bg-transparent px-8 py-3 font-sans text-sm font-medium uppercase tracking-wider text-brown-700 transition-all hover:bg-brown-700 hover:text-white"
             >
               Já tenho o código — Registar agora
             </Link>

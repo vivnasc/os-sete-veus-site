@@ -194,36 +194,6 @@ export default function ExperienciasPage() {
           <ScrollReveal delay={0.2}>
             <PricingTiers />
           </ScrollReveal>
-
-          {/* Physical book bonus offer */}
-          <ScrollReveal delay={0.4}>
-            <div className="mx-auto mt-10 max-w-2xl rounded-2xl border-2 border-sage/30 bg-gradient-to-br from-sage/5 to-sage/10 p-8">
-              <div className="text-center">
-                <span className="inline-block rounded-full bg-sage px-4 py-1.5 font-sans text-xs font-bold uppercase tracking-wider text-white">
-                  Oferta Especial
-                </span>
-                <h3 className="mt-4 font-serif text-2xl text-brown-900">
-                  Livro Físico + Todas as Experiências Digitais
-                </h3>
-                <p className="mx-auto mt-3 max-w-md leading-relaxed text-brown-700">
-                  Compra o livro físico <strong>"Os 7 Véus do Despertar"</strong> por apenas <strong>1.500 MZN</strong>
-                  e ganha acesso <strong className="text-sage">GRÁTIS</strong> às 7 experiências digitais
-                  (valor normal: 9.685 MZN).
-                </p>
-                <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                  <Link
-                    href="/livro-fisico"
-                    className="inline-block rounded-lg bg-sage px-8 py-3 font-sans text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-sage-dark"
-                  >
-                    Ver livro físico
-                  </Link>
-                  <p className="text-sm text-brown-500">
-                    Poupa 8.185 MZN
-                  </p>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
         </div>
       </section>
 
