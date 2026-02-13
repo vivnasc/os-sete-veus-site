@@ -1,14 +1,39 @@
 'use client'
 
-import { useParams } from 'next/navigation'
+import { useEffect } from 'react'
+import { useParams, useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useAuth } from '@/components/AuthProvider'
 import livroData from '@/data/livro-7-veus.json'
 
 export default function TransicaoVeuPage() {
   const params = useParams()
+  const { user, loading } = useAuth()
+  const router = useRouter()
   const numeroVeu = parseInt(params.numero as string)
   const veu = livroData.veus[numeroVeu - 1]
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push(`/login?redirect=/livro/veu/${numeroVeu}/transicao`)
+    }
+  }, [user, loading, router, numeroVeu])
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-stone-50 to-stone-100 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
+          <p className="text-stone-600">A carregar...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (!user) {
+    return null
+  }
 
   if (!veu) {
     return <div>Véu não encontrado</div>

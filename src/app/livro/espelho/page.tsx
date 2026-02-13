@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useAuth } from '@/components/AuthProvider'
@@ -14,10 +15,17 @@ type Reflexao = {
 }
 
 export default function EspelhoPage() {
-  const { user } = useAuth()
+  const { user, loading } = useAuth()
+  const router = useRouter()
   const [reflexoes, setReflexoes] = useState<Reflexao[]>([])
   const [reflexoesPorVeu, setReflexoesPorVeu] = useState<Record<number, Reflexao[]>>({})
-  const [loading, setLoading] = useState(true)
+  const [loadingReflexoes, setLoadingReflexoes] = useState(true)
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/login?redirect=/livro/espelho')
+    }
+  }, [user, loading, router])
 
   useEffect(() => {
     if (user) {
@@ -26,7 +34,7 @@ export default function EspelhoPage() {
   }, [user])
 
   const carregarTodasReflexoes = async () => {
-    setLoading(true)
+    setLoadingReflexoes(true)
     const response = await fetch('/api/reflexoes')
     const data = await response.json()
 
@@ -43,7 +51,22 @@ export default function EspelhoPage() {
       })
       setReflexoesPorVeu(porVeu)
     }
-    setLoading(false)
+    setLoadingReflexoes(false)
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-stone-50 to-stone-100 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
+          <p className="text-stone-600">A carregar...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (!user) {
+    return null
   }
 
   const nomeVeus = [
@@ -101,7 +124,7 @@ export default function EspelhoPage() {
         </motion.div>
 
         {/* Reflexões por Véu */}
-        {loading ? (
+        {loadingReflexoes ? (
           <div className="text-center py-12">
             <div className="inline-block animate-spin text-6xl">⚬</div>
             <p className="mt-4 text-white/60">Carregando tua travessia...</p>
