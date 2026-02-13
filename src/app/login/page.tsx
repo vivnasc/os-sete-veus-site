@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { supabase } from '@/lib/supabase'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -25,43 +25,36 @@ export default function LoginPage() {
 
     try {
       if (isLogin) {
-        // Login
-        const result = await signIn('credentials', {
+        // Login com Supabase
+        const { data, error } = await supabase.auth.signInWithPassword({
           email: formData.email,
           password: formData.password,
-          redirect: false,
         })
 
-        if (result?.error) {
+        if (error) {
           setError('Email ou password incorretos')
-        } else {
+        } else if (data.user) {
           router.push('/livro')
           router.refresh()
         }
       } else {
-        // Registro
-        const response = await fetch('/api/register', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
+        // Registro com Supabase
+        const { data, error } = await supabase.auth.signUp({
+          email: formData.email,
+          password: formData.password,
+          options: {
+            data: {
+              name: formData.name,
+            }
+          }
         })
 
-        const data = await response.json()
-
-        if (!response.ok) {
-          setError(data.error || 'Erro ao criar conta')
-        } else {
-          // Após registro, fazer login automático
-          const result = await signIn('credentials', {
-            email: formData.email,
-            password: formData.password,
-            redirect: false,
-          })
-
-          if (!result?.error) {
-            router.push('/livro')
-            router.refresh()
-          }
+        if (error) {
+          setError(error.message)
+        } else if (data.user) {
+          // Login automático após registro
+          router.push('/livro')
+          router.refresh()
         }
       }
     } catch (err) {
