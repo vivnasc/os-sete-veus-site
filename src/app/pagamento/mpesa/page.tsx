@@ -121,7 +121,7 @@ function MpesaContent() {
             <div>
               <p className="text-xs text-brown-500">Número MPesa</p>
               <p className="font-mono text-xl font-medium text-brown-900">
-                +258 [Número da Viviane]
+                +258 851 006 473
               </p>
             </div>
 
@@ -145,7 +145,7 @@ function MpesaContent() {
                 <li className="flex gap-2">
                   <span className="font-medium">3.</span>
                   <span>
-                    Insere o número: <strong>+258 [Número]</strong>
+                    Insere o número: <strong>+258 851 006 473</strong>
                   </span>
                 </li>
                 <li className="flex gap-2">
