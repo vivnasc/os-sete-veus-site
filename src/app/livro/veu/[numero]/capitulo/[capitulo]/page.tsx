@@ -1,13 +1,17 @@
 'use client'
 
 import { useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import { useAuth } from '@/components/AuthProvider'
 import livroData from '@/data/livro-7-veus.json'
 import ReflexoesDrawer from '@/components/ReflexoesDrawer'
 
 export default function CapituloPage() {
+  const { user, loading } = useAuth()
+  const router = useRouter()
   const params = useParams()
   const numeroVeu = parseInt(params.numero as string)
   const numeroCapitulo = parseInt(params.capitulo as string)
@@ -20,6 +24,27 @@ export default function CapituloPage() {
   const [mostrarPausa, setMostrarPausa] = useState(false)
   const [secaoAtual, setSecaoAtual] = useState(0)
   const [paragrafoAtual, setParagrafoAtual] = useState(0)
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/login')
+    }
+  }, [user, loading, router])
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">A carregar...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (!user) {
+    return null
+  }
 
   if (!veu || !capitulo) {
     return <div>Capítulo não encontrado</div>

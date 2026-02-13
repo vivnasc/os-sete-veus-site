@@ -7,6 +7,7 @@ import { useAuth } from "@/components/AuthProvider";
 
 const navLinks = [
   { href: "/", label: "Início" },
+  { href: "/comprar", label: "Comprar" },
   { href: "/livro-fisico", label: "Livro Físico" },
   { href: "/recursos", label: "Recursos" },
   { href: "/sobre", label: "Sobre" },
