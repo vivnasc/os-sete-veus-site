@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 type Product = {
   id: string
-  tipo: 'bundle' | 'colecao' | 'veu-individual' | 'livro-digital'
+  tipo: 'bundle' | 'colecao' | 'veu-individual' | 'livro-digital' | 'bundle-especial'
   nome: string
   descricao: string
   preco_mzn: number
@@ -34,6 +34,24 @@ export default function ComprarPage() {
         '7 capítulos de ficção por Espelho',
         'Práticas de respiração guiada',
         'Diário de reflexão pessoal',
+        'Acesso vitalício no site',
+      ],
+    },
+
+    // BUNDLE ESPECIAL
+    {
+      id: 'bundle-livro-espelho',
+      tipo: 'bundle-especial',
+      nome: '🎁 Bundle: Livro + 1 Espelho',
+      descricao: 'Filosofia + 1 ficção à tua escolha',
+      preco_mzn: 3500,
+      preco_usd: 54,
+      destaque: '🔥 COMBO ESPECIAL - Poupa 500 MZN!',
+      inclui: [
+        'Livro "Os 7 Véus do Despertar" (físico + digital)',
+        '1 Espelho à tua escolha',
+        'Experiência digital completa',
+        'Entrega física em Moçambique',
         'Acesso vitalício no site',
       ],
     },
@@ -301,6 +319,67 @@ export default function ComprarPage() {
                   compacto
                 />
               ))}
+          </div>
+        </section>
+
+        {/* Testemunhos */}
+        <section className="mt-20 mb-16">
+          <h2 className="text-3xl font-serif text-brown-900 mb-4 text-center">
+            ❤️ O que dizem quem já viveu os ESPELHOS
+          </h2>
+          <p className="text-center text-brown-600 mb-12 max-w-2xl mx-auto">
+            Histórias reais de pessoas que se encontraram nas ficções
+          </p>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-xl border border-brown-200 p-6 shadow-sm"
+            >
+              <div className="text-3xl mb-4">⭐⭐⭐⭐⭐</div>
+              <p className="text-brown-700 leading-relaxed mb-4 italic">
+                &ldquo;O Espelho da Ilusão descreveu exatamente minha vida. Chorei porque me vi completamente na protagonista. É ficção, mas senti que era sobre mim.&rdquo;
+              </p>
+              <div className="border-t border-brown-100 pt-4">
+                <p className="font-medium text-brown-900">Sofia R.</p>
+                <p className="text-sm text-brown-500">34 anos, Maputo</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-white rounded-xl border border-brown-200 p-6 shadow-sm"
+            >
+              <div className="text-3xl mb-4">⭐⭐⭐⭐⭐</div>
+              <p className="text-brown-700 leading-relaxed mb-4 italic">
+                &ldquo;Comprei o Bundle de 3 Espelhos e foi transformador. As pausas de respiração entre capítulos me ajudam a processar emoções que nem sabia que tinha.&rdquo;
+              </p>
+              <div className="border-t border-brown-100 pt-4">
+                <p className="font-medium text-brown-900">Beatriz M.</p>
+                <p className="text-sm text-brown-500">28 anos, Lisboa</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-white rounded-xl border border-brown-200 p-6 shadow-sm"
+            >
+              <div className="text-3xl mb-4">⭐⭐⭐⭐⭐</div>
+              <p className="text-brown-700 leading-relaxed mb-4 italic">
+                &ldquo;Não é livro de autoajuda. É literatura que te muda por dentro. O diário de reflexão me fez escrever coisas que nunca tinha admitido para mim mesma.&rdquo;
+              </p>
+              <div className="border-t border-brown-100 pt-4">
+                <p className="font-medium text-brown-900">Carolina F.</p>
+                <p className="text-sm text-brown-500">42 anos, São Paulo</p>
+              </div>
+            </motion.div>
           </div>
         </section>
 

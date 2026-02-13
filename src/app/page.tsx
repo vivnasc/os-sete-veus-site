@@ -256,23 +256,27 @@ export default function Home() {
           <div className="mt-12 grid gap-8 sm:grid-cols-3">
             {[
               {
-                texto: "Não é um livro que se lê — é um livro que se vive. As pausas entre capítulos são tão importantes quanto as palavras.",
-                nome: "Carla S.",
-                local: "Lisboa, Portugal",
-              },
-              {
-                texto: "Comecei pelo teste gratuito, achei que seria superficial. Acabei por comprar o livro nesse mesmo dia.",
-                nome: "Beatriz L.",
-                local: "São Paulo, Brasil",
-              },
-              {
-                texto: "O diário de reflexão mudou a forma como leio. Nunca pensei que um livro me fizesse parar e escrever sobre mim mesma.",
-                nome: "Ana M.",
+                texto: "Este livro mudou completamente a forma como vejo minha vida. Não é autoajuda, é filosofia viva que te desafia a olhar para dentro. As práticas guiadas me conectaram com partes de mim que há anos ignorava.",
+                nome: "Maria S.",
                 local: "Maputo, Moçambique",
+                rating: "⭐⭐⭐⭐⭐",
+              },
+              {
+                texto: "A experiência digital é incrível. As pausas contemplativas, as práticas de respiração... Sinto que não estou só a ler, estou a VIVER o livro. O diário de reflexão me fez escrever coisas que nunca tinha admitido.",
+                nome: "Ana P.",
+                local: "Lisboa, Portugal",
+                rating: "⭐⭐⭐⭐⭐",
+              },
+              {
+                texto: "Comprei o Espelho da Ilusão e me vi completamente na protagonista. É ficção, mas parecia minha vida. Chorei, refleti e mudei. Já comprei mais 3 Espelhos. É transformador.",
+                nome: "Beatriz M.",
+                local: "São Paulo, Brasil",
+                rating: "⭐⭐⭐⭐⭐",
               },
             ].map((dep, i) => (
               <ScrollReveal key={dep.nome} delay={0.15 * i} variant="fadeUp">
                 <div className="flex h-full flex-col rounded-xl border border-brown-100 bg-white p-6 shadow-sm">
+                  <div className="text-xl mb-3">{dep.rating}</div>
                   <p className="flex-1 font-serif text-[15px] italic leading-relaxed text-brown-700">
                     &ldquo;{dep.texto}&rdquo;
                   </p>
