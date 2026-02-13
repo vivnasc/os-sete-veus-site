@@ -15,13 +15,13 @@ export default function EdicaoFisicaPage() {
     },
     {
       icon: "🌐",
-      title: "Acesso GRÁTIS à Experiência Digital",
-      description: "Toda a experiência online 'Os 7 Véus do Despertar' INCLUÍDA",
+      title: "Acesso GRÁTIS à Experiência Digital Completa",
+      description: "Toda a plataforma online 'Os 7 Véus do Despertar' incluída (mesmo valor que a experiência digital)",
     },
     {
-      icon: "📥",
-      title: "eBook Incluído",
-      description: "Download gratuito do livro em formato digital",
+      icon: "📱",
+      title: "Leitura Online Integrada",
+      description: "Leitor integrado na plataforma - sem downloads, sempre disponível",
     },
     {
       icon: "🎨",
@@ -69,7 +69,7 @@ export default function EdicaoFisicaPage() {
 
               <div className="mt-6 rounded-lg bg-green-50 border border-green-200 p-4">
                 <p className="text-forest font-medium">
-                  🎁 <strong>BÓNUS:</strong> Ao comprar o livro físico, ganhas acesso GRÁTIS à experiência digital completa (valor €9,90)!
+                  🎁 <strong>BÓNUS:</strong> Ao comprar o livro físico, ganhas acesso GRÁTIS à experiência digital completa (mesmo valor da experiência da coleção)!
                 </p>
               </div>
 
@@ -77,7 +77,7 @@ export default function EdicaoFisicaPage() {
                 Uma viagem transformadora através dos sete véus da consciência.
                 Esta edição física especial inclui conteúdo exclusivo,
                 ilustrações originais, acabamento premium, E acesso à experiência
-                digital interativa completa.
+                digital interativa completa — tudo num só lugar.
               </p>
 
               <div className="mt-8 space-y-3">
@@ -195,10 +195,10 @@ export default function EdicaoFisicaPage() {
           </h2>
           <p className="mt-4 text-lg text-sage">
             Ao comprar o livro físico, ganhas acesso imediato à plataforma online
-            com conteúdos exclusivos, meditações guiadas, e comunidade privada.
+            com leitura integrada, meditações guiadas, reflexões e comunidade privada.
           </p>
           <p className="mt-2 text-sm text-sage/70">
-            (Valor €9,90 - GRÁTIS para quem comprar o livro físico)
+            (Mesmo valor que a experiência digital - GRÁTIS para quem comprar o livro físico)
           </p>
 
           <div className="mt-8">
