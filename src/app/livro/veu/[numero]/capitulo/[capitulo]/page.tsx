@@ -2,15 +2,17 @@
 
 import { useParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { useAuth } from '@/components/AuthProvider'
+import { useAccess } from '@/hooks/useAccess'
 import livroData from '@/data/livro-7-veus.json'
 import ReflexoesDrawer from '@/components/ReflexoesDrawer'
 
 export default function CapituloPage() {
   const { user, loading } = useAuth()
+  const { hasBookAccess, isLoading: accessLoading } = useAccess()
   const router = useRouter()
   const params = useParams()
   const numeroVeu = parseInt(params.numero as string)
@@ -22,39 +24,16 @@ export default function CapituloPage() {
   const [modoLeitura, setModoLeitura] = useState<'contemplativo' | 'normal'>('contemplativo')
   const [modoNoturno, setModoNoturno] = useState(false)
   const [mostrarPausa, setMostrarPausa] = useState(false)
-  const [secaoAtual, setSecaoAtual] = useState(0)
   const [paragrafoAtual, setParagrafoAtual] = useState(0)
 
-  useEffect(() => {
-    if (!loading && !user) {
-      router.push('/entrar')
-    }
-  }, [user, loading, router])
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">A carregar...</p>
-        </div>
-      </div>
-    )
-  }
-
-  if (!user) {
-    return null
-  }
-
-  if (!veu || !capitulo) {
-    return <div>Capítulo não encontrado</div>
-  }
-
   // Dividir conteúdo em parágrafos
-  const paragrafos = capitulo.conteudo
-    .split('\n\n')
-    .filter(p => p.trim().length > 0)
-    .map(p => p.trim())
+  const paragrafos = useMemo(() => {
+    if (!capitulo) return []
+    return capitulo.conteudo
+      .split('\n\n')
+      .filter(p => p.trim().length > 0)
+      .map(p => p.trim())
+  }, [capitulo])
 
   // Cores por véu
   const coresVeu = [
@@ -69,6 +48,18 @@ export default function CapituloPage() {
 
   const cores = coresVeu[numeroVeu - 1]
 
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/entrar')
+    }
+  }, [user, loading, router])
+
+  useEffect(() => {
+    if (!loading && !accessLoading && user && !hasBookAccess) {
+      router.push('/comprar')
+    }
+  }, [user, loading, accessLoading, hasBookAccess, router])
+
   // Mostrar pausa a cada 3 parágrafos
   useEffect(() => {
     if (paragrafoAtual > 0 && paragrafoAtual % 3 === 0 && modoLeitura === 'contemplativo') {
@@ -77,6 +68,25 @@ export default function CapituloPage() {
       return () => clearTimeout(timer)
     }
   }, [paragrafoAtual, modoLeitura])
+
+  if (loading || accessLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">A carregar...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (!user || !hasBookAccess) {
+    return null
+  }
+
+  if (!veu || !capitulo) {
+    return <div>Capítulo não encontrado</div>
+  }
 
   // Próximo parágrafo
   const proximoParagrafo = () => {

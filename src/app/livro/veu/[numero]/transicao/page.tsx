@@ -6,10 +6,12 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useAuth } from '@/components/AuthProvider'
+import { useAccess } from '@/hooks/useAccess'
 import livroData from '@/data/livro-7-veus.json'
 
 export default function TransicaoVeuPage() {
   const { user, loading } = useAuth()
+  const { hasBookAccess, isLoading: accessLoading } = useAccess()
   const router = useRouter()
   const params = useParams()
   const numeroVeu = parseInt(params.numero as string)
@@ -21,7 +23,13 @@ export default function TransicaoVeuPage() {
     }
   }, [user, loading, router])
 
-  if (loading) {
+  useEffect(() => {
+    if (!loading && !accessLoading && user && !hasBookAccess) {
+      router.push('/comprar')
+    }
+  }, [user, loading, accessLoading, hasBookAccess, router])
+
+  if (loading || accessLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -32,7 +40,7 @@ export default function TransicaoVeuPage() {
     )
   }
 
-  if (!user) {
+  if (!user || !hasBookAccess) {
     return null
   }
 
@@ -120,10 +128,17 @@ export default function TransicaoVeuPage() {
           transition={{ delay: 2.5 }}
           className="space-y-4"
         >
-          {/* Ver Reflexões */}
-          <Link href={`/livro/veu/${numeroVeu}/reflexoes`}>
+          {/* Ver Reflexões no Espelho */}
+          <Link href="/livro/espelho">
             <button className={`w-full px-8 py-4 ${cores.bg.replace('from-', 'bg-').split(' ')[0]} border-2 border-stone-400 ${cores.text} rounded-full text-lg font-medium hover:shadow-xl transition-all`}>
-              Ver Reflexões deste Véu
+              Ver as tuas Reflexões
+            </button>
+          </Link>
+
+          {/* Práticas */}
+          <Link href={`/livro/veu/${numeroVeu}/praticas`}>
+            <button className={`w-full px-8 py-4 ${cores.bg.replace('from-', 'bg-').split(' ')[0]} border border-stone-300 ${cores.text} rounded-full text-lg font-medium hover:shadow-xl transition-all`}>
+              Prática deste Véu
             </button>
           </Link>
 

@@ -6,10 +6,12 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useAuth } from '@/components/AuthProvider'
+import { useAccess } from '@/hooks/useAccess'
 import livroData from '@/data/livro-7-veus.json'
 
 export default function PortalVeuPage() {
   const { user, loading } = useAuth()
+  const { hasBookAccess, isLoading: accessLoading } = useAccess()
   const router = useRouter()
   const params = useParams()
   const numeroVeu = parseInt(params.numero as string)
@@ -21,7 +23,13 @@ export default function PortalVeuPage() {
     }
   }, [user, loading, router])
 
-  if (loading) {
+  useEffect(() => {
+    if (!loading && !accessLoading && user && !hasBookAccess) {
+      router.push('/comprar')
+    }
+  }, [user, loading, accessLoading, hasBookAccess, router])
+
+  if (loading || accessLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -32,7 +40,7 @@ export default function PortalVeuPage() {
     )
   }
 
-  if (!user) {
+  if (!user || !hasBookAccess) {
     return null
   }
 

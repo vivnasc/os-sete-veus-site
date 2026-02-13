@@ -1,15 +1,17 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useAuth } from '@/components/AuthProvider'
+import { useAccess } from '@/hooks/useAccess'
 import livroData from '@/data/livro-7-veus.json'
 
 export default function PraticasPage() {
   const { user, loading } = useAuth()
+  const { hasBookAccess, isLoading: accessLoading } = useAccess()
   const router = useRouter()
   const params = useParams()
   const numeroVeu = parseInt(params.numero as string)
@@ -18,6 +20,7 @@ export default function PraticasPage() {
   const [timerMinutos, setTimerMinutos] = useState(5)
   const [timerAtivo, setTimerAtivo] = useState(false)
   const [tempoRestante, setTempoRestante] = useState(timerMinutos * 60)
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   useEffect(() => {
     if (!loading && !user) {
@@ -25,7 +28,33 @@ export default function PraticasPage() {
     }
   }, [user, loading, router])
 
-  if (loading) {
+  useEffect(() => {
+    if (!loading && !accessLoading && user && !hasBookAccess) {
+      router.push('/comprar')
+    }
+  }, [user, loading, accessLoading, hasBookAccess, router])
+
+  // Timer countdown
+  useEffect(() => {
+    if (timerAtivo && tempoRestante > 0) {
+      intervalRef.current = setInterval(() => {
+        setTempoRestante(prev => {
+          if (prev <= 1) {
+            setTimerAtivo(false)
+            return 0
+          }
+          return prev - 1
+        })
+      }, 1000)
+    }
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
+  }, [timerAtivo, tempoRestante])
+
+  if (loading || accessLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -36,7 +65,7 @@ export default function PraticasPage() {
     )
   }
 
-  if (!user) {
+  if (!user || !hasBookAccess) {
     return null
   }
 
@@ -216,12 +245,27 @@ export default function PraticasPage() {
               <div className="text-8xl font-bold text-purple-900 mb-6">
                 {Math.floor(tempoRestante / 60)}:{(tempoRestante % 60).toString().padStart(2, '0')}
               </div>
-              <button
-                onClick={() => setTimerAtivo(false)}
-                className="px-8 py-3 bg-stone-200 text-stone-800 rounded-full font-medium hover:bg-stone-300 transition-colors"
-              >
-                Parar
-              </button>
+              {tempoRestante === 0 ? (
+                <div>
+                  <p className="text-stone-600 mb-4 italic">O tempo chegou ao fim. Regressa suavemente.</p>
+                  <button
+                    onClick={() => {
+                      setTimerAtivo(false)
+                      setTempoRestante(timerMinutos * 60)
+                    }}
+                    className="px-8 py-3 bg-purple-900 text-white rounded-full font-medium hover:bg-purple-800 transition-colors"
+                  >
+                    Recomeçar
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={() => setTimerAtivo(false)}
+                  className="px-8 py-3 bg-stone-200 text-stone-800 rounded-full font-medium hover:bg-stone-300 transition-colors"
+                >
+                  Parar
+                </button>
+              )}
             </div>
           )}
         </motion.div>
