@@ -16,7 +16,7 @@ export default function EdicaoFisicaPage() {
     {
       icon: "🌐",
       title: "Acesso GRÁTIS à Experiência Digital Completa",
-      description: "Toda a plataforma online 'Os 7 Véus do Despertar' incluída (valor €29)",
+      description: "Toda a plataforma online 'Os 7 Véus do Despertar' incluída",
     },
     {
       icon: "📱",
@@ -63,13 +63,16 @@ export default function EdicaoFisicaPage() {
                 Edição Física de Colecionador
               </p>
 
-              <div className="mt-8 flex items-baseline gap-2">
-                <span className="font-display text-5xl text-forest">€24,90</span>
+              <div className="mt-8 flex items-baseline gap-4">
+                <div>
+                  <span className="font-display text-5xl text-forest">1500 MZN</span>
+                  <p className="mt-1 text-sm text-sage">ou equivalente em USD</p>
+                </div>
               </div>
 
               <div className="mt-6 rounded-lg bg-green-50 border border-green-200 p-4">
                 <p className="text-forest font-medium">
-                  🎁 <strong>BÓNUS:</strong> Ao comprar o livro físico, ganhas acesso GRÁTIS à experiência digital completa (valor €29)!
+                  🎁 <strong>BÓNUS:</strong> Ao comprar o livro físico, ganhas acesso GRÁTIS à experiência digital completa!
                 </p>
               </div>
 
@@ -82,7 +85,7 @@ export default function EdicaoFisicaPage() {
 
               <div className="mt-8 space-y-3">
                 <button className="w-full rounded-lg bg-forest px-8 py-4 text-center font-display text-lg text-cream transition-colors hover:bg-sage">
-                  Comprar Agora - €24,90
+                  Comprar Agora - 1500 MZN
                 </button>
 
                 {!user && (
@@ -198,7 +201,7 @@ export default function EdicaoFisicaPage() {
             com leitura integrada, meditações guiadas, reflexões e comunidade privada.
           </p>
           <p className="mt-2 text-sm text-sage/70">
-            (Valor €29 - GRÁTIS para quem comprar o livro físico)
+            (GRÁTIS para quem comprar o livro físico - paga em MZN ou USD)
           </p>
 
           <div className="mt-8">
@@ -223,7 +226,7 @@ export default function EdicaoFisicaPage() {
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
             <button className="rounded-lg bg-forest px-8 py-4 font-display text-lg text-cream transition-colors hover:bg-sage">
-              Comprar Livro Físico - €24,90
+              Comprar Livro Físico - 1500 MZN
             </button>
             <Link
               href="/experiencia"
