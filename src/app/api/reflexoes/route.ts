@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server'
-import { supabase } from '@/lib/supabase'
+import { createSupabaseServerClient } from '@/lib/supabase-server'
 
 export async function GET(req: Request) {
+  const supabase = await createSupabaseServerClient()
   const { searchParams } = new URL(req.url)
   const veuNumero = searchParams.get('veu')
   const capitulo = searchParams.get('capitulo')
@@ -36,6 +37,7 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
+  const supabase = await createSupabaseServerClient()
   const { data: { session } } = await supabase.auth.getSession()
 
   if (!session) {
