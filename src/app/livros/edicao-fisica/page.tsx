@@ -16,7 +16,7 @@ export default function EdicaoFisicaPage() {
     {
       icon: "🌐",
       title: "Acesso GRÁTIS à Experiência Digital Completa",
-      description: "Toda a plataforma online 'Os 7 Véus do Despertar' incluída (mesmo valor que a experiência digital)",
+      description: "Toda a plataforma online 'Os 7 Véus do Despertar' incluída (valor €29)",
     },
     {
       icon: "📱",
@@ -69,7 +69,7 @@ export default function EdicaoFisicaPage() {
 
               <div className="mt-6 rounded-lg bg-green-50 border border-green-200 p-4">
                 <p className="text-forest font-medium">
-                  🎁 <strong>BÓNUS:</strong> Ao comprar o livro físico, ganhas acesso GRÁTIS à experiência digital completa (mesmo valor da experiência da coleção)!
+                  🎁 <strong>BÓNUS:</strong> Ao comprar o livro físico, ganhas acesso GRÁTIS à experiência digital completa (valor €29)!
                 </p>
               </div>
 
@@ -198,7 +198,7 @@ export default function EdicaoFisicaPage() {
             com leitura integrada, meditações guiadas, reflexões e comunidade privada.
           </p>
           <p className="mt-2 text-sm text-sage/70">
-            (Mesmo valor que a experiência digital - GRÁTIS para quem comprar o livro físico)
+            (Valor €29 - GRÁTIS para quem comprar o livro físico)
           </p>
 
           <div className="mt-8">

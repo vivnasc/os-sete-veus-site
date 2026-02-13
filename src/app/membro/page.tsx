@@ -195,16 +195,16 @@ export default function MembroDashboard() {
           </Link>
         </div>
 
-        {/* Upsell Bridge — contextual suggestion (not for author) */}
-        {!loading && !isAuthor && (
+        {/* Upsell Bridge — contextual suggestion */}
+        {!loading && (
           <UpsellBridge
             journalCount={journalCount}
             chaptersCompleted={completedChapters}
           />
         )}
 
-        {/* Referral Prompt — appears after engagement (not for author) */}
-        {!loading && !isAuthor && (
+        {/* Referral Prompt — appears after engagement */}
+        {!loading && (
           <ReferralPrompt chaptersCompleted={completedChapters} />
         )}
 
