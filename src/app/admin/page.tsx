@@ -6,347 +6,264 @@ import { useAuth } from "@/components/AuthProvider";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 
-const ADMIN_EMAIL = "viv.saraiva@gmail.com";
-
-interface Payment {
-  id: string;
-  user_email: string;
-  user_phone: string | null;
-  access_type_code: string;
-  payment_method: string;
-  amount: number;
-  currency: string;
-  status: string;
-  transaction_id: string | null;
-  mpesa_reference: string | null;
-  notes: string | null;
-  created_at: string;
+interface Stats {
+  totalMembers: number;
+  activeMembers: number;
+  totalPurchases: number;
+  pendingPayments: number;
 }
 
 export default function AdminPage() {
-  const { user, loading: authLoading } = useAuth();
+  const { user, profile, loading: authLoading } = useAuth();
   const router = useRouter();
 
-  const [payments, setPayments] = useState<Payment[]>([]);
+  const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState<"all" | "pending" | "confirmed">("pending");
 
   useEffect(() => {
-    if (!authLoading && (!user || user.email !== ADMIN_EMAIL)) {
+    if (!authLoading && (!user || !profile?.is_admin)) {
       router.push("/entrar");
     }
-  }, [user, authLoading, router]);
+  }, [user, profile, authLoading, router]);
 
   useEffect(() => {
-    if (user && user.email === ADMIN_EMAIL) {
-      loadPayments();
+    if (user && profile?.is_admin) {
+      loadStats();
     }
-  }, [user, filter]);
+  }, [user, profile]);
 
-  async function loadPayments() {
+  async function loadStats() {
     setLoading(true);
 
-    let query = supabase
-      .from("payments")
-      .select("*")
-      .order("created_at", { ascending: false });
-
-    if (filter !== "all") {
-      query = query.eq("status", filter);
-    }
-
-    const { data, error } = await query;
-
-    if (error) {
-      console.error("Error loading payments:", error);
-    } else {
-      setPayments(data || []);
-    }
-
-    setLoading(false);
-  }
-
-  async function handleConfirm(paymentId: string) {
-    if (!confirm("Confirmar este pagamento?")) return;
-
     try {
-      const response = await fetch("/api/payment/confirm", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ payment_id: paymentId, action: "confirm" }),
-      });
+      // Get total members
+      const { count: totalMembers } = await supabase
+        .from("profiles")
+        .select("*", { count: "exact", head: true });
 
-      if (response.ok) {
-        alert("Pagamento confirmado!");
-        loadPayments();
-      } else {
-        alert("Erro ao confirmar pagamento");
-      }
-    } catch {
-      alert("Erro de conexão");
+      // Get active members
+      const { count: activeMembers } = await supabase
+        .from("profiles")
+        .select("*", { count: "exact", head: true })
+        .eq("subscription_status", "active");
+
+      // Get total purchases
+      const { count: totalPurchases } = await supabase
+        .from("purchases")
+        .select("*", { count: "exact", head: true });
+
+      // Get pending payments
+      const { count: pendingPayments } = await supabase
+        .from("payments")
+        .select("*", { count: "exact", head: true })
+        .eq("status", "pending");
+
+      setStats({
+        totalMembers: totalMembers || 0,
+        activeMembers: activeMembers || 0,
+        totalPurchases: totalPurchases || 0,
+        pendingPayments: pendingPayments || 0,
+      });
+    } catch (error) {
+      console.error("Error loading stats:", error);
+    } finally {
+      setLoading(false);
     }
   }
 
-  async function handleReject(paymentId: string) {
-    const reason = prompt("Motivo da rejeição:");
-    if (!reason) return;
-
-    try {
-      const response = await fetch("/api/payment/confirm", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          payment_id: paymentId,
-          action: "reject",
-          rejection_reason: reason,
-        }),
-      });
-
-      if (response.ok) {
-        alert("Pagamento rejeitado");
-        loadPayments();
-      } else {
-        alert("Erro ao rejeitar pagamento");
-      }
-    } catch {
-      alert("Erro de conexão");
-    }
-  }
-
-  if (authLoading || !user || user.email !== ADMIN_EMAIL) {
-    return null;
+  if (authLoading || !user || !profile?.is_admin) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-cream">
+        <div className="h-12 w-12 animate-spin rounded-full border-4 border-sage border-t-transparent"></div>
+      </div>
+    );
   }
 
   return (
-    <section className="min-h-screen bg-cream px-6 py-12">
-      <div className="mx-auto max-w-6xl">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="font-serif text-4xl text-brown-900">
-            Painel Admin
-          </h1>
-          <p className="mt-2 text-brown-600">Olá, Viviane! 👋</p>
+    <div className="min-h-screen bg-cream">
+      {/* Header */}
+      <div className="border-b border-sage/20 bg-white/50">
+        <div className="mx-auto max-w-7xl px-6 py-8">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="font-display text-3xl text-forest">
+                Painel da Autora
+              </h1>
+              <p className="mt-1 text-sage">
+                Olá, Vivianne! ✨
+              </p>
+            </div>
+            <Link
+              href="/membro"
+              className="text-sm text-sage hover:text-forest transition-colors"
+            >
+              Ver como membro →
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-7xl px-6 py-12">
+        {/* Stats Grid */}
+        <div className="mb-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <StatCard
+            title="Membros Totais"
+            value={loading ? "..." : stats?.totalMembers || 0}
+            icon="👥"
+            href="/admin/membros"
+          />
+          <StatCard
+            title="Membros Ativos"
+            value={loading ? "..." : stats?.activeMembers || 0}
+            icon="⭐"
+            href="/admin/membros"
+          />
+          <StatCard
+            title="Compras"
+            value={loading ? "..." : stats?.totalPurchases || 0}
+            icon="🛒"
+            href="/admin/vendas"
+          />
+          <StatCard
+            title="Pagamentos Pendentes"
+            value={loading ? "..." : stats?.pendingPayments || 0}
+            icon="⏳"
+            href="/admin/pagamentos"
+            alert={stats?.pendingPayments ? stats.pendingPayments > 0 : false}
+          />
         </div>
 
         {/* Quick Actions */}
-        <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <Link
-            href="/admin/links-especiais"
-            className="group rounded-lg border-2 border-brown-100 bg-white p-6 transition-all hover:border-sage hover:bg-sage/5"
-          >
-            <div className="flex items-center gap-3">
-              <div className="rounded-full bg-sage/10 p-3">
-                <svg
-                  className="h-6 w-6 text-sage"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"
-                  />
-                </svg>
-              </div>
-              <div>
-                <p className="font-sans text-sm font-medium text-brown-900">
-                  Links Especiais
-                </p>
-                <p className="text-xs text-brown-500">Criar para livro físico</p>
-              </div>
-            </div>
-          </Link>
-
-          <div className="rounded-lg border-2 border-brown-100 bg-white p-6">
-            <div className="flex items-center gap-3">
-              <div className="rounded-full bg-blue-50 p-3">
-                <svg
-                  className="h-6 w-6 text-blue-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"
-                  />
-                </svg>
-              </div>
-              <div>
-                <p className="font-sans text-xl font-bold text-brown-900">
-                  {payments.filter((p) => p.status === "pending").length}
-                </p>
-                <p className="text-xs text-brown-500">Pagamentos pendentes</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="rounded-lg border-2 border-brown-100 bg-white p-6">
-            <div className="flex items-center gap-3">
-              <div className="rounded-full bg-green-50 p-3">
-                <svg
-                  className="h-6 w-6 text-green-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </div>
-              <div>
-                <p className="font-sans text-xl font-bold text-brown-900">
-                  {payments.filter((p) => p.status === "confirmed").length}
-                </p>
-                <p className="text-xs text-brown-500">Pagamentos confirmados</p>
-              </div>
-            </div>
+        <div className="mb-12">
+          <h2 className="mb-6 font-display text-2xl text-forest">
+            Acções Rápidas
+          </h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <ActionCard
+              title="Livro Físico"
+              description="Ver e editar página de vendas"
+              href="/livros/edicao-fisica"
+              icon="📖"
+            />
+            <ActionCard
+              title="Pagamentos Pendentes"
+              description="Aprovar transferências e pagamentos"
+              href="/admin/pagamentos"
+              icon="💳"
+              badge={stats?.pendingPayments || 0}
+            />
+            <ActionCard
+              title="Gestão de Membros"
+              description="Ver e gerir todos os membros"
+              href="/admin/membros"
+              icon="👥"
+            />
+            <ActionCard
+              title="Links Especiais"
+              description="Criar links para venda directa"
+              href="/admin/links-especiais"
+              icon="🔗"
+            />
+            <ActionCard
+              title="Analytics"
+              description="Métricas e estatísticas"
+              href="/admin/analytics"
+              icon="📊"
+            />
+            <ActionCard
+              title="Configurações"
+              description="Ajustes gerais do site"
+              href="/admin/configuracoes"
+              icon="⚙️"
+            />
           </div>
         </div>
 
-        {/* Filters */}
-        <div className="mb-6 flex gap-2">
-          <button
-            onClick={() => setFilter("pending")}
-            className={`rounded-lg px-4 py-2 font-sans text-sm font-medium transition-colors ${
-              filter === "pending"
-                ? "bg-sage text-white"
-                : "bg-white text-brown-700 hover:bg-brown-50"
-            }`}
-          >
-            Pendentes
-          </button>
-          <button
-            onClick={() => setFilter("confirmed")}
-            className={`rounded-lg px-4 py-2 font-sans text-sm font-medium transition-colors ${
-              filter === "confirmed"
-                ? "bg-sage text-white"
-                : "bg-white text-brown-700 hover:bg-brown-50"
-            }`}
-          >
-            Confirmados
-          </button>
-          <button
-            onClick={() => setFilter("all")}
-            className={`rounded-lg px-4 py-2 font-sans text-sm font-medium transition-colors ${
-              filter === "all"
-                ? "bg-sage text-white"
-                : "bg-white text-brown-700 hover:bg-brown-50"
-            }`}
-          >
-            Todos
-          </button>
+        {/* Recent Activity */}
+        <div>
+          <h2 className="mb-6 font-display text-2xl text-forest">
+            Atividade Recente
+          </h2>
+          <div className="rounded-lg border border-sage/20 bg-white/50 p-8">
+            <p className="text-sage text-center">
+              📈 Dashboard em desenvolvimento...
+              <br />
+              <span className="text-sm">
+                Aqui verás: novos membros, compras recentes, downloads, comentários
+              </span>
+            </p>
+          </div>
         </div>
+      </div>
+    </div>
+  );
+}
 
-        {/* Payments List */}
-        <div className="rounded-lg border border-brown-100 bg-white">
-          {loading ? (
-            <div className="p-12 text-center text-brown-500">
-              A carregar...
-            </div>
-          ) : payments.length === 0 ? (
-            <div className="p-12 text-center text-brown-500">
-              Nenhum pagamento encontrado
-            </div>
-          ) : (
-            <div className="divide-y divide-brown-100">
-              {payments.map((payment) => (
-                <div key={payment.id} className="p-6">
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3">
-                        <p className="font-sans text-lg font-medium text-brown-900">
-                          {payment.user_email}
-                        </p>
-                        <span
-                          className={`rounded-full px-3 py-1 text-xs font-medium ${
-                            payment.status === "pending"
-                              ? "bg-yellow-100 text-yellow-700"
-                              : payment.status === "confirmed"
-                                ? "bg-green-100 text-green-700"
-                                : "bg-red-100 text-red-700"
-                          }`}
-                        >
-                          {payment.status === "pending"
-                            ? "Pendente"
-                            : payment.status === "confirmed"
-                              ? "Confirmado"
-                              : "Rejeitado"}
-                        </span>
-                      </div>
-
-                      <div className="mt-3 grid gap-2 text-sm text-brown-600 sm:grid-cols-2">
-                        <div>
-                          <span className="text-brown-400">Método:</span>{" "}
-                          {payment.payment_method === "bank_transfer"
-                            ? "Transferência"
-                            : payment.payment_method === "mpesa"
-                              ? "MPesa"
-                              : "PayPal"}
-                        </div>
-                        <div>
-                          <span className="text-brown-400">Valor:</span>{" "}
-                          {payment.amount} {payment.currency}
-                        </div>
-                        {payment.transaction_id && (
-                          <div className="sm:col-span-2">
-                            <span className="text-brown-400">Nº Transação:</span>{" "}
-                            <code className="rounded bg-brown-50 px-2 py-0.5">
-                              {payment.transaction_id}
-                            </code>
-                          </div>
-                        )}
-                        {payment.mpesa_reference && (
-                          <div className="sm:col-span-2">
-                            <span className="text-brown-400">Ref MPesa:</span>{" "}
-                            <code className="rounded bg-brown-50 px-2 py-0.5">
-                              {payment.mpesa_reference}
-                            </code>
-                          </div>
-                        )}
-                        {payment.notes && (
-                          <div className="sm:col-span-2">
-                            <span className="text-brown-400">Notas:</span>{" "}
-                            {payment.notes}
-                          </div>
-                        )}
-                        <div className="text-xs text-brown-400">
-                          {new Date(payment.created_at).toLocaleString("pt-PT")}
-                        </div>
-                      </div>
-                    </div>
-
-                    {payment.status === "pending" && (
-                      <div className="ml-4 flex gap-2">
-                        <button
-                          onClick={() => handleConfirm(payment.id)}
-                          className="rounded-lg bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-700"
-                        >
-                          ✓ Confirmar
-                        </button>
-                        <button
-                          onClick={() => handleReject(payment.id)}
-                          className="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700"
-                        >
-                          ✗ Rejeitar
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
+function StatCard({
+  title,
+  value,
+  icon,
+  href,
+  alert,
+}: {
+  title: string;
+  value: string | number;
+  icon: string;
+  href?: string;
+  alert?: boolean;
+}) {
+  const content = (
+    <div className="rounded-lg border border-sage/20 bg-white/50 p-6 hover:shadow-md transition-shadow">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-sm text-sage">{title}</p>
+          <p className="mt-2 font-display text-3xl text-forest">{value}</p>
+        </div>
+        <div className="relative">
+          <div className="text-4xl opacity-50">{icon}</div>
+          {alert && (
+            <div className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-red-500 animate-pulse"></div>
           )}
         </div>
       </div>
-    </section>
+    </div>
+  );
+
+  if (href) {
+    return <Link href={href}>{content}</Link>;
+  }
+
+  return content;
+}
+
+function ActionCard({
+  title,
+  description,
+  href,
+  icon,
+  badge,
+}: {
+  title: string;
+  description: string;
+  href: string;
+  icon: string;
+  badge?: number;
+}) {
+  return (
+    <Link
+      href={href}
+      className="group relative rounded-lg border border-sage/20 bg-white/50 p-6 transition-all hover:border-sage/40 hover:shadow-md"
+    >
+      {badge !== undefined && badge > 0 && (
+        <div className="absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-red-500 text-sm font-bold text-white">
+          {badge}
+        </div>
+      )}
+      <div className="mb-3 text-3xl">{icon}</div>
+      <h3 className="font-display text-lg text-forest group-hover:text-sage transition-colors">
+        {title}
+      </h3>
+      <p className="mt-1 text-sm text-sage/70">{description}</p>
+    </Link>
   );
 }

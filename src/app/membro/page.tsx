@@ -2,6 +2,7 @@
 
 import { useAuth } from "@/components/AuthProvider";
 import { useEffect, useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { chapters } from "@/data/ebook";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
@@ -10,14 +11,19 @@ import VeilMap from "@/components/VeilMap";
 import UpsellBridge from "@/components/UpsellBridge";
 import ReferralPrompt from "@/components/ReferralPrompt";
 
-const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
-
 export default function MembroDashboard() {
-  const { user } = useAuth();
-  const isAuthor = AUTHOR_EMAILS.includes(user?.email || "");
+  const { user, profile, loading: authLoading } = useAuth();
+  const router = useRouter();
   const [readingProgress, setReadingProgress] = useState<Record<string, boolean>>({});
   const [journalCount, setJournalCount] = useState(0);
   const [loading, setLoading] = useState(true);
+
+  // Redirect admin users to admin dashboard
+  useEffect(() => {
+    if (!authLoading && profile?.is_admin) {
+      router.push("/admin");
+    }
+  }, [profile, authLoading, router]);
 
   const loadProgress = useCallback(async () => {
     const session = await supabase.auth.getSession();
