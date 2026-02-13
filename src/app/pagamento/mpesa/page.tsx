@@ -3,6 +3,9 @@
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 function MpesaContent() {
   const searchParams = useSearchParams();
   const router = useRouter();

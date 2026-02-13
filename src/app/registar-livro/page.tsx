@@ -1,10 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useAuth } from "@/components/AuthProvider";
 
-export default function RegistarLivroPage() {
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
+function RegistarLivroContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { user } = useAuth();
@@ -200,5 +203,19 @@ export default function RegistarLivroPage() {
         </div>
       </div>
     </section>
+  );
+}
+
+export default function RegistarLivroPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center bg-cream">
+          <p className="text-brown-600">A carregar...</p>
+        </div>
+      }
+    >
+      <RegistarLivroContent />
+    </Suspense>
   );
 }
