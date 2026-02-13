@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import livroData from '@/data/livro-7-veus.json'
+import ReflexoesDrawer from '@/components/ReflexoesDrawer'
 
 export default function CapituloPage() {
   const params = useParams()
@@ -238,6 +239,9 @@ export default function CapituloPage() {
           </div>
         )}
       </div>
+
+      {/* Drawer de Reflexões */}
+      <ReflexoesDrawer veuNumero={numeroVeu} capituloNumero={numeroCapitulo} />
     </div>
   )
 }
