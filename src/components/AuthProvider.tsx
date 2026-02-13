@@ -45,9 +45,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setUser(session?.user ?? null);
 
       if (session?.user) {
-        await loadProfile(session.user.id);
+        try {
+          await loadProfile(session.user.id);
+        } catch {
+          // Profile load failed - continue without profile
+        }
       }
 
+      setLoading(false);
+    }).catch(() => {
+      // Session check failed - resolve loading anyway
       setLoading(false);
     });
 
@@ -57,7 +64,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setUser(session?.user ?? null);
 
       if (session?.user) {
-        await loadProfile(session.user.id);
+        try {
+          await loadProfile(session.user.id);
+        } catch {
+          // Profile load failed silently
+        }
       } else {
         setProfile(null);
       }
