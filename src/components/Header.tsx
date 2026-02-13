@@ -7,7 +7,6 @@ import { useAuth } from "@/components/AuthProvider";
 
 const navLinks = [
   { href: "/", label: "Início" },
-  { href: "/experiencias", label: "Experiências Digitais" },
   { href: "/livro-fisico", label: "Livro Físico" },
   { href: "/recursos", label: "Recursos" },
   { href: "/sobre", label: "Sobre" },
@@ -33,7 +32,7 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-4 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
