@@ -7,7 +7,6 @@ import { useAuth } from "@/components/AuthProvider";
 
 const navLinks = [
   { href: "/", label: "Início" },
-  { href: "/experiencias", label: "Experiências Digitais" },
   { href: "/livro-fisico", label: "Livro Físico" },
   { href: "/recursos", label: "Recursos" },
   { href: "/sobre", label: "Sobre" },
@@ -33,7 +32,7 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-4 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -44,7 +43,13 @@ export default function Header() {
             </Link>
           ))}
           <Link
-            href={user ? "/membro" : "/entrar"}
+            href="/livro"
+            className="rounded-md bg-gradient-to-r from-purple-600 to-purple-800 px-5 py-2 font-sans text-[0.75rem] uppercase tracking-[0.12em] text-white transition-all hover:scale-105 hover:shadow-lg"
+          >
+            ✨ Ler Online
+          </Link>
+          <Link
+            href={user ? "/membro" : "/login"}
             className="rounded-md bg-sage px-5 py-2 font-sans text-[0.75rem] uppercase tracking-[0.12em] text-white transition-colors hover:bg-sage-dark"
           >
             {user ? "Minha Área" : "Entrar"}
@@ -75,6 +80,20 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
+            <Link
+              href="/livro"
+              onClick={() => setIsOpen(false)}
+              className="rounded-md bg-gradient-to-r from-purple-600 to-purple-800 px-5 py-3 text-center font-sans text-sm uppercase tracking-[0.1em] text-white"
+            >
+              ✨ Ler Online
+            </Link>
+            <Link
+              href={user ? "/membro" : "/login"}
+              onClick={() => setIsOpen(false)}
+              className="rounded-md bg-sage px-5 py-3 text-center font-sans text-sm uppercase tracking-[0.1em] text-white"
+            >
+              {user ? "Minha Área" : "Entrar"}
+            </Link>
           </div>
         </nav>
       )}

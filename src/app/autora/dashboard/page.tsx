@@ -21,7 +21,7 @@ export default function AutoraDashboardPage() {
 
   useEffect(() => {
     if (!loading && (!user || !profile?.is_admin)) {
-      router.push('/entrar')
+      router.push('/login')
     } else if (user && profile?.is_admin) {
       carregarStats()
     }

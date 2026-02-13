@@ -164,8 +164,14 @@ export default function EcossistemaPage() {
           <ScrollReveal delay={0.55}>
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Link
+                href="/livro"
+                className="animate-pulse-glow inline-block rounded-md border-2 border-purple-400 bg-gradient-to-r from-purple-600 to-purple-800 px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-white transition-all hover:scale-105 hover:shadow-xl"
+              >
+                ✨ Iniciar Travessia Digital
+              </Link>
+              <Link
                 href="/recursos/teste"
-                className="animate-pulse-glow inline-block rounded-md border-2 border-cream bg-cream px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-900 transition-all hover:bg-transparent hover:text-cream"
+                className="inline-block rounded-md border-2 border-cream bg-cream px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-900 transition-all hover:bg-transparent hover:text-cream"
               >
                 Começa grátis — faz o teste
               </Link>

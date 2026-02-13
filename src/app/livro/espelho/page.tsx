@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { useAuth } from '@/components/AuthProvider'
 
 type Reflexao = {
   id: string
@@ -14,19 +13,16 @@ type Reflexao = {
 }
 
 export default function EspelhoPage() {
-  const { user } = useAuth()
   const [reflexoes, setReflexoes] = useState<Reflexao[]>([])
   const [reflexoesPorVeu, setReflexoesPorVeu] = useState<Record<number, Reflexao[]>>({})
-  const [loading, setLoading] = useState(true)
+  const [loadingReflexoes, setLoadingReflexoes] = useState(true)
 
   useEffect(() => {
-    if (user) {
-      carregarTodasReflexoes()
-    }
-  }, [user])
+    carregarTodasReflexoes()
+  }, [])
 
   const carregarTodasReflexoes = async () => {
-    setLoading(true)
+    setLoadingReflexoes(true)
     const response = await fetch('/api/reflexoes')
     const data = await response.json()
 
@@ -43,7 +39,7 @@ export default function EspelhoPage() {
       })
       setReflexoesPorVeu(porVeu)
     }
-    setLoading(false)
+    setLoadingReflexoes(false)
   }
 
   const nomeVeus = [
@@ -101,7 +97,7 @@ export default function EspelhoPage() {
         </motion.div>
 
         {/* Reflexões por Véu */}
-        {loading ? (
+        {loadingReflexoes ? (
           <div className="text-center py-12">
             <div className="inline-block animate-spin text-6xl">⚬</div>
             <p className="mt-4 text-white/60">Carregando tua travessia...</p>
