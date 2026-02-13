@@ -3,10 +3,10 @@ import Image from "next/image";
 import NewsletterForm from "@/components/NewsletterForm";
 import ScrollReveal from "@/components/ScrollReveal";
 
-const veusPeek = [
-  { title: "O Véu da Ilusão", tagline: "Quando a vida que tens não foi a que escolheste", image: "/images/veu-1-ilusao.png.png" },
-  { title: "O Véu do Medo", tagline: "Quando o medo decide por ti", image: "/images/veu-2-medo.png.png" },
-  { title: "O Véu do Desejo", tagline: "Quando desejas tudo menos o que precisas", image: "/images/veu-3-desejo.png.png" },
+const espelhosPeek = [
+  { title: "Espelho da Ilusão", tagline: "Quando a vida que tens não foi a que escolheste", image: "/images/veu-1-ilusao.png.png" },
+  { title: "Espelho do Medo", tagline: "Quando o medo decide por ti", image: "/images/veu-2-medo.png.png" },
+  { title: "Espelho do Desejo", tagline: "Quando desejas tudo menos o que precisas", image: "/images/veu-3-desejo.png.png" },
 ];
 
 export default function Home() {
@@ -45,10 +45,10 @@ export default function Home() {
                 Teste gratuito
               </Link>
               <Link
-                href="/experiencias"
+                href="/comprar/espelhos"
                 className="inline-block rounded-md border-2 border-brown-300 bg-transparent px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-200 transition-all hover:border-cream hover:bg-cream hover:text-brown-900"
               >
-                Ver experiências
+                Ver Espelhos
               </Link>
             </div>
           </ScrollReveal>
@@ -66,12 +66,12 @@ export default function Home() {
           </ScrollReveal>
 
           <div className="mt-12 grid gap-8 md:grid-cols-2">
-            {/* Digital Experiences */}
+            {/* ESPELHOS */}
             <ScrollReveal delay={0.15} variant="scale">
               <div className="group relative overflow-hidden rounded-2xl border-2 border-sage/20 bg-white p-8 shadow-sm transition-all duration-300 hover:border-sage hover:shadow-lg">
-                <div className="absolute right-4 top-4 text-4xl opacity-20 transition-opacity group-hover:opacity-30">🔮</div>
-                <h3 className="font-serif text-2xl text-brown-900">Experiências Digitais</h3>
-                <p className="mt-2 font-serif text-sm italic text-sage">7 ficções interativas + práticas guiadas</p>
+                <div className="absolute right-4 top-4 text-4xl opacity-20 transition-opacity group-hover:opacity-30">🪞</div>
+                <h3 className="font-serif text-2xl text-brown-900">ESPELHOS</h3>
+                <p className="mt-2 font-serif text-sm italic text-sage">7 ficções de transformação</p>
                 <p className="mt-4 leading-relaxed text-brown-700">
                   Sete histórias de ficção literária onde te reconheces. Cada uma com pausas de reflexão,
                   diário pessoal e práticas guiadas. Uma experiência imersiva de transformação.
@@ -99,10 +99,10 @@ export default function Home() {
                   <p className="font-serif text-2xl font-bold text-brown-900">1.885 MZN <span className="text-sm font-normal text-brown-500">/ $29 USD</span></p>
                 </div>
                 <Link
-                  href="/experiencias"
+                  href="/comprar/espelhos"
                   className="mt-6 block w-full rounded-lg bg-sage px-6 py-3 text-center font-sans text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-sage-dark"
                 >
-                  Ver experiências
+                  Ver Espelhos
                 </Link>
               </div>
             </ScrollReveal>
@@ -170,28 +170,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Collection peek — dark section */}
+      {/* ESPELHOS peek — dark section */}
       <section className="bg-gradient-to-b from-brown-800 to-brown-900 px-6 py-24">
         <div className="mx-auto max-w-5xl">
           <ScrollReveal>
-            <h2 className="text-center font-serif text-3xl text-cream sm:text-4xl">Os Sete Véus</h2>
+            <h2 className="text-center font-serif text-3xl text-cream sm:text-4xl">🪞 ESPELHOS</h2>
             <p className="mx-auto mt-4 max-w-xl text-center leading-relaxed text-brown-200">
-              Sete livros. Sete véus. Sete formas de nos escondermos de nós mesmas.
+              Sete histórias. Sete espelhos. Reconhece-te nas personagens que vivem o que tu vives.
             </p>
           </ScrollReveal>
           <div className="mt-14 grid gap-8 sm:grid-cols-3">
-            {veusPeek.map((veu, i) => (
-              <ScrollReveal key={veu.title} delay={0.15 * i} variant="scale">
+            {espelhosPeek.map((espelho, i) => (
+              <ScrollReveal key={espelho.title} delay={0.15 * i} variant="scale">
                 <div className="text-center">
                   <Image
-                    src={veu.image}
-                    alt={veu.title}
+                    src={espelho.image}
+                    alt={espelho.title}
                     width={220}
                     height={330}
                     className="mx-auto rounded-lg shadow-2xl transition-transform duration-500 hover:scale-105"
                   />
-                  <h3 className="mt-5 font-serif text-lg text-cream">{veu.title}</h3>
-                  <p className="mt-1 text-sm italic text-brown-300">{veu.tagline}</p>
+                  <h3 className="mt-5 font-serif text-lg text-cream">{espelho.title}</h3>
+                  <p className="mt-1 text-sm italic text-brown-300">{espelho.tagline}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -199,10 +199,10 @@ export default function Home() {
           <ScrollReveal delay={0.3}>
             <div className="mt-12 text-center">
               <Link
-                href="/os-sete-veus"
+                href="/comprar/espelhos"
                 className="inline-block rounded-md border-2 border-cream bg-cream px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-900 transition-all hover:bg-transparent hover:text-cream"
               >
-                Ver toda a colecção
+                Ver todos os Espelhos
               </Link>
             </div>
           </ScrollReveal>

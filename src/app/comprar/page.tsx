@@ -20,37 +20,37 @@ export default function ComprarPage() {
   const [moeda, setMoeda] = useState<'MZN' | 'USD'>('MZN')
 
   const produtos: Product[] = [
-    // COLEÇÃO COMPLETA
+    // COLEÇÃO ESPELHOS COMPLETA
     {
       id: 'colecao-completa',
       tipo: 'colecao',
-      nome: 'Coleção Completa - 7 Experiências',
-      descricao: '7 ficções literárias interativas + práticas guiadas',
+      nome: 'ESPELHOS - Coleção Completa',
+      descricao: '7 ficções de transformação',
       preco_mzn: 13195,
       preco_usd: 203,
       destaque: '🌈 MELHOR OFERTA - Poupa 30%!',
       inclui: [
-        'As 7 experiências digitais completas',
-        '7 capítulos de ficção por experiência',
+        'Os 7 Espelhos completos',
+        '7 capítulos de ficção por Espelho',
         'Práticas de respiração guiada',
         'Diário de reflexão pessoal',
         'Acesso vitalício no site',
       ],
     },
 
-    // BUNDLES
+    // BUNDLES DE ESPELHOS
     {
       id: 'bundle-raiz',
       tipo: 'bundle',
-      nome: 'Bundle Início (3 Primeiras Experiências)',
+      nome: 'Bundle Início (3 Primeiros Espelhos)',
       descricao: 'Ilusão + Medo + Desejo',
       preco_mzn: 5085,
       preco_usd: 78,
       destaque: 'Poupa 10%',
       inclui: [
-        'O Véu da Ilusão',
-        'O Véu do Medo',
-        'O Véu do Desejo',
+        'Espelho da Ilusão',
+        'Espelho do Medo',
+        'Espelho do Desejo',
         'Práticas guiadas',
         'Diário de reflexão',
       ],
@@ -58,14 +58,14 @@ export default function ComprarPage() {
     {
       id: 'bundle-meio',
       tipo: 'bundle',
-      nome: 'Bundle Transformação (Experiências 4-5)',
+      nome: 'Bundle Transformação (Espelhos 4-5)',
       descricao: 'Culpa + Pressa',
       preco_mzn: 3395,
       preco_usd: 52,
       destaque: 'Poupa 10%',
       inclui: [
-        'O Véu da Culpa',
-        'O Véu da Pressa',
+        'Espelho da Culpa',
+        'Espelho da Pressa',
         'Práticas guiadas',
         'Diário de reflexão',
       ],
@@ -73,24 +73,24 @@ export default function ComprarPage() {
     {
       id: 'bundle-fim',
       tipo: 'bundle',
-      nome: 'Bundle Integração (2 Últimas Experiências)',
+      nome: 'Bundle Integração (2 Últimos Espelhos)',
       descricao: 'Comparação + Controlo',
       preco_mzn: 3395,
       preco_usd: 52,
       destaque: 'Poupa 10%',
       inclui: [
-        'O Véu da Comparação',
-        'O Véu do Controlo',
+        'Espelho da Comparação',
+        'Espelho do Controlo',
         'Práticas guiadas',
         'Diário de reflexão',
       ],
     },
 
-    // EXPERIÊNCIAS INDIVIDUAIS
+    // ESPELHOS INDIVIDUAIS
     {
       id: 'exp-1',
       tipo: 'veu-individual',
-      nome: 'O Véu da Ilusão',
+      nome: 'Espelho da Ilusão',
       descricao: 'Quando a vida que tens não foi a que escolheste',
       preco_mzn: 1885,
       preco_usd: 29,
@@ -105,7 +105,7 @@ export default function ComprarPage() {
     {
       id: 'exp-2',
       tipo: 'veu-individual',
-      nome: 'O Véu do Medo',
+      nome: 'Espelho do Medo',
       descricao: 'Quando o medo decide por ti',
       preco_mzn: 1885,
       preco_usd: 29,
@@ -120,7 +120,7 @@ export default function ComprarPage() {
     {
       id: 'exp-3',
       tipo: 'veu-individual',
-      nome: 'O Véu do Desejo',
+      nome: 'Espelho do Desejo',
       descricao: 'Quando desejas tudo menos o que precisas',
       preco_mzn: 1885,
       preco_usd: 29,
@@ -135,7 +135,7 @@ export default function ComprarPage() {
     {
       id: 'exp-4',
       tipo: 'veu-individual',
-      nome: 'O Véu da Culpa',
+      nome: 'Espelho da Culpa',
       descricao: 'Quando carregas o peso do que não é teu',
       preco_mzn: 1885,
       preco_usd: 29,
@@ -150,7 +150,7 @@ export default function ComprarPage() {
     {
       id: 'exp-5',
       tipo: 'veu-individual',
-      nome: 'O Véu da Pressa',
+      nome: 'Espelho da Pressa',
       descricao: 'Quando viver se torna correr',
       preco_mzn: 1885,
       preco_usd: 29,
@@ -165,7 +165,7 @@ export default function ComprarPage() {
     {
       id: 'exp-6',
       tipo: 'veu-individual',
-      nome: 'O Véu da Comparação',
+      nome: 'Espelho da Comparação',
       descricao: 'Quando a tua vida nunca é suficiente',
       preco_mzn: 1885,
       preco_usd: 29,
@@ -180,7 +180,7 @@ export default function ComprarPage() {
     {
       id: 'exp-7',
       tipo: 'veu-individual',
-      nome: 'O Véu do Controlo',
+      nome: 'Espelho do Controlo',
       descricao: 'Quando tentas segurar o que sempre escapa',
       preco_mzn: 1885,
       preco_usd: 29,
