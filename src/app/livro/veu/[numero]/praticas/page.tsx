@@ -21,7 +21,7 @@ export default function PraticasPage() {
 
   useEffect(() => {
     if (!loading && !user) {
-      router.push('/login')
+      router.push('/entrar')
     }
   }, [user, loading, router])
 

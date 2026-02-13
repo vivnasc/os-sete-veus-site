@@ -23,7 +23,7 @@ export default function EspelhoPage() {
 
   useEffect(() => {
     if (!loading && !user) {
-      router.push('/login')
+      router.push('/entrar')
     }
   }, [user, loading, router])
 
