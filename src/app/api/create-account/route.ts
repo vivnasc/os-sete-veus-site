@@ -18,10 +18,17 @@ const ALL_PRODUCTS = [
 
 export async function POST(request: Request) {
   try {
-    const { email } = await request.json();
+    const { email, password } = await request.json();
 
     if (!email || typeof email !== "string") {
       return NextResponse.json({ error: "Email inválido" }, { status: 400 });
+    }
+
+    if (password && password.length < 8) {
+      return NextResponse.json(
+        { error: "Password deve ter pelo menos 8 caracteres" },
+        { status: 400 }
+      );
     }
 
     if (!supabaseServiceKey) {
@@ -64,11 +71,12 @@ export async function POST(request: Request) {
       });
     }
 
-    // Create new user (no password — magic link only)
+    // Create new user (with optional password)
     const { data: newUser, error: createError } =
       await supabaseAdmin.auth.admin.createUser({
         email: email.toLowerCase(),
         email_confirm: true,
+        password: password || undefined,
       });
 
     if (createError || !newUser.user) {

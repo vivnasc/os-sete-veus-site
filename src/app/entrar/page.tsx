@@ -281,6 +281,19 @@ export default function EntrarPage() {
             </div>
           </>
         )}
+
+        {/* Link to register */}
+        <div className="mt-8 text-center">
+          <p className="font-sans text-sm text-brown-600">
+            Não tens conta?{" "}
+            <Link
+              href="/registar"
+              className="font-medium text-sage hover:underline"
+            >
+              Regista-te aqui
+            </Link>
+          </p>
+        </div>
       </div>
     </section>
   );
