@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useAuth } from '@/components/AuthProvider'
+import { useAccess } from '@/hooks/useAccess'
 
 type Reflexao = {
   id: string
@@ -16,6 +17,7 @@ type Reflexao = {
 
 export default function EspelhoPage() {
   const { user, loading } = useAuth()
+  const { hasBookAccess, isLoading: accessLoading } = useAccess()
   const router = useRouter()
   const [reflexoes, setReflexoes] = useState<Reflexao[]>([])
   const [reflexoesPorVeu, setReflexoesPorVeu] = useState<Record<number, Reflexao[]>>({})
@@ -28,12 +30,18 @@ export default function EspelhoPage() {
   }, [user, loading, router])
 
   useEffect(() => {
+    if (!loading && !accessLoading && user && !hasBookAccess) {
+      router.push('/comprar')
+    }
+  }, [user, loading, accessLoading, hasBookAccess, router])
+
+  useEffect(() => {
     if (user) {
       carregarTodasReflexoes()
     }
   }, [user])
 
-  if (loading) {
+  if (loading || accessLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -44,7 +52,7 @@ export default function EspelhoPage() {
     )
   }
 
-  if (!user) {
+  if (!user || !hasBookAccess) {
     return null
   }
 

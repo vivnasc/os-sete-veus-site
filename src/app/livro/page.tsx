@@ -6,9 +6,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useAuth } from '@/components/AuthProvider'
+import { useAccess } from '@/hooks/useAccess'
 
 export default function LivroMandalaPage() {
   const { user, loading } = useAuth()
+  const { hasBookAccess, isLoading: accessLoading } = useAccess()
   const router = useRouter()
   const [hoveredVeu, setHoveredVeu] = useState<number | null>(null)
 
@@ -18,7 +20,13 @@ export default function LivroMandalaPage() {
     }
   }, [user, loading, router])
 
-  if (loading) {
+  useEffect(() => {
+    if (!loading && !accessLoading && user && !hasBookAccess) {
+      router.push('/comprar')
+    }
+  }, [user, loading, accessLoading, hasBookAccess, router])
+
+  if (loading || accessLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -29,7 +37,7 @@ export default function LivroMandalaPage() {
     )
   }
 
-  if (!user) {
+  if (!user || !hasBookAccess) {
     return null
   }
 
