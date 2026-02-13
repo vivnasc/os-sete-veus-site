@@ -37,49 +37,49 @@ export default function LivroMandalaPage() {
     {
       numero: 1,
       nome: "Permanência",
-      cor: "#8B4513", // Castanho terra
+      cor: "#C1502E", // Vermelho-Terra (Raiz)
       angulo: 0,
       descricao: "A crença num 'eu' fixo"
     },
     {
       numero: 2,
       nome: "Memória",
-      cor: "#DC143C", // Vermelho carmesim
+      cor: "#FF8C42", // Laranja-Âmbar (Emoção)
       angulo: 51.4,
       descricao: "As histórias do passado"
     },
     {
       numero: 3,
       nome: "Turbilhão",
-      cor: "#FF8C00", // Laranja escuro
+      cor: "#FFD700", // Amarelo-Dourado (Mente)
       angulo: 102.8,
       descricao: "A identificação com pensamentos"
     },
     {
       numero: 4,
       nome: "Esforço",
-      cor: "#FFD700", // Dourado
+      cor: "#6ABF69", // Verde-Suave (Coração)
       angulo: 154.2,
       descricao: "A busca incessante"
     },
     {
       numero: 5,
       nome: "Desolação",
-      cor: "#32CD32", // Verde lima
+      cor: "#2E86AB", // Azul-Profundo (Garganta)
       angulo: 205.6,
       descricao: "O medo do vazio"
     },
     {
       numero: 6,
       nome: "Horizonte",
-      cor: "#4169E1", // Azul royal
+      cor: "#4B4E9D", // Índigo (Terceiro Olho)
       angulo: 257,
       descricao: "A ilusão do fim"
     },
     {
       numero: 7,
       nome: "Dualidade",
-      cor: "#9370DB", // Roxo médio
+      cor: "#9B59B6", // Violeta-Luz (Coroa)
       angulo: 308.4,
       descricao: "A separação eu/mundo"
     }
