@@ -33,9 +33,12 @@ export default function LoginPage() {
 
         if (error) {
           setError('Email ou password incorretos')
+          console.error('Login error:', error)
         } else if (data.user) {
-          router.push('/livro')
-          router.refresh()
+          console.log('Login success:', data.user.email)
+          // Aguardar um pouco para garantir que a sessão está salva
+          await new Promise(resolve => setTimeout(resolve, 500))
+          window.location.href = '/livro'
         }
       } else {
         // Registro com Supabase
@@ -51,13 +54,16 @@ export default function LoginPage() {
 
         if (error) {
           setError(error.message)
+          console.error('Signup error:', error)
         } else if (data.user) {
-          // Login automático após registro
-          router.push('/livro')
-          router.refresh()
+          console.log('Signup success:', data.user.email)
+          // Aguardar um pouco para garantir que a sessão está salva
+          await new Promise(resolve => setTimeout(resolve, 500))
+          window.location.href = '/livro'
         }
       }
     } catch (err) {
+      console.error('Auth error:', err)
       setError('Erro de conexão. Tenta novamente.')
     } finally {
       setLoading(false)

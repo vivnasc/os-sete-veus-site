@@ -37,49 +37,49 @@ export default function LivroMandalaPage() {
     {
       numero: 1,
       nome: "Permanência",
-      cor: "#1a1a2e",
+      cor: "#8B4513", // Castanho terra
       angulo: 0,
       descricao: "A crença num 'eu' fixo"
     },
     {
       numero: 2,
       nome: "Memória",
-      cor: "#16213e",
+      cor: "#DC143C", // Vermelho carmesim
       angulo: 51.4,
       descricao: "As histórias do passado"
     },
     {
       numero: 3,
       nome: "Turbilhão",
-      cor: "#0f3460",
+      cor: "#FF8C00", // Laranja escuro
       angulo: 102.8,
       descricao: "A identificação com pensamentos"
     },
     {
       numero: 4,
       nome: "Esforço",
-      cor: "#533483",
+      cor: "#FFD700", // Dourado
       angulo: 154.2,
       descricao: "A busca incessante"
     },
     {
       numero: 5,
       nome: "Desolação",
-      cor: "#7c3aed",
+      cor: "#32CD32", // Verde lima
       angulo: 205.6,
       descricao: "O medo do vazio"
     },
     {
       numero: 6,
       nome: "Horizonte",
-      cor: "#a855f7",
+      cor: "#4169E1", // Azul royal
       angulo: 257,
       descricao: "A ilusão do fim"
     },
     {
       numero: 7,
       nome: "Dualidade",
-      cor: "#c084fc",
+      cor: "#9370DB", // Roxo médio
       angulo: 308.4,
       descricao: "A separação eu/mundo"
     }
@@ -150,15 +150,15 @@ export default function LivroMandalaPage() {
                 >
                   {/* Círculo do Véu */}
                   <div
-                    className="w-20 h-20 rounded-full flex items-center justify-center shadow-lg border-2 border-white/30 backdrop-blur-sm transition-all"
+                    className="w-20 h-20 rounded-full flex items-center justify-center shadow-lg border-4 border-white transition-all"
                     style={{
                       backgroundColor: veu.cor,
                       boxShadow: hoveredVeu === veu.numero
                         ? `0 0 30px ${veu.cor}`
-                        : '0 4px 6px rgba(0,0,0,0.1)'
+                        : '0 4px 6px rgba(0,0,0,0.3)'
                     }}
                   >
-                    <span className="text-white text-2xl font-bold">
+                    <span className="text-white text-2xl font-bold drop-shadow-lg">
                       {veu.numero}
                     </span>
                   </div>
@@ -213,7 +213,7 @@ export default function LivroMandalaPage() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-12 py-4 bg-gradient-to-r from-purple-900 to-stone-800 text-white rounded-full text-lg font-medium shadow-xl hover:shadow-2xl transition-all"
+            className="px-12 py-4 bg-purple-600 text-white rounded-full text-lg font-medium shadow-xl hover:shadow-2xl hover:bg-purple-700 transition-all"
           >
             Iniciar Travessia
           </motion.button>
