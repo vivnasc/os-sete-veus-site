@@ -1,12 +1,16 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useAuth } from '@/components/AuthProvider'
 import livroData from '@/data/livro-7-veus.json'
 
 export default function PraticasPage() {
+  const { user, loading } = useAuth()
+  const router = useRouter()
   const params = useParams()
   const numeroVeu = parseInt(params.numero as string)
   const veu = livroData.veus[numeroVeu - 1]
@@ -14,6 +18,27 @@ export default function PraticasPage() {
   const [timerMinutos, setTimerMinutos] = useState(5)
   const [timerAtivo, setTimerAtivo] = useState(false)
   const [tempoRestante, setTempoRestante] = useState(timerMinutos * 60)
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/login')
+    }
+  }, [user, loading, router])
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">A carregar...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (!user) {
+    return null
+  }
 
   if (!veu) {
     return <div>Véu não encontrado</div>
