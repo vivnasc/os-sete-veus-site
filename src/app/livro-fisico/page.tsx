@@ -36,7 +36,19 @@ export default function LivroFisicoPage() {
             />
           </div>
 
-          <p className="mx-auto mt-10 max-w-lg leading-relaxed text-brown-300">
+          <div className="mx-auto mt-8 max-w-lg rounded-xl border-2 border-sage/40 bg-sage/10 px-6 py-4">
+            <p className="text-center font-sans text-xs font-bold uppercase tracking-wider text-sage">
+              ✨ Bónus incluído ✨
+            </p>
+            <p className="mt-2 text-center font-serif text-lg leading-relaxed text-brown-900">
+              Compra este livro e ganha <strong className="text-sage">acesso GRÁTIS</strong> às 7 experiências digitais interativas
+            </p>
+            <p className="mt-1 text-center text-sm text-brown-600">
+              (valor normal: 9.685 MZN — oferecemos totalmente grátis!)
+            </p>
+          </div>
+
+          <p className="mx-auto mt-8 max-w-lg leading-relaxed text-brown-300">
             Uma travessia de dissolução e reconhecimento. Não um manual de respostas,
             mas um convite a olhar mais fundo — e a soltar o que perdeu verdade.
           </p>
@@ -129,6 +141,18 @@ export default function LivroFisicoPage() {
                 </li>
               ))}
             </ul>
+            <div className="mt-5 rounded-lg border border-sage/30 bg-sage/5 p-4">
+              <p className="flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-wider text-sage">
+                <span>🎁</span>
+                Bónus incluído
+              </p>
+              <p className="mt-2 text-sm font-medium text-brown-900">
+                Acesso GRÁTIS às 7 experiências digitais interativas
+              </p>
+              <p className="mt-1 text-xs text-brown-500">
+                Receberás um código exclusivo para registar e aceder a todas as ficções interativas (valor: 9.685 MZN)
+              </p>
+            </div>
             <div className="mt-6">
               <a
                 href="https://wa.me/258845243875?text=Olá! Quero encomendar o livro físico Os 7 Véus do Despertar"
@@ -146,13 +170,75 @@ export default function LivroFisicoPage() {
         </div>
       </section>
 
+      {/* How to access digital after purchase */}
+      <section className="bg-cream-dark px-6 py-24">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="text-center font-serif text-3xl text-brown-900">
+            Depois de comprares o livro físico
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-center leading-relaxed text-brown-600">
+            Como aceder às tuas experiências digitais gratuitas
+          </p>
+          <div className="mt-10 grid gap-6 sm:grid-cols-3">
+            {[
+              {
+                number: "1",
+                title: "Recebe o código",
+                desc: "Vais receber um código único por email após a compra",
+              },
+              {
+                number: "2",
+                title: "Regista-te",
+                desc: "Usa o código em /registar-livro para criar a tua conta",
+              },
+              {
+                number: "3",
+                title: "Começa a jornada",
+                desc: "Acede imediatamente às 7 experiências digitais. Para sempre.",
+              },
+            ].map((step) => (
+              <div
+                key={step.number}
+                className="rounded-xl border border-brown-100 bg-white p-6 text-center"
+              >
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-sage/10">
+                  <span className="font-serif text-xl font-bold text-sage">
+                    {step.number}
+                  </span>
+                </div>
+                <h3 className="mt-4 font-serif text-lg text-brown-900">
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-brown-600">
+                  {step.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 text-center">
+            <Link
+              href="/registar-livro"
+              className="inline-block rounded-lg border-2 border-sage bg-transparent px-8 py-3 font-sans text-sm font-medium uppercase tracking-wider text-sage transition-all hover:bg-sage hover:text-white"
+            >
+              Já tenho o código — Registar agora
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA — self-contained */}
       <section className="bg-gradient-to-b from-brown-800 to-brown-900 px-6 py-24">
         <div className="mx-auto max-w-3xl text-center">
           <p className="font-serif text-2xl italic leading-relaxed text-cream">
             &ldquo;Agora que vi, há um caminho — mesmo que ainda não saiba qual.&rdquo;
           </p>
-          <div className="mt-10">
+          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <Link
+              href="/experiencias"
+              className="inline-block rounded-md border-2 border-cream bg-cream px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-900 transition-all hover:bg-transparent hover:text-cream"
+            >
+              Ver experiências digitais
+            </Link>
             <Link
               href="/sobre"
               className="inline-block rounded-md border-2 border-cream/40 px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-cream/80 transition-all hover:border-cream hover:text-cream"

@@ -39,39 +39,134 @@ export default function Home() {
           <ScrollReveal delay={0.6}>
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Link
-                href="/comecar"
+                href="/recursos/teste"
                 className="animate-pulse-glow inline-block rounded-md border-2 border-cream bg-cream px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-900 transition-all hover:bg-transparent hover:text-cream"
               >
-                Começa por aqui
+                Teste gratuito
               </Link>
               <Link
-                href="/os-sete-veus"
+                href="/experiencias"
                 className="inline-block rounded-md border-2 border-brown-300 bg-transparent px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-200 transition-all hover:border-cream hover:bg-cream hover:text-brown-900"
               >
-                Conhece a colecção
+                Ver experiências
               </Link>
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* What is this — cream section */}
+      {/* Choose your path — cream section with 2 clear options */}
       <section className="bg-cream px-6 py-24">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-5xl">
           <ScrollReveal>
-            <h2 className="font-serif text-3xl text-brown-900 sm:text-4xl">O que são Os Sete Véus?</h2>
-          </ScrollReveal>
-          <ScrollReveal delay={0.15}>
-            <p className="mx-auto mt-6 max-w-xl leading-relaxed text-brown-700">
-              Não são manuais. Não são fórmulas de transformação. São histórias onde talvez te
-              reconheças. E nesse reconhecimento, algo muda — devagar, ao teu ritmo.
+            <h2 className="text-center font-serif text-3xl text-brown-900 sm:text-4xl">Escolhe o teu caminho</h2>
+            <p className="mx-auto mt-4 max-w-xl text-center leading-relaxed text-brown-600">
+              Duas formas de começar a tua jornada de autoconhecimento
             </p>
           </ScrollReveal>
-          <ScrollReveal delay={0.3} variant="fadeIn">
-            <div className="mx-auto mt-8 max-w-lg rounded-r-xl border-l-[3px] border-sage bg-cream-dark px-6 py-5 text-left">
-              <p className="font-serif italic leading-relaxed text-brown-700">
-                &ldquo;Sete caminhos de volta a ti mesma — para quem está pronta para se escolher.&rdquo;
+
+          <div className="mt-12 grid gap-8 md:grid-cols-2">
+            {/* Digital Experiences */}
+            <ScrollReveal delay={0.15} variant="scale">
+              <div className="group relative overflow-hidden rounded-2xl border-2 border-sage/20 bg-white p-8 shadow-sm transition-all duration-300 hover:border-sage hover:shadow-lg">
+                <div className="absolute right-4 top-4 text-4xl opacity-20 transition-opacity group-hover:opacity-30">🔮</div>
+                <h3 className="font-serif text-2xl text-brown-900">Experiências Digitais</h3>
+                <p className="mt-2 font-serif text-sm italic text-sage">7 ficções interativas + práticas guiadas</p>
+                <p className="mt-4 leading-relaxed text-brown-700">
+                  Sete histórias de ficção literária onde te reconheces. Cada uma com pausas de reflexão,
+                  diário pessoal e práticas guiadas. Uma experiência imersiva de transformação.
+                </p>
+                <div className="mt-6 space-y-2">
+                  <div className="flex items-start gap-2 text-sm text-brown-600">
+                    <span className="mt-0.5 text-sage">✓</span>
+                    <span>7 capítulos de ficção por experiência</span>
+                  </div>
+                  <div className="flex items-start gap-2 text-sm text-brown-600">
+                    <span className="mt-0.5 text-sage">✓</span>
+                    <span>Práticas de respiração guiada</span>
+                  </div>
+                  <div className="flex items-start gap-2 text-sm text-brown-600">
+                    <span className="mt-0.5 text-sage">✓</span>
+                    <span>Diário de reflexão pessoal</span>
+                  </div>
+                  <div className="flex items-start gap-2 text-sm text-brown-600">
+                    <span className="mt-0.5 text-sage">✓</span>
+                    <span>Acesso vitalício no site</span>
+                  </div>
+                </div>
+                <div className="mt-6 rounded-lg bg-sage/5 p-4">
+                  <p className="text-sm text-brown-600">A partir de:</p>
+                  <p className="font-serif text-2xl font-bold text-brown-900">1.885 MZN <span className="text-sm font-normal text-brown-500">/ $29 USD</span></p>
+                </div>
+                <Link
+                  href="/experiencias"
+                  className="mt-6 block w-full rounded-lg bg-sage px-6 py-3 text-center font-sans text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-sage-dark"
+                >
+                  Ver experiências
+                </Link>
+              </div>
+            </ScrollReveal>
+
+            {/* Physical Book + Digital Bonus */}
+            <ScrollReveal delay={0.3} variant="scale">
+              <div className="group relative overflow-hidden rounded-2xl border-2 border-brown-200/40 bg-gradient-to-br from-brown-50 to-cream p-8 shadow-sm transition-all duration-300 hover:border-brown-300 hover:shadow-lg">
+                <div className="absolute right-4 top-4">
+                  <span className="rounded-full bg-sage px-3 py-1 font-sans text-xs font-bold uppercase tracking-wider text-white">Bónus Grátis</span>
+                </div>
+                <h3 className="mt-4 font-serif text-2xl text-brown-900">Livro Físico + Digital</h3>
+                <p className="mt-2 font-serif text-sm italic text-brown-600">Os 7 Véus do Despertar (livro filosófico)</p>
+                <p className="mt-4 leading-relaxed text-brown-700">
+                  Livro impresso sobre despertar de consciência — uma cartografia interior para dissolver
+                  o que já não serve. <strong className="text-sage">Inclui acesso GRÁTIS às 7 experiências digitais!</strong>
+                </p>
+                <div className="mt-6 space-y-2">
+                  <div className="flex items-start gap-2 text-sm text-brown-600">
+                    <span className="mt-0.5 text-brown-400">📖</span>
+                    <span>Edição física de alta qualidade</span>
+                  </div>
+                  <div className="flex items-start gap-2 text-sm text-brown-600">
+                    <span className="mt-0.5 text-brown-400">🚚</span>
+                    <span>Entrega em todo Moçambique</span>
+                  </div>
+                  <div className="flex items-start gap-2 text-sm font-medium text-sage">
+                    <span className="mt-0.5">🎁</span>
+                    <span>Bónus: Acesso grátis às 7 experiências digitais (valor 9.685 MZN)</span>
+                  </div>
+                </div>
+                <div className="mt-6 rounded-lg border border-brown-200 bg-white p-4">
+                  <p className="text-sm text-brown-600">Preço do livro físico:</p>
+                  <p className="font-serif text-2xl font-bold text-brown-900">1.500 MZN <span className="text-sm font-normal text-brown-500">≈ $23 USD</span></p>
+                </div>
+                <a
+                  href="https://wa.me/258845243875?text=Olá! Quero encomendar o livro físico Os 7 Véus do Despertar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 flex w-full items-center justify-center gap-3 rounded-lg border-2 border-[#25D366] bg-[#25D366] px-6 py-3 font-sans text-sm font-medium uppercase tracking-wider text-white transition-all hover:bg-transparent hover:text-[#25D366]"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  </svg>
+                  Encomendar via WhatsApp
+                </a>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* Already bought physical book? */}
+          <ScrollReveal delay={0.45}>
+            <div className="mx-auto mt-10 max-w-2xl rounded-xl border border-brown-100 bg-white/50 p-6 text-center">
+              <p className="font-sans text-sm font-medium text-brown-700">
+                Já compraste o livro físico?
               </p>
+              <p className="mt-2 text-sm text-brown-600">
+                Regista o teu código e ganha acesso gratuito às experiências digitais
+              </p>
+              <Link
+                href="/registar-livro"
+                className="mt-4 inline-block rounded-lg border-2 border-sage bg-transparent px-6 py-2.5 font-sans text-sm font-medium uppercase tracking-wider text-sage transition-all hover:bg-sage hover:text-white"
+              >
+                Registar código grátis
+              </Link>
             </div>
           </ScrollReveal>
         </div>
@@ -116,55 +211,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Integrated experience — cream section */}
+      {/* Author teaser — cream section with photo */}
       <section className="bg-cream px-6 py-24">
-        <div className="mx-auto max-w-3xl text-center">
-          <ScrollReveal>
-            <p className="font-sans text-[0.7rem] uppercase tracking-[0.2em] text-sage">
-              Uma experiência, não apenas um livro
-            </p>
-            <h2 className="mt-4 font-serif text-3xl text-brown-900 sm:text-4xl">
-              Lê, reflecte, transforma
-            </h2>
-          </ScrollReveal>
-          <ScrollReveal delay={0.15}>
-            <p className="mx-auto mt-6 max-w-xl leading-relaxed text-brown-700">
-              O Véu da Ilusão não é um PDF para baixar e esquecer. É uma experiência de leitura
-              integrada — com pausas de reflexão, diário pessoal e checklists interactivos. Tudo
-              dentro do site. Ao teu ritmo.
-            </p>
-          </ScrollReveal>
-          <div className="mx-auto mt-10 grid max-w-lg gap-5 sm:grid-cols-3">
-            {[
-              { number: "7", label: "Capítulos", color: "#c9b896" },
-              { number: "7", label: "Reflexões guiadas", color: "#7a8c6e" },
-              { number: "1", label: "Espelho final", color: "#b07a7a" },
-            ].map((stat, i) => (
-              <ScrollReveal key={stat.label} delay={0.1 * i} variant="scale">
-                <div className="rounded-xl bg-white px-4 py-5 shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-md">
-                  <p className="font-serif text-3xl" style={{ color: stat.color }}>{stat.number}</p>
-                  <p className="mt-1 font-sans text-[0.65rem] uppercase tracking-wider text-brown-400">
-                    {stat.label}
-                  </p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-          <ScrollReveal delay={0.3}>
-            <div className="mt-8">
-              <Link
-                href="/experiencias"
-                className="inline-block rounded-md border-2 border-sage bg-sage px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-white transition-all hover:bg-transparent hover:text-sage"
-              >
-                Conhece a experiência
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Author teaser — cream-dark section with photo */}
-      <section className="bg-cream-dark px-6 py-24">
         <div className="mx-auto max-w-4xl">
           <div className="items-center gap-12 md:flex">
             <ScrollReveal variant="fadeLeft" className="shrink-0 text-center md:text-left">
@@ -196,51 +244,6 @@ export default function Home() {
               </Link>
             </ScrollReveal>
           </div>
-        </div>
-      </section>
-
-      {/* Ecossistema teaser — sage/green accent */}
-      <section className="bg-cream-dark px-6 py-24">
-        <div className="mx-auto max-w-4xl">
-          <ScrollReveal>
-            <p className="text-center font-sans text-[0.7rem] uppercase tracking-[0.2em] text-sage">
-              Plataforma reconstruída
-            </p>
-            <h2 className="mt-3 text-center font-serif text-3xl text-brown-900 sm:text-4xl">
-              Mais do que livros — um ecossistema
-            </h2>
-          </ScrollReveal>
-          <ScrollReveal delay={0.15}>
-            <p className="mx-auto mt-6 max-w-xl text-center leading-relaxed text-brown-700">
-              Leitura integrada, diário de reflexão, práticas guiadas e recursos gratuitos
-              — tudo construído para que a transformação saia das páginas e entre na tua vida.
-            </p>
-          </ScrollReveal>
-          <div className="mt-12 grid gap-6 sm:grid-cols-3">
-            {[
-              { icon: "📖", title: "Leitura integrada", desc: "Reader no site com progresso visual e modo nocturno" },
-              { icon: "🪞", title: "Diário de reflexão", desc: "Escreve, guarda e revisita as tuas palavras" },
-              { icon: "🎧", title: "Práticas guiadas", desc: "Meditações e respiração para integrar cada véu" },
-            ].map((item, i) => (
-              <ScrollReveal key={item.title} delay={0.1 * i} variant="scale">
-                <div className="rounded-xl bg-white px-5 py-6 text-center shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-md">
-                  <span className="text-2xl">{item.icon}</span>
-                  <h3 className="mt-3 font-serif text-lg text-brown-900">{item.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-brown-500">{item.desc}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-          <ScrollReveal delay={0.3}>
-            <div className="mt-10 text-center">
-              <Link
-                href="/ecossistema"
-                className="inline-block rounded-md border-2 border-sage bg-sage px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-white transition-all hover:bg-transparent hover:text-sage"
-              >
-                Explora o ecossistema completo
-              </Link>
-            </div>
-          </ScrollReveal>
         </div>
       </section>
 
@@ -320,10 +323,10 @@ export default function Home() {
                 Começa pelo teste gratuito
               </Link>
               <Link
-                href="/ecossistema"
+                href="/experiencias"
                 className="inline-block rounded-md border-2 border-brown-300 bg-transparent px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-200 transition-all hover:border-cream hover:bg-cream hover:text-brown-900"
               >
-                Explora o ecossistema
+                Ver experiências digitais
               </Link>
             </div>
           </ScrollReveal>

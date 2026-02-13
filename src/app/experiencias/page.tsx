@@ -23,17 +23,20 @@ export default function ExperienciasPage() {
         <div className="mx-auto max-w-3xl text-center">
           <ScrollReveal>
             <p className="font-sans text-[0.7rem] uppercase tracking-[0.25em] text-brown-400">
-              Mais do que livros
+              Experiências digitais interativas
             </p>
             <h1 className="mt-4 font-serif text-4xl leading-tight text-cream sm:text-5xl md:text-[3.5rem]">
-              Sete experiências de transformação
+              Sete ficções que transformam
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-brown-200">
-              Cada véu é uma jornada de leitura imersiva — com ficção literária,
-              respiração guiada, diário de reflexão e um espelho que te devolve
-              as tuas próprias palavras. Não lês. Vives.
+              Não são ensaios. São <strong>histórias de ficção literária</strong> onde te reconheces.
+              Cada experiência combina narrativa imersiva, respiração guiada, diário de reflexão
+              e um espelho pessoal. Não lês. Vives.
+            </p>
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-brown-300">
+              <em>(Diferente do livro físico "Os 7 Véus do Despertar" — este é ficção interativa, aquele é filosofia)</em>
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.4}>
@@ -190,6 +193,36 @@ export default function ExperienciasPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
             <PricingTiers />
+          </ScrollReveal>
+
+          {/* Physical book bonus offer */}
+          <ScrollReveal delay={0.4}>
+            <div className="mx-auto mt-10 max-w-2xl rounded-2xl border-2 border-sage/30 bg-gradient-to-br from-sage/5 to-sage/10 p-8">
+              <div className="text-center">
+                <span className="inline-block rounded-full bg-sage px-4 py-1.5 font-sans text-xs font-bold uppercase tracking-wider text-white">
+                  Oferta Especial
+                </span>
+                <h3 className="mt-4 font-serif text-2xl text-brown-900">
+                  Livro Físico + Todas as Experiências Digitais
+                </h3>
+                <p className="mx-auto mt-3 max-w-md leading-relaxed text-brown-700">
+                  Compra o livro físico <strong>"Os 7 Véus do Despertar"</strong> por apenas <strong>1.500 MZN</strong>
+                  e ganha acesso <strong className="text-sage">GRÁTIS</strong> às 7 experiências digitais
+                  (valor normal: 9.685 MZN).
+                </p>
+                <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+                  <Link
+                    href="/livro-fisico"
+                    className="inline-block rounded-lg bg-sage px-8 py-3 font-sans text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-sage-dark"
+                  >
+                    Ver livro físico
+                  </Link>
+                  <p className="text-sm text-brown-500">
+                    Poupa 8.185 MZN
+                  </p>
+                </div>
+              </div>
+            </div>
           </ScrollReveal>
         </div>
       </section>
