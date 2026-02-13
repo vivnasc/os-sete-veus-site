@@ -40,3 +40,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 public/textos/livro_completo_raw.json
+
+/src/generated/prisma
+
+# Prisma (não usado - usando Supabase)
+prisma/
+prisma.config.ts
+*.db
+dev.db*
+
