@@ -71,7 +71,8 @@ export default function MembroDashboard() {
   const nextChapter = chapters.find((ch) => !readingProgress[ch.slug]) || chapters[0];
 
   // Determine which book to show based on access — admin/autora has full access
-  const isAdmin = profile?.is_admin || false;
+  const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
+  const isAdmin = profile?.is_admin || AUTHOR_EMAILS.includes(user?.email || "");
   const hasBookAccess = isAdmin || profile?.has_book_access || false;
   const hasMirrorsAccess = isAdmin || profile?.has_mirrors_access || false;
 
@@ -79,7 +80,7 @@ export default function MembroDashboard() {
     <section className="px-6 py-12">
       <div className="mx-auto max-w-3xl">
         {/* Admin bar */}
-        {profile?.is_admin && (
+        {isAdmin && (
           <Link
             href="/admin"
             className="mb-6 flex items-center justify-between rounded-lg bg-sage/10 px-5 py-3 text-sm text-sage transition-colors hover:bg-sage/20"
