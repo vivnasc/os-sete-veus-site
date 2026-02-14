@@ -19,12 +19,11 @@ export default function MembroDashboard() {
   const [journalCount, setJournalCount] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  // Redirect admin users to admin dashboard
   useEffect(() => {
-    if (!authLoading && profile?.is_admin) {
-      router.push("/admin");
+    if (!authLoading && !user) {
+      router.push("/entrar");
     }
-  }, [profile, authLoading, router]);
+  }, [user, authLoading, router]);
 
   const loadProgress = useCallback(async () => {
     const session = await supabase.auth.getSession();
@@ -78,6 +77,17 @@ export default function MembroDashboard() {
   return (
     <section className="px-6 py-12">
       <div className="mx-auto max-w-3xl">
+        {/* Admin bar */}
+        {profile?.is_admin && (
+          <Link
+            href="/admin"
+            className="mb-6 flex items-center justify-between rounded-lg bg-sage/10 px-5 py-3 text-sm text-sage transition-colors hover:bg-sage/20"
+          >
+            <span>Estás a ver como membro</span>
+            <span className="font-medium">Ir para Painel Autora &rarr;</span>
+          </Link>
+        )}
+
         {/* Welcome */}
         <div className="text-center">
           <p className="font-sans text-[0.65rem] uppercase tracking-[0.25em] text-sage">
@@ -235,6 +245,24 @@ export default function MembroDashboard() {
 
         {/* Secondary cards */}
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          {/* Experiência Filosófica */}
+          <Link
+            href="/livro"
+            className="group rounded-2xl border border-brown-100 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+          >
+            <div className="flex items-center gap-4">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-veu-1 to-veu-4 text-lg text-white">
+                &#10047;
+              </span>
+              <div>
+                <h3 className="font-serif text-base text-brown-800">Experiência Filosófica</h3>
+                <p className="mt-0.5 font-sans text-xs text-brown-400">
+                  Mandala dos 7 véus
+                </p>
+              </div>
+            </div>
+          </Link>
+
           {/* Práticas em Áudio */}
           <Link
             href="/membro/praticas"
