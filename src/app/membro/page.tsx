@@ -70,9 +70,10 @@ export default function MembroDashboard() {
   // Find next unread chapter
   const nextChapter = chapters.find((ch) => !readingProgress[ch.slug]) || chapters[0];
 
-  // Determine which book to show based on access
-  const hasBookAccess = profile?.has_book_access || false;
-  const hasMirrorsAccess = profile?.has_mirrors_access || false;
+  // Determine which book to show based on access — admin/autora has full access
+  const isAdmin = profile?.is_admin || false;
+  const hasBookAccess = isAdmin || profile?.has_book_access || false;
+  const hasMirrorsAccess = isAdmin || profile?.has_mirrors_access || false;
 
   return (
     <section className="px-6 py-12">
