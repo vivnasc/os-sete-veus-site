@@ -18,7 +18,7 @@ const ADMIN_SEED_KEY = process.env.ADMIN_SEED_KEY || 'seed-sete-veus-2025'
 const SEED_ECOS: { veu: number; capitulo: number; conteudo: string }[] = [
   // ============================================================
   // VÉU 1: PERMANÊNCIA — produto principal, mais actividade
-  // Ecos do Espelho da Ilusão (ficção, 7 caps) + Livro (3 caps)
+  // Ecos do livro (caps 1–3, filosófico) + Espelho da Ilusão (ficção com Sara, caps 1–7)
   // ============================================================
   {
     veu: 1, capitulo: 1,
@@ -30,7 +30,7 @@ const SEED_ECOS: { veu: number; capitulo: number; conteudo: string }[] = [
   },
   {
     veu: 1, capitulo: 3,
-    conteudo: 'chorei no banho. outra vez. mas desta vez não foi por tristeza, foi por reconhecimento. a personagem do capítulo 3 sou EU. literalmente eu. assustador.',
+    conteudo: 'a parte do Ubuntu fez-me chorar. "eu sou porque nós somos." sempre pensei que me conhecer era uma viagem solitária. mas este capítulo diz que a identidade nasce da relação, que ninguém se conhece fora da teia. nunca estive sozinha nisto.',
   },
   {
     veu: 1, capitulo: 1,
@@ -38,27 +38,27 @@ const SEED_ECOS: { veu: number; capitulo: number; conteudo: string }[] = [
   },
   {
     veu: 1, capitulo: 2,
-    conteudo: 'fiz um exercício estúpido comigo mesma: se pudesses voltar aos 22 fazias o quê? e comecei a chorar porque a lista era tão longa',
+    conteudo: 'aquilo sobre a insatisfação silenciosa bateu forte. "não é abalo súbito, mas murmúrio constante." é exactamente isto. o peso ao fim do dia sem causa clara. tenho tudo e sinto falta de qualquer coisa que não sei nomear.',
   },
   {
     veu: 1, capitulo: 3,
-    conteudo: 'tenho 34 anos e só agora percebi que nunca escolhi nada na minha vida. fui fazendo o que parecia certo. o que os outros esperavam. é tarde para mudar? provavelmente não. mas o medo é real.',
+    conteudo: 'tenho 34 anos e só agora percebi que nunca escolhi nada na minha vida. fui fazendo o que parecia certo. aquilo do Sartre bateu — "a existência precede a essência." se não nasci com destino traçado, ainda posso escolher. o medo é real. mas a possibilidade também.',
   },
   {
     veu: 1, capitulo: 5,
-    conteudo: 'a protagonista do espelho fez-me sentir tanta raiva. raiva porque ela é eu. faz as mesmas coisas que eu. e nenhuma de nós tem coragem de parar.',
+    conteudo: 'a Sara do Espelho fez-me sentir tanta raiva. raiva porque ela é eu. faz as mesmas coisas que eu. e nenhuma de nós tem coragem de parar.',
   },
   {
     veu: 1, capitulo: 4,
-    conteudo: 'li o capítulo 4 no chapa a caminho do trabalho e quase perdi a paragem. estava tão dentro da história que esqueci onde estava. já não me lembro da ultima vez que um livro fez isso.',
+    conteudo: 'li o capítulo 4 do Espelho no chapa a caminho do trabalho e quase perdi a paragem. estava tão dentro da história da Sara que esqueci onde estava. já não me lembro da ultima vez que um livro fez isso.',
   },
   {
     veu: 1, capitulo: 6,
-    conteudo: 'a minha amiga perguntou o que estou a ler e eu não soube explicar. disse "é sobre uma mulher que vive a vida de toda a gente menos a dela". e ela ficou tipo... "ok isso somos nós".',
+    conteudo: 'a minha amiga perguntou o que estou a ler e eu não soube explicar. disse "é sobre a Sara, uma mulher que vive a vida de toda a gente menos a dela". e ela ficou tipo... "ok isso somos nós".',
   },
   {
     veu: 1, capitulo: 7,
-    conteudo: 'acabei o espelho e não sei o que fazer comigo. tipo. estou a olhar para a minha sala e tudo parece igual mas eu não sou igual. que sensação estranha.',
+    conteudo: 'acabei o Espelho da Ilusão e não sei o que fazer comigo. tipo. estou a olhar para a minha sala e tudo parece igual mas eu não sou igual. que sensação estranha.',
   },
   {
     veu: 1, capitulo: 1,
@@ -125,7 +125,7 @@ const SEED_ECOS: { veu: number; capitulo: number; conteudo: string }[] = [
 const SEED_MARCAS: { veu: number; conteudo: string }[] = [
   { veu: 1, conteudo: 'saí do modo automático. não sei para onde vou mas pelo menos estou acordada.' },
   { veu: 1, conteudo: 'a vida que eu tinha não era minha. agora assusta mas é real.' },
-  { veu: 1, conteudo: 'terminei o espelho e sinto que algo se partiu. no bom sentido. tipo, uma casca.' },
+  { veu: 1, conteudo: 'terminei o Espelho da Ilusão e sinto que algo se partiu. no bom sentido. tipo, uma casca.' },
   { veu: 2, conteudo: 'chorei tudo o que precisava. o passado ficou mais leve.' },
 ]
 
