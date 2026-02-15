@@ -26,35 +26,39 @@ export default function MembroDashboard() {
   }, [user, authLoading, router]);
 
   const loadProgress = useCallback(async () => {
-    const session = await supabase.auth.getSession();
-    const userId = session.data.session?.user?.id;
-    if (!userId) {
-      setLoading(false);
-      return;
-    }
+    try {
+      const session = await supabase.auth.getSession();
+      const userId = session.data.session?.user?.id;
+      if (!userId) {
+        setLoading(false);
+        return;
+      }
 
-    const [readingRes, journalRes] = await Promise.all([
-      supabase
-        .from("reading_progress")
-        .select("chapter_slug, completed")
-        .eq("user_id", userId),
-      supabase
-        .from("journal_entries")
-        .select("chapter_slug")
-        .eq("user_id", userId)
-        .neq("content", ""),
-    ]);
+      const [readingRes, journalRes] = await Promise.all([
+        supabase
+          .from("reading_progress")
+          .select("chapter_slug, completed")
+          .eq("user_id", userId),
+        supabase
+          .from("journal_entries")
+          .select("chapter_slug")
+          .eq("user_id", userId)
+          .neq("content", ""),
+      ]);
 
-    if (readingRes.data) {
-      const map: Record<string, boolean> = {};
-      readingRes.data.forEach((row) => {
-        map[row.chapter_slug] = row.completed;
-      });
-      setReadingProgress(map);
-    }
+      if (readingRes.data) {
+        const map: Record<string, boolean> = {};
+        readingRes.data.forEach((row) => {
+          map[row.chapter_slug] = row.completed;
+        });
+        setReadingProgress(map);
+      }
 
-    if (journalRes.data) {
-      setJournalCount(journalRes.data.length);
+      if (journalRes.data) {
+        setJournalCount(journalRes.data.length);
+      }
+    } catch {
+      // Falha na ligação ao Supabase — continuar sem dados de progresso
     }
 
     setLoading(false);
