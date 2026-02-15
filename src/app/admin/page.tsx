@@ -11,6 +11,8 @@ interface Stats {
   activeMembers: number;
   totalPurchases: number;
   pendingPayments: number;
+  totalEcos: number;
+  totalReconhecimentos: number;
 }
 
 export default function AdminPage() {
@@ -58,11 +60,23 @@ export default function AdminPage() {
         .select("*", { count: "exact", head: true })
         .eq("status", "pending");
 
+      // Community stats
+      const { count: totalEcos } = await supabase
+        .from("ecos")
+        .select("*", { count: "exact", head: true })
+        .gt("expires_at", new Date().toISOString());
+
+      const { count: totalReconhecimentos } = await supabase
+        .from("reconhecimentos")
+        .select("*", { count: "exact", head: true });
+
       setStats({
         totalMembers: totalMembers || 0,
         activeMembers: activeMembers || 0,
         totalPurchases: totalPurchases || 0,
         pendingPayments: pendingPayments || 0,
+        totalEcos: totalEcos || 0,
+        totalReconhecimentos: totalReconhecimentos || 0,
       });
     } catch (error) {
       console.error("Error loading stats:", error);
@@ -131,6 +145,18 @@ export default function AdminPage() {
             href="/admin/pagamentos"
             alert={stats?.pendingPayments ? stats.pendingPayments > 0 : false}
           />
+          <StatCard
+            title="Ecos Activos"
+            value={loading ? "..." : stats?.totalEcos || 0}
+            icon="~"
+            href="/comunidade"
+          />
+          <StatCard
+            title="Reconhecimentos"
+            value={loading ? "..." : stats?.totalReconhecimentos || 0}
+            icon="◇"
+            href="/comunidade"
+          />
         </div>
 
         {/* Quick Actions */}
@@ -163,6 +189,12 @@ export default function AdminPage() {
               description="Criar links para venda directa"
               href="/admin/links-especiais"
               icon="🔗"
+            />
+            <ActionCard
+              title="Ecos — Comunidade"
+              description="Ver a comunidade e moderar ecos"
+              href="/comunidade"
+              icon="~"
             />
             <ActionCard
               title="Analytics"
