@@ -10,8 +10,16 @@ const ADMIN_SEED_KEY = process.env.ADMIN_SEED_KEY || 'seed-sete-veus-2025'
 // Escritos para soarem humanos, vulneráveis e autênticos
 // =====================================================
 
+// PRODUTOS DISPONÍVEIS: Livro Físico + Digital (7 véus) e Espelho da Ilusão (véu 1)
+// Distribuição realista: funil de leitura — maioria fica no véu 1, poucos chegam ao fim
+// Livro: véu 1 = 3 caps (1-3), véu 2 = 4 caps (4-7), véu 3 = 5 caps (8-12), etc.
+// Espelho da Ilusão: 7 capítulos de ficção (véu 1)
+
 const SEED_ECOS: { veu: number; capitulo: number; conteudo: string }[] = [
-  // === VÉU 1: PERMANÊNCIA ===
+  // ============================================================
+  // VÉU 1: PERMANÊNCIA — produto principal, mais actividade
+  // Ecos do Espelho da Ilusão (ficção, 7 caps) + Livro (3 caps)
+  // ============================================================
   {
     veu: 1, capitulo: 1,
     conteudo: 'ok isto bateu forte. acordei hoje e fiz exactamente a mesma coisa que faço há 3 anos. o mesmo café, o mesmo caminho, a mesma cara no espelho. e pensei: quando foi a ultima vez que fiz algo diferente? tipo... realmente diferente?',
@@ -25,187 +33,100 @@ const SEED_ECOS: { veu: number; capitulo: number; conteudo: string }[] = [
     conteudo: 'chorei no banho. outra vez. mas desta vez não foi por tristeza, foi por reconhecimento. a personagem do capítulo 3 sou EU. literalmente eu. assustador.',
   },
   {
-    veu: 1, capitulo: 5,
+    veu: 1, capitulo: 1,
     conteudo: 'a minha mãe sempre disse que estabilidade é o mais importante. e eu acreditei. construí tudo à volta disso. casa, casamento, emprego. e agora olho para isto tudo e penso... ok mas eu? eu onde é que estou nisto?',
   },
   {
-    veu: 1, capitulo: 4,
+    veu: 1, capitulo: 2,
     conteudo: 'fiz um exercício estúpido comigo mesma: se pudesses voltar aos 22 fazias o quê? e comecei a chorar porque a lista era tão longa',
   },
   {
-    veu: 1, capitulo: 7,
+    veu: 1, capitulo: 3,
     conteudo: 'tenho 34 anos e só agora percebi que nunca escolhi nada na minha vida. fui fazendo o que parecia certo. o que os outros esperavam. é tarde para mudar? provavelmente não. mas o medo é real.',
   },
-
-  // === VÉU 2: MEMÓRIA ===
   {
-    veu: 2, capitulo: 1,
+    veu: 1, capitulo: 5,
+    conteudo: 'a protagonista do espelho fez-me sentir tanta raiva. raiva porque ela é eu. faz as mesmas coisas que eu. e nenhuma de nós tem coragem de parar.',
+  },
+  {
+    veu: 1, capitulo: 4,
+    conteudo: 'li o capítulo 4 no chapa a caminho do trabalho e quase perdi a paragem. estava tão dentro da história que esqueci onde estava. já não me lembro da ultima vez que um livro fez isso.',
+  },
+  {
+    veu: 1, capitulo: 6,
+    conteudo: 'a minha amiga perguntou o que estou a ler e eu não soube explicar. disse "é sobre uma mulher que vive a vida de toda a gente menos a dela". e ela ficou tipo... "ok isso somos nós".',
+  },
+  {
+    veu: 1, capitulo: 7,
+    conteudo: 'acabei o espelho e não sei o que fazer comigo. tipo. estou a olhar para a minha sala e tudo parece igual mas eu não sou igual. que sensação estranha.',
+  },
+  {
+    veu: 1, capitulo: 1,
+    conteudo: 'só vim aqui dizer que às 6 da manhã a dar de mamar ao bebé li o primeiro capítulo e chorei. não sei se é o cansaço ou se é mesmo isto. mas algo mexeu.',
+  },
+
+  // ============================================================
+  // VÉU 2: MEMÓRIA — leitoras do livro que avançaram
+  // 4 capítulos no livro (caps 4-7)
+  // ============================================================
+  {
+    veu: 2, capitulo: 4,
     conteudo: 'a minha avó morreu quando eu tinha 9 anos e acho que nunca processei isso. apareceu-me hoje durante a leitura do nada. 25 anos depois. fogo.',
   },
   {
-    veu: 2, capitulo: 3,
+    veu: 2, capitulo: 5,
     conteudo: 'a minha mãe nunca me disse que tinha orgulho de mim. e eu passo a vida a tentar ouvir isso de toda a gente. do chefe, das amigas, do meu namorado. é cansativo.',
   },
   {
-    veu: 2, capitulo: 2,
-    conteudo: 'não consigo parar de chorar com este capítulo. o meu pai saiu de casa quando eu tinha 7 anos e eu AINDA fico ansiosa quando alguém demora a responder mensagens. tipo, 20 anos depois. que raiva.',
-  },
-  {
-    veu: 2, capitulo: 5,
-    conteudo: 'lembrei-me de uma coisa que a minha professora me disse na 4a classe. "tu nunca vais ser como a tua irmã." e eu tinha esquecido. ou pensava que tinha. afinal não.',
-  },
-  {
-    veu: 2, capitulo: 4,
-    conteudo: 'saudades de quem eu era antes de tudo. mas será que essa pessoa realmente existiu? ou é só a memória a inventar coisas bonitas para eu não ter de lidar com o presente?',
-  },
-  {
     veu: 2, capitulo: 6,
+    conteudo: 'o meu pai saiu de casa quando eu tinha 7 anos e eu AINDA fico ansiosa quando alguém demora a responder mensagens. tipo, 20 anos depois. que raiva.',
+  },
+  {
+    veu: 2, capitulo: 7,
     conteudo: 'contei ao meu terapeuta sobre este capítulo e ele ficou em silêncio tipo 30 segundos. depois disse "o que seria soltar isso?" e eu não soube responder. ainda não sei.',
   },
 
-  // === VÉU 3: TURBILHÃO ===
+  // ============================================================
+  // VÉU 3: TURBILHÃO — poucas leitoras chegam aqui
+  // 5 capítulos no livro (caps 8-12)
+  // ============================================================
   {
-    veu: 3, capitulo: 1,
+    veu: 3, capitulo: 8,
     conteudo: 'a minha cabeça às 3 da manhã: e se perdes o emprego? e se ele te deixa? e se nunca fores suficiente? e se e se e se. estou tão cansada disto.',
   },
   {
-    veu: 3, capitulo: 2,
-    conteudo: 'hoje gritei com a minha filha por causa de nada. NADA. e depois tranquei-me na casa de banho a chorar porque percebi que não era raiva dela. era raiva de mim. da minha vida. de tudo.',
-  },
-  {
-    veu: 3, capitulo: 4,
-    conteudo: 'alguém me perguntou "como te sentes?" e eu não consegui responder. tipo... não sabia. sinto tanto ao mesmo tempo que já não consigo separar as coisas.',
-  },
-  {
-    veu: 3, capitulo: 3,
+    veu: 3, capitulo: 10,
     conteudo: 'fiz a prática de respiração e consegui ficar parada 2 minutos sem pegar no telemóvel. parece patético mas para mim foi ENORME. 2 minutos de silêncio. uau.',
   },
-  {
-    veu: 3, capitulo: 6,
-    conteudo: 'descobri que a minha ansiedade tem um padrão. aparece sempre que alguém me pede algo. qualquer coisa. até coisas simples. é como se o meu corpo dissesse "não aguento mais" antes de eu sequer pensar',
-  },
-  {
-    veu: 3, capitulo: 5,
-    conteudo: 'tive um ataque de pânico na terça e pela primeira vez em vez de lutar contra tentei só... ficar. foi horrível mas passou mais rápido. não sei o que pensar disto.',
-  },
 
-  // === VÉU 4: ESFORÇO ===
+  // ============================================================
+  // VÉU 4: ESFORÇO — muito poucas
+  // 4 capítulos no livro (caps 13-16)
+  // ============================================================
   {
-    veu: 4, capitulo: 1,
+    veu: 4, capitulo: 13,
     conteudo: 'contei quantas vezes disse "desculpa" ontem. 14 vezes. CATORZE. desculpa por existir, basicamente. quando é que isto começou?',
   },
   {
-    veu: 4, capitulo: 3,
-    conteudo: 'a minha colega do trabalho faz metade do que eu faço e ganha o mesmo. e eu fico até às 8 da noite "porque tem de ficar bem". para quem?? para quem é que tem de ficar bem?',
-  },
-  {
-    veu: 4, capitulo: 2,
-    conteudo: 'deitei-me no sofá sábado à tarde e não fiz nada. NADA. e a culpa que senti foi tão grande que quase me levantei para ir limpar a casa. mas não me levantei. e o mundo continuou.',
-  },
-  {
-    veu: 4, capitulo: 5,
-    conteudo: 'disse não. a uma coisa que não queria fazer. e a pessoa ficou chateada. e eu sobrevivi. é tão simples mas parece que escalei o evereste.',
-  },
-  {
-    veu: 4, capitulo: 4,
-    conteudo: 'escrevi num papel tudo o que fiz hoje. 23 coisas. sabe quantas eram para mim? 2. o café da manhã e escovar os dentes. é rir para não chorar.',
-  },
-  {
-    veu: 4, capitulo: 7,
+    veu: 4, capitulo: 15,
     conteudo: 'a minha filha de 6 anos disse-me "mamã tu nunca paras". e doeu mais do que qualquer crítica que já recebi.',
   },
 
-  // === VÉU 5: DESOLAÇÃO ===
+  // ============================================================
+  // VÉU 5: DESOLAÇÃO — raro, uma leitora dedicada
+  // ============================================================
   {
-    veu: 5, capitulo: 1,
+    veu: 5, capitulo: 18,
     conteudo: 'está tudo bem na minha vida. objectivamente. marido bom. filhos saudáveis. emprego estável. e mesmo assim sinto um vazio enorme. que culpa é esta de sentir vazio quando "tens tudo"?',
-  },
-  {
-    veu: 5, capitulo: 3,
-    conteudo: 'ontem fiquei sozinha em casa pela primeira vez em meses. e entrei em pânico. tipo, o que é que eu faço comigo mesma? quando é que me tornei alguém que tem medo da própria companhia?',
-  },
-  {
-    veu: 5, capitulo: 2,
-    conteudo: 'mudei-me para Maputo há 2 anos e ainda não tenho uma amiga. uma. as pessoas aqui são simpáticas mas eu... não consigo. fico travada. como se não merecesse.',
-  },
-  {
-    veu: 5, capitulo: 5,
-    conteudo: 'chorei durante a prática toda. não sei porquê. não havia razão. só um choro fundo que parecia vir de um sítio que eu não conhecia. e depois senti-me estranhamente leve.',
-  },
-  {
-    veu: 5, capitulo: 4,
-    conteudo: 'a solidão pior não é quando estás sozinha. é quando estás rodeada de pessoas e mesmo assim sentes que ninguém te vê. ninguém te VÊ mesmo.',
-  },
-
-  // === VÉU 6: HORIZONTE ===
-  {
-    veu: 6, capitulo: 1,
-    conteudo: 'lembro-me de pensar aos 20: quando tiver 30 vai estar tudo resolvido. estou com 33 e nada está resolvido. e começo a suspeitar que nunca vai estar. e talvez esteja tudo bem com isso?',
-  },
-  {
-    veu: 6, capitulo: 3,
-    conteudo: 'comprei um apartamento, casei, tive promoção. tudo o que "devia" querer. e agora? agora o quê? é só isto? não pode ser só isto.',
-  },
-  {
-    veu: 6, capitulo: 2,
-    conteudo: 'vi uma foto minha de há 5 anos. na altura achava que estava gorda, feia, mal vestida. agora olho e penso "estavas tão bonita". vou daqui a 5 anos olhar para hoje e pensar o mesmo? provavelmente. que desperdício.',
-  },
-  {
-    veu: 6, capitulo: 5,
-    conteudo: 'não sei o que quero da vida. e durante muito tempo isso assustou-me. hoje não. hoje é quase... libertador? não saber também é uma posição válida.',
-  },
-  {
-    veu: 6, capitulo: 4,
-    conteudo: 'apaguei a minha lista de objectivos para 2026. toda. e em vez disso escrevi só: prestar atenção.',
-  },
-  {
-    veu: 6, capitulo: 6,
-    conteudo: 'a minha irmã perguntou-me "onde te vês daqui a 5 anos?" e eu disse "aqui. presente. a viver." ela achou estranho. eu achei a coisa mais honesta que disse este ano.',
-  },
-
-  // === VÉU 7: DUALIDADE ===
-  {
-    veu: 7, capitulo: 1,
-    conteudo: 'sou boa mãe e ao mesmo tempo sonho com uma vida sem filhos. e isso não me faz má pessoa. acho eu. espero eu. isto é tão confuso.',
-  },
-  {
-    veu: 7, capitulo: 3,
-    conteudo: 'no trabalho sou a "forte". a que resolve tudo. em casa choro no chuveiro. ninguém conhece as duas. e eu estou cansada de ser duas.',
-  },
-  {
-    veu: 7, capitulo: 2,
-    conteudo: 'ontem ri-me e chorei no mesmo minuto. e em vez de achar que estava a ficar maluca pensei: se calhar é só isto. ser humana. sentir tudo ao mesmo tempo. sem ter de escolher.',
-  },
-  {
-    veu: 7, capitulo: 5,
-    conteudo: 'sempre achei que tinha de escolher: ou sou a boa filha que a minha mãe quer, ou sou eu. e se puder ser as duas? e se não for "ou" mas "e"?',
-  },
-  {
-    veu: 7, capitulo: 4,
-    conteudo: 'a vivianne escreveu uma coisa que não me sai da cabeça: não tens de te encontrar. já estás aqui. fogo. estou a reler há 3 dias.',
-  },
-  {
-    veu: 7, capitulo: 6,
-    conteudo: 'deixei de dizer "eu devia ser mais forte". forte para quê? frágil também é real. também é meu. também conta.',
-  },
-  {
-    veu: 7, capitulo: 7,
-    conteudo: 'acabei o último capítulo e não tenho palavras grandes para dizer. só que... respiro diferente. não sei explicar. mais fundo. mais devagar. algo mudou e eu não consigo apontar o quê.',
   },
 ]
 
-// Marcas no caminho — frases curtas deixadas ao completar um véu
+// Marcas no caminho — só para véus onde faz sentido haver alguém que terminou
 const SEED_MARCAS: { veu: number; conteudo: string }[] = [
   { veu: 1, conteudo: 'saí do modo automático. não sei para onde vou mas pelo menos estou acordada.' },
   { veu: 1, conteudo: 'a vida que eu tinha não era minha. agora assusta mas é real.' },
+  { veu: 1, conteudo: 'terminei o espelho e sinto que algo se partiu. no bom sentido. tipo, uma casca.' },
   { veu: 2, conteudo: 'chorei tudo o que precisava. o passado ficou mais leve.' },
-  { veu: 2, conteudo: 'perdoei-me. ainda não sei bem como mas aconteceu.' },
-  { veu: 3, conteudo: 'consegui ficar em silêncio 5 minutos. parece pouco. foi tudo.' },
-  { veu: 3, conteudo: 'as emoções continuam mas já não mando nelas. ouço.' },
-  { veu: 4, conteudo: 'disse que não. o mundo não acabou.' },
-  { veu: 5, conteudo: 'fiquei sozinha comigo. e não fugi. pela primeira vez.' },
-  { veu: 6, conteudo: 'apaguei os planos. vou ver o que acontece.' },
-  { veu: 7, conteudo: 'não preciso de escolher quem sou. sou tudo isto. e está bem.' },
 ]
 
 // Temas detectados manualmente (para garantir coerência visual)
@@ -257,7 +178,8 @@ export async function POST(req: Request) {
     })
 
     // 1. Create ghost users for seed data
-    const GHOST_COUNT = 18
+    // Menos users = mais realista para produto recém-lançado
+    const GHOST_COUNT = 12
     const ghostUserIds: string[] = []
 
     for (let i = 1; i <= GHOST_COUNT; i++) {
