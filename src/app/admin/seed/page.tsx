@@ -18,13 +18,30 @@ export default function SeedPage() {
       })
       const data = await res.json()
       if (data.ok) {
-        setStatus('success')
-        setResult(
+        const hasErrors = data.errors && (
+          data.errors.ecos?.length > 0 ||
+          data.errors.reconhecimentos?.length > 0 ||
+          data.errors.marcas?.length > 0
+        )
+        setStatus(hasErrors && data.summary.ecos === 0 ? 'error' : 'success')
+        let msg =
           `Ghost users: ${data.summary.ghostUsers}\n` +
           `Ecos inseridos: ${data.summary.ecos}\n` +
           `Reconhecimentos: ${data.summary.reconhecimentos}\n` +
           `Marcas: ${data.summary.marcas}`
-        )
+        if (hasErrors) {
+          msg += '\n\n--- ERROS ---'
+          if (data.errors.ecos?.length > 0) {
+            msg += `\n\nEcos (${data.errors.ecos.length} erros):\n` + data.errors.ecos.join('\n')
+          }
+          if (data.errors.reconhecimentos?.length > 0) {
+            msg += `\n\nReconhecimentos (${data.errors.reconhecimentos.length} erros):\n` + data.errors.reconhecimentos.join('\n')
+          }
+          if (data.errors.marcas?.length > 0) {
+            msg += `\n\nMarcas (${data.errors.marcas.length} erros):\n` + data.errors.marcas.join('\n')
+          }
+        }
+        setResult(msg)
       } else {
         setStatus('error')
         setResult(data.error || 'Erro desconhecido')

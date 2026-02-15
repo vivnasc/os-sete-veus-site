@@ -216,6 +216,7 @@ export async function POST(req: Request) {
 
     // 2. Insert seed ecos (distributed across ghost users)
     const insertedEcoIds: string[] = []
+    const ecoErrors: string[] = []
     const now = new Date()
 
     for (let i = 0; i < SEED_ECOS.length; i++) {
@@ -247,12 +248,15 @@ export async function POST(req: Request) {
         insertedEcoIds.push(data.id)
       }
       if (error) {
-        console.error(`Erro eco ${i}:`, error.message)
+        const msg = `Eco ${i} (véu ${eco.veu}, cap ${eco.capitulo}): ${error.message} [code: ${error.code}, details: ${error.details}, hint: ${error.hint}]`
+        console.error(msg)
+        ecoErrors.push(msg)
       }
     }
 
     // 3. Add reconhecimentos (each ghost user recognizes 3-8 random ecos)
     let reconhecimentosCount = 0
+    const reconhecimentoErrors: string[] = []
     for (const userId of ghostUserIds) {
       const numReconhecimentos = 3 + Math.floor(Math.random() * 6)
       const shuffled = [...insertedEcoIds].sort(() => Math.random() - 0.5)
@@ -264,12 +268,17 @@ export async function POST(req: Request) {
           .from('reconhecimentos')
           .insert({ eco_id: ecoId, user_id: userId })
 
-        if (!error) reconhecimentosCount++
+        if (!error) {
+          reconhecimentosCount++
+        } else {
+          reconhecimentoErrors.push(`${error.message} [code: ${error.code}]`)
+        }
       }
     }
 
     // 4. Insert marcas no caminho
     let marcasCount = 0
+    const marcaErrors: string[] = []
     for (let i = 0; i < SEED_MARCAS.length; i++) {
       const marca = SEED_MARCAS[i]
       const userId = ghostUserIds[i % ghostUserIds.length]
@@ -288,7 +297,11 @@ export async function POST(req: Request) {
           expires_at: expiresAt.toISOString(),
         }, { onConflict: 'user_id,veu_numero' })
 
-      if (!error) marcasCount++
+      if (!error) {
+        marcasCount++
+      } else {
+        marcaErrors.push(`Marca véu ${marca.veu}: ${error.message} [code: ${error.code}]`)
+      }
     }
 
     return NextResponse.json({
@@ -298,6 +311,11 @@ export async function POST(req: Request) {
         ecos: insertedEcoIds.length,
         reconhecimentos: reconhecimentosCount,
         marcas: marcasCount,
+      },
+      errors: {
+        ecos: ecoErrors,
+        reconhecimentos: reconhecimentoErrors.slice(0, 5),
+        marcas: marcaErrors,
       },
     })
   } catch (err) {
