@@ -121,6 +121,7 @@ export default function LivroFisicoPage() {
               {[
                 "Edição impressa de alta qualidade",
                 "Versão digital do livro incluída",
+                "Acesso à Comunidade dos Sete Véus",
                 "Entrega em todo Moçambique",
                 "Encomenda directa via WhatsApp",
               ].map((item) => (
@@ -200,6 +201,42 @@ export default function LivroFisicoPage() {
               Já tenho o código — Registar agora
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Comunidade — incluída com a compra */}
+      <section className="bg-gradient-to-b from-[#1a1510] to-[#2d2620] px-6 py-24">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="font-sans text-[0.7rem] uppercase tracking-[0.25em] text-sage-light">
+            Incluído na tua compra
+          </p>
+          <h2 className="mt-4 font-serif text-3xl text-cream">
+            Entra na Comunidade d&#39;Os Sete Véus
+          </h2>
+          <p className="mx-auto mt-6 max-w-lg leading-relaxed text-brown-200">
+            Ao adquirires o livro, ganhas acesso a um espaço anónimo e impermanente
+            onde leitoras partilham reflexões, sentem a consciência colectiva e contemplam juntas.
+            Sem julgamento. Sem exposição. Apenas reconhecimento.
+          </p>
+          <div className="mx-auto mt-8 flex max-w-md flex-wrap justify-center gap-3">
+            {[
+              { icon: "🌊", name: "Ecos" },
+              { icon: "🌀", name: "Maré" },
+              { icon: "🪞", name: "Círculo" },
+              { icon: "🔥", name: "Fogueira" },
+            ].map((item) => (
+              <span
+                key={item.name}
+                className="flex items-center gap-2 rounded-full border border-brown-600/30 bg-brown-800/50 px-4 py-2 text-sm text-brown-200"
+              >
+                <span>{item.icon}</span>
+                {item.name}
+              </span>
+            ))}
+          </div>
+          <p className="mt-6 font-serif text-sm italic text-brown-400">
+            &ldquo;Tudo é anónimo. Tudo é impermanente. Como os véus.&rdquo;
+          </p>
         </div>
       </section>
 

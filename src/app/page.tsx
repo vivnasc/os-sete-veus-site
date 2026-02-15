@@ -245,6 +245,68 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Comunidade — diferencial único */}
+      <section className="bg-gradient-to-b from-[#1a1510] to-[#2d2620] px-6 py-24">
+        <div className="mx-auto max-w-4xl">
+          <ScrollReveal>
+            <p className="text-center font-sans text-[0.7rem] uppercase tracking-[0.25em] text-sage-light">
+              Exclusivo d&#39;Os Sete Véus do Despertar
+            </p>
+            <h2 className="mt-4 text-center font-serif text-3xl text-cream sm:text-4xl">
+              Mais do que ler. Partilhar sem máscara.
+            </h2>
+            <p className="mx-auto mt-6 max-w-xl text-center leading-relaxed text-brown-200">
+              Quem adquire qualquer experiência ganha acesso a um espaço único:
+              uma comunidade anónima onde a conexão acontece por reconhecimento — não por interação.
+            </p>
+          </ScrollReveal>
+
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                icon: "🌊",
+                title: "Ecos",
+                desc: "Reflexões anónimas. Libertas o que sentes e encontras quem sente o mesmo.",
+              },
+              {
+                icon: "🌀",
+                title: "Maré",
+                desc: "Consciência colectiva. Sente o pulso emocional de quem caminha contigo.",
+              },
+              {
+                icon: "🪞",
+                title: "Círculo",
+                desc: "Espelho partilhado. Um espaço seguro de reconhecimento mútuo.",
+              },
+              {
+                icon: "🔥",
+                title: "Fogueira",
+                desc: "Contemplação. Pára. Respira. Estás acompanhada no silêncio.",
+              },
+            ].map((item, i) => (
+              <ScrollReveal key={item.title} delay={0.1 * i} variant="fadeUp">
+                <div className="rounded-xl border border-brown-600/30 bg-brown-800/50 p-6 text-center transition-all duration-300 hover:border-sage/40 hover:bg-brown-800/70">
+                  <div className="text-3xl">{item.icon}</div>
+                  <h3 className="mt-3 font-serif text-lg text-cream">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-brown-300">{item.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <ScrollReveal delay={0.4}>
+            <div className="mt-12 text-center">
+              <p className="font-serif text-sm italic text-brown-400">
+                &ldquo;Tudo é anónimo. Tudo é impermanente. Como os véus.&rdquo;
+              </p>
+              <p className="mt-4 text-xs text-brown-500">
+                Acesso incluído com qualquer livro ou Espelho
+              </p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Social proof */}
       <section className="bg-cream px-6 py-24">
         <div className="mx-auto max-w-4xl">

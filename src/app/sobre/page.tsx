@@ -71,6 +71,8 @@ export default function SobrePage() {
             <p className="leading-relaxed text-brown-700">
               Quero ser companhia no teu caminho. Quero que saibas que não estás sozinha nisto — nesta
               sensação de que há mais para ti, de que mereces mais da tua própria vida.
+              Por isso criei uma comunidade onde podes partilhar o que sentes, de forma anónima,
+              e encontrar reconhecimento em quem caminha o mesmo caminho.
             </p>
             <p className="leading-relaxed text-brown-700">
               E quero que vás devagar. Sem pressa. Ao teu ritmo. Porque o primeiro passo é teu, e
