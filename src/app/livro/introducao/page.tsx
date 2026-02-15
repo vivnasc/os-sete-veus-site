@@ -60,41 +60,63 @@ export default function IntroducaoPage() {
     return idx > 0 ? seccoes[idx - 1].key : null
   }
 
-  // Corrigir caracteres corrompidos da conversão DOCX (ligaduras fi/fl/q perdidas)
+  // Corrigir caracteres corrompidos da conversão DOCX (ligaduras fi/fl/qu perdidas)
   const corrigirTexto = (t: string): string => {
     return t
-      .replace(/\u0000ue/g, 'que')
-      .replace(/\u0000ua/g, 'qua')
-      .replace(/\u0000uil/g, 'quil')
-      .replace(/\u0000uin/g, 'quin')
-      .replace(/\u0000uit/g, 'quit')
+      // "fl" — padrões específicos (antes de "qu" para evitar conflito)
+      .replace(/supér\u0000uo/g, 'supérfluo')
       .replace(/\u0000uid/g, 'fluid')
       .replace(/\u0000uir/g, 'fluir')
       .replace(/\u0000ux/g, 'flux')
       .replace(/\u0000l/g, 'fl')
+      // "qu" — todas as combinações de vogal
+      .replace(/\u0000ue/g, 'que')
+      .replace(/\u0000ua/g, 'qua')
+      .replace(/\u0000ui/g, 'qui')
+      .replace(/\u0000uo/g, 'quo')
+      .replace(/\u0000u[éê]/g, (m: string) => 'qu' + m[2])
+      .replace(/\u0000u[íì]/g, (m: string) => 'qu' + m[2])
+      // "fi" — tudo o resto
       .replace(/\u0000/g, 'fi')
   }
 
-  // Limpar texto: corrigir caracteres e remover prefixos de título do raw text
+  // Limpar texto: corrigir caracteres, remover prefixos DOCX e agrupar linhas em parágrafos
   const limparTexto = (texto: string): string[] => {
     let limpo = corrigirTexto(texto)
 
-    // Remover prefixos de título embutidos no texto (capitulares decorativas do DOCX)
+    // Remover prefixos de título embutidos (capitulares decorativas do DOCX)
+    // e recuperar a letra decorativa como inicial do texto seguinte.
     // Ex: "ENota de Abertura\nste livro..." → "Este livro..."
     // Ex: "VIntrodução\nivemos..." → "Vivemos..."
     limpo = limpo
-      .replace(/^[A-Z]?Nota de Abertura\n/i, '')
-      .replace(/^[A-Z]?Introdução\n/i, '')
-      // Corrigir capitulares partidas (E+ste, V+ivemos, O+despertar)
-      .replace(/^([A-Z])([A-Z])/gm, (_match, _cap, rest) => rest)
+      .replace(/^([A-Z])Nota de Abertura\n/i, (_m, cap) => cap)
+      .replace(/^([A-Z])Introdução\n/i, (_m, cap) => cap)
 
-    // Corrigir subtítulos embutidos (ex: "OO Processo..." → "O Processo...")
+    // Corrigir capitulares duplicadas (ex: "OO Processo..." → "O Processo...")
     limpo = limpo.replace(/^([A-Z])\1/gm, '$1')
 
-    return limpo
-      .split('\n')
-      .map(p => p.trim())
-      .filter(p => p.length > 0)
+    // Agrupar linhas em parágrafos reais:
+    // - \n\n = quebra de parágrafo intencional
+    // - \n simples = wrap de linha do DOCX (juntar com espaço)
+    const blocos = limpo.split('\n\n')
+    const paragrafos: string[] = []
+
+    for (const bloco of blocos) {
+      // Juntar linhas do bloco (são wraps DOCX, não parágrafos distintos)
+      const texto = bloco
+        .split('\n')
+        .map(l => l.trim())
+        .filter(l => l.length > 0)
+        .join(' ')
+        .replace(/\s{2,}/g, ' ')
+        .trim()
+
+      if (texto.length > 0) {
+        paragrafos.push(texto)
+      }
+    }
+
+    return paragrafos
   }
 
   const textoAtual = (): string[] => {
