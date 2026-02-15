@@ -10,6 +10,67 @@ import { useAccess } from '@/hooks/useAccess'
 import livroData from '@/data/livro-7-veus.json'
 import ReflexoesDrawer from '@/components/ReflexoesDrawer'
 
+// Corrigir caracteres corrompidos da conversão DOCX (ligaduras fi/fl/q perdidas)
+function corrigirTexto(texto: string): string {
+  return texto
+    // "qu" — antes de vogais comuns em português
+    .replace(/\u0000ue/g, 'que')
+    .replace(/\u0000ua/g, 'qua')
+    .replace(/\u0000uil/g, 'quil')
+    .replace(/\u0000uin/g, 'quin')
+    .replace(/\u0000uit/g, 'quit')
+    // "fl" — padrões específicos
+    .replace(/\u0000uid/g, 'fluid')
+    .replace(/\u0000uir/g, 'fluir')
+    .replace(/\u0000ux/g, 'flux')
+    .replace(/\u0000l/g, 'fl')
+    // "fi" — tudo o resto (fixo, fissura, final, firme, ficou, etc.)
+    .replace(/\u0000/g, 'fi')
+}
+
+// Dividir parágrafos longos em pontos de frase naturais
+function dividirParagrafoLongo(texto: string, maxChars: number): string[] {
+  if (texto.length <= maxChars) return [texto]
+
+  const resultado: string[] = []
+  let restante = texto
+
+  while (restante.length > maxChars) {
+    // Procurar ponto final + espaço perto do meio
+    const meio = Math.floor(maxChars * 0.75)
+    let melhorCorte = -1
+
+    // Procurar de trás para frente a partir do maxChars
+    for (let i = Math.min(restante.length - 1, maxChars); i >= meio - 100; i--) {
+      if (restante[i] === '.' && restante[i + 1] === ' ') {
+        melhorCorte = i + 1
+        break
+      }
+    }
+
+    if (melhorCorte === -1) {
+      // Se não encontrar ponto, procurar para a frente
+      for (let i = maxChars; i < restante.length; i++) {
+        if (restante[i] === '.' && restante[i + 1] === ' ') {
+          melhorCorte = i + 1
+          break
+        }
+      }
+    }
+
+    if (melhorCorte === -1) {
+      resultado.push(restante)
+      restante = ''
+    } else {
+      resultado.push(restante.substring(0, melhorCorte).trim())
+      restante = restante.substring(melhorCorte).trim()
+    }
+  }
+
+  if (restante.length > 0) resultado.push(restante)
+  return resultado
+}
+
 export default function CapituloPage() {
   const { user, loading } = useAuth()
   const { hasBookAccess, isLoading: accessLoading } = useAccess()
@@ -26,13 +87,59 @@ export default function CapituloPage() {
   const [mostrarPausa, setMostrarPausa] = useState(false)
   const [paragrafoAtual, setParagrafoAtual] = useState(0)
 
-  // Dividir conteúdo em parágrafos
+  // Dividir conteúdo em parágrafos limpos
   const paragrafos = useMemo(() => {
-    if (!capitulo) return []
-    return capitulo.conteudo
-      .split('\n\n')
-      .filter(p => p.trim().length > 0)
-      .map(p => p.trim())
+    if (!capitulo) return [] as { texto: string; tipo: 'paragrafo' | 'subtitulo' }[]
+
+    let texto = capitulo.conteudo
+
+    // 1. Corrigir caracteres corrompidos (ligaduras fi/fl/q perdidas na conversão DOCX)
+    texto = corrigirTexto(texto)
+
+    // 2. Remover título do capítulo duplicado no início
+    //    Ex: "Capítulo 1 — Quando o Eu Começa a\nVacilar\n"
+    texto = texto.replace(/^Capítulo\s+\d+\s*[—–-]\s*[^\n]*(?:\n[^\n]{1,60})?\n/, '')
+
+    // 3. Separar por parágrafo (dupla quebra de linha)
+    const blocos = texto.split('\n\n').filter(b => b.trim().length > 0)
+
+    const resultado: { texto: string; tipo: 'paragrafo' | 'subtitulo' }[] = []
+
+    for (const bloco of blocos) {
+      // Detectar subtítulos de secção: linha curta no início seguida de corpo
+      const linhas = bloco.split('\n')
+      const primeiraLinha = linhas[0].trim()
+      const resto = linhas.slice(1).join(' ').trim()
+
+      // É subtítulo se: linha curta (<60 chars), sem ponto final, e seguida de texto
+      const ehSubtitulo = primeiraLinha.length < 60
+        && !primeiraLinha.endsWith('.')
+        && !primeiraLinha.endsWith('?')
+        && !primeiraLinha.endsWith('"')
+        && resto.length > 0
+        && /^[A-ZÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ]/.test(primeiraLinha)
+
+      if (ehSubtitulo) {
+        resultado.push({ texto: primeiraLinha, tipo: 'subtitulo' })
+        const textoLimpo = resto.replace(/\n/g, ' ').replace(/\s{2,}/g, ' ').trim()
+        if (textoLimpo.length > 0) {
+          // Dividir se muito longo (>600 chars)
+          for (const parte of dividirParagrafoLongo(textoLimpo, 600)) {
+            resultado.push({ texto: parte, tipo: 'paragrafo' })
+          }
+        }
+      } else {
+        // Juntar \n como espaços
+        const textoLimpo = bloco.replace(/\n/g, ' ').replace(/\s{2,}/g, ' ').trim()
+        if (textoLimpo.length > 0) {
+          for (const parte of dividirParagrafoLongo(textoLimpo, 600)) {
+            resultado.push({ texto: parte, tipo: 'paragrafo' })
+          }
+        }
+      }
+    }
+
+    return resultado
   }, [capitulo])
 
   // Cores por véu
@@ -193,17 +300,29 @@ export default function CapituloPage() {
         {/* Texto do Capítulo */}
         {modoLeitura === 'normal' ? (
           // Modo Normal: Todo o texto de uma vez
-          <div className="space-y-8">
-            {paragrafos.map((paragrafo, index) => (
-              <motion.p
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className={`text-lg md:text-xl leading-relaxed ${modoNoturno ? cores.textDark : cores.text} font-serif`}
-              >
-                {paragrafo}
-              </motion.p>
+          <div className="space-y-6">
+            {paragrafos.map((item, index) => (
+              item.tipo === 'subtitulo' ? (
+                <motion.h2
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                  className={`mt-12 mb-2 text-xl md:text-2xl font-serif font-semibold ${modoNoturno ? cores.textDark : cores.text}`}
+                >
+                  {item.texto}
+                </motion.h2>
+              ) : (
+                <motion.p
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                  className={`text-lg md:text-xl leading-relaxed ${modoNoturno ? cores.textDark : cores.text} font-serif`}
+                >
+                  {item.texto}
+                </motion.p>
+              )
             ))}
           </div>
         ) : (
@@ -216,9 +335,15 @@ export default function CapituloPage() {
               exit={{ opacity: 0, y: -20 }}
               className="space-y-8"
             >
-              <p className={`text-lg md:text-2xl leading-relaxed ${modoNoturno ? cores.textDark : cores.text} font-serif`}>
-                {paragrafos[paragrafoAtual]}
-              </p>
+              {paragrafos[paragrafoAtual]?.tipo === 'subtitulo' ? (
+                <h2 className={`text-xl md:text-3xl font-serif font-semibold ${modoNoturno ? cores.textDark : cores.text}`}>
+                  {paragrafos[paragrafoAtual]?.texto}
+                </h2>
+              ) : (
+                <p className={`text-lg md:text-2xl leading-relaxed ${modoNoturno ? cores.textDark : cores.text} font-serif`}>
+                  {paragrafos[paragrafoAtual]?.texto}
+                </p>
+              )}
             </motion.div>
 
             {/* Progresso */}
