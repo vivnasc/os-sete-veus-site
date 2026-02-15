@@ -14,198 +14,198 @@ const SEED_ECOS: { veu: number; capitulo: number; conteudo: string }[] = [
   // === VÉU 1: PERMANÊNCIA ===
   {
     veu: 1, capitulo: 1,
-    conteudo: 'Hoje percebi que passo os dias a repetir os mesmos gestos sem pensar. Acordo, café, trabalho, jantar, dormir. E amanhã igual. Há quanto tempo vivo no piloto automático?',
+    conteudo: 'ok isto bateu forte. acordei hoje e fiz exactamente a mesma coisa que faço há 3 anos. o mesmo café, o mesmo caminho, a mesma cara no espelho. e pensei: quando foi a ultima vez que fiz algo diferente? tipo... realmente diferente?',
   },
   {
     veu: 1, capitulo: 2,
-    conteudo: 'Tenho tanto medo de mudar que finjo que está tudo bem. Mas não está. Sinto que estou a funcionar, não a viver. E o pior é que já nem sei qual é a diferença.',
+    conteudo: 'o meu marido perguntou-me ontem "estás bem?" e eu disse que sim. automaticamente. nem pensei. e depois fiquei a noite toda acordada a perguntar-me se estava mesmo',
   },
   {
     veu: 1, capitulo: 3,
-    conteudo: 'Li este capítulo e chorei. Eu SOU a personagem. Construí uma vida inteira à volta de uma versão de mim que nunca escolhi.',
+    conteudo: 'chorei no banho. outra vez. mas desta vez não foi por tristeza, foi por reconhecimento. a personagem do capítulo 3 sou EU. literalmente eu. assustador.',
   },
   {
     veu: 1, capitulo: 5,
-    conteudo: 'A rotina não é segurança. É uma armadilha dourada. Passei anos a acreditar que a estabilidade era o mesmo que felicidade. Não é.',
+    conteudo: 'a minha mãe sempre disse que estabilidade é o mais importante. e eu acreditei. construí tudo à volta disso. casa, casamento, emprego. e agora olho para isto tudo e penso... ok mas eu? eu onde é que estou nisto?',
   },
   {
     veu: 1, capitulo: 4,
-    conteudo: 'Perguntei-me hoje: se pudesse começar de novo, faria as mesmas escolhas? A resposta assustou-me. Não. Quase nenhuma.',
+    conteudo: 'fiz um exercício estúpido comigo mesma: se pudesses voltar aos 22 fazias o quê? e comecei a chorar porque a lista era tão longa',
   },
   {
     veu: 1, capitulo: 7,
-    conteudo: 'O mais difícil não é perceber que tens vivido em automático. É aceitar que foste tu que deixaste.',
+    conteudo: 'tenho 34 anos e só agora percebi que nunca escolhi nada na minha vida. fui fazendo o que parecia certo. o que os outros esperavam. é tarde para mudar? provavelmente não. mas o medo é real.',
   },
 
   // === VÉU 2: MEMÓRIA ===
   {
     veu: 2, capitulo: 1,
-    conteudo: 'Carrego memórias que não me pertencem. Dores da minha mãe, expectativas do meu pai. Quando é que comecei a viver as histórias deles como se fossem minhas?',
+    conteudo: 'a minha avó morreu quando eu tinha 9 anos e acho que nunca processei isso. apareceu-me hoje durante a leitura do nada. 25 anos depois. fogo.',
   },
   {
     veu: 2, capitulo: 3,
-    conteudo: 'Há uma parte de mim que ainda é aquela menina de 12 anos a tentar agradar a toda a gente. Quando é que cresci por fora mas fiquei parada por dentro?',
+    conteudo: 'a minha mãe nunca me disse que tinha orgulho de mim. e eu passo a vida a tentar ouvir isso de toda a gente. do chefe, das amigas, do meu namorado. é cansativo.',
   },
   {
     veu: 2, capitulo: 2,
-    conteudo: 'Passei a noite a chorar ao ler isto. Eu ainda vivo presa ao que aconteceu há dez anos. Perdoei toda a gente menos a mim mesma.',
+    conteudo: 'não consigo parar de chorar com este capítulo. o meu pai saiu de casa quando eu tinha 7 anos e eu AINDA fico ansiosa quando alguém demora a responder mensagens. tipo, 20 anos depois. que raiva.',
   },
   {
     veu: 2, capitulo: 5,
-    conteudo: 'As lágrimas que guardei durante anos começaram a sair. Não por tristeza — por libertação. Precisava soltar o passado para poder respirar no presente.',
+    conteudo: 'lembrei-me de uma coisa que a minha professora me disse na 4a classe. "tu nunca vais ser como a tua irmã." e eu tinha esquecido. ou pensava que tinha. afinal não.',
   },
   {
     veu: 2, capitulo: 4,
-    conteudo: 'Hoje percebi que a memória me engana. Romantizo o passado para não ter de enfrentar o presente. Mas o passado nunca foi tão bom quanto lembro.',
+    conteudo: 'saudades de quem eu era antes de tudo. mas será que essa pessoa realmente existiu? ou é só a memória a inventar coisas bonitas para eu não ter de lidar com o presente?',
   },
   {
     veu: 2, capitulo: 6,
-    conteudo: 'Não precisas de esquecer. Precisas de parar de deixar a memória decidir por ti.',
+    conteudo: 'contei ao meu terapeuta sobre este capítulo e ele ficou em silêncio tipo 30 segundos. depois disse "o que seria soltar isso?" e eu não soube responder. ainda não sei.',
   },
 
   // === VÉU 3: TURBILHÃO ===
   {
     veu: 3, capitulo: 1,
-    conteudo: 'A minha cabeça não pára. Pensamento atrás de pensamento. Medo atrás de medo. Quando é que perdi o silêncio?',
+    conteudo: 'a minha cabeça às 3 da manhã: e se perdes o emprego? e se ele te deixa? e se nunca fores suficiente? e se e se e se. estou tão cansada disto.',
   },
   {
     veu: 3, capitulo: 2,
-    conteudo: 'Sinto tudo ao mesmo tempo. Raiva, tristeza, vontade de gritar, vontade de chorar. E por baixo disso tudo, uma calma estranha que me assusta mais que o caos.',
+    conteudo: 'hoje gritei com a minha filha por causa de nada. NADA. e depois tranquei-me na casa de banho a chorar porque percebi que não era raiva dela. era raiva de mim. da minha vida. de tudo.',
   },
   {
     veu: 3, capitulo: 4,
-    conteudo: 'Estava tão ocupada a reagir à vida que esqueci de a sentir. As emoções passavam por mim como um turbilhão e eu nem sabia o nome delas.',
+    conteudo: 'alguém me perguntou "como te sentes?" e eu não consegui responder. tipo... não sabia. sinto tanto ao mesmo tempo que já não consigo separar as coisas.',
   },
   {
     veu: 3, capitulo: 3,
-    conteudo: 'Hoje fiz a prática de respiração e por trinta segundos não pensei em nada. Trinta segundos de paz. Parece pouco, mas foi a coisa mais bonita que senti em meses.',
+    conteudo: 'fiz a prática de respiração e consegui ficar parada 2 minutos sem pegar no telemóvel. parece patético mas para mim foi ENORME. 2 minutos de silêncio. uau.',
   },
   {
     veu: 3, capitulo: 6,
-    conteudo: 'O turbilhão não é o inimigo. É o alarme. Está a tentar dizer-te alguma coisa. Pára e ouve.',
+    conteudo: 'descobri que a minha ansiedade tem um padrão. aparece sempre que alguém me pede algo. qualquer coisa. até coisas simples. é como se o meu corpo dissesse "não aguento mais" antes de eu sequer pensar',
   },
   {
     veu: 3, capitulo: 5,
-    conteudo: 'Descobri que por baixo da ansiedade há vulnerabilidade. E por baixo da vulnerabilidade há verdade. Dói, mas é real.',
+    conteudo: 'tive um ataque de pânico na terça e pela primeira vez em vez de lutar contra tentei só... ficar. foi horrível mas passou mais rápido. não sei o que pensar disto.',
   },
 
   // === VÉU 4: ESFORÇO ===
   {
     veu: 4, capitulo: 1,
-    conteudo: 'Toda a minha vida foi a tentar provar que sou suficiente. Para os meus pais, para o meu marido, para o mundo. E se eu já fosse suficiente sem provar nada?',
+    conteudo: 'contei quantas vezes disse "desculpa" ontem. 14 vezes. CATORZE. desculpa por existir, basicamente. quando é que isto começou?',
   },
   {
     veu: 4, capitulo: 3,
-    conteudo: 'Estou exausta. Mas não do trabalho — da busca incessante por validação. Corro atrás de aprovação como se fosse oxigénio.',
+    conteudo: 'a minha colega do trabalho faz metade do que eu faço e ganha o mesmo. e eu fico até às 8 da noite "porque tem de ficar bem". para quem?? para quem é que tem de ficar bem?',
   },
   {
     veu: 4, capitulo: 2,
-    conteudo: 'O descanso sempre me pareceu preguiça. Hoje entendi que descansar é um acto de coragem quando o mundo te diz para nunca parares.',
+    conteudo: 'deitei-me no sofá sábado à tarde e não fiz nada. NADA. e a culpa que senti foi tão grande que quase me levantei para ir limpar a casa. mas não me levantei. e o mundo continuou.',
   },
   {
     veu: 4, capitulo: 5,
-    conteudo: 'Larguei. Não o trabalho, não a família. Larguei a necessidade de controlar tudo. E o mundo não acabou. Imagine.',
+    conteudo: 'disse não. a uma coisa que não queria fazer. e a pessoa ficou chateada. e eu sobrevivi. é tão simples mas parece que escalei o evereste.',
   },
   {
     veu: 4, capitulo: 4,
-    conteudo: 'Fiz uma lista de tudo o que faço num dia. 80% era para os outros. Onde estou eu na minha própria vida?',
+    conteudo: 'escrevi num papel tudo o que fiz hoje. 23 coisas. sabe quantas eram para mim? 2. o café da manhã e escovar os dentes. é rir para não chorar.',
   },
   {
     veu: 4, capitulo: 7,
-    conteudo: 'Não precisas de fazer mais. Precisas de ser mais. E ser mais começa por parar.',
+    conteudo: 'a minha filha de 6 anos disse-me "mamã tu nunca paras". e doeu mais do que qualquer crítica que já recebi.',
   },
 
   // === VÉU 5: DESOLAÇÃO ===
   {
     veu: 5, capitulo: 1,
-    conteudo: 'Há um vazio dentro de mim que não é tristeza. É espaço. Mas passei a vida inteira a tentar preenchê-lo porque tinha medo do silêncio.',
+    conteudo: 'está tudo bem na minha vida. objectivamente. marido bom. filhos saudáveis. emprego estável. e mesmo assim sinto um vazio enorme. que culpa é esta de sentir vazio quando "tens tudo"?',
   },
   {
     veu: 5, capitulo: 3,
-    conteudo: 'Sentei-me sozinha e não liguei a televisão. Não abri o telemóvel. Apenas fiquei comigo. E percebi que há anos fugia da minha própria companhia.',
+    conteudo: 'ontem fiquei sozinha em casa pela primeira vez em meses. e entrei em pânico. tipo, o que é que eu faço comigo mesma? quando é que me tornei alguém que tem medo da própria companhia?',
   },
   {
     veu: 5, capitulo: 2,
-    conteudo: 'A solidão não é o problema. O problema é confundir solidão com abandono. Estar sozinha pode ser um encontro, não uma perda.',
+    conteudo: 'mudei-me para Maputo há 2 anos e ainda não tenho uma amiga. uma. as pessoas aqui são simpáticas mas eu... não consigo. fico travada. como se não merecesse.',
   },
   {
     veu: 5, capitulo: 5,
-    conteudo: 'Neste momento, sinto-me em pedaços. E pela primeira vez, não quero colar os pedaços de volta. Quero ver o que existe entre eles.',
+    conteudo: 'chorei durante a prática toda. não sei porquê. não havia razão. só um choro fundo que parecia vir de um sítio que eu não conhecia. e depois senti-me estranhamente leve.',
   },
   {
     veu: 5, capitulo: 4,
-    conteudo: 'O vazio é fértil. Precisa de coragem para ficar nele sem fugir, sem preencher, sem distrair. Mas é lá que nasce o que é verdadeiro.',
+    conteudo: 'a solidão pior não é quando estás sozinha. é quando estás rodeada de pessoas e mesmo assim sentes que ninguém te vê. ninguém te VÊ mesmo.',
   },
 
   // === VÉU 6: HORIZONTE ===
   {
     veu: 6, capitulo: 1,
-    conteudo: 'Passei anos a acreditar que ia chegar a um sítio. Uma carreira. Uma relação. Uma versão de mim "pronta". Não existe chegada. Existe caminho.',
+    conteudo: 'lembro-me de pensar aos 20: quando tiver 30 vai estar tudo resolvido. estou com 33 e nada está resolvido. e começo a suspeitar que nunca vai estar. e talvez esteja tudo bem com isso?',
   },
   {
     veu: 6, capitulo: 3,
-    conteudo: 'Descobri que o horizonte não é um destino — é uma ilusão necessária. Caminhamos na direcção dele, mas ele transforma-se à medida que avançamos. E está tudo bem.',
+    conteudo: 'comprei um apartamento, casei, tive promoção. tudo o que "devia" querer. e agora? agora o quê? é só isto? não pode ser só isto.',
   },
   {
     veu: 6, capitulo: 2,
-    conteudo: 'Sempre quis mais. Mais sucesso, mais amor, mais reconhecimento. E se "mais" for apenas outra forma de dizer "nunca é suficiente"?',
+    conteudo: 'vi uma foto minha de há 5 anos. na altura achava que estava gorda, feia, mal vestida. agora olho e penso "estavas tão bonita". vou daqui a 5 anos olhar para hoje e pensar o mesmo? provavelmente. que desperdício.',
   },
   {
     veu: 6, capitulo: 5,
-    conteudo: 'Hoje não tenho respostas. E pela primeira vez, não preciso. A pergunta já é caminho suficiente.',
+    conteudo: 'não sei o que quero da vida. e durante muito tempo isso assustou-me. hoje não. hoje é quase... libertador? não saber também é uma posição válida.',
   },
   {
     veu: 6, capitulo: 4,
-    conteudo: 'Parei de planear a minha vida e comecei a vivê-la. A diferença é abismal.',
+    conteudo: 'apaguei a minha lista de objectivos para 2026. toda. e em vez disso escrevi só: prestar atenção.',
   },
   {
     veu: 6, capitulo: 6,
-    conteudo: 'A vida não é uma linha recta. É uma espiral. Voltas ao mesmo sítio, mas nunca és a mesma pessoa quando chegas.',
+    conteudo: 'a minha irmã perguntou-me "onde te vês daqui a 5 anos?" e eu disse "aqui. presente. a viver." ela achou estranho. eu achei a coisa mais honesta que disse este ano.',
   },
 
   // === VÉU 7: DUALIDADE ===
   {
     veu: 7, capitulo: 1,
-    conteudo: 'Passei a vida a separar tudo. Certo e errado. Forte e frágil. Boa e má. E se tudo isso for a mesma coisa vista de ângulos diferentes?',
+    conteudo: 'sou boa mãe e ao mesmo tempo sonho com uma vida sem filhos. e isso não me faz má pessoa. acho eu. espero eu. isto é tão confuso.',
   },
   {
     veu: 7, capitulo: 3,
-    conteudo: 'Não sou a pessoa que os outros vêem. Nem sou quem eu penso que sou. Sou algo entre as duas — algo que não precisa de nome.',
+    conteudo: 'no trabalho sou a "forte". a que resolve tudo. em casa choro no chuveiro. ninguém conhece as duas. e eu estou cansada de ser duas.',
   },
   {
     veu: 7, capitulo: 2,
-    conteudo: 'Hoje senti alegria e tristeza ao mesmo tempo. E não tentei escolher uma. Deixei as duas existirem. É estranho como isso me fez sentir inteira.',
+    conteudo: 'ontem ri-me e chorei no mesmo minuto. e em vez de achar que estava a ficar maluca pensei: se calhar é só isto. ser humana. sentir tudo ao mesmo tempo. sem ter de escolher.',
   },
   {
     veu: 7, capitulo: 5,
-    conteudo: 'A consciência não é luz sem sombra. É ver as duas e perceber que nasceram juntas. Não estou separada de nada. Nunca estive.',
+    conteudo: 'sempre achei que tinha de escolher: ou sou a boa filha que a minha mãe quer, ou sou eu. e se puder ser as duas? e se não for "ou" mas "e"?',
   },
   {
     veu: 7, capitulo: 4,
-    conteudo: 'Libertei-me quando percebi que não precisava de escolher entre quem fui e quem quero ser. Sou as duas. Sou todas.',
+    conteudo: 'a vivianne escreveu uma coisa que não me sai da cabeça: não tens de te encontrar. já estás aqui. fogo. estou a reler há 3 dias.',
   },
   {
     veu: 7, capitulo: 6,
-    conteudo: 'Presença é isto: deixar de lutar contra o que é. Deixar de dividir. Apenas estar. Inteira. Aqui. Agora.',
+    conteudo: 'deixei de dizer "eu devia ser mais forte". forte para quê? frágil também é real. também é meu. também conta.',
   },
   {
     veu: 7, capitulo: 7,
-    conteudo: 'Os véus não caem todos ao mesmo tempo. Caem quando estás pronta. E depois de cada um, respiras um pouco mais fundo.',
+    conteudo: 'acabei o último capítulo e não tenho palavras grandes para dizer. só que... respiro diferente. não sei explicar. mais fundo. mais devagar. algo mudou e eu não consigo apontar o quê.',
   },
 ]
 
 // Marcas no caminho — frases curtas deixadas ao completar um véu
 const SEED_MARCAS: { veu: number; conteudo: string }[] = [
-  { veu: 1, conteudo: 'Saí do automático. Finalmente.' },
-  { veu: 1, conteudo: 'A vida que eu vivia não era minha. Agora escolho.' },
-  { veu: 2, conteudo: 'Larguei o passado. Ele já não precisa de mim.' },
-  { veu: 2, conteudo: 'Perdoei-me. Era o que faltava.' },
-  { veu: 3, conteudo: 'Encontrei silêncio no meio do caos.' },
-  { veu: 3, conteudo: 'As emoções já não me governam. Ouço-as.' },
-  { veu: 4, conteudo: 'Parei de correr. A chegada é aqui.' },
-  { veu: 5, conteudo: 'O vazio não é inimigo. É berço.' },
-  { veu: 6, conteudo: 'Não há destino. Há caminho. E é bonito.' },
-  { veu: 7, conteudo: 'Sou inteira. Sempre fui.' },
+  { veu: 1, conteudo: 'saí do modo automático. não sei para onde vou mas pelo menos estou acordada.' },
+  { veu: 1, conteudo: 'a vida que eu tinha não era minha. agora assusta mas é real.' },
+  { veu: 2, conteudo: 'chorei tudo o que precisava. o passado ficou mais leve.' },
+  { veu: 2, conteudo: 'perdoei-me. ainda não sei bem como mas aconteceu.' },
+  { veu: 3, conteudo: 'consegui ficar em silêncio 5 minutos. parece pouco. foi tudo.' },
+  { veu: 3, conteudo: 'as emoções continuam mas já não mando nelas. ouço.' },
+  { veu: 4, conteudo: 'disse que não. o mundo não acabou.' },
+  { veu: 5, conteudo: 'fiquei sozinha comigo. e não fugi. pela primeira vez.' },
+  { veu: 6, conteudo: 'apaguei os planos. vou ver o que acontece.' },
+  { veu: 7, conteudo: 'não preciso de escolher quem sou. sou tudo isto. e está bem.' },
 ]
 
 // Temas detectados manualmente (para garantir coerência visual)
