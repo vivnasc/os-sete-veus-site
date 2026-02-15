@@ -9,7 +9,7 @@ const navLinks = [
   { href: "/", label: "Início" },
   { href: "/comprar", label: "Comprar" },
   { href: "/livro-fisico", label: "Livro Físico" },
-  { href: "/comunidade", label: "Ecos" },
+  { href: "/comunidade", label: "Ecos", highlight: true },
   { href: "/recursos", label: "Recursos" },
   { href: "/sobre", label: "Sobre" },
 ];
@@ -35,15 +35,29 @@ export default function Header() {
         </Link>
 
         <nav className="hidden items-center gap-4 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="font-sans text-[0.8rem] uppercase tracking-[0.12em] text-brown-600 transition-colors hover:text-brown-900"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) =>
+            link.highlight ? (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="group relative flex items-center gap-1.5 rounded-full border border-sage/30 bg-sage/8 px-3.5 py-1 font-sans text-[0.8rem] uppercase tracking-[0.12em] text-sage-dark transition-all hover:border-sage/50 hover:bg-sage/15 hover:text-sage-dark"
+              >
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sage opacity-50" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-sage" />
+                </span>
+                {link.label}
+              </Link>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="font-sans text-[0.8rem] uppercase tracking-[0.12em] text-brown-600 transition-colors hover:text-brown-900"
+              >
+                {link.label}
+              </Link>
+            )
+          )}
           <Link
             href={user ? "/membro" : "/entrar"}
             className="rounded-md bg-sage px-5 py-2 font-sans text-[0.75rem] uppercase tracking-[0.12em] text-white transition-colors hover:bg-sage-dark"
@@ -66,16 +80,31 @@ export default function Header() {
       {isOpen && (
         <nav className="border-t border-brown-100 bg-cream px-6 py-6 md:hidden">
           <div className="flex flex-col gap-5">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="font-sans text-sm uppercase tracking-[0.1em] text-brown-600 transition-colors hover:text-brown-900"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) =>
+              link.highlight ? (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="flex w-fit items-center gap-2 rounded-full border border-sage/30 bg-sage/8 px-4 py-1.5 font-sans text-sm uppercase tracking-[0.1em] text-sage-dark transition-colors hover:bg-sage/15"
+                >
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sage opacity-50" />
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-sage" />
+                  </span>
+                  {link.label}
+                </Link>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="font-sans text-sm uppercase tracking-[0.1em] text-brown-600 transition-colors hover:text-brown-900"
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
             <Link
               href={user ? "/membro" : "/entrar"}
               onClick={() => setIsOpen(false)}
