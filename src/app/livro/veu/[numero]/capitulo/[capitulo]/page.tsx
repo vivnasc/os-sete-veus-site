@@ -10,20 +10,22 @@ import { useAccess } from '@/hooks/useAccess'
 import livroData from '@/data/livro-7-veus.json'
 import ReflexoesDrawer from '@/components/ReflexoesDrawer'
 
-// Corrigir caracteres corrompidos da conversão DOCX (ligaduras fi/fl/q perdidas)
+// Corrigir caracteres corrompidos da conversão DOCX (ligaduras fi/fl/qu perdidas)
 function corrigirTexto(texto: string): string {
   return texto
-    // "qu" — antes de vogais comuns em português
-    .replace(/\u0000ue/g, 'que')
-    .replace(/\u0000ua/g, 'qua')
-    .replace(/\u0000uil/g, 'quil')
-    .replace(/\u0000uin/g, 'quin')
-    .replace(/\u0000uit/g, 'quit')
-    // "fl" — padrões específicos
+    // "fl" — padrões específicos (antes de "qu" para evitar conflito com \x00uo)
+    .replace(/supér\u0000uo/g, 'supérfluo')
     .replace(/\u0000uid/g, 'fluid')
     .replace(/\u0000uir/g, 'fluir')
     .replace(/\u0000ux/g, 'flux')
     .replace(/\u0000l/g, 'fl')
+    // "qu" — todas as combinações de vogal
+    .replace(/\u0000ue/g, 'que')
+    .replace(/\u0000ua/g, 'qua')
+    .replace(/\u0000ui/g, 'qui')
+    .replace(/\u0000uo/g, 'quo')
+    .replace(/\u0000u[éê]/g, (m) => 'qu' + m[2])
+    .replace(/\u0000u[íì]/g, (m) => 'qu' + m[2])
     // "fi" — tudo o resto (fixo, fissura, final, firme, ficou, etc.)
     .replace(/\u0000/g, 'fi')
 }
@@ -85,7 +87,7 @@ export default function CapituloPage() {
   const [modoLeitura, setModoLeitura] = useState<'contemplativo' | 'normal'>('contemplativo')
   const [modoNoturno, setModoNoturno] = useState(false)
   const [mostrarPausa, setMostrarPausa] = useState(false)
-  const [paragrafoAtual, setParagrafoAtual] = useState(0)
+  const [paginaAtual, setPaginaAtual] = useState(0)
 
   // Dividir conteúdo em parágrafos limpos
   const paragrafos = useMemo(() => {
@@ -100,7 +102,10 @@ export default function CapituloPage() {
     //    Ex: "Capítulo 1 — Quando o Eu Começa a\nVacilar\n"
     texto = texto.replace(/^Capítulo\s+\d+\s*[—–-]\s*[^\n]*(?:\n[^\n]{1,60})?\n/, '')
 
-    // 3. Separar por parágrafo (dupla quebra de linha)
+    // 3. Capitalizar a primeira letra (pode ficar minúscula se a capitular decorativa DOCX foi consumida pelo título)
+    texto = texto.replace(/^\s*([a-záàâãéèêíïóôõöúçñ])/, (_m, c) => c.toUpperCase())
+
+    // 4. Separar por parágrafo (dupla quebra de linha)
     const blocos = texto.split('\n\n').filter(b => b.trim().length > 0)
 
     const resultado: { texto: string; tipo: 'paragrafo' | 'subtitulo' }[] = []
@@ -142,6 +147,41 @@ export default function CapituloPage() {
     return resultado
   }, [capitulo])
 
+  // Agrupar parágrafos em "páginas" para o modo contemplativo
+  // Cada página tem ~3-5 parágrafos (até ~1800 chars), com quebra nos subtítulos
+  const paginas = useMemo(() => {
+    const result: { texto: string; tipo: 'paragrafo' | 'subtitulo' }[][] = []
+    let paginaActual: { texto: string; tipo: 'paragrafo' | 'subtitulo' }[] = []
+    let charsNaPagina = 0
+
+    for (let i = 0; i < paragrafos.length; i++) {
+      const item = paragrafos[i]
+
+      // Subtítulo inicia nova página (se a página actual tem conteúdo)
+      if (item.tipo === 'subtitulo' && paginaActual.length > 0) {
+        result.push(paginaActual)
+        paginaActual = []
+        charsNaPagina = 0
+      }
+
+      paginaActual.push(item)
+      charsNaPagina += item.texto.length
+
+      // Fechar página se atingiu ~1800 chars e tem pelo menos 3 itens
+      if (charsNaPagina >= 1800 && paginaActual.length >= 3) {
+        result.push(paginaActual)
+        paginaActual = []
+        charsNaPagina = 0
+      }
+    }
+
+    if (paginaActual.length > 0) {
+      result.push(paginaActual)
+    }
+
+    return result
+  }, [paragrafos])
+
   // Cores por véu
   const coresVeu = [
     { bg: 'bg-stone-50', bgDark: 'bg-stone-900', text: 'text-stone-900', textDark: 'text-stone-100' },
@@ -167,14 +207,14 @@ export default function CapituloPage() {
     }
   }, [user, loading, accessLoading, hasBookAccess, router])
 
-  // Mostrar pausa a cada 3 parágrafos
+  // Mostrar pausa a cada 3 páginas
   useEffect(() => {
-    if (paragrafoAtual > 0 && paragrafoAtual % 3 === 0 && modoLeitura === 'contemplativo') {
+    if (paginaAtual > 0 && paginaAtual % 3 === 0 && modoLeitura === 'contemplativo') {
       setMostrarPausa(true)
       const timer = setTimeout(() => setMostrarPausa(false), 10000) // 10 segundos
       return () => clearTimeout(timer)
     }
-  }, [paragrafoAtual, modoLeitura])
+  }, [paginaAtual, modoLeitura])
 
   if (loading || accessLoading) {
     return (
@@ -195,10 +235,10 @@ export default function CapituloPage() {
     return <div>Capítulo não encontrado</div>
   }
 
-  // Próximo parágrafo
-  const proximoParagrafo = () => {
-    if (paragrafoAtual < paragrafos.length - 1) {
-      setParagrafoAtual(paragrafoAtual + 1)
+  // Próxima página
+  const proximaPagina = () => {
+    if (paginaAtual < paginas.length - 1) {
+      setPaginaAtual(paginaAtual + 1)
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
@@ -326,35 +366,43 @@ export default function CapituloPage() {
             ))}
           </div>
         ) : (
-          // Modo Contemplativo: Parágrafo por parágrafo
+          // Modo Contemplativo: Página por página (3-5 parágrafos agrupados)
           <div className="min-h-[60vh] flex flex-col justify-between">
             <motion.div
-              key={paragrafoAtual}
+              key={paginaAtual}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="space-y-8"
+              className="space-y-6"
             >
-              {paragrafos[paragrafoAtual]?.tipo === 'subtitulo' ? (
-                <h2 className={`text-xl md:text-3xl font-serif font-semibold ${modoNoturno ? cores.textDark : cores.text}`}>
-                  {paragrafos[paragrafoAtual]?.texto}
-                </h2>
-              ) : (
-                <p className={`text-lg md:text-2xl leading-relaxed ${modoNoturno ? cores.textDark : cores.text} font-serif`}>
-                  {paragrafos[paragrafoAtual]?.texto}
-                </p>
-              )}
+              {paginas[paginaAtual]?.map((item, idx) => (
+                item.tipo === 'subtitulo' ? (
+                  <h2
+                    key={idx}
+                    className={`text-xl md:text-3xl font-serif font-semibold ${idx > 0 ? 'mt-8' : ''} ${modoNoturno ? cores.textDark : cores.text}`}
+                  >
+                    {item.texto}
+                  </h2>
+                ) : (
+                  <p
+                    key={idx}
+                    className={`text-lg md:text-2xl leading-relaxed ${modoNoturno ? cores.textDark : cores.text} font-serif`}
+                  >
+                    {item.texto}
+                  </p>
+                )
+              ))}
             </motion.div>
 
             {/* Progresso */}
             <div className="mt-12">
               <div className="flex items-center justify-between mb-4">
                 <span className={`text-sm ${modoNoturno ? 'text-stone-500' : 'text-stone-600'}`}>
-                  {paragrafoAtual + 1} de {paragrafos.length}
+                  {paginaAtual + 1} de {paginas.length}
                 </span>
-                {paragrafoAtual < paragrafos.length - 1 ? (
+                {paginaAtual < paginas.length - 1 ? (
                   <button
-                    onClick={proximoParagrafo}
+                    onClick={proximaPagina}
                     className={`px-6 py-2 rounded-full ${modoNoturno ? 'bg-stone-800 text-stone-200' : 'bg-stone-200 text-stone-800'} hover:opacity-80 transition-opacity`}
                   >
                     Continuar →
@@ -372,7 +420,7 @@ export default function CapituloPage() {
               <div className="w-full h-1 bg-stone-300 dark:bg-stone-700 rounded-full overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
-                  animate={{ width: `${((paragrafoAtual + 1) / paragrafos.length) * 100}%` }}
+                  animate={{ width: `${((paginaAtual + 1) / paginas.length) * 100}%` }}
                   className="h-full bg-gradient-to-r from-purple-500 to-stone-500"
                 />
               </div>
