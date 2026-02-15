@@ -41,43 +41,73 @@ export default function QuoteShareCard({ texto, veuNumero, fonte, contexto, onCl
     return () => { document.body.style.overflow = "" }
   }, [])
 
-  const handleDownload = useCallback(async () => {
-    if (!cardRef.current) return
-    setDownloading(true)
+  // Generate PNG blob from card DOM
+  const generatePng = useCallback(async (): Promise<Blob | null> => {
+    if (!cardRef.current) return null
     try {
       const dataUrl = await toPng(cardRef.current, {
         quality: 0.95,
         pixelRatio: 3,
         backgroundColor: "#2a2520",
       })
-      const link = document.createElement("a")
-      link.download = `sete-veus-${isEspelho ? "espelho" : `veu-${veuNumero}`}.png`
-      link.href = dataUrl
-      link.click()
+      const res = await fetch(dataUrl)
+      return await res.blob()
     } catch (err) {
       console.error("Error generating image:", err)
+      return null
+    }
+  }, [])
+
+  const handleDownload = useCallback(async () => {
+    setDownloading(true)
+    const blob = await generatePng()
+    if (blob) {
+      const url = URL.createObjectURL(blob)
+      const link = document.createElement("a")
+      link.download = `sete-veus-${isEspelho ? "espelho" : `veu-${veuNumero}`}.png`
+      link.href = url
+      link.click()
+      URL.revokeObjectURL(url)
     }
     setDownloading(false)
-  }, [veuNumero, isEspelho])
+  }, [generatePng, veuNumero, isEspelho])
+
+  // Instagram: share image via Web Share API (files), fallback to download
+  const [sharingIG, setSharingIG] = useState(false)
+  const handleInstagram = useCallback(async () => {
+    setSharingIG(true)
+    const blob = await generatePng()
+    if (!blob) { setSharingIG(false); return }
+
+    const file = new File([blob], "sete-veus.png", { type: "image/png" })
+
+    // Try native share with file (opens share sheet → Instagram Stories/Feed)
+    if (navigator.canShare?.({ files: [file] })) {
+      try {
+        await navigator.share({
+          files: [file],
+          title: "Os Sete Véus do Despertar",
+          text: hashtags,
+        })
+        setSharingIG(false)
+        return
+      } catch { /* user cancelled */ }
+    }
+
+    // Fallback: download the image
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement("a")
+    link.download = "sete-veus-instagram.png"
+    link.href = url
+    link.click()
+    URL.revokeObjectURL(url)
+    setSharingIG(false)
+  }, [generatePng, hashtags])
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(shareText)
     setCopied(true)
     setTimeout(() => setCopied(false), 3000)
-  }
-
-  const handleNativeShare = async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: "Os Sete Véus do Despertar",
-          text: shareText,
-          url: "https://seteecos.com/recursos/teste",
-        })
-        return
-      } catch { /* user cancelled */ }
-    }
-    handleCopy()
   }
 
   return (
@@ -163,6 +193,16 @@ export default function QuoteShareCard({ texto, veuNumero, fonte, contexto, onCl
             {downloading ? "A gerar..." : "Guardar imagem"}
           </button>
 
+          {/* Instagram (share image via native share or download) */}
+          <button
+            onClick={handleInstagram}
+            disabled={sharingIG}
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#833AB4]/20 via-[#E1306C]/20 to-[#F77737]/20 px-5 py-2.5 font-sans text-[0.65rem] uppercase tracking-[0.12em] text-[#E1306C] transition-all hover:from-[#833AB4]/30 hover:via-[#E1306C]/30 hover:to-[#F77737]/30 disabled:opacity-50"
+          >
+            <InstagramIcon />
+            {sharingIG ? "A gerar..." : "Instagram"}
+          </button>
+
           {/* WhatsApp */}
           <a
             href={getWhatsAppUrl(shareText)}
@@ -193,17 +233,6 @@ export default function QuoteShareCard({ texto, veuNumero, fonte, contexto, onCl
             <CopyIcon />
             {copied ? "Copiado!" : "Copiar"}
           </button>
-
-          {/* Native share (mobile only) */}
-          {typeof navigator !== "undefined" && "share" in navigator && (
-            <button
-              onClick={handleNativeShare}
-              className="inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2.5 font-sans text-[0.65rem] uppercase tracking-[0.12em] text-white/70 transition-all hover:bg-white/20 hover:text-white"
-            >
-              <ShareIcon />
-              Partilhar
-            </button>
-          )}
         </div>
 
         {/* Hint */}
@@ -249,10 +278,10 @@ function CopyIcon() {
   )
 }
 
-function ShareIcon() {
+function InstagramIcon() {
   return (
-    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
     </svg>
   )
 }
