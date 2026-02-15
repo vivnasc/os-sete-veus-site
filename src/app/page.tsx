@@ -4,9 +4,9 @@ import NewsletterForm from "@/components/NewsletterForm";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const espelhosPeek = [
-  { title: "Espelho da Ilusão", tagline: "Quando a vida que tens não foi a que escolheste", image: "/images/veu-1-ilusao.png.png" },
-  { title: "Espelho do Medo", tagline: "Quando o medo decide por ti", image: "/images/veu-2-medo.png.png" },
-  { title: "Espelho do Desejo", tagline: "Quando desejas tudo menos o que precisas", image: "/images/veu-3-desejo.png.png" },
+  { title: "Espelho da Ilusão", tagline: "Quando a vida que tens não foi a que escolheste", image: "/images/espelho-1-ilusao.png" },
+  { title: "Espelho do Medo", tagline: "Quando o medo decide por ti", image: "/images/espelho-2-medo.png" },
+  { title: "Espelho do Desejo", tagline: "Quando desejas tudo menos o que precisas", image: "/images/espelho-3-desejo.png" },
 ];
 
 export default function Home() {
