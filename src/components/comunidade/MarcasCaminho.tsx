@@ -16,19 +16,62 @@ type Props = {
   veuNumero?: number
 }
 
+// Sample marcas shown when the community is still growing
+const MARCAS_EXEMPLO: Marca[] = [
+  {
+    id: 'demo-m1',
+    veu_numero: 1,
+    conteudo: 'saí do modo automático. não sei para onde vou mas pelo menos estou acordada.',
+    created_at: new Date(Date.now() - 8 * 24 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 'demo-m2',
+    veu_numero: 1,
+    conteudo: 'a vida que eu tinha não era minha. agora assusta mas é real.',
+    created_at: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 'demo-m3',
+    veu_numero: 1,
+    conteudo: 'terminei o espelho e sinto que algo se partiu. no bom sentido. tipo, uma casca.',
+    created_at: new Date(Date.now() - 20 * 24 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 'demo-m4',
+    veu_numero: 2,
+    conteudo: 'chorei tudo o que precisava. o passado ficou mais leve.',
+    created_at: new Date(Date.now() - 25 * 24 * 60 * 60 * 1000).toISOString(),
+  },
+]
+
 export default function MarcasCaminho({ veuNumero }: Props) {
   const { user } = useAuth()
   const [marcas, setMarcas] = useState<Marca[]>([])
+  const [isDemo, setIsDemo] = useState(false)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     if (!user) return
 
     async function carregar() {
-      const url = veuNumero ? `/api/marcas?veu=${veuNumero}` : '/api/marcas'
-      const res = await fetch(url)
-      const data = await res.json()
-      if (data.marcas) setMarcas(data.marcas)
+      try {
+        const url = veuNumero ? `/api/marcas?veu=${veuNumero}` : '/api/marcas'
+        const res = await fetch(url)
+        const data = await res.json()
+        if (data.marcas && data.marcas.length > 0) {
+          setMarcas(data.marcas)
+          setIsDemo(false)
+        } else {
+          const filtered = veuNumero
+            ? MARCAS_EXEMPLO.filter((m) => m.veu_numero === veuNumero)
+            : MARCAS_EXEMPLO
+          setMarcas(filtered)
+          setIsDemo(true)
+        }
+      } catch {
+        setMarcas(MARCAS_EXEMPLO)
+        setIsDemo(true)
+      }
       setLoading(false)
     }
 
@@ -39,9 +82,16 @@ export default function MarcasCaminho({ veuNumero }: Props) {
 
   return (
     <div className="rounded-2xl border border-brown-100 bg-white p-5">
-      <p className="mb-4 font-sans text-[0.6rem] uppercase tracking-[0.25em] text-brown-400">
-        Marcas no Caminho
-      </p>
+      <div className="mb-4 flex items-center justify-between">
+        <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-brown-400">
+          Marcas no Caminho
+        </p>
+        {isDemo && (
+          <span className="rounded-full bg-sage/10 px-2 py-0.5 font-sans text-[0.5rem] uppercase tracking-wider text-sage">
+            Pré-visualização
+          </span>
+        )}
+      </div>
       <p className="mb-5 font-serif text-xs italic text-brown-400">
         Frases deixadas por quem já passou por aqui.
       </p>

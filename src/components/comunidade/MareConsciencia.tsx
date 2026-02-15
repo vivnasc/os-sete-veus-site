@@ -13,9 +13,33 @@ type MareData = {
   leitoras: number
 }
 
+// Sample maré data shown when the community is still growing
+const MARE_EXEMPLO: MareData = {
+  temas: {
+    automatismo: 8,
+    vulnerabilidade: 6,
+    relacoes: 5,
+    despertar: 4,
+    identidade: 3,
+    desejo: 3,
+    presenca: 2,
+    impermanencia: 2,
+    culpa: 1,
+  },
+  recentTemas: {
+    automatismo: 3,
+    vulnerabilidade: 2,
+    relacoes: 1,
+  },
+  veus: { 1: 11, 2: 4, 3: 2, 4: 2, 5: 1 },
+  total: 20,
+  leitoras: 12,
+}
+
 export default function MareConsciencia() {
   const { user } = useAuth()
   const [mare, setMare] = useState<MareData | null>(null)
+  const [isDemo, setIsDemo] = useState(false)
   const [loading, setLoading] = useState(true)
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -23,9 +47,20 @@ export default function MareConsciencia() {
     if (!user) return
 
     async function carregar() {
-      const res = await fetch('/api/mare')
-      const data = await res.json()
-      if (data.mare) setMare(data.mare)
+      try {
+        const res = await fetch('/api/mare')
+        const data = await res.json()
+        if (data.mare && data.mare.total > 0) {
+          setMare(data.mare)
+          setIsDemo(false)
+        } else {
+          setMare(MARE_EXEMPLO)
+          setIsDemo(true)
+        }
+      } catch {
+        setMare(MARE_EXEMPLO)
+        setIsDemo(true)
+      }
       setLoading(false)
     }
 
@@ -117,6 +152,18 @@ export default function MareConsciencia() {
 
   return (
     <div className="space-y-4">
+      {/* Demo mode banner */}
+      {isDemo && (
+        <div className="rounded-xl border border-sage/20 bg-sage/5 px-5 py-3 text-center">
+          <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-sage">
+            Pré-visualização
+          </p>
+          <p className="mt-1 font-serif text-xs text-brown-500">
+            Esta maré reflecte o que verás quando a comunidade começar a partilhar.
+          </p>
+        </div>
+      )}
+
       {/* Visualization canvas */}
       <div className="relative overflow-hidden rounded-2xl border border-brown-100 bg-gradient-to-b from-cream to-white">
         <canvas
