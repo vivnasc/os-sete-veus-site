@@ -46,7 +46,7 @@ Carreira, rotina, tudo no lugar. Mas à noite, quando tudo parava, havia um vazi
 Foi esse momento que me levou a escrever Os Sete Véus.
 
 Se te reconheces nestas palavras, talvez queiras experimentar o teste gratuito:
-→ Descobre qual véu te esconde (3 minutos)
+→ Descobre qual espelho te esconde (3 minutos)
 [LINK: seteecos.com/recursos/teste]
 
 Sem compromisso. É teu.
@@ -69,7 +69,7 @@ Vivianne`,
 Isto não é um livro normal. É uma experiência integrada — com reader no site, diário de reflexão, checklists e um espelho final que te devolve as tuas próprias palavras.
 
 Se ainda não fizeste o teste gratuito:
-→ Qual véu te esconde?
+→ Qual espelho te esconde?
 [LINK: seteecos.com/recursos/teste]
 
 Vivianne`,
@@ -93,11 +93,11 @@ Vivianne`,
   {
     id: "soft-invite",
     day: 12,
-    subject: "Se estiveres pronta, o primeiro véu espera por ti",
-    preview: "O Véu da Ilusão — a experiência completa.",
+    subject: "Se estiveres pronta, o primeiro espelho espera por ti",
+    preview: "O Espelho da Ilusão — a experiência completa.",
     body: `Não sei em que ponto estás da tua jornada. Talvez já tenhas feito o teste. Talvez tenhas lido os artigos. Talvez estejas só a observar — e está tudo bem.
 
-Mas se sentires que estás pronta para ir mais fundo, O Véu da Ilusão é o primeiro passo.
+Mas se sentires que estás pronta para ir mais fundo, O Espelho da Ilusão é o primeiro passo.
 
 Não é um PDF. É uma experiência de leitura integrada:
 • 7 capítulos com pausas de reflexão
@@ -117,12 +117,12 @@ Vivianne`,
     day: 18,
     subject: "Uma última coisa antes de ficar em silêncio",
     preview: "Não volto a enviar sobre isto. Mas queria que soubesses.",
-    body: `Este é o último email que envio sobre O Véu da Ilusão.
+    body: `Este é o último email que envio sobre O Espelho da Ilusão.
 
 Não acredito em pressão. Acredito em reconhecimento. Se estas palavras são para ti, tu sabes. Se não são, está tudo bem — os recursos gratuitos continuam teus.
 
 Para quem quer começar:
-→ O Véu da Ilusão — experiência digital ($19 USD)
+→ O Espelho da Ilusão — experiência digital ($19 USD)
 [LINK: seteecos.com/livro-fisico]
 
 → Livro físico — 1.500 MT (Moçambique)

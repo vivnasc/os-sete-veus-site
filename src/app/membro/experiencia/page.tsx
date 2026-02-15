@@ -6,7 +6,7 @@ const modulos = [
   {
     slug: "veu-da-ilusao",
     numero: 1,
-    nome: "O Véu da Ilusão",
+    nome: "O Espelho da Ilusão",
     desc: "Quando a vida que tens não foi a que escolheste.",
     color: "#c9b896",
     disponivel: true,
@@ -14,7 +14,7 @@ const modulos = [
   {
     slug: "veu-do-medo",
     numero: 2,
-    nome: "O Véu do Medo",
+    nome: "O Espelho do Medo",
     desc: "Quando o medo decide por ti.",
     color: "#7a8c6e",
     disponivel: false,
@@ -22,7 +22,7 @@ const modulos = [
   {
     slug: "veu-do-desejo",
     numero: 3,
-    nome: "O Véu do Desejo",
+    nome: "O Espelho do Desejo",
     desc: "Quando desejas tudo menos o que precisas.",
     color: "#b07a7a",
     disponivel: false,
@@ -30,7 +30,7 @@ const modulos = [
   {
     slug: "veu-do-controlo",
     numero: 4,
-    nome: "O Véu do Controlo",
+    nome: "O Espelho do Controlo",
     desc: "Quando segurar é a única forma que conheces.",
     color: "#8a7b6b",
     disponivel: false,
@@ -38,7 +38,7 @@ const modulos = [
   {
     slug: "veu-da-culpa",
     numero: 5,
-    nome: "O Véu da Culpa",
+    nome: "O Espelho da Culpa",
     desc: "Quando te castigas por querer mais.",
     color: "#6e8c7a",
     disponivel: false,
@@ -46,7 +46,7 @@ const modulos = [
   {
     slug: "veu-da-identidade",
     numero: 6,
-    nome: "O Véu da Identidade",
+    nome: "O Espelho da Identidade",
     desc: "Quando já não sabes quem és sem os outros.",
     color: "#b8956c",
     disponivel: false,
@@ -54,7 +54,7 @@ const modulos = [
   {
     slug: "veu-da-separacao",
     numero: 7,
-    nome: "O Véu da Separação",
+    nome: "O Espelho da Separação",
     desc: "Quando te afastas de ti mesma para pertencer.",
     color: "#8a7b9c",
     disponivel: false,
@@ -90,7 +90,7 @@ export default function ExperienciaPage() {
               </span>
               <div className="flex-1">
                 <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-brown-400">
-                  Véu {mod.numero} de 7
+                  Espelho {mod.numero} de 7
                 </p>
                 <h2 className="font-serif text-base text-brown-800">{mod.nome}</h2>
                 <p className="mt-1 font-serif text-sm text-brown-400">{mod.desc}</p>

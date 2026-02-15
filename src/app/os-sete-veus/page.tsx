@@ -5,13 +5,13 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Os Sete Véus",
   description:
-    "Sete livros. Sete véus. Sete formas de nos escondermos de nós mesmas — e sete caminhos de volta.",
+    "Sete livros. Sete espelhos. Sete formas de nos escondermos de nós mesmas — e sete caminhos de volta.",
 };
 
 const veus = [
   {
     number: 1,
-    title: "O Véu da Ilusão",
+    title: "O Espelho da Ilusão",
     subtitle: "Quando a vida que tens não foi a que escolheste",
     description:
       "Sara tem tudo no sítio. Emprego, casa, relação. E uma pergunta que não a larga: \"Isto é mesmo meu?\" Este livro é para quem sente que está na vida certa de outra pessoa.",
@@ -21,17 +21,17 @@ const veus = [
   },
   {
     number: 2,
-    title: "O Véu do Medo",
+    title: "O Espelho do Medo",
     subtitle: "Quando o medo decide por ti",
     description:
-      "E se o medo não fosse o inimigo, mas um véu que te impede de ver o que há do outro lado? Este livro é para quem sabe o que quer — mas tem medo de ir buscar.",
+      "E se o medo não fosse o inimigo, mas um espelho que te mostra o que há do outro lado? Este livro é para quem sabe o que quer — mas tem medo de ir buscar.",
     image: "/images/veu-2-medo.png.png",
     accent: "bg-veu-2",
     available: true,
   },
   {
     number: 3,
-    title: "O Véu do Desejo",
+    title: "O Espelho do Desejo",
     subtitle: "Quando desejas tudo menos o que precisas",
     description:
       "O desejo que te move é realmente teu? Ou é uma resposta ao que te ensinaram a querer? Este livro é para quem precisa de parar e perguntar: o que é que eu quero, de verdade?",
@@ -41,7 +41,7 @@ const veus = [
   },
   {
     number: 4,
-    title: "O Véu do Controlo",
+    title: "O Espelho do Controlo",
     subtitle: "Quando segurar é a única forma que conheces",
     description:
       "Há uma diferença entre cuidar e controlar — e por vezes essa linha desaparece. Este livro é para quem precisa de aprender a largar para se encontrar.",
@@ -51,7 +51,7 @@ const veus = [
   },
   {
     number: 5,
-    title: "O Véu da Culpa",
+    title: "O Espelho da Culpa",
     subtitle: "Quando te castigas por querer mais",
     description:
       "Querer mais não é egoísmo. É vida. Este livro é para quem precisa de permissão — a permissão que só tu te podes dar.",
@@ -61,7 +61,7 @@ const veus = [
   },
   {
     number: 6,
-    title: "O Véu da Identidade",
+    title: "O Espelho da Identidade",
     subtitle: "Quando já não sabes quem és sem os outros",
     description:
       "O que sobra quando tiras todos os papéis — mãe, filha, mulher, profissional? Este livro é para quem está pronta para se descobrir por baixo de tudo.",
@@ -71,10 +71,10 @@ const veus = [
   },
   {
     number: 7,
-    title: "O Véu da Separação",
+    title: "O Espelho da Separação",
     subtitle: "Quando te afastas de ti mesma para pertencer",
     description:
-      "O último véu. O mais difícil de ver. Este livro é para quem está pronta para voltar — a si mesma.",
+      "O último espelho. O mais difícil de ver. Este livro é para quem está pronta para voltar — a si mesma.",
     image: "/images/veu-7-separacao.png.png",
     accent: "bg-veu-7",
     available: false,
@@ -91,7 +91,7 @@ export default function OsSeteVeusPage() {
             Os Sete Véus
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-brown-200">
-            Sete livros. Sete véus. Sete formas de nos escondermos de nós mesmas — e sete caminhos
+            Sete livros. Sete espelhos. Sete formas de nos escondermos de nós mesmas — e sete caminhos
             de volta.
           </p>
         </div>
@@ -101,7 +101,7 @@ export default function OsSeteVeusPage() {
       <section className="bg-cream px-6 py-16">
         <div className="mx-auto max-w-3xl text-center">
           <p className="leading-relaxed text-brown-700">
-            Cada véu é uma história completa. Podes começar por qualquer um — pelo que mais te
+            Cada espelho é uma história completa. Podes começar por qualquer um — pelo que mais te
             chama, pelo que mais te assusta, ou simplesmente pelo primeiro. Não há ordem certa. Há
             apenas o teu caminho.
           </p>
@@ -136,7 +136,7 @@ export default function OsSeteVeusPage() {
                     {veu.number}
                   </span>
                   <span className="font-sans text-[0.7rem] uppercase tracking-[0.2em] text-brown-400">
-                    Véu {veu.number} de 7
+                    Espelho {veu.number} de 7
                   </span>
                 </div>
                 <h2 className="mt-3 font-serif text-2xl text-brown-900 sm:text-3xl">{veu.title}</h2>

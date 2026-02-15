@@ -8,7 +8,7 @@ export default function AudiobookRedirect() {
       <div className="mx-auto max-w-md">
         <h1 className="font-serif text-2xl text-brown-900">Audiobook</h1>
         <p className="mt-4 font-serif text-base text-brown-500">
-          O audiobook está em preparação. Entretanto, podes ler O Véu da Ilusão
+          O audiobook está em preparação. Entretanto, podes ler O Espelho da Ilusão
           directamente no reader integrado.
         </p>
         <Link

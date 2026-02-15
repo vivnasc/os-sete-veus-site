@@ -96,15 +96,15 @@ export default function UpsellBridge({ journalCount, chaptersCompleted }: Props)
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <p className="font-serif text-lg text-brown-900">
-              Atravessaste o primeiro véu.
+              Atravessaste o primeiro espelho.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-brown-600">
-              O Véu da Ilusão já não te esconde — pelo menos não da mesma forma.
+              O Espelho da Ilusão já não te esconde — pelo menos não da mesma forma.
               As tuas {journalCount} reflexões são a prova de que olhaste para dentro.
               Isso não é pouco. É raro.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-brown-500 italic">
-              Há mais seis véus na colecção. Vêm quando estiveres pronta — e não antes.
+              Há mais seis espelhos na colecção. Vêm quando estiveres pronta — e não antes.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link

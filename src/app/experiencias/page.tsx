@@ -7,9 +7,9 @@ import WaitlistForm from "@/components/WaitlistForm";
 import PricingTiers from "@/components/PricingTiers";
 
 export const metadata: Metadata = {
-  title: "Experiências — Os Sete Véus",
+  title: "Experiências — Os Sete Espelhos",
   description:
-    "Sete experiências de leitura imersiva. Ficção + respiração guiada + diário de reflexão + espelho pessoal. Escolhe o teu véu ou vive a jornada completa.",
+    "Sete experiências de leitura imersiva. Ficção + respiração guiada + diário de reflexão + espelho pessoal. Escolhe o teu espelho ou vive a jornada completa.",
 };
 
 export default function ExperienciasPage() {
@@ -51,7 +51,7 @@ export default function ExperienciasPage() {
                 href="/recursos/teste"
                 className="inline-block rounded-md border-2 border-brown-300 bg-transparent px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-200 transition-all hover:border-cream hover:text-cream"
               >
-                Descobre o teu véu
+                Descobre o teu espelho
               </Link>
             </div>
           </ScrollReveal>
@@ -205,10 +205,10 @@ export default function ExperienciasPage() {
               Calendário de lançamentos
             </p>
             <h2 className="mt-3 text-center font-serif text-3xl text-cream">
-              Cada véu tem o seu momento
+              Cada espelho tem o seu momento
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-center leading-relaxed text-brown-300">
-              Um véu novo a cada poucas semanas. Junta-te à waitlist para seres
+              Um espelho novo a cada poucas semanas. Junta-te à waitlist para seres
               a primeira a saber — e ter acesso early bird com 20% de desconto.
             </p>
           </ScrollReveal>
@@ -274,7 +274,7 @@ export default function ExperienciasPage() {
               </h3>
               <p className="mt-2 text-sm text-brown-300">
                 Junta-te à waitlist e recebe 20% de desconto no lançamento de
-                cada novo véu.
+                cada novo espelho.
               </p>
               <div className="mt-5">
                 <WaitlistForm />

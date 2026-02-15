@@ -17,14 +17,14 @@ export type Chapter = {
 };
 
 export const bookMeta = {
-  title: "O Véu da Ilusão",
+  title: "O Espelho da Ilusão",
   subtitle: "Histórias de Quem Acordou a Meio",
   author: "Vivianne dos Santos",
   dedication: "Para ti, que já sabes que há mais.",
   intro: [
     "Uma mulher descobre, no meio de uma manhã igual a todas as outras, que construiu uma vida inteira sem nunca ter perguntado o que queria. Não por falta de inteligência ou de coragem, mas porque responder ao que era esperado se tornou tão natural que deixou de distinguir vontade própria de conformidade.",
     "O que se segue não é uma crise visível. É um despertar lento, desconfortável, feito de perguntas pequenas que crescem até ocuparem todo o espaço.",
-    "O Véu da Ilusão acompanha esse território intermédio entre a vida que parece certa e a vida que nunca foi verdadeiramente escolhida. Oferece reconhecimento. E no reconhecimento, algo começa a mover-se.",
+    "O Espelho da Ilusão acompanha esse território intermédio entre a vida que parece certa e a vida que nunca foi verdadeiramente escolhida. Oferece reconhecimento. E no reconhecimento, algo começa a mover-se.",
     "Porque perguntar, mesmo tarde, é o primeiro gesto de se escolher. E há mais para ti do que aquilo que tens vivido.",
   ],
 };

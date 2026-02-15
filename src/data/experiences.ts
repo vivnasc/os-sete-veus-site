@@ -37,7 +37,7 @@ export const experiences: Experience[] = [
   {
     slug: "veu-da-ilusao",
     number: 1,
-    title: "O Véu da Ilusão",
+    title: "O Espelho da Ilusão",
     subtitle: "Quando a vida que tens não foi a que escolheste",
     description:
       "Sentes que foste construindo uma vida que faz sentido para toda a gente — menos para ti. Há uma inquietação gentil que te diz: há mais.",
@@ -59,7 +59,7 @@ export const experiences: Experience[] = [
   {
     slug: "veu-do-medo",
     number: 2,
-    title: "O Véu do Medo",
+    title: "O Espelho do Medo",
     subtitle: "Quando o medo decide por ti",
     description:
       "Sabes o que queres, mas o medo decide antes de ti. E se pudesses ver o que há do outro lado?",
@@ -81,7 +81,7 @@ export const experiences: Experience[] = [
   {
     slug: "veu-da-culpa",
     number: 3,
-    title: "O Véu da Culpa",
+    title: "O Espelho da Culpa",
     subtitle: "Quando te castigas por querer mais",
     description:
       "Querer mais parece-te egoísmo. Mas e se fosse vida? A permissão que procuras só tu te podes dar.",
@@ -103,7 +103,7 @@ export const experiences: Experience[] = [
   {
     slug: "veu-da-identidade",
     number: 4,
-    title: "O Véu da Identidade",
+    title: "O Espelho da Identidade",
     subtitle: "Quando já não sabes quem és sem os outros",
     description:
       "Mãe, filha, mulher, profissional — são tantos os papéis que já não sabes o que sobra quando os tiras.",
@@ -125,7 +125,7 @@ export const experiences: Experience[] = [
   {
     slug: "veu-do-controlo",
     number: 5,
-    title: "O Véu do Controlo",
+    title: "O Espelho do Controlo",
     subtitle: "Quando segurar é a única forma que conheces",
     description:
       "Cuidas de tudo e de todos. Mas por vezes, cuidar é outra forma de segurar.",
@@ -147,7 +147,7 @@ export const experiences: Experience[] = [
   {
     slug: "veu-do-desejo",
     number: 6,
-    title: "O Véu do Desejo",
+    title: "O Espelho do Desejo",
     subtitle: "Quando desejas tudo menos o que precisas",
     description:
       "Preenches o tempo e o espaço com coisas que não te preenchem. E se parasses para perguntar: o que quero, de verdade?",
@@ -169,7 +169,7 @@ export const experiences: Experience[] = [
   {
     slug: "veu-da-separacao",
     number: 7,
-    title: "O Véu da Separação",
+    title: "O Espelho da Separação",
     subtitle: "Quando te afastas de ti mesma para pertencer",
     description:
       "Dás tanto para pertencer que te perdeste no processo. O caminho de volta começa por ti.",

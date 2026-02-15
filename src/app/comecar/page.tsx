@@ -24,7 +24,7 @@ const cenarios = [
     title: "Quero experimentar antes de me comprometer",
     description: "Queres explorar sem compromisso, ao teu ritmo.",
     steps: [
-      { text: "Faz o teste \"Qual véu te esconde?\" — sem email, sem compromisso", href: "/recursos/teste" },
+      { text: "Faz o teste \"Qual espelho te esconde?\" — sem email, sem compromisso", href: "/recursos/teste" },
       { text: "Descarrega os recursos gratuitos", href: "/recursos" },
       { text: "Lê um artigo que te chame a atenção", href: "/artigos" },
     ],
@@ -34,7 +34,7 @@ const cenarios = [
     title: "Estou pronta para começar a ler",
     description: "Já sentes que isto é para ti. Queres mergulhar.",
     steps: [
-      { text: "Adquire O Véu da Ilusão e lê directamente no site, capítulo a capítulo", href: "/experiencias" },
+      { text: "Adquire O Espelho da Ilusão e lê directamente no site, capítulo a capítulo", href: "/experiencias" },
       { text: "Ao leres, o diário de reflexão guia-te em cada pausa", href: "/experiencias" },
       { text: "No final, O Teu Espelho mostra-te tudo o que escreveste", href: "/experiencias" },
     ],
@@ -123,7 +123,7 @@ export default function ComecarPage() {
               Uma experiência, não apenas um livro
             </h2>
             <p className="mx-auto mt-4 max-w-lg font-serif text-base leading-relaxed text-brown-600">
-              O Véu da Ilusão não é um PDF para baixar e esquecer. É uma experiência de leitura
+              O Espelho da Ilusão não é um PDF para baixar e esquecer. É uma experiência de leitura
               integrada, com pausas de reflexão, diário pessoal e checklists — tudo dentro do site.
               Lês ao teu ritmo. Escreves o que sentes. E no final, O Teu Espelho mostra-te
               as tuas palavras reunidas.

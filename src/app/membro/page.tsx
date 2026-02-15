@@ -149,7 +149,7 @@ export default function MembroDashboard() {
           </div>
         )}
 
-        {/* ESPELHOS - Ficção (O Véu da Ilusão) */}
+        {/* ESPELHOS - Ficção (O Espelho da Ilusão) */}
         {hasMirrorsAccess && (
           <div className={`${hasBookAccess ? 'mt-6' : 'mt-10'} overflow-hidden rounded-2xl bg-white shadow-sm`}>
             <div className="flex flex-col sm:flex-row">
