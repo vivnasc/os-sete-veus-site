@@ -62,6 +62,15 @@ const pilares = [
     linkText: "Lê os artigos",
   },
   {
+    icon: "🌊",
+    title: "Comunidade Anónima",
+    description:
+      "Ecos, Maré, Círculo e Fogueira — um espaço onde a conexão acontece por reconhecimento, não por interação. Tudo anónimo. Tudo impermanente.",
+    color: "#6a8a7a",
+    link: "/comunidade",
+    linkText: "Descobre a comunidade",
+  },
+  {
     icon: "🌀",
     title: "7 Livros, 7 Véus",
     description:
@@ -76,6 +85,7 @@ const numeros = [
   { valor: "7", label: "Livros na colecção", cor: "#c9b896" },
   { valor: "7", label: "Reflexões por livro", cor: "#7a8c6e" },
   { valor: "4", label: "Práticas guiadas", cor: "#c08aaa" },
+  { valor: "4", label: "Espaços comunitários", cor: "#6a8a7a" },
   { valor: "8+", label: "Recursos gratuitos", cor: "#8aaaca" },
 ];
 
@@ -102,6 +112,11 @@ const jornada = [
   },
   {
     step: 5,
+    title: "Partilha",
+    text: "Na comunidade, libertas reflexões anónimas e encontras reconhecimento. Sem máscara, sem julgamento.",
+  },
+  {
+    step: 6,
     title: "Expande",
     text: "Cada novo véu é uma nova camada. A colecção cresce contigo, à medida que avanças.",
   },
@@ -457,6 +472,7 @@ export default function EcossistemaPage() {
                     "Checklists interactivos",
                     "O Teu Espelho — reflexões reunidas",
                     "Práticas guiadas com áudio",
+                    "Comunidade anónima dos Sete Véus",
                     "Modo nocturno",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-brown-600">
@@ -490,6 +506,7 @@ export default function EcossistemaPage() {
                     "Entrega em todo Moçambique",
                     "Encomenda directa via WhatsApp",
                     "Acesso digital incluído",
+                    "Comunidade anónima dos Sete Véus",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-brown-600">
                       <span className="mt-0.5 text-sage">&#10003;</span>
@@ -536,6 +553,10 @@ export default function EcossistemaPage() {
               {
                 q: "O que é O Teu Espelho?",
                 a: "É uma funcionalidade especial que reúne todas as reflexões que escreveste durante a leitura num só lugar. Uma forma de te veres a ti mesma através das tuas próprias palavras.",
+              },
+              {
+                q: "O que é a comunidade d'Os Sete Véus?",
+                a: "É um espaço anónimo e impermanente exclusivo para quem adquiriu um livro ou Espelho. Tem quatro espaços: Ecos (reflexões anónimas), Maré (consciência colectiva), Círculo (espelho partilhado) e Fogueira (contemplação). A conexão acontece por reconhecimento, não por interação.",
               },
               {
                 q: "A plataforma vai ter mais livros?",

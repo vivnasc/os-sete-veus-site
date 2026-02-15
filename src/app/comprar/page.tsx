@@ -97,6 +97,41 @@ export default function ComprarPage() {
             </div>
           </div>
 
+          {/* Comunidade incluída */}
+          <div className="overflow-hidden rounded-2xl border-2 border-brown-600/30 bg-gradient-to-r from-[#2d2620] to-[#1a1510] shadow-lg">
+            <div className="p-8 sm:p-10">
+              <div className="flex items-start gap-4">
+                <div className="text-4xl">🌊</div>
+                <div className="flex-1">
+                  <p className="font-sans text-[0.7rem] uppercase tracking-[0.2em] text-sage-light">
+                    Incluído com qualquer compra
+                  </p>
+                  <h2 className="mt-3 font-serif text-2xl text-cream sm:text-3xl">
+                    Comunidade d&#39;Os Sete Véus
+                  </h2>
+                  <p className="mt-3 leading-relaxed text-brown-200">
+                    Acesso a um espaço único onde a conexão acontece por reconhecimento.
+                    Reflexões anónimas, consciência colectiva, espelho partilhado e contemplação
+                    — tudo impermanente, como os véus.
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    {["Ecos", "Maré", "Círculo", "Fogueira"].map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-sage/30 bg-sage/10 px-3 py-1 font-sans text-xs text-sage-light"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="mt-4 font-serif text-sm italic text-brown-400">
+                    &ldquo;Aqui, a conexão acontece por reconhecimento. Não por interação.&rdquo;
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Não sei qual escolher */}
           <div className="rounded-xl border border-brown-200 bg-white/50 p-6 text-center">
             <p className="font-sans text-sm font-medium text-brown-700">
