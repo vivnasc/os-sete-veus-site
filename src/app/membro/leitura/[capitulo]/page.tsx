@@ -8,6 +8,7 @@ import { supabase } from "@/lib/supabase";
 import InteractiveChecklist from "@/components/InteractiveChecklist";
 import ReflectionJournal from "@/components/ReflectionJournal";
 import BreathingExercise from "@/components/BreathingExercise";
+import PartilhaTrecho from "@/components/PartilhaTrecho";
 import { getReadingTime, formatReadingTime } from "@/lib/readingTime";
 import Link from "next/link";
 
@@ -256,6 +257,11 @@ export default function ChapterPage({ params }: { params: Promise<{ capitulo: st
                 <InteractiveChecklist
                   chapterSlug={chapter.slug}
                   items={chapter.checklist}
+                  accentColor={chapter.accentColor}
+                />
+
+                <PartilhaTrecho
+                  chapterSlug={chapter.slug}
                   accentColor={chapter.accentColor}
                 />
               </>
