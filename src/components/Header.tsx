@@ -9,6 +9,7 @@ const navLinks = [
   { href: "/", label: "Início" },
   { href: "/comprar", label: "Comprar" },
   { href: "/livro-fisico", label: "Livro Físico" },
+  { href: "/comunidade", label: "Ecos" },
   { href: "/recursos", label: "Recursos" },
   { href: "/sobre", label: "Sobre" },
 ];
