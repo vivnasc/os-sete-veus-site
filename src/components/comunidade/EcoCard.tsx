@@ -20,9 +20,10 @@ type Props = {
   eco: Eco
   onReconhecer: (ecoId: string) => void
   onSussurrar: (ecoId: string) => void
+  isDemo?: boolean
 }
 
-export default function EcoCard({ eco, onReconhecer, onSussurrar }: Props) {
+export default function EcoCard({ eco, onReconhecer, onSussurrar, isDemo }: Props) {
   const [isReconhecido, setIsReconhecido] = useState(eco.reconhecido_por_mim)
   const [count, setCount] = useState(eco.reconhecimentos_count)
   const [showSussurro, setShowSussurro] = useState(false)
@@ -86,25 +87,27 @@ export default function EcoCard({ eco, onReconhecer, onSussurrar }: Props) {
       <div className="ml-4 mt-4 flex items-center gap-4">
         {/* Reconheço-me button */}
         <motion.button
-          whileTap={{ scale: 0.95 }}
-          onClick={handleReconhecer}
-          disabled={eco.is_mine}
+          whileTap={isDemo ? {} : { scale: 0.95 }}
+          onClick={isDemo ? undefined : handleReconhecer}
+          disabled={eco.is_mine || isDemo}
           className={`flex items-center gap-2 rounded-full px-4 py-2 font-sans text-xs transition-all ${
-            isReconhecido
-              ? 'bg-sage/20 text-sage'
-              : eco.is_mine
-                ? 'cursor-default bg-brown-100/50 text-brown-300'
-                : 'bg-cream-dark text-brown-500 hover:bg-sage/10 hover:text-sage'
+            isDemo
+              ? 'bg-cream-dark text-brown-400 cursor-default'
+              : isReconhecido
+                ? 'bg-sage/20 text-sage'
+                : eco.is_mine
+                  ? 'cursor-default bg-brown-100/50 text-brown-300'
+                  : 'bg-cream-dark text-brown-500 hover:bg-sage/10 hover:text-sage'
           }`}
         >
           <motion.span
-            animate={isReconhecido ? { scale: [1, 1.3, 1] } : {}}
+            animate={isReconhecido && !isDemo ? { scale: [1, 1.3, 1] } : {}}
             transition={{ duration: 0.3 }}
           >
-            {isReconhecido ? '◆' : '◇'}
+            {isReconhecido && !isDemo ? '◆' : '◇'}
           </motion.span>
           <span>
-            {isReconhecido ? 'Reconhecido' : 'Reconheço-me'}
+            {isReconhecido && !isDemo ? 'Reconhecido' : 'Reconheço-me'}
           </span>
           {count > 0 && (
             <span className="ml-1 opacity-60">{count}</span>
@@ -112,7 +115,7 @@ export default function EcoCard({ eco, onReconhecer, onSussurrar }: Props) {
         </motion.button>
 
         {/* Sussurrar button */}
-        {!eco.is_mine && (
+        {!eco.is_mine && !isDemo && (
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={() => {

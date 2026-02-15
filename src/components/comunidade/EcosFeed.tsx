@@ -19,23 +19,107 @@ type Eco = {
   is_mine: boolean
 }
 
+// Sample ecos shown when the community is still empty
+const ECOS_EXEMPLO: Eco[] = [
+  {
+    id: 'demo-1',
+    veu_numero: 1,
+    capitulo: 1,
+    conteudo: 'ok isto bateu forte. acordei hoje e fiz exactamente a mesma coisa que faço há 3 anos. o mesmo café, o mesmo caminho, a mesma cara no espelho. e pensei: quando foi a ultima vez que fiz algo diferente? tipo... realmente diferente?',
+    temas: ['automatismo', 'despertar'],
+    created_at: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+    reconhecimentos_count: 7,
+    reconhecido_por_mim: false,
+    is_mine: false,
+  },
+  {
+    id: 'demo-2',
+    veu_numero: 1,
+    capitulo: 3,
+    conteudo: 'chorei no banho. outra vez. mas desta vez não foi por tristeza, foi por reconhecimento. a personagem do capítulo 3 sou EU. literalmente eu. assustador.',
+    temas: ['vulnerabilidade', 'identidade'],
+    created_at: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
+    reconhecimentos_count: 12,
+    reconhecido_por_mim: false,
+    is_mine: false,
+  },
+  {
+    id: 'demo-3',
+    veu_numero: 1,
+    capitulo: 2,
+    conteudo: 'o meu marido perguntou-me ontem "estás bem?" e eu disse que sim. automaticamente. nem pensei. e depois fiquei a noite toda acordada a perguntar-me se estava mesmo',
+    temas: ['automatismo', 'relacoes'],
+    created_at: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
+    reconhecimentos_count: 9,
+    reconhecido_por_mim: false,
+    is_mine: false,
+  },
+  {
+    id: 'demo-4',
+    veu_numero: 2,
+    capitulo: 5,
+    conteudo: 'a minha mãe nunca me disse que tinha orgulho de mim. e eu passo a vida a tentar ouvir isso de toda a gente. do chefe, das amigas, do meu namorado. é cansativo.',
+    temas: ['relacoes', 'desejo'],
+    created_at: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+    reconhecimentos_count: 15,
+    reconhecido_por_mim: false,
+    is_mine: false,
+  },
+  {
+    id: 'demo-5',
+    veu_numero: 1,
+    capitulo: 7,
+    conteudo: 'acabei o espelho e não sei o que fazer comigo. tipo. estou a olhar para a minha sala e tudo parece igual mas eu não sou igual. que sensação estranha.',
+    temas: ['despertar', 'impermanencia'],
+    created_at: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toISOString(),
+    reconhecimentos_count: 6,
+    reconhecido_por_mim: false,
+    is_mine: false,
+  },
+  {
+    id: 'demo-6',
+    veu_numero: 3,
+    capitulo: 10,
+    conteudo: 'fiz a prática de respiração e consegui ficar parada 2 minutos sem pegar no telemóvel. parece patético mas para mim foi ENORME. 2 minutos de silêncio. uau.',
+    temas: ['presenca'],
+    created_at: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString(),
+    reconhecimentos_count: 11,
+    reconhecido_por_mim: false,
+    is_mine: false,
+  },
+]
+
 export default function EcosFeed() {
   const { user } = useAuth()
   const [ecos, setEcos] = useState<Eco[]>([])
   const [loading, setLoading] = useState(true)
+  const [isDemo, setIsDemo] = useState(false)
   const [selectedVeu, setSelectedVeu] = useState<number | null>(null)
   const [sussurroEcoId, setSussurroEcoId] = useState<string | null>(null)
   const [fioInvisivel, setFioInvisivel] = useState<string | null>(null)
 
   const carregarEcos = useCallback(async () => {
     const url = selectedVeu ? `/api/ecos?veu=${selectedVeu}` : '/api/ecos'
-    const res = await fetch(url)
-    const data = await res.json()
-    if (data.ecos) {
-      setEcos(data.ecos)
-
-      // O Fio Invisível — detect if someone shares your themes
-      detectarFioInvisivel(data.ecos)
+    try {
+      const res = await fetch(url)
+      const data = await res.json()
+      if (data.ecos && data.ecos.length > 0) {
+        setEcos(data.ecos)
+        setIsDemo(false)
+        // O Fio Invisível — detect if someone shares your themes
+        detectarFioInvisivel(data.ecos)
+      } else {
+        // Show sample ecos when community is empty
+        const filtered = selectedVeu
+          ? ECOS_EXEMPLO.filter((e) => e.veu_numero === selectedVeu)
+          : ECOS_EXEMPLO
+        setEcos(filtered)
+        setIsDemo(true)
+      }
+    } catch {
+      // Fallback to sample data on network error
+      setEcos(ECOS_EXEMPLO)
+      setIsDemo(true)
     }
     setLoading(false)
   }, [selectedVeu])
@@ -138,16 +222,20 @@ export default function EcosFeed() {
         </div>
       )}
 
-      {/* Empty state */}
-      {!loading && ecos.length === 0 && (
-        <div className="rounded-2xl border-2 border-dashed border-brown-200 py-16 text-center">
-          <p className="font-serif text-lg text-brown-500">
-            Ainda não há ecos neste espaço.
+      {/* Demo mode banner */}
+      {!loading && isDemo && ecos.length > 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: -5 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-6 rounded-xl border border-sage/20 bg-sage/5 px-5 py-4 text-center"
+        >
+          <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-sage">
+            Pré-visualização
           </p>
-          <p className="mt-2 font-sans text-sm text-brown-400">
-            Quando libertares uma reflexão como eco, ela aparecerá aqui — anónima, impermanente.
+          <p className="mt-1 font-serif text-sm text-brown-500">
+            Estes são exemplos do que encontrarás aqui. Quando libertares uma reflexão como eco, ela junta-se a este espaço — anónima e impermanente.
           </p>
-        </div>
+        </motion.div>
       )}
 
       {/* Ecos list */}
@@ -159,6 +247,7 @@ export default function EcosFeed() {
               eco={eco}
               onReconhecer={handleReconhecer}
               onSussurrar={(id) => setSussurroEcoId(id)}
+              isDemo={isDemo}
             />
           ))}
         </AnimatePresence>

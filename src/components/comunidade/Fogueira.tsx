@@ -33,10 +33,14 @@ export default function Fogueira() {
   const [showBreathing, setShowBreathing] = useState(true)
 
   const carregar = useCallback(async () => {
-    const res = await fetch('/api/fogueira')
-    const data = await res.json()
-    if (data.fogueira) setFogueira(data.fogueira)
-    setEstado(data.estado)
+    try {
+      const res = await fetch('/api/fogueira')
+      const data = await res.json()
+      if (data.fogueira) setFogueira(data.fogueira)
+      setEstado(data.estado || 'nenhuma')
+    } catch {
+      setEstado('nenhuma')
+    }
     setLoading(false)
   }, [])
 
@@ -87,24 +91,59 @@ export default function Fogueira() {
     )
   }
 
-  // No fogueira scheduled
+  // No fogueira scheduled — show atmospheric preview
   if (estado === 'nenhuma') {
     return (
-      <div className="rounded-2xl border border-brown-100 bg-gradient-to-b from-brown-900 to-[#2a2420] p-8 text-center">
-        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center">
-          <motion.div
-            animate={{ opacity: [0.2, 0.6, 0.2], scale: [0.95, 1.05, 0.95] }}
-            transition={{ duration: 4, repeat: Infinity }}
-            className="h-8 w-8 rounded-full bg-gradient-to-t from-[#c9b896] to-[#e8d5b0]"
-            style={{ filter: 'blur(4px)' }}
-          />
+      <div className="rounded-2xl border border-brown-100 bg-gradient-to-b from-brown-900 to-[#2a2420] p-8">
+        <div className="text-center">
+          {/* Animated ember */}
+          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center">
+            <motion.div
+              animate={{ opacity: [0.15, 0.5, 0.15], scale: [0.9, 1.1, 0.9] }}
+              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+              className="h-12 w-12 rounded-full bg-gradient-to-t from-[#c9b896] to-[#e8d5b0]"
+              style={{ filter: 'blur(8px)' }}
+            />
+          </div>
+
+          <p className="font-sans text-[0.55rem] uppercase tracking-[0.3em] text-cream/30">
+            Fogueira
+          </p>
+          <h3 className="mt-2 font-serif text-xl text-cream/80">
+            A fogueira descansa.
+          </h3>
+          <p className="mx-auto mt-3 max-w-xs font-serif text-sm italic leading-relaxed text-cream/40">
+            &ldquo;As brasas ainda estão quentes. Quando a próxima sessão de contemplação colectiva
+            for marcada, sentirás o calor.&rdquo;
+          </p>
         </div>
-        <p className="font-serif text-lg text-cream/80">
-          A fogueira está adormecida.
-        </p>
-        <p className="mt-2 font-sans text-xs text-cream/40">
-          A próxima sessão de contemplação colectiva será anunciada em breve.
-        </p>
+
+        {/* What the fogueira is — explanation */}
+        <div className="mt-8 rounded-xl border border-white/5 bg-white/5 p-5">
+          <p className="font-sans text-[0.55rem] uppercase tracking-[0.25em] text-cream/30">
+            O que é a Fogueira
+          </p>
+          <div className="mt-3 space-y-3">
+            <div className="flex items-start gap-3">
+              <span className="mt-0.5 text-sm text-cream/20">~</span>
+              <p className="font-serif text-sm leading-relaxed text-cream/50">
+                Um momento de contemplação colectiva — em silêncio, com quem caminha contigo.
+              </p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="mt-0.5 text-sm text-cream/20">~</span>
+              <p className="font-serif text-sm leading-relaxed text-cream/50">
+                Começa com uma respiração guiada. Depois, partilhas faíscas — pensamentos curtos, sem nome.
+              </p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="mt-0.5 text-sm text-cream/20">~</span>
+              <p className="font-serif text-sm leading-relaxed text-cream/50">
+                A fogueira acende-se em datas especiais. Quando estiver activa, sentirás o convite.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
