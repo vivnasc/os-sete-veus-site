@@ -21,12 +21,16 @@ type Props = {
   onReconhecer: (ecoId: string) => void
   onSussurrar: (ecoId: string) => void
   isDemo?: boolean
+  guardado?: boolean
+  onGuardar?: (ecoId: string) => void
 }
 
-export default function EcoCard({ eco, onReconhecer, onSussurrar, isDemo }: Props) {
+export default function EcoCard({ eco, onReconhecer, onSussurrar, isDemo, guardado = false, onGuardar }: Props) {
   const [isReconhecido, setIsReconhecido] = useState(eco.reconhecido_por_mim)
   const [count, setCount] = useState(eco.reconhecimentos_count)
   const [showSussurro, setShowSussurro] = useState(false)
+  const [isGuardado, setIsGuardado] = useState(guardado)
+  const [mostrarOferenda, setMostrarOferenda] = useState(false)
 
   const veuColor = VEU_COLORS[eco.veu_numero] || '#c9b896'
   const timeAgo = getTimeAgo(eco.created_at)
@@ -128,7 +132,79 @@ export default function EcoCard({ eco, onReconhecer, onSussurrar, isDemo }: Prop
             <span>Sussurrar</span>
           </motion.button>
         )}
+
+        {/* Guardar eco (colecção pessoal) */}
+        {!eco.is_mine && onGuardar && (
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              if (!isGuardado) {
+                setIsGuardado(true)
+                onGuardar(eco.id)
+              }
+            }}
+            className={`flex items-center gap-1.5 rounded-full px-3 py-2 font-sans text-xs transition-colors ${
+              isGuardado
+                ? 'bg-amber-50 text-amber-600'
+                : 'text-brown-400 hover:bg-cream-dark hover:text-brown-600'
+            }`}
+          >
+            <span className="text-sm">{isGuardado ? '&#9733;' : '&#9734;'}</span>
+            <span>{isGuardado ? 'Guardado' : 'Guardar'}</span>
+          </motion.button>
+        )}
+
+        {/* Oferenda (micro-doação) */}
+        {!eco.is_mine && (
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setMostrarOferenda(!mostrarOferenda)}
+            className="flex items-center gap-1.5 rounded-full px-3 py-2 font-sans text-xs text-brown-400 transition-colors hover:bg-cream-dark hover:text-brown-600"
+            title="Plantar uma semente pelo eco que te tocou"
+          >
+            <span className="text-sm">&#127793;</span>
+            <span>Oferenda</span>
+          </motion.button>
+        )}
       </div>
+
+      {/* Oferenda expandida */}
+      <AnimatePresence>
+        {mostrarOferenda && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="ml-4 mt-3 overflow-hidden"
+          >
+            <div className="rounded-xl bg-sage/5 border border-sage/20 p-4 text-center">
+              <p className="font-serif text-xs italic text-brown-600 mb-3">
+                Este eco tocou-te. Planta uma semente — um gesto que alimenta
+                o espaço onde estas palavras puderam nascer.
+              </p>
+              <div className="flex justify-center gap-2">
+                <a
+                  href="https://www.paypal.com/paypalme/vivsaraiva/1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full bg-sage px-4 py-1.5 font-sans text-[0.65rem] text-white transition-colors hover:bg-sage-dark"
+                >
+                  $1 via PayPal
+                </a>
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText('+258 851 006 473')
+                    setMostrarOferenda(false)
+                  }}
+                  className="rounded-full border border-sage px-4 py-1.5 font-sans text-[0.65rem] text-sage transition-colors hover:bg-sage/10"
+                >
+                  65 MZN M-Pesa
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Own eco indicator */}
       <AnimatePresence>

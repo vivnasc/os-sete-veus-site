@@ -41,7 +41,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Timeout de segurança: se o Supabase demorar >5s, desbloquear a app
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+
     supabase.auth.getSession().then(async ({ data: { session } }) => {
+      clearTimeout(timeout);
       setUser(session?.user ?? null);
 
       if (session?.user) {
@@ -54,6 +60,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       setLoading(false);
     }).catch(() => {
+      clearTimeout(timeout);
       // Session check failed - resolve loading anyway
       setLoading(false);
     });

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAuth } from './AuthProvider'
+import { useAccess } from '@/hooks/useAccess'
 import LibertarEcoButton from './comunidade/LibertarEcoButton'
 
 type Reflexao = {
@@ -20,10 +21,13 @@ type Props = {
 
 export default function ReflexoesDrawer({ veuNumero, capituloNumero }: Props) {
   const { user } = useAuth()
+  const { hasBookAccess } = useAccess()
   const [isOpen, setIsOpen] = useState(false)
   const [reflexoes, setReflexoes] = useState<Reflexao[]>([])
   const [novaReflexao, setNovaReflexao] = useState('')
   const [loading, setLoading] = useState(false)
+  const [perguntaEspelho, setPerguntaEspelho] = useState<string | null>(null)
+  const [loadingEspelho, setLoadingEspelho] = useState(false)
 
   useEffect(() => {
     if (user && isOpen) {
@@ -54,10 +58,36 @@ export default function ReflexoesDrawer({ veuNumero, capituloNumero }: Props) {
     })
 
     if (response.ok) {
+      const textoGuardado = novaReflexao
       setNovaReflexao('')
       await carregarReflexoes()
+      // Pedir pergunta-espelho à IA apenas para membros premium
+      if (hasBookAccess) {
+        pedirPerguntaEspelho(textoGuardado)
+      } else {
+        setPerguntaEspelho(null)
+      }
     }
     setLoading(false)
+  }
+
+  const pedirPerguntaEspelho = async (texto: string) => {
+    setLoadingEspelho(true)
+    setPerguntaEspelho(null)
+    try {
+      const res = await fetch('/api/diario-espelho', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reflexao: texto, veuNumero }),
+      })
+      if (res.ok) {
+        const data = await res.json()
+        setPerguntaEspelho(data.pergunta)
+      }
+    } catch {
+      // Silencioso — o espelho é opcional
+    }
+    setLoadingEspelho(false)
   }
 
   if (!user) return null
@@ -137,6 +167,52 @@ export default function ReflexoesDrawer({ veuNumero, capituloNumero }: Props) {
                     {loading ? 'Guardando...' : 'Guardar Reflexão'}
                   </button>
                 </div>
+
+                {/* Pergunta Espelho (Diário Espelho com IA) — Premium */}
+                {hasBookAccess ? (
+                  <AnimatePresence>
+                    {(loadingEspelho || perguntaEspelho) && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="rounded-xl border-l-[3px] border-purple-400 bg-purple-50 dark:bg-purple-900/20 p-4"
+                      >
+                        <p className="text-[0.6rem] uppercase tracking-wider text-purple-500 dark:text-purple-400 mb-2">
+                          Diário Espelho
+                        </p>
+                        {loadingEspelho ? (
+                          <motion.p
+                            animate={{ opacity: [0.4, 1, 0.4] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                            className="font-serif text-sm italic text-stone-500"
+                          >
+                            O espelho observa...
+                          </motion.p>
+                        ) : (
+                          <p className="font-serif text-sm italic leading-relaxed text-stone-700 dark:text-stone-300">
+                            &ldquo;{perguntaEspelho}&rdquo;
+                          </p>
+                        )}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                ) : (
+                  <div className="rounded-xl border-l-[3px] border-stone-300 bg-stone-50 dark:bg-stone-800/40 p-4">
+                    <p className="text-[0.6rem] uppercase tracking-wider text-stone-400 mb-2">
+                      Diário Espelho
+                    </p>
+                    <p className="font-serif text-sm italic leading-relaxed text-stone-500 dark:text-stone-400">
+                      Cada reflexão tua pode receber uma pergunta-espelho da IA — uma presença que devolve perguntas, nunca respostas.
+                    </p>
+                    <a
+                      href="/comprar"
+                      className="mt-3 inline-block text-xs font-medium text-purple-600 dark:text-purple-400 hover:text-purple-800 transition-colors"
+                    >
+                      Desbloquear Diário Espelho &rarr;
+                    </a>
+                  </div>
+                )}
 
                 {/* Reflexões Anteriores */}
                 {reflexoes.length > 0 && (

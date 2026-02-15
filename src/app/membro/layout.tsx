@@ -2,6 +2,7 @@
 
 import { useAuth } from "@/components/AuthProvider";
 import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const memberNav = [
@@ -18,11 +19,29 @@ const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
 export default function MembroLayout({ children }: { children: React.ReactNode }) {
   const { user, loading, signOut } = useAuth();
   const router = useRouter();
+  const [loadingLento, setLoadingLento] = useState(false);
+
+  useEffect(() => {
+    if (!loading) return;
+    const timer = setTimeout(() => setLoadingLento(true), 3000);
+    return () => clearTimeout(timer);
+  }, [loading]);
 
   if (loading) {
     return (
       <section className="bg-cream px-6 py-32 text-center">
         <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-brown-200 border-t-sage" />
+        {loadingLento && (
+          <div className="mt-6">
+            <p className="text-sm text-brown-400">A ligação está mais lenta do que o habitual...</p>
+            <button
+              onClick={() => window.location.reload()}
+              className="mt-3 text-sm text-sage underline hover:text-sage-dark"
+            >
+              Recarregar página
+            </button>
+          </div>
+        )}
       </section>
     );
   }

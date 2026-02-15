@@ -1,6 +1,8 @@
 "use client";
 
 import { use, useEffect, useState, useCallback, useRef } from "react";
+import { useAuth } from "@/components/AuthProvider";
+import { useRouter } from "next/navigation";
 import { chapters } from "@/data/ebook";
 import { supabase } from "@/lib/supabase";
 import InteractiveChecklist from "@/components/InteractiveChecklist";
@@ -9,17 +11,32 @@ import BreathingExercise from "@/components/BreathingExercise";
 import { getReadingTime, formatReadingTime } from "@/lib/readingTime";
 import Link from "next/link";
 
+const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
+
 export default function ChapterPage({ params }: { params: Promise<{ capitulo: string }> }) {
   const { capitulo } = use(params);
+  const { user, profile, loading: authLoading } = useAuth();
+  const router = useRouter();
   const chapter = chapters.find((ch) => ch.slug === capitulo);
   const chapterIndex = chapters.findIndex((ch) => ch.slug === capitulo);
   const prevChapter = chapterIndex > 0 ? chapters[chapterIndex - 1] : null;
   const nextChapter = chapterIndex < chapters.length - 1 ? chapters[chapterIndex + 1] : null;
 
+  const isAdmin = profile?.is_admin || AUTHOR_EMAILS.includes(user?.email || "");
+  const hasMirrorsAccess = isAdmin || profile?.has_mirrors_access || false;
+
   const [showReflection, setShowReflection] = useState(false);
   const [completed, setCompleted] = useState(false);
   const [nightMode, setNightMode] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!authLoading && !user) {
+      router.push("/entrar");
+    } else if (!authLoading && user && !hasMirrorsAccess) {
+      router.push("/membro");
+    }
+  }, [user, authLoading, hasMirrorsAccess, router]);
 
   // Load night mode preference
   useEffect(() => {
@@ -86,6 +103,8 @@ export default function ChapterPage({ params }: { params: Promise<{ capitulo: st
     observer.observe(endRef.current);
     return () => observer.disconnect();
   }, [completed, markAsRead]);
+
+  if (authLoading || !hasMirrorsAccess) return null;
 
   if (!chapter) {
     return (

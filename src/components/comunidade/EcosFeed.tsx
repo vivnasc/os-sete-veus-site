@@ -97,6 +97,7 @@ export default function EcosFeed() {
   const [selectedVeu, setSelectedVeu] = useState<number | null>(null)
   const [sussurroEcoId, setSussurroEcoId] = useState<string | null>(null)
   const [fioInvisivel, setFioInvisivel] = useState<string | null>(null)
+  const [guardados, setGuardados] = useState<Set<string>>(new Set())
 
   const carregarEcos = useCallback(async () => {
     const url = selectedVeu ? `/api/ecos?veu=${selectedVeu}` : '/api/ecos'
@@ -108,6 +109,20 @@ export default function EcosFeed() {
         setIsDemo(false)
         // O Fio Invisível — detect if someone shares your themes
         detectarFioInvisivel(data.ecos)
+
+        // Carregar ecos guardados
+        const ecoIds = data.ecos.map((e: Eco) => e.id)
+        if (ecoIds.length > 0) {
+          try {
+            const guardadosRes = await fetch(`/api/ecos/guardar?ids=${ecoIds.join(',')}`)
+            const guardadosData = await guardadosRes.json()
+            if (guardadosData.guardados) {
+              setGuardados(new Set(guardadosData.guardados))
+            }
+          } catch {
+            // Silencioso — funcionalidade opcional
+          }
+        }
       } else {
         // Show sample ecos when community is empty
         const filtered = selectedVeu
@@ -150,6 +165,15 @@ export default function EcosFeed() {
 
   async function handleReconhecer(ecoId: string) {
     await fetch('/api/ecos/reconhecer', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ecoId }),
+    })
+  }
+
+  async function handleGuardar(ecoId: string) {
+    setGuardados((prev) => new Set([...prev, ecoId]))
+    await fetch('/api/ecos/guardar', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ecoId }),
@@ -248,6 +272,8 @@ export default function EcosFeed() {
               onReconhecer={handleReconhecer}
               onSussurrar={(id) => setSussurroEcoId(id)}
               isDemo={isDemo}
+              guardado={guardados.has(eco.id)}
+              onGuardar={handleGuardar}
             />
           ))}
         </AnimatePresence>
