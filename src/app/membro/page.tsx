@@ -149,14 +149,14 @@ export default function MembroDashboard() {
           </div>
         )}
 
-        {/* ESPELHOS - Ficção (O Véu da Ilusão) */}
+        {/* ESPELHOS - Ficção (O Espelho da Ilusão) */}
         {hasMirrorsAccess && (
           <div className={`${hasBookAccess ? 'mt-6' : 'mt-10'} overflow-hidden rounded-2xl bg-white shadow-sm`}>
             <div className="flex flex-col sm:flex-row">
               {/* Book cover */}
               <div className="flex items-center justify-center bg-gradient-to-br from-[#4a433b] to-[#3d3630] px-8 py-8 sm:w-48">
                 <Image
-                  src="/images/veu-1-ilusao.png.png"
+                  src="/images/espelho-ilusao.png"
                   alt="Espelho da Ilusão"
                   width={120}
                   height={180}

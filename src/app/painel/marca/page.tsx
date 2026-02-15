@@ -344,7 +344,7 @@ export default function MarcaPage() {
             {[
               { label: "Logo Espiral", path: "/images/logo-espiral.png.jpeg", desc: "Logo principal — usar no canto de stories/reels" },
               { label: "Mandala 7 Véus", path: "/images/mandala-7veus.png", desc: "Mandala completa — usar em carrosseis e capas" },
-              { label: "Capa Véu 1", path: "/images/veu-1-ilusao.png.png", desc: "Capa do livro — usar em posts de produto" },
+              { label: "Capa Espelho 1", path: "/images/espelho-ilusao.png", desc: "Capa do livro — usar em posts de produto" },
             ].map((asset) => (
               <div key={asset.label} className="rounded-xl border border-brown-100 bg-white p-4 shadow-sm">
                 <div className="flex h-24 items-center justify-center rounded-lg bg-cream">

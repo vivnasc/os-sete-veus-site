@@ -18,15 +18,15 @@ const modulosData: Record<string, ModuloInfo> = {
     files: [
       { name: "0_bem_vinda.mp3", label: "Bem-vinda à Experiência", type: "audio" },
       { name: "mini_guia.pdf", label: "Mini-Guia Os 7 Véus", type: "pdf" },
-      { name: "ebook.pdf", label: "O Véu da Ilusão — Ebook", type: "pdf" },
+      { name: "ebook.pdf", label: "O Espelho da Ilusão — Ebook", type: "pdf" },
       { name: "planner_7_dias.pdf", label: "Planner dos 7 Dias", type: "pdf" },
     ],
   },
   "modulo-1": {
     dia: "Dia 1",
-    nome: "O Véu da Conformidade",
+    nome: "O Espelho da Conformidade",
     files: [
-      { name: "afirmacoes.mp3", label: "Afirmações — Desprogramar o Véu", type: "audio" },
+      { name: "afirmacoes.mp3", label: "Afirmações — Desprogramar o Espelho", type: "audio" },
       { name: "dia_1_carta.pdf", label: "Carta do Dia 1", type: "pdf" },
       { name: "dia_1_checklist.pdf", label: "Checklist do Dia 1", type: "pdf" },
       { name: "dia_1_nota.pdf", label: "Nota Introdutória", type: "pdf" },
@@ -34,9 +34,9 @@ const modulosData: Record<string, ModuloInfo> = {
   },
   "modulo-2": {
     dia: "Dia 2",
-    nome: "O Véu da Repetição",
+    nome: "O Espelho da Repetição",
     files: [
-      { name: "limpeza.mp3", label: "Limpeza — Soltar o Véu da Ilusão", type: "audio" },
+      { name: "limpeza.mp3", label: "Limpeza — Soltar o Espelho da Ilusão", type: "audio" },
       { name: "dia_2_carta.pdf", label: "Carta do Dia 2", type: "pdf" },
       { name: "dia_2_checklist.pdf", label: "Checklist do Dia 2", type: "pdf" },
       { name: "dia_2_nota.pdf", label: "Nota Introdutória", type: "pdf" },
@@ -44,9 +44,9 @@ const modulosData: Record<string, ModuloInfo> = {
   },
   "modulo-3": {
     dia: "Dia 3",
-    nome: "O Véu do Silenciamento",
+    nome: "O Espelho do Silenciamento",
     files: [
-      { name: "escrita_guiada.mp3", label: "Escrita Guiada — O Véu da Ilusão", type: "audio" },
+      { name: "escrita_guiada.mp3", label: "Escrita Guiada — O Espelho da Ilusão", type: "audio" },
       { name: "dia_3_carta.pdf", label: "Carta do Dia 3", type: "pdf" },
       { name: "dia_3_checklist.pdf", label: "Checklist do Dia 3", type: "pdf" },
       { name: "dia_3_nota.pdf", label: "Nota Introdutória", type: "pdf" },
@@ -54,7 +54,7 @@ const modulosData: Record<string, ModuloInfo> = {
   },
   "modulo-4": {
     dia: "Dia 4",
-    nome: "O Véu da Agradabilidade",
+    nome: "O Espelho da Agradabilidade",
     files: [
       { name: "dia_4_carta.pdf", label: "Carta do Dia 4", type: "pdf" },
       { name: "dia_4_checklist.pdf", label: "Checklist do Dia 4", type: "pdf" },
@@ -63,7 +63,7 @@ const modulosData: Record<string, ModuloInfo> = {
   },
   "modulo-5": {
     dia: "Dia 5",
-    nome: "O Véu da Neutralidade",
+    nome: "O Espelho da Neutralidade",
     files: [
       { name: "dia_5_carta.pdf", label: "Carta do Dia 5", type: "pdf" },
       { name: "dia_5_checklist.pdf", label: "Checklist do Dia 5", type: "pdf" },
@@ -72,7 +72,7 @@ const modulosData: Record<string, ModuloInfo> = {
   },
   "modulo-6": {
     dia: "Dia 6",
-    nome: "O Véu da Falsa Escolha",
+    nome: "O Espelho da Falsa Escolha",
     files: [
       { name: "dia_6_carta.pdf", label: "Carta do Dia 6", type: "pdf" },
       { name: "dia_6_checklist.pdf", label: "Checklist do Dia 6", type: "pdf" },
@@ -81,7 +81,7 @@ const modulosData: Record<string, ModuloInfo> = {
   },
   "modulo-7": {
     dia: "Dia 7",
-    nome: "O Véu do Esquecimento",
+    nome: "O Espelho do Esquecimento",
     files: [
       { name: "dia_7_carta.pdf", label: "Carta do Dia 7", type: "pdf" },
       { name: "dia_7_checklist.pdf", label: "Checklist do Dia 7", type: "pdf" },

@@ -79,7 +79,7 @@ const hooks = {
     "Ninguém precisa de entender para que tu avances.",
   ],
   profundidade: [
-    "Um véu de cada vez. Sem pressa.",
+    "Um espelho de cada vez. Sem pressa.",
     "A leitura que te muda não é a que te dá respostas — é a que te faz perguntas.",
     "Reflectir é um acto de coragem silencioso.",
     "As palavras que escreves sobre ti mesma são as mais importantes.",
@@ -89,7 +89,7 @@ const hooks = {
     "Há verdades que só se revelam quando paramos para escrever.",
   ],
   convite: [
-    "Há um teste gratuito que te mostra qual véu te esconde — link na bio.",
+    "Há um teste gratuito que te mostra qual espelho te esconde — link na bio.",
     "7 recursos gratuitos para quem quer começar a escolher-se.",
     "Descarrega o diário de 7 dias — sem compromisso, é teu.",
     "Começa sem pagar nada. O primeiro passo é sempre grátis.",
@@ -104,7 +104,7 @@ const captionTemplates = {
   reel: [
     "Construí uma vida que fazia sentido para toda a gente — menos para mim.\n\nFoi quando percebi que não era ingratidão. Era intuição.\n\n{cta}",
     "Não é sobre mudar tudo de um dia para o outro.\nÉ sobre parar e perguntar: isto é meu?\n\nSem pressa. Sem fórmulas.\n\n{cta}",
-    "O véu da ilusão é o mais difícil de ver — porque parece a realidade.\n\n{cta}",
+    "O espelho da ilusão é o mais difícil de ver — porque parece a realidade.\n\n{cta}",
     "Há uma diferença entre a vida que construíste e a vida que escolheste.\n\nEsta pergunta mudou tudo para mim.\n\n{cta}",
   ],
   "stories-poll": [
@@ -116,7 +116,7 @@ const captionTemplates = {
   carrossel: [
     "5 sinais de que estás a viver no automático\n(e o que podes fazer)\n\nSwipe para ler →",
     "O que ninguém te diz sobre autoconhecimento\n\n7 verdades que aprendi a escrever este livro\n\nSwipe →",
-    "Antes vs Depois de tirar o véu\n\nNão é sobre ser diferente.\nÉ sobre ser honesta.\n\nSwipe →",
+    "Antes vs Depois de tirar o espelho\n\nNão é sobre ser diferente.\nÉ sobre ser honesta.\n\nSwipe →",
   ],
 };
 
@@ -138,10 +138,10 @@ const testimonials = [
 ];
 
 const ctas = [
-  "🔗 Teste gratuito na bio — descobre qual véu te esconde",
+  "🔗 Teste gratuito na bio — descobre qual espelho te esconde",
   "🔗 Link na bio — recursos gratuitos para ti",
   "🔗 seteecos.com — começa a tua jornada",
-  "🔗 Testa qual véu te esconde — link na bio",
+  "🔗 Testa qual espelho te esconde — link na bio",
   "🔗 Descarrega o diário de 7 dias — link na bio",
 ];
 
@@ -236,7 +236,7 @@ function formatDate(date: Date): string {
 const weekThemes = [
   "Reconhecimento — a vida que não escolheste",
   "Permissão — o direito de querer mais",
-  "O Véu da Ilusão — quando tudo parece bem",
+  "O Espelho da Ilusão — quando tudo parece bem",
   "Reflexão — o poder de parar e escrever",
   "Coragem silenciosa — dar o primeiro passo",
   "Autenticidade — viver sem máscara",

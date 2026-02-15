@@ -157,7 +157,7 @@ export default function ConclusaoPage() {
               style={{ opacity: showContent ? 1 : 0, transitionDelay: "2500ms" }}
             >
               <p className="font-serif text-base leading-relaxed text-brown-700">
-                Terminaste a leitura de O Véu da Ilusão. Não é pouco. Muitas pessoas começam
+                Terminaste a leitura de O Espelho da Ilusão. Não é pouco. Muitas pessoas começam
                 coisas que exigem presença e desistem a meio — não por fraqueza, mas porque
                 olhar para dentro é o acto mais corajoso que existe.
               </p>
@@ -222,7 +222,7 @@ export default function ConclusaoPage() {
               style={{ opacity: showContent ? 1 : 0, transitionDelay: "4000ms" }}
             >
               <ShareCard
-                veilTitle="O Véu da Ilusão"
+                veilTitle="O Espelho da Ilusão"
                 veilColor="#c9b896"
                 chaptersRead={readCount}
                 reflectionsWritten={journalCount}
