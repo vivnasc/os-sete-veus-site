@@ -207,6 +207,18 @@ export default function AutoraDashboardPage() {
                 </div>
               </Link>
 
+              <Link href="/comunidade">
+                <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer">
+                  <div className="text-4xl mb-4">~</div>
+                  <h3 className="text-lg font-medium text-stone-900 mb-2">
+                    Ecos — Comunidade
+                  </h3>
+                  <p className="text-sm text-stone-600">
+                    Ver a comunidade de ressonância
+                  </p>
+                </div>
+              </Link>
+
               <Link href="/">
                 <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer">
                   <div className="text-4xl mb-4">🏠</div>
