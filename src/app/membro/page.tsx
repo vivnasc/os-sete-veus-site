@@ -156,7 +156,7 @@ export default function MembroDashboard() {
               {/* Book cover */}
               <div className="flex items-center justify-center bg-gradient-to-br from-[#4a433b] to-[#3d3630] px-8 py-8 sm:w-48">
                 <Image
-                  src="/images/espelho-1-ilusao.png"
+                  src="/images/espelho-ilusao.png"
                   alt="Espelho da Ilusão"
                   width={120}
                   height={180}

@@ -15,7 +15,7 @@ const veus = [
     subtitle: "Quando a vida que tens não foi a que escolheste",
     description:
       "Sara tem tudo no sítio. Emprego, casa, relação. E uma pergunta que não a larga: \"Isto é mesmo meu?\" Este livro é para quem sente que está na vida certa de outra pessoa.",
-    image: "/images/espelho-1-ilusao.png",
+    image: "/images/espelho-ilusao.png",
     accent: "bg-veu-1",
     available: true,
   },
@@ -25,7 +25,7 @@ const veus = [
     subtitle: "Quando o medo decide por ti",
     description:
       "E se o medo não fosse o inimigo, mas um espelho que te mostra o que há do outro lado? Este livro é para quem sabe o que quer — mas tem medo de ir buscar.",
-    image: "/images/espelho-2-medo.png",
+    image: "/images/espelho-medo.png",
     accent: "bg-veu-2",
     available: true,
   },
@@ -35,7 +35,7 @@ const veus = [
     subtitle: "Quando desejas tudo menos o que precisas",
     description:
       "O desejo que te move é realmente teu? Ou é uma resposta ao que te ensinaram a querer? Este livro é para quem precisa de parar e perguntar: o que é que eu quero, de verdade?",
-    image: "/images/espelho-3-desejo.png",
+    image: "/images/espelho-desejo.png",
     accent: "bg-veu-3",
     available: false,
   },
@@ -45,7 +45,7 @@ const veus = [
     subtitle: "Quando segurar é a única forma que conheces",
     description:
       "Há uma diferença entre cuidar e controlar — e por vezes essa linha desaparece. Este livro é para quem precisa de aprender a largar para se encontrar.",
-    image: "/images/espelho-4-controlo.png",
+    image: "/images/espelho-controlo.png",
     accent: "bg-veu-4",
     available: false,
   },
@@ -55,7 +55,7 @@ const veus = [
     subtitle: "Quando te castigas por querer mais",
     description:
       "Querer mais não é egoísmo. É vida. Este livro é para quem precisa de permissão — a permissão que só tu te podes dar.",
-    image: "/images/espelho-5-culpa.png",
+    image: "/images/espelho-culpa.png",
     accent: "bg-veu-5",
     available: false,
   },
@@ -65,7 +65,7 @@ const veus = [
     subtitle: "Quando já não sabes quem és sem os outros",
     description:
       "O que sobra quando tiras todos os papéis — mãe, filha, mulher, profissional? Este livro é para quem está pronta para se descobrir por baixo de tudo.",
-    image: "/images/espelho-6-identidade.png",
+    image: "/images/espelho-identidade.png",
     accent: "bg-veu-6",
     available: false,
   },
@@ -75,7 +75,7 @@ const veus = [
     subtitle: "Quando te afastas de ti mesma para pertencer",
     description:
       "O último espelho. O mais difícil de ver. Este livro é para quem está pronta para voltar — a si mesma.",
-    image: "/images/espelho-7-separacao.png",
+    image: "/images/espelho-separacao.png",
     accent: "bg-veu-7",
     available: false,
   },
