@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAuth } from './AuthProvider'
+import LibertarEcoButton from './comunidade/LibertarEcoButton'
 
 type Reflexao = {
   id: string
@@ -152,15 +153,23 @@ export default function ReflexoesDrawer({ veuNumero, capituloNumero }: Props) {
                           <p className="text-stone-800 dark:text-stone-200 text-sm leading-relaxed whitespace-pre-wrap">
                             {reflexao.conteudo}
                           </p>
-                          <p className="text-xs text-stone-500 dark:text-stone-400 mt-2">
-                            {new Date(reflexao.created_at).toLocaleDateString('pt-PT', {
-                              day: 'numeric',
-                              month: 'long',
-                              year: 'numeric',
-                              hour: '2-digit',
-                              minute: '2-digit',
-                            })}
-                          </p>
+                          <div className="flex items-center justify-between mt-2">
+                            <p className="text-xs text-stone-500 dark:text-stone-400">
+                              {new Date(reflexao.created_at).toLocaleDateString('pt-PT', {
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric',
+                                hour: '2-digit',
+                                minute: '2-digit',
+                              })}
+                            </p>
+                          </div>
+                          <LibertarEcoButton
+                            veuNumero={reflexao.veu_numero}
+                            capituloNumero={reflexao.capitulo}
+                            reflexaoConteudo={reflexao.conteudo}
+                            reflexaoId={reflexao.id}
+                          />
                         </div>
                       ))}
                     </div>

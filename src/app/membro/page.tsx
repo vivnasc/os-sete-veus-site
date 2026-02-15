@@ -302,6 +302,24 @@ export default function MembroDashboard() {
               </div>
             </div>
           </Link>
+
+          {/* Ecos — Comunidade */}
+          <Link
+            href="/comunidade"
+            className="group rounded-2xl border border-brown-100 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+          >
+            <div className="flex items-center gap-4">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-veu-3 to-veu-7 text-lg text-white">
+                ~
+              </span>
+              <div>
+                <h3 className="font-serif text-base text-brown-800">Ecos</h3>
+                <p className="mt-0.5 font-sans text-xs text-brown-400">
+                  Comunidade de ressonância
+                </p>
+              </div>
+            </div>
+          </Link>
         </div>
 
         {/* Upsell Bridge — contextual suggestion */}
