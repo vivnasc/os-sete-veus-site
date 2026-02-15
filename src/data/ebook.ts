@@ -31,6 +31,30 @@ export const bookMeta = {
 
 export const chapters: Chapter[] = [
   {
+    slug: "introducao",
+    number: 0,
+    title: "Introdução",
+    subtitle: "Para ti, que já sabes que há mais",
+    accentColor: "#c9b896",
+    accentBg: "#faf8f4",
+    content: [
+      "Para ti, que já sabes que há mais.",
+      "***",
+      "Uma mulher descobre, no meio de uma manhã igual a todas as outras, que construiu uma vida inteira sem nunca ter perguntado o que queria. Não por falta de inteligência ou de coragem, mas porque responder ao que era esperado se tornou tão natural que deixou de distinguir vontade própria de conformidade.",
+      "O que se segue não é uma crise visível. É um despertar lento, desconfortável, feito de perguntas pequenas que crescem até ocuparem todo o espaço.",
+      "O Espelho da Ilusão acompanha esse território intermédio entre a vida que parece certa e a vida que nunca foi verdadeiramente escolhida. Oferece reconhecimento. E no reconhecimento, algo começa a mover-se.",
+      "Porque perguntar, mesmo tarde, é o primeiro gesto de se escolher. E há mais para ti do que aquilo que tens vivido.",
+    ],
+    reflection: {
+      prompt: "O que te trouxe até aqui? O que te fez abrir este livro?",
+      journalQuestion: "Se pudesses fazer uma pergunta a ti mesma antes de começares esta leitura, qual seria?",
+    },
+    checklist: [
+      "Li a introdução com calma",
+      "Estou presente e disponível para esta leitura",
+    ],
+  },
+  {
     slug: "parte-i",
     number: 1,
     title: "Parte I",

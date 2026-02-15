@@ -88,11 +88,11 @@ export default function LeituraPage() {
 
         {/* Chapter list */}
         <div className="space-y-3">
-          {chapters.map((chapter) => {
+          {chapters.map((chapter, idx) => {
             const isCompleted = progress[chapter.slug];
-            const isFirst = chapter.number === 1;
+            const isFirst = idx === 0;
             const prevCompleted =
-              chapter.number <= 1 || progress[chapters[chapter.number - 2]?.slug];
+              idx === 0 || progress[chapters[idx - 1]?.slug];
             const isAccessible = isFirst || prevCompleted || isCompleted;
 
             return (
