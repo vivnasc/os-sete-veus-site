@@ -1,13 +1,30 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import { useAuth } from "@/components/AuthProvider";
+import { useRouter } from "next/navigation";
 import { chapters, bookMeta } from "@/data/ebook";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 
+const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
+
 export default function LeituraPage() {
+  const { user, profile, loading: authLoading } = useAuth();
+  const router = useRouter();
   const [progress, setProgress] = useState<Record<string, boolean>>({});
   const [loading, setLoading] = useState(true);
+
+  const isAdmin = profile?.is_admin || AUTHOR_EMAILS.includes(user?.email || "");
+  const hasMirrorsAccess = isAdmin || profile?.has_mirrors_access || false;
+
+  useEffect(() => {
+    if (!authLoading && !user) {
+      router.push("/entrar");
+    } else if (!authLoading && user && !hasMirrorsAccess) {
+      router.push("/membro");
+    }
+  }, [user, authLoading, hasMirrorsAccess, router]);
 
   const loadProgress = useCallback(async () => {
     const session = await supabase.auth.getSession();
@@ -37,6 +54,8 @@ export default function LeituraPage() {
   }, [loadProgress]);
 
   const completedCount = chapters.filter((ch) => progress[ch.slug]).length;
+
+  if (authLoading || !hasMirrorsAccess) return null;
 
   return (
     <section className="px-6 py-12">
