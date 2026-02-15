@@ -238,10 +238,35 @@ export default function ConclusaoPage() {
               <CeremonyUpsell completedVeilSlug="veu-da-ilusao" />
             </div>
 
+            {/* Convite Semente */}
+            <div
+              className="mt-12 transition-all duration-1000"
+              style={{ opacity: showContent ? 1 : 0, transitionDelay: "5500ms" }}
+            >
+              <div className="rounded-2xl border border-sage/20 bg-sage/5 p-8 text-center">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-sage/10">
+                  <span className="text-xl">&#127793;</span>
+                </div>
+                <p className="font-serif text-base text-brown-700">
+                  Este trabalho existe porque alguém acreditou que merecia existir.
+                </p>
+                <p className="mx-auto mt-2 max-w-sm font-serif text-sm text-brown-500">
+                  Se esta experiência te tocou, podes plantar uma semente —
+                  um gesto que permite que este trabalho chegue a mais pessoas.
+                </p>
+                <Link
+                  href="/semente"
+                  className="mt-5 inline-block rounded-full bg-sage px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-sage-dark"
+                >
+                  Plantar uma Semente
+                </Link>
+              </div>
+            </div>
+
             {/* Final quote */}
             <div
               className="mt-16 text-center transition-all duration-1000"
-              style={{ opacity: showContent ? 1 : 0, transitionDelay: "5000ms" }}
+              style={{ opacity: showContent ? 1 : 0, transitionDelay: "6000ms" }}
             >
               <p className="font-serif text-sm italic text-brown-400">
                 &ldquo;Há mais para ti do que aquilo que tens vivido.&rdquo;
