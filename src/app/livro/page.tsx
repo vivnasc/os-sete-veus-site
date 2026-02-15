@@ -215,9 +215,9 @@ export default function LivroMandalaPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="mt-8 flex flex-col items-center gap-4"
+        className="mt-8"
       >
-        <Link href="/livro/introducao">
+        <Link href="/livro/veu/1">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -226,7 +226,16 @@ export default function LivroMandalaPage() {
             Iniciar Travessia
           </motion.button>
         </Link>
-        <Link href="/livro/introducao" className="text-sm text-stone-500 hover:text-stone-700 transition-colors">
+      </motion.div>
+
+      {/* Link para introdução */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.8 }}
+        className="mt-4"
+      >
+        <Link href="/livro/introducao" className="text-sm text-stone-400 hover:text-stone-600 transition-colors underline underline-offset-4">
           Dedicatória, Nota de Abertura &amp; Introdução
         </Link>
       </motion.div>

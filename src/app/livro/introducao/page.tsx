@@ -60,14 +60,36 @@ export default function IntroducaoPage() {
     return idx > 0 ? seccoes[idx - 1].key : null
   }
 
-  // Clean up text: remove null chars and the title prefix that's part of the raw text
+  // Corrigir caracteres corrompidos da conversão DOCX (ligaduras fi/fl/q perdidas)
+  const corrigirTexto = (t: string): string => {
+    return t
+      .replace(/\u0000ue/g, 'que')
+      .replace(/\u0000ua/g, 'qua')
+      .replace(/\u0000uil/g, 'quil')
+      .replace(/\u0000uin/g, 'quin')
+      .replace(/\u0000uit/g, 'quit')
+      .replace(/\u0000uid/g, 'fluid')
+      .replace(/\u0000uir/g, 'fluir')
+      .replace(/\u0000ux/g, 'flux')
+      .replace(/\u0000l/g, 'fl')
+      .replace(/\u0000/g, 'fi')
+  }
+
+  // Limpar texto: corrigir caracteres e remover prefixos de título do raw text
   const limparTexto = (texto: string): string[] => {
-    let limpo = texto
-      .replace(/\u0000/g, '')
-      // Remove title prefixes embedded in text (e.g. "ENota de Abertura\nste livro...")
+    let limpo = corrigirTexto(texto)
+
+    // Remover prefixos de título embutidos no texto (capitulares decorativas do DOCX)
+    // Ex: "ENota de Abertura\nste livro..." → "Este livro..."
+    // Ex: "VIntrodução\nivemos..." → "Vivemos..."
+    limpo = limpo
       .replace(/^[A-Z]?Nota de Abertura\n/i, '')
       .replace(/^[A-Z]?Introdução\n/i, '')
-      .replace(/^[A-Z]?Vivemos/i, 'Vivemos')
+      // Corrigir capitulares partidas (E+ste, V+ivemos, O+despertar)
+      .replace(/^([A-Z])([A-Z])/gm, (_match, _cap, rest) => rest)
+
+    // Corrigir subtítulos embutidos (ex: "OO Processo..." → "O Processo...")
+    limpo = limpo.replace(/^([A-Z])\1/gm, '$1')
 
     return limpo
       .split('\n')
