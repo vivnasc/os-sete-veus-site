@@ -30,6 +30,21 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Não autenticado' }, { status: 401 })
   }
 
+  // Verificar acesso premium (has_book_access) antes de usar a IA
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('has_book_access, is_admin')
+    .eq('id', session.user.id)
+    .single()
+
+  const AUTHOR_EMAILS = ['viv.saraiva@gmail.com']
+  const isAdmin = profile?.is_admin || AUTHOR_EMAILS.includes(session.user.email || '')
+  const hasAccess = isAdmin || profile?.has_book_access
+
+  if (!hasAccess) {
+    return NextResponse.json({ error: 'premium_required', mensagem: 'O Diário Espelho é uma funcionalidade premium.' }, { status: 403 })
+  }
+
   const { reflexao, veuNumero } = await req.json()
 
   if (!reflexao?.trim()) {
