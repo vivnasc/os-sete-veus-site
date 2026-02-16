@@ -82,6 +82,7 @@ export default function MembroDashboard() {
   const nextChapter = chapters.find((ch) => !readingProgress[ch.slug]) || chapters[0];
 
   // Nós progress (uses nos- prefix)
+  const espelhoCompleto = completedChapters === chapters.length;
   const completedNos = nosChapters.filter((ch) => readingProgress[`nos-${ch.slug}`]).length;
   const nosPercent = Math.round((completedNos / nosChapters.length) * 100);
   const nextNosChapter = nosChapters.find((ch) => !readingProgress[`nos-${ch.slug}`]) || nosChapters[0];
@@ -228,9 +229,34 @@ export default function MembroDashboard() {
           </div>
         )}
 
-        {/* NÓS - O Nó da Herança (linked to Espelho da Ilusão) */}
-        {hasMirrorsAccess && (
-          <div className="mt-6 overflow-hidden rounded-2xl bg-white shadow-sm">
+        {/* NÓS - O Nó da Herança — trancado até completar o Espelho */}
+        {hasMirrorsAccess && !espelhoCompleto && completedChapters > 0 && (
+          <div className="mt-6 overflow-hidden rounded-2xl border-2 border-dashed border-[#c9a87c]/25 bg-[#c9a87c]/[0.03] p-5">
+            <div className="flex items-start gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#c9a87c]/10">
+                <svg className="h-6 w-6 text-[#c9a87c]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-[#c9a87c]">
+                  Colecção Nós
+                </p>
+                <p className="mt-1 font-serif text-lg text-brown-800">O Nó da Herança</p>
+                <p className="mt-1 font-serif text-sm italic text-brown-500">
+                  &ldquo;Sara viu o véu. Mas há um nó que ficou por desatar.&rdquo;
+                </p>
+                <p className="mt-2 font-sans text-xs text-brown-400">
+                  Disponível ao completar o Espelho da Ilusão
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* NÓS - O Nó da Herança — DESBLOQUEADO */}
+        {hasMirrorsAccess && espelhoCompleto && (
+          <div className="mt-6 overflow-hidden rounded-2xl border border-[#c9a87c]/40 bg-gradient-to-br from-[#faf7f2] to-white shadow-sm">
             <div className="flex flex-col sm:flex-row">
               {/* Book cover */}
               <div className="flex items-center justify-center bg-gradient-to-br from-[#5a4d3e] to-[#3d3428] px-8 py-8 sm:w-48">
@@ -255,7 +281,7 @@ export default function MembroDashboard() {
                       <div className="flex items-center justify-between text-xs text-brown-400">
                         <span>
                           {completedNos === 0
-                            ? "Eco do Espelho da Ilusão"
+                            ? "Sara + Helena"
                             : completedNos === nosChapters.length
                               ? "Leitura completa"
                               : `${completedNos} de ${nosChapters.length} partes`}
@@ -277,7 +303,7 @@ export default function MembroDashboard() {
                   className="mt-5 inline-flex items-center justify-center rounded-full bg-[#c9a87c] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b8975b]"
                 >
                   {completedNos === 0
-                    ? "Começar a ler"
+                    ? "Desatar este nó"
                     : completedNos === nosChapters.length
                       ? "Reler desde o início"
                       : `Continuar — ${nextNosChapter.subtitle}`}

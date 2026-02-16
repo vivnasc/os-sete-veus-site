@@ -3,6 +3,7 @@
 import { use, useEffect, useState, useCallback, useRef } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { useRouter } from "next/navigation";
+import { chapters as espelhoChapters } from "@/data/ebook";
 import { chapters } from "@/data/no-heranca";
 import { supabase } from "@/lib/supabase";
 import InteractiveChecklist from "@/components/InteractiveChecklist";
@@ -71,7 +72,9 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
     setCompleted(true);
   }, [chapter, chapterKey]);
 
-  // Load completion state
+  const [espelhoCompleto, setEspelhoCompleto] = useState(false);
+
+  // Load completion state + espelho gate
   useEffect(() => {
     if (!chapter) return;
     const load = async () => {
@@ -79,14 +82,18 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
       const userId = session.data.session?.user?.id;
       if (!userId) return;
 
-      const { data } = await supabase
+      const { data: allProgress } = await supabase
         .from("reading_progress")
-        .select("completed")
-        .eq("user_id", userId)
-        .eq("chapter_slug", chapterKey)
-        .single();
+        .select("chapter_slug, completed")
+        .eq("user_id", userId);
 
-      if (data?.completed) setCompleted(true);
+      if (allProgress) {
+        const map: Record<string, boolean> = {};
+        allProgress.forEach((row) => { map[row.chapter_slug] = row.completed; });
+        if (map[chapterKey]) setCompleted(true);
+        // Check if all espelho chapters are complete
+        setEspelhoCompleto(espelhoChapters.every((ch) => map[ch.slug]));
+      }
     };
     load();
   }, [chapter, chapterKey]);
@@ -108,6 +115,20 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
   }, [completed, markAsRead]);
 
   if (authLoading || !hasMirrorsAccess) return null;
+
+  // Gate: redirect to Nós hub if Espelho not complete (admin bypasses)
+  if (!espelhoCompleto && !isAdmin) {
+    return (
+      <section className="px-6 py-16 text-center">
+        <p className="font-serif text-lg text-brown-600">
+          Este nó só se desata depois do Espelho da Ilusão.
+        </p>
+        <Link href="/membro/nos" className="mt-4 inline-block text-[#c9a87c] hover:underline">
+          Voltar
+        </Link>
+      </section>
+    );
+  }
 
   if (!chapter) {
     return (

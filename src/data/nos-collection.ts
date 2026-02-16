@@ -1,6 +1,19 @@
 // Colecção Nós — Metadados dos 7 livros relacionais
 // Cada Nó é o par relacional de um Espelho
-// Quem tem acesso a um Espelho, tem acesso ao Nó correspondente
+// Regra: Só lês o Nó se viveste o Espelho correspondente
+//
+// Modelo de venda:
+//   Espelho individual ($29) + Nó individual ($12) = $41
+//   Pack 3 Espelhos ($69) → 3 Nós incluídos
+//   Jornada Completa 7 Espelhos ($149) → Nós completo incluído
+//
+// O Nó desbloqueia ao completar o Espelho correspondente.
+// Não é upsell — é continuação emocional.
+
+export const NOS_PRICING = {
+  individual: { usd: 12, mt: 780, brl: 49, eur: 11 },
+  // Pack 3 e Jornada Completa: Nós incluído gratuitamente
+} as const;
 
 export type NosBook = {
   slug: string;
@@ -13,6 +26,10 @@ export type NosBook = {
   colorBg: string;
   status: "available" | "coming_soon";
   dataFile: string | null; // ficheiro de dados (null = ainda não escrito)
+  priceUSD: number;
+  priceMT: number;
+  priceBRL: number;
+  priceEUR: number;
 };
 
 export const nosCollection: NosBook[] = [
@@ -28,6 +45,10 @@ export const nosCollection: NosBook[] = [
     colorBg: "#faf7f2",
     status: "available",
     dataFile: "no-heranca",
+    priceUSD: 12,
+    priceMT: 780,
+    priceBRL: 49,
+    priceEUR: 11,
   },
   {
     slug: "no-do-silencio",
@@ -41,6 +62,10 @@ export const nosCollection: NosBook[] = [
     colorBg: "#f5f7f5",
     status: "coming_soon",
     dataFile: null,
+    priceUSD: 12,
+    priceMT: 780,
+    priceBRL: 49,
+    priceEUR: 11,
   },
   {
     slug: "no-da-divida",
@@ -54,6 +79,10 @@ export const nosCollection: NosBook[] = [
     colorBg: "#faf5f5",
     status: "coming_soon",
     dataFile: null,
+    priceUSD: 12,
+    priceMT: 780,
+    priceBRL: 49,
+    priceEUR: 11,
   },
   {
     slug: "no-do-reflexo",
@@ -67,6 +96,10 @@ export const nosCollection: NosBook[] = [
     colorBg: "#faf7f3",
     status: "coming_soon",
     dataFile: null,
+    priceUSD: 12,
+    priceMT: 780,
+    priceBRL: 49,
+    priceEUR: 11,
   },
   {
     slug: "no-da-corda",
@@ -80,6 +113,10 @@ export const nosCollection: NosBook[] = [
     colorBg: "#f3f6fa",
     status: "coming_soon",
     dataFile: null,
+    priceUSD: 12,
+    priceMT: 780,
+    priceBRL: 49,
+    priceEUR: 11,
   },
   {
     slug: "no-da-fome",
@@ -93,6 +130,10 @@ export const nosCollection: NosBook[] = [
     colorBg: "#faf5f8",
     status: "coming_soon",
     dataFile: null,
+    priceUSD: 12,
+    priceMT: 780,
+    priceBRL: 49,
+    priceEUR: 11,
   },
   {
     slug: "no-da-raiz",
@@ -106,6 +147,10 @@ export const nosCollection: NosBook[] = [
     colorBg: "#f7f5fa",
     status: "coming_soon",
     dataFile: null,
+    priceUSD: 12,
+    priceMT: 780,
+    priceBRL: 49,
+    priceEUR: 11,
   },
 ];
 
