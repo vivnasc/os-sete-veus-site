@@ -1,94 +1,122 @@
-// Colecção Nós — Metadados dos 7 livros
-// Cada Nó é o par relacional de um Espelho.
-// O Espelho mostra-te a ti. O Nó mostra-te a relação.
+// Colecção Nós — Metadados dos 7 livros relacionais
+// Cada Nó é o par relacional de um Espelho
+// Quem tem acesso a um Espelho, tem acesso ao Nó correspondente
 
 export type NosBook = {
-  id: number;
   slug: string;
+  number: number;
   title: string;
   subtitle: string;
-  pairedEspelho: string;
-  theme: string;
-  accentColor: string;
-  available: boolean;
+  espelhoSlug: string; // liga ao Espelho correspondente
+  description: string;
+  color: string;
+  colorBg: string;
+  status: "available" | "coming_soon";
+  dataFile: string | null; // ficheiro de dados (null = ainda não escrito)
 };
 
-export const nosCollectionMeta = {
-  title: "Colecção Nós",
-  subtitle: "O que se herda sem escritura",
-  description:
-    "Sete histórias sobre os fios invisíveis que nos ligam a quem amamos. Cada Nó é a continuação emocional de um Espelho — a mesma ferida, vista pela relação.",
-};
-
-export const nosBooks: NosBook[] = [
+export const nosCollection: NosBook[] = [
   {
-    id: 1,
-    slug: "no-heranca",
+    slug: "no-da-heranca",
+    number: 1,
     title: "O Nó da Herança",
     subtitle: "O que a mãe guardou, a filha carregou",
-    pairedEspelho: "Espelho da Ilusão",
-    theme: "Herança e silêncio entre mãe e filha",
-    accentColor: "#c9a87c",
-    available: true,
+    espelhoSlug: "veu-da-ilusao",
+    description:
+      "Sara vai à casa de Helena. Não para visitar — para perguntar. O que a mãe viu durante anos e nunca disse? O que se herda sem inventário? Este nó puxa o fio entre mãe e filha.",
+    color: "#c9a87c",
+    colorBg: "#faf7f2",
+    status: "available",
+    dataFile: "no-heranca",
   },
   {
-    id: 2,
-    slug: "no-silencio",
+    slug: "no-do-silencio",
+    number: 2,
     title: "O Nó do Silêncio",
-    subtitle: "Quando o amor se diz calando",
-    pairedEspelho: "Espelho do Medo",
-    theme: "O medo que se transmite entre quem se ama",
-    accentColor: "#8b9b8e",
-    available: false,
+    subtitle: "O que não se diz também se transmite",
+    espelhoSlug: "veu-do-medo",
+    description:
+      "Rui e Ana amam-se. Mas há algo entre eles que nenhum dos dois nomeia. O medo transformou-se em silêncio — e o silêncio, em distância. Este nó puxa o fio entre quem ama e quem cala.",
+    color: "#8b9b8e",
+    colorBg: "#f5f7f5",
+    status: "coming_soon",
+    dataFile: null,
   },
   {
-    id: 3,
-    slug: "no-divida",
+    slug: "no-da-divida",
+    number: 3,
     title: "O Nó da Dívida",
-    subtitle: "O que se deve a quem nunca pediu",
-    pairedEspelho: "Espelho do Desejo",
-    theme: "Desejo sacrificado em nome da relação",
-    accentColor: "#c08aaa",
-    available: false,
+    subtitle: "Quem te disse que devias tanto?",
+    espelhoSlug: "veu-da-culpa",
+    description:
+      "Marta carrega uma dívida que ninguém lhe cobrou. A culpa de querer mais, de precisar de espaço, de não ser suficiente para todos. Este nó puxa o fio entre dar e perder-se.",
+    color: "#b07a7a",
+    colorBg: "#faf5f5",
+    status: "coming_soon",
+    dataFile: null,
   },
   {
-    id: 4,
-    slug: "no-reflexo",
+    slug: "no-do-reflexo",
+    number: 4,
     title: "O Nó do Reflexo",
-    subtitle: "Quando te vês no outro e não reconheces",
-    pairedEspelho: "Espelho da Culpa",
-    theme: "Culpa partilhada e projecções mútuas",
-    accentColor: "#8aaaca",
-    available: false,
+    subtitle: "Quem és quando ninguém espera nada?",
+    espelhoSlug: "veu-da-identidade",
+    description:
+      "Inês sempre soube quem era — até ao dia em que os outros pararam de lhe dizer. Sem papel para desempenhar, o que sobra? Este nó puxa o fio entre ser e parecer.",
+    color: "#ab9375",
+    colorBg: "#faf7f3",
+    status: "coming_soon",
+    dataFile: null,
   },
   {
-    id: 5,
-    slug: "no-distancia",
-    title: "O Nó da Distância",
-    subtitle: "Perto demais para ver, longe demais para sentir",
-    pairedEspelho: "Espelho da Pressa",
-    theme: "Relações que se perdem na velocidade de viver",
-    accentColor: "#9aac8e",
-    available: false,
+    slug: "no-da-corda",
+    number: 5,
+    title: "O Nó da Corda",
+    subtitle: "Segurar não é o mesmo que cuidar",
+    espelhoSlug: "veu-do-controlo",
+    description:
+      "Teresa segura tudo. A família, o trabalho, as emoções dos outros. Mas a corda está a partir. Este nó puxa o fio entre proteger e sufocar.",
+    color: "#8aaaca",
+    colorBg: "#f3f6fa",
+    status: "coming_soon",
+    dataFile: null,
   },
   {
-    id: 6,
-    slug: "no-comparacao",
-    title: "O Nó da Comparação",
-    subtitle: "Quando medes o amor pelo que os outros têm",
-    pairedEspelho: "Espelho da Comparação",
-    theme: "Relações deformadas pela comparação",
-    accentColor: "#ab9375",
-    available: false,
+    slug: "no-da-fome",
+    number: 6,
+    title: "O Nó da Fome",
+    subtitle: "O vazio que nenhuma coisa preenche",
+    espelhoSlug: "veu-do-desejo",
+    description:
+      "Carla compra, acumula, preenche. Mas a fome continua. Talvez porque não é fome de coisas. Este nó puxa o fio entre ter e ser.",
+    color: "#c08aaa",
+    colorBg: "#faf5f8",
+    status: "coming_soon",
+    dataFile: null,
   },
   {
-    id: 7,
-    slug: "no-controlo",
-    title: "O Nó do Controlo",
-    subtitle: "Quando segurar é a única forma de amar que conheces",
-    pairedEspelho: "Espelho do Controlo",
-    theme: "O controlo como linguagem de amor",
-    accentColor: "#baaacc",
-    available: false,
+    slug: "no-da-raiz",
+    number: 7,
+    title: "O Nó da Raiz",
+    subtitle: "Para pertencer, primeiro tens de te ter",
+    espelhoSlug: "veu-da-separacao",
+    description:
+      "Lúcia fugiu de si mesma para caber no mundo dos outros. Agora, finalmente, volta. Este nó puxa o fio entre pertencer e existir.",
+    color: "#baaacc",
+    colorBg: "#f7f5fa",
+    status: "coming_soon",
+    dataFile: null,
   },
 ];
+
+export function getNosBook(slug: string) {
+  return nosCollection.find((n) => n.slug === slug);
+}
+
+export function getNosForEspelho(espelhoSlug: string) {
+  return nosCollection.find((n) => n.espelhoSlug === espelhoSlug);
+}
+
+export function getAvailableNos() {
+  return nosCollection.filter((n) => n.status === "available");
+}
