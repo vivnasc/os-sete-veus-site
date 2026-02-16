@@ -32,6 +32,7 @@ export default function ComprarPage() {
       inclui: [
         'Os 7 Espelhos completos',
         '7 capítulos de ficção por Espelho',
+        'Colecção Nós incluída (ficção relacional)',
         'Práticas de respiração guiada',
         'Diário de reflexão pessoal',
         'Acesso vitalício no site',
@@ -405,6 +406,16 @@ export default function ComprarPage() {
               <h3 className="font-bold text-brown-900 mb-2">Posso comprar mais experiências depois?</h3>
               <p className="text-brown-600">
                 Claro! Podes começar com um véu individual e comprar outros mais tarde. Mas a coleção completa tem 30% de desconto.
+              </p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm">
+              <h3 className="font-bold text-brown-900 mb-2">O que são os Nós?</h3>
+              <p className="text-brown-600">
+                A colecção Nós é a segunda dimensão dos Espelhos. São ficções relacionais
+                que continuam as personagens, explorando os laços entre mãe e filha,
+                entre quem ama e quem se cala. Cada Nó é incluído automaticamente
+                com o seu Espelho e desbloqueia-se ao completar a leitura. O primeiro
+                disponível é &ldquo;O Nó da Herança&rdquo;, par do Espelho da Ilusão.
               </p>
             </div>
           </div>

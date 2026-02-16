@@ -209,6 +209,69 @@ export default function Home() {
         </div>
       </section>
 
+      {/* NÓS — ficção relacional */}
+      <section className="bg-cream px-6 py-24">
+        <div className="mx-auto max-w-5xl">
+          <ScrollReveal>
+            <p className="text-center font-sans text-[0.7rem] uppercase tracking-[0.25em] text-[#c9a87c]">
+              A segunda dimensão
+            </p>
+            <h2 className="mt-4 text-center font-serif text-3xl text-brown-900 sm:text-4xl">
+              Colecção Nós
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-center leading-relaxed text-brown-600">
+              O Espelho mostra-te a ti. O Nó mostra-te a relação.
+              Sete ficções sobre os fios invisíveis que nos ligam a quem amamos.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.2} variant="scale">
+            <div className="mx-auto mt-12 max-w-2xl overflow-hidden rounded-2xl border-2 border-[#c9a87c]/20 bg-white shadow-sm transition-all hover:border-[#c9a87c]/40 hover:shadow-lg">
+              <div className="border-b border-[#c9a87c]/10 bg-gradient-to-r from-[#c9a87c]/5 to-transparent px-8 py-6">
+                <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-[#c9a87c]">
+                  Primeiro da colecção · Par do Espelho da Ilusão
+                </p>
+                <h3 className="mt-2 font-serif text-2xl text-brown-900">O Nó da Herança</h3>
+                <p className="mt-1 font-serif text-sm italic text-brown-500">
+                  O que a mãe guardou, a filha carregou
+                </p>
+              </div>
+              <div className="px-8 py-6">
+                <p className="font-serif text-sm leading-relaxed text-brown-600">
+                  Sara viu o véu. Mas há um nó que ficou por desatar. O que aconteceu entre ela e a mãe?
+                  A história de Helena e Sara continua nesta ficção relacional sobre silêncios herdados,
+                  gestos que dizem o que as palavras não conseguem, e o momento em que duas mulheres
+                  decidem, finalmente, falar.
+                </p>
+                <p className="mt-4 text-xs text-brown-400">
+                  7 capítulos · Incluído com o Espelho da Ilusão · Desbloqueia-se ao completar o Espelho
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.3}>
+            <div className="mt-10 grid gap-4 sm:grid-cols-3">
+              {[
+                { title: "O Nó do Silêncio", subtitle: "Quando o amor se diz calando", color: "#8b9b8e" },
+                { title: "O Nó da Dívida", subtitle: "O que se deve a quem nunca pediu", color: "#c08aaa" },
+                { title: "O Nó do Reflexo", subtitle: "Quando te vês no outro e não reconheces", color: "#8aaaca" },
+              ].map((no) => (
+                <div
+                  key={no.title}
+                  className="rounded-xl border border-brown-100 bg-white/50 p-5 text-center"
+                >
+                  <div className="mx-auto mb-2 h-1 w-8 rounded-full" style={{ backgroundColor: no.color + "60" }} />
+                  <h4 className="font-serif text-base text-brown-700">{no.title}</h4>
+                  <p className="mt-1 text-xs italic text-brown-400">{no.subtitle}</p>
+                  <p className="mt-2 text-[0.65rem] text-brown-300">Em breve</p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Author teaser — cream section with photo */}
       <section className="bg-cream px-6 py-24">
         <div className="mx-auto max-w-4xl">

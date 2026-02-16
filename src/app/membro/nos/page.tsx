@@ -3,20 +3,25 @@
 import { useEffect, useState, useCallback } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { useRouter } from "next/navigation";
-import { chapters, bookMeta } from "@/data/ebook";
+import { chapters, bookMeta } from "@/data/no-heranca";
+import { chapters as espelhoChapters } from "@/data/ebook";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 
 const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
 
-export default function LeituraPage() {
+export default function NosLeituraPage() {
   const { user, profile, loading: authLoading } = useAuth();
   const router = useRouter();
   const [progress, setProgress] = useState<Record<string, boolean>>({});
+  const [espelhoProgress, setEspelhoProgress] = useState<Record<string, boolean>>({});
   const [loading, setLoading] = useState(true);
 
   const isAdmin = profile?.is_admin || AUTHOR_EMAILS.includes(user?.email || "");
   const hasMirrorsAccess = isAdmin || profile?.has_mirrors_access || false;
+
+  // Check if user completed all Espelho da Ilusão chapters
+  const espelhoCompleto = isAdmin || espelhoChapters.every((ch) => espelhoProgress[ch.slug]);
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -40,11 +45,18 @@ export default function LeituraPage() {
       .eq("user_id", userId);
 
     if (data) {
-      const map: Record<string, boolean> = {};
+      const nosMap: Record<string, boolean> = {};
+      const espelhoMap: Record<string, boolean> = {};
       data.forEach((row) => {
-        map[row.chapter_slug] = row.completed;
+        // Nós chapters are prefixed with "nos-" in reading_progress
+        if (row.chapter_slug.startsWith("nos-")) {
+          nosMap[row.chapter_slug.replace("nos-", "")] = row.completed;
+        } else {
+          espelhoMap[row.chapter_slug] = row.completed;
+        }
       });
-      setProgress(map);
+      setProgress(nosMap);
+      setEspelhoProgress(espelhoMap);
     }
     setLoading(false);
   }, []);
@@ -57,13 +69,66 @@ export default function LeituraPage() {
 
   if (authLoading || !hasMirrorsAccess) return null;
 
+  // Gate: must complete Espelho da Ilusão first
+  if (!espelhoCompleto) {
+    const espelhoCompletedCount = espelhoChapters.filter((ch) => espelhoProgress[ch.slug]).length;
+    const espelhoPercent = Math.round((espelhoCompletedCount / espelhoChapters.length) * 100);
+
+    return (
+      <section className="px-6 py-12">
+        <div className="mx-auto max-w-2xl">
+          <div className="mb-10 text-center">
+            <p className="font-sans text-[0.65rem] uppercase tracking-[0.25em] text-[#c9a87c]">
+              Colecção Nós
+            </p>
+            <h1 className="mt-3 font-serif text-4xl text-brown-900">{bookMeta.title}</h1>
+            <p className="mt-2 font-serif text-lg italic text-brown-500">{bookMeta.subtitle}</p>
+          </div>
+
+          <div className="rounded-2xl border-2 border-dashed border-brown-200 bg-white p-8 text-center">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-brown-50 text-3xl">
+              🔒
+            </div>
+            <h2 className="font-serif text-xl text-brown-800">
+              Este Nó desata-se depois do Espelho
+            </h2>
+            <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-brown-500">
+              O Nó da Herança é a continuação emocional do Espelho da Ilusão.
+              Para o leres, completa primeiro todos os capítulos do Espelho.
+            </p>
+
+            <div className="mx-auto mt-6 max-w-xs">
+              <div className="flex items-center justify-between text-xs text-brown-400">
+                <span>Espelho da Ilusão</span>
+                <span>{espelhoPercent}%</span>
+              </div>
+              <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-brown-50">
+                <div
+                  className="h-full rounded-full bg-gradient-to-r from-[#c9b896] to-[#7a8c6e] transition-all duration-1000"
+                  style={{ width: `${espelhoPercent}%` }}
+                />
+              </div>
+            </div>
+
+            <Link
+              href="/membro/leitura"
+              className="mt-6 inline-block rounded-full bg-[#c9b896] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b8a785]"
+            >
+              Continuar o Espelho da Ilusão
+            </Link>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="px-6 py-12">
       <div className="mx-auto max-w-2xl">
         {/* Book header */}
         <div className="mb-10 text-center">
-          <p className="font-sans text-[0.65rem] uppercase tracking-[0.25em] text-brown-400">
-            {bookMeta.author}
+          <p className="font-sans text-[0.65rem] uppercase tracking-[0.25em] text-[#c9a87c]">
+            Colecção Nós · Ficção Relacional
           </p>
           <h1 className="mt-3 font-serif text-4xl text-brown-900">{bookMeta.title}</h1>
           <p className="mt-2 font-serif text-lg italic text-brown-500">{bookMeta.subtitle}</p>
@@ -90,14 +155,14 @@ export default function LeituraPage() {
           </div>
           <div className="mt-2 h-2 overflow-hidden rounded-full bg-brown-50">
             <div
-              className="h-full rounded-full bg-gradient-to-r from-[#c9b896] to-[#7a8c6e] transition-all duration-1000"
+              className="h-full rounded-full bg-gradient-to-r from-[#c9a87c] to-[#b8a088] transition-all duration-1000"
               style={{ width: `${(completedCount / chapters.length) * 100}%` }}
             />
           </div>
         </div>
 
         {/* Intro text */}
-        <div className="mb-8 rounded-2xl border-l-[3px] border-[#c9b896] bg-white px-6 py-5 shadow-sm">
+        <div className="mb-8 rounded-2xl border-l-[3px] border-[#c9a87c] bg-white px-6 py-5 shadow-sm">
           {bookMeta.intro.map((p, i) => (
             <p key={i} className="mt-3 font-serif text-sm leading-relaxed text-brown-600 first:mt-0">
               {p}
@@ -117,7 +182,7 @@ export default function LeituraPage() {
             return (
               <Link
                 key={chapter.slug}
-                href={isAccessible ? `/membro/leitura/${chapter.slug}` : "#"}
+                href={isAccessible ? `/membro/nos/${chapter.slug}` : "#"}
                 className={`group flex items-center gap-4 rounded-2xl border bg-white p-4 shadow-sm transition-all ${
                   isAccessible
                     ? "border-brown-100 hover:shadow-md"
@@ -128,7 +193,7 @@ export default function LeituraPage() {
                 <span
                   className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-serif text-sm font-bold text-white transition-transform group-hover:scale-105"
                   style={{
-                    backgroundColor: isCompleted ? "#7a8c6e" : chapter.accentColor,
+                    backgroundColor: isCompleted ? "#b8a088" : chapter.accentColor,
                     opacity: isAccessible ? 1 : 0.4,
                   }}
                 >
@@ -158,53 +223,27 @@ export default function LeituraPage() {
           })}
         </div>
 
-        {/* Nó da Herança teaser — appears after completing all chapters */}
-        {completedCount === chapters.length && (
-          <div className="mt-10 rounded-2xl border-2 border-[#c9a87c]/30 bg-white p-6 text-center shadow-sm">
-            <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-[#c9a87c]">
-              Colecção Nós
-            </p>
-            <h3 className="mt-2 font-serif text-xl text-brown-900">O Nó da Herança</h3>
-            <p className="mt-1 font-serif text-sm italic text-brown-500">
-              O que a mãe guardou, a filha carregou
-            </p>
-            <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-brown-500">
-              Sara viu o véu. Mas há um nó que ficou por desatar.
-              O que aconteceu entre ela e a mãe?
-            </p>
-            <Link
-              href="/membro/nos"
-              className="mt-5 inline-block rounded-full bg-[#c9a87c] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b89a6c]"
-            >
-              Começar O Nó da Herança
-            </Link>
-          </div>
-        )}
-
-        {/* Nó teaser locked — appears when reading but not complete */}
-        {completedCount > 0 && completedCount < chapters.length && (
-          <div className="mt-10 rounded-2xl border-2 border-dashed border-brown-200 bg-white/50 p-6 text-center">
-            <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-brown-400">
-              🔒 Colecção Nós
-            </p>
-            <h3 className="mt-2 font-serif text-lg text-brown-700">O Nó da Herança</h3>
-            <p className="mt-1 text-xs text-brown-400">
-              Disponível ao completar todos os capítulos deste Espelho
-            </p>
-          </div>
-        )}
-
         {/* Espelho link (only show if some chapters completed) */}
         {completedCount > 0 && (
           <div className="mt-10 text-center">
             <Link
               href="/membro/espelho"
-              className="inline-block rounded-full border border-[#7a8c6e] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-[#7a8c6e] transition-all hover:bg-[#7a8c6e] hover:text-white"
+              className="inline-block rounded-full border border-[#c9a87c] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-[#c9a87c] transition-all hover:bg-[#c9a87c] hover:text-white"
             >
               O Teu Espelho — Ver as tuas reflexões
             </Link>
           </div>
         )}
+
+        {/* Back to Espelho */}
+        <div className="mt-6 text-center">
+          <Link
+            href="/membro/leitura"
+            className="font-sans text-xs text-brown-400 transition-colors hover:text-brown-600"
+          >
+            &larr; Voltar ao Espelho da Ilusão
+          </Link>
+        </div>
       </div>
     </section>
   );
