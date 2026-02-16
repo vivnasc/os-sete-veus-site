@@ -31,8 +31,8 @@ export default function ComprarPage() {
       destaque: '🌈 MELHOR OFERTA - Poupa 30%!',
       inclui: [
         'Os 7 Espelhos completos',
+        'Todos os 7 Nós incluídos (ficção relacional)',
         '7 capítulos de ficção por Espelho',
-        'Colecção Nós incluída (ficção relacional)',
         'Práticas de respiração guiada',
         'Diário de reflexão pessoal',
         'Acesso vitalício no site',
@@ -70,7 +70,7 @@ export default function ComprarPage() {
         'Espelho da Ilusão',
         'Espelho do Medo',
         'Espelho do Desejo',
-        'Nós incluídos (ficção relacional)',
+        '3 Nós incluídos (ficção relacional)',
         'Práticas guiadas',
         'Diário de reflexão',
       ],
@@ -86,6 +86,7 @@ export default function ComprarPage() {
       inclui: [
         'Espelho da Culpa',
         'Espelho da Pressa',
+        '2 Nós incluídos (ficção relacional)',
         'Práticas guiadas',
         'Diário de reflexão',
       ],
@@ -101,6 +102,7 @@ export default function ComprarPage() {
       inclui: [
         'Espelho da Comparação',
         'Espelho do Controlo',
+        '2 Nós incluídos (ficção relacional)',
         'Práticas guiadas',
         'Diário de reflexão',
       ],
@@ -325,6 +327,25 @@ export default function ComprarPage() {
           </div>
         </section>
 
+        {/* Callout Nós */}
+        <section className="mx-auto mb-16 max-w-2xl">
+          <div className="rounded-2xl border border-[#c9a87c]/30 bg-[#c9a87c]/[0.04] px-6 py-6 text-center">
+            <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-[#c9a87c]">
+              Ficção relacional
+            </p>
+            <p className="mt-3 font-serif text-lg text-brown-800">
+              Cada Espelho tem um Nó
+            </p>
+            <p className="mx-auto mt-2 max-w-md font-serif text-sm leading-relaxed text-brown-600">
+              O Espelho olha para dentro. O Nó olha para o espaço entre duas pessoas.
+              Ao completar um Espelho, o seu Nó desbloqueia — como continuação natural da história.
+            </p>
+            <p className="mt-3 font-sans text-xs text-brown-400">
+              Incluído nos Bundles e na Coleção Completa. Individual: $12 USD / 780 MZN.
+            </p>
+          </div>
+        </section>
+
         {/* Testemunhos */}
         <section className="mt-20 mb-16">
           <h2 className="text-3xl font-serif text-brown-900 mb-4 text-center">
@@ -413,11 +434,7 @@ export default function ComprarPage() {
             <div className="bg-white rounded-xl p-6 shadow-sm">
               <h3 className="font-bold text-brown-900 mb-2">O que são os Nós?</h3>
               <p className="text-brown-600">
-                A colecção Nós é a segunda dimensão dos Espelhos. São ficções relacionais
-                que continuam as personagens, explorando os laços entre mãe e filha,
-                entre quem ama e quem se cala. Cada Nó é incluído automaticamente
-                com o seu Espelho e desbloqueia-se ao completar a leitura. O primeiro
-                disponível é &ldquo;O Nó da Herança&rdquo;, par do Espelho da Ilusão.
+                Cada Espelho tem um par relacional chamado Nó. O Espelho olha para dentro; o Nó olha para o que se passa entre duas pessoas. Ao completar um Espelho, o Nó correspondente desbloqueia automaticamente. Nos Bundles e na Coleção Completa, os Nós estão incluídos.
               </p>
             </div>
           </div>

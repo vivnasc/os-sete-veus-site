@@ -209,64 +209,68 @@ export default function Home() {
         </div>
       </section>
 
-      {/* NÓS — ficção relacional */}
+      {/* NOS — relational dimension teaser */}
       <section className="bg-cream px-6 py-24">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-4xl">
           <ScrollReveal>
-            <p className="text-center font-sans text-[0.7rem] uppercase tracking-[0.25em] text-[#c9a87c]">
-              A segunda dimensão
+            <p className="text-center font-sans text-[0.65rem] uppercase tracking-[0.25em] text-brown-400">
+              A segunda dimensao ~ ficcao relacional
             </p>
-            <h2 className="mt-4 text-center font-serif text-3xl text-brown-900 sm:text-4xl">
-              Colecção Nós
+            <h2 className="mt-3 text-center font-serif text-3xl text-brown-900 sm:text-4xl">
+              NOS
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-center leading-relaxed text-brown-600">
-              O Espelho mostra-te a ti. O Nó mostra-te a relação.
-              Sete ficções sobre os fios invisíveis que nos ligam a quem amamos.
+            <p className="mx-auto mt-4 max-w-xl text-center font-serif text-base leading-relaxed text-brown-600">
+              O que acontece entre duas pessoas quando um veu cai.
+              Cada Espelho tem um No — a historia que se desata entre quem acorda e quem ficou a espera.
             </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.2} variant="scale">
-            <div className="mx-auto mt-12 max-w-2xl overflow-hidden rounded-2xl border-2 border-[#c9a87c]/20 bg-white shadow-sm transition-all hover:border-[#c9a87c]/40 hover:shadow-lg">
-              <div className="border-b border-[#c9a87c]/10 bg-gradient-to-r from-[#c9a87c]/5 to-transparent px-8 py-6">
-                <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-[#c9a87c]">
-                  Primeiro da colecção · Par do Espelho da Ilusão
-                </p>
-                <h3 className="mt-2 font-serif text-2xl text-brown-900">O Nó da Herança</h3>
-                <p className="mt-1 font-serif text-sm italic text-brown-500">
-                  O que a mãe guardou, a filha carregou
-                </p>
-              </div>
-              <div className="px-8 py-6">
-                <p className="font-serif text-sm leading-relaxed text-brown-600">
-                  Sara viu o véu. Mas há um nó que ficou por desatar. O que aconteceu entre ela e a mãe?
-                  A história de Helena e Sara continua nesta ficção relacional sobre silêncios herdados,
-                  gestos que dizem o que as palavras não conseguem, e o momento em que duas mulheres
-                  decidem, finalmente, falar.
-                </p>
-                <p className="mt-4 text-xs text-brown-400">
-                  7 capítulos · Incluído com o Espelho da Ilusão · Desbloqueia-se ao completar o Espelho
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.3}>
-            <div className="mt-10 grid gap-4 sm:grid-cols-3">
-              {[
-                { title: "O Nó do Silêncio", subtitle: "Quando o amor se diz calando", color: "#8b9b8e" },
-                { title: "O Nó da Dívida", subtitle: "O que se deve a quem nunca pediu", color: "#c08aaa" },
-                { title: "O Nó do Reflexo", subtitle: "Quando te vês no outro e não reconheces", color: "#8aaaca" },
-              ].map((no) => (
-                <div
-                  key={no.title}
-                  className="rounded-xl border border-brown-100 bg-white/50 p-5 text-center"
-                >
-                  <div className="mx-auto mb-2 h-1 w-8 rounded-full" style={{ backgroundColor: no.color + "60" }} />
-                  <h4 className="font-serif text-base text-brown-700">{no.title}</h4>
-                  <p className="mt-1 text-xs italic text-brown-400">{no.subtitle}</p>
-                  <p className="mt-2 text-[0.65rem] text-brown-300">Em breve</p>
+          <div className="mx-auto mt-12 max-w-3xl">
+            <ScrollReveal delay={0.15} variant="fadeUp">
+              <div className="rounded-2xl border border-brown-200 bg-white p-8 shadow-sm">
+                <div className="flex items-start gap-4">
+                  <span className="mt-1 font-serif text-2xl text-brown-300">~</span>
+                  <div>
+                    <h3 className="font-serif text-xl text-brown-900">O No da Heranca</h3>
+                    <p className="mt-1 font-serif text-sm italic text-brown-500">O que a mae guardou, a filha carregou</p>
+                    <p className="mt-3 leading-relaxed text-brown-600">
+                      Sara viu o veu. Mas ha um no que ficou por desatar.
+                      A mae sempre soube. Esperou anos. Agora que Sara acordou, Helena tem algo para lhe dizer.
+                    </p>
+                    <p className="mt-3 text-sm text-sage">Disponivel ao completar o Espelho da Ilusao</p>
+                  </div>
                 </div>
-              ))}
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.3} variant="fadeUp">
+              <div className="mt-4 grid grid-cols-3 gap-3">
+                {[
+                  { title: "No do Silencio", veu: "Medo" },
+                  { title: "No da Divida", veu: "Culpa" },
+                  { title: "No do Reflexo", veu: "Identidade" },
+                ].map((no) => (
+                  <div key={no.title} className="rounded-xl border border-brown-100 bg-white/50 p-4 text-center">
+                    <p className="font-serif text-sm text-brown-700">{no.title}</p>
+                    <p className="mt-1 text-[0.65rem] text-brown-400">Veu: {no.veu}</p>
+                    <p className="mt-1 text-[0.6rem] italic text-brown-300">Em breve</p>
+                  </div>
+                ))}
+              </div>
+            </ScrollReveal>
+          </div>
+
+          <ScrollReveal delay={0.4}>
+            <div className="mt-10 text-center">
+              <p className="text-sm text-brown-500">
+                Nos individual: 780 MZN / $12 USD — incluido nos pacotes de 3 e na Jornada Completa
+              </p>
+              <Link
+                href="/comprar/espelhos"
+                className="mt-4 inline-block font-sans text-sm font-medium text-sage transition-colors hover:text-sage-dark"
+              >
+                Ver pacotes com Nos incluido &rarr;
+              </Link>
             </div>
           </ScrollReveal>
         </div>
@@ -413,6 +417,46 @@ export default function Home() {
               </ScrollReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Ecos — community teaser */}
+      <section className="bg-gradient-to-b from-cream to-cream-dark px-6 py-24">
+        <div className="mx-auto max-w-4xl">
+          <ScrollReveal>
+            <p className="text-center font-sans text-[0.65rem] uppercase tracking-[0.25em] text-sage">
+              A terceira dimensao
+            </p>
+            <h2 className="mt-3 text-center font-serif text-3xl text-brown-900 sm:text-4xl">
+              Ecos
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-center font-serif text-base leading-relaxed text-brown-600">
+              Onde as vozes se encontram. Reflexoes anonimas, consciencia colectiva,
+              contemplacao partilhada. Nao es a unica a sentir o que sentes.
+            </p>
+          </ScrollReveal>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { nome: "Ecos", desc: "Reflexoes anonimas de quem caminha ao teu lado" },
+              { nome: "Mare", desc: "A consciencia colectiva de todas as leitoras" },
+              { nome: "Circulo", desc: "Espelho partilhado entre vozes que se reconhecem" },
+              { nome: "Fogueira", desc: "Espaco de contemplacao e presenca silenciosa" },
+            ].map((espaco, i) => (
+              <ScrollReveal key={espaco.nome} delay={0.1 * i} variant="fadeUp">
+                <div className="rounded-xl border border-brown-100 bg-white p-5 text-center shadow-sm">
+                  <h3 className="font-serif text-lg text-brown-900">{espaco.nome}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-brown-500">{espaco.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <ScrollReveal delay={0.3}>
+            <p className="mx-auto mt-10 max-w-md text-center text-sm italic text-brown-400">
+              Incluida em todas as experiencias. Porque transformacao nao acontece sozinha.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 

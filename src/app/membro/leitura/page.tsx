@@ -54,6 +54,8 @@ export default function LeituraPage() {
   }, [loadProgress]);
 
   const completedCount = chapters.filter((ch) => progress[ch.slug]).length;
+  const espelhoCompleto = completedCount === chapters.length;
+  const progressPercent = Math.round((completedCount / chapters.length) * 100);
 
   if (authLoading || !hasMirrorsAccess) return null;
 
@@ -80,18 +82,18 @@ export default function LeituraPage() {
                 ? "A carregar..."
                 : completedCount === 0
                   ? "Pronta para começar?"
-                  : completedCount === chapters.length
+                  : espelhoCompleto
                     ? "Leitura completa"
                     : `${completedCount} de ${chapters.length} capítulos`}
             </span>
             <span className="font-sans text-xs text-brown-400">
-              {Math.round((completedCount / chapters.length) * 100)}%
+              {progressPercent}%
             </span>
           </div>
           <div className="mt-2 h-2 overflow-hidden rounded-full bg-brown-50">
             <div
               className="h-full rounded-full bg-gradient-to-r from-[#c9b896] to-[#7a8c6e] transition-all duration-1000"
-              style={{ width: `${(completedCount / chapters.length) * 100}%` }}
+              style={{ width: `${progressPercent}%` }}
             />
           </div>
         </div>
@@ -158,45 +160,66 @@ export default function LeituraPage() {
           })}
         </div>
 
-        {/* Nó da Herança teaser — appears after completing all chapters */}
-        {completedCount === chapters.length && (
-          <div className="mt-10 rounded-2xl border-2 border-[#c9a87c]/30 bg-white p-6 text-center shadow-sm">
-            <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-[#c9a87c]">
-              Colecção Nós
-            </p>
-            <h3 className="mt-2 font-serif text-xl text-brown-900">O Nó da Herança</h3>
-            <p className="mt-1 font-serif text-sm italic text-brown-500">
-              O que a mãe guardou, a filha carregou
-            </p>
-            <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-brown-500">
-              Sara viu o véu. Mas há um nó que ficou por desatar.
-              O que aconteceu entre ela e a mãe?
-            </p>
-            <Link
-              href="/membro/nos"
-              className="mt-5 inline-block rounded-full bg-[#c9a87c] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b89a6c]"
-            >
-              Começar O Nó da Herança
-            </Link>
+        {/* ── NÓ DA HERANÇA — O momento mágico ── */}
+        {!loading && !espelhoCompleto && completedCount > 0 && (
+          /* TRANCADO — teaser enquanto lê o Espelho */
+          <div className="mt-8 overflow-hidden rounded-2xl border-2 border-dashed border-[#c9a87c]/30 bg-[#c9a87c]/[0.03] p-6">
+            <div className="flex items-start gap-4">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#c9a87c]/10 text-[#c9a87c]">
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+              </span>
+              <div>
+                <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-[#c9a87c]">
+                  Colecção Nós
+                </p>
+                <p className="mt-1 font-serif text-lg text-brown-800">O Nó da Herança</p>
+                <p className="mt-2 font-serif text-sm italic leading-relaxed text-brown-500">
+                  &ldquo;Sara viu o véu. Mas há um nó que ficou por desatar.
+                  O que aconteceu entre ela e a mãe?&rdquo;
+                </p>
+                <p className="mt-3 font-sans text-xs text-brown-400">
+                  Disponível ao completar este espelho.
+                </p>
+              </div>
+            </div>
           </div>
         )}
 
-        {/* Nó teaser locked — appears when reading but not complete */}
-        {completedCount > 0 && completedCount < chapters.length && (
-          <div className="mt-10 rounded-2xl border-2 border-dashed border-brown-200 bg-white/50 p-6 text-center">
-            <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-brown-400">
-              🔒 Colecção Nós
-            </p>
-            <h3 className="mt-2 font-serif text-lg text-brown-700">O Nó da Herança</h3>
-            <p className="mt-1 text-xs text-brown-400">
-              Disponível ao completar todos os capítulos deste Espelho
-            </p>
+        {!loading && espelhoCompleto && (
+          /* DESBLOQUEADO — o Espelho está completo */
+          <div className="mt-8 overflow-hidden rounded-2xl border border-[#c9a87c]/40 bg-gradient-to-br from-[#faf7f2] to-white p-6 shadow-sm">
+            <div className="text-center">
+              <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-[#7a8c6e]">
+                &#10003; Espelho da Ilusão — Completo
+              </p>
+            </div>
+            <div className="mt-5 flex items-start gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#c9a87c]/15">
+                <span className="font-serif text-xl text-[#c9a87c]">&#8734;</span>
+              </div>
+              <div className="flex-1">
+                <p className="font-serif text-lg text-brown-800">O Nó da Herança</p>
+                <p className="mt-0.5 font-sans text-xs text-[#c9a87c]">Sara + Helena</p>
+                <p className="mt-2 font-serif text-sm leading-relaxed text-brown-600">
+                  &ldquo;A mãe sempre viu. Esperou anos.
+                  Agora que Sara acordou, Helena tem algo para lhe dizer.&rdquo;
+                </p>
+                <Link
+                  href="/membro/nos"
+                  className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#c9a87c] px-5 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b8975b]"
+                >
+                  Desatar este nó &rarr;
+                </Link>
+              </div>
+            </div>
           </div>
         )}
 
         {/* Espelho link (only show if some chapters completed) */}
         {completedCount > 0 && (
-          <div className="mt-10 text-center">
+          <div className="mt-6 text-center">
             <Link
               href="/membro/espelho"
               className="inline-block rounded-full border border-[#7a8c6e] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-[#7a8c6e] transition-all hover:bg-[#7a8c6e] hover:text-white"

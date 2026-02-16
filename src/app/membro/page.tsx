@@ -4,7 +4,7 @@ import { useAuth } from "@/components/AuthProvider";
 import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { chapters } from "@/data/ebook";
-import { chapters as nosChapters, bookMeta as nosMeta } from "@/data/no-heranca";
+import { chapters as nosChapters } from "@/data/no-heranca";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 import Image from "next/image";
@@ -80,6 +80,8 @@ export default function MembroDashboard() {
 
   // Find next unread chapter
   const nextChapter = chapters.find((ch) => !readingProgress[ch.slug]) || chapters[0];
+  const completedNos = nosCompletedChapters;
+  const nosPercent = nosProgressPercent;
 
   // Determine which book to show based on access — admin/autora has full access
   const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
@@ -223,79 +225,85 @@ export default function MembroDashboard() {
           </div>
         )}
 
-        {/* NÓS — O Nó da Herança (aparece se tem acesso aos Espelhos) */}
-        {hasMirrorsAccess && (
-          <div className="mt-6 overflow-hidden rounded-2xl bg-white shadow-sm">
+        {/* NÓS - O Nó da Herança — trancado até completar o Espelho */}
+        {hasMirrorsAccess && !espelhoCompleto && completedChapters > 0 && (
+          <div className="mt-6 overflow-hidden rounded-2xl border-2 border-dashed border-[#c9a87c]/25 bg-[#c9a87c]/[0.03] p-5">
+            <div className="flex items-start gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#c9a87c]/10">
+                <svg className="h-6 w-6 text-[#c9a87c]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-[#c9a87c]">
+                  Colecção Nós
+                </p>
+                <p className="mt-1 font-serif text-lg text-brown-800">O Nó da Herança</p>
+                <p className="mt-1 font-serif text-sm italic text-brown-500">
+                  &ldquo;Sara viu o véu. Mas há um nó que ficou por desatar.&rdquo;
+                </p>
+                <p className="mt-2 font-sans text-xs text-brown-400">
+                  Disponível ao completar o Espelho da Ilusão
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* NÓS - O Nó da Herança — DESBLOQUEADO */}
+        {hasMirrorsAccess && espelhoCompleto && (
+          <div className="mt-6 overflow-hidden rounded-2xl border border-[#c9a87c]/40 bg-gradient-to-br from-[#faf7f2] to-white shadow-sm">
             <div className="flex flex-col sm:flex-row">
-              {/* Book accent strip */}
-              <div className="flex items-center justify-center bg-gradient-to-br from-[#c9a87c] to-[#b8a088] px-8 py-8 sm:w-48">
-                <div className="text-center">
-                  <p className="font-serif text-4xl text-white/90">&#10023;</p>
-                  <p className="mt-2 font-sans text-[0.55rem] uppercase tracking-[0.2em] text-white/70">
-                    Colecção Nós
-                  </p>
+              {/* Book cover */}
+              <div className="flex items-center justify-center bg-gradient-to-br from-[#5a4d3e] to-[#3d3428] px-8 py-8 sm:w-48">
+                <div className="flex h-[120px] w-[90px] items-center justify-center rounded bg-[#c9a87c]/20">
+                  <span className="font-serif text-4xl text-[#c9a87c]">&#8734;</span>
                 </div>
               </div>
 
               {/* Reading info */}
               <div className="flex flex-1 flex-col justify-between p-6">
                 <div>
-                  <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-brown-400">
+                  <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-[#c9a87c]">
                     Nó · Ficção Relacional
                   </p>
-                  <h2 className="mt-1 font-serif text-2xl text-brown-900">{nosMeta.title}</h2>
+                  <h2 className="mt-1 font-serif text-2xl text-brown-900">O Nó da Herança</h2>
                   <p className="mt-1 font-serif text-sm italic text-brown-500">
-                    {nosMeta.subtitle}
+                    O que a mãe guardou, a filha carregou
                   </p>
 
-                  {!loading && espelhoCompleto && (
+                  {!loading && (
                     <div className="mt-4">
                       <div className="flex items-center justify-between text-xs text-brown-400">
                         <span>
-                          {nosCompletedChapters === 0
-                            ? "Pronta para começar"
-                            : nosCompletedChapters === nosChapters.length
+                          {completedNos === 0
+                            ? "Sara + Helena"
+                            : completedNos === nosChapters.length
                               ? "Leitura completa"
-                              : `${nosCompletedChapters} de ${nosChapters.length} capítulos`}
+                              : `${completedNos} de ${nosChapters.length} partes`}
                         </span>
-                        <span>{nosProgressPercent}%</span>
+                        <span>{nosPercent}%</span>
                       </div>
                       <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-brown-50">
                         <div
-                          className="h-full rounded-full bg-gradient-to-r from-[#c9a87c] to-[#b8a088] transition-all duration-1000"
-                          style={{ width: `${nosProgressPercent}%` }}
+                          className="h-full rounded-full bg-gradient-to-r from-[#c9a87c] to-[#a08060] transition-all duration-1000"
+                          style={{ width: `${nosPercent}%` }}
                         />
                       </div>
                     </div>
                   )}
-
-                  {!loading && !espelhoCompleto && (
-                    <div className="mt-4 flex items-center gap-2 text-xs text-brown-400">
-                      <span>🔒</span>
-                      <span>Disponível ao completar o Espelho da Ilusão</span>
-                    </div>
-                  )}
                 </div>
 
-                {espelhoCompleto ? (
-                  <Link
-                    href={nosCompletedChapters === 0 ? "/membro/nos" : `/membro/nos/${nextNosChapter.slug}`}
-                    className="mt-5 inline-flex items-center justify-center rounded-full bg-[#c9a87c] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b89a6c]"
-                  >
-                    {nosCompletedChapters === 0
-                      ? "Começar a ler"
-                      : nosCompletedChapters === nosChapters.length
-                        ? "Reler desde o início"
-                        : `Continuar — ${nextNosChapter.subtitle}`}
-                  </Link>
-                ) : (
-                  <Link
-                    href="/membro/leitura"
-                    className="mt-5 inline-flex items-center justify-center rounded-full border border-brown-200 px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-brown-400 transition-colors hover:border-brown-300 hover:text-brown-500"
-                  >
-                    Continuar o Espelho da Ilusão
-                  </Link>
-                )}
+                <Link
+                  href={`/membro/nos/${nextNosChapter.slug}`}
+                  className="mt-5 inline-flex items-center justify-center rounded-full bg-[#c9a87c] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b8975b]"
+                >
+                  {completedNos === 0
+                    ? "Desatar este nó"
+                    : completedNos === nosChapters.length
+                      ? "Reler desde o início"
+                      : `Continuar — ${nextNosChapter.subtitle}`}
+                </Link>
               </div>
             </div>
           </div>
