@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { nosCollection } from "@/data/nos-collection";
 
 export const metadata: Metadata = {
   title: "A Vivianne",
@@ -18,15 +19,13 @@ const espelhos = [
   { number: 7, title: "O Espelho da Separação", subtitle: "Quando te afastas de ti mesma para pertencer", color: "#baaacc", available: false },
 ];
 
-const nos = [
-  { number: 1, title: "O Nó da Herança", subtitle: "O que a mãe guardou, a filha carregou", color: "#c9a87c", available: true },
-  { number: 2, title: "O Nó do Silêncio", subtitle: "O que não se diz também se transmite", color: "#8b9b8e", available: false },
-  { number: 3, title: "O Nó da Dívida", subtitle: "Quem te disse que devias tanto?", color: "#b07a7a", available: false },
-  { number: 4, title: "O Nó do Reflexo", subtitle: "Quem és quando ninguém espera nada?", color: "#ab9375", available: false },
-  { number: 5, title: "O Nó da Corda", subtitle: "Segurar não é o mesmo que cuidar", color: "#8aaaca", available: false },
-  { number: 6, title: "O Nó da Fome", subtitle: "O vazio que nenhuma coisa preenche", color: "#c08aaa", available: false },
-  { number: 7, title: "O Nó da Raiz", subtitle: "Para pertencer, primeiro tens de te ter", color: "#baaacc", available: false },
-];
+const nos = nosCollection.map((n) => ({
+  number: n.number,
+  title: n.title,
+  subtitle: n.subtitle,
+  color: n.color,
+  available: n.status === "available",
+}));
 
 export default function SobrePage() {
   return (

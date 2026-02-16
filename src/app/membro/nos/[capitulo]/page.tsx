@@ -1,30 +1,29 @@
 "use client";
 
 import { use, useEffect, useState, useCallback, useRef } from "react";
-import { useAuth } from "@/components/AuthProvider";
 import { useRouter } from "next/navigation";
-import { chapters as espelhoChapters } from "@/data/ebook";
 import { chapters } from "@/data/no-heranca";
 import { supabase } from "@/lib/supabase";
+import { useNosGate } from "@/hooks/useNosGate";
 import InteractiveChecklist from "@/components/InteractiveChecklist";
 import ReflectionJournal from "@/components/ReflectionJournal";
 import BreathingExercise from "@/components/BreathingExercise";
 import { getReadingTime, formatReadingTime } from "@/lib/readingTime";
 import Link from "next/link";
 
-const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
-
 export default function NosChapterPage({ params }: { params: Promise<{ capitulo: string }> }) {
   const { capitulo } = use(params);
-  const { user, profile, loading: authLoading } = useAuth();
+  const {
+    canAccessNos,
+    hasMirrorsAccess,
+    authLoading,
+    user,
+  } = useNosGate();
   const router = useRouter();
   const chapter = chapters.find((ch) => ch.slug === capitulo);
   const chapterIndex = chapters.findIndex((ch) => ch.slug === capitulo);
   const prevChapter = chapterIndex > 0 ? chapters[chapterIndex - 1] : null;
   const nextChapter = chapterIndex < chapters.length - 1 ? chapters[chapterIndex + 1] : null;
-
-  const isAdmin = profile?.is_admin || AUTHOR_EMAILS.includes(user?.email || "");
-  const hasMirrorsAccess = isAdmin || profile?.has_mirrors_access || false;
 
   const [showReflection, setShowReflection] = useState(false);
   const [completed, setCompleted] = useState(false);
@@ -72,9 +71,7 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
     setCompleted(true);
   }, [chapter, chapterKey]);
 
-  const [espelhoCompleto, setEspelhoCompleto] = useState(false);
-
-  // Load completion state + espelho gate
+  // Load completion state for this chapter
   useEffect(() => {
     if (!chapter) return;
     const load = async () => {
@@ -82,18 +79,14 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
       const userId = session.data.session?.user?.id;
       if (!userId) return;
 
-      const { data: allProgress } = await supabase
+      const { data } = await supabase
         .from("reading_progress")
-        .select("chapter_slug, completed")
-        .eq("user_id", userId);
+        .select("completed")
+        .eq("user_id", userId)
+        .eq("chapter_slug", chapterKey)
+        .single();
 
-      if (allProgress) {
-        const map: Record<string, boolean> = {};
-        allProgress.forEach((row) => { map[row.chapter_slug] = row.completed; });
-        if (map[chapterKey]) setCompleted(true);
-        // Check if all espelho chapters are complete
-        setEspelhoCompleto(espelhoChapters.every((ch) => map[ch.slug]));
-      }
+      if (data?.completed) setCompleted(true);
     };
     load();
   }, [chapter, chapterKey]);
@@ -117,7 +110,7 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
   if (authLoading || !hasMirrorsAccess) return null;
 
   // Gate: redirect to Nós hub if Espelho not complete (admin bypasses)
-  if (!espelhoCompleto && !isAdmin) {
+  if (!canAccessNos) {
     return (
       <section className="px-6 py-16 text-center">
         <p className="font-serif text-lg text-brown-600">

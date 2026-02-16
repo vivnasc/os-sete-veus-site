@@ -1,23 +1,30 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
-import { useAuth } from "@/components/AuthProvider";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { chapters as espelhoChapters } from "@/data/ebook";
 import { chapters, bookMeta } from "@/data/no-heranca";
-import { supabase } from "@/lib/supabase";
+import { getNosBook } from "@/data/nos-collection";
+import { useNosGate } from "@/hooks/useNosGate";
 import Link from "next/link";
 
-const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
+const nosMeta = getNosBook("no-da-heranca");
 
 export default function NosLeituraPage() {
-  const { user, profile, loading: authLoading } = useAuth();
+  const {
+    espelhoCompleto,
+    canAccessNos,
+    espelhoCompletedCount,
+    espelhoTotalCount,
+    nosCompletedCount: completedCount,
+    progress,
+    isAdmin,
+    hasMirrorsAccess,
+    authLoading,
+    loading,
+    user,
+  } = useNosGate();
   const router = useRouter();
-  const [progress, setProgress] = useState<Record<string, boolean>>({});
-  const [loading, setLoading] = useState(true);
-
-  const isAdmin = profile?.is_admin || AUTHOR_EMAILS.includes(user?.email || "");
-  const hasMirrorsAccess = isAdmin || profile?.has_mirrors_access || false;
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -26,39 +33,6 @@ export default function NosLeituraPage() {
       router.push("/membro");
     }
   }, [user, authLoading, hasMirrorsAccess, router]);
-
-  const loadProgress = useCallback(async () => {
-    const session = await supabase.auth.getSession();
-    const userId = session.data.session?.user?.id;
-    if (!userId) {
-      setLoading(false);
-      return;
-    }
-
-    const { data } = await supabase
-      .from("reading_progress")
-      .select("chapter_slug, completed")
-      .eq("user_id", userId);
-
-    if (data) {
-      const map: Record<string, boolean> = {};
-      data.forEach((row) => {
-        map[row.chapter_slug] = row.completed;
-      });
-      setProgress(map);
-    }
-    setLoading(false);
-  }, []);
-
-  useEffect(() => {
-    loadProgress();
-  }, [loadProgress]);
-
-  // Check if the Espelho da Ilusão is complete — gate for the Nó
-  const espelhoCompleto = espelhoChapters.every((ch) => progress[ch.slug]);
-
-  // Nós progress
-  const completedCount = chapters.filter((ch) => progress[`nos-${ch.slug}`]).length;
 
   if (authLoading || !hasMirrorsAccess) return null;
 
@@ -90,13 +64,13 @@ export default function NosLeituraPage() {
                 Sara precisa de acordar antes de poder falar com Helena.
               </p>
               <p className="mt-4 font-sans text-xs text-brown-400">
-                {espelhoChapters.filter((ch) => progress[ch.slug]).length} de {espelhoChapters.length} capítulos lidos
+                {espelhoCompletedCount} de {espelhoTotalCount} capítulos lidos
               </p>
               <div className="mt-2 h-2 overflow-hidden rounded-full bg-brown-50">
                 <div
                   className="h-full rounded-full bg-gradient-to-r from-[#c9b896] to-[#7a8c6e] transition-all duration-1000"
                   style={{
-                    width: `${(espelhoChapters.filter((ch) => progress[ch.slug]).length / espelhoChapters.length) * 100}%`,
+                    width: `${(espelhoCompletedCount / espelhoTotalCount) * 100}%`,
                   }}
                 />
               </div>
@@ -131,7 +105,12 @@ export default function NosLeituraPage() {
           </p>
           <h1 className="mt-3 font-serif text-4xl text-brown-900">{bookMeta.title}</h1>
           <p className="mt-2 font-serif text-lg italic text-brown-500">{bookMeta.subtitle}</p>
-          <p className="mx-auto mt-6 max-w-md font-serif text-sm leading-relaxed text-brown-500">
+          {nosMeta && (
+            <p className="mx-auto mt-4 max-w-md font-serif text-sm leading-relaxed text-brown-500">
+              {nosMeta.description}
+            </p>
+          )}
+          <p className="mx-auto mt-4 max-w-md font-serif text-sm leading-relaxed text-brown-400">
             {bookMeta.dedication}
           </p>
         </div>

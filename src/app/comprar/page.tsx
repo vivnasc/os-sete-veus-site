@@ -83,6 +83,10 @@ export default function ComprarPage() {
                   <p className="mt-4 text-sm text-brown-600">
                     <strong>Cada Espelho inclui:</strong> História ficcional completa (7 capítulos), personagens com quem te identificas, práticas contextuais, diário pessoal, o teu Espelho pessoal (ferramenta de síntese).
                   </p>
+                  <p className="mt-2 text-sm text-brown-600">
+                    Cada Espelho tem um <strong>Nó</strong> — a dimensão relacional da mesma história.
+                    Incluído nos pacotes de 3 e na Jornada Completa.
+                  </p>
                   <p className="mt-2 text-sm italic text-brown-500">
                     Os 7 Espelhos: Ilusão, Medo, Desejo, Culpa, Pressa, Comparação, Controlo.
                   </p>
