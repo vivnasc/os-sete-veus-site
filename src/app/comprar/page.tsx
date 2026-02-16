@@ -97,6 +97,39 @@ export default function ComprarPage() {
             </div>
           </div>
 
+          {/* NÓS — Ficção Relacional */}
+          <div className="overflow-hidden rounded-2xl border-2 border-[#c9a87c]/30 bg-white shadow-lg transition-all hover:border-[#c9a87c] hover:shadow-xl">
+            <div className="p-8 sm:p-10">
+              <div className="flex items-start gap-4">
+                <div className="text-5xl">&#10023;</div>
+                <div className="flex-1">
+                  <p className="font-sans text-[0.65rem] uppercase tracking-[0.2em] text-[#c9a87c]">
+                    A segunda dimensão
+                  </p>
+                  <h2 className="mt-3 font-serif text-3xl text-brown-900">
+                    NÓS
+                  </h2>
+                  <p className="mt-2 text-brown-700">
+                    Ficção relacional — o que se herda sem escritura
+                  </p>
+                  <p className="mt-4 text-sm text-brown-600">
+                    Cada Espelho mostra-te a ti. Cada Nó mostra-te a relação.
+                    São histórias que continuam as personagens dos Espelhos,
+                    explorando os fios invisíveis entre mãe e filha, entre quem
+                    ama e quem se cala.
+                  </p>
+                  <p className="mt-2 text-sm italic text-brown-500">
+                    Primeiro disponível: O Nó da Herança — par do Espelho da Ilusão.
+                  </p>
+                  <p className="mt-4 text-xs text-brown-400">
+                    Incluído automaticamente com qualquer Espelho. O Nó desbloqueia-se ao
+                    completar o Espelho correspondente.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Comunidade incluída */}
           <div className="overflow-hidden rounded-2xl border-2 border-brown-600/30 bg-gradient-to-r from-[#2d2620] to-[#1a1510] shadow-lg">
             <div className="p-8 sm:p-10">
