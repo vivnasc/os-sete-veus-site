@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 const pilares = [
   {
-    icon: "📖",
+    icon: "&#9826;",
     title: "Colecção Espelhos",
     description:
       "7 ficções de transformação interior. Histórias onde te reconheces. Cada Espelho tem 7 capítulos, práticas de respiração, diário de reflexão e espelho pessoal.",
@@ -35,7 +35,7 @@ const pilares = [
     linkText: "Ver Colecção Nós",
   },
   {
-    icon: "🪞",
+    icon: "~",
     title: "Diário de Reflexão",
     description:
       "Em cada capítulo, escreves o que sentes. As tuas palavras ficam guardadas. No final, O Teu Espelho devolve-te tudo o que escreveste.",
@@ -44,7 +44,7 @@ const pilares = [
     linkText: "Como funciona",
   },
   {
-    icon: "🎧",
+    icon: "~",
     title: "Práticas Guiadas",
     description:
       "Meditações e exercícios de respiração para integrar cada véu. Áudio original, feito para acompanhar a tua leitura.",
@@ -53,7 +53,7 @@ const pilares = [
     linkText: "Experimenta",
   },
   {
-    icon: "📝",
+    icon: "~",
     title: "Recursos Gratuitos",
     description:
       "Teste de autoconhecimento, diário de 7 dias, guias e wallpapers. Sem compromisso — são teus.",
@@ -62,7 +62,7 @@ const pilares = [
     linkText: "Acede grátis",
   },
   {
-    icon: "🌊",
+    icon: "~",
     title: "Comunidade Anónima",
     description:
       "Ecos, Maré, Círculo e Fogueira — um espaço onde a conexão acontece por reconhecimento, não por interação. Tudo anónimo. Tudo impermanente.",

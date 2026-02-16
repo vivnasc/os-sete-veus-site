@@ -119,7 +119,7 @@ export default function RootLayout({
               ],
               offers: {
                 "@type": "Offer",
-                price: "19",
+                price: "23",
                 priceCurrency: "USD",
                 availability: "https://schema.org/InStock",
                 url: "https://seteecos.com/livro-fisico",

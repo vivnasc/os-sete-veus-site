@@ -7,8 +7,8 @@ import { useAuth } from "@/components/AuthProvider";
 
 const navLinks = [
   { href: "/", label: "Início" },
+  { href: "/comprar/espelhos", label: "Espelhos" },
   { href: "/comprar", label: "Comprar" },
-  { href: "/livro-fisico", label: "Livro Físico" },
   { href: "/comunidade", label: "Ecos", highlight: true },
   { href: "/recursos", label: "Recursos" },
   { href: "/sobre", label: "Sobre" },

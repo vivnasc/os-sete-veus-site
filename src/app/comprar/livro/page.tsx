@@ -16,7 +16,7 @@ export default function ComprarLivroPage() {
             Livro Filosófico
           </p>
           <h1 className="mt-4 font-serif text-4xl leading-tight text-brown-900 sm:text-5xl">
-            📖 Os 7 Véus do Despertar
+            Os 7 Véus do Despertar
           </h1>
           <p className="mx-auto mt-6 max-w-xl leading-relaxed text-brown-600">
             Ensaio filosófico sobre despertar de consciência
@@ -37,32 +37,32 @@ export default function ComprarLivroPage() {
           </h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             <div className="rounded-lg bg-white p-5 shadow-sm">
-              <div className="text-2xl">✨</div>
+              <div className="font-serif text-2xl text-brown-400">~</div>
               <p className="mt-2 text-sm font-medium text-brown-900">Leitura contemplativa</p>
               <p className="mt-1 text-xs text-brown-600">2 modos de leitura</p>
             </div>
             <div className="rounded-lg bg-white p-5 shadow-sm">
-              <div className="text-2xl">🌬️</div>
+              <div className="font-serif text-2xl text-brown-400">~</div>
               <p className="mt-2 text-sm font-medium text-brown-900">Pausas de respiração</p>
               <p className="mt-1 text-xs text-brown-600">Entre capítulos</p>
             </div>
             <div className="rounded-lg bg-white p-5 shadow-sm">
-              <div className="text-2xl">🧘</div>
+              <div className="font-serif text-2xl text-brown-400">~</div>
               <p className="mt-2 text-sm font-medium text-brown-900">Práticas guiadas</p>
               <p className="mt-1 text-xs text-brown-600">Por véu</p>
             </div>
             <div className="rounded-lg bg-white p-5 shadow-sm">
-              <div className="text-2xl">📔</div>
+              <div className="font-serif text-2xl text-brown-400">~</div>
               <p className="mt-2 text-sm font-medium text-brown-900">Reflexões pessoais</p>
               <p className="mt-1 text-xs text-brown-600">Diário</p>
             </div>
             <div className="rounded-lg bg-white p-5 shadow-sm">
-              <div className="text-2xl">🪞</div>
+              <div className="font-serif text-2xl text-brown-400">~</div>
               <p className="mt-2 text-sm font-medium text-brown-900">Espelho final</p>
               <p className="mt-1 text-xs text-brown-600">Síntese</p>
             </div>
             <div className="rounded-lg bg-white p-5 shadow-sm">
-              <div className="text-2xl">♾️</div>
+              <div className="font-serif text-2xl text-brown-400">~</div>
               <p className="mt-2 text-sm font-medium text-brown-900">Acesso vitalício</p>
               <p className="mt-1 text-xs text-brown-600">No site</p>
             </div>
@@ -85,14 +85,14 @@ export default function ComprarLivroPage() {
             <div className="overflow-hidden rounded-2xl border-2 border-green-200 bg-white shadow-md">
               <div className="bg-green-50 px-6 py-4">
                 <h3 className="font-serif text-xl text-brown-900">
-                  ✅ Já comprei o livro físico
+                  Já comprei o livro físico
                 </h3>
               </div>
               <div className="p-6 sm:p-8">
                 <div className="space-y-4">
                   <div>
                     <p className="text-sm font-medium text-brown-700">
-                      ✅ Tenho código de acesso
+                      Tenho código de acesso
                     </p>
                     <p className="mt-1 text-xs text-brown-500">
                       Recebeste um código? Regista-o aqui para aceder à versão digital
@@ -106,7 +106,7 @@ export default function ComprarLivroPage() {
                   </div>
                   <div className="border-t border-brown-100 pt-4">
                     <p className="text-sm font-medium text-brown-700">
-                      ⏳ Não tenho código
+                      Não tenho código
                     </p>
                     <p className="mt-1 text-xs text-brown-500">
                       Pede o teu código de acesso — enviamos em até 24h
@@ -126,7 +126,7 @@ export default function ComprarLivroPage() {
             <div className="overflow-hidden rounded-2xl border-2 border-brown-300 bg-white shadow-md">
               <div className="bg-brown-50 px-6 py-4">
                 <h3 className="font-serif text-xl text-brown-900">
-                  📦 Comprar livro físico
+                  Comprar livro físico
                 </h3>
               </div>
               <div className="p-6 sm:p-8">
@@ -137,19 +137,19 @@ export default function ComprarLivroPage() {
                     </p>
                     <ul className="mt-4 space-y-2 text-sm text-brown-600">
                       <li className="flex items-start gap-2">
-                        <span className="text-brown-500">📖</span>
+                        <span className="text-brown-400">~</span>
                         <span>Edição física de alta qualidade</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-brown-500">💻</span>
+                        <span className="text-brown-400">~</span>
                         <span>Versão digital incluída (mesmo livro)</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-brown-500">🇲🇿</span>
+                        <span className="text-brown-400">~</span>
                         <span>Entrega em Moçambique</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-brown-500">📧</span>
+                        <span className="text-brown-400">~</span>
                         <span>Recebes código por email após pagamento</span>
                       </li>
                     </ul>
@@ -180,7 +180,7 @@ export default function ComprarLivroPage() {
               <div className="bg-sage/10 px-6 py-4">
                 <div className="flex items-center justify-between">
                   <h3 className="font-serif text-xl text-brown-900">
-                    💻 Comprar livro digital
+                    Comprar livro digital
                   </h3>
                   <span className="rounded-full bg-sage px-3 py-1 font-sans text-xs font-bold uppercase tracking-wider text-white">
                     Imediato
@@ -220,12 +220,14 @@ export default function ComprarLivroPage() {
                         <span className="text-brown-600">/ $23 USD</span>
                       </p>
                     </div>
-                    <Link
-                      href="/checkout/livro-digital"
+                    <a
+                      href="https://wa.me/258845243875?text=Olá! Quero comprar a versão digital do livro Os 7 Véus do Despertar"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="mt-6 block w-full rounded-lg bg-sage px-6 py-3.5 text-center font-sans text-sm font-bold uppercase tracking-wider text-white shadow-md transition-all hover:bg-sage-dark hover:shadow-lg"
                     >
                       Comprar versão digital
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </div>

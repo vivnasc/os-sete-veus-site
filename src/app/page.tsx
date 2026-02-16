@@ -7,7 +7,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 const espelhosPeek = [
   { title: "Espelho da Ilusão", tagline: "Quando a vida que tens não foi a que escolheste", image: "/images/espelho-ilusao.png" },
   { title: "Espelho do Medo", tagline: "Quando o medo decide por ti", image: "/images/espelho-medo.png" },
-  { title: "Espelho do Desejo", tagline: "Quando desejas tudo menos o que precisas", image: "/images/espelho-desejo.png" },
+  { title: "Espelho da Culpa", tagline: "Quando te castigas por querer mais", image: "/images/espelho-culpa.png" },
 ];
 
 export default function Home() {
@@ -70,8 +70,7 @@ export default function Home() {
             {/* ESPELHOS */}
             <ScrollReveal delay={0.15} variant="scale">
               <div className="group relative overflow-hidden rounded-2xl border-2 border-sage/20 bg-white p-8 shadow-sm transition-all duration-300 hover:border-sage hover:shadow-lg">
-                <div className="absolute right-4 top-4 text-4xl opacity-20 transition-opacity group-hover:opacity-30">🪞</div>
-                <h3 className="font-serif text-2xl text-brown-900">ESPELHOS</h3>
+                <h3 className="font-serif text-2xl text-brown-900">Colecção Espelhos</h3>
                 <p className="mt-2 font-serif text-sm italic text-sage">7 ficções de transformação</p>
                 <p className="mt-4 leading-relaxed text-brown-700">
                   Sete histórias de ficção literária onde te reconheces. Cada uma com pausas de reflexão,
@@ -111,8 +110,7 @@ export default function Home() {
             {/* Physical Book */}
             <ScrollReveal delay={0.3} variant="scale">
               <div className="group relative overflow-hidden rounded-2xl border-2 border-brown-300 bg-white p-8 shadow-sm transition-all duration-300 hover:border-brown-400 hover:shadow-lg">
-                <div className="absolute right-4 top-4 text-4xl opacity-20 transition-opacity group-hover:opacity-30">📖</div>
-                <h3 className="font-serif text-2xl text-brown-900">Livro Físico</h3>
+                <h3 className="font-serif text-2xl text-brown-900">Livro Filosófico</h3>
                 <p className="mt-2 font-serif text-sm italic text-brown-700">"Os 7 Véus do Despertar" — obra filosófica</p>
                 <p className="mt-4 leading-relaxed text-brown-800">
                   Livro impresso sobre despertar de consciência — uma cartografia interior para dissolver
@@ -120,15 +118,15 @@ export default function Home() {
                 </p>
                 <div className="mt-6 space-y-2">
                   <div className="flex items-start gap-2 text-sm text-brown-700">
-                    <span className="mt-0.5 text-brown-500">📖</span>
+                    <span className="mt-0.5 text-brown-500">~</span>
                     <span className="font-medium">Edição física de alta qualidade</span>
                   </div>
                   <div className="flex items-start gap-2 text-sm text-brown-700">
-                    <span className="mt-0.5 text-brown-500">📱</span>
+                    <span className="mt-0.5 text-brown-500">~</span>
                     <span className="font-medium">Versão digital incluída (mesmo livro)</span>
                   </div>
                   <div className="flex items-start gap-2 text-sm text-brown-700">
-                    <span className="mt-0.5 text-brown-500">🚚</span>
+                    <span className="mt-0.5 text-brown-500">~</span>
                     <span className="font-medium">Entrega em todo Moçambique</span>
                   </div>
                 </div>
@@ -405,22 +403,22 @@ export default function Home() {
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                icon: "🌊",
+                icon: "~",
                 title: "Ecos",
                 desc: "Reflexões anónimas. Libertas o que sentes e encontras quem sente o mesmo.",
               },
               {
-                icon: "🌀",
+                icon: "~",
                 title: "Maré",
                 desc: "Consciência colectiva. Sente o pulso emocional de quem caminha contigo.",
               },
               {
-                icon: "🪞",
+                icon: "~",
                 title: "Círculo",
                 desc: "Espelho partilhado. Um espaço seguro de reconhecimento mútuo.",
               },
               {
-                icon: "🔥",
+                icon: "~",
                 title: "Fogueira",
                 desc: "Contemplação. Pára. Respira. Estás acompanhada no silêncio.",
               },
@@ -462,19 +460,19 @@ export default function Home() {
                 texto: "Este livro mudou completamente a forma como vejo minha vida. Não é autoajuda, é filosofia viva que te desafia a olhar para dentro. As práticas guiadas me conectaram com partes de mim que há anos ignorava.",
                 nome: "Maria S.",
                 local: "Maputo, Moçambique",
-                rating: "⭐⭐⭐⭐⭐",
+                rating: "~ ~ ~ ~ ~",
               },
               {
-                texto: "A experiência digital é incrível. As pausas contemplativas, as práticas de respiração... Sinto que não estou só a ler, estou a VIVER o livro. O diário de reflexão me fez escrever coisas que nunca tinha admitido.",
+                texto: "A experiência digital é incrível. As pausas contemplativas, as práticas de respiração... Sinto que não estou só a ler, estou a viver o livro. O diário de reflexão fez-me escrever coisas que nunca tinha admitido.",
                 nome: "Ana P.",
                 local: "Lisboa, Portugal",
-                rating: "⭐⭐⭐⭐⭐",
+                rating: "~ ~ ~ ~ ~",
               },
               {
-                texto: "Comprei o Espelho da Ilusão e me vi completamente na protagonista. É ficção, mas parecia minha vida. Chorei, refleti e mudei. Já comprei mais 3 Espelhos. É transformador.",
+                texto: "Comprei o Espelho da Ilusão e me vi completamente na protagonista. É ficção, mas parecia minha vida. Chorei, refleti e mudei. Estou ansiosa pelo próximo.",
                 nome: "Beatriz M.",
                 local: "São Paulo, Brasil",
-                rating: "⭐⭐⭐⭐⭐",
+                rating: "~ ~ ~ ~ ~",
               },
             ].map((dep, i) => (
               <ScrollReveal key={dep.nome} delay={0.15 * i} variant="fadeUp">

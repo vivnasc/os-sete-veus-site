@@ -41,41 +41,41 @@ const veus = [
   },
   {
     number: 3,
-    title: "O Espelho do Desejo",
-    subtitle: "Quando desejas tudo menos o que precisas",
-    description:
-      "O desejo que te move é realmente teu? Ou é uma resposta ao que te ensinaram a querer? Este livro é para quem precisa de parar e perguntar: o que é que eu quero, de verdade?",
-    image: "/images/espelho-desejo.png",
-    accent: "bg-veu-3",
-    available: false,
-  },
-  {
-    number: 4,
-    title: "O Espelho do Controlo",
-    subtitle: "Quando segurar é a única forma que conheces",
-    description:
-      "Há uma diferença entre cuidar e controlar — e por vezes essa linha desaparece. Este livro é para quem precisa de aprender a largar para se encontrar.",
-    image: "/images/espelho-controlo.png",
-    accent: "bg-veu-4",
-    available: false,
-  },
-  {
-    number: 5,
     title: "O Espelho da Culpa",
     subtitle: "Quando te castigas por querer mais",
     description:
       "Querer mais não é egoísmo. É vida. Este livro é para quem precisa de permissão — a permissão que só tu te podes dar.",
     image: "/images/espelho-culpa.png",
-    accent: "bg-veu-5",
+    accent: "bg-veu-3",
     available: false,
   },
   {
-    number: 6,
+    number: 4,
     title: "O Espelho da Identidade",
     subtitle: "Quando já não sabes quem és sem os outros",
     description:
       "O que sobra quando tiras todos os papéis — mãe, filha, mulher, profissional? Este livro é para quem está pronta para se descobrir por baixo de tudo.",
     image: "/images/espelho-identidade.png",
+    accent: "bg-veu-4",
+    available: false,
+  },
+  {
+    number: 5,
+    title: "O Espelho do Controlo",
+    subtitle: "Quando segurar é a única forma que conheces",
+    description:
+      "Há uma diferença entre cuidar e controlar — e por vezes essa linha desaparece. Este livro é para quem precisa de aprender a largar para se encontrar.",
+    image: "/images/espelho-controlo.png",
+    accent: "bg-veu-5",
+    available: false,
+  },
+  {
+    number: 6,
+    title: "O Espelho do Desejo",
+    subtitle: "Quando desejas tudo menos o que precisas",
+    description:
+      "O desejo que te move é realmente teu? Ou é uma resposta ao que te ensinaram a querer? Este livro é para quem precisa de parar e perguntar: o que é que eu quero, de verdade?",
+    image: "/images/espelho-desejo.png",
     accent: "bg-veu-6",
     available: false,
   },
