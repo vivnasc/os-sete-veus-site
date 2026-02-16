@@ -8,6 +8,16 @@ export const metadata: Metadata = {
     "Sete livros. Sete espelhos. Sete formas de nos escondermos de nós mesmas — e sete caminhos de volta.",
 };
 
+const nos = [
+  { espelho: 1, title: "O Nó da Herança", subtitle: "O que a mãe guardou, a filha carregou", available: true },
+  { espelho: 2, title: "O Nó do Silêncio", subtitle: "Quando o amor se diz calando", available: false },
+  { espelho: 3, title: "O Nó da Dívida", subtitle: "O que se deve a quem nunca pediu", available: false },
+  { espelho: 4, title: "O Nó do Reflexo", subtitle: "Quando te vês no outro e não reconheces", available: false },
+  { espelho: 5, title: "O Nó da Distância", subtitle: "Perto demais para ver, longe demais para sentir", available: false },
+  { espelho: 6, title: "O Nó da Comparação", subtitle: "Quando medes o amor pelo que os outros têm", available: false },
+  { espelho: 7, title: "O Nó do Controlo", subtitle: "Quando segurar é a única forma de amar que conheces", available: false },
+];
+
 const veus = [
   {
     number: 1,
@@ -142,7 +152,24 @@ export default function OsSeteVeusPage() {
                 <h2 className="mt-3 font-serif text-2xl text-brown-900 sm:text-3xl">{veu.title}</h2>
                 <p className="mt-1 font-serif italic text-brown-500">{veu.subtitle}</p>
                 <p className="mt-4 leading-relaxed text-brown-700">{veu.description}</p>
-                <div className="mt-6">
+                {/* Nó paired */}
+                {(() => {
+                  const no = nos.find((n) => n.espelho === veu.number);
+                  return no ? (
+                    <div className="mt-5 rounded-lg border border-[#c9a87c]/20 bg-[#c9a87c]/5 px-4 py-3">
+                      <p className="font-sans text-[0.55rem] uppercase tracking-[0.2em] text-[#c9a87c]">
+                        Nó incluído
+                      </p>
+                      <p className="mt-0.5 font-serif text-sm text-brown-700">{no.title}</p>
+                      <p className="text-xs italic text-brown-400">{no.subtitle}</p>
+                      {!no.available && (
+                        <p className="mt-1 text-[0.65rem] text-brown-300">Em preparação</p>
+                      )}
+                    </div>
+                  ) : null;
+                })()}
+
+                <div className="mt-5">
                   {veu.available ? (
                     <Link
                       href="/experiencias"
@@ -161,6 +188,25 @@ export default function OsSeteVeusPage() {
           </div>
         </section>
       ))}
+
+      {/* Colecção Nós — explanation */}
+      <section className="bg-cream-dark px-6 py-20">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="font-sans text-[0.7rem] uppercase tracking-[0.25em] text-[#c9a87c]">
+            A segunda dimensão
+          </p>
+          <h2 className="mt-4 font-serif text-3xl text-brown-900">Colecção Nós</h2>
+          <p className="mx-auto mt-4 max-w-xl leading-relaxed text-brown-600">
+            O Espelho mostra-te a ti. O Nó mostra-te a relação.
+            Cada Espelho tem um Nó — uma história que explora a mesma ferida,
+            mas vista pelos fios invisíveis que te ligam a quem amas.
+          </p>
+          <p className="mx-auto mt-4 max-w-md text-sm text-brown-500">
+            Cada Nó desbloqueia-se ao completar o Espelho correspondente.
+            Está incluído — não há custo adicional.
+          </p>
+        </div>
+      </section>
 
       {/* CTA — dark */}
       <section className="bg-gradient-to-b from-brown-800 to-brown-900 px-6 py-24">

@@ -306,6 +306,34 @@ export default function ChapterPage({ params }: { params: Promise<{ capitulo: st
               </Link>
             )}
           </nav>
+
+          {/* Nó desbloqueado — aparece apenas no último capítulo, após leitura */}
+          {!nextChapter && showReflection && (
+            <div className={`mt-10 rounded-2xl border-2 border-[#c9a87c]/30 p-8 text-center transition-colors duration-500 ${nightMode ? "bg-[#2a2520]" : "bg-white shadow-sm"}`}>
+              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#c9a87c]/10 text-2xl">
+                &#10023;
+              </div>
+              <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-[#c9a87c]">
+                Desbloqueado
+              </p>
+              <h3 className={`mt-2 font-serif text-xl ${nightMode ? "text-cream" : "text-brown-900"}`}>
+                O Nó da Herança
+              </h3>
+              <p className={`mt-1 font-serif text-sm italic ${nightMode ? "text-brown-500" : "text-brown-500"}`}>
+                O que a mãe guardou, a filha carregou
+              </p>
+              <p className={`mx-auto mt-3 max-w-sm text-sm leading-relaxed ${nightMode ? "text-brown-500" : "text-brown-500"}`}>
+                Sara viu o véu. Agora há um nó por desatar.
+                A história de Sara e Helena continua na Colecção Nós.
+              </p>
+              <Link
+                href="/membro/nos"
+                className="mt-5 inline-block rounded-full bg-[#c9a87c] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b89a6c]"
+              >
+                Começar O Nó da Herança
+              </Link>
+            </div>
+          )}
         </div>
       </article>
     </>

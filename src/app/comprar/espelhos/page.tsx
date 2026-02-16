@@ -70,6 +70,7 @@ export default function ComprarPage() {
         'Espelho da Ilusão',
         'Espelho do Medo',
         'Espelho do Desejo',
+        'Nós incluídos (ficção relacional)',
         'Práticas guiadas',
         'Diário de reflexão',
       ],
@@ -116,6 +117,7 @@ export default function ComprarPage() {
       veuNumero: 1,
       inclui: [
         '7 capítulos de ficção',
+        'Nó da Herança incluído (ficção relacional)',
         'Práticas de respiração',
         'Diário pessoal',
         'Acesso vitalício',
