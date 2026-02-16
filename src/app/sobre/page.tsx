@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const espelhos = [
   { number: 1, title: "O Espelho da Ilusão", subtitle: "Quando a vida que tens não foi a que escolheste", color: "#c9b896", available: true },
-  { number: 2, title: "O Espelho do Medo", subtitle: "Quando o medo decide por ti", color: "#8b9b8e", available: true },
+  { number: 2, title: "O Espelho do Medo", subtitle: "Quando o medo decide por ti", color: "#8b9b8e", available: false },
   { number: 3, title: "O Espelho da Culpa", subtitle: "Quando te castigas por querer mais", color: "#b07a7a", available: false },
   { number: 4, title: "O Espelho da Identidade", subtitle: "Quando já não sabes quem és sem os outros", color: "#ab9375", available: false },
   { number: 5, title: "O Espelho do Controlo", subtitle: "Quando segurar é a única forma que conheces", color: "#8aaaca", available: false },

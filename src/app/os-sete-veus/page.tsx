@@ -9,13 +9,13 @@ export const metadata: Metadata = {
 };
 
 const nos = [
-  { espelho: 1, title: "O Nó da Herança", subtitle: "O que a mãe guardou, a filha carregou", available: true },
-  { espelho: 2, title: "O Nó do Silêncio", subtitle: "Quando o amor se diz calando", available: false },
-  { espelho: 3, title: "O Nó da Dívida", subtitle: "O que se deve a quem nunca pediu", available: false },
-  { espelho: 4, title: "O Nó do Reflexo", subtitle: "Quando te vês no outro e não reconheces", available: false },
-  { espelho: 5, title: "O Nó da Distância", subtitle: "Perto demais para ver, longe demais para sentir", available: false },
-  { espelho: 6, title: "O Nó da Comparação", subtitle: "Quando medes o amor pelo que os outros têm", available: false },
-  { espelho: 7, title: "O Nó do Controlo", subtitle: "Quando segurar é a única forma de amar que conheces", available: false },
+  { espelho: 1, title: "O Nó da Herança", subtitle: "O silêncio herdado entre mãe e filha", available: true },
+  { espelho: 2, title: "O Nó do Silêncio", subtitle: "O que o medo calou entre eles", available: false },
+  { espelho: 3, title: "O Nó do Sacrifício", subtitle: "A culpa disfarçada de entrega", available: false },
+  { espelho: 4, title: "O Nó da Vergonha", subtitle: "A máscara que caiu entre dois estranhos", available: false },
+  { espelho: 5, title: "O Nó da Solidão", subtitle: "O controlo que isolou quem mais amava", available: false },
+  { espelho: 6, title: "O Nó do Vazio", subtitle: "O desejo que esvaziou a amizade", available: false },
+  { espelho: 7, title: "O Nó da Pertença", subtitle: "A separação que reinventou o lar", available: false },
 ];
 
 const veus = [
@@ -37,7 +37,7 @@ const veus = [
       "E se o medo não fosse o inimigo, mas um espelho que te mostra o que há do outro lado? Este livro é para quem sabe o que quer — mas tem medo de ir buscar.",
     image: "/images/espelho-medo.png",
     accent: "bg-veu-2",
-    available: true,
+    available: false,
   },
   {
     number: 3,
@@ -202,7 +202,6 @@ export default function OsSeteVeusPage() {
           </p>
           <p className="mx-auto mt-4 max-w-md text-sm text-brown-500">
             Cada Nó desbloqueia-se ao completar o Espelho correspondente.
-            Está incluído — não há custo adicional.
           </p>
         </div>
       </section>

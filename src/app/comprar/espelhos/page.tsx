@@ -1,251 +1,46 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { useState } from 'react'
 
-type Product = {
-  id: string
-  tipo: 'bundle' | 'colecao' | 'veu-individual' | 'livro-digital' | 'bundle-especial'
-  nome: string
-  descricao: string
-  preco_mzn: number
-  preco_usd: number
-  destaque?: string
-  inclui: string[]
-  veuNumero?: number
-}
+import { useState } from 'react'
 
 export default function ComprarPage() {
   const [moeda, setMoeda] = useState<'MZN' | 'USD'>('MZN')
 
-  const produtos: Product[] = [
-    // COLEÇÃO ESPELHOS COMPLETA
-    {
-      id: 'colecao-completa',
-      tipo: 'colecao',
-      nome: 'ESPELHOS - Coleção Completa',
-      descricao: '7 ficções de transformação',
-      preco_mzn: 13195,
-      preco_usd: 203,
-      destaque: '🌈 MELHOR OFERTA - Poupa 30%!',
-      inclui: [
-        'Os 7 Espelhos completos',
-        'Todos os 7 Nós incluídos (ficção relacional)',
-        '7 capítulos de ficção por Espelho',
-        'Práticas de respiração guiada',
-        'Diário de reflexão pessoal',
-        'Acesso vitalício no site',
-      ],
-    },
-
-    // BUNDLE ESPECIAL
-    {
-      id: 'bundle-livro-espelho',
-      tipo: 'bundle-especial',
-      nome: '🎁 Bundle: Livro + 1 Espelho',
-      descricao: 'Filosofia + 1 ficção à tua escolha',
-      preco_mzn: 3500,
-      preco_usd: 54,
-      destaque: '🔥 COMBO ESPECIAL - Poupa 500 MZN!',
-      inclui: [
-        'Livro "Os 7 Véus do Despertar" (físico + digital)',
-        '1 Espelho à tua escolha',
-        'Experiência digital completa',
-        'Entrega física em Moçambique',
-        'Acesso vitalício no site',
-      ],
-    },
-
-    // BUNDLES DE ESPELHOS
-    {
-      id: 'bundle-raiz',
-      tipo: 'bundle',
-      nome: 'Bundle Início (3 Primeiros Espelhos)',
-      descricao: 'Ilusão + Medo + Desejo',
-      preco_mzn: 5085,
-      preco_usd: 78,
-      destaque: 'Poupa 10%',
-      inclui: [
-        'Espelho da Ilusão',
-        'Espelho do Medo',
-        'Espelho do Desejo',
-        '3 Nós incluídos (ficção relacional)',
-        'Práticas guiadas',
-        'Diário de reflexão',
-      ],
-    },
-    {
-      id: 'bundle-meio',
-      tipo: 'bundle',
-      nome: 'Bundle Transformação (Espelhos 4-5)',
-      descricao: 'Culpa + Pressa',
-      preco_mzn: 3395,
-      preco_usd: 52,
-      destaque: 'Poupa 10%',
-      inclui: [
-        'Espelho da Culpa',
-        'Espelho da Pressa',
-        '2 Nós incluídos (ficção relacional)',
-        'Práticas guiadas',
-        'Diário de reflexão',
-      ],
-    },
-    {
-      id: 'bundle-fim',
-      tipo: 'bundle',
-      nome: 'Bundle Integração (2 Últimos Espelhos)',
-      descricao: 'Comparação + Controlo',
-      preco_mzn: 3395,
-      preco_usd: 52,
-      destaque: 'Poupa 10%',
-      inclui: [
-        'Espelho da Comparação',
-        'Espelho do Controlo',
-        '2 Nós incluídos (ficção relacional)',
-        'Práticas guiadas',
-        'Diário de reflexão',
-      ],
-    },
-
-    // ESPELHOS INDIVIDUAIS
-    {
-      id: 'exp-1',
-      tipo: 'veu-individual',
-      nome: 'Espelho da Ilusão',
-      descricao: 'Quando a vida que tens não foi a que escolheste',
-      preco_mzn: 1885,
-      preco_usd: 29,
-      veuNumero: 1,
-      inclui: [
-        '7 capítulos de ficção',
-        'Nó da Herança incluído (ficção relacional)',
-        'Práticas de respiração',
-        'Diário pessoal',
-        'Acesso vitalício',
-      ],
-    },
-    {
-      id: 'exp-2',
-      tipo: 'veu-individual',
-      nome: 'Espelho do Medo',
-      descricao: 'Quando o medo decide por ti',
-      preco_mzn: 1885,
-      preco_usd: 29,
-      veuNumero: 2,
-      inclui: [
-        '7 capítulos de ficção',
-        'Práticas de respiração',
-        'Diário pessoal',
-        'Acesso vitalício',
-      ],
-    },
-    {
-      id: 'exp-3',
-      tipo: 'veu-individual',
-      nome: 'Espelho do Desejo',
-      descricao: 'Quando desejas tudo menos o que precisas',
-      preco_mzn: 1885,
-      preco_usd: 29,
-      veuNumero: 3,
-      inclui: [
-        '7 capítulos de ficção',
-        'Práticas de respiração',
-        'Diário pessoal',
-        'Acesso vitalício',
-      ],
-    },
-    {
-      id: 'exp-4',
-      tipo: 'veu-individual',
-      nome: 'Espelho da Culpa',
-      descricao: 'Quando carregas o peso do que não é teu',
-      preco_mzn: 1885,
-      preco_usd: 29,
-      veuNumero: 4,
-      inclui: [
-        '7 capítulos de ficção',
-        'Práticas de respiração',
-        'Diário pessoal',
-        'Acesso vitalício',
-      ],
-    },
-    {
-      id: 'exp-5',
-      tipo: 'veu-individual',
-      nome: 'Espelho da Pressa',
-      descricao: 'Quando viver se torna correr',
-      preco_mzn: 1885,
-      preco_usd: 29,
-      veuNumero: 5,
-      inclui: [
-        '7 capítulos de ficção',
-        'Práticas de respiração',
-        'Diário pessoal',
-        'Acesso vitalício',
-      ],
-    },
-    {
-      id: 'exp-6',
-      tipo: 'veu-individual',
-      nome: 'Espelho da Comparação',
-      descricao: 'Quando a tua vida nunca é suficiente',
-      preco_mzn: 1885,
-      preco_usd: 29,
-      veuNumero: 6,
-      inclui: [
-        '7 capítulos de ficção',
-        'Práticas de respiração',
-        'Diário pessoal',
-        'Acesso vitalício',
-      ],
-    },
-    {
-      id: 'exp-7',
-      tipo: 'veu-individual',
-      nome: 'Espelho do Controlo',
-      descricao: 'Quando tentas segurar o que sempre escapa',
-      preco_mzn: 1885,
-      preco_usd: 29,
-      veuNumero: 7,
-      inclui: [
-        '7 capítulos de ficção',
-        'Práticas de respiração',
-        'Diário pessoal',
-        'Acesso vitalício',
-      ],
-    },
-  ]
-
-  const handleComprar = (produto: Product) => {
-    // TODO: Integrar com sistema de pagamento (Stripe, PayPal, M-Pesa)
-    alert(`Comprar: ${produto.nome}\nPreço: ${moeda === 'MZN' ? `${produto.preco_mzn} MZN` : `$${produto.preco_usd} USD`}\n\nSistema de pagamento será integrado em breve!`)
+  const handleComprar = (nome: string, precoMzn: number, precoUsd: number) => {
+    alert(`Comprar: ${nome}\nPreço: ${moeda === 'MZN' ? `${precoMzn} MZN` : `$${precoUsd} USD`}\n\nSistema de pagamento será integrado em breve!`)
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-cream to-stone-100">
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-900 to-stone-800 text-white py-16">
-        <div className="max-w-7xl mx-auto px-6">
+      <div className="bg-gradient-to-b from-brown-800 to-brown-900 py-16 text-white">
+        <div className="mx-auto max-w-7xl px-6">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center"
           >
-            <h1 className="text-5xl font-serif mb-4">Loja Digital</h1>
-            <p className="text-xl text-purple-200 max-w-2xl mx-auto">
-              Escolhe a tua travessia. Cada compra inclui acesso vitalício no site.
+            <p className="font-sans text-[0.65rem] uppercase tracking-[0.25em] text-brown-300">
+              Colecção Espelhos
+            </p>
+            <h1 className="mt-3 font-serif text-4xl text-cream sm:text-5xl">
+              Ficções de transformação
+            </h1>
+            <p className="mx-auto mt-4 max-w-xl leading-relaxed text-brown-200">
+              Sete histórias onde te reconheces. Cada Espelho inclui 7 capítulos,
+              práticas de respiração, diário pessoal e acesso vitalício.
             </p>
           </motion.div>
 
           {/* Toggle de Moeda */}
-          <div className="flex justify-center mt-8">
+          <div className="mt-8 flex justify-center">
             <div className="inline-flex rounded-lg bg-white/10 p-1">
               <button
                 onClick={() => setMoeda('MZN')}
-                className={`px-6 py-2 rounded-md transition-all ${
+                className={`rounded-md px-6 py-2 transition-all ${
                   moeda === 'MZN'
-                    ? 'bg-white text-purple-900 font-bold'
+                    ? 'bg-white font-bold text-brown-900'
                     : 'text-white hover:bg-white/20'
                 }`}
               >
@@ -253,9 +48,9 @@ export default function ComprarPage() {
               </button>
               <button
                 onClick={() => setMoeda('USD')}
-                className={`px-6 py-2 rounded-md transition-all ${
+                className={`rounded-md px-6 py-2 transition-all ${
                   moeda === 'USD'
-                    ? 'bg-white text-purple-900 font-bold'
+                    ? 'bg-white font-bold text-brown-900'
                     : 'text-white hover:bg-white/20'
                 }`}
               >
@@ -266,256 +61,168 @@ export default function ComprarPage() {
         </div>
       </div>
 
-      {/* Produtos */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        {/* Coleção Completa */}
+      <div className="mx-auto max-w-5xl px-6 py-16">
+        {/* Disponível agora */}
         <section className="mb-16">
-          <h2 className="text-3xl font-serif text-brown-900 mb-8 text-center">
-            🌈 Coleção Completa (Melhor Oferta!)
+          <h2 className="text-center font-serif text-2xl text-brown-900 sm:text-3xl">
+            Disponível agora
           </h2>
-          <div className="max-w-2xl mx-auto">
-            {produtos
-              .filter((p) => p.tipo === 'colecao')
-              .map((produto) => (
-                <ProductCard
-                  key={produto.id}
-                  produto={produto}
-                  moeda={moeda}
-                  onComprar={handleComprar}
-                  destacado
-                />
-              ))}
+          <div className="mx-auto mt-10 max-w-lg">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="rounded-2xl border-2 border-sage/30 bg-white p-8 shadow-lg"
+            >
+              <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-sage">
+                Espelho 1 de 7
+              </p>
+              <h3 className="mt-2 font-serif text-2xl text-brown-900">
+                Espelho da Ilusão
+              </h3>
+              <p className="mt-1 font-serif text-sm italic text-brown-500">
+                Quando a vida que tens não foi a que escolheste
+              </p>
+              <p className="mt-4 text-sm leading-relaxed text-brown-600">
+                Sara tem tudo no sítio. Emprego, casa, relação. E uma pergunta que
+                não a larga: &ldquo;Isto é mesmo meu?&rdquo;
+              </p>
+              <ul className="mt-5 space-y-2">
+                {[
+                  '7 capítulos de ficção',
+                  'Práticas de respiração guiada',
+                  'Diário de reflexão pessoal',
+                  'Acesso vitalício no site',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm text-brown-600">
+                    <span className="mt-0.5 text-sage">~</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Nó incluído */}
+              <div className="mt-5 rounded-lg border border-[#c9956a]/20 bg-[#c9956a]/5 px-4 py-3">
+                <p className="font-sans text-[0.55rem] uppercase tracking-[0.2em] text-[#c9956a]">
+                  Nó incluído
+                </p>
+                <p className="mt-0.5 font-serif text-sm text-brown-700">O Nó da Herança</p>
+                <p className="text-xs italic text-brown-400">
+                  Desbloqueia ao completar o Espelho
+                </p>
+              </div>
+
+              <div className="mt-6 flex items-baseline gap-2">
+                <span className="font-serif text-3xl font-bold text-brown-900">
+                  {moeda === 'MZN' ? '1.885 MZN' : '$29 USD'}
+                </span>
+                <span className="text-sm text-brown-400">
+                  {moeda === 'MZN' ? '/ $29 USD' : '/ 1.885 MZN'}
+                </span>
+              </div>
+
+              <button
+                onClick={() => handleComprar('Espelho da Ilusão', 1885, 29)}
+                className="mt-5 w-full rounded-lg bg-sage py-3.5 font-sans text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-sage-dark"
+              >
+                Comprar
+              </button>
+            </motion.div>
           </div>
         </section>
 
-        {/* Bundles */}
+        {/* Em preparação */}
         <section className="mb-16">
-          <h2 className="text-3xl font-serif text-brown-900 mb-8 text-center">
-            🎁 Bundles (Pacotes)
+          <h2 className="text-center font-serif text-2xl text-brown-900 sm:text-3xl">
+            Em preparação
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {produtos
-              .filter((p) => p.tipo === 'bundle')
-              .map((produto) => (
-                <ProductCard
-                  key={produto.id}
-                  produto={produto}
-                  moeda={moeda}
-                  onComprar={handleComprar}
-                />
-              ))}
+          <p className="mx-auto mt-3 max-w-md text-center text-sm text-brown-500">
+            Os próximos Espelhos serão publicados ao longo de 2026
+          </p>
+
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { num: 2, nome: 'Espelho do Medo', sub: 'Quando o medo decide por ti', data: 'Março 2026' },
+              { num: 3, nome: 'Espelho da Culpa', sub: 'Quando te castigas por querer mais', data: 'Abril 2026' },
+              { num: 4, nome: 'Espelho da Identidade', sub: 'Quando já não sabes quem és sem os outros', data: 'Junho 2026' },
+              { num: 5, nome: 'Espelho do Controlo', sub: 'Quando segurar é a única forma que conheces', data: 'Agosto 2026' },
+              { num: 6, nome: 'Espelho do Desejo', sub: 'Quando desejas tudo menos o que precisas', data: 'Outubro 2026' },
+              { num: 7, nome: 'Espelho da Separação', sub: 'Quando te afastas de ti mesma para pertencer', data: 'Dezembro 2026' },
+            ].map((espelho) => (
+              <motion.div
+                key={espelho.num}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="rounded-2xl border border-brown-200 bg-white p-6"
+              >
+                <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-brown-400">
+                  Espelho {espelho.num} de 7
+                </p>
+                <h3 className="mt-2 font-serif text-lg text-brown-900">{espelho.nome}</h3>
+                <p className="mt-1 text-sm italic text-brown-400">{espelho.sub}</p>
+                <div className="mt-4 flex items-baseline gap-2">
+                  <span className="font-serif text-xl font-bold text-brown-900">
+                    {moeda === 'MZN' ? '1.885 MZN' : '$29 USD'}
+                  </span>
+                </div>
+                <p className="mt-3 text-xs text-brown-400">{espelho.data}</p>
+              </motion.div>
+            ))}
           </div>
         </section>
 
-        {/* Véus Individuais */}
-        <section>
-          <h2 className="text-3xl font-serif text-brown-900 mb-8 text-center">
-            ✨ Experiências Individuais
-          </h2>
-          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {produtos
-              .filter((p) => p.tipo === 'veu-individual')
-              .map((produto) => (
-                <ProductCard
-                  key={produto.id}
-                  produto={produto}
-                  moeda={moeda}
-                  onComprar={handleComprar}
-                  compacto
-                />
-              ))}
-          </div>
-        </section>
-
-        {/* Callout Nós */}
-        <section className="mx-auto mb-16 max-w-2xl">
-          <div className="rounded-2xl border border-[#c9a87c]/30 bg-[#c9a87c]/[0.04] px-6 py-6 text-center">
+        {/* Nós — informação */}
+        <section className="mb-16">
+          <div className="mx-auto max-w-2xl rounded-2xl border border-[#c9a87c]/20 bg-[#c9a87c]/[0.04] px-8 py-8 text-center">
             <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-[#c9a87c]">
               Ficção relacional
             </p>
-            <p className="mt-3 font-serif text-lg text-brown-800">
+            <h2 className="mt-3 font-serif text-2xl text-brown-900">
               Cada Espelho tem um Nó
+            </h2>
+            <p className="mx-auto mt-4 max-w-md font-serif text-sm leading-relaxed text-brown-600">
+              Os Espelhos mostram-te o véu que usas.
+              Os Nós mostram-te o que esse véu fez entre ti e outra pessoa.
             </p>
-            <p className="mx-auto mt-2 max-w-md font-serif text-sm leading-relaxed text-brown-600">
-              Os Espelhos mostram-te o véu que usas. Os Nós mostram-te o que esse véu fez entre ti e outra pessoa.
-              Ao completar um Espelho, o seu Nó desbloqueia — como continuação natural da história.
+            <p className="mx-auto mt-4 max-w-md text-sm text-brown-500">
+              Ao completar um Espelho, o seu Nó desbloqueia-se como continuação natural da história.
+              Nó individual: {moeda === 'MZN' ? '780 MZN' : '$12 USD'}.
             </p>
-            <p className="mt-3 font-sans text-xs text-brown-400">
-              Incluído nos Bundles e na Coleção Completa. Individual: $12 USD / 780 MZN.
-            </p>
-          </div>
-        </section>
-
-        {/* Testemunhos */}
-        <section className="mt-20 mb-16">
-          <h2 className="text-3xl font-serif text-brown-900 mb-4 text-center">
-            ❤️ O que dizem quem já viveu os ESPELHOS
-          </h2>
-          <p className="text-center text-brown-600 mb-12 max-w-2xl mx-auto">
-            Histórias reais de pessoas que se encontraram nas ficções
-          </p>
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-white rounded-xl border border-brown-200 p-6 shadow-sm"
-            >
-              <div className="text-3xl mb-4">⭐⭐⭐⭐⭐</div>
-              <p className="text-brown-700 leading-relaxed mb-4 italic">
-                &ldquo;O Espelho da Ilusão descreveu exatamente minha vida. Chorei porque me vi completamente na protagonista. É ficção, mas senti que era sobre mim.&rdquo;
-              </p>
-              <div className="border-t border-brown-100 pt-4">
-                <p className="font-medium text-brown-900">Sofia R.</p>
-                <p className="text-sm text-brown-500">34 anos, Maputo</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="bg-white rounded-xl border border-brown-200 p-6 shadow-sm"
-            >
-              <div className="text-3xl mb-4">⭐⭐⭐⭐⭐</div>
-              <p className="text-brown-700 leading-relaxed mb-4 italic">
-                &ldquo;Comprei o Bundle de 3 Espelhos e foi transformador. As pausas de respiração entre capítulos me ajudam a processar emoções que nem sabia que tinha.&rdquo;
-              </p>
-              <div className="border-t border-brown-100 pt-4">
-                <p className="font-medium text-brown-900">Beatriz M.</p>
-                <p className="text-sm text-brown-500">28 anos, Lisboa</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="bg-white rounded-xl border border-brown-200 p-6 shadow-sm"
-            >
-              <div className="text-3xl mb-4">⭐⭐⭐⭐⭐</div>
-              <p className="text-brown-700 leading-relaxed mb-4 italic">
-                &ldquo;Não é livro de autoajuda. É literatura que te muda por dentro. O diário de reflexão me fez escrever coisas que nunca tinha admitido para mim mesma.&rdquo;
-              </p>
-              <div className="border-t border-brown-100 pt-4">
-                <p className="font-medium text-brown-900">Carolina F.</p>
-                <p className="text-sm text-brown-500">42 anos, São Paulo</p>
-              </div>
-            </motion.div>
           </div>
         </section>
 
         {/* FAQs */}
-        <section className="mt-20 max-w-3xl mx-auto">
-          <h2 className="text-3xl font-serif text-brown-900 mb-8 text-center">
+        <section className="mx-auto max-w-3xl">
+          <h2 className="mb-8 text-center font-serif text-2xl text-brown-900 sm:text-3xl">
             Perguntas Frequentes
           </h2>
           <div className="space-y-4">
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <h3 className="font-bold text-brown-900 mb-2">Como recebo acesso após comprar?</h3>
-              <p className="text-brown-600">
+            <div className="rounded-xl bg-white p-6 shadow-sm">
+              <h3 className="font-bold text-brown-900">Como recebo acesso após comprar?</h3>
+              <p className="mt-2 text-sm text-brown-600">
                 Após o pagamento, receberás um código de acesso por email. Usa esse código na página de registo para criar a tua conta e aceder imediatamente.
               </p>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <h3 className="font-bold text-brown-900 mb-2">O acesso é vitalício?</h3>
-              <p className="text-brown-600">
-                Sim! Uma vez comprado, tens acesso para sempre. Podes ler ao teu ritmo, quantas vezes quiseres.
+            <div className="rounded-xl bg-white p-6 shadow-sm">
+              <h3 className="font-bold text-brown-900">O acesso é vitalício?</h3>
+              <p className="mt-2 text-sm text-brown-600">
+                Sim. Uma vez comprado, tens acesso para sempre. Podes ler ao teu ritmo, quantas vezes quiseres.
               </p>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <h3 className="font-bold text-brown-900 mb-2">Posso comprar mais experiências depois?</h3>
-              <p className="text-brown-600">
-                Claro! Podes começar com um véu individual e comprar outros mais tarde. Mas a coleção completa tem 30% de desconto.
+            <div className="rounded-xl bg-white p-6 shadow-sm">
+              <h3 className="font-bold text-brown-900">O que são os Nós?</h3>
+              <p className="mt-2 text-sm text-brown-600">
+                Os Espelhos mostram-te o véu que usas. Os Nós mostram-te o que esse véu fez entre ti e outra pessoa. Ao completar um Espelho, o Nó correspondente desbloqueia-se como continuação natural.
               </p>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <h3 className="font-bold text-brown-900 mb-2">O que são os Nós?</h3>
-              <p className="text-brown-600">
-                Os Espelhos mostram-te o véu que usas. Os Nós mostram-te o que esse véu fez entre ti e outra pessoa. Ao completar um Espelho, o Nó correspondente desbloqueia-se como continuação natural. Nos Bundles e na Coleção Completa, os Nós estão incluídos.
+            <div className="rounded-xl bg-white p-6 shadow-sm">
+              <h3 className="font-bold text-brown-900">Haverá pacotes quando houver mais Espelhos?</h3>
+              <p className="mt-2 text-sm text-brown-600">
+                Sim. À medida que mais Espelhos forem publicados, disponibilizaremos pacotes com desconto. Por agora, começa pelo Espelho da Ilusão.
               </p>
             </div>
           </div>
         </section>
       </div>
     </div>
-  )
-}
-
-function ProductCard({
-  produto,
-  moeda,
-  onComprar,
-  destacado,
-  compacto,
-}: {
-  produto: Product
-  moeda: 'MZN' | 'USD'
-  onComprar: (produto: Product) => void
-  destacado?: boolean
-  compacto?: boolean
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className={`bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all ${
-        destacado ? 'ring-4 ring-purple-500 ring-offset-4' : ''
-      }`}
-    >
-      {produto.destaque && (
-        <div className={`inline-block px-4 py-2 rounded-full text-sm font-bold mb-4 ${
-          destacado
-            ? 'bg-gradient-to-r from-purple-600 to-purple-800 text-white'
-            : 'bg-sage/10 text-sage-dark'
-        }`}>
-          {produto.destaque}
-        </div>
-      )}
-
-      <h3 className={`font-serif text-brown-900 mb-2 ${compacto ? 'text-lg' : 'text-2xl'}`}>
-        {produto.nome}
-      </h3>
-
-      <p className={`text-brown-600 mb-4 ${compacto ? 'text-sm' : ''}`}>
-        {produto.descricao}
-      </p>
-
-      {!compacto && (
-        <ul className="space-y-2 mb-6">
-          {produto.inclui.map((item, i) => (
-            <li key={i} className="flex items-start gap-2 text-sm text-brown-600">
-              <span className="text-sage mt-0.5">✓</span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      )}
-
-      <div className="flex items-center justify-between mb-4">
-        <div>
-          <p className="text-sm text-brown-500">Preço:</p>
-          <p className="text-3xl font-bold text-brown-900">
-            {moeda === 'MZN'
-              ? `${produto.preco_mzn.toLocaleString()} MZN`
-              : `$${produto.preco_usd} USD`
-            }
-          </p>
-        </div>
-      </div>
-
-      <button
-        onClick={() => onComprar(produto)}
-        className={`w-full rounded-lg font-medium transition-all ${
-          destacado
-            ? 'bg-gradient-to-r from-purple-600 to-purple-800 text-white py-4 text-lg hover:shadow-xl'
-            : 'bg-sage text-white py-3 hover:bg-sage-dark'
-        }`}
-      >
-        Comprar Agora
-      </button>
-    </motion.div>
   )
 }

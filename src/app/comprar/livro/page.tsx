@@ -234,149 +234,20 @@ export default function ComprarLivroPage() {
         </div>
       </section>
 
-      {/* Bundle Especial */}
-      <section className="bg-gradient-to-br from-amber-50 to-orange-50 px-6 py-24">
-        <div className="mx-auto max-w-4xl">
-          <div className="text-center">
-            <span className="inline-block rounded-full bg-orange-500 px-4 py-1.5 font-sans text-xs font-bold uppercase tracking-wider text-white">
-              🎁 Oferta Especial
-            </span>
-            <h2 className="mt-6 font-serif text-3xl text-brown-900">
-              Bundle: Livro + 1 Espelho
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-brown-700">
-              Combina a filosofia profunda do Livro com uma ficção transformadora dos ESPELHOS
-            </p>
-          </div>
-
-          <div className="mt-12 overflow-hidden rounded-2xl border-2 border-orange-300 bg-white shadow-xl">
-            <div className="bg-gradient-to-r from-orange-100 to-amber-100 px-6 py-5">
-              <div className="flex items-center justify-between">
-                <h3 className="font-serif text-2xl text-brown-900">
-                  📚 Livro + 🪞 1 Espelho
-                </h3>
-                <span className="rounded-full bg-orange-500 px-4 py-1.5 font-sans text-xs font-bold uppercase tracking-wider text-white">
-                  Economiza
-                </span>
-              </div>
-            </div>
-            <div className="p-8">
-              <div className="grid gap-8 md:grid-cols-2">
-                <div>
-                  <h4 className="font-semibold text-brown-900">O que inclui:</h4>
-                  <ul className="mt-4 space-y-3 text-sm text-brown-700">
-                    <li className="flex items-start gap-3">
-                      <span className="text-lg">📖</span>
-                      <span>
-                        <strong>Livro "Os 7 Véus do Despertar"</strong> (físico + digital)
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-lg">🪞</span>
-                      <span>
-                        <strong>1 Espelho à tua escolha</strong> (experiência digital completa)
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-sage">✓</span>
-                      <span>Acesso vitalício a ambos</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-sage">✓</span>
-                      <span>Entrega física em Moçambique</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-sage">✓</span>
-                      <span>Códigos digitais por email</span>
-                    </li>
-                  </ul>
-                </div>
-                <div className="flex flex-col justify-between">
-                  <div>
-                    <p className="text-sm text-brown-600">Preço normal:</p>
-                    <p className="text-lg text-brown-400 line-through">
-                      1.500 MZN + 2.500 MZN = 4.000 MZN
-                    </p>
-                    <div className="mt-4 rounded-xl bg-gradient-to-br from-orange-100 to-amber-100 p-6">
-                      <p className="text-sm font-semibold text-orange-700">Preço Bundle:</p>
-                      <p className="mt-2 font-serif text-4xl font-bold text-brown-900">
-                        3.500 MZN
-                      </p>
-                      <p className="mt-2 text-sm font-medium text-orange-600">
-                        Economizas 500 MZN
-                      </p>
-                    </div>
-                  </div>
-                  <a
-                    href="https://wa.me/258845243875?text=Olá! Quero o Bundle: Livro + 1 Espelho (3.500 MZN)"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-6 flex w-full items-center justify-center gap-3 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 px-6 py-4 font-sans text-sm font-bold uppercase tracking-wider text-white shadow-lg transition-all hover:from-orange-600 hover:to-amber-600 hover:shadow-xl"
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                    </svg>
-                    Encomendar Bundle
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testemunhos */}
-      <section className="bg-cream-dark px-6 py-24">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="text-center font-serif text-2xl text-brown-900">
-            ❤️ O que dizem as leitoras
-          </h2>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            <div className="rounded-xl border border-brown-200 bg-white p-6 shadow-sm">
-              <p className="leading-relaxed text-brown-700">
-                &ldquo;Este livro mudou completamente a forma como vejo minha vida. Não é autoajuda,
-                é filosofia viva que te desafia a olhar para dentro.&rdquo;
-              </p>
-              <p className="mt-4 text-sm text-brown-500">
-                ⭐⭐⭐⭐⭐ — Maria S., 34 anos, Maputo
-              </p>
-            </div>
-            <div className="rounded-xl border border-brown-200 bg-white p-6 shadow-sm">
-              <p className="leading-relaxed text-brown-700">
-                &ldquo;A experiência digital é incrível. As pausas contemplativas, as práticas...
-                Sinto que não estou só a ler, estou a VIVER o livro.&rdquo;
-              </p>
-              <p className="mt-4 text-sm text-brown-500">
-                ⭐⭐⭐⭐⭐ — Ana P., 28 anos, Lisboa
-              </p>
-            </div>
-            <div className="rounded-xl border border-brown-200 bg-white p-6 shadow-sm">
-              <p className="leading-relaxed text-brown-700">
-                &ldquo;Li dezenas de livros de autoajuda e nenhum me tocou como este. É profundo, honesto
-                e sem fórmulas mágicas. É sobre verdade.&rdquo;
-              </p>
-              <p className="mt-4 text-sm text-brown-500">
-                ⭐⭐⭐⭐⭐ — Joana F., 41 anos, Porto
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Espelhos */}
       <section className="bg-gradient-to-b from-brown-800 to-brown-900 px-6 py-16">
         <div className="mx-auto max-w-2xl text-center">
           <p className="font-serif text-xl italic leading-relaxed text-cream">
-            💡 Gostaste do Livro? Explora também os ESPELHOS
+            Conhece também a Colecção Espelhos
           </p>
           <p className="mx-auto mt-4 max-w-md text-sm text-brown-200">
-            Ficções interativas onde te reconheces nas histórias
+            Ficções de transformação onde te reconheces nas histórias
           </p>
           <Link
             href="/comprar/espelhos"
             className="mt-6 inline-block rounded-lg border-2 border-cream bg-transparent px-8 py-3.5 font-sans text-sm font-medium uppercase tracking-wider text-cream transition-all hover:bg-cream hover:text-brown-900"
           >
-            Ver Coleção Espelhos
+            Ver Colecção Espelhos
           </Link>
         </div>
       </section>
