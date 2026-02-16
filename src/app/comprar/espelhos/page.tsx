@@ -337,7 +337,7 @@ export default function ComprarPage() {
               Cada Espelho tem um Nó
             </p>
             <p className="mx-auto mt-2 max-w-md font-serif text-sm leading-relaxed text-brown-600">
-              O Espelho olha para dentro. O Nó olha para o espaço entre duas pessoas.
+              Os Espelhos mostram-te o véu que usas. Os Nós mostram-te o que esse véu fez entre ti e outra pessoa.
               Ao completar um Espelho, o seu Nó desbloqueia — como continuação natural da história.
             </p>
             <p className="mt-3 font-sans text-xs text-brown-400">
@@ -434,7 +434,7 @@ export default function ComprarPage() {
             <div className="bg-white rounded-xl p-6 shadow-sm">
               <h3 className="font-bold text-brown-900 mb-2">O que são os Nós?</h3>
               <p className="text-brown-600">
-                Cada Espelho tem um par relacional chamado Nó. O Espelho olha para dentro; o Nó olha para o que se passa entre duas pessoas. Ao completar um Espelho, o Nó correspondente desbloqueia automaticamente. Nos Bundles e na Coleção Completa, os Nós estão incluídos.
+                Os Espelhos mostram-te o véu que usas. Os Nós mostram-te o que esse véu fez entre ti e outra pessoa. Ao completar um Espelho, o Nó correspondente desbloqueia-se como continuação natural. Nos Bundles e na Coleção Completa, os Nós estão incluídos.
               </p>
             </div>
           </div>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import NewsletterForm from "@/components/NewsletterForm";
 import ScrollReveal from "@/components/ScrollReveal";
+import NosCollectionIcon from "@/components/NosCollectionIcon";
 
 const espelhosPeek = [
   { title: "Espelho da Ilusão", tagline: "Quando a vida que tens não foi a que escolheste", image: "/images/espelho-ilusao.png" },
@@ -209,67 +210,67 @@ export default function Home() {
         </div>
       </section>
 
-      {/* NOS — relational dimension teaser */}
-      <section className="bg-cream px-6 py-24">
-        <div className="mx-auto max-w-4xl">
+      {/* NÓS — ficção relacional */}
+      <section className="bg-gradient-to-b from-[#1a1510] to-[#0a0a0a] px-6 py-24">
+        <div className="mx-auto max-w-5xl">
           <ScrollReveal>
-            <p className="text-center font-sans text-[0.65rem] uppercase tracking-[0.25em] text-brown-400">
-              A segunda dimensao ~ ficcao relacional
-            </p>
-            <h2 className="mt-3 text-center font-serif text-3xl text-brown-900 sm:text-4xl">
-              NOS
+            <div className="flex justify-center">
+              <NosCollectionIcon size={100} />
+            </div>
+            <h2 className="mt-6 text-center font-serif text-3xl text-cream sm:text-4xl">
+              Colecção Nós
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-center font-serif text-base leading-relaxed text-brown-600">
-              O que acontece entre duas pessoas quando um veu cai.
-              Cada Espelho tem um No — a historia que se desata entre quem acorda e quem ficou a espera.
+            <p className="mx-auto mt-1 text-center font-sans text-[0.6rem] uppercase tracking-[0.3em] text-brown-500">
+              Ficção Relacional
+            </p>
+            <p className="mx-auto mt-6 max-w-xl text-center font-serif text-base leading-relaxed text-brown-300">
+              Os Espelhos mostram-te o véu que usas.
+              Os Nós mostram-te o que esse véu fez entre ti e outra pessoa.
             </p>
           </ScrollReveal>
 
-          <div className="mx-auto mt-12 max-w-3xl">
-            <ScrollReveal delay={0.15} variant="fadeUp">
-              <div className="rounded-2xl border border-brown-200 bg-white p-8 shadow-sm">
-                <div className="flex items-start gap-4">
-                  <span className="mt-1 font-serif text-2xl text-brown-300">~</span>
-                  <div>
-                    <h3 className="font-serif text-xl text-brown-900">O No da Heranca</h3>
-                    <p className="mt-1 font-serif text-sm italic text-brown-500">O que a mae guardou, a filha carregou</p>
-                    <p className="mt-3 leading-relaxed text-brown-600">
-                      Sara viu o veu. Mas ha um no que ficou por desatar.
-                      A mae sempre soube. Esperou anos. Agora que Sara acordou, Helena tem algo para lhe dizer.
-                    </p>
-                    <p className="mt-3 text-sm text-sage">Disponivel ao completar o Espelho da Ilusao</p>
-                  </div>
+          {/* Cover grid — mini covers */}
+          <div className="mx-auto mt-14 grid max-w-4xl gap-4 sm:grid-cols-4 lg:grid-cols-7">
+            {[
+              { num: "I", title: "Herança", color: "#c9956a", bg: "#2e1a0e", available: true },
+              { num: "II", title: "Silêncio", color: "#6a9dbe", bg: "#142838", available: false },
+              { num: "III", title: "Sacrifício", color: "#d06a6a", bg: "#2e1015", available: false },
+              { num: "IV", title: "Vergonha", color: "#aa7abb", bg: "#22102e", available: false },
+              { num: "V", title: "Solidão", color: "#6a9e9e", bg: "#10222a", available: false },
+              { num: "VI", title: "Vazio", color: "#c4905a", bg: "#261808", available: false },
+              { num: "VII", title: "Pertença", color: "#5aaa7a", bg: "#0e2216", available: false },
+            ].map((no) => (
+              <ScrollReveal key={no.num} delay={0.05 * parseInt(no.num, 10) || 0.05} variant="fadeUp">
+                <div
+                  className="rounded-lg p-4 text-center transition-all duration-300 hover:scale-105"
+                  style={{ backgroundColor: no.bg, border: `1px solid ${no.color}18` }}
+                >
+                  <p className="font-serif text-[0.55rem] tracking-[0.3em]" style={{ color: `${no.color}66` }}>
+                    {no.num}
+                  </p>
+                  <p className="mt-2 font-serif text-sm" style={{ color: `${no.color}cc` }}>
+                    {no.title}
+                  </p>
+                  {no.available ? (
+                    <p className="mt-2 text-[0.55rem]" style={{ color: no.color }}>Disponível</p>
+                  ) : (
+                    <p className="mt-2 text-[0.55rem] text-brown-600">Em breve</p>
+                  )}
                 </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.3} variant="fadeUp">
-              <div className="mt-4 grid grid-cols-3 gap-3">
-                {[
-                  { title: "No do Silencio", veu: "Medo" },
-                  { title: "No da Divida", veu: "Culpa" },
-                  { title: "No do Reflexo", veu: "Identidade" },
-                ].map((no) => (
-                  <div key={no.title} className="rounded-xl border border-brown-100 bg-white/50 p-4 text-center">
-                    <p className="font-serif text-sm text-brown-700">{no.title}</p>
-                    <p className="mt-1 text-[0.65rem] text-brown-400">Veu: {no.veu}</p>
-                    <p className="mt-1 text-[0.6rem] italic text-brown-300">Em breve</p>
-                  </div>
-                ))}
-              </div>
-            </ScrollReveal>
+              </ScrollReveal>
+            ))}
           </div>
 
           <ScrollReveal delay={0.4}>
-            <div className="mt-10 text-center">
+            <div className="mt-12 text-center">
               <p className="text-sm text-brown-500">
-                Nos individual: 780 MZN / $12 USD — incluido nos pacotes de 3 e na Jornada Completa
+                Nó individual: 780 MZN / $12 USD — incluído nos pacotes de 3 e na Jornada Completa
               </p>
               <Link
                 href="/comprar/espelhos"
-                className="mt-4 inline-block font-sans text-sm font-medium text-sage transition-colors hover:text-sage-dark"
+                className="mt-4 inline-block font-sans text-sm font-medium text-[#c9b99a] transition-colors hover:text-cream"
               >
-                Ver pacotes com Nos incluido &rarr;
+                Ver pacotes com Nós incluído &rarr;
               </Link>
             </div>
           </ScrollReveal>

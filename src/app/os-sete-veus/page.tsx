@@ -197,9 +197,8 @@ export default function OsSeteVeusPage() {
           </p>
           <h2 className="mt-4 font-serif text-3xl text-brown-900">Colecção Nós</h2>
           <p className="mx-auto mt-4 max-w-xl leading-relaxed text-brown-600">
-            O Espelho mostra-te a ti. O Nó mostra-te a relação.
-            Cada Espelho tem um Nó — uma história que explora a mesma ferida,
-            mas vista pelos fios invisíveis que te ligam a quem amas.
+            Os Espelhos mostram-te o véu que usas.
+            Os Nós mostram-te o que esse véu fez entre ti e outra pessoa.
           </p>
           <p className="mx-auto mt-4 max-w-md text-sm text-brown-500">
             Cada Nó desbloqueia-se ao completar o Espelho correspondente.

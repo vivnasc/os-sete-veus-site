@@ -110,13 +110,12 @@ export default function ComprarPage() {
               <h2 className="mt-3 font-serif text-3xl text-brown-900">
                 NOS
               </h2>
-              <p className="mt-2 text-brown-700">
-                O que acontece entre duas pessoas quando um veu cai
+              <p className="mt-2 font-serif italic text-brown-700">
+                Os Espelhos mostram-te o véu que usas. Os Nós mostram-te o que esse véu fez entre ti e outra pessoa.
               </p>
               <p className="mt-4 text-sm leading-relaxed text-brown-600">
-                Cada Espelho revela um veu pessoal. Cada No desata o que ficou entre ti e alguem.
-                Sao historias relacionais — mae e filha, casal, amigas — que so se abrem
-                depois de viveres o Espelho correspondente. Nao e upsell. E continuacao emocional.
+                São histórias relacionais — mãe e filha, casal, amigas — que só se abrem
+                depois de viveres o Espelho correspondente. Não é upsell. É continuação emocional.
               </p>
 
               <div className="mt-6 space-y-3">
