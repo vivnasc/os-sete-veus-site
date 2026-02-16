@@ -102,6 +102,36 @@ export default function ComprarPage() {
             </div>
           </div>
 
+          {/* Já comprei o livro físico */}
+          <div className="overflow-hidden rounded-2xl border-2 border-brown-700/30 bg-brown-700/5 shadow-md">
+            <div className="p-8 sm:p-10 text-center">
+              <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-brown-500">
+                Já tens o livro?
+              </p>
+              <h2 className="mt-3 font-serif text-2xl text-brown-900">
+                Comprei o livro fisico e preciso do código
+              </h2>
+              <p className="mx-auto mt-3 max-w-md text-sm text-brown-600">
+                Quem comprou o livro fisico tem acesso digital incluído.
+                Pede o teu código e recebes em até 24h.
+              </p>
+              <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+                <Link
+                  href="/pedir-codigo"
+                  className="inline-block rounded-lg bg-brown-700 px-8 py-3.5 font-sans text-sm font-medium uppercase tracking-wider text-cream transition-colors hover:bg-brown-800"
+                >
+                  Pedir código
+                </Link>
+                <Link
+                  href="/registar-livro"
+                  className="inline-block rounded-lg border-2 border-brown-700/30 bg-transparent px-8 py-3.5 font-sans text-sm font-medium uppercase tracking-wider text-brown-700 transition-all hover:border-brown-700 hover:bg-brown-700 hover:text-cream"
+                >
+                  Já tenho código
+                </Link>
+              </div>
+            </div>
+          </div>
+
           {/* Não sei qual escolher */}
           <div className="rounded-xl border border-brown-200 bg-white/50 p-6 text-center">
             <p className="font-sans text-sm font-medium text-brown-700">
