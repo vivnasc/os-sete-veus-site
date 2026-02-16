@@ -101,71 +101,65 @@ export default function ComprarPage() {
             </div>
           </div>
 
-          {/* NÓS — Ficção Relacional */}
-          <div className="overflow-hidden rounded-2xl border-2 border-[#c9a87c]/30 bg-white shadow-lg transition-all hover:border-[#c9a87c] hover:shadow-xl">
+          {/* NOS — dimensão relacional */}
+          <div className="overflow-hidden rounded-2xl border-2 border-brown-200 bg-white shadow-lg transition-all hover:border-brown-300 hover:shadow-xl">
             <div className="p-8 sm:p-10">
-              <div className="flex items-start gap-4">
-                <div className="text-5xl">&#10023;</div>
-                <div className="flex-1">
-                  <p className="font-sans text-[0.65rem] uppercase tracking-[0.2em] text-[#c9a87c]">
-                    A segunda dimensão
-                  </p>
-                  <h2 className="mt-3 font-serif text-3xl text-brown-900">
-                    NÓS
-                  </h2>
-                  <p className="mt-2 text-brown-700">
-                    Ficção relacional — o que se herda sem escritura
-                  </p>
-                  <p className="mt-4 text-sm text-brown-600">
-                    Cada Espelho mostra-te a ti. Cada Nó mostra-te a relação.
-                    São histórias que continuam as personagens dos Espelhos,
-                    explorando os fios invisíveis entre mãe e filha, entre quem
-                    ama e quem se cala.
-                  </p>
-                  <p className="mt-2 text-sm italic text-brown-500">
-                    Primeiro disponível: O Nó da Herança — par do Espelho da Ilusão.
-                  </p>
-                  <p className="mt-4 text-xs text-brown-400">
-                    Incluído automaticamente com qualquer Espelho. O Nó desbloqueia-se ao
-                    completar o Espelho correspondente.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+              <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-brown-400">
+                ~ A segunda dimensao dos Espelhos
+              </p>
+              <h2 className="mt-3 font-serif text-3xl text-brown-900">
+                NOS
+              </h2>
+              <p className="mt-2 text-brown-700">
+                O que acontece entre duas pessoas quando um veu cai
+              </p>
+              <p className="mt-4 text-sm leading-relaxed text-brown-600">
+                Cada Espelho revela um veu pessoal. Cada No desata o que ficou entre ti e alguem.
+                Sao historias relacionais — mae e filha, casal, amigas — que so se abrem
+                depois de viveres o Espelho correspondente. Nao e upsell. E continuacao emocional.
+              </p>
 
-          {/* Comunidade incluída */}
-          <div className="overflow-hidden rounded-2xl border-2 border-brown-600/30 bg-gradient-to-r from-[#2d2620] to-[#1a1510] shadow-lg">
-            <div className="p-8 sm:p-10">
-              <div className="flex items-start gap-4">
-                <div className="text-4xl">🌊</div>
-                <div className="flex-1">
-                  <p className="font-sans text-[0.7rem] uppercase tracking-[0.2em] text-sage-light">
-                    Incluído com qualquer compra
-                  </p>
-                  <h2 className="mt-3 font-serif text-2xl text-cream sm:text-3xl">
-                    Comunidade d&#39;Os Sete Véus
-                  </h2>
-                  <p className="mt-3 leading-relaxed text-brown-200">
-                    Acesso a um espaço único onde a conexão acontece por reconhecimento.
-                    Reflexões anónimas, consciência colectiva, espelho partilhado e contemplação
-                    — tudo impermanente, como os véus.
-                  </p>
-                  <div className="mt-4 flex flex-wrap gap-3">
-                    {["Ecos", "Maré", "Círculo", "Fogueira"].map((item) => (
-                      <span
-                        key={item}
-                        className="rounded-full border border-sage/30 bg-sage/10 px-3 py-1 font-sans text-xs text-sage-light"
-                      >
-                        {item}
-                      </span>
-                    ))}
+              <div className="mt-6 space-y-3">
+                <div className="flex items-start gap-3 rounded-lg bg-brown-50 p-4">
+                  <span className="mt-0.5 font-serif text-lg text-brown-400">~</span>
+                  <div>
+                    <p className="font-serif text-base font-medium text-brown-900">O No da Heranca</p>
+                    <p className="text-sm italic text-brown-500">O que a mae guardou, a filha carregou</p>
+                    <p className="mt-1 text-[0.7rem] text-sage">Disponivel agora (requer Espelho da Ilusao completo)</p>
                   </div>
-                  <p className="mt-4 font-serif text-sm italic text-brown-400">
-                    &ldquo;Aqui, a conexão acontece por reconhecimento. Não por interação.&rdquo;
-                  </p>
+                </div>
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                  {[
+                    "No do Silencio",
+                    "No da Divida",
+                    "No do Reflexo",
+                    "No da Corda",
+                    "No da Fome",
+                    "No da Raiz",
+                  ].map((no) => (
+                    <div key={no} className="rounded-lg border border-brown-100 bg-brown-50/50 px-3 py-2 text-center">
+                      <p className="font-serif text-xs text-brown-600">{no}</p>
+                      <p className="text-[0.55rem] italic text-brown-300">Em breve</p>
+                    </div>
+                  ))}
                 </div>
               </div>
+
+              <div className="mt-6 rounded-lg border border-sage/20 bg-sage/5 p-4">
+                <p className="text-sm text-brown-700">
+                  <strong>No individual:</strong> 780 MZN / $12 USD
+                </p>
+                <p className="mt-1 text-sm text-sage font-medium">
+                  Incluido gratuitamente no Pack de 3 Espelhos e na Jornada Completa
+                </p>
+              </div>
+
+              <Link
+                href="/comprar/espelhos"
+                className="mt-6 inline-block rounded-lg border-2 border-brown-300 bg-transparent px-8 py-3.5 font-sans text-sm font-medium uppercase tracking-wider text-brown-700 transition-all hover:bg-brown-700 hover:text-white"
+              >
+                Ver pacotes com Nos incluido
+              </Link>
             </div>
           </div>
 
@@ -183,6 +177,41 @@ export default function ComprarPage() {
             >
               Fazer teste grátis
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Comunidade incluída */}
+      <section className="bg-cream px-6 py-16">
+        <div className="mx-auto max-w-3xl">
+          <div className="rounded-2xl border border-sage/20 bg-white p-8 sm:p-10">
+            <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-sage">
+              Incluido em todas as experiencias
+            </p>
+            <h2 className="mt-3 font-serif text-2xl text-brown-900 sm:text-3xl">
+              Ecos — a comunidade
+            </h2>
+            <p className="mt-4 leading-relaxed text-brown-600">
+              Quem compra qualquer experiencia acede a comunidade Ecos: reflexoes anonimas,
+              consciencia colectiva, contemplacao partilhada. Quatro espacos onde te
+              reconheces nas palavras de outras mulheres que caminham o mesmo caminho.
+            </p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {[
+                { nome: "Ecos", desc: "Reflexoes anonimas" },
+                { nome: "Mare", desc: "Consciencia colectiva" },
+                { nome: "Circulo", desc: "Espelho partilhado" },
+                { nome: "Fogueira", desc: "Contemplacao silenciosa" },
+              ].map((espaco) => (
+                <div key={espaco.nome} className="flex items-start gap-2 text-sm text-brown-600">
+                  <span className="mt-0.5 text-sage">~</span>
+                  <span><strong className="text-brown-800">{espaco.nome}</strong> — {espaco.desc}</span>
+                </div>
+              ))}
+            </div>
+            <p className="mt-6 text-sm italic text-brown-400">
+              Porque transformacao nao acontece sozinha.
+            </p>
           </div>
         </div>
       </section>
