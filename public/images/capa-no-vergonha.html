@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O Nó da Vergonha — Os Sete Nós</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #120818;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+  .cover {
+    width: 380px;
+    height: 580px;
+    position: relative;
+    overflow: hidden;
+    background: #22102e;
+    animation: fadeIn 1s ease forwards;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  /* Subtle radial glow in center */
+  .cover-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 45%, #aa7abb08 0%, transparent 70%);
+    pointer-events: none;
+  }
+  /* Fine border */
+  .cover-border {
+    position: absolute;
+    inset: 14px;
+    border: 1px solid #aa7abb18;
+    pointer-events: none;
+  }
+  .cover-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 44px 38px;
+  }
+  .cover-top {
+    text-align: center;
+  }
+  .cover-tag {
+    font-weight: 300;
+    font-size: 0.48rem;
+    letter-spacing: 0.7em;
+    text-transform: uppercase;
+    color: #aa7abb66;
+    margin-bottom: 6px;
+  }
+  .cover-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 0.85rem;
+    letter-spacing: 0.45em;
+    color: #aa7abb44;
+  }
+  .cover-center {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cover-symbol {
+    width: 120px;
+    height: 120px;
+  }
+  .cover-title-block {
+    text-align: center;
+    margin-bottom: 14px;
+  }
+  .cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 2.2rem;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .cover-title em {
+    font-style: italic;
+    font-weight: 300;
+  }
+  .cover-subtitle {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 0.7rem;
+    color: #aa7abb88;
+    line-height: 1.6;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+  .cover-bottom {
+    text-align: center;
+  }
+  .cover-line {
+    width: 44px;
+    height: 1px;
+    margin: 0 auto 12px;
+    background: #aa7abb;
+    opacity: 0.3;
+  }
+  .cover-author {
+    font-weight: 300;
+    font-size: 0.62rem;
+    letter-spacing: 0.35em;
+    color: rgba(255,255,255,0.3);
+  }
+</style>
+</head>
+<body>
+  <div class="cover">
+    <div class="cover-glow"></div>
+    <div class="cover-border"></div>
+    <div class="cover-content">
+      <div class="cover-top">
+        <div class="cover-tag">Os Sete Nós</div>
+        <div class="cover-number">IV</div>
+      </div>
+      <div class="cover-center">
+        <svg class="cover-symbol" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          
+            <ellipse cx="36" cy="40" rx="15" ry="19" fill="none" stroke="#aa7abb" stroke-width="0.9" opacity="0.55" transform="rotate(-8,36,40)"/>
+            <ellipse cx="64" cy="40" rx="15" ry="19" fill="none" stroke="#aa7abb" stroke-width="0.9" opacity="0.55" transform="rotate(8,64,40)"/>
+            <circle cx="33" cy="36" r="2.5" fill="none" stroke="#aa7abb" stroke-width="0.5" opacity="0.35"/>
+            <circle cx="67" cy="36" r="2.5" fill="none" stroke="#aa7abb" stroke-width="0.5" opacity="0.35"/>
+            <path d="M 36 60 Q 42 72, 50 76 Q 58 72, 64 60" fill="none" stroke="#aa7abb" stroke-width="0.7" opacity="0.35" stroke-linecap="round"/>
+            <line x1="22" y1="70" x2="28" y2="76" stroke="#aa7abb" stroke-width="0.5" opacity="0.18"/>
+            <line x1="72" y1="70" x2="78" y2="76" stroke="#aa7abb" stroke-width="0.5" opacity="0.18"/>
+            <circle cx="50" cy="76" r="1.5" fill="#aa7abb" opacity="0.18"/>
+        
+        </svg>
+      </div>
+      <div class="cover-title-block">
+        <h1 class="cover-title">O Nó da<br><em>Vergonha</em></h1>
+        <p class="cover-subtitle">A máscara que caiu entre dois estranhos</p>
+      </div>
+      <div class="cover-bottom">
+        <div class="cover-line"></div>
+        <div class="cover-author">Vivianne dos Santos</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
