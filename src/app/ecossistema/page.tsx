@@ -18,12 +18,21 @@ export const metadata: Metadata = {
 const pilares = [
   {
     icon: "📖",
-    title: "Leitura Integrada",
+    title: "Colecção Espelhos",
     description:
-      "Lê capítulo a capítulo, directamente no site. Com pausas de reflexão naturais, checklists interactivos e progresso visual.",
+      "7 ficções de transformação interior. Histórias onde te reconheces. Cada Espelho tem 7 capítulos, práticas de respiração, diário de reflexão e espelho pessoal.",
     color: "#c9b896",
+    link: "/experiencias",
+    linkText: "Ver Colecção Espelhos",
+  },
+  {
+    icon: "&#8734;",
+    title: "Colecção Nós",
+    description:
+      "7 ficções relacionais. O que se passa entre duas pessoas quando um véu cai. Cada Nó desbloqueia ao completar o Espelho correspondente.",
+    color: "#c9a87c",
     link: "/os-sete-veus",
-    linkText: "Conhece os livros",
+    linkText: "Ver Colecção Nós",
   },
   {
     icon: "🪞",
@@ -53,15 +62,6 @@ const pilares = [
     linkText: "Acede grátis",
   },
   {
-    icon: "📚",
-    title: "Artigos e Reflexões",
-    description:
-      "Ensaios sobre autenticidade, escolha e liberdade interior. Para ler quando precisares de uma pausa com sentido.",
-    color: "#9aac8e",
-    link: "/artigos",
-    linkText: "Lê os artigos",
-  },
-  {
     icon: "🌊",
     title: "Comunidade Anónima",
     description:
@@ -70,21 +70,12 @@ const pilares = [
     link: "/comunidade",
     linkText: "Descobre a comunidade",
   },
-  {
-    icon: "🌀",
-    title: "7 Livros, 7 Véus",
-    description:
-      "Uma colecção completa que cresce contigo. Cada livro é um véu — cada véu é uma camada que soltas.",
-    color: "#baaacc",
-    link: "/os-sete-veus",
-    linkText: "Ver a colecção",
-  },
 ];
 
 const numeros = [
-  { valor: "7", label: "Livros na colecção", cor: "#c9b896" },
-  { valor: "7", label: "Reflexões por livro", cor: "#7a8c6e" },
-  { valor: "4", label: "Práticas guiadas", cor: "#c08aaa" },
+  { valor: "2", label: "Colecções de ficção", cor: "#c9b896" },
+  { valor: "7", label: "Livros por colecção", cor: "#c9a87c" },
+  { valor: "7", label: "Capítulos por livro", cor: "#7a8c6e" },
   { valor: "4", label: "Espaços comunitários", cor: "#6a8a7a" },
   { valor: "8+", label: "Recursos gratuitos", cor: "#8aaaca" },
 ];
@@ -172,8 +163,9 @@ export default function EcossistemaPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.4}>
             <p className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-brown-200">
-              Leitura integrada, diário de reflexão, práticas guiadas e recursos gratuitos
-              — tudo num ecossistema construído para quem quer viver com mais verdade.
+              Duas colecções de ficção (Espelhos e Nós), um livro filosófico,
+              diário de reflexão, práticas guiadas, comunidade anónima e recursos gratuitos
+              — tudo construído para quem quer viver com mais verdade.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.55}>
@@ -223,10 +215,10 @@ export default function EcossistemaPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.15}>
             <p className="mx-auto mt-6 max-w-xl leading-relaxed text-brown-700">
-              Não é uma app. Não é um curso online. É um espaço digital onde livros,
-              reflexões, práticas e recursos se encontram — para que a leitura não fique
-              só nas páginas, mas entre na tua vida. Cada peça foi desenhada para
-              funcionar sozinha ou em conjunto, ao teu ritmo.
+              Duas colecções de 7 livros cada — os <strong>Espelhos</strong> (ficção interior)
+              e os <strong>Nós</strong> (ficção relacional) — mais um livro filosófico,
+              uma comunidade anónima e recursos gratuitos. Tudo num espaço digital construído
+              para que a leitura não fique só nas páginas, mas entre na tua vida.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.3} variant="fadeIn">
@@ -451,29 +443,26 @@ export default function EcossistemaPage() {
               </div>
             </ScrollReveal>
 
-            {/* Digital */}
+            {/* Espelhos */}
             <ScrollReveal delay={0.2} variant="scale">
-              <div className="relative flex h-full flex-col rounded-2xl border-2 border-sage bg-white p-7 shadow-md">
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-sage px-4 py-1 font-sans text-[0.65rem] font-medium uppercase tracking-wider text-white">
-                  Mais popular
-                </span>
+              <div className="flex h-full flex-col rounded-2xl border border-brown-100 bg-white p-7 shadow-sm">
                 <p className="font-sans text-[0.7rem] font-medium uppercase tracking-[0.2em] text-sage">
-                  Experiência Digital
+                  Colecção Espelhos
                 </p>
                 <p className="mt-3 font-sans text-3xl font-bold text-brown-900">
-                  $19 <span className="text-base font-normal text-brown-400">USD</span>
+                  1.885 <span className="text-base font-normal text-brown-400">MZN</span>
                 </p>
-                <p className="mt-1 text-sm text-brown-500">Acesso mundial</p>
+                <p className="mt-1 text-sm text-brown-500">$29 USD por Espelho</p>
                 <ul className="mt-6 flex-1 space-y-2">
                   {[
-                    "Tudo do plano Explorar",
-                    "Reader integrado com 7 capítulos",
+                    "7 capítulos de ficção imersiva",
+                    "Práticas de respiração guiada",
                     "Diário de reflexão auto-guardado",
                     "Checklists interactivos",
-                    "O Teu Espelho — reflexões reunidas",
-                    "Práticas guiadas com áudio",
-                    "Comunidade anónima dos Sete Véus",
-                    "Modo nocturno",
+                    "O Teu Espelho pessoal",
+                    "Nó correspondente incluído",
+                    "Comunidade Ecos incluída",
+                    "Acesso vitalício",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-brown-600">
                       <span className="mt-0.5 text-sage">&#10003;</span>
@@ -482,31 +471,33 @@ export default function EcossistemaPage() {
                   ))}
                 </ul>
                 <Link
-                  href="/livro-fisico"
+                  href="/comprar/espelhos"
                   className="mt-6 block rounded-md border-2 border-sage bg-sage px-6 py-3 text-center font-sans text-[0.75rem] font-medium uppercase tracking-[0.12em] text-white transition-all hover:bg-transparent hover:text-sage"
                 >
-                  Adquirir agora
+                  Ver Colecção Espelhos
                 </Link>
               </div>
             </ScrollReveal>
 
-            {/* Físico */}
+            {/* Livro Físico */}
             <ScrollReveal delay={0.3} variant="scale">
               <div className="flex h-full flex-col rounded-2xl border border-brown-100 bg-white p-7 shadow-sm">
                 <p className="font-sans text-[0.7rem] font-medium uppercase tracking-[0.2em] text-brown-400">
-                  Livro Físico
+                  Livro Filosófico
                 </p>
                 <p className="mt-3 font-sans text-3xl font-bold text-brown-900">
-                  1.500 <span className="text-base font-normal text-brown-400">MT</span>
+                  1.500 <span className="text-base font-normal text-brown-400">MZN</span>
                 </p>
-                <p className="mt-1 text-sm text-brown-500">Entrega em Moçambique</p>
+                <p className="mt-1 text-sm text-brown-500">$23 USD — Físico + digital</p>
                 <ul className="mt-6 flex-1 space-y-2">
                   {[
-                    "Edição impressa de alta qualidade",
-                    "Entrega em todo Moçambique",
-                    "Encomenda directa via WhatsApp",
-                    "Acesso digital incluído",
-                    "Comunidade anónima dos Sete Véus",
+                    "\"Os 7 Véus do Despertar\"",
+                    "Edição física de alta qualidade",
+                    "Versão digital incluída",
+                    "Leitura contemplativa no site",
+                    "Práticas guiadas por véu",
+                    "Comunidade Ecos incluída",
+                    "Entrega em Moçambique",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-brown-600">
                       <span className="mt-0.5 text-sage">&#10003;</span>
@@ -514,14 +505,12 @@ export default function EcossistemaPage() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href="https://wa.me/258845243875?text=Olá! Quero encomendar o livro físico Os 7 Véus do Despertar"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-6 block rounded-md border-2 border-[#25D366] bg-transparent px-6 py-3 text-center font-sans text-[0.75rem] font-medium uppercase tracking-[0.12em] text-[#25D366] transition-all hover:bg-[#25D366] hover:text-white"
+                <Link
+                  href="/comprar/livro"
+                  className="mt-6 block rounded-md border-2 border-brown-900 bg-brown-900 px-6 py-3 text-center font-sans text-[0.75rem] font-medium uppercase tracking-[0.12em] text-cream transition-all hover:bg-transparent hover:text-brown-900"
                 >
-                  Encomendar via WhatsApp
-                </a>
+                  Ver opções do Livro
+                </Link>
               </div>
             </ScrollReveal>
           </div>
@@ -539,28 +528,36 @@ export default function EcossistemaPage() {
           <div className="mt-12 space-y-8">
             {[
               {
+                q: "O que são os Espelhos?",
+                a: "São uma colecção de 7 ficções de transformação interior — histórias onde te reconheces. Cada Espelho corresponde a um véu (Ilusão, Medo, Culpa, Identidade, Controlo, Desejo, Separação) e inclui 7 capítulos, práticas de respiração, diário de reflexão e espelho pessoal. Actualmente está disponível o Espelho da Ilusão. Os restantes serão publicados ao longo de 2026.",
+              },
+              {
+                q: "O que são os Nós?",
+                a: "São uma colecção de 7 ficções relacionais — histórias sobre o que se passa entre duas pessoas quando um véu cai. Cada Nó é o par relacional de um Espelho. O Nó da Herança (par do Espelho da Ilusão) é a história de Sara e Helena, mãe e filha, e o silêncio herdado entre elas. Cada Nó desbloqueia ao completar o Espelho correspondente.",
+              },
+              {
+                q: "Qual a diferença entre Espelhos e Nós?",
+                a: "Os Espelhos mostram-te o véu que usas — olham para dentro. Os Nós mostram-te o que esse véu fez entre ti e outra pessoa — olham para a relação. São dois lados do mesmo fio. Primeiro lês o Espelho (a tua história), depois o Nó desbloqueia (a história entre duas pessoas).",
+              },
+              {
+                q: "E o livro 'Os 7 Véus do Despertar'?",
+                a: "É o ensaio filosófico que deu origem a tudo — 232 páginas sobre despertar de consciência. É independente das colecções de ficção. Podes começar pelo livro, pelos Espelhos, ou por ambos. Não há ordem certa.",
+              },
+              {
                 q: "Preciso de pagar para explorar a plataforma?",
-                a: "Não. Os recursos gratuitos, artigos e o teste de autoconhecimento são sempre gratuitos. Só pagas se quiseres aceder à experiência de leitura integrada.",
+                a: "Não. O teste de autoconhecimento, artigos, diário de 7 dias e outros recursos são gratuitos. Só pagas se quiseres aceder às experiências de leitura integrada (Espelhos, Nós ou Livro).",
               },
               {
                 q: "Como funciona a leitura no site?",
-                a: "Depois de adquirires um livro, acedes a um reader integrado onde lês capítulo a capítulo. Cada capítulo tem pausas de reflexão, um diário pessoal e checklists. O teu progresso é guardado automaticamente.",
+                a: "Lês capítulo a capítulo, directamente no site. Cada capítulo tem pausas de reflexão, diário pessoal e checklists. O teu progresso é guardado automaticamente. Funciona em qualquer browser — telemóvel, tablet ou computador.",
               },
               {
-                q: "Posso aceder de qualquer dispositivo?",
-                a: "Sim. A plataforma funciona em qualquer browser — telemóvel, tablet ou computador. O teu progresso sincroniza entre dispositivos.",
+                q: "O que é a comunidade?",
+                a: "Chama-se Ecos. Tem quatro espaços: Ecos (reflexões anónimas), Maré (consciência colectiva), Círculo (espelho partilhado) e Fogueira (contemplação silenciosa). Tudo anónimo. Tudo impermanente. Incluída com qualquer experiência.",
               },
               {
-                q: "O que é O Teu Espelho?",
-                a: "É uma funcionalidade especial que reúne todas as reflexões que escreveste durante a leitura num só lugar. Uma forma de te veres a ti mesma através das tuas próprias palavras.",
-              },
-              {
-                q: "O que é a comunidade d'Os Sete Véus?",
-                a: "É um espaço anónimo e impermanente exclusivo para quem adquiriu um livro ou Espelho. Tem quatro espaços: Ecos (reflexões anónimas), Maré (consciência colectiva), Círculo (espelho partilhado) e Fogueira (contemplação). A conexão acontece por reconhecimento, não por interação.",
-              },
-              {
-                q: "A plataforma vai ter mais livros?",
-                a: "Sim. A colecção terá 7 livros no total, cada um correspondendo a um véu. Novos livros serão adicionados progressivamente ao ecossistema.",
+                q: "Quantos livros existem no total?",
+                a: "São 15 livros no total: 7 Espelhos (ficção interior), 7 Nós (ficção relacional) e 1 livro filosófico. As duas colecções de ficção vão sendo publicadas ao longo de 2026.",
               },
             ].map((faq, i) => (
               <ScrollReveal key={i} delay={0.1 * i}>

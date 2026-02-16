@@ -158,15 +158,86 @@ export default function Home() {
                 Já compraste o livro físico?
               </p>
               <p className="mt-2 text-sm text-brown-600">
-                Regista o teu código e acede à versão digital do livro
+                Regista o teu código ou pede um se ainda não o recebeste
               </p>
-              <Link
-                href="/registar-livro"
-                className="mt-4 inline-block rounded-lg border-2 border-sage bg-transparent px-6 py-2.5 font-sans text-sm font-medium uppercase tracking-wider text-sage transition-all hover:bg-sage hover:text-white"
-              >
-                Registar código
-              </Link>
+              <div className="mt-4 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+                <Link
+                  href="/registar-livro"
+                  className="inline-block rounded-lg border-2 border-sage bg-transparent px-6 py-2.5 font-sans text-sm font-medium uppercase tracking-wider text-sage transition-all hover:bg-sage hover:text-white"
+                >
+                  Tenho código
+                </Link>
+                <Link
+                  href="/pedir-codigo"
+                  className="inline-block rounded-lg border-2 border-brown-300 bg-transparent px-6 py-2.5 font-sans text-sm font-medium uppercase tracking-wider text-brown-500 transition-all hover:border-brown-500 hover:text-brown-700"
+                >
+                  Pedir código
+                </Link>
+              </div>
             </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* A visão — 3 dimensões */}
+      <section className="bg-cream-dark px-6 py-24">
+        <div className="mx-auto max-w-4xl">
+          <ScrollReveal>
+            <p className="text-center font-sans text-[0.65rem] uppercase tracking-[0.25em] text-sage">
+              A visão
+            </p>
+            <h2 className="mt-3 text-center font-serif text-3xl text-brown-900 sm:text-4xl">
+              Cada véu tem três dimensões
+            </h2>
+          </ScrollReveal>
+
+          <div className="mx-auto mt-12 grid max-w-3xl gap-6 sm:grid-cols-3">
+            <ScrollReveal delay={0.1} variant="scale">
+              <div className="rounded-2xl border border-[#c9b896]/30 bg-white px-6 py-8 text-center shadow-sm">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#c9b896]/10">
+                  <span className="font-serif text-2xl text-[#c9b896]">&#9826;</span>
+                </div>
+                <h3 className="mt-4 font-serif text-lg text-brown-800">Espelhos</h3>
+                <p className="mt-1 font-sans text-[0.65rem] uppercase tracking-wider text-brown-400">Ficção interior</p>
+                <p className="mt-3 font-serif text-sm leading-relaxed text-brown-600">
+                  7 histórias onde te reconheces. Cada espelho revela um véu que usas sem saber.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.2} variant="scale">
+              <div className="rounded-2xl border border-[#c9a87c]/30 bg-white px-6 py-8 text-center shadow-sm">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#c9a87c]/10">
+                  <span className="font-serif text-2xl text-[#c9a87c]">&#8734;</span>
+                </div>
+                <h3 className="mt-4 font-serif text-lg text-brown-800">Nós</h3>
+                <p className="mt-1 font-sans text-[0.65rem] uppercase tracking-wider text-brown-400">Ficção relacional</p>
+                <p className="mt-3 font-serif text-sm leading-relaxed text-brown-600">
+                  7 histórias entre duas pessoas. Cada nó revela o que o véu fez na relação.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.3} variant="scale">
+              <div className="rounded-2xl border border-sage/30 bg-white px-6 py-8 text-center shadow-sm">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-sage/10">
+                  <span className="font-serif text-2xl text-sage">~</span>
+                </div>
+                <h3 className="mt-4 font-serif text-lg text-brown-800">Ecos</h3>
+                <p className="mt-1 font-sans text-[0.65rem] uppercase tracking-wider text-brown-400">Comunidade</p>
+                <p className="mt-3 font-serif text-sm leading-relaxed text-brown-600">
+                  Onde as vozes se encontram. Reflexões anónimas entre quem lê e sente.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          <ScrollReveal delay={0.4}>
+            <p className="mx-auto mt-10 max-w-lg text-center font-serif text-sm italic leading-relaxed text-brown-500">
+              Os Espelhos mostram-te o véu que usas.
+              Os Nós mostram-te o que esse véu fez entre ti e outra pessoa.
+              Os Ecos são onde te reconheces em quem caminha contigo.
+            </p>
           </ScrollReveal>
         </div>
       </section>
