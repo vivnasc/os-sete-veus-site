@@ -404,24 +404,6 @@ export default function MembroDashboard() {
             </div>
           </Link>
 
-          {/* Colecção Nós */}
-          <Link
-            href="/membro/nos"
-            className="group rounded-2xl border border-brown-100 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
-          >
-            <div className="flex items-center gap-4">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#c9a87c] to-[#a08060] text-lg text-white">
-                &#8734;
-              </span>
-              <div>
-                <h3 className="font-serif text-base text-brown-800">Colecção Nós</h3>
-                <p className="mt-0.5 font-sans text-xs text-brown-400">
-                  Ficção relacional
-                </p>
-              </div>
-            </div>
-          </Link>
-
           {/* Ecos — Comunidade */}
           <Link
             href="/comunidade"
