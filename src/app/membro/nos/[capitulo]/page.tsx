@@ -1,37 +1,33 @@
 "use client";
 
 import { use, useEffect, useState, useCallback, useRef } from "react";
-import { useAuth } from "@/components/AuthProvider";
 import { useRouter } from "next/navigation";
 import { chapters } from "@/data/no-heranca";
-import { chapters as espelhoChapters } from "@/data/ebook";
 import { supabase } from "@/lib/supabase";
+import { useNosGate } from "@/hooks/useNosGate";
 import InteractiveChecklist from "@/components/InteractiveChecklist";
 import ReflectionJournal from "@/components/ReflectionJournal";
 import BreathingExercise from "@/components/BreathingExercise";
-import PartilhaTrecho from "@/components/PartilhaTrecho";
 import { getReadingTime, formatReadingTime } from "@/lib/readingTime";
 import Link from "next/link";
 
-const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
-
 export default function NosChapterPage({ params }: { params: Promise<{ capitulo: string }> }) {
   const { capitulo } = use(params);
-  const { user, profile, loading: authLoading } = useAuth();
+  const {
+    canAccessNos,
+    hasMirrorsAccess,
+    authLoading,
+    user,
+  } = useNosGate();
   const router = useRouter();
   const chapter = chapters.find((ch) => ch.slug === capitulo);
   const chapterIndex = chapters.findIndex((ch) => ch.slug === capitulo);
   const prevChapter = chapterIndex > 0 ? chapters[chapterIndex - 1] : null;
   const nextChapter = chapterIndex < chapters.length - 1 ? chapters[chapterIndex + 1] : null;
 
-  const isAdmin = profile?.is_admin || AUTHOR_EMAILS.includes(user?.email || "");
-  const hasMirrorsAccess = isAdmin || profile?.has_mirrors_access || false;
-
   const [showReflection, setShowReflection] = useState(false);
   const [completed, setCompleted] = useState(false);
   const [nightMode, setNightMode] = useState(false);
-  const [espelhoCompleto, setEspelhoCompleto] = useState(false);
-  const [gateLoading, setGateLoading] = useState(true);
   const endRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -54,42 +50,10 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
     localStorage.setItem("reader-night-mode", String(next));
   };
 
-  // Check Espelho completion gate
-  useEffect(() => {
-    if (isAdmin) {
-      setEspelhoCompleto(true);
-      setGateLoading(false);
-      return;
-    }
+  // Use nos- prefix for chapter slugs to separate from Espelho progress
+  const chapterKey = chapter ? `nos-${chapter.slug}` : "";
 
-    const checkGate = async () => {
-      const session = await supabase.auth.getSession();
-      const userId = session.data.session?.user?.id;
-      if (!userId) {
-        setGateLoading(false);
-        return;
-      }
-
-      const { data } = await supabase
-        .from("reading_progress")
-        .select("chapter_slug, completed")
-        .eq("user_id", userId);
-
-      if (data) {
-        const espelhoMap: Record<string, boolean> = {};
-        data.forEach((row) => {
-          if (!row.chapter_slug.startsWith("nos-")) {
-            espelhoMap[row.chapter_slug] = row.completed;
-          }
-        });
-        setEspelhoCompleto(espelhoChapters.every((ch) => espelhoMap[ch.slug]));
-      }
-      setGateLoading(false);
-    };
-    checkGate();
-  }, [isAdmin]);
-
-  // Track reading progress — prefixed with "nos-" to distinguish from Espelho
+  // Track reading progress
   const markAsRead = useCallback(async () => {
     const session = await supabase.auth.getSession();
     const userId = session.data.session?.user?.id;
@@ -98,16 +62,16 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
     await supabase.from("reading_progress").upsert(
       {
         user_id: userId,
-        chapter_slug: `nos-${chapter.slug}`,
+        chapter_slug: chapterKey,
         completed: true,
         updated_at: new Date().toISOString(),
       },
       { onConflict: "user_id,chapter_slug" }
     );
     setCompleted(true);
-  }, [chapter]);
+  }, [chapter, chapterKey]);
 
-  // Load completion state
+  // Load completion state for this chapter
   useEffect(() => {
     if (!chapter) return;
     const load = async () => {
@@ -119,13 +83,13 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
         .from("reading_progress")
         .select("completed")
         .eq("user_id", userId)
-        .eq("chapter_slug", `nos-${chapter.slug}`)
+        .eq("chapter_slug", chapterKey)
         .single();
 
       if (data?.completed) setCompleted(true);
     };
     load();
-  }, [chapter]);
+  }, [chapter, chapterKey]);
 
   // Detect scroll to bottom to show reflection
   useEffect(() => {
@@ -143,12 +107,20 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
     return () => observer.disconnect();
   }, [completed, markAsRead]);
 
-  if (authLoading || !hasMirrorsAccess || gateLoading) return null;
+  if (authLoading || !hasMirrorsAccess) return null;
 
-  // Redirect to hub if Espelho not complete
-  if (!espelhoCompleto) {
-    router.push("/membro/nos");
-    return null;
+  // Gate: redirect to Nós hub if Espelho not complete (admin bypasses)
+  if (!canAccessNos) {
+    return (
+      <section className="px-6 py-16 text-center">
+        <p className="font-serif text-lg text-brown-600">
+          Este nó só se desata depois do Espelho da Ilusão.
+        </p>
+        <Link href="/membro/nos" className="mt-4 inline-block text-[#c9a87c] hover:underline">
+          Voltar
+        </Link>
+      </section>
+    );
   }
 
   if (!chapter) {
@@ -167,14 +139,14 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
       {/* Reading progress bar */}
       <div className="fixed left-0 right-0 top-0 z-50 h-1" style={{ backgroundColor: chapter.accentColor + "20" }}>
         <div
-          id="reading-progress"
+          id="nos-reading-progress"
           className="h-full transition-all duration-150"
           style={{ backgroundColor: chapter.accentColor, width: "0%" }}
         />
       </div>
 
       {/* Scroll progress tracker */}
-      <ScrollProgress />
+      <NosScrollProgress />
 
       <article
         className="px-6 py-12 transition-colors duration-500"
@@ -292,20 +264,15 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
                 <BreathingExercise accentColor={chapter.accentColor} />
 
                 <ReflectionJournal
-                  chapterSlug={`nos-${chapter.slug}`}
+                  chapterSlug={chapterKey}
                   prompt={chapter.reflection.prompt}
                   journalQuestion={chapter.reflection.journalQuestion}
                   accentColor={chapter.accentColor}
                 />
 
                 <InteractiveChecklist
-                  chapterSlug={`nos-${chapter.slug}`}
+                  chapterSlug={chapterKey}
                   items={chapter.checklist}
-                  accentColor={chapter.accentColor}
-                />
-
-                <PartilhaTrecho
-                  chapterSlug={`nos-${chapter.slug}`}
                   accentColor={chapter.accentColor}
                 />
               </>
@@ -341,11 +308,11 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
               </Link>
             ) : (
               <Link
-                href="/membro/espelho"
+                href="/comunidade"
                 className="group flex items-center gap-2 font-sans text-sm transition-colors"
                 style={{ color: chapter.accentColor }}
               >
-                <span>O Teu Espelho</span>
+                <span>Ecos — Comunidade</span>
                 <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
               </Link>
             )}
@@ -357,10 +324,10 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
 }
 
 // Scroll progress component
-function ScrollProgress() {
+function NosScrollProgress() {
   useEffect(() => {
     const handleScroll = () => {
-      const bar = document.getElementById("reading-progress");
+      const bar = document.getElementById("nos-reading-progress");
       if (!bar) return;
 
       const scrollTop = window.scrollY;
