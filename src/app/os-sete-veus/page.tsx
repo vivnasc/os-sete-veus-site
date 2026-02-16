@@ -3,19 +3,19 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Os Sete Véus",
+  title: "Colecção Espelhos — Ficção de Transformação Interior",
   description:
-    "Sete livros. Sete espelhos. Sete formas de nos escondermos de nós mesmas — e sete caminhos de volta.",
+    "7 livros. 7 espelhos. Histórias onde te reconheces — e algo muda. Cada Espelho revela um véu que usas sem saber.",
 };
 
 const nos = [
-  { espelho: 1, title: "O Nó da Herança", subtitle: "O que a mãe guardou, a filha carregou", available: true },
-  { espelho: 2, title: "O Nó do Silêncio", subtitle: "Quando o amor se diz calando", available: false },
-  { espelho: 3, title: "O Nó da Dívida", subtitle: "O que se deve a quem nunca pediu", available: false },
-  { espelho: 4, title: "O Nó do Reflexo", subtitle: "Quando te vês no outro e não reconheces", available: false },
-  { espelho: 5, title: "O Nó da Distância", subtitle: "Perto demais para ver, longe demais para sentir", available: false },
-  { espelho: 6, title: "O Nó da Comparação", subtitle: "Quando medes o amor pelo que os outros têm", available: false },
-  { espelho: 7, title: "O Nó do Controlo", subtitle: "Quando segurar é a única forma de amar que conheces", available: false },
+  { espelho: 1, title: "O Nó da Herança", subtitle: "O silêncio herdado entre mãe e filha", available: true },
+  { espelho: 2, title: "O Nó do Silêncio", subtitle: "O que o medo calou entre eles", available: false },
+  { espelho: 3, title: "O Nó do Sacrifício", subtitle: "A culpa disfarçada de entrega", available: false },
+  { espelho: 4, title: "O Nó da Vergonha", subtitle: "A máscara que caiu entre dois estranhos", available: false },
+  { espelho: 5, title: "O Nó da Solidão", subtitle: "O controlo que isolou quem mais amava", available: false },
+  { espelho: 6, title: "O Nó do Vazio", subtitle: "O desejo que esvaziou a amizade", available: false },
+  { espelho: 7, title: "O Nó da Pertença", subtitle: "A separação que reinventou o lar", available: false },
 ];
 
 const veus = [
@@ -37,45 +37,45 @@ const veus = [
       "E se o medo não fosse o inimigo, mas um espelho que te mostra o que há do outro lado? Este livro é para quem sabe o que quer — mas tem medo de ir buscar.",
     image: "/images/espelho-medo.png",
     accent: "bg-veu-2",
-    available: true,
+    available: false,
   },
   {
     number: 3,
-    title: "O Espelho do Desejo",
-    subtitle: "Quando desejas tudo menos o que precisas",
-    description:
-      "O desejo que te move é realmente teu? Ou é uma resposta ao que te ensinaram a querer? Este livro é para quem precisa de parar e perguntar: o que é que eu quero, de verdade?",
-    image: "/images/espelho-desejo.png",
-    accent: "bg-veu-3",
-    available: false,
-  },
-  {
-    number: 4,
-    title: "O Espelho do Controlo",
-    subtitle: "Quando segurar é a única forma que conheces",
-    description:
-      "Há uma diferença entre cuidar e controlar — e por vezes essa linha desaparece. Este livro é para quem precisa de aprender a largar para se encontrar.",
-    image: "/images/espelho-controlo.png",
-    accent: "bg-veu-4",
-    available: false,
-  },
-  {
-    number: 5,
     title: "O Espelho da Culpa",
     subtitle: "Quando te castigas por querer mais",
     description:
       "Querer mais não é egoísmo. É vida. Este livro é para quem precisa de permissão — a permissão que só tu te podes dar.",
     image: "/images/espelho-culpa.png",
-    accent: "bg-veu-5",
+    accent: "bg-veu-3",
     available: false,
   },
   {
-    number: 6,
+    number: 4,
     title: "O Espelho da Identidade",
     subtitle: "Quando já não sabes quem és sem os outros",
     description:
       "O que sobra quando tiras todos os papéis — mãe, filha, mulher, profissional? Este livro é para quem está pronta para se descobrir por baixo de tudo.",
     image: "/images/espelho-identidade.png",
+    accent: "bg-veu-4",
+    available: false,
+  },
+  {
+    number: 5,
+    title: "O Espelho do Controlo",
+    subtitle: "Quando segurar é a única forma que conheces",
+    description:
+      "Há uma diferença entre cuidar e controlar — e por vezes essa linha desaparece. Este livro é para quem precisa de aprender a largar para se encontrar.",
+    image: "/images/espelho-controlo.png",
+    accent: "bg-veu-5",
+    available: false,
+  },
+  {
+    number: 6,
+    title: "O Espelho do Desejo",
+    subtitle: "Quando desejas tudo menos o que precisas",
+    description:
+      "O desejo que te move é realmente teu? Ou é uma resposta ao que te ensinaram a querer? Este livro é para quem precisa de parar e perguntar: o que é que eu quero, de verdade?",
+    image: "/images/espelho-desejo.png",
     accent: "bg-veu-6",
     available: false,
   },
@@ -97,12 +97,15 @@ export default function OsSeteVeusPage() {
       {/* Hero — dark */}
       <section className="bg-gradient-to-b from-brown-800 to-brown-900 px-6 py-24 sm:py-32">
         <div className="mx-auto max-w-3xl text-center">
-          <h1 className="font-serif text-4xl leading-tight text-cream sm:text-5xl">
-            Os Sete Véus
+          <p className="font-sans text-[0.7rem] uppercase tracking-[0.25em] text-brown-400">
+            7 livros ~ 7 capítulos cada
+          </p>
+          <h1 className="mt-4 font-serif text-4xl leading-tight text-cream sm:text-5xl">
+            Colecção Espelhos
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-brown-200">
-            Sete livros. Sete espelhos. Sete formas de nos escondermos de nós mesmas — e sete caminhos
-            de volta.
+            Histórias onde te reconheces — e algo muda. Cada Espelho revela um véu
+            que usas sem saber.
           </p>
         </div>
       </section>
@@ -189,21 +192,26 @@ export default function OsSeteVeusPage() {
         </section>
       ))}
 
-      {/* Colecção Nós — explanation */}
+      {/* Colecção Nós — bridge */}
       <section className="bg-cream-dark px-6 py-20">
         <div className="mx-auto max-w-3xl text-center">
           <p className="font-sans text-[0.7rem] uppercase tracking-[0.25em] text-[#c9a87c]">
             A segunda dimensão
           </p>
-          <h2 className="mt-4 font-serif text-3xl text-brown-900">Colecção Nós</h2>
+          <h2 className="mt-4 font-serif text-3xl text-brown-900">Colecção Nos</h2>
           <p className="mx-auto mt-4 max-w-xl leading-relaxed text-brown-600">
             Os Espelhos mostram-te o véu que usas.
-            Os Nós mostram-te o que esse véu fez entre ti e outra pessoa.
+            Os Nos mostram-te o que esse véu fez entre ti e outra pessoa.
           </p>
           <p className="mx-auto mt-4 max-w-md text-sm text-brown-500">
-            Cada Nó desbloqueia-se ao completar o Espelho correspondente.
-            Está incluído — não há custo adicional.
+            Cada No desbloqueia-se ao completar o Espelho correspondente.
           </p>
+          <Link
+            href="/coleccao-nos"
+            className="mt-8 inline-block rounded-full border-2 border-[#c9a87c]/40 px-8 py-3 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-[#c9a87c] transition-all hover:border-[#c9a87c] hover:bg-[#c9a87c]/10"
+          >
+            Explorar Colecção Nos
+          </Link>
         </div>
       </section>
 

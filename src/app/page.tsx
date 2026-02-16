@@ -2,12 +2,12 @@ import Link from "next/link";
 import Image from "next/image";
 import NewsletterForm from "@/components/NewsletterForm";
 import ScrollReveal from "@/components/ScrollReveal";
-import NosCollectionIcon from "@/components/NosCollectionIcon";
+
 
 const espelhosPeek = [
   { title: "Espelho da Ilusão", tagline: "Quando a vida que tens não foi a que escolheste", image: "/images/espelho-ilusao.png" },
   { title: "Espelho do Medo", tagline: "Quando o medo decide por ti", image: "/images/espelho-medo.png" },
-  { title: "Espelho do Desejo", tagline: "Quando desejas tudo menos o que precisas", image: "/images/espelho-desejo.png" },
+  { title: "Espelho da Culpa", tagline: "Quando te castigas por querer mais", image: "/images/espelho-culpa.png" },
 ];
 
 export default function Home() {
@@ -70,8 +70,7 @@ export default function Home() {
             {/* ESPELHOS */}
             <ScrollReveal delay={0.15} variant="scale">
               <div className="group relative overflow-hidden rounded-2xl border-2 border-sage/20 bg-white p-8 shadow-sm transition-all duration-300 hover:border-sage hover:shadow-lg">
-                <div className="absolute right-4 top-4 text-4xl opacity-20 transition-opacity group-hover:opacity-30">🪞</div>
-                <h3 className="font-serif text-2xl text-brown-900">ESPELHOS</h3>
+                <h3 className="font-serif text-2xl text-brown-900">Colecção Espelhos</h3>
                 <p className="mt-2 font-serif text-sm italic text-sage">7 ficções de transformação</p>
                 <p className="mt-4 leading-relaxed text-brown-700">
                   Sete histórias de ficção literária onde te reconheces. Cada uma com pausas de reflexão,
@@ -111,8 +110,7 @@ export default function Home() {
             {/* Physical Book */}
             <ScrollReveal delay={0.3} variant="scale">
               <div className="group relative overflow-hidden rounded-2xl border-2 border-brown-300 bg-white p-8 shadow-sm transition-all duration-300 hover:border-brown-400 hover:shadow-lg">
-                <div className="absolute right-4 top-4 text-4xl opacity-20 transition-opacity group-hover:opacity-30">📖</div>
-                <h3 className="font-serif text-2xl text-brown-900">Livro Físico</h3>
+                <h3 className="font-serif text-2xl text-brown-900">Livro Filosófico</h3>
                 <p className="mt-2 font-serif text-sm italic text-brown-700">"Os 7 Véus do Despertar" — obra filosófica</p>
                 <p className="mt-4 leading-relaxed text-brown-800">
                   Livro impresso sobre despertar de consciência — uma cartografia interior para dissolver
@@ -120,15 +118,15 @@ export default function Home() {
                 </p>
                 <div className="mt-6 space-y-2">
                   <div className="flex items-start gap-2 text-sm text-brown-700">
-                    <span className="mt-0.5 text-brown-500">📖</span>
+                    <span className="mt-0.5 text-brown-500">~</span>
                     <span className="font-medium">Edição física de alta qualidade</span>
                   </div>
                   <div className="flex items-start gap-2 text-sm text-brown-700">
-                    <span className="mt-0.5 text-brown-500">📱</span>
+                    <span className="mt-0.5 text-brown-500">~</span>
                     <span className="font-medium">Versão digital incluída (mesmo livro)</span>
                   </div>
                   <div className="flex items-start gap-2 text-sm text-brown-700">
-                    <span className="mt-0.5 text-brown-500">🚚</span>
+                    <span className="mt-0.5 text-brown-500">~</span>
                     <span className="font-medium">Entrega em todo Moçambique</span>
                   </div>
                 </div>
@@ -158,26 +156,103 @@ export default function Home() {
                 Já compraste o livro físico?
               </p>
               <p className="mt-2 text-sm text-brown-600">
-                Regista o teu código e acede à versão digital do livro
+                Regista o teu código ou pede um se ainda não o recebeste
               </p>
-              <Link
-                href="/registar-livro"
-                className="mt-4 inline-block rounded-lg border-2 border-sage bg-transparent px-6 py-2.5 font-sans text-sm font-medium uppercase tracking-wider text-sage transition-all hover:bg-sage hover:text-white"
-              >
-                Registar código
-              </Link>
+              <div className="mt-4 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+                <Link
+                  href="/registar-livro"
+                  className="inline-block rounded-lg border-2 border-sage bg-transparent px-6 py-2.5 font-sans text-sm font-medium uppercase tracking-wider text-sage transition-all hover:bg-sage hover:text-white"
+                >
+                  Tenho código
+                </Link>
+                <Link
+                  href="/pedir-codigo"
+                  className="inline-block rounded-lg border-2 border-brown-300 bg-transparent px-6 py-2.5 font-sans text-sm font-medium uppercase tracking-wider text-brown-500 transition-all hover:border-brown-500 hover:text-brown-700"
+                >
+                  Pedir código
+                </Link>
+              </div>
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* ESPELHOS peek — dark section */}
+      {/* A visão — 3 dimensões */}
+      <section className="bg-cream-dark px-6 py-24">
+        <div className="mx-auto max-w-4xl">
+          <ScrollReveal>
+            <p className="text-center font-sans text-[0.65rem] uppercase tracking-[0.25em] text-sage">
+              A visão
+            </p>
+            <h2 className="mt-3 text-center font-serif text-3xl text-brown-900 sm:text-4xl">
+              Cada véu tem três dimensões
+            </h2>
+          </ScrollReveal>
+
+          <div className="mx-auto mt-12 grid max-w-3xl gap-6 sm:grid-cols-3">
+            <ScrollReveal delay={0.1} variant="scale">
+              <div className="rounded-2xl border border-[#c9b896]/30 bg-white px-6 py-8 text-center shadow-sm">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#c9b896]/10">
+                  <span className="font-serif text-2xl text-[#c9b896]">&#9826;</span>
+                </div>
+                <h3 className="mt-4 font-serif text-lg text-brown-800">Espelhos</h3>
+                <p className="mt-1 font-sans text-[0.65rem] uppercase tracking-wider text-brown-400">Ficção interior</p>
+                <p className="mt-3 font-serif text-sm leading-relaxed text-brown-600">
+                  7 histórias onde te reconheces. Cada espelho revela um véu que usas sem saber.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.2} variant="scale">
+              <div className="rounded-2xl border border-[#c9a87c]/30 bg-white px-6 py-8 text-center shadow-sm">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#c9a87c]/10">
+                  <span className="font-serif text-2xl text-[#c9a87c]">&#8734;</span>
+                </div>
+                <h3 className="mt-4 font-serif text-lg text-brown-800">Nós</h3>
+                <p className="mt-1 font-sans text-[0.65rem] uppercase tracking-wider text-brown-400">Ficção relacional</p>
+                <p className="mt-3 font-serif text-sm leading-relaxed text-brown-600">
+                  7 histórias entre duas pessoas. Cada nó revela o que o véu fez na relação.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.3} variant="scale">
+              <div className="rounded-2xl border border-sage/30 bg-white px-6 py-8 text-center shadow-sm">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-sage/10">
+                  <span className="font-serif text-2xl text-sage">~</span>
+                </div>
+                <h3 className="mt-4 font-serif text-lg text-brown-800">Ecos</h3>
+                <p className="mt-1 font-sans text-[0.65rem] uppercase tracking-wider text-brown-400">Comunidade</p>
+                <p className="mt-3 font-serif text-sm leading-relaxed text-brown-600">
+                  Onde as vozes se encontram. Reflexões anónimas entre quem lê e sente.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          <ScrollReveal delay={0.4}>
+            <p className="mx-auto mt-10 max-w-lg text-center font-serif text-sm italic leading-relaxed text-brown-500">
+              Os Espelhos mostram-te o véu que usas.
+              Os Nós mostram-te o que esse véu fez entre ti e outra pessoa.
+              Os Ecos são onde te reconheces em quem caminha contigo.
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Colecção Espelhos */}
       <section className="bg-gradient-to-b from-brown-800 to-brown-900 px-6 py-24">
         <div className="mx-auto max-w-5xl">
           <ScrollReveal>
-            <h2 className="text-center font-serif text-3xl text-cream sm:text-4xl">🪞 ESPELHOS</h2>
+            <p className="text-center font-sans text-[0.65rem] uppercase tracking-[0.3em] text-brown-400">
+              Colecção Espelhos
+            </p>
+            <h2 className="mt-3 text-center font-serif text-3xl text-cream sm:text-4xl">
+              Ficções de transformação
+            </h2>
             <p className="mx-auto mt-4 max-w-xl text-center leading-relaxed text-brown-200">
-              Sete histórias. Sete espelhos. Reconhece-te nas personagens que vivem o que tu vives.
+              Sete histórias onde te reconheces. Cada uma com pausas de reflexão,
+              diário pessoal e práticas guiadas.
             </p>
           </ScrollReveal>
           <div className="mt-14 grid gap-8 sm:grid-cols-3">
@@ -203,74 +278,70 @@ export default function Home() {
                 href="/comprar/espelhos"
                 className="inline-block rounded-md border-2 border-cream bg-cream px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-900 transition-all hover:bg-transparent hover:text-cream"
               >
-                Ver todos os Espelhos
+                Ver Colecção Espelhos
               </Link>
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* NÓS — ficção relacional */}
+      {/* Colecção Nós */}
       <section className="bg-gradient-to-b from-[#1a1510] to-[#0a0a0a] px-6 py-24">
         <div className="mx-auto max-w-5xl">
           <ScrollReveal>
-            <div className="flex justify-center">
-              <NosCollectionIcon size={100} />
-            </div>
-            <h2 className="mt-6 text-center font-serif text-3xl text-cream sm:text-4xl">
+            <p className="text-center font-sans text-[0.65rem] uppercase tracking-[0.3em] text-[#c9a87c]/60">
               Colecção Nós
-            </h2>
-            <p className="mx-auto mt-1 text-center font-sans text-[0.6rem] uppercase tracking-[0.3em] text-brown-500">
-              Ficção Relacional
             </p>
-            <p className="mx-auto mt-6 max-w-xl text-center font-serif text-base leading-relaxed text-brown-300">
+            <h2 className="mt-3 text-center font-serif text-3xl text-cream sm:text-4xl">
+              Ficção relacional
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-center font-serif text-base leading-relaxed text-brown-300">
               Os Espelhos mostram-te o véu que usas.
               Os Nós mostram-te o que esse véu fez entre ti e outra pessoa.
             </p>
           </ScrollReveal>
 
-          {/* Cover grid — mini covers */}
-          <div className="mx-auto mt-14 grid max-w-4xl gap-4 sm:grid-cols-4 lg:grid-cols-7">
+          {/* Cover grid — same size as Espelhos (3 columns) */}
+          <div className="mt-14 grid gap-8 sm:grid-cols-3">
             {[
-              { num: "I", title: "Herança", color: "#c9956a", bg: "#2e1a0e", available: true },
-              { num: "II", title: "Silêncio", color: "#6a9dbe", bg: "#142838", available: false },
-              { num: "III", title: "Sacrifício", color: "#d06a6a", bg: "#2e1015", available: false },
-              { num: "IV", title: "Vergonha", color: "#aa7abb", bg: "#22102e", available: false },
-              { num: "V", title: "Solidão", color: "#6a9e9e", bg: "#10222a", available: false },
-              { num: "VI", title: "Vazio", color: "#c4905a", bg: "#261808", available: false },
-              { num: "VII", title: "Pertença", color: "#5aaa7a", bg: "#0e2216", available: false },
-            ].map((no) => (
-              <ScrollReveal key={no.num} delay={0.05 * parseInt(no.num, 10) || 0.05} variant="fadeUp">
+              { num: "I", title: "Nó da Herança", sub: "O silêncio herdado entre mãe e filha", color: "#c9956a", bg: "#2e1a0e", available: true },
+              { num: "II", title: "Nó do Silêncio", sub: "O que o medo calou entre eles", color: "#6a9dbe", bg: "#142838", available: false },
+              { num: "III", title: "Nó do Sacrifício", sub: "A culpa disfarçada de entrega", color: "#d06a6a", bg: "#2e1015", available: false },
+            ].map((no, i) => (
+              <ScrollReveal key={no.num} delay={0.15 * i} variant="scale">
                 <div
-                  className="rounded-lg p-4 text-center transition-all duration-300 hover:scale-105"
-                  style={{ backgroundColor: no.bg, border: `1px solid ${no.color}18` }}
+                  className="rounded-xl p-8 text-center transition-all duration-300 hover:scale-105"
+                  style={{ backgroundColor: no.bg, border: `1px solid ${no.color}25` }}
                 >
-                  <p className="font-serif text-[0.55rem] tracking-[0.3em]" style={{ color: `${no.color}66` }}>
+                  <p className="font-serif text-xs tracking-[0.3em]" style={{ color: `${no.color}55` }}>
                     {no.num}
                   </p>
-                  <p className="mt-2 font-serif text-sm" style={{ color: `${no.color}cc` }}>
+                  <h3 className="mt-3 font-serif text-lg" style={{ color: `${no.color}dd` }}>
                     {no.title}
+                  </h3>
+                  <p className="mt-2 text-sm italic" style={{ color: `${no.color}88` }}>
+                    {no.sub}
                   </p>
                   {no.available ? (
-                    <p className="mt-2 text-[0.55rem]" style={{ color: no.color }}>Disponível</p>
+                    <p className="mt-3 text-xs" style={{ color: no.color }}>Disponível</p>
                   ) : (
-                    <p className="mt-2 text-[0.55rem] text-brown-600">Em breve</p>
+                    <p className="mt-3 text-xs text-brown-600">Em breve</p>
                   )}
                 </div>
               </ScrollReveal>
             ))}
           </div>
 
-          <ScrollReveal delay={0.4}>
-            <div className="mt-12 text-center">
-              <p className="text-sm text-brown-500">
-                Nó individual: 780 MZN / $12 USD — incluído nos pacotes de 3 e na Jornada Completa
-              </p>
+          <ScrollReveal delay={0.3}>
+            <p className="mx-auto mt-8 max-w-md text-center text-sm text-brown-500">
+              Cada Nó desbloqueia ao completar o Espelho correspondente.
+            </p>
+            <div className="mt-6 text-center">
               <Link
                 href="/comprar/espelhos"
-                className="mt-4 inline-block font-sans text-sm font-medium text-[#c9b99a] transition-colors hover:text-cream"
+                className="inline-block rounded-md border-2 border-[#c9a87c]/40 px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-[#c9b99a] transition-all hover:border-cream hover:text-cream"
               >
-                Ver pacotes com Nós incluído &rarr;
+                Ver Colecção Espelhos
               </Link>
             </div>
           </ScrollReveal>
@@ -332,22 +403,22 @@ export default function Home() {
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                icon: "🌊",
+                icon: "~",
                 title: "Ecos",
                 desc: "Reflexões anónimas. Libertas o que sentes e encontras quem sente o mesmo.",
               },
               {
-                icon: "🌀",
+                icon: "~",
                 title: "Maré",
                 desc: "Consciência colectiva. Sente o pulso emocional de quem caminha contigo.",
               },
               {
-                icon: "🪞",
+                icon: "~",
                 title: "Círculo",
                 desc: "Espelho partilhado. Um espaço seguro de reconhecimento mútuo.",
               },
               {
-                icon: "🔥",
+                icon: "~",
                 title: "Fogueira",
                 desc: "Contemplação. Pára. Respira. Estás acompanhada no silêncio.",
               },
@@ -389,19 +460,19 @@ export default function Home() {
                 texto: "Este livro mudou completamente a forma como vejo minha vida. Não é autoajuda, é filosofia viva que te desafia a olhar para dentro. As práticas guiadas me conectaram com partes de mim que há anos ignorava.",
                 nome: "Maria S.",
                 local: "Maputo, Moçambique",
-                rating: "⭐⭐⭐⭐⭐",
+                rating: "~ ~ ~ ~ ~",
               },
               {
-                texto: "A experiência digital é incrível. As pausas contemplativas, as práticas de respiração... Sinto que não estou só a ler, estou a VIVER o livro. O diário de reflexão me fez escrever coisas que nunca tinha admitido.",
+                texto: "A experiência digital é incrível. As pausas contemplativas, as práticas de respiração... Sinto que não estou só a ler, estou a viver o livro. O diário de reflexão fez-me escrever coisas que nunca tinha admitido.",
                 nome: "Ana P.",
                 local: "Lisboa, Portugal",
-                rating: "⭐⭐⭐⭐⭐",
+                rating: "~ ~ ~ ~ ~",
               },
               {
-                texto: "Comprei o Espelho da Ilusão e me vi completamente na protagonista. É ficção, mas parecia minha vida. Chorei, refleti e mudei. Já comprei mais 3 Espelhos. É transformador.",
+                texto: "Comprei o Espelho da Ilusão e me vi completamente na protagonista. É ficção, mas parecia minha vida. Chorei, refleti e mudei. Estou ansiosa pelo próximo.",
                 nome: "Beatriz M.",
                 local: "São Paulo, Brasil",
-                rating: "⭐⭐⭐⭐⭐",
+                rating: "~ ~ ~ ~ ~",
               },
             ].map((dep, i) => (
               <ScrollReveal key={dep.nome} delay={0.15 * i} variant="fadeUp">
@@ -418,46 +489,6 @@ export default function Home() {
               </ScrollReveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Ecos — community teaser */}
-      <section className="bg-gradient-to-b from-cream to-cream-dark px-6 py-24">
-        <div className="mx-auto max-w-4xl">
-          <ScrollReveal>
-            <p className="text-center font-sans text-[0.65rem] uppercase tracking-[0.25em] text-sage">
-              A terceira dimensao
-            </p>
-            <h2 className="mt-3 text-center font-serif text-3xl text-brown-900 sm:text-4xl">
-              Ecos
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-center font-serif text-base leading-relaxed text-brown-600">
-              Onde as vozes se encontram. Reflexoes anonimas, consciencia colectiva,
-              contemplacao partilhada. Nao es a unica a sentir o que sentes.
-            </p>
-          </ScrollReveal>
-
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              { nome: "Ecos", desc: "Reflexoes anonimas de quem caminha ao teu lado" },
-              { nome: "Mare", desc: "A consciencia colectiva de todas as leitoras" },
-              { nome: "Circulo", desc: "Espelho partilhado entre vozes que se reconhecem" },
-              { nome: "Fogueira", desc: "Espaco de contemplacao e presenca silenciosa" },
-            ].map((espaco, i) => (
-              <ScrollReveal key={espaco.nome} delay={0.1 * i} variant="fadeUp">
-                <div className="rounded-xl border border-brown-100 bg-white p-5 text-center shadow-sm">
-                  <h3 className="font-serif text-lg text-brown-900">{espaco.nome}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-brown-500">{espaco.desc}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <ScrollReveal delay={0.3}>
-            <p className="mx-auto mt-10 max-w-md text-center text-sm italic text-brown-400">
-              Incluida em todas as experiencias. Porque transformacao nao acontece sozinha.
-            </p>
-          </ScrollReveal>
         </div>
       </section>
 

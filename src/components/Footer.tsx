@@ -27,15 +27,14 @@ export default function Footer() {
               Explorar
             </p>
             <nav className="mt-4 flex flex-col gap-3">
+              <Link href="/os-sete-veus" className="text-sm text-brown-300 hover:text-cream">Colecção Espelhos</Link>
+              <Link href="/coleccao-nos" className="text-sm text-brown-300 hover:text-cream">Colecção Nos</Link>
+              <Link href="/comprar" className="text-sm text-brown-300 hover:text-cream">Comprar</Link>
               <Link href="/ecossistema" className="text-sm text-brown-300 hover:text-cream">Ecossistema</Link>
-              <Link href="/os-sete-veus" className="text-sm text-brown-300 hover:text-cream">A Colecção</Link>
-              <Link href="/para-quem" className="text-sm text-brown-300 hover:text-cream">Para Quem</Link>
               <Link href="/sobre" className="text-sm text-brown-300 hover:text-cream">A Vivianne</Link>
               <Link href="/recursos" className="text-sm text-brown-300 hover:text-cream">Recursos Gratuitos</Link>
-              <Link href="/experiencias" className="text-sm text-brown-300 hover:text-cream">Experiências</Link>
-              <Link href="/artigos" className="text-sm text-brown-300 hover:text-cream">Artigos</Link>
               <Link href="/livro-fisico" className="text-sm text-brown-300 hover:text-cream">Livro Físico</Link>
-              <Link href="/semente" className="text-sm text-brown-300 hover:text-cream">Plantar Semente &#127793;</Link>
+              <Link href="/pedir-codigo" className="text-sm text-brown-300 hover:text-cream">Pedir código de acesso</Link>
             </nav>
           </div>
 

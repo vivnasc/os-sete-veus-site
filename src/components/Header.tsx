@@ -5,13 +5,13 @@ import Image from "next/image";
 import { useState } from "react";
 import { useAuth } from "@/components/AuthProvider";
 
-const navLinks = [
-  { href: "/", label: "Início" },
+const navLinks: { href: string; label: string; highlight?: boolean; featured?: boolean }[] = [
+  { href: "/os-sete-veus", label: "Espelhos" },
+  { href: "/coleccao-nos", label: "Nos" },
   { href: "/comprar", label: "Comprar" },
-  { href: "/livro-fisico", label: "Livro Físico" },
-  { href: "/comunidade", label: "Ecos", highlight: true },
-  { href: "/recursos", label: "Recursos" },
   { href: "/sobre", label: "Sobre" },
+  { href: "/comunidade", label: "Ecos", highlight: true },
+  { href: "/livro-fisico", label: "Livro Fisico", featured: true },
 ];
 
 export default function Header() {
@@ -36,7 +36,15 @@ export default function Header() {
 
         <nav className="hidden items-center gap-4 md:flex">
           {navLinks.map((link) =>
-            link.highlight ? (
+            link.featured ? (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-md bg-brown-700 px-4 py-2 font-sans text-[0.75rem] font-medium uppercase tracking-[0.12em] text-cream transition-colors hover:bg-brown-800"
+              >
+                {link.label}
+              </Link>
+            ) : link.highlight ? (
               <Link
                 key={link.href}
                 href={link.href}
@@ -81,7 +89,16 @@ export default function Header() {
         <nav className="border-t border-brown-100 bg-cream px-6 py-6 md:hidden">
           <div className="flex flex-col gap-5">
             {navLinks.map((link) =>
-              link.highlight ? (
+              link.featured ? (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="rounded-md bg-brown-700 px-5 py-3 text-center font-sans text-sm font-medium uppercase tracking-[0.1em] text-cream transition-colors hover:bg-brown-800"
+                >
+                  {link.label}
+                </Link>
+              ) : link.highlight ? (
                 <Link
                   key={link.href}
                   href={link.href}
