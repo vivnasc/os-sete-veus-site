@@ -23,6 +23,7 @@ const nos = nosCollection.map((n) => ({
   number: n.number,
   title: n.title,
   subtitle: n.subtitle,
+  characters: n.characters,
   color: n.color,
   available: n.status === "available",
 }));
@@ -176,19 +177,55 @@ export default function SobrePage() {
             ))}
           </div>
 
-          <div className="mt-8 text-center">
-            <Link
-              href="/os-sete-veus"
-              className="inline-block rounded-full border border-[#c9b896] px-6 py-2.5 font-sans text-[0.75rem] uppercase tracking-wider text-[#c9b896] transition-all hover:bg-[#c9b896] hover:text-white"
-            >
-              Ver colecção completa
-            </Link>
+        </div>
+      </section>
+
+      {/* Concepção dos 7 Nós */}
+      <section className="bg-cream px-6 py-24">
+        <div className="mx-auto max-w-3xl">
+          <div className="flex items-center gap-3">
+            <div className="h-px flex-1 bg-[#c9a87c]/30" />
+            <p className="font-sans text-[0.65rem] uppercase tracking-[0.25em] text-[#c9a87c]">
+              A concepção
+            </p>
+            <div className="h-px flex-1 bg-[#c9a87c]/30" />
+          </div>
+          <h2 className="mt-4 text-center font-serif text-3xl text-brown-900">
+            Os 7 Nós
+          </h2>
+          <p className="mt-4 text-center font-serif text-base italic text-brown-500">
+            Visão, estrutura e razão de ser
+          </p>
+
+          <div className="mt-10 space-y-6">
+            <p className="leading-relaxed text-brown-700">
+              Os Espelhos mostram-te o véu que usas. Os Nós mostram-te o que esse véu fez
+              entre ti e outra pessoa. São dois lados do mesmo fio — um olha para dentro,
+              o outro olha para o espaço entre duas pessoas.
+            </p>
+            <p className="leading-relaxed text-brown-700">
+              Cada Nó nasce do Espelho correspondente. Não é uma sequela, não é um bónus.
+              É a continuação emocional da mesma ferida — vista agora através da relação.
+              Porque nenhum véu existe isolado. Tudo o que escondes de ti, ecoa no outro.
+            </p>
+            <p className="leading-relaxed text-brown-700">
+              Os Nós são ficção relacional: histórias entre duas pessoas — mãe e filha,
+              amantes, amigas, estranhos, um casal que se reinventa. Cada par de personagens
+              carrega o peso de um véu partilhado.
+            </p>
+          </div>
+
+          <div className="mt-10 rounded-r-xl border-l-[3px] border-[#c9a87c] bg-[#c9a87c]/5 px-6 py-5">
+            <p className="font-serif italic leading-relaxed text-brown-700">
+              Regra fundamental: só lês o Nó se viveste o Espelho. Não é restrição — é respeito
+              pelo processo. O Nó só faz sentido depois de teres olhado para ti.
+            </p>
           </div>
         </div>
       </section>
 
       {/* Colecção Nós */}
-      <section className="bg-cream px-6 py-24">
+      <section className="bg-cream-dark px-6 py-24">
         <div className="mx-auto max-w-4xl">
           <div className="flex items-center gap-3">
             <div className="h-px flex-1 bg-[#c9a87c]/30" />
@@ -217,6 +254,9 @@ export default function SobrePage() {
                 <div className="flex-1">
                   <p className="font-serif text-base text-brown-800">{n.title}</p>
                   <p className="font-serif text-sm italic text-brown-500">{n.subtitle}</p>
+                  <p className="mt-0.5 font-sans text-[0.65rem] uppercase tracking-wider text-brown-400">
+                    {n.characters}
+                  </p>
                 </div>
                 <div className="shrink-0 text-right">
                   {n.available ? (

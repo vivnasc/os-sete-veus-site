@@ -20,6 +20,7 @@ export type NosBook = {
   number: number;
   title: string;
   subtitle: string;
+  characters: string; // personagens do Nó (ex: "Sara + Helena (mãe)")
   espelhoSlug: string; // liga ao Espelho correspondente
   description: string;
   color: string;
@@ -37,7 +38,8 @@ export const nosCollection: NosBook[] = [
     slug: "no-da-heranca",
     number: 1,
     title: "O Nó da Herança",
-    subtitle: "O que a mãe guardou, a filha carregou",
+    subtitle: "O silêncio herdado entre mãe e filha",
+    characters: "Sara + Helena (mãe)",
     espelhoSlug: "veu-da-ilusao",
     description:
       "Sara vai à casa de Helena. Não para visitar — para perguntar. O que a mãe viu durante anos e nunca disse? O que se herda sem inventário? Este nó puxa o fio entre mãe e filha.",
@@ -54,7 +56,8 @@ export const nosCollection: NosBook[] = [
     slug: "no-do-silencio",
     number: 2,
     title: "O Nó do Silêncio",
-    subtitle: "O que não se diz também se transmite",
+    subtitle: "O que o medo calou entre eles",
+    characters: "Rui + Ana",
     espelhoSlug: "veu-do-medo",
     description:
       "Rui e Ana amam-se. Mas há algo entre eles que nenhum dos dois nomeia. O medo transformou-se em silêncio — e o silêncio, em distância. Este nó puxa o fio entre quem ama e quem cala.",
@@ -68,13 +71,14 @@ export const nosCollection: NosBook[] = [
     priceEUR: 11,
   },
   {
-    slug: "no-da-divida",
+    slug: "no-do-sacrificio",
     number: 3,
-    title: "O Nó da Dívida",
-    subtitle: "Quem te disse que devias tanto?",
+    title: "O Nó do Sacrifício",
+    subtitle: "A culpa disfarçada de entrega",
+    characters: "Filipe + Luísa",
     espelhoSlug: "veu-da-culpa",
     description:
-      "Marta carrega uma dívida que ninguém lhe cobrou. A culpa de querer mais, de precisar de espaço, de não ser suficiente para todos. Este nó puxa o fio entre dar e perder-se.",
+      "Filipe e Luísa amam-se — mas entre eles há uma dívida invisível. Ele dá tudo, ela sente que nunca é suficiente. A culpa disfarçou-se de entrega. Este nó puxa o fio entre sacrificar-se e amar.",
     color: "#b07a7a",
     colorBg: "#faf5f5",
     status: "coming_soon",
@@ -85,13 +89,14 @@ export const nosCollection: NosBook[] = [
     priceEUR: 11,
   },
   {
-    slug: "no-do-reflexo",
+    slug: "no-da-vergonha",
     number: 4,
-    title: "O Nó do Reflexo",
-    subtitle: "Quem és quando ninguém espera nada?",
+    title: "O Nó da Vergonha",
+    subtitle: "A máscara que caiu entre dois estranhos",
+    characters: "Vítor + Mariana",
     espelhoSlug: "veu-da-identidade",
     description:
-      "Inês sempre soube quem era — até ao dia em que os outros pararam de lhe dizer. Sem papel para desempenhar, o que sobra? Este nó puxa o fio entre ser e parecer.",
+      "Vítor e Mariana cruzaram-se quando já não tinham máscaras para vestir. Ele fingia força, ela fingia indiferença. A vergonha de ser visto como se é — esse é o nó. Este nó puxa o fio entre a identidade e a nudez.",
     color: "#ab9375",
     colorBg: "#faf7f3",
     status: "coming_soon",
@@ -102,13 +107,14 @@ export const nosCollection: NosBook[] = [
     priceEUR: 11,
   },
   {
-    slug: "no-da-corda",
+    slug: "no-da-solidao",
     number: 5,
-    title: "O Nó da Corda",
-    subtitle: "Segurar não é o mesmo que cuidar",
+    title: "O Nó da Solidão",
+    subtitle: "O controlo que isolou quem mais amava",
+    characters: "Isabel + Pedro",
     espelhoSlug: "veu-do-controlo",
     description:
-      "Teresa segura tudo. A família, o trabalho, as emoções dos outros. Mas a corda está a partir. Este nó puxa o fio entre proteger e sufocar.",
+      "Isabel controlava tudo — os horários, as decisões, o silêncio. Pedro foi ficando cada vez mais longe. Não por falta de amor, mas por excesso de rédea. Este nó puxa o fio entre controlar e perder.",
     color: "#8aaaca",
     colorBg: "#f3f6fa",
     status: "coming_soon",
@@ -119,13 +125,14 @@ export const nosCollection: NosBook[] = [
     priceEUR: 11,
   },
   {
-    slug: "no-da-fome",
+    slug: "no-do-vazio",
     number: 6,
-    title: "O Nó da Fome",
-    subtitle: "O vazio que nenhuma coisa preenche",
+    title: "O Nó do Vazio",
+    subtitle: "O desejo que esvaziou a amizade",
+    characters: "Lena + Sofia",
     espelhoSlug: "veu-do-desejo",
     description:
-      "Carla compra, acumula, preenche. Mas a fome continua. Talvez porque não é fome de coisas. Este nó puxa o fio entre ter e ser.",
+      "Lena e Sofia foram inseparáveis — até que o desejo de uma esvaziou o que a outra tinha para dar. Não foi traição. Foi fome disfarçada de presença. Este nó puxa o fio entre desejar e consumir.",
     color: "#c08aaa",
     colorBg: "#faf5f8",
     status: "coming_soon",
@@ -136,13 +143,14 @@ export const nosCollection: NosBook[] = [
     priceEUR: 11,
   },
   {
-    slug: "no-da-raiz",
+    slug: "no-da-pertenca",
     number: 7,
-    title: "O Nó da Raiz",
-    subtitle: "Para pertencer, primeiro tens de te ter",
+    title: "O Nó da Pertença",
+    subtitle: "A separação que reinventou o lar",
+    characters: "Helena T. + Miguel C.",
     espelhoSlug: "veu-da-separacao",
     description:
-      "Lúcia fugiu de si mesma para caber no mundo dos outros. Agora, finalmente, volta. Este nó puxa o fio entre pertencer e existir.",
+      "Helena T. e Miguel C. separaram-se — não por desamor, mas por excesso de distância dentro da mesma casa. Quando saíram, descobriram que pertencer não é ficar. É escolher voltar. Este nó puxa o fio entre separar-se e reencontrar-se.",
     color: "#baaacc",
     colorBg: "#f7f5fa",
     status: "coming_soon",

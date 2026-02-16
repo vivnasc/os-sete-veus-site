@@ -32,15 +32,15 @@ Onde as vozes se encontram. Partilhas, reflexões, ressonâncias.
 
 ## Os 7 Véus
 
-| # | Véu | Espelho | Nó | Personagens Nó |
-|---|-----|---------|-----|---------------|
-| 1 | Ilusão | O Espelho da Ilusão | O Nó da Herança | Sara + Helena (mãe) |
-| 2 | Medo | O Espelho do Medo | O Nó do Silêncio | Rui + Ana |
-| 3 | Culpa | O Espelho da Culpa | O Nó da Dívida | Marta |
-| 4 | Identidade | O Espelho da Identidade | O Nó do Reflexo | Inês |
-| 5 | Controlo | O Espelho do Controlo | O Nó da Corda | Teresa |
-| 6 | Desejo | O Espelho do Desejo | O Nó da Fome | Carla |
-| 7 | Separação | O Espelho da Separação | O Nó da Raiz | Lúcia |
+| # | Véu | Espelho | Nó | Personagens Nó | Tema |
+|---|-----|---------|-----|---------------|------|
+| 1 | Ilusão | O Espelho da Ilusão | O Nó da Herança | Sara + Helena (mãe) | O silêncio herdado entre mãe e filha |
+| 2 | Medo | O Espelho do Medo | O Nó do Silêncio | Rui + Ana | O que o medo calou entre eles |
+| 3 | Culpa | O Espelho da Culpa | O Nó do Sacrifício | Filipe + Luísa | A culpa disfarçada de entrega |
+| 4 | Identidade | O Espelho da Identidade | O Nó da Vergonha | Vítor + Mariana | A máscara que caiu entre dois estranhos |
+| 5 | Controlo | O Espelho do Controlo | O Nó da Solidão | Isabel + Pedro | O controlo que isolou quem mais amava |
+| 6 | Desejo | O Espelho do Desejo | O Nó do Vazio | Lena + Sofia | O desejo que esvaziou a amizade |
+| 7 | Separação | O Espelho da Separação | O Nó da Pertença | Helena T. + Miguel C. | A separação que reinventou o lar |
 
 ---
 
