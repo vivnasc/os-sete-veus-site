@@ -80,12 +80,8 @@ export default function MembroDashboard() {
 
   // Find next unread chapter
   const nextChapter = chapters.find((ch) => !readingProgress[ch.slug]) || chapters[0];
-
-  // Nós progress (uses nos- prefix)
-  const espelhoCompleto = completedChapters === chapters.length;
-  const completedNos = nosChapters.filter((ch) => readingProgress[`nos-${ch.slug}`]).length;
-  const nosPercent = Math.round((completedNos / nosChapters.length) * 100);
-  const nextNosChapter = nosChapters.find((ch) => !readingProgress[`nos-${ch.slug}`]) || nosChapters[0];
+  const completedNos = nosCompletedChapters;
+  const nosPercent = nosProgressPercent;
 
   // Determine which book to show based on access — admin/autora has full access
   const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
