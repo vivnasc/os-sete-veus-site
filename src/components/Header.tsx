@@ -7,10 +7,10 @@ import { useAuth } from "@/components/AuthProvider";
 
 const navLinks = [
   { href: "/", label: "Início" },
-  { href: "/comprar/espelhos", label: "Espelhos" },
+  { href: "/os-sete-veus", label: "Espelhos" },
+  { href: "/coleccao-nos", label: "Nos" },
   { href: "/comprar", label: "Comprar" },
   { href: "/comunidade", label: "Ecos", highlight: true },
-  { href: "/recursos", label: "Recursos" },
   { href: "/sobre", label: "Sobre" },
 ];
 

@@ -3,9 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Os Sete Véus",
+  title: "Colecção Espelhos — Ficção de Transformação Interior",
   description:
-    "Sete livros. Sete espelhos. Sete formas de nos escondermos de nós mesmas — e sete caminhos de volta.",
+    "7 livros. 7 espelhos. Histórias onde te reconheces — e algo muda. Cada Espelho revela um véu que usas sem saber.",
 };
 
 const nos = [
@@ -97,12 +97,15 @@ export default function OsSeteVeusPage() {
       {/* Hero — dark */}
       <section className="bg-gradient-to-b from-brown-800 to-brown-900 px-6 py-24 sm:py-32">
         <div className="mx-auto max-w-3xl text-center">
-          <h1 className="font-serif text-4xl leading-tight text-cream sm:text-5xl">
-            Os Sete Véus
+          <p className="font-sans text-[0.7rem] uppercase tracking-[0.25em] text-brown-400">
+            7 livros ~ 7 capítulos cada
+          </p>
+          <h1 className="mt-4 font-serif text-4xl leading-tight text-cream sm:text-5xl">
+            Colecção Espelhos
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-brown-200">
-            Sete livros. Sete espelhos. Sete formas de nos escondermos de nós mesmas — e sete caminhos
-            de volta.
+            Histórias onde te reconheces — e algo muda. Cada Espelho revela um véu
+            que usas sem saber.
           </p>
         </div>
       </section>
@@ -189,20 +192,26 @@ export default function OsSeteVeusPage() {
         </section>
       ))}
 
-      {/* Colecção Nós — explanation */}
+      {/* Colecção Nós — bridge */}
       <section className="bg-cream-dark px-6 py-20">
         <div className="mx-auto max-w-3xl text-center">
           <p className="font-sans text-[0.7rem] uppercase tracking-[0.25em] text-[#c9a87c]">
             A segunda dimensão
           </p>
-          <h2 className="mt-4 font-serif text-3xl text-brown-900">Colecção Nós</h2>
+          <h2 className="mt-4 font-serif text-3xl text-brown-900">Colecção Nos</h2>
           <p className="mx-auto mt-4 max-w-xl leading-relaxed text-brown-600">
             Os Espelhos mostram-te o véu que usas.
-            Os Nós mostram-te o que esse véu fez entre ti e outra pessoa.
+            Os Nos mostram-te o que esse véu fez entre ti e outra pessoa.
           </p>
           <p className="mx-auto mt-4 max-w-md text-sm text-brown-500">
-            Cada Nó desbloqueia-se ao completar o Espelho correspondente.
+            Cada No desbloqueia-se ao completar o Espelho correspondente.
           </p>
+          <Link
+            href="/coleccao-nos"
+            className="mt-8 inline-block rounded-full border-2 border-[#c9a87c]/40 px-8 py-3 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-[#c9a87c] transition-all hover:border-[#c9a87c] hover:bg-[#c9a87c]/10"
+          >
+            Explorar Colecção Nos
+          </Link>
         </div>
       </section>
 
