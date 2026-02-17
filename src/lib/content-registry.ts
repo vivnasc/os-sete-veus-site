@@ -26,13 +26,12 @@ const espelhoRegistry: Record<string, () => Promise<ContentModule>> = {
     chapters: m.chapters,
     bookMeta: m.bookMeta,
   })),
-  // Próximos Espelhos — descomentar à medida que são publicados:
   "veu-do-medo": () => import("@/data/espelho-medo").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
-  // "veu-da-culpa": () => import("@/data/espelho-culpa").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
-  // "veu-da-identidade": () => import("@/data/espelho-identidade").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
-  // "veu-do-controlo": () => import("@/data/espelho-controlo").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
-  // "veu-do-desejo": () => import("@/data/espelho-desejo").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
-  // "veu-da-separacao": () => import("@/data/espelho-separacao").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
+  "veu-da-culpa": () => import("@/data/espelho-culpa").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
+  "veu-da-identidade": () => import("@/data/espelho-identidade").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
+  "veu-do-controlo": () => import("@/data/espelho-controlo").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
+  "veu-do-desejo": () => import("@/data/espelho-desejo").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
+  "veu-da-separacao": () => import("@/data/espelho-separacao").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
 };
 
 // Registo de Nós (slug → import dinâmico)
@@ -68,4 +67,21 @@ export function isEspelhoRegistered(slug: string): boolean {
 
 export function isNosRegistered(slug: string): boolean {
   return slug in nosRegistry;
+}
+
+/**
+ * Gera a chave de progresso para um capítulo de um Espelho.
+ * Ilusão usa slugs bare (compatibilidade com leitoras existentes).
+ * Os restantes usam "espelhoSlug/chapterSlug".
+ */
+export function espelhoProgressKey(espelhoSlug: string, chapterSlug: string): string {
+  if (espelhoSlug === "veu-da-ilusao") return chapterSlug;
+  return `${espelhoSlug}/${chapterSlug}`;
+}
+
+/**
+ * Lista de todos os slugs de espelhos registados.
+ */
+export function getRegisteredEspelhoSlugs(): string[] {
+  return Object.keys(espelhoRegistry);
 }

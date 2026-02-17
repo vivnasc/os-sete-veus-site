@@ -33,7 +33,7 @@ export default function VeilMap({ progress }: Props) {
             return (
               <Link
                 key={chapter.slug}
-                href={`/membro/leitura/${chapter.slug}`}
+                href={`/membro/espelhos/veu-da-ilusao/${chapter.slug}`}
                 className="group absolute flex flex-col items-center"
                 style={{ transform: `translate(${x}px, ${y}px)` }}
                 title={`${chapter.title} — ${chapter.subtitle}`}

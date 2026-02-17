@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { chapters as espelhoChapters } from "@/data/ebook";
+// espelhoChapters not needed — useNosGate loads dynamically
 import { chapters, bookMeta } from "@/data/no-heranca";
 import { getNosBook } from "@/data/nos-collection";
 import { useNosGate } from "@/hooks/useNosGate";
@@ -42,7 +42,7 @@ export default function NosLeituraPage() {
       <section className="px-6 py-12">
         <div className="mx-auto max-w-2xl">
           <Link
-            href="/membro/leitura"
+            href="/membro/espelhos/veu-da-ilusao"
             className="inline-block font-sans text-[0.65rem] uppercase tracking-[0.15em] text-brown-400 hover:text-brown-600"
           >
             &larr; Voltar ao Espelho da Ilusão
@@ -76,7 +76,7 @@ export default function NosLeituraPage() {
               </div>
             </div>
             <Link
-              href="/membro/leitura"
+              href="/membro/espelhos/veu-da-ilusao"
               className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#c9b896] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b8a785]"
             >
               Continuar o Espelho da Ilusão &rarr;
@@ -130,7 +130,7 @@ export default function NosLeituraPage() {
               </p>
             </div>
             <Link
-              href="/membro/leitura"
+              href="/membro/espelhos/veu-da-ilusao"
               className="shrink-0 font-sans text-[0.6rem] uppercase tracking-wider text-[#c9a87c] hover:text-[#b8975b]"
             >
               Ver Espelho &rarr;
