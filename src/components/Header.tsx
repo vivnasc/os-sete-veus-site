@@ -7,11 +7,11 @@ import { useAuth } from "@/components/AuthProvider";
 
 const navLinks: { href: string; label: string; highlight?: boolean; featured?: boolean }[] = [
   { href: "/os-sete-veus", label: "Espelhos" },
-  { href: "/coleccao-nos", label: "Nos" },
+  { href: "/coleccao-nos", label: "Nós" },
   { href: "/comprar", label: "Comprar" },
   { href: "/sobre", label: "Sobre" },
   { href: "/comunidade", label: "Ecos", highlight: true },
-  { href: "/livro-fisico", label: "Livro Fisico", featured: true },
+  { href: "/livro-fisico", label: "Livro Físico", featured: true },
 ];
 
 export default function Header() {

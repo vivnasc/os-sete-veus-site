@@ -222,14 +222,14 @@ export default function EspelhoHubPage({ params }: { params: Promise<{ veu: stri
               </span>
               <div>
                 <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-[#c9a87c]">
-                  Coleccao Nos
+                  Colecção Nós
                 </p>
                 <p className="mt-1 font-serif text-lg text-brown-800">{nosBook.title}</p>
                 <p className="mt-2 font-serif text-sm italic leading-relaxed text-brown-500">
                   {nosBook.subtitle}
                 </p>
                 <p className="mt-3 font-sans text-xs text-brown-400">
-                  Disponivel ao completar este espelho.
+                  Disponível ao completar este espelho.
                   {!hasNosIncluded && ` · $${nosBook.priceUSD}`}
                 </p>
               </div>
@@ -264,7 +264,7 @@ export default function EspelhoHubPage({ params }: { params: Promise<{ veu: stri
                     href="/membro/nos"
                     className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#c9a87c] px-5 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b8975b]"
                   >
-                    Desatar este no &rarr;
+                    Desatar este nó &rarr;
                   </Link>
                 ) : (
                   <div className="mt-4 flex items-center gap-3">
@@ -272,13 +272,13 @@ export default function EspelhoHubPage({ params }: { params: Promise<{ veu: stri
                       href={`/comprar/nos/${nosBook.slug}`}
                       className="inline-flex items-center gap-2 rounded-full bg-[#c9a87c] px-5 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b8975b]"
                     >
-                      Desatar este no · ${nosBook.priceUSD}
+                      Desatar este nó · ${nosBook.priceUSD}
                     </Link>
                     <Link
                       href="/comprar/espelhos"
                       className="font-sans text-[0.6rem] text-brown-400 underline hover:text-brown-600"
                     >
-                      Incluido no Pack ou Jornada
+                      Incluído no Pack ou Jornada
                     </Link>
                   </div>
                 )}

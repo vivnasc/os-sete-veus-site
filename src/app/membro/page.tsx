@@ -153,10 +153,10 @@ export default function MembroDashboard() {
             Bem-vinda de volta
           </p>
           <h1 className="mt-3 font-serif text-3xl text-brown-900">
-            A tua experiencia
+            A tua experiência
           </h1>
           <p className="mt-2 font-serif text-base text-brown-500">
-            Vai ao teu ritmo. Sem pressa. Sem expectativas. Apenas presenca.
+            Vai ao teu ritmo. Sem pressa. Sem expectativas. Apenas presença.
           </p>
         </div>
 
@@ -167,7 +167,7 @@ export default function MembroDashboard() {
               <div className="flex items-center justify-center bg-gradient-to-br from-[#6b5b4a] to-[#4a3f35] px-8 py-8 sm:w-48">
                 <Image
                   src="/images/mandala-7veus.png"
-                  alt="Os 7 Veus do Despertar"
+                  alt="Os 7 Véus do Despertar"
                   width={120}
                   height={180}
                   className="rounded shadow-lg"
@@ -176,7 +176,7 @@ export default function MembroDashboard() {
               <div className="flex flex-1 flex-col justify-between p-6">
                 <div>
                   <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-brown-400">
-                    Livro Filosofico
+                    Livro Filosófico
                   </p>
                   <h2 className="mt-1 font-serif text-2xl text-brown-900">{livro7Veus.titulo}</h2>
                   <p className="mt-1 font-serif text-sm italic text-brown-500">
@@ -185,7 +185,7 @@ export default function MembroDashboard() {
                   {!loading && (
                     <div className="mt-4">
                       <p className="text-xs text-brown-400">
-                        {livro7Veus.veus.length} Veus · Filosofia e praticas de despertar
+                        {livro7Veus.veus.length} Veus · Filosofia e práticas de despertar
                       </p>
                     </div>
                   )}
@@ -194,7 +194,7 @@ export default function MembroDashboard() {
                   href="/livro"
                   className="mt-5 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#6b5b4a] to-[#8b7355] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-all hover:opacity-90"
                 >
-                  Comecar a ler
+                  Começar a ler
                 </Link>
               </div>
             </div>
@@ -231,7 +231,7 @@ export default function MembroDashboard() {
                   <div className="flex flex-1 flex-col justify-between p-6">
                     <div>
                       <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-brown-400">
-                        Espelho {exp.number} · Ficcao
+                        Espelho {exp.number} · Ficção
                       </p>
                       <h2 className="mt-1 font-serif text-2xl text-brown-900">{exp.title}</h2>
                       <p className="mt-1 font-serif text-sm italic text-brown-500">
@@ -242,10 +242,10 @@ export default function MembroDashboard() {
                           <div className="flex items-center justify-between text-xs text-brown-400">
                             <span>
                               {prog.completed === 0
-                                ? "Pronta para comecar"
+                                ? "Pronta para começar"
                                 : prog.isComplete
                                   ? "Leitura completa"
-                                  : `${prog.completed} de ${prog.total} capitulos`}
+                                  : `${prog.completed} de ${prog.total} capítulos`}
                             </span>
                             <span>{prog.percent}%</span>
                           </div>
@@ -267,9 +267,9 @@ export default function MembroDashboard() {
                       style={{ backgroundColor: exp.color }}
                     >
                       {prog.completed === 0
-                        ? "Comecar a ler"
+                        ? "Começar a ler"
                         : prog.isComplete
-                          ? "Reler desde o inicio"
+                          ? "Reler desde o início"
                           : `Continuar — ${prog.nextChapter.subtitle}`}
                     </Link>
                   </div>
@@ -287,11 +287,11 @@ export default function MembroDashboard() {
                     </div>
                     <div>
                       <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-[#c9a87c]">
-                        Coleccao Nos
+                        Colecção Nós
                       </p>
                       <p className="mt-1 font-serif text-base text-brown-800">{nosBook.title}</p>
                       <p className="mt-1 font-sans text-xs text-brown-400">
-                        Disponivel ao completar {exp.title}
+                        Disponível ao completar {exp.title}
                         {!hasNosIncluded && ` · $${nosBook.priceUSD}`}
                       </p>
                     </div>
@@ -311,7 +311,7 @@ export default function MembroDashboard() {
                     <div className="flex flex-1 flex-col justify-between p-6">
                       <div>
                         <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-[#c9a87c]">
-                          No · Ficcao Relacional
+                          Nó · Ficção Relacional
                         </p>
                         <h2 className="mt-1 font-serif text-2xl text-brown-900">{nosBook.title}</h2>
                         <p className="mt-1 font-serif text-sm italic text-brown-500">
@@ -349,9 +349,9 @@ export default function MembroDashboard() {
                           className="mt-5 inline-flex items-center justify-center rounded-full bg-[#c9a87c] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b8975b]"
                         >
                           {nosCompletedChapters === 0
-                            ? "Desatar este no"
+                            ? "Desatar este nó"
                             : nosCompletedChapters === nosChapters.length
-                              ? "Reler desde o inicio"
+                              ? "Reler desde o início"
                               : `Continuar — ${nextNosChapter.subtitle}`}
                         </Link>
                       ) : (
@@ -360,13 +360,13 @@ export default function MembroDashboard() {
                             href={`/comprar/nos/${nosBook.slug}`}
                             className="inline-flex items-center justify-center rounded-full bg-[#c9a87c] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b8975b]"
                           >
-                            Desatar este no · ${nosBook.priceUSD}
+                            Desatar este nó · ${nosBook.priceUSD}
                           </Link>
                           <Link
                             href="/comprar/espelhos"
                             className="font-sans text-[0.6rem] text-brown-400 underline hover:text-brown-600"
                           >
-                            Incluido no Pack ou Jornada
+                            Incluído no Pack ou Jornada
                           </Link>
                         </div>
                       )}
@@ -382,7 +382,7 @@ export default function MembroDashboard() {
         {hasMirrorsAccess && upcomingExperiences.length > 0 && (
           <div className="mt-8">
             <h3 className="mb-4 font-sans text-[0.65rem] uppercase tracking-[0.25em] text-brown-400">
-              Proximos Espelhos
+              Próximos Espelhos
             </h3>
             <div className="space-y-3">
               {upcomingExperiences.map((exp) => (
@@ -413,17 +413,17 @@ export default function MembroDashboard() {
         {!hasBookAccess && !hasMirrorsAccess && !authLoading && (
           <div className="mt-10 rounded-2xl border-2 border-brown-100 bg-white p-8 text-center">
             <p className="font-serif text-lg text-brown-700">
-              Ainda nao tens acesso a nenhum conteudo
+              Ainda não tens acesso a nenhum conteúdo
             </p>
             <p className="mt-2 text-sm text-brown-500">
-              Regista o teu codigo do livro fisico ou adquire uma experiencia digital
+              Regista o teu código do livro físico ou adquire uma experiência digital
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
               <Link
                 href="/registar-livro"
                 className="rounded-lg bg-sage px-6 py-3 font-sans text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-sage-dark"
               >
-                Registar codigo
+                Registar código
               </Link>
               <Link
                 href="/comprar/espelhos"
@@ -453,9 +453,9 @@ export default function MembroDashboard() {
                 &#10047;
               </span>
               <div>
-                <h3 className="font-serif text-base text-brown-800">Experiencia Filosofica</h3>
+                <h3 className="font-serif text-base text-brown-800">Experiência Filosófica</h3>
                 <p className="mt-0.5 font-sans text-xs text-brown-400">
-                  Mandala dos 7 veus
+                  Mandala dos 7 véus
                 </p>
               </div>
             </div>
@@ -470,9 +470,9 @@ export default function MembroDashboard() {
                 &#9835;
               </span>
               <div>
-                <h3 className="font-serif text-base text-brown-800">Praticas em Audio</h3>
+                <h3 className="font-serif text-base text-brown-800">Práticas em Áudio</h3>
                 <p className="mt-0.5 font-sans text-xs text-brown-400">
-                  4 praticas guiadas
+                  4 práticas guiadas
                 </p>
               </div>
             </div>
@@ -490,8 +490,8 @@ export default function MembroDashboard() {
                 <h3 className="font-serif text-base text-brown-800">O Teu Espelho</h3>
                 <p className="mt-0.5 font-sans text-xs text-brown-400">
                   {journalCount > 0
-                    ? `${journalCount} reflexoes escritas`
-                    : "As tuas reflexoes reunidas"}
+                    ? `${journalCount} reflexões escritas`
+                    : "As tuas reflexões reunidas"}
                 </p>
               </div>
             </div>
@@ -508,7 +508,7 @@ export default function MembroDashboard() {
               <div>
                 <h3 className="font-serif text-base text-brown-800">Ecos</h3>
                 <p className="mt-0.5 font-sans text-xs text-brown-400">
-                  Comunidade de ressonancia
+                  Comunidade de ressonância
                 </p>
               </div>
             </div>

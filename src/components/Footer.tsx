@@ -28,7 +28,7 @@ export default function Footer() {
             </p>
             <nav className="mt-4 flex flex-col gap-3">
               <Link href="/os-sete-veus" className="text-sm text-brown-300 hover:text-cream">Colecção Espelhos</Link>
-              <Link href="/coleccao-nos" className="text-sm text-brown-300 hover:text-cream">Colecção Nos</Link>
+              <Link href="/coleccao-nos" className="text-sm text-brown-300 hover:text-cream">Colecção Nós</Link>
               <Link href="/comprar" className="text-sm text-brown-300 hover:text-cream">Comprar</Link>
               <Link href="/ecossistema" className="text-sm text-brown-300 hover:text-cream">Ecossistema</Link>
               <Link href="/sobre" className="text-sm text-brown-300 hover:text-cream">A Vivianne</Link>

@@ -17,7 +17,7 @@ export default function ComprarNoPage({ params }: { params: Promise<{ slug: stri
     return (
       <div className="flex min-h-[60vh] items-center justify-center px-6">
         <div className="text-center">
-          <p className="font-serif text-lg text-brown-600">No nao encontrado.</p>
+          <p className="font-serif text-lg text-brown-600">Nó não encontrado.</p>
           <Link href="/comprar/espelhos" className="mt-4 inline-block text-sage hover:underline">
             Ver Espelhos
           </Link>
@@ -42,7 +42,7 @@ export default function ComprarNoPage({ params }: { params: Promise<{ slug: stri
             className="text-center"
           >
             <p className="font-sans text-[0.65rem] uppercase tracking-[0.25em]" style={{ color: nosBook.color }}>
-              Coleccao Nos · Ficcao Relacional
+              Colecção Nós · Ficção Relacional
             </p>
             <h1 className="mt-3 font-serif text-4xl text-cream sm:text-5xl">
               {nosBook.title}
@@ -112,7 +112,7 @@ export default function ComprarNoPage({ params }: { params: Promise<{ slug: stri
               'Continuacao emocional do Espelho',
               'Historia relacional completa',
               'Reflexoes e praticas incluidas',
-              'Acesso vitalicio no site',
+              'Acesso vitalício no site',
             ].map((item) => (
               <li key={item} className="flex items-start gap-2 text-sm text-brown-600">
                 <span style={{ color: nosBook.color }}>~</span>
@@ -163,10 +163,10 @@ export default function ComprarNoPage({ params }: { params: Promise<{ slug: stri
             Alternativa com mais valor
           </p>
           <h3 className="mt-2 font-serif text-xl text-brown-900">
-            Nos incluidos no Pack ou Jornada
+            Nós incluídos no Pack ou Jornada
           </h3>
           <p className="mx-auto mt-3 max-w-md text-sm text-brown-600">
-            O Pack 3 Espelhos ({moeda === 'MZN' ? `${(69 * 65).toLocaleString()} MZN` : '$69 USD'}) inclui 3 Nos gratuitamente.
+            O Pack 3 Espelhos ({moeda === 'MZN' ? `${(69 * 65).toLocaleString()} MZN` : '$69 USD'}) inclui 3 Nós gratuitamente.
             A Jornada Completa ({moeda === 'MZN' ? `${(149 * 65).toLocaleString()} MZN` : '$149 USD'}) inclui todos os 7 Nos.
           </p>
           <Link
@@ -183,7 +183,7 @@ export default function ComprarNoPage({ params }: { params: Promise<{ slug: stri
             href="/comprar/espelhos"
             className="font-sans text-sm text-brown-400 hover:text-brown-600"
           >
-            &larr; Voltar a Coleccao Espelhos
+            &larr; Voltar à Colecção Espelhos
           </Link>
         </div>
       </div>

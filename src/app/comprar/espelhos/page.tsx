@@ -111,11 +111,11 @@ export default function ComprarPage() {
                   {no && (
                     <div className="mt-5 rounded-lg border border-[#c9956a]/20 bg-[#c9956a]/5 px-4 py-3">
                       <p className="font-sans text-[0.55rem] uppercase tracking-[0.2em] text-[#c9956a]">
-                        No correspondente · {moeda === 'MZN' ? `${NOS_PRICING.individual.mt} MZN` : `$${NOS_PRICING.individual.usd}`}
+                        Nó correspondente · {moeda === 'MZN' ? `${NOS_PRICING.individual.mt} MZN` : `$${NOS_PRICING.individual.usd}`}
                       </p>
                       <p className="mt-0.5 font-serif text-sm text-brown-700">{no.title}</p>
                       <p className="text-xs italic text-brown-400">
-                        Disponivel apos completar o Espelho
+                        Disponível após completar o Espelho
                       </p>
                     </div>
                   )}
@@ -174,6 +174,98 @@ export default function ComprarPage() {
                   <p className="mt-3 text-xs text-brown-400">{exp.launchLabel}</p>
                 </motion.div>
               ))}
+            </div>
+          </section>
+        )}
+
+        {/* Packs — visivel quando houver 3+ espelhos disponíveis */}
+        {available.length >= 3 && (
+          <section className="mb-16">
+            <h2 className="text-center font-serif text-2xl text-brown-900 sm:text-3xl">
+              Packs com desconto
+            </h2>
+            <p className="mx-auto mt-3 max-w-md text-center text-sm text-brown-500">
+              Quanto mais espelhos, mais valor. Os Nós estão incluídos.
+            </p>
+            <div className="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-2">
+              {/* Pack 3 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="rounded-2xl border-2 border-sage/30 bg-white p-8 shadow-lg"
+              >
+                <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-sage">
+                  Pack 3 Espelhos
+                </p>
+                <div className="mt-4 flex items-baseline gap-2">
+                  <span className="font-serif text-3xl font-bold text-brown-900">
+                    {moeda === 'MZN' ? `${PRICING.pack3.mt.toLocaleString()} MZN` : `$${PRICING.pack3.usd} USD`}
+                  </span>
+                  <span className="text-sm text-brown-400">
+                    {PRICING.pack3Savings}% desconto
+                  </span>
+                </div>
+                <ul className="mt-5 space-y-2">
+                  {[
+                    '3 Espelhos a tua escolha',
+                    '3 Nós incluídos',
+                    'Acesso vitalício',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-brown-600">
+                      <span className="mt-0.5 text-sage">~</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  onClick={() => handleComprar('Pack 3 Espelhos', PRICING.pack3.mt, PRICING.pack3.usd)}
+                  className="mt-6 w-full rounded-lg bg-sage py-3.5 font-sans text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-sage-dark"
+                >
+                  Comprar Pack
+                </button>
+              </motion.div>
+
+              {/* Jornada Completa */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="relative rounded-2xl border-2 border-[#c9a87c]/40 bg-white p-8 shadow-lg"
+              >
+                <span className="absolute -top-3 right-6 rounded-full bg-[#c9a87c] px-3 py-1 font-sans text-[0.55rem] font-bold uppercase tracking-wider text-white">
+                  Melhor valor
+                </span>
+                <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-[#c9a87c]">
+                  Jornada Completa · 7 Espelhos
+                </p>
+                <div className="mt-4 flex items-baseline gap-2">
+                  <span className="font-serif text-3xl font-bold text-brown-900">
+                    {moeda === 'MZN' ? `${PRICING.journey.mt.toLocaleString()} MZN` : `$${PRICING.journey.usd} USD`}
+                  </span>
+                  <span className="text-sm text-brown-400">
+                    {PRICING.journeySavings}% desconto
+                  </span>
+                </div>
+                <ul className="mt-5 space-y-2">
+                  {[
+                    'Todos os 7 Espelhos',
+                    'Todos os 7 Nós incluídos',
+                    'Acesso vitalício',
+                    'Early access a novos Espelhos',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-brown-600">
+                      <span className="mt-0.5 text-[#c9a87c]">~</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  onClick={() => handleComprar('Jornada Completa', PRICING.journey.mt, PRICING.journey.usd)}
+                  className="mt-6 w-full rounded-lg bg-[#c9a87c] py-3.5 font-sans text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-[#b8975b]"
+                >
+                  Comprar Jornada
+                </button>
+              </motion.div>
             </div>
           </section>
         )}

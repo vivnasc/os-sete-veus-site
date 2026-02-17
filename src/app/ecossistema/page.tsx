@@ -460,7 +460,7 @@ export default function EcossistemaPage() {
                     "Diário de reflexão auto-guardado",
                     "Checklists interactivos",
                     "O Teu Espelho pessoal",
-                    "Nó correspondente incluído",
+                    "Nó correspondente ($12 USD)",
                     "Comunidade Ecos incluída",
                     "Acesso vitalício",
                   ].map((item) => (

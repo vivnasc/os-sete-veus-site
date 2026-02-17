@@ -120,13 +120,13 @@ export default function NosLeituraPage() {
                 href={`/comprar/nos/${nosBookMeta.slug}`}
                 className="block rounded-full bg-[#c9a87c] px-6 py-3 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b8975b]"
               >
-                Desatar este no · ${nosBookMeta.priceUSD}
+                Desatar este nó · ${nosBookMeta.priceUSD}
               </Link>
               <Link
                 href="/comprar/espelhos"
                 className="block font-sans text-xs text-brown-400 underline hover:text-brown-600"
               >
-                Incluido gratuitamente no Pack ou Jornada Completa
+                Incluído gratuitamente no Pack ou Jornada Completa
               </Link>
             </div>
           </div>
