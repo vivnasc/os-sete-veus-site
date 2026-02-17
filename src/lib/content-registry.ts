@@ -27,7 +27,7 @@ const espelhoRegistry: Record<string, () => Promise<ContentModule>> = {
     bookMeta: m.bookMeta,
   })),
   // Próximos Espelhos — descomentar à medida que são publicados:
-  // "veu-do-medo": () => import("@/data/espelho-medo").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
+  "veu-do-medo": () => import("@/data/espelho-medo").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
   // "veu-da-culpa": () => import("@/data/espelho-culpa").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
   // "veu-da-identidade": () => import("@/data/espelho-identidade").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
   // "veu-do-controlo": () => import("@/data/espelho-controlo").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
