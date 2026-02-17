@@ -1,11 +1,15 @@
 'use client'
 
 import { motion } from 'framer-motion'
-
 import { useState } from 'react'
+import { experiences, PRICING } from '@/data/experiences'
+import { nosCollection, NOS_PRICING } from '@/data/nos-collection'
 
 export default function ComprarPage() {
   const [moeda, setMoeda] = useState<'MZN' | 'USD'>('MZN')
+
+  const available = experiences.filter((e) => e.status === 'available')
+  const upcoming = experiences.filter((e) => e.status !== 'available')
 
   const handleComprar = (nome: string, precoMzn: number, precoUsd: number) => {
     alert(`Comprar: ${nome}\nPreço: ${moeda === 'MZN' ? `${precoMzn} MZN` : `$${precoUsd} USD`}\n\nSistema de pagamento será integrado em breve!`)
@@ -67,108 +71,112 @@ export default function ComprarPage() {
           <h2 className="text-center font-serif text-2xl text-brown-900 sm:text-3xl">
             Disponível agora
           </h2>
-          <div className="mx-auto mt-10 max-w-lg">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="rounded-2xl border-2 border-sage/30 bg-white p-8 shadow-lg"
-            >
-              <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-sage">
-                Espelho 1 de 7
-              </p>
-              <h3 className="mt-2 font-serif text-2xl text-brown-900">
-                Espelho da Ilusão
-              </h3>
-              <p className="mt-1 font-serif text-sm italic text-brown-500">
-                Quando a vida que tens não foi a que escolheste
-              </p>
-              <p className="mt-4 text-sm leading-relaxed text-brown-600">
-                Sara tem tudo no sítio. Emprego, casa, relação. E uma pergunta que
-                não a larga: &ldquo;Isto é mesmo meu?&rdquo;
-              </p>
-              <ul className="mt-5 space-y-2">
-                {[
-                  '7 capítulos de ficção',
-                  'Práticas de respiração guiada',
-                  'Diário de reflexão pessoal',
-                  'Acesso vitalício no site',
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-brown-600">
-                    <span className="mt-0.5 text-sage">~</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+          <div className={`mx-auto mt-10 ${available.length === 1 ? 'max-w-lg' : 'grid gap-6 sm:grid-cols-2'}`}>
+            {available.map((exp) => {
+              const no = nosCollection.find((n) => n.espelhoSlug === exp.slug)
+              return (
+                <motion.div
+                  key={exp.slug}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="rounded-2xl border-2 border-sage/30 bg-white p-8 shadow-lg"
+                >
+                  <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-sage">
+                    Espelho {exp.number} de 7
+                  </p>
+                  <h3 className="mt-2 font-serif text-2xl text-brown-900">
+                    {exp.title.replace('O Espelho ', 'Espelho ')}
+                  </h3>
+                  <p className="mt-1 font-serif text-sm italic text-brown-500">
+                    {exp.subtitle}
+                  </p>
+                  <p className="mt-4 text-sm leading-relaxed text-brown-600">
+                    {exp.description}
+                  </p>
+                  <ul className="mt-5 space-y-2">
+                    {[
+                      '7 capítulos de ficção',
+                      'Práticas de respiração guiada',
+                      'Diário de reflexão pessoal',
+                      'Acesso vitalício no site',
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-brown-600">
+                        <span className="mt-0.5 text-sage">~</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-              {/* Nó incluído */}
-              <div className="mt-5 rounded-lg border border-[#c9956a]/20 bg-[#c9956a]/5 px-4 py-3">
-                <p className="font-sans text-[0.55rem] uppercase tracking-[0.2em] text-[#c9956a]">
-                  Nó incluído
-                </p>
-                <p className="mt-0.5 font-serif text-sm text-brown-700">O Nó da Herança</p>
-                <p className="text-xs italic text-brown-400">
-                  Desbloqueia ao completar o Espelho
-                </p>
-              </div>
+                  {/* Nó incluído */}
+                  {no && (
+                    <div className="mt-5 rounded-lg border border-[#c9956a]/20 bg-[#c9956a]/5 px-4 py-3">
+                      <p className="font-sans text-[0.55rem] uppercase tracking-[0.2em] text-[#c9956a]">
+                        Nó incluído
+                      </p>
+                      <p className="mt-0.5 font-serif text-sm text-brown-700">{no.title}</p>
+                      <p className="text-xs italic text-brown-400">
+                        Desbloqueia ao completar o Espelho
+                      </p>
+                    </div>
+                  )}
 
-              <div className="mt-6 flex items-baseline gap-2">
-                <span className="font-serif text-3xl font-bold text-brown-900">
-                  {moeda === 'MZN' ? '1.885 MZN' : '$29 USD'}
-                </span>
-                <span className="text-sm text-brown-400">
-                  {moeda === 'MZN' ? '/ $29 USD' : '/ 1.885 MZN'}
-                </span>
-              </div>
+                  <div className="mt-6 flex items-baseline gap-2">
+                    <span className="font-serif text-3xl font-bold text-brown-900">
+                      {moeda === 'MZN' ? `${exp.priceMT.toLocaleString()} MZN` : `$${exp.priceUSD} USD`}
+                    </span>
+                    <span className="text-sm text-brown-400">
+                      {moeda === 'MZN' ? `/ $${exp.priceUSD} USD` : `/ ${exp.priceMT.toLocaleString()} MZN`}
+                    </span>
+                  </div>
 
-              <button
-                onClick={() => handleComprar('Espelho da Ilusão', 1885, 29)}
-                className="mt-5 w-full rounded-lg bg-sage py-3.5 font-sans text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-sage-dark"
-              >
-                Comprar
-              </button>
-            </motion.div>
+                  <button
+                    onClick={() => handleComprar(exp.title, exp.priceMT, exp.priceUSD)}
+                    className="mt-5 w-full rounded-lg bg-sage py-3.5 font-sans text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-sage-dark"
+                  >
+                    Comprar
+                  </button>
+                </motion.div>
+              )
+            })}
           </div>
         </section>
 
         {/* Em preparação */}
-        <section className="mb-16">
-          <h2 className="text-center font-serif text-2xl text-brown-900 sm:text-3xl">
-            Em preparação
-          </h2>
-          <p className="mx-auto mt-3 max-w-md text-center text-sm text-brown-500">
-            Os próximos Espelhos serão publicados ao longo de 2026
-          </p>
+        {upcoming.length > 0 && (
+          <section className="mb-16">
+            <h2 className="text-center font-serif text-2xl text-brown-900 sm:text-3xl">
+              Em preparação
+            </h2>
+            <p className="mx-auto mt-3 max-w-md text-center text-sm text-brown-500">
+              Os próximos Espelhos serão publicados ao longo de 2026
+            </p>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              { num: 2, nome: 'Espelho do Medo', sub: 'Quando o medo decide por ti', data: 'Março 2026' },
-              { num: 3, nome: 'Espelho da Culpa', sub: 'Quando te castigas por querer mais', data: 'Abril 2026' },
-              { num: 4, nome: 'Espelho da Identidade', sub: 'Quando já não sabes quem és sem os outros', data: 'Junho 2026' },
-              { num: 5, nome: 'Espelho do Controlo', sub: 'Quando segurar é a única forma que conheces', data: 'Agosto 2026' },
-              { num: 6, nome: 'Espelho do Desejo', sub: 'Quando desejas tudo menos o que precisas', data: 'Outubro 2026' },
-              { num: 7, nome: 'Espelho da Separação', sub: 'Quando te afastas de ti mesma para pertencer', data: 'Dezembro 2026' },
-            ].map((espelho) => (
-              <motion.div
-                key={espelho.num}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="rounded-2xl border border-brown-200 bg-white p-6"
-              >
-                <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-brown-400">
-                  Espelho {espelho.num} de 7
-                </p>
-                <h3 className="mt-2 font-serif text-lg text-brown-900">{espelho.nome}</h3>
-                <p className="mt-1 text-sm italic text-brown-400">{espelho.sub}</p>
-                <div className="mt-4 flex items-baseline gap-2">
-                  <span className="font-serif text-xl font-bold text-brown-900">
-                    {moeda === 'MZN' ? '1.885 MZN' : '$29 USD'}
-                  </span>
-                </div>
-                <p className="mt-3 text-xs text-brown-400">{espelho.data}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {upcoming.map((exp) => (
+                <motion.div
+                  key={exp.slug}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="rounded-2xl border border-brown-200 bg-white p-6"
+                >
+                  <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-brown-400">
+                    Espelho {exp.number} de 7
+                  </p>
+                  <h3 className="mt-2 font-serif text-lg text-brown-900">
+                    {exp.title.replace('O Espelho ', 'Espelho ')}
+                  </h3>
+                  <p className="mt-1 text-sm italic text-brown-400">{exp.subtitle}</p>
+                  <div className="mt-4 flex items-baseline gap-2">
+                    <span className="font-serif text-xl font-bold text-brown-900">
+                      {moeda === 'MZN' ? `${exp.priceMT.toLocaleString()} MZN` : `$${exp.priceUSD} USD`}
+                    </span>
+                  </div>
+                  <p className="mt-3 text-xs text-brown-400">{exp.launchLabel}</p>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Nós — informação */}
         <section className="mb-16">
@@ -185,7 +193,7 @@ export default function ComprarPage() {
             </p>
             <p className="mx-auto mt-4 max-w-md text-sm text-brown-500">
               Ao completar um Espelho, o seu Nó desbloqueia-se como continuação natural da história.
-              Nó individual: {moeda === 'MZN' ? '780 MZN' : '$12 USD'}.
+              Nó individual: {moeda === 'MZN' ? `${NOS_PRICING.individual.mt} MZN` : `$${NOS_PRICING.individual.usd} USD`}.
             </p>
           </div>
         </section>
@@ -217,7 +225,7 @@ export default function ComprarPage() {
             <div className="rounded-xl bg-white p-6 shadow-sm">
               <h3 className="font-bold text-brown-900">Haverá pacotes quando houver mais Espelhos?</h3>
               <p className="mt-2 text-sm text-brown-600">
-                Sim. À medida que mais Espelhos forem publicados, disponibilizaremos pacotes com desconto. Por agora, começa pelo Espelho da Ilusão.
+                Sim. À medida que mais Espelhos forem publicados, disponibilizaremos pacotes com desconto. Por agora, começa pelo que mais te chama.
               </p>
             </div>
           </div>

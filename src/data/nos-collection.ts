@@ -33,7 +33,11 @@ export type NosBook = {
   priceEUR: number;
 };
 
-export const nosCollection: NosBook[] = [
+// Status calculado dinamicamente: segue o Espelho correspondente.
+// Um Nó fica "available" quando o Espelho é publicado E o dataFile existe.
+import { experiences } from "@/data/experiences";
+
+const _nosCollection: NosBook[] = [
   {
     slug: "no-da-heranca",
     number: 1,
@@ -162,6 +166,19 @@ export const nosCollection: NosBook[] = [
   },
 ];
 
+// Exporta array com status calculado: Nó fica available se Espelho publicado + dataFile existe
+export const nosCollection: NosBook[] = _nosCollection.map((n) => {
+  if (n.status === "available") return n;
+  if (!n.dataFile) return n; // Nó não escrito → mantém coming_soon
+
+  // Verificar se o Espelho correspondente já está available
+  const espelho = experiences.find((e) => e.slug === n.espelhoSlug);
+  if (espelho && espelho.status === "available") {
+    return { ...n, status: "available" as const };
+  }
+  return n;
+});
+
 export function getNosBook(slug: string) {
   return nosCollection.find((n) => n.slug === slug);
 }
@@ -170,6 +187,10 @@ export function getNosForEspelho(espelhoSlug: string) {
   return nosCollection.find((n) => n.espelhoSlug === espelhoSlug);
 }
 
+/**
+ * Retorna Nós disponíveis.
+ * O status já é calculado automaticamente no array nosCollection.
+ */
 export function getAvailableNos() {
   return nosCollection.filter((n) => n.status === "available");
 }

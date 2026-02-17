@@ -1,95 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { experiences } from "@/data/experiences";
+import { nosCollection } from "@/data/nos-collection";
 
 export const metadata: Metadata = {
   title: "Colecção Espelhos — Ficção de Transformação Interior",
   description:
     "7 livros. 7 espelhos. Histórias onde te reconheces — e algo muda. Cada Espelho revela um véu que usas sem saber.",
 };
-
-const nos = [
-  { espelho: 1, title: "O Nó da Herança", subtitle: "O silêncio herdado entre mãe e filha", available: true },
-  { espelho: 2, title: "O Nó do Silêncio", subtitle: "O que o medo calou entre eles", available: false },
-  { espelho: 3, title: "O Nó do Sacrifício", subtitle: "A culpa disfarçada de entrega", available: false },
-  { espelho: 4, title: "O Nó da Vergonha", subtitle: "A máscara que caiu entre dois estranhos", available: false },
-  { espelho: 5, title: "O Nó da Solidão", subtitle: "O controlo que isolou quem mais amava", available: false },
-  { espelho: 6, title: "O Nó do Vazio", subtitle: "O desejo que esvaziou a amizade", available: false },
-  { espelho: 7, title: "O Nó da Pertença", subtitle: "A separação que reinventou o lar", available: false },
-];
-
-const veus = [
-  {
-    number: 1,
-    title: "O Espelho da Ilusão",
-    subtitle: "Quando a vida que tens não foi a que escolheste",
-    description:
-      "Sara tem tudo no sítio. Emprego, casa, relação. E uma pergunta que não a larga: \"Isto é mesmo meu?\" Este livro é para quem sente que está na vida certa de outra pessoa.",
-    image: "/images/espelho-ilusao.png",
-    accent: "bg-veu-1",
-    available: true,
-  },
-  {
-    number: 2,
-    title: "O Espelho do Medo",
-    subtitle: "Quando o medo decide por ti",
-    description:
-      "E se o medo não fosse o inimigo, mas um espelho que te mostra o que há do outro lado? Este livro é para quem sabe o que quer — mas tem medo de ir buscar.",
-    image: "/images/espelho-medo.png",
-    accent: "bg-veu-2",
-    available: false,
-  },
-  {
-    number: 3,
-    title: "O Espelho da Culpa",
-    subtitle: "Quando te castigas por querer mais",
-    description:
-      "Querer mais não é egoísmo. É vida. Este livro é para quem precisa de permissão — a permissão que só tu te podes dar.",
-    image: "/images/espelho-culpa.png",
-    accent: "bg-veu-3",
-    available: false,
-  },
-  {
-    number: 4,
-    title: "O Espelho da Identidade",
-    subtitle: "Quando já não sabes quem és sem os outros",
-    description:
-      "O que sobra quando tiras todos os papéis — mãe, filha, mulher, profissional? Este livro é para quem está pronta para se descobrir por baixo de tudo.",
-    image: "/images/espelho-identidade.png",
-    accent: "bg-veu-4",
-    available: false,
-  },
-  {
-    number: 5,
-    title: "O Espelho do Controlo",
-    subtitle: "Quando segurar é a única forma que conheces",
-    description:
-      "Há uma diferença entre cuidar e controlar — e por vezes essa linha desaparece. Este livro é para quem precisa de aprender a largar para se encontrar.",
-    image: "/images/espelho-controlo.png",
-    accent: "bg-veu-5",
-    available: false,
-  },
-  {
-    number: 6,
-    title: "O Espelho do Desejo",
-    subtitle: "Quando desejas tudo menos o que precisas",
-    description:
-      "O desejo que te move é realmente teu? Ou é uma resposta ao que te ensinaram a querer? Este livro é para quem precisa de parar e perguntar: o que é que eu quero, de verdade?",
-    image: "/images/espelho-desejo.png",
-    accent: "bg-veu-6",
-    available: false,
-  },
-  {
-    number: 7,
-    title: "O Espelho da Separação",
-    subtitle: "Quando te afastas de ti mesma para pertencer",
-    description:
-      "O último espelho. O mais difícil de ver. Este livro é para quem está pronta para voltar — a si mesma.",
-    image: "/images/espelho-separacao.png",
-    accent: "bg-veu-7",
-    available: false,
-  },
-];
 
 export default function OsSeteVeusPage() {
   return (
@@ -127,70 +46,75 @@ export default function OsSeteVeusPage() {
       </section>
 
       {/* Collection — alternating backgrounds */}
-      {veus.map((veu, i) => (
-        <section
-          key={veu.number}
-          className={`px-6 py-16 ${i % 2 === 0 ? "bg-cream" : "bg-cream-dark"}`}
-        >
-          <div className="mx-auto max-w-5xl">
-            <div className={`items-center gap-10 md:flex ${i % 2 !== 0 ? "md:flex-row-reverse" : ""}`}>
-              <div className="shrink-0 text-center">
-                <Image
-                  src={veu.image}
-                  alt={veu.title}
-                  width={240}
-                  height={360}
-                  className="mx-auto rounded-lg shadow-xl"
-                />
-              </div>
-              <div className="mt-8 flex-1 md:mt-0">
-                <div className="flex items-center gap-3">
-                  <span className={`inline-block h-8 w-8 rounded-full ${veu.accent} text-center font-sans text-sm font-bold leading-8 text-white`}>
-                    {veu.number}
-                  </span>
-                  <span className="font-sans text-[0.7rem] uppercase tracking-[0.2em] text-brown-400">
-                    Espelho {veu.number} de 7
-                  </span>
+      {experiences.map((exp, i) => {
+        const no = nosCollection.find((n) => n.espelhoSlug === exp.slug);
+        const accentClasses = [
+          "bg-veu-1", "bg-veu-2", "bg-veu-3", "bg-veu-4",
+          "bg-veu-5", "bg-veu-6", "bg-veu-7",
+        ];
+
+        return (
+          <section
+            key={exp.slug}
+            className={`px-6 py-16 ${i % 2 === 0 ? "bg-cream" : "bg-cream-dark"}`}
+          >
+            <div className="mx-auto max-w-5xl">
+              <div className={`items-center gap-10 md:flex ${i % 2 !== 0 ? "md:flex-row-reverse" : ""}`}>
+                <div className="shrink-0 text-center">
+                  <Image
+                    src={exp.image}
+                    alt={exp.title}
+                    width={240}
+                    height={360}
+                    className="mx-auto rounded-lg shadow-xl"
+                  />
                 </div>
-                <h2 className="mt-3 font-serif text-2xl text-brown-900 sm:text-3xl">{veu.title}</h2>
-                <p className="mt-1 font-serif italic text-brown-500">{veu.subtitle}</p>
-                <p className="mt-4 leading-relaxed text-brown-700">{veu.description}</p>
-                {/* Nó paired */}
-                {(() => {
-                  const no = nos.find((n) => n.espelho === veu.number);
-                  return no ? (
+                <div className="mt-8 flex-1 md:mt-0">
+                  <div className="flex items-center gap-3">
+                    <span className={`inline-block h-8 w-8 rounded-full ${accentClasses[i] || "bg-brown-400"} text-center font-sans text-sm font-bold leading-8 text-white`}>
+                      {exp.number}
+                    </span>
+                    <span className="font-sans text-[0.7rem] uppercase tracking-[0.2em] text-brown-400">
+                      Espelho {exp.number} de 7
+                    </span>
+                  </div>
+                  <h2 className="mt-3 font-serif text-2xl text-brown-900 sm:text-3xl">{exp.title}</h2>
+                  <p className="mt-1 font-serif italic text-brown-500">{exp.subtitle}</p>
+                  <p className="mt-4 leading-relaxed text-brown-700">{exp.description}</p>
+                  {/* Nó paired */}
+                  {no && (
                     <div className="mt-5 rounded-lg border border-[#c9a87c]/20 bg-[#c9a87c]/5 px-4 py-3">
                       <p className="font-sans text-[0.55rem] uppercase tracking-[0.2em] text-[#c9a87c]">
                         Nó incluído
                       </p>
                       <p className="mt-0.5 font-serif text-sm text-brown-700">{no.title}</p>
                       <p className="text-xs italic text-brown-400">{no.subtitle}</p>
-                      {!no.available && (
+                      {no.status !== "available" && (
                         <p className="mt-1 text-[0.65rem] text-brown-300">Em preparação</p>
                       )}
                     </div>
-                  ) : null;
-                })()}
-
-                <div className="mt-5">
-                  {veu.available ? (
-                    <Link
-                      href="/experiencias"
-                      className="inline-block rounded-full bg-sage px-6 py-2.5 font-sans text-[0.75rem] font-medium uppercase tracking-wider text-white transition-colors hover:bg-sage-dark"
-                    >
-                      Explorar experiência
-                    </Link>
-                  ) : (
-                    <span className="inline-block rounded-full bg-brown-100/60 px-5 py-2 font-sans text-[0.75rem] font-medium uppercase tracking-wider text-brown-400">
-                      Em preparação
-                    </span>
                   )}
+
+                  <div className="mt-5">
+                    {exp.status === "available" ? (
+                      <Link
+                        href={`/experiencias/${exp.slug}`}
+                        className="inline-block rounded-full bg-sage px-6 py-2.5 font-sans text-[0.75rem] font-medium uppercase tracking-wider text-white transition-colors hover:bg-sage-dark"
+                      >
+                        Explorar experiência
+                      </Link>
+                    ) : (
+                      <span className="inline-block rounded-full bg-brown-100/60 px-5 py-2 font-sans text-[0.75rem] font-medium uppercase tracking-wider text-brown-400">
+                        {exp.launchLabel || "Em preparação"}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-      ))}
+          </section>
+        );
+      })}
 
       {/* Colecção Nós — bridge */}
       <section className="bg-cream-dark px-6 py-20">
