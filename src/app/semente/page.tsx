@@ -20,7 +20,7 @@ export default function SementePage() {
   const [mostrarObrigada, setMostrarObrigada] = useState(false);
 
   const paypalLink = `https://www.paypal.com/paypalme/vivsaraiva/${valorSelecionado || ""}`;
-  const mpesaNumero = "+258 851 006 473";
+  const mpesaNumero = "+258 845 243 875";
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-cream to-white">

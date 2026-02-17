@@ -193,7 +193,7 @@ export default function EcoCard({ eco, onReconhecer, onSussurrar, isDemo, guarda
                 </a>
                 <button
                   onClick={() => {
-                    navigator.clipboard.writeText('+258 851 006 473')
+                    navigator.clipboard.writeText('+258 845 243 875')
                     setMostrarOferenda(false)
                   }}
                   className="rounded-full border border-sage px-4 py-1.5 font-sans text-[0.65rem] text-sage transition-colors hover:bg-sage/10"

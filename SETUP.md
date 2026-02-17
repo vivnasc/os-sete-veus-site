@@ -64,7 +64,7 @@ SUPABASE_SERVICE_ROLE_KEY=cole_a_tua_key_aqui
 
 ### MPesa (Já Configurado ✅)
 
-Número: **+258 851 006 473**
+Número: **+258 845 243 875**
 
 ### Transferência Bancária
 

@@ -246,6 +246,44 @@ const cards: MarketingCard[] = [
     style: { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896" },
   },
 
+  // ── ACESSO DIGITAL (convite leitores livro fisico) ──────────────────────
+
+  {
+    id: "acesso-1",
+    format: "instagram-feed",
+    category: "Livro Fisico",
+    content: {
+      highlight: "Leitores do livro",
+      title: "O teu livro\nabre portas que ainda\nnao conheces.",
+      body: "Tens Os 7 Veus do Despertar?\n\nRegista o teu interesse\ne recebe acesso a\nplataforma digital completa.\n\nGratuito.",
+      footer: "seteecos.com/acesso-digital",
+    },
+    style: { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896" },
+  },
+  {
+    id: "acesso-2",
+    format: "whatsapp-status",
+    category: "Livro Fisico",
+    content: {
+      title: "Tens o livro\nOs 7 Veus?",
+      body: "A plataforma digital\nfoi completamente redesenhada.\n\nTens acesso gratuito.\nRegista o teu interesse.",
+      footer: "seteecos.com/acesso-digital",
+    },
+    style: { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896" },
+  },
+  {
+    id: "acesso-3",
+    format: "instagram-story",
+    category: "Livro Fisico",
+    content: {
+      highlight: "Gratuito",
+      title: "Do livro fisico\na experiencia digital.",
+      body: "Se ja tens\nOs 7 Veus do Despertar,\nregista o teu interesse\ne recebe o codigo de acesso\na plataforma completa.",
+      footer: "seteecos.com/acesso-digital",
+    },
+    style: { bg: "#c9b896", text: "#3d3630", accent: "#f7f5f0" },
+  },
+
   // ── ESPELHO DO MEDO (teaser) ────────────────────────────────────────────
 
   {
@@ -338,6 +376,31 @@ Comeca sem pagar nada:
 seteecos.com/recursos
 
 ~ Vivianne`,
+  },
+  {
+    id: "bc-acesso",
+    category: "Livro Fisico",
+    title: "Convite aos leitores do livro fisico",
+    text: `Ola! Se tens o livro fisico Os 7 Veus do Despertar, tenho uma novidade:
+
+A plataforma digital foi redesenhada e tens direito a acesso gratuito. Leitura integrada, diario de reflexao, comunidade e muito mais.
+
+Regista o teu interesse aqui e envio-te o codigo:
+seteecos.com/acesso-digital
+
+Demora menos de 1 minuto. Sem compromisso.
+
+~ Vivianne`,
+  },
+  {
+    id: "bc-acesso-curto",
+    category: "Livro Fisico",
+    title: "Versao curta (WhatsApp Status)",
+    text: `Tens o livro Os 7 Veus do Despertar?
+
+A plataforma digital esta completamente nova. E tens acesso gratuito.
+
+seteecos.com/acesso-digital`,
   },
   {
     id: "bc-medo",
