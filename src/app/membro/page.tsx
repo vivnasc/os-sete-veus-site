@@ -125,6 +125,9 @@ export default function MembroDashboard() {
   const isAdmin = profile?.is_admin || AUTHOR_EMAILS.includes(user?.email || "");
   const hasBookAccess = isAdmin || profile?.has_book_access || false;
   const hasMirrorsAccess = isAdmin || profile?.has_mirrors_access || false;
+  const hasNosIncluded = isAdmin || (profile?.purchased_products ?? []).some(
+    (p) => p.type === "journey" || p.type === "pack3" || p.type === "jornada_completa"
+  );
 
   // Available and upcoming espelhos
   const availableExperiences = experiences.filter((e) => e.status === "available");
@@ -273,7 +276,7 @@ export default function MembroDashboard() {
                 </div>
               </div>
 
-              {/* No teaser (locked) — only for Ilusao for now */}
+              {/* No teaser (locked — espelho nao completo) */}
               {nosBook && !prog.isComplete && prog.completed > 0 && nosBook.status === "available" && (
                 <div className="mt-3 overflow-hidden rounded-2xl border-2 border-dashed border-[#c9a87c]/25 bg-[#c9a87c]/[0.03] p-5">
                   <div className="flex items-start gap-4">
@@ -289,13 +292,14 @@ export default function MembroDashboard() {
                       <p className="mt-1 font-serif text-base text-brown-800">{nosBook.title}</p>
                       <p className="mt-1 font-sans text-xs text-brown-400">
                         Disponivel ao completar {exp.title}
+                        {!hasNosIncluded && ` · $${nosBook.priceUSD}`}
                       </p>
                     </div>
                   </div>
                 </div>
               )}
 
-              {/* No unlocked */}
+              {/* No — espelho completo */}
               {nosBook && prog.isComplete && nosBook.status === "available" && (
                 <div className="mt-3 overflow-hidden rounded-2xl border border-[#c9a87c]/40 bg-gradient-to-br from-[#faf7f2] to-white shadow-sm">
                   <div className="flex flex-col sm:flex-row">
@@ -313,7 +317,7 @@ export default function MembroDashboard() {
                         <p className="mt-1 font-serif text-sm italic text-brown-500">
                           {nosBook.subtitle}
                         </p>
-                        {!loading && (
+                        {!loading && hasNosIncluded && (
                           <div className="mt-4">
                             <div className="flex items-center justify-between text-xs text-brown-400">
                               <span>
@@ -333,17 +337,39 @@ export default function MembroDashboard() {
                             </div>
                           </div>
                         )}
+                        {!loading && !hasNosIncluded && (
+                          <p className="mt-3 font-serif text-sm leading-relaxed text-brown-500">
+                            {nosBook.description}
+                          </p>
+                        )}
                       </div>
-                      <Link
-                        href={`/membro/nos/${nextNosChapter.slug}`}
-                        className="mt-5 inline-flex items-center justify-center rounded-full bg-[#c9a87c] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b8975b]"
-                      >
-                        {nosCompletedChapters === 0
-                          ? "Desatar este no"
-                          : nosCompletedChapters === nosChapters.length
-                            ? "Reler desde o inicio"
-                            : `Continuar — ${nextNosChapter.subtitle}`}
-                      </Link>
+                      {hasNosIncluded ? (
+                        <Link
+                          href={`/membro/nos/${nextNosChapter.slug}`}
+                          className="mt-5 inline-flex items-center justify-center rounded-full bg-[#c9a87c] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b8975b]"
+                        >
+                          {nosCompletedChapters === 0
+                            ? "Desatar este no"
+                            : nosCompletedChapters === nosChapters.length
+                              ? "Reler desde o inicio"
+                              : `Continuar — ${nextNosChapter.subtitle}`}
+                        </Link>
+                      ) : (
+                        <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:items-center">
+                          <Link
+                            href={`/comprar/nos/${nosBook.slug}`}
+                            className="inline-flex items-center justify-center rounded-full bg-[#c9a87c] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b8975b]"
+                          >
+                            Desatar este no · ${nosBook.priceUSD}
+                          </Link>
+                          <Link
+                            href="/comprar/espelhos"
+                            className="font-sans text-[0.6rem] text-brown-400 underline hover:text-brown-600"
+                          >
+                            Incluido no Pack ou Jornada
+                          </Link>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

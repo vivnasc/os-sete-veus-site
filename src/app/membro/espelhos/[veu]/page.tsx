@@ -22,6 +22,9 @@ export default function EspelhoHubPage({ params }: { params: Promise<{ veu: stri
 
   const isAdmin = profile?.is_admin || AUTHOR_EMAILS.includes(user?.email || "");
   const hasMirrorsAccess = isAdmin || profile?.has_mirrors_access || false;
+  const hasNosIncluded = isAdmin || (profile?.purchased_products ?? []).some(
+    (p) => p.type === "journey" || p.type === "pack3" || p.type === "jornada_completa"
+  );
 
   const experience = getExperience(veu);
   const nosBook = getNosForEspelho(veu);
@@ -208,7 +211,7 @@ export default function EspelhoHubPage({ params }: { params: Promise<{ veu: stri
           })}
         </div>
 
-        {/* No teaser (locked) */}
+        {/* No teaser (locked — espelho nao completo) */}
         {nosBook && !loading && !espelhoCompleto && completedCount > 0 && (
           <div className="mt-8 overflow-hidden rounded-2xl border-2 border-dashed border-[#c9a87c]/30 bg-[#c9a87c]/[0.03] p-6">
             <div className="flex items-start gap-4">
@@ -227,13 +230,14 @@ export default function EspelhoHubPage({ params }: { params: Promise<{ veu: stri
                 </p>
                 <p className="mt-3 font-sans text-xs text-brown-400">
                   Disponivel ao completar este espelho.
+                  {!hasNosIncluded && ` · $${nosBook.priceUSD}`}
                 </p>
               </div>
             </div>
           </div>
         )}
 
-        {/* No unlocked */}
+        {/* No — espelho completo */}
         {nosBook && !loading && espelhoCompleto && (
           <div className="mt-8 overflow-hidden rounded-2xl border border-[#c9a87c]/40 bg-gradient-to-br from-[#faf7f2] to-white p-6 shadow-sm">
             <div className="text-center">
@@ -251,7 +255,11 @@ export default function EspelhoHubPage({ params }: { params: Promise<{ veu: stri
                 <p className="mt-2 font-serif text-sm leading-relaxed text-brown-600">
                   {nosBook.description}
                 </p>
-                {nosBook.status === "available" ? (
+                {nosBook.status !== "available" ? (
+                  <p className="mt-3 font-sans text-xs text-brown-400">
+                    Em breve
+                  </p>
+                ) : hasNosIncluded ? (
                   <Link
                     href="/membro/nos"
                     className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#c9a87c] px-5 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b8975b]"
@@ -259,9 +267,20 @@ export default function EspelhoHubPage({ params }: { params: Promise<{ veu: stri
                     Desatar este no &rarr;
                   </Link>
                 ) : (
-                  <p className="mt-3 font-sans text-xs text-brown-400">
-                    Em breve
-                  </p>
+                  <div className="mt-4 flex items-center gap-3">
+                    <Link
+                      href={`/comprar/nos/${nosBook.slug}`}
+                      className="inline-flex items-center gap-2 rounded-full bg-[#c9a87c] px-5 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b8975b]"
+                    >
+                      Desatar este no · ${nosBook.priceUSD}
+                    </Link>
+                    <Link
+                      href="/comprar/espelhos"
+                      className="font-sans text-[0.6rem] text-brown-400 underline hover:text-brown-600"
+                    >
+                      Incluido no Pack ou Jornada
+                    </Link>
+                  </div>
                 )}
               </div>
             </div>

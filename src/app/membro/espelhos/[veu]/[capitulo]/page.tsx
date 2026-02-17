@@ -35,6 +35,9 @@ export default function EspelhoChapterPage({
 
   const isAdmin = profile?.is_admin || AUTHOR_EMAILS.includes(user?.email || "");
   const hasMirrorsAccess = isAdmin || profile?.has_mirrors_access || false;
+  const hasNosIncluded = isAdmin || (profile?.purchased_products ?? []).some(
+    (p) => p.type === "journey" || p.type === "pack3" || p.type === "jornada_completa"
+  );
 
   const nosBook = getNosForEspelho(veu);
 
@@ -322,14 +325,14 @@ export default function EspelhoChapterPage({
             )}
           </nav>
 
-          {/* No desbloqueado — last chapter */}
+          {/* No — last chapter */}
           {nosBook && !nextChapter && showReflection && (
             <div className={`mt-10 rounded-2xl border-2 border-[#c9a87c]/30 p-8 text-center transition-colors duration-500 ${nightMode ? "bg-[#2a2520]" : "bg-white shadow-sm"}`}>
               <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#c9a87c]/10 text-2xl">
                 &#10023;
               </div>
               <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-[#c9a87c]">
-                Desbloqueado
+                {hasNosIncluded ? "Desbloqueado" : "Continuacao disponivel"}
               </p>
               <h3 className={`mt-2 font-serif text-xl ${nightMode ? "text-cream" : "text-brown-900"}`}>
                 {nosBook.title}
@@ -340,17 +343,29 @@ export default function EspelhoChapterPage({
               <p className={`mx-auto mt-3 max-w-sm text-sm leading-relaxed ${nightMode ? "text-brown-500" : "text-brown-500"}`}>
                 {nosBook.description}
               </p>
-              {nosBook.status === "available" ? (
+              {nosBook.status !== "available" ? (
+                <p className="mt-4 font-sans text-xs text-brown-400">
+                  Em breve
+                </p>
+              ) : hasNosIncluded ? (
                 <Link
                   href="/membro/nos"
                   className="mt-5 inline-block rounded-full bg-[#c9a87c] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b89a6c]"
                 >
-                  Comecar {nosBook.title}
+                  Desatar este no &rarr;
                 </Link>
               ) : (
-                <p className="mt-4 font-sans text-xs text-brown-400">
-                  Em breve
-                </p>
+                <div className="mt-5 space-y-2">
+                  <Link
+                    href={`/comprar/nos/${nosBook.slug}`}
+                    className="inline-block rounded-full bg-[#c9a87c] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b89a6c]"
+                  >
+                    Desatar este no · ${nosBook.priceUSD}
+                  </Link>
+                  <p className={`font-sans text-[0.6rem] ${nightMode ? "text-brown-600" : "text-brown-400"}`}>
+                    Incluido gratuitamente no Pack ou Jornada Completa
+                  </p>
+                </div>
               )}
             </div>
           )}
