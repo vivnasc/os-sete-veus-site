@@ -107,15 +107,15 @@ export default function ComprarPage() {
                     ))}
                   </ul>
 
-                  {/* Nó incluído */}
+                  {/* Nó correspondente */}
                   {no && (
                     <div className="mt-5 rounded-lg border border-[#c9956a]/20 bg-[#c9956a]/5 px-4 py-3">
                       <p className="font-sans text-[0.55rem] uppercase tracking-[0.2em] text-[#c9956a]">
-                        Nó incluído
+                        No correspondente · {moeda === 'MZN' ? `${NOS_PRICING.individual.mt} MZN` : `$${NOS_PRICING.individual.usd}`}
                       </p>
                       <p className="mt-0.5 font-serif text-sm text-brown-700">{no.title}</p>
                       <p className="text-xs italic text-brown-400">
-                        Desbloqueia ao completar o Espelho
+                        Disponivel apos completar o Espelho
                       </p>
                     </div>
                   )}
