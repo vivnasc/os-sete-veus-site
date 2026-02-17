@@ -14,6 +14,8 @@ export default function NosLeituraPage() {
   const {
     espelhoCompleto,
     canAccessNos,
+    hasNosPurchased,
+    nosBook: nosBookMeta,
     espelhoCompletedCount,
     espelhoTotalCount,
     nosCompletedCount: completedCount,
@@ -36,7 +38,7 @@ export default function NosLeituraPage() {
 
   if (authLoading || !hasMirrorsAccess) return null;
 
-  // If Espelho not complete and not admin, show gate message
+  // Gate 1: Espelho not complete
   if (!loading && !espelhoCompleto && !isAdmin) {
     return (
       <section className="px-6 py-12">
@@ -81,6 +83,52 @@ export default function NosLeituraPage() {
             >
               Continuar o Espelho da Ilusão &rarr;
             </Link>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Gate 2: Espelho complete but No not purchased
+  if (!loading && espelhoCompleto && !hasNosPurchased && !isAdmin && nosBookMeta) {
+    return (
+      <section className="px-6 py-12">
+        <div className="mx-auto max-w-2xl">
+          <Link
+            href="/membro"
+            className="inline-block font-sans text-[0.65rem] uppercase tracking-[0.15em] text-brown-400 hover:text-brown-600"
+          >
+            &larr; A tua experiência
+          </Link>
+
+          <div className="mt-12 text-center">
+            <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-[#7a8c6e]">
+              &#10003; Espelho da Ilusão — Completo
+            </p>
+            <div className="mx-auto mt-6 flex h-16 w-16 items-center justify-center rounded-full bg-[#c9a87c]/15">
+              <span className="font-serif text-2xl text-[#c9a87c]">&#8734;</span>
+            </div>
+            <h1 className="mt-4 font-serif text-3xl text-brown-900">{nosBookMeta.title}</h1>
+            <p className="mt-2 font-serif text-base italic text-brown-500">
+              {nosBookMeta.subtitle}
+            </p>
+            <p className="mx-auto mt-4 max-w-md font-serif text-sm leading-relaxed text-brown-600">
+              {nosBookMeta.description}
+            </p>
+            <div className="mx-auto mt-8 max-w-sm space-y-3">
+              <Link
+                href={`/comprar/nos/${nosBookMeta.slug}`}
+                className="block rounded-full bg-[#c9a87c] px-6 py-3 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b8975b]"
+              >
+                Desatar este no · ${nosBookMeta.priceUSD}
+              </Link>
+              <Link
+                href="/comprar/espelhos"
+                className="block font-sans text-xs text-brown-400 underline hover:text-brown-600"
+              >
+                Incluido gratuitamente no Pack ou Jornada Completa
+              </Link>
+            </div>
           </div>
         </div>
       </section>

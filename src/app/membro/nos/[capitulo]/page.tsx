@@ -15,7 +15,11 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
   const { capitulo } = use(params);
   const {
     canAccessNos,
+    hasNosPurchased,
+    nosBook: nosBookMeta,
+    espelhoCompleto,
     hasMirrorsAccess,
+    isAdmin,
     authLoading,
     user,
   } = useNosGate();
@@ -109,8 +113,35 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
 
   if (authLoading || !hasMirrorsAccess) return null;
 
-  // Gate: redirect to Nós hub if Espelho not complete (admin bypasses)
+  // Gate: espelho not complete OR no not purchased
   if (!canAccessNos) {
+    if (espelhoCompleto && !hasNosPurchased && !isAdmin && nosBookMeta) {
+      // Espelho complete but No not purchased — show purchase prompt
+      return (
+        <section className="px-6 py-16 text-center">
+          <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-[#7a8c6e]">
+            &#10003; Espelho da Ilusão — Completo
+          </p>
+          <p className="mt-4 font-serif text-lg text-brown-600">
+            Para ler este no, precisas de o adquirir.
+          </p>
+          <div className="mt-6 space-y-3">
+            <Link
+              href={`/comprar/nos/${nosBookMeta.slug}`}
+              className="inline-block rounded-full bg-[#c9a87c] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b8975b]"
+            >
+              Desatar este no · ${nosBookMeta.priceUSD}
+            </Link>
+            <p>
+              <Link href="/comprar/espelhos" className="font-sans text-xs text-brown-400 underline hover:text-brown-600">
+                Incluido no Pack ou Jornada Completa
+              </Link>
+            </p>
+          </div>
+        </section>
+      );
+    }
+    // Espelho not complete
     return (
       <section className="px-6 py-16 text-center">
         <p className="font-serif text-lg text-brown-600">
