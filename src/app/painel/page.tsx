@@ -220,6 +220,7 @@ function OverviewTab() {
         <h2 className="mb-4 font-serif text-lg text-brown-900">Links Rápidos</h2>
         <div className="flex flex-wrap gap-3">
           {[
+            { href: "/painel/marketing", label: "Marketing Engine" },
             { href: "/experiencias", label: "Página de Vendas" },
             { href: "/recursos/teste", label: "Quiz" },
             { href: "/membro/leitura", label: "Reader" },
