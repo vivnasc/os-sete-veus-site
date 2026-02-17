@@ -247,16 +247,12 @@ function OverviewTab() {
 function CalendarTab() {
   const months = [
     { name: "Fevereiro 2026", events: ["Ilusão: promoção contínua", "Medo: teaser + waitlist"] },
-    { name: "Março 2026", events: ["Medo: LANÇAMENTO (dia 1)", "Medo: conteúdo pós-lançamento", "Ilusão: 1 quote/semana"] },
-    { name: "Abril 2026", events: ["Culpa: teaser + waitlist (dia 1)", "Culpa: LANÇAMENTO (dia 15)", "Medo: testemunhos"] },
-    { name: "Maio 2026", events: ["Culpa: conteúdo pós-lançamento", "Identidade: teaser início"] },
-    { name: "Junho 2026", events: ["Identidade: LANÇAMENTO (dia 1)", "Pack de 3 promoção especial"] },
-    { name: "Julho 2026", events: ["Identidade: conteúdo pós-lançamento", "Controlo: teaser"] },
-    { name: "Agosto 2026", events: ["Controlo: LANÇAMENTO (dia 1)", "Promoção Jornada Completa"] },
-    { name: "Setembro 2026", events: ["Controlo: conteúdo pós-lançamento", "Desejo: teaser"] },
-    { name: "Outubro 2026", events: ["Desejo: LANÇAMENTO (dia 1)", "Promoção Pack de 3 outono"] },
-    { name: "Novembro 2026", events: ["Desejo: conteúdo pós-lançamento", "Separação: teaser final"] },
-    { name: "Dezembro 2026", events: ["Separação: LANÇAMENTO (dia 1)", "Promoção Jornada Completa Natal", "7/7 celebração anual"] },
+    { name: "Março 2026", events: ["Medo: LANÇAMENTO (dia 1)", "Culpa: teaser", "Ilusão: 1 quote/semana"] },
+    { name: "Abril 2026", events: ["Culpa: LANÇAMENTO (dia 1)", "Identidade: teaser", "Medo: testemunhos"] },
+    { name: "Maio 2026", events: ["Identidade: LANÇAMENTO (dia 1)", "Controlo: teaser", "Pack de 3 promoção especial"] },
+    { name: "Junho 2026", events: ["Controlo: LANÇAMENTO (dia 1)", "Desejo: teaser", "Promoção Jornada Completa"] },
+    { name: "Julho 2026", events: ["Desejo: LANÇAMENTO (dia 1)", "Separação: teaser"] },
+    { name: "Agosto 2026", events: ["Separação: LANÇAMENTO (dia 1)", "7/7 celebração", "Promoção Jornada Completa"] },
   ];
 
   return (

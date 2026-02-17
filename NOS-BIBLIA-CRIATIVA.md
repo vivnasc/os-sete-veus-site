@@ -329,10 +329,10 @@ Cada No deve ter os seus proprios motivos recorrentes, como o No da Heranca tem 
 | No da Heranca | Espelho da Ilusao | PUBLICADO |
 | No do Silencio | Espelho do Medo (Marco 2026) | Apos Marco 2026 |
 | No do Sacrificio | Espelho da Culpa (Abril 2026) | Apos Abril 2026 |
-| No da Vergonha | Espelho da Identidade (Junho 2026) | Apos Junho 2026 |
-| No da Solidao | Espelho do Controlo (Agosto 2026) | Apos Agosto 2026 |
-| No do Vazio | Espelho do Desejo (Outubro 2026) | Apos Outubro 2026 |
-| No da Pertenca | Espelho da Separacao (Dezembro 2026) | Apos Dezembro 2026 |
+| No da Vergonha | Espelho da Identidade (Maio 2026) | Apos Maio 2026 |
+| No da Solidao | Espelho do Controlo (Junho 2026) | Apos Junho 2026 |
+| No do Vazio | Espelho do Desejo (Julho 2026) | Apos Julho 2026 |
+| No da Pertenca | Espelho da Separacao (Agosto 2026) | Apos Agosto 2026 |
 
 ### Para adicionar um novo No:
 

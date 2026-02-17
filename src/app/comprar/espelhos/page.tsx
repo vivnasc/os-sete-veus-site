@@ -148,7 +148,7 @@ export default function ComprarPage() {
               Em preparação
             </h2>
             <p className="mx-auto mt-3 max-w-md text-center text-sm text-brown-500">
-              Os próximos Espelhos serão publicados ao longo de 2026
+              Os próximos Espelhos serão publicados mensalmente de Março a Agosto de 2026
             </p>
 
             <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

@@ -110,6 +110,6 @@ function mostrarInstrucoes() {
   console.log('   • Sistema pronto para usar!\n');
 
   console.log('🎉 Testa em: https://seteecos.com/admin\n');
-  console.log('📱 WhatsApp de suporte: wa.me/258851006473\n');
+  console.log('📱 WhatsApp de suporte: wa.me/258845243875\n');
   console.log('='.repeat(70) + '\n');
 }

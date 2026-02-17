@@ -347,28 +347,28 @@ export const allMarketing: VeilMarketing[] = [
     "O Espelho da Identidade",
     "Quando já não sabes quem és sem os outros",
     "Quem és quando ninguém te está a ver?",
-    "Junho 2026",
+    "Maio 2026",
   ),
   generateFutureVeilMarketing(
     "veu-do-controlo",
     "O Espelho do Controlo",
     "Quando segurar é a única forma que conheces",
     "E se aprendesses a largar — não tudo, mas o suficiente para respirar?",
-    "Agosto 2026",
+    "Junho 2026",
   ),
   generateFutureVeilMarketing(
     "veu-do-desejo",
     "O Espelho do Desejo",
     "Quando desejas tudo menos o que precisas",
     "O que queres, de verdade?",
-    "Outubro 2026",
+    "Julho 2026",
   ),
   generateFutureVeilMarketing(
     "veu-da-separacao",
     "O Espelho da Separação",
     "Quando te afastas de ti mesma para pertencer",
     "O caminho de volta começa por ti.",
-    "Dezembro 2026",
+    "Agosto 2026",
   ),
 ];
 

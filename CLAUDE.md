@@ -92,10 +92,10 @@ Onde as vozes se encontram. Partilhas, reflexões, ressonâncias.
 ### Em breve:
 - Espelho do Medo — Março 2026
 - Espelho da Culpa — Abril 2026
-- Espelho da Identidade — Junho 2026
-- Espelho do Controlo — Agosto 2026
-- Espelho do Desejo — Outubro 2026
-- Espelho da Separação — Dezembro 2026
+- Espelho da Identidade — Maio 2026
+- Espelho do Controlo — Junho 2026
+- Espelho do Desejo — Julho 2026
+- Espelho da Separação — Agosto 2026
 
 ### Nós restantes:
 - Ainda não escritos (escrevem-se à medida que os Espelhos são publicados)

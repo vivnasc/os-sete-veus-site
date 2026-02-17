@@ -331,7 +331,7 @@ export default function PedirCodigoPage() {
             Contacta diretamente e envia foto do livro ou recibo
           </p>
           <a
-            href="https://wa.me/258851006473?text=Olá! Comprei o livro físico e quero o código de acesso digital"
+            href="https://wa.me/258845243875?text=Olá! Comprei o livro físico e quero o código de acesso digital"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 inline-flex items-center gap-3 rounded-lg border-2 border-[#25D366] bg-[#25D366] px-8 py-3.5 font-sans text-sm font-bold uppercase tracking-wider text-white shadow-md transition-all hover:bg-[#1ea952]"

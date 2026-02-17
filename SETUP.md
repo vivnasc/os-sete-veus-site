@@ -152,7 +152,7 @@ O Vercel faz deploy automático!
 ## 📱 CONTACTOS
 
 - **Email**: viv.saraiva@gmail.com
-- **WhatsApp**: wa.me/258851006473
+- **WhatsApp**: wa.me/258845243875
 
 ---
 
@@ -214,6 +214,6 @@ WHERE code = 'colecao-sete-veus';
 
 ## 🎉 PRONTO!
 
-Sistema configurado! Qualquer dúvida, contacta via WhatsApp: wa.me/258851006473
+Sistema configurado! Qualquer dúvida, contacta via WhatsApp: wa.me/258845243875
 
 **Made with ❤️ by Claude Code**
