@@ -3,6 +3,7 @@ import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AccessibilityPanel from "@/components/AccessibilityPanel";
+import Chatbot from "@/components/Chatbot";
 import { AuthProvider } from "@/components/AuthProvider";
 import "./globals.css";
 
@@ -132,6 +133,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
           <AccessibilityPanel />
+          <Chatbot />
         </AuthProvider>
       </body>
     </html>

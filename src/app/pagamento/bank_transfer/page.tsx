@@ -135,7 +135,7 @@ function BankTransferContent() {
             <div>
               <p className="text-xs text-brown-500">Contacto WhatsApp</p>
               <a
-                href="https://wa.me/258851006473"
+                href="https://wa.me/258845243875"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 font-mono text-lg font-medium text-sage hover:underline"
