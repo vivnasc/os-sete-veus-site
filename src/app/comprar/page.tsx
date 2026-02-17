@@ -85,8 +85,8 @@ export default function ComprarPage() {
                     diário de reflexão pessoal e acesso vitalício.
                   </p>
                   <p className="mt-2 text-sm text-brown-500">
-                    Cada Espelho tem um Nó — a dimensão relacional da mesma história.
-                    Desbloqueia ao completar o Espelho.
+                    Cada Espelho tem um No — a dimensao relacional da mesma historia.
+                    Desbloqueia ao completar o Espelho. No individual: $12 USD.
                   </p>
                   <p className="mt-2 text-xs italic text-brown-400">
                     Disponível agora: Espelho da Ilusão. Próximos ao longo de 2026.

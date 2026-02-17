@@ -85,7 +85,7 @@ export default function OsSeteVeusPage() {
                   {no && (
                     <div className="mt-5 rounded-lg border border-[#c9a87c]/20 bg-[#c9a87c]/5 px-4 py-3">
                       <p className="font-sans text-[0.55rem] uppercase tracking-[0.2em] text-[#c9a87c]">
-                        Nó incluído
+                        No correspondente · $12
                       </p>
                       <p className="mt-0.5 font-serif text-sm text-brown-700">{no.title}</p>
                       <p className="text-xs italic text-brown-400">{no.subtitle}</p>

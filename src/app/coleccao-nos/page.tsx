@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { nosCollection } from "@/data/nos-collection";
+import { nosCollection, NOS_PRICING } from "@/data/nos-collection";
 
 export const metadata: Metadata = {
   title: "Colecção Nos — Ficção Relacional",
@@ -51,7 +51,11 @@ export default function ColeccaoNosPage() {
           </div>
           <div className="mx-auto mt-6 max-w-md rounded-lg bg-[#c9a87c]/10 px-5 py-4">
             <p className="text-sm text-brown-600">
-              Cada No desbloqueia ao completar todos os capítulos do Espelho correspondente.
+              Cada No desbloqueia ao completar todos os capitulos do Espelho correspondente.
+            </p>
+            <p className="mt-2 text-sm text-brown-500">
+              No individual: <strong className="text-brown-700">${NOS_PRICING.individual.usd} USD</strong> / {NOS_PRICING.individual.mt} MZN.
+              Incluido gratuitamente no Pack 3 e na Jornada Completa.
             </p>
           </div>
         </div>
@@ -112,18 +116,24 @@ export default function ColeccaoNosPage() {
                   </p>
                 </div>
 
-                <div className="mt-5">
+                {/* Preco e CTA */}
+                <div className="mt-5 flex items-center gap-4">
                   {no.status === "available" ? (
-                    <Link
-                      href="/comprar/espelhos"
-                      className="inline-block rounded-full px-6 py-2.5 font-sans text-[0.75rem] font-medium uppercase tracking-wider text-white transition-colors hover:opacity-90"
-                      style={{ backgroundColor: no.color }}
-                    >
-                      Saber mais
-                    </Link>
+                    <>
+                      <Link
+                        href={`/comprar/nos/${no.slug}`}
+                        className="inline-block rounded-full px-6 py-2.5 font-sans text-[0.75rem] font-medium uppercase tracking-wider text-white transition-colors hover:opacity-90"
+                        style={{ backgroundColor: no.color }}
+                      >
+                        ${no.priceUSD} · Saber mais
+                      </Link>
+                      <span className="font-sans text-xs text-brown-400">
+                        {no.priceMT.toLocaleString()} MZN
+                      </span>
+                    </>
                   ) : (
                     <span className="inline-block rounded-full bg-brown-100/60 px-5 py-2 font-sans text-[0.75rem] font-medium uppercase tracking-wider text-brown-400">
-                      Em preparação
+                      Em preparacao
                     </span>
                   )}
                 </div>
