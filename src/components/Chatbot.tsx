@@ -21,98 +21,98 @@ const categories: Category[] = [
     icon: "~",
     faqs: [
       {
-        q: "O que e a Sete Ecos?",
-        a: "A Sete Ecos e uma plataforma de autoconhecimento com leitura integrada. Mais do que livros, e um ecossistema de historias, praticas guiadas, diario de reflexao e comunidade. Tudo pensado para quem quer despertar, ao seu ritmo.",
+        q: "O que \u00e9 a Sete Ecos?",
+        a: "A Sete Ecos \u00e9 uma plataforma de autoconhecimento com leitura integrada. Mais do que livros, \u00e9 um ecossistema de hist\u00f3rias, pr\u00e1ticas guiadas, di\u00e1rio de reflex\u00e3o e comunidade. Tudo pensado para quem quer despertar, ao seu ritmo.",
         link: { label: "Explorar o ecossistema", href: "/ecossistema" },
       },
       {
-        q: "Quem e a autora?",
-        a: "Vivianne dos Santos e economista, escritora e mocambicana. Escreveu Os Sete Veus do Despertar e criou as coleccoes Espelhos e Nos — ficcoes de transformacao interior e relacional.",
+        q: "Quem \u00e9 a autora?",
+        a: "Vivianne dos Santos \u00e9 economista, escritora e mo\u00e7ambicana. Escreveu Os Sete V\u00e9us do Despertar e criou as colec\u00e7\u00f5es Espelhos e N\u00f3s \u2014 fic\u00e7\u00f5es de transforma\u00e7\u00e3o interior e relacional.",
         link: { label: "Conhecer a Vivianne", href: "/sobre" },
       },
       {
-        q: "A plataforma e gratuita?",
-        a: "Sim, podes explorar bastante sem pagar: o teste de autoconhecimento, artigos, diario de 7 dias e outros recursos sao gratuitos. So pagas se quiseres aceder as experiencias de leitura integrada (Espelhos, Nos ou Livro).",
+        q: "A plataforma \u00e9 gratuita?",
+        a: "Sim, podes explorar bastante sem pagar: o teste de autoconhecimento, artigos, di\u00e1rio de 7 dias e outros recursos s\u00e3o gratuitos. S\u00f3 pagas se quiseres aceder \u00e0s experi\u00eancias de leitura integrada (Espelhos, N\u00f3s ou Livro).",
         link: { label: "Recursos gratuitos", href: "/recursos" },
       },
       {
-        q: "Funciona no telemovel?",
-        a: "Sim. A plataforma foi desenhada mobile-first. Funciona em qualquer browser — telemovel, tablet ou computador. Nao precisas de instalar nada.",
+        q: "Funciona no telem\u00f3vel?",
+        a: "Sim. A plataforma foi desenhada mobile-first. Funciona em qualquer browser \u2014 telem\u00f3vel, tablet ou computador. N\u00e3o precisas de instalar nada.",
       },
     ],
   },
   {
     id: "espelhos",
-    label: "Coleccao Espelhos",
+    label: "Colec\u00e7\u00e3o Espelhos",
     icon: "\u25CB",
     faqs: [
       {
-        q: "O que sao os Espelhos?",
-        a: "Sao uma coleccao de 7 ficcoes de transformacao interior — historias onde te reconheces. Cada Espelho corresponde a um veu (Ilusao, Medo, Culpa, Identidade, Controlo, Desejo, Separacao) e inclui 7 capitulos, praticas de respiracao, diario de reflexao e checklist pessoal.",
-        link: { label: "Ver Coleccao Espelhos", href: "/os-sete-veus" },
+        q: "O que s\u00e3o os Espelhos?",
+        a: "S\u00e3o uma colec\u00e7\u00e3o de 7 fic\u00e7\u00f5es de transforma\u00e7\u00e3o interior \u2014 hist\u00f3rias onde te reconheces. Cada Espelho corresponde a um v\u00e9u (Ilus\u00e3o, Medo, Culpa, Identidade, Controlo, Desejo, Separa\u00e7\u00e3o) e inclui 7 cap\u00edtulos, pr\u00e1ticas de respira\u00e7\u00e3o, di\u00e1rio de reflex\u00e3o e checklist pessoal.",
+        link: { label: "Ver Colec\u00e7\u00e3o Espelhos", href: "/os-sete-veus" },
       },
       {
-        q: "Quantos Espelhos existem?",
-        a: "Sao 7 no total. Actualmente esta disponivel o Espelho da Ilusao (completo, 7 capitulos). Os restantes serao publicados mensalmente de Marco a Agosto de 2026: Medo, Culpa, Identidade, Controlo, Desejo e Separacao.",
+        q: "Qual Espelho est\u00e1 dispon\u00edvel agora?",
+        a: "O Espelho da Ilus\u00e3o \u2014 completo, com 7 cap\u00edtulos. \u00c9 o primeiro da colec\u00e7\u00e3o. Os restantes ser\u00e3o publicados mensalmente de Mar\u00e7o a Agosto de 2026: Medo, Culpa, Identidade, Controlo, Desejo e Separa\u00e7\u00e3o.",
+        link: { label: "Come\u00e7ar a ler", href: "/comprar/espelhos" },
       },
       {
         q: "Como funciona a leitura?",
-        a: "Les capitulo a capitulo, directamente no site. Cada capitulo tem pausas de reflexao, exercicios de respiracao, diario pessoal e checklists. O teu progresso e guardado automaticamente. Podes ler ao teu ritmo, quantas vezes quiseres.",
+        a: "L\u00eas cap\u00edtulo a cap\u00edtulo, directamente no site. Cada cap\u00edtulo tem pausas de reflex\u00e3o, exerc\u00edcios de respira\u00e7\u00e3o, di\u00e1rio pessoal e checklists. O teu progresso \u00e9 guardado automaticamente. Podes ler ao teu ritmo, quantas vezes quiseres.",
       },
       {
-        q: "Quanto custa um Espelho?",
-        a: "Um Espelho individual custa $29 USD (1.885 MZN). Existe tambem o Pack 3 Espelhos por $69 USD (18% desconto, inclui 3 Nos) e a Jornada Completa (7 Espelhos) por $149 USD (27% desconto, inclui todos os Nos).",
-        link: { label: "Ver precos", href: "/comprar/espelhos" },
+        q: "Quanto custa?",
+        a: "O Espelho da Ilus\u00e3o custa $29 USD (1.885 MZN / R$119 / \u20ac27). Inclui acesso vital\u00edcio \u00e0 experi\u00eancia completa: 7 cap\u00edtulos, pr\u00e1ticas guiadas, di\u00e1rio de reflex\u00e3o e acesso \u00e0 comunidade.",
+        link: { label: "Ver pre\u00e7os", href: "/comprar/espelhos" },
       },
     ],
   },
   {
     id: "nos",
-    label: "Coleccao Nos",
+    label: "Colec\u00e7\u00e3o N\u00f3s",
     icon: "\u221E",
     faqs: [
       {
-        q: "O que sao os Nos?",
-        a: "Sao uma coleccao de 7 ficcoes relacionais — historias sobre o que se passa entre duas pessoas quando um veu cai. Cada No e o par relacional de um Espelho. Os Espelhos olham para dentro; os Nos olham para a relacao.",
-        link: { label: "Ver Coleccao Nos", href: "/coleccao-nos" },
+        q: "O que s\u00e3o os N\u00f3s?",
+        a: "S\u00e3o fic\u00e7\u00f5es relacionais \u2014 hist\u00f3rias sobre o que se passa entre duas pessoas quando um v\u00e9u cai. Cada N\u00f3 \u00e9 o par relacional de um Espelho. Os Espelhos olham para dentro; os N\u00f3s olham para a rela\u00e7\u00e3o.",
+        link: { label: "Ver Colec\u00e7\u00e3o N\u00f3s", href: "/coleccao-nos" },
       },
       {
-        q: "Como desbloqueio um No?",
-        a: "Precisas de duas coisas: (1) completar todos os 7 capitulos do Espelho correspondente e (2) ter adquirido o No. Se compraste o Pack 3 Espelhos ou a Jornada Completa, os Nos ja estao incluidos.",
+        q: "Como desbloqueio um N\u00f3?",
+        a: "Precisas de completar todos os 7 cap\u00edtulos do Espelho correspondente. Quando terminares, o N\u00f3 desbloqueia automaticamente \u2014 \u00e9 a continua\u00e7\u00e3o emocional da hist\u00f3ria.",
       },
       {
-        q: "Quanto custa um No?",
-        a: "Um No individual custa $12 USD (780 MZN). Mas se comprares o Pack 3 Espelhos ($69), os 3 Nos correspondentes ja estao incluidos. Na Jornada Completa ($149), todos os 7 Nos estao incluidos.",
-        link: { label: "Ver precos", href: "/comprar/espelhos" },
+        q: "Quanto custa um N\u00f3?",
+        a: "O N\u00f3 da Heran\u00e7a custa $12 USD (780 MZN / R$49 / \u20ac11). \u00c9 o \u00fanico dispon\u00edvel de momento, e s\u00f3 se desbloqueia ap\u00f3s completares o Espelho da Ilus\u00e3o.",
+        link: { label: "Ver pre\u00e7os", href: "/comprar/espelhos" },
       },
       {
-        q: "Qual e o No disponivel agora?",
-        a: "O No da Heranca — a historia de Sara e Helena, mae e filha, e o silencio herdado entre elas. E o par relacional do Espelho da Ilusao. Os restantes Nos serao publicados a medida que os Espelhos forem lancados.",
+        q: "Qual \u00e9 o N\u00f3 dispon\u00edvel agora?",
+        a: "O N\u00f3 da Heran\u00e7a \u2014 a hist\u00f3ria de Sara e Helena, m\u00e3e e filha, e o sil\u00eancio herdado entre elas. \u00c9 o par relacional do Espelho da Ilus\u00e3o. Os restantes N\u00f3s ser\u00e3o publicados \u00e0 medida que os Espelhos forem lan\u00e7ados.",
       },
     ],
   },
   {
     id: "precos",
-    label: "Precos e pagamentos",
+    label: "Pre\u00e7os e pagamentos",
     icon: "$",
     faqs: [
       {
-        q: "Quais sao os precos?",
-        a: "Espelho individual: $29 USD (1.885 MZN). No individual: $12 USD (780 MZN). Pack 3 Espelhos: $69 USD (inclui 3 Nos, 18% desconto). Jornada Completa (7 Espelhos + 7 Nos): $149 USD (27% desconto). Livro fisico: $23 USD (1.495 MZN).",
-        link: { label: "Ver todos os precos", href: "/comprar" },
+        q: "Quais s\u00e3o os pre\u00e7os?",
+        a: "Espelho da Ilus\u00e3o: $29 USD (1.885 MZN). N\u00f3 da Heran\u00e7a: $12 USD (780 MZN). Livro f\u00edsico Os 7 V\u00e9us do Despertar: $23 USD (1.495 MZN). \u00c0 medida que novos Espelhos forem publicados, haver\u00e1 pacotes com desconto.",
+        link: { label: "Ver pre\u00e7os", href: "/comprar" },
       },
       {
-        q: "Que metodos de pagamento aceitam?",
-        a: "Aceitamos PayPal (cartao de credito/debito internacional), transferencia bancaria (Millennium BIM Mocambique) e M-Pesa. Apos o pagamento, recebes um codigo de acesso por email.",
+        q: "Que m\u00e9todos de pagamento aceitam?",
+        a: "Aceitamos PayPal (cart\u00e3o de cr\u00e9dito/d\u00e9bito internacional), transfer\u00eancia banc\u00e1ria (Millennium BIM Mo\u00e7ambique) e M-Pesa. Ap\u00f3s o pagamento, recebes um c\u00f3digo de acesso por email.",
       },
       {
-        q: "O acesso e vitalicio?",
-        a: "Sim. Uma vez comprado, tens acesso para sempre. Podes ler ao teu ritmo, quantas vezes quiseres. Sem subscricoes, sem renovacoes.",
+        q: "O acesso \u00e9 vital\u00edcio?",
+        a: "Sim. Uma vez comprado, tens acesso para sempre. Podes ler ao teu ritmo, quantas vezes quiseres. Sem subscri\u00e7\u00f5es, sem renova\u00e7\u00f5es.",
       },
       {
-        q: "Qual e o melhor valor?",
-        a: "A Jornada Completa ($149 USD) inclui todos os 7 Espelhos e todos os 7 Nos — 14 livros no total. Comprados individualmente, custaria $287 USD. Com a Jornada, poupas 48%.",
-        link: { label: "Ver Jornada Completa", href: "/comprar/espelhos" },
+        q: "Aceitam pagamento em meticais?",
+        a: "Sim. Podes pagar por transfer\u00eancia banc\u00e1ria em meticais (Millennium BIM) ou por M-Pesa. Os pre\u00e7os em MZN est\u00e3o indicados em cada produto. Ap\u00f3s o pagamento, envias o comprovativo e recebes o c\u00f3digo de acesso.",
       },
     ],
   },
@@ -123,44 +123,44 @@ const categories: Category[] = [
     faqs: [
       {
         q: "Como crio a minha conta?",
-        a: "Apos o pagamento, recebes um codigo de acesso por email. Usa esse codigo na pagina de registo para criar a tua conta e aceder imediatamente.",
+        a: "Ap\u00f3s o pagamento, recebes um c\u00f3digo de acesso por email. Usa esse c\u00f3digo na p\u00e1gina de registo para criar a tua conta e aceder imediatamente.",
         link: { label: "Registar", href: "/registar" },
       },
       {
-        q: "Ja comprei o livro fisico. Como acedo ao digital?",
-        a: "Se compraste o livro fisico, podes pedir o teu codigo de acesso digital. Basta enviar foto do livro ou recibo pela pagina de pedido de codigo ou directamente pelo WhatsApp.",
-        link: { label: "Pedir codigo", href: "/pedir-codigo" },
+        q: "J\u00e1 comprei o livro f\u00edsico. Como acedo ao digital?",
+        a: "Se compraste o livro f\u00edsico, podes pedir o teu c\u00f3digo de acesso digital. Basta enviar foto do livro ou recibo pela p\u00e1gina de pedido de c\u00f3digo ou directamente pelo WhatsApp.",
+        link: { label: "Pedir c\u00f3digo", href: "/pedir-codigo" },
       },
       {
         q: "Esqueci a minha senha",
-        a: "Podes recuperar a tua senha na pagina de recuperacao. Recebes um email com um link para criar uma nova senha.",
+        a: "Podes recuperar a tua senha na p\u00e1gina de recupera\u00e7\u00e3o. Recebes um email com um link para criar uma nova senha.",
         link: { label: "Recuperar senha", href: "/recuperar-senha" },
       },
       {
-        q: "Posso ler em varios dispositivos?",
-        a: "Sim. A tua conta funciona em qualquer browser. O progresso e sincronizado automaticamente entre dispositivos — podes comecar no telemovel e continuar no computador.",
+        q: "Posso ler em v\u00e1rios dispositivos?",
+        a: "Sim. A tua conta funciona em qualquer browser. O progresso \u00e9 sincronizado automaticamente entre dispositivos \u2014 podes come\u00e7ar no telem\u00f3vel e continuar no computador.",
       },
     ],
   },
   {
     id: "livro",
-    label: "Livro fisico",
+    label: "Livro f\u00edsico",
     icon: "\u25A1",
     faqs: [
       {
-        q: "Que livro fisico existe?",
-        a: "Os 7 Veus do Despertar — 232 paginas sobre despertar de consciencia. E o ensaio filosofico que deu origem a tudo. E independente das coleccoes de ficcao.",
-        link: { label: "Ver livro fisico", href: "/livro-fisico" },
+        q: "Que livro f\u00edsico existe?",
+        a: "Os 7 V\u00e9us do Despertar \u2014 232 p\u00e1ginas sobre despertar de consci\u00eancia. \u00c9 o ensaio filos\u00f3fico que deu origem a tudo. \u00c9 independente das colec\u00e7\u00f5es de fic\u00e7\u00e3o.",
+        link: { label: "Ver livro f\u00edsico", href: "/livro-fisico" },
       },
       {
         q: "Como encomendo?",
-        a: "A encomenda e feita directamente via WhatsApp. Custa $23 USD (1.495 MZN). Envio disponivel para Mocambique e outros paises.",
+        a: "A encomenda \u00e9 feita directamente via WhatsApp. Custa $23 USD (1.495 MZN). Envio dispon\u00edvel para Mo\u00e7ambique e outros pa\u00edses.",
         link: { label: "Encomendar", href: "/livro-fisico" },
       },
       {
-        q: "O livro fisico inclui acesso digital?",
-        a: "O acesso digital pode ser pedido separadamente, enviando foto do livro ou recibo. O livro e os Espelhos sao experiencias diferentes — podes comecar por qualquer um.",
-        link: { label: "Pedir codigo digital", href: "/pedir-codigo" },
+        q: "O livro f\u00edsico inclui acesso digital?",
+        a: "O acesso digital pode ser pedido separadamente, enviando foto do livro ou recibo. O livro e os Espelhos s\u00e3o experi\u00eancias diferentes \u2014 podes come\u00e7ar por qualquer um.",
+        link: { label: "Pedir c\u00f3digo digital", href: "/pedir-codigo" },
       },
     ],
   },
@@ -170,17 +170,17 @@ const categories: Category[] = [
     icon: "\u2248",
     faqs: [
       {
-        q: "O que e a comunidade Ecos?",
-        a: "E o espaco onde as vozes se encontram. Tem quatro salas: Ecos (reflexoes anonimas), Mare (consciencia colectiva), Circulo (espelho partilhado) e Fogueira (contemplacao silenciosa). Tudo anonimo. Tudo impermanente.",
+        q: "O que \u00e9 a comunidade Ecos?",
+        a: "\u00c9 o espa\u00e7o onde as vozes se encontram. Tem quatro salas: Ecos (reflex\u00f5es an\u00f3nimas), Mar\u00e9 (consci\u00eancia colectiva), C\u00edrculo (espelho partilhado) e Fogueira (contempla\u00e7\u00e3o silenciosa). Tudo an\u00f3nimo. Tudo impermanente.",
         link: { label: "Visitar comunidade", href: "/comunidade" },
       },
       {
         q: "Preciso de pagar para aceder?",
-        a: "A comunidade esta incluida com qualquer experiencia de leitura (Espelhos, Nos ou Livro). Nao tem custo adicional.",
+        a: "A comunidade est\u00e1 inclu\u00edda com qualquer experi\u00eancia de leitura (Espelhos, N\u00f3s ou Livro). N\u00e3o tem custo adicional.",
       },
       {
-        q: "As partilhas sao anonimas?",
-        a: "Sim. Tudo na comunidade e anonimo. Podes partilhar reflexoes, comentar e ressoar com outros sem revelar a tua identidade.",
+        q: "As partilhas s\u00e3o an\u00f3nimas?",
+        a: "Sim. Tudo na comunidade \u00e9 an\u00f3nimo. Podes partilhar reflex\u00f5es, comentar e ressoar com outros sem revelar a tua identidade.",
       },
     ],
   },
@@ -297,7 +297,7 @@ export default function Chatbot() {
                   onClick={handleReset}
                   className="font-sans text-[0.6rem] uppercase tracking-wider text-brown-400 hover:text-brown-700"
                 >
-                  Inicio
+                  In\u00edcio
                 </button>
               )}
             </div>
@@ -413,7 +413,7 @@ export default function Chatbot() {
           <div className="shrink-0 border-t border-brown-50 px-5 py-3">
             <div className="flex items-center justify-between">
               <p className="font-sans text-[0.6rem] text-brown-400">
-                Nao encontraste resposta?
+                N\u00e3o encontraste resposta?
               </p>
               <a
                 href="https://wa.me/258845243875?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20Sete%20Ecos"
