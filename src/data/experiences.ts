@@ -205,12 +205,32 @@ export function getExperience(slug: string) {
   return experiences.find((e) => e.slug === slug);
 }
 
-export function getAvailableExperiences() {
-  return experiences.filter((e) => e.status === "available");
+/**
+ * Retorna Espelhos disponíveis, com verificação de data automática.
+ * Se hasEarlyAccess=true, inclui Espelhos 7 dias antes do lançamento.
+ */
+export function getAvailableExperiences(hasEarlyAccess = false) {
+  const now = new Date();
+  return experiences.filter((e) => {
+    if (e.status === "available") return true;
+    if (!e.launchDate) return false;
+    const launch = new Date(e.launchDate);
+    if (hasEarlyAccess) {
+      const earlyDate = new Date(launch);
+      earlyDate.setDate(earlyDate.getDate() - 7);
+      return now >= earlyDate;
+    }
+    return now >= launch;
+  });
 }
 
-export function getUpcomingExperiences() {
-  return experiences.filter((e) => e.status !== "available");
+/**
+ * Retorna Espelhos futuros (ainda não disponíveis).
+ */
+export function getUpcomingExperiences(hasEarlyAccess = false) {
+  const available = getAvailableExperiences(hasEarlyAccess);
+  const availableSlugs = new Set(available.map((e) => e.slug));
+  return experiences.filter((e) => !availableSlugs.has(e.slug));
 }
 
 // Calculate upgrade price: what you already paid is deducted

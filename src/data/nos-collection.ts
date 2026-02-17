@@ -170,6 +170,30 @@ export function getNosForEspelho(espelhoSlug: string) {
   return nosCollection.find((n) => n.espelhoSlug === espelhoSlug);
 }
 
-export function getAvailableNos() {
-  return nosCollection.filter((n) => n.status === "available");
+/**
+ * Retorna Nós disponíveis, com verificação de data automática.
+ * Um Nó fica disponível quando:
+ * 1. O Espelho correspondente já foi publicado (por data)
+ * 2. O dataFile existe (o Nó foi escrito)
+ */
+export function getAvailableNos(hasEarlyAccess = false) {
+  const now = new Date();
+
+  return nosCollection.filter((n) => {
+    if (n.status === "available") return true;
+    if (!n.dataFile) return false; // Nó não escrito
+
+    // Verificar se o Espelho correspondente já foi publicado
+    const { getExperience } = require("@/data/experiences");
+    const espelho = getExperience(n.espelhoSlug);
+    if (!espelho || !espelho.launchDate) return false;
+
+    const launch = new Date(espelho.launchDate);
+    if (hasEarlyAccess) {
+      const earlyDate = new Date(launch);
+      earlyDate.setDate(earlyDate.getDate() - 7);
+      return now >= earlyDate;
+    }
+    return now >= launch;
+  });
 }
