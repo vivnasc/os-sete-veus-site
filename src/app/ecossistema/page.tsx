@@ -529,7 +529,7 @@ export default function EcossistemaPage() {
             {[
               {
                 q: "O que são os Espelhos?",
-                a: "São uma colecção de 7 ficções de transformação interior — histórias onde te reconheces. Cada Espelho corresponde a um véu (Ilusão, Medo, Culpa, Identidade, Controlo, Desejo, Separação) e inclui 7 capítulos, práticas de respiração, diário de reflexão e espelho pessoal. Actualmente está disponível o Espelho da Ilusão. Os restantes serão publicados ao longo de 2026.",
+                a: "São uma colecção de 7 ficções de transformação interior — histórias onde te reconheces. Cada Espelho corresponde a um véu (Ilusão, Medo, Culpa, Identidade, Controlo, Desejo, Separação) e inclui 7 capítulos, práticas de respiração, diário de reflexão e espelho pessoal. Actualmente está disponível o Espelho da Ilusão. Os restantes serão publicados mensalmente de Março a Agosto de 2026.",
               },
               {
                 q: "O que são os Nós?",
@@ -557,7 +557,7 @@ export default function EcossistemaPage() {
               },
               {
                 q: "Quantos livros existem no total?",
-                a: "São 15 livros no total: 7 Espelhos (ficção interior), 7 Nós (ficção relacional) e 1 livro filosófico. As duas colecções de ficção vão sendo publicadas ao longo de 2026.",
+                a: "São 15 livros no total: 7 Espelhos (ficção interior), 7 Nós (ficção relacional) e 1 livro filosófico. As duas colecções de ficção vão sendo publicadas mensalmente de Março a Agosto de 2026.",
               },
             ].map((faq, i) => (
               <ScrollReveal key={i} delay={0.1 * i}>

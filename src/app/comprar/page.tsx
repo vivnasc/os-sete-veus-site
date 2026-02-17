@@ -89,7 +89,7 @@ export default function ComprarPage() {
                     Desbloqueia ao completar o Espelho. Nó individual: $12 USD.
                   </p>
                   <p className="mt-2 text-xs italic text-brown-400">
-                    Disponível agora: Espelho da Ilusão. Próximos ao longo de 2026.
+                    Disponível agora: Espelho da Ilusão. Próximos mensalmente até Agosto de 2026.
                   </p>
                   <Link
                     href="/comprar/espelhos"
