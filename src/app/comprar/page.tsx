@@ -85,8 +85,8 @@ export default function ComprarPage() {
                     diário de reflexão pessoal e acesso vitalício.
                   </p>
                   <p className="mt-2 text-sm text-brown-500">
-                    Cada Espelho tem um No — a dimensao relacional da mesma historia.
-                    Desbloqueia ao completar o Espelho. No individual: $12 USD.
+                    Cada Espelho tem um Nó — a dimensão relacional da mesma história.
+                    Desbloqueia ao completar o Espelho. Nó individual: $12 USD.
                   </p>
                   <p className="mt-2 text-xs italic text-brown-400">
                     Disponível agora: Espelho da Ilusão. Próximos ao longo de 2026.
@@ -109,10 +109,10 @@ export default function ComprarPage() {
                 Já tens o livro?
               </p>
               <h2 className="mt-3 font-serif text-2xl text-brown-900">
-                Comprei o livro fisico e preciso do código
+                Comprei o livro físico e preciso do código
               </h2>
               <p className="mx-auto mt-3 max-w-md text-sm text-brown-600">
-                Quem comprou o livro fisico tem acesso digital incluído.
+                Quem comprou o livro físico tem acesso digital incluído.
                 Pede o teu código e recebes em até 24h.
               </p>
               <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">

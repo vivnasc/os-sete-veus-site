@@ -111,11 +111,11 @@ export default function ComprarPage() {
                   {no && (
                     <div className="mt-5 rounded-lg border border-[#c9956a]/20 bg-[#c9956a]/5 px-4 py-3">
                       <p className="font-sans text-[0.55rem] uppercase tracking-[0.2em] text-[#c9956a]">
-                        No correspondente · {moeda === 'MZN' ? `${NOS_PRICING.individual.mt} MZN` : `$${NOS_PRICING.individual.usd}`}
+                        Nó correspondente · {moeda === 'MZN' ? `${NOS_PRICING.individual.mt} MZN` : `$${NOS_PRICING.individual.usd}`}
                       </p>
                       <p className="mt-0.5 font-serif text-sm text-brown-700">{no.title}</p>
                       <p className="text-xs italic text-brown-400">
-                        Disponivel apos completar o Espelho
+                        Disponível após completar o Espelho
                       </p>
                     </div>
                   )}
@@ -185,7 +185,7 @@ export default function ComprarPage() {
               Packs com desconto
             </h2>
             <p className="mx-auto mt-3 max-w-md text-center text-sm text-brown-500">
-              Quanto mais espelhos, mais valor. Os Nos estao incluidos.
+              Quanto mais espelhos, mais valor. Os Nós estão incluídos.
             </p>
             <div className="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-2">
               {/* Pack 3 */}
@@ -208,8 +208,8 @@ export default function ComprarPage() {
                 <ul className="mt-5 space-y-2">
                   {[
                     '3 Espelhos a tua escolha',
-                    '3 Nos incluidos',
-                    'Acesso vitalicio',
+                    '3 Nós incluídos',
+                    'Acesso vitalício',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-brown-600">
                       <span className="mt-0.5 text-sage">~</span>
@@ -249,8 +249,8 @@ export default function ComprarPage() {
                 <ul className="mt-5 space-y-2">
                   {[
                     'Todos os 7 Espelhos',
-                    'Todos os 7 Nos incluidos',
-                    'Acesso vitalicio',
+                    'Todos os 7 Nós incluídos',
+                    'Acesso vitalício',
                     'Early access a novos Espelhos',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-brown-600">

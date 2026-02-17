@@ -352,7 +352,7 @@ export default function EspelhoChapterPage({
                   href="/membro/nos"
                   className="mt-5 inline-block rounded-full bg-[#c9a87c] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b89a6c]"
                 >
-                  Desatar este no &rarr;
+                  Desatar este nó &rarr;
                 </Link>
               ) : (
                 <div className="mt-5 space-y-2">
@@ -360,10 +360,10 @@ export default function EspelhoChapterPage({
                     href={`/comprar/nos/${nosBook.slug}`}
                     className="inline-block rounded-full bg-[#c9a87c] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b89a6c]"
                   >
-                    Desatar este no · ${nosBook.priceUSD}
+                    Desatar este nó · ${nosBook.priceUSD}
                   </Link>
                   <p className={`font-sans text-[0.6rem] ${nightMode ? "text-brown-600" : "text-brown-400"}`}>
-                    Incluido gratuitamente no Pack ou Jornada Completa
+                    Incluído gratuitamente no Pack ou Jornada Completa
                   </p>
                 </div>
               )}

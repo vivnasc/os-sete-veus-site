@@ -3,9 +3,9 @@ import Link from "next/link";
 import { nosCollection, NOS_PRICING } from "@/data/nos-collection";
 
 export const metadata: Metadata = {
-  title: "Colecção Nos — Ficção Relacional",
+  title: "Colecção Nós — Ficção Relacional",
   description:
-    "7 livros. 7 nos. O que se passa entre duas pessoas quando um véu cai. Cada No é o par relacional de um Espelho.",
+    "7 livros. 7 nós. O que se passa entre duas pessoas quando um véu cai. Cada Nó é o par relacional de um Espelho.",
 };
 
 const espelhoNames: Record<number, string> = {
@@ -28,11 +28,11 @@ export default function ColeccaoNosPage() {
             7 livros ~ 7 capítulos cada
           </p>
           <h1 className="mt-4 font-serif text-4xl leading-tight text-cream sm:text-5xl">
-            Colecção Nos
+            Colecção Nós
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-brown-200">
             O que se passa entre duas pessoas quando um véu cai.
-            Cada No é a dimensão relacional de um Espelho.
+            Cada Nó é a dimensão relacional de um Espelho.
           </p>
         </div>
       </section>
@@ -41,21 +41,21 @@ export default function ColeccaoNosPage() {
       <section className="bg-cream px-6 py-16">
         <div className="mx-auto max-w-3xl text-center">
           <p className="leading-relaxed text-brown-700">
-            Os Espelhos mostram-te o véu que usas. Os Nos mostram-te o que esse véu
+            Os Espelhos mostram-te o véu que usas. Os Nós mostram-te o que esse véu
             fez entre ti e outra pessoa. Não é uma sequela — é a outra face da mesma história.
           </p>
           <div className="mx-auto mt-6 max-w-lg rounded-r-xl border-l-[3px] border-[#c9a87c] bg-cream-dark px-6 py-5 text-left">
             <p className="font-serif italic leading-relaxed text-brown-700">
-              &ldquo;So lês o No se viveste o Espelho. Não é restrição — é respeito pelo teu caminho.&rdquo;
+              &ldquo;Só lês o Nó se viveste o Espelho. Não é restrição — é respeito pelo teu caminho.&rdquo;
             </p>
           </div>
           <div className="mx-auto mt-6 max-w-md rounded-lg bg-[#c9a87c]/10 px-5 py-4">
             <p className="text-sm text-brown-600">
-              Cada No desbloqueia ao completar todos os capitulos do Espelho correspondente.
+              Cada Nó desbloqueia ao completar todos os capítulos do Espelho correspondente.
             </p>
             <p className="mt-2 text-sm text-brown-500">
-              No individual: <strong className="text-brown-700">${NOS_PRICING.individual.usd} USD</strong> / {NOS_PRICING.individual.mt} MZN.
-              Incluido gratuitamente no Pack 3 e na Jornada Completa.
+              Nó individual: <strong className="text-brown-700">${NOS_PRICING.individual.usd} USD</strong> / {NOS_PRICING.individual.mt} MZN.
+              Incluído gratuitamente no Pack 3 e na Jornada Completa.
             </p>
           </div>
         </div>
@@ -76,7 +76,7 @@ export default function ColeccaoNosPage() {
                   style={{ backgroundColor: no.colorBg }}
                 >
                   <p className="font-sans text-[0.6rem] uppercase tracking-[0.3em]" style={{ color: no.color }}>
-                    No {no.number} de 7
+                    Nó {no.number} de 7
                   </p>
                   <p className="mt-3 px-6 text-center font-serif text-2xl leading-snug" style={{ color: no.color }}>
                     {no.title}
@@ -96,7 +96,7 @@ export default function ColeccaoNosPage() {
                     {no.number}
                   </span>
                   <span className="font-sans text-[0.7rem] uppercase tracking-[0.2em] text-brown-400">
-                    No {no.number} de 7
+                    Nó {no.number} de 7
                   </span>
                 </div>
                 <h2 className="mt-3 font-serif text-2xl text-brown-900 sm:text-3xl">{no.title}</h2>
@@ -112,7 +112,7 @@ export default function ColeccaoNosPage() {
                     {espelhoNames[no.number]}
                   </p>
                   <p className="text-xs italic text-brown-400">
-                    Completa este Espelho para desbloquear o No
+                    Completa este Espelho para desbloquear o Nó
                   </p>
                 </div>
 
@@ -133,7 +133,7 @@ export default function ColeccaoNosPage() {
                     </>
                   ) : (
                     <span className="inline-block rounded-full bg-brown-100/60 px-5 py-2 font-sans text-[0.75rem] font-medium uppercase tracking-wider text-brown-400">
-                      Em preparacao
+                      Em preparação
                     </span>
                   )}
                 </div>
@@ -151,7 +151,7 @@ export default function ColeccaoNosPage() {
           </p>
           <h2 className="mt-4 font-serif text-3xl text-brown-900">Colecção Espelhos</h2>
           <p className="mx-auto mt-4 max-w-xl leading-relaxed text-brown-600">
-            Antes de desatar o No, é preciso ver o véu.
+            Antes de desatar o Nó, é preciso ver o véu.
             Os Espelhos são o início da jornada.
           </p>
           <Link
