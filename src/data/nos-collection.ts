@@ -33,7 +33,11 @@ export type NosBook = {
   priceEUR: number;
 };
 
-export const nosCollection: NosBook[] = [
+// Status calculado dinamicamente: segue o Espelho correspondente.
+// Um Nó fica "available" quando o Espelho é publicado E o dataFile existe.
+import { experiences } from "@/data/experiences";
+
+const _nosCollection: NosBook[] = [
   {
     slug: "no-da-heranca",
     number: 1,
@@ -162,6 +166,19 @@ export const nosCollection: NosBook[] = [
   },
 ];
 
+// Exporta array com status calculado: Nó fica available se Espelho publicado + dataFile existe
+export const nosCollection: NosBook[] = _nosCollection.map((n) => {
+  if (n.status === "available") return n;
+  if (!n.dataFile) return n; // Nó não escrito → mantém coming_soon
+
+  // Verificar se o Espelho correspondente já está available
+  const espelho = experiences.find((e) => e.slug === n.espelhoSlug);
+  if (espelho && espelho.status === "available") {
+    return { ...n, status: "available" as const };
+  }
+  return n;
+});
+
 export function getNosBook(slug: string) {
   return nosCollection.find((n) => n.slug === slug);
 }
@@ -171,29 +188,9 @@ export function getNosForEspelho(espelhoSlug: string) {
 }
 
 /**
- * Retorna Nós disponíveis, com verificação de data automática.
- * Um Nó fica disponível quando:
- * 1. O Espelho correspondente já foi publicado (por data)
- * 2. O dataFile existe (o Nó foi escrito)
+ * Retorna Nós disponíveis.
+ * O status já é calculado automaticamente no array nosCollection.
  */
-export function getAvailableNos(hasEarlyAccess = false) {
-  const now = new Date();
-
-  return nosCollection.filter((n) => {
-    if (n.status === "available") return true;
-    if (!n.dataFile) return false; // Nó não escrito
-
-    // Verificar se o Espelho correspondente já foi publicado
-    const { getExperience } = require("@/data/experiences");
-    const espelho = getExperience(n.espelhoSlug);
-    if (!espelho || !espelho.launchDate) return false;
-
-    const launch = new Date(espelho.launchDate);
-    if (hasEarlyAccess) {
-      const earlyDate = new Date(launch);
-      earlyDate.setDate(earlyDate.getDate() - 7);
-      return now >= earlyDate;
-    }
-    return now >= launch;
-  });
+export function getAvailableNos() {
+  return nosCollection.filter((n) => n.status === "available");
 }

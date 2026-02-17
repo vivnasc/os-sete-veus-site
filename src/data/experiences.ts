@@ -33,7 +33,10 @@ export const PRICING = {
   journeySavings: 27, // percentage
 } as const;
 
-export const experiences: Experience[] = [
+// Status calculado dinamicamente com base na data actual.
+// Quando a launchDate chega, o status muda automaticamente para "available"
+// sem precisar de redeploy ou alteração manual.
+const _experiences: Experience[] = [
   {
     slug: "veu-da-ilusao",
     number: 1,
@@ -189,6 +192,15 @@ export const experiences: Experience[] = [
     priceEUR: 27,
   },
 ];
+
+// Exporta array com status calculado automaticamente por data
+export const experiences: Experience[] = _experiences.map((e) => {
+  if (e.status === "available" || !e.launchDate) return e;
+  const now = new Date();
+  const launch = new Date(e.launchDate);
+  if (now >= launch) return { ...e, status: "available" as ExperienceStatus };
+  return e;
+});
 
 // Map quiz veil index to experience slug
 export const quizVeilToExperience: Record<number, string> = {
