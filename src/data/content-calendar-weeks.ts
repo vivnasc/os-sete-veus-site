@@ -1,14 +1,8 @@
-"use client";
-
-import { useState } from "react";
-import { useAuth } from "@/components/AuthProvider";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-
 // ─── TYPES ───────────────────────────────────────────────────────────────────
 
-type Platform = "instagram" | "whatsapp" | "ambos";
-type ContentSlot = {
+export type Platform = "instagram" | "whatsapp" | "ambos";
+
+export type ContentSlot = {
   platform: Platform;
   type: string;
   visual?: {
@@ -26,21 +20,21 @@ type ContentSlot = {
   notes?: string;
 };
 
-type DayPlan = {
+export type DayPlan = {
   day: string;
   dayShort: string;
   theme: string;
   slots: ContentSlot[];
 };
 
-type WeekPlan = {
+export type WeekPlan = {
   weekNumber: number;
   title: string;
   subtitle: string;
   days: DayPlan[];
 };
 
-// ─── SEMANA 1: LANCAMENTO DA PLATAFORMA ──────────────────────────────────────
+// ─── SEMANA 1: LAN\u00c7AMENTO DA PLATAFORMA ──────────────────────────────────────
 
 const week1: WeekPlan = {
   weekNumber: 1,
@@ -574,251 +568,4 @@ const week4: WeekPlan = {
   ],
 };
 
-const allWeeks = [week1, week2, week3, week4];
-
-// ─── COMPONENT ───────────────────────────────────────────────────────────────
-
-export default function MarketingPage() {
-  const { user, loading } = useAuth();
-  const router = useRouter();
-  const [activeWeek, setActiveWeek] = useState(0);
-  const [activeDay, setActiveDay] = useState(0);
-  const [copiedId, setCopiedId] = useState<string | null>(null);
-
-  if (loading) {
-    return (
-      <section className="bg-cream px-6 py-32 text-center">
-        <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-brown-200 border-t-sage" />
-      </section>
-    );
-  }
-
-  if (!user) {
-    router.push("/entrar");
-    return null;
-  }
-
-  const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
-  if (!AUTHOR_EMAILS.includes(user.email || "")) {
-    router.push("/membro");
-    return null;
-  }
-
-  const week = allWeeks[activeWeek];
-  const day = week.days[activeDay];
-
-  async function copyText(id: string, text: string) {
-    await navigator.clipboard.writeText(text);
-    setCopiedId(id);
-    setTimeout(() => setCopiedId(null), 2000);
-  }
-
-  return (
-    <div className="min-h-screen bg-cream">
-      {/* Header */}
-      <div className="border-b border-brown-100 bg-white px-6 py-5">
-        <div className="mx-auto flex max-w-5xl items-center justify-between">
-          <div>
-            <h1 className="font-serif text-2xl text-brown-900">Calend\u00e1rio de Conte\u00fados</h1>
-            <p className="mt-1 font-sans text-xs text-brown-500">
-              Segue o plano dia a dia. Cada dia diz-te exactamente o que publicar e onde.
-            </p>
-          </div>
-          <Link
-            href="/painel"
-            className="font-sans text-xs text-brown-500 hover:text-brown-900"
-          >
-            &larr; Painel
-          </Link>
-        </div>
-      </div>
-
-      {/* Week selector */}
-      <div className="border-b border-brown-100 bg-white px-6 py-3">
-        <div className="mx-auto flex max-w-5xl gap-2 overflow-x-auto">
-          {allWeeks.map((w, i) => (
-            <button
-              key={i}
-              onClick={() => { setActiveWeek(i); setActiveDay(0); }}
-              className={`shrink-0 rounded-lg px-4 py-2 font-sans text-xs transition-all ${
-                activeWeek === i
-                  ? "bg-brown-900 text-cream"
-                  : "bg-brown-50 text-brown-500 hover:text-brown-700"
-              }`}
-            >
-              Semana {w.weekNumber}: {w.title}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Day selector */}
-      <div className="border-b border-brown-50 bg-cream px-6 py-3">
-        <div className="mx-auto flex max-w-5xl gap-1 overflow-x-auto">
-          {week.days.map((d, i) => (
-            <button
-              key={i}
-              onClick={() => setActiveDay(i)}
-              className={`shrink-0 rounded-lg px-3 py-2 text-center transition-all ${
-                activeDay === i
-                  ? "bg-gold/20 text-gold-dark"
-                  : "text-brown-400 hover:text-brown-600"
-              }`}
-            >
-              <span className="block font-sans text-[0.6rem] font-medium uppercase tracking-wider">
-                {d.dayShort}
-              </span>
-              <span className="mt-0.5 block font-sans text-[0.5rem] text-brown-400">
-                {d.theme}
-              </span>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Day content */}
-      <div className="mx-auto max-w-5xl px-6 py-8">
-        <div className="mb-6">
-          <h2 className="font-serif text-xl text-brown-900">{day.day}</h2>
-          <p className="mt-1 font-sans text-sm text-brown-500">{day.theme}</p>
-        </div>
-
-        <div className="space-y-8">
-          {day.slots.map((slot, si) => (
-            <div key={si} className="rounded-2xl border border-brown-100 bg-white p-6">
-              {/* Slot header */}
-              <div className="flex items-center gap-3">
-                <span className={`rounded-full px-3 py-1 font-sans text-[0.55rem] font-medium uppercase tracking-wider ${
-                  slot.platform === "instagram"
-                    ? "bg-pink-50 text-pink-600"
-                    : slot.platform === "whatsapp"
-                      ? "bg-[#25D366]/10 text-[#25D366]"
-                      : "bg-brown-100 text-brown-600"
-                }`}>
-                  {slot.platform === "instagram" ? "Instagram" : slot.platform === "whatsapp" ? "WhatsApp" : "Instagram + WhatsApp"}
-                </span>
-                <span className="font-sans text-[0.65rem] text-brown-500">{slot.type}</span>
-              </div>
-
-              {/* Visual card */}
-              {slot.visual && (
-                <div className="mt-5 flex flex-col items-start gap-6 sm:flex-row">
-                  <div
-                    className={`relative flex shrink-0 flex-col justify-between overflow-hidden rounded-xl shadow-lg ${
-                      slot.visual.format === "square" ? "aspect-square w-64" : "aspect-[9/16] w-48"
-                    }`}
-                    style={{ backgroundColor: slot.visual.bg, color: slot.visual.text }}
-                  >
-                    <div className="px-5 pt-5">
-                      {slot.visual.highlight && (
-                        <span
-                          className="mb-2 inline-block rounded-full px-2.5 py-0.5 font-sans text-[0.5rem] uppercase tracking-[0.12em]"
-                          style={{ backgroundColor: slot.visual.accent + "25", color: slot.visual.accent }}
-                        >
-                          {slot.visual.highlight}
-                        </span>
-                      )}
-                    </div>
-                    <div className="flex flex-1 flex-col justify-center px-5">
-                      {slot.visual.title && (
-                        <h3 className="whitespace-pre-line font-serif text-base leading-tight">{slot.visual.title}</h3>
-                      )}
-                      {slot.visual.body && (
-                        <p className="mt-3 whitespace-pre-line font-sans text-[0.65rem] leading-relaxed opacity-80">{slot.visual.body}</p>
-                      )}
-                    </div>
-                    <div className="px-5 pb-4">
-                      {slot.visual.footer && (
-                        <div className="flex items-center justify-between">
-                          <p className="font-sans text-[0.45rem] uppercase tracking-[0.1em]" style={{ color: slot.visual.accent }}>
-                            {slot.visual.footer}
-                          </p>
-                          <span className="font-serif text-sm opacity-30" style={{ color: slot.visual.accent }}>~</span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Caption + copy */}
-                  <div className="flex-1">
-                    {slot.caption && (
-                      <div>
-                        <div className="flex items-center justify-between">
-                          <p className="font-sans text-[0.6rem] font-medium uppercase tracking-wider text-brown-500">Legenda</p>
-                          <button
-                            onClick={() => copyText(`caption-${si}`, slot.caption!)}
-                            className="rounded-md bg-cream px-3 py-1 font-sans text-[0.55rem] text-brown-600 hover:bg-cream-dark"
-                          >
-                            {copiedId === `caption-${si}` ? "Copiada!" : "Copiar"}
-                          </button>
-                        </div>
-                        <pre className="mt-2 whitespace-pre-wrap font-sans text-[0.75rem] leading-relaxed text-brown-600">{slot.caption}</pre>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )}
-
-              {/* Broadcast message */}
-              {slot.broadcast && (
-                <div className="mt-5 rounded-lg bg-[#25D366]/5 p-4">
-                  <div className="flex items-center justify-between">
-                    <p className="font-sans text-[0.6rem] font-medium uppercase tracking-wider text-[#25D366]">Mensagem WhatsApp</p>
-                    <button
-                      onClick={() => copyText(`broadcast-${si}`, slot.broadcast!)}
-                      className="rounded-md bg-white px-3 py-1 font-sans text-[0.55rem] text-brown-600 hover:bg-cream"
-                    >
-                      {copiedId === `broadcast-${si}` ? "Copiada!" : "Copiar"}
-                    </button>
-                  </div>
-                  <pre className="mt-2 whitespace-pre-wrap font-sans text-[0.75rem] leading-relaxed text-brown-600">{slot.broadcast}</pre>
-                </div>
-              )}
-
-              {/* Notes */}
-              {slot.notes && (
-                <div className="mt-4 rounded-lg bg-cream p-4">
-                  <p className="font-sans text-[0.6rem] font-medium uppercase tracking-wider text-brown-500">Notas</p>
-                  <p className="mt-2 whitespace-pre-line font-sans text-[0.75rem] leading-relaxed text-brown-600">{slot.notes}</p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Tip: screenshots */}
-      <div className="border-t border-brown-100 bg-white px-6 py-6">
-        <div className="mx-auto max-w-5xl">
-          <p className="font-sans text-[0.6rem] font-medium uppercase tracking-wider text-brown-500">
-            Dica: prints reais da plataforma
-          </p>
-          <p className="mt-2 font-sans text-xs text-brown-400">
-            Para carross\u00e9is com prints reais do interior da plataforma, abre estas p\u00e1ginas no telem\u00f3vel e faz screenshot:
-          </p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {[
-              { label: "Dashboard", href: "/membro" },
-              { label: "Leitor", href: "/membro/leitura" },
-              { label: "Cap\u00edtulo", href: "/membro/leitura/1" },
-              { label: "Comunidade", href: "/comunidade" },
-              { label: "Quiz", href: "/recursos/teste" },
-              { label: "Recursos", href: "/recursos" },
-              { label: "N\u00f3s", href: "/membro/nos" },
-              { label: "Chatbot", href: "/" },
-            ].map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                target="_blank"
-                className="rounded-full border border-brown-200 bg-cream px-3 py-1.5 font-sans text-[0.6rem] text-brown-600 transition-colors hover:bg-cream-dark"
-              >
-                {link.label} &rarr;
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+export const allWeeks: WeekPlan[] = [week1, week2, week3, week4];
