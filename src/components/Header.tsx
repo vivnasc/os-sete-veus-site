@@ -16,7 +16,8 @@ const navLinks: { href: string; label: string; highlight?: boolean; featured?: b
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const { user } = useAuth();
+  const { user, profile } = useAuth();
+  const isAdmin = profile?.is_admin === true;
 
   return (
     <header className="w-full border-b border-brown-100 bg-cream">
@@ -65,6 +66,14 @@ export default function Header() {
                 {link.label}
               </Link>
             )
+          )}
+          {isAdmin && (
+            <Link
+              href="/painel/marketing"
+              className="rounded-md border border-gold/40 bg-gold/10 px-3 py-1.5 font-sans text-[0.65rem] uppercase tracking-[0.12em] text-gold-dark transition-colors hover:bg-gold/20"
+            >
+              Marketing
+            </Link>
           )}
           <Link
             href={user ? "/membro" : "/entrar"}
@@ -121,6 +130,15 @@ export default function Header() {
                   {link.label}
                 </Link>
               )
+            )}
+            {isAdmin && (
+              <Link
+                href="/painel/marketing"
+                onClick={() => setIsOpen(false)}
+                className="rounded-md border border-gold/40 bg-gold/10 px-5 py-3 text-center font-sans text-sm uppercase tracking-[0.1em] text-gold-dark transition-colors hover:bg-gold/20"
+              >
+                Marketing
+              </Link>
             )}
             <Link
               href={user ? "/membro" : "/entrar"}
