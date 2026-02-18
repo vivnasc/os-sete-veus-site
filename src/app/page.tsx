@@ -304,28 +304,27 @@ export default function Home() {
           {/* Cover grid — same size as Espelhos (3 columns) */}
           <div className="mt-14 grid gap-8 sm:grid-cols-3">
             {[
-              { num: "I", title: "Nó da Herança", sub: "O silêncio herdado entre mãe e filha", color: "#c9956a", bg: "#2e1a0e", available: true },
-              { num: "II", title: "Nó do Silêncio", sub: "O que o medo calou entre eles", color: "#6a9dbe", bg: "#142838", available: false },
-              { num: "III", title: "Nó do Sacrifício", sub: "A culpa disfarçada de entrega", color: "#d06a6a", bg: "#2e1015", available: false },
+              { num: "I", title: "Nó da Herança", sub: "O silêncio herdado entre mãe e filha", color: "#c9956a", image: "/images/capa-no-heran\u00e7a2.png", available: true },
+              { num: "II", title: "Nó do Silêncio", sub: "O que o medo calou entre eles", color: "#6a9dbe", image: "/images/capa-no-silencio2.png", available: false },
+              { num: "III", title: "Nó do Sacrifício", sub: "A culpa disfarçada de entrega", color: "#d06a6a", image: "/images/capa-no-sacrifico2.png", available: false },
             ].map((no, i) => (
               <ScrollReveal key={no.num} delay={0.15 * i} variant="scale">
-                <div
-                  className="rounded-xl p-8 text-center transition-all duration-300 hover:scale-105"
-                  style={{ backgroundColor: no.bg, border: `1px solid ${no.color}25` }}
-                >
-                  <p className="font-serif text-xs tracking-[0.3em]" style={{ color: `${no.color}55` }}>
-                    {no.num}
-                  </p>
-                  <h3 className="mt-3 font-serif text-lg" style={{ color: `${no.color}dd` }}>
-                    {no.title}
-                  </h3>
-                  <p className="mt-2 text-sm italic" style={{ color: `${no.color}88` }}>
+                <div className="text-center">
+                  <Image
+                    src={no.image}
+                    alt={no.title}
+                    width={220}
+                    height={330}
+                    className="mx-auto rounded-lg shadow-2xl transition-transform duration-500 hover:scale-105"
+                  />
+                  <h3 className="mt-5 font-serif text-lg text-cream">{no.title}</h3>
+                  <p className="mt-1 text-sm italic" style={{ color: `${no.color}bb` }}>
                     {no.sub}
                   </p>
                   {no.available ? (
-                    <p className="mt-3 text-xs" style={{ color: no.color }}>Disponível</p>
+                    <p className="mt-2 text-xs" style={{ color: no.color }}>Disponivel</p>
                   ) : (
-                    <p className="mt-3 text-xs text-brown-600">Em breve</p>
+                    <p className="mt-2 text-xs text-brown-600">Em breve</p>
                   )}
                 </div>
               </ScrollReveal>
