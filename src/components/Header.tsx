@@ -68,12 +68,20 @@ export default function Header() {
             )
           )}
           {isAdmin && (
-            <Link
-              href="/painel"
-              className="rounded-md border border-gold/40 bg-gold/10 px-3 py-1.5 font-sans text-[0.65rem] uppercase tracking-[0.12em] text-gold-dark transition-colors hover:bg-gold/20"
-            >
-              Marketing
-            </Link>
+            <>
+              <Link
+                href="/autora/codigos"
+                className="rounded-md border border-sage/40 bg-sage/10 px-3 py-1.5 font-sans text-[0.65rem] uppercase tracking-[0.12em] text-sage-dark transition-colors hover:bg-sage/20"
+              >
+                Codigos
+              </Link>
+              <Link
+                href="/painel"
+                className="rounded-md border border-gold/40 bg-gold/10 px-3 py-1.5 font-sans text-[0.65rem] uppercase tracking-[0.12em] text-gold-dark transition-colors hover:bg-gold/20"
+              >
+                Marketing
+              </Link>
+            </>
           )}
           <Link
             href={user ? "/membro" : "/entrar"}
@@ -132,13 +140,22 @@ export default function Header() {
               )
             )}
             {isAdmin && (
-              <Link
-                href="/painel"
-                onClick={() => setIsOpen(false)}
-                className="rounded-md border border-gold/40 bg-gold/10 px-5 py-3 text-center font-sans text-sm uppercase tracking-[0.1em] text-gold-dark transition-colors hover:bg-gold/20"
-              >
-                Marketing
-              </Link>
+              <>
+                <Link
+                  href="/autora/codigos"
+                  onClick={() => setIsOpen(false)}
+                  className="rounded-md border border-sage/40 bg-sage/10 px-5 py-3 text-center font-sans text-sm uppercase tracking-[0.1em] text-sage-dark transition-colors hover:bg-sage/20"
+                >
+                  Codigos
+                </Link>
+                <Link
+                  href="/painel"
+                  onClick={() => setIsOpen(false)}
+                  className="rounded-md border border-gold/40 bg-gold/10 px-5 py-3 text-center font-sans text-sm uppercase tracking-[0.1em] text-gold-dark transition-colors hover:bg-gold/20"
+                >
+                  Marketing
+                </Link>
+              </>
             )}
             <Link
               href={user ? "/membro" : "/entrar"}
