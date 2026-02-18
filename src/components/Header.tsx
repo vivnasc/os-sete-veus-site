@@ -17,7 +17,8 @@ const navLinks: { href: string; label: string; highlight?: boolean; featured?: b
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const { user, profile } = useAuth();
-  const isAdmin = profile?.is_admin === true;
+  const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
+  const isAdmin = profile?.is_admin === true || ADMIN_EMAILS.includes(user?.email || "");
 
   return (
     <header className="w-full border-b border-brown-100 bg-cream">

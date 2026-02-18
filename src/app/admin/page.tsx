@@ -15,24 +15,27 @@ interface Stats {
   totalReconhecimentos: number;
 }
 
+const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
+
 export default function AdminPage() {
   const { user, profile, loading: authLoading } = useAuth();
   const router = useRouter();
+  const isAdmin = profile?.is_admin || ADMIN_EMAILS.includes(user?.email || "");
 
   const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!authLoading && (!user || !profile?.is_admin)) {
+    if (!authLoading && (!user || !isAdmin)) {
       router.push("/entrar");
     }
-  }, [user, profile, authLoading, router]);
+  }, [user, isAdmin, authLoading, router]);
 
   useEffect(() => {
-    if (user && profile?.is_admin) {
+    if (user && isAdmin) {
       loadStats();
     }
-  }, [user, profile]);
+  }, [user, isAdmin]);
 
   async function loadStats() {
     setLoading(true);
@@ -85,7 +88,7 @@ export default function AdminPage() {
     }
   }
 
-  if (authLoading || !user || !profile?.is_admin) {
+  if (authLoading || !user || !isAdmin) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-cream">
         <div className="h-12 w-12 animate-spin rounded-full border-4 border-sage border-t-transparent"></div>
