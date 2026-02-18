@@ -416,7 +416,7 @@ export default function Chatbot() {
                 N\u00e3o encontraste resposta?
               </p>
               <a
-                href="https://wa.me/258845243875?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20Sete%20Ecos"
+                href="https://wa.me/258845243875?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20Os%20Sete%20V%C3%A9us%20%E2%80%94%20seteecos.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5 rounded-full bg-[#25D366]/10 px-3 py-1.5 font-sans text-[0.65rem] font-medium text-[#25D366] transition-colors hover:bg-[#25D366]/20"

@@ -140,7 +140,7 @@ function BankTransferContent() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 font-mono text-lg font-medium text-sage hover:underline"
               >
-                +258 851 006 473
+                +258 845 243 875
                 <svg
                   className="h-5 w-5"
                   fill="currentColor"
