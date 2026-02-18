@@ -6,6 +6,8 @@ import { useState } from "react";
 import { experiences } from "@/data/experiences";
 import { allMarketing } from "@/data/marketing";
 import type { VeilMarketing, SocialPost, MarketingQuote } from "@/data/marketing";
+import { allWeeks } from "@/data/content-calendar-weeks";
+import type { ContentSlot } from "@/data/content-calendar-weeks";
 import Link from "next/link";
 
 type Tab = "overview" | "calendar" | "content" | "launch";
@@ -298,7 +300,7 @@ function CalendarTab() {
   );
 }
 
-// ─── CONTENT TAB ─────────────────────────────────────────────────────────────
+// ─── CONTENT TAB (Calendário diário + Biblioteca) ───────────────────────────
 
 function ContentTab({
   selectedVeil,
@@ -307,48 +309,289 @@ function ContentTab({
   selectedVeil: string | null;
   onSelectVeil: (slug: string | null) => void;
 }) {
+  const [activeWeek, setActiveWeek] = useState(0);
+  const [activeDay, setActiveDay] = useState(0);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [showLibrary, setShowLibrary] = useState(false);
+
+  const week = allWeeks[activeWeek];
+  const day = week.days[activeDay];
+
+  async function copyText(id: string, text: string) {
+    await navigator.clipboard.writeText(text);
+    setCopiedId(id);
+    setTimeout(() => setCopiedId(null), 2000);
+  }
+
   const marketing = selectedVeil
     ? allMarketing.find((m) => m.slug === selectedVeil)
     : null;
 
   return (
-    <div className="space-y-6">
-      <h2 className="font-serif text-lg text-brown-900">
-        Biblioteca de Conteúdo de Marketing
-      </h2>
+    <div className="space-y-8">
+      {/* ── Day-by-day Calendar ─────────────────────────────────── */}
+      <div>
+        <div className="mb-4 flex items-center justify-between">
+          <div>
+            <h2 className="font-serif text-lg text-brown-900">
+              Calendário de Conteúdos
+            </h2>
+            <p className="mt-1 font-sans text-xs text-brown-500">
+              Segue o plano dia a dia. Cada dia diz-te exactamente o que publicar e onde.
+            </p>
+          </div>
+        </div>
 
-      {/* Veil selector */}
-      <div className="flex flex-wrap gap-2">
-        {experiences.map((exp) => (
-          <button
-            key={exp.slug}
-            onClick={() =>
-              onSelectVeil(selectedVeil === exp.slug ? null : exp.slug)
-            }
-            className={`rounded-lg px-4 py-2 font-sans text-xs transition-all ${
-              selectedVeil === exp.slug
-                ? "text-white"
-                : "border border-brown-100 text-brown-400 hover:text-brown-200"
-            }`}
-            style={
-              selectedVeil === exp.slug
-                ? { backgroundColor: exp.color }
-                : undefined
-            }
-          >
-            {exp.number}. {exp.title.replace("O Véu ", "")}
-          </button>
-        ))}
+        {/* Week selector */}
+        <div className="flex gap-2 overflow-x-auto pb-2">
+          {allWeeks.map((w, i) => (
+            <button
+              key={i}
+              onClick={() => { setActiveWeek(i); setActiveDay(0); }}
+              className={`shrink-0 rounded-lg px-4 py-2 font-sans text-xs transition-all ${
+                activeWeek === i
+                  ? "bg-brown-900 text-cream"
+                  : "bg-brown-50 text-brown-500 hover:text-brown-700"
+              }`}
+            >
+              S{w.weekNumber}: {w.title}
+            </button>
+          ))}
+        </div>
+
+        {/* Day selector */}
+        <div className="mt-2 flex gap-1 overflow-x-auto pb-2">
+          {week.days.map((d, i) => (
+            <button
+              key={i}
+              onClick={() => setActiveDay(i)}
+              className={`shrink-0 rounded-lg px-3 py-2 text-center transition-all ${
+                activeDay === i
+                  ? "bg-gold/20 text-gold-dark"
+                  : "text-brown-400 hover:text-brown-600"
+              }`}
+            >
+              <span className="block font-sans text-[0.6rem] font-medium uppercase tracking-wider">
+                {d.dayShort}
+              </span>
+              <span className="mt-0.5 block font-sans text-[0.5rem] text-brown-400">
+                {d.theme}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {/* Day content */}
+        <div className="mt-6">
+          <div className="mb-4">
+            <h3 className="font-serif text-lg text-brown-900">{day.day}</h3>
+            <p className="mt-0.5 font-sans text-sm text-brown-500">{day.theme}</p>
+          </div>
+
+          <div className="space-y-6">
+            {day.slots.map((slot, si) => (
+              <ContentSlotCard key={si} slot={slot} index={si} copiedId={copiedId} onCopy={copyText} />
+            ))}
+          </div>
+        </div>
+
+        {/* Screenshots tip */}
+        <div className="mt-8 rounded-xl border border-brown-100 bg-white p-5">
+          <p className="font-sans text-[0.6rem] font-medium uppercase tracking-wider text-brown-500">
+            Dica: prints reais da plataforma
+          </p>
+          <p className="mt-2 font-sans text-xs text-brown-400">
+            Para carrosseis com prints reais, abre estas páginas no telemóvel e faz screenshot:
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {[
+              { label: "Dashboard", href: "/membro" },
+              { label: "Leitor", href: "/membro/leitura" },
+              { label: "Capítulo", href: "/membro/leitura/1" },
+              { label: "Comunidade", href: "/comunidade" },
+              { label: "Quiz", href: "/recursos/teste" },
+              { label: "Recursos", href: "/recursos" },
+              { label: "Nós", href: "/membro/nos" },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                className="rounded-full border border-brown-200 bg-cream px-3 py-1.5 font-sans text-[0.6rem] text-brown-600 transition-colors hover:bg-cream-dark"
+              >
+                {link.label} &rarr;
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
 
-      {/* Content for selected veil */}
-      {marketing ? (
-        <VeilContentPanel marketing={marketing} />
-      ) : (
-        <div className="rounded-xl border border-brown-800/20 bg-white px-8 py-12 text-center">
-          <p className="font-serif text-base text-brown-400">
-            Selecciona um véu para ver o conteúdo de marketing
-          </p>
+      {/* ── Divider: Library toggle ─────────────────────────────── */}
+      <div className="border-t border-brown-100 pt-6">
+        <button
+          onClick={() => setShowLibrary(!showLibrary)}
+          className="flex items-center gap-2 font-sans text-xs font-medium uppercase tracking-wider text-brown-500 hover:text-brown-700"
+        >
+          <svg
+            className={`h-3 w-3 transition-transform ${showLibrary ? "rotate-90" : ""}`}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+          Biblioteca de Conteúdo por Véu (quotes, posts, emails)
+        </button>
+
+        {showLibrary && (
+          <div className="mt-4 space-y-4">
+            <div className="flex flex-wrap gap-2">
+              {experiences.map((exp) => (
+                <button
+                  key={exp.slug}
+                  onClick={() =>
+                    onSelectVeil(selectedVeil === exp.slug ? null : exp.slug)
+                  }
+                  className={`rounded-lg px-4 py-2 font-sans text-xs transition-all ${
+                    selectedVeil === exp.slug
+                      ? "text-white"
+                      : "border border-brown-100 text-brown-400 hover:text-brown-200"
+                  }`}
+                  style={
+                    selectedVeil === exp.slug
+                      ? { backgroundColor: exp.color }
+                      : undefined
+                  }
+                >
+                  {exp.number}. {exp.title.replace("O Véu ", "")}
+                </button>
+              ))}
+            </div>
+
+            {marketing ? (
+              <VeilContentPanel marketing={marketing} />
+            ) : (
+              <div className="rounded-xl border border-brown-800/20 bg-white px-8 py-8 text-center">
+                <p className="font-serif text-sm text-brown-400">
+                  Selecciona um véu para ver quotes, posts e emails
+                </p>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function ContentSlotCard({
+  slot,
+  index: si,
+  copiedId,
+  onCopy,
+}: {
+  slot: ContentSlot;
+  index: number;
+  copiedId: string | null;
+  onCopy: (id: string, text: string) => void;
+}) {
+  return (
+    <div className="rounded-2xl border border-brown-100 bg-white p-5">
+      {/* Slot header */}
+      <div className="flex items-center gap-3">
+        <span className={`rounded-full px-3 py-1 font-sans text-[0.55rem] font-medium uppercase tracking-wider ${
+          slot.platform === "instagram"
+            ? "bg-pink-50 text-pink-600"
+            : slot.platform === "whatsapp"
+              ? "bg-[#25D366]/10 text-[#25D366]"
+              : "bg-brown-100 text-brown-600"
+        }`}>
+          {slot.platform === "instagram" ? "Instagram" : slot.platform === "whatsapp" ? "WhatsApp" : "Instagram + WhatsApp"}
+        </span>
+        <span className="font-sans text-[0.65rem] text-brown-500">{slot.type}</span>
+      </div>
+
+      {/* Visual card */}
+      {slot.visual && (
+        <div className="mt-4 flex flex-col items-start gap-5 sm:flex-row">
+          <div
+            className={`relative flex shrink-0 flex-col justify-between overflow-hidden rounded-xl shadow-lg ${
+              slot.visual.format === "square" ? "aspect-square w-56" : "aspect-[9/16] w-40"
+            }`}
+            style={{ backgroundColor: slot.visual.bg, color: slot.visual.text }}
+          >
+            <div className="px-4 pt-4">
+              {slot.visual.highlight && (
+                <span
+                  className="mb-2 inline-block rounded-full px-2.5 py-0.5 font-sans text-[0.5rem] uppercase tracking-[0.12em]"
+                  style={{ backgroundColor: slot.visual.accent + "25", color: slot.visual.accent }}
+                >
+                  {slot.visual.highlight}
+                </span>
+              )}
+            </div>
+            <div className="flex flex-1 flex-col justify-center px-4">
+              {slot.visual.title && (
+                <h3 className="whitespace-pre-line font-serif text-sm leading-tight">{slot.visual.title}</h3>
+              )}
+              {slot.visual.body && (
+                <p className="mt-2 whitespace-pre-line font-sans text-[0.6rem] leading-relaxed opacity-80">{slot.visual.body}</p>
+              )}
+            </div>
+            <div className="px-4 pb-3">
+              {slot.visual.footer && (
+                <div className="flex items-center justify-between">
+                  <p className="font-sans text-[0.4rem] uppercase tracking-[0.1em]" style={{ color: slot.visual.accent }}>
+                    {slot.visual.footer}
+                  </p>
+                  <span className="font-serif text-xs opacity-30" style={{ color: slot.visual.accent }}>~</span>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Caption + copy */}
+          <div className="flex-1">
+            {slot.caption && (
+              <div>
+                <div className="flex items-center justify-between">
+                  <p className="font-sans text-[0.6rem] font-medium uppercase tracking-wider text-brown-500">Legenda</p>
+                  <button
+                    onClick={() => onCopy(`caption-${si}`, slot.caption!)}
+                    className="rounded-md bg-cream px-3 py-1 font-sans text-[0.55rem] text-brown-600 hover:bg-cream-dark"
+                  >
+                    {copiedId === `caption-${si}` ? "Copiada!" : "Copiar"}
+                  </button>
+                </div>
+                <pre className="mt-2 whitespace-pre-wrap font-sans text-[0.7rem] leading-relaxed text-brown-600">{slot.caption}</pre>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Broadcast message */}
+      {slot.broadcast && (
+        <div className="mt-4 rounded-lg bg-[#25D366]/5 p-4">
+          <div className="flex items-center justify-between">
+            <p className="font-sans text-[0.6rem] font-medium uppercase tracking-wider text-[#25D366]">Mensagem WhatsApp</p>
+            <button
+              onClick={() => onCopy(`broadcast-${si}`, slot.broadcast!)}
+              className="rounded-md bg-white px-3 py-1 font-sans text-[0.55rem] text-brown-600 hover:bg-cream"
+            >
+              {copiedId === `broadcast-${si}` ? "Copiada!" : "Copiar"}
+            </button>
+          </div>
+          <pre className="mt-2 whitespace-pre-wrap font-sans text-[0.7rem] leading-relaxed text-brown-600">{slot.broadcast}</pre>
+        </div>
+      )}
+
+      {/* Notes */}
+      {slot.notes && (
+        <div className="mt-3 rounded-lg bg-cream p-4">
+          <p className="font-sans text-[0.6rem] font-medium uppercase tracking-wider text-brown-500">Notas</p>
+          <p className="mt-2 whitespace-pre-line font-sans text-[0.7rem] leading-relaxed text-brown-600">{slot.notes}</p>
         </div>
       )}
     </div>
