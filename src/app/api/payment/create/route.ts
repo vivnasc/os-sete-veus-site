@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { notifyPaymentCreated } from "@/lib/notify-admin";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
@@ -101,8 +102,14 @@ export async function POST(request: Request) {
       );
     }
 
-    // Enviar email de confirmação de pedido
-    // TODO: Implementar envio de email
+    // Notificar admin
+    await notifyPaymentCreated({
+      user_email: email,
+      amount,
+      currency: currency || "MZN",
+      payment_method,
+      access_type_code,
+    });
 
     return NextResponse.json({
       ok: true,

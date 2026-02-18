@@ -1,6 +1,7 @@
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
+import { notifyCodeRequest } from '@/lib/notify-admin'
 
 export const dynamic = 'force-dynamic'
 
@@ -80,11 +81,13 @@ export async function POST(request: Request) {
       )
     }
 
-    // TODO: Enviar email de confirmação ao cliente
-    // await sendRequestConfirmationEmail(email, fullName)
-
-    // TODO: Notificar admin (Vivianne) sobre novo pedido
-    // await notifyAdminNewRequest(newRequest)
+    // Notificar admin via WhatsApp + dashboard
+    await notifyCodeRequest({
+      full_name: fullName,
+      email,
+      whatsapp: whatsapp || undefined,
+      purchase_location: purchaseLocation || undefined,
+    })
 
     return NextResponse.json({
       success: true,

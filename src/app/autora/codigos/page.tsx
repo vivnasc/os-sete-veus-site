@@ -70,17 +70,31 @@ export default function AutoraCodigosPage() {
         setPendingRequests(pending)
       }
 
-      // TODO: Carregar todos os códigos (precisamos de uma API para isso)
-      // const codesRes = await fetch('/api/codes/list')
-      // const codesData = await codesRes.json()
-      // setAllCodes(codesData.codes)
+      // Carregar todos os codigos e stats reais
+      try {
+        const codesRes = await fetch('/api/codes/list')
+        if (codesRes.ok) {
+          const codesData = await codesRes.json()
+          if (codesData.success) {
+            setAllCodes(codesData.codes || [])
+            setStats({
+              total: codesData.stats.total,
+              used: codesData.stats.used,
+              pending: pending.length,
+              today: codesData.stats.today,
+            })
+            return
+          }
+        }
+      } catch {
+        // Fallback se a API falhar
+      }
 
-      // Calcular estatísticas
       setStats({
-        total: 45, // placeholder
-        used: 32, // placeholder
+        total: 0,
+        used: 0,
         pending: pending.length,
-        today: 5, // placeholder
+        today: 0,
       })
     } catch (error) {
       console.error('Erro ao carregar dados:', error)

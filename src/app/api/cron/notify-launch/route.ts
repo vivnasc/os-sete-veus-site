@@ -170,7 +170,7 @@ ${espelho.subtitle}
 ${espelho.description}
 
 Entra na tua área de membro para começar a ler:
-https://seteecos.com/membro
+https://seteveus.space/membro
 
 Com verdade,
 Vivianne`
@@ -184,7 +184,7 @@ ${espelho.subtitle}
 ${espelho.description}
 
 Entra na tua área de membro para descobrir esta nova história:
-https://seteecos.com/membro
+https://seteveus.space/membro
 
 Com verdade,
 Vivianne`;

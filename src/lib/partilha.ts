@@ -39,12 +39,12 @@ export function getShareText(
 ): string {
   const hashtags = getHashtagString(veuNumero, isEspelho)
   const attribution = source || `Os Sete Véus do Despertar — Véu ${veuNumero}: ${VEU_NAMES[veuNumero]}`
-  return `"${quote}"\n\n— ${attribution}\n\n${hashtags}\n\nDescobre o teu véu: seteecos.com/recursos/teste`
+  return `"${quote}"\n\n— ${attribution}\n\n${hashtags}\n\nDescobre o teu véu: seteveus.space/recursos/teste`
 }
 
 // ─── Social URLs ─────────────────────────────────────────────
 
-const SITE_URL = 'https://seteecos.com/recursos/teste'
+const SITE_URL = 'https://seteveus.space/recursos/teste'
 
 export function getWhatsAppUrl(text: string): string {
   return `https://wa.me/?text=${encodeURIComponent(text)}`

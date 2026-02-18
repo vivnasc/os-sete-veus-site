@@ -255,7 +255,7 @@ export default function LinksEspeciaisPage() {
                 const baseUrl =
                   typeof window !== "undefined"
                     ? window.location.origin
-                    : "https://seteecos.com";
+                    : "https://seteveus.space";
                 const fullLink = `${baseUrl}/registar-livro?code=${link.code}`;
                 const isExpired =
                   link.expires_at && new Date(link.expires_at) < new Date();

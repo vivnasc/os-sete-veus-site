@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { notifyPaymentProof } from "@/lib/notify-admin";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
@@ -55,9 +56,16 @@ export async function POST(request: Request) {
       );
     }
 
-    // Enviar notificação para admin
-    // TODO: Enviar email + WhatsApp para viv.saraiva@gmail.com
-    // Notificação: "Novo pagamento aguardando confirmação"
+    // Notificar admin via WhatsApp + dashboard
+    await notifyPaymentProof({
+      user_email: payment.user_email,
+      amount: payment.amount,
+      currency: payment.currency,
+      payment_method: payment.payment_method,
+      access_type_code: payment.access_type_code,
+      transaction_id: transaction_id || null,
+      mpesa_reference: mpesa_reference || null,
+    });
 
     return NextResponse.json({
       ok: true,

@@ -34,7 +34,7 @@ SUPABASE_SERVICE_ROLE_KEY=cole_a_tua_key_aqui
 ### **2. OPÇÃO A: Criar Conta via Interface Web (RECOMENDADO)**
 
 1. **Espera o deploy no Vercel** (2-3 minutos após o push)
-2. Vai a: **https://seteecos.com/registar**
+2. Vai a: **https://seteveus.space/registar**
 3. Preenche:
    - Email: `viv.saraiva@gmail.com`
    - Password: `VanelMiguel12`
@@ -108,11 +108,11 @@ WHERE email = 'viv.saraiva@gmail.com';
 
 ### **5. Testar**
 
-1. Vai a: **https://seteecos.com/entrar**
+1. Vai a: **https://seteveus.space/entrar**
 2. Faz login com:
    - Email: `viv.saraiva@gmail.com`
    - Password: `VanelMiguel12`
-3. Depois de login, vai a: **https://seteecos.com/admin**
+3. Depois de login, vai a: **https://seteveus.space/admin**
 4. **Deves ver o painel admin!** 🎉
 
 ---

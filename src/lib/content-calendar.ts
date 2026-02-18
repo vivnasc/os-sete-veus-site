@@ -140,7 +140,7 @@ const testimonials = [
 const ctas = [
   "🔗 Teste gratuito na bio — descobre qual espelho te esconde",
   "🔗 Link na bio — recursos gratuitos para ti",
-  "🔗 seteecos.com — começa a tua jornada",
+  "🔗 seteveus.space — começa a tua jornada",
   "🔗 Testa qual espelho te esconde — link na bio",
   "🔗 Descarrega o diário de 7 dias — link na bio",
 ];
