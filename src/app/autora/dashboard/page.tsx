@@ -13,19 +13,22 @@ type Stats = {
   leitoresPorVeu: Record<number, number>
 }
 
+const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
+
 export default function AutoraDashboardPage() {
   const { user, profile, loading } = useAuth()
   const router = useRouter()
   const [stats, setStats] = useState<Stats | null>(null)
   const [loadingStats, setLoadingStats] = useState(true)
+  const isAdmin = profile?.is_admin || ADMIN_EMAILS.includes(user?.email || "");
 
   useEffect(() => {
-    if (!loading && (!user || !profile?.is_admin)) {
+    if (!loading && (!user || !isAdmin)) {
       router.push('/entrar')
-    } else if (user && profile?.is_admin) {
+    } else if (user && isAdmin) {
       carregarStats()
     }
-  }, [user, profile, loading, router])
+  }, [user, isAdmin, loading, router])
 
   const carregarStats = async () => {
     // Aqui farias chamadas à API para obter estatísticas
@@ -55,7 +58,7 @@ export default function AutoraDashboardPage() {
     setLoadingStats(false)
   }
 
-  if (loading || !profile?.is_admin) {
+  if (loading || !isAdmin) {
     return (
       <div className="min-h-screen bg-stone-50 flex items-center justify-center">
         <div className="text-center">

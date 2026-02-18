@@ -212,9 +212,17 @@ export default function MarketingPage() {
               Calendario + carrosseis + reels + guia de producao. Tudo pronto para publicar.
             </p>
           </div>
-          <Link href="/painel" className="font-sans text-xs text-brown-500 hover:text-brown-900">
-            &larr; Painel
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/painel/marketing/gerador"
+              className="rounded-lg bg-sage px-4 py-2 font-sans text-xs font-medium text-white transition-colors hover:bg-sage-dark"
+            >
+              Gerador de Conteudo
+            </Link>
+            <Link href="/painel" className="font-sans text-xs text-brown-500 hover:text-brown-900">
+              &larr; Painel
+            </Link>
+          </div>
         </div>
       </div>
 
