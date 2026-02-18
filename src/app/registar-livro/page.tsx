@@ -90,7 +90,7 @@ function RegistarLivroContent() {
               </svg>
             </div>
             <h1 className="font-serif text-2xl text-brown-900">
-              Acesso Concedido! 🎉
+              Acesso concedido.
             </h1>
             <p className="mt-4 text-brown-700">
               Enviámos um link mágico para o teu email{" "}

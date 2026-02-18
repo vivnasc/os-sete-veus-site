@@ -64,7 +64,11 @@ export default function PedirCodigoPage() {
       <div className="min-h-screen bg-cream px-6 py-24">
         <div className="mx-auto max-w-2xl text-center">
           <div className="rounded-2xl border-2 border-green-200 bg-white p-10 shadow-lg">
-            <div className="text-6xl">✅</div>
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-sage/10">
+              <svg className="h-7 w-7 text-sage" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
             <h1 className="mt-6 font-serif text-3xl text-brown-900">
               Pedido recebido!
             </h1>
@@ -76,21 +80,21 @@ export default function PedirCodigoPage() {
             </p>
             <div className="mt-6 space-y-2 text-left">
               <div className="flex items-start gap-3 rounded-lg bg-cream p-4">
-                <span className="text-xl">📧</span>
+                <span className="mt-0.5 text-sage">~</span>
                 <div>
                   <p className="text-sm font-medium text-brown-900">
-                    Confirmação neste email:
+                    Confirmacao neste email:
                   </p>
                   <p className="text-sm text-brown-600">{formData.email}</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 rounded-lg bg-cream p-4">
-                <span className="text-xl">🔐</span>
+                <span className="mt-0.5 text-sage">~</span>
                 <div>
                   <p className="text-sm font-medium text-brown-900">
-                    Código em até 24h
+                    Codigo em ate 24h
                   </p>
-                  <p className="text-xs text-brown-500">(dias úteis)</p>
+                  <p className="text-xs text-brown-500">(dias uteis)</p>
                 </div>
               </div>
             </div>
@@ -120,7 +124,7 @@ export default function PedirCodigoPage() {
       <section className="bg-cream px-6 py-24">
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="font-serif text-4xl leading-tight text-brown-900 sm:text-5xl">
-            📦 Compraste o livro físico?
+            Compraste o livro fisico?
           </h1>
           <p className="mx-auto mt-6 max-w-xl leading-relaxed text-brown-600">
             Pede o teu código de acesso digital grátis
@@ -261,21 +265,21 @@ export default function PedirCodigoPage() {
       {/* Vais receber */}
       <section className="bg-cream px-6 py-16">
         <div className="mx-auto max-w-3xl">
-          <h2 className="text-center font-serif text-2xl text-brown-900">⚡ Vais receber:</h2>
+          <h2 className="text-center font-serif text-2xl text-brown-900">O que vais receber</h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
             <div className="rounded-lg bg-white p-5 text-center shadow-sm">
-              <div className="text-3xl">✅</div>
-              <p className="mt-3 text-sm font-medium text-brown-900">Confirmação imediata</p>
+              <div className="font-serif text-2xl text-sage">~</div>
+              <p className="mt-3 text-sm font-medium text-brown-900">Confirmacao imediata</p>
               <p className="mt-1 text-xs text-brown-600">Por email</p>
             </div>
             <div className="rounded-lg bg-white p-5 text-center shadow-sm">
-              <div className="text-3xl">🔐</div>
-              <p className="mt-3 text-sm font-medium text-brown-900">Código em até 24h</p>
-              <p className="mt-1 text-xs text-brown-600">(dias úteis)</p>
+              <div className="font-serif text-2xl text-sage">~</div>
+              <p className="mt-3 text-sm font-medium text-brown-900">Codigo em ate 24h</p>
+              <p className="mt-1 text-xs text-brown-600">(dias uteis)</p>
             </div>
             <div className="rounded-lg bg-white p-5 text-center shadow-sm">
-              <div className="text-3xl">📖</div>
-              <p className="mt-3 text-sm font-medium text-brown-900">Instruções de registo</p>
+              <div className="font-serif text-2xl text-sage">~</div>
+              <p className="mt-3 text-sm font-medium text-brown-900">Instrucoes de registo</p>
               <p className="mt-1 text-xs text-brown-600">Passo a passo</p>
             </div>
           </div>
@@ -286,7 +290,7 @@ export default function PedirCodigoPage() {
       <section className="bg-cream-dark px-6 py-24">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-center font-serif text-2xl text-brown-900">
-            ❓ Perguntas frequentes
+            Perguntas frequentes
           </h2>
           <div className="mt-8 space-y-4">
             <div className="rounded-lg bg-white p-6 shadow-sm">
@@ -325,7 +329,7 @@ export default function PedirCodigoPage() {
       <section className="bg-gradient-to-b from-brown-800 to-brown-900 px-6 py-16">
         <div className="mx-auto max-w-2xl text-center">
           <p className="font-serif text-xl italic leading-relaxed text-cream">
-            📱 Preferência por WhatsApp?
+            Preferes falar directamente?
           </p>
           <p className="mx-auto mt-4 max-w-md text-sm text-brown-200">
             Contacta diretamente e envia foto do livro ou recibo
