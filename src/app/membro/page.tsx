@@ -219,14 +219,13 @@ export default function MembroDashboard() {
                       background: `linear-gradient(135deg, ${exp.color}40, ${exp.color}20)`,
                     }}
                   >
-                    <div
-                      className="flex h-[120px] w-[90px] items-center justify-center rounded shadow-lg"
-                      style={{ backgroundColor: exp.color + "30" }}
-                    >
-                      <span className="font-serif text-4xl" style={{ color: exp.color }}>
-                        {exp.number}
-                      </span>
-                    </div>
+                    <Image
+                      src={exp.image}
+                      alt={exp.title}
+                      width={90}
+                      height={120}
+                      className="rounded shadow-lg"
+                    />
                   </div>
                   <div className="flex flex-1 flex-col justify-between p-6">
                     <div>
