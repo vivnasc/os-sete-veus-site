@@ -11,6 +11,8 @@ function BankTransferContent() {
   const router = useRouter();
 
   const [paymentId, setPaymentId] = useState<string | null>(null);
+  const [displayAmount, setDisplayAmount] = useState("1.885");
+  const [productName, setProductName] = useState("");
   const [transactionId, setTransactionId] = useState("");
   const [notes, setNotes] = useState("");
   const [loading, setLoading] = useState(false);
@@ -20,10 +22,20 @@ function BankTransferContent() {
   useEffect(() => {
     const id = searchParams.get("payment_id");
     if (!id) {
-      router.push("/comprar-colecao");
+      router.push("/comprar/espelhos");
       return;
     }
     setPaymentId(id);
+
+    const amount = searchParams.get("amount");
+    if (amount) {
+      setDisplayAmount(Number(amount).toLocaleString("pt-MZ"));
+    }
+
+    const product = searchParams.get("product");
+    if (product) {
+      setProductName(product);
+    }
   }, [searchParams, router]);
 
   async function handleSubmit(e: React.FormEvent) {
@@ -106,6 +118,11 @@ function BankTransferContent() {
         <h1 className="text-center font-serif text-3xl text-brown-900">
           Transferência Bancária
         </h1>
+        {productName && (
+          <p className="mt-2 text-center font-sans text-sm text-brown-500">
+            {productName}
+          </p>
+        )}
 
         {/* Bank Details */}
         <div className="mt-8 rounded-xl border-2 border-sage/20 bg-white p-8">
@@ -153,7 +170,7 @@ function BankTransferContent() {
             <div>
               <p className="text-xs text-brown-500">Valor</p>
               <p className="font-sans text-2xl font-bold text-sage">
-                2.500 MZN
+                {displayAmount} MZN
               </p>
             </div>
           </div>

@@ -2,17 +2,78 @@
 
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { useAuth } from '@/components/AuthProvider'
 import { experiences, PRICING } from '@/data/experiences'
+import Image from 'next/image'
 import { nosCollection, NOS_PRICING } from '@/data/nos-collection'
+import type { Experience } from '@/data/experiences'
+
+type PaymentMethod = 'mpesa' | 'bank_transfer' | 'paypal'
 
 export default function ComprarPage() {
+  const router = useRouter()
+  const { user } = useAuth()
   const [moeda, setMoeda] = useState<'MZN' | 'USD'>('MZN')
+  const [purchasing, setPurchasing] = useState<Experience | null>(null)
+  const [email, setEmail] = useState(user?.email || '')
+  const [phone, setPhone] = useState('')
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod | null>(null)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const available = experiences.filter((e) => e.status === 'available')
   const upcoming = experiences.filter((e) => e.status !== 'available')
 
-  const handleComprar = (nome: string, precoMzn: number, precoUsd: number) => {
-    alert(`Comprar: ${nome}\nPreço: ${moeda === 'MZN' ? `${precoMzn} MZN` : `$${precoUsd} USD`}\n\nSistema de pagamento será integrado em breve!`)
+  function handleComprar(exp: Experience) {
+    setPurchasing(exp)
+    setError('')
+    if (user?.email) setEmail(user.email)
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+  }
+
+  async function handlePayment() {
+    if (!purchasing || !email || !paymentMethod) {
+      setError('Preenche todos os campos obrigatórios')
+      return
+    }
+
+    setError('')
+    setLoading(true)
+
+    try {
+      const response = await fetch('/api/payment/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          phone,
+          access_type_code: purchasing.slug,
+          payment_method: paymentMethod,
+          amount: purchasing.priceMT,
+          currency: 'MZN',
+        }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        setError(data.error || 'Erro ao criar pedido')
+        setLoading(false)
+        return
+      }
+
+      // Redirecionar para página de pagamento com dados do produto
+      const params = new URLSearchParams({
+        payment_id: data.payment_id,
+        amount: String(purchasing.priceMT),
+        product: purchasing.title,
+      })
+      router.push(`/pagamento/${paymentMethod}?${params.toString()}`)
+    } catch {
+      setError('Erro de conexão. Tenta novamente.')
+      setLoading(false)
+    }
   }
 
   return (
@@ -109,14 +170,23 @@ export default function ComprarPage() {
 
                   {/* Nó correspondente */}
                   {no && (
-                    <div className="mt-5 rounded-lg border border-[#c9956a]/20 bg-[#c9956a]/5 px-4 py-3">
-                      <p className="font-sans text-[0.55rem] uppercase tracking-[0.2em] text-[#c9956a]">
-                        Nó correspondente · {moeda === 'MZN' ? `${NOS_PRICING.individual.mt} MZN` : `$${NOS_PRICING.individual.usd}`}
-                      </p>
-                      <p className="mt-0.5 font-serif text-sm text-brown-700">{no.title}</p>
-                      <p className="text-xs italic text-brown-400">
-                        Disponível após completar o Espelho
-                      </p>
+                    <div className="mt-5 flex items-center gap-3 rounded-lg border border-[#c9956a]/20 bg-[#c9956a]/5 px-4 py-3">
+                      <Image
+                        src={no.image}
+                        alt={no.title}
+                        width={36}
+                        height={54}
+                        className="shrink-0 rounded shadow-sm"
+                      />
+                      <div>
+                        <p className="font-sans text-[0.55rem] uppercase tracking-[0.2em] text-[#c9956a]">
+                          Nó correspondente · {moeda === 'MZN' ? `${NOS_PRICING.individual.mt} MZN` : `$${NOS_PRICING.individual.usd}`}
+                        </p>
+                        <p className="mt-0.5 font-serif text-sm text-brown-700">{no.title}</p>
+                        <p className="text-xs italic text-brown-400">
+                          Disponível após completar o Espelho
+                        </p>
+                      </div>
                     </div>
                   )}
 
@@ -130,10 +200,14 @@ export default function ComprarPage() {
                   </div>
 
                   <button
-                    onClick={() => handleComprar(exp.title, exp.priceMT, exp.priceUSD)}
-                    className="mt-5 w-full rounded-lg bg-sage py-3.5 font-sans text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-sage-dark"
+                    onClick={() => handleComprar(exp)}
+                    className={`mt-5 w-full rounded-lg py-3.5 font-sans text-sm font-medium uppercase tracking-wider text-white transition-colors ${
+                      purchasing?.slug === exp.slug
+                        ? 'bg-brown-900 hover:bg-brown-800'
+                        : 'bg-sage hover:bg-sage-dark'
+                    }`}
                   >
-                    Comprar
+                    {purchasing?.slug === exp.slug ? 'Seleccionado — preenche abaixo' : 'Comprar'}
                   </button>
                 </motion.div>
               )
@@ -218,10 +292,10 @@ export default function ComprarPage() {
                   ))}
                 </ul>
                 <button
-                  onClick={() => handleComprar('Pack 3 Espelhos', PRICING.pack3.mt, PRICING.pack3.usd)}
-                  className="mt-6 w-full rounded-lg bg-sage py-3.5 font-sans text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-sage-dark"
+                  disabled
+                  className="mt-6 w-full rounded-lg bg-sage/50 py-3.5 font-sans text-sm font-medium uppercase tracking-wider text-white"
                 >
-                  Comprar Pack
+                  Em breve
                 </button>
               </motion.div>
 
@@ -260,10 +334,10 @@ export default function ComprarPage() {
                   ))}
                 </ul>
                 <button
-                  onClick={() => handleComprar('Jornada Completa', PRICING.journey.mt, PRICING.journey.usd)}
-                  className="mt-6 w-full rounded-lg bg-[#c9a87c] py-3.5 font-sans text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-[#b8975b]"
+                  disabled
+                  className="mt-6 w-full rounded-lg bg-[#c9a87c]/50 py-3.5 font-sans text-sm font-medium uppercase tracking-wider text-white"
                 >
-                  Comprar Jornada
+                  Em breve
                 </button>
               </motion.div>
             </div>
@@ -289,6 +363,120 @@ export default function ComprarPage() {
             </p>
           </div>
         </section>
+
+        {/* Checkout form */}
+        {purchasing && (
+          <section id="checkout" className="mb-16">
+            <div className="mx-auto max-w-lg rounded-2xl border-2 border-sage/30 bg-white p-8 shadow-lg">
+              <div className="text-center">
+                <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-sage">
+                  Finalizar compra
+                </p>
+                <h2 className="mt-2 font-serif text-2xl text-brown-900">
+                  {purchasing.title.replace('O Espelho ', 'Espelho ')}
+                </h2>
+                <p className="mt-2 font-serif text-3xl font-bold text-brown-900">
+                  {purchasing.priceMT.toLocaleString()} MZN
+                  <span className="ml-2 text-base font-normal text-brown-400">
+                    / ${purchasing.priceUSD} USD
+                  </span>
+                </p>
+              </div>
+
+              <div className="mt-8 space-y-5">
+                <div>
+                  <label htmlFor="checkout-email" className="font-sans text-sm font-medium text-brown-700">
+                    Email *
+                  </label>
+                  <input
+                    id="checkout-email"
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={loading}
+                    placeholder="o-teu@email.com"
+                    className="mt-1 w-full rounded-lg border border-brown-100 bg-white px-4 py-3 font-sans text-sm text-brown-900 placeholder:text-brown-300 focus:border-sage focus:outline-none focus:ring-2 focus:ring-sage/30"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="checkout-phone" className="font-sans text-sm font-medium text-brown-700">
+                    Telemóvel (opcional)
+                  </label>
+                  <input
+                    id="checkout-phone"
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    disabled={loading}
+                    placeholder="+258 ..."
+                    className="mt-1 w-full rounded-lg border border-brown-100 bg-white px-4 py-3 font-sans text-sm text-brown-900 placeholder:text-brown-300 focus:border-sage focus:outline-none focus:ring-2 focus:ring-sage/30"
+                  />
+                </div>
+
+                <div>
+                  <p className="font-sans text-sm font-medium text-brown-700">
+                    Método de Pagamento *
+                  </p>
+                  <div className="mt-3 space-y-2">
+                    {([
+                      { key: 'mpesa' as const, label: 'MPesa', desc: 'Pagamento via telemóvel' },
+                      { key: 'bank_transfer' as const, label: 'Transferência Bancária', desc: 'Millenium BIM' },
+                      { key: 'paypal' as const, label: 'PayPal / Cartão', desc: 'Pagamento internacional' },
+                    ]).map((pm) => (
+                      <button
+                        key={pm.key}
+                        type="button"
+                        onClick={() => setPaymentMethod(pm.key)}
+                        className={`w-full rounded-lg border-2 p-3 text-left transition-all ${
+                          paymentMethod === pm.key
+                            ? 'border-sage bg-sage/5'
+                            : 'border-brown-100 bg-white hover:border-brown-200'
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className={`h-4 w-4 rounded-full border-2 ${
+                            paymentMethod === pm.key ? 'border-sage bg-sage' : 'border-brown-200'
+                          }`} />
+                          <div>
+                            <p className="font-sans text-sm font-medium text-brown-900">{pm.label}</p>
+                            <p className="text-xs text-brown-500">{pm.desc}</p>
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {error && (
+                  <div className="rounded-lg border border-red-200 bg-red-50 p-3">
+                    <p className="text-sm text-red-600">{error}</p>
+                  </div>
+                )}
+
+                <button
+                  type="button"
+                  onClick={handlePayment}
+                  disabled={loading || !paymentMethod}
+                  className={`w-full rounded-lg bg-sage px-8 py-4 font-sans text-sm font-medium uppercase tracking-[0.12em] text-white transition-colors hover:bg-sage-dark ${
+                    loading || !paymentMethod ? 'opacity-60' : ''
+                  }`}
+                >
+                  {loading ? 'A processar...' : 'Continuar para Pagamento'}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setPurchasing(null)}
+                  className="w-full text-center font-sans text-xs text-brown-400 hover:text-brown-600"
+                >
+                  Cancelar
+                </button>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* FAQs */}
         <section className="mx-auto max-w-3xl">

@@ -304,9 +304,13 @@ export default function MembroDashboard() {
                 <div className="mt-3 overflow-hidden rounded-2xl border border-[#c9a87c]/40 bg-gradient-to-br from-[#faf7f2] to-white shadow-sm">
                   <div className="flex flex-col sm:flex-row">
                     <div className="flex items-center justify-center bg-gradient-to-br from-[#5a4d3e] to-[#3d3428] px-8 py-8 sm:w-48">
-                      <div className="flex h-[120px] w-[90px] items-center justify-center rounded bg-[#c9a87c]/20">
-                        <span className="font-serif text-4xl text-[#c9a87c]">&#8734;</span>
-                      </div>
+                      <Image
+                        src={nosBook.image}
+                        alt={nosBook.title}
+                        width={90}
+                        height={135}
+                        className="rounded shadow-lg"
+                      />
                     </div>
                     <div className="flex flex-1 flex-col justify-between p-6">
                       <div>

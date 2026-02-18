@@ -37,11 +37,21 @@ function RegistarLivroContent() {
     setError("");
     setLoading(true);
 
+    const trimmedCode = code.trim().toUpperCase();
+
     try {
-      const response = await fetch("/api/special-link/validate", {
+      // Códigos LIVRO-XXXXX usam a API de livro codes
+      // Outros códigos usam a API de special links
+      const isLivroCode = trimmedCode.startsWith("LIVRO-");
+
+      const endpoint = isLivroCode
+        ? "/api/codes/redeem"
+        : "/api/special-link/validate";
+
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code, email }),
+        body: JSON.stringify({ code: trimmedCode, email }),
       });
 
       const data = await response.json();

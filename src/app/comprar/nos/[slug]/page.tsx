@@ -4,6 +4,7 @@ import { use, useState } from 'react'
 import { motion } from 'framer-motion'
 import { getNosBook, NOS_PRICING } from '@/data/nos-collection'
 import { getExperience } from '@/data/experiences'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function ComprarNoPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -39,20 +40,31 @@ export default function ComprarNoPage({ params }: { params: Promise<{ slug: stri
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center"
+            className="flex flex-col items-center gap-6 sm:flex-row sm:gap-10"
           >
-            <p className="font-sans text-[0.65rem] uppercase tracking-[0.25em]" style={{ color: nosBook.color }}>
-              Colecção Nós · Ficção Relacional
-            </p>
-            <h1 className="mt-3 font-serif text-4xl text-cream sm:text-5xl">
-              {nosBook.title}
-            </h1>
-            <p className="mt-3 font-serif text-lg italic text-brown-300">
-              {nosBook.subtitle}
-            </p>
-            <p className="mx-auto mt-4 max-w-xl leading-relaxed text-brown-200">
-              {nosBook.description}
-            </p>
+            <div className="shrink-0">
+              <Image
+                src={nosBook.image}
+                alt={nosBook.title}
+                width={180}
+                height={270}
+                className="rounded-lg shadow-2xl"
+              />
+            </div>
+            <div className="text-center sm:text-left">
+              <p className="font-sans text-[0.65rem] uppercase tracking-[0.25em]" style={{ color: nosBook.color }}>
+                Colecção Nós · Ficção Relacional
+              </p>
+              <h1 className="mt-3 font-serif text-4xl text-cream sm:text-5xl">
+                {nosBook.title}
+              </h1>
+              <p className="mt-3 font-serif text-lg italic text-brown-300">
+                {nosBook.subtitle}
+              </p>
+              <p className="mt-4 max-w-xl leading-relaxed text-brown-200">
+                {nosBook.description}
+              </p>
+            </div>
           </motion.div>
 
           {/* Toggle moeda */}
@@ -92,9 +104,13 @@ export default function ComprarNoPage({ params }: { params: Promise<{ slug: stri
           style={{ borderColor: nosBook.color + '40' }}
         >
           <div className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full font-serif text-xl" style={{ backgroundColor: nosBook.color + '15', color: nosBook.color }}>
-              &#8734;
-            </span>
+            <Image
+              src={nosBook.image}
+              alt={nosBook.title}
+              width={40}
+              height={60}
+              className="rounded shadow-sm"
+            />
             <div>
               <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em]" style={{ color: nosBook.color }}>
                 No {nosBook.number} de 7
