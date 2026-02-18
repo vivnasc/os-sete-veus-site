@@ -846,7 +846,7 @@ function QuoteCard({ quote, color }: { quote: MarketingQuote; color: string }) {
   const [copied, setCopied] = useState(false);
 
   async function copyQuote() {
-    await navigator.clipboard.writeText(`"${quote.text}"\n\n— ${quote.source}\nseteecos.com`);
+    await navigator.clipboard.writeText(`"${quote.text}"\n\n— ${quote.source}\nseteveus.space`);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   }

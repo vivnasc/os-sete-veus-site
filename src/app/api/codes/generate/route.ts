@@ -1,108 +1,160 @@
-import { createServerClient } from '@supabase/ssr'
-import { cookies } from 'next/headers'
-import { NextResponse } from 'next/server'
+import { NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
+import { createServerClient } from "@supabase/ssr";
+import { cookies } from "next/headers";
+import { notifyAdmin } from "@/lib/notify-admin";
 
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+
+/**
+ * Gera codigo unico LIVRO-XXXXX (sem depender de RPC do Supabase)
+ */
+function generateCode(): string {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // sem I/O/0/1 para evitar confusao
+  let code = "LIVRO-";
+  for (let i = 0; i < 5; i++) {
+    code += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return code;
+}
 
 /**
  * POST /api/codes/generate
- * Gera um código único de acesso ao livro digital
- * Apenas admins podem gerar códigos
+ * Gera um codigo unico de acesso ao livro digital
+ * Apenas admins podem gerar codigos
  */
 export async function POST(request: Request) {
   try {
-    const cookieStore = await cookies()
+    // Verificar autenticacao via cookies
+    const cookieStore = await cookies();
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
       {
         cookies: {
           getAll() {
-            return cookieStore.getAll()
+            return cookieStore.getAll();
           },
           setAll(cookiesToSet) {
             cookiesToSet.forEach(({ name, value, options }) =>
               cookieStore.set(name, value, options)
-            )
+            );
           },
         },
       }
-    )
+    );
 
-    // Verifica autenticação
     const {
       data: { session },
-    } = await supabase.auth.getSession()
+    } = await supabase.auth.getSession();
 
     if (!session) {
-      return NextResponse.json({ error: 'Não autenticado' }, { status: 401 })
+      return NextResponse.json({ error: "Nao autenticado" }, { status: 401 });
     }
 
-    // Verifica se é admin
-    const { data: userRole } = await supabase
-      .from('user_roles')
-      .select('role')
-      .eq('user_id', session.user.id)
-      .single()
+    // Verificar admin (via email directo ou role)
+    const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
+    const isAdminEmail = ADMIN_EMAILS.includes(session.user.email || "");
 
-    if (!userRole || userRole.role !== 'admin') {
-      return NextResponse.json({ error: 'Sem permissão' }, { status: 403 })
+    if (!isAdminEmail) {
+      const { data: userRole } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", session.user.id)
+        .single();
+
+      if (!userRole || userRole.role !== "admin") {
+        return NextResponse.json(
+          { error: "Sem permissao" },
+          { status: 403 }
+        );
+      }
     }
 
-    // Pega dados do body
-    const body = await request.json()
-    const { email, notes } = body
-
-    // Gera código usando função do Supabase
-    const { data: codeData, error: codeError } = await supabase
-      .rpc('generate_unique_livro_code')
-
-    if (codeError) {
-      console.error('Erro ao gerar código:', codeError)
+    if (!supabaseServiceKey) {
       return NextResponse.json(
-        { error: 'Erro ao gerar código' },
-        { status: 500 }
-      )
+        { error: "Servico temporariamente indisponivel" },
+        { status: 503 }
+      );
     }
 
-    const code = codeData
+    const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
+      auth: { autoRefreshToken: false, persistSession: false },
+    });
 
-    // Insere código na tabela
-    const { data: insertedCode, error: insertError } = await supabase
-      .from('livro_codes')
+    const body = await request.json();
+    const { email, notes } = body;
+
+    // Gerar codigo unico (tentar ate 10 vezes para evitar duplicados)
+    let code = "";
+    for (let attempt = 0; attempt < 10; attempt++) {
+      const candidate = generateCode();
+      const { data: existing } = await supabaseAdmin
+        .from("livro_codes")
+        .select("id")
+        .eq("code", candidate)
+        .maybeSingle();
+
+      if (!existing) {
+        code = candidate;
+        break;
+      }
+    }
+
+    if (!code) {
+      return NextResponse.json(
+        { error: "Erro ao gerar codigo unico. Tenta novamente." },
+        { status: 500 }
+      );
+    }
+
+    // Inserir codigo na tabela (service role bypassa RLS)
+    const { data: insertedCode, error: insertError } = await supabaseAdmin
+      .from("livro_codes")
       .insert({
         code,
         email: email || null,
-        status: 'unused',
-        created_by: 'admin',
+        status: "unused",
+        created_by: "admin",
         notes: notes || null,
       })
       .select()
-      .single()
+      .single();
 
     if (insertError) {
-      console.error('Erro ao inserir código:', insertError)
+      console.error("Erro ao inserir codigo:", insertError);
       return NextResponse.json(
-        { error: 'Erro ao salvar código' },
+        { error: `Erro ao salvar codigo: ${insertError.message}` },
         { status: 500 }
-      )
+      );
     }
 
-    // TODO: Enviar email com código (se email fornecido)
-    if (email) {
-      // Implementar envio de email aqui
-      // await sendCodeEmail(email, code)
-    }
+    // Notificar
+    await notifyAdmin({
+      type: "general",
+      title: "Codigo gerado",
+      message: `Codigo ${code} gerado${email ? ` para ${email}` : ""}.`,
+      details: {
+        Codigo: code,
+        Email: email || "—",
+        Notas: notes || "—",
+      },
+    });
 
     return NextResponse.json({
       success: true,
       code: insertedCode,
-    })
+    });
   } catch (error) {
-    console.error('Erro ao gerar código:', error)
+    console.error("Erro ao gerar codigo:", error);
     return NextResponse.json(
-      { error: 'Erro interno do servidor' },
+      {
+        error: `Erro ao gerar codigo: ${error instanceof Error ? error.message : "Erro desconhecido"}`,
+      },
       { status: 500 }
-    )
+    );
   }
 }

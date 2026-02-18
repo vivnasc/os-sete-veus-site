@@ -29,7 +29,7 @@ export default function ReferralPrompt({ minChapters = 3, chaptersCompleted }: P
     if (!userId) return;
 
     const code = `ECOS-${userId.substring(0, 8).toUpperCase()}`;
-    const url = `https://seteecos.com/recursos/teste?ref=${code}`;
+    const url = `https://seteveus.space/recursos/teste?ref=${code}`;
     setReferralCode(code);
     setShareUrl(url);
   }, []);

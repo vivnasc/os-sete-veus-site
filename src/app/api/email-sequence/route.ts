@@ -27,7 +27,7 @@ Sei que muitas promessas são feitas online. Esta não é uma delas. Não vou pr
 
 Aqui está o teu primeiro recurso:
 → Diário de Reflexão de 7 Dias (PDF gratuito)
-[LINK: seteecos.com/recursos]
+[LINK: seteveus.space/recursos]
 
 Sem pressa. Sem fórmulas. Ao teu ritmo.
 
@@ -47,7 +47,7 @@ Foi esse momento que me levou a escrever Os Sete Véus.
 
 Se te reconheces nestas palavras, talvez queiras experimentar o teste gratuito:
 → Descobre qual espelho te esconde (3 minutos)
-[LINK: seteecos.com/recursos/teste]
+[LINK: seteveus.space/recursos/teste]
 
 Sem compromisso. É teu.
 
@@ -70,7 +70,7 @@ Isto não é um livro normal. É uma experiência integrada — com reader no si
 
 Se ainda não fizeste o teste gratuito:
 → Qual espelho te esconde?
-[LINK: seteecos.com/recursos/teste]
+[LINK: seteveus.space/recursos/teste]
 
 Vivianne`,
   },
@@ -84,7 +84,7 @@ Vivianne`,
 Não é sobre estar em crise. É sobre aquele momento subtil em que percebes que "estar bem" não é o mesmo que "viver bem".
 
 → Lê o artigo completo
-[LINK: seteecos.com/artigos]
+[LINK: seteveus.space/artigos]
 
 Se te ressoa, há mais artigos sobre autenticidade, escolha e liberdade interior.
 
@@ -106,7 +106,7 @@ Não é um PDF. É uma experiência de leitura integrada:
 • O Teu Espelho — as tuas palavras reunidas
 
 → Conhece a experiência completa ($19 USD)
-[LINK: seteecos.com/livro-fisico]
+[LINK: seteveus.space/livro-fisico]
 
 Sem pressa. O livro espera por ti.
 
@@ -123,7 +123,7 @@ Não acredito em pressão. Acredito em reconhecimento. Se estas palavras são pa
 
 Para quem quer começar:
 → O Espelho da Ilusão — experiência digital ($19 USD)
-[LINK: seteecos.com/livro-fisico]
+[LINK: seteveus.space/livro-fisico]
 
 → Livro físico — 1.500 MT (Moçambique)
 [LINK: WhatsApp]

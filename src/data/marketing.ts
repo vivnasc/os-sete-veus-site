@@ -122,7 +122,7 @@ const ilusaoSocial: SocialPost[] = [
   },
   {
     content:
-      "Não é um livro.\nÉ uma experiência.\n\n7 capítulos de ficção\n+ respiração guiada\n+ diário de reflexão\n+ o teu Espelho pessoal\n\nLês. Respiras. Escreves. E no final, vês-te.\n\n→ seteecos.com/experiencias",
+      "Não é um livro.\nÉ uma experiência.\n\n7 capítulos de ficção\n+ respiração guiada\n+ diário de reflexão\n+ o teu Espelho pessoal\n\nLês. Respiras. Escreves. E no final, vês-te.\n\n→ seteveus.space/experiencias",
     hashtags: [...CORE_HASHTAGS, "#ExperiênciaImersiva"],
     format: "carousel",
     veilSlug: "veu-da-ilusao",
@@ -193,7 +193,7 @@ const medoSocial: SocialPost[] = [
   },
   {
     content:
-      "\"O primeiro passo não precisa de ser grande.\nPrecisa apenas de ser teu.\"\n\n— O Espelho do Medo, em breve\n\n→ seteecos.com/experiencias",
+      "\"O primeiro passo não precisa de ser grande.\nPrecisa apenas de ser teu.\"\n\n— O Espelho do Medo, em breve\n\n→ seteveus.space/experiencias",
     hashtags: [...CORE_HASHTAGS, "#EspelhoDoMedo"],
     format: "single",
     veilSlug: "veu-do-medo",
@@ -273,21 +273,21 @@ function generateFutureVeilMarketing(
     ],
     socialPosts: [
       {
-        content: `"${tagline}"\n\n${title} chega em ${launchMonth}.\n→ Junta-te à waitlist: seteecos.com/experiencias`,
+        content: `"${tagline}"\n\n${title} chega em ${launchMonth}.\n→ Junta-te à waitlist: seteveus.space/experiencias`,
         hashtags: [...CORE_HASHTAGS],
         format: "single",
         veilSlug: slug,
         scheduledWeek: -2,
       },
       {
-        content: `${subtitle}\n\nEsta é a próxima experiência dos Sete Véus.\n7 capítulos. Respiração guiada. Diário de reflexão. O Teu Espelho.\n\n→ Descobre o teu espelho: seteecos.com/recursos/teste`,
+        content: `${subtitle}\n\nEsta é a próxima experiência dos Sete Véus.\n7 capítulos. Respiração guiada. Diário de reflexão. O Teu Espelho.\n\n→ Descobre o teu espelho: seteveus.space/recursos/teste`,
         hashtags: [...CORE_HASHTAGS],
         format: "carousel",
         veilSlug: slug,
         scheduledWeek: -1,
       },
       {
-        content: `${title} está disponível.\n\nSe o quiz te indicou este espelho — é porque algo em ti já sabe.\n\n→ seteecos.com/experiencias`,
+        content: `${title} está disponível.\n\nSe o quiz te indicou este espelho — é porque algo em ti já sabe.\n\n→ seteveus.space/experiencias`,
         hashtags: [...CORE_HASHTAGS],
         format: "single",
         veilSlug: slug,

@@ -46,7 +46,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       ok: true,
       referralCode: code,
-      shareUrl: `https://seteecos.com/recursos/teste?ref=${code}`,
+      shareUrl: `https://seteveus.space/recursos/teste?ref=${code}`,
     });
   } catch {
     return NextResponse.json({ error: "Erro interno" }, { status: 500 });

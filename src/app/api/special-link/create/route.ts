@@ -82,7 +82,7 @@ export async function POST(request: Request) {
 
     // Gerar URL completa
     const baseUrl =
-      process.env.NEXT_PUBLIC_APP_URL || "https://seteecos.com";
+      process.env.NEXT_PUBLIC_APP_URL || "https://seteveus.space";
     const linkUrl = `${baseUrl}/registar-livro?code=${code}`;
 
     return NextResponse.json({

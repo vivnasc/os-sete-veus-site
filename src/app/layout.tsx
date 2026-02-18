@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     "meditação guiada",
     "Moçambique",
   ],
-  metadataBase: new URL("https://seteecos.com"),
+  metadataBase: new URL("https://seteveus.space"),
   icons: {
     icon: [
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
@@ -91,7 +91,7 @@ export default function RootLayout({
               "@type": "WebSite",
               name: "Sete Ecos",
               alternateName: "Os Sete Véus",
-              url: "https://seteecos.com",
+              url: "https://seteveus.space",
               description:
                 "Plataforma de autoconhecimento com leitura integrada, diário de reflexão, práticas guiadas e recursos gratuitos. Sete histórias que te devolvem a ti mesma.",
               author: {
@@ -105,17 +105,17 @@ export default function RootLayout({
                 name: "Sete Ecos",
                 logo: {
                   "@type": "ImageObject",
-                  url: "https://seteecos.com/images/logo-espiral.png.jpeg",
+                  url: "https://seteveus.space/images/logo-espiral.png.jpeg",
                 },
               },
               potentialAction: [
                 {
                   "@type": "ReadAction",
-                  target: "https://seteecos.com/ecossistema",
+                  target: "https://seteveus.space/ecossistema",
                 },
                 {
                   "@type": "SearchAction",
-                  target: "https://seteecos.com/recursos",
+                  target: "https://seteveus.space/recursos",
                 },
               ],
               offers: {
@@ -123,7 +123,7 @@ export default function RootLayout({
                 price: "23",
                 priceCurrency: "USD",
                 availability: "https://schema.org/InStock",
-                url: "https://seteecos.com/livro-fisico",
+                url: "https://seteveus.space/livro-fisico",
               },
             }),
           }}

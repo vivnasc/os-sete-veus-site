@@ -98,7 +98,7 @@ Substitui pelos teus dados reais.
 
 ### Como Admin (viv.saraiva@gmail.com)
 
-1. Vai a: https://seteecos.com/admin
+1. Vai a: https://seteveus.space/admin
 2. Faz login com: `viv.saraiva@gmail.com`
 3. Verás o painel admin
 
@@ -115,7 +115,7 @@ Substitui pelos teus dados reais.
 
 ### Cliente Usa o Link
 
-1. Cliente abre o link: `https://seteecos.com/registar-livro?code=xxxxx`
+1. Cliente abre o link: `https://seteveus.space/registar-livro?code=xxxxx`
 2. Insere o email
 3. Recebe magic link no email
 4. Clica no magic link
@@ -123,7 +123,7 @@ Substitui pelos teus dados reais.
 
 ### Compra da Coleção
 
-1. Cliente vai a: https://seteecos.com/comprar-colecao
+1. Cliente vai a: https://seteveus.space/comprar-colecao
 2. Insere email
 3. Escolhe método de pagamento:
    - **PayPal** (em desenvolvimento)

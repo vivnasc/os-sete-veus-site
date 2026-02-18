@@ -176,7 +176,7 @@ export default function QuoteShareCard({ texto, veuNumero, fonte, contexto, onCl
               className="mt-2 font-sans text-[0.55rem] tracking-[0.15em]"
               style={{ color: color + "90" }}
             >
-              seteecos.com
+              seteveus.space
             </p>
           </div>
         </div>

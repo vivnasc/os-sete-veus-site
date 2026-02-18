@@ -21,14 +21,14 @@ export default function ShareCard({
   const [copied, setCopied] = useState(false);
 
   async function handleShare() {
-    const text = `Completei ${veilTitle} — ${chaptersRead} capítulos, ${reflectionsWritten} reflexões, ${itemsCompleted} passos. Uma experiência de Os Sete Véus.\n\nDescobre o teu véu: seteecos.com/recursos/teste`;
+    const text = `Completei ${veilTitle} — ${chaptersRead} capítulos, ${reflectionsWritten} reflexões, ${itemsCompleted} passos. Uma experiência de Os Sete Véus.\n\nDescobre o teu véu: seteveus.space/recursos/teste`;
 
     if (navigator.share) {
       try {
         await navigator.share({
           title: `Completei ${veilTitle}`,
           text,
-          url: "https://seteecos.com/recursos/teste",
+          url: "https://seteveus.space/recursos/teste",
         });
         return;
       } catch {
@@ -91,7 +91,7 @@ export default function ShareCard({
           </p>
 
           <p className="mt-4 font-sans text-[0.6rem] tracking-wider text-brown-500">
-            seteecos.com/recursos/teste
+            seteveus.space/recursos/teste
           </p>
         </div>
       </div>
