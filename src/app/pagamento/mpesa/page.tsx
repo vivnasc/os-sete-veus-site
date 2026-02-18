@@ -11,6 +11,8 @@ function MpesaContent() {
   const router = useRouter();
 
   const [paymentId, setPaymentId] = useState<string | null>(null);
+  const [displayAmount, setDisplayAmount] = useState("1.885");
+  const [productName, setProductName] = useState("");
   const [mpesaReference, setMpesaReference] = useState("");
   const [notes, setNotes] = useState("");
   const [loading, setLoading] = useState(false);
@@ -20,10 +22,21 @@ function MpesaContent() {
   useEffect(() => {
     const id = searchParams.get("payment_id");
     if (!id) {
-      router.push("/comprar-colecao");
+      router.push("/comprar/espelhos");
       return;
     }
     setPaymentId(id);
+
+    // Montante dinâmico passado pela página de compra
+    const amount = searchParams.get("amount");
+    if (amount) {
+      setDisplayAmount(Number(amount).toLocaleString("pt-MZ"));
+    }
+
+    const product = searchParams.get("product");
+    if (product) {
+      setProductName(product);
+    }
   }, [searchParams, router]);
 
   async function handleSubmit(e: React.FormEvent) {
@@ -106,6 +119,11 @@ function MpesaContent() {
         <h1 className="text-center font-serif text-3xl text-brown-900">
           Pagamento via MPesa
         </h1>
+        {productName && (
+          <p className="mt-2 text-center font-sans text-sm text-brown-500">
+            {productName}
+          </p>
+        )}
 
         {/* MPesa Instructions */}
         <div className="mt-8 rounded-xl border-2 border-sage/20 bg-white p-8">
@@ -117,7 +135,7 @@ function MpesaContent() {
             <div>
               <p className="text-xs text-brown-500">Valor a pagar</p>
               <p className="font-sans text-2xl font-bold text-sage">
-                2.500 MZN
+                {displayAmount} MZN
               </p>
             </div>
 
@@ -142,7 +160,7 @@ function MpesaContent() {
                 <li className="flex gap-2">
                   <span className="font-medium">2.</span>
                   <span>
-                    Escolhe "Enviar Dinheiro"
+                    Escolhe &quot;Enviar Dinheiro&quot;
                   </span>
                 </li>
                 <li className="flex gap-2">
@@ -154,7 +172,7 @@ function MpesaContent() {
                 <li className="flex gap-2">
                   <span className="font-medium">4.</span>
                   <span>
-                    Insere o valor: <strong>2.500 MZN</strong>
+                    Insere o valor: <strong>{displayAmount} MZN</strong>
                   </span>
                 </li>
                 <li className="flex gap-2">
