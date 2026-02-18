@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { nosCollection, NOS_PRICING } from "@/data/nos-collection";
 
 export const metadata: Metadata = {
@@ -69,23 +70,15 @@ export default function ColeccaoNosPage() {
         >
           <div className="mx-auto max-w-5xl">
             <div className={`items-center gap-10 md:flex ${i % 2 !== 0 ? "md:flex-row-reverse" : ""}`}>
-              {/* Color block — visual identity of the Nó */}
+              {/* Cover image */}
               <div className="shrink-0 text-center">
-                <div
-                  className="mx-auto flex h-[360px] w-[240px] flex-col items-center justify-center rounded-lg shadow-xl"
-                  style={{ backgroundColor: no.colorBg }}
-                >
-                  <p className="font-sans text-[0.6rem] uppercase tracking-[0.3em]" style={{ color: no.color }}>
-                    Nó {no.number} de 7
-                  </p>
-                  <p className="mt-3 px-6 text-center font-serif text-2xl leading-snug" style={{ color: no.color }}>
-                    {no.title}
-                  </p>
-                  <div className="mt-4 h-px w-12" style={{ backgroundColor: no.color, opacity: 0.3 }} />
-                  <p className="mt-4 px-6 text-center font-serif text-sm italic" style={{ color: no.color, opacity: 0.7 }}>
-                    {no.characters}
-                  </p>
-                </div>
+                <Image
+                  src={no.image}
+                  alt={no.title}
+                  width={240}
+                  height={360}
+                  className="mx-auto rounded-lg shadow-xl"
+                />
               </div>
               <div className="mt-8 flex-1 md:mt-0">
                 <div className="flex items-center gap-3">

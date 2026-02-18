@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { chapters, bookMeta } from "@/data/no-heranca";
 import { getNosBook } from "@/data/nos-collection";
 import { useNosGate } from "@/hooks/useNosGate";
+import Image from "next/image";
 import Link from "next/link";
 
 const nosMeta = getNosBook("no-da-heranca");
@@ -105,8 +106,14 @@ export default function NosLeituraPage() {
             <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-[#7a8c6e]">
               &#10003; Espelho da Ilusão — Completo
             </p>
-            <div className="mx-auto mt-6 flex h-16 w-16 items-center justify-center rounded-full bg-[#c9a87c]/15">
-              <span className="font-serif text-2xl text-[#c9a87c]">&#8734;</span>
+            <div className="mx-auto mt-6">
+              <Image
+                src={nosBookMeta.image}
+                alt={nosBookMeta.title}
+                width={140}
+                height={210}
+                className="mx-auto rounded-lg shadow-xl"
+              />
             </div>
             <h1 className="mt-4 font-serif text-3xl text-brown-900">{nosBookMeta.title}</h1>
             <p className="mt-2 font-serif text-base italic text-brown-500">
@@ -151,6 +158,17 @@ export default function NosLeituraPage() {
           <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-[#c9a87c]">
             Colecção Nós · Livro 1
           </p>
+          {nosMeta && (
+            <div className="mt-4">
+              <Image
+                src={nosMeta.image}
+                alt={nosMeta.title}
+                width={160}
+                height={240}
+                className="mx-auto rounded-lg shadow-xl"
+              />
+            </div>
+          )}
           <h1 className="mt-3 font-serif text-4xl text-brown-900">{bookMeta.title}</h1>
           <p className="mt-2 font-serif text-lg italic text-brown-500">{bookMeta.subtitle}</p>
           {nosMeta && (

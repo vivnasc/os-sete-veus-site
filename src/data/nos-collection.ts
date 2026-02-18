@@ -23,6 +23,7 @@ export type NosBook = {
   characters: string; // personagens do Nó (ex: "Sara + Helena (mãe)")
   espelhoSlug: string; // liga ao Espelho correspondente
   description: string;
+  image: string; // caminho da capa em /public/images/
   color: string;
   colorBg: string;
   status: "available" | "coming_soon";
@@ -47,6 +48,7 @@ const _nosCollection: NosBook[] = [
     espelhoSlug: "veu-da-ilusao",
     description:
       "Sara vai à casa de Helena. Não para visitar — para perguntar. O que a mãe viu durante anos e nunca disse? O que se herda sem inventário? Este nó puxa o fio entre mãe e filha.",
+    image: "/images/capa-no-heran\u00e7a2.png",
     color: "#c9956a",
     colorBg: "#2e1a0e",
     status: "available",
@@ -65,6 +67,7 @@ const _nosCollection: NosBook[] = [
     espelhoSlug: "veu-do-medo",
     description:
       "Rui e Ana amam-se. Mas há algo entre eles que nenhum dos dois nomeia. O medo transformou-se em silêncio — e o silêncio, em distância. Este nó puxa o fio entre quem ama e quem cala.",
+    image: "/images/capa-no-silencio2.png",
     color: "#6a9dbe",
     colorBg: "#142838",
     status: "coming_soon",
@@ -83,6 +86,7 @@ const _nosCollection: NosBook[] = [
     espelhoSlug: "veu-da-culpa",
     description:
       "Filipe e Luísa amam-se — mas entre eles há uma dívida invisível. Ele dá tudo, ela sente que nunca é suficiente. A culpa disfarçou-se de entrega. Este nó puxa o fio entre sacrificar-se e amar.",
+    image: "/images/capa-no-sacrifico2.png",
     color: "#d06a6a",
     colorBg: "#2e1015",
     status: "coming_soon",
@@ -101,6 +105,7 @@ const _nosCollection: NosBook[] = [
     espelhoSlug: "veu-da-identidade",
     description:
       "Vítor e Mariana cruzaram-se quando já não tinham máscaras para vestir. Ele fingia força, ela fingia indiferença. A vergonha de ser visto como se é — esse é o nó. Este nó puxa o fio entre a identidade e a nudez.",
+    image: "/images/capa-no-vergonha2.png",
     color: "#aa7abb",
     colorBg: "#22102e",
     status: "coming_soon",
@@ -119,6 +124,7 @@ const _nosCollection: NosBook[] = [
     espelhoSlug: "veu-do-controlo",
     description:
       "Isabel controlava tudo — os horários, as decisões, o silêncio. Pedro foi ficando cada vez mais longe. Não por falta de amor, mas por excesso de rédea. Este nó puxa o fio entre controlar e perder.",
+    image: "/images/capa-no-solidao2.png",
     color: "#6a9e9e",
     colorBg: "#10222a",
     status: "coming_soon",
@@ -137,6 +143,7 @@ const _nosCollection: NosBook[] = [
     espelhoSlug: "veu-do-desejo",
     description:
       "Lena e Sofia foram inseparáveis — até que o desejo de uma esvaziou o que a outra tinha para dar. Não foi traição. Foi fome disfarçada de presença. Este nó puxa o fio entre desejar e consumir.",
+    image: "/images/capa-no-vazio2.png",
     color: "#c4905a",
     colorBg: "#261808",
     status: "coming_soon",
@@ -155,6 +162,7 @@ const _nosCollection: NosBook[] = [
     espelhoSlug: "veu-da-separacao",
     description:
       "Helena T. e Miguel C. separaram-se — não por desamor, mas por excesso de distância dentro da mesma casa. Quando saíram, descobriram que pertencer não é ficar. É escolher voltar. Este nó puxa o fio entre separar-se e reencontrar-se.",
+    image: "/images/capa-no-perten\u00e7a2.png",
     color: "#5aaa7a",
     colorBg: "#0e2216",
     status: "coming_soon",

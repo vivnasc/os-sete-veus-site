@@ -7,6 +7,7 @@ import { loadEspelho, isEspelhoRegistered, espelhoProgressKey } from "@/lib/cont
 import { getExperience } from "@/data/experiences";
 import { getNosForEspelho } from "@/data/nos-collection";
 import { supabase } from "@/lib/supabase";
+import Image from "next/image";
 import Link from "next/link";
 import type { ContentModule } from "@/lib/content-registry";
 
@@ -246,9 +247,13 @@ export default function EspelhoHubPage({ params }: { params: Promise<{ veu: stri
               </p>
             </div>
             <div className="mt-5 flex items-start gap-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#c9a87c]/15">
-                <span className="font-serif text-xl text-[#c9a87c]">&#8734;</span>
-              </div>
+              <Image
+                src={nosBook.image}
+                alt={nosBook.title}
+                width={48}
+                height={72}
+                className="shrink-0 rounded shadow-md"
+              />
               <div className="flex-1">
                 <p className="font-serif text-lg text-brown-800">{nosBook.title}</p>
                 <p className="mt-0.5 font-sans text-xs text-[#c9a87c]">{nosBook.characters}</p>

@@ -83,15 +83,24 @@ export default function OsSeteVeusPage() {
                   <p className="mt-4 leading-relaxed text-brown-700">{exp.description}</p>
                   {/* Nó paired */}
                   {no && (
-                    <div className="mt-5 rounded-lg border border-[#c9a87c]/20 bg-[#c9a87c]/5 px-4 py-3">
-                      <p className="font-sans text-[0.55rem] uppercase tracking-[0.2em] text-[#c9a87c]">
-                        Nó correspondente · $12
-                      </p>
-                      <p className="mt-0.5 font-serif text-sm text-brown-700">{no.title}</p>
-                      <p className="text-xs italic text-brown-400">{no.subtitle}</p>
-                      {no.status !== "available" && (
-                        <p className="mt-1 text-[0.65rem] text-brown-300">Em preparação</p>
-                      )}
+                    <div className="mt-5 flex items-center gap-3 rounded-lg border border-[#c9a87c]/20 bg-[#c9a87c]/5 px-4 py-3">
+                      <Image
+                        src={no.image}
+                        alt={no.title}
+                        width={40}
+                        height={60}
+                        className="shrink-0 rounded shadow-sm"
+                      />
+                      <div>
+                        <p className="font-sans text-[0.55rem] uppercase tracking-[0.2em] text-[#c9a87c]">
+                          Nó correspondente · $12
+                        </p>
+                        <p className="mt-0.5 font-serif text-sm text-brown-700">{no.title}</p>
+                        <p className="text-xs italic text-brown-400">{no.subtitle}</p>
+                        {no.status !== "available" && (
+                          <p className="mt-1 text-[0.65rem] text-brown-300">Em preparação</p>
+                        )}
+                      </div>
                     </div>
                   )}
 

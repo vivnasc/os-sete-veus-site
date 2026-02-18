@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/components/AuthProvider'
 import { experiences, PRICING } from '@/data/experiences'
+import Image from 'next/image'
 import { nosCollection, NOS_PRICING } from '@/data/nos-collection'
 import type { Experience } from '@/data/experiences'
 
@@ -169,14 +170,23 @@ export default function ComprarPage() {
 
                   {/* Nó correspondente */}
                   {no && (
-                    <div className="mt-5 rounded-lg border border-[#c9956a]/20 bg-[#c9956a]/5 px-4 py-3">
-                      <p className="font-sans text-[0.55rem] uppercase tracking-[0.2em] text-[#c9956a]">
-                        Nó correspondente · {moeda === 'MZN' ? `${NOS_PRICING.individual.mt} MZN` : `$${NOS_PRICING.individual.usd}`}
-                      </p>
-                      <p className="mt-0.5 font-serif text-sm text-brown-700">{no.title}</p>
-                      <p className="text-xs italic text-brown-400">
-                        Disponível após completar o Espelho
-                      </p>
+                    <div className="mt-5 flex items-center gap-3 rounded-lg border border-[#c9956a]/20 bg-[#c9956a]/5 px-4 py-3">
+                      <Image
+                        src={no.image}
+                        alt={no.title}
+                        width={36}
+                        height={54}
+                        className="shrink-0 rounded shadow-sm"
+                      />
+                      <div>
+                        <p className="font-sans text-[0.55rem] uppercase tracking-[0.2em] text-[#c9956a]">
+                          Nó correspondente · {moeda === 'MZN' ? `${NOS_PRICING.individual.mt} MZN` : `$${NOS_PRICING.individual.usd}`}
+                        </p>
+                        <p className="mt-0.5 font-serif text-sm text-brown-700">{no.title}</p>
+                        <p className="text-xs italic text-brown-400">
+                          Disponível após completar o Espelho
+                        </p>
+                      </div>
                     </div>
                   )}
 
