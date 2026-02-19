@@ -1,8 +1,5 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
-
-const supabaseUrl = "https://tdytdamtfillqyklgrmb.supabase.co";
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+import { createSupabaseAdminClient } from "@/lib/supabase-server";
 
 export async function POST(request: Request) {
   try {
@@ -12,13 +9,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Parâmetros em falta" }, { status: 400 });
     }
 
-    if (!supabaseServiceKey) {
+    const supabaseAdmin = createSupabaseAdminClient();
+    if (!supabaseAdmin) {
       return NextResponse.json({ error: "Serviço indisponível" }, { status: 503 });
     }
-
-    const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
-      auth: { autoRefreshToken: false, persistSession: false },
-    });
 
     // Verify the user's token
     const { data: { user }, error: authError } = await supabaseAdmin.auth.getUser(token);

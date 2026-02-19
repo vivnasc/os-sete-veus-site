@@ -1,11 +1,9 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { createSupabaseAdminClient } from "@/lib/supabase-server";
 import { experiences } from "@/data/experiences";
 import { nosCollection } from "@/data/nos-collection";
 
 const CRON_SECRET = process.env.CRON_SECRET || "";
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 
 /**
  * GET /api/cron/publish
@@ -71,9 +69,9 @@ export async function GET(request: Request) {
   });
 
   // Registar publicações no Supabase (se disponível)
-  if (supabaseServiceKey && publishingToday.length > 0) {
+  const supabaseAdmin = createSupabaseAdminClient();
+  if (supabaseAdmin && publishingToday.length > 0) {
     try {
-      const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey);
       for (const espelho of publishingToday) {
         await supabaseAdmin.from("publish_log").insert({
           type: "espelho_published",

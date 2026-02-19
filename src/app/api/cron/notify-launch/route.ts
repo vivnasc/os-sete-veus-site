@@ -1,12 +1,10 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { createSupabaseAdminClient } from "@/lib/supabase-server";
 import { experiences } from "@/data/experiences";
 import { EARLY_ACCESS_DAYS } from "@/lib/publish";
 
 const CRON_SECRET = process.env.CRON_SECRET || "";
 const MAILERLITE_API_TOKEN = process.env.MAILERLITE_API_TOKEN || "";
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 
 type NotificationType = "early_access" | "public_launch";
 
@@ -27,14 +25,13 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
   }
 
-  if (!supabaseServiceKey) {
+  const supabaseAdmin = createSupabaseAdminClient();
+  if (!supabaseAdmin) {
     return NextResponse.json(
       { error: "SUPABASE_SERVICE_ROLE_KEY não configurada" },
       { status: 503 }
     );
   }
-
-  const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey);
   const now = new Date();
   const today = now.toISOString().split("T")[0];
   const notifications: Array<{ type: NotificationType; espelho: string; sent: number }> = [];

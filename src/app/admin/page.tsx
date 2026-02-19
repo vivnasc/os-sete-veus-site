@@ -200,6 +200,24 @@ export default function AdminPage() {
               icon="~"
             />
             <ActionCard
+              title="Codigos de Acesso"
+              description="Gerar e gerir codigos do livro"
+              href="/autora/codigos"
+              icon="🔑"
+            />
+            <ActionCard
+              title="Gerador Marketing"
+              description="Criar conteudo visual para redes"
+              href="/painel/marketing/gerador"
+              icon="🎨"
+            />
+            <ActionCard
+              title="Painel Marketing"
+              description="Calendario, conteudo e lancamentos"
+              href="/painel"
+              icon="📅"
+            />
+            <ActionCard
               title="Analytics"
               description="Métricas e estatísticas"
               href="/admin/analytics"
