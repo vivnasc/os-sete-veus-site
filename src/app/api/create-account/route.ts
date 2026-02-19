@@ -1,8 +1,5 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
-
-const supabaseUrl = "https://tdytdamtfillqyklgrmb.supabase.co";
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+import { createSupabaseAdminClient } from "@/lib/supabase-server";
 
 // Author emails get full access to all experiences
 const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
@@ -31,16 +28,13 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!supabaseServiceKey) {
+    const supabaseAdmin = createSupabaseAdminClient();
+    if (!supabaseAdmin) {
       return NextResponse.json(
         { error: "Serviço temporariamente indisponível" },
         { status: 503 }
       );
     }
-
-    const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
-      auth: { autoRefreshToken: false, persistSession: false },
-    });
 
     // Check if user already exists
     const { data: existingUsers } = await supabaseAdmin.auth.admin.listUsers();

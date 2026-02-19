@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server'
-import { createClient } from '@supabase/supabase-js'
+import { createSupabaseAdminClient } from '@/lib/supabase-server'
 
-const supabaseUrl = 'https://tdytdamtfillqyklgrmb.supabase.co'
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || ''
 const ADMIN_SEED_KEY = process.env.ADMIN_SEED_KEY || 'seed-sete-veus-2025'
 
 // =====================================================
@@ -166,16 +164,13 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Chave inválida' }, { status: 403 })
     }
 
-    if (!supabaseServiceKey) {
+    const supabase = createSupabaseAdminClient()
+    if (!supabase) {
       return NextResponse.json(
         { error: 'SUPABASE_SERVICE_ROLE_KEY não configurada' },
         { status: 503 }
       )
     }
-
-    const supabase = createClient(supabaseUrl, supabaseServiceKey, {
-      auth: { autoRefreshToken: false, persistSession: false },
-    })
 
     // 1. Create ghost users for seed data
     // Menos users = mais realista para produto recém-lançado
@@ -326,13 +321,10 @@ export async function POST(req: Request) {
 
 // GET: Check seed status
 export async function GET() {
-  if (!supabaseServiceKey) {
+  const supabase = createSupabaseAdminClient()
+  if (!supabase) {
     return NextResponse.json({ error: 'Service key missing' }, { status: 503 })
   }
-
-  const supabase = createClient(supabaseUrl, supabaseServiceKey, {
-    auth: { autoRefreshToken: false, persistSession: false },
-  })
 
   const { count: ecosCount } = await supabase
     .from('ecos')

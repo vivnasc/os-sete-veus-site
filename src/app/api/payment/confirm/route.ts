@@ -1,9 +1,7 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { createSupabaseAdminClient } from "@/lib/supabase-server";
 import { cookies } from "next/headers";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 const ADMIN_EMAIL = "viv.saraiva@gmail.com";
 
 export async function POST(request: Request) {
@@ -21,7 +19,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Ação inválida" }, { status: 400 });
     }
 
-    if (!supabaseServiceKey) {
+    const supabaseAdmin = createSupabaseAdminClient();
+    if (!supabaseAdmin) {
       return NextResponse.json(
         { error: "Serviço temporariamente indisponível" },
         { status: 503 }
@@ -37,10 +36,6 @@ export async function POST(request: Request) {
     if (!accessToken) {
       return NextResponse.json({ error: "Não autenticado" }, { status: 401 });
     }
-
-    const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
-      auth: { autoRefreshToken: false, persistSession: false },
-    });
 
     // Verificar se é admin
     const { data: userData } = await supabaseAdmin.auth.getUser(accessToken);

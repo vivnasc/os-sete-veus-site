@@ -1,9 +1,6 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { createSupabaseAdminClient } from "@/lib/supabase-server";
 import { notifyCodeRedeemed } from "@/lib/notify-admin";
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 
 /**
  * POST /api/codes/redeem
@@ -25,16 +22,13 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!supabaseServiceKey) {
+    const supabaseAdmin = createSupabaseAdminClient();
+    if (!supabaseAdmin) {
       return NextResponse.json(
         { error: "Serviço temporariamente indisponível" },
         { status: 503 }
       );
     }
-
-    const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
-      auth: { autoRefreshToken: false, persistSession: false },
-    });
 
     // Buscar código
     const { data: codeData, error: codeError } = await supabaseAdmin
