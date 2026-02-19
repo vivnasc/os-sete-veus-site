@@ -16,39 +16,39 @@ const modulos = [
     numero: 2,
     nome: "O Espelho do Medo",
     desc: "Quando o medo decide por ti.",
-    color: "#7a8c6e",
-    disponivel: false,
-  },
-  {
-    slug: "veu-do-desejo",
-    numero: 3,
-    nome: "O Espelho do Desejo",
-    desc: "Quando desejas tudo menos o que precisas.",
-    color: "#b07a7a",
-    disponivel: false,
-  },
-  {
-    slug: "veu-do-controlo",
-    numero: 4,
-    nome: "O Espelho do Controlo",
-    desc: "Quando segurar é a única forma que conheces.",
-    color: "#8a7b6b",
+    color: "#8b9b8e",
     disponivel: false,
   },
   {
     slug: "veu-da-culpa",
-    numero: 5,
+    numero: 3,
     nome: "O Espelho da Culpa",
     desc: "Quando te castigas por querer mais.",
-    color: "#6e8c7a",
+    color: "#b07a7a",
     disponivel: false,
   },
   {
     slug: "veu-da-identidade",
-    numero: 6,
+    numero: 4,
     nome: "O Espelho da Identidade",
     desc: "Quando já não sabes quem és sem os outros.",
-    color: "#b8956c",
+    color: "#ab9375",
+    disponivel: false,
+  },
+  {
+    slug: "veu-do-controlo",
+    numero: 5,
+    nome: "O Espelho do Controlo",
+    desc: "Quando segurar é a única forma que conheces.",
+    color: "#8aaaca",
+    disponivel: false,
+  },
+  {
+    slug: "veu-do-desejo",
+    numero: 6,
+    nome: "O Espelho do Desejo",
+    desc: "Quando desejas tudo menos o que precisas.",
+    color: "#c08aaa",
     disponivel: false,
   },
   {
@@ -56,7 +56,7 @@ const modulos = [
     numero: 7,
     nome: "O Espelho da Separação",
     desc: "Quando te afastas de ti mesma para pertencer.",
-    color: "#8a7b9c",
+    color: "#baaacc",
     disponivel: false,
   },
 ];
@@ -97,7 +97,7 @@ export default function ExperienciaPage() {
               </div>
               {mod.disponivel ? (
                 <Link
-                  href="/membro/leitura"
+                  href={`/membro/espelhos/${mod.slug}`}
                   className="mt-1 shrink-0 rounded-full bg-sage px-4 py-1.5 font-sans text-[0.6rem] uppercase tracking-wider text-white hover:bg-sage-dark"
                 >
                   Ler
@@ -114,7 +114,7 @@ export default function ExperienciaPage() {
         {/* CTA */}
         <div className="mt-10 text-center">
           <Link
-            href="/membro/leitura"
+            href="/membro/espelhos/veu-da-ilusao"
             className="inline-block rounded-full bg-[#c9b896] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white hover:bg-[#b8a785]"
           >
             Continuar a leitura
