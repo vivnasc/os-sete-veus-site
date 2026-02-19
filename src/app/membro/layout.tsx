@@ -71,14 +71,6 @@ export default function MembroLayout({ children }: { children: React.ReactNode }
             ))}
           </nav>
           <div className="flex items-center gap-4">
-            {isAuthor && (
-              <Link
-                href="/admin"
-                className="font-sans text-[0.7rem] uppercase tracking-[0.1em] text-sage transition-colors hover:text-sage-dark"
-              >
-                Painel Autora
-              </Link>
-            )}
             <button
               onClick={async () => {
                 await signOut();

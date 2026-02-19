@@ -1,209 +1,225 @@
-import { createSupabaseServerClient } from '@/lib/supabase-server'
-import { NextResponse } from 'next/server'
+import { NextResponse } from "next/server";
+import { createSupabaseServerClient, createSupabaseAdminClient } from "@/lib/supabase-server";
 
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
+
+const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
+
+/**
+ * Gera codigo unico LIVRO-XXXXX (sem depender de RPC do Supabase)
+ */
+function generateCode(): string {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  let code = "LIVRO-";
+  for (let i = 0; i < 5; i++) {
+    code += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return code;
+}
+
+async function checkIsAdmin(supabase: Awaited<ReturnType<typeof createSupabaseServerClient>>) {
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session) return { session: null, isAdmin: false };
+
+  const isAdminEmail = ADMIN_EMAILS.includes(session.user.email || "");
+  if (isAdminEmail) return { session, isAdmin: true };
+
+  const { data: userRole } = await supabase
+    .from("user_roles")
+    .select("role")
+    .eq("user_id", session.user.id)
+    .single();
+
+  return { session, isAdmin: userRole?.role === "admin" };
+}
 
 /**
  * POST /api/codes/approve
- * Admin aprova pedido de código e gera código automaticamente
+ * Admin aprova pedido de codigo e gera codigo automaticamente
  */
 export async function POST(request: Request) {
   try {
-    const supabase = await createSupabaseServerClient()
-
-    // Verifica autenticação
-    const {
-      data: { session },
-    } = await supabase.auth.getSession()
+    const supabase = await createSupabaseServerClient();
+    const { session, isAdmin } = await checkIsAdmin(supabase);
 
     if (!session) {
-      return NextResponse.json({ error: 'Não autenticado' }, { status: 401 })
+      return NextResponse.json({ error: "Nao autenticado" }, { status: 401 });
+    }
+    if (!isAdmin) {
+      return NextResponse.json({ error: "Sem permissao" }, { status: 403 });
     }
 
-    // Verifica se é admin
-    const { data: userRole } = await supabase
-      .from('user_roles')
-      .select('role')
-      .eq('user_id', session.user.id)
-      .single()
-
-    if (!userRole || userRole.role !== 'admin') {
-      return NextResponse.json({ error: 'Sem permissão' }, { status: 403 })
-    }
-
-    // Pega dados do body
-    const body = await request.json()
-    const { requestId } = body
+    const body = await request.json();
+    const { requestId } = body;
 
     if (!requestId) {
       return NextResponse.json(
-        { error: 'Request ID não fornecido' },
+        { error: "Request ID nao fornecido" },
         { status: 400 }
-      )
+      );
     }
 
+    // Usar admin client para bypasaar RLS
+    const supabaseAdmin = createSupabaseAdminClient();
+    const db = supabaseAdmin || supabase;
+
     // Busca o pedido
-    const { data: requestData, error: requestError } = await supabase
-      .from('livro_code_requests')
-      .select('*')
-      .eq('id', requestId)
-      .single()
+    const { data: requestData, error: requestError } = await db
+      .from("livro_code_requests")
+      .select("*")
+      .eq("id", requestId)
+      .single();
 
     if (requestError || !requestData) {
       return NextResponse.json(
-        { error: 'Pedido não encontrado' },
+        { error: "Pedido nao encontrado" },
         { status: 404 }
-      )
+      );
     }
 
-    // Verifica se já foi aprovado
-    if (requestData.status === 'approved') {
+    if (requestData.status === "approved") {
       return NextResponse.json(
-        { error: 'Este pedido já foi aprovado' },
+        { error: "Este pedido ja foi aprovado" },
         { status: 400 }
-      )
+      );
     }
 
-    // Gera código único
-    const { data: codeData, error: codeError } = await supabase
-      .rpc('generate_unique_livro_code')
+    // Gerar codigo unico em JS (sem depender de RPC)
+    let code = "";
+    for (let attempt = 0; attempt < 10; attempt++) {
+      const candidate = generateCode();
+      const { data: existing } = await db
+        .from("livro_codes")
+        .select("id")
+        .eq("code", candidate)
+        .maybeSingle();
 
-    if (codeError) {
-      console.error('Erro ao gerar código:', codeError)
+      if (!existing) {
+        code = candidate;
+        break;
+      }
+    }
+
+    if (!code) {
       return NextResponse.json(
-        { error: 'Erro ao gerar código' },
+        { error: "Erro ao gerar codigo unico. Tenta novamente." },
         { status: 500 }
-      )
+      );
     }
 
-    const code = codeData
-
-    // Cria código na tabela
-    const { data: insertedCode, error: insertError } = await supabase
-      .from('livro_codes')
+    // Inserir codigo na tabela
+    const { data: insertedCode, error: insertError } = await db
+      .from("livro_codes")
       .insert({
         code,
         email: requestData.email,
-        status: 'unused',
-        created_by: 'admin',
+        status: "unused",
+        created_by: "admin",
         notes: `Gerado para pedido #${requestId} - ${requestData.full_name}`,
       })
       .select()
-      .single()
+      .single();
 
     if (insertError) {
-      console.error('Erro ao inserir código:', insertError)
+      console.error("Erro ao inserir codigo:", insertError);
       return NextResponse.json(
-        { error: 'Erro ao salvar código' },
+        { error: `Erro ao salvar codigo: ${insertError.message}` },
         { status: 500 }
-      )
+      );
     }
 
-    // Atualiza pedido como aprovado
-    const { error: updateError } = await supabase
-      .from('livro_code_requests')
+    // Atualizar pedido como aprovado
+    const { error: updateError } = await db
+      .from("livro_code_requests")
       .update({
-        status: 'approved',
+        status: "approved",
         generated_code_id: insertedCode.id,
         reviewed_at: new Date().toISOString(),
         reviewed_by: session.user.id,
       })
-      .eq('id', requestId)
+      .eq("id", requestId);
 
     if (updateError) {
-      console.error('Erro ao atualizar pedido:', updateError)
+      console.error("Erro ao atualizar pedido:", updateError);
       return NextResponse.json(
-        { error: 'Erro ao atualizar pedido' },
+        { error: "Erro ao atualizar pedido" },
         { status: 500 }
-      )
+      );
     }
-
-    // TODO: Enviar email com código ao cliente
-    // await sendCodeEmail(requestData.email, code, requestData.full_name)
 
     return NextResponse.json({
       success: true,
       code: insertedCode,
-      message: `Código ${code} gerado e enviado para ${requestData.email}`,
-    })
+      message: `Codigo ${code} gerado para ${requestData.email}`,
+    });
   } catch (error) {
-    console.error('Erro ao aprovar pedido:', error)
+    console.error("Erro ao aprovar pedido:", error);
     return NextResponse.json(
-      { error: 'Erro interno do servidor' },
+      { error: "Erro interno do servidor" },
       { status: 500 }
-    )
+    );
   }
 }
 
 /**
  * DELETE /api/codes/approve
- * Admin rejeita pedido de código
+ * Admin rejeita pedido de codigo
  */
 export async function DELETE(request: Request) {
   try {
-    const supabase = await createSupabaseServerClient()
-
-    // Verifica autenticação
-    const {
-      data: { session },
-    } = await supabase.auth.getSession()
+    const supabase = await createSupabaseServerClient();
+    const { session, isAdmin } = await checkIsAdmin(supabase);
 
     if (!session) {
-      return NextResponse.json({ error: 'Não autenticado' }, { status: 401 })
+      return NextResponse.json({ error: "Nao autenticado" }, { status: 401 });
+    }
+    if (!isAdmin) {
+      return NextResponse.json({ error: "Sem permissao" }, { status: 403 });
     }
 
-    // Verifica se é admin
-    const { data: userRole } = await supabase
-      .from('user_roles')
-      .select('role')
-      .eq('user_id', session.user.id)
-      .single()
-
-    if (!userRole || userRole.role !== 'admin') {
-      return NextResponse.json({ error: 'Sem permissão' }, { status: 403 })
-    }
-
-    // Pega dados do body
-    const body = await request.json()
-    const { requestId, reason } = body
+    const body = await request.json();
+    const { requestId, reason } = body;
 
     if (!requestId) {
       return NextResponse.json(
-        { error: 'Request ID não fornecido' },
+        { error: "Request ID nao fornecido" },
         { status: 400 }
-      )
+      );
     }
 
-    // Atualiza pedido como rejeitado
-    const { error: updateError } = await supabase
-      .from('livro_code_requests')
+    const supabaseAdmin = createSupabaseAdminClient();
+    const db = supabaseAdmin || supabase;
+
+    const { error: updateError } = await db
+      .from("livro_code_requests")
       .update({
-        status: 'rejected',
-        rejection_reason: reason || 'Pedido rejeitado pelo administrador',
+        status: "rejected",
+        rejection_reason: reason || "Pedido rejeitado pelo administrador",
         reviewed_at: new Date().toISOString(),
         reviewed_by: session.user.id,
       })
-      .eq('id', requestId)
+      .eq("id", requestId);
 
     if (updateError) {
-      console.error('Erro ao rejeitar pedido:', updateError)
+      console.error("Erro ao rejeitar pedido:", updateError);
       return NextResponse.json(
-        { error: 'Erro ao rejeitar pedido' },
+        { error: "Erro ao rejeitar pedido" },
         { status: 500 }
-      )
+      );
     }
-
-    // TODO: Enviar email ao cliente informando rejeição (opcional)
 
     return NextResponse.json({
       success: true,
-      message: 'Pedido rejeitado',
-    })
+      message: "Pedido rejeitado",
+    });
   } catch (error) {
-    console.error('Erro ao rejeitar pedido:', error)
+    console.error("Erro ao rejeitar pedido:", error);
     return NextResponse.json(
-      { error: 'Erro interno do servidor' },
+      { error: "Erro interno do servidor" },
       { status: 500 }
-    )
+    );
   }
 }

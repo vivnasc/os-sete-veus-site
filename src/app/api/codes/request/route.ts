@@ -1,8 +1,10 @@
-import { createSupabaseServerClient } from '@/lib/supabase-server'
+import { createSupabaseServerClient, createSupabaseAdminClient } from '@/lib/supabase-server'
 import { NextResponse } from 'next/server'
 import { notifyCodeRequest } from '@/lib/notify-admin'
 
 export const dynamic = 'force-dynamic'
+
+const ADMIN_EMAILS = ["viv.saraiva@gmail.com"]
 
 /**
  * POST /api/codes/request
@@ -104,20 +106,29 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: 'Não autenticado' }, { status: 401 })
     }
 
-    // Verifica se é admin
-    const { data: userRole } = await supabase
-      .from('user_roles')
-      .select('role')
-      .eq('user_id', session.user.id)
-      .single()
+    // Verifica se e admin (email directo ou role)
+    const isAdminEmail = ADMIN_EMAILS.includes(session.user.email || "")
+    let isAdmin = isAdminEmail
 
-    let query = supabase
+    if (!isAdmin) {
+      const { data: userRole } = await supabase
+        .from('user_roles')
+        .select('role')
+        .eq('user_id', session.user.id)
+        .single()
+      isAdmin = userRole?.role === 'admin'
+    }
+
+    // Admin usa admin client para ver tudo, user normal ve so os seus
+    const supabaseAdmin = isAdmin ? createSupabaseAdminClient() : null
+    const db = supabaseAdmin || supabase
+
+    let query = db
       .from('livro_code_requests')
       .select('*')
       .order('created_at', { ascending: false })
 
-    // Se não é admin, só vê os próprios pedidos
-    if (!userRole || userRole.role !== 'admin') {
+    if (!isAdmin) {
       query = query.eq('email', session.user.email)
     }
 
