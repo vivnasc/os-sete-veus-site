@@ -12,7 +12,7 @@
 import { useAuth } from "@/components/AuthProvider";
 
 export function useAccess() {
-  const { profile, user } = useAuth();
+  const { profile, user, loading } = useAuth();
 
   const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
   const hasBookAccess = profile?.has_book_access ?? false;
@@ -21,10 +21,9 @@ export function useAccess() {
   const isAdmin = profile?.is_admin || AUTHOR_EMAILS.includes(user?.email || "");
 
   // Early access: donors (jornada completa, pack3) ou flag explícita no perfil
-  // O campo has_early_access pode ser definido no Supabase profiles
   const hasEarlyAccess =
     isAdmin ||
-    (profile as Record<string, unknown>)?.has_early_access === true ||
+    profile?.has_early_access === true ||
     hasJourneyOrPackPurchase(profile?.purchased_products);
 
   // Admin tem acesso a tudo
@@ -37,7 +36,7 @@ export function useAccess() {
     hasEarlyAccess,
     hasAnyAccess,
     isAdmin,
-    isLoading: !user && !profile,
+    isLoading: loading,
     purchasedProducts: profile?.purchased_products ?? [],
   };
 }

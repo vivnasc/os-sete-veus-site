@@ -534,7 +534,7 @@ export default function MembroDashboard() {
         {/* Gentle quote */}
         <div className="mt-10 text-center">
           <p className="font-serif text-sm italic text-brown-400">
-            &ldquo;Porque perguntar, mesmo tarde, e o primeiro gesto de se escolher.&rdquo;
+            &ldquo;Porque perguntar, mesmo tarde, é o primeiro gesto de se escolher.&rdquo;
           </p>
         </div>
 

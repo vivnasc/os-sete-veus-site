@@ -79,7 +79,7 @@ export default function EspelhoHubPage({ params }: { params: Promise<{ veu: stri
   if (!isEspelhoRegistered(veu) || !content) {
     return (
       <section className="px-6 py-16 text-center">
-        <p className="text-brown-600">Espelho nao encontrado.</p>
+        <p className="text-brown-600">Espelho não encontrado.</p>
         <Link href="/membro" className="mt-4 inline-block text-sage hover:underline">
           Voltar
         </Link>
@@ -104,7 +104,7 @@ export default function EspelhoHubPage({ params }: { params: Promise<{ veu: stri
           href="/membro"
           className="inline-block font-sans text-[0.65rem] uppercase tracking-[0.15em] text-brown-400 hover:text-brown-600"
         >
-          &larr; A tua experiencia
+          &larr; A tua experiência
         </Link>
 
         {/* Book header */}
@@ -126,10 +126,10 @@ export default function EspelhoHubPage({ params }: { params: Promise<{ veu: stri
               {loading
                 ? "A carregar..."
                 : completedCount === 0
-                  ? "Pronta para comecar?"
+                  ? "Pronta para começar?"
                   : espelhoCompleto
                     ? "Leitura completa"
-                    : `${completedCount} de ${chapters.length} capitulos`}
+                    : `${completedCount} de ${chapters.length} capítulos`}
             </span>
             <span className="font-sans text-xs text-brown-400">
               {progressPercent}%
@@ -311,7 +311,7 @@ export default function EspelhoHubPage({ params }: { params: Promise<{ veu: stri
                 (e.target as HTMLElement).style.color = accentColor;
               }}
             >
-              O Teu Espelho — Ver as tuas reflexoes
+              O Teu Espelho — Ver as tuas reflexões
             </Link>
           </div>
         )}

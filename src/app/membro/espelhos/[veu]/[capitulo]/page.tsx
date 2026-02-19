@@ -137,9 +137,9 @@ export default function EspelhoChapterPage({
   if (!chapter) {
     return (
       <section className="px-6 py-16 text-center">
-        <p className="text-brown-600">Capitulo nao encontrado.</p>
+        <p className="text-brown-600">Capítulo não encontrado.</p>
         <Link href={`/membro/espelhos/${veu}`} className="mt-4 inline-block text-sage hover:underline">
-          Voltar a leitura
+          Voltar à leitura
         </Link>
       </section>
     );
@@ -156,7 +156,7 @@ export default function EspelhoChapterPage({
         />
       </div>
 
-      <ScrollProgress color={chapter.accentColor} />
+      <ScrollProgress />
 
       <article
         className="px-6 py-12 transition-colors duration-500"
@@ -172,7 +172,7 @@ export default function EspelhoChapterPage({
                 href={`/membro/espelhos/${veu}`}
                 className={`font-sans text-[0.65rem] uppercase tracking-[0.15em] transition-colors ${nightMode ? "text-brown-500 hover:text-brown-400" : "text-brown-400 hover:text-brown-600"}`}
               >
-                &larr; Todos os capitulos
+                &larr; Todos os capítulos
               </Link>
 
               <button
@@ -301,7 +301,7 @@ export default function EspelhoChapterPage({
                 href={`/membro/espelhos/${veu}`}
                 className="font-sans text-sm text-brown-400 hover:text-brown-700"
               >
-                &larr; Indice
+                &larr; Índice
               </Link>
             )}
 
@@ -332,7 +332,7 @@ export default function EspelhoChapterPage({
                 &#10023;
               </div>
               <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-[#c9a87c]">
-                {hasNosIncluded ? "Desbloqueado" : "Continuacao disponivel"}
+                {hasNosIncluded ? "Desbloqueado" : "Continuação disponível"}
               </p>
               <h3 className={`mt-2 font-serif text-xl ${nightMode ? "text-cream" : "text-brown-900"}`}>
                 {nosBook.title}
@@ -375,7 +375,7 @@ export default function EspelhoChapterPage({
   );
 }
 
-function ScrollProgress({ color }: { color: string }) {
+function ScrollProgress() {
   useEffect(() => {
     const handleScroll = () => {
       const bar = document.getElementById("reading-progress");
@@ -391,6 +391,5 @@ function ScrollProgress({ color }: { color: string }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  void color;
   return null;
 }

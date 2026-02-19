@@ -12,6 +12,7 @@ type Profile = {
   has_book_access: boolean;
   has_mirrors_access: boolean;
   has_audiobook_access: boolean;
+  has_early_access?: boolean;
   purchased_products: Array<{
     type: string;
     date: string;
@@ -85,11 +86,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   async function loadProfile(userId: string) {
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from("profiles")
       .select("*")
       .eq("id", userId)
       .single();
+
+    if (error) {
+      console.error("[AuthProvider] Error loading profile:", error);
+      return;
+    }
 
     if (data) {
       setProfile(data);

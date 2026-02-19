@@ -60,24 +60,34 @@ export function useNosGate(espelhoSlug = "veu-da-ilusao") {
   }, [espelhoSlug]);
 
   const loadProgress = useCallback(async () => {
-    const session = await supabase.auth.getSession();
-    const userId = session.data.session?.user?.id;
-    if (!userId) {
-      setLoading(false);
-      return;
-    }
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const userId = sessionData?.session?.user?.id;
+      if (!userId) {
+        setLoading(false);
+        return;
+      }
 
-    const { data } = await supabase
-      .from("reading_progress")
-      .select("chapter_slug, completed")
-      .eq("user_id", userId);
+      const { data, error } = await supabase
+        .from("reading_progress")
+        .select("chapter_slug, completed")
+        .eq("user_id", userId);
 
-    if (data) {
-      const map: Record<string, boolean> = {};
-      data.forEach((row) => {
-        map[row.chapter_slug] = row.completed;
-      });
-      setProgress(map);
+      if (error) {
+        console.error("[useNosGate] Error loading progress:", error);
+        setLoading(false);
+        return;
+      }
+
+      if (data) {
+        const map: Record<string, boolean> = {};
+        data.forEach((row) => {
+          map[row.chapter_slug] = row.completed;
+        });
+        setProgress(map);
+      }
+    } catch (err) {
+      console.error("[useNosGate] Unexpected error:", err);
     }
     setLoading(false);
   }, []);

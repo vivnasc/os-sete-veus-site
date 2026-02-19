@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import { useAuth } from "@/components/AuthProvider";
+import { useRouter } from "next/navigation";
 import { chapters } from "@/data/ebook";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
@@ -62,25 +64,43 @@ function getWordCount(entries: JournalEntry[]) {
 }
 
 export default function EspelhoPage() {
+  const { user, loading: authLoading } = useAuth();
+  const router = useRouter();
   const [entries, setEntries] = useState<JournalEntry[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const loadEntries = useCallback(async () => {
-    const session = await supabase.auth.getSession();
-    const userId = session.data.session?.user?.id;
-    if (!userId) {
-      setLoading(false);
-      return;
+  useEffect(() => {
+    if (!authLoading && !user) {
+      router.push("/entrar");
     }
+  }, [user, authLoading, router]);
 
-    const { data } = await supabase
-      .from("journal_entries")
-      .select("chapter_slug, content, updated_at")
-      .eq("user_id", userId)
-      .order("updated_at", { ascending: true });
+  const loadEntries = useCallback(async () => {
+    try {
+      const session = await supabase.auth.getSession();
+      const userId = session.data.session?.user?.id;
+      if (!userId) {
+        setLoading(false);
+        return;
+      }
 
-    if (data) {
-      setEntries(data.filter((e) => e.content && e.content.trim().length > 0));
+      const { data, error } = await supabase
+        .from("journal_entries")
+        .select("chapter_slug, content, updated_at")
+        .eq("user_id", userId)
+        .order("updated_at", { ascending: true });
+
+      if (error) {
+        console.error("[EspelhoPage] Error loading journal entries:", error);
+        setLoading(false);
+        return;
+      }
+
+      if (data) {
+        setEntries(data.filter((e) => e.content && e.content.trim().length > 0));
+      }
+    } catch (err) {
+      console.error("[EspelhoPage] Unexpected error:", err);
     }
     setLoading(false);
   }, []);
@@ -98,7 +118,7 @@ export default function EspelhoPage() {
         {/* Header */}
         <div className="mb-12 text-center">
           <Link
-            href="/membro/leitura"
+            href="/membro/espelhos/veu-da-ilusao"
             className="inline-block font-sans text-[0.65rem] uppercase tracking-[0.15em] text-brown-400 hover:text-brown-600"
           >
             &larr; Voltar à leitura
@@ -123,7 +143,7 @@ export default function EspelhoPage() {
               À medida que leres e escreveres no diário de reflexão, as tuas palavras aparecerão aqui.
             </p>
             <Link
-              href="/membro/leitura"
+              href="/membro/espelhos/veu-da-ilusao"
               className="mt-6 inline-block rounded-full bg-[#c9b896] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b8a785]"
             >
               Começar a ler
