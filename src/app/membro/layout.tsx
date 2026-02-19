@@ -73,7 +73,7 @@ export default function MembroLayout({ children }: { children: React.ReactNode }
           <div className="flex items-center gap-4">
             {isAuthor && (
               <Link
-                href="/painel"
+                href="/admin"
                 className="font-sans text-[0.7rem] uppercase tracking-[0.1em] text-sage transition-colors hover:text-sage-dark"
               >
                 Painel Autora
