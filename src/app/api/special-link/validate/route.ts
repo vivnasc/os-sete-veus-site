@@ -4,7 +4,7 @@ import { notifySpecialLinkUsed } from "@/lib/notify-admin";
 
 export async function POST(request: Request) {
   try {
-    const { code, email } = await request.json();
+    const { code, email, password } = await request.json();
 
     if (!code || !email) {
       return NextResponse.json(
@@ -70,6 +70,12 @@ export async function POST(request: Request) {
 
     if (existingUser) {
       userId = existingUser.id;
+      // Se o utilizador já existe e enviou password, actualizar a password
+      if (password) {
+        await supabaseAdmin.auth.admin.updateUserById(existingUser.id, {
+          password,
+        });
+      }
 
       // Verificar se já tem acesso
       const { data: existingPurchase } = await supabaseAdmin
@@ -91,6 +97,7 @@ export async function POST(request: Request) {
         await supabaseAdmin.auth.admin.createUser({
           email: email.toLowerCase(),
           email_confirm: true,
+          ...(password ? { password } : {}),
         });
 
       if (createError || !newUser.user) {
@@ -132,12 +139,6 @@ export async function POST(request: Request) {
         used_at: new Date().toISOString(),
       })
       .eq("id", specialLink.id);
-
-    // Enviar magic link para login
-    await supabaseAdmin.auth.admin.generateLink({
-      type: "magiclink",
-      email: email.toLowerCase(),
-    });
 
     // Notificar admin
     await notifySpecialLinkUsed({
