@@ -26,10 +26,19 @@ type Code = {
   notes?: string
 }
 
+type ApprovedInfo = {
+  requestId: string
+  code: string
+  email: string
+  fullName: string
+  whatsapp?: string
+}
+
 export default function AutoraCodigosPage() {
   const { user, loading } = useAuth()
   const router = useRouter()
   const [pendingRequests, setPendingRequests] = useState<CodeRequest[]>([])
+  const [allRequests, setAllRequests] = useState<CodeRequest[]>([])
   const [allCodes, setAllCodes] = useState<Code[]>([])
   const [stats, setStats] = useState({
     total: 0,
@@ -43,6 +52,7 @@ export default function AutoraCodigosPage() {
   const [isGenerating, setIsGenerating] = useState(false)
   const [activeTab, setActiveTab] = useState<'pending' | 'manual' | 'all'>('pending')
   const [filter, setFilter] = useState<'all' | 'unused' | 'used'>('all')
+  const [recentlyApproved, setRecentlyApproved] = useState<ApprovedInfo | null>(null)
 
   useEffect(() => {
     if (!loading && !user) {
@@ -64,6 +74,7 @@ export default function AutoraCodigosPage() {
       let pending: CodeRequest[] = []
 
       if (requestsData.success) {
+        setAllRequests(requestsData.requests)
         pending = requestsData.requests.filter(
           (r: CodeRequest) => r.status === 'pending'
         )
@@ -101,21 +112,60 @@ export default function AutoraCodigosPage() {
     }
   }
 
-  const handleApprove = async (requestId: string) => {
-    if (!confirm('Aprovar este pedido e gerar código?')) return
+  const buildWhatsAppUrl = (phone: string, code: string, name: string) => {
+    const cleanPhone = phone.replace(/[^0-9+]/g, '').replace(/^\+/, '')
+    const message = encodeURIComponent(
+      `Ola ${name}!\n\n` +
+      `O teu pedido de codigo de acesso digital foi aprovado.\n\n` +
+      `O teu codigo: *${code}*\n\n` +
+      `Para activar o acesso:\n` +
+      `1. Vai a seteveus.space/registar-livro\n` +
+      `2. Insere o codigo ${code}\n` +
+      `3. Coloca o teu email e cria uma password\n` +
+      `4. Acesso imediato!\n\n` +
+      `Qualquer duvida, estou aqui.`
+    )
+    return `https://wa.me/${cleanPhone}?text=${message}`
+  }
+
+  const buildEmailBody = (code: string, name: string) => {
+    const subject = encodeURIComponent('O teu codigo de acesso digital - Os Sete Veus')
+    const body = encodeURIComponent(
+      `Ola ${name},\n\n` +
+      `O teu pedido de codigo de acesso digital foi aprovado.\n\n` +
+      `O teu codigo: ${code}\n\n` +
+      `Para activar o acesso:\n` +
+      `1. Vai a seteveus.space/registar-livro\n` +
+      `2. Insere o codigo ${code}\n` +
+      `3. Coloca o teu email e cria uma password\n` +
+      `4. Acesso imediato!\n\n` +
+      `Qualquer duvida, responde a este email.\n\n` +
+      `Com carinho,\nVivianne`
+    )
+    return `mailto:?subject=${subject}&body=${body}`
+  }
+
+  const handleApprove = async (request: CodeRequest) => {
+    if (!confirm(`Aprovar pedido de ${request.full_name} e gerar codigo?`)) return
 
     try {
       const res = await fetch('/api/codes/approve', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ requestId }),
+        body: JSON.stringify({ requestId: request.id }),
       })
 
       const data = await res.json()
 
       if (data.success) {
-        alert(`Código gerado: ${data.code.code}\n\nEmail enviado para ${data.code.email}`)
-        loadData() // Recarregar dados
+        setRecentlyApproved({
+          requestId: request.id,
+          code: data.code.code,
+          email: request.email,
+          fullName: request.full_name,
+          whatsapp: request.whatsapp,
+        })
+        loadData()
       } else {
         alert('Erro ao aprovar: ' + data.error)
       }
@@ -126,7 +176,7 @@ export default function AutoraCodigosPage() {
   }
 
   const handleReject = async (requestId: string) => {
-    const reason = prompt('Motivo da rejeição (opcional):')
+    const reason = prompt('Motivo da rejeicao (opcional):')
     if (reason === null) return // Cancelou
 
     try {
@@ -139,8 +189,7 @@ export default function AutoraCodigosPage() {
       const data = await res.json()
 
       if (data.success) {
-        alert('Pedido rejeitado')
-        loadData() // Recarregar dados
+        loadData()
       } else {
         alert('Erro ao rejeitar: ' + data.error)
       }
@@ -171,13 +220,13 @@ export default function AutoraCodigosPage() {
         setGeneratedCode(data.code.code)
         setManualEmail('')
         setManualNotes('')
-        loadData() // Recarregar dados
+        loadData()
       } else {
-        alert('Erro ao gerar código: ' + data.error)
+        alert('Erro ao gerar codigo: ' + data.error)
       }
     } catch (error) {
-      console.error('Erro ao gerar código:', error)
-      alert('Erro ao gerar código')
+      console.error('Erro ao gerar codigo:', error)
+      alert('Erro ao gerar codigo')
     } finally {
       setIsGenerating(false)
     }
@@ -185,7 +234,6 @@ export default function AutoraCodigosPage() {
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text)
-    alert('Copiado!')
   }
 
   const formatDate = (dateString: string) => {
@@ -215,17 +263,87 @@ export default function AutoraCodigosPage() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="font-serif text-3xl text-brown-900">
-            Gestão de Códigos
+            Gestao de Codigos
           </h1>
           <p className="mt-2 text-sm text-brown-600">
-            Painel de administração dos códigos de acesso ao livro digital
+            Pedidos de codigo de acesso ao livro digital
           </p>
         </div>
 
-        {/* Estatísticas */}
+        {/* Codigo aprovado — painel de envio */}
+        {recentlyApproved && (
+          <div className="mb-8 rounded-2xl border-2 border-green-300 bg-green-50 p-6 shadow-sm">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="font-serif text-lg text-green-900">
+                  Codigo gerado para {recentlyApproved.fullName}
+                </p>
+                <div className="mt-3 flex items-center gap-3">
+                  <code className="rounded bg-white px-4 py-2 font-mono text-xl font-bold text-brown-900 shadow-sm">
+                    {recentlyApproved.code}
+                  </code>
+                  <button
+                    onClick={() => copyToClipboard(recentlyApproved.code)}
+                    className="rounded-lg bg-white px-3 py-2 text-sm font-medium text-brown-700 shadow-sm transition-colors hover:bg-brown-50"
+                  >
+                    Copiar
+                  </button>
+                </div>
+              </div>
+              <button
+                onClick={() => setRecentlyApproved(null)}
+                className="text-green-600 hover:text-green-800"
+              >
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <p className="mt-4 text-sm font-medium text-green-800">Envia o codigo:</p>
+            <div className="mt-3 flex flex-wrap gap-3">
+              {recentlyApproved.whatsapp && (
+                <a
+                  href={buildWhatsAppUrl(recentlyApproved.whatsapp, recentlyApproved.code, recentlyApproved.fullName)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-lg bg-[#25D366] px-5 py-2.5 font-sans text-sm font-bold text-white shadow-sm transition-all hover:bg-[#1ea952]"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  </svg>
+                  Enviar por WhatsApp ({recentlyApproved.whatsapp})
+                </a>
+              )}
+              <a
+                href={buildEmailBody(recentlyApproved.code, recentlyApproved.fullName) + '&to=' + encodeURIComponent(recentlyApproved.email)}
+                className="inline-flex items-center gap-2 rounded-lg bg-brown-700 px-5 py-2.5 font-sans text-sm font-bold text-white shadow-sm transition-all hover:bg-brown-800"
+              >
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                </svg>
+                Enviar por email ({recentlyApproved.email})
+              </a>
+            </div>
+
+            <div className="mt-4 rounded-lg bg-white/60 p-3">
+              <p className="text-xs text-green-700">
+                Link directo para registo: seteveus.space/registar-livro?code={recentlyApproved.code}
+              </p>
+              <button
+                onClick={() => copyToClipboard(`https://seteveus.space/registar-livro?code=${recentlyApproved.code}`)}
+                className="mt-1 text-xs font-medium text-green-800 underline hover:text-green-900"
+              >
+                Copiar link completo
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Estatisticas */}
         <div className="mb-8 grid gap-4 sm:grid-cols-4">
           <div className="rounded-lg bg-white p-5 shadow-sm">
-            <p className="text-sm font-medium text-brown-600">Total Códigos</p>
+            <p className="text-sm font-medium text-brown-600">Total Codigos</p>
             <p className="mt-2 font-serif text-3xl font-bold text-brown-900">
               {stats.total}
             </p>
@@ -251,36 +369,36 @@ export default function AutoraCodigosPage() {
         </div>
 
         {/* Tabs */}
-        <div className="mb-6 flex gap-2 border-b border-brown-200">
+        <div className="mb-6 flex gap-2 overflow-x-auto border-b border-brown-200">
           <button
             onClick={() => setActiveTab('pending')}
-            className={`px-6 py-3 font-sans text-sm font-medium transition-colors ${
+            className={`whitespace-nowrap px-6 py-3 font-sans text-sm font-medium transition-colors ${
               activeTab === 'pending'
                 ? 'border-b-2 border-sage text-sage'
                 : 'text-brown-600 hover:text-brown-900'
             }`}
           >
-            📬 Pedidos Pendentes ({stats.pending})
+            Pedidos Pendentes ({stats.pending})
           </button>
           <button
             onClick={() => setActiveTab('manual')}
-            className={`px-6 py-3 font-sans text-sm font-medium transition-colors ${
+            className={`whitespace-nowrap px-6 py-3 font-sans text-sm font-medium transition-colors ${
               activeTab === 'manual'
                 ? 'border-b-2 border-sage text-sage'
                 : 'text-brown-600 hover:text-brown-900'
             }`}
           >
-            ➕ Gerar Manual
+            Gerar Manual
           </button>
           <button
             onClick={() => setActiveTab('all')}
-            className={`px-6 py-3 font-sans text-sm font-medium transition-colors ${
+            className={`whitespace-nowrap px-6 py-3 font-sans text-sm font-medium transition-colors ${
               activeTab === 'all'
                 ? 'border-b-2 border-sage text-sage'
                 : 'text-brown-600 hover:text-brown-900'
             }`}
           >
-            📊 Todos os Códigos
+            Todos os Codigos
           </button>
         </div>
 
@@ -289,7 +407,8 @@ export default function AutoraCodigosPage() {
           <div className="space-y-4">
             {pendingRequests.length === 0 ? (
               <div className="rounded-lg bg-white p-8 text-center shadow-sm">
-                <p className="text-brown-600">Nenhum pedido pendente 🎉</p>
+                <p className="text-brown-600">Nenhum pedido pendente</p>
+                <p className="mt-2 text-sm text-brown-400">Os novos pedidos aparecem aqui automaticamente</p>
               </div>
             ) : (
               pendingRequests.map((request) => (
@@ -297,55 +416,55 @@ export default function AutoraCodigosPage() {
                   key={request.id}
                   className="rounded-lg border border-brown-200 bg-white p-6 shadow-sm"
                 >
-                  <div className="flex items-start justify-between">
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                     <div className="flex-1">
-                      <div className="flex items-center gap-3">
+                      <div className="flex flex-wrap items-center gap-3">
                         <p className="font-medium text-brown-900">
-                          👤 {request.full_name}
+                          {request.full_name}
                         </p>
                         <span className="text-xs text-brown-400">
                           {formatDate(request.created_at)}
                         </span>
                       </div>
                       <p className="mt-1 text-sm text-brown-600">
-                        📧 {request.email}
+                        {request.email}
                       </p>
                       {request.whatsapp && (
                         <p className="mt-1 text-sm text-brown-600">
-                          📱 {request.whatsapp}
+                          WhatsApp: {request.whatsapp}
                         </p>
                       )}
                       {request.purchase_location && (
                         <p className="mt-1 text-sm text-brown-600">
-                          🏪 Comprou: {request.purchase_location}
+                          Comprou em: {request.purchase_location}
                         </p>
                       )}
                       {request.proof_url && (
-                        <p className="mt-1 text-sm">
-                          📸{' '}
-                          <a
-                            href={request.proof_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-sage hover:underline"
-                          >
-                            Ver comprovativo
-                          </a>
-                        </p>
+                        <a
+                          href={request.proof_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-2 inline-flex items-center gap-1 rounded bg-brown-50 px-3 py-1.5 text-sm text-sage hover:bg-brown-100"
+                        >
+                          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H3.75A2.25 2.25 0 001.5 6.75v14.25A2.25 2.25 0 003.75 21z" />
+                          </svg>
+                          Ver comprovativo
+                        </a>
                       )}
                     </div>
                     <div className="flex gap-2">
                       <button
-                        onClick={() => handleApprove(request.id)}
+                        onClick={() => handleApprove(request)}
                         className="rounded-lg bg-green-600 px-4 py-2 font-sans text-sm font-medium text-white transition-colors hover:bg-green-700"
                       >
-                        ✅ Aprovar
+                        Aprovar
                       </button>
                       <button
                         onClick={() => handleReject(request.id)}
                         className="rounded-lg border border-red-300 bg-white px-4 py-2 font-sans text-sm font-medium text-red-600 transition-colors hover:bg-red-50"
                       >
-                        ❌ Rejeitar
+                        Rejeitar
                       </button>
                     </div>
                   </div>
@@ -360,10 +479,10 @@ export default function AutoraCodigosPage() {
           <div className="max-w-2xl">
             <div className="rounded-lg bg-white p-8 shadow-sm">
               <h2 className="font-serif text-xl text-brown-900">
-                Gerar código manualmente
+                Gerar codigo manualmente
               </h2>
               <p className="mt-2 text-sm text-brown-600">
-                Para clientes que contactaram via WhatsApp
+                Para clientes que contactaram via WhatsApp ou pessoalmente
               </p>
 
               <form onSubmit={handleGenerateManual} className="mt-6 space-y-4">
@@ -405,14 +524,14 @@ export default function AutoraCodigosPage() {
                   disabled={isGenerating}
                   className="w-full rounded-lg bg-sage px-6 py-3 font-sans text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-sage-dark disabled:opacity-50"
                 >
-                  {isGenerating ? 'Gerando...' : 'Gerar código único'}
+                  {isGenerating ? 'Gerando...' : 'Gerar codigo unico'}
                 </button>
               </form>
 
               {generatedCode && (
                 <div className="mt-6 rounded-lg border-2 border-green-200 bg-green-50 p-6">
                   <p className="text-sm font-medium text-green-900">
-                    ✅ Código gerado com sucesso!
+                    Codigo gerado com sucesso!
                   </p>
                   <div className="mt-3 flex items-center gap-3">
                     <code className="flex-1 rounded bg-white px-4 py-3 font-mono text-lg font-bold text-brown-900">
@@ -422,21 +541,27 @@ export default function AutoraCodigosPage() {
                       onClick={() => copyToClipboard(generatedCode)}
                       className="rounded-lg bg-sage px-4 py-3 font-sans text-sm font-medium text-white transition-colors hover:bg-sage-dark"
                     >
-                      📋 Copiar
+                      Copiar
                     </button>
                   </div>
-                  <p className="mt-3 text-xs text-green-700">
-                    {manualEmail
-                      ? `Email enviado para ${manualEmail}`
-                      : 'Envia este código manualmente ao cliente'}
-                  </p>
+                  <div className="mt-4 rounded-lg bg-white/60 p-3">
+                    <p className="text-xs text-green-700">
+                      Link directo: seteveus.space/registar-livro?code={generatedCode}
+                    </p>
+                    <button
+                      onClick={() => copyToClipboard(`https://seteveus.space/registar-livro?code=${generatedCode}`)}
+                      className="mt-1 text-xs font-medium text-green-800 underline hover:text-green-900"
+                    >
+                      Copiar link completo
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
           </div>
         )}
 
-        {/* Tab: Todos os Códigos */}
+        {/* Tab: Todos os Codigos */}
         {activeTab === 'all' && (
           <div>
             {/* Filtros */}
@@ -459,7 +584,7 @@ export default function AutoraCodigosPage() {
                     : 'bg-white text-brown-700 hover:bg-brown-50'
                 }`}
               >
-                Não usados
+                Nao usados
               </button>
               <button
                 onClick={() => setFilter('used')}
@@ -473,13 +598,13 @@ export default function AutoraCodigosPage() {
               </button>
             </div>
 
-            {/* Tabela de códigos */}
-            <div className="overflow-hidden rounded-lg bg-white shadow-sm">
+            {/* Tabela de codigos */}
+            <div className="overflow-x-auto rounded-lg bg-white shadow-sm">
               <table className="w-full">
                 <thead className="bg-brown-50">
                   <tr>
                     <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-brown-700">
-                      Código
+                      Codigo
                     </th>
                     <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-brown-700">
                       Email
@@ -496,7 +621,7 @@ export default function AutoraCodigosPage() {
                   {allCodes.length === 0 ? (
                     <tr>
                       <td colSpan={4} className="px-4 py-8 text-center text-brown-600">
-                        Nenhum código gerado ainda
+                        Nenhum codigo gerado ainda
                       </td>
                     </tr>
                   ) : (
@@ -508,22 +633,22 @@ export default function AutoraCodigosPage() {
                             {code.code}
                           </td>
                           <td className="px-4 py-3 text-sm text-brown-700">
-                            {code.email || '—'}
+                            {code.email || '\u2014'}
                           </td>
                           <td className="px-4 py-3 text-sm">
                             {code.status === 'used' && (
                               <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800">
-                                ✅ Usado
+                                Usado
                               </span>
                             )}
                             {code.status === 'unused' && (
                               <span className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">
-                                ⏳ Pendente
+                                Pendente
                               </span>
                             )}
                             {code.status === 'expired' && (
                               <span className="inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800">
-                                ❌ Expirado
+                                Expirado
                               </span>
                             )}
                           </td>
