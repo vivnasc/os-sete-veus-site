@@ -104,10 +104,14 @@ Onde as vozes se encontram. Partilhas, reflexões, ressonâncias.
 
 ## Estrutura de Acessos (Supabase)
 
-- `has_book_access` — acesso ao livro filosófico (Os 7 Véus)
-- `has_mirrors_access` — acesso aos Espelhos (e Nós desbloqueáveis)
+- `has_book_access` — acesso ao livro filosófico (Os 7 Véus) + práticas em áudio + comunidade
+- `has_mirrors_access` — acesso aos Espelhos (e Nós desbloqueáveis) — produto separado, comprado
 - `has_audiobook_access` — acesso ao audiobook
 - `is_admin` — acesso total
+
+### Código do livro físico (LIVRO-XXXXX):
+- Concede **apenas** `has_book_access` (livro filosófico + práticas + comunidade)
+- Espelhos e Nós são produtos separados que se compram
 
 ### Lógica do Nó:
 - Requer `has_mirrors_access` (mesmo que o Espelhos)

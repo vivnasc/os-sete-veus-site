@@ -412,6 +412,27 @@ export default function MembroDashboard() {
           </div>
         )}
 
+        {/* Convite para os Espelhos — para quem so tem acesso ao livro */}
+        {hasBookAccess && !hasMirrorsAccess && !loading && (
+          <div className="mt-8 rounded-2xl border border-[#c9b896]/30 bg-[#c9b896]/[0.04] p-6 text-center">
+            <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-[#c9b896]">
+              Colecção Espelhos
+            </p>
+            <p className="mt-2 font-serif text-base text-brown-700">
+              Sete histórias. Sete véus. Sete formas de voltar a ti mesma.
+            </p>
+            <p className="mt-1 font-serif text-sm text-brown-400">
+              Ficção contemplativa que acompanha a jornada filosófica.
+            </p>
+            <Link
+              href="/comprar/espelhos"
+              className="mt-4 inline-flex items-center justify-center rounded-full border-2 border-[#c9b896] px-6 py-2 font-sans text-[0.65rem] uppercase tracking-[0.15em] text-[#c9b896] transition-all hover:bg-[#c9b896] hover:text-white"
+            >
+              Descobrir Espelhos
+            </Link>
+          </div>
+        )}
+
         {/* No access message */}
         {!hasBookAccess && !hasMirrorsAccess && !authLoading && (
           <div className="mt-10 rounded-2xl border-2 border-brown-100 bg-white p-8 text-center">
@@ -438,85 +459,93 @@ export default function MembroDashboard() {
           </div>
         )}
 
-        {/* Veil Map */}
-        {!loading && (
+        {/* Veil Map — so para quem tem acesso ao livro */}
+        {!loading && hasBookAccess && (
           <div className="mt-6">
             <VeilMap progress={readingProgress} />
           </div>
         )}
 
-        {/* Secondary cards */}
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          <Link
-            href="/livro"
-            className="group rounded-2xl border border-brown-100 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
-          >
-            <div className="flex items-center gap-4">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-veu-1 to-veu-4 text-lg text-white">
-                &#10047;
-              </span>
-              <div>
-                <h3 className="font-serif text-base text-brown-800">Experiência Filosófica</h3>
-                <p className="mt-0.5 font-sans text-xs text-brown-400">
-                  Mandala dos 7 véus
-                </p>
-              </div>
-            </div>
-          </Link>
+        {/* Secondary cards — so aparecem se o utilizador tem algum acesso */}
+        {(hasBookAccess || hasMirrorsAccess) && (
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            {hasBookAccess && (
+              <Link
+                href="/livro"
+                className="group rounded-2xl border border-brown-100 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-veu-1 to-veu-4 text-lg text-white">
+                    &#10047;
+                  </span>
+                  <div>
+                    <h3 className="font-serif text-base text-brown-800">Experiência Filosófica</h3>
+                    <p className="mt-0.5 font-sans text-xs text-brown-400">
+                      Mandala dos 7 véus
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            )}
 
-          <Link
-            href="/membro/praticas"
-            className="group rounded-2xl border border-brown-100 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
-          >
-            <div className="flex items-center gap-4">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-veu-5 to-veu-7 text-lg text-white">
-                &#9835;
-              </span>
-              <div>
-                <h3 className="font-serif text-base text-brown-800">Práticas em Áudio</h3>
-                <p className="mt-0.5 font-sans text-xs text-brown-400">
-                  4 práticas guiadas
-                </p>
-              </div>
-            </div>
-          </Link>
+            {hasBookAccess && (
+              <Link
+                href="/membro/praticas"
+                className="group rounded-2xl border border-brown-100 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-veu-5 to-veu-7 text-lg text-white">
+                    &#9835;
+                  </span>
+                  <div>
+                    <h3 className="font-serif text-base text-brown-800">Práticas em Áudio</h3>
+                    <p className="mt-0.5 font-sans text-xs text-brown-400">
+                      4 práticas guiadas
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            )}
 
-          <Link
-            href="/membro/espelho"
-            className="group rounded-2xl border border-brown-100 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
-          >
-            <div className="flex items-center gap-4">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#c9b896] to-[#7a8c6e] text-lg text-white">
-                &#9826;
-              </span>
-              <div>
-                <h3 className="font-serif text-base text-brown-800">O Teu Espelho</h3>
-                <p className="mt-0.5 font-sans text-xs text-brown-400">
-                  {journalCount > 0
-                    ? `${journalCount} reflexões escritas`
-                    : "As tuas reflexões reunidas"}
-                </p>
-              </div>
-            </div>
-          </Link>
+            {hasBookAccess && (
+              <Link
+                href="/livro/espelho"
+                className="group rounded-2xl border border-brown-100 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#c9b896] to-[#7a8c6e] text-lg text-white">
+                    &#9826;
+                  </span>
+                  <div>
+                    <h3 className="font-serif text-base text-brown-800">O Teu Espelho</h3>
+                    <p className="mt-0.5 font-sans text-xs text-brown-400">
+                      {journalCount > 0
+                        ? `${journalCount} reflexões escritas`
+                        : "As tuas reflexões reunidas"}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            )}
 
-          <Link
-            href="/comunidade"
-            className="group rounded-2xl border border-brown-100 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
-          >
-            <div className="flex items-center gap-4">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-veu-3 to-veu-7 text-lg text-white">
-                ~
-              </span>
-              <div>
-                <h3 className="font-serif text-base text-brown-800">Ecos</h3>
-                <p className="mt-0.5 font-sans text-xs text-brown-400">
-                  Comunidade de ressonância
-                </p>
+            <Link
+              href="/comunidade"
+              className="group rounded-2xl border border-brown-100 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+            >
+              <div className="flex items-center gap-4">
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-veu-3 to-veu-7 text-lg text-white">
+                  ~
+                </span>
+                <div>
+                  <h3 className="font-serif text-base text-brown-800">Ecos</h3>
+                  <p className="mt-0.5 font-sans text-xs text-brown-400">
+                    Comunidade de ressonância
+                  </p>
+                </div>
               </div>
-            </div>
-          </Link>
-        </div>
+            </Link>
+          </div>
+        )}
 
         {/* Upsell Bridge */}
         {!loading && (
