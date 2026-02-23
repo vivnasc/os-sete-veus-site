@@ -198,7 +198,7 @@ export default function EdicaoFisicaPage() {
           </h2>
           <p className="mt-4 text-lg text-sage">
             Ao comprar o livro físico, ganhas acesso imediato à plataforma online
-            com leitura integrada, meditações guiadas, reflexões e comunidade privada.
+            com leitura integrada, práticas contemplativas, reflexões e comunidade privada.
           </p>
           <p className="mt-2 text-sm text-sage/70">
             (GRÁTIS para quem comprar o livro físico - paga em MZN ou USD)

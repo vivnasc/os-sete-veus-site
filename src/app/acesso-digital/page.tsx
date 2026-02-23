@@ -267,8 +267,8 @@ export default function AcessoDigitalPage() {
                 Leitura integrada
               </p>
               <p className="mt-2 font-sans text-xs leading-relaxed text-brown-500">
-                O Espelho da Ilus\u00e3o com pausas de reflex\u00e3o, respira\u00e7\u00e3o guiada e
-                di\u00e1rio pessoal. Uma experi\u00eancia diferente de ler um livro.
+                Os 7 V\u00e9us do Despertar com modo contemplativo, pr\u00e1ticas guiadas,
+                di\u00e1rio de reflex\u00e3o e mandala interactiva. Uma experi\u00eancia diferente de ler um livro.
               </p>
             </div>
             <div className="rounded-xl bg-cream p-5">
