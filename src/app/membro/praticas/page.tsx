@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
-import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/components/AuthProvider";
+import { useAccess } from "@/hooks/useAccess";
 
 const praticas = [
   {
@@ -40,15 +41,35 @@ const praticas = [
 ];
 
 export default function PraticasPage() {
+  const { user, loading } = useAuth();
+  const { hasBookAccess, isLoading: accessLoading } = useAccess();
   const router = useRouter();
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      if (!data.session) {
-        router.push("/entrar");
-      }
-    });
-  }, [router]);
+    if (!loading && !user) {
+      router.push("/entrar");
+    }
+  }, [user, loading, router]);
+
+  useEffect(() => {
+    if (!loading && !accessLoading && user && !hasBookAccess) {
+      router.push("/comprar");
+    }
+  }, [user, loading, accessLoading, hasBookAccess, router]);
+
+  if (loading || accessLoading) {
+    return (
+      <section className="px-6 py-12">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="text-brown-400">A carregar...</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (!user || !hasBookAccess) {
+    return null;
+  }
 
   return (
     <section className="px-6 py-12">

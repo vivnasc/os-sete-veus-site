@@ -7,9 +7,8 @@ import { notifyCodeRedeemed } from "@/lib/notify-admin";
  * Resgata um código LIVRO-XXXXX:
  * 1. Valida o código
  * 2. Cria ou encontra o utilizador
- * 3. Concede acesso (has_book_access + has_mirrors_access)
+ * 3. Concede acesso (has_book_access apenas — Espelhos e Nós são produtos separados)
  * 4. Marca código como usado
- * 5. Envia magic link
  */
 export async function POST(request: Request) {
   try {
@@ -92,14 +91,25 @@ export async function POST(request: Request) {
       userId = newUser.user.id;
     }
 
-    // Conceder acesso: actualizar perfil
-    await supabaseAdmin
+    // Conceder acesso ao livro filosofico (Espelhos e Nos sao produtos separados)
+    // Usar upsert para garantir que funciona mesmo se o trigger de criacao do perfil ainda nao correu
+    const { error: profileError } = await supabaseAdmin
       .from("profiles")
       .update({
         has_book_access: true,
-        has_mirrors_access: true,
       })
       .eq("id", userId);
+
+    // Se o update nao afectou nenhuma linha (perfil ainda nao existe), tentar novamente apos delay
+    if (profileError) {
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      await supabaseAdmin
+        .from("profiles")
+        .update({
+          has_book_access: true,
+        })
+        .eq("id", userId);
+    }
 
     // Criar registo de compra
     await supabaseAdmin.from("purchases").insert({
