@@ -95,39 +95,38 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => subscription.unsubscribe();
   }, []);
 
-  async function loadProfile(userId: string, retries = 3) {
+  async function loadProfile(_userId: string, retries = 3) {
     try {
-      // Timeout de 5s por tentativa para evitar que fique pendurado
-      const result = await Promise.race([
-        supabase
-          .from("profiles")
-          .select("*")
-          .eq("id", userId)
-          .single(),
-        new Promise<{ data: null; error: { message: string } }>((resolve) =>
-          setTimeout(() => resolve({ data: null, error: { message: "Timeout" } }), 5000)
-        ),
-      ]);
+      // Usar API server-side para contornar RLS na tabela profiles
+      const res = await fetch("/api/profile/me", {
+        method: "GET",
+        credentials: "same-origin",
+      });
 
-      const { data, error } = result;
-
-      if (error || !data) {
+      if (!res.ok) {
         if (retries > 0) {
-          // Perfil pode nao estar disponivel imediatamente apos criacao
           await new Promise(resolve => setTimeout(resolve, 1500));
-          return loadProfile(userId, retries - 1);
+          return loadProfile(_userId, retries - 1);
         }
-        console.error("[AuthProvider] Error loading profile after retries:", error);
+        return;
+      }
+
+      const { profile: data } = await res.json();
+
+      if (!data) {
+        if (retries > 0) {
+          await new Promise(resolve => setTimeout(resolve, 1500));
+          return loadProfile(_userId, retries - 1);
+        }
         return;
       }
 
       setProfile(data);
-    } catch (err) {
+    } catch {
       if (retries > 0) {
         await new Promise(resolve => setTimeout(resolve, 1500));
-        return loadProfile(userId, retries - 1);
+        return loadProfile(_userId, retries - 1);
       }
-      console.error("[AuthProvider] Exception loading profile:", err);
     }
   }
 
