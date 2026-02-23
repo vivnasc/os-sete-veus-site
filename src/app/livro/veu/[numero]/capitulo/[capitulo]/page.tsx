@@ -11,6 +11,12 @@ import { useNivelLeitura } from '@/hooks/useNivelLeitura'
 import livroData from '@/data/livro-7-veus.json'
 import { glossario } from '@/data/livro-niveis/glossario'
 import { veu1Niveis } from '@/data/livro-niveis/veu-1'
+import { veu2Niveis } from '@/data/livro-niveis/veu-2'
+import { veu3Niveis } from '@/data/livro-niveis/veu-3'
+import { veu4Niveis } from '@/data/livro-niveis/veu-4'
+import { veu5Niveis } from '@/data/livro-niveis/veu-5'
+import { veu6Niveis } from '@/data/livro-niveis/veu-6'
+import { veu7Niveis } from '@/data/livro-niveis/veu-7'
 import type { NivelCapitulo } from '@/data/livro-niveis/types'
 import ReflexoesDrawer from '@/components/ReflexoesDrawer'
 import NivelSelector from '@/components/livro/NivelSelector'
@@ -19,10 +25,19 @@ import PerguntasOrientadoras from '@/components/livro/PerguntasOrientadoras'
 import NotaContextual from '@/components/livro/NotaContextual'
 import GlossarioTooltip from '@/components/livro/GlossarioTooltip'
 import ExemplosConcretos from '@/components/livro/ExemplosConcretos'
+import CrencasAMapear from '@/components/livro/CrencasAMapear'
+import SinaisDoVeu from '@/components/livro/SinaisDoVeu'
+import EspelhoPessoal from '@/components/livro/EspelhoPessoal'
 
-// Companion data per veu (lazy: only veu 1 for now)
+// Companion data per veu
 const niveisData: Record<number, NivelCapitulo[]> = {
   1: veu1Niveis,
+  2: veu2Niveis,
+  3: veu3Niveis,
+  4: veu4Niveis,
+  5: veu5Niveis,
+  6: veu6Niveis,
+  7: veu7Niveis,
 }
 
 // Glossary term replacement for Semente and Raiz levels
@@ -422,6 +437,21 @@ export default function CapituloPage() {
           />
         )}
 
+        {/* Jornada de autodescobertas (Semente + Raiz) */}
+        {nivelCapitulo?.sinais_do_veu && nivelCapitulo.sinais_do_veu.length > 0 && nivel !== 'arvore' && (
+          <SinaisDoVeu
+            sinais={nivelCapitulo.sinais_do_veu}
+            modoNoturno={modoNoturno}
+          />
+        )}
+
+        {nivelCapitulo?.crencas_a_mapear && nivelCapitulo.crencas_a_mapear.length > 0 && nivel !== 'arvore' && (
+          <CrencasAMapear
+            crencas={nivelCapitulo.crencas_a_mapear}
+            modoNoturno={modoNoturno}
+          />
+        )}
+
         {/* Aviso quando conteudo complementar ainda nao existe */}
         {!nivelCapitulo && nivel !== 'arvore' && (
           <div className={`mb-10 rounded-xl px-6 py-4 text-center ${
@@ -547,6 +577,11 @@ export default function CapituloPage() {
           </div>
         )}
 
+        {/* Espelho pessoal — provocacao intima no final do capitulo */}
+        {nivelCapitulo?.espelho_pessoal && nivel !== 'arvore' && (
+          <EspelhoPessoal texto={nivelCapitulo.espelho_pessoal} modoNoturno={modoNoturno} />
+        )}
+
         {/* Navegação (Modo Normal) */}
         {modoLeitura === 'normal' && (
           <div className="mt-16 flex justify-between items-center">
@@ -568,7 +603,11 @@ export default function CapituloPage() {
       </div>
 
       {/* Drawer de Reflexões */}
-      <ReflexoesDrawer veuNumero={numeroVeu} capituloNumero={numeroCapitulo} />
+      <ReflexoesDrawer
+        veuNumero={numeroVeu}
+        capituloNumero={numeroCapitulo}
+        guiaoReflexao={nivel !== 'arvore' ? nivelCapitulo?.guiao_reflexao : undefined}
+      />
     </div>
   )
 }

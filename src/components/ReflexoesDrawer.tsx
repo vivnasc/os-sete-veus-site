@@ -17,9 +17,10 @@ type Reflexao = {
 type Props = {
   veuNumero: number
   capituloNumero: number
+  guiaoReflexao?: string[]
 }
 
-export default function ReflexoesDrawer({ veuNumero, capituloNumero }: Props) {
+export default function ReflexoesDrawer({ veuNumero, capituloNumero, guiaoReflexao }: Props) {
   const { user } = useAuth()
   const { hasBookAccess } = useAccess()
   const [isOpen, setIsOpen] = useState(false)
@@ -151,8 +152,27 @@ export default function ReflexoesDrawer({ veuNumero, capituloNumero }: Props) {
                 {/* Nova Reflexão */}
                 <div>
                   <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
-                    O que este capítulo despertou em ti?
+                    O que este capitulo despertou em ti?
                   </label>
+
+                  {/* Guiao de reflexao — prompts que ticam a escrita */}
+                  {guiaoReflexao && guiaoReflexao.length > 0 && (
+                    <div className="mb-3 space-y-1.5">
+                      <p className="text-xs text-stone-500 dark:text-stone-400 uppercase tracking-wide">
+                        Para te guiar:
+                      </p>
+                      {guiaoReflexao.map((prompt, i) => (
+                        <button
+                          key={i}
+                          onClick={() => setNovaReflexao(prev => prev ? prev + '\n\n' + prompt + '\n' : prompt + '\n')}
+                          className="w-full text-left text-xs px-3 py-2 rounded-lg border border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors font-serif italic"
+                        >
+                          {prompt}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
                   <textarea
                     value={novaReflexao}
                     onChange={(e) => setNovaReflexao(e.target.value)}

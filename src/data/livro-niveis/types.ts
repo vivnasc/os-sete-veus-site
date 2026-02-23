@@ -26,4 +26,10 @@ export type NivelCapitulo = {
   // Raiz
   notas_contextuais: NotaContextual[]
   termos_destacados: string[]
+
+  // Jornada de autodescobertas (Semente + Raiz)
+  crencas_a_mapear?: string[]
+  sinais_do_veu?: string[]
+  guiao_reflexao?: string[]
+  espelho_pessoal?: string
 }

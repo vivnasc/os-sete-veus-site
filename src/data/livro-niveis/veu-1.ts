@@ -46,6 +46,28 @@ export const veu1Niveis: NivelCapitulo[] = [
       },
     ],
     termos_destacados: ['Ubuntu', 'persona', 'identidade', 'Self', 'anatta', 'fana', 'vacuidade'],
+
+    // Jornada de autodescobertas
+    crencas_a_mapear: [
+      'Eu sou o meu nome, a minha profissao, a minha historia.',
+      'Se nao tiver uma identidade clara, ninguem me vai respeitar.',
+      'Mudar e sinal de fraqueza — as pessoas fortes sabem quem sao.',
+      'Preciso de saber quem sou antes de poder viver plenamente.',
+      'A minha personalidade foi definida na infancia e ja nao muda.',
+    ],
+    sinais_do_veu: [
+      'Sentes ansiedade quando alguem te pergunta "quem es tu?" fora dos rotulos habituais.',
+      'Agarras-te a uma versao de ti que ja nao sentes, mas que da seguranca.',
+      'Tens medo de mudar porque achas que vais "perder-te".',
+      'Defines-te pelo que fazes, nao pelo que es.',
+      'Sentes que sem os teus papeis — mae, profissional, amiga — nao sobra nada.',
+    ],
+    guiao_reflexao: [
+      'Escreve 3 rotulos que carregas sobre ti. Agora pergunta: quem serias sem eles?',
+      'Descreve um momento em que sentiste que "nao eras tu" — estavas a representar. O que estavas a proteger?',
+      'Se pudesses apresentar-te a alguem sem nome, sem historia, sem papel — o que dirias?',
+    ],
+    espelho_pessoal: 'Se tudo o que pensas que es fosse tirado — nome, historia, papeis — o que continuaria a respirar?',
   },
   {
     capitulo_numero: 2,
@@ -87,6 +109,27 @@ export const veu1Niveis: NivelCapitulo[] = [
       },
     ],
     termos_destacados: ['persona', 'Self', 'Sankofa', 'noite escura', 'Ubuntu', 'identidade'],
+
+    crencas_a_mapear: [
+      'Se mostrar quem realmente sou, vao rejeitar-me.',
+      'Preciso de ser forte para ser amada.',
+      'A vulnerabilidade e fraqueza.',
+      'O meu valor depende do que os outros pensam de mim.',
+      'Se deixar de agradar, vou ficar sozinha.',
+    ],
+    sinais_do_veu: [
+      'Sentes um peso ao fim do dia que nao tem causa clara — como se algo essencial estivesse em falta.',
+      'Recebes elogios mas nao te reconheces neles.',
+      'Adaptas o que dizes e como ages dependendo de quem esta a frente.',
+      'Tens medo de dizer "nao" porque achas que vais perder o lugar.',
+      'Ha partes de ti que so existem em silencio, nunca partilhadas.',
+    ],
+    guiao_reflexao: [
+      'Que mascara usas mais no trabalho? E em casa? Sao a mesma?',
+      'Descreve uma versao de ti que mostravas ao mundo e que ja nao sentes como verdadeira. Quando foi que deixou de servir?',
+      'Escreve algo que nunca disseste a ninguem sobre quem realmente es.',
+    ],
+    espelho_pessoal: 'Que parte de ti vive escondida — nao por vergonha, mas por medo de nao caber no olhar dos outros?',
   },
   {
     capitulo_numero: 3,
@@ -141,5 +184,27 @@ export const veu1Niveis: NivelCapitulo[] = [
       },
     ],
     termos_destacados: ['Ubuntu', 'anatta', 'Atman', 'Brahman', 'Taoismo', 'existencialismo', 'fana', 'Ein Sof', 'bhakti', 'noite escura', 'vacuidade', 'samsara', 'despertar'],
+
+    // Jornada de autodescobertas
+    crencas_a_mapear: [
+      'Ha uma verdade unica sobre quem eu sou — so preciso de a encontrar.',
+      'Se eu perceber quem sou "de verdade", tudo se resolve.',
+      'O Ocidente, o Oriente ou a Africa — um deles tem a resposta certa.',
+      'A espiritualidade e para quem ja sabe quem e.',
+      'A identidade e algo que se descobre uma vez e fica resolvido.',
+    ],
+    sinais_do_veu: [
+      'Saltas de tradicao em tradicao a procura da "resposta certa" sobre quem es.',
+      'Sentes-te dividida entre o pensamento racional e a intuicao — como se tivesses de escolher.',
+      'A ideia de que nao ha um "eu" permanente causa-te ansiedade em vez de alivio.',
+      'Coleccionas conhecimento espiritual mas sentes que nada muda por dentro.',
+      'Tens dificuldade em aceitar que a identidade seja fluxo — precisas de algo solido.',
+    ],
+    guiao_reflexao: [
+      'Das tres vozes — Ocidente (eu como nucleo), Oriente (eu como fluxo), Africa (eu como relacao) — qual ressoa mais em ti? Porque?',
+      'Ha alguma tradicao espiritual ou filosofica que te atrai mas que nunca te deste permissao para explorar? O que te impede?',
+      'Escreve uma carta ao teu "eu" de ha 5 anos. O que lhe dirias sobre quem te tornaste? E ao teu "eu" de daqui a 5 anos?',
+    ],
+    espelho_pessoal: 'Se todas as tradicoes, todas as filosofias, todas as respostas fossem retiradas — e ficasses so contigo e o silencio — o que ouvirias?',
   },
 ]
