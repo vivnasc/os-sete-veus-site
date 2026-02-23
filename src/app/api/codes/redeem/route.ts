@@ -92,23 +92,33 @@ export async function POST(request: Request) {
     }
 
     // Conceder acesso ao livro filosofico (Espelhos e Nos sao produtos separados)
-    // Usar upsert para garantir que funciona mesmo se o trigger de criacao do perfil ainda nao correu
+    // Usar upsert para garantir que funciona mesmo se o perfil ainda nao existe
     const { error: profileError } = await supabaseAdmin
       .from("profiles")
-      .update({
-        has_book_access: true,
-      })
-      .eq("id", userId);
-
-    // Se o update nao afectou nenhuma linha (perfil ainda nao existe), tentar novamente apos delay
-    if (profileError) {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      await supabaseAdmin
-        .from("profiles")
-        .update({
+      .upsert(
+        {
+          id: userId,
           has_book_access: true,
-        })
-        .eq("id", userId);
+        },
+        { onConflict: "id" }
+      );
+
+    // Se o upsert falhou, tentar novamente apos delay
+    if (profileError) {
+      console.error("Profile upsert failed, retrying:", profileError);
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      const { error: retryError } = await supabaseAdmin
+        .from("profiles")
+        .upsert(
+          {
+            id: userId,
+            has_book_access: true,
+          },
+          { onConflict: "id" }
+        );
+      if (retryError) {
+        console.error("Profile upsert retry also failed:", retryError);
+      }
     }
 
     // Criar registo de compra
