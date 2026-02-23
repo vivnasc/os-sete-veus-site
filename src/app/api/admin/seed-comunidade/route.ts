@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { createSupabaseAdminClient } from '@/lib/supabase-server'
 
-const ADMIN_SEED_KEY = process.env.ADMIN_SEED_KEY || 'seed-sete-veus-2025'
+const ADMIN_SEED_KEY = process.env.ADMIN_SEED_KEY
 
 // =====================================================
 // ECOS REALISTAS — reflexões anónimas por véu
@@ -159,6 +159,10 @@ function detectarTemasSimples(texto: string): string[] {
 export async function POST(req: Request) {
   try {
     const { key } = await req.json()
+
+    if (!ADMIN_SEED_KEY) {
+      return NextResponse.json({ error: 'ADMIN_SEED_KEY não configurada' }, { status: 503 })
+    }
 
     if (key !== ADMIN_SEED_KEY) {
       return NextResponse.json({ error: 'Chave inválida' }, { status: 403 })

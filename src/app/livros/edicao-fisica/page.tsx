@@ -206,7 +206,7 @@ export default function EdicaoFisicaPage() {
 
           <div className="mt-8">
             <Link
-              href="/experiencia"
+              href="/comprar/espelhos"
               className="inline-block rounded-lg border-2 border-sage px-6 py-3 text-sage hover:bg-sage/10 transition-colors"
             >
               Saber mais sobre a experiência digital →
@@ -229,7 +229,7 @@ export default function EdicaoFisicaPage() {
               Comprar Livro Físico - 1500 MZN
             </button>
             <Link
-              href="/experiencia"
+              href="/comprar/espelhos"
               className="rounded-lg border-2 border-sage px-8 py-4 font-display text-lg text-sage transition-colors hover:bg-sage/10"
             >
               Ver Só Experiência Digital

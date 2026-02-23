@@ -43,7 +43,8 @@ function PayPalContent() {
               PayPal + Cartão de Crédito
             </h2>
             <p className="mt-3 text-brown-600">
-              Integração PayPal em desenvolvimento
+              Pagamento por PayPal ainda nao esta disponivel.
+              Por favor escolhe outra forma de pagamento.
             </p>
 
             <div className="mt-8 rounded-lg bg-sage/5 p-6 text-left">

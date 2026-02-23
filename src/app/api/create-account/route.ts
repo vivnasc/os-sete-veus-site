@@ -1,17 +1,6 @@
 import { NextResponse } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase-server";
-
-// Author emails get full access to all experiences
-const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
-const ALL_PRODUCTS = [
-  "experiencia-veu-ilusao",
-  "experiencia-veu-medo",
-  "experiencia-veu-culpa",
-  "experiencia-veu-identidade",
-  "experiencia-veu-controlo",
-  "experiencia-veu-desejo",
-  "experiencia-veu-separacao",
-];
+import { ADMIN_EMAILS, ALL_PRODUCTS } from "@/lib/constants";
 
 export async function POST(request: Request) {
   try {
@@ -43,7 +32,7 @@ export async function POST(request: Request) {
     );
 
     if (existingUser) {
-      const isAuthor = AUTHOR_EMAILS.includes(email.toLowerCase());
+      const isAuthor = ADMIN_EMAILS.includes(email.toLowerCase());
       const products = isAuthor ? ALL_PRODUCTS : ["experiencia-veu-ilusao"];
       for (const product of products) {
         await supabaseAdmin.from("purchases").upsert(
@@ -81,7 +70,7 @@ export async function POST(request: Request) {
     }
 
     // Create purchase record(s)
-    const isAuthor = AUTHOR_EMAILS.includes(email.toLowerCase());
+    const isAuthor = ADMIN_EMAILS.includes(email.toLowerCase());
     const products = isAuthor ? ALL_PRODUCTS : ["experiencia-veu-ilusao"];
     for (const product of products) {
       await supabaseAdmin.from("purchases").insert({

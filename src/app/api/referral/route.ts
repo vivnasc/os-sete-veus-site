@@ -1,8 +1,5 @@
 import { NextResponse } from "next/server";
-
-const SUPABASE_URL = "https://tdytdamtfillqyklgrmb.supabase.co";
-const SUPABASE_ANON_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRkeXRkYW10ZmlsbHF5a2xncm1iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAzNzk4ODAsImV4cCI6MjA4NTk1NTg4MH0.W1w_M7dQXgPehDP0NUWWE4QHcW214XGVRIVXtG5n9z4";
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from "@/lib/supabase-server";
 
 /**
  * Referral tracking API

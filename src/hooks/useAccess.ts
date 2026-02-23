@@ -10,15 +10,14 @@
  */
 
 import { useAuth } from "@/components/AuthProvider";
+import { ADMIN_EMAILS } from "@/lib/constants";
 
 export function useAccess() {
   const { profile, user, loading } = useAuth();
-
-  const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
   const hasBookAccess = profile?.has_book_access ?? false;
   const hasMirrorsAccess = profile?.has_mirrors_access ?? false;
   const hasAudiobookAccess = profile?.has_audiobook_access ?? false;
-  const isAdmin = profile?.is_admin || AUTHOR_EMAILS.includes(user?.email || "");
+  const isAdmin = profile?.is_admin || ADMIN_EMAILS.includes(user?.email || "");
 
   // Early access: donors (jornada completa, pack3) ou flag explícita no perfil
   const hasEarlyAccess =
