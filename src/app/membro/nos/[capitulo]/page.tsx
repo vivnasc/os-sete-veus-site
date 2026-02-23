@@ -111,7 +111,13 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
     return () => observer.disconnect();
   }, [completed, markAsRead]);
 
-  if (authLoading || !hasMirrorsAccess) return null;
+  if (authLoading || !hasMirrorsAccess) {
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-sage border-t-transparent" />
+      </div>
+    );
+  }
 
   // Gate: espelho not complete OR no not purchased
   if (!canAccessNos) {

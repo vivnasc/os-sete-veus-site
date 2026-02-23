@@ -110,12 +110,26 @@ export default function AdminPage() {
                 Olá, Vivianne! ✨
               </p>
             </div>
-            <Link
-              href="/membro"
-              className="text-sm text-sage hover:text-forest transition-colors"
-            >
-              Ver como membro →
-            </Link>
+            <div className="flex items-center gap-4">
+              <Link
+                href="/membro"
+                className="text-sm text-sage hover:text-forest transition-colors"
+              >
+                Ver como membro
+              </Link>
+              <button
+                onClick={async () => {
+                  try {
+                    const { supabase: sb } = await import("@/lib/supabase");
+                    await sb.auth.signOut();
+                  } catch {}
+                  window.location.href = "/";
+                }}
+                className="rounded border border-sage/30 px-3 py-1.5 text-sm text-sage transition-colors hover:bg-sage/10 hover:text-forest"
+              >
+                Sair
+              </button>
+            </div>
           </div>
         </div>
       </div>

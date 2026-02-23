@@ -132,7 +132,13 @@ export default function EspelhoChapterPage({
     return () => observer.disconnect();
   }, [completed, markAsRead]);
 
-  if (authLoading || !hasMirrorsAccess || !ready) return null;
+  if (authLoading || !hasMirrorsAccess || !ready) {
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-sage border-t-transparent" />
+      </div>
+    );
+  }
 
   if (!chapter) {
     return (

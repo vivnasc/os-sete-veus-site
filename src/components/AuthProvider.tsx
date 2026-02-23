@@ -68,14 +68,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (_event, session) => {
+    } = supabase.auth.onAuthStateChange(async (event, session) => {
       setUser(session?.user ?? null);
 
       if (session?.user) {
+        // Sinalizar loading durante sign-in para evitar flash de "sem acesso"
+        if (event === "SIGNED_IN") {
+          setLoading(true);
+        }
         try {
           await loadProfile(session.user.id);
         } catch {
           // Profile load failed silently
+        }
+        if (event === "SIGNED_IN") {
+          setLoading(false);
         }
       } else {
         setProfile(null);
@@ -85,25 +92,33 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => subscription.unsubscribe();
   }, []);
 
-  async function loadProfile(userId: string) {
+  async function loadProfile(userId: string, retries = 2) {
     const { data, error } = await supabase
       .from("profiles")
       .select("*")
       .eq("id", userId)
       .single();
 
-    if (error) {
+    if (error || !data) {
+      if (retries > 0) {
+        // Perfil pode nao estar disponivel imediatamente apos criacao
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        return loadProfile(userId, retries - 1);
+      }
       console.error("[AuthProvider] Error loading profile:", error);
       return;
     }
 
-    if (data) {
-      setProfile(data);
-    }
+    setProfile(data);
   }
 
   async function signIn(email: string, password: string) {
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    if (!error && data.user) {
+      // Carregar perfil ANTES de retornar para evitar race condition
+      // O redirect so acontece depois do perfil estar disponivel
+      await loadProfile(data.user.id);
+    }
     return { error: error?.message ?? null };
   }
 

@@ -37,7 +37,13 @@ export default function NosLeituraPage() {
     }
   }, [user, authLoading, hasMirrorsAccess, router]);
 
-  if (authLoading || !hasMirrorsAccess) return null;
+  if (authLoading || !hasMirrorsAccess) {
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-sage border-t-transparent" />
+      </div>
+    );
+  }
 
   // Gate 1: Espelho not complete
   if (!loading && !espelhoCompleto && !isAdmin) {
