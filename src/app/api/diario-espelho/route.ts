@@ -79,14 +79,14 @@ export async function POST(req: Request) {
     })
 
     if (!response.ok) {
-      return NextResponse.json({ error: 'Erro ao gerar resposta' }, { status: 502 })
+      return NextResponse.json({ error: 'Erro ao gerar resposta' }, { status: 500 })
     }
 
     const data = await response.json()
     const pergunta = data.content?.[0]?.text || null
 
     if (!pergunta) {
-      return NextResponse.json({ error: 'Sem resposta' }, { status: 502 })
+      return NextResponse.json({ error: 'Sem resposta' }, { status: 500 })
     }
 
     // Guardar a interacção para síntese mensal
@@ -99,7 +99,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ pergunta })
   } catch {
-    return NextResponse.json({ error: 'Erro de ligação' }, { status: 502 })
+    return NextResponse.json({ error: 'Erro de ligação' }, { status: 500 })
   }
 }
 

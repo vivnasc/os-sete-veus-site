@@ -50,24 +50,28 @@ export default function EspelhoHubPage({ params }: { params: Promise<{ veu: stri
 
   const loadProgress = useCallback(async () => {
     if (!content) return;
-    const session = await supabase.auth.getSession();
-    const userId = session.data.session?.user?.id;
-    if (!userId) {
-      setLoading(false);
-      return;
-    }
+    try {
+      const session = await supabase.auth.getSession();
+      const userId = session.data.session?.user?.id;
+      if (!userId) {
+        setLoading(false);
+        return;
+      }
 
-    const { data } = await supabase
-      .from("reading_progress")
-      .select("chapter_slug, completed")
-      .eq("user_id", userId);
+      const { data } = await supabase
+        .from("reading_progress")
+        .select("chapter_slug, completed")
+        .eq("user_id", userId);
 
-    if (data) {
-      const map: Record<string, boolean> = {};
-      data.forEach((row) => {
-        map[row.chapter_slug] = row.completed;
-      });
-      setProgress(map);
+      if (data) {
+        const map: Record<string, boolean> = {};
+        data.forEach((row) => {
+          map[row.chapter_slug] = row.completed;
+        });
+        setProgress(map);
+      }
+    } catch {
+      // Falha na ligacao ao Supabase — continuar sem progresso
     }
     setLoading(false);
   }, [content]);

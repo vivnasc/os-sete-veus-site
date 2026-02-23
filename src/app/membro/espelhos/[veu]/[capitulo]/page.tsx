@@ -80,38 +80,46 @@ export default function EspelhoChapterPage({
 
   // Mark as read
   const markAsRead = useCallback(async () => {
-    const session = await supabase.auth.getSession();
-    const userId = session.data.session?.user?.id;
-    if (!userId || !chapter) return;
+    try {
+      const session = await supabase.auth.getSession();
+      const userId = session.data.session?.user?.id;
+      if (!userId || !chapter) return;
 
-    await supabase.from("reading_progress").upsert(
-      {
-        user_id: userId,
-        chapter_slug: progressKey,
-        completed: true,
-        updated_at: new Date().toISOString(),
-      },
-      { onConflict: "user_id,chapter_slug" }
-    );
-    setCompleted(true);
+      await supabase.from("reading_progress").upsert(
+        {
+          user_id: userId,
+          chapter_slug: progressKey,
+          completed: true,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: "user_id,chapter_slug" }
+      );
+      setCompleted(true);
+    } catch {
+      // Falha na ligacao — nao bloquear a leitura
+    }
   }, [chapter, progressKey]);
 
   // Load completion state
   useEffect(() => {
     if (!chapter || !progressKey) return;
     const load = async () => {
-      const session = await supabase.auth.getSession();
-      const userId = session.data.session?.user?.id;
-      if (!userId) return;
+      try {
+        const session = await supabase.auth.getSession();
+        const userId = session.data.session?.user?.id;
+        if (!userId) return;
 
-      const { data } = await supabase
-        .from("reading_progress")
-        .select("completed")
-        .eq("user_id", userId)
-        .eq("chapter_slug", progressKey)
-        .single();
+        const { data } = await supabase
+          .from("reading_progress")
+          .select("completed")
+          .eq("user_id", userId)
+          .eq("chapter_slug", progressKey)
+          .single();
 
-      if (data?.completed) setCompleted(true);
+        if (data?.completed) setCompleted(true);
+      } catch {
+        // Falha na ligacao — continuar sem estado
+      }
     };
     load();
   }, [chapter, progressKey]);

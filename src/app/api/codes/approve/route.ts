@@ -62,12 +62,17 @@ export async function POST(request: Request) {
       );
     }
 
-    // Usar admin client para bypasaar RLS
+    // Usar admin client para bypass RLS
     const supabaseAdmin = createSupabaseAdminClient();
-    const db = supabaseAdmin || supabase;
+    if (!supabaseAdmin) {
+      return NextResponse.json(
+        { error: "Servico temporariamente indisponivel" },
+        { status: 503 }
+      );
+    }
 
     // Busca o pedido
-    const { data: requestData, error: requestError } = await db
+    const { data: requestData, error: requestError } = await supabaseAdmin
       .from("livro_code_requests")
       .select("*")
       .eq("id", requestId)
@@ -91,7 +96,7 @@ export async function POST(request: Request) {
     let code = "";
     for (let attempt = 0; attempt < 10; attempt++) {
       const candidate = generateCode();
-      const { data: existing } = await db
+      const { data: existing } = await supabaseAdmin
         .from("livro_codes")
         .select("id")
         .eq("code", candidate)
@@ -111,7 +116,7 @@ export async function POST(request: Request) {
     }
 
     // Inserir codigo na tabela
-    const { data: insertedCode, error: insertError } = await db
+    const { data: insertedCode, error: insertError } = await supabaseAdmin
       .from("livro_codes")
       .insert({
         code,
@@ -132,7 +137,7 @@ export async function POST(request: Request) {
     }
 
     // Atualizar pedido como aprovado
-    const { error: updateError } = await db
+    const { error: updateError } = await supabaseAdmin
       .from("livro_code_requests")
       .update({
         status: "approved",
@@ -191,9 +196,14 @@ export async function DELETE(request: Request) {
     }
 
     const supabaseAdmin = createSupabaseAdminClient();
-    const db = supabaseAdmin || supabase;
+    if (!supabaseAdmin) {
+      return NextResponse.json(
+        { error: "Servico temporariamente indisponivel" },
+        { status: 503 }
+      );
+    }
 
-    const { error: updateError } = await db
+    const { error: updateError } = await supabaseAdmin
       .from("livro_code_requests")
       .update({
         status: "rejected",

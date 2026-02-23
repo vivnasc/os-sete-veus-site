@@ -20,37 +20,40 @@ export default function ContaPage() {
   const [loading, setLoading] = useState(true);
 
   const loadData = useCallback(async () => {
-    const session = await supabase.auth.getSession();
-    const userId = session.data.session?.user?.id;
-    if (!userId) {
-      setLoading(false);
-      return;
+    try {
+      const session = await supabase.auth.getSession();
+      const userId = session.data.session?.user?.id;
+      if (!userId) {
+        setLoading(false);
+        return;
+      }
+
+      const [purchasesRes, readingRes, journalRes] = await Promise.all([
+        supabase
+          .from("purchases")
+          .select("product, created_at")
+          .eq("user_id", userId),
+        supabase
+          .from("reading_progress")
+          .select("chapter_slug, completed")
+          .eq("user_id", userId),
+        supabase
+          .from("journal_entries")
+          .select("chapter_slug")
+          .eq("user_id", userId)
+          .neq("content", ""),
+      ]);
+
+      if (purchasesRes.data) setPurchases(purchasesRes.data);
+      if (readingRes.data) {
+        const map: Record<string, boolean> = {};
+        readingRes.data.forEach((row) => { map[row.chapter_slug] = row.completed; });
+        setReadingProgress(map);
+      }
+      if (journalRes.data) setJournalCount(journalRes.data.length);
+    } catch {
+      // Falha na ligacao ao Supabase
     }
-
-    const [purchasesRes, readingRes, journalRes] = await Promise.all([
-      supabase
-        .from("purchases")
-        .select("product, created_at")
-        .eq("user_id", userId),
-      supabase
-        .from("reading_progress")
-        .select("chapter_slug, completed")
-        .eq("user_id", userId),
-      supabase
-        .from("journal_entries")
-        .select("chapter_slug")
-        .eq("user_id", userId)
-        .neq("content", ""),
-    ]);
-
-    if (purchasesRes.data) setPurchases(purchasesRes.data);
-    if (readingRes.data) {
-      const map: Record<string, boolean> = {};
-      readingRes.data.forEach((row) => { map[row.chapter_slug] = row.completed; });
-      setReadingProgress(map);
-    }
-    if (journalRes.data) setJournalCount(journalRes.data.length);
-
     setLoading(false);
   }, []);
 
