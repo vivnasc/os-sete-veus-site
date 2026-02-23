@@ -15,7 +15,7 @@ import { getReadingTime, formatReadingTime } from "@/lib/readingTime";
 import Link from "next/link";
 import type { Chapter } from "@/data/ebook";
 
-const AUTHOR_EMAILS = ["viv.saraiva@gmail.com", "vivianne.saraiva@outlook.com"];
+const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
 
 export default function EspelhoChapterPage({
   params,

@@ -4,7 +4,7 @@ import { notifyCodeRequest } from '@/lib/notify-admin'
 
 export const dynamic = 'force-dynamic'
 
-const ADMIN_EMAILS = ["viv.saraiva@gmail.com", "vivianne.saraiva@outlook.com"]
+const ADMIN_EMAILS = ["viv.saraiva@gmail.com"]
 
 /**
  * POST /api/codes/request

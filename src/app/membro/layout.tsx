@@ -15,7 +15,7 @@ const memberNav = [
   { href: "/membro/conta", label: "Conta" },
 ];
 
-const AUTHOR_EMAILS = ["viv.saraiva@gmail.com", "vivianne.saraiva@outlook.com"];
+const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
 
 export default function MembroLayout({ children }: { children: React.ReactNode }) {
   const { user, loading, signOut } = useAuth();

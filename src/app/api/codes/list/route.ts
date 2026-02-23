@@ -21,7 +21,7 @@ export async function GET() {
     }
 
     // Verificar admin (via email ou role)
-    const ADMIN_EMAILS = ["viv.saraiva@gmail.com", "vivianne.saraiva@outlook.com"];
+    const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
     const isAdminEmail = ADMIN_EMAILS.includes(session.user.email || "");
 
     if (!isAdminEmail) {

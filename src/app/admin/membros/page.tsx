@@ -6,7 +6,7 @@ import { useAuth } from "@/components/AuthProvider";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 
-const ADMIN_EMAILS = ["viv.saraiva@gmail.com", "vivianne.saraiva@outlook.com"];
+const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
 
 interface Member {
   id: string;

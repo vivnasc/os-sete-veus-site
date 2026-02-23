@@ -21,7 +21,7 @@ interface Payment {
   created_at: string;
 }
 
-const ADMIN_EMAILS = ["viv.saraiva@gmail.com", "vivianne.saraiva@outlook.com"];
+const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
 
 export default function PagamentosPage() {
   const { user, profile, loading: authLoading } = useAuth();
