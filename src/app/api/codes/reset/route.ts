@@ -78,7 +78,7 @@ export async function POST(request: Request) {
     const { error } = await supabaseAdmin
       .from("livro_codes")
       .update({
-        status: "active",
+        status: "unused",
         used_at: null,
         used_by: null,
       })
@@ -90,7 +90,7 @@ export async function POST(request: Request) {
         { status: 500 }
       );
     }
-    actions.push("Codigo resetado para active");
+    actions.push("Codigo resetado para unused");
 
     return NextResponse.json({
       ok: true,
