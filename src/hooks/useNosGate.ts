@@ -22,8 +22,7 @@ import { getNosForEspelho } from "@/data/nos-collection";
 import { loadEspelho, espelhoProgressKey } from "@/lib/content-registry";
 import { supabase } from "@/lib/supabase";
 import type { Chapter } from "@/data/ebook";
-
-const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
+import { ADMIN_EMAILS } from "@/lib/constants";
 
 export function useNosGate(espelhoSlug = "veu-da-ilusao") {
   const { user, profile, loading: authLoading } = useAuth();
@@ -32,7 +31,7 @@ export function useNosGate(espelhoSlug = "veu-da-ilusao") {
   const [loading, setLoading] = useState(true);
 
   const isAdmin =
-    profile?.is_admin || AUTHOR_EMAILS.includes(user?.email || "");
+    profile?.is_admin || ADMIN_EMAILS.includes(user?.email || "");
   const hasMirrorsAccess = isAdmin || profile?.has_mirrors_access || false;
 
   // Verificar se o No esta incluido (pack3/jornada) ou comprado individualmente

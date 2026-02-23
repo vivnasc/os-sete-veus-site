@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase-server";
 import { cookies } from "next/headers";
-
-const ADMIN_EMAIL = "viv.saraiva@gmail.com";
+import { ADMIN_EMAILS, ACCESS_FLAG_MAP } from "@/lib/constants";
 
 export async function POST(request: Request) {
   try {
@@ -40,7 +39,7 @@ export async function POST(request: Request) {
     // Verificar se é admin
     const { data: userData } = await supabaseAdmin.auth.getUser(accessToken);
 
-    if (!userData.user || userData.user.email !== ADMIN_EMAIL) {
+    if (!userData.user || !ADMIN_EMAILS.includes(userData.user.email || "")) {
       return NextResponse.json(
         { error: "Acesso não autorizado" },
         { status: 403 }
@@ -96,10 +95,48 @@ export async function POST(request: Request) {
 
       if (purchaseError) {
         console.error("Purchase creation error:", purchaseError);
-        // Não falhar a confirmação por causa disso
       }
 
-      // Enviar email de boas-vindas ao cliente
+      // Actualizar flag de acesso no perfil
+      const flagToUpdate = ACCESS_FLAG_MAP[payment.access_type_code];
+      if (flagToUpdate) {
+        const { error: profileError } = await supabaseAdmin
+          .from("profiles")
+          .update({ [flagToUpdate]: true })
+          .eq("id", payment.user_id);
+
+        if (profileError) {
+          console.error("Profile access update error:", profileError);
+        }
+      }
+
+      // Actualizar purchased_products no perfil
+      const { data: currentProfile } = await supabaseAdmin
+        .from("profiles")
+        .select("purchased_products")
+        .eq("id", payment.user_id)
+        .single();
+
+      const currentProducts = currentProfile?.purchased_products || [];
+      const newProduct = {
+        type: payment.access_type_code,
+        date: new Date().toISOString(),
+        code: payment.access_type_code,
+      };
+
+      const alreadyExists = currentProducts.some(
+        (p: { type: string }) => p.type === newProduct.type
+      );
+
+      if (!alreadyExists) {
+        await supabaseAdmin
+          .from("profiles")
+          .update({
+            purchased_products: [...currentProducts, newProduct],
+          })
+          .eq("id", payment.user_id);
+      }
+
       // TODO: Implementar envio de email + WhatsApp
     } else {
       // Enviar email de rejeição

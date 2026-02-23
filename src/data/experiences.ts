@@ -29,7 +29,7 @@ export const PRICING = {
   pack3: { usd: 69, mt: 4485, brl: 279, eur: 64 },
   journey: { usd: 149, mt: 9685, brl: 597, eur: 137 },
   // Savings
-  pack3Savings: 18, // percentage
+  pack3Savings: 21, // percentage (3x$29=$87, pack=$69, saves $18 = ~21%)
   journeySavings: 27, // percentage
 } as const;
 

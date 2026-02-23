@@ -202,7 +202,7 @@ function OverviewTab() {
           <MetricCard
             label="Pack de 3"
             value="$69"
-            sub="Poupa 18%"
+            sub="Poupa 21%"
           />
           <MetricCard
             label="Jornada completa"
