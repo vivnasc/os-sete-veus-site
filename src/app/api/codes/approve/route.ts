@@ -3,7 +3,7 @@ import { createSupabaseServerClient, createSupabaseAdminClient } from "@/lib/sup
 
 export const dynamic = "force-dynamic";
 
-const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
+const ADMIN_EMAILS = ["viv.saraiva@gmail.com", "vivianne.saraiva@outlook.com"];
 
 /**
  * Gera codigo unico LIVRO-XXXXX (sem depender de RPC do Supabase)

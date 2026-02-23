@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { toPng } from "html-to-image";
 
-const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
+const AUTHOR_EMAILS = ["viv.saraiva@gmail.com", "vivianne.saraiva@outlook.com"];
 
 // ─── PRINTS (fundos) ────────────────────────────────────────────────────────
 

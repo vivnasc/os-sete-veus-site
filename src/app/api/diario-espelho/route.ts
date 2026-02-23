@@ -37,7 +37,7 @@ export async function POST(req: Request) {
     .eq('id', session.user.id)
     .single()
 
-  const AUTHOR_EMAILS = ['viv.saraiva@gmail.com']
+  const AUTHOR_EMAILS = ['viv.saraiva@gmail.com', 'vivianne.saraiva@outlook.com']
   const isAdmin = profile?.is_admin || AUTHOR_EMAILS.includes(session.user.email || '')
   const hasAccess = isAdmin || profile?.has_book_access
 

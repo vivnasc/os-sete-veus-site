@@ -13,7 +13,7 @@ type Stats = {
   leitoresPorVeu: Record<number, number>
 }
 
-const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
+const ADMIN_EMAILS = ["viv.saraiva@gmail.com", "vivianne.saraiva@outlook.com"];
 
 export default function AutoraDashboardPage() {
   const { user, profile, loading } = useAuth()

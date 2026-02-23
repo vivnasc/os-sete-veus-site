@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase-server";
 
-const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
+const ADMIN_EMAILS = ["viv.saraiva@gmail.com", "vivianne.saraiva@outlook.com"];
 
 /**
  * POST /api/admin/grant-access

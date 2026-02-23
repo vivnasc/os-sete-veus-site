@@ -31,7 +31,7 @@ export default function PainelPage() {
     return null;
   }
 
-  const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
+  const AUTHOR_EMAILS = ["viv.saraiva@gmail.com", "vivianne.saraiva@outlook.com"];
   if (!AUTHOR_EMAILS.includes(user.email || "")) {
     router.push("/membro");
     return null;

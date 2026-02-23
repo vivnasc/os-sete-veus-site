@@ -3,7 +3,7 @@
  */
 
 // Emails com acesso de admin/autora
-export const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
+export const ADMIN_EMAILS = ["viv.saraiva@gmail.com", "vivianne.saraiva@outlook.com"];
 
 // Mapeamento: access_type_code -> flag no perfil
 export const ACCESS_FLAG_MAP: Record<string, string> = {

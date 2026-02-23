@@ -11,7 +11,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ContentModule } from "@/lib/content-registry";
 
-const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
+const AUTHOR_EMAILS = ["viv.saraiva@gmail.com", "vivianne.saraiva@outlook.com"];
 
 export default function EspelhoHubPage({ params }: { params: Promise<{ veu: string }> }) {
   const { veu } = use(params);

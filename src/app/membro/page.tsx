@@ -121,7 +121,7 @@ export default function MembroDashboard() {
   const nextNosChapter = nosChapters.find((ch) => !readingProgress[`nos-${ch.slug}`]) || nosChapters[0];
 
   // Access
-  const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
+  const AUTHOR_EMAILS = ["viv.saraiva@gmail.com", "vivianne.saraiva@outlook.com"];
   const isAdmin = profile?.is_admin || AUTHOR_EMAILS.includes(user?.email || "");
   const hasBookAccess = isAdmin || profile?.has_book_access || false;
   const hasMirrorsAccess = isAdmin || profile?.has_mirrors_access || false;

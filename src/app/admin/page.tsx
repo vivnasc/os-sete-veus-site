@@ -15,7 +15,7 @@ interface Stats {
   totalReconhecimentos: number;
 }
 
-const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
+const ADMIN_EMAILS = ["viv.saraiva@gmail.com", "vivianne.saraiva@outlook.com"];
 
 export default function AdminPage() {
   const { user, profile, loading: authLoading } = useAuth();

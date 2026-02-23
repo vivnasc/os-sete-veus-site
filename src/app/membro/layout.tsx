@@ -15,7 +15,7 @@ const memberNav = [
   { href: "/membro/conta", label: "Conta" },
 ];
 
-const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
+const AUTHOR_EMAILS = ["viv.saraiva@gmail.com", "vivianne.saraiva@outlook.com"];
 
 export default function MembroLayout({ children }: { children: React.ReactNode }) {
   const { user, loading, signOut } = useAuth();
@@ -73,10 +73,15 @@ export default function MembroLayout({ children }: { children: React.ReactNode }
           <div className="flex items-center gap-4">
             <button
               onClick={async () => {
-                await signOut();
-                router.push("/");
+                try {
+                  await signOut();
+                } catch {
+                  // Continuar mesmo se signOut falhar
+                }
+                // Hard redirect para limpar todo o estado
+                window.location.href = "/";
               }}
-              className="font-sans text-[0.7rem] uppercase tracking-[0.1em] text-brown-400 transition-colors hover:text-brown-700"
+              className="rounded px-3 py-1.5 font-sans text-[0.75rem] uppercase tracking-[0.1em] text-brown-500 transition-colors hover:bg-brown-100 hover:text-brown-700"
             >
               Sair
             </button>
