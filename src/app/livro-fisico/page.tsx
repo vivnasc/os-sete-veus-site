@@ -167,7 +167,7 @@ export default function LivroFisicoPage() {
               {
                 number: "2",
                 title: "Regista-te",
-                desc: "Usa o código em /registar-livro para criar a tua conta",
+                desc: "Usa o codigo no site para criar a tua conta e aceder ao conteudo",
               },
               {
                 number: "3",
@@ -193,12 +193,18 @@ export default function LivroFisicoPage() {
               </div>
             ))}
           </div>
-          <div className="mt-10 text-center">
+          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/registar-livro"
-              className="inline-block rounded-lg border-2 border-brown-700 bg-transparent px-8 py-3 font-sans text-sm font-medium uppercase tracking-wider text-brown-700 transition-all hover:bg-brown-700 hover:text-white"
+              className="inline-block rounded-lg border-2 border-brown-700 bg-brown-700 px-8 py-3 font-sans text-sm font-medium uppercase tracking-wider text-white transition-all hover:bg-transparent hover:text-brown-700"
             >
-              Já tenho o código — Registar agora
+              Ja tenho o codigo
+            </Link>
+            <Link
+              href="/pedir-codigo"
+              className="inline-block rounded-lg border-2 border-brown-400 bg-transparent px-8 py-3 font-sans text-sm font-medium uppercase tracking-wider text-brown-600 transition-all hover:border-brown-700 hover:text-brown-700"
+            >
+              Pedir codigo de acesso
             </Link>
           </div>
         </div>
