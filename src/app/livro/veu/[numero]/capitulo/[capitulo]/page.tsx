@@ -2,13 +2,68 @@
 
 import { useParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
-import { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { useAuth } from '@/components/AuthProvider'
 import { useAccess } from '@/hooks/useAccess'
+import { useNivelLeitura } from '@/hooks/useNivelLeitura'
 import livroData from '@/data/livro-7-veus.json'
+import { glossario } from '@/data/livro-niveis/glossario'
+import { veu1Niveis } from '@/data/livro-niveis/veu-1'
+import type { NivelCapitulo } from '@/data/livro-niveis/types'
 import ReflexoesDrawer from '@/components/ReflexoesDrawer'
+import NivelSelector from '@/components/livro/NivelSelector'
+import ResumoAcessivel from '@/components/livro/ResumoAcessivel'
+import PerguntasOrientadoras from '@/components/livro/PerguntasOrientadoras'
+import NotaContextual from '@/components/livro/NotaContextual'
+import GlossarioTooltip from '@/components/livro/GlossarioTooltip'
+import ExemplosConcretos from '@/components/livro/ExemplosConcretos'
+
+// Companion data per veu (lazy: only veu 1 for now)
+const niveisData: Record<number, NivelCapitulo[]> = {
+  1: veu1Niveis,
+}
+
+// Glossary term replacement for Semente and Raiz levels
+function aplicarGlossario(
+  texto: string,
+  termosCapitulo: string[],
+  modoNoturno: boolean
+): React.ReactNode {
+  if (termosCapitulo.length === 0) return texto
+
+  // Build set of glossary entries for this chapter
+  const entradas = termosCapitulo
+    .map(t => glossario.find(g => g.termo.toLowerCase() === t.toLowerCase()))
+    .filter(Boolean) as typeof glossario
+
+  if (entradas.length === 0) return texto
+
+  // Sort by length descending to match longer terms first
+  const sorted = [...entradas].sort((a, b) => b.termo.length - a.termo.length)
+
+  // Build regex with word boundaries
+  const pattern = new RegExp(
+    `\\b(${sorted.map(e => e.termo.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})\\b`,
+    'gi'
+  )
+
+  const parts = texto.split(pattern)
+  if (parts.length === 1) return texto
+
+  return parts.map((part, i) => {
+    const entry = sorted.find(e => e.termo.toLowerCase() === part.toLowerCase())
+    if (entry) {
+      return (
+        <GlossarioTooltip key={i} entry={entry} modoNoturno={modoNoturno}>
+          {part}
+        </GlossarioTooltip>
+      )
+    }
+    return part
+  })
+}
 
 // Corrigir caracteres corrompidos da conversão DOCX (ligaduras fi/fl/qu perdidas)
 function corrigirTexto(texto: string): string {
@@ -84,6 +139,10 @@ export default function CapituloPage() {
   const veu = livroData.veus[numeroVeu - 1]
   const capitulo = veu?.capitulos.find(c => c.numero === numeroCapitulo)
 
+  // Companion data for the current chapter (if available)
+  const nivelCapitulo = niveisData[numeroVeu]?.find(n => n.capitulo_numero === numeroCapitulo) ?? null
+
+  const { nivel, setNivel } = useNivelLeitura()
   const [modoLeitura, setModoLeitura] = useState<'contemplativo' | 'normal'>('contemplativo')
   const [modoNoturno, setModoNoturno] = useState(false)
   const [mostrarPausa, setMostrarPausa] = useState(false)
@@ -271,13 +330,16 @@ export default function CapituloPage() {
             </span>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            {/* Nivel de Leitura */}
+            <NivelSelector nivel={nivel} onSelect={setNivel} modoNoturno={modoNoturno} />
+
             {/* Modo Leitura */}
             <button
               onClick={() => setModoLeitura(m => m === 'contemplativo' ? 'normal' : 'contemplativo')}
               className="text-xs px-3 py-1 rounded-full border border-stone-300 dark:border-stone-600 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
             >
-              {modoLeitura === 'contemplativo' ? '🧘 Contemplativo' : '📖 Normal'}
+              {modoLeitura === 'contemplativo' ? 'Contemplativo' : 'Normal'}
             </button>
 
             {/* Modo Noturno */}
@@ -285,7 +347,7 @@ export default function CapituloPage() {
               onClick={() => setModoNoturno(!modoNoturno)}
               className="text-xs px-3 py-1 rounded-full border border-stone-300 dark:border-stone-600 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
             >
-              {modoNoturno ? '☀️' : '🌙'}
+              {modoNoturno ? 'Dia' : 'Noite'}
             </button>
           </div>
         </div>
@@ -337,32 +399,77 @@ export default function CapituloPage() {
           </h1>
         </motion.div>
 
+        {/* Conteudo complementar (Semente / Raiz) */}
+        {nivelCapitulo && nivel === 'semente' && (
+          <ResumoAcessivel
+            paragrafos={nivelCapitulo.resumo_acessivel}
+            modoNoturno={modoNoturno}
+          />
+        )}
+
+        {nivelCapitulo && nivel !== 'arvore' && (
+          <PerguntasOrientadoras
+            perguntas={nivelCapitulo.perguntas_orientadoras}
+            nivel={nivel}
+            modoNoturno={modoNoturno}
+          />
+        )}
+
+        {nivelCapitulo && nivel === 'semente' && nivelCapitulo.exemplos_concretos.length > 0 && (
+          <ExemplosConcretos
+            exemplos={nivelCapitulo.exemplos_concretos}
+            modoNoturno={modoNoturno}
+          />
+        )}
+
+        {/* Aviso quando conteudo complementar ainda nao existe */}
+        {!nivelCapitulo && nivel !== 'arvore' && (
+          <div className={`mb-10 rounded-xl px-6 py-4 text-center ${
+            modoNoturno ? 'bg-stone-800/30' : 'bg-stone-50/70'
+          }`}>
+            <p className={`text-sm font-sans italic ${
+              modoNoturno ? 'text-stone-500' : 'text-stone-400'
+            }`}>
+              Conteudo complementar em preparacao para este capitulo.
+            </p>
+          </div>
+        )}
+
         {/* Texto do Capítulo */}
         {modoLeitura === 'normal' ? (
           // Modo Normal: Todo o texto de uma vez
           <div className="space-y-6">
             {paragrafos.map((item, index) => (
-              item.tipo === 'subtitulo' ? (
-                <motion.h2
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                  className={`mt-12 mb-2 text-xl md:text-2xl font-serif font-semibold ${modoNoturno ? cores.textDark : cores.text}`}
-                >
-                  {item.texto}
-                </motion.h2>
-              ) : (
-                <motion.p
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                  className={`text-lg md:text-xl leading-relaxed ${modoNoturno ? cores.textDark : cores.text} font-serif`}
-                >
-                  {item.texto}
-                </motion.p>
-              )
+              <React.Fragment key={index}>
+                {item.tipo === 'subtitulo' ? (
+                  <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    className={`mt-12 mb-2 text-xl md:text-2xl font-serif font-semibold ${modoNoturno ? cores.textDark : cores.text}`}
+                  >
+                    {item.texto}
+                  </motion.h2>
+                ) : (
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    className={`text-lg md:text-xl leading-relaxed ${modoNoturno ? cores.textDark : cores.text} font-serif`}
+                  >
+                    {nivel !== 'arvore' && nivelCapitulo
+                      ? aplicarGlossario(item.texto, nivelCapitulo.termos_destacados, modoNoturno)
+                      : item.texto}
+                  </motion.p>
+                )}
+                {/* Notas contextuais (Raiz) */}
+                {nivel === 'raiz' && nivelCapitulo?.notas_contextuais
+                  .filter(n => n.paragrafo_indice === index)
+                  .map((nota, ni) => (
+                    <NotaContextual key={`nota-${index}-${ni}`} texto={nota.texto} modoNoturno={modoNoturno} />
+                  ))
+                }
+              </React.Fragment>
             ))}
           </div>
         ) : (
@@ -375,23 +482,35 @@ export default function CapituloPage() {
               exit={{ opacity: 0, y: -20 }}
               className="space-y-6"
             >
-              {paginas[paginaAtual]?.map((item, idx) => (
-                item.tipo === 'subtitulo' ? (
-                  <h2
-                    key={idx}
-                    className={`text-xl md:text-3xl font-serif font-semibold ${idx > 0 ? 'mt-8' : ''} ${modoNoturno ? cores.textDark : cores.text}`}
-                  >
-                    {item.texto}
-                  </h2>
-                ) : (
-                  <p
-                    key={idx}
-                    className={`text-lg md:text-2xl leading-relaxed ${modoNoturno ? cores.textDark : cores.text} font-serif`}
-                  >
-                    {item.texto}
-                  </p>
+              {paginas[paginaAtual]?.map((item, idx) => {
+                // Calculate the global paragraph index for contextual notes
+                const globalIdx = paginas.slice(0, paginaAtual).reduce((sum, p) => sum + p.length, 0) + idx
+                return (
+                  <React.Fragment key={idx}>
+                    {item.tipo === 'subtitulo' ? (
+                      <h2
+                        className={`text-xl md:text-3xl font-serif font-semibold ${idx > 0 ? 'mt-8' : ''} ${modoNoturno ? cores.textDark : cores.text}`}
+                      >
+                        {item.texto}
+                      </h2>
+                    ) : (
+                      <p
+                        className={`text-lg md:text-2xl leading-relaxed ${modoNoturno ? cores.textDark : cores.text} font-serif`}
+                      >
+                        {nivel !== 'arvore' && nivelCapitulo
+                          ? aplicarGlossario(item.texto, nivelCapitulo.termos_destacados, modoNoturno)
+                          : item.texto}
+                      </p>
+                    )}
+                    {nivel === 'raiz' && nivelCapitulo?.notas_contextuais
+                      .filter(n => n.paragrafo_indice === globalIdx)
+                      .map((nota, ni) => (
+                        <NotaContextual key={`nota-${globalIdx}-${ni}`} texto={nota.texto} modoNoturno={modoNoturno} />
+                      ))
+                    }
+                  </React.Fragment>
                 )
-              ))}
+              })}
             </motion.div>
 
             {/* Progresso */}

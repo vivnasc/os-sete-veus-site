@@ -7,10 +7,13 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useAuth } from '@/components/AuthProvider'
 import { useAccess } from '@/hooks/useAccess'
+import { useNivelLeitura } from '@/hooks/useNivelLeitura'
+import NivelOnboarding from '@/components/livro/NivelOnboarding'
 
 export default function LivroMandalaPage() {
   const { user, loading } = useAuth()
   const { hasBookAccess, isLoading: accessLoading } = useAccess()
+  const { isFirstVisit, setNivel, loaded: nivelLoaded } = useNivelLeitura()
   const router = useRouter()
   const [hoveredVeu, setHoveredVeu] = useState<number | null>(null)
 
@@ -251,6 +254,11 @@ export default function LivroMandalaPage() {
         Não há pressa. Há presença.<br />
         <span className="italic">Respira. Depois, avança.</span>
       </motion.p>
+
+      {/* Onboarding de nivel de leitura (primeira visita) */}
+      {nivelLoaded && (
+        <NivelOnboarding open={isFirstVisit} onSelect={setNivel} />
+      )}
     </div>
   )
 }
