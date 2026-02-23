@@ -123,6 +123,33 @@ export async function POST(request: Request) {
       }
     }
 
+    // VERIFICACAO: confirmar que o perfil tem has_book_access = true
+    // Resolve o caso em que um auth trigger sobrescreve o upsert
+    await new Promise(resolve => setTimeout(resolve, 500));
+    const { data: verifyProfile } = await supabaseAdmin
+      .from("profiles")
+      .select("has_book_access")
+      .eq("id", userId)
+      .single();
+
+    if (verifyProfile && !verifyProfile.has_book_access) {
+      console.warn("[redeem] has_book_access foi resetado apos upsert, forcando update");
+      await supabaseAdmin
+        .from("profiles")
+        .update({ has_book_access: true })
+        .eq("id", userId);
+    } else if (!verifyProfile) {
+      // Perfil nao existe de todo — forcar insert
+      console.warn("[redeem] Perfil nao encontrado apos upsert, forcando insert");
+      await supabaseAdmin
+        .from("profiles")
+        .insert({
+          id: userId,
+          email: email.toLowerCase().trim(),
+          has_book_access: true,
+        });
+    }
+
     // Criar registo de compra
     await supabaseAdmin.from("purchases").insert({
       user_id: userId,
