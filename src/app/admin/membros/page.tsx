@@ -107,12 +107,26 @@ export default function AdminMembrosPage() {
               <h1 className="font-display text-3xl text-forest">Membros</h1>
               <p className="mt-1 text-sage">Gerir acessos dos membros</p>
             </div>
-            <Link
-              href="/admin"
-              className="text-sm text-sage hover:text-forest transition-colors"
-            >
-              Voltar ao painel
-            </Link>
+            <div className="flex items-center gap-4">
+              <Link
+                href="/admin"
+                className="text-sm text-sage hover:text-forest transition-colors"
+              >
+                Voltar ao painel
+              </Link>
+              <button
+                onClick={async () => {
+                  try {
+                    const { supabase: sb } = await import("@/lib/supabase");
+                    await sb.auth.signOut();
+                  } catch {}
+                  window.location.href = "/";
+                }}
+                className="rounded border border-sage/30 px-3 py-1.5 text-sm text-sage transition-colors hover:bg-sage/10 hover:text-forest"
+              >
+                Sair
+              </button>
+            </div>
           </div>
         </div>
       </div>

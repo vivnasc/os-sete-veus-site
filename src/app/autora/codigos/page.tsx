@@ -232,6 +232,28 @@ export default function AutoraCodigosPage() {
     }
   }
 
+  const handleResetCode = async (code: string) => {
+    if (!confirm(`Resetar codigo ${code}? Podera ser usado novamente.`)) return
+
+    try {
+      const res = await fetch('/api/codes/reset', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code }),
+      })
+
+      const data = await res.json()
+
+      if (res.ok && data.ok) {
+        loadData()
+      } else {
+        alert('Erro ao resetar: ' + (data.error || 'Erro desconhecido'))
+      }
+    } catch {
+      alert('Erro de ligacao')
+    }
+  }
+
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text)
   }
@@ -615,12 +637,15 @@ export default function AutoraCodigosPage() {
                     <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-brown-700">
                       Data
                     </th>
+                    <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-brown-700">
+                      Accoes
+                    </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-brown-100">
                   {allCodes.length === 0 ? (
                     <tr>
-                      <td colSpan={4} className="px-4 py-8 text-center text-brown-600">
+                      <td colSpan={5} className="px-4 py-8 text-center text-brown-600">
                         Nenhum codigo gerado ainda
                       </td>
                     </tr>
@@ -654,6 +679,16 @@ export default function AutoraCodigosPage() {
                           </td>
                           <td className="px-4 py-3 text-sm text-brown-600">
                             {formatDate(code.generated_at)}
+                          </td>
+                          <td className="px-4 py-3 text-sm">
+                            {code.status === 'used' && (
+                              <button
+                                onClick={() => handleResetCode(code.code)}
+                                className="rounded bg-orange-50 px-3 py-1 text-xs font-medium text-orange-700 transition-colors hover:bg-orange-100"
+                              >
+                                Resetar
+                              </button>
+                            )}
                           </td>
                         </tr>
                       ))
