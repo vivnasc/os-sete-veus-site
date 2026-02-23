@@ -31,6 +31,7 @@ export default function MembroDashboard() {
   const [espelhoData, setEspelhoData] = useState<EspelhoInfo[]>([]);
   const [syncing, setSyncing] = useState(false);
   const [syncAttempted, setSyncAttempted] = useState(false);
+  const [syncResult, setSyncResult] = useState<Record<string, unknown> | null>(null);
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -107,12 +108,15 @@ export default function MembroDashboard() {
     fetch("/api/profile/sync", { method: "POST" })
       .then((res) => res.json())
       .then(async (data) => {
+        setSyncResult(data);
         if (data.ok && data.action !== "no_repair_needed") {
           // Perfil reparado — recarregar
           await refreshProfile();
         }
       })
-      .catch(() => {})
+      .catch((err) => {
+        setSyncResult({ error: "fetch_failed", message: String(err) });
+      })
       .finally(() => setSyncing(false));
   }, [authLoading, user, profile, syncAttempted, refreshProfile]);
 
@@ -490,22 +494,48 @@ export default function MembroDashboard() {
                   </Link>
                 </div>
                 {syncAttempted && (
-                  <button
-                    onClick={async () => {
-                      setSyncing(true);
-                      try {
-                        const res = await fetch("/api/profile/sync", { method: "POST" });
-                        const data = await res.json();
-                        if (data.ok && data.action !== "no_repair_needed") {
-                          await refreshProfile();
+                  <div className="mt-4">
+                    <button
+                      onClick={async () => {
+                        setSyncing(true);
+                        setSyncResult(null);
+                        try {
+                          const res = await fetch("/api/profile/sync", { method: "POST" });
+                          const data = await res.json();
+                          setSyncResult(data);
+                          if (data.ok && data.action !== "no_repair_needed") {
+                            await refreshProfile();
+                          }
+                        } catch (err) {
+                          setSyncResult({ error: "fetch_failed", message: String(err) });
                         }
-                      } catch {}
-                      setSyncing(false);
-                    }}
-                    className="mt-4 text-sm text-brown-400 underline hover:text-brown-600"
-                  >
-                    Ja registei um código — verificar de novo
-                  </button>
+                        setSyncing(false);
+                      }}
+                      className="text-sm text-brown-400 underline hover:text-brown-600"
+                    >
+                      Ja registei um código — verificar de novo
+                    </button>
+                  </div>
+                )}
+
+                {/* Diagnostico visivel */}
+                {syncAttempted && (
+                  <div className="mt-6 rounded-lg border border-brown-100 bg-brown-50/50 p-4 text-left">
+                    <p className="mb-2 font-mono text-[0.6rem] font-bold uppercase tracking-wider text-brown-400">Diagnostico</p>
+                    <div className="space-y-1 font-mono text-[0.65rem] text-brown-500">
+                      <p>user.id: {user?.id ?? "null"}</p>
+                      <p>user.email: {user?.email ?? "null"}</p>
+                      <p>profile: {profile ? JSON.stringify({
+                        id: profile.id,
+                        email: profile.email,
+                        has_book_access: profile.has_book_access,
+                        has_mirrors_access: profile.has_mirrors_access,
+                        is_admin: profile.is_admin,
+                      }) : "null"}</p>
+                      <p>authLoading: {String(authLoading)}</p>
+                      <p>sync: {syncResult ? JSON.stringify(syncResult) : "a correr..."}</p>
+                    </div>
+                  </div>
                 )}
               </>
             )}
