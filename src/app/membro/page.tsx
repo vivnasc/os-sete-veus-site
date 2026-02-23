@@ -23,12 +23,14 @@ type EspelhoInfo = {
 };
 
 export default function MembroDashboard() {
-  const { user, profile, loading: authLoading } = useAuth();
+  const { user, profile, loading: authLoading, refreshProfile } = useAuth();
   const router = useRouter();
   const [readingProgress, setReadingProgress] = useState<Record<string, boolean>>({});
   const [journalCount, setJournalCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const [espelhoData, setEspelhoData] = useState<EspelhoInfo[]>([]);
+  const [syncing, setSyncing] = useState(false);
+  const [syncAttempted, setSyncAttempted] = useState(false);
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -91,6 +93,28 @@ export default function MembroDashboard() {
   useEffect(() => {
     loadProgress();
   }, [loadProgress]);
+
+  // Auto-sync: se o utilizador tem sessao mas o perfil nao tem acesso,
+  // verificar e reparar via API (resolve perfis partidos apos registo de codigo)
+  useEffect(() => {
+    if (authLoading || !user || syncAttempted) return;
+    const hasAnyAccess = profile?.has_book_access || profile?.has_mirrors_access || profile?.is_admin;
+    if (hasAnyAccess) return;
+
+    // Perfil sem acesso — tentar sincronizar
+    setSyncing(true);
+    setSyncAttempted(true);
+    fetch("/api/profile/sync", { method: "POST" })
+      .then((res) => res.json())
+      .then(async (data) => {
+        if (data.ok && data.action !== "no_repair_needed") {
+          // Perfil reparado — recarregar
+          await refreshProfile();
+        }
+      })
+      .catch(() => {})
+      .finally(() => setSyncing(false));
+  }, [authLoading, user, profile, syncAttempted, refreshProfile]);
 
   // Compute progress for each espelho
   function getEspelhoProgress(slug: string, chapters: Chapter[]) {
@@ -436,26 +460,55 @@ export default function MembroDashboard() {
         {/* No access message */}
         {!hasBookAccess && !hasMirrorsAccess && !authLoading && (
           <div className="mt-10 rounded-2xl border-2 border-brown-100 bg-white p-8 text-center">
-            <p className="font-serif text-lg text-brown-700">
-              Ainda não tens acesso a nenhum conteúdo
-            </p>
-            <p className="mt-2 text-sm text-brown-500">
-              Regista o teu código do livro físico ou adquire uma experiência digital
-            </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
-              <Link
-                href="/registar-livro"
-                className="rounded-lg bg-sage px-6 py-3 font-sans text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-sage-dark"
-              >
-                Registar código
-              </Link>
-              <Link
-                href="/comprar/espelhos"
-                className="rounded-lg border-2 border-sage bg-transparent px-6 py-3 font-sans text-sm font-medium uppercase tracking-wider text-sage transition-all hover:bg-sage hover:text-white"
-              >
-                Ver Espelhos
-              </Link>
-            </div>
+            {syncing ? (
+              <>
+                <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-brown-200 border-t-sage" />
+                <p className="mt-4 font-serif text-base text-brown-500">
+                  A verificar o teu acesso...
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="font-serif text-lg text-brown-700">
+                  Ainda não tens acesso a nenhum conteúdo
+                </p>
+                <p className="mt-2 text-sm text-brown-500">
+                  Regista o teu código do livro físico ou adquire uma experiência digital
+                </p>
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
+                  <Link
+                    href="/registar-livro"
+                    className="rounded-lg bg-sage px-6 py-3 font-sans text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-sage-dark"
+                  >
+                    Registar código
+                  </Link>
+                  <Link
+                    href="/comprar/espelhos"
+                    className="rounded-lg border-2 border-sage bg-transparent px-6 py-3 font-sans text-sm font-medium uppercase tracking-wider text-sage transition-all hover:bg-sage hover:text-white"
+                  >
+                    Ver Espelhos
+                  </Link>
+                </div>
+                {syncAttempted && (
+                  <button
+                    onClick={async () => {
+                      setSyncing(true);
+                      try {
+                        const res = await fetch("/api/profile/sync", { method: "POST" });
+                        const data = await res.json();
+                        if (data.ok && data.action !== "no_repair_needed") {
+                          await refreshProfile();
+                        }
+                      } catch {}
+                      setSyncing(false);
+                    }}
+                    className="mt-4 text-sm text-brown-400 underline hover:text-brown-600"
+                  >
+                    Ja registei um código — verificar de novo
+                  </button>
+                )}
+              </>
+            )}
           </div>
         )}
 
