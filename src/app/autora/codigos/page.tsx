@@ -233,18 +233,19 @@ export default function AutoraCodigosPage() {
   }
 
   const handleResetCode = async (code: string) => {
-    if (!confirm(`Resetar codigo ${code}? Podera ser usado novamente.`)) return
+    if (!confirm(`Resetar codigo ${code}?\n\nIsto vai:\n- Marcar o codigo como disponivel\n- Remover o acesso do utilizador que o usou\n- Apagar o registo de compra\n\nPode ser usado novamente para testar o fluxo completo.`)) return
 
     try {
       const res = await fetch('/api/codes/reset', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code }),
+        body: JSON.stringify({ code, resetUserAccess: true }),
       })
 
       const data = await res.json()
 
       if (res.ok && data.ok) {
+        alert(data.message)
         loadData()
       } else {
         alert('Erro ao resetar: ' + (data.error || 'Erro desconhecido'))
