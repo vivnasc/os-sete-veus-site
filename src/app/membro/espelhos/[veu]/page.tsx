@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { loadEspelho, isEspelhoRegistered, espelhoProgressKey } from "@/lib/content-registry";
 import { getExperience } from "@/data/experiences";
 import { getNosForEspelho } from "@/data/nos-collection";
+import { getPraticasParaVeu } from "@/data/praticas-audio";
 import { supabase } from "@/lib/supabase";
 import Image from "next/image";
 import Link from "next/link";
@@ -29,6 +30,7 @@ export default function EspelhoHubPage({ params }: { params: Promise<{ veu: stri
 
   const experience = getExperience(veu);
   const nosBook = getNosForEspelho(veu);
+  const praticas = getPraticasParaVeu(veu);
 
   // Load espelho content from registry
   useEffect(() => {
@@ -217,6 +219,54 @@ export default function EspelhoHubPage({ params }: { params: Promise<{ veu: stri
             );
           })}
         </div>
+
+        {/* Práticas em áudio deste véu */}
+        {praticas.length > 0 && (
+          <div className="mt-10">
+            <p className="mb-4 text-center font-sans text-[0.65rem] uppercase tracking-[0.25em] text-brown-400">
+              Práticas em áudio
+            </p>
+            <div className="space-y-3">
+              {praticas.map((p) => (
+                <div
+                  key={p.label}
+                  className="overflow-hidden rounded-2xl border border-brown-100 bg-white shadow-sm"
+                >
+                  <div className="flex items-start gap-4 p-5">
+                    <span
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-lg text-white"
+                      style={{ backgroundColor: p.color }}
+                      dangerouslySetInnerHTML={{ __html: p.icon }}
+                    />
+                    <div className="flex-1">
+                      <h3 className="font-serif text-base text-brown-800">{p.label}</h3>
+                      <p
+                        className="font-sans text-[0.65rem] uppercase tracking-[0.15em]"
+                        style={{ color: p.color }}
+                      >
+                        {p.subtitle}
+                      </p>
+                      <p className="mt-2 font-serif text-sm leading-relaxed text-brown-500">
+                        {p.desc}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="border-t border-brown-50 px-5 py-4">
+                    <audio
+                      controls
+                      preload="metadata"
+                      className="w-full"
+                      style={{ height: "40px", borderRadius: "9999px" }}
+                      src={p.file}
+                    >
+                      O teu navegador não suporta o elemento de áudio.
+                    </audio>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* No teaser (locked — espelho nao completo) */}
         {nosBook && !loading && !espelhoCompleto && completedCount > 0 && (

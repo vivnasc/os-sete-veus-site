@@ -488,24 +488,6 @@ export default function MembroDashboard() {
               </Link>
             )}
 
-            {hasBookAccess && (
-              <Link
-                href="/membro/praticas"
-                className="group rounded-2xl border border-brown-100 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
-              >
-                <div className="flex items-center gap-4">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-veu-5 to-veu-7 text-lg text-white">
-                    &#9835;
-                  </span>
-                  <div>
-                    <h3 className="font-serif text-base text-brown-800">Práticas em Áudio</h3>
-                    <p className="mt-0.5 font-sans text-xs text-brown-400">
-                      4 práticas guiadas
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            )}
 
             {hasBookAccess && (
               <Link

@@ -82,7 +82,7 @@ export default function UpsellBridge({ journalCount, chaptersCompleted }: Props)
         onDismiss={handleDismiss}
         quote="Às vezes o corpo precisa de sentir o que a mente já começou a entender."
         hint="As práticas guiadas — meditação e respiração — foram feitas para integrar o que estás a descobrir na leitura."
-        linkHref="/membro/praticas"
+        linkHref="/membro/espelhos/veu-da-ilusao"
         linkText="Experimenta uma prática"
       />
     );
