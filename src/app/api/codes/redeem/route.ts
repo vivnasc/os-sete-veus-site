@@ -98,6 +98,7 @@ export async function POST(request: Request) {
       .upsert(
         {
           id: userId,
+          email: email.toLowerCase().trim(),
           has_book_access: true,
         },
         { onConflict: "id" }
@@ -112,6 +113,7 @@ export async function POST(request: Request) {
         .upsert(
           {
             id: userId,
+            email: email.toLowerCase().trim(),
             has_book_access: true,
           },
           { onConflict: "id" }

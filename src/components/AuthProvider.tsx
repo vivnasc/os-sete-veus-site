@@ -26,6 +26,7 @@ type AuthContextType = {
   loading: boolean;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
+  refreshProfile: () => Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextType>({
@@ -34,6 +35,7 @@ const AuthContext = createContext<AuthContextType>({
   loading: true,
   signIn: async () => ({ error: null }),
   signOut: async () => {},
+  refreshProfile: async () => {},
 });
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
@@ -42,13 +44,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Timeout de segurança: se o Supabase demorar >5s, desbloquear a app
+    // Timeout de segurança: se o Supabase demorar >8s, desbloquear a app
+    // NÃO limpar este timeout até loading ser false — previne loading infinito
     const timeout = setTimeout(() => {
       setLoading(false);
-    }, 5000);
+    }, 8000);
 
     supabase.auth.getSession().then(async ({ data: { session } }) => {
-      clearTimeout(timeout);
       setUser(session?.user ?? null);
 
       if (session?.user) {
@@ -59,6 +61,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
       }
 
+      clearTimeout(timeout);
       setLoading(false);
     }).catch(() => {
       clearTimeout(timeout);
@@ -92,24 +95,48 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => subscription.unsubscribe();
   }, []);
 
-  async function loadProfile(userId: string, retries = 2) {
-    const { data, error } = await supabase
-      .from("profiles")
-      .select("*")
-      .eq("id", userId)
-      .single();
+  async function loadProfile(userId: string, retries = 3) {
+    try {
+      // Timeout de 5s por tentativa para evitar que fique pendurado
+      const result = await Promise.race([
+        supabase
+          .from("profiles")
+          .select("*")
+          .eq("id", userId)
+          .single(),
+        new Promise<{ data: null; error: { message: string } }>((resolve) =>
+          setTimeout(() => resolve({ data: null, error: { message: "Timeout" } }), 5000)
+        ),
+      ]);
 
-    if (error || !data) {
+      const { data, error } = result;
+
+      if (error || !data) {
+        if (retries > 0) {
+          // Perfil pode nao estar disponivel imediatamente apos criacao
+          await new Promise(resolve => setTimeout(resolve, 1500));
+          return loadProfile(userId, retries - 1);
+        }
+        console.error("[AuthProvider] Error loading profile after retries:", error);
+        return;
+      }
+
+      setProfile(data);
+    } catch (err) {
       if (retries > 0) {
-        // Perfil pode nao estar disponivel imediatamente apos criacao
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise(resolve => setTimeout(resolve, 1500));
         return loadProfile(userId, retries - 1);
       }
-      console.error("[AuthProvider] Error loading profile:", error);
-      return;
+      console.error("[AuthProvider] Exception loading profile:", err);
     }
+  }
 
-    setProfile(data);
+  async function refreshProfile() {
+    const session = await supabase.auth.getSession();
+    const userId = session.data.session?.user?.id;
+    if (userId) {
+      await loadProfile(userId, 3);
+    }
   }
 
   async function signIn(email: string, password: string) {
@@ -129,7 +156,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <AuthContext.Provider value={{ user, profile, loading, signIn, signOut }}>
+    <AuthContext.Provider value={{ user, profile, loading, signIn, signOut, refreshProfile }}>
       {children}
     </AuthContext.Provider>
   );

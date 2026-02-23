@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic';
 function RegistarLivroContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const { user, signIn } = useAuth();
+  const { user, signIn, refreshProfile } = useAuth();
 
   const [code, setCode] = useState("");
   const [email, setEmail] = useState("");
@@ -66,9 +66,10 @@ function RegistarLivroContent() {
 
       setSuccess(true);
 
-      // Se ja esta autenticado, ir directo para o dashboard
+      // Se ja esta autenticado, recarregar perfil e ir para o dashboard
       if (user) {
-        await new Promise(resolve => setTimeout(resolve, 500));
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        await refreshProfile();
         router.push("/membro");
         return;
       }
