@@ -99,24 +99,31 @@ export default function ModuloPage({ params }: { params: Promise<{ modulo: strin
 
   const loadUrls = useCallback(async () => {
     if (!info) return;
-    const session = await supabase.auth.getSession();
-    const token = session.data.session?.access_token;
-    if (!token) return;
+    try {
+      const session = await supabase.auth.getSession();
+      const token = session.data.session?.access_token;
+      if (!token) {
+        setLoadingFiles(false);
+        return;
+      }
 
-    const loaded: Record<string, string> = {};
+      const loaded: Record<string, string> = {};
 
-    for (const file of info.files) {
-      const path = `experiencia/${modulo}/${file.name}`;
-      const res = await fetch("/api/content", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ path, token }),
-      });
-      const data = await res.json();
-      if (data.url) loaded[file.name] = data.url;
+      for (const file of info.files) {
+        const path = `experiencia/${modulo}/${file.name}`;
+        const res = await fetch("/api/content", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ path, token }),
+        });
+        const data = await res.json();
+        if (data.url) loaded[file.name] = data.url;
+      }
+
+      setUrls(loaded);
+    } catch {
+      // Falha na ligacao
     }
-
-    setUrls(loaded);
     setLoadingFiles(false);
   }, [info, modulo]);
 

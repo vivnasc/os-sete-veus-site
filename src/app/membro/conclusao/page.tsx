@@ -15,34 +15,38 @@ export default function ConclusaoPage() {
   const [showContent, setShowContent] = useState(false);
 
   const loadStats = useCallback(async () => {
-    const session = await supabase.auth.getSession();
-    const userId = session.data.session?.user?.id;
-    if (!userId) {
-      setLoading(false);
-      return;
+    try {
+      const session = await supabase.auth.getSession();
+      const userId = session.data.session?.user?.id;
+      if (!userId) {
+        setLoading(false);
+        return;
+      }
+
+      const [readRes, journalRes, checkRes] = await Promise.all([
+        supabase
+          .from("reading_progress")
+          .select("chapter_slug")
+          .eq("user_id", userId)
+          .eq("completed", true),
+        supabase
+          .from("journal_entries")
+          .select("chapter_slug")
+          .eq("user_id", userId)
+          .neq("content", ""),
+        supabase
+          .from("checklist_progress")
+          .select("id")
+          .eq("user_id", userId)
+          .eq("checked", true),
+      ]);
+
+      setReadCount(readRes.data?.length || 0);
+      setJournalCount(journalRes.data?.length || 0);
+      setChecklistCount(checkRes.data?.length || 0);
+    } catch {
+      // Falha na ligacao ao Supabase
     }
-
-    const [readRes, journalRes, checkRes] = await Promise.all([
-      supabase
-        .from("reading_progress")
-        .select("chapter_slug")
-        .eq("user_id", userId)
-        .eq("completed", true),
-      supabase
-        .from("journal_entries")
-        .select("chapter_slug")
-        .eq("user_id", userId)
-        .neq("content", ""),
-      supabase
-        .from("checklist_progress")
-        .select("id")
-        .eq("user_id", userId)
-        .eq("checked", true),
-    ]);
-
-    setReadCount(readRes.data?.length || 0);
-    setJournalCount(journalRes.data?.length || 0);
-    setChecklistCount(checkRes.data?.length || 0);
     setLoading(false);
 
     // Trigger animation after load
