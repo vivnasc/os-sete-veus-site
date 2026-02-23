@@ -9,7 +9,6 @@ const memberNav = [
   { href: "/membro", label: "Início" },
   { href: "/membro/espelhos/veu-da-ilusao", label: "Espelhos" },
   { href: "/membro/nos", label: "Nós" },
-  { href: "/membro/praticas", label: "Práticas" },
   { href: "/membro/espelho", label: "Espelho" },
   { href: "/membro/conclusao", label: "Cerimónia" },
   { href: "/membro/conta", label: "Conta" },
