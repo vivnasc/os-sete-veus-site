@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sem ligacao — Sete Ecos</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #f7f5f0;
+      color: #3d3630;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      text-align: center;
+    }
+    .container { max-width: 400px; }
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      opacity: 0.7;
+      margin-bottom: 1.5rem;
+    }
+    button {
+      background: #3d3630;
+      color: #f7f5f0;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Sem ligacao</h1>
+    <p>De momento nao tens ligacao a internet. Quando voltares a ter rede, a pagina actualiza automaticamente.</p>
+    <button onclick="window.location.reload()">Tentar de novo</button>
+  </div>
+</body>
+</html>
