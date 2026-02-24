@@ -68,6 +68,34 @@ export const veu1Niveis: NivelCapitulo[] = [
       'Se pudesses apresentar-te a alguem sem nome, sem historia, sem papel — o que dirias?',
     ],
     espelho_pessoal: 'Se tudo o que pensas que es fosse tirado — nome, historia, papeis — o que continuaria a respirar?',
+
+    // Camada profunda
+    mascaras: [
+      'A definida — a que precisa de ter tudo claro sobre si mesma antes de agir. Sem uma identidade solida, sente-se perdida. Passa anos a tentar encontrar "quem realmente e" como se fosse um objecto escondido numa gaveta, sem perceber que a procura e ela propria a mascara.',
+      'A coerente — a que tem horror a contradizer-se. Diz as mesmas coisas sobre si ha anos porque mudar de ideias parece fraqueza. Prefere estar presa a uma versao desactualizada de si do que admitir que ja nao se reconhece nela.',
+      'A rotulada — a que se apresenta pelo que faz, pelo que estudou, pelo que conseguiu. Nao por vaidade, mas porque sem esses rotulos nao sabe o que dizer. O silencio entre os titulos assusta-a mais do que qualquer fracasso.',
+      'A original — a que construiu uma identidade tao unica que se tornou outra prisao. Diferente dos outros, sim, mas rigidamente diferente. A singularidade deixou de ser liberdade e passou a ser mais um papel a manter.',
+    ],
+    veu_dominante_sinais: [
+      'Quando algo muda na tua vida — uma relacao que acaba, um trabalho que se perde, um corpo que envelhece — a primeira reaccao nao e tristeza. E panico. Como se o chao desaparecesse porque o rotulo que te sustentava desapareceu com ele.',
+      'Passas mais tempo a pensar sobre quem es do que a viver quem es. A reflexao sobre a identidade tornou-se um loop: nunca chegas a uma resposta porque a pergunta alimenta-se de si mesma.',
+      'Este tema — agarrar-te ao que ja foste — aparece repetidamente nas tuas relacoes, no trabalho, na forma como falas de ti. E o fio que liga tudo. Nao e um problema pontual. E o padrao de fundo.',
+      'Tens dificuldade em estar com pessoas que te conheceram numa fase anterior da vida. Sentes que te veem como eras e nao como es — e isso sufoca. Mas a verdade e que tu tambem nao sabes bem como es agora.',
+      'Ha uma tensao constante entre quem sentes que es por dentro e quem mostras por fora. Nao porque mintas, mas porque o que sentes por dentro nao cabe em nenhum nome que conhecas.',
+    ],
+    mensagem_central: 'Este capitulo nao te pede que descubras quem es. Pede-te algo mais radical e mais gentil: que pares de procurar uma resposta fixa. Os rotulos que carregas — o teu nome, a tua historia, os papeis que desempenhas — nao sao mentira, mas tambem nao sao toda a verdade. Sao molduras, e tu es maior do que qualquer moldura. Ha algo em ti que ja existia antes do primeiro rotulo e que vai continuar depois do ultimo. Nao precisas de o nomear. Precisas apenas de o sentir. E este capitulo e um convite a esse sentir — sem pressa, sem mapa, sem destino.',
+    guiao_escrita: {
+      contexto: 'Este exercicio convida-te a encontrar quem es por baixo dos rotulos. Nao ha respostas certas — ha apenas o que emerge quando paras de procurar.',
+      passos: [
+        'Fecha os olhos. Respira tres vezes, lentamente. Nota o que sentes no corpo antes de escrever — tensao, calma, vazio, peso.',
+        'Pensa na ultima vez que alguem te perguntou "quem es tu?" e escreve o que respondeste. Palavra por palavra, como saiu.',
+        'Agora escreve o que ficou por dizer. A parte que nao coube nessa resposta. Deixa-a sair sem filtro.',
+        'Imagina que nao tens nome, nao tens historia, nao tens papel. Descreve o que resta — nao o que falta, mas o que permanece.',
+        'Le o que escreveste. Sublinha a frase que mais te surpreendeu. Essa frase e o teu espelho de hoje.',
+      ],
+      tempo_sugerido: '15 minutos',
+      nota_final: 'Nao corrijas. Nao julgues. O que escreveste nao precisa de ser bonito — precisa de ser teu.',
+    },
   },
   {
     capitulo_numero: 2,
@@ -130,6 +158,34 @@ export const veu1Niveis: NivelCapitulo[] = [
       'Escreve algo que nunca disseste a ninguem sobre quem realmente es.',
     ],
     espelho_pessoal: 'Que parte de ti vive escondida — nao por vergonha, mas por medo de nao caber no olhar dos outros?',
+
+    // Camada profunda
+    mascaras: [
+      'A forte — a que todos procuram quando algo corre mal. Nunca lhe perguntam como esta porque assumem que ela aguenta sempre. E ela aguenta. Ate ao dia em que o corpo diz que nao. Mas mesmo nesse dia, sorri. Porque a mascara ja nao e escolha — e reflexo.',
+      'A agradavel — a que diz sim antes de sentir o que realmente quer. Nao e submissao. E um medo antigo de que o conflito destrua o vinculo. Aprendeu cedo que ser amada e ser facil de amar. E perdeu-se nessa facilidade.',
+      'A invisivel — a que se fez pequena para nao incomodar. Nao por humildade genuina, mas porque uma vez mostrou-se inteira e o mundo nao soube o que fazer com ela. Desde entao, edita-se. Encolhe-se. E chama a isso "ser discreta".',
+      'A perfeita — a que nao se permite falhas visiveis. Cada erro e escondido, cada fragilidade e polida ate parecer forca. Vista de fora, parece ter tudo resolvido. Vista de dentro, esta exausta de manter a fachada impecavel.',
+    ],
+    veu_dominante_sinais: [
+      'Reparas que nas tuas relacoes mais importantes ha sempre uma versao de ti que fica de fora. Nao mostras tudo a ninguem — nao por maldade, mas porque nenhum espaco parece seguro o suficiente para quem es por inteiro.',
+      'Quando estas sozinha, sentes um alivio estranho — como se finalmente pudesses pousar o peso. Mas esse alivio vem acompanhado de solidao, porque a pessoa que descansa no silencio nao e a mesma que o mundo conhece.',
+      'Tens uma historia que contas sobre ti — a versao oficial — e uma historia que vives por dentro. A distancia entre as duas cresce com o tempo. E essa distancia e o vazio que sentes ao fim do dia.',
+      'Quando alguem se aproxima de mais, recuas. Nao porque nao queiras intimidade, mas porque intimidade verdadeira significaria mostrar a parte que vive atras da mascara. E essa parte ainda nao sabe se e bem-vinda.',
+      'Olhas para tras e percebes que muitas das tuas decisoes — de carreira, de relacao, de estilo de vida — foram tomadas pela mascara, nao por ti. E agora nao sabes como voltar atras sem desmontar tudo.',
+    ],
+    mensagem_central: 'Este capitulo nao te pede que arranques as mascaras. Pede-te que as vejas. Que sintas o peso delas. Que reconhecas que foste tu que as construiste — com inteligencia, com amor, com medo — para sobreviver a algo que na altura era real. A mascara nao e inimiga. Foi aliada. Mas uma aliada que ficou tempo de mais acaba por ocupar o lugar de quem protegia. O vazio que sentes nao e sinal de que algo esta partido. E sinal de que algo quer respirar. Alguma parte de ti, muito antiga e muito viva, esta cansada de viver nos bastidores. Este capitulo e o momento em que lhe dizes: eu sei que estas ai.',
+    guiao_escrita: {
+      contexto: 'Este exercicio e um encontro com as tuas mascaras. Nao para as destruir, mas para as reconhecer — e sentir o que vive por baixo delas.',
+      passos: [
+        'Senta-te em silencio durante um minuto. Sente o teu corpo na cadeira. Nota onde ha tensao — ombros, mandibula, peito. Essa tensao e informacao.',
+        'Escreve o nome de tres pessoas importantes na tua vida. Ao lado de cada nome, descreve em uma ou duas frases quem es quando estas com essa pessoa. Que versao de ti aparece?',
+        'Agora olha para essas tres versoes. Ha alguma que sentes que e mais "tu" do que as outras? Ou ha uma que sentes que e completamente fabricada? Escreve sobre isso.',
+        'Pensa num momento recente em que sentiste aquele peso sem nome — o vazio ao fim do dia, a sensacao de que algo falta. Descreve esse momento com detalhe: onde estavas, o que tinhas feito, o que sentiste no corpo.',
+        'Agora escreve uma frase que comece assim: "A parte de mim que ninguem ve e..." Deixa a mao continuar. Nao penses. Escreve.',
+      ],
+      tempo_sugerido: '20 minutos',
+      nota_final: 'Se sentiste desconforto ao escrever, isso nao e sinal de que fizeste mal. E sinal de que tocaste em algo real. Guarda o que escreveste. Volta a ele daqui a uma semana.',
+    },
   },
   {
     capitulo_numero: 3,
@@ -206,5 +262,33 @@ export const veu1Niveis: NivelCapitulo[] = [
       'Escreve uma carta ao teu "eu" de ha 5 anos. O que lhe dirias sobre quem te tornaste? E ao teu "eu" de daqui a 5 anos?',
     ],
     espelho_pessoal: 'Se todas as tradicoes, todas as filosofias, todas as respostas fossem retiradas — e ficasses so contigo e o silencio — o que ouvirias?',
+
+    // Camada profunda
+    mascaras: [
+      'A buscadora — a que colecciona tradicoes, livros, retiros, mestres. Nao por curiosidade genuina, mas por uma fome que nunca se sacia. Cada nova descoberta promete ser "a resposta", mas a resposta muda de forma antes de pousar. A busca tornou-se identidade — e sem ela, nao sabe quem e.',
+      'A transcendente — a que se refugia no espirito para nao sentir o corpo. Fala de consciencia cosmica, de unidade, de alem — mas tem dificuldade em estar presente numa conversa banal, num almoco de domingo, numa tarde sem proposito. A espiritualidade tornou-se fuga, nao presenca.',
+      'A racional — a que so confia no que pode ser explicado. Sente o puxao do misterio mas trava-o com logica. Nao e que nao sinta — e que sentir sem compreender parece perigoso. Prefere o mapa ao territorio, a teoria a experiencia.',
+      'A sintetica — a que tenta juntar tudo num sistema perfeito. Ocidente, Oriente, Africa — tudo tem de encaixar num modelo coerente. E a incoerencia que a assusta. Porque se nao ha uma grande teoria unificada do eu, entao talvez nao haja chao nenhum.',
+    ],
+    veu_dominante_sinais: [
+      'Ha anos que procuras uma resposta sobre quem es — em livros, em terapias, em viagens, em relacoes. Cada resposta satisfaz durante um tempo, mas depois dissolve-se. E a procura recomeca. O padrao nao e falha tua — e o veu da permanencia a funcionar.',
+      'Sentes uma divisao interna entre partes de ti que parecem pertencer a mundos diferentes. A parte que pensa e a parte que sente. A parte que quer pertencer e a parte que quer ser livre. Nao consegues unifica-las, e isso cansa-te de uma forma que ninguem ve.',
+      'Quando encontras uma ideia que te toca profundamente, a primeira reaccao e querer agarrar-la, transforma-la em crenca, fazer dela chao. Mas o que era vivo torna-se rigido. E tu ficas com a forma, sem a substancia.',
+      'A pergunta "quem sou eu?" nao te larga. Esta presente quando acordas, quando tomas decisoes, quando olhas para o espelho. Nao e filosofia — e urgencia. E a intensidade dessa urgencia e proporcional a forca deste veu na tua vida.',
+      'Reparas que te sentes mais confortavel a falar sobre a identidade do que a vive-la. Sabes descrever o fluxo, o Ubuntu, a impermanencia — mas quando chega o momento de largar o controlo e simplesmente ser, o corpo resiste. O saber nao chegou ao corpo.',
+    ],
+    mensagem_central: 'Este capitulo nao te da uma resposta sobre quem es. E isso pode ser a coisa mais generosa que um capitulo pode fazer. As tres vozes que ouviste — a do Ocidente que diz "pensa", a do Oriente que diz "larga", a de Africa que diz "liga-te" — nao se contradizem. Sao tres formas de dizer a mesma coisa: tu nao es o que pensas que es, e isso nao e tragedia. E liberdade. A identidade nao e uma coisa que se encontra e se guarda numa caixa. E mais parecida com musica — so existe enquanto esta a ser tocada. Tu nao precisas de resolver quem es. Precisas de te deixar tocar. Pelo silencio, pelo outro, pelo misteiro que nao cabe em nenhuma palavra. Este capitulo e o fim de uma procura e o inicio de uma escuta.',
+    guiao_escrita: {
+      contexto: 'Este exercicio e uma conversa entre as tres vozes que ouviste neste capitulo — a razao, a intuicao e a pertenca. Nao vais escolher uma. Vais deixa-las falar.',
+      passos: [
+        'Senta-te num lugar onde ninguem te interrompa. Se puderes, acende uma vela ou abre uma janela. Cria um espaco que te diga: aqui posso parar.',
+        'Escreve no topo da pagina: "O que penso que sou." Por baixo, escreve tudo o que te vem a cabeca — papeis, qualidades, defeitos, historias. Nao filtres. Despeja.',
+        'Agora escreve num novo espaco: "O que sinto que sou." Fecha os olhos um momento antes de comecar. Esquece as palavras do passo anterior. Vai ao corpo. Que sensacao aparece? Que imagem? Que cor? Escreve a partir dai, mesmo que nao faca sentido logico.',
+        'Por fim, escreve: "O que sou quando estou com os outros." Pensa numa pessoa que amas. Pensa no espaco entre voces — nao em ti, nao nela, mas no que existe no meio. Descreve esse espaco.',
+        'Le os tres textos em sequencia. Repara no que se repete. Repara no que se contradiz. Repara no que te surpreende. Escreve uma ultima frase que comece com: "Talvez eu seja..."',
+      ],
+      tempo_sugerido: '25 minutos',
+      nota_final: 'Nao tentes que os tres textos facam sentido juntos. A beleza esta na tensao entre eles. O que es nao precisa de ser coerente — precisa de ser verdadeiro.',
+    },
   },
 ]
