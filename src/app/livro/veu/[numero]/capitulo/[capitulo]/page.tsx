@@ -896,6 +896,7 @@ export default function CapituloPage() {
         capituloNumero={numeroCapitulo}
         guiaoReflexao={nivel !== 'arvore' ? nivelCapitulo?.guiao_reflexao : undefined}
         hasFloatingPlayer={showPlayer}
+        capituloCompleto={capituloCompleto}
       />
 
       {/* Audio Player flutuante */}

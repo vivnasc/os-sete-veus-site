@@ -19,15 +19,17 @@ type Props = {
   capituloNumero: number
   guiaoReflexao?: string[]
   hasFloatingPlayer?: boolean
+  capituloCompleto?: boolean
 }
 
-export default function ReflexoesDrawer({ veuNumero, capituloNumero, guiaoReflexao, hasFloatingPlayer }: Props) {
+export default function ReflexoesDrawer({ veuNumero, capituloNumero, guiaoReflexao, hasFloatingPlayer, capituloCompleto }: Props) {
   const { user } = useAuth()
   const { hasBookAccess } = useAccess()
   const [isOpen, setIsOpen] = useState(false)
   const [reflexoes, setReflexoes] = useState<Reflexao[]>([])
   const [novaReflexao, setNovaReflexao] = useState('')
   const [loading, setLoading] = useState(false)
+  const [showHint, setShowHint] = useState(false)
   const [perguntaEspelho, setPerguntaEspelho] = useState<string | null>(null)
   const [loadingEspelho, setLoadingEspelho] = useState(false)
 
@@ -92,19 +94,46 @@ export default function ReflexoesDrawer({ veuNumero, capituloNumero, guiaoReflex
     setLoadingEspelho(false)
   }
 
+  // Show hint when chapter is completed
+  useEffect(() => {
+    if (capituloCompleto && !isOpen) {
+      setShowHint(true)
+      const timer = setTimeout(() => setShowHint(false), 8000)
+      return () => clearTimeout(timer)
+    }
+  }, [capituloCompleto, isOpen])
+
   if (!user) return null
 
   return (
     <>
       {/* Botão Flutuante */}
       <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={() => setIsOpen(true)}
-        className={`fixed right-6 z-40 w-14 h-14 bg-purple-900 text-white rounded-full shadow-2xl flex items-center justify-center text-2xl transition-all duration-300 ${hasFloatingPlayer ? 'bottom-24' : 'bottom-6'}`}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => { setIsOpen(true); setShowHint(false) }}
+        animate={showHint ? {
+          scale: [1, 1.08, 1],
+          boxShadow: [
+            '0 25px 50px -12px rgba(0,0,0,0.25)',
+            '0 25px 50px -12px rgba(147,51,234,0.5)',
+            '0 25px 50px -12px rgba(0,0,0,0.25)'
+          ]
+        } : {}}
+        transition={showHint ? { duration: 2, repeat: Infinity } : {}}
+        className={`fixed right-6 z-40 bg-purple-900 text-white rounded-full shadow-2xl flex items-center justify-center transition-all duration-500 ${
+          hasFloatingPlayer ? 'bottom-24' : 'bottom-6'
+        } ${showHint ? 'px-5 py-3 gap-2' : 'w-14 h-14 text-2xl'}`}
         title="Abrir Reflexões"
       >
-        💭
+        {showHint ? (
+          <>
+            <span className="text-lg">💭</span>
+            <span className="text-sm font-medium whitespace-nowrap">O que sentiste?</span>
+          </>
+        ) : (
+          <>💭</>
+        )}
       </motion.button>
 
       {/* Drawer */}
