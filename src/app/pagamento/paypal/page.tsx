@@ -2,24 +2,99 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
-// Force dynamic rendering
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
+
+const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || "";
 
 function PayPalContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
   const [paymentId, setPaymentId] = useState<string | null>(null);
+  const [displayAmount, setDisplayAmount] = useState("");
+  const [productName, setProductName] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+  const [processing, setProcessing] = useState(false);
 
   useEffect(() => {
     const id = searchParams.get("payment_id");
     if (!id) {
-      router.push("/comprar-colecao");
+      router.push("/comprar/espelhos");
       return;
     }
     setPaymentId(id);
+
+    const amount = searchParams.get("amount");
+    if (amount) setDisplayAmount(amount);
+
+    const product = searchParams.get("product");
+    if (product) setProductName(product);
   }, [searchParams, router]);
+
+  if (!PAYPAL_CLIENT_ID) {
+    return (
+      <section className="bg-cream px-6 py-24 sm:py-32">
+        <div className="mx-auto max-w-md">
+          <div className="rounded-lg border border-red-200 bg-red-50 p-8 text-center">
+            <h1 className="font-serif text-2xl text-brown-900">
+              PayPal indisponivel
+            </h1>
+            <p className="mt-4 text-sm text-brown-600">
+              O pagamento via PayPal ainda nao esta configurado.
+              Por favor escolhe outro metodo de pagamento.
+            </p>
+            <button
+              onClick={() => router.push("/comprar/espelhos")}
+              className="mt-6 rounded-lg bg-sage px-6 py-3 font-sans text-sm font-medium uppercase tracking-wider text-white hover:bg-sage-dark"
+            >
+              Voltar
+            </button>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (success) {
+    return (
+      <section className="bg-cream px-6 py-24 sm:py-32">
+        <div className="mx-auto max-w-md">
+          <div className="rounded-lg border border-sage/30 bg-sage/5 p-8 text-center">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-sage/10">
+              <svg
+                className="h-8 w-8 text-sage"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <h1 className="font-serif text-2xl text-brown-900">
+              Pagamento Confirmado
+            </h1>
+            <p className="mt-4 text-brown-700">
+              O teu acesso esta activo. Podes comecar a ler agora.
+            </p>
+            <button
+              onClick={() => router.push("/membro")}
+              className="mt-6 rounded-lg bg-sage px-6 py-3 font-sans text-sm font-medium uppercase tracking-wider text-white hover:bg-sage-dark"
+            >
+              Ir para a minha area
+            </button>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="bg-cream px-6 py-24 sm:py-32">
@@ -27,70 +102,145 @@ function PayPalContent() {
         <h1 className="text-center font-serif text-3xl text-brown-900">
           Pagamento via PayPal
         </h1>
+        {productName && (
+          <p className="mt-2 text-center font-sans text-sm text-brown-500">
+            {productName}
+          </p>
+        )}
 
+        {/* Order summary */}
         <div className="mt-8 rounded-xl border-2 border-sage/20 bg-white p-8">
-          <div className="text-center">
-            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-blue-50">
-              <svg
-                className="h-10 w-10 text-blue-600"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 2.52a.77.77 0 0 1 .76-.64h8.78c2.886 0 5.175 2.29 5.175 5.175 0 6.852-7.284 9.282-10.593 9.282h-1.88l-1.11 5zm5.403-13.517h-2.61l-.896 4.522h1.794c1.638 0 3.356-.956 3.356-2.746 0-.958-.78-1.776-1.644-1.776zm6.284 0h-2.61l-.896 4.522h1.794c1.638 0 3.356-.956 3.356-2.746 0-.958-.78-1.776-1.644-1.776z" />
-              </svg>
-            </div>
-            <h2 className="font-serif text-2xl text-brown-900">
-              PayPal + Cartão de Crédito
-            </h2>
-            <p className="mt-3 text-brown-600">
-              Pagamento por PayPal ainda nao esta disponivel.
-              Por favor escolhe outra forma de pagamento.
-            </p>
+          <h2 className="font-sans text-sm uppercase tracking-widest text-brown-400">
+            Resumo
+          </h2>
 
-            <div className="mt-8 rounded-lg bg-sage/5 p-6 text-left">
-              <p className="mb-4 text-sm font-medium text-brown-900">
-                Por enquanto, podes pagar via:
-              </p>
-              <div className="space-y-3">
-                <button
-                  onClick={() =>
-                    router.push(`/pagamento/bank_transfer?payment_id=${paymentId}`)
-                  }
-                  className="w-full rounded-lg border-2 border-brown-100 bg-white px-6 py-3 text-left font-sans text-sm font-medium text-brown-900 transition-colors hover:border-sage hover:bg-sage/5"
-                >
-                  💳 Transferência Bancária
-                </button>
-                <button
-                  onClick={() =>
-                    router.push(`/pagamento/mpesa?payment_id=${paymentId}`)
-                  }
-                  className="w-full rounded-lg border-2 border-brown-100 bg-white px-6 py-3 text-left font-sans text-sm font-medium text-brown-900 transition-colors hover:border-sage hover:bg-sage/5"
-                >
-                  📱 MPesa
-                </button>
-              </div>
-            </div>
-
-            <div className="mt-6 rounded-lg border border-blue-100 bg-blue-50 p-4">
-              <p className="text-sm text-blue-900">
-                📧{" "}
-                <strong>Ou envia pagamento direto para:</strong>
-                <br />
-                <a
-                  href="mailto:viv.saraiva@gmail.com"
-                  className="font-medium text-blue-600 hover:underline"
-                >
-                  viv.saraiva@gmail.com
-                </a>{" "}
-                via PayPal
-              </p>
+          <div className="mt-6">
+            <div className="flex items-center justify-between">
+              <span className="text-brown-600">{productName || "Espelho"}</span>
+              <span className="font-sans text-2xl font-bold text-sage">
+                ${displayAmount} USD
+              </span>
             </div>
           </div>
+
+          {/* PayPal buttons */}
+          <div className="mt-8">
+            {processing && (
+              <div className="mb-4 rounded-lg bg-sage/5 p-4 text-center">
+                <p className="text-sm text-brown-600">A processar pagamento...</p>
+              </div>
+            )}
+
+            <PayPalScriptProvider
+              options={{
+                clientId: PAYPAL_CLIENT_ID,
+                currency: "USD",
+                intent: "capture",
+              }}
+            >
+              <PayPalButtons
+                style={{
+                  layout: "vertical",
+                  color: "gold",
+                  shape: "rect",
+                  label: "pay",
+                  height: 50,
+                }}
+                disabled={processing}
+                createOrder={async () => {
+                  setError("");
+                  const res = await fetch("/api/paypal/create-order", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ payment_id: paymentId }),
+                  });
+
+                  const data = await res.json();
+
+                  if (!res.ok) {
+                    setError(data.error || "Erro ao criar ordem PayPal");
+                    throw new Error(data.error);
+                  }
+
+                  return data.orderID;
+                }}
+                onApprove={async (data) => {
+                  setProcessing(true);
+                  setError("");
+
+                  try {
+                    const res = await fetch("/api/paypal/capture-order", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({
+                        orderID: data.orderID,
+                        payment_id: paymentId,
+                      }),
+                    });
+
+                    const result = await res.json();
+
+                    if (!res.ok) {
+                      setError(result.error || "Erro ao processar pagamento");
+                      setProcessing(false);
+                      return;
+                    }
+
+                    setSuccess(true);
+                  } catch {
+                    setError("Erro de conexao. Contacta-nos se o valor foi debitado.");
+                    setProcessing(false);
+                  }
+                }}
+                onError={(err) => {
+                  console.error("[PayPal] Error:", err);
+                  setError("Erro no PayPal. Tenta novamente.");
+                  setProcessing(false);
+                }}
+                onCancel={() => {
+                  setError("");
+                  setProcessing(false);
+                }}
+              />
+            </PayPalScriptProvider>
+          </div>
+
+          {error && (
+            <div className="mt-4 rounded-lg border border-red-200 bg-red-50 p-4">
+              <p className="text-sm text-red-600">{error}</p>
+            </div>
+          )}
         </div>
 
-        {/* TODO: Implementar PayPal SDK
-        <div id="paypal-button-container" className="mt-6"></div>
-        */}
+        {/* Alternative methods */}
+        <div className="mt-6 text-center">
+          <p className="text-xs text-brown-400">
+            Preferes outro metodo?
+          </p>
+          <div className="mt-2 flex justify-center gap-3">
+            <button
+              onClick={() =>
+                router.push(
+                  `/pagamento/mpesa?payment_id=${paymentId}&product=${encodeURIComponent(productName)}`
+                )
+              }
+              className="text-sm text-brown-500 underline hover:text-brown-700"
+            >
+              MPesa
+            </button>
+            <span className="text-brown-300">|</span>
+            <button
+              onClick={() =>
+                router.push(
+                  `/pagamento/bank_transfer?payment_id=${paymentId}&product=${encodeURIComponent(productName)}`
+                )
+              }
+              className="text-sm text-brown-500 underline hover:text-brown-700"
+            >
+              Transferencia Bancaria
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );
