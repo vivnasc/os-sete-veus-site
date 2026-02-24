@@ -198,8 +198,8 @@ export default function Chatbot() {
   const panelRef = useRef<HTMLDivElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Esconder chatbot nas paginas de leitura (livro, membro/leitura, membro/nos)
-  const isReadingPage = pathname?.startsWith('/livro/veu/') && pathname.includes('/capitulo/')
+  // Esconder chatbot em todas as paginas de leitura do livro
+  const isReadingPage = pathname?.startsWith('/livro/')
     || pathname?.startsWith('/membro/leitura/')
     || pathname?.startsWith('/membro/nos/');
 
