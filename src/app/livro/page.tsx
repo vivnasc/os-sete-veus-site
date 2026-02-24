@@ -103,22 +103,59 @@ export default function LivroMandalaPage() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-center mb-12"
+        className="text-center mb-8 md:mb-12"
       >
-        <h1 className="text-5xl md:text-6xl font-serif text-stone-900 mb-4">
+        <h1 className="text-3xl md:text-6xl font-serif text-stone-900 mb-3 md:mb-4">
           Os 7 Véus do Despertar
         </h1>
-        <p className="text-xl text-stone-600 max-w-2xl mx-auto italic">
-          "Aquilo que chamas de 'eu' não se esgota no nome, na função ou na história."
+        <p className="text-base md:text-xl text-stone-600 max-w-2xl mx-auto italic">
+          &ldquo;Aquilo que chamas de &lsquo;eu&rsquo; não se esgota no nome, na função ou na história.&rdquo;
         </p>
       </motion.div>
 
-      {/* Mandala Central */}
+      {/* Mobile: Lista vertical dos véus */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        className="md:hidden w-full max-w-sm mb-8"
+      >
+        <div className="space-y-2">
+          {veus.map((veu) => (
+            <motion.div
+              key={veu.numero}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 + veu.numero * 0.08 }}
+            >
+              <Link href={`/livro/veu/${veu.numero}`}>
+                <div className="flex items-center gap-4 px-4 py-3.5 rounded-xl bg-white/70 hover:bg-white transition-colors shadow-sm">
+                  <div
+                    className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 border-2 border-white shadow-md"
+                    style={{ backgroundColor: veu.cor }}
+                  >
+                    <span className="text-white text-sm font-bold">{veu.numero}</span>
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-base font-medium text-stone-800">{veu.nome}</p>
+                    <p className="text-xs text-stone-500">{veu.descricao}</p>
+                  </div>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="shrink-0 text-stone-400 ml-auto">
+                    <path d="M9 18l6-6-6-6" />
+                  </svg>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Desktop: Mandala Central */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5, delay: 0.3 }}
-        className="relative w-[500px] h-[500px] mb-12"
+        className="relative w-[500px] h-[500px] mb-12 hidden md:block"
       >
         {/* Imagem da Mandala */}
         <div className="absolute inset-0 flex items-center justify-center">
@@ -196,9 +233,9 @@ export default function LivroMandalaPage() {
         </div>
       </motion.div>
 
-      {/* Descrição do véu hovereado */}
+      {/* Descrição do véu hovereado (desktop only) */}
       <motion.div
-        className="h-16 flex items-center justify-center"
+        className="h-16 hidden md:flex items-center justify-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
@@ -217,14 +254,14 @@ export default function LivroMandalaPage() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="mt-8"
+        transition={{ delay: 1.2 }}
+        className="mt-4 md:mt-8"
       >
         <Link href="/livro/veu/1">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-12 py-4 bg-purple-600 text-white rounded-full text-lg font-medium shadow-xl hover:shadow-2xl hover:bg-purple-700 transition-all"
+            className="px-10 md:px-12 py-3.5 md:py-4 bg-purple-600 text-white rounded-full text-base md:text-lg font-medium shadow-xl hover:shadow-2xl hover:bg-purple-700 transition-all"
           >
             Iniciar Travessia
           </motion.button>
@@ -235,7 +272,7 @@ export default function LivroMandalaPage() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.8 }}
+        transition={{ delay: 1.5 }}
         className="mt-4"
       >
         <Link href="/livro/introducao" className="text-sm text-stone-400 hover:text-stone-600 transition-colors underline underline-offset-4">
@@ -247,8 +284,8 @@ export default function LivroMandalaPage() {
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="mt-8 text-sm text-stone-500 text-center max-w-md"
+        transition={{ delay: 1.8 }}
+        className="mt-6 md:mt-8 text-sm text-stone-500 text-center max-w-md"
       >
         Esta não é uma leitura. É uma travessia.<br />
         Não há pressa. Há presença.<br />

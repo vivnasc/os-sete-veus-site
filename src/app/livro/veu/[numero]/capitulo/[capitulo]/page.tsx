@@ -428,12 +428,10 @@ export default function CapituloPage() {
     }
   }, [user, loading, accessLoading, hasBookAccess, router])
 
-  // Mostrar pausa a cada 3 páginas
+  // Mostrar pausa suave a cada 3 páginas (sem bloquear — dismiss imediato)
   useEffect(() => {
     if (paginaAtual > 0 && paginaAtual % 3 === 0 && modoLeitura === 'contemplativo') {
       setMostrarPausa(true)
-      const timer = setTimeout(() => setMostrarPausa(false), 10000) // 10 segundos
-      return () => clearTimeout(timer)
     }
   }, [paginaAtual, modoLeitura])
 
@@ -492,153 +490,206 @@ export default function CapituloPage() {
 
   return (
     <div className={`min-h-screen ${modoNoturno ? 'bg-stone-950' : 'bg-stone-50'} transition-colors duration-500 ${showPlayer ? 'pb-20' : ''}`}>
-      {/* Header com controles */}
-      <div className="sticky top-0 z-40 backdrop-blur-sm bg-white/50 dark:bg-black/50 border-b border-stone-200 dark:border-stone-700">
-        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            {/* Botao de voltar visivel */}
-            <Link
-              href={`/livro/veu/${numeroVeu}`}
-              className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-sm transition-colors ${
-                modoNoturno
-                  ? 'bg-stone-800 text-stone-300 hover:bg-stone-700'
-                  : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
-              }`}
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="shrink-0">
-                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
-              </svg>
-              Véu {numeroVeu}
-            </Link>
-            {/* Chapter selector dropdown */}
-            <div className="relative">
-              <button
-                onClick={() => setShowCapitulos(!showCapitulos)}
-                className="text-sm text-stone-600 dark:text-stone-400 hover:underline flex items-center gap-1"
+      {/* Header com controles — 2 linhas no mobile */}
+      <div className={`sticky top-0 z-40 backdrop-blur-sm border-b ${modoNoturno ? 'bg-stone-950/80 border-stone-800' : 'bg-white/80 border-stone-200'}`}>
+        <div className="max-w-4xl mx-auto px-4 md:px-6 py-2 md:py-3">
+          {/* Linha 1: navegacao + titulo */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 min-w-0">
+              <Link
+                href={`/livro/veu/${numeroVeu}`}
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs md:text-sm shrink-0 transition-colors ${
+                  modoNoturno
+                    ? 'bg-stone-800 text-stone-300 hover:bg-stone-700'
+                    : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
+                }`}
               >
-                Cap. {numeroCapitulo}: {capitulo.titulo}
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" className={`transition-transform ${showCapitulos ? 'rotate-180' : ''}`}>
-                  <path d="M7 10l5 5 5-5z" />
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="shrink-0">
+                  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
                 </svg>
+                <span className="hidden md:inline">Véu {numeroVeu}</span>
+              </Link>
+              {/* Chapter selector dropdown */}
+              <div className="relative min-w-0">
+                <button
+                  onClick={() => setShowCapitulos(!showCapitulos)}
+                  className={`text-xs md:text-sm hover:underline flex items-center gap-1 truncate ${modoNoturno ? 'text-stone-400' : 'text-stone-600'}`}
+                >
+                  <span className="truncate">Cap. {numeroCapitulo}: {capitulo.titulo}</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" className={`shrink-0 transition-transform ${showCapitulos ? 'rotate-180' : ''}`}>
+                    <path d="M7 10l5 5 5-5z" />
+                  </svg>
+                </button>
+                <AnimatePresence>
+                  {showCapitulos && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -4 }}
+                      transition={{ duration: 0.15 }}
+                      className={`absolute top-full mt-1 left-0 min-w-[240px] rounded-xl border shadow-lg z-50 ${
+                        modoNoturno
+                          ? 'bg-stone-900 border-stone-700'
+                          : 'bg-white border-stone-200'
+                      }`}
+                    >
+                      <div className="p-1.5">
+                        {veu.capitulos.map((cap) => (
+                          <Link
+                            key={cap.numero}
+                            href={`/livro/veu/${numeroVeu}/capitulo/${cap.numero}`}
+                            scroll={true}
+                            onClick={() => { setShowCapitulos(false); window.scrollTo(0, 0) }}
+                          >
+                            <div className={`text-xs px-3 py-2 rounded-lg transition-colors ${
+                              cap.numero === numeroCapitulo
+                                ? modoNoturno
+                                  ? 'bg-stone-800 text-stone-200'
+                                  : 'bg-stone-100 text-stone-900'
+                                : modoNoturno
+                                  ? 'text-stone-400 hover:bg-stone-800'
+                                  : 'text-stone-600 hover:bg-stone-50'
+                            }`}>
+                              Cap. {cap.numero}: {cap.titulo}
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+
+            {/* Desktop: controles na mesma linha */}
+            <div className="hidden md:flex items-center gap-3">
+              <NivelSelector nivel={nivel} onSelect={setNivel} modoNoturno={modoNoturno} />
+              <button
+                onClick={() => setModoLeitura(m => m === 'contemplativo' ? 'normal' : 'contemplativo')}
+                className={`text-xs px-3 py-1 rounded-full border transition-colors ${modoNoturno ? 'border-stone-600 hover:bg-stone-800' : 'border-stone-300 hover:bg-stone-100'}`}
+              >
+                {modoLeitura === 'contemplativo' ? 'Contemplativo' : 'Normal'}
               </button>
-              <AnimatePresence>
-                {showCapitulos && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -4 }}
-                    transition={{ duration: 0.15 }}
-                    className={`absolute top-full mt-1 left-0 min-w-[240px] rounded-xl border shadow-lg z-50 ${
-                      modoNoturno
-                        ? 'bg-stone-900 border-stone-700'
-                        : 'bg-white border-stone-200'
-                    }`}
-                  >
-                    <div className="p-1.5">
-                      {veu.capitulos.map((cap) => (
-                        <Link
-                          key={cap.numero}
-                          href={`/livro/veu/${numeroVeu}/capitulo/${cap.numero}`}
-                          scroll={true}
-                          onClick={() => { setShowCapitulos(false); window.scrollTo(0, 0) }}
-                        >
-                          <div className={`text-xs px-3 py-2 rounded-lg transition-colors ${
-                            cap.numero === numeroCapitulo
-                              ? modoNoturno
-                                ? 'bg-stone-800 text-stone-200'
-                                : 'bg-stone-100 text-stone-900'
-                              : modoNoturno
-                                ? 'text-stone-400 hover:bg-stone-800'
-                                : 'text-stone-600 hover:bg-stone-50'
-                          }`}>
-                            Cap. {cap.numero}: {cap.titulo}
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <button
+                onClick={() => setModoNoturno(!modoNoturno)}
+                className={`text-xs px-3 py-1 rounded-full border transition-colors ${modoNoturno ? 'border-stone-600 hover:bg-stone-800' : 'border-stone-300 hover:bg-stone-100'}`}
+              >
+                {modoNoturno ? 'Dia' : 'Noite'}
+              </button>
+              {tts.isSupported && (
+                <button
+                  onClick={() => {
+                    if (showPlayer) { tts.stop(); setShowPlayer(false) }
+                    else {
+                      setShowPlayer(true)
+                      if (modoLeitura === 'contemplativo' && paginas.length > 0) {
+                        const firstParaOfPage = paginas.slice(0, paginaAtual).reduce((sum, p) => sum + p.length, 0)
+                        tts.goTo(firstParaOfPage)
+                        setTimeout(() => tts.play(), 50)
+                      } else { tts.play() }
+                    }
+                  }}
+                  className={`text-xs px-3 py-1 rounded-full border transition-colors ${
+                    showPlayer
+                      ? modoNoturno ? 'border-purple-500/50 bg-purple-900/30 text-purple-300' : 'border-purple-400 bg-purple-50 text-purple-700'
+                      : modoNoturno ? 'border-stone-600 hover:bg-stone-800' : 'border-stone-300 hover:bg-stone-100'
+                  }`}
+                >
+                  {showPlayer ? 'A ouvir' : 'Ouvir'}
+                </button>
+              )}
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
-            {/* Nivel de Leitura */}
+          {/* Linha 2 (mobile only): controles como icones */}
+          <div className="flex md:hidden items-center justify-between mt-1.5 pt-1.5 border-t border-stone-200/50 dark:border-stone-700/50">
             <NivelSelector nivel={nivel} onSelect={setNivel} modoNoturno={modoNoturno} />
-
-            {/* Modo Leitura */}
-            <button
-              onClick={() => setModoLeitura(m => m === 'contemplativo' ? 'normal' : 'contemplativo')}
-              className="text-xs px-3 py-1 rounded-full border border-stone-300 dark:border-stone-600 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
-            >
-              {modoLeitura === 'contemplativo' ? 'Contemplativo' : 'Normal'}
-            </button>
-
-            {/* Modo Noturno */}
-            <button
-              onClick={() => setModoNoturno(!modoNoturno)}
-              className="text-xs px-3 py-1 rounded-full border border-stone-300 dark:border-stone-600 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
-            >
-              {modoNoturno ? 'Dia' : 'Noite'}
-            </button>
-
-            {/* TTS — Ouvir */}
-            {tts.isSupported && (
+            <div className="flex items-center gap-1">
+              {/* Modo leitura icon */}
               <button
-                onClick={() => {
-                  if (showPlayer) {
-                    tts.stop()
-                    setShowPlayer(false)
-                  } else {
-                    setShowPlayer(true)
-                    // Iniciar a partir do primeiro paragrafo da pagina actual (nao do inicio)
-                    if (modoLeitura === 'contemplativo' && paginas.length > 0) {
-                      const firstParaOfPage = paginas.slice(0, paginaAtual).reduce((sum, p) => sum + p.length, 0)
-                      tts.goTo(firstParaOfPage)
-                      // Small delay to ensure goTo sets the index before play
-                      setTimeout(() => tts.play(), 50)
-                    } else {
-                      tts.play()
-                    }
-                  }
-                }}
-                className={`text-xs px-3 py-1 rounded-full border transition-colors ${
-                  showPlayer
-                    ? modoNoturno
-                      ? 'border-purple-500/50 bg-purple-900/30 text-purple-300'
-                      : 'border-purple-400 bg-purple-50 text-purple-700'
-                    : 'border-stone-300 dark:border-stone-600 hover:bg-stone-100 dark:hover:bg-stone-800'
-                }`}
+                onClick={() => setModoLeitura(m => m === 'contemplativo' ? 'normal' : 'contemplativo')}
+                className={`p-2 rounded-full transition-colors ${modoNoturno ? 'text-stone-400 hover:bg-stone-800' : 'text-stone-500 hover:bg-stone-100'}`}
+                title={modoLeitura === 'contemplativo' ? 'Modo Contemplativo' : 'Modo Normal'}
               >
-                {showPlayer ? 'A ouvir' : 'Ouvir'}
+                {modoLeitura === 'contemplativo' ? (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                ) : (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                )}
               </button>
-            )}
+              {/* Modo noturno icon */}
+              <button
+                onClick={() => setModoNoturno(!modoNoturno)}
+                className={`p-2 rounded-full transition-colors ${modoNoturno ? 'text-stone-400 hover:bg-stone-800' : 'text-stone-500 hover:bg-stone-100'}`}
+                title={modoNoturno ? 'Modo Dia' : 'Modo Noite'}
+              >
+                {modoNoturno ? (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <circle cx="12" cy="12" r="5" /><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                  </svg>
+                ) : (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+                  </svg>
+                )}
+              </button>
+              {/* TTS icon */}
+              {tts.isSupported && (
+                <button
+                  onClick={() => {
+                    if (showPlayer) { tts.stop(); setShowPlayer(false) }
+                    else {
+                      setShowPlayer(true)
+                      if (modoLeitura === 'contemplativo' && paginas.length > 0) {
+                        const firstParaOfPage = paginas.slice(0, paginaAtual).reduce((sum, p) => sum + p.length, 0)
+                        tts.goTo(firstParaOfPage)
+                        setTimeout(() => tts.play(), 50)
+                      } else { tts.play() }
+                    }
+                  }}
+                  className={`p-2 rounded-full transition-colors ${
+                    showPlayer
+                      ? modoNoturno ? 'text-purple-300 bg-purple-900/30' : 'text-purple-700 bg-purple-50'
+                      : modoNoturno ? 'text-stone-400 hover:bg-stone-800' : 'text-stone-500 hover:bg-stone-100'
+                  }`}
+                  title={showPlayer ? 'Parar audio' : 'Ouvir'}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M11 5L6 9H2v6h4l5 4V5z" />{showPlayer && <path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" />}
+                  </svg>
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Pausa Contemplativa */}
+      {/* Pausa Contemplativa — suave, dismiss imediato */}
       <AnimatePresence>
         {mostrarPausa && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+            onClick={() => setMostrarPausa(false)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm cursor-pointer"
           >
-            <div className="text-center">
+            <div className="text-center" onClick={(e) => e.stopPropagation()}>
               <motion.div
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="text-white text-4xl mb-6"
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 4, repeat: Infinity }}
+                className="text-white/80 text-3xl mb-4"
               >
                 ⚬
               </motion.div>
-              <p className="text-white text-xl mb-2">Pausa para integrar</p>
-              <p className="text-white/60 text-sm italic">Respira.</p>
+              <p className="text-white/70 text-sm italic mb-6">Respira. Depois, avança.</p>
               <button
                 onClick={() => setMostrarPausa(false)}
-                className="mt-8 text-white/40 text-xs hover:text-white/60 transition-colors"
+                className="px-8 py-2.5 rounded-full bg-white/10 text-white/80 text-sm hover:bg-white/20 transition-colors"
               >
                 Continuar
               </button>
@@ -658,7 +709,7 @@ export default function CapituloPage() {
           <p className={`text-sm tracking-widest ${modoNoturno ? 'text-stone-500' : 'text-stone-600'} mb-4`}>
             CAPÍTULO {numeroCapitulo}
           </p>
-          <h1 className={`text-4xl md:text-5xl font-serif mb-4 ${modoNoturno ? cores.textDark : cores.text}`}>
+          <h1 className={`text-3xl md:text-5xl font-serif mb-4 ${modoNoturno ? cores.textDark : cores.text}`}>
             {capitulo.titulo}
           </h1>
         </motion.div>
@@ -800,7 +851,7 @@ export default function CapituloPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.05 }}
-                    className={`text-lg md:text-xl leading-relaxed ${modoNoturno ? 'text-stone-300' : 'text-stone-700'} font-serif ${
+                    className={`text-xl md:text-xl leading-relaxed ${modoNoturno ? 'text-stone-300' : 'text-stone-700'} font-serif ${
                       showPlayer && tts.currentIndex === index
                         ? modoNoturno ? 'bg-stone-700/30 -mx-3 px-3 py-1 rounded-lg' : 'bg-stone-200/40 -mx-3 px-3 py-1 rounded-lg'
                         : ''
@@ -850,7 +901,7 @@ export default function CapituloPage() {
                       </h2>
                     ) : (
                       <p
-                        className={`text-lg md:text-2xl leading-relaxed ${modoNoturno ? 'text-stone-300' : 'text-stone-700'} font-serif ${
+                        className={`text-xl md:text-2xl leading-relaxed ${modoNoturno ? 'text-stone-300' : 'text-stone-700'} font-serif ${
                           showPlayer && tts.currentIndex === globalIdx
                             ? modoNoturno ? 'bg-stone-700/30 -mx-3 px-3 py-1 rounded-lg' : 'bg-stone-200/40 -mx-3 px-3 py-1 rounded-lg'
                             : ''
