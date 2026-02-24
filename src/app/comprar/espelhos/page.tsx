@@ -9,7 +9,7 @@ import Image from 'next/image'
 import { nosCollection, NOS_PRICING } from '@/data/nos-collection'
 import type { Experience } from '@/data/experiences'
 
-type PaymentMethod = 'mpesa' | 'bank_transfer' | 'paypal'
+type PaymentMethod = 'mpesa' | 'paypal'
 
 export default function ComprarPage() {
   const router = useRouter()
@@ -52,7 +52,7 @@ export default function ComprarPage() {
         body: JSON.stringify({
           email,
           phone,
-          access_type_code: purchasing.slug,
+          access_type_code: purchasing.accessTypeCode,
           payment_method: paymentMethod,
           amount,
           currency,
@@ -426,7 +426,6 @@ export default function ComprarPage() {
                   <div className="mt-3 space-y-2">
                     {([
                       { key: 'mpesa' as const, label: 'MPesa', desc: 'Pagamento via telemóvel' },
-                      { key: 'bank_transfer' as const, label: 'Transferência Bancária', desc: 'Millenium BIM' },
                       { key: 'paypal' as const, label: 'PayPal / Cartão', desc: 'Pagamento internacional' },
                     ]).map((pm) => (
                       <button
