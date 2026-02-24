@@ -178,12 +178,12 @@ export function useSpeechSynthesis(paragrafos: string[]) {
     }
   }, [speakAt])
 
-  // Restart current utterance when rate changes during playback
+  // Restart current utterance when rate or voice changes during playback
   useEffect(() => {
     if (isPlayingRef.current && !isPausedRef.current) {
       speakAt(indexRef.current)
     }
-  }, [rate, speakAt])
+  }, [rate, selectedVoice, speakAt])
 
   // Chrome workaround: speechSynthesis silently stops after ~15s
   // Keep alive by pausing/resuming periodically
