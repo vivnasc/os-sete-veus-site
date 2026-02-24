@@ -78,44 +78,64 @@ export async function POST(request: Request) {
       console.error("[paypal/capture] Purchase error:", purchaseError);
     }
 
-    // Actualizar flag de acesso no perfil
+    // Garantir que o perfil existe e actualizar flag de acesso
     const flagToUpdate = ACCESS_FLAG_MAP[payment.access_type_code];
-    if (flagToUpdate) {
-      const { error: profileError } = await supabaseAdmin
-        .from("profiles")
-        .update({ [flagToUpdate]: true })
-        .eq("id", payment.user_id);
-
-      if (profileError) {
-        console.error("[paypal/capture] Profile update error:", profileError);
-      }
-    }
-
-    // Actualizar purchased_products no perfil
-    const { data: currentProfile } = await supabaseAdmin
-      .from("profiles")
-      .select("purchased_products")
-      .eq("id", payment.user_id)
-      .single();
-
-    const currentProducts = currentProfile?.purchased_products || [];
     const newProduct = {
       type: payment.access_type_code,
       date: new Date().toISOString(),
       code: payment.access_type_code,
     };
 
-    const alreadyExists = currentProducts.some(
-      (p: { type: string }) => p.type === newProduct.type
-    );
+    // Verificar se o perfil ja existe
+    const { data: existingProfile } = await supabaseAdmin
+      .from("profiles")
+      .select("id, purchased_products")
+      .eq("id", payment.user_id)
+      .single();
 
-    if (!alreadyExists) {
-      await supabaseAdmin
+    if (existingProfile) {
+      // Perfil existe — update
+      const updates: Record<string, unknown> = {};
+      if (flagToUpdate) {
+        updates[flagToUpdate] = true;
+      }
+
+      const currentProducts = existingProfile.purchased_products || [];
+      const alreadyExists = currentProducts.some(
+        (p: { type: string }) => p.type === newProduct.type
+      );
+      if (!alreadyExists) {
+        updates.purchased_products = [...currentProducts, newProduct];
+      }
+
+      if (Object.keys(updates).length > 0) {
+        const { error: updateError } = await supabaseAdmin
+          .from("profiles")
+          .update(updates)
+          .eq("id", payment.user_id);
+
+        if (updateError) {
+          console.error("[paypal/capture] Profile update error:", updateError);
+        }
+      }
+    } else {
+      // Perfil nao existe — criar com acesso
+      const profileData: Record<string, unknown> = {
+        id: payment.user_id,
+        email: payment.user_email,
+        purchased_products: [newProduct],
+      };
+      if (flagToUpdate) {
+        profileData[flagToUpdate] = true;
+      }
+
+      const { error: insertError } = await supabaseAdmin
         .from("profiles")
-        .update({
-          purchased_products: [...currentProducts, newProduct],
-        })
-        .eq("id", payment.user_id);
+        .insert(profileData);
+
+      if (insertError) {
+        console.error("[paypal/capture] Profile insert error:", insertError);
+      }
     }
 
     // Notificar admin

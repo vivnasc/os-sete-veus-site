@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createSupabaseServerClient, createSupabaseAdminClient } from "@/lib/supabase-server";
+import { ACCESS_FLAG_MAP } from "@/lib/constants";
 
 export const dynamic = "force-dynamic";
 
@@ -68,6 +69,7 @@ export async function POST() {
       purchases &&
       purchases.some(
         (p) =>
+          ACCESS_FLAG_MAP[p.product] === "has_mirrors_access" ||
           p.product === "espelhos" ||
           p.product === "jornada-completa" ||
           p.product === "pack3"

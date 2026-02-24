@@ -46,30 +46,61 @@ export async function POST(request: Request) {
 
     // Verificar se o usuário existe, se não, criar
     let userId: string | null = null;
+    const normalizedEmail = email.toLowerCase();
 
-    const { data: existingUsers } = await supabaseAdmin.auth.admin.listUsers();
-    const existingUser = existingUsers?.users?.find(
-      (u) => u.email === email.toLowerCase()
-    );
+    // Tentar criar primeiro — se ja existe, o erro diz-nos
+    const { data: newUser, error: createError } =
+      await supabaseAdmin.auth.admin.createUser({
+        email: normalizedEmail,
+        email_confirm: true,
+      });
 
-    if (existingUser) {
-      userId = existingUser.id;
-    } else {
-      // Criar novo usuário
-      const { data: newUser, error: createError } =
-        await supabaseAdmin.auth.admin.createUser({
-          email: email.toLowerCase(),
-          email_confirm: true,
-        });
+    if (newUser?.user) {
+      userId = newUser.user.id;
+    } else if (
+      createError?.message?.includes("already been registered") ||
+      createError?.message?.includes("already exists")
+    ) {
+      // Utilizador ja existe — procurar na tabela profiles por email
+      const { data: profile } = await supabaseAdmin
+        .from("profiles")
+        .select("id")
+        .eq("email", normalizedEmail)
+        .single();
 
-      if (createError || !newUser.user) {
+      if (profile) {
+        userId = profile.id;
+      } else {
+        // Fallback: listUsers com paginacao
+        let page = 1;
+        const perPage = 100;
+        while (!userId) {
+          const { data: listed } = await supabaseAdmin.auth.admin.listUsers({
+            page,
+            perPage,
+          });
+          const found = listed?.users?.find((u) => u.email === normalizedEmail);
+          if (found) {
+            userId = found.id;
+            break;
+          }
+          if (!listed?.users?.length || listed.users.length < perPage) break;
+          page++;
+        }
+      }
+
+      if (!userId) {
         return NextResponse.json(
-          { error: "Erro ao criar conta" },
+          { error: "Erro ao encontrar conta existente" },
           { status: 500 }
         );
       }
-
-      userId = newUser.user.id;
+    } else {
+      console.error("[payment/create] createUser error:", createError);
+      return NextResponse.json(
+        { error: "Erro ao criar conta" },
+        { status: 500 }
+      );
     }
 
     // Criar registo de pagamento
