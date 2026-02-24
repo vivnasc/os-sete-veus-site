@@ -15,6 +15,13 @@ export type NotaContextual = {
   texto: string
 }
 
+export type GuiaoEscrita = {
+  contexto: string
+  passos: string[]
+  tempo_sugerido: string
+  nota_final: string
+}
+
 export type NivelCapitulo = {
   capitulo_numero: number
 
@@ -32,4 +39,10 @@ export type NivelCapitulo = {
   sinais_do_veu?: string[]
   guiao_reflexao?: string[]
   espelho_pessoal?: string
+
+  // Camada profunda — mascaras, veu dominante, mensagem central, guiao de escrita
+  mascaras?: string[]
+  veu_dominante_sinais?: string[]
+  mensagem_central?: string
+  guiao_escrita?: GuiaoEscrita
 }

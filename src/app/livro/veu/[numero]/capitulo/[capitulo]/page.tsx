@@ -28,6 +28,10 @@ import ExemplosConcretos from '@/components/livro/ExemplosConcretos'
 import CrencasAMapear from '@/components/livro/CrencasAMapear'
 import SinaisDoVeu from '@/components/livro/SinaisDoVeu'
 import EspelhoPessoal from '@/components/livro/EspelhoPessoal'
+import MascarasDoVeu from '@/components/livro/MascarasDoVeu'
+import VeuDominante from '@/components/livro/VeuDominante'
+import MensagemCentral from '@/components/livro/MensagemCentral'
+import GuiaoEscrita from '@/components/livro/GuiaoEscrita'
 
 // Companion data per veu
 const niveisData: Record<number, NivelCapitulo[]> = {
@@ -448,6 +452,38 @@ export default function CapituloPage() {
         {nivelCapitulo?.crencas_a_mapear && nivelCapitulo.crencas_a_mapear.length > 0 && nivel !== 'arvore' && (
           <CrencasAMapear
             crencas={nivelCapitulo.crencas_a_mapear}
+            modoNoturno={modoNoturno}
+          />
+        )}
+
+        {/* Mascaras que este veu activa */}
+        {nivelCapitulo?.mascaras && nivelCapitulo.mascaras.length > 0 && nivel !== 'arvore' && (
+          <MascarasDoVeu
+            mascaras={nivelCapitulo.mascaras}
+            modoNoturno={modoNoturno}
+          />
+        )}
+
+        {/* Veu dominante — o leitor identifica se este e o seu veu principal */}
+        {nivelCapitulo?.veu_dominante_sinais && nivelCapitulo.veu_dominante_sinais.length > 0 && nivel !== 'arvore' && (
+          <VeuDominante
+            sinais={nivelCapitulo.veu_dominante_sinais}
+            modoNoturno={modoNoturno}
+          />
+        )}
+
+        {/* Mensagem central do capitulo */}
+        {nivelCapitulo?.mensagem_central && nivel !== 'arvore' && (
+          <MensagemCentral
+            mensagem={nivelCapitulo.mensagem_central}
+            modoNoturno={modoNoturno}
+          />
+        )}
+
+        {/* Guiao de escrita guiada */}
+        {nivelCapitulo?.guiao_escrita && nivel !== 'arvore' && (
+          <GuiaoEscrita
+            guiao={nivelCapitulo.guiao_escrita}
             modoNoturno={modoNoturno}
           />
         )}
