@@ -51,15 +51,15 @@ export default function TransicaoVeuPage() {
   const proximoVeu = numeroVeu < 7 ? numeroVeu + 1 : null
   const isFinalVeu = numeroVeu === 7
 
-  // Cores por véu
+  // Cores por véu — alinhadas com a mandala (progressao chakra)
   const coresVeu = [
-    { bg: 'from-stone-50 to-stone-100', text: 'text-stone-900' },
-    { bg: 'from-amber-50 to-stone-100', text: 'text-amber-900' },
-    { bg: 'from-sky-50 to-stone-100', text: 'text-sky-900' },
-    { bg: 'from-purple-50 to-stone-100', text: 'text-purple-900' },
-    { bg: 'from-gray-50 to-gray-200', text: 'text-gray-900' },
-    { bg: 'from-indigo-50 to-purple-100', text: 'text-indigo-900' },
-    { bg: 'from-purple-100 to-white', text: 'text-purple-900' }
+    { bg: 'from-red-50 to-stone-100', text: 'text-red-950' },
+    { bg: 'from-orange-50 to-stone-100', text: 'text-orange-950' },
+    { bg: 'from-amber-50 to-stone-100', text: 'text-amber-950' },
+    { bg: 'from-green-50 to-stone-100', text: 'text-green-950' },
+    { bg: 'from-sky-50 to-stone-100', text: 'text-sky-950' },
+    { bg: 'from-indigo-50 to-stone-100', text: 'text-indigo-950' },
+    { bg: 'from-purple-50 to-stone-100', text: 'text-purple-950' }
   ]
 
   const cores = coresVeu[numeroVeu - 1]

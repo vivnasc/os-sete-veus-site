@@ -48,15 +48,15 @@ export default function PortalVeuPage() {
     return <div>Véu não encontrado</div>
   }
 
-  // Cores por véu
+  // Cores por véu — alinhadas com a mandala (progressao chakra)
   const coresVeu = [
-    { bg: 'from-stone-50 to-stone-100', text: 'text-stone-900', accent: 'text-stone-700' },
-    { bg: 'from-amber-50 to-stone-100', text: 'text-amber-900', accent: 'text-amber-700' },
-    { bg: 'from-sky-50 to-stone-100', text: 'text-sky-900', accent: 'text-sky-700' },
-    { bg: 'from-purple-50 to-stone-100', text: 'text-purple-900', accent: 'text-purple-700' },
-    { bg: 'from-gray-50 to-gray-200', text: 'text-gray-900', accent: 'text-gray-600' },
-    { bg: 'from-indigo-50 to-purple-100', text: 'text-indigo-900', accent: 'text-indigo-700' },
-    { bg: 'from-purple-100 to-white', text: 'text-purple-900', accent: 'text-purple-600' }
+    { bg: 'from-red-50 to-stone-100', text: 'text-red-950', accent: 'text-red-800' },
+    { bg: 'from-orange-50 to-stone-100', text: 'text-orange-950', accent: 'text-orange-800' },
+    { bg: 'from-amber-50 to-stone-100', text: 'text-amber-950', accent: 'text-amber-800' },
+    { bg: 'from-green-50 to-stone-100', text: 'text-green-950', accent: 'text-green-800' },
+    { bg: 'from-sky-50 to-stone-100', text: 'text-sky-950', accent: 'text-sky-800' },
+    { bg: 'from-indigo-50 to-stone-100', text: 'text-indigo-950', accent: 'text-indigo-800' },
+    { bg: 'from-purple-50 to-stone-100', text: 'text-purple-950', accent: 'text-purple-800' }
   ]
 
   const cores = coresVeu[numeroVeu - 1]

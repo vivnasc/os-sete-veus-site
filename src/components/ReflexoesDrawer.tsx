@@ -18,9 +18,10 @@ type Props = {
   veuNumero: number
   capituloNumero: number
   guiaoReflexao?: string[]
+  hasFloatingPlayer?: boolean
 }
 
-export default function ReflexoesDrawer({ veuNumero, capituloNumero, guiaoReflexao }: Props) {
+export default function ReflexoesDrawer({ veuNumero, capituloNumero, guiaoReflexao, hasFloatingPlayer }: Props) {
   const { user } = useAuth()
   const { hasBookAccess } = useAccess()
   const [isOpen, setIsOpen] = useState(false)
@@ -100,7 +101,7 @@ export default function ReflexoesDrawer({ veuNumero, capituloNumero, guiaoReflex
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(true)}
-        className="fixed right-6 bottom-6 z-40 w-14 h-14 bg-purple-900 text-white rounded-full shadow-2xl flex items-center justify-center text-2xl"
+        className={`fixed right-6 z-40 w-14 h-14 bg-purple-900 text-white rounded-full shadow-2xl flex items-center justify-center text-2xl transition-all duration-300 ${hasFloatingPlayer ? 'bottom-24' : 'bottom-6'}`}
         title="Abrir Reflexões"
       >
         💭
