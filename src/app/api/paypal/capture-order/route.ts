@@ -133,10 +133,23 @@ export async function POST(request: Request) {
       },
     });
 
+    // Gerar token de auto-login para o utilizador
+    let tokenHash: string | null = null;
+    try {
+      const { data: linkData } = await supabaseAdmin.auth.admin.generateLink({
+        type: "magiclink",
+        email: payment.user_email,
+      });
+      tokenHash = linkData?.properties?.hashed_token || null;
+    } catch (e) {
+      console.error("[paypal/capture] generateLink error:", e);
+    }
+
     return NextResponse.json({
       ok: true,
       message: "Pagamento confirmado! O teu acesso esta activo.",
       email: payment.user_email,
+      token_hash: tokenHash,
     });
   } catch (error) {
     console.error("[paypal/capture] Error:", error);
