@@ -401,17 +401,15 @@ export default function CapituloPage() {
     }
   }, [tts.currentIndex, showPlayer, modoLeitura, paragraphToPage, paginaAtual])
 
-  // Cores por véu — alinhadas com a mandala (progressao chakra)
-  // 1 Permanencia=vermelho-terra, 2 Memoria=laranja, 3 Turbilhao=amarelo,
-  // 4 Esforco=verde, 5 Desolacao=azul, 6 Horizonte=indigo, 7 Dualidade=violeta
+  // Cores por véu — tons visivelmente distintos (nao usar -950, sao todos preto)
   const coresVeu = [
-    { bg: 'bg-red-50', bgDark: 'bg-red-950', text: 'text-red-950', textDark: 'text-red-100' },
-    { bg: 'bg-orange-50', bgDark: 'bg-orange-950', text: 'text-orange-950', textDark: 'text-orange-100' },
-    { bg: 'bg-amber-50', bgDark: 'bg-amber-950', text: 'text-amber-950', textDark: 'text-amber-100' },
-    { bg: 'bg-green-50', bgDark: 'bg-green-950', text: 'text-green-950', textDark: 'text-green-100' },
-    { bg: 'bg-sky-50', bgDark: 'bg-sky-950', text: 'text-sky-950', textDark: 'text-sky-100' },
-    { bg: 'bg-indigo-50', bgDark: 'bg-indigo-950', text: 'text-indigo-950', textDark: 'text-indigo-100' },
-    { bg: 'bg-purple-50', bgDark: 'bg-purple-950', text: 'text-purple-950', textDark: 'text-purple-100' }
+    { bg: 'bg-red-50', bgDark: 'bg-red-950', text: 'text-red-800', textDark: 'text-red-300' },
+    { bg: 'bg-orange-50', bgDark: 'bg-orange-950', text: 'text-orange-700', textDark: 'text-orange-300' },
+    { bg: 'bg-amber-50', bgDark: 'bg-amber-950', text: 'text-amber-700', textDark: 'text-amber-300' },
+    { bg: 'bg-green-50', bgDark: 'bg-green-950', text: 'text-green-700', textDark: 'text-green-300' },
+    { bg: 'bg-sky-50', bgDark: 'bg-sky-950', text: 'text-sky-700', textDark: 'text-sky-300' },
+    { bg: 'bg-indigo-50', bgDark: 'bg-indigo-950', text: 'text-indigo-700', textDark: 'text-indigo-300' },
+    { bg: 'bg-purple-50', bgDark: 'bg-purple-950', text: 'text-purple-700', textDark: 'text-purple-300' }
   ]
 
   const cores = coresVeu[numeroVeu - 1]
