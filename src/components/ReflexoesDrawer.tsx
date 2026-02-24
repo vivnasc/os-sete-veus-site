@@ -94,12 +94,13 @@ export default function ReflexoesDrawer({ veuNumero, capituloNumero, guiaoReflex
     setLoadingEspelho(false)
   }
 
-  // Show hint when chapter is completed
+  // Show hint when chapter is completed — persist until user opens drawer
   useEffect(() => {
     if (capituloCompleto && !isOpen) {
       setShowHint(true)
-      const timer = setTimeout(() => setShowHint(false), 8000)
-      return () => clearTimeout(timer)
+    }
+    if (isOpen) {
+      setShowHint(false)
     }
   }, [capituloCompleto, isOpen])
 
@@ -107,34 +108,48 @@ export default function ReflexoesDrawer({ veuNumero, capituloNumero, guiaoReflex
 
   return (
     <>
-      {/* Botão Flutuante */}
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={() => { setIsOpen(true); setShowHint(false) }}
-        animate={showHint ? {
-          scale: [1, 1.08, 1],
-          boxShadow: [
-            '0 25px 50px -12px rgba(0,0,0,0.25)',
-            '0 25px 50px -12px rgba(147,51,234,0.5)',
-            '0 25px 50px -12px rgba(0,0,0,0.25)'
-          ]
-        } : {}}
-        transition={showHint ? { duration: 2, repeat: Infinity } : {}}
-        className={`fixed right-6 z-40 bg-purple-900 text-white rounded-full shadow-2xl flex items-center justify-center transition-all duration-500 ${
-          hasFloatingPlayer ? 'bottom-24' : 'bottom-6'
-        } ${showHint ? 'px-5 py-3 gap-2' : 'w-14 h-14 text-2xl'}`}
-        title="Abrir Reflexões"
-      >
-        {showHint ? (
-          <>
-            <span className="text-lg">💭</span>
-            <span className="text-sm font-medium whitespace-nowrap">O que sentiste?</span>
-          </>
-        ) : (
-          <>💭</>
+      {/* Banner visivel apos completar capitulo */}
+      <AnimatePresence>
+        {showHint && (
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 100, opacity: 0 }}
+            transition={{ type: 'spring', damping: 20, stiffness: 200 }}
+            className={`fixed left-4 right-4 z-40 ${hasFloatingPlayer ? 'bottom-24' : 'bottom-6'}`}
+          >
+            <button
+              onClick={() => { setIsOpen(true); setShowHint(false) }}
+              className="w-full max-w-xl mx-auto flex items-center gap-4 px-6 py-4 rounded-2xl bg-purple-900 text-white shadow-2xl hover:bg-purple-800 transition-colors"
+            >
+              <div className="flex-1 text-left">
+                <p className="text-sm font-medium">Capitulo completo</p>
+                <p className="text-xs text-purple-300 mt-0.5">O que este capitulo despertou em ti?</p>
+              </div>
+              <span className="text-sm font-medium px-4 py-1.5 rounded-full bg-white/20 whitespace-nowrap">
+                Reflectir
+              </span>
+            </button>
+          </motion.div>
         )}
-      </motion.button>
+      </AnimatePresence>
+
+      {/* Botao Flutuante (quando nao ha banner) */}
+      {!showHint && (
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => { setIsOpen(true); setShowHint(false) }}
+          className={`fixed right-6 z-40 bg-purple-900 text-white w-14 h-14 text-2xl rounded-full shadow-2xl flex items-center justify-center transition-all duration-500 ${
+            hasFloatingPlayer ? 'bottom-24' : 'bottom-6'
+          }`}
+          title="Abrir Reflexoes"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+          </svg>
+        </motion.button>
+      )}
 
       {/* Drawer */}
       <AnimatePresence>

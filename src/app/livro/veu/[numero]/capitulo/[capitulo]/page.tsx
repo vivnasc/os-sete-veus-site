@@ -491,18 +491,25 @@ export default function CapituloPage() {
   }
 
   return (
-    <div className={`min-h-screen ${modoNoturno ? cores.bgDark : cores.bg} transition-colors duration-500 ${showPlayer ? 'pb-20' : ''}`}>
+    <div className={`min-h-screen ${modoNoturno ? 'bg-stone-950' : 'bg-stone-50'} transition-colors duration-500 ${showPlayer ? 'pb-20' : ''}`}>
       {/* Header com controles */}
       <div className="sticky top-0 z-40 backdrop-blur-sm bg-white/50 dark:bg-black/50 border-b border-stone-200 dark:border-stone-700">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            {/* Botao de voltar visivel */}
             <Link
               href={`/livro/veu/${numeroVeu}`}
-              className="text-sm text-stone-600 dark:text-stone-400 hover:underline"
+              className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-sm transition-colors ${
+                modoNoturno
+                  ? 'bg-stone-800 text-stone-300 hover:bg-stone-700'
+                  : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
+              }`}
             >
-              ← Véu {numeroVeu}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="shrink-0">
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+              </svg>
+              Véu {numeroVeu}
             </Link>
-            <span className="text-sm text-stone-400">|</span>
             {/* Chapter selector dropdown */}
             <div className="relative">
               <button
@@ -584,7 +591,15 @@ export default function CapituloPage() {
                     setShowPlayer(false)
                   } else {
                     setShowPlayer(true)
-                    tts.play()
+                    // Iniciar a partir do primeiro paragrafo da pagina actual (nao do inicio)
+                    if (modoLeitura === 'contemplativo' && paginas.length > 0) {
+                      const firstParaOfPage = paginas.slice(0, paginaAtual).reduce((sum, p) => sum + p.length, 0)
+                      tts.goTo(firstParaOfPage)
+                      // Small delay to ensure goTo sets the index before play
+                      setTimeout(() => tts.play(), 50)
+                    } else {
+                      tts.play()
+                    }
                   }
                 }}
                 className={`text-xs px-3 py-1 rounded-full border transition-colors ${
@@ -643,7 +658,7 @@ export default function CapituloPage() {
           <p className={`text-sm tracking-widest ${modoNoturno ? 'text-stone-500' : 'text-stone-600'} mb-4`}>
             CAPÍTULO {numeroCapitulo}
           </p>
-          <h1 className={`text-4xl md:text-5xl font-serif ${modoNoturno ? cores.textDark : cores.text} mb-4`}>
+          <h1 className={`text-4xl md:text-5xl font-serif mb-4 ${modoNoturno ? cores.textDark : cores.text}`}>
             {capitulo.titulo}
           </h1>
         </motion.div>
@@ -772,9 +787,9 @@ export default function CapituloPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.05 }}
-                    className={`mt-12 mb-2 text-xl md:text-2xl font-serif font-semibold ${modoNoturno ? cores.textDark : cores.text} ${
+                    className={`mt-12 mb-2 text-xl md:text-2xl font-serif font-semibold ${modoNoturno ? 'text-stone-200' : 'text-stone-800'} ${
                       showPlayer && tts.currentIndex === index
-                        ? modoNoturno ? 'bg-stone-700/30 -mx-3 px-3 py-1 rounded-lg' : 'bg-amber-50/60 -mx-3 px-3 py-1 rounded-lg'
+                        ? modoNoturno ? 'bg-stone-700/30 -mx-3 px-3 py-1 rounded-lg' : 'bg-stone-200/40 -mx-3 px-3 py-1 rounded-lg'
                         : ''
                     } transition-colors duration-300`}
                   >
@@ -785,9 +800,9 @@ export default function CapituloPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.05 }}
-                    className={`text-lg md:text-xl leading-relaxed ${modoNoturno ? cores.textDark : cores.text} font-serif ${
+                    className={`text-lg md:text-xl leading-relaxed ${modoNoturno ? 'text-stone-300' : 'text-stone-700'} font-serif ${
                       showPlayer && tts.currentIndex === index
-                        ? modoNoturno ? 'bg-stone-700/30 -mx-3 px-3 py-1 rounded-lg' : 'bg-amber-50/60 -mx-3 px-3 py-1 rounded-lg'
+                        ? modoNoturno ? 'bg-stone-700/30 -mx-3 px-3 py-1 rounded-lg' : 'bg-stone-200/40 -mx-3 px-3 py-1 rounded-lg'
                         : ''
                     } transition-colors duration-300`}
                   >
@@ -825,9 +840,9 @@ export default function CapituloPage() {
                   <React.Fragment key={idx}>
                     {item.tipo === 'subtitulo' ? (
                       <h2
-                        className={`text-xl md:text-3xl font-serif font-semibold ${idx > 0 ? 'mt-8' : ''} ${modoNoturno ? cores.textDark : cores.text} ${
+                        className={`text-xl md:text-3xl font-serif font-semibold ${idx > 0 ? 'mt-8' : ''} ${modoNoturno ? 'text-stone-200' : 'text-stone-800'} ${
                           showPlayer && tts.currentIndex === globalIdx
-                            ? modoNoturno ? 'bg-stone-700/30 -mx-3 px-3 py-1 rounded-lg' : 'bg-amber-50/60 -mx-3 px-3 py-1 rounded-lg'
+                            ? modoNoturno ? 'bg-stone-700/30 -mx-3 px-3 py-1 rounded-lg' : 'bg-stone-200/40 -mx-3 px-3 py-1 rounded-lg'
                             : ''
                         } transition-colors duration-300`}
                       >
@@ -835,9 +850,9 @@ export default function CapituloPage() {
                       </h2>
                     ) : (
                       <p
-                        className={`text-lg md:text-2xl leading-relaxed ${modoNoturno ? cores.textDark : cores.text} font-serif ${
+                        className={`text-lg md:text-2xl leading-relaxed ${modoNoturno ? 'text-stone-300' : 'text-stone-700'} font-serif ${
                           showPlayer && tts.currentIndex === globalIdx
-                            ? modoNoturno ? 'bg-stone-700/30 -mx-3 px-3 py-1 rounded-lg' : 'bg-amber-50/60 -mx-3 px-3 py-1 rounded-lg'
+                            ? modoNoturno ? 'bg-stone-700/30 -mx-3 px-3 py-1 rounded-lg' : 'bg-stone-200/40 -mx-3 px-3 py-1 rounded-lg'
                             : ''
                         } transition-colors duration-300`}
                       >
