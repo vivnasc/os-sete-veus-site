@@ -9,6 +9,7 @@ import { useAuth } from '@/components/AuthProvider'
 import { useAccess } from '@/hooks/useAccess'
 import { useNivelLeitura } from '@/hooks/useNivelLeitura'
 import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis'
+import { supabase } from '@/lib/supabase'
 import livroData from '@/data/livro-7-veus.json'
 import { glossario } from '@/data/livro-niveis/glossario'
 import { veu1Niveis } from '@/data/livro-niveis/veu-1'
@@ -190,12 +191,40 @@ export default function CapituloPage() {
   const [showCapitulos, setShowCapitulos] = useState(false)
   const [showCompanion, setShowCompanion] = useState(false)
   const completionKey = `reader-complete-v${numeroVeu}-c${numeroCapitulo}`
+  const progressSlug = `livro-veu-${numeroVeu}-cap-${numeroCapitulo}`
   const [capituloCompleto, setCapituloCompleto] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem(completionKey) === 'true'
     }
     return false
   })
+
+  // Load completion status from Supabase (cross-device sync)
+  useEffect(() => {
+    if (!user || capituloCompleto) return
+    const loadProgress = async () => {
+      try {
+        const session = await supabase.auth.getSession()
+        const userId = session.data.session?.user?.id
+        if (!userId) return
+
+        const { data } = await supabase
+          .from('reading_progress')
+          .select('completed')
+          .eq('user_id', userId)
+          .eq('chapter_slug', progressSlug)
+          .single()
+
+        if (data?.completed) {
+          setCapituloCompleto(true)
+          localStorage.setItem(completionKey, 'true')
+        }
+      } catch {
+        // Falha na ligacao — usar localStorage como fallback
+      }
+    }
+    loadProgress()
+  }, [user, progressSlug, completionKey, capituloCompleto])
 
   // Dividir conteúdo em parágrafos limpos
   const paragrafos = useMemo(() => {
@@ -306,12 +335,30 @@ export default function CapituloPage() {
   }, [paginas])
 
   // Mark chapter complete when reaching the end
-  const marcarCompleto = useCallback(() => {
-    if (!capituloCompleto) {
-      setCapituloCompleto(true)
-      localStorage.setItem(completionKey, 'true')
+  const marcarCompleto = useCallback(async () => {
+    if (capituloCompleto) return
+    setCapituloCompleto(true)
+    localStorage.setItem(completionKey, 'true')
+
+    // Sync to Supabase for cross-device persistence
+    try {
+      const session = await supabase.auth.getSession()
+      const userId = session.data.session?.user?.id
+      if (!userId) return
+
+      await supabase.from('reading_progress').upsert(
+        {
+          user_id: userId,
+          chapter_slug: progressSlug,
+          completed: true,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: 'user_id,chapter_slug' }
+      )
+    } catch {
+      // Falha na ligacao — localStorage ja guardou localmente
     }
-  }, [capituloCompleto, completionKey])
+  }, [capituloCompleto, completionKey, progressSlug])
 
   // Contemplative: mark complete when reaching last page
   useEffect(() => {
