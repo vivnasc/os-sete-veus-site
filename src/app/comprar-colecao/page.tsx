@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/AuthProvider";
 
-type PaymentMethod = "paypal" | "mpesa" | "bank_transfer";
+type PaymentMethod = "paypal" | "mpesa";
 
 export default function ComprarColecaoPage() {
   const router = useRouter();
@@ -261,34 +261,6 @@ export default function ComprarColecaoPage() {
                 </div>
               </button>
 
-              {/* Bank Transfer */}
-              <button
-                type="button"
-                onClick={() => setPaymentMethod("bank_transfer")}
-                className={`w-full rounded-lg border-2 p-4 text-left transition-all ${
-                  paymentMethod === "bank_transfer"
-                    ? "border-sage bg-sage/5"
-                    : "border-brown-100 bg-white hover:border-brown-200"
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <div
-                    className={`h-5 w-5 rounded-full border-2 ${
-                      paymentMethod === "bank_transfer"
-                        ? "border-sage bg-sage"
-                        : "border-brown-200"
-                    }`}
-                  />
-                  <div className="flex-1">
-                    <p className="font-sans text-sm font-medium text-brown-900">
-                      Transferência Bancária
-                    </p>
-                    <p className="text-xs text-brown-500">
-                      Aguarda confirmação manual
-                    </p>
-                  </div>
-                </div>
-              </button>
             </div>
           </div>
 

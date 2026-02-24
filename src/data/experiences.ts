@@ -5,6 +5,7 @@ export type ExperienceStatus = "available" | "coming_soon" | "waitlist";
 
 export type Experience = {
   slug: string;
+  accessTypeCode: string;
   number: number;
   title: string;
   subtitle: string;
@@ -39,6 +40,7 @@ export const PRICING = {
 const _experiences: Experience[] = [
   {
     slug: "veu-da-ilusao",
+    accessTypeCode: "experiencia-veu-ilusao",
     number: 1,
     title: "O Espelho da Ilusão",
     subtitle: "Quando a vida que tens não foi a que escolheste",
@@ -61,6 +63,7 @@ const _experiences: Experience[] = [
   },
   {
     slug: "veu-do-medo",
+    accessTypeCode: "experiencia-veu-medo",
     number: 2,
     title: "O Espelho do Medo",
     subtitle: "Quando o medo decide por ti",
@@ -83,6 +86,7 @@ const _experiences: Experience[] = [
   },
   {
     slug: "veu-da-culpa",
+    accessTypeCode: "experiencia-veu-culpa",
     number: 3,
     title: "O Espelho da Culpa",
     subtitle: "Quando te castigas por querer mais",
@@ -105,6 +109,7 @@ const _experiences: Experience[] = [
   },
   {
     slug: "veu-da-identidade",
+    accessTypeCode: "experiencia-veu-identidade",
     number: 4,
     title: "O Espelho da Identidade",
     subtitle: "Quando já não sabes quem és sem os outros",
@@ -127,6 +132,7 @@ const _experiences: Experience[] = [
   },
   {
     slug: "veu-do-controlo",
+    accessTypeCode: "experiencia-veu-controlo",
     number: 5,
     title: "O Espelho do Controlo",
     subtitle: "Quando segurar é a única forma que conheces",
@@ -149,6 +155,7 @@ const _experiences: Experience[] = [
   },
   {
     slug: "veu-do-desejo",
+    accessTypeCode: "experiencia-veu-desejo",
     number: 6,
     title: "O Espelho do Desejo",
     subtitle: "Quando desejas tudo menos o que precisas",
@@ -171,6 +178,7 @@ const _experiences: Experience[] = [
   },
   {
     slug: "veu-da-separacao",
+    accessTypeCode: "experiencia-veu-separacao",
     number: 7,
     title: "O Espelho da Separação",
     subtitle: "Quando te afastas de ti mesma para pertencer",
