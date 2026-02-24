@@ -136,6 +136,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       ok: true,
       message: "Pagamento confirmado! O teu acesso esta activo.",
+      email: payment.user_email,
     });
   } catch (error) {
     console.error("[paypal/capture] Error:", error);
