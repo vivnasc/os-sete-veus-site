@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useAuth } from '@/components/AuthProvider'
@@ -17,6 +17,23 @@ export default function PortalVeuPage() {
   const params = useParams()
   const numeroVeu = parseInt(params.numero as string)
   const veu = livroData.veus[numeroVeu - 1]
+
+  // Skip breathing intro on repeat visits
+  const visitKey = `veu-portal-visited-${numeroVeu}`
+  const [isRepeatVisit] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem(visitKey) === 'true'
+    }
+    return false
+  })
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(visitKey, 'true')
+    }
+  }, [visitKey])
+
+  // Base delay: 0 on repeat visits, reduced on first visit
+  const d = useMemo(() => (base: number) => isRepeatVisit ? 0 : base * 0.5, [isRepeatVisit])
 
   // Carregar progresso dos capitulos (Supabase + localStorage fallback)
   const [capitulosCompletos, setCapitulosCompletos] = useState<Set<number>>(new Set())
@@ -118,37 +135,39 @@ export default function PortalVeuPage() {
 
   return (
     <div className={`min-h-screen bg-gradient-to-b ${cores.bg} flex flex-col items-center justify-center p-6`}>
-      {/* Respiração Inicial */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: [0, 1, 1, 0] }}
-        transition={{ duration: 4, times: [0, 0.3, 0.7, 1] }}
-        className="absolute inset-0 flex items-center justify-center bg-black/90 z-50 pointer-events-none"
-      >
-        <div className="text-center">
-          <motion.div
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 4, repeat: 0 }}
-            className="text-white text-2xl mb-4"
-          >
-            ⚬
-          </motion.div>
-          <p className="text-white/80 text-lg">Respira. Depois, avança.</p>
-        </div>
-      </motion.div>
+      {/* Respiração Inicial — skip on repeat visits */}
+      {!isRepeatVisit && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [0, 1, 1, 0] }}
+          transition={{ duration: 2.5, times: [0, 0.3, 0.7, 1] }}
+          className="absolute inset-0 flex items-center justify-center bg-black/90 z-50 pointer-events-none"
+        >
+          <div className="text-center">
+            <motion.div
+              animate={{ scale: [1, 1.15, 1] }}
+              transition={{ duration: 2.5, repeat: 0 }}
+              className="text-white text-2xl mb-4"
+            >
+              ⚬
+            </motion.div>
+            <p className="text-white/80 text-lg">Respira. Depois, avança.</p>
+          </div>
+        </motion.div>
+      )}
 
       {/* Conteúdo Principal */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 4.5, duration: 1 }}
+        transition={{ delay: d(3), duration: 0.6 }}
         className="max-w-3xl mx-auto text-center"
       >
         {/* Número do Véu */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 5 }}
+          transition={{ delay: d(3.4) }}
           className={`text-sm tracking-widest ${cores.accent} mb-4`}
         >
           VÉU {numeroVeu}
@@ -158,7 +177,7 @@ export default function PortalVeuPage() {
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 5.3 }}
+          transition={{ delay: d(3.6) }}
           className={`text-5xl md:text-6xl font-serif ${cores.text} mb-8`}
         >
           {veu.nome}
@@ -168,7 +187,7 @@ export default function PortalVeuPage() {
         <motion.blockquote
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 5.6 }}
+          transition={{ delay: d(3.8) }}
           className={`text-xl md:text-2xl italic ${cores.accent} mb-16 leading-relaxed max-w-2xl mx-auto`}
         >
           "{veu.citacao}"
@@ -178,7 +197,7 @@ export default function PortalVeuPage() {
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: '100%' }}
-          transition={{ delay: 6, duration: 1 }}
+          transition={{ delay: d(4), duration: 0.6 }}
           className="h-px bg-gradient-to-r from-transparent via-stone-400 to-transparent mb-12"
         />
 
@@ -186,7 +205,7 @@ export default function PortalVeuPage() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 6.5 }}
+          transition={{ delay: d(4.2) }}
           className="grid md:grid-cols-2 gap-8 mb-16"
         >
           <div className="text-left">
@@ -211,7 +230,7 @@ export default function PortalVeuPage() {
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: '100%' }}
-          transition={{ delay: 7, duration: 1 }}
+          transition={{ delay: d(4.4), duration: 0.6 }}
           className="h-px bg-gradient-to-r from-transparent via-stone-400 to-transparent mb-12"
         />
 
@@ -219,7 +238,7 @@ export default function PortalVeuPage() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 7.5 }}
+          transition={{ delay: d(4.6) }}
           className="w-full max-w-md mb-12"
         >
           <p className={`text-sm ${cores.accent} mb-4 text-center`}>
@@ -268,7 +287,7 @@ export default function PortalVeuPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 8 }}
+          transition={{ delay: d(4.8) }}
         >
           {(() => {
             // Encontrar primeiro capitulo nao completo
@@ -299,7 +318,7 @@ export default function PortalVeuPage() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 8.5 }}
+          transition={{ delay: d(5) }}
           className="mt-8"
         >
           <Link href="/livro" className={`text-sm ${cores.accent} hover:underline`}>
