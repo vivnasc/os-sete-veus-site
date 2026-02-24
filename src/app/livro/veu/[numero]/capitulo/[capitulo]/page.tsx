@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { useAuth } from '@/components/AuthProvider'
 import { useAccess } from '@/hooks/useAccess'
 import { useNivelLeitura } from '@/hooks/useNivelLeitura'
+import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis'
 import livroData from '@/data/livro-7-veus.json'
 import { glossario } from '@/data/livro-niveis/glossario'
 import { veu1Niveis } from '@/data/livro-niveis/veu-1'
@@ -32,6 +33,7 @@ import MascarasDoVeu from '@/components/livro/MascarasDoVeu'
 import VeuDominante from '@/components/livro/VeuDominante'
 import MensagemCentral from '@/components/livro/MensagemCentral'
 import GuiaoEscrita from '@/components/livro/GuiaoEscrita'
+import AudioPlayer from '@/components/livro/AudioPlayer'
 
 // Companion data per veu
 const niveisData: Record<number, NivelCapitulo[]> = {
@@ -166,6 +168,7 @@ export default function CapituloPage() {
   const [modoNoturno, setModoNoturno] = useState(false)
   const [mostrarPausa, setMostrarPausa] = useState(false)
   const [paginaAtual, setPaginaAtual] = useState(0)
+  const [showPlayer, setShowPlayer] = useState(false)
 
   // Dividir conteúdo em parágrafos limpos
   const paragrafos = useMemo(() => {
@@ -260,6 +263,31 @@ export default function CapituloPage() {
     return result
   }, [paragrafos])
 
+  // TTS: extract plain text from paragraphs
+  const textosParaTTS = useMemo(() => paragrafos.map(p => p.texto), [paragrafos])
+  const tts = useSpeechSynthesis(textosParaTTS)
+
+  // Map global paragraph index → page number (for contemplative mode sync)
+  const paragraphToPage = useMemo(() => {
+    const map: number[] = []
+    for (let pageIdx = 0; pageIdx < paginas.length; pageIdx++) {
+      for (let i = 0; i < paginas[pageIdx].length; i++) {
+        map.push(pageIdx)
+      }
+    }
+    return map
+  }, [paginas])
+
+  // Auto-advance contemplative pages when TTS progresses
+  useEffect(() => {
+    if (!showPlayer || modoLeitura !== 'contemplativo') return
+    const targetPage = paragraphToPage[tts.currentIndex]
+    if (targetPage !== undefined && targetPage !== paginaAtual) {
+      setPaginaAtual(targetPage)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [tts.currentIndex, showPlayer, modoLeitura, paragraphToPage, paginaAtual])
+
   // Cores por véu
   const coresVeu = [
     { bg: 'bg-stone-50', bgDark: 'bg-stone-900', text: 'text-stone-900', textDark: 'text-stone-100' },
@@ -316,8 +344,15 @@ export default function CapituloPage() {
   // Próxima página
   const proximaPagina = () => {
     if (paginaAtual < paginas.length - 1) {
-      setPaginaAtual(paginaAtual + 1)
+      const newPage = paginaAtual + 1
+      setPaginaAtual(newPage)
       window.scrollTo({ top: 0, behavior: 'smooth' })
+
+      // Sync TTS to first paragraph of new page
+      if (showPlayer && (tts.isPlaying || tts.isPaused)) {
+        const firstParaOfPage = paginas.slice(0, newPage).reduce((sum, p) => sum + p.length, 0)
+        tts.goTo(firstParaOfPage)
+      }
     }
   }
 
@@ -332,7 +367,7 @@ export default function CapituloPage() {
   }
 
   return (
-    <div className={`min-h-screen ${modoNoturno ? cores.bgDark : cores.bg} transition-colors duration-500`}>
+    <div className={`min-h-screen ${modoNoturno ? cores.bgDark : cores.bg} transition-colors duration-500 ${showPlayer ? 'pb-20' : ''}`}>
       {/* Header com controles */}
       <div className="sticky top-0 z-40 backdrop-blur-sm bg-white/50 dark:bg-black/50 border-b border-stone-200 dark:border-stone-700">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -368,6 +403,30 @@ export default function CapituloPage() {
             >
               {modoNoturno ? 'Dia' : 'Noite'}
             </button>
+
+            {/* TTS — Ouvir */}
+            {tts.isSupported && (
+              <button
+                onClick={() => {
+                  if (showPlayer) {
+                    tts.stop()
+                    setShowPlayer(false)
+                  } else {
+                    setShowPlayer(true)
+                    tts.play()
+                  }
+                }}
+                className={`text-xs px-3 py-1 rounded-full border transition-colors ${
+                  showPlayer
+                    ? modoNoturno
+                      ? 'border-purple-500/50 bg-purple-900/30 text-purple-300'
+                      : 'border-purple-400 bg-purple-50 text-purple-700'
+                    : 'border-stone-300 dark:border-stone-600 hover:bg-stone-100 dark:hover:bg-stone-800'
+                }`}
+              >
+                {showPlayer ? 'A ouvir' : 'Ouvir'}
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -512,7 +571,11 @@ export default function CapituloPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.05 }}
-                    className={`mt-12 mb-2 text-xl md:text-2xl font-serif font-semibold ${modoNoturno ? cores.textDark : cores.text}`}
+                    className={`mt-12 mb-2 text-xl md:text-2xl font-serif font-semibold ${modoNoturno ? cores.textDark : cores.text} ${
+                      showPlayer && tts.currentIndex === index
+                        ? modoNoturno ? 'bg-stone-700/30 -mx-3 px-3 py-1 rounded-lg' : 'bg-amber-50/60 -mx-3 px-3 py-1 rounded-lg'
+                        : ''
+                    } transition-colors duration-300`}
                   >
                     {item.texto}
                   </motion.h2>
@@ -521,7 +584,11 @@ export default function CapituloPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.05 }}
-                    className={`text-lg md:text-xl leading-relaxed ${modoNoturno ? cores.textDark : cores.text} font-serif`}
+                    className={`text-lg md:text-xl leading-relaxed ${modoNoturno ? cores.textDark : cores.text} font-serif ${
+                      showPlayer && tts.currentIndex === index
+                        ? modoNoturno ? 'bg-stone-700/30 -mx-3 px-3 py-1 rounded-lg' : 'bg-amber-50/60 -mx-3 px-3 py-1 rounded-lg'
+                        : ''
+                    } transition-colors duration-300`}
                   >
                     {nivel !== 'arvore' && nivelCapitulo
                       ? aplicarGlossario(item.texto, nivelCapitulo.termos_destacados, modoNoturno)
@@ -555,13 +622,21 @@ export default function CapituloPage() {
                   <React.Fragment key={idx}>
                     {item.tipo === 'subtitulo' ? (
                       <h2
-                        className={`text-xl md:text-3xl font-serif font-semibold ${idx > 0 ? 'mt-8' : ''} ${modoNoturno ? cores.textDark : cores.text}`}
+                        className={`text-xl md:text-3xl font-serif font-semibold ${idx > 0 ? 'mt-8' : ''} ${modoNoturno ? cores.textDark : cores.text} ${
+                          showPlayer && tts.currentIndex === globalIdx
+                            ? modoNoturno ? 'bg-stone-700/30 -mx-3 px-3 py-1 rounded-lg' : 'bg-amber-50/60 -mx-3 px-3 py-1 rounded-lg'
+                            : ''
+                        } transition-colors duration-300`}
                       >
                         {item.texto}
                       </h2>
                     ) : (
                       <p
-                        className={`text-lg md:text-2xl leading-relaxed ${modoNoturno ? cores.textDark : cores.text} font-serif`}
+                        className={`text-lg md:text-2xl leading-relaxed ${modoNoturno ? cores.textDark : cores.text} font-serif ${
+                          showPlayer && tts.currentIndex === globalIdx
+                            ? modoNoturno ? 'bg-stone-700/30 -mx-3 px-3 py-1 rounded-lg' : 'bg-amber-50/60 -mx-3 px-3 py-1 rounded-lg'
+                            : ''
+                        } transition-colors duration-300`}
                       >
                         {nivel !== 'arvore' && nivelCapitulo
                           ? aplicarGlossario(item.texto, nivelCapitulo.termos_destacados, modoNoturno)
@@ -644,6 +719,27 @@ export default function CapituloPage() {
         capituloNumero={numeroCapitulo}
         guiaoReflexao={nivel !== 'arvore' ? nivelCapitulo?.guiao_reflexao : undefined}
       />
+
+      {/* Audio Player flutuante */}
+      <AnimatePresence>
+        {showPlayer && (
+          <AudioPlayer
+            isPlaying={tts.isPlaying}
+            isPaused={tts.isPaused}
+            currentIndex={tts.currentIndex}
+            total={tts.total}
+            rate={tts.rate}
+            onPlay={tts.play}
+            onPause={tts.pause}
+            onStop={tts.stop}
+            onNext={tts.next}
+            onPrevious={tts.previous}
+            onRateChange={tts.setRate}
+            onClose={() => setShowPlayer(false)}
+            modoNoturno={modoNoturno}
+          />
+        )}
+      </AnimatePresence>
     </div>
   )
 }
