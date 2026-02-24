@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 // ─── Knowledge Base ──────────────────────────────────────────────────────────
@@ -189,12 +190,20 @@ const categories: Category[] = [
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function Chatbot() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [activeQuestion, setActiveQuestion] = useState<number | null>(null);
   const [history, setHistory] = useState<{ q: string; a: string; link?: { label: string; href: string } }[]>([]);
   const panelRef = useRef<HTMLDivElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Esconder chatbot nas paginas de leitura (livro, membro/leitura, membro/nos)
+  const isReadingPage = pathname?.startsWith('/livro/veu/') && pathname.includes('/capitulo/')
+    || pathname?.startsWith('/membro/leitura/')
+    || pathname?.startsWith('/membro/nos/');
+
+  if (isReadingPage) return null;
 
   // Scroll to bottom when history changes
   useEffect(() => {
