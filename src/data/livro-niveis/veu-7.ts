@@ -60,6 +60,34 @@ export const veu7Niveis: NivelCapitulo[] = [
       'Escreve sobre um momento na tua vida em que caminhar sem destino — sem plano, sem rumo, sem razao — te deu mais do que qualquer chegada planeada. O que e que esse momento te ensinou sobre confianca?',
     ],
     espelho_pessoal: 'Se soubesses que nao ha chegada — que este momento, exactamente como e, e tudo o que existe — conseguirias pousar o peso de ainda estar a caminho?',
+
+    // Camada profunda
+    mascaras: [
+      'A eterna buscadora — a que transforma cada descoberta num novo ponto de partida, porque parar significaria admitir que ja esta onde precisa de estar. Vive em transito permanente, coleccionando mapas para um territorio que so se revela a quem pousa a mochila.',
+      'A guardia do limiar interior — a que se poe entre si mesma e a entrega, exigindo sempre mais uma prova, mais uma confirmacao, mais um sinal antes de se permitir confiar. Protege-se da vastidao fingindo que ainda nao esta pronta.',
+      'A cartografa do invisivel — a que precisa de nomear, classificar e organizar cada experiencia interior para sentir que a compreendeu. Transforma o misterio em sistema, e o sistema em prisao. So se sente segura quando o caminho tem etapas claras.',
+      'A que espera pela permissao — a que sabe, no fundo, que ja atravessou o limiar, mas fica do lado de ca a espera que alguem lhe diga que pode entrar. Confunde humildade com hesitacao. Confunde respeito com medo.',
+    ],
+    veu_dominante_sinais: [
+      'Divides a tua vida entre "antes de despertar" e "depois de despertar" — e essa linha imaginaria impede-te de habitar o presente, porque estas sempre a medir de que lado estas.',
+      'Precisas de separar o que e "progresso real" do que e "recaida" — como se a consciencia fosse uma escada com degraus que so sobem, e qualquer descida fosse falha.',
+      'Quando alguem te diz que nao ha nada a alcancar, sentes simultaneamente alivio e panico — porque sem destino, o guardiao perde a funcao, e tu perdes a historia que te sustenta.',
+      'Tens dois vocabularios: um para a vida espiritual e outro para a vida quotidiana — e essa separacao linguistica revela a dualidade mais profunda que carregas.',
+      'Percebes que a tua busca se tornou a tua identidade mais resistente — mais dificil de soltar do que qualquer crenca, porque e a moldura onde todas as outras crencas vivem.',
+    ],
+    mensagem_central: 'O guardiao do limiar nao te pede uma palavra-passe. Nao te pede que proves o que aprendeste, que mostres as tuas cicatrizes de guerra interior, que recites o que sabes. O guardiao pede-te uma unica coisa — que largues a mao que segura a porta. Nao porque a porta esteja trancada, mas porque a forca com que a agarras e o unico motivo pelo qual nao se abre. Tu ja estas do outro lado. Sempre estiveste. O limiar nao e uma linha que separa dois espacos — e o instante em que percebes que nunca houve separacao. Cada vez que tentaste "chegar", afastaste-te. Cada vez que largaste a tentativa, estavas la. O centro nao se conquista. Reconhece-se. E este capitulo nao te leva ate ele. Apenas te lembra de que nunca saiste.',
+    guiao_escrita: {
+      contexto: 'Este exercicio convida-te a encontrar o guardiao do limiar na tua propria historia — e a descobrir o que acontece quando, em vez de tentares passar por ele, te sentas ao seu lado.',
+      passos: [
+        'Fecha os olhos e imagina o limiar — a fronteira entre onde estas e onde acreditas que precisas de estar. Nao o penses. Sente-o. Como e esse espaco? Que temperatura tem? Que luz existe ali?',
+        'Agora imagina o guardiao. Nao lhe des uma forma predefinida — deixa que apareca. Pode ser uma figura, uma sensacao, uma voz, um peso. Escreve o que viste ou sentiste, sem censurar.',
+        'Pergunta ao guardiao: "O que e que eu ainda carrego que me impede de atravessar?" Escreve a resposta que vier — mesmo que nao faca sentido logico. Deixa a mao escrever sem a mente editar.',
+        'Agora imagina que te sentas ao lado do guardiao. Nao tentas passar. Nao tentas convence-lo. Apenas ficas. Escreve o que acontece nesse ficar — no corpo, na respiracao, no espaco a tua volta.',
+        'Rele tudo o que escreveste. Sublinha a frase que mais te toca. Essa frase e a tua chave — nao para abrir uma porta, mas para perceber que a porta ja estava aberta.',
+      ],
+      tempo_sugerido: '30 a 40 minutos, num lugar onde ninguem te interrompa',
+      nota_final: 'Nao ha respostas certas neste exercicio. Ha apenas o que apareceu. E o que apareceu ja e suficiente — tal como tu.',
+    },
   },
   {
     capitulo_numero: 26,
@@ -120,6 +148,34 @@ export const veu7Niveis: NivelCapitulo[] = [
       'Imagina que o espirito e a materia te escrevem uma carta conjunta. Nao sao dois — sao um so. O que te dizem? O que te pedem que deixes de separar?',
     ],
     espelho_pessoal: 'Se o sagrado nao estivesse num sitio especial — se estivesse exactamente aqui, neste corpo, nesta respiracao, neste instante imperfeito — o que deixarias de procurar?',
+
+    // Camada profunda
+    mascaras: [
+      'A asceta secreta — a que construiu uma hierarquia invisivel entre o que e "elevado" e o que e "baixo", entre o espiritual e o mundano. Come, trabalha, convive — mas uma parte dela considera tudo isso inferior ao silencio, a meditacao, ao recolhimento. Vive no mundo com um pe fora dele.',
+      'A que transcende em vez de sentir — a que aprendeu a subir quando a vida doi. Quando o corpo pede atencao, ela foge para o pensamento. Quando o conflito bate a porta, ela retira-se para a "paz interior". Confunde dissociacao com despertar, e fuga com transcendencia.',
+      'A guardia dos dois reinos — a que vive em permanente negociacao entre espirito e materia, como se fossem dois paises em guerra fria. De manha medita, a tarde trabalha, e sente que traiu um dos lados em cada transicao. Nunca esta inteira em lado nenhum porque acredita que sao dois.',
+      'A que santifica o sofrimento — a que acredita que a dor e mais espiritual do que o prazer, que a privacao e mais pura do que a abundancia. Quando a vida lhe oferece alegria simples, desconfia. Quando o corpo pede descanso, resiste. Transformou a dualidade numa etica: o dificil e sagrado, o facil e suspeito.',
+    ],
+    veu_dominante_sinais: [
+      'Tens uma vida dupla silenciosa — o teu "eu espiritual" e o teu "eu do mundo" nao se conhecem, e tu gastas energia enorme a gerir a fronteira entre eles.',
+      'Quando estas em momentos de profundidade interior, a vida pratica parece-te trivial e quase indigna. Quando estas imersa no quotidiano, sentes nostalgias do silencio como quem sente saudades de casa.',
+      'Classificas automaticamente as experiencias em "espirituais" e "nao-espirituais" — e essa classificacao determina o valor que lhes das, o tempo que lhes dedicas, a atencao que lhes ofereces.',
+      'Tens dificuldade em aceitar que cozinhar, limpar, fazer amor, discutir uma conta e trabalhar sob pressao possam ser tao sagrados como qualquer oracoa ou meditacao — e essa dificuldade e a dualidade a operar em tempo real.',
+      'Quando alguem proximo te puxa para a vida concreta — um filho que precisa de ti, um problema financeiro, uma discussao — sentes que estas a "descer" de um lugar mais alto, em vez de reconheceres que o chao e tao sagrado como o ceu.',
+    ],
+    mensagem_central: 'Nao ha dois mundos. Nunca houve. Ha um unico tecido — e tu es feita dele. O sagrado nao mora num templo que visitas de vez em quando. Mora nas tuas maos quando tocam, nos teus olhos quando veem, no teu peito quando respira. Cada vez que separaste o espirito da materia, dividiste-te a ti mesma ao meio — e essa divisao e o cansaco que sentes ha tanto tempo. Nao e cansaco do corpo. Nao e cansaco da alma. E o cansaco de manter duas casas quando so existe uma. O convite deste capitulo nao e que transcendas a materia nem que abandones o espirito. E que deixes de fingir que sao coisas diferentes. A agua que bebes e sagrada. A fadiga que sentes e sagrada. O riso e o choro e o silencio entre eles — tudo e o mesmo misterio a desdobrar-se. Quando parares de separar, vais perceber que nunca precisaste de unir nada. Porque nunca esteve separado.',
+    guiao_escrita: {
+      contexto: 'Este exercicio convida-te a dissolver a fronteira entre espirito e materia — nao com ideias, mas com atencao directa ao que ja e uno na tua experiencia.',
+      passos: [
+        'Escolhe um gesto absolutamente mundano que vas fazer nas proximas horas — lavar a louca, tomar banho, caminhar ate um sitio, comer uma refeicao. Antes de o fazeres, escreve como normalmente vives esse gesto: com que nivel de atencao, com que estado interior, com que pressa.',
+        'Agora faz esse gesto como se fosse a unica coisa que existe. Sente a textura, a temperatura, o peso, o movimento. Nao acrescentes nada espiritual — nenhum mantra, nenhuma intencao, nenhuma sacralizacao. Apenas esta presente no gesto tal como ele e.',
+        'Imediatamente depois, escreve o que aconteceu. O que sentiste no corpo? O que mudou na qualidade do gesto? Houve algum momento em que a fronteira entre "mundano" e "sagrado" se tornou impossivel de encontrar?',
+        'Escreve agora sobre as duas versoes de ti — a que vive no mundo e a que busca o espirito. Da-lhes nomes se quiseres. Descreve cada uma com detalhe. Depois escreve-lhes uma carta conjunta, como se fosses alguem de fora, dizendo-lhes aquilo que ambas precisam de ouvir: que sao a mesma.',
+        'Termina com uma unica frase que comece assim: "O sagrado nao esta la — esta..." Completa com o que sentiste durante o exercicio. Nao com o que achas que devias ter sentido.',
+      ],
+      tempo_sugerido: '35 a 45 minutos, de preferencia num dia em que tenhas tarefas quotidianas por fazer',
+      nota_final: 'Se durante este exercicio sentiste que nao houve nada de especial — que foi apenas lavar louca ou apenas caminhar — entao chegaste exactamente ao sitio que o capitulo descreve. O nao-especial e o sagrado sem disfarce.',
+    },
   },
   {
     capitulo_numero: 27,
@@ -180,5 +236,31 @@ export const veu7Niveis: NivelCapitulo[] = [
       'Le os teus escritos ao longo desta jornada — desde o primeiro capitulo ate aqui. Depois fecha tudo e escreve uma unica frase. A frase que fica. A que nao precisa de explicacao. A que, daqui a dez anos, ainda sera verdadeira.',
     ],
     espelho_pessoal: 'E se nunca tivesses estado perdida?',
+
+    // Camada profunda
+    mascaras: [
+      'A que ainda nao se permite chegar — a que ouve o silencio do centro e recua, porque aceitar que ja esta la significaria que todo o esforco, toda a dor, toda a busca foram ao mesmo tempo reais e desnecessarios. Prefere continuar a caminhar a enfrentar a vertigem de ja ter chegado.',
+      'A guardia do vazio — a que confunde o centro com ausencia. Quando tudo se aquieta, entra em panico, porque durante tanto tempo o movimento foi a sua unica prova de estar viva. Sem agitacao, sem drama interior, sem o proximo passo a dar, nao sabe como existir. Protege-se do silencio enchendo-o.',
+      'A narradora da jornada — a que transformou o percurso de despertar na sua historia mais preciosa. Conta-a a si mesma e aos outros com tal beleza que soltar essa narrativa parece perder uma obra de arte. O centro pede-lhe que pouse a caneta — e ela nao sabe quem e sem a historia que escreveu sobre si.',
+    ],
+    veu_dominante_sinais: [
+      'Sentes que a tua vida inteira se organizou em torno de uma grande separacao — entre quem es e quem devias ser, entre onde estas e onde devias estar — e mesmo agora, neste ponto da jornada, essa divisao persiste como um eco subtil.',
+      'Quando te aproximas de momentos de unidade — em que tudo parece fazer sentido, em que o dentro e o fora se tocam — a mente entra em accao imediata para catalogar, compreender ou preservar a experiencia, e nesse gesto separa-te outra vez daquilo que estavas a viver.',
+      'Ha uma parte de ti que acredita secretamente que se realmente chegasses ao centro, a tua vida exterior teria de mudar radicalmente — e como a vida exterior nao mudou o suficiente, usas isso como prova de que ainda nao chegaste.',
+      'Percebes que a dualidade mais persistente nao e entre espirito e materia, nem entre tu e o mundo — e entre quem tu es e a ideia de quem tu serias se estivesses "desperta". E essa ultima separacao e a mais dificil de soltar porque parece ser a mais verdadeira.',
+    ],
+    mensagem_central: 'Nao ha mais nada a dizer. E no entanto estas aqui, a ler, a espera de que algo se revele. Entao deixa que se revele isto: tu es aquilo que procuravas. Nao uma versao melhorada de ti. Nao tu depois de mais trabalho interior. Nao tu quando finalmente tudo se alinhar. Tu, agora. Com este corpo cansado ou desperto. Com esta mente que ainda duvida. Com este coracao que aprendeu a bater entre a dor e a beleza sem pedir licenca a nenhuma das duas. O centro nunca esteve escondido. Estavas apenas a olhar com tanta intensidade para o horizonte que nao reparavas que ja pisavas o solo sagrado. Cada veu que tocaste ao longo deste livro nao foi um obstaculo que ultrapassaste — foi uma camada de ti mesma que se deixou ver. E agora que todas se revelaram, o que resta nao e alguem mais puro ou mais livre. E alguem mais inteiro. Alguem que ja nao precisa de separar a luz da sombra, o sagrado do mundano, o eu do outro. Alguem que pode, finalmente, pousar.',
+    guiao_escrita: {
+      contexto: 'Este e o ultimo exercicio. Nao e um fecho — e uma abertura. Convida-te a olhar para toda a jornada e a reconhecer, numa unica pagina, o que ja sempre soubeste.',
+      passos: [
+        'Senta-te em silencio durante cinco minutos. Nao medites, nao respires de forma especial, nao procures nada. Apenas fica. Quando os cinco minutos passarem, escreve a primeira frase que te vier — sem pensar, sem corrigir, sem julgar.',
+        'Agora recorda os sete veus — illusao, medo, culpa, identidade, controlo, desejo, dualidade. Para cada um, escreve uma unica palavra que te vem quando pensas nele. Nao expliques. Apenas uma palavra por veu. Olha para as sete palavras lado a lado.',
+        'Escreve uma carta ao ser que eras quando comecaste esta leitura. Nao a adores. Nao a corrijas. Fala-lhe como quem fala a alguem que ama e que sempre esteve a fazer o melhor que sabia. Diz-lhe o que descobriste — nao sobre o mundo, mas sobre ela.',
+        'Agora escreve uma unica frase — a frase que, se fosse a unica coisa que ficasse de toda esta jornada, bastaria. A frase que levarias contigo para uma ilha deserta, nao como ensinamento, mas como companhia.',
+        'Fecha o caderno. Respira. Olha a tua volta. O mundo nao mudou. Mas repara: alguma coisa em ti repousa agora de uma forma que nao repousava antes. Nao precisas de a nomear. Ela ja sabe o que e.',
+      ],
+      tempo_sugerido: '40 a 50 minutos, num momento que possas estar a sos sem pressa de ir para lado nenhum',
+      nota_final: 'Se ao terminares sentires que nao mudou nada — que es a mesma pessoa que eras antes desta leitura — repara com atencao. Talvez nao tenhas mudado. Talvez tenhas apenas deixado de fingir que precisavas de mudar. E talvez isso seja tudo.',
+    },
   },
 ]

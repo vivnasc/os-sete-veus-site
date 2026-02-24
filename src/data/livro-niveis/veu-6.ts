@@ -60,6 +60,32 @@ export const veu6Niveis: NivelCapitulo[] = [
       'Imagina que todas as tuas conquistas desaparecem amanha — titulos, estatutos, certificados, reconhecimento. O que resta? Escreve a partir desse lugar nu. Quem es tu sem as tuas chegadas?',
     ],
     espelho_pessoal: 'Se nunca mais pudesses chegar a lado nenhum — se a vida fosse so o caminho, para sempre — conseguirias viver assim?',
+
+    // Camada profunda
+    mascaras: [
+      'A coleccionadora de metas — a que vive de objectivo em objectivo, porque cada conquista lhe promete a paz que nunca chega. Sem a proxima meta, nao sabe quem e. O curriculo e a sua armadura, a lista de feitos e o seu espelho.',
+      'A arquitecta do futuro — a que desenha planos detalhados para cada fase da vida, porque acredita que se planear bem o suficiente, a incerteza desaparece. O mapa e mais real do que o territorio. Improvisar e falhar.',
+      'A narradora do desfecho — a que precisa de dar sentido a tudo, de fechar cada capitulo com uma licao, de transformar cada dor num ensinamento. Se a historia nao tem moral, e como se nao tivesse acontecido. Viver sem conclusao parece-lhe viver em vao.',
+    ],
+    veu_dominante_sinais: [
+      'A tua vida organiza-se em etapas com data de conclusao — e quando uma etapa nao termina como previsto, sentes que falhaste, nao que a vida mudou de forma.',
+      'Tens dificuldade em estar numa fase de transicao sem imediatamente procurar a fase seguinte. O entre e insuportavel porque nao tem nome nem destino.',
+      'Medes o teu crescimento pessoal por resultados visiveis — livros lidos, cursos feitos, habitos adoptados — e quando nao ha nada para mostrar, sentes que estagnaste.',
+      'Quando alguem te pergunta "como estas?", a tua resposta tende a ser sobre o que estas a fazer ou a construir, nunca sobre como te sentes neste exacto momento.',
+      'A ideia de que podes estar exactamente onde precisas de estar — sem mudar nada, sem melhorar nada — provoca-te desconforto profundo, como se fosse uma desistencia disfaracada.',
+    ],
+    mensagem_central: 'Nao ha linha de chegada. Nunca houve. Cada vez que pensaste "quando chegar ali, finalmente descanso", estavas a adiar a unica coisa que realmente procuravas: estar aqui, inteira, sem condicoes. As conquistas nao sao o problema — o problema e a promessa invisivel que lhes colaste: a promessa de que te completariam. Nada te completa porque tu nao es um projecto inacabado. Es um movimento. E o movimento nao precisa de destino para ter sentido — precisa so de presenca. Larga a ilusao do fim. Nao para desistir do caminho, mas para finalmente o sentir debaixo dos pes.',
+    guiao_escrita: {
+      contexto: 'Este exercicio convida-te a olhar para a relacao entre as tuas conquistas e a paz que esperavas encontrar nelas. Nao e para julgar o que fizeste — e para ver o que prometeste a ti mesma em silencio.',
+      passos: [
+        'Escreve no topo da pagina: "Coisas que eu acreditei que me iam completar." Lista cinco — podem ser objectivos profissionais, relacoes, mudancas de vida, aquisicoes, transformacoes pessoais.',
+        'Ao lado de cada uma, escreve uma frase que comece por: "Quando consegui isto, descobri que..." Nao edites. Deixa sair o que vier — desilusao, surpresa, vazio, gratidao, confusao.',
+        'Escolhe a conquista que mais te marcou. Escreve um paragrafo sobre o momento exacto em que percebeste que nao era o fim. Onde estavas? O que sentiste no corpo? O que fizeste com essa descoberta?',
+        'Agora escreve uma frase que comece por: "O que eu realmente procurava era..." Deixa a resposta emergir sem a controlar. Pode ser uma palavra so.',
+      ],
+      tempo_sugerido: '25 a 35 minutos',
+      nota_final: 'Se ao fazeres este exercicio sentires um alivio inesperado — como se largasses um peso que nem sabias que carregavas — poe a mao no peito. Esse alivio e o corpo a reconhecer que nunca precisaste de chegar. Ja estavas.',
+    },
   },
   {
     capitulo_numero: 23,
@@ -120,6 +146,33 @@ export const veu6Niveis: NivelCapitulo[] = [
       'Escreve uma carta ao infinito. Diz-lhe o que sentes quando pensas que a vida nao tem ponto de chegada. Medo? Alivio? Ambos? Deixa as palavras fluirem sem correccao.',
     ],
     espelho_pessoal: 'Se a tua vida nunca tivesse um final — nem conclusao, nem sentido definitivo, nem recompensa — o que farias com este instante exacto?',
+
+    // Camada profunda
+    mascaras: [
+      'A peregrina espiritual — a que esta sempre a caminho de algum lado. O proximo retiro, o proximo livro, o proximo mestre. A jornada e a zona de conforto, porque chegar significaria parar. E parar e o que mais teme, porque sem movimento nao sabe quem e.',
+      'A cartografa da vida — a que precisa de mapear tudo antes de dar o primeiro passo. Sem mapa nao se move. Com mapa nunca chega, porque o mapa nunca e suficientemente completo. O controlo disfaraca-se de preparacao, e a preparacao adia a vida indefinidamente.',
+      'A eterna estudante — a que acumula formacoes, certificacoes, saberes, mas nunca se sente pronta para viver o que aprendeu. Ha sempre mais uma coisa a estudar antes de comecar. O conhecimento e a desculpa perfeita para nao se expor ao desconhecido.',
+      'A guardadora de horizontes — a que vive pelo que ainda nao aconteceu. "Quando os filhos crescerem." "Quando me reformar." "Quando tiver condicoes." O presente e sempre um rascunho do futuro, e o futuro nunca chega porque quando chega ja ha outro horizonte atras dele.',
+    ],
+    veu_dominante_sinais: [
+      'Quando alcanças algo que desejaste, em vez de plenitude sentes um vazio quase imediato — e a tua primeira reaccao e procurar o proximo desejo, porque ficar com o que ja tens parece pouco.',
+      'A tua relacao com o tempo e quase exclusivamente projectada para a frente. O passado e uma coleccao de licoes, o presente e uma plataforma, e so o futuro parece real. Vives num lugar que ainda nao existe.',
+      'Sentes-te profundamente desconfortavel com a ideia de que a vida pode nao ter um proposito ultimo. Sem grande narrativa, a existencia parece arbitraria — e isso e insuportavel.',
+      'Quando alguem te diz "aproveita o momento", algo em ti resiste. Nao por preguica ou desatencao — mas porque aproveitar o momento parece resignacao, como se estivesses a desistir de algo maior.',
+      'Notas que a tua busca espiritual ou pessoal tem a mesma estrutura que a tua ambicao profissional: etapas, progressao, niveis a alcancar. Ate o despertar se tornou mais um horizonte.',
+    ],
+    mensagem_central: 'O campo infinito nao e um lugar aonde chegas depois de largares os mapas. E o que ja esta aqui quando paras de procurar. Tu tens vivido como se a vida fosse uma estrada com destino — e cada vez que o destino nao aparece, assumes que ainda nao andaste o suficiente. Mas a estrada nao tem fim. Nao porque seja longa — porque nao e uma estrada. E um campo aberto em todas as direccoes, e tu estas no centro dele desde sempre. O infinito nao e assustador quando percebes que nao es tu que tens de o percorrer. Es tu que ja o habitas. Nao ha nada a encontrar la fora que nao esteja aqui dentro, neste instante, nesta respiracao que nao precisa de justificacao para ser completa.',
+    guiao_escrita: {
+      contexto: 'Este exercicio convida-te a explorar a tua relacao com o nao-saber — esse espaco onde os mapas acabam e algo mais vasto comeca. Nao e sobre encontrar respostas. E sobre descobrir o que acontece quando paras de as procurar.',
+      passos: [
+        'Fecha os olhos durante dois minutos. Imagina que todos os teus planos — profissionais, pessoais, espirituais — desaparecem. Nao falharam. Simplesmente deixaram de existir. Abre os olhos e escreve: "Sem plano nenhum, eu..."',
+        'Agora escreve sobre a ultima vez que te sentiste genuinamente em paz sem estar a caminho de lado nenhum. Onde estavas? O que nao estavas a fazer? Descreve esse momento com todo o detalhe que conseguires — os sentidos, o corpo, o silencio.',
+        'Desenha uma linha horizontal no papel. De um lado escreve "nascimento", do outro escreve "morte". No meio, marca os momentos que consideras mais importantes da tua vida. Agora olha para o espaco entre eles — o espaco vazio, sem marcos. Escreve sobre o que viveste nesses intervalos sem nome.',
+        'Termina com uma carta a ti mesma que comece por: "Nao precisas de chegar a lado nenhum porque..." Escreve ate sentires que a frase se completou sozinha.',
+      ],
+      tempo_sugerido: '30 a 40 minutos',
+      nota_final: 'Se durante este exercicio sentires uma especie de vertigem — como quem olha para um espaco demasiado vasto — respira. A vertigem nao e sinal de perigo. E sinal de que estas a ver algo real pela primeira vez: a vida sem moldura. E ela aguenta-te.',
+    },
   },
   {
     capitulo_numero: 24,
@@ -180,5 +233,32 @@ export const veu6Niveis: NivelCapitulo[] = [
       'Pensa numa decisao que tens de tomar agora. Antes de analisar, fecha os olhos e pergunta ao teu corpo: "o que e que tu sabes?" Escreve a primeira coisa que surgir — sem julgamento, sem censura. Depois pergunta-te: porque e tao dificil confiar nisto?',
     ],
     espelho_pessoal: 'Se a tua intuicao tivesse voz e pudesse dizer-te uma so verdade que tens ignorado toda a vida — o que diria?',
+
+    // Camada profunda
+    mascaras: [
+      'A racionalista — a que so confia no que pode ser medido, provado, explicado. Construiu toda a sua vida sobre logica e evidencia, e quando algo nao cabe nessa estrutura, descarta-o. A razao e a sua fortaleza, mas tambem a sua prisao — porque ha coisas que a razao nao alcanca e que sao verdadeiras mesmo assim.',
+      'A validadora externa — a que so acredita em si quando alguem confirma. Pode sentir algo com toda a forca do corpo, mas se ninguem mais o ve, duvida. Transformou a sua percepcao numa coisa fragil, dependente de testemunhas. O que ela sabe sozinha nunca parece suficiente.',
+      'A cumpridora de protocolos — a que segue os passos "certos" em tudo: na carreira, na saude, na espiritualidade. Se ha um metodo, segue-o. Se ha um especialista, obedece. A intuicao e demasiado desordenada, demasiado pessoal, demasiado sua — e ela aprendeu que "o seu" nao e de confianca.',
+      'A tradutora compulsiva — a que precisa de converter cada sensacao em palavras, cada pressentimento em explicacao. Se nao consegue articular o que sente, age como se nao o sentisse. A intuicao fala-lhe todos os dias, mas ela so ouve o que consegue traduzir — e o mais importante e quase sempre o que escapa a traducao.',
+    ],
+    veu_dominante_sinais: [
+      'Tens uma historia longa de momentos em que sabias — no corpo, no instinto — e mesmo assim escolheste o que "fazia sentido". E mais tarde confirmaste que o corpo tinha razao. Mas continuas a repetir o padrao.',
+      'A tua relacao com a autoridade e de dependencia silenciosa. Precisas que alguem — um medico, um terapeuta, um livro, um mestre — te diga o que ja sabes, para finalmente te permitires agir.',
+      'Sentes-te desligada do teu corpo. Vives "do pescoco para cima", e as sensacoes fisicas sao ruido de fundo que raramente consultas para tomar decisoes. O corpo fala, mas tu aprendeste a nao ouvir.',
+      'Quando te encontras num momento de silencio profundo — sem estimulos, sem tarefas, sem distraccao — sentes desconforto. Nao porque o silencio seja vazio, mas porque nele a intuicao fica audivel, e ouvir-la obrigaria-te a mudar algo.',
+      'Notas que muitas das decisoes mais importantes da tua vida foram tomadas contra a tua intuicao — e que as que correram melhor foram aquelas raras vezes em que confiaste no que nao conseguias explicar.',
+    ],
+    mensagem_central: 'Ha uma voz em ti que nunca se calou. Mesmo quando a ignoraste, mesmo quando a sufocaste com logica, com opiniao alheia, com medo de errar — ela continuou ali, quieta, paciente, a espera. A intuicao nao e magia nem fantasia. E o saber mais antigo que tens: anterior a linguagem, anterior ao pensamento, anterior a tudo o que te ensinaram a ser. E vem do mesmo lugar de onde vem a respiracao — de um sitio que nao precisa da tua permissao para existir. Tu nao precisas de aprender a ter intuicao. Precisas de deixar de a calar. Precisas de lhe devolver o lugar que lhe tiraram quando te disseram que so conta o que se prova. Ha coisas que se sabem com o corpo inteiro, e essa forma de saber nao e inferior — e mais funda. Confia no que te atravessa antes de teres palavras para o dizer. E por ai que o horizonte se dissolve.',
+    guiao_escrita: {
+      contexto: 'Este exercicio e um acto de escuta. Nao estas a procurar respostas — estas a criar espaco para que elas venham ter contigo. A unica regra e: nao edites, nao julgues, nao traduzas. Escreve o que vier, mesmo que nao faca sentido para a mente.',
+      passos: [
+        'Senta-te num lugar calmo. Fecha os olhos e poe as maos sobre o peito. Respira fundo tres vezes. Depois pergunta em silencio: "O que e que eu sei e tenho fingido nao saber?" Fica em silencio pelo menos um minuto antes de abrir os olhos e escrever.',
+        'Escreve sem parar durante dez minutos. Nao precisas de frases completas. Podem ser palavras soltas, imagens, sensacoes, memorias. Se a mente tentar corrigir ou organizar, nota-o e volta a escrever. O objectivo nao e produzir um texto — e deixar a intuicao usar as tuas maos.',
+        'Relê o que escreveste. Sublinha a frase ou a palavra que te fez sentir algo no corpo — um arrepio, uma contraccao, um calor, um no na garganta. Essa e a frase que a intuicao quer que ouças. Copia-a numa folha separada.',
+        'Agora escreve uma resposta a essa frase, comecando por: "Eu sei. E o que vou fazer com isso e..." Nao forces uma accao. Se a resposta for "nada por agora", tambem e valida. A intuicao nao tem pressa.',
+      ],
+      tempo_sugerido: '20 a 30 minutos',
+      nota_final: 'Se ao terminares sentires que escreveste algo que nunca disseste a ninguem — algo que existia em ti sem forma ate este momento — guarda essa folha. Nao a mostres, nao a expliques. E tua. A intuicao confiou-te algo, e o primeiro passo e simplesmente nao a trair.',
+    },
   },
 ]
