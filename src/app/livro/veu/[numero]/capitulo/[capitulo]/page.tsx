@@ -923,44 +923,79 @@ export default function CapituloPage() {
               })}
             </motion.div>
 
-            {/* Progresso */}
-            <div className="mt-12">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  {capituloAnterior() && paginaAtual === 0 && (
-                    <Link href={capituloAnterior()!} scroll={true} onClick={() => window.scrollTo(0, 0)}>
-                      <span className={`text-sm ${modoNoturno ? 'text-stone-500 hover:text-stone-300' : 'text-stone-500 hover:text-stone-700'} transition-colors`}>
-                        ← Cap. anterior
-                      </span>
-                    </Link>
-                  )}
-                  <span className={`text-sm ${modoNoturno ? 'text-stone-500' : 'text-stone-600'}`}>
-                    {paginaAtual + 1} de {paginas.length}
-                  </span>
-                </div>
+            {/* Navegacao — pagina, capitulo, veu */}
+            <div className="mt-12 space-y-4">
+              {/* Pagina: anterior / contador / proximo */}
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => {
+                    if (paginaAtual > 0) {
+                      setPaginaAtual(paginaAtual - 1)
+                      window.scrollTo({ top: 0, behavior: 'smooth' })
+                      if (showPlayer && (tts.isPlaying || tts.isPaused)) {
+                        const firstPara = paginas.slice(0, paginaAtual - 1).reduce((sum, p) => sum + p.length, 0)
+                        tts.goTo(firstPara)
+                      }
+                    }
+                  }}
+                  disabled={paginaAtual === 0}
+                  className={`px-4 py-2 rounded-full text-sm transition-all ${
+                    paginaAtual === 0
+                      ? 'opacity-30 cursor-not-allowed'
+                      : modoNoturno ? 'bg-stone-800 text-stone-300 hover:bg-stone-700' : 'bg-stone-200 text-stone-700 hover:bg-stone-300'
+                  }`}
+                >
+                  ←
+                </button>
+                <span className={`text-sm ${modoNoturno ? 'text-stone-500' : 'text-stone-600'}`}>
+                  {paginaAtual + 1} / {paginas.length}
+                </span>
                 {paginaAtual < paginas.length - 1 ? (
                   <button
                     onClick={proximaPagina}
-                    className={`px-6 py-2 rounded-full ${modoNoturno ? 'bg-stone-800 text-stone-200' : 'bg-stone-200 text-stone-800'} hover:opacity-80 transition-opacity`}
+                    className={`px-5 py-2 rounded-full text-sm ${modoNoturno ? 'bg-stone-800 text-stone-200 hover:bg-stone-700' : 'bg-stone-200 text-stone-800 hover:bg-stone-300'} transition-colors`}
                   >
                     Continuar →
                   </button>
                 ) : (
                   <Link href={proximoCapitulo()} scroll={true} onClick={() => window.scrollTo(0, 0)}>
-                    <button
-                      className={`px-6 py-2 rounded-full ${modoNoturno ? 'bg-purple-800 text-purple-200' : 'bg-purple-200 text-purple-800'} hover:opacity-80 transition-opacity`}
+                    <span
+                      className={`inline-block px-5 py-2 rounded-full text-sm ${modoNoturno ? 'bg-purple-800 text-purple-200' : 'bg-purple-200 text-purple-800'} hover:opacity-80 transition-opacity`}
                     >
-                      Próximo Capítulo →
-                    </button>
+                      Proximo Cap. →
+                    </span>
                   </Link>
                 )}
               </div>
+
+              {/* Barra de progresso */}
               <div className="w-full h-1 bg-stone-300 dark:bg-stone-700 rounded-full overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${((paginaAtual + 1) / paginas.length) * 100}%` }}
                   className="h-full bg-gradient-to-r from-purple-500 to-stone-500"
                 />
+              </div>
+
+              {/* Capitulo anterior + Voltar ao veu */}
+              <div className="flex items-center justify-between pt-2">
+                {capituloAnterior() ? (
+                  <Link href={capituloAnterior()!} scroll={true} onClick={() => window.scrollTo(0, 0)}>
+                    <span className={`text-xs ${modoNoturno ? 'text-stone-600 hover:text-stone-400' : 'text-stone-400 hover:text-stone-600'} transition-colors`}>
+                      ← Cap. anterior
+                    </span>
+                  </Link>
+                ) : <span />}
+                <Link href={`/livro/veu/${numeroVeu}`}>
+                  <span className={`text-xs ${modoNoturno ? 'text-stone-600 hover:text-stone-400' : 'text-stone-400 hover:text-stone-600'} transition-colors`}>
+                    Veu {numeroVeu}
+                  </span>
+                </Link>
+                <Link href="/livro">
+                  <span className={`text-xs ${modoNoturno ? 'text-stone-600 hover:text-stone-400' : 'text-stone-400 hover:text-stone-600'} transition-colors`}>
+                    Mandala
+                  </span>
+                </Link>
               </div>
             </div>
           </div>
@@ -973,32 +1008,41 @@ export default function CapituloPage() {
 
         {/* Navegação (Modo Normal) */}
         {modoLeitura === 'normal' && (
-          <div className="mt-16 flex justify-between items-center">
-            <div className="flex flex-col gap-2">
-              {capituloAnterior() && (
+          <div className="mt-16 space-y-4">
+            {/* Capitulo anterior / proximo */}
+            <div className="flex justify-between items-center">
+              {capituloAnterior() ? (
                 <Link
                   href={capituloAnterior()!}
                   scroll={true}
                   onClick={() => window.scrollTo(0, 0)}
-                  className={`text-sm ${modoNoturno ? 'text-stone-400' : 'text-stone-600'} hover:underline`}
+                  className={`px-5 py-2 rounded-full text-sm ${modoNoturno ? 'bg-stone-800 text-stone-300 hover:bg-stone-700' : 'bg-stone-200 text-stone-700 hover:bg-stone-300'} transition-colors`}
                 >
-                  ← Capítulo anterior
+                  ← Cap. anterior
                 </Link>
-              )}
-              <Link
-                href={`/livro/veu/${numeroVeu}`}
-                className={`text-sm ${modoNoturno ? 'text-stone-500' : 'text-stone-500'} hover:underline`}
-              >
-                ← Voltar ao Véu {numeroVeu}
+              ) : <span />}
+              <Link href={proximoCapitulo()} scroll={true} onClick={() => window.scrollTo(0, 0)}>
+                <span
+                  className={`inline-block px-6 py-2.5 rounded-full text-sm ${modoNoturno ? 'bg-purple-800 text-purple-200' : 'bg-purple-200 text-purple-800'} hover:opacity-80 transition-opacity`}
+                >
+                  Proximo Capitulo →
+                </span>
               </Link>
             </div>
-            <Link href={proximoCapitulo()} scroll={true} onClick={() => window.scrollTo(0, 0)}>
-              <button
-                className={`px-8 py-3 rounded-full ${modoNoturno ? 'bg-purple-800 text-purple-200' : 'bg-purple-200 text-purple-800'} hover:opacity-80 transition-opacity`}
-              >
-                Próximo Capítulo →
-              </button>
-            </Link>
+            {/* Links para veu e mandala */}
+            <div className="flex items-center justify-center gap-6">
+              <Link href={`/livro/veu/${numeroVeu}`}>
+                <span className={`text-xs ${modoNoturno ? 'text-stone-600 hover:text-stone-400' : 'text-stone-400 hover:text-stone-600'} transition-colors`}>
+                  Veu {numeroVeu}
+                </span>
+              </Link>
+              <span className={`text-xs ${modoNoturno ? 'text-stone-700' : 'text-stone-300'}`}>|</span>
+              <Link href="/livro">
+                <span className={`text-xs ${modoNoturno ? 'text-stone-600 hover:text-stone-400' : 'text-stone-400 hover:text-stone-600'} transition-colors`}>
+                  Mandala
+                </span>
+              </Link>
+            </div>
           </div>
         )}
       </div>
