@@ -2,13 +2,14 @@
 
 import { useParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { useAuth } from '@/components/AuthProvider'
 import { useAccess } from '@/hooks/useAccess'
 import { useNivelLeitura } from '@/hooks/useNivelLeitura'
 import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis'
+import { supabase } from '@/lib/supabase'
 import livroData from '@/data/livro-7-veus.json'
 import { glossario } from '@/data/livro-niveis/glossario'
 import { veu1Niveis } from '@/data/livro-niveis/veu-1'
@@ -164,11 +165,66 @@ export default function CapituloPage() {
   const nivelCapitulo = niveisData[numeroVeu]?.find(n => n.capitulo_numero === numeroCapitulo) ?? null
 
   const { nivel, setNivel } = useNivelLeitura()
-  const [modoLeitura, setModoLeitura] = useState<'contemplativo' | 'normal'>('contemplativo')
-  const [modoNoturno, setModoNoturno] = useState(false)
+  const [modoLeitura, setModoLeitura] = useState<'contemplativo' | 'normal'>(() => {
+    if (typeof window !== 'undefined') {
+      return (localStorage.getItem('reader-mode') as 'contemplativo' | 'normal') || 'contemplativo'
+    }
+    return 'contemplativo'
+  })
+  const [modoNoturno, setModoNoturno] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('reader-night-mode') === 'true'
+    }
+    return false
+  })
   const [mostrarPausa, setMostrarPausa] = useState(false)
-  const [paginaAtual, setPaginaAtual] = useState(0)
+  const progressKey = `reader-progress-v${numeroVeu}-c${numeroCapitulo}`
+  const [paginaAtual, setPaginaAtual] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem(progressKey)
+      return saved ? parseInt(saved, 10) : 0
+    }
+    return 0
+  })
+  const endOfTextRef = useRef<HTMLDivElement>(null)
   const [showPlayer, setShowPlayer] = useState(false)
+  const [showCapitulos, setShowCapitulos] = useState(false)
+  const [showCompanion, setShowCompanion] = useState(false)
+  const completionKey = `reader-complete-v${numeroVeu}-c${numeroCapitulo}`
+  const progressSlug = `livro-veu-${numeroVeu}-cap-${numeroCapitulo}`
+  const [capituloCompleto, setCapituloCompleto] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem(completionKey) === 'true'
+    }
+    return false
+  })
+
+  // Load completion status from Supabase (cross-device sync)
+  useEffect(() => {
+    if (!user || capituloCompleto) return
+    const loadProgress = async () => {
+      try {
+        const session = await supabase.auth.getSession()
+        const userId = session.data.session?.user?.id
+        if (!userId) return
+
+        const { data } = await supabase
+          .from('reading_progress')
+          .select('completed')
+          .eq('user_id', userId)
+          .eq('chapter_slug', progressSlug)
+          .single()
+
+        if (data?.completed) {
+          setCapituloCompleto(true)
+          localStorage.setItem(completionKey, 'true')
+        }
+      } catch {
+        // Falha na ligacao — usar localStorage como fallback
+      }
+    }
+    loadProgress()
+  }, [user, progressSlug, completionKey, capituloCompleto])
 
   // Dividir conteúdo em parágrafos limpos
   const paragrafos = useMemo(() => {
@@ -278,6 +334,63 @@ export default function CapituloPage() {
     return map
   }, [paginas])
 
+  // Mark chapter complete when reaching the end
+  const marcarCompleto = useCallback(async () => {
+    if (capituloCompleto) return
+    setCapituloCompleto(true)
+    localStorage.setItem(completionKey, 'true')
+
+    // Sync to Supabase for cross-device persistence
+    try {
+      const session = await supabase.auth.getSession()
+      const userId = session.data.session?.user?.id
+      if (!userId) return
+
+      await supabase.from('reading_progress').upsert(
+        {
+          user_id: userId,
+          chapter_slug: progressSlug,
+          completed: true,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: 'user_id,chapter_slug' }
+      )
+    } catch {
+      // Falha na ligacao — localStorage ja guardou localmente
+    }
+  }, [capituloCompleto, completionKey, progressSlug])
+
+  // Contemplative: mark complete when reaching last page
+  useEffect(() => {
+    if (modoLeitura === 'contemplativo' && paginas.length > 0 && paginaAtual >= paginas.length - 1) {
+      marcarCompleto()
+    }
+  }, [paginaAtual, paginas.length, modoLeitura, marcarCompleto])
+
+  // Normal mode: mark complete when scrolling to end of text
+  useEffect(() => {
+    if (modoLeitura !== 'normal' || !endOfTextRef.current) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) marcarCompleto() },
+      { threshold: 0.5 }
+    )
+    observer.observe(endOfTextRef.current)
+    return () => observer.disconnect()
+  }, [modoLeitura, marcarCompleto])
+
+  // Persist reading progress per chapter
+  useEffect(() => {
+    localStorage.setItem(progressKey, String(paginaAtual))
+  }, [paginaAtual, progressKey])
+
+  // Persist dark mode and reading mode
+  useEffect(() => {
+    localStorage.setItem('reader-night-mode', String(modoNoturno))
+  }, [modoNoturno])
+  useEffect(() => {
+    localStorage.setItem('reader-mode', modoLeitura)
+  }, [modoLeitura])
+
   // Auto-advance contemplative pages when TTS progresses
   useEffect(() => {
     if (!showPlayer || modoLeitura !== 'contemplativo') return
@@ -288,15 +401,17 @@ export default function CapituloPage() {
     }
   }, [tts.currentIndex, showPlayer, modoLeitura, paragraphToPage, paginaAtual])
 
-  // Cores por véu
+  // Cores por véu — alinhadas com a mandala (progressao chakra)
+  // 1 Permanencia=vermelho-terra, 2 Memoria=laranja, 3 Turbilhao=amarelo,
+  // 4 Esforco=verde, 5 Desolacao=azul, 6 Horizonte=indigo, 7 Dualidade=violeta
   const coresVeu = [
-    { bg: 'bg-stone-50', bgDark: 'bg-stone-900', text: 'text-stone-900', textDark: 'text-stone-100' },
-    { bg: 'bg-amber-50', bgDark: 'bg-amber-950', text: 'text-amber-900', textDark: 'text-amber-100' },
-    { bg: 'bg-sky-50', bgDark: 'bg-sky-950', text: 'text-sky-900', textDark: 'text-sky-100' },
-    { bg: 'bg-purple-50', bgDark: 'bg-purple-950', text: 'text-purple-900', textDark: 'text-purple-100' },
-    { bg: 'bg-gray-100', bgDark: 'bg-gray-950', text: 'text-gray-900', textDark: 'text-gray-100' },
-    { bg: 'bg-indigo-50', bgDark: 'bg-indigo-950', text: 'text-indigo-900', textDark: 'text-indigo-100' },
-    { bg: 'bg-purple-100', bgDark: 'bg-purple-950', text: 'text-purple-900', textDark: 'text-purple-100' }
+    { bg: 'bg-red-50', bgDark: 'bg-red-950', text: 'text-red-950', textDark: 'text-red-100' },
+    { bg: 'bg-orange-50', bgDark: 'bg-orange-950', text: 'text-orange-950', textDark: 'text-orange-100' },
+    { bg: 'bg-amber-50', bgDark: 'bg-amber-950', text: 'text-amber-950', textDark: 'text-amber-100' },
+    { bg: 'bg-green-50', bgDark: 'bg-green-950', text: 'text-green-950', textDark: 'text-green-100' },
+    { bg: 'bg-sky-50', bgDark: 'bg-sky-950', text: 'text-sky-950', textDark: 'text-sky-100' },
+    { bg: 'bg-indigo-50', bgDark: 'bg-indigo-950', text: 'text-indigo-950', textDark: 'text-indigo-100' },
+    { bg: 'bg-purple-50', bgDark: 'bg-purple-950', text: 'text-purple-950', textDark: 'text-purple-100' }
   ]
 
   const cores = coresVeu[numeroVeu - 1]
@@ -356,6 +471,15 @@ export default function CapituloPage() {
     }
   }
 
+  // Capitulo anterior
+  const capituloAnterior = () => {
+    const indexCapAtual = veu.capitulos.findIndex(c => c.numero === numeroCapitulo)
+    if (indexCapAtual > 0) {
+      return `/livro/veu/${numeroVeu}/capitulo/${veu.capitulos[indexCapAtual - 1].numero}`
+    }
+    return null
+  }
+
   // Próximo capítulo
   const proximoCapitulo = () => {
     const indexCapAtual = veu.capitulos.findIndex(c => c.numero === numeroCapitulo)
@@ -371,7 +495,7 @@ export default function CapituloPage() {
       {/* Header com controles */}
       <div className="sticky top-0 z-40 backdrop-blur-sm bg-white/50 dark:bg-black/50 border-b border-stone-200 dark:border-stone-700">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <Link
               href={`/livro/veu/${numeroVeu}`}
               className="text-sm text-stone-600 dark:text-stone-400 hover:underline"
@@ -379,9 +503,56 @@ export default function CapituloPage() {
               ← Véu {numeroVeu}
             </Link>
             <span className="text-sm text-stone-400">|</span>
-            <span className="text-sm text-stone-600 dark:text-stone-400">
-              Capítulo {numeroCapitulo}: {capitulo.titulo}
-            </span>
+            {/* Chapter selector dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setShowCapitulos(!showCapitulos)}
+                className="text-sm text-stone-600 dark:text-stone-400 hover:underline flex items-center gap-1"
+              >
+                Cap. {numeroCapitulo}: {capitulo.titulo}
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" className={`transition-transform ${showCapitulos ? 'rotate-180' : ''}`}>
+                  <path d="M7 10l5 5 5-5z" />
+                </svg>
+              </button>
+              <AnimatePresence>
+                {showCapitulos && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.15 }}
+                    className={`absolute top-full mt-1 left-0 min-w-[240px] rounded-xl border shadow-lg z-50 ${
+                      modoNoturno
+                        ? 'bg-stone-900 border-stone-700'
+                        : 'bg-white border-stone-200'
+                    }`}
+                  >
+                    <div className="p-1.5">
+                      {veu.capitulos.map((cap) => (
+                        <Link
+                          key={cap.numero}
+                          href={`/livro/veu/${numeroVeu}/capitulo/${cap.numero}`}
+                          scroll={true}
+                          onClick={() => { setShowCapitulos(false); window.scrollTo(0, 0) }}
+                        >
+                          <div className={`text-xs px-3 py-2 rounded-lg transition-colors ${
+                            cap.numero === numeroCapitulo
+                              ? modoNoturno
+                                ? 'bg-stone-800 text-stone-200'
+                                : 'bg-stone-100 text-stone-900'
+                              : modoNoturno
+                                ? 'text-stone-400 hover:bg-stone-800'
+                                : 'text-stone-600 hover:bg-stone-50'
+                          }`}>
+                            Cap. {cap.numero}: {cap.titulo}
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
 
           <div className="flex items-center gap-3">
@@ -477,74 +648,104 @@ export default function CapituloPage() {
           </h1>
         </motion.div>
 
-        {/* Conteudo complementar (Semente / Raiz) */}
-        {nivelCapitulo && nivel === 'semente' && (
-          <ResumoAcessivel
-            paragrafos={nivelCapitulo.resumo_acessivel}
-            modoNoturno={modoNoturno}
-          />
-        )}
+        {/* Conteudo complementar (Semente / Raiz) — collapsible */}
+        {nivel !== 'arvore' && nivelCapitulo && (
+          <div className="mb-10">
+            <button
+              onClick={() => setShowCompanion(!showCompanion)}
+              className={`w-full flex items-center justify-between px-5 py-3 rounded-xl transition-colors ${
+                modoNoturno
+                  ? 'bg-stone-800/40 hover:bg-stone-800/60 text-stone-400'
+                  : 'bg-stone-100/60 hover:bg-stone-100 text-stone-500'
+              }`}
+            >
+              <span className="text-sm font-sans tracking-wide">
+                {nivel === 'semente' ? 'Guia de leitura' : 'Notas e aprofundamento'}
+              </span>
+              <svg
+                width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                className={`transition-transform duration-200 ${showCompanion ? 'rotate-180' : ''}`}
+              >
+                <path d="M7 10l5 5 5-5z" />
+              </svg>
+            </button>
 
-        {nivelCapitulo && nivel !== 'arvore' && (
-          <PerguntasOrientadoras
-            perguntas={nivelCapitulo.perguntas_orientadoras}
-            nivel={nivel}
-            modoNoturno={modoNoturno}
-          />
-        )}
+            <AnimatePresence>
+              {showCompanion && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="overflow-hidden"
+                >
+                  <div className="pt-6 space-y-0">
+                    {nivel === 'semente' && (
+                      <ResumoAcessivel
+                        paragrafos={nivelCapitulo.resumo_acessivel}
+                        modoNoturno={modoNoturno}
+                      />
+                    )}
 
-        {nivelCapitulo && nivel === 'semente' && nivelCapitulo.exemplos_concretos.length > 0 && (
-          <ExemplosConcretos
-            exemplos={nivelCapitulo.exemplos_concretos}
-            modoNoturno={modoNoturno}
-          />
-        )}
+                    <PerguntasOrientadoras
+                      perguntas={nivelCapitulo.perguntas_orientadoras}
+                      nivel={nivel}
+                      modoNoturno={modoNoturno}
+                    />
 
-        {/* Jornada de autodescobertas (Semente + Raiz) */}
-        {nivelCapitulo?.sinais_do_veu && nivelCapitulo.sinais_do_veu.length > 0 && nivel !== 'arvore' && (
-          <SinaisDoVeu
-            sinais={nivelCapitulo.sinais_do_veu}
-            modoNoturno={modoNoturno}
-          />
-        )}
+                    {nivel === 'semente' && nivelCapitulo.exemplos_concretos.length > 0 && (
+                      <ExemplosConcretos
+                        exemplos={nivelCapitulo.exemplos_concretos}
+                        modoNoturno={modoNoturno}
+                      />
+                    )}
 
-        {nivelCapitulo?.crencas_a_mapear && nivelCapitulo.crencas_a_mapear.length > 0 && nivel !== 'arvore' && (
-          <CrencasAMapear
-            crencas={nivelCapitulo.crencas_a_mapear}
-            modoNoturno={modoNoturno}
-          />
-        )}
+                    {nivelCapitulo.sinais_do_veu && nivelCapitulo.sinais_do_veu.length > 0 && (
+                      <SinaisDoVeu
+                        sinais={nivelCapitulo.sinais_do_veu}
+                        modoNoturno={modoNoturno}
+                      />
+                    )}
 
-        {/* Mascaras que este veu activa */}
-        {nivelCapitulo?.mascaras && nivelCapitulo.mascaras.length > 0 && nivel !== 'arvore' && (
-          <MascarasDoVeu
-            mascaras={nivelCapitulo.mascaras}
-            modoNoturno={modoNoturno}
-          />
-        )}
+                    {nivelCapitulo.crencas_a_mapear && nivelCapitulo.crencas_a_mapear.length > 0 && (
+                      <CrencasAMapear
+                        crencas={nivelCapitulo.crencas_a_mapear}
+                        modoNoturno={modoNoturno}
+                      />
+                    )}
 
-        {/* Veu dominante — o leitor identifica se este e o seu veu principal */}
-        {nivelCapitulo?.veu_dominante_sinais && nivelCapitulo.veu_dominante_sinais.length > 0 && nivel !== 'arvore' && (
-          <VeuDominante
-            sinais={nivelCapitulo.veu_dominante_sinais}
-            modoNoturno={modoNoturno}
-          />
-        )}
+                    {nivelCapitulo.mascaras && nivelCapitulo.mascaras.length > 0 && (
+                      <MascarasDoVeu
+                        mascaras={nivelCapitulo.mascaras}
+                        modoNoturno={modoNoturno}
+                      />
+                    )}
 
-        {/* Mensagem central do capitulo */}
-        {nivelCapitulo?.mensagem_central && nivel !== 'arvore' && (
-          <MensagemCentral
-            mensagem={nivelCapitulo.mensagem_central}
-            modoNoturno={modoNoturno}
-          />
-        )}
+                    {nivelCapitulo.veu_dominante_sinais && nivelCapitulo.veu_dominante_sinais.length > 0 && (
+                      <VeuDominante
+                        sinais={nivelCapitulo.veu_dominante_sinais}
+                        modoNoturno={modoNoturno}
+                      />
+                    )}
 
-        {/* Guiao de escrita guiada */}
-        {nivelCapitulo?.guiao_escrita && nivel !== 'arvore' && (
-          <GuiaoEscrita
-            guiao={nivelCapitulo.guiao_escrita}
-            modoNoturno={modoNoturno}
-          />
+                    {nivelCapitulo.mensagem_central && (
+                      <MensagemCentral
+                        mensagem={nivelCapitulo.mensagem_central}
+                        modoNoturno={modoNoturno}
+                      />
+                    )}
+
+                    {nivelCapitulo.guiao_escrita && (
+                      <GuiaoEscrita
+                        guiao={nivelCapitulo.guiao_escrita}
+                        modoNoturno={modoNoturno}
+                      />
+                    )}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         )}
 
         {/* Aviso quando conteudo complementar ainda nao existe */}
@@ -604,6 +805,8 @@ export default function CapituloPage() {
                 }
               </React.Fragment>
             ))}
+            {/* Sentinel for completion detection */}
+            <div ref={endOfTextRef} className="h-1" />
           </div>
         ) : (
           // Modo Contemplativo: Página por página (3-5 parágrafos agrupados)
@@ -657,9 +860,18 @@ export default function CapituloPage() {
             {/* Progresso */}
             <div className="mt-12">
               <div className="flex items-center justify-between mb-4">
-                <span className={`text-sm ${modoNoturno ? 'text-stone-500' : 'text-stone-600'}`}>
-                  {paginaAtual + 1} de {paginas.length}
-                </span>
+                <div className="flex items-center gap-3">
+                  {capituloAnterior() && paginaAtual === 0 && (
+                    <Link href={capituloAnterior()!} scroll={true} onClick={() => window.scrollTo(0, 0)}>
+                      <span className={`text-sm ${modoNoturno ? 'text-stone-500 hover:text-stone-300' : 'text-stone-500 hover:text-stone-700'} transition-colors`}>
+                        ← Cap. anterior
+                      </span>
+                    </Link>
+                  )}
+                  <span className={`text-sm ${modoNoturno ? 'text-stone-500' : 'text-stone-600'}`}>
+                    {paginaAtual + 1} de {paginas.length}
+                  </span>
+                </div>
                 {paginaAtual < paginas.length - 1 ? (
                   <button
                     onClick={proximaPagina}
@@ -668,7 +880,7 @@ export default function CapituloPage() {
                     Continuar →
                   </button>
                 ) : (
-                  <Link href={proximoCapitulo()}>
+                  <Link href={proximoCapitulo()} scroll={true} onClick={() => window.scrollTo(0, 0)}>
                     <button
                       className={`px-6 py-2 rounded-full ${modoNoturno ? 'bg-purple-800 text-purple-200' : 'bg-purple-200 text-purple-800'} hover:opacity-80 transition-opacity`}
                     >
@@ -696,13 +908,25 @@ export default function CapituloPage() {
         {/* Navegação (Modo Normal) */}
         {modoLeitura === 'normal' && (
           <div className="mt-16 flex justify-between items-center">
-            <Link
-              href={`/livro/veu/${numeroVeu}`}
-              className={`text-sm ${modoNoturno ? 'text-stone-400' : 'text-stone-600'} hover:underline`}
-            >
-              ← Voltar ao Véu {numeroVeu}
-            </Link>
-            <Link href={proximoCapitulo()}>
+            <div className="flex flex-col gap-2">
+              {capituloAnterior() && (
+                <Link
+                  href={capituloAnterior()!}
+                  scroll={true}
+                  onClick={() => window.scrollTo(0, 0)}
+                  className={`text-sm ${modoNoturno ? 'text-stone-400' : 'text-stone-600'} hover:underline`}
+                >
+                  ← Capítulo anterior
+                </Link>
+              )}
+              <Link
+                href={`/livro/veu/${numeroVeu}`}
+                className={`text-sm ${modoNoturno ? 'text-stone-500' : 'text-stone-500'} hover:underline`}
+              >
+                ← Voltar ao Véu {numeroVeu}
+              </Link>
+            </div>
+            <Link href={proximoCapitulo()} scroll={true} onClick={() => window.scrollTo(0, 0)}>
               <button
                 className={`px-8 py-3 rounded-full ${modoNoturno ? 'bg-purple-800 text-purple-200' : 'bg-purple-200 text-purple-800'} hover:opacity-80 transition-opacity`}
               >
@@ -718,6 +942,8 @@ export default function CapituloPage() {
         veuNumero={numeroVeu}
         capituloNumero={numeroCapitulo}
         guiaoReflexao={nivel !== 'arvore' ? nivelCapitulo?.guiao_reflexao : undefined}
+        hasFloatingPlayer={showPlayer}
+        capituloCompleto={capituloCompleto}
       />
 
       {/* Audio Player flutuante */}
