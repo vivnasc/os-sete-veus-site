@@ -729,12 +729,15 @@ export default function CapituloPage() {
             currentIndex={tts.currentIndex}
             total={tts.total}
             rate={tts.rate}
+            voices={tts.voices}
+            selectedVoice={tts.selectedVoice}
             onPlay={tts.play}
             onPause={tts.pause}
             onStop={tts.stop}
             onNext={tts.next}
             onPrevious={tts.previous}
             onRateChange={tts.setRate}
+            onVoiceChange={tts.setSelectedVoice}
             onClose={() => setShowPlayer(false)}
             modoNoturno={modoNoturno}
           />
