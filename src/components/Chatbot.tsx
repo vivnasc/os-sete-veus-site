@@ -203,8 +203,6 @@ export default function Chatbot() {
     || pathname?.startsWith('/membro/leitura/')
     || pathname?.startsWith('/membro/nos/');
 
-  if (isReadingPage) return null;
-
   // Scroll to bottom when history changes
   useEffect(() => {
     if (messagesEndRef.current) {
@@ -226,6 +224,9 @@ export default function Chatbot() {
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, [open]);
+
+  // Early return AFTER all hooks (React rules of hooks)
+  if (isReadingPage) return null;
 
   const handleSelectCategory = (catId: string) => {
     setActiveCategory(catId);
