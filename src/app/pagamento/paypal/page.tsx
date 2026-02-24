@@ -3,6 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { supabase } from "@/lib/supabase";
 
 export const dynamic = "force-dynamic";
 
@@ -15,7 +16,10 @@ function PayPalContent() {
   const [paymentId, setPaymentId] = useState<string | null>(null);
   const [displayAmount, setDisplayAmount] = useState("");
   const [productName, setProductName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
   const [success, setSuccess] = useState(false);
+  const [magicLinkSent, setMagicLinkSent] = useState(false);
+  const [magicLinkError, setMagicLinkError] = useState("");
   const [error, setError] = useState("");
   const [processing, setProcessing] = useState(false);
 
@@ -32,7 +36,33 @@ function PayPalContent() {
 
     const product = searchParams.get("product");
     if (product) setProductName(product);
+
+    const email = searchParams.get("email");
+    if (email) setUserEmail(email);
   }, [searchParams, router]);
+
+  // Auto-send magic link when payment succeeds
+  useEffect(() => {
+    if (!success || !userEmail || magicLinkSent) return;
+
+    async function sendMagicLink() {
+      try {
+        const { error: otpError } = await supabase.auth.signInWithOtp({
+          email: userEmail,
+        });
+
+        if (otpError) {
+          setMagicLinkError("Nao conseguimos enviar o link. Usa o login com link magico.");
+        } else {
+          setMagicLinkSent(true);
+        }
+      } catch {
+        setMagicLinkError("Erro ao enviar link. Usa o login com link magico.");
+      }
+    }
+
+    sendMagicLink();
+  }, [success, userEmail, magicLinkSent]);
 
   if (!PAYPAL_CLIENT_ID) {
     return (
@@ -82,14 +112,58 @@ function PayPalContent() {
               Pagamento Confirmado
             </h1>
             <p className="mt-4 text-brown-700">
-              O teu acesso esta activo. Podes comecar a ler agora.
+              O teu acesso esta activo.
             </p>
-            <button
-              onClick={() => router.push("/membro")}
-              className="mt-6 rounded-lg bg-sage px-6 py-3 font-sans text-sm font-medium uppercase tracking-wider text-white hover:bg-sage-dark"
-            >
-              Ir para a minha area
-            </button>
+
+            {magicLinkSent ? (
+              <>
+                <div className="mx-auto mt-6 flex h-12 w-12 items-center justify-center rounded-full bg-sage/10">
+                  <svg
+                    className="h-6 w-6 text-sage"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                    />
+                  </svg>
+                </div>
+                <p className="mt-4 font-sans text-sm font-medium text-sage">
+                  Enviamos um link de acesso para o teu email
+                </p>
+                <p className="mt-2 font-sans text-sm text-brown-600">
+                  Verifica a caixa de entrada de{" "}
+                  <strong className="text-brown-800">{userEmail}</strong>{" "}
+                  e clica no link para entrares na tua area.
+                </p>
+                <p className="mt-1 font-sans text-xs text-brown-400">
+                  Verifica tambem a pasta de spam.
+                </p>
+              </>
+            ) : magicLinkError ? (
+              <>
+                <p className="mt-4 font-sans text-sm text-brown-600">
+                  {magicLinkError}
+                </p>
+                <button
+                  onClick={() => router.push("/entrar")}
+                  className="mt-6 rounded-lg bg-sage px-6 py-3 font-sans text-sm font-medium uppercase tracking-wider text-white hover:bg-sage-dark"
+                >
+                  Ir para o login
+                </button>
+              </>
+            ) : (
+              <div className="mt-6">
+                <div className="mx-auto h-6 w-6 animate-spin rounded-full border-2 border-sage/30 border-t-sage" />
+                <p className="mt-3 font-sans text-xs text-brown-400">
+                  A enviar link de acesso...
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -184,6 +258,11 @@ function PayPalContent() {
                       setError(result.error || "Erro ao processar pagamento");
                       setProcessing(false);
                       return;
+                    }
+
+                    // Use email from API response if not already set from URL params
+                    if (result.email && !userEmail) {
+                      setUserEmail(result.email);
                     }
 
                     setSuccess(true);

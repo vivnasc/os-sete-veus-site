@@ -72,6 +72,7 @@ export default function ComprarPage() {
         payment_id: data.payment_id,
         amount: String(amount),
         product: purchasing.title,
+        email,
       })
       router.push(`/pagamento/${paymentMethod}?${params.toString()}`)
     } catch {
