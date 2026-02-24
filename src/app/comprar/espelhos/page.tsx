@@ -42,6 +42,10 @@ export default function ComprarPage() {
     setLoading(true)
 
     try {
+      const isPayPal = paymentMethod === 'paypal'
+      const amount = isPayPal ? purchasing.priceUSD : purchasing.priceMT
+      const currency = isPayPal ? 'USD' : 'MZN'
+
       const response = await fetch('/api/payment/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -50,8 +54,8 @@ export default function ComprarPage() {
           phone,
           access_type_code: purchasing.slug,
           payment_method: paymentMethod,
-          amount: purchasing.priceMT,
-          currency: 'MZN',
+          amount,
+          currency,
         }),
       })
 
@@ -66,7 +70,7 @@ export default function ComprarPage() {
       // Redirecionar para página de pagamento com dados do produto
       const params = new URLSearchParams({
         payment_id: data.payment_id,
-        amount: String(purchasing.priceMT),
+        amount: String(amount),
         product: purchasing.title,
       })
       router.push(`/pagamento/${paymentMethod}?${params.toString()}`)
