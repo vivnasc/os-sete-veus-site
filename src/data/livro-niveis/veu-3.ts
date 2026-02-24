@@ -50,6 +50,35 @@ export const veu3Niveis: NivelCapitulo[] = [
       'Imagina que es o rio e ao mesmo tempo a margem. Escreve uma carta do rio a margem — e depois a resposta da margem ao rio. O que cada um precisa de dizer ao outro?',
     ],
     espelho_pessoal: 'Se pudesses ouvir os teus pensamentos sem acreditar em nenhum deles — nem por um segundo — o que restaria de ti?',
+
+    // Camada profunda
+    mascaras: [
+      'A pensadora compulsiva — a que acredita que se parar de analisar, o mundo desmorona. Transforma cada emocao em conceito, cada vivencia em explicacao. Pensar e a sua forma de controlar o incontrolavel.',
+      'A narradora interior — a que comenta tudo em tempo real, como se a vida precisasse de legendas. Sem a narracao, sente-se exposta ao silencio — e o silencio aterroriza-a.',
+      'A resolutora — a que transforma cada momento de paz num problema a resolver. Se nao esta a pensar numa solucao, sente-se inutil. Confunde repouso com preguica e presenca com passividade.',
+      'A vigilante — a que nao se permite descansar porque acredita que baixar a guarda e perigoso. O turbilhao mental e a sua sentinela permanente, sempre a vasculhar o horizonte a procura de ameacas.',
+    ],
+    veu_dominante_sinais: [
+      'A primeira coisa que fazes ao acordar nao e sentir — e pensar. Antes de abrir os olhos, a mente ja esta a correr listas, cenarios, preocupacoes.',
+      'Quando alguem te faz uma pergunta simples — "como te sentes?" — a tua resposta começa invariavelmente com "eu acho que..." em vez de uma sensacao real.',
+      'Tens dificuldade em estar com alguem em silencio. Se nao ha conversa, sentes urgencia de preencher o espaco — com palavras, com pensamentos, com algo.',
+      'Adormeces a pensar e acordas a pensar. O intervalo entre os dois e tao curto que por vezes nao sabes se dormiste ou se a mente continuou sem ti.',
+      'Quando vives um momento de beleza — por do sol, abraco, musica — em vez de o sentir, a mente apressa-se a comenta-lo: "que bonito", "devia estar mais presente", "isto vai passar".',
+    ],
+    mensagem_central: 'Tu nao es o turbilhao. Es o espaco onde o turbilhao acontece. Os teus pensamentos passam por ti como nuvens num ceu — e tu, sem saberes, es o ceu. Nao precisas de parar a mente para encontrar paz. Precisas de descobrir que ha algo em ti que ja esta em paz, mesmo quando a mente gira. Essa descoberta nao e intelectual — e vivida. Acontece na brecha entre dois pensamentos, no instante em que notas que estas a pensar sem te perderes no pensamento. Nesse instante, por mais breve que seja, tocas quem realmente es. E quem realmente es nao precisa de pensar para existir.',
+
+    guiao_escrita: {
+      contexto: 'Neste exercicio vais observar o teu turbilhao mental sem tentar controla-lo — e depois escrever a partir do espaco que se abre quando deixas os pensamentos passarem sem os seguires.',
+      passos: [
+        'Fecha os olhos durante dois minutos. Nao tentes meditar nem acalmar a mente. Apenas observa o que aparece — pensamentos, imagens, frases soltas, ruido. Quando abrires os olhos, escreve imediatamente tudo o que a mente disse, sem filtro, como transcricao crua.',
+        'Rele o que escreveste como se fossem palavras de outra pessoa — uma estranha que fala sem parar. Sublinha ou marca as frases que mais se repetem. Ao lado de cada uma escreve: "Isto e pensamento, nao e eu."',
+        'Agora escreve: "Se eu nao sou estes pensamentos, entao quem e que os esta a ouvir?" Responde a esta pergunta durante cinco minutos — nao com logica, mas com o que sentires no corpo. Onde esta esse observador? Que qualidade tem?',
+        'Recorda um momento recente em que a mente parou — mesmo que por um segundo. Talvez durante um abraco, a olhar para a agua, a ouvir uma musica. Descreve esse momento com o maximo detalhe sensorial: o que vias, o que sentias, o que estava ausente.',
+        'Escreve uma carta ao teu turbilhao mental. Nao para o combater — para lhe agradecer e ao mesmo tempo lhe dizer que ja nao precisas que ele fale por ti o tempo todo. Comeca com: "Estiveste a proteger-me, eu sei. Mas agora..."',
+      ],
+      tempo_sugerido: '25-35 minutos',
+      nota_final: 'O turbilhao nao para porque lhe mandas parar. Para quando percebes que nao precisas dele para existir. Este exercicio nao e para silenciar a mente — e para descobrires que ha algo em ti que ja vive no silencio.',
+    },
   },
   {
     capitulo_numero: 9,
@@ -100,6 +129,35 @@ export const veu3Niveis: NivelCapitulo[] = [
       'Imagina que as tuas sombras sao portas, nao paredes. Escolhe uma. Descreve o que ves quando a abres — sem pressa, sem precisar de resolver nada. Apenas olha.',
     ],
     espelho_pessoal: 'E se as partes de ti que mais tentas esconder fossem exactamente as que te podem libertar?',
+
+    // Camada profunda
+    mascaras: [
+      'A forte — a que nunca se permite desmoronar. Quando a sombra aparece, engole-a. Quando a ferida sangra, limpa-a em silencio. Mostra ao mundo que esta bem, mesmo quando por dentro tudo treme.',
+      'A curada — a que anuncia que ja superou tudo, que ja fez as pazes com o passado. Usa a narrativa da cura como escudo para nao ter de voltar a sentir o que ainda doi.',
+      'A racional — a que transforma cada emocao dificil em explicacao. "Eu sei porque me sinto assim." Mas saber nao e sentir — e a explicacao substitui o contacto real com a ferida.',
+      'A salvadora — a que se dedica a curar os outros para nao ter de olhar para si. Enquanto esta ocupada com a dor alheia, a sua propria sombra fica quieta no canto, a espera.',
+    ],
+    veu_dominante_sinais: [
+      'Tens uma relacao ambigua com a vulnerabilidade: admiras-a nos outros, mas em ti mesma parece-te fraqueza inaceitavel.',
+      'Quando comecas a sentir algo intenso — raiva, tristeza profunda, desejo cru — tens o reflexo automatico de o racionalizar, minimizar ou "espiritualizar" antes de o sentir ate ao fim.',
+      'As pessoas a tua volta veem-te como a pessoa equilibrada, a que "tem tudo resolvido" — e essa imagem tornou-se uma prisao que nao ousas quebrar.',
+      'Sonhas com cenas perturbadoras ou acordas com emocoes que nao pertencem ao dia anterior — como se a noite trouxesse a superficie o que recusas durante o dia.',
+      'Ha um tema recorrente na tua vida — rejeicao, abandono, invisibilidade — que aparece disfarçado em situacoes diferentes mas com a mesma carga emocional.',
+    ],
+    mensagem_central: 'As tuas sombras nao sao defeitos. Sao as partes de ti que foram postas de parte — nao porque fossem mas, mas porque na altura nao havia espaco para elas. Cada sombra que encontras nao e mais uma coisa para corrigir. E mais uma parte de ti que regressa a casa. O ego reage porque essa chegada ameaca a imagem que construiu com tanto esforco. Mas a imagem nao e tu. Tu es o espaco inteiro — luz e sombra, superficie e profundidade. E so quando deixas de dividir-te em "partes aceitaveis" e "partes vergonhosas" e que podes, finalmente, habitar-te por inteiro.',
+
+    guiao_escrita: {
+      contexto: 'Este exercicio convida-te a encontrar uma das tuas sombras — nao para a combater, mas para a ouvir. Vais escrever a partir do lugar onde ela mora, dando-lhe voz em vez de a silenciares.',
+      passos: [
+        'Pensa numa emocao que tendes a esconder — raiva, ciume, medo, vergonha, desejo. Escolhe uma. Escreve o nome dela no topo da pagina e, por baixo, as tres situacoes mais recentes em que a sentiste. Descreve cada uma em duas ou tres linhas: o que aconteceu, o que sentiste no corpo.',
+        'Agora imagina que essa emocao tem uma idade. Nao a tua idade actual — a idade em que ela apareceu pela primeira vez. Escreve: "Tenho ___ anos e sinto ___." Continua a escrever como essa crianca ou adolescente durante cinco minutos. O que quer dizer? De que precisa?',
+        'Escreve a resposta que essa parte de ti precisava de ouvir na altura — e nunca ouviu. Nao uma resposta inteligente. Uma resposta simples, quente, como a que darias a uma crianca assustada. Comeca com: "Estou aqui. Ouco-te."',
+        'Agora volta ao presente. Escreve: "A minha sombra protege-me de ___." Completa a frase e depois desenvolve: o que e que esta emocao evitou que sentisses? Que funcao teve? Como te serviu, mesmo quando doia?',
+        'Para terminar, escreve um compromisso simples — nao de "superar" a sombra, mas de lhe dar espaco. Uma frase que sintetize o que aprendeste e o que muda a partir de agora. Comeca com: "A partir de hoje, quando sentir ___, vou..."',
+      ],
+      tempo_sugerido: '30-40 minutos',
+      nota_final: 'As sombras nao desaparecem quando as iluminas. Ficam mais mansos. Deixam de te controlar porque ja nao precisam de gritar para serem ouvidas. Este exercicio nao e cura — e encontro. E cada encontro com uma parte esquecida de ti e um passo em direccao a inteireza.',
+    },
   },
   {
     capitulo_numero: 10,
@@ -150,6 +208,35 @@ export const veu3Niveis: NivelCapitulo[] = [
       'Escreve uma carta ao teu corpo — ao corpo que carregou tudo em silencio, que guardou o que a mente nao conseguia processar. Agradece-lhe. Depois deixa o corpo responder.',
     ],
     espelho_pessoal: 'Que memoria vive no teu corpo que a tua mente ja decidiu esquecer — mas que o corpo, fielmente, continua a guardar?',
+
+    // Camada profunda
+    mascaras: [
+      'A desligada — a que aprendeu a nao sentir o corpo. Vive "do pescoco para cima", funciona com a mente, e so repara no corpo quando a dor e impossivel de ignorar. Desligar foi sobrevivencia. Agora e prisao.',
+      'A resistente — a que transforma o corpo em maquina de aguentar. Nao chora, nao para, nao adoece. E quando adoece, levanta-se na mesma. O corpo pede repouso; ela responde com disciplina.',
+      'A hipervigiliante — a que esta permanentemente em estado de alerta. O corpo nunca relaxa por completo: os ombros estao sempre tensos, a mandibula cerrada, os olhos a vasculhar. Ate no sono, o corpo monta guarda.',
+      'A somatizadora invisivel — a que converte cada emocao nao sentida em sintoma fisico. Dor de cabeca, insonia, problemas digestivos. O corpo fala a linguagem que a mente se recusa a ouvir.',
+    ],
+    veu_dominante_sinais: [
+      'Quando alguem te pergunta "onde sentes isso no corpo?", a tua reaccao e confusao — como se o corpo e as emocoes habitassem planetas diferentes.',
+      'Tens uma colecao de sintomas fisicos que vao e vem sem explicacao medica clara — e que pioram em alturas de tensao emocional.',
+      'Nao te lembras da ultima vez que choraste ate ao fim — sem parar a meio, sem racionalizar, sem te envergonhar. As lagrimas comecam e algo dentro de ti as trava.',
+      'O teu corpo reage a certas pessoas, lugares ou situacoes antes de a mente ter tempo de processar. Sentes no estomago, no peito, nas maos — e so depois percebes porque.',
+      'Quando finalmente paras — ferias, fim de semana quieto, silencio prolongado — em vez de descansar, adoeces. Como se o corpo esperasse a permissao para desmoronar.',
+    ],
+    mensagem_central: 'O teu corpo nao te traiu. Guardou-te. Cada tensao, cada dor sem explicacao, cada reaccao desproporcionada e o corpo a devolver-te uma mensagem que a mente arquivou sem ler. Ele e o teu arquivo mais fiel — guarda tudo, esquece nada, espera pacientemente que voltes a escuta-lo. Nao precisas de compreender o que o corpo diz para comecar a ouvi-lo. Basta pousares a mao onde doi e ficares. Basta deixares que a sensacao exista sem a corrigires. O corpo nao quer ser curado — quer ser habitado. E quando finalmente voltas a habita-lo, descobres que ele sempre soube coisas que a tua mente ainda esta a aprender.',
+
+    guiao_escrita: {
+      contexto: 'Este exercicio convida-te a regressar ao corpo — nao como objecto a analisar, mas como territorio a habitar. Vais escrever a partir das sensacoes, nao das ideias.',
+      passos: [
+        'Senta-te em silencio durante dois minutos com os olhos fechados. Faz um inventario do corpo de cima a baixo: cabeca, ombros, peito, barriga, ancas, pernas, pes. Para cada zona, escreve uma palavra ou frase curta que descreva o que sentes ali agora — tensao, calor, dormencia, vazio, peso, nada.',
+        'Escolhe a zona do corpo que te chamou mais a atencao — a que tinha mais carga. Pousa a mao ai. Escreve: "Aqui guardo ___." Completa sem pensar. Depois continua: "Isto esta aqui desde ___." Deixa o corpo responder, nao a mente.',
+        'Recorda uma reaccao corporal recente que te surpreendeu — um gatilho. Descreve o que aconteceu por fora (a situacao) e o que aconteceu por dentro (as sensacoes fisicas). Agora escreve: "O meu corpo estava a lembrar ___." O que surge?',
+        'Escreve uma carta ao teu corpo. Comeca com: "Corpo, eu sei que te pedi para guardar coisas que eram pesadas demais para mim." Continua com o que queres dizer-lhe — agradecimento, pedido de desculpa, promessa de regresso. Sê honesta.',
+        'Agora deixa o corpo responder. Escreve como se o corpo tivesse voz propria. Comeca com: "Eu esperei." Deixa-o dizer o que precisa — sem pressa, sem edicao, sem vergonha.',
+      ],
+      tempo_sugerido: '25-35 minutos',
+      nota_final: 'O corpo nao mente. Nao racionaliza, nao finge, nao esquece por conveniencia. Quando regressas a ele, regressas ao lugar mais honesto que existe em ti. Este exercicio nao e terapia — e reconciliacao. O inicio de uma conversa que talvez esteja em atraso ha anos.',
+    },
   },
   {
     capitulo_numero: 11,
@@ -200,6 +287,35 @@ export const veu3Niveis: NivelCapitulo[] = [
       'Imagina que durante um mes inteiro nao podes usar nenhuma palavra espiritual — nem consciencia, nem presenca, nem ego, nem despertar. Como descrevias a tua experiencia interior? Escreve-a nessa lingua nua.',
     ],
     espelho_pessoal: 'Se tirasses a roupa espiritual toda — as praticas, as palavras, a imagem — o que ficaria? E conseguirias amar o que ficasse?',
+
+    // Camada profunda
+    mascaras: [
+      'A iluminada — a que construiu uma identidade em torno do despertar. Fala com suavidade estudada, sorri com compaixao calibrada, responde com sabedoria ensaiada. Por baixo, ha medo: medo de ser comum, medo de nao ser suficiente sem o figurino espiritual.',
+      'A pacificadora — a que evita todo o conflito em nome da paz interior. Nunca confronta, nunca discorda, nunca levanta a voz. A calma nao e presenca — e fuga. E a raiva que nao se permite sentir fermenta em silencio.',
+      'A transcendente — a que acredita que ja esta "acima" das emocoes humanas. Desejo, ciume, ambicao — tudo isto e "do ego". Mas negar nao e transcender. E esconder. E o que se esconde volta sempre, com mais forca.',
+      'A coleccionadora espiritual — a que acumula praticas, retiros, mestres, livros como quem acumula troféus. Cada experiencia nova confirma que esta "a avancar". Mas o avanco e horizontal — nunca vai fundo porque ir fundo exigiria parar.',
+    ],
+    veu_dominante_sinais: [
+      'Quando alguem te critica ou te provoca, a tua primeira reaccao interna e "essa pessoa nao esta ao meu nivel de consciencia" — e essa reaccao parece-te natural, nao arrogante.',
+      'A tua pratica espiritual tornou-se rotina rigida: se nao meditas, se nao fazes o ritual, sentes culpa — como se a tua paz dependesse de cumprir um horario.',
+      'Tens dificuldade em admitir emocoes "baixas" — raiva, inveja, desejo — sem imediatamente as enquadrar como "licao" ou "teste do universo".',
+      'Quando estas com pessoas que nao partilham o teu vocabulario espiritual, sentes-te isolada — como se elas vivessem num mundo mais denso e tu ja nao pertencesses ali.',
+      'Ha uma parte de ti que sabe que algo na tua espiritualidade e performance — mas admiti-lo em voz alta parece demasiado arriscado, porque sem essa performance, quem es tu?',
+    ],
+    mensagem_central: 'A espiritualidade nao e um lugar onde chegas. E a honestidade com que te encontras em cada momento — mesmo nos momentos em que nao te sentes nada espiritual. O ego vestido de luz e o mais dificil de reconhecer porque parece bonito, parece correcto, parece elevado. Mas a verdadeira presenca nao se anuncia. Nao precisa de vocabulario especial, nem de postura impecavel, nem de calma constante. A verdadeira presenca inclui a raiva, o medo, a confusao — sem os transformar em problema. Nao se trata de seres menos espiritual. Trata-se de seres mais honesta. E a honestidade, essa sim, e sagrada.',
+
+    guiao_escrita: {
+      contexto: 'Este exercicio convida-te a olhar para a tua identidade espiritual como olharias para qualquer outra mascara — com curiosidade e coragem, sem a deitares fora, mas vendo-a como o que e: construcao, nao essencia.',
+      passos: [
+        'Escreve uma lista de tudo o que fazes, dizes ou acreditas que te faz sentir "espiritual". Praticas, livros, frases que usas, imagem que projectas. Se completa e honesta — inclui as partes que mostras e as que escondes.',
+        'Para cada item da lista, pergunta-te: "Faco isto por presenca genuina ou por habito, performance ou medo?" Escreve a resposta honesta ao lado. Se a resposta te incomodar, ainda melhor — estamos no caminho certo.',
+        'Agora escreve sobre a ultima vez em que a tua "mascara espiritual" caiu — um momento em que sentiste raiva crua, ciume vivo, vaidade nua. Descreve o que aconteceu por fora e por dentro. Nao corrijas nada. Nao espiritualizes. Apenas conta.',
+        'Escreve: "Se eu nao fosse uma pessoa espiritual, seria ___." Completa sem censurar. Depois pergunta-te: essa pessoa que descreveste — e realmente inferior? Ou e simplesmente mais nua?',
+        'Para terminar, reescreve a tua relacao com a espiritualidade em tres linhas: uma sobre o que queres manter, uma sobre o que queres soltar, e uma sobre o que queres comecar a permitir-te ser.',
+      ],
+      tempo_sugerido: '25-35 minutos',
+      nota_final: 'A mascara espiritual nao e ma. Foi util. Talvez tenha sido o caminho que te trouxe ate aqui. Mas o caminho nao e o destino. E quando o caminho se torna identidade rigida, deixa de te levar a algum lado — mantem-te a andar em circulos bem decorados. Este exercicio nao e para destruir a tua espiritualidade. E para a devolver a vida.',
+    },
   },
   {
     capitulo_numero: 12,
@@ -250,5 +366,34 @@ export const veu3Niveis: NivelCapitulo[] = [
       'Imagina a tua espiritualidade como sal dissolvido em agua — invisivel, inseparavel, presente em cada gole. Escreve como seria um dia vivido assim: sem rituais separados, sem momentos "especiais", apenas presenca continua.',
     ],
     espelho_pessoal: 'E se ja tivesses chegado — e a unica coisa que te impede de o ver fosse a crenca de que ainda falta alguma coisa?',
+
+    // Camada profunda
+    mascaras: [
+      'A buscadora eterna — a que esta sempre a procura do proximo ensinamento, do proximo mestre, da proxima revelacao. Nunca pousa. Nunca descansa no que ja sabe. A busca tornou-se refugio: enquanto procura, nao precisa de encontrar.',
+      'A separadora — a que divide a vida em sagrado e mundano, espiritual e comum. O supermercado nao e pratica; a meditacao sim. Esta divisao protege-a de ter de estar presente em tudo — reserva a presenca para os momentos "elevados".',
+      'A incompleta — a que acredita que lhe falta sempre algo para estar pronta. Mais um retiro, mais um livro, mais uma experiencia. A incompletude nao e verdade — e estrategia para nao ter de parar e enfrentar o que ja e.',
+      'A guardia do misterio — a que transforma a incerteza em ansiedade disfarçada de reverencia. Diz "confio no universo" quando na verdade quer dizer "tenho medo de nao saber". A humildade esconde o panico.',
+    ],
+    veu_dominante_sinais: [
+      'Tens uma estante cheia de livros espirituais — mas a paz que procuras neles nunca dura mais do que a leitura. Quando fechas o livro, voltas ao mesmo lugar.',
+      'Precisas de rituais, rotinas ou praticas para te sentires conectada — e quando nao as tens, sentes que "perdeste" algo essencial.',
+      'A vida quotidiana — cozinhar, trabalhar, limpar, esperar — parece-te desprovida de significado, como se o sagrado so existisse em momentos especiais.',
+      'Comparas o teu percurso espiritual com o de outros: quem medita mais, quem teve mais experiencias, quem esta "mais desperto". A espiritualidade tornou-se, sem que desses conta, mais uma arena de competicao.',
+      'Ha uma parte de ti que suspira de alivio quando pensas: "ainda nao cheguei la" — porque se ja tivesses chegado, nao saberias o que fazer sem a busca.',
+    ],
+    mensagem_central: 'E se nao houvesse nenhum lugar para onde ir? E se a espiritualidade nao fosse um caminho com principio e fim, mas a qualidade com que habitas cada instante — incluindo os mais comuns, os mais aborrecidos, os mais mundanos? O sagrado nao vive nos templos. Vive na forma como lavas as maos, como olhas para alguem, como respiras quando ninguem esta a ver. A fantasia de uma chegada definitiva e o ultimo truque do veu: mantem-te a correr para que nunca pares o suficiente para perceber que ja estas onde sempre quiseste estar. Nao falta nada. Nao ha mais nenhum degrau. Ha apenas isto — este momento, esta respiracao, esta presenca imperfeita e viva. E isso basta. Sempre bastou.',
+
+    guiao_escrita: {
+      contexto: 'Este exercicio convida-te a dissolver a fronteira entre o sagrado e o quotidiano — a encontrar presenca nao em momentos especiais, mas no tecido comum da tua vida.',
+      passos: [
+        'Escreve uma descricao detalhada do teu dia de ontem — desde que acordaste ate que adormeceste. Incluir tudo: os gestos banais, as esperas, os momentos em que nao aconteceu nada de especial. Escreve como se estivesses a narrar a vida de outra pessoa, com atencao e sem julgamento.',
+        'Agora rele o que escreveste e marca cada momento que, visto com outros olhos, poderia conter sacralidade. Um sabor, um olhar, uma respiracao funda, um instante de silencio. Quantos encontras? Escreve ao lado de cada um: "Isto tambem e sagrado."',
+        'Escreve sobre o que aconteceria se parasseses de procurar. Nao de viver, nao de sentir, nao de crescer — apenas de procurar. Se a busca acabasse agora, neste instante, o que ficaria? Escreve a partir desse lugar de repouso.',
+        'Imagina a tua espiritualidade como sal dissolvido em agua — invisivel, inseparavel, presente em cada gole. Descreve como seria um dia inteiro vivido assim: sem pratica separada, sem hora espiritual, sem vocabulario especial. Apenas presenca continua, misturada com tudo.',
+        'Para terminar, escreve tres frases. A primeira comeca com "Larguei ___." A segunda com "Encontrei ___." A terceira com "Basta ___." Nao planeies. Deixa as frases escreverem-se. O que aparece e a tua verdade deste momento.',
+      ],
+      tempo_sugerido: '25-35 minutos',
+      nota_final: 'A espiritualidade livre nao pede nada de ti. Nao pede pratica, nao pede coerencia, nao pede progresso. Pede apenas que estejas aqui — inteira, imperfeita, presente. O sal nao precisa de se anunciar na agua. E tu nao precisas de te anunciar na vida. Basta estares.',
+    },
   },
 ]

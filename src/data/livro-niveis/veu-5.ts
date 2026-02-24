@@ -68,6 +68,35 @@ export const veu5Niveis: NivelCapitulo[] = [
       'Se o silencio do teu corpo fosse uma semente, o que achas que esta a tentar nascer em ti? Escreve sem censurar, sem logica — deixa sair.',
     ],
     espelho_pessoal: 'E se o vazio que tanto temes nao for ausencia de vida — mas o unico lugar onde algo verdadeiro ainda pode germinar?',
+
+    // Camada profunda
+    mascaras: [
+      'A funcional — a que continua a funcionar mesmo quando tudo dentro de si parou. Levanta-se, veste-se, responde, cumpre. Ninguem nota que por dentro o motor desligou. A funcionalidade torna-se mascara perfeita: esconde a desolacao atras da competencia.',
+      'A ocupada — a que preenche cada espaco de silencio com actividade. Quando o corpo quer parar, ela acelera. Quando a energia se retira, ela forca. O cansaco e interpretado como falha — nunca como mensagem.',
+      'A envergonhada — a que sente culpa por nao ter energia, por nao querer participar, por nao conseguir ser como era antes. A desolacao parece-lhe defeito pessoal, e a vergonha impede-a de pedir ajuda ou simplesmente descansar.',
+      'A diagnosticada — a que tenta traduzir o adormecimento do corpo em termos clinicos: depressao, burnout, fadiga cronica. O rotulo acalma a mente, mas impede-a de ouvir o que o corpo realmente esta a dizer — que algo precisa de morrer para que outra coisa nasca.',
+    ],
+    veu_dominante_sinais: [
+      'A tua relacao com o descanso e conflituosa: quando paras, sentes culpa. Quando nao paras, sentes exaustao. Nao encontras um lugar entre os dois.',
+      'Tens periodos ciclicos em que a energia simplesmente se retira — sem causa medica clara — e a tua reaccao e sempre a mesma: forcar-te a funcionar como se nada se passasse.',
+      'As pessoas a tua volta nao sabem o que se passa contigo porque aprendeste a esconder tao bem que ate tu esqueces que estas a esconder.',
+      'Ha uma sensacao de peso que te acompanha ha tempo — nao ligada a nenhum evento especifico, mas presente como pano de fundo, como humidade no ar.',
+      'Quando alguem te pergunta como estas, a resposta automatica e "cansada" — e essa palavra carrega muito mais do que fadiga fisica.',
+    ],
+    mensagem_central: 'O teu corpo nao esta a trair-te. Esta a preparar-te. O silencio que se instalou nao e doenca — e um tipo de sabedoria que a mente ainda nao reconhece. Ha momentos na vida em que a energia vital se retira nao porque algo esteja errado, mas porque algo precisa de escuro para germinar. Assim como a semente nao cresce sob os holofotes, ha partes de ti que so podem nascer no silencio, na imobilidade, no aparente vazio. Nao te pedimos que ames a desolacao. Pedimos-te que consideres a hipotese de que ela nao e o fim de algo — e o inicio. Que o corpo que cala nao e o corpo que desiste. E o corpo que sabe, antes de ti, que o proximo capitulo da tua vida precisa de ser escrito com outra tinta.',
+
+    guiao_escrita: {
+      contexto: 'Este exercicio convida-te a escutar o silencio do teu corpo — nao para o diagnosticar, mas para o honrar como preparacao.',
+      passos: [
+        'Descreve o teu estado actual como se fosses uma paisagem. Nao uses palavras de emocao — usa elementos da natureza: tempo, luz, terreno, temperatura, estacao. Escreve: "Agora sou um lugar onde..." e continua. Que paisagem habitas neste momento?',
+        'Recorda o ultimo periodo em que sentiste o corpo "desligar" — perda de energia, de vontade, de sabor. Escreve o que sentias fisicamente em tres momentos concretos desse periodo: ao acordar, a meio do dia, ao deitar. Sem explicacao. So sensacao.',
+        'Escreve uma carta ao teu cansaco — nao como inimigo, mas como mensageiro. Comeca com: "O que queres que eu saiba?" Deixa o cansaco responder. Nao censures, nao corrijas. Escreve o que vier durante cinco minutos.',
+        'Agora pensa: se este silencio do corpo fosse uma semente, o que estaria a tentar nascer em ti? Escreve sem logica, sem prova, sem justificacao. Apenas a intuicao pura: "Acho que o que quer nascer em mim e ___."',
+        'Para terminar, escreve um compromisso simples com o teu corpo: nao de o curar, nao de o forcar a funcionar, mas de o escutar. Uma frase por dia que comece com: "Hoje o meu corpo precisa de ___" e que leves a serio como se fosse prescricao sagrada.',
+      ],
+      tempo_sugerido: '25-35 minutos',
+      nota_final: 'O corpo sabe coisas que a mente ainda nao aprendeu. Quando cala, nao e por fraqueza — e por sabedoria. Este exercicio nao e para sair da desolacao. E para aprender a habita-la sem te perderes nela — e descobrir que o silencio, afinal, esta gravido de vida.',
+    },
   },
   {
     capitulo_numero: 18,
@@ -134,6 +163,35 @@ export const veu5Niveis: NivelCapitulo[] = [
       'Recorda uma noite em que ficaste acordada com angustia. Agora reescreve-a como se fosses uma vigilia sagrada — nao um problema a resolver, mas uma vigilia a cumprir. O que muda na historia?',
     ],
     espelho_pessoal: 'E se o medo que nao tem rosto nao estiver a esconder-te algo — mas a guardar-te a porta do que ainda nao ousaste ser?',
+
+    // Camada profunda
+    mascaras: [
+      'A controladora ansiosa — a que tenta mapear todos os perigos antes que acontecam. Se conseguir antecipar tudo, o medo nao a apanha desprevenida. Mas a vigilancia permanente e exaustao disfarçada de prudencia.',
+      'A corajosa de fachada — a que parece nao ter medo de nada. Salta, arrisca, enfrenta — mas nao por coragem genuina. Por incapacidade de ficar com o medo tempo suficiente para o sentir. A accao substitui o sentir.',
+      'A espiritualizadora do medo — a que transforma cada angustia em "crescimento". "O universo esta a testar-me." "Isto e para eu evoluir." A narrativa espiritual anestesia o tremor, mas nao o dissolve.',
+      'A paralisada invisivel — a que congela por dentro mas funciona por fora. Ninguem ve o medo porque ela aprendeu a mover-se apesar dele. Mas a vida vivida apesar do medo e uma vida vivida a meia voz.',
+    ],
+    veu_dominante_sinais: [
+      'Ha um estado de fundo na tua vida que nao e exactamente medo de algo — e uma inquietacao difusa que esta sempre la, mesmo quando tudo parece bem.',
+      'Evitas certos tipos de silencio, de escuro, de solidao — nao por preferencia, mas porque sentes que nesses espacos algo te espera que nao queres encontrar.',
+      'Tens dificuldade em distinguir entre intuicao e medo: quando algo te diz "nao", nao sabes se e sabedoria do corpo ou panico disfarçado.',
+      'Acordas de madrugada com o corpo em alerta — coracao a bater, respiracao curta — sem nenhum motivo visivel. E a tua primeira reaccao e tentar perceber "de que" tens medo, como se nomear resolvesse.',
+      'Quando a vida esta demasiado calma, demasiado boa, demasiado tranquila, sentes desconfianca — como se a paz fosse preludio de catastrofe.',
+    ],
+    mensagem_central: 'O medo sem rosto nao e teu inimigo. E o guardiao da passagem. Permanece nao para te destruir, mas porque ha algo do outro lado que so se revela a quem aguenta ficar. A maioria das pessoas foge. As que fogem continuam a encontrar o medo em cada esquina — disfarçado de ansiedade, de controlo, de pressa. Mas as que ficam — as que respiram dentro do medo sem tentar resolve-lo — descobrem algo inesperado: o medo tem um fundo. E no fundo do medo, ha espaco. Nao te estamos a pedir que deixes de ter medo. Estamos a pedir que pares de fugir dele. Que o olhes nos olhos — mesmo que nao tenha rosto. Que fiques com ele tempo suficiente para descobrir que ele nao e maior do que tu. Nada e maior do que tu.',
+
+    guiao_escrita: {
+      contexto: 'Este exercicio convida-te a estar com o teu medo em vez de fugires dele — a cartografa-lo como quem cartografa um territorio desconhecido, sem pressa de o atravessar.',
+      passos: [
+        'Fecha os olhos e localiza o medo no teu corpo. Onde mora? Que forma tem? Que temperatura? Que cor? Que textura? Escreve-o como se fosse uma paisagem — sem tentar muda-lo, so mapea-lo. Comeca com: "O meu medo vive em ___ e parece-se com ___."',
+        'Agora escreve um dialogo com o teu medo. Tu perguntas: "O que guardas?" O medo responde. Tu perguntas: "Ha quanto tempo estas aqui?" O medo responde. Tu perguntas: "O que precisas de mim?" O medo responde. Nao censures. Deixa o dialogo fluir.',
+        'Recorda uma noite em que ficaste acordada com angustia — sem causa clara. Reescreve essa noite como se fosse uma vigilia sagrada, nao um problema. Em vez de "nao consegui dormir", escreve como se estivesses a cumprir uma funcao: vigiar algo precioso no escuro. O que estavas a guardar?',
+        'Escreve a lista dos medos que nao tem nome — os que nao se ligam a situacoes concretas. "Tenho medo de ___" — mas sem acabar a frase com nada logico. Deixa o medo ser impreciso. "Tenho medo de algo que nao consigo ver." "Tenho medo do que existe depois do silencio." Escreve pelo menos cinco.',
+        'Para terminar, escreve uma frase que comece com: "Mesmo com medo, eu ___." Esta nao e uma frase de coragem. E uma frase de permanencia. O que e que fazes, es, ou escolhes — mesmo com medo? Essa e a tua verdade mais nua.',
+      ],
+      tempo_sugerido: '25-35 minutos',
+      nota_final: 'Nao precisas de deixar de ter medo. Precisas de descobrir que o medo nao e o fim do caminho — e o caminho. E que dentro dele, se ficares tempo suficiente, ha algo que se parece muito com liberdade.',
+    },
   },
   {
     capitulo_numero: 19,
@@ -201,6 +259,35 @@ export const veu5Niveis: NivelCapitulo[] = [
       'Escreve uma frase que comece com "Estou aqui" e deixa a caneta continuar. Nao planeies. O que vem a seguir e a tua verdade deste momento.',
     ],
     espelho_pessoal: 'Sera que precisas de uma grande revelacao — ou basta reconhecer, em silencio, que ja es diferente de quem eras antes da travessia?',
+
+    // Camada profunda
+    mascaras: [
+      'A heroina da superacao — a que precisa de transformar cada travessia numa historia epica. Se a cura foi silenciosa, parece-lhe insuficiente. Procura drama na recuperacao porque sem drama nao sabe como se validar.',
+      'A ingrata — a que se recusa a reconhecer o que sobreviveu porque acha que "nao foi assim tao mau". Minimiza a propria dor para nao incomodar, para nao ocupar espaco, para nao parecer fragil.',
+      'A comparadora — a que mede a sua travessia pela dos outros. "Ela sim passou por algo terrivel. O meu sofrimento nao conta." A comparacao rouba-lhe o direito de reconhecer a propria dor.',
+      'A apressada — a que quer saltar do reconhecimento para a accao. Mal percebe que esta melhor, ja esta a planear o proximo passo. Parar no reconhecimento parece-lhe perda de tempo — e essa pressa e, ela propria, uma forma de fuga.',
+    ],
+    veu_dominante_sinais: [
+      'Tens dificuldade em receber elogios sobre a tua forca — quando alguem te diz "es forte", a tua reaccao interna e "nao fiz nada de especial".',
+      'Quando sais de um periodo dificil, em vez de alivio sentes estranheza — como se a calma nao te pertencesse, como se estivesses a ocupar o espaco de outra pessoa.',
+      'Comparas a tua recuperacao com a dos outros e sentes sempre que a tua foi demasiado lenta, demasiado discreta, demasiado pouco.',
+      'Precisas de contar a historia do que passaste para sentir que foi real — se ninguem ouvir, e como se nao tivesse acontecido.',
+      'Quando a paz chega, a tua primeira reaccao nao e descansar — e desconfiar. "Isto nao vai durar." "O que vem a seguir?" A vigilancia substitui o alivio.',
+    ],
+    mensagem_central: 'Nao precisas de aplausos para que a tua travessia conte. Nao precisas de historia epica, de revelacao espectacular, de antes-e-depois dramatico. A maioria das curas verdadeiras acontece em silencio — num dia em que sentes o sabor do cafe depois de meses sem sabor, num instante em que olhas o espelho e nao desvias os olhos, numa respiracao que finalmente chega ate ao fundo. Ninguem viu. Ninguem gravou. Ninguem aplaudiu. Mas tu sabes. E esse saber quieto — esse "estou aqui, ainda estou aqui" — e mais poderoso do que qualquer historia que pudesses contar. O reconhecimento silencioso nao e menor. E o mais honesto que existe. Porque acontece entre ti e ti, sem testemunhas, sem merito, sem espectaculo. E exactamente por isso e que e real.',
+
+    guiao_escrita: {
+      contexto: 'Este exercicio convida-te a reconhecer a tua propria travessia — nao com grandiosidade, mas com a honestidade de quem se encontra consigo mesma depois de uma tempestade.',
+      passos: [
+        'Escreve o momento exacto em que percebeste que estavas a sair de um periodo escuro. Nao o momento dramatico — o momento discreto. Um sabor que voltou, um gesto que te surpreendeu, uma manha em que acordaste sem peso. Descreve-o com o maximo de detalhe sensorial.',
+        'Faz uma lista de cinco mudancas silenciosas que aconteceram em ti desde a tua ultima travessia dificil. So as que ninguem viu. As que nao cabem numa conversa. As que so tu sabes. Para cada uma, escreve uma linha que comece com: "Antes eu ___. Agora eu ___."',
+        'Escreve uma carta a ti mesma — a versao de ti que estava no ponto mais escuro. Nao uma carta de conselhos. Uma carta de reconhecimento. Comeca com: "Eu sei o que viveste. E quero que saibas que ___."',
+        'Agora escreve a resposta — o que a versao mais escura de ti diria a versao actual. O que precisava de ouvir? O que quer agradecer? O que ainda precisa que nao esquecas?',
+        'Para terminar, escreve uma unica frase que comece com "Estou aqui" e deixa a caneta continuar sem plano. Nao corrijas. O que vier depois e o teu reconhecimento mais puro deste momento.',
+      ],
+      tempo_sugerido: '25-35 minutos',
+      nota_final: 'O reconhecimento silencioso e o acto mais intimo que existe. Nao precisa de plateia. Nao precisa de palavras grandes. Precisa apenas de ti, olhando para ti, e dizendo: "Sim. Isto aconteceu. E eu sobrevivi. E isso basta."',
+    },
   },
   {
     capitulo_numero: 20,
@@ -268,6 +355,35 @@ export const veu5Niveis: NivelCapitulo[] = [
       'Durante um minuto inteiro, nao facas nada. Depois escreve: "No intervalo, eu..." e deixa a mao continuar. O que aparece quando podes de empurrar o tempo?',
     ],
     espelho_pessoal: 'E se nao precisasses de preencher o espaco entre quem foste e quem seras — e se esse espaco, exactamente como e, ja fosse a tua vida inteira?',
+
+    // Camada profunda
+    mascaras: [
+      'A preenchedora — a que nao suporta o intervalo. Cada pausa e preenchida: telemovel, conversa, plano, tarefa. O espaco entre dois momentos parece-lhe ameaca — porque no espaco, aparece o que ela nao quer sentir.',
+      'A produtiva — a que mede o seu valor pelo que faz, nao pelo que e. Quando nao esta a produzir, sente-se a encolher. O intervalo nao e descanso — e prova de que nao esta a ser suficiente.',
+      'A planificadora — a que vive no futuro para nao ter de habitar o presente. O proximo objectivo, o proximo passo, a proxima fase. Se o intervalo nao tem direcao, ela perde-se.',
+      'A impaciente — a que confunde presenca com estagnacao. Quando a vida abranda, ela interpreta como sinal de que algo esta errado. A sua relacao com o tempo e de combate: ou esta a avancar ou esta a perder.',
+    ],
+    veu_dominante_sinais: [
+      'Nao te lembras da ultima vez que ficaste parada sem ansiedade — sem telemovel, sem pensamento, sem plano. O simples acto de nao fazer nada provoca-te desconforto fisico.',
+      'Quando estas num periodo de transicao — entre empregos, entre relacoes, entre fases — a urgencia de "resolver" a situacao e quase insuportavel. O nao-saber paralisa-te mais do que qualquer problema concreto.',
+      'Preenches o tempo de espera com actividade compulsiva: limpeza, listas, reorganizacoes, planos. Se o espaco ficar vazio, algo desagradavel aparece.',
+      'Quando a vida esta calma, crias drama inconsciente — discussoes, urgencias, crises — porque o drama e mais familiar do que o silencio.',
+      'Tens dificuldade em distinguir entre descansar e desistir. Parar parece-te sempre uma forma de falhar.',
+    ],
+    mensagem_central: 'O intervalo nao e espera. E vida. O espaco entre quem foste e quem seras nao e vazio a preencher — e o unico lugar onde a transformacao realmente acontece. Nos enchemos os dias de accao para fugir a este intervalo. Planamos, decidimos, movemo-nos — tudo para evitar o momento em que nao ha nada para fazer e somos obrigados a estar so com o pulso da existencia. Mas e exactamente nesse momento — nessa pausa entre a inspiracao e a expiracao, entre o gesto e a quietude — que a vida se reorganiza sem a nossa interferencia. O intervalo nao pede que facas algo. Pede que sejas alguem. Ou melhor: pede que deixes de tentar ser alguem e simplesmente estejas. Ficar. Respirar. Sentir o tempo passar sem o empurrar. E isso — esse nao-fazer vivo — e talvez o acto mais corajoso que existe.',
+
+    guiao_escrita: {
+      contexto: 'Este exercicio convida-te a habitar o intervalo — o espaco entre — sem o preencher, sem o resolver, sem lhe dar direcao. Vais escrever a partir do lugar onde nada acontece e tudo pulsa.',
+      passos: [
+        'Antes de escreveres, fica um minuto inteiro sem fazer nada. Sem telemovel, sem pensamento dirigido, sem objectivo. Apenas respira. Quando o minuto acabar, escreve imediatamente: "No intervalo, eu senti ___." Descreve com honestidade o que apareceu: desconforto, paz, tedio, medo, nada.',
+        'Recorda um periodo de transicao na tua vida — entre fases, entre versoes de ti. Na altura, como viveste esse intervalo? Com ansiedade? Com pressa? Com medo? Escreve o que sentias e o que fazias para "resolver" a situacao. Agora reescreve o mesmo periodo como se fosse gestacao, nao espera. O que estava a nascer nesse vazio?',
+        'Escreve sobre a tua relacao com o tempo. Es amiga do tempo ou combates-o? O tempo e aliado ou inimigo? Comeca com: "Eu e o tempo ___." Continua durante cinco minutos. O que descobres sobre a forma como habitas os teus dias?',
+        'Imagina um dia inteiro sem nenhuma obrigacao, nenhum plano, nenhuma tarefa. De manha a noite, so tu e o tempo aberto. Descreve esse dia — nao o dia ideal, mas o dia real. O que farias? E mais importante: o que sentitias ao nao ter de fazer nada?',
+        'Para terminar, escreve tres frases sobre o intervalo: uma sobre o que o intervalo te ensinou, uma sobre o que ainda te assusta nele, e uma sobre o que seria se pudesses habita-lo sem medo. Essas tres frases sao o teu mapa para aprender a ficar.',
+      ],
+      tempo_sugerido: '20-30 minutos',
+      nota_final: 'O intervalo nao e problema a resolver. E o lugar onde a vida respira entre dois batimentos. Quando aprendes a habita-lo sem pressa, descobres que o tempo nao e escasso — e vasto. E que tu, parada no centro dele, es mais do que suficiente.',
+    },
   },
   {
     capitulo_numero: 21,
@@ -335,5 +451,34 @@ export const veu5Niveis: NivelCapitulo[] = [
       'Escreve o teu proprio epitafio — mas em vez de nome e feitos, escreve so o que sentias quando eras mais tu. O que fica quando os factos desaparecem?',
     ],
     espelho_pessoal: 'Se o teu nome descansasse — nao desaparecesse, apenas descansasse — o que e que continuaria a olhar pelo mundo atraves dos teus olhos?',
+
+    // Camada profunda
+    mascaras: [
+      'A definida — a que precisa sempre de uma resposta para "quem es tu?". Profissao, papel, historia, crenca — qualquer rotulo serve, desde que preencha o espaco que se abre quando nao ha nome. A definicao e a sua ancora. Sem ela, sente que flutua.',
+      'A existencialista performativa — a que fala do vazio com eloquencia mas nao o habita. Cita poetas, referencia filosofos, usa palavras como "impermanencia" — mas quando o vazio real se instala, recua para o conforto da identidade.',
+      'A agarrada — a que se agarra a versoes de si mesma que ja nao servem, so porque sao familiares. O nome antigo, o papel velho, a historia conhecida. Soltar parece morrer. E como pode alguem pedir-lhe que morra?',
+      'A temerosa do infinito — a que sente o espaco imenso que se abre quando todas as definicoes caem e interpreta-o como ameaca. A expansao aterroriza-a porque cresceu a acreditar que ser alguem e melhor do que ser tudo.',
+    ],
+    veu_dominante_sinais: [
+      'Quando te perguntam "quem es?", sentes urgencia de responder algo solido — e o silencio entre a pergunta e a resposta e desconfortavel, como se fosse confissao de fraqueza.',
+      'Agarras-te a papeis que ja nao te servem — profissao, relacao, identidade — porque a alternativa e um espaco aberto que nao sabes como habitar.',
+      'Evitas estados de expansao — na meditacao, na natureza, na arte — porque por vezes sentes que podes "desaparecer" neles e essa sensacao, mesmo que breve, e perturbadora.',
+      'Ha momentos fugidios em que sentes uma liberdade imensa — como se nao fosses ninguem e isso fosse bom — mas logo a seguir a mente puxa-te de volta: "quem es tu sem nome?"',
+      'A tua maior angustia nao e a dor, nem o medo, nem a solidao. E a possibilidade de que, por baixo de tudo o que construiste sobre ti, nao haja um "tu" fixo — e que isso, em vez de libertacao, pareca abismo.',
+    ],
+    mensagem_central: 'O nome que te deram nao e tu. O nome que escolheste tambem nao. Nem a historia, nem os papeis, nem as crencas, nem os medos. Tu es o que resta quando tudo isso descansa — e o que resta nao e nada. E tudo. Ha um terror antigo nesta descoberta: a sensacao de que sem definicao nao existes. Mas esse terror e o ultimo veu. Porque a verdade e exactamente o oposto: so sem definicao existes por inteiro. O ser sem nome nao e dissolucao. E expansao. Nao e perda. E reconhecimento do que sempre foste: nao uma pessoa com fronteiras, mas uma presenca sem limites que escolheu, temporariamente, habitar uma forma. E quando a forma descansa e o nome se cala, o que olha pelo mundo atraves dos teus olhos e o que sempre la esteve. Antes de ti. Depois de ti. Como tu.',
+
+    guiao_escrita: {
+      contexto: 'Este exercicio convida-te a experimentar — mesmo que brevemente — o que e existir sem te definires. Nao como exercicio intelectual, mas como experiencia vivida.',
+      passos: [
+        'Escreve durante cinco minutos sem usar a palavra "eu". Descreve o teu dia, os teus sentimentos, o teu mundo — mas retira o centro. Em vez de "eu senti", escreve "houve uma sensacao de". Em vez de "eu vi", escreve "algo olhou". O que muda quando o "eu" sai?',
+        'Recorda o instante entre o sono e a vigilia — aquele momento antes de te lembrares do teu nome, das tuas obrigacoes, da tua historia. Descreve-o com o maximo de detalhe: que qualidade tem essa presenca antes do nome? O que se sente ser ninguem — mesmo que por um segundo?',
+        'Escreve todos os nomes que ja tiveste — nao so o nome proprio, mas os papeis: filha, mae, profissional, amiga, forte, fragil, espiritual, perdida. Para cada um, escreve uma linha que comece com: "Quando sou ___, escondo ___." O que cada nome te obriga a esconder?',
+        'Agora imagina que todos esses nomes descansam. Nao morrem — apenas descansam, como roupa pendurada num armario. O que fica de pe quando tudo o resto se senta? Escreve a partir desse lugar durante cinco minutos. Comeca com: "Sem nome, eu ___."',
+        'Para terminar, escreve o teu epitafio — mas em vez de nome e feitos, escreve so o que sentias quando eras mais tu. Uma frase. Sem factos, sem historia, sem rotulo. O que fica quando os factos desaparecem e a essencia que nenhum nome consegue conter.',
+      ],
+      tempo_sugerido: '25-35 minutos',
+      nota_final: 'O ser sem nome nao e um lugar a que chegas. E o lugar de onde sempre vieste. Cada vez que o nome descansa — na meditacao, no sono, no amor, na arte — tocas esse lugar brevemente. Este exercicio nao te leva a lado nenhum. Leva-te a onde ja estas. E esse "onde" nao tem nome. Tem apenas presenca.',
+    },
   },
 ]
