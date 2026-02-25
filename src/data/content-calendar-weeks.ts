@@ -1315,7 +1315,121 @@ const week8: WeekPlan = {
   ],
 };
 
-export const allWeeks: WeekPlan[] = [week1, week2, week3, week4, week5, week6, week7, week8];
+// ─── SEMANA ESPECIAL: CAMPANHA ONBOARDING — PEDE O TEU CODIGO ────────────────
+
+const weekOnboarding: WeekPlan = {
+  weekNumber: 9,
+  title: "Campanha Onboarding ~ Pede o teu codigo",
+  subtitle: "Para quem ja tem o livro fisico: pedir o codigo digital gratuito",
+  days: [
+    {
+      day: "Terca-feira",
+      dayShort: "Ter",
+      theme: "Anuncio principal",
+      slots: [
+        {
+          platform: "ambos",
+          type: "WhatsApp + Instagram Story",
+          visual: {
+            bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "vertical",
+            title: "Ja tens o livro fisico?",
+            body: "Agora existe uma\nexperiencia digital\nque complementa\na tua leitura.\n\nO acesso e gratuito.\nPede o teu codigo.",
+            footer: "seteveus.space/pedir-codigo",
+          },
+          caption: "O livro que tens nas maos agora tem uma dimensao digital.\n\nSe ja compraste \"Os 7 Veus do Despertar\", tens direito a acesso gratuito a experiencia digital — leitura interactiva, diario reflexivo e comunidade.\n\nLink na bio para pedires o teu codigo.\n\n#OsSeteVeus #AcessoDigital #LivroFisico #Autoconhecimento",
+          broadcast: "Ja tens o livro fisico \"Os 7 Veus do Despertar\"?\n\nAgora existe uma experiencia digital que complementa a tua leitura — com diario reflexivo, comunidade anonima e conteudo exclusivo.\n\nE o melhor: se ja compraste o livro, o acesso e gratuito.\n\nPede o teu codigo aqui: seteveus.space/pedir-codigo\n\nDemora menos de 2 minutos. Recebes o codigo em ate 24h.\n\n— Vivianne",
+        },
+      ],
+    },
+    {
+      day: "Quarta-feira",
+      dayShort: "Qua",
+      theme: "Carrossel — 5 passos",
+      slots: [
+        {
+          platform: "instagram",
+          type: "Carrossel",
+          carousel: [
+            { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Compraste\no livro fisico?", body: "", footer: "Os Sete Veus do Despertar" },
+            { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Tens direito\nao acesso digital\ngratuito.", body: "Tudo o que o livro\nte deu no papel,\nagora vives no ecra.", footer: "" },
+            { bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", title: "Preenche o formulario.", body: "2 minutos.\nNome, email e\n(se quiseres)\numa foto do livro.", footer: "seteveus.space/pedir-codigo" },
+            { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Recebes o codigo\nem ate 24h.", body: "No teu email.\nPessoal. Intransmissivel.", footer: "" },
+            { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "O que ganhas:", body: "Leitura interactiva\nDiario reflexivo\nRespiracao guiada\nComunidade anonima\nChatbot de apoio 24/7", footer: "seteveus.space/pedir-codigo" },
+          ],
+          caption: "5 passos simples. Se ja tens o livro fisico, o acesso digital e teu por direito.\n\n1. Compraste o livro? Tens direito ao acesso digital gratuito.\n2. Preenche o formulario (2 minutos).\n3. Recebes o codigo em ate 24h.\n4. O que ganhas: leitura interactiva, diario reflexivo, comunidade.\n\nLink na bio.\n\n#OsSeteVeus #AcessoDigital #LivroFisico #Autoconhecimento",
+        },
+      ],
+    },
+    {
+      day: "Quinta-feira",
+      dayShort: "Qui",
+      theme: "Tom intimo — WhatsApp",
+      slots: [
+        {
+          platform: "whatsapp",
+          type: "Broadcast (tom pessoal)",
+          broadcast: "Uma coisa que talvez nao saibas:\n\nO livro fisico \"Os 7 Veus do Despertar\" tem uma extensao digital.\n\nNao e uma copia — e uma experiencia diferente. Podes escrever reflexoes a medida que les, guardar pensamentos por capitulo, e participar numa comunidade anonima de leitoras que tambem estao a atravessar os veus.\n\nSe tens o livro, pede o teu codigo: seteveus.space/pedir-codigo\n\nE gratuito. E pessoal. E teu.\n\n— Vivianne",
+        },
+      ],
+    },
+    {
+      day: "Sexta-feira",
+      dayShort: "Sex",
+      theme: "Visual — papel ao ecra",
+      slots: [
+        {
+          platform: "instagram",
+          type: "Post Feed / Story",
+          visual: {
+            bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", format: "square",
+            title: "Do papel ao ecra.",
+            body: "A mesma essencia,\numa nova forma\nde viver.",
+            footer: "seteveus.space/pedir-codigo",
+            highlight: "Livro fisico + digital",
+          },
+          caption: "Cada veu que cai no papel pode agora ecoar no digital.\n\nSe ja tens o livro, pede o teu acesso gratuito. Link na bio.\n\n#OsSeteVeus #DoPapelAoDigital #LeituraTransformadora #Autoconhecimento",
+          notes: "Conceito visual: foto do livro fisico lado a lado com ecra do telemovel mostrando a versao digital.\nSe nao tiveres foto profissional, usa o Gerador Livre com o print 'livro fisico' como fundo.",
+        },
+      ],
+    },
+    {
+      day: "Sabado",
+      dayShort: "Sab",
+      theme: "Ultimo lembrete da semana",
+      slots: [
+        {
+          platform: "whatsapp",
+          type: "Broadcast (lembrete final)",
+          broadcast: "Antes do fim de semana:\n\nSe compraste \"Os 7 Veus do Despertar\" e ainda nao pediste o teu codigo digital — este e o momento.\n\nSo precisas de nome, email e (se quiseres) uma foto do livro.\n\nseteveus.space/pedir-codigo\n\nBom fim de semana. Que o silencio te encontre.\n\n— Vivianne",
+        },
+        {
+          platform: "instagram",
+          type: "Story",
+          visual: {
+            bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "vertical",
+            title: "Ultimo lembrete\ndesta semana.",
+            body: "Se tens o livro fisico\ne ainda nao pediste\no teu codigo digital:\n\neste e o momento.",
+            footer: "seteveus.space/pedir-codigo",
+          },
+        },
+      ],
+    },
+    {
+      day: "Domingo",
+      dayShort: "Dom",
+      theme: "Descanso + responder mensagens",
+      slots: [
+        {
+          platform: "whatsapp",
+          type: "Responder DMs",
+          notes: "Responder a todas as mensagens recebidas durante a semana.\nSe alguem perguntou como pedir o codigo, enviar link directo: seteveus.space/pedir-codigo\nSe alguem enviou comprovativo, aprovar o codigo no painel admin.",
+        },
+      ],
+    },
+  ],
+};
+
+export const allWeeks: WeekPlan[] = [week1, week2, week3, week4, week5, week6, week7, week8, weekOnboarding];
 
 // ─── CARROSSEIS PROFISSIONAIS (slide a slide) ────────────────────────────────
 
@@ -1428,6 +1542,218 @@ export const professionalCarousels: ProfessionalCarousel[] = [
       colorPalette: ["#3d3630", "#c9b896", "#8b9b8e", "#c97070", "#7a7a9e", "#5a7a8a", "#8a6a7a"],
     },
   },
+  {
+    id: "carousel-como-funciona",
+    title: "Como funciona a experiencia digital",
+    description: "Passo a passo visual. Ideal para quem nao percebe o que e a plataforma.",
+    slides: [
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Como funciona\na experiencia?", body: "3 passos simples.\nLes. Sentes. Avanças.", footer: "seteveus.space" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "1. Escolhe o teu\nprimeiro Espelho", body: "O Espelho da Ilusao\nja esta disponivel.\n\n7 capitulos de ficcao\nonde a Sara descobre\nque a vida que tem\nnao e a que escolheu.", footer: "" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "2. Le ao teu ritmo", body: "Cada capitulo tem:\n\n~ Narrativa imersiva\n~ Pausa de respiracao\n~ Reflexao guiada\n~ Diario pessoal\n~ Checklist de despertar", footer: "" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "3. Desbloqueia\no que vem a seguir", body: "Ao completar o Espelho,\ndesbloqueias o No:\numa segunda historia\nque so faz sentido\ndepois de viveres a primeira.", footer: "" },
+      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Bonus:", body: "Comunidade anonima\nonde partilhas reflexoes\nsem julgamento.\n\nChatbot de apoio 24/7\ncom a voz da autora.", footer: "" },
+      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Comeca hoje.\n$29 USD / 1.885 MZN", body: "Acesso vitalicio.\nSem pressa. Sem prazos.", footer: "seteveus.space/comprar/espelhos" },
+    ],
+    caption: "Como funciona a experiencia Os Sete Veus?\n\n1. Escolhe o teu primeiro Espelho (ja disponivel)\n2. Le ao teu ritmo — cada capitulo tem reflexao, respiracao e diario\n3. Desbloqueia o que vem a seguir — historias que so fazem sentido depois de viveres a primeira\n\nBonus: comunidade anonima + chatbot de apoio 24/7\n\n$29 USD / 1.885 MZN. Acesso vitalicio.\n\nseteveus.space/comprar/espelhos\n\n#OsSeteVeus #ExperienciaDigital #LeituraTransformadora #Autoconhecimento",
+    canvaSpecs: {
+      dimensions: "1080x1080px (quadrado)",
+      fonts: "Titulo: Playfair Display / Corpo: Inter",
+      colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#7a8c6e", "#ebe7df"],
+    },
+  },
+  {
+    id: "carousel-testemunhos",
+    title: "O que dizem as leitoras",
+    description: "Testemunhos reais (anonimos) da comunidade. Social proof poderoso.",
+    slides: [
+      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "O que dizem\nas leitoras.", body: "", footer: "Testemunhos reais. Nomes guardados." },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "\"Sai do modo\nautomatico.\nNao sei para onde vou\nmas pelo menos\nestou acordada.\"", body: "", footer: "~ leitora anonima, Veu 1" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "\"Chorei no banho.\nOutra vez.\nMas desta vez\nnao foi por tristeza.\nFoi por reconhecimento.\"", body: "", footer: "~ leitora anonima, Veu 1" },
+      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "\"O meu marido\nperguntou: estas bem?\nE eu disse que sim.\nAutomaticamente.\"", body: "", footer: "~ leitora anonima, Veu 1" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "\"Este livro nao te\nda respostas.\nDa-te as perguntas\nque nunca fizeste.\"", body: "", footer: "~ leitora anonima" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Reconheces-te?", body: "O Espelho da Ilusao\nesta disponivel.\n\nDescobre qual veu\nte esconde.", footer: "seteveus.space/recursos/teste" },
+    ],
+    caption: "O que dizem as leitoras d'Os Sete Veus.\n\nTestemunhos reais. Nomes guardados.\n\n\"Sai do modo automatico. Nao sei para onde vou mas pelo menos estou acordada.\"\n\n\"Chorei no banho. Outra vez. Mas desta vez nao foi por tristeza. Foi por reconhecimento.\"\n\nReconheces-te? Descobre qual veu te esconde:\nseteveus.space/recursos/teste\n\n#OsSeteVeus #TestemunhosReais #Autoconhecimento #FiccaoPsicologica",
+    canvaSpecs: {
+      dimensions: "1080x1080px (quadrado)",
+      fonts: "Citacoes: Playfair Display Italic / Fonte: Inter Light",
+      colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#ebe7df"],
+    },
+  },
+  {
+    id: "carousel-mae-filha",
+    title: "Sara e Helena — O No da Heranca",
+    description: "Carrossel emocional sobre a relacao mae-filha. Para promover o No (readers que completaram o Espelho).",
+    slides: [
+      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "Ha coisas que\numa mae nunca diz.", body: "", footer: "" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Sara viu o veu.", body: "Percebeu que a vida\nque tinha nao era\na que tinha escolhido.\n\nMas ha um silencio\nque vem de antes dela.", footer: "" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Helena sabia.", body: "A mae sempre soube.\nViu os mesmos sinais.\nCalou os mesmos medos.\nEsperou anos.", footer: "" },
+      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "\"Agora que Sara\nacordou,\nHelena tem algo\npara lhe dizer.\"", body: "", footer: "" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "O No da Heranca", body: "A segunda historia.\nSo se desbloqueia\ndepois de completares\no Espelho da Ilusao.\n\nNao e um upsell.\nE uma continuacao\nemocional.", footer: "seteveus.space" },
+    ],
+    caption: "Ha coisas que uma mae nunca diz.\n\nSara viu o veu. Percebeu que a vida que tinha nao era a que tinha escolhido. Mas ha um silencio que vem de antes dela.\n\nHelena — a mae — sempre soube. Viu os mesmos sinais. Calou os mesmos medos. Esperou anos.\n\nO No da Heranca e a segunda historia. So se desbloqueia depois de completares o Espelho da Ilusao.\n\nNao e um upsell. E uma continuacao emocional.\n\nseteveus.space\n\n#OsSeteVeus #NoDaHeranca #MaeEFilha #FiccaoRelacional #Autoconhecimento",
+    canvaSpecs: {
+      dimensions: "1080x1080px (quadrado)",
+      fonts: "Titulo: Playfair Display Italic / Corpo: Inter Light",
+      colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#ebe7df"],
+    },
+  },
+  {
+    id: "carousel-recursos-gratis",
+    title: "5 recursos gratuitos para comecar",
+    description: "Carrossel de valor. Mostra todos os recursos gratis disponiveis (PDFs, teste, audios).",
+    slides: [
+      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "5 recursos gratuitos\npara comecar\na tua jornada.", body: "", footer: "Sem compromisso. Sem email." },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "1. Teste:\nQual veu te esconde?", body: "3 minutos. 7 perguntas.\nDescobre o veu que mais\nte influencia agora.\n\nNao da respostas —\nda perguntas.", footer: "seteveus.space/recursos/teste" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "2. As 7 Perguntas\ndo Despertar", body: "Uma pergunta por veu.\nImprime. Cola no espelho.\nLe todos os dias.", footer: "PDF gratuito" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "3. Diario de 7 Dias", body: "Um exercicio por dia.\nEscrito pela autora.\nPara quem quer comecar\nsem saber por onde.", footer: "PDF gratuito" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "4. Checklist\ndo Despertar", body: "Uma lista visual\ndos sinais de cada veu.\n\nReconhece onde estas.\nVe ate onde podes ir.", footer: "PDF gratuito" },
+      { bg: "#ebe7df", text: "#3d3630", accent: "#7a8c6e", title: "5. Mini-guia:\nO que sao os 7 Veus?", body: "16 paginas.\nExplicacao simples.\nPara quem quer perceber\nantes de comecar.", footer: "PDF gratuito" },
+      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Tudo em\nseteveus.space/recursos", body: "Gratuito.\nSem email obrigatorio.\nSem compromisso.", footer: "seteveus.space/recursos" },
+    ],
+    caption: "5 recursos gratuitos para comecar a tua jornada interior:\n\n1. Teste: Qual veu te esconde? (3 min)\n2. As 7 Perguntas do Despertar (PDF)\n3. Diario de 7 Dias (PDF)\n4. Checklist do Despertar (PDF)\n5. Mini-guia: O que sao os 7 Veus? (PDF)\n\nTudo gratuito. Sem email. Sem compromisso.\n\nseteveus.space/recursos\n\nGuarda esta publicacao para quando precisares.\n\n#OsSeteVeus #RecursosGratuitos #Autoconhecimento #DesenvolvimentoPessoal #PDFGratis",
+    canvaSpecs: {
+      dimensions: "1080x1080px (quadrado)",
+      fonts: "Titulo: Playfair Display / Corpo: Inter",
+      colorPalette: ["#7a8c6e", "#f7f5f0", "#3d3630", "#c9b896", "#ebe7df"],
+    },
+  },
+  {
+    id: "carousel-comunidade-ecos",
+    title: "Comunidade Ecos — o que e?",
+    description: "Apresentar a comunidade anonima. Diferencial unico da plataforma.",
+    slides: [
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "E se pudesses\npartilhar o que sentes\nsem ninguem\nsaber quem es?", body: "", footer: "" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Comunidade Ecos", body: "Um espaco onde as vozes\nse encontram.\n\nAnonimo.\nImpermanente.\nReal.", footer: "" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Ecos", body: "Reflexoes partilhadas\nanonimamente.\n\nNinguem sabe quem escreveu.\nTodos se reconhecem.", footer: "Expiram em 30 dias." },
+      { bg: "#ebe7df", text: "#3d3630", accent: "#7a8c6e", title: "Reconhecimentos", body: "Nao ha likes.\nHa \"reconheco-me\".\n\nUm toque silencioso\nque diz:\n\"Eu tambem.\"", footer: "" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Sussurros", body: "Mensagens de uma so via.\nMax 100 caracteres.\nExpiram em 7 dias.\n\nUm sussurro.\nNao uma conversa.", footer: "" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Sem nomes.\nSem fotos.\nSem historico.", body: "Tudo desaparece.\nComo as folhas\nnuma corrente.", footer: "" },
+      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Entra na comunidade.", body: "Incluida com qualquer\nacesso a plataforma.", footer: "seteveus.space" },
+    ],
+    caption: "E se pudesses partilhar o que sentes sem ninguem saber quem es?\n\nComunidade Ecos:\n\n~ Ecos: reflexoes anonimas (expiram em 30 dias)\n~ Reconhecimentos: nao ha likes, ha \"reconheco-me\"\n~ Sussurros: mensagens de uma so via (expiram em 7 dias)\n\nSem nomes. Sem fotos. Sem historico.\nTudo desaparece. Como as folhas numa corrente.\n\nIncluida com qualquer acesso a plataforma.\nseteveus.space\n\n#OsSeteVeus #ComunidadeEcos #Anonimato #ReflexaoColectiva #Autoconhecimento",
+    canvaSpecs: {
+      dimensions: "1080x1080px (quadrado)",
+      fonts: "Titulo: Playfair Display / Corpo: Inter",
+      colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#7a8c6e", "#ebe7df"],
+    },
+  },
+  {
+    id: "carousel-espelho-medo-coming",
+    title: "O Espelho do Medo — em breve (Marco 2026)",
+    description: "Teaser para o proximo lancamento. Gerar antecipacao e waitlist.",
+    slides: [
+      { bg: "#8b9b8e", text: "#f7f5f0", accent: "#ebe7df", title: "O segundo veu\nesta quase\na cair.", body: "", footer: "" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#8b9b8e", title: "Sabes o que queres.", body: "Mas o medo\ndecide antes de ti.\n\nSempre decidiu.", footer: "" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#8b9b8e", title: "O Espelho do Medo", body: "A historia de quem\nsabe o caminho\nmas nao da o passo.\n\nPorque o medo\ne mais rapido\nque a vontade.", footer: "Marco 2026" },
+      { bg: "#8b9b8e", text: "#f7f5f0", accent: "#ebe7df", title: "\"E se falhar?\"\n\"E se me arrepender?\"\n\"E se nao resultar?\"", body: "Reconheces estas vozes?", footer: "" },
+      { bg: "#3d3630", text: "#8b9b8e", accent: "#f7f5f0", title: "Marco 2026.", body: "Sai primeiro para\nquem ja esta dentro.\n\nEntra na lista de espera\ne recebe antes de todos.", footer: "seteveus.space" },
+    ],
+    caption: "O segundo veu esta quase a cair.\n\nO Espelho do Medo — Marco 2026.\n\nSabes o que queres. Mas o medo decide antes de ti. Sempre decidiu.\n\n\"E se falhar?\" \"E se me arrepender?\" \"E se nao resultar?\"\n\nReconheces estas vozes?\n\nSai primeiro para quem ja esta dentro da plataforma.\n\nseteveus.space\n\n#OsSeteVeus #EspelhoDoMedo #Marco2026 #ProximoLancamento #Autoconhecimento",
+    canvaSpecs: {
+      dimensions: "1080x1080px (quadrado)",
+      fonts: "Titulo: Playfair Display / Corpo: Inter",
+      colorPalette: ["#8b9b8e", "#3d3630", "#f7f5f0", "#ebe7df"],
+    },
+  },
+
+  // ─── CAMPANHA: EXPERIENCIA DIGITAL — PEDE O TEU CODIGO ──────────────────────
+
+  {
+    id: "carousel-pede-codigo",
+    title: "Compraste o livro? Pede o teu codigo digital",
+    description: "Campanha onboarding. Para quem tem o livro fisico e quer o acesso digital gratuito.",
+    slides: [
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Compraste\no livro fisico?", body: "", footer: "Os 7 Veus do Despertar" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Tens direito\nao acesso digital\ngratuito.", body: "Tudo o que o livro\nte deu no papel,\nagora vives no ecra.", footer: "" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", title: "Preenche o formulario.", body: "2 minutos.\nNome, email e\n(se quiseres)\numa foto do livro.", footer: "seteveus.space/pedir-codigo" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Recebes o codigo\nem ate 24h.", body: "No teu email.\nPessoal. Intransmissivel.", footer: "" },
+      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "O que ganhas:", body: "Leitura interactiva\nDiario reflexivo\nRespiracao guiada\nComunidade anonima\nChatbot de apoio 24/7", footer: "seteveus.space/pedir-codigo" },
+    ],
+    caption: "5 passos simples. Se ja tens o livro fisico, o acesso digital e teu por direito.\n\n1. Compraste o livro? Tens direito ao acesso digital gratuito.\n2. Preenche o formulario (2 minutos).\n3. Recebes o codigo em ate 24h.\n4. O que ganhas: leitura interactiva, diario reflexivo, comunidade.\n\nPede aqui: seteveus.space/pedir-codigo\n\n#OsSeteVeus #AcessoDigital #LivroFisico #PedeOTeuCodigo #Autoconhecimento",
+    canvaSpecs: {
+      dimensions: "1080x1080px (quadrado)",
+      fonts: "Titulo: Playfair Display / Corpo: Inter",
+      colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#7a8c6e", "#ebe7df"],
+    },
+  },
+  {
+    id: "carousel-do-papel-ao-digital",
+    title: "Do papel ao ecra — o que muda",
+    description: "Mostra as diferencas entre ter so o livro fisico e ter o acesso digital. Valor concreto.",
+    slides: [
+      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Do papel ao ecra.", body: "A mesma essencia.\nUma nova forma\nde viver os veus.", footer: "" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "So o livro fisico:", body: "Les.\nFechas.\nGuardas na estante.\n\nA experiencia fica\nno papel.", footer: "" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "Com o acesso digital:", body: "Les.\nRespiras.\nEscreves no diario.\nPartilhas na comunidade.\n\nA experiencia fica\nem ti.", footer: "" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Diario reflexivo", body: "Cada capitulo tem\num espaco para escreveres\no que sentiste.\n\nSo tu les.\nSo tu decides.", footer: "" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "Comunidade anonima", body: "Ecos: reflexoes partilhadas\nsem nome, sem foto.\n\nReconheces-te nas palavras\nde quem nunca viste.", footer: "" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Respiracao guiada", body: "Entre capitulos,\numa pausa.\n\nNao para descansar.\nPara sentir.", footer: "" },
+      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Gratuito para quem\nja tem o livro.", body: "Pede o teu codigo\nem 2 minutos.", footer: "seteveus.space/pedir-codigo" },
+    ],
+    caption: "Do papel ao ecra. A mesma essencia, uma nova forma de viver.\n\nSo o livro fisico: les, fechas, guardas.\nCom o acesso digital: les, respiras, escreves, partilhas.\n\n+ Diario reflexivo por capitulo\n+ Comunidade anonima (Ecos)\n+ Respiracao guiada entre capitulos\n+ Chatbot de apoio 24/7\n\nGratuito para quem ja tem o livro fisico.\nPede o teu codigo: seteveus.space/pedir-codigo\n\n#OsSeteVeus #DoPapelAoDigital #ExperienciaDigital #Autoconhecimento",
+    canvaSpecs: {
+      dimensions: "1080x1080px (quadrado)",
+      fonts: "Titulo: Playfair Display / Corpo: Inter",
+      colorPalette: ["#ebe7df", "#3d3630", "#f7f5f0", "#c9b896", "#7a8c6e"],
+    },
+  },
+  {
+    id: "carousel-experiencia-digital-completa",
+    title: "A experiencia digital por dentro",
+    description: "Tour visual: o que inclui o acesso digital. Cada slide mostra uma funcionalidade.",
+    slides: [
+      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "O que esta dentro\nda experiencia digital?", body: "", footer: "Os 7 Veus do Despertar" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Leitura interactiva", body: "O livro filosofico completo\ncom pausas integradas.\n\nNao e uma copia digital —\ne uma experiencia\ndiferente de ler.", footer: "" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", title: "Diario reflexivo", body: "Em cada capitulo,\num espaco para ti.\n\nEscreve o que sentes.\nGuarda o que descobres.\nSo tu tens acesso.", footer: "" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Respiracao guiada", body: "Entre capitulos,\no ecra escurece.\nUm convite a parar.\n\nInspira. Expira.\nSo depois avancas.", footer: "" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Comunidade Ecos", body: "Reflexoes anonimas.\nImpermanentes.\n\nNinguem sabe quem es.\nTodos se reconhecem.", footer: "" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "Chatbot de apoio", body: "Duvidas sobre os veus?\nSobre a plataforma?\nSobre ti?\n\nUma voz disponivel\n24 horas por dia.", footer: "" },
+      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Recursos gratuitos", body: "Teste: Qual veu te esconde?\nDiario de 7 dias\nChecklist do despertar\nMini-guia\nWallpapers", footer: "" },
+      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Tudo isto e teu.", body: "Se ja tens o livro fisico:\ngratuito.\n\nSe queres comecar agora:\nseteveus.space", footer: "seteveus.space/pedir-codigo" },
+    ],
+    caption: "O que esta dentro da experiencia digital Os 7 Veus do Despertar?\n\n1. Leitura interactiva (nao e uma copia — e outra forma de viver o livro)\n2. Diario reflexivo por capitulo (so tu les)\n3. Respiracao guiada entre capitulos\n4. Comunidade anonima (Ecos)\n5. Chatbot de apoio 24/7\n6. Recursos gratuitos (teste, diario, checklist, mini-guia, wallpapers)\n\nTens o livro fisico? O acesso e gratuito.\nPede o teu codigo: seteveus.space/pedir-codigo\n\n#OsSeteVeus #ExperienciaDigital #Autoconhecimento #LeituraTransformadora",
+    canvaSpecs: {
+      dimensions: "1080x1080px (quadrado)",
+      fonts: "Titulo: Playfair Display / Corpo: Inter",
+      colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#7a8c6e", "#ebe7df"],
+    },
+  },
+  {
+    id: "carousel-3-razoes-digital",
+    title: "3 razoes para activar o acesso digital",
+    description: "Carrossel curto e directo. 3 razoes concretas para pedir o codigo.",
+    slides: [
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "3 razoes para\nactivar o teu\nacesso digital.", body: "", footer: "" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "1. O diario\nmuda tudo.", body: "Ler sem escrever\ne como olhar\npara um espelho\nde olhos fechados.", footer: "" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", title: "2. Nao estas\nsozinha.", body: "Na comunidade Ecos,\noutras mulheres\nestao a atravessar\nos mesmos veus.\n\nAnonimamente.", footer: "" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "3. Ha mais\npor descobrir.", body: "Os Espelhos e os Nos\nsao historias exclusivas\nda plataforma.\n\nO livro fisico e a porta.\nO digital e o caminho.", footer: "" },
+      { bg: "#c9b896", text: "#3d3630", accent: "#f7f5f0", title: "Ja tens o livro?\nO acesso e gratuito.", body: "2 minutos.\nUm formulario.\nUm codigo.", footer: "seteveus.space/pedir-codigo" },
+    ],
+    caption: "3 razoes para activar o teu acesso digital:\n\n1. O diario reflexivo muda a forma como les — ler sem escrever e como olhar para um espelho de olhos fechados.\n\n2. Na comunidade Ecos, nao estas sozinha — outras mulheres estao a atravessar os mesmos veus, anonimamente.\n\n3. Ha mais por descobrir — os Espelhos e os Nos sao historias exclusivas da plataforma.\n\nJa tens o livro? O acesso e gratuito.\nseteveus.space/pedir-codigo\n\n#OsSeteVeus #AcessoDigital #ExperienciaDigital #Autoconhecimento",
+    canvaSpecs: {
+      dimensions: "1080x1080px (quadrado)",
+      fonts: "Titulo: Playfair Display / Corpo: Inter",
+      colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#7a8c6e"],
+    },
+  },
+  {
+    id: "carousel-tom-intimo",
+    title: "Uma coisa que talvez nao saibas",
+    description: "Tom pessoal, como se fosse uma conversa intima. Para WhatsApp status ou Instagram story.",
+    slides: [
+      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "Uma coisa que talvez\nnao saibas.", body: "", footer: "" },
+      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "O livro que tens\nna estante...", body: "...tem uma extensao\ndigital.", footer: "" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Nao e uma copia.", body: "E uma experiencia\ndiferente.\n\nPodes escrever reflexoes\na medida que les.\nGuardar pensamentos\npor capitulo.", footer: "" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "E participar\nnuma comunidade\nanonima", body: "de leitoras que tambem\nestao a atravessar\nos veus.", footer: "" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "E gratuito.\nE pessoal.\nE teu.", body: "", footer: "seteveus.space/pedir-codigo" },
+    ],
+    caption: "Uma coisa que talvez nao saibas:\n\nO livro fisico \"Os 7 Veus do Despertar\" tem uma extensao digital.\n\nNao e uma copia — e uma experiencia diferente. Podes escrever reflexoes a medida que les, guardar pensamentos por capitulo, e participar numa comunidade anonima de leitoras.\n\nE gratuito. E pessoal. E teu.\n\nseteveus.space/pedir-codigo\n\n#OsSeteVeus #ExperienciaDigital #Autoconhecimento",
+    canvaSpecs: {
+      dimensions: "1080x1080px (quadrado)",
+      fonts: "Titulo: Playfair Display Italic / Corpo: Inter Light",
+      colorPalette: ["#3d3630", "#ebe7df", "#f7f5f0", "#c9b896"],
+    },
+  },
 ];
 
 // ─── SCRIPTS DE REELS ────────────────────────────────────────────────────────
@@ -1506,6 +1832,80 @@ export const reelScripts: ReelScript[] = [
     music: "Inspiracional mas contida. No CapCut: 'Inspiring Minimal' ou 'Hope'",
     duration: "25-30s",
   },
+  {
+    hook: "Isto nao e um livro. E um espelho.",
+    scenes: [
+      "CENA 1 (0-3s): Ecra escuro. Texto aparece devagar: \"Isto nao e um livro.\" [pausa]",
+      "CENA 2 (3-5s): \"E um espelho.\" [impacto visual — flash suave]",
+      "CENA 3 (5-10s): Screenshots rapidos da plataforma: leitor, diario, checklist, comunidade. Texto: \"Les. Respiras. Escreves. Sentes.\"",
+      "CENA 4 (10-18s): \"7 historias. 7 veus. Cada um esconde algo que ja sabes mas nunca disseste.\"",
+      "CENA 5 (18-22s): Print do quiz com texto: \"3 minutos. 7 perguntas. Qual veu te esconde?\"",
+      "CENA 6 (22-28s): \"Teste gratuito. Link na bio.\" [fundo escuro, dourado]",
+    ],
+    cta: "Teste gratuito na bio.",
+    music: "Ambiente cinematografico suave. No CapCut: 'Cinematic Soft' ou 'Atmospheric Piano'",
+    duration: "25-28s",
+  },
+  {
+    hook: "5 coisas que esta plataforma tem que nenhum livro te da.",
+    scenes: [
+      "CENA 1 (0-3s): \"5 coisas que esta plataforma tem que nenhum livro te da.\" [texto directo, fundo escuro]",
+      "CENA 2 (3-8s): \"1. Pausas de respiracao entre capitulos.\" [screenshot da pausa]",
+      "CENA 3 (8-13s): \"2. Um diario pessoal que so tu les.\" [screenshot do diario]",
+      "CENA 4 (13-18s): \"3. Uma comunidade anonima onde ninguem te conhece mas todos se reconhecem.\" [screenshot Ecos]",
+      "CENA 5 (18-23s): \"4. Historias que se desbloqueiam ao teu ritmo.\" [screenshot do leitor]",
+      "CENA 6 (23-28s): \"5. Um chatbot de apoio com a voz da autora.\" [screenshot do chat]",
+      "CENA 7 (28-33s): \"$29 USD. Acesso vitalicio. Link na bio.\" [CTA]",
+    ],
+    cta: "Link na bio. $29 USD. Acesso vitalicio.",
+    music: "Ritmo suave e moderno. No CapCut: 'Soft Pop' ou 'Modern Minimal'",
+    duration: "30-33s",
+  },
+  {
+    hook: "Se leste isto ate ao fim, este livro e para ti.",
+    scenes: [
+      "CENA 1 (0-3s): Ecra preto. Texto: \"Se leste isto ate ao fim...\" [suspense]",
+      "CENA 2 (3-5s): \"...este livro e para ti.\" [transicao suave]",
+      "CENA 3 (5-12s): Citacao do livro em texto: \"Via, mas nao sentia. Registava, mas nao participava. Como quem assiste a um espectaculo por tras de uma janela fechada.\"",
+      "CENA 4 (12-18s): \"Reconheces-te?\" [pausa longa] \"Entao nao es a unica.\"",
+      "CENA 5 (18-25s): \"O Espelho da Ilusao. Uma historia sobre despertar do automatico.\"",
+      "CENA 6 (25-30s): \"Disponivel agora. Link na bio.\" [imagem do espelho]",
+    ],
+    cta: "Link na bio. Disponivel agora.",
+    music: "Muito calma, quase silenciosa. No CapCut: 'Ambient Silence' ou 'Slow Piano'",
+    duration: "25-30s",
+  },
+
+  // ─── REELS: CAMPANHA EXPERIENCIA DIGITAL ──────────────────────────────────
+
+  {
+    hook: "Tens este livro na estante? Ha algo que nao sabes sobre ele.",
+    scenes: [
+      "CENA 1 (0-3s): Mostrar foto do livro fisico. Texto: \"Tens este livro?\" [curiosidade]",
+      "CENA 2 (3-6s): \"Ha algo que nao sabes sobre ele.\" [pausa dramatica]",
+      "CENA 3 (6-12s): \"O livro fisico tem uma extensao digital. Nao e uma copia — e uma experiencia diferente.\"",
+      "CENA 4 (12-18s): Screenshots rapidos da plataforma: diario, comunidade, respiracao. Texto: \"Diario reflexivo. Comunidade anonima. Respiracao guiada.\"",
+      "CENA 5 (18-24s): \"E se ja compraste o livro, o acesso e gratuito.\"",
+      "CENA 6 (24-30s): \"Pede o teu codigo em 2 minutos. Link na bio.\" [CTA]",
+    ],
+    cta: "Pede o teu codigo gratuito. Link na bio.",
+    music: "Suave e convidativa. No CapCut: 'Warm Acoustic' ou 'Gentle Inspiration'",
+    duration: "25-30s",
+  },
+  {
+    hook: "Ler sem escrever e como olhar para um espelho de olhos fechados.",
+    scenes: [
+      "CENA 1 (0-3s): Texto sobre ecra escuro: \"Ler sem escrever...\" [suspense]",
+      "CENA 2 (3-5s): \"...e como olhar para um espelho de olhos fechados.\" [impacto]",
+      "CENA 3 (5-12s): Screenshot do diario reflexivo na plataforma. Texto: \"Na experiencia digital, cada capitulo tem um espaco para escreveres o que sentiste.\"",
+      "CENA 4 (12-18s): \"So tu les. So tu decides o que guardas.\"",
+      "CENA 5 (18-24s): Screenshot da comunidade Ecos. \"E na comunidade, descobres que nao estas sozinha.\"",
+      "CENA 6 (24-30s): \"Se ja tens o livro fisico, o acesso digital e gratuito. Link na bio.\" [CTA]",
+    ],
+    cta: "Acesso digital gratuito para quem tem o livro. Link na bio.",
+    music: "Piano suave e contemplativo. No CapCut: 'Reflective Piano' ou 'Contemplative'",
+    duration: "25-30s",
+  },
 ];
 
 // ─── GUIA DE PRODUCAO ────────────────────────────────────────────────────────
@@ -1522,7 +1922,7 @@ export const productionGuide: ProductionGuide[] = [
       { title: "Post Feed (quadrado)", detail: "1080 x 1080px — para carrosseis e posts estaticos" },
       { title: "Story / Status WhatsApp", detail: "1080 x 1920px (9:16) — para stories e status" },
       { title: "Reel / Cover", detail: "1080 x 1920px (9:16) — capa do reel: 1080x1080 recomendado" },
-      { title: "Carrossel", detail: "1080 x 1080px cada slide, maximo 10 slides por publicacao" },
+      { title: "Carrossel", detail: "1080 x 1080px cada slide, maximo 10 slides. Gerados directamente no /painel/marketing — descarrega todos os slides de uma vez." },
     ],
   },
   {
@@ -1538,19 +1938,19 @@ export const productionGuide: ProductionGuide[] = [
     ],
   },
   {
-    category: "Tipografia (Canva)",
+    category: "Tipografia",
     items: [
-      { title: "Titulos / Citacoes", detail: "Playfair Display — serif, elegante, literario" },
-      { title: "Corpo de texto", detail: "Inter ou Lato — sans-serif, limpo, legivel" },
+      { title: "Titulos / Citacoes", detail: "Playfair Display — serif, elegante, literario. Usada automaticamente nos carrosseis gerados." },
+      { title: "Corpo de texto", detail: "Inter ou system font — sans-serif, limpo, legivel" },
       { title: "Tamanho titulos", detail: "48-72pt em 1080x1080 — deve ser legivel no telemovel" },
-      { title: "Tamanho corpo", detail: "24-32pt em 1080x1080" },
+      { title: "Tamanho corpo", detail: "22-32pt em 1080x1080" },
       { title: "Espaco entre linhas", detail: "1.4-1.6 — generoso, para respirar" },
     ],
   },
   {
     category: "Ferramentas Recomendadas (Custo Zero)",
     items: [
-      { title: "Canva Free", detail: "Para todos os visuais estaticos: posts, carrosseis, stories. Usar templates e adaptar com as cores acima." },
+      { title: "Gerador integrado (seteveus.space)", detail: "Carrosseis e imagens para redes sociais gerados directamente na plataforma em /painel/marketing. Descarrega PNG pronto para publicar — sem Canva." },
       { title: "CapCut Free", detail: "Para Reels e videos. Templates prontos, legendas automaticas em Portugues, transicoes suaves." },
       { title: "Meta Business Suite", detail: "Para agendar posts no Instagram e Facebook. Gratuito. Mostra melhores horarios para publicar." },
       { title: "WhatsApp Business", detail: "Para Status diarios, broadcasts segmentados e catalogo dos livros. Gratuito." },
