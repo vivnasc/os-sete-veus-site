@@ -77,10 +77,10 @@ export default function Header() {
                 Codigos
               </Link>
               <Link
-                href="/painel"
+                href="/painel/marketing"
                 className="rounded-md border border-gold/40 bg-gold/10 px-3 py-1.5 font-sans text-[0.65rem] uppercase tracking-[0.12em] text-gold-dark transition-colors hover:bg-gold/20"
               >
-                Marketing
+                Conteudo
               </Link>
             </>
           )}
@@ -150,11 +150,11 @@ export default function Header() {
                   Codigos
                 </Link>
                 <Link
-                  href="/painel"
+                  href="/painel/marketing"
                   onClick={() => setIsOpen(false)}
                   className="rounded-md border border-gold/40 bg-gold/10 px-5 py-3 text-center font-sans text-sm uppercase tracking-[0.1em] text-gold-dark transition-colors hover:bg-gold/20"
                 >
-                  Marketing
+                  Conteudo
                 </Link>
               </>
             )}

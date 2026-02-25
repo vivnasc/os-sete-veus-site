@@ -162,13 +162,21 @@ export default function MembroDashboard() {
       <div className="mx-auto max-w-3xl">
         {/* Admin bar */}
         {isAdmin && (
-          <Link
-            href="/admin"
-            className="mb-6 flex items-center justify-between rounded-lg bg-sage/10 px-5 py-3 text-sm text-sage transition-colors hover:bg-sage/20"
-          >
-            <span>Estas a ver como membro</span>
-            <span className="font-medium">Ir para Painel Autora &rarr;</span>
-          </Link>
+          <div className="mb-6 flex gap-2">
+            <Link
+              href="/admin"
+              className="flex flex-1 items-center justify-between rounded-lg bg-sage/10 px-4 py-3 text-sm text-sage transition-colors hover:bg-sage/20"
+            >
+              <span>Painel Autora</span>
+              <span className="font-medium">&rarr;</span>
+            </Link>
+            <Link
+              href="/painel/marketing"
+              className="flex items-center gap-2 rounded-lg bg-gold/10 px-4 py-3 text-sm text-gold-dark transition-colors hover:bg-gold/20"
+            >
+              <span className="font-medium">Conteudo Pronto</span>
+            </Link>
+          </div>
         )}
 
         {/* Welcome */}
