@@ -45,21 +45,12 @@ export const metadata: Metadata = {
     siteName: "Sete Ecos",
     locale: "pt_PT",
     type: "website",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Sete Ecos — Plataforma de Autoconhecimento com Leitura Integrada",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Sete Ecos — Plataforma de Autoconhecimento",
     description:
       "Leitura integrada, diário de reflexão, práticas guiadas e recursos gratuitos. Mais do que livros — um ecossistema de regresso a ti.",
-    images: ["/og-image.png"],
   },
 };
 
