@@ -4,7 +4,6 @@ import { useState, useRef, useCallback, useMemo } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { toPng } from "html-to-image";
 import { professionalCarousels } from "@/data/content-calendar-weeks";
 import type { CarouselSlide } from "@/data/content-calendar-weeks";
 
@@ -24,43 +23,43 @@ type DayContent = {
 const CAMPAIGN_START = new Date(2026, 1, 25);
 
 const DAILY_PLAN: DayContent[] = [
-  // Semana 1 — Pede o teu codigo
-  { carouselId: "carousel-pede-codigo", hook: "Compraste o livro? Pede o teu codigo digital gratuito.", storyBg: "/prints/7veuspedircod-portrait.png", whatsapp: `Ja tens o livro fisico "Os 7 Veus do Despertar"?\n\nAgora existe uma experiencia digital que complementa a tua leitura — com diario reflexivo, comunidade anonima e conteudo exclusivo.\n\nE o melhor: se ja compraste o livro, o acesso e gratuito.\n\nPede o teu codigo aqui: https://seteveus.space/pedir-codigo\n\nDemora menos de 2 minutos. Recebes o codigo em ate 24h.\n\n— Vivianne` },
-  { carouselId: "carousel-funil-livro-fisico", hook: "Tens o livro fisico? Descobre o que mais te espera.", storyBg: "/prints/7veus-3niveis-portrait.png" },
-  { carouselId: "carousel-do-papel-ao-digital", hook: "Do papel ao ecra. A mesma essencia, uma nova forma.", storyBg: "/prints/7veus- incio-portrait.png", whatsapp: `Uma coisa que talvez nao saibas:\n\nO livro fisico "Os 7 Veus do Despertar" tem uma extensao digital.\n\nNao e uma copia — e uma experiencia diferente. Podes escrever reflexoes a medida que les, guardar pensamentos por capitulo, e participar numa comunidade anonima de leitoras.\n\nSe tens o livro, pede o teu codigo: https://seteveus.space/pedir-codigo\n\nE gratuito. E pessoal. E teu.\n\n— Vivianne` },
-  { carouselId: "carousel-3-razoes-digital", hook: "3 razoes para activar o teu acesso digital.", storyBg: "/prints/7veus-darkmode-portrait.png" },
-  { carouselId: "carousel-tom-intimo", hook: "Uma coisa que talvez nao saibas sobre o teu livro.", storyBg: "/prints/7veus-introdeveu-portrait.png", whatsapp: `Antes do fim de semana:\n\nSe compraste "Os 7 Veus do Despertar" e ainda nao pediste o teu codigo digital — este e o momento.\n\nSo precisas de nome, email e (se quiseres) uma foto do livro.\n\nhttps://seteveus.space/pedir-codigo\n\nBom fim de semana. Que o silencio te encontre.\n\n— Vivianne` },
+  // Semana 1 — Pede o teu código
+  { carouselId: "carousel-pede-codigo", hook: "Compraste o livro? Pede o teu código digital gratuito.", storyBg: "/prints/7veuspedircod-portrait.png", whatsapp: `Já tens o livro físico "Os 7 Véus do Despertar"?\n\nAgora existe uma experiência digital que complementa a tua leitura — com diário reflexivo, comunidade anónima e conteúdo exclusivo.\n\nE o melhor: se já compraste o livro, o acesso é gratuito.\n\nPede o teu código aqui: https://seteveus.space/pedir-codigo\n\nDemora menos de 2 minutos. Recebes o código em até 24h.\n\n— Vivianne` },
+  { carouselId: "carousel-funil-livro-fisico", hook: "Tens o livro físico? Descobre o que mais te espera.", storyBg: "/prints/7veus-3niveis-portrait.png" },
+  { carouselId: "carousel-do-papel-ao-digital", hook: "Do papel ao ecrã. A mesma essência, uma nova forma.", storyBg: "/prints/7veus- incio-portrait.png", whatsapp: `Uma coisa que talvez não saibas:\n\nO livro físico "Os 7 Véus do Despertar" tem uma extensão digital.\n\nNão é uma cópia — é uma experiência diferente. Podes escrever reflexões à medida que lês, guardar pensamentos por capítulo, e participar numa comunidade anónima de leitoras.\n\nSe tens o livro, pede o teu código: https://seteveus.space/pedir-codigo\n\nÉ gratuito. É pessoal. É teu.\n\n— Vivianne` },
+  { carouselId: "carousel-3-razoes-digital", hook: "3 razões para activar o teu acesso digital.", storyBg: "/prints/7veus-darkmode-portrait.png" },
+  { carouselId: "carousel-tom-intimo", hook: "Uma coisa que talvez não saibas sobre o teu livro.", storyBg: "/prints/7veus-introdeveu-portrait.png", whatsapp: `Antes do fim de semana:\n\nSe compraste "Os 7 Véus do Despertar" e ainda não pediste o teu código digital — este é o momento.\n\nSó precisas de nome, email e (se quiseres) uma foto do livro.\n\nhttps://seteveus.space/pedir-codigo\n\nBom fim de semana. Que o silêncio te encontre.\n\n— Vivianne` },
   { hook: "Descanso. Responder mensagens." },
   { hook: "Descanso." },
-  // Semana 2 — O que sao Os Sete Veus
-  { carouselId: "carousel-o-que-e", hook: "Ja sentiste que a vida que tens nao foi a que escolheste?", storyBg: "/prints/7veus- incio-portrait.png", whatsapp: `Conheces Os 7 Veus do Despertar?\n\nFiz um teste gratuito — 3 minutos, 7 perguntas — que te mostra qual dos 7 veus mais te influencia neste momento.\n\nNao da respostas. Da perguntas.\n\nhttps://seteveus.space/recursos/teste\n\nSe quiseres saber mais: https://seteveus.space\n\n— Vivianne` },
-  { carouselId: "carousel-7-veus-resumo", hook: "Os 7 veus que te escondem de ti mesma.", storyBg: "/prints/7veus-dessolucao-portrait.png" },
-  { carouselId: "carousel-como-funciona", hook: "Como funciona a experiencia digital. 3 passos.", storyBg: "/prints/7veus-3niveis-portrait.png" },
-  { carouselId: "carousel-experiencia-vs-livro", hook: "Isto nao e um livro. E uma experiencia.", storyBg: "/prints/7veus-darkmode-portrait.png" },
-  { carouselId: "carousel-experiencia-digital-completa", hook: "O que esta dentro da experiencia digital?", storyBg: "/prints/dashboard-membro.jpeg", whatsapp: `Para quem ja leu ou esta a ler Os 7 Veus do Despertar:\n\nSabias que agora podes continuar a experiencia no digital? Existe um diario reflexivo por capitulo, uma comunidade anonima de leitoras, e recursos exclusivos.\n\nSe compraste o livro, o acesso e gratuito:\nhttps://seteveus.space/pedir-codigo\n\nSe queres comecar a experiencia digital:\nhttps://seteveus.space/comprar/espelhos\n\n— Vivianne` },
+  // Semana 2 — O que são Os Sete Véus
+  { carouselId: "carousel-o-que-e", hook: "Já sentiste que a vida que tens não foi a que escolheste?", storyBg: "/prints/7veus- incio-portrait.png", whatsapp: `Conheces Os 7 Véus do Despertar?\n\nFiz um teste gratuito — 3 minutos, 7 perguntas — que te mostra qual dos 7 véus mais te influencia neste momento.\n\nNão dá respostas. Dá perguntas.\n\nhttps://seteveus.space/recursos/teste\n\nSe quiseres saber mais: https://seteveus.space\n\n— Vivianne` },
+  { carouselId: "carousel-7-veus-resumo", hook: "Os 7 véus que te escondem de ti mesma.", storyBg: "/prints/7veus-dessolucao-portrait.png" },
+  { carouselId: "carousel-como-funciona", hook: "Como funciona a experiência digital. 3 passos.", storyBg: "/prints/7veus-3niveis-portrait.png" },
+  { carouselId: "carousel-experiencia-vs-livro", hook: "Isto não é um livro. É uma experiência.", storyBg: "/prints/7veus-darkmode-portrait.png" },
+  { carouselId: "carousel-experiencia-digital-completa", hook: "O que está dentro da experiência digital?", storyBg: "/prints/dashboard-membro.jpeg", whatsapp: `Para quem já leu ou está a ler Os 7 Véus do Despertar:\n\nSabias que agora podes continuar a experiência no digital? Existe um diário reflexivo por capítulo, uma comunidade anónima de leitoras, e recursos exclusivos.\n\nSe compraste o livro, o acesso é gratuito:\nhttps://seteveus.space/pedir-codigo\n\nSe queres começar a experiência digital:\nhttps://seteveus.space/comprar/espelhos\n\n— Vivianne` },
   { hook: "Descanso." },
   { hook: "Descanso." },
-  // Semana 3 — Espelho da Ilusao + testemunhos
-  { carouselId: "carousel-espelho-ilusao", hook: "5 frases que mudam a forma como te ves.", storyBg: "/prints/leitura-capitulo.jpeg", whatsapp: `Uma novidade:\n\nO Espelho do Medo esta quase pronto. E o segundo veu — e prometo que vai tocar em coisas que reconheces.\n\nSe ja tens o livro fisico e ainda nao pediste o acesso digital, este e o momento ideal. Vais poder acompanhar o lancamento de perto.\n\nhttps://seteveus.space/pedir-codigo\n\n— Vivianne` },
+  // Semana 3 — Espelho da Ilusão + testemunhos
+  { carouselId: "carousel-espelho-ilusao", hook: "5 frases que mudam a forma como te vês.", storyBg: "/prints/leitura-capitulo.jpeg", whatsapp: `Uma novidade:\n\nO Espelho do Medo está quase pronto. É o segundo véu — e prometo que vai tocar em coisas que reconheces.\n\nSe já tens o livro físico e ainda não pediste o acesso digital, este é o momento ideal. Vais poder acompanhar o lançamento de perto.\n\nhttps://seteveus.space/pedir-codigo\n\n— Vivianne` },
   { carouselId: "carousel-testemunhos", hook: "O que dizem as leitoras.", storyBg: "/prints/comunidade-reflexoes-leitoras.jpeg" },
-  { carouselId: "carousel-mae-filha", hook: "Ha coisas que uma mae nunca diz.", storyBg: "/prints/7veus-introdeveu-portrait.png" },
-  { carouselId: "carousel-pede-codigo", hook: "Lembrete: pede o teu codigo digital gratuito.", storyBg: "/prints/7veuspedircod-portrait.png", whatsapp: `Obrigada pelo interesse!\n\nPara pedir o teu codigo de acesso digital gratuito, e so preencher este formulario:\n\nhttps://seteveus.space/pedir-codigo\n\nDemora menos de 2 minutos. Recebes o codigo no teu email em ate 24h.\n\nQualquer duvida, diz-me.\n\n— Vivianne` },
+  { carouselId: "carousel-mae-filha", hook: "Há coisas que uma mãe nunca diz.", storyBg: "/prints/7veus-introdeveu-portrait.png" },
+  { carouselId: "carousel-pede-codigo", hook: "Lembrete: pede o teu código digital gratuito.", storyBg: "/prints/7veuspedircod-portrait.png", whatsapp: `Obrigada pelo interesse!\n\nPara pedir o teu código de acesso digital gratuito, é só preencher este formulário:\n\nhttps://seteveus.space/pedir-codigo\n\nDemora menos de 2 minutos. Recebes o código no teu email em até 24h.\n\nQualquer dúvida, diz-me.\n\n— Vivianne` },
   { hook: "Descanso." },
   { hook: "Descanso." },
   { hook: "Descanso." },
-  // Semana 4 — Recursos + comunidade + lancamento Espelho do Medo
-  { carouselId: "carousel-recursos-gratis", hook: "5 recursos gratuitos para comecar a tua jornada.", storyBg: "/prints/quiz-qual-veu.jpeg" },
+  // Semana 4 — Recursos + comunidade + lançamento Espelho do Medo
+  { carouselId: "carousel-recursos-gratis", hook: "5 recursos gratuitos para começar a tua jornada.", storyBg: "/prints/quiz-qual-veu.jpeg" },
   { carouselId: "carousel-comunidade-ecos", hook: "Comunidade Ecos — onde as vozes se encontram.", storyBg: "/prints/comunidade-ecos-tabs.jpeg" },
-  { carouselId: "carousel-espelho-medo-coming", hook: "Espelho do Medo — em breve.", storyBg: "/images/espelho-medo.png", whatsapp: `Uma novidade:\n\nO Espelho do Medo esta quase pronto. E o segundo veu — sobre tudo o que nao fazes por medo.\n\nSe ja tens o livro fisico e ainda nao pediste o acesso digital, este e o momento. Vais receber notificacao quando lancar.\n\nhttps://seteveus.space/pedir-codigo\n\n— Vivianne` },
-  { carouselId: "carousel-funil-livro-fisico", hook: "Tens o livro? O teu livro abre portas que ainda nao conheces.", storyBg: "/prints/7veus-3niveis-portrait.png" },
+  { carouselId: "carousel-espelho-medo-coming", hook: "Espelho do Medo — em breve.", storyBg: "/images/espelho-medo.png", whatsapp: `Uma novidade:\n\nO Espelho do Medo está quase pronto. É o segundo véu — sobre tudo o que não fazes por medo.\n\nSe já tens o livro físico e ainda não pediste o acesso digital, este é o momento. Vais receber notificação quando lançar.\n\nhttps://seteveus.space/pedir-codigo\n\n— Vivianne` },
+  { carouselId: "carousel-funil-livro-fisico", hook: "Tens o livro? O teu livro abre portas que ainda não conheces.", storyBg: "/prints/7veus-3niveis-portrait.png" },
   { carouselId: "carousel-experiencia-digital-completa", hook: "Tour completo: o que inclui o acesso digital.", storyBg: "/prints/experiencia-funcionalidades.jpeg" },
   { hook: "Descanso." },
   { hook: "Descanso." },
 ];
 
-const DAY_NAMES_SHORT = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"];
-const DAY_NAMES_FULL = ["Domingo", "Segunda-feira", "Terca-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sabado"];
-const MONTH_NAMES = ["Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+const DAY_NAMES_SHORT = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+const DAY_NAMES_FULL = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
+const MONTH_NAMES = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 
 function getDayIndex(date: Date): number {
   return Math.floor((date.getTime() - CAMPAIGN_START.getTime()) / (1000 * 60 * 60 * 24));
@@ -203,7 +202,7 @@ function StoryMockupPreview({ bgImage, title, scale }: { bgImage: string; title:
       <div style={{ position: "absolute", top: 80, left: 0, right: 0, textAlign: "center", padding: "0 60px" }}>
         <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 18, fontWeight: 600,
           letterSpacing: "0.12em", textTransform: "uppercase", color: "#c9b896", margin: 0 }}>
-          Os Sete Veus
+          Os Sete Véus
         </p>
       </div>
       {/* CTA at bottom */}
@@ -271,9 +270,11 @@ export default function MarketingPage() {
   const exportAll = useCallback(async () => {
     if (!carousel) return;
     setExporting(true);
+    const { toPng } = await import("html-to-image");
     for (let i = 0; i < carousel.slides.length; i++) {
-      const el = slideRefs.current[i];
-      if (!el) continue;
+      const wrapper = slideRefs.current[i];
+      if (!wrapper) continue;
+      const el = (wrapper.firstElementChild as HTMLElement) || wrapper;
       const orig = { t: el.style.transform, w: el.style.width, h: el.style.height };
       el.style.transform = "none";
       el.style.width = `${DIMS.w}px`;
@@ -293,16 +294,18 @@ export default function MarketingPage() {
     setExporting(false);
   }, [carousel]);
 
-  async function exportStory(ref: React.RefObject<HTMLDivElement | null>, name: string) {
-    const el = ref.current;
-    if (!el) return;
+  async function exportStory(ref: React.RefObject<HTMLDivElement | null>, name: string, dims = STORY_DIMS) {
+    const wrapper = ref.current;
+    if (!wrapper) return;
+    const el = (wrapper.firstElementChild as HTMLElement) || wrapper;
     setExportingStory(name);
     const orig = { t: el.style.transform, w: el.style.width, h: el.style.height };
     el.style.transform = "none";
-    el.style.width = `${STORY_DIMS.w}px`;
-    el.style.height = `${STORY_DIMS.h}px`;
+    el.style.width = `${dims.w}px`;
+    el.style.height = `${dims.h}px`;
     try {
-      const dataUrl = await toPng(el, { width: STORY_DIMS.w, height: STORY_DIMS.h, pixelRatio: 1, cacheBust: true });
+      const { toPng } = await import("html-to-image");
+      const dataUrl = await toPng(el, { width: dims.w, height: dims.h, pixelRatio: 1, cacheBust: true });
       const a = document.createElement("a");
       a.download = `story-${name}.png`;
       a.href = dataUrl;
@@ -347,14 +350,15 @@ export default function MarketingPage() {
   return (
     <div className="min-h-screen bg-cream">
       {/* Header */}
-      <div className="border-b border-brown-100 bg-white px-4 py-3">
+      <div className="border-b border-[#c9b896]/20 bg-gradient-to-r from-brown-900 to-brown-800 px-4 py-4">
         <div className="mx-auto flex max-w-lg items-center justify-between">
-          <Link href="/admin" className="font-sans text-sm text-brown-400 hover:text-brown-700">
+          <Link href="/admin" className="font-sans text-xs text-[#c9b896]/70 hover:text-[#c9b896]">
             &larr; Painel
           </Link>
+          <p className="font-serif text-sm font-medium tracking-wide text-cream">Conteúdo Pronto</p>
           <Link href="/painel/marketing/gerador"
-            className="rounded-lg bg-sage px-3 py-1.5 font-sans text-xs font-medium text-white hover:bg-sage-dark">
-            Criar imagem
+            className="rounded-lg bg-[#c9b896] px-3 py-1.5 font-sans text-[0.65rem] font-semibold uppercase tracking-wider text-brown-900 hover:bg-[#b8a785]">
+            Criar Imagem
           </Link>
         </div>
       </div>
@@ -362,14 +366,14 @@ export default function MarketingPage() {
       <div className="mx-auto max-w-lg px-4 pb-8">
         {/* Date header */}
         <div className="py-5">
-          <p className="font-sans text-[0.6rem] font-semibold uppercase tracking-[0.15em] text-brown-400">
-            {DAY_NAMES_FULL[selectedDate.getDay()]}, {selectedDate.getDate()} de {MONTH_NAMES[selectedDate.getMonth()]}
-          </p>
-          <div className="mt-1 flex items-center gap-2">
-            <span className="rounded-full bg-brown-900 px-2 py-0.5 font-sans text-[0.5rem] font-medium text-cream">
-              Os Sete Veus
+          <div className="flex items-center gap-2">
+            <span className="rounded-full bg-gradient-to-r from-[#c9b896] to-[#b8a785] px-3 py-1 font-serif text-[0.6rem] font-medium tracking-wide text-brown-900">
+              Os Sete Véus
             </span>
           </div>
+          <p className="mt-2 font-serif text-lg text-brown-900">
+            {DAY_NAMES_FULL[selectedDate.getDay()]}, {selectedDate.getDate()} de {MONTH_NAMES[selectedDate.getMonth()]}
+          </p>
         </div>
 
         {/* Week calendar */}
@@ -415,18 +419,18 @@ export default function MarketingPage() {
           {dayContent && carousel ? (
             <>
               {/* Hook */}
-              <div className="mb-4">
-                <p className="font-sans text-[0.6rem] font-semibold uppercase tracking-[0.12em] text-sage">
-                  Os Sete Veus — Post do dia
+              <div className="mb-5 rounded-2xl bg-gradient-to-r from-[#c9b896]/10 to-transparent p-4">
+                <p className="font-sans text-[0.6rem] font-semibold uppercase tracking-[0.15em] text-[#c9b896]">
+                  Post do Dia
                 </p>
-                <h2 className="mt-1 font-serif text-lg text-brown-900">{dayContent.hook}</h2>
+                <h2 className="mt-2 font-serif text-xl leading-snug text-brown-900">{dayContent.hook}</h2>
               </div>
 
               {/* ── Post image (1:1) ── */}
               <div className="rounded-2xl border border-brown-100 bg-white p-4">
                 <div className="mb-3 flex items-center justify-between">
-                  <p className="font-sans text-[0.6rem] font-medium text-brown-400">
-                    Imagem pronta — descarrega e publica
+                  <p className="font-sans text-[0.65rem] font-semibold uppercase tracking-wider text-[#c9b896]">
+                    Imagem Pronta
                   </p>
                   <span className="rounded bg-brown-100 px-2 py-0.5 font-sans text-[0.55rem] font-semibold text-brown-500">
                     1:1
@@ -467,8 +471,8 @@ export default function MarketingPage() {
               <div className="mt-4 rounded-2xl border border-brown-100 bg-white p-4">
                 <div className="mb-3 flex items-center justify-between">
                   <div>
-                    <p className="font-sans text-[0.6rem] font-medium text-brown-400">
-                      IG, FB e WA Status — 2 versoes
+                    <p className="font-sans text-[0.65rem] font-semibold uppercase tracking-wider text-[#c9b896]">
+                      Stories — 2 Versões
                     </p>
                   </div>
                   <span className="rounded bg-brown-100 px-2 py-0.5 font-sans text-[0.55rem] font-semibold text-brown-500">
@@ -525,10 +529,10 @@ export default function MarketingPage() {
               {/* ── Legendas prontas ── */}
               <div className="mt-4 rounded-2xl border border-brown-100 bg-white p-4">
                 <div className="mb-3">
-                  <p className="font-sans text-[0.6rem] font-semibold uppercase tracking-[0.12em] text-brown-400">
-                    Legendas prontas
+                  <p className="font-sans text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-[#c9b896]">
+                    Legendas Prontas
                   </p>
-                  <p className="mt-0.5 font-sans text-[0.55rem] text-brown-300">
+                  <p className="mt-0.5 font-sans text-[0.6rem] text-brown-400">
                     Toca para copiar o texto de cada rede
                   </p>
                 </div>
@@ -571,7 +575,7 @@ export default function MarketingPage() {
             </div>
           ) : (
             <div className="rounded-2xl border border-brown-100 bg-white p-8 text-center">
-              <p className="font-serif text-base text-brown-400">Fora do calendario de campanha.</p>
+              <p className="font-serif text-base text-brown-400">Fora do calendário de campanha.</p>
               <p className="mt-2 font-sans text-xs text-brown-300">
                 A campanha vai de 25 Fev a 25 Mar.
               </p>
@@ -581,8 +585,8 @@ export default function MarketingPage() {
 
         {/* Todos os posts */}
         <div className="mt-8">
-          <p className="font-sans text-[0.6rem] font-semibold uppercase tracking-[0.12em] text-brown-400">
-            Todos os posts ({professionalCarousels.length})
+          <p className="font-sans text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-[#c9b896]">
+            Todos os Posts ({professionalCarousels.length})
           </p>
           <div className="mt-3 space-y-2">
             {professionalCarousels.map((c) => (
