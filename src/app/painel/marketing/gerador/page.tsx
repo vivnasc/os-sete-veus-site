@@ -237,14 +237,41 @@ export default function GeradorPage() {
     setExporting(true);
     try {
       const el = canvasRef.current;
-      const orig = { t: el.style.transform, w: el.style.width, h: el.style.height };
+      const parent = el.parentElement as HTMLElement | null;
+
+      // Guardar estilos originais
+      const origEl = { t: el.style.transform, w: el.style.width, h: el.style.height };
+      const origParent = parent
+        ? { w: parent.style.width, h: parent.style.height, o: parent.style.overflow, r: parent.style.borderRadius }
+        : null;
+
+      // Expandir para tamanho real
       el.style.transform = "none";
       el.style.width = `${fmt.w}px`;
       el.style.height = `${fmt.h}px`;
+      if (parent) {
+        parent.style.width = `${fmt.w}px`;
+        parent.style.height = `${fmt.h}px`;
+        parent.style.overflow = "visible";
+        parent.style.borderRadius = "0";
+      }
+
+      // Esperar reflow do browser
+      await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+
       const dataUrl = await toPng(el, { width: fmt.w, height: fmt.h, pixelRatio: 1, cacheBust: true });
-      el.style.transform = orig.t;
-      el.style.width = orig.w;
-      el.style.height = orig.h;
+
+      // Restaurar estilos
+      el.style.transform = origEl.t;
+      el.style.width = origEl.w;
+      el.style.height = origEl.h;
+      if (parent && origParent) {
+        parent.style.width = origParent.w;
+        parent.style.height = origParent.h;
+        parent.style.overflow = origParent.o;
+        parent.style.borderRadius = origParent.r;
+      }
+
       const a = document.createElement("a");
       a.download = `sete-veus-${format}-${Date.now()}.png`;
       a.href = dataUrl;
