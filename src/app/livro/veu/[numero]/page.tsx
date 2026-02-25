@@ -314,26 +314,31 @@ export default function PortalVeuPage() {
           })()}
         </motion.div>
 
-        {/* Navegação entre véus */}
+        {/* Navegação rápida — todos os véus + mandala */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: d(5) }}
-          className="mt-8 flex items-center justify-center gap-6"
+          className="mt-8 flex flex-col items-center gap-3"
         >
-          {numeroVeu > 1 && (
-            <Link href={`/livro/veu/${numeroVeu - 1}`} className={`text-sm ${cores.accent} hover:underline`}>
-              ← Véu {numeroVeu - 1}
-            </Link>
-          )}
-          <Link href="/livro" className="text-sm text-stone-500 hover:underline">
+          <div className="flex items-center gap-2">
+            {[1, 2, 3, 4, 5, 6, 7].map(n => (
+              <Link key={n} href={`/livro/veu/${n}`}>
+                <div
+                  className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-medium transition-all ${
+                    n === numeroVeu
+                      ? 'bg-stone-800 text-white shadow-md scale-110'
+                      : 'bg-white/70 text-stone-600 hover:bg-white hover:shadow-md'
+                  }`}
+                >
+                  {n}
+                </div>
+              </Link>
+            ))}
+          </div>
+          <Link href="/livro" className="text-xs text-stone-400 hover:underline">
             Mandala
           </Link>
-          {numeroVeu < 7 && (
-            <Link href={`/livro/veu/${numeroVeu + 1}`} className={`text-sm ${cores.accent} hover:underline`}>
-              Véu {numeroVeu + 1} →
-            </Link>
-          )}
         </motion.div>
       </motion.div>
     </div>
