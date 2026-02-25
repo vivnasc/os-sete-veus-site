@@ -29,6 +29,16 @@ function PosfacioContent() {
   const searchParams = useSearchParams()
   const initialSection = searchParams.get('s') === 'referencias' ? 'referencias' : 'carta'
   const [seccaoAtiva, setSeccaoAtiva] = useState<Section>(initialSection as Section)
+  const [modoNoturno, setModoNoturno] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('reader-night-mode') === 'true'
+    }
+    return false
+  })
+
+  useEffect(() => {
+    localStorage.setItem('reader-night-mode', String(modoNoturno))
+  }, [modoNoturno])
 
   useEffect(() => {
     if (!loading && !user) router.push('/entrar')
@@ -61,31 +71,33 @@ function PosfacioContent() {
   const cartaRaw = (livroData as Record<string, unknown>).carta_ao_leitor as string || ''
   const referenciasRaw = (livroData as Record<string, unknown>).referencias as string || ''
 
-  // Parse Carta ao Leitor — poetic format with *...* italic stanzas and \ line breaks
+  // Parse Carta ao Leitor — extract *...* stanzas and regular text
   const renderCarta = () => {
-    // Split into stanzas/blocks by \n that separates *...* blocks
-    const blocos = cartaRaw.split(/\n(?=\*|[A-Z])/).filter(b => b.trim().length > 0)
+    // Split into *...* stanzas and non-stanza text
+    const partes = cartaRaw.split(/(\*[^*]+\*)/g).filter(p => p.trim().length > 0)
 
-    return blocos.map((bloco, bi) => {
-      const trimmed = bloco.trim()
+    return partes.map((parte, bi) => {
+      const trimmed = parte.trim()
 
-      // Italic stanza: starts with * and ends with *
+      // Italic stanza: wrapped in *...*
       if (trimmed.startsWith('*') && trimmed.endsWith('*')) {
         const inner = trimmed.slice(1, -1)
-        // Split on \<newline> for poetic line breaks
+        // Split on \ + newline for poetic line breaks
         const versos = inner.split(/\\\n/).map(v => v.trim()).filter(v => v.length > 0)
         return (
           <motion.div
             key={bi}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: bi * 0.1 }}
+            transition={{ delay: bi * 0.08 }}
             className="mb-8"
           >
             {versos.map((verso, vi) => (
               <p
                 key={vi}
-                className="text-lg md:text-xl leading-relaxed font-serif italic text-stone-700"
+                className={`text-lg md:text-xl leading-relaxed font-serif italic ${
+                  modoNoturno ? 'text-stone-400' : 'text-stone-700'
+                }`}
               >
                 {verso}
               </p>
@@ -101,13 +113,15 @@ function PosfacioContent() {
           key={bi}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: bi * 0.1 }}
+          transition={{ delay: bi * 0.08 }}
           className="mb-6"
         >
           {linhas.map((linha, li) => (
             <p
               key={li}
-              className="text-lg md:text-xl leading-relaxed font-serif text-stone-800"
+              className={`text-lg md:text-xl leading-relaxed font-serif ${
+                modoNoturno ? 'text-stone-300' : 'text-stone-800'
+              }`}
             >
               {linha}
             </p>
@@ -150,7 +164,9 @@ function PosfacioContent() {
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-lg leading-relaxed font-serif text-stone-800 mb-10"
+            className={`text-lg leading-relaxed font-serif mb-10 ${
+              modoNoturno ? 'text-stone-300' : 'text-stone-800'
+            }`}
           >
             {intro.join(' ')}
           </motion.p>
@@ -172,12 +188,14 @@ function PosfacioContent() {
             return (
               <div
                 key={i}
-                className="flex gap-3 py-1.5 border-b border-stone-100 last:border-0"
+                className={`flex gap-3 py-1.5 border-b last:border-0 ${
+                  modoNoturno ? 'border-stone-800' : 'border-stone-100'
+                }`}
               >
-                <span className="text-stone-400 mt-0.5 shrink-0">&#8212;</span>
-                <p className="text-base font-serif text-stone-700">
-                  <span className="font-medium text-stone-800">{autor}</span>
-                  {obra && <>, <em className="text-stone-600">{obra}</em></>}
+                <span className={`mt-0.5 shrink-0 ${modoNoturno ? 'text-stone-600' : 'text-stone-400'}`}>&#8212;</span>
+                <p className={`text-base font-serif ${modoNoturno ? 'text-stone-400' : 'text-stone-700'}`}>
+                  <span className={`font-medium ${modoNoturno ? 'text-stone-300' : 'text-stone-800'}`}>{autor}</span>
+                  {obra && <>, <em className={modoNoturno ? 'text-stone-500' : 'text-stone-600'}>{obra}</em></>}
                 </p>
               </div>
             )
@@ -190,7 +208,9 @@ function PosfacioContent() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-lg leading-relaxed font-serif text-stone-700 italic"
+            className={`text-lg leading-relaxed font-serif italic ${
+              modoNoturno ? 'text-stone-500' : 'text-stone-700'
+            }`}
           >
             {closing.join(' ')}
           </motion.p>
@@ -200,13 +220,21 @@ function PosfacioContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-stone-50 to-stone-100">
+    <div className={`min-h-screen transition-colors duration-500 ${
+      modoNoturno
+        ? 'bg-stone-950'
+        : 'bg-gradient-to-b from-stone-50 to-stone-100'
+    }`}>
       {/* Header */}
-      <div className="sticky top-0 z-40 backdrop-blur-sm bg-white/50 border-b border-stone-200">
+      <div className={`sticky top-0 z-40 backdrop-blur-sm border-b ${
+        modoNoturno
+          ? 'bg-stone-950/80 border-stone-800'
+          : 'bg-white/50 border-stone-200'
+      }`}>
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link
             href="/livro"
-            className="text-sm text-stone-600 hover:underline"
+            className={`text-sm hover:underline ${modoNoturno ? 'text-stone-400' : 'text-stone-600'}`}
           >
             &larr; Mandala
           </Link>
@@ -221,13 +249,27 @@ function PosfacioContent() {
                 }}
                 className={`text-xs px-3 py-1 rounded-full border transition-colors ${
                   seccaoAtiva === s.key
-                    ? 'bg-stone-800 text-white border-stone-800'
-                    : 'border-stone-300 text-stone-600 hover:bg-stone-100'
+                    ? modoNoturno
+                      ? 'bg-stone-200 text-stone-900 border-stone-200'
+                      : 'bg-stone-800 text-white border-stone-800'
+                    : modoNoturno
+                      ? 'border-stone-700 text-stone-400 hover:bg-stone-800'
+                      : 'border-stone-300 text-stone-600 hover:bg-stone-100'
                 }`}
               >
                 {s.titulo}
               </button>
             ))}
+            <button
+              onClick={() => setModoNoturno(!modoNoturno)}
+              className={`text-xs px-3 py-1 rounded-full border transition-colors ${
+                modoNoturno
+                  ? 'border-stone-700 text-stone-400 hover:bg-stone-800'
+                  : 'border-stone-300 text-stone-600 hover:bg-stone-100'
+              }`}
+            >
+              {modoNoturno ? 'Dia' : 'Noite'}
+            </button>
           </div>
         </div>
       </div>
@@ -242,14 +284,18 @@ function PosfacioContent() {
         >
           {/* Section title */}
           <div className="text-center mb-16">
-            <p className="text-sm tracking-widest text-stone-500 mb-4 uppercase">
+            <p className={`text-sm tracking-widest mb-4 uppercase ${
+              modoNoturno ? 'text-stone-600' : 'text-stone-500'
+            }`}>
               {livroData.titulo}
             </p>
-            <h1 className="text-4xl md:text-5xl font-serif text-stone-900 mb-4">
+            <h1 className={`text-4xl md:text-5xl font-serif mb-4 ${
+              modoNoturno ? 'text-stone-200' : 'text-stone-900'
+            }`}>
               {seccaoAtiva === 'carta' ? 'Carta ao Leitor' : 'Ecos e Fontes Inspiradoras'}
             </h1>
             {seccaoAtiva === 'carta' && (
-              <p className="text-lg text-stone-500 italic">
+              <p className={`text-lg italic ${modoNoturno ? 'text-stone-500' : 'text-stone-500'}`}>
                 {livroData.autora}
               </p>
             )}
@@ -267,19 +313,21 @@ function PosfacioContent() {
         </motion.div>
 
         {/* Bottom navigation */}
-        <div className="mt-16 pt-8 border-t border-stone-200 flex justify-between items-center">
+        <div className={`mt-16 pt-8 border-t flex justify-between items-center ${
+          modoNoturno ? 'border-stone-800' : 'border-stone-200'
+        }`}>
           {seccaoAtiva === 'referencias' ? (
             <button
               onClick={() => {
                 setSeccaoAtiva('carta')
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
-              className="text-sm text-stone-600 hover:underline"
+              className={`text-sm hover:underline ${modoNoturno ? 'text-stone-400' : 'text-stone-600'}`}
             >
               &larr; Carta ao Leitor
             </button>
           ) : (
-            <Link href="/livro/veu/7" className="text-sm text-stone-600 hover:underline">
+            <Link href="/livro/veu/7" className={`text-sm hover:underline ${modoNoturno ? 'text-stone-400' : 'text-stone-600'}`}>
               &larr; V&eacute;u 7
             </Link>
           )}
@@ -290,7 +338,11 @@ function PosfacioContent() {
                 setSeccaoAtiva('referencias')
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
-              className="px-8 py-3 rounded-full bg-stone-200 text-stone-800 hover:opacity-80 transition-opacity text-sm"
+              className={`px-8 py-3 rounded-full text-sm transition-opacity hover:opacity-80 ${
+                modoNoturno
+                  ? 'bg-stone-800 text-stone-300'
+                  : 'bg-stone-200 text-stone-800'
+              }`}
             >
               Fontes Inspiradoras &rarr;
             </button>
