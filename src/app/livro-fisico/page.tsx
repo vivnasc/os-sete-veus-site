@@ -148,34 +148,6 @@ export default function LivroFisicoPage() {
         </div>
       </section>
 
-      {/* Versão digital */}
-      <section className="bg-cream-dark px-6 py-20">
-        <div className="mx-auto max-w-xl">
-          <div className="rounded-2xl border border-[#c9b896]/30 bg-[#c9b896]/[0.04] p-8 text-center">
-            <p className="font-sans text-[0.6rem] font-semibold uppercase tracking-[0.25em] text-[#c9b896]">
-              Alternativa
-            </p>
-            <h2 className="mt-3 font-serif text-xl text-brown-900">
-              Preferes a versão digital?
-            </h2>
-            <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-brown-600">
-              O mesmo livro, com a experiência contemplativa completa — leitura em dois modos,
-              pausas de respiração, diário de reflexão e acesso vitalício.
-            </p>
-            <div className="mt-5 flex items-baseline justify-center gap-2">
-              <span className="font-serif text-2xl font-bold text-brown-900">1.500 MZN</span>
-              <span className="text-sm text-brown-500">/ $23 USD</span>
-            </div>
-            <Link
-              href="/comprar/livro"
-              className="mt-5 inline-block rounded-lg bg-[#c9b896] px-8 py-3 font-sans text-[0.8rem] font-semibold uppercase tracking-wider text-brown-900 transition-all hover:bg-[#b8a785]"
-            >
-              Ver versão digital
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* How to access digital version after purchase */}
       <section className="bg-cream-dark px-6 py-24">
         <div className="mx-auto max-w-3xl">

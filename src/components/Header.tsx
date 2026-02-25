@@ -11,7 +11,7 @@ const navLinks: { href: string; label: string; highlight?: boolean; featured?: b
   { href: "/comprar", label: "Comprar" },
   { href: "/sobre", label: "Sobre" },
   { href: "/comunidade", label: "Ecos", highlight: true },
-  { href: "/comprar/livro", label: "Livro", featured: true },
+  { href: "/livro-fisico", label: "Livro Físico", featured: true },
 ];
 
 export default function Header() {
