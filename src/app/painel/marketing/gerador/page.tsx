@@ -11,6 +11,7 @@ const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
 // ─── PRINTS (fundos) ────────────────────────────────────────────────────────
 
 const PRINTS = [
+  // Mockups da plataforma
   { id: "hero", src: "/prints/homepage-hero-mandala.jpeg", label: "Hero ~ Mandala" },
   { id: "experiencia", src: "/prints/experiencia-funcionalidades.jpeg", label: "Experiencia" },
   { id: "quiz", src: "/prints/quiz-qual-veu.jpeg", label: "Quiz" },
@@ -22,6 +23,55 @@ const PRINTS = [
   { id: "livro", src: "/prints/livro-fisico-preco-whatsapp.jpeg", label: "Livro fisico" },
   { id: "passos", src: "/prints/acesso-digital-3-passos.jpeg", label: "3 Passos" },
   { id: "cta", src: "/prints/comunidade-cta-dark.jpeg", label: "CTA dark" },
+  // Mockups novos ~ device frames
+  { id: "inicio-left", src: "/prints/7veus- incio-left.png", label: "Inicio (landscape)" },
+  { id: "inicio-portrait", src: "/prints/7veus- incio-portrait.png", label: "Inicio (retrato)" },
+  { id: "3niveis-left", src: "/prints/7veus-3niveis-left.png", label: "3 Niveis (landscape)" },
+  { id: "3niveis-portrait", src: "/prints/7veus-3niveis-portrait.png", label: "3 Niveis (retrato)" },
+  { id: "darkmode-left", src: "/prints/7veus-darkmode-left.png", label: "Dark mode (landscape)" },
+  { id: "darkmode-portrait", src: "/prints/7veus-darkmode-portrait.png", label: "Dark mode (retrato)" },
+  { id: "dessolucao-left", src: "/prints/7veus-dessolucao-left.png", label: "Dissolucao (landscape)" },
+  { id: "dessolucao-portrait", src: "/prints/7veus-dessolucao-portrait.png", label: "Dissolucao (retrato)" },
+  { id: "introdeveu-left", src: "/prints/7veus-introdeveu-left.png", label: "Intro veu (landscape)" },
+  { id: "introdeveu-portrait", src: "/prints/7veus-introdeveu-portrait.png", label: "Intro veu (retrato)" },
+  { id: "pedircod-left", src: "/prints/7veuspedircod-left.png", label: "Pedir codigo (landscape)" },
+  { id: "pedircod-portrait", src: "/prints/7veuspedircod-portrait.png", label: "Pedir codigo (retrato)" },
+  // Capas dos livros
+  { id: "mandala", src: "/images/mandala-7veus.png", label: "Mandala" },
+  { id: "espelho-ilusao", src: "/images/espelho-ilusao.png", label: "Espelho Ilusao" },
+  { id: "espelho-medo", src: "/images/espelho-medo.png", label: "Espelho Medo" },
+  { id: "espelho-culpa", src: "/images/espelho-culpa.png", label: "Espelho Culpa" },
+  { id: "espelho-identidade", src: "/images/espelho-identidade.png", label: "Espelho Identidade" },
+  { id: "espelho-controlo", src: "/images/espelho-controlo.png", label: "Espelho Controlo" },
+  { id: "espelho-desejo", src: "/images/espelho-desejo.png", label: "Espelho Desejo" },
+  { id: "espelho-separacao", src: "/images/espelho-separacao.png", label: "Espelho Separacao" },
+  { id: "no-heranca", src: "/images/capa-no-heran\u00e7a2.png", label: "No Heranca" },
+  { id: "no-silencio", src: "/images/capa-no-silencio2.png", label: "No Silencio" },
+  { id: "no-sacrificio", src: "/images/capa-no-sacrifico2.png", label: "No Sacrificio" },
+  { id: "no-vergonha", src: "/images/capa-no-vergonha2.png", label: "No Vergonha" },
+  { id: "no-solidao", src: "/images/capa-no-solidao2.png", label: "No Solidao" },
+  { id: "no-vazio", src: "/images/capa-no-vazio2.png", label: "No Vazio" },
+  { id: "no-pertenca", src: "/images/capa-no-perten\u00e7a2.png", label: "No Pertenca" },
+  // Catalogo (Lumina / Vitalis)
+  { id: "lumina-comecar", src: "/catalogo/Lumina_come\u00e7ar.jpeg", label: "Lumina comecar" },
+  { id: "lumina-leitura", src: "/catalogo/Lumina_leitura.jpeg", label: "Lumina leitura" },
+  { id: "lumina-cuidado", src: "/catalogo/Lumina_leitura8-cuidado-proprio.jpeg", label: "Lumina cuidado" },
+  { id: "vitalis-dashboard", src: "/catalogo/Vitalis_dashboard.jpeg", label: "Vitalis dashboard" },
+  { id: "vitalis-checkin", src: "/catalogo/Vitalis_checkin.jpeg", label: "Vitalis check-in" },
+  { id: "vitalis-lumina", src: "/catalogo/Vitalis_lumina-abertura.jpeg", label: "Vitalis lumina" },
+  { id: "vitalis-plano", src: "/catalogo/Vitalis_plano.jpeg", label: "Vitalis plano" },
+  { id: "catalogo-comunidade", src: "/catalogo/comunidade.jpeg", label: "Comunidade (catalogo)" },
+  // Artigos
+  { id: "artigo-agradar", src: "/images/artigo-agradar.png", label: "Artigo agradar" },
+  { id: "artigo-escolha", src: "/images/artigo-escolha.png", label: "Artigo escolha" },
+  { id: "artigo-vida", src: "/images/artigo-vida-funciona.png", label: "Artigo vida funciona" },
+  // Recursos
+  { id: "recurso-teste", src: "/images/recurso-teste.png", label: "Recurso teste" },
+  { id: "recurso-diario", src: "/images/recurso-diario.png", label: "Recurso diario" },
+  { id: "recurso-checklist", src: "/images/recurso-checklist.png", label: "Recurso checklist" },
+  { id: "recurso-miniguia", src: "/images/recurso-miniguia.png", label: "Recurso mini-guia" },
+  { id: "recurso-perguntas", src: "/images/recurso-perguntas.png", label: "Recurso perguntas" },
+  { id: "recurso-wallpapers", src: "/images/recurso-wallpapers.png", label: "Recurso wallpapers" },
 ];
 
 // ─── MENSAGENS (presets de texto) ───────────────────────────────────────────
