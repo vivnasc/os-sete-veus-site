@@ -3,11 +3,11 @@
  *
  * Envia notificacoes via:
  * 1. Supabase table `admin_notifications` para dashboard
- * 2. Email via Resend (se RESEND_API_KEY estiver configurada)
+ * 2. Email via Brevo (se BREVO_API_KEY estiver configurada)
  * 3. Webhook configuravel (Make.com, Zapier, n8n, etc.) → WhatsApp
  *
  * Configuracao (env vars):
- *   RESEND_API_KEY — API key do Resend (resend.com, gratuito)
+ *   BREVO_API_KEY — API key do Brevo (brevo.com, 300 emails/dia gratis)
  *   ADMIN_NOTIFY_WEBHOOK_URL — URL do webhook (POST JSON)
  *   ADMIN_WHATSAPP_NUMBER — +258845243875
  */
@@ -62,11 +62,11 @@ export async function notifyAdmin(data: NotificationData): Promise<void> {
     console.error("[notify-admin] Erro ao guardar notificacao:", err);
   }
 
-  // 2. Enviar email via Resend (se configurado)
-  const resendKey = process.env.RESEND_API_KEY;
-  if (resendKey) {
+  // 2. Enviar email via Brevo (se configurado)
+  const brevoKey = process.env.BREVO_API_KEY;
+  if (brevoKey) {
     try {
-      await sendEmailViaResend(resendKey, data);
+      await sendEmailViaBrevo(brevoKey, data);
     } catch (err) {
       console.error("[notify-admin] Erro ao enviar email:", err);
     }
@@ -103,13 +103,12 @@ export async function notifyAdmin(data: NotificationData): Promise<void> {
 }
 
 /**
- * Envia email de notificacao via Resend API (fetch directo, sem SDK)
- * Gratuito ate 100 emails/dia em resend.com
+ * Envia email de notificacao via Brevo API (fetch directo, sem SDK)
+ * Gratuito ate 300 emails/dia em brevo.com
  */
-async function sendEmailViaResend(apiKey: string, data: NotificationData) {
+async function sendEmailViaBrevo(apiKey: string, data: NotificationData) {
   const { title, message, details } = data;
 
-  // Construir corpo do email em HTML simples
   let detailsHtml = "";
   if (details) {
     const rows = Object.entries(details)
@@ -121,7 +120,7 @@ async function sendEmailViaResend(apiKey: string, data: NotificationData) {
 
   const hora = new Date().toLocaleString("pt-PT", { timeZone: "Africa/Maputo" });
 
-  const html = `
+  const htmlContent = `
     <div style="font-family:Georgia,serif;max-width:500px;margin:0 auto;padding:24px;">
       <h2 style="color:#1a1a1a;margin-bottom:8px;">${title}</h2>
       <p style="color:#444;font-size:16px;line-height:1.6;">${message}</p>
@@ -131,28 +130,24 @@ async function sendEmailViaResend(apiKey: string, data: NotificationData) {
     </div>
   `;
 
-  const fromDomain = process.env.RESEND_FROM_DOMAIN;
-  const fromEmail = fromDomain
-    ? `Os 7 Veus <notificacoes@${fromDomain}>`
-    : "Os 7 Veus <onboarding@resend.dev>";
-
-  const res = await fetch("https://api.resend.com/emails", {
+  const res = await fetch("https://api.brevo.com/v3/smtp/email", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
+      Accept: "application/json",
+      "api-key": apiKey,
     },
     body: JSON.stringify({
-      from: fromEmail,
-      to: [ADMIN_EMAIL],
+      sender: { name: "Os Sete Veus", email: ADMIN_EMAIL },
+      to: [{ email: ADMIN_EMAIL, name: "Vivianne" }],
       subject: `[7 Veus] ${title}`,
-      html,
+      htmlContent,
     }),
   });
 
   if (!res.ok) {
     const errBody = await res.text();
-    console.error("[notify-admin] Resend erro:", res.status, errBody);
+    console.error("[notify-admin] Brevo erro:", res.status, errBody);
   }
 }
 
