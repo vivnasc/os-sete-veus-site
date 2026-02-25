@@ -307,15 +307,9 @@ export default function IntroducaoPage() {
             </div>
           )}
 
-          {/* Introdução — parágrafos com respiro, secção dos véus, subtítulos visíveis */}
+          {/* Introdução — texto completo + secção dos 7 véus no final */}
           {seccaoAtiva === 'introducao' && (() => {
             const itens = prepararTextoLongo(livroData.introducao)
-            // Encontrar onde inserir a secção dos 7 véus (antes de "O Processo de Dissolução")
-            const idxProcesso = itens.findIndex(
-              i => i.tipo === 'subtitulo' && i.texto.includes('Processo')
-            )
-            const antes = idxProcesso >= 0 ? itens.slice(0, idxProcesso) : itens
-            const depois = idxProcesso >= 0 ? itens.slice(idxProcesso) : []
 
             const coresVeu = [
               'text-red-700 border-red-200 bg-red-50/50',
@@ -329,10 +323,10 @@ export default function IntroducaoPage() {
 
             return (
               <div className="space-y-6">
-                {/* Texto antes dos véus */}
-                {antes.map((item, index) => (
+                {/* Todo o texto da introdução */}
+                {itens.map((item, index) => (
                   <motion.div
-                    key={`a-${index}`}
+                    key={index}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: Math.min(index * 0.03, 0.5) }}
@@ -349,12 +343,12 @@ export default function IntroducaoPage() {
                   </motion.div>
                 ))}
 
-                {/* Os 7 Véus do Despertar */}
+                {/* Os 7 Véus do Despertar — fecha a introdução */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                  className="mt-16 mb-16"
+                  transition={{ delay: 0.5 }}
+                  className="mt-16 mb-8"
                 >
                   <h2 className="text-2xl md:text-3xl font-serif font-semibold text-stone-900 text-center mb-12">
                     Os 7 Véus do Despertar
@@ -365,12 +359,14 @@ export default function IntroducaoPage() {
                         key={veu.numero}
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.5 + vi * 0.08 }}
+                        transition={{ delay: 0.6 + vi * 0.08 }}
                         className={`border-l-2 pl-6 py-4 rounded-r-lg ${coresVeu[vi]}`}
                       >
-                        <h3 className="text-lg font-serif font-semibold mb-2">
-                          {veu.numero}. {veu.nome}
-                        </h3>
+                        <Link href={`/livro/veu/${veu.numero}`}>
+                          <h3 className="text-lg font-serif font-semibold mb-2 hover:underline">
+                            {veu.numero}. {veu.nome}
+                          </h3>
+                        </Link>
                         <p className="text-sm font-serif italic text-stone-600 mb-3">
                           {veu.citacao}
                         </p>
@@ -382,26 +378,6 @@ export default function IntroducaoPage() {
                     ))}
                   </div>
                 </motion.div>
-
-                {/* Texto depois (O Processo de Dissolução...) */}
-                {depois.map((item, index) => (
-                  <motion.div
-                    key={`d-${index}`}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: Math.min(0.6 + index * 0.03, 1.2) }}
-                  >
-                    {item.tipo === 'subtitulo' ? (
-                      <h2 className="mt-12 mb-4 text-2xl md:text-3xl font-serif font-semibold text-stone-900">
-                        {item.texto}
-                      </h2>
-                    ) : (
-                      <p className="text-lg leading-relaxed font-serif text-stone-800">
-                        {item.texto}
-                      </p>
-                    )}
-                  </motion.div>
-                ))}
               </div>
             )
           })()}

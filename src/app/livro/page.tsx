@@ -157,8 +157,8 @@ export default function LivroMandalaPage() {
         transition={{ duration: 1.5, delay: 0.3 }}
         className="relative w-[500px] h-[500px] mb-12 hidden md:block"
       >
-        {/* Imagem da Mandala */}
-        <div className="absolute inset-0 flex items-center justify-center">
+        {/* Imagem da Mandala — pointer-events-none para não bloquear links */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <Image
             src="/images/mandala-7veus.png"
             alt="Mandala dos 7 Véus"
@@ -213,7 +213,7 @@ export default function LivroMandalaPage() {
 
                   {/* Label do Véu */}
                   <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                    <p className="text-sm font-medium text-stone-700">
+                    <p className="text-sm font-medium text-stone-700 group-hover:underline underline-offset-2">
                       {veu.nome}
                     </p>
                   </div>
@@ -224,7 +224,7 @@ export default function LivroMandalaPage() {
         })}
 
         {/* Centro da Mandala */}
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-24 h-24 rounded-full bg-gradient-to-br from-purple-100 to-stone-100 border-4 border-white shadow-xl flex items-center justify-center">
             <p className="text-xs text-center text-stone-600 px-2 leading-tight">
               O Despertar
