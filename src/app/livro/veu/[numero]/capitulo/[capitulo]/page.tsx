@@ -265,15 +265,15 @@ export default function CapituloPage() {
       const primeiraLinha = linhas[0].trim()
       const resto = linhas.slice(1).join(' ').trim()
 
-      // É subtítulo se: linha curta (<60 chars), sem ponto final, e seguida de texto
-      const ehSubtitulo = primeiraLinha.length < 60
+      // Subtítulo: bloco curto sozinho OU linha curta seguida de corpo
+      const ehLinhaSubtitulo = primeiraLinha.length < 60
+        && primeiraLinha.length > 3
         && !primeiraLinha.endsWith('.')
         && !primeiraLinha.endsWith('?')
         && !primeiraLinha.endsWith('"')
-        && resto.length > 0
         && /^[A-ZÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ]/.test(primeiraLinha)
 
-      if (ehSubtitulo) {
+      if (ehLinhaSubtitulo && (resto.length > 0 || linhas.length === 1)) {
         resultado.push({ texto: primeiraLinha, tipo: 'subtitulo' })
         const textoLimpo = resto.replace(/\n/g, ' ').replace(/\s{2,}/g, ' ').trim()
         if (textoLimpo.length > 0) {

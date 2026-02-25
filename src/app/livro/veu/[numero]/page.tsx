@@ -314,16 +314,26 @@ export default function PortalVeuPage() {
           })()}
         </motion.div>
 
-        {/* Voltar */}
+        {/* Navegação entre véus */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: d(5) }}
-          className="mt-8"
+          className="mt-8 flex items-center justify-center gap-6"
         >
-          <Link href="/livro" className={`text-sm ${cores.accent} hover:underline`}>
-            ← Voltar à Mandala
+          {numeroVeu > 1 && (
+            <Link href={`/livro/veu/${numeroVeu - 1}`} className={`text-sm ${cores.accent} hover:underline`}>
+              ← Véu {numeroVeu - 1}
+            </Link>
+          )}
+          <Link href="/livro" className="text-sm text-stone-500 hover:underline">
+            Mandala
           </Link>
+          {numeroVeu < 7 && (
+            <Link href={`/livro/veu/${numeroVeu + 1}`} className={`text-sm ${cores.accent} hover:underline`}>
+              Véu {numeroVeu + 1} →
+            </Link>
+          )}
         </motion.div>
       </motion.div>
     </div>

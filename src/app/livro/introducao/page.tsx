@@ -120,16 +120,25 @@ export default function IntroducaoPage() {
     return resultado
   }
 
-  // Preparar dedicatória — formato poesia, linha a linha
+  // Preparar dedicatória — poesia: juntar wraps DOCX, separar por frases
   const prepararDedicatoria = (texto: string): string[] => {
     let limpo = corrigirTexto(texto)
     // Remover trailing backslash
     limpo = limpo.replace(/\\+\s*$/, '')
-    // Cada linha é uma linha de poesia (preservar \n como quebra)
-    return limpo
+    // Juntar todos os \n (são wraps DOCX a ~70 chars, não versos intencionais)
+    const textoInteiro = limpo
       .split('\n')
       .map(l => l.trim())
       .filter(l => l.length > 0)
+      .join(' ')
+    // Separar destinatário ("Para Nana") do resto
+    const match = textoInteiro.match(/^(Para\s+\S+)\s+(.+)$/)
+    if (!match) return [textoInteiro]
+    const destinatario = match[1]
+    const corpo = match[2]
+    // Cada frase completa é um verso (separar em ". " ou final)
+    const versos = corpo.split(/(?<=\.)\s+/).filter(v => v.trim().length > 0)
+    return [destinatario, ...versos]
   }
 
   // Preparar nota de abertura e introdução — parágrafos com respiro
@@ -156,19 +165,22 @@ export default function IntroducaoPage() {
       const primeiraLinha = linhas[0].trim()
       const resto = linhas.slice(1).join(' ').trim()
 
-      // Detectar subtítulos: linha curta, sem ponto final, seguida de texto
-      const ehSubtitulo = primeiraLinha.length < 60
+      // Subtítulo: bloco curto sozinho (ex: "O Processo de Dissolução") OU
+      // linha curta seguida de corpo de texto
+      const ehLinhaSubtitulo = primeiraLinha.length < 60
         && primeiraLinha.length > 3
         && !primeiraLinha.endsWith('.')
         && !primeiraLinha.endsWith('?')
         && !primeiraLinha.endsWith('"')
-        && resto.length > 0
         && /^[A-ZÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ]/.test(primeiraLinha)
 
-      if (ehSubtitulo) {
+      const ehSubtituloComTexto = ehLinhaSubtitulo && resto.length > 0
+      const ehSubtituloSozinho = ehLinhaSubtitulo && resto.length === 0 && linhas.length === 1
+
+      if (ehSubtituloComTexto || ehSubtituloSozinho) {
         resultado.push({ texto: primeiraLinha, tipo: 'subtitulo' })
-        const textoLimpo = resto.replace(/\s{2,}/g, ' ').trim()
-        if (textoLimpo.length > 0) {
+        if (resto.length > 0) {
+          const textoLimpo = resto.replace(/\s{2,}/g, ' ').trim()
           for (const parte of dividirParagrafoLongo(textoLimpo, 450)) {
             resultado.push({ texto: parte, tipo: 'paragrafo' })
           }
