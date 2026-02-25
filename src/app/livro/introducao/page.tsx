@@ -80,14 +80,65 @@ export default function IntroducaoPage() {
       .replace(/\u0000/g, 'fi')
   }
 
-  // Limpar texto: corrigir caracteres, remover prefixos DOCX e agrupar linhas em parágrafos
-  const limparTexto = (texto: string): string[] => {
+  // Dividir parágrafos longos em pontos de frase naturais
+  const dividirParagrafoLongo = (texto: string, maxChars: number): string[] => {
+    if (texto.length <= maxChars) return [texto]
+
+    const resultado: string[] = []
+    let restante = texto
+
+    while (restante.length > maxChars) {
+      const meio = Math.floor(maxChars * 0.75)
+      let melhorCorte = -1
+
+      for (let i = Math.min(restante.length - 1, maxChars); i >= meio - 100; i--) {
+        if (restante[i] === '.' && restante[i + 1] === ' ') {
+          melhorCorte = i + 1
+          break
+        }
+      }
+
+      if (melhorCorte === -1) {
+        for (let i = maxChars; i < restante.length; i++) {
+          if (restante[i] === '.' && restante[i + 1] === ' ') {
+            melhorCorte = i + 1
+            break
+          }
+        }
+      }
+
+      if (melhorCorte === -1) {
+        resultado.push(restante)
+        restante = ''
+      } else {
+        resultado.push(restante.substring(0, melhorCorte).trim())
+        restante = restante.substring(melhorCorte).trim()
+      }
+    }
+
+    if (restante.length > 0) resultado.push(restante)
+    return resultado
+  }
+
+  // Preparar dedicatória — formato poesia, linha a linha
+  const prepararDedicatoria = (texto: string): string[] => {
+    let limpo = corrigirTexto(texto)
+    // Remover trailing backslash
+    limpo = limpo.replace(/\\+\s*$/, '')
+    // Cada linha é uma linha de poesia (preservar \n como quebra)
+    return limpo
+      .split('\n')
+      .map(l => l.trim())
+      .filter(l => l.length > 0)
+  }
+
+  // Preparar nota de abertura e introdução — parágrafos com respiro
+  type TextoItem = { texto: string; tipo: 'paragrafo' | 'subtitulo' }
+
+  const prepararTextoLongo = (texto: string): TextoItem[] => {
     let limpo = corrigirTexto(texto)
 
     // Remover prefixos de título embutidos (capitulares decorativas do DOCX)
-    // e recuperar a letra decorativa como inicial do texto seguinte.
-    // Ex: "ENota de Abertura\nste livro..." → "Este livro..."
-    // Ex: "VIntrodução\nivemos..." → "Vivemos..."
     limpo = limpo
       .replace(/^([A-Z])Nota de Abertura\n/i, (_m, cap) => cap)
       .replace(/^([A-Z])Introdução\n/i, (_m, cap) => cap)
@@ -95,39 +146,52 @@ export default function IntroducaoPage() {
     // Corrigir capitulares duplicadas (ex: "OO Processo..." → "O Processo...")
     limpo = limpo.replace(/^([A-Z])\1/gm, '$1')
 
-    // Agrupar linhas em parágrafos reais:
-    // - \n\n = quebra de parágrafo intencional
-    // - \n simples = wrap de linha do DOCX (juntar com espaço)
-    const blocos = limpo.split('\n\n')
-    const paragrafos: string[] = []
+    // Separar por dupla quebra de linha
+    const blocos = limpo.split('\n\n').filter(b => b.trim().length > 0)
+
+    const resultado: TextoItem[] = []
 
     for (const bloco of blocos) {
-      // Juntar linhas do bloco (são wraps DOCX, não parágrafos distintos)
-      const texto = bloco
-        .split('\n')
-        .map(l => l.trim())
-        .filter(l => l.length > 0)
-        .join(' ')
-        .replace(/\s{2,}/g, ' ')
-        .trim()
+      const linhas = bloco.split('\n')
+      const primeiraLinha = linhas[0].trim()
+      const resto = linhas.slice(1).join(' ').trim()
 
-      if (texto.length > 0) {
-        paragrafos.push(texto)
+      // Detectar subtítulos: linha curta, sem ponto final, seguida de texto
+      const ehSubtitulo = primeiraLinha.length < 60
+        && primeiraLinha.length > 3
+        && !primeiraLinha.endsWith('.')
+        && !primeiraLinha.endsWith('?')
+        && !primeiraLinha.endsWith('"')
+        && resto.length > 0
+        && /^[A-ZÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ]/.test(primeiraLinha)
+
+      if (ehSubtitulo) {
+        resultado.push({ texto: primeiraLinha, tipo: 'subtitulo' })
+        const textoLimpo = resto.replace(/\s{2,}/g, ' ').trim()
+        if (textoLimpo.length > 0) {
+          for (const parte of dividirParagrafoLongo(textoLimpo, 450)) {
+            resultado.push({ texto: parte, tipo: 'paragrafo' })
+          }
+        }
+      } else {
+        // Juntar linhas do bloco (wraps DOCX)
+        const textoLimpo = bloco
+          .split('\n')
+          .map(l => l.trim())
+          .filter(l => l.length > 0)
+          .join(' ')
+          .replace(/\s{2,}/g, ' ')
+          .trim()
+
+        if (textoLimpo.length > 0) {
+          for (const parte of dividirParagrafoLongo(textoLimpo, 450)) {
+            resultado.push({ texto: parte, tipo: 'paragrafo' })
+          }
+        }
       }
     }
 
-    return paragrafos
-  }
-
-  const textoAtual = (): string[] => {
-    switch (seccaoAtiva) {
-      case 'dedicatoria':
-        return limparTexto(livroData.dedicatoria)
-      case 'nota_abertura':
-        return limparTexto(livroData.nota_abertura)
-      case 'introducao':
-        return limparTexto(livroData.introducao)
-    }
+    return resultado
   }
 
   const tituloAtual = seccoes.find(s => s.key === seccaoAtiva)?.titulo ?? ''
@@ -189,24 +253,146 @@ export default function IntroducaoPage() {
             )}
           </div>
 
-          {/* Texto */}
-          <div className="space-y-6">
-            {textoAtual().map((paragrafo, index) => (
-              <motion.p
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
-                className={`text-lg leading-relaxed font-serif ${
-                  seccaoAtiva === 'dedicatoria'
-                    ? 'text-stone-700 text-center italic'
-                    : 'text-stone-800'
-                }`}
-              >
-                {paragrafo}
-              </motion.p>
-            ))}
-          </div>
+          {/* Dedicatória — formato poesia, linha a linha */}
+          {seccaoAtiva === 'dedicatoria' && (
+            <div className="space-y-3 max-w-lg mx-auto">
+              {prepararDedicatoria(livroData.dedicatoria).map((linha, index) => {
+                // Primeira linha (destinatário) — destaque
+                const ehDestinatario = index === 0 && linha.startsWith('Para ')
+                return (
+                  <motion.p
+                    key={index}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.08 }}
+                    className={`text-lg leading-relaxed font-serif text-center italic ${
+                      ehDestinatario
+                        ? 'text-stone-800 font-medium text-xl mb-6'
+                        : 'text-stone-600'
+                    }`}
+                  >
+                    {linha}
+                  </motion.p>
+                )
+              })}
+            </div>
+          )}
+
+          {/* Nota de Abertura — parágrafos com respiro */}
+          {seccaoAtiva === 'nota_abertura' && (
+            <div className="space-y-6">
+              {prepararTextoLongo(livroData.nota_abertura).map((item, index) => (
+                <motion.p
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: Math.min(index * 0.05, 0.5) }}
+                  className="text-lg leading-relaxed font-serif text-stone-800"
+                >
+                  {item.texto}
+                </motion.p>
+              ))}
+            </div>
+          )}
+
+          {/* Introdução — parágrafos com respiro, secção dos véus, subtítulos visíveis */}
+          {seccaoAtiva === 'introducao' && (() => {
+            const itens = prepararTextoLongo(livroData.introducao)
+            // Encontrar onde inserir a secção dos 7 véus (antes de "O Processo de Dissolução")
+            const idxProcesso = itens.findIndex(
+              i => i.tipo === 'subtitulo' && i.texto.includes('Processo')
+            )
+            const antes = idxProcesso >= 0 ? itens.slice(0, idxProcesso) : itens
+            const depois = idxProcesso >= 0 ? itens.slice(idxProcesso) : []
+
+            const coresVeu = [
+              'text-red-700 border-red-200 bg-red-50/50',
+              'text-orange-700 border-orange-200 bg-orange-50/50',
+              'text-amber-700 border-amber-200 bg-amber-50/50',
+              'text-green-700 border-green-200 bg-green-50/50',
+              'text-sky-700 border-sky-200 bg-sky-50/50',
+              'text-indigo-700 border-indigo-200 bg-indigo-50/50',
+              'text-purple-700 border-purple-200 bg-purple-50/50',
+            ]
+
+            return (
+              <div className="space-y-6">
+                {/* Texto antes dos véus */}
+                {antes.map((item, index) => (
+                  <motion.div
+                    key={`a-${index}`}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: Math.min(index * 0.03, 0.5) }}
+                  >
+                    {item.tipo === 'subtitulo' ? (
+                      <h2 className="mt-12 mb-4 text-2xl md:text-3xl font-serif font-semibold text-stone-900">
+                        {item.texto}
+                      </h2>
+                    ) : (
+                      <p className="text-lg leading-relaxed font-serif text-stone-800">
+                        {item.texto}
+                      </p>
+                    )}
+                  </motion.div>
+                ))}
+
+                {/* Os 7 Véus do Despertar */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="mt-16 mb-16"
+                >
+                  <h2 className="text-2xl md:text-3xl font-serif font-semibold text-stone-900 text-center mb-12">
+                    Os 7 Véus do Despertar
+                  </h2>
+                  <div className="space-y-6">
+                    {livroData.veus.map((veu, vi) => (
+                      <motion.div
+                        key={veu.numero}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.5 + vi * 0.08 }}
+                        className={`border-l-2 pl-6 py-4 rounded-r-lg ${coresVeu[vi]}`}
+                      >
+                        <h3 className="text-lg font-serif font-semibold mb-2">
+                          {veu.numero}. {veu.nome}
+                        </h3>
+                        <p className="text-sm font-serif italic text-stone-600 mb-3">
+                          {veu.citacao}
+                        </p>
+                        <div className="flex flex-col gap-1 text-sm text-stone-700">
+                          <p><span className="font-medium">Encobre:</span> {veu.encobre}</p>
+                          <p><span className="font-medium">Revela:</span> {veu.revela}</p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+
+                {/* Texto depois (O Processo de Dissolução...) */}
+                {depois.map((item, index) => (
+                  <motion.div
+                    key={`d-${index}`}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: Math.min(0.6 + index * 0.03, 1.2) }}
+                  >
+                    {item.tipo === 'subtitulo' ? (
+                      <h2 className="mt-12 mb-4 text-2xl md:text-3xl font-serif font-semibold text-stone-900">
+                        {item.texto}
+                      </h2>
+                    ) : (
+                      <p className="text-lg leading-relaxed font-serif text-stone-800">
+                        {item.texto}
+                      </p>
+                    )}
+                  </motion.div>
+                ))}
+              </div>
+            )
+          })()}
         </motion.div>
 
         {/* Navegação inferior */}
