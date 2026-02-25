@@ -220,16 +220,16 @@ export default function AdminPage() {
               icon="🔑"
             />
             <ActionCard
-              title="Gerador Marketing"
-              description="Criar conteudo visual para redes"
-              href="/painel/marketing/gerador"
-              icon="🎨"
+              title="Conteudo Pronto"
+              description="Posts prontos com imagem + legenda + WhatsApp"
+              href="/painel/marketing"
+              icon="📱"
             />
             <ActionCard
-              title="Painel Marketing"
-              description="Calendario, conteudo e lancamentos"
-              href="/painel"
-              icon="📅"
+              title="Criar Imagem"
+              description="Gerador livre com mockups e capas"
+              href="/painel/marketing/gerador"
+              icon="🎨"
             />
             <ActionCard
               title="Analytics"

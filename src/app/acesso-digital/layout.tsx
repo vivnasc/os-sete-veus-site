@@ -8,14 +8,6 @@ export const metadata: Metadata = {
     title: "Acesso digital ~ Os Sete Veus",
     description:
       "Activa o teu acesso ao livro digital. Leitura interactiva, diario reflexivo e comunidade anonima incluidos.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Os Sete Veus do Despertar — Acesso digital",
-      },
-    ],
   },
 };
 
