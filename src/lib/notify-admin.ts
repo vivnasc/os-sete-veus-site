@@ -2,10 +2,13 @@
  * Sistema de notificacoes para a autora (Vivianne)
  *
  * Envia notificacoes via:
- * 1. Webhook configuravel (Make.com, Zapier, n8n, etc.) → WhatsApp
- * 2. Supabase table `admin_notifications` para dashboard
+ * 1. Supabase table `admin_notifications` para dashboard
+ * 2. Telegram bot (se TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID configurados)
+ * 3. Webhook configuravel (Make.com, Zapier, n8n, etc.) → WhatsApp
  *
  * Configuracao (env vars):
+ *   TELEGRAM_BOT_TOKEN — Token do bot Telegram (@BotFather)
+ *   TELEGRAM_CHAT_ID — Chat ID da Vivianne
  *   ADMIN_NOTIFY_WEBHOOK_URL — URL do webhook (POST JSON)
  *   ADMIN_WHATSAPP_NUMBER — +258845243875
  */
@@ -58,7 +61,18 @@ export async function notifyAdmin(data: NotificationData): Promise<void> {
     console.error("[notify-admin] Erro ao guardar notificacao:", err);
   }
 
-  // 2. Enviar via webhook (se configurado)
+  // 2. Enviar via Telegram bot (se configurado)
+  const telegramToken = process.env.TELEGRAM_BOT_TOKEN;
+  const telegramChatId = process.env.TELEGRAM_CHAT_ID;
+  if (telegramToken && telegramChatId) {
+    try {
+      await sendTelegramNotification(telegramToken, telegramChatId, data);
+    } catch (err) {
+      console.error("[notify-admin] Erro ao enviar Telegram:", err);
+    }
+  }
+
+  // 3. Enviar via webhook (se configurado)
   const webhookUrl = process.env.ADMIN_NOTIFY_WEBHOOK_URL;
   if (webhookUrl) {
     try {
@@ -81,11 +95,67 @@ export async function notifyAdmin(data: NotificationData): Promise<void> {
     }
   }
 
-  // 3. Log (sempre)
+  // 4. Log (sempre)
   console.log(
     `[NOTIFICACAO ADMIN] ${type}: ${title} — ${message}`,
     details || ""
   );
+}
+
+/**
+ * Envia notificacao via Telegram Bot API (gratuito, ilimitado)
+ * Cria bot em 30s via @BotFather no Telegram
+ */
+async function sendTelegramNotification(
+  botToken: string,
+  chatId: string,
+  data: NotificationData
+) {
+  const { type, title, message, details } = data;
+
+  const icon: Record<string, string> = {
+    payment_proof: "PAGAMENTO",
+    payment_created: "NOVO PEDIDO",
+    code_request: "PEDIDO CODIGO",
+    code_redeemed: "CODIGO RESGATADO",
+    special_link_used: "LINK USADO",
+    new_member: "NOVO MEMBRO",
+    general: "ALERTA",
+  };
+
+  let text = `*${icon[type] || "ALERTA"}*\n${title}\n\n${message}`;
+
+  if (details) {
+    text += "\n";
+    for (const [key, value] of Object.entries(details)) {
+      if (value !== null && value !== undefined) {
+        text += `\n*${key}:* ${value}`;
+      }
+    }
+  }
+
+  const hora = new Date().toLocaleString("pt-PT", {
+    timeZone: "Africa/Maputo",
+  });
+  text += `\n\n${hora}`;
+
+  const res = await fetch(
+    `https://api.telegram.org/bot${botToken}/sendMessage`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text,
+        parse_mode: "Markdown",
+      }),
+    }
+  );
+
+  if (!res.ok) {
+    const errBody = await res.text();
+    console.error("[notify-admin] Telegram erro:", res.status, errBody);
+  }
 }
 
 /**
