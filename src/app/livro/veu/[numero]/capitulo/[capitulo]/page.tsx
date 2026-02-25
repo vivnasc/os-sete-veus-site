@@ -754,14 +754,27 @@ export default function CapituloPage() {
               </span>
             </Link>
           </div>
-          {/* Links para veu e mandala */}
-          <div className="flex items-center justify-center gap-6">
-            <Link href={`/livro/veu/${numeroVeu}`}>
-              <span className={`text-xs ${modoNoturno ? 'text-stone-600 hover:text-stone-400' : 'text-stone-400 hover:text-stone-600'} transition-colors`}>
-                Veu {numeroVeu}
-              </span>
-            </Link>
-            <span className={`text-xs ${modoNoturno ? 'text-stone-700' : 'text-stone-300'}`}>|</span>
+          {/* Navegação rápida — todos os véus */}
+          <div className="flex items-center justify-center gap-2 pt-2">
+            {[1, 2, 3, 4, 5, 6, 7].map(n => (
+              <Link key={n} href={`/livro/veu/${n}`}>
+                <div
+                  className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium transition-all ${
+                    n === numeroVeu
+                      ? modoNoturno
+                        ? 'bg-stone-200 text-stone-800 shadow-md'
+                        : 'bg-stone-800 text-white shadow-md'
+                      : modoNoturno
+                        ? 'bg-stone-800 text-stone-400 hover:bg-stone-700'
+                        : 'bg-stone-100 text-stone-500 hover:bg-stone-200'
+                  }`}
+                >
+                  {n}
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="flex items-center justify-center">
             <Link href="/livro">
               <span className={`text-xs ${modoNoturno ? 'text-stone-600 hover:text-stone-400' : 'text-stone-400 hover:text-stone-600'} transition-colors`}>
                 Mandala
