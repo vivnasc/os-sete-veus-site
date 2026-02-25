@@ -396,6 +396,9 @@ export default function CapituloPage() {
   }
 
   // Próximo capítulo
+  const isUltimoCapVeu = veu.capitulos.findIndex(c => c.numero === numeroCapitulo) === veu.capitulos.length - 1
+  const isUltimoCapLivro = isUltimoCapVeu && numeroVeu === 7
+
   const proximoCapitulo = () => {
     const indexCapAtual = veu.capitulos.findIndex(c => c.numero === numeroCapitulo)
     if (indexCapAtual < veu.capitulos.length - 1) {
@@ -404,6 +407,12 @@ export default function CapituloPage() {
     // Último capítulo do véu - ir para página de transição
     return `/livro/veu/${numeroVeu}/transicao`
   }
+
+  const labelProximo = isUltimoCapLivro
+    ? 'Fechar a Travessia'
+    : isUltimoCapVeu
+      ? `Fechar o Véu ${numeroVeu}`
+      : 'Proximo Capitulo'
 
   return (
     <div className={`min-h-screen ${modoNoturno ? 'bg-stone-950' : 'bg-stone-50'} transition-colors duration-500 ${showPlayer ? 'pb-20' : ''}`}>
@@ -750,7 +759,7 @@ export default function CapituloPage() {
               <span
                 className={`inline-block px-6 py-2.5 rounded-full text-sm ${modoNoturno ? 'bg-purple-800 text-purple-200' : 'bg-purple-200 text-purple-800'} hover:opacity-80 transition-opacity`}
               >
-                Proximo Capitulo →
+                {labelProximo} &rarr;
               </span>
             </Link>
           </div>

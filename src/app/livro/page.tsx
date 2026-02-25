@@ -268,15 +268,18 @@ export default function LivroMandalaPage() {
         </Link>
       </motion.div>
 
-      {/* Link para introdução */}
+      {/* Links para introdução e posfácio */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="mt-4"
+        className="mt-4 flex flex-col items-center gap-2"
       >
         <Link href="/livro/introducao" className="text-sm text-stone-400 hover:text-stone-600 transition-colors underline underline-offset-4">
           Dedicatória, Nota de Abertura &amp; Introdução
+        </Link>
+        <Link href="/livro/posfacio" className="text-sm text-stone-400 hover:text-stone-600 transition-colors underline underline-offset-4">
+          Carta ao Leitor &amp; Fontes Inspiradoras
         </Link>
       </motion.div>
 
