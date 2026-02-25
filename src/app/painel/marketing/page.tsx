@@ -4,45 +4,16 @@ import { useState } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import CarouselExporter from "@/components/CarouselExporter";
 import {
   allWeeks,
   professionalCarousels,
   reelScripts,
   productionGuide,
 } from "@/data/content-calendar-weeks";
-import type { ContentSlot, CarouselSlide } from "@/data/content-calendar-weeks";
+import type { ContentSlot } from "@/data/content-calendar-weeks";
 
-type MainTab = "calendario" | "carrosseis" | "reels" | "producao";
-
-// ─── CAROUSEL SLIDE PREVIEW ──────────────────────────────────────────────────
-
-function SlidePreview({ slide, index }: { slide: CarouselSlide; index: number }) {
-  return (
-    <div
-      className="relative flex aspect-square w-44 shrink-0 flex-col justify-between overflow-hidden rounded-xl shadow-md"
-      style={{ backgroundColor: slide.bg, color: slide.text }}
-    >
-      <div className="absolute left-3 top-3 flex h-6 w-6 items-center justify-center rounded-full bg-black/20 font-sans text-[0.5rem] font-bold text-white">
-        {index + 1}
-      </div>
-      <div className="flex flex-1 flex-col justify-center px-4">
-        {slide.title && (
-          <h4 className="whitespace-pre-line font-serif text-[0.7rem] leading-tight">{slide.title}</h4>
-        )}
-        {slide.body && (
-          <p className="mt-2 whitespace-pre-line font-sans text-[0.5rem] leading-relaxed opacity-80">{slide.body}</p>
-        )}
-      </div>
-      {slide.footer && (
-        <div className="px-4 pb-3">
-          <p className="font-sans text-[0.4rem] uppercase tracking-wider" style={{ color: slide.accent }}>
-            {slide.footer}
-          </p>
-        </div>
-      )}
-    </div>
-  );
-}
+type MainTab = "carrosseis" | "calendario" | "reels" | "producao";
 
 // ─── SLOT RENDERER (calendar day content) ────────────────────────────────────
 
@@ -159,11 +130,11 @@ function SlotCard({ slot, index, copiedId, onCopy }: {
 export default function MarketingPage() {
   const { user, loading } = useAuth();
   const router = useRouter();
-  const [mainTab, setMainTab] = useState<MainTab>("calendario");
+  const [mainTab, setMainTab] = useState<MainTab>("carrosseis");
   const [activeWeek, setActiveWeek] = useState(0);
   const [activeDay, setActiveDay] = useState(0);
   const [copiedId, setCopiedId] = useState<string | null>(null);
-  const [expandedCarousel, setExpandedCarousel] = useState<string | null>(null);
+  const [activeCarousel, setActiveCarousel] = useState(0);
   const [expandedReel, setExpandedReel] = useState<number | null>(null);
 
   if (loading) {
@@ -195,21 +166,23 @@ export default function MarketingPage() {
   }
 
   const mainTabs: { key: MainTab; label: string; count?: number }[] = [
-    { key: "calendario", label: "Calendario", count: allWeeks.length },
     { key: "carrosseis", label: "Carrosseis", count: professionalCarousels.length },
+    { key: "calendario", label: "Calendario", count: allWeeks.length },
     { key: "reels", label: "Scripts Reels", count: reelScripts.length },
     { key: "producao", label: "Guia Producao" },
   ];
+
+  const carousel = professionalCarousels[activeCarousel];
 
   return (
     <div className="min-h-screen bg-cream">
       {/* Header */}
       <div className="border-b border-brown-100 bg-white px-6 py-5">
-        <div className="mx-auto flex max-w-5xl items-center justify-between">
+        <div className="mx-auto flex max-w-6xl items-center justify-between">
           <div>
-            <h1 className="font-serif text-2xl text-brown-900">Producao de Marketing</h1>
+            <h1 className="font-serif text-2xl text-brown-900">Conteudo para Redes Sociais</h1>
             <p className="mt-1 font-sans text-xs text-brown-500">
-              Calendario + carrosseis + reels + guia de producao. Tudo pronto para publicar.
+              Carrosseis, calendario, reels ~ tudo pronto para descarregar e publicar. Sem Canva.
             </p>
           </div>
           <div className="flex items-center gap-4">
@@ -217,10 +190,10 @@ export default function MarketingPage() {
               href="/painel/marketing/gerador"
               className="rounded-lg bg-sage px-4 py-2 font-sans text-xs font-medium text-white transition-colors hover:bg-sage-dark"
             >
-              Gerador de Conteudo
+              Gerador Livre
             </Link>
-            <Link href="/painel" className="font-sans text-xs text-brown-500 hover:text-brown-900">
-              &larr; Painel
+            <Link href="/admin" className="font-sans text-xs text-brown-500 hover:text-brown-900">
+              Painel
             </Link>
           </div>
         </div>
@@ -228,7 +201,7 @@ export default function MarketingPage() {
 
       {/* Main tabs */}
       <div className="border-b border-brown-100 bg-white px-6">
-        <div className="mx-auto flex max-w-5xl gap-1 overflow-x-auto">
+        <div className="mx-auto flex max-w-6xl gap-1 overflow-x-auto">
           {mainTabs.map((tab) => (
             <button
               key={tab.key}
@@ -240,7 +213,7 @@ export default function MarketingPage() {
               }`}
             >
               {tab.label}
-              {tab.count && (
+              {tab.count != null && (
                 <span className="ml-1.5 rounded-full bg-brown-100 px-1.5 py-0.5 text-[0.5rem] text-brown-500">
                   {tab.count}
                 </span>
@@ -250,12 +223,57 @@ export default function MarketingPage() {
         </div>
       </div>
 
+      {/* ─── TAB: CARROSSEIS (com export directo) ───────────────────────── */}
+      {mainTab === "carrosseis" && (
+        <div className="mx-auto max-w-6xl px-6 py-8">
+          {/* Carousel selector */}
+          <div className="mb-8">
+            <p className="mb-3 font-sans text-[0.6rem] font-medium uppercase tracking-wider text-brown-500">
+              Escolhe um carrossel ~ {professionalCarousels.length} disponiveis
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {professionalCarousels.map((c, i) => (
+                <button
+                  key={c.id}
+                  onClick={() => setActiveCarousel(i)}
+                  className={`rounded-lg border px-4 py-2.5 text-left transition-all ${
+                    activeCarousel === i
+                      ? "border-sage bg-sage/10 ring-1 ring-sage/30"
+                      : "border-brown-100 bg-white hover:border-brown-200"
+                  }`}
+                >
+                  <span className={`block font-serif text-sm ${activeCarousel === i ? "text-sage-dark" : "text-brown-900"}`}>
+                    {c.title}
+                  </span>
+                  <span className="mt-0.5 block font-sans text-[0.6rem] text-brown-500">
+                    {c.slides.length} slides
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Active carousel exporter */}
+          {carousel && (
+            <div className="rounded-2xl border border-brown-100 bg-white p-6">
+              <CarouselExporter
+                slides={carousel.slides}
+                caption={carousel.caption}
+                title={carousel.title}
+                format="square"
+                filePrefix={carousel.id}
+              />
+            </div>
+          )}
+        </div>
+      )}
+
       {/* ─── TAB: CALENDARIO ───────────────────────────────────────────── */}
       {mainTab === "calendario" && (
         <>
           {/* Week selector */}
           <div className="border-b border-brown-100 bg-white px-6 py-3">
-            <div className="mx-auto flex max-w-5xl gap-2 overflow-x-auto">
+            <div className="mx-auto flex max-w-6xl gap-2 overflow-x-auto">
               {allWeeks.map((w, i) => (
                 <button
                   key={i}
@@ -275,7 +293,7 @@ export default function MarketingPage() {
           {/* Week title */}
           {week && (
             <div className="border-b border-brown-50 bg-cream px-6 py-3">
-              <div className="mx-auto max-w-5xl">
+              <div className="mx-auto max-w-6xl">
                 <p className="font-serif text-sm text-brown-900">{week.title}</p>
                 <p className="font-sans text-[0.6rem] text-brown-500">{week.subtitle}</p>
               </div>
@@ -285,7 +303,7 @@ export default function MarketingPage() {
           {/* Day selector */}
           {week && (
             <div className="border-b border-brown-50 bg-cream px-6 py-3">
-              <div className="mx-auto flex max-w-5xl gap-1 overflow-x-auto">
+              <div className="mx-auto flex max-w-6xl gap-1 overflow-x-auto">
                 {week.days.map((d, i) => (
                   <button
                     key={i}
@@ -304,7 +322,7 @@ export default function MarketingPage() {
 
           {/* Day content */}
           {day && (
-            <div className="mx-auto max-w-5xl px-6 py-8">
+            <div className="mx-auto max-w-6xl px-6 py-8">
               <div className="mb-6">
                 <h2 className="font-serif text-xl text-brown-900">{day.day}</h2>
                 <p className="mt-1 font-sans text-sm text-brown-500">{day.theme}</p>
@@ -319,116 +337,13 @@ export default function MarketingPage() {
         </>
       )}
 
-      {/* ─── TAB: CARROSSEIS PROFISSIONAIS ─────────────────────────────── */}
-      {mainTab === "carrosseis" && (
-        <div className="mx-auto max-w-5xl px-6 py-8">
-          <div className="mb-8">
-            <h2 className="font-serif text-xl text-brown-900">Carrosseis Profissionais</h2>
-            <p className="mt-1 font-sans text-sm text-brown-500">
-              Cada carrossel tem slides individuais com texto pronto. Recria no Canva com as cores e fontes indicadas.
-            </p>
-          </div>
-
-          <div className="space-y-6">
-            {professionalCarousels.map((carousel) => {
-              const isExpanded = expandedCarousel === carousel.id;
-              return (
-                <div key={carousel.id} className="rounded-2xl border border-brown-100 bg-white overflow-hidden">
-                  {/* Header */}
-                  <button
-                    onClick={() => setExpandedCarousel(isExpanded ? null : carousel.id)}
-                    className="flex w-full items-center justify-between px-6 py-5 text-left transition-colors hover:bg-cream/50"
-                  >
-                    <div>
-                      <div className="flex items-center gap-3">
-                        <span className="rounded-full bg-pink-50 px-3 py-1 font-sans text-[0.55rem] font-medium uppercase tracking-wider text-pink-600">
-                          {carousel.slides.length} slides
-                        </span>
-                        <span className="rounded-full bg-brown-50 px-3 py-1 font-sans text-[0.55rem] font-medium uppercase tracking-wider text-brown-500">
-                          Instagram
-                        </span>
-                      </div>
-                      <h3 className="mt-2 font-serif text-lg text-brown-900">{carousel.title}</h3>
-                      <p className="mt-1 font-sans text-xs text-brown-500">{carousel.description}</p>
-                    </div>
-                    <span className={`text-brown-400 transition-transform ${isExpanded ? "rotate-180" : ""}`}>
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M6 9l6 6 6-6" />
-                      </svg>
-                    </span>
-                  </button>
-
-                  {/* Expanded content */}
-                  {isExpanded && (
-                    <div className="border-t border-brown-100 px-6 py-6">
-                      {/* Canva specs */}
-                      <div className="mb-6 rounded-lg bg-cream p-4">
-                        <p className="font-sans text-[0.6rem] font-medium uppercase tracking-wider text-brown-500">Especificacoes Canva</p>
-                        <div className="mt-2 grid gap-2 sm:grid-cols-3">
-                          <div>
-                            <p className="font-sans text-[0.55rem] text-brown-400">Dimensoes</p>
-                            <p className="font-sans text-xs text-brown-700">{carousel.canvaSpecs.dimensions}</p>
-                          </div>
-                          <div>
-                            <p className="font-sans text-[0.55rem] text-brown-400">Fontes</p>
-                            <p className="font-sans text-xs text-brown-700">{carousel.canvaSpecs.fonts}</p>
-                          </div>
-                          <div>
-                            <p className="font-sans text-[0.55rem] text-brown-400">Cores</p>
-                            <div className="mt-1 flex gap-1">
-                              {carousel.canvaSpecs.colorPalette.map((color) => (
-                                <div
-                                  key={color}
-                                  className="h-5 w-5 rounded-full border border-brown-200"
-                                  style={{ backgroundColor: color }}
-                                  title={color}
-                                />
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Slide previews */}
-                      <p className="font-sans text-[0.6rem] font-medium uppercase tracking-wider text-brown-500">Slides</p>
-                      <div className="mt-3 flex gap-4 overflow-x-auto pb-4">
-                        {carousel.slides.map((slide, i) => (
-                          <SlidePreview key={i} slide={slide} index={i} />
-                        ))}
-                      </div>
-
-                      {/* Caption */}
-                      <div className="mt-6">
-                        <div className="flex items-center justify-between">
-                          <p className="font-sans text-[0.6rem] font-medium uppercase tracking-wider text-brown-500">Legenda</p>
-                          <button
-                            onClick={() => copyText(`carousel-${carousel.id}`, carousel.caption)}
-                            className="rounded-md bg-cream px-3 py-1 font-sans text-[0.55rem] text-brown-600 hover:bg-cream-dark"
-                          >
-                            {copiedId === `carousel-${carousel.id}` ? "Copiada!" : "Copiar legenda"}
-                          </button>
-                        </div>
-                        <pre className="mt-2 whitespace-pre-wrap rounded-lg bg-cream/50 p-4 font-sans text-[0.75rem] leading-relaxed text-brown-600">
-                          {carousel.caption}
-                        </pre>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      )}
-
       {/* ─── TAB: SCRIPTS DE REELS ─────────────────────────────────────── */}
       {mainTab === "reels" && (
-        <div className="mx-auto max-w-5xl px-6 py-8">
+        <div className="mx-auto max-w-6xl px-6 py-8">
           <div className="mb-8">
             <h2 className="font-serif text-xl text-brown-900">Scripts de Reels</h2>
             <p className="mt-1 font-sans text-sm text-brown-500">
               Cada script tem o hook (primeiros 3 segundos), cenas descritas, CTA e sugestao de musica.
-              Usa o CapCut Free para editar.
             </p>
           </div>
 
@@ -528,11 +443,11 @@ export default function MarketingPage() {
 
       {/* ─── TAB: GUIA DE PRODUCAO ─────────────────────────────────────── */}
       {mainTab === "producao" && (
-        <div className="mx-auto max-w-5xl px-6 py-8">
+        <div className="mx-auto max-w-6xl px-6 py-8">
           <div className="mb-8">
             <h2 className="font-serif text-xl text-brown-900">Guia de Producao</h2>
             <p className="mt-1 font-sans text-sm text-brown-500">
-              Tudo o que precisas para criar conteudo profissional. Dimensoes, cores, fontes, ferramentas e automacoes.
+              Dimensoes, cores, fontes, ferramentas e automacoes.
             </p>
           </div>
 
@@ -556,7 +471,7 @@ export default function MarketingPage() {
           <div className="mt-8 rounded-2xl border border-brown-100 bg-white p-6">
             <h3 className="font-serif text-lg text-brown-900">Links para screenshots</h3>
             <p className="mt-1 font-sans text-xs text-brown-500">
-              Abre estas paginas no telemovel e faz screenshot para usar nos carrosseis e reels.
+              Abre estas paginas no telemovel e faz screenshot para usar nos reels.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               {[
