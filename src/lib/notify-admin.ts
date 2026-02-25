@@ -2,10 +2,12 @@
  * Sistema de notificacoes para a autora (Vivianne)
  *
  * Envia notificacoes via:
- * 1. Webhook configuravel (Make.com, Zapier, n8n, etc.) → WhatsApp
- * 2. Supabase table `admin_notifications` para dashboard
+ * 1. Supabase table `admin_notifications` para dashboard
+ * 2. Email via Resend (se RESEND_API_KEY estiver configurada)
+ * 3. Webhook configuravel (Make.com, Zapier, n8n, etc.) → WhatsApp
  *
  * Configuracao (env vars):
+ *   RESEND_API_KEY — API key do Resend (resend.com, gratuito)
  *   ADMIN_NOTIFY_WEBHOOK_URL — URL do webhook (POST JSON)
  *   ADMIN_WHATSAPP_NUMBER — +258845243875
  */
@@ -14,6 +16,8 @@ import { createClient } from "@supabase/supabase-js";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+
+const ADMIN_EMAIL = "viv.saraiva@gmail.com";
 
 export type NotificationType =
   | "payment_proof"      // Comprovativo de pagamento recebido
@@ -58,7 +62,17 @@ export async function notifyAdmin(data: NotificationData): Promise<void> {
     console.error("[notify-admin] Erro ao guardar notificacao:", err);
   }
 
-  // 2. Enviar via webhook (se configurado)
+  // 2. Enviar email via Resend (se configurado)
+  const resendKey = process.env.RESEND_API_KEY;
+  if (resendKey) {
+    try {
+      await sendEmailViaResend(resendKey, data);
+    } catch (err) {
+      console.error("[notify-admin] Erro ao enviar email:", err);
+    }
+  }
+
+  // 3. Enviar via webhook (se configurado)
   const webhookUrl = process.env.ADMIN_NOTIFY_WEBHOOK_URL;
   if (webhookUrl) {
     try {
@@ -81,11 +95,65 @@ export async function notifyAdmin(data: NotificationData): Promise<void> {
     }
   }
 
-  // 3. Log (sempre)
+  // 4. Log (sempre)
   console.log(
     `[NOTIFICACAO ADMIN] ${type}: ${title} — ${message}`,
     details || ""
   );
+}
+
+/**
+ * Envia email de notificacao via Resend API (fetch directo, sem SDK)
+ * Gratuito ate 100 emails/dia em resend.com
+ */
+async function sendEmailViaResend(apiKey: string, data: NotificationData) {
+  const { title, message, details } = data;
+
+  // Construir corpo do email em HTML simples
+  let detailsHtml = "";
+  if (details) {
+    const rows = Object.entries(details)
+      .filter(([, v]) => v !== null && v !== undefined)
+      .map(([k, v]) => `<tr><td style="padding:4px 12px 4px 0;color:#666;">${k}</td><td style="padding:4px 0;font-weight:600;">${v}</td></tr>`)
+      .join("");
+    detailsHtml = `<table style="margin:16px 0;border-collapse:collapse;">${rows}</table>`;
+  }
+
+  const hora = new Date().toLocaleString("pt-PT", { timeZone: "Africa/Maputo" });
+
+  const html = `
+    <div style="font-family:Georgia,serif;max-width:500px;margin:0 auto;padding:24px;">
+      <h2 style="color:#1a1a1a;margin-bottom:8px;">${title}</h2>
+      <p style="color:#444;font-size:16px;line-height:1.6;">${message}</p>
+      ${detailsHtml}
+      <hr style="border:none;border-top:1px solid #e5e5e5;margin:20px 0;" />
+      <p style="color:#999;font-size:12px;">${hora} (Maputo)</p>
+    </div>
+  `;
+
+  const fromDomain = process.env.RESEND_FROM_DOMAIN;
+  const fromEmail = fromDomain
+    ? `Os 7 Veus <notificacoes@${fromDomain}>`
+    : "Os 7 Veus <onboarding@resend.dev>";
+
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      from: fromEmail,
+      to: [ADMIN_EMAIL],
+      subject: `[7 Veus] ${title}`,
+      html,
+    }),
+  });
+
+  if (!res.ok) {
+    const errBody = await res.text();
+    console.error("[notify-admin] Resend erro:", res.status, errBody);
+  }
 }
 
 /**
