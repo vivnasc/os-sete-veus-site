@@ -11,7 +11,7 @@ const navLinks: { href: string; label: string; highlight?: boolean; featured?: b
   { href: "/comprar", label: "Comprar" },
   { href: "/sobre", label: "Sobre" },
   { href: "/comunidade", label: "Ecos", highlight: true },
-  { href: "/livro-fisico", label: "Livro Físico", featured: true },
+  { href: "/comprar/livro", label: "Livro", featured: true },
 ];
 
 export default function Header() {
@@ -74,13 +74,13 @@ export default function Header() {
                 href="/autora/codigos"
                 className="rounded-md border border-sage/40 bg-sage/10 px-3 py-1.5 font-sans text-[0.65rem] uppercase tracking-[0.12em] text-sage-dark transition-colors hover:bg-sage/20"
               >
-                Codigos
+                Códigos
               </Link>
               <Link
                 href="/painel/marketing"
                 className="rounded-md border border-gold/40 bg-gold/10 px-3 py-1.5 font-sans text-[0.65rem] uppercase tracking-[0.12em] text-gold-dark transition-colors hover:bg-gold/20"
               >
-                Conteudo
+                Conteúdo
               </Link>
             </>
           )}
@@ -147,14 +147,14 @@ export default function Header() {
                   onClick={() => setIsOpen(false)}
                   className="rounded-md border border-sage/40 bg-sage/10 px-5 py-3 text-center font-sans text-sm uppercase tracking-[0.1em] text-sage-dark transition-colors hover:bg-sage/20"
                 >
-                  Codigos
+                  Códigos
                 </Link>
                 <Link
                   href="/painel/marketing"
                   onClick={() => setIsOpen(false)}
                   className="rounded-md border border-gold/40 bg-gold/10 px-5 py-3 text-center font-sans text-sm uppercase tracking-[0.1em] text-gold-dark transition-colors hover:bg-gold/20"
                 >
-                  Conteudo
+                  Conteúdo
                 </Link>
               </>
             )}

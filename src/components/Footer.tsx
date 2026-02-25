@@ -30,6 +30,7 @@ export default function Footer() {
               <Link href="/os-sete-veus" className="text-sm text-brown-300 hover:text-cream">Colecção Espelhos</Link>
               <Link href="/coleccao-nos" className="text-sm text-brown-300 hover:text-cream">Colecção Nós</Link>
               <Link href="/comprar" className="text-sm text-brown-300 hover:text-cream">Comprar</Link>
+              <Link href="/comprar/livro" className="text-sm text-brown-300 hover:text-cream">Livro Digital</Link>
               <Link href="/ecossistema" className="text-sm text-brown-300 hover:text-cream">Ecossistema</Link>
               <Link href="/sobre" className="text-sm text-brown-300 hover:text-cream">A Vivianne</Link>
               <Link href="/recursos" className="text-sm text-brown-300 hover:text-cream">Recursos Gratuitos</Link>
