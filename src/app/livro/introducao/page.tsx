@@ -295,29 +295,104 @@ export default function IntroducaoPage() {
             </div>
           )}
 
-          {/* Introdução — parágrafos com respiro e subtítulos visíveis */}
-          {seccaoAtiva === 'introducao' && (
-            <div className="space-y-6">
-              {prepararTextoLongo(livroData.introducao).map((item, index) => (
+          {/* Introdução — parágrafos com respiro, secção dos véus, subtítulos visíveis */}
+          {seccaoAtiva === 'introducao' && (() => {
+            const itens = prepararTextoLongo(livroData.introducao)
+            // Encontrar onde inserir a secção dos 7 véus (antes de "O Processo de Dissolução")
+            const idxProcesso = itens.findIndex(
+              i => i.tipo === 'subtitulo' && i.texto.includes('Processo')
+            )
+            const antes = idxProcesso >= 0 ? itens.slice(0, idxProcesso) : itens
+            const depois = idxProcesso >= 0 ? itens.slice(idxProcesso) : []
+
+            const coresVeu = [
+              'text-red-700 border-red-200 bg-red-50/50',
+              'text-orange-700 border-orange-200 bg-orange-50/50',
+              'text-amber-700 border-amber-200 bg-amber-50/50',
+              'text-green-700 border-green-200 bg-green-50/50',
+              'text-sky-700 border-sky-200 bg-sky-50/50',
+              'text-indigo-700 border-indigo-200 bg-indigo-50/50',
+              'text-purple-700 border-purple-200 bg-purple-50/50',
+            ]
+
+            return (
+              <div className="space-y-6">
+                {/* Texto antes dos véus */}
+                {antes.map((item, index) => (
+                  <motion.div
+                    key={`a-${index}`}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: Math.min(index * 0.03, 0.5) }}
+                  >
+                    {item.tipo === 'subtitulo' ? (
+                      <h2 className="mt-12 mb-4 text-2xl md:text-3xl font-serif font-semibold text-stone-900">
+                        {item.texto}
+                      </h2>
+                    ) : (
+                      <p className="text-lg leading-relaxed font-serif text-stone-800">
+                        {item.texto}
+                      </p>
+                    )}
+                  </motion.div>
+                ))}
+
+                {/* Os 7 Véus do Despertar */}
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: Math.min(index * 0.03, 0.5) }}
+                  transition={{ delay: 0.4 }}
+                  className="mt-16 mb-16"
                 >
-                  {item.tipo === 'subtitulo' ? (
-                    <h2 className="mt-12 mb-4 text-2xl md:text-3xl font-serif font-semibold text-stone-900">
-                      {item.texto}
-                    </h2>
-                  ) : (
-                    <p className="text-lg leading-relaxed font-serif text-stone-800">
-                      {item.texto}
-                    </p>
-                  )}
+                  <h2 className="text-2xl md:text-3xl font-serif font-semibold text-stone-900 text-center mb-12">
+                    Os 7 Véus do Despertar
+                  </h2>
+                  <div className="space-y-6">
+                    {livroData.veus.map((veu, vi) => (
+                      <motion.div
+                        key={veu.numero}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.5 + vi * 0.08 }}
+                        className={`border-l-2 pl-6 py-4 rounded-r-lg ${coresVeu[vi]}`}
+                      >
+                        <h3 className="text-lg font-serif font-semibold mb-2">
+                          {veu.numero}. {veu.nome}
+                        </h3>
+                        <p className="text-sm font-serif italic text-stone-600 mb-3">
+                          {veu.citacao}
+                        </p>
+                        <div className="flex flex-col gap-1 text-sm text-stone-700">
+                          <p><span className="font-medium">Encobre:</span> {veu.encobre}</p>
+                          <p><span className="font-medium">Revela:</span> {veu.revela}</p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
                 </motion.div>
-              ))}
-            </div>
-          )}
+
+                {/* Texto depois (O Processo de Dissolução...) */}
+                {depois.map((item, index) => (
+                  <motion.div
+                    key={`d-${index}`}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: Math.min(0.6 + index * 0.03, 1.2) }}
+                  >
+                    {item.tipo === 'subtitulo' ? (
+                      <h2 className="mt-12 mb-4 text-2xl md:text-3xl font-serif font-semibold text-stone-900">
+                        {item.texto}
+                      </h2>
+                    ) : (
+                      <p className="text-lg leading-relaxed font-serif text-stone-800">
+                        {item.texto}
+                      </p>
+                    )}
+                  </motion.div>
+                ))}
+              </div>
+            )
+          })()}
         </motion.div>
 
         {/* Navegação inferior */}
