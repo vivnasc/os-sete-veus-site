@@ -218,13 +218,17 @@ export default function ExportableSlide({
             </div>
           )}
 
-          {/* Subtle corner accent */}
-          <div
-            className="absolute right-0 top-0"
+          {/* Mandala watermark — brand identity */}
+          <img
+            src="/images/mandala-7veus.png"
+            alt=""
+            crossOrigin="anonymous"
+            className="absolute right-[30px] top-[30px]"
             style={{
-              width: 120,
-              height: 120,
-              background: `linear-gradient(135deg, ${slide.accent}15 0%, transparent 60%)`,
+              width: 64,
+              height: 64,
+              opacity: 0.15,
+              objectFit: "contain",
             }}
           />
         </div>
