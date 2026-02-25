@@ -150,6 +150,33 @@ function dividirParagrafoLongo(texto: string, maxChars: number): string[] {
   return resultado
 }
 
+// Renderizar texto com *italico* e glossário
+function renderTextoComFormato(
+  texto: string,
+  termosCapitulo: string[],
+  modoNoturno: boolean,
+  comGlossario: boolean
+): React.ReactNode {
+  // Split on *word* patterns
+  const parts = texto.split(/(\*[^*]+\*)/)
+
+  if (parts.length === 1) {
+    return comGlossario
+      ? aplicarGlossario(texto, termosCapitulo, modoNoturno)
+      : texto
+  }
+
+  return parts.map((part, i) => {
+    if (part.startsWith('*') && part.endsWith('*') && part.length > 2) {
+      return <em key={i}>{part.slice(1, -1)}</em>
+    }
+    if (comGlossario) {
+      return <React.Fragment key={i}>{aplicarGlossario(part, termosCapitulo, modoNoturno)}</React.Fragment>
+    }
+    return part
+  })
+}
+
 export default function CapituloPage() {
   const { user, loading } = useAuth()
   const { hasBookAccess, isLoading: accessLoading } = useAccess()
@@ -165,26 +192,11 @@ export default function CapituloPage() {
   const nivelCapitulo = niveisData[numeroVeu]?.find(n => n.capitulo_numero === numeroCapitulo) ?? null
 
   const { nivel, setNivel } = useNivelLeitura()
-  const [modoLeitura, setModoLeitura] = useState<'contemplativo' | 'normal'>(() => {
-    if (typeof window !== 'undefined') {
-      return (localStorage.getItem('reader-mode') as 'contemplativo' | 'normal') || 'contemplativo'
-    }
-    return 'contemplativo'
-  })
   const [modoNoturno, setModoNoturno] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('reader-night-mode') === 'true'
     }
     return false
-  })
-  const [mostrarPausa, setMostrarPausa] = useState(false)
-  const progressKey = `reader-progress-v${numeroVeu}-c${numeroCapitulo}`
-  const [paginaAtual, setPaginaAtual] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem(progressKey)
-      return saved ? parseInt(saved, 10) : 0
-    }
-    return 0
   })
   const endOfTextRef = useRef<HTMLDivElement>(null)
   const [showPlayer, setShowPlayer] = useState(false)
@@ -284,55 +296,9 @@ export default function CapituloPage() {
     return resultado
   }, [capitulo])
 
-  // Agrupar parágrafos em "páginas" para o modo contemplativo
-  // Cada página tem ~3-5 parágrafos (até ~1800 chars), com quebra nos subtítulos
-  const paginas = useMemo(() => {
-    const result: { texto: string; tipo: 'paragrafo' | 'subtitulo' }[][] = []
-    let paginaActual: { texto: string; tipo: 'paragrafo' | 'subtitulo' }[] = []
-    let charsNaPagina = 0
-
-    for (let i = 0; i < paragrafos.length; i++) {
-      const item = paragrafos[i]
-
-      // Subtítulo inicia nova página (se a página actual tem conteúdo)
-      if (item.tipo === 'subtitulo' && paginaActual.length > 0) {
-        result.push(paginaActual)
-        paginaActual = []
-        charsNaPagina = 0
-      }
-
-      paginaActual.push(item)
-      charsNaPagina += item.texto.length
-
-      // Fechar página se atingiu ~1800 chars e tem pelo menos 3 itens
-      if (charsNaPagina >= 1800 && paginaActual.length >= 3) {
-        result.push(paginaActual)
-        paginaActual = []
-        charsNaPagina = 0
-      }
-    }
-
-    if (paginaActual.length > 0) {
-      result.push(paginaActual)
-    }
-
-    return result
-  }, [paragrafos])
-
   // TTS: extract plain text from paragraphs
   const textosParaTTS = useMemo(() => paragrafos.map(p => p.texto), [paragrafos])
   const tts = useSpeechSynthesis(textosParaTTS)
-
-  // Map global paragraph index → page number (for contemplative mode sync)
-  const paragraphToPage = useMemo(() => {
-    const map: number[] = []
-    for (let pageIdx = 0; pageIdx < paginas.length; pageIdx++) {
-      for (let i = 0; i < paginas[pageIdx].length; i++) {
-        map.push(pageIdx)
-      }
-    }
-    return map
-  }, [paginas])
 
   // Mark chapter complete when reaching the end
   const marcarCompleto = useCallback(async () => {
@@ -360,46 +326,21 @@ export default function CapituloPage() {
     }
   }, [capituloCompleto, completionKey, progressSlug])
 
-  // Contemplative: mark complete when reaching last page
+  // Mark complete when scrolling to end of text
   useEffect(() => {
-    if (modoLeitura === 'contemplativo' && paginas.length > 0 && paginaAtual >= paginas.length - 1) {
-      marcarCompleto()
-    }
-  }, [paginaAtual, paginas.length, modoLeitura, marcarCompleto])
-
-  // Normal mode: mark complete when scrolling to end of text
-  useEffect(() => {
-    if (modoLeitura !== 'normal' || !endOfTextRef.current) return
+    if (!endOfTextRef.current) return
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) marcarCompleto() },
       { threshold: 0.5 }
     )
     observer.observe(endOfTextRef.current)
     return () => observer.disconnect()
-  }, [modoLeitura, marcarCompleto])
+  }, [marcarCompleto])
 
-  // Persist reading progress per chapter
-  useEffect(() => {
-    localStorage.setItem(progressKey, String(paginaAtual))
-  }, [paginaAtual, progressKey])
-
-  // Persist dark mode and reading mode
+  // Persist dark mode
   useEffect(() => {
     localStorage.setItem('reader-night-mode', String(modoNoturno))
   }, [modoNoturno])
-  useEffect(() => {
-    localStorage.setItem('reader-mode', modoLeitura)
-  }, [modoLeitura])
-
-  // Auto-advance contemplative pages when TTS progresses
-  useEffect(() => {
-    if (!showPlayer || modoLeitura !== 'contemplativo') return
-    const targetPage = paragraphToPage[tts.currentIndex]
-    if (targetPage !== undefined && targetPage !== paginaAtual) {
-      setPaginaAtual(targetPage)
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-  }, [tts.currentIndex, showPlayer, modoLeitura, paragraphToPage, paginaAtual])
 
   // Cores por véu — tons visivelmente distintos (nao usar -950, sao todos preto)
   const coresVeu = [
@@ -426,13 +367,6 @@ export default function CapituloPage() {
     }
   }, [user, loading, accessLoading, hasBookAccess, router])
 
-  // Mostrar pausa suave a cada 3 páginas (sem bloquear — dismiss imediato)
-  useEffect(() => {
-    if (paginaAtual > 0 && paginaAtual % 3 === 0 && modoLeitura === 'contemplativo') {
-      setMostrarPausa(true)
-    }
-  }, [paginaAtual, modoLeitura])
-
   if (loading || accessLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -450,21 +384,6 @@ export default function CapituloPage() {
 
   if (!veu || !capitulo) {
     return <div>Capítulo não encontrado</div>
-  }
-
-  // Próxima página
-  const proximaPagina = () => {
-    if (paginaAtual < paginas.length - 1) {
-      const newPage = paginaAtual + 1
-      setPaginaAtual(newPage)
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-
-      // Sync TTS to first paragraph of new page
-      if (showPlayer && (tts.isPlaying || tts.isPaused)) {
-        const firstParaOfPage = paginas.slice(0, newPage).reduce((sum, p) => sum + p.length, 0)
-        tts.goTo(firstParaOfPage)
-      }
-    }
   }
 
   // Capitulo anterior
@@ -488,7 +407,7 @@ export default function CapituloPage() {
 
   return (
     <div className={`min-h-screen ${modoNoturno ? 'bg-stone-950' : 'bg-stone-50'} transition-colors duration-500 ${showPlayer ? 'pb-20' : ''}`}>
-      {/* Header com controles — 2 linhas no mobile */}
+      {/* Header com controles */}
       <div className={`sticky top-0 z-40 backdrop-blur-sm border-b ${modoNoturno ? 'bg-stone-950/80 border-stone-800' : 'bg-white/80 border-stone-200'}`}>
         <div className="max-w-4xl mx-auto px-4 md:px-6 py-2 md:py-3">
           {/* Linha 1: navegacao + titulo */}
@@ -559,15 +478,9 @@ export default function CapituloPage() {
               </div>
             </div>
 
-            {/* Desktop: controles na mesma linha */}
+            {/* Desktop: controles */}
             <div className="hidden md:flex items-center gap-3">
               <NivelSelector nivel={nivel} onSelect={setNivel} modoNoturno={modoNoturno} />
-              <button
-                onClick={() => setModoLeitura(m => m === 'contemplativo' ? 'normal' : 'contemplativo')}
-                className={`text-xs px-3 py-1 rounded-full border transition-colors ${modoNoturno ? 'border-stone-600 hover:bg-stone-800' : 'border-stone-300 hover:bg-stone-100'}`}
-              >
-                {modoLeitura === 'contemplativo' ? 'Contemplativo' : 'Normal'}
-              </button>
               <button
                 onClick={() => setModoNoturno(!modoNoturno)}
                 className={`text-xs px-3 py-1 rounded-full border transition-colors ${modoNoturno ? 'border-stone-600 hover:bg-stone-800' : 'border-stone-300 hover:bg-stone-100'}`}
@@ -578,14 +491,7 @@ export default function CapituloPage() {
                 <button
                   onClick={() => {
                     if (showPlayer) { tts.stop(); setShowPlayer(false) }
-                    else {
-                      setShowPlayer(true)
-                      if (modoLeitura === 'contemplativo' && paginas.length > 0) {
-                        const firstParaOfPage = paginas.slice(0, paginaAtual).reduce((sum, p) => sum + p.length, 0)
-                        tts.goTo(firstParaOfPage)
-                        setTimeout(() => tts.play(), 50)
-                      } else { tts.play() }
-                    }
+                    else { setShowPlayer(true); tts.play() }
                   }}
                   className={`text-xs px-3 py-1 rounded-full border transition-colors ${
                     showPlayer
@@ -603,22 +509,6 @@ export default function CapituloPage() {
           <div className="flex md:hidden items-center justify-between mt-1.5 pt-1.5 border-t border-stone-200/50 dark:border-stone-700/50">
             <NivelSelector nivel={nivel} onSelect={setNivel} modoNoturno={modoNoturno} />
             <div className="flex items-center gap-1">
-              {/* Modo leitura icon */}
-              <button
-                onClick={() => setModoLeitura(m => m === 'contemplativo' ? 'normal' : 'contemplativo')}
-                className={`p-2 rounded-full transition-colors ${modoNoturno ? 'text-stone-400 hover:bg-stone-800' : 'text-stone-500 hover:bg-stone-100'}`}
-                title={modoLeitura === 'contemplativo' ? 'Modo Contemplativo' : 'Modo Normal'}
-              >
-                {modoLeitura === 'contemplativo' ? (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                  </svg>
-                ) : (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M4 6h16M4 12h16M4 18h16" />
-                  </svg>
-                )}
-              </button>
               {/* Modo noturno icon */}
               <button
                 onClick={() => setModoNoturno(!modoNoturno)}
@@ -640,14 +530,7 @@ export default function CapituloPage() {
                 <button
                   onClick={() => {
                     if (showPlayer) { tts.stop(); setShowPlayer(false) }
-                    else {
-                      setShowPlayer(true)
-                      if (modoLeitura === 'contemplativo' && paginas.length > 0) {
-                        const firstParaOfPage = paginas.slice(0, paginaAtual).reduce((sum, p) => sum + p.length, 0)
-                        tts.goTo(firstParaOfPage)
-                        setTimeout(() => tts.play(), 50)
-                      } else { tts.play() }
-                    }
+                    else { setShowPlayer(true); tts.play() }
                   }}
                   className={`p-2 rounded-full transition-colors ${
                     showPlayer
@@ -665,36 +548,6 @@ export default function CapituloPage() {
           </div>
         </div>
       </div>
-
-      {/* Pausa Contemplativa — suave, dismiss imediato */}
-      <AnimatePresence>
-        {mostrarPausa && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setMostrarPausa(false)}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm cursor-pointer"
-          >
-            <div className="text-center" onClick={(e) => e.stopPropagation()}>
-              <motion.div
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="text-white/80 text-3xl mb-4"
-              >
-                ⚬
-              </motion.div>
-              <p className="text-white/70 text-sm italic mb-6">Respira. Depois, avança.</p>
-              <button
-                onClick={() => setMostrarPausa(false)}
-                className="px-8 py-2.5 rounded-full bg-white/10 text-white/80 text-sm hover:bg-white/20 transition-colors"
-              >
-                Continuar
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Conteúdo Principal */}
       <div className="max-w-3xl mx-auto px-6 py-16">
@@ -825,224 +678,97 @@ export default function CapituloPage() {
           </div>
         )}
 
-        {/* Texto do Capítulo */}
-        {modoLeitura === 'normal' ? (
-          // Modo Normal: Todo o texto de uma vez
-          <div className="space-y-6">
-            {paragrafos.map((item, index) => (
-              <React.Fragment key={index}>
-                {item.tipo === 'subtitulo' ? (
-                  <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.05 }}
-                    className={`mt-12 mb-2 text-xl md:text-2xl font-serif font-semibold ${modoNoturno ? 'text-stone-200' : 'text-stone-800'} ${
-                      showPlayer && tts.currentIndex === index
-                        ? modoNoturno ? 'bg-stone-700/30 -mx-3 px-3 py-1 rounded-lg' : 'bg-stone-200/40 -mx-3 px-3 py-1 rounded-lg'
-                        : ''
-                    } transition-colors duration-300`}
-                  >
-                    {item.texto}
-                  </motion.h2>
-                ) : (
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.05 }}
-                    className={`text-xl md:text-xl leading-relaxed ${modoNoturno ? 'text-stone-300' : 'text-stone-700'} font-serif ${
-                      showPlayer && tts.currentIndex === index
-                        ? modoNoturno ? 'bg-stone-700/30 -mx-3 px-3 py-1 rounded-lg' : 'bg-stone-200/40 -mx-3 px-3 py-1 rounded-lg'
-                        : ''
-                    } transition-colors duration-300`}
-                  >
-                    {nivel !== 'arvore' && nivelCapitulo
-                      ? aplicarGlossario(item.texto, nivelCapitulo.termos_destacados, modoNoturno)
-                      : item.texto}
-                  </motion.p>
-                )}
-                {/* Notas contextuais (Raiz) */}
-                {nivel === 'raiz' && nivelCapitulo?.notas_contextuais
-                  .filter(n => n.paragrafo_indice === index)
-                  .map((nota, ni) => (
-                    <NotaContextual key={`nota-${index}-${ni}`} texto={nota.texto} modoNoturno={modoNoturno} />
-                  ))
-                }
-              </React.Fragment>
-            ))}
-            {/* Sentinel for completion detection */}
-            <div ref={endOfTextRef} className="h-1" />
-          </div>
-        ) : (
-          // Modo Contemplativo: Página por página (3-5 parágrafos agrupados)
-          <div className="min-h-[60vh] flex flex-col justify-between">
-            <motion.div
-              key={paginaAtual}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="space-y-6"
-            >
-              {paginas[paginaAtual]?.map((item, idx) => {
-                // Calculate the global paragraph index for contextual notes
-                const globalIdx = paginas.slice(0, paginaAtual).reduce((sum, p) => sum + p.length, 0) + idx
-                return (
-                  <React.Fragment key={idx}>
-                    {item.tipo === 'subtitulo' ? (
-                      <h2
-                        className={`text-xl md:text-3xl font-serif font-semibold ${idx > 0 ? 'mt-8' : ''} ${modoNoturno ? 'text-stone-200' : 'text-stone-800'} ${
-                          showPlayer && tts.currentIndex === globalIdx
-                            ? modoNoturno ? 'bg-stone-700/30 -mx-3 px-3 py-1 rounded-lg' : 'bg-stone-200/40 -mx-3 px-3 py-1 rounded-lg'
-                            : ''
-                        } transition-colors duration-300`}
-                      >
-                        {item.texto}
-                      </h2>
-                    ) : (
-                      <p
-                        className={`text-xl md:text-2xl leading-relaxed ${modoNoturno ? 'text-stone-300' : 'text-stone-700'} font-serif ${
-                          showPlayer && tts.currentIndex === globalIdx
-                            ? modoNoturno ? 'bg-stone-700/30 -mx-3 px-3 py-1 rounded-lg' : 'bg-stone-200/40 -mx-3 px-3 py-1 rounded-lg'
-                            : ''
-                        } transition-colors duration-300`}
-                      >
-                        {nivel !== 'arvore' && nivelCapitulo
-                          ? aplicarGlossario(item.texto, nivelCapitulo.termos_destacados, modoNoturno)
-                          : item.texto}
-                      </p>
-                    )}
-                    {nivel === 'raiz' && nivelCapitulo?.notas_contextuais
-                      .filter(n => n.paragrafo_indice === globalIdx)
-                      .map((nota, ni) => (
-                        <NotaContextual key={`nota-${globalIdx}-${ni}`} texto={nota.texto} modoNoturno={modoNoturno} />
-                      ))
-                    }
-                  </React.Fragment>
-                )
-              })}
-            </motion.div>
-
-            {/* Navegacao — pagina, capitulo, veu */}
-            <div className="mt-12 space-y-4">
-              {/* Pagina: anterior / contador / proximo */}
-              <div className="flex items-center justify-between">
-                <button
-                  onClick={() => {
-                    if (paginaAtual > 0) {
-                      setPaginaAtual(paginaAtual - 1)
-                      window.scrollTo({ top: 0, behavior: 'smooth' })
-                      if (showPlayer && (tts.isPlaying || tts.isPaused)) {
-                        const firstPara = paginas.slice(0, paginaAtual - 1).reduce((sum, p) => sum + p.length, 0)
-                        tts.goTo(firstPara)
-                      }
-                    }
-                  }}
-                  disabled={paginaAtual === 0}
-                  className={`px-4 py-2 rounded-full text-sm transition-all ${
-                    paginaAtual === 0
-                      ? 'opacity-30 cursor-not-allowed'
-                      : modoNoturno ? 'bg-stone-800 text-stone-300 hover:bg-stone-700' : 'bg-stone-200 text-stone-700 hover:bg-stone-300'
-                  }`}
+        {/* Texto do Capítulo — scroll contínuo */}
+        <div className="space-y-6">
+          {paragrafos.map((item, index) => (
+            <React.Fragment key={index}>
+              {item.tipo === 'subtitulo' ? (
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: Math.min(index * 0.03, 0.6) }}
+                  className={`mt-12 mb-2 text-xl md:text-2xl font-serif font-semibold ${modoNoturno ? 'text-stone-200' : 'text-stone-800'} ${
+                    showPlayer && tts.currentIndex === index
+                      ? modoNoturno ? 'bg-stone-700/30 -mx-3 px-3 py-1 rounded-lg' : 'bg-stone-200/40 -mx-3 px-3 py-1 rounded-lg'
+                      : ''
+                  } transition-colors duration-300`}
                 >
-                  ←
-                </button>
-                <span className={`text-sm ${modoNoturno ? 'text-stone-500' : 'text-stone-600'}`}>
-                  {paginaAtual + 1} / {paginas.length}
-                </span>
-                {paginaAtual < paginas.length - 1 ? (
-                  <button
-                    onClick={proximaPagina}
-                    className={`px-5 py-2 rounded-full text-sm ${modoNoturno ? 'bg-stone-800 text-stone-200 hover:bg-stone-700' : 'bg-stone-200 text-stone-800 hover:bg-stone-300'} transition-colors`}
-                  >
-                    Continuar →
-                  </button>
-                ) : (
-                  <Link href={proximoCapitulo()} scroll={true} onClick={() => window.scrollTo(0, 0)}>
-                    <span
-                      className={`inline-block px-5 py-2 rounded-full text-sm ${modoNoturno ? 'bg-purple-800 text-purple-200' : 'bg-purple-200 text-purple-800'} hover:opacity-80 transition-opacity`}
-                    >
-                      Proximo Cap. →
-                    </span>
-                  </Link>
-                )}
-              </div>
-
-              {/* Barra de progresso */}
-              <div className="w-full h-1 bg-stone-300 dark:bg-stone-700 rounded-full overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${((paginaAtual + 1) / paginas.length) * 100}%` }}
-                  className="h-full bg-gradient-to-r from-purple-500 to-stone-500"
-                />
-              </div>
-
-              {/* Capitulo anterior + Voltar ao veu */}
-              <div className="flex items-center justify-between pt-2">
-                {capituloAnterior() ? (
-                  <Link href={capituloAnterior()!} scroll={true} onClick={() => window.scrollTo(0, 0)}>
-                    <span className={`text-xs ${modoNoturno ? 'text-stone-600 hover:text-stone-400' : 'text-stone-400 hover:text-stone-600'} transition-colors`}>
-                      ← Cap. anterior
-                    </span>
-                  </Link>
-                ) : <span />}
-                <Link href={`/livro/veu/${numeroVeu}`}>
-                  <span className={`text-xs ${modoNoturno ? 'text-stone-600 hover:text-stone-400' : 'text-stone-400 hover:text-stone-600'} transition-colors`}>
-                    Veu {numeroVeu}
-                  </span>
-                </Link>
-                <Link href="/livro">
-                  <span className={`text-xs ${modoNoturno ? 'text-stone-600 hover:text-stone-400' : 'text-stone-400 hover:text-stone-600'} transition-colors`}>
-                    Mandala
-                  </span>
-                </Link>
-              </div>
-            </div>
-          </div>
-        )}
+                  {item.texto}
+                </motion.h2>
+              ) : (
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: Math.min(index * 0.03, 0.6) }}
+                  className={`text-xl md:text-xl leading-relaxed ${modoNoturno ? 'text-stone-300' : 'text-stone-700'} font-serif ${
+                    showPlayer && tts.currentIndex === index
+                      ? modoNoturno ? 'bg-stone-700/30 -mx-3 px-3 py-1 rounded-lg' : 'bg-stone-200/40 -mx-3 px-3 py-1 rounded-lg'
+                      : ''
+                  } transition-colors duration-300`}
+                >
+                  {renderTextoComFormato(
+                    item.texto,
+                    nivelCapitulo?.termos_destacados ?? [],
+                    modoNoturno,
+                    nivel !== 'arvore' && !!nivelCapitulo
+                  )}
+                </motion.p>
+              )}
+              {/* Notas contextuais (Raiz) */}
+              {nivel === 'raiz' && nivelCapitulo?.notas_contextuais
+                .filter(n => n.paragrafo_indice === index)
+                .map((nota, ni) => (
+                  <NotaContextual key={`nota-${index}-${ni}`} texto={nota.texto} modoNoturno={modoNoturno} />
+                ))
+              }
+            </React.Fragment>
+          ))}
+          {/* Sentinel for completion detection */}
+          <div ref={endOfTextRef} className="h-1" />
+        </div>
 
         {/* Espelho pessoal — provocacao intima no final do capitulo */}
         {nivelCapitulo?.espelho_pessoal && nivel !== 'arvore' && (
           <EspelhoPessoal texto={nivelCapitulo.espelho_pessoal} modoNoturno={modoNoturno} />
         )}
 
-        {/* Navegação (Modo Normal) */}
-        {modoLeitura === 'normal' && (
-          <div className="mt-16 space-y-4">
-            {/* Capitulo anterior / proximo */}
-            <div className="flex justify-between items-center">
-              {capituloAnterior() ? (
-                <Link
-                  href={capituloAnterior()!}
-                  scroll={true}
-                  onClick={() => window.scrollTo(0, 0)}
-                  className={`px-5 py-2 rounded-full text-sm ${modoNoturno ? 'bg-stone-800 text-stone-300 hover:bg-stone-700' : 'bg-stone-200 text-stone-700 hover:bg-stone-300'} transition-colors`}
-                >
-                  ← Cap. anterior
-                </Link>
-              ) : <span />}
-              <Link href={proximoCapitulo()} scroll={true} onClick={() => window.scrollTo(0, 0)}>
-                <span
-                  className={`inline-block px-6 py-2.5 rounded-full text-sm ${modoNoturno ? 'bg-purple-800 text-purple-200' : 'bg-purple-200 text-purple-800'} hover:opacity-80 transition-opacity`}
-                >
-                  Proximo Capitulo →
-                </span>
+        {/* Navegação */}
+        <div className="mt-16 space-y-4">
+          {/* Capitulo anterior / proximo */}
+          <div className="flex justify-between items-center">
+            {capituloAnterior() ? (
+              <Link
+                href={capituloAnterior()!}
+                scroll={true}
+                onClick={() => window.scrollTo(0, 0)}
+                className={`px-5 py-2 rounded-full text-sm ${modoNoturno ? 'bg-stone-800 text-stone-300 hover:bg-stone-700' : 'bg-stone-200 text-stone-700 hover:bg-stone-300'} transition-colors`}
+              >
+                ← Cap. anterior
               </Link>
-            </div>
-            {/* Links para veu e mandala */}
-            <div className="flex items-center justify-center gap-6">
-              <Link href={`/livro/veu/${numeroVeu}`}>
-                <span className={`text-xs ${modoNoturno ? 'text-stone-600 hover:text-stone-400' : 'text-stone-400 hover:text-stone-600'} transition-colors`}>
-                  Veu {numeroVeu}
-                </span>
-              </Link>
-              <span className={`text-xs ${modoNoturno ? 'text-stone-700' : 'text-stone-300'}`}>|</span>
-              <Link href="/livro">
-                <span className={`text-xs ${modoNoturno ? 'text-stone-600 hover:text-stone-400' : 'text-stone-400 hover:text-stone-600'} transition-colors`}>
-                  Mandala
-                </span>
-              </Link>
-            </div>
+            ) : <span />}
+            <Link href={proximoCapitulo()} scroll={true} onClick={() => window.scrollTo(0, 0)}>
+              <span
+                className={`inline-block px-6 py-2.5 rounded-full text-sm ${modoNoturno ? 'bg-purple-800 text-purple-200' : 'bg-purple-200 text-purple-800'} hover:opacity-80 transition-opacity`}
+              >
+                Proximo Capitulo →
+              </span>
+            </Link>
           </div>
-        )}
+          {/* Links para veu e mandala */}
+          <div className="flex items-center justify-center gap-6">
+            <Link href={`/livro/veu/${numeroVeu}`}>
+              <span className={`text-xs ${modoNoturno ? 'text-stone-600 hover:text-stone-400' : 'text-stone-400 hover:text-stone-600'} transition-colors`}>
+                Veu {numeroVeu}
+              </span>
+            </Link>
+            <span className={`text-xs ${modoNoturno ? 'text-stone-700' : 'text-stone-300'}`}>|</span>
+            <Link href="/livro">
+              <span className={`text-xs ${modoNoturno ? 'text-stone-600 hover:text-stone-400' : 'text-stone-400 hover:text-stone-600'} transition-colors`}>
+                Mandala
+              </span>
+            </Link>
+          </div>
+        </div>
       </div>
 
       {/* Drawer de Reflexões */}
