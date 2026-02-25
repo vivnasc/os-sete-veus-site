@@ -28,24 +28,28 @@ export async function POST(request: Request) {
     }
 
     // Verifica se já existe pedido pendente para este email
-    const { data: existingRequest } = await supabase
-      .from('livro_code_requests')
-      .select('id, status')
-      .eq('email', email)
-      .eq('status', 'pending')
-      .single()
+    // Usa admin client porque anon não tem SELECT no livro_code_requests
+    const adminClient = createSupabaseAdminClient()
+    if (adminClient) {
+      const { data: existingRequest } = await adminClient
+        .from('livro_code_requests')
+        .select('id, status')
+        .eq('email', email)
+        .eq('status', 'pending')
+        .single()
 
-    if (existingRequest) {
-      return NextResponse.json(
-        {
-          error: 'Já tens um pedido pendente. Vamos enviá-lo em breve!',
-        },
-        { status: 400 }
-      )
+      if (existingRequest) {
+        return NextResponse.json(
+          {
+            error: 'Já tens um pedido pendente. Vamos enviá-lo em breve!',
+          },
+          { status: 400 }
+        )
+      }
     }
 
     // Cria pedido
-    const { data: newRequest, error: insertError } = await supabase
+    const { error: insertError } = await supabase
       .from('livro_code_requests')
       .insert({
         full_name: fullName,
@@ -55,8 +59,6 @@ export async function POST(request: Request) {
         proof_url: proofUrl || null,
         status: 'pending',
       })
-      .select()
-      .single()
 
     if (insertError) {
       console.error('Erro ao criar pedido:', insertError)
@@ -76,7 +78,6 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       success: true,
-      request: newRequest,
       message: 'Pedido recebido! Vais receber o código em até 24h.',
     })
   } catch (error) {
