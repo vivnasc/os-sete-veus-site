@@ -3,11 +3,12 @@
  *
  * Envia notificacoes via:
  * 1. Supabase table `admin_notifications` para dashboard
- * 2. Email via Brevo (se BREVO_API_KEY estiver configurada)
+ * 2. Telegram bot (se TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID configurados)
  * 3. Webhook configuravel (Make.com, Zapier, n8n, etc.) → WhatsApp
  *
  * Configuracao (env vars):
- *   BREVO_API_KEY — API key do Brevo (brevo.com, 300 emails/dia gratis)
+ *   TELEGRAM_BOT_TOKEN — Token do bot Telegram (@BotFather)
+ *   TELEGRAM_CHAT_ID — Chat ID da Vivianne
  *   ADMIN_NOTIFY_WEBHOOK_URL — URL do webhook (POST JSON)
  *   ADMIN_WHATSAPP_NUMBER — +258845243875
  */
@@ -16,8 +17,6 @@ import { createClient } from "@supabase/supabase-js";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
-
-const ADMIN_EMAIL = "viv.saraiva@gmail.com";
 
 export type NotificationType =
   | "payment_proof"      // Comprovativo de pagamento recebido
@@ -62,13 +61,14 @@ export async function notifyAdmin(data: NotificationData): Promise<void> {
     console.error("[notify-admin] Erro ao guardar notificacao:", err);
   }
 
-  // 2. Enviar email via Brevo (se configurado)
-  const brevoKey = process.env.BREVO_API_KEY;
-  if (brevoKey) {
+  // 2. Enviar via Telegram bot (se configurado)
+  const telegramToken = process.env.TELEGRAM_BOT_TOKEN;
+  const telegramChatId = process.env.TELEGRAM_CHAT_ID;
+  if (telegramToken && telegramChatId) {
     try {
-      await sendEmailViaBrevo(brevoKey, data);
+      await sendTelegramNotification(telegramToken, telegramChatId, data);
     } catch (err) {
-      console.error("[notify-admin] Erro ao enviar email:", err);
+      console.error("[notify-admin] Erro ao enviar Telegram:", err);
     }
   }
 
@@ -103,51 +103,58 @@ export async function notifyAdmin(data: NotificationData): Promise<void> {
 }
 
 /**
- * Envia email de notificacao via Brevo API (fetch directo, sem SDK)
- * Gratuito ate 300 emails/dia em brevo.com
+ * Envia notificacao via Telegram Bot API (gratuito, ilimitado)
+ * Cria bot em 30s via @BotFather no Telegram
  */
-async function sendEmailViaBrevo(apiKey: string, data: NotificationData) {
-  const { title, message, details } = data;
+async function sendTelegramNotification(
+  botToken: string,
+  chatId: string,
+  data: NotificationData
+) {
+  const { type, title, message, details } = data;
 
-  let detailsHtml = "";
+  const icon: Record<string, string> = {
+    payment_proof: "PAGAMENTO",
+    payment_created: "NOVO PEDIDO",
+    code_request: "PEDIDO CODIGO",
+    code_redeemed: "CODIGO RESGATADO",
+    special_link_used: "LINK USADO",
+    new_member: "NOVO MEMBRO",
+    general: "ALERTA",
+  };
+
+  let text = `*${icon[type] || "ALERTA"}*\n${title}\n\n${message}`;
+
   if (details) {
-    const rows = Object.entries(details)
-      .filter(([, v]) => v !== null && v !== undefined)
-      .map(([k, v]) => `<tr><td style="padding:4px 12px 4px 0;color:#666;">${k}</td><td style="padding:4px 0;font-weight:600;">${v}</td></tr>`)
-      .join("");
-    detailsHtml = `<table style="margin:16px 0;border-collapse:collapse;">${rows}</table>`;
+    text += "\n";
+    for (const [key, value] of Object.entries(details)) {
+      if (value !== null && value !== undefined) {
+        text += `\n*${key}:* ${value}`;
+      }
+    }
   }
 
-  const hora = new Date().toLocaleString("pt-PT", { timeZone: "Africa/Maputo" });
-
-  const htmlContent = `
-    <div style="font-family:Georgia,serif;max-width:500px;margin:0 auto;padding:24px;">
-      <h2 style="color:#1a1a1a;margin-bottom:8px;">${title}</h2>
-      <p style="color:#444;font-size:16px;line-height:1.6;">${message}</p>
-      ${detailsHtml}
-      <hr style="border:none;border-top:1px solid #e5e5e5;margin:20px 0;" />
-      <p style="color:#999;font-size:12px;">${hora} (Maputo)</p>
-    </div>
-  `;
-
-  const res = await fetch("https://api.brevo.com/v3/smtp/email", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      "api-key": apiKey,
-    },
-    body: JSON.stringify({
-      sender: { name: "Os Sete Veus", email: ADMIN_EMAIL },
-      to: [{ email: ADMIN_EMAIL, name: "Vivianne" }],
-      subject: `[7 Veus] ${title}`,
-      htmlContent,
-    }),
+  const hora = new Date().toLocaleString("pt-PT", {
+    timeZone: "Africa/Maputo",
   });
+  text += `\n\n${hora}`;
+
+  const res = await fetch(
+    `https://api.telegram.org/bot${botToken}/sendMessage`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text,
+        parse_mode: "Markdown",
+      }),
+    }
+  );
 
   if (!res.ok) {
     const errBody = await res.text();
-    console.error("[notify-admin] Brevo erro:", res.status, errBody);
+    console.error("[notify-admin] Telegram erro:", res.status, errBody);
   }
 }
 
