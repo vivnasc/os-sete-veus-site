@@ -281,15 +281,19 @@ export default function CarouselExporter({
                     </div>
                   )}
 
-                  {/* Corner accent */}
-                  <div
+                  {/* Mandala watermark — brand identity */}
+                  <img
+                    src="/images/mandala-7veus.png"
+                    alt=""
+                    crossOrigin="anonymous"
                     style={{
                       position: "absolute",
-                      right: 0,
-                      top: 0,
-                      width: 120,
-                      height: 120,
-                      background: `linear-gradient(135deg, ${slide.accent}15 0%, transparent 60%)`,
+                      right: 30,
+                      top: 30,
+                      width: 64,
+                      height: 64,
+                      opacity: 0.15,
+                      objectFit: "contain",
                     }}
                   />
                 </div>

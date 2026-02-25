@@ -1,0 +1,24 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Entrar",
+  description:
+    "Entra na tua conta Os Sete Veus. Acede a leitura interactiva, diario reflexivo e comunidade.",
+  openGraph: {
+    title: "Entrar ~ Os Sete Veus",
+    description:
+      "Entra na tua conta e continua a tua jornada de autoconhecimento.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Os Sete Veus — Entrar na plataforma",
+      },
+    ],
+  },
+};
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return children;
+}

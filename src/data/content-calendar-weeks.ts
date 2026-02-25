@@ -9,6 +9,8 @@ export type CarouselSlide = {
   title: string;
   body: string;
   footer?: string;
+  /** Background image path (from /public). Rendered blurred behind the color overlay. */
+  bgImage?: string;
 };
 
 export type ReelScript = {
@@ -167,15 +169,15 @@ const week1: WeekPlan = {
             bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", format: "square",
             title: "O teu livro\nabre portas que ainda\nn\u00e3o conheces.",
             body: "Tens Os 7 V\u00e9us do Despertar?\n\nRegista o teu interesse\ne recebe acesso \u00e0\nplataforma digital completa.\n\nGratuito.",
-            footer: "seteveus.space/acesso-digital",
+            footer: "seteveus.space/pedir-codigo",
             highlight: "Leitores do livro",
           },
-          caption: "Se tens o livro f\u00edsico Os 7 V\u00e9us do Despertar, tens direito a uma experi\u00eancia digital completa.\n\nLeitura integrada, di\u00e1rio de reflex\u00e3o, comunidade e muito mais.\n\nRegista o teu interesse: seteveus.space/acesso-digital\n\n#OsSeteV\u00e9us #LivroF\u00edsico #AcessoDigital",
+          caption: "Se tens o livro f\u00edsico Os 7 V\u00e9us do Despertar, tens direito a uma experi\u00eancia digital completa.\n\nLeitura integrada, di\u00e1rio de reflex\u00e3o, comunidade e muito mais.\n\nRegista o teu interesse: seteveus.space/pedir-codigo\n\n#OsSeteV\u00e9us #LivroF\u00edsico #AcessoDigital",
         },
         {
           platform: "whatsapp",
           type: "Broadcast",
-          broadcast: "Ol\u00e1! Se tens o livro f\u00edsico Os 7 V\u00e9us do Despertar, tenho uma novidade:\n\nA plataforma digital foi redesenhada e tens direito a acesso gratuito. Leitura integrada, di\u00e1rio de reflex\u00e3o, comunidade e muito mais.\n\nRegista o teu interesse aqui e envio-te o c\u00f3digo:\nseteveus.space/acesso-digital\n\nDemora menos de 1 minuto. Sem compromisso.\n\n~ Vivianne",
+          broadcast: "Ol\u00e1! Se tens o livro f\u00edsico Os 7 V\u00e9us do Despertar, tenho uma novidade:\n\nA plataforma digital foi redesenhada e tens direito a acesso gratuito. Leitura integrada, di\u00e1rio de reflex\u00e3o, comunidade e muito mais.\n\nRegista o teu interesse aqui e envio-te o c\u00f3digo:\nseteveus.space/pedir-codigo\n\nDemora menos de 1 minuto. Sem compromisso.\n\n~ Vivianne",
         },
       ],
     },
@@ -524,15 +526,15 @@ const week4: WeekPlan = {
             bg: "#c9b896", text: "#3d3630", accent: "#f7f5f0", format: "square",
             title: "Do livro f\u00edsico\n\u00e0 experi\u00eancia digital.",
             body: "Se j\u00e1 tens\nOs 7 V\u00e9us do Despertar,\nregista o teu interesse\ne recebe o c\u00f3digo de acesso\n\u00e0 plataforma completa.",
-            footer: "seteveus.space/acesso-digital",
+            footer: "seteveus.space/pedir-codigo",
             highlight: "Gratuito",
           },
-          caption: "Tens o livro f\u00edsico? Regista o teu interesse e recebe acesso gratuito \u00e0 plataforma digital.\n\nseteveus.space/acesso-digital\n\n#OsSeteV\u00e9us #AcessoDigital",
+          caption: "Tens o livro f\u00edsico? Regista o teu interesse e recebe acesso gratuito \u00e0 plataforma digital.\n\nseteveus.space/pedir-codigo\n\n#OsSeteV\u00e9us #AcessoDigital",
         },
         {
           platform: "whatsapp",
           type: "Broadcast",
-          broadcast: "Tens o livro Os 7 V\u00e9us do Despertar?\n\nA plataforma digital est\u00e1 completamente nova. E tens acesso gratuito.\n\nseteveus.space/acesso-digital",
+          broadcast: "Tens o livro Os 7 V\u00e9us do Despertar?\n\nA plataforma digital est\u00e1 completamente nova. E tens acesso gratuito.\n\nseteveus.space/pedir-codigo",
         },
       ],
     },
@@ -1077,7 +1079,7 @@ const week7: WeekPlan = {
         {
           platform: "whatsapp",
           type: "Broadcast",
-          broadcast: "Sabias que se tens o livro fisico Os 7 Veus do Despertar, tens acesso gratuito a plataforma digital?\n\nRegistar: seteveus.space/acesso-digital\n\n~ Vivianne",
+          broadcast: "Sabias que se tens o livro fisico Os 7 Veus do Despertar, tens acesso gratuito a plataforma digital?\n\nRegistar: seteveus.space/pedir-codigo\n\n~ Vivianne",
         },
       ],
     },
@@ -1251,7 +1253,7 @@ const week8: WeekPlan = {
             body: "",
             footer: "Swipe ~",
           },
-          notes: "SLIDES DO CARROSSEL:\n\nSlide 1 (capa): \"Perguntas que nos fazem sempre\"\n\nSlide 2: \"E um livro?\"\n\"Nao. E uma experiencia de leitura imersiva com ficcao, respiracao guiada, diario e espelho pessoal.\"\n\nSlide 3: \"Preciso ler por ordem?\"\n\"Sim. Os capitulos desbloqueiam sequencialmente. Cada um prepara o proximo.\"\n\nSlide 4: \"Como pago em Mocambique?\"\n\"M-Pesa ou Millenium BIM. Envias o comprovativo e confirmamos em 24h.\"\n\nSlide 5: \"Tenho o livro fisico. Tenho acesso?\"\n\"Sim! Regista em seteveus.space/acesso-digital e recebe o codigo.\"\n\nSlide 6 (CTA): Fundo #3d3630\n\"Mais perguntas? Fala connosco no chatbot da plataforma.\nseteveus.space\"",
+          notes: "SLIDES DO CARROSSEL:\n\nSlide 1 (capa): \"Perguntas que nos fazem sempre\"\n\nSlide 2: \"E um livro?\"\n\"Nao. E uma experiencia de leitura imersiva com ficcao, respiracao guiada, diario e espelho pessoal.\"\n\nSlide 3: \"Preciso ler por ordem?\"\n\"Sim. Os capitulos desbloqueiam sequencialmente. Cada um prepara o proximo.\"\n\nSlide 4: \"Como pago em Mocambique?\"\n\"M-Pesa ou Millenium BIM. Envias o comprovativo e confirmamos em 24h.\"\n\nSlide 5: \"Tenho o livro fisico. Tenho acesso?\"\n\"Sim! Regista em seteveus.space/pedir-codigo e recebe o codigo.\"\n\nSlide 6 (CTA): Fundo #3d3630\n\"Mais perguntas? Fala connosco no chatbot da plataforma.\nseteveus.space\"",
           caption: "As perguntas que nos fazem sempre:\n\nE um livro? Nao, e uma experiencia.\nPreciso ler por ordem? Sim.\nComo pago em Mocambique? M-Pesa ou BIM.\nTenho o livro fisico, tenho acesso? Sim!\n\nMais perguntas? seteveus.space\n\n#OsSeteVeus #FAQ #Perguntas #Autoconhecimento",
         },
         {
@@ -1452,11 +1454,11 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     title: "O que sao Os Sete Veus?",
     description: "Carrossel educativo para quem nao conhece o projecto. Ideal para primeiro contacto.",
     slides: [
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Ja sentiste que a vida\nque tens nao foi\na que escolheste?", body: "", footer: "" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Ja sentiste que a vida\nque tens nao foi\na que escolheste?", body: "", footer: "", bgImage: "/images/mandala-7veus.png" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Os Sete Veus\ndo Despertar", body: "Sao 7 historias de ficcao\nonde te reconheces.\n\nCada historia revela\num veu que usas\nsem saber.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", title: "Nao e um livro.\nE uma experiencia.", body: "Les. Respiras.\nReflectes. Escreves.\n\nCada capitulo tem pausas\nde respiracao guiada\ne um diario pessoal.", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Os 7 Veus:", body: "1. Ilusao — a vida que nao escolheste\n2. Medo — o que nao fazes por medo\n3. Culpa — o castigo de quereres mais\n4. Identidade — a mascara que usas\n5. Controlo — o que seguras a mais\n6. Desejo — o que procuras fora\n7. Separacao — o que separa de ti", footer: "" },
-      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Comeca pelo teste\ngratuito.", body: "3 minutos.\n7 perguntas.\nDescobre qual veu\nte esconde.", footer: "seteveus.space/recursos/teste" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", title: "Nao e um livro.\nE uma experiencia.", body: "Les. Respiras.\nReflectes. Escreves.\n\nCada capitulo tem pausas\nde respiracao guiada\ne um diario pessoal.", footer: "", bgImage: "/prints/leitura-capitulo.jpeg" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Os 7 Veus:", body: "1. Ilusao — a vida que nao escolheste\n2. Medo — o que nao fazes por medo\n3. Culpa — o castigo de quereres mais\n4. Identidade — a mascara que usas\n5. Controlo — o que seguras a mais\n6. Desejo — o que procuras fora\n7. Separacao — o que separa de ti", footer: "", bgImage: "/prints/dashboard-membro.jpeg" },
+      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Comeca pelo teste\ngratuito.", body: "3 minutos.\n7 perguntas.\nDescobre qual veu\nte esconde.", footer: "seteveus.space/recursos/teste", bgImage: "/prints/quiz-qual-veu.jpeg" },
     ],
     caption: "Ja sentiste que a vida que tens nao foi a que escolheste?\n\nOs Sete Veus do Despertar sao 7 historias de ficcao onde te reconheces. Cada historia revela um veu que usas sem saber.\n\nNao e um livro. E uma experiencia: les, respiras, reflectes, escreves.\n\nComeca pelo teste gratuito (3 min):\nseteveus.space/recursos/teste\n\n#OsSeteVeus #Autoconhecimento #FiccaoPsicologica #DesenvolvimentoPessoal #LeituraTransformadora",
     canvaSpecs: {
@@ -1470,11 +1472,11 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     title: "O Espelho da Ilusao — 5 citacoes",
     description: "Carrossel de citacoes reais do livro. Cada slide e uma citacao que para o scroll.",
     slides: [
-      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "5 frases que mudam\na forma como te ves.", body: "", footer: "O Espelho da Ilusao" },
+      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "5 frases que mudam\na forma como te ves.", body: "", footer: "O Espelho da Ilusao", bgImage: "/images/espelho-ilusao.png" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "\"Quando foi que\nescolhi tomar cafe\nem vez de cha?\"", body: "Uma pergunta absurda\nque muda tudo.", footer: "" },
       { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "\"Via, mas nao sentia.\nRegistava, mas nao\nparticipava.\"", body: "Como quem assiste\na um espectaculo\npor tras de uma\njanela fechada.", footer: "" },
       { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "\"Nao era que nao\ntivesse opiniao.\nEra que a sua primeira\nreaccao nunca era\no que verdadeiramente\npensava.\"", body: "", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "\"Perguntar,\nmesmo tarde,\ne o primeiro gesto\nde se escolher.\"", body: "", footer: "seteveus.space" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "\"Perguntar,\nmesmo tarde,\ne o primeiro gesto\nde se escolher.\"", body: "", footer: "seteveus.space", bgImage: "/images/mandala-7veus.png" },
     ],
     caption: "5 frases d'O Espelho da Ilusao que mudam a forma como te ves.\n\nGuarda esta publicacao. Volta quando precisares.\n\nseteveus.space/comprar/espelhos\n\n#OsSeteVeus #EspelhoDaIlusao #CitacoesLiterarias #FiccaoPsicologica #Autoconhecimento",
     canvaSpecs: {
@@ -1488,10 +1490,10 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     title: "Livro vs Experiencia — o que nos somos",
     description: "Carrossel comparativo que mostra a diferenca entre um livro normal e a experiencia imersiva.",
     slides: [
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Isto nao e um livro.", body: "", footer: "" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Isto nao e um livro.", body: "", footer: "", bgImage: "/images/mandala-7veus.png" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "Um livro normal:", body: "Les do inicio ao fim.\nFechas.\nPassas ao proximo.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "A nossa experiencia:", body: "Les um capitulo.\nRespiras.\nEscreves no teu diario.\nSentes.\nSo depois avanças.", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "Incluido:", body: "7 capitulos de ficcao\nRespiração guiada\nDiario de reflexao\nComunidade anonima\nChatbot de apoio 24/7", footer: "" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "A nossa experiencia:", body: "Les um capitulo.\nRespiras.\nEscreves no teu diario.\nSentes.\nSo depois avanças.", footer: "", bgImage: "/prints/leitura-capitulo.jpeg" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "Incluido:", body: "7 capitulos de ficcao\nRespiração guiada\nDiario de reflexao\nComunidade anonima\nChatbot de apoio 24/7", footer: "", bgImage: "/prints/experiencia-funcionalidades.jpeg" },
       { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "$29 USD / 1.885 MZN\nAcesso vitalicio.", body: "Comeca hoje.", footer: "seteveus.space/comprar/espelhos" },
     ],
     caption: "Isto nao e um livro. E uma experiencia.\n\nA diferenca? Num livro les e fechas. Na nossa experiencia, les, respiras, escreves, sentes — e so depois avancas.\n\nInclui:\n— 7 capitulos de ficcao\n— Respiracao guiada\n— Diario de reflexao\n— Comunidade anonima\n— Chatbot de apoio\n\n$29 USD / 1.885 MZN. Acesso vitalicio.\n\nseteveus.space/comprar/espelhos\n\n#OsSeteVeus #ExperienciaImersiva #LeituraTransformadora",
@@ -1506,14 +1508,14 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     title: "Tens o livro fisico? Descobre o que mais te espera",
     description: "Carrossel para o funil do livro fisico. Mostra o valor do acesso digital gratuito.",
     slides: [
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Tens Os 7 Veus\ndo Despertar?", body: "O teu livro\nabre portas\nque ainda nao conheces.", footer: "" },
+      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Tens Os 7 Veus\ndo Despertar?", body: "O teu livro\nabre portas\nque ainda nao conheces.", footer: "", bgImage: "/images/espelho-ilusao.png" },
       { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "O que ganhas\ncom o acesso digital:", body: "", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "1. Leitura integrada", body: "O Espelho da Ilusao com\npausas de reflexao,\nrespiracao guiada e\ndiario pessoal.\n\nUma experiencia diferente\nde ler um livro.", footer: "" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "1. Leitura integrada", body: "O Espelho da Ilusao com\npausas de reflexao,\nrespiracao guiada e\ndiario pessoal.\n\nUma experiencia diferente\nde ler um livro.", footer: "", bgImage: "/prints/leitura-capitulo.jpeg" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "2. Comunidade anonima", body: "Ecos: um espaco onde\nas vozes se encontram.\nReflex\u00f5es partilhadas.\nTudo impermanente.", footer: "" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "3. Novos espelhos\na precos exclusivos", body: "A medida que novos\nEspelhos sao publicados,\nrecebes acesso prioritario\ne desconto como leitor.", footer: "" },
-      { bg: "#c9b896", text: "#3d3630", accent: "#f7f5f0", title: "Gratuito.\nSem compromisso.", body: "Pede o teu codigo\nem menos de 1 minuto.", footer: "seteveus.space/acesso-digital" },
+      { bg: "#c9b896", text: "#3d3630", accent: "#f7f5f0", title: "Gratuito.\nSem compromisso.", body: "Pede o teu codigo\nem menos de 1 minuto.", footer: "seteveus.space/pedir-codigo" },
     ],
-    caption: "Tens o livro fisico Os 7 Veus do Despertar?\n\nO teu livro abre portas que ainda nao conheces:\n\n— Leitura integrada com pausas de reflexao\n— Diario pessoal e respiracao guiada\n— Comunidade anonima\n— Acesso prioritario a novos Espelhos\n\nTudo gratuito. Sem compromisso.\nPede o teu codigo em menos de 1 minuto:\nseteveus.space/acesso-digital\n\n#OsSeteVeus #LivroFisico #AcessoDigital #Autoconhecimento",
+    caption: "Tens o livro fisico Os 7 Veus do Despertar?\n\nO teu livro abre portas que ainda nao conheces:\n\n— Leitura integrada com pausas de reflexao\n— Diario pessoal e respiracao guiada\n— Comunidade anonima\n— Acesso prioritario a novos Espelhos\n\nTudo gratuito. Sem compromisso.\nPede o teu codigo em menos de 1 minuto:\nseteveus.space/pedir-codigo\n\n#OsSeteVeus #LivroFisico #AcessoDigital #Autoconhecimento",
     canvaSpecs: {
       dimensions: "1080x1080px (quadrado)",
       fonts: "Titulo: Playfair Display / Corpo: Inter",
@@ -1525,7 +1527,7 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     title: "Os 7 Veus — um por um",
     description: "Carrossel educativo. Cada slide apresenta um veu com frase-chave. Altamente guardavel.",
     slides: [
-      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "Os 7 Veus\nque te escondem\nde ti mesma.", body: "", footer: "Guarda esta publicacao." },
+      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "Os 7 Veus\nque te escondem\nde ti mesma.", body: "", footer: "Guarda esta publicacao.", bgImage: "/images/mandala-7veus.png" },
       { bg: "#c9b896", text: "#3d3630", accent: "#f7f5f0", title: "1. Ilusao", body: "A vida que construiste\nsem perguntar\nse era a que querias.", footer: "" },
       { bg: "#8b9b8e", text: "#f7f5f0", accent: "#ebe7df", title: "2. Medo", body: "Sabes o que queres.\nMas o medo\ndecide antes de ti.", footer: "" },
       { bg: "#c97070", text: "#f7f5f0", accent: "#ebe7df", title: "3. Culpa", body: "Castigas-te\npor quereres mais.\nComo se merecesses\nmenos.", footer: "" },
@@ -1547,8 +1549,8 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     title: "Como funciona a experiencia digital",
     description: "Passo a passo visual. Ideal para quem nao percebe o que e a plataforma.",
     slides: [
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Como funciona\na experiencia?", body: "3 passos simples.\nLes. Sentes. Avanças.", footer: "seteveus.space" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "1. Escolhe o teu\nprimeiro Espelho", body: "O Espelho da Ilusao\nja esta disponivel.\n\n7 capitulos de ficcao\nonde a Sara descobre\nque a vida que tem\nnao e a que escolheu.", footer: "" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Como funciona\na experiencia?", body: "3 passos simples.\nLes. Sentes. Avanças.", footer: "seteveus.space", bgImage: "/images/mandala-7veus.png" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "1. Escolhe o teu\nprimeiro Espelho", body: "O Espelho da Ilusao\nja esta disponivel.\n\n7 capitulos de ficcao\nonde a Sara descobre\nque a vida que tem\nnao e a que escolheu.", footer: "", bgImage: "/images/espelho-ilusao.png" },
       { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "2. Le ao teu ritmo", body: "Cada capitulo tem:\n\n~ Narrativa imersiva\n~ Pausa de respiracao\n~ Reflexao guiada\n~ Diario pessoal\n~ Checklist de despertar", footer: "" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "3. Desbloqueia\no que vem a seguir", body: "Ao completar o Espelho,\ndesbloqueias o No:\numa segunda historia\nque so faz sentido\ndepois de viveres a primeira.", footer: "" },
       { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Bonus:", body: "Comunidade anonima\nonde partilhas reflexoes\nsem julgamento.\n\nChatbot de apoio 24/7\ncom a voz da autora.", footer: "" },
@@ -1566,7 +1568,7 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     title: "O que dizem as leitoras",
     description: "Testemunhos reais (anonimos) da comunidade. Social proof poderoso.",
     slides: [
-      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "O que dizem\nas leitoras.", body: "", footer: "Testemunhos reais. Nomes guardados." },
+      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "O que dizem\nas leitoras.", body: "", footer: "Testemunhos reais. Nomes guardados.", bgImage: "/prints/comunidade-marcas-caminho.jpeg" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "\"Sai do modo\nautomatico.\nNao sei para onde vou\nmas pelo menos\nestou acordada.\"", body: "", footer: "~ leitora anonima, Veu 1" },
       { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "\"Chorei no banho.\nOutra vez.\nMas desta vez\nnao foi por tristeza.\nFoi por reconhecimento.\"", body: "", footer: "~ leitora anonima, Veu 1" },
       { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "\"O meu marido\nperguntou: estas bem?\nE eu disse que sim.\nAutomaticamente.\"", body: "", footer: "~ leitora anonima, Veu 1" },
@@ -1585,7 +1587,7 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     title: "Sara e Helena — O No da Heranca",
     description: "Carrossel emocional sobre a relacao mae-filha. Para promover o No (readers que completaram o Espelho).",
     slides: [
-      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "Ha coisas que\numa mae nunca diz.", body: "", footer: "" },
+      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "Ha coisas que\numa mae nunca diz.", body: "", footer: "", bgImage: "/images/capa-no-heran\u00e7a2.png" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Sara viu o veu.", body: "Percebeu que a vida\nque tinha nao era\na que tinha escolhido.\n\nMas ha um silencio\nque vem de antes dela.", footer: "" },
       { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Helena sabia.", body: "A mae sempre soube.\nViu os mesmos sinais.\nCalou os mesmos medos.\nEsperou anos.", footer: "" },
       { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "\"Agora que Sara\nacordou,\nHelena tem algo\npara lhe dizer.\"", body: "", footer: "" },
@@ -1603,7 +1605,7 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     title: "5 recursos gratuitos para comecar",
     description: "Carrossel de valor. Mostra todos os recursos gratis disponiveis (PDFs, teste, audios).",
     slides: [
-      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "5 recursos gratuitos\npara comecar\na tua jornada.", body: "", footer: "Sem compromisso. Sem email." },
+      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "5 recursos gratuitos\npara comecar\na tua jornada.", body: "", footer: "Sem compromisso. Sem email.", bgImage: "/images/mandala-7veus.png" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "1. Teste:\nQual veu te esconde?", body: "3 minutos. 7 perguntas.\nDescobre o veu que mais\nte influencia agora.\n\nNao da respostas —\nda perguntas.", footer: "seteveus.space/recursos/teste" },
       { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "2. As 7 Perguntas\ndo Despertar", body: "Uma pergunta por veu.\nImprime. Cola no espelho.\nLe todos os dias.", footer: "PDF gratuito" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "3. Diario de 7 Dias", body: "Um exercicio por dia.\nEscrito pela autora.\nPara quem quer comecar\nsem saber por onde.", footer: "PDF gratuito" },
@@ -1623,7 +1625,7 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     title: "Comunidade Ecos — o que e?",
     description: "Apresentar a comunidade anonima. Diferencial unico da plataforma.",
     slides: [
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "E se pudesses\npartilhar o que sentes\nsem ninguem\nsaber quem es?", body: "", footer: "" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "E se pudesses\npartilhar o que sentes\nsem ninguem\nsaber quem es?", body: "", footer: "", bgImage: "/prints/comunidade-ecos-tabs.jpeg" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Comunidade Ecos", body: "Um espaco onde as vozes\nse encontram.\n\nAnonimo.\nImpermanente.\nReal.", footer: "" },
       { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Ecos", body: "Reflexoes partilhadas\nanonimamente.\n\nNinguem sabe quem escreveu.\nTodos se reconhecem.", footer: "Expiram em 30 dias." },
       { bg: "#ebe7df", text: "#3d3630", accent: "#7a8c6e", title: "Reconhecimentos", body: "Nao ha likes.\nHa \"reconheco-me\".\n\nUm toque silencioso\nque diz:\n\"Eu tambem.\"", footer: "" },
@@ -1643,7 +1645,7 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     title: "O Espelho do Medo — em breve (Marco 2026)",
     description: "Teaser para o proximo lancamento. Gerar antecipacao e waitlist.",
     slides: [
-      { bg: "#8b9b8e", text: "#f7f5f0", accent: "#ebe7df", title: "O segundo veu\nesta quase\na cair.", body: "", footer: "" },
+      { bg: "#8b9b8e", text: "#f7f5f0", accent: "#ebe7df", title: "O segundo veu\nesta quase\na cair.", body: "", footer: "", bgImage: "/images/espelho-medo.png" },
       { bg: "#3d3630", text: "#f7f5f0", accent: "#8b9b8e", title: "Sabes o que queres.", body: "Mas o medo\ndecide antes de ti.\n\nSempre decidiu.", footer: "" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#8b9b8e", title: "O Espelho do Medo", body: "A historia de quem\nsabe o caminho\nmas nao da o passo.\n\nPorque o medo\ne mais rapido\nque a vontade.", footer: "Marco 2026" },
       { bg: "#8b9b8e", text: "#f7f5f0", accent: "#ebe7df", title: "\"E se falhar?\"\n\"E se me arrepender?\"\n\"E se nao resultar?\"", body: "Reconheces estas vozes?", footer: "" },
@@ -1664,7 +1666,7 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     title: "Compraste o livro? Pede o teu codigo digital",
     description: "Campanha onboarding. Para quem tem o livro fisico e quer o acesso digital gratuito.",
     slides: [
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Compraste\no livro fisico?", body: "", footer: "Os 7 Veus do Despertar" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Compraste\no livro fisico?", body: "", footer: "Os 7 Veus do Despertar", bgImage: "/images/espelho-ilusao.png" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Tens direito\nao acesso digital\ngratuito.", body: "Tudo o que o livro\nte deu no papel,\nagora vives no ecra.", footer: "" },
       { bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", title: "Preenche o formulario.", body: "2 minutos.\nNome, email e\n(se quiseres)\numa foto do livro.", footer: "seteveus.space/pedir-codigo" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Recebes o codigo\nem ate 24h.", body: "No teu email.\nPessoal. Intransmissivel.", footer: "" },
@@ -1682,7 +1684,7 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     title: "Do papel ao ecra — o que muda",
     description: "Mostra as diferencas entre ter so o livro fisico e ter o acesso digital. Valor concreto.",
     slides: [
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Do papel ao ecra.", body: "A mesma essencia.\nUma nova forma\nde viver os veus.", footer: "" },
+      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Do papel ao ecra.", body: "A mesma essencia.\nUma nova forma\nde viver os veus.", footer: "", bgImage: "/prints/livro-fisico-preco-whatsapp.jpeg" },
       { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "So o livro fisico:", body: "Les.\nFechas.\nGuardas na estante.\n\nA experiencia fica\nno papel.", footer: "" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "Com o acesso digital:", body: "Les.\nRespiras.\nEscreves no diario.\nPartilhas na comunidade.\n\nA experiencia fica\nem ti.", footer: "" },
       { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Diario reflexivo", body: "Cada capitulo tem\num espaco para escreveres\no que sentiste.\n\nSo tu les.\nSo tu decides.", footer: "" },
@@ -1702,11 +1704,11 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     title: "A experiencia digital por dentro",
     description: "Tour visual: o que inclui o acesso digital. Cada slide mostra uma funcionalidade.",
     slides: [
-      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "O que esta dentro\nda experiencia digital?", body: "", footer: "Os 7 Veus do Despertar" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Leitura interactiva", body: "O livro filosofico completo\ncom pausas integradas.\n\nNao e uma copia digital —\ne uma experiencia\ndiferente de ler.", footer: "" },
+      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "O que esta dentro\nda experiencia digital?", body: "", footer: "Os 7 Veus do Despertar", bgImage: "/prints/homepage-hero-mandala.jpeg" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Leitura interactiva", body: "O livro filosofico completo\ncom pausas integradas.\n\nNao e uma copia digital —\ne uma experiencia\ndiferente de ler.", footer: "", bgImage: "/prints/leitura-capitulo.jpeg" },
       { bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", title: "Diario reflexivo", body: "Em cada capitulo,\num espaco para ti.\n\nEscreve o que sentes.\nGuarda o que descobres.\nSo tu tens acesso.", footer: "" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Respiracao guiada", body: "Entre capitulos,\no ecra escurece.\nUm convite a parar.\n\nInspira. Expira.\nSo depois avancas.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Comunidade Ecos", body: "Reflexoes anonimas.\nImpermanentes.\n\nNinguem sabe quem es.\nTodos se reconhecem.", footer: "" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Comunidade Ecos", body: "Reflexoes anonimas.\nImpermanentes.\n\nNinguem sabe quem es.\nTodos se reconhecem.", footer: "", bgImage: "/prints/comunidade-ecos-tabs.jpeg" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "Chatbot de apoio", body: "Duvidas sobre os veus?\nSobre a plataforma?\nSobre ti?\n\nUma voz disponivel\n24 horas por dia.", footer: "" },
       { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Recursos gratuitos", body: "Teste: Qual veu te esconde?\nDiario de 7 dias\nChecklist do despertar\nMini-guia\nWallpapers", footer: "" },
       { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Tudo isto e teu.", body: "Se ja tens o livro fisico:\ngratuito.\n\nSe queres comecar agora:\nseteveus.space", footer: "seteveus.space/pedir-codigo" },
@@ -1741,7 +1743,7 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     title: "Uma coisa que talvez nao saibas",
     description: "Tom pessoal, como se fosse uma conversa intima. Para WhatsApp status ou Instagram story.",
     slides: [
-      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "Uma coisa que talvez\nnao saibas.", body: "", footer: "" },
+      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "Uma coisa que talvez\nnao saibas.", body: "", footer: "", bgImage: "/images/mandala-7veus.png" },
       { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "O livro que tens\nna estante...", body: "...tem uma extensao\ndigital.", footer: "" },
       { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Nao e uma copia.", body: "E uma experiencia\ndiferente.\n\nPodes escrever reflexoes\na medida que les.\nGuardar pensamentos\npor capitulo.", footer: "" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "E participar\nnuma comunidade\nanonima", body: "de leitoras que tambem\nestao a atravessar\nos veus.", footer: "" },
@@ -1975,7 +1977,7 @@ export const productionGuide: ProductionGuide[] = [
     category: "Automacao Manychat (Instagram DMs)",
     items: [
       { title: "Trigger: comentario 'VEU'", detail: "Quando alguem comenta VEU num post, enviar DM: \"Obrigada pelo teu interesse! Descobre qual veu te esconde com o nosso teste gratuito de 3 minutos: seteveus.space/recursos/teste — Vivianne\"" },
-      { title: "Trigger: comentario 'LIVRO'", detail: "Quando alguem comenta LIVRO, enviar DM: \"Tens o livro fisico? Pede o teu codigo de acesso digital gratuito aqui: seteveus.space/acesso-digital — Vivianne\"" },
+      { title: "Trigger: comentario 'LIVRO'", detail: "Quando alguem comenta LIVRO, enviar DM: \"Tens o livro fisico? Pede o teu codigo de acesso digital gratuito aqui: seteveus.space/pedir-codigo — Vivianne\"" },
       { title: "Trigger: comentario 'QUERO'", detail: "Quando alguem comenta QUERO, enviar DM: \"O Espelho da Ilusao esta disponivel por $29 USD / 1.885 MZN. Acesso vitalicio. Comeca aqui: seteveus.space/comprar/espelhos — Vivianne\"" },
       { title: "Story reply automation", detail: "Quando alguem responde a um Story, enviar agradecimento + link para o teste gratuito automaticamente." },
     ],
