@@ -1,4 +1,4 @@
-import { createSupabaseServerClient, createSupabaseAdminClient } from '@/lib/supabase-server'
+import { createSupabaseAdminClient } from '@/lib/supabase-server'
 import { NextResponse } from 'next/server'
 import { notifyCodeRequest } from '@/lib/notify-admin'
 
@@ -10,12 +10,10 @@ const ADMIN_EMAILS = ["viv.saraiva@gmail.com"]
  * POST /api/codes/request
  * Cliente que comprou livro físico pede código de acesso
  * Público (não precisa autenticação)
+ * Usa admin client para bypassa RLS (anon não tem SELECT nesta tabela)
  */
 export async function POST(request: Request) {
   try {
-    const supabase = await createSupabaseServerClient()
-
-    // Pega dados do body
     const body = await request.json()
     const { fullName, email, whatsapp, purchaseLocation, proofUrl } = body
 
@@ -27,29 +25,36 @@ export async function POST(request: Request) {
       )
     }
 
-    // Verifica se já existe pedido pendente para este email
-    // Usa admin client porque anon não tem SELECT no livro_code_requests
+    // Usar admin client para todas as operações (bypassa RLS)
     const adminClient = createSupabaseAdminClient()
-    if (adminClient) {
-      const { data: existingRequest } = await adminClient
-        .from('livro_code_requests')
-        .select('id, status')
-        .eq('email', email)
-        .eq('status', 'pending')
-        .single()
 
-      if (existingRequest) {
-        return NextResponse.json(
-          {
-            error: 'Já tens um pedido pendente. Vamos enviá-lo em breve!',
-          },
-          { status: 400 }
-        )
-      }
+    if (!adminClient) {
+      console.error('SUPABASE_SERVICE_ROLE_KEY não configurada')
+      return NextResponse.json(
+        { error: 'Configuração do servidor incompleta' },
+        { status: 500 }
+      )
     }
 
-    // Cria pedido
-    const { error: insertError } = await supabase
+    // Verifica se já existe pedido pendente para este email
+    const { data: existingRequest } = await adminClient
+      .from('livro_code_requests')
+      .select('id, status')
+      .eq('email', email)
+      .eq('status', 'pending')
+      .single()
+
+    if (existingRequest) {
+      return NextResponse.json(
+        {
+          error: 'Já tens um pedido pendente. Vamos enviá-lo em breve!',
+        },
+        { status: 400 }
+      )
+    }
+
+    // Cria pedido via admin client (bypassa RLS)
+    const { error: insertError } = await adminClient
       .from('livro_code_requests')
       .insert({
         full_name: fullName,
@@ -61,20 +66,20 @@ export async function POST(request: Request) {
       })
 
     if (insertError) {
-      console.error('Erro ao criar pedido:', insertError)
+      console.error('Erro ao criar pedido:', JSON.stringify(insertError))
       return NextResponse.json(
-        { error: 'Erro ao enviar pedido' },
+        { error: `Erro ao guardar pedido: ${insertError.message}` },
         { status: 500 }
       )
     }
 
-    // Notificar admin via WhatsApp + dashboard
-    await notifyCodeRequest({
+    // Notificar admin (não bloqueia a resposta)
+    notifyCodeRequest({
       full_name: fullName,
       email,
       whatsapp: whatsapp || undefined,
       purchase_location: purchaseLocation || undefined,
-    })
+    }).catch(err => console.error('Erro ao notificar admin:', err))
 
     return NextResponse.json({
       success: true,
@@ -94,8 +99,9 @@ export async function POST(request: Request) {
  * Admin: lista todos os pedidos
  * Usuário: lista seus próprios pedidos
  */
-export async function GET(request: Request) {
+export async function GET() {
   try {
+    const { createSupabaseServerClient } = await import('@/lib/supabase-server')
     const supabase = await createSupabaseServerClient()
 
     // Verifica autenticação
