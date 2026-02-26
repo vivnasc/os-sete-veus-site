@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase-server";
 import { ADMIN_EMAILS, ALL_PRODUCTS } from "@/lib/constants";
+import { notifyNewMember } from "@/lib/notify-admin";
 
 export async function POST(request: Request) {
   try {
@@ -84,6 +85,9 @@ export async function POST(request: Request) {
       type: "magiclink",
       email: email.toLowerCase(),
     });
+
+    // Notificar admin do novo membro
+    await notifyNewMember({ email: email.toLowerCase() });
 
     return NextResponse.json({
       ok: true,
