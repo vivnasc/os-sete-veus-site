@@ -242,7 +242,7 @@ function WhatsAppStatusImage({ slide, bgImage, hook, scale }: {
         justifyContent: "center", alignItems: "center", padding: "140px 72px", textAlign: "center" }}>
         <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 20, fontWeight: 600,
           letterSpacing: "0.1em", textTransform: "uppercase", color: "#25D366", margin: 0 }}>
-          Os Sete Veus
+          Os Sete Véus
         </p>
         <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 48,
           lineHeight: 1.25, fontWeight: 700, whiteSpace: "pre-line", margin: "32px 0 0",
