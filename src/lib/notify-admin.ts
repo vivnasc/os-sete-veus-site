@@ -139,22 +139,38 @@ async function sendTelegramNotification(
   });
   text += `\n\n${hora}`;
 
-  const res = await fetch(
-    `https://api.telegram.org/bot${botToken}/sendMessage`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text,
-        parse_mode: "Markdown",
-      }),
-    }
-  );
+  const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+  const res = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      chat_id: chatId,
+      text,
+      parse_mode: "Markdown",
+    }),
+  });
 
   if (!res.ok) {
     const errBody = await res.text();
     console.error("[notify-admin] Telegram erro:", res.status, errBody);
+
+    // Retry without Markdown if parsing failed
+    if (errBody.includes("parse") || errBody.includes("Can't parse")) {
+      console.log("[notify-admin] Retry sem Markdown...");
+      const retryRes = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: text.replace(/\*/g, ""),
+        }),
+      });
+      if (!retryRes.ok) {
+        const retryErr = await retryRes.text();
+        console.error("[notify-admin] Telegram retry falhou:", retryRes.status, retryErr);
+      }
+    }
   }
 }
 
