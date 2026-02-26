@@ -5,50 +5,60 @@ import { experiences } from "@/data/experiences";
 import ScrollReveal from "@/components/ScrollReveal";
 import WaitlistForm from "@/components/WaitlistForm";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
-  title: "Colecção Espelhos",
+  title: "Colecção Espelhos — Ficções de Transformação",
   description:
-    "Sete ficções de transformação. Histórias onde te reconheces, com respiração guiada, diário de reflexão e espelho pessoal.",
+    "Sete ficções de transformação. Histórias de mulheres que vivem o que tu vives, com respiração guiada, diário de reflexão e espelho pessoal.",
 };
 
 export default function ExperienciasPage() {
-  // Apenas Espelho da Ilusão está publicado
-  const published = experiences.filter((e) => e.slug === "veu-da-ilusao");
-  const upcoming = experiences.filter((e) => e.slug !== "veu-da-ilusao");
+  const published = experiences.filter((e) => e.status === "available");
+  const upcoming = experiences.filter((e) => e.status !== "available");
 
   return (
     <>
-      {/* Hero */}
-      <section className="bg-gradient-to-b from-brown-800 to-brown-900 px-6 py-24 sm:py-32">
+      {/* Hero — quote-driven */}
+      <section className="bg-gradient-to-b from-brown-800 to-brown-900 px-6 py-28 sm:py-36">
         <div className="mx-auto max-w-3xl text-center">
           <ScrollReveal>
             <p className="font-sans text-[0.65rem] uppercase tracking-[0.25em] text-brown-400">
               Colecção Espelhos
             </p>
-            <h1 className="mt-3 font-serif text-4xl leading-tight text-cream sm:text-5xl">
-              Ficções de transformação
+            <h1 className="mt-4 font-serif text-4xl leading-tight text-cream sm:text-5xl">
+              Histórias de mulheres que acordam
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-brown-200">
-              Sete histórias de ficção literária onde te reconheces.
-              Cada Espelho combina narrativa, respiração guiada, diário de reflexão
-              e um espelho pessoal.
+            <p className="mx-auto mt-8 max-w-xl font-serif text-xl italic leading-relaxed text-brown-200">
+              &ldquo;Via, mas não sentia. Registava, mas não participava.
+              Como quem assiste a um espectáculo por trás de uma janela fechada.&rdquo;
+            </p>
+            <p className="mt-3 text-sm text-brown-400">
+              — O Espelho da Ilusão
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.4}>
+            <p className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-brown-300">
+              Não é autoajuda. É ficção que transforma.
+              Cada Espelho conta a história de uma mulher que enfrenta um véu --
+              e inclui respiração guiada, diário de reflexão e um espelho pessoal teu.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.5}>
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Link
                 href="/comprar/espelhos"
                 className="inline-block rounded-md border-2 border-cream bg-cream px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-900 transition-all hover:bg-transparent hover:text-cream"
               >
-                Ver preços
+                Começa a ler
               </Link>
               <Link
                 href="/recursos/teste"
                 className="inline-block rounded-md border-2 border-brown-300 bg-transparent px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-200 transition-all hover:border-cream hover:text-cream"
               >
-                Descobre o teu Espelho
+                Descobre o teu véu
               </Link>
             </div>
           </ScrollReveal>
@@ -62,27 +72,30 @@ export default function ExperienciasPage() {
             <h2 className="text-center font-serif text-3xl text-brown-900">
               O que cada Espelho inclui
             </h2>
+            <p className="mx-auto mt-4 max-w-lg text-center text-sm leading-relaxed text-brown-500">
+              Mais do que um livro digital. Uma experiência de leitura pensada para te acompanhar.
+            </p>
           </ScrollReveal>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 title: "7 Capítulos",
-                desc: "Ficção literária que te faz parar e reconhecer",
+                desc: "Ficção literária que te faz parar e reconhecer-te na personagem.",
                 color: "#c9b896",
               },
               {
-                title: "Respiração guiada",
-                desc: "Pausas entre cada capítulo. O corpo também precisa de pausa.",
+                title: "Respiração Guiada",
+                desc: "Pausas entre capítulos. O corpo também precisa de processar.",
                 color: "#7a8c6e",
               },
               {
-                title: "Diário de reflexão",
-                desc: "Perguntas que ninguém te fez. As tuas respostas, guardadas.",
+                title: "Diário de Reflexão",
+                desc: "Perguntas que ninguém te fez. As tuas respostas, guardadas para sempre.",
                 color: "#b07a7a",
               },
               {
-                title: "O Teu Espelho",
-                desc: "Tudo o que escreveste, reunido. O teu livro de ti mesma.",
+                title: "Espelho Final",
+                desc: "Tudo o que escreveste, reunido. A tua síntese pessoal.",
                 color: "#baaacc",
               },
             ].map((item, i) => (
@@ -107,8 +120,8 @@ export default function ExperienciasPage() {
         </div>
       </section>
 
-      {/* Disponível agora */}
-      <section className="bg-cream-dark px-6 py-20">
+      {/* Disponível agora — com imagem grande */}
+      <section className="bg-cream-dark px-6 py-24">
         <div className="mx-auto max-w-5xl">
           <ScrollReveal>
             <p className="text-center font-sans text-[0.65rem] uppercase tracking-[0.25em] text-sage">
@@ -119,12 +132,13 @@ export default function ExperienciasPage() {
             </h2>
           </ScrollReveal>
 
-          <div className="mx-auto mt-12 max-w-lg">
-            {published.map((exp) => (
-              <ScrollReveal key={exp.slug}>
-                <div className="group overflow-hidden rounded-2xl border border-brown-100 bg-white shadow-sm transition-shadow hover:shadow-md">
+          {published.map((exp) => (
+            <ScrollReveal key={exp.slug}>
+              <div className="mx-auto mt-12 max-w-3xl overflow-hidden rounded-2xl border border-brown-200 bg-white shadow-md">
+                <div className="md:flex">
+                  {/* Cover — large and prominent */}
                   <div
-                    className="flex items-center justify-center px-8 py-8"
+                    className="flex shrink-0 items-center justify-center px-8 py-10 md:w-[280px]"
                     style={{
                       background: `linear-gradient(135deg, ${exp.color}15, ${exp.color}30)`,
                     }}
@@ -132,48 +146,50 @@ export default function ExperienciasPage() {
                     <Image
                       src={exp.image}
                       alt={exp.title}
-                      width={180}
-                      height={270}
-                      className="rounded-lg shadow-xl transition-transform duration-500 group-hover:scale-105"
+                      width={240}
+                      height={360}
+                      className="rounded-lg shadow-xl"
+                      style={{ maxWidth: '100%', height: 'auto' }}
                     />
                   </div>
-                  <div className="p-6">
+
+                  {/* Content */}
+                  <div className="flex flex-1 flex-col p-8">
                     <p
                       className="font-sans text-[0.6rem] uppercase tracking-[0.2em]"
                       style={{ color: exp.color }}
                     >
                       Espelho {exp.number} de 7
                     </p>
-                    <h3 className="mt-1 font-serif text-xl text-brown-900">
+                    <h3 className="mt-2 font-serif text-2xl text-brown-900">
                       {exp.title}
                     </h3>
                     <p className="mt-1 font-serif text-sm italic text-brown-500">
                       {exp.subtitle}
                     </p>
-                    <p className="mt-3 text-sm leading-relaxed text-brown-600">
-                      {exp.description}
+                    <p className="mt-4 flex-1 text-sm leading-relaxed text-brown-600">
+                      {exp.longDescription}
                     </p>
-                    <div className="mt-5 flex items-center justify-between">
-                      <span className="font-serif text-lg font-bold text-brown-900">
-                        1.885 MZN / ${exp.priceUSD} USD
+                    <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                      <span className="font-serif text-2xl font-bold text-brown-900">
+                        {exp.priceMT.toLocaleString()} MZN <span className="text-base font-normal text-brown-400">/ ${exp.priceUSD} USD</span>
                       </span>
                       <Link
                         href="/comprar/espelhos"
-                        className="rounded-full px-5 py-2 font-sans text-[0.7rem] uppercase tracking-[0.12em] text-white transition-colors hover:opacity-90"
-                        style={{ backgroundColor: exp.color }}
+                        className="inline-block rounded-lg bg-sage px-6 py-3 text-center font-sans text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-sage-dark"
                       >
                         Comprar
                       </Link>
                     </div>
                   </div>
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
+              </div>
+            </ScrollReveal>
+          ))}
         </div>
       </section>
 
-      {/* Nós — dimensão relacional */}
+      {/* Nós — a segunda dimensão */}
       <section className="bg-cream px-6 py-16">
         <div className="mx-auto max-w-2xl rounded-2xl border border-[#c9a87c]/20 bg-[#c9a87c]/[0.04] px-8 py-8 text-center">
           <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-[#c9a87c]">
@@ -187,65 +203,68 @@ export default function ExperienciasPage() {
             Os Nós mostram-te o que esse véu fez entre ti e outra pessoa.
           </p>
           <p className="mx-auto mt-3 max-w-md text-sm text-brown-500">
-            Ao completar um Espelho, o seu Nó desbloqueia-se como continuação natural.
+            Ao completar um Espelho, o Nó correspondente desbloqueia-se como continuação natural.
+            Nó individual: 780 MZN / $12 USD. Incluído nos packs.
           </p>
         </div>
       </section>
 
-      {/* Calendário de lançamentos */}
+      {/* Calendário de lançamentos — com capas */}
       <section className="bg-gradient-to-b from-brown-800 to-brown-900 px-6 py-24">
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto max-w-5xl">
           <ScrollReveal>
             <p className="text-center font-sans text-[0.65rem] uppercase tracking-[0.25em] text-brown-400">
-              Calendário
+              Calendário 2026
             </p>
             <h2 className="mt-3 text-center font-serif text-3xl text-cream">
-              Cada Espelho tem o seu momento
+              Um novo Espelho cada mês
             </h2>
+            <p className="mx-auto mt-4 max-w-md text-center text-sm text-brown-300">
+              De Março a Agosto de 2026, um novo Espelho por mês.
+              Cada história espera o seu momento.
+            </p>
           </ScrollReveal>
 
-          <div className="mt-12 space-y-4">
-            {experiences.map((exp, i) => (
-              <ScrollReveal key={exp.slug} delay={0.08 * i}>
-                <div
-                  className={`flex items-center gap-4 rounded-2xl border px-5 py-4 transition-all ${
-                    exp.slug === "veu-da-ilusao"
-                      ? "border-sage/30 bg-sage/10"
-                      : "border-brown-700/30 bg-brown-800/50"
-                  }`}
-                >
-                  <span
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-serif text-sm font-bold text-white"
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {upcoming.map((exp, i) => (
+              <ScrollReveal key={exp.slug} delay={0.08 * i} variant="scale">
+                <div className="overflow-hidden rounded-2xl border border-brown-700/30 bg-brown-800/50 transition-all hover:bg-brown-800/70">
+                  <div
+                    className="flex items-center justify-center px-4 py-6"
                     style={{
-                      backgroundColor:
-                        exp.slug === "veu-da-ilusao" ? exp.color : exp.color + "50",
+                      background: `linear-gradient(135deg, ${exp.color}08, ${exp.color}15)`,
                     }}
                   >
-                    {exp.number}
-                  </span>
-                  <div className="flex-1">
-                    <h3
-                      className={`font-serif text-base ${exp.slug === "veu-da-ilusao" ? "text-cream" : "text-brown-300"}`}
-                    >
-                      {exp.title}
-                    </h3>
-                    <p className="font-sans text-xs text-brown-500">
-                      {exp.subtitle}
-                    </p>
+                    <Image
+                      src={exp.image}
+                      alt={exp.title}
+                      width={140}
+                      height={210}
+                      className="rounded-lg opacity-75 shadow-lg"
+                      style={{ maxWidth: '100%', height: 'auto' }}
+                    />
                   </div>
-                  <div className="shrink-0 text-right">
-                    {exp.slug === "veu-da-ilusao" ? (
-                      <Link
-                        href="/comprar/espelhos"
-                        className="rounded-full bg-sage px-4 py-1.5 font-sans text-[0.6rem] uppercase tracking-[0.12em] text-white hover:bg-sage-dark"
+                  <div className="p-5">
+                    <div className="flex items-center justify-between">
+                      <span
+                        className="font-sans text-[0.55rem] uppercase tracking-[0.2em]"
+                        style={{ color: `${exp.color}cc` }}
                       >
-                        Disponível
-                      </Link>
-                    ) : (
-                      <span className="font-sans text-[0.65rem] text-brown-500">
+                        Espelho {exp.number}
+                      </span>
+                      <span className="rounded-full bg-brown-700/50 px-3 py-0.5 text-[0.6rem] text-brown-300">
                         {exp.launchLabel}
                       </span>
-                    )}
+                    </div>
+                    <h3 className="mt-2 font-serif text-base text-cream">
+                      {exp.title}
+                    </h3>
+                    <p className="mt-1 text-sm italic text-brown-400">
+                      {exp.subtitle}
+                    </p>
+                    <p className="mt-3 text-xs leading-relaxed text-brown-500">
+                      {exp.description}
+                    </p>
                   </div>
                 </div>
               </ScrollReveal>
@@ -254,7 +273,7 @@ export default function ExperienciasPage() {
 
           {/* Waitlist */}
           <ScrollReveal delay={0.4}>
-            <div className="mx-auto mt-12 max-w-lg rounded-2xl border border-brown-700/30 bg-brown-800/50 p-8 text-center">
+            <div className="mx-auto mt-14 max-w-lg rounded-2xl border border-brown-700/30 bg-brown-800/50 p-8 text-center">
               <h3 className="font-serif text-xl text-cream">
                 Queres ser a primeira a saber?
               </h3>
@@ -274,7 +293,10 @@ export default function ExperienciasPage() {
         <div className="mx-auto max-w-3xl text-center">
           <ScrollReveal>
             <p className="font-serif text-2xl italic leading-relaxed text-brown-800">
-              &ldquo;Não precisas de saber para onde vais. Precisas apenas de dar o primeiro passo.&rdquo;
+              &ldquo;Há mais para ti do que aquilo que tens vivido.&rdquo;
+            </p>
+            <p className="mt-3 text-sm text-brown-400">
+              — O Espelho da Ilusão, Epílogo
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
@@ -283,7 +305,7 @@ export default function ExperienciasPage() {
                 href="/comprar/espelhos"
                 className="inline-block rounded-md bg-sage px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-white transition-all hover:bg-sage-dark"
               >
-                Ver Colecção Espelhos
+                Comprar Espelho da Ilusão
               </Link>
               <Link
                 href="/recursos/teste"

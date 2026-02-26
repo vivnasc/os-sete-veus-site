@@ -3,8 +3,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 export const metadata: Metadata = {
-  title: 'Livro "Os 7 Véus do Despertar"',
-  description: 'Ensaio filosófico sobre despertar de consciência + experiência digital contemplativa',
+  title: 'Livro "Os 7 Véus do Despertar" — Vivianne dos Santos',
+  description: 'Ensaio filosófico sobre despertar de consciência. 232 páginas. Livro físico + experiência digital contemplativa incluída.',
 }
 
 export default function ComprarLivroPage() {
@@ -12,46 +12,64 @@ export default function ComprarLivroPage() {
     <>
       {/* Hero */}
       <section className="bg-gradient-to-b from-brown-900 via-brown-800 to-brown-900 px-6 py-28 sm:py-36">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="font-sans text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-[#c9b896]">
-            Obra Filosófica
-          </p>
-          <h1 className="mt-5 font-serif text-4xl leading-tight text-cream sm:text-5xl">
-            Os 7 Véus do Despertar
-          </h1>
-          <div className="mx-auto mt-4 h-px w-16 bg-[#c9b896]/40" />
-          <p className="mx-auto mt-6 max-w-xl font-serif text-lg italic leading-relaxed text-brown-200">
-            Ensaio filosófico sobre despertar de consciência
-          </p>
-          <p className="mx-auto mt-5 text-sm text-brown-400">
-            232 páginas &middot; 7 véus: <strong className="text-brown-300">Permanência</strong>, <strong className="text-brown-300">Memória</strong>,{' '}
-            <strong className="text-brown-300">Turbilhão</strong>, <strong className="text-brown-300">Esforço</strong>, <strong className="text-brown-300">Desolação</strong>,{' '}
-            <strong className="text-brown-300">Horizonte</strong>, <strong className="text-brown-300">Dualidade</strong>
-          </p>
+        <div className="mx-auto max-w-4xl">
+          <div className="items-center gap-12 md:flex">
+            <div className="shrink-0 text-center">
+              <Image
+                src="/images/mandala-7veus.png"
+                alt="Os 7 Véus do Despertar — mandala"
+                width={220}
+                height={220}
+                className="mx-auto rounded-full shadow-2xl"
+                priority
+              />
+            </div>
+            <div className="mt-8 text-center md:mt-0 md:text-left">
+              <p className="font-sans text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-[#c9b896]">
+                Ensaio Filosófico
+              </p>
+              <h1 className="mt-4 font-serif text-4xl leading-tight text-cream sm:text-5xl">
+                Os 7 Véus do Despertar
+              </h1>
+              <div className="mx-auto mt-4 h-px w-16 bg-[#c9b896]/40 md:mx-0" />
+              <p className="mx-auto mt-6 max-w-xl font-serif text-lg italic leading-relaxed text-brown-200 md:mx-0">
+                Uma cartografia interior para quem quer acordar.
+              </p>
+              <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-brown-400 md:mx-0">
+                232 páginas sobre os sete véus que nos escondem de nós mesmas:
+                Permanência, Memória, Turbilhão, Esforço, Desolação, Horizonte e Dualidade.
+                Não é ficção. Não é autoajuda. É filosofia viva.
+              </p>
+              <p className="mt-6 text-sm text-brown-300">
+                Por <strong className="text-cream">Vivianne dos Santos</strong>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Experiência digital incluída */}
+      {/* O que torna este livro diferente */}
       <section className="bg-cream px-6 py-20">
         <div className="mx-auto max-w-3xl">
           <p className="text-center font-sans text-[0.6rem] font-semibold uppercase tracking-[0.25em] text-[#c9b896]">
-            Incluído com o livro
+            Mais do que um livro
           </p>
-          <h2 className="mt-3 text-center font-serif text-2xl text-brown-900">
+          <h2 className="mt-3 text-center font-serif text-2xl text-brown-900 sm:text-3xl">
             Experiência Digital Contemplativa
           </h2>
-          <p className="mx-auto mt-3 max-w-md text-center text-sm leading-relaxed text-brown-500">
-            O livro abre-se numa plataforma pensada para a tua jornada interior.
+          <p className="mx-auto mt-4 max-w-lg text-center text-sm leading-relaxed text-brown-500">
+            O livro abre-se numa plataforma digital pensada para a tua jornada interior.
+            Não é um PDF. É uma experiência de leitura que te acompanha.
           </p>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { icon: '~', title: 'Leitura Contemplativa', desc: 'Dois modos de leitura: claro e escuro, ao teu ritmo', color: '#c9b896' },
-              { icon: '~', title: 'Pausas de Respiração', desc: 'Entre cada capítulo, um convite a parar e respirar', color: '#7a8c6e' },
-              { icon: '~', title: 'Práticas Guiadas', desc: 'Exercícios de reflexão pensados para cada véu', color: '#b07a7a' },
-              { icon: '~', title: 'Diário de Reflexão', desc: 'As tuas palavras, guardadas. Um espelho em texto.', color: '#baaacc' },
-              { icon: '~', title: 'Espelho Final', desc: 'Tudo o que escreveste, reunido. A tua síntese pessoal.', color: '#ab9375' },
-              { icon: '~', title: 'Acesso Vitalício', desc: 'A experiência fica tua, para sempre.', color: '#8aaaca' },
+              { title: 'Leitura Contemplativa', desc: 'Modo claro e escuro. Ao teu ritmo. Cada véu é uma paragem.', color: '#c9b896' },
+              { title: 'Pausas de Respiração', desc: 'Entre cada capítulo, um convite a parar. O corpo também precisa de processar.', color: '#7a8c6e' },
+              { title: 'Práticas Guiadas', desc: 'Exercícios de reflexão concebidos especificamente para cada véu.', color: '#b07a7a' },
+              { title: 'Diário de Reflexão', desc: 'Perguntas que ninguém te fez. As tuas respostas, guardadas para sempre.', color: '#baaacc' },
+              { title: 'Espelho Final', desc: 'Tudo o que escreveste ao longo da leitura, reunido. A tua síntese pessoal.', color: '#ab9375' },
+              { title: 'Acesso Vitalício', desc: 'A experiência digital fica tua para sempre. Relê quando quiseres.', color: '#8aaaca' },
             ].map((item) => (
               <div
                 key={item.title}
@@ -62,7 +80,7 @@ export default function ComprarLivroPage() {
                   style={{ backgroundColor: `${item.color}15` }}
                 >
                   <span className="font-serif text-xl" style={{ color: item.color }}>
-                    {item.icon}
+                    ~
                   </span>
                 </div>
                 <h3 className="mt-4 font-serif text-base text-brown-900">{item.title}</h3>
@@ -73,18 +91,15 @@ export default function ComprarLivroPage() {
         </div>
       </section>
 
-      {/* Como queres aceder? */}
+      {/* Como queres aceder? — 3 opções claras */}
       <section className="bg-cream-dark px-6 py-24">
         <div className="mx-auto max-w-4xl">
           <p className="text-center font-sans text-[0.6rem] font-semibold uppercase tracking-[0.25em] text-[#c9b896]">
-            Três Caminhos
+            Escolhe o teu caminho
           </p>
           <h2 className="mt-3 text-center font-serif text-3xl text-brown-900">
             Como queres aceder?
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-center text-sm text-brown-500">
-            Escolhe a opção que mais se adequa a ti
-          </p>
 
           <div className="mt-14 grid gap-8 lg:grid-cols-3">
             {/* Já comprei físico */}
@@ -98,13 +113,13 @@ export default function ComprarLivroPage() {
                 </h3>
               </div>
               <div className="p-6">
-                <div className="space-y-5">
+                <p className="text-sm leading-relaxed text-brown-600">
+                  Quem comprou o livro físico tem acesso digital incluído. Só precisas de registar o código.
+                </p>
+                <div className="mt-6 space-y-4">
                   <div>
                     <p className="text-sm font-medium text-brown-800">
                       Tenho código de acesso
-                    </p>
-                    <p className="mt-1 text-[0.8rem] text-brown-500">
-                      Regista-o aqui para aceder à versão digital
                     </p>
                     <Link
                       href="/registar-livro"
@@ -113,12 +128,12 @@ export default function ComprarLivroPage() {
                       Registar Grátis
                     </Link>
                   </div>
-                  <div className="border-t border-brown-100 pt-5">
+                  <div className="border-t border-brown-100 pt-4">
                     <p className="text-sm font-medium text-brown-800">
                       Não tenho código
                     </p>
-                    <p className="mt-1 text-[0.8rem] text-brown-500">
-                      Pede o teu código de acesso — enviamos em até 24h
+                    <p className="mt-1 text-xs text-brown-500">
+                      Enviamos em até 24h
                     </p>
                     <Link
                       href="/pedir-codigo"
@@ -142,13 +157,14 @@ export default function ComprarLivroPage() {
                 </h3>
               </div>
               <div className="p-6">
-                <p className="text-[0.8rem] text-brown-600">
-                  Livro impresso + acesso digital incluído
+                <p className="text-sm leading-relaxed text-brown-600">
+                  Edição impressa de alta qualidade, com acesso digital incluído.
+                  Entrega em todo Moçambique.
                 </p>
                 <ul className="mt-4 space-y-2.5 text-[0.8rem] text-brown-600">
                   <li className="flex items-start gap-2">
                     <span className="mt-0.5 font-serif text-sm text-[#c9b896]">~</span>
-                    <span>Edição física de alta qualidade</span>
+                    <span>232 páginas, edição cuidada</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-0.5 font-serif text-sm text-[#c9b896]">~</span>
@@ -156,13 +172,14 @@ export default function ComprarLivroPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-0.5 font-serif text-sm text-[#c9b896]">~</span>
-                    <span>Entrega em Moçambique</span>
+                    <span>Comunidade Ecos incluída</span>
                   </li>
                 </ul>
                 <div className="mt-6 rounded-xl bg-[#c9b896]/10 p-4 text-center">
                   <p className="font-serif text-2xl font-bold text-brown-900">
                     1.500 MZN
                   </p>
+                  <p className="mt-1 text-xs text-brown-500">&asymp; $23 USD</p>
                 </div>
                 <a
                   href="https://wa.me/258845243875?text=Olá! Quero encomendar o livro físico Os 7 Véus do Despertar"
@@ -196,21 +213,22 @@ export default function ComprarLivroPage() {
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-[0.8rem] text-brown-600">
-                  Acesso digital imediato à experiência completa
+                <p className="text-sm leading-relaxed text-brown-600">
+                  Acesso digital imediato a toda a experiência contemplativa.
+                  Disponível em qualquer parte do mundo.
                 </p>
                 <ul className="mt-4 space-y-2.5 text-[0.8rem] text-brown-600">
                   <li className="flex items-start gap-2">
                     <span className="mt-0.5 text-sage">~</span>
-                    <span>Acesso digital imediato</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="mt-0.5 text-sage">~</span>
-                    <span>Disponível mundialmente</span>
+                    <span>Começa a ler em minutos</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-0.5 text-sage">~</span>
                     <span>Experiência completa no site</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-0.5 text-sage">~</span>
+                    <span>Comunidade Ecos incluída</span>
                   </li>
                 </ul>
                 <div className="mt-6 rounded-xl bg-brown-900 p-4 text-center">
@@ -235,6 +253,38 @@ export default function ComprarLivroPage() {
         </div>
       </section>
 
+      {/* Diferença entre Livro e Espelhos */}
+      <section className="bg-cream px-6 py-20">
+        <div className="mx-auto max-w-3xl">
+          <div className="rounded-2xl border border-brown-200 bg-white p-8">
+            <h2 className="text-center font-serif text-xl text-brown-900">
+              Livro Filosófico vs. Espelhos -- qual é a diferença?
+            </h2>
+            <div className="mt-6 grid gap-6 sm:grid-cols-2">
+              <div className="rounded-xl bg-brown-50 p-5">
+                <h3 className="font-serif text-base font-semibold text-brown-900">Este livro</h3>
+                <p className="mt-2 text-sm leading-relaxed text-brown-600">
+                  Ensaio filosófico. Reflexão sobre os 7 véus que nos escondem de nós mesmas.
+                  Para quem quer compreender <em>intelectualmente</em> o que são os véus
+                  e como nos afectam.
+                </p>
+              </div>
+              <div className="rounded-xl bg-sage/5 p-5">
+                <h3 className="font-serif text-base font-semibold text-brown-900">Colecção Espelhos</h3>
+                <p className="mt-2 text-sm leading-relaxed text-brown-600">
+                  7 ficções de transformação. Histórias de mulheres reais (ficcionais)
+                  que vivem cada véu. Para quem quer <em>sentir</em> o véu na pele
+                  e reconhecer-se na história.
+                </p>
+              </div>
+            </div>
+            <p className="mt-5 text-center text-sm text-brown-500">
+              São complementares, não concorrentes. Podes começar por qualquer um.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Espelhos */}
       <section className="bg-gradient-to-b from-brown-800 to-brown-900 px-6 py-20">
         <div className="mx-auto max-w-2xl text-center">
@@ -243,8 +293,8 @@ export default function ComprarLivroPage() {
             Conhece também a Colecção Espelhos
           </p>
           <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-brown-300">
-            Ficções de transformação onde te reconheces nas histórias.
-            Sete narrativas imersivas com leitura sequencial, diário e comunidade.
+            Ficções onde te reconheces. Sete histórias de mulheres que acordam --
+            com leitura sequencial, diário pessoal e comunidade.
           </p>
           <Link
             href="/comprar/espelhos"
