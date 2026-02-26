@@ -259,16 +259,18 @@ export async function notifyCodeRequest(request: {
   email: string;
   whatsapp?: string;
   purchase_location?: string;
+  proof_url?: string;
 }) {
   await notifyAdmin({
     type: "code_request",
     title: "Novo pedido de codigo",
-    message: `${request.full_name} (${request.email}) pede codigo do livro fisico.`,
+    message: `${request.full_name} (${request.email}) pede codigo do livro fisico.${request.proof_url ? " Comprovativo enviado." : " Sem comprovativo."}`,
     details: {
       Nome: request.full_name,
       Email: request.email,
       WhatsApp: request.whatsapp || "—",
       "Comprou em": request.purchase_location || "—",
+      ...(request.proof_url ? { Comprovativo: request.proof_url } : {}),
     },
   });
 }
