@@ -4,33 +4,33 @@ export const veu1Niveis: NivelCapitulo[] = [
   {
     capitulo_numero: 1,
     resumo_acessivel: [
-      'Desde que nascemos, recebemos rotulos — nome, genero, personalidade. Aos poucos, comecamos a acreditar que esses rotulos sao quem somos.',
-      'Mas a identidade não é fixa como uma pedra. E mais como um rio: está sempre em movimento. O que julgamos sólido revela-se fluxo.',
-      'Este capitulo convida-te a perguntar: é se eu não precisar de um rotulo para existir? E se o "eu" fosse apenas gesto temporario dentro da vida?',
+      'Desde que nascemos, recebemos rótulos — nome, género, personalidade. Aos poucos, começamos a acreditar que esses rótulos são quem somos.',
+      'Mas a identidade não é fixa como uma pedra. É mais como um rio: está sempre em movimento. O que julgamos sólido revela-se fluxo.',
+      'Este capítulo convida-te a perguntar: e se eu não precisar de um rótulo para existir? E se o "eu" fosse apenas gesto temporário dentro da vida?',
     ],
     perguntas_orientadoras: [
-      'Qual foi o primeiro rotulo que recebeste na vida? (O teu nome, uma caracteristica que te atribuiram...)',
-      'Ha alguma parte de ti que sentes que não cabe nós papéis que desempenhas?',
-      'Se alguem te perguntasse "quem es tu?" sem aceitar nome, profissao ou nacionalidade como resposta — o que ficaria?',
+      'Qual foi o primeiro rótulo que recebeste na vida? (O teu nome, uma característica que te atribuíram...)',
+      'Há alguma parte de ti que sentes que não cabe nos papéis que desempenhas?',
+      'Se alguém te perguntasse "quem és tu?" sem aceitar nome, profissão ou nacionalidade como resposta — o que ficaria?',
     ],
     exemplos_concretos: [
       {
         contexto: 'No dia-a-dia',
-        texto: 'Imagina que alguem te pergunta "quem es tu?" sem aceitar o teu nome, profissao ou nacionalidade como resposta. O que ficaria? Essa hesitacao é o comeco do que este capitulo explora.',
+        texto: 'Imagina que alguém te pergunta "quem és tu?" sem aceitar o teu nome, profissão ou nacionalidade como resposta. O que ficaria? Essa hesitação é o começo do que este capítulo explora.',
       },
       {
         contexto: 'Na relação com os outros',
-        texto: 'Pensa num momento em que sentiste que estavas a "representar um papel" — no trabalho, em familia, entre amigos. Houve um instante em que percebeste que essa versao de ti não era toda a verdade?',
+        texto: 'Pensa num momento em que sentiste que estavas a "representar um papel" — no trabalho, em família, entre amigos. Houve um instante em que percebeste que essa versão de ti não era toda a verdade?',
       },
     ],
     notas_contextuais: [
       {
         paragrafo_indice: 4,
-        texto: 'O Ubuntu é uma palavra da lingua Zulu que exprime uma visao da humanidade como rede interligada. Quando o texto diz "eu sou porque nós somos", está a dizer que nenhum de nós existe de forma isolada — a identidade nasce da relação.',
+        texto: 'O Ubuntu é uma palavra da língua Zulu que exprime uma visão da humanidade como rede interligada. Quando o texto diz "eu sou porque nós somos", está a dizer que nenhum de nós existe de forma isolada — a identidade nasce da relação.',
       },
       {
         paragrafo_indice: 6,
-        texto: 'A metafora da árvore é central neste capitulo: raizes (ancestralidade), tronco (papéis), folhas (facetas mutaveis). Repara que a árvore continua árvore mesmo quando perde folhas — o texto pergunta o que é esse "algo" que persiste.',
+        texto: 'A metáfora da árvore é central neste capítulo: raízes (ancestralidade), tronco (papéis), folhas (facetas mutáveis). Repara que a árvore continua árvore mesmo quando perde folhas — o texto pergunta o que é esse "algo" que persiste.',
       },
       {
         paragrafo_indice: 11,
@@ -38,46 +38,46 @@ export const veu1Niveis: NivelCapitulo[] = [
       },
       {
         paragrafo_indice: 18,
-        texto: 'A imagem do tambor é profundamente africana: isolado, é silêncio. Tocado, é vibracao. Assim a identidade: não existe em isolamento, revela-se no encontro.',
+        texto: 'A imagem do tambor é profundamente africana: isolado, é silêncio. Tocado, é vibração. Assim a identidade: não existe em isolamento, revela-se no encontro.',
       },
       {
         paragrafo_indice: 25,
-        texto: 'O fana (sufismo), a vacuidade (budismo) é a dissolução nós ancestrais (tradições africanas) sao tres linguagens para o mesmo movimento: o "eu" limitado abre-se para algo maior.',
+        texto: 'O fana (sufismo), a vacuidade (budismo) e a dissolução nos ancestrais (tradições africanas) são três linguagens para o mesmo movimento: o "eu" limitado abre-se para algo maior.',
       },
     ],
     termos_destacados: ['Ubuntu', 'persona', 'identidade', 'Self', 'anatta', 'fana', 'vacuidade'],
 
     // Jornada de autodescobertas
     crencas_a_mapear: [
-      'Eu sou o meu nome, a minha profissao, a minha história.',
-      'Se não tiver uma identidade clara, ninguem me vai respeitar.',
-      'Mudar é sinal de fraqueza — as pessoas fortes sabem quem sao.',
+      'Eu sou o meu nome, a minha profissão, a minha história.',
+      'Se não tiver uma identidade clara, ninguém me vai respeitar.',
+      'Mudar é sinal de fraqueza — as pessoas fortes sabem quem são.',
       'Preciso de saber quem sou antes de poder viver plenamente.',
-      'A minha personalidade foi definida na infância é já não muda.',
+      'A minha personalidade foi definida na infância e já não muda.',
     ],
     sinais_do_veu: [
-      'Sentes ansiedade quando alguem te pergunta "quem es tu?" fora dos rotulos habituais.',
-      'Agarras-te a uma versao de ti que já não sentes, mas que da segurança.',
+      'Sentes ansiedade quando alguém te pergunta "quem és tu?" fora dos rótulos habituais.',
+      'Agarras-te a uma versão de ti que já não sentes, mas que dá segurança.',
       'Tens medo de mudar porque achas que vais "perder-te".',
-      'Defines-te pelo que fazes, não pelo que es.',
-      'Sentes que sem os teus papéis — mae, profissional, amiga — não sobra nada.',
+      'Defines-te pelo que fazes, não pelo que és.',
+      'Sentes que sem os teus papéis — mãe, profissional, amiga — não sobra nada.',
     ],
     guiao_reflexao: [
-      'Escreve 3 rotulos que carregas sobre ti. Agora pergunta: quem serias sem eles?',
+      'Escreve 3 rótulos que carregas sobre ti. Agora pergunta: quem serias sem eles?',
       'Descreve um momento em que sentiste que "não eras tu" — estavas a representar. O que estavas a proteger?',
-      'Se pudesses apresentar-te a alguem sem nome, sem história, sem papel — o que dirias?',
+      'Se pudesses apresentar-te a alguém sem nome, sem história, sem papel — o que dirias?',
     ],
-    espelho_pessoal: 'Se tudo o que pensas que es fosse tirado — nome, história, papéis — o que continuaria a respirar?',
+    espelho_pessoal: 'Se tudo o que pensas que és fosse tirado — nome, história, papéis — o que continuaria a respirar?',
 
     // Camada profunda
     mascaras: [
-      'A definida — a que precisa de ter tudo claro sobre si mesma antes de agir. Sem uma identidade sólida, sente-se perdida. Passa anos a tentar encontrar "quem realmente e" como se fosse um objecto escondido numa gaveta, sem perceber que a procura é ela própria a máscara.',
-      'A coerente — a que tem horror a contradizer-se. Diz as mesmas coisas sobre si há anos porque mudar de ideias parece fraqueza. Prefere estar presa a uma versao desactualizada de si do que admitir que já não se reconhece nela.',
-      'A rotulada — a que se apresenta pelo que faz, pelo que estudou, pelo que conseguiu. Não por vaidade, mas porque sem esses rotulos não sabe o que dizer. O silêncio entre os titulos assusta-a mais do que qualquer fracasso.',
-      'A original — a que construiu uma identidade tao única que se tornou outra prisao. Diferente dos outros, sim, mas rigidamente diferente. A singularidade deixou de ser liberdade é passou a ser mais um papel a manter.',
+      'A definida — a que precisa de ter tudo claro sobre si mesma antes de agir. Sem uma identidade sólida, sente-se perdida. Passa anos a tentar encontrar "quem realmente é" como se fosse um objecto escondido numa gaveta, sem perceber que a procura é ela própria a máscara.',
+      'A coerente — a que tem horror a contradizer-se. Diz as mesmas coisas sobre si há anos porque mudar de ideias parece fraqueza. Prefere estar presa a uma versão desactualizada de si do que admitir que já não se reconhece nela.',
+      'A rotulada — a que se apresenta pelo que faz, pelo que estudou, pelo que conseguiu. Não por vaidade, mas porque sem esses rótulos não sabe o que dizer. O silêncio entre os títulos assusta-a mais do que qualquer fracasso.',
+      'A original — a que construiu uma identidade tão única que se tornou outra prisão. Diferente dos outros, sim, mas rigidamente diferente. A singularidade deixou de ser liberdade e passou a ser mais um papel a manter.',
     ],
     veu_dominante_sinais: [
-      'Quando algo muda na tua vida — uma relação que acaba, um trabalho que se perde, um corpo que envelhece — a primeira reacção não é tristeza. E panico. Como se o chao desaparecesse porque o rotulo que te sustentava desapareceu com ele.',
+      'Quando algo muda na tua vida — uma relação que acaba, um trabalho que se perde, um corpo que envelhece — a primeira reacção não é tristeza. É pânico. Como se o chão desaparecesse porque o rótulo que te sustentava desapareceu com ele.',
       'Passas mais tempo a pensar sobre quem es do que a viver quem es. A reflexão sobre a identidade tornou-se um loop: nunca chegas a uma resposta porque a pergunta alimenta-se de si mesma.',
       'Este tema — agarrar-te ao que já foste — aparece repetidamente nas tuas relações, no trabalho, na forma como falas de ti. E o fio que liga tudo. Não é um problema pontual. E o padrão de fundo.',
       'Tens dificuldade em estar com pessoas que te conheceram numa fase anterior da vida. Sentes que te veem como eras é não como es — é isso sufoca. Mas a verdade é que tu também não sabes bem como es agora.',
