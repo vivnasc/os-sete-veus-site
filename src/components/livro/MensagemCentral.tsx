@@ -22,7 +22,7 @@ export default function MensagemCentral({ mensagem, modoNoturno = false }: Props
       <p className={`text-xs font-sans uppercase tracking-wide mb-3 ${
         modoNoturno ? 'text-stone-500' : 'text-stone-400'
       }`}>
-        O que este capitulo te esta a dizer
+        O que este capítulo te está a dizer
       </p>
       <p className={`text-base md:text-lg font-serif leading-relaxed ${
         modoNoturno ? 'text-stone-200' : 'text-stone-700'

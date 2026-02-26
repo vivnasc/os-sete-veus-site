@@ -128,19 +128,19 @@ function PayPalContent() {
             {autoLoginFailed ? (
               <>
                 <p className="mt-4 text-brown-700">
-                  O teu acesso esta activo. Entra com o teu email para comecar.
+                  O teu acesso está activo. Entra com o teu email para começar.
                 </p>
                 <button
                   onClick={() => router.push("/entrar")}
                   className="mt-6 rounded-lg bg-sage px-6 py-3 font-sans text-sm font-medium uppercase tracking-wider text-white hover:bg-sage-dark"
                 >
-                  Entrar na minha area
+                  Entrar na minha área
                 </button>
               </>
             ) : (
               <>
                 <p className="mt-4 text-brown-700">
-                  A preparar a tua area...
+                  A preparar a tua área...
                 </p>
                 <div className="mt-6">
                   <div className="mx-auto h-6 w-6 animate-spin rounded-full border-2 border-sage/30 border-t-sage" />

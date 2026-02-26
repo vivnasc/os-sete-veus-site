@@ -24,7 +24,7 @@ export default function SinaisDoVeu({ sinais, modoNoturno = false }: Props) {
       <p className={`text-xs font-sans uppercase tracking-wide mb-3 ${
         modoNoturno ? 'text-stone-500' : 'text-stone-400'
       }`}>
-        Este veu esta activo em ti quando...
+        Este véu está activo em ti quando...
       </p>
       <ul className="space-y-2">
         {sinais.map((sinal, i) => (

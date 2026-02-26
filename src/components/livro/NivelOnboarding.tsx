@@ -18,13 +18,13 @@ const opcoes: {
   {
     value: 'raiz',
     titulo: 'Raiz',
-    descricao: 'Conheco alguns conceitos. Quero o texto com notas de contexto.',
+    descricao: 'Conheço alguns conceitos. Quero o texto com notas de contexto.',
     icon: '◎',
   },
   {
     value: 'arvore',
-    titulo: 'Arvore',
-    descricao: 'Quero o texto original, puro, sem interrupcoes.',
+    titulo: 'Árvore',
+    descricao: 'Quero o texto original, puro, sem interrupções.',
     icon: '●',
   },
 ]
@@ -53,13 +53,13 @@ export default function NivelOnboarding({ open, onSelect }: Props) {
           >
             <div className="px-8 pt-8 pb-4 text-center">
               <p className="text-sm tracking-widest text-stone-400 mb-4">
-                ANTES DE COMECAR
+                ANTES DE COMEÇAR
               </p>
               <h2 className="text-2xl md:text-3xl font-serif text-stone-900 mb-3">
                 Como queres receber este texto?
               </h2>
               <p className="text-stone-500 text-sm leading-relaxed max-w-sm mx-auto">
-                Este livro e denso e filosofico. Para que a travessia seja tua,
+                Este livro é denso e filosófico. Para que a travessia seja tua,
                 escolhe o teu ritmo. Podes mudar a qualquer momento.
               </p>
             </div>

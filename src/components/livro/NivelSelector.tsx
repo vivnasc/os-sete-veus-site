@@ -6,7 +6,7 @@ import type { NivelLeitura } from '@/hooks/useNivelLeitura'
 const niveis: { value: NivelLeitura; label: string; icon: string }[] = [
   { value: 'semente', label: 'Semente', icon: '○' },
   { value: 'raiz', label: 'Raiz', icon: '◎' },
-  { value: 'arvore', label: 'Arvore', icon: '●' },
+  { value: 'arvore', label: 'Árvore', icon: '●' },
 ]
 
 type Props = {
@@ -42,7 +42,7 @@ export default function NivelSelector({ nivel, onSelect, modoNoturno = false }: 
             ? 'border-stone-600 hover:bg-stone-800 text-stone-300'
             : 'border-stone-300 hover:bg-stone-100 text-stone-600'
         }`}
-        title="Nivel de leitura"
+        title="Nível de leitura"
       >
         {current.icon} {current.label}
       </button>
@@ -57,7 +57,7 @@ export default function NivelSelector({ nivel, onSelect, modoNoturno = false }: 
         >
           <div className={`px-3 py-2 border-b ${modoNoturno ? 'border-stone-700' : 'border-stone-100'}`}>
             <p className={`text-xs font-sans ${modoNoturno ? 'text-stone-500' : 'text-stone-400'}`}>
-              Nivel de leitura
+              Nível de leitura
             </p>
           </div>
           {niveis.map((n) => (
@@ -78,9 +78,9 @@ export default function NivelSelector({ nivel, onSelect, modoNoturno = false }: 
               <div>
                 <span className="font-medium">{n.label}</span>
                 <p className={`text-xs mt-0.5 ${modoNoturno ? 'text-stone-500' : 'text-stone-400'}`}>
-                  {n.value === 'semente' && 'Guia gentil para quem esta a comecar'}
+                  {n.value === 'semente' && 'Guia gentil para quem está a começar'}
                   {n.value === 'raiz' && 'Texto original com notas de contexto'}
-                  {n.value === 'arvore' && 'Texto original, puro, sem interrupcoes'}
+                  {n.value === 'arvore' && 'Texto original, puro, sem interrupções'}
                 </p>
               </div>
             </button>

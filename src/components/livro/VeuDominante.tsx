@@ -44,12 +44,12 @@ export default function VeuDominante({ sinais, modoNoturno = false }: Props) {
       <p className={`text-xs font-sans uppercase tracking-wide mb-1 ${
         modoNoturno ? 'text-stone-500' : 'text-stone-400'
       }`}>
-        Este e o teu veu dominante?
+        Este é o teu véu dominante?
       </p>
       <p className={`text-sm font-sans mb-4 ${
         modoNoturno ? 'text-stone-400' : 'text-stone-500'
       }`}>
-        Marca o que reconheces em ti — nao o que pensas, mas o que sentes.
+        Marca o que reconheces em ti — não o que pensas, mas o que sentes.
       </p>
       <div className="space-y-2">
         {sinais.map((sinal, i) => (
@@ -93,13 +93,13 @@ export default function VeuDominante({ sinais, modoNoturno = false }: Props) {
             <p className={`text-sm font-serif italic leading-relaxed ${
               modoNoturno ? 'text-stone-300' : 'text-stone-700'
             }`}>
-              Reconheceste {contagem} de {total} sinais. Este veu pode ser central na tua jornada. Nao e sentenca — e mapa. Agora que o ves, ele ja comecou a perder forca.
+              Reconheceste {contagem} de {total} sinais. Este véu pode ser central na tua jornada. Não é sentença — é mapa. Agora que o vês, ele já começou a perder força.
             </p>
           ) : (
             <p className={`text-xs font-sans italic ${
               modoNoturno ? 'text-stone-500' : 'text-stone-400'
             }`}>
-              {contagem} de {total} — este veu esta presente, mas pode nao ser o dominante. Continua a explorar.
+              {contagem} de {total} — este véu está presente, mas pode não ser o dominante. Continua a explorar.
             </p>
           )}
         </motion.div>

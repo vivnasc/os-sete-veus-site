@@ -34,12 +34,12 @@ export default function MascarasDoVeu({ mascaras, modoNoturno = false }: Props) 
       <p className={`text-xs font-sans uppercase tracking-wide mb-1 ${
         modoNoturno ? 'text-stone-500' : 'text-stone-400'
       }`}>
-        Mascaras que este veu activa
+        Máscaras que este véu activa
       </p>
       <p className={`text-sm font-sans mb-4 ${
         modoNoturno ? 'text-stone-400' : 'text-stone-500'
       }`}>
-        Reconheces alguma destas versoes de ti?
+        Reconheces alguma destas versões de ti?
       </p>
       <div className="space-y-2.5">
         {mascaras.map((mascara, i) => (
@@ -81,7 +81,7 @@ export default function MascarasDoVeu({ mascaras, modoNoturno = false }: Props) 
             modoNoturno ? 'text-stone-500' : 'text-stone-400'
           }`}
         >
-          A mascara nao e o inimigo. Foi proteccao. Reconhece-la e o primeiro passo para escolher quando a vestir — e quando a pousar.
+          A máscara não é o inimigo. Foi protecção. Reconhecê-la é o primeiro passo para escolher quando a vestir — e quando a pousar.
         </motion.p>
       )}
     </motion.div>
