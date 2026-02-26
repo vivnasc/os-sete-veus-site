@@ -51,9 +51,9 @@ const PRINTS = [
   { id: "no-vergonha", src: "/images/capa-no-vergonha2.png", label: "No Vergonha" },
   { id: "no-solidao", src: "/images/capa-no-solidao2.png", label: "No Solidao" },
   { id: "no-vazio", src: "/images/capa-no-vazio2.png", label: "No Vazio" },
-  { id: "no-pertenca", src: "/images/capa-no-perten\u00e7a2.png", label: "No Pertenca" },
+  { id: "no-pertenca", src: "/images/capa-no-perten\u00e7a2.png", label: "Nó Pertença" },
   // Catalogo (Lumina / Vitalis)
-  { id: "lumina-comecar", src: "/catalogo/Lumina_come\u00e7ar.jpeg", label: "Lumina comecar" },
+  { id: "lumina-comecar", src: "/catalogo/Lumina_come\u00e7ar.jpeg", label: "Lumina começar" },
   { id: "lumina-leitura", src: "/catalogo/Lumina_leitura.jpeg", label: "Lumina leitura" },
   { id: "lumina-cuidado", src: "/catalogo/Lumina_leitura8-cuidado-proprio.jpeg", label: "Lumina cuidado" },
   { id: "vitalis-dashboard", src: "/catalogo/Vitalis_dashboard.jpeg", label: "Vitalis dashboard" },

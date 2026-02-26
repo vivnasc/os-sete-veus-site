@@ -39,7 +39,7 @@ export default function CrencasAMapear({ crencas, modoNoturno = false }: Props) 
       <p className={`text-sm font-sans mb-4 ${
         modoNoturno ? 'text-stone-400' : 'text-stone-500'
       }`}>
-        Reconheces alguma destas crencas em ti?
+        Reconheces alguma destas crenças em ti?
       </p>
       <div className="space-y-2.5">
         {crencas.map((crenca, i) => (
@@ -81,7 +81,7 @@ export default function CrencasAMapear({ crencas, modoNoturno = false }: Props) 
             modoNoturno ? 'text-stone-500' : 'text-stone-400'
           }`}
         >
-          Nao ha juizo nisto. Apenas reconhecimento. Cada crenca marcada e um veu que ja comecaste a ver.
+          Não há juízo nisto. Apenas reconhecimento. Cada crença marcada é um véu que já começaste a ver.
         </motion.p>
       )}
     </motion.div>

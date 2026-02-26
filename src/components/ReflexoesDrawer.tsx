@@ -123,8 +123,8 @@ export default function ReflexoesDrawer({ veuNumero, capituloNumero, guiaoReflex
               className="w-full max-w-xl mx-auto flex items-center gap-4 px-6 py-4 rounded-2xl bg-purple-900 text-white shadow-2xl hover:bg-purple-800 transition-colors"
             >
               <div className="flex-1 text-left">
-                <p className="text-sm font-medium">Capitulo completo</p>
-                <p className="text-xs text-purple-300 mt-0.5">O que este capitulo despertou em ti?</p>
+                <p className="text-sm font-medium">Capítulo completo</p>
+                <p className="text-xs text-purple-300 mt-0.5">O que este capítulo despertou em ti?</p>
               </div>
               <span className="text-sm font-medium px-4 py-1.5 rounded-full bg-white/20 whitespace-nowrap">
                 Reflectir
@@ -143,7 +143,7 @@ export default function ReflexoesDrawer({ veuNumero, capituloNumero, guiaoReflex
           className={`fixed right-6 z-40 bg-purple-900 text-white w-14 h-14 text-2xl rounded-full shadow-2xl flex items-center justify-center transition-all duration-500 ${
             hasFloatingPlayer ? 'bottom-24' : 'bottom-6'
           }`}
-          title="Abrir Reflexoes"
+          title="Abrir Reflexões"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
             <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
@@ -197,7 +197,7 @@ export default function ReflexoesDrawer({ veuNumero, capituloNumero, guiaoReflex
                 {/* Nova Reflexão */}
                 <div>
                   <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
-                    O que este capitulo despertou em ti?
+                    O que este capítulo despertou em ti?
                   </label>
 
                   {/* Guiao de reflexao — prompts que ticam a escrita */}
