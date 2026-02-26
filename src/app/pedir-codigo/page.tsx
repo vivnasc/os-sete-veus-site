@@ -302,11 +302,12 @@ export default function PedirCodigoPage() {
                 {/* WhatsApp */}
                 <div>
                   <label htmlFor="whatsapp" className="block text-sm font-medium text-brown-900">
-                    WhatsApp <span className="text-xs text-brown-400">(para receberes o codigo mais rapido)</span>
+                    WhatsApp <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="tel"
                     id="whatsapp"
+                    required
                     placeholder="+258 ..."
                     value={formData.whatsapp}
                     onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}

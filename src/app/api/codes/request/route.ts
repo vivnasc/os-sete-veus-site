@@ -20,9 +20,9 @@ export async function POST(request: Request) {
     const { fullName, email, whatsapp, purchaseLocation, proofUrl } = body
 
     // Validações básicas
-    if (!fullName || !email) {
+    if (!fullName || !email || !whatsapp) {
       return NextResponse.json(
-        { error: 'Nome e email são obrigatórios' },
+        { error: 'Nome, email e WhatsApp são obrigatórios' },
         { status: 400 }
       )
     }
