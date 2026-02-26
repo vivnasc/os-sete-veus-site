@@ -155,6 +155,64 @@ function SlidePreview({ slide, index, scale, dims }: {
   );
 }
 
+// ─── VERTICAL SLIDE (9:16) — for WhatsApp / CapCut slideshow ────────────────
+
+function SlidePreviewVertical({ slide, index, scale }: {
+  slide: CarouselSlide; index: number; scale: number;
+}) {
+  return (
+    <div className="relative overflow-hidden" style={{
+      width: STORY_DIMS.w, height: STORY_DIMS.h,
+      transform: `scale(${scale})`, transformOrigin: "top left",
+      backgroundColor: slide.bg, color: slide.text,
+    }}>
+      {slide.bgImage && (
+        <>
+          <img src={slide.bgImage} alt="" crossOrigin="anonymous"
+            className="absolute inset-0 h-full w-full object-cover" />
+          <div className="absolute inset-0" style={{ backgroundColor: slide.bg, opacity: 0.82 }} />
+        </>
+      )}
+      {/* Number badge */}
+      <div style={{ position: "absolute", left: 60, top: 80, width: 80, height: 80, borderRadius: "50%",
+        backgroundColor: slide.accent + "30", color: slide.accent, display: "flex", alignItems: "center",
+        justifyContent: "center", fontFamily: "system-ui, sans-serif", fontSize: 32, fontWeight: 700 }}>
+        {index + 1}
+      </div>
+      {/* Content — centred with more vertical breathing room */}
+      <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column",
+        justifyContent: "center", padding: "200px 90px" }}>
+        {slide.title && (
+          <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 80,
+            lineHeight: 1.15, fontWeight: 700, whiteSpace: "pre-line", margin: 0 }}>{slide.title}</h2>
+        )}
+        {slide.title && slide.body && (
+          <div style={{ width: "12%", height: 4, backgroundColor: slide.accent, opacity: 0.7, margin: "48px 0" }} />
+        )}
+        {slide.body && (
+          <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 38, lineHeight: 1.55,
+            fontWeight: 400, whiteSpace: "pre-line", margin: 0 }}>{slide.body}</p>
+        )}
+      </div>
+      {slide.footer && (
+        <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "0 90px 100px" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 26, fontWeight: 600,
+              letterSpacing: "0.08em", textTransform: "uppercase", color: slide.accent, margin: 0 }}>{slide.footer}</p>
+            <span style={{ fontFamily: "Georgia, serif", fontSize: 40, opacity: 0.3, color: slide.accent }}>~</span>
+          </div>
+        </div>
+      )}
+      {/* Brand mark */}
+      <div style={{ position: "absolute", left: 0, right: 0, top: 0, padding: "80px 90px 0", display: "flex",
+        justifyContent: "flex-end" }}>
+        <img src="/images/mandala-7veus.png" alt="" crossOrigin="anonymous"
+          style={{ width: 80, height: 80, opacity: 0.12, objectFit: "contain" }} />
+      </div>
+    </div>
+  );
+}
+
 function StoryTextPreview({ slide, scale }: { slide: CarouselSlide; scale: number }) {
   return (
     <div className="relative overflow-hidden" style={{
@@ -275,12 +333,15 @@ export default function MarketingPage() {
   const { user, loading } = useAuth();
   const router = useRouter();
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const vertSlideRefs = useRef<(HTMLDivElement | null)[]>([]);
   const storyTextRef = useRef<HTMLDivElement | null>(null);
   const storyMockupRef = useRef<HTMLDivElement | null>(null);
   const waStatusRef = useRef<HTMLDivElement | null>(null);
   const [selectedDate, setSelectedDate] = useState(() => new Date());
   const [activeSlide, setActiveSlide] = useState(0);
+  const [activeVertSlide, setActiveVertSlide] = useState(0);
   const [exporting, setExporting] = useState(false);
+  const [exportingVert, setExportingVert] = useState(false);
   const [exportingStory, setExportingStory] = useState<string | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [openCaption, setOpenCaption] = useState<string | null>(null);
@@ -306,6 +367,7 @@ export default function MarketingPage() {
 
   const postScale = 340 / DIMS.w;
   const storyScale = 200 / STORY_DIMS.h;
+  const vertScale = 160 / STORY_DIMS.w;
 
   const exportAll = useCallback(async () => {
     if (!carousel) return;
@@ -332,6 +394,33 @@ export default function MarketingPage() {
       await new Promise((r) => setTimeout(r, 400));
     }
     setExporting(false);
+  }, [carousel]);
+
+  const exportAllVert = useCallback(async () => {
+    if (!carousel) return;
+    setExportingVert(true);
+    const { toPng } = await import("html-to-image");
+    for (let i = 0; i < carousel.slides.length; i++) {
+      const wrapper = vertSlideRefs.current[i];
+      if (!wrapper) continue;
+      const el = (wrapper.firstElementChild as HTMLElement) || wrapper;
+      const orig = { t: el.style.transform, w: el.style.width, h: el.style.height };
+      el.style.transform = "none";
+      el.style.width = `${STORY_DIMS.w}px`;
+      el.style.height = `${STORY_DIMS.h}px`;
+      try {
+        const dataUrl = await toPng(el, { width: STORY_DIMS.w, height: STORY_DIMS.h, pixelRatio: 1, cacheBust: true });
+        const a = document.createElement("a");
+        a.download = `${carousel.id}-vertical-${i + 1}.png`;
+        a.href = dataUrl;
+        a.click();
+      } catch { /* skip */ }
+      el.style.transform = orig.t;
+      el.style.width = orig.w;
+      el.style.height = orig.h;
+      await new Promise((r) => setTimeout(r, 400));
+    }
+    setExportingVert(false);
   }, [carousel]);
 
   useEffect(() => {
@@ -382,14 +471,17 @@ export default function MarketingPage() {
   function prevWeek() {
     setSelectedDate((prev) => { const d = new Date(prev); d.setDate(d.getDate() - 7); return d; });
     setActiveSlide(0);
+    setActiveVertSlide(0);
   }
   function nextWeek() {
     setSelectedDate((prev) => { const d = new Date(prev); d.setDate(d.getDate() + 7); return d; });
     setActiveSlide(0);
+    setActiveVertSlide(0);
   }
   function selectDay(d: Date) {
     setSelectedDate(d);
     setActiveSlide(0);
+    setActiveVertSlide(0);
     setOpenCaption(null);
   }
 
@@ -540,6 +632,83 @@ export default function MarketingPage() {
               {/* ── WHATSAPP TAB ── */}
               {activeTab === "whatsapp" && (
                 <div className="space-y-3">
+                  {/* Vertical carousel (9:16) for CapCut slideshow */}
+                  <div className="overflow-hidden rounded-2xl border border-[#25D366]/20 bg-[#0b141a]">
+                    <div className="flex items-center justify-between border-b border-[#25D366]/10 px-4 py-3">
+                      <div className="flex items-center gap-2">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2"><rect x="5" y="2" width="14" height="20" rx="2" /></svg>
+                        <div>
+                          <p className="font-sans text-xs font-semibold text-white">Carrossel Vertical ~ {carousel.slides.length} slides</p>
+                          <p className="font-sans text-[0.5rem] text-[#8696a0]">9:16 — para CapCut / Reels / Status</p>
+                        </div>
+                      </div>
+                      <span className="rounded-full bg-[#25D366]/20 px-2.5 py-0.5 font-sans text-[0.55rem] font-bold text-[#25D366]">
+                        {activeVertSlide + 1}/{carousel.slides.length}
+                      </span>
+                    </div>
+
+                    <div className="p-4">
+                      {/* Swipeable vertical slides */}
+                      <div className="relative mx-auto overflow-hidden rounded-xl"
+                        style={{ width: STORY_DIMS.w * vertScale, height: STORY_DIMS.h * vertScale }}
+                        onTouchStart={(e) => {
+                          const touch = e.touches[0];
+                          (e.currentTarget as HTMLElement).dataset.touchX = String(touch.clientX);
+                        }}
+                        onTouchEnd={(e) => {
+                          const startX = Number((e.currentTarget as HTMLElement).dataset.touchX || 0);
+                          const endX = e.changedTouches[0].clientX;
+                          const diff = startX - endX;
+                          if (Math.abs(diff) > 40) {
+                            if (diff > 0 && activeVertSlide < carousel.slides.length - 1) setActiveVertSlide(activeVertSlide + 1);
+                            if (diff < 0 && activeVertSlide > 0) setActiveVertSlide(activeVertSlide - 1);
+                          }
+                        }}
+                      >
+                        <div className="flex transition-transform duration-300 ease-out"
+                          style={{ transform: `translateX(-${activeVertSlide * 100}%)` }}>
+                          {carousel.slides.map((slide, i) => (
+                            <div key={i} className="w-full shrink-0">
+                              <div ref={(el) => { vertSlideRefs.current[i] = el; }}>
+                                <SlidePreviewVertical slide={slide} index={i} scale={vertScale} />
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+
+                        {activeVertSlide > 0 && (
+                          <button onClick={() => setActiveVertSlide(activeVertSlide - 1)}
+                            className="absolute left-2 top-1/2 -translate-y-1/2 flex h-7 w-7 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm hover:bg-black/70">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 18l-6-6 6-6" /></svg>
+                          </button>
+                        )}
+                        {activeVertSlide < carousel.slides.length - 1 && (
+                          <button onClick={() => setActiveVertSlide(activeVertSlide + 1)}
+                            className="absolute right-2 top-1/2 -translate-y-1/2 flex h-7 w-7 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm hover:bg-black/70">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 18l6-6-6-6" /></svg>
+                          </button>
+                        )}
+                      </div>
+
+                      {/* Dots */}
+                      {carousel.slides.length > 1 && (
+                        <div className="mt-3 flex justify-center gap-1.5">
+                          {carousel.slides.map((_, i) => (
+                            <button key={i} onClick={() => setActiveVertSlide(i)}
+                              className={`h-1.5 rounded-full transition-all ${
+                                activeVertSlide === i ? "w-5 bg-[#25D366]" : "w-1.5 bg-cream/20"
+                              }`} />
+                          ))}
+                        </div>
+                      )}
+
+                      <button onClick={exportAllVert} disabled={exportingVert}
+                        className={`mt-4 w-full rounded-xl bg-[#25D366] py-3 font-sans text-sm font-semibold text-white shadow-lg shadow-[#25D366]/20 transition-all hover:bg-[#1da851] active:scale-[0.98] ${exportingVert ? "opacity-60" : ""}`}>
+                        {exportingVert ? "A descarregar..." : `Descarregar ${carousel.slides.length} imagens verticais`}
+                      </button>
+                    </div>
+                  </div>
+
                   {/* WhatsApp Status image */}
                   <div className="overflow-hidden rounded-2xl border border-[#25D366]/20 bg-[#0b141a]">
                     <div className="flex items-center gap-2 border-b border-[#25D366]/10 px-4 py-3">
@@ -575,7 +744,7 @@ export default function MarketingPage() {
                   {/* WhatsApp message */}
                   <div className="overflow-hidden rounded-2xl border border-[#25D366]/20 bg-[#0b141a]">
                     <div className="flex items-center justify-between border-b border-[#25D366]/10 px-4 py-3">
-                      <p className="font-sans text-xs font-semibold text-[#25D366]">Mensagem Broadcast</p>
+                      <p className="font-sans text-xs font-semibold text-[#25D366]">Mensagem</p>
                       <button
                         onClick={() => copyText("wa", waCaption)}
                         className={`rounded-lg px-4 py-1.5 font-sans text-xs font-semibold transition-all ${
