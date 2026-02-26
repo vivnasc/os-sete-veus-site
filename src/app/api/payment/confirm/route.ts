@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase-server";
 import { cookies } from "next/headers";
 import { ADMIN_EMAILS, ACCESS_FLAG_MAP } from "@/lib/constants";
+import { notifyPaymentConfirmed, notifyPaymentRejected } from "@/lib/notify-admin";
 
 export async function POST(request: Request) {
   try {
@@ -137,10 +138,21 @@ export async function POST(request: Request) {
           .eq("id", payment.user_id);
       }
 
-      // TODO: Implementar envio de email + WhatsApp
+      // Notificar via Telegram
+      await notifyPaymentConfirmed({
+        user_email: payment.user_email,
+        amount: payment.amount,
+        currency: payment.currency || "MZN",
+        access_type_code: payment.access_type_code,
+      });
     } else {
-      // Enviar email de rejeição
-      // TODO: Implementar envio de email
+      // Notificar rejeicao via Telegram
+      await notifyPaymentRejected({
+        user_email: payment.user_email,
+        amount: payment.amount,
+        currency: payment.currency || "MZN",
+        reason: rejection_reason,
+      });
     }
 
     return NextResponse.json({

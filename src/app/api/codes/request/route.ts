@@ -11,6 +11,8 @@ const ADMIN_EMAILS = ["viv.saraiva@gmail.com"]
  * Cliente que comprou livro físico pede código de acesso
  * Público (não precisa autenticação)
  * Usa admin client para bypassa RLS (anon não tem SELECT nesta tabela)
+ *
+ * Cria pedido pendente. Admin revê comprovativo e aprova no painel.
  */
 export async function POST(request: Request) {
   try {
@@ -18,9 +20,9 @@ export async function POST(request: Request) {
     const { fullName, email, whatsapp, purchaseLocation, proofUrl } = body
 
     // Validações básicas
-    if (!fullName || !email) {
+    if (!fullName || !email || !whatsapp) {
       return NextResponse.json(
-        { error: 'Nome e email são obrigatórios' },
+        { error: 'Nome, email e WhatsApp são obrigatórios' },
         { status: 400 }
       )
     }
@@ -73,13 +75,14 @@ export async function POST(request: Request) {
       )
     }
 
-    // Notificar admin (não bloqueia a resposta)
-    notifyCodeRequest({
+    // Notificar admin — AWAIT para garantir que o Vercel nao mata a funcao antes
+    await notifyCodeRequest({
       full_name: fullName,
       email,
       whatsapp: whatsapp || undefined,
       purchase_location: purchaseLocation || undefined,
-    }).catch(err => console.error('Erro ao notificar admin:', err))
+      proof_url: proofUrl || undefined,
+    })
 
     return NextResponse.json({
       success: true,
