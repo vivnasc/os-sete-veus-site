@@ -191,7 +191,7 @@ export default function GeradorPage() {
   // State
   const [print, setPrint] = useState(PRINTS[0]);
   const [format, setFormat] = useState<Format>("story");
-  const [blur, setBlur] = useState(40);
+  const [blur, setBlur] = useState(0);
   const [overlay, setOverlay] = useState(72);
   const [overlayColor, setOverlayColor] = useState("#1a1a2e");
   const [title, setTitle] = useState(MENSAGENS[0].title);
