@@ -1456,9 +1456,9 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     slides: [
       { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Já sentiste que a vida\nque tens não foi\na que escolheste?", body: "", footer: "", bgImage: "/images/mandala-7veus.png" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Os Sete Véus\ndo Despertar", body: "Um ensaio filosófico\nsobre despertar\nde consciência.\n\n232 páginas.\n7 véus que te escondem\nde ti mesma.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", title: "Na plataforma digital,\nnão é só ler.", body: "Lês. Respiras.\nReflectes. Escreves.\n\nCada capítulo tem pausas\nde respiração guiada\ne um diário pessoal.", footer: "", bgImage: "/prints/leitura-capitulo.jpeg" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", title: "Na plataforma digital,\nnão é só ler.", body: "Lês. Respiras.\nReflectes. Escreves.\n\nCada capítulo tem pausas\nde respiração guiada\ne um diário pessoal.", footer: "" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Os 7 Véus:", body: "1. Permanência — a crença num eu fixo\n2. Memória — as histórias do passado\n3. Turbilhão — a identificação com pensamentos\n4. Esforço — a busca incessante\n5. Desolação — o medo do vazio\n6. Horizonte — a ilusão dos finais\n7. Dualidade — a separação eu/mundo", footer: "" },
-      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Já tens o livro físico?\nO acesso digital\né gratuito.", body: "Pede o teu código\nem menos de 2 minutos.", footer: "seteveus.space/pedir-codigo", bgImage: "/prints/7veuspedircod-portrait.png" },
+      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Já tens o livro físico?\nO acesso digital\né gratuito.", body: "Pede o teu código\nem menos de 2 minutos.", footer: "seteveus.space/pedir-codigo" },
     ],
     caption: "Já sentiste que a vida que tens não foi a que escolheste?\n\nOs Sete Véus do Despertar é um ensaio filosófico sobre despertar de consciência. 232 páginas. 7 véus que te escondem de ti mesma.\n\nNa plataforma digital, não é só ler — é uma experiência: lês, respiras, reflectes, escreves.\n\nJá tens o livro físico? O acesso digital é gratuito.\nPede o teu código: seteveus.space/pedir-codigo\n\n#OsSeteVeus #Autoconhecimento #DespertarDeConsciencia #LivroFilosofico #ExperienciaDigital",
     canvaSpecs: {
@@ -1492,8 +1492,8 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     slides: [
       { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "O livro físico\né só o início.", body: "", footer: "", bgImage: "/images/mandala-7veus.png" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "Só com o livro físico:", body: "Lês.\nFechas.\nGuardas na estante.\n\nA experiência fica\nno papel.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Com o acesso digital:", body: "Lês cada véu\nem 3 níveis de profundidade.\nEscreves no teu diário.\nPráticas guiadas.\nComunidade anónima.", footer: "", bgImage: "/prints/leitura-capitulo.jpeg" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "3 níveis de leitura:", body: "Semente — guia acessível\nRaiz — notas filosóficas\nÁrvore — texto original, puro", footer: "", bgImage: "/prints/7veus-3niveis-portrait.png" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Com o acesso digital:", body: "Lês cada véu\nem 3 níveis de profundidade.\nEscreves no teu diário.\nPráticas guiadas.\nComunidade anónima.", footer: "" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "3 níveis de leitura:", body: "Semente — guia acessível\nRaiz — notas filosóficas\nÁrvore — texto original, puro", footer: "" },
       { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Já tens o livro?\nO acesso digital\né gratuito.", body: "Pede o teu código\nem menos de 2 minutos.", footer: "seteveus.space/pedir-codigo" },
     ],
     caption: "O livro físico é só o início.\n\nSó com o papel: lês, fechas, guardas. Com o acesso digital: lês em 3 níveis de profundidade, escreves no diário, práticas guiadas, comunidade anónima.\n\nOs 3 níveis:\n— Semente: guia acessível com exemplos\n— Raiz: texto com notas de contexto filosófico\n— Árvore: texto original, puro, sem interrupções\n\nJá tens o livro? O acesso digital é gratuito.\nPede o teu código: seteveus.space/pedir-codigo\n\n#OsSeteVeus #ExperienciaDigital #LivroFilosofico #Autoconhecimento #PedeOTeuCodigo",
@@ -1510,7 +1510,7 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     slides: [
       { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Tens Os 7 Véus\ndo Despertar?", body: "O teu livro\nabre portas\nque ainda não conheces.", footer: "", bgImage: "/images/mandala-7veus.png" },
       { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "O que ganhas\ncom o acesso digital:", body: "", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "1. Leitura em\n3 níveis", body: "Cada véu pode ser lido\nem 3 profundidades:\nSemente, Raiz e Árvore.\n\nDo guia acessível\nao texto original, puro.", footer: "", bgImage: "/prints/7veus-3niveis-portrait.png" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "1. Leitura em\n3 níveis", body: "Cada véu pode ser lido\nem 3 profundidades:\nSemente, Raiz e Árvore.\n\nDo guia acessível\nao texto original, puro.", footer: "" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "2. Diário + Práticas", body: "Diário reflexivo pessoal.\nPráticas guiadas por véu.\nRespiração entre capítulos.\n\nNão é só ler —\né viver o que leste.", footer: "" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "3. Comunidade anónima", body: "Ecos: um espaço onde\nas vozes se encontram.\nReflexões partilhadas.\nTudo impermanente.", footer: "" },
       { bg: "#c9b896", text: "#3d3630", accent: "#f7f5f0", title: "Gratuito.\nSem compromisso.", body: "Pede o teu código\nem menos de 2 minutos.", footer: "seteveus.space/pedir-codigo" },
@@ -1550,7 +1550,7 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     description: "Passo a passo da experiência digital do livro filosófico. Para campanha Pede o teu código.",
     slides: [
       { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Como funciona\na experiência digital?", body: "3 passos simples.", footer: "seteveus.space", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "1. Pede o teu código", body: "Se já tens o livro físico,\no acesso é gratuito.\n\nPreenche o formulário\nem seteveus.space/pedir-codigo\n\nRecebes o código em 24h.", footer: "", bgImage: "/prints/7veuspedircod-portrait.png" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "1. Pede o teu código", body: "Se já tens o livro físico,\no acesso é gratuito.\n\nPreenche o formulário\nem seteveus.space/pedir-codigo\n\nRecebes o código em 24h.", footer: "" },
       { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "2. Lê ao teu ritmo", body: "Cada véu tem\n3 níveis de leitura:\n\n~ Semente (guia acessível)\n~ Raiz (notas filosóficas)\n~ Árvore (texto original, puro)", footer: "" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "3. Escreve, respira,\npartilha", body: "Diário reflexivo pessoal.\nPráticas guiadas por véu.\nRespiração entre capítulos.\nComunidade anónima.", footer: "" },
       { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Incluído:", body: "O livro completo em digital\n3 níveis de leitura por véu\nDiário de reflexão\nPráticas guiadas\nRespiração entre capítulos\nComunidade Ecos\nChatbot de apoio 24/7", footer: "" },
@@ -1568,7 +1568,7 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     title: "O que dizem as leitoras",
     description: "Testemunhos reais (anónimos) da comunidade. Social proof poderoso.",
     slides: [
-      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "O que dizem\nas leitoras.", body: "", footer: "Testemunhos reais. Nomes guardados.", bgImage: "/prints/comunidade-marcas-caminho.jpeg" },
+      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "O que dizem\nas leitoras.", body: "", footer: "Testemunhos reais. Nomes guardados." },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "\"Sai do modo\nautomático.\nNão sei para onde vou\nmas pelo menos\nestou acordada.\"", body: "", footer: "~ leitora anónima, Véu 1" },
       { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "\"Chorei no banho.\nOutra vez.\nMas desta vez\nnão foi por tristeza.\nFoi por reconhecimento.\"", body: "", footer: "~ leitora anónima, Véu 1" },
       { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "\"O meu marido\nperguntou: estás bem?\nE eu disse que sim.\nAutomaticamente.\"", body: "", footer: "~ leitora anónima, Véu 1" },
@@ -1625,7 +1625,7 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     title: "Comunidade Ecos — o que e?",
     description: "Apresentar a comunidade anónima. Diferencial único da plataforma.",
     slides: [
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "E se pudesses\npartilhar o que sentes\nsem ninguém\nsaber quem és?", body: "", footer: "", bgImage: "/prints/comunidade-ecos-tabs.jpeg" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "E se pudesses\npartilhar o que sentes\nsem ninguém\nsaber quem és?", body: "", footer: "" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Comunidade Ecos", body: "Um espaço onde as vozes\nse encontram.\n\nAnónimo.\nImpermanente.\nReal.", footer: "" },
       { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Ecos", body: "Reflexões partilhadas\nanónimamente.\n\nNinguém sabe quem escreveu.\nTodos se reconhecem.", footer: "Expiram em 30 dias." },
       { bg: "#ebe7df", text: "#3d3630", accent: "#7a8c6e", title: "Reconhecimentos", body: "Não há likes.\nHá \"reconheço-me\".\n\nUm toque silencioso\nque diz:\n\"Eu também.\"", footer: "" },
@@ -1684,7 +1684,7 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     title: "Do papel ao ecrã — o que muda",
     description: "Mostra as diferenças entre ter só o livro físico e ter o acesso digital. Valor concreto.",
     slides: [
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Do papel ao ecrã.", body: "A mesma essência.\nUma nova forma\nde viver os véus.", footer: "", bgImage: "/prints/livro-fisico-preco-whatsapp.jpeg" },
+      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Do papel ao ecrã.", body: "A mesma essência.\nUma nova forma\nde viver os véus.", footer: "" },
       { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Só o livro físico:", body: "Lês.\nFechas.\nGuardas na estante.\n\nA experiência fica\nno papel.", footer: "" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "Com o acesso digital:", body: "Lês.\nRespiras.\nEscreves no diário.\nPartilhas na comunidade.\n\nA experiência fica\nem ti.", footer: "" },
       { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Diário reflexivo", body: "Cada capítulo tem\num espaço para escreveres\no que sentiste.\n\nSó tu lês.\nSó tu decides.", footer: "" },
@@ -1704,11 +1704,11 @@ export const professionalCarousels: ProfessionalCarousel[] = [
     title: "A experiência digital por dentro",
     description: "Tour visual: o que inclui o acesso digital. Cada slide mostra uma funcionalidade.",
     slides: [
-      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "O que está dentro\nda experiência digital?", body: "", footer: "Os 7 Véus do Despertar", bgImage: "/prints/homepage-hero-mandala.jpeg" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Leitura interactiva", body: "O livro filosófico completo\ncom pausas integradas.\n\nNão é uma cópia digital —\né uma experiência\ndiferente de ler.", footer: "", bgImage: "/prints/leitura-capitulo.jpeg" },
+      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "O que está dentro\nda experiência digital?", body: "", footer: "Os 7 Véus do Despertar" },
+      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Leitura interactiva", body: "O livro filosófico completo\ncom pausas integradas.\n\nNão é uma cópia digital —\né uma experiência\ndiferente de ler.", footer: "" },
       { bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", title: "Diário reflexivo", body: "Em cada capítulo,\num espaço para ti.\n\nEscreve o que sentes.\nGuarda o que descobres.\nSó tu tens acesso.", footer: "" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Respiração guiada", body: "Entre capítulos,\no ecrã escurece.\nUm convite a parar.\n\nInspira. Expira.\nSó depois avanças.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Comunidade Ecos", body: "Reflexões anónimas.\nImpermanentes.\n\nNinguém sabe quem és.\nTodos se reconhecem.", footer: "", bgImage: "/prints/comunidade-ecos-tabs.jpeg" },
+      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Comunidade Ecos", body: "Reflexões anónimas.\nImpermanentes.\n\nNinguém sabe quem és.\nTodos se reconhecem.", footer: "" },
       { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "Chatbot de apoio", body: "Dúvidas sobre os véus?\nSobre a plataforma?\nSobre ti?\n\nUma voz disponível\n24 horas por dia.", footer: "" },
       { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Recursos gratuitos", body: "Teste: Qual véu te esconde?\nDiário de 7 dias\nChecklist do despertar\nMini-guia\nWallpapers", footer: "" },
       { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Tudo isto é teu.", body: "Se já tens o livro físico:\ngratuito.\n\nPede o teu código\nem 2 minutos.", footer: "seteveus.space/pedir-codigo" },
