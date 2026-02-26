@@ -106,6 +106,13 @@ export async function notifyAdmin(data: NotificationData): Promise<void> {
  * Envia notificacao via Telegram Bot API (gratuito, ilimitado)
  * Cria bot em 30s via @BotFather no Telegram
  */
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
 async function sendTelegramNotification(
   botToken: string,
   chatId: string,
@@ -123,13 +130,13 @@ async function sendTelegramNotification(
     general: "ALERTA",
   };
 
-  let text = `*${icon[type] || "ALERTA"}*\n${title}\n\n${message}`;
+  let text = `<b>${escapeHtml(icon[type] || "ALERTA")}</b>\n${escapeHtml(title)}\n\n${escapeHtml(message)}`;
 
   if (details) {
     text += "\n";
     for (const [key, value] of Object.entries(details)) {
       if (value !== null && value !== undefined) {
-        text += `\n*${key}:* ${value}`;
+        text += `\n<b>${escapeHtml(String(key))}:</b> ${escapeHtml(String(value))}`;
       }
     }
   }
@@ -137,7 +144,7 @@ async function sendTelegramNotification(
   const hora = new Date().toLocaleString("pt-PT", {
     timeZone: "Africa/Maputo",
   });
-  text += `\n\n${hora}`;
+  text += `\n\n${escapeHtml(hora)}`;
 
   const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
@@ -147,7 +154,7 @@ async function sendTelegramNotification(
     body: JSON.stringify({
       chat_id: chatId,
       text,
-      parse_mode: "Markdown",
+      parse_mode: "HTML",
     }),
   });
 
@@ -155,21 +162,20 @@ async function sendTelegramNotification(
     const errBody = await res.text();
     console.error("[notify-admin] Telegram erro:", res.status, errBody);
 
-    // Retry without Markdown if parsing failed
-    if (errBody.includes("parse") || errBody.includes("Can't parse")) {
-      console.log("[notify-admin] Retry sem Markdown...");
-      const retryRes = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: text.replace(/\*/g, ""),
-        }),
-      });
-      if (!retryRes.ok) {
-        const retryErr = await retryRes.text();
-        console.error("[notify-admin] Telegram retry falhou:", retryRes.status, retryErr);
-      }
+    // Retry without formatting if HTML parsing failed
+    const plainText = text.replace(/<[^>]*>/g, "");
+    console.log("[notify-admin] Retry sem formatacao...");
+    const retryRes = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: plainText,
+      }),
+    });
+    if (!retryRes.ok) {
+      const retryErr = await retryRes.text();
+      console.error("[notify-admin] Telegram retry falhou:", retryRes.status, retryErr);
     }
   }
 }

@@ -17,8 +17,9 @@ export default function PedirCodigoPage() {
   const [proofUrl, setProofUrl] = useState('')
   const [isUploading, setIsUploading] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'auto_approved' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
+  const [generatedCode, setGeneratedCode] = useState('')
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -126,7 +127,12 @@ export default function PedirCodigoPage() {
         throw new Error(data.error || 'Erro ao enviar pedido')
       }
 
-      setSubmitStatus('success')
+      if (data.autoApproved) {
+        setGeneratedCode(data.code)
+        setSubmitStatus('auto_approved')
+      } else {
+        setSubmitStatus('success')
+      }
     } catch (error: any) {
       console.error('Erro ao enviar pedido:', error)
       setSubmitStatus('error')
@@ -134,6 +140,51 @@ export default function PedirCodigoPage() {
     } finally {
       setIsSubmitting(false)
     }
+  }
+
+  if (submitStatus === 'auto_approved') {
+    return (
+      <div className="min-h-screen bg-cream px-6 py-24">
+        <div className="mx-auto max-w-2xl text-center">
+          <div className="rounded-2xl border-2 border-green-200 bg-white p-10 shadow-lg">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
+              <svg className="h-7 w-7 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h1 className="mt-6 font-serif text-3xl text-brown-900">
+              Acesso concedido!
+            </h1>
+            <p className="mx-auto mt-4 max-w-md leading-relaxed text-brown-700">
+              Obrigada, {formData.fullName}! O teu comprovativo foi verificado e o acesso foi concedido automaticamente.
+            </p>
+
+            <div className="mt-8 rounded-xl border-2 border-sage/30 bg-sage/5 p-6">
+              <p className="text-sm font-medium text-brown-900">O teu codigo de acesso:</p>
+              <p className="mt-3 font-mono text-3xl font-bold tracking-wider text-sage">
+                {generatedCode}
+              </p>
+              <p className="mt-3 text-xs text-brown-500">
+                Guarda este codigo. Ja podes entrar com o teu email.
+              </p>
+            </div>
+
+            <div className="mt-8">
+              <Link
+                href="/registar-livro"
+                className="inline-block rounded-lg bg-sage px-8 py-3.5 font-sans text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-sage-dark"
+              >
+                Entrar na plataforma
+              </Link>
+            </div>
+
+            <p className="mt-6 text-xs text-brown-500">
+              Email de acesso: {formData.email}
+            </p>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   if (submitStatus === 'success') {

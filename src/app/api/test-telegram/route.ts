@@ -26,10 +26,10 @@ export async function GET() {
   const chatId = process.env.TELEGRAM_CHAT_ID;
 
   const text =
-    "*TESTE*\nNotificacao de teste\n\n" +
+    "<b>TESTE</b>\nNotificacao de teste\n\n" +
     "Se estas a ler isto no Telegram, as notificacoes estao a funcionar.\n\n" +
-    `*Sistema:* Os Sete Veus\n` +
-    `*Estado:* Operacional\n\n` +
+    `<b>Sistema:</b> Os Sete Veus\n` +
+    `<b>Estado:</b> Operacional\n\n` +
     new Date().toLocaleString("pt-PT", { timeZone: "Africa/Maputo" });
 
   try {
@@ -41,7 +41,7 @@ export async function GET() {
         body: JSON.stringify({
           chat_id: chatId,
           text,
-          parse_mode: "Markdown",
+          parse_mode: "HTML",
         }),
       }
     );
@@ -49,45 +49,29 @@ export async function GET() {
     const telegramBody = await telegramRes.json();
 
     if (!telegramRes.ok) {
-      // If Markdown parsing failed, retry without parse_mode
-      if (
-        telegramBody?.description?.includes("parse") ||
-        telegramBody?.description?.includes("Can't parse")
-      ) {
-        const retryRes = await fetch(
-          `https://api.telegram.org/bot${botToken}/sendMessage`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              chat_id: chatId,
-              text: text.replace(/\*/g, ""),
-            }),
-          }
-        );
-
-        const retryBody = await retryRes.json();
-
-        if (retryRes.ok) {
-          return NextResponse.json({
-            ok: true,
-            message: "Notificacao enviada (sem formatacao — Markdown falhou)",
-            warning: "O formato Markdown falhou. A mensagem foi enviada em texto simples.",
-            telegram_error_original: telegramBody.description,
-            diagnostics,
-          });
+      // Retry without formatting
+      const retryRes = await fetch(
+        `https://api.telegram.org/bot${botToken}/sendMessage`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: text.replace(/<[^>]*>/g, ""),
+          }),
         }
+      );
 
-        return NextResponse.json(
-          {
-            ok: false,
-            error: "Telegram rejeitou a mensagem",
-            telegram_status: retryRes.status,
-            telegram_error: retryBody.description || retryBody,
-            diagnostics,
-          },
-          { status: 502 }
-        );
+      const retryBody = await retryRes.json();
+
+      if (retryRes.ok) {
+        return NextResponse.json({
+          ok: true,
+          message: "Notificacao enviada (sem formatacao)",
+          warning: "O formato HTML falhou. A mensagem foi enviada em texto simples.",
+          telegram_error_original: telegramBody.description,
+          diagnostics,
+        });
       }
 
       return NextResponse.json(
