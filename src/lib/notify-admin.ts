@@ -19,13 +19,16 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 
 export type NotificationType =
-  | "payment_proof"      // Comprovativo de pagamento recebido
-  | "payment_created"    // Novo pedido de pagamento criado
-  | "code_request"       // Novo pedido de codigo do livro fisico
-  | "code_redeemed"      // Codigo LIVRO-XXXXX resgatado
-  | "special_link_used"  // Link especial usado
-  | "new_member"         // Novo membro registado
-  | "general";           // Notificacao generica
+  | "payment_proof"        // Comprovativo de pagamento recebido
+  | "payment_created"      // Novo pedido de pagamento criado
+  | "payment_confirmed"    // Pagamento confirmado pelo admin
+  | "payment_rejected"     // Pagamento rejeitado pelo admin
+  | "code_request"         // Novo pedido de codigo do livro fisico
+  | "code_redeemed"        // Codigo LIVRO-XXXXX resgatado
+  | "special_link_used"    // Link especial usado
+  | "new_member"           // Novo membro registado
+  | "espelho_completed"    // Leitora completou um Espelho
+  | "general";             // Notificacao generica
 
 type NotificationData = {
   type: NotificationType;
@@ -123,10 +126,13 @@ async function sendTelegramNotification(
   const icon: Record<string, string> = {
     payment_proof: "PAGAMENTO",
     payment_created: "NOVO PEDIDO",
+    payment_confirmed: "PAGAMENTO CONFIRMADO",
+    payment_rejected: "PAGAMENTO REJEITADO",
     code_request: "PEDIDO CODIGO",
     code_redeemed: "CODIGO RESGATADO",
     special_link_used: "LINK USADO",
     new_member: "NOVO MEMBRO",
+    espelho_completed: "ESPELHO COMPLETO",
     general: "ALERTA",
   };
 
@@ -187,10 +193,13 @@ function formatWhatsAppMessage(data: NotificationData): string {
   const icon = {
     payment_proof: "💳",
     payment_created: "🛒",
+    payment_confirmed: "✅",
+    payment_rejected: "❌",
     code_request: "📬",
     code_redeemed: "✅",
     special_link_used: "🔗",
     new_member: "👋",
+    espelho_completed: "🪞",
     general: "📢",
   }[data.type];
 
@@ -301,6 +310,71 @@ export async function notifySpecialLinkUsed(data: {
     details: {
       Email: data.email,
       Acesso: data.access_type,
+    },
+  });
+}
+
+export async function notifyNewMember(data: {
+  email: string;
+}) {
+  await notifyAdmin({
+    type: "new_member",
+    title: "Novo membro registado",
+    message: `${data.email} criou conta na plataforma.`,
+    details: {
+      Email: data.email,
+    },
+  });
+}
+
+export async function notifyPaymentConfirmed(data: {
+  user_email: string;
+  amount: number;
+  currency: string;
+  access_type_code: string;
+}) {
+  await notifyAdmin({
+    type: "payment_confirmed",
+    title: "Pagamento confirmado",
+    message: `Pagamento de ${data.amount} ${data.currency} de ${data.user_email} confirmado. Acesso concedido: ${data.access_type_code}.`,
+    details: {
+      Email: data.user_email,
+      Valor: `${data.amount} ${data.currency}`,
+      Produto: data.access_type_code,
+    },
+  });
+}
+
+export async function notifyPaymentRejected(data: {
+  user_email: string;
+  amount: number;
+  currency: string;
+  reason?: string;
+}) {
+  await notifyAdmin({
+    type: "payment_rejected",
+    title: "Pagamento rejeitado",
+    message: `Pagamento de ${data.amount} ${data.currency} de ${data.user_email} rejeitado.`,
+    details: {
+      Email: data.user_email,
+      Valor: `${data.amount} ${data.currency}`,
+      Motivo: data.reason || "—",
+    },
+  });
+}
+
+export async function notifyEspelhoCompleted(data: {
+  email: string;
+  espelho_title: string;
+  espelho_slug: string;
+}) {
+  await notifyAdmin({
+    type: "espelho_completed",
+    title: "Espelho completo",
+    message: `${data.email} completou "${data.espelho_title}". Pronta para o No.`,
+    details: {
+      Email: data.email,
+      Espelho: data.espelho_title,
     },
   });
 }

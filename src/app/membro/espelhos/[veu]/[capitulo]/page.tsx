@@ -95,10 +95,17 @@ export default function EspelhoChapterPage({
         { onConflict: "user_id,chapter_slug" }
       );
       setCompleted(true);
+
+      // Verificar se completou o Espelho inteiro (notifica admin)
+      fetch("/api/reading/complete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, espelhoSlug: veu }),
+      }).catch(() => {});
     } catch {
       // Falha na ligacao — nao bloquear a leitura
     }
-  }, [chapter, progressKey]);
+  }, [chapter, progressKey, veu]);
 
   // Load completion state
   useEffect(() => {
