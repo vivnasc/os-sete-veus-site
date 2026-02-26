@@ -77,89 +77,113 @@ const PRINTS = [
 // ─── MENSAGENS (presets de texto) ───────────────────────────────────────────
 
 const MENSAGENS = [
+  // ─── Filosofia e profundidade ───
   {
-    label: "Convite geral",
-    title: "E se pudesses ler\no que a tua alma\njá sabe?",
-    subtitle: "Os Sete Véus do Despertar",
+    label: "Véus que escondem",
+    title: "Há coisas que sabes\nmas que ainda não\nte deixaste ouvir.",
+    subtitle: "Os 7 Véus do Despertar\nUm livro que não te diz o que fazer.\nMostra-te o que já sabes.",
     cta: "seteveus.space",
   },
   {
-    label: "Não é um livro",
-    title: "Não é um livro.\nÉ um espelho.",
-    subtitle: "7 véus. 7 histórias.\nUma jornada interior.",
-    cta: "Começa em seteveus.space",
-  },
-  {
-    label: "Qual véu",
-    title: "Qual véu\nte esconde?",
-    subtitle: "Descobre em 2 minutos.\nUm teste que não dá respostas ~ dá perguntas.",
-    cta: "seteveus.space/recursos/teste",
-  },
-  {
-    label: "Comunidade",
-    title: "As vozes encontram-se\naqui.",
-    subtitle: "Comunidade Ecos\nAnónima. Impermanente. Real.",
-    cta: "Entra em seteveus.space",
-  },
-  {
-    label: "Livro físico",
-    title: "O livro que\nte lê a ti.",
-    subtitle: "Edição impressa ~ 1.500 MT\nVersão digital incluída",
-    cta: "Encomenda via WhatsApp",
-  },
-  {
-    label: "Espelho Ilusão",
-    title: "O primeiro véu\né o mais silencioso.",
-    subtitle: "Espelho da Ilusão\n7 capítulos. Reflexões. Checklist.\nJá disponível.",
-    cta: "Começa em seteveus.space",
-  },
-  {
-    label: "Código acesso",
-    title: "Compraste o livro?\nTens acesso a tudo.",
-    subtitle: "Usa o teu código e desbloqueia\na experiência digital completa.",
-    cta: "seteveus.space/registar-livro",
-  },
-  {
-    label: "Nó da Herança",
-    title: "A mãe sempre viu.\nEsperou anos.",
-    subtitle: "O Nó da Herança\nDesbloqueado ao completar\no Espelho da Ilusão.",
+    label: "Não é autoajuda",
+    title: "Não é autoajuda.\nNão é terapia.\nÉ um espelho.",
+    subtitle: "Um livro que te devolve\naquilo que sempre foi teu.",
     cta: "seteveus.space",
   },
   {
-    label: "Despertar",
-    title: "Os 7 Véus\ndo Despertar",
-    subtitle: "Uma jornada em 7 camadas.\nCada véu esconde algo\nque sempre soubeste.",
+    label: "Perguntar é começar",
+    title: "Perguntar,\nmesmo tarde,\né o primeiro gesto\nde se escolher.",
+    subtitle: "Os 7 Véus do Despertar",
     cta: "seteveus.space",
   },
   {
-    label: "Frase ~ automático",
+    label: "Modo automático",
+    title: "Quantas decisões\ntomaste hoje\nsem escolher?",
+    subtitle: "O primeiro véu chama-se Ilusão.\nÉ o mais silencioso.\nE o mais comum.",
+    cta: "seteveus.space",
+  },
+  // ─── Experiência digital ───
+  {
+    label: "Três formas de ler",
+    title: "O mesmo livro.\nTrês profundidades\ndiferentes.",
+    subtitle: "Semente ~ guia acessível\nRaiz ~ contexto filosófico\nÁrvore ~ texto original\n\nTu escolhes a profundidade.",
+    cta: "seteveus.space",
+  },
+  {
+    label: "Ler e escrever",
+    title: "Ler sem escrever\né como olhar\npara um espelho\nde olhos fechados.",
+    subtitle: "Diário reflexivo integrado.\nAs tuas palavras, guardadas para sempre.",
+    cta: "seteveus.space",
+  },
+  {
+    label: "Respirar entre capítulos",
+    title: "Entre cada capítulo,\numa pausa.\nTrês respirações.\nO corpo também lê.",
+    subtitle: "Respiração guiada integrada\nna experiência de leitura.",
+    cta: "seteveus.space",
+  },
+  {
+    label: "Sozinha mas não só",
+    title: "Lês sozinha.\nMas não estás só.",
+    subtitle: "Comunidade Ecos\nReflexões anónimas.\nReconhecimentos silenciosos.\nTudo desaparece.",
+    cta: "seteveus.space/comunidade",
+  },
+  // ─── Ecos da comunidade ───
+  {
+    label: "Eco ~ acordar",
     title: '"saí do modo automático.\nnão sei para onde vou\nmas pelo menos\nestou acordada."',
     subtitle: "~ leitora anónima, Véu 1",
-    cta: "Comunidade Ecos ~ seteveus.space",
+    cta: "seteveus.space",
   },
   {
-    label: "Frase ~ banho",
+    label: "Eco ~ reconhecimento",
     title: '"chorei no banho.\noutra vez.\nmas desta vez\nnão foi por tristeza.\nfoi por reconhecimento."',
     subtitle: "~ leitora anónima, Véu 1",
-    cta: "Comunidade Ecos ~ seteveus.space",
+    cta: "seteveus.space",
   },
   {
-    label: "Frase ~ marido",
+    label: "Eco ~ automático",
     title: '"o meu marido perguntou\nestás bem?\ne eu disse que sim.\nautomaticamente."',
     subtitle: "~ leitora anónima, Véu 1",
-    cta: "Comunidade Ecos ~ seteveus.space",
-  },
-  {
-    label: "Jornada ritmo",
-    title: "A tua jornada,\nao teu ritmo.",
-    subtitle: "Sem pressas. Sem prazos.\nAo ritmo da tua verdade.",
     cta: "seteveus.space",
   },
   {
-    label: "Experiência leitura",
-    title: "Uma experiência\nde leitura\ndiferente.",
-    subtitle: "Reflexões. Checklists. Diário.\nTudo dentro do livro.",
+    label: "Eco ~ silêncio",
+    title: '"o silêncio entre nós\nnão era paz.\nera tudo o que\nnunca dissemos."',
+    subtitle: "~ leitora anónima, Véu 2",
     cta: "seteveus.space",
+  },
+  // ─── Livro físico + digital ───
+  {
+    label: "Do papel ao digital",
+    title: "O teu livro físico\nabre portas que\nainda não conheces.",
+    subtitle: "Se já tens o livro,\no acesso digital é gratuito.\nDiário. Comunidade. 3 níveis.",
+    cta: "seteveus.space/pedir-codigo",
+  },
+  {
+    label: "O livro que te lê",
+    title: "O livro que\nte lê a ti.",
+    subtitle: "Edição impressa ~ 1.500 MT\nExperiência digital incluída.",
+    cta: "+258 845 243 875",
+  },
+  // ─── Nó da Herança ───
+  {
+    label: "Nó da Herança",
+    title: "A mãe sempre viu.\nEsperou anos.\nAgora que Sara acordou,\nHelena tem algo\npara lhe dizer.",
+    subtitle: "O Nó da Herança\nO silêncio herdado entre mãe e filha.",
+    cta: "seteveus.space",
+  },
+  // ─── Convites suaves ───
+  {
+    label: "Ao teu ritmo",
+    title: "Sem pressa.\nSem prazo.\nAo ritmo da tua\nverdade.",
+    subtitle: "Os 7 Véus do Despertar",
+    cta: "seteveus.space",
+  },
+  {
+    label: "Teste gratuito",
+    title: "Qual véu\nte esconde?",
+    subtitle: "Um teste de 3 minutos.\nNão dá respostas.\nDá perguntas.",
+    cta: "seteveus.space/recursos/teste",
   },
   {
     label: "Vazio",
