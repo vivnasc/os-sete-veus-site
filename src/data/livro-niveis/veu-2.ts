@@ -178,7 +178,7 @@ export const veu2Niveis: NivelCapitulo[] = [
     resumo_acessivel: [
       'Com a narrativa é o propósito fixo dissolvidos, o capítulo pergunta: existe algo para além do que os olhos veem é a mente explica?',
       'Explora como as crenças — religiosas, espirituais, ancestrais — moldam a nossa visão da realidade. Qualquer sistema de crenças pode tornar-se prisão quando tomado como absoluto.',
-      'Introduz "leis universais" (karma como ressonância, mentalismo, vibração) não como dogmas, mas como espelhos do estado interior. Termina com o eco da crianca interior — impressões de infância que continuam a ditar comportamentos adultos.',
+      'Introduz "leis universais" (karma como ressonância, mentalismo, vibração) não como dogmas, mas como espelhos do estado interior. Termina com o eco da criança interior — impressões de infância que continuam a ditar comportamentos adultos.',
     ],
     perguntas_orientadoras: [
       'Há alguma crença espiritual ou religiosa que já te serviu mas que agora sentes como limitação?',
@@ -187,11 +187,11 @@ export const veu2Niveis: NivelCapitulo[] = [
     exemplos_concretos: [
       {
         contexto: 'Na vida espiritual',
-        texto: 'Imagina que cresceste a ouvir que "Deus castiga quem desobedece". Essa crença pode ter-te protegido em crianca, mas em adulta tornou-se medo silencioso que te impede de confiar na vida. O capítulo convida a olhar para as crenças como molduras — uteis, mas não absolutas.',
+        texto: 'Imagina que cresceste a ouvir que "Deus castiga quem desobedece". Essa crença pode ter-te protegido em criança, mas em adulta tornou-se medo silencioso que te impede de confiar na vida. O capítulo convida a olhar para as crenças como molduras — uteis, mas não absolutas.',
       },
       {
         contexto: 'No quotidiano',
-        texto: 'Já reparaste que reages a certas situações com uma intensidade desproporcional? O texto chama a isso "eco da crianca interior" — não é fraqueza, é uma memória emocional inscrita no corpo a pedir atenção.',
+        texto: 'Já reparaste que reages a certas situações com uma intensidade desproporcional? O texto chama a isso "eco da criança interior" — não é fraqueza, é uma memória emocional inscrita no corpo a pedir atenção.',
       },
     ],
     notas_contextuais: [
@@ -205,7 +205,7 @@ export const veu2Niveis: NivelCapitulo[] = [
       },
       {
         paragrafo_indice: 18,
-        texto: 'A "crianca interior" não é metáfora infantil. E o reconhecimento de que impressões emocionais da infância ficam inscritas no corpo é continuam a influenciar decisões, relações é reacções adultas.',
+        texto: 'A "criança interior" não é metáfora infantil. E o reconhecimento de que impressões emocionais da infância ficam inscritas no corpo é continuam a influenciar decisões, relações é reacções adultas.',
       },
     ],
     termos_destacados: ['fana', 'vacuidade', 'noite escura', 'Ubuntu', 'despertar', 'samsara'],
@@ -221,20 +221,20 @@ export const veu2Niveis: NivelCapitulo[] = [
       'Usas crenças espirituais para evitar sentir dor — "é karma", "tinha de ser", "o universo quis assim" — em vez de parar é sentir.',
       'Reages com intensidade a situações pequenas é só depois percebes que a reacção não era sobre o momento — era sobre algo antigo.',
       'Tens uma crença sobre como a vida "devia ser" que te impede de ver como ela realmente e.',
-      'Há uma voz dentro de ti — da crianca que foste — que ainda pede atenção, mas que empurras para baixo porque "já es adulta".',
+      'Há uma voz dentro de ti — da criança que foste — que ainda pede atenção, mas que empurras para baixo porque "já es adulta".',
       'Procuras certezas absolutas em sistemas de crenças porque a incerteza te assusta mais do que uma resposta errada.',
     ],
     guiao_reflexao: [
       'Escreve uma crença que te acompanha desde a infância — algo que te disseram ou que absorveste sem palavras. Agora pergunta-te: está crença protege-me ou aprisiona-me hoje?',
-      'Pensa na última vez que reagiste com uma intensidade que te surpreendeu. Escreve o que aconteceu por fora — é depois escreve o que a crianca dentro de ti pode ter sentido nesse momento.',
+      'Pensa na última vez que reagiste com uma intensidade que te surpreendeu. Escreve o que aconteceu por fora — é depois escreve o que a criança dentro de ti pode ter sentido nesse momento.',
       'Imagina que todas as tuas crenças sobre o invisível — Deus, energia, karma, destino — são molduras numa galeria. Não as destruas. Apenas caminha pela galeria é escreve: qual ainda te serve? Qual já só pesa?',
     ],
-    espelho_pessoal: 'Se a crianca que foste pudesse falar agora, sem filtros, sem vergonha — o que te pediria que finalmente ouvires?',
+    espelho_pessoal: 'Se a criança que foste pudesse falar agora, sem filtros, sem vergonha — o que te pediria que finalmente ouvires?',
 
     // Camada profunda
     mascaras: [
       'A espiritualizada — a que usa a linguagem do sagrado para não tocar no profano da sua dor. Fala de energia, de karma, de alinhamento, mas o corpo continua tenso. A espiritualidade tornou-se a mais elegante das fugas.',
-      'A adulta impenetravel — a que decidiu que a infância ficou para trás é não precisa de ser revisitada. "Já cresci." Mas as reacções desproporcionais denunciam o que a mente quer negar: a crianca está la, é está a gritar em silêncio.',
+      'A adulta impenetravel — a que decidiu que a infância ficou para trás é não precisa de ser revisitada. "Já cresci." Mas as reacções desproporcionais denunciam o que a mente quer negar: a criança está la, é está a gritar em silêncio.',
       'A crente absoluta — a que encontrou um sistema de crenças é se agarrou a ele como náufraga a tábua. Questionar é perigoso. Duvidar é fraqueza. A fé, que devia ser asas, tornou-se corrente.',
       'A tradutora do invisível — a que precisa de explicar cada sinal, cada coincidência, cada dor através de uma grelha metafísica. Nada é apenas o que e. Tudo tem de significar algo maior — porque aceitar o simples seria aceitar que nem tudo tem resposta.',
     ],
@@ -245,15 +245,15 @@ export const veu2Niveis: NivelCapitulo[] = [
       'A tua relação com a espiritualidade tem mais medo do que maravilhamento. Práticas, rezas ou meditas não por encanto, mas por protecção — como quem faz um ritual para manter o caos a distância.',
       'Percebes que há uma versão de ti — pequena, anterior a todas as crenças — que nunca foi ouvida. E tudo o que construiste por cima, por mais bonito que seja, não a consegue silenciar completamente.',
     ],
-    mensagem_central: 'As crenças que carregas não são inimigas. Mas algumas já não te pertencem — pertencem a crianca que precisava de protecção, ao medo que precisava de forma, a solidão que precisava de explicação. Este capítulo não te pede para largar a tua fé. Pede-te para a examinar com honestidade: o que é crença viva, que respira é cresce contigo, é o que é armadura herdada que já te pesa mais do que protege? E há uma coisa mais, talvez a mais importante: dentro de ti vive ainda a impressão emocional da crianca que foste. Não como metáfora bonita, mas como realidade no corpo — nós ombros que se contraem, na garganta que aperta, na reacção que te surpreende pela sua força. Essa crianca não quer respostas cosmicas. Quer ser vista. Quer que finalmente pares é digas: eu sei que estás ai. Eu ouco-te.',
+    mensagem_central: 'As crenças que carregas não são inimigas. Mas algumas já não te pertencem — pertencem a criança que precisava de protecção, ao medo que precisava de forma, a solidão que precisava de explicação. Este capítulo não te pede para largar a tua fé. Pede-te para a examinar com honestidade: o que é crença viva, que respira é cresce contigo, é o que é armadura herdada que já te pesa mais do que protege? E há uma coisa mais, talvez a mais importante: dentro de ti vive ainda a impressão emocional da criança que foste. Não como metáfora bonita, mas como realidade no corpo — nós ombros que se contraem, na garganta que aperta, na reacção que te surpreende pela sua força. Essa criança não quer respostas cosmicas. Quer ser vista. Quer que finalmente pares é digas: eu sei que estás aí. Eu ouço-te.',
 
     guiao_escrita: {
-      contexto: 'Este exercício trabalha em duas camadas: primeiro, as crenças que herdaste é adoptaste sobre o invisível; depois, a voz da crianca interior que vive por baixo de todas elas. Não precisa de ser perfeito. Precisa de ser honesto.',
+      contexto: 'Este exercício trabalha em duas camadas: primeiro, as crenças que herdaste é adoptaste sobre o invisível; depois, a voz da criança interior que vive por baixo de todas elas. Não precisa de ser perfeito. Precisa de ser honesto.',
       passos: [
         'Desenha uma linha vertical no meio de uma página. Do lado esquerdo, escreve o título "Crenças que me protegeram". Do lado direito, "Crenças que me aprisionam". Preenche os dois lados com o que te vier — frases que ouviste, ideias que absorveste, medos disfarcados de fé.',
         'Olha para o lado direito. Escolhe a crença que te pesa mais. Escreve por baixo: "Comecei a acreditar nisto quando..." é deixa a frase completar-se sozinha. Não forces. Deixa a memória vir.',
         'Agora fecha os olhos. Imagina-te com a idade que tinhas quando essa crença se instalou. Onde estavas? O que sentias? Escreve uma pequena carta a essa versão de ti — não para corrigir, mas para acolher. Diz-lhe o que precisava de ter ouvido.',
-        'Numa linha nova, escreve: "A crianca que fui ainda precisa que eu..." é completa. Não penses. Escreve o que o corpo ditar.',
+        'Numa linha nova, escreve: "A criança que fui ainda precisa que eu..." é completa. Não penses. Escreve o que o corpo ditar.',
         'Termina relendo tudo o que escreveste. Não para analisar. Apenas para testemunhar. Respira fundo é nota: onde é que o corpo relaxou? Essa é a zona onde algo se moveu.',
       ],
       tempo_sugerido: '25 minutos',
@@ -329,7 +329,7 @@ export const veu2Niveis: NivelCapitulo[] = [
       'O silêncio genuino — sem preenchimento, sem narrativa, sem reflexão — é o lugar onde menos consegues estar. E não porque sejas inquieta. E porque, no silêncio, o passado não tem onde se esconder.',
       'Reparas que a tua relação com o tempo é distorcida: o passado ocupa mais espaço do que o presente, é o futuro é apenas uma projecção do que já viveste. O agora — puro, sem referência, sem história — parece-te quase insuportável de tão vazio.',
     ],
-    mensagem_central: 'Não precisas de mais uma versão de ti. Não precisas de te reinventar, de te explicar, de te justificar. O que este capítulo te oferece não é uma narrativa melhor — é a permissao de existires sem narrativa nenhuma. Isso não significa apagar o passado. Significa deixar de lhe entregar o comando. O passado é mestre generoso quando o deixas ensinar sem lhe dar o trono. E os ciclos que se repetem na tua vida — esses padrões que já reconheces, que já nomeaste, que já tentaste quebrar — não precisam de mais análise. Precisam de um segundo de pausa. Um único instante em que, entre o gatilho é a reacção, escolhes não repetir. Não por força de vontade, mas por presença. Esse instante — pequeno, silencioso, quase invisível — é o lugar onde a memória perde o poder de te governar. E onde começas, finalmente, a viver no tempo que é teu.',
+    mensagem_central: 'Não precisas de mais uma versão de ti. Não precisas de te reinventar, de te explicar, de te justificar. O que este capítulo te oferece não é uma narrativa melhor — é a permissão de existires sem narrativa nenhuma. Isso não significa apagar o passado. Significa deixar de lhe entregar o comando. O passado é mestre generoso quando o deixas ensinar sem lhe dar o trono. E os ciclos que se repetem na tua vida — esses padrões que já reconheces, que já nomeaste, que já tentaste quebrar — não precisam de mais análise. Precisam de um segundo de pausa. Um único instante em que, entre o gatilho é a reacção, escolhes não repetir. Não por força de vontade, mas por presença. Esse instante — pequeno, silencioso, quase invisível — é o lugar onde a memória perde o poder de te governar. E onde começas, finalmente, a viver no tempo que é teu.',
 
     guiao_escrita: {
       contexto: 'Este exercício trabalha directamente com os ciclos que se repetem é com a possibilidade de interrompê-los — não pela força, mas pela presença. E o exercício mais silencioso deste véu. Vai precisar de coragem suave.',

@@ -63,8 +63,8 @@ export const veu6Niveis: NivelCapitulo[] = [
 
     // Camada profunda
     mascaras: [
-      'A coleccionadora de metas — a que vive de objectivo em objectivo, porque cada conquista lhe promete a paz que nunca chega. Sem a próxima meta, não sabe quem é. O curriculo é a sua armadura, a lista de feitos é o seu espelho.',
-      'A arquitecta do futuro — a que desenha planos detalhados para cada fase da vida, porque acredita que se planear bem o suficiente, a incerteza desaparece. O mapa é mais real do que o territorio. Improvisar é falhar.',
+      'A coleccionadora de metas — a que vive de objectivo em objectivo, porque cada conquista lhe promete a paz que nunca chega. Sem a próxima meta, não sabe quem é. O currículo é a sua armadura, a lista de feitos é o seu espelho.',
+      'A arquitecta do futuro — a que desenha planos detalhados para cada fase da vida, porque acredita que se planear bem o suficiente, a incerteza desaparece. O mapa é mais real do que o território. Improvisar é falhar.',
       'A narradora do desfecho — a que precisa de dar sentido a tudo, de fechar cada capítulo com uma lição, de transformar cada dor num ensinamento. Se a história não tem moral, é como se não tivesse acontecido. Viver sem conclusão parece-lhe viver em vão.',
     ],
     veu_dominante_sinais: [
@@ -90,7 +90,7 @@ export const veu6Niveis: NivelCapitulo[] = [
   {
     capitulo_numero: 23,
     resumo_acessivel: [
-      'A matrix humana precisa de mapas: início, meio, fim. Precisa de saber onde está, para onde vai, é quando chega. Mas este capítulo convida a um gesto radical: largar o mapa. Não porque estejas perdida — mas porque o territorio real nunca coube nele.',
+      'A matrix humana precisa de mapas: início, meio, fim. Precisa de saber onde está, para onde vai, é quando chega. Mas este capítulo convida a um gesto radical: largar o mapa. Não porque estejas perdida — mas porque o território real nunca coube nele.',
       'Quando a obsessão pelo destino se dissolve, algo inesperado aparece: um campo aberto, sem bordas, sem conclusão. A matrix divina não é um lugar — é a abertura em si. O ser que deixa de se agarrar a fins descobre que a vida respira melhor sem pontos finais.',
       'O silêncio que aqui se abre não é o silêncio do vazio — é o silêncio do infinito. Não há nada a alcançar porque tudo já está contido no fluxo. A existência não precisa de ser completada. Ela já é completa em cada instante que flui.',
     ],
@@ -178,7 +178,7 @@ export const veu6Niveis: NivelCapitulo[] = [
     capitulo_numero: 24,
     resumo_acessivel: [
       'O campo infinito abriu-se. Os mapas foram largados. E agora, no espaço vasto do não-saber, surge algo quase imperceptível: uma voz que não grita, não exige, não argumenta. A intuição. Não é a mente a disfarcar-se de sabedoria — é outra coisa. Um saber que vem antes das palavras.',
-      'Este capítulo explora a confiança no que não tem prova. A intuição não se justifica. Não apresenta argumentos. Não pede permissao. Sussurra entre pensamentos, no corpo, nós sonhos, naquele momento em que "sabes" sem saber como sabes. E fomos treinados toda a vida a ignora-la.',
+      'Este capítulo explora a confiança no que não tem prova. A intuição não se justifica. Não apresenta argumentos. Não pede permissão. Sussurra entre pensamentos, no corpo, nós sonhos, naquele momento em que "sabes" sem saber como sabes. E fomos treinados toda a vida a ignora-la.',
       'Aprender a ouvir a intuição é um acto de coragem. Porque significa confiar em algo que a mente não controla, que a lógica não válida, é que o mundo a tua volta pode não compreender. Mas é precisamente essa voz que te guia quando os mapas acabam.',
     ],
     perguntas_orientadoras: [
@@ -248,7 +248,7 @@ export const veu6Niveis: NivelCapitulo[] = [
       'Quando te encontras num momento de silêncio profundo — sem estimulos, sem tarefas, sem distracção — sentes desconforto. Não porque o silêncio seja vazio, mas porque nele a intuição fica audível, é ouvir-la obrigaria-te a mudar algo.',
       'Notas que muitas das decisões mais importantes da tua vida foram tomadas contra a tua intuição — é que as que correram melhor foram aquelas raras vezes em que confiaste no que não conseguias explicar.',
     ],
-    mensagem_central: 'Há uma voz em ti que nunca se calou. Mesmo quando a ignoraste, mesmo quando a sufocaste com lógica, com opiniao alheia, com medo de errar — ela continuou ali, quieta, paciente, a espera. A intuição não é magia nem fantasia. E o saber mais antigo que tens: anterior a linguagem, anterior ao pensamento, anterior a tudo o que te ensinaram a ser. E vem do mesmo lugar de onde vem a respiração — de um sítio que não precisa da tua permissao para existir. Tu não precisas de aprender a ter intuição. Precisas de deixar de a calar. Precisas de lhe devolver o lugar que lhe tiraram quando te disseram que só conta o que se prova. Há coisas que se sabem com o corpo inteiro, é essa forma de saber não é inferior — é mais funda. Confia no que te atravessa antes de teres palavras para o dizer. E por ai que o horizonte se dissolve.',
+    mensagem_central: 'Há uma voz em ti que nunca se calou. Mesmo quando a ignoraste, mesmo quando a sufocaste com lógica, com opinião alheia, com medo de errar — ela continuou ali, quieta, paciente, a espera. A intuição não é magia nem fantasia. E o saber mais antigo que tens: anterior a linguagem, anterior ao pensamento, anterior a tudo o que te ensinaram a ser. E vem do mesmo lugar de onde vem a respiração — de um sítio que não precisa da tua permissão para existir. Tu não precisas de aprender a ter intuição. Precisas de deixar de a calar. Precisas de lhe devolver o lugar que lhe tiraram quando te disseram que só conta o que se prova. Há coisas que se sabem com o corpo inteiro, é essa forma de saber não é inferior — é mais funda. Confia no que te atravessa antes de teres palavras para o dizer. E por aí que o horizonte se dissolve.',
     guiao_escrita: {
       contexto: 'Este exercício é um acto de escuta. Não estás a procurar respostas — estás a criar espaço para que elas venham ter contigo. A única regra e: não edites, não julgues, não traduzas. Escreve o que vier, mesmo que não faça sentido para a mente.',
       passos: [

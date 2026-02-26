@@ -173,7 +173,7 @@ export const veu1Niveis: NivelCapitulo[] = [
       'Quando alguém se aproxima de mais, recuas. Não porque não queiras intimidade, mas porque intimidade verdadeira significaria mostrar a parte que vive atrás da máscara. E essa parte ainda não sabe se é bem-vinda.',
       'Olhas para trás é percebes que muitas das tuas decisões — de carreira, de relação, de estilo de vida — foram tomadas pela máscara, não por ti. E agora não sabes como voltar atrás sem desmontar tudo.',
     ],
-    mensagem_central: 'Este capítulo não te pede que arranques as máscaras. Pede-te que as vejas. Que sintas o peso delas. Que reconheças que foste tu que as construiste — com inteligência, com amor, com medo — para sobreviver a algo que na altura era real. A máscara não é inimiga. Foi aliada. Mas uma aliada que ficou tempo de mais acaba por ocupar o lugar de quem protegia. O vazio que sentes não é sinal de que algo está partido. E sinal de que algo quer respirar. Alguma parte de ti, muito antiga é muito viva, está cansada de viver nós bastidores. Este capítulo é o momento em que lhe dizes: eu sei que estás ai.',
+    mensagem_central: 'Este capítulo não te pede que arranques as máscaras. Pede-te que as vejas. Que sintas o peso delas. Que reconheças que foste tu que as construiste — com inteligência, com amor, com medo — para sobreviver a algo que na altura era real. A máscara não é inimiga. Foi aliada. Mas uma aliada que ficou tempo de mais acaba por ocupar o lugar de quem protegia. O vazio que sentes não é sinal de que algo está partido. E sinal de que algo quer respirar. Alguma parte de ti, muito antiga é muito viva, está cansada de viver nós bastidores. Este capítulo é o momento em que lhe dizes: eu sei que estás aí.',
     guiao_escrita: {
       contexto: 'Este exercício é um encontro com as tuas máscaras. Não para as destruir, mas para as reconhecer — é sentir o que vive por baixo delas.',
       passos: [
@@ -258,7 +258,7 @@ export const veu1Niveis: NivelCapitulo[] = [
     ],
     guiao_reflexao: [
       'Das três vozes — Ocidente (eu como núcleo), Oriente (eu como fluxo), África (eu como relação) — qual ressoa mais em ti? Porque?',
-      'Há alguma tradição espiritual ou filosófica que te atrai mas que nunca te deste permissao para explorar? O que te impede?',
+      'Há alguma tradição espiritual ou filosófica que te atrai mas que nunca te deste permissão para explorar? O que te impede?',
       'Escreve uma carta ao teu "eu" de há 5 anos. O que lhe dirias sobre quem te tornaste? E ao teu "eu" de daqui a 5 anos?',
     ],
     espelho_pessoal: 'Se todas as tradições, todas as filosofias, todas as respostas fossem retiradas — é ficasses só contigo é o silêncio — o que ouvirias?',
@@ -267,7 +267,7 @@ export const veu1Niveis: NivelCapitulo[] = [
     mascaras: [
       'A buscadora — a que colecciona tradições, livros, retiros, mestres. Não por curiosidade genuína, mas por uma fome que nunca se sacia. Cada nova descoberta promete ser "a resposta", mas a resposta muda de forma antes de pousar. A busca tornou-se identidade — é sem ela, não sabe quem é.',
       'A transcendente — a que se refugia no espírito para não sentir o corpo. Fala de consciência cósmica, de unidade, de além — mas tem dificuldade em estar presente numa conversa banal, num almoco de domingo, numa tarde sem propósito. A espiritualidade tornou-se fuga, não presença.',
-      'A racional — a que só confia no que pode ser explicado. Sente o puxao do mistério mas trava-o com lógica. Não é que não sinta — é que sentir sem compreender parece perigoso. Prefere o mapa ao territorio, a teoria a experiência.',
+      'A racional — a que só confia no que pode ser explicado. Sente o puxao do mistério mas trava-o com lógica. Não é que não sinta — é que sentir sem compreender parece perigoso. Prefere o mapa ao território, a teoria a experiência.',
       'A sintetica — a que tenta juntar tudo num sistema perfeito. Ocidente, Oriente, África — tudo tem de encaixar num modelo coerente. E a incoerência que a assusta. Porque se não há uma grande teoria unificada do eu, então talvez não haja chão nenhum.',
     ],
     veu_dominante_sinais: [

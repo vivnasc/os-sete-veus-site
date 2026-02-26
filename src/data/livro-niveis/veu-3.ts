@@ -124,7 +124,7 @@ export const veu3Niveis: NivelCapitulo[] = [
       'Tens medo de que, se tirares todas as máscaras, o que estiver por baixo não seja suficiente.',
     ],
     guiao_reflexao: [
-      'Escreve sobre uma sombra que conheces em ti — algo que escondes ou minimizas. Agora escreve-lhe uma carta sem julgamento, como se estivesses a falar com uma crianca assustada. O que ela te quer dizer?',
+      'Escreve sobre uma sombra que conheces em ti — algo que escondes ou minimizas. Agora escreve-lhe uma carta sem julgamento, como se estivesses a falar com uma criança assustada. O que ela te quer dizer?',
       'Pensa na última vez que sentiste resistência forte a algo — irritação, bloqueio, vontade de desistir. Escreve o que aconteceu por fora. Depois escreve o que estava a acontecer por dentro, no corpo é nas emoções. O que o ego estava a proteger?',
       'Imagina que as tuas sombras são portas, não paredes. Escolhe uma. Descreve o que ves quando a abres — sem pressa, sem precisar de resolver nada. Apenas olha.',
     ],
@@ -150,8 +150,8 @@ export const veu3Niveis: NivelCapitulo[] = [
       contexto: 'Este exercício convida-te a encontrar uma das tuas sombras — não para a combater, mas para a ouvir. Vais escrever a partir do lugar onde ela mora, dando-lhe voz em vez de a silenciares.',
       passos: [
         'Pensa numa emoção que tendes a esconder — raiva, ciúme, medo, vergonha, desejo. Escolhe uma. Escreve o nome dela no topo da página e, por baixo, as três situações mais recentes em que a sentiste. Descreve cada uma em duas ou três linhas: o que aconteceu, o que sentiste no corpo.',
-        'Agora imagina que essa emoção tem uma idade. Não a tua idade actual — a idade em que ela apareceu pela primeira vez. Escreve: "Tenho ___ anos é sinto ___." Continua a escrever como essa crianca ou adolescente durante cinco minutos. O que quer dizer? De que precisa?',
-        'Escreve a resposta que essa parte de ti precisava de ouvir na altura — é nunca ouviu. Não uma resposta inteligente. Uma resposta simples, quente, como a que darias a uma crianca assustada. Começa com: "Estou aqui. Ouco-te."',
+        'Agora imagina que essa emoção tem uma idade. Não a tua idade actual — a idade em que ela apareceu pela primeira vez. Escreve: "Tenho ___ anos é sinto ___." Continua a escrever como essa criança ou adolescente durante cinco minutos. O que quer dizer? De que precisa?',
+        'Escreve a resposta que essa parte de ti precisava de ouvir na altura — é nunca ouviu. Não uma resposta inteligente. Uma resposta simples, quente, como a que darias a uma criança assustada. Começa com: "Estou aqui. Ouco-te."',
         'Agora volta ao presente. Escreve: "A minha sombra protege-me de ___." Completa a frase é depois desenvolve: o que é que está emoção evitou que sentisses? Que função teve? Como te serviu, mesmo quando doia?',
         'Para terminar, escreve um compromisso simples — não de "superar" a sombra, mas de lhe dar espaço. Uma frase que sintetize o que aprendeste é o que muda a partir de agora. Começa com: "A partir de hoje, quando sentir ___, vou..."',
       ],
@@ -221,15 +221,15 @@ export const veu3Niveis: NivelCapitulo[] = [
       'Tens uma colecção de sintomas físicos que vão é vem sem explicação médica clara — é que pioram em alturas de tensão emocional.',
       'Não te lembras da última vez que choraste até ao fim — sem parar a meio, sem racionalizar, sem te envergonhar. As lágrimas começam é algo dentro de ti as trava.',
       'O teu corpo reage a certas pessoas, lugares ou situações antes de a mente ter tempo de processar. Sentes no estômago, no peito, nas mãos — é só depois percebes porque.',
-      'Quando finalmente paras — ferias, fim de semana quieto, silêncio prolongado — em vez de descansar, adoeces. Como se o corpo esperasse a permissao para desmoronar.',
+      'Quando finalmente paras — ferias, fim de semana quieto, silêncio prolongado — em vez de descansar, adoeces. Como se o corpo esperasse a permissão para desmoronar.',
     ],
     mensagem_central: 'O teu corpo não te traiu. Guardou-te. Cada tensão, cada dor sem explicação, cada reacção desproporcionada é o corpo a devolver-te uma mensagem que a mente arquivou sem ler. Ele é o teu arquivo mais fiel — guarda tudo, esquece nada, espera pacientemente que voltes a escuta-lo. Não precisas de compreender o que o corpo diz para começar a ouvi-lo. Basta pousares a mão onde doi é ficares. Basta deixares que a sensação exista sem a corrigires. O corpo não quer ser curado — quer ser habitado. E quando finalmente voltas a habita-lo, descobres que ele sempre soube coisas que a tua mente ainda está a aprender.',
 
     guiao_escrita: {
-      contexto: 'Este exercício convida-te a regressar ao corpo — não como objecto a analisar, mas como territorio a habitar. Vais escrever a partir das sensações, não das ideias.',
+      contexto: 'Este exercício convida-te a regressar ao corpo — não como objecto a analisar, mas como território a habitar. Vais escrever a partir das sensações, não das ideias.',
       passos: [
         'Senta-te em silêncio durante dois minutos com os olhos fechados. Faz um inventario do corpo de cima a baixo: cabeça, ombros, peito, barriga, ancas, pernas, pés. Para cada zona, escreve uma palavra ou frase curta que descreva o que sentes ali agora — tensão, calor, dormência, vazio, peso, nada.',
-        'Escolhe a zona do corpo que te chamou mais a atenção — a que tinha mais carga. Pousa a mão ai. Escreve: "Aqui guardo ___." Completa sem pensar. Depois continua: "Isto está aqui desde ___." Deixa o corpo responder, não a mente.',
+        'Escolhe a zona do corpo que te chamou mais a atenção — a que tinha mais carga. Pousa a mão aí. Escreve: "Aqui guardo ___." Completa sem pensar. Depois continua: "Isto está aqui desde ___." Deixa o corpo responder, não a mente.',
         'Recorda uma reacção corporal recente que te surpreendeu — um gatilho. Descreve o que aconteceu por fora (a situação) é o que aconteceu por dentro (as sensações físicas). Agora escreve: "O meu corpo estava a lembrar ___." O que surge?',
         'Escreve uma carta ao teu corpo. Começa com: "Corpo, eu sei que te pedi para guardar coisas que eram pesadas demais para mim." Continua com o que queres dizer-lhe — agradecimento, pedido de desculpa, promessa de regresso. Sê honesta.',
         'Agora deixa o corpo responder. Escreve como se o corpo tivesse voz própria. Começa com: "Eu esperei." Deixa-o dizer o que precisa — sem pressa, sem edicao, sem vergonha.',

@@ -4,12 +4,12 @@ export const veu4Niveis: NivelCapitulo[] = [
   {
     capitulo_numero: 13,
     resumo_acessivel: [
-      'Os papéis afectivos — cuidadora, ancora, quem sempre da — cristalizam-se em obrigações invisiveis. O que começou como amor espontaneo endurece em esforço: o cuidado torna-se dever, a presença torna-se vigilância.',
+      'Os papéis afectivos — cuidadora, âncora, quem sempre da — cristalizam-se em obrigações invisíveis. O que começou como amor espontâneo endurece em esforço: o cuidado torna-se dever, a presença torna-se vigilância.',
       'Este capítulo explora o poder de dizer "não" como acto de integridade, não de rejeição. E examina como o amor pode existir sem colapso — sem que dar signifique perder-se.',
       'O murmuro interior "isto já não é verdade" é o sinal de que o véu está a amolecer.',
     ],
     perguntas_orientadoras: [
-      'Há algum papel nas tuas relações — cuidadora, ancora, a que resolve tudo — que já não te cabe mas que continuas a desempenhar?',
+      'Há algum papel nas tuas relações — cuidadora, âncora, a que resolve tudo — que já não te cabe mas que continuas a desempenhar?',
       'Quando foi a última vez que disseste "não" a alguém que amas — é sentiste que era um acto de amor, não de rejeição?',
       'O teu cuidado pelos outros inclui cuidado por ti?',
     ],
@@ -26,7 +26,7 @@ export const veu4Niveis: NivelCapitulo[] = [
     notas_contextuais: [
       {
         paragrafo_indice: 5,
-        texto: 'A "ancora silenciosa" é a pessoa que sustenta os outros sem ser vista. O texto não julga esse papel — reconhece-o é pergunta: a que custo?',
+        texto: 'A "âncora silenciosa" é a pessoa que sustenta os outros sem ser vista. O texto não julga esse papel — reconhece-o é pergunta: a que custo?',
       },
       {
         paragrafo_indice: 12,
@@ -57,7 +57,7 @@ export const veu4Niveis: NivelCapitulo[] = [
     guiao_reflexao: [
       'Escreve sobre o momento em que percebeste que o teu "dar" já não era livre. Como começou? Quando é que o amor se tornou obrigação? Não julgues — apenas observa o percurso.',
       'Imagina que dizes "não" a alguém que amas — sem explicação, sem culpa, sem compensação. O que sentes no corpo ao escrever isto? Que medo aparece? Dá-lhe espaço na página.',
-      'Escreve uma carta ao papel que desempenhaste durante anos — a ancora, a cuidadora, a que resolve. Agradece-lhe. Depois pergunta-lhe: o que me custou vestir-te todos os dias?',
+      'Escreve uma carta ao papel que desempenhaste durante anos — a âncora, a cuidadora, a que resolve. Agradece-lhe. Depois pergunta-lhe: o que me custou vestir-te todos os dias?',
     ],
     espelho_pessoal: 'Se deixasses de ser necessária, quem serias?',
 
@@ -94,7 +94,7 @@ export const veu4Niveis: NivelCapitulo[] = [
     resumo_acessivel: [
       'A alma, incapaz de continuar a repetir o seu papel, colapsa — não como falha, mas como revelação. O corpo permanece, mas a presença retirou-se.',
       'Este capítulo acompanha o arco do esgotamento a retirada: o silêncio como tregua, a permanência sem presença, o cansaço de "não estar". O corpo cumpre obrigações, mas a alma partiu.',
-      'Por detras de muito dar havia, muitas vezes, necessidade escondida. Reaparecer para a vida pede a coragem de chorar os papéis que já não servem.',
+      'Por detrás de muito dar havia, muitas vezes, necessidade escondida. Reaparecer para a vida pede a coragem de chorar os papéis que já não servem.',
     ],
     perguntas_orientadoras: [
       'Já te sentiste presente fisicamente mas ausente por dentro — como se estivesses a cumprir um guiao sem alma?',
@@ -238,7 +238,7 @@ export const veu4Niveis: NivelCapitulo[] = [
     veu_dominante_sinais: [
       'O teu "tempo para ti" tem horario, estrutura é objectivos — como se até o descanso precisasse de ser produtivo para contar.',
       'Sentes culpa quando um dia passa sem que tenhas feito algo "pelo teu crescimento". Um dia vazio é um dia desperdicado, mesmo que o teu corpo estivesse a pedir exactamente isso.',
-      'Já te apanhaste a transformar uma crise emocional numa "oportunidade de aprendizagem" — antes mesmo de a teres sentido a fundo. O esforço de compreender substitui a permissao de sofrer.',
+      'Já te apanhaste a transformar uma crise emocional numa "oportunidade de aprendizagem" — antes mesmo de a teres sentido a fundo. O esforço de compreender substitui a permissão de sofrer.',
       'Tens mais conhecimento sobre ti mesma do que nunca — e, no entanto, a distância entre o que sabes é o que vives parece cada vez maior. O saber tornou-se novo esforço que te afasta do sentir.',
       'Quando alguém próximo te diz "não precisas de fazer nada, só quero que estejas aqui", sentes desconforto. Estar — simplesmente estar — é o gesto mais difícil que te podem pedir.',
     ],
@@ -316,7 +316,7 @@ export const veu4Niveis: NivelCapitulo[] = [
     mascaras: [
       'A buscadora eterna — a que não consegue parar de procurar. Passou a vida inteira a correr atrás de respostas, de mestres, de experiências transformadoras. O esforço de buscar tornou-se identidade. Se parar de procurar, quem é ela? O medo não é de não encontrar — é de descobrir que nunca precisou de procurar.',
       'A que ainda não está pronta — a que adia permanentemente a sua própria chegada. "Ainda preciso de mais um curso." "Ainda não estou suficientemente curada." "Ainda não sei o bastante." O esforço de se preparar é infinito porque reconhecer que já está pronta significaria não ter mais desculpa para não viver.',
-      'A guardadora do sagrado — a que construiu uma fortaleza de rituais, práticas é crenças ao redor da sua espiritualidade. Qualquer gesto fora do protocolo parece profanação. O esforço de manter o sagrado "puro" é na verdade medo de que o sagrado não precise dela — de que exista em toda a parte, com ou sem cerimonia.',
+      'A guardadora do sagrado — a que construiu uma fortaleza de rituais, práticas é crenças ao redor da sua espiritualidade. Qualquer gesto fora do protocolo parece profanação. O esforço de manter o sagrado "puro" é na verdade medo de que o sagrado não precise dela — de que exista em toda a parte, com ou sem cerimónia.',
     ],
     veu_dominante_sinais: [
       'Mesmo quando sentes paz, há uma voz que diz "isto não é suficiente" ou "isto não vai durar". O esforço de garantir a paz destroi a paz. Não consegues deixar que o momento simplesmente seja.',

@@ -181,7 +181,7 @@ export const veu5Niveis: NivelCapitulo[] = [
     mensagem_central: 'O medo sem rosto não é teu inimigo. E o guardiao da passagem. Permanece não para te destruir, mas porque há algo do outro lado que só se revela a quem aguenta ficar. A maioria das pessoas foge. As que fogem continuam a encontrar o medo em cada esquina — disfarçado de ansiedade, de controlo, de pressa. Mas as que ficam — as que respiram dentro do medo sem tentar resolve-lo — descobrem algo inesperado: o medo tem um fundo. E no fundo do medo, há espaço. Não te estamos a pedir que deixes de ter medo. Estamos a pedir que pares de fugir dele. Que o olhes nós olhos — mesmo que não tenha rosto. Que fiques com ele tempo suficiente para descobrir que ele não é maior do que tu. Nada é maior do que tu.',
 
     guiao_escrita: {
-      contexto: 'Este exercício convida-te a estar com o teu medo em vez de fugires dele — a cartografa-lo como quem cartografa um territorio desconhecido, sem pressa de o atravessar.',
+      contexto: 'Este exercício convida-te a estar com o teu medo em vez de fugires dele — a cartografa-lo como quem cartografa um território desconhecido, sem pressa de o atravessar.',
       passos: [
         'Fecha os olhos é localiza o medo no teu corpo. Onde mora? Que forma tem? Que temperatura? Que cor? Que textura? Escreve-o como se fosse uma paisagem — sem tentar muda-lo, só mapea-lo. Começa com: "O meu medo vive em ___ é parece-se com ___."',
         'Agora escreve um dialogo com o teu medo. Tu perguntas: "O que guardas?" O medo responde. Tu perguntas: "Há quanto tempo estás aqui?" O medo responde. Tu perguntas: "O que precisas de mim?" O medo responde. Não censures. Deixa o dialogo fluir.',
@@ -234,7 +234,7 @@ export const veu5Niveis: NivelCapitulo[] = [
       },
       {
         paragrafo_indice: 20,
-        texto: 'No budismo, depois da "noite sob a árvore Bodhi", Siddhartha não gritou nem celebrou. Tocou a terra com a mão — gesto mínimo, testemunho silencioso. O despertar não precisa de espectaculo. Precisa de presença.',
+        texto: 'No budismo, depois da "noite sob a árvore Bodhi", Siddhartha não gritou nem celebrou. Tocou a terra com a mão — gesto mínimo, testemunho silencioso. O despertar não precisa de espectáculo. Precisa de presença.',
       },
     ],
     termos_destacados: ['Taoismo', 'Sankofa', 'despertar', 'veu', 'noite escura'],
@@ -262,9 +262,9 @@ export const veu5Niveis: NivelCapitulo[] = [
 
     // Camada profunda
     mascaras: [
-      'A heroina da superacao — a que precisa de transformar cada travessia numa história epica. Se a cura foi silenciosa, parece-lhe insuficiente. Procura drama na recuperação porque sem drama não sabe como se validar.',
+      'A heroína da superação — a que precisa de transformar cada travessia numa história épica. Se a cura foi silenciosa, parece-lhe insuficiente. Procura drama na recuperação porque sem drama não sabe como se validar.',
       'A ingrata — a que se recusa a reconhecer o que sobreviveu porque acha que "não foi assim tão mau". Minimiza a própria dor para não incomodar, para não ocupar espaço, para não parecer frágil.',
-      'A comparadora — a que mede a sua travessia pela dos outros. "Ela sim passou por algo terrivel. O meu sofrimento não conta." A comparação rouba-lhe o direito de reconhecer a própria dor.',
+      'A comparadora — a que mede a sua travessia pela dos outros. "Ela sim passou por algo terrível. O meu sofrimento não conta." A comparação rouba-lhe o direito de reconhecer a própria dor.',
       'A apressada — a que quer saltar do reconhecimento para a acção. Mal percebe que está melhor, já está a planear o próximo passo. Parar no reconhecimento parece-lhe perda de tempo — é essa pressa e, ela própria, uma forma de fuga.',
     ],
     veu_dominante_sinais: [
@@ -274,7 +274,7 @@ export const veu5Niveis: NivelCapitulo[] = [
       'Precisas de contar a história do que passaste para sentir que foi real — se ninguém ouvir, é como se não tivesse acontecido.',
       'Quando a paz chega, a tua primeira reacção não é descansar — é desconfiar. "Isto não vai durar." "O que vem a seguir?" A vigilância substitui o alívio.',
     ],
-    mensagem_central: 'Não precisas de aplausos para que a tua travessia conte. Não precisas de história epica, de revelação espectacular, de antes-e-depois dramático. A maioria das curas verdadeiras acontece em silêncio — num dia em que sentes o sabor do café depois de meses sem sabor, num instante em que olhas o espelho é não desvias os olhos, numa respiração que finalmente chega até ao fundo. Ninguém viu. Ninguém gravou. Ninguém aplaudiu. Mas tu sabes. E esse saber quieto — esse "estou aqui, ainda estou aqui" — é mais poderoso do que qualquer história que pudesses contar. O reconhecimento silencioso não é menor. E o mais honesto que existe. Porque acontece entre ti é ti, sem testemunhas, sem mérito, sem espectaculo. E exactamente por isso é que é real.',
+    mensagem_central: 'Não precisas de aplausos para que a tua travessia conte. Não precisas de história épica, de revelação espectacular, de antes-e-depois dramático. A maioria das curas verdadeiras acontece em silêncio — num dia em que sentes o sabor do café depois de meses sem sabor, num instante em que olhas o espelho é não desvias os olhos, numa respiração que finalmente chega até ao fundo. Ninguém viu. Ninguém gravou. Ninguém aplaudiu. Mas tu sabes. E esse saber quieto — esse "estou aqui, ainda estou aqui" — é mais poderoso do que qualquer história que pudesses contar. O reconhecimento silencioso não é menor. E o mais honesto que existe. Porque acontece entre ti é ti, sem testemunhas, sem mérito, sem espectáculo. E exactamente por isso é que é real.',
 
     guiao_escrita: {
       contexto: 'Este exercício convida-te a reconhecer a tua própria travessia — não com grandiosidade, mas com a honestidade de quem se encontra consigo mesma depois de uma tempestade.',
@@ -454,8 +454,8 @@ export const veu5Niveis: NivelCapitulo[] = [
 
     // Camada profunda
     mascaras: [
-      'A definida — a que precisa sempre de uma resposta para "quem és tu?". Profissao, papel, história, crença — qualquer rótulo serve, desde que preencha o espaço que se abre quando não há nome. A definição é a sua ancora. Sem ela, sente que flutua.',
-      'A existencialista performativa — a que fala do vazio com eloquência mas não o habita. Cita poetas, referência filosofos, usa palavras como "impermanência" — mas quando o vazio real se instala, recua para o conforto da identidade.',
+      'A definida — a que precisa sempre de uma resposta para "quem és tu?". Profissão, papel, história, crença — qualquer rótulo serve, desde que preencha o espaço que se abre quando não há nome. A definição é a sua âncora. Sem ela, sente que flutua.',
+      'A existencialista performativa — a que fala do vazio com eloquência mas não o habita. Cita poetas, referência filósofos, usa palavras como "impermanência" — mas quando o vazio real se instala, recua para o conforto da identidade.',
       'A agarrada — a que se agarra a versões de si mesma que já não servem, só porque são familiares. O nome antigo, o papel velho, a história conhecida. Soltar parece morrer. E como pode alguém pedir-lhe que morra?',
       'A temerosa do infinito — a que sente o espaço imenso que se abre quando todas as definições caem é interpreta-o como ameaça. A expansão aterroriza-a porque cresceu a acreditar que ser alguém é melhor do que ser tudo.',
     ],

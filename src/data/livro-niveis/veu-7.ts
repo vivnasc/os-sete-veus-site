@@ -63,10 +63,10 @@ export const veu7Niveis: NivelCapitulo[] = [
 
     // Camada profunda
     mascaras: [
-      'A eterna buscadora — a que transforma cada descoberta num novo ponto de partida, porque parar significaria admitir que já está onde precisa de estar. Vive em trânsito permanente, coleccionando mapas para um territorio que só se revela a quem pousa a mochila.',
+      'A eterna buscadora — a que transforma cada descoberta num novo ponto de partida, porque parar significaria admitir que já está onde precisa de estar. Vive em trânsito permanente, coleccionando mapas para um território que só se revela a quem pousa a mochila.',
       'A guardia do limiar interior — a que se põe entre si mesma é a entrega, exigindo sempre mais uma prova, mais uma confirmação, mais um sinal antes de se permitir confiar. Protege-se da vastidao fingindo que ainda não está pronta.',
       'A cartografa do invisível — a que precisa de nomear, classificar é organizar cada experiência interior para sentir que a compreendeu. Transforma o mistério em sistema, é o sistema em prisão. Só se sente segura quando o caminho tem etapas claras.',
-      'A que espera pela permissao — a que sabe, no fundo, que já atravessou o limiar, mas fica do lado de ca a espera que alguém lhe diga que pode entrar. Confunde humildade com hesitação. Confunde respeito com medo.',
+      'A que espera pela permissão — a que sabe, no fundo, que já atravessou o limiar, mas fica do lado de ca a espera que alguém lhe diga que pode entrar. Confunde humildade com hesitação. Confunde respeito com medo.',
     ],
     veu_dominante_sinais: [
       'Divides a tua vida entre "antes de despertar" e "depois de despertar" — é essa linha imaginaria impede-te de habitar o presente, porque estás sempre a medir de que lado estás.',
@@ -139,7 +139,7 @@ export const veu7Niveis: NivelCapitulo[] = [
       'Reservas o "sagrado" para momentos específicos — a meditação, a leitura, o retiro — é vives o resto do dia em piloto automático.',
       'Sentes culpa quando a vida mundana te absorve, como se estivesses a trair o teu caminho espiritual.',
       'Tens dificuldade em estar presente no corpo — no prazer, na dor, na textura das coisas — porque parte de ti acredita que o corpo é obstáculo.',
-      'Valorizas mais a experiência interior (insight, visão, compreensao) do que a acção concreta no mundo — é essa hierarquia mantem-te presa a uma espiritualidade desencarnada.',
+      'Valorizas mais a experiência interior (insight, visão, compreensão) do que a acção concreta no mundo — é essa hierarquia mantem-te presa a uma espiritualidade desencarnada.',
       'Quando a vida quotidiana te desafia — conflito, cansaço, frustração — sentes que "perdeste" o teu estado desperto, em vez de reconheceres isso como campo de prática.',
     ],
     guiao_reflexao: [
