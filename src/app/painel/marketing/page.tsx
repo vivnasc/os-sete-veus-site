@@ -4,7 +4,7 @@ import { useState, useRef, useCallback, useMemo, useEffect } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { professionalCarousels, hashtagSets } from "@/data/content-calendar-weeks";
+import { professionalCarousels, hashtagSets, allWeeks, reelScripts, productionGuide } from "@/data/content-calendar-weeks";
 import type { CarouselSlide } from "@/data/content-calendar-weeks";
 
 const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
@@ -346,6 +346,9 @@ export default function MarketingPage() {
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [openCaption, setOpenCaption] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"instagram" | "whatsapp" | "stories">("whatsapp");
+  const [pageSection, setPageSection] = useState<"campanha" | "calendario" | "posts" | "reels" | "guia">("campanha");
+  const [calWeek, setCalWeek] = useState(0);
+  const [calDay, setCalDay] = useState(0);
 
   const today = useMemo(() => new Date(), []);
 
@@ -499,6 +502,14 @@ export default function MarketingPage() {
     { id: "tk", label: "TikTok / Reels", caption: tkCaption, color: "#000000" },
   ];
 
+  const sectionLabels: { id: typeof pageSection; label: string }[] = [
+    { id: "campanha", label: "Campanha" },
+    { id: "calendario", label: "Calendario" },
+    { id: "posts", label: "Posts" },
+    { id: "reels", label: "Reels" },
+    { id: "guia", label: "Guia" },
+  ];
+
   return (
     <div className="min-h-screen bg-[#1a1814]">
       {/* ── HEADER ── */}
@@ -510,8 +521,8 @@ export default function MarketingPage() {
               Painel
             </Link>
             <div className="text-center">
-              <p className="font-serif text-sm font-medium tracking-wide text-cream/90">Campanha</p>
-              {weekTheme && (
+              <p className="font-serif text-sm font-medium tracking-wide text-cream/90">Conteudo Pronto</p>
+              {pageSection === "campanha" && weekTheme && (
                 <p className="font-sans text-[0.55rem] font-medium uppercase tracking-[0.2em] text-[#c9b896]/60">{weekTheme}</p>
               )}
             </div>
@@ -521,8 +532,24 @@ export default function MarketingPage() {
             </Link>
           </div>
 
-          {/* Campaign progress */}
-          {dayIdx >= 0 && dayIdx < DAILY_PLAN.length && (
+          {/* Section tabs */}
+          <div className="mt-3 -mx-4 overflow-x-auto px-4 scrollbar-none">
+            <div className="flex gap-1 min-w-max">
+              {sectionLabels.map((s) => (
+                <button key={s.id} onClick={() => setPageSection(s.id)}
+                  className={`rounded-lg px-3 py-1.5 font-sans text-[0.65rem] font-semibold transition-all whitespace-nowrap ${
+                    pageSection === s.id
+                      ? "bg-[#c9b896] text-[#1a1814]"
+                      : "text-cream/40 hover:text-cream/60 hover:bg-cream/5"
+                  }`}>
+                  {s.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Campaign progress (only in campaign section) */}
+          {pageSection === "campanha" && dayIdx >= 0 && dayIdx < DAILY_PLAN.length && (
             <div className="mt-2.5">
               <div className="flex items-center justify-between">
                 <span className="font-sans text-[0.5rem] uppercase tracking-widest text-cream/30">Dia {dayIdx + 1} de {DAILY_PLAN.length}</span>
@@ -537,6 +564,352 @@ export default function MarketingPage() {
       </div>
 
       <div className="mx-auto max-w-lg px-4 pb-28">
+
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {/* ── CALENDARIO GERAL ── */}
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {pageSection === "calendario" && (
+          <div className="py-4 space-y-4">
+            {/* Week selector */}
+            <div className="flex items-center gap-2">
+              <button onClick={() => { setCalWeek(Math.max(0, calWeek - 1)); setCalDay(0); setCalSlot(0); }}
+                disabled={calWeek === 0}
+                className="p-1.5 text-cream/30 hover:text-cream/60 disabled:opacity-20">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6" /></svg>
+              </button>
+              <div className="flex-1 text-center">
+                <p className="font-serif text-base text-cream/90">Semana {allWeeks[calWeek].weekNumber}: {allWeeks[calWeek].title}</p>
+                <p className="font-sans text-[0.6rem] text-cream/40">{allWeeks[calWeek].subtitle}</p>
+              </div>
+              <button onClick={() => { setCalWeek(Math.min(allWeeks.length - 1, calWeek + 1)); setCalDay(0); setCalSlot(0); }}
+                disabled={calWeek === allWeeks.length - 1}
+                className="p-1.5 text-cream/30 hover:text-cream/60 disabled:opacity-20">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6" /></svg>
+              </button>
+            </div>
+
+            {/* Week overview pills */}
+            <div className="-mx-4 overflow-x-auto px-4 scrollbar-none">
+              <div className="flex gap-1.5 min-w-max">
+                {allWeeks.map((w, wi) => (
+                  <button key={wi} onClick={() => { setCalWeek(wi); setCalDay(0); setCalSlot(0); }}
+                    className={`rounded-lg px-2.5 py-1.5 font-sans text-[0.55rem] font-medium whitespace-nowrap transition-all ${
+                      calWeek === wi ? "bg-[#c9b896]/20 text-[#c9b896]" : "text-cream/30 hover:text-cream/50"
+                    }`}>
+                    S{w.weekNumber}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Day selector */}
+            <div className="flex gap-1">
+              {allWeeks[calWeek].days.map((d, di) => (
+                <button key={di} onClick={() => { setCalDay(di); setCalSlot(0); }}
+                  className={`flex-1 rounded-xl py-2.5 text-center transition-all ${
+                    calDay === di
+                      ? "bg-[#c9b896] shadow-lg shadow-[#c9b896]/20"
+                      : "hover:bg-cream/5"
+                  }`}>
+                  <span className={`block font-sans text-[0.5rem] font-semibold uppercase tracking-wider ${
+                    calDay === di ? "text-[#1a1814]" : "text-cream/30"
+                  }`}>{d.dayShort}</span>
+                  <span className={`mt-0.5 block font-sans text-[0.55rem] ${
+                    calDay === di ? "text-[#1a1814]/70" : "text-cream/20"
+                  }`}>{d.slots.length} post{d.slots.length !== 1 ? "s" : ""}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Day theme */}
+            {(() => {
+              const day = allWeeks[calWeek].days[calDay];
+              if (!day) return null;
+              return (
+                <div className="space-y-3">
+                  <div className="rounded-2xl border border-[#c9b896]/10 bg-gradient-to-br from-[#c9b896]/8 to-transparent p-4">
+                    <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-[0.15em] text-[#c9b896]/60">{day.day}</p>
+                    <h3 className="mt-1 font-serif text-lg text-cream/90">{day.theme}</h3>
+                  </div>
+
+                  {/* Slots */}
+                  {day.slots.map((slot, si) => (
+                    <div key={si} className="overflow-hidden rounded-2xl border border-cream/10 bg-[#222019]">
+                      <div className="flex items-center gap-2 border-b border-cream/5 px-4 py-3">
+                        <div className={`h-2 w-2 rounded-full ${
+                          slot.platform === "whatsapp" ? "bg-[#25D366]"
+                            : slot.platform === "instagram" ? "bg-[#E1306C]"
+                            : "bg-[#c9b896]"
+                        }`} />
+                        <span className="font-sans text-xs font-semibold text-cream/70">
+                          {slot.platform === "whatsapp" ? "WhatsApp" : slot.platform === "instagram" ? "Instagram" : "Ambos"} — {slot.type}
+                        </span>
+                      </div>
+                      <div className="p-4 space-y-3">
+                        {/* Visual preview */}
+                        {slot.visual && (
+                          <div className="rounded-xl overflow-hidden" style={{
+                            backgroundColor: slot.visual.bg, color: slot.visual.text,
+                            padding: "24px", minHeight: 120,
+                          }}>
+                            {slot.visual.title && (
+                              <p className="font-serif text-sm font-bold leading-snug" style={{ whiteSpace: "pre-line" }}>{slot.visual.title}</p>
+                            )}
+                            {slot.visual.body && (
+                              <p className="mt-2 font-sans text-[0.65rem] leading-relaxed opacity-80" style={{ whiteSpace: "pre-line" }}>{slot.visual.body}</p>
+                            )}
+                            {slot.visual.footer && (
+                              <p className="mt-3 font-sans text-[0.55rem] font-semibold uppercase tracking-wider" style={{ color: slot.visual.accent }}>{slot.visual.footer}</p>
+                            )}
+                          </div>
+                        )}
+
+                        {/* Carousel slides */}
+                        {slot.carousel && slot.carousel.length > 0 && (
+                          <div className="space-y-1.5">
+                            <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-cream/30">{slot.carousel.length} slides</p>
+                            <div className="-mx-1 flex gap-1.5 overflow-x-auto px-1 pb-1 scrollbar-none">
+                              {slot.carousel.map((sl, sli) => (
+                                <div key={sli} className="shrink-0 rounded-lg overflow-hidden" style={{
+                                  width: 80, height: 80, backgroundColor: sl.bg, color: sl.text, padding: 8,
+                                }}>
+                                  <p className="font-serif text-[0.4rem] font-bold leading-tight" style={{ whiteSpace: "pre-line" }}>
+                                    {sl.title?.slice(0, 40)}{(sl.title?.length || 0) > 40 ? "..." : ""}
+                                  </p>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Caption */}
+                        {slot.caption && (
+                          <div>
+                            <div className="flex items-center justify-between mb-1.5">
+                              <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-cream/30">Legenda</p>
+                              <button onClick={() => copyText(`cal-${calWeek}-${calDay}-${si}`, slot.caption || "")}
+                                className={`rounded-lg px-3 py-1 font-sans text-[0.55rem] font-semibold transition-all ${
+                                  copiedId === `cal-${calWeek}-${calDay}-${si}` ? "bg-sage text-white" : "bg-cream/10 text-cream/50 hover:bg-cream/15"
+                                }`}>
+                                {copiedId === `cal-${calWeek}-${calDay}-${si}` ? "Copiada!" : "Copiar"}
+                              </button>
+                            </div>
+                            <pre className="max-h-36 overflow-y-auto whitespace-pre-wrap rounded-xl bg-black/20 p-3 font-sans text-[0.65rem] leading-relaxed text-cream/60">{slot.caption}</pre>
+                          </div>
+                        )}
+
+                        {/* Broadcast */}
+                        {slot.broadcast && (
+                          <div>
+                            <div className="flex items-center justify-between mb-1.5">
+                              <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#25D366]/60">Mensagem WhatsApp</p>
+                              <button onClick={() => copyText(`cal-wa-${calWeek}-${calDay}-${si}`, slot.broadcast || "")}
+                                className={`rounded-lg px-3 py-1 font-sans text-[0.55rem] font-semibold transition-all ${
+                                  copiedId === `cal-wa-${calWeek}-${calDay}-${si}` ? "bg-[#25D366] text-white" : "bg-[#25D366]/20 text-[#25D366] hover:bg-[#25D366]/30"
+                                }`}>
+                                {copiedId === `cal-wa-${calWeek}-${calDay}-${si}` ? "Copiada!" : "Copiar"}
+                              </button>
+                            </div>
+                            <pre className="max-h-36 overflow-y-auto whitespace-pre-wrap rounded-xl bg-[#1b2b27] p-3 font-sans text-[0.65rem] leading-relaxed text-[#d1d7db]">{slot.broadcast}</pre>
+                          </div>
+                        )}
+
+                        {/* Notes */}
+                        {slot.notes && (
+                          <div className="rounded-xl bg-[#c9b896]/5 p-3">
+                            <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#c9b896]/40 mb-1">Notas</p>
+                            <p className="font-sans text-[0.65rem] leading-relaxed text-cream/50 whitespace-pre-line">{slot.notes}</p>
+                          </div>
+                        )}
+
+                        {/* Reel script */}
+                        {slot.reelScript && (
+                          <div className="rounded-xl border border-cream/5 p-3 space-y-2">
+                            <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#c9b896]/40">Script do Reel</p>
+                            <p className="font-serif text-sm font-bold text-cream/80">&quot;{slot.reelScript.hook}&quot;</p>
+                            <div className="space-y-1">
+                              {slot.reelScript.scenes.map((scene, sci) => (
+                                <p key={sci} className="font-sans text-[0.6rem] leading-relaxed text-cream/50">{scene}</p>
+                              ))}
+                            </div>
+                            <p className="font-sans text-[0.55rem] text-[#c9b896]/50">CTA: {slot.reelScript.cta}</p>
+                            <p className="font-sans text-[0.55rem] text-cream/30">Musica: {slot.reelScript.music} | {slot.reelScript.duration}</p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              );
+            })()}
+          </div>
+        )}
+
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {/* ── TODOS OS POSTS ── */}
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {pageSection === "posts" && (
+          <div className="py-4 space-y-2">
+            <p className="font-sans text-[0.6rem] font-semibold uppercase tracking-[0.15em] text-cream/30 mb-3">
+              {professionalCarousels.length} carrosseis prontos
+            </p>
+            {professionalCarousels.map((c) => (
+              <button key={c.id}
+                onClick={() => {
+                  // Find which campaign day uses this carousel and navigate there
+                  const idx = DAILY_PLAN.findIndex((d) => d.carouselId === c.id);
+                  if (idx >= 0) {
+                    const d = new Date(CAMPAIGN_START);
+                    d.setDate(d.getDate() + idx);
+                    setSelectedDate(d);
+                    setActiveSlide(0);
+                    setActiveVertSlide(0);
+                    setPageSection("campanha");
+                  }
+                }}
+                className="w-full rounded-2xl border border-cream/10 bg-[#222019] p-4 text-left transition-all hover:border-[#c9b896]/20"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex-1 min-w-0">
+                    <p className="font-serif text-sm font-bold text-cream/80 truncate">{c.title}</p>
+                    <p className="mt-1 font-sans text-[0.6rem] text-cream/40 line-clamp-2">{c.description}</p>
+                    <div className="mt-2 flex items-center gap-2">
+                      <span className="rounded-full bg-cream/10 px-2 py-0.5 font-sans text-[0.5rem] font-medium text-cream/40">
+                        {c.slides.length} slides
+                      </span>
+                      {DAILY_PLAN.some((d) => d.carouselId === c.id) && (
+                        <span className="rounded-full bg-[#c9b896]/10 px-2 py-0.5 font-sans text-[0.5rem] font-medium text-[#c9b896]/60">
+                          Na campanha
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  {/* Mini preview */}
+                  <div className="shrink-0 rounded-lg overflow-hidden" style={{
+                    width: 48, height: 48, backgroundColor: c.slides[0]?.bg || "#3d3630",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                  }}>
+                    <span className="font-serif text-[0.4rem] font-bold px-1 text-center leading-tight" style={{ color: c.slides[0]?.text || "#f7f5f0" }}>
+                      {c.slides[0]?.title?.split("\n")[0]?.slice(0, 20) || "~"}
+                    </span>
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {/* ── REELS ── */}
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {pageSection === "reels" && (
+          <div className="py-4 space-y-4">
+            <p className="font-sans text-[0.6rem] font-semibold uppercase tracking-[0.15em] text-cream/30">
+              {reelScripts.length} scripts prontos para CapCut
+            </p>
+            {reelScripts.map((r, ri) => (
+              <div key={ri} className="overflow-hidden rounded-2xl border border-cream/10 bg-[#222019]">
+                <div className="border-b border-cream/5 px-4 py-3 flex items-center gap-2">
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-cream/10">
+                    <span className="font-sans text-[0.55rem] font-bold text-cream/50">{ri + 1}</span>
+                  </div>
+                  <p className="font-serif text-sm font-bold text-cream/80 flex-1">&quot;{r.hook}&quot;</p>
+                </div>
+                <div className="p-4 space-y-3">
+                  {/* Scenes */}
+                  <div className="space-y-2">
+                    {r.scenes.map((scene, sci) => (
+                      <div key={sci} className="flex gap-2">
+                        <div className="shrink-0 mt-1 h-1.5 w-1.5 rounded-full bg-[#c9b896]/30" />
+                        <p className="font-sans text-[0.65rem] leading-relaxed text-cream/60">{scene}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    <span className="rounded-full bg-[#c9b896]/10 px-2.5 py-1 font-sans text-[0.55rem] font-medium text-[#c9b896]/60">
+                      {r.duration}
+                    </span>
+                    {r.canvaTemplate && (
+                      <span className="rounded-full bg-cream/5 px-2.5 py-1 font-sans text-[0.55rem] text-cream/40">
+                        {r.canvaTemplate}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="rounded-xl bg-black/20 p-3">
+                    <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#c9b896]/40 mb-1">CTA</p>
+                    <p className="font-sans text-[0.7rem] text-cream/70">{r.cta}</p>
+                  </div>
+
+                  <div className="rounded-xl bg-black/20 p-3">
+                    <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-cream/30 mb-1">Musica sugerida</p>
+                    <p className="font-sans text-[0.6rem] text-cream/50">{r.music}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {/* ── GUIA DE PRODUCAO ── */}
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {pageSection === "guia" && (
+          <div className="py-4 space-y-4">
+            <p className="font-sans text-[0.6rem] font-semibold uppercase tracking-[0.15em] text-cream/30">
+              Referencia rapida para criacao de conteudo
+            </p>
+            {productionGuide.map((section, si) => (
+              <div key={si} className="overflow-hidden rounded-2xl border border-cream/10 bg-[#222019]">
+                <div className="border-b border-cream/5 px-4 py-3">
+                  <p className="font-sans text-xs font-semibold text-[#c9b896]/80">{section.category}</p>
+                </div>
+                <div className="divide-y divide-cream/5">
+                  {section.items.map((item, ii) => (
+                    <div key={ii} className="px-4 py-3">
+                      <p className="font-sans text-xs font-medium text-cream/70">{item.title}</p>
+                      <p className="mt-0.5 font-sans text-[0.65rem] leading-relaxed text-cream/40">{item.detail}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            {/* Hashtags */}
+            <div className="overflow-hidden rounded-2xl border border-cream/10 bg-[#222019]">
+              <div className="border-b border-cream/5 px-4 py-3">
+                <p className="font-sans text-xs font-semibold text-[#c9b896]/80">Hashtags</p>
+              </div>
+              <div className="divide-y divide-cream/5">
+                {hashtagSets.map((set) => {
+                  const allTags = set.tags.join(" ");
+                  return (
+                    <button key={set.name}
+                      onClick={() => copyText(`guide-ht-${set.name}`, allTags)}
+                      className="block w-full px-4 py-3 text-left hover:bg-cream/3">
+                      <div className="flex items-center justify-between">
+                        <span className="font-sans text-xs font-semibold text-cream/60">{set.name}</span>
+                        <span className="rounded-full bg-cream/10 px-2 py-0.5 font-sans text-[0.5rem] font-medium text-cream/40">
+                          {copiedId === `guide-ht-${set.name}` ? "Copiado!" : `${set.tags.length} tags`}
+                        </span>
+                      </div>
+                      <p className="mt-1 font-sans text-[0.6rem] leading-relaxed text-cream/30">{set.description}</p>
+                      <p className="mt-1 font-sans text-[0.55rem] leading-relaxed text-[#c9b896]/40">
+                        {set.tags.join(" ")}
+                      </p>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {/* ── CAMPANHA (existing campaign content) ── */}
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {pageSection === "campanha" && <>
 
         {/* ── DATE + WEEK ── */}
         <div className="py-4">
@@ -1014,10 +1387,11 @@ export default function MarketingPage() {
             </div>
           )}
         </div>
+        </>}
       </div>
 
       {/* ── FLOATING QUICK ACTION ── */}
-      {dayContent?.whatsapp && carousel && (
+      {pageSection === "campanha" && dayContent?.whatsapp && carousel && (
         <div className="fixed bottom-0 left-0 right-0 z-30 border-t border-cream/5 bg-[#1a1814]/95 backdrop-blur-lg">
           <div className="mx-auto flex max-w-lg items-center gap-2 px-4 py-3">
             <button
