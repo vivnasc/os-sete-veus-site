@@ -152,8 +152,8 @@ async function sendNotificationEmails(
 
   const subject =
     type === "early_access"
-      ? `Acesso antecipado: ${espelho.title} disponivel para ti`
-      : `Novo Espelho disponivel: ${espelho.title}`;
+      ? `Acesso antecipado: ${espelho.title} disponível para ti`
+      : `Novo Espelho disponível: ${espelho.title}`;
 
   const body =
     type === "early_access"

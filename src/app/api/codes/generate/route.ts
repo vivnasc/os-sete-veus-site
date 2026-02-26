@@ -47,7 +47,7 @@ export async function POST(request: Request) {
 
       if (!userRole || userRole.role !== "admin") {
         return NextResponse.json(
-          { error: "Sem permissao" },
+          { error: "Sem permissão" },
           { status: 403 }
         );
       }
@@ -56,7 +56,7 @@ export async function POST(request: Request) {
     const supabaseAdmin = createSupabaseAdminClient();
     if (!supabaseAdmin) {
       return NextResponse.json(
-        { error: "Servico temporariamente indisponivel" },
+        { error: "Serviço temporariamente indisponível" },
         { status: 503 }
       );
     }
@@ -82,7 +82,7 @@ export async function POST(request: Request) {
 
     if (!code) {
       return NextResponse.json(
-        { error: "Erro ao gerar codigo unico. Tenta novamente." },
+        { error: "Erro ao gerar código único. Tenta novamente." },
         { status: 500 }
       );
     }
@@ -103,7 +103,7 @@ export async function POST(request: Request) {
     if (insertError) {
       console.error("Erro ao inserir codigo:", insertError);
       return NextResponse.json(
-        { error: `Erro ao salvar codigo: ${insertError.message}` },
+        { error: `Erro ao salvar código: ${insertError.message}` },
         { status: 500 }
       );
     }
@@ -111,10 +111,10 @@ export async function POST(request: Request) {
     // Notificar
     await notifyAdmin({
       type: "general",
-      title: "Codigo gerado",
-      message: `Codigo ${code} gerado${email ? ` para ${email}` : ""}.`,
+      title: "Código gerado",
+      message: `Código ${code} gerado${email ? ` para ${email}` : ""}.`,
       details: {
-        Codigo: code,
+        Código: code,
         Email: email || "—",
         Notas: notes || "—",
       },
@@ -125,10 +125,10 @@ export async function POST(request: Request) {
       code: insertedCode,
     });
   } catch (error) {
-    console.error("Erro ao gerar codigo:", error);
+    console.error("Erro ao gerar código:", error);
     return NextResponse.json(
       {
-        error: `Erro ao gerar codigo: ${error instanceof Error ? error.message : "Erro desconhecido"}`,
+        error: `Erro ao gerar código: ${error instanceof Error ? error.message : "Erro desconhecido"}`,
       },
       { status: 500 }
     );

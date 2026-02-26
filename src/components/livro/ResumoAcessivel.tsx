@@ -21,7 +21,7 @@ export default function ResumoAcessivel({ paragrafos, corBorda = 'border-stone-3
       <p className={`text-xs font-sans uppercase tracking-wide mb-3 ${
         modoNoturno ? 'text-stone-500' : 'text-stone-400'
       }`}>
-        Resumo acessivel
+        Resumo acessível
       </p>
       <div className="space-y-3">
         {paragrafos.map((p, i) => (

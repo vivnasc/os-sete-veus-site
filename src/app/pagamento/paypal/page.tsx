@@ -83,11 +83,11 @@ function PayPalContent() {
         <div className="mx-auto max-w-md">
           <div className="rounded-lg border border-red-200 bg-red-50 p-8 text-center">
             <h1 className="font-serif text-2xl text-brown-900">
-              PayPal indisponivel
+              PayPal indisponível
             </h1>
             <p className="mt-4 text-sm text-brown-600">
-              O pagamento via PayPal ainda nao esta configurado.
-              Por favor escolhe outro metodo de pagamento.
+              O pagamento via PayPal ainda não está configurado.
+              Por favor escolhe outro método de pagamento.
             </p>
             <button
               onClick={() => router.push("/comprar/espelhos")}
@@ -253,7 +253,7 @@ function PayPalContent() {
 
                     setSuccess(true);
                   } catch {
-                    setError("Erro de conexao. Contacta-nos se o valor foi debitado.");
+                    setError("Erro de conexão. Contacta-nos se o valor foi debitado.");
                     setProcessing(false);
                   }
                 }}
@@ -280,7 +280,7 @@ function PayPalContent() {
         {/* Alternative methods */}
         <div className="mt-6 text-center">
           <p className="text-xs text-brown-400">
-            Preferes outro metodo?
+            Preferes outro método?
           </p>
           <div className="mt-2 flex justify-center gap-3">
             <button

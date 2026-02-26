@@ -3,11 +3,11 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Comunidade Ecos",
   description:
-    "Reflexoes anonimas, impermanentes. Reconhecimentos silenciosos. Sussurros de uma so via. A comunidade onde as vozes se encontram sem se conhecerem.",
+    "Reflexões anónimas, impermanentes. Reconhecimentos silenciosos. Sussurros de uma só via. A comunidade onde as vozes se encontram sem se conhecerem.",
   openGraph: {
-    title: "Comunidade Ecos ~ Os Sete Veus",
+    title: "Comunidade Ecos ~ Os Sete Véus",
     description:
-      "Reflexoes anonimas e impermanentes. Aqui, a conexao acontece por reconhecimento, nao por interaccao. Tudo e anonimo. Tudo desaparece.",
+      "Reflexões anónimas e impermanentes. Aqui, a conexão acontece por reconhecimento, não por interacção. Tudo é anónimo. Tudo desaparece.",
   },
 };
 

@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Coleccao Espelhos ~ Experiencia digital",
+  title: "Colecção Espelhos ~ Experiência digital",
   description:
-    "7 historias de ficcao psicologica onde te reconheces. Leitura interactiva com diario reflexivo, respiracao guiada e comunidade anonima. A partir de $29 USD.",
+    "7 histórias de ficção psicológica onde te reconheces. Leitura interactiva com diário reflexivo, respiração guiada e comunidade anónima. A partir de $29 USD.",
   openGraph: {
-    title: "Coleccao Espelhos ~ Os Sete Veus",
+    title: "Colecção Espelhos ~ Os Sete Véus",
     description:
-      "Ficcao psicologica com leitura interactiva, diario reflexivo e comunidade anonima. A experiencia que te devolve a ti mesma. A partir de $29.",
+      "Ficção psicológica com leitura interactiva, diário reflexivo e comunidade anónima. A experiência que te devolve a ti mesma. A partir de $29.",
   },
 };
 

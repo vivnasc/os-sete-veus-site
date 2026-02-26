@@ -1,15 +1,15 @@
 import { generateOgImage, OG_SIZE } from "@/lib/og";
 
-export const alt = "Coleccao Espelhos ~ Experiencia digital de leitura";
+export const alt = "Colecção Espelhos ~ Experiência digital de leitura";
 export const size = OG_SIZE;
 export const contentType = "image/png";
 
 export default function Image() {
   return generateOgImage({
-    label: "Coleccao Espelhos",
-    title: "A experiencia que te devolve a ti mesma",
+    label: "Colecção Espelhos",
+    title: "A experiência que te devolve a ti mesma",
     subtitle:
-      "Ficcao psicologica com leitura interactiva, diario reflexivo e comunidade anonima. A partir de $29.",
+      "Ficção psicológica com leitura interactiva, diário reflexivo e comunidade anónima. A partir de $29.",
     url: "seteveus.space/comprar/espelhos",
   });
 }

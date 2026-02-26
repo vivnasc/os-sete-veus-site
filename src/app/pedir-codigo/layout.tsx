@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Pede o teu codigo de acesso digital",
+  title: "Pede o teu código de acesso digital",
   description:
-    "Compraste o livro fisico Os 7 Veus do Despertar? Tens direito a acesso digital gratuito. Preenche o formulario e recebe o teu codigo em ate 24 horas.",
+    "Compraste o livro físico Os 7 Véus do Despertar? Tens direito a acesso digital gratuito. Preenche o formulário e recebe o teu código em até 24 horas.",
   openGraph: {
-    title: "Pede o teu codigo de acesso digital ~ Os Sete Veus",
+    title: "Pede o teu código de acesso digital ~ Os Sete Véus",
     description:
-      "Se ja compraste o livro fisico, o acesso digital e gratuito. Diario reflexivo, comunidade anonima e conteudo exclusivo. Codigo em ate 24h.",
+      "Se já compraste o livro físico, o acesso digital é gratuito. Diário reflexivo, comunidade anónima e conteúdo exclusivo. Código em até 24h.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pede o teu codigo de acesso digital ~ Os Sete Veus",
+    title: "Pede o teu código de acesso digital ~ Os Sete Véus",
     description:
-      "Compraste o livro fisico? O acesso digital e gratuito. Preenche o formulario e recebe o teu codigo em ate 24h.",
+      "Compraste o livro físico? O acesso digital é gratuito. Preenche o formulário e recebe o teu código em até 24h.",
   },
 };
 

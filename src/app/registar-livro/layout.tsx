@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Registar codigo do livro fisico",
+  title: "Registar código do livro físico",
   description:
-    "Insere o teu codigo LIVRO-XXXXX para activar o acesso digital gratuito a Os 7 Veus do Despertar. Acesso imediato ao conteudo digital e comunidade.",
+    "Insere o teu código LIVRO-XXXXX para activar o acesso digital gratuito a Os 7 Véus do Despertar. Acesso imediato ao conteúdo digital e comunidade.",
   openGraph: {
-    title: "Registar codigo do livro ~ Os Sete Veus",
+    title: "Registar código do livro ~ Os Sete Véus",
     description:
-      "Insere o teu codigo LIVRO-XXXXX e activa o acesso digital gratuito. Leitura interactiva, diario reflexivo e comunidade.",
+      "Insere o teu código LIVRO-XXXXX e activa o acesso digital gratuito. Leitura interactiva, diário reflexivo e comunidade.",
   },
 };
 

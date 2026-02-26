@@ -322,7 +322,7 @@ export default function Home() {
                     {no.sub}
                   </p>
                   {no.available ? (
-                    <p className="mt-2 text-xs" style={{ color: no.color }}>Disponivel</p>
+                    <p className="mt-2 text-xs" style={{ color: no.color }}>Disponível</p>
                   ) : (
                     <p className="mt-2 text-xs text-brown-600">Em breve</p>
                   )}

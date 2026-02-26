@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Acesso digital ~ Os 7 Veus do Despertar",
+  title: "Acesso digital ~ Os 7 Véus do Despertar",
   description:
-    "Activa o teu acesso digital ao livro Os 7 Veus do Despertar. Leitura interactiva, diario reflexivo, comunidade anonima e chatbot de apoio.",
+    "Activa o teu acesso digital ao livro Os 7 Véus do Despertar. Leitura interactiva, diário reflexivo, comunidade anónima e chatbot de apoio.",
   openGraph: {
-    title: "Acesso digital ~ Os Sete Veus",
+    title: "Acesso digital ~ Os Sete Véus",
     description:
-      "Activa o teu acesso ao livro digital. Leitura interactiva, diario reflexivo e comunidade anonima incluidos.",
+      "Activa o teu acesso ao livro digital. Leitura interactiva, diário reflexivo e comunidade anónima incluídos.",
   },
 };
 

@@ -33,7 +33,7 @@ export async function GET() {
 
       if (!userRole || userRole.role !== "admin") {
         return NextResponse.json(
-          { error: "Sem permissao" },
+          { error: "Sem permissão" },
           { status: 403 }
         );
       }
@@ -43,7 +43,7 @@ export async function GET() {
     const supabaseAdmin = createSupabaseAdminClient();
     if (!supabaseAdmin) {
       return NextResponse.json(
-        { error: "Servico indisponivel" },
+        { error: "Serviço indisponível" },
         { status: 503 }
       );
     }

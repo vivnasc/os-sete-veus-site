@@ -682,7 +682,7 @@ export default function CapituloPage() {
             <p className={`text-sm font-sans italic ${
               modoNoturno ? 'text-stone-500' : 'text-stone-400'
             }`}>
-              Conteudo complementar em preparacao para este capitulo.
+              Conteúdo complementar em preparação para este capítulo.
             </p>
           </div>
         )}

@@ -13,44 +13,44 @@ const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
 const PRINTS = [
   // Mockups da plataforma
   { id: "hero", src: "/prints/homepage-hero-mandala.jpeg", label: "Hero ~ Mandala" },
-  { id: "experiencia", src: "/prints/experiencia-funcionalidades.jpeg", label: "Experiencia" },
+  { id: "experiencia", src: "/prints/experiencia-funcionalidades.jpeg", label: "Experiência" },
   { id: "quiz", src: "/prints/quiz-qual-veu.jpeg", label: "Quiz" },
   { id: "dashboard", src: "/prints/dashboard-membro.jpeg", label: "Dashboard" },
   { id: "leitura", src: "/prints/leitura-capitulo.jpeg", label: "Leitura" },
   { id: "ecos", src: "/prints/comunidade-ecos-tabs.jpeg", label: "Ecos" },
   { id: "marcas", src: "/prints/comunidade-marcas-caminho.jpeg", label: "Marcas" },
-  { id: "reflexoes", src: "/prints/comunidade-reflexoes-leitoras.jpeg", label: "Reflexoes" },
-  { id: "livro", src: "/prints/livro-fisico-preco-whatsapp.jpeg", label: "Livro fisico" },
+  { id: "reflexoes", src: "/prints/comunidade-reflexoes-leitoras.jpeg", label: "Reflexões" },
+  { id: "livro", src: "/prints/livro-fisico-preco-whatsapp.jpeg", label: "Livro físico" },
   { id: "passos", src: "/prints/acesso-digital-3-passos.jpeg", label: "3 Passos" },
   { id: "cta", src: "/prints/comunidade-cta-dark.jpeg", label: "CTA dark" },
   // Mockups novos ~ device frames
-  { id: "inicio-left", src: "/prints/7veus- incio-left.png", label: "Inicio (landscape)" },
-  { id: "inicio-portrait", src: "/prints/7veus- incio-portrait.png", label: "Inicio (retrato)" },
-  { id: "3niveis-left", src: "/prints/7veus-3niveis-left.png", label: "3 Niveis (landscape)" },
-  { id: "3niveis-portrait", src: "/prints/7veus-3niveis-portrait.png", label: "3 Niveis (retrato)" },
+  { id: "inicio-left", src: "/prints/7veus- incio-left.png", label: "Início (landscape)" },
+  { id: "inicio-portrait", src: "/prints/7veus- incio-portrait.png", label: "Início (retrato)" },
+  { id: "3niveis-left", src: "/prints/7veus-3niveis-left.png", label: "3 Níveis (landscape)" },
+  { id: "3niveis-portrait", src: "/prints/7veus-3niveis-portrait.png", label: "3 Níveis (retrato)" },
   { id: "darkmode-left", src: "/prints/7veus-darkmode-left.png", label: "Dark mode (landscape)" },
   { id: "darkmode-portrait", src: "/prints/7veus-darkmode-portrait.png", label: "Dark mode (retrato)" },
-  { id: "dessolucao-left", src: "/prints/7veus-dessolucao-left.png", label: "Dissolucao (landscape)" },
-  { id: "dessolucao-portrait", src: "/prints/7veus-dessolucao-portrait.png", label: "Dissolucao (retrato)" },
-  { id: "introdeveu-left", src: "/prints/7veus-introdeveu-left.png", label: "Intro veu (landscape)" },
-  { id: "introdeveu-portrait", src: "/prints/7veus-introdeveu-portrait.png", label: "Intro veu (retrato)" },
-  { id: "pedircod-left", src: "/prints/7veuspedircod-left.png", label: "Pedir codigo (landscape)" },
-  { id: "pedircod-portrait", src: "/prints/7veuspedircod-portrait.png", label: "Pedir codigo (retrato)" },
+  { id: "dessolucao-left", src: "/prints/7veus-dessolucao-left.png", label: "Dissolução (landscape)" },
+  { id: "dessolucao-portrait", src: "/prints/7veus-dessolucao-portrait.png", label: "Dissolução (retrato)" },
+  { id: "introdeveu-left", src: "/prints/7veus-introdeveu-left.png", label: "Intro véu (landscape)" },
+  { id: "introdeveu-portrait", src: "/prints/7veus-introdeveu-portrait.png", label: "Intro véu (retrato)" },
+  { id: "pedircod-left", src: "/prints/7veuspedircod-left.png", label: "Pedir código (landscape)" },
+  { id: "pedircod-portrait", src: "/prints/7veuspedircod-portrait.png", label: "Pedir código (retrato)" },
   // Capas dos livros
   { id: "mandala", src: "/images/mandala-7veus.png", label: "Mandala" },
-  { id: "espelho-ilusao", src: "/images/espelho-ilusao.png", label: "Espelho Ilusao" },
+  { id: "espelho-ilusao", src: "/images/espelho-ilusao.png", label: "Espelho Ilusão" },
   { id: "espelho-medo", src: "/images/espelho-medo.png", label: "Espelho Medo" },
   { id: "espelho-culpa", src: "/images/espelho-culpa.png", label: "Espelho Culpa" },
   { id: "espelho-identidade", src: "/images/espelho-identidade.png", label: "Espelho Identidade" },
   { id: "espelho-controlo", src: "/images/espelho-controlo.png", label: "Espelho Controlo" },
   { id: "espelho-desejo", src: "/images/espelho-desejo.png", label: "Espelho Desejo" },
-  { id: "espelho-separacao", src: "/images/espelho-separacao.png", label: "Espelho Separacao" },
-  { id: "no-heranca", src: "/images/capa-no-heran\u00e7a2.png", label: "No Heranca" },
-  { id: "no-silencio", src: "/images/capa-no-silencio2.png", label: "No Silencio" },
-  { id: "no-sacrificio", src: "/images/capa-no-sacrifico2.png", label: "No Sacrificio" },
-  { id: "no-vergonha", src: "/images/capa-no-vergonha2.png", label: "No Vergonha" },
-  { id: "no-solidao", src: "/images/capa-no-solidao2.png", label: "No Solidao" },
-  { id: "no-vazio", src: "/images/capa-no-vazio2.png", label: "No Vazio" },
+  { id: "espelho-separacao", src: "/images/espelho-separacao.png", label: "Espelho Separação" },
+  { id: "no-heranca", src: "/images/capa-no-heran\u00e7a2.png", label: "Nó Herança" },
+  { id: "no-silencio", src: "/images/capa-no-silencio2.png", label: "Nó Silêncio" },
+  { id: "no-sacrificio", src: "/images/capa-no-sacrifico2.png", label: "Nó Sacrifício" },
+  { id: "no-vergonha", src: "/images/capa-no-vergonha2.png", label: "Nó Vergonha" },
+  { id: "no-solidao", src: "/images/capa-no-solidao2.png", label: "Nó Solidão" },
+  { id: "no-vazio", src: "/images/capa-no-vazio2.png", label: "Nó Vazio" },
   { id: "no-pertenca", src: "/images/capa-no-perten\u00e7a2.png", label: "Nó Pertença" },
   // Catalogo (Lumina / Vitalis)
   { id: "lumina-comecar", src: "/catalogo/Lumina_come\u00e7ar.jpeg", label: "Lumina começar" },
@@ -60,14 +60,14 @@ const PRINTS = [
   { id: "vitalis-checkin", src: "/catalogo/Vitalis_checkin.jpeg", label: "Vitalis check-in" },
   { id: "vitalis-lumina", src: "/catalogo/Vitalis_lumina-abertura.jpeg", label: "Vitalis lumina" },
   { id: "vitalis-plano", src: "/catalogo/Vitalis_plano.jpeg", label: "Vitalis plano" },
-  { id: "catalogo-comunidade", src: "/catalogo/comunidade.jpeg", label: "Comunidade (catalogo)" },
+  { id: "catalogo-comunidade", src: "/catalogo/comunidade.jpeg", label: "Comunidade (catálogo)" },
   // Artigos
   { id: "artigo-agradar", src: "/images/artigo-agradar.png", label: "Artigo agradar" },
   { id: "artigo-escolha", src: "/images/artigo-escolha.png", label: "Artigo escolha" },
   { id: "artigo-vida", src: "/images/artigo-vida-funciona.png", label: "Artigo vida funciona" },
   // Recursos
   { id: "recurso-teste", src: "/images/recurso-teste.png", label: "Recurso teste" },
-  { id: "recurso-diario", src: "/images/recurso-diario.png", label: "Recurso diario" },
+  { id: "recurso-diario", src: "/images/recurso-diario.png", label: "Recurso diário" },
   { id: "recurso-checklist", src: "/images/recurso-checklist.png", label: "Recurso checklist" },
   { id: "recurso-miniguia", src: "/images/recurso-miniguia.png", label: "Recurso mini-guia" },
   { id: "recurso-perguntas", src: "/images/recurso-perguntas.png", label: "Recurso perguntas" },
@@ -77,89 +77,113 @@ const PRINTS = [
 // ─── MENSAGENS (presets de texto) ───────────────────────────────────────────
 
 const MENSAGENS = [
+  // ─── Filosofia e profundidade ───
   {
-    label: "Convite geral",
-    title: "E se pudesses ler\no que a tua alma\nja sabe?",
-    subtitle: "Os Sete Veus do Despertar",
+    label: "Véus que escondem",
+    title: "Há coisas que sabes\nmas que ainda não\nte deixaste ouvir.",
+    subtitle: "Os 7 Véus do Despertar\nUm livro que não te diz o que fazer.\nMostra-te o que já sabes.",
     cta: "seteveus.space",
   },
   {
-    label: "Nao e um livro",
-    title: "Nao e um livro.\nE um espelho.",
-    subtitle: "7 veus. 7 historias.\nUma jornada interior.",
-    cta: "Comeca em seteveus.space",
+    label: "Não é autoajuda",
+    title: "Não é autoajuda.\nNão é terapia.\nÉ um espelho.",
+    subtitle: "Um livro que te devolve\naquilo que sempre foi teu.",
+    cta: "seteveus.space",
   },
   {
-    label: "Qual veu",
-    title: "Qual veu\nte esconde?",
-    subtitle: "Descobre em 2 minutos.\nUm teste que nao da respostas ~ da perguntas.",
+    label: "Perguntar é começar",
+    title: "Perguntar,\nmesmo tarde,\né o primeiro gesto\nde se escolher.",
+    subtitle: "Os 7 Véus do Despertar",
+    cta: "seteveus.space",
+  },
+  {
+    label: "Modo automático",
+    title: "Quantas decisões\ntomaste hoje\nsem escolher?",
+    subtitle: "O primeiro véu chama-se Ilusão.\nÉ o mais silencioso.\nE o mais comum.",
+    cta: "seteveus.space",
+  },
+  // ─── Experiência digital ───
+  {
+    label: "Três formas de ler",
+    title: "O mesmo livro.\nTrês profundidades\ndiferentes.",
+    subtitle: "Semente ~ guia acessível\nRaiz ~ contexto filosófico\nÁrvore ~ texto original\n\nTu escolhes a profundidade.",
+    cta: "seteveus.space",
+  },
+  {
+    label: "Ler e escrever",
+    title: "Ler sem escrever\né como olhar\npara um espelho\nde olhos fechados.",
+    subtitle: "Diário reflexivo integrado.\nAs tuas palavras, guardadas para sempre.",
+    cta: "seteveus.space",
+  },
+  {
+    label: "Respirar entre capítulos",
+    title: "Entre cada capítulo,\numa pausa.\nTrês respirações.\nO corpo também lê.",
+    subtitle: "Respiração guiada integrada\nna experiência de leitura.",
+    cta: "seteveus.space",
+  },
+  {
+    label: "Sozinha mas não só",
+    title: "Lês sozinha.\nMas não estás só.",
+    subtitle: "Comunidade Ecos\nReflexões anónimas.\nReconhecimentos silenciosos.\nTudo desaparece.",
+    cta: "seteveus.space/comunidade",
+  },
+  // ─── Ecos da comunidade ───
+  {
+    label: "Eco ~ acordar",
+    title: '"saí do modo automático.\nnão sei para onde vou\nmas pelo menos\nestou acordada."',
+    subtitle: "~ leitora anónima, Véu 1",
+    cta: "seteveus.space",
+  },
+  {
+    label: "Eco ~ reconhecimento",
+    title: '"chorei no banho.\noutra vez.\nmas desta vez\nnão foi por tristeza.\nfoi por reconhecimento."',
+    subtitle: "~ leitora anónima, Véu 1",
+    cta: "seteveus.space",
+  },
+  {
+    label: "Eco ~ automático",
+    title: '"o meu marido perguntou\nestás bem?\ne eu disse que sim.\nautomaticamente."',
+    subtitle: "~ leitora anónima, Véu 1",
+    cta: "seteveus.space",
+  },
+  {
+    label: "Eco ~ silêncio",
+    title: '"o silêncio entre nós\nnão era paz.\nera tudo o que\nnunca dissemos."',
+    subtitle: "~ leitora anónima, Véu 2",
+    cta: "seteveus.space",
+  },
+  // ─── Livro físico + digital ───
+  {
+    label: "Do papel ao digital",
+    title: "O teu livro físico\nabre portas que\nainda não conheces.",
+    subtitle: "Se já tens o livro,\no acesso digital é gratuito.\nDiário. Comunidade. 3 níveis.",
+    cta: "seteveus.space/pedir-codigo",
+  },
+  {
+    label: "O livro que te lê",
+    title: "O livro que\nte lê a ti.",
+    subtitle: "Edição impressa ~ 1.500 MT\nExperiência digital incluída.",
+    cta: "+258 845 243 875",
+  },
+  // ─── Nó da Herança ───
+  {
+    label: "Nó da Herança",
+    title: "A mãe sempre viu.\nEsperou anos.\nAgora que Sara acordou,\nHelena tem algo\npara lhe dizer.",
+    subtitle: "O Nó da Herança\nO silêncio herdado entre mãe e filha.",
+    cta: "seteveus.space",
+  },
+  // ─── Convites suaves ───
+  {
+    label: "Ao teu ritmo",
+    title: "Sem pressa.\nSem prazo.\nAo ritmo da tua\nverdade.",
+    subtitle: "Os 7 Véus do Despertar",
+    cta: "seteveus.space",
+  },
+  {
+    label: "Teste gratuito",
+    title: "Qual véu\nte esconde?",
+    subtitle: "Um teste de 3 minutos.\nNão dá respostas.\nDá perguntas.",
     cta: "seteveus.space/recursos/teste",
-  },
-  {
-    label: "Comunidade",
-    title: "As vozes encontram-se\naqui.",
-    subtitle: "Comunidade Ecos\nAnonima. Impermanente. Real.",
-    cta: "Entra em seteveus.space",
-  },
-  {
-    label: "Livro fisico",
-    title: "O livro que\nte le a ti.",
-    subtitle: "Edicao impressa ~ 1.500 MT\nVersao digital incluida",
-    cta: "Encomenda via WhatsApp",
-  },
-  {
-    label: "Espelho Ilusao",
-    title: "O primeiro veu\ne o mais silencioso.",
-    subtitle: "Espelho da Ilusao\n7 capitulos. Reflexoes. Checklist.\nJa disponivel.",
-    cta: "Comeca em seteveus.space",
-  },
-  {
-    label: "Codigo acesso",
-    title: "Compraste o livro?\nTens acesso a tudo.",
-    subtitle: "Usa o teu codigo e desbloqueia\na experiencia digital completa.",
-    cta: "seteveus.space/registar-livro",
-  },
-  {
-    label: "No da Heranca",
-    title: "A mae sempre viu.\nEsperou anos.",
-    subtitle: "O No da Heranca\nDesbloqueado ao completar\no Espelho da Ilusao.",
-    cta: "seteveus.space",
-  },
-  {
-    label: "Despertar",
-    title: "Os 7 Veus\ndo Despertar",
-    subtitle: "Uma jornada em 7 camadas.\nCada veu esconde algo\nque sempre soubeste.",
-    cta: "seteveus.space",
-  },
-  {
-    label: "Frase ~ automatico",
-    title: '"sai do modo automatico.\nnao sei para onde vou\nmas pelo menos\nestou acordada."',
-    subtitle: "~ leitora anonima, Veu 1",
-    cta: "Comunidade Ecos ~ seteveus.space",
-  },
-  {
-    label: "Frase ~ banho",
-    title: '"chorei no banho.\noutra vez.\nmas desta vez\nnao foi por tristeza.\nfoi por reconhecimento."',
-    subtitle: "~ leitora anonima, Veu 1",
-    cta: "Comunidade Ecos ~ seteveus.space",
-  },
-  {
-    label: "Frase ~ marido",
-    title: '"o meu marido perguntou\nestas bem?\ne eu disse que sim.\nautomaticamente."',
-    subtitle: "~ leitora anonima, Veu 1",
-    cta: "Comunidade Ecos ~ seteveus.space",
-  },
-  {
-    label: "Jornada ritmo",
-    title: "A tua jornada,\nao teu ritmo.",
-    subtitle: "Sem pressas. Sem prazos.\nAo ritmo da tua verdade.",
-    cta: "seteveus.space",
-  },
-  {
-    label: "Experiencia leitura",
-    title: "Uma experiencia\nde leitura\ndiferente.",
-    subtitle: "Reflexoes. Checklists. Diario.\nTudo dentro do livro.",
-    cta: "seteveus.space",
   },
   {
     label: "Vazio",
@@ -294,7 +318,7 @@ export default function GeradorPage() {
               Painel
             </Link>
             <span className="text-brown-200">/</span>
-            <h1 className="font-serif text-xl text-brown-900">Gerador de Conteudo</h1>
+            <h1 className="font-serif text-xl text-brown-900">Gerador de Conteúdo</h1>
           </div>
           <button
             onClick={handleExport}
@@ -423,7 +447,7 @@ export default function GeradorPage() {
               </label>
               <div>
                 <div className="flex items-center justify-between">
-                  <span className="font-sans text-xs text-brown-500">Titulo</span>
+                  <span className="font-sans text-xs text-brown-500">Título</span>
                   <div className="flex items-center gap-1">
                     <input type="range" min={24} max={72} value={titleSize} onChange={(e) => setTitleSize(+e.target.value)} className="w-20 accent-sage" />
                     <span className="w-8 font-sans text-[0.6rem] text-brown-400">{titleSize}</span>
@@ -438,7 +462,7 @@ export default function GeradorPage() {
               </div>
               <div>
                 <div className="flex items-center justify-between">
-                  <span className="font-sans text-xs text-brown-500">Subtitulo</span>
+                  <span className="font-sans text-xs text-brown-500">Subtítulo</span>
                   <div className="flex items-center gap-1">
                     <input type="range" min={12} max={36} value={subtitleSize} onChange={(e) => setSubtitleSize(+e.target.value)} className="w-20 accent-sage" />
                     <span className="w-8 font-sans text-[0.6rem] text-brown-400">{subtitleSize}</span>
@@ -471,7 +495,7 @@ export default function GeradorPage() {
             <div className="flex items-center gap-4">
               <div className="flex-1">
                 <label className="mb-1.5 block font-sans text-[0.65rem] font-medium uppercase tracking-wider text-brown-400">
-                  Posicao
+                  Posição
                 </label>
                 <div className="flex gap-1.5">
                   {(["top", "center", "bottom"] as TextPos[]).map((p) => (
@@ -501,7 +525,7 @@ export default function GeradorPage() {
                       : "border-brown-100 bg-white text-brown-400"
                   }`}
                 >
-                  {showLogo ? "Visivel" : "Oculto"}
+                  {showLogo ? "Visível" : "Oculto"}
                 </button>
               </div>
             </div>
@@ -592,7 +616,7 @@ export default function GeradorPage() {
                       className="h-10 w-10 rounded-full"
                     />
                     <span className="font-serif text-white/80" style={{ fontSize: 18 }}>
-                      Os Sete Veus
+                      Os Sete Véus
                     </span>
                   </div>
                 )}

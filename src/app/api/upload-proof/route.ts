@@ -42,7 +42,7 @@ export async function POST(request: Request) {
     const supabaseAdmin = createSupabaseAdminClient();
     if (!supabaseAdmin) {
       return NextResponse.json(
-        { error: "Servico de upload indisponivel" },
+        { error: "Serviço de upload indisponível" },
         { status: 500 }
       );
     }

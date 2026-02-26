@@ -296,7 +296,7 @@ export default function PortalVeuPage() {
               ? `/livro/veu/${numeroVeu}/capitulo/${proximoCap.numero}`
               : `/livro/veu/${numeroVeu}/capitulo/${veu.capitulos[0].numero}`
             const label = capitulosCompletos.size === 0
-              ? 'Comecar a Travessia'
+              ? 'Começar a Travessia'
               : capitulosCompletos.size >= veu.capitulos.length
                 ? 'Reler a Travessia'
                 : `Continuar — Cap. ${proximoCap?.numero}`

@@ -125,9 +125,9 @@ export default function ComprarNoPage({ params }: { params: Promise<{ slug: stri
 
           <ul className="mt-6 space-y-2">
             {[
-              'Continuacao emocional do Espelho',
-              'Historia relacional completa',
-              'Reflexoes e praticas incluidas',
+              'Continuação emocional do Espelho',
+              'História relacional completa',
+              'Reflexões e práticas incluídas',
               'Acesso vitalício no site',
             ].map((item) => (
               <li key={item} className="flex items-start gap-2 text-sm text-brown-600">

@@ -49,7 +49,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Nao autenticado" }, { status: 401 });
     }
     if (!isAdmin) {
-      return NextResponse.json({ error: "Sem permissao" }, { status: 403 });
+      return NextResponse.json({ error: "Sem permissão" }, { status: 403 });
     }
 
     const body = await request.json();
@@ -66,7 +66,7 @@ export async function POST(request: Request) {
     const supabaseAdmin = createSupabaseAdminClient();
     if (!supabaseAdmin) {
       return NextResponse.json(
-        { error: "Servico temporariamente indisponivel" },
+        { error: "Serviço temporariamente indisponível" },
         { status: 503 }
       );
     }
@@ -110,7 +110,7 @@ export async function POST(request: Request) {
 
     if (!code) {
       return NextResponse.json(
-        { error: "Erro ao gerar codigo unico. Tenta novamente." },
+        { error: "Erro ao gerar código único. Tenta novamente." },
         { status: 500 }
       );
     }
@@ -131,7 +131,7 @@ export async function POST(request: Request) {
     if (insertError) {
       console.error("Erro ao inserir codigo:", insertError);
       return NextResponse.json(
-        { error: `Erro ao salvar codigo: ${insertError.message}` },
+        { error: `Erro ao salvar código: ${insertError.message}` },
         { status: 500 }
       );
     }
@@ -158,7 +158,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       success: true,
       code: insertedCode,
-      message: `Codigo ${code} gerado para ${requestData.email}`,
+      message: `Código ${code} gerado para ${requestData.email}`,
     });
   } catch (error) {
     console.error("Erro ao aprovar pedido:", error);
@@ -182,7 +182,7 @@ export async function DELETE(request: Request) {
       return NextResponse.json({ error: "Nao autenticado" }, { status: 401 });
     }
     if (!isAdmin) {
-      return NextResponse.json({ error: "Sem permissao" }, { status: 403 });
+      return NextResponse.json({ error: "Sem permissão" }, { status: 403 });
     }
 
     const body = await request.json();
@@ -198,7 +198,7 @@ export async function DELETE(request: Request) {
     const supabaseAdmin = createSupabaseAdminClient();
     if (!supabaseAdmin) {
       return NextResponse.json(
-        { error: "Servico temporariamente indisponivel" },
+        { error: "Serviço temporariamente indisponível" },
         { status: 503 }
       );
     }
