@@ -4,7 +4,7 @@ import { useState, useRef, useCallback, useMemo, useEffect } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { professionalCarousels } from "@/data/content-calendar-weeks";
+import { professionalCarousels, hashtagSets } from "@/data/content-calendar-weeks";
 import type { CarouselSlide } from "@/data/content-calendar-weeks";
 
 const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
@@ -106,8 +106,8 @@ function SlidePreview({ slide, index, scale, dims }: {
       {slide.bgImage && (
         <>
           <img src={slide.bgImage} alt="" crossOrigin="anonymous"
-            className="absolute inset-0 h-full w-full object-cover" style={{ filter: "blur(30px)" }} />
-          <div className="absolute inset-0" style={{ backgroundColor: slide.bg, opacity: 0.75 }} />
+            className="absolute inset-0 h-full w-full object-cover" />
+          <div className="absolute inset-0" style={{ backgroundColor: slide.bg, opacity: 0.55 }} />
         </>
       )}
       <div style={{ position: "absolute", left: 40, top: 40, width: 56, height: 56, borderRadius: "50%",
@@ -188,7 +188,7 @@ function StoryMockupPreview({ bgImage, title, scale }: { bgImage: string; title:
     }}>
       {/* Screenshot as background */}
       <img src={bgImage} alt="" crossOrigin="anonymous"
-        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.3, filter: "blur(20px)" }} />
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.35 }} />
       {/* Dark overlay */}
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(42,36,32,0.7) 0%, rgba(42,36,32,0.4) 40%, rgba(42,36,32,0.7) 100%)" }} />
       {/* Phone frame with screenshot */}
@@ -214,6 +214,58 @@ function StoryMockupPreview({ bgImage, title, scale }: { bgImage: string; title:
       </div>
       <img src="/images/mandala-7veus.png" alt="" crossOrigin="anonymous"
         style={{ position: "absolute", right: 40, top: 40, width: 72, height: 72, opacity: 0.1, objectFit: "contain" }} />
+    </div>
+  );
+}
+
+// WhatsApp Status image — clean 9:16 image, ready to download and post directly
+function WhatsAppStatusImage({ slide, bgImage, hook, scale }: {
+  slide: CarouselSlide; bgImage?: string; hook: string; scale: number;
+}) {
+  const img = bgImage || slide.bgImage;
+  return (
+    <div className="relative overflow-hidden" style={{
+      width: STORY_DIMS.w, height: STORY_DIMS.h,
+      transform: `scale(${scale})`, transformOrigin: "top left",
+      backgroundColor: "#075e54",
+    }}>
+      {/* Background image — sharp */}
+      {img && (
+        <>
+          <img src={img} alt="" crossOrigin="anonymous"
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.6) 100%)" }} />
+        </>
+      )}
+      {/* Content — centred, personal */}
+      <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column",
+        justifyContent: "center", alignItems: "center", padding: "140px 72px", textAlign: "center" }}>
+        <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 20, fontWeight: 600,
+          letterSpacing: "0.1em", textTransform: "uppercase", color: "#25D366", margin: 0 }}>
+          Os Sete Véus
+        </p>
+        <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 48,
+          lineHeight: 1.25, fontWeight: 700, whiteSpace: "pre-line", margin: "32px 0 0",
+          color: "white" }}>
+          {hook}
+        </h2>
+        {slide.body && !img && (
+          <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 22, lineHeight: 1.7,
+            fontWeight: 300, whiteSpace: "pre-line", margin: "28px 0 0", opacity: 0.85,
+            color: "white" }}>{slide.body}</p>
+        )}
+      </div>
+      {/* CTA at bottom */}
+      <div style={{ position: "absolute", bottom: 80, left: 0, right: 0, textAlign: "center", padding: "0 60px" }}>
+        <div style={{ display: "inline-block", backgroundColor: "#25D366", borderRadius: 12,
+          padding: "16px 40px" }}>
+          <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 20, fontWeight: 600,
+            color: "white", margin: 0 }}>seteveus.space/pedir-codigo</p>
+        </div>
+      </div>
+      {/* Mandala watermark */}
+      <img src="/images/mandala-7veus.png" alt="" crossOrigin="anonymous"
+        style={{ position: "absolute", right: 40, top: 40, width: 72, height: 72, opacity: 0.15, objectFit: "contain" }} />
     </div>
   );
 }
@@ -351,7 +403,6 @@ export default function MarketingPage() {
   const platformCaptions = [
     { id: "ig", label: "Instagram", caption: igCaption, color: "#E1306C" },
     { id: "fb", label: "Facebook", caption: fbCaption, color: "#1877F2" },
-    { id: "wa", label: "WhatsApp", caption: waCaption, color: "#25D366" },
     { id: "tk", label: "TikTok / Reels", caption: tkCaption, color: "#000000" },
   ];
 
@@ -535,63 +586,48 @@ export default function MarketingPage() {
               </div>
 
               {/* ── WhatsApp (secção principal) ── */}
-              <div className="mt-4 rounded-2xl border-2 border-[#25D366]/30 bg-white p-4">
+              <div className="mt-4 rounded-2xl border-2 border-[#25D366]/30 bg-[#0b141a] p-4">
                 <div className="mb-4 flex items-center gap-2">
                   <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#25D366]">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                   </div>
                   <div>
-                    <p className="font-sans text-sm font-semibold text-brown-900">WhatsApp</p>
-                    <p className="font-sans text-[0.55rem] text-brown-400">Status + Broadcast</p>
+                    <p className="font-sans text-sm font-semibold text-white">WhatsApp Status</p>
+                    <p className="font-sans text-[0.55rem] text-[#8696a0]">Imagem pronta — descarrega e publica</p>
                   </div>
                 </div>
 
-                <div className="flex gap-3">
-                  {/* WhatsApp Status image (mockup 9:16) */}
-                  <div className="w-[100px] shrink-0">
-                    <p className="mb-1.5 text-center font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#25D366]">Status</p>
-                    <div className="overflow-hidden rounded-xl"
-                      style={{ width: STORY_DIMS.w * storyScale, height: STORY_DIMS.h * storyScale, margin: "0 auto" }}>
-                      <div ref={waStatusRef}>
-                        {dayContent.storyBg ? (
-                          <StoryMockupPreview
-                            bgImage={dayContent.storyBg}
-                            title={carousel.slides[0]?.title?.split("\n")[0] || dayContent.hook}
-                            scale={storyScale}
-                          />
-                        ) : (
-                          <StoryTextPreview slide={{
-                            ...carousel.slides[0],
-                            bg: "#2a2420",
-                            text: "#f7f5f0",
-                            accent: "#c9b896",
-                          }} scale={storyScale} />
-                        )}
-                      </div>
-                    </div>
-                    <button onClick={() => exportStory(waStatusRef, "wa-status")}
-                      disabled={exportingStory === "wa-status"}
-                      className="mt-2 w-full rounded-lg bg-[#25D366] py-2 font-sans text-[0.6rem] font-medium text-white hover:bg-[#1da851]">
-                      {exportingStory === "wa-status" ? "..." : "Descarregar"}
-                    </button>
-                  </div>
-
-                  {/* WhatsApp Broadcast text */}
-                  <div className="min-w-0 flex-1">
-                    <p className="mb-1.5 font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#25D366]">Broadcast</p>
-                    <div className="rounded-xl bg-[#e7fdd8] p-3">
-                      <pre className="max-h-64 overflow-y-auto whitespace-pre-wrap font-sans text-[0.7rem] leading-relaxed text-[#303030]">
-                        {waCaption}
-                      </pre>
-                    </div>
-                    <button
-                      onClick={() => copyText("wa-broadcast", waCaption)}
-                      className="mt-2 w-full rounded-lg bg-[#25D366] py-2.5 font-sans text-xs font-medium text-white hover:bg-[#1da851]"
-                    >
-                      {copiedId === "wa-broadcast" ? "Copiado!" : "Copiar texto"}
-                    </button>
+                {/* WhatsApp Status image — clean, ready to post */}
+                <div className="mx-auto overflow-hidden rounded-xl"
+                  style={{ width: STORY_DIMS.w * storyScale, height: STORY_DIMS.h * storyScale }}>
+                  <div ref={waStatusRef}>
+                    <WhatsAppStatusImage
+                      slide={carousel.slides[0]}
+                      bgImage={dayContent.storyBg}
+                      hook={dayContent.hook}
+                      scale={storyScale}
+                    />
                   </div>
                 </div>
+                <button onClick={() => exportStory(waStatusRef, "wa-status")}
+                  disabled={exportingStory === "wa-status"}
+                  className="mt-3 w-full rounded-xl bg-[#25D366] py-3 font-sans text-sm font-medium text-white hover:bg-[#1da851]">
+                  {exportingStory === "wa-status" ? "A descarregar..." : "Descarregar para Status"}
+                </button>
+
+                {/* WhatsApp caption */}
+                <div className="mt-3 rounded-xl bg-[#1b2b27] p-3">
+                  <p className="mb-1.5 font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#25D366]">Legenda</p>
+                  <pre className="max-h-48 overflow-y-auto whitespace-pre-wrap font-sans text-[0.7rem] leading-relaxed text-[#d1d7db]">
+                    {waCaption}
+                  </pre>
+                </div>
+                <button
+                  onClick={() => copyText("wa", waCaption)}
+                  className="mt-2 w-full rounded-lg bg-[#25D366]/20 py-2 font-sans text-xs font-medium text-[#25D366] hover:bg-[#25D366]/30"
+                >
+                  {copiedId === "wa" ? "Copiada!" : "Copiar legenda"}
+                </button>
               </div>
 
               {/* ── Legendas (IG / FB / TK) ── */}
@@ -603,7 +639,7 @@ export default function MarketingPage() {
                 </div>
 
                 <div className="space-y-1">
-                  {platformCaptions.filter(p => p.id !== "wa").map((p) => (
+                  {platformCaptions.map((p) => (
                     <div key={p.id} className="overflow-hidden rounded-xl border border-brown-50">
                       <button
                         onClick={() => setOpenCaption(openCaption === p.id ? null : p.id)}
@@ -630,6 +666,39 @@ export default function MarketingPage() {
                       )}
                     </div>
                   ))}
+                </div>
+              </div>
+
+              {/* ── Hashtags ── */}
+              <div className="mt-4 rounded-2xl border border-brown-100 bg-white p-4">
+                <div className="mb-3">
+                  <p className="font-sans text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-[#c9b896]">
+                    Hashtags
+                  </p>
+                  <p className="mt-0.5 font-sans text-[0.55rem] text-brown-400">
+                    Toca num grupo para copiar. Combina 2-3 grupos por post.
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  {hashtagSets.map((set) => {
+                    const allTags = set.tags.join(" ");
+                    return (
+                      <button key={set.name}
+                        onClick={() => copyText(`ht-${set.name}`, allTags)}
+                        className="block w-full rounded-xl border border-brown-50 p-2.5 text-left transition-colors hover:bg-cream/40">
+                        <div className="flex items-center justify-between">
+                          <span className="font-sans text-[0.65rem] font-semibold text-brown-700">{set.name}</span>
+                          <span className="rounded-full bg-brown-50 px-2 py-0.5 font-sans text-[0.5rem] text-brown-400">
+                            {copiedId === `ht-${set.name}` ? "Copiado!" : `${set.tags.length} tags`}
+                          </span>
+                        </div>
+                        <p className="mt-1 font-sans text-[0.55rem] leading-relaxed text-brown-400">{set.description}</p>
+                        <p className="mt-1.5 font-sans text-[0.55rem] leading-relaxed text-[#c9b896]">
+                          {set.tags.slice(0, 4).join(" ")}{set.tags.length > 4 ? " ..." : ""}
+                        </p>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             </>

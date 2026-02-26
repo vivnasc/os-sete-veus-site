@@ -106,11 +106,10 @@ export default function ExportableSlide({
                 alt=""
                 crossOrigin="anonymous"
                 className="absolute inset-0 h-full w-full object-cover"
-                style={{ filter: "blur(30px)" }}
               />
               <div
                 className="absolute inset-0"
-                style={{ backgroundColor: slide.bg, opacity: 0.75 }}
+                style={{ backgroundColor: slide.bg, opacity: 0.55 }}
               />
             </>
           )}
