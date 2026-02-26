@@ -4,7 +4,7 @@ import { useState, useRef, useCallback, useMemo, useEffect } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { professionalCarousels } from "@/data/content-calendar-weeks";
+import { professionalCarousels, hashtagSets } from "@/data/content-calendar-weeks";
 import type { CarouselSlide } from "@/data/content-calendar-weeks";
 
 const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
@@ -397,6 +397,7 @@ export default function MarketingPage() {
   // Per-platform captions
   const igCaption = carousel?.caption || "";
   const fbCaption = toFacebook(igCaption);
+  const waCaption = dayContent?.whatsapp || stripHashtags(igCaption).replace(/seteveus\.space/g, "https://seteveus.space");
   const tkCaption = toTikTok(dayContent?.hook || "", igCaption);
 
   const platformCaptions = [
@@ -613,6 +614,20 @@ export default function MarketingPage() {
                   className="mt-3 w-full rounded-xl bg-[#25D366] py-3 font-sans text-sm font-medium text-white hover:bg-[#1da851]">
                   {exportingStory === "wa-status" ? "A descarregar..." : "Descarregar para Status"}
                 </button>
+
+                {/* WhatsApp caption */}
+                <div className="mt-3 rounded-xl bg-[#1b2b27] p-3">
+                  <p className="mb-1.5 font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#25D366]">Legenda</p>
+                  <pre className="max-h-48 overflow-y-auto whitespace-pre-wrap font-sans text-[0.7rem] leading-relaxed text-[#d1d7db]">
+                    {waCaption}
+                  </pre>
+                </div>
+                <button
+                  onClick={() => copyText("wa", waCaption)}
+                  className="mt-2 w-full rounded-lg bg-[#25D366]/20 py-2 font-sans text-xs font-medium text-[#25D366] hover:bg-[#25D366]/30"
+                >
+                  {copiedId === "wa" ? "Copiada!" : "Copiar legenda"}
+                </button>
               </div>
 
               {/* ── Legendas (IG / FB / TK) ── */}
@@ -651,6 +666,39 @@ export default function MarketingPage() {
                       )}
                     </div>
                   ))}
+                </div>
+              </div>
+
+              {/* ── Hashtags ── */}
+              <div className="mt-4 rounded-2xl border border-brown-100 bg-white p-4">
+                <div className="mb-3">
+                  <p className="font-sans text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-[#c9b896]">
+                    Hashtags
+                  </p>
+                  <p className="mt-0.5 font-sans text-[0.55rem] text-brown-400">
+                    Toca num grupo para copiar. Combina 2-3 grupos por post.
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  {hashtagSets.map((set) => {
+                    const allTags = set.tags.join(" ");
+                    return (
+                      <button key={set.name}
+                        onClick={() => copyText(`ht-${set.name}`, allTags)}
+                        className="block w-full rounded-xl border border-brown-50 p-2.5 text-left transition-colors hover:bg-cream/40">
+                        <div className="flex items-center justify-between">
+                          <span className="font-sans text-[0.65rem] font-semibold text-brown-700">{set.name}</span>
+                          <span className="rounded-full bg-brown-50 px-2 py-0.5 font-sans text-[0.5rem] text-brown-400">
+                            {copiedId === `ht-${set.name}` ? "Copiado!" : `${set.tags.length} tags`}
+                          </span>
+                        </div>
+                        <p className="mt-1 font-sans text-[0.55rem] leading-relaxed text-brown-400">{set.description}</p>
+                        <p className="mt-1.5 font-sans text-[0.55rem] leading-relaxed text-[#c9b896]">
+                          {set.tags.slice(0, 4).join(" ")}{set.tags.length > 4 ? " ..." : ""}
+                        </p>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             </>

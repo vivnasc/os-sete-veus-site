@@ -1969,6 +1969,105 @@ export const reelScripts: ReelScript[] = [
   },
 ];
 
+// ─── CONJUNTOS DE HASHTAGS ───────────────────────────────────────────────────
+
+export type HashtagSet = {
+  name: string;
+  description: string;
+  tags: string[];
+};
+
+export const hashtagSets: HashtagSet[] = [
+  {
+    name: "Principal — Marca",
+    description: "Usar em todos os posts. Hashtags da marca.",
+    tags: [
+      "#OsSeteVéus", "#SeteVéus", "#VivianneDosSantos", "#SetevéusSpace",
+      "#OsSeteVéusDoDespertar", "#PedeOTeuCódigo",
+    ],
+  },
+  {
+    name: "Autoconhecimento",
+    description: "Posts sobre despertar, reflexão, jornada interior.",
+    tags: [
+      "#Autoconhecimento", "#DesenvolvimentoPessoal", "#JornadaInterior",
+      "#DespertarDeConsciência", "#Reflexão", "#ConheceTe",
+      "#CrescimentoPessoal", "#Consciência", "#Introspecção",
+      "#TransformaçãoPessoal",
+    ],
+  },
+  {
+    name: "Livros / Leitura",
+    description: "Posts sobre o livro, citações, recomendações.",
+    tags: [
+      "#LivrosQueTransformam", "#DicaDeLeitura", "#BookstagramPortugal",
+      "#LivrosEmPortuguês", "#LeituraConsciente", "#Bookstagram",
+      "#BookTok", "#BooktokMoçambique", "#LivrosParaAlma",
+      "#LiteraturaPortuguesa",
+    ],
+  },
+  {
+    name: "Moçambique / Lusófono",
+    description: "Alcance regional — Moçambique, Brasil, Portugal.",
+    tags: [
+      "#Moçambique", "#AutorasMoçambicanas", "#LiteraturaMoçambicana",
+      "#MaputoCity", "#EscritorasAfricanas", "#LivrosAfricanos",
+      "#LiteraturaLusófona", "#LivrosBrasil", "#LivrosPortugal",
+      "#EscritorasLusófonas",
+    ],
+  },
+  {
+    name: "Mulheres / Feminino",
+    description: "Posts dirigidos ao público feminino.",
+    tags: [
+      "#MulheresQueDespertam", "#FemininoSagrado", "#MulheresFortes",
+      "#Sororidade", "#MulheresConscientes", "#PoderFeminino",
+      "#MulheresReais", "#ForçaFeminina", "#MulheresQueInspiram",
+      "#JornadaFeminina",
+    ],
+  },
+  {
+    name: "Comunidade / Digital",
+    description: "Posts sobre a plataforma e comunidade Ecos.",
+    tags: [
+      "#ComunidadeEcos", "#PlataformaDigital", "#LeituraIntegrada",
+      "#DiárioReflexivo", "#ComunidadeAnónima", "#ExperiênciaDigital",
+      "#LeituraDigital", "#AcessoGratuito", "#PlataformaDeAutoconhecimento",
+      "#LeiturasInteractivas",
+    ],
+  },
+  {
+    name: "Engagement — Salvar/Partilhar",
+    description: "CTAs para aumentar engagement.",
+    tags: [
+      "#GuardaEstaPub", "#PartilhaComAlguém", "#MarqueUmaAmiga",
+      "#FrasesDoDia", "#ReflexãoDoDia", "#PensaNisto",
+      "#CitaçõesDeLivros", "#FrasesQueTransformam", "#InspiracãoDiária",
+      "#PalavrasQueTocam",
+    ],
+  },
+  {
+    name: "Véu da Ilusão",
+    description: "Posts específicos sobre o 1o véu.",
+    tags: [
+      "#VéuDaIlusão", "#EspelhoDaIlusão", "#NóDaHerança",
+      "#PrimeiroVéu", "#Ilusão", "#VidaNoAutomático",
+      "#DespertarDaIlusão", "#OQueÉReal", "#SaírDoAutomático",
+      "#PerguntasQueTransformam",
+    ],
+  },
+  {
+    name: "Véu do Medo",
+    description: "Posts sobre o 2o véu (Março 2026).",
+    tags: [
+      "#VéuDoMedo", "#EspelhoDoMedo", "#SegundoVéu",
+      "#Medo", "#Coragem", "#MedoDeViver",
+      "#EnfrentarOMedo", "#CorAgemDeSerQuemSou", "#SuperarOMedo",
+      "#OQueMeTrava",
+    ],
+  },
+];
+
 // ─── GUIA DE PRODUCAO ────────────────────────────────────────────────────────
 
 export type ProductionGuide = {
