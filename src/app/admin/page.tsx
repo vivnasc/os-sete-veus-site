@@ -13,6 +13,7 @@ interface Stats {
   pendingPayments: number;
   totalEcos: number;
   totalReconhecimentos: number;
+  unreadNotifications: number;
 }
 
 const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
@@ -24,6 +25,14 @@ export default function AdminPage() {
 
   const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(true);
+  const [recentNotifs, setRecentNotifs] = useState<{
+    id: string;
+    type: string;
+    title: string;
+    message: string;
+    read: boolean;
+    created_at: string;
+  }[]>([]);
 
   useEffect(() => {
     if (!authLoading && (!user || !isAdmin)) {
@@ -73,6 +82,21 @@ export default function AdminPage() {
         .from("reconhecimentos")
         .select("*", { count: "exact", head: true });
 
+      // Unread notifications count
+      const { count: unreadNotifications } = await supabase
+        .from("admin_notifications")
+        .select("*", { count: "exact", head: true })
+        .eq("read", false);
+
+      // Recent notifications (last 8)
+      const { data: recentNotifsData } = await supabase
+        .from("admin_notifications")
+        .select("id, type, title, message, read, created_at")
+        .order("created_at", { ascending: false })
+        .limit(8);
+
+      setRecentNotifs(recentNotifsData || []);
+
       setStats({
         totalMembers: totalMembers || 0,
         activeMembers: activeMembers || 0,
@@ -80,6 +104,7 @@ export default function AdminPage() {
         pendingPayments: pendingPayments || 0,
         totalEcos: totalEcos || 0,
         totalReconhecimentos: totalReconhecimentos || 0,
+        unreadNotifications: unreadNotifications || 0,
       });
     } catch (error) {
       console.error("Error loading stats:", error);
@@ -232,6 +257,13 @@ export default function AdminPage() {
               icon="🎨"
             />
             <ActionCard
+              title="Notificacoes"
+              description="Ver todas as notificacoes"
+              href="/admin/notificacoes"
+              icon="🔔"
+              badge={stats?.unreadNotifications || 0}
+            />
+            <ActionCard
               title="Analytics"
               description="Métricas e estatísticas"
               href="/admin/analytics"
@@ -248,22 +280,67 @@ export default function AdminPage() {
 
         {/* Recent Activity */}
         <div>
-          <h2 className="mb-6 font-display text-2xl text-forest">
-            Atividade Recente
-          </h2>
-          <div className="rounded-lg border border-sage/20 bg-white/50 p-8">
-            <p className="text-sage text-center">
-              📈 Dashboard em desenvolvimento...
-              <br />
-              <span className="text-sm">
-                Aqui verás: novos membros, compras recentes, downloads, comentários
-              </span>
-            </p>
+          <div className="mb-6 flex items-center justify-between">
+            <h2 className="font-display text-2xl text-forest">
+              Atividade Recente
+            </h2>
+            <Link
+              href="/admin/notificacoes"
+              className="text-sm text-sage hover:text-forest transition-colors"
+            >
+              Ver todas →
+            </Link>
           </div>
+          {recentNotifs.length === 0 ? (
+            <div className="rounded-lg border border-sage/20 bg-white/50 p-8 text-center">
+              <p className="text-sage">Nenhuma actividade recente.</p>
+            </div>
+          ) : (
+            <div className="space-y-2">
+              {recentNotifs.map((notif) => (
+                <div
+                  key={notif.id}
+                  className={`flex items-start gap-3 rounded-lg border bg-white/50 px-4 py-3 ${
+                    notif.read ? "border-sage/10 opacity-60" : "border-sage/25"
+                  }`}
+                >
+                  {!notif.read && (
+                    <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-blue-500" />
+                  )}
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-medium text-forest">
+                      {notif.title}
+                    </p>
+                    <p className="mt-0.5 truncate text-xs text-sage">
+                      {notif.message}
+                    </p>
+                  </div>
+                  <span className="shrink-0 text-xs text-sage/50">
+                    {formatTimeAgo(notif.created_at)}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
+}
+
+function formatTimeAgo(dateStr: string) {
+  const diff = Date.now() - new Date(dateStr).getTime();
+  const mins = Math.floor(diff / 60000);
+  const hours = Math.floor(diff / 3600000);
+  const days = Math.floor(diff / 86400000);
+  if (mins < 1) return "agora";
+  if (mins < 60) return `${mins}min`;
+  if (hours < 24) return `${hours}h`;
+  if (days < 7) return `${days}d`;
+  return new Date(dateStr).toLocaleDateString("pt-PT", {
+    day: "numeric",
+    month: "short",
+  });
 }
 
 function StatCard({
