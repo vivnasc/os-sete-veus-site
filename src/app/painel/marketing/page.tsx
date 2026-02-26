@@ -118,39 +118,39 @@ function SlidePreview({ slide, index, scale, dims }: {
         <>
           <img src={slide.bgImage} alt="" crossOrigin="anonymous"
             className="absolute inset-0 h-full w-full object-cover" />
-          <div className="absolute inset-0" style={{ backgroundColor: slide.bg, opacity: 0.72 }} />
+          <div className="absolute inset-0" style={{ backgroundColor: slide.bg, opacity: 0.82 }} />
         </>
       )}
-      <div style={{ position: "absolute", left: 48, top: 48, width: 64, height: 64, borderRadius: "50%",
+      <div style={{ position: "absolute", left: 56, top: 56, width: 80, height: 80, borderRadius: "50%",
         backgroundColor: slide.accent + "30", color: slide.accent, display: "flex", alignItems: "center",
-        justifyContent: "center", fontFamily: "system-ui, sans-serif", fontSize: 26, fontWeight: 700 }}>
+        justifyContent: "center", fontFamily: "system-ui, sans-serif", fontSize: 32, fontWeight: 700 }}>
         {index + 1}
       </div>
       <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column",
-        justifyContent: "center", padding: "100px 80px" }}>
+        justifyContent: "center", padding: "100px 90px" }}>
         {slide.title && (
-          <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 58,
-            lineHeight: 1.15, fontWeight: 700, whiteSpace: "pre-line", margin: 0 }}>{slide.title}</h2>
+          <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 76,
+            lineHeight: 1.12, fontWeight: 700, whiteSpace: "pre-line", margin: 0 }}>{slide.title}</h2>
         )}
         {slide.title && slide.body && (
-          <div style={{ width: "15%", height: 3, backgroundColor: slide.accent, opacity: 0.6, margin: "36px 0" }} />
+          <div style={{ width: "12%", height: 4, backgroundColor: slide.accent, opacity: 0.7, margin: "40px 0" }} />
         )}
         {slide.body && (
-          <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 28, lineHeight: 1.55,
+          <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 34, lineHeight: 1.5,
             fontWeight: 400, whiteSpace: "pre-line", margin: 0 }}>{slide.body}</p>
         )}
       </div>
       {slide.footer && (
-        <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "0 80px 52px" }}>
+        <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "0 90px 56px" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 20, fontWeight: 600,
+            <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 24, fontWeight: 600,
               letterSpacing: "0.08em", textTransform: "uppercase", color: slide.accent, margin: 0 }}>{slide.footer}</p>
-            <span style={{ fontFamily: "Georgia, serif", fontSize: 32, opacity: 0.3, color: slide.accent }}>~</span>
+            <span style={{ fontFamily: "Georgia, serif", fontSize: 36, opacity: 0.3, color: slide.accent }}>~</span>
           </div>
         </div>
       )}
       <img src="/images/mandala-7veus.png" alt="" crossOrigin="anonymous"
-        style={{ position: "absolute", right: 36, top: 36, width: 72, height: 72, opacity: 0.15, objectFit: "contain" }} />
+        style={{ position: "absolute", right: 44, top: 44, width: 80, height: 80, opacity: 0.12, objectFit: "contain" }} />
     </div>
   );
 }
@@ -163,22 +163,22 @@ function StoryTextPreview({ slide, scale }: { slide: CarouselSlide; scale: numbe
       backgroundColor: slide.bg, color: slide.text,
     }}>
       <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column",
-        justifyContent: "center", alignItems: "center", padding: "120px 80px", textAlign: "center" }}>
+        justifyContent: "center", alignItems: "center", padding: "140px 90px", textAlign: "center" }}>
         {slide.title && (
-          <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 52,
-            lineHeight: 1.25, fontWeight: 700, whiteSpace: "pre-line", margin: 0 }}>{slide.title}</h2>
+          <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 64,
+            lineHeight: 1.2, fontWeight: 700, whiteSpace: "pre-line", margin: 0 }}>{slide.title}</h2>
         )}
         {slide.title && slide.body && (
-          <div style={{ width: 60, height: 2, backgroundColor: slide.accent, opacity: 0.5, margin: "40px auto" }} />
+          <div style={{ width: 60, height: 3, backgroundColor: slide.accent, opacity: 0.6, margin: "44px auto" }} />
         )}
         {slide.body && (
-          <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 24, lineHeight: 1.7,
+          <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 30, lineHeight: 1.65,
             fontWeight: 300, whiteSpace: "pre-line", margin: 0, opacity: 0.85 }}>{slide.body}</p>
         )}
       </div>
       {slide.footer && (
-        <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "0 80px 80px", textAlign: "center" }}>
-          <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 18, fontWeight: 500,
+        <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "0 90px 90px", textAlign: "center" }}>
+          <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 22, fontWeight: 500,
             letterSpacing: "0.08em", textTransform: "uppercase", color: slide.accent, margin: 0 }}>{slide.footer}</p>
         </div>
       )}
@@ -210,11 +210,11 @@ function StoryMockupPreview({ bgImage, title, scale }: { bgImage: string; title:
           Os Sete Véus
         </p>
       </div>
-      <div style={{ position: "absolute", bottom: 80, left: 0, right: 0, textAlign: "center", padding: "0 60px" }}>
-        <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 28,
-          lineHeight: 1.3, color: "#f7f5f0", margin: 0 }}>{title}</p>
-        <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 16, fontWeight: 500,
-          color: "#c9b896", marginTop: 16, letterSpacing: "0.05em" }}>seteveus.space</p>
+      <div style={{ position: "absolute", bottom: 90, left: 0, right: 0, textAlign: "center", padding: "0 60px" }}>
+        <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 34,
+          lineHeight: 1.25, color: "#f7f5f0", margin: 0 }}>{title}</p>
+        <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 20, fontWeight: 600,
+          color: "#c9b896", marginTop: 20, letterSpacing: "0.06em" }}>seteveus.space</p>
       </div>
       <img src="/images/mandala-7veus.png" alt="" crossOrigin="anonymous"
         style={{ position: "absolute", right: 40, top: 40, width: 72, height: 72, opacity: 0.1, objectFit: "contain" }} />
@@ -241,25 +241,25 @@ function WhatsAppStatusImage({ slide, bgImage, hook, scale }: {
       )}
       <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column",
         justifyContent: "center", alignItems: "center", padding: "140px 72px", textAlign: "center" }}>
-        <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 20, fontWeight: 600,
-          letterSpacing: "0.1em", textTransform: "uppercase", color: "#25D366", margin: 0 }}>
+        <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 22, fontWeight: 600,
+          letterSpacing: "0.12em", textTransform: "uppercase", color: "#25D366", margin: 0 }}>
           Os Sete Véus
         </p>
-        <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 48,
-          lineHeight: 1.25, fontWeight: 700, whiteSpace: "pre-line", margin: "32px 0 0",
+        <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 56,
+          lineHeight: 1.2, fontWeight: 700, whiteSpace: "pre-line", margin: "36px 0 0",
           color: "white" }}>
           {hook}
         </h2>
         {slide.body && !img && (
-          <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 22, lineHeight: 1.7,
-            fontWeight: 300, whiteSpace: "pre-line", margin: "28px 0 0", opacity: 0.85,
+          <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 26, lineHeight: 1.65,
+            fontWeight: 300, whiteSpace: "pre-line", margin: "32px 0 0", opacity: 0.85,
             color: "white" }}>{slide.body}</p>
         )}
       </div>
-      <div style={{ position: "absolute", bottom: 80, left: 0, right: 0, textAlign: "center", padding: "0 60px" }}>
-        <div style={{ display: "inline-block", backgroundColor: "#25D366", borderRadius: 12,
-          padding: "16px 40px" }}>
-          <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 20, fontWeight: 600,
+      <div style={{ position: "absolute", bottom: 90, left: 0, right: 0, textAlign: "center", padding: "0 60px" }}>
+        <div style={{ display: "inline-block", backgroundColor: "#25D366", borderRadius: 16,
+          padding: "20px 48px" }}>
+          <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 24, fontWeight: 700,
             color: "white", margin: 0 }}>seteveus.space/pedir-codigo</p>
         </div>
       </div>
