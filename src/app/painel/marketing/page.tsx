@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback, useMemo } from "react";
+import { useState, useRef, useCallback, useMemo, useEffect } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -24,35 +24,35 @@ const CAMPAIGN_START = new Date(2026, 1, 25);
 
 const DAILY_PLAN: DayContent[] = [
   // Semana 1 — Pede o teu código
-  { carouselId: "carousel-pede-codigo", hook: "Compraste o livro? Pede o teu código digital gratuito.", storyBg: "/prints/7veuspedircod-portrait.png", whatsapp: `Já tens o livro físico "Os 7 Véus do Despertar"?\n\nAgora existe uma experiência digital que complementa a tua leitura — com diário reflexivo, comunidade anónima e conteúdo exclusivo.\n\nE o melhor: se já compraste o livro, o acesso é gratuito.\n\nPede o teu código aqui: https://seteveus.space/pedir-codigo\n\nDemora menos de 2 minutos. Recebes o código em até 24h.\n\n— Vivianne` },
-  { carouselId: "carousel-funil-livro-fisico", hook: "Tens o livro físico? Descobre o que mais te espera.", storyBg: "/prints/7veus-3niveis-portrait.png" },
+  { carouselId: "carousel-pede-código", hook: "Compraste o livro? Pede o teu código digital gratuito.", storyBg: "/prints/7veuspedircod-portrait.png", whatsapp: `Já tens o livro físico "Os 7 Véus do Despertar"?\n\nAgora existe uma experiência digital que complementa a tua leitura — com diário reflexivo, comunidade anónima e conteúdo exclusivo.\n\nE o melhor: se já compraste o livro, o acesso é gratuito.\n\nPede o teu código aqui: https://seteveus.space/pedir-codigo\n\nDemora menos de 2 minutos. Recebes o código em até 24h.\n\n— Vivianne` },
+  { carouselId: "carousel-funil-livro-físico", hook: "Tens o livro físico? Descobre o que mais te espera.", storyBg: "/prints/7veus-3niveis-portrait.png" },
   { carouselId: "carousel-do-papel-ao-digital", hook: "Do papel ao ecrã. A mesma essência, uma nova forma.", storyBg: "/prints/7veus- incio-portrait.png", whatsapp: `Uma coisa que talvez não saibas:\n\nO livro físico "Os 7 Véus do Despertar" tem uma extensão digital.\n\nNão é uma cópia — é uma experiência diferente. Podes escrever reflexões à medida que lês, guardar pensamentos por capítulo, e participar numa comunidade anónima de leitoras.\n\nSe tens o livro, pede o teu código: https://seteveus.space/pedir-codigo\n\nÉ gratuito. É pessoal. É teu.\n\n— Vivianne` },
-  { carouselId: "carousel-3-razoes-digital", hook: "3 razões para activar o teu acesso digital.", storyBg: "/prints/7veus-darkmode-portrait.png" },
+  { carouselId: "carousel-3-razões-digital", hook: "3 razões para activar o teu acesso digital.", storyBg: "/prints/7veus-darkmode-portrait.png" },
   { carouselId: "carousel-tom-intimo", hook: "Uma coisa que talvez não saibas sobre o teu livro.", storyBg: "/prints/7veus-introdeveu-portrait.png", whatsapp: `Antes do fim de semana:\n\nSe compraste "Os 7 Véus do Despertar" e ainda não pediste o teu código digital — este é o momento.\n\nSó precisas de nome, email e (se quiseres) uma foto do livro.\n\nhttps://seteveus.space/pedir-codigo\n\nBom fim de semana. Que o silêncio te encontre.\n\n— Vivianne` },
   { hook: "Descanso. Responder mensagens." },
   { hook: "Descanso." },
   // Semana 2 — O que são Os Sete Véus
   { carouselId: "carousel-o-que-e", hook: "Já sentiste que a vida que tens não foi a que escolheste?", storyBg: "/prints/7veus- incio-portrait.png", whatsapp: `Conheces Os 7 Véus do Despertar?\n\nFiz um teste gratuito — 3 minutos, 7 perguntas — que te mostra qual dos 7 véus mais te influencia neste momento.\n\nNão dá respostas. Dá perguntas.\n\nhttps://seteveus.space/recursos/teste\n\nSe quiseres saber mais: https://seteveus.space\n\n— Vivianne` },
-  { carouselId: "carousel-7-veus-resumo", hook: "Os 7 véus que te escondem de ti mesma.", storyBg: "/prints/7veus-dessolucao-portrait.png" },
+  { carouselId: "carousel-7-véus-resumo", hook: "Os 7 véus que te escondem de ti mesma.", storyBg: "/prints/7veus-dessolucao-portrait.png" },
   { carouselId: "carousel-como-funciona", hook: "Como funciona a experiência digital. 3 passos.", storyBg: "/prints/7veus-3niveis-portrait.png" },
-  { carouselId: "carousel-experiencia-vs-livro", hook: "Isto não é um livro. É uma experiência.", storyBg: "/prints/7veus-darkmode-portrait.png" },
-  { carouselId: "carousel-experiencia-digital-completa", hook: "O que está dentro da experiência digital?", storyBg: "/prints/dashboard-membro.jpeg", whatsapp: `Para quem já leu ou está a ler Os 7 Véus do Despertar:\n\nSabias que agora podes continuar a experiência no digital? Existe um diário reflexivo por capítulo, uma comunidade anónima de leitoras, e recursos exclusivos.\n\nSe compraste o livro, o acesso é gratuito:\nhttps://seteveus.space/pedir-codigo\n\nSe queres começar a experiência digital:\nhttps://seteveus.space/comprar/espelhos\n\n— Vivianne` },
+  { carouselId: "carousel-experiência-vs-livro", hook: "Isto não é um livro. É uma experiência.", storyBg: "/prints/7veus-darkmode-portrait.png" },
+  { carouselId: "carousel-experiência-digital-completa", hook: "O que está dentro da experiência digital?", storyBg: "/prints/dashboard-membro.jpeg", whatsapp: `Para quem já leu ou está a ler Os 7 Véus do Despertar:\n\nSabias que agora podes continuar a experiência no digital? Existe um diário reflexivo por capítulo, uma comunidade anónima de leitoras, e recursos exclusivos.\n\nSe compraste o livro, o acesso é gratuito:\nhttps://seteveus.space/pedir-codigo\n\nSe queres começar:\nhttps://seteveus.space/comprar/livro\n\n— Vivianne` },
   { hook: "Descanso." },
   { hook: "Descanso." },
-  // Semana 3 — Espelho da Ilusão + testemunhos
-  { carouselId: "carousel-espelho-ilusao", hook: "5 frases que mudam a forma como te vês.", storyBg: "/prints/leitura-capitulo.jpeg", whatsapp: `Uma novidade:\n\nO Espelho do Medo está quase pronto. É o segundo véu — e prometo que vai tocar em coisas que reconheces.\n\nSe já tens o livro físico e ainda não pediste o acesso digital, este é o momento ideal. Vais poder acompanhar o lançamento de perto.\n\nhttps://seteveus.space/pedir-codigo\n\n— Vivianne` },
+  // Semana 3 — Testemunhos + valor da experiência
+  { carouselId: "carousel-leitura-4-niveis", hook: "Um livro que se lê de 4 formas diferentes.", storyBg: "/prints/7veus-3niveis-portrait.png", whatsapp: `Sabias que o livro "Os 7 Véus do Despertar" pode ser lido de 4 formas diferentes na plataforma digital?\n\nCada véu tem 4 níveis de profundidade — desde uma leitura acessível até práticas de transformação pessoal.\n\nSe já tens o livro físico, o acesso é gratuito:\nhttps://seteveus.space/pedir-codigo\n\n— Vivianne` },
   { carouselId: "carousel-testemunhos", hook: "O que dizem as leitoras.", storyBg: "/prints/comunidade-reflexoes-leitoras.jpeg" },
-  { carouselId: "carousel-mae-filha", hook: "Há coisas que uma mãe nunca diz.", storyBg: "/prints/7veus-introdeveu-portrait.png" },
-  { carouselId: "carousel-pede-codigo", hook: "Lembrete: pede o teu código digital gratuito.", storyBg: "/prints/7veuspedircod-portrait.png", whatsapp: `Obrigada pelo interesse!\n\nPara pedir o teu código de acesso digital gratuito, é só preencher este formulário:\n\nhttps://seteveus.space/pedir-codigo\n\nDemora menos de 2 minutos. Recebes o código no teu email em até 24h.\n\nQualquer dúvida, diz-me.\n\n— Vivianne` },
+  { carouselId: "carousel-praticas-guiadas", hook: "Não é só ler. É parar, respirar, escrever.", storyBg: "/prints/7veus-introdeveu-portrait.png" },
+  { carouselId: "carousel-pede-código", hook: "Lembrete: pede o teu código digital gratuito.", storyBg: "/prints/7veuspedircod-portrait.png", whatsapp: `Obrigada pelo interesse!\n\nPara pedir o teu código de acesso digital gratuito, é só preencher este formulário:\n\nhttps://seteveus.space/pedir-codigo\n\nDemora menos de 2 minutos. Recebes o código no teu email em até 24h.\n\nQualquer dúvida, diz-me.\n\n— Vivianne` },
   { hook: "Descanso." },
   { hook: "Descanso." },
   { hook: "Descanso." },
-  // Semana 4 — Recursos + comunidade + lançamento Espelho do Medo
+  // Semana 4 — Recursos + comunidade + convite final
   { carouselId: "carousel-recursos-gratis", hook: "5 recursos gratuitos para começar a tua jornada.", storyBg: "/prints/quiz-qual-veu.jpeg" },
   { carouselId: "carousel-comunidade-ecos", hook: "Comunidade Ecos — onde as vozes se encontram.", storyBg: "/prints/comunidade-ecos-tabs.jpeg" },
-  { carouselId: "carousel-espelho-medo-coming", hook: "Espelho do Medo — em breve.", storyBg: "/images/espelho-medo.png", whatsapp: `Uma novidade:\n\nO Espelho do Medo está quase pronto. É o segundo véu — sobre tudo o que não fazes por medo.\n\nSe já tens o livro físico e ainda não pediste o acesso digital, este é o momento. Vais receber notificação quando lançar.\n\nhttps://seteveus.space/pedir-codigo\n\n— Vivianne` },
-  { carouselId: "carousel-funil-livro-fisico", hook: "Tens o livro? O teu livro abre portas que ainda não conheces.", storyBg: "/prints/7veus-3niveis-portrait.png" },
-  { carouselId: "carousel-experiencia-digital-completa", hook: "Tour completo: o que inclui o acesso digital.", storyBg: "/prints/experiencia-funcionalidades.jpeg" },
+  { carouselId: "carousel-carta-autora", hook: "Uma carta da autora sobre a experiência digital.", storyBg: "/images/mandala-7veus.png", whatsapp: `Uma mensagem pessoal:\n\nQuando escrevi Os 7 Véus do Despertar, sabia que o livro era apenas o início. A experiência digital nasceu para que não leias sozinha.\n\nHá um diário onde escreves o que sentes. Há práticas guiadas. Há uma comunidade anónima de mulheres que estão a atravessar os mesmos véus.\n\nSe já tens o livro físico, o acesso é gratuito:\nhttps://seteveus.space/pedir-codigo\n\n— Vivianne` },
+  { carouselId: "carousel-funil-livro-físico", hook: "Tens o livro? O teu livro abre portas que ainda não conheces.", storyBg: "/prints/7veus-3niveis-portrait.png" },
+  { carouselId: "carousel-experiência-digital-completa", hook: "Tour completo: o que inclui o acesso digital.", storyBg: "/prints/experiencia-funcionalidades.jpeg" },
   { hook: "Descanso." },
   { hook: "Descanso." },
 ];
@@ -235,15 +235,21 @@ export default function MarketingPage() {
 
   const today = useMemo(() => new Date(), []);
 
-  if (loading) {
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push("/entrar");
+    } else if (!loading && user && !AUTHOR_EMAILS.includes(user.email || "")) {
+      router.push("/membro");
+    }
+  }, [loading, user, router]);
+
+  if (loading || !user || !AUTHOR_EMAILS.includes(user.email || "")) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-cream">
         <div className="h-8 w-8 animate-spin rounded-full border-2 border-brown-200 border-t-sage" />
       </div>
     );
   }
-  if (!user) { router.push("/entrar"); return null; }
-  if (!AUTHOR_EMAILS.includes(user.email || "")) { router.push("/membro"); return null; }
 
   const weekStart = getWeekStart(selectedDate);
   const weekDates = Array.from({ length: 7 }, (_, i) => {
