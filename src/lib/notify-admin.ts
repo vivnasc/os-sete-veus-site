@@ -123,13 +123,16 @@ async function sendTelegramNotification(
     general: "ALERTA",
   };
 
-  let text = `*${icon[type] || "ALERTA"}*\n${title}\n\n${message}`;
+  const esc = (s: string | number) =>
+    String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+  let text = `<b>${esc(icon[type] || "ALERTA")}</b>\n${esc(title)}\n\n${esc(message)}`;
 
   if (details) {
     text += "\n";
     for (const [key, value] of Object.entries(details)) {
       if (value !== null && value !== undefined) {
-        text += `\n*${key}:* ${value}`;
+        text += `\n<b>${esc(key)}:</b> ${esc(value)}`;
       }
     }
   }
@@ -137,7 +140,7 @@ async function sendTelegramNotification(
   const hora = new Date().toLocaleString("pt-PT", {
     timeZone: "Africa/Maputo",
   });
-  text += `\n\n${hora}`;
+  text += `\n\n${esc(hora)}`;
 
   const res = await fetch(
     `https://api.telegram.org/bot${botToken}/sendMessage`,
@@ -147,7 +150,7 @@ async function sendTelegramNotification(
       body: JSON.stringify({
         chat_id: chatId,
         text,
-        parse_mode: "Markdown",
+        parse_mode: "HTML",
       }),
     }
   );
@@ -155,6 +158,18 @@ async function sendTelegramNotification(
   if (!res.ok) {
     const errBody = await res.text();
     console.error("[notify-admin] Telegram erro:", res.status, errBody);
+    // Fallback: tentar sem formatacao
+    await fetch(
+      `https://api.telegram.org/bot${botToken}/sendMessage`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: `${icon[type] || "ALERTA"}\n${title}\n\n${message}`,
+        }),
+      }
+    );
   }
 }
 
