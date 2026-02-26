@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -204,17 +204,19 @@ export default function GeradorPage() {
   const [showLogo, setShowLogo] = useState(true);
   const [exporting, setExporting] = useState(false);
 
-  // Auth
-  if (loading) {
+  // Auth — redirect via useEffect to avoid client-side crash on navigation
+  useEffect(() => {
+    if (!loading && (!user || !AUTHOR_EMAILS.includes(user.email || ""))) {
+      router.push("/entrar");
+    }
+  }, [loading, user, router]);
+
+  if (loading || !user || !AUTHOR_EMAILS.includes(user.email || "")) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-cream">
         <div className="h-8 w-8 animate-spin rounded-full border-4 border-sage border-t-transparent" />
       </div>
     );
-  }
-  if (!user || !AUTHOR_EMAILS.includes(user.email || "")) {
-    router.push("/entrar");
-    return null;
   }
 
   const fmt = FORMATS[format];
