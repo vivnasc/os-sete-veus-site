@@ -1,22 +1,10 @@
 import { createSupabaseAdminClient } from '@/lib/supabase-server'
 import { NextResponse } from 'next/server'
-import { notifyCodeRequest, notifyAdmin } from '@/lib/notify-admin'
+import { notifyCodeRequest } from '@/lib/notify-admin'
 
 export const dynamic = 'force-dynamic'
 
 const ADMIN_EMAILS = ["viv.saraiva@gmail.com"]
-
-/**
- * Gera codigo unico LIVRO-XXXXX
- */
-function generateCode(): string {
-  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-  let code = "LIVRO-";
-  for (let i = 0; i < 5; i++) {
-    code += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return code;
-}
 
 /**
  * POST /api/codes/request
@@ -24,11 +12,7 @@ function generateCode(): string {
  * Público (não precisa autenticação)
  * Usa admin client para bypassa RLS (anon não tem SELECT nesta tabela)
  *
- * Se comprovativo (proofUrl) foi enviado:
- *   → auto-gera codigo, cria conta, concede acesso imediato
- *   → notifica admin que foi auto-atendido
- * Se sem comprovativo:
- *   → cria pedido pendente para revisao manual
+ * Cria pedido pendente. Admin revê comprovativo e aprova no painel.
  */
 export async function POST(request: Request) {
   try {
@@ -54,35 +38,24 @@ export async function POST(request: Request) {
       )
     }
 
-    // Verifica se já existe pedido pendente ou aprovado para este email
+    // Verifica se já existe pedido pendente para este email
     const { data: existingRequest } = await adminClient
       .from('livro_code_requests')
       .select('id, status')
       .eq('email', email)
-      .in('status', ['pending', 'approved'])
+      .eq('status', 'pending')
       .single()
 
     if (existingRequest) {
-      if (existingRequest.status === 'approved') {
-        return NextResponse.json(
-          { error: 'Este email ja tem acesso concedido.' },
-          { status: 400 }
-        )
-      }
       return NextResponse.json(
-        { error: 'Já tens um pedido pendente. Vamos enviá-lo em breve!' },
+        {
+          error: 'Já tens um pedido pendente. Vamos enviá-lo em breve!',
+        },
         { status: 400 }
       )
     }
 
-    // --- AUTO-ATENDIMENTO: comprovativo enviado → acesso imediato ---
-    if (proofUrl) {
-      return await handleAutoApproval(adminClient, {
-        fullName, email, whatsapp, purchaseLocation, proofUrl,
-      })
-    }
-
-    // --- FLUXO MANUAL: sem comprovativo → pedido pendente ---
+    // Cria pedido via admin client (bypassa RLS)
     const { error: insertError } = await adminClient
       .from('livro_code_requests')
       .insert({
@@ -90,7 +63,7 @@ export async function POST(request: Request) {
         email,
         whatsapp: whatsapp || null,
         purchase_location: purchaseLocation || null,
-        proof_url: null,
+        proof_url: proofUrl || null,
         status: 'pending',
       })
 
@@ -102,12 +75,14 @@ export async function POST(request: Request) {
       )
     }
 
-    notifyCodeRequest({
+    // Notificar admin — AWAIT para garantir que o Vercel nao mata a funcao antes
+    await notifyCodeRequest({
       full_name: fullName,
       email,
       whatsapp: whatsapp || undefined,
       purchase_location: purchaseLocation || undefined,
-    }).catch(err => console.error('Erro ao notificar admin:', err))
+      proof_url: proofUrl || undefined,
+    })
 
     return NextResponse.json({
       success: true,
@@ -120,172 +95,6 @@ export async function POST(request: Request) {
       { status: 500 }
     )
   }
-}
-
-/**
- * Auto-atendimento: gera codigo, cria conta, concede acesso, notifica admin
- */
-async function handleAutoApproval(
-  adminClient: ReturnType<typeof createSupabaseAdminClient>,
-  data: {
-    fullName: string
-    email: string
-    whatsapp?: string
-    purchaseLocation?: string
-    proofUrl: string
-  }
-) {
-  const { fullName, email, whatsapp, purchaseLocation, proofUrl } = data
-  const normalizedEmail = email.toLowerCase().trim()
-
-  // 1. Gerar codigo unico
-  let code = ""
-  for (let attempt = 0; attempt < 10; attempt++) {
-    const candidate = generateCode()
-    const { data: existing } = await adminClient!
-      .from("livro_codes")
-      .select("id")
-      .eq("code", candidate)
-      .maybeSingle()
-    if (!existing) {
-      code = candidate
-      break
-    }
-  }
-
-  if (!code) {
-    return NextResponse.json(
-      { error: 'Erro ao gerar codigo. Tenta novamente.' },
-      { status: 500 }
-    )
-  }
-
-  // 2. Inserir codigo na tabela
-  const { data: insertedCode, error: codeInsertError } = await adminClient!
-    .from("livro_codes")
-    .insert({
-      code,
-      email: normalizedEmail,
-      status: "unused",
-      created_by: "auto",
-      notes: `Auto-atendimento: ${fullName}`,
-    })
-    .select()
-    .single()
-
-  if (codeInsertError) {
-    console.error("Erro ao inserir codigo:", codeInsertError)
-    return NextResponse.json(
-      { error: 'Erro ao gerar codigo de acesso.' },
-      { status: 500 }
-    )
-  }
-
-  // 3. Criar ou encontrar utilizador
-  let userId: string | null = null
-
-  const { data: existingUsers } = await adminClient!.auth.admin.listUsers()
-  const existingUser = existingUsers?.users?.find(
-    (u: { email?: string }) => u.email === normalizedEmail
-  )
-
-  if (existingUser) {
-    userId = existingUser.id
-  } else {
-    const { data: newUser, error: createError } =
-      await adminClient!.auth.admin.createUser({
-        email: normalizedEmail,
-        email_confirm: true,
-      })
-
-    if (createError || !newUser.user) {
-      console.error("Erro ao criar utilizador:", createError)
-      // Codigo ja foi gerado — guardar pedido como aprovado para admin resolver
-      return NextResponse.json(
-        { error: 'Erro ao criar conta. O teu codigo foi gerado — contacta-nos.' },
-        { status: 500 }
-      )
-    }
-    userId = newUser.user.id
-  }
-
-  // 4. Conceder acesso (has_book_access)
-  await adminClient!
-    .from("profiles")
-    .upsert(
-      { id: userId, email: normalizedEmail, has_book_access: true },
-      { onConflict: "id" }
-    )
-
-  // Verificacao: confirmar que o acesso foi concedido
-  await new Promise(resolve => setTimeout(resolve, 500))
-  const { data: verifyProfile } = await adminClient!
-    .from("profiles")
-    .select("has_book_access")
-    .eq("id", userId)
-    .single()
-
-  if (verifyProfile && !verifyProfile.has_book_access) {
-    await adminClient!
-      .from("profiles")
-      .update({ has_book_access: true })
-      .eq("id", userId)
-  }
-
-  // 5. Marcar codigo como usado
-  await adminClient!
-    .from("livro_codes")
-    .update({
-      status: "used",
-      used_at: new Date().toISOString(),
-      used_by: userId,
-    })
-    .eq("id", insertedCode.id)
-
-  // 6. Criar registo de compra
-  await adminClient!.from("purchases").insert({
-    user_id: userId,
-    product: "livro-codigo",
-    access_type_code: "livro-codigo",
-    granted_via: "livro_code",
-    granted_at: new Date().toISOString(),
-  })
-
-  // 7. Guardar pedido como aprovado
-  await adminClient!
-    .from('livro_code_requests')
-    .insert({
-      full_name: fullName,
-      email: normalizedEmail,
-      whatsapp: whatsapp || null,
-      purchase_location: purchaseLocation || null,
-      proof_url: proofUrl,
-      status: 'approved',
-      reviewed_at: new Date().toISOString(),
-      generated_code_id: insertedCode.id,
-    })
-
-  // 8. Notificar admin (Telegram)
-  notifyAdmin({
-    type: "code_redeemed",
-    title: "Auto-atendimento: codigo gerado e acesso concedido",
-    message: `${fullName} (${normalizedEmail}) enviou comprovativo e recebeu acesso automatico.`,
-    details: {
-      Nome: fullName,
-      Email: normalizedEmail,
-      Codigo: code,
-      WhatsApp: whatsapp || "—",
-      "Comprou em": purchaseLocation || "—",
-      Comprovativo: proofUrl,
-    },
-  }).catch(err => console.error('Erro ao notificar admin:', err))
-
-  return NextResponse.json({
-    success: true,
-    autoApproved: true,
-    code,
-    message: `Acesso concedido! O teu codigo e ${code}. Ja podes entrar com o teu email ${normalizedEmail}.`,
-  })
 }
 
 /**
