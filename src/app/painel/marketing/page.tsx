@@ -218,82 +218,54 @@ function StoryMockupPreview({ bgImage, title, scale }: { bgImage: string; title:
   );
 }
 
-// WhatsApp Status preview — looks like an actual WhatsApp status view
-function WhatsAppStatusPreview({ slide, bgImage, scale }: {
-  slide: CarouselSlide; bgImage?: string; scale: number;
+// WhatsApp Status image — clean 9:16 image, ready to download and post directly
+function WhatsAppStatusImage({ slide, bgImage, hook, scale }: {
+  slide: CarouselSlide; bgImage?: string; hook: string; scale: number;
 }) {
   const img = bgImage || slide.bgImage;
   return (
     <div className="relative overflow-hidden" style={{
       width: STORY_DIMS.w, height: STORY_DIMS.h,
       transform: `scale(${scale})`, transformOrigin: "top left",
-      backgroundColor: "#0b141a",
+      backgroundColor: "#075e54",
     }}>
-      {/* Main image — sharp, no blur */}
-      {img ? (
-        <img src={img} alt="" crossOrigin="anonymous"
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
-      ) : (
-        /* Solid background with centered text when no image */
-        <div style={{ position: "absolute", inset: 0, backgroundColor: slide.bg, display: "flex",
-          flexDirection: "column", justifyContent: "center", alignItems: "center",
-          padding: "160px 80px", textAlign: "center", color: slide.text }}>
-          {slide.title && (
-            <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 52,
-              lineHeight: 1.25, fontWeight: 700, whiteSpace: "pre-line", margin: 0 }}>{slide.title}</h2>
-          )}
-          {slide.body && (
-            <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 24, lineHeight: 1.7,
-              fontWeight: 300, whiteSpace: "pre-line", margin: "24px 0 0", opacity: 0.85 }}>{slide.body}</p>
-          )}
-        </div>
+      {/* Background image — sharp */}
+      {img && (
+        <>
+          <img src={img} alt="" crossOrigin="anonymous"
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.6) 100%)" }} />
+        </>
       )}
-      {/* Top gradient for UI elements */}
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 220,
-        background: "linear-gradient(180deg, rgba(0,0,0,0.7) 0%, transparent 100%)" }} />
-      {/* Status progress bar at very top */}
-      <div style={{ position: "absolute", top: 40, left: 32, right: 32, height: 4,
-        borderRadius: 2, backgroundColor: "rgba(255,255,255,0.3)" }}>
-        <div style={{ width: "100%", height: "100%", borderRadius: 2, backgroundColor: "#25D366" }} />
-      </div>
-      {/* Contact info row */}
-      <div style={{ position: "absolute", top: 64, left: 32, right: 32,
-        display: "flex", alignItems: "center", gap: 16 }}>
-        {/* Back arrow */}
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round"><path d="M15 18l-6-6 6-6" /></svg>
-        {/* Profile photo circle */}
-        <div style={{ width: 56, height: 56, borderRadius: "50%", backgroundColor: "#c9b896",
-          display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-          <span style={{ fontFamily: "system-ui, sans-serif", fontSize: 22, fontWeight: 700, color: "#3d3630" }}>V</span>
-        </div>
-        {/* Name + time */}
-        <div style={{ flex: 1 }}>
-          <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 22, fontWeight: 600,
-            color: "white", margin: 0 }}>Vivianne dos Santos</p>
-          <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 16,
-            color: "rgba(255,255,255,0.6)", margin: "4px 0 0" }}>Hoje, 09:12</p>
-        </div>
-        {/* Three dots */}
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="5" r="2" /><circle cx="12" cy="12" r="2" /><circle cx="12" cy="19" r="2" /></svg>
-      </div>
-      {/* Bottom gradient for CTA */}
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 280,
-        background: "linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 100%)" }} />
-      {/* Caption/CTA at bottom */}
-      <div style={{ position: "absolute", bottom: 80, left: 0, right: 0, textAlign: "center", padding: "0 60px" }}>
-        <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 28,
-          lineHeight: 1.3, color: "white", margin: 0 }}>
-          {slide.title?.split("\n")[0] || ""}
+      {/* Content — centred, personal */}
+      <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column",
+        justifyContent: "center", alignItems: "center", padding: "140px 72px", textAlign: "center" }}>
+        <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 20, fontWeight: 600,
+          letterSpacing: "0.1em", textTransform: "uppercase", color: "#25D366", margin: 0 }}>
+          Os Sete Veus
         </p>
-        <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 18, fontWeight: 500,
-          color: "#25D366", marginTop: 16, letterSpacing: "0.05em" }}>seteveus.space/pedir-codigo</p>
+        <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 48,
+          lineHeight: 1.25, fontWeight: 700, whiteSpace: "pre-line", margin: "32px 0 0",
+          color: "white" }}>
+          {hook}
+        </h2>
+        {slide.body && !img && (
+          <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 22, lineHeight: 1.7,
+            fontWeight: 300, whiteSpace: "pre-line", margin: "28px 0 0", opacity: 0.85,
+            color: "white" }}>{slide.body}</p>
+        )}
       </div>
-      {/* Reply bar at very bottom */}
-      <div style={{ position: "absolute", bottom: 16, left: 24, right: 24, height: 52,
-        borderRadius: 26, backgroundColor: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.15)",
-        display: "flex", alignItems: "center", padding: "0 20px" }}>
-        <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 18, color: "rgba(255,255,255,0.5)", margin: 0 }}>Responder</p>
+      {/* CTA at bottom */}
+      <div style={{ position: "absolute", bottom: 80, left: 0, right: 0, textAlign: "center", padding: "0 60px" }}>
+        <div style={{ display: "inline-block", backgroundColor: "#25D366", borderRadius: 12,
+          padding: "16px 40px" }}>
+          <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 20, fontWeight: 600,
+            color: "white", margin: 0 }}>seteveus.space/pedir-codigo</p>
+        </div>
       </div>
+      {/* Mandala watermark */}
+      <img src="/images/mandala-7veus.png" alt="" crossOrigin="anonymous"
+        style={{ position: "absolute", right: 40, top: 40, width: 72, height: 72, opacity: 0.15, objectFit: "contain" }} />
     </div>
   );
 }
@@ -425,13 +397,11 @@ export default function MarketingPage() {
   // Per-platform captions
   const igCaption = carousel?.caption || "";
   const fbCaption = toFacebook(igCaption);
-  const waCaption = dayContent?.whatsapp || stripHashtags(igCaption).replace(/seteveus\.space/g, "https://seteveus.space");
   const tkCaption = toTikTok(dayContent?.hook || "", igCaption);
 
   const platformCaptions = [
     { id: "ig", label: "Instagram", caption: igCaption, color: "#E1306C" },
     { id: "fb", label: "Facebook", caption: fbCaption, color: "#1877F2" },
-    { id: "wa", label: "WhatsApp", caption: waCaption, color: "#25D366" },
     { id: "tk", label: "TikTok / Reels", caption: tkCaption, color: "#000000" },
   ];
 
@@ -621,55 +591,28 @@ export default function MarketingPage() {
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                   </div>
                   <div>
-                    <p className="font-sans text-sm font-semibold text-white">WhatsApp</p>
-                    <p className="font-sans text-[0.55rem] text-[#8696a0]">Status + Broadcast</p>
+                    <p className="font-sans text-sm font-semibold text-white">WhatsApp Status</p>
+                    <p className="font-sans text-[0.55rem] text-[#8696a0]">Imagem pronta — descarrega e publica</p>
                   </div>
                 </div>
 
-                {/* WhatsApp Status mockup (9:16) — looks like real WhatsApp */}
-                <div>
-                  <p className="mb-2 font-sans text-[0.6rem] font-semibold uppercase tracking-wider text-[#25D366]">Status</p>
-                  <div className="mx-auto overflow-hidden rounded-xl"
-                    style={{ width: STORY_DIMS.w * storyScale, height: STORY_DIMS.h * storyScale }}>
-                    <div ref={waStatusRef}>
-                      <WhatsAppStatusPreview
-                        slide={carousel.slides[0]}
-                        bgImage={dayContent.storyBg}
-                        scale={storyScale}
-                      />
-                    </div>
+                {/* WhatsApp Status image — clean, ready to post */}
+                <div className="mx-auto overflow-hidden rounded-xl"
+                  style={{ width: STORY_DIMS.w * storyScale, height: STORY_DIMS.h * storyScale }}>
+                  <div ref={waStatusRef}>
+                    <WhatsAppStatusImage
+                      slide={carousel.slides[0]}
+                      bgImage={dayContent.storyBg}
+                      hook={dayContent.hook}
+                      scale={storyScale}
+                    />
                   </div>
-                  <button onClick={() => exportStory(waStatusRef, "wa-status")}
-                    disabled={exportingStory === "wa-status"}
-                    className="mt-2 w-full rounded-lg bg-[#25D366] py-2.5 font-sans text-xs font-medium text-white hover:bg-[#1da851]">
-                    {exportingStory === "wa-status" ? "..." : "Descarregar imagem para Status"}
-                  </button>
                 </div>
-
-                {/* WhatsApp Broadcast — chat bubble style */}
-                <div className="mt-4">
-                  <p className="mb-2 font-sans text-[0.6rem] font-semibold uppercase tracking-wider text-[#25D366]">Broadcast</p>
-                  {/* WhatsApp dark chat background */}
-                  <div className="rounded-xl p-3" style={{ backgroundColor: "#0b141a", backgroundImage: "url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23172520\" fill-opacity=\"0.6\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')" }}>
-                    {/* Green outgoing bubble */}
-                    <div className="ml-auto max-w-[85%] rounded-lg rounded-tr-none p-3" style={{ backgroundColor: "#005c4b" }}>
-                      <pre className="max-h-72 overflow-y-auto whitespace-pre-wrap font-sans text-[0.7rem] leading-relaxed text-[#e9edef]">
-                        {waCaption}
-                      </pre>
-                      <div className="mt-1 flex items-center justify-end gap-1">
-                        <span className="font-sans text-[0.5rem] text-[#8696a0]">09:12</span>
-                        {/* Double check */}
-                        <svg width="16" height="9" viewBox="0 0 16 9" fill="none"><path d="M1 4.5L4.5 8L11 1.5" stroke="#53bdeb" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M5 4.5L8.5 8L15 1.5" stroke="#53bdeb" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                      </div>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => copyText("wa-broadcast", waCaption)}
-                    className="mt-2 w-full rounded-lg bg-[#25D366] py-2.5 font-sans text-xs font-medium text-white hover:bg-[#1da851]"
-                  >
-                    {copiedId === "wa-broadcast" ? "Copiado!" : "Copiar texto para Broadcast"}
-                  </button>
-                </div>
+                <button onClick={() => exportStory(waStatusRef, "wa-status")}
+                  disabled={exportingStory === "wa-status"}
+                  className="mt-3 w-full rounded-xl bg-[#25D366] py-3 font-sans text-sm font-medium text-white hover:bg-[#1da851]">
+                  {exportingStory === "wa-status" ? "A descarregar..." : "Descarregar para Status"}
+                </button>
               </div>
 
               {/* ── Legendas (IG / FB / TK) ── */}
@@ -681,7 +624,7 @@ export default function MarketingPage() {
                 </div>
 
                 <div className="space-y-1">
-                  {platformCaptions.filter(p => p.id !== "wa").map((p) => (
+                  {platformCaptions.map((p) => (
                     <div key={p.id} className="overflow-hidden rounded-xl border border-brown-50">
                       <button
                         onClick={() => setOpenCaption(openCaption === p.id ? null : p.id)}
