@@ -102,6 +102,44 @@ function toTikTok(hook: string, igCaption: string): string {
   return `${firstLine}\n\n${hook}\n\nLink na bio.\n\n#autoconhecimento #livros #booktokmocambique #booktok #seteveus`;
 }
 
+// ─── MOBILE-FRIENDLY IMAGE SAVING ──────────────────────────────────────────
+
+function isMobile(): boolean {
+  if (typeof navigator === "undefined") return false;
+  return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+}
+
+async function saveImage(dataUrl: string, filename: string): Promise<void> {
+  // Convert data URL to blob
+  const res = await fetch(dataUrl);
+  const blob = await res.blob();
+
+  // Try native share on mobile (works on iOS + Android)
+  if (isMobile() && typeof navigator.share === "function" && typeof navigator.canShare === "function") {
+    const file = new File([blob], filename, { type: "image/png" });
+    if (navigator.canShare({ files: [file] })) {
+      try {
+        await navigator.share({ files: [file] });
+        return;
+      } catch {
+        // User cancelled or share failed — fall through
+      }
+    }
+  }
+
+  // Fallback: open in new tab (mobile) or trigger download (desktop)
+  if (isMobile()) {
+    const url = URL.createObjectURL(blob);
+    window.open(url, "_blank");
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+  } else {
+    const a = document.createElement("a");
+    a.download = filename;
+    a.href = dataUrl;
+    a.click();
+  }
+}
+
 // ─── SLIDE RENDERER ──────────────────────────────────────────────────────────
 
 function SlidePreview({ slide, index, scale, dims }: {
@@ -116,7 +154,7 @@ function SlidePreview({ slide, index, scale, dims }: {
     }}>
       {slide.bgImage && (
         <>
-          <img src={slide.bgImage} alt="" crossOrigin="anonymous"
+          <img src={slide.bgImage} alt="" 
             className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0" style={{ backgroundColor: slide.bg, opacity: 0.82 }} />
         </>
@@ -149,7 +187,7 @@ function SlidePreview({ slide, index, scale, dims }: {
           </div>
         </div>
       )}
-      <img src="/images/mandala-7veus.png" alt="" crossOrigin="anonymous"
+      <img src="/images/mandala-7veus.png" alt="" 
         style={{ position: "absolute", right: 44, top: 44, width: 80, height: 80, opacity: 0.12, objectFit: "contain" }} />
     </div>
   );
@@ -168,7 +206,7 @@ function SlidePreviewVertical({ slide, index, scale }: {
     }}>
       {slide.bgImage && (
         <>
-          <img src={slide.bgImage} alt="" crossOrigin="anonymous"
+          <img src={slide.bgImage} alt="" 
             className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0" style={{ backgroundColor: slide.bg, opacity: 0.82 }} />
         </>
@@ -206,7 +244,7 @@ function SlidePreviewVertical({ slide, index, scale }: {
       {/* Brand mark */}
       <div style={{ position: "absolute", left: 0, right: 0, top: 0, padding: "80px 90px 0", display: "flex",
         justifyContent: "flex-end" }}>
-        <img src="/images/mandala-7veus.png" alt="" crossOrigin="anonymous"
+        <img src="/images/mandala-7veus.png" alt="" 
           style={{ width: 80, height: 80, opacity: 0.12, objectFit: "contain" }} />
       </div>
     </div>
@@ -240,7 +278,7 @@ function StoryTextPreview({ slide, scale }: { slide: CarouselSlide; scale: numbe
             letterSpacing: "0.08em", textTransform: "uppercase", color: slide.accent, margin: 0 }}>{slide.footer}</p>
         </div>
       )}
-      <img src="/images/mandala-7veus.png" alt="" crossOrigin="anonymous"
+      <img src="/images/mandala-7veus.png" alt="" 
         style={{ position: "absolute", right: 40, top: 40, width: 80, height: 80, opacity: 0.12, objectFit: "contain" }} />
     </div>
   );
@@ -253,13 +291,13 @@ function StoryMockupPreview({ bgImage, title, scale }: { bgImage: string; title:
       transform: `scale(${scale})`, transformOrigin: "top left",
       backgroundColor: "#2a2420",
     }}>
-      <img src={bgImage} alt="" crossOrigin="anonymous"
+      <img src={bgImage} alt="" 
         style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.35 }} />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(42,36,32,0.7) 0%, rgba(42,36,32,0.4) 40%, rgba(42,36,32,0.7) 100%)" }} />
       <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)",
         width: 660, height: 1320, borderRadius: 48, overflow: "hidden",
         border: "6px solid rgba(255,255,255,0.15)", boxShadow: "0 40px 100px rgba(0,0,0,0.5)" }}>
-        <img src={bgImage} alt="" crossOrigin="anonymous"
+        <img src={bgImage} alt="" 
           style={{ width: "100%", height: "100%", objectFit: "cover" }} />
       </div>
       <div style={{ position: "absolute", top: 80, left: 0, right: 0, textAlign: "center", padding: "0 60px" }}>
@@ -274,7 +312,7 @@ function StoryMockupPreview({ bgImage, title, scale }: { bgImage: string; title:
         <p style={{ fontFamily: "system-ui, sans-serif", fontSize: 20, fontWeight: 600,
           color: "#c9b896", marginTop: 20, letterSpacing: "0.06em" }}>seteveus.space</p>
       </div>
-      <img src="/images/mandala-7veus.png" alt="" crossOrigin="anonymous"
+      <img src="/images/mandala-7veus.png" alt="" 
         style={{ position: "absolute", right: 40, top: 40, width: 72, height: 72, opacity: 0.1, objectFit: "contain" }} />
     </div>
   );
@@ -292,7 +330,7 @@ function WhatsAppStatusImage({ slide, bgImage, hook, scale }: {
     }}>
       {img && (
         <>
-          <img src={img} alt="" crossOrigin="anonymous"
+          <img src={img} alt="" 
             style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.6) 100%)" }} />
         </>
@@ -321,7 +359,7 @@ function WhatsAppStatusImage({ slide, bgImage, hook, scale }: {
             color: "white", margin: 0 }}>seteveus.space/pedir-codigo</p>
         </div>
       </div>
-      <img src="/images/mandala-7veus.png" alt="" crossOrigin="anonymous"
+      <img src="/images/mandala-7veus.png" alt="" 
         style={{ position: "absolute", right: 40, top: 40, width: 72, height: 72, opacity: 0.15, objectFit: "contain" }} />
     </div>
   );
@@ -372,59 +410,59 @@ export default function MarketingPage() {
   const storyScale = 200 / STORY_DIMS.h;
   const vertScale = 160 / STORY_DIMS.w;
 
+  const captureElement = useCallback(async (
+    el: HTMLElement, dims: { w: number; h: number }, filename: string
+  ) => {
+    const { toPng } = await import("html-to-image");
+    const orig = { t: el.style.transform, w: el.style.width, h: el.style.height };
+    el.style.transform = "none";
+    el.style.width = `${dims.w}px`;
+    el.style.height = `${dims.h}px`;
+    // Let the browser repaint at full size
+    await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+    try {
+      const dataUrl = await toPng(el, {
+        width: dims.w, height: dims.h, pixelRatio: 1, cacheBust: true,
+        skipAutoScale: true,
+        includeQueryParams: true,
+      });
+      await saveImage(dataUrl, filename);
+    } finally {
+      el.style.transform = orig.t;
+      el.style.width = orig.w;
+      el.style.height = orig.h;
+    }
+  }, []);
+
   const exportAll = useCallback(async () => {
     if (!carousel) return;
     setExporting(true);
-    const { toPng } = await import("html-to-image");
     for (let i = 0; i < carousel.slides.length; i++) {
       const wrapper = slideRefs.current[i];
       if (!wrapper) continue;
       const el = (wrapper.firstElementChild as HTMLElement) || wrapper;
-      const orig = { t: el.style.transform, w: el.style.width, h: el.style.height };
-      el.style.transform = "none";
-      el.style.width = `${DIMS.w}px`;
-      el.style.height = `${DIMS.h}px`;
       try {
-        const dataUrl = await toPng(el, { width: DIMS.w, height: DIMS.h, pixelRatio: 1, cacheBust: true });
-        const a = document.createElement("a");
-        a.download = `${carousel.id}-slide-${i + 1}.png`;
-        a.href = dataUrl;
-        a.click();
+        await captureElement(el, DIMS, `${carousel.id}-slide-${i + 1}.png`);
       } catch { /* skip */ }
-      el.style.transform = orig.t;
-      el.style.width = orig.w;
-      el.style.height = orig.h;
-      await new Promise((r) => setTimeout(r, 400));
+      await new Promise((r) => setTimeout(r, 500));
     }
     setExporting(false);
-  }, [carousel]);
+  }, [carousel, captureElement]);
 
   const exportAllVert = useCallback(async () => {
     if (!carousel) return;
     setExportingVert(true);
-    const { toPng } = await import("html-to-image");
     for (let i = 0; i < carousel.slides.length; i++) {
       const wrapper = vertSlideRefs.current[i];
       if (!wrapper) continue;
       const el = (wrapper.firstElementChild as HTMLElement) || wrapper;
-      const orig = { t: el.style.transform, w: el.style.width, h: el.style.height };
-      el.style.transform = "none";
-      el.style.width = `${STORY_DIMS.w}px`;
-      el.style.height = `${STORY_DIMS.h}px`;
       try {
-        const dataUrl = await toPng(el, { width: STORY_DIMS.w, height: STORY_DIMS.h, pixelRatio: 1, cacheBust: true });
-        const a = document.createElement("a");
-        a.download = `${carousel.id}-vertical-${i + 1}.png`;
-        a.href = dataUrl;
-        a.click();
+        await captureElement(el, STORY_DIMS, `${carousel.id}-vertical-${i + 1}.png`);
       } catch { /* skip */ }
-      el.style.transform = orig.t;
-      el.style.width = orig.w;
-      el.style.height = orig.h;
-      await new Promise((r) => setTimeout(r, 400));
+      await new Promise((r) => setTimeout(r, 500));
     }
     setExportingVert(false);
-  }, [carousel]);
+  }, [carousel, captureElement]);
 
   useEffect(() => {
     if (!loading && !user) {
@@ -453,21 +491,9 @@ export default function MarketingPage() {
     if (!wrapper) return;
     const el = (wrapper.firstElementChild as HTMLElement) || wrapper;
     setExportingStory(name);
-    const orig = { t: el.style.transform, w: el.style.width, h: el.style.height };
-    el.style.transform = "none";
-    el.style.width = `${dims.w}px`;
-    el.style.height = `${dims.h}px`;
     try {
-      const { toPng } = await import("html-to-image");
-      const dataUrl = await toPng(el, { width: dims.w, height: dims.h, pixelRatio: 1, cacheBust: true });
-      const a = document.createElement("a");
-      a.download = `story-${name}.png`;
-      a.href = dataUrl;
-      a.click();
+      await captureElement(el, dims, `story-${name}.png`);
     } catch { /* skip */ }
-    el.style.transform = orig.t;
-    el.style.width = orig.w;
-    el.style.height = orig.h;
     setExportingStory(null);
   }
 
@@ -572,7 +598,7 @@ export default function MarketingPage() {
           <div className="py-4 space-y-4">
             {/* Week selector */}
             <div className="flex items-center gap-2">
-              <button onClick={() => { setCalWeek(Math.max(0, calWeek - 1)); setCalDay(0); setCalSlot(0); }}
+              <button onClick={() => { setCalWeek(Math.max(0, calWeek - 1)); setCalDay(0); }}
                 disabled={calWeek === 0}
                 className="p-1.5 text-cream/30 hover:text-cream/60 disabled:opacity-20">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6" /></svg>
@@ -581,7 +607,7 @@ export default function MarketingPage() {
                 <p className="font-serif text-base text-cream/90">Semana {allWeeks[calWeek].weekNumber}: {allWeeks[calWeek].title}</p>
                 <p className="font-sans text-[0.6rem] text-cream/40">{allWeeks[calWeek].subtitle}</p>
               </div>
-              <button onClick={() => { setCalWeek(Math.min(allWeeks.length - 1, calWeek + 1)); setCalDay(0); setCalSlot(0); }}
+              <button onClick={() => { setCalWeek(Math.min(allWeeks.length - 1, calWeek + 1)); setCalDay(0); }}
                 disabled={calWeek === allWeeks.length - 1}
                 className="p-1.5 text-cream/30 hover:text-cream/60 disabled:opacity-20">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6" /></svg>
@@ -592,7 +618,7 @@ export default function MarketingPage() {
             <div className="-mx-4 overflow-x-auto px-4 scrollbar-none">
               <div className="flex gap-1.5 min-w-max">
                 {allWeeks.map((w, wi) => (
-                  <button key={wi} onClick={() => { setCalWeek(wi); setCalDay(0); setCalSlot(0); }}
+                  <button key={wi} onClick={() => { setCalWeek(wi); setCalDay(0); }}
                     className={`rounded-lg px-2.5 py-1.5 font-sans text-[0.55rem] font-medium whitespace-nowrap transition-all ${
                       calWeek === wi ? "bg-[#c9b896]/20 text-[#c9b896]" : "text-cream/30 hover:text-cream/50"
                     }`}>
@@ -605,7 +631,7 @@ export default function MarketingPage() {
             {/* Day selector */}
             <div className="flex gap-1">
               {allWeeks[calWeek].days.map((d, di) => (
-                <button key={di} onClick={() => { setCalDay(di); setCalSlot(0); }}
+                <button key={di} onClick={() => { setCalDay(di); }}
                   className={`flex-1 rounded-xl py-2.5 text-center transition-all ${
                     calDay === di
                       ? "bg-[#c9b896] shadow-lg shadow-[#c9b896]/20"
