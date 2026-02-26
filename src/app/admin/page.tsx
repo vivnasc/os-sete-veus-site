@@ -214,13 +214,13 @@ export default function AdminPage() {
               icon="~"
             />
             <ActionCard
-              title="Codigos de Acesso"
-              description="Gerar e gerir codigos do livro"
+              title="Códigos de Acesso"
+              description="Gerar e gerir códigos do livro"
               href="/autora/codigos"
               icon="🔑"
             />
             <ActionCard
-              title="Conteudo Pronto"
+              title="Conteúdo Pronto"
               description="Posts prontos com imagem + legenda + WhatsApp"
               href="/painel/marketing"
               icon="📱"

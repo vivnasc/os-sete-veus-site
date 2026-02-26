@@ -29,13 +29,13 @@ export async function POST(request: Request) {
 
     const { code, resetUserAccess = true } = await request.json();
     if (!code) {
-      return NextResponse.json({ error: "Codigo obrigatorio" }, { status: 400 });
+      return NextResponse.json({ error: "Código obrigatório" }, { status: 400 });
     }
 
     const supabaseAdmin = createSupabaseAdminClient();
     if (!supabaseAdmin) {
       return NextResponse.json(
-        { error: "Servico temporariamente indisponivel" },
+        { error: "Serviço temporariamente indisponível" },
         { status: 503 }
       );
     }
@@ -49,7 +49,7 @@ export async function POST(request: Request) {
 
     if (!codeData) {
       return NextResponse.json(
-        { error: "Codigo nao encontrado" },
+        { error: "Código não encontrado" },
         { status: 404 }
       );
     }
@@ -86,11 +86,11 @@ export async function POST(request: Request) {
 
     if (error) {
       return NextResponse.json(
-        { error: "Erro ao resetar codigo: " + error.message },
+        { error: "Erro ao resetar código: " + error.message },
         { status: 500 }
       );
     }
-    actions.push("Codigo resetado para unused");
+    actions.push("Código resetado para unused");
 
     return NextResponse.json({
       ok: true,

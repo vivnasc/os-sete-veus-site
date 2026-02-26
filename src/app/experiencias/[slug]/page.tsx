@@ -49,13 +49,13 @@ const includes = [
   {
     icon: "&#9711;",
     title: "Respiração guiada",
-    desc: "3 ciclos entre cada capítulo. O corpo tambem precisa de pausa.",
+    desc: "3 ciclos entre cada capítulo. O corpo também precisa de pausa.",
     color: "#7a8c6e",
   },
   {
     icon: "&#9826;",
-    title: "Diario de reflexao",
-    desc: "Perguntas que ninguem te fez. As tuas respostas, guardadas para sempre.",
+    title: "Diário de reflexão",
+    desc: "Perguntas que ninguém te fez. As tuas respostas, guardadas para sempre.",
     color: "#b07a7a",
   },
   {
@@ -66,8 +66,8 @@ const includes = [
   },
   {
     icon: "&#9733;",
-    title: "Praticas integradas",
-    desc: "Exercicios que levam a experiencia das paginas para o teu dia.",
+    title: "Práticas integradas",
+    desc: "Exercícios que levam a experiência das páginas para o teu dia.",
     color: "#8aaaca",
   },
 ];
@@ -111,7 +111,7 @@ export default async function ExperienciaDetailPage({
               className="inline-flex items-center gap-1.5 font-sans text-[0.75rem] uppercase tracking-[0.15em] text-brown-400 transition-colors hover:text-brown-700"
             >
               <span aria-hidden="true">&larr;</span>
-              Voltar as experiencias
+              Voltar às experiências
             </Link>
           </ScrollReveal>
 
@@ -142,7 +142,7 @@ export default async function ExperienciaDetailPage({
                   className="font-sans text-[0.65rem] uppercase tracking-[0.25em]"
                   style={{ color: exp.color }}
                 >
-                  Experiencia {exp.number} de 7
+                  Experiência {exp.number} de 7
                 </p>
                 <h1 className="mt-3 font-serif text-4xl leading-tight text-brown-900 sm:text-5xl">
                   {exp.title}
@@ -170,7 +170,7 @@ export default async function ExperienciaDetailPage({
                         borderColor: exp.color,
                       }}
                     >
-                      Comecar &mdash; ${exp.priceUSD}
+                      Começar &mdash; ${exp.priceUSD}
                     </Link>
                   ) : (
                     <div className="inline-flex items-center gap-3 rounded-lg border border-brown-200 bg-white/60 px-5 py-3">
@@ -179,7 +179,7 @@ export default async function ExperienciaDetailPage({
                         style={{ backgroundColor: exp.color }}
                       />
                       <span className="font-sans text-sm text-brown-600">
-                        Lanca em{" "}
+                        Lança em{" "}
                         <strong className="text-brown-900">{exp.launchLabel}</strong>
                       </span>
                     </div>
@@ -198,11 +198,11 @@ export default async function ExperienciaDetailPage({
         <div className="mx-auto max-w-4xl">
           <ScrollReveal>
             <h2 className="text-center font-serif text-3xl text-brown-900">
-              O que esta experiencia inclui
+              O que esta experiência inclui
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-center leading-relaxed text-brown-600">
               Mais do que um livro. Uma jornada imersiva com{" "}
-              {exp.chapters} capitulos, praticas guiadas e o teu espelho pessoal.
+              {exp.chapters} capítulos, práticas guiadas e o teu espelho pessoal.
             </p>
           </ScrollReveal>
 
@@ -245,7 +245,7 @@ export default async function ExperienciaDetailPage({
                 className="font-sans text-[0.65rem] uppercase tracking-[0.25em]"
                 style={{ color: exp.color }}
               >
-                A historia
+                A história
               </p>
               <h3 className="mt-3 font-serif text-2xl leading-snug text-brown-900">
                 {exp.subtitle}
@@ -256,9 +256,9 @@ export default async function ExperienciaDetailPage({
 
               <div className="mt-8 grid gap-4 sm:grid-cols-3">
                 {[
-                  { n: exp.chapters, label: "capitulos" },
-                  { n: exp.practices, label: "praticas" },
-                  { n: 7, label: "reflexoes" },
+                  { n: exp.chapters, label: "capítulos" },
+                  { n: exp.practices, label: "práticas" },
+                  { n: 7, label: "reflexões" },
                 ].map((stat) => (
                   <div
                     key={stat.label}
@@ -296,23 +296,23 @@ export default async function ExperienciaDetailPage({
             {[
               {
                 step: "01",
-                title: "Le ao teu ritmo",
-                desc: "7 capitulos de ficcao literaria. Sem pressao. Sem prazos. Acesso para sempre.",
+                title: "Lê ao teu ritmo",
+                desc: "7 capítulos de ficção literária. Sem pressão. Sem prazos. Acesso para sempre.",
               },
               {
                 step: "02",
-                title: "Respira entre capitulos",
-                desc: "Respiracao guiada de 3 ciclos para integrar o que leste antes de avancar.",
+                title: "Respira entre capítulos",
+                desc: "Respiração guiada de 3 ciclos para integrar o que leste antes de avançar.",
               },
               {
                 step: "03",
-                title: "Escreve no teu diario",
-                desc: "Perguntas de reflexao que te devolvem as tuas proprias palavras. Guardadas para sempre.",
+                title: "Escreve no teu diário",
+                desc: "Perguntas de reflexão que te devolvem as tuas próprias palavras. Guardadas para sempre.",
               },
               {
                 step: "04",
                 title: "Descobre o teu Espelho",
-                desc: "No final, tudo o que escreveste e reunido num retrato unico de ti mesma.",
+                desc: "No final, tudo o que escreveste é reunido num retrato único de ti mesma.",
               },
             ].map((item, i) => (
               <ScrollReveal key={item.step} delay={0.1 * i}>
@@ -346,15 +346,15 @@ export default async function ExperienciaDetailPage({
           <div className="mx-auto max-w-3xl text-center">
             <ScrollReveal>
               <p className="font-serif text-2xl italic leading-relaxed text-cream">
-                &ldquo;Nao precisas de saber para onde vais.
+                &ldquo;Não precisas de saber para onde vais.
                 <br />
                 Precisas apenas de dar o primeiro passo.&rdquo;
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
               <p className="mx-auto mt-6 max-w-lg text-brown-300">
-                {exp.chapters} capitulos &middot; Respiracao guiada &middot;
-                Diario de reflexao &middot; O Teu Espelho. Acesso para sempre.
+                {exp.chapters} capítulos &middot; Respiração guiada &middot;
+                Diário de reflexão &middot; O Teu Espelho. Acesso para sempre.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.35}>
@@ -369,7 +369,7 @@ export default async function ExperienciaDetailPage({
                   href="/experiencias"
                   className="inline-block rounded-md border-2 border-brown-300 bg-transparent px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-200 transition-all hover:border-cream hover:text-cream"
                 >
-                  Ver todas as experiencias
+                  Ver todas as experiências
                 </Link>
               </div>
             </ScrollReveal>
@@ -389,8 +389,8 @@ export default async function ExperienciaDetailPage({
                 {exp.title} chega em {exp.launchLabel}
               </h2>
               <p className="mx-auto mt-4 max-w-lg leading-relaxed text-brown-300">
-                Junta-te a waitlist e seras a primeira a saber quando esta
-                experiencia estiver disponivel — com 20% de desconto no lancamento.
+                Junta-te à waitlist e serás a primeira a saber quando esta
+                experiência estiver disponível — com 20% de desconto no lançamento.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
@@ -404,7 +404,7 @@ export default async function ExperienciaDetailPage({
                   href="/experiencias"
                   className="inline-block rounded-md border-2 border-brown-300 bg-transparent px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-200 transition-all hover:border-cream hover:text-cream"
                 >
-                  Ver experiencias disponiveis
+                  Ver experiências disponíveis
                 </Link>
               </div>
             </ScrollReveal>
@@ -422,7 +422,7 @@ export default async function ExperienciaDetailPage({
             className="inline-flex items-center gap-1.5 font-sans text-sm text-brown-400 transition-colors hover:text-brown-700"
           >
             <span aria-hidden="true">&larr;</span>
-            Voltar as experiencias
+            Voltar às experiências
           </Link>
         </div>
       </section>

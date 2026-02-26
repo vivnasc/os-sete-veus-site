@@ -42,7 +42,7 @@ export default function GuiaoEscrita({ guiao, modoNoturno = false }: Props) {
         <p className={`text-xs font-sans mt-2 ${
           modoNoturno ? 'text-stone-500' : 'text-stone-400'
         }`}>
-          {guiao.tempo_sugerido} · {guiao.passos.length} passos · {aberto ? 'Fechar' : 'Comecar'}
+          {guiao.tempo_sugerido} · {guiao.passos.length} passos · {aberto ? 'Fechar' : 'Começar'}
         </p>
       </button>
 

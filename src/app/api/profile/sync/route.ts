@@ -31,7 +31,7 @@ export async function POST() {
     const supabaseAdmin = createSupabaseAdminClient();
     if (!supabaseAdmin) {
       return NextResponse.json(
-        { error: "Servico indisponivel" },
+        { error: "Serviço indisponível" },
         { status: 503 }
       );
     }

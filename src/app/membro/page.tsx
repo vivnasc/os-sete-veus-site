@@ -174,7 +174,7 @@ export default function MembroDashboard() {
               href="/painel/marketing"
               className="flex items-center gap-2 rounded-lg bg-gold/10 px-4 py-3 text-sm text-gold-dark transition-colors hover:bg-gold/20"
             >
-              <span className="font-medium">Conteudo Pronto</span>
+              <span className="font-medium">Conteúdo Pronto</span>
             </Link>
           </div>
         )}

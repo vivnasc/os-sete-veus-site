@@ -1,16 +1,16 @@
 import { generateOgImage, OG_SIZE } from "@/lib/og";
 
 export const alt =
-  "Os Sete Veus do Despertar ~ Historias que te devolvem a ti mesma";
+  "Os Sete Véus do Despertar ~ Histórias que te devolvem a ti mesma";
 export const size = OG_SIZE;
 export const contentType = "image/png";
 
 export default function Image() {
   return generateOgImage({
     label: "Por Vivianne dos Santos",
-    title: "Os Sete Veus do Despertar",
+    title: "Os Sete Véus do Despertar",
     subtitle:
-      "Historias que te devolvem a ti mesma. Leitura integrada, diario reflexivo, comunidade anonima.",
+      "Histórias que te devolvem a ti mesma. Leitura integrada, diário reflexivo, comunidade anónima.",
     url: "seteveus.space",
   });
 }

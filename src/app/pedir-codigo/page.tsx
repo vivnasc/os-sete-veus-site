@@ -27,13 +27,13 @@ export default function PedirCodigoPage() {
 
     // Validar tipo
     if (!['image/jpeg', 'image/png', 'image/webp', 'image/heic'].includes(file.type)) {
-      setErrorMessage('Tipo de ficheiro nao suportado. Usa JPG, PNG ou WebP.')
+      setErrorMessage('Tipo de ficheiro não suportado. Usa JPG, PNG ou WebP.')
       return
     }
 
     // Validar tamanho (5MB)
     if (file.size > 5 * 1024 * 1024) {
-      setErrorMessage('Ficheiro demasiado grande. Maximo 5MB.')
+      setErrorMessage('Ficheiro demasiado grande. Máximo 5MB.')
       return
     }
 
@@ -78,7 +78,7 @@ export default function PedirCodigoPage() {
       return data.url
     } catch (error: any) {
       console.error('Erro ao enviar foto:', error)
-      // Nao bloquear o pedido se o upload falhar
+      // Não bloquear o pedido se o upload falhar
       return null
     } finally {
       setIsUploading(false)
@@ -167,7 +167,7 @@ export default function PedirCodigoPage() {
                 <span className="mt-0.5 text-sage">~</span>
                 <div>
                   <p className="text-sm font-medium text-brown-900">
-                    Recebes o codigo por WhatsApp ou email
+                    Recebes o código por WhatsApp ou email
                   </p>
                   <p className="text-sm text-brown-600">{formData.email}</p>
                   {formData.whatsapp && (
@@ -179,27 +179,27 @@ export default function PedirCodigoPage() {
                 <span className="mt-0.5 text-sage">~</span>
                 <div>
                   <p className="text-sm font-medium text-brown-900">
-                    Usas o codigo para criar a tua conta
+                    Usas o código para criar a tua conta
                   </p>
-                  <p className="text-xs text-brown-600">Acesso imediato ao conteudo digital</p>
+                  <p className="text-xs text-brown-600">Acesso imediato ao conteúdo digital</p>
                 </div>
               </div>
             </div>
 
             <div className="mt-8 rounded-lg bg-sage/10 p-4">
               <p className="text-sm font-medium text-sage-dark">
-                Ja tens um codigo?
+                Já tens um código?
               </p>
               <Link
                 href="/registar-livro"
                 className="mt-3 inline-block rounded-lg bg-sage px-6 py-2.5 font-sans text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-sage-dark"
               >
-                Registar codigo
+                Registar código
               </Link>
             </div>
 
             <p className="mt-6 text-xs text-brown-500">
-              Qualquer duvida: +258 845 243 875
+              Qualquer dúvida: +258 845 243 875
             </p>
           </div>
         </div>
@@ -213,14 +213,14 @@ export default function PedirCodigoPage() {
       <section className="bg-cream px-6 py-20">
         <div className="mx-auto max-w-3xl text-center">
           <p className="font-sans text-[0.65rem] uppercase tracking-[0.25em] text-sage">
-            Livro fisico
+            Livro físico
           </p>
           <h1 className="mt-4 font-serif text-4xl leading-tight text-brown-900 sm:text-5xl">
-            Pede o teu codigo de acesso digital
+            Pede o teu código de acesso digital
           </h1>
           <p className="mx-auto mt-6 max-w-xl leading-relaxed text-brown-600">
-            Se compraste o livro fisico, tens direito a acesso gratuito
-            ao conteudo digital. Preenche o formulario abaixo.
+            Se compraste o livro físico, tens direito a acesso gratuito
+            ao conteúdo digital. Preenche o formulário abaixo.
           </p>
         </div>
       </section>
@@ -233,7 +233,7 @@ export default function PedirCodigoPage() {
               <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-sage text-sm font-bold text-white">
                 1
               </div>
-              <p className="mt-3 text-sm font-medium text-brown-900">Preenche o formulario</p>
+              <p className="mt-3 text-sm font-medium text-brown-900">Preenche o formulário</p>
               <p className="mt-1 text-xs text-brown-500">Nome, email e foto do livro</p>
             </div>
             <div className="rounded-xl border border-brown-100 bg-white p-5 text-center shadow-sm">
@@ -247,7 +247,7 @@ export default function PedirCodigoPage() {
               <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-brown-200 text-sm font-bold text-brown-700">
                 3
               </div>
-              <p className="mt-3 text-sm font-medium text-brown-900">Recebes o codigo</p>
+              <p className="mt-3 text-sm font-medium text-brown-900">Recebes o código</p>
               <p className="mt-1 text-xs text-brown-500">Por WhatsApp ou email</p>
             </div>
           </div>
@@ -259,7 +259,7 @@ export default function PedirCodigoPage() {
         <div className="mx-auto max-w-2xl">
           <div className="overflow-hidden rounded-2xl border-2 border-brown-200 bg-white shadow-lg">
             <div className="bg-sage px-6 py-4">
-              <h2 className="font-serif text-xl text-white">Pedir codigo de acesso</h2>
+              <h2 className="font-serif text-xl text-white">Pedir código de acesso</h2>
             </div>
             <form onSubmit={handleSubmit} className="p-8">
               {submitStatus === 'error' && (
@@ -302,7 +302,7 @@ export default function PedirCodigoPage() {
                 {/* WhatsApp */}
                 <div>
                   <label htmlFor="whatsapp" className="block text-sm font-medium text-brown-900">
-                    WhatsApp <span className="text-xs text-brown-400">(para receberes o codigo mais rapido)</span>
+                    WhatsApp <span className="text-xs text-brown-400">(para receberes o código mais rápido)</span>
                   </label>
                   <input
                     type="tel"
@@ -333,7 +333,7 @@ export default function PedirCodigoPage() {
                     <option value="">Seleciona...</option>
                     <option value="livraria">Livraria</option>
                     <option value="online">Online</option>
-                    <option value="evento">Evento/Lancamento</option>
+                    <option value="evento">Evento/Lançamento</option>
                     <option value="whatsapp">Encomenda via WhatsApp</option>
                     <option value="other">Outro</option>
                   </select>
@@ -418,22 +418,22 @@ export default function PedirCodigoPage() {
                   ? 'A enviar foto...'
                   : isSubmitting
                     ? 'A enviar pedido...'
-                    : 'Pedir codigo de acesso'}
+                    : 'Pedir código de acesso'}
               </button>
             </form>
           </div>
 
           {/* Ja tens codigo */}
           <div className="mt-6 rounded-xl border border-sage/30 bg-sage/5 p-6 text-center">
-            <p className="text-sm font-medium text-brown-900">Ja tens um codigo?</p>
+            <p className="text-sm font-medium text-brown-900">Já tens um código?</p>
             <p className="mt-1 text-xs text-brown-600">
-              Se ja recebeste o teu codigo LIVRO-XXXXX, regista-o directamente
+              Se já recebeste o teu código LIVRO-XXXXX, regista-o directamente
             </p>
             <Link
               href="/registar-livro"
               className="mt-3 inline-block rounded-lg border-2 border-sage bg-transparent px-6 py-2.5 font-sans text-sm font-medium uppercase tracking-wider text-sage transition-all hover:bg-sage hover:text-white"
             >
-              Registar codigo
+              Registar código
             </Link>
           </div>
         </div>
@@ -447,31 +447,31 @@ export default function PedirCodigoPage() {
           </h2>
           <div className="mt-8 space-y-4">
             <div className="rounded-lg bg-white p-6 shadow-sm">
-              <p className="font-medium text-brown-900">Quanto tempo demora a receber o codigo?</p>
+              <p className="font-medium text-brown-900">Quanto tempo demora a receber o código?</p>
               <p className="mt-2 text-sm text-brown-600">
-                Normalmente enviamos o codigo em ate 24 horas (dias uteis). Se for urgente,
+                Normalmente enviamos o código em até 24 horas (dias úteis). Se for urgente,
                 contacta-nos por WhatsApp.
               </p>
             </div>
             <div className="rounded-lg bg-white p-6 shadow-sm">
               <p className="font-medium text-brown-900">Preciso de enviar foto?</p>
               <p className="mt-2 text-sm text-brown-600">
-                Nao e obrigatorio, mas ajuda a verificar mais rapido. Podes tirar uma foto
+                Não é obrigatório, mas ajuda a verificar mais rápido. Podes tirar uma foto
                 ao teu livro ou ao recibo de compra.
               </p>
             </div>
             <div className="rounded-lg bg-white p-6 shadow-sm">
-              <p className="font-medium text-brown-900">E se comprei ha muito tempo?</p>
+              <p className="font-medium text-brown-900">E se comprei há muito tempo?</p>
               <p className="mt-2 text-sm text-brown-600">
-                Sem problema! Todos os livros fisicos tem direito ao acesso digital, nao importa
+                Sem problema! Todos os livros físicos têm direito ao acesso digital, não importa
                 quando compraste.
               </p>
             </div>
             <div className="rounded-lg bg-white p-6 shadow-sm">
               <p className="font-medium text-brown-900">O que recebo com o acesso digital?</p>
               <p className="mt-2 text-sm text-brown-600">
-                Recebes acesso completo ao livro &ldquo;Os 7 Veus do Despertar&rdquo; em formato digital,
-                incluindo a Comunidade dos Sete Veus.
+                Recebes acesso completo ao livro &ldquo;Os 7 Véus do Despertar&rdquo; em formato digital,
+                incluindo a Comunidade dos Sete Véus.
               </p>
             </div>
           </div>
@@ -488,7 +488,7 @@ export default function PedirCodigoPage() {
             Contacta-nos e envia foto do livro ou recibo
           </p>
           <a
-            href="https://wa.me/258845243875?text=Ola! Comprei o livro fisico e quero o codigo de acesso digital"
+            href="https://wa.me/258845243875?text=Olá! Comprei o livro físico e quero o código de acesso digital"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 inline-flex items-center gap-3 rounded-lg border-2 border-[#25D366] bg-[#25D366] px-8 py-3.5 font-sans text-sm font-bold uppercase tracking-wider text-white shadow-md transition-all hover:bg-[#1ea952]"

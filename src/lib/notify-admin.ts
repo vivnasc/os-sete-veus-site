@@ -21,11 +21,11 @@ const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 export type NotificationType =
   | "payment_proof"      // Comprovativo de pagamento recebido
   | "payment_created"    // Novo pedido de pagamento criado
-  | "code_request"       // Novo pedido de codigo do livro fisico
-  | "code_redeemed"      // Codigo LIVRO-XXXXX resgatado
+  | "code_request"       // Novo pedido de código do livro físico
+  | "code_redeemed"      // Código LIVRO-XXXXX resgatado
   | "special_link_used"  // Link especial usado
   | "new_member"         // Novo membro registado
-  | "general";           // Notificacao generica
+  | "general";           // Notificação genérica
 
 type NotificationData = {
   type: NotificationType;
@@ -58,7 +58,7 @@ export async function notifyAdmin(data: NotificationData): Promise<void> {
       });
     }
   } catch (err) {
-    console.error("[notify-admin] Erro ao guardar notificacao:", err);
+    console.error("[notify-admin] Erro ao guardar notificação:", err);
   }
 
   // 2. Enviar via Telegram bot (se configurado)
@@ -205,9 +205,9 @@ export async function notifyPaymentProof(payment: {
     details: {
       Email: payment.user_email,
       Valor: `${payment.amount} ${payment.currency}`,
-      Metodo: payment.payment_method,
+      Método: payment.payment_method,
       Produto: payment.access_type_code,
-      Transacao: payment.transaction_id || payment.mpesa_reference || "—",
+      Transação: payment.transaction_id || payment.mpesa_reference || "—",
     },
   });
 }
@@ -226,7 +226,7 @@ export async function notifyPaymentCreated(payment: {
     details: {
       Email: payment.user_email,
       Valor: `${payment.amount} ${payment.currency}`,
-      Metodo: payment.payment_method,
+      Método: payment.payment_method,
       Produto: payment.access_type_code,
     },
   });
@@ -240,8 +240,8 @@ export async function notifyCodeRequest(request: {
 }) {
   await notifyAdmin({
     type: "code_request",
-    title: "Novo pedido de codigo",
-    message: `${request.full_name} (${request.email}) pede codigo do livro fisico.`,
+    title: "Novo pedido de código",
+    message: `${request.full_name} (${request.email}) pede código do livro físico.`,
     details: {
       Nome: request.full_name,
       Email: request.email,
@@ -257,11 +257,11 @@ export async function notifyCodeRedeemed(data: {
 }) {
   await notifyAdmin({
     type: "code_redeemed",
-    title: "Codigo resgatado",
-    message: `${data.email} resgatou o codigo ${data.code} e ganhou acesso.`,
+    title: "Código resgatado",
+    message: `${data.email} resgatou o código ${data.code} e ganhou acesso.`,
     details: {
       Email: data.email,
-      Codigo: data.code,
+      Código: data.code,
     },
   });
 }

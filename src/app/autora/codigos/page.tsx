@@ -115,38 +115,38 @@ export default function AutoraCodigosPage() {
   const buildWhatsAppUrl = (phone: string, code: string, name: string) => {
     const cleanPhone = phone.replace(/[^0-9+]/g, '').replace(/^\+/, '')
     const message = encodeURIComponent(
-      `Ola ${name}!\n\n` +
-      `O teu pedido de codigo de acesso digital foi aprovado.\n\n` +
-      `O teu codigo: *${code}*\n\n` +
+      `Olá ${name}!\n\n` +
+      `O teu pedido de código de acesso digital foi aprovado.\n\n` +
+      `O teu código: *${code}*\n\n` +
       `Para activar o acesso:\n` +
       `1. Vai a seteveus.space/registar-livro\n` +
-      `2. Insere o codigo ${code}\n` +
+      `2. Insere o código ${code}\n` +
       `3. Coloca o teu email e cria uma password\n` +
       `4. Acesso imediato!\n\n` +
-      `Qualquer duvida, estou aqui.`
+      `Qualquer dúvida, estou aqui.`
     )
     return `https://wa.me/${cleanPhone}?text=${message}`
   }
 
   const buildEmailBody = (code: string, name: string) => {
-    const subject = encodeURIComponent('O teu codigo de acesso digital - Os Sete Veus')
+    const subject = encodeURIComponent('O teu código de acesso digital - Os Sete Véus')
     const body = encodeURIComponent(
-      `Ola ${name},\n\n` +
-      `O teu pedido de codigo de acesso digital foi aprovado.\n\n` +
-      `O teu codigo: ${code}\n\n` +
+      `Olá ${name},\n\n` +
+      `O teu pedido de código de acesso digital foi aprovado.\n\n` +
+      `O teu código: ${code}\n\n` +
       `Para activar o acesso:\n` +
       `1. Vai a seteveus.space/registar-livro\n` +
-      `2. Insere o codigo ${code}\n` +
+      `2. Insere o código ${code}\n` +
       `3. Coloca o teu email e cria uma password\n` +
       `4. Acesso imediato!\n\n` +
-      `Qualquer duvida, responde a este email.\n\n` +
+      `Qualquer dúvida, responde a este email.\n\n` +
       `Com carinho,\nVivianne`
     )
     return `mailto:?subject=${subject}&body=${body}`
   }
 
   const handleApprove = async (request: CodeRequest) => {
-    if (!confirm(`Aprovar pedido de ${request.full_name} e gerar codigo?`)) return
+    if (!confirm(`Aprovar pedido de ${request.full_name} e gerar código?`)) return
 
     try {
       const res = await fetch('/api/codes/approve', {
@@ -176,7 +176,7 @@ export default function AutoraCodigosPage() {
   }
 
   const handleReject = async (requestId: string) => {
-    const reason = prompt('Motivo da rejeicao (opcional):')
+    const reason = prompt('Motivo da rejeição (opcional):')
     if (reason === null) return // Cancelou
 
     try {
@@ -222,18 +222,18 @@ export default function AutoraCodigosPage() {
         setManualNotes('')
         loadData()
       } else {
-        alert('Erro ao gerar codigo: ' + data.error)
+        alert('Erro ao gerar código: ' + data.error)
       }
     } catch (error) {
-      console.error('Erro ao gerar codigo:', error)
-      alert('Erro ao gerar codigo')
+      console.error('Erro ao gerar código:', error)
+      alert('Erro ao gerar código')
     } finally {
       setIsGenerating(false)
     }
   }
 
   const handleResetCode = async (code: string) => {
-    if (!confirm(`Resetar codigo ${code}?\n\nIsto vai:\n- Marcar o codigo como disponivel\n- Remover o acesso do utilizador que o usou\n- Apagar o registo de compra\n\nPode ser usado novamente para testar o fluxo completo.`)) return
+    if (!confirm(`Resetar código ${code}?\n\nIsto vai:\n- Marcar o código como disponível\n- Remover o acesso do utilizador que o usou\n- Apagar o registo de compra\n\nPode ser usado novamente para testar o fluxo completo.`)) return
 
     try {
       const res = await fetch('/api/codes/reset', {
@@ -251,7 +251,7 @@ export default function AutoraCodigosPage() {
         alert('Erro ao resetar: ' + (data.error || 'Erro desconhecido'))
       }
     } catch {
-      alert('Erro de ligacao')
+      alert('Erro de ligação')
     }
   }
 
@@ -286,10 +286,10 @@ export default function AutoraCodigosPage() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="font-serif text-3xl text-brown-900">
-            Gestao de Codigos
+            Gestão de Códigos
           </h1>
           <p className="mt-2 text-sm text-brown-600">
-            Pedidos de codigo de acesso ao livro digital
+            Pedidos de código de acesso ao livro digital
           </p>
         </div>
 
@@ -299,7 +299,7 @@ export default function AutoraCodigosPage() {
             <div className="flex items-start justify-between">
               <div>
                 <p className="font-serif text-lg text-green-900">
-                  Codigo gerado para {recentlyApproved.fullName}
+                  Código gerado para {recentlyApproved.fullName}
                 </p>
                 <div className="mt-3 flex items-center gap-3">
                   <code className="rounded bg-white px-4 py-2 font-mono text-xl font-bold text-brown-900 shadow-sm">
@@ -323,7 +323,7 @@ export default function AutoraCodigosPage() {
               </button>
             </div>
 
-            <p className="mt-4 text-sm font-medium text-green-800">Envia o codigo:</p>
+            <p className="mt-4 text-sm font-medium text-green-800">Envia o código:</p>
             <div className="mt-3 flex flex-wrap gap-3">
               {recentlyApproved.whatsapp && (
                 <a
@@ -366,7 +366,7 @@ export default function AutoraCodigosPage() {
         {/* Estatisticas */}
         <div className="mb-8 grid gap-4 sm:grid-cols-4">
           <div className="rounded-lg bg-white p-5 shadow-sm">
-            <p className="text-sm font-medium text-brown-600">Total Codigos</p>
+            <p className="text-sm font-medium text-brown-600">Total Códigos</p>
             <p className="mt-2 font-serif text-3xl font-bold text-brown-900">
               {stats.total}
             </p>
@@ -421,7 +421,7 @@ export default function AutoraCodigosPage() {
                 : 'text-brown-600 hover:text-brown-900'
             }`}
           >
-            Todos os Codigos
+            Todos os Códigos
           </button>
         </div>
 
@@ -502,7 +502,7 @@ export default function AutoraCodigosPage() {
           <div className="max-w-2xl">
             <div className="rounded-lg bg-white p-8 shadow-sm">
               <h2 className="font-serif text-xl text-brown-900">
-                Gerar codigo manualmente
+                Gerar código manualmente
               </h2>
               <p className="mt-2 text-sm text-brown-600">
                 Para clientes que contactaram via WhatsApp ou pessoalmente
@@ -547,14 +547,14 @@ export default function AutoraCodigosPage() {
                   disabled={isGenerating}
                   className="w-full rounded-lg bg-sage px-6 py-3 font-sans text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-sage-dark disabled:opacity-50"
                 >
-                  {isGenerating ? 'Gerando...' : 'Gerar codigo unico'}
+                  {isGenerating ? 'Gerando...' : 'Gerar código único'}
                 </button>
               </form>
 
               {generatedCode && (
                 <div className="mt-6 rounded-lg border-2 border-green-200 bg-green-50 p-6">
                   <p className="text-sm font-medium text-green-900">
-                    Codigo gerado com sucesso!
+                    Código gerado com sucesso!
                   </p>
                   <div className="mt-3 flex items-center gap-3">
                     <code className="flex-1 rounded bg-white px-4 py-3 font-mono text-lg font-bold text-brown-900">
@@ -607,7 +607,7 @@ export default function AutoraCodigosPage() {
                     : 'bg-white text-brown-700 hover:bg-brown-50'
                 }`}
               >
-                Nao usados
+                Não usados
               </button>
               <button
                 onClick={() => setFilter('used')}
@@ -627,7 +627,7 @@ export default function AutoraCodigosPage() {
                 <thead className="bg-brown-50">
                   <tr>
                     <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-brown-700">
-                      Codigo
+                      Código
                     </th>
                     <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-brown-700">
                       Email
@@ -639,7 +639,7 @@ export default function AutoraCodigosPage() {
                       Data
                     </th>
                     <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-brown-700">
-                      Accoes
+                      Acções
                     </th>
                   </tr>
                 </thead>
@@ -647,7 +647,7 @@ export default function AutoraCodigosPage() {
                   {allCodes.length === 0 ? (
                     <tr>
                       <td colSpan={5} className="px-4 py-8 text-center text-brown-600">
-                        Nenhum codigo gerado ainda
+                        Nenhum código gerado ainda
                       </td>
                     </tr>
                   ) : (
