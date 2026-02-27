@@ -505,7 +505,7 @@ export default function AutoraCodigosPage() {
                 Gerar código manualmente
               </h2>
               <p className="mt-2 text-sm text-brown-600">
-                Para clientes que contactaram via WhatsApp ou pessoalmente
+                Para clientes que contactaram via Telegram ou pessoalmente
               </p>
 
               <form onSubmit={handleGenerateManual} className="mt-6 space-y-4">
