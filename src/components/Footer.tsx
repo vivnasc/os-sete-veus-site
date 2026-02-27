@@ -35,6 +35,7 @@ export default function Footer() {
               <Link href="/recursos" className="text-sm text-brown-300 hover:text-cream">Recursos Gratuitos</Link>
               <Link href="/livro-fisico" className="text-sm text-brown-300 hover:text-cream">Livro Físico</Link>
               <Link href="/pedir-codigo" className="text-sm text-brown-300 hover:text-cream">Pedir código de acesso</Link>
+              <Link href="/contacto" className="text-sm text-brown-300 hover:text-cream">Contacto</Link>
             </nav>
           </div>
 
