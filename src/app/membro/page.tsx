@@ -31,6 +31,7 @@ export default function MembroDashboard() {
   const [espelhoData, setEspelhoData] = useState<EspelhoInfo[]>([]);
   const [syncing, setSyncing] = useState(false);
   const [syncAttempted, setSyncAttempted] = useState(false);
+  const [payments, setPayments] = useState<{ id: string; status: string; amount: number; currency: string; access_type_code: string; payment_method: string; created_at: string }[]>([]);
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -60,7 +61,7 @@ export default function MembroDashboard() {
         return;
       }
 
-      const [readingRes, journalRes] = await Promise.all([
+      const [readingRes, journalRes, paymentsRes] = await Promise.all([
         supabase
           .from("reading_progress")
           .select("chapter_slug, completed")
@@ -70,6 +71,11 @@ export default function MembroDashboard() {
           .select("chapter_slug")
           .eq("user_id", userId)
           .neq("content", ""),
+        supabase
+          .from("payments")
+          .select("id, status, amount, currency, access_type_code, payment_method, created_at")
+          .eq("user_id", userId)
+          .order("created_at", { ascending: false }),
       ]);
 
       if (readingRes.data) {
@@ -82,6 +88,10 @@ export default function MembroDashboard() {
 
       if (journalRes.data) {
         setJournalCount(journalRes.data.length);
+      }
+
+      if (paymentsRes.data) {
+        setPayments(paymentsRes.data);
       }
     } catch {
       // Falha na ligacao ao Supabase
@@ -601,6 +611,72 @@ export default function MembroDashboard() {
         {/* Referral Prompt */}
         {!loading && (
           <ReferralPrompt chaptersCompleted={totalCompletedChapters} />
+        )}
+
+        {/* Meus pedidos */}
+        {!loading && payments.length > 0 && (
+          <div className="mt-8">
+            <h3 className="mb-4 font-sans text-[0.65rem] uppercase tracking-[0.25em] text-brown-400">
+              Meus pedidos
+            </h3>
+            <div className="space-y-3">
+              {payments.map((p) => (
+                <div
+                  key={p.id}
+                  className="flex items-center justify-between rounded-2xl border border-brown-100 bg-white p-4"
+                >
+                  <div className="flex items-center gap-3">
+                    <span
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-medium ${
+                        p.status === "confirmed"
+                          ? "bg-sage/10 text-sage"
+                          : p.status === "rejected"
+                            ? "bg-red-50 text-red-500"
+                            : "bg-gold/10 text-gold-dark"
+                      }`}
+                    >
+                      {p.status === "confirmed" ? "\u2713" : p.status === "rejected" ? "\u2717" : "\u25CB"}
+                    </span>
+                    <div>
+                      <p className="font-sans text-sm text-brown-800">
+                        {p.access_type_code.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}
+                      </p>
+                      <p className="font-sans text-xs text-brown-400">
+                        {p.payment_method === "bank_transfer"
+                          ? "Transferencia bancaria"
+                          : p.payment_method === "mpesa"
+                            ? "M-Pesa"
+                            : p.payment_method === "paypal"
+                              ? "PayPal"
+                              : p.payment_method}{" "}
+                        · {new Date(p.created_at).toLocaleDateString("pt-PT")}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-sans text-sm font-medium text-brown-800">
+                      {p.amount} {p.currency}
+                    </p>
+                    <p
+                      className={`font-sans text-xs ${
+                        p.status === "confirmed"
+                          ? "text-sage"
+                          : p.status === "rejected"
+                            ? "text-red-500"
+                            : "text-gold-dark"
+                      }`}
+                    >
+                      {p.status === "confirmed"
+                        ? "Confirmado"
+                        : p.status === "rejected"
+                          ? "Rejeitado"
+                          : "Pendente"}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         )}
 
         {/* Gentle quote */}

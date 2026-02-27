@@ -151,8 +151,8 @@ O Vercel faz deploy automático!
 
 ## 📱 CONTACTOS
 
-- **Email**: viv.saraiva@gmail.com
-- **WhatsApp**: wa.me/258845243875
+- **Email**: feedback@setecos.com
+- **Telegram**: t.me/viviannedossantos
 
 ---
 
@@ -214,6 +214,6 @@ WHERE code = 'colecao-sete-veus';
 
 ## 🎉 PRONTO!
 
-Sistema configurado! Qualquer dúvida, contacta via WhatsApp: wa.me/258845243875
+Sistema configurado! Qualquer dúvida, contacta via Telegram: t.me/viviannedossantos
 
 **Made with ❤️ by Claude Code**
