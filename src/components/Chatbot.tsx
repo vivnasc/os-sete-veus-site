@@ -105,7 +105,7 @@ const categories: Category[] = [
       },
       {
         q: "Que m\u00e9todos de pagamento aceitam?",
-        a: "Aceitamos PayPal (cart\u00e3o de cr\u00e9dito/d\u00e9bito internacional), transfer\u00eancia banc\u00e1ria (Millennium BIM Mo\u00e7ambique) e M-Pesa. Ap\u00f3s o pagamento, recebes um c\u00f3digo de acesso por email.",
+        a: "Aceitamos PayPal (cart\u00e3o de cr\u00e9dito/d\u00e9bito internacional) e M-Pesa. Ap\u00f3s o pagamento, recebes um c\u00f3digo de acesso por email.",
       },
       {
         q: "O acesso \u00e9 vital\u00edcio?",
@@ -113,7 +113,7 @@ const categories: Category[] = [
       },
       {
         q: "Aceitam pagamento em meticais?",
-        a: "Sim. Podes pagar por transfer\u00eancia banc\u00e1ria em meticais (Millennium BIM) ou por M-Pesa. Os pre\u00e7os em MZN est\u00e3o indicados em cada produto. Ap\u00f3s o pagamento, envias o comprovativo e recebes o c\u00f3digo de acesso.",
+        a: "Sim. Podes pagar por M-Pesa em meticais. Os pre\u00e7os em MZN est\u00e3o indicados em cada produto. Ap\u00f3s o pagamento, envias o comprovativo e recebes o c\u00f3digo de acesso.",
       },
     ],
   },

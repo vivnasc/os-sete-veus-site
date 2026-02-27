@@ -15,7 +15,7 @@ const FAQ_RAPIDA = [
   },
   {
     q: "Como funciona o pagamento?",
-    a: "Aceitamos PayPal, transferencia bancaria (Millennium BIM) e M-Pesa. Apos envio do comprovativo, confirmamos em 24h.",
+    a: "Aceitamos PayPal e M-Pesa. Apos envio do comprovativo, confirmamos em 24h.",
     link: { label: "Ver metodos", href: "/comprar" },
   },
 ];
