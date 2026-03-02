@@ -11,7 +11,7 @@ function BankTransferContent() {
   const router = useRouter();
 
   const [paymentId, setPaymentId] = useState<string | null>(null);
-  const [displayAmount, setDisplayAmount] = useState("1.885");
+  const [displayAmount, setDisplayAmount] = useState("1.200");
   const [productName, setProductName] = useState("");
   const [transactionId, setTransactionId] = useState("");
   const [notes, setNotes] = useState("");
