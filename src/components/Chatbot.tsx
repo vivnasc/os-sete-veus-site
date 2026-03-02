@@ -63,7 +63,7 @@ const categories: Category[] = [
       },
       {
         q: "Quanto custa?",
-        a: "O Espelho da Ilus\u00e3o custa $29 USD (1.885 MZN / R$119 / \u20ac27). Inclui acesso vital\u00edcio \u00e0 experi\u00eancia completa: 7 cap\u00edtulos, pr\u00e1ticas guiadas, di\u00e1rio de reflex\u00e3o e acesso \u00e0 comunidade.",
+        a: "O Espelho da Ilus\u00e3o custa $19 USD (1.200 MZN / R$79 / \u20ac18). Inclui acesso vital\u00edcio \u00e0 experi\u00eancia completa: 7 cap\u00edtulos, pr\u00e1ticas guiadas, di\u00e1rio de reflex\u00e3o e acesso \u00e0 comunidade.",
         link: { label: "Ver pre\u00e7os", href: "/comprar/espelhos" },
       },
     ],
@@ -84,7 +84,7 @@ const categories: Category[] = [
       },
       {
         q: "Quanto custa um N\u00f3?",
-        a: "O N\u00f3 da Heran\u00e7a custa $12 USD (780 MZN / R$49 / \u20ac11). \u00c9 o \u00fanico dispon\u00edvel de momento, e s\u00f3 se desbloqueia ap\u00f3s completares o Espelho da Ilus\u00e3o.",
+        a: "O N\u00f3 da Heran\u00e7a custa $8 USD (500 MZN / R$49 / \u20ac11). \u00c9 o \u00fanico dispon\u00edvel de momento, e s\u00f3 se desbloqueia ap\u00f3s completares o Espelho da Ilus\u00e3o.",
         link: { label: "Ver pre\u00e7os", href: "/comprar/espelhos" },
       },
       {
@@ -100,7 +100,7 @@ const categories: Category[] = [
     faqs: [
       {
         q: "Quais s\u00e3o os pre\u00e7os?",
-        a: "Espelho da Ilus\u00e3o: $29 USD (1.885 MZN). N\u00f3 da Heran\u00e7a: $12 USD (780 MZN). Livro f\u00edsico Os 7 V\u00e9us do Despertar: $23 USD (1.495 MZN). \u00c0 medida que novos Espelhos forem publicados, haver\u00e1 pacotes com desconto.",
+        a: "Espelho da Ilus\u00e3o: $19 USD (1.200 MZN). N\u00f3 da Heran\u00e7a: $8 USD (500 MZN). Livro f\u00edsico Os 7 V\u00e9us do Despertar: $23 USD (1.495 MZN). \u00c0 medida que novos Espelhos forem publicados, haver\u00e1 pacotes com desconto.",
         link: { label: "Ver pre\u00e7os", href: "/comprar" },
       },
       {

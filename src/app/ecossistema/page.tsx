@@ -450,9 +450,9 @@ export default function EcossistemaPage() {
                   Colecção Espelhos
                 </p>
                 <p className="mt-3 font-sans text-3xl font-bold text-brown-900">
-                  1.885 <span className="text-base font-normal text-brown-400">MZN</span>
+                  1.200 <span className="text-base font-normal text-brown-400">MZN</span>
                 </p>
-                <p className="mt-1 text-sm text-brown-500">$29 USD por Espelho</p>
+                <p className="mt-1 text-sm text-brown-500">$19 USD por Espelho</p>
                 <ul className="mt-6 flex-1 space-y-2">
                   {[
                     "7 capítulos de ficção imersiva",
@@ -460,7 +460,7 @@ export default function EcossistemaPage() {
                     "Diário de reflexão auto-guardado",
                     "Checklists interactivos",
                     "O Teu Espelho pessoal",
-                    "Nó correspondente ($12 USD)",
+                    "Nó correspondente ($8 USD)",
                     "Comunidade Ecos incluída",
                     "Acesso vitalício",
                   ].map((item) => (

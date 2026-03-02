@@ -96,7 +96,7 @@ export default function Home() {
                 </div>
                 <div className="mt-6 rounded-lg bg-sage/5 p-4">
                   <p className="text-sm text-brown-600">A partir de:</p>
-                  <p className="font-serif text-2xl font-bold text-brown-900">1.885 MZN <span className="text-sm font-normal text-brown-500">/ $29 USD</span></p>
+                  <p className="font-serif text-2xl font-bold text-brown-900">1.200 MZN <span className="text-sm font-normal text-brown-500">/ $19 USD</span></p>
                 </div>
                 <Link
                   href="/comprar/espelhos"

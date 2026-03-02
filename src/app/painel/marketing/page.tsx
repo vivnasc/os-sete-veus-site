@@ -592,6 +592,54 @@ export default function MarketingPage() {
       <div className="mx-auto max-w-lg px-4 pb-28">
 
         {/* ══════════════════════════════════════════════════════════════════════ */}
+        {/* ── BANNER LANCAMENTO ESPELHO DO MEDO ── */}
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {pageSection === "campanha" && (
+          <div className="py-4">
+            <div className="rounded-2xl border-2 border-[#8b9b8e]/40 bg-gradient-to-br from-[#8b9b8e]/15 to-[#5d7a6d]/10 p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="h-3 w-3 rounded-full bg-[#8b9b8e] animate-pulse" />
+                <p className="font-sans text-[0.6rem] font-bold uppercase tracking-[0.2em] text-[#8b9b8e]">Lancamento hoje</p>
+              </div>
+              <h2 className="font-serif text-xl font-bold text-cream/95">O Espelho do Medo</h2>
+              <p className="mt-1 font-sans text-sm text-cream/60">O segundo espelho esta disponivel. Conteudo de lancamento pronto abaixo.</p>
+              <div className="mt-4 grid gap-2">
+                <button
+                  onClick={() => { setPageSection("calendario"); setCalWeek(allWeeks.findIndex(w => w.weekNumber === 10)); setCalDay(0); }}
+                  className="rounded-xl bg-[#8b9b8e] px-4 py-2.5 text-center font-sans text-xs font-bold text-white transition-all hover:bg-[#7a8a7d]"
+                >
+                  Semana de lancamento (posts + broadcasts)
+                </button>
+                <button
+                  onClick={() => { setPageSection("calendario"); setCalWeek(allWeeks.findIndex(w => w.weekNumber === 11)); setCalDay(0); }}
+                  className="rounded-xl bg-[#8b9b8e]/20 px-4 py-2.5 text-center font-sans text-xs font-bold text-[#8b9b8e] transition-all hover:bg-[#8b9b8e]/30"
+                >
+                  Semana 2 — Aprofundamento
+                </button>
+                <button
+                  onClick={() => { setPageSection("posts"); }}
+                  className="rounded-xl border border-[#8b9b8e]/30 px-4 py-2.5 text-center font-sans text-xs font-semibold text-cream/50 transition-all hover:border-[#8b9b8e]/50 hover:text-cream/70"
+                >
+                  Ver carrosseis prontos (citacoes, territorios, sabias que?)
+                </button>
+              </div>
+              <div className="mt-4 rounded-xl bg-black/20 p-3">
+                <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#8b9b8e]/60 mb-1.5">Conteudo disponivel</p>
+                <div className="space-y-1 text-[0.6rem] text-cream/50">
+                  <p>Carrossel de lancamento (5 slides)</p>
+                  <p>Carrossel &quot;Sabias que?&quot; (6 slides)</p>
+                  <p>Carrossel de citacoes (6 slides)</p>
+                  <p>Carrossel 7 territorios do medo (9 slides)</p>
+                  <p>14 dias de conteudo diario (posts + broadcasts + stories)</p>
+                  <p>Legendas para Instagram, Facebook e TikTok</p>
+                  <p>Mensagens de broadcast Telegram prontas a copiar</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ══════════════════════════════════════════════════════════════════════ */}
         {/* ── CALENDARIO GERAL ── */}
         {/* ══════════════════════════════════════════════════════════════════════ */}
         {pageSection === "calendario" && (
