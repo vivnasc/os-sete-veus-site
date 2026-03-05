@@ -99,7 +99,7 @@ const MENSAGENS = [
   {
     label: "Modo automático",
     title: "Quantas decisões\ntomaste hoje\nsem escolher?",
-    subtitle: "O primeiro véu chama-se Ilusão.\nÉ o mais silencioso.\nE o mais comum.",
+    subtitle: "O Espelho da Ilusão é o primeiro.\nO mais silencioso.\nE o mais comum.",
     cta: "seteveus.space",
   },
   // ─── Experiência digital ───
@@ -181,7 +181,7 @@ const MENSAGENS = [
   },
   {
     label: "Teste gratuito",
-    title: "Qual véu\nte esconde?",
+    title: "E se comecasses\npor aqui?",
     subtitle: "Um teste de 3 minutos.\nNão dá respostas.\nDá perguntas.",
     cta: "seteveus.space/recursos/teste",
   },

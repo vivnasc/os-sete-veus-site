@@ -176,11 +176,11 @@ export default function TestePage() {
         <section className="bg-gradient-to-b from-brown-800 to-brown-900 px-6 py-24 sm:py-32">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="font-serif text-4xl leading-tight text-cream sm:text-5xl">
-              Qual véu te esconde?
+              E se comecasses por aqui?
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-brown-200">
-              Um teste breve e gentil para descobrires qual dos sete véus pode estar a esconder-te
-              de ti mesma. Sem julgamento. Apenas curiosidade.
+              Um teste breve e gentil para descobrires qual dos sete Espelhos pode fazer sentido
+              para ti neste momento. Sem julgamento. Apenas curiosidade.
             </p>
             <p className="mt-4 text-sm text-brown-400">14 perguntas &middot; 3 minutos</p>
             <button
@@ -242,7 +242,7 @@ export default function TestePage() {
                 <p className="text-lg leading-relaxed text-brown-700">{veu.description}</p>
                 <div className="mt-6 rounded-r-xl border-l-[3px] border-sage bg-cream-dark px-6 py-5">
                   <p className="font-serif italic leading-relaxed text-brown-700">
-                    &ldquo;Este véu não é um rótulo. É um convite para olhares com gentileza para esta parte de ti.&rdquo;
+                    &ldquo;Este Espelho não é um rótulo. É um convite para olhares com gentileza para esta parte de ti.&rdquo;
                   </p>
                 </div>
               </div>

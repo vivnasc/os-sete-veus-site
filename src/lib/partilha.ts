@@ -39,7 +39,7 @@ export function getShareText(
 ): string {
   const hashtags = getHashtagString(veuNumero, isEspelho)
   const attribution = source || `Os Sete Véus do Despertar — Véu ${veuNumero}: ${VEU_NAMES[veuNumero]}`
-  return `"${quote}"\n\n— ${attribution}\n\n${hashtags}\n\nDescobre o teu véu: seteveus.space/recursos/teste`
+  return `"${quote}"\n\n— ${attribution}\n\n${hashtags}\n\nReconheces-te? Ha mais para ti: seteveus.space/recursos/teste`
 }
 
 // ─── Social URLs ─────────────────────────────────────────────

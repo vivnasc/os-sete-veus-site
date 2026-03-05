@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 };
 
 const freeResource = {
-  title: "Qual véu te esconde?",
+  title: "E se comecasses por aqui?",
   description:
-    "Um teste breve e gentil para descobrires qual dos sete véus pode estar a esconder-te de ti mesma. Sem julgamento. Apenas curiosidade.",
+    "Um teste breve e gentil para descobrires qual dos sete Espelhos pode fazer sentido para ti neste momento. Sem julgamento. Apenas curiosidade.",
   type: "Teste interactivo",
   image: "/images/recurso-teste.png",
 };
