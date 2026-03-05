@@ -724,21 +724,6 @@ export default function MarketingPage() {
                           </div>
                         )}
 
-                        {/* Broadcast */}
-                        {slot.broadcast && (
-                          <div>
-                            <div className="flex items-center justify-between mb-1.5">
-                              <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#25D366]/60">Mensagem WhatsApp</p>
-                              <button onClick={() => copyText(`cal-wa-${calWeek}-${calDay}-${si}`, slot.broadcast || "")}
-                                className={`rounded-lg px-3 py-1 font-sans text-[0.55rem] font-semibold transition-all ${
-                                  copiedId === `cal-wa-${calWeek}-${calDay}-${si}` ? "bg-[#25D366] text-white" : "bg-[#25D366]/20 text-[#25D366] hover:bg-[#25D366]/30"
-                                }`}>
-                                {copiedId === `cal-wa-${calWeek}-${calDay}-${si}` ? "Copiada!" : "Copiar"}
-                              </button>
-                            </div>
-                            <pre className="max-h-36 overflow-y-auto whitespace-pre-wrap rounded-xl bg-[#1b2b27] p-3 font-sans text-[0.65rem] leading-relaxed text-[#d1d7db]">{slot.broadcast}</pre>
-                          </div>
-                        )}
 
                         {/* Notes */}
                         {slot.notes && (

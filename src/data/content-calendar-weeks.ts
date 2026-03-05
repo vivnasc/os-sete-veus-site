@@ -38,7 +38,6 @@ export type ContentSlot = {
   carousel?: CarouselSlide[];
   reelScript?: ReelScript;
   caption?: string;
-  broadcast?: string;
   notes?: string;
 };
 
@@ -105,8 +104,13 @@ const week1: WeekPlan = {
         },
         {
           platform: "whatsapp",
-          type: "Broadcast",
-          broadcast: "Ol\u00e1! Tenho uma novidade para ti.\n\nA plataforma Os Sete V\u00e9us foi completamente redesenhada. Novo visual, nova experi\u00eancia de leitura, novo chatbot de apoio.\n\nSe j\u00e1 tens conta, entra e explora. Se ainda n\u00e3o conheces, come\u00e7a pelo teste gratuito:\nseteveus.space/recursos/teste\n\nAo teu ritmo. Sem pressa.\n~ Vivianne",
+          type: "Status",
+          visual: {
+            bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "vertical",
+            title: "Tudo novo.\nA mesma essência.",
+            body: "Novo visual. Nova experiência de leitura.\nChatbot de apoio. Comunidade.",
+            footer: "seteveus.space/recursos/teste",
+          },
         },
       ],
     },
@@ -176,8 +180,13 @@ const week1: WeekPlan = {
         },
         {
           platform: "whatsapp",
-          type: "Broadcast",
-          broadcast: "Ol\u00e1! Se tens o livro f\u00edsico Os 7 V\u00e9us do Despertar, tenho uma novidade:\n\nA plataforma digital foi redesenhada e tens direito a acesso gratuito. Leitura integrada, di\u00e1rio de reflex\u00e3o, comunidade e muito mais.\n\nRegista o teu interesse aqui e envio-te o c\u00f3digo:\nseteveus.space/pedir-código\n\nDemora menos de 1 minuto. Sem compromisso.\n\n~ Vivianne",
+          type: "Status",
+          visual: {
+            bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", format: "vertical",
+            title: "Tens o livro físico?",
+            body: "Acesso digital gratuito.\nLeitura integrada, diário, comunidade.",
+            footer: "seteveus.space/pedir-código",
+          },
         },
       ],
     },
@@ -280,8 +289,13 @@ const week2: WeekPlan = {
         },
         {
           platform: "whatsapp",
-          type: "Broadcast",
-          broadcast: "J\u00e1 alguma vez sentiste que a vida que constru\u00edste n\u00e3o foi bem escolhida por ti?\n\nEscrevi uma hist\u00f3ria sobre isso. Chama-se O Espelho da Ilus\u00e3o.\n\nN\u00e3o \u00e9 um livro que se l\u00ea. \u00c9 uma experi\u00eancia que se vive: 7 cap\u00edtulos, respira\u00e7\u00e3o guiada, di\u00e1rio de reflex\u00e3o é o teu Espelho pessoal.\n\nCome\u00e7a pelo teste gratuito:\nseteveus.space/recursos/teste\n\n~ Vivianne",
+          type: "Status",
+          visual: {
+            bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "vertical",
+            title: "A vida que tens\nfoi escolhida por ti?",
+            body: "O Espelho da Ilusão.\n7 capítulos. Respiração guiada. Diário.",
+            footer: "seteveus.space/recursos/teste",
+          },
         },
       ],
     },
@@ -394,7 +408,7 @@ const week3: WeekPlan = {
     {
       day: "Quarta-feira",
       dayShort: "Qua",
-      theme: "N\u00f3 da Heran\u00e7a broadcast",
+      theme: "N\u00f3 da Heran\u00e7a",
       slots: [
         {
           platform: "instagram",
@@ -409,8 +423,13 @@ const week3: WeekPlan = {
         },
         {
           platform: "whatsapp",
-          type: "Broadcast",
-          broadcast: "Se j\u00e1 leste o Espelho da Ilus\u00e3o, h\u00e1 uma continua\u00e7\u00e3o que quero partilhar contigo.\n\nO N\u00f3 da Heran\u00e7a \u00e9 a hist\u00f3ria de Sara e Helena (m\u00e3e e filha). O que se passa entre duas pessoas quando o v\u00e9u da ilus\u00e3o cai.\n\nS\u00f3 se desbloqueia depois de completares o Espelho. \u00c9 a continua\u00e7\u00e3o emocional, n\u00e3o um upsell.\n\nseteveus.space/colecção-nos\n\n~ Vivianne",
+          type: "Status",
+          visual: {
+            bg: "#c9a87c", text: "#3d3630", accent: "#c9b896", format: "vertical",
+            title: "O Nó da Herança",
+            body: "Sara e Helena. Mãe e filha.\nQuando o véu cai entre duas pessoas.",
+            footer: "seteveus.space/colecção-nos",
+          },
         },
       ],
     },
@@ -439,8 +458,13 @@ const week3: WeekPlan = {
       slots: [
         {
           platform: "ambos",
-          type: "Broadcast + Status",
-          broadcast: "Sabes que na plataforma Os Sete V\u00e9us h\u00e1 v\u00e1rios recursos completamente gratuitos?\n\n- Teste de autoconhecimento (3 min)\n- Di\u00e1rio de 7 dias\n- Artigos sobre os v\u00e9us\n- Mini-guia\n- Wallpapers\n\nCome\u00e7a sem pagar nada:\nseteveus.space/recursos\n\n~ Vivianne",
+          type: "Status",
+          visual: {
+            bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", format: "vertical",
+            title: "Recursos gratuitos",
+            body: "Teste de autoconhecimento\nDiário de 7 dias\nArtigos e mini-guia",
+            footer: "seteveus.space/recursos",
+          },
         },
       ],
     },
@@ -485,14 +509,19 @@ const week4: WeekPlan = {
         },
         {
           platform: "whatsapp",
-          type: "Status + Broadcast",
+          type: "Status",
           visual: {
             bg: "#8b9b8e", text: "#f7f5f0", accent: "#ebe7df", format: "vertical",
             title: "O primeiro passo\nn\u00e3o precisa\nde ser grande.",
             body: "Precisa apenas\nde ser teu.",
             footer: "O Espelho do Medo ~ Mar\u00e7o 2026",
           },
-          broadcast: "O segundo espelho est\u00e1 quase a chegar.\n\nSabes o que queres. Mas o medo decide antes de ti.\n\nO Espelho do Medo chega em Mar\u00e7o de 2026.\n\nSe quiseres ser a primeira a saber:\nseteveus.space/experiencias\n\n~ Vivianne",
+          visual: {
+            bg: "#8b9b8e", text: "#f7f5f0", accent: "#c9b896", format: "vertical",
+            title: "O segundo espelho\nestá quase a chegar.",
+            body: "Sabes o que queres.\nMas o medo decide antes de ti.",
+            footer: "seteveus.space/experiencias",
+          },
         },
       ],
     },
@@ -533,8 +562,13 @@ const week4: WeekPlan = {
         },
         {
           platform: "whatsapp",
-          type: "Broadcast",
-          broadcast: "Tens o livro Os 7 V\u00e9us do Despertar?\n\nA plataforma digital est\u00e1 completamente nova. E tens acesso gratuito.\n\nseteveus.space/pedir-código",
+          type: "Status",
+          visual: {
+            bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "vertical",
+            title: "Livro físico?",
+            body: "Acesso digital gratuito.\nPlataforma completamente nova.",
+            footer: "seteveus.space/pedir-código",
+          },
         },
       ],
     },
@@ -645,8 +679,13 @@ const week5: WeekPlan = {
         },
         {
           platform: "whatsapp",
-          type: "Broadcast",
-          broadcast: "Preparei um conteúdo novo no Instagram sobre os 7 sinais de que vives no piloto automático.\n\nQuantos reconheces?\n\nVê o post completo: instagram.com/os7veus\n\nOu faz o teste gratuito directamente:\nseteveus.space/recursos/teste\n\n~ Vivianne",
+          type: "Status",
+          visual: {
+            bg: "#8b9b8e", text: "#f7f5f0", accent: "#c9b896", format: "vertical",
+            title: "7 sinais de que vives\nno piloto automático.",
+            body: "Quantos reconheces?",
+            footer: "seteveus.space/recursos/teste",
+          },
         },
       ],
     },
@@ -851,8 +890,13 @@ const week6: WeekPlan = {
         },
         {
           platform: "whatsapp",
-          type: "Broadcast",
-          broadcast: "Uma leitora disse-me isto:\n\n\"Chorei no capítulo 5. Não de tristeza. De reconhecimento.\"\n\nSe queres saber o que ela encontrou:\nseteveus.space/experiencias\n\nOu começa pelo teste gratuito:\nseteveus.space/recursos/teste\n\n~ Vivianne",
+          type: "Status",
+          visual: {
+            bg: "#3d3630", text: "#c9b896", accent: "#c9b896", format: "vertical",
+            title: "Chorei no capítulo 5.\nNão de tristeza.\nDe reconhecimento.",
+            body: "O Espelho da Ilusão.",
+            footer: "seteveus.space/experiencias",
+          },
         },
       ],
     },
@@ -894,14 +938,13 @@ const week6: WeekPlan = {
         },
         {
           platform: "whatsapp",
-          type: "Status + Broadcast",
+          type: "Status",
           visual: {
             bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", format: "vertical",
             title: "Espelho da Ilusão\n$29 USD\n1.885 MZN",
             body: "Acesso vitalício.\nSem subscrições.",
             footer: "seteveus.space/comprar",
           },
-          broadcast: "Sabes quanto custa escolher-te?\n\nEspelho da Ilusão: $29 USD (1.885 MZN)\nNó da Herança: $12 USD (780 MZN)\n\nAcesso vitalício. Sem subscrições.\nPayPal, M-Pesa ou Millenium BIM.\n\nComeça por aqui:\nseteveus.space/comprar\n\n~ Vivianne",
         },
       ],
     },
@@ -981,14 +1024,13 @@ const week7: WeekPlan = {
         },
         {
           platform: "whatsapp",
-          type: "Status + Broadcast",
+          type: "Status",
           visual: {
             bg: "#8b9b8e", text: "#f7f5f0", accent: "#ebe7df", format: "vertical",
             title: "O segundo espelho\nestá quase a chegar.",
             body: "O Espelho do Medo.\nMarço 2026.",
             footer: "seteveus.space",
           },
-          broadcast: "Tenho uma novidade para ti.\n\nO segundo espelho está quase pronto.\n\nO Espelho do Medo chega em Março de 2026. A história de quem sabe o que quer mas deixa o medo decidir por si.\n\nSe quiseres ser das primeiras a ler:\nseteveus.space/experiencias\n\n~ Vivianne",
         },
       ],
     },
@@ -1078,8 +1120,13 @@ const week7: WeekPlan = {
         },
         {
           platform: "whatsapp",
-          type: "Broadcast",
-          broadcast: "Sabias que se tens o livro físico Os 7 Véus do Despertar, tens acesso gratuito a plataforma digital?\n\nRegistar: seteveus.space/pedir-código\n\n~ Vivianne",
+          type: "Status",
+          visual: {
+            bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", format: "vertical",
+            title: "Livro físico?",
+            body: "Acesso digital gratuito.\nRegista e recebe o teu código.",
+            footer: "seteveus.space/pedir-código",
+          },
         },
       ],
     },
@@ -1187,8 +1234,13 @@ const week8: WeekPlan = {
         },
         {
           platform: "whatsapp",
-          type: "Broadcast",
-          broadcast: "Novo post no Instagram: 5 coisas que ninguém te diz sobre autoconhecimento.\n\nA número 5 é a mais importante.\n\nVê: instagram.com/os7veus\n\nOu faz o teste gratuito:\nseteveus.space/recursos/teste\n\n~ Vivianne",
+          type: "Status",
+          visual: {
+            bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "vertical",
+            title: "5 coisas que ninguém\nte diz sobre\nautoconhecimento.",
+            body: "A número 5 é a mais importante.",
+            footer: "seteveus.space/recursos/teste",
+          },
         },
       ],
     },
@@ -1339,7 +1391,6 @@ const weekOnboarding: WeekPlan = {
             footer: "seteveus.space/pedir-código",
           },
           caption: "O livro que tens nas mãos agora tem uma dimensão digital.\n\nSe já compraste \"Os 7 Véus do Despertar\", tens direito a acesso gratuito à experiência digital — leitura interactiva, diário reflexivo e comunidade.\n\n#OsSeteVeus #AcessoDigital #LivroFísico #Autoconhecimento",
-          broadcast: "Já tens o livro físico \"Os 7 Véus do Despertar\"?\n\nAgora existe uma experiência digital que complementa a tua leitura — com diário reflexivo, comunidade anónima e conteúdo exclusivo.\n\nE o melhor: se já compraste o livro, o acesso é gratuito.\n\nPede o teu código aqui: seteveus.space/pedir-código\n\nDemora menos de 2 minutos. Recebes o código em até 24h.\n\n— Vivianne",
         },
       ],
     },
@@ -1369,8 +1420,13 @@ const weekOnboarding: WeekPlan = {
       slots: [
         {
           platform: "whatsapp",
-          type: "Broadcast (tom pessoal)",
-          broadcast: "Uma coisa que talvez não saibas:\n\nO livro físico \"Os 7 Véus do Despertar\" tem uma extensão digital.\n\nNão é uma cópia — é uma experiência diferente. Podes escrever reflexões à medida que lês, guardar pensamentos por capítulo, e participar numa comunidade anónima de leitoras que também estão a atravessar os véus.\n\nSe tens o livro, pede o teu código: seteveus.space/pedir-código\n\nÉ gratuito. É pessoal. É teu.\n\n— Vivianne",
+          type: "Status",
+          visual: {
+            bg: "#c9a87c", text: "#3d3630", accent: "#c9b896", format: "vertical",
+            title: "O livro físico tem\numa extensão digital.",
+            body: "Reflexões, diário, comunidade anónima.\nGratuito. Pessoal. Teu.",
+            footer: "seteveus.space/pedir-código",
+          },
         },
       ],
     },
@@ -1401,8 +1457,13 @@ const weekOnboarding: WeekPlan = {
       slots: [
         {
           platform: "whatsapp",
-          type: "Broadcast (lembrete final)",
-          broadcast: "Antes do fim de semana:\n\nSe compraste \"Os 7 Véus do Despertar\" e ainda não pediste o teu código digital — este é o momento.\n\nSó precisas de nome, email e (se quiseres) uma foto do livro.\n\nseteveus.space/pedir-código\n\nBom fim de semana. Que o silêncio te encontre.\n\n— Vivianne",
+          type: "Status",
+          visual: {
+            bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "vertical",
+            title: "Ainda não pediste\no teu código?",
+            body: "Se compraste o livro físico,\no acesso digital é teu.",
+            footer: "seteveus.space/pedir-código",
+          },
         },
         {
           platform: "instagram",

@@ -38,7 +38,6 @@ export type ContentType =
   | "stories-poll"
   | "stories-testemunho"
   | "stories-bastidores"
-  | "broadcast"
   | "status-whatsapp"
   | "engagement"
   | "descanso";
@@ -293,24 +292,6 @@ const hashtags = [
   "#viviannesantos", "#crescimentopessoal", "#bookstagram",
 ];
 
-const broadcastTemplates: Record<MonthArc, string[]> = {
-  despertar: [
-    "Olá! Preparei um conteúdo novo esta semana sobre os sinais de que vivemos no automático.\n\nSe te identificas, há um teste gratuito que pode revelar algo importante:\nseteveus.space/recursos/teste\n\n~ Vivianne",
-    "Queria partilhar algo contigo.\n\nÀs vezes a vida que temos não é a vida que escolhemos. E tudo bem admitir isso.\n\nHá recursos gratuitos para ti:\nseteveus.space/recursos\n\n~ Vivianne",
-  ],
-  explorar: [
-    "Esta semana partilhei um excerto do Espelho da Ilusão no Instagram.\n\nSe queres saber mais sobre a experiência de leitura:\nseteveus.space/experiencias\n\n~ Vivianne",
-    "Escrevi sobre o poder de parar e escrever sobre nós mesmas.\n\nO diário de 7 dias é gratuito:\nseteveus.space/recursos\n\n~ Vivianne",
-  ],
-  sentir: [
-    "Uma leitora disse-me algo que me parou:\n\"Chorei no capítulo 5. Não de tristeza. De reconhecimento.\"\n\nSe queres saber o que ela encontrou:\nseteveus.space/experiencias\n\n~ Vivianne",
-    "As vozes da comunidade Ecos estão a crescer. E cada vez mais íntimas.\n\nSe quiseres juntar-te:\nseteveus.space/comunidade\n\n~ Vivianne",
-  ],
-  escolher: [
-    "Lembrete gentil: o teste de autoconhecimento é gratuito e leva 3 minutos.\n\nseteveus.space/recursos/teste\n\nSem compromisso. Só curiosidade.\n\n~ Vivianne",
-    "Se tens o livro físico, sabes que tens acesso gratuito à plataforma digital?\n\nRegista-te aqui:\nseteveus.space/acesso-digital\n\n~ Vivianne",
-  ],
-};
 
 // ─── VISUAL GUIDES ──────────────────────────────────────────────────────────
 
@@ -362,14 +343,6 @@ const visualGuides: Record<string, VisualGuide> = {
     font: "Texto nativo do Instagram Stories",
     dimensions: "1080 x 1920 px (9:16)",
     layout: "Foto/video real + texto overlay simples. Sem overdesign.",
-  },
-  broadcast: {
-    background: "N/A — texto simples WhatsApp",
-    textColor: "N/A",
-    accentColor: "N/A",
-    font: "Texto simples — sem formatação",
-    dimensions: "N/A",
-    layout: "Max 4 frases. Link no final. Tom pessoal.",
   },
   "status-whatsapp": {
     background: "Reutilizar frame do reel ou imagem do post",
@@ -463,7 +436,6 @@ export function generateWeekPlan(weekOffset: number = 0): WeekPlan {
   const postContent = pick(postFormats[postStyle], seed + 4);
 
   const reelCaption = pick(reelCaptions[reelStyle], seed + 5).replace("{cta}", weekCta);
-  const broadcastMsg = pick(broadcastTemplates[arc], seed + 6);
 
   const reelStyleLabels: Record<ReelStyle, string> = {
     "talking-head": "Falar para câmara, 15-30s. Olhar directo, tom íntimo.",
@@ -532,7 +504,7 @@ export function generateWeekPlan(weekOffset: number = 0): WeekPlan {
       hashtags: pickN(hashtags, 8, seed + 10),
       cta: weekCta,
       pillar: arc,
-      notes: `FORMATO: ${carouselStyle}\n${carouselStyleLabels[carouselStyle]}\n\nTEMA: "${carouselTopic}"\n\nWA BROADCAST:\n${broadcastMsg}`,
+      notes: `FORMATO: ${carouselStyle}\n${carouselStyleLabels[carouselStyle]}\n\nTEMA: "${carouselTopic}"`,
       visual: visualGuides.carrossel,
       formatVariant: carouselStyle,
     },
