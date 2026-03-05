@@ -516,6 +516,10 @@ const week4: WeekPlan = {
             body: "Precisa apenas\nde ser teu.",
             footer: "O Espelho do Medo ~ Mar\u00e7o 2026",
           },
+        },
+        {
+          platform: "whatsapp",
+          type: "Status",
           visual: {
             bg: "#8b9b8e", text: "#f7f5f0", accent: "#c9b896", format: "vertical",
             title: "O segundo espelho\nestá quase a chegar.",
