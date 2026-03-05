@@ -98,7 +98,7 @@ const ilusaoQuotes: MarketingQuote[] = [
 const ilusaoSocial: SocialPost[] = [
   {
     content:
-      "Há vidas que funcionam.\nCumprem os prazos. Pagam as contas. Recebem os parabéns nas alturas certas.\n\nE no entanto, quando a casa fica em silêncio, surge algo que não é queixa nem ingratidão.\n\nÉ uma intuição suave: há mais.\n\n→ Link na bio para descobrires o teu espelho",
+      "Há vidas que funcionam.\nCumprem os prazos. Pagam as contas. Recebem os parabéns nas alturas certas.\n\nE no entanto, quando a casa fica em silêncio, surge algo que não é queixa nem ingratidão.\n\nÉ uma intuição suave: há mais.",
     hashtags: [...CORE_HASHTAGS, "#EspelhoDaIlusão"],
     format: "carousel",
     veilSlug: "veu-da-ilusao",
@@ -106,7 +106,7 @@ const ilusaoSocial: SocialPost[] = [
   },
   {
     content:
-      "\"Quando foi que escolhi tomar café em vez de chá?\"\n\nUma pergunta absurda que muda tudo.\n\nO Espelho da Ilusão começa assim — com uma manhã igual a todas as outras e uma mulher que, pela primeira vez, pergunta.\n\n→ Faz o quiz gratuito e descobre o teu espelho",
+      "\"Quando foi que escolhi tomar café em vez de chá?\"\n\nUma pergunta absurda que muda tudo.\n\nO Espelho da Ilusão começa assim — com uma manhã igual a todas as outras e uma mulher que, pela primeira vez, pergunta.",
     hashtags: [...CORE_HASHTAGS, "#EspelhoDaIlusão"],
     format: "single",
     veilSlug: "veu-da-ilusao",
@@ -114,7 +114,7 @@ const ilusaoSocial: SocialPost[] = [
   },
   {
     content:
-      "O que dizes quando alguém te pergunta o que achas?\n\n\"O que fizer sentido para a equipa.\"\n\"Tanto faz.\"\n\"Está bem para mim.\"\n\nE se, por uma vez, respondesses o que realmente pensas?\n\n→ O Espelho da Ilusão explora exactamente isto",
+      "O que dizes quando alguém te pergunta o que achas?\n\n\"O que fizer sentido para a equipa.\"\n\"Tanto faz.\"\n\"Está bem para mim.\"\n\nE se, por uma vez, respondesses o que realmente pensas?",
     hashtags: [...CORE_HASHTAGS, "#EspelhoDaIlusão", "#OpiniãoPrópria"],
     format: "reel",
     veilSlug: "veu-da-ilusao",
@@ -122,7 +122,7 @@ const ilusaoSocial: SocialPost[] = [
   },
   {
     content:
-      "Não é um livro.\nÉ uma experiência.\n\n7 capítulos de ficção\n+ respiração guiada\n+ diário de reflexão\n+ o teu Espelho pessoal\n\nLês. Respiras. Escreves. E no final, vês-te.\n\n→ seteveus.space/experiencias",
+      "Não é um livro.\nÉ uma experiência.\n\n7 capítulos de ficção\n+ respiração guiada\n+ diário de reflexão\n+ o teu Espelho pessoal\n\nLês. Respiras. Escreves. E no final, vês-te.",
     hashtags: [...CORE_HASHTAGS, "#ExperiênciaImersiva"],
     format: "carousel",
     veilSlug: "veu-da-ilusao",
@@ -185,7 +185,7 @@ const medoQuotes: MarketingQuote[] = [
 const medoSocial: SocialPost[] = [
   {
     content:
-      "Estás prestes a dar um passo.\nMas algo te puxa para trás.\n\nNão é covardia.\nÉ um mecanismo antigo — treinado ao longo de anos de cautela disfarçada de bom senso.\n\nO Espelho do Medo chega em Março.\n→ Junta-te à waitlist e recebe 20% de desconto",
+      "Estás prestes a dar um passo.\nMas algo te puxa para trás.\n\nNão é covardia.\nÉ um mecanismo antigo — treinado ao longo de anos de cautela disfarçada de bom senso.\n\nO Espelho do Medo chega em Março.",
     hashtags: [...CORE_HASHTAGS, "#EspelhoDoMedo", "#Coragem"],
     format: "carousel",
     veilSlug: "veu-do-medo",
@@ -193,7 +193,7 @@ const medoSocial: SocialPost[] = [
   },
   {
     content:
-      "\"O primeiro passo não precisa de ser grande.\nPrecisa apenas de ser teu.\"\n\n— O Espelho do Medo, em breve\n\n→ seteveus.space/experiencias",
+      "\"O primeiro passo não precisa de ser grande.\nPrecisa apenas de ser teu.\"\n\n— O Espelho do Medo, em breve",
     hashtags: [...CORE_HASHTAGS, "#EspelhoDoMedo"],
     format: "single",
     veilSlug: "veu-do-medo",
@@ -273,21 +273,21 @@ function generateFutureVeilMarketing(
     ],
     socialPosts: [
       {
-        content: `"${tagline}"\n\n${title} chega em ${launchMonth}.\n→ Junta-te à waitlist: seteveus.space/experiencias`,
+        content: `"${tagline}"\n\n${title} chega em ${launchMonth}.`,
         hashtags: [...CORE_HASHTAGS],
         format: "single",
         veilSlug: slug,
         scheduledWeek: -2,
       },
       {
-        content: `${subtitle}\n\nEsta é a próxima experiência dos Sete Véus.\n7 capítulos. Respiração guiada. Diário de reflexão. O Teu Espelho.\n\n→ Descobre o teu espelho: seteveus.space/recursos/teste`,
+        content: `${subtitle}\n\nEsta é a próxima experiência dos Sete Véus.\n7 capítulos. Respiração guiada. Diário de reflexão. O Teu Espelho.`,
         hashtags: [...CORE_HASHTAGS],
         format: "carousel",
         veilSlug: slug,
         scheduledWeek: -1,
       },
       {
-        content: `${title} está disponível.\n\nSe o quiz te indicou este espelho — é porque algo em ti já sabe.\n\n→ seteveus.space/experiencias`,
+        content: `${title} está disponível.\n\nSe o quiz te indicou este espelho — é porque algo em ti já sabe.`,
         hashtags: [...CORE_HASHTAGS],
         format: "single",
         veilSlug: slug,
