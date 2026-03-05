@@ -227,6 +227,7 @@ export default function GeradorPage() {
   const [ctaSize, setCtaSize] = useState(16);
   const [showLogo, setShowLogo] = useState(true);
   const [exporting, setExporting] = useState(false);
+  const [mobilePreview, setMobilePreview] = useState<string | null>(null);
 
   // Auth — redirect via useEffect to avoid client-side crash on navigation
   useEffect(() => {
@@ -298,10 +299,17 @@ export default function GeradorPage() {
         parent.style.borderRadius = origParent.r;
       }
 
-      const a = document.createElement("a");
-      a.download = `sete-veus-${format}-${Date.now()}.png`;
-      a.href = dataUrl;
-      a.click();
+      // Mobile: mostrar imagem em ecrã inteiro para guardar na fototeca
+      // Desktop: download directo
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      if (isMobile) {
+        setMobilePreview(dataUrl);
+      } else {
+        const a = document.createElement("a");
+        a.download = `sete-veus-${format}-${Date.now()}.png`;
+        a.href = dataUrl;
+        a.click();
+      }
     } catch {
       alert("Erro ao exportar.");
     }
@@ -325,7 +333,7 @@ export default function GeradorPage() {
             disabled={exporting}
             className={`rounded-lg bg-sage px-6 py-2.5 font-sans text-sm font-medium text-white transition-colors hover:bg-sage-dark ${exporting ? "opacity-60" : ""}`}
           >
-            {exporting ? "A exportar..." : "Descarregar PNG"}
+            {exporting ? "A exportar..." : "Guardar imagem"}
           </button>
         </div>
       </div>
@@ -536,7 +544,7 @@ export default function GeradorPage() {
               disabled={exporting}
               className="w-full rounded-lg bg-sage py-3 font-sans text-sm font-medium text-white transition-colors hover:bg-sage-dark lg:hidden"
             >
-              {exporting ? "A exportar..." : "Descarregar PNG"}
+              {exporting ? "A exportar..." : "Guardar imagem"}
             </button>
           </div>
 
@@ -626,10 +634,34 @@ export default function GeradorPage() {
             <p className="mt-4 max-w-sm text-center font-sans text-xs text-brown-400">
               Escolhe um print como fundo, uma mensagem, ajusta o blur e exporta.
               Imagem gerada em {fmt.w}x{fmt.h}px.
+              No telemovel, mantém premido na imagem para guardar na fototeca.
             </p>
           </div>
         </div>
       </div>
+
+      {/* Mobile: ecrã inteiro para guardar na fototeca */}
+      {mobilePreview && (
+        <div
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/95 p-4"
+          onClick={() => setMobilePreview(null)}
+        >
+          <p className="mb-4 text-center font-sans text-sm text-white/80">
+            Mantém premido na imagem para guardar na fototeca
+          </p>
+          <img
+            src={mobilePreview}
+            alt="Imagem gerada"
+            className="max-h-[75vh] max-w-full rounded-lg object-contain"
+          />
+          <button
+            onClick={() => setMobilePreview(null)}
+            className="mt-6 rounded-lg border border-white/20 px-8 py-3 font-sans text-sm text-white/70"
+          >
+            Fechar
+          </button>
+        </div>
+      )}
     </section>
   );
 }
