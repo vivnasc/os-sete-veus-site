@@ -138,7 +138,7 @@ export default function ComprarPage() {
               Não sabes qual escolher?
             </p>
             <p className="mt-2 text-sm text-brown-600">
-              Faz o teste gratuito e descobre qual véu te chama mais
+              Faz o teste gratuito e descobre qual Espelho te chama mais
             </p>
             <Link
               href="/recursos/teste"

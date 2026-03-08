@@ -79,15 +79,14 @@ export function generateStaticParams() {
   return Object.keys(articles).map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  return params.then(({ slug }) => {
-    const article = articles[slug];
-    if (!article) return { title: "Artigo não encontrado" };
-    return {
-      title: article.title,
-      description: article.metaDescription,
-    };
-  });
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const article = articles[slug];
+  if (!article) return { title: "Artigo não encontrado" };
+  return {
+    title: article.title,
+    description: article.metaDescription,
+  };
 }
 
 function formatDate(dateString: string) {

@@ -39,8 +39,8 @@ const DAILY_PLAN: DayContent[] = [
   { hook: "Descanso. Responder mensagens." },
   { hook: "Descanso." },
   // Semana 2 — O que são Os Sete Véus
-  { carouselId: "carousel-o-que-e", hook: "Já sentiste que a vida que tens não foi a que escolheste?", storyBg: "/prints/7veus- incio-portrait.png", whatsapp: `Conheces Os 7 Véus do Despertar?\n\nFiz um teste gratuito — 3 minutos, 7 perguntas — que te mostra qual dos 7 véus mais te influencia neste momento.\n\nNão dá respostas. Dá perguntas.\n\nhttps://seteveus.space/recursos/teste\n\nSe quiseres saber mais: https://seteveus.space\n\n— Vivianne` },
-  { carouselId: "carousel-7-véus-resumo", hook: "Os 7 véus que te escondem de ti mesma.", storyBg: "/prints/7veus-dessolucao-portrait.png", whatsapp: `Os 7 véus que te escondem de ti mesma:\n\n1. Permanência — a crença num eu fixo\n2. Memória — as histórias do passado\n3. Turbilhão — a identificação com pensamentos\n4. Esforço — a busca incessante\n5. Desolação — o medo do vazio\n6. Horizonte — a ilusão dos finais\n7. Dualidade — a separação eu/mundo\n\nQual véu te esconde? Descobre em 3 minutos:\nhttps://seteveus.space/recursos/teste\n\n— Vivianne` },
+  { carouselId: "carousel-o-que-e", hook: "Já sentiste que a vida que tens não foi a que escolheste?", storyBg: "/prints/7veus- incio-portrait.png", whatsapp: `Conheces Os 7 Véus do Despertar?\n\nFiz um teste gratuito — 3 minutos, 7 perguntas — que te mostra qual dos 7 Espelhos faz mais sentido para ti neste momento.\n\nNão dá respostas. Dá perguntas.\n\nhttps://seteveus.space/recursos/teste\n\nSe quiseres saber mais: https://seteveus.space\n\n— Vivianne` },
+  { carouselId: "carousel-7-véus-resumo", hook: "Os 7 véus que te escondem de ti mesma.", storyBg: "/prints/7veus-dessolucao-portrait.png", whatsapp: `Os 7 véus que te escondem de ti mesma:\n\n1. Permanência — a crença num eu fixo\n2. Memória — as histórias do passado\n3. Turbilhão — a identificação com pensamentos\n4. Esforço — a busca incessante\n5. Desolação — o medo do vazio\n6. Horizonte — a ilusão dos finais\n7. Dualidade — a separação eu/mundo\n\nReconheces-te? Descobre qual Espelho combina contigo:\nhttps://seteveus.space/recursos/teste\n\n— Vivianne` },
   { carouselId: "carousel-como-funciona", hook: "Como funciona a experiência digital. 3 passos.", storyBg: "/prints/7veus-3niveis-portrait.png", whatsapp: `Como funciona a experiência digital d'Os 7 Véus do Despertar?\n\n1. Pede o teu código (gratuito se tens o livro)\n2. Lê ao teu ritmo — 3 níveis de leitura por véu\n3. Escreve, respira, partilha — diário, práticas, comunidade\n\nInclui: livro completo, 3 níveis, diário, respiração guiada, comunidade Ecos, chatbot 24/7.\n\nhttps://seteveus.space/pedir-codigo\n\n— Vivianne` },
   { carouselId: "carousel-experiência-vs-livro", hook: "Isto não é um livro. É uma experiência.", storyBg: "/prints/7veus-darkmode-portrait.png", whatsapp: `Só com o livro físico: lês, fechas, guardas.\n\nCom o acesso digital: lês em 3 níveis, escreves no diário, práticas guiadas, comunidade anónima.\n\nOs 3 níveis:\n— Semente: guia acessível\n— Raiz: notas filosóficas\n— Árvore: texto original, puro\n\nJá tens o livro? O acesso digital é gratuito:\nhttps://seteveus.space/pedir-codigo\n\n— Vivianne` },
   { carouselId: "carousel-experiência-digital-completa", hook: "O que está dentro da experiência digital?", storyBg: "/prints/dashboard-membro.jpeg", whatsapp: `Para quem já leu ou está a ler Os 7 Véus do Despertar:\n\nSabias que agora podes continuar a experiência no digital? Existe um diário reflexivo por capítulo, uma comunidade anónima de leitoras, e recursos exclusivos.\n\nSe compraste o livro, o acesso é gratuito:\nhttps://seteveus.space/pedir-codigo\n\nSe queres começar:\nhttps://seteveus.space/comprar/livro\n\n— Vivianne` },
@@ -55,7 +55,7 @@ const DAILY_PLAN: DayContent[] = [
   { hook: "Descanso." },
   { hook: "Descanso." },
   // Semana 4 — Recursos + comunidade + convite final
-  { carouselId: "carousel-recursos-gratis", hook: "5 recursos gratuitos para começar a tua jornada.", storyBg: "/prints/quiz-qual-veu.jpeg", whatsapp: `5 recursos gratuitos para começar a tua jornada interior:\n\n1. Teste: Qual véu te esconde? (3 min)\n2. As 7 Perguntas do Despertar (PDF)\n3. Diário de 7 Dias (PDF)\n4. Checklist do Despertar (PDF)\n5. Mini-guia: O que são os 7 Véus? (PDF)\n\nTudo gratuito. Sem compromisso.\nhttps://seteveus.space/recursos\n\n— Vivianne` },
+  { carouselId: "carousel-recursos-gratis", hook: "5 recursos gratuitos para começar a tua jornada.", storyBg: "/prints/quiz-qual-veu.jpeg", whatsapp: `5 recursos gratuitos para começar a tua jornada interior:\n\n1. Teste: Qual Espelho combina contigo? (3 min)\n2. As 7 Perguntas do Despertar (PDF)\n3. Diário de 7 Dias (PDF)\n4. Checklist do Despertar (PDF)\n5. Mini-guia: O que são os 7 Véus? (PDF)\n\nTudo gratuito. Sem compromisso.\nhttps://seteveus.space/recursos\n\n— Vivianne` },
   { carouselId: "carousel-comunidade-ecos", hook: "Comunidade Ecos — onde as vozes se encontram.", storyBg: "/prints/comunidade-ecos-tabs.jpeg", whatsapp: `E se pudesses partilhar o que sentes sem ninguém saber quem és?\n\nComunidade Ecos:\n\n— Ecos: reflexões anónimas (expiram em 30 dias)\n— Reconhecimentos: não há likes, há "reconheço-me"\n— Sussurros: mensagens de uma só via (expiram em 7 dias)\n\nSem nomes. Sem fotos. Tudo desaparece.\n\nIncluída com qualquer acesso à plataforma:\nhttps://seteveus.space\n\n— Vivianne` },
   { carouselId: "carousel-carta-autora", hook: "Uma carta da autora sobre a experiência digital.", storyBg: "/images/mandala-7veus.png", whatsapp: `Uma mensagem pessoal:\n\nQuando escrevi Os 7 Véus do Despertar, sabia que o livro era apenas o início. A experiência digital nasceu para que não leias sozinha.\n\nHá um diário onde escreves o que sentes. Há práticas guiadas. Há uma comunidade anónima de mulheres que estão a atravessar os mesmos véus.\n\nSe já tens o livro físico, o acesso é gratuito:\nhttps://seteveus.space/pedir-codigo\n\n— Vivianne` },
   { carouselId: "carousel-funil-livro-físico", hook: "Tens o livro? O teu livro abre portas que ainda não conheces.", storyBg: "/prints/7veus-3niveis-portrait.png", whatsapp: `Última semana da campanha:\n\nSe tens o livro físico "Os 7 Véus do Despertar" e ainda não pediste o teu código — este é o momento.\n\nO acesso digital é gratuito. Inclui 3 níveis de leitura, diário, práticas guiadas e comunidade anónima.\n\nhttps://seteveus.space/pedir-codigo\n\n— Vivianne` },
@@ -772,21 +772,6 @@ export default function MarketingPage() {
                           </div>
                         )}
 
-                        {/* Broadcast */}
-                        {slot.broadcast && (
-                          <div>
-                            <div className="flex items-center justify-between mb-1.5">
-                              <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#25D366]/60">Mensagem WhatsApp</p>
-                              <button onClick={() => copyText(`cal-wa-${calWeek}-${calDay}-${si}`, slot.broadcast || "")}
-                                className={`rounded-lg px-3 py-1 font-sans text-[0.55rem] font-semibold transition-all ${
-                                  copiedId === `cal-wa-${calWeek}-${calDay}-${si}` ? "bg-[#25D366] text-white" : "bg-[#25D366]/20 text-[#25D366] hover:bg-[#25D366]/30"
-                                }`}>
-                                {copiedId === `cal-wa-${calWeek}-${calDay}-${si}` ? "Copiada!" : "Copiar"}
-                              </button>
-                            </div>
-                            <pre className="max-h-36 overflow-y-auto whitespace-pre-wrap rounded-xl bg-[#1b2b27] p-3 font-sans text-[0.65rem] leading-relaxed text-[#d1d7db]">{slot.broadcast}</pre>
-                          </div>
-                        )}
 
                         {/* Notes */}
                         {slot.notes && (

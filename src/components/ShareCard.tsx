@@ -21,7 +21,7 @@ export default function ShareCard({
   const [copied, setCopied] = useState(false);
 
   async function handleShare() {
-    const text = `Completei ${veilTitle} — ${chaptersRead} capítulos, ${reflectionsWritten} reflexões, ${itemsCompleted} passos. Uma experiência de Os Sete Véus.\n\nDescobre o teu véu: seteveus.space/recursos/teste`;
+    const text = `Completei ${veilTitle} — ${chaptersRead} capítulos, ${reflectionsWritten} reflexões, ${itemsCompleted} passos. Uma experiência de Os Sete Véus.\n\nHá mais para ti: seteveus.space/recursos/teste`;
 
     if (navigator.share) {
       try {

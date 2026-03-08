@@ -422,7 +422,7 @@ export default function EcossistemaPage() {
                 <p className="mt-1 text-sm text-brown-500">Para sempre</p>
                 <ul className="mt-6 flex-1 space-y-2">
                   {[
-                    "Teste \"Qual véu te esconde?\"",
+                    "Teste \"Qual Espelho combina contigo?\"",
                     "Diário de reflexão de 7 dias",
                     "Guias e checklists em PDF",
                     "Artigos sobre autoconhecimento",
