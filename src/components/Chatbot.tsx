@@ -63,7 +63,7 @@ const categories: Category[] = [
       },
       {
         q: "Quanto custa?",
-        a: "O Espelho da Ilus\u00e3o custa $29 USD (1.885 MZN / R$119 / \u20ac27). Inclui acesso vital\u00edcio \u00e0 experi\u00eancia completa: 7 cap\u00edtulos, pr\u00e1ticas guiadas, di\u00e1rio de reflex\u00e3o e acesso \u00e0 comunidade.",
+        a: "O Espelho da Ilus\u00e3o custa $19 USD (1.200 MZN / R$79 / \u20ac18). Inclui acesso vital\u00edcio \u00e0 experi\u00eancia completa: 7 cap\u00edtulos, pr\u00e1ticas guiadas, di\u00e1rio de reflex\u00e3o e acesso \u00e0 comunidade.",
         link: { label: "Ver pre\u00e7os", href: "/comprar/espelhos" },
       },
     ],
@@ -84,7 +84,7 @@ const categories: Category[] = [
       },
       {
         q: "Quanto custa um N\u00f3?",
-        a: "O N\u00f3 da Heran\u00e7a custa $12 USD (780 MZN / R$49 / \u20ac11). \u00c9 o \u00fanico dispon\u00edvel de momento, e s\u00f3 se desbloqueia ap\u00f3s completares o Espelho da Ilus\u00e3o.",
+        a: "O N\u00f3 da Heran\u00e7a custa $8 USD (500 MZN / R$49 / \u20ac11). \u00c9 o \u00fanico dispon\u00edvel de momento, e s\u00f3 se desbloqueia ap\u00f3s completares o Espelho da Ilus\u00e3o.",
         link: { label: "Ver pre\u00e7os", href: "/comprar/espelhos" },
       },
       {
@@ -100,12 +100,12 @@ const categories: Category[] = [
     faqs: [
       {
         q: "Quais s\u00e3o os pre\u00e7os?",
-        a: "Espelho da Ilus\u00e3o: $29 USD (1.885 MZN). N\u00f3 da Heran\u00e7a: $12 USD (780 MZN). Livro f\u00edsico Os 7 V\u00e9us do Despertar: $23 USD (1.495 MZN). \u00c0 medida que novos Espelhos forem publicados, haver\u00e1 pacotes com desconto.",
+        a: "Espelho da Ilus\u00e3o: $19 USD (1.200 MZN). N\u00f3 da Heran\u00e7a: $8 USD (500 MZN). Livro f\u00edsico Os 7 V\u00e9us do Despertar: $23 USD (1.495 MZN). \u00c0 medida que novos Espelhos forem publicados, haver\u00e1 pacotes com desconto.",
         link: { label: "Ver pre\u00e7os", href: "/comprar" },
       },
       {
         q: "Que m\u00e9todos de pagamento aceitam?",
-        a: "Aceitamos PayPal (cart\u00e3o de cr\u00e9dito/d\u00e9bito internacional), transfer\u00eancia banc\u00e1ria (Millennium BIM Mo\u00e7ambique) e M-Pesa. Ap\u00f3s o pagamento, recebes um c\u00f3digo de acesso por email.",
+        a: "Aceitamos PayPal (cart\u00e3o de cr\u00e9dito/d\u00e9bito internacional) e M-Pesa. Ap\u00f3s o pagamento, recebes um c\u00f3digo de acesso por email.",
       },
       {
         q: "O acesso \u00e9 vital\u00edcio?",
@@ -113,7 +113,7 @@ const categories: Category[] = [
       },
       {
         q: "Aceitam pagamento em meticais?",
-        a: "Sim. Podes pagar por transfer\u00eancia banc\u00e1ria em meticais (Millennium BIM) ou por M-Pesa. Os pre\u00e7os em MZN est\u00e3o indicados em cada produto. Ap\u00f3s o pagamento, envias o comprovativo e recebes o c\u00f3digo de acesso.",
+        a: "Sim. Podes pagar por M-Pesa em meticais. Os pre\u00e7os em MZN est\u00e3o indicados em cada produto. Ap\u00f3s o pagamento, envias o comprovativo e recebes o c\u00f3digo de acesso.",
       },
     ],
   },
@@ -129,7 +129,7 @@ const categories: Category[] = [
       },
       {
         q: "J\u00e1 comprei o livro f\u00edsico. Como acedo ao digital?",
-        a: "Se compraste o livro f\u00edsico, podes pedir o teu c\u00f3digo de acesso digital. Basta enviar foto do livro ou recibo pela p\u00e1gina de pedido de c\u00f3digo ou directamente pelo WhatsApp.",
+        a: "Se compraste o livro f\u00edsico, podes pedir o teu c\u00f3digo de acesso digital. Basta enviar foto do livro ou recibo pela p\u00e1gina de pedido de c\u00f3digo ou directamente pelo Telegram.",
         link: { label: "Pedir c\u00f3digo", href: "/pedir-codigo" },
       },
       {
@@ -155,7 +155,7 @@ const categories: Category[] = [
       },
       {
         q: "Como encomendo?",
-        a: "A encomenda \u00e9 feita directamente via WhatsApp. Custa $23 USD (1.495 MZN). Envio dispon\u00edvel para Mo\u00e7ambique e outros pa\u00edses.",
+        a: "A encomenda \u00e9 feita directamente via Telegram. Custa $23 USD (1.495 MZN). Envio dispon\u00edvel para Mo\u00e7ambique e outros pa\u00edses.",
         link: { label: "Encomendar", href: "/livro-fisico" },
       },
       {
@@ -419,24 +419,31 @@ export default function Chatbot() {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Footer with WhatsApp */}
+          {/* Footer with Telegram + Email */}
           <div className="shrink-0 border-t border-brown-50 px-5 py-3">
             <div className="flex items-center justify-between">
               <p className="font-sans text-[0.6rem] text-brown-400">
                 N\u00e3o encontraste resposta?
               </p>
-              <a
-                href="https://wa.me/258845243875?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20Os%20Sete%20V%C3%A9us%20%E2%80%94%20seteveus.space"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 rounded-full bg-[#25D366]/10 px-3 py-1.5 font-sans text-[0.65rem] font-medium text-[#25D366] transition-colors hover:bg-[#25D366]/20"
-              >
-                <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-                  <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.61.609l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.386 0-4.592-.826-6.326-2.206l-.44-.352-3.2 1.073 1.073-3.2-.352-.44A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
-                </svg>
-                WhatsApp
-              </a>
+              <div className="flex items-center gap-2">
+                <a
+                  href="mailto:feedback@setecos.com"
+                  className="rounded-full bg-brown-50 px-3 py-1.5 font-sans text-[0.65rem] font-medium text-brown-500 transition-colors hover:bg-brown-100"
+                >
+                  Email
+                </a>
+                <a
+                  href="https://t.me/viviannedossantos"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 rounded-full bg-[#0088cc]/10 px-3 py-1.5 font-sans text-[0.65rem] font-medium text-[#0088cc] transition-colors hover:bg-[#0088cc]/20"
+                >
+                  <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                  </svg>
+                  Telegram
+                </a>
+              </div>
             </div>
           </div>
         </div>

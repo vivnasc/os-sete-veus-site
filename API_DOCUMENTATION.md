@@ -126,7 +126,7 @@ Cliente pede um código de acesso (público).
 {
   "full_name": "Maria Silva",
   "email": "maria@email.com",
-  "whatsapp": "+258845243875",
+  "whatsapp": "+258851006473",
   "purchase_location": "Livraria Académica, Maputo"
 }
 ```
@@ -331,7 +331,7 @@ const requestCode = async () => {
     body: JSON.stringify({
       full_name: 'Maria Silva',
       email: 'maria@email.com',
-      whatsapp: '+258845243875',
+      whatsapp: '+258851006473',
       purchase_location: 'Livraria Académica'
     })
   })

@@ -9,7 +9,7 @@ export default function Image() {
     label: "Colecção Espelhos",
     title: "A experiência que te devolve a ti mesma",
     subtitle:
-      "Ficção psicológica com leitura interactiva, diário reflexivo e comunidade anónima. A partir de $29.",
+      "Ficção psicológica com leitura interactiva, diário reflexivo e comunidade anónima. A partir de $19.",
     url: "seteveus.space/comprar/espelhos",
   });
 }

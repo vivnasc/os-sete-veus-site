@@ -77,8 +77,8 @@ export default function ComprarPage() {
                     7 ficções de transformação (histórias onde te reconheces)
                   </p>
                   <div className="mt-4 flex items-baseline gap-2">
-                    <span className="font-serif text-2xl font-bold text-brown-900">1.885 MZN</span>
-                    <span className="text-brown-500">/ $29 USD por Espelho</span>
+                    <span className="font-serif text-2xl font-bold text-brown-900">1.200 MZN</span>
+                    <span className="text-brown-500">/ $19 USD por Espelho</span>
                   </div>
                   <p className="mt-4 text-sm text-brown-600">
                     Cada Espelho inclui 7 capítulos de ficção, práticas de respiração,
@@ -86,7 +86,7 @@ export default function ComprarPage() {
                   </p>
                   <p className="mt-2 text-sm text-brown-500">
                     Cada Espelho tem um Nó — a dimensão relacional da mesma história.
-                    Desbloqueia ao completar o Espelho. Nó individual: $12 USD.
+                    Desbloqueia ao completar o Espelho. Nó individual: $8 USD.
                   </p>
                   <p className="mt-2 text-xs italic text-brown-400">
                     Disponível agora: Espelho da Ilusão. Próximos mensalmente até Agosto de 2026.

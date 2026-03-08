@@ -155,7 +155,7 @@ export default function ExperienciasPage() {
                     </p>
                     <div className="mt-5 flex items-center justify-between">
                       <span className="font-serif text-lg font-bold text-brown-900">
-                        1.885 MZN / ${exp.priceUSD} USD
+                        1.200 MZN / ${exp.priceUSD} USD
                       </span>
                       <Link
                         href="/comprar/espelhos"

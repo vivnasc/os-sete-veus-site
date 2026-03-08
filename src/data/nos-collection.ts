@@ -3,15 +3,15 @@
 // Regra: Só lês o Nó se viveste o Espelho correspondente
 //
 // Modelo de venda:
-//   Espelho individual ($29) + Nó individual ($12) = $41
-//   Pack 3 Espelhos ($69) → 3 Nós incluídos
-//   Jornada Completa 7 Espelhos ($149) → Nós completo incluído
+//   Espelho individual ($19) + Nó individual ($8) = $27
+//   Pack 3 Espelhos ($49) → 3 Nós incluídos
+//   Jornada Completa 7 Espelhos ($99) → Nós completo incluído
 //
 // O Nó desbloqueia ao completar o Espelho correspondente.
 // Não é upsell — é continuação emocional.
 
 export const NOS_PRICING = {
-  individual: { usd: 12, mt: 780, brl: 49, eur: 11 },
+  individual: { usd: 8, mt: 500, brl: 49, eur: 11 },
   // Pack 3 e Jornada Completa: Nós incluído gratuitamente
 } as const;
 
@@ -53,8 +53,8 @@ const _nosCollection: NosBook[] = [
     colorBg: "#2e1a0e",
     status: "available",
     dataFile: "no-heranca",
-    priceUSD: 12,
-    priceMT: 780,
+    priceUSD: 8,
+    priceMT: 500,
     priceBRL: 49,
     priceEUR: 11,
   },
@@ -72,8 +72,8 @@ const _nosCollection: NosBook[] = [
     colorBg: "#142838",
     status: "coming_soon",
     dataFile: null,
-    priceUSD: 12,
-    priceMT: 780,
+    priceUSD: 8,
+    priceMT: 500,
     priceBRL: 49,
     priceEUR: 11,
   },
@@ -91,8 +91,8 @@ const _nosCollection: NosBook[] = [
     colorBg: "#2e1015",
     status: "coming_soon",
     dataFile: null,
-    priceUSD: 12,
-    priceMT: 780,
+    priceUSD: 8,
+    priceMT: 500,
     priceBRL: 49,
     priceEUR: 11,
   },
@@ -110,8 +110,8 @@ const _nosCollection: NosBook[] = [
     colorBg: "#22102e",
     status: "coming_soon",
     dataFile: null,
-    priceUSD: 12,
-    priceMT: 780,
+    priceUSD: 8,
+    priceMT: 500,
     priceBRL: 49,
     priceEUR: 11,
   },
@@ -129,8 +129,8 @@ const _nosCollection: NosBook[] = [
     colorBg: "#10222a",
     status: "coming_soon",
     dataFile: null,
-    priceUSD: 12,
-    priceMT: 780,
+    priceUSD: 8,
+    priceMT: 500,
     priceBRL: 49,
     priceEUR: 11,
   },
@@ -148,8 +148,8 @@ const _nosCollection: NosBook[] = [
     colorBg: "#261808",
     status: "coming_soon",
     dataFile: null,
-    priceUSD: 12,
-    priceMT: 780,
+    priceUSD: 8,
+    priceMT: 500,
     priceBRL: 49,
     priceEUR: 11,
   },
@@ -167,8 +167,8 @@ const _nosCollection: NosBook[] = [
     colorBg: "#0e2216",
     status: "coming_soon",
     dataFile: null,
-    priceUSD: 12,
-    priceMT: 780,
+    priceUSD: 8,
+    priceMT: 500,
     priceBRL: 49,
     priceEUR: 11,
   },

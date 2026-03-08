@@ -10,7 +10,7 @@
  *   TELEGRAM_BOT_TOKEN — Token do bot Telegram (@BotFather)
  *   TELEGRAM_CHAT_ID — Chat ID da Vivianne
  *   ADMIN_NOTIFY_WEBHOOK_URL — URL do webhook (POST JSON)
- *   ADMIN_WHATSAPP_NUMBER — +258845243875
+ *   ADMIN_WHATSAPP_NUMBER — +258851006473
  */
 
 import { createClient } from "@supabase/supabase-js";
@@ -88,7 +88,7 @@ export async function notifyAdmin(data: NotificationData): Promise<void> {
           type,
           title,
           message: whatsappMessage,
-          phone: process.env.ADMIN_WHATSAPP_NUMBER || "+258845243875",
+          phone: process.env.ADMIN_WHATSAPP_NUMBER || "+258851006473",
           details,
           timestamp: new Date().toISOString(),
         }),

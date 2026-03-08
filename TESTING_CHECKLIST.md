@@ -69,7 +69,7 @@ cat .env.local
 3. Preenche:
    - Nome: "Teste Cliente"
    - Email: "teste@cliente.com"
-   - WhatsApp: "+258845243875"
+   - WhatsApp: "+258851006473"
    - Onde comprou: "Teste manual"
 4. Clica "Enviar Pedido"
 5. Verifica mensagem de sucesso

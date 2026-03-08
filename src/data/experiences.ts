@@ -26,12 +26,12 @@ export type Experience = {
 };
 
 export const PRICING = {
-  individual: { usd: 29, mt: 1885, brl: 119, eur: 27 },
-  pack3: { usd: 69, mt: 4485, brl: 279, eur: 64 },
-  journey: { usd: 149, mt: 9685, brl: 597, eur: 137 },
+  individual: { usd: 19, mt: 1200, brl: 79, eur: 18 },
+  pack3: { usd: 49, mt: 3100, brl: 199, eur: 46 },
+  journey: { usd: 99, mt: 6300, brl: 399, eur: 92 },
   // Savings
-  pack3Savings: 21, // percentage (3x$29=$87, pack=$69, saves $18 = ~21%)
-  journeySavings: 27, // percentage
+  pack3Savings: 14, // percentage (3x$19=$57, pack=$49, saves $8 = ~14%)
+  journeySavings: 25, // percentage (7x$19=$133, journey=$99, saves $34 = ~25%)
 } as const;
 
 // Status calculado dinamicamente com base na data actual.
@@ -56,10 +56,10 @@ const _experiences: Experience[] = [
     launchLabel: null,
     chapters: 7,
     practices: 4,
-    priceUSD: 29,
-    priceMT: 1885,
-    priceBRL: 119,
-    priceEUR: 27,
+    priceUSD: 19,
+    priceMT: 1200,
+    priceBRL: 79,
+    priceEUR: 18,
   },
   {
     slug: "veu-do-medo",
@@ -79,10 +79,10 @@ const _experiences: Experience[] = [
     launchLabel: "Março 2026",
     chapters: 7,
     practices: 4,
-    priceUSD: 29,
-    priceMT: 1885,
-    priceBRL: 119,
-    priceEUR: 27,
+    priceUSD: 19,
+    priceMT: 1200,
+    priceBRL: 79,
+    priceEUR: 18,
   },
   {
     slug: "veu-da-culpa",
@@ -102,10 +102,10 @@ const _experiences: Experience[] = [
     launchLabel: "Abril 2026",
     chapters: 7,
     practices: 4,
-    priceUSD: 29,
-    priceMT: 1885,
-    priceBRL: 119,
-    priceEUR: 27,
+    priceUSD: 19,
+    priceMT: 1200,
+    priceBRL: 79,
+    priceEUR: 18,
   },
   {
     slug: "veu-da-identidade",
@@ -125,10 +125,10 @@ const _experiences: Experience[] = [
     launchLabel: "Maio 2026",
     chapters: 7,
     practices: 4,
-    priceUSD: 29,
-    priceMT: 1885,
-    priceBRL: 119,
-    priceEUR: 27,
+    priceUSD: 19,
+    priceMT: 1200,
+    priceBRL: 79,
+    priceEUR: 18,
   },
   {
     slug: "veu-do-controlo",
@@ -148,10 +148,10 @@ const _experiences: Experience[] = [
     launchLabel: "Junho 2026",
     chapters: 7,
     practices: 4,
-    priceUSD: 29,
-    priceMT: 1885,
-    priceBRL: 119,
-    priceEUR: 27,
+    priceUSD: 19,
+    priceMT: 1200,
+    priceBRL: 79,
+    priceEUR: 18,
   },
   {
     slug: "veu-do-desejo",
@@ -171,10 +171,10 @@ const _experiences: Experience[] = [
     launchLabel: "Julho 2026",
     chapters: 7,
     practices: 4,
-    priceUSD: 29,
-    priceMT: 1885,
-    priceBRL: 119,
-    priceEUR: 27,
+    priceUSD: 19,
+    priceMT: 1200,
+    priceBRL: 79,
+    priceEUR: 18,
   },
   {
     slug: "veu-da-separacao",
@@ -194,10 +194,10 @@ const _experiences: Experience[] = [
     launchLabel: "Agosto 2026",
     chapters: 7,
     practices: 4,
-    priceUSD: 29,
-    priceMT: 1885,
-    priceBRL: 119,
-    priceEUR: 27,
+    priceUSD: 19,
+    priceMT: 1200,
+    priceBRL: 79,
+    priceEUR: 18,
   },
 ];
 

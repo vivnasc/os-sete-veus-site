@@ -126,7 +126,7 @@ Para quem quer começar:
 [LINK: seteveus.space/livro-fisico]
 
 → Livro físico — 1.500 MT (Moçambique)
-[LINK: WhatsApp]
+[LINK: Telegram]
 
 A partir de agora, envio apenas artigos novos e recursos gratuitos. Sem mais convites de compra.
 

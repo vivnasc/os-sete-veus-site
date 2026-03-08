@@ -182,8 +182,8 @@ export default function ComprarNoPage({ params }: { params: Promise<{ slug: stri
             Nós incluídos no Pack ou Jornada
           </h3>
           <p className="mx-auto mt-3 max-w-md text-sm text-brown-600">
-            O Pack 3 Espelhos ({moeda === 'MZN' ? `${(69 * 65).toLocaleString()} MZN` : '$69 USD'}) inclui 3 Nós gratuitamente.
-            A Jornada Completa ({moeda === 'MZN' ? `${(149 * 65).toLocaleString()} MZN` : '$149 USD'}) inclui todos os 7 Nos.
+            O Pack 3 Espelhos ({moeda === 'MZN' ? `${(49 * 65).toLocaleString()} MZN` : '$49 USD'}) inclui 3 Nós gratuitamente.
+            A Jornada Completa ({moeda === 'MZN' ? `${(99 * 65).toLocaleString()} MZN` : '$99 USD'}) inclui todos os 7 Nos.
           </p>
           <Link
             href="/comprar/espelhos"
