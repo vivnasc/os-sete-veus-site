@@ -70,7 +70,7 @@ const _nosCollection: NosBook[] = [
     image: "/images/capa-no-silencio2.png",
     color: "#6a9dbe",
     colorBg: "#142838",
-    status: "coming_soon",
+    status: "available",
     dataFile: "no-silencio",
     priceUSD: 8,
     priceMT: 500,

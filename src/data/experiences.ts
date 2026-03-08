@@ -74,7 +74,7 @@ const _experiences: Experience[] = [
     image: "/images/espelho-medo.png",
     color: "#8b9b8e",
     colorBg: "#f5f7f5",
-    status: "coming_soon",
+    status: "available",
     launchDate: "2026-03-01",
     launchLabel: "Março 2026",
     chapters: 7,
