@@ -74,8 +74,6 @@ const PRINTS = [
   { id: "recurso-wallpapers", src: "/images/recurso-wallpapers.png", label: "Recurso wallpapers" },
 ];
 
-// ─── MENSAGENS (presets de texto) ───────────────────────────────────────────
-
 // ─── MENSAGENS ────────────────────────────────────────────────────────────────
 // Tom: "Vejo-te, e há mais para ti." — Da Confrontação ao Convite
 // 5 pilares: O Mundo Convida · O Corpo Lembra · Fissura não Diagnóstico
@@ -148,7 +146,7 @@ const MENSAGENS = [
   {
     label: "Perguntar é começar",
     title: "Perguntar,\nmesmo tarde,\né o primeiro gesto\nde se escolher.",
-    subtitle: "Os 7 Véus do Despertar",
+    subtitle: "O Espelho da Ilusão",
     cta: "seteveus.space",
   },
 
@@ -172,8 +170,8 @@ const MENSAGENS = [
     cta: "seteveus.space",
   },
   {
-    label: "Ver o véu e continuar",
-    title: "Ver o véu.\nE continuar\nmesmo assim.",
+    label: "Ver o medo e continuar",
+    title: "Ver o medo.\nE continuar\nmesmo assim.",
     subtitle: "Não é fraqueza.\nÉ o custo que parece\nmaior do que\no custo de ficar.\n\nO Espelho do Medo.",
     cta: "seteveus.space",
   },
@@ -202,25 +200,25 @@ const MENSAGENS = [
   {
     label: "Eco ~ acordar",
     title: '"saí do modo automático.\nnão sei para onde vou\nmas pelo menos\nestou acordada."',
-    subtitle: "~ leitora anónima, Véu 1",
+    subtitle: "~ leitora anónima, Espelho da Ilusão",
     cta: "seteveus.space",
   },
   {
     label: "Eco ~ reconhecimento",
     title: '"chorei no banho.\noutra vez.\nmas desta vez\nnão foi por tristeza.\nfoi por reconhecimento."',
-    subtitle: "~ leitora anónima, Véu 1",
+    subtitle: "~ leitora anónima, Espelho da Ilusão",
     cta: "seteveus.space",
   },
   {
     label: "Eco ~ automático",
     title: '"o meu marido perguntou\nestás bem?\ne eu disse que sim.\nautomaticamente."',
-    subtitle: "~ leitora anónima, Véu 1",
+    subtitle: "~ leitora anónima, Espelho da Ilusão",
     cta: "seteveus.space",
   },
   {
     label: "Eco ~ silêncio",
     title: '"o silêncio entre nós\nnão era paz.\nera tudo o que\nnunca dissemos."',
-    subtitle: "~ leitora anónima, Véu 2",
+    subtitle: "~ leitora anónima, Espelho do Medo",
     cta: "seteveus.space",
   },
 
