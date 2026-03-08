@@ -71,7 +71,7 @@ const _nosCollection: NosBook[] = [
     color: "#6a9dbe",
     colorBg: "#142838",
     status: "coming_soon",
-    dataFile: null,
+    dataFile: "no-silencio",
     priceUSD: 8,
     priceMT: 500,
     priceBRL: 49,
