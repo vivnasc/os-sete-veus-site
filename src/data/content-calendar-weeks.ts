@@ -375,15 +375,15 @@ const week3: WeekPlan = {
       slots: [
         {
           platform: "instagram",
-          type: "Carrossel (N\u00f3 da Heran\u00e7a)",
-          carousel: [
-            { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "A m\u00e3e sempre viu.\nEsperou anos.", body: "Agora que Sara acordou,\nHelena tem algo\npara lhe dizer.", footer: "O N\u00f3 da Heran\u00e7a", bgImage: "/images/mandala-7veus.png" },
-            { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Os Espelhos\nolham para dentro.", body: "Os N\u00f3s olham\npara a rela\u00e7\u00e3o.\n\nO que se passa entre\nduas pessoas quando\no v\u00e9u cai.", footer: "" },
-            { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Sara e Helena.\nM\u00e3e e filha.", body: "O sil\u00eancio herdado\nentre elas.\nO que nunca foi dito\ne que agora\nprecisa de voz.", footer: "" },
-            { bg: "#ebe7df", text: "#3d3630", accent: "#7a8c6e", title: "S\u00f3 se desbloqueia\nao completar\no Espelho da Ilus\u00e3o.", body: "N\u00e3o \u00e9 upsell.\n\u00c9 continua\u00e7\u00e3o emocional.\nO N\u00f3 \u00e9 o que acontece\ndepois do despertar.", footer: "" },
-            { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "O N\u00f3 da Heran\u00e7a", body: "$8 USD / 500 MZN\n\nInclu\u00eddo no Pack 3\ne na Jornada Completa.", footer: "seteveus.space/colec\u00e7\u00e3o-nos" },
-          ],
-          caption: "Os Espelhos olham para dentro.\nOs N\u00f3s olham para a rela\u00e7\u00e3o.\n\nO N\u00f3 da Heran\u00e7a \u00e9 a hist\u00f3ria de Sara e Helena \u2014 m\u00e3e e filha \u2014 e o sil\u00eancio herdado entre elas.\n\nS\u00f3 se desbloqueia ao completar o Espelho da Ilus\u00e3o. N\u00e3o \u00e9 upsell — \u00e9 continua\u00e7\u00e3o emocional.\n\n$8 USD / 500 MZN. Inclu\u00eddo no Pack 3 e na Jornada Completa.\n\n#OsSeteV\u00e9us #N\u00f3DaHeran\u00e7a #Fic\u00e7\u00e3oRelacional #Colec\u00e7\u00e3oN\u00f3s",
+          type: "Post Feed",
+          visual: {
+            bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", format: "square",
+            title: "A m\u00e3e sempre viu.\nEsperou anos.",
+            body: "Agora que Sara acordou,\nHelena tem algo\npara lhe dizer.",
+            footer: "O N\u00f3 da Heran\u00e7a ~ seteveus.space",
+            highlight: "Colec\u00e7\u00e3o N\u00f3s",
+          },
+          caption: "Os Espelhos olham para dentro.\nOs N\u00f3s olham para a rela\u00e7\u00e3o.\n\nO N\u00f3 da Heran\u00e7a \u00e9 a hist\u00f3ria de Sara e Helena \u2014 m\u00e3e e filha \u2014 é o sil\u00eancio herdado entre elas.\n\nS\u00f3 se desbloqueia ao completar o Espelho da Ilus\u00e3o.\n\n#OsSeteV\u00e9us #N\u00f3DaHeran\u00e7a #Fic\u00e7\u00e3oRelacional",
         },
       ],
     },
@@ -394,16 +394,15 @@ const week3: WeekPlan = {
       slots: [
         {
           platform: "instagram",
-          type: "Carrossel (Comunidade Ecos)",
-          carousel: [
-            { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Onde as vozes\nse encontram.", body: "", footer: "Comunidade Ecos", bgImage: "/images/mandala-7veus.png" },
-            { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "Ecos", body: "Reflex\u00f5es an\u00f3nimas\npartilhadas por leitoras.\nImpermanentes.\nExpiram em 30 dias.", footer: "" },
-            { bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", title: "Mar\u00e9", body: "Consci\u00eancia colectiva.\nO que o grupo sente\nneste momento.\nVisualiza\u00e7\u00e3o an\u00f3nima.", footer: "" },
-            { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "C\u00edrculo", body: "Espelho partilhado.\nGrupos de 7 pessoas.\nReflex\u00f5es em conjunto.\nExpira em 14 dias.", footer: "" },
-            { bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", title: "Fogueira", body: "Contempla\u00e7\u00e3o silenciosa.\nSess\u00f5es agendadas\npela Vivianne.\nTempo limitado.", footer: "" },
-            { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Tudo an\u00f3nimo.\nTudo impermanente.", body: "Inclu\u00edda com qualquer\nexperi\u00eancia de leitura.", footer: "seteveus.space/comunidade" },
-          ],
-          caption: "A comunidade Ecos \u00e9 o espa\u00e7o onde as vozes se encontram.\n\nQuatro salas:\nEcos \u2014 reflex\u00f5es an\u00f3nimas\nMar\u00e9 \u2014 consci\u00eancia colectiva\nC\u00edrculo \u2014 espelho partilhado\nFogueira \u2014 contempla\u00e7\u00e3o silenciosa\n\nTudo an\u00f3nimo. Tudo impermanente.\nInclu\u00edda com qualquer experi\u00eancia de leitura.\n\n#OsSeteV\u00e9us #ComunidadeEcos #Autoconhecimento",
+          type: "Post Feed",
+          visual: {
+            bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", format: "square",
+            title: "Onde as vozes\nse encontram.",
+            body: "Ecos. Mar\u00e9. C\u00edrculo. Fogueira.\n\nQuatro salas.\nTudo an\u00f3nimo.\nTudo impermanente.",
+            footer: "Comunidade Ecos ~ seteveus.space",
+            highlight: "Comunidade",
+          },
+          caption: "A comunidade Ecos \u00e9 o espa\u00e7o onde as vozes se encontram.\n\nQuatro salas:\nEcos \u2014 reflex\u00f5es an\u00f3nimas\nMar\u00e9 \u2014 consci\u00eancia colectiva\nC\u00edrculo \u2014 espelho partilhado\nFogueira \u2014 contempla\u00e7\u00e3o silenciosa\n\nTudo an\u00f3nimo. Tudo impermanente.\nInclu\u00edda com qualquer experi\u00eancia de leitura.\n\n#OsSeteV\u00e9us #ComunidadeEcos",
         },
       ],
     },
@@ -414,12 +413,14 @@ const week3: WeekPlan = {
       slots: [
         {
           platform: "instagram",
-          type: "Story / Carrossel vertical",
-          carousel: [
-            { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "O N\u00f3\nda Heran\u00e7a", body: "O que se passa entre\nm\u00e3e e filha quando\no v\u00e9u cai.", footer: "" },
-            { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Sara e Helena.", body: "O sil\u00eancio herdado.\nAnos de palavras\nque ficaram por dizer.", footer: "" },
-            { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "$8 USD / 500 MZN", body: "S\u00f3 se desbloqueia\nao completar\no Espelho da Ilus\u00e3o.", footer: "seteveus.space/colec\u00e7\u00e3o-nos" },
-          ],
+          type: "Story",
+          visual: {
+            bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "vertical",
+            title: "O N\u00f3\nda Heran\u00e7a",
+            body: "O que se passa entre\nm\u00e3e e filha quando\no v\u00e9u cai.\n\nSara e Helena.\nO sil\u00eancio herdado.",
+            footer: "$8 USD ~ seteveus.space",
+            highlight: "Novo",
+          },
         },
         {
           platform: "whatsapp",
@@ -755,8 +756,8 @@ const week5: WeekPlan = {
             body: "",
             footer: "Swipe para descobrir ~",
           },
-          notes: "SLIDES DO CARROSSEL:\n\nSlide 1 (capa): Fundo #ebe7df\n\"O que é a colecção Espelhos?\"\nImagem: Print da página seteveus.space/experiencias\n\nSlide 2: Fundo #f7f5f0\n\"7 experiências de leitura imersiva.\nCada uma revela um véu diferente.\nIlusão. Medo. Culpa. Identidade.\nControlo. Desejo. Separação.\"\n\nSlide 3: Fundo #ebe7df\n\"Cada experiência inclui:\n7 capítulos de ficção\nRespiração guiada\nDiário de reflexão\nO teu Espelho pessoal\"\nImagem: Print do leitor com capítulos\n\nSlide 4: Fundo #f7f5f0\n\"Disponível agora:\nO Espelho da Ilusão — $19 USD\n\nEm breve:\nO Espelho do Medo — Março 2026\"\nImagem: Print da página de compra\n\nSlide 5 (CTA): Fundo #3d3630, texto #c9b896\n\"Começa pelo teste gratuito.\nDescobre qual véu te esconde.\nseteveus.space/recursos/teste\"",
-          caption: "A colecção Espelhos são 7 experiências de leitura imersiva.\n\nCada uma revela um véu diferente. Cada véu esconde algo que precisas de ver.\n\nDisponível agora: O Espelho da Ilusão\nEm breve: O Espelho do Medo (Março 2026)\n\nComeça pelo teste gratuito.\n\n#OsSeteVeus #ColeccaoEspelhos #Autoconhecimento #LeituraImersiva",
+          notes: "SLIDES DO CARROSSEL:\n\nSlide 1 (capa): Fundo #ebe7df\n\"O que é a colecção Espelhos?\"\nImagem: Print da página seteveus.space/experiencias\n\nSlide 2: Fundo #f7f5f0\n\"7 experiências de leitura imersiva.\nCada uma revela um véu diferente.\nIlusão. Medo. Culpa. Identidade.\nControlo. Desejo. Separação.\"\n\nSlide 3: Fundo #ebe7df\n\"Cada experiência inclui:\n7 capítulos de ficção\nRespiração guiada\nDiário de reflexão\nO teu Espelho pessoal\"\nImagem: Print do leitor com capítulos\n\nSlide 4: Fundo #f7f5f0\n\"Disponível agora:\nO Espelho da Ilusão — $19 USD\n\nEm breve:\nO Espelho do Medo — Março 2026\"\nImagem: Print da página de compra\n\nSlide 5 (CTA): Fundo #3d3630, texto #c9b896\n\"Reconheces-te nalgum deles?\nComeca pelo teste gratuito.\nseteveus.space/recursos/teste\"",
+          caption: "A coleccao Espelhos sao 7 experiencias de leitura imersiva.\n\nCada uma ilumina algo diferente em ti. Algo que ja sabes mas ainda nao disseste.\n\nDisponível agora: O Espelho da Ilusão\nEm breve: O Espelho do Medo (Março 2026)\n\nComeça pelo teste gratuito.\n\n#OsSeteVeus #ColeccaoEspelhos #Autoconhecimento #LeituraImersiva",
         },
         {
           platform: "whatsapp",
@@ -949,7 +950,6 @@ const week6: WeekPlan = {
             body: "Acesso vitalício.\nSem subscrições.",
             footer: "seteveus.space/comprar",
           },
-          broadcast: "Sabes quanto custa escolher-te?\n\nEspelho da Ilusão: $19 USD (1.200 MZN)\nNó da Herança: $8 USD (500 MZN)\n\nAcesso vitalício. Sem subscrições.\nPayPal, M-Pesa ou Millenium BIM.\n\nComeça por aqui:\nseteveus.space/comprar\n\n~ Vivianne",
         },
       ],
     },
@@ -1496,6 +1496,7 @@ const weekOnboarding: WeekPlan = {
     },
   ],
 };
+
 
 // ─── SEMANA LANCAMENTO: ESPELHO DO MEDO ──────────────────────────────────────
 
@@ -2321,104 +2322,6 @@ export const professionalCarousels: ProfessionalCarousel[] = [
       colorPalette: ["#ebe7df", "#3d3630", "#c9b896", "#2a2420", "#f7f5f0"],
     },
   },
-  // ─── NÓ DA HERANÇA — CARROSSEL ───────────────────────────────────────────────
-  {
-    id: "carousel-no-heranca",
-    title: "O Nó da Herança — Sara e Helena",
-    description: "Carrossel de apresentação do Nó da Herança. Para quem já conhece o Espelho da Ilusão.",
-    slides: [
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "A mãe sempre viu.\nEsperou anos.", body: "", footer: "O Nó da Herança", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Os Espelhos\nolham para dentro.", body: "Os Nós olham\npara a relação.\n\nO que se passa entre\nduas pessoas quando\no véu cai.", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Sara e Helena.\nMãe e filha.", body: "O silêncio herdado\nentre elas.\nO que nunca foi dito\ne que agora\nprecisa de voz.", footer: "" },
-      { bg: "#ebe7df", text: "#3d3630", accent: "#7a8c6e", title: "Só se desbloqueia\nao completar\no Espelho da Ilusão.", body: "Não é upsell.\nÉ continuação emocional.\nO Nó é o que acontece\ndepois do despertar.", footer: "" },
-      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "O Nó da Herança", body: "$8 USD / 500 MZN\n\nIncluído no Pack 3\ne na Jornada Completa.", footer: "seteveus.space/colecção-nos" },
-    ],
-    caption: "A mãe sempre viu. Esperou anos.\n\nOs Espelhos olham para dentro. Os Nós olham para a relação.\n\nO Nó da Herança é a história de Sara e Helena — mãe e filha — e o silêncio herdado entre elas. Só se desbloqueia ao completar o Espelho da Ilusão.\n\nNão é upsell. É continuação emocional.\n\n$8 USD / 500 MZN. Incluído no Pack 3 e na Jornada Completa.\n\nseteveus.space/colecção-nos\n\n#OsSeteVéus #NóDaHerança #ColecçãoNós #FicçãoRelacional #Autoconhecimento",
-    canvaSpecs: {
-      dimensions: "1080x1080px (quadrado)",
-      fonts: "Titulo: Playfair Display Bold / Corpo: Inter",
-      colorPalette: ["#ebe7df", "#3d3630", "#c9b896", "#7a8c6e", "#f7f5f0"],
-    },
-  },
-  // ─── ESPELHO DO MEDO — CARROSSEIS DE LANCAMENTO ────────────────────────────
-  {
-    id: "carousel-medo-lancamento",
-    title: "LANCAMENTO: O Espelho do Medo",
-    description: "Carrossel de anuncio do lancamento do segundo espelho. Para o dia do lancamento.",
-    slides: [
-      { bg: "#8b9b8e", text: "#f7f5f0", accent: "#ebe7df", title: "O segundo espelho\nchegou.", body: "", footer: "O Espelho do Medo ~ Disponivel agora", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#f5f7f5", text: "#3d3630", accent: "#8b9b8e", title: "Rui tem quarenta\ne dois anos.", body: "Familia funcional.\nCarreira estavel.\nTudo organizado\npara funcionar.\n\nNada se move.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#8b9b8e", title: "\"O meu pai esta\nsempre em casa\nmas as vezes parece\nque nao esta.\"", body: "Miguel, 9 anos.\nApresentacao escolar\nsobre a familia.", footer: "" },
-      { bg: "#f5f7f5", text: "#3d3630", accent: "#5d7a6d", title: "7 capitulos.\n7 territorios\nonde Rui ficou\npara tras.", body: "Corpo. Trabalho.\nPaternidade. Amizades.\nTempo livre. Intimidade.\nIdentidade.", footer: "" },
-      { bg: "#8b9b8e", text: "#f7f5f0", accent: "#ebe7df", title: "Nao e sobre colapso.\nNao e sobre despertar.", body: "E sobre a paralisia\nlucida que se instala\nquando nada obriga\na mudar.\n\n$19 USD / 1.200 MZN\nAcesso vitalicio.", footer: "seteveus.space/experiencias" },
-    ],
-    caption: "O segundo espelho chegou.\n\nO Espelho do Medo e a historia de Rui — um homem que vive tecnicamente mas permanece existencialmente imovel.\n\n42 anos. Familia funcional. Carreira estavel. Tudo organizado para funcionar. Nada se move.\n\n\"O meu pai esta sempre em casa mas as vezes parece que nao esta.\" — Miguel, 9 anos.\n\n7 capitulos. 7 territorios onde Rui ficou para tras.\n$19 USD / 1.200 MZN. Acesso vitalicio.\n\nseteveus.space/experiencias\n\n#OsSeteVeus #EspelhoDoMedo #Lancamento #Autoconhecimento #FiccaoPsicologica #LeituraImersiva",
-    canvaSpecs: {
-      dimensions: "1080x1080px (quadrado)",
-      fonts: "Titulo: Playfair Display Bold / Corpo: Inter",
-      colorPalette: ["#8b9b8e", "#f5f7f5", "#3d3630", "#5d7a6d", "#ebe7df"],
-    },
-  },
-  {
-    id: "carousel-medo-sabias-que",
-    title: "Sabias que? — O Espelho do Medo",
-    description: "Carrossel 'Voce sabia que?' com factos sobre o medo como modo de vida. Altamente partilhavel.",
-    slides: [
-      { bg: "#f5f7f5", text: "#3d3630", accent: "#8b9b8e", title: "Sabias que...", body: "O medo nao e\numa emocao pontual.\nE um modo de vida.", footer: "Espelho do Medo ~ seteveus.space" },
-      { bg: "#8b9b8e", text: "#f7f5f0", accent: "#ebe7df", title: "Sabias que\na maioria das decisoes\nque tomas por dia\nsao baseadas no medo?", body: "Nao por covardia.\nPor habito.\nPor um mecanismo antigo\nque confunde prudencia\ncom prisao.", footer: "" },
-      { bg: "#f5f7f5", text: "#3d3630", accent: "#5d7a6d", title: "Sabias que\no medo se disfarza\nde bom senso?", body: "De maturidade.\nDe responsabilidade.\nAte ja nao conseguires\ndistingui-lo de\numa escolha consciente.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#8b9b8e", title: "Sabias que\na paralisia lucida\ne mais comum\ndo que pensas?", body: "Ver o veu.\nSaber que esta ali.\nE continuar.\nPorque o custo de sair\nparece maior\ndo que o custo de ficar.", footer: "" },
-      { bg: "#f5f7f5", text: "#3d3630", accent: "#8b9b8e", title: "Sabias que\num gesto minimo\npode mudar tudo?", body: "Um cha aceite.\nUma planta comprada.\nUma mensagem respondida.\nUm lapis que volta\na tocar papel.", footer: "" },
-      { bg: "#8b9b8e", text: "#f7f5f0", accent: "#ebe7df", title: "O Espelho do Medo\nexplora tudo isto.", body: "7 capitulos. Rui.\nUma semana de paralisia\nlucida e um talvez.\n\n$19 USD / 1.200 MZN", footer: "seteveus.space/experiencias" },
-    ],
-    caption: "Sabias que o medo nao e uma emocao pontual — e um modo de vida?\n\nSabias que a maioria das tuas decisoes sao baseadas no medo? Nao por covardia — por habito.\n\nSabias que o medo se disfarza de bom senso, maturidade, responsabilidade?\n\nSabias que a paralisia lucida — ver tudo e continuar parado — e mais comum do que pensas?\n\nSabias que um gesto minimo pode mudar tudo? Um cha aceite. Uma planta. Um lapis que volta a tocar papel.\n\nO Espelho do Medo — disponivel agora.\nseteveus.space/experiencias\n\nGuarda esta publicacao.\n\n#OsSeteVeus #EspelhoDoMedo #SabiasQue #Autoconhecimento #Medo #ParalisiaLucida",
-    canvaSpecs: {
-      dimensions: "1080x1080px (quadrado)",
-      fonts: "Titulo: Playfair Display Bold / Corpo: Inter Light",
-      colorPalette: ["#f5f7f5", "#3d3630", "#8b9b8e", "#5d7a6d", "#ebe7df"],
-    },
-  },
-  {
-    id: "carousel-medo-citacoes",
-    title: "O Espelho do Medo — 5 citacoes",
-    description: "Carrossel de citacoes reais do livro. Cada slide e uma frase que para o scroll.",
-    slides: [
-      { bg: "#3d3630", text: "#8b9b8e", accent: "#f7f5f0", title: "5 frases do\nEspelho do Medo\nque nao te largam.", body: "", footer: "Guarda esta publicacao.", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#f5f7f5", text: "#3d3630", accent: "#8b9b8e", title: "\"O meu pai esta\nsempre em casa\nmas as vezes parece\nque nao esta.\"", body: "Miguel, 9 anos.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#8b9b8e", title: "\"A vida e basicamente\nisto: espumante\nno funeral.\"", body: "Bruno, de quando\nainda riam.", footer: "" },
-      { bg: "#8b9b8e", text: "#f7f5f0", accent: "#ebe7df", title: "\"A sede de quem\npassou tanto tempo\nsem beber que se\nesqueceu de que\ntinha sede.\"", body: "", footer: "" },
-      { bg: "#f5f7f5", text: "#3d3630", accent: "#5d7a6d", title: "\"O medo nao e\nfrancasso.\nO medo e humano.\nMas viver uma vida\ninteira em funcao\ndo medo...\"", body: "\"...isso nao e\nprudencia.\nE desistencia\ndisfarcada\nde maturidade.\"", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#8b9b8e", title: "\"Ha um talvez.\nMinusculo. Fragil.\nQuase inaudivel.\nMas novo.\"", body: "", footer: "seteveus.space/experiencias", bgImage: "/images/mandala-7veus.png" },
-    ],
-    caption: "5 frases do Espelho do Medo que nao te largam.\n\n\"O meu pai esta sempre em casa mas as vezes parece que nao esta.\"\n\n\"A vida e basicamente isto: espumante no funeral.\"\n\n\"A sede de quem passou tanto tempo sem beber que se esqueceu de que tinha sede.\"\n\n\"O medo nao e fracasso. Mas viver uma vida inteira em funcao do medo nao e prudencia. E desistencia disfarcada de maturidade.\"\n\n\"Ha um talvez. Minusculo. Fragil. Quase inaudivel. Mas novo.\"\n\nGuarda esta publicacao. Volta quando precisares.\n\nseteveus.space/experiencias\n\n#OsSeteVeus #EspelhoDoMedo #Citacoes #FiccaoPsicologica #Autoconhecimento",
-    canvaSpecs: {
-      dimensions: "1080x1080px (quadrado)",
-      fonts: "Citacoes: Playfair Display Italic / Fonte: Inter Light",
-      colorPalette: ["#3d3630", "#f5f7f5", "#8b9b8e", "#5d7a6d", "#ebe7df"],
-    },
-  },
-  {
-    id: "carousel-medo-7-territorios",
-    title: "Os 7 territorios do medo",
-    description: "Carrossel educativo. Cada slide apresenta um territorio explorado no livro. Altamente guardavel.",
-    slides: [
-      { bg: "#8b9b8e", text: "#f7f5f0", accent: "#ebe7df", title: "Os 7 territorios\nonde o medo\nnos prende.", body: "", footer: "Guarda esta publicacao.", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#7a8a7d", text: "#f7f5f0", accent: "#ebe7df", title: "1. O corpo", body: "Acorda sozinho.\nFunciona sozinho.\nA mao nao se move\npara tocar\nquem dorme ao lado.", footer: "" },
-      { bg: "#6d8a7d", text: "#f7f5f0", accent: "#ebe7df", title: "2. O trabalho", body: "Competencia sem\nentusiasmo.\nMuseus impossiveis\nguardados numa gaveta.", footer: "" },
-      { bg: "#5d7a6d", text: "#f7f5f0", accent: "#ebe7df", title: "3. A paternidade", body: "\"Tens tudo?\"\nquando queria dizer\n\"Importas-me.\"", footer: "" },
-      { bg: "#4d6a5d", text: "#f7f5f0", accent: "#ebe7df", title: "4. As amizades", body: "Convite. Hesitacao.\nAdiamento. Alivio.\nCulpa. Repeticao.", footer: "" },
-      { bg: "#8b9b8e", text: "#f7f5f0", accent: "#ebe7df", title: "5. O tempo livre", body: "Um corredor sem portas.\nOpcoes visiveis\nmas nenhuma chama.", footer: "" },
-      { bg: "#7d9b8e", text: "#f7f5f0", accent: "#ebe7df", title: "6. A intimidade", body: "A sede reconhecida.\nUm cha aceite\npela primeira vez.", footer: "" },
-      { bg: "#6d8b7e", text: "#f7f5f0", accent: "#ebe7df", title: "7. A identidade", body: "Uma fotografia antiga.\nUm homem que ria.\nOnde esta esse\nhomem agora?", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#8b9b8e", title: "Em qual destes\nte reconheces?", body: "$19 USD / 1.200 MZN\nAcesso vitalicio.", footer: "seteveus.space/experiencias" },
-    ],
-    caption: "Os 7 territorios onde o medo nos prende:\n\n1. O corpo — que funciona sozinho sem presenca\n2. O trabalho — competencia sem entusiasmo\n3. A paternidade — \"tens tudo?\" quando queria dizer \"importas-me\"\n4. As amizades — suspensas, nao mortas\n5. O tempo livre — um corredor sem portas\n6. A intimidade — a sede reconhecida\n7. A identidade — onde esta quem eu era?\n\nEm qual te reconheces?\n\nO Espelho do Medo — seteveus.space/experiencias\n\n#OsSeteVeus #EspelhoDoMedo #Os7Territorios #Autoconhecimento #FiccaoPsicologica",
-    canvaSpecs: {
-      dimensions: "1080x1080px (quadrado)",
-      fonts: "Titulo: Playfair Display Bold / Corpo: Inter Light",
-      colorPalette: ["#8b9b8e", "#7a8a7d", "#6d8a7d", "#5d7a6d", "#4d6a5d", "#3d3630"],
-    },
-  },
 ];
 
 // ─── SCRIPTS DE REELS ────────────────────────────────────────────────────────
@@ -2520,9 +2423,9 @@ export const reelScripts: ReelScript[] = [
       "CENA 4 (13-18s): \"3. Uma comunidade anónima onde ninguém te conhece mas todos se reconhecem.\" [screenshot Ecos]",
       "CENA 5 (18-23s): \"4. Histórias que se desbloqueiam ao teu ritmo.\" [screenshot do leitor]",
       "CENA 6 (23-28s): \"5. Um chatbot de apoio com a voz da autora.\" [screenshot do chat]",
-      "CENA 7 (28-33s): \"$19 USD. Acesso vitalício. Link na bio.\" [CTA]",
+      "CENA 7 (28-33s): \"$19 USD. Acesso vitalício..\" [CTA]",
     ],
-    cta: "Link na bio. $19 USD. Acesso vitalício.",
+    cta: "$19 USD. Acesso vitalício.",
     music: "Ritmo suave e moderno. No CapCut: 'Soft Pop' ou 'Modern Minimal'",
     duration: "30-33s",
   },
