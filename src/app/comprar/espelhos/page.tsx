@@ -7,6 +7,7 @@ import { useAuth } from '@/components/AuthProvider'
 import { experiences, PRICING } from '@/data/experiences'
 import Image from 'next/image'
 import { nosCollection, NOS_PRICING } from '@/data/nos-collection'
+import { NosBookCover } from '@/components/NosBookCover'
 import type { Experience } from '@/data/experiences'
 
 type PaymentMethod = 'mpesa' | 'paypal'
@@ -176,9 +177,11 @@ export default function ComprarPage() {
                   {/* Nó correspondente */}
                   {no && (
                     <div className="mt-5 flex items-center gap-3 rounded-lg border border-[#c9956a]/20 bg-[#c9956a]/5 px-4 py-3">
-                      <Image
+                      <NosBookCover
                         src={no.image}
                         alt={no.title}
+                        title={no.title}
+                        color={no.color}
                         width={36}
                         height={54}
                         className="shrink-0 rounded shadow-sm"
