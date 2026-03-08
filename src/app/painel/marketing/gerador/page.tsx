@@ -76,18 +76,73 @@ const PRINTS = [
 
 // ─── MENSAGENS (presets de texto) ───────────────────────────────────────────
 
+// ─── MENSAGENS ────────────────────────────────────────────────────────────────
+// Tom: "Vejo-te, e há mais para ti." — Da Confrontação ao Convite
+// 5 pilares: O Mundo Convida · O Corpo Lembra · Fissura não Diagnóstico
+//             Presença Compassiva · Densidade que Respira
+// Regra de ouro: a leitora sai a sentir-se vista, acompanhada, com porta aberta.
+// Nunca: diagnosticada, julgada, mais pesada.
+
 const MENSAGENS = [
-  // ─── Filosofia e profundidade ───
+  // ─── Assinatura ───
   {
-    label: "Véus que escondem",
-    title: "Há coisas que sabes\nmas que ainda não\nte deixaste ouvir.",
-    subtitle: "Os 7 Véus do Despertar\nUm livro que não te diz o que fazer.\nMostra-te o que já sabes.",
+    label: "Há mais para ti",
+    title: "Há mais para ti.",
+    subtitle: "Não como promessa.\nComo observação.\nDe alguém que\ntambém passou por aqui.",
+    cta: "seteveus.space",
+  },
+
+  // ─── O Mundo Convida ───
+  {
+    label: "A manhã bonita",
+    title: "A manhã era bonita\nde uma forma que\nnão pedia esforço\npara ser notada.",
+    subtitle: "Ela ainda não sabia\no que fazer com essa beleza.",
+    cta: "O Espelho da Ilusão ~ seteveus.space",
+  },
+  {
+    label: "Rotina que sustenta",
+    title: "Há uma diferença\nentre rotina que\nsustenta e rotina\nque adormece.",
+    subtitle: "Qual é a tua?",
+    cta: "seteveus.space",
+  },
+
+  // ─── Convite e reconhecimento ───
+  {
+    label: "Reconheces-te?",
+    title: "Reconheces-te\nnisto?",
+    subtitle: "Não é diagnóstico.\nÉ reconhecimento.\nE no reconhecimento,\nalgo começa a mover-se.",
     cta: "seteveus.space",
   },
   {
-    label: "Não é autoajuda",
-    title: "Não é autoajuda.\nNão é terapia.\nÉ um espelho.",
-    subtitle: "Um livro que te devolve\naquilo que sempre foi teu.",
+    label: "Talvez",
+    title: "Talvez.",
+    subtitle: "Minúsculo. Frágil.\nQuase inaudível.\nMas novo.\n\nÉ a primeira coisa viva.",
+    cta: "seteveus.space",
+  },
+  {
+    label: "E se começasses",
+    title: "E se\ncomecasses\npor aqui?",
+    subtitle: "Sem promessa de mudança.\nSó um primeiro olhar.",
+    cta: "seteveus.space/recursos/teste",
+  },
+
+  // ─── Espelho da Ilusão ───
+  {
+    label: "Quando foi que",
+    title: "Quando foi que\nescolhi tomar café\nem vez de chá?",
+    subtitle: "Uma pergunta absurda\nque muda tudo.\n\nO Espelho da Ilusão.",
+    cta: "seteveus.space",
+  },
+  {
+    label: "O corpo lembra",
+    title: "Houve um tempo\nem que ficava sentada\na beber devagar,\na olhar pela janela.",
+    subtitle: "O corpo lembra\nmesmo quando\na mente esqueceu.",
+    cta: "O Espelho da Ilusão ~ seteveus.space",
+  },
+  {
+    label: "A ilusão mais perigosa",
+    title: "A ilusão mais\nperigosa é acreditar\nque escolheste\nquando apenas\nrepetiste.",
+    subtitle: "O Espelho da Ilusão",
     cta: "seteveus.space",
   },
   {
@@ -96,37 +151,53 @@ const MENSAGENS = [
     subtitle: "Os 7 Véus do Despertar",
     cta: "seteveus.space",
   },
+
+  // ─── Espelho do Medo ───
   {
-    label: "Modo automático",
-    title: "Quantas decisões\ntomaste hoje\nsem escolher?",
-    subtitle: "O Espelho da Ilusão é o primeiro.\nO mais silencioso.\nE o mais comum.",
-    cta: "seteveus.space",
-  },
-  // ─── Experiência digital ───
-  {
-    label: "Três formas de ler",
-    title: "O mesmo livro.\nTrês profundidades\ndiferentes.",
-    subtitle: "Semente ~ guia acessível\nRaiz ~ contexto filosófico\nÁrvore ~ texto original\n\nTu escolhes a profundidade.",
-    cta: "seteveus.space",
+    label: "O medo é humano",
+    title: "O medo é humano.\nViver uma vida inteira\nem função dele\né outra coisa.",
+    subtitle: "E essa outra coisa\npode mudar.",
+    cta: "O Espelho do Medo ~ seteveus.space",
   },
   {
-    label: "Ler e escrever",
-    title: "Ler sem escrever\né como olhar\npara um espelho\nde olhos fechados.",
-    subtitle: "Diário reflexivo integrado.\nAs tuas palavras, guardadas para sempre.",
+    label: "Museus impossíveis",
+    title: "E se os dedos\nque um dia desenharam\nmuseus impossíveis\nainda souberem\nmover-se?",
+    subtitle: "O Espelho do Medo",
     cta: "seteveus.space",
   },
   {
-    label: "Respirar entre capítulos",
-    title: "Entre cada capítulo,\numa pausa.\nTrês respirações.\nO corpo também lê.",
-    subtitle: "Respiração guiada integrada\nna experiência de leitura.",
+    label: "A sede",
+    title: "A sede de quem\npassou tanto tempo\nsem beber que\nse esqueceu\nde que tinha sede.",
+    subtitle: "O Espelho do Medo, Parte VI",
     cta: "seteveus.space",
   },
   {
-    label: "Sozinha mas não só",
-    title: "Lês sozinha.\nMas não estás só.",
-    subtitle: "Comunidade Ecos\nReflexões anónimas.\nReconhecimentos silenciosos.\nTudo desaparece.",
-    cta: "seteveus.space/comunidade",
+    label: "Ver o véu e continuar",
+    title: "Ver o véu.\nE continuar\nmesmo assim.",
+    subtitle: "Não é fraqueza.\nÉ o custo que parece\nmaior do que\no custo de ficar.\n\nO Espelho do Medo.",
+    cta: "seteveus.space",
   },
+  {
+    label: "O talvez do Rui",
+    title: "\"Amanhã será\nsegunda-feira.\nProvavelmente\ntudo se repetirá.\nMas há agora\num talvez.\"",
+    subtitle: "O Espelho do Medo, Epílogo",
+    cta: "seteveus.space",
+  },
+
+  // ─── Nós ───
+  {
+    label: "Nó da Herança",
+    title: "A mãe sempre viu.\nEsperou anos.\nAgora que Sara acordou,\nHelena tem algo\npara lhe dizer.",
+    subtitle: "O Nó da Herança\nO silêncio herdado\nentre mãe e filha.",
+    cta: "seteveus.space",
+  },
+  {
+    label: "Nó do Silêncio",
+    title: "O medo calou\ntudo o que\nela queria dizer.",
+    subtitle: "O Nó do Silêncio\nEm breve.",
+    cta: "seteveus.space",
+  },
+
   // ─── Ecos da comunidade ───
   {
     label: "Eco ~ acordar",
@@ -152,6 +223,39 @@ const MENSAGENS = [
     subtitle: "~ leitora anónima, Véu 2",
     cta: "seteveus.space",
   },
+
+  // ─── Experiência digital ───
+  {
+    label: "Três formas de ler",
+    title: "O mesmo livro.\nTrês profundidades\ndiferentes.",
+    subtitle: "Semente ~ guia acessível\nRaiz ~ contexto filosófico\nÁrvore ~ texto original\n\nTu escolhes.",
+    cta: "seteveus.space",
+  },
+  {
+    label: "Ler e escrever",
+    title: "Ler sem escrever\né como olhar\npara um espelho\nde olhos fechados.",
+    subtitle: "Diário reflexivo integrado.\nSó tu lês.",
+    cta: "seteveus.space",
+  },
+  {
+    label: "Respirar entre capítulos",
+    title: "Entre cada capítulo,\numa pausa.\nTrês respirações.\nO corpo também lê.",
+    subtitle: "Respiração guiada integrada\nna experiência de leitura.",
+    cta: "seteveus.space",
+  },
+  {
+    label: "Sozinha mas não só",
+    title: "Lês sozinha.\nMas não estás só.",
+    subtitle: "Comunidade Ecos\nReflexões anónimas.\nReconhecimentos silenciosos.\nTudo desaparece.",
+    cta: "seteveus.space/comunidade",
+  },
+  {
+    label: "Não é autoajuda",
+    title: "Não é autoajuda.\nNão é terapia.\nÉ um espelho.",
+    subtitle: "Um livro que te devolve\naquilo que sempre foi teu.",
+    cta: "seteveus.space",
+  },
+
   // ─── Livro físico + digital ───
   {
     label: "Do papel ao digital",
@@ -165,13 +269,7 @@ const MENSAGENS = [
     subtitle: "Edição impressa ~ 1.500 MT\nExperiência digital incluída.",
     cta: "+258 845 243 875",
   },
-  // ─── Nó da Herança ───
-  {
-    label: "Nó da Herança",
-    title: "A mãe sempre viu.\nEsperou anos.\nAgora que Sara acordou,\nHelena tem algo\npara lhe dizer.",
-    subtitle: "O Nó da Herança\nO silêncio herdado entre mãe e filha.",
-    cta: "seteveus.space",
-  },
+
   // ─── Convites suaves ───
   {
     label: "Ao teu ritmo",
@@ -185,6 +283,8 @@ const MENSAGENS = [
     subtitle: "Um teste de 3 minutos.\nNão dá respostas.\nDá perguntas.",
     cta: "seteveus.space/recursos/teste",
   },
+
+  // ─── Vazio (canvas limpo) ───
   {
     label: "Vazio",
     title: "",
