@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { experiences } from "@/data/experiences";
 import { nosCollection } from "@/data/nos-collection";
+import { NosBookCover } from "@/components/NosBookCover";
 
 export const metadata: Metadata = {
   title: "Colecção Espelhos — Ficção de Transformação Interior",
@@ -84,16 +85,18 @@ export default function OsSeteVeusPage() {
                   {/* Nó paired */}
                   {no && (
                     <div className="mt-5 flex items-center gap-3 rounded-lg border border-[#c9a87c]/20 bg-[#c9a87c]/5 px-4 py-3">
-                      <Image
+                      <NosBookCover
                         src={no.image}
                         alt={no.title}
+                        title={no.title}
+                        color={no.color}
                         width={40}
                         height={60}
                         className="shrink-0 rounded shadow-sm"
                       />
                       <div>
                         <p className="font-sans text-[0.55rem] uppercase tracking-[0.2em] text-[#c9a87c]">
-                          Nó correspondente · $12
+                          Nó correspondente · ${no.priceUSD}
                         </p>
                         <p className="mt-0.5 font-serif text-sm text-brown-700">{no.title}</p>
                         <p className="text-xs italic text-brown-400">{no.subtitle}</p>

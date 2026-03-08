@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { nosCollection, NOS_PRICING } from "@/data/nos-collection";
+import { NosBookCover } from "@/components/NosBookCover";
 
 export const metadata: Metadata = {
   title: "Colecção Nós — Ficção Relacional",
@@ -72,9 +72,11 @@ export default function ColeccaoNosPage() {
             <div className={`items-center gap-10 md:flex ${i % 2 !== 0 ? "md:flex-row-reverse" : ""}`}>
               {/* Cover image */}
               <div className="shrink-0 text-center">
-                <Image
+                <NosBookCover
                   src={no.image}
                   alt={no.title}
+                  title={no.title}
+                  color={no.color}
                   width={240}
                   height={360}
                   className="mx-auto rounded-lg shadow-xl"
