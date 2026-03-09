@@ -25,9 +25,19 @@ Não precisas de sentir alívio imediato.
 Se alguma frase incomodar, fica com o desconforto.
 Desconforto é informação.
 
-AFIRMAÇÕES
+Vais ouvir uma série de afirmações.
+Não as repitas em voz alta.
+Não as analises.
+Apenas ouve cada frase como se fosse uma lembrança que esperava ser reconhecida.
 
-Eu reconheço quando o cuidado se tornouobrigação que não escolhi.
+Se uma te tocar, fica com ela um momento antes de avançar para a seguinte.
+Se uma não fizer sentido agora, deixa-a passar.
+Não há ordem certa para sentir.
+Há apenas a tua.
+
+Começamos.
+
+Eu reconheço quando o cuidado se tornou obrigação que não escolhi.
 
 Eu permito-me distinguir o que assumo por amor do que assumo por medo de falhar.
 
