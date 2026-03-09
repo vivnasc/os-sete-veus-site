@@ -48,6 +48,7 @@ export default function VozPage() {
   const [estados, setEstados] = useState<Record<string, Estado>>({});
   const [erros, setErros] = useState<Record<string, string>>({});
   const [aGerarTodos, setAGerarTodos] = useState(false);
+  const [erroGlobal, setErroGlobal] = useState("");
 
   if (!user || !isAdmin) {
     return (
@@ -69,6 +70,7 @@ export default function VozPage() {
 
     setEstados((e) => ({ ...e, [id]: "a-gerar" }));
     setErros((e) => ({ ...e, [id]: "" }));
+    setErroGlobal("");
 
     try {
       const res = await fetch("/api/admin/gerar-voz", {
@@ -78,23 +80,28 @@ export default function VozPage() {
       });
 
       if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.erro || "Erro desconhecido");
+        const data = await res.json().catch(() => ({ erro: `HTTP ${res.status}` }));
+        throw new Error(data.erro || `Erro ${res.status}`);
       }
 
       const blob = await res.blob();
+      if (blob.size === 0) throw new Error("ElevenLabs devolveu ficheiro vazio.");
+
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
       a.download = ficheiro;
+      document.body.appendChild(a);
       a.click();
+      document.body.removeChild(a);
       URL.revokeObjectURL(url);
 
       setEstados((e) => ({ ...e, [id]: "feito" }));
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : "Erro";
+      const msg = err instanceof Error ? err.message : "Erro desconhecido";
       setEstados((e) => ({ ...e, [id]: "erro" }));
       setErros((e) => ({ ...e, [id]: msg }));
+      setErroGlobal(msg);
     }
   }
 
@@ -158,6 +165,23 @@ export default function VozPage() {
       </div>
 
       <div className="mx-auto max-w-4xl px-6 py-10 space-y-8">
+        {/* Erro global */}
+        {erroGlobal && (
+          <div className="rounded-xl border border-red-200 bg-red-50 p-5">
+            <p className="font-medium text-red-700 text-sm">Erro ao gerar áudio</p>
+            <p className="mt-1 text-sm text-red-600 font-mono break-all">{erroGlobal}</p>
+            <div className="mt-3 text-xs text-red-500 space-y-1">
+              <p>Verifica:</p>
+              <p>· A API key está correcta e tem créditos de TTS</p>
+              <p>· O Voice ID pertence à tua conta ElevenLabs</p>
+              <p>· O teu plano ElevenLabs inclui Text-to-Speech</p>
+            </div>
+            <button onClick={() => setErroGlobal("")} className="mt-3 text-xs text-red-400 underline">
+              Fechar
+            </button>
+          </div>
+        )}
+
         {/* Credenciais */}
         <div className="rounded-xl border border-sage/20 bg-white p-6 space-y-4">
           <div>
