@@ -387,6 +387,10 @@ export default function MarketingPage() {
   const [pageSection, setPageSection] = useState<"campanha" | "calendario" | "posts" | "reels" | "guia">("campanha");
   const [calWeek, setCalWeek] = useState(0);
   const [calDay, setCalDay] = useState(0);
+  const [hubModal, setHubModal] = useState<{ slides: CarouselSlide[]; title: string; caption?: string; broadcast?: string } | null>(null);
+  const hubSlideRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [hubExporting, setHubExporting] = useState(false);
+  const [hubExportingIdx, setHubExportingIdx] = useState<number | null>(null);
 
   const today = useMemo(() => new Date(), []);
 
@@ -448,6 +452,27 @@ export default function MarketingPage() {
     }
     setExporting(false);
   }, [carousel, captureElement]);
+
+  const exportHubSlide = useCallback(async (idx: number) => {
+    const wrapper = hubSlideRefs.current[idx];
+    if (!wrapper) return;
+    const el = (wrapper.firstElementChild as HTMLElement) || wrapper;
+    setHubExportingIdx(idx);
+    try { await captureElement(el, DIMS, `slide-${idx + 1}.png`); } catch { /* skip */ }
+    setHubExportingIdx(null);
+  }, [captureElement]);
+
+  const exportAllHub = useCallback(async (count: number) => {
+    setHubExporting(true);
+    for (let i = 0; i < count; i++) {
+      const wrapper = hubSlideRefs.current[i];
+      if (!wrapper) continue;
+      const el = (wrapper.firstElementChild as HTMLElement) || wrapper;
+      try { await captureElement(el, DIMS, `slide-${i + 1}.png`); } catch { /* skip */ }
+      await new Promise((r) => setTimeout(r, 500));
+    }
+    setHubExporting(false);
+  }, [captureElement]);
 
   const exportAllVert = useCallback(async () => {
     if (!carousel) return;
@@ -537,6 +562,7 @@ export default function MarketingPage() {
   ];
 
   return (
+    <>
     <div className="min-h-screen bg-[#1a1814]">
       {/* ── HEADER ── */}
       <div className="sticky top-0 z-30 border-b border-[#c9b896]/10 bg-[#1a1814]/95 backdrop-blur-lg">
@@ -720,40 +746,48 @@ export default function MarketingPage() {
                         </span>
                       </div>
                       <div className="p-4 space-y-3">
-                        {/* Visual preview */}
-                        {slot.visual && (
-                          <div className="rounded-xl overflow-hidden" style={{
-                            backgroundColor: slot.visual.bg, color: slot.visual.text,
-                            padding: "24px", minHeight: 120,
-                          }}>
-                            {slot.visual.title && (
-                              <p className="font-serif text-sm font-bold leading-snug" style={{ whiteSpace: "pre-line" }}>{slot.visual.title}</p>
-                            )}
-                            {slot.visual.body && (
-                              <p className="mt-2 font-sans text-[0.65rem] leading-relaxed opacity-80" style={{ whiteSpace: "pre-line" }}>{slot.visual.body}</p>
-                            )}
-                            {slot.visual.footer && (
-                              <p className="mt-3 font-sans text-[0.55rem] font-semibold uppercase tracking-wider" style={{ color: slot.visual.accent }}>{slot.visual.footer}</p>
-                            )}
-                          </div>
-                        )}
+                        {/* Visual preview + export button */}
+                        {slot.visual && (() => {
+                          const slide: CarouselSlide = { bg: slot.visual.bg, text: slot.visual.text, accent: slot.visual.accent, title: slot.visual.title, body: slot.visual.body || "", footer: slot.visual.footer || "" };
+                          return (
+                            <button
+                              onClick={() => setHubModal({ slides: [slide], title: slot.type, caption: slot.caption, broadcast: slot.broadcast })}
+                              className="w-full rounded-xl overflow-hidden text-left transition-all hover:ring-2 hover:ring-[#c9b896]/30 active:scale-[0.98]"
+                              style={{ backgroundColor: slot.visual.bg, color: slot.visual.text, padding: "24px", minHeight: 120 }}
+                            >
+                              {slot.visual.title && <p className="font-serif text-sm font-bold leading-snug" style={{ whiteSpace: "pre-line" }}>{slot.visual.title}</p>}
+                              {slot.visual.body && <p className="mt-2 font-sans text-[0.65rem] leading-relaxed opacity-80" style={{ whiteSpace: "pre-line" }}>{slot.visual.body}</p>}
+                              {slot.visual.footer && <p className="mt-3 font-sans text-[0.55rem] font-semibold uppercase tracking-wider" style={{ color: slot.visual.accent }}>{slot.visual.footer}</p>}
+                              <p className="mt-3 font-sans text-[0.5rem] font-semibold uppercase tracking-widest opacity-40">Toca para ver & baixar →</p>
+                            </button>
+                          );
+                        })()}
 
-                        {/* Carousel slides */}
+                        {/* Carousel — open modal to view & export */}
                         {slot.carousel && slot.carousel.length > 0 && (
-                          <div className="space-y-1.5">
-                            <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-cream/30">{slot.carousel.length} slides</p>
-                            <div className="-mx-1 flex gap-1.5 overflow-x-auto px-1 pb-1 scrollbar-none">
-                              {slot.carousel.map((sl, sli) => (
-                                <div key={sli} className="shrink-0 rounded-lg overflow-hidden" style={{
-                                  width: 80, height: 80, backgroundColor: sl.bg, color: sl.text, padding: 8,
-                                }}>
-                                  <p className="font-serif text-[0.4rem] font-bold leading-tight" style={{ whiteSpace: "pre-line" }}>
-                                    {sl.title?.slice(0, 40)}{(sl.title?.length || 0) > 40 ? "..." : ""}
-                                  </p>
-                                </div>
-                              ))}
+                          <button
+                            onClick={() => setHubModal({ slides: slot.carousel!, title: slot.type, caption: slot.caption })}
+                            className="w-full rounded-xl border border-cream/10 bg-black/20 px-4 py-3 text-left transition-all hover:border-[#c9b896]/30 active:scale-[0.98]"
+                          >
+                            <div className="flex items-center gap-3">
+                              {/* Mini strip */}
+                              <div className="flex gap-1">
+                                {slot.carousel.slice(0, 4).map((sl, sli) => (
+                                  <div key={sli} className="shrink-0 rounded overflow-hidden" style={{ width: 36, height: 36, backgroundColor: sl.bg }} />
+                                ))}
+                                {slot.carousel.length > 4 && (
+                                  <div className="shrink-0 rounded overflow-hidden flex items-center justify-center" style={{ width: 36, height: 36, backgroundColor: "#ffffff10" }}>
+                                    <span className="font-sans text-[0.45rem] font-bold text-cream/40">+{slot.carousel.length - 4}</span>
+                                  </div>
+                                )}
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <p className="font-sans text-[0.6rem] font-semibold text-cream/70">{slot.carousel.length} slides</p>
+                                <p className="font-sans text-[0.5rem] text-cream/30">Toca para ver & baixar</p>
+                              </div>
+                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-cream/30"><path d="M9 18l6-6-6-6" /></svg>
                             </div>
-                          </div>
+                          </button>
                         )}
 
                         {/* Caption */}
@@ -772,6 +806,22 @@ export default function MarketingPage() {
                           </div>
                         )}
 
+
+                        {/* Broadcast WhatsApp */}
+                        {slot.broadcast && (
+                          <div className="rounded-xl border border-[#25D366]/20 bg-[#25D366]/5 p-3 space-y-2">
+                            <div className="flex items-center justify-between">
+                              <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#25D366]/60">Broadcast WhatsApp</p>
+                              <button onClick={() => copyText(`broadcast-${calWeek}-${calDay}-${si}`, slot.broadcast || "")}
+                                className={`rounded-lg px-3 py-1 font-sans text-[0.55rem] font-semibold transition-all ${
+                                  copiedId === `broadcast-${calWeek}-${calDay}-${si}` ? "bg-[#25D366] text-white" : "bg-[#25D366]/10 text-[#25D366]/60"
+                                }`}>
+                                {copiedId === `broadcast-${calWeek}-${calDay}-${si}` ? "Copiado!" : "Copiar"}
+                              </button>
+                            </div>
+                            <pre className="whitespace-pre-wrap font-sans text-[0.65rem] leading-relaxed text-cream/60">{slot.broadcast}</pre>
+                          </div>
+                        )}
 
                         {/* Notes */}
                         {slot.notes && (
@@ -1479,5 +1529,79 @@ export default function MarketingPage() {
         </div>
       )}
     </div>
+
+    {/* ── HUB SLIDE MODAL ─────────────────────────────────────────────────── */}
+    {hubModal && (
+      <div className="fixed inset-0 z-50 flex flex-col bg-[#1a1814]">
+        {/* Header */}
+        <div className="shrink-0 flex items-center gap-3 border-b border-cream/10 px-4 py-3">
+          <button onClick={() => { setHubModal(null); setHubExporting(false); setHubExportingIdx(null); }}
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-cream/10 text-cream/60 hover:bg-cream/15">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
+          </button>
+          <p className="flex-1 font-sans text-xs font-semibold text-cream/70 truncate">{hubModal.title}</p>
+          {hubModal.slides.length > 1 && (
+            <button onClick={() => exportAllHub(hubModal.slides.length)}
+              disabled={hubExporting}
+              className="rounded-lg bg-[#c9b896] px-3 py-1.5 font-sans text-[0.6rem] font-bold text-[#1a1814] disabled:opacity-50">
+              {hubExporting ? "A baixar..." : `Baixar todos (${hubModal.slides.length})`}
+            </button>
+          )}
+        </div>
+
+        {/* Slides */}
+        <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
+          {hubModal.slides.map((slide, si) => {
+            const scale = 328 / DIMS.w; // 360px container - 32px padding
+            return (
+              <div key={si}>
+                {/* Render at full 1080px, scaled down via CSS */}
+                <div className="relative overflow-hidden rounded-xl" style={{ height: Math.round(DIMS.h * scale) }}>
+                  <div ref={(el) => { hubSlideRefs.current[si] = el; }}>
+                    <SlidePreview slide={slide} index={si} scale={scale} />
+                  </div>
+                </div>
+                <button onClick={() => exportHubSlide(si)}
+                  disabled={hubExportingIdx === si}
+                  className="mt-2 w-full rounded-xl border border-cream/10 py-2.5 font-sans text-xs font-semibold text-cream/50 hover:border-[#c9b896]/30 hover:text-cream/70 disabled:opacity-50 transition-all">
+                  {hubExportingIdx === si ? "A baixar..." : `Baixar slide ${si + 1}`}
+                </button>
+              </div>
+            );
+          })}
+
+          {/* Caption */}
+          {hubModal.caption && (
+            <div className="rounded-2xl border border-cream/10 bg-[#222019] p-4 space-y-2">
+              <div className="flex items-center justify-between">
+                <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-cream/30">Legenda Instagram</p>
+                <button onClick={() => copyText("hub-caption", hubModal.caption || "")}
+                  className={`rounded-lg px-3 py-1 font-sans text-[0.55rem] font-semibold transition-all ${copiedId === "hub-caption" ? "bg-[#c9b896] text-[#1a1814]" : "bg-cream/10 text-cream/50"}`}>
+                  {copiedId === "hub-caption" ? "Copiada!" : "Copiar"}
+                </button>
+              </div>
+              <pre className="whitespace-pre-wrap font-sans text-[0.65rem] leading-relaxed text-cream/60">{hubModal.caption}</pre>
+            </div>
+          )}
+
+          {/* Broadcast */}
+          {hubModal.broadcast && (
+            <div className="rounded-2xl border border-[#25D366]/20 bg-[#25D366]/5 p-4 space-y-2">
+              <div className="flex items-center justify-between">
+                <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#25D366]/60">Broadcast WhatsApp</p>
+                <button onClick={() => copyText("hub-broadcast", hubModal.broadcast || "")}
+                  className={`rounded-lg px-3 py-1 font-sans text-[0.55rem] font-semibold transition-all ${copiedId === "hub-broadcast" ? "bg-[#25D366] text-white" : "bg-[#25D366]/10 text-[#25D366]/60"}`}>
+                  {copiedId === "hub-broadcast" ? "Copiado!" : "Copiar"}
+                </button>
+              </div>
+              <pre className="whitespace-pre-wrap font-sans text-[0.65rem] leading-relaxed text-cream/50">{hubModal.broadcast}</pre>
+            </div>
+          )}
+
+          <div className="h-8" />
+        </div>
+      </div>
+    )}
+    </>
   );
 }
