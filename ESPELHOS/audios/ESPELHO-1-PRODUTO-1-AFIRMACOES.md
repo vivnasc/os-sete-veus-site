@@ -22,7 +22,19 @@ Não precisas concordar.
 Não precisas sentir nada de especial.
 
 Se alguma frase não fizer sentido agora, deixa passar.
-[deliberate] Fica apenas presente. [pause]
+Fica apenas presente. [pause]
+
+Vais ouvir uma série de afirmações.
+Não as repitas em voz alta.
+Não as analises.
+[deliberate] Apenas ouve cada frase como se fosse uma lembrança que esperava ser reconhecida.
+
+Se uma te tocar, fica com ela um momento antes de avançar para a seguinte.
+Se uma não fizer sentido agora, deixa-a passar.
+[deliberate] Não há ordem certa para sentir.
+Há apenas a tua.
+
+[warm] Começamos. [long pause]
 
 Eu reconheço quando estou a viver no automático. [long pause]
 
@@ -104,11 +116,10 @@ Eu não devo a ninguém a versão antiga de mim. [long pause]
 
 [soft] Eu autorizo-me a viver com mais verdade do que conforto. [long pause]
 
-[soft] Não faças nada com isto agora.
-Não tentes aplicar.
-Não tentes melhorar.
-Leva apenas a consciência contigo.
-E quando voltares ao automático, podes regressar a este espaço.
+Eu reconheço que o automático já existe.
+Apenas ainda não o interrompi com consciência.
+
+Eu permito-me interromper. [long pause]
 
 [whisper] Silêncio. [long pause]
 
