@@ -245,6 +245,12 @@ export default function AdminPage() {
               icon="🔑"
             />
             <ActionCard
+              title="Gerar Sons"
+              description="Criar sons ambiente com ElevenLabs"
+              href="/admin/sons"
+              icon="♪"
+            />
+            <ActionCard
               title="Conteúdo Pronto"
               description="Posts prontos com imagem + legenda + WhatsApp"
               href="/painel/marketing"
