@@ -1856,8 +1856,11 @@ export const thematicHub: WeekPlan[] = [
           },
           {
             platform: "whatsapp",
-            type: "Broadcast",
-            broadcast: "O primeiro véu chama-se Permanência.\n\nÉ a crença num eu fixo — que sempre foste assim e assim sempre serás.\n\nÉ o mais difícil de ver porque se parece com realismo.\n\nMas não é.\n\nOs 7 Véus do Despertar — seteveus.space\n\n— Vivianne",
+            type: "WhatsApp Status",
+            carousel: [
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Permanência.\nA ilusão mais\nconfortável.", body: "\"Sempre fui assim.\"\n\nÉ o véu.", footer: "Os 7 Véus do Despertar" },
+            ],
+            caption: "O primeiro véu chama-se Permanência.\n\nA crença de que sempre foste assim. De que as tuas limitações são parte de ti.\n\nNão são.\n\nOs 7 Véus do Despertar — seteveus.space\n\n#OsSeteVeus #VeuDaPermanencia",
           },
         ],
       },
@@ -2048,8 +2051,11 @@ export const thematicHub: WeekPlan[] = [
           },
           {
             platform: "whatsapp",
-            type: "Broadcast",
-            broadcast: "Já leste O Espelho da Ilusão?\n\nA Sara fez uma pergunta pequena que mudou tudo: quando foi que escolhi tomar café em vez de chá?\n\nÀs vezes é assim que começa.\n\nO Espelho da Ilusão — em seteveus.space\n\n— Vivianne",
+            type: "WhatsApp Status",
+            carousel: [
+              { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "\"Quando foi que\nescolhi tomar café\nem vez de chá?\"", body: "Uma pergunta absurda\nque muda tudo.\n\nO Espelho da Ilusão.", footer: "seteveus.space" },
+            ],
+            caption: "Às vezes a pergunta mais simples abre uma porta que nunca esperavas.\n\nO Espelho da Ilusão — seteveus.space\n\n#OsSeteVeus #EspelhoDaIlusao",
           },
         ],
       },
@@ -2094,8 +2100,11 @@ export const thematicHub: WeekPlan[] = [
           },
           {
             platform: "whatsapp",
-            type: "Broadcast",
-            broadcast: "O Espelho do Medo está disponível.\n\nNão é um livro sobre vencer o medo. É sobre o Rui — que passou anos a não fazer o que queria por causa de uma voz que dizia: não vai correr bem.\n\nReconheces-te?\n\nO Espelho do Medo — em seteveus.space\n\n— Vivianne",
+            type: "WhatsApp Status",
+            carousel: [
+              { bg: "#0d1b2a", text: "#f7f5f0", accent: "#7a8c6e", title: "O medo é humano.\nViver uma vida\nem função dele\né outra coisa.", body: "E essa outra coisa\npode mudar.\n\nO Espelho do Medo.", footer: "seteveus.space" },
+            ],
+            caption: "O Espelho do Medo está disponível.\n\nÉ sobre o Rui — e sobre o que o medo calou durante anos.\n\nReconheces-te?\n\nseteveus.space\n\n#OsSeteVeus #EspelhoDoMedo",
           },
         ],
       },
@@ -2187,8 +2196,11 @@ export const thematicHub: WeekPlan[] = [
           },
           {
             platform: "whatsapp",
-            type: "Broadcast",
-            broadcast: "Completaste O Espelho da Ilusão?\n\nHá algo que ficou por dizer.\n\nA Helena — a mãe da Sara — esperou anos. Agora tem algo para lhe dizer.\n\nO Nó da Herança está disponível para ti.\n\nseteveus.space/membro/nos\n\n— Vivianne",
+            type: "WhatsApp Status",
+            carousel: [
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "A mãe sempre viu.\nEsperou anos.\n\nAgora que Sara\nacordou, Helena\ntem algo para\nlhe dizer.", body: "", footer: "O Nó da Herança" },
+            ],
+            caption: "Completaste O Espelho da Ilusão?\n\nHá algo que ficou por dizer.\n\nO Nó da Herança — disponível em seteveus.space\n\n#OsSeteVeus #NoDaHeranca",
           },
         ],
       },

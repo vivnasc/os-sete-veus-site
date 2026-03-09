@@ -387,7 +387,8 @@ export default function MarketingPage() {
   const [pageSection, setPageSection] = useState<"campanha" | "calendario" | "posts" | "reels" | "guia">("campanha");
   const [calWeek, setCalWeek] = useState(0);
   const [calDay, setCalDay] = useState(0);
-  const [hubModal, setHubModal] = useState<{ slides: CarouselSlide[]; title: string; caption?: string; broadcast?: string } | null>(null);
+  const [hubModal, setHubModal] = useState<{ slides: CarouselSlide[]; title: string; caption?: string } | null>(null);
+  const [hubFormat, setHubFormat] = useState<"vertical" | "square">("square");
   const hubSlideRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [hubExporting, setHubExporting] = useState(false);
   const [hubExportingIdx, setHubExportingIdx] = useState<number | null>(null);
@@ -453,22 +454,24 @@ export default function MarketingPage() {
     setExporting(false);
   }, [carousel, captureElement]);
 
-  const exportHubSlide = useCallback(async (idx: number) => {
+  const exportHubSlide = useCallback(async (idx: number, fmt: "vertical" | "square") => {
     const wrapper = hubSlideRefs.current[idx];
     if (!wrapper) return;
     const el = (wrapper.firstElementChild as HTMLElement) || wrapper;
+    const dims = fmt === "vertical" ? STORY_DIMS : DIMS;
     setHubExportingIdx(idx);
-    try { await captureElement(el, DIMS, `slide-${idx + 1}.png`); } catch { /* skip */ }
+    try { await captureElement(el, dims, `slide-${idx + 1}.png`); } catch { /* skip */ }
     setHubExportingIdx(null);
   }, [captureElement]);
 
-  const exportAllHub = useCallback(async (count: number) => {
+  const exportAllHub = useCallback(async (count: number, fmt: "vertical" | "square") => {
     setHubExporting(true);
+    const dims = fmt === "vertical" ? STORY_DIMS : DIMS;
     for (let i = 0; i < count; i++) {
       const wrapper = hubSlideRefs.current[i];
       if (!wrapper) continue;
       const el = (wrapper.firstElementChild as HTMLElement) || wrapper;
-      try { await captureElement(el, DIMS, `slide-${i + 1}.png`); } catch { /* skip */ }
+      try { await captureElement(el, dims, `slide-${i + 1}.png`); } catch { /* skip */ }
       await new Promise((r) => setTimeout(r, 500));
     }
     setHubExporting(false);
@@ -751,7 +754,7 @@ export default function MarketingPage() {
                           const slide: CarouselSlide = { bg: slot.visual.bg, text: slot.visual.text, accent: slot.visual.accent, title: slot.visual.title, body: slot.visual.body || "", footer: slot.visual.footer || "" };
                           return (
                             <button
-                              onClick={() => setHubModal({ slides: [slide], title: slot.type, caption: slot.caption, broadcast: slot.broadcast })}
+                              onClick={() => setHubModal({ slides: [slide], title: slot.type, caption: slot.caption })}
                               className="w-full rounded-xl overflow-hidden text-left transition-all hover:ring-2 hover:ring-[#c9b896]/30 active:scale-[0.98]"
                               style={{ backgroundColor: slot.visual.bg, color: slot.visual.text, padding: "24px", minHeight: 120 }}
                             >
@@ -766,7 +769,7 @@ export default function MarketingPage() {
                         {/* Carousel — open modal to view & export */}
                         {slot.carousel && slot.carousel.length > 0 && (
                           <button
-                            onClick={() => setHubModal({ slides: slot.carousel!, title: slot.type, caption: slot.caption })}
+                            onClick={() => { setHubFormat("square"); setHubModal({ slides: slot.carousel!, title: slot.type, caption: slot.caption }); }}
                             className="w-full rounded-xl border border-cream/10 bg-black/20 px-4 py-3 text-left transition-all hover:border-[#c9b896]/30 active:scale-[0.98]"
                           >
                             <div className="flex items-center gap-3">
@@ -806,22 +809,6 @@ export default function MarketingPage() {
                           </div>
                         )}
 
-
-                        {/* Broadcast WhatsApp */}
-                        {slot.broadcast && (
-                          <div className="rounded-xl border border-[#25D366]/20 bg-[#25D366]/5 p-3 space-y-2">
-                            <div className="flex items-center justify-between">
-                              <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#25D366]/60">Broadcast WhatsApp</p>
-                              <button onClick={() => copyText(`broadcast-${calWeek}-${calDay}-${si}`, slot.broadcast || "")}
-                                className={`rounded-lg px-3 py-1 font-sans text-[0.55rem] font-semibold transition-all ${
-                                  copiedId === `broadcast-${calWeek}-${calDay}-${si}` ? "bg-[#25D366] text-white" : "bg-[#25D366]/10 text-[#25D366]/60"
-                                }`}>
-                                {copiedId === `broadcast-${calWeek}-${calDay}-${si}` ? "Copiado!" : "Copiar"}
-                              </button>
-                            </div>
-                            <pre className="whitespace-pre-wrap font-sans text-[0.65rem] leading-relaxed text-cream/60">{slot.broadcast}</pre>
-                          </div>
-                        )}
 
                         {/* Notes */}
                         {slot.notes && (
@@ -1531,77 +1518,123 @@ export default function MarketingPage() {
     </div>
 
     {/* ── HUB SLIDE MODAL ─────────────────────────────────────────────────── */}
-    {hubModal && (
-      <div className="fixed inset-0 z-50 flex flex-col bg-[#1a1814]">
-        {/* Header */}
-        <div className="shrink-0 flex items-center gap-3 border-b border-cream/10 px-4 py-3">
-          <button onClick={() => { setHubModal(null); setHubExporting(false); setHubExportingIdx(null); }}
-            className="flex h-8 w-8 items-center justify-center rounded-full bg-cream/10 text-cream/60 hover:bg-cream/15">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
-          </button>
-          <p className="flex-1 font-sans text-xs font-semibold text-cream/70 truncate">{hubModal.title}</p>
-          {hubModal.slides.length > 1 && (
-            <button onClick={() => exportAllHub(hubModal.slides.length)}
-              disabled={hubExporting}
-              className="rounded-lg bg-[#c9b896] px-3 py-1.5 font-sans text-[0.6rem] font-bold text-[#1a1814] disabled:opacity-50">
-              {hubExporting ? "A baixar..." : `Baixar todos (${hubModal.slides.length})`}
-            </button>
-          )}
-        </div>
+    {hubModal && (() => {
+      const isVert = hubFormat === "vertical";
+      const dims = isVert ? STORY_DIMS : DIMS;
+      // Vertical preview: fit width to ~240px so full slide shows without scrolling
+      // Square preview: fit width to ~328px
+      const previewW = isVert ? 220 : 328;
+      const scale = previewW / dims.w;
+      const previewH = Math.round(dims.h * scale);
+      const waCaption = hubModal.caption ? stripHashtags(hubModal.caption) : "";
+      return (
+        <div className="fixed inset-0 z-50 flex flex-col bg-[#1a1814]">
+          {/* Header */}
+          <div className="shrink-0 border-b border-cream/10 px-4 py-3 space-y-2.5">
+            <div className="flex items-center gap-3">
+              <button onClick={() => { setHubModal(null); setHubExporting(false); setHubExportingIdx(null); }}
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cream/10 text-cream/60">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
+              </button>
+              <p className="flex-1 font-sans text-xs font-semibold text-cream/70 truncate">{hubModal.title}</p>
+              <button onClick={() => exportAllHub(hubModal.slides.length, hubFormat)}
+                disabled={hubExporting}
+                className="shrink-0 rounded-lg bg-[#c9b896] px-3 py-1.5 font-sans text-[0.6rem] font-bold text-[#1a1814] disabled:opacity-50">
+                {hubExporting ? "A baixar..." : `Baixar ${hubModal.slides.length > 1 ? `todos (${hubModal.slides.length})` : "imagem"}`}
+              </button>
+            </div>
+            {/* Format toggle */}
+            <div className="flex rounded-xl bg-black/30 p-1 gap-1">
+              <button onClick={() => setHubFormat("square")}
+                className={`flex-1 rounded-lg py-1.5 font-sans text-[0.6rem] font-semibold transition-all ${!isVert ? "bg-[#c9b896] text-[#1a1814]" : "text-cream/40 hover:text-cream/60"}`}>
+                Instagram 1:1
+              </button>
+              <button onClick={() => setHubFormat("vertical")}
+                className={`flex-1 rounded-lg py-1.5 font-sans text-[0.6rem] font-semibold transition-all ${isVert ? "bg-[#25D366] text-white" : "text-cream/40 hover:text-cream/60"}`}>
+                WA Status 9:16
+              </button>
+            </div>
+          </div>
 
-        {/* Slides */}
-        <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
-          {hubModal.slides.map((slide, si) => {
-            const scale = 328 / DIMS.w; // 360px container - 32px padding
-            return (
-              <div key={si}>
-                {/* Render at full 1080px, scaled down via CSS */}
-                <div className="relative overflow-hidden rounded-xl" style={{ height: Math.round(DIMS.h * scale) }}>
-                  <div ref={(el) => { hubSlideRefs.current[si] = el; }}>
-                    <SlidePreview slide={slide} index={si} scale={scale} />
-                  </div>
+          {/* Slides */}
+          <div className="flex-1 overflow-y-auto px-4 py-4 space-y-5">
+            {/* Horizontal scroll for multi-slide carousels */}
+            {hubModal.slides.length > 1 ? (
+              <div className="-mx-4 overflow-x-auto px-4 scrollbar-none">
+                <div className="flex gap-3" style={{ width: "max-content" }}>
+                  {hubModal.slides.map((slide, si) => (
+                    <div key={si} className="shrink-0">
+                      <div className="relative overflow-hidden rounded-xl" style={{ width: previewW, height: previewH }}>
+                        <div ref={(el) => { hubSlideRefs.current[si] = el; }}>
+                          {isVert
+                            ? <SlidePreviewVertical slide={slide} index={si} scale={scale} />
+                            : <SlidePreview slide={slide} index={si} scale={scale} />}
+                        </div>
+                      </div>
+                      <button onClick={() => exportHubSlide(si, hubFormat)}
+                        disabled={hubExportingIdx === si}
+                        className="mt-1.5 w-full rounded-lg border border-cream/10 py-1.5 font-sans text-[0.55rem] font-semibold text-cream/40 hover:border-[#c9b896]/30 hover:text-cream/60 disabled:opacity-40 transition-all">
+                        {hubExportingIdx === si ? "..." : `↓ ${si + 1}`}
+                      </button>
+                    </div>
+                  ))}
                 </div>
-                <button onClick={() => exportHubSlide(si)}
-                  disabled={hubExportingIdx === si}
-                  className="mt-2 w-full rounded-xl border border-cream/10 py-2.5 font-sans text-xs font-semibold text-cream/50 hover:border-[#c9b896]/30 hover:text-cream/70 disabled:opacity-50 transition-all">
-                  {hubExportingIdx === si ? "A baixar..." : `Baixar slide ${si + 1}`}
-                </button>
               </div>
-            );
-          })}
-
-          {/* Caption */}
-          {hubModal.caption && (
-            <div className="rounded-2xl border border-cream/10 bg-[#222019] p-4 space-y-2">
-              <div className="flex items-center justify-between">
-                <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-cream/30">Legenda Instagram</p>
-                <button onClick={() => copyText("hub-caption", hubModal.caption || "")}
-                  className={`rounded-lg px-3 py-1 font-sans text-[0.55rem] font-semibold transition-all ${copiedId === "hub-caption" ? "bg-[#c9b896] text-[#1a1814]" : "bg-cream/10 text-cream/50"}`}>
-                  {copiedId === "hub-caption" ? "Copiada!" : "Copiar"}
-                </button>
+            ) : (
+              /* Single slide — centred */
+              <div className="flex justify-center">
+                <div>
+                  <div className="relative overflow-hidden rounded-xl" style={{ width: previewW, height: previewH }}>
+                    <div ref={(el) => { hubSlideRefs.current[0] = el; }}>
+                      {isVert
+                        ? <SlidePreviewVertical slide={hubModal.slides[0]} index={0} scale={scale} />
+                        : <SlidePreview slide={hubModal.slides[0]} index={0} scale={scale} />}
+                    </div>
+                  </div>
+                  <button onClick={() => exportHubSlide(0, hubFormat)}
+                    disabled={hubExportingIdx === 0}
+                    className="mt-2 w-full rounded-xl border border-cream/10 py-2.5 font-sans text-xs font-semibold text-cream/50 hover:border-[#c9b896]/30 hover:text-cream/70 disabled:opacity-50 transition-all">
+                    {hubExportingIdx === 0 ? "A baixar..." : "Baixar imagem"}
+                  </button>
+                </div>
               </div>
-              <pre className="whitespace-pre-wrap font-sans text-[0.65rem] leading-relaxed text-cream/60">{hubModal.caption}</pre>
-            </div>
-          )}
+            )}
 
-          {/* Broadcast */}
-          {hubModal.broadcast && (
-            <div className="rounded-2xl border border-[#25D366]/20 bg-[#25D366]/5 p-4 space-y-2">
-              <div className="flex items-center justify-between">
-                <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#25D366]/60">Broadcast WhatsApp</p>
-                <button onClick={() => copyText("hub-broadcast", hubModal.broadcast || "")}
-                  className={`rounded-lg px-3 py-1 font-sans text-[0.55rem] font-semibold transition-all ${copiedId === "hub-broadcast" ? "bg-[#25D366] text-white" : "bg-[#25D366]/10 text-[#25D366]/60"}`}>
-                  {copiedId === "hub-broadcast" ? "Copiado!" : "Copiar"}
-                </button>
+            {/* Legendas */}
+            {hubModal.caption && (
+              <div className="space-y-2">
+                {/* Instagram */}
+                <div className="rounded-2xl border border-[#E1306C]/20 bg-[#E1306C]/5 p-4 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#E1306C]/60">Legenda Instagram</p>
+                    <button onClick={() => copyText("hub-ig", hubModal.caption || "")}
+                      className={`rounded-lg px-3 py-1 font-sans text-[0.55rem] font-semibold transition-all ${copiedId === "hub-ig" ? "bg-[#E1306C] text-white" : "bg-[#E1306C]/10 text-[#E1306C]/60"}`}>
+                      {copiedId === "hub-ig" ? "Copiada!" : "Copiar"}
+                    </button>
+                  </div>
+                  <pre className="whitespace-pre-wrap font-sans text-[0.65rem] leading-relaxed text-cream/60">{hubModal.caption}</pre>
+                </div>
+                {/* WhatsApp Status caption (no hashtags) */}
+                {waCaption && waCaption !== hubModal.caption && (
+                  <div className="rounded-2xl border border-[#25D366]/20 bg-[#25D366]/5 p-4 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#25D366]/60">Legenda Status</p>
+                      <button onClick={() => copyText("hub-wa", waCaption)}
+                        className={`rounded-lg px-3 py-1 font-sans text-[0.55rem] font-semibold transition-all ${copiedId === "hub-wa" ? "bg-[#25D366] text-white" : "bg-[#25D366]/10 text-[#25D366]/60"}`}>
+                        {copiedId === "hub-wa" ? "Copiada!" : "Copiar"}
+                      </button>
+                    </div>
+                    <pre className="whitespace-pre-wrap font-sans text-[0.65rem] leading-relaxed text-cream/60">{waCaption}</pre>
+                  </div>
+                )}
               </div>
-              <pre className="whitespace-pre-wrap font-sans text-[0.65rem] leading-relaxed text-cream/50">{hubModal.broadcast}</pre>
-            </div>
-          )}
+            )}
 
-          <div className="h-8" />
+            <div className="h-8" />
+          </div>
         </div>
-      </div>
-    )}
+      );
+    })()}
     </>
   );
 }
