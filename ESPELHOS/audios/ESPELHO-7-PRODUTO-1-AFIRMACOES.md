@@ -22,7 +22,17 @@ E o que pode ser construído com o que ficou.
 
 Escuta sem esforço.
 
-AFIRMAÇÕES
+Vais ouvir uma série de afirmações.
+Não as repitas em voz alta.
+Não as analises.
+Apenas ouve cada frase como se fosse uma lembrança que esperava ser reconhecida.
+
+Se uma te tocar, fica com ela um momento antes de avançar para a seguinte.
+Se uma não fizer sentido agora, deixa-a passar.
+Não há ordem certa para sentir.
+Há apenas a tua.
+
+Começamos.
 
 Eu reconheço quando defino o outro antes de o conhecer.
 

@@ -24,7 +24,17 @@ Não precisas de mudar nada agora.
 Se alguma frase tocar em algo difícil, fica com esse toque.
 Ele tem informação para ti.
 
-AFIRMAÇÕES
+Vais ouvir uma série de afirmações.
+Não as repitas em voz alta.
+Não as analises.
+Apenas ouve cada frase como se fosse uma lembrança que esperava ser reconhecida.
+
+Se uma te tocar, fica com ela um momento antes de avançar para a seguinte.
+Se uma não fizer sentido agora, deixa-a passar.
+Não há ordem certa para sentir.
+Há apenas a tua.
+
+Começamos.
 
 Eu reconheço quando cuido de formas que controlam em vez de libertar.
 

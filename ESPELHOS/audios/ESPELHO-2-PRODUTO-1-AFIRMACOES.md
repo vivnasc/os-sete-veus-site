@@ -25,7 +25,17 @@ Não precisas sentir nada de especial.
 Se alguma frase não fizer sentido agora, deixa passar.
 Fica apenas presente.
 
-AFIRMAÇÕES
+Vais ouvir uma série de afirmações.
+Não as repitas em voz alta.
+Não as analises.
+Apenas ouve cada frase como se fosse uma lembrança que esperava ser reconhecida.
+
+Se uma te tocar, fica com ela um momento antes de avançar para a seguinte.
+Se uma não fizer sentido agora, deixa-a passar.
+Não há ordem certa para sentir.
+Há apenas a tua.
+
+Começamos.
 
 Eu reconheço quando estou a funcionar em vez de viver.
 
