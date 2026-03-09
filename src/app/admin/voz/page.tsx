@@ -11,8 +11,6 @@ import { chapters as identidadeChapters } from "@/data/espelho-identidade";
 import { chapters as controloChapters } from "@/data/espelho-controlo";
 import { chapters as desejoChapters } from "@/data/espelho-desejo";
 import { chapters as separacaoChapters } from "@/data/espelho-separacao";
-import { chapters as herancaChapters } from "@/data/no-heranca";
-import { chapters as silencioChapters } from "@/data/no-silencio";
 import { INTROS_VEUS } from "@/data/intros-veus";
 
 const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
@@ -27,8 +25,6 @@ const REFLEXOES = [
   { slug: "espelho-controlo", nome: "Espelho do Controlo", chapters: controloChapters },
   { slug: "espelho-desejo", nome: "Espelho do Desejo", chapters: desejoChapters },
   { slug: "espelho-separacao", nome: "Espelho da Separação", chapters: separacaoChapters },
-  { slug: "no-heranca", nome: "Nó da Herança", chapters: herancaChapters },
-  { slug: "no-silencio", nome: "Nó do Silêncio", chapters: silencioChapters },
 ].flatMap(({ slug, nome, chapters }) =>
   chapters.map((cap) => ({
     id: `${slug}-cap-${cap.number}`,
@@ -118,7 +114,7 @@ export default function VozPage() {
           }))
         : aba === "reflexoes"
         ? REFLEXOES
-        : INTROS_VEUS.filter((v) => v.texto.trim()).map((v) => ({
+        : INTROS_VEUS.filter((v) => v.texto.trim()).map((v) => ({  // só gera as que têm texto
             id: `intro-${v.veu}`,
             ficheiro: `intro-veu-${v.veu}-${v.nome.toLowerCase().replace(/\s/g, "-")}.mp3`,
             texto: v.texto,
@@ -141,9 +137,9 @@ export default function VozPage() {
   const reflexoesFeitas = REFLEXOES.filter(
     (r) => estados[r.id] === "feito"
   ).length;
-  const introsTotal = INTROS_VEUS.filter((v) => v.texto.trim()).length;
+  const introsTotal = INTROS_VEUS.length;
   const introsFeitas = INTROS_VEUS.filter(
-    (v) => v.texto.trim() && estados[`intro-${v.veu}`] === "feito"
+    (v) => estados[`intro-${v.veu}`] === "feito"
   ).length;
 
   return (
@@ -278,23 +274,21 @@ export default function VozPage() {
               const estado = estados[id] || "idle";
               const semTexto = !v.texto.trim();
               return (
-                <ItemVoz
-                  key={id}
-                  id={id}
-                  ficheiro={ficheiro}
-                  nome={`Véu ${v.veu} — ${v.nome}`}
-                  texto={v.texto || "(sem texto — edita src/data/intros-veus.ts)"}
-                  estado={semTexto ? "idle" : estado}
-                  erro={erros[id]}
-                  disabled={semTexto || aGerarTodos || !apiKey.trim()}
-                  onGerar={() => gerarVoz(id, ficheiro, v.texto)}
-                />
+                <div key={id}>
+                  <ItemVoz
+                    id={id}
+                    ficheiro={ficheiro}
+                    nome={`Véu ${v.veu} — ${v.nome}`}
+                    texto={semTexto ? "" : v.texto}
+                    estado={semTexto ? "idle" : estado}
+                    erro={erros[id]}
+                    disabled={semTexto || aGerarTodos || !apiKey.trim()}
+                    onGerar={() => gerarVoz(id, ficheiro, v.texto)}
+                    placeholder={semTexto ? "Sem texto — escreve o texto abaixo e guarda em intros-veus.ts" : undefined}
+                  />
+                </div>
               );
             })}
-            <p className="text-xs text-sage pt-2">
-              Para preencher os textos das intros: edita{" "}
-              <code className="font-mono">src/data/intros-veus.ts</code> e volta aqui.
-            </p>
           </div>
         )}
       </div>
@@ -311,6 +305,7 @@ function ItemVoz({
   erro,
   disabled,
   onGerar,
+  placeholder,
 }: {
   id: string;
   ficheiro: string;
@@ -320,14 +315,17 @@ function ItemVoz({
   erro?: string;
   disabled: boolean;
   onGerar: () => void;
+  placeholder?: string;
 }) {
-  const preview = texto.slice(0, 90) + (texto.length > 90 ? "..." : "");
+  const preview = texto
+    ? texto.slice(0, 90) + (texto.length > 90 ? "..." : "")
+    : placeholder ?? "";
 
   return (
     <div className="flex items-start justify-between gap-4 rounded-lg border border-sage/20 bg-white px-5 py-4">
       <div className="flex-1 min-w-0">
         <p className="font-medium text-forest text-sm">{nome}</p>
-        <p className="mt-0.5 text-xs text-sage leading-relaxed">{preview}</p>
+        <p className={`mt-0.5 text-xs leading-relaxed ${texto ? "text-sage" : "text-sage/40 italic"}`}>{preview}</p>
         <p className="mt-1 text-xs text-sage/50 font-mono">{ficheiro}</p>
         {erro && <p className="mt-1 text-xs text-red-500">{erro}</p>}
       </div>
