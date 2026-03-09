@@ -4,7 +4,7 @@
 **Formato:** 4 produtos por espelho × 6 espelhos = 24 scripts
 **Voz:** Vivianne dos Santos
 **Tom:** Sóbrio, quente, íntimo. Sem pressa. Sem emojis.
-**Para ElevenLabs:** Cada parágrafo separado = pausa natural. Reticências = pausa mais longa.
+**Tags ElevenLabs v3:** Activadas. Modelo: Eleven v3 obrigatório.
 
 ---
 
@@ -13,15 +13,15 @@
 
 ---
 
-O dia está a terminar.
+[soft] O dia está a terminar.
 Daqui a pouco, vais dormir.
 E antes disso, vais fazer uma coisa simples:
 vais verificar quantas versões de ti existiram hoje.
 
 Deita-te confortavelmente.
-Respira fundo.
-Inspira pelo nariz.
-Expira pela boca.
+[slow] Respira fundo.
+Inspira pelo nariz. [inhales]
+Expira pela boca. [exhales]
 Deixa o corpo soltar o esforço do dia.
 
 Vou fazer-te algumas perguntas.
@@ -29,39 +29,39 @@ Não precisas de responder em voz alta.
 Apenas observa.
 Sem julgamento.
 
-Primeira pergunta.
-Hoje, houve algum momento em que foste simplesmente tu, sem calcular o efeito?
+[deliberate] Primeira pergunta.
+Hoje, houve algum momento em que foste simplesmente tu, sem calcular o efeito? [long pause]
 
 Apenas observa.
 Não te critiques se a resposta for não.
-Apenas reconhece.
+Apenas reconhece. [long pause]
 
-Segunda pergunta.
+[deliberate] Segunda pergunta.
 Hoje, houve alguém com quem não precisaste de gerir a impressão?
-Alguém perante quem podes ser menor do que o teu cargo, mais confuso do que o teu título sugere, mais simples do que a tua imagem permite?
+Alguém perante quem podes ser menor do que o teu cargo, mais confuso do que o teu título sugere, mais simples do que a tua imagem permite? [long pause]
 
 Se houve, guarda esse espaço.
-Ele é raro e precioso.
+Ele é raro e precioso. [long pause]
 
-Terceira pergunta.
-Hoje, houve algum momento em que sentiste que a máscara pesava demasiado?
+[deliberate] Terceira pergunta.
+Hoje, houve algum momento em que sentiste que a máscara pesava demasiado? [long pause]
 
 Se houve, reconhece o cansaço.
 Não é fraqueza.
-É o custo de uma vida em performance permanente.
+É o custo de uma vida em performance permanente. [long pause]
 
-Última pergunta.
+[deliberate] Última pergunta.
 Se amanhã perdesses o cargo, o título, a reputação — o que ficaria?
 Não precisas de responder completamente.
-Deixa apenas a pergunta existir enquanto adormeces.
+Deixa apenas a pergunta existir enquanto adormeces. [long pause]
 
 Respira fundo uma última vez.
-Inspira lentamente.
-Expira ainda mais devagar.
+Inspira lentamente. [inhales]
+Expira ainda mais devagar. [exhales]
 
-Podes dormir.
-E amanhã, quando acordares, tenta fazer pelo menos um momento em que existes sem audiência.
+[whisper] Podes dormir.
+E amanhã, quando acordares, tenta fazer pelo menos um momento em que existes sem audiência. [long pause]
 
-Boa noite.
+[whisper] Boa noite. [long pause]
 
 ---

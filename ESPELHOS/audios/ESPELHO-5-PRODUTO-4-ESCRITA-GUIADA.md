@@ -4,7 +4,7 @@
 **Formato:** 4 produtos por espelho × 6 espelhos = 24 scripts
 **Voz:** Vivianne dos Santos
 **Tom:** Sóbrio, quente, íntimo. Sem pressa. Sem emojis.
-**Para ElevenLabs:** Cada parágrafo separado = pausa natural. Reticências = pausa mais longa.
+**Tags ElevenLabs v3:** Activadas. Modelo: Eleven v3 obrigatório.
 
 ---
 
@@ -13,7 +13,7 @@
 
 ---
 
-Este não é um exercício leve.
+[warm] Este não é um exercício leve.
 É um espaço de clareza.
 
 Vais escrever com honestidade.
@@ -21,9 +21,9 @@ Sem gerir o que sai.
 Sem organizar antes de escrever.
 Sem corrigir.
 
-Prepara um caderno.
-Uma caneta.
-Vinte minutos sem interrupções.
+Prepara um caderno. [pause]
+Uma caneta. [pause]
+Vinte minutos sem interrupções. [pause]
 
 Respira.
 
@@ -32,64 +32,64 @@ Título: O Meu Controlo.
 
 Começamos.
 
-Primeira pergunta.
+[deliberate] Primeira pergunta.
 Lista cinco coisas que controlas na tua vida que ninguém te pediu para controlar.
 
-Escreve.
+Escreve. [long pause]
 
-Segunda pergunta.
+[deliberate] Segunda pergunta.
 Para cada uma, escreve: o que tenho medo que aconteça se deixar de controlar isto?
 
-Escreve.
+Escreve. [long pause]
 
-Terceira pergunta.
+[deliberate] Terceira pergunta.
 Que pessoa na tua vida sente o teu controlo como peso mesmo que o teu cuidado seja genuíno?
 
-Escreve sem filtrar.
+Escreve sem filtrar. [long pause]
 
-Quarta pergunta.
-Completa a frase:
+[deliberate] Quarta pergunta.
+[deliberate] Completa a frase:
 "Se eu parasse de gerir tudo, eu teria medo de…"
 
-Escreve até a frase terminar.
+Escreve até a frase terminar. [long pause]
 
-Quinta pergunta.
+[deliberate] Quinta pergunta.
 Quando foi a última vez que pediste ajuda sem instruir como fazer?
 
-Escreve a situação com honestidade.
+Escreve a situação com honestidade. [long pause]
 
-Sexta pergunta.
+[deliberate] Sexta pergunta.
 O que perdes ao manter o controlo?
 Em tempo, em relação, em descanso, em espontaneidade.
 
-Escreve os custos reais.
+Escreve os custos reais. [long pause]
 
-Sétima pergunta.
+[deliberate] Sétima pergunta.
 Que aconteceu na tua vida que te ensinou que só podes confiar em ti para segurar as coisas?
 
 Escreve.
-Esta resposta pode ser antiga.
+Esta resposta pode ser antiga. [long pause]
 
-Oitava pergunta.
-Completa:
+[deliberate] Oitava pergunta.
+[deliberate] Completa:
 "Quando alguém faz algo de forma diferente da minha, eu sinto…"
 
-Escreve.
+Escreve. [long pause]
 
-Nona pergunta.
+[deliberate] Nona pergunta.
 Que precisas de soltar que não és capaz de soltar sozinha?
 
 Escreve.
-Não apresses esta resposta.
+Não apresses esta resposta. [long pause]
 
-Pergunta final.
+[deliberate] Pergunta final.
 Se deixasses de segurar tudo por uma semana inteira, o que imaginas que aconteceria?
 Na realidade, não no teu medo.
 
-Escreve.
+Escreve. [long pause]
 
-Agora pára.
-Larga a caneta.
+Agora pára. [pause]
+Larga a caneta. [pause]
 
 Respira fundo.
 
@@ -102,9 +102,9 @@ O controlo não é um defeito.
 O que escreveste revela a resposta que aprendeste.
 E aprender respostas novas começa por ver esta claramente.
 
-Visível.
-Nomeado.
-Real.
+[soft] Visível. [pause]
+[soft] Nomeado. [pause]
+[soft] Real. [long pause]
 
 ---
 
