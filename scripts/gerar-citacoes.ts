@@ -24,7 +24,7 @@ if (!API_KEY || !VOICE_ID) {
   process.exit(1);
 }
 
-import { CITACOES_ESPELHO } from "../src/data/citacoes-partilha";
+import { ALL_CITACOES } from "../src/data/citacoes-partilha";
 
 async function gerarAudio(texto: string): Promise<Buffer> {
   const res = await fetch(
@@ -63,15 +63,15 @@ async function main() {
   const dir = "scripts/output/citacoes";
   fs.mkdirSync(dir, { recursive: true });
 
-  console.log(`\n── Citações (${CITACOES_ESPELHO.length} total) ──\n`);
+  console.log(`\n── Citações (${ALL_CITACOES.length} total) ──\n`);
 
   let gerados = 0;
   let saltados = 0;
 
-  for (let i = 0; i < CITACOES_ESPELHO.length; i++) {
-    const c = CITACOES_ESPELHO[i];
+  for (let i = 0; i < ALL_CITACOES.length; i++) {
+    const c = ALL_CITACOES[i];
     const n = String(i + 1).padStart(3, "0");
-    const ficheiro = path.join(dir, `citacao-${n}-veu${c.veu}.mp3`);
+    const ficheiro = path.join(dir, `citacao-${n}-veu${c.veu}-${c.fonte}.mp3`);
 
     if (fs.existsSync(ficheiro)) {
       console.log(`  [ok] citacao-${n} — já existe`);

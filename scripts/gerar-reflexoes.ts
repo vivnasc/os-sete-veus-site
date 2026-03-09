@@ -26,14 +26,24 @@ if (!API_KEY || !VOICE_ID) {
 
 import { chapters as ilusaoChapters } from "../src/data/ebook";
 import { chapters as medoChapters } from "../src/data/espelho-medo";
+import { chapters as culpaChapters } from "../src/data/espelho-culpa";
+import { chapters as identidadeChapters } from "../src/data/espelho-identidade";
+import { chapters as controloChapters } from "../src/data/espelho-controlo";
+import { chapters as desejoChapters } from "../src/data/espelho-desejo";
+import { chapters as separacaoChapters } from "../src/data/espelho-separacao";
 import { chapters as herancaChapters } from "../src/data/no-heranca";
 import { chapters as silencioChapters } from "../src/data/no-silencio";
 
 const LIVROS = [
-  { slug: "espelho-ilusao", chapters: ilusaoChapters },
-  { slug: "espelho-medo", chapters: medoChapters },
-  { slug: "no-heranca", chapters: herancaChapters },
-  { slug: "no-silencio", chapters: silencioChapters },
+  { slug: "espelho-ilusao",     chapters: ilusaoChapters },
+  { slug: "espelho-medo",       chapters: medoChapters },
+  { slug: "espelho-culpa",      chapters: culpaChapters },
+  { slug: "espelho-identidade", chapters: identidadeChapters },
+  { slug: "espelho-controlo",   chapters: controloChapters },
+  { slug: "espelho-desejo",     chapters: desejoChapters },
+  { slug: "espelho-separacao",  chapters: separacaoChapters },
+  { slug: "no-heranca",         chapters: herancaChapters },
+  { slug: "no-silencio",        chapters: silencioChapters },
 ];
 
 // O texto narrado inclui uma pausa introdutória + a pergunta
