@@ -21,11 +21,11 @@ Sobre o que se separou.
 Sobre o que ficou.
 Sobre o que podes construir com o que ficou.
 
-Prepara um caderno.
+Prepara um caderno. [pause]
 Uma caneta. [pause]
-Vinte minutos sem interrupções.
+Vinte minutos sem interrupções. [pause]
 
-Respira. [pause]
+Respira.
 
 Escreve a data no topo.
 Título: A Minha Separação.
