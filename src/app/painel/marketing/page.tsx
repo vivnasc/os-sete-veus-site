@@ -4,7 +4,7 @@ import { useState, useRef, useCallback, useMemo, useEffect } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { professionalCarousels, hashtagSets, allWeeks, reelScripts, productionGuide } from "@/data/content-calendar-weeks";
+import { professionalCarousels, hashtagSets, allWeeks, thematicHub, reelScripts, productionGuide } from "@/data/content-calendar-weeks";
 import type { CarouselSlide } from "@/data/content-calendar-weeks";
 
 const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
@@ -387,6 +387,11 @@ export default function MarketingPage() {
   const [pageSection, setPageSection] = useState<"campanha" | "calendario" | "posts" | "reels" | "guia">("campanha");
   const [calWeek, setCalWeek] = useState(0);
   const [calDay, setCalDay] = useState(0);
+  const [hubModal, setHubModal] = useState<{ slides: CarouselSlide[]; title: string; caption?: string } | null>(null);
+  const [hubFormat, setHubFormat] = useState<"vertical" | "square">("square");
+  const hubSlideRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [hubExporting, setHubExporting] = useState(false);
+  const [hubExportingIdx, setHubExportingIdx] = useState<number | null>(null);
 
   const today = useMemo(() => new Date(), []);
 
@@ -448,6 +453,29 @@ export default function MarketingPage() {
     }
     setExporting(false);
   }, [carousel, captureElement]);
+
+  const exportHubSlide = useCallback(async (idx: number, fmt: "vertical" | "square") => {
+    const wrapper = hubSlideRefs.current[idx];
+    if (!wrapper) return;
+    const el = (wrapper.firstElementChild as HTMLElement) || wrapper;
+    const dims = fmt === "vertical" ? STORY_DIMS : DIMS;
+    setHubExportingIdx(idx);
+    try { await captureElement(el, dims, `slide-${idx + 1}.png`); } catch { /* skip */ }
+    setHubExportingIdx(null);
+  }, [captureElement]);
+
+  const exportAllHub = useCallback(async (count: number, fmt: "vertical" | "square") => {
+    setHubExporting(true);
+    const dims = fmt === "vertical" ? STORY_DIMS : DIMS;
+    for (let i = 0; i < count; i++) {
+      const wrapper = hubSlideRefs.current[i];
+      if (!wrapper) continue;
+      const el = (wrapper.firstElementChild as HTMLElement) || wrapper;
+      try { await captureElement(el, dims, `slide-${i + 1}.png`); } catch { /* skip */ }
+      await new Promise((r) => setTimeout(r, 500));
+    }
+    setHubExporting(false);
+  }, [captureElement]);
 
   const exportAllVert = useCallback(async () => {
     if (!carousel) return;
@@ -530,13 +558,14 @@ export default function MarketingPage() {
 
   const sectionLabels: { id: typeof pageSection; label: string }[] = [
     { id: "campanha", label: "Campanha" },
-    { id: "calendario", label: "Calendario" },
+    { id: "calendario", label: "Hub" },
     { id: "posts", label: "Posts" },
     { id: "reels", label: "Reels" },
     { id: "guia", label: "Guia" },
   ];
 
   return (
+    <>
     <div className="min-h-screen bg-[#1a1814]">
       {/* ── HEADER ── */}
       <div className="sticky top-0 z-30 border-b border-[#c9b896]/10 bg-[#1a1814]/95 backdrop-blur-lg">
@@ -644,7 +673,7 @@ export default function MarketingPage() {
         {/* ══════════════════════════════════════════════════════════════════════ */}
         {pageSection === "calendario" && (
           <div className="py-4 space-y-4">
-            {/* Week selector */}
+            {/* Theme selector */}
             <div className="flex items-center gap-2">
               <button onClick={() => { setCalWeek(Math.max(0, calWeek - 1)); setCalDay(0); }}
                 disabled={calWeek === 0}
@@ -652,33 +681,33 @@ export default function MarketingPage() {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6" /></svg>
               </button>
               <div className="flex-1 text-center">
-                <p className="font-serif text-base text-cream/90">Semana {allWeeks[calWeek].weekNumber}: {allWeeks[calWeek].title}</p>
-                <p className="font-sans text-[0.6rem] text-cream/40">{allWeeks[calWeek].subtitle}</p>
+                <p className="font-serif text-base text-cream/90">{thematicHub[calWeek].title}</p>
+                <p className="font-sans text-[0.6rem] text-cream/40">{thematicHub[calWeek].subtitle}</p>
               </div>
-              <button onClick={() => { setCalWeek(Math.min(allWeeks.length - 1, calWeek + 1)); setCalDay(0); }}
-                disabled={calWeek === allWeeks.length - 1}
+              <button onClick={() => { setCalWeek(Math.min(thematicHub.length - 1, calWeek + 1)); setCalDay(0); }}
+                disabled={calWeek === thematicHub.length - 1}
                 className="p-1.5 text-cream/30 hover:text-cream/60 disabled:opacity-20">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6" /></svg>
               </button>
             </div>
 
-            {/* Week overview pills */}
+            {/* Theme overview pills */}
             <div className="-mx-4 overflow-x-auto px-4 scrollbar-none">
               <div className="flex gap-1.5 min-w-max">
-                {allWeeks.map((w, wi) => (
+                {thematicHub.map((w, wi) => (
                   <button key={wi} onClick={() => { setCalWeek(wi); setCalDay(0); }}
                     className={`rounded-lg px-2.5 py-1.5 font-sans text-[0.55rem] font-medium whitespace-nowrap transition-all ${
                       calWeek === wi ? "bg-[#c9b896]/20 text-[#c9b896]" : "text-cream/30 hover:text-cream/50"
                     }`}>
-                    S{w.weekNumber}
+                    {w.title}
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Day selector */}
+            {/* Sub-theme selector */}
             <div className="flex gap-1">
-              {allWeeks[calWeek].days.map((d, di) => (
+              {thematicHub[calWeek].days.map((d, di) => (
                 <button key={di} onClick={() => { setCalDay(di); }}
                   className={`flex-1 rounded-xl py-2.5 text-center transition-all ${
                     calDay === di
@@ -695,9 +724,9 @@ export default function MarketingPage() {
               ))}
             </div>
 
-            {/* Day theme */}
+            {/* Sub-theme content */}
             {(() => {
-              const day = allWeeks[calWeek].days[calDay];
+              const day = thematicHub[calWeek].days[calDay];
               if (!day) return null;
               return (
                 <div className="space-y-3">
@@ -720,40 +749,48 @@ export default function MarketingPage() {
                         </span>
                       </div>
                       <div className="p-4 space-y-3">
-                        {/* Visual preview */}
-                        {slot.visual && (
-                          <div className="rounded-xl overflow-hidden" style={{
-                            backgroundColor: slot.visual.bg, color: slot.visual.text,
-                            padding: "24px", minHeight: 120,
-                          }}>
-                            {slot.visual.title && (
-                              <p className="font-serif text-sm font-bold leading-snug" style={{ whiteSpace: "pre-line" }}>{slot.visual.title}</p>
-                            )}
-                            {slot.visual.body && (
-                              <p className="mt-2 font-sans text-[0.65rem] leading-relaxed opacity-80" style={{ whiteSpace: "pre-line" }}>{slot.visual.body}</p>
-                            )}
-                            {slot.visual.footer && (
-                              <p className="mt-3 font-sans text-[0.55rem] font-semibold uppercase tracking-wider" style={{ color: slot.visual.accent }}>{slot.visual.footer}</p>
-                            )}
-                          </div>
-                        )}
+                        {/* Visual preview + export button */}
+                        {slot.visual && (() => {
+                          const slide: CarouselSlide = { bg: slot.visual.bg, text: slot.visual.text, accent: slot.visual.accent, title: slot.visual.title, body: slot.visual.body || "", footer: slot.visual.footer || "" };
+                          return (
+                            <button
+                              onClick={() => setHubModal({ slides: [slide], title: slot.type, caption: slot.caption })}
+                              className="w-full rounded-xl overflow-hidden text-left transition-all hover:ring-2 hover:ring-[#c9b896]/30 active:scale-[0.98]"
+                              style={{ backgroundColor: slot.visual.bg, color: slot.visual.text, padding: "24px", minHeight: 120 }}
+                            >
+                              {slot.visual.title && <p className="font-serif text-sm font-bold leading-snug" style={{ whiteSpace: "pre-line" }}>{slot.visual.title}</p>}
+                              {slot.visual.body && <p className="mt-2 font-sans text-[0.65rem] leading-relaxed opacity-80" style={{ whiteSpace: "pre-line" }}>{slot.visual.body}</p>}
+                              {slot.visual.footer && <p className="mt-3 font-sans text-[0.55rem] font-semibold uppercase tracking-wider" style={{ color: slot.visual.accent }}>{slot.visual.footer}</p>}
+                              <p className="mt-3 font-sans text-[0.5rem] font-semibold uppercase tracking-widest opacity-40">Toca para ver & baixar →</p>
+                            </button>
+                          );
+                        })()}
 
-                        {/* Carousel slides */}
+                        {/* Carousel — open modal to view & export */}
                         {slot.carousel && slot.carousel.length > 0 && (
-                          <div className="space-y-1.5">
-                            <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-cream/30">{slot.carousel.length} slides</p>
-                            <div className="-mx-1 flex gap-1.5 overflow-x-auto px-1 pb-1 scrollbar-none">
-                              {slot.carousel.map((sl, sli) => (
-                                <div key={sli} className="shrink-0 rounded-lg overflow-hidden" style={{
-                                  width: 80, height: 80, backgroundColor: sl.bg, color: sl.text, padding: 8,
-                                }}>
-                                  <p className="font-serif text-[0.4rem] font-bold leading-tight" style={{ whiteSpace: "pre-line" }}>
-                                    {sl.title?.slice(0, 40)}{(sl.title?.length || 0) > 40 ? "..." : ""}
-                                  </p>
-                                </div>
-                              ))}
+                          <button
+                            onClick={() => { setHubFormat("square"); setHubModal({ slides: slot.carousel!, title: slot.type, caption: slot.caption }); }}
+                            className="w-full rounded-xl border border-cream/10 bg-black/20 px-4 py-3 text-left transition-all hover:border-[#c9b896]/30 active:scale-[0.98]"
+                          >
+                            <div className="flex items-center gap-3">
+                              {/* Mini strip */}
+                              <div className="flex gap-1">
+                                {slot.carousel.slice(0, 4).map((sl, sli) => (
+                                  <div key={sli} className="shrink-0 rounded overflow-hidden" style={{ width: 36, height: 36, backgroundColor: sl.bg }} />
+                                ))}
+                                {slot.carousel.length > 4 && (
+                                  <div className="shrink-0 rounded overflow-hidden flex items-center justify-center" style={{ width: 36, height: 36, backgroundColor: "#ffffff10" }}>
+                                    <span className="font-sans text-[0.45rem] font-bold text-cream/40">+{slot.carousel.length - 4}</span>
+                                  </div>
+                                )}
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <p className="font-sans text-[0.6rem] font-semibold text-cream/70">{slot.carousel.length} slides</p>
+                                <p className="font-sans text-[0.5rem] text-cream/30">Toca para ver & baixar</p>
+                              </div>
+                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-cream/30"><path d="M9 18l6-6-6-6" /></svg>
                             </div>
-                          </div>
+                          </button>
                         )}
 
                         {/* Caption */}
@@ -1479,5 +1516,125 @@ export default function MarketingPage() {
         </div>
       )}
     </div>
+
+    {/* ── HUB SLIDE MODAL ─────────────────────────────────────────────────── */}
+    {hubModal && (() => {
+      const isVert = hubFormat === "vertical";
+      const dims = isVert ? STORY_DIMS : DIMS;
+      // Vertical preview: fit width to ~240px so full slide shows without scrolling
+      // Square preview: fit width to ~328px
+      const previewW = isVert ? 220 : 328;
+      const scale = previewW / dims.w;
+      const previewH = Math.round(dims.h * scale);
+      const waCaption = hubModal.caption ? stripHashtags(hubModal.caption) : "";
+      return (
+        <div className="fixed inset-0 z-50 flex flex-col bg-[#1a1814]">
+          {/* Header */}
+          <div className="shrink-0 border-b border-cream/10 px-4 py-3 space-y-2.5">
+            <div className="flex items-center gap-3">
+              <button onClick={() => { setHubModal(null); setHubExporting(false); setHubExportingIdx(null); }}
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cream/10 text-cream/60">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
+              </button>
+              <p className="flex-1 font-sans text-xs font-semibold text-cream/70 truncate">{hubModal.title}</p>
+              <button onClick={() => exportAllHub(hubModal.slides.length, hubFormat)}
+                disabled={hubExporting}
+                className="shrink-0 rounded-lg bg-[#c9b896] px-3 py-1.5 font-sans text-[0.6rem] font-bold text-[#1a1814] disabled:opacity-50">
+                {hubExporting ? "A baixar..." : `Baixar ${hubModal.slides.length > 1 ? `todos (${hubModal.slides.length})` : "imagem"}`}
+              </button>
+            </div>
+            {/* Format toggle */}
+            <div className="flex rounded-xl bg-black/30 p-1 gap-1">
+              <button onClick={() => setHubFormat("square")}
+                className={`flex-1 rounded-lg py-1.5 font-sans text-[0.6rem] font-semibold transition-all ${!isVert ? "bg-[#c9b896] text-[#1a1814]" : "text-cream/40 hover:text-cream/60"}`}>
+                Instagram 1:1
+              </button>
+              <button onClick={() => setHubFormat("vertical")}
+                className={`flex-1 rounded-lg py-1.5 font-sans text-[0.6rem] font-semibold transition-all ${isVert ? "bg-[#25D366] text-white" : "text-cream/40 hover:text-cream/60"}`}>
+                WA Status 9:16
+              </button>
+            </div>
+          </div>
+
+          {/* Slides */}
+          <div className="flex-1 overflow-y-auto px-4 py-4 space-y-5">
+            {/* Horizontal scroll for multi-slide carousels */}
+            {hubModal.slides.length > 1 ? (
+              <div className="-mx-4 overflow-x-auto px-4 scrollbar-none">
+                <div className="flex gap-3" style={{ width: "max-content" }}>
+                  {hubModal.slides.map((slide, si) => (
+                    <div key={si} className="shrink-0">
+                      <div className="relative overflow-hidden rounded-xl" style={{ width: previewW, height: previewH }}>
+                        <div ref={(el) => { hubSlideRefs.current[si] = el; }}>
+                          {isVert
+                            ? <SlidePreviewVertical slide={slide} index={si} scale={scale} />
+                            : <SlidePreview slide={slide} index={si} scale={scale} />}
+                        </div>
+                      </div>
+                      <button onClick={() => exportHubSlide(si, hubFormat)}
+                        disabled={hubExportingIdx === si}
+                        className="mt-1.5 w-full rounded-lg border border-cream/10 py-1.5 font-sans text-[0.55rem] font-semibold text-cream/40 hover:border-[#c9b896]/30 hover:text-cream/60 disabled:opacity-40 transition-all">
+                        {hubExportingIdx === si ? "..." : `↓ ${si + 1}`}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              /* Single slide — centred */
+              <div className="flex justify-center">
+                <div>
+                  <div className="relative overflow-hidden rounded-xl" style={{ width: previewW, height: previewH }}>
+                    <div ref={(el) => { hubSlideRefs.current[0] = el; }}>
+                      {isVert
+                        ? <SlidePreviewVertical slide={hubModal.slides[0]} index={0} scale={scale} />
+                        : <SlidePreview slide={hubModal.slides[0]} index={0} scale={scale} />}
+                    </div>
+                  </div>
+                  <button onClick={() => exportHubSlide(0, hubFormat)}
+                    disabled={hubExportingIdx === 0}
+                    className="mt-2 w-full rounded-xl border border-cream/10 py-2.5 font-sans text-xs font-semibold text-cream/50 hover:border-[#c9b896]/30 hover:text-cream/70 disabled:opacity-50 transition-all">
+                    {hubExportingIdx === 0 ? "A baixar..." : "Baixar imagem"}
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* Legendas */}
+            {hubModal.caption && (
+              <div className="space-y-2">
+                {/* Instagram */}
+                <div className="rounded-2xl border border-[#E1306C]/20 bg-[#E1306C]/5 p-4 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#E1306C]/60">Legenda Instagram</p>
+                    <button onClick={() => copyText("hub-ig", hubModal.caption || "")}
+                      className={`rounded-lg px-3 py-1 font-sans text-[0.55rem] font-semibold transition-all ${copiedId === "hub-ig" ? "bg-[#E1306C] text-white" : "bg-[#E1306C]/10 text-[#E1306C]/60"}`}>
+                      {copiedId === "hub-ig" ? "Copiada!" : "Copiar"}
+                    </button>
+                  </div>
+                  <pre className="whitespace-pre-wrap font-sans text-[0.65rem] leading-relaxed text-cream/60">{hubModal.caption}</pre>
+                </div>
+                {/* WhatsApp Status caption (no hashtags) */}
+                {waCaption && waCaption !== hubModal.caption && (
+                  <div className="rounded-2xl border border-[#25D366]/20 bg-[#25D366]/5 p-4 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#25D366]/60">Legenda Status</p>
+                      <button onClick={() => copyText("hub-wa", waCaption)}
+                        className={`rounded-lg px-3 py-1 font-sans text-[0.55rem] font-semibold transition-all ${copiedId === "hub-wa" ? "bg-[#25D366] text-white" : "bg-[#25D366]/10 text-[#25D366]/60"}`}>
+                        {copiedId === "hub-wa" ? "Copiada!" : "Copiar"}
+                      </button>
+                    </div>
+                    <pre className="whitespace-pre-wrap font-sans text-[0.65rem] leading-relaxed text-cream/60">{waCaption}</pre>
+                  </div>
+                )}
+              </div>
+            )}
+
+            <div className="h-8" />
+          </div>
+        </div>
+      );
+    })()}
+    </>
   );
 }

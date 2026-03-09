@@ -1811,6 +1811,622 @@ const weekLaunchMedo2: WeekPlan = {
 
 export const allWeeks: WeekPlan[] = [week1, week2, week3, week4, week5, week6, week7, week8, weekOnboarding, weekLaunchMedo, weekLaunchMedo2];
 
+// ─── HUB TEMÁTICO ─────────────────────────────────────────────────────────────
+// Organização por tema, não por semana de campanha.
+// Tom: "Vejo-te, e há mais para ti." — Da Confrontação ao Convite
+// Véus · Espelhos · Nós · Comunidade · Reflexões
+
+export const thematicHub: WeekPlan[] = [
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // TEMA 1 — VÉUS
+  // Os 7 Véus do Despertar — o ensaio filosófico
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    weekNumber: 1,
+    title: "Véus",
+    subtitle: "Os 7 Véus do Despertar — o ensaio filosófico",
+    days: [
+      {
+        day: "Permanência",
+        dayShort: "Perm",
+        theme: "A ilusão de um eu fixo",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "Permanência.\nA ilusão mais\nconfortável.",
+              body: "\"Sempre fui assim.\"\n\nÉ o véu.",
+              footer: "Os 7 Véus do Despertar",
+            },
+            caption: "Há uma crença silenciosa que diz: sempre fui assim.\n\nÉ a ilusão mais confortável — porque justifica não mudar. Porque confirma que as tuas limitações são parte de ti.\n\nNão são.\n\nO primeiro véu chama-se Permanência. E ver através dele é o primeiro gesto de se escolher.\n\n#OsSeteVeus #VeuDaPermanencia #Autoconhecimento #DespertarDeConsciencia",
+          },
+          {
+            platform: "instagram",
+            type: "Carrossel",
+            carousel: [
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "A ilusão\nde um eu fixo.", body: "", footer: "O Véu da Permanência" },
+              { bg: "#f7f5f0", text: "#3d3630", accent: "#3d3630", title: "\"Sempre fui assim.\"", body: "Esta frase parece verdade.\nÉ o véu.", footer: "" },
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "O que és hoje\nnão é o que\nsempre foste.", body: "A identidade não é estática.\nMuda. Subtilmente.\nAté que um dia\njá não é a mesma.", footer: "" },
+              { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Ver o véu\nnão é o mesmo\nque atravessá-lo.", body: "Mas é o primeiro gesto.", footer: "Os 7 Véus do Despertar" },
+            ],
+            caption: "O Véu da Permanência diz: sempre fui assim. E assim serei.\n\nÉ o mais subtil dos véus — porque se disfarça de realismo.\n\nGuarda esta publicação para voltares quando precisares.\n\n#OsSeteVeus #VeuDaPermanencia #Autoconhecimento",
+          },
+          {
+            platform: "whatsapp",
+            type: "WhatsApp Status",
+            carousel: [
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Permanência.\nA ilusão mais\nconfortável.", body: "\"Sempre fui assim.\"\n\nÉ o véu.", footer: "Os 7 Véus do Despertar" },
+            ],
+            caption: "O primeiro véu chama-se Permanência.\n\nA crença de que sempre foste assim. De que as tuas limitações são parte de ti.\n\nNão são.\n\nOs 7 Véus do Despertar — seteveus.space\n\n#OsSeteVeus #VeuDaPermanencia",
+          },
+        ],
+      },
+      {
+        day: "Memória",
+        dayShort: "Mem",
+        theme: "As histórias que nos prendem",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#1a1a2e", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "Não somos\no que vivemos.\nSomos as histórias\nque contamos\nsobre o que vivemos.",
+              body: "",
+              footer: "O Véu da Memória",
+            },
+            caption: "A memória não é um arquivo neutro. É uma editora activa.\n\nEscolhe o que guarda. Amplifica. Distorce. E as histórias que conta sobre ti tornam-se, aos poucos, quem tu és.\n\nO segundo véu chama-se Memória.\n\n#OsSeteVeus #VeuDaMemoria #Autoconhecimento #DespertarDeConsciencia",
+          },
+          {
+            platform: "instagram",
+            type: "Carrossel",
+            carousel: [
+              { bg: "#1a1a2e", text: "#f7f5f0", accent: "#c9b896", title: "As histórias\nque nos prendem.", body: "", footer: "O Véu da Memória" },
+              { bg: "#f7f5f0", text: "#3d3630", accent: "#3d3630", title: "A memória\nnão é um arquivo.", body: "É uma editora activa.", footer: "" },
+              { bg: "#1a1a2e", text: "#f7f5f0", accent: "#c9b896", title: "Escolhe o que guarda.\nAmplifica.\nDistorce.", body: "E as histórias que conta\nsobre ti tornam-se\nquem tu és.", footer: "" },
+              { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "E se a história\nque contas\npudesse ser outra?", body: "Não como negação.\nComo escolha.", footer: "Os 7 Véus do Despertar" },
+            ],
+            caption: "\"Aquilo que me aconteceu define quem sou.\"\n\nÉ uma frase que parece verdade. É o Véu da Memória.\n\nNão estamos presas ao que vivemos. Estamos presas às histórias que contamos sobre o que vivemos.\n\nEssa é uma diferença que muda tudo.\n\n#OsSeteVeus #VeuDaMemoria #Autoconhecimento",
+          },
+        ],
+      },
+      {
+        day: "Turbilhão",
+        dayShort: "Turb",
+        theme: "Não és os teus pensamentos",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#0d1b2a", text: "#f7f5f0", accent: "#7a8c6e", format: "square",
+              title: "O pensamento\npassa.\n\nA consciência\nfica.",
+              body: "Não és os pensamentos\nque atravessam a tua mente.\nÉs aquilo que os observa.",
+              footer: "O Véu do Turbilhão",
+            },
+            caption: "Há dias em que a mente não pára.\n\nPensamentos sobre o que disseste, o que deverias ter dito, o que vai acontecer.\n\nO terceiro véu chama-se Turbilhão — a identificação com os pensamentos.\n\nNão és os teus pensamentos. És aquilo que os observa.\n\n#OsSeteVeus #VeuDoTurbilhao #Autoconhecimento #DespertarDeConsciencia",
+          },
+        ],
+      },
+      {
+        day: "Esforço",
+        dayShort: "Esf",
+        theme: "A busca que nunca chega",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "E se parasses\nde tentar chegar\na algum lado\ne simplesmente\nficasses aqui?",
+              body: "",
+              footer: "O Véu do Esforço",
+            },
+            caption: "Vivemos em busca incessante.\n\nDo próximo objectivo. Da próxima versão de nós. Do momento em que finalmente vamos sentir que chegámos.\n\nO quarto véu chama-se Esforço — a crença de que temos de fazer mais, ser mais, chegar mais longe para merecer descansar.\n\nE se já chegaste?\n\n#OsSeteVeus #VeuDoEsforco #Autoconhecimento #Merecimento",
+          },
+        ],
+      },
+      {
+        day: "Desolação",
+        dayShort: "Desol",
+        theme: "O medo do vazio",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#2a2420", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "O vazio não é vazio.\n\nÉ a antecâmara\nde algo novo.",
+              body: "",
+              footer: "O Véu da Desolação",
+            },
+            caption: "Há momentos em que nada parece fazer sentido.\n\nNão sabes o que queres. Não sentes nada. Ou sentes demasiado e não consegues nomear o quê.\n\nIsso não é ausência. É o Véu da Desolação — o medo de estar com o vazio.\n\nMas o vazio é a antecâmara de algo novo.\n\n#OsSeteVeus #VeuDaDesolacao #Autoconhecimento #DespertarDeConsciencia",
+          },
+        ],
+      },
+      {
+        day: "Horizonte",
+        dayShort: "Hor",
+        theme: "A ilusão dos finais",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", format: "square",
+              title: "Não existe\no ponto de chegada\nque imaginaste.",
+              body: "Existe o caminho.\nE tu nele.",
+              footer: "O Véu do Horizonte",
+            },
+            caption: "Esperamos por um momento em que finalmente nos sentiremos bem.\n\nQuando tiver este trabalho. Quando resolver este problema. Quando a minha vida estiver assim.\n\nO sexto véu chama-se Horizonte — a ilusão dos finais. O ponto de chegada que recua sempre que te aproximas.\n\nNão existe. Existe o caminho. E tu nele.\n\n#OsSeteVeus #VeuDoHorizonte #Autoconhecimento",
+          },
+        ],
+      },
+      {
+        day: "Dualidade",
+        dayShort: "Dual",
+        theme: "A separação eu/mundo",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", format: "square",
+              title: "Não estás\nseparada do mundo.\nÉs parte dele.",
+              body: "O sentimento de separação\ntambém é um véu.",
+              footer: "O Véu da Dualidade",
+            },
+            caption: "O sétimo véu é o mais subtil de todos.\n\nA sensação de que há um «eu» dentro e um «mundo» fora. Que estás separada do que te rodeia.\n\nEssa separação é uma ilusão.\n\nO Véu da Dualidade — o último. E o mais libertador de atravessar.\n\n#OsSeteVeus #VeuDaDualidade #Autoconhecimento #DespertarDeConsciencia",
+          },
+          {
+            platform: "instagram",
+            type: "Carrossel — Os 7 Véus",
+            carousel: [
+              { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "Os 7 Véus\nque te escondem\nde ti mesma.", body: "", footer: "Guarda esta publicação.", bgImage: "/images/mandala-7veus.png" },
+              { bg: "#c9b896", text: "#3d3630", accent: "#f7f5f0", title: "1. Permanência", body: "A crença num eu fixo.\n\"Sempre fui assim.\"", footer: "" },
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", title: "2. Memória", body: "As histórias\nque contas sobre ti.", footer: "" },
+              { bg: "#0d1b2a", text: "#f7f5f0", accent: "#7a8c6e", title: "3. Turbilhão", body: "A identificação\ncom os pensamentos.", footer: "" },
+              { bg: "#2a2420", text: "#f7f5f0", accent: "#c9b896", title: "4. Esforço", body: "A busca incessante.\nO merecimento adiado.", footer: "" },
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "5. Desolação", body: "O medo do vazio.\nA antecâmara do novo.", footer: "" },
+              { bg: "#2a3a2a", text: "#f7f5f0", accent: "#7a8c6e", title: "6. Horizonte", body: "A ilusão\ndos finais.", footer: "" },
+              { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "7. Dualidade", body: "A separação eu/mundo.\nA última ilusão.", footer: "seteveus.space" },
+            ],
+            caption: "Os 7 Véus que te escondem de ti mesma:\n\n1. Permanência — a crença num eu fixo\n2. Memória — as histórias que contas sobre ti\n3. Turbilhão — a identificação com os pensamentos\n4. Esforço — a busca incessante\n5. Desolação — o medo do vazio\n6. Horizonte — a ilusão dos finais\n7. Dualidade — a separação eu/mundo\n\nGuarda para voltares quando precisares.\n\n#OsSeteVeus #7Veus #Autoconhecimento #DespertarDeConsciencia",
+          },
+        ],
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // TEMA 2 — ESPELHOS
+  // Colecção de ficção interior
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    weekNumber: 2,
+    title: "Espelhos",
+    subtitle: "Colecção de ficção interior — cada espelho revela um véu",
+    days: [
+      {
+        day: "Espelho da Ilusão",
+        dayShort: "Ilus",
+        theme: "A vida que se tornou automática",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", format: "square",
+              title: "\"Quando foi que\nescolhi tomar café\nem vez de chá?\"",
+              body: "Uma pergunta absurda\nque muda tudo.",
+              footer: "O Espelho da Ilusão",
+            },
+            caption: "Às vezes a pergunta mais simples abre uma porta que nunca esperavas.\n\nIsso é o começo — não uma grande revelação, mas uma pergunta pequena que não pede resposta imediata. Só atenção.\n\nQuando foi que escolheste isto?\n\n#OsSeteVeus #EspelhoDaIlusao #FiccaoPsicologica #Autoconhecimento",
+          },
+          {
+            platform: "instagram",
+            type: "Carrossel — 5 frases",
+            carousel: [
+              { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "5 frases que mudam\na forma como te vês.", body: "", footer: "O Espelho da Ilusão", bgImage: "/images/espelho-ilusao.png" },
+              { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "\"Via, mas não sentia.\nRegistava, mas não\nparticipava.\"", body: "Como quem assiste\na um espectáculo\npor trás de uma\njanela fechada.", footer: "" },
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "\"Não era que não\ntivesse opinião.\nEra que a sua primeira\nreacção nunca era\no que verdadeiramente\npensava.\"", body: "", footer: "" },
+              { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "\"A manhã era bonita\nde uma forma que\nnão pedia esforço\npara ser notada.\"", body: "Ela ainda não sabia\no que fazer com essa beleza.", footer: "" },
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "\"Perguntar,\nmesmo tarde,\né o primeiro gesto\nde se escolher.\"", body: "", footer: "seteveus.space", bgImage: "/images/mandala-7veus.png" },
+            ],
+            caption: "5 frases d'O Espelho da Ilusão que mudam a forma como te vês.\n\nGuarda esta publicação. Volta quando precisares.\n\n#OsSeteVeus #EspelhoDaIlusao #Citacoes #FiccaoPsicologica #Autoconhecimento",
+          },
+          {
+            platform: "instagram",
+            type: "Teaser — Nó da Herança",
+            visual: {
+              bg: "#1a1a2e", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "A mãe sempre viu.\nEsperou anos.",
+              body: "Agora que Sara acordou,\nHelena tem algo\npara lhe dizer.\n\nO Nó da Herança.",
+              footer: "Disponível após completar o Espelho",
+            },
+            caption: "Sara viu o véu.\n\nMas há um nó que ficou por desatar — o silêncio herdado entre mãe e filha.\n\nO Nó da Herança está disponível para quem completou O Espelho da Ilusão.\n\n#OsSeteVeus #NoDaHeranca #FiccaoRelacional",
+          },
+          {
+            platform: "whatsapp",
+            type: "WhatsApp Status",
+            carousel: [
+              { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "\"Quando foi que\nescolhi tomar café\nem vez de chá?\"", body: "Uma pergunta absurda\nque muda tudo.\n\nO Espelho da Ilusão.", footer: "seteveus.space" },
+            ],
+            caption: "Às vezes a pergunta mais simples abre uma porta que nunca esperavas.\n\nO Espelho da Ilusão — seteveus.space\n\n#OsSeteVeus #EspelhoDaIlusao",
+          },
+        ],
+      },
+      {
+        day: "Espelho do Medo",
+        dayShort: "Medo",
+        theme: "O que o medo calou",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#0d1b2a", text: "#f7f5f0", accent: "#7a8c6e", format: "square",
+              title: "O medo é humano.\nViver uma vida inteira\nem função dele\né outra coisa.",
+              body: "E essa outra coisa\npode mudar.",
+              footer: "O Espelho do Medo",
+            },
+            caption: "O medo avisa. É o seu trabalho.\n\nMas há uma diferença entre o medo que avisa e o medo que governa.\n\nO Espelho do Medo não é sobre eliminar o medo. É sobre aprender a ouvi-lo sem lhe obedecer cegamente.\n\n#OsSeteVeus #EspelhoDoMedo #FiccaoPsicologica #Autoconhecimento",
+          },
+          {
+            platform: "instagram",
+            type: "Carrossel — 5 frases",
+            carousel: [
+              { bg: "#0d1b2a", text: "#7a8c6e", accent: "#f7f5f0", title: "5 frases d'O\nEspelho do Medo.", body: "", footer: "", bgImage: "/images/espelho-medo.png" },
+              { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "\"E se os dedos\nque um dia desenharam\nmuseus impossíveis\nainda souberem\nmover-se?\"", body: "", footer: "" },
+              { bg: "#0d1b2a", text: "#f7f5f0", accent: "#7a8c6e", title: "\"A sede de quem\npassou tanto tempo\nsem beber que\nse esqueceu\nde que tinha sede.\"", body: "", footer: "" },
+              { bg: "#ebe7df", text: "#3d3630", accent: "#7a8c6e", title: "\"Ver o medo.\nE continuar\nmesmo assim.\"", body: "Não é fraqueza.\nÉ o custo que parece\nmaior do que o custo de ficar.", footer: "" },
+              { bg: "#0d1b2a", text: "#f7f5f0", accent: "#7a8c6e", title: "\"Há agora\num talvez.\"", body: "Minúsculo. Frágil.\nQuase inaudível.\nMas novo.\nÉ a primeira coisa viva.", footer: "O Espelho do Medo", bgImage: "/images/mandala-7veus.png" },
+            ],
+            caption: "Frases d'O Espelho do Medo — porque às vezes precisamos ler para reconhecer o que sempre soubemos.\n\nGuarda para voltares quando precisares.\n\n#OsSeteVeus #EspelhoDoMedo #Citacoes #FiccaoPsicologica",
+          },
+          {
+            platform: "instagram",
+            type: "Teaser — Nó do Silêncio",
+            visual: {
+              bg: "#0d1b2a", text: "#f7f5f0", accent: "#7a8c6e", format: "square",
+              title: "O medo calou\ntudo o que\nele queria dizer.",
+              body: "O Nó do Silêncio.\nEm breve.",
+              footer: "Os Sete Véus",
+            },
+            caption: "O Rui e a Ana.\n\nO que ficou por dizer quando o medo governou.\n\nO Nó do Silêncio — em breve, para quem completar O Espelho do Medo.\n\n#OsSeteVeus #NodoSilencio #EmBreve",
+          },
+          {
+            platform: "whatsapp",
+            type: "WhatsApp Status",
+            carousel: [
+              { bg: "#0d1b2a", text: "#f7f5f0", accent: "#7a8c6e", title: "O medo é humano.\nViver uma vida\nem função dele\né outra coisa.", body: "E essa outra coisa\npode mudar.\n\nO Espelho do Medo.", footer: "seteveus.space" },
+            ],
+            caption: "O Espelho do Medo está disponível.\n\nÉ sobre o Rui — e sobre o que o medo calou durante anos.\n\nReconheces-te?\n\nseteveus.space\n\n#OsSeteVeus #EspelhoDoMedo",
+          },
+        ],
+      },
+      {
+        day: "Em breve",
+        dayShort: "→",
+        theme: "Culpa · Identidade · Controlo · Desejo · Separação",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post — Espelho da Culpa",
+            visual: {
+              bg: "#c97070", text: "#f7f5f0", accent: "#ebe7df", format: "square",
+              title: "Culpa.",
+              body: "O que pagas\npor quereres mais.\n\nO Espelho da Culpa\nAbril 2026.",
+              footer: "Os Sete Véus",
+            },
+            caption: "O terceiro espelho.\n\nQuando queremos mais para nós próprias e sentimos que não merecemos. Quando nos castigamos por ter desejos.\n\nO Espelho da Culpa — Abril 2026.\n\n#OsSeteVeus #EspelhoDaCulpa #EmBreve",
+          },
+          {
+            platform: "instagram",
+            type: "Post — Espelho da Identidade",
+            visual: {
+              bg: "#7a7a9e", text: "#f7f5f0", accent: "#ebe7df", format: "square",
+              title: "Identidade.",
+              body: "A máscara que usas\nhá tanto tempo\nque esqueceste\no rosto.\n\nO Espelho da Identidade\nMaio 2026.",
+              footer: "Os Sete Véus",
+            },
+            caption: "Quem és quando não há ninguém a observar?\n\nO Espelho da Identidade — Maio 2026.\n\n#OsSeteVeus #EspelhoDaIdentidade #EmBreve",
+          },
+          {
+            platform: "instagram",
+            type: "Post — Espelhos 5-7",
+            visual: {
+              bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "Sete espelhos.\nSete histórias.",
+              body: "Controlo — Junho 2026\nDesejo — Julho 2026\nSeparação — Agosto 2026",
+              footer: "Os Sete Véus",
+            },
+            caption: "A jornada dos sete espelhos continua.\n\nCada espelho é uma personagem. Cada personagem é um reconhecimento.\n\nDisponível ao ritmo da tua vida.\n\n#OsSeteVeus #EmBreve #FiccaoPsicologica",
+          },
+        ],
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // TEMA 3 — NÓS
+  // O que se passa entre duas pessoas quando um véu cai
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    weekNumber: 3,
+    title: "Nós",
+    subtitle: "O que se passa entre duas pessoas quando um véu cai",
+    days: [
+      {
+        day: "O que são os Nós",
+        dayShort: "Intro",
+        theme: "Não são sequelas. São o que ficou por dizer.",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Carrossel — explicação",
+            carousel: [
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Há histórias\nque só existem\nentre duas pessoas.", body: "", footer: "Os Nós" },
+              { bg: "#f7f5f0", text: "#3d3630", accent: "#3d3630", title: "Nos Espelhos,\nvês-te a ti mesma.", body: "A Sara. O Rui. A Luísa.\nPersonagens que se tornam\nesperhos.", footer: "" },
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Nos Nós,\nvês o que se\npassou entre ti\ne alguém.", body: "O silêncio herdado.\nO medo que calou.\nA culpa disfarçada.", footer: "" },
+              { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Só lês o Nó\nse viveste\no Espelho.", body: "Não é uma regra.\nÉ uma continuação.", footer: "Os Sete Véus" },
+            ],
+            caption: "Os Nós não são sequelas.\n\nSão o que ficou por dizer. O que se passou do outro lado da história — entre duas pessoas quando um véu cai.\n\nCada Espelho tem um Nó que lhe corresponde. E só abre depois de teres vivido o Espelho.\n\n#OsSeteVeus #OsNos #FiccaoRelacional",
+          },
+        ],
+      },
+      {
+        day: "Nó da Herança",
+        dayShort: "Her",
+        theme: "O silêncio herdado entre mãe e filha",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "A mãe sempre viu.\nEsperou anos.\n\nAgora que Sara\nacordou, Helena\ntem algo para\nlhe dizer.",
+              body: "",
+              footer: "O Nó da Herança",
+            },
+            caption: "O Nó da Herança não é uma continuação.\n\nÉ o que ficou por dizer.\n\nQuando Sara viu o véu da ilusão, não estava sozinha nessa jornada. A Helena — a mãe — viu tudo. E esperou.\n\nDisponível para quem completou O Espelho da Ilusão.\n\n#OsSeteVeus #NoDaHeranca #FiccaoRelacional #MaeFilha",
+          },
+          {
+            platform: "whatsapp",
+            type: "WhatsApp Status",
+            carousel: [
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "A mãe sempre viu.\nEsperou anos.\n\nAgora que Sara\nacordou, Helena\ntem algo para\nlhe dizer.", body: "", footer: "O Nó da Herança" },
+            ],
+            caption: "Completaste O Espelho da Ilusão?\n\nHá algo que ficou por dizer.\n\nO Nó da Herança — disponível em seteveus.space\n\n#OsSeteVeus #NoDaHeranca",
+          },
+        ],
+      },
+      {
+        day: "Em breve",
+        dayShort: "→",
+        theme: "Os restantes Nós acompanham os Espelhos",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post — Nó do Silêncio",
+            visual: {
+              bg: "#0d1b2a", text: "#f7f5f0", accent: "#7a8c6e", format: "square",
+              title: "O medo calou\ntudo o que\nele queria dizer.",
+              body: "O Nó do Silêncio.\nEm breve.",
+              footer: "Os Sete Véus",
+            },
+            caption: "O Rui e a Ana.\n\nO que ficou por dizer quando o medo governou.\n\nO Nó do Silêncio — em breve, para quem completar O Espelho do Medo.\n\n#OsSeteVeus #NodoSilencio #EmBreve",
+          },
+        ],
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // TEMA 4 — COMUNIDADE
+  // Ecos — onde as vozes se encontram
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    weekNumber: 4,
+    title: "Comunidade",
+    subtitle: "Ecos — reflexões anónimas. Tudo desaparece.",
+    days: [
+      {
+        day: "O que são os Ecos",
+        dayShort: "Ecos",
+        theme: "Reflexões anónimas. Tudo impermanente.",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#1a1a2e", text: "#f7f5f0", accent: "#7a8c6e", format: "square",
+              title: "As tuas palavras\ndesaparecem\nem 30 dias.\n\nMas antes,\nalguém se\nreconheceu nelas.",
+              body: "",
+              footer: "Comunidade Ecos",
+            },
+            caption: "Na Comunidade Ecos não há nomes. Não há likes.\n\nHá ecos — reflexões que partilhas e que expiram em 30 dias. E há reconhecimentos — o gesto silencioso de dizer \"reconheço-me nisto\".\n\nTudo impermanente. Tudo real.\n\nIncluído com qualquer acesso à plataforma.\n\n#OsSeteVeus #ComunidadeEcos #ReflexoesAnonimas",
+          },
+          {
+            platform: "instagram",
+            type: "Carrossel — como funciona",
+            carousel: [
+              { bg: "#1a1a2e", text: "#f7f5f0", accent: "#7a8c6e", title: "Lês sozinha.\nMas não\nestás só.", body: "", footer: "Comunidade Ecos" },
+              { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "Ecos", body: "Reflexões anónimas.\nPartilhas o que sentiste.\nExpira em 30 dias.", footer: "" },
+              { bg: "#1a1a2e", text: "#f7f5f0", accent: "#7a8c6e", title: "Reconhecimentos", body: "Não há likes.\nHá \"reconheço-me\".\n\nUma diferença\nque muda tudo.", footer: "" },
+              { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "Sussurros", body: "Uma mensagem\nde uma só via.\nExpira em 7 dias\nou depois de ser lida.", footer: "" },
+              { bg: "#1a1a2e", text: "#f7f5f0", accent: "#7a8c6e", title: "Sem nomes.\nSem fotos.\nTudo desaparece.", body: "Mas o reconhecimento\nfica.", footer: "seteveus.space/comunidade" },
+            ],
+            caption: "A Comunidade Ecos não é uma rede social.\n\nÉ um espaço de reconhecimento silencioso — onde partilhas o que sentiste e outra pessoa, algures, diz \"eu também\".\n\nSem nomes. Sem fotos. Tudo desaparece.\n\n#OsSeteVeus #ComunidadeEcos #ReflexoesAnonimas #Comunidade",
+          },
+        ],
+      },
+      {
+        day: "Vozes da Comunidade",
+        dayShort: "Vozes",
+        theme: "O que dizem as leitoras",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Eco anónimo — Espelho da Ilusão",
+            visual: {
+              bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "\"saí do modo automático.\nnão sei para onde vou\nmas pelo menos\nestou acordada.\"",
+              body: "",
+              footer: "~ leitora anónima, Espelho da Ilusão",
+            },
+            caption: "Isto chegou-me através da Comunidade Ecos.\n\nNão há nome. Não sei quem é. Mas sei que é real.\n\n\"saí do modo automático. não sei para onde vou mas pelo menos estou acordada.\"\n\nÉ assim que começa.\n\n#OsSeteVeus #ComunidadeEcos #EspelhoDaIlusao",
+          },
+          {
+            platform: "instagram",
+            type: "Eco anónimo — Espelho do Medo",
+            visual: {
+              bg: "#0d1b2a", text: "#f7f5f0", accent: "#7a8c6e", format: "square",
+              title: "\"o silêncio entre nós\nnão era paz.\nera tudo o que\nnunca dissemos.\"",
+              body: "",
+              footer: "~ leitora anónima, Espelho do Medo",
+            },
+            caption: "Da Comunidade Ecos:\n\n\"o silêncio entre nós não era paz. era tudo o que nunca dissemos.\"\n\nÀs vezes a frase certa de outra pessoa torna-se tua.\n\n#OsSeteVeus #ComunidadeEcos #EspelhoDoMedo",
+          },
+          {
+            platform: "instagram",
+            type: "Eco anónimo — Reconhecimento",
+            visual: {
+              bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", format: "square",
+              title: "\"chorei no banho.\noutra vez.\nmas desta vez\nnão foi por tristeza.\nfoi por reconhecimento.\"",
+              body: "",
+              footer: "~ leitora anónima, Espelho da Ilusão",
+            },
+            caption: "\"chorei no banho. outra vez. mas desta vez não foi por tristeza. foi por reconhecimento.\"\n\nIsso é o que acontece quando algo que leste te devolve algo que sempre soubeste.\n\nDa Comunidade Ecos.\n\n#OsSeteVeus #ComunidadeEcos #Reconhecimento",
+          },
+        ],
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // TEMA 5 — REFLEXÕES
+  // Frases, perguntas e observações da autora
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    weekNumber: 5,
+    title: "Reflexões",
+    subtitle: "Frases, perguntas e observações da autora",
+    days: [
+      {
+        day: "Há mais para ti",
+        dayShort: "Assin",
+        theme: "A assinatura da Vivianne",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "Há mais para ti.",
+              body: "Não como promessa.\nComo observação.\nDe alguém que\ntambém passou por aqui.",
+              footer: "seteveus.space",
+            },
+            caption: "Há mais para ti.\n\nNão estou a dizer que a tua vida está errada. Não estou a dizer que precisas de mudar.\n\nEstou a dizer que vejo em ti algo que talvez ainda não vejas. E que há um caminho — não um destino — para explorar.\n\nIsso é tudo.\n\n#OsSeteVeus #HaMaisParaTi #Autoconhecimento",
+          },
+          {
+            platform: "instagram",
+            type: "Post Feed — O mundo convida",
+            visual: {
+              bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", format: "square",
+              title: "A manhã era bonita\nde uma forma que\nnão pedia esforço\npara ser notada.",
+              body: "Ela ainda não sabia\no que fazer com essa beleza.",
+              footer: "Os Sete Véus",
+            },
+            caption: "Às vezes o mundo faz isso — aparece bonito sem pedir nada em troca.\n\nE nós não sabemos o que fazer com isso. Porque não estamos habituadas a receber sem ter de merecermos.\n\nIsso também é um véu.\n\n#OsSeteVeus #OMundoConvida #Reflexao #Autoconhecimento",
+          },
+        ],
+      },
+      {
+        day: "Perguntas abertas",
+        dayShort: "Perg",
+        theme: "Perguntas que não precisam de resposta imediata",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#2a2420", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "Quando foi a última\nvez que fizeste\nalgo só porque\nquiseste?",
+              body: "Sem explicar.\nSem pedir licença.",
+              footer: "Os Sete Véus",
+            },
+            caption: "Quando foi a última vez que fizeste algo só porque quiseste?\n\nSem explicar a ninguém. Sem pedir desculpa por querer. Sem justificar a escolha.\n\nNão precisa de resposta agora. Só de atenção.\n\n#OsSeteVeus #PerguntasAbertas #Autoconhecimento #Reflexao",
+          },
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", format: "square",
+              title: "O que perdeste\nno caminho de\nte tornares\nquem se espera\nque sejas?",
+              body: "",
+              footer: "Os Sete Véus",
+            },
+            caption: "O que perdeste?\n\nNão no sentido de tragédia. No sentido de: há partes de ti que foram ficando para trás, silenciadas, por parecarem inconvenientes.\n\nQue partes são essas?\n\nNão precisas de responder. Só de deixar a pergunta estar.\n\n#OsSeteVeus #PerguntasAbertas #Reflexao #Autoconhecimento",
+          },
+          {
+            platform: "instagram",
+            type: "Post Feed — O corpo lembra",
+            visual: {
+              bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "O corpo sabe\ncoisas que a mente\ndemora a aceitar.",
+              body: "O aperto no peito\nnão é apenas tensão.\nÉ informação.",
+              footer: "Os Sete Véus",
+            },
+            caption: "O corpo é o primeiro a saber.\n\nAntes de a mente nomear o que sente, o corpo já registou — o aperto no peito, a tensão nos ombros, a fadiga que não é de trabalho.\n\nNão é fraqueza. É informação.\n\nO que está o teu corpo a tentar dizer-te?\n\n#OsSeteVeus #OCorpoLembra #Autoconhecimento #Reflexao",
+          },
+          {
+            platform: "instagram",
+            type: "Reel — script",
+            reelScript: {
+              hook: "Há uma pergunta que ninguém te faz. E que talvez precises de te fazer a ti mesma.",
+              scenes: [
+                "Close nos olhos de alguém — câmara lenta. Silêncio.",
+                "Texto aparece: \"Quando foi a última vez que fizeste algo só porque quiseste?\"",
+                "Imagens quotidianas: mãos a escrever, janela com chuva, chávena ao amanhecer.",
+                "Voz calma (off): \"Sem explicar. Sem pedir licença. Só porque quiseste.\"",
+                "Texto final: \"Há mais para ti.\" + logo Os Sete Véus",
+              ],
+              cta: "Descobre em seteveus.space",
+              music: "Música ambiente suave — piano ou natureza. Sem letra.",
+              duration: "20-30s",
+            },
+            caption: "Quando foi a última vez que fizeste algo só porque quiseste?\n\nSem justificar. Sem pedir desculpa.\n\nEssa pergunta é o início.\n\n#OsSeteVeus #Autoconhecimento #Reflexao #Reels",
+          },
+        ],
+      },
+      {
+        day: "O corpo lembra",
+        dayShort: "Corpo",
+        theme: "O corpo como testemunha",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Carrossel — 5 formas de reconhecer",
+            carousel: [
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "5 formas de\nreconhecer\no que sentes.", body: "", footer: "Os Sete Véus" },
+              { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "O mundo convida.", body: "A beleza existe\nsem te pedir\nnada em troca.", footer: "" },
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "O corpo lembra.", body: "Antes da mente nomear,\no corpo já registou.", footer: "" },
+              { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Fissura,\nnão diagnóstico.", body: "Não estás partida.\nEstás a deixar\na luz entrar.", footer: "" },
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Presença\ncompassiva.", body: "Não te observes com dureza.\nObserva-te com curiosidade.", footer: "" },
+              { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Densidade\nque respira.", body: "As coisas difíceis\npodem ser ditas\ncom leveza.", footer: "Os Sete Véus" },
+            ],
+            caption: "Não é sobre saber tudo. É sobre reparar.\n\nO mundo convida. O corpo lembra. A fissura é a entrada da luz.\n\nIsso é o suficiente para começar.\n\n#OsSeteVeus #Reflexao #Autoconhecimento #PresencaCompassiva",
+          },
+        ],
+      },
+    ],
+  },
+];
+
 // ─── CARROSSEIS PROFISSIONAIS (slide a slide) ────────────────────────────────
 
 export type ProfessionalCarousel = {
