@@ -4,7 +4,7 @@ import { useState, useRef, useCallback, useMemo, useEffect } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { professionalCarousels, hashtagSets, allWeeks, reelScripts, productionGuide } from "@/data/content-calendar-weeks";
+import { professionalCarousels, hashtagSets, allWeeks, thematicHub, reelScripts, productionGuide } from "@/data/content-calendar-weeks";
 import type { CarouselSlide } from "@/data/content-calendar-weeks";
 
 const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
@@ -530,7 +530,7 @@ export default function MarketingPage() {
 
   const sectionLabels: { id: typeof pageSection; label: string }[] = [
     { id: "campanha", label: "Campanha" },
-    { id: "calendario", label: "Calendario" },
+    { id: "calendario", label: "Hub" },
     { id: "posts", label: "Posts" },
     { id: "reels", label: "Reels" },
     { id: "guia", label: "Guia" },
@@ -644,7 +644,7 @@ export default function MarketingPage() {
         {/* ══════════════════════════════════════════════════════════════════════ */}
         {pageSection === "calendario" && (
           <div className="py-4 space-y-4">
-            {/* Week selector */}
+            {/* Theme selector */}
             <div className="flex items-center gap-2">
               <button onClick={() => { setCalWeek(Math.max(0, calWeek - 1)); setCalDay(0); }}
                 disabled={calWeek === 0}
@@ -652,33 +652,33 @@ export default function MarketingPage() {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6" /></svg>
               </button>
               <div className="flex-1 text-center">
-                <p className="font-serif text-base text-cream/90">Semana {allWeeks[calWeek].weekNumber}: {allWeeks[calWeek].title}</p>
-                <p className="font-sans text-[0.6rem] text-cream/40">{allWeeks[calWeek].subtitle}</p>
+                <p className="font-serif text-base text-cream/90">{thematicHub[calWeek].title}</p>
+                <p className="font-sans text-[0.6rem] text-cream/40">{thematicHub[calWeek].subtitle}</p>
               </div>
-              <button onClick={() => { setCalWeek(Math.min(allWeeks.length - 1, calWeek + 1)); setCalDay(0); }}
-                disabled={calWeek === allWeeks.length - 1}
+              <button onClick={() => { setCalWeek(Math.min(thematicHub.length - 1, calWeek + 1)); setCalDay(0); }}
+                disabled={calWeek === thematicHub.length - 1}
                 className="p-1.5 text-cream/30 hover:text-cream/60 disabled:opacity-20">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6" /></svg>
               </button>
             </div>
 
-            {/* Week overview pills */}
+            {/* Theme overview pills */}
             <div className="-mx-4 overflow-x-auto px-4 scrollbar-none">
               <div className="flex gap-1.5 min-w-max">
-                {allWeeks.map((w, wi) => (
+                {thematicHub.map((w, wi) => (
                   <button key={wi} onClick={() => { setCalWeek(wi); setCalDay(0); }}
                     className={`rounded-lg px-2.5 py-1.5 font-sans text-[0.55rem] font-medium whitespace-nowrap transition-all ${
                       calWeek === wi ? "bg-[#c9b896]/20 text-[#c9b896]" : "text-cream/30 hover:text-cream/50"
                     }`}>
-                    S{w.weekNumber}
+                    {w.title}
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Day selector */}
+            {/* Sub-theme selector */}
             <div className="flex gap-1">
-              {allWeeks[calWeek].days.map((d, di) => (
+              {thematicHub[calWeek].days.map((d, di) => (
                 <button key={di} onClick={() => { setCalDay(di); }}
                   className={`flex-1 rounded-xl py-2.5 text-center transition-all ${
                     calDay === di
@@ -695,9 +695,9 @@ export default function MarketingPage() {
               ))}
             </div>
 
-            {/* Day theme */}
+            {/* Sub-theme content */}
             {(() => {
-              const day = allWeeks[calWeek].days[calDay];
+              const day = thematicHub[calWeek].days[calDay];
               if (!day) return null;
               return (
                 <div className="space-y-3">
