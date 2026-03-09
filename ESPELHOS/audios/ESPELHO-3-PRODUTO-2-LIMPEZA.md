@@ -4,7 +4,7 @@
 **Formato:** 4 produtos por espelho × 6 espelhos = 24 scripts
 **Voz:** Vivianne dos Santos
 **Tom:** Sóbrio, quente, íntimo. Sem pressa. Sem emojis.
-**Para ElevenLabs:** Cada parágrafo separado = pausa natural. Reticências = pausa mais longa.
+**Tags ElevenLabs v3:** Activadas. Modelo: Eleven v3 obrigatório.
 
 ---
 
@@ -13,16 +13,16 @@
 
 ---
 
-Encontra uma posição confortável.
+[soft] Encontra uma posição confortável.
 Não há maneira errada de estar.
 Este é um espaço apenas teu.
 
 Fecha os olhos ou pousa o olhar num ponto fixo.
-Respira fundo.
-Sente o ar a entrar.
-Sente o ar a sair.
+Respira fundo. [inhales]
+Sente o ar a entrar. [pause]
+Sente o ar a sair. [exhales]
 
-Respira novamente.
+Respira novamente. [inhales] [exhales]
 Sem controlar.
 Apenas a permitir.
 
@@ -39,8 +39,8 @@ Não és ingrato por desejar que fosse diferente.
 Carregar muito tempo é pesado.
 Isso é apenas a verdade.
 
-Pergunta-te, em silêncio:
-escolhi isto, ou apenas aceitei?
+[deliberate] Pergunta-te, em silêncio: [long pause]
+escolhi isto, ou apenas aceitei? [long pause]
 
 Não há resposta errada.
 A maioria das vezes é as duas coisas.
@@ -55,21 +55,21 @@ Um número de contas que nunca fecha.
 Olha para isso.
 Reconhece o peso.
 Não precisas de largá-lo tudo agora.
-Mas com a próxima expiração, solta apenas o peso da culpa de sentir o que sentes.
+Mas com a próxima expiração, solta apenas o peso da culpa de sentir o que sentes. [exhales]
 
 Não o cuidado.
 Apenas a culpa de estar cansado do cuidado.
 
-Respira fundo.
+Respira fundo. [inhales] [exhales]
 
 Sente o espaço que ficou.
 Não preenchas esse espaço com nova obrigação.
 Fica ali por um momento.
 
 Quando estiveres pronto, volta a sentir o teu corpo.
-Sente os pés.
-Sente as mãos.
-Sente o lugar onde estás.
+Sente os pés. [pause]
+Sente as mãos. [pause]
+Sente o lugar onde estás. [pause]
 
 A responsabilidade pode regressar.
 Mas agora sabes distinguir o que escolhes do que apenas carregas.
@@ -78,6 +78,6 @@ E essa distinção muda tudo.
 Podes escolher de novo.
 Com mais clareza desta vez.
 
-Este ritual está completo.
+[soft] [deliberate] Este ritual está completo.
 
 ---

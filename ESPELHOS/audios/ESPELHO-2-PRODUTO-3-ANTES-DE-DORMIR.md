@@ -4,7 +4,7 @@
 **Formato:** 4 produtos por espelho × 6 espelhos = 24 scripts
 **Voz:** Vivianne dos Santos
 **Tom:** Sóbrio, quente, íntimo. Sem pressa. Sem emojis.
-**Para ElevenLabs:** Cada parágrafo separado = pausa natural. Reticências = pausa mais longa.
+**Tags ElevenLabs v3:** Activadas. Modelo: Eleven v3 obrigatório.
 
 ---
 
@@ -13,7 +13,7 @@
 
 ---
 
-O dia está a terminar.
+[soft] O dia está a terminar.
 Daqui a pouco, vais dormir.
 E antes disso, vais fazer uma coisa simples:
 vais verificar onde estiveste presente e onde estiveste apenas presente em corpo.
@@ -22,9 +22,9 @@ Deita-te confortavelmente.
 Ajusta o travesseiro, a posição, o cobertor.
 Não há pressa.
 
-Respira fundo.
-Inspira pelo nariz.
-Expira pela boca.
+[slow] Respira fundo.
+Inspira pelo nariz. [inhales]
+Expira pela boca. [exhales]
 Deixa o corpo soltar o peso do dia.
 
 Agora, vou fazer-te algumas perguntas.
@@ -33,33 +33,33 @@ Apenas observa o que surge.
 Sem julgamento.
 Sem pressão.
 
-Primeira pergunta.
-Hoje, houve algum momento em que estiveste verdadeiramente presente — não apenas a cumprir o que estava previsto?
+[deliberate] Primeira pergunta.
+Hoje, houve algum momento em que estiveste verdadeiramente presente — não apenas a cumprir o que estava previsto? [long pause]
 
 Se houve, reconhece-o.
 Se não houve, também está bem.
-Reconhecer já é um passo.
+Reconhecer já é um passo. [long pause]
 
-Segunda pergunta.
+[deliberate] Segunda pergunta.
 Hoje, houve alguém de quem te aproximaste, por gesto, por palavra, por presença real?
-Ou ficaste ao lado sem chegar a tocar?
+Ou ficaste ao lado sem chegar a tocar? [long pause]
 
 Se ficaste ao lado, está bem.
-Amanhã terás nova oportunidade.
+Amanhã terás nova oportunidade. [long pause]
 
-Terceira pergunta.
+[deliberate] Terceira pergunta.
 Hoje, houve algum momento em que sentiste que a tua vida te pertence?
 Mesmo breve.
-Mesmo pequeno.
+Mesmo pequeno. [long pause]
 
 Se houve, fica com ele.
-Esses momentos são mais frequentes do que parece quando deixamos de os ignorar.
+Esses momentos são mais frequentes do que parece quando deixamos de os ignorar. [long pause]
 
-Última pergunta.
+[deliberate] Última pergunta.
 Amanhã, qual é um único gesto que queres fazer diferente?
 Não uma mudança grande.
 Não uma decisão.
-Apenas um gesto.
+Apenas um gesto. [long pause]
 
 Pode ser ligar a alguém.
 Pode ser sentar durante cinco minutos sem fazer nada.
@@ -68,13 +68,13 @@ Pequeno está bem.
 Pequeno é real.
 
 Agora, respira fundo uma última vez.
-Inspira lentamente.
-Expira ainda mais devagar.
+Inspira lentamente. [inhales]
+Expira ainda mais devagar. [exhales]
 
-Podes dormir.
+[whisper] Podes dormir.
 E amanhã, quando acordares, a fissura ainda estará lá.
-Não precisa ser grande para ser suficiente.
+Não precisa ser grande para ser suficiente. [long pause]
 
-Boa noite.
+[whisper] Boa noite. [long pause]
 
 ---

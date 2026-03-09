@@ -4,7 +4,7 @@
 **Formato:** 4 produtos por espelho × 6 espelhos = 24 scripts
 **Voz:** Vivianne dos Santos
 **Tom:** Sóbrio, quente, íntimo. Sem pressa. Sem emojis.
-**Para ElevenLabs:** Cada parágrafo separado = pausa natural. Reticências = pausa mais longa.
+**Tags ElevenLabs v3:** Activadas. Modelo: Eleven v3 obrigatório.
 
 ---
 
@@ -13,7 +13,7 @@
 
 ---
 
-Este não é um exercício leve.
+[warm] Este não é um exercício leve.
 É um espaço de clareza.
 
 Vais escrever com honestidade.
@@ -21,9 +21,9 @@ Sobre o que queres.
 Sobre o que querias.
 Sobre o que deixou de ser visível.
 
-Prepara um caderno.
-Uma caneta.
-Vinte minutos sem interrupções.
+Prepara um caderno. [pause]
+Uma caneta. [pause]
+Vinte minutos sem interrupções. [pause]
 
 Respira.
 
@@ -32,73 +32,73 @@ Título: O Meu Desejo.
 
 Começamos.
 
-Primeira pergunta.
+[deliberate] Primeira pergunta.
 Que fazias há cinco anos que já não fazes?
 Não o que deixaste por razões óbvias.
 O que foi ficando sem decisão.
 
-Escreve.
+Escreve. [long pause]
 
-Segunda pergunta.
+[deliberate] Segunda pergunta.
 Que desejas e nunca admites?
 Não o que achas que deves desejar.
 O que desejarias se ninguém fosse saber.
 
-Escreve sem filtrar.
+Escreve sem filtrar. [long pause]
 
-Terceira pergunta.
+[deliberate] Terceira pergunta.
 Que parte da tua vida existe apenas porque aceitaste que existia?
 Não porque escolheste.
 Porque estava lá e nunca questionaste.
 
-Escreve.
+Escreve. [long pause]
 
-Quarta pergunta.
-Completa a frase:
+[deliberate] Quarta pergunta.
+[deliberate] Completa a frase:
 "Se pudesse escolher sem consequências, eu escolheria…"
 
-Escreve até a frase terminar por si.
+Escreve até a frase terminar por si. [long pause]
 
-Quinta pergunta.
+[deliberate] Quinta pergunta.
 Quando foi a última vez que fizeste algo pela primeira vez?
 Uma experiência nova, um sítio novo, uma conversa com alguém que não conhecias.
 
-Escreve a data aproximada.
+Escreve a data aproximada. [long pause]
 
-Sexta pergunta.
+[deliberate] Sexta pergunta.
 Que tipo de pessoa acreditas que não tens direito a ser?
 Não pela moral.
 Pela imagem que construíste de ti.
 
-Escreve.
+Escreve. [long pause]
 
-Sétima pergunta.
+[deliberate] Sétima pergunta.
 A que prazer renunciaste para ser quem és agora?
 
-Escreve.
+Escreve. [long pause]
 
-Oitava pergunta.
-Completa:
+[deliberate] Oitava pergunta.
+[deliberate] Completa:
 "Tenho medo de desejar porque…"
 
-Escreve.
+Escreve. [long pause]
 
-Nona pergunta.
+[deliberate] Nona pergunta.
 Se o teu desejo não fosse vulnerabilidade mas informação — que te estaria a dizer?
 
 Escreve.
-Não apresses esta resposta.
+Não apresses esta resposta. [long pause]
 
-Pergunta final.
+[deliberate] Pergunta final.
 O que queres mesmo?
 Não o que deves querer.
 Não o que faz sentido querer.
 O que queres mesmo.
 
-Escreve.
+Escreve. [long pause]
 
-Agora pára.
-Larga a caneta.
+Agora pára. [pause]
+Larga a caneta. [pause]
 
 Respira fundo.
 
@@ -110,9 +110,9 @@ O desejo não desapareceu.
 Apenas deixou de ser escutado.
 O que escreveste mostra onde ainda está.
 
-Visível.
-Nomeado.
-Real.
+[soft] Visível. [pause]
+[soft] Nomeado. [pause]
+[soft] Real. [long pause]
 
 ---
 

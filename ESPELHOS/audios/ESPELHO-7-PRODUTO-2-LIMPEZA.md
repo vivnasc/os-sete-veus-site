@@ -4,7 +4,7 @@
 **Formato:** 4 produtos por espelho × 6 espelhos = 24 scripts
 **Voz:** Vivianne dos Santos
 **Tom:** Sóbrio, quente, íntimo. Sem pressa. Sem emojis.
-**Para ElevenLabs:** Cada parágrafo separado = pausa natural. Reticências = pausa mais longa.
+**Tags ElevenLabs v3:** Activadas. Modelo: Eleven v3 obrigatório.
 
 ---
 
@@ -13,15 +13,15 @@
 
 ---
 
-Encontra uma posição confortável.
+[soft] Encontra uma posição confortável.
 Não há nada que precises de resolver agora.
 
 Fecha os olhos, se quiseres.
-Respira fundo.
-Sente o ar a entrar.
-Sente o ar a sair.
+Respira fundo. [inhales]
+Sente o ar a entrar. [pause]
+Sente o ar a sair. [exhales]
 
-Respira novamente.
+Respira novamente. [inhales] [exhales]
 Sem urgência.
 Apenas a existir.
 
@@ -36,10 +36,10 @@ Separação não é só perda.
 Mas é sempre transformação.
 E transformação desorganiza antes de reorganizar.
 
-Pergunta-te, em silêncio:
+[deliberate] Pergunta-te, em silêncio: [long pause]
 o que me custou mais nesta separação?
 Não o que perdi.
-O que me custou mais.
+O que me custou mais. [long pause]
 
 Há diferença.
 
@@ -52,22 +52,22 @@ Olha para isso.
 Sem luta.
 Sem tentativa de reparar o que não pode ser reparado da mesma forma.
 
-E com a próxima expiração, solta a narrativa que construíste sobre por que aconteceu.
+E com a próxima expiração, solta a narrativa que construíste sobre por que aconteceu. [exhales]
 Não os factos.
 A narrativa que te mantém presa ao momento da separação.
 
 Apenas solta a narrativa por um momento.
 
-Respira fundo.
+Respira fundo. [inhales] [exhales]
 
 Sente o espaço que ficou.
 Não o espaço da perda.
 O espaço da possibilidade.
 
 Quando estiveres pronta, volta a sentir o teu corpo.
-Sente os pés.
-Sente as mãos.
-Sente o lugar onde estás agora.
+Sente os pés. [pause]
+Sente as mãos. [pause]
+Sente o lugar onde estás agora. [pause]
 
 Não o lugar onde estavas.
 O lugar onde estás.
@@ -76,6 +76,6 @@ O lar não acabou.
 Apenas mudou de forma.
 E reconhecer onde estás agora é o começo de o construir de novo.
 
-Este ritual está completo.
+[soft] [deliberate] Este ritual está completo.
 
 ---
