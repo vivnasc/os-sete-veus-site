@@ -5,7 +5,7 @@
 export type CitacaoPartilha = {
   texto: string
   veu: number
-  fonte: 'livro' | 'espelho' | 'no'
+  fonte: 'livro' | 'espelho'
   /** Chapter slug */
   chapterSlug?: string
   contexto?: string
@@ -238,67 +238,8 @@ export const CITACOES_ESPELHO: CitacaoPartilha[] = [
   },
 ]
 
-// ─── Nó da Herança — Véu 1 ──────────────────────────────────
-
-export const CITACOES_NO: CitacaoPartilha[] = [
-  {
-    texto: 'Há coisas que se herdam sem escritura. Herdam-se no silêncio de uma cozinha, no gesto repetido de uma mãe que arruma a loiça sem dizer o que sente.',
-    veu: 1, fonte: 'no', chapterSlug: 'parte-i',
-    contexto: 'O Nó da Herança',
-  },
-  {
-    texto: 'Sara cresceu a observar a mãe. Aprendeu com Helena a arte de não perguntar, de não incomodar, de manter a superfície intacta mesmo quando por baixo tudo racha.',
-    veu: 1, fonte: 'no', chapterSlug: 'parte-i',
-    contexto: 'O Nó da Herança',
-  },
-  {
-    texto: 'Porque é que Helena viu tudo durante anos e não disse nada? O que é que a mãe guardou que a filha acabou por carregar?',
-    veu: 1, fonte: 'no', chapterSlug: 'parte-ii',
-    contexto: 'O Nó da Herança',
-  },
-  {
-    texto: 'O que se transmite sem palavras. E sobre o momento em que duas mulheres decidem, finalmente, falar.',
-    veu: 1, fonte: 'no', chapterSlug: 'parte-iii',
-    contexto: 'O Nó da Herança',
-  },
-  {
-    texto: 'Durante anos, pareceu-me que não tinha o direito de contar a ninguém o que realmente sentia.',
-    veu: 1, fonte: 'no', chapterSlug: 'parte-v',
-    contexto: 'O Nó da Herança',
-  },
-
-  // ─── Nó do Silêncio — Véu 2 ─────────────────────────────────
-  {
-    texto: 'Há um tipo de distância que não se mede em quilómetros. Cresce dentro de casa, entre dois corpos que partilham cama e rotina e os mesmos copos na mesma prateleira.',
-    veu: 2, fonte: 'no', chapterSlug: 'parte-i',
-    contexto: 'O Nó do Silêncio',
-  },
-  {
-    texto: 'O problema não era o desamor — era algo mais subtil e por isso mais difícil de ver. Era o medo que Rui carregava sem saber nomear.',
-    veu: 2, fonte: 'no', chapterSlug: 'parte-i',
-    contexto: 'O Nó do Silêncio',
-  },
-  {
-    texto: 'Rui sentiu pela primeira vez o peso exacto daquilo que chamava conforto.',
-    veu: 2, fonte: 'no', chapterSlug: 'parte-ii',
-    contexto: 'O Nó do Silêncio',
-  },
-  {
-    texto: 'Há uma caixa, — disse ela. E foi a primeira vez em doze anos que disse isso.',
-    veu: 2, fonte: 'no', chapterSlug: 'parte-iv',
-    contexto: 'O Nó do Silêncio',
-  },
-  {
-    texto: 'Sinto que se ficar completamente, dou um poder que não sei gerir quando for retirado. Como se me tornasse refém de algo que não controlo.',
-    veu: 2, fonte: 'no', chapterSlug: 'parte-v',
-    contexto: 'O Nó do Silêncio',
-  },
-  {
-    texto: 'Há algo naquele gesto — pôr as chaves, sentar, ficar — que Rui reconheceu como uma forma de dizer: estou aqui. Podes continuar.',
-    veu: 2, fonte: 'no', chapterSlug: 'parte-vi',
-    contexto: 'O Nó do Silêncio',
-  },
-]
+// ─── Nós — a adicionar quando todos os 7 estiverem escritos ──
+// export const CITACOES_NO: CitacaoPartilha[] = []
 
 // ─── Livro — Os Sete Véus do Despertar ──────────────────────
 // Philosophical/spiritual quotes from the book chapters
@@ -364,16 +305,15 @@ export const CITACOES_LIVRO: CitacaoPartilha[] = [
 // ─── Helpers ─────────────────────────────────────────────────
 
 export function getCitacoesForChapter(slug: string): CitacaoPartilha[] {
-  return [...CITACOES_ESPELHO, ...CITACOES_NO].filter(c => c.chapterSlug === slug)
+  return CITACOES_ESPELHO.filter(c => c.chapterSlug === slug)
 }
 
 export function getCitacoesForVeu(veu: number): CitacaoPartilha[] {
   return [
     ...CITACOES_ESPELHO.filter(c => c.veu === veu),
-    ...CITACOES_NO.filter(c => c.veu === veu),
     ...CITACOES_LIVRO.filter(c => c.veu === veu),
   ]
 }
 
 /** All shareable quotes */
-export const ALL_CITACOES = [...CITACOES_ESPELHO, ...CITACOES_NO, ...CITACOES_LIVRO]
+export const ALL_CITACOES = [...CITACOES_ESPELHO, ...CITACOES_LIVRO]
