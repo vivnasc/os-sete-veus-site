@@ -20,36 +20,36 @@ export const INTROS_VEUS: IntroVeu[] = [
   {
     veu: 1,
     nome: "Ilusão",
-    texto: "Bem-vinda ao Véu da Ilusão. Durante anos viveste uma versão de ti que aprendeste a ser — não a que escolheste. Aqui não vamos destruir nada. Vamos apenas parar, olhar, e perguntar: isto sou eu, ou é o que me ensinaram a ser? Não há pressa. Há apenas este momento, e a tua honestidade.",
+    texto: "Bem-vinda ao Espelho da Ilusão. A Sara não é uma personagem — é um reflexo. Durante anos viveu uma versão de si que aprendeu a ser, não a que escolheu. Enquanto lês, não perguntes o que ela sente. Pergunta o que reconheces em ti. Este espelho só mostra o que já está lá.",
   },
   {
     veu: 2,
     nome: "Medo",
-    texto: "Chegaste ao Véu do Medo. O medo não é o teu inimigo — é o guarda fiel do que mais te importa. Por baixo de cada medo existe um desejo profundo que ainda não ousaste nomear. Neste véu vamos sentar com ele, sem o afastar. Porque o que resistimos persiste. E o que acolhemos, transforma-se.",
+    texto: "Entraste no Espelho do Medo. O Rui tem medo de ocupar espaço — de ser demasiado, de não ser suficiente. Talvez reconheças esse peso. Neste espelho não vamos resolver o medo. Vamos apenas iluminá-lo. Porque o que vemos de frente já não nos persegue da mesma forma.",
   },
   {
     veu: 3,
     nome: "Culpa",
-    texto: "Entraste no Véu da Culpa. A culpa tem uma voz muito particular — suave, persistente, e sempre presente. Aprendemos a usá-la como prova de que somos boas pessoas. Mas culpa não é responsabilidade. É um peso que carregamos em vez de agir. Aqui vamos aprender a diferença — e a pousar o que já não precisas de carregar.",
+    texto: "Chegaste ao Espelho da Culpa. O Filipe entregou-se ao ponto de se perder — e chamou a isso amor. Luísa aceitou, e chamou a isso gratidão. A culpa disfarça-se tão bem de virtude que raramente a reconhecemos. Lê devagar. O que parece ser sobre eles, é sobre o que guardas em ti.",
   },
   {
     veu: 4,
     nome: "Identidade",
-    texto: "Chegaste ao Véu da Identidade. Quem és quando não tens papel nenhum a desempenhar? Quando não és mãe, filha, colega, parceira — quando és apenas tu, sozinha numa divisão silenciosa? É uma pergunta que assusta. E é exactamente por isso que vale a pena fazer. A tua identidade real não precisa de aprovação para existir.",
+    texto: "Bem-vinda ao Espelho da Identidade. O Vítor usava máscaras tão antigas que já não sabia a diferença entre a máscara e o rosto. Neste espelho vamos sentar com a pergunta que mais assusta: quem és quando ninguém está a ver? Não há resposta errada. Há apenas honestidade — e essa já é um começo.",
   },
   {
     veu: 5,
     nome: "Controlo",
-    texto: "Bem-vinda ao Véu do Controlo. Controlamos porque tivemos medo de confiar. Controlamos porque alguém nos falhou quando mais precisávamos. É uma forma de amor — distorcida, mas nascida do amor. Neste véu vamos olhar para o que tentamos segurar com tanta força, e perguntar: o que aconteceria se eu abrisse a mão?",
+    texto: "Entraste no Espelho do Controlo. A Isabel amava tanto que tentou proteger tudo — e foi afastando quem mais amava sem perceber. Reconheces esse padrão? O controlo não nasce da força. Nasce do medo de perder o que é precioso. Aqui vamos olhar para esse medo com gentileza.",
   },
   {
     veu: 6,
     nome: "Desejo",
-    texto: "Entraste no Véu do Desejo. Fomos ensinadas a ter vergonha do que queremos — a diminuir, a pedir desculpa por ocupar espaço. O desejo não é fraqueza. É direcção. É a bússola que existe dentro de ti antes de qualquer opinião do mundo. Aqui damos-lhe nome, sem julgamento, sem filtro.",
+    texto: "Chegaste ao Espelho do Desejo. A Lena e a Sofia partilhavam tudo — até que o desejo não dito de uma começou a esvaziar a outra. Fomos ensinadas a ter vergonha do que queremos. Neste espelho o desejo não é o vilão. É a pista. Lê com atenção ao que em ti também ficou por dizer.",
   },
   {
     veu: 7,
     nome: "Separação",
-    texto: "Chegaste ao último véu. O Véu da Separação. Separamo-nos das pessoas, dos lugares, das versões de nós mesmas que já não cabem. É doloroso — e é necessário. Não há chegada sem partida. E há uma liberdade extraordinária em perceber que separação não é perda. É o espaço onde algo novo pode finalmente respirar.",
+    texto: "Chegaste ao último espelho. O Espelho da Separação. A Helena e o Miguel separaram-se — e foi nessa separação que cada um encontrou finalmente o caminho de volta a si. Separar não é falhar. É por vezes o acto de amor mais honesto que existe. Este espelho é sobre recomeços. E sobre a coragem de os deixar acontecer.",
   },
 ];
