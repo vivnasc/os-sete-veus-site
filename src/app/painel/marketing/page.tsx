@@ -11,6 +11,19 @@ const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
 const DIMS = { w: 1080, h: 1080 };
 const STORY_DIMS = { w: 1080, h: 1920 };
 
+// Mapa semanal — cada dia da semana (0=Dom) aponta para conteúdo do Hub
+// themeIdx: índice em thematicHub (0=Véus, 1=Espelhos, 2=Nós, 3=Comunidade, 4=Reflexões)
+// dayIdx: sub-tema dentro do tema
+const WEEKLY_RHYTHM = [
+  { label: "Dom", hint: "Reflexão",    themeIdx: 4, dayIdx: 0 },  // Reflexões
+  { label: "Seg", hint: "Véu",         themeIdx: 0, dayIdx: 0 },  // Permanência
+  { label: "Ter", hint: "Espelho",     themeIdx: 1, dayIdx: 0 },  // Ilusão
+  { label: "Qua", hint: "Véu",         themeIdx: 0, dayIdx: 2 },  // Turbilhão
+  { label: "Qui", hint: "Nó",          themeIdx: 2, dayIdx: 0 },  // Nó da Herança
+  { label: "Sex", hint: "Espelho",     themeIdx: 1, dayIdx: 1 },  // Medo
+  { label: "Sáb", hint: "Os 7 Véus",  themeIdx: 0, dayIdx: 6 },  // Dualidade + carrossel 7 Véus
+];
+
 function stripHashtags(text: string): string {
   return text.replace(/\n*#[^\s#]+(\s+#[^\s#]+)*/g, "").trim();
 }
@@ -146,8 +159,7 @@ export default function MarketingPage() {
 
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [pageSection, setPageSection] = useState<"hub" | "posts" | "guia">("hub");
-  const [calWeek, setCalWeek] = useState(0);
-  const [calDay, setCalDay] = useState(0);
+  const [selectedWeekday, setSelectedWeekday] = useState(() => new Date().getDay());
   const [hubModal, setHubModal] = useState<{ slides: CarouselSlide[]; title: string; caption?: string } | null>(null);
   const [hubFormat, setHubFormat] = useState<"vertical" | "square">("square");
   const hubSlideRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -209,8 +221,6 @@ export default function MarketingPage() {
     return <div className="flex min-h-screen items-center justify-center bg-cream"><div className="h-8 w-8 animate-spin rounded-full border-2 border-brown-200 border-t-sage" /></div>;
   }
 
-  const safeWeek = Math.max(0, Math.min(calWeek, thematicHub.length - 1));
-
   return (
     <>
     <div className="min-h-screen bg-[#1a1814]">
@@ -251,135 +261,97 @@ export default function MarketingPage() {
         {/* ══════════════════════════════════════════════════════════════════════ */}
         {/* ── HUB TEMÁTICO ── */}
         {/* ══════════════════════════════════════════════════════════════════════ */}
-        {pageSection === "hub" && (
-          <div className="py-4 space-y-4">
-            {/* Theme selector */}
-            <div className="flex items-center gap-2">
-              <button onClick={() => { setCalWeek(Math.max(0, calWeek - 1)); setCalDay(0); }}
-                disabled={calWeek === 0}
-                className="p-1.5 text-cream/30 hover:text-cream/60 disabled:opacity-20">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6" /></svg>
-              </button>
-              <div className="flex-1 text-center">
-                <p className="font-serif text-base text-cream/90">{thematicHub[safeWeek].title}</p>
-                <p className="font-sans text-[0.6rem] text-cream/40">{thematicHub[safeWeek].subtitle}</p>
-              </div>
-              <button onClick={() => { setCalWeek(Math.min(thematicHub.length - 1, calWeek + 1)); setCalDay(0); }}
-                disabled={calWeek === thematicHub.length - 1}
-                className="p-1.5 text-cream/30 hover:text-cream/60 disabled:opacity-20">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6" /></svg>
-              </button>
-            </div>
-
-            {/* Theme pills */}
-            <div className="-mx-4 overflow-x-auto px-4 scrollbar-none">
-              <div className="flex gap-1.5 min-w-max">
-                {thematicHub.map((w, wi) => (
-                  <button key={wi} onClick={() => { setCalWeek(wi); setCalDay(0); }}
-                    className={`rounded-lg px-2.5 py-1.5 font-sans text-[0.55rem] font-medium whitespace-nowrap transition-all ${
-                      calWeek === wi ? "bg-[#c9b896]/20 text-[#c9b896]" : "text-cream/30 hover:text-cream/50"
+        {/* ── HUB — plano semanal ── */}
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {pageSection === "hub" && (() => {
+          const today = new Date().getDay();
+          const r = WEEKLY_RHYTHM[selectedWeekday];
+          const day = thematicHub[r.themeIdx]?.days[r.dayIdx];
+          return (
+            <div className="py-4 space-y-4">
+              {/* Day strip */}
+              <div className="flex gap-1">
+                {WEEKLY_RHYTHM.map((w, i) => (
+                  <button key={i} onClick={() => setSelectedWeekday(i)}
+                    className={`flex-1 rounded-xl py-2.5 text-center transition-all ${
+                      selectedWeekday === i ? "bg-[#c9b896] shadow-lg shadow-[#c9b896]/20" : "hover:bg-cream/5"
                     }`}>
-                    {w.title}
+                    <span className={`block font-sans text-[0.5rem] font-semibold uppercase tracking-wider ${
+                      selectedWeekday === i ? "text-[#1a1814]" : today === i ? "text-cream/80" : "text-cream/30"
+                    }`}>{w.label}</span>
+                    <span className={`mt-1 block h-1 w-1 rounded-full mx-auto ${
+                      selectedWeekday === i ? "bg-[#1a1814]/40" : today === i ? "bg-[#c9b896]/60" : "bg-cream/20"
+                    }`} />
                   </button>
                 ))}
               </div>
-            </div>
 
-            {/* Sub-theme selector */}
-            <div className="flex gap-1">
-              {thematicHub[safeWeek].days.map((d, di) => (
-                <button key={di} onClick={() => setCalDay(di)}
-                  className={`flex-1 rounded-xl py-2.5 text-center transition-all ${
-                    calDay === di ? "bg-[#c9b896] shadow-lg shadow-[#c9b896]/20" : "hover:bg-cream/5"
-                  }`}>
-                  <span className={`block font-sans text-[0.5rem] font-semibold uppercase tracking-wider ${
-                    calDay === di ? "text-[#1a1814]" : "text-cream/30"
-                  }`}>{d.dayShort}</span>
-                  <span className={`mt-0.5 block font-sans text-[0.55rem] ${
-                    calDay === di ? "text-[#1a1814]/70" : "text-cream/20"
-                  }`}>{d.slots.length} post{d.slots.length !== 1 ? "s" : ""}</span>
-                </button>
+              {/* Day header */}
+              {day && (
+                <div className="rounded-2xl border border-[#c9b896]/10 bg-gradient-to-br from-[#c9b896]/8 to-transparent p-4">
+                  <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-[0.15em] text-[#c9b896]/60">
+                    {r.hint} — {thematicHub[r.themeIdx].title}
+                  </p>
+                  <h3 className="mt-1 font-serif text-lg text-cream/90">{day.theme}</h3>
+                </div>
+              )}
+
+              {/* Slots */}
+              {day?.slots.map((slot, si) => (
+                <div key={si} className="overflow-hidden rounded-2xl border border-cream/10 bg-[#222019]">
+                  <div className="flex items-center gap-2 border-b border-cream/5 px-4 py-3">
+                    <div className={`h-2 w-2 rounded-full ${
+                      slot.platform === "whatsapp" ? "bg-[#25D366]" : slot.platform === "instagram" ? "bg-[#E1306C]" : "bg-[#c9b896]"
+                    }`} />
+                    <span className="font-sans text-xs font-semibold text-cream/70">
+                      {slot.platform === "whatsapp" ? "WhatsApp" : slot.platform === "instagram" ? "Instagram" : "Ambos"} — {slot.type}
+                    </span>
+                  </div>
+                  <div className="p-4 space-y-3">
+                    {slot.visual && (() => {
+                      const slide: CarouselSlide = { bg: slot.visual.bg, text: slot.visual.text, accent: slot.visual.accent, title: slot.visual.title, body: slot.visual.body || "", footer: slot.visual.footer || "" };
+                      return (
+                        <button
+                          onClick={() => { setHubFormat("square"); setHubModal({ slides: [slide], title: slot.type, caption: slot.caption }); }}
+                          className="w-full rounded-xl overflow-hidden text-left transition-all hover:ring-2 hover:ring-[#c9b896]/30 active:scale-[0.98]"
+                          style={{ backgroundColor: slot.visual.bg, color: slot.visual.text, padding: "24px", minHeight: 120 }}
+                        >
+                          {slot.visual.title && <p className="font-serif text-sm font-bold leading-snug" style={{ whiteSpace: "pre-line" }}>{slot.visual.title}</p>}
+                          {slot.visual.body && <p className="mt-2 font-sans text-[0.65rem] leading-relaxed opacity-80" style={{ whiteSpace: "pre-line" }}>{slot.visual.body}</p>}
+                          {slot.visual.footer && <p className="mt-3 font-sans text-[0.55rem] font-semibold uppercase tracking-wider" style={{ color: slot.visual.accent }}>{slot.visual.footer}</p>}
+                          <p className="mt-3 font-sans text-[0.5rem] font-semibold uppercase tracking-widest opacity-40">Toca para ver & baixar →</p>
+                        </button>
+                      );
+                    })()}
+                    {slot.carousel && slot.carousel.length > 0 && (
+                      <button
+                        onClick={() => { setHubFormat("square"); setHubModal({ slides: slot.carousel!, title: slot.type, caption: slot.caption }); }}
+                        className="w-full rounded-xl border border-cream/10 bg-black/20 px-4 py-3 text-left transition-all hover:border-[#c9b896]/30 active:scale-[0.98]"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="flex gap-1">
+                            {slot.carousel.slice(0, 4).map((sl, sli) => (
+                              <div key={sli} className="shrink-0 rounded overflow-hidden" style={{ width: 36, height: 36, backgroundColor: sl.bg }} />
+                            ))}
+                            {slot.carousel.length > 4 && (
+                              <div className="shrink-0 rounded overflow-hidden flex items-center justify-center" style={{ width: 36, height: 36, backgroundColor: "#ffffff10" }}>
+                                <span className="font-sans text-[0.45rem] font-bold text-cream/40">+{slot.carousel.length - 4}</span>
+                              </div>
+                            )}
+                          </div>
+                          <div className="flex-1">
+                            <p className="font-sans text-xs font-semibold text-cream/70">{slot.carousel.length} slides</p>
+                            <p className="font-sans text-[0.5rem] text-cream/30">Toca para ver & baixar</p>
+                          </div>
+                        </div>
+                      </button>
+                    )}
+                  </div>
+                </div>
               ))}
             </div>
-
-            {/* Slots */}
-            {(() => {
-              const day = thematicHub[safeWeek].days[calDay];
-              if (!day) return null;
-              return (
-                <div className="space-y-3">
-                  <div className="rounded-2xl border border-[#c9b896]/10 bg-gradient-to-br from-[#c9b896]/8 to-transparent p-4">
-                    <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-[0.15em] text-[#c9b896]/60">{day.day}</p>
-                    <h3 className="mt-1 font-serif text-lg text-cream/90">{day.theme}</h3>
-                  </div>
-
-                  {day.slots.map((slot, si) => (
-                    <div key={si} className="overflow-hidden rounded-2xl border border-cream/10 bg-[#222019]">
-                      <div className="flex items-center gap-2 border-b border-cream/5 px-4 py-3">
-                        <div className={`h-2 w-2 rounded-full ${
-                          slot.platform === "whatsapp" ? "bg-[#25D366]" : slot.platform === "instagram" ? "bg-[#E1306C]" : "bg-[#c9b896]"
-                        }`} />
-                        <span className="font-sans text-xs font-semibold text-cream/70">
-                          {slot.platform === "whatsapp" ? "WhatsApp" : slot.platform === "instagram" ? "Instagram" : "Ambos"} — {slot.type}
-                        </span>
-                      </div>
-                      <div className="p-4 space-y-3">
-                        {/* Single visual slide */}
-                        {slot.visual && (() => {
-                          const slide: CarouselSlide = { bg: slot.visual.bg, text: slot.visual.text, accent: slot.visual.accent, title: slot.visual.title, body: slot.visual.body || "", footer: slot.visual.footer || "" };
-                          return (
-                            <button
-                              onClick={() => { setHubFormat("square"); setHubModal({ slides: [slide], title: slot.type, caption: slot.caption }); }}
-                              className="w-full rounded-xl overflow-hidden text-left transition-all hover:ring-2 hover:ring-[#c9b896]/30 active:scale-[0.98]"
-                              style={{ backgroundColor: slot.visual.bg, color: slot.visual.text, padding: "24px", minHeight: 120 }}
-                            >
-                              {slot.visual.title && <p className="font-serif text-sm font-bold leading-snug" style={{ whiteSpace: "pre-line" }}>{slot.visual.title}</p>}
-                              {slot.visual.body && <p className="mt-2 font-sans text-[0.65rem] leading-relaxed opacity-80" style={{ whiteSpace: "pre-line" }}>{slot.visual.body}</p>}
-                              {slot.visual.footer && <p className="mt-3 font-sans text-[0.55rem] font-semibold uppercase tracking-wider" style={{ color: slot.visual.accent }}>{slot.visual.footer}</p>}
-                              <p className="mt-3 font-sans text-[0.5rem] font-semibold uppercase tracking-widest opacity-40">Toca para ver & baixar →</p>
-                            </button>
-                          );
-                        })()}
-
-                        {/* Carousel */}
-                        {slot.carousel && slot.carousel.length > 0 && (
-                          <button
-                            onClick={() => { setHubFormat("square"); setHubModal({ slides: slot.carousel!, title: slot.type, caption: slot.caption }); }}
-                            className="w-full rounded-xl border border-cream/10 bg-black/20 px-4 py-3 text-left transition-all hover:border-[#c9b896]/30 active:scale-[0.98]"
-                          >
-                            <div className="flex items-center gap-3">
-                              <div className="flex gap-1">
-                                {slot.carousel.slice(0, 4).map((sl, sli) => (
-                                  <div key={sli} className="shrink-0 rounded overflow-hidden" style={{ width: 36, height: 36, backgroundColor: sl.bg }} />
-                                ))}
-                                {slot.carousel.length > 4 && (
-                                  <div className="shrink-0 rounded overflow-hidden flex items-center justify-center" style={{ width: 36, height: 36, backgroundColor: "#ffffff10" }}>
-                                    <span className="font-sans text-[0.45rem] font-bold text-cream/40">+{slot.carousel.length - 4}</span>
-                                  </div>
-                                )}
-                              </div>
-                              <div className="flex-1">
-                                <p className="font-sans text-xs font-semibold text-cream/70">{slot.carousel.length} slides</p>
-                                <p className="font-sans text-[0.5rem] text-cream/30">Toca para ver & baixar</p>
-                              </div>
-                            </div>
-                          </button>
-                        )}
-
-                        {/* Caption preview */}
-                        {slot.caption && !slot.visual && !slot.carousel && (
-                          <div className="rounded-xl bg-black/20 p-3">
-                            <pre className="whitespace-pre-wrap font-sans text-[0.6rem] leading-relaxed text-cream/50">{slot.caption}</pre>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              );
-            })()}
-          </div>
-        )}
+          );
+        })()}
 
         {/* ══════════════════════════════════════════════════════════════════════ */}
         {/* ── POSTS — carrosseis prontos ── */}
