@@ -384,7 +384,7 @@ export default function MarketingPage() {
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [openCaption, setOpenCaption] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"instagram" | "whatsapp" | "stories">("whatsapp");
-  const [pageSection, setPageSection] = useState<"campanha" | "calendario" | "posts" | "reels" | "guia">("campanha");
+  const [pageSection, setPageSection] = useState<"campanha" | "calendario" | "posts" | "guia">("campanha");
   const [calWeek, setCalWeek] = useState(0);
   const [calDay, setCalDay] = useState(0);
   const [hubModal, setHubModal] = useState<{ slides: CarouselSlide[]; title: string; caption?: string } | null>(null);
@@ -560,7 +560,6 @@ export default function MarketingPage() {
     { id: "campanha", label: "Campanha" },
     { id: "calendario", label: "Hub" },
     { id: "posts", label: "Posts" },
-    { id: "reels", label: "Reels" },
     { id: "guia", label: "Guia" },
   ];
 
@@ -846,16 +845,8 @@ export default function MarketingPage() {
             {professionalCarousels.map((c) => (
               <button key={c.id}
                 onClick={() => {
-                  // Find which campaign day uses this carousel and navigate there
-                  const idx = DAILY_PLAN.findIndex((d) => d.carouselId === c.id);
-                  if (idx >= 0) {
-                    const d = new Date(CAMPAIGN_START);
-                    d.setDate(d.getDate() + idx);
-                    setSelectedDate(d);
-                    setActiveSlide(0);
-                    setActiveVertSlide(0);
-                    setPageSection("campanha");
-                  }
+                  setHubFormat("square");
+                  setHubModal({ slides: c.slides, title: c.title, caption: c.caption });
                 }}
                 className="w-full rounded-2xl border border-cream/10 bg-[#222019] p-4 text-left transition-all hover:border-[#c9b896]/20"
               >
@@ -867,11 +858,9 @@ export default function MarketingPage() {
                       <span className="rounded-full bg-cream/10 px-2 py-0.5 font-sans text-[0.5rem] font-medium text-cream/40">
                         {c.slides.length} slides
                       </span>
-                      {DAILY_PLAN.some((d) => d.carouselId === c.id) && (
-                        <span className="rounded-full bg-[#c9b896]/10 px-2 py-0.5 font-sans text-[0.5rem] font-medium text-[#c9b896]/60">
-                          Na campanha
-                        </span>
-                      )}
+                      <span className="rounded-full bg-[#c9b896]/10 px-2 py-0.5 font-sans text-[0.5rem] font-medium text-[#c9b896]/60">
+                        Toca para ver e baixar
+                      </span>
                     </div>
                   </div>
                   {/* Mini preview */}
@@ -885,59 +874,6 @@ export default function MarketingPage() {
                   </div>
                 </div>
               </button>
-            ))}
-          </div>
-        )}
-
-        {/* ══════════════════════════════════════════════════════════════════════ */}
-        {/* ── REELS ── */}
-        {/* ══════════════════════════════════════════════════════════════════════ */}
-        {pageSection === "reels" && (
-          <div className="py-4 space-y-4">
-            <p className="font-sans text-[0.6rem] font-semibold uppercase tracking-[0.15em] text-cream/30">
-              {reelScripts.length} scripts prontos para CapCut
-            </p>
-            {reelScripts.map((r, ri) => (
-              <div key={ri} className="overflow-hidden rounded-2xl border border-cream/10 bg-[#222019]">
-                <div className="border-b border-cream/5 px-4 py-3 flex items-center gap-2">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-cream/10">
-                    <span className="font-sans text-[0.55rem] font-bold text-cream/50">{ri + 1}</span>
-                  </div>
-                  <p className="font-serif text-sm font-bold text-cream/80 flex-1">&quot;{r.hook}&quot;</p>
-                </div>
-                <div className="p-4 space-y-3">
-                  {/* Scenes */}
-                  <div className="space-y-2">
-                    {r.scenes.map((scene, sci) => (
-                      <div key={sci} className="flex gap-2">
-                        <div className="shrink-0 mt-1 h-1.5 w-1.5 rounded-full bg-[#c9b896]/30" />
-                        <p className="font-sans text-[0.65rem] leading-relaxed text-cream/60">{scene}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-wrap gap-2">
-                    <span className="rounded-full bg-[#c9b896]/10 px-2.5 py-1 font-sans text-[0.55rem] font-medium text-[#c9b896]/60">
-                      {r.duration}
-                    </span>
-                    {r.canvaTemplate && (
-                      <span className="rounded-full bg-cream/5 px-2.5 py-1 font-sans text-[0.55rem] text-cream/40">
-                        {r.canvaTemplate}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="rounded-xl bg-black/20 p-3">
-                    <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#c9b896]/40 mb-1">CTA</p>
-                    <p className="font-sans text-[0.7rem] text-cream/70">{r.cta}</p>
-                  </div>
-
-                  <div className="rounded-xl bg-black/20 p-3">
-                    <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-cream/30 mb-1">Musica sugerida</p>
-                    <p className="font-sans text-[0.6rem] text-cream/50">{r.music}</p>
-                  </div>
-                </div>
-              </div>
             ))}
           </div>
         )}
