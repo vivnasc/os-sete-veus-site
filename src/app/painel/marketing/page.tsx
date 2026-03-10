@@ -634,20 +634,14 @@ export default function MarketingPage() {
               <p className="mt-1 font-sans text-sm text-cream/60">O segundo espelho esta disponivel. Conteudo de lancamento pronto abaixo.</p>
               <div className="mt-4 grid gap-2">
                 <button
-                  onClick={() => { setPageSection("calendario"); setCalWeek(allWeeks.findIndex(w => w.weekNumber === 10)); setCalDay(0); }}
+                  onClick={() => { setPageSection("calendario"); setCalWeek(1); setCalDay(1); }}
                   className="rounded-xl bg-[#8b9b8e] px-4 py-2.5 text-center font-sans text-xs font-bold text-white transition-all hover:bg-[#7a8a7d]"
                 >
-                  Semana de lancamento (posts + broadcasts)
-                </button>
-                <button
-                  onClick={() => { setPageSection("calendario"); setCalWeek(allWeeks.findIndex(w => w.weekNumber === 11)); setCalDay(0); }}
-                  className="rounded-xl bg-[#8b9b8e]/20 px-4 py-2.5 text-center font-sans text-xs font-bold text-[#8b9b8e] transition-all hover:bg-[#8b9b8e]/30"
-                >
-                  Semana 2 — Aprofundamento
+                  Conteudo do Espelho do Medo (Hub)
                 </button>
                 <button
                   onClick={() => { setPageSection("posts"); }}
-                  className="rounded-xl border border-[#8b9b8e]/30 px-4 py-2.5 text-center font-sans text-xs font-semibold text-cream/50 transition-all hover:border-[#8b9b8e]/50 hover:text-cream/70"
+                  className="rounded-xl bg-[#8b9b8e]/20 px-4 py-2.5 text-center font-sans text-xs font-bold text-[#8b9b8e] transition-all hover:bg-[#8b9b8e]/30"
                 >
                   Ver carrosseis prontos (citacoes, territorios, sabias que?)
                 </button>
@@ -681,8 +675,8 @@ export default function MarketingPage() {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6" /></svg>
               </button>
               <div className="flex-1 text-center">
-                <p className="font-serif text-base text-cream/90">{thematicHub[calWeek].title}</p>
-                <p className="font-sans text-[0.6rem] text-cream/40">{thematicHub[calWeek].subtitle}</p>
+                <p className="font-serif text-base text-cream/90">{thematicHub[Math.max(0, Math.min(calWeek, thematicHub.length - 1))].title}</p>
+                <p className="font-sans text-[0.6rem] text-cream/40">{thematicHub[Math.max(0, Math.min(calWeek, thematicHub.length - 1))].subtitle}</p>
               </div>
               <button onClick={() => { setCalWeek(Math.min(thematicHub.length - 1, calWeek + 1)); setCalDay(0); }}
                 disabled={calWeek === thematicHub.length - 1}
