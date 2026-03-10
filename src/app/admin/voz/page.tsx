@@ -237,7 +237,8 @@ export default function VozPage() {
           <button
             onClick={gerarTodosAba}
             disabled={aGerarTodos || !apiKey.trim()}
-            className="rounded-lg bg-forest px-5 py-2.5 text-sm text-white transition hover:bg-forest/80 disabled:opacity-40"
+            style={{ backgroundColor: "#2d6a4f", color: "#ffffff" }}
+            className="rounded-lg px-5 py-2.5 text-sm font-medium transition hover:opacity-90 disabled:opacity-50"
           >
             {aGerarTodos ? "A gerar..." : "Gerar todos"}
           </button>
@@ -356,13 +357,14 @@ function ItemVoz({
       <button
         onClick={onGerar}
         disabled={disabled || estado === "a-gerar"}
-        className={`shrink-0 rounded-lg px-4 py-2 text-sm transition ${
+        style={
           estado === "feito"
-            ? "bg-sage/20 text-sage cursor-default"
+            ? { backgroundColor: "#e5e7eb", color: "#6b7280" }
             : estado === "erro"
-            ? "bg-red-50 text-red-600 hover:bg-red-100"
-            : "bg-forest text-white hover:bg-forest/80"
-        } disabled:opacity-40`}
+            ? { backgroundColor: "#fef2f2", color: "#dc2626" }
+            : { backgroundColor: "#2d6a4f", color: "#ffffff" }
+        }
+        className="shrink-0 rounded-lg px-4 py-2 text-sm font-medium transition disabled:opacity-50 hover:opacity-90"
       >
         {estado === "a-gerar"
           ? "A gerar..."
