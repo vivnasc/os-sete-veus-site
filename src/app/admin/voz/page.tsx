@@ -57,6 +57,7 @@ export default function VozPage() {
   const [erros, setErros] = useState<Record<string, string>>({});
   const [blobs, setBlobs] = useState<Record<string, Blob>>({});
   const [uploadEstados, setUploadEstados] = useState<Record<string, EstadoUpload>>({});
+  const [uploadErros, setUploadErros] = useState<Record<string, string>>({});
   const [aGerarTodos, setAGerarTodos] = useState(false);
   const [aEnviarTodos, setAEnviarTodos] = useState(false);
   const [autoUpload, setAutoUpload] = useState(false);
@@ -181,18 +182,19 @@ export default function VozPage() {
 
   async function uploadAudioBlob(id: string, ficheiro: string, blob: Blob) {
     setUploadEstados((s) => ({ ...s, [id]: "a-enviar" }));
+    setUploadErros((e) => ({ ...e, [id]: "" }));
     const form = new FormData();
     form.append("file", blob, ficheiro);
     form.append("filename", ficheiro);
     try {
       const res = await fetch("/api/admin/upload-audio", { method: "POST", body: form });
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({ erro: `HTTP ${res.status}` }));
-        throw new Error(data.erro || `Erro ${res.status}`);
-      }
+      const data = await res.json().catch(() => ({ erro: `HTTP ${res.status}` }));
+      if (!res.ok) throw new Error(data.erro || `Erro ${res.status}`);
       setUploadEstados((s) => ({ ...s, [id]: "enviado" }));
-    } catch {
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Erro desconhecido";
       setUploadEstados((s) => ({ ...s, [id]: "erro" }));
+      setUploadErros((e) => ({ ...e, [id]: msg }));
     }
   }
 
@@ -479,6 +481,7 @@ export default function VozPage() {
                   onGerar={() => gerarVoz(id, ficheiro, c.texto)}
                   temBlob={!!blobs[id]}
                   uploadEstado={uploadEstados[id] || "idle"}
+                  uploadErro={uploadErros[id]}
                   onUpload={() => uploadAudio(id, ficheiro)}
                 />
               );
@@ -530,6 +533,7 @@ export default function VozPage() {
                   placeholder={semTexto ? "Sem texto — escreve em intros-veus.ts" : undefined}
                   temBlob={!!blobs[id]}
                   uploadEstado={uploadEstados[id] || "idle"}
+                  uploadErro={uploadErros[id]}
                   onUpload={() => uploadAudio(id, ficheiro)}
                 />
               );
@@ -570,6 +574,7 @@ export default function VozPage() {
               onGerar={() => gerarVoz("trailer", TRAILER_JORNADA.ficheiro, TRAILER_JORNADA.texto)}
               temBlob={!!blobs["trailer"]}
               uploadEstado={uploadEstados["trailer"] || "idle"}
+              uploadErro={uploadErros["trailer"]}
               onUpload={() => uploadAudio("trailer", TRAILER_JORNADA.ficheiro)}
             />
           </div>
@@ -652,6 +657,7 @@ function ItemVoz({
   placeholder,
   temBlob,
   uploadEstado,
+  uploadErro,
   onUpload,
 }: {
   id: string;
@@ -665,6 +671,7 @@ function ItemVoz({
   placeholder?: string;
   temBlob?: boolean;
   uploadEstado?: EstadoUpload;
+  uploadErro?: string;
   onUpload?: () => void;
 }) {
   const preview = texto
@@ -707,7 +714,9 @@ function ItemVoz({
             <span className="text-xs text-green-600">Enviado para o site</span>
           ) : uploadEstado === "erro" ? (
             <>
-              <span className="text-xs text-red-500">Erro no upload</span>
+              <span className="max-w-[60%] truncate text-xs text-red-500" title={uploadErro}>
+                {uploadErro || "Erro no upload"}
+              </span>
               <button
                 onClick={onUpload}
                 className="rounded-lg border border-sage/30 px-3 py-1.5 text-xs text-sage transition hover:text-forest"
