@@ -3053,7 +3053,7 @@ export const reelScripts: ReelScript[] = [
     canvaTemplate: "Procura 'list reveal' ou 'text animation' nos templates do CapCut",
   },
   {
-    hook: "O que acontece quando uma mãe é uma filha dizem o que sempre calaram?",
+    hook: "O que acontece quando uma mãe e uma filha dizem o que sempre calaram?",
     scenes: [
       "CENA 1 (0-3s): \"O que acontece quando uma mãe é uma filha dizem o que sempre calaram?\" [texto dramático]",
       "CENA 2 (3-8s): Imagem: mãos de duas gerações diferentes. Texto: \"Sara viu o véu. Mas há um nó que ficou por desatar.\"",
@@ -3082,18 +3082,18 @@ export const reelScripts: ReelScript[] = [
     canvaTemplate: "Procura 'product reveal' ou 'unboxing' nos templates do CapCut",
   },
   {
-    hook: "Não sabes para onde vais? Óptimo.",
+    hook: "Há uma voz que diz não antes de pensares.",
     scenes: [
-      "CENA 1 (0-3s): \"Não sabes para onde vais?\" [pausa dramática]",
-      "CENA 2 (3-5s): \"Óptimo.\" [texto grande, impacto]",
-      "CENA 3 (5-12s): \"Não precisas de saber para onde vais. Precisas apenas de dar o primeiro passo.\"",
-      "CENA 4 (12-18s): \"Os Sete Véus do Despertar são 7 experiências que te devolvem a ti mesma.\"",
-      "CENA 5 (18-25s): \"Sem pressa. Sem fórmulas. Apenas verdade.\"",
-      "CENA 6 (25-30s): \"Começa pelo teste gratuito. 3 minutos. 7 perguntas.\" + CTA",
+      "CENA 1 (0-3s): Ecrã escuro. Texto aparece devagar: \"Há uma voz que diz não...\" [pausa]",
+      "CENA 2 (3-5s): \"...antes de pensares.\" [impacto]",
+      "CENA 3 (5-12s): \"Não é covardia. É um mecanismo antigo — treinado ao longo de anos de cautela disfarçada de bom senso.\"",
+      "CENA 4 (12-18s): Imagem atmosférica. Voz ou texto: \"'E se falhar?' 'E se me arrepender?' Reconheces estas vozes?\"",
+      "CENA 5 (18-24s): \"O Espelho do Medo é uma história sobre o Rui — e sobre o que o medo calou durante anos.\"",
+      "CENA 6 (24-30s): \"Março 2026.\" + seteveus.space",
     ],
-    cta: "Teste gratuito. 3 minutos.",
-    music: "Inspiracional mas contida. No CapCut: 'Inspiring Minimal' ou 'Hope'",
-    duration: "25-30s",
+    cta: "Espelho do Medo — Março 2026. seteveus.space",
+    music: "Ambiente contido, quase em silêncio. No CapCut: 'Contemplative' ou 'Slow Ambient'",
+    duration: "28-30s",
   },
   {
     hook: "Isto não é um livro. É um espelho.",
@@ -3110,19 +3110,18 @@ export const reelScripts: ReelScript[] = [
     duration: "25-28s",
   },
   {
-    hook: "5 coisas que esta plataforma tem que nenhum livro te dá.",
+    hook: "Não escreveste nada sobre ti em anos. E isso pesa.",
     scenes: [
-      "CENA 1 (0-3s): \"5 coisas que esta plataforma tem que nenhum livro te dá.\" [texto directo, fundo escuro]",
-      "CENA 2 (3-8s): \"1. Pausas de respiração entre capítulos.\" [screenshot da pausa]",
-      "CENA 3 (8-13s): \"2. Um diário pessoal que só tu lês.\" [screenshot do diário]",
-      "CENA 4 (13-18s): \"3. Uma comunidade anónima onde ninguém te conhece mas todos se reconhecem.\" [screenshot Ecos]",
-      "CENA 5 (18-23s): \"4. Histórias que se desbloqueiam ao teu ritmo.\" [screenshot do leitor]",
-      "CENA 6 (23-28s): \"5. Um chatbot de apoio com a voz da autora.\" [screenshot do chat]",
-      "CENA 7 (28-33s): \"$19 USD. Acesso vitalício..\" [CTA]",
+      "CENA 1 (0-3s): Ecrã escuro. \"Não escreveste nada sobre ti em anos.\" [pausa]",
+      "CENA 2 (3-5s): \"E isso pesa.\" [impacto simples]",
+      "CENA 3 (5-12s): Screenshot do diário reflexivo na plataforma. \"No leitor dos Espelhos, cada capítulo tem um espaço para escrever o que sentiste.\"",
+      "CENA 4 (12-18s): \"Só tu lês. Não vai a lado nenhum. Só fica.\"",
+      "CENA 5 (18-24s): Screenshot da comunidade Ecos. \"E se quiseres partilhar algo, há uma comunidade anónima. Sem nomes. Tudo desaparece em 30 dias.\"",
+      "CENA 6 (24-30s): \"seteveus.space\" sobre fundo escuro [CTA tranquilo]",
     ],
-    cta: "$19 USD. Acesso vitalício.",
-    music: "Ritmo suave e moderno. No CapCut: 'Soft Pop' ou 'Modern Minimal'",
-    duration: "30-33s",
+    cta: "seteveus.space",
+    music: "Piano muito suave. No CapCut: 'Slow Piano' ou 'Contemplative'",
+    duration: "28-30s",
   },
   {
     hook: "Se leste isto até ao fim, este livro é para ti.",
@@ -3182,10 +3181,10 @@ export type HashtagSet = {
 export const hashtagSets: HashtagSet[] = [
   {
     name: "Principal — Marca",
-    description: "Usar em todos os posts. Hashtags da marca.",
+    description: "Usar em todos os posts. Hashtags da marca. Nota: usar SEMPRE a versão sem acentos para manter um único pool de hashtag no Instagram.",
     tags: [
-      "#OsSeteVéus", "#SeteVéus", "#VivianneDosSantos", "#SetevéusSpace",
-      "#OsSeteVéusDoDespertar", "#PedeOTeuCódigo",
+      "#OsSeteVeus", "#SeteVeus", "#VivianneDosSantos", "#SetevéusSpace",
+      "#OsSeteVeusDoDespertar", "#PedeOTeuCodigo",
     ],
   },
   {
@@ -3252,9 +3251,9 @@ export const hashtagSets: HashtagSet[] = [
     name: "Véu da Ilusão",
     description: "Posts específicos sobre o 1o véu.",
     tags: [
-      "#VéuDaIlusão", "#EspelhoDaIlusão", "#NóDaHerança",
-      "#PrimeiroVéu", "#Ilusão", "#VidaNoAutomático",
-      "#DespertarDaIlusão", "#OQueÉReal", "#SairDoAutomático",
+      "#VeuDaIlusao", "#EspelhoDaIlusao", "#NoDaHeranca",
+      "#PrimeiroVeu", "#Ilusao", "#VidaNoAutomatico",
+      "#DespertarDaIlusao", "#SairDoAutomatico",
       "#PerguntasQueTransformam",
     ],
   },
@@ -3262,7 +3261,7 @@ export const hashtagSets: HashtagSet[] = [
     name: "Véu do Medo",
     description: "Posts sobre o 2o véu (Março 2026).",
     tags: [
-      "#VéuDoMedo", "#EspelhoDoMedo", "#SegundoVéu",
+      "#VeuDoMedo", "#EspelhoDoMedo", "#SegundoVeu",
       "#Medo", "#Coragem", "#MedoDeViver",
       "#EnfrentarOMedo", "#CoragemDeSerQuemSou", "#SuperarOMedo",
       "#OQueMeTrava",
