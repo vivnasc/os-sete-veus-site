@@ -3341,3 +3341,25 @@ export const productionGuide: ProductionGuide[] = [
     ],
   },
 ];
+
+// ─── RITMO SEMANAL ─────────────────────────────────────────────────────────────
+// Mapeia cada dia da semana (0=Dom) para um tema do Hub.
+// themeIdx: índice em thematicHub (0=Véus, 1=Espelhos, 2=Nós, 3=Comunidade, 4=Reflexões)
+// dayIdx: sub-tema dentro do tema
+
+export type WeekdayRhythm = {
+  label: string;
+  hint: string;
+  themeIdx: number;
+  dayIdx: number;
+};
+
+export const WEEKLY_RHYTHM: WeekdayRhythm[] = [
+  { label: "Dom", hint: "Reflexão",    themeIdx: 4, dayIdx: 0 },
+  { label: "Seg", hint: "Véu",         themeIdx: 0, dayIdx: 0 },
+  { label: "Ter", hint: "Espelho",     themeIdx: 1, dayIdx: 0 },
+  { label: "Qua", hint: "Véu",         themeIdx: 0, dayIdx: 2 },
+  { label: "Qui", hint: "Nó",          themeIdx: 2, dayIdx: 0 },
+  { label: "Sex", hint: "Espelho",     themeIdx: 1, dayIdx: 1 },
+  { label: "Sáb", hint: "Os 7 Véus",  themeIdx: 0, dayIdx: 6 },
+];
