@@ -42,7 +42,7 @@ export default function EspelhoHubPage({ params }: { params: Promise<{ veu: stri
   };
   const introEntry = INTROS_VEUS.find((i) => i.veu === VEU_NUM[veu]);
   const introFicheiro = introEntry
-    ? `intro-veu-${introEntry.veu}-${introEntry.nome.toLowerCase().replace(/\s/g, "-")}.mp3`
+    ? `intro-veu-${introEntry.veu}-${introEntry.nome.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, "-")}.mp3`
     : null;
   const introUrl = introFicheiro
     ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audios/${encodeURIComponent(introFicheiro)}`
