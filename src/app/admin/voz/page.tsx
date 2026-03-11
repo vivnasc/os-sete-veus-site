@@ -41,6 +41,10 @@ const REFLEXOES = [
   }))
 );
 
+function slugify(s: string) {
+  return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, "-");
+}
+
 type Estado = "idle" | "a-gerar" | "feito" | "erro";
 type EstadoUpload = "idle" | "a-enviar" | "enviado" | "erro";
 type Aba = "citacoes" | "reflexoes" | "intros" | "teasers" | "trailer" | "stories" | "teasers-nos" | "ctas";
@@ -140,7 +144,7 @@ export default function VozPage() {
       : aba === "intros"
       ? INTROS_VEUS.filter((v) => v.texto.trim()).map((v) => ({
           id: `intro-${v.veu}`,
-          ficheiro: `intro-veu-${v.veu}-${v.nome.toLowerCase().replace(/\s/g, "-")}.mp3`,
+          ficheiro: `intro-veu-${v.veu}-${slugify(v.nome)}.mp3`,
           texto: v.texto,
         }))
       : aba === "teasers"
@@ -237,7 +241,7 @@ export default function VozPage() {
         if (id.startsWith("intro-")) {
           const veuNum = parseInt(id.replace("intro-", ""));
           const v = INTROS_VEUS.find((x) => x.veu === veuNum);
-          return v ? `intro-veu-${v.veu}-${v.nome.toLowerCase().replace(/\s/g, "-")}.mp3` : null;
+          return v ? `intro-veu-${v.veu}-${slugify(v.nome)}.mp3` : null;
         }
         if (id.startsWith("teaser-no-")) {
           const veuNum = parseInt(id.replace("teaser-no-", ""));
@@ -519,7 +523,7 @@ export default function VozPage() {
           <div className="space-y-3">
             {INTROS_VEUS.map((v) => {
               const id = `intro-${v.veu}`;
-              const ficheiro = `intro-veu-${v.veu}-${v.nome.toLowerCase().replace(/\s/g, "-")}.mp3`;
+              const ficheiro = `intro-veu-${v.veu}-${slugify(v.nome)}.mp3`;
               const estado = estados[id] || "idle";
               const semTexto = !v.texto.trim();
               return (
