@@ -1,55 +1,52 @@
 /**
- * Intros pessoais de cada véu — texto da Vivianne
+ * Intros pessoais de cada Espelho — voz da Vivianne
  *
- * Preenche o campo `texto` de cada véu com o teu texto.
- * Depois corre: ELEVENLABS_API_KEY=... VOICE_ID=... npx tsx scripts/gerar-intros-veus.ts
- *
- * Guias:
- * - Tom íntimo, quase sussurrado. Como se falaras directamente à leitora.
- * - 3-5 frases. Não mais. A brevidade tem força.
- * - Pode começar com "Bem-vinda..." ou mergulhar directamente no véu.
+ * Tom: Da Confrontação ao Convite (GUIA VOZ VIVIANNE)
+ * — Presença compassiva, não dissecação
+ * — Cena reconhecível + convite + porta aberta
+ * — Sensorial, não clínico
  */
 
 export type IntroVeu = {
   veu: number;
   nome: string;
-  texto: string; // ← preenches aqui
+  texto: string;
 };
 
 export const INTROS_VEUS: IntroVeu[] = [
   {
     veu: 1,
     nome: "Ilusão",
-    texto: "Bem-vinda ao Espelho da Ilusão. A Sara não é uma personagem — é um reflexo. Durante anos viveu uma versão de si que aprendeu a ser, não a que escolheu. Enquanto lês, não perguntes o que ela sente. Pergunta o que reconheces em ti. Este espelho só mostra o que já está lá.",
+    texto: "A manhã em que a Sara percebeu que não sabia o que queria para o pequeno-almoço — esse momento mínimo, quase invisível. É pequeno assim que começa. Bem-vinda ao Espelho da Ilusão. Não trazes nada para provar. Trazes apenas o que reconheces.",
   },
   {
     veu: 2,
     nome: "Medo",
-    texto: "Entraste no Espelho do Medo. O Rui tem medo de ocupar espaço — de ser demasiado, de não ser suficiente. Talvez reconheças esse peso. Neste espelho não vamos resolver o medo. Vamos apenas iluminá-lo. Porque o que vemos de frente já não nos persegue da mesma forma.",
+    texto: "O Rui olhava para o telefone antes de falar — não para organizar as palavras, mas para ter a certeza de que eram as certas. O corpo lembra esse peso. Bem-vinda ao Espelho do Medo. Não resolvemos aqui. Iluminamos. E às vezes isso é suficiente para respirar de outra forma.",
   },
   {
     veu: 3,
     nome: "Culpa",
-    texto: "Chegaste ao Espelho da Culpa. O Filipe entregou-se ao ponto de se perder — e chamou a isso amor. Luísa aceitou, e chamou a isso gratidão. A culpa disfarça-se tão bem de virtude que raramente a reconhecemos. Lê devagar. O que parece ser sobre eles, é sobre o que guardas em ti.",
+    texto: "O Filipe dizia sempre que estava bem. E acreditava nisso — até ao dia em que não conseguiu dizer porquê. Bem-vinda ao Espelho da Culpa. Lê devagar. O que parece ser sobre ele, talvez seja sobre o que guardas em ti.",
   },
   {
     veu: 4,
     nome: "Identidade",
-    texto: "Bem-vinda ao Espelho da Identidade. O Vítor usava máscaras tão antigas que já não sabia a diferença entre a máscara e o rosto. Neste espelho vamos sentar com a pergunta que mais assusta: quem és quando ninguém está a ver? Não há resposta errada. Há apenas honestidade — e essa já é um começo.",
+    texto: "Há uma versão de ti que é eficiente, disponível, que sabe o que os outros precisam. E depois, quando a porta fecha — quem fica? Bem-vinda ao Espelho da Identidade. Não há resposta errada aqui. Há apenas o que é teu.",
   },
   {
     veu: 5,
     nome: "Controlo",
-    texto: "Entraste no Espelho do Controlo. A Isabel amava tanto que tentou proteger tudo — e foi afastando quem mais amava sem perceber. Reconheces esse padrão? O controlo não nasce da força. Nasce do medo de perder o que é precioso. Aqui vamos olhar para esse medo com gentileza.",
+    texto: "A Isabel organizava tudo porque amava tudo. Reconheces esse impulso — segurar com força o que é precioso? Bem-vinda ao Espelho do Controlo. Olhamos para isso juntas, com calma. Sem bisturi.",
   },
   {
     veu: 6,
     nome: "Desejo",
-    texto: "Chegaste ao Espelho do Desejo. A Lena e a Sofia partilhavam tudo — até que o desejo não dito de uma começou a esvaziar a outra. Fomos ensinadas a ter vergonha do que queremos. Neste espelho o desejo não é o vilão. É a pista. Lê com atenção ao que em ti também ficou por dizer.",
+    texto: "Há coisas que a Lena queria e nunca disse. Não por cobardia — por hábito de se tornar mais pequena. Bem-vinda ao Espelho do Desejo. Aqui damos nome ao que ficou em silêncio. Ao teu ritmo. Sem pressa.",
   },
   {
     veu: 7,
     nome: "Separação",
-    texto: "Chegaste ao último espelho. O Espelho da Separação. A Helena e o Miguel separaram-se — e foi nessa separação que cada um encontrou finalmente o caminho de volta a si. Separar não é falhar. É por vezes o acto de amor mais honesto que existe. Este espelho é sobre recomeços. E sobre a coragem de os deixar acontecer.",
+    texto: "Bem-vinda ao último espelho. A Helena e o Miguel separaram-se — e foi nessa separação que cada um respirou pela primeira vez de outra forma. Talvez separar não seja perder. Talvez seja o início de algo que ainda não tem nome.",
   },
 ];
