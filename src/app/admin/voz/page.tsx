@@ -12,6 +12,13 @@ import { chapters as controloChapters } from "@/data/espelho-controlo";
 import { chapters as desejoChapters } from "@/data/espelho-desejo";
 import { chapters as separacaoChapters } from "@/data/espelho-separacao";
 import { INTROS_VEUS } from "@/data/intros-veus";
+import {
+  TEASERS_ESPELHOS,
+  TRAILER_JORNADA,
+  STORIES_ESPELHOS,
+  TEASERS_NOS,
+  CHAMADAS_ACCAO,
+} from "@/data/marketing-audio";
 
 const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
 const DEFAULT_VOICE_ID = "fnoNuVpfClX7lHKFbyZ2";
@@ -35,7 +42,7 @@ const REFLEXOES = [
 );
 
 type Estado = "idle" | "a-gerar" | "feito" | "erro";
-type Aba = "citacoes" | "reflexoes" | "intros";
+type Aba = "citacoes" | "reflexoes" | "intros" | "teasers" | "trailer" | "stories" | "teasers-nos" | "ctas";
 
 export default function VozPage() {
   const { user, profile } = useAuth();
@@ -121,10 +128,36 @@ export default function VozPage() {
           }))
         : aba === "reflexoes"
         ? REFLEXOES
-        : INTROS_VEUS.filter((v) => v.texto.trim()).map((v) => ({  // só gera as que têm texto
+        : aba === "intros"
+        ? INTROS_VEUS.filter((v) => v.texto.trim()).map((v) => ({
             id: `intro-${v.veu}`,
             ficheiro: `intro-veu-${v.veu}-${v.nome.toLowerCase().replace(/\s/g, "-")}.mp3`,
             texto: v.texto,
+          }))
+        : aba === "teasers"
+        ? TEASERS_ESPELHOS.map((t) => ({
+            id: `teaser-${t.veu}`,
+            ficheiro: t.ficheiro,
+            texto: t.texto,
+          }))
+        : aba === "trailer"
+        ? [{ id: "trailer", ficheiro: TRAILER_JORNADA.ficheiro, texto: TRAILER_JORNADA.texto }]
+        : aba === "stories"
+        ? STORIES_ESPELHOS.map((s) => ({
+            id: `story-${s.veu}`,
+            ficheiro: s.ficheiro,
+            texto: s.texto,
+          }))
+        : aba === "teasers-nos"
+        ? TEASERS_NOS.map((t) => ({
+            id: `teaser-no-${t.veu}`,
+            ficheiro: t.ficheiro,
+            texto: t.texto,
+          }))
+        : CHAMADAS_ACCAO.map((c) => ({
+            id: c.id,
+            ficheiro: c.ficheiro,
+            texto: c.texto,
           }));
 
     for (const item of itens) {
@@ -148,6 +181,22 @@ export default function VozPage() {
   const introsFeitas = INTROS_VEUS.filter(
     (v) => estados[`intro-${v.veu}`] === "feito"
   ).length;
+  const teasersTotal = TEASERS_ESPELHOS.length;
+  const teasersFeitos = TEASERS_ESPELHOS.filter(
+    (t) => estados[`teaser-${t.veu}`] === "feito"
+  ).length;
+  const storiesTotal = STORIES_ESPELHOS.length;
+  const storiesFeitas = STORIES_ESPELHOS.filter(
+    (s) => estados[`story-${s.veu}`] === "feito"
+  ).length;
+  const teasersNosTotal = TEASERS_NOS.length;
+  const teasersNosFeitos = TEASERS_NOS.filter(
+    (t) => estados[`teaser-no-${t.veu}`] === "feito"
+  ).length;
+  const ctasTotal = CHAMADAS_ACCAO.length;
+  const ctasFeitas = CHAMADAS_ACCAO.filter(
+    (c) => estados[c.id] === "feito"
+  ).length;
 
   return (
     <div className="min-h-screen bg-cream">
@@ -159,7 +208,7 @@ export default function VozPage() {
           </Link>
           <h1 className="font-display text-3xl text-forest">Gerar Voz — ElevenLabs</h1>
           <p className="mt-1 text-sage">
-            Clips de voz clonada — citações, reflexões e intros dos véus.
+            Clips de voz clonada — citações, reflexões, intros e marketing.
           </p>
         </div>
       </div>
@@ -211,24 +260,37 @@ export default function VozPage() {
         </div>
 
         {/* Abas */}
-        <div className="flex gap-2 border-b border-sage/20">
-          {(["citacoes", "reflexoes", "intros"] as Aba[]).map((a) => (
-            <button
-              key={a}
-              onClick={() => setAba(a)}
-              className={`px-5 py-3 text-sm font-medium transition border-b-2 ${
-                aba === a
-                  ? "border-forest text-forest"
-                  : "border-transparent text-sage hover:text-forest"
-              }`}
-            >
-              {a === "citacoes"
-                ? `Citações (${citacoesFeitas}/${citacoesTotal})`
-                : a === "reflexoes"
-                ? `Reflexões (${reflexoesFeitas}/${reflexoesTotal})`
-                : `Intros (${introsFeitas}/${introsTotal})`}
-            </button>
-          ))}
+        <div className="space-y-2">
+          <p className="text-xs font-medium text-sage uppercase tracking-wider">Leitura</p>
+          <div className="flex flex-wrap gap-2 border-b border-sage/20 pb-4">
+            {([
+              ["citacoes", `Citações (${citacoesFeitas}/${citacoesTotal})`],
+              ["reflexoes", `Reflexões (${reflexoesFeitas}/${reflexoesTotal})`],
+              ["intros", `Intros Espelhos (${introsFeitas}/${introsTotal})`],
+            ] as [Aba, string][]).map(([a, label]) => (
+              <button key={a} onClick={() => setAba(a)}
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition ${aba === a ? "bg-forest text-white" : "bg-white text-sage border border-sage/20 hover:text-forest"}`}
+                style={aba === a ? { backgroundColor: "#2d6a4f" } : {}}>
+                {label}
+              </button>
+            ))}
+          </div>
+          <p className="text-xs font-medium text-sage uppercase tracking-wider pt-2">Marketing</p>
+          <div className="flex flex-wrap gap-2 border-b border-sage/20 pb-4">
+            {([
+              ["teasers", `Teasers Espelhos (${teasersFeitos}/${teasersTotal})`],
+              ["trailer", `Trailer Jornada (${estados["trailer"] === "feito" ? 1 : 0}/1)`],
+              ["stories", `Stories (${storiesFeitas}/${storiesTotal})`],
+              ["teasers-nos", `Teasers Nós (${teasersNosFeitos}/${teasersNosTotal})`],
+              ["ctas", `Chamadas à Acção (${ctasFeitas}/${ctasTotal})`],
+            ] as [Aba, string][]).map(([a, label]) => (
+              <button key={a} onClick={() => setAba(a)}
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition ${aba === a ? "bg-forest text-white" : "bg-white text-sage border border-sage/20 hover:text-forest"}`}
+                style={aba === a ? { backgroundColor: "#2d6a4f" } : {}}>
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Gerar todos */}
@@ -299,19 +361,99 @@ export default function VozPage() {
               const estado = estados[id] || "idle";
               const semTexto = !v.texto.trim();
               return (
-                <div key={id}>
-                  <ItemVoz
-                    id={id}
-                    ficheiro={ficheiro}
-                    nome={`Véu ${v.veu} — ${v.nome}`}
-                    texto={semTexto ? "" : v.texto}
-                    estado={semTexto ? "idle" : estado}
-                    erro={erros[id]}
-                    disabled={semTexto || aGerarTodos || !apiKey.trim()}
-                    onGerar={() => gerarVoz(id, ficheiro, v.texto)}
-                    placeholder={semTexto ? "Sem texto — escreve o texto abaixo e guarda em intros-veus.ts" : undefined}
-                  />
-                </div>
+                <ItemVoz key={id} id={id} ficheiro={ficheiro}
+                  nome={`Espelho ${v.veu} — ${v.nome}`}
+                  texto={semTexto ? "" : v.texto}
+                  estado={semTexto ? "idle" : estado}
+                  erro={erros[id]}
+                  disabled={semTexto || aGerarTodos || !apiKey.trim()}
+                  onGerar={() => gerarVoz(id, ficheiro, v.texto)}
+                  placeholder={semTexto ? "Sem texto — escreve em intros-veus.ts" : undefined}
+                />
+              );
+            })}
+          </div>
+        )}
+
+        {/* ── Teasers Espelhos ─────────────────────────────────── */}
+        {aba === "teasers" && (
+          <div className="space-y-3">
+            {TEASERS_ESPELHOS.map((t) => {
+              const id = `teaser-${t.veu}`;
+              const estado = estados[id] || "idle";
+              return (
+                <ItemVoz key={id} id={id} ficheiro={t.ficheiro}
+                  nome={`Espelho ${t.veu} — ${t.espelho}`}
+                  texto={t.texto} estado={estado} erro={erros[id]}
+                  disabled={aGerarTodos || !apiKey.trim()}
+                  onGerar={() => gerarVoz(id, t.ficheiro, t.texto)}
+                />
+              );
+            })}
+          </div>
+        )}
+
+        {/* ── Trailer ──────────────────────────────────────────── */}
+        {aba === "trailer" && (
+          <div className="space-y-3">
+            <ItemVoz id="trailer" ficheiro={TRAILER_JORNADA.ficheiro}
+              nome="Trailer — Os Sete Espelhos (Jornada Completa)"
+              texto={TRAILER_JORNADA.texto}
+              estado={estados["trailer"] || "idle"}
+              erro={erros["trailer"]}
+              disabled={aGerarTodos || !apiKey.trim()}
+              onGerar={() => gerarVoz("trailer", TRAILER_JORNADA.ficheiro, TRAILER_JORNADA.texto)}
+            />
+          </div>
+        )}
+
+        {/* ── Stories ──────────────────────────────────────────── */}
+        {aba === "stories" && (
+          <div className="space-y-3">
+            {STORIES_ESPELHOS.map((s) => {
+              const id = `story-${s.veu}`;
+              const estado = estados[id] || "idle";
+              return (
+                <ItemVoz key={id} id={id} ficheiro={s.ficheiro}
+                  nome={`Story — Espelho ${s.veu} (${s.espelho})`}
+                  texto={s.texto} estado={estado} erro={erros[id]}
+                  disabled={aGerarTodos || !apiKey.trim()}
+                  onGerar={() => gerarVoz(id, s.ficheiro, s.texto)}
+                />
+              );
+            })}
+          </div>
+        )}
+
+        {/* ── Teasers Nós ──────────────────────────────────────── */}
+        {aba === "teasers-nos" && (
+          <div className="space-y-3">
+            {TEASERS_NOS.map((t) => {
+              const id = `teaser-no-${t.veu}`;
+              const estado = estados[id] || "idle";
+              return (
+                <ItemVoz key={id} id={id} ficheiro={t.ficheiro}
+                  nome={`Nó ${t.veu} — ${t.no} (${t.personagens})`}
+                  texto={t.texto} estado={estado} erro={erros[id]}
+                  disabled={aGerarTodos || !apiKey.trim()}
+                  onGerar={() => gerarVoz(id, t.ficheiro, t.texto)}
+                />
+              );
+            })}
+          </div>
+        )}
+
+        {/* ── Chamadas à Acção ─────────────────────────────────── */}
+        {aba === "ctas" && (
+          <div className="space-y-3">
+            {CHAMADAS_ACCAO.map((c) => {
+              const estado = estados[c.id] || "idle";
+              return (
+                <ItemVoz key={c.id} id={c.id} ficheiro={c.ficheiro}
+                  nome={c.nome} texto={c.texto} estado={estado} erro={erros[c.id]}
+                  disabled={aGerarTodos || !apiKey.trim()}
+                  onGerar={() => gerarVoz(c.id, c.ficheiro, c.texto)}
+                />
               );
             })}
           </div>
