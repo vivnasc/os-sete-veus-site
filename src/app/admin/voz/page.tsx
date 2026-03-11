@@ -42,6 +42,7 @@ const REFLEXOES = [
 );
 
 type Estado = "idle" | "a-gerar" | "feito" | "erro";
+type EstadoUpload = "idle" | "a-enviar" | "enviado" | "erro";
 type Aba = "citacoes" | "reflexoes" | "intros" | "teasers" | "trailer" | "stories" | "teasers-nos" | "ctas";
 
 export default function VozPage() {
@@ -54,6 +55,8 @@ export default function VozPage() {
   const [aba, setAba] = useState<Aba>("citacoes");
   const [estados, setEstados] = useState<Record<string, Estado>>({});
   const [erros, setErros] = useState<Record<string, string>>({});
+  const [blobs, setBlobs] = useState<Record<string, Blob>>({});
+  const [uploadEstados, setUploadEstados] = useState<Record<string, EstadoUpload>>({});
   const [aGerarTodos, setAGerarTodos] = useState(false);
   const [erroGlobal, setErroGlobal] = useState("");
 
@@ -93,6 +96,9 @@ export default function VozPage() {
 
       const blob = await res.blob();
       if (blob.size === 0) throw new Error("ElevenLabs devolveu ficheiro vazio.");
+
+      // Guardar blob para upload posterior
+      setBlobs((b) => ({ ...b, [id]: blob }));
 
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -166,6 +172,28 @@ export default function VozPage() {
       await new Promise((r) => setTimeout(r, 2000));
     }
     setAGerarTodos(false);
+  }
+
+  async function uploadAudio(id: string, ficheiro: string) {
+    const blob = blobs[id];
+    if (!blob) return;
+
+    setUploadEstados((s) => ({ ...s, [id]: "a-enviar" }));
+
+    const form = new FormData();
+    form.append("file", blob, ficheiro);
+    form.append("filename", ficheiro);
+
+    try {
+      const res = await fetch("/api/admin/upload-audio", { method: "POST", body: form });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({ erro: `HTTP ${res.status}` }));
+        throw new Error(data.erro || `Erro ${res.status}`);
+      }
+      setUploadEstados((s) => ({ ...s, [id]: "enviado" }));
+    } catch {
+      setUploadEstados((s) => ({ ...s, [id]: "erro" }));
+    }
   }
 
   // ── contagens ────────────────────────────────────────────────
@@ -324,6 +352,9 @@ export default function VozPage() {
                   erro={erros[id]}
                   disabled={aGerarTodos || !apiKey.trim()}
                   onGerar={() => gerarVoz(id, ficheiro, c.texto)}
+                  temBlob={!!blobs[id]}
+                  uploadEstado={uploadEstados[id] || "idle"}
+                  onUpload={() => uploadAudio(id, ficheiro)}
                 />
               );
             })}
@@ -346,6 +377,9 @@ export default function VozPage() {
                   erro={erros[r.id]}
                   disabled={aGerarTodos || !apiKey.trim()}
                   onGerar={() => gerarVoz(r.id, r.ficheiro, r.texto)}
+                  temBlob={!!blobs[r.id]}
+                  uploadEstado={uploadEstados[r.id] || "idle"}
+                  onUpload={() => uploadAudio(r.id, r.ficheiro)}
                 />
               );
             })}
@@ -369,6 +403,9 @@ export default function VozPage() {
                   disabled={semTexto || aGerarTodos || !apiKey.trim()}
                   onGerar={() => gerarVoz(id, ficheiro, v.texto)}
                   placeholder={semTexto ? "Sem texto — escreve em intros-veus.ts" : undefined}
+                  temBlob={!!blobs[id]}
+                  uploadEstado={uploadEstados[id] || "idle"}
+                  onUpload={() => uploadAudio(id, ficheiro)}
                 />
               );
             })}
@@ -387,6 +424,9 @@ export default function VozPage() {
                   texto={t.texto} estado={estado} erro={erros[id]}
                   disabled={aGerarTodos || !apiKey.trim()}
                   onGerar={() => gerarVoz(id, t.ficheiro, t.texto)}
+                  temBlob={!!blobs[id]}
+                  uploadEstado={uploadEstados[id] || "idle"}
+                  onUpload={() => uploadAudio(id, t.ficheiro)}
                 />
               );
             })}
@@ -403,6 +443,9 @@ export default function VozPage() {
               erro={erros["trailer"]}
               disabled={aGerarTodos || !apiKey.trim()}
               onGerar={() => gerarVoz("trailer", TRAILER_JORNADA.ficheiro, TRAILER_JORNADA.texto)}
+              temBlob={!!blobs["trailer"]}
+              uploadEstado={uploadEstados["trailer"] || "idle"}
+              onUpload={() => uploadAudio("trailer", TRAILER_JORNADA.ficheiro)}
             />
           </div>
         )}
@@ -419,6 +462,9 @@ export default function VozPage() {
                   texto={s.texto} estado={estado} erro={erros[id]}
                   disabled={aGerarTodos || !apiKey.trim()}
                   onGerar={() => gerarVoz(id, s.ficheiro, s.texto)}
+                  temBlob={!!blobs[id]}
+                  uploadEstado={uploadEstados[id] || "idle"}
+                  onUpload={() => uploadAudio(id, s.ficheiro)}
                 />
               );
             })}
@@ -437,6 +483,9 @@ export default function VozPage() {
                   texto={t.texto} estado={estado} erro={erros[id]}
                   disabled={aGerarTodos || !apiKey.trim()}
                   onGerar={() => gerarVoz(id, t.ficheiro, t.texto)}
+                  temBlob={!!blobs[id]}
+                  uploadEstado={uploadEstados[id] || "idle"}
+                  onUpload={() => uploadAudio(id, t.ficheiro)}
                 />
               );
             })}
@@ -453,6 +502,9 @@ export default function VozPage() {
                   nome={c.nome} texto={c.texto} estado={estado} erro={erros[c.id]}
                   disabled={aGerarTodos || !apiKey.trim()}
                   onGerar={() => gerarVoz(c.id, c.ficheiro, c.texto)}
+                  temBlob={!!blobs[c.id]}
+                  uploadEstado={uploadEstados[c.id] || "idle"}
+                  onUpload={() => uploadAudio(c.id, c.ficheiro)}
                 />
               );
             })}
@@ -473,6 +525,9 @@ function ItemVoz({
   disabled,
   onGerar,
   placeholder,
+  temBlob,
+  uploadEstado,
+  onUpload,
 }: {
   id: string;
   ficheiro: string;
@@ -483,39 +538,69 @@ function ItemVoz({
   disabled: boolean;
   onGerar: () => void;
   placeholder?: string;
+  temBlob?: boolean;
+  uploadEstado?: EstadoUpload;
+  onUpload?: () => void;
 }) {
   const preview = texto
     ? texto.slice(0, 90) + (texto.length > 90 ? "..." : "")
     : placeholder ?? "";
 
   return (
-    <div className="flex items-start justify-between gap-4 rounded-lg border border-sage/20 bg-white px-5 py-4">
-      <div className="flex-1 min-w-0">
-        <p className="font-medium text-forest text-sm">{nome}</p>
-        <p className={`mt-0.5 text-xs leading-relaxed ${texto ? "text-sage" : "text-sage/40 italic"}`}>{preview}</p>
-        <p className="mt-1 text-xs text-sage/50 font-mono">{ficheiro}</p>
-        {erro && <p className="mt-1 text-xs text-red-500">{erro}</p>}
-      </div>
-      <button
-        onClick={onGerar}
-        disabled={disabled || estado === "a-gerar"}
-        style={
-          estado === "feito"
-            ? { backgroundColor: "#e5e7eb", color: "#6b7280" }
+    <div className="rounded-lg border border-sage/20 bg-white px-5 py-4">
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex-1 min-w-0">
+          <p className="font-medium text-forest text-sm">{nome}</p>
+          <p className={`mt-0.5 text-xs leading-relaxed ${texto ? "text-sage" : "text-sage/40 italic"}`}>{preview}</p>
+          <p className="mt-1 text-xs text-sage/50 font-mono">{ficheiro}</p>
+          {erro && <p className="mt-1 text-xs text-red-500">{erro}</p>}
+        </div>
+        <button
+          onClick={onGerar}
+          disabled={disabled || estado === "a-gerar"}
+          style={
+            estado === "feito"
+              ? { backgroundColor: "#e5e7eb", color: "#6b7280" }
+              : estado === "erro"
+              ? { backgroundColor: "#fef2f2", color: "#dc2626" }
+              : { backgroundColor: "#2d6a4f", color: "#ffffff" }
+          }
+          className="shrink-0 rounded-lg px-4 py-2 text-sm font-medium transition disabled:opacity-50 hover:opacity-90"
+        >
+          {estado === "a-gerar"
+            ? "A gerar..."
+            : estado === "feito"
+            ? "Descarregado"
             : estado === "erro"
-            ? { backgroundColor: "#fef2f2", color: "#dc2626" }
-            : { backgroundColor: "#2d6a4f", color: "#ffffff" }
-        }
-        className="shrink-0 rounded-lg px-4 py-2 text-sm font-medium transition disabled:opacity-50 hover:opacity-90"
-      >
-        {estado === "a-gerar"
-          ? "A gerar..."
-          : estado === "feito"
-          ? "Descarregado"
-          : estado === "erro"
-          ? "Tentar de novo"
-          : "Gerar"}
-      </button>
+            ? "Tentar de novo"
+            : "Gerar"}
+        </button>
+      </div>
+      {temBlob && onUpload && (
+        <div className="mt-3 flex items-center justify-end gap-2 border-t border-sage/10 pt-3">
+          {uploadEstado === "enviado" ? (
+            <span className="text-xs text-green-600">Enviado para o site</span>
+          ) : uploadEstado === "erro" ? (
+            <>
+              <span className="text-xs text-red-500">Erro no upload</span>
+              <button
+                onClick={onUpload}
+                className="rounded-lg border border-sage/30 px-3 py-1.5 text-xs text-sage transition hover:text-forest"
+              >
+                Tentar de novo
+              </button>
+            </>
+          ) : (
+            <button
+              onClick={onUpload}
+              disabled={uploadEstado === "a-enviar"}
+              className="rounded-lg border border-sage/30 px-3 py-1.5 text-xs text-sage transition hover:text-forest disabled:opacity-50"
+            >
+              {uploadEstado === "a-enviar" ? "A enviar..." : "Enviar para o site"}
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 }
