@@ -1,21 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { SUPABASE_URL } from "@/lib/supabase-server";
 
 const BUCKET = "audios";
 
 export async function POST(req: NextRequest) {
   try {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-    if (!supabaseUrl || !serviceKey) {
+    if (!serviceKey) {
       return NextResponse.json(
-        { erro: "Env vars em falta: SUPABASE_URL=" + !!supabaseUrl + " SERVICE_KEY=" + !!serviceKey },
+        { erro: "SUPABASE_SERVICE_ROLE_KEY não configurada no Vercel." },
         { status: 500 }
       );
     }
 
-    const supabase = createClient(supabaseUrl, serviceKey, {
+    const supabase = createClient(SUPABASE_URL, serviceKey, {
       auth: { persistSession: false },
     });
 
@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ erro: "Supabase upload erro: " + error.message }, { status: 500 });
     }
 
-    const url = `${supabaseUrl}/storage/v1/object/public/${BUCKET}/${encodeURIComponent(filename)}`;
+    const url = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${encodeURIComponent(filename)}`;
     return NextResponse.json({ url });
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
