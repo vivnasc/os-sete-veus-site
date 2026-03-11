@@ -2938,6 +2938,85 @@ export const professionalCarousels: ProfessionalCarousel[] = [
       colorPalette: ["#ebe7df", "#3d3630", "#c9b896", "#2a2420", "#f7f5f0"],
     },
   },
+
+  // ─── VITALIS — 4 FUNCIONALIDADES NOVAS ───────────────────────────────────────
+
+  {
+    id: "vitalis-ciclo-comeca-para",
+    title: "O Ciclo de Começa e Para — por que acontece",
+    description: "Carrossel que nomeia o padrão exacto de quem começa e pára. Fala de psicologia, não de dieta. Altamente partilhável.",
+    slides: [
+      { bg: "#2e2a26", text: "#faf4ec", accent: "#c4785a", title: "Tu sabes\no que comer.\n\nEntão porque\né que paras?", body: "", footer: "" },
+      { bg: "#faf4ec", text: "#2e2a26", accent: "#c4785a", title: "Não é falta\nde força de vontade.", body: "Não é preguiça.\nNão é falta\nde informação.\n\nÉ um padrão.\nE os padrões\nrepetem-se.", footer: "" },
+      { bg: "#2e2a26", text: "#faf4ec", accent: "#7a9a78", title: "O ciclo tem\nsempre a mesma\nforma:", body: "Começas motivada.\nOs primeiros dias correm bem.\nAparece o primeiro obstáculo.\nDesviaste-te um pouco.\nSentes que falhaste tudo.\nPáras.", footer: "" },
+      { bg: "#e8ddd0", text: "#2e2a26", accent: "#c4785a", title: "E depois\ncomeças de novo\ncomo se fosse\na primeira vez.", body: "Mais frustração.\nMenos confiança.\nO mesmo ciclo.", footer: "" },
+      { bg: "#2e2a26", text: "#faf4ec", accent: "#c4785a", title: "O problema não\né o desvio.", body: "É o que fazes\ndepois do desvio.\n\nQuem aprende a não\nse abandonar depois\nde tropeçar —\nessa pessoa chega.", footer: "" },
+      { bg: "#7a9a78", text: "#faf4ec", accent: "#e8ddd0", title: "O Vitalis detecta\no padrão antes\nde ele acontecer.", body: "E lembra-te\ndo teu porquê\nexactamente quando\nmais precisas.", footer: "Vitalis — coaching com consistência" },
+    ],
+    caption: "Tu sabes o que comer. Então porque é que paras?\n\nNão é falta de força de vontade. É um padrão:\n\n1. Começas motivada\n2. Os primeiros dias correm bem\n3. Aparece um obstáculo\n4. Sentes que falhaste\n5. Páras\n6. Recomeças com menos confiança\n\nO problema não é o desvio. É o que fazes depois.\n\nQuem aprende a não se abandonar depois de tropeçar — essa pessoa chega.\n\nGuarda este carrossel para o dia em que precisares de ler isto.\n\n#Consistência #MudançaReal #PadrõesAlimentares #CoachingNutricional #Vitalis",
+    canvaSpecs: {
+      dimensions: "1080x1080px (quadrado)",
+      fonts: "Título: Playfair Display Bold / Corpo: Inter",
+      colorPalette: ["#2e2a26", "#faf4ec", "#c4785a", "#7a9a78", "#e8ddd0"],
+    },
+  },
+  {
+    id: "vitalis-meu-compromisso",
+    title: "A Motivação Acaba — o Compromisso Fica",
+    description: "Apresenta o conceito do Meu Compromisso (porquê + mínimo diário + plano de crise). Diferenciador forte face a coaches que só enviam planos.",
+    slides: [
+      { bg: "#2e2a26", text: "#faf4ec", accent: "#c4785a", title: "A motivação\nacaba.\n\nO compromisso\nfica.", body: "", footer: "" },
+      { bg: "#faf4ec", text: "#2e2a26", accent: "#c4785a", title: "A motivação é\numa visita.", body: "Aparece nos primeiros dias.\nDesaparece no primeiro\ndia mau.\n\nNão podes construir\numa mudança\nem cima de uma visita.", footer: "" },
+      { bg: "#2e2a26", text: "#faf4ec", accent: "#7a9a78", title: "O compromisso\né diferente.", body: "Não depende de como\nte sentes hoje.\n\nDepende do que\ndecidiste antes de\nse tornar difícil.", footer: "" },
+      { bg: "#e8ddd0", text: "#2e2a26", accent: "#c4785a", title: "3 perguntas\nque mudam tudo:", body: "1. O meu porquê é...\n(não só \"emagrecer\")\n\n2. O meu mínimo diário é...\n(o que faço mesmo\nno pior dia)\n\n3. Quando quiser desistir,\nvou...\n(o plano definido em calma)", footer: "" },
+      { bg: "#2e2a26", text: "#faf4ec", accent: "#c4785a", title: "Quando o Vitalis\nvê que estás\na desviar-te,\nlembra-te do teu porquê.", body: "Não te cobra.\nNão te julga.\n\nLembra-te\ndo que disseste\nquando ainda\nacreditavas.", footer: "" },
+      { bg: "#7a9a78", text: "#faf4ec", accent: "#e8ddd0", title: "Qual é\no teu porquê?", body: "Não o que dizes\nquando te perguntam.\n\nO que sabes\nmas ainda não\ndisseste em voz alta.", footer: "Vitalis — coaching com consistência" },
+    ],
+    caption: "A motivação é uma visita. O compromisso é diferente.\n\nNão podes construir uma mudança em cima de motivação — ela desaparece no primeiro dia mau.\n\nAs 3 perguntas que mudam tudo:\n\n1. O meu porquê é... (mais fundo que só \"emagrecer\")\n2. O meu mínimo diário é... (o que faço mesmo no pior dia)\n3. Quando quiser desistir, vou... (o plano definido em calma)\n\nQuando o Vitalis vê que estás a desviar-te, lembra-te do teu porquê. Não te cobra. Lembra-te do que disseste quando ainda acreditavas.\n\nQual é o teu porquê?\n\n#Comprometimento #MudançaDurável #CoachingNutricional #Consistência #Vitalis",
+    canvaSpecs: {
+      dimensions: "1080x1080px (quadrado)",
+      fonts: "Título: Playfair Display / Corpo: Inter Light",
+      colorPalette: ["#2e2a26", "#faf4ec", "#c4785a", "#7a9a78", "#e8ddd0"],
+    },
+  },
+  {
+    id: "vitalis-prontidao-adaptativa",
+    title: "O Plano que te Encontra Onde Estás",
+    description: "Explica a prontidão adaptativa sem jargão. Posiciona o Vitalis contra planos rígidos. Enorme diferenciador.",
+    slides: [
+      { bg: "#2e2a26", text: "#faf4ec", accent: "#c4785a", title: "O problema\nnão é o plano.\n\nÉ que o plano\nnão te conhece.", body: "", footer: "" },
+      { bg: "#faf4ec", text: "#2e2a26", accent: "#c4785a", title: "Há dias em que\nestás pronta.", body: "Dormiste bem.\nEstás focada.\nO plano não\nte custa nada.", footer: "" },
+      { bg: "#2e2a26", text: "#faf4ec", accent: "#7a9a78", title: "E há dias em que\nnão estás.", body: "Mau sono.\nSemana pesada.\nMil coisas na cabeça.\n\nO mesmo plano rígido\nparece uma montanha.", footer: "" },
+      { bg: "#e8ddd0", text: "#2e2a26", accent: "#c4785a", title: "Um plano igual\npara os dois dias\nfalha sempre.", body: "No dia bom: sobra.\nNo dia mau: é grande demais.\nDesistes.\nE acreditas que\nes o problema.", footer: "" },
+      { bg: "#2e2a26", text: "#faf4ec", accent: "#c4785a", title: "O Vitalis\npergunta-te\ntodos os dias:", body: "\"De 1 a 10,\ncomo está a tua\nprontidão hoje?\"\n\nE ajusta o plano\na essa resposta.", footer: "" },
+      { bg: "#7a9a78", text: "#faf4ec", accent: "#e8ddd0", title: "Prontidão baixa:\nplano suave\n+ 3 micro-hábitos.\n\nProntidão alta:\nplano completo.", body: "Nunca fazes mais\ndo que consegues.\nNunca fazes menos\ndo que precisas.", footer: "Vitalis — coaching com consistência" },
+    ],
+    caption: "O problema não é o plano. É que o plano não te conhece.\n\nHá dias em que estás pronta — o plano não te custa nada.\nHá dias em que não estás — o mesmo plano parece uma montanha.\n\nUm plano igual para os dois dias falha sempre. E acabas por acreditar que és o problema. Não és.\n\nO Vitalis pergunta-te todos os dias: \"De 1 a 10, como está a tua prontidão hoje?\" E ajusta o plano a essa resposta.\n\nProntidão baixa: plano suave + 3 micro-hábitos simples.\nProntidão alta: plano completo.\n\nNunca fazes mais do que consegues. Nunca fazes menos do que precisas.\n\n#ProntidaoAdaptativa #PlanoPersonalizado #CoachingNutricional #MudancaReal #Vitalis",
+    canvaSpecs: {
+      dimensions: "1080x1080px (quadrado)",
+      fonts: "Título: Playfair Display Bold / Corpo: Inter",
+      colorPalette: ["#2e2a26", "#faf4ec", "#c4785a", "#7a9a78", "#e8ddd0"],
+    },
+  },
+  {
+    id: "vitalis-emocional-raiz",
+    title: "80% dos Problemas Alimentares São Emocionais",
+    description: "O carrossel que gerou a mensagem da Vanessa. Fala do que está por baixo da comida. Promove o SERENA. Altamente viral.",
+    slides: [
+      { bg: "#2e2a26", text: "#faf4ec", accent: "#c4785a", title: "80% dos problemas\nalimentares\nsão emocionais.", body: "E o teu plano\nsó fala de comida?", footer: "" },
+      { bg: "#faf4ec", text: "#2e2a26", accent: "#c4785a", title: "Não comes\nporque tens fome.", body: "Comes quando\nestás stressada.\nSolitária.\nAnsiosa.\nA comemorar.\nA consolar.\n\nComes o que sentes.", footer: "" },
+      { bg: "#2e2a26", text: "#faf4ec", accent: "#7a9a78", title: "E o plano alimentar\nperfeito não teve\nresposta para isso.", body: "Porque foi desenhado\npara o corpo.\n\nNão para o que\nmove o corpo.", footer: "" },
+      { bg: "#e8ddd0", text: "#2e2a26", accent: "#c4785a", title: "Reconheces\neste padrão?", body: "Dia pesado.\nComes mais do que querias.\nSentes culpa.\nDecides recomeçar amanhã.\nRepete-se.\n\nNão é fraqueza.\nÉ um ciclo não resolvido.", footer: "" },
+      { bg: "#2e2a26", text: "#faf4ec", accent: "#c4785a", title: "O SERENA\nestá no Vitalis\npara isso.", body: "Um espaço\npara nomear\no que sentiste\nantes de comeres.\n\nNão é terapia.\nÉ clareza.", footer: "" },
+      { bg: "#7a9a78", text: "#faf4ec", accent: "#e8ddd0", title: "Quando nomeias,\ndecidir fica\nmais fácil.", body: "Não é controlo.\nÉ clareza.\n\nE a clareza\nmuda tudo.", footer: "Vitalis — coaching com consistência" },
+    ],
+    caption: "80% dos problemas alimentares são emocionais.\n\nNão comes porque tens fome. Comes quando estás stressada. Solitária. Ansiosa. A comemorar. A consolar.\n\nE o plano alimentar perfeito não teve resposta para isso — foi desenhado para o corpo, não para o que move o corpo.\n\nReconheces este padrão?\n— Dia pesado\n— Comes mais do que querias\n— Sentes culpa\n— Decides recomeçar amanhã\n— Repete-se\n\nNão é fraqueza. É um ciclo não resolvido.\n\nO SERENA, no Vitalis, é um espaço para nomear o que sentiste antes de comeres. Não é terapia. É clareza. E a clareza muda tudo.\n\n#ComidaEmocional #CicloVicioso #CoachingNutricional #SERENA #Vitalis #EmocionalNaRaiz",
+    canvaSpecs: {
+      dimensions: "1080x1080px (quadrado)",
+      fonts: "Título: Playfair Display Bold / Corpo: Inter",
+      colorPalette: ["#2e2a26", "#faf4ec", "#c4785a", "#7a9a78", "#e8ddd0"],
+    },
+  },
 ];
 
 // ─── SCRIPTS DE REELS ────────────────────────────────────────────────────────
