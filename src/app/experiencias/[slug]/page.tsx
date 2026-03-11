@@ -5,6 +5,8 @@ import Link from "next/link";
 import { getExperience, experiences } from "@/data/experiences";
 import ScrollReveal from "@/components/ScrollReveal";
 import WaitlistForm from "@/components/WaitlistForm";
+import AudioPlayer from "@/components/AudioPlayer";
+import { TEASERS_ESPELHOS } from "@/data/marketing-audio";
 
 // ---------------------------------------------------------------------------
 // Static generation for all 7 slugs
@@ -85,6 +87,10 @@ export default async function ExperienciaDetailPage({
   if (!exp) notFound();
 
   const isAvailable = exp.status === "available";
+  const teaser = TEASERS_ESPELHOS.find((t) => t.veu === exp.number);
+  const teaserUrl = teaser
+    ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audios/${teaser.ficheiro}`
+    : null;
 
   return (
     <>
@@ -186,6 +192,20 @@ export default async function ExperienciaDetailPage({
                   )}
                 </div>
               </ScrollReveal>
+
+              {teaserUrl && (
+                <ScrollReveal delay={0.6}>
+                  <div className="mt-8 max-w-lg">
+                    <p
+                      className="mb-2 font-sans text-[0.6rem] uppercase tracking-[0.2em]"
+                      style={{ color: exp.color }}
+                    >
+                      Ouve um trecho
+                    </p>
+                    <AudioPlayer src={teaserUrl} title={exp.title} />
+                  </div>
+                </ScrollReveal>
+              )}
             </div>
           </div>
         </div>
