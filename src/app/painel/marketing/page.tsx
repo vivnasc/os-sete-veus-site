@@ -4,36 +4,21 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { professionalCarousels, hashtagSets, thematicHub, productionGuide } from "@/data/content-calendar-weeks";
+import { professionalCarousels, hashtagSets, thematicHub, productionGuide, WEEKLY_RHYTHM } from "@/data/content-calendar-weeks";
 import type { CarouselSlide } from "@/data/content-calendar-weeks";
 import { capcutContent, CAPCUT_CATEGORIES, AUDIO_BASE_PATH } from "@/data/capcut-content";
 import type { CapCutCategory } from "@/data/capcut-content";
+import { isMobile } from "@/lib/export-image";
 
 const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
 const DIMS = { w: 1080, h: 1080 };
 const STORY_DIMS = { w: 1080, h: 1920 };
 
-// Mapa semanal — cada dia da semana (0=Dom) aponta para conteúdo do Hub
-// themeIdx: índice em thematicHub (0=Véus, 1=Espelhos, 2=Nós, 3=Comunidade, 4=Reflexões)
-// dayIdx: sub-tema dentro do tema
-const WEEKLY_RHYTHM = [
-  { label: "Dom", hint: "Reflexão",    themeIdx: 4, dayIdx: 0 },  // Reflexões
-  { label: "Seg", hint: "Véu",         themeIdx: 0, dayIdx: 0 },  // Permanência
-  { label: "Ter", hint: "Espelho",     themeIdx: 1, dayIdx: 0 },  // Ilusão
-  { label: "Qua", hint: "Véu",         themeIdx: 0, dayIdx: 2 },  // Turbilhão
-  { label: "Qui", hint: "Nó",          themeIdx: 2, dayIdx: 0 },  // Nó da Herança
-  { label: "Sex", hint: "Espelho",     themeIdx: 1, dayIdx: 1 },  // Medo
-  { label: "Sáb", hint: "Os 7 Véus",  themeIdx: 0, dayIdx: 6 },  // Dualidade + carrossel 7 Véus
-];
 
 function stripHashtags(text: string): string {
   return text.replace(/\n*#[^\s#]+(\s+#[^\s#]+)*/g, "").trim();
 }
 
-function isMobile(): boolean {
-  if (typeof navigator === "undefined") return false;
-  return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-}
 
 async function saveImage(dataUrl: string, filename: string): Promise<void> {
   const res = await fetch(dataUrl);
@@ -181,8 +166,14 @@ export default function MarketingPage() {
     el.style.width = `${dims.w}px`;
     el.style.height = `${dims.h}px`;
     await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+    // Wait for all images to finish loading
+    const imgs = Array.from(el.querySelectorAll<HTMLImageElement>("img"));
+    await Promise.all(imgs.map((img) => img.complete ? Promise.resolve() : new Promise<void>((res) => { img.onload = () => res(); img.onerror = () => res(); })));
     try {
-      const dataUrl = await toPng(el, { width: dims.w, height: dims.h, pixelRatio: 1, cacheBust: true, skipAutoScale: true, includeQueryParams: true });
+      const opts = { width: dims.w, height: dims.h, pixelRatio: 1, skipAutoScale: true };
+      // First pass caches images into the canvas; second pass captures them correctly
+      await toPng(el, opts);
+      const dataUrl = await toPng(el, opts);
       await saveImage(dataUrl, filename);
     } finally {
       el.style.transform = orig.t;
@@ -198,7 +189,12 @@ export default function MarketingPage() {
     const el = (wrapper.firstElementChild as HTMLElement) || wrapper;
     const dims = fmt === "vert" ? STORY_DIMS : DIMS;
     if (fmt === "square") setHubExportingSquare(idx); else setHubExportingVert(idx);
-    try { await captureElement(el, dims, `slide-${idx + 1}-${fmt}.png`); } catch { /* skip */ }
+    try {
+      await captureElement(el, dims, `slide-${idx + 1}-${fmt}.png`);
+    } catch (err) {
+      console.error("Erro ao exportar slide", idx + 1, err);
+      alert(`Erro ao exportar slide ${idx + 1}. Tenta de novo.`);
+    }
     if (fmt === "square") setHubExportingSquare(null); else setHubExportingVert(null);
   }, [captureElement]);
 
@@ -210,7 +206,11 @@ export default function MarketingPage() {
       const wrapper = refs.current[i];
       if (!wrapper) continue;
       const el = (wrapper.firstElementChild as HTMLElement) || wrapper;
-      try { await captureElement(el, dims, `slide-${i + 1}-${fmt}.png`); } catch { /* skip */ }
+      try {
+        await captureElement(el, dims, `slide-${i + 1}-${fmt}.png`);
+      } catch (err) {
+        console.error("Erro ao exportar slide", i + 1, err);
+      }
       await new Promise((r) => setTimeout(r, 500));
     }
     if (fmt === "square") setHubExportingSquare(null); else setHubExportingVert(null);

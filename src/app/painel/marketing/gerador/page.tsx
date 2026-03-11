@@ -4,8 +4,8 @@ import { useState, useRef, useEffect } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { toPng } from "html-to-image";
 import { professionalCarousels } from "@/data/content-calendar-weeks";
+import { captureElement, isMobile } from "@/lib/export-image";
 
 const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
 
@@ -328,6 +328,10 @@ export default function GeradorPage() {
   const [exporting, setExporting] = useState(false);
   const [mobilePreview, setMobilePreview] = useState<string | null>(null);
 
+  // Search / filter
+  const [printSearch, setPrintSearch] = useState("");
+  const [msgSearch, setMsgSearch] = useState("");
+
   // Carousel mode
   const [mode, setMode] = useState<"single" | "carousel">("single");
   const [selectedCarousel, setSelectedCarousel] = useState(professionalCarousels[0]);
@@ -371,116 +375,43 @@ export default function GeradorPage() {
     if (!canvasRef.current) return;
     setExporting(true);
     try {
-      const el = canvasRef.current;
-      const parent = el.parentElement as HTMLElement | null;
-
-      // Guardar estilos originais
-      const origEl = { t: el.style.transform, w: el.style.width, h: el.style.height };
-      const origParent = parent
-        ? { w: parent.style.width, h: parent.style.height, o: parent.style.overflow, r: parent.style.borderRadius }
-        : null;
-
-      // Expandir para tamanho real
-      el.style.transform = "none";
-      el.style.width = `${fmt.w}px`;
-      el.style.height = `${fmt.h}px`;
-      if (parent) {
-        parent.style.width = `${fmt.w}px`;
-        parent.style.height = `${fmt.h}px`;
-        parent.style.overflow = "visible";
-        parent.style.borderRadius = "0";
-      }
-
-      // Esperar reflow do browser
-      await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
-
-      const dataUrl = await toPng(el, { width: fmt.w, height: fmt.h, pixelRatio: 1, cacheBust: true });
-
-      // Restaurar estilos
-      el.style.transform = origEl.t;
-      el.style.width = origEl.w;
-      el.style.height = origEl.h;
-      if (parent && origParent) {
-        parent.style.width = origParent.w;
-        parent.style.height = origParent.h;
-        parent.style.overflow = origParent.o;
-        parent.style.borderRadius = origParent.r;
-      }
-
-      // Mobile: mostrar imagem em ecrã inteiro para guardar na fototeca
-      // Desktop: download directo
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      if (isMobile) {
-        setMobilePreview(dataUrl);
-      } else {
-        const a = document.createElement("a");
-        a.download = `sete-veus-${format}-${Date.now()}.png`;
-        a.href = dataUrl;
-        a.click();
-      }
+      const dataUrl = await captureElement(canvasRef.current, {
+        width: fmt.w,
+        height: fmt.h,
+        filename: `sete-veus-${format}-${Date.now()}`,
+      });
+      if (isMobile()) setMobilePreview(dataUrl);
     } catch {
-      alert("Erro ao exportar.");
+      alert("Erro ao exportar. Tenta de novo.");
     }
     setExporting(false);
   }
 
   async function handleExportCarousel() {
     setExportingCarousel(true);
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const slides = selectedCarousel.slides;
+    const mobile = isMobile();
     const PX = 1080;
     const previews: string[] = [];
 
-    for (let i = 0; i < slides.length; i++) {
+    for (let i = 0; i < selectedCarousel.slides.length; i++) {
       const el = slideRefs.current[i];
       if (!el) continue;
       setExportCarouselStep(i + 1);
 
-      const parent = el.parentElement as HTMLElement | null;
-      const origEl = { t: el.style.transform, w: el.style.width, h: el.style.height };
-      const origParent = parent
-        ? { w: parent.style.width, h: parent.style.height, o: parent.style.overflow, r: parent.style.borderRadius }
-        : null;
-
-      el.style.transform = "none";
-      el.style.width = `${PX}px`;
-      el.style.height = `${PX}px`;
-      if (parent) {
-        parent.style.width = `${PX}px`;
-        parent.style.height = `${PX}px`;
-        parent.style.overflow = "visible";
-        parent.style.borderRadius = "0";
-      }
-
-      await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
-
       try {
-        const dataUrl = await toPng(el, { width: PX, height: PX, pixelRatio: 1, cacheBust: true });
-        if (isMobile) {
-          previews.push(dataUrl);
-        } else {
-          const a = document.createElement("a");
-          a.download = `${selectedCarousel.id}-slide-${i + 1}.png`;
-          a.href = dataUrl;
-          a.click();
-          await new Promise((r) => setTimeout(r, 400));
-        }
+        const dataUrl = await captureElement(el, {
+          width: PX,
+          height: PX,
+          filename: `${selectedCarousel.id}-slide-${i + 1}`,
+        });
+        if (mobile) previews.push(dataUrl);
+        else await new Promise((r) => setTimeout(r, 400)); // stagger desktop downloads
       } catch {
-        // skip slide on error
-      }
-
-      el.style.transform = origEl.t;
-      el.style.width = origEl.w;
-      el.style.height = origEl.h;
-      if (parent && origParent) {
-        parent.style.width = origParent.w;
-        parent.style.height = origParent.h;
-        parent.style.overflow = origParent.o;
-        parent.style.borderRadius = origParent.r;
+        // skip slide on error — captureElement handles desktop download
       }
     }
 
-    if (isMobile && previews.length > 0) {
+    if (mobile && previews.length > 0) {
       setMobileCarouselPreviews(previews);
       setMobileCarouselIdx(0);
     }
@@ -739,8 +670,17 @@ export default function GeradorPage() {
               <label className="mb-2 block font-sans text-[0.65rem] font-medium uppercase tracking-wider text-brown-400">
                 Fundo ~ escolhe um print
               </label>
-              <div className="grid grid-cols-6 gap-1.5">
-                {PRINTS.map((p) => (
+              <input
+                type="search"
+                placeholder="Filtrar prints..."
+                value={printSearch}
+                onChange={(e) => setPrintSearch(e.target.value)}
+                className="mb-2 w-full rounded-lg border border-brown-100 bg-white px-3 py-1.5 font-sans text-xs text-brown-900 placeholder:text-brown-300 focus:border-sage focus:outline-none focus:ring-1 focus:ring-sage/20"
+              />
+              <div className="grid grid-cols-3 gap-1.5 sm:grid-cols-6">
+                {PRINTS.filter((p) =>
+                  !printSearch || p.label.toLowerCase().includes(printSearch.toLowerCase())
+                ).map((p) => (
                   <button
                     key={p.id}
                     onClick={() => setPrint(p)}
@@ -765,8 +705,19 @@ export default function GeradorPage() {
               <label className="mb-2 block font-sans text-[0.65rem] font-medium uppercase tracking-wider text-brown-400">
                 Mensagem ~ escolhe ou edita
               </label>
+              <input
+                type="search"
+                placeholder="Filtrar mensagens..."
+                value={msgSearch}
+                onChange={(e) => setMsgSearch(e.target.value)}
+                className="mb-2 w-full rounded-lg border border-brown-100 bg-white px-3 py-1.5 font-sans text-xs text-brown-900 placeholder:text-brown-300 focus:border-sage focus:outline-none focus:ring-1 focus:ring-sage/20"
+              />
               <div className="flex flex-wrap gap-1.5">
-                {MENSAGENS.map((m) => (
+                {MENSAGENS.filter((m) =>
+                  !msgSearch ||
+                  m.label.toLowerCase().includes(msgSearch.toLowerCase()) ||
+                  m.title.toLowerCase().includes(msgSearch.toLowerCase())
+                ).map((m) => (
                   <button
                     key={m.label}
                     onClick={() => applyMsg(m)}
@@ -1042,6 +993,7 @@ export default function GeradorPage() {
             ) : (
               <button
                 onClick={() => setMobileCarouselPreviews([])}
+                aria-label="Fechar pré-visualização do carrossel"
                 className="rounded-lg bg-sage px-5 py-2.5 font-sans text-sm font-medium text-white"
               >
                 Concluído
