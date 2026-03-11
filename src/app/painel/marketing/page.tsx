@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { professionalCarousels, hashtagSets, thematicHub, productionGuide } from "@/data/content-calendar-weeks";
 import type { CarouselSlide } from "@/data/content-calendar-weeks";
+import { capcutContent, CAPCUT_CATEGORIES, AUDIO_BASE_PATH } from "@/data/capcut-content";
+import type { CapCutCategory } from "@/data/capcut-content";
 
 const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
 const DIMS = { w: 1080, h: 1080 };
@@ -158,8 +160,14 @@ export default function MarketingPage() {
   const router = useRouter();
 
   const [copiedId, setCopiedId] = useState<string | null>(null);
-  const [pageSection, setPageSection] = useState<"hub" | "posts" | "guia">("hub");
+  const [pageSection, setPageSection] = useState<"hub" | "posts" | "guia" | "capcut">("hub");
   const [selectedWeekday, setSelectedWeekday] = useState(() => new Date().getDay());
+  const [capcutCategory, setCapcutCategory] = useState<CapCutCategory | "todos">("todos");
+  const [capcutModal, setCapcutModal] = useState<typeof capcutContent[0] | null>(null);
+  const capcutSlideSquareRef = useRef<HTMLDivElement | null>(null);
+  const capcutSlideVertRef = useRef<HTMLDivElement | null>(null);
+  const [capcutExportingSquare, setCapcutExportingSquare] = useState(false);
+  const [capcutExportingVert, setCapcutExportingVert] = useState(false);
   const [hubModal, setHubModal] = useState<{ slides: CarouselSlide[]; title: string; caption?: string } | null>(null);
   const hubSlideSquareRefs = useRef<(HTMLDivElement | null)[]>([]);
   const hubSlideVertRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -246,6 +254,7 @@ export default function MarketingPage() {
               { id: "hub" as const, label: "Hub" },
               { id: "posts" as const, label: "Posts" },
               { id: "guia" as const, label: "Guia" },
+              { id: "capcut" as const, label: "CapCut" },
             ]).map((s) => (
               <button key={s.id} onClick={() => setPageSection(s.id)}
                 className={`rounded-lg px-3 py-1.5 font-sans text-[0.65rem] font-semibold transition-all ${
@@ -437,8 +446,215 @@ export default function MarketingPage() {
           </div>
         )}
 
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {/* ── CAPCUT — imagem + áudio ── */}
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {pageSection === "capcut" && (
+          <div className="py-4 space-y-4">
+            <div className="rounded-2xl border border-[#c9b896]/10 bg-[#c9b896]/5 p-3">
+              <p className="font-sans text-[0.6rem] leading-relaxed text-[#c9b896]/70">
+                Baixa a imagem e o áudio de cada entrada para combinar no CapCut.
+                Os áudios ficam em <span className="font-mono">/audios/marketing/</span> quando os colocares lá.
+              </p>
+            </div>
+
+            {/* Filtro de categoria */}
+            <div className="-mx-4 overflow-x-auto px-4 scrollbar-none">
+              <div className="flex gap-1" style={{ width: "max-content" }}>
+                {CAPCUT_CATEGORIES.map((cat) => (
+                  <button key={cat.id} onClick={() => setCapcutCategory(cat.id)}
+                    className={`rounded-lg px-3 py-1.5 font-sans text-[0.6rem] font-semibold whitespace-nowrap transition-all ${
+                      capcutCategory === cat.id
+                        ? "bg-[#c9b896] text-[#1a1814]"
+                        : "border border-cream/10 text-cream/40 hover:text-cream/60 hover:border-cream/20"
+                    }`}>
+                    {cat.label}
+                    <span className={`ml-1.5 ${capcutCategory === cat.id ? "opacity-60" : "opacity-40"}`}>
+                      {cat.count}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Lista de entradas */}
+            {capcutContent
+              .filter((e) => capcutCategory === "todos" || e.category === capcutCategory)
+              .map((entry) => (
+                <button key={entry.id}
+                  onClick={() => setCapcutModal(entry)}
+                  className="w-full rounded-2xl border border-cream/10 bg-[#222019] p-3 text-left transition-all hover:border-[#c9b896]/20 active:scale-[0.98]"
+                >
+                  <div className="flex items-center gap-3">
+                    {/* Miniatura do slide */}
+                    <div className="shrink-0 rounded-xl overflow-hidden" style={{
+                      width: 64, height: 64,
+                      backgroundColor: entry.slide.bg,
+                    }}>
+                      <div style={{ padding: "8px", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                        <p className="font-serif leading-tight" style={{
+                          fontSize: 7, color: entry.slide.text,
+                          whiteSpace: "pre-line", lineClamp: 3,
+                        }}>
+                          {entry.slide.title}
+                        </p>
+                        {entry.slide.body && (
+                          <p style={{
+                            fontSize: 5, color: entry.slide.text, opacity: 0.6,
+                            marginTop: 3, lineHeight: 1.4, display: "-webkit-box",
+                            WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden",
+                          }}>
+                            {entry.slide.body}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Info */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-1.5 mb-1">
+                        <span className="rounded-full px-1.5 py-0.5 font-sans text-[0.45rem] font-semibold"
+                          style={{ backgroundColor: entry.slide.accent + "25", color: entry.slide.accent }}>
+                          {entry.categoryLabel}
+                        </span>
+                      </div>
+                      <p className="font-serif text-sm font-bold text-cream/80 truncate">{entry.title}</p>
+                      <p className="mt-0.5 font-sans text-[0.55rem] text-cream/35 line-clamp-2 leading-relaxed">{entry.script}</p>
+                      <p className="mt-1.5 font-mono text-[0.45rem] text-cream/25">{entry.audioFile}</p>
+                    </div>
+
+                    {/* Seta */}
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="shrink-0 text-cream/20">
+                      <path d="M9 18l6-6-6-6" />
+                    </svg>
+                  </div>
+                </button>
+              ))}
+          </div>
+        )}
+
       </div>
     </div>
+
+    {/* ── CAPCUT MODAL ── */}
+    {capcutModal && (() => {
+      const sqW = 280, sqH = 280, sqScale = sqW / DIMS.w;
+      const vtW = 180, vtH = Math.round(STORY_DIMS.h * (vtW / STORY_DIMS.w)), vtScale = vtW / STORY_DIMS.w;
+      const audioUrl = `${AUDIO_BASE_PATH}/${capcutModal.audioFile}`;
+      return (
+        <div className="fixed inset-0 z-50 flex flex-col bg-[#1a1814]">
+          {/* Header */}
+          <div className="shrink-0 border-b border-cream/10 px-4 py-3">
+            <div className="flex items-center gap-3">
+              <button onClick={() => { setCapcutModal(null); setCapcutExportingSquare(false); setCapcutExportingVert(false); }}
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cream/10 text-cream/60">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
+              </button>
+              <div className="flex-1 min-w-0">
+                <p className="font-sans text-xs font-semibold text-cream/70 truncate">{capcutModal.title}</p>
+                <p className="font-sans text-[0.5rem] text-cream/30">{capcutModal.categoryLabel}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex-1 overflow-y-auto px-4 py-4 space-y-6">
+
+            {/* ── Áudio ── */}
+            <div className="space-y-2">
+              <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-[0.15em] text-[#c9b896]/60">Áudio da Vivianne</p>
+              <div className="rounded-2xl border border-[#c9b896]/15 bg-[#c9b896]/5 p-4 space-y-3">
+                <p className="font-sans text-[0.65rem] leading-relaxed text-cream/70 italic">&ldquo;{capcutModal.script}&rdquo;</p>
+                <div className="flex items-center justify-between pt-1 border-t border-cream/5">
+                  <p className="font-mono text-[0.5rem] text-cream/25">{capcutModal.audioFile}</p>
+                  <a href={audioUrl} download={capcutModal.audioFile}
+                    className="rounded-lg bg-[#c9b896]/15 px-3 py-1.5 font-sans text-[0.55rem] font-semibold text-[#c9b896]/80 hover:bg-[#c9b896]/25 transition-all"
+                    onClick={(e) => {
+                      // Testar se o ficheiro existe antes de tentar baixar
+                      fetch(audioUrl, { method: "HEAD" }).then((r) => {
+                        if (!r.ok) { e.preventDefault(); alert("Ficheiro de áudio ainda não disponível.\nColoca-o em /public/audios/marketing/"); }
+                      });
+                    }}>
+                    Baixar Áudio
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* ── Instagram 1:1 ── */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-[0.15em] text-[#E1306C]/60">Imagem 1:1</p>
+                <button onClick={async () => {
+                  const wrapper = capcutSlideSquareRef.current;
+                  if (!wrapper) return;
+                  const el = (wrapper.firstElementChild as HTMLElement) || wrapper;
+                  setCapcutExportingSquare(true);
+                  try { await captureElement(el, DIMS, `${capcutModal.id}-square.png`); } catch { /* skip */ }
+                  setCapcutExportingSquare(false);
+                }} disabled={capcutExportingSquare}
+                  className="rounded-lg bg-[#E1306C]/15 px-3 py-1 font-sans text-[0.55rem] font-semibold text-[#E1306C]/80 hover:bg-[#E1306C]/25 disabled:opacity-40 transition-all">
+                  {capcutExportingSquare ? "A baixar..." : "Baixar Imagem"}
+                </button>
+              </div>
+              <div className="flex justify-center">
+                <div className="overflow-hidden rounded-xl border border-cream/10" style={{ width: sqW, height: sqH }}>
+                  <div ref={capcutSlideSquareRef}>
+                    <SlidePreview slide={capcutModal.slide} index={0} scale={sqScale} />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* ── Story 9:16 ── */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-[0.15em] text-[#25D366]/60">Imagem Story 9:16</p>
+                <button onClick={async () => {
+                  const wrapper = capcutSlideVertRef.current;
+                  if (!wrapper) return;
+                  const el = (wrapper.firstElementChild as HTMLElement) || wrapper;
+                  setCapcutExportingVert(true);
+                  try { await captureElement(el, STORY_DIMS, `${capcutModal.id}-story.png`); } catch { /* skip */ }
+                  setCapcutExportingVert(false);
+                }} disabled={capcutExportingVert}
+                  className="rounded-lg bg-[#25D366]/10 px-3 py-1 font-sans text-[0.55rem] font-semibold text-[#25D366]/80 hover:bg-[#25D366]/20 disabled:opacity-40 transition-all">
+                  {capcutExportingVert ? "A baixar..." : "Baixar Imagem"}
+                </button>
+              </div>
+              <div className="flex justify-center">
+                <div className="overflow-hidden rounded-xl border border-cream/10" style={{ width: vtW, height: vtH }}>
+                  <div ref={capcutSlideVertRef}>
+                    <SlidePreviewVertical slide={capcutModal.slide} index={0} scale={vtScale} />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* ── Instrução CapCut ── */}
+            <div className="rounded-2xl border border-cream/5 bg-[#222019] p-4 space-y-2">
+              <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-cream/30">Como usar no CapCut</p>
+              <ol className="space-y-1.5">
+                {[
+                  "Baixa a imagem (Story 9:16) e o áudio",
+                  "Abre o CapCut → Novo projecto → Adiciona a imagem",
+                  "Ajusta para 15–30 segundos",
+                  "Importa o áudio e sincroniza",
+                  "Adiciona texto sobreposto se quiseres",
+                  "Exporta e publica no Reel / Story",
+                ].map((step, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="shrink-0 font-sans text-[0.45rem] font-bold text-[#c9b896]/40 mt-0.5">{i + 1}.</span>
+                    <span className="font-sans text-[0.6rem] text-cream/40 leading-relaxed">{step}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            <div className="h-8" />
+          </div>
+        </div>
+      );
+    })()}
 
     {/* ── SLIDE MODAL — ambos os formatos visíveis ── */}
     {hubModal && (() => {
