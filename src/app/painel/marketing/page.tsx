@@ -181,8 +181,14 @@ export default function MarketingPage() {
     el.style.width = `${dims.w}px`;
     el.style.height = `${dims.h}px`;
     await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+    // Wait for all images to finish loading
+    const imgs = Array.from(el.querySelectorAll<HTMLImageElement>("img"));
+    await Promise.all(imgs.map((img) => img.complete ? Promise.resolve() : new Promise<void>((res) => { img.onload = () => res(); img.onerror = () => res(); })));
     try {
-      const dataUrl = await toPng(el, { width: dims.w, height: dims.h, pixelRatio: 1, cacheBust: true, skipAutoScale: true, includeQueryParams: true });
+      const opts = { width: dims.w, height: dims.h, pixelRatio: 1, skipAutoScale: true };
+      // First pass caches images into the canvas; second pass captures them correctly
+      await toPng(el, opts);
+      const dataUrl = await toPng(el, opts);
       await saveImage(dataUrl, filename);
     } finally {
       el.style.transform = orig.t;
