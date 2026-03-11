@@ -128,7 +128,7 @@ const teasersEspelhos: CapCutEntry[] = ESPELHO_NAMES.map((name, i) => ({
     bg: VEU_COLORS[i].bg,
     text: VEU_COLORS[i].text,
     accent: VEU_COLORS[i].accent,
-    title: `Véu ${i + 1}\n${VEU_NAMES[i]}`,
+    title: `Espelho ${i + 1}\n${VEU_NAMES[i]}`,
     body: TEASER_ESPELHOS_SCRIPTS[i].split(".")[0] + ".",
     footer: "seteveus.space",
   },
