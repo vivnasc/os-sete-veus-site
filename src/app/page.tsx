@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import NewsletterForm from "@/components/NewsletterForm";
 import ScrollReveal from "@/components/ScrollReveal";
+import AudioPlayer from "@/components/AudioPlayer";
 
 
 const espelhosPeek = [
@@ -51,6 +52,17 @@ export default function Home() {
               >
                 Ver Espelhos
               </Link>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={0.8}>
+            <div className="mx-auto mt-10 max-w-md">
+              <p className="mb-2 font-sans text-[0.6rem] uppercase tracking-[0.2em] text-brown-400">
+                Ouve a jornada
+              </p>
+              <AudioPlayer
+                src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audios/trailer-jornada-completa.mp3`}
+                title="Os Sete Espelhos — Trailer"
+              />
             </div>
           </ScrollReveal>
         </div>

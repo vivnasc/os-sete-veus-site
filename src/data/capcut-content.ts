@@ -123,7 +123,7 @@ const teasersEspelhos: CapCutEntry[] = ESPELHO_NAMES.map((name, i) => ({
   categoryLabel: "Teaser Espelho",
   title: name,
   script: TEASER_ESPELHOS_SCRIPTS[i],
-  audioFile: `teaser-espelho-${ESPELHO_SLUGS[i]}.mp3`,
+  audioFile: `teaser-espelho-${i + 1}-${ESPELHO_SLUGS[i]}.mp3`,
   slide: {
     bg: VEU_COLORS[i].bg,
     text: VEU_COLORS[i].text,
@@ -142,7 +142,7 @@ const stories: CapCutEntry[] = ESPELHO_NAMES.map((name, i) => ({
   categoryLabel: "Story",
   title: `Story — ${VEU_NAMES[i]}`,
   script: STORY_SCRIPTS[i],
-  audioFile: `story-${ESPELHO_SLUGS[i]}.mp3`,
+  audioFile: `story-espelho-${i + 1}-${ESPELHO_SLUGS[i]}.mp3`,
   slide: {
     bg: VEU_COLORS[i].bg,
     text: VEU_COLORS[i].text,
@@ -163,7 +163,7 @@ const trailerJornada: CapCutEntry[] = [
     title: "Trailer — A Jornada Completa",
     script:
       "Sete espelhos. Sete histórias. Uma mulher que acorda, aos poucos, para si mesma. Cada véu é uma camada. Cada espelho, um convite. A jornada começa quando tu decides. Os Sete Véus do Despertar — ao teu ritmo.",
-    audioFile: "trailer-jornada.mp3",
+    audioFile: "trailer-jornada-completa.mp3",
     slide: {
       bg: "#1a1814",
       text: "#f7f5f0",
@@ -183,7 +183,7 @@ const teasersNos: CapCutEntry[] = NO_NAMES.map((name, i) => ({
   categoryLabel: "Teaser Nó",
   title: name,
   script: TEASER_NOS_SCRIPTS[i],
-  audioFile: `teaser-no-${NO_SLUGS[i]}.mp3`,
+  audioFile: `teaser-no-${i + 1}-${NO_SLUGS[i]}.mp3`,
   slide: {
     bg: VEU_COLORS[i].bg,
     text: VEU_COLORS[i].text,
@@ -273,5 +273,5 @@ export const CAPCUT_CATEGORIES: {
   { id: "ctas", label: "CTAs", count: ctas.length },
 ];
 
-// Pasta onde ficam os ficheiros de áudio gerados pelo /admin/voz
-export const AUDIO_BASE_PATH = "/audios/marketing";
+// URL base dos áudios no Supabase Storage
+export const AUDIO_BASE_PATH = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audios`;
