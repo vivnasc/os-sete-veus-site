@@ -161,10 +161,10 @@ export default function MarketingPage() {
   const [pageSection, setPageSection] = useState<"hub" | "posts" | "guia">("hub");
   const [selectedWeekday, setSelectedWeekday] = useState(() => new Date().getDay());
   const [hubModal, setHubModal] = useState<{ slides: CarouselSlide[]; title: string; caption?: string } | null>(null);
-  const [hubFormat, setHubFormat] = useState<"vertical" | "square">("square");
-  const hubSlideRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [hubExporting, setHubExporting] = useState(false);
-  const [hubExportingIdx, setHubExportingIdx] = useState<number | null>(null);
+  const hubSlideSquareRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const hubSlideVertRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [hubExportingSquare, setHubExportingSquare] = useState<number | "all" | null>(null);
+  const [hubExportingVert, setHubExportingVert] = useState<number | "all" | null>(null);
 
   const captureElement = useCallback(async (el: HTMLElement, dims: { w: number; h: number }, filename: string) => {
     const { toPng } = await import("html-to-image");
@@ -183,27 +183,29 @@ export default function MarketingPage() {
     }
   }, []);
 
-  const exportHubSlide = useCallback(async (idx: number, fmt: "vertical" | "square") => {
-    const wrapper = hubSlideRefs.current[idx];
+  const exportHubSlide = useCallback(async (idx: number, fmt: "square" | "vert") => {
+    const refs = fmt === "square" ? hubSlideSquareRefs : hubSlideVertRefs;
+    const wrapper = refs.current[idx];
     if (!wrapper) return;
     const el = (wrapper.firstElementChild as HTMLElement) || wrapper;
-    const dims = fmt === "vertical" ? STORY_DIMS : DIMS;
-    setHubExportingIdx(idx);
-    try { await captureElement(el, dims, `slide-${idx + 1}.png`); } catch { /* skip */ }
-    setHubExportingIdx(null);
+    const dims = fmt === "vert" ? STORY_DIMS : DIMS;
+    if (fmt === "square") setHubExportingSquare(idx); else setHubExportingVert(idx);
+    try { await captureElement(el, dims, `slide-${idx + 1}-${fmt}.png`); } catch { /* skip */ }
+    if (fmt === "square") setHubExportingSquare(null); else setHubExportingVert(null);
   }, [captureElement]);
 
-  const exportAllHub = useCallback(async (count: number, fmt: "vertical" | "square") => {
-    setHubExporting(true);
-    const dims = fmt === "vertical" ? STORY_DIMS : DIMS;
+  const exportAllHub = useCallback(async (count: number, fmt: "square" | "vert") => {
+    const refs = fmt === "square" ? hubSlideSquareRefs : hubSlideVertRefs;
+    const dims = fmt === "vert" ? STORY_DIMS : DIMS;
+    if (fmt === "square") setHubExportingSquare("all"); else setHubExportingVert("all");
     for (let i = 0; i < count; i++) {
-      const wrapper = hubSlideRefs.current[i];
+      const wrapper = refs.current[i];
       if (!wrapper) continue;
       const el = (wrapper.firstElementChild as HTMLElement) || wrapper;
-      try { await captureElement(el, dims, `slide-${i + 1}.png`); } catch { /* skip */ }
+      try { await captureElement(el, dims, `slide-${i + 1}-${fmt}.png`); } catch { /* skip */ }
       await new Promise((r) => setTimeout(r, 500));
     }
-    setHubExporting(false);
+    if (fmt === "square") setHubExportingSquare(null); else setHubExportingVert(null);
   }, [captureElement]);
 
   async function copyText(id: string, text: string) {
@@ -312,7 +314,7 @@ export default function MarketingPage() {
                       const slide: CarouselSlide = { bg: slot.visual.bg, text: slot.visual.text, accent: slot.visual.accent, title: slot.visual.title, body: slot.visual.body || "", footer: slot.visual.footer || "" };
                       return (
                         <button
-                          onClick={() => { setHubFormat("square"); setHubModal({ slides: [slide], title: slot.type, caption: slot.caption }); }}
+                          onClick={() => { setHubModal({ slides: [slide], title: slot.type, caption: slot.caption }); }}
                           className="w-full rounded-xl overflow-hidden text-left transition-all hover:ring-2 hover:ring-[#c9b896]/30 active:scale-[0.98]"
                           style={{ backgroundColor: slot.visual.bg, color: slot.visual.text, padding: "24px", minHeight: 120 }}
                         >
@@ -325,7 +327,7 @@ export default function MarketingPage() {
                     })()}
                     {slot.carousel && slot.carousel.length > 0 && (
                       <button
-                        onClick={() => { setHubFormat("square"); setHubModal({ slides: slot.carousel!, title: slot.type, caption: slot.caption }); }}
+                        onClick={() => { setHubModal({ slides: slot.carousel!, title: slot.type, caption: slot.caption }); }}
                         className="w-full rounded-xl border border-cream/10 bg-black/20 px-4 py-3 text-left transition-all hover:border-[#c9b896]/30 active:scale-[0.98]"
                       >
                         <div className="flex items-center gap-3">
@@ -363,7 +365,7 @@ export default function MarketingPage() {
             </p>
             {professionalCarousels.map((c) => (
               <button key={c.id}
-                onClick={() => { setHubFormat("square"); setHubModal({ slides: c.slides, title: c.title, caption: c.caption }); }}
+                onClick={() => { setHubModal({ slides: c.slides, title: c.title, caption: c.caption }); }}
                 className="w-full rounded-2xl border border-cream/10 bg-[#222019] p-4 text-left transition-all hover:border-[#c9b896]/20"
               >
                 <div className="flex items-start justify-between gap-3">
@@ -438,82 +440,88 @@ export default function MarketingPage() {
       </div>
     </div>
 
-    {/* ── SLIDE MODAL ── */}
+    {/* ── SLIDE MODAL — ambos os formatos visíveis ── */}
     {hubModal && (() => {
-      const isVert = hubFormat === "vertical";
-      const dims = isVert ? STORY_DIMS : DIMS;
-      const previewW = isVert ? 220 : 328;
-      const scale = previewW / dims.w;
-      const previewH = Math.round(dims.h * scale);
+      const sqW = 280, sqH = 280, sqScale = sqW / DIMS.w;
+      const vtW = 180, vtH = Math.round(STORY_DIMS.h * (vtW / STORY_DIMS.w)), vtScale = vtW / STORY_DIMS.w;
       const waCaption = hubModal.caption ? stripHashtags(hubModal.caption) : "";
+      const n = hubModal.slides.length;
+      const isExportingSquare = hubExportingSquare !== null;
+      const isExportingVert = hubExportingVert !== null;
       return (
         <div className="fixed inset-0 z-50 flex flex-col bg-[#1a1814]">
-          <div className="shrink-0 border-b border-cream/10 px-4 py-3 space-y-2.5">
+          {/* Header */}
+          <div className="shrink-0 border-b border-cream/10 px-4 py-3">
             <div className="flex items-center gap-3">
-              <button onClick={() => { setHubModal(null); setHubExporting(false); setHubExportingIdx(null); }}
+              <button onClick={() => { setHubModal(null); setHubExportingSquare(null); setHubExportingVert(null); }}
                 className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cream/10 text-cream/60">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
               </button>
               <p className="flex-1 font-sans text-xs font-semibold text-cream/70 truncate">{hubModal.title}</p>
-              <button onClick={() => exportAllHub(hubModal.slides.length, hubFormat)}
-                disabled={hubExporting}
-                className="shrink-0 rounded-lg bg-[#c9b896] px-3 py-1.5 font-sans text-[0.6rem] font-bold text-[#1a1814] disabled:opacity-50">
-                {hubExporting ? "A baixar..." : `Baixar ${hubModal.slides.length > 1 ? `todos (${hubModal.slides.length})` : "imagem"}`}
-              </button>
-            </div>
-            <div className="flex rounded-xl bg-black/30 p-1 gap-1">
-              <button onClick={() => setHubFormat("square")}
-                className={`flex-1 rounded-lg py-1.5 font-sans text-[0.6rem] font-semibold transition-all ${!isVert ? "bg-[#c9b896] text-[#1a1814]" : "text-cream/40 hover:text-cream/60"}`}>
-                Instagram 1:1
-              </button>
-              <button onClick={() => setHubFormat("vertical")}
-                className={`flex-1 rounded-lg py-1.5 font-sans text-[0.6rem] font-semibold transition-all ${isVert ? "bg-[#25D366] text-white" : "text-cream/40 hover:text-cream/60"}`}>
-                WA Status 9:16
-              </button>
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto px-4 py-4 space-y-5">
-            {hubModal.slides.length > 1 ? (
-              <div className="-mx-4 overflow-x-auto px-4 scrollbar-none">
-                <div className="flex gap-3" style={{ width: "max-content" }}>
+          <div className="flex-1 overflow-y-auto px-4 py-4 space-y-6">
+
+            {/* ── Instagram 1:1 ── */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-[0.15em] text-[#E1306C]/60">Instagram 1:1</p>
+                <button onClick={() => exportAllHub(n, "square")} disabled={isExportingSquare}
+                  className="rounded-lg bg-[#E1306C]/15 px-3 py-1 font-sans text-[0.55rem] font-semibold text-[#E1306C]/80 hover:bg-[#E1306C]/25 disabled:opacity-40 transition-all">
+                  {hubExportingSquare === "all" ? "A baixar..." : n > 1 ? `Baixar todos (${n})` : "Baixar"}
+                </button>
+              </div>
+              <div className={`${n > 1 ? "-mx-4 overflow-x-auto px-4 scrollbar-none" : "flex justify-center"}`}>
+                <div className={`${n > 1 ? "flex gap-3" : ""}`} style={n > 1 ? { width: "max-content" } : {}}>
                   {hubModal.slides.map((slide, si) => (
                     <div key={si} className="shrink-0">
-                      <div className="relative overflow-hidden rounded-xl" style={{ width: previewW, height: previewH }}>
-                        <div ref={(el) => { hubSlideRefs.current[si] = el; }}>
-                          {isVert
-                            ? <SlidePreviewVertical slide={slide} index={si} scale={scale} />
-                            : <SlidePreview slide={slide} index={si} scale={scale} />}
+                      <div className="overflow-hidden rounded-xl border border-cream/10" style={{ width: sqW, height: sqH }}>
+                        <div ref={(el) => { hubSlideSquareRefs.current[si] = el; }}>
+                          <SlidePreview slide={slide} index={si} scale={sqScale} />
                         </div>
                       </div>
-                      <button onClick={() => exportHubSlide(si, hubFormat)}
-                        disabled={hubExportingIdx === si}
-                        className="mt-1.5 w-full rounded-lg border border-cream/10 py-1.5 font-sans text-[0.55rem] font-semibold text-cream/40 hover:border-[#c9b896]/30 hover:text-cream/60 disabled:opacity-40 transition-all">
-                        {hubExportingIdx === si ? "..." : `↓ ${si + 1}`}
+                      <button onClick={() => exportHubSlide(si, "square")}
+                        disabled={hubExportingSquare === si}
+                        className="mt-1.5 w-full rounded-lg border border-cream/10 py-1.5 font-sans text-[0.5rem] font-semibold text-cream/40 hover:border-[#E1306C]/30 hover:text-cream/60 disabled:opacity-40 transition-all">
+                        {hubExportingSquare === si ? "..." : `↓ ${si + 1}`}
                       </button>
                     </div>
                   ))}
                 </div>
               </div>
-            ) : (
-              <div className="flex justify-center">
-                <div>
-                  <div className="relative overflow-hidden rounded-xl" style={{ width: previewW, height: previewH }}>
-                    <div ref={(el) => { hubSlideRefs.current[0] = el; }}>
-                      {isVert
-                        ? <SlidePreviewVertical slide={hubModal.slides[0]} index={0} scale={scale} />
-                        : <SlidePreview slide={hubModal.slides[0]} index={0} scale={scale} />}
+            </div>
+
+            {/* ── WA Status 9:16 ── */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-[0.15em] text-[#25D366]/60">WA Status 9:16</p>
+                <button onClick={() => exportAllHub(n, "vert")} disabled={isExportingVert}
+                  className="rounded-lg bg-[#25D366]/10 px-3 py-1 font-sans text-[0.55rem] font-semibold text-[#25D366]/80 hover:bg-[#25D366]/20 disabled:opacity-40 transition-all">
+                  {hubExportingVert === "all" ? "A baixar..." : n > 1 ? `Baixar todos (${n})` : "Baixar"}
+                </button>
+              </div>
+              <div className={`${n > 1 ? "-mx-4 overflow-x-auto px-4 scrollbar-none" : "flex justify-center"}`}>
+                <div className={`${n > 1 ? "flex gap-3" : ""}`} style={n > 1 ? { width: "max-content" } : {}}>
+                  {hubModal.slides.map((slide, si) => (
+                    <div key={si} className="shrink-0">
+                      <div className="overflow-hidden rounded-xl border border-cream/10" style={{ width: vtW, height: vtH }}>
+                        <div ref={(el) => { hubSlideVertRefs.current[si] = el; }}>
+                          <SlidePreviewVertical slide={slide} index={si} scale={vtScale} />
+                        </div>
+                      </div>
+                      <button onClick={() => exportHubSlide(si, "vert")}
+                        disabled={hubExportingVert === si}
+                        className="mt-1.5 w-full rounded-lg border border-cream/10 py-1.5 font-sans text-[0.5rem] font-semibold text-cream/40 hover:border-[#25D366]/30 hover:text-cream/60 disabled:opacity-40 transition-all">
+                        {hubExportingVert === si ? "..." : `↓ ${si + 1}`}
+                      </button>
                     </div>
-                  </div>
-                  <button onClick={() => exportHubSlide(0, hubFormat)}
-                    disabled={hubExportingIdx === 0}
-                    className="mt-2 w-full rounded-xl border border-cream/10 py-2.5 font-sans text-xs font-semibold text-cream/50 hover:border-[#c9b896]/30 hover:text-cream/70 disabled:opacity-50 transition-all">
-                    {hubExportingIdx === 0 ? "A baixar..." : "Baixar imagem"}
-                  </button>
+                  ))}
                 </div>
               </div>
-            )}
+            </div>
 
+            {/* ── Legendas ── */}
             {hubModal.caption && (
               <div className="space-y-2">
                 <div className="rounded-2xl border border-[#E1306C]/20 bg-[#E1306C]/5 p-4 space-y-2">
