@@ -162,7 +162,7 @@ const _nosCollection: NosBook[] = [
     espelhoSlug: "veu-da-separacao",
     description:
       "Helena T. e Miguel C. separaram-se — não por desamor, mas por excesso de distância dentro da mesma casa. Quando saíram, descobriram que pertencer não é ficar. É escolher voltar. Este nó puxa o fio entre separar-se e reencontrar-se.",
-    image: "/images/capa-no-perten\u00e7a2.png",
+    image: "/images/capa-no-perten\u00e7a(2).png",
     color: "#5aaa7a",
     colorBg: "#0e2216",
     status: "coming_soon",

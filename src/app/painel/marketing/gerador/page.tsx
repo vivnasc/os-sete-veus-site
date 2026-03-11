@@ -5,6 +5,7 @@ import { useAuth } from "@/components/AuthProvider";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { toPng } from "html-to-image";
+import { professionalCarousels } from "@/data/content-calendar-weeks";
 
 const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
 
@@ -74,45 +75,165 @@ const PRINTS = [
   { id: "recurso-wallpapers", src: "/images/recurso-wallpapers.png", label: "Recurso wallpapers" },
 ];
 
-// ─── MENSAGENS (presets de texto) ───────────────────────────────────────────
+// ─── MENSAGENS ────────────────────────────────────────────────────────────────
+// Tom: "Vejo-te, e há mais para ti." — Da Confrontação ao Convite
+// 5 pilares: O Mundo Convida · O Corpo Lembra · Fissura não Diagnóstico
+//             Presença Compassiva · Densidade que Respira
+// Regra de ouro: a leitora sai a sentir-se vista, acompanhada, com porta aberta.
+// Nunca: diagnosticada, julgada, mais pesada.
 
 const MENSAGENS = [
-  // ─── Filosofia e profundidade ───
+  // ─── Assinatura ───
   {
-    label: "Véus que escondem",
-    title: "Há coisas que sabes\nmas que ainda não\nte deixaste ouvir.",
-    subtitle: "Os 7 Véus do Despertar\nUm livro que não te diz o que fazer.\nMostra-te o que já sabes.",
+    label: "Há mais para ti",
+    title: "Há mais para ti.",
+    subtitle: "Não como promessa.\nComo observação.\nDe alguém que\ntambém passou por aqui.",
+    cta: "seteveus.space",
+  },
+
+  // ─── O Mundo Convida ───
+  {
+    label: "A manhã bonita",
+    title: "A manhã era bonita\nde uma forma que\nnão pedia esforço\npara ser notada.",
+    subtitle: "Ela ainda não sabia\no que fazer com essa beleza.",
+    cta: "O Espelho da Ilusão ~ seteveus.space",
+  },
+  {
+    label: "Rotina que sustenta",
+    title: "Há uma diferença\nentre rotina que\nsustenta e rotina\nque adormece.",
+    subtitle: "Qual é a tua?",
+    cta: "seteveus.space",
+  },
+
+  // ─── Convite e reconhecimento ───
+  {
+    label: "Reconheces-te?",
+    title: "Reconheces-te\nnisto?",
+    subtitle: "Não é diagnóstico.\nÉ reconhecimento.\nE no reconhecimento,\nalgo começa a mover-se.",
     cta: "seteveus.space",
   },
   {
-    label: "Não é autoajuda",
-    title: "Não é autoajuda.\nNão é terapia.\nÉ um espelho.",
-    subtitle: "Um livro que te devolve\naquilo que sempre foi teu.",
+    label: "Talvez",
+    title: "Talvez.",
+    subtitle: "Minúsculo. Frágil.\nQuase inaudível.\nMas novo.\n\nÉ a primeira coisa viva.",
+    cta: "seteveus.space",
+  },
+  {
+    label: "E se começasses",
+    title: "E se\ncomecasses\npor aqui?",
+    subtitle: "Sem promessa de mudança.\nSó um primeiro olhar.",
+    cta: "seteveus.space/recursos/teste",
+  },
+
+  // ─── Espelho da Ilusão ───
+  {
+    label: "Quando foi que",
+    title: "Quando foi que\nescolhi tomar café\nem vez de chá?",
+    subtitle: "Uma pergunta absurda\nque muda tudo.\n\nO Espelho da Ilusão.",
+    cta: "seteveus.space",
+  },
+  {
+    label: "O corpo lembra",
+    title: "Houve um tempo\nem que ficava sentada\na beber devagar,\na olhar pela janela.",
+    subtitle: "O corpo lembra\nmesmo quando\na mente esqueceu.",
+    cta: "O Espelho da Ilusão ~ seteveus.space",
+  },
+  {
+    label: "A ilusão mais perigosa",
+    title: "A ilusão mais\nperigosa é acreditar\nque escolheste\nquando apenas\nrepetiste.",
+    subtitle: "O Espelho da Ilusão",
     cta: "seteveus.space",
   },
   {
     label: "Perguntar é começar",
     title: "Perguntar,\nmesmo tarde,\né o primeiro gesto\nde se escolher.",
-    subtitle: "Os 7 Véus do Despertar",
+    subtitle: "O Espelho da Ilusão",
+    cta: "seteveus.space",
+  },
+
+  // ─── Espelho do Medo ───
+  {
+    label: "O medo é humano",
+    title: "O medo é humano.\nViver uma vida inteira\nem função dele\né outra coisa.",
+    subtitle: "E essa outra coisa\npode mudar.",
+    cta: "O Espelho do Medo ~ seteveus.space",
+  },
+  {
+    label: "Museus impossíveis",
+    title: "E se os dedos\nque um dia desenharam\nmuseus impossíveis\nainda souberem\nmover-se?",
+    subtitle: "O Espelho do Medo",
     cta: "seteveus.space",
   },
   {
-    label: "Modo automático",
-    title: "Quantas decisões\ntomaste hoje\nsem escolher?",
-    subtitle: "O Espelho da Ilusão é o primeiro.\nO mais silencioso.\nE o mais comum.",
+    label: "A sede",
+    title: "A sede de quem\npassou tanto tempo\nsem beber que\nse esqueceu\nde que tinha sede.",
+    subtitle: "O Espelho do Medo, Parte VI",
     cta: "seteveus.space",
   },
+  {
+    label: "Ver o medo e continuar",
+    title: "Ver o medo.\nE continuar\nmesmo assim.",
+    subtitle: "Não é fraqueza.\nÉ o custo que parece\nmaior do que\no custo de ficar.\n\nO Espelho do Medo.",
+    cta: "seteveus.space",
+  },
+  {
+    label: "O talvez do Rui",
+    title: "\"Amanhã será\nsegunda-feira.\nProvavelmente\ntudo se repetirá.\nMas há agora\num talvez.\"",
+    subtitle: "O Espelho do Medo, Epílogo",
+    cta: "seteveus.space",
+  },
+
+  // ─── Nós ───
+  {
+    label: "Nó da Herança",
+    title: "A mãe sempre viu.\nEsperou anos.\nAgora que Sara acordou,\nHelena tem algo\npara lhe dizer.",
+    subtitle: "O Nó da Herança\nO silêncio herdado\nentre mãe e filha.",
+    cta: "seteveus.space",
+  },
+  {
+    label: "Nó do Silêncio",
+    title: "O medo calou\ntudo o que\nela queria dizer.",
+    subtitle: "O Nó do Silêncio\nEm breve.",
+    cta: "seteveus.space",
+  },
+
+  // ─── Ecos da comunidade ───
+  {
+    label: "Eco ~ acordar",
+    title: '"saí do modo automático.\nnão sei para onde vou\nmas pelo menos\nestou acordada."',
+    subtitle: "~ leitora anónima, Espelho da Ilusão",
+    cta: "seteveus.space",
+  },
+  {
+    label: "Eco ~ reconhecimento",
+    title: '"chorei no banho.\noutra vez.\nmas desta vez\nnão foi por tristeza.\nfoi por reconhecimento."',
+    subtitle: "~ leitora anónima, Espelho da Ilusão",
+    cta: "seteveus.space",
+  },
+  {
+    label: "Eco ~ automático",
+    title: '"o meu marido perguntou\nestás bem?\ne eu disse que sim.\nautomaticamente."',
+    subtitle: "~ leitora anónima, Espelho da Ilusão",
+    cta: "seteveus.space",
+  },
+  {
+    label: "Eco ~ silêncio",
+    title: '"o silêncio entre nós\nnão era paz.\nera tudo o que\nnunca dissemos."',
+    subtitle: "~ leitora anónima, Espelho do Medo",
+    cta: "seteveus.space",
+  },
+
   // ─── Experiência digital ───
   {
     label: "Três formas de ler",
     title: "O mesmo livro.\nTrês profundidades\ndiferentes.",
-    subtitle: "Semente ~ guia acessível\nRaiz ~ contexto filosófico\nÁrvore ~ texto original\n\nTu escolhes a profundidade.",
+    subtitle: "Semente ~ guia acessível\nRaiz ~ contexto filosófico\nÁrvore ~ texto original\n\nTu escolhes.",
     cta: "seteveus.space",
   },
   {
     label: "Ler e escrever",
     title: "Ler sem escrever\né como olhar\npara um espelho\nde olhos fechados.",
-    subtitle: "Diário reflexivo integrado.\nAs tuas palavras, guardadas para sempre.",
+    subtitle: "Diário reflexivo integrado.\nSó tu lês.",
     cta: "seteveus.space",
   },
   {
@@ -127,31 +248,13 @@ const MENSAGENS = [
     subtitle: "Comunidade Ecos\nReflexões anónimas.\nReconhecimentos silenciosos.\nTudo desaparece.",
     cta: "seteveus.space/comunidade",
   },
-  // ─── Ecos da comunidade ───
   {
-    label: "Eco ~ acordar",
-    title: '"saí do modo automático.\nnão sei para onde vou\nmas pelo menos\nestou acordada."',
-    subtitle: "~ leitora anónima, Véu 1",
+    label: "Não é autoajuda",
+    title: "Não é autoajuda.\nNão é terapia.\nÉ um espelho.",
+    subtitle: "Um livro que te devolve\naquilo que sempre foi teu.",
     cta: "seteveus.space",
   },
-  {
-    label: "Eco ~ reconhecimento",
-    title: '"chorei no banho.\noutra vez.\nmas desta vez\nnão foi por tristeza.\nfoi por reconhecimento."',
-    subtitle: "~ leitora anónima, Véu 1",
-    cta: "seteveus.space",
-  },
-  {
-    label: "Eco ~ automático",
-    title: '"o meu marido perguntou\nestás bem?\ne eu disse que sim.\nautomaticamente."',
-    subtitle: "~ leitora anónima, Véu 1",
-    cta: "seteveus.space",
-  },
-  {
-    label: "Eco ~ silêncio",
-    title: '"o silêncio entre nós\nnão era paz.\nera tudo o que\nnunca dissemos."',
-    subtitle: "~ leitora anónima, Véu 2",
-    cta: "seteveus.space",
-  },
+
   // ─── Livro físico + digital ───
   {
     label: "Do papel ao digital",
@@ -165,13 +268,7 @@ const MENSAGENS = [
     subtitle: "Edição impressa ~ 1.500 MT\nExperiência digital incluída.",
     cta: "+258 845 243 875",
   },
-  // ─── Nó da Herança ───
-  {
-    label: "Nó da Herança",
-    title: "A mãe sempre viu.\nEsperou anos.\nAgora que Sara acordou,\nHelena tem algo\npara lhe dizer.",
-    subtitle: "O Nó da Herança\nO silêncio herdado entre mãe e filha.",
-    cta: "seteveus.space",
-  },
+
   // ─── Convites suaves ───
   {
     label: "Ao teu ritmo",
@@ -185,6 +282,8 @@ const MENSAGENS = [
     subtitle: "Um teste de 3 minutos.\nNão dá respostas.\nDá perguntas.",
     cta: "seteveus.space/recursos/teste",
   },
+
+  // ─── Vazio (canvas limpo) ───
   {
     label: "Vazio",
     title: "",
@@ -228,6 +327,15 @@ export default function GeradorPage() {
   const [showLogo, setShowLogo] = useState(true);
   const [exporting, setExporting] = useState(false);
   const [mobilePreview, setMobilePreview] = useState<string | null>(null);
+
+  // Carousel mode
+  const [mode, setMode] = useState<"single" | "carousel">("single");
+  const [selectedCarousel, setSelectedCarousel] = useState(professionalCarousels[0]);
+  const [exportingCarousel, setExportingCarousel] = useState(false);
+  const [exportCarouselStep, setExportCarouselStep] = useState(0);
+  const [mobileCarouselPreviews, setMobileCarouselPreviews] = useState<string[]>([]);
+  const [mobileCarouselIdx, setMobileCarouselIdx] = useState(0);
+  const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Auth — redirect via useEffect to avoid client-side crash on navigation
   useEffect(() => {
@@ -316,6 +424,70 @@ export default function GeradorPage() {
     setExporting(false);
   }
 
+  async function handleExportCarousel() {
+    setExportingCarousel(true);
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const slides = selectedCarousel.slides;
+    const PX = 1080;
+    const previews: string[] = [];
+
+    for (let i = 0; i < slides.length; i++) {
+      const el = slideRefs.current[i];
+      if (!el) continue;
+      setExportCarouselStep(i + 1);
+
+      const parent = el.parentElement as HTMLElement | null;
+      const origEl = { t: el.style.transform, w: el.style.width, h: el.style.height };
+      const origParent = parent
+        ? { w: parent.style.width, h: parent.style.height, o: parent.style.overflow, r: parent.style.borderRadius }
+        : null;
+
+      el.style.transform = "none";
+      el.style.width = `${PX}px`;
+      el.style.height = `${PX}px`;
+      if (parent) {
+        parent.style.width = `${PX}px`;
+        parent.style.height = `${PX}px`;
+        parent.style.overflow = "visible";
+        parent.style.borderRadius = "0";
+      }
+
+      await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+
+      try {
+        const dataUrl = await toPng(el, { width: PX, height: PX, pixelRatio: 1, cacheBust: true });
+        if (isMobile) {
+          previews.push(dataUrl);
+        } else {
+          const a = document.createElement("a");
+          a.download = `${selectedCarousel.id}-slide-${i + 1}.png`;
+          a.href = dataUrl;
+          a.click();
+          await new Promise((r) => setTimeout(r, 400));
+        }
+      } catch {
+        // skip slide on error
+      }
+
+      el.style.transform = origEl.t;
+      el.style.width = origEl.w;
+      el.style.height = origEl.h;
+      if (parent && origParent) {
+        parent.style.width = origParent.w;
+        parent.style.height = origParent.h;
+        parent.style.overflow = origParent.o;
+        parent.style.borderRadius = origParent.r;
+      }
+    }
+
+    if (isMobile && previews.length > 0) {
+      setMobileCarouselPreviews(previews);
+      setMobileCarouselIdx(0);
+    }
+    setExportCarouselStep(0);
+    setExportingCarousel(false);
+  }
+
   return (
     <section className="min-h-screen bg-cream">
       {/* Header */}
@@ -328,17 +500,213 @@ export default function GeradorPage() {
             <span className="text-brown-200">/</span>
             <h1 className="font-serif text-xl text-brown-900">Gerador de Conteúdo</h1>
           </div>
-          <button
-            onClick={handleExport}
-            disabled={exporting}
-            className={`rounded-lg bg-sage px-6 py-2.5 font-sans text-sm font-medium text-white transition-colors hover:bg-sage-dark ${exporting ? "opacity-60" : ""}`}
-          >
-            {exporting ? "A exportar..." : "Guardar imagem"}
-          </button>
+          {mode === "single" ? (
+            <button
+              onClick={handleExport}
+              disabled={exporting}
+              className={`rounded-lg bg-sage px-6 py-2.5 font-sans text-sm font-medium text-white transition-colors hover:bg-sage-dark ${exporting ? "opacity-60" : ""}`}
+            >
+              {exporting ? "A exportar..." : "Guardar imagem"}
+            </button>
+          ) : (
+            <button
+              onClick={handleExportCarousel}
+              disabled={exportingCarousel}
+              className={`rounded-lg bg-sage px-6 py-2.5 font-sans text-sm font-medium text-white transition-colors hover:bg-sage-dark ${exportingCarousel ? "opacity-60" : ""}`}
+            >
+              {exportingCarousel
+                ? `Slide ${exportCarouselStep}/${selectedCarousel.slides.length}...`
+                : `Baixar ${selectedCarousel.slides.length} slides`}
+            </button>
+          )}
+        </div>
+
+        {/* Mode tabs */}
+        <div className="mx-auto mt-3 flex max-w-7xl gap-1">
+          {(["single", "carousel"] as const).map((m) => (
+            <button
+              key={m}
+              onClick={() => setMode(m)}
+              className={`rounded-lg px-4 py-1.5 font-sans text-xs font-medium transition-colors ${
+                mode === m
+                  ? "bg-sage/15 text-sage-dark"
+                  : "text-brown-400 hover:text-brown-700"
+              }`}
+            >
+              {m === "single" ? "Post único" : "Carrosséis prontos"}
+            </button>
+          ))}
         </div>
       </div>
 
       <div className="mx-auto max-w-7xl px-6 py-6">
+
+        {/* ─── CAROUSEL MODE ─── */}
+        {mode === "carousel" && (
+          <div className="flex gap-8 max-lg:flex-col">
+            {/* Left: selector + caption */}
+            <div className="w-full space-y-4 lg:w-[320px] lg:shrink-0">
+              <div>
+                <label className="mb-2 block font-sans text-[0.65rem] font-medium uppercase tracking-wider text-brown-400">
+                  Escolhe um carrossel
+                </label>
+                <div className="space-y-1.5">
+                  {professionalCarousels.map((c) => (
+                    <button
+                      key={c.id}
+                      onClick={() => { setSelectedCarousel(c); slideRefs.current = []; }}
+                      className={`w-full rounded-lg border px-4 py-3 text-left transition-colors ${
+                        selectedCarousel.id === c.id
+                          ? "border-sage bg-sage/10"
+                          : "border-brown-100 bg-white hover:border-brown-200"
+                      }`}
+                    >
+                      <p className="font-serif text-sm text-brown-900">{c.title}</p>
+                      <p className="mt-0.5 font-sans text-[0.65rem] text-brown-400">{c.slides.length} slides</p>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Caption */}
+              <div className="rounded-lg border border-brown-100 bg-white p-4">
+                <div className="mb-2 flex items-center justify-between">
+                  <span className="font-sans text-[0.65rem] font-medium uppercase tracking-wider text-brown-400">
+                    Legenda Instagram
+                  </span>
+                  <button
+                    onClick={() => navigator.clipboard.writeText(selectedCarousel.caption)}
+                    className="rounded bg-brown-50 px-2 py-0.5 font-sans text-[0.6rem] text-brown-500 hover:bg-brown-100"
+                  >
+                    Copiar
+                  </button>
+                </div>
+                <p className="whitespace-pre-wrap font-sans text-[0.7rem] leading-relaxed text-brown-700">
+                  {selectedCarousel.caption}
+                </p>
+              </div>
+            </div>
+
+            {/* Right: slides preview */}
+            <div className="flex-1">
+              <p className="mb-4 font-sans text-xs text-brown-400">
+                {selectedCarousel.slides.length} slides · 1080×1080px · Com logo
+              </p>
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
+                {selectedCarousel.slides.map((slide, i) => {
+                  const PX = 1080;
+                  const PREV = 200;
+                  const scale = PREV / PX;
+                  return (
+                    <div key={i} className="space-y-1">
+                      <div
+                        className="overflow-hidden rounded-lg shadow-md"
+                        style={{ width: PREV, height: PREV }}
+                      >
+                        <div
+                          ref={(el) => { slideRefs.current[i] = el; }}
+                          className="relative"
+                          style={{
+                            width: PX,
+                            height: PX,
+                            transform: `scale(${scale})`,
+                            transformOrigin: "top left",
+                            backgroundColor: slide.bg,
+                          }}
+                        >
+                          {slide.bgImage && (
+                            <>
+                              <img
+                                src={slide.bgImage}
+                                alt=""
+                                crossOrigin="anonymous"
+                                className="absolute inset-0 h-full w-full object-cover"
+                                style={{ opacity: 0.35 }}
+                              />
+                              <div
+                                className="absolute inset-0"
+                                style={{ backgroundColor: slide.bg, opacity: 0.55 }}
+                              />
+                            </>
+                          )}
+                          {/* Content */}
+                          <div className="relative flex h-full flex-col justify-center px-[10%] text-center">
+                            {slide.title && (
+                              <h2
+                                className="whitespace-pre-line font-serif leading-tight"
+                                style={{ color: slide.text, fontSize: 52 }}
+                              >
+                                {slide.title}
+                              </h2>
+                            )}
+                            {slide.title && slide.body && (
+                              <div
+                                className="mx-auto my-6 h-px w-1/3"
+                                style={{ backgroundColor: slide.accent }}
+                              />
+                            )}
+                            {slide.body && (
+                              <p
+                                className="whitespace-pre-line font-sans font-light"
+                                style={{ color: slide.text, opacity: 0.8, fontSize: 26, lineHeight: 1.75 }}
+                              >
+                                {slide.body}
+                              </p>
+                            )}
+                          </div>
+                          {/* Footer CTA */}
+                          {slide.footer && (
+                            <div className="absolute bottom-[10%] w-full text-center">
+                              <p
+                                className="font-sans font-medium uppercase tracking-[0.15em]"
+                                style={{ color: slide.accent, fontSize: 20 }}
+                              >
+                                {slide.footer}
+                              </p>
+                            </div>
+                          )}
+                          {/* Logo */}
+                          <div
+                            className="absolute bottom-[4%] left-1/2 flex -translate-x-1/2 items-center gap-2"
+                            style={{ opacity: 0.45 }}
+                          >
+                            <img
+                              src="/images/logo-espiral.png.jpeg"
+                              alt=""
+                              crossOrigin="anonymous"
+                              className="h-8 w-8 rounded-full"
+                            />
+                            <span
+                              className="font-serif"
+                              style={{ color: slide.text, fontSize: 16 }}
+                            >
+                              Os Sete Véus
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <p className="font-sans text-[0.6rem] text-brown-400">Slide {i + 1}</p>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Mobile export button */}
+              <button
+                onClick={handleExportCarousel}
+                disabled={exportingCarousel}
+                className="mt-6 w-full rounded-lg bg-sage py-3 font-sans text-sm font-medium text-white lg:hidden"
+              >
+                {exportingCarousel
+                  ? `Slide ${exportCarouselStep}/${selectedCarousel.slides.length}...`
+                  : `Baixar ${selectedCarousel.slides.length} slides`}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* ─── SINGLE IMAGE MODE ─── */}
+        {mode === "single" && (
         <div className="flex gap-8 max-lg:flex-col">
 
           {/* ── PAINEL ESQUERDO: Controlos ── */}
@@ -638,9 +1006,52 @@ export default function GeradorPage() {
             </p>
           </div>
         </div>
+        )} {/* end mode === "single" */}
       </div>
 
-      {/* Mobile: ecrã inteiro para guardar na fototeca */}
+      {/* Mobile carousel: ecrã inteiro, slide a slide */}
+      {mobileCarouselPreviews.length > 0 && (
+        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/95 p-4">
+          <p className="mb-2 font-sans text-sm text-white/80">
+            Slide {mobileCarouselIdx + 1} de {mobileCarouselPreviews.length}
+          </p>
+          <p className="mb-4 text-center font-sans text-xs text-white/50">
+            Mantém premido para guardar na fototeca
+          </p>
+          <img
+            src={mobileCarouselPreviews[mobileCarouselIdx]}
+            alt={`Slide ${mobileCarouselIdx + 1}`}
+            className="max-h-[65vh] max-w-full rounded-lg object-contain"
+          />
+          <div className="mt-6 flex gap-3">
+            {mobileCarouselIdx > 0 && (
+              <button
+                onClick={() => setMobileCarouselIdx((n) => n - 1)}
+                className="rounded-lg border border-white/20 px-5 py-2.5 font-sans text-sm text-white/70"
+              >
+                Anterior
+              </button>
+            )}
+            {mobileCarouselIdx < mobileCarouselPreviews.length - 1 ? (
+              <button
+                onClick={() => setMobileCarouselIdx((n) => n + 1)}
+                className="rounded-lg bg-sage px-5 py-2.5 font-sans text-sm font-medium text-white"
+              >
+                Próximo
+              </button>
+            ) : (
+              <button
+                onClick={() => setMobileCarouselPreviews([])}
+                className="rounded-lg bg-sage px-5 py-2.5 font-sans text-sm font-medium text-white"
+              >
+                Concluído
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Mobile single: ecrã inteiro para guardar na fototeca */}
       {mobilePreview && (
         <div
           className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/95 p-4"

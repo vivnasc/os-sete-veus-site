@@ -1042,19 +1042,19 @@ const week7: WeekPlan = {
     {
       day: "Terça-feira",
       dayShort: "Ter",
-      theme: "Carrossel — Os 7 véus explicados",
+      theme: "Carrossel — Os 7 Espelhos explicados",
       slots: [
         {
           platform: "instagram",
           type: "Carrossel (9 slides)",
           visual: {
             bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", format: "square",
-            title: "Os 7 Véus\ndo Despertar",
-            body: "Cada véu esconde algo.\nQual é o teu?",
+            title: "Os 7 Espelhos",
+            body: "Cada Espelho revela um véu.\nQual é o teu?",
             footer: "Swipe ~",
           },
-          notes: "SLIDES DO CARROSSEL (um véu por slide):\n\nSlide 1 (capa): Fundo #f7f5f0\n\"Os 7 Véus do Despertar. Qual é o teu?\"\n\nSlide 2: Fundo #c9b896 (dourado)\n\"1. Ilusão\nA vida que tens foi escolhida por ti?\nEspelho da Ilusão — Disponível agora\"\n\nSlide 3: Fundo #8b9b8e (verde-cinza)\n\"2. Medo\nSabes o que queres mas o medo decide.\nEspelho do Medo — Março 2026\"\n\nSlide 4: Fundo #b39b7d (terra)\n\"3. Culpa\nA culpa que te prende a escolhas que não são tuas.\nEspelho da Culpa — Abril 2026\"\n\nSlide 5: Fundo #a09088 (rosa-terra)\n\"4. Identidade\nQuem és tu sem a máscara?\nEspelho da Identidade — Maio 2026\"\n\nSlide 6: Fundo #7a8c6e (verde-musgo)\n\"5. Controlo\nO controlo que isola quem mais amas.\nEspelho do Controlo — Junho 2026\"\n\nSlide 7: Fundo #b08d8d (rosa-antigo)\n\"6. Desejo\nO desejo que esvazia em vez de preencher.\nEspelho do Desejo — Julho 2026\"\n\nSlide 8: Fundo #8c9bab (azul-acinzentado)\n\"7. Separação\nA separação que reinventa o lar.\nEspelho da Separação — Agosto 2026\"\n\nSlide 9 (CTA): Fundo #3d3630, texto #c9b896\n\"Reconheces-te nalgum deles?\nTeste gratuito: seteveus.space/recursos/teste\"",
-          caption: "Os 7 Espelhos do Despertar:\n\n1. Ilusao — Disponivel agora\n2. Medo — Marco 2026\n3. Culpa — Abril 2026\n4. Identidade — Maio 2026\n5. Controlo — Junho 2026\n6. Desejo — Julho 2026\n7. Separacao — Agosto 2026\n\n#OsSeteVeus #7Veus #Autoconhecimento #Carrossel",
+          notes: "SLIDES DO CARROSSEL (um Espelho por slide):\n\nSlide 1 (capa): Fundo #f7f5f0\n\"Os 7 Espelhos. Qual é o teu?\"\n\nSlide 2: Fundo #c9b896 (dourado)\n\"1. Ilusão\nA vida que tens foi escolhida por ti?\nEspelho da Ilusão — Disponível agora\"\n\nSlide 3: Fundo #8b9b8e (verde-cinza)\n\"2. Medo\nSabes o que queres mas o medo decide.\nEspelho do Medo — Março 2026\"\n\nSlide 4: Fundo #b39b7d (terra)\n\"3. Culpa\nA culpa que te prende a escolhas que não são tuas.\nEspelho da Culpa — Abril 2026\"\n\nSlide 5: Fundo #a09088 (rosa-terra)\n\"4. Identidade\nQuem és tu sem a máscara?\nEspelho da Identidade — Maio 2026\"\n\nSlide 6: Fundo #7a8c6e (verde-musgo)\n\"5. Controlo\nO controlo que isola quem mais amas.\nEspelho do Controlo — Junho 2026\"\n\nSlide 7: Fundo #b08d8d (rosa-antigo)\n\"6. Desejo\nO desejo que esvazia em vez de preencher.\nEspelho do Desejo — Julho 2026\"\n\nSlide 8: Fundo #8c9bab (azul-acinzentado)\n\"7. Separação\nA separação que reinventa o lar.\nEspelho da Separação — Agosto 2026\"\n\nSlide 9 (CTA): Fundo #3d3630, texto #c9b896\n\"Reconheces-te nalgum deles?\nTeste gratuito: seteveus.space/recursos/teste\"",
+          caption: "Os 7 Espelhos:\n\n1. Ilusao — Disponivel agora\n2. Medo — Marco 2026\n3. Culpa — Abril 2026\n4. Identidade — Maio 2026\n5. Controlo — Junho 2026\n6. Desejo — Julho 2026\n7. Separacao — Agosto 2026\n\n#OsSeteVeus #Os7Espelhos #Autoconhecimento #Carrossel",
         },
       ],
     },
@@ -1520,7 +1520,7 @@ const weekLaunchMedo: WeekPlan = {
             { bg: "#f5f7f5", text: "#3d3630", accent: "#5d7a6d", title: "7 capitulos.\n7 territorios\nonde Rui ficou\npara tras.", body: "Corpo. Trabalho.\nPaternidade. Amizades.\nTempo livre. Intimidade.\nIdentidade.", footer: "" },
             { bg: "#8b9b8e", text: "#f7f5f0", accent: "#ebe7df", title: "Nao e sobre colapso.\nNao e sobre despertar.", body: "E sobre a paralisia\nlucida que se instala\nquando nada obriga\na mudar.", footer: "seteveus.space/experiencias" },
           ],
-          caption: "O segundo espelho chegou.\n\nO Espelho do Medo e a historia de Rui — um homem que vive tecnicamente mas permanece existencialmente imovel.\n\nQuarenta e dois anos. Familia funcional. Carreira estavel. Tudo organizado para funcionar. Nada, porem, se move.\n\n\"O meu pai esta sempre em casa mas as vezes parece que nao esta.\" — Miguel, 9 anos.\n\n7 capitulos. 7 territorios onde Rui ficou para tras.\n$19 USD / 1.200 MZN. Acesso vitalicio.\n\nseteveus.space/experiencias\n\n#OsSeteVeus #EspelhoDoMedo #Lancamento #Autoconhecimento #FiccaoPsicologica #LeituraImersiva",
+          caption: "O Espelho do Medo chegou.\n\nRui tem quarenta e dois anos. Familia funcional. Carreira estavel. Tudo organizado para funcionar.\n\nO filho de 9 anos — numa apresentacao escolar sobre a familia — disse: \"O meu pai esta sempre em casa mas as vezes parece que nao esta.\"\n\nUma constatacao de crianca. Sem acusacao. Sem enfase.\nComo quem descreve o tempo que faz la fora.\n\nReconheces este padrao? Ha mais para ti.\nLink na bio →\n\n#OsSeteVeus #EspelhoDoMedo #Autoconhecimento #FiccaoPsicologica #HaMaisParaTi",
         },
         {
           platform: "whatsapp",
@@ -1549,7 +1549,7 @@ const weekLaunchMedo: WeekPlan = {
             body: "Miguel, 9 anos.\nApresentacao escolar\nsobre a familia.",
             footer: "O Espelho do Medo ~ seteveus.space",
           },
-          caption: "\"O meu pai esta sempre em casa mas as vezes parece que nao esta.\"\n\nMiguel tem 9 anos. Numa apresentacao escolar sobre a familia, disse esta frase sem enfase, sem acusacao. Como quem descreve o tempo que faz la fora.\n\nUma constatacao de crianca que captou com precisao involuntaria aquilo que Rui sabia mas nunca ouvira em voz alta.\n\nO Espelho do Medo — disponivel agora.\nseteveus.space/experiencias\n\n#OsSeteVeus #EspelhoDoMedo #FiccaoPsicologica #ParalisiaLucida",
+          caption: "\"O meu pai esta sempre em casa mas as vezes parece que nao esta.\"\n\nMiguel tem 9 anos. Numa apresentacao escolar sobre a familia, disse esta frase sem enfase, sem acusacao. Como quem descreve o tempo que faz la fora.\n\nUma constatacao de crianca que captou com precisao involuntaria aquilo que Rui sabia mas nunca ouvira em voz alta.\n\nO Espelho do Medo — disponivel agora. Link na bio.\n\n#OsSeteVeus #EspelhoDoMedo #FiccaoPsicologica #ParalisiaLucida",
         },
         {
           platform: "whatsapp",
@@ -1578,7 +1578,7 @@ const weekLaunchMedo: WeekPlan = {
             { bg: "#3d3630", text: "#f7f5f0", accent: "#8b9b8e", title: "Sabias que\na paralisia lucida\ne mais comum\ndo que pensas?", body: "Ver o veu.\nSaber que esta ali.\nE continuar.\nPorque o custo de sair\nparece maior\ndo que o custo de ficar.", footer: "" },
             { bg: "#8b9b8e", text: "#f7f5f0", accent: "#ebe7df", title: "O Espelho do Medo\nexplora isto.", body: "7 capitulos.\nUm homem. Uma semana.\nA historia de quem vive\nsem estar presente.\n\n$19 USD / 1.200 MZN", footer: "seteveus.space/experiencias" },
           ],
-          caption: "Sabias que o medo nao e uma emocao pontual — e um modo de vida?\n\nSabias que a maioria das decisoes que tomas sao baseadas no medo? Nao por covardia. Por habito.\n\nSabias que o medo se disfarza de bom senso, de maturidade, de responsabilidade?\n\nSabias que a paralisia lucida — ver o veu e continuar — e mais comum do que pensas?\n\nO Espelho do Medo explora tudo isto. 7 capitulos. Disponivel agora.\n\nseteveus.space/experiencias\n\n#OsSeteVeus #EspelhoDoMedo #SabiasQue #Autoconhecimento #Medo #ParalisiaLucida",
+          caption: "Ha uma diferenca entre o medo que avisa e o medo que governa.\n\nO primeiro protege. O segundo instala-se.\nTorna-se habito. Disfarça-se de bom senso, de maturidade, de responsabilidade.\n\nHa um momento em que vês o veu e continues mesmo assim. Nao por fraqueza — pelo custo que parece maior do que o custo de ficar.\n\nO Espelho do Medo acompanha este territorio. 7 capitulos. Disponivel agora.\n\n#OsSeteVeus #EspelhoDoMedo #Autoconhecimento #ParalisiaLucida #HaMaisParaTi",
         },
       ],
     },
@@ -1596,7 +1596,7 @@ const weekLaunchMedo: WeekPlan = {
             body: "",
             footer: "O Espelho do Medo ~ seteveus.space",
           },
-          caption: "\"Via o veu. Sempre o vira. Nao era a ilusao que o prendia. Era a paralisia lucida. A consciencia perfeita da prisao combinada com a incapacidade de sair.\"\n\n— O Espelho do Medo\n\nDisponivel agora: seteveus.space/experiencias\n\n#OsSeteVeus #EspelhoDoMedo #ParalisiaLucida #FiccaoPsicologica",
+          caption: "\"Via o veu. Sempre o vira. Nao era a ilusao que o prendia. Era a paralisia lucida. A consciencia perfeita da prisao combinada com a incapacidade de sair.\"\n\n— O Espelho do Medo\n\nDisponivel agora — link na bio.\n\n#OsSeteVeus #EspelhoDoMedo #ParalisiaLucida #FiccaoPsicologica",
         },
         {
           platform: "whatsapp",
@@ -1619,7 +1619,7 @@ const weekLaunchMedo: WeekPlan = {
             body: "Minusculo. Fragil.\nQuase inaudivel.\nMas novo.",
             footer: "O Espelho do Medo ~ seteveus.space",
           },
-          caption: "\"Amanha sera segunda-feira. Acordara antes do despertador. Provavelmente. Mas havia agora um talvez. Minusculo, fragil, quase inaudivel. Mas novo.\"\n\n— O Espelho do Medo, Epilogo\n\nO gesto minimo que muda tudo.\nDisponivel agora: seteveus.space/experiencias\n\n#OsSeteVeus #EspelhoDoMedo #OTalvez #Autoconhecimento",
+          caption: "\"Amanha sera segunda-feira. Acordara antes do despertador. Provavelmente. Mas havia agora um talvez. Minusculo, fragil, quase inaudivel. Mas novo.\"\n\n— O Espelho do Medo, Epilogo\n\nO gesto minimo que muda tudo.\nDisponivel agora — link na bio.\n\n#OsSeteVeus #EspelhoDoMedo #OTalvez #Autoconhecimento",
         },
         {
           platform: "whatsapp",
@@ -1670,7 +1670,7 @@ const weekLaunchMedo: WeekPlan = {
             body: "Bruno, amigo de Rui.\nDe quando ainda riam.",
             footer: "O Espelho do Medo ~ seteveus.space",
           },
-          caption: "\"A vida e basicamente isto: espumante no funeral.\"\n\nBruno contou esta historia e Rui riu ate lhe doerem os abdominais. Rui com quem ria com o corpo inteiro. Noutras versoes de si.\n\nDepois, Bruno escreveu: \"Tou na cidade sexta. Almoco?\" Rui nao respondeu.\n\nReconheces este padrao?\n\nO Espelho do Medo — seteveus.space/experiencias\n\n#OsSeteVeus #EspelhoDoMedo #Autoconhecimento",
+          caption: "\"A vida e basicamente isto: espumante no funeral.\"\n\nBruno contou esta historia e Rui riu ate lhe doerem os abdominais. Rui com quem ria com o corpo inteiro. Noutras versoes de si.\n\nDepois, Bruno escreveu: \"Tou na cidade sexta. Almoco?\" Rui nao respondeu.\n\nReconheces este padrao?\n\nO Espelho do Medo — link na bio.\n\n#OsSeteVeus #EspelhoDoMedo #Autoconhecimento",
         },
       ],
     },
@@ -1698,7 +1698,7 @@ const weekLaunchMedo2: WeekPlan = {
             body: "A sede de quem passou\ntanto tempo sem beber\nque se esqueceu\nde que tinha sede.",
             footer: "O Espelho do Medo ~ seteveus.space",
           },
-          caption: "\"Sentiu uma coisa estranha no peito. Nao dor. Nao saudade exactamente. Algo mais parecido com sede. A sede de quem passou tanto tempo sem beber que se esqueceu de que tinha sede, e agora, ao ver agua, o corpo inteiro lembra de repente.\"\n\n— O Espelho do Medo, Parte VI\n\nseteveus.space/experiencias\n\n#OsSeteVeus #EspelhoDoMedo #ASede #Autoconhecimento",
+          caption: "\"Sentiu uma coisa estranha no peito. Nao dor. Nao saudade exactamente. Algo mais parecido com sede. A sede de quem passou tanto tempo sem beber que se esqueceu de que tinha sede, e agora, ao ver agua, o corpo inteiro lembra de repente.\"\n\n— O Espelho do Medo, Parte VI\n\n#OsSeteVeus #EspelhoDoMedo #ASede #Autoconhecimento",
         },
       ],
     },
@@ -1721,7 +1721,7 @@ const weekLaunchMedo2: WeekPlan = {
             { bg: "#6d8b7e", text: "#f7f5f0", accent: "#ebe7df", title: "7. A identidade", body: "Uma fotografia antiga.\nUm homem que ria.\nOnde esta\nesse homem agora?", footer: "" },
             { bg: "#3d3630", text: "#f7f5f0", accent: "#8b9b8e", title: "Em qual destes\nte reconheces?", body: "$19 USD / 1.200 MZN\nAcesso vitalicio.", footer: "seteveus.space/experiencias" },
           ],
-          caption: "Os 7 territorios onde o medo nos prende:\n\n1. O corpo — que funciona sozinho sem presenca\n2. O trabalho — competencia sem entusiasmo\n3. A paternidade — \"tens tudo?\" quando queria dizer \"importas-me\"\n4. As amizades — suspensas, nao mortas, apenas esquecidas\n5. O tempo livre — um corredor sem portas\n6. A intimidade — a sede reconhecida mas nao saciada\n7. A identidade — onde esta quem eu era?\n\nEm qual te reconheces?\n\nO Espelho do Medo — seteveus.space/experiencias\n\n#OsSeteVeus #EspelhoDoMedo #Os7Territorios #Autoconhecimento #FiccaoPsicologica",
+          caption: "O medo nao prende em abstracto. Prende em lugares concretos.\n\n1. O corpo — acorda sozinho, funciona sozinho\n2. O trabalho — competencia sem entusiasmo\n3. A paternidade — \"tens tudo?\" quando queria dizer \"importas-me\"\n4. As amizades — suspensas, nao mortas, apenas esquecidas\n5. O tempo livre — um corredor sem portas\n6. A intimidade — a sede que se reconhece mas nao se sacia\n7. A identidade — onde esta quem eu era?\n\nReconheces-te em algum destes? Ha mais para ti.\n\n#OsSeteVeus #EspelhoDoMedo #Autoconhecimento #FiccaoPsicologica #Reconhecimento",
         },
       ],
     },
@@ -1739,7 +1739,7 @@ const weekLaunchMedo2: WeekPlan = {
             body: "Primeiro vives o Espelho.\nDepois, se quiseres,\ndesatas o No.",
             footer: "seteveus.space/experiencias",
           },
-          caption: "Os Espelhos olham para dentro. Os Nos olham para a relacao.\n\nO Espelho do Medo e a historia de Rui — o que o medo fez a vida dele.\nO No do Silencio (em breve) sera a historia de Rui e Ana — o que o medo calou entre eles.\n\nPrimeiro vives o Espelho. Depois, se quiseres, desatas o No.\n\nseteveus.space/experiencias\n\n#OsSeteVeus #EspelhoDoMedo #ColeccaoEspelhos #ColeccaoNos",
+          caption: "Os Espelhos olham para dentro. Os Nos olham para a relacao.\n\nO Espelho do Medo e a historia de Rui — o que o medo fez a vida dele.\nO No do Silencio (em breve) sera a historia de Rui e Ana — o que o medo calou entre eles.\n\nPrimeiro vives o Espelho. Depois, se quiseres, desatas o No.\n\n#OsSeteVeus #EspelhoDoMedo #ColeccaoEspelhos #ColeccaoNos",
         },
         {
           platform: "whatsapp",
@@ -1762,7 +1762,7 @@ const weekLaunchMedo2: WeekPlan = {
             body: "Espelho da Ilusao\n+ Espelho do Medo\n\nIndividual: $19 cada\nPack 3: $69 (18% desc.)\nJornada Completa: $149\n\nAcesso vitalicio.\nPayPal ou M-Pesa.",
             footer: "seteveus.space/comprar",
           },
-          caption: "Dois espelhos disponiveis. Mais cinco a caminho.\n\nEspelho da Ilusao — $19 USD (1.200 MZN)\nEspelho do Medo — $19 USD (1.200 MZN)\n\nPack 3 Espelhos: $69 (18% desconto)\nJornada Completa (7): $149 (27% desconto)\n\nAcesso vitalicio. PayPal ou M-Pesa.\n\nseteveus.space/comprar\n\n#OsSeteVeus #Precos #Autoconhecimento",
+          caption: "Ha dois espelhos disponiveis agora. Mais cinco a caminho.\n\nEspelho da Ilusao — $19 USD (1.200 MZN)\nEspelho do Medo — $19 USD (1.200 MZN)\n\nOu começas com um. Ou pegas no Pack 3 ($69). Ou começas a Jornada Completa ($149).\n\nAcesso vitalicio. Sem prazo. Ao teu ritmo.\nPayPal ou M-Pesa. Link na bio →\n\n#OsSeteVeus #Autoconhecimento #FiccaoPsicologica #LeituraImersiva",
         },
       ],
     },
@@ -1780,7 +1780,7 @@ const weekLaunchMedo2: WeekPlan = {
             body: "",
             footer: "O Espelho do Medo ~ seteveus.space",
           },
-          caption: "\"E se os dedos que um dia desenharam museus impossiveis ainda souberem mover-se? E se debaixo de toda a contencao houver ainda alguem que sabe rir com o corpo inteiro?\"\n\n— O Espelho do Medo, Epilogo\n\nseteveus.space/experiencias\n\n#OsSeteVeus #EspelhoDoMedo #MuseusImpossiveis #Autoconhecimento",
+          caption: "\"E se os dedos que um dia desenharam museus impossiveis ainda souberem mover-se? E se debaixo de toda a contencao houver ainda alguem que sabe rir com o corpo inteiro?\"\n\n— O Espelho do Medo, Epilogo\n\n#OsSeteVeus #EspelhoDoMedo #MuseusImpossiveis #Autoconhecimento",
         },
         {
           platform: "whatsapp",
@@ -1811,6 +1811,622 @@ const weekLaunchMedo2: WeekPlan = {
 
 export const allWeeks: WeekPlan[] = [week1, week2, week3, week4, week5, week6, week7, week8, weekOnboarding, weekLaunchMedo, weekLaunchMedo2];
 
+// ─── HUB TEMÁTICO ─────────────────────────────────────────────────────────────
+// Organização por tema, não por semana de campanha.
+// Tom: "Vejo-te, e há mais para ti." — Da Confrontação ao Convite
+// Véus · Espelhos · Nós · Comunidade · Reflexões
+
+export const thematicHub: WeekPlan[] = [
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // TEMA 1 — VÉUS
+  // Os 7 Véus do Despertar — o ensaio filosófico
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    weekNumber: 1,
+    title: "Véus",
+    subtitle: "Os 7 Véus do Despertar — o ensaio filosófico",
+    days: [
+      {
+        day: "Permanência",
+        dayShort: "Perm",
+        theme: "Reconheces esta frase?",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "Há uma crença\nque corre\npor baixo de tudo.\n\n«Sempre fui assim.»",
+              body: "É confortável\npensar isso.",
+              footer: "Os 7 Véus do Despertar",
+            },
+            caption: "Às vezes não é o peso das coisas que nos segura.\n\nÉ a convicção de que sempre foi assim — e que sempre assim será.\n\nO corpo lembra outras versões. A mente convence-se de que nunca existiram.\n\nReconheces?\n\n#OsSeteVeus #VeuDaPermanencia #Autoconhecimento",
+          },
+          {
+            platform: "instagram",
+            type: "Carrossel",
+            carousel: [
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "«Sempre fui assim.»\n\nÉ a crença\nmais quieta\nde todas.", body: "", footer: "Os 7 Véus do Despertar" },
+              { bg: "#f7f5f0", text: "#3d3630", accent: "#3d3630", title: "O corpo lembra\noutra versão.", body: "A mente convence-se\nde que nunca existiu.", footer: "" },
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Não tens de\nrecusar essa crença\nhoje.", body: "Só de a notar.", footer: "" },
+              { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Talvez já tenhas\nmudado mais\ndo que pensas.", body: "E não reparaste.", footer: "Há mais para ti." },
+            ],
+            caption: "Há algo que diz: sempre fui assim.\n\nÉ humano. É confortável.\nE às vezes não é a única verdade disponível.\n\nReconheces?\n\n#OsSeteVeus #VeuDaPermanencia #Autoconhecimento",
+          },
+          {
+            platform: "whatsapp",
+            type: "WhatsApp Status",
+            carousel: [
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "«Sempre fui assim.»\n\nÉ a crença\nmais quieta\nde todas.\n\nReconheces?", body: "", footer: "Os 7 Véus do Despertar" },
+            ],
+            caption: "Há algo que diz: sempre fui assim.\n\nO corpo lembra outra versão.\n\nTalvez já tenhas mudado mais do que pensas.\n\nOs 7 Véus do Despertar — seteveus.space\n\n#OsSeteVeus #VeuDaPermanencia",
+          },
+        ],
+      },
+      {
+        day: "Memória",
+        dayShort: "Mem",
+        theme: "A história que contas sobre ti",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#1a1a2e", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "Bebeu o café\nde pé, em três goles.\n\nHouve um tempo\nem que ficava sentada\na beber devagar.",
+              body: "O corpo lembrava.\nA mente já não.",
+              footer: "Os 7 Véus do Despertar",
+            },
+            caption: "A história que contas sobre ti não é tudo o que viveste.\n\nÉ o que ficou. O que o teu cérebro escolheu repetir — e que muitas vezes confirma o que já acreditas sobre ti mesma.\n\nE se houvesse capítulos que esqueceste?\n\nTalvez a história não esteja fechada.\n\n#OsSeteVeus #VeuDaMemoria #Autoconhecimento",
+          },
+          {
+            platform: "instagram",
+            type: "Carrossel",
+            carousel: [
+              { bg: "#1a1a2e", text: "#f7f5f0", accent: "#c9b896", title: "A história\nque contas\nsobre ti.", body: "", footer: "Os 7 Véus do Despertar" },
+              { bg: "#f7f5f0", text: "#3d3630", accent: "#3d3630", title: "A memória não guarda\ntudo o que viveste.", body: "Guarda o que confirma\naquilo em que já acreditas.", footer: "" },
+              { bg: "#1a1a2e", text: "#f7f5f0", accent: "#c9b896", title: "E as histórias\nque conta sobre ti\ntornam-se\nquem tu és.", body: "Aos poucos.\nSem que percebas.", footer: "" },
+              { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "E se houvesse\ncapítulos\nque esqueceste?", body: "Talvez a história\nnão esteja fechada.", footer: "Há mais para ti." },
+            ],
+            caption: "Não estamos presas ao que vivemos.\n\nEstamos presas às histórias que contamos sobre o que vivemos.\n\nE às vezes esquecemos capítulos inteiros.\n\nE se a história não estiver fechada?\n\n#OsSeteVeus #VeuDaMemoria #Autoconhecimento",
+          },
+        ],
+      },
+      {
+        day: "Turbilhão",
+        dayShort: "Turb",
+        theme: "Há algo em ti que os vê passar",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#0d1b2a", text: "#f7f5f0", accent: "#7a8c6e", format: "square",
+              title: "A mente não para.\n\nE eu confundo isso\ncom ser eu.",
+              body: "",
+              footer: "Os 7 Véus do Despertar",
+            },
+            caption: "Um pensamento atrás do outro.\n\nO que disseste. O que falhaste. O que pode correr mal. O que tinhas de ter feito.\n\nE de repente já não estás a ter pensamentos — estás a ser eles.\n\nIsso não é a mesma coisa. Mas demora a perceber.\n\nReconheces?\n\n#OsSeteVeus #VeuDoTurbilhao #Autoconhecimento",
+          },
+        ],
+      },
+      {
+        day: "Esforço",
+        dayShort: "Esf",
+        theme: "E se parasses um momento",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "Há uma voz que diz:\nainda não.\nMais um esforço.\nDepois descansas.\n\nIsto há quanto tempo?",
+              body: "",
+              footer: "Os 7 Véus do Despertar",
+            },
+            caption: "Nunca é suficiente.\n\nMais um projecto. Mais uma meta. Mais um esforço. \"Depois descansas.\"\n\nE essa voz — quando foi a última vez que ficou satisfeita?\n\nE se não houver um depois — só este agora?\n\n#OsSeteVeus #VeuDoEsforco #Autoconhecimento",
+          },
+        ],
+      },
+      {
+        day: "Desolação",
+        dayShort: "Desol",
+        theme: "A quietude que assusta",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#2a2420", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "Há momentos\nem que tudo\nfica quieto.\n\nE a quietude\nassusta mais\ndo que o barulho.",
+              body: "",
+              footer: "Os 7 Véus do Despertar",
+            },
+            caption: "Não saber o que sentes. Não querer nada em particular. Não conseguir nomear o que se passa.\n\nIsso não é ausência de vida.\n\nÉ um tipo de presença que ainda não encontrou forma.\n\nFica aqui um momento.\n\n#OsSeteVeus #VeuDaDesolacao #Autoconhecimento",
+          },
+        ],
+      },
+      {
+        day: "Horizonte",
+        dayShort: "Hor",
+        theme: "O quando que recua sempre",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", format: "square",
+              title: "Há um «quando»\nque carregamos\nconnosco.\n\nQuando estiver\ntudo resolvido.",
+              body: "Esse quando\nrecua sempre\num pouco mais.",
+              footer: "Os 7 Véus do Despertar",
+            },
+            caption: "Quando tiver este trabalho. Quando resolver este problema. Quando a minha vida estiver assim.\n\nE esse quando recua sempre um pouco mais.\n\nE se o momento que esperavas fosse sempre este?\n\n#OsSeteVeus #VeuDoHorizonte #Autoconhecimento",
+          },
+        ],
+      },
+      {
+        day: "Dualidade",
+        dayShort: "Dual",
+        theme: "A janela entre mim e o resto",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", format: "square",
+              title: "Às vezes sinto-me\nseparada de tudo.\n\nComo se houvesse\numa janela\nentre mim\ne o que acontece.",
+              body: "",
+              footer: "Os 7 Véus do Despertar",
+            },
+            caption: "É a sensação mais solitária de todas.\n\nE também a mais partilhada.\n\nHá algo do outro lado dessa janela que não te esqueceu.\n\nReconheces?\n\n#OsSeteVeus #VeuDaDualidade #Autoconhecimento",
+          },
+          {
+            platform: "instagram",
+            type: "Carrossel — Os 7 Véus",
+            carousel: [
+              { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "7 frases\nque passam\npor verdade.\n\nReconheces\nalguma?", body: "", footer: "Guarda esta publicação.", bgImage: "/images/mandala-7veus.png" },
+              { bg: "#c9b896", text: "#3d3630", accent: "#f7f5f0", title: "«Sempre fui assim.»", body: "", footer: "Permanência" },
+              { bg: "#1a1a2e", text: "#f7f5f0", accent: "#c9b896", title: "«O que me aconteceu\ndefine quem sou.»", body: "", footer: "Memória" },
+              { bg: "#0d1b2a", text: "#f7f5f0", accent: "#7a8c6e", title: "«Não consigo\nparar de pensar.»", body: "", footer: "Turbilhão" },
+              { bg: "#2a2420", text: "#f7f5f0", accent: "#c9b896", title: "«Ainda não cheguei\nonde devia.»", body: "", footer: "Esforço" },
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "«Não sei\no que quero.»", body: "", footer: "Desolação" },
+              { bg: "#2a3a2a", text: "#f7f5f0", accent: "#7a8c6e", title: "«Quando estiver\ntudo resolvido,\ndescansarei.»", body: "", footer: "Horizonte" },
+              { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "«Sinto-me separada\nde tudo.»\n\nTalvez.", body: "", footer: "Os 7 Véus do Despertar — seteveus.space" },
+            ],
+            caption: "7 frases que passam por verdade.\n\nNão são diagnósticos. São reconhecimentos.\n\nSe te reconheceste em alguma — estás no sítio certo.\n\nGuarda. Volta quando precisares.\n\n#OsSeteVeus #7Veus #Autoconhecimento",
+          },
+        ],
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // TEMA 2 — ESPELHOS
+  // Colecção de ficção interior
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    weekNumber: 2,
+    title: "Espelhos",
+    subtitle: "Colecção de ficção interior — cada espelho revela um véu",
+    days: [
+      {
+        day: "Espelho da Ilusão",
+        dayShort: "Ilus",
+        theme: "A vida que se tornou automática",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", format: "square",
+              title: "\"Quando foi que\nescolhi tomar café\nem vez de chá?\"",
+              body: "Uma pergunta absurda\nque muda tudo.",
+              footer: "O Espelho da Ilusão",
+            },
+            caption: "\"Quando foi que escolhi tomar café em vez de chá?\"\n\nÉ a pergunta mais absurda. Sara sabe isso.\nE foi a que mudou tudo.\n\nseteveus.space\n\n#OsSeteVeus #EspelhoDaIlusao",
+          },
+          {
+            platform: "instagram",
+            type: "Carrossel — 5 frases",
+            carousel: [
+              { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "5 frases que mudam\na forma como te vês.", body: "", footer: "O Espelho da Ilusão", bgImage: "/images/espelho-ilusao.png" },
+              { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "\"Via, mas não sentia.\nRegistava, mas não\nparticipava.\"", body: "Como quem assiste\na um espectáculo\npor trás de uma\njanela fechada.", footer: "" },
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "\"Não era que não\ntivesse opinião.\nEra que a sua primeira\nreacção nunca era\no que verdadeiramente\npensava.\"", body: "", footer: "" },
+              { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "\"A manhã era bonita\nde uma forma que\nnão pedia esforço\npara ser notada.\"", body: "Ela ainda não sabia\no que fazer com essa beleza.", footer: "" },
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "\"Perguntar,\nmesmo tarde,\né o primeiro gesto\nde se escolher.\"", body: "", footer: "seteveus.space", bgImage: "/images/mandala-7veus.png" },
+            ],
+            caption: "5 frases d'O Espelho da Ilusão que mudam a forma como te vês.\n\nGuarda esta publicação. Volta quando precisares.\n\n#OsSeteVeus #EspelhoDaIlusao #Citacoes #FiccaoPsicologica #Autoconhecimento",
+          },
+          {
+            platform: "instagram",
+            type: "Teaser — Nó da Herança",
+            visual: {
+              bg: "#1a1a2e", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "A mãe sempre viu.\nEsperou anos.",
+              body: "Agora que Sara acordou,\nHelena tem algo\npara lhe dizer.\n\nO Nó da Herança.",
+              footer: "Disponível após completar o Espelho",
+            },
+            caption: "Sara viu o véu.\n\nMas há um nó que ficou por desatar — o silêncio herdado entre mãe e filha.\n\nO Nó da Herança está disponível para quem completou O Espelho da Ilusão.\n\n#OsSeteVeus #NoDaHeranca #FiccaoRelacional",
+          },
+          {
+            platform: "whatsapp",
+            type: "WhatsApp Status",
+            carousel: [
+              { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "\"Quando foi que\nescolhi tomar café\nem vez de chá?\"", body: "Uma pergunta absurda\nque muda tudo.\n\nO Espelho da Ilusão.", footer: "seteveus.space" },
+            ],
+            caption: "\"Quando foi que escolhi tomar café em vez de chá?\"\n\nUma pergunta absurda. Que não pede resposta. Só atenção.\n\nO Espelho da Ilusão — seteveus.space\n\n#OsSeteVeus #EspelhoDaIlusao",
+          },
+        ],
+      },
+      {
+        day: "Espelho do Medo",
+        dayShort: "Medo",
+        theme: "O que o medo calou",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#0d1b2a", text: "#f7f5f0", accent: "#7a8c6e", format: "square",
+              title: "O medo é humano.\nViver uma vida inteira\nem função dele\né outra coisa.",
+              body: "E essa outra coisa\npode mudar.",
+              footer: "O Espelho do Medo",
+            },
+            caption: "O medo avisa. É o seu trabalho.\n\nMas há um ponto em que deixamos de ouvi-lo como aviso e começamos a vivê-lo como instrução.\n\nO Espelho do Medo é sobre o Rui — e sobre o que ele só conseguiu dizer quando parou de obedecer a essa instrução.\n\nReconheces?\n\n#OsSeteVeus #EspelhoDoMedo #FiccaoPsicologica #Autoconhecimento",
+          },
+          {
+            platform: "instagram",
+            type: "Carrossel — 5 frases",
+            carousel: [
+              { bg: "#0d1b2a", text: "#7a8c6e", accent: "#f7f5f0", title: "5 frases d'O\nEspelho do Medo.", body: "", footer: "", bgImage: "/images/espelho-medo.png" },
+              { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "\"E se os dedos\nque um dia desenharam\nmuseus impossíveis\nainda souberem\nmover-se?\"", body: "", footer: "" },
+              { bg: "#0d1b2a", text: "#f7f5f0", accent: "#7a8c6e", title: "\"A sede de quem\npassou tanto tempo\nsem beber que\nse esqueceu\nde que tinha sede.\"", body: "", footer: "" },
+              { bg: "#ebe7df", text: "#3d3630", accent: "#7a8c6e", title: "\"Ver o medo.\nE continuar\nmesmo assim.\"", body: "Não é fraqueza.\nÉ o custo que parece\nmaior do que o custo de ficar.", footer: "" },
+              { bg: "#0d1b2a", text: "#f7f5f0", accent: "#7a8c6e", title: "\"Há agora\num talvez.\"", body: "Minúsculo. Frágil.\nQuase inaudível.\nMas novo.\nÉ a primeira coisa viva.", footer: "O Espelho do Medo", bgImage: "/images/mandala-7veus.png" },
+            ],
+            caption: "Frases d'O Espelho do Medo — porque às vezes precisamos ler para reconhecer o que sempre soubemos.\n\nGuarda para voltares quando precisares.\n\n#OsSeteVeus #EspelhoDoMedo #Citacoes #FiccaoPsicologica",
+          },
+          {
+            platform: "instagram",
+            type: "Teaser — Nó do Silêncio",
+            visual: {
+              bg: "#0d1b2a", text: "#f7f5f0", accent: "#7a8c6e", format: "square",
+              title: "Há coisas que\nficaram por dizer\nentre o Rui e a Ana.",
+              body: "O Nó do Silêncio.\nEm breve.",
+              footer: "Os Sete Véus",
+            },
+            caption: "O Rui e a Ana.\n\nO que ficou por dizer entre eles — o que nunca chegou a ter palavras.\n\nO Nó do Silêncio — em breve, para quem completar O Espelho do Medo.\n\n#OsSeteVeus #NodoSilencio #EmBreve",
+          },
+          {
+            platform: "whatsapp",
+            type: "WhatsApp Status",
+            carousel: [
+              { bg: "#0d1b2a", text: "#f7f5f0", accent: "#7a8c6e", title: "O medo é humano.\nViver uma vida\nem função dele\né outra coisa.", body: "E essa outra coisa\npode mudar.\n\nO Espelho do Medo.", footer: "seteveus.space" },
+            ],
+            caption: "O Espelho do Medo está disponível.\n\nÉ sobre o Rui — e sobre o que o medo calou durante anos.\n\nReconheces-te?\n\nseteveus.space\n\n#OsSeteVeus #EspelhoDoMedo",
+          },
+        ],
+      },
+      {
+        day: "Em breve",
+        dayShort: "→",
+        theme: "Culpa · Identidade · Controlo · Desejo · Separação",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post — Espelho da Culpa",
+            visual: {
+              bg: "#c97070", text: "#f7f5f0", accent: "#ebe7df", format: "square",
+              title: "Fazes tanto\npelos outros\nque querer algo\nso para ti\nparece um erro.",
+              body: "",
+              footer: "O Espelho da Culpa ~ Abril 2026",
+            },
+            caption: "Não é culpa de ter feito algo errado.\n\nÉ culpa de querer. De existir com necessidades. De não caber no papel que te atribuíram.\n\nO Espelho da Culpa — Abril 2026.\n\n#OsSeteVeus #EspelhoDaCulpa",
+          },
+          {
+            platform: "instagram",
+            type: "Post — Espelho da Identidade",
+            visual: {
+              bg: "#7a7a9e", text: "#f7f5f0", accent: "#ebe7df", format: "square",
+              title: "Se tiras o papel\nde mãe, de filha,\nde profissional —\no que sobra?",
+              body: "",
+              footer: "O Espelho da Identidade ~ Maio 2026",
+            },
+            caption: "Não é uma pergunta com resposta rápida.\n\nÉ a pergunta que o Espelho da Identidade faz devagar — capítulo a capítulo — até surgir algo que é teu, não construído para agradar.\n\nMaio 2026.\n\n#OsSeteVeus #EspelhoDaIdentidade",
+          },
+          {
+            platform: "instagram",
+            type: "Post — Espelhos 5-7",
+            visual: {
+              bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "Três histórias\nainda por vir.",
+              body: "Controlo — Junho\nDesejo — Julho\nSeparação — Agosto",
+              footer: "Os Sete Espelhos ~ seteveus.space",
+            },
+            caption: "Cada espelho é uma personagem.\nCada personagem vive o que calavas.\n\nControlo. Desejo. Separação.\n\nÀ medida que chegam, estão cá.\n\n#OsSeteVeus #EmBreve",
+          },
+        ],
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // TEMA 3 — NÓS
+  // O que se passa entre duas pessoas quando um véu cai
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    weekNumber: 3,
+    title: "Nós",
+    subtitle: "O que se passa entre duas pessoas quando um véu cai",
+    days: [
+      {
+        day: "O que são os Nós",
+        dayShort: "Intro",
+        theme: "Não são sequelas. São o que ficou por dizer.",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Carrossel — explicação",
+            carousel: [
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Há histórias\nque só existem\nentre duas pessoas.", body: "", footer: "Os Nós" },
+              { bg: "#f7f5f0", text: "#3d3630", accent: "#3d3630", title: "Nos Espelhos,\nvês-te a ti mesma.", body: "A Sara. O Rui. A Luísa.\nPersonagens que se tornam\nesperhos.", footer: "" },
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Nos Nós,\nvês o que se\npassou entre ti\ne alguém.", body: "O silêncio herdado.\nO medo que calou.\nA culpa disfarçada.", footer: "" },
+              { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Só lês o Nó\nse viveste\no Espelho.", body: "Não é uma regra.\nÉ uma continuação.", footer: "Os Sete Véus" },
+            ],
+            caption: "Os Nós não são sequelas.\n\nSão o que ficou por dizer. O que se passou do outro lado da história — entre duas pessoas quando um véu cai.\n\nCada Espelho tem um Nó que lhe corresponde. E só abre depois de teres vivido o Espelho.\n\n#OsSeteVeus #OsNos #FiccaoRelacional",
+          },
+        ],
+      },
+      {
+        day: "Nó da Herança",
+        dayShort: "Her",
+        theme: "O silêncio herdado entre mãe e filha",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "A mãe sempre viu.\nEsperou anos.\n\nAgora que Sara\nacordou, Helena\ntem algo para\nlhe dizer.",
+              body: "",
+              footer: "O Nó da Herança",
+            },
+            caption: "O Nó da Herança não é uma continuação.\n\nÉ o que ficou por dizer.\n\nQuando Sara viu o véu da ilusão, não estava sozinha nessa jornada. A Helena — a mãe — viu tudo. E esperou.\n\nDisponível para quem completou O Espelho da Ilusão.\n\n#OsSeteVeus #NoDaHeranca #FiccaoRelacional #MaeFilha",
+          },
+          {
+            platform: "whatsapp",
+            type: "WhatsApp Status",
+            carousel: [
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "A mãe sempre viu.\nEsperou anos.\n\nAgora que Sara\nacordou, Helena\ntem algo para\nlhe dizer.", body: "", footer: "O Nó da Herança" },
+            ],
+            caption: "Completaste O Espelho da Ilusão?\n\nHá algo que ficou por dizer.\n\nO Nó da Herança — disponível em seteveus.space\n\n#OsSeteVeus #NoDaHeranca",
+          },
+        ],
+      },
+      {
+        day: "Em breve",
+        dayShort: "→",
+        theme: "Os restantes Nós acompanham os Espelhos",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post — Nó do Silêncio",
+            visual: {
+              bg: "#0d1b2a", text: "#f7f5f0", accent: "#7a8c6e", format: "square",
+              title: "O medo calou\ntudo o que\nele queria dizer.",
+              body: "O Nó do Silêncio.\nEm breve.",
+              footer: "Os Sete Véus",
+            },
+            caption: "O Rui e a Ana.\n\nO que ficou por dizer quando o medo governou.\n\nO Nó do Silêncio — em breve, para quem completar O Espelho do Medo.\n\n#OsSeteVeus #NodoSilencio #EmBreve",
+          },
+        ],
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // TEMA 4 — COMUNIDADE
+  // Ecos — onde as vozes se encontram
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    weekNumber: 4,
+    title: "Comunidade",
+    subtitle: "Ecos — reflexões anónimas. Tudo desaparece.",
+    days: [
+      {
+        day: "O que são os Ecos",
+        dayShort: "Ecos",
+        theme: "Reflexões anónimas. Tudo impermanente.",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#1a1a2e", text: "#f7f5f0", accent: "#7a8c6e", format: "square",
+              title: "As tuas palavras\ndesaparecem\nem 30 dias.\n\nMas antes,\nalguém se\nreconheceu nelas.",
+              body: "",
+              footer: "Comunidade Ecos",
+            },
+            caption: "Na Comunidade Ecos não há nomes. Não há likes.\n\nHá ecos — reflexões que partilhas e que expiram em 30 dias. E há reconhecimentos — o gesto silencioso de dizer \"reconheço-me nisto\".\n\nTudo impermanente. Tudo real.\n\nIncluído com qualquer acesso à plataforma.\n\n#OsSeteVeus #ComunidadeEcos #ReflexoesAnonimas",
+          },
+          {
+            platform: "instagram",
+            type: "Carrossel — como funciona",
+            carousel: [
+              { bg: "#1a1a2e", text: "#f7f5f0", accent: "#7a8c6e", title: "Lês sozinha.\nMas não\nestás só.", body: "", footer: "Comunidade Ecos" },
+              { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "Ecos", body: "Reflexões anónimas.\nPartilhas o que sentiste.\nExpira em 30 dias.", footer: "" },
+              { bg: "#1a1a2e", text: "#f7f5f0", accent: "#7a8c6e", title: "Reconhecimentos", body: "Não há likes.\nHá \"reconheço-me\".\n\nUma diferença\nque muda tudo.", footer: "" },
+              { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "Sussurros", body: "Uma mensagem\nde uma só via.\nExpira em 7 dias\nou depois de ser lida.", footer: "" },
+              { bg: "#1a1a2e", text: "#f7f5f0", accent: "#7a8c6e", title: "Sem nomes.\nSem fotos.\nTudo desaparece.", body: "Mas o reconhecimento\nfica.", footer: "seteveus.space/comunidade" },
+            ],
+            caption: "A Comunidade Ecos não é uma rede social.\n\nÉ um espaço de reconhecimento silencioso — onde partilhas o que sentiste e outra pessoa, algures, diz \"eu também\".\n\nSem nomes. Sem fotos. Tudo desaparece.\n\n#OsSeteVeus #ComunidadeEcos #ReflexoesAnonimas #Comunidade",
+          },
+        ],
+      },
+      {
+        day: "Vozes da Comunidade",
+        dayShort: "Vozes",
+        theme: "O que dizem as leitoras",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Eco anónimo — Espelho da Ilusão",
+            visual: {
+              bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "\"saí do modo automático.\nnão sei para onde vou\nmas pelo menos\nestou acordada.\"",
+              body: "",
+              footer: "~ leitora anónima, Espelho da Ilusão",
+            },
+            caption: "Isto chegou-me através da Comunidade Ecos.\n\nNão há nome. Não sei quem é. Mas sei que é real.\n\n\"saí do modo automático. não sei para onde vou mas pelo menos estou acordada.\"\n\nÉ assim que começa.\n\n#OsSeteVeus #ComunidadeEcos #EspelhoDaIlusao",
+          },
+          {
+            platform: "instagram",
+            type: "Eco anónimo — Espelho do Medo",
+            visual: {
+              bg: "#0d1b2a", text: "#f7f5f0", accent: "#7a8c6e", format: "square",
+              title: "\"o silêncio entre nós\nnão era paz.\nera tudo o que\nnunca dissemos.\"",
+              body: "",
+              footer: "~ leitora anónima, Espelho do Medo",
+            },
+            caption: "Da Comunidade Ecos:\n\n\"o silêncio entre nós não era paz. era tudo o que nunca dissemos.\"\n\nÀs vezes a frase certa de outra pessoa torna-se tua.\n\n#OsSeteVeus #ComunidadeEcos #EspelhoDoMedo",
+          },
+          {
+            platform: "instagram",
+            type: "Eco anónimo — Reconhecimento",
+            visual: {
+              bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", format: "square",
+              title: "\"chorei no banho.\noutra vez.\nmas desta vez\nnão foi por tristeza.\nfoi por reconhecimento.\"",
+              body: "",
+              footer: "~ leitora anónima, Espelho da Ilusão",
+            },
+            caption: "\"chorei no banho. outra vez. mas desta vez não foi por tristeza. foi por reconhecimento.\"\n\nIsso é o que acontece quando algo que leste te devolve algo que sempre soubeste.\n\nDa Comunidade Ecos.\n\n#OsSeteVeus #ComunidadeEcos #Reconhecimento",
+          },
+        ],
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // TEMA 5 — REFLEXÕES
+  // Frases, perguntas e observações da autora
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    weekNumber: 5,
+    title: "Reflexões",
+    subtitle: "Frases, perguntas e observações da autora",
+    days: [
+      {
+        day: "Há mais para ti",
+        dayShort: "Assin",
+        theme: "A assinatura da Vivianne",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "Há mais para ti.",
+              body: "Não como promessa.\nComo observação.\nDe alguém que\ntambém passou por aqui.",
+              footer: "seteveus.space",
+            },
+            caption: "Há mais para ti.\n\nNão estou a dizer que a tua vida está errada. Não estou a dizer que precisas de mudar.\n\nEstou a dizer que vejo em ti algo que talvez ainda não vejas. E que há um caminho — não um destino — para explorar.\n\nIsso é tudo.\n\n#OsSeteVeus #HaMaisParaTi #Autoconhecimento",
+          },
+          {
+            platform: "instagram",
+            type: "Post Feed — O mundo convida",
+            visual: {
+              bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", format: "square",
+              title: "A manhã era bonita\nde uma forma que\nnão pedia esforço\npara ser notada.",
+              body: "Ela ainda não sabia\no que fazer com essa beleza.",
+              footer: "Os Sete Véus",
+            },
+            caption: "Isto é do Espelho da Ilusão. Sara, pela primeira vez, parou e reparou na manhã.\n\nNão fez nada com isso. Só ficou ali.\n\nDurante quanto tempo é que acordas e já estás a pensar no que tens de fazer?\n\nIsso mesmo. Esse espaço entre acordar e começar — onde foi parar?\n\n#OsSeteVeus #EspelhoDaIlusao #Reflexao #Autoconhecimento",
+          },
+        ],
+      },
+      {
+        day: "Perguntas abertas",
+        dayShort: "Perg",
+        theme: "Perguntas que não precisam de resposta imediata",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#2a2420", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "Quando foi a última\nvez que fizeste\nalgo só porque\nquiseste?",
+              body: "Sem explicar.\nSem pedir licença.",
+              footer: "Os Sete Véus",
+            },
+            caption: "Quando foi a última vez que fizeste algo só porque quiseste?\n\nSem explicar a ninguém. Sem pedir desculpa por querer. Sem justificar a escolha.\n\nNão precisa de resposta agora. Só de atenção.\n\n#OsSeteVeus #PerguntasAbertas #Autoconhecimento #Reflexao",
+          },
+          {
+            platform: "instagram",
+            type: "Post Feed",
+            visual: {
+              bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", format: "square",
+              title: "O que perdeste\nno caminho de\nte tornares\nquem se espera\nque sejas?",
+              body: "",
+              footer: "Os Sete Véus",
+            },
+            caption: "O que perdeste?\n\nNão no sentido de tragédia. No sentido de: há partes de ti que foram ficando para trás, silenciadas, por parecarem inconvenientes.\n\nQue partes são essas?\n\nNão precisas de responder. Só de deixar a pergunta estar.\n\n#OsSeteVeus #PerguntasAbertas #Reflexao #Autoconhecimento",
+          },
+          {
+            platform: "instagram",
+            type: "Post Feed — O corpo lembra",
+            visual: {
+              bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", format: "square",
+              title: "O corpo sabe\ncoisas que a mente\ndemora a aceitar.",
+              body: "O aperto no peito\nnão é apenas tensão.\nÉ informação.",
+              footer: "Os Sete Véus",
+            },
+            caption: "O corpo é o primeiro a saber.\n\nAntes de a mente nomear o que sente, o corpo já registou — o aperto no peito, a tensão nos ombros, a fadiga que não é de trabalho.\n\nNão é fraqueza. É informação.\n\nO que está o teu corpo a tentar dizer-te?\n\n#OsSeteVeus #OCorpoLembra #Autoconhecimento #Reflexao",
+          },
+          {
+            platform: "instagram",
+            type: "Reel — script",
+            reelScript: {
+              hook: "Há uma pergunta que ninguém te faz. E que talvez precises de te fazer a ti mesma.",
+              scenes: [
+                "Close nos olhos de alguém — câmara lenta. Silêncio.",
+                "Texto aparece: \"Quando foi a última vez que fizeste algo só porque quiseste?\"",
+                "Imagens quotidianas: mãos a escrever, janela com chuva, chávena ao amanhecer.",
+                "Voz calma (off): \"Sem explicar. Sem pedir licença. Só porque quiseste.\"",
+                "Texto final: \"Há mais para ti.\" + logo Os Sete Véus",
+              ],
+              cta: "Descobre em seteveus.space",
+              music: "Música ambiente suave — piano ou natureza. Sem letra.",
+              duration: "20-30s",
+            },
+            caption: "Quando foi a última vez que fizeste algo só porque quiseste?\n\nSem justificar. Sem pedir desculpa.\n\nEssa pergunta é o início.\n\n#OsSeteVeus #Autoconhecimento #Reflexao #Reels",
+          },
+        ],
+      },
+      {
+        day: "O corpo lembra",
+        dayShort: "Corpo",
+        theme: "O corpo como testemunha",
+        slots: [
+          {
+            platform: "instagram",
+            type: "Carrossel — 5 formas de reconhecer",
+            carousel: [
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "5 sinais de que\nalgo em ti\nestá a acordar.", body: "", footer: "Guarda esta publicação." },
+              { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "O mundo aparece bonito\ne tu não sabes\no que fazer com isso.", body: "Não estás habituada\na receber sem mereceres.", footer: "" },
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "O corpo diz algo\nantes de a mente\nconseguir nomear.", body: "O aperto no peito.\nA tensão nos ombros.\nIsso é informação.", footer: "" },
+              { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Não precisas de estar\npartida para reconhecer\no que não funciona.", body: "Às vezes é só\numa pergunta pequena\nque não cala.", footer: "" },
+              { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Começas a observar-te\nsem te julgar logo\na seguir.", body: "É diferente\ndo que parece.\nE demora.", footer: "" },
+              { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "As coisas mais difíceis\ncomeçam a poder\nser ditas.", body: "Devagar.\nSem drama.\nSó verdade.", footer: "Os Sete Véus" },
+            ],
+            caption: "Não é sobre saber tudo. É sobre reparar.\n\nO mundo convida. O corpo lembra. A fissura é a entrada da luz.\n\nIsso é o suficiente para começar.\n\n#OsSeteVeus #Reflexao #Autoconhecimento #PresencaCompassiva",
+          },
+        ],
+      },
+    ],
+  },
+];
+
 // ─── CARROSSEIS PROFISSIONAIS (slide a slide) ────────────────────────────────
 
 export type ProfessionalCarousel = {
@@ -1826,505 +2442,584 @@ export type ProfessionalCarousel = {
   };
 };
 
+
 export const professionalCarousels: ProfessionalCarousel[] = [
+
+  // ─── 1. RECONHECIMENTO — o gancho ────────────────────────────────────────────
   {
-    id: "carousel-o-que-e",
-    title: "O que são Os Sete Véus?",
-    description: "Carrossel educativo sobre o livro filosófico. Para quem não conhece o projecto.",
+    id: "carousel-cansaco-automatico",
+    title: "Há um tipo de cansaço que não é sono",
+    description: "Gancho de reconhecimento. Para mulheres que funcionam bem mas sentem que estão a assistir à própria vida. Primeiro carrossel a publicar.",
     slides: [
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Já sentiste que a vida\nque tens não foi\na que escolheste?", body: "", footer: "", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Os Sete Véus\ndo Despertar", body: "Um ensaio filosófico\nsobre despertar\nde consciência.\n\n232 páginas.\n7 véus que te escondem\nde ti mesma.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", title: "Na plataforma digital,\nnão é só ler.", body: "Lês. Respiras.\nReflectes. Escreves.\n\nCada capítulo tem pausas\nde respiração guiada\ne um diário pessoal.", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Os 7 Véus:", body: "1. Permanência — a crença num eu fixo\n2. Memória — as histórias do passado\n3. Turbilhão — a identificação com pensamentos\n4. Esforço — a busca incessante\n5. Desolação — o medo do vazio\n6. Horizonte — a ilusão dos finais\n7. Dualidade — a separação eu/mundo", footer: "" },
-      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Já tens o livro físico?\nO acesso digital\né gratuito.", body: "Pede o teu código\nem menos de 2 minutos.", footer: "seteveus.space/pedir-codigo" },
+      {
+        bg: "#2a2520", text: "#f7f5f0", accent: "#c9b896",
+        title: "Há um tipo\nde cansaço\nque não é sono.",
+        body: "", footer: "",
+        bgImage: "/images/mandala-7veus.png",
+      },
+      {
+        bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896",
+        title: "Acordas.\nFazes o que tens de fazer.\nAs coisas funcionam.",
+        body: "És competente.\nEficiente.\nE sentes-te a assistir.",
+        footer: "",
+      },
+      {
+        bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896",
+        title: "Não é depressão.\nNão é ingratidão.",
+        body: "É algo mais subtil:\na sensação de que\na vida é quase tua.",
+        footer: "",
+      },
+      {
+        bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896",
+        title: "Como se um dia,\nsem aviso,\ntivesses parado\nde escolher.",
+        body: "E continuado a funcionar.",
+        footer: "",
+      },
+      {
+        bg: "#2a2520", text: "#c9b896", accent: "#f7f5f0",
+        title: "Reconheces-te?",
+        body: "Há uma história sobre isto.\nE sobre a mulher\nque, numa manhã comum,\ndecidiu perguntar.",
+        footer: "O Espelho da Ilusão ~ seteveus.space",
+        bgImage: "/images/espelho-ilusao.png",
+      },
     ],
-    caption: "Já sentiste que a vida que tens não foi a que escolheste?\n\nOs Sete Véus do Despertar é um ensaio filosófico sobre despertar de consciência. 232 páginas. 7 véus que te escondem de ti mesma.\n\nNa plataforma digital, não é só ler — é uma experiência: lês, respiras, reflectes, escreves.\n\nJá tens o livro físico? O acesso digital é gratuito.\n\n#OsSeteVeus #Autoconhecimento #DespertarDeConsciencia #LivroFilosofico #ExperienciaDigital",
+    caption: "Há um tipo de cansaço que não é sono.\n\nÉ o de fazer exactamente o que se espera de ti — bem — e sentires que estás a assistir. Que a vida funciona, mas não é bem tua.\n\nO Espelho da Ilusão é uma história sobre isso.\n\nseteveus.space\n\n#OsSeteVeus #EspelhoDaIlusao",
     canvaSpecs: {
       dimensions: "1080x1080px (quadrado)",
-      fonts: "Título: Playfair Display / Corpo: Inter ou Lato",
-      colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#7a8c6e", "#ebe7df"],
+      fonts: "Título: Playfair Display / Corpo: Inter Light",
+      colorPalette: ["#2a2520", "#f7f5f0", "#3d3630", "#c9b896"],
     },
   },
+
+  // ─── 2. INTRODUÇÃO À SARA ────────────────────────────────────────────────────
   {
-    id: "carousel-espelho-ilusão",
-    title: "O Espelho da Ilusão — 5 citações",
-    description: "Carrossel de citações reais do livro. Cada slide é uma citação que para o scroll.",
+    id: "carousel-sara-pergunta",
+    title: "Sara fez uma pergunta absurda",
+    description: "Apresenta a personagem Sara sem dizer que é um livro. A história puxa antes do produto aparecer.",
     slides: [
-      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "5 frases que mudam\na forma como te vês.", body: "", footer: "O Espelho da Ilusão", bgImage: "/images/espelho-ilusao.png" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "\"Quando foi que\nescolhi tomar café\nem vez de chá?\"", body: "Uma pergunta absurda\nque muda tudo.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "\"Via, mas não sentia.\nRegistava, mas não\nparticipava.\"", body: "Como quem assiste\na um espectáculo\npor trás de uma\njanela fechada.", footer: "" },
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "\"Não era que não\ntivesse opinião.\nEra que a sua primeira\nreacção nunca era\no que verdadeiramente\npensava.\"", body: "", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "\"Perguntar,\nmesmo tarde,\né o primeiro gesto\nde se escolher.\"", body: "", footer: "seteveus.space", bgImage: "/images/mandala-7veus.png" },
+      {
+        bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0",
+        title: "\"Quando foi que\nescolhi tomar café\nem vez de chá?\"",
+        body: "", footer: "Sara",
+        bgImage: "/images/espelho-ilusao.png",
+      },
+      {
+        bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896",
+        title: "Era uma pergunta\nsem importância.",
+        body: "Sara sabia isso.\nE não conseguia\ndeixar de a fazer.",
+        footer: "",
+      },
+      {
+        bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896",
+        title: "Porque depois de café vs chá,\nvinha a roupa que usava.",
+        body: "O trabalho que tinha.\nA vida que levava.\n\nE se tudo tinha sido assim —\nrecebido, não escolhido?",
+        footer: "",
+      },
+      {
+        bg: "#ebe7df", text: "#3d3630", accent: "#c9b896",
+        title: "Isto não é uma crise.",
+        body: "É um acordar.\nDevagar.\nAo ritmo de quem\nprimeiro tem de notar.",
+        footer: "",
+      },
+      {
+        bg: "#2a2520", text: "#c9b896", accent: "#f7f5f0",
+        title: "A história de Sara\né um espelho.",
+        body: "O que ela vê, talvez vejas.\nO que ela pergunta,\ntalvez precises de perguntar.",
+        footer: "O Espelho da Ilusão ~ seteveus.space",
+      },
     ],
-    caption: "5 frases d'O Espelho da Ilusão que mudam a forma como te vês.\n\nGuarda esta publicação. Volta quando precisares.\n\n#OsSeteVeus #EspelhoDaIlusão #CitaçõesLiterarias #FicçãoPsicológica #Autoconhecimento",
+    caption: "\"Quando foi que escolhi tomar café em vez de chá?\"\n\nÉ uma pergunta absurda. Sara sabe isso.\n\nMas depois de café vs chá, vinha a roupa, o trabalho, a vida. E a pergunta já não era absurda.\n\nO Espelho da Ilusão — seteveus.space\n\n#OsSeteVeus #EspelhoDaIlusao",
     canvaSpecs: {
       dimensions: "1080x1080px (quadrado)",
-      fonts: "Citações: Playfair Display Italic / Fonte: Inter Light",
+      fonts: "Citações: Playfair Display Italic / Corpo: Inter Light",
       colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#ebe7df"],
     },
   },
+
+  // ─── 3. O QUE SÃO OS ESPELHOS ────────────────────────────────────────────────
   {
-    id: "carousel-experiência-vs-livro",
-    title: "Papel vs Digital — o que muda na experiência",
-    description: "Carrossel comparativo entre ter só o livro físico e ter o acesso digital. Para campanha Pede o teu código.",
+    id: "carousel-o-que-sao-espelhos",
+    title: "O que são os Espelhos (sem usar a palavra livro)",
+    description: "Apresenta os Espelhos como experiência emocional, não como produto. Para quem ainda não conhece.",
     slides: [
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "O livro físico\né só o início.", body: "", footer: "", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "Só com o livro físico:", body: "Lês.\nFechas.\nGuardas na estante.\n\nA experiência fica\nno papel.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Com o acesso digital:", body: "Lês cada véu\nem 3 níveis de profundidade.\nEscreves no teu diário.\nPráticas guiadas.\nComunidade anónima.", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "3 níveis de leitura:", body: "Semente — guia acessível\nRaiz — notas filosóficas\nÁrvore — texto original, puro", footer: "" },
-      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Já tens o livro?\nO acesso digital\né gratuito.", body: "Pede o teu código\nem menos de 2 minutos.", footer: "seteveus.space/pedir-codigo" },
+      {
+        bg: "#1a1814", text: "#f7f5f0", accent: "#c9b896",
+        title: "Às vezes precisas\nde ver a tua vida\nnoutros olhos\npara reconhecer os teus.",
+        body: "", footer: "",
+        bgImage: "/images/mandala-7veus.png",
+      },
+      {
+        bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896",
+        title: "Os Espelhos são histórias.",
+        body: "Ficção.\nMas a personagem\nvive o que tu calavas.",
+        footer: "",
+      },
+      {
+        bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896",
+        title: "Não te dizem\no que fazer.",
+        body: "Não te ensinam nada.\nDeixam-te reconhecer\no que já sabes.",
+        footer: "",
+      },
+      {
+        bg: "#ebe7df", text: "#3d3630", accent: "#c9b896",
+        title: "São 7 histórias.",
+        body: "Cada uma revela um véu:\nIlusão. Medo. Culpa.\nIdentidade. Controlo.\nDesejo. Separação.",
+        footer: "",
+      },
+      {
+        bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896",
+        title: "Lês ao teu ritmo.\nCapítulo a capítulo.",
+        body: "Com um diário pessoal.\nE uma comunidade\nque desaparece.",
+        footer: "",
+      },
+      {
+        bg: "#2a2520", text: "#c9b896", accent: "#f7f5f0",
+        title: "Começa pelo\nEspelho da Ilusão.",
+        body: "", footer: "seteveus.space/experiencias",
+        bgImage: "/images/mandala-7veus.png",
+      },
     ],
-    caption: "O livro físico é só o início.\n\nSó com o papel: lês, fechas, guardas. Com o acesso digital: lês em 3 níveis de profundidade, escreves no diário, práticas guiadas, comunidade anónima.\n\nOs 3 níveis:\n— Semente: guia acessível com exemplos\n— Raiz: texto com notas de contexto filosófico\n— Árvore: texto original, puro, sem interrupções\n\nJá tens o livro? O acesso digital é gratuito.\n\n#OsSeteVeus #ExperienciaDigital #LivroFilosofico #Autoconhecimento #PedeOTeuCodigo",
+    caption: "Não é autoajuda. É ficção.\n\nMas a personagem vive o que tu calavas. E isso muda tudo na forma como lês — porque não estás a aprender. Estás a reconhecer.\n\nOs Espelhos — 7 histórias que te devolvem ao que já sabes.\n\nseteveus.space/experiencias\n\n#OsSeteVeus #FiccaoInterior",
     canvaSpecs: {
       dimensions: "1080x1080px (quadrado)",
-      fonts: "Título: Playfair Display Bold / Corpo: Inter",
-      colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#7a8c6e"],
+      fonts: "Título: Playfair Display / Corpo: Inter Light",
+      colorPalette: ["#1a1814", "#f7f5f0", "#3d3630", "#c9b896", "#ebe7df"],
     },
   },
+
+  // ─── 4. O NÓ — O DIFERENCIAL MAIS PODEROSO ───────────────────────────────────
   {
-    id: "carousel-funil-livro-físico",
-    title: "Tens o livro físico? Descobre o que mais te espera",
-    description: "Carrossel para o funil do livro físico. Mostra o valor do acesso digital gratuito.",
+    id: "carousel-no-depois-do-espelho",
+    title: "A história que só existe depois",
+    description: "Explica o Nó da Herança. O conceito de desbloqueio emocional é único — nenhum outro produto faz isto. Para quem já leu ou está a ler o Espelho.",
     slides: [
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Tens Os 7 Véus\ndo Despertar?", body: "O teu livro\nabre portas\nque ainda não conheces.", footer: "", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "O que ganhas\ncom o acesso digital:", body: "", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "1. Leitura em\n3 níveis", body: "Cada véu pode ser lido\nem 3 profundidades:\nSemente, Raiz e Árvore.\n\nDo guia acessível\nao texto original, puro.", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "2. Diário + Práticas", body: "Diário reflexivo pessoal.\nPráticas guiadas por véu.\nRespiração entre capítulos.\n\nNão é só ler —\né viver o que leste.", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "3. Comunidade anónima", body: "Ecos: um espaço onde\nas vozes se encontram.\nReflexões partilhadas.\nTudo impermanente.", footer: "" },
-      { bg: "#c9b896", text: "#3d3630", accent: "#f7f5f0", title: "Gratuito.\nSem compromisso.", body: "Pede o teu código\nem menos de 2 minutos.", footer: "seteveus.space/pedir-codigo" },
+      {
+        bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0",
+        title: "Há uma segunda história.\nSó existe depois da primeira.",
+        body: "", footer: "",
+        bgImage: "/images/capa-no-herança2.png",
+      },
+      {
+        bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896",
+        title: "Quando Sara completou\no Espelho da Ilusão,\num texto novo abriu.",
+        body: "A história de Helena.\nA mãe.",
+        footer: "",
+      },
+      {
+        bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896",
+        title: "Helena sempre soube.",
+        body: "Viu os mesmos sinais\nque Sara não via.\nCalou os mesmos medos.\nEsperou anos.",
+        footer: "",
+      },
+      {
+        bg: "#ebe7df", text: "#3d3630", accent: "#c9b896",
+        title: "\"Agora que Sara\nacordou,\nHelena tem algo\npara lhe dizer.\"",
+        body: "", footer: "",
+      },
+      {
+        bg: "#2a2520", text: "#f7f5f0", accent: "#c9b896",
+        title: "O Nó não é\numa continuação.",
+        body: "É o que estava a acontecer\ndo outro lado.\nSó se vê depois\nde ver o espelho.",
+        footer: "",
+      },
+      {
+        bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0",
+        title: "O Nó da Herança.",
+        body: "Disponível para quem\ncompletou o Espelho da Ilusão.",
+        footer: "seteveus.space",
+      },
     ],
-    caption: "Tens o livro físico Os 7 Véus do Despertar?\n\nO teu livro abre portas que ainda não conheces:\n\n— Leitura em 3 níveis (Semente, Raiz, Árvore)\n— Diário reflexivo pessoal\n— Práticas guiadas e respiração entre capítulos\n— Comunidade anónima (Ecos)\n\nTudo gratuito. Sem compromisso.\n\n#OsSeteVeus #LivroFísico #AcessoDigital #PedeOTeuCodigo #Autoconhecimento",
-    canvaSpecs: {
-      dimensions: "1080x1080px (quadrado)",
-      fonts: "Título: Playfair Display / Corpo: Inter",
-      colorPalette: ["#ebe7df", "#3d3630", "#c9b896", "#7a8c6e", "#f7f5f0"],
-    },
-  },
-  {
-    id: "carousel-7-véus-resumo",
-    title: "Os 7 Véus — um por um",
-    description: "Carrossel educativo. Cada slide apresenta um véu com frase-chave. Altamente guardável.",
-    slides: [
-      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "Os 7 Véus\nque te escondem\nde ti mesma.", body: "", footer: "Guarda esta publicação.", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#c9b896", text: "#3d3630", accent: "#f7f5f0", title: "1. Ilusão", body: "A vida que construíste\nsem perguntar\nse era a que querias.", footer: "" },
-      { bg: "#8b9b8e", text: "#f7f5f0", accent: "#ebe7df", title: "2. Medo", body: "Sabes o que queres.\nMas o medo\ndecide antes de ti.", footer: "" },
-      { bg: "#c97070", text: "#f7f5f0", accent: "#ebe7df", title: "3. Culpa", body: "Castigas-te\npor quereres mais.\nComo se merecesses\nmenos.", footer: "" },
-      { bg: "#7a7a9e", text: "#f7f5f0", accent: "#ebe7df", title: "4. Identidade", body: "Usas uma máscara\nhá tanto tempo\nque esqueceste\no rosto.", footer: "" },
-      { bg: "#5a7a8a", text: "#f7f5f0", accent: "#ebe7df", title: "5. Controlo", body: "Seguras tudo.\nControlas tudo.\nE perdes tudo\no que não se deixa\nprender.", footer: "" },
-      { bg: "#8a6a7a", text: "#f7f5f0", accent: "#ebe7df", title: "6. Desejo", body: "Procuras fora\no que só existe\ndentro.", footer: "" },
-      { bg: "#6a6a6a", text: "#f7f5f0", accent: "#c9b896", title: "7. Separação", body: "Separas-te de ti\npara pertencer\não mundo.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Reconheces-te\nnalgum deles?", body: "Descobre em 3 minutos.", footer: "seteveus.space/recursos/teste" },
-    ],
-    caption: "Os 7 Espelhos que te mostram o que ja sabes:\n\n1. Ilusao — a vida que nao escolheste\n2. Medo — o que nao fazes por medo\n3. Culpa — o castigo de quereres mais\n4. Identidade — a mascara que usas\n5. Controlo — o que seguras a mais\n6. Desejo — o que procuras fora\n7. Separacao — o que te separa de ti\n\nGuarda esta publicacao para voltares quando precisares.\n\n#OsSeteVeus #Os7Veus #Autoconhecimento #DesenvolvimentoPessoal #TransformacaoPessoal",
-    canvaSpecs: {
-      dimensions: "1080x1080px (quadrado)",
-      fonts: "Título: Playfair Display Bold / Subtitulo: Inter Light",
-      colorPalette: ["#3d3630", "#c9b896", "#8b9b8e", "#c97070", "#7a7a9e", "#5a7a8a", "#8a6a7a"],
-    },
-  },
-  {
-    id: "carousel-como-funciona",
-    title: "Como funciona a experiência digital do livro",
-    description: "Passo a passo da experiência digital do livro filosófico. Para campanha Pede o teu código.",
-    slides: [
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Como funciona\na experiência digital?", body: "3 passos simples.", footer: "seteveus.space", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "1. Pede o teu código", body: "Se já tens o livro físico,\no acesso é gratuito.\n\nPreenche o formulário\nem seteveus.space/pedir-codigo\n\nRecebes o código em 24h.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "2. Lê ao teu ritmo", body: "Cada véu tem\n3 níveis de leitura:\n\n~ Semente (guia acessível)\n~ Raiz (notas filosóficas)\n~ Árvore (texto original, puro)", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "3. Escreve, respira,\npartilha", body: "Diário reflexivo pessoal.\nPráticas guiadas por véu.\nRespiração entre capítulos.\nComunidade anónima.", footer: "" },
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Incluído:", body: "O livro completo em digital\n3 níveis de leitura por véu\nDiário de reflexão\nPráticas guiadas\nRespiração entre capítulos\nComunidade Ecos\nChatbot de apoio 24/7", footer: "" },
-      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Já tens o livro?\nO acesso é gratuito.", body: "Sem pressa. Sem prazos.\nAcesso vitalício.", footer: "seteveus.space/pedir-codigo" },
-    ],
-    caption: "Como funciona a experiência digital d'Os 7 Véus do Despertar?\n\n1. Pede o teu código (gratuito para quem tem o livro físico)\n2. Lê ao teu ritmo — cada véu tem 3 níveis de leitura (Semente, Raiz, Árvore)\n3. Escreve, respira, partilha — diário pessoal, práticas guiadas, comunidade anónima\n\nInclui: livro completo em digital, 3 níveis de leitura, diário, práticas, respiração, comunidade Ecos, chatbot 24/7.\n\nJá tens o livro? O acesso é gratuito.\n\n#OsSeteVeus #ExperienciaDigital #LivroFilosofico #PedeOTeuCodigo #Autoconhecimento",
-    canvaSpecs: {
-      dimensions: "1080x1080px (quadrado)",
-      fonts: "Título: Playfair Display / Corpo: Inter",
-      colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#7a8c6e", "#ebe7df"],
-    },
-  },
-  {
-    id: "carousel-testemunhos",
-    title: "O que dizem as leitoras",
-    description: "Testemunhos reais (anónimos) da comunidade. Social proof poderoso.",
-    slides: [
-      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "O que dizem\nas leitoras.", body: "", footer: "Testemunhos reais. Nomes guardados." },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "\"Sai do modo\nautomático.\nNão sei para onde vou\nmas pelo menos\nestou acordada.\"", body: "", footer: "~ leitora anónima, Véu 1" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "\"Chorei no banho.\nOutra vez.\nMas desta vez\nnão foi por tristeza.\nFoi por reconhecimento.\"", body: "", footer: "~ leitora anónima, Véu 1" },
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "\"O meu marido\nperguntou: estás bem?\nE eu disse que sim.\nAutomaticamente.\"", body: "", footer: "~ leitora anónima, Véu 1" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "\"Este livro não te\ndá respostas.\nDá-te as perguntas\nque nunca fizeste.\"", body: "", footer: "~ leitora anónima" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Reconheces-te?", body: "O Espelho da Ilusão\nestá disponível.\n\nHá mais para ti.", footer: "seteveus.space/recursos/teste" },
-    ],
-    caption: "O que dizem as leitoras d'Os Sete Véus.\n\nTestemunhos reais. Nomes guardados.\n\n\"Sai do modo automático. Não sei para onde vou mas pelo menos estou acordada.\"\n\n\"Chorei no banho. Outra vez. Mas desta vez não foi por tristeza. Foi por reconhecimento.\"\n\n#OsSeteVeus #TestemunhosReais #Autoconhecimento #FicçãoPsicológica",
-    canvaSpecs: {
-      dimensions: "1080x1080px (quadrado)",
-      fonts: "Citações: Playfair Display Italic / Fonte: Inter Light",
-      colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#ebe7df"],
-    },
-  },
-  {
-    id: "carousel-mãe-filha",
-    title: "Sara e Helena — O Nó da Herança",
-    description: "Carrossel emocional sobre a relação mãe-filha. Para promover o Nó (readers que completaram o Espelho).",
-    slides: [
-      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "Há coisas que\numa mãe nunca diz.", body: "", footer: "", bgImage: "/images/capa-no-heran\u00e7a2.png" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Sara viu o véu.", body: "Percebeu que a vida\nque tinha não era\na que tinha escolhido.\n\nMas há um silêncio\nque vem de antes dela.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Helena sabia.", body: "A mãe sempre soube.\nViu os mesmos sinais.\nCalou os mesmos medos.\nEsperou anos.", footer: "" },
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "\"Agora que Sara\nacordou,\nHelena tem algo\npara lhe dizer.\"", body: "", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "O Nó da Herança", body: "A segunda história.\nSó se desbloqueia\ndepois de completares\no Espelho da Ilusão.\n\nNão é um upsell.\nÉ uma continuação\nemocional.", footer: "seteveus.space" },
-    ],
-    caption: "Há coisas que uma mãe nunca diz.\n\nSara viu o véu. Percebeu que a vida que tinha não era a que tinha escolhido. Mas há um silêncio que vem de antes dela.\n\nHelena — a mãe — sempre soube. Viu os mesmos sinais. Calou os mesmos medos. Esperou anos.\n\nO Nó da Herança é a segunda história. Só se desbloqueia depois de completares o Espelho da Ilusão.\n\nNão é um upsell. É uma continuação emocional.\n\n#OsSeteVeus #NoDaHerança #MãeEFilha #FicçãoRelacional #Autoconhecimento",
+    caption: "Há uma segunda história. Mas só se desbloqueia depois.\n\nQuando Sara viu o que tinha de ver, um texto novo apareceu — a história de Helena, a mãe. O que ela sempre soube e nunca disse.\n\nO Nó da Herança não é um upsell. É o que acontece do outro lado do espelho.\n\n#OsSeteVeus #NoDaHeranca #MaeFilha",
     canvaSpecs: {
       dimensions: "1080x1080px (quadrado)",
       fonts: "Título: Playfair Display Italic / Corpo: Inter Light",
       colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#ebe7df"],
     },
   },
+
+  // ─── 5. CINCO CITAÇÕES DO ESPELHO DA ILUSÃO ──────────────────────────────────
   {
-    id: "carousel-recursos-gratis",
-    title: "5 recursos gratuitos para começar",
-    description: "Carrossel de valor. Mostra todos os recursos grátis disponíveis (PDFs, teste, áudios).",
+    id: "carousel-5-citacoes-ilusao",
+    title: "5 frases do Espelho da Ilusão",
+    description: "Citações reais do livro. Cada uma é um momento de reconhecimento. Altamente guardável.",
     slides: [
-      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "5 recursos gratuitos\npara começar\na tua jornada.", body: "", footer: "Sem compromisso. Sem email.", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "1. Teste:\nQual Espelho combina contigo?", body: "3 minutos. 7 perguntas.\nDescobre qual Espelho\nfaz sentido para ti agora.\n\nNao da respostas —\nda perguntas.", footer: "seteveus.space/recursos/teste" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "2. As 7 Perguntas\ndo Despertar", body: "Uma pergunta por véu.\nImprime. Cola no espelho.\nLê todos os dias.", footer: "PDF gratuito" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "3. Diário de 7 Dias", body: "Um exercício por dia.\nEscrito pela autora.\nPara quem quer começar\nsem saber por onde.", footer: "PDF gratuito" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "4. Checklist\ndo Despertar", body: "Uma lista visual\ndos sinais de cada véu.\n\nReconhece onde estás.\nVê até onde podes ir.", footer: "PDF gratuito" },
-      { bg: "#ebe7df", text: "#3d3630", accent: "#7a8c6e", title: "5. Mini-guia:\nO que são os 7 Véus?", body: "16 páginas.\nExplicação simples.\nPara quem quer perceber\nantes de começar.", footer: "PDF gratuito" },
-      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Tudo em\nseteveus.space/recursos", body: "Gratuito.\nSem email obrigatório.\nSem compromisso.", footer: "seteveus.space/recursos" },
+      {
+        bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0",
+        title: "5 frases que mudam\na forma como te vês.",
+        body: "", footer: "O Espelho da Ilusão",
+        bgImage: "/images/espelho-ilusao.png",
+      },
+      {
+        bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896",
+        title: "\"Quando foi que\nescolhi tomar café\nem vez de chá?\"",
+        body: "Uma pergunta absurda\nque muda tudo.",
+        footer: "",
+      },
+      {
+        bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896",
+        title: "\"Via, mas não sentia.\nRegistava, mas não\nparticipava.\"",
+        body: "Como quem assiste\na um espectáculo\npor trás de uma\njanela fechada.",
+        footer: "",
+      },
+      {
+        bg: "#ebe7df", text: "#3d3630", accent: "#c9b896",
+        title: "\"Não era que não\ntivesse opinião.\nEra que a sua primeira\nreacção nunca era\no que verdadeiramente\npensava.\"",
+        body: "", footer: "",
+      },
+      {
+        bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896",
+        title: "\"Perguntar,\nmesmo tarde,\né o primeiro gesto\nde se escolher.\"",
+        body: "", footer: "seteveus.space",
+        bgImage: "/images/mandala-7veus.png",
+      },
     ],
-    caption: "5 recursos gratuitos para comecares a tua jornada interior:\n\n1. Teste: Qual Espelho combina contigo? (3 min)\n2. As 7 Perguntas do Despertar (PDF)\n3. Diario de 7 Dias (PDF)\n4. Checklist do Despertar (PDF)\n5. Mini-guia: O que sao os 7 Veus? (PDF)\n\nTudo gratuito. Sem email. Sem compromisso.\n\nGuarda esta publicacao para quando precisares.\n\n#OsSeteVeus #RecursosGratuitos #Autoconhecimento #DesenvolvimentoPessoal #PDFGratis",
+    caption: "5 frases do Espelho da Ilusão que mudam a forma como te vês.\n\nGuarda esta publicação. Volta quando precisares.\n\n#OsSeteVeus #EspelhoDaIlusao",
     canvaSpecs: {
       dimensions: "1080x1080px (quadrado)",
-      fonts: "Título: Playfair Display / Corpo: Inter",
-      colorPalette: ["#7a8c6e", "#f7f5f0", "#3d3630", "#c9b896", "#ebe7df"],
+      fonts: "Citações: Playfair Display Italic / Corpo: Inter Light",
+      colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#ebe7df"],
     },
   },
+
+  // ─── 6. A COMUNIDADE QUE DESAPARECE ──────────────────────────────────────────
   {
-    id: "carousel-comunidade-ecos",
-    title: "Comunidade Ecos — o que e?",
-    description: "Apresentar a comunidade anónima. Diferencial único da plataforma.",
+    id: "carousel-ecos-efemeros",
+    title: "A única comunidade onde tudo desaparece",
+    description: "Apresenta os Ecos pelo que os torna únicos: a efemeridade e o anonimato. Contrasta com todas as comunidades que existem.",
     slides: [
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "E se pudesses\npartilhar o que sentes\nsem ninguém\nsaber quem és?", body: "", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Comunidade Ecos", body: "Um espaço onde as vozes\nse encontram.\n\nAnónimo.\nImpermanente.\nReal.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Ecos", body: "Reflexões partilhadas\nanónimamente.\n\nNinguém sabe quem escreveu.\nTodos se reconhecem.", footer: "Expiram em 30 dias." },
-      { bg: "#ebe7df", text: "#3d3630", accent: "#7a8c6e", title: "Reconhecimentos", body: "Não há likes.\nHá \"reconheço-me\".\n\nUm toque silencioso\nque diz:\n\"Eu também.\"", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Sussurros", body: "Mensagens de uma só via.\nMax 100 caracteres.\nExpiram em 7 dias.\n\nUm sussurro.\nNão uma conversa.", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Sem nomes.\nSem fotos.\nSem histórico.", body: "Tudo desaparece.\nComo as folhas\nnuma corrente.", footer: "" },
-      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Entra na comunidade.", body: "Incluída com qualquer\nacesso à plataforma.", footer: "seteveus.space" },
+      {
+        bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896",
+        title: "O que escreveres aqui\ndesaparece em 30 dias.",
+        body: "Não há histórico.\nNão há perfil.\nNinguém sabe quem és.",
+        footer: "",
+      },
+      {
+        bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e",
+        title: "E isso muda\no que dizes.",
+        body: "Há coisas que só se\nconsegue dizer\nquando não ficam\npara sempre.",
+        footer: "",
+      },
+      {
+        bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896",
+        title: "Não há likes.",
+        body: "Há reconhecimentos.\nUm toque silencioso\nque diz:\n\"eu também.\"",
+        footer: "",
+      },
+      {
+        bg: "#ebe7df", text: "#3d3630", accent: "#7a8c6e",
+        title: "E há sussurros.",
+        body: "Mensagens de uma só via.\n100 caracteres.\nExpiram em 7 dias.",
+        footer: "",
+      },
+      {
+        bg: "#2a2520", text: "#c9b896", accent: "#f7f5f0",
+        title: "É o único sítio\nonde a honestidade\nnão tem\nconsequências permanentes.",
+        body: "", footer: "Comunidade Ecos ~ seteveus.space",
+        bgImage: "/images/mandala-7veus.png",
+      },
     ],
-    caption: "E se pudesses partilhar o que sentes sem ninguém saber quem és?\n\nComunidade Ecos:\n\n~ Ecos: reflexões anónimas (expiram em 30 dias)\n~ Reconhecimentos: não há likes, há \"reconheço-me\"\n~ Sussurros: mensagens de uma só via (expiram em 7 dias)\n\nSem nomes. Sem fotos. Sem histórico.\nTudo desaparece. Como as folhas numa corrente.\n\nIncluída com qualquer acesso à plataforma.\n\n#OsSeteVeus #ComunidadeEcos #Anonimato #ReflexãoColectiva #Autoconhecimento",
+    caption: "O que escreveres desaparece em 30 dias.\n\nNão há perfil. Não há histórico. Ninguém sabe quem és. É a única comunidade onde a honestidade não fica para sempre.\n\nComunidade Ecos — incluída em qualquer acesso.\n\nseteveus.space\n\n#OsSeteVeus #ComunidadeEcos",
     canvaSpecs: {
       dimensions: "1080x1080px (quadrado)",
       fonts: "Título: Playfair Display / Corpo: Inter",
       colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#7a8c6e", "#ebe7df"],
     },
   },
+
+  // ─── 7. ANTES E DEPOIS — NÃO DE TI, DA FORMA COMO TE VÊS ─────────────────────
   {
-    id: "carousel-espelho-medo-coming",
-    title: "O Espelho do Medo — em breve (Março 2026)",
-    description: "Teaser para o próximo lançamento. Gerar antecipação e waitlist.",
+    id: "carousel-antes-depois-ver",
+    title: "Não muda o que fizeste. Muda a forma como te vês.",
+    description: "Testemunhos-tipo. Antes/depois emocional, não de conquistas. Para quem está em cima do muro.",
     slides: [
-      { bg: "#8b9b8e", text: "#f7f5f0", accent: "#ebe7df", title: "O Espelho do Medo\nchega em breve.", body: "", footer: "", bgImage: "/images/espelho-medo.png" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#8b9b8e", title: "Sabes o que queres.", body: "Mas o medo\ndecide antes de ti.\n\nSempre decidiu.", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#8b9b8e", title: "O Espelho do Medo", body: "A história de quem\nsabe o caminho\nmas não dá o passo.\n\nPorque o medo\né mais rápido\nque a vontade.", footer: "Março 2026" },
-      { bg: "#8b9b8e", text: "#f7f5f0", accent: "#ebe7df", title: "\"E se falhar?\"\n\"E se me arrepender?\"\n\"E se não resultar?\"", body: "Reconheces estas vozes?", footer: "" },
-      { bg: "#3d3630", text: "#8b9b8e", accent: "#f7f5f0", title: "Março 2026.", body: "Sai primeiro para\nquem já está dentro.\n\nEntra na lista de espera\ne recebe antes de todos.", footer: "seteveus.space" },
+      {
+        bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896",
+        title: "Não muda o que fizeste.\n\nMuda a forma como\nte vês a fazê-lo.",
+        body: "", footer: "",
+        bgImage: "/images/mandala-7veus.png",
+      },
+      {
+        bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896",
+        title: "Antes:\nsabia exactamente\nquem era.",
+        body: "Depois:\nsei cada vez menos.\nMas o que sei\né meu.\nNão herdado.",
+        footer: "",
+      },
+      {
+        bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896",
+        title: "Antes:\nchorava só quando\nninguém via.",
+        body: "Depois:\ndeixei as lágrimas virem\nà mesa.\nAlguém perguntou.\nDisse que não estava bem.\nO mundo não acabou.",
+        footer: "",
+      },
+      {
+        bg: "#ebe7df", text: "#3d3630", accent: "#c9b896",
+        title: "Antes:\ndizia \"estou bem\"\nantes de verificar\no que sentia.",
+        body: "Depois:\nfaço uma pausa.\nAinda pequena.\nMas minha.",
+        footer: "",
+      },
+      {
+        bg: "#2a2520", text: "#c9b896", accent: "#f7f5f0",
+        title: "Não é uma transformação.\nÉ um desfazer\nlento e suave\ndo que não era teu.",
+        body: "", footer: "O Espelho da Ilusão ~ seteveus.space",
+      },
     ],
-    caption: "O Espelho do Medo chega em breve.\n\nSabes o que queres. Mas o medo decide antes de ti. Sempre decidiu.\n\n\"E se falhar?\" \"E se me arrepender?\" \"E se nao resultar?\"\n\nReconheces estas vozes?\n\nSai primeiro para quem ja esta dentro da plataforma.\n\n#OsSeteVeus #EspelhoDoMedo #Marco2026 #ProximoLancamento #Autoconhecimento",
+    caption: "Não muda o que fizeste. Muda a forma como te vês a fazê-lo.\n\nAntes: sabia exactamente quem era.\nDepois: sei cada vez menos. Mas o que sei finalmente é meu.\n\nO Espelho da Ilusão — ao teu ritmo.\n\nseteveus.space\n\n#OsSeteVeus #EspelhoDaIlusao",
     canvaSpecs: {
       dimensions: "1080x1080px (quadrado)",
-      fonts: "Título: Playfair Display / Corpo: Inter",
-      colorPalette: ["#8b9b8e", "#3d3630", "#f7f5f0", "#ebe7df"],
+      fonts: "Título: Playfair Display / Corpo: Inter Light",
+      colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#ebe7df", "#2a2520"],
     },
   },
 
-  // ─── CAMPANHA: EXPERIENCIA DIGITAL — PEDE O TEU CODIGO ──────────────────────
-
+  // ─── 8. OS 7 ESPELHOS — UM POR UM ────────────────────────────────────────────
   {
-    id: "carousel-pede-código",
-    title: "Compraste o livro? Pede o teu código digital",
-    description: "Campanha onboarding. Para quem tem o livro físico e quer o acesso digital gratuito.",
+    id: "carousel-7-espelhos-resumo",
+    title: "Os 7 Espelhos — um por um",
+    description: "Carrossel educativo. Cada slide apresenta um Espelho com frase-chave. Altamente guardável.",
     slides: [
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Compraste\no livro físico?", body: "", footer: "Os 7 Véus do Despertar", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Tens direito\não acesso digital\ngratuito.", body: "Tudo o que o livro\nte deu no papel,\nagora vives no ecrã.\n\n3 níveis de leitura.\nDiário reflexivo.\nPráticas guiadas.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", title: "Preenche o formulário.", body: "2 minutos.\nNome, email e\n(se quiseres)\numa foto do livro.", footer: "seteveus.space/pedir-codigo" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Recebes o código\nem até 24h.", body: "No teu email.\nPessoal. Intransmissível.", footer: "" },
-      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "O que ganhas:", body: "Leitura em 3 níveis\nDiário reflexivo\nRespiração guiada\nPráticas por véu\nComunidade anónima\nChatbot de apoio 24/7", footer: "seteveus.space/pedir-codigo" },
+      {
+        bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0",
+        title: "Os 7 Espelhos\nque te revelam\nquem és de verdade.",
+        body: "", footer: "Guarda esta publicação.",
+        bgImage: "/images/mandala-7veus.png",
+      },
+      {
+        bg: "#c9b896", text: "#3d3630", accent: "#f7f5f0",
+        title: "Espelho 1\nIlusão",
+        body: "A vida que construíste\nsem perguntar\nse era a que querias.",
+        footer: "",
+      },
+      {
+        bg: "#8b9b8e", text: "#f7f5f0", accent: "#ebe7df",
+        title: "Espelho 2\nMedo",
+        body: "Sabes o que queres.\nMas o medo\ndecide antes de ti.",
+        footer: "",
+      },
+      {
+        bg: "#c97070", text: "#f7f5f0", accent: "#ebe7df",
+        title: "Espelho 3\nCulpa",
+        body: "Castigas-te\npor quereres mais.\nComo se merecesses\nmenos.",
+        footer: "",
+      },
+      {
+        bg: "#7a7a9e", text: "#f7f5f0", accent: "#ebe7df",
+        title: "Espelho 4\nIdentidade",
+        body: "Usas uma máscara\nhá tanto tempo\nque esqueceste o rosto.",
+        footer: "",
+      },
+      {
+        bg: "#5a7a8a", text: "#f7f5f0", accent: "#ebe7df",
+        title: "Espelho 5\nControlo",
+        body: "Seguras tudo.\nE perdes tudo\no que não se deixa\nprender.",
+        footer: "",
+      },
+      {
+        bg: "#8a6a7a", text: "#f7f5f0", accent: "#ebe7df",
+        title: "Espelho 6\nDesejo",
+        body: "Procuras fora\no que só existe\ndentro.",
+        footer: "",
+      },
+      {
+        bg: "#6a6a6a", text: "#f7f5f0", accent: "#c9b896",
+        title: "Espelho 7\nSeparação",
+        body: "Separas-te de ti\npara pertencer\nao mundo.",
+        footer: "",
+      },
+      {
+        bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896",
+        title: "Reconheces-te\nnalgum deles?",
+        body: "Descobre em 3 minutos.",
+        footer: "seteveus.space/recursos/teste",
+      },
     ],
-    caption: "Compraste o livro físico Os 7 Véus do Despertar? Tens direito ao acesso digital gratuito.\n\n1. Preenche o formulário (2 minutos)\n2. Recebes o código em até 24h no teu email\n3. Activa e começa a experiência\n\nO que ganhas: leitura em 3 níveis (Semente, Raiz, Árvore), diário reflexivo, respiração guiada, práticas por véu, comunidade anónima, chatbot 24/7.\n\n#OsSeteVeus #AcessoDigital #LivroFísico #PedeOTeuCodigo #Autoconhecimento",
+    caption: "Os 7 Espelhos que te mostram o que já sabes:\n\n1. Ilusao — a vida que nao escolheste\n2. Medo — o que nao fazes por medo\n3. Culpa — o castigo de quereres mais\n4. Identidade — a mascara que usas\n5. Controlo — o que seguras a mais\n6. Desejo — o que procuras fora\n7. Separacao — o que te separa de ti\n\nGuarda esta publicacao para voltares quando precisares.\n\n#OsSeteVeus #Os7Espelhos #Autoconhecimento",
+    canvaSpecs: {
+      dimensions: "1080x1080px (quadrado)",
+      fonts: "Título: Playfair Display Bold / Subtítulo: Inter Light",
+      colorPalette: ["#3d3630", "#c9b896", "#8b9b8e", "#c97070", "#7a7a9e", "#5a7a8a", "#8a6a7a"],
+    },
+  },
+
+  // ─── 9. TESTEMUNHOS ───────────────────────────────────────────────────────────
+  {
+    id: "carousel-testemunhos",
+    title: "O que dizem as leitoras",
+    description: "Testemunhos reais (anónimos). Nomes guardados. Social proof com peso emocional.",
+    slides: [
+      {
+        bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0",
+        title: "O que dizem\nas leitoras.",
+        body: "", footer: "Testemunhos reais. Nomes guardados.",
+      },
+      {
+        bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896",
+        title: "\"Sai do modo\nautomático.\nNão sei para onde vou\nmas pelo menos\nestou acordada.\"",
+        body: "", footer: "~ leitora anónima, Espelho 1",
+      },
+      {
+        bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896",
+        title: "\"Chorei no banho.\nOutra vez.\nMas desta vez\nnão foi por tristeza.\nFoi por reconhecimento.\"",
+        body: "", footer: "~ leitora anónima, Espelho 1",
+      },
+      {
+        bg: "#ebe7df", text: "#3d3630", accent: "#c9b896",
+        title: "\"O meu marido\nperguntou: estás bem?\nE eu disse que sim.\nAutomaticamente.\"",
+        body: "Parei a meio\nda frase.", footer: "~ leitora anónima, Espelho 1",
+      },
+      {
+        bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e",
+        title: "\"Este livro não te\ndá respostas.\nDá-te as perguntas\nque nunca fizeste.\"",
+        body: "", footer: "~ leitora anónima",
+      },
+      {
+        bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896",
+        title: "Reconheces-te?",
+        body: "O Espelho da Ilusão\nestá disponível.",
+        footer: "seteveus.space",
+      },
+    ],
+    caption: "\"Sai do modo automático. Não sei para onde vou mas pelo menos estou acordada.\"\n\n\"Chorei no banho. Outra vez. Mas desta vez não foi por tristeza. Foi por reconhecimento.\"\n\nO Espelho da Ilusão — seteveus.space\n\n#OsSeteVeus #Testemunhos",
+    canvaSpecs: {
+      dimensions: "1080x1080px (quadrado)",
+      fonts: "Citações: Playfair Display Italic / Fonte: Inter Light",
+      colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#ebe7df"],
+    },
+  },
+
+  // ─── 10. O ESPELHO DO MEDO — TEASER ──────────────────────────────────────────
+  {
+    id: "carousel-espelho-medo-teaser",
+    title: "O Espelho do Medo — Março 2026",
+    description: "Teaser do segundo Espelho. A persona de Rui e Ana. Cria antecipação e waitlist.",
+    slides: [
+      {
+        bg: "#1e2620", text: "#f5f7f5", accent: "#8b9b8e",
+        title: "Há uma voz\nque diz não\navant de pensares.",
+        body: "", footer: "",
+        bgImage: "/images/espelho-medo.png",
+      },
+      {
+        bg: "#3d3630", text: "#f7f5f0", accent: "#8b9b8e",
+        title: "Não é covardia.",
+        body: "É um mecanismo antigo.\nTreinado ao longo de anos\nde cautela disfarçada\nde bom senso.",
+        footer: "",
+      },
+      {
+        bg: "#f5f7f5", text: "#2a2a2a", accent: "#8b9b8e",
+        title: "\"E se falhar?\"\n\"E se me arrepender?\"\n\"E se não resultar?\"",
+        body: "Reconheces estas vozes?",
+        footer: "",
+      },
+      {
+        bg: "#1e2620", text: "#f5f7f5", accent: "#8b9b8e",
+        title: "O Espelho do Medo\né uma história\nsobre Rui.",
+        body: "Ele sabe o que quer.\nO medo decide antes dele.\nSempre decidiu.",
+        footer: "",
+      },
+      {
+        bg: "#3d3630", text: "#8b9b8e", accent: "#f7f5f0",
+        title: "Março 2026.",
+        body: "Sai primeiro\npara quem já está\ndentro da plataforma.",
+        footer: "seteveus.space",
+      },
+    ],
+    caption: "O Espelho do Medo chega em Março.\n\nHá uma voz que diz não antes de pensares. Não é covardia — é um mecanismo antigo, treinado ao longo de anos de cautela disfarçada de bom senso.\n\nReconheces?\n\nSai primeiro para quem já está dentro.\n\n#OsSeteVeus #EspelhoDoMedo #Marco2026",
     canvaSpecs: {
       dimensions: "1080x1080px (quadrado)",
       fonts: "Título: Playfair Display / Corpo: Inter",
-      colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#7a8c6e", "#ebe7df"],
+      colorPalette: ["#1e2620", "#f5f7f5", "#8b9b8e", "#3d3630"],
     },
   },
+
+  // ─── 11. O LIVRO FÍSICO — PEDE O TEU CÓDIGO ──────────────────────────────────
   {
-    id: "carousel-do-papel-ao-digital",
-    title: "Do papel ao ecrã — o que muda",
-    description: "Mostra as diferenças entre ter só o livro físico e ter o acesso digital. Valor concreto.",
+    id: "carousel-livro-fisico-codigo",
+    title: "Tens o livro? Há mais dentro dele.",
+    description: "Campanha código digital para quem tem o livro físico. Tom: surpresa, não venda.",
     slides: [
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Do papel ao ecrã.", body: "A mesma essência.\nUma nova forma\nde viver os véus.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Só o livro físico:", body: "Lês.\nFechas.\nGuardas na estante.\n\nA experiência fica\nno papel.", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "Com o acesso digital:", body: "Lês.\nRespiras.\nEscreves no diário.\nPartilhas na comunidade.\n\nA experiência fica\nem ti.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Diário reflexivo", body: "Cada capítulo tem\num espaço para escreveres\no que sentiste.\n\nSó tu lês.\nSó tu decides.", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "Comunidade anónima", body: "Ecos: reflexões partilhadas\nsem nome, sem foto.\n\nReconheces-te nas palavras\nde quem nunca viste.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Respiração guiada", body: "Entre capítulos,\numa pausa.\n\nNão para descansar.\nPara sentir.", footer: "" },
-      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Gratuito para quem\nja tem o livro.", body: "Pede o teu código\nem 2 minutos.", footer: "seteveus.space/pedir-código" },
+      {
+        bg: "#ebe7df", text: "#3d3630", accent: "#c9b896",
+        title: "O livro físico\nque tens na estante\ntem uma extensão\ndigital.",
+        body: "", footer: "Os 7 Véus do Despertar",
+        bgImage: "/images/mandala-7veus.png",
+      },
+      {
+        bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896",
+        title: "Não é uma cópia.",
+        body: "É a experiência\nde ler com um diário\nao lado. De parar\npara respirar\nentre capítulos.",
+        footer: "",
+      },
+      {
+        bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e",
+        title: "De partilhar\nsem que ninguém\nsaiba quem és.",
+        body: "Numa comunidade\nonde tudo expira.\nAnónima.\nImpermanente.",
+        footer: "",
+      },
+      {
+        bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896",
+        title: "É gratuito.\nPara quem tem\no livro físico.",
+        body: "Preenches um formulário.\nRecebes o código em 24h.",
+        footer: "",
+      },
+      {
+        bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df",
+        title: "Há mais dentro\ndo livro que compraste.",
+        body: "", footer: "seteveus.space/pedir-codigo",
+      },
     ],
-    caption: "Do papel ao ecrã. A mesma essência, uma nova forma de viver.\n\nSó o livro físico: lês, fechas, guardas.\nCom o acesso digital: lês, respiras, escreves, partilhas.\n\n+ Diário reflexivo por capítulo\n+ Comunidade anónima (Ecos)\n+ Respiração guiada entre capítulos\n+ Chatbot de apoio 24/7\n\nGratuito para quem já tem o livro físico.\n\n#OsSeteVeus #DoPapelAoDigital #ExperienciaDigital #Autoconhecimento",
+    caption: "O livro físico que tens na estante tem uma extensão digital.\n\nNão é uma cópia — é a experiência de ler com um diário ao lado, parar para respirar entre capítulos, partilhar numa comunidade onde ninguém sabe quem és.\n\nGratuito para quem tem o livro físico.\n\nseteveus.space/pedir-codigo\n\n#OsSeteVeus #PedeOTeuCodigo",
     canvaSpecs: {
       dimensions: "1080x1080px (quadrado)",
       fonts: "Título: Playfair Display / Corpo: Inter",
       colorPalette: ["#ebe7df", "#3d3630", "#f7f5f0", "#c9b896", "#7a8c6e"],
     },
   },
+
+  // ─── 12. O QUE SÃO OS SETE VÉUS (LIVRO FILOSÓFICO) ────────────────────────────
   {
-    id: "carousel-experiência-digital-completa",
-    title: "A experiência digital por dentro",
-    description: "Tour visual: o que inclui o acesso digital. Cada slide mostra uma funcionalidade.",
+    id: "carousel-o-que-sao-veus",
+    title: "Os 7 Véus do Despertar — o livro filosófico",
+    description: "Para quem ainda não conhece o livro filosófico. Diferente dos Espelhos — este é ensaio.",
     slides: [
-      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "O que está dentro\nda experiência digital?", body: "", footer: "Os 7 Véus do Despertar" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Leitura interactiva", body: "O livro filosófico completo\ncom pausas integradas.\n\nNão é uma cópia digital —\né uma experiência\ndiferente de ler.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", title: "Diário reflexivo", body: "Em cada capítulo,\num espaço para ti.\n\nEscreve o que sentes.\nGuarda o que descobres.\nSó tu tens acesso.", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Respiração guiada", body: "Entre capítulos,\no ecrã escurece.\nUm convite a parar.\n\nInspira. Expira.\nSó depois avanças.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Comunidade Ecos", body: "Reflexões anónimas.\nImpermanentes.\n\nNinguém sabe quem és.\nTodos se reconhecem.", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "Chatbot de apoio", body: "Dúvidas sobre os véus?\nSobre a plataforma?\nSobre ti?\n\nUma voz disponível\n24 horas por dia.", footer: "" },
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Recursos gratuitos", body: "Teste: Qual Espelho combina contigo?\nDiario de 7 dias\nChecklist do despertar\nMini-guia\nWallpapers", footer: "" },
-      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Tudo isto é teu.", body: "Se já tens o livro físico:\ngratuito.\n\nPede o teu código\nem 2 minutos.", footer: "seteveus.space/pedir-codigo" },
+      {
+        bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896",
+        title: "Já sentiste que a vida\nque tens não foi\na que escolheste?",
+        body: "", footer: "",
+        bgImage: "/images/mandala-7veus.png",
+      },
+      {
+        bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896",
+        title: "Os Sete Véus\ndo Despertar",
+        body: "Um ensaio filosófico\nde Vivianne dos Santos.\n\nNão sobre o que fazer.\nSobre o que ver.",
+        footer: "",
+      },
+      {
+        bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e",
+        title: "7 véus que escondem\na tua consciência\nde ti mesma.",
+        body: "Permanência. Memória.\nTurbilhão. Esforço.\nDesolação. Horizonte.\nDualidade.",
+        footer: "",
+      },
+      {
+        bg: "#ebe7df", text: "#3d3630", accent: "#c9b896",
+        title: "Na plataforma digital,\nnão é só ler.",
+        body: "Lês. Respiras.\nReflectes. Escreves.\nEm cada capítulo,\numa pausa que é tua.",
+        footer: "",
+      },
+      {
+        bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df",
+        title: "Já tens o livro físico?\nO acesso digital\né gratuito.",
+        body: "Pede o teu código\nem menos de 2 minutos.",
+        footer: "seteveus.space/pedir-codigo",
+      },
     ],
-    caption: "O que está dentro da experiência digital Os 7 Véus do Despertar?\n\n1. Leitura interactiva (não é uma cópia — é outra forma de viver o livro)\n2. Diário reflexivo por capítulo (só tu lês)\n3. Respiração guiada entre capítulos\n4. Comunidade anónima (Ecos)\n5. Chatbot de apoio 24/7\n6. Recursos gratuitos (teste, diário, checklist, mini-guia, wallpapers)\n\nTens o livro físico? O acesso é gratuito.\n\n#OsSeteVeus #ExperienciaDigital #PedeOTeuCodigo #Autoconhecimento #LeituraTransformadora",
+    caption: "Já sentiste que a vida que tens não foi a que escolheste?\n\nOs 7 Véus do Despertar é um ensaio filosófico de Vivianne dos Santos. 7 véus que escondem a tua consciência de ti mesma. Não sobre o que fazer — sobre o que ver.\n\nJá tens o livro físico? O acesso digital é gratuito.\n\n#OsSeteVeus #LivroFilosofico #DespertarDeConsciencia",
     canvaSpecs: {
       dimensions: "1080x1080px (quadrado)",
       fonts: "Título: Playfair Display / Corpo: Inter",
       colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#7a8c6e", "#ebe7df"],
     },
   },
-  {
-    id: "carousel-3-razões-digital",
-    title: "3 razões para activar o acesso digital",
-    description: "Carrossel curto e directo. 3 razões concretas para pedir o código.",
-    slides: [
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "3 razões para\nactivar o teu\nacesso digital.", body: "", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "1. O diário\nmuda tudo.", body: "Ler sem escrever\né como olhar\npara um espelho\nde olhos fechados.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", title: "2. Não estás\nsozinha.", body: "Na comunidade Ecos,\noutras mulheres\nestão a atravessar\nos mesmos véus.\n\nAnonimamente.", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "3. 3 níveis\nde leitura.", body: "Semente — guia acessível\nRaiz — notas filosóficas\nÁrvore — texto original, puro\n\nO livro físico é a porta.\nO digital é o caminho.", footer: "" },
-      { bg: "#c9b896", text: "#3d3630", accent: "#f7f5f0", title: "Já tens o livro?\nO acesso é gratuito.", body: "2 minutos.\nUm formulário.\nUm código.", footer: "seteveus.space/pedir-codigo" },
-    ],
-    caption: "3 razões para activar o teu acesso digital:\n\n1. O diário reflexivo muda a forma como lês — ler sem escrever é como olhar para um espelho de olhos fechados.\n\n2. Na comunidade Ecos, não estás sozinha — outras mulheres estão a atravessar os mesmos véus, anonimamente.\n\n3. 3 níveis de leitura por véu — Semente (guia acessível), Raiz (notas filosóficas), Árvore (texto original, puro).\n\nJá tens o livro? O acesso é gratuito.\n\n#OsSeteVeus #AcessoDigital #ExperienciaDigital #PedeOTeuCodigo #Autoconhecimento",
-    canvaSpecs: {
-      dimensions: "1080x1080px (quadrado)",
-      fonts: "Título: Playfair Display / Corpo: Inter",
-      colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#7a8c6e"],
-    },
-  },
-  {
-    id: "carousel-tom-intimo",
-    title: "Uma coisa que talvez não saibas",
-    description: "Tom pessoal, como se fosse uma conversa íntima. Para WhatsApp status ou Instagram story.",
-    slides: [
-      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "Uma coisa que talvez\nnão saibas.", body: "", footer: "", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "O livro que tens\nna estante...", body: "...tem uma extensão\ndigital.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Não é uma cópia.", body: "É uma experiência\ndiferente.\n\nPodes escrever reflexões\nà medida que lês.\nGuardar pensamentos\npor capítulo.", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#7a8c6e", title: "É participar\nnuma comunidade\nanónima", body: "de leitoras que também\nestão a atravessar\nos véus.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "É gratuito.\nE pessoal.\nE teu.", body: "", footer: "seteveus.space/pedir-código" },
-    ],
-    caption: "Uma coisa que talvez não saibas:\n\nO livro físico \"Os 7 Véus do Despertar\" tem uma extensão digital.\n\nNão é uma cópia — é uma experiência diferente. Podes escrever reflexões à medida que lês, guardar pensamentos por capítulo, e participar numa comunidade anónima de leitoras.\n\nÉ gratuito. É pessoal. É teu.\n\n#OsSeteVeus #ExperienciaDigital #Autoconhecimento",
-    canvaSpecs: {
-      dimensions: "1080x1080px (quadrado)",
-      fonts: "Título: Playfair Display Italic / Corpo: Inter Light",
-      colorPalette: ["#3d3630", "#ebe7df", "#f7f5f0", "#c9b896"],
-    },
-  },
 
-  // ─── CAMPANHA PEDE O TEU CÓDIGO — NOVOS CARROSSEIS ───────────────────────────
-
-  {
-    id: "carousel-leitura-3-niveis",
-    title: "Um livro que se lê de 3 formas diferentes",
-    description: "Carrossel sobre os 3 níveis de leitura da experiência digital. Diferencial único.",
-    slides: [
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Um livro que se lê\nde 3 formas diferentes.", body: "", footer: "Os 7 Véus do Despertar", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Nível 1: Semente ○", body: "Guia acessível.\nResumida em linguagem clara.\nPerguntas de orientação.\nExemplos concretos.\n\nPara quem quer começar\ndevagar.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", title: "Nível 2: Raiz ◎", body: "Texto com notas\nde contexto filosófico.\nConceitos como Ubuntu,\nanattā, fanā.\n\nLigações a tradições\nbudistas, africanas, sufis.", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Nível 3: Árvore ●", body: "O texto original,\npuro, sem interrupções.\n\nA escrita da Vivianne\ncomo foi concebida.\nSem guias. Sem notas.\nSó tu e as palavras.", footer: "" },
-      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Já tens o livro físico?\nEstes 3 níveis esperam-te\nno digital.", body: "Gratuito. 2 minutos.", footer: "seteveus.space/pedir-codigo" },
-    ],
-    caption: "Sabias que Os 7 Véus do Despertar pode ser lido de 3 formas diferentes na plataforma digital?\n\nNível 1 — Semente ○: guia acessível, exemplos concretos\nNível 2 — Raiz ◎: texto com notas de contexto filosófico (Ubuntu, anattā, fanā)\nNível 3 — Árvore ●: texto original, puro, sem interrupções\n\nJá tens o livro físico? Estes 3 níveis esperam-te no digital. Gratuito.\n\n#OsSeteVeus #3Niveis #ExperienciaDigital #LivroFilosofico #PedeOTeuCodigo #Autoconhecimento",
-    canvaSpecs: {
-      dimensions: "1080x1080px (quadrado)",
-      fonts: "Título: Playfair Display / Corpo: Inter",
-      colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#7a8c6e", "#ebe7df"],
-    },
-  },
-  {
-    id: "carousel-praticas-guiadas",
-    title: "Não é só ler. É parar, respirar, escrever.",
-    description: "Carrossel sobre as práticas guiadas, respiração e diário. O que diferencia a experiência digital do livro físico.",
-    slides: [
-      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "Não é só ler.", body: "", footer: "", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Entre capítulos,\no ecrã escurece.", body: "Um convite a parar.\n\nInspira. Expira.\nSó depois avanças.", footer: "Respiração guiada" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#7a8c6e", title: "Cada véu tem\numa prática guiada.", body: "Exercícios de reflexão\nescritos pela autora.\n\nCom sugestão de tempo.\nCom processo claro.\nPara fazer ao teu ritmo.", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "O diário reflexivo\né só teu.", body: "Escreve o que sentes\ndepois de cada capítulo.\n\nNinguém lê.\nNinguém julga.\nSó tu decides\no que guardas.", footer: "" },
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Ler sem escrever\né como olhar\npara um espelho\nde olhos fechados.", body: "", footer: "" },
-      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Tudo isto está\nna experiência digital.", body: "Gratuito para quem\njá tem o livro físico.", footer: "seteveus.space/pedir-codigo" },
-    ],
-    caption: "Não é só ler. É parar, respirar, escrever.\n\nNa experiência digital d'Os 7 Véus do Despertar:\n\n— Respiração guiada entre capítulos\n— Práticas guiadas por véu, escritas pela autora\n— Diário reflexivo pessoal — só tu lês\n\n\"Ler sem escrever é como olhar para um espelho de olhos fechados.\"\n\nGratuito para quem já tem o livro físico.\n\n#OsSeteVeus #PraticasGuiadas #DiárioReflexivo #ExperienciaDigital #PedeOTeuCodigo",
-    canvaSpecs: {
-      dimensions: "1080x1080px (quadrado)",
-      fonts: "Título: Playfair Display / Corpo: Inter",
-      colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#7a8c6e", "#ebe7df"],
-    },
-  },
-  {
-    id: "carousel-carta-autora",
-    title: "Uma carta da autora sobre a experiência digital",
-    description: "Tom pessoal. Vivianne explica porque criou a experiência digital e o que ela representa.",
-    slides: [
-      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "Uma carta\nda autora.", body: "", footer: "", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Quando escrevi\nOs 7 Véus,", body: "sabia que o livro\nera apenas o início.\n\nAs palavras no papel\nsão uma semente.\nMas precisam de espaço\npara crescer.", footer: "Vivianne dos Santos" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "A experiência digital\nnasceu para isso.", body: "Para que não leias sozinha.\n\nPara que tenhas\num lugar onde escrever\no que o livro te fez sentir.\n\nPara que respires\nentre capítulos.", footer: "" },
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Há um diário\nonde só tu escreves.\nHá práticas guiadas.\nHá uma comunidade\nanónima.", body: "E há 3 formas diferentes\nde ler cada capítulo.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Se já tens o livro,\no acesso é gratuito.", body: "Porque quem já\ndeu o primeiro passo\nmerece continuar\nsem barreiras.", footer: "" },
-      { bg: "#c9b896", text: "#3d3630", accent: "#f7f5f0", title: "Pede o teu código.\nÉ pessoal. É teu.", body: "2 minutos.\nUm formulário.\nUm código no teu email.", footer: "seteveus.space/pedir-codigo" },
-    ],
-    caption: "Uma carta da autora:\n\nQuando escrevi Os 7 Véus do Despertar, sabia que o livro era apenas o início. As palavras no papel são uma semente. Mas precisam de espaço para crescer.\n\nA experiência digital nasceu para que não leias sozinha. Para que tenhas um lugar onde escrever o que o livro te fez sentir. Para que respires entre capítulos.\n\nSe já tens o livro, o acesso é gratuito. Porque quem já deu o primeiro passo merece continuar sem barreiras.\n\n— Vivianne dos Santos\n\n#OsSeteVeus #CartaDaAutora #ExperienciaDigital #PedeOTeuCodigo #Autoconhecimento",
-    canvaSpecs: {
-      dimensions: "1080x1080px (quadrado)",
-      fonts: "Título: Playfair Display Italic / Corpo: Inter Light",
-      colorPalette: ["#3d3630", "#f7f5f0", "#c9b896", "#ebe7df"],
-    },
-  },
-
-  // ─── CARROSSEIS FILOSOFICOS E INTIMISTAS ────────────────────────────────────
-
-  {
-    id: "carousel-o-que-te-esconde",
-    title: "O que te esconde de ti mesma?",
-    description: "Carrossel filosofico de paragem obrigatoria. Cada slide e uma pergunta provocadora que obriga a leitora a confrontar-se. Nao e sobre o livro. E sobre quem esta a ler. Desenhado para guardar e partilhar.",
-    slides: [
-      { bg: "#2a2420", text: "#c9b896", accent: "#f7f5f0", title: "O que te esconde\nde ti mesma?", body: "", footer: "", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Quando foi a ultima vez\nque fizeste algo\nso porque querias?", body: "Sem justificacao.\nSem pedir licenca.\nSem calcular\no que iam pensar.", footer: "" },
-      { bg: "#2a2420", text: "#f7f5f0", accent: "#c9b896", title: "Quantas vezes disseste\n\"esta tudo bem\" hoje?", body: "E em quantas dessas vezes\nmentiste\nsem sequer reparar\nque estavas a mentir?", footer: "" },
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "O que farias\nse ninguem\nestivesse a ver?", body: "Nao o que farias de mau.\nO que farias de verdadeiro.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Ha quanto tempo\nnao choras\nsem motivo aceitavel?", body: "Ha quanto tempo\nso te permites chorar\nquando o mundo concorda\nque tens razao?", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Se te sentasses\nna frente de ti mesma\ne olhasses\nnos teus proprios olhos,", body: "o que verias\nque ninguem mais ve?", footer: "" },
-      { bg: "#2a2420", text: "#f7f5f0", accent: "#c9b896", title: "A resposta que tiveste\na estas perguntas\nnao e a verdadeira.", body: "A verdadeira\ne a que apareceu primeiro.\nAntes de a censurares.", footer: "" },
-      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "Ha um teste\nque demora 3 minutos.\nNao te da respostas.\nDa-te o inicio\nde uma conversa\ncontigo.", body: "", footer: "seteveus.space/teste", bgImage: "/images/mandala-7veus.png" },
-    ],
-    caption: "O que te esconde de ti mesma?\n\nQuando foi a ultima vez que fizeste algo so porque querias?\n\nQuantas vezes disseste \"esta tudo bem\" hoje? E em quantas dessas vezes mentiste sem sequer reparar?\n\nO que farias se ninguem estivesse a ver? Nao o que farias de mau. O que farias de verdadeiro.\n\nHa quanto tempo nao choras sem motivo aceitavel?\n\nA resposta que tiveste a estas perguntas nao e a verdadeira. A verdadeira e a que apareceu primeiro. Antes de a censurares.\n\nGuarda. Volta. Le devagar.\n\n#OsSeteVeus #Autoconhecimento #FilosofiaDeVida #PerguntasQueNinguemFaz #DespertarInterior #ReflexaoSilenciosa #VerdadeInterior",
-    canvaSpecs: {
-      dimensions: "1080x1080px (quadrado)",
-      fonts: "Titulo: Playfair Display Italic / Corpo: Inter Light",
-      colorPalette: ["#2a2420", "#f7f5f0", "#c9b896", "#3d3630", "#ebe7df"],
-    },
-  },
-  {
-    id: "carousel-vozes-ecos",
-    title: "Vozes que se reconhecem",
-    description: "Reflexoes anonimas simuladas da comunidade. Cada slide e um eco: intimo, cru, honesto. Parece um fragmento de diario de alguem que podias ser tu. Desenhado para provocar o 'eu tambem'.",
-    slides: [
-      { bg: "#2a2420", text: "#f7f5f0", accent: "#7a8c6e", title: "Vozes que\nse reconhecem.", body: "", footer: "Ecos anonimos. Nomes guardados.", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#f7f5f0", text: "#2a2420", accent: "#7a8c6e", title: "\"Hoje percebi que\na pessoa que mais\nme assusta\nsou eu sem mascara.\"", body: "Nao por ser ma.\nPor ser desconhecida.", footer: "~ eco anonimo" },
-      { bg: "#2a2420", text: "#f7f5f0", accent: "#c9b896", title: "\"Passei a vida inteira\na construir uma mulher\nque toda a gente\nadmirasse.\"", body: "\"Quando ela ficou pronta,\npercebi que nao era eu.\"", footer: "~ eco anonimo" },
-      { bg: "#ebe7df", text: "#3d3630", accent: "#7a8c6e", title: "\"A minha mae nunca\nme ensinou a chorar.\nEnsinou-me a aguentar.\nE eu aguentei.\nAte ao dia em que\no corpo disse basta.\"", body: "", footer: "~ eco anonimo" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "\"Descobri que o medo\nnao e de falhar.\nE de conseguir.\nE depois nao saber\nquem sou sem a luta.\"", body: "", footer: "~ eco anonimo" },
-      { bg: "#f7f5f0", text: "#2a2420", accent: "#7a8c6e", title: "\"Li uma frase\nque dizia:\n'O que te protege\ntambem te aprisiona.'\nFechei o livro.\nChorei meia hora.\"", body: "", footer: "~ eco anonimo" },
-      { bg: "#2a2420", text: "#f7f5f0", accent: "#c9b896", title: "\"O mais estranho\nde acordar\ne perceber\nque acordar doi.\nE que mesmo assim\nprefiro a dor\nao entorpecimento.\"", body: "", footer: "~ eco anonimo" },
-      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "Estas vozes existem\nnum espaco onde\nninguem se conhece\nmas todos se reconhecem.", body: "Chama-se comunidade.\nE talvez estejas\npronta para entrar.", footer: "seteveus.space/comunidade", bgImage: "/images/mandala-7veus.png" },
-    ],
-    caption: "Vozes que se reconhecem.\n\nEcos anonimos. Nomes guardados.\n\n\"Hoje percebi que a pessoa que mais me assusta sou eu sem mascara. Nao por ser ma. Por ser desconhecida.\"\n\n\"Passei a vida inteira a construir uma mulher que toda a gente admirasse. Quando ela ficou pronta, percebi que nao era eu.\"\n\n\"A minha mae nunca me ensinou a chorar. Ensinou-me a aguentar. E eu aguentei. Ate ao dia em que o corpo disse basta.\"\n\n\"Descobri que o medo nao e de falhar. E de conseguir. E depois nao saber quem sou sem a luta.\"\n\nEstas vozes existem num espaco onde ninguem se conhece mas todos se reconhecem.\n\n#OsSeteVeus #VozesQueSeReconhecem #ComunidadeAnonima #EcosDeConsciencia #ReflexaoInterior #Autoconhecimento #DespertarSilencioso",
-    canvaSpecs: {
-      dimensions: "1080x1080px (quadrado)",
-      fonts: "Citacoes: Playfair Display Italic / Rodape: Inter Light",
-      colorPalette: ["#2a2420", "#f7f5f0", "#7a8c6e", "#c9b896", "#ebe7df", "#3d3630"],
-    },
-  },
-  {
-    id: "carousel-7-perguntas",
-    title: "7 perguntas que ninguem te faz",
-    description: "Uma pergunta por veu, sem nomear o veu. Cada slide e uma pergunta profundamente pessoal que espelha a essencia de cada veu. Desenhado para ser guardado e partilhado. Silencio entre slides.",
-    slides: [
-      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "7 perguntas\nque ninguem\nte faz.", body: "", footer: "Guarda isto. Le devagar.", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#c9b896", text: "#3d3630", accent: "#f7f5f0", title: "", body: "Que versao de ti\nestarias a viver agora\nse nunca tivesses ouvido\n\"tu devias ser assim\"?", footer: "I" },
-      { bg: "#2a2420", text: "#f7f5f0", accent: "#c9b896", title: "", body: "O que e que evitas sentir\ncom tanta disciplina\nque ja nem percebes\nque o estas a evitar?", footer: "II" },
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "", body: "De que te sentes culpada\nque nunca disseste\nem voz alta?\nE se nao fosse culpa?\nSe fosse so dor\nmal nomeada?", footer: "III" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "", body: "Quem serias\nse deixasses de provar\nque mereces\nestar aqui?", footer: "IV" },
-      { bg: "#7a8c6e", text: "#f7f5f0", accent: "#ebe7df", title: "", body: "O que aconteceria\nse largasses\no que seguras\ncom tanta forca\nque ja te esqueceste\nde que o podes largar?", footer: "V" },
-      { bg: "#c9b896", text: "#3d3630", accent: "#f7f5f0", title: "", body: "Quando foi a ultima vez\nque desejaste algo\nsem imediatamente\ncalcular\nse o mereciaas?", footer: "VI" },
-      { bg: "#2a2420", text: "#f7f5f0", accent: "#c9b896", title: "", body: "Se tudo o que\nconstruiste\ndesaparecesse amanha,\no que em ti\ncontinuaria de pe?", footer: "VII" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Nao precisas\nde responder agora.", body: "A pergunta que te ficou\ne o veu que te espera.", footer: "seteveus.space/teste", bgImage: "/images/mandala-7veus.png" },
-    ],
-    caption: "7 perguntas que ninguem te faz.\n\nI. Que versao de ti estarias a viver agora se nunca tivesses ouvido \"tu devias ser assim\"?\n\nII. O que e que evitas sentir com tanta disciplina que ja nem percebes que o estas a evitar?\n\nIII. De que te sentes culpada que nunca disseste em voz alta?\n\nIV. Quem serias se deixasses de provar que mereces estar aqui?\n\nV. O que aconteceria se largasses o que seguras com tanta forca?\n\nVI. Quando foi a ultima vez que desejaste algo sem calcular se o mereciaas?\n\nVII. Se tudo desaparecesse amanha, o que em ti continuaria de pe?\n\nA pergunta que te ficou e o veu que te espera.\n\n#OsSeteVeus #7Perguntas #PerguntasProfundas #Autoconhecimento #DespertarDeConsciencia #FilosofiaDeVida #ReflexaoInterior #GuardaIsto",
-    canvaSpecs: {
-      dimensions: "1080x1080px (quadrado)",
-      fonts: "Pergunta: Playfair Display Italic / Numero: Inter Light",
-      colorPalette: ["#3d3630", "#c9b896", "#2a2420", "#ebe7df", "#7a8c6e", "#f7f5f0"],
-    },
-  },
-  {
-    id: "carousel-nao-e-autoajuda",
-    title: "Isto nao e autoajuda.",
-    description: "Carrossel provocador de posicionamento. Contrasta frontalmente o que este livro NAO e com o que ele realmente e. Anti-autoajuda. Desconfortavel. Honesto. Para quem ja esta farta de promessas vazias.",
-    slides: [
-      { bg: "#2a2420", text: "#f7f5f0", accent: "#c9b896", title: "Isto nao e\nautoajuda.", body: "", footer: "", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Nao te vai dizer\no que fazer.", body: "Vai perguntar-te\nporque fazes\no que fazes.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Nao te vai dar\num plano de 7 passos\npara a felicidade.", body: "Vai tirar-te\no chao debaixo dos pes.\nDevagar.\nCom cuidado.\nMas vai.", footer: "" },
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Nao te vai prometer\nque vais ficar bem.", body: "Vai mostrar-te\nque \"ficar bem\"\ntalvez seja o veu\nmais espesso de todos.", footer: "" },
-      { bg: "#2a2420", text: "#f7f5f0", accent: "#c9b896", title: "Nao ha mantras.\nNao ha afirmacoes\npositivas.\nNao ha gratidao\nforcada.", body: "Ha silencio.\nHa perguntas.\nHa verdade\nque incomoda.", footer: "" },
-      { bg: "#c9b896", text: "#3d3630", accent: "#f7f5f0", title: "Se queres\nque alguem te diga\nque es suficiente,\nha milhares de livros\npara isso.", body: "Este pergunta-te:\nsuficiente para quem?", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Se procuras conforto,\neste livro\nnao e para ti.", body: "Se procuras verdade\nque arda devagar\nmas nao se apague,\ntalvez seja.", footer: "" },
-      { bg: "#2a2420", text: "#c9b896", accent: "#f7f5f0", title: "Os 7 Veus\ndo Despertar.", body: "Nao e autoajuda.\nE um espelho\nque nao te deixa\ndesviar o olhar.", footer: "seteveus.space", bgImage: "/images/mandala-7veus.png" },
-    ],
-    caption: "Isto nao e autoajuda.\n\nNao te vai dizer o que fazer. Vai perguntar-te porque fazes o que fazes.\n\nNao te vai dar um plano de 7 passos para a felicidade. Vai tirar-te o chao debaixo dos pes. Devagar. Com cuidado. Mas vai.\n\nNao te vai prometer que vais ficar bem. Vai mostrar-te que \"ficar bem\" talvez seja o veu mais espesso de todos.\n\nNao ha mantras. Nao ha afirmacoes positivas. Ha silencio. Ha perguntas. Ha verdade que incomoda.\n\nSe queres que alguem te diga que es suficiente, ha milhares de livros para isso. Este pergunta-te: suficiente para quem?\n\nSe procuras conforto, este livro nao e para ti. Se procuras verdade que arda devagar mas nao se apague, talvez seja.\n\n#OsSeteVeus #NaoEAutoajuda #AntiAutoajuda #FilosofiaDeVida #VerdadeIncomoda #Autoconhecimento #DespertarDeConsciencia #LivroFilosofico",
-    canvaSpecs: {
-      dimensions: "1080x1080px (quadrado)",
-      fonts: "Titulo: Playfair Display Bold / Corpo: Inter",
-      colorPalette: ["#2a2420", "#f7f5f0", "#c9b896", "#3d3630", "#ebe7df"],
-    },
-  },
-  {
-    id: "carousel-antes-depois",
-    title: "Antes e depois do primeiro Espelho",
-    description: "Transformacao interior subtil e honesta. Nada de antes/depois motivacional. Mudancas pequenas, reais, desconfortaveis. O tipo de mudanca que ninguem ve de fora mas que muda tudo por dentro.",
-    slides: [
-      { bg: "#3d3630", text: "#c9b896", accent: "#f7f5f0", title: "Antes e depois\ndo primeiro\nEspelho.", body: "", footer: "Nao sao conquistas.\nSao feridas que\ndeixaram de doer\nem silencio.", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Antes:", body: "\"Esta tudo bem.\"", footer: "" },
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Depois:", body: "\"Nao esta.\nE nao precisa\nde estar.\"", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Antes:", body: "Chorava so quando\nninguem via.\nE limpava a cara\nantes de sair\nda casa de banho.", footer: "" },
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Depois:", body: "Deixei as lagrimas\nescorrerem a mesa.\nAlguem perguntou\nse estava bem.\nDisse que nao.\nE o mundo nao acabou.", footer: "" },
-      { bg: "#f7f5f0", text: "#3d3630", accent: "#c9b896", title: "Antes:", body: "Sabia exactamente\nquem era.\nTinha respostas\npara tudo.", footer: "" },
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Depois:", body: "Sei cada vez menos.\nMas o que sei\nfinalmente e meu.\nNao herdado.\nNao decorado.\nVivido.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "O livro nao te melhora.\nNao te conserta.\nNao te transforma.", body: "Tira-te o disfarce.\nE isso muda tudo.", footer: "seteveus.space", bgImage: "/images/mandala-7veus.png" },
-    ],
-    caption: "Antes e depois do primeiro Espelho.\n\nNao sao conquistas. Sao feridas que deixaram de doer em silencio.\n\nAntes: \"Esta tudo bem.\"\nDepois: \"Nao esta. E nao precisa de estar.\"\n\nAntes: chorava so quando ninguem via.\nDepois: deixei as lagrimas escorrerem a mesa. Alguem perguntou se estava bem. Disse que nao. E o mundo nao acabou.\n\nAntes: sabia exactamente quem era.\nDepois: sei cada vez menos. Mas o que sei finalmente e meu. Nao herdado. Nao decorado. Vivido.\n\nO livro nao te melhora. Nao te conserta. Tira-te o disfarce. E isso muda tudo.\n\n#OsSeteVeus #AntesEDepois #TransformacaoReal #Autoconhecimento #VerdadeInterior #DespertarDeConsciencia #FilosofiaDeVida #SemDisfarce",
-    canvaSpecs: {
-      dimensions: "1080x1080px (quadrado)",
-      fonts: "Titulo: Playfair Display / Corpo: Inter Light",
-      colorPalette: ["#3d3630", "#f7f5f0", "#ebe7df", "#c9b896"],
-    },
-  },
-  {
-    id: "carousel-vivianne-carta",
-    title: "Eu nao escrevi este livro para te ajudar",
-    description: "Carta pessoal da Vivianne com titulo provocador. Nao e generosidade — e necessidade. Ela escreveu porque precisava de se entender. A leitora nao e cliente — e reflexo. Tom visceral, vulneravel, sem filtro. Portugues de Mocambique.",
-    slides: [
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Eu nao escrevi\neste livro\npara te ajudar.", body: "", footer: "Vivianne dos Santos", bgImage: "/images/mandala-7veus.png" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Escrevi-o porque\nme estava a perder.", body: "Porque acordava todos os dias\ndentro de uma vida\nque tinha construido\ncom as maos de outra pessoa.\n\nAlguem que eu ja nao era.\nMas que todos esperavam\nque eu continuasse a ser.", footer: "" },
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Nao havia livro\nque dissesse\no que eu precisava\nde ouvir.", body: "Entao escrevi-o.\nNao como resposta.\nComo pergunta\nque me recusei\na calar.", footer: "" },
-      { bg: "#2a2420", text: "#f7f5f0", accent: "#c9b896", title: "Tu nao es\nminha cliente.\nNao es minha aluna.\nNao es minha leitora.", body: "Es um reflexo.\nSe te reconheces\nnestas paginas,\nnao e porque eu\nte conhego.\nE porque nos vivemos\nas mesmas mentiras.", footer: "" },
-      { bg: "#3d3630", text: "#f7f5f0", accent: "#c9b896", title: "Este livro nao e\num presente\nque te dou.", body: "E um espelho\nque parti.\nOs estilhacos\nsao as paginas.\nSe te cortares nalgum,\ne porque ja tinhas\nessa ferida.", footer: "" },
-      { bg: "#ebe7df", text: "#3d3630", accent: "#c9b896", title: "Nao te prometo cura.\nNao te prometo paz.\nNao te prometo\nque vais gostar\ndo que encontras.", body: "Prometo-te\nque vai ser verdade.\nE talvez isso\nseja suficiente.", footer: "" },
-      { bg: "#c9b896", text: "#3d3630", accent: "#f7f5f0", title: "Se te vires\nnestas paginas,\nnao foi por acaso.", body: "", footer: "Com tudo o que sou,\nVivianne\nseteveus.space", bgImage: "/images/mandala-7veus.png" },
-    ],
-    caption: "Eu nao escrevi este livro para te ajudar.\n\nEscrevi-o porque me estava a perder. Porque acordava todos os dias dentro de uma vida que tinha construido com as maos de outra pessoa.\n\nNao havia livro que dissesse o que eu precisava de ouvir. Entao escrevi-o. Nao como resposta. Como pergunta que me recusei a calar.\n\nTu nao es minha cliente. Nao es minha leitora. Es um reflexo. Se te reconheces nestas paginas, nao e porque eu te conhego. E porque nos vivemos as mesmas mentiras.\n\nEste livro nao e um presente que te dou. E um espelho que parti. Os estilhacos sao as paginas.\n\nNao te prometo cura. Nao te prometo paz. Prometo-te que vai ser verdade. E talvez isso seja suficiente.\n\nSe te vires nestas paginas, nao foi por acaso.\n\nCom tudo o que sou,\nVivianne\n\n#OsSeteVeus #CartaDaVivianne #VivianneDosSantos #VerdadeSemFiltro #Autoconhecimento #FilosofiaDeVida #DespertarDeConsciencia #EspelhoPartido",
-    canvaSpecs: {
-      dimensions: "1080x1080px (quadrado)",
-      fonts: "Titulo: Playfair Display Italic / Corpo: Inter Light",
-      colorPalette: ["#ebe7df", "#3d3630", "#c9b896", "#2a2420", "#f7f5f0"],
-    },
-  },
 ];
-
-// ─── SCRIPTS DE REELS ────────────────────────────────────────────────────────
 
 export const reelScripts: ReelScript[] = [
   {
@@ -2358,7 +3053,7 @@ export const reelScripts: ReelScript[] = [
     canvaTemplate: "Procura 'list reveal' ou 'text animation' nos templates do CapCut",
   },
   {
-    hook: "O que acontece quando uma mãe é uma filha dizem o que sempre calaram?",
+    hook: "O que acontece quando uma mãe e uma filha dizem o que sempre calaram?",
     scenes: [
       "CENA 1 (0-3s): \"O que acontece quando uma mãe é uma filha dizem o que sempre calaram?\" [texto dramático]",
       "CENA 2 (3-8s): Imagem: mãos de duas gerações diferentes. Texto: \"Sara viu o véu. Mas há um nó que ficou por desatar.\"",
@@ -2387,18 +3082,18 @@ export const reelScripts: ReelScript[] = [
     canvaTemplate: "Procura 'product reveal' ou 'unboxing' nos templates do CapCut",
   },
   {
-    hook: "Não sabes para onde vais? Óptimo.",
+    hook: "Há uma voz que diz não antes de pensares.",
     scenes: [
-      "CENA 1 (0-3s): \"Não sabes para onde vais?\" [pausa dramática]",
-      "CENA 2 (3-5s): \"Óptimo.\" [texto grande, impacto]",
-      "CENA 3 (5-12s): \"Não precisas de saber para onde vais. Precisas apenas de dar o primeiro passo.\"",
-      "CENA 4 (12-18s): \"Os Sete Véus do Despertar são 7 experiências que te devolvem a ti mesma.\"",
-      "CENA 5 (18-25s): \"Sem pressa. Sem fórmulas. Apenas verdade.\"",
-      "CENA 6 (25-30s): \"Começa pelo teste gratuito. 3 minutos. 7 perguntas.\" + CTA",
+      "CENA 1 (0-3s): Ecrã escuro. Texto aparece devagar: \"Há uma voz que diz não...\" [pausa]",
+      "CENA 2 (3-5s): \"...antes de pensares.\" [impacto]",
+      "CENA 3 (5-12s): \"Não é covardia. É um mecanismo antigo — treinado ao longo de anos de cautela disfarçada de bom senso.\"",
+      "CENA 4 (12-18s): Imagem atmosférica. Voz ou texto: \"'E se falhar?' 'E se me arrepender?' Reconheces estas vozes?\"",
+      "CENA 5 (18-24s): \"O Espelho do Medo é uma história sobre o Rui — e sobre o que o medo calou durante anos.\"",
+      "CENA 6 (24-30s): \"Março 2026.\" + seteveus.space",
     ],
-    cta: "Teste gratuito. 3 minutos.",
-    music: "Inspiracional mas contida. No CapCut: 'Inspiring Minimal' ou 'Hope'",
-    duration: "25-30s",
+    cta: "Espelho do Medo — Março 2026. seteveus.space",
+    music: "Ambiente contido, quase em silêncio. No CapCut: 'Contemplative' ou 'Slow Ambient'",
+    duration: "28-30s",
   },
   {
     hook: "Isto não é um livro. É um espelho.",
@@ -2415,19 +3110,18 @@ export const reelScripts: ReelScript[] = [
     duration: "25-28s",
   },
   {
-    hook: "5 coisas que esta plataforma tem que nenhum livro te dá.",
+    hook: "Não escreveste nada sobre ti em anos. E isso pesa.",
     scenes: [
-      "CENA 1 (0-3s): \"5 coisas que esta plataforma tem que nenhum livro te dá.\" [texto directo, fundo escuro]",
-      "CENA 2 (3-8s): \"1. Pausas de respiração entre capítulos.\" [screenshot da pausa]",
-      "CENA 3 (8-13s): \"2. Um diário pessoal que só tu lês.\" [screenshot do diário]",
-      "CENA 4 (13-18s): \"3. Uma comunidade anónima onde ninguém te conhece mas todos se reconhecem.\" [screenshot Ecos]",
-      "CENA 5 (18-23s): \"4. Histórias que se desbloqueiam ao teu ritmo.\" [screenshot do leitor]",
-      "CENA 6 (23-28s): \"5. Um chatbot de apoio com a voz da autora.\" [screenshot do chat]",
-      "CENA 7 (28-33s): \"$19 USD. Acesso vitalício..\" [CTA]",
+      "CENA 1 (0-3s): Ecrã escuro. \"Não escreveste nada sobre ti em anos.\" [pausa]",
+      "CENA 2 (3-5s): \"E isso pesa.\" [impacto simples]",
+      "CENA 3 (5-12s): Screenshot do diário reflexivo na plataforma. \"No leitor dos Espelhos, cada capítulo tem um espaço para escrever o que sentiste.\"",
+      "CENA 4 (12-18s): \"Só tu lês. Não vai a lado nenhum. Só fica.\"",
+      "CENA 5 (18-24s): Screenshot da comunidade Ecos. \"E se quiseres partilhar algo, há uma comunidade anónima. Sem nomes. Tudo desaparece em 30 dias.\"",
+      "CENA 6 (24-30s): \"seteveus.space\" sobre fundo escuro [CTA tranquilo]",
     ],
-    cta: "$19 USD. Acesso vitalício.",
-    music: "Ritmo suave e moderno. No CapCut: 'Soft Pop' ou 'Modern Minimal'",
-    duration: "30-33s",
+    cta: "seteveus.space",
+    music: "Piano muito suave. No CapCut: 'Slow Piano' ou 'Contemplative'",
+    duration: "28-30s",
   },
   {
     hook: "Se leste isto até ao fim, este livro é para ti.",
@@ -2487,10 +3181,10 @@ export type HashtagSet = {
 export const hashtagSets: HashtagSet[] = [
   {
     name: "Principal — Marca",
-    description: "Usar em todos os posts. Hashtags da marca.",
+    description: "Usar em todos os posts. Hashtags da marca. Nota: usar SEMPRE a versão sem acentos para manter um único pool de hashtag no Instagram.",
     tags: [
-      "#OsSeteVéus", "#SeteVéus", "#VivianneDosSantos", "#SetevéusSpace",
-      "#OsSeteVéusDoDespertar", "#PedeOTeuCódigo",
+      "#OsSeteVeus", "#SeteVeus", "#VivianneDosSantos", "#SetevéusSpace",
+      "#OsSeteVeusDoDespertar", "#PedeOTeuCodigo",
     ],
   },
   {
@@ -2557,9 +3251,9 @@ export const hashtagSets: HashtagSet[] = [
     name: "Véu da Ilusão",
     description: "Posts específicos sobre o 1o véu.",
     tags: [
-      "#VéuDaIlusão", "#EspelhoDaIlusão", "#NóDaHerança",
-      "#PrimeiroVéu", "#Ilusão", "#VidaNoAutomático",
-      "#DespertarDaIlusão", "#OQueÉReal", "#SairDoAutomático",
+      "#VeuDaIlusao", "#EspelhoDaIlusao", "#NoDaHeranca",
+      "#PrimeiroVeu", "#Ilusao", "#VidaNoAutomatico",
+      "#DespertarDaIlusao", "#SairDoAutomatico",
       "#PerguntasQueTransformam",
     ],
   },
@@ -2567,7 +3261,7 @@ export const hashtagSets: HashtagSet[] = [
     name: "Véu do Medo",
     description: "Posts sobre o 2o véu (Março 2026).",
     tags: [
-      "#VéuDoMedo", "#EspelhoDoMedo", "#SegundoVéu",
+      "#VeuDoMedo", "#EspelhoDoMedo", "#SegundoVeu",
       "#Medo", "#Coragem", "#MedoDeViver",
       "#EnfrentarOMedo", "#CoragemDeSerQuemSou", "#SuperarOMedo",
       "#OQueMeTrava",
