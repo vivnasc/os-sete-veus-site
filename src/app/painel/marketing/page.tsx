@@ -6,6 +6,23 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { professionalCarousels, hashtagSets, allWeeks, reelScripts, productionGuide } from "@/data/content-calendar-weeks";
 import type { CarouselSlide } from "@/data/content-calendar-weeks";
+import { TEASERS_ESPELHOS, TRAILER_JORNADA, STORIES_ESPELHOS, TEASERS_NOS, CHAMADAS_ACCAO } from "@/data/marketing-audio";
+
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
+
+type AudioItem = { id: string; tipo: string; nome: string; ficheiro: string; texto: string };
+
+function buildAudioItems(): AudioItem[] {
+  return [
+    ...TEASERS_ESPELHOS.map((t) => ({ id: `teaser-${t.veu}`, tipo: "Teaser", nome: `Espelho ${t.veu} — ${t.espelho}`, ficheiro: t.ficheiro, texto: t.texto })),
+    ...STORIES_ESPELHOS.map((s) => ({ id: `story-${s.veu}`, tipo: "Story", nome: `Story — ${s.espelho}`, ficheiro: s.ficheiro, texto: s.texto })),
+    { id: "trailer", tipo: "Trailer", nome: "Trailer — A Jornada Completa", ficheiro: TRAILER_JORNADA.ficheiro, texto: TRAILER_JORNADA.texto },
+    ...TEASERS_NOS.map((n) => ({ id: `no-${n.veu}`, tipo: "Nó", nome: `Nó ${n.veu} — ${n.no}`, ficheiro: n.ficheiro, texto: n.texto })),
+    ...CHAMADAS_ACCAO.map((c) => ({ id: c.id, tipo: "CTA", nome: c.nome, ficheiro: c.ficheiro, texto: c.texto })),
+  ];
+}
+
+const ALL_AUDIO_ITEMS = buildAudioItems();
 
 const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
 const DIMS = { w: 1080, h: 1080 };
@@ -384,7 +401,9 @@ export default function MarketingPage() {
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [openCaption, setOpenCaption] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"instagram" | "whatsapp" | "stories">("whatsapp");
-  const [pageSection, setPageSection] = useState<"campanha" | "calendario" | "posts" | "reels" | "guia">("campanha");
+  const [pageSection, setPageSection] = useState<"campanha" | "calendario" | "posts" | "reels" | "guia" | "capcut">("campanha");
+  const [capFilter, setCapFilter] = useState<"todos" | "Teaser" | "Story" | "Trailer" | "Nó" | "CTA">("todos");
+  const [capSelected, setCapSelected] = useState<AudioItem | null>(null);
   const [calWeek, setCalWeek] = useState(0);
   const [calDay, setCalDay] = useState(0);
 
@@ -534,6 +553,7 @@ export default function MarketingPage() {
     { id: "posts", label: "Posts" },
     { id: "reels", label: "Reels" },
     { id: "guia", label: "Guia" },
+    { id: "capcut", label: "CapCut" },
   ];
 
   return (
@@ -962,6 +982,105 @@ export default function MarketingPage() {
                 })}
               </div>
             </div>
+          </div>
+        )}
+
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {/* ── CAPCUT — áudios de marketing ── */}
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {pageSection === "capcut" && (
+          <div className="py-4 space-y-4">
+            {capSelected ? (
+              /* ── Detail view ── */
+              <div className="space-y-4">
+                <button
+                  onClick={() => setCapSelected(null)}
+                  className="flex items-center gap-1.5 font-sans text-xs text-cream/40 hover:text-cream/70"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6" /></svg>
+                  Voltar
+                </button>
+                <div className="overflow-hidden rounded-2xl border border-cream/10 bg-[#222019]">
+                  <div className="border-b border-cream/5 px-5 py-4">
+                    <span className="rounded-full border border-[#c9b896]/30 px-2 py-0.5 font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#c9b896]/60">
+                      {capSelected.tipo}
+                    </span>
+                    <h2 className="mt-2 font-serif text-lg text-cream/90">{capSelected.nome}</h2>
+                  </div>
+                  {/* Audio player */}
+                  <div className="px-5 py-4 border-b border-cream/5">
+                    <p className="mb-3 font-sans text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-[#c9b896]/50">
+                      Áudio da Vivianne
+                    </p>
+                    <AudioPlayerDark
+                      src={`${SUPABASE_URL}/storage/v1/object/public/audios/${capSelected.ficheiro}`}
+                      ficheiro={capSelected.ficheiro}
+                    />
+                  </div>
+                  {/* Texto */}
+                  <div className="px-5 py-4">
+                    <p className="mb-2 font-sans text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-cream/30">
+                      Texto
+                    </p>
+                    <p className="font-sans text-sm leading-relaxed text-cream/60">{capSelected.texto}</p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              /* ── List view ── */
+              <>
+                <p className="font-sans text-[0.6rem] leading-relaxed text-cream/30">
+                  Áudios prontos para combinar com as imagens no CapCut.
+                </p>
+                {/* Filter tabs */}
+                <div className="-mx-4 overflow-x-auto px-4 scrollbar-none">
+                  <div className="flex gap-1.5 min-w-max">
+                    {(["todos", "Teaser", "Story", "Trailer", "Nó", "CTA"] as const).map((f) => {
+                      const count = f === "todos" ? ALL_AUDIO_ITEMS.length : ALL_AUDIO_ITEMS.filter((i) => i.tipo === f).length;
+                      return (
+                        <button
+                          key={f}
+                          onClick={() => setCapFilter(f)}
+                          className={`rounded-full px-3 py-1 font-sans text-[0.6rem] font-semibold transition-all whitespace-nowrap ${
+                            capFilter === f
+                              ? "bg-[#c9b896] text-[#1a1814]"
+                              : "border border-cream/10 text-cream/40 hover:text-cream/60"
+                          }`}
+                        >
+                          {f === "todos" ? "Todos" : f} {count}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+                {/* Cards */}
+                <div className="space-y-2">
+                  {ALL_AUDIO_ITEMS.filter((i) => capFilter === "todos" || i.tipo === capFilter).map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => setCapSelected(item)}
+                      className="block w-full rounded-2xl border border-cream/8 bg-[#222019] px-4 py-4 text-left transition-all hover:border-cream/15 hover:bg-[#2a2820]"
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="rounded-full border border-[#c9b896]/20 px-2 py-0.5 font-sans text-[0.5rem] font-semibold uppercase tracking-wider text-[#c9b896]/50">
+                              {item.tipo}
+                            </span>
+                          </div>
+                          <p className="font-serif text-sm text-cream/80 leading-snug">{item.nome}</p>
+                          <p className="mt-1 font-sans text-[0.6rem] leading-relaxed text-cream/35 line-clamp-2">
+                            {item.texto.slice(0, 100)}...
+                          </p>
+                          <p className="mt-1.5 font-mono text-[0.5rem] text-cream/20">{item.ficheiro}</p>
+                        </div>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="mt-1 shrink-0 text-cream/20"><path d="M9 18l6-6-6-6" /></svg>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         )}
 
@@ -1478,6 +1597,95 @@ export default function MarketingPage() {
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+// ── Audio player para fundo escuro ──────────────────────────────────────────
+function AudioPlayerDark({ src, ficheiro }: { src: string; ficheiro: string }) {
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [playing, setPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const onTime = () => setCurrentTime(audio.currentTime);
+    const onMeta = () => setDuration(audio.duration);
+    const onEnd = () => setPlaying(false);
+    audio.addEventListener("timeupdate", onTime);
+    audio.addEventListener("loadedmetadata", onMeta);
+    audio.addEventListener("ended", onEnd);
+    return () => {
+      audio.removeEventListener("timeupdate", onTime);
+      audio.removeEventListener("loadedmetadata", onMeta);
+      audio.removeEventListener("ended", onEnd);
+    };
+  }, []);
+
+  function toggle() {
+    const audio = audioRef.current;
+    if (!audio) return;
+    playing ? audio.pause() : audio.play();
+    setPlaying(!playing);
+  }
+
+  function seek(e: React.ChangeEvent<HTMLInputElement>) {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.currentTime = Number(e.target.value);
+  }
+
+  function fmt(s: number) {
+    const m = Math.floor(s / 60);
+    return `${m}:${Math.floor(s % 60).toString().padStart(2, "0")}`;
+  }
+
+  return (
+    <div className="rounded-xl bg-[#1a1814] border border-cream/10 p-4">
+      <audio ref={audioRef} src={src} preload="metadata" />
+      <div className="flex items-center gap-3">
+        <button
+          onClick={toggle}
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#c9b896] text-[#1a1814] transition-opacity hover:opacity-80"
+        >
+          {playing ? (
+            <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+              <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" fill="currentColor" className="ml-0.5 h-4 w-4">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          )}
+        </button>
+        <div className="flex-1">
+          <p className="font-mono text-[0.5rem] text-cream/30">{ficheiro}</p>
+          <div className="mt-1.5 flex items-center gap-2">
+            <span className="font-sans text-[0.6rem] text-cream/40">{fmt(currentTime)}</span>
+            <input
+              type="range"
+              min={0}
+              max={duration || 0}
+              value={currentTime}
+              onChange={seek}
+              className="h-1 flex-1 cursor-pointer appearance-none rounded-full bg-cream/10 accent-[#c9b896]"
+            />
+            <span className="font-sans text-[0.6rem] text-cream/40">{fmt(duration)}</span>
+          </div>
+        </div>
+        <a
+          href={src}
+          download={ficheiro}
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-cream/10 text-cream/30 transition-colors hover:border-cream/25 hover:text-cream/60"
+          title="Baixar"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+            <path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" />
+          </svg>
+        </a>
+      </div>
     </div>
   );
 }
