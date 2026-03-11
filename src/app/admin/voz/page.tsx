@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import Link from "next/link";
 import { ALL_CITACOES } from "@/data/citacoes-partilha";
@@ -58,7 +58,11 @@ export default function VozPage() {
   const [blobs, setBlobs] = useState<Record<string, Blob>>({});
   const [uploadEstados, setUploadEstados] = useState<Record<string, EstadoUpload>>({});
   const [aGerarTodos, setAGerarTodos] = useState(false);
+  const [aEnviarTodos, setAEnviarTodos] = useState(false);
+  const [autoUpload, setAutoUpload] = useState(false);
+  const [progresso, setProgresso] = useState({ atual: 0, total: 0 });
   const [erroGlobal, setErroGlobal] = useState("");
+  const deveParar = useRef(false);
 
   if (!user || !isAdmin) {
     return (
@@ -68,7 +72,7 @@ export default function VozPage() {
     );
   }
 
-  async function gerarVoz(id: string, ficheiro: string, texto: string) {
+  async function gerarVoz(id: string, ficheiro: string, texto: string, semDownload = false) {
     if (!apiKey.trim()) {
       alert("Coloca a tua API key do ElevenLabs primeiro.");
       return;
@@ -97,17 +101,22 @@ export default function VozPage() {
       const blob = await res.blob();
       if (blob.size === 0) throw new Error("ElevenLabs devolveu ficheiro vazio.");
 
-      // Guardar blob para upload posterior
       setBlobs((b) => ({ ...b, [id]: blob }));
 
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = ficheiro;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      if (autoUpload) {
+        // Upload automático — sem download individual
+        await uploadAudioBlob(id, ficheiro, blob);
+      } else if (!semDownload) {
+        // Download individual
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = ficheiro;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }
 
       setEstados((e) => ({ ...e, [id]: "feito" }));
     } catch (err: unknown) {
@@ -118,72 +127,63 @@ export default function VozPage() {
     }
   }
 
+  function itensAba() {
+    return aba === "citacoes"
+      ? ALL_CITACOES.map((c, i) => ({
+          id: `cit-${i}`,
+          ficheiro: `citacao-${String(i + 1).padStart(3, "0")}-veu${c.veu}-${c.fonte}.mp3`,
+          texto: c.texto,
+        }))
+      : aba === "reflexoes"
+      ? REFLEXOES
+      : aba === "intros"
+      ? INTROS_VEUS.filter((v) => v.texto.trim()).map((v) => ({
+          id: `intro-${v.veu}`,
+          ficheiro: `intro-veu-${v.veu}-${v.nome.toLowerCase().replace(/\s/g, "-")}.mp3`,
+          texto: v.texto,
+        }))
+      : aba === "teasers"
+      ? TEASERS_ESPELHOS.map((t) => ({ id: `teaser-${t.veu}`, ficheiro: t.ficheiro, texto: t.texto }))
+      : aba === "trailer"
+      ? [{ id: "trailer", ficheiro: TRAILER_JORNADA.ficheiro, texto: TRAILER_JORNADA.texto }]
+      : aba === "stories"
+      ? STORIES_ESPELHOS.map((s) => ({ id: `story-${s.veu}`, ficheiro: s.ficheiro, texto: s.texto }))
+      : aba === "teasers-nos"
+      ? TEASERS_NOS.map((t) => ({ id: `teaser-no-${t.veu}`, ficheiro: t.ficheiro, texto: t.texto }))
+      : CHAMADAS_ACCAO.map((c) => ({ id: c.id, ficheiro: c.ficheiro, texto: c.texto }));
+  }
+
   async function gerarTodosAba() {
     if (!apiKey.trim()) {
       alert("Coloca a tua API key do ElevenLabs primeiro.");
       return;
     }
+    deveParar.current = false;
     setAGerarTodos(true);
 
-    const itens =
-      aba === "citacoes"
-        ? ALL_CITACOES.map((c, i) => ({
-            id: `cit-${i}`,
-            ficheiro: `citacao-${String(i + 1).padStart(3, "0")}-veu${c.veu}-${c.fonte}.mp3`,
-            texto: c.texto,
-          }))
-        : aba === "reflexoes"
-        ? REFLEXOES
-        : aba === "intros"
-        ? INTROS_VEUS.filter((v) => v.texto.trim()).map((v) => ({
-            id: `intro-${v.veu}`,
-            ficheiro: `intro-veu-${v.veu}-${v.nome.toLowerCase().replace(/\s/g, "-")}.mp3`,
-            texto: v.texto,
-          }))
-        : aba === "teasers"
-        ? TEASERS_ESPELHOS.map((t) => ({
-            id: `teaser-${t.veu}`,
-            ficheiro: t.ficheiro,
-            texto: t.texto,
-          }))
-        : aba === "trailer"
-        ? [{ id: "trailer", ficheiro: TRAILER_JORNADA.ficheiro, texto: TRAILER_JORNADA.texto }]
-        : aba === "stories"
-        ? STORIES_ESPELHOS.map((s) => ({
-            id: `story-${s.veu}`,
-            ficheiro: s.ficheiro,
-            texto: s.texto,
-          }))
-        : aba === "teasers-nos"
-        ? TEASERS_NOS.map((t) => ({
-            id: `teaser-no-${t.veu}`,
-            ficheiro: t.ficheiro,
-            texto: t.texto,
-          }))
-        : CHAMADAS_ACCAO.map((c) => ({
-            id: c.id,
-            ficheiro: c.ficheiro,
-            texto: c.texto,
-          }));
+    const itens = itensAba().filter((item) => estados[item.id] !== "feito");
+    setProgresso({ atual: 0, total: itens.length });
 
-    for (const item of itens) {
-      if (estados[item.id] === "feito") continue;
-      await gerarVoz(item.id, item.ficheiro, item.texto);
-      await new Promise((r) => setTimeout(r, 2000));
+    for (let i = 0; i < itens.length; i++) {
+      if (deveParar.current) break;
+      setProgresso({ atual: i, total: itens.length });
+      await gerarVoz(itens[i].id, itens[i].ficheiro, itens[i].texto, autoUpload);
+      if (i < itens.length - 1) await new Promise((r) => setTimeout(r, 2000));
     }
+
+    setProgresso({ atual: 0, total: 0 });
     setAGerarTodos(false);
   }
 
-  async function uploadAudio(id: string, ficheiro: string) {
-    const blob = blobs[id];
-    if (!blob) return;
+  function pararGeracao() {
+    deveParar.current = true;
+  }
 
+  async function uploadAudioBlob(id: string, ficheiro: string, blob: Blob) {
     setUploadEstados((s) => ({ ...s, [id]: "a-enviar" }));
-
     const form = new FormData();
     form.append("file", blob, ficheiro);
     form.append("filename", ficheiro);
-
     try {
       const res = await fetch("/api/admin/upload-audio", { method: "POST", body: form });
       if (!res.ok) {
@@ -194,6 +194,72 @@ export default function VozPage() {
     } catch {
       setUploadEstados((s) => ({ ...s, [id]: "erro" }));
     }
+  }
+
+  async function uploadAudio(id: string, ficheiro: string) {
+    const blob = blobs[id];
+    if (!blob) return;
+    await uploadAudioBlob(id, ficheiro, blob);
+  }
+
+  async function downloadZip() {
+    const { default: JSZip } = await import("jszip");
+    const zip = new JSZip();
+    const itens = itensAba();
+    for (const item of itens) {
+      const blob = blobs[item.id];
+      if (blob) zip.file(item.ficheiro, blob);
+    }
+    const zipBlob = await zip.generateAsync({ type: "blob" });
+    const url = URL.createObjectURL(zipBlob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `audios-${aba}.zip`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  async function enviarTodosAba() {
+    setAEnviarTodos(true);
+    const ids = Object.keys(blobs).filter((id) => uploadEstados[id] !== "enviado");
+    for (const id of ids) {
+      // Derivar ficheiro a partir dos dados da aba actual
+      const ficheiro = (() => {
+        if (id.startsWith("cit-")) {
+          const i = parseInt(id.replace("cit-", ""));
+          const c = ALL_CITACOES[i];
+          return c ? `citacao-${String(i + 1).padStart(3, "0")}-veu${c.veu}-${c.fonte}.mp3` : null;
+        }
+        if (id.startsWith("intro-")) {
+          const veuNum = parseInt(id.replace("intro-", ""));
+          const v = INTROS_VEUS.find((x) => x.veu === veuNum);
+          return v ? `intro-veu-${v.veu}-${v.nome.toLowerCase().replace(/\s/g, "-")}.mp3` : null;
+        }
+        if (id.startsWith("teaser-no-")) {
+          const veuNum = parseInt(id.replace("teaser-no-", ""));
+          return TEASERS_NOS.find((t) => t.veu === veuNum)?.ficheiro ?? null;
+        }
+        if (id.startsWith("teaser-")) {
+          const veuNum = parseInt(id.replace("teaser-", ""));
+          return TEASERS_ESPELHOS.find((t) => t.veu === veuNum)?.ficheiro ?? null;
+        }
+        if (id.startsWith("story-")) {
+          const veuNum = parseInt(id.replace("story-", ""));
+          return STORIES_ESPELHOS.find((s) => s.veu === veuNum)?.ficheiro ?? null;
+        }
+        if (id === "trailer") return TRAILER_JORNADA.ficheiro;
+        // reflexoes: id = "espelho-ilusao-cap-1" → ficheiro = "reflexao-espelho-ilusao-cap-1.mp3"
+        const r = REFLEXOES.find((x) => x.id === id);
+        if (r) return r.ficheiro;
+        // ctas
+        return CHAMADAS_ACCAO.find((c) => c.id === id)?.ficheiro ?? null;
+      })();
+      if (!ficheiro) continue;
+      await uploadAudio(id, ficheiro);
+    }
+    setAEnviarTodos(false);
   }
 
   // ── contagens ────────────────────────────────────────────────
@@ -285,6 +351,21 @@ export default function VozPage() {
               className="w-full rounded-lg border border-sage/30 bg-cream px-4 py-3 text-sm text-forest font-mono focus:outline-none focus:ring-2 focus:ring-sage/30"
             />
           </div>
+          {/* Toggle upload automático */}
+          <div className="flex items-center justify-between rounded-lg border border-sage/20 bg-cream px-4 py-3">
+            <div>
+              <p className="text-sm font-medium text-forest">Upload automático ao Supabase</p>
+              <p className="text-xs text-sage">Áudios ficam disponíveis no site automaticamente</p>
+            </div>
+            <button
+              onClick={() => setAutoUpload((v) => !v)}
+              className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 focus:outline-none ${autoUpload ? "bg-sage" : "bg-sage/25"}`}
+            >
+              <span
+                className={`inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ${autoUpload ? "translate-x-5" : "translate-x-0"}`}
+              />
+            </button>
+          </div>
         </div>
 
         {/* Abas */}
@@ -322,16 +403,60 @@ export default function VozPage() {
         </div>
 
         {/* Gerar todos */}
-        <div className="flex items-center justify-between rounded-xl border border-sage/20 bg-white p-5">
-          <p className="text-sm text-sage">Gerar todos desta aba sequencialmente</p>
-          <button
-            onClick={gerarTodosAba}
-            disabled={aGerarTodos || !apiKey.trim()}
-            style={{ backgroundColor: "#2d6a4f", color: "#ffffff" }}
-            className="rounded-lg px-5 py-2.5 text-sm font-medium transition hover:opacity-90 disabled:opacity-50"
-          >
-            {aGerarTodos ? "A gerar..." : "Gerar todos"}
-          </button>
+        {/* Barra de progresso + acções em lote */}
+        <div className="rounded-xl border border-sage/20 bg-white p-5 space-y-4">
+          {aGerarTodos && progresso.total > 0 && (
+            <div>
+              <div className="mb-1.5 flex items-center justify-between">
+                <span className="text-xs text-sage">A gerar...</span>
+                <span className="text-xs font-medium text-forest">{progresso.atual}/{progresso.total}</span>
+              </div>
+              <div className="h-1.5 w-full rounded-full bg-sage/15">
+                <div
+                  className="h-1.5 rounded-full bg-sage transition-all duration-300"
+                  style={{ width: `${progresso.total > 0 ? (progresso.atual / progresso.total) * 100 : 0}%` }}
+                />
+              </div>
+            </div>
+          )}
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p className="text-sm text-sage">Operações em lote</p>
+            <div className="flex flex-wrap gap-2">
+              {aGerarTodos ? (
+                <button
+                  onClick={pararGeracao}
+                  className="rounded-lg bg-red-500 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-red-600"
+                >
+                  Parar ({progresso.atual}/{progresso.total})
+                </button>
+              ) : (
+                <button
+                  onClick={gerarTodosAba}
+                  disabled={aEnviarTodos || !apiKey.trim()}
+                  style={{ backgroundColor: "#2d6a4f", color: "#ffffff" }}
+                  className="rounded-lg px-5 py-2.5 text-sm font-medium transition hover:opacity-90 disabled:opacity-50"
+                >
+                  Gerar todos
+                </button>
+              )}
+              {!autoUpload && (
+                <button
+                  onClick={enviarTodosAba}
+                  disabled={aEnviarTodos || aGerarTodos || Object.keys(blobs).length === 0}
+                  className="rounded-lg border border-sage/30 px-5 py-2.5 text-sm font-medium text-sage transition hover:text-forest disabled:opacity-50"
+                >
+                  {aEnviarTodos ? "A enviar..." : "Enviar todos para o site"}
+                </button>
+              )}
+              <button
+                onClick={downloadZip}
+                disabled={Object.keys(blobs).length === 0}
+                className="rounded-lg border border-sage/30 px-4 py-2.5 text-sm font-medium text-sage transition hover:text-forest disabled:opacity-50"
+              >
+                ZIP ({Object.keys(blobs).length})
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* ── Citações ─────────────────────────────────────────── */}
