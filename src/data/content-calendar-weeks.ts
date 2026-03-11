@@ -2940,8 +2940,6 @@ export const professionalCarousels: ProfessionalCarousel[] = [
   },
 ];
 
-// ─── SCRIPTS DE REELS ────────────────────────────────────────────────────────
-
 export const reelScripts: ReelScript[] = [
   {
     hook: "Construíste a tua vida inteira sem nunca ter perguntado o que querias.",
