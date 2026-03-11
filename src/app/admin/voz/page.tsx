@@ -19,6 +19,7 @@ import {
   TEASERS_NOS,
   CHAMADAS_ACCAO,
 } from "@/data/marketing-audio";
+import { REELS_VOZ, CARROSSEIS_VOZ } from "@/data/marketing-reels-audio";
 
 const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
 const DEFAULT_VOICE_ID = "fnoNuVpfClX7lHKFbyZ2";
@@ -47,7 +48,7 @@ function slugify(s: string) {
 
 type Estado = "idle" | "a-gerar" | "feito" | "erro";
 type EstadoUpload = "idle" | "a-enviar" | "enviado" | "erro";
-type Aba = "citacoes" | "reflexoes" | "intros" | "teasers" | "trailer" | "stories" | "teasers-nos" | "ctas";
+type Aba = "citacoes" | "reflexoes" | "intros" | "teasers" | "trailer" | "stories" | "teasers-nos" | "ctas" | "reels" | "carrosseis";
 
 export default function VozPage() {
   const { user, profile } = useAuth();
@@ -155,6 +156,10 @@ export default function VozPage() {
       ? STORIES_ESPELHOS.map((s) => ({ id: `story-${s.veu}`, ficheiro: s.ficheiro, texto: s.texto }))
       : aba === "teasers-nos"
       ? TEASERS_NOS.map((t) => ({ id: `teaser-no-${t.veu}`, ficheiro: t.ficheiro, texto: t.texto }))
+      : aba === "reels"
+      ? REELS_VOZ.map((r) => ({ id: r.id, ficheiro: r.ficheiro, texto: r.texto }))
+      : aba === "carrosseis"
+      ? CARROSSEIS_VOZ.map((c) => ({ id: c.id, ficheiro: c.ficheiro, texto: c.texto }))
       : CHAMADAS_ACCAO.map((c) => ({ id: c.id, ficheiro: c.ficheiro, texto: c.texto }));
   }
 
@@ -259,6 +264,12 @@ export default function VozPage() {
         // reflexoes: id = "espelho-ilusao-cap-1" → ficheiro = "reflexao-espelho-ilusao-cap-1.mp3"
         const r = REFLEXOES.find((x) => x.id === id);
         if (r) return r.ficheiro;
+        // reels
+        const reel = REELS_VOZ.find((r) => r.id === id);
+        if (reel) return reel.ficheiro;
+        // carrosseis
+        const carousel = CARROSSEIS_VOZ.find((c) => c.id === id);
+        if (carousel) return carousel.ficheiro;
         // ctas
         return CHAMADAS_ACCAO.find((c) => c.id === id)?.ficheiro ?? null;
       })();
@@ -297,6 +308,10 @@ export default function VozPage() {
   const ctasFeitas = CHAMADAS_ACCAO.filter(
     (c) => estados[c.id] === "feito"
   ).length;
+  const reelsTotal = REELS_VOZ.length;
+  const reelsFeitos = REELS_VOZ.filter((r) => estados[r.id] === "feito").length;
+  const carrosseisTotal = CARROSSEIS_VOZ.length;
+  const carrosseisFeitos = CARROSSEIS_VOZ.filter((c) => estados[c.id] === "feito").length;
 
   return (
     <div className="min-h-screen bg-cream">
@@ -398,6 +413,8 @@ export default function VozPage() {
               ["stories", `Stories (${storiesFeitas}/${storiesTotal})`],
               ["teasers-nos", `Teasers Nós (${teasersNosFeitos}/${teasersNosTotal})`],
               ["ctas", `Chamadas à Acção (${ctasFeitas}/${ctasTotal})`],
+              ["reels", `Reels (${reelsFeitos}/${reelsTotal})`],
+              ["carrosseis", `Carrosséis (${carrosseisFeitos}/${carrosseisTotal})`],
             ] as [Aba, string][]).map(([a, label]) => (
               <button key={a} onClick={() => setAba(a)}
                 className={`px-4 py-2 text-sm font-medium rounded-lg transition ${aba === a ? "bg-forest text-white" : "bg-white text-sage border border-sage/20 hover:text-forest"}`}
@@ -630,6 +647,50 @@ export default function VozPage() {
         {aba === "ctas" && (
           <div className="space-y-3">
             {CHAMADAS_ACCAO.map((c) => {
+              const estado = estados[c.id] || "idle";
+              return (
+                <ItemVoz key={c.id} id={c.id} ficheiro={c.ficheiro}
+                  nome={c.nome} texto={c.texto} estado={estado} erro={erros[c.id]}
+                  disabled={aGerarTodos || !apiKey.trim()}
+                  onGerar={() => gerarVoz(c.id, c.ficheiro, c.texto)}
+                  temBlob={!!blobs[c.id]}
+                  uploadEstado={uploadEstados[c.id] || "idle"}
+                  onUpload={() => uploadAudio(c.id, c.ficheiro)}
+                />
+              );
+            })}
+          </div>
+        )}
+
+        {/* ── Reels ────────────────────────────────────────────── */}
+        {aba === "reels" && (
+          <div className="space-y-3">
+            <p className="text-xs text-sage/70 pb-1">
+              Narração corrida para voiceover de Reels (25-35s). Usa no CapCut como áudio da voz Vivianne.
+            </p>
+            {REELS_VOZ.map((r) => {
+              const estado = estados[r.id] || "idle";
+              return (
+                <ItemVoz key={r.id} id={r.id} ficheiro={r.ficheiro}
+                  nome={r.nome} texto={r.texto} estado={estado} erro={erros[r.id]}
+                  disabled={aGerarTodos || !apiKey.trim()}
+                  onGerar={() => gerarVoz(r.id, r.ficheiro, r.texto)}
+                  temBlob={!!blobs[r.id]}
+                  uploadEstado={uploadEstados[r.id] || "idle"}
+                  onUpload={() => uploadAudio(r.id, r.ficheiro)}
+                />
+              );
+            })}
+          </div>
+        )}
+
+        {/* ── Carrosséis ───────────────────────────────────────── */}
+        {aba === "carrosseis" && (
+          <div className="space-y-3">
+            <p className="text-xs text-sage/70 pb-1">
+              Narração corrida dos slides de carrossel (~45-60s). Usa no CapCut ou como áudio acompanhante.
+            </p>
+            {CARROSSEIS_VOZ.map((c) => {
               const estado = estados[c.id] || "idle";
               return (
                 <ItemVoz key={c.id} id={c.id} ficheiro={c.ficheiro}
