@@ -17,6 +17,12 @@
  * — Sensorial, nao clinico
  */
 
+const AUDIO_BASE = "https://tdytdamtfillqyklgrmb.supabase.co/storage/v1/object/public/audios";
+
+function audioUrl(filename: string) {
+  return `${AUDIO_BASE}/${encodeURIComponent(filename)}`;
+}
+
 export type PodcastEpisode = {
   id: string;
   number: number;
@@ -28,7 +34,7 @@ export type PodcastEpisode = {
   type: "public" | "exclusive";
   durationEstimate: string;
   charCount: number;
-  audioUrl?: string;
+  audioUrl: string;
   color: string;
 };
 
@@ -39,6 +45,8 @@ export type PodcastMeta = {
   author: string;
   introScript: string;
   outroScript: string;
+  introAudioUrl: string;
+  outroAudioUrl: string;
 };
 
 export const PODCAST_META: PodcastMeta = {
@@ -49,6 +57,8 @@ export const PODCAST_META: PodcastMeta = {
   author: "Vivianne dos Santos",
   introScript: `Ola. Eu sou a Vivianne. E este e o podcast Os Sete Veus — Conversas com o Espelho. Aqui falamos sobre as camadas invisiveis que vestimos sem saber. Devagar. Sem pressa. Ao ritmo de quem comeca a perguntar.`,
   outroScript: `Obrigada por ficares ate aqui. Se alguma coisa ressoou, nao a largues. Guarda-a. Leva-a contigo. E se quiseres ir mais fundo, os Espelhos estao a tua espera em osseteveusdespertar.com. Ate ao proximo veu.`,
+  introAudioUrl: audioUrl("podcast-intro.mp3"),
+  outroAudioUrl: audioUrl("podcast-outro.mp3"),
 };
 
 // ─────────────────────────────────────────────
@@ -315,6 +325,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     type: "public",
     durationEstimate: "~8 min",
     charCount: EP01_PUBLIC.length,
+    audioUrl: audioUrl("podcast-ep01-veu-ilusao.mp3"),
     color: "#c9b896",
   },
   {
@@ -329,6 +340,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     type: "public",
     durationEstimate: "~8 min",
     charCount: EP02_PUBLIC.length,
+    audioUrl: audioUrl("podcast-ep02-veu-medo.mp3"),
     color: "#8b9b8e",
   },
   {
@@ -343,6 +355,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     type: "public",
     durationEstimate: "~8 min",
     charCount: EP03_PUBLIC.length,
+    audioUrl: audioUrl("podcast-ep03-veu-culpa.mp3"),
     color: "#b07a7a",
   },
   {
@@ -357,6 +370,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     type: "public",
     durationEstimate: "~8 min",
     charCount: EP04_PUBLIC.length,
+    audioUrl: audioUrl("podcast-ep04-veu-identidade.mp3"),
     color: "#ab9375",
   },
   {
@@ -371,6 +385,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     type: "public",
     durationEstimate: "~8 min",
     charCount: EP05_PUBLIC.length,
+    audioUrl: audioUrl("podcast-ep05-veu-controlo.mp3"),
     color: "#8aaaca",
   },
   {
@@ -385,6 +400,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     type: "public",
     durationEstimate: "~8 min",
     charCount: EP06_PUBLIC.length,
+    audioUrl: audioUrl("podcast-ep06-veu-desejo.mp3"),
     color: "#c08aaa",
   },
   {
@@ -399,6 +415,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     type: "public",
     durationEstimate: "~8 min",
     charCount: EP07_PUBLIC.length,
+    audioUrl: audioUrl("podcast-ep07-veu-separacao.mp3"),
     color: "#baaacc",
   },
   // --- EXCLUSIVOS ---
@@ -414,6 +431,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     type: "exclusive",
     durationEstimate: "~5 min",
     charCount: EP01_EXCLUSIVE.length,
+    audioUrl: audioUrl("podcast-ep08-por-tras-ilusao.mp3"),
     color: "#c9b896",
   },
   {
@@ -428,6 +446,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     type: "exclusive",
     durationEstimate: "~5 min",
     charCount: EP02_EXCLUSIVE.length,
+    audioUrl: audioUrl("podcast-ep09-por-tras-medo.mp3"),
     color: "#8b9b8e",
   },
   {
@@ -442,6 +461,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     type: "exclusive",
     durationEstimate: "~5 min",
     charCount: EP03_EXCLUSIVE.length,
+    audioUrl: audioUrl("podcast-ep10-por-tras-culpa.mp3"),
     color: "#b07a7a",
   },
   {
@@ -456,6 +476,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     type: "exclusive",
     durationEstimate: "~5 min",
     charCount: EP04_EXCLUSIVE.length,
+    audioUrl: audioUrl("podcast-ep11-por-tras-identidade.mp3"),
     color: "#ab9375",
   },
   {
@@ -470,6 +491,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     type: "exclusive",
     durationEstimate: "~5 min",
     charCount: EP05_EXCLUSIVE.length,
+    audioUrl: audioUrl("podcast-ep12-por-tras-controlo.mp3"),
     color: "#8aaaca",
   },
   {
@@ -484,6 +506,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     type: "exclusive",
     durationEstimate: "~5 min",
     charCount: EP06_EXCLUSIVE.length,
+    audioUrl: audioUrl("podcast-ep13-por-tras-desejo.mp3"),
     color: "#c08aaa",
   },
   {
@@ -498,6 +521,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     type: "exclusive",
     durationEstimate: "~5 min",
     charCount: EP07_EXCLUSIVE.length,
+    audioUrl: audioUrl("podcast-ep14-por-tras-separacao.mp3"),
     color: "#baaacc",
   },
 ];
