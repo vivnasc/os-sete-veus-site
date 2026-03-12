@@ -788,15 +788,6 @@ export default function MarketingPage() {
               </div>
             </div>
 
-            {/* Imagens */}
-            <div className="space-y-2">
-              <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-[0.15em] text-[#c9b896]/60">Áudio da Vivianne</p>
-              <div className="rounded-2xl border border-[#c9b896]/15 bg-[#c9b896]/5 p-4 space-y-3">
-                <p className="font-sans text-[0.65rem] leading-relaxed text-cream/70 italic">&ldquo;{capcutModal.script}&rdquo;</p>
-                <CapCutAudioPlayer src={audioUrl} ficheiro={capcutModal.audioFile} />
-              </div>
-            </div>
-
             {/* ── Instagram 1:1 ── */}
             <div className="space-y-3">
               <div className="flex items-center justify-between">
@@ -848,28 +839,46 @@ function CapCutAudioPlayer({ src, ficheiro }: { src: string; ficheiro: string })
   const [playing, setPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
+    // Reset state when src changes
+    setPlaying(false);
+    setCurrentTime(0);
+    setDuration(0);
+    setError(false);
     const onTime = () => setCurrentTime(audio.currentTime);
     const onMeta = () => setDuration(audio.duration);
     const onEnd = () => setPlaying(false);
+    const onError = () => { setError(true); setPlaying(false); };
     audio.addEventListener("timeupdate", onTime);
     audio.addEventListener("loadedmetadata", onMeta);
     audio.addEventListener("ended", onEnd);
+    audio.addEventListener("error", onError);
     return () => {
       audio.removeEventListener("timeupdate", onTime);
       audio.removeEventListener("loadedmetadata", onMeta);
       audio.removeEventListener("ended", onEnd);
+      audio.removeEventListener("error", onError);
     };
-  }, []);
+  }, [src]);
 
-  function toggle() {
+  async function toggle() {
     const audio = audioRef.current;
-    if (!audio) return;
-    playing ? audio.pause() : audio.play();
-    setPlaying(!playing);
+    if (!audio || error) return;
+    if (playing) {
+      audio.pause();
+      setPlaying(false);
+    } else {
+      try {
+        await audio.play();
+        setPlaying(true);
+      } catch {
+        setError(true);
+      }
+    }
   }
 
   function seek(e: React.ChangeEvent<HTMLInputElement>) {
@@ -885,35 +894,46 @@ function CapCutAudioPlayer({ src, ficheiro }: { src: string; ficheiro: string })
 
   return (
     <div className="rounded-xl border border-cream/10 bg-[#1a1814] p-3">
-      <audio ref={audioRef} src={src} preload="metadata" />
+      <audio key={src} ref={audioRef} src={src} preload="metadata" />
       <div className="flex items-center gap-2.5">
         <button
           onClick={toggle}
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#c9b896] text-[#1a1814] transition-opacity hover:opacity-80"
+          disabled={error}
+          className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-opacity ${
+            error ? "bg-cream/10 opacity-40 cursor-not-allowed" : "bg-[#c9b896] text-[#1a1814] hover:opacity-80"
+          }`}
         >
-          {playing ? (
-            <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5">
+          {error ? (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5 text-cream/40">
+              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+          ) : playing ? (
+            <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5 text-[#1a1814]">
               <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
             </svg>
           ) : (
-            <svg viewBox="0 0 24 24" fill="currentColor" className="ml-0.5 h-3.5 w-3.5">
+            <svg viewBox="0 0 24 24" fill="currentColor" className="ml-0.5 h-3.5 w-3.5 text-[#1a1814]">
               <path d="M8 5v14l11-7z" />
             </svg>
           )}
         </button>
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-1.5">
-            <span className="font-sans text-[0.55rem] text-cream/40">{fmt(currentTime)}</span>
-            <input
-              type="range"
-              min={0}
-              max={duration || 0}
-              value={currentTime}
-              onChange={seek}
-              className="h-1 flex-1 cursor-pointer appearance-none rounded-full bg-cream/10 accent-[#c9b896]"
-            />
-            <span className="font-sans text-[0.55rem] text-cream/40">{fmt(duration)}</span>
-          </div>
+          {error ? (
+            <p className="font-sans text-[0.55rem] text-cream/30">Ficheiro não encontrado no Storage</p>
+          ) : (
+            <div className="flex items-center gap-1.5">
+              <span className="font-sans text-[0.55rem] text-cream/40">{fmt(currentTime)}</span>
+              <input
+                type="range"
+                min={0}
+                max={duration || 0}
+                value={currentTime}
+                onChange={seek}
+                className="h-1 flex-1 cursor-pointer appearance-none rounded-full bg-cream/10 accent-[#c9b896]"
+              />
+              <span className="font-sans text-[0.55rem] text-cream/40">{fmt(duration)}</span>
+            </div>
+          )}
           <p className="mt-1 font-mono text-[0.45rem] text-cream/20 truncate">{ficheiro}</p>
         </div>
         <a

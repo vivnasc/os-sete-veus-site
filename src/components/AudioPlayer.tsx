@@ -12,6 +12,7 @@ export default function AudioPlayer({ src, title }: Props) {
   const [playing, setPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -20,27 +21,35 @@ export default function AudioPlayer({ src, title }: Props) {
     const onTime = () => setCurrentTime(audio.currentTime);
     const onMeta = () => setDuration(audio.duration);
     const onEnd = () => setPlaying(false);
+    const onError = () => { setError(true); setPlaying(false); };
 
     audio.addEventListener("timeupdate", onTime);
     audio.addEventListener("loadedmetadata", onMeta);
     audio.addEventListener("ended", onEnd);
+    audio.addEventListener("error", onError);
 
     return () => {
       audio.removeEventListener("timeupdate", onTime);
       audio.removeEventListener("loadedmetadata", onMeta);
       audio.removeEventListener("ended", onEnd);
+      audio.removeEventListener("error", onError);
     };
-  }, []);
+  }, [src]);
 
-  function toggle() {
+  async function toggle() {
     const audio = audioRef.current;
-    if (!audio) return;
+    if (!audio || error) return;
     if (playing) {
       audio.pause();
+      setPlaying(false);
     } else {
-      audio.play();
+      try {
+        await audio.play();
+        setPlaying(true);
+      } catch {
+        setError(true);
+      }
     }
-    setPlaying(!playing);
   }
 
   function seek(e: React.ChangeEvent<HTMLInputElement>) {
@@ -50,9 +59,28 @@ export default function AudioPlayer({ src, title }: Props) {
   }
 
   function fmt(s: number) {
+    if (!isFinite(s)) return "0:00";
     const m = Math.floor(s / 60);
     const sec = Math.floor(s % 60);
     return `${m}:${sec.toString().padStart(2, "0")}`;
+  }
+
+  if (error) {
+    return (
+      <div className="rounded-xl bg-cream-dark p-4">
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brown-200">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4 text-brown-400">
+              <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+          </div>
+          <div>
+            <p className="text-sm font-medium text-brown-800">{title}</p>
+            <p className="text-xs text-brown-400">Áudio não disponível de momento.</p>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
