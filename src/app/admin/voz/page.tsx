@@ -20,6 +20,13 @@ import {
   CHAMADAS_ACCAO,
 } from "@/data/marketing-audio";
 import { REELS_VOZ, CARROSSEIS_VOZ } from "@/data/marketing-reels-audio";
+import {
+  REELS_VEU_A_VEU,
+  TRAILER_CINEMATOGRAFICO,
+  CONTAGEM_ESPELHO_MEDO,
+  CARTAS_AUDIO_WHATSAPP,
+  GUIAS_RESPIRACAO,
+} from "@/data/marketing-video-audio";
 
 const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
 const DEFAULT_VOICE_ID = "fnoNuVpfClX7lHKFbyZ2";
@@ -48,7 +55,7 @@ function slugify(s: string) {
 
 type Estado = "idle" | "a-gerar" | "feito" | "erro";
 type EstadoUpload = "idle" | "a-enviar" | "enviado" | "erro";
-type Aba = "citacoes" | "reflexoes" | "intros" | "teasers" | "trailer" | "stories" | "teasers-nos" | "ctas" | "reels" | "carrosseis";
+type Aba = "citacoes" | "reflexoes" | "intros" | "teasers" | "trailer" | "stories" | "teasers-nos" | "ctas" | "reels" | "carrosseis" | "veu-a-veu" | "trailer-cine" | "contagem-medo" | "cartas-wa" | "respiracao";
 
 export default function VozPage() {
   const { user, profile } = useAuth();
@@ -160,6 +167,16 @@ export default function VozPage() {
       ? REELS_VOZ.map((r) => ({ id: r.id, ficheiro: r.ficheiro, texto: r.texto }))
       : aba === "carrosseis"
       ? CARROSSEIS_VOZ.map((c) => ({ id: c.id, ficheiro: c.ficheiro, texto: c.texto }))
+      : aba === "veu-a-veu"
+      ? veuAVeuItens
+      : aba === "trailer-cine"
+      ? [trailerCineItem]
+      : aba === "contagem-medo"
+      ? contagemItens
+      : aba === "cartas-wa"
+      ? cartasItens
+      : aba === "respiracao"
+      ? respiracaoItens
       : CHAMADAS_ACCAO.map((c) => ({ id: c.id, ficheiro: c.ficheiro, texto: c.texto }));
   }
 
@@ -313,6 +330,33 @@ export default function VozPage() {
   const carrosseisTotal = CARROSSEIS_VOZ.length;
   const carrosseisFeitos = CARROSSEIS_VOZ.filter((c) => estados[c.id] === "feito").length;
 
+  // Véu a Véu — narrações corridas dos 7 reels
+  const veuAVeuItens = REELS_VEU_A_VEU.map((r) => ({
+    id: r.id,
+    ficheiro: r.ficheiroCorrida,
+    texto: r.narracaoCorrida,
+  }));
+  const veuAVeuTotal = veuAVeuItens.length;
+  const veuAVeuFeitos = veuAVeuItens.filter((r) => estados[r.id] === "feito").length;
+
+  // Trailer cinematográfico
+  const trailerCineItem = { id: TRAILER_CINEMATOGRAFICO.id, ficheiro: TRAILER_CINEMATOGRAFICO.ficheiroCorrida, texto: TRAILER_CINEMATOGRAFICO.narracaoCorrida };
+
+  // Contagem Espelho do Medo
+  const contagemItens = CONTAGEM_ESPELHO_MEDO.map((c) => ({ id: c.id, ficheiro: c.ficheiro, texto: c.narracao }));
+  const contagemTotal = contagemItens.length;
+  const contagemFeitos = contagemItens.filter((c) => estados[c.id] === "feito").length;
+
+  // Cartas WhatsApp
+  const cartasItens = CARTAS_AUDIO_WHATSAPP.map((c) => ({ id: c.id, ficheiro: c.ficheiro, texto: c.texto }));
+  const cartasTotal = cartasItens.length;
+  const cartasFeitas = cartasItens.filter((c) => estados[c.id] === "feito").length;
+
+  // Guias de respiração
+  const respiracaoItens = GUIAS_RESPIRACAO.map((g) => ({ id: g.id, ficheiro: g.ficheiro, texto: g.texto }));
+  const respiracaoTotal = respiracaoItens.length;
+  const respiracaoFeitos = respiracaoItens.filter((g) => estados[g.id] === "feito").length;
+
   return (
     <div className="min-h-screen bg-cream">
       {/* Header */}
@@ -415,6 +459,22 @@ export default function VozPage() {
               ["ctas", `Chamadas à Acção (${ctasFeitas}/${ctasTotal})`],
               ["reels", `Reels (${reelsFeitos}/${reelsTotal})`],
               ["carrosseis", `Carrosséis (${carrosseisFeitos}/${carrosseisTotal})`],
+            ] as [Aba, string][]).map(([a, label]) => (
+              <button key={a} onClick={() => setAba(a)}
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition ${aba === a ? "bg-forest text-white" : "bg-white text-sage border border-sage/20 hover:text-forest"}`}
+                style={aba === a ? { backgroundColor: "#2d6a4f" } : {}}>
+                {label}
+              </button>
+            ))}
+          </div>
+          <p className="text-xs font-medium text-sage uppercase tracking-wider pt-2">Vídeo + Áudio (ElevenLabs)</p>
+          <div className="flex flex-wrap gap-2 pb-4">
+            {([
+              ["veu-a-veu", `Série Véu a Véu — 7 Reels (${veuAVeuFeitos}/${veuAVeuTotal})`],
+              ["trailer-cine", `Trailer Cinematográfico (${estados[TRAILER_CINEMATOGRAFICO.id] === "feito" ? 1 : 0}/1)`],
+              ["contagem-medo", `Contagem Medo — 7 dias (${contagemFeitos}/${contagemTotal})`],
+              ["cartas-wa", `Cartas WhatsApp (${cartasFeitas}/${cartasTotal})`],
+              ["respiracao", `Guias de Respiração (${respiracaoFeitos}/${respiracaoTotal})`],
             ] as [Aba, string][]).map(([a, label]) => (
               <button key={a} onClick={() => setAba(a)}
                 className={`px-4 py-2 text-sm font-medium rounded-lg transition ${aba === a ? "bg-forest text-white" : "bg-white text-sage border border-sage/20 hover:text-forest"}`}
@@ -700,6 +760,188 @@ export default function VozPage() {
                   temBlob={!!blobs[c.id]}
                   uploadEstado={uploadEstados[c.id] || "idle"}
                   onUpload={() => uploadAudio(c.id, c.ficheiro)}
+                />
+              );
+            })}
+          </div>
+        )}
+
+        {/* ── Série Véu a Véu ──────────────────────────────────── */}
+        {aba === "veu-a-veu" && (
+          <div className="space-y-4">
+            <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 space-y-2">
+              <p className="text-xs font-medium text-amber-800">Como usar</p>
+              <p className="text-xs text-amber-700">
+                1. Gera o áudio de cada reel aqui (narração corrida, ~28s).<br/>
+                2. No ElevenLabs &rsaquo; Imagem &amp; Vídeo, gera os 7 clips de vídeo com os prompts abaixo.<br/>
+                3. No CapCut, junta os 7 clips de vídeo + o áudio gerado + legenda em overlay.
+              </p>
+            </div>
+            {REELS_VEU_A_VEU.map((reel) => {
+              const estado = estados[reel.id] || "idle";
+              return (
+                <div key={reel.id} className="rounded-xl border border-sage/20 bg-white p-5 space-y-4">
+                  <ItemVoz id={reel.id} ficheiro={reel.ficheiroCorrida}
+                    nome={`${reel.titulo} — narração corrida`} texto={reel.narracaoCorrida}
+                    estado={estado} erro={erros[reel.id]}
+                    disabled={aGerarTodos || !apiKey.trim()}
+                    onGerar={() => gerarVoz(reel.id, reel.ficheiroCorrida, reel.narracaoCorrida)}
+                    temBlob={!!blobs[reel.id]}
+                    uploadEstado={uploadEstados[reel.id] || "idle"}
+                    onUpload={() => uploadAudio(reel.id, reel.ficheiroCorrida)}
+                  />
+                  <details className="group">
+                    <summary className="cursor-pointer text-xs text-sage hover:text-forest font-medium">
+                      Ver prompts de vídeo ({reel.totalClips} clips para ElevenLabs Vídeo)
+                    </summary>
+                    <div className="mt-3 space-y-2">
+                      {reel.clips.map((clip, i) => (
+                        <div key={clip.id} className="rounded-lg bg-cream p-3 space-y-1">
+                          <p className="text-xs font-mono text-forest font-medium">Clip {i+1} — {clip.duracao}s</p>
+                          <p className="text-xs text-sage italic">&quot;{clip.narracao}&quot;</p>
+                          <div className="flex items-start gap-2 mt-1">
+                            <p className="text-xs text-forest/80 flex-1 font-mono leading-relaxed">{clip.videoPrompt}</p>
+                            <button
+                              onClick={() => navigator.clipboard.writeText(clip.videoPrompt)}
+                              className="shrink-0 rounded px-2 py-1 text-xs bg-sage/10 hover:bg-sage/20 text-sage hover:text-forest transition"
+                            >
+                              Copiar
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </details>
+                  <p className="text-xs text-sage border-t border-sage/10 pt-3">
+                    <span className="font-medium text-forest">Caption Instagram:</span> {reel.caption.slice(0, 100)}...
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {/* ── Trailer Cinematográfico ───────────────────────────── */}
+        {aba === "trailer-cine" && (
+          <div className="space-y-4">
+            <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 space-y-2">
+              <p className="text-xs font-medium text-amber-800">Trailer cinematográfico — 12 clips × 4s = 48s</p>
+              <p className="text-xs text-amber-700">
+                O vídeo mais épico. Para usar como: vídeo de perfil Instagram, link na bio, e campanha paga.<br/>
+                Gera os 12 clips de vídeo no ElevenLabs Imagem &amp; Vídeo, depois junta no CapCut com este áudio.
+              </p>
+            </div>
+            <ItemVoz
+              id={TRAILER_CINEMATOGRAFICO.id}
+              ficheiro={TRAILER_CINEMATOGRAFICO.ficheiroCorrida}
+              nome="Trailer — narração corrida (48s)"
+              texto={TRAILER_CINEMATOGRAFICO.narracaoCorrida}
+              estado={estados[TRAILER_CINEMATOGRAFICO.id] || "idle"}
+              erro={erros[TRAILER_CINEMATOGRAFICO.id]}
+              disabled={aGerarTodos || !apiKey.trim()}
+              onGerar={() => gerarVoz(TRAILER_CINEMATOGRAFICO.id, TRAILER_CINEMATOGRAFICO.ficheiroCorrida, TRAILER_CINEMATOGRAFICO.narracaoCorrida)}
+              temBlob={!!blobs[TRAILER_CINEMATOGRAFICO.id]}
+              uploadEstado={uploadEstados[TRAILER_CINEMATOGRAFICO.id] || "idle"}
+              onUpload={() => uploadAudio(TRAILER_CINEMATOGRAFICO.id, TRAILER_CINEMATOGRAFICO.ficheiroCorrida)}
+            />
+            <details className="group">
+              <summary className="cursor-pointer text-xs text-sage hover:text-forest font-medium px-1">
+                Ver 12 prompts de vídeo para ElevenLabs
+              </summary>
+              <div className="mt-3 space-y-2">
+                {TRAILER_CINEMATOGRAFICO.clips.map((clip, i) => (
+                  <div key={clip.id} className="rounded-lg bg-cream p-3 space-y-1">
+                    <p className="text-xs font-mono text-forest font-medium">Clip {i+1} — {clip.duracao}s</p>
+                    <p className="text-xs text-sage italic">&quot;{clip.narracao}&quot;</p>
+                    <div className="flex items-start gap-2 mt-1">
+                      <p className="text-xs text-forest/80 flex-1 font-mono leading-relaxed">{clip.videoPrompt}</p>
+                      <button
+                        onClick={() => navigator.clipboard.writeText(clip.videoPrompt)}
+                        className="shrink-0 rounded px-2 py-1 text-xs bg-sage/10 hover:bg-sage/20 text-sage hover:text-forest transition"
+                      >
+                        Copiar
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </details>
+          </div>
+        )}
+
+        {/* ── Contagem Espelho do Medo ──────────────────────────── */}
+        {aba === "contagem-medo" && (
+          <div className="space-y-3">
+            <p className="text-xs text-sage/70 pb-1">
+              7 áudios diários para WhatsApp Status e Stories. Publicar 1 por dia na semana do lançamento do Espelho do Medo (Março 2026).
+              Cada um tem um prompt de vídeo — gera o clip no ElevenLabs Vídeo e junta no CapCut.
+            </p>
+            {CONTAGEM_ESPELHO_MEDO.map((c) => {
+              const estado = estados[c.id] || "idle";
+              return (
+                <div key={c.id} className="rounded-xl border border-sage/20 bg-white p-4 space-y-3">
+                  <ItemVoz id={c.id} ficheiro={c.ficheiro}
+                    nome={`Dia ${c.dia} — ${c.duracao}s`} texto={c.narracao}
+                    estado={estado} erro={erros[c.id]}
+                    disabled={aGerarTodos || !apiKey.trim()}
+                    onGerar={() => gerarVoz(c.id, c.ficheiro, c.narracao)}
+                    temBlob={!!blobs[c.id]}
+                    uploadEstado={uploadEstados[c.id] || "idle"}
+                    onUpload={() => uploadAudio(c.id, c.ficheiro)}
+                  />
+                  <div className="flex items-start gap-2">
+                    <p className="text-xs font-mono text-forest/70 flex-1 leading-relaxed">{c.videoPrompt}</p>
+                    <button
+                      onClick={() => navigator.clipboard.writeText(c.videoPrompt)}
+                      className="shrink-0 rounded px-2 py-1 text-xs bg-sage/10 hover:bg-sage/20 text-sage hover:text-forest transition"
+                    >
+                      Copiar prompt
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {/* ── Cartas WhatsApp ───────────────────────────────────── */}
+        {aba === "cartas-wa" && (
+          <div className="space-y-3">
+            <p className="text-xs text-sage/70 pb-1">
+              7 notas de voz íntimas da Vivianne — uma por véu. Enviar via WhatsApp pessoal ou grupo. Tom de conversa, não de locução.
+            </p>
+            {CARTAS_AUDIO_WHATSAPP.map((c) => {
+              const estado = estados[c.id] || "idle";
+              return (
+                <ItemVoz key={c.id} id={c.id} ficheiro={c.ficheiro}
+                  nome={c.nome} texto={c.texto} estado={estado} erro={erros[c.id]}
+                  disabled={aGerarTodos || !apiKey.trim()}
+                  onGerar={() => gerarVoz(c.id, c.ficheiro, c.texto)}
+                  temBlob={!!blobs[c.id]}
+                  uploadEstado={uploadEstados[c.id] || "idle"}
+                  onUpload={() => uploadAudio(c.id, c.ficheiro)}
+                />
+              );
+            })}
+          </div>
+        )}
+
+        {/* ── Guias de Respiração ───────────────────────────────── */}
+        {aba === "respiracao" && (
+          <div className="space-y-3">
+            <p className="text-xs text-sage/70 pb-1">
+              Pausas de respiração usadas na plataforma entre capítulos. Tom muito calmo. Após gerar, faz upload — ficam disponíveis automaticamente.
+            </p>
+            {GUIAS_RESPIRACAO.map((g) => {
+              const estado = estados[g.id] || "idle";
+              return (
+                <ItemVoz key={g.id} id={g.id} ficheiro={g.ficheiro}
+                  nome={g.nome} texto={g.texto} estado={estado} erro={erros[g.id]}
+                  disabled={aGerarTodos || !apiKey.trim()}
+                  onGerar={() => gerarVoz(g.id, g.ficheiro, g.texto)}
+                  temBlob={!!blobs[g.id]}
+                  uploadEstado={uploadEstados[g.id] || "idle"}
+                  onUpload={() => uploadAudio(g.id, g.ficheiro)}
                 />
               );
             })}
