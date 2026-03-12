@@ -20,6 +20,7 @@ import {
   CHAMADAS_ACCAO,
 } from "@/data/marketing-audio";
 import { REELS_VOZ, CARROSSEIS_VOZ } from "@/data/marketing-reels-audio";
+import { PODCAST_EPISODES, PODCAST_META, getTotalCharCount } from "@/data/podcast-series";
 
 const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
 const DEFAULT_VOICE_ID = "fnoNuVpfClX7lHKFbyZ2";
@@ -48,7 +49,7 @@ function slugify(s: string) {
 
 type Estado = "idle" | "a-gerar" | "feito" | "erro";
 type EstadoUpload = "idle" | "a-enviar" | "enviado" | "erro";
-type Aba = "citacoes" | "reflexoes" | "intros" | "teasers" | "trailer" | "stories" | "teasers-nos" | "ctas" | "reels" | "carrosseis";
+type Aba = "citacoes" | "reflexoes" | "intros" | "teasers" | "trailer" | "stories" | "teasers-nos" | "ctas" | "reels" | "carrosseis" | "podcast";
 
 export default function VozPage() {
   const { user, profile } = useAuth();
@@ -160,6 +161,16 @@ export default function VozPage() {
       ? REELS_VOZ.map((r) => ({ id: r.id, ficheiro: r.ficheiro, texto: r.texto }))
       : aba === "carrosseis"
       ? CARROSSEIS_VOZ.map((c) => ({ id: c.id, ficheiro: c.ficheiro, texto: c.texto }))
+      : aba === "podcast"
+      ? [
+          { id: "podcast-intro", ficheiro: "podcast-intro.mp3", texto: PODCAST_META.introScript },
+          ...PODCAST_EPISODES.map((ep) => ({
+            id: `podcast-${ep.id}`,
+            ficheiro: `podcast-${ep.id}.mp3`,
+            texto: ep.script,
+          })),
+          { id: "podcast-outro", ficheiro: "podcast-outro.mp3", texto: PODCAST_META.outroScript },
+        ]
       : CHAMADAS_ACCAO.map((c) => ({ id: c.id, ficheiro: c.ficheiro, texto: c.texto }));
   }
 
@@ -312,6 +323,11 @@ export default function VozPage() {
   const reelsFeitos = REELS_VOZ.filter((r) => estados[r.id] === "feito").length;
   const carrosseisTotal = CARROSSEIS_VOZ.length;
   const carrosseisFeitos = CARROSSEIS_VOZ.filter((c) => estados[c.id] === "feito").length;
+  const podcastTotal = PODCAST_EPISODES.length + 2; // +2 for intro/outro
+  const podcastFeitos = (estados["podcast-intro"] === "feito" ? 1 : 0) +
+    PODCAST_EPISODES.filter((ep) => estados[`podcast-${ep.id}`] === "feito").length +
+    (estados["podcast-outro"] === "feito" ? 1 : 0);
+  const podcastCharCount = getTotalCharCount();
 
   return (
     <div className="min-h-screen bg-cream">
@@ -422,6 +438,14 @@ export default function VozPage() {
                 {label}
               </button>
             ))}
+          </div>
+          <p className="text-xs font-medium text-sage uppercase tracking-wider pt-2">Podcast</p>
+          <div className="flex flex-wrap gap-2 border-b border-sage/20 pb-4">
+            <button onClick={() => setAba("podcast")}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition ${aba === "podcast" ? "bg-forest text-white" : "bg-white text-sage border border-sage/20 hover:text-forest"}`}
+              style={aba === "podcast" ? { backgroundColor: "#2d6a4f" } : {}}>
+              Podcast ({podcastFeitos}/{podcastTotal}) ~ {podcastCharCount.total.toLocaleString()} chars
+            </button>
           </div>
         </div>
 
@@ -703,6 +727,90 @@ export default function VozPage() {
                 />
               );
             })}
+          </div>
+        )}
+
+        {/* ── Podcast ────────────────────────────────────────────── */}
+        {aba === "podcast" && (
+          <div className="space-y-3">
+            <div className="rounded-lg border border-sage/20 bg-cream px-5 py-4">
+              <p className="text-sm font-medium text-forest">Serie: Conversas com o Espelho</p>
+              <p className="mt-1 text-xs text-sage">
+                14 episodios + intro + outro. Total: {podcastCharCount.total.toLocaleString()} caracteres.
+                Publicos: 7 (~8 min). Exclusivos: 7 (~5 min).
+              </p>
+            </div>
+
+            {/* Intro */}
+            <ItemVoz
+              id="podcast-intro"
+              ficheiro="podcast-intro.mp3"
+              nome="Intro (reutilizavel)"
+              texto={PODCAST_META.introScript}
+              estado={estados["podcast-intro"] || "idle"}
+              erro={erros["podcast-intro"]}
+              disabled={aGerarTodos || !apiKey.trim()}
+              onGerar={() => gerarVoz("podcast-intro", "podcast-intro.mp3", PODCAST_META.introScript)}
+              temBlob={!!blobs["podcast-intro"]}
+              uploadEstado={uploadEstados["podcast-intro"] || "idle"}
+              uploadErro={uploadErros["podcast-intro"]}
+              onUpload={() => uploadAudio("podcast-intro", "podcast-intro.mp3")}
+            />
+
+            {/* Episodes */}
+            <p className="text-xs font-medium text-sage uppercase tracking-wider pt-2">Episodios publicos</p>
+            {PODCAST_EPISODES.filter((ep) => ep.type === "public").map((ep) => {
+              const id = `podcast-${ep.id}`;
+              const ficheiro = `podcast-${ep.id}.mp3`;
+              const estado = estados[id] || "idle";
+              return (
+                <ItemVoz key={id} id={id} ficheiro={ficheiro}
+                  nome={`Ep. ${ep.number} — ${ep.title} (${ep.charCount.toLocaleString()} chars)`}
+                  texto={ep.script} estado={estado} erro={erros[id]}
+                  disabled={aGerarTodos || !apiKey.trim()}
+                  onGerar={() => gerarVoz(id, ficheiro, ep.script)}
+                  temBlob={!!blobs[id]}
+                  uploadEstado={uploadEstados[id] || "idle"}
+                  uploadErro={uploadErros[id]}
+                  onUpload={() => uploadAudio(id, ficheiro)}
+                />
+              );
+            })}
+
+            <p className="text-xs font-medium text-sage uppercase tracking-wider pt-2">Episodios exclusivos (membros)</p>
+            {PODCAST_EPISODES.filter((ep) => ep.type === "exclusive").map((ep) => {
+              const id = `podcast-${ep.id}`;
+              const ficheiro = `podcast-${ep.id}.mp3`;
+              const estado = estados[id] || "idle";
+              return (
+                <ItemVoz key={id} id={id} ficheiro={ficheiro}
+                  nome={`Ep. ${ep.number} — ${ep.title} (${ep.charCount.toLocaleString()} chars)`}
+                  texto={ep.script} estado={estado} erro={erros[id]}
+                  disabled={aGerarTodos || !apiKey.trim()}
+                  onGerar={() => gerarVoz(id, ficheiro, ep.script)}
+                  temBlob={!!blobs[id]}
+                  uploadEstado={uploadEstados[id] || "idle"}
+                  uploadErro={uploadErros[id]}
+                  onUpload={() => uploadAudio(id, ficheiro)}
+                />
+              );
+            })}
+
+            {/* Outro */}
+            <ItemVoz
+              id="podcast-outro"
+              ficheiro="podcast-outro.mp3"
+              nome="Outro (reutilizavel)"
+              texto={PODCAST_META.outroScript}
+              estado={estados["podcast-outro"] || "idle"}
+              erro={erros["podcast-outro"]}
+              disabled={aGerarTodos || !apiKey.trim()}
+              onGerar={() => gerarVoz("podcast-outro", "podcast-outro.mp3", PODCAST_META.outroScript)}
+              temBlob={!!blobs["podcast-outro"]}
+              uploadEstado={uploadEstados["podcast-outro"] || "idle"}
+              uploadErro={uploadErros["podcast-outro"]}
+              onUpload={() => uploadAudio("podcast-outro", "podcast-outro.mp3")}
+            />
           </div>
         )}
       </div>
