@@ -321,88 +321,208 @@ export default function MarketingPage() {
           const today = new Date().getDay();
           const r = WEEKLY_RHYTHM[selectedWeekday];
           const day = thematicHub[r.themeIdx]?.days[r.dayIdx];
+          // Slot counts per weekday for the day strip
+          const slotCounts = WEEKLY_RHYTHM.map((wr) =>
+            thematicHub[wr.themeIdx]?.days[wr.dayIdx]?.slots.length || 0
+          );
           return (
             <div className="py-4 space-y-4">
-              {/* Day strip */}
-              <div className="flex gap-1">
-                {WEEKLY_RHYTHM.map((w, i) => (
-                  <button key={i} onClick={() => setSelectedWeekday(i)}
-                    className={`flex-1 rounded-xl py-2.5 text-center transition-all ${
-                      selectedWeekday === i ? "bg-[#c9b896] shadow-lg shadow-[#c9b896]/20" : "hover:bg-cream/5"
-                    }`}>
-                    <span className={`block font-sans text-[0.5rem] font-semibold uppercase tracking-wider ${
-                      selectedWeekday === i ? "text-[#1a1814]" : today === i ? "text-cream/80" : "text-cream/30"
-                    }`}>{w.label}</span>
-                    <span className={`mt-1 block h-1 w-1 rounded-full mx-auto ${
-                      selectedWeekday === i ? "bg-[#1a1814]/40" : today === i ? "bg-[#c9b896]/60" : "bg-cream/20"
-                    }`} />
-                  </button>
-                ))}
+
+              {/* ── Day strip ── */}
+              <div className="grid grid-cols-7 gap-1">
+                {WEEKLY_RHYTHM.map((w, i) => {
+                  const isSelected = selectedWeekday === i;
+                  const isToday = today === i;
+                  const count = slotCounts[i];
+                  return (
+                    <button key={i} onClick={() => setSelectedWeekday(i)}
+                      className={`relative flex flex-col items-center rounded-xl py-2 transition-all ${
+                        isSelected
+                          ? "bg-[#c9b896] shadow-lg shadow-[#c9b896]/20"
+                          : isToday
+                          ? "bg-cream/8 ring-1 ring-[#c9b896]/30"
+                          : "hover:bg-cream/5"
+                      }`}>
+                      {isToday && !isSelected && (
+                        <span className="absolute -top-0.5 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-[#c9b896]" />
+                      )}
+                      <span className={`font-sans text-[0.5rem] font-bold uppercase tracking-wider ${
+                        isSelected ? "text-[#1a1814]" : isToday ? "text-[#c9b896]" : "text-cream/40"
+                      }`}>{w.label}</span>
+                      {count > 0 ? (
+                        <span className={`mt-1 font-mono text-[0.45rem] font-bold ${
+                          isSelected ? "text-[#1a1814]/60" : "text-cream/25"
+                        }`}>{count}</span>
+                      ) : (
+                        <span className="mt-1 block h-1 w-1 rounded-full bg-cream/10" />
+                      )}
+                    </button>
+                  );
+                })}
               </div>
 
-              {/* Day header */}
-              {day && (
-                <div className="rounded-2xl border border-[#c9b896]/10 bg-gradient-to-br from-[#c9b896]/8 to-transparent p-4">
-                  <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-[0.15em] text-[#c9b896]/60">
-                    {r.hint} — {thematicHub[r.themeIdx].title}
-                  </p>
-                  <h3 className="mt-1 font-serif text-lg text-cream/90">{day.theme}</h3>
+              {/* ── Day header ── */}
+              {day ? (
+                <div className="rounded-2xl border border-[#c9b896]/15 bg-gradient-to-br from-[#c9b896]/10 to-[#c9b896]/3 p-4">
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <p className="font-sans text-[0.5rem] font-bold uppercase tracking-[0.2em] text-[#c9b896]/50">
+                        {r.hint} · {thematicHub[r.themeIdx].title}
+                      </p>
+                      <h3 className="mt-1.5 font-serif text-base leading-snug text-cream/90">{day.theme}</h3>
+                    </div>
+                    <span className="shrink-0 rounded-full border border-[#c9b896]/20 px-2 py-0.5 font-mono text-[0.45rem] text-[#c9b896]/50">
+                      {day.slots.length} post{day.slots.length > 1 ? "s" : ""}
+                    </span>
+                  </div>
+                </div>
+              ) : (
+                <div className="rounded-2xl border border-cream/5 bg-[#222019] p-4">
+                  <p className="font-sans text-xs text-cream/30 text-center">Sem conteúdo para este dia.</p>
                 </div>
               )}
 
-              {/* Slots */}
-              {day?.slots.map((slot, si) => (
-                <div key={si} className="overflow-hidden rounded-2xl border border-cream/10 bg-[#222019]">
-                  <div className="flex items-center gap-2 border-b border-cream/5 px-4 py-3">
-                    <div className={`h-2 w-2 rounded-full ${
-                      slot.platform === "whatsapp" ? "bg-[#25D366]" : slot.platform === "instagram" ? "bg-[#E1306C]" : "bg-[#c9b896]"
-                    }`} />
-                    <span className="font-sans text-xs font-semibold text-cream/70">
-                      {slot.platform === "whatsapp" ? "WhatsApp" : slot.platform === "instagram" ? "Instagram" : "Ambos"} — {slot.type}
-                    </span>
-                  </div>
-                  <div className="p-4 space-y-3">
+              {/* ── Slots ── */}
+              {day?.slots.map((slot, si) => {
+                const platformColor = slot.platform === "whatsapp" ? "#25D366" : slot.platform === "instagram" ? "#E1306C" : "#c9b896";
+                const platformLabel = slot.platform === "whatsapp" ? "WhatsApp" : slot.platform === "instagram" ? "Instagram" : "Ambos";
+                return (
+                  <div key={si} className="overflow-hidden rounded-2xl border border-cream/8 bg-[#1e1c18]">
+
+                    {/* Slot header — platform + type */}
+                    <div className="flex items-center gap-2 px-4 py-2.5">
+                      <div className="flex items-center gap-1.5">
+                        <div className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: platformColor }} />
+                        <span className="font-sans text-[0.55rem] font-bold uppercase tracking-[0.12em]"
+                          style={{ color: platformColor + "cc" }}>{platformLabel}</span>
+                      </div>
+                      <span className="text-cream/20">·</span>
+                      <span className="font-sans text-[0.55rem] font-semibold text-cream/40">{slot.type}</span>
+                    </div>
+
+                    {/* Visual single post */}
                     {slot.visual && (() => {
-                      const slide: CarouselSlide = { bg: slot.visual.bg, text: slot.visual.text, accent: slot.visual.accent, title: slot.visual.title, body: slot.visual.body || "", footer: slot.visual.footer || "" };
+                      const slide: CarouselSlide = {
+                        bg: slot.visual.bg, text: slot.visual.text, accent: slot.visual.accent,
+                        title: slot.visual.title, body: slot.visual.body || "", footer: slot.visual.footer || "",
+                      };
                       return (
                         <button
                           onClick={() => { setHubModal({ slides: [slide], title: slot.type, caption: slot.caption }); }}
-                          className="w-full rounded-xl overflow-hidden text-left transition-all hover:ring-2 hover:ring-[#c9b896]/30 active:scale-[0.98]"
-                          style={{ backgroundColor: slot.visual.bg, color: slot.visual.text, padding: "24px", minHeight: 120 }}
+                          className="mx-3 mb-3 w-[calc(100%-1.5rem)] overflow-hidden rounded-xl text-left transition-all active:scale-[0.98] hover:opacity-90"
+                          style={{ backgroundColor: slot.visual.bg }}
                         >
-                          {slot.visual.title && <p className="font-serif text-sm font-bold leading-snug" style={{ whiteSpace: "pre-line" }}>{slot.visual.title}</p>}
-                          {slot.visual.body && <p className="mt-2 font-sans text-[0.65rem] leading-relaxed opacity-80" style={{ whiteSpace: "pre-line" }}>{slot.visual.body}</p>}
-                          {slot.visual.footer && <p className="mt-3 font-sans text-[0.55rem] font-semibold uppercase tracking-wider" style={{ color: slot.visual.accent }}>{slot.visual.footer}</p>}
-                          <p className="mt-3 font-sans text-[0.5rem] font-semibold uppercase tracking-widest opacity-40">Toca para ver & baixar →</p>
+                          <div className="p-5">
+                            {slot.visual.title && (
+                              <p className="font-serif text-sm font-bold leading-snug"
+                                style={{ color: slot.visual.text, whiteSpace: "pre-line" }}>
+                                {slot.visual.title}
+                              </p>
+                            )}
+                            {slot.visual.body && (
+                              <p className="mt-2 font-sans text-[0.65rem] leading-relaxed"
+                                style={{ color: slot.visual.text, opacity: 0.75, whiteSpace: "pre-line" }}>
+                                {slot.visual.body}
+                              </p>
+                            )}
+                            {slot.visual.footer && (
+                              <p className="mt-3 font-sans text-[0.5rem] font-semibold uppercase tracking-[0.15em]"
+                                style={{ color: slot.visual.accent }}>
+                                {slot.visual.footer}
+                              </p>
+                            )}
+                          </div>
+                          {/* Action bar */}
+                          <div className="flex items-center justify-between border-t px-4 py-2"
+                            style={{ borderColor: slot.visual.text + "15" }}>
+                            <span className="font-sans text-[0.5rem] font-semibold uppercase tracking-widest"
+                              style={{ color: slot.visual.text, opacity: 0.35 }}>1 imagem · 1080×1080</span>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                              stroke={slot.visual.accent} strokeWidth="2.5" opacity="0.6">
+                              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                          </div>
                         </button>
                       );
                     })()}
-                    {slot.carousel && slot.carousel.length > 0 && (
-                      <button
-                        onClick={() => { setHubModal({ slides: slot.carousel!, title: slot.type, caption: slot.caption }); }}
-                        className="w-full rounded-xl border border-cream/10 bg-black/20 px-4 py-3 text-left transition-all hover:border-[#c9b896]/30 active:scale-[0.98]"
-                      >
-                        <div className="flex items-center gap-3">
-                          <div className="flex gap-1">
-                            {slot.carousel.slice(0, 4).map((sl, sli) => (
-                              <div key={sli} className="shrink-0 rounded overflow-hidden" style={{ width: 36, height: 36, backgroundColor: sl.bg }} />
-                            ))}
-                            {slot.carousel.length > 4 && (
-                              <div className="shrink-0 rounded overflow-hidden flex items-center justify-center" style={{ width: 36, height: 36, backgroundColor: "#ffffff10" }}>
-                                <span className="font-sans text-[0.45rem] font-bold text-cream/40">+{slot.carousel.length - 4}</span>
-                              </div>
+
+                    {/* Carousel / Status multi-slide */}
+                    {slot.carousel && slot.carousel.length > 0 && (() => {
+                      const first = slot.carousel[0];
+                      const isStatus = slot.type === "WhatsApp Status";
+                      return (
+                        <button
+                          onClick={() => { setHubModal({ slides: slot.carousel!, title: slot.type, caption: slot.caption }); }}
+                          className="mx-3 mb-3 w-[calc(100%-1.5rem)] overflow-hidden rounded-xl text-left transition-all active:scale-[0.98] hover:opacity-90"
+                          style={{ backgroundColor: first.bg }}
+                        >
+                          {/* First slide preview */}
+                          <div className="p-5">
+                            {first.title && (
+                              <p className="font-serif text-sm font-bold leading-snug"
+                                style={{ color: first.text, whiteSpace: "pre-line" }}>
+                                {first.title}
+                              </p>
+                            )}
+                            {first.body && (
+                              <p className="mt-2 font-sans text-[0.65rem] leading-relaxed"
+                                style={{ color: first.text, opacity: 0.7, whiteSpace: "pre-line" }}>
+                                {first.body.split("\n")[0]}
+                              </p>
                             )}
                           </div>
-                          <div className="flex-1">
-                            <p className="font-sans text-xs font-semibold text-cream/70">{slot.carousel.length} slides</p>
-                            <p className="font-sans text-[0.5rem] text-cream/30">Toca para ver & baixar</p>
+                          {/* Slide strip + action */}
+                          <div className="flex items-center justify-between border-t px-4 py-2"
+                            style={{ borderColor: first.text + "15" }}>
+                            <div className="flex items-center gap-1.5">
+                              {/* Slide color dots */}
+                              {slot.carousel.map((sl, sli) => (
+                                <div key={sli} className="rounded-sm"
+                                  style={{
+                                    width: sli === 0 ? 16 : 8,
+                                    height: 8,
+                                    backgroundColor: sli === 0 ? first.accent : sl.bg === first.bg ? first.text + "30" : sl.bg,
+                                    opacity: sli === 0 ? 1 : 0.5,
+                                  }} />
+                              ))}
+                              <span className="ml-1 font-sans text-[0.5rem] font-semibold uppercase tracking-widest"
+                                style={{ color: first.text, opacity: 0.35 }}>
+                                {slot.carousel.length} {isStatus ? "status" : "slides"}
+                              </span>
+                            </div>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                              stroke={first.accent} strokeWidth="2.5" opacity="0.6">
+                              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
                           </div>
+                        </button>
+                      );
+                    })()}
+
+                    {/* Caption preview (collapsible) */}
+                    {slot.caption && (
+                      <details className="group border-t border-cream/5">
+                        <summary className="flex cursor-pointer select-none items-center gap-2 px-4 py-2.5 hover:bg-cream/3">
+                          <span className="font-sans text-[0.5rem] font-bold uppercase tracking-[0.15em] text-cream/30">Legenda</span>
+                          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+                            className="ml-auto text-cream/20 transition-transform group-open:rotate-180">
+                            <polyline points="6 9 12 15 18 9"/>
+                          </svg>
+                          <button
+                            onClick={(e) => { e.preventDefault(); navigator.clipboard.writeText(slot.caption!); setCopiedId(`slot-${si}`); setTimeout(() => setCopiedId(null), 2000); }}
+                            className="rounded bg-cream/8 px-2 py-0.5 font-sans text-[0.45rem] font-semibold text-cream/40 hover:bg-cream/15 hover:text-cream/70 transition-all"
+                          >
+                            {copiedId === `slot-${si}` ? "Copiado" : "Copiar"}
+                          </button>
+                        </summary>
+                        <div className="px-4 pb-4 pt-1">
+                          <p className="font-sans text-[0.6rem] leading-relaxed text-cream/40 whitespace-pre-wrap">{slot.caption}</p>
                         </div>
-                      </button>
+                      </details>
                     )}
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           );
         })()}
