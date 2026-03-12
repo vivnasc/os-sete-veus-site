@@ -3340,14 +3340,171 @@ export type WeekdayRhythm = {
   hint: string;
   themeIdx: number;
   dayIdx: number;
+  bestTime: string;
+  bestTimeNote: string;
 };
 
 export const WEEKLY_RHYTHM: WeekdayRhythm[] = [
-  { label: "Dom", hint: "Reflexão",    themeIdx: 4, dayIdx: 0 },
-  { label: "Seg", hint: "Véu",         themeIdx: 0, dayIdx: 0 },
-  { label: "Ter", hint: "Espelho",     themeIdx: 1, dayIdx: 0 },
-  { label: "Qua", hint: "Véu",         themeIdx: 0, dayIdx: 2 },
-  { label: "Qui", hint: "Nó",          themeIdx: 2, dayIdx: 0 },
-  { label: "Sex", hint: "Espelho",     themeIdx: 1, dayIdx: 1 },
-  { label: "Sáb", hint: "Os 7 Véus",  themeIdx: 0, dayIdx: 6 },
+  { label: "Dom", hint: "Reflexão",    themeIdx: 4, dayIdx: 0, bestTime: "10h–12h", bestTimeNote: "Manhã calma — reflexão pessoal" },
+  { label: "Seg", hint: "Véu",         themeIdx: 0, dayIdx: 0, bestTime: "12h–14h", bestTimeNote: "Pausa do almoço — scroll rápido" },
+  { label: "Ter", hint: "Espelho",     themeIdx: 1, dayIdx: 0, bestTime: "18h–20h", bestTimeNote: "Fim do dia — disponibilidade emocional" },
+  { label: "Qua", hint: "Véu",         themeIdx: 0, dayIdx: 2, bestTime: "12h–14h", bestTimeNote: "Meio da semana — pausa" },
+  { label: "Qui", hint: "Nó",          themeIdx: 2, dayIdx: 0, bestTime: "18h–20h", bestTimeNote: "Melhor dia da semana — engagement alto" },
+  { label: "Sex", hint: "Espelho",     themeIdx: 1, dayIdx: 1, bestTime: "17h–19h", bestTimeNote: "Início do fim-de-semana" },
+  { label: "Sáb", hint: "Os 7 Véus",  themeIdx: 0, dayIdx: 6, bestTime: "11h–13h", bestTimeNote: "Manhã relaxada — conteúdo longo" },
+];
+
+// ─── CONTEÚDO EDUCATIVO DE NICHO ──────────────────────────────────────────────
+// Carrosséis visuais que constroem autoridade no nicho de autoconhecimento.
+// Não mencionam o produto — falam dos temas como fenómenos universais.
+
+export type NicheCarousel = {
+  id: string;
+  title: string;
+  slides: CarouselSlide[];
+  caption: string;
+};
+
+export const nicheCarousels: NicheCarousel[] = [
+  // ── 1. PADRÕES ──
+  {
+    id: "edu-1",
+    title: "A conversa que se repete",
+    slides: [
+      { bg: "#2d1f1f", text: "#f0e6e0", accent: "#c4877a", title: "Sabes aquela\nconversa que\njá tiveste\n47 vezes?", body: "", footer: "" },
+      { bg: "#f0e6e0", text: "#2d1f1f", accent: "#c4877a", title: "Não é falta\nde inteligência.", body: "É porque o padrão\né mais rápido\nque a consciência.", footer: "" },
+      { bg: "#2d1f1f", text: "#f0e6e0", accent: "#c4877a", title: "O corpo entra\nna conversa\nantes de ti.", body: "Já escolheu as palavras.\nJá decidiu o que sentir.\nAntes de pensares.", footer: "" },
+      { bg: "#f0e6e0", text: "#2d1f1f", accent: "#2d1f1f", title: "Não precisas\nde parar\no padrão.", body: "Precisas de o reconhecer\nenquanto acontece.", footer: "— Vivianne" },
+    ],
+    caption: "Sabes aquela conversa que já tiveste 47 vezes?\n\nNão é falta de inteligência. É porque o padrão é mais rápido que a consciência.\n\nO corpo entra na conversa antes de ti. Já preparou a defesa, já escolheu as palavras — antes de pensares.\n\nQual é a conversa que se repete na tua vida?\n\n— Vivianne\n\n#Autoconhecimento #Padroes #ConhecerSe #OsSeteVeus",
+  },
+  {
+    id: "edu-2",
+    title: "Escolhas que não são escolhas",
+    slides: [
+      { bg: "#1f2d2a", text: "#e8f0ec", accent: "#7ab89a", title: "Há escolhas\nque não são\nescolhas.", body: "", footer: "" },
+      { bg: "#e8f0ec", text: "#1f2d2a", accent: "#7ab89a", title: "São repetições\ndisfarçadas\nde decisão.", body: "O mesmo tipo de pessoa.\nO mesmo conflito.\nO mesmo silêncio.", footer: "" },
+      { bg: "#1f2d2a", text: "#e8f0ec", accent: "#7ab89a", title: "Parece sempre\ndiferente.", body: "Porque o cenário muda.\nMas o mecanismo\né o mesmo.", footer: "" },
+      { bg: "#e8f0ec", text: "#1f2d2a", accent: "#1f2d2a", title: "A diferença entre\nrepetir e escolher\né uma só:", body: "Consciência.", footer: "— Vivianne" },
+    ],
+    caption: "Há escolhas que não são escolhas.\n\nSão repetições disfarçadas de decisão. Escolhes o mesmo tipo de pessoa. O mesmo conflito. O mesmo momento para te calares.\n\nParece sempre diferente — porque o cenário muda. Mas o mecanismo é o mesmo.\n\nA próxima vez que \"escolheres\", pergunta: isto é novo ou é familiar?\n\n— Vivianne\n\n#Autoconhecimento #Padroes #EscolhasConscientes #OsSeteVeus",
+  },
+  {
+    id: "edu-3",
+    title: "O que aprendeste cedo demais",
+    slides: [
+      { bg: "#2a1f2d", text: "#ece0f0", accent: "#a87ac4", title: "Não te tornaste\nassim\nde repente.", body: "", footer: "" },
+      { bg: "#ece0f0", text: "#2a1f2d", accent: "#a87ac4", title: "Houve um dia\n— antes dos\n10 anos —", body: "em que aprendeste que\nera mais seguro\nser simpática\ndo que ser honesta.", footer: "" },
+      { bg: "#2a1f2d", text: "#ece0f0", accent: "#a87ac4", title: "Não foi trauma.\nFoi adaptação.", body: "E a adaptação funcionou\ntão bem que esqueceste\nque havia outra versão\nde ti antes dela.", footer: "" },
+      { bg: "#ece0f0", text: "#2a1f2d", accent: "#2a1f2d", title: "O que aprendeste\ncedo demais?", body: "", footer: "— Vivianne" },
+    ],
+    caption: "Não te tornaste assim de repente.\n\nHouve um dia — provavelmente antes dos 10 anos — em que aprendeste que era mais seguro ser simpática do que ser honesta.\n\nNão foi trauma. Foi adaptação. E funcionou tão bem que esqueceste que havia outra versão de ti antes dela.\n\nO que aprendeste cedo demais?\n\n— Vivianne\n\n#Autoconhecimento #InfanciaInterior #Adaptacao #OsSeteVeus",
+  },
+
+  // ── 2. CORPO ──
+  {
+    id: "edu-4",
+    title: "O corpo sabe antes de ti",
+    slides: [
+      { bg: "#1f2820", text: "#e5ede6", accent: "#8bba8f", title: "O teu corpo\nsabe coisas\nque tu ainda\nnão admitiste.", body: "", footer: "" },
+      { bg: "#e5ede6", text: "#1f2820", accent: "#8bba8f", title: "A dor de estômago\nantes da reunião.", body: "O aperto no peito\nquando o telefone toca.\n\nO cansaço que não\nse explica por\nhoras de sono.", footer: "" },
+      { bg: "#1f2820", text: "#e5ede6", accent: "#8bba8f", title: "O corpo\nnão mente.", body: "Não sabe.", footer: "" },
+      { bg: "#e5ede6", text: "#1f2820", accent: "#1f2820", title: "Onde é que\no teu corpo\nfala mais alto?", body: "", footer: "— Vivianne" },
+    ],
+    caption: "O teu corpo sabe coisas que tu ainda não admitiste.\n\nA dor de estômago antes da reunião. O aperto no peito quando o telefone toca. O cansaço que não se explica por horas de sono.\n\nO corpo não mente. Não sabe.\n\nOnde é que o teu corpo fala mais alto?\n\n— Vivianne\n\n#CorpoEMente #Autoconhecimento #EscutarOCorpo #OsSeteVeus",
+  },
+  {
+    id: "edu-5",
+    title: "Endireitar a postura",
+    slides: [
+      { bg: "#282520", text: "#ede9e3", accent: "#baa87a", title: "Já reparaste que\nendireitas a postura\nquando alguém\nentra na sala?", body: "", footer: "" },
+      { bg: "#ede9e3", text: "#282520", accent: "#baa87a", title: "Não é vaidade.\nÉ vigilância.", body: "O corpo adapta-se:\nser vista é ser avaliada.\nEntão prepara-se.\nContrai. Performa.", footer: "" },
+      { bg: "#282520", text: "#ede9e3", accent: "#baa87a", title: "Relaxar na\npresença de\noutra pessoa", body: "é um dos gestos\nmais corajosos\nque existem.", footer: "" },
+      { bg: "#ede9e3", text: "#282520", accent: "#282520", title: "Com quem é que\no teu corpo\nrelaxa?", body: "", footer: "— Vivianne" },
+    ],
+    caption: "Já reparaste que endireitas a postura quando alguém entra na sala?\n\nNão é vaidade. É vigilância. O corpo adapta-se ao que aprendeu: ser vista é ser avaliada.\n\nRelaxar na presença de outra pessoa é um dos gestos mais corajosos que existem.\n\nCom quem é que o teu corpo relaxa?\n\n— Vivianne\n\n#CorpoEMente #Vulnerabilidade #Autoconhecimento #OsSeteVeus",
+  },
+
+  // ── 3. FICÇÃO ──
+  {
+    id: "edu-6",
+    title: "O espelho mais gentil",
+    slides: [
+      { bg: "#1f1f2d", text: "#e0e0f0", accent: "#7a7ac4", title: "Há coisas que\nsó conseguimos\nver quando\nnão são sobre nós.", body: "", footer: "" },
+      { bg: "#e0e0f0", text: "#1f1f2d", accent: "#7a7ac4", title: "As histórias\nfuncionam onde\nos conselhos\nfalham.", body: "Ninguém gosta que\nlhe digam o que\nestá errado.", footer: "" },
+      { bg: "#1f1f2d", text: "#e0e0f0", accent: "#7a7ac4", title: "Mas quando lês\numa personagem\nque faz exactamente\no que tu fazes —", body: "e vês as consequências\n— algo muda.", footer: "" },
+      { bg: "#e0e0f0", text: "#1f1f2d", accent: "#1f1f2d", title: "A ficção é\no espelho mais\ngentil que existe.", body: "", footer: "— Vivianne" },
+    ],
+    caption: "Há coisas que só conseguimos ver quando não são sobre nós.\n\nÉ por isso que as histórias funcionam onde os conselhos falham. Quando lês uma personagem que faz exactamente o que tu fazes — e vês as consequências — algo muda.\n\nNão é informação. É reconhecimento.\n\nJá te reconheceste numa personagem que não eras tu?\n\n— Vivianne\n\n#FiccaoTransformativa #Autoconhecimento #LeituraConsciente #OsSeteVeus",
+  },
+  {
+    id: "edu-7",
+    title: "Autoajuda vs. história",
+    slides: [
+      { bg: "#2d2a1f", text: "#f0ece0", accent: "#c4b07a", title: "Um livro de\nautoajuda diz-te\no que fazer.", body: "", footer: "" },
+      { bg: "#f0ece0", text: "#2d2a1f", accent: "#c4b07a", title: "Uma história\nmostra-te\nquem és.", body: "", footer: "" },
+      { bg: "#2d2a1f", text: "#f0ece0", accent: "#c4b07a", title: "O conselho entra\npela mente.", body: "A história entra\npelo corpo —\npelo reconhecimento,\npelo arrepio,\npelo «isto sou eu».", footer: "" },
+      { bg: "#f0ece0", text: "#2d2a1f", accent: "#2d2a1f", title: "Não precisas de\nmais informação\nsobre ti.", body: "Precisas de te ver.", footer: "— Vivianne" },
+    ],
+    caption: "Um livro de autoajuda diz-te o que fazer. Uma história mostra-te quem és.\n\nA diferença é enorme. O conselho entra pela mente. A história entra pelo corpo — pelo reconhecimento, pelo arrepio, pelo «isto sou eu».\n\nNão precisas de mais informação sobre ti. Precisas de te ver.\n\n— Vivianne\n\n#FiccaoTransformativa #LeituraQueTransforma #Autoconhecimento #OsSeteVeus",
+  },
+
+  // ── 4. RELAÇÃO ──
+  {
+    id: "edu-8",
+    title: "O silêncio entre duas pessoas",
+    slides: [
+      { bg: "#2d1f2a", text: "#f0e0ec", accent: "#c47aaa", title: "O silêncio entre\nduas pessoas\nnunca é vazio.", body: "", footer: "" },
+      { bg: "#f0e0ec", text: "#2d1f2a", accent: "#c47aaa", title: "Está cheio de tudo\no que não foi dito.", body: "Das vezes que\nquase disseste.\nDas vezes que ele\nquase perguntou.", footer: "" },
+      { bg: "#2d1f2a", text: "#f0e0ec", accent: "#c47aaa", title: "Os silêncios\nacumulam-se\ncomo neve.", body: "Parecem leves.\nMas quando derretes\ntudo de uma vez\n— inunda.", footer: "" },
+      { bg: "#f0e0ec", text: "#2d1f2a", accent: "#2d1f2a", title: "A maioria das\nrelações não acaba\npor conflito.", body: "Acaba por acumulação\nde silêncios.", footer: "— Vivianne" },
+    ],
+    caption: "O silêncio entre duas pessoas nunca é vazio.\n\nEstá cheio de tudo o que não foi dito. Das vezes que quase disseste. Das vezes que ele quase perguntou.\n\nOs silêncios acumulam-se como neve. Parecem leves. Mas quando derretes tudo de uma vez — inunda.\n\nO que é que o silêncio está a guardar?\n\n— Vivianne\n\n#Relacoes #Comunicacao #Autoconhecimento #OsSeteVeus",
+  },
+  {
+    id: "edu-9",
+    title: "Cuidar ou controlar",
+    slides: [
+      { bg: "#1f2a2d", text: "#e0ecf0", accent: "#7aaac4", title: "Cuidar pode ser\numa forma\nde controlar.", body: "", footer: "" },
+      { bg: "#e0ecf0", text: "#1f2a2d", accent: "#7aaac4", title: "Parece generosidade.\nParece amor.", body: "Mas às vezes é isto:\nse eu tratar de tudo,\nninguém me pode\nabandonar.", footer: "" },
+      { bg: "#1f2a2d", text: "#e0ecf0", accent: "#7aaac4", title: "A pessoa que\ncuida demais\nraramente pede.", body: "Porque pedir é arriscar\nouvir «não».\nE esse «não» confirma\no medo original.", footer: "" },
+      { bg: "#e0ecf0", text: "#1f2a2d", accent: "#1f2a2d", title: "Cuidas para dar\n— ou para\nnão perder?", body: "", footer: "— Vivianne" },
+    ],
+    caption: "Cuidar pode ser uma forma de controlar.\n\nParece generosidade. Parece amor. Mas às vezes é isto: se eu tratar de tudo, ninguém me pode abandonar.\n\nA pessoa que cuida demais raramente pede. Porque pedir é arriscar ouvir «não».\n\nCuidas para dar — ou para não perder?\n\n— Vivianne\n\n#Relacoes #Codependencia #Autoconhecimento #OsSeteVeus",
+  },
+
+  // ── 5. PROVOCAÇÃO ──
+  {
+    id: "edu-10",
+    title: "O conselho mais inútil",
+    slides: [
+      { bg: "#1a1a1a", text: "#f5f0eb", accent: "#e8c87a", title: "«Ama-te a\nti mesma»\né o conselho\nmais inútil\nque existe.", body: "", footer: "" },
+      { bg: "#f5f0eb", text: "#1a1a1a", accent: "#e8c87a", title: "Não porque\nseja falso.", body: "Porque é vago.\n\nNinguém te diz como.\nNinguém te diz que\namar-se inclui olhar\npara partes de ti\nque não queres ver.", footer: "" },
+      { bg: "#1a1a1a", text: "#f5f0eb", accent: "#e8c87a", title: "Autoconhecimento\nnão é wellness.", body: "É trabalho.\nBonito, necessário\n— mas trabalho.", footer: "" },
+      { bg: "#f5f0eb", text: "#1a1a1a", accent: "#1a1a1a", title: "O que é que\n«amar-te»\nsignificaria\nse fosses honesta?", body: "", footer: "— Vivianne" },
+    ],
+    caption: "«Ama-te a ti mesma» é o conselho mais inútil que existe.\n\nNão porque seja falso. Porque é vago. Ninguém te diz como. Ninguém te diz que amar-se inclui olhar para partes de ti que não queres ver.\n\nAutoconhecimento não é wellness. É trabalho. Bonito, necessário — mas trabalho.\n\nO que é que «amar-te» significaria se fosses honesta?\n\n— Vivianne\n\n#Autoconhecimento #Honestidade #SemFiltro #OsSeteVeus",
+  },
+  {
+    id: "edu-11",
+    title: "Rituais matinais",
+    slides: [
+      { bg: "#1e1a20", text: "#f0eaf2", accent: "#b898c4", title: "Não precisas\nde mais rituais\nmatinais.", body: "", footer: "" },
+      { bg: "#f0eaf2", text: "#1e1a20", accent: "#b898c4", title: "Precisas de uma\nconversa honesta\ncontigo às 3\nda manhã.", body: "Sem velas.\nSem journal bonito.\nSem playlist\nde meditação.", footer: "" },
+      { bg: "#1e1a20", text: "#f0eaf2", accent: "#b898c4", title: "Só tu e a\npergunta que\ntens evitado.", body: "", footer: "" },
+      { bg: "#f0eaf2", text: "#1e1a20", accent: "#1e1a20", title: "Qual é a pergunta\nque continuas\na adiar?", body: "", footer: "— Vivianne" },
+    ],
+    caption: "Não precisas de mais rituais matinais.\n\nPrecisas de uma conversa honesta contigo às 3 da manhã. Sem velas, nem journal bonito, nem playlist de meditação. Só tu e a pergunta que tens evitado.\n\nO autoconhecimento não acontece na hora que reservas para ele. Acontece quando te apanhas no acto de ser quem não queres ser.\n\nQual é a pergunta que continuas a adiar?\n\n— Vivianne\n\n#Autoconhecimento #SemFiltro #Honestidade #OsSeteVeus",
+  },
+  {
+    id: "edu-12",
+    title: "Medo de ser vista a mudar",
+    slides: [
+      { bg: "#201e1a", text: "#f2f0ea", accent: "#c4a878", title: "A maioria das\npessoas não tem\nmedo de mudar.", body: "", footer: "" },
+      { bg: "#f2f0ea", text: "#201e1a", accent: "#c4a878", title: "Tem medo de\nser vista\na mudar.", body: "Porque mudar implica\nadmitir que antes\nestavas errada.\nOu perdida.\nOu a fingir.", footer: "" },
+      { bg: "#201e1a", text: "#f2f0ea", accent: "#c4a878", title: "As pessoas à\ntua volta já se\nhabituaram à\nversão antiga.", body: "Algumas até preferem\nessa versão —\nporque a nova\nincomoda.", footer: "" },
+      { bg: "#f2f0ea", text: "#201e1a", accent: "#201e1a", title: "O que mudarias\nse ninguém\nestivesse a ver?", body: "", footer: "— Vivianne" },
+    ],
+    caption: "A maioria das pessoas não tem medo de mudar. Tem medo de ser vista a mudar.\n\nPorque mudar implica admitir que antes estavas errada. Ou perdida. Ou a fingir.\n\nAs pessoas à tua volta já se habituaram à versão antiga. Algumas até preferem essa versão — porque a nova incomoda.\n\nO que mudarias se ninguém estivesse a ver?\n\n— Vivianne\n\n#Autoconhecimento #Mudanca #Coragem #OsSeteVeus",
+  },
 ];
