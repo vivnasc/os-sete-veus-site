@@ -4,7 +4,7 @@
 **Formato:** 4 produtos por espelho × 6 espelhos = 24 scripts
 **Voz:** Vivianne dos Santos
 **Tom:** Sóbrio, quente, íntimo. Sem pressa. Sem emojis.
-**Para ElevenLabs:** Cada parágrafo separado = pausa natural. Reticências = pausa mais longa.
+**Tags ElevenLabs v3:** Activadas. Modelo: Eleven v3 obrigatório.
 
 ---
 
@@ -13,7 +13,7 @@
 
 ---
 
-Encontra uma posição confortável.
+[soft] Encontra uma posição confortável.
 Podes estar sentada, deitada, encostada.
 Não há maneira errada de estar.
 
@@ -24,11 +24,11 @@ Este é um momento de pausa.
 Não de esforço.
 Não de análise.
 
-Respira fundo.
-Sente o ar a entrar.
-Sente o ar a sair.
+Respira fundo. [inhales]
+Sente o ar a entrar. [pause]
+Sente o ar a sair. [exhales]
 
-Respira novamente, sem controlar.
+Respira novamente, sem controlar. [inhales] [exhales]
 Apenas a permitir.
 
 Agora traz à mente uma área da tua vida onde sabes que deves mover-te, mas não te moves.
@@ -45,8 +45,8 @@ Não és fraca por estar parada.
 A paralisia é inteligente.
 Protege-te de um risco que ainda não calculaste.
 
-Pergunta-te, em silêncio:
-o que me custaria mover-me?
+[deliberate] Pergunta-te, em silêncio: [long pause]
+o que me custaria mover-me? [long pause]
 
 Não respondas ainda.
 Apenas deixa a pergunta existir.
@@ -61,12 +61,12 @@ Reconhece-a.
 Este padrão foi útil durante muito tempo.
 Funcionou quando havia razão para ficar parada.
 
-E com a próxima expiração, solta um pouco do peso que carregas.
+E com a próxima expiração, solta um pouco do peso que carregas. [exhales]
 Não tudo.
 Não de uma vez.
 Apenas um pouco.
 
-Respira fundo novamente.
+Respira fundo novamente. [inhales] [exhales]
 
 Sente o espaço que ficou, mesmo que pequeno.
 Esse espaço é real.
@@ -74,9 +74,9 @@ Não precisas preenchê-lo agora.
 Apenas reconhece que existe.
 
 Quando estiveres pronta, volta a sentir o teu corpo.
-Sente os pés.
-Sente as mãos.
-Sente o lugar onde estás.
+Sente os pés. [pause]
+Sente as mãos. [pause]
+Sente o lugar onde estás. [pause]
 
 Talvez o imobilismo regresse.
 Padrões são persistentes.
@@ -87,6 +87,6 @@ Podes escolher de novo.
 Mesmo que seja apenas um milímetro de movimento.
 Um milímetro é suficiente para começar.
 
-Este ritual está completo.
+[soft] [deliberate] Este ritual está completo.
 
 ---

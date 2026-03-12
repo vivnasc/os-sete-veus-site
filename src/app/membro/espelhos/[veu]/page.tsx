@@ -7,6 +7,7 @@ import { loadEspelho, isEspelhoRegistered, espelhoProgressKey } from "@/lib/cont
 import { getExperience } from "@/data/experiences";
 import { getNosForEspelho } from "@/data/nos-collection";
 import { getPraticasParaVeu } from "@/data/praticas-audio";
+import { INTROS_VEUS } from "@/data/intros-veus";
 import { supabase } from "@/lib/supabase";
 import Image from "next/image";
 import Link from "next/link";
@@ -21,6 +22,7 @@ export default function EspelhoHubPage({ params }: { params: Promise<{ veu: stri
   const [content, setContent] = useState<ContentModule | null>(null);
   const [progress, setProgress] = useState<Record<string, boolean>>({});
   const [loading, setLoading] = useState(true);
+  const [introDisponivel, setIntroDisponivel] = useState(true);
 
   const isAdmin = profile?.is_admin || AUTHOR_EMAILS.includes(user?.email || "");
   const hasMirrorsAccess = isAdmin || profile?.has_mirrors_access || false;
@@ -31,6 +33,20 @@ export default function EspelhoHubPage({ params }: { params: Promise<{ veu: stri
   const experience = getExperience(veu);
   const nosBook = getNosForEspelho(veu);
   const praticas = getPraticasParaVeu(veu);
+
+  // Mapeamento de slug → número do véu para intro de áudio
+  const VEU_NUM: Record<string, number> = {
+    "veu-da-ilusao": 1, "veu-do-medo": 2, "veu-da-culpa": 3,
+    "veu-da-identidade": 4, "veu-do-controlo": 5, "veu-do-desejo": 6,
+    "veu-da-separacao": 7,
+  };
+  const introEntry = INTROS_VEUS.find((i) => i.veu === VEU_NUM[veu]);
+  const introFicheiro = introEntry
+    ? `intro-veu-${introEntry.veu}-${introEntry.nome.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, "-")}.mp3`
+    : null;
+  const introUrl = introFicheiro
+    ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audios/${encodeURIComponent(introFicheiro)}`
+    : null;
 
   // Load espelho content from registry
   useEffect(() => {
@@ -169,6 +185,27 @@ export default function EspelhoHubPage({ params }: { params: Promise<{ veu: stri
             </p>
           ))}
         </div>
+
+        {/* Intro de áudio — voz da autora */}
+        {introUrl && introDisponivel && (
+          <div className="mb-8 overflow-hidden rounded-2xl bg-white shadow-sm">
+            <div className="px-6 pt-5 pb-4">
+              <p className="mb-3 font-sans text-[0.65rem] uppercase tracking-[0.25em] text-brown-400">
+                Uma palavra antes de começar
+              </p>
+              <audio
+                controls
+                preload="metadata"
+                src={introUrl}
+                onError={() => setIntroDisponivel(false)}
+                className="w-full"
+                style={{ height: "40px", borderRadius: "9999px" }}
+              >
+                O teu navegador não suporta o elemento de áudio.
+              </audio>
+            </div>
+          </div>
+        )}
 
         {/* Chapter list */}
         <div className="space-y-3">

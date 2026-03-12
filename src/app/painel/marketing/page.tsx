@@ -4,11 +4,12 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { professionalCarousels, hashtagSets, thematicHub, productionGuide, WEEKLY_RHYTHM } from "@/data/content-calendar-weeks";
+import { professionalCarousels, reelScripts, hashtagSets, thematicHub, productionGuide, WEEKLY_RHYTHM } from "@/data/content-calendar-weeks";
 import type { CarouselSlide } from "@/data/content-calendar-weeks";
 import { capcutContent, CAPCUT_CATEGORIES, AUDIO_BASE_PATH } from "@/data/capcut-content";
 import type { CapCutCategory } from "@/data/capcut-content";
 import { isMobile } from "@/lib/export-image";
+import { REELS_VOZ, CARROSSEIS_VOZ } from "@/data/marketing-reels-audio";
 
 const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
 const DIMS = { w: 1080, h: 1080 };
@@ -183,8 +184,6 @@ function SlidePreviewVertical({ slide, index, scale }: { slide: CarouselSlide; i
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
-
-import { reelScripts } from "@/data/content-calendar-weeks";
 
 export default function MarketingPage() {
   const { user, loading } = useAuth();
@@ -791,6 +790,15 @@ export default function MarketingPage() {
 
             {/* Imagens */}
             <div className="space-y-2">
+              <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-[0.15em] text-[#c9b896]/60">Áudio da Vivianne</p>
+              <div className="rounded-2xl border border-[#c9b896]/15 bg-[#c9b896]/5 p-4 space-y-3">
+                <p className="font-sans text-[0.65rem] leading-relaxed text-cream/70 italic">&ldquo;{capcutModal.script}&rdquo;</p>
+                <CapCutAudioPlayer src={audioUrl} ficheiro={capcutModal.audioFile} />
+              </div>
+            </div>
+
+            {/* ── Instagram 1:1 ── */}
+            <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <p className="font-sans text-[0.5rem] font-bold uppercase tracking-[0.2em] text-cream/30">Imagens</p>
                 <div className="flex gap-2">
@@ -831,5 +839,94 @@ export default function MarketingPage() {
       );
     })()}
     </>
+  );
+}
+
+// ── Player de áudio para o modal CapCut ─────────────────────────────────────
+function CapCutAudioPlayer({ src, ficheiro }: { src: string; ficheiro: string }) {
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [playing, setPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const onTime = () => setCurrentTime(audio.currentTime);
+    const onMeta = () => setDuration(audio.duration);
+    const onEnd = () => setPlaying(false);
+    audio.addEventListener("timeupdate", onTime);
+    audio.addEventListener("loadedmetadata", onMeta);
+    audio.addEventListener("ended", onEnd);
+    return () => {
+      audio.removeEventListener("timeupdate", onTime);
+      audio.removeEventListener("loadedmetadata", onMeta);
+      audio.removeEventListener("ended", onEnd);
+    };
+  }, []);
+
+  function toggle() {
+    const audio = audioRef.current;
+    if (!audio) return;
+    playing ? audio.pause() : audio.play();
+    setPlaying(!playing);
+  }
+
+  function seek(e: React.ChangeEvent<HTMLInputElement>) {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.currentTime = Number(e.target.value);
+  }
+
+  function fmt(s: number) {
+    const m = Math.floor(s / 60);
+    return `${m}:${Math.floor(s % 60).toString().padStart(2, "0")}`;
+  }
+
+  return (
+    <div className="rounded-xl border border-cream/10 bg-[#1a1814] p-3">
+      <audio ref={audioRef} src={src} preload="metadata" />
+      <div className="flex items-center gap-2.5">
+        <button
+          onClick={toggle}
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#c9b896] text-[#1a1814] transition-opacity hover:opacity-80"
+        >
+          {playing ? (
+            <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5">
+              <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" fill="currentColor" className="ml-0.5 h-3.5 w-3.5">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          )}
+        </button>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-1.5">
+            <span className="font-sans text-[0.55rem] text-cream/40">{fmt(currentTime)}</span>
+            <input
+              type="range"
+              min={0}
+              max={duration || 0}
+              value={currentTime}
+              onChange={seek}
+              className="h-1 flex-1 cursor-pointer appearance-none rounded-full bg-cream/10 accent-[#c9b896]"
+            />
+            <span className="font-sans text-[0.55rem] text-cream/40">{fmt(duration)}</span>
+          </div>
+          <p className="mt-1 font-mono text-[0.45rem] text-cream/20 truncate">{ficheiro}</p>
+        </div>
+        <a
+          href={src}
+          download={ficheiro}
+          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-cream/10 text-cream/30 transition-colors hover:border-[#c9b896]/30 hover:text-[#c9b896]/60"
+          title="Baixar"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3 w-3">
+            <path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" />
+          </svg>
+        </a>
+      </div>
+    </div>
   );
 }

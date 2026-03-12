@@ -68,8 +68,8 @@ const _nosCollection: NosBook[] = [
     description:
       "Rui e Ana amam-se. Mas há algo entre eles que nenhum dos dois nomeia. O medo transformou-se em silêncio — e o silêncio, em distância. Este nó puxa o fio entre quem ama e quem cala.",
     image: "/images/capa-no-silencio2.png",
-    color: "#6a9dbe",
-    colorBg: "#142838",
+    color: "#8b9b8e",
+    colorBg: "#1a2420",
     status: "available",
     dataFile: "no-silencio",
     priceUSD: 8,

@@ -4,7 +4,7 @@
 **Formato:** 4 produtos por espelho × 6 espelhos = 24 scripts
 **Voz:** Vivianne dos Santos
 **Tom:** Sóbrio, quente, íntimo. Sem pressa. Sem emojis.
-**Para ElevenLabs:** Cada parágrafo separado = pausa natural. Reticências = pausa mais longa.
+**Tags ElevenLabs v3:** Activadas. Modelo: Eleven v3 obrigatório.
 
 ---
 
@@ -13,7 +13,7 @@
 
 ---
 
-Este não é um exercício leve.
+[warm] Este não é um exercício leve.
 É um espaço de clareza.
 
 Vais escrever com honestidade.
@@ -21,9 +21,9 @@ Sem construir imagem.
 Sem gerir impressão.
 Sem embelezar.
 
-Prepara um caderno.
-Uma caneta.
-Vinte minutos sem interrupções.
+Prepara um caderno. [pause]
+Uma caneta. [pause]
+Vinte minutos sem interrupções. [pause]
 
 Respira.
 
@@ -32,72 +32,72 @@ Título: A Minha Identidade.
 
 Começamos.
 
-Primeira pergunta.
+[deliberate] Primeira pergunta.
 Descreve a versão de ti que mostras no trabalho.
 Não o que és.
 O que mostras.
 
-Escreve.
+Escreve. [long pause]
 
-Segunda pergunta.
+[deliberate] Segunda pergunta.
 Descreve a versão de ti que mostras à família.
 E o que essa versão não mostra.
 
-Escreve.
+Escreve. [long pause]
 
-Terceira pergunta.
+[deliberate] Terceira pergunta.
 Que parte de ti nunca mostras a ninguém?
 Não a que consideras boa mas que escondes por modéstia.
 A que consideras incompatível com a imagem que cuidas.
 
-Escreve sem filtrar.
+Escreve sem filtrar. [long pause]
 
-Quarta pergunta.
-Completa a frase:
+[deliberate] Quarta pergunta.
+[deliberate] Completa a frase:
 "Se as pessoas soubessem que eu…, deixariam de me respeitar."
 
-Escreve.
+Escreve. [long pause]
 
-Quinta pergunta.
+[deliberate] Quinta pergunta.
 Qual foi a última vez que alguém te conheceu sem o contexto do teu cargo ou função?
 Quem era essa pessoa?
 Como foi esse encontro?
 
-Escreve.
+Escreve. [long pause]
 
-Sexta pergunta.
+[deliberate] Sexta pergunta.
 Que conquista tua te orgulha que ninguém conhece?
 Não a que mencionas quando constróis relações.
 A que guardas apenas para ti.
 
-Escreve.
+Escreve. [long pause]
 
-Sétima pergunta.
+[deliberate] Sétima pergunta.
 Que fracasso teu tens escondido que, se viesse a público, mudaria como te vêem?
 
-Escreve.
+Escreve. [long pause]
 
-Oitava pergunta.
-Completa:
+[deliberate] Oitava pergunta.
+[deliberate] Completa:
 "Quando estou sozinha e ninguém me observa, eu…"
 
-Escreve.
+Escreve. [long pause]
 
-Nona pergunta.
+[deliberate] Nona pergunta.
 Quem és sem o cargo, sem o carro, sem a reputação?
 Não o que gostavas de ser.
 O que sabes que és.
 
 Escreve.
-Não apresses esta resposta.
+Não apresses esta resposta. [long pause]
 
-Pergunta final.
+[deliberate] Pergunta final.
 Se pudesses ser completamente desconhecida — começar sem historial, sem título, sem imagem construída — o que construirias?
 
-Escreve.
+Escreve. [long pause]
 
-Agora pára.
-Larga a caneta.
+Agora pára. [pause]
+Larga a caneta. [pause]
 
 Respira fundo uma vez.
 Depois outra.
@@ -110,9 +110,9 @@ Essa distância não é vergonha.
 É este padrão.
 E reconhecê-lo é o começo de soltar um pouco o peso de o manter.
 
-Visível.
-Nomeado.
-Real.
+[soft] Visível. [pause]
+[soft] Nomeado. [pause]
+[soft] Real. [long pause]
 
 ---
 
