@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
-  const { texto, voiceId, apiKey } = await req.json();
+  const { texto, voiceId, apiKey, model } = await req.json();
 
   if (!apiKey || !voiceId || !texto) {
     return NextResponse.json(
@@ -9,6 +9,13 @@ export async function POST(req: NextRequest) {
       { status: 400 }
     );
   }
+
+  // Eleven v3: pausas via [pause], [short pause], [long pause]
+  // v2: pausas via SSML <break time="1.5s" />
+  const modelId = model === "v2" ? "eleven_multilingual_v2" : "eleven_v3";
+  const voiceSettings = model === "v2"
+    ? { stability: 0.55, similarity_boost: 0.8, style: 0.15 }
+    : { stability: 0.45, similarity_boost: 0.75 };
 
   const res = await fetch(
     `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`,
@@ -20,12 +27,8 @@ export async function POST(req: NextRequest) {
       },
       body: JSON.stringify({
         text: texto,
-        model_id: "eleven_multilingual_v2",
-        voice_settings: {
-          stability: 0.55,
-          similarity_boost: 0.8,
-          style: 0.15,
-        },
+        model_id: modelId,
+        voice_settings: voiceSettings,
       }),
     }
   );

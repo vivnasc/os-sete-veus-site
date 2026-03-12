@@ -7,6 +7,7 @@ import Link from "next/link";
 import { professionalCarousels, reelScripts, thematicHub, WEEKLY_RHYTHM, nicheCarousels } from "@/data/content-calendar-weeks";
 import type { CarouselSlide } from "@/data/content-calendar-weeks";
 import { capcutContent, AUDIO_BASE_PATH } from "@/data/capcut-content";
+import { REELS_VOZ, CARROSSEIS_VOZ, EDUCATIVOS_VOZ } from "@/data/marketing-reels-audio";
 import { isMobile } from "@/lib/export-image";
 
 const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
@@ -561,7 +562,9 @@ export default function MarketingPage() {
             {/* ── Carrosseis ── */}
             {arquivoSub === "carrosseis" && (
               <div className="space-y-2">
-                {professionalCarousels.map((car, ci) => (
+                {professionalCarousels.map((car, ci) => {
+                  const vozMatch = CARROSSEIS_VOZ.find(cv => cv.carouselId === car.id);
+                  return (
                   <div key={car.id} className="overflow-hidden rounded-2xl">
                     <button
                       onClick={() => setHubModal({ slides: car.slides, title: car.title, caption: car.caption })}
@@ -578,7 +581,9 @@ export default function MarketingPage() {
                           {car.slides.map((sl, sli) => (
                             <div key={sli} className="rounded-sm" style={{ width: sli === 0 ? 16 : 8, height: 8, backgroundColor: sli === 0 ? (sl.accent || "#c9b896") : sl.bg, opacity: sli === 0 ? 1 : 0.45 }} />
                           ))}
-                          <span className="ml-1 font-sans text-[0.5rem] font-semibold uppercase tracking-widest" style={{ color: car.slides[0]?.text || "#f7f5f0", opacity: 0.3 }}>{car.slides.length} slides</span>
+                          <span className="ml-1 font-sans text-[0.5rem] font-semibold uppercase tracking-widest" style={{ color: car.slides[0]?.text || "#f7f5f0", opacity: 0.3 }}>
+                            {car.slides.length} slides{vozMatch ? " · com audio" : ""}
+                          </span>
                         </div>
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={car.slides[0]?.accent || "#c9b896"} strokeWidth="2.5" opacity="0.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                       </div>
@@ -595,8 +600,23 @@ export default function MarketingPage() {
                         <p className="font-sans text-[0.6rem] leading-relaxed text-cream/40 whitespace-pre-wrap">{car.caption}</p>
                       </div>
                     )}
+                    {vozMatch && (
+                      <div className="border-t border-[#c9b896]/10 bg-[#c9b896]/5 px-4 pb-4 pt-3 space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="font-sans text-[0.45rem] font-bold uppercase tracking-[0.15em] text-[#c9b896]/50">Narracao · Vivianne</span>
+                          <a href={`${AUDIO_BASE_PATH}/${vozMatch.ficheiro}`} download={vozMatch.ficheiro}
+                            className="rounded bg-[#c9b896]/15 px-2 py-0.5 font-sans text-[0.45rem] font-semibold text-[#c9b896]/70 hover:bg-[#c9b896]/25 transition-all">
+                            Baixar
+                          </a>
+                        </div>
+                        <audio controls preload="metadata" className="w-full rounded-xl" style={{ height: 36, colorScheme: "dark" }}>
+                          <source src={`${AUDIO_BASE_PATH}/${vozMatch.ficheiro}`} type="audio/mpeg" />
+                        </audio>
+                      </div>
+                    )}
                   </div>
-                ))}
+                  );
+                })}
               </div>
             )}
 
@@ -709,7 +729,37 @@ export default function MarketingPage() {
                     </button>
                   ))}
                 </div>
-                {/* Scripts */}
+
+                {/* Narração de Reels */}
+                <div className="space-y-2">
+                  <p className="font-sans text-[0.55rem] text-cream/25">Narracao · voz da Vivianne · {REELS_VOZ.length} audios</p>
+                  {REELS_VOZ.map((rv) => (
+                    <div key={rv.id} className="overflow-hidden rounded-2xl border border-cream/10 bg-[#222019]">
+                      <div className="px-4 py-3 border-b border-cream/5">
+                        <p className="font-sans text-xs font-semibold text-cream/70">{rv.nome}</p>
+                        <p className="mt-1 font-mono text-[0.45rem] text-cream/20">{rv.ficheiro}</p>
+                      </div>
+                      <div className="px-4 py-3 space-y-3">
+                        <p className="font-sans text-[0.6rem] leading-relaxed text-cream/40 italic">&ldquo;{rv.texto}&rdquo;</p>
+                        <audio controls preload="metadata" className="w-full rounded-xl" style={{ height: 40, colorScheme: "dark" }}>
+                          <source src={`${AUDIO_BASE_PATH}/${rv.ficheiro}`} type="audio/mpeg" />
+                        </audio>
+                        <div className="flex items-center justify-between">
+                          <button onClick={() => copyText(rv.id, rv.texto)}
+                            className="rounded bg-cream/8 px-2.5 py-1 font-sans text-[0.45rem] font-semibold text-cream/40 hover:bg-cream/15 transition-all">
+                            {copiedId === rv.id ? "Copiado" : "Copiar texto"}
+                          </button>
+                          <a href={`${AUDIO_BASE_PATH}/${rv.ficheiro}`} download={rv.ficheiro}
+                            className="rounded bg-[#c9b896]/15 px-2.5 py-1 font-sans text-[0.45rem] font-semibold text-[#c9b896]/70 hover:bg-[#c9b896]/25 transition-all">
+                            Baixar audio
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Scripts de Reel */}
                 <div className="space-y-2">
                   <p className="font-sans text-[0.55rem] text-cream/25">Scripts de Reel</p>
                   {reelScripts.map((reel, ri) => (
@@ -739,8 +789,10 @@ export default function MarketingPage() {
             {/* ── Educativo ── */}
             {arquivoSub === "educativo" && (
               <div className="space-y-2">
-                <p className="mb-3 font-sans text-[0.55rem] text-cream/25">Carrosseis educativos · autoridade no nicho</p>
-                {nicheCarousels.map((car, ci) => (
+                <p className="mb-3 font-sans text-[0.55rem] text-cream/25">Carrosseis educativos · autoridade no nicho · {nicheCarousels.length} carrosseis</p>
+                {nicheCarousels.map((car, ci) => {
+                  const vozMatch = EDUCATIVOS_VOZ.find(ev => ev.carouselId === car.id);
+                  return (
                   <div key={car.id} className="overflow-hidden rounded-2xl">
                     <button
                       onClick={() => setHubModal({ slides: car.slides, title: car.title, caption: car.caption })}
@@ -756,7 +808,9 @@ export default function MarketingPage() {
                           {car.slides.map((sl, sli) => (
                             <div key={sli} className="rounded-sm" style={{ width: sli === 0 ? 16 : 8, height: 8, backgroundColor: sli === 0 ? (sl.accent || "#c9b896") : sl.bg, opacity: sli === 0 ? 1 : 0.45 }} />
                           ))}
-                          <span className="ml-1 font-sans text-[0.5rem] font-semibold uppercase tracking-widest" style={{ color: car.slides[0]?.text || "#f7f5f0", opacity: 0.3 }}>{car.slides.length} slides</span>
+                          <span className="ml-1 font-sans text-[0.5rem] font-semibold uppercase tracking-widest" style={{ color: car.slides[0]?.text || "#f7f5f0", opacity: 0.3 }}>
+                            {car.slides.length} slides{vozMatch ? " · com audio" : ""}
+                          </span>
                         </div>
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={car.slides[0]?.accent || "#c9b896"} strokeWidth="2.5" opacity="0.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                       </div>
@@ -773,8 +827,24 @@ export default function MarketingPage() {
                         <p className="font-sans text-[0.6rem] leading-relaxed text-cream/40 whitespace-pre-wrap">{car.caption}</p>
                       </div>
                     )}
+                    {vozMatch && (
+                      <div className="border-t border-[#c9b896]/10 bg-[#c9b896]/5 px-4 pb-4 pt-3 space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="font-sans text-[0.45rem] font-bold uppercase tracking-[0.15em] text-[#c9b896]/50">Narracao · Vivianne · v3</span>
+                          <a href={`${AUDIO_BASE_PATH}/${vozMatch.ficheiro}`} download={vozMatch.ficheiro}
+                            className="rounded bg-[#c9b896]/15 px-2 py-0.5 font-sans text-[0.45rem] font-semibold text-[#c9b896]/70 hover:bg-[#c9b896]/25 transition-all">
+                            Baixar
+                          </a>
+                        </div>
+                        <audio controls preload="metadata" className="w-full rounded-xl" style={{ height: 36, colorScheme: "dark" }}>
+                          <source src={`${AUDIO_BASE_PATH}/${vozMatch.ficheiro}`} type="audio/mpeg" />
+                        </audio>
+                        <p className="font-sans text-[0.5rem] leading-relaxed text-cream/30 italic">&ldquo;{vozMatch.texto.replace(/\[(short |long )?pause\]/g, "...").substring(0, 120)}...&rdquo;</p>
+                      </div>
+                    )}
                   </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </div>
