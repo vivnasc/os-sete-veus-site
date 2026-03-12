@@ -190,9 +190,9 @@ export default function MarketingPage() {
   const { user, loading } = useAuth();
   const router = useRouter();
 
-  type Section = "hoje" | "feed" | "carrosseis" | "status" | "reels";
+  type Section = "semana" | "feed" | "carrosseis" | "status" | "reels";
 
-  const [section, setSection] = useState<Section>("hoje");
+  const [section, setSection] = useState<Section>("semana");
   const [selectedWeekday, setSelectedWeekday] = useState(() => new Date().getDay());
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [hubModal, setHubModal] = useState<{ slides: CarouselSlide[]; title: string; caption?: string } | null>(null);
@@ -341,19 +341,16 @@ export default function MarketingPage() {
         })()}
 
         {slot.caption && (
-          <details className="group border-t border-cream/5">
-            <summary className="flex cursor-pointer select-none items-center gap-2 px-4 py-2.5 hover:bg-cream/3">
-              <span className="font-sans text-[0.5rem] font-bold uppercase tracking-[0.15em] text-cream/30">Legenda</span>
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="ml-auto text-cream/20 transition-transform group-open:rotate-180"><polyline points="6 9 12 15 18 9"/></svg>
-              <button onClick={(e) => { e.preventDefault(); copyText(`slot-${idx}`, slot.caption!); }}
+          <div className="border-t border-cream/5 px-4 pb-4 pt-3">
+            <div className="mb-2 flex items-center justify-between">
+              <span className="font-sans text-[0.45rem] font-bold uppercase tracking-[0.15em] text-cream/25">Legenda</span>
+              <button onClick={() => copyText(`slot-${idx}`, slot.caption!)}
                 className="rounded bg-cream/8 px-2 py-0.5 font-sans text-[0.45rem] font-semibold text-cream/40 hover:bg-cream/15 transition-all">
                 {copiedId === `slot-${idx}` ? "Copiado" : "Copiar"}
               </button>
-            </summary>
-            <div className="px-4 pb-4 pt-1">
-              <p className="font-sans text-[0.6rem] leading-relaxed text-cream/40 whitespace-pre-wrap">{slot.caption}</p>
             </div>
-          </details>
+            <p className="font-sans text-[0.6rem] leading-relaxed text-cream/40 whitespace-pre-wrap">{slot.caption}</p>
+          </div>
         )}
       </div>
     );
@@ -382,7 +379,7 @@ export default function MarketingPage() {
           <div className="mt-3 -mx-4 overflow-x-auto px-4 scrollbar-none">
             <div className="flex gap-1" style={{ width: "max-content" }}>
               {([
-                { id: "hoje" as const,      label: "Hoje",       badge: slotCounts[selectedWeekday] || undefined },
+                { id: "semana" as const,    label: "Semana",     badge: undefined },
                 { id: "feed" as const,      label: "Feed",       badge: hubFeedPosts.length },
                 { id: "carrosseis" as const,label: "Carrosseis", badge: professionalCarousels.length },
                 { id: "status" as const,    label: "Status",     badge: hubStatusPosts.length },
@@ -410,28 +407,24 @@ export default function MarketingPage() {
       <div className="mx-auto max-w-lg px-4 pb-28">
 
         {/* ══════════════════════════════════════════════════════════════════════ */}
-        {/* HOJE — conteúdo planeado para o dia                                  */}
+        {/* SEMANA — guia temático semanal (inspiração, não obrigação)           */}
         {/* ══════════════════════════════════════════════════════════════════════ */}
-        {section === "hoje" && (
+        {section === "semana" && (
           <div className="py-4 space-y-4">
 
-            {/* Faixa de dias */}
+            {/* Faixa de temas (7 colunas — um por tipo de dia) */}
             <div className="grid grid-cols-7 gap-1">
               {WEEKLY_RHYTHM.map((w, i) => {
                 const isSel = selectedWeekday === i;
                 const isTod = today === i;
                 return (
                   <button key={i} onClick={() => setSelectedWeekday(i)}
-                    className={`relative flex flex-col items-center rounded-xl py-2 transition-all ${
+                    className={`flex flex-col items-center rounded-xl py-2.5 transition-all ${
                       isSel ? "bg-[#c9b896] shadow-lg shadow-[#c9b896]/20"
-                      : isTod ? "bg-cream/8 ring-1 ring-[#c9b896]/30"
                       : "hover:bg-cream/5"
                     }`}>
-                    {isTod && !isSel && <span className="absolute -top-0.5 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-[#c9b896]" />}
-                    <span className={`font-sans text-[0.5rem] font-bold uppercase tracking-wider ${isSel ? "text-[#1a1814]" : isTod ? "text-[#c9b896]" : "text-cream/40"}`}>{w.label}</span>
-                    <span className={`mt-0.5 font-mono text-[0.45rem] font-bold ${isSel ? "text-[#1a1814]/60" : "text-cream/25"}`}>
-                      {slotCounts[i] > 0 ? slotCounts[i] : "·"}
-                    </span>
+                    <span className={`font-sans text-[0.55rem] font-bold ${isSel ? "text-[#1a1814]" : "text-cream/50"}`}>{w.hint}</span>
+                    <span className={`mt-0.5 font-sans text-[0.42rem] ${isSel ? "text-[#1a1814]/50" : isTod ? "text-[#c9b896]/60" : "text-cream/25"}`}>{w.label}{isTod ? " ·" : ""}</span>
                   </button>
                 );
               })}
@@ -442,17 +435,17 @@ export default function MarketingPage() {
               <div className="rounded-2xl border border-[#c9b896]/15 bg-gradient-to-br from-[#c9b896]/10 to-[#c9b896]/3 p-4">
                 <div className="flex items-start justify-between gap-2">
                   <div>
-                    <p className="font-sans text-[0.5rem] font-bold uppercase tracking-[0.2em] text-[#c9b896]/50">{r.hint} · {thematicHub[r.themeIdx]?.title}</p>
+                    <p className="font-sans text-[0.5rem] font-bold uppercase tracking-[0.2em] text-[#c9b896]/50">Tema · {thematicHub[r.themeIdx]?.title}</p>
                     <h3 className="mt-1.5 font-serif text-base leading-snug text-cream/90">{dayData.theme}</h3>
                   </div>
                   <span className="shrink-0 rounded-full border border-[#c9b896]/20 px-2 py-0.5 font-mono text-[0.45rem] text-[#c9b896]/50">
-                    {dayData.slots.length} post{dayData.slots.length > 1 ? "s" : ""}
+                    {dayData.slots.length} peça{dayData.slots.length > 1 ? "s" : ""}
                   </span>
                 </div>
               </div>
             ) : (
               <div className="rounded-2xl border border-cream/5 bg-[#222019] p-6 text-center">
-                <p className="font-sans text-xs text-cream/30">Sem conteúdo planeado para este dia.</p>
+                <p className="font-sans text-xs text-cream/30">Sem conteúdo para este tema.</p>
               </div>
             )}
 
@@ -466,21 +459,35 @@ export default function MarketingPage() {
         {section === "feed" && (
           <div className="py-4 space-y-2">
             <p className="mb-3 font-sans text-[0.55rem] text-cream/25">Posts quadrados · 1080×1080px · Instagram feed</p>
-            {hubFeedPosts.map((item) => (
-              <button key={item.id}
-                onClick={() => setHubModal({ slides: [item.slide], title: item.theme, caption: item.caption })}
-                className="w-full overflow-hidden rounded-2xl text-left transition-all active:scale-[0.98] hover:opacity-90"
-                style={{ backgroundColor: item.slide.bg }}>
-                <div className="p-5">
-                  {item.slide.title && <p className="font-serif text-sm font-bold leading-snug" style={{ color: item.slide.text, whiteSpace: "pre-line" }}>{item.slide.title}</p>}
-                  {item.slide.body && <p className="mt-2 font-sans text-[0.65rem] leading-relaxed" style={{ color: item.slide.text, opacity: 0.7, whiteSpace: "pre-line" }}>{item.slide.body}</p>}
-                  {item.slide.footer && <p className="mt-3 font-sans text-[0.5rem] font-semibold uppercase tracking-[0.15em]" style={{ color: item.slide.accent }}>{item.slide.footer}</p>}
-                </div>
-                <div className="flex items-center justify-between border-t px-4 py-2.5" style={{ borderColor: item.slide.text + "15" }}>
-                  <span className="font-sans text-[0.5rem] font-semibold uppercase tracking-widest" style={{ color: item.slide.text, opacity: 0.3 }}>{item.weekTitle}</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.slide.accent} strokeWidth="2.5" opacity="0.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                </div>
-              </button>
+            {hubFeedPosts.map((item, fi) => (
+              <div key={item.id} className="overflow-hidden rounded-2xl">
+                <button
+                  onClick={() => setHubModal({ slides: [item.slide], title: item.theme, caption: item.caption })}
+                  className="w-full overflow-hidden text-left transition-all active:scale-[0.98] hover:opacity-90"
+                  style={{ backgroundColor: item.slide.bg }}>
+                  <div className="p-5">
+                    {item.slide.title && <p className="font-serif text-sm font-bold leading-snug" style={{ color: item.slide.text, whiteSpace: "pre-line" }}>{item.slide.title}</p>}
+                    {item.slide.body && <p className="mt-2 font-sans text-[0.65rem] leading-relaxed" style={{ color: item.slide.text, opacity: 0.7, whiteSpace: "pre-line" }}>{item.slide.body}</p>}
+                    {item.slide.footer && <p className="mt-3 font-sans text-[0.5rem] font-semibold uppercase tracking-[0.15em]" style={{ color: item.slide.accent }}>{item.slide.footer}</p>}
+                  </div>
+                  <div className="flex items-center justify-between border-t px-4 py-2.5" style={{ borderColor: item.slide.text + "15" }}>
+                    <span className="font-sans text-[0.5rem] font-semibold uppercase tracking-widest" style={{ color: item.slide.text, opacity: 0.3 }}>1:1 + 9:16 · {item.weekTitle}</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.slide.accent} strokeWidth="2.5" opacity="0.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  </div>
+                </button>
+                {item.caption && (
+                  <div className="border-t border-cream/5 bg-[#1a1814] px-4 pb-4 pt-3">
+                    <div className="mb-1.5 flex items-center justify-between">
+                      <span className="font-sans text-[0.45rem] font-bold uppercase tracking-[0.15em] text-cream/25">Legenda</span>
+                      <button onClick={() => copyText(`feed-${fi}`, item.caption!)}
+                        className="rounded bg-cream/8 px-2 py-0.5 font-sans text-[0.45rem] font-semibold text-cream/40 hover:bg-cream/15 transition-all">
+                        {copiedId === `feed-${fi}` ? "Copiado" : "Copiar"}
+                      </button>
+                    </div>
+                    <p className="font-sans text-[0.6rem] leading-relaxed text-cream/40 whitespace-pre-wrap">{item.caption}</p>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
         )}
@@ -491,27 +498,41 @@ export default function MarketingPage() {
         {section === "carrosseis" && (
           <div className="py-4 space-y-2">
             <p className="mb-3 font-sans text-[0.55rem] text-cream/25">Carrosseis prontos · 1080×1080px · Instagram</p>
-            {professionalCarousels.map((c) => (
-              <button key={c.id}
-                onClick={() => setHubModal({ slides: c.slides, title: c.title, caption: c.caption })}
-                className="w-full overflow-hidden rounded-2xl text-left transition-all active:scale-[0.98] hover:opacity-90"
-                style={{ backgroundColor: c.slides[0]?.bg || "#3d3630" }}>
-                <div className="p-5">
-                  <p className="font-serif text-sm font-bold leading-snug" style={{ color: c.slides[0]?.text || "#f7f5f0", whiteSpace: "pre-line" }}>
-                    {c.slides[0]?.title || c.title}
-                  </p>
-                  {c.description && <p className="mt-2 font-sans text-[0.65rem] leading-relaxed" style={{ color: c.slides[0]?.text || "#f7f5f0", opacity: 0.6 }}>{c.description}</p>}
-                </div>
-                <div className="flex items-center justify-between border-t px-4 py-2.5" style={{ borderColor: (c.slides[0]?.text || "#f7f5f0") + "15" }}>
-                  <div className="flex items-center gap-1.5">
-                    {c.slides.map((sl, sli) => (
-                      <div key={sli} className="rounded-sm" style={{ width: sli === 0 ? 16 : 8, height: 8, backgroundColor: sli === 0 ? (sl.accent || "#c9b896") : sl.bg, opacity: sli === 0 ? 1 : 0.45 }} />
-                    ))}
-                    <span className="ml-1 font-sans text-[0.5rem] font-semibold uppercase tracking-widest" style={{ color: c.slides[0]?.text || "#f7f5f0", opacity: 0.3 }}>{c.slides.length} slides</span>
+            {professionalCarousels.map((car, ci) => (
+              <div key={car.id} className="overflow-hidden rounded-2xl">
+                <button
+                  onClick={() => setHubModal({ slides: car.slides, title: car.title, caption: car.caption })}
+                  className="w-full overflow-hidden text-left transition-all active:scale-[0.98] hover:opacity-90"
+                  style={{ backgroundColor: car.slides[0]?.bg || "#3d3630" }}>
+                  <div className="p-5">
+                    <p className="font-serif text-sm font-bold leading-snug" style={{ color: car.slides[0]?.text || "#f7f5f0", whiteSpace: "pre-line" }}>
+                      {car.slides[0]?.title || car.title}
+                    </p>
+                    {car.description && <p className="mt-2 font-sans text-[0.65rem] leading-relaxed" style={{ color: car.slides[0]?.text || "#f7f5f0", opacity: 0.6 }}>{car.description}</p>}
                   </div>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={c.slides[0]?.accent || "#c9b896"} strokeWidth="2.5" opacity="0.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                </div>
-              </button>
+                  <div className="flex items-center justify-between border-t px-4 py-2.5" style={{ borderColor: (car.slides[0]?.text || "#f7f5f0") + "15" }}>
+                    <div className="flex items-center gap-1.5">
+                      {car.slides.map((sl, sli) => (
+                        <div key={sli} className="rounded-sm" style={{ width: sli === 0 ? 16 : 8, height: 8, backgroundColor: sli === 0 ? (sl.accent || "#c9b896") : sl.bg, opacity: sli === 0 ? 1 : 0.45 }} />
+                      ))}
+                      <span className="ml-1 font-sans text-[0.5rem] font-semibold uppercase tracking-widest" style={{ color: car.slides[0]?.text || "#f7f5f0", opacity: 0.3 }}>{car.slides.length} slides · 1:1 e 9:16</span>
+                    </div>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={car.slides[0]?.accent || "#c9b896"} strokeWidth="2.5" opacity="0.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  </div>
+                </button>
+                {car.caption && (
+                  <div className="border-t border-cream/5 bg-[#1a1814] px-4 pb-4 pt-3">
+                    <div className="mb-1.5 flex items-center justify-between">
+                      <span className="font-sans text-[0.45rem] font-bold uppercase tracking-[0.15em] text-cream/25">Legenda</span>
+                      <button onClick={() => copyText(`carr-${ci}`, car.caption!)}
+                        className="rounded bg-cream/8 px-2 py-0.5 font-sans text-[0.45rem] font-semibold text-cream/40 hover:bg-cream/15 transition-all">
+                        {copiedId === `carr-${ci}` ? "Copiado" : "Copiar"}
+                      </button>
+                    </div>
+                    <p className="font-sans text-[0.6rem] leading-relaxed text-cream/40 whitespace-pre-wrap">{car.caption}</p>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
         )}
@@ -522,38 +543,52 @@ export default function MarketingPage() {
         {section === "status" && (
           <div className="py-4 space-y-2">
             <p className="mb-3 font-sans text-[0.55rem] text-cream/25">Imagens verticais · 1080×1920px · WA Status e Stories</p>
-            {hubStatusPosts.map((item) => (
-              <button key={item.id}
-                onClick={() => setHubModal({ slides: item.slides, title: item.theme, caption: item.caption })}
-                className="w-full overflow-hidden rounded-2xl text-left transition-all active:scale-[0.98] hover:opacity-90"
-                style={{ backgroundColor: item.slides[0]?.bg || "#3d3630" }}>
-                <div className="flex gap-3 p-5">
-                  {/* Miniatura vertical */}
-                  <div className="shrink-0 rounded-lg overflow-hidden flex flex-col justify-center px-1.5"
-                    style={{ width: 40, height: 72, backgroundColor: item.slides[0]?.bg }}>
-                    <p className="font-serif text-center leading-tight" style={{ fontSize: 4.5, color: item.slides[0]?.text, whiteSpace: "pre-line" }}>
-                      {item.slides[0]?.title?.split("\n").slice(0, 5).join("\n")}
-                    </p>
-                    {item.slides[0]?.footer && (
-                      <p className="mt-0.5 text-center font-sans font-semibold uppercase" style={{ fontSize: 3, color: item.slides[0]?.accent, letterSpacing: "0.05em" }}>
-                        {item.slides[0].footer}
+            {hubStatusPosts.map((item, si) => (
+              <div key={item.id} className="overflow-hidden rounded-2xl">
+                <button
+                  onClick={() => setHubModal({ slides: item.slides, title: item.theme, caption: item.caption })}
+                  className="w-full overflow-hidden text-left transition-all active:scale-[0.98] hover:opacity-90"
+                  style={{ backgroundColor: item.slides[0]?.bg || "#3d3630" }}>
+                  <div className="flex gap-3 p-5">
+                    {/* Miniatura vertical */}
+                    <div className="shrink-0 rounded-lg overflow-hidden flex flex-col justify-center px-1.5"
+                      style={{ width: 40, height: 72, backgroundColor: item.slides[0]?.bg }}>
+                      <p className="font-serif text-center leading-tight" style={{ fontSize: 4.5, color: item.slides[0]?.text, whiteSpace: "pre-line" }}>
+                        {item.slides[0]?.title?.split("\n").slice(0, 5).join("\n")}
                       </p>
-                    )}
+                      {item.slides[0]?.footer && (
+                        <p className="mt-0.5 text-center font-sans font-semibold uppercase" style={{ fontSize: 3, color: item.slides[0]?.accent, letterSpacing: "0.05em" }}>
+                          {item.slides[0].footer}
+                        </p>
+                      )}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-serif text-sm font-bold leading-snug" style={{ color: item.slides[0]?.text || "#f7f5f0", whiteSpace: "pre-line" }}>
+                        {item.slides[0]?.title?.split("\n").slice(0, 2).join("\n")}
+                      </p>
+                      <p className="mt-1 font-sans text-[0.55rem]" style={{ color: item.slides[0]?.text || "#f7f5f0", opacity: 0.4 }}>{item.theme}</p>
+                    </div>
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="font-serif text-sm font-bold leading-snug" style={{ color: item.slides[0]?.text || "#f7f5f0", whiteSpace: "pre-line" }}>
-                      {item.slides[0]?.title?.split("\n").slice(0, 2).join("\n")}
-                    </p>
-                    <p className="mt-1 font-sans text-[0.55rem]" style={{ color: item.slides[0]?.text || "#f7f5f0", opacity: 0.4 }}>{item.theme}</p>
+                  <div className="flex items-center justify-between border-t px-4 py-2.5" style={{ borderColor: (item.slides[0]?.text || "#f7f5f0") + "15" }}>
+                    <span className="font-sans text-[0.5rem] font-semibold uppercase tracking-widest" style={{ color: item.slides[0]?.text || "#f7f5f0", opacity: 0.3 }}>
+                      {item.slides.length} imagem{item.slides.length > 1 ? "ns" : ""} · 9:16 · {item.weekTitle}
+                    </span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.slides[0]?.accent || "#c9b896"} strokeWidth="2.5" opacity="0.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                   </div>
-                </div>
-                <div className="flex items-center justify-between border-t px-4 py-2.5" style={{ borderColor: (item.slides[0]?.text || "#f7f5f0") + "15" }}>
-                  <span className="font-sans text-[0.5rem] font-semibold uppercase tracking-widest" style={{ color: item.slides[0]?.text || "#f7f5f0", opacity: 0.3 }}>
-                    {item.slides.length} imagem{item.slides.length > 1 ? "ns" : ""} · {item.weekTitle}
-                  </span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.slides[0]?.accent || "#c9b896"} strokeWidth="2.5" opacity="0.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                </div>
-              </button>
+                </button>
+                {item.caption && (
+                  <div className="border-t border-cream/5 bg-[#1a1814] px-4 pb-4 pt-3">
+                    <div className="mb-1.5 flex items-center justify-between">
+                      <span className="font-sans text-[0.45rem] font-bold uppercase tracking-[0.15em] text-cream/25">Legenda</span>
+                      <button onClick={() => copyText(`status-${si}`, item.caption!)}
+                        className="rounded bg-cream/8 px-2 py-0.5 font-sans text-[0.45rem] font-semibold text-cream/40 hover:bg-cream/15 transition-all">
+                        {copiedId === `status-${si}` ? "Copiado" : "Copiar"}
+                      </button>
+                    </div>
+                    <p className="font-sans text-[0.6rem] leading-relaxed text-cream/40 whitespace-pre-wrap">{item.caption}</p>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
         )}
