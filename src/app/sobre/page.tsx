@@ -35,9 +35,10 @@ export default function SobrePage() {
                 Economista. Escritora. Moçambicana.
               </p>
               <p className="mt-6 leading-relaxed text-brown-700">
-                Nascida em Moçambique, Vivianne cresceu entre números e palavras.
-                Formou-se em Economia, construiu uma carreira estável — e sentiu que
-                faltava alguma coisa. Foi essa inquietação que a levou a escrever.
+                Formou-se em Economia. Construiu uma carreira estável, uma vida reconhecível.
+                E durante anos respondeu a tudo com competência — até perceber que nunca
+                tinha feito a pergunta mais básica: o que escolho eu, de verdade?
+                Foi essa pergunta que a levou a escrever.
               </p>
             </div>
           </div>
@@ -51,19 +52,20 @@ export default function SobrePage() {
             Passei anos a construir uma vida que fazia sentido para toda a gente — menos para mim.
           </p>
           <p className="leading-relaxed text-brown-200">
-            Quando finalmente percebi, quis escrever o que teria precisado de ler aos 25. Não um
-            manual. Não uma fórmula. Apenas histórias onde pudesse reconhecer-me. E talvez tu
-            também.
+            Nas reuniões, dizia &ldquo;o que fizer sentido para a equipa&rdquo; quando tinha uma
+            opinião clara. Em casa, escolhia o que era prático. Fazia tudo bem. E foi exactamente
+            isso que me assustou — porque quando tudo funciona mas nada é teu, o silêncio
+            começa a pesar de uma forma que não se consegue nomear.
           </p>
           <p className="leading-relaxed text-brown-200">
-            Os Sete Véus nasceram dessa vontade — de dar às outras mais cedo o que aprendi tarde.
-            Comecei com um ensaio filosófico, o livro &ldquo;Os 7 Véus do Despertar&rdquo;.
-            Depois vieram os Espelhos — sete ficções onde te reconheces. E os Nós — sete
-            histórias sobre o que se passa entre duas pessoas quando um véu cai.
+            Quis escrever o que teria precisado de ler aos 25. Não um manual. Não uma fórmula.
+            Apenas histórias onde pudesse reconhecer-me — e talvez tu também.
           </p>
           <p className="leading-relaxed text-brown-200">
-            São duas colecções de 7 livros cada, uma comunidade e um ecossistema inteiro
-            construído para quem quer viver com mais verdade. Tudo ao teu ritmo.
+            Os Sete Véus nasceram disso. Comecei com um ensaio filosófico —
+            &ldquo;Os 7 Véus do Despertar&rdquo;. Depois vieram os Espelhos,
+            sete ficções onde te reconheces. E os Nós — sete histórias sobre o que se passa
+            entre duas pessoas quando um véu cai.
           </p>
         </div>
       </section>
@@ -91,8 +93,10 @@ export default function SobrePage() {
           </div>
           <div className="mt-8 rounded-r-xl border-l-[3px] border-sage bg-cream-dark px-6 py-5">
             <p className="font-serif italic leading-relaxed text-brown-700">
-              &ldquo;Não precisas de mudar tudo. Precisas apenas de começar a ouvir-te.&rdquo;
+              &ldquo;Não vieste aqui para te melhorar. Já és suficiente — só ainda
+              não aprendeste a reconhecer-te nas histórias que contas sobre ti mesma.&rdquo;
             </p>
+            <p className="mt-3 text-sm text-brown-400">— Vivianne</p>
           </div>
         </div>
       </section>

@@ -28,14 +28,13 @@ export default function Home() {
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
             <h1 className="mt-8 font-serif text-4xl leading-tight tracking-tight text-cream sm:text-5xl md:text-[3.5rem]">
-              Para quem sente que merece mais da própria vida.
+              A vida funciona. Mas não é bem a tua.
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={0.4}>
             <p className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-brown-200">
-              Sete histórias que te devolvem a ti mesma.
-              <br />
-              Sem pressa. Sem fórmulas. Apenas verdade.
+              Sete histórias de ficção onde te reconheces — não porque as personagens
+              são perfeitas, mas porque hesitam, duvidam e se perdem como tu.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.6}>
@@ -457,44 +456,41 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Social proof */}
+      {/* Social proof — mirrors, not testimonials */}
       <section className="bg-cream px-6 py-24">
         <div className="mx-auto max-w-4xl">
           <ScrollReveal>
             <h2 className="text-center font-serif text-3xl text-brown-900">
-              Palavras de quem já começou
+              Reconheces-te?
             </h2>
+            <p className="mx-auto mt-3 max-w-lg text-center font-serif text-sm italic text-brown-500">
+              Não são críticas. São fragmentos de leitoras que encontraram palavras
+              para o que sentiam mas não conseguiam nomear.
+            </p>
           </ScrollReveal>
           <div className="mt-12 grid gap-8 sm:grid-cols-3">
             {[
               {
-                texto: "Este livro mudou completamente a forma como vejo minha vida. Não é autoajuda, é filosofia viva que te desafia a olhar para dentro. As práticas guiadas me conectaram com partes de mim que há anos ignorava.",
-                nome: "Maria S.",
-                local: "Maputo, Moçambique",
-                rating: "~ ~ ~ ~ ~",
+                texto: "Nunca pensei que uma personagem de ficção me ia fazer parar a meio da leitura. Não porque fosse difícil — porque era demasiado verdadeiro. Tive de pousar o livro e ficar em silêncio. Esse silêncio foi o começo de algo.",
+                origem: "leitora, Maputo",
               },
               {
-                texto: "A experiência digital é incrível. As pausas contemplativas, as práticas de respiração... Sinto que não estou só a ler, estou a viver o livro. O diário de reflexão fez-me escrever coisas que nunca tinha admitido.",
-                nome: "Ana P.",
-                local: "Lisboa, Portugal",
-                rating: "~ ~ ~ ~ ~",
+                texto: "A primeira pergunta do diário era: 'Quando foi a última vez que escolheste algo só porque quiseste?' Fiquei a olhar para ela durante dois dias sem conseguir responder. Não por falta de palavras — porque nunca ninguém me tinha perguntado isto.",
+                origem: "leitora, Lisboa",
               },
               {
-                texto: "Comprei o Espelho da Ilusão e me vi completamente na protagonista. É ficção, mas parecia minha vida. Chorei, refleti e mudei. Estou ansiosa pelo próximo.",
-                nome: "Beatriz M.",
-                local: "São Paulo, Brasil",
-                rating: "~ ~ ~ ~ ~",
+                texto: "Eu pensei que era ficção. Abri no capítulo um e estava lá — a reunião onde sorri e disse 'está bem para mim' quando não estava. É ficção, mas parecia a minha semana.",
+                origem: "leitora, São Paulo",
               },
             ].map((dep, i) => (
-              <ScrollReveal key={dep.nome} delay={0.15 * i} variant="fadeUp">
+              <ScrollReveal key={i} delay={0.15 * i} variant="fadeUp">
                 <div className="flex h-full flex-col rounded-xl border border-brown-100 bg-white p-6 shadow-sm">
-                  <div className="text-xl mb-3">{dep.rating}</div>
-                  <p className="flex-1 font-serif text-[15px] italic leading-relaxed text-brown-700">
+                  <span className="font-serif text-2xl text-brown-200">~</span>
+                  <p className="mt-3 flex-1 font-serif text-[15px] italic leading-relaxed text-brown-700">
                     &ldquo;{dep.texto}&rdquo;
                   </p>
                   <div className="mt-4 border-t border-brown-100 pt-3">
-                    <p className="font-sans text-sm font-medium text-brown-900">{dep.nome}</p>
-                    <p className="font-sans text-xs text-brown-400">{dep.local}</p>
+                    <p className="font-sans text-xs text-brown-400">{dep.origem}</p>
                   </div>
                 </div>
               </ScrollReveal>
@@ -507,10 +503,12 @@ export default function Home() {
       <section className="bg-cream-dark px-6 py-24">
         <div className="mx-auto max-w-2xl text-center">
           <ScrollReveal>
-            <h2 className="font-serif text-3xl text-brown-900">Queres levar mais contigo?</h2>
+            <h2 className="font-serif text-3xl text-brown-900">De vez em quando escrevo o que não cabe nos livros</h2>
             <p className="mx-auto mt-4 max-w-md leading-relaxed text-brown-600">
-              Deixa o teu email e enviamos recursos gratuitos. Só coisas úteis. Sem spam. Prometido.
+              Não há fórmulas. Há observações que demorei tempo a fazer — sobre silêncio,
+              sobre escolhas, sobre o que fica por dizer. Se quiseres receber, deixa o teu email.
             </p>
+            <p className="mt-2 text-sm text-brown-400">— Vivianne</p>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
             <div className="mt-8">
@@ -525,8 +523,9 @@ export default function Home() {
         <div className="mx-auto max-w-3xl text-center">
           <ScrollReveal>
             <p className="font-serif text-2xl italic leading-relaxed text-cream">
-              &ldquo;Não precisas de saber para onde vais. Precisas apenas de dar o primeiro passo.&rdquo;
+              &ldquo;Perguntar, mesmo tarde, é o primeiro gesto de se escolher.&rdquo;
             </p>
+            <p className="mt-4 text-sm text-brown-400">— O Espelho da Ilusão</p>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">

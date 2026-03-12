@@ -69,7 +69,7 @@ const ilusaoQuotes: MarketingQuote[] = [
     formats: ["instagram", "reel"],
   },
   {
-    text: "Há mais para ti do que aquilo que tens vivido.",
+    text: "Há vidas que funcionam. Cumprem os prazos, pagam as contas, recebem os parabéns nas alturas certas. E no entanto, quando a casa fica em silêncio, há algo que não é queixa nem ingratidão. É uma pergunta que nunca foi feita.",
     source: "O Espelho da Ilusão, Epílogo",
     formats: ["instagram", "story", "reel", "email"],
   },
@@ -122,8 +122,8 @@ const ilusaoSocial: SocialPost[] = [
   },
   {
     content:
-      "Não é um livro.\nÉ uma experiência.\n\n7 capítulos de ficção\n+ respiração guiada\n+ diário de reflexão\n+ o teu Espelho pessoal\n\nLês. Respiras. Escreves. E no final, vês-te.",
-    hashtags: [...CORE_HASHTAGS, "#ExperiênciaImersiva"],
+      "A primeira pergunta do diário é: quando foi a última vez que escolheste algo só porque quiseste?\n\nNão o que era prático. Não o que os outros esperavam. O que tu queriasde verdade.\n\nAlgumas leitoras ficam dias sem conseguir responder. Não por falta de palavras — porque nunca ninguém lhes tinha perguntado isto.\n\nEssa pausa é o começo. — Vivianne",
+    hashtags: [...CORE_HASHTAGS, "#EspelhoDaIlusão"],
     format: "carousel",
     veilSlug: "veu-da-ilusao",
     scheduledWeek: 4,
@@ -161,39 +161,39 @@ const ilusaoEmail: EmailSequence[] = [
 
 const medoQuotes: MarketingQuote[] = [
   {
-    text: "Sabes o que queres. Mas o medo decide antes de ti.",
+    text: "Sabes o que queres. O medo sabe-o também — e decide antes de ti.",
     source: "O Espelho do Medo",
     formats: ["instagram", "story", "reel"],
   },
   {
-    text: "O primeiro passo não precisa de ser grande. Precisa apenas de ser teu.",
+    text: "Não é covardia. É um mecanismo antigo, treinado ao longo de anos de cautela disfarçada de bom senso.",
     source: "O Espelho do Medo",
     formats: ["instagram", "story", "reel", "email"],
   },
   {
-    text: "Não é covardia. É um mecanismo antigo, treinado ao longo de anos de cautela disfarçada de bom senso.",
+    text: "Cada vez que estás prestes a dar um passo, algo te puxa para trás. Esse algo tem um nome. Tem uma história. E essa história começa muito antes de ti.",
     source: "O Espelho do Medo, Descrição",
     formats: ["instagram", "reel"],
   },
   {
-    text: "E se pudesses ver o que há do outro lado?",
+    text: "O medo não te impede de saber o que queres. Impede-te de acreditar que tens permissão para o querer.",
     source: "O Espelho do Medo",
-    formats: ["story", "reel"],
+    formats: ["story", "reel", "email"],
   },
 ];
 
 const medoSocial: SocialPost[] = [
   {
     content:
-      "Estás prestes a dar um passo.\nMas algo te puxa para trás.\n\nNão é covardia.\nÉ um mecanismo antigo — treinado ao longo de anos de cautela disfarçada de bom senso.\n\nO Espelho do Medo chega em Março.",
-    hashtags: [...CORE_HASHTAGS, "#EspelhoDoMedo", "#Coragem"],
+      "O medo não é o oposto da coragem. É o oposto da permissão.\n\nNão é que não saibas o que queres. É que algures ao longo do caminho aprendeste que querer é perigoso. Que avançar é arriscar. Que ficar no sítio é mais seguro do que a dor de chegar e não ser suficiente.\n\nEssa aprendizagem foi útil um dia. Já não é.\n\nPergunta para hoje: o que é que deixarias de evitar se soubesses que ias ser suficiente de qualquer maneira? — Vivianne",
+    hashtags: [...CORE_HASHTAGS, "#EspelhoDoMedo"],
     format: "carousel",
     veilSlug: "veu-do-medo",
     scheduledWeek: 1,
   },
   {
     content:
-      "\"O primeiro passo não precisa de ser grande.\nPrecisa apenas de ser teu.\"\n\n— O Espelho do Medo, em breve",
+      "Há uma diferença entre não querer e não se permitir querer.\n\nA segunda parece-se muito com a primeira — mas quando a espreitas de perto, não há indiferença. Há medo. Medo de querer e não conseguir. Medo de conseguir e não merecer. Medo de mudar e deixar de pertencer.\n\nO Espelho do Medo chega em Março. Para quem já sabe o que quer — mas ainda não se deu permissão. — Vivianne",
     hashtags: [...CORE_HASHTAGS, "#EspelhoDoMedo"],
     format: "single",
     veilSlug: "veu-do-medo",
@@ -203,21 +203,27 @@ const medoSocial: SocialPost[] = [
 
 const medoEmail: EmailSequence[] = [
   {
+    day: -21,
+    subject: "O que está por trás da procrastinação (não é o que pensas)",
+    preview: "Não é preguiça. É protecção. E tem raízes muito mais antigas.",
+    type: "nurture",
+  },
+  {
     day: -14,
-    subject: "O segundo espelho está quase a chegar",
-    preview: "O Espelho do Medo — para quem sabe o que quer mas não consegue dar o passo.",
-    type: "launch",
+    subject: "Quando a cautela se disfarça de bom senso",
+    preview: "Há uma diferença entre não querer e não se permitir querer.",
+    type: "nurture",
   },
   {
     day: -7,
-    subject: "20% de desconto se entrares na waitlist esta semana",
-    preview: "O Espelho do Medo chega dia 1 de Março.",
+    subject: "O Espelho do Medo chega em Março — para quem já está na lista",
+    preview: "Sabes o que queres. O que ainda não tens é permissão.",
     type: "launch",
   },
   {
     day: 0,
     subject: "O Espelho do Medo está disponível",
-    preview: "Sabes o que queres. Mas o medo decide antes de ti.",
+    preview: "Não é covardia. É um mecanismo antigo. E tem nome.",
     type: "launch",
   },
 ];
@@ -230,6 +236,8 @@ function generateFutureVeilMarketing(
   subtitle: string,
   tagline: string,
   launchMonth: string,
+  // Parágrafo de contexto do véu — o que a leitora já sente, nomeado com precisão
+  painObservation: string,
 ): VeilMarketing {
   return {
     slug,
@@ -246,48 +254,56 @@ function generateFutureVeilMarketing(
       },
     ],
     emailSequence: [
+      // Princípio 6: educa antes de vender
+      {
+        day: -21,
+        subject: `Uma observação sobre ${subtitle.toLowerCase().replace("quando ", "")}`,
+        preview: painObservation.split(".")[0],
+        type: "nurture",
+      },
       {
         day: -14,
-        subject: `${title} está quase a chegar`,
+        subject: `O véu que não sabias que usavas`,
         preview: subtitle,
-        type: "launch",
+        type: "nurture",
       },
       {
         day: -7,
-        subject: `Waitlist aberta — 20% no ${title}`,
-        preview: `Lançamento em ${launchMonth}. Sê a primeira.`,
+        subject: `${title} chega em ${launchMonth} — já estás na lista`,
+        preview: tagline,
         type: "launch",
       },
       {
         day: 0,
         subject: `${title} está disponível`,
-        preview: tagline,
+        preview: painObservation.split(".")[0] + ". Há uma história sobre isso.",
         type: "launch",
       },
       {
         day: 3,
-        subject: `Já começaste ${title}?`,
-        preview: "O teu ritmo. Sem pressa.",
+        subject: `Já abriste ${title}?`,
+        preview: "Sem pressa. O teu ritmo é o ritmo certo.",
         type: "post-purchase",
       },
     ],
     socialPosts: [
+      // Princípio 1 + 3: observação inteligente com estrutura {hook, corpo, cta}
       {
-        content: `"${tagline}"\n\n${title} chega em ${launchMonth}.`,
+        content: `${painObservation}\n\n${title} chega em ${launchMonth}. — Vivianne`,
         hashtags: [...CORE_HASHTAGS],
         format: "single",
         veilSlug: slug,
         scheduledWeek: -2,
       },
       {
-        content: `${subtitle}\n\nEsta é a próxima experiência dos Sete Véus.\n7 capítulos. Respiração guiada. Diário de reflexão. O Teu Espelho.`,
+        content: `${tagline}\n\nÉ ficção. Mas é ficção onde te reconheces — não porque a personagem é perfeita, mas porque hesita, erra e se perde como tu.\n\n${title} — ${launchMonth}. — Vivianne`,
         hashtags: [...CORE_HASHTAGS],
         format: "carousel",
         veilSlug: slug,
         scheduledWeek: -1,
       },
       {
-        content: `${title} está disponível.\n\nSe o quiz te indicou este espelho — é porque algo em ti já sabe.`,
+        content: `${title} está disponível.\n\n${painObservation}\n\nSe o quiz te indicou este véu, já sabes o que isto nomeia. — Vivianne`,
         hashtags: [...CORE_HASHTAGS],
         format: "single",
         veilSlug: slug,
@@ -295,13 +311,13 @@ function generateFutureVeilMarketing(
       },
     ],
     launchPlan: [
-      `Semana -4: Teaser no Instagram — frase do espelho sem revelar título`,
+      `Semana -4: Teaser — observação sobre o véu sem revelar o título`,
       `Semana -3: Abrir waitlist — "Algo novo está a chegar"`,
       `Semana -2: Revelar título e imagem — post + story`,
-      `Semana -1: Email à lista — 20% early bird, countdown`,
+      `Semana -1: Email à lista com contexto educativo + aviso de lançamento`,
       `Dia 0: Lançamento — post, story, email, actualizar /experiencias`,
-      `Semana +1: Conteúdo de bastidores — processo de escrita`,
-      `Semana +2: Primeiros testemunhos / screenshots do Espelho`,
+      `Semana +1: Post de bastidores — "o que me fez escrever este espelho"`,
+      `Semana +2: Espelhos de leitoras — fragmentos anónimos de reconhecimento`,
       `Semana +3: "Se fizeste o quiz e o teu espelho era este…" — retargeting`,
     ],
   };
@@ -339,8 +355,9 @@ export const allMarketing: VeilMarketing[] = [
     "veu-da-culpa",
     "O Espelho da Culpa",
     "Quando te castigas por querer mais",
-    "Querer mais não é egoísmo. É vida.",
+    "Querer para ti não é tirar dos outros. Mas ninguém te ensinou isso.",
     "Abril 2026",
+    "Cada vez que fazes algo só para ti, uma voz interior sussurra que devias estar a fazer outra coisa. Que não mereces. Que é egoísmo. Essa voz não é a tua consciência — é uma herança que não pediste.",
   ),
   generateFutureVeilMarketing(
     "veu-da-identidade",
@@ -348,27 +365,31 @@ export const allMarketing: VeilMarketing[] = [
     "Quando já não sabes quem és sem os outros",
     "Quem és quando ninguém te está a ver?",
     "Maio 2026",
+    "Mãe, filha, colega, parceira — és tão boa a desempenhar os papéis que já não sabes o que sobra quando os tiras. Não é crise de identidade. É que nunca houve espaço para a pergunta.",
   ),
   generateFutureVeilMarketing(
     "veu-do-controlo",
     "O Espelho do Controlo",
     "Quando segurar é a única forma que conheces",
-    "E se aprendesses a largar — não tudo, mas o suficiente para respirar?",
+    "Largar não é desistir. É confiar que não tudo desmorona quando soltares.",
     "Junho 2026",
+    "A tua vida funciona porque tu seguras tudo no lugar. As decisões, os planos, as pessoas. Mas o peso acumula-se. E a ilusão de que se largares tudo desmorona é exactamente isso — uma ilusão construída para te manter em segurança num custo muito alto.",
   ),
   generateFutureVeilMarketing(
     "veu-do-desejo",
     "O Espelho do Desejo",
     "Quando desejas tudo menos o que precisas",
-    "O que queres, de verdade?",
+    "O vazio não se preenche com mais. Preenche-se com o certo.",
     "Julho 2026",
+    "Compras, preenches, buscas, acumulas — e mesmo assim, o vazio continua ali. Talvez porque o desejo que sentes não é pelo que pensas. Talvez estejas a procurar fora o que só podes encontrar dentro.",
   ),
   generateFutureVeilMarketing(
     "veu-da-separacao",
     "O Espelho da Separação",
     "Quando te afastas de ti mesma para pertencer",
-    "O caminho de volta começa por ti.",
+    "A separação que sentes do mundo começa com a separação de ti mesma.",
     "Agosto 2026",
+    "Dás tanto para pertencer que te perdeste no processo. Ajustas a voz, ajustas as opiniões, ajustas o que mostrares de ti — e um dia olhas e já não reconheces a pessoa que adaptou tudo para caber.",
   ),
 ];
 

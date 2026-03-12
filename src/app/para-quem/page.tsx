@@ -3,13 +3,13 @@ import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "Para Quem — Descobre se Sete Ecos é para ti",
+  title: "Para Quem — Os Sete Véus",
   description:
-    "A plataforma Sete Ecos foi criada para mulheres que sentem que merecem mais da própria vida. Descobre se este ecossistema fala contigo.",
+    "Os Sete Véus foi criado para quem construiu uma vida que faz sentido para toda a gente — menos para si. Descobre se te reconheces.",
   openGraph: {
-    title: "Para Quem — Descobre se Sete Ecos é para ti",
+    title: "Para Quem — Os Sete Véus",
     description:
-      "Ficção psicológica, diário de reflexão e práticas guiadas para quem quer viver, não apenas funcionar.",
+      "Ficção literária, diário de reflexão e práticas guiadas para quem quer viver, não apenas funcionar.",
   },
 };
 
@@ -17,11 +17,11 @@ const perfis = [
   {
     titulo: "A que construiu tudo certo — mas sente que falta algo",
     descricao:
-      "Tens a carreira, a rotina, talvez a família. Tudo funciona. Mas à noite, quando tudo pára, sentes um vazio que não sabes nomear. Não é ingratidão — é intuição.",
+      "Tens a carreira, a rotina, talvez a família. Os prazos cumprem-se. Os parabéns chegam nas alturas certas. Mas à noite, quando tudo para, surge algo que não é queixa nem ingratidão — é uma intuição suave que diz: há uma versão minha que nunca foi convidada a existir.",
     sinais: [
-      "Sentes que vives no automático",
-      "Fazes tudo bem, mas nada te preenche",
-      "Tens medo de admitir que queres mais",
+      "Respondes às perguntas sem saber o que realmente pensas",
+      "Cumpriste todos os planos — e mesmo assim sentes que falta algo por perguntar",
+      "Tens medo de parar porque não sabes o que vais encontrar no silêncio",
     ],
     veu: "O Espelho da Ilusão",
     cor: "#c9b896",
@@ -29,13 +29,13 @@ const perfis = [
     link: "/recursos/teste",
   },
   {
-    titulo: "A que quer mudar mas não sabe por onde começar",
+    titulo: "A que sabe o que quer — mas algo a puxa para trás",
     descricao:
-      "Já leste livros de desenvolvimento pessoal, já tentaste fórmulas. Nada pegou de verdade. Talvez porque o que precisas não é de instruções — é de reconhecimento.",
+      "Não é covardia. É um mecanismo antigo, treinado ao longo de anos de cautela disfarçada de bom senso. Já leste os livros, já tomaste as decisões certas no papel. Mas na hora de agir, algo hesita. Esse algo não é fraqueza — é o véu que ainda não viste.",
     sinais: [
-      "Sentes sobrecarga de informação",
-      "Queres algo mais profundo do que \"dicas\"",
-      "Procuras algo que respeite o teu ritmo",
+      "Já sabes o que mudarias — e continuas sem mudar",
+      "Sentes que te proteges de algo que ainda não consegues nomear",
+      "Queres um passo real, não mais uma fórmula ou lista de tarefas",
     ],
     veu: "O Espelho do Medo",
     cor: "#8b9b8e",
@@ -43,13 +43,13 @@ const perfis = [
     link: "/recursos",
   },
   {
-    titulo: "A que precisa de parar e ouvir-se",
+    titulo: "A que cuida de tudo — menos de si mesma",
     descricao:
-      "A vida não te deu espaço para ti. Estás sempre a cuidar dos outros, a responder ao que pedem. Precisas de um lugar onde as perguntas sejam tuas — e as respostas também.",
+      "A tua vida funciona porque tu seguras tudo no lugar. Mas há perguntas que ficam por fazer porque não há tempo — ou porque tens medo das respostas. Precisas de um lugar onde as perguntas sejam tuas e as respostas também. Sem pressa. Sem ter de justificar.",
     sinais: [
-      "Sentes que te perdeste de ti mesma",
-      "Não te lembras da última vez que escreveste sobre ti",
-      "Queres um espaço seguro de reflexão",
+      "Não te lembras da última vez que fizeste algo só porque quiseste",
+      "A tua primeira reacção quando alguém pergunta o que queres é perguntar o que os outros querem",
+      "Sentes culpa quando te escolhes",
     ],
     veu: "A experiência completa",
     cor: "#c08aaa",
@@ -59,16 +59,16 @@ const perfis = [
   {
     titulo: "A que já está no caminho e quer ir mais fundo",
     descricao:
-      "Já meditas, já reflectes, já te escolhes. Mas queres ferramentas que integrem leitura e prática. Algo que não seja superficial nem dogmático.",
+      "Já meditas, já reflectes, já te escolhes. Mas queres algo que não seja superficial nem dogmático — algo que integre leitura e prática sem te dizer quem tens de ser no fim. Os Espelhos não ensinam nada. Reconhecem o que já sabes mas ainda não admitiste.",
     sinais: [
+      "Procuras ficção com substância, não com lições",
       "Valorizas profundidade sobre velocidade",
-      "Procuras ficção com substância",
-      "Queres práticas que complementem a leitura",
+      "Queres práticas que emergem da história, não instruções separadas",
     ],
     veu: "A colecção completa",
     cor: "#baaacc",
     cta: "Conhece Os Sete Espelhos",
-    link: "/os-sete-veus",
+    link: "/experiencias",
   },
 ];
 
@@ -90,7 +90,7 @@ export default function ParaQuemPage() {
               Descobre
             </p>
             <h1 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-cream sm:text-5xl">
-              Para quem é Sete Ecos?
+              Para quem são Os Sete Véus?
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
@@ -182,9 +182,10 @@ export default function ParaQuemPage() {
           <ScrollReveal delay={0.3} variant="fadeIn">
             <div className="mx-auto mt-10 max-w-lg rounded-r-xl border-l-[3px] border-sage bg-brown-800/50 px-6 py-5">
               <p className="font-serif italic leading-relaxed text-brown-200">
-                &ldquo;Isto não é para quem quer respostas. É para quem está pronta
-                para fazer as suas próprias perguntas.&rdquo;
+                &ldquo;Os Espelhos não vieram para te mudar. Vieram para que te
+                reconheças — e escolhas o que fazer com isso.&rdquo;
               </p>
+              <p className="mt-3 text-sm text-brown-500">— Vivianne dos Santos</p>
             </div>
           </ScrollReveal>
         </div>
