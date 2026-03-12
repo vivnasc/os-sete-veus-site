@@ -734,12 +734,22 @@ export default function MarketingPage() {
             <div className="rounded-2xl border border-[#c9b896]/15 bg-[#c9b896]/5 p-4 space-y-3">
               <p className="font-sans text-[0.5rem] font-bold uppercase tracking-[0.2em] text-[#c9b896]/50">Áudio da Vivianne</p>
               <p className="font-sans text-[0.65rem] leading-relaxed text-cream/70 italic">&ldquo;{capcutModal.script}&rdquo;</p>
-              <div className="flex items-center justify-between border-t border-cream/5 pt-3">
+              {/* Player de áudio nativo */}
+              <audio
+                key={audioUrl}
+                controls
+                preload="metadata"
+                className="w-full rounded-xl"
+                style={{ height: 44, colorScheme: "dark" }}
+              >
+                <source src={audioUrl} type="audio/mpeg" />
+                <source src={audioUrl} type="audio/mp4" />
+              </audio>
+              <div className="flex items-center justify-between border-t border-cream/5 pt-2">
                 <p className="font-mono text-[0.5rem] text-cream/25">{capcutModal.audioFile}</p>
                 <a href={audioUrl} download={capcutModal.audioFile}
-                  className="rounded-lg bg-[#c9b896]/15 px-3 py-1.5 font-sans text-[0.55rem] font-semibold text-[#c9b896]/80 hover:bg-[#c9b896]/25 transition-all"
-                  onClick={(e) => { fetch(audioUrl, { method: "HEAD" }).then((res) => { if (!res.ok) { e.preventDefault(); alert("Áudio ainda não disponível.\nColoca o ficheiro em /public/audios/marketing/"); } }); }}>
-                  Baixar Áudio
+                  className="rounded-lg bg-[#c9b896]/15 px-3 py-1.5 font-sans text-[0.55rem] font-semibold text-[#c9b896]/80 hover:bg-[#c9b896]/25 transition-all">
+                  Baixar
                 </a>
               </div>
             </div>

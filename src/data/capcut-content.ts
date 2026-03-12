@@ -273,5 +273,10 @@ export const CAPCUT_CATEGORIES: {
   { id: "ctas", label: "CTAs", count: ctas.length },
 ];
 
-// Pasta onde ficam os ficheiros de áudio gerados pelo /admin/voz
-export const AUDIO_BASE_PATH = "/audios/marketing";
+// URL base dos ficheiros de áudio.
+// Prioridade: NEXT_PUBLIC_AUDIO_BASE_URL (Supabase Storage, CDN, etc.)
+// Fallback: pasta local /public/audios/marketing/
+export const AUDIO_BASE_PATH =
+  (typeof process !== "undefined" && process.env.NEXT_PUBLIC_AUDIO_BASE_URL)
+    ? process.env.NEXT_PUBLIC_AUDIO_BASE_URL
+    : "/audios/marketing";
