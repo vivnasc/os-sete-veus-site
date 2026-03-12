@@ -14,6 +14,48 @@ const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
 const DIMS = { w: 1080, h: 1080 };
 const STORY_DIMS = { w: 1080, h: 1920 };
 
+// ─── Extrair visuais do thematicHub para Feed e Status ─────────────────────────
+
+type HubFeedItem = { id: string; theme: string; weekTitle: string; slide: CarouselSlide; caption?: string };
+type HubStatusItem = { id: string; theme: string; weekTitle: string; slides: CarouselSlide[]; caption?: string };
+
+// Feed 1:1 — slots com visual definido (Post Feed)
+const hubFeedPosts: HubFeedItem[] = thematicHub.flatMap((week) =>
+  week.days.flatMap((day) =>
+    day.slots
+      .filter((s) => s.visual != null)
+      .map((s, i) => ({
+        id: `feed-${week.weekNumber}-${day.day}-${i}`,
+        theme: day.theme,
+        weekTitle: week.title,
+        slide: {
+          bg: s.visual!.bg,
+          text: s.visual!.text,
+          accent: s.visual!.accent,
+          title: s.visual!.title || "",
+          body: s.visual!.body || "",
+          footer: s.visual!.footer || "",
+        },
+        caption: s.caption,
+      }))
+  )
+);
+
+// Status/Stories 9:16 — slots WhatsApp Status
+const hubStatusPosts: HubStatusItem[] = thematicHub.flatMap((week) =>
+  week.days.flatMap((day) =>
+    day.slots
+      .filter((s) => s.type === "WhatsApp Status" && s.carousel && s.carousel.length > 0)
+      .map((s, i) => ({
+        id: `status-${week.weekNumber}-${day.day}-${i}`,
+        theme: day.theme,
+        weekTitle: week.title,
+        slides: s.carousel!,
+        caption: s.caption,
+      }))
+  )
+);
+
 
 function stripHashtags(text: string): string {
   return text.replace(/\n*#[^\s#]+(\s+#[^\s#]+)*/g, "").trim();
@@ -146,6 +188,7 @@ export default function MarketingPage() {
 
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [pageSection, setPageSection] = useState<"hub" | "posts" | "guia" | "capcut">("hub");
+  const [postsTab, setPostsTab] = useState<"carrosseis" | "feed" | "status">("carrosseis");
   const [selectedWeekday, setSelectedWeekday] = useState(() => new Date().getDay());
   const [capcutCategory, setCapcutCategory] = useState<CapCutCategory | "todos">("todos");
   const [capcutModal, setCapcutModal] = useState<typeof capcutContent[0] | null>(null);
@@ -368,34 +411,136 @@ export default function MarketingPage() {
         {/* ── POSTS — carrosseis prontos ── */}
         {/* ══════════════════════════════════════════════════════════════════════ */}
         {pageSection === "posts" && (
-          <div className="py-4 space-y-2">
-            <p className="font-sans text-[0.6rem] font-semibold uppercase tracking-[0.15em] text-cream/30 mb-3">
-              {professionalCarousels.length} carrosseis prontos
-            </p>
-            {professionalCarousels.map((c) => (
-              <button key={c.id}
-                onClick={() => { setHubModal({ slides: c.slides, title: c.title, caption: c.caption }); }}
-                className="w-full rounded-2xl border border-cream/10 bg-[#222019] p-4 text-left transition-all hover:border-[#c9b896]/20"
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex-1 min-w-0">
-                    <p className="font-serif text-sm font-bold text-cream/80 truncate">{c.title}</p>
-                    <p className="mt-1 font-sans text-[0.6rem] text-cream/40 line-clamp-2">{c.description}</p>
-                    <div className="mt-2 flex items-center gap-2">
-                      <span className="rounded-full bg-cream/10 px-2 py-0.5 font-sans text-[0.5rem] font-medium text-cream/40">{c.slides.length} slides</span>
+          <div className="py-4 space-y-3">
+
+            {/* Sub-tabs */}
+            <div className="flex gap-1">
+              {([
+                { id: "carrosseis" as const, label: "Carrosseis", count: professionalCarousels.length },
+                { id: "feed" as const, label: "Feed 1:1", count: hubFeedPosts.length },
+                { id: "status" as const, label: "Status 9:16", count: hubStatusPosts.length },
+              ]).map((t) => (
+                <button key={t.id} onClick={() => setPostsTab(t.id)}
+                  className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 font-sans text-[0.6rem] font-semibold transition-all ${
+                    postsTab === t.id
+                      ? "bg-[#c9b896]/20 text-[#c9b896]"
+                      : "text-cream/30 hover:text-cream/50 hover:bg-cream/5"
+                  }`}>
+                  {t.label}
+                  <span className={`rounded-full px-1.5 py-0.5 font-mono text-[0.45rem] ${
+                    postsTab === t.id ? "bg-[#c9b896]/30 text-[#c9b896]/80" : "bg-cream/10 text-cream/30"
+                  }`}>{t.count}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* ── Carrosseis ── */}
+            {postsTab === "carrosseis" && (
+              <div className="space-y-2">
+                {professionalCarousels.map((c) => (
+                  <button key={c.id}
+                    onClick={() => { setHubModal({ slides: c.slides, title: c.title, caption: c.caption }); }}
+                    className="w-full rounded-2xl border border-cream/10 bg-[#222019] p-4 text-left transition-all hover:border-[#c9b896]/20"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex-1 min-w-0">
+                        <p className="font-serif text-sm font-bold text-cream/80 truncate">{c.title}</p>
+                        <p className="mt-1 font-sans text-[0.6rem] text-cream/40 line-clamp-2">{c.description}</p>
+                        <div className="mt-2 flex items-center gap-2">
+                          <span className="rounded-full bg-cream/10 px-2 py-0.5 font-sans text-[0.5rem] font-medium text-cream/40">{c.slides.length} slides</span>
+                        </div>
+                      </div>
+                      {/* Miniatura */}
+                      <div className="shrink-0 rounded-lg overflow-hidden" style={{
+                        width: 48, height: 48, backgroundColor: c.slides[0]?.bg || "#3d3630",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                      }}>
+                        <span className="font-serif text-[0.4rem] font-bold px-1 text-center leading-tight" style={{ color: c.slides[0]?.text || "#f7f5f0" }}>
+                          {c.slides[0]?.title?.split("\n")[0]?.slice(0, 20) || "~"}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  <div className="shrink-0 rounded-lg overflow-hidden" style={{
-                    width: 48, height: 48, backgroundColor: c.slides[0]?.bg || "#3d3630",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                  }}>
-                    <span className="font-serif text-[0.4rem] font-bold px-1 text-center leading-tight" style={{ color: c.slides[0]?.text || "#f7f5f0" }}>
-                      {c.slides[0]?.title?.split("\n")[0]?.slice(0, 20) || "~"}
-                    </span>
-                  </div>
-                </div>
-              </button>
-            ))}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* ── Feed 1:1 ── */}
+            {postsTab === "feed" && (
+              <div className="space-y-2">
+                <p className="font-sans text-[0.55rem] text-cream/25">
+                  Posts quadrados para o feed do Instagram. Toca para ver e baixar em 1080×1080px.
+                </p>
+                {hubFeedPosts.map((item) => (
+                  <button key={item.id}
+                    onClick={() => { setHubModal({ slides: [item.slide], title: item.theme, caption: item.caption }); }}
+                    className="w-full rounded-2xl border border-cream/10 bg-[#222019] p-3 text-left transition-all hover:border-[#c9b896]/20 active:scale-[0.98]"
+                  >
+                    <div className="flex items-center gap-3">
+                      {/* Miniatura quadrada */}
+                      <div className="shrink-0 rounded-xl overflow-hidden flex flex-col justify-center px-2"
+                        style={{ width: 56, height: 56, backgroundColor: item.slide.bg }}>
+                        <p className="font-serif leading-tight text-center"
+                          style={{ fontSize: 5.5, color: item.slide.text, whiteSpace: "pre-line" }}>
+                          {item.slide.title?.split("\n").slice(0, 3).join("\n")}
+                        </p>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-sans text-xs font-semibold text-cream/70 truncate">{item.theme}</p>
+                        <p className="mt-0.5 font-sans text-[0.55rem] text-cream/30 truncate">{item.weekTitle}</p>
+                        {item.slide.footer && (
+                          <p className="mt-1 font-sans text-[0.5rem] font-medium uppercase tracking-wider truncate" style={{ color: item.slide.accent }}>
+                            {item.slide.footer}
+                          </p>
+                        )}
+                      </div>
+                      <div className="shrink-0">
+                        <span className="rounded-lg border border-[#E1306C]/20 px-2 py-1 font-sans text-[0.5rem] font-semibold text-[#E1306C]/60">
+                          1:1
+                        </span>
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* ── Status / Stories 9:16 ── */}
+            {postsTab === "status" && (
+              <div className="space-y-2">
+                <p className="font-sans text-[0.55rem] text-cream/25">
+                  Imagens verticais para WA Status e Stories do Instagram. Toca para ver e baixar em 1080×1920px.
+                </p>
+                {hubStatusPosts.map((item) => (
+                  <button key={item.id}
+                    onClick={() => { setHubModal({ slides: item.slides, title: item.theme, caption: item.caption }); }}
+                    className="w-full rounded-2xl border border-cream/10 bg-[#222019] p-3 text-left transition-all hover:border-[#c9b896]/20 active:scale-[0.98]"
+                  >
+                    <div className="flex items-center gap-3">
+                      {/* Miniatura vertical 9:16 */}
+                      <div className="shrink-0 rounded-xl overflow-hidden flex flex-col justify-center px-2"
+                        style={{ width: 36, height: 64, backgroundColor: item.slides[0]?.bg || "#3d3630" }}>
+                        <p className="font-serif leading-tight text-center"
+                          style={{ fontSize: 4.5, color: item.slides[0]?.text || "#f7f5f0", whiteSpace: "pre-line" }}>
+                          {item.slides[0]?.title?.split("\n").slice(0, 4).join("\n")}
+                        </p>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-sans text-xs font-semibold text-cream/70 truncate">{item.theme}</p>
+                        <p className="mt-0.5 font-sans text-[0.55rem] text-cream/30 truncate">{item.weekTitle}</p>
+                        <p className="mt-1 font-sans text-[0.5rem] text-cream/25">{item.slides.length} imagem{item.slides.length > 1 ? "ns" : ""}</p>
+                      </div>
+                      <div className="shrink-0">
+                        <span className="rounded-lg border border-[#25D366]/20 px-2 py-1 font-sans text-[0.5rem] font-semibold text-[#25D366]/60">
+                          9:16
+                        </span>
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            )}
+
           </div>
         )}
 
