@@ -10,6 +10,8 @@ import { capcutContent, CAPCUT_CATEGORIES, AUDIO_BASE_PATH } from "@/data/capcut
 import type { CapCutCategory } from "@/data/capcut-content";
 import { isMobile } from "@/lib/export-image";
 import { REELS_VOZ, CARROSSEIS_VOZ } from "@/data/marketing-reels-audio";
+import { todosBancoPosts, calendarioSemanal, getPostsPorCategoria } from "@/data/social-posts-redes";
+import type { PostRedes, PostCategoria } from "@/data/social-posts-redes";
 
 const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
 const DIMS = { w: 1080, h: 1080 };
@@ -189,7 +191,7 @@ export default function MarketingPage() {
   const { user, loading } = useAuth();
   const router = useRouter();
 
-  type Section = "semana" | "feed" | "carrosseis" | "status" | "reels";
+  type Section = "semana" | "feed" | "carrosseis" | "status" | "reels" | "redes";
 
   const [section, setSection] = useState<Section>("semana");
   const [selectedWeekday, setSelectedWeekday] = useState(() => new Date().getDay());
@@ -272,7 +274,7 @@ export default function MarketingPage() {
   }, [loading, user, router]);
 
   if (loading || !user || !AUTHOR_EMAILS.includes(user.email || "")) {
-    return <div className="flex min-h-screen items-center justify-center bg-[#1a1814]"><div className="h-8 w-8 animate-spin rounded-full border-2 border-[#c9b896]/30 border-t-[#c9b896]" /></div>;
+    return <div className="flex min-h-screen items-center justify-center bg-[#2a2820]"><div className="h-8 w-8 animate-spin rounded-full border-2 border-[#c9b896]/30 border-t-[#c9b896]" /></div>;
   }
 
   // ── Today data ──────────────────────────────────────────────────────────────
@@ -357,10 +359,10 @@ export default function MarketingPage() {
 
   return (
     <>
-    <div className="min-h-screen bg-[#1a1814]">
+    <div className="min-h-screen bg-[#2a2820]">
 
       {/* ── HEADER ── */}
-      <div className="sticky top-0 z-30 border-b border-[#c9b896]/10 bg-[#1a1814]/95 backdrop-blur-lg">
+      <div className="sticky top-0 z-30 border-b border-[#c9b896]/10 bg-[#2a2820]/95 backdrop-blur-lg">
         <div className="mx-auto max-w-lg px-4 py-3">
           <div className="flex items-center justify-between">
             <Link href="/admin" className="flex items-center gap-1.5 font-sans text-xs text-[#c9b896]/50 hover:text-[#c9b896]">
@@ -383,17 +385,18 @@ export default function MarketingPage() {
                 { id: "carrosseis" as const,label: "Carrosseis", badge: professionalCarousels.length },
                 { id: "status" as const,    label: "Status",     badge: hubStatusPosts.length },
                 { id: "reels" as const,     label: "Reels",      badge: capcutContent.length },
+                { id: "redes" as const,     label: "Redes",      badge: todosBancoPosts.length },
               ] satisfies { id: Section; label: string; badge?: number }[]).map((s) => (
                 <button key={s.id} onClick={() => setSection(s.id)}
                   className={`flex items-center gap-1.5 rounded-xl px-3.5 py-1.5 font-sans text-[0.65rem] font-semibold whitespace-nowrap transition-all ${
                     section === s.id
-                      ? "bg-[#c9b896] text-[#1a1814]"
+                      ? "bg-[#c9b896] text-[#2a2820]"
                       : "text-cream/40 hover:text-cream/70 hover:bg-cream/5"
                   }`}>
                   {s.label}
                   {s.badge != null && (
                     <span className={`rounded-full px-1.5 py-px font-mono text-[0.45rem] ${
-                      section === s.id ? "bg-[#1a1814]/20 text-[#1a1814]/70" : "bg-cream/10 text-cream/30"
+                      section === s.id ? "bg-[#2a2820]/20 text-[#2a2820]/70" : "bg-cream/10 text-cream/30"
                     }`}>{s.badge}</span>
                   )}
                 </button>
@@ -422,8 +425,8 @@ export default function MarketingPage() {
                       isSel ? "bg-[#c9b896] shadow-lg shadow-[#c9b896]/20"
                       : "hover:bg-cream/5"
                     }`}>
-                    <span className={`font-sans text-[0.55rem] font-bold ${isSel ? "text-[#1a1814]" : "text-cream/50"}`}>{w.hint}</span>
-                    <span className={`mt-0.5 font-sans text-[0.42rem] ${isSel ? "text-[#1a1814]/50" : isTod ? "text-[#c9b896]/60" : "text-cream/25"}`}>{w.label}{isTod ? " ·" : ""}</span>
+                    <span className={`font-sans text-[0.55rem] font-bold ${isSel ? "text-[#2a2820]" : "text-cream/50"}`}>{w.hint}</span>
+                    <span className={`mt-0.5 font-sans text-[0.42rem] ${isSel ? "text-[#2a2820]/50" : isTod ? "text-[#c9b896]/60" : "text-cream/25"}`}>{w.label}{isTod ? " ·" : ""}</span>
                   </button>
                 );
               })}
@@ -443,7 +446,7 @@ export default function MarketingPage() {
                 </div>
               </div>
             ) : (
-              <div className="rounded-2xl border border-cream/5 bg-[#222019] p-6 text-center">
+              <div className="rounded-2xl border border-cream/5 bg-[#302e27] p-6 text-center">
                 <p className="font-sans text-xs text-cream/30">Sem conteúdo para este tema.</p>
               </div>
             )}
@@ -475,7 +478,7 @@ export default function MarketingPage() {
                   </div>
                 </button>
                 {item.caption && (
-                  <div className="border-t border-cream/5 bg-[#1a1814] px-4 pb-4 pt-3">
+                  <div className="border-t border-cream/5 bg-[#2a2820] px-4 pb-4 pt-3">
                     <div className="mb-1.5 flex items-center justify-between">
                       <span className="font-sans text-[0.45rem] font-bold uppercase tracking-[0.15em] text-cream/25">Legenda</span>
                       <button onClick={() => copyText(`feed-${fi}`, item.caption!)}
@@ -520,7 +523,7 @@ export default function MarketingPage() {
                   </div>
                 </button>
                 {car.caption && (
-                  <div className="border-t border-cream/5 bg-[#1a1814] px-4 pb-4 pt-3">
+                  <div className="border-t border-cream/5 bg-[#2a2820] px-4 pb-4 pt-3">
                     <div className="mb-1.5 flex items-center justify-between">
                       <span className="font-sans text-[0.45rem] font-bold uppercase tracking-[0.15em] text-cream/25">Legenda</span>
                       <button onClick={() => copyText(`carr-${ci}`, car.caption!)}
@@ -576,7 +579,7 @@ export default function MarketingPage() {
                   </div>
                 </button>
                 {item.caption && (
-                  <div className="border-t border-cream/5 bg-[#1a1814] px-4 pb-4 pt-3">
+                  <div className="border-t border-cream/5 bg-[#2a2820] px-4 pb-4 pt-3">
                     <div className="mb-1.5 flex items-center justify-between">
                       <span className="font-sans text-[0.45rem] font-bold uppercase tracking-[0.15em] text-cream/25">Legenda</span>
                       <button onClick={() => copyText(`status-${si}`, item.caption!)}
@@ -604,7 +607,7 @@ export default function MarketingPage() {
               {capcutContent.map((entry) => (
                 <button key={entry.id}
                   onClick={() => setCapcutModal(entry)}
-                  className="w-full rounded-2xl border border-cream/10 bg-[#222019] p-3 text-left transition-all hover:border-[#c9b896]/20 active:scale-[0.98]">
+                  className="w-full rounded-2xl border border-cream/10 bg-[#302e27] p-3 text-left transition-all hover:border-[#c9b896]/20 active:scale-[0.98]">
                   <div className="flex items-center gap-3">
                     <div className="shrink-0 rounded-xl overflow-hidden" style={{ width: 56, height: 56, backgroundColor: entry.slide.bg, display: "flex", flexDirection: "column", justifyContent: "center", padding: "6px" }}>
                       <p className="font-serif leading-tight text-center" style={{ fontSize: 6, color: entry.slide.text, whiteSpace: "pre-line" }}>{entry.slide.title}</p>
@@ -626,7 +629,7 @@ export default function MarketingPage() {
             <div className="space-y-2">
               <p className="font-sans text-[0.55rem] text-cream/25">Scripts de Reel · copia e grava</p>
               {reelScripts.map((reel, ri) => (
-                <div key={ri} className="overflow-hidden rounded-2xl border border-cream/10 bg-[#222019]">
+                <div key={ri} className="overflow-hidden rounded-2xl border border-cream/10 bg-[#302e27]">
                   <div className="px-4 py-3 border-b border-cream/5">
                     <div className="flex items-center justify-between gap-2">
                       <p className="font-sans text-xs font-semibold text-cream/70 line-clamp-1">{reel.hook}</p>
@@ -649,6 +652,13 @@ export default function MarketingPage() {
           </div>
         )}
 
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {/* REDES — banco de posts para Instagram/WhatsApp                        */}
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {section === "redes" && (
+          <RedesSection copiedId={copiedId} copyText={copyText} />
+        )}
+
       </div>
     </div>
 
@@ -660,7 +670,7 @@ export default function MarketingPage() {
       const vtW = 160, vtH = Math.round(STORY_DIMS.h * (vtW / STORY_DIMS.w)), vtScale = vtW / STORY_DIMS.w;
       const slides = hubModal.slides;
       return (
-        <div className="fixed inset-0 z-50 flex flex-col bg-[#1a1814]">
+        <div className="fixed inset-0 z-50 flex flex-col bg-[#2a2820]">
           {/* Header */}
           <div className="shrink-0 border-b border-cream/10 px-4 py-3">
             <div className="flex items-center gap-3">
@@ -692,7 +702,7 @@ export default function MarketingPage() {
 
             {/* Caption */}
             {hubModal.caption && (
-              <div className="rounded-2xl border border-cream/10 bg-[#222019] p-4">
+              <div className="rounded-2xl border border-cream/10 bg-[#302e27] p-4">
                 <div className="mb-2 flex items-center justify-between">
                   <span className="font-sans text-[0.5rem] font-bold uppercase tracking-[0.15em] text-cream/30">Legenda</span>
                   <button onClick={() => copyText("modal-caption", hubModal.caption!)}
@@ -748,7 +758,7 @@ export default function MarketingPage() {
       const vtW = 160, vtH = Math.round(STORY_DIMS.h * (vtW / STORY_DIMS.w)), vtScale = vtW / STORY_DIMS.w;
       const audioUrl = `${AUDIO_BASE_PATH}/${capcutModal.audioFile}`;
       return (
-        <div className="fixed inset-0 z-50 flex flex-col bg-[#1a1814]">
+        <div className="fixed inset-0 z-50 flex flex-col bg-[#2a2820]">
           <div className="shrink-0 border-b border-cream/10 px-4 py-3">
             <div className="flex items-center gap-3">
               <button onClick={() => { setCapcutModal(null); setCapcutExportingSquare(false); setCapcutExportingVert(false); }}
@@ -814,7 +824,7 @@ export default function MarketingPage() {
             </div>
 
             {/* Como usar */}
-            <div className="rounded-2xl border border-cream/5 bg-[#222019] p-4 space-y-2">
+            <div className="rounded-2xl border border-cream/5 bg-[#302e27] p-4 space-y-2">
               <p className="font-sans text-[0.5rem] font-bold uppercase tracking-[0.15em] text-cream/30">Como usar no CapCut</p>
               <ol className="space-y-1.5">
                 {["Baixa a imagem (9:16) e o áudio", "Abre o CapCut → Novo projecto → Adiciona a imagem", "Adiciona o áudio na timeline", "Ajusta timing se necessário → Exporta", "Publica como Reel"].map((step, i) => (
@@ -830,6 +840,114 @@ export default function MarketingPage() {
       );
     })()}
     </>
+  );
+}
+
+// ── Banco de posts para Redes Sociais ───────────────────────────────────────
+const CATEGORIAS_LABEL: Record<PostCategoria, string> = {
+  automatico: "Automático",
+  permissao: "Permissão",
+  silencio: "Silêncio",
+  reconhecimento: "Reconhecimento",
+  perguntas: "Perguntas",
+  medo_veu: "Véu do Medo",
+  culpa_veu: "Véu da Culpa",
+  identidade_veu: "Véu da Identidade",
+  controlo_veu: "Véu do Controlo",
+  nos_relacional: "Os Nós",
+  provocacao: "Provocação",
+  voz_vivianne: "Voz da Vivianne",
+};
+
+const COR_FORMATO: Record<string, string> = {
+  carousel: "#c9b896",
+  reel: "#8b9b8e",
+  single: "#baaacc",
+  story: "#c08aaa",
+};
+
+function RedesSection({ copiedId, copyText }: { copiedId: string | null; copyText: (id: string, text: string) => void }) {
+  const hoje = new Date().getDay();
+  const [catSeleccionada, setCatSeleccionada] = useState<PostCategoria | "todos">("todos");
+
+  const postsFiltrados = catSeleccionada === "todos"
+    ? todosBancoPosts
+    : getPostsPorCategoria(catSeleccionada as PostCategoria);
+
+  const categorias: (PostCategoria | "todos")[] = [
+    "todos",
+    ...Array.from(new Set(todosBancoPosts.map(p => p.categoria))),
+  ];
+
+  return (
+    <div className="py-4 space-y-4">
+      {/* Sugestão do dia */}
+      <div className="rounded-2xl border border-[#c9b896]/15 bg-gradient-to-br from-[#c9b896]/10 to-[#c9b896]/3 p-4">
+        <p className="font-sans text-[0.5rem] font-semibold uppercase tracking-widest text-[#c9b896]/60">Hoje</p>
+        <p className="mt-1 font-sans text-xs text-cream/70">
+          {(calendarioSemanal[hoje] ?? []).map(c => CATEGORIAS_LABEL[c]).join(" · ")}
+        </p>
+      </div>
+
+      {/* Filtro por categoria */}
+      <div className="-mx-4 overflow-x-auto px-4 scrollbar-none">
+        <div className="flex gap-1" style={{ width: "max-content" }}>
+          {categorias.map((cat) => (
+            <button key={cat} onClick={() => setCatSeleccionada(cat)}
+              className={`rounded-xl px-3 py-1.5 font-sans text-[0.6rem] font-semibold whitespace-nowrap transition-all ${
+                catSeleccionada === cat
+                  ? "bg-[#c9b896] text-[#2a2820]"
+                  : "text-cream/40 hover:text-cream/70 hover:bg-cream/5"
+              }`}>
+              {cat === "todos" ? `Todos (${todosBancoPosts.length})` : CATEGORIAS_LABEL[cat]}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Lista de posts */}
+      <div className="space-y-3">
+        {postsFiltrados.map((post: PostRedes) => {
+          const fullText = `${post.hook}\n\n${post.corpo}\n\n${post.cta}\n\n${post.hashtags.join(" ")}`;
+          return (
+            <div key={post.id} className="overflow-hidden rounded-2xl border border-cream/10 bg-[#302e27]">
+              {/* Cabeçalho */}
+              <div className="flex items-center justify-between gap-2 px-4 py-3 border-b border-cream/5">
+                <div className="flex items-center gap-2 min-w-0">
+                  <span className="shrink-0 rounded-lg px-2 py-0.5 font-sans text-[0.45rem] font-semibold text-[#2a2820]"
+                    style={{ backgroundColor: COR_FORMATO[post.formato] ?? "#c9b896" }}>
+                    {post.formato}
+                  </span>
+                  <span className="font-sans text-[0.5rem] text-cream/35 truncate">{CATEGORIAS_LABEL[post.categoria]}</span>
+                </div>
+                <button onClick={() => copyText(post.id, fullText)}
+                  className="shrink-0 rounded-lg bg-cream/8 px-2.5 py-1 font-sans text-[0.5rem] font-semibold text-cream/40 hover:bg-cream/15 transition-all">
+                  {copiedId === post.id ? "Copiado ✓" : "Copiar"}
+                </button>
+              </div>
+
+              {/* Hook */}
+              <div className="px-4 pt-3 pb-2">
+                <p className="font-sans text-xs font-semibold leading-snug text-cream/80">{post.hook}</p>
+              </div>
+
+              {/* Corpo */}
+              <div className="px-4 pb-3 space-y-1.5">
+                {post.corpo.split("\n\n").map((par, i) => (
+                  <p key={i} className="font-sans text-[0.6rem] leading-relaxed text-cream/45">{par}</p>
+                ))}
+              </div>
+
+              {/* CTA + hashtags */}
+              <div className="border-t border-cream/5 px-4 py-3 space-y-1.5">
+                <p className="font-sans text-[0.6rem] font-semibold text-[#c9b896]/70">{post.cta}</p>
+                <p className="font-sans text-[0.45rem] text-cream/20 leading-relaxed">{post.hashtags.join(" ")}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 
@@ -897,14 +1015,14 @@ function CapCutAudioPlayer({ src, ficheiro }: { src: string; ficheiro: string })
   }
 
   return (
-    <div className="rounded-xl border border-cream/10 bg-[#1a1814] p-3">
+    <div className="rounded-xl border border-cream/10 bg-[#2a2820] p-3">
       <audio key={src} ref={audioRef} src={src} preload="metadata" crossOrigin="anonymous" />
       <div className="flex items-center gap-2.5">
         <button
           onClick={toggle}
           disabled={error}
           className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-opacity ${
-            error ? "bg-cream/10 opacity-40 cursor-not-allowed" : "bg-[#c9b896] text-[#1a1814] hover:opacity-80"
+            error ? "bg-cream/10 opacity-40 cursor-not-allowed" : "bg-[#c9b896] text-[#2a2820] hover:opacity-80"
           }`}
         >
           {error ? (
@@ -912,11 +1030,11 @@ function CapCutAudioPlayer({ src, ficheiro }: { src: string; ficheiro: string })
               <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
             </svg>
           ) : playing ? (
-            <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5 text-[#1a1814]">
+            <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5 text-[#2a2820]">
               <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
             </svg>
           ) : (
-            <svg viewBox="0 0 24 24" fill="currentColor" className="ml-0.5 h-3.5 w-3.5 text-[#1a1814]">
+            <svg viewBox="0 0 24 24" fill="currentColor" className="ml-0.5 h-3.5 w-3.5 text-[#2a2820]">
               <path d="M8 5v14l11-7z" />
             </svg>
           )}
