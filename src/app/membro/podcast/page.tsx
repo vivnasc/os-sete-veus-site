@@ -2,6 +2,7 @@
 
 import { useAuth } from "@/components/AuthProvider";
 import Link from "next/link";
+import AudioPlayer from "@/components/AudioPlayer";
 import { useState } from "react";
 import {
   getPublicEpisodes,
@@ -67,17 +68,12 @@ function EpisodeCard({
             <p className="mt-4 font-serif text-[0.75rem] italic text-brown-400">
               Disponivel apos completar o Espelho correspondente.
             </p>
-          ) : ep.audioUrl ? (
-            <div className="mt-4">
-              <audio
-                src={ep.audioUrl}
-                controls
-                className="w-full"
-                preload="none"
-              />
-            </div>
           ) : (
-            <div className="mt-4">
+            <div className="mt-4 space-y-3">
+              <AudioPlayer
+                src={ep.audioUrl}
+                title={`Ep. ${ep.number} — ${ep.title}`}
+              />
               <button
                 onClick={() => setExpanded(!expanded)}
                 className="font-sans text-[0.6rem] uppercase tracking-wider text-sage transition-colors hover:text-sage-dark"
@@ -85,7 +81,7 @@ function EpisodeCard({
                 {expanded ? "Fechar guiao" : "Ler guiao do episodio"}
               </button>
               {expanded && (
-                <div className="mt-3 max-h-64 overflow-y-auto rounded-lg bg-brown-50 p-4">
+                <div className="max-h-64 overflow-y-auto rounded-lg bg-brown-50 p-4">
                   {ep.script.split("\n\n").map((para, i) => (
                     <p
                       key={i}
@@ -96,9 +92,6 @@ function EpisodeCard({
                   ))}
                 </div>
               )}
-              <p className="mt-2 font-sans text-[0.55rem] uppercase tracking-wider text-brown-300">
-                Audio em breve
-              </p>
             </div>
           )}
         </div>
