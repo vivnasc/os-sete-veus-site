@@ -28,6 +28,11 @@ export default function AudioPlayer({ src, title }: Props) {
     audio.addEventListener("ended", onEnd);
     audio.addEventListener("error", onError);
 
+    // Race condition fix: metadata may already be loaded before listener attached
+    if (audio.readyState >= 1 && audio.duration > 0) {
+      setDuration(audio.duration);
+    }
+
     return () => {
       audio.removeEventListener("timeupdate", onTime);
       audio.removeEventListener("loadedmetadata", onMeta);
@@ -59,7 +64,7 @@ export default function AudioPlayer({ src, title }: Props) {
   }
 
   function fmt(s: number) {
-    if (!isFinite(s)) return "0:00";
+    if (!isFinite(s) || s < 0) return "0:00";
     const m = Math.floor(s / 60);
     const sec = Math.floor(s % 60);
     return `${m}:${sec.toString().padStart(2, "0")}`;
@@ -85,7 +90,7 @@ export default function AudioPlayer({ src, title }: Props) {
 
   return (
     <div className="rounded-xl bg-cream-dark p-4">
-      <audio ref={audioRef} src={src} preload="metadata" />
+      <audio ref={audioRef} src={src} preload="metadata" crossOrigin="anonymous" />
       <div className="flex items-center gap-3">
         <button
           onClick={toggle}

@@ -857,6 +857,10 @@ function CapCutAudioPlayer({ src, ficheiro }: { src: string; ficheiro: string })
     audio.addEventListener("loadedmetadata", onMeta);
     audio.addEventListener("ended", onEnd);
     audio.addEventListener("error", onError);
+    // Race condition fix: metadata may already be loaded before listener attached
+    if (audio.readyState >= 1 && audio.duration > 0) {
+      setDuration(audio.duration);
+    }
     return () => {
       audio.removeEventListener("timeupdate", onTime);
       audio.removeEventListener("loadedmetadata", onMeta);
@@ -894,7 +898,7 @@ function CapCutAudioPlayer({ src, ficheiro }: { src: string; ficheiro: string })
 
   return (
     <div className="rounded-xl border border-cream/10 bg-[#1a1814] p-3">
-      <audio key={src} ref={audioRef} src={src} preload="metadata" />
+      <audio key={src} ref={audioRef} src={src} preload="metadata" crossOrigin="anonymous" />
       <div className="flex items-center gap-2.5">
         <button
           onClick={toggle}
