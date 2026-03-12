@@ -182,25 +182,29 @@ function SlidePreviewVertical({ slide, index, scale }: { slide: CarouselSlide; i
 
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 
+// ─── MAIN PAGE ────────────────────────────────────────────────────────────────
+
+import { reelScripts } from "@/data/content-calendar-weeks";
+
 export default function MarketingPage() {
   const { user, loading } = useAuth();
   const router = useRouter();
 
-  const [copiedId, setCopiedId] = useState<string | null>(null);
-  const [pageSection, setPageSection] = useState<"hub" | "posts" | "guia" | "capcut">("hub");
-  const [postsTab, setPostsTab] = useState<"carrosseis" | "feed" | "status">("carrosseis");
+  type Section = "hoje" | "feed" | "carrosseis" | "status" | "reels";
+
+  const [section, setSection] = useState<Section>("hoje");
   const [selectedWeekday, setSelectedWeekday] = useState(() => new Date().getDay());
-  const [capcutCategory, setCapcutCategory] = useState<CapCutCategory | "todos">("todos");
-  const [capcutModal, setCapcutModal] = useState<typeof capcutContent[0] | null>(null);
-  const capcutSlideSquareRef = useRef<HTMLDivElement | null>(null);
-  const capcutSlideVertRef = useRef<HTMLDivElement | null>(null);
-  const [capcutExportingSquare, setCapcutExportingSquare] = useState(false);
-  const [capcutExportingVert, setCapcutExportingVert] = useState(false);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
   const [hubModal, setHubModal] = useState<{ slides: CarouselSlide[]; title: string; caption?: string } | null>(null);
+  const [capcutModal, setCapcutModal] = useState<typeof capcutContent[0] | null>(null);
   const hubSlideSquareRefs = useRef<(HTMLDivElement | null)[]>([]);
   const hubSlideVertRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const capcutSlideSquareRef = useRef<HTMLDivElement | null>(null);
+  const capcutSlideVertRef = useRef<HTMLDivElement | null>(null);
   const [hubExportingSquare, setHubExportingSquare] = useState<number | "all" | null>(null);
   const [hubExportingVert, setHubExportingVert] = useState<number | "all" | null>(null);
+  const [capcutExportingSquare, setCapcutExportingSquare] = useState(false);
+  const [capcutExportingVert, setCapcutExportingVert] = useState(false);
 
   const captureElement = useCallback(async (el: HTMLElement, dims: { w: number; h: number }, filename: string) => {
     const { toPng } = await import("html-to-image");
@@ -209,12 +213,10 @@ export default function MarketingPage() {
     el.style.width = `${dims.w}px`;
     el.style.height = `${dims.h}px`;
     await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
-    // Wait for all images to finish loading
     const imgs = Array.from(el.querySelectorAll<HTMLImageElement>("img"));
     await Promise.all(imgs.map((img) => img.complete ? Promise.resolve() : new Promise<void>((res) => { img.onload = () => res(); img.onerror = () => res(); })));
     try {
       const opts = { width: dims.w, height: dims.h, pixelRatio: 1, skipAutoScale: true };
-      // First pass caches images into the canvas; second pass captures them correctly
       await toPng(el, opts);
       const dataUrl = await toPng(el, opts);
       await saveImage(dataUrl, filename);
@@ -271,7 +273,90 @@ export default function MarketingPage() {
   }, [loading, user, router]);
 
   if (loading || !user || !AUTHOR_EMAILS.includes(user.email || "")) {
-    return <div className="flex min-h-screen items-center justify-center bg-cream"><div className="h-8 w-8 animate-spin rounded-full border-2 border-brown-200 border-t-sage" /></div>;
+    return <div className="flex min-h-screen items-center justify-center bg-[#1a1814]"><div className="h-8 w-8 animate-spin rounded-full border-2 border-[#c9b896]/30 border-t-[#c9b896]" /></div>;
+  }
+
+  // ── Today data ──────────────────────────────────────────────────────────────
+  const today = new Date().getDay();
+  const r = WEEKLY_RHYTHM[selectedWeekday];
+  const dayData = thematicHub[r.themeIdx]?.days[r.dayIdx];
+  const slotCounts = WEEKLY_RHYTHM.map((wr) =>
+    thematicHub[wr.themeIdx]?.days[wr.dayIdx]?.slots.length || 0
+  );
+
+  // ── Slot card (shared between Hoje and other sections) ──────────────────────
+  function SlotCard({ slot, idx }: { slot: NonNullable<typeof dayData>["slots"][0]; idx: number }) {
+    const platformColor = slot.platform === "whatsapp" ? "#25D366" : slot.platform === "instagram" ? "#E1306C" : "#c9b896";
+    const platformLabel = slot.platform === "whatsapp" ? "WhatsApp" : slot.platform === "instagram" ? "Instagram" : "Ambos";
+    return (
+      <div className="overflow-hidden rounded-2xl border border-cream/8 bg-[#1e1c18]">
+        <div className="flex items-center gap-2 px-4 py-2.5">
+          <div className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: platformColor }} />
+          <span className="font-sans text-[0.55rem] font-bold uppercase tracking-[0.12em]" style={{ color: platformColor + "cc" }}>{platformLabel}</span>
+          <span className="text-cream/20">·</span>
+          <span className="font-sans text-[0.55rem] font-semibold text-cream/40">{slot.type}</span>
+        </div>
+
+        {slot.visual && (() => {
+          const slide: CarouselSlide = { bg: slot.visual!.bg, text: slot.visual!.text, accent: slot.visual!.accent, title: slot.visual!.title, body: slot.visual!.body || "", footer: slot.visual!.footer || "" };
+          return (
+            <button onClick={() => setHubModal({ slides: [slide], title: slot.type, caption: slot.caption })}
+              className="mx-3 mb-3 w-[calc(100%-1.5rem)] overflow-hidden rounded-xl text-left transition-all active:scale-[0.98] hover:opacity-90"
+              style={{ backgroundColor: slot.visual!.bg }}>
+              <div className="p-5">
+                {slot.visual!.title && <p className="font-serif text-sm font-bold leading-snug" style={{ color: slot.visual!.text, whiteSpace: "pre-line" }}>{slot.visual!.title}</p>}
+                {slot.visual!.body && <p className="mt-2 font-sans text-[0.65rem] leading-relaxed" style={{ color: slot.visual!.text, opacity: 0.75, whiteSpace: "pre-line" }}>{slot.visual!.body}</p>}
+                {slot.visual!.footer && <p className="mt-3 font-sans text-[0.5rem] font-semibold uppercase tracking-[0.15em]" style={{ color: slot.visual!.accent }}>{slot.visual!.footer}</p>}
+              </div>
+              <div className="flex items-center justify-between border-t px-4 py-2" style={{ borderColor: slot.visual!.text + "15" }}>
+                <span className="font-sans text-[0.5rem] font-semibold uppercase tracking-widest" style={{ color: slot.visual!.text, opacity: 0.3 }}>1080×1080</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={slot.visual!.accent} strokeWidth="2.5" opacity="0.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              </div>
+            </button>
+          );
+        })()}
+
+        {slot.carousel && slot.carousel.length > 0 && (() => {
+          const first = slot.carousel![0];
+          const isStatus = slot.type === "WhatsApp Status";
+          return (
+            <button onClick={() => setHubModal({ slides: slot.carousel!, title: slot.type, caption: slot.caption })}
+              className="mx-3 mb-3 w-[calc(100%-1.5rem)] overflow-hidden rounded-xl text-left transition-all active:scale-[0.98] hover:opacity-90"
+              style={{ backgroundColor: first.bg }}>
+              <div className="p-5">
+                {first.title && <p className="font-serif text-sm font-bold leading-snug" style={{ color: first.text, whiteSpace: "pre-line" }}>{first.title}</p>}
+                {first.body && <p className="mt-2 font-sans text-[0.65rem] leading-relaxed" style={{ color: first.text, opacity: 0.7, whiteSpace: "pre-line" }}>{first.body.split("\n")[0]}</p>}
+              </div>
+              <div className="flex items-center justify-between border-t px-4 py-2" style={{ borderColor: first.text + "15" }}>
+                <div className="flex items-center gap-1.5">
+                  {slot.carousel!.map((sl, sli) => (
+                    <div key={sli} className="rounded-sm" style={{ width: sli === 0 ? 16 : 8, height: 8, backgroundColor: sli === 0 ? first.accent : sl.bg === first.bg ? first.text + "30" : sl.bg, opacity: sli === 0 ? 1 : 0.5 }} />
+                  ))}
+                  <span className="ml-1 font-sans text-[0.5rem] font-semibold uppercase tracking-widest" style={{ color: first.text, opacity: 0.35 }}>{slot.carousel!.length} {isStatus ? "status" : "slides"}</span>
+                </div>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={first.accent} strokeWidth="2.5" opacity="0.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              </div>
+            </button>
+          );
+        })()}
+
+        {slot.caption && (
+          <details className="group border-t border-cream/5">
+            <summary className="flex cursor-pointer select-none items-center gap-2 px-4 py-2.5 hover:bg-cream/3">
+              <span className="font-sans text-[0.5rem] font-bold uppercase tracking-[0.15em] text-cream/30">Legenda</span>
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="ml-auto text-cream/20 transition-transform group-open:rotate-180"><polyline points="6 9 12 15 18 9"/></svg>
+              <button onClick={(e) => { e.preventDefault(); copyText(`slot-${idx}`, slot.caption!); }}
+                className="rounded bg-cream/8 px-2 py-0.5 font-sans text-[0.45rem] font-semibold text-cream/40 hover:bg-cream/15 transition-all">
+                {copiedId === `slot-${idx}` ? "Copiado" : "Copiar"}
+              </button>
+            </summary>
+            <div className="px-4 pb-4 pt-1">
+              <p className="font-sans text-[0.6rem] leading-relaxed text-cream/40 whitespace-pre-wrap">{slot.caption}</p>
+            </div>
+          </details>
+        )}
+      </div>
+    );
   }
 
   return (
@@ -283,29 +368,41 @@ export default function MarketingPage() {
         <div className="mx-auto max-w-lg px-4 py-3">
           <div className="flex items-center justify-between">
             <Link href="/admin" className="flex items-center gap-1.5 font-sans text-xs text-[#c9b896]/50 hover:text-[#c9b896]">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6" /></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
               Painel
             </Link>
-            <p className="font-serif text-sm font-medium tracking-wide text-cream/90">Conteudo Pronto</p>
+            <p className="font-serif text-sm font-medium tracking-wide text-cream/90">Conteúdo</p>
             <Link href="/painel/marketing/gerador"
-              className="rounded-lg border border-[#c9b896]/30 px-2.5 py-1.5 font-sans text-[0.6rem] font-medium text-[#c9b896]/80 hover:border-[#c9b896]/60 hover:text-[#c9b896]">
+              className="rounded-lg border border-[#c9b896]/30 px-2.5 py-1.5 font-sans text-[0.6rem] font-medium text-[#c9b896]/80 hover:border-[#c9b896]/60">
               Gerador
             </Link>
           </div>
-          <div className="mt-3 flex gap-1">
-            {([
-              { id: "hub" as const, label: "Hub" },
-              { id: "posts" as const, label: "Posts" },
-              { id: "guia" as const, label: "Guia" },
-              { id: "capcut" as const, label: "CapCut" },
-            ]).map((s) => (
-              <button key={s.id} onClick={() => setPageSection(s.id)}
-                className={`rounded-lg px-3 py-1.5 font-sans text-[0.65rem] font-semibold transition-all ${
-                  pageSection === s.id ? "bg-[#c9b896] text-[#1a1814]" : "text-cream/40 hover:text-cream/60 hover:bg-cream/5"
-                }`}>
-                {s.label}
-              </button>
-            ))}
+
+          {/* ── Nav principal (única linha) ── */}
+          <div className="mt-3 -mx-4 overflow-x-auto px-4 scrollbar-none">
+            <div className="flex gap-1" style={{ width: "max-content" }}>
+              {([
+                { id: "hoje" as const,      label: "Hoje",       badge: slotCounts[selectedWeekday] || undefined },
+                { id: "feed" as const,      label: "Feed",       badge: hubFeedPosts.length },
+                { id: "carrosseis" as const,label: "Carrosseis", badge: professionalCarousels.length },
+                { id: "status" as const,    label: "Status",     badge: hubStatusPosts.length },
+                { id: "reels" as const,     label: "Reels",      badge: capcutContent.length },
+              ] satisfies { id: Section; label: string; badge?: number }[]).map((s) => (
+                <button key={s.id} onClick={() => setSection(s.id)}
+                  className={`flex items-center gap-1.5 rounded-xl px-3.5 py-1.5 font-sans text-[0.65rem] font-semibold whitespace-nowrap transition-all ${
+                    section === s.id
+                      ? "bg-[#c9b896] text-[#1a1814]"
+                      : "text-cream/40 hover:text-cream/70 hover:bg-cream/5"
+                  }`}>
+                  {s.label}
+                  {s.badge != null && (
+                    <span className={`rounded-full px-1.5 py-px font-mono text-[0.45rem] ${
+                      section === s.id ? "bg-[#1a1814]/20 text-[#1a1814]/70" : "bg-cream/10 text-cream/30"
+                    }`}>{s.badge}</span>
+                  )}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -313,505 +410,315 @@ export default function MarketingPage() {
       <div className="mx-auto max-w-lg px-4 pb-28">
 
         {/* ══════════════════════════════════════════════════════════════════════ */}
-        {/* ── HUB TEMÁTICO ── */}
+        {/* HOJE — conteúdo planeado para o dia                                  */}
         {/* ══════════════════════════════════════════════════════════════════════ */}
-        {/* ── HUB — plano semanal ── */}
-        {/* ══════════════════════════════════════════════════════════════════════ */}
-        {pageSection === "hub" && (() => {
-          const today = new Date().getDay();
-          const r = WEEKLY_RHYTHM[selectedWeekday];
-          const day = thematicHub[r.themeIdx]?.days[r.dayIdx];
-          // Slot counts per weekday for the day strip
-          const slotCounts = WEEKLY_RHYTHM.map((wr) =>
-            thematicHub[wr.themeIdx]?.days[wr.dayIdx]?.slots.length || 0
-          );
-          return (
-            <div className="py-4 space-y-4">
+        {section === "hoje" && (
+          <div className="py-4 space-y-4">
 
-              {/* ── Day strip ── */}
-              <div className="grid grid-cols-7 gap-1">
-                {WEEKLY_RHYTHM.map((w, i) => {
-                  const isSelected = selectedWeekday === i;
-                  const isToday = today === i;
-                  const count = slotCounts[i];
-                  return (
-                    <button key={i} onClick={() => setSelectedWeekday(i)}
-                      className={`relative flex flex-col items-center rounded-xl py-2 transition-all ${
-                        isSelected
-                          ? "bg-[#c9b896] shadow-lg shadow-[#c9b896]/20"
-                          : isToday
-                          ? "bg-cream/8 ring-1 ring-[#c9b896]/30"
-                          : "hover:bg-cream/5"
-                      }`}>
-                      {isToday && !isSelected && (
-                        <span className="absolute -top-0.5 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-[#c9b896]" />
-                      )}
-                      <span className={`font-sans text-[0.5rem] font-bold uppercase tracking-wider ${
-                        isSelected ? "text-[#1a1814]" : isToday ? "text-[#c9b896]" : "text-cream/40"
-                      }`}>{w.label}</span>
-                      {count > 0 ? (
-                        <span className={`mt-1 font-mono text-[0.45rem] font-bold ${
-                          isSelected ? "text-[#1a1814]/60" : "text-cream/25"
-                        }`}>{count}</span>
-                      ) : (
-                        <span className="mt-1 block h-1 w-1 rounded-full bg-cream/10" />
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* ── Day header ── */}
-              {day ? (
-                <div className="rounded-2xl border border-[#c9b896]/15 bg-gradient-to-br from-[#c9b896]/10 to-[#c9b896]/3 p-4">
-                  <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <p className="font-sans text-[0.5rem] font-bold uppercase tracking-[0.2em] text-[#c9b896]/50">
-                        {r.hint} · {thematicHub[r.themeIdx].title}
-                      </p>
-                      <h3 className="mt-1.5 font-serif text-base leading-snug text-cream/90">{day.theme}</h3>
-                    </div>
-                    <span className="shrink-0 rounded-full border border-[#c9b896]/20 px-2 py-0.5 font-mono text-[0.45rem] text-[#c9b896]/50">
-                      {day.slots.length} post{day.slots.length > 1 ? "s" : ""}
-                    </span>
-                  </div>
-                </div>
-              ) : (
-                <div className="rounded-2xl border border-cream/5 bg-[#222019] p-4">
-                  <p className="font-sans text-xs text-cream/30 text-center">Sem conteúdo para este dia.</p>
-                </div>
-              )}
-
-              {/* ── Slots ── */}
-              {day?.slots.map((slot, si) => {
-                const platformColor = slot.platform === "whatsapp" ? "#25D366" : slot.platform === "instagram" ? "#E1306C" : "#c9b896";
-                const platformLabel = slot.platform === "whatsapp" ? "WhatsApp" : slot.platform === "instagram" ? "Instagram" : "Ambos";
+            {/* Faixa de dias */}
+            <div className="grid grid-cols-7 gap-1">
+              {WEEKLY_RHYTHM.map((w, i) => {
+                const isSel = selectedWeekday === i;
+                const isTod = today === i;
                 return (
-                  <div key={si} className="overflow-hidden rounded-2xl border border-cream/8 bg-[#1e1c18]">
-
-                    {/* Slot header — platform + type */}
-                    <div className="flex items-center gap-2 px-4 py-2.5">
-                      <div className="flex items-center gap-1.5">
-                        <div className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: platformColor }} />
-                        <span className="font-sans text-[0.55rem] font-bold uppercase tracking-[0.12em]"
-                          style={{ color: platformColor + "cc" }}>{platformLabel}</span>
-                      </div>
-                      <span className="text-cream/20">·</span>
-                      <span className="font-sans text-[0.55rem] font-semibold text-cream/40">{slot.type}</span>
-                    </div>
-
-                    {/* Visual single post */}
-                    {slot.visual && (() => {
-                      const slide: CarouselSlide = {
-                        bg: slot.visual.bg, text: slot.visual.text, accent: slot.visual.accent,
-                        title: slot.visual.title, body: slot.visual.body || "", footer: slot.visual.footer || "",
-                      };
-                      return (
-                        <button
-                          onClick={() => { setHubModal({ slides: [slide], title: slot.type, caption: slot.caption }); }}
-                          className="mx-3 mb-3 w-[calc(100%-1.5rem)] overflow-hidden rounded-xl text-left transition-all active:scale-[0.98] hover:opacity-90"
-                          style={{ backgroundColor: slot.visual.bg }}
-                        >
-                          <div className="p-5">
-                            {slot.visual.title && (
-                              <p className="font-serif text-sm font-bold leading-snug"
-                                style={{ color: slot.visual.text, whiteSpace: "pre-line" }}>
-                                {slot.visual.title}
-                              </p>
-                            )}
-                            {slot.visual.body && (
-                              <p className="mt-2 font-sans text-[0.65rem] leading-relaxed"
-                                style={{ color: slot.visual.text, opacity: 0.75, whiteSpace: "pre-line" }}>
-                                {slot.visual.body}
-                              </p>
-                            )}
-                            {slot.visual.footer && (
-                              <p className="mt-3 font-sans text-[0.5rem] font-semibold uppercase tracking-[0.15em]"
-                                style={{ color: slot.visual.accent }}>
-                                {slot.visual.footer}
-                              </p>
-                            )}
-                          </div>
-                          {/* Action bar */}
-                          <div className="flex items-center justify-between border-t px-4 py-2"
-                            style={{ borderColor: slot.visual.text + "15" }}>
-                            <span className="font-sans text-[0.5rem] font-semibold uppercase tracking-widest"
-                              style={{ color: slot.visual.text, opacity: 0.35 }}>1 imagem · 1080×1080</span>
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
-                              stroke={slot.visual.accent} strokeWidth="2.5" opacity="0.6">
-                              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-                            </svg>
-                          </div>
-                        </button>
-                      );
-                    })()}
-
-                    {/* Carousel / Status multi-slide */}
-                    {slot.carousel && slot.carousel.length > 0 && (() => {
-                      const first = slot.carousel[0];
-                      const isStatus = slot.type === "WhatsApp Status";
-                      return (
-                        <button
-                          onClick={() => { setHubModal({ slides: slot.carousel!, title: slot.type, caption: slot.caption }); }}
-                          className="mx-3 mb-3 w-[calc(100%-1.5rem)] overflow-hidden rounded-xl text-left transition-all active:scale-[0.98] hover:opacity-90"
-                          style={{ backgroundColor: first.bg }}
-                        >
-                          {/* First slide preview */}
-                          <div className="p-5">
-                            {first.title && (
-                              <p className="font-serif text-sm font-bold leading-snug"
-                                style={{ color: first.text, whiteSpace: "pre-line" }}>
-                                {first.title}
-                              </p>
-                            )}
-                            {first.body && (
-                              <p className="mt-2 font-sans text-[0.65rem] leading-relaxed"
-                                style={{ color: first.text, opacity: 0.7, whiteSpace: "pre-line" }}>
-                                {first.body.split("\n")[0]}
-                              </p>
-                            )}
-                          </div>
-                          {/* Slide strip + action */}
-                          <div className="flex items-center justify-between border-t px-4 py-2"
-                            style={{ borderColor: first.text + "15" }}>
-                            <div className="flex items-center gap-1.5">
-                              {/* Slide color dots */}
-                              {slot.carousel.map((sl, sli) => (
-                                <div key={sli} className="rounded-sm"
-                                  style={{
-                                    width: sli === 0 ? 16 : 8,
-                                    height: 8,
-                                    backgroundColor: sli === 0 ? first.accent : sl.bg === first.bg ? first.text + "30" : sl.bg,
-                                    opacity: sli === 0 ? 1 : 0.5,
-                                  }} />
-                              ))}
-                              <span className="ml-1 font-sans text-[0.5rem] font-semibold uppercase tracking-widest"
-                                style={{ color: first.text, opacity: 0.35 }}>
-                                {slot.carousel.length} {isStatus ? "status" : "slides"}
-                              </span>
-                            </div>
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
-                              stroke={first.accent} strokeWidth="2.5" opacity="0.6">
-                              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-                            </svg>
-                          </div>
-                        </button>
-                      );
-                    })()}
-
-                    {/* Caption preview (collapsible) */}
-                    {slot.caption && (
-                      <details className="group border-t border-cream/5">
-                        <summary className="flex cursor-pointer select-none items-center gap-2 px-4 py-2.5 hover:bg-cream/3">
-                          <span className="font-sans text-[0.5rem] font-bold uppercase tracking-[0.15em] text-cream/30">Legenda</span>
-                          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
-                            className="ml-auto text-cream/20 transition-transform group-open:rotate-180">
-                            <polyline points="6 9 12 15 18 9"/>
-                          </svg>
-                          <button
-                            onClick={(e) => { e.preventDefault(); navigator.clipboard.writeText(slot.caption!); setCopiedId(`slot-${si}`); setTimeout(() => setCopiedId(null), 2000); }}
-                            className="rounded bg-cream/8 px-2 py-0.5 font-sans text-[0.45rem] font-semibold text-cream/40 hover:bg-cream/15 hover:text-cream/70 transition-all"
-                          >
-                            {copiedId === `slot-${si}` ? "Copiado" : "Copiar"}
-                          </button>
-                        </summary>
-                        <div className="px-4 pb-4 pt-1">
-                          <p className="font-sans text-[0.6rem] leading-relaxed text-cream/40 whitespace-pre-wrap">{slot.caption}</p>
-                        </div>
-                      </details>
-                    )}
-                  </div>
+                  <button key={i} onClick={() => setSelectedWeekday(i)}
+                    className={`relative flex flex-col items-center rounded-xl py-2 transition-all ${
+                      isSel ? "bg-[#c9b896] shadow-lg shadow-[#c9b896]/20"
+                      : isTod ? "bg-cream/8 ring-1 ring-[#c9b896]/30"
+                      : "hover:bg-cream/5"
+                    }`}>
+                    {isTod && !isSel && <span className="absolute -top-0.5 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-[#c9b896]" />}
+                    <span className={`font-sans text-[0.5rem] font-bold uppercase tracking-wider ${isSel ? "text-[#1a1814]" : isTod ? "text-[#c9b896]" : "text-cream/40"}`}>{w.label}</span>
+                    <span className={`mt-0.5 font-mono text-[0.45rem] font-bold ${isSel ? "text-[#1a1814]/60" : "text-cream/25"}`}>
+                      {slotCounts[i] > 0 ? slotCounts[i] : "·"}
+                    </span>
+                  </button>
                 );
               })}
             </div>
-          );
-        })()}
 
-        {/* ══════════════════════════════════════════════════════════════════════ */}
-        {/* ── POSTS — carrosseis prontos ── */}
-        {/* ══════════════════════════════════════════════════════════════════════ */}
-        {pageSection === "posts" && (
-          <div className="py-4 space-y-3">
-
-            {/* Sub-tabs */}
-            <div className="flex gap-1">
-              {([
-                { id: "carrosseis" as const, label: "Carrosseis", count: professionalCarousels.length },
-                { id: "feed" as const, label: "Feed 1:1", count: hubFeedPosts.length },
-                { id: "status" as const, label: "Status 9:16", count: hubStatusPosts.length },
-              ]).map((t) => (
-                <button key={t.id} onClick={() => setPostsTab(t.id)}
-                  className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 font-sans text-[0.6rem] font-semibold transition-all ${
-                    postsTab === t.id
-                      ? "bg-[#c9b896]/20 text-[#c9b896]"
-                      : "text-cream/30 hover:text-cream/50 hover:bg-cream/5"
-                  }`}>
-                  {t.label}
-                  <span className={`rounded-full px-1.5 py-0.5 font-mono text-[0.45rem] ${
-                    postsTab === t.id ? "bg-[#c9b896]/30 text-[#c9b896]/80" : "bg-cream/10 text-cream/30"
-                  }`}>{t.count}</span>
-                </button>
-              ))}
-            </div>
-
-            {/* ── Carrosseis ── */}
-            {postsTab === "carrosseis" && (
-              <div className="space-y-2">
-                {professionalCarousels.map((c) => (
-                  <button key={c.id}
-                    onClick={() => { setHubModal({ slides: c.slides, title: c.title, caption: c.caption }); }}
-                    className="w-full rounded-2xl border border-cream/10 bg-[#222019] p-4 text-left transition-all hover:border-[#c9b896]/20"
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="flex-1 min-w-0">
-                        <p className="font-serif text-sm font-bold text-cream/80 truncate">{c.title}</p>
-                        <p className="mt-1 font-sans text-[0.6rem] text-cream/40 line-clamp-2">{c.description}</p>
-                        <div className="mt-2 flex items-center gap-2">
-                          <span className="rounded-full bg-cream/10 px-2 py-0.5 font-sans text-[0.5rem] font-medium text-cream/40">{c.slides.length} slides</span>
-                        </div>
-                      </div>
-                      {/* Miniatura */}
-                      <div className="shrink-0 rounded-lg overflow-hidden" style={{
-                        width: 48, height: 48, backgroundColor: c.slides[0]?.bg || "#3d3630",
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                      }}>
-                        <span className="font-serif text-[0.4rem] font-bold px-1 text-center leading-tight" style={{ color: c.slides[0]?.text || "#f7f5f0" }}>
-                          {c.slides[0]?.title?.split("\n")[0]?.slice(0, 20) || "~"}
-                        </span>
-                      </div>
-                    </div>
-                  </button>
-                ))}
+            {/* Cabeçalho do dia */}
+            {dayData ? (
+              <div className="rounded-2xl border border-[#c9b896]/15 bg-gradient-to-br from-[#c9b896]/10 to-[#c9b896]/3 p-4">
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <p className="font-sans text-[0.5rem] font-bold uppercase tracking-[0.2em] text-[#c9b896]/50">{r.hint} · {thematicHub[r.themeIdx]?.title}</p>
+                    <h3 className="mt-1.5 font-serif text-base leading-snug text-cream/90">{dayData.theme}</h3>
+                  </div>
+                  <span className="shrink-0 rounded-full border border-[#c9b896]/20 px-2 py-0.5 font-mono text-[0.45rem] text-[#c9b896]/50">
+                    {dayData.slots.length} post{dayData.slots.length > 1 ? "s" : ""}
+                  </span>
+                </div>
+              </div>
+            ) : (
+              <div className="rounded-2xl border border-cream/5 bg-[#222019] p-6 text-center">
+                <p className="font-sans text-xs text-cream/30">Sem conteúdo planeado para este dia.</p>
               </div>
             )}
 
-            {/* ── Feed 1:1 ── */}
-            {postsTab === "feed" && (
-              <div className="space-y-2">
-                <p className="font-sans text-[0.55rem] text-cream/25">
-                  Posts quadrados para o feed do Instagram. Toca para ver e baixar em 1080×1080px.
-                </p>
-                {hubFeedPosts.map((item) => (
-                  <button key={item.id}
-                    onClick={() => { setHubModal({ slides: [item.slide], title: item.theme, caption: item.caption }); }}
-                    className="w-full rounded-2xl border border-cream/10 bg-[#222019] p-3 text-left transition-all hover:border-[#c9b896]/20 active:scale-[0.98]"
-                  >
-                    <div className="flex items-center gap-3">
-                      {/* Miniatura quadrada */}
-                      <div className="shrink-0 rounded-xl overflow-hidden flex flex-col justify-center px-2"
-                        style={{ width: 56, height: 56, backgroundColor: item.slide.bg }}>
-                        <p className="font-serif leading-tight text-center"
-                          style={{ fontSize: 5.5, color: item.slide.text, whiteSpace: "pre-line" }}>
-                          {item.slide.title?.split("\n").slice(0, 3).join("\n")}
-                        </p>
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="font-sans text-xs font-semibold text-cream/70 truncate">{item.theme}</p>
-                        <p className="mt-0.5 font-sans text-[0.55rem] text-cream/30 truncate">{item.weekTitle}</p>
-                        {item.slide.footer && (
-                          <p className="mt-1 font-sans text-[0.5rem] font-medium uppercase tracking-wider truncate" style={{ color: item.slide.accent }}>
-                            {item.slide.footer}
-                          </p>
-                        )}
-                      </div>
-                      <div className="shrink-0">
-                        <span className="rounded-lg border border-[#E1306C]/20 px-2 py-1 font-sans text-[0.5rem] font-semibold text-[#E1306C]/60">
-                          1:1
-                        </span>
-                      </div>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            )}
-
-            {/* ── Status / Stories 9:16 ── */}
-            {postsTab === "status" && (
-              <div className="space-y-2">
-                <p className="font-sans text-[0.55rem] text-cream/25">
-                  Imagens verticais para WA Status e Stories do Instagram. Toca para ver e baixar em 1080×1920px.
-                </p>
-                {hubStatusPosts.map((item) => (
-                  <button key={item.id}
-                    onClick={() => { setHubModal({ slides: item.slides, title: item.theme, caption: item.caption }); }}
-                    className="w-full rounded-2xl border border-cream/10 bg-[#222019] p-3 text-left transition-all hover:border-[#c9b896]/20 active:scale-[0.98]"
-                  >
-                    <div className="flex items-center gap-3">
-                      {/* Miniatura vertical 9:16 */}
-                      <div className="shrink-0 rounded-xl overflow-hidden flex flex-col justify-center px-2"
-                        style={{ width: 36, height: 64, backgroundColor: item.slides[0]?.bg || "#3d3630" }}>
-                        <p className="font-serif leading-tight text-center"
-                          style={{ fontSize: 4.5, color: item.slides[0]?.text || "#f7f5f0", whiteSpace: "pre-line" }}>
-                          {item.slides[0]?.title?.split("\n").slice(0, 4).join("\n")}
-                        </p>
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="font-sans text-xs font-semibold text-cream/70 truncate">{item.theme}</p>
-                        <p className="mt-0.5 font-sans text-[0.55rem] text-cream/30 truncate">{item.weekTitle}</p>
-                        <p className="mt-1 font-sans text-[0.5rem] text-cream/25">{item.slides.length} imagem{item.slides.length > 1 ? "ns" : ""}</p>
-                      </div>
-                      <div className="shrink-0">
-                        <span className="rounded-lg border border-[#25D366]/20 px-2 py-1 font-sans text-[0.5rem] font-semibold text-[#25D366]/60">
-                          9:16
-                        </span>
-                      </div>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            )}
-
+            {dayData?.slots.map((slot, si) => <SlotCard key={si} slot={slot} idx={si} />)}
           </div>
         )}
 
         {/* ══════════════════════════════════════════════════════════════════════ */}
-        {/* ── GUIA DE PRODUCAO ── */}
+        {/* FEED — posts 1:1 para o feed do Instagram                            */}
         {/* ══════════════════════════════════════════════════════════════════════ */}
-        {pageSection === "guia" && (
-          <div className="py-4 space-y-4">
-            <p className="font-sans text-[0.6rem] font-semibold uppercase tracking-[0.15em] text-cream/30">
-              Referencia rapida para criacao de conteudo
-            </p>
-            {productionGuide.map((section, si) => (
-              <div key={si} className="overflow-hidden rounded-2xl border border-cream/10 bg-[#222019]">
-                <div className="border-b border-cream/5 px-4 py-3">
-                  <p className="font-sans text-xs font-semibold text-[#c9b896]/80">{section.category}</p>
+        {section === "feed" && (
+          <div className="py-4 space-y-2">
+            <p className="mb-3 font-sans text-[0.55rem] text-cream/25">Posts quadrados · 1080×1080px · Instagram feed</p>
+            {hubFeedPosts.map((item) => (
+              <button key={item.id}
+                onClick={() => setHubModal({ slides: [item.slide], title: item.theme, caption: item.caption })}
+                className="w-full overflow-hidden rounded-2xl text-left transition-all active:scale-[0.98] hover:opacity-90"
+                style={{ backgroundColor: item.slide.bg }}>
+                <div className="p-5">
+                  {item.slide.title && <p className="font-serif text-sm font-bold leading-snug" style={{ color: item.slide.text, whiteSpace: "pre-line" }}>{item.slide.title}</p>}
+                  {item.slide.body && <p className="mt-2 font-sans text-[0.65rem] leading-relaxed" style={{ color: item.slide.text, opacity: 0.7, whiteSpace: "pre-line" }}>{item.slide.body}</p>}
+                  {item.slide.footer && <p className="mt-3 font-sans text-[0.5rem] font-semibold uppercase tracking-[0.15em]" style={{ color: item.slide.accent }}>{item.slide.footer}</p>}
                 </div>
-                <div className="divide-y divide-cream/5">
-                  {section.items.map((item, ii) => (
-                    <div key={ii} className="px-4 py-3">
-                      <p className="font-sans text-xs font-medium text-cream/70">{item.title}</p>
-                      <p className="mt-0.5 font-sans text-[0.65rem] leading-relaxed text-cream/40">{item.detail}</p>
-                    </div>
-                  ))}
+                <div className="flex items-center justify-between border-t px-4 py-2.5" style={{ borderColor: item.slide.text + "15" }}>
+                  <span className="font-sans text-[0.5rem] font-semibold uppercase tracking-widest" style={{ color: item.slide.text, opacity: 0.3 }}>{item.weekTitle}</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.slide.accent} strokeWidth="2.5" opacity="0.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 </div>
-              </div>
+              </button>
             ))}
-            <div className="overflow-hidden rounded-2xl border border-cream/10 bg-[#222019]">
-              <div className="border-b border-cream/5 px-4 py-3">
-                <p className="font-sans text-xs font-semibold text-[#c9b896]/80">Hashtags</p>
-              </div>
-              <div className="divide-y divide-cream/5">
-                {hashtagSets.map((set) => (
-                  <button key={set.name}
-                    onClick={() => copyText(`guide-ht-${set.name}`, set.tags.join(" "))}
-                    className="block w-full px-4 py-3 text-left hover:bg-cream/3">
-                    <div className="flex items-center justify-between">
-                      <span className="font-sans text-xs font-semibold text-cream/60">{set.name}</span>
-                      <span className="rounded-full bg-cream/10 px-2 py-0.5 font-sans text-[0.5rem] font-medium text-cream/40">
-                        {copiedId === `guide-ht-${set.name}` ? "Copiado!" : `${set.tags.length} tags`}
-                      </span>
-                    </div>
-                    <p className="mt-1 font-sans text-[0.6rem] leading-relaxed text-cream/30">{set.description}</p>
-                    <p className="mt-1 font-sans text-[0.55rem] leading-relaxed text-[#c9b896]/40">{set.tags.join(" ")}</p>
-                  </button>
-                ))}
-              </div>
-            </div>
           </div>
         )}
 
         {/* ══════════════════════════════════════════════════════════════════════ */}
-        {/* ── CAPCUT — imagem + áudio ── */}
+        {/* CARROSSEIS — séries de slides temáticos                              */}
         {/* ══════════════════════════════════════════════════════════════════════ */}
-        {pageSection === "capcut" && (
+        {section === "carrosseis" && (
+          <div className="py-4 space-y-2">
+            <p className="mb-3 font-sans text-[0.55rem] text-cream/25">Carrosseis prontos · 1080×1080px · Instagram</p>
+            {professionalCarousels.map((c) => (
+              <button key={c.id}
+                onClick={() => setHubModal({ slides: c.slides, title: c.title, caption: c.caption })}
+                className="w-full overflow-hidden rounded-2xl text-left transition-all active:scale-[0.98] hover:opacity-90"
+                style={{ backgroundColor: c.slides[0]?.bg || "#3d3630" }}>
+                <div className="p-5">
+                  <p className="font-serif text-sm font-bold leading-snug" style={{ color: c.slides[0]?.text || "#f7f5f0", whiteSpace: "pre-line" }}>
+                    {c.slides[0]?.title || c.title}
+                  </p>
+                  {c.description && <p className="mt-2 font-sans text-[0.65rem] leading-relaxed" style={{ color: c.slides[0]?.text || "#f7f5f0", opacity: 0.6 }}>{c.description}</p>}
+                </div>
+                <div className="flex items-center justify-between border-t px-4 py-2.5" style={{ borderColor: (c.slides[0]?.text || "#f7f5f0") + "15" }}>
+                  <div className="flex items-center gap-1.5">
+                    {c.slides.map((sl, sli) => (
+                      <div key={sli} className="rounded-sm" style={{ width: sli === 0 ? 16 : 8, height: 8, backgroundColor: sli === 0 ? (sl.accent || "#c9b896") : sl.bg, opacity: sli === 0 ? 1 : 0.45 }} />
+                    ))}
+                    <span className="ml-1 font-sans text-[0.5rem] font-semibold uppercase tracking-widest" style={{ color: c.slides[0]?.text || "#f7f5f0", opacity: 0.3 }}>{c.slides.length} slides</span>
+                  </div>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={c.slides[0]?.accent || "#c9b896"} strokeWidth="2.5" opacity="0.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </div>
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {/* STATUS — imagens 9:16 para WA Status e Stories                       */}
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {section === "status" && (
+          <div className="py-4 space-y-2">
+            <p className="mb-3 font-sans text-[0.55rem] text-cream/25">Imagens verticais · 1080×1920px · WA Status e Stories</p>
+            {hubStatusPosts.map((item) => (
+              <button key={item.id}
+                onClick={() => setHubModal({ slides: item.slides, title: item.theme, caption: item.caption })}
+                className="w-full overflow-hidden rounded-2xl text-left transition-all active:scale-[0.98] hover:opacity-90"
+                style={{ backgroundColor: item.slides[0]?.bg || "#3d3630" }}>
+                <div className="flex gap-3 p-5">
+                  {/* Miniatura vertical */}
+                  <div className="shrink-0 rounded-lg overflow-hidden flex flex-col justify-center px-1.5"
+                    style={{ width: 40, height: 72, backgroundColor: item.slides[0]?.bg }}>
+                    <p className="font-serif text-center leading-tight" style={{ fontSize: 4.5, color: item.slides[0]?.text, whiteSpace: "pre-line" }}>
+                      {item.slides[0]?.title?.split("\n").slice(0, 5).join("\n")}
+                    </p>
+                    {item.slides[0]?.footer && (
+                      <p className="mt-0.5 text-center font-sans font-semibold uppercase" style={{ fontSize: 3, color: item.slides[0]?.accent, letterSpacing: "0.05em" }}>
+                        {item.slides[0].footer}
+                      </p>
+                    )}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-serif text-sm font-bold leading-snug" style={{ color: item.slides[0]?.text || "#f7f5f0", whiteSpace: "pre-line" }}>
+                      {item.slides[0]?.title?.split("\n").slice(0, 2).join("\n")}
+                    </p>
+                    <p className="mt-1 font-sans text-[0.55rem]" style={{ color: item.slides[0]?.text || "#f7f5f0", opacity: 0.4 }}>{item.theme}</p>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between border-t px-4 py-2.5" style={{ borderColor: (item.slides[0]?.text || "#f7f5f0") + "15" }}>
+                  <span className="font-sans text-[0.5rem] font-semibold uppercase tracking-widest" style={{ color: item.slides[0]?.text || "#f7f5f0", opacity: 0.3 }}>
+                    {item.slides.length} imagem{item.slides.length > 1 ? "ns" : ""} · {item.weekTitle}
+                  </span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.slides[0]?.accent || "#c9b896"} strokeWidth="2.5" opacity="0.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </div>
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {/* REELS — CapCut templates + scripts de reel                           */}
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {section === "reels" && (
           <div className="py-4 space-y-4">
-            <div className="rounded-2xl border border-[#c9b896]/10 bg-[#c9b896]/5 p-3">
-              <p className="font-sans text-[0.6rem] leading-relaxed text-[#c9b896]/70">
-                Baixa a imagem e o áudio de cada entrada para combinar no CapCut.
-                Os áudios ficam em <span className="font-mono">/audios/marketing/</span> quando os colocares lá.
-              </p>
-            </div>
 
-            {/* Filtro de categoria */}
-            <div className="-mx-4 overflow-x-auto px-4 scrollbar-none">
-              <div className="flex gap-1" style={{ width: "max-content" }}>
-                {CAPCUT_CATEGORIES.map((cat) => (
-                  <button key={cat.id} onClick={() => setCapcutCategory(cat.id)}
-                    className={`rounded-lg px-3 py-1.5 font-sans text-[0.6rem] font-semibold whitespace-nowrap transition-all ${
-                      capcutCategory === cat.id
-                        ? "bg-[#c9b896] text-[#1a1814]"
-                        : "border border-cream/10 text-cream/40 hover:text-cream/60 hover:border-cream/20"
-                    }`}>
-                    {cat.label}
-                    <span className={`ml-1.5 ${capcutCategory === cat.id ? "opacity-60" : "opacity-40"}`}>
-                      {cat.count}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Lista de entradas */}
-            {capcutContent
-              .filter((e) => capcutCategory === "todos" || e.category === capcutCategory)
-              .map((entry) => (
+            {/* CapCut templates */}
+            <div className="space-y-2">
+              <p className="font-sans text-[0.55rem] text-cream/25">CapCut · imagem + áudio · toca para abrir</p>
+              {capcutContent.map((entry) => (
                 <button key={entry.id}
                   onClick={() => setCapcutModal(entry)}
-                  className="w-full rounded-2xl border border-cream/10 bg-[#222019] p-3 text-left transition-all hover:border-[#c9b896]/20 active:scale-[0.98]"
-                >
+                  className="w-full rounded-2xl border border-cream/10 bg-[#222019] p-3 text-left transition-all hover:border-[#c9b896]/20 active:scale-[0.98]">
                   <div className="flex items-center gap-3">
-                    {/* Miniatura do slide */}
-                    <div className="shrink-0 rounded-xl overflow-hidden" style={{
-                      width: 64, height: 64,
-                      backgroundColor: entry.slide.bg,
-                    }}>
-                      <div style={{ padding: "8px", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                        <p className="font-serif leading-tight" style={{
-                          fontSize: 7, color: entry.slide.text,
-                          whiteSpace: "pre-line", lineClamp: 3,
-                        }}>
-                          {entry.slide.title}
-                        </p>
-                        {entry.slide.body && (
-                          <p style={{
-                            fontSize: 5, color: entry.slide.text, opacity: 0.6,
-                            marginTop: 3, lineHeight: 1.4, display: "-webkit-box",
-                            WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden",
-                          }}>
-                            {entry.slide.body}
-                          </p>
-                        )}
-                      </div>
+                    <div className="shrink-0 rounded-xl overflow-hidden" style={{ width: 56, height: 56, backgroundColor: entry.slide.bg, display: "flex", flexDirection: "column", justifyContent: "center", padding: "6px" }}>
+                      <p className="font-serif leading-tight text-center" style={{ fontSize: 6, color: entry.slide.text, whiteSpace: "pre-line" }}>{entry.slide.title}</p>
                     </div>
-
-                    {/* Info */}
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-1.5 mb-1">
-                        <span className="rounded-full px-1.5 py-0.5 font-sans text-[0.45rem] font-semibold"
-                          style={{ backgroundColor: entry.slide.accent + "25", color: entry.slide.accent }}>
-                          {entry.categoryLabel}
-                        </span>
-                      </div>
-                      <p className="font-serif text-sm font-bold text-cream/80 truncate">{entry.title}</p>
-                      <p className="mt-0.5 font-sans text-[0.55rem] text-cream/35 line-clamp-2 leading-relaxed">{entry.script}</p>
-                      <p className="mt-1.5 font-mono text-[0.45rem] text-cream/25">{entry.audioFile}</p>
+                      <p className="font-sans text-xs font-semibold text-cream/70 truncate">{entry.title}</p>
+                      <p className="mt-0.5 font-sans text-[0.55rem] text-cream/30 truncate">{entry.categoryLabel}</p>
                     </div>
-
-                    {/* Seta */}
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="shrink-0 text-cream/20">
-                      <path d="M9 18l6-6-6-6" />
-                    </svg>
+                    <div className="shrink-0 flex items-center gap-1 rounded-lg border border-[#c9b896]/20 px-2 py-1">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#c9b896" strokeWidth="2" opacity="0.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                      <span className="font-sans text-[0.45rem] font-semibold text-[#c9b896]/50">CapCut</span>
+                    </div>
                   </div>
                 </button>
               ))}
+            </div>
+
+            {/* Scripts de reel */}
+            <div className="space-y-2">
+              <p className="font-sans text-[0.55rem] text-cream/25">Scripts de Reel · copia e grava</p>
+              {reelScripts.map((reel, ri) => (
+                <div key={ri} className="overflow-hidden rounded-2xl border border-cream/10 bg-[#222019]">
+                  <div className="px-4 py-3 border-b border-cream/5">
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="font-sans text-xs font-semibold text-cream/70 line-clamp-1">{reel.hook}</p>
+                      <button onClick={() => copyText(`reel-${ri}`, [reel.hook, ...reel.scenes, `CTA: ${reel.cta}`].join("\n\n"))}
+                        className="shrink-0 rounded-lg bg-cream/8 px-2.5 py-1 font-sans text-[0.5rem] font-semibold text-cream/40 hover:bg-cream/15 transition-all">
+                        {copiedId === `reel-${ri}` ? "Copiado" : "Copiar"}
+                      </button>
+                    </div>
+                    <p className="mt-1 font-sans text-[0.5rem] text-cream/30">{reel.duration} · {reel.music.split(",")[0]}</p>
+                  </div>
+                  <div className="px-4 py-3 space-y-1.5">
+                    {reel.scenes.map((scene, si) => (
+                      <p key={si} className="font-sans text-[0.6rem] leading-relaxed text-cream/40">{scene}</p>
+                    ))}
+                    <p className="mt-2 font-sans text-[0.6rem] font-semibold text-[#c9b896]/60">CTA: {reel.cta}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         )}
 
       </div>
     </div>
 
-    {/* ── CAPCUT MODAL ── */}
-    {capcutModal && (() => {
-      const sqW = 280, sqH = 280, sqScale = sqW / DIMS.w;
-      const vtW = 180, vtH = Math.round(STORY_DIMS.h * (vtW / STORY_DIMS.w)), vtScale = vtW / STORY_DIMS.w;
-      const audioUrl = `${AUDIO_BASE_PATH}/${capcutModal.audioFile}`;
+    {/* ════════════════════════════════════════════════════════════════════════ */}
+    {/* MODAL DE EXPORTAÇÃO — slides quadrados + verticais                      */}
+    {/* ════════════════════════════════════════════════════════════════════════ */}
+    {hubModal && (() => {
+      const sqW = 280, sqScale = sqW / DIMS.w;
+      const vtW = 160, vtH = Math.round(STORY_DIMS.h * (vtW / STORY_DIMS.w)), vtScale = vtW / STORY_DIMS.w;
+      const slides = hubModal.slides;
       return (
         <div className="fixed inset-0 z-50 flex flex-col bg-[#1a1814]">
           {/* Header */}
           <div className="shrink-0 border-b border-cream/10 px-4 py-3">
             <div className="flex items-center gap-3">
+              <button onClick={() => { setHubModal(null); hubSlideSquareRefs.current = []; hubSlideVertRefs.current = []; }}
+                aria-label="Fechar"
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cream/10 text-cream/60">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
+              </button>
+              <div className="flex-1 min-w-0">
+                <p className="font-sans text-xs font-semibold text-cream/70 truncate">{hubModal.title}</p>
+                <p className="font-sans text-[0.5rem] text-cream/30">{slides.length} imagem{slides.length > 1 ? "ns" : ""}</p>
+              </div>
+              {slides.length > 1 && (
+                <div className="flex gap-2">
+                  <button onClick={() => exportAllHub(slides.length, "square")} disabled={hubExportingSquare !== null}
+                    className="rounded-lg bg-cream/10 px-2.5 py-1.5 font-sans text-[0.55rem] font-semibold text-cream/60 hover:bg-cream/15 disabled:opacity-40 transition-all">
+                    {hubExportingSquare === "all" ? "..." : "1:1 ×" + slides.length}
+                  </button>
+                  <button onClick={() => exportAllHub(slides.length, "vert")} disabled={hubExportingVert !== null}
+                    className="rounded-lg bg-cream/10 px-2.5 py-1.5 font-sans text-[0.55rem] font-semibold text-cream/60 hover:bg-cream/15 disabled:opacity-40 transition-all">
+                    {hubExportingVert === "all" ? "..." : "9:16 ×" + slides.length}
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="flex-1 overflow-y-auto px-4 py-4 space-y-6">
+
+            {/* Caption */}
+            {hubModal.caption && (
+              <div className="rounded-2xl border border-cream/10 bg-[#222019] p-4">
+                <div className="mb-2 flex items-center justify-between">
+                  <span className="font-sans text-[0.5rem] font-bold uppercase tracking-[0.15em] text-cream/30">Legenda</span>
+                  <button onClick={() => copyText("modal-caption", hubModal.caption!)}
+                    className="rounded bg-cream/8 px-2.5 py-1 font-sans text-[0.5rem] font-semibold text-cream/40 hover:bg-cream/15 transition-all">
+                    {copiedId === "modal-caption" ? "Copiado" : "Copiar"}
+                  </button>
+                </div>
+                <p className="font-sans text-[0.65rem] leading-relaxed text-cream/50 whitespace-pre-wrap">
+                  {stripHashtags(hubModal.caption)}
+                </p>
+              </div>
+            )}
+
+            {/* Slides */}
+            {slides.map((slide, idx) => (
+              <div key={idx} className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <span className="font-sans text-[0.5rem] font-bold uppercase tracking-[0.15em] text-cream/30">Imagem {idx + 1}</span>
+                  <div className="flex-1" />
+                  <button onClick={() => exportHubSlide(idx, "square")} disabled={hubExportingSquare !== null}
+                    className="rounded-lg bg-[#E1306C]/15 px-3 py-1 font-sans text-[0.55rem] font-semibold text-[#E1306C]/80 hover:bg-[#E1306C]/25 disabled:opacity-40 transition-all">
+                    {hubExportingSquare === idx ? "..." : "1:1"}
+                  </button>
+                  <button onClick={() => exportHubSlide(idx, "vert")} disabled={hubExportingVert !== null}
+                    className="rounded-lg bg-[#25D366]/10 px-3 py-1 font-sans text-[0.55rem] font-semibold text-[#25D366]/80 hover:bg-[#25D366]/20 disabled:opacity-40 transition-all">
+                    {hubExportingVert === idx ? "..." : "9:16"}
+                  </button>
+                </div>
+                {/* Square preview */}
+                <div className="flex gap-3">
+                  <div ref={(el) => { hubSlideSquareRefs.current[idx] = el; }}
+                    className="overflow-hidden rounded-xl border border-cream/10" style={{ width: sqW, height: sqW }}>
+                    <SlidePreview slide={slide} index={idx} scale={sqScale} />
+                  </div>
+                  {/* Vertical preview */}
+                  <div ref={(el) => { hubSlideVertRefs.current[idx] = el; }}
+                    className="overflow-hidden rounded-xl border border-cream/10" style={{ width: vtW, height: vtH }}>
+                    <SlidePreviewVertical slide={slide} index={idx} scale={vtScale} />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    })()}
+
+    {/* ════════════════════════════════════════════════════════════════════════ */}
+    {/* MODAL CAPCUT                                                             */}
+    {/* ════════════════════════════════════════════════════════════════════════ */}
+    {capcutModal && (() => {
+      const sqW = 280, sqH = 280, sqScale = sqW / DIMS.w;
+      const vtW = 160, vtH = Math.round(STORY_DIMS.h * (vtW / STORY_DIMS.w)), vtScale = vtW / STORY_DIMS.w;
+      const audioUrl = `${AUDIO_BASE_PATH}/${capcutModal.audioFile}`;
+      return (
+        <div className="fixed inset-0 z-50 flex flex-col bg-[#1a1814]">
+          <div className="shrink-0 border-b border-cream/10 px-4 py-3">
+            <div className="flex items-center gap-3">
               <button onClick={() => { setCapcutModal(null); setCapcutExportingSquare(false); setCapcutExportingVert(false); }}
+                aria-label="Fechar"
                 className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cream/10 text-cream/60">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
               </button>
@@ -823,213 +730,57 @@ export default function MarketingPage() {
           </div>
 
           <div className="flex-1 overflow-y-auto px-4 py-4 space-y-6">
+            {/* Áudio */}
+            <div className="rounded-2xl border border-[#c9b896]/15 bg-[#c9b896]/5 p-4 space-y-3">
+              <p className="font-sans text-[0.5rem] font-bold uppercase tracking-[0.2em] text-[#c9b896]/50">Áudio da Vivianne</p>
+              <p className="font-sans text-[0.65rem] leading-relaxed text-cream/70 italic">&ldquo;{capcutModal.script}&rdquo;</p>
+              <div className="flex items-center justify-between border-t border-cream/5 pt-3">
+                <p className="font-mono text-[0.5rem] text-cream/25">{capcutModal.audioFile}</p>
+                <a href={audioUrl} download={capcutModal.audioFile}
+                  className="rounded-lg bg-[#c9b896]/15 px-3 py-1.5 font-sans text-[0.55rem] font-semibold text-[#c9b896]/80 hover:bg-[#c9b896]/25 transition-all"
+                  onClick={(e) => { fetch(audioUrl, { method: "HEAD" }).then((res) => { if (!res.ok) { e.preventDefault(); alert("Áudio ainda não disponível.\nColoca o ficheiro em /public/audios/marketing/"); } }); }}>
+                  Baixar Áudio
+                </a>
+              </div>
+            </div>
 
-            {/* ── Áudio ── */}
+            {/* Imagens */}
             <div className="space-y-2">
-              <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-[0.15em] text-[#c9b896]/60">Áudio da Vivianne</p>
-              <div className="rounded-2xl border border-[#c9b896]/15 bg-[#c9b896]/5 p-4 space-y-3">
-                <p className="font-sans text-[0.65rem] leading-relaxed text-cream/70 italic">&ldquo;{capcutModal.script}&rdquo;</p>
-                <div className="flex items-center justify-between pt-1 border-t border-cream/5">
-                  <p className="font-mono text-[0.5rem] text-cream/25">{capcutModal.audioFile}</p>
-                  <a href={audioUrl} download={capcutModal.audioFile}
-                    className="rounded-lg bg-[#c9b896]/15 px-3 py-1.5 font-sans text-[0.55rem] font-semibold text-[#c9b896]/80 hover:bg-[#c9b896]/25 transition-all"
-                    onClick={(e) => {
-                      // Testar se o ficheiro existe antes de tentar baixar
-                      fetch(audioUrl, { method: "HEAD" }).then((r) => {
-                        if (!r.ok) { e.preventDefault(); alert("Ficheiro de áudio ainda não disponível.\nColoca-o em /public/audios/marketing/"); }
-                      });
-                    }}>
-                    Baixar Áudio
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* ── Instagram 1:1 ── */}
-            <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-[0.15em] text-[#E1306C]/60">Imagem 1:1</p>
-                <button onClick={async () => {
-                  const wrapper = capcutSlideSquareRef.current;
-                  if (!wrapper) return;
-                  const el = (wrapper.firstElementChild as HTMLElement) || wrapper;
-                  setCapcutExportingSquare(true);
-                  try { await captureElement(el, DIMS, `${capcutModal.id}-square.png`); } catch { /* skip */ }
-                  setCapcutExportingSquare(false);
-                }} disabled={capcutExportingSquare}
-                  className="rounded-lg bg-[#E1306C]/15 px-3 py-1 font-sans text-[0.55rem] font-semibold text-[#E1306C]/80 hover:bg-[#E1306C]/25 disabled:opacity-40 transition-all">
-                  {capcutExportingSquare ? "A baixar..." : "Baixar Imagem"}
-                </button>
+                <p className="font-sans text-[0.5rem] font-bold uppercase tracking-[0.2em] text-cream/30">Imagens</p>
+                <div className="flex gap-2">
+                  <button onClick={async () => { const wrapper = capcutSlideSquareRef.current; if (!wrapper) return; const el = (wrapper.firstElementChild as HTMLElement) || wrapper; setCapcutExportingSquare(true); try { await captureElement(el, DIMS, `${capcutModal.id}-square.png`); } catch { /**/ } setCapcutExportingSquare(false); }} disabled={capcutExportingSquare}
+                    className="rounded-lg bg-[#E1306C]/15 px-3 py-1 font-sans text-[0.55rem] font-semibold text-[#E1306C]/80 hover:bg-[#E1306C]/25 disabled:opacity-40 transition-all">
+                    {capcutExportingSquare ? "..." : "1:1"}
+                  </button>
+                  <button onClick={async () => { const wrapper = capcutSlideVertRef.current; if (!wrapper) return; const el = (wrapper.firstElementChild as HTMLElement) || wrapper; setCapcutExportingVert(true); try { await captureElement(el, STORY_DIMS, `${capcutModal.id}-story.png`); } catch { /**/ } setCapcutExportingVert(false); }} disabled={capcutExportingVert}
+                    className="rounded-lg bg-[#25D366]/10 px-3 py-1 font-sans text-[0.55rem] font-semibold text-[#25D366]/80 hover:bg-[#25D366]/20 disabled:opacity-40 transition-all">
+                    {capcutExportingVert ? "..." : "9:16"}
+                  </button>
+                </div>
               </div>
-              <div className="flex justify-center">
-                <div className="overflow-hidden rounded-xl border border-cream/10" style={{ width: sqW, height: sqH }}>
-                  <div ref={capcutSlideSquareRef}>
-                    <SlidePreview slide={capcutModal.slide} index={0} scale={sqScale} />
-                  </div>
+              <div className="flex gap-3">
+                <div ref={capcutSlideSquareRef} className="overflow-hidden rounded-xl border border-cream/10" style={{ width: sqW, height: sqH }}>
+                  <SlidePreview slide={capcutModal.slide} index={0} scale={sqScale} />
+                </div>
+                <div ref={capcutSlideVertRef} className="overflow-hidden rounded-xl border border-cream/10" style={{ width: vtW, height: vtH }}>
+                  <SlidePreviewVertical slide={capcutModal.slide} index={0} scale={vtScale} />
                 </div>
               </div>
             </div>
 
-            {/* ── Story 9:16 ── */}
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-[0.15em] text-[#25D366]/60">Imagem Story 9:16</p>
-                <button onClick={async () => {
-                  const wrapper = capcutSlideVertRef.current;
-                  if (!wrapper) return;
-                  const el = (wrapper.firstElementChild as HTMLElement) || wrapper;
-                  setCapcutExportingVert(true);
-                  try { await captureElement(el, STORY_DIMS, `${capcutModal.id}-story.png`); } catch { /* skip */ }
-                  setCapcutExportingVert(false);
-                }} disabled={capcutExportingVert}
-                  className="rounded-lg bg-[#25D366]/10 px-3 py-1 font-sans text-[0.55rem] font-semibold text-[#25D366]/80 hover:bg-[#25D366]/20 disabled:opacity-40 transition-all">
-                  {capcutExportingVert ? "A baixar..." : "Baixar Imagem"}
-                </button>
-              </div>
-              <div className="flex justify-center">
-                <div className="overflow-hidden rounded-xl border border-cream/10" style={{ width: vtW, height: vtH }}>
-                  <div ref={capcutSlideVertRef}>
-                    <SlidePreviewVertical slide={capcutModal.slide} index={0} scale={vtScale} />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* ── Instrução CapCut ── */}
+            {/* Como usar */}
             <div className="rounded-2xl border border-cream/5 bg-[#222019] p-4 space-y-2">
-              <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-cream/30">Como usar no CapCut</p>
+              <p className="font-sans text-[0.5rem] font-bold uppercase tracking-[0.15em] text-cream/30">Como usar no CapCut</p>
               <ol className="space-y-1.5">
-                {[
-                  "Baixa a imagem (Story 9:16) e o áudio",
-                  "Abre o CapCut → Novo projecto → Adiciona a imagem",
-                  "Ajusta para 15–30 segundos",
-                  "Importa o áudio e sincroniza",
-                  "Adiciona texto sobreposto se quiseres",
-                  "Exporta e publica no Reel / Story",
-                ].map((step, i) => (
+                {["Baixa a imagem (9:16) e o áudio", "Abre o CapCut → Novo projecto → Adiciona a imagem", "Adiciona o áudio na timeline", "Ajusta timing se necessário → Exporta", "Publica como Reel"].map((step, i) => (
                   <li key={i} className="flex items-start gap-2">
-                    <span className="shrink-0 font-sans text-[0.45rem] font-bold text-[#c9b896]/40 mt-0.5">{i + 1}.</span>
-                    <span className="font-sans text-[0.6rem] text-cream/40 leading-relaxed">{step}</span>
+                    <span className="shrink-0 font-mono text-[0.5rem] font-bold text-[#c9b896]/30">{i + 1}.</span>
+                    <span className="font-sans text-[0.6rem] leading-relaxed text-cream/40">{step}</span>
                   </li>
                 ))}
               </ol>
             </div>
-
-            <div className="h-8" />
-          </div>
-        </div>
-      );
-    })()}
-
-    {/* ── SLIDE MODAL — ambos os formatos visíveis ── */}
-    {hubModal && (() => {
-      const sqW = 280, sqH = 280, sqScale = sqW / DIMS.w;
-      const vtW = 180, vtH = Math.round(STORY_DIMS.h * (vtW / STORY_DIMS.w)), vtScale = vtW / STORY_DIMS.w;
-      const waCaption = hubModal.caption ? stripHashtags(hubModal.caption) : "";
-      const n = hubModal.slides.length;
-      const isExportingSquare = hubExportingSquare !== null;
-      const isExportingVert = hubExportingVert !== null;
-      return (
-        <div className="fixed inset-0 z-50 flex flex-col bg-[#1a1814]">
-          {/* Header */}
-          <div className="shrink-0 border-b border-cream/10 px-4 py-3">
-            <div className="flex items-center gap-3">
-              <button onClick={() => { setHubModal(null); setHubExportingSquare(null); setHubExportingVert(null); }}
-                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cream/10 text-cream/60">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
-              </button>
-              <p className="flex-1 font-sans text-xs font-semibold text-cream/70 truncate">{hubModal.title}</p>
-            </div>
-          </div>
-
-          <div className="flex-1 overflow-y-auto px-4 py-4 space-y-6">
-
-            {/* ── Instagram 1:1 ── */}
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-[0.15em] text-[#E1306C]/60">Instagram 1:1</p>
-                <button onClick={() => exportAllHub(n, "square")} disabled={isExportingSquare}
-                  className="rounded-lg bg-[#E1306C]/15 px-3 py-1 font-sans text-[0.55rem] font-semibold text-[#E1306C]/80 hover:bg-[#E1306C]/25 disabled:opacity-40 transition-all">
-                  {hubExportingSquare === "all" ? "A baixar..." : n > 1 ? `Baixar todos (${n})` : "Baixar"}
-                </button>
-              </div>
-              <div className={`${n > 1 ? "-mx-4 overflow-x-auto px-4 scrollbar-none" : "flex justify-center"}`}>
-                <div className={`${n > 1 ? "flex gap-3" : ""}`} style={n > 1 ? { width: "max-content" } : {}}>
-                  {hubModal.slides.map((slide, si) => (
-                    <div key={si} className="shrink-0">
-                      <div className="overflow-hidden rounded-xl border border-cream/10" style={{ width: sqW, height: sqH }}>
-                        <div ref={(el) => { hubSlideSquareRefs.current[si] = el; }}>
-                          <SlidePreview slide={slide} index={si} scale={sqScale} />
-                        </div>
-                      </div>
-                      <button onClick={() => exportHubSlide(si, "square")}
-                        disabled={hubExportingSquare === si}
-                        className="mt-1.5 w-full rounded-lg border border-cream/10 py-1.5 font-sans text-[0.5rem] font-semibold text-cream/40 hover:border-[#E1306C]/30 hover:text-cream/60 disabled:opacity-40 transition-all">
-                        {hubExportingSquare === si ? "..." : `↓ ${si + 1}`}
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* ── WA Status 9:16 ── */}
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-[0.15em] text-[#25D366]/60">WA Status 9:16</p>
-                <button onClick={() => exportAllHub(n, "vert")} disabled={isExportingVert}
-                  className="rounded-lg bg-[#25D366]/10 px-3 py-1 font-sans text-[0.55rem] font-semibold text-[#25D366]/80 hover:bg-[#25D366]/20 disabled:opacity-40 transition-all">
-                  {hubExportingVert === "all" ? "A baixar..." : n > 1 ? `Baixar todos (${n})` : "Baixar"}
-                </button>
-              </div>
-              <div className={`${n > 1 ? "-mx-4 overflow-x-auto px-4 scrollbar-none" : "flex justify-center"}`}>
-                <div className={`${n > 1 ? "flex gap-3" : ""}`} style={n > 1 ? { width: "max-content" } : {}}>
-                  {hubModal.slides.map((slide, si) => (
-                    <div key={si} className="shrink-0">
-                      <div className="overflow-hidden rounded-xl border border-cream/10" style={{ width: vtW, height: vtH }}>
-                        <div ref={(el) => { hubSlideVertRefs.current[si] = el; }}>
-                          <SlidePreviewVertical slide={slide} index={si} scale={vtScale} />
-                        </div>
-                      </div>
-                      <button onClick={() => exportHubSlide(si, "vert")}
-                        disabled={hubExportingVert === si}
-                        className="mt-1.5 w-full rounded-lg border border-cream/10 py-1.5 font-sans text-[0.5rem] font-semibold text-cream/40 hover:border-[#25D366]/30 hover:text-cream/60 disabled:opacity-40 transition-all">
-                        {hubExportingVert === si ? "..." : `↓ ${si + 1}`}
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* ── Legendas ── */}
-            {hubModal.caption && (
-              <div className="space-y-2">
-                <div className="rounded-2xl border border-[#E1306C]/20 bg-[#E1306C]/5 p-4 space-y-2">
-                  <div className="flex items-center justify-between">
-                    <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#E1306C]/60">Legenda Instagram</p>
-                    <button onClick={() => copyText("hub-ig", hubModal.caption || "")}
-                      className={`rounded-lg px-3 py-1 font-sans text-[0.55rem] font-semibold transition-all ${copiedId === "hub-ig" ? "bg-[#E1306C] text-white" : "bg-[#E1306C]/10 text-[#E1306C]/60"}`}>
-                      {copiedId === "hub-ig" ? "Copiada!" : "Copiar"}
-                    </button>
-                  </div>
-                  <pre className="whitespace-pre-wrap font-sans text-[0.65rem] leading-relaxed text-cream/60">{hubModal.caption}</pre>
-                </div>
-                {waCaption && waCaption !== hubModal.caption && (
-                  <div className="rounded-2xl border border-[#25D366]/20 bg-[#25D366]/5 p-4 space-y-2">
-                    <div className="flex items-center justify-between">
-                      <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-wider text-[#25D366]/60">Legenda Status</p>
-                      <button onClick={() => copyText("hub-wa", waCaption)}
-                        className={`rounded-lg px-3 py-1 font-sans text-[0.55rem] font-semibold transition-all ${copiedId === "hub-wa" ? "bg-[#25D366] text-white" : "bg-[#25D366]/10 text-[#25D366]/60"}`}>
-                        {copiedId === "hub-wa" ? "Copiada!" : "Copiar"}
-                      </button>
-                    </div>
-                    <pre className="whitespace-pre-wrap font-sans text-[0.65rem] leading-relaxed text-cream/60">{waCaption}</pre>
-                  </div>
-                )}
-              </div>
-            )}
-            <div className="h-8" />
           </div>
         </div>
       );
