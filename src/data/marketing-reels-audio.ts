@@ -99,6 +99,8 @@ export const REELS_VOZ: ReelVoz[] = [
 
 export type CarrosselVoz = {
   id: string;
+  /** ID do carrossel em professionalCarousels para fazer match */
+  carouselId: string;
   nome: string;
   ficheiro: string;
   texto: string;
@@ -107,6 +109,7 @@ export type CarrosselVoz = {
 export const CARROSSEIS_VOZ: CarrosselVoz[] = [
   {
     id: "carousel-voz-cansaco-automatico",
+    carouselId: "carousel-cansaco-automatico",
     nome: "Há um tipo de cansaço que não é sono",
     ficheiro: "carousel-voz-cansaco-automatico.mp3",
     texto:
@@ -114,6 +117,7 @@ export const CARROSSEIS_VOZ: CarrosselVoz[] = [
   },
   {
     id: "carousel-voz-sara-pergunta",
+    carouselId: "carousel-sara-pergunta",
     nome: "Sara fez uma pergunta absurda",
     ficheiro: "carousel-voz-sara-pergunta.mp3",
     texto:
@@ -121,6 +125,7 @@ export const CARROSSEIS_VOZ: CarrosselVoz[] = [
   },
   {
     id: "carousel-voz-o-que-sao-espelhos",
+    carouselId: "carousel-o-que-sao-espelhos",
     nome: "O que são os Espelhos",
     ficheiro: "carousel-voz-o-que-sao-espelhos.mp3",
     texto:
@@ -128,6 +133,7 @@ export const CARROSSEIS_VOZ: CarrosselVoz[] = [
   },
   {
     id: "carousel-voz-no-heranca-historia",
+    carouselId: "carousel-no-depois-do-espelho",
     nome: "O Nó — a história que só existe depois",
     ficheiro: "carousel-voz-no-heranca-historia.mp3",
     texto:
@@ -135,6 +141,7 @@ export const CARROSSEIS_VOZ: CarrosselVoz[] = [
   },
   {
     id: "carousel-voz-5-citacoes-ilusao",
+    carouselId: "carousel-5-citacoes-ilusao",
     nome: "5 frases do Espelho da Ilusão",
     ficheiro: "carousel-voz-5-citacoes-ilusao.mp3",
     texto:
@@ -142,6 +149,7 @@ export const CARROSSEIS_VOZ: CarrosselVoz[] = [
   },
   {
     id: "carousel-voz-ecos-efemeros",
+    carouselId: "carousel-ecos-efemeros",
     nome: "A única comunidade onde tudo desaparece",
     ficheiro: "carousel-voz-ecos-efemeros.mp3",
     texto:
@@ -149,6 +157,7 @@ export const CARROSSEIS_VOZ: CarrosselVoz[] = [
   },
   {
     id: "carousel-voz-antes-depois-ver",
+    carouselId: "carousel-antes-depois-ver",
     nome: "Não muda o que fizeste — muda a forma como te vês",
     ficheiro: "carousel-voz-antes-depois-ver.mp3",
     texto:
@@ -156,6 +165,7 @@ export const CARROSSEIS_VOZ: CarrosselVoz[] = [
   },
   {
     id: "carousel-voz-7-espelhos-resumo",
+    carouselId: "carousel-7-espelhos-resumo",
     nome: "Os 7 Espelhos — um por um",
     ficheiro: "carousel-voz-7-espelhos-resumo.mp3",
     texto:

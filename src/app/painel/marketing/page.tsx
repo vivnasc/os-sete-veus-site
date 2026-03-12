@@ -4,11 +4,12 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { professionalCarousels, hashtagSets, thematicHub, productionGuide, WEEKLY_RHYTHM } from "@/data/content-calendar-weeks";
+import { professionalCarousels, reelScripts, hashtagSets, thematicHub, productionGuide, WEEKLY_RHYTHM } from "@/data/content-calendar-weeks";
 import type { CarouselSlide } from "@/data/content-calendar-weeks";
 import { capcutContent, CAPCUT_CATEGORIES, AUDIO_BASE_PATH } from "@/data/capcut-content";
 import type { CapCutCategory } from "@/data/capcut-content";
 import { isMobile } from "@/lib/export-image";
+import { REELS_VOZ, CARROSSEIS_VOZ } from "@/data/marketing-reels-audio";
 
 const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
 const DIMS = { w: 1080, h: 1080 };
@@ -187,7 +188,7 @@ export default function MarketingPage() {
   const router = useRouter();
 
   const [copiedId, setCopiedId] = useState<string | null>(null);
-  const [pageSection, setPageSection] = useState<"hub" | "posts" | "guia" | "capcut">("hub");
+  const [pageSection, setPageSection] = useState<"hub" | "posts" | "guia" | "capcut" | "reels">("hub");
   const [postsTab, setPostsTab] = useState<"carrosseis" | "feed" | "status">("carrosseis");
   const [selectedWeekday, setSelectedWeekday] = useState(() => new Date().getDay());
   const [capcutCategory, setCapcutCategory] = useState<CapCutCategory | "todos">("todos");
@@ -296,6 +297,7 @@ export default function MarketingPage() {
             {([
               { id: "hub" as const, label: "Hub" },
               { id: "posts" as const, label: "Posts" },
+              { id: "reels" as const, label: "Reels" },
               { id: "guia" as const, label: "Guia" },
               { id: "capcut" as const, label: "CapCut" },
             ]).map((s) => (
@@ -437,31 +439,43 @@ export default function MarketingPage() {
             {/* ── Carrosseis ── */}
             {postsTab === "carrosseis" && (
               <div className="space-y-2">
-                {professionalCarousels.map((c) => (
-                  <button key={c.id}
-                    onClick={() => { setHubModal({ slides: c.slides, title: c.title, caption: c.caption }); }}
-                    className="w-full rounded-2xl border border-cream/10 bg-[#222019] p-4 text-left transition-all hover:border-[#c9b896]/20"
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="flex-1 min-w-0">
-                        <p className="font-serif text-sm font-bold text-cream/80 truncate">{c.title}</p>
-                        <p className="mt-1 font-sans text-[0.6rem] text-cream/40 line-clamp-2">{c.description}</p>
-                        <div className="mt-2 flex items-center gap-2">
-                          <span className="rounded-full bg-cream/10 px-2 py-0.5 font-sans text-[0.5rem] font-medium text-cream/40">{c.slides.length} slides</span>
+                {professionalCarousels.map((c) => {
+                  const audio = CARROSSEIS_VOZ.find((v) => v.carouselId === c.id);
+                  const audioSrc = audio ? `${AUDIO_BASE_PATH}/${audio.ficheiro}` : null;
+                  return (
+                    <div key={c.id} className="rounded-2xl border border-cream/10 bg-[#222019] overflow-hidden">
+                      <button
+                        onClick={() => { setHubModal({ slides: c.slides, title: c.title, caption: c.caption }); }}
+                        className="w-full p-4 text-left transition-all hover:bg-cream/3"
+                      >
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="flex-1 min-w-0">
+                            <p className="font-serif text-sm font-bold text-cream/80 truncate">{c.title}</p>
+                            <p className="mt-1 font-sans text-[0.6rem] text-cream/40 line-clamp-2">{c.description}</p>
+                            <div className="mt-2 flex items-center gap-2">
+                              <span className="rounded-full bg-cream/10 px-2 py-0.5 font-sans text-[0.5rem] font-medium text-cream/40">{c.slides.length} slides</span>
+                              {audioSrc && <span className="rounded-full bg-[#c9b896]/15 px-2 py-0.5 font-sans text-[0.5rem] font-medium text-[#c9b896]/60">voz</span>}
+                            </div>
+                          </div>
+                          {/* Miniatura */}
+                          <div className="shrink-0 rounded-lg overflow-hidden" style={{
+                            width: 48, height: 48, backgroundColor: c.slides[0]?.bg || "#3d3630",
+                            display: "flex", alignItems: "center", justifyContent: "center",
+                          }}>
+                            <span className="font-serif text-[0.4rem] font-bold px-1 text-center leading-tight" style={{ color: c.slides[0]?.text || "#f7f5f0" }}>
+                              {c.slides[0]?.title?.split("\n")[0]?.slice(0, 20) || "~"}
+                            </span>
+                          </div>
                         </div>
-                      </div>
-                      {/* Miniatura */}
-                      <div className="shrink-0 rounded-lg overflow-hidden" style={{
-                        width: 48, height: 48, backgroundColor: c.slides[0]?.bg || "#3d3630",
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                      }}>
-                        <span className="font-serif text-[0.4rem] font-bold px-1 text-center leading-tight" style={{ color: c.slides[0]?.text || "#f7f5f0" }}>
-                          {c.slides[0]?.title?.split("\n")[0]?.slice(0, 20) || "~"}
-                        </span>
-                      </div>
+                      </button>
+                      {audioSrc && (
+                        <div className="border-t border-cream/5 px-4 pb-3 pt-2">
+                          <CapCutAudioPlayer src={audioSrc} ficheiro={audio!.ficheiro} />
+                        </div>
+                      )}
                     </div>
-                  </button>
-                ))}
+                  );
+                })}
               </div>
             )}
 
@@ -541,6 +555,49 @@ export default function MarketingPage() {
               </div>
             )}
 
+          </div>
+        )}
+
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {/* ── REELS ── */}
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {pageSection === "reels" && (
+          <div className="py-4 space-y-3">
+            <div className="rounded-2xl border border-[#c9b896]/10 bg-[#c9b896]/5 p-3">
+              <p className="font-sans text-[0.6rem] leading-relaxed text-[#c9b896]/70">
+                Scripts de narração prontos para usar no CapCut como voiceover.
+                Cada áudio tem 25-35s — liga o áudio ao projecto do Reel e sincroniza com as cenas.
+              </p>
+            </div>
+            {REELS_VOZ.map((r) => (
+              <div key={r.id} className="rounded-2xl border border-cream/10 bg-[#222019] overflow-hidden">
+                <div className="p-4">
+                  <p className="font-serif text-sm font-bold text-cream/80">{r.nome}</p>
+                  <p className="mt-1.5 font-sans text-[0.6rem] leading-relaxed text-cream/40 line-clamp-3">{r.texto}</p>
+                  <p className="mt-1.5 font-mono text-[0.5rem] text-cream/20">{r.ficheiro}</p>
+                </div>
+                <div className="border-t border-cream/5 px-4 pb-3 pt-2">
+                  <CapCutAudioPlayer src={`${AUDIO_BASE_PATH}/${r.ficheiro}`} ficheiro={r.ficheiro} />
+                </div>
+              </div>
+            ))}
+            <p className="font-sans text-[0.6rem] font-semibold uppercase tracking-[0.15em] text-cream/20 pt-2">
+              Roteiros de cena — referencia para o CapCut
+            </p>
+            {reelScripts.map((rs, i) => (
+              <div key={i} className="rounded-2xl border border-cream/5 bg-[#1e1c18] p-4 space-y-2">
+                <p className="font-serif text-xs font-bold text-[#c9b896]/70 leading-snug">&ldquo;{rs.hook}&rdquo;</p>
+                <div className="space-y-1">
+                  {rs.scenes.map((sc, si) => (
+                    <p key={si} className="font-sans text-[0.55rem] leading-relaxed text-cream/30">{sc}</p>
+                  ))}
+                </div>
+                <div className="flex items-center gap-3 pt-1">
+                  <span className="rounded-full bg-cream/5 px-2 py-0.5 font-sans text-[0.5rem] text-cream/30">{rs.duration}</span>
+                  <span className="font-sans text-[0.5rem] text-[#c9b896]/40">{rs.cta}</span>
+                </div>
+              </div>
+            ))}
           </div>
         )}
 
