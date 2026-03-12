@@ -172,3 +172,115 @@ export const CARROSSEIS_VOZ: CarrosselVoz[] = [
       "Sete espelhos. Sete véus. Sete histórias que te devolvem ao que já sabes. O Espelho da Ilusão — a vida que nunca escolheste. O Espelho do Medo — a voz que diz não antes de pensares. O Espelho da Culpa — o amor que se esqueceu de te incluir. O Espelho da Identidade — a máscara que aprendeste a usar. O Espelho do Controlo — o amor que, sem querer, apertou. O Espelho do Desejo — o que guardas sem nome. O Espelho da Separação — o que deixar ir para crescer. Não são diagnósticos. São companhia. Começa pelo que ressoa. Ao teu ritmo. seteveus.space.",
   },
 ];
+
+// ── Educativos (narração dos carrosséis de nicho, Eleven v3 com pausas) ──────
+// Eleven v3: pausas via [pause], [short pause], [long pause]
+// Não usam SSML — v3 não suporta <break>
+
+export type EduVoz = {
+  id: string;
+  /** ID do nicheCarousel correspondente */
+  carouselId: string;
+  nome: string;
+  ficheiro: string;
+  texto: string;
+};
+
+export const EDUCATIVOS_VOZ: EduVoz[] = [
+  {
+    id: "edu-voz-1",
+    carouselId: "edu-1",
+    nome: "A conversa que se repete",
+    ficheiro: "edu-voz-conversa-repete.mp3",
+    texto:
+      "Sabes aquela conversa que já tiveste quarenta e sete vezes? [pause] Não é falta de inteligência. [short pause] É porque o padrão é mais rápido que a consciência. [pause] O corpo entra na conversa antes de ti. Já preparou a defesa... já escolheu as palavras... já decidiu o que sentir — antes de pensares. [pause] Não precisas de parar o padrão. [short pause] Precisas de o reconhecer — enquanto acontece. [long pause] Qual é a conversa que se repete na tua vida?",
+  },
+  {
+    id: "edu-voz-2",
+    carouselId: "edu-2",
+    nome: "Escolhas que não são escolhas",
+    ficheiro: "edu-voz-escolhas.mp3",
+    texto:
+      "Há escolhas que não são escolhas. [pause] São repetições disfarçadas de decisão. [short pause] Escolhes o mesmo tipo de pessoa. O mesmo tipo de conflito. O mesmo momento para te calares. [pause] E parece sempre diferente — porque o cenário muda. [short pause] Mas o mecanismo... é o mesmo. [pause] A diferença entre repetir e escolher é uma só: [long pause] consciência.",
+  },
+  {
+    id: "edu-voz-3",
+    carouselId: "edu-3",
+    nome: "O que aprendeste cedo demais",
+    ficheiro: "edu-voz-cedo-demais.mp3",
+    texto:
+      "Não te tornaste assim de repente. [pause] Houve um dia — provavelmente antes dos dez anos — em que aprendeste que era mais seguro ser simpática do que ser honesta. [short pause] Ou que chorar era fraqueza. [short pause] Ou que pedir... era pedir demais. [pause] Não foi trauma. Foi adaptação. [short pause] E a adaptação funcionou tão bem... que esqueceste que havia outra versão de ti antes dela. [long pause] O que aprendeste cedo demais?",
+  },
+  {
+    id: "edu-voz-4",
+    carouselId: "edu-4",
+    nome: "O corpo sabe antes de ti",
+    ficheiro: "edu-voz-corpo-sabe.mp3",
+    texto:
+      "O teu corpo sabe coisas que tu ainda não admitiste. [pause] A dor de estômago antes da reunião. [short pause] O aperto no peito quando o telefone toca. [short pause] O cansaço que não se explica por horas de sono. [pause] O corpo não mente. [short pause] Não sabe. [pause] Quando alguém te pergunta como estás — e tu dizes bem — o corpo regista a distância entre o que dizes... e o que sentes. [long pause] Onde é que o teu corpo fala mais alto?",
+  },
+  {
+    id: "edu-voz-5",
+    carouselId: "edu-5",
+    nome: "Endireitar a postura",
+    ficheiro: "edu-voz-postura.mp3",
+    texto:
+      "Já reparaste que endireitas a postura quando alguém entra na sala? [pause] Não é vaidade. [short pause] É vigilância. [pause] O corpo adapta-se ao que aprendeu: ser vista é ser avaliada. Então prepara-se. Contrai. Performa. [pause] Relaxar na presença de outra pessoa — é um dos gestos mais corajosos que existem. [short pause] Porque implica confiança. [short pause] E confiança implica risco. [long pause] Com quem é que o teu corpo relaxa?",
+  },
+  {
+    id: "edu-voz-6",
+    carouselId: "edu-6",
+    nome: "O espelho mais gentil",
+    ficheiro: "edu-voz-espelho-gentil.mp3",
+    texto:
+      "Há coisas que só conseguimos ver — quando não são sobre nós. [pause] É por isso que as histórias funcionam onde os conselhos falham. [short pause] Ninguém gosta que lhe digam o que está errado. [pause] Mas quando lês uma personagem que faz exactamente o que tu fazes — e vês as consequências — [short pause] algo muda. [pause] Não é informação. [short pause] É reconhecimento. [long pause] A ficção é o espelho mais gentil que existe.",
+  },
+  {
+    id: "edu-voz-7",
+    carouselId: "edu-7",
+    nome: "Autoajuda vs. história",
+    ficheiro: "edu-voz-autoajuda.mp3",
+    texto:
+      "Um livro de autoajuda diz-te o que fazer. [pause] Uma história mostra-te quem és. [pause] A diferença é enorme. [short pause] O conselho entra pela mente. A história entra pelo corpo — pelo reconhecimento... pelo arrepio... pelo isto sou eu. [pause] Não precisas de mais informação sobre ti. [short pause] Precisas de te ver. [long pause] E às vezes a forma mais segura de te veres — é através de alguém que não existe.",
+  },
+  {
+    id: "edu-voz-8",
+    carouselId: "edu-8",
+    nome: "O silêncio entre duas pessoas",
+    ficheiro: "edu-voz-silencio.mp3",
+    texto:
+      "O silêncio entre duas pessoas nunca é vazio. [pause] Está cheio de tudo o que não foi dito. [short pause] Das vezes que quase disseste. [short pause] Das vezes que ele quase perguntou. [pause] Os silêncios acumulam-se como neve. Parecem leves. [short pause] Mas quando derretes tudo de uma vez — [short pause] inunda. [pause] A maioria das relações não acaba por conflito. [long pause] Acaba por acumulação de silêncios.",
+  },
+  {
+    id: "edu-voz-9",
+    carouselId: "edu-9",
+    nome: "Cuidar ou controlar",
+    ficheiro: "edu-voz-cuidar.mp3",
+    texto:
+      "Cuidar pode ser uma forma de controlar. [pause] Parece generosidade. Parece amor. [short pause] Mas às vezes é isto: se eu tratar de tudo... ninguém me pode abandonar. [pause] A pessoa que cuida demais — raramente pede. [short pause] Porque pedir é arriscar ouvir não. [short pause] E esse não confirma o medo original: [pause] não sou suficiente. [long pause] Cuidas para dar — ou para não perder?",
+  },
+  {
+    id: "edu-voz-10",
+    carouselId: "edu-10",
+    nome: "O conselho mais inútil",
+    ficheiro: "edu-voz-conselho-inutil.mp3",
+    texto:
+      "Ama-te a ti mesma — é o conselho mais inútil que existe. [pause] Não porque seja falso. [short pause] Porque é vago. [pause] Ninguém te diz como. Ninguém te diz que amar-se inclui olhar para partes de ti que não queres ver. [short pause] Que inclui dizer não a pessoas que amas. [short pause] Que inclui falhar — e não te punires. [pause] Autoconhecimento não é wellness. [short pause] É trabalho. Bonito, necessário — mas trabalho. [long pause] O que é que amar-te significaria... se fosses honesta?",
+  },
+  {
+    id: "edu-voz-11",
+    carouselId: "edu-11",
+    nome: "Rituais matinais",
+    ficheiro: "edu-voz-rituais.mp3",
+    texto:
+      "Não precisas de mais rituais matinais. [pause] Precisas de uma conversa honesta contigo — às três da manhã. [short pause] Sem velas. Sem journal bonito. Sem playlist de meditação. [pause] Só tu — e a pergunta que tens evitado. [pause] O autoconhecimento não acontece na hora que reservas para ele. [short pause] Acontece quando te apanhas no acto de ser quem não queres ser. [long pause] Qual é a pergunta que continuas a adiar?",
+  },
+  {
+    id: "edu-voz-12",
+    carouselId: "edu-12",
+    nome: "Medo de ser vista a mudar",
+    ficheiro: "edu-voz-medo-mudar.mp3",
+    texto:
+      "A maioria das pessoas não tem medo de mudar. [pause] Tem medo de ser vista a mudar. [pause] Porque mudar implica admitir que antes estavas errada. [short pause] Ou perdida. [short pause] Ou a fingir. [pause] E as pessoas à tua volta já se habituaram à versão antiga. [short pause] Algumas até preferem essa versão — porque a nova incomoda. [pause] Mudar em silêncio é mais fácil. [short pause] Mas em silêncio ninguém te acompanha. [long pause] O que mudarias — se ninguém estivesse a ver?",
+  },
+];
