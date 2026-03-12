@@ -191,10 +191,12 @@ export default function MarketingPage() {
   const { user, loading } = useAuth();
   const router = useRouter();
 
-  type Section = "semana" | "feed" | "carrosseis" | "status" | "reels" | "redes";
+  type Section = "hoje" | "arquivo";
+  type ArquivoSub = "feed" | "carrosseis" | "status" | "reels" | "redes";
 
-  const [section, setSection] = useState<Section>("semana");
-  const [selectedWeekday, setSelectedWeekday] = useState(() => new Date().getDay());
+  const [section, setSection] = useState<Section>("hoje");
+  const [arquivoSub, setArquivoSub] = useState<ArquivoSub>("carrosseis");
+  const [temaHoje, setTemaHoje] = useState<"curado" | PostCategoria>("curado");
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [hubModal, setHubModal] = useState<{ slides: CarouselSlide[]; title: string; caption?: string } | null>(null);
   const [capcutModal, setCapcutModal] = useState<typeof capcutContent[0] | null>(null);
@@ -279,18 +281,14 @@ export default function MarketingPage() {
 
   // ── Today data ──────────────────────────────────────────────────────────────
   const today = new Date().getDay();
-  const r = WEEKLY_RHYTHM[selectedWeekday];
-  const dayData = thematicHub[r.themeIdx]?.days[r.dayIdx];
-  const slotCounts = WEEKLY_RHYTHM.map((wr) =>
-    thematicHub[wr.themeIdx]?.days[wr.dayIdx]?.slots.length || 0
-  );
+  type TodaySlot = NonNullable<typeof thematicHub[0]["days"][0]>["slots"][0];
 
-  // ── Slot card (shared between Hoje and other sections) ──────────────────────
-  function SlotCard({ slot, idx }: { slot: NonNullable<typeof dayData>["slots"][0]; idx: number }) {
+  // ── Slot card (shared between Hoje e Arquivo) ────────────────────────────────
+  function SlotCard({ slot, idx }: { slot: TodaySlot; idx: number }) {
     const platformColor = slot.platform === "whatsapp" ? "#25D366" : slot.platform === "instagram" ? "#E1306C" : "#c9b896";
     const platformLabel = slot.platform === "whatsapp" ? "WhatsApp" : slot.platform === "instagram" ? "Instagram" : "Ambos";
     return (
-      <div className="overflow-hidden rounded-2xl border border-cream/8 bg-[#1e1c18]">
+      <div className="overflow-hidden rounded-2xl border border-cream/8 bg-[#302e27]">
         <div className="flex items-center gap-2 px-4 py-2.5">
           <div className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: platformColor }} />
           <span className="font-sans text-[0.55rem] font-bold uppercase tracking-[0.12em]" style={{ color: platformColor + "cc" }}>{platformLabel}</span>
@@ -376,32 +374,20 @@ export default function MarketingPage() {
             </Link>
           </div>
 
-          {/* ── Nav principal (única linha) ── */}
-          <div className="mt-3 -mx-4 overflow-x-auto px-4 scrollbar-none">
-            <div className="flex gap-1" style={{ width: "max-content" }}>
-              {([
-                { id: "semana" as const,    label: "Semana",     badge: undefined },
-                { id: "feed" as const,      label: "Feed",       badge: hubFeedPosts.length },
-                { id: "carrosseis" as const,label: "Carrosseis", badge: professionalCarousels.length },
-                { id: "status" as const,    label: "Status",     badge: hubStatusPosts.length },
-                { id: "reels" as const,     label: "Reels",      badge: capcutContent.length },
-                { id: "redes" as const,     label: "Redes",      badge: todosBancoPosts.length },
-              ] satisfies { id: Section; label: string; badge?: number }[]).map((s) => (
-                <button key={s.id} onClick={() => setSection(s.id)}
-                  className={`flex items-center gap-1.5 rounded-xl px-3.5 py-1.5 font-sans text-[0.65rem] font-semibold whitespace-nowrap transition-all ${
-                    section === s.id
-                      ? "bg-[#c9b896] text-[#2a2820]"
-                      : "text-cream/40 hover:text-cream/70 hover:bg-cream/5"
-                  }`}>
-                  {s.label}
-                  {s.badge != null && (
-                    <span className={`rounded-full px-1.5 py-px font-mono text-[0.45rem] ${
-                      section === s.id ? "bg-[#2a2820]/20 text-[#2a2820]/70" : "bg-cream/10 text-cream/30"
-                    }`}>{s.badge}</span>
-                  )}
-                </button>
-              ))}
-            </div>
+          {/* ── Nav: 2 botões ── */}
+          <div className="mt-3 flex gap-1.5">
+            <button onClick={() => setSection("hoje")}
+              className={`flex-1 rounded-xl py-2 font-sans text-[0.7rem] font-semibold transition-all ${
+                section === "hoje" ? "bg-[#c9b896] text-[#2a2820]" : "text-cream/40 hover:text-cream/70 hover:bg-cream/5"
+              }`}>
+              Hoje
+            </button>
+            <button onClick={() => setSection("arquivo")}
+              className={`flex-1 rounded-xl py-2 font-sans text-[0.7rem] font-semibold transition-all ${
+                section === "arquivo" ? "bg-[#c9b896] text-[#2a2820]" : "text-cream/40 hover:text-cream/70 hover:bg-cream/5"
+              }`}>
+              Arquivo
+            </button>
           </div>
         </div>
       </div>
@@ -409,96 +395,220 @@ export default function MarketingPage() {
       <div className="mx-auto max-w-lg px-4 pb-28">
 
         {/* ══════════════════════════════════════════════════════════════════════ */}
-        {/* SEMANA — guia temático semanal (inspiração, não obrigação)           */}
+        {/* HOJE — o que publicar agora                                           */}
         {/* ══════════════════════════════════════════════════════════════════════ */}
-        {section === "semana" && (
-          <div className="py-4 space-y-4">
+        {section === "hoje" && (() => {
+          const DIAS = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
+          const TIMING: Record<number, { hora: string; plataforma: string; nota: string }> = {
+            0: { hora: "10h–12h", plataforma: "Instagram Stories", nota: "domingo — ritmo contemplativo, stories performam bem" },
+            1: { hora: "12h–14h", plataforma: "Instagram + WhatsApp", nota: "pausa do almoço — pico de atenção" },
+            2: { hora: "18h–20h", plataforma: "Instagram", nota: "terça à noite tem bom engagement" },
+            3: { hora: "12h–13h", plataforma: "WhatsApp Status", nota: "quarta-feira — dia ideal para status" },
+            4: { hora: "18h–20h", plataforma: "Instagram + WhatsApp", nota: "quinta — melhor dia da semana para publicar" },
+            5: { hora: "11h–13h", plataforma: "Instagram Reels", nota: "sexta cedo ganha mais atenção antes do fim de semana" },
+            6: { hora: "10h–12h", plataforma: "Instagram", nota: "sábado casual — carrossel ou citação simples" },
+          };
+          const r = WEEKLY_RHYTHM[today];
+          const dayData = thematicHub[r.themeIdx]?.days[r.dayIdx];
+          const categoriasHoje = calendarioSemanal[today] ?? [];
+          const timing = TIMING[today];
+          const reelHoje = reelScripts[today % reelScripts.length];
 
-            {/* Faixa de temas (7 colunas — um por tipo de dia) */}
-            <div className="grid grid-cols-7 gap-1">
-              {WEEKLY_RHYTHM.map((w, i) => {
-                const isSel = selectedWeekday === i;
-                const isTod = today === i;
-                return (
-                  <button key={i} onClick={() => setSelectedWeekday(i)}
-                    className={`flex flex-col items-center rounded-xl py-2.5 transition-all ${
-                      isSel ? "bg-[#c9b896] shadow-lg shadow-[#c9b896]/20"
-                      : "hover:bg-cream/5"
-                    }`}>
-                    <span className={`font-sans text-[0.55rem] font-bold ${isSel ? "text-[#2a2820]" : "text-cream/50"}`}>{w.hint}</span>
-                    <span className={`mt-0.5 font-sans text-[0.42rem] ${isSel ? "text-[#2a2820]/50" : isTod ? "text-[#c9b896]/60" : "text-cream/25"}`}>{w.label}{isTod ? " ·" : ""}</span>
-                  </button>
-                );
-              })}
-            </div>
+          // 3 opções de tema: curado + até 2 categorias de posts
+          const temasHoje: Array<{ id: "curado" | PostCategoria; label: string; sub?: string }> = [
+            { id: "curado", label: dayData?.theme || "Tema do dia", sub: "visual pronto" },
+            ...categoriasHoje.slice(0, 2).map((cat: PostCategoria) => ({
+              id: cat,
+              label: CATEGORIAS_LABEL[cat],
+              sub: "texto + hashtags",
+            })),
+          ];
 
-            {/* Cabeçalho do dia */}
-            {dayData ? (
-              <div className="rounded-2xl border border-[#c9b896]/15 bg-gradient-to-br from-[#c9b896]/10 to-[#c9b896]/3 p-4">
-                <div className="flex items-start justify-between gap-2">
+          const postsHoje = temaHoje !== "curado"
+            ? getPostsPorCategoria(temaHoje as PostCategoria).slice(0, 3)
+            : [];
+
+          return (
+            <div className="py-4 space-y-4">
+
+              {/* Header: dia + timing */}
+              <div className="rounded-2xl border border-[#c9b896]/20 bg-gradient-to-br from-[#c9b896]/12 to-[#c9b896]/4 p-4">
+                <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="font-sans text-[0.5rem] font-bold uppercase tracking-[0.2em] text-[#c9b896]/50">Tema · {thematicHub[r.themeIdx]?.title}</p>
-                    <h3 className="mt-1.5 font-serif text-base leading-snug text-cream/90">{dayData.theme}</h3>
+                    <p className="font-serif text-base text-cream/90">{DIAS[today]}</p>
+                    <p className="mt-0.5 font-sans text-[0.5rem] text-cream/35">
+                      {new Date().toLocaleDateString("pt-PT", { day: "numeric", month: "long", year: "numeric" })}
+                    </p>
                   </div>
-                  <span className="shrink-0 rounded-full border border-[#c9b896]/20 px-2 py-0.5 font-mono text-[0.45rem] text-[#c9b896]/50">
-                    {dayData.slots.length} peça{dayData.slots.length > 1 ? "s" : ""}
-                  </span>
+                  <div className="text-right shrink-0">
+                    <p className="font-sans text-sm font-bold text-[#c9b896]/90">{timing.hora}</p>
+                    <p className="mt-0.5 font-sans text-[0.5rem] text-cream/45">{timing.plataforma}</p>
+                  </div>
+                </div>
+                <p className="mt-3 font-sans text-[0.55rem] leading-relaxed text-cream/40">{timing.nota}</p>
+              </div>
+
+              {/* 3 opções de tema */}
+              <div>
+                <p className="mb-2 font-sans text-[0.5rem] font-bold uppercase tracking-[0.2em] text-cream/25">Escolhe o que publicar hoje</p>
+                <div className="grid grid-cols-3 gap-1.5">
+                  {temasHoje.map(({ id, label, sub }) => (
+                    <button key={id} onClick={() => setTemaHoje(id)}
+                      className={`rounded-xl px-2.5 py-3 text-left transition-all ${
+                        temaHoje === id ? "bg-[#c9b896] shadow-lg shadow-[#c9b896]/15" : "bg-cream/5 hover:bg-cream/10"
+                      }`}>
+                      {sub && (
+                        <span className={`mb-1 block font-sans text-[0.4rem] font-bold uppercase tracking-widest ${temaHoje === id ? "text-[#2a2820]/45" : "text-cream/25"}`}>{sub}</span>
+                      )}
+                      <p className={`font-sans text-[0.6rem] font-semibold leading-snug ${temaHoje === id ? "text-[#2a2820]" : "text-cream/60"}`}>{label}</p>
+                    </button>
+                  ))}
                 </div>
               </div>
-            ) : (
-              <div className="rounded-2xl border border-cream/5 bg-[#302e27] p-6 text-center">
-                <p className="font-sans text-xs text-cream/30">Sem conteúdo para este tema.</p>
+
+              {/* Conteúdo curado (thematic hub) */}
+              {temaHoje === "curado" && (
+                <div className="space-y-3">
+                  <p className="font-sans text-[0.5rem] font-bold uppercase tracking-[0.2em] text-cream/25">Peças prontas para hoje</p>
+                  {dayData
+                    ? dayData.slots.map((slot, si) => <SlotCard key={si} slot={slot} idx={si} />)
+                    : <div className="rounded-2xl border border-cream/5 bg-[#302e27] p-6 text-center"><p className="font-sans text-xs text-cream/30">Sem conteúdo curado para hoje.</p></div>
+                  }
+                  {/* Sugestão de reel */}
+                  {reelHoje && (
+                    <div className="overflow-hidden rounded-2xl border border-cream/10 bg-[#302e27]">
+                      <div className="flex items-center justify-between gap-2 px-4 py-3 border-b border-cream/5">
+                        <div className="flex items-center gap-2">
+                          <span className="rounded-lg px-2 py-0.5 font-sans text-[0.45rem] font-semibold text-[#2a2820]" style={{ backgroundColor: "#8b9b8e" }}>reel</span>
+                          <span className="font-sans text-[0.5rem] text-cream/35">Script para gravar hoje</span>
+                        </div>
+                        <button onClick={() => copyText("reel-hoje", [reelHoje.hook, ...reelHoje.scenes, `CTA: ${reelHoje.cta}`].join("\n\n"))}
+                          className="shrink-0 rounded-lg bg-cream/8 px-2.5 py-1 font-sans text-[0.5rem] font-semibold text-cream/40 hover:bg-cream/15 transition-all">
+                          {copiedId === "reel-hoje" ? "Copiado ✓" : "Copiar script"}
+                        </button>
+                      </div>
+                      <div className="px-4 py-3">
+                        <p className="font-sans text-xs font-semibold text-cream/80 leading-snug">{reelHoje.hook}</p>
+                        <p className="mt-1 font-sans text-[0.5rem] text-cream/30">{reelHoje.duration} · {reelHoje.music.split(",")[0]}</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Posts de redes sociais */}
+              {temaHoje !== "curado" && (
+                <div className="space-y-3">
+                  <p className="font-sans text-[0.5rem] font-bold uppercase tracking-[0.2em] text-cream/25">Posts para hoje — {CATEGORIAS_LABEL[temaHoje as PostCategoria]}</p>
+                  {postsHoje.map((post) => {
+                    const fullText = `${post.hook}\n\n${post.corpo}\n\n${post.cta}\n\n${post.hashtags.join(" ")}`;
+                    return (
+                      <div key={post.id} className="overflow-hidden rounded-2xl border border-cream/10 bg-[#302e27]">
+                        <div className="flex items-center justify-between gap-2 px-4 py-3 border-b border-cream/5">
+                          <div className="flex items-center gap-2">
+                            <span className="shrink-0 rounded-lg px-2 py-0.5 font-sans text-[0.45rem] font-semibold text-[#2a2820]"
+                              style={{ backgroundColor: COR_FORMATO[post.formato] ?? "#c9b896" }}>
+                              {post.formato}
+                            </span>
+                            <span className="font-sans text-[0.5rem] text-cream/30">{CATEGORIAS_LABEL[post.categoria]}</span>
+                          </div>
+                          <button onClick={() => copyText(post.id, fullText)}
+                            className="shrink-0 rounded-lg bg-cream/8 px-2.5 py-1 font-sans text-[0.5rem] font-semibold text-cream/40 hover:bg-cream/15 transition-all">
+                            {copiedId === post.id ? "Copiado ✓" : "Copiar"}
+                          </button>
+                        </div>
+                        <div className="px-4 pt-3 pb-2">
+                          <p className="font-sans text-xs font-semibold leading-snug text-cream/80">{post.hook}</p>
+                        </div>
+                        <div className="px-4 pb-3 space-y-1.5">
+                          {post.corpo.split("\n\n").map((par, i) => (
+                            <p key={i} className="font-sans text-[0.6rem] leading-relaxed text-cream/45">{par}</p>
+                          ))}
+                        </div>
+                        <div className="border-t border-cream/5 px-4 py-3">
+                          <p className="font-sans text-[0.6rem] font-semibold text-[#c9b896]/70">{post.cta}</p>
+                          <p className="mt-1 font-sans text-[0.45rem] text-cream/20">{post.hashtags.join(" ")}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+
+            </div>
+          );
+        })()}
+
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {/* ARQUIVO — acesso ao banco completo quando precisas                    */}
+        {/* ══════════════════════════════════════════════════════════════════════ */}
+        {section === "arquivo" && (
+          <div className="py-4 space-y-4">
+            {/* Sub-nav */}
+            <div className="-mx-4 overflow-x-auto px-4 scrollbar-none">
+              <div className="flex gap-1" style={{ width: "max-content" }}>
+                {([
+                  { id: "carrosseis" as ArquivoSub, label: "Carrosseis", badge: professionalCarousels.length },
+                  { id: "status" as ArquivoSub, label: "Status", badge: hubStatusPosts.length },
+                  { id: "reels" as ArquivoSub, label: "Reels", badge: capcutContent.length },
+                  { id: "redes" as ArquivoSub, label: "Redes", badge: todosBancoPosts.length },
+                  { id: "feed" as ArquivoSub, label: "Feed", badge: hubFeedPosts.length },
+                ]).map((s) => (
+                  <button key={s.id} onClick={() => setArquivoSub(s.id)}
+                    className={`flex items-center gap-1.5 rounded-xl px-3.5 py-1.5 font-sans text-[0.65rem] font-semibold whitespace-nowrap transition-all ${
+                      arquivoSub === s.id ? "bg-[#c9b896] text-[#2a2820]" : "text-cream/40 hover:text-cream/70 hover:bg-cream/5"
+                    }`}>
+                    {s.label}
+                    <span className={`rounded-full px-1.5 py-px font-mono text-[0.45rem] ${
+                      arquivoSub === s.id ? "bg-[#2a2820]/20 text-[#2a2820]/70" : "bg-cream/10 text-cream/30"
+                    }`}>{s.badge}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Feed */}
+            {arquivoSub === "feed" && (
+              <div className="space-y-2">
+                <p className="mb-3 font-sans text-[0.55rem] text-cream/25">Posts quadrados · 1080×1080px · Instagram feed</p>
+                {hubFeedPosts.map((item, fi) => (
+                  <div key={item.id} className="overflow-hidden rounded-2xl">
+                    <button
+                      onClick={() => setHubModal({ slides: [item.slide], title: item.theme, caption: item.caption })}
+                      className="w-full overflow-hidden text-left transition-all active:scale-[0.98] hover:opacity-90"
+                      style={{ backgroundColor: item.slide.bg }}>
+                      <div className="p-5">
+                        {item.slide.title && <p className="font-serif text-sm font-bold leading-snug" style={{ color: item.slide.text, whiteSpace: "pre-line" }}>{item.slide.title}</p>}
+                        {item.slide.body && <p className="mt-2 font-sans text-[0.65rem] leading-relaxed" style={{ color: item.slide.text, opacity: 0.7, whiteSpace: "pre-line" }}>{item.slide.body}</p>}
+                        {item.slide.footer && <p className="mt-3 font-sans text-[0.5rem] font-semibold uppercase tracking-[0.15em]" style={{ color: item.slide.accent }}>{item.slide.footer}</p>}
+                      </div>
+                      <div className="flex items-center justify-between border-t px-4 py-2.5" style={{ borderColor: item.slide.text + "15" }}>
+                        <span className="font-sans text-[0.5rem] font-semibold uppercase tracking-widest" style={{ color: item.slide.text, opacity: 0.3 }}>1:1 + 9:16 · {item.weekTitle}</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.slide.accent} strokeWidth="2.5" opacity="0.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                      </div>
+                    </button>
+                    {item.caption && (
+                      <div className="border-t border-cream/5 bg-[#2a2820] px-4 pb-4 pt-3">
+                        <div className="mb-1.5 flex items-center justify-between">
+                          <span className="font-sans text-[0.45rem] font-bold uppercase tracking-[0.15em] text-cream/25">Legenda</span>
+                          <button onClick={() => copyText(`feed-${fi}`, item.caption!)}
+                            className="rounded bg-cream/8 px-2 py-0.5 font-sans text-[0.45rem] font-semibold text-cream/40 hover:bg-cream/15 transition-all">
+                            {copiedId === `feed-${fi}` ? "Copiado" : "Copiar"}
+                          </button>
+                        </div>
+                        <p className="font-sans text-[0.6rem] leading-relaxed text-cream/40 whitespace-pre-wrap">{item.caption}</p>
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
             )}
-
-            {dayData?.slots.map((slot, si) => <SlotCard key={si} slot={slot} idx={si} />)}
-          </div>
-        )}
-
-        {/* ══════════════════════════════════════════════════════════════════════ */}
-        {/* FEED — posts 1:1 para o feed do Instagram                            */}
-        {/* ══════════════════════════════════════════════════════════════════════ */}
-        {section === "feed" && (
-          <div className="py-4 space-y-2">
-            <p className="mb-3 font-sans text-[0.55rem] text-cream/25">Posts quadrados · 1080×1080px · Instagram feed</p>
-            {hubFeedPosts.map((item, fi) => (
-              <div key={item.id} className="overflow-hidden rounded-2xl">
-                <button
-                  onClick={() => setHubModal({ slides: [item.slide], title: item.theme, caption: item.caption })}
-                  className="w-full overflow-hidden text-left transition-all active:scale-[0.98] hover:opacity-90"
-                  style={{ backgroundColor: item.slide.bg }}>
-                  <div className="p-5">
-                    {item.slide.title && <p className="font-serif text-sm font-bold leading-snug" style={{ color: item.slide.text, whiteSpace: "pre-line" }}>{item.slide.title}</p>}
-                    {item.slide.body && <p className="mt-2 font-sans text-[0.65rem] leading-relaxed" style={{ color: item.slide.text, opacity: 0.7, whiteSpace: "pre-line" }}>{item.slide.body}</p>}
-                    {item.slide.footer && <p className="mt-3 font-sans text-[0.5rem] font-semibold uppercase tracking-[0.15em]" style={{ color: item.slide.accent }}>{item.slide.footer}</p>}
-                  </div>
-                  <div className="flex items-center justify-between border-t px-4 py-2.5" style={{ borderColor: item.slide.text + "15" }}>
-                    <span className="font-sans text-[0.5rem] font-semibold uppercase tracking-widest" style={{ color: item.slide.text, opacity: 0.3 }}>1:1 + 9:16 · {item.weekTitle}</span>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.slide.accent} strokeWidth="2.5" opacity="0.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                  </div>
-                </button>
-                {item.caption && (
-                  <div className="border-t border-cream/5 bg-[#2a2820] px-4 pb-4 pt-3">
-                    <div className="mb-1.5 flex items-center justify-between">
-                      <span className="font-sans text-[0.45rem] font-bold uppercase tracking-[0.15em] text-cream/25">Legenda</span>
-                      <button onClick={() => copyText(`feed-${fi}`, item.caption!)}
-                        className="rounded bg-cream/8 px-2 py-0.5 font-sans text-[0.45rem] font-semibold text-cream/40 hover:bg-cream/15 transition-all">
-                        {copiedId === `feed-${fi}` ? "Copiado" : "Copiar"}
-                      </button>
-                    </div>
-                    <p className="font-sans text-[0.6rem] leading-relaxed text-cream/40 whitespace-pre-wrap">{item.caption}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        )}
 
         {/* ══════════════════════════════════════════════════════════════════════ */}
         {/* CARROSSEIS — séries de slides temáticos                              */}
         {/* ══════════════════════════════════════════════════════════════════════ */}
-        {section === "carrosseis" && (
-          <div className="py-4 space-y-2">
+            {arquivoSub === "carrosseis" && (
+              <div className="space-y-2">
             <p className="mb-3 font-sans text-[0.55rem] text-cream/25">Carrosseis prontos · 1080×1080px · Instagram</p>
             {professionalCarousels.map((car, ci) => (
               <div key={car.id} className="overflow-hidden rounded-2xl">
@@ -542,9 +652,9 @@ export default function MarketingPage() {
         {/* ══════════════════════════════════════════════════════════════════════ */}
         {/* STATUS — imagens 9:16 para WA Status e Stories                       */}
         {/* ══════════════════════════════════════════════════════════════════════ */}
-        {section === "status" && (
-          <div className="py-4 space-y-2">
-            <p className="mb-3 font-sans text-[0.55rem] text-cream/25">Imagens verticais · 1080×1920px · WA Status e Stories</p>
+            {arquivoSub === "status" && (
+              <div className="space-y-2">
+                <p className="mb-3 font-sans text-[0.55rem] text-cream/25">Imagens verticais · 1080×1920px · WA Status e Stories</p>
             {hubStatusPosts.map((item, si) => (
               <div key={item.id} className="overflow-hidden rounded-2xl">
                 <button
@@ -598,10 +708,10 @@ export default function MarketingPage() {
         {/* ══════════════════════════════════════════════════════════════════════ */}
         {/* REELS — CapCut templates + scripts de reel                           */}
         {/* ══════════════════════════════════════════════════════════════════════ */}
-        {section === "reels" && (
-          <div className="py-4 space-y-4">
+            {arquivoSub === "reels" && (
+              <div className="space-y-4">
 
-            {/* CapCut templates */}
+                {/* CapCut templates */}
             <div className="space-y-2">
               <p className="font-sans text-[0.55rem] text-cream/25">CapCut · imagem + áudio · toca para abrir</p>
               {capcutContent.map((entry) => (
@@ -655,8 +765,11 @@ export default function MarketingPage() {
         {/* ══════════════════════════════════════════════════════════════════════ */}
         {/* REDES — banco de posts para Instagram/WhatsApp                        */}
         {/* ══════════════════════════════════════════════════════════════════════ */}
-        {section === "redes" && (
-          <RedesSection copiedId={copiedId} copyText={copyText} />
+            {arquivoSub === "redes" && (
+              <RedesSection copiedId={copiedId} copyText={copyText} />
+            )}
+
+          </div>
         )}
 
       </div>
