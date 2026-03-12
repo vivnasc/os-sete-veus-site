@@ -3340,14 +3340,150 @@ export type WeekdayRhythm = {
   hint: string;
   themeIdx: number;
   dayIdx: number;
+  bestTime: string;
+  bestTimeNote: string;
 };
 
 export const WEEKLY_RHYTHM: WeekdayRhythm[] = [
-  { label: "Dom", hint: "Reflexão",    themeIdx: 4, dayIdx: 0 },
-  { label: "Seg", hint: "Véu",         themeIdx: 0, dayIdx: 0 },
-  { label: "Ter", hint: "Espelho",     themeIdx: 1, dayIdx: 0 },
-  { label: "Qua", hint: "Véu",         themeIdx: 0, dayIdx: 2 },
-  { label: "Qui", hint: "Nó",          themeIdx: 2, dayIdx: 0 },
-  { label: "Sex", hint: "Espelho",     themeIdx: 1, dayIdx: 1 },
-  { label: "Sáb", hint: "Os 7 Véus",  themeIdx: 0, dayIdx: 6 },
+  { label: "Dom", hint: "Reflexão",    themeIdx: 4, dayIdx: 0, bestTime: "10h–12h", bestTimeNote: "Manhã calma — reflexão pessoal" },
+  { label: "Seg", hint: "Véu",         themeIdx: 0, dayIdx: 0, bestTime: "12h–14h", bestTimeNote: "Pausa do almoço — scroll rápido" },
+  { label: "Ter", hint: "Espelho",     themeIdx: 1, dayIdx: 0, bestTime: "18h–20h", bestTimeNote: "Fim do dia — disponibilidade emocional" },
+  { label: "Qua", hint: "Véu",         themeIdx: 0, dayIdx: 2, bestTime: "12h–14h", bestTimeNote: "Meio da semana — pausa" },
+  { label: "Qui", hint: "Nó",          themeIdx: 2, dayIdx: 0, bestTime: "18h–20h", bestTimeNote: "Melhor dia da semana — engagement alto" },
+  { label: "Sex", hint: "Espelho",     themeIdx: 1, dayIdx: 1, bestTime: "17h–19h", bestTimeNote: "Início do fim-de-semana" },
+  { label: "Sáb", hint: "Os 7 Véus",  themeIdx: 0, dayIdx: 6, bestTime: "11h–13h", bestTimeNote: "Manhã relaxada — conteúdo longo" },
+];
+
+// ─── CONTEÚDO EDUCATIVO DE NICHO ──────────────────────────────────────────────
+// Posts de texto que constroem autoridade no nicho de autoconhecimento.
+// Não mencionam o produto — falam dos temas como fenómenos universais.
+
+export type NichePost = {
+  id: string;
+  hook: string;
+  body: string;
+  cta: string;
+  category: "padrao" | "corpo" | "ficcao" | "relacao" | "provocacao";
+  format: "feed" | "carousel" | "reel" | "story";
+  hashtags: string[];
+};
+
+export const nichePosts: NichePost[] = [
+  // ── PADRÃO — porque repetimos o que nos dói ──
+  {
+    id: "edu-1",
+    hook: "Sabes aquela conversa que já tiveste 47 vezes?",
+    body: "Não é por falta de inteligência. É porque o padrão é mais rápido que a consciência.\n\nO corpo entra na conversa antes de ti. Já preparou a defesa, já escolheu as palavras, já decidiu o que sentir — antes de pensares.\n\nNão precisas de parar o padrão. Precisas de o reconhecer enquanto acontece.\n\nIsso muda tudo.",
+    cta: "Qual é a conversa que se repete na tua vida?\n\n— Vivianne",
+    category: "padrao",
+    format: "feed",
+    hashtags: ["#Autoconhecimento", "#Padroes", "#ConhecerSe"],
+  },
+  {
+    id: "edu-2",
+    hook: "Há escolhas que não são escolhas.",
+    body: "São repetições disfarçadas de decisão.\n\nEscolhes o mesmo tipo de pessoa. O mesmo tipo de conflito. O mesmo momento para te calares.\n\nE parece sempre diferente — porque o cenário muda. Mas o mecanismo é o mesmo.\n\nA diferença entre repetir e escolher é uma só: consciência.",
+    cta: "A próxima vez que \"escolheres\", pergunta: isto é novo ou é familiar?\n\n— Vivianne",
+    category: "padrao",
+    format: "feed",
+    hashtags: ["#Autoconhecimento", "#Padroes", "#EscolhasConscientes"],
+  },
+  {
+    id: "edu-3",
+    hook: "Não te tornaste assim de repente.",
+    body: "Houve um dia — provavelmente antes dos 10 anos — em que aprendeste que era mais seguro ser simpática do que ser honesta.\n\nOu que chorar era fraqueza. Ou que pedir era pedir demais.\n\nNão foi trauma. Foi adaptação. E a adaptação funcionou tão bem que esqueceste que havia outra versão de ti antes dela.",
+    cta: "O que aprendeste cedo demais?\n\n— Vivianne",
+    category: "padrao",
+    format: "carousel",
+    hashtags: ["#Autoconhecimento", "#InfanciaInterior", "#Adaptacao"],
+  },
+
+  // ── CORPO — o corpo sabe antes da mente ──
+  {
+    id: "edu-4",
+    hook: "O teu corpo sabe coisas que tu ainda não admitiste.",
+    body: "A dor de estômago antes da reunião. O aperto no peito quando o telefone toca. O cansaço que não se explica por horas de sono.\n\nO corpo não mente. Não sabe.\n\nQuando alguém te pergunta \"como estás?\" e tu dizes \"bem\" — o corpo regista a distância entre o que dizes e o que sentes.",
+    cta: "Onde é que o teu corpo fala mais alto?\n\n— Vivianne",
+    category: "corpo",
+    format: "feed",
+    hashtags: ["#CorpoEMente", "#Autoconhecimento", "#EscutarOCorpo"],
+  },
+  {
+    id: "edu-5",
+    hook: "Já reparaste que endireitas a postura quando alguém entra na sala?",
+    body: "Não é vaidade. É vigilância.\n\nO corpo adapta-se ao que aprendeu: ser vista é ser avaliada. Então prepara-se. Contrai. Performa.\n\nRelaxar na presença de outra pessoa é um dos gestos mais corajosos que existem. Porque implica confiança — e confiança implica risco.",
+    cta: "Com quem é que o teu corpo relaxa?\n\n— Vivianne",
+    category: "corpo",
+    format: "reel",
+    hashtags: ["#CorpoEMente", "#Vulnerabilidade", "#Autoconhecimento"],
+  },
+
+  // ── FICÇÃO — porque as histórias curam ──
+  {
+    id: "edu-6",
+    hook: "Há coisas que só conseguimos ver quando não são sobre nós.",
+    body: "É por isso que as histórias funcionam onde os conselhos falham.\n\nNinguém gosta que lhe digam o que está errado. Mas quando lês uma personagem que faz exactamente o que tu fazes — e vês as consequências — algo muda.\n\nNão é informação. É reconhecimento.\n\nA ficção é o espelho mais gentil que existe.",
+    cta: "Já te reconheceste numa personagem que não eras tu?\n\n— Vivianne",
+    category: "ficcao",
+    format: "carousel",
+    hashtags: ["#FiccaoTransformativa", "#Autoconhecimento", "#LeituraConsciente"],
+  },
+  {
+    id: "edu-7",
+    hook: "Um livro de autoajuda diz-te o que fazer. Uma história mostra-te quem és.",
+    body: "A diferença é enorme.\n\nO conselho entra pela mente. A história entra pelo corpo — pelo reconhecimento, pelo arrepio, pelo \"isto sou eu\".\n\nNão precisas de mais informação sobre ti. Precisas de te ver. E às vezes a forma mais segura de te veres é através de alguém que não existe.",
+    cta: "Qual foi a última história que te mostrou algo sobre ti?\n\n— Vivianne",
+    category: "ficcao",
+    format: "feed",
+    hashtags: ["#FiccaoTransformativa", "#LeituraQueTransforma", "#Autoconhecimento"],
+  },
+
+  // ── RELAÇÃO — o que acontece entre duas pessoas ──
+  {
+    id: "edu-8",
+    hook: "O silêncio entre duas pessoas nunca é vazio.",
+    body: "Está cheio de tudo o que não foi dito. Das vezes que quase disseste. Das vezes que ele quase perguntou.\n\nOs silêncios acumulam-se como neve. Parecem leves. Mas quando derretes tudo de uma vez — inunda.\n\nA maioria das relações não acaba por conflito. Acaba por acumulação de silêncios.",
+    cta: "O que é que o silêncio está a guardar na tua relação?\n\n— Vivianne",
+    category: "relacao",
+    format: "feed",
+    hashtags: ["#Relacoes", "#Comunicacao", "#Autoconhecimento"],
+  },
+  {
+    id: "edu-9",
+    hook: "Cuidar pode ser uma forma de controlar.",
+    body: "Parece generosidade. Parece amor. Mas às vezes é isto: se eu tratar de tudo, ninguém me pode abandonar.\n\nA pessoa que cuida demais raramente pede. Porque pedir é arriscar ouvir \"não\". E esse \"não\" confirma o medo original: não sou suficiente.\n\nCuidar sem pedir não é amor. É estratégia de sobrevivência.",
+    cta: "Cuidas para dar — ou para não perder?\n\n— Vivianne",
+    category: "relacao",
+    format: "carousel",
+    hashtags: ["#Relacoes", "#Codependencia", "#Autoconhecimento"],
+  },
+
+  // ── PROVOCAÇÃO — contra o wellness superficial ──
+  {
+    id: "edu-10",
+    hook: "\"Ama-te a ti mesma\" é o conselho mais inútil que existe.",
+    body: "Não porque seja falso. Porque é vago.\n\nNinguém te diz como. Ninguém te diz que amar-se inclui olhar para partes de ti que não queres ver. Que inclui dizer não a pessoas que amas. Que inclui falhar e não te punires.\n\nAutoconhecimento não é wellness. É trabalho. Bonito, necessário — mas trabalho.",
+    cta: "O que é que \"amar-te\" significaria se fosses honesta?\n\n— Vivianne",
+    category: "provocacao",
+    format: "reel",
+    hashtags: ["#Autoconhecimento", "#AntiWellness", "#Honestidade"],
+  },
+  {
+    id: "edu-11",
+    hook: "Não precisas de mais rituais matinais.",
+    body: "Precisas de uma conversa honesta contigo às 3 da manhã.\n\nAquela em que não há velas, nem journal bonito, nem playlist de meditação. Só tu e a pergunta que tens evitado.\n\nO autoconhecimento não acontece na hora que reservas para ele. Acontece quando te apanhas no acto de ser quem não queres ser.",
+    cta: "Qual é a pergunta que continuas a adiar?\n\n— Vivianne",
+    category: "provocacao",
+    format: "feed",
+    hashtags: ["#Autoconhecimento", "#SemFiltro", "#Honestidade"],
+  },
+  {
+    id: "edu-12",
+    hook: "A maioria das pessoas não tem medo de mudar. Tem medo de ser vista a mudar.",
+    body: "Porque mudar implica admitir que antes estavas errada. Ou perdida. Ou a fingir.\n\nE as pessoas à tua volta já se habituaram à versão antiga. Algumas até preferem essa versão — porque a nova incomoda.\n\nMudar em silêncio é mais fácil. Mas em silêncio ninguém te acompanha.",
+    cta: "O que mudarias se ninguém estivesse a ver?\n\n— Vivianne",
+    category: "provocacao",
+    format: "carousel",
+    hashtags: ["#Autoconhecimento", "#Mudanca", "#Coragem"],
+  },
 ];
