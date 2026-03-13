@@ -12,6 +12,7 @@ const navLinks: { href: string; label: string; highlight?: boolean; featured?: b
   { href: "/sobre", label: "Sobre" },
   { href: "/comunidade", label: "Ecos", highlight: true },
   { href: "/livro-fisico", label: "Livro Físico", featured: true },
+  { href: "/podcast", label: "Podcast" },
   { href: "/contacto", label: "Contacto" },
 ];
 
