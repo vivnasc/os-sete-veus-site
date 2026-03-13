@@ -19,7 +19,7 @@ import {
   TEASERS_NOS,
   CHAMADAS_ACCAO,
 } from "@/data/marketing-audio";
-import { REELS_VOZ, CARROSSEIS_VOZ } from "@/data/marketing-reels-audio";
+import { REELS_VOZ, CARROSSEIS_VOZ, EDUCATIVOS_VOZ } from "@/data/marketing-reels-audio";
 
 const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
 const DEFAULT_VOICE_ID = "fnoNuVpfClX7lHKFbyZ2";
@@ -48,7 +48,7 @@ function slugify(s: string) {
 
 type Estado = "idle" | "a-gerar" | "feito" | "erro";
 type EstadoUpload = "idle" | "a-enviar" | "enviado" | "erro";
-type Aba = "citacoes" | "reflexoes" | "intros" | "teasers" | "trailer" | "stories" | "teasers-nos" | "ctas" | "reels" | "carrosseis";
+type Aba = "citacoes" | "reflexoes" | "intros" | "teasers" | "trailer" | "stories" | "teasers-nos" | "ctas" | "reels" | "carrosseis" | "educativos";
 
 export default function VozPage() {
   const { user, profile } = useAuth();
@@ -63,6 +63,7 @@ export default function VozPage() {
   const [blobs, setBlobs] = useState<Record<string, Blob>>({});
   const [uploadEstados, setUploadEstados] = useState<Record<string, EstadoUpload>>({});
   const [uploadErros, setUploadErros] = useState<Record<string, string>>({});
+  const [modelo, setModelo] = useState<"v2" | "v3">("v2");
   const [aGerarTodos, setAGerarTodos] = useState(false);
   const [aEnviarTodos, setAEnviarTodos] = useState(false);
   const [autoUpload, setAutoUpload] = useState(false);
@@ -96,7 +97,7 @@ export default function VozPage() {
       const res = await fetch("/api/admin/gerar-voz", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ texto, voiceId: voiceId.trim(), apiKey: apiKey.trim() }),
+        body: JSON.stringify({ texto, voiceId: voiceId.trim(), apiKey: apiKey.trim(), model: modelo }),
       });
 
       if (!res.ok) {
@@ -160,6 +161,8 @@ export default function VozPage() {
       ? REELS_VOZ.map((r) => ({ id: r.id, ficheiro: r.ficheiro, texto: r.texto }))
       : aba === "carrosseis"
       ? CARROSSEIS_VOZ.map((c) => ({ id: c.id, ficheiro: c.ficheiro, texto: c.texto }))
+      : aba === "educativos"
+      ? EDUCATIVOS_VOZ.map((e) => ({ id: e.id, ficheiro: e.ficheiro, texto: e.texto }))
       : CHAMADAS_ACCAO.map((c) => ({ id: c.id, ficheiro: c.ficheiro, texto: c.texto }));
   }
 
@@ -270,6 +273,9 @@ export default function VozPage() {
         // carrosseis
         const carousel = CARROSSEIS_VOZ.find((c) => c.id === id);
         if (carousel) return carousel.ficheiro;
+        // educativos
+        const edu = EDUCATIVOS_VOZ.find((e) => e.id === id);
+        if (edu) return edu.ficheiro;
         // ctas
         return CHAMADAS_ACCAO.find((c) => c.id === id)?.ficheiro ?? null;
       })();
@@ -312,6 +318,8 @@ export default function VozPage() {
   const reelsFeitos = REELS_VOZ.filter((r) => estados[r.id] === "feito").length;
   const carrosseisTotal = CARROSSEIS_VOZ.length;
   const carrosseisFeitos = CARROSSEIS_VOZ.filter((c) => estados[c.id] === "feito").length;
+  const educativosTotal = EDUCATIVOS_VOZ.length;
+  const educativosFeitos = EDUCATIVOS_VOZ.filter((e) => estados[e.id] === "feito").length;
 
   return (
     <div className="min-h-screen bg-cream">
@@ -372,6 +380,29 @@ export default function VozPage() {
               className="w-full rounded-lg border border-sage/30 bg-cream px-4 py-3 text-sm text-forest font-mono focus:outline-none focus:ring-2 focus:ring-sage/30"
             />
           </div>
+          {/* Modelo v2/v3 */}
+          <div>
+            <label className="block text-sm font-medium text-forest mb-2">Modelo</label>
+            <div className="flex gap-2">
+              {(["v2", "v3"] as const).map((v) => (
+                <button
+                  key={v}
+                  onClick={() => setModelo(v)}
+                  className={`rounded-lg px-4 py-2.5 text-sm font-medium transition ${
+                    modelo === v
+                      ? "text-white"
+                      : "bg-white text-sage border border-sage/20 hover:text-forest"
+                  }`}
+                  style={modelo === v ? { backgroundColor: "#2d6a4f" } : {}}
+                >
+                  {v === "v3" ? "v3 (pausas naturais)" : "v2 (multilingual)"}
+                </button>
+              ))}
+            </div>
+            {modelo === "v3" && (
+              <p className="mt-1 text-xs text-sage">v3 interpreta [pause], [short pause], [long pause] nos textos.</p>
+            )}
+          </div>
           {/* Toggle upload automático */}
           <div className="flex items-center justify-between rounded-lg border border-sage/20 bg-cream px-4 py-3">
             <div>
@@ -415,6 +446,7 @@ export default function VozPage() {
               ["ctas", `Chamadas à Acção (${ctasFeitas}/${ctasTotal})`],
               ["reels", `Reels (${reelsFeitos}/${reelsTotal})`],
               ["carrosseis", `Carrosséis (${carrosseisFeitos}/${carrosseisTotal})`],
+              ["educativos", `Educativos v3 (${educativosFeitos}/${educativosTotal})`],
             ] as [Aba, string][]).map(([a, label]) => (
               <button key={a} onClick={() => setAba(a)}
                 className={`px-4 py-2 text-sm font-medium rounded-lg transition ${aba === a ? "bg-forest text-white" : "bg-white text-sage border border-sage/20 hover:text-forest"}`}
@@ -700,6 +732,40 @@ export default function VozPage() {
                   temBlob={!!blobs[c.id]}
                   uploadEstado={uploadEstados[c.id] || "idle"}
                   onUpload={() => uploadAudio(c.id, c.ficheiro)}
+                />
+              );
+            })}
+          </div>
+        )}
+
+        {/* ── Educativos (v3 com pausas) ─────────────────────── */}
+        {aba === "educativos" && (
+          <div className="space-y-3">
+            <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3">
+              <p className="text-xs font-medium text-amber-800">ElevenLabs v3 — pausas naturais</p>
+              <p className="mt-1 text-xs text-amber-700">
+                Estes roteiros usam [pause], [short pause], [long pause] para respirações naturais.
+                Selecciona o modelo v3 acima para melhor resultado.
+              </p>
+              {modelo !== "v3" && (
+                <button
+                  onClick={() => setModelo("v3")}
+                  className="mt-2 rounded bg-amber-200 px-3 py-1 text-xs font-medium text-amber-800 hover:bg-amber-300"
+                >
+                  Mudar para v3
+                </button>
+              )}
+            </div>
+            {EDUCATIVOS_VOZ.map((e) => {
+              const estado = estados[e.id] || "idle";
+              return (
+                <ItemVoz key={e.id} id={e.id} ficheiro={e.ficheiro}
+                  nome={e.nome} texto={e.texto} estado={estado} erro={erros[e.id]}
+                  disabled={aGerarTodos || !apiKey.trim()}
+                  onGerar={() => gerarVoz(e.id, e.ficheiro, e.texto)}
+                  temBlob={!!blobs[e.id]}
+                  uploadEstado={uploadEstados[e.id] || "idle"}
+                  onUpload={() => uploadAudio(e.id, e.ficheiro)}
                 />
               );
             })}

@@ -6,8 +6,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { professionalCarousels } from "@/data/content-calendar-weeks";
 import { captureElement, isMobile } from "@/lib/export-image";
-import { REELS_VOZ, CARROSSEIS_VOZ, EDUCATIVOS_VOZ } from "@/data/marketing-reels-audio";
-
 const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
 
 // ─── PRINTS (fundos) ────────────────────────────────────────────────────────
@@ -305,109 +303,6 @@ const FORMATS: Record<Format, { w: number; h: number; label: string }> = {
 
 type TextPos = "top" | "center" | "bottom";
 
-// ─── VOZ CARD ───────────────────────────────────────────────────────────────
-
-function VozCard({
-  id,
-  nome,
-  ficheiro,
-  texto,
-  badge,
-  apiKey,
-  voiceId,
-  model,
-  generating,
-  onGenerate,
-}: {
-  id: string;
-  nome: string;
-  ficheiro: string;
-  texto: string;
-  badge: "reel" | "carrossel" | "educativo";
-  apiKey: string;
-  voiceId: string;
-  model: "v3" | "v2";
-  generating: string | null;
-  onGenerate: (id: string, texto: string, nome: string) => void;
-}) {
-  const [expanded, setExpanded] = useState(false);
-  const isGenerating = generating === id;
-  const badgeColors = {
-    reel: "bg-purple-100 text-purple-700",
-    carrossel: "bg-blue-100 text-blue-700",
-    educativo: "bg-amber-100 text-amber-700",
-  };
-
-  // Highlight pause tags in text
-  const highlightPauses = (t: string) => {
-    return t.split(/(\[(?:pause|short pause|long pause)\])/g).map((part, i) => {
-      if (/^\[(?:pause|short pause|long pause)\]$/.test(part)) {
-        return (
-          <span key={i} className="mx-0.5 rounded bg-sage/20 px-1 py-0.5 font-mono text-[0.6rem] text-sage-dark">
-            {part}
-          </span>
-        );
-      }
-      return part;
-    });
-  };
-
-  return (
-    <div className="rounded-xl border border-brown-100 bg-white p-4 transition-colors hover:border-brown-200">
-      <div className="flex items-start justify-between gap-3">
-        <div className="flex-1">
-          <div className="mb-1.5 flex items-center gap-2">
-            <span className={`rounded-full px-2 py-0.5 font-sans text-[0.55rem] font-medium uppercase tracking-wider ${badgeColors[badge]}`}>
-              {badge}
-            </span>
-            <span className="font-sans text-[0.6rem] text-brown-300">{ficheiro}</span>
-          </div>
-          <h4 className="font-serif text-sm text-brown-900">{nome}</h4>
-        </div>
-        <div className="flex shrink-0 gap-2">
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="rounded-lg border border-brown-100 px-3 py-1.5 font-sans text-[0.65rem] text-brown-500 hover:border-brown-200 hover:text-brown-700"
-          >
-            {expanded ? "Fechar" : "Ver texto"}
-          </button>
-          <button
-            onClick={() => onGenerate(id, texto, nome)}
-            disabled={isGenerating || generating !== null}
-            className={`rounded-lg px-4 py-1.5 font-sans text-[0.65rem] font-medium text-white transition-colors ${
-              isGenerating
-                ? "bg-sage/60"
-                : generating !== null
-                  ? "bg-brown-200 text-brown-400"
-                  : "bg-sage hover:bg-sage-dark"
-            }`}
-          >
-            {isGenerating ? "A gerar..." : "Gerar audio"}
-          </button>
-        </div>
-      </div>
-      {expanded && (
-        <div className="mt-3 rounded-lg bg-cream p-3">
-          <p className="whitespace-pre-wrap font-sans text-xs leading-relaxed text-brown-700">
-            {highlightPauses(texto)}
-          </p>
-          <div className="mt-2 flex items-center justify-between">
-            <span className="font-sans text-[0.55rem] text-brown-300">
-              ~{Math.ceil(texto.length / 15)}s estimado
-            </span>
-            <button
-              onClick={() => navigator.clipboard.writeText(texto)}
-              className="rounded bg-brown-100 px-2 py-0.5 font-sans text-[0.55rem] text-brown-500 hover:bg-brown-200"
-            >
-              Copiar texto
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
 // ─── PAGINA ─────────────────────────────────────────────────────────────────
 
 export default function GeradorPage() {
@@ -436,19 +331,8 @@ export default function GeradorPage() {
   const [printSearch, setPrintSearch] = useState("");
   const [msgSearch, setMsgSearch] = useState("");
 
-  // Voz mode state
-  const [vozApiKey, setVozApiKey] = useState("");
-  const [vozVoiceId, setVozVoiceId] = useState("");
-  const [vozModel, setVozModel] = useState<"v3" | "v2">("v3");
-  const [vozGenerating, setVozGenerating] = useState<string | null>(null);
-  const [vozAudioUrl, setVozAudioUrl] = useState<string | null>(null);
-  const [vozAudioName, setVozAudioName] = useState("");
-  const [vozFilter, setVozFilter] = useState<"todos" | "reels" | "carrosseis" | "educativos">("todos");
-  const [vozError, setVozError] = useState<string | null>(null);
-  const vozAudioRef = useRef<HTMLAudioElement | null>(null);
-
   // Carousel mode
-  const [mode, setMode] = useState<"single" | "carousel" | "voz">("single");
+  const [mode, setMode] = useState<"single" | "carousel">("single");
   const [selectedCarousel, setSelectedCarousel] = useState(professionalCarousels[0]);
   const [exportingCarousel, setExportingCarousel] = useState(false);
   const [exportCarouselStep, setExportCarouselStep] = useState(0);
@@ -469,35 +353,6 @@ export default function GeradorPage() {
         <div className="h-8 w-8 animate-spin rounded-full border-4 border-sage border-t-transparent" />
       </div>
     );
-  }
-
-  async function handleVozGenerate(id: string, texto: string, nome: string) {
-    if (!vozApiKey || !vozVoiceId) {
-      setVozError("Preenche API Key e Voice ID primeiro.");
-      return;
-    }
-    setVozError(null);
-    setVozGenerating(id);
-    try {
-      const res = await fetch("/api/admin/gerar-voz", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ texto, voiceId: vozVoiceId, apiKey: vozApiKey, model: vozModel }),
-      });
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({ erro: res.statusText }));
-        setVozError(err.erro || "Erro ao gerar audio");
-        setVozGenerating(null);
-        return;
-      }
-      const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
-      setVozAudioUrl(url);
-      setVozAudioName(nome);
-    } catch {
-      setVozError("Erro de rede ao gerar audio");
-    }
-    setVozGenerating(null);
   }
 
   const fmt = FORMATS[format];
@@ -583,7 +438,7 @@ export default function GeradorPage() {
             >
               {exporting ? "A exportar..." : "Guardar imagem"}
             </button>
-          ) : mode === "carousel" ? (
+          ) : (
             <button
               onClick={handleExportCarousel}
               disabled={exportingCarousel}
@@ -593,16 +448,12 @@ export default function GeradorPage() {
                 ? `Slide ${exportCarouselStep}/${selectedCarousel.slides.length}...`
                 : `Baixar ${selectedCarousel.slides.length} slides`}
             </button>
-          ) : (
-            <span className="font-sans text-xs text-brown-400">
-              {REELS_VOZ.length + CARROSSEIS_VOZ.length + EDUCATIVOS_VOZ.length} roteiros
-            </span>
           )}
         </div>
 
         {/* Mode tabs */}
         <div className="mx-auto mt-3 flex max-w-7xl gap-1">
-          {(["single", "carousel", "voz"] as const).map((m) => (
+          {(["single", "carousel"] as const).map((m) => (
             <button
               key={m}
               onClick={() => setMode(m)}
@@ -612,7 +463,7 @@ export default function GeradorPage() {
                   : "text-brown-400 hover:text-brown-700"
               }`}
             >
-              {m === "single" ? "Post unico" : m === "carousel" ? "Carrosseis prontos" : "Gerar voz"}
+              {m === "single" ? "Post unico" : "Carrosseis prontos"}
             </button>
           ))}
         </div>
@@ -1106,197 +957,6 @@ export default function GeradorPage() {
           </div>
         </div>
         )} {/* end mode === "single" */}
-
-        {/* ─── VOZ MODE ─── */}
-        {mode === "voz" && (
-          <div className="space-y-6">
-            {/* Config bar */}
-            <div className="rounded-xl border border-brown-100 bg-white p-5">
-              <h3 className="mb-4 font-serif text-sm text-brown-900">Configuracao ElevenLabs</h3>
-              <div className="flex flex-wrap gap-4">
-                <div className="flex-1" style={{ minWidth: 200 }}>
-                  <label className="mb-1 block font-sans text-[0.65rem] font-medium uppercase tracking-wider text-brown-400">
-                    API Key
-                  </label>
-                  <input
-                    type="password"
-                    value={vozApiKey}
-                    onChange={(e) => setVozApiKey(e.target.value)}
-                    placeholder="xi-..."
-                    className="w-full rounded-lg border border-brown-100 bg-cream px-3 py-2 font-sans text-sm text-brown-900 placeholder:text-brown-300 focus:border-sage focus:outline-none"
-                  />
-                </div>
-                <div className="flex-1" style={{ minWidth: 200 }}>
-                  <label className="mb-1 block font-sans text-[0.65rem] font-medium uppercase tracking-wider text-brown-400">
-                    Voice ID
-                  </label>
-                  <input
-                    type="text"
-                    value={vozVoiceId}
-                    onChange={(e) => setVozVoiceId(e.target.value)}
-                    placeholder="ID da voz"
-                    className="w-full rounded-lg border border-brown-100 bg-cream px-3 py-2 font-sans text-sm text-brown-900 placeholder:text-brown-300 focus:border-sage focus:outline-none"
-                  />
-                </div>
-                <div>
-                  <label className="mb-1 block font-sans text-[0.65rem] font-medium uppercase tracking-wider text-brown-400">
-                    Modelo
-                  </label>
-                  <div className="flex gap-1.5">
-                    {(["v3", "v2"] as const).map((v) => (
-                      <button
-                        key={v}
-                        onClick={() => setVozModel(v)}
-                        className={`rounded-lg border px-4 py-2 font-sans text-xs transition-colors ${
-                          vozModel === v
-                            ? "border-sage bg-sage/10 text-sage-dark"
-                            : "border-brown-100 bg-cream text-brown-400"
-                        }`}
-                      >
-                        {v === "v3" ? "v3 (pausas)" : "v2 (SSML)"}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              {vozModel === "v3" && (
-                <p className="mt-3 font-sans text-[0.65rem] text-brown-400">
-                  v3 usa [pause], [short pause], [long pause] para respiracoes naturais
-                </p>
-              )}
-            </div>
-
-            {/* Filter tabs */}
-            <div className="flex gap-1.5">
-              {([
-                { key: "todos" as const, label: "Todos", count: REELS_VOZ.length + CARROSSEIS_VOZ.length + EDUCATIVOS_VOZ.length },
-                { key: "educativos" as const, label: "Educativos", count: EDUCATIVOS_VOZ.length },
-                { key: "reels" as const, label: "Reels", count: REELS_VOZ.length },
-                { key: "carrosseis" as const, label: "Carrosseis", count: CARROSSEIS_VOZ.length },
-              ]).map((f) => (
-                <button
-                  key={f.key}
-                  onClick={() => setVozFilter(f.key)}
-                  className={`rounded-lg px-4 py-1.5 font-sans text-xs font-medium transition-colors ${
-                    vozFilter === f.key
-                      ? "bg-sage/15 text-sage-dark"
-                      : "text-brown-400 hover:text-brown-700"
-                  }`}
-                >
-                  {f.label} ({f.count})
-                </button>
-              ))}
-            </div>
-
-            {/* Audio player (if playing) */}
-            {vozAudioUrl && (
-              <div className="rounded-xl border border-sage/30 bg-sage/5 p-4">
-                <div className="mb-2 flex items-center justify-between">
-                  <span className="font-sans text-xs font-medium text-sage-dark">{vozAudioName}</span>
-                  <div className="flex gap-2">
-                    <a
-                      href={vozAudioUrl}
-                      download={`${vozAudioName.replace(/\s+/g, "-").toLowerCase()}.mp3`}
-                      className="rounded bg-sage px-3 py-1 font-sans text-[0.65rem] font-medium text-white hover:bg-sage-dark"
-                    >
-                      Baixar MP3
-                    </a>
-                    <button
-                      onClick={() => { setVozAudioUrl(null); if (vozAudioRef.current) vozAudioRef.current.pause(); }}
-                      className="rounded bg-brown-100 px-3 py-1 font-sans text-[0.65rem] text-brown-500 hover:bg-brown-200"
-                    >
-                      Fechar
-                    </button>
-                  </div>
-                </div>
-                <audio ref={vozAudioRef} src={vozAudioUrl} controls className="w-full" autoPlay />
-              </div>
-            )}
-
-            {/* Error */}
-            {vozError && (
-              <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 font-sans text-xs text-red-700">
-                {vozError}
-                <button onClick={() => setVozError(null)} className="ml-2 underline">fechar</button>
-              </div>
-            )}
-
-            {/* Script cards */}
-            <div className="space-y-3">
-              {/* Educativos */}
-              {(vozFilter === "todos" || vozFilter === "educativos") && (
-                <>
-                  {vozFilter === "todos" && (
-                    <h3 className="font-serif text-sm text-brown-700">Educativos (v3 com pausas)</h3>
-                  )}
-                  {EDUCATIVOS_VOZ.map((item) => (
-                    <VozCard
-                      key={item.id}
-                      id={item.id}
-                      nome={item.nome}
-                      ficheiro={item.ficheiro}
-                      texto={item.texto}
-                      badge="educativo"
-                      apiKey={vozApiKey}
-                      voiceId={vozVoiceId}
-                      model={vozModel}
-                      generating={vozGenerating}
-                      onGenerate={handleVozGenerate}
-                    />
-                  ))}
-                </>
-              )}
-
-              {/* Reels */}
-              {(vozFilter === "todos" || vozFilter === "reels") && (
-                <>
-                  {vozFilter === "todos" && (
-                    <h3 className="mt-6 font-serif text-sm text-brown-700">Reels (narracao corrida)</h3>
-                  )}
-                  {REELS_VOZ.map((item) => (
-                    <VozCard
-                      key={item.id}
-                      id={item.id}
-                      nome={item.nome}
-                      ficheiro={item.ficheiro}
-                      texto={item.texto}
-                      badge="reel"
-                      apiKey={vozApiKey}
-                      voiceId={vozVoiceId}
-                      model={vozModel}
-                      generating={vozGenerating}
-                      onGenerate={handleVozGenerate}
-                    />
-                  ))}
-                </>
-              )}
-
-              {/* Carrosseis */}
-              {(vozFilter === "todos" || vozFilter === "carrosseis") && (
-                <>
-                  {vozFilter === "todos" && (
-                    <h3 className="mt-6 font-serif text-sm text-brown-700">Carrosseis (narracao dos slides)</h3>
-                  )}
-                  {CARROSSEIS_VOZ.map((item) => (
-                    <VozCard
-                      key={item.id}
-                      id={item.id}
-                      nome={item.nome}
-                      ficheiro={item.ficheiro}
-                      texto={item.texto}
-                      badge="carrossel"
-                      apiKey={vozApiKey}
-                      voiceId={vozVoiceId}
-                      model={vozModel}
-                      generating={vozGenerating}
-                      onGenerate={handleVozGenerate}
-                    />
-                  ))}
-                </>
-              )}
-            </div>
-          </div>
-        )}
 
       </div>
 
