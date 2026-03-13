@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { professionalCarousels } from "@/data/content-calendar-weeks";
 import { captureElement, isMobile } from "@/lib/export-image";
-
 const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
 
 // ─── PRINTS (fundos) ────────────────────────────────────────────────────────
@@ -464,7 +463,7 @@ export default function GeradorPage() {
                   : "text-brown-400 hover:text-brown-700"
               }`}
             >
-              {m === "single" ? "Post único" : "Carrosséis prontos"}
+              {m === "single" ? "Post unico" : "Carrosseis prontos"}
             </button>
           ))}
         </div>
@@ -958,6 +957,7 @@ export default function GeradorPage() {
           </div>
         </div>
         )} {/* end mode === "single" */}
+
       </div>
 
       {/* Mobile carousel: ecrã inteiro, slide a slide */}
