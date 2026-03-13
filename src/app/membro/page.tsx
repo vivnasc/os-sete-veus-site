@@ -7,6 +7,8 @@ import { chapters as ilusaoChapters } from "@/data/ebook";
 import { chapters as nosChapters } from "@/data/no-heranca";
 import { experiences } from "@/data/experiences";
 import { getNosForEspelho } from "@/data/nos-collection";
+import { courses as allCourses, getAvailableCourses } from "@/data/courses";
+import { loadCourse, courseProgressKey } from "@/lib/content-registry";
 import { loadEspelho, espelhoProgressKey } from "@/lib/content-registry";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
@@ -32,6 +34,7 @@ export default function MembroDashboard() {
   const [syncing, setSyncing] = useState(false);
   const [syncAttempted, setSyncAttempted] = useState(false);
   const [payments, setPayments] = useState<{ id: string; status: string; amount: number; currency: string; access_type_code: string; payment_method: string; created_at: string }[]>([]);
+  const [courseProgress, setCourseProgress] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -61,7 +64,7 @@ export default function MembroDashboard() {
         return;
       }
 
-      const [readingRes, journalRes, paymentsRes] = await Promise.all([
+      const [readingRes, journalRes, paymentsRes, courseProgressRes] = await Promise.all([
         supabase
           .from("reading_progress")
           .select("chapter_slug, completed")
@@ -76,6 +79,11 @@ export default function MembroDashboard() {
           .select("id, status, amount, currency, access_type_code, payment_method, created_at")
           .eq("user_id", userId)
           .order("created_at", { ascending: false }),
+        supabase
+          .from("reading_progress")
+          .select("chapter_slug, completed")
+          .eq("user_id", userId)
+          .like("chapter_slug", "curso-%"),
       ]);
 
       if (readingRes.data) {
@@ -92,6 +100,14 @@ export default function MembroDashboard() {
 
       if (paymentsRes.data) {
         setPayments(paymentsRes.data);
+      }
+
+      if (courseProgressRes.data) {
+        const cMap: Record<string, boolean> = {};
+        courseProgressRes.data.forEach((row) => {
+          cMap[row.chapter_slug] = row.completed;
+        });
+        setCourseProgress(cMap);
       }
     } catch {
       // Falha na ligacao ao Supabase
@@ -159,6 +175,7 @@ export default function MembroDashboard() {
   const isAdmin = profile?.is_admin || AUTHOR_EMAILS.includes(user?.email || "");
   const hasBookAccess = isAdmin || profile?.has_book_access || false;
   const hasMirrorsAccess = isAdmin || profile?.has_mirrors_access || false;
+  const hasCoursesAccess = isAdmin || profile?.has_courses_access || false;
   const hasNosIncluded = isAdmin || (profile?.purchased_products ?? []).some(
     (p) => p.type === "journey" || p.type === "pack3" || p.type === "jornada_completa"
   );
@@ -454,6 +471,122 @@ export default function MembroDashboard() {
           </div>
         )}
 
+        {/* CURSOS — Ensino e mentoria */}
+        {hasCoursesAccess && getAvailableCourses().length > 0 && (
+          <div className="mt-8">
+            <h3 className="mb-4 font-sans text-[0.65rem] uppercase tracking-[0.25em] text-brown-400">
+              Cursos
+            </h3>
+            <div className="space-y-4">
+              {getAvailableCourses().map((course) => {
+                const totalLessons = course.lessons;
+                const completedLessons = Object.keys(courseProgress).filter(
+                  (k) => k.startsWith(`curso-${course.slug}/`) && courseProgress[k]
+                ).length;
+                const percent = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
+
+                return (
+                  <div
+                    key={course.slug}
+                    className="overflow-hidden rounded-2xl bg-white shadow-sm"
+                  >
+                    <div className="flex flex-col sm:flex-row">
+                      <div
+                        className="flex items-center justify-center px-8 py-6 sm:w-48"
+                        style={{
+                          background: `linear-gradient(135deg, ${course.color}40, ${course.color}20)`,
+                        }}
+                      >
+                        <div className="text-center">
+                          <div
+                            className="mx-auto flex h-14 w-14 items-center justify-center rounded-full"
+                            style={{ backgroundColor: course.color + "30" }}
+                          >
+                            <span
+                              className="font-serif text-lg font-bold"
+                              style={{ color: course.color }}
+                            >
+                              {course.lessons}
+                            </span>
+                          </div>
+                          <p className="mt-1.5 font-sans text-[0.5rem] uppercase tracking-wider text-brown-500">
+                            licoes
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex flex-1 flex-col justify-between p-6">
+                        <div>
+                          <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-brown-400">
+                            Curso · Ensino
+                          </p>
+                          <h2 className="mt-1 font-serif text-2xl text-brown-900">
+                            {course.title}
+                          </h2>
+                          <p className="mt-1 font-serif text-sm italic text-brown-500">
+                            {course.subtitle}
+                          </p>
+                          {!loading && (
+                            <div className="mt-4">
+                              <div className="flex items-center justify-between text-xs text-brown-400">
+                                <span>
+                                  {completedLessons === 0
+                                    ? "Pronta para comecar"
+                                    : completedLessons === totalLessons
+                                      ? "Curso completo"
+                                      : `${completedLessons} de ${totalLessons} licoes`}
+                                </span>
+                                <span>{percent}%</span>
+                              </div>
+                              <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-brown-50">
+                                <div
+                                  className="h-full rounded-full transition-all duration-1000"
+                                  style={{
+                                    width: `${percent}%`,
+                                    background: `linear-gradient(to right, ${course.color}, ${course.color}dd)`,
+                                  }}
+                                />
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                        <Link
+                          href={`/membro/cursos/${course.slug}`}
+                          className="mt-5 inline-flex items-center justify-center rounded-full px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors"
+                          style={{ backgroundColor: course.color }}
+                        >
+                          {completedLessons === 0
+                            ? "Comecar"
+                            : completedLessons === totalLessons
+                              ? "Rever"
+                              : "Continuar"}
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Convite para cursos — para quem nao tem acesso */}
+        {!hasCoursesAccess && (hasBookAccess || hasMirrorsAccess) && !loading && getAvailableCourses().length > 0 && (
+          <div className="mt-6 rounded-2xl border border-sage/20 bg-sage/[0.04] p-6 text-center">
+            <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-sage">
+              Ensino e mentoria
+            </p>
+            <p className="mt-2 font-serif text-base text-brown-700">
+              Cursos com a Vivianne. Temas transversais, exercicios praticos, reflexoes guiadas.
+            </p>
+            <Link
+              href="/cursos"
+              className="mt-4 inline-flex items-center justify-center rounded-full border-2 border-sage px-6 py-2 font-sans text-[0.65rem] uppercase tracking-[0.15em] text-sage transition-all hover:bg-sage hover:text-white"
+            >
+              Descobrir cursos
+            </Link>
+          </div>
+        )}
+
         {/* Convite para os Espelhos — para quem so tem acesso ao livro */}
         {hasBookAccess && !hasMirrorsAccess && !loading && (
           <div className="mt-8 rounded-2xl border border-[#c9b896]/30 bg-[#c9b896]/[0.04] p-6 text-center">
@@ -575,6 +708,25 @@ export default function MembroDashboard() {
                       {journalCount > 0
                         ? `${journalCount} reflexões escritas`
                         : "As tuas reflexões reunidas"}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            )}
+
+            {hasCoursesAccess && (
+              <Link
+                href="/membro/cursos"
+                className="group rounded-2xl border border-brown-100 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#8b9b8e] to-[#ab9375] text-lg text-white">
+                    &#9672;
+                  </span>
+                  <div>
+                    <h3 className="font-serif text-base text-brown-800">Cursos</h3>
+                    <p className="mt-0.5 font-sans text-xs text-brown-400">
+                      Ensino e mentoria
                     </p>
                   </div>
                 </div>

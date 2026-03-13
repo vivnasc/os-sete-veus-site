@@ -17,6 +17,7 @@ export function useAccess() {
   const hasBookAccess = profile?.has_book_access ?? false;
   const hasMirrorsAccess = profile?.has_mirrors_access ?? false;
   const hasAudiobookAccess = profile?.has_audiobook_access ?? false;
+  const hasCoursesAccess = profile?.has_courses_access ?? false;
   const isAdmin = profile?.is_admin || ADMIN_EMAILS.includes(user?.email || "");
 
   // Early access: donors (jornada completa, pack3) ou flag explícita no perfil
@@ -26,12 +27,13 @@ export function useAccess() {
     hasJourneyOrPackPurchase(profile?.purchased_products);
 
   // Admin tem acesso a tudo
-  const hasAnyAccess = isAdmin || hasBookAccess || hasMirrorsAccess || hasAudiobookAccess;
+  const hasAnyAccess = isAdmin || hasBookAccess || hasMirrorsAccess || hasAudiobookAccess || hasCoursesAccess;
 
   return {
     hasBookAccess: isAdmin || hasBookAccess,
     hasMirrorsAccess: isAdmin || hasMirrorsAccess,
     hasAudiobookAccess: isAdmin || hasAudiobookAccess,
+    hasCoursesAccess: isAdmin || hasCoursesAccess,
     hasEarlyAccess,
     hasAnyAccess,
     isAdmin,

@@ -12,6 +12,7 @@ type Profile = {
   has_book_access: boolean;
   has_mirrors_access: boolean;
   has_audiobook_access: boolean;
+  has_courses_access: boolean;
   has_early_access?: boolean;
   purchased_products: Array<{
     type: string;

@@ -227,6 +227,12 @@ export default function AdminPage() {
               icon="👥"
             />
             <ActionCard
+              title="Cursos"
+              description="Gestao de cursos e progresso das alunas"
+              href="/admin/cursos"
+              icon="&#9672;"
+            />
+            <ActionCard
               title="Links Especiais"
               description="Criar links para venda directa"
               href="/admin/links-especiais"

@@ -17,6 +17,14 @@ export const ACCESS_FLAG_MAP: Record<string, string> = {
   "pack-3-espelhos": "has_mirrors_access",
   "jornada-completa": "has_mirrors_access",
   "livro-codigo": "has_book_access",
+  // Cursos
+  "curso-corpo-que-guarda": "has_courses_access",
+  "curso-arte-de-parar": "has_courses_access",
+  "curso-habitar-o-vazio": "has_courses_access",
+  "curso-fronteiras-vivas": "has_courses_access",
+  "curso-voz-que-faltava": "has_courses_access",
+  "pack-3-cursos": "has_courses_access",
+  "todos-os-cursos": "has_courses_access",
 };
 
 // Todos os produtos (espelhos)
@@ -28,4 +36,13 @@ export const ALL_PRODUCTS = [
   "experiencia-veu-controlo",
   "experiencia-veu-desejo",
   "experiencia-veu-separacao",
+];
+
+// Todos os cursos
+export const ALL_COURSES = [
+  "curso-corpo-que-guarda",
+  "curso-arte-de-parar",
+  "curso-habitar-o-vazio",
+  "curso-fronteiras-vivas",
+  "curso-voz-que-faltava",
 ];

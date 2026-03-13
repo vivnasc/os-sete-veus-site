@@ -49,6 +49,45 @@ const nosRegistry: Record<string, () => Promise<ContentModule>> = {
   // "no-da-pertenca": () => import("@/data/no-pertenca").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
 };
 
+// Registo de Cursos (slug → import dinâmico)
+import type { Lesson } from "@/data/courses";
+
+export type CourseModule = {
+  lessons: Lesson[];
+  courseMeta: {
+    title: string;
+    subtitle: string;
+    author: string;
+    intro: string;
+  };
+};
+
+const courseRegistry: Record<string, () => Promise<CourseModule>> = {
+  "o-corpo-que-guarda": () => import("@/data/curso-corpo-que-guarda").then(m => ({
+    lessons: m.lessons,
+    courseMeta: m.courseMeta,
+  })),
+  // Próximos cursos — descomentar à medida que são publicados:
+  // "a-arte-de-parar": () => import("@/data/curso-arte-de-parar").then(m => ({ lessons: m.lessons, courseMeta: m.courseMeta })),
+  // "habitar-o-vazio": () => import("@/data/curso-habitar-o-vazio").then(m => ({ lessons: m.lessons, courseMeta: m.courseMeta })),
+  // "fronteiras-vivas": () => import("@/data/curso-fronteiras-vivas").then(m => ({ lessons: m.lessons, courseMeta: m.courseMeta })),
+  // "a-voz-que-faltava": () => import("@/data/curso-voz-que-faltava").then(m => ({ lessons: m.lessons, courseMeta: m.courseMeta })),
+};
+
+export async function loadCourse(slug: string): Promise<CourseModule | null> {
+  const loader = courseRegistry[slug];
+  if (!loader) return null;
+  return loader();
+}
+
+export function isCourseRegistered(slug: string): boolean {
+  return slug in courseRegistry;
+}
+
+export function courseProgressKey(courseSlug: string, lessonSlug: string): string {
+  return `curso-${courseSlug}/${lessonSlug}`;
+}
+
 export async function loadEspelho(slug: string): Promise<ContentModule | null> {
   const loader = espelhoRegistry[slug];
   if (!loader) return null;

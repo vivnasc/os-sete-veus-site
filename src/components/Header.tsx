@@ -8,6 +8,7 @@ import { useAuth } from "@/components/AuthProvider";
 const navLinks: { href: string; label: string; highlight?: boolean; featured?: boolean }[] = [
   { href: "/os-sete-veus", label: "Espelhos" },
   { href: "/coleccao-nos", label: "Nós" },
+  { href: "/cursos", label: "Cursos" },
   { href: "/comprar", label: "Comprar" },
   { href: "/sobre", label: "Sobre" },
   { href: "/comunidade", label: "Ecos", highlight: true },
