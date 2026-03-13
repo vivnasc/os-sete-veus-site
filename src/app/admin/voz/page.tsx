@@ -21,7 +21,6 @@ import {
 } from "@/data/marketing-audio";
 import { REELS_VOZ, CARROSSEIS_VOZ, EDUCATIVOS_VOZ } from "@/data/marketing-reels-audio";
 import { PODCAST_EPISODES, PODCAST_META, getTotalCharCount } from "@/data/podcast-series";
-import { SHORTS_EXTRA, getShortsCharCount } from "@/data/marketing-shorts-extra";
 
 const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
 const DEFAULT_VOICE_ID = "fnoNuVpfClX7lHKFbyZ2";
@@ -50,7 +49,7 @@ function slugify(s: string) {
 
 type Estado = "idle" | "a-gerar" | "feito" | "erro";
 type EstadoUpload = "idle" | "a-enviar" | "enviado" | "erro";
-type Aba = "citacoes" | "reflexoes" | "intros" | "teasers" | "trailer" | "stories" | "teasers-nos" | "ctas" | "reels" | "carrosseis" | "educativos" | "podcast" | "shorts";
+type Aba = "citacoes" | "reflexoes" | "intros" | "teasers" | "trailer" | "stories" | "teasers-nos" | "ctas" | "reels" | "carrosseis" | "educativos" | "podcast";
 
 export default function VozPage() {
   const { user, profile } = useAuth();
@@ -165,8 +164,6 @@ export default function VozPage() {
       ? CARROSSEIS_VOZ.map((c) => ({ id: c.id, ficheiro: c.ficheiro, texto: c.texto }))
       : aba === "educativos"
       ? EDUCATIVOS_VOZ.map((e) => ({ id: e.id, ficheiro: e.ficheiro, texto: e.texto }))
-      : aba === "shorts"
-      ? SHORTS_EXTRA.map((s) => ({ id: s.id, ficheiro: s.ficheiro, texto: s.texto }))
       : aba === "podcast"
       ? [
           { id: "podcast-intro", ficheiro: "podcast-intro.mp3", texto: PODCAST_META.introScript },
@@ -290,9 +287,6 @@ export default function VozPage() {
         // educativos
         const edu = EDUCATIVOS_VOZ.find((e) => e.id === id);
         if (edu) return edu.ficheiro;
-        // shorts
-        const short = SHORTS_EXTRA.find((s) => s.id === id);
-        if (short) return short.ficheiro;
         // ctas
         return CHAMADAS_ACCAO.find((c) => c.id === id)?.ficheiro ?? null;
       })();
@@ -337,9 +331,6 @@ export default function VozPage() {
   const carrosseisFeitos = CARROSSEIS_VOZ.filter((c) => estados[c.id] === "feito").length;
   const educativosTotal = EDUCATIVOS_VOZ.length;
   const educativosFeitos = EDUCATIVOS_VOZ.filter((e) => estados[e.id] === "feito").length;
-  const shortsTotal = SHORTS_EXTRA.length;
-  const shortsFeitos = SHORTS_EXTRA.filter((s) => estados[s.id] === "feito").length;
-  const shortsCharCount = getShortsCharCount();
   const podcastTotal = PODCAST_EPISODES.length + 2; // +2 for intro/outro
   const podcastFeitos = (estados["podcast-intro"] === "feito" ? 1 : 0) +
     PODCAST_EPISODES.filter((ep) => estados[`podcast-${ep.id}`] === "feito").length +
@@ -472,7 +463,6 @@ export default function VozPage() {
               ["reels", `Reels (${reelsFeitos}/${reelsTotal})`],
               ["carrosseis", `Carrosséis (${carrosseisFeitos}/${carrosseisTotal})`],
               ["educativos", `Educativos v3 (${educativosFeitos}/${educativosTotal})`],
-              ["shorts", `Shorts Medo+ (${shortsFeitos}/${shortsTotal}) ~${(shortsCharCount.total / 1000).toFixed(1)}k`],
             ] as [Aba, string][]).map(([a, label]) => (
               <button key={a} onClick={() => setAba(a)}
                 className={`px-4 py-2 text-sm font-medium rounded-lg transition ${aba === a ? "bg-forest text-white" : "bg-white text-sage border border-sage/20 hover:text-forest"}`}
@@ -801,54 +791,6 @@ export default function VozPage() {
                   uploadEstado={uploadEstados[e.id] || "idle"}
                   onUpload={() => uploadAudio(e.id, e.ficheiro)}
                 />
-              );
-            })}
-          </div>
-        )}
-
-        {/* ── Shorts Extra (Medo + novos angulos) ──────────────── */}
-        {aba === "shorts" && (
-          <div className="space-y-3">
-            <div className="rounded-lg border border-sage/20 bg-cream px-5 py-4">
-              <p className="text-sm font-medium text-forest">Shorts Extra — Lancamento Medo + novos angulos</p>
-              <p className="mt-1 text-xs text-sage">
-                {shortsTotal} clips. Total: ~{(shortsCharCount.total / 1000).toFixed(1)}k caracteres.
-                Lancamento Medo: {SHORTS_EXTRA.filter(s => s.categoria === "lancamento-medo").length} clips.
-                Hooks curtos: {SHORTS_EXTRA.filter(s => s.categoria === "hook-curto").length}.
-                Testemunhos: {SHORTS_EXTRA.filter(s => s.categoria === "testemunho").length}.
-                Convites: {SHORTS_EXTRA.filter(s => s.categoria === "convite").length}.
-                Antes/Depois: {SHORTS_EXTRA.filter(s => s.categoria === "antes-depois").length}.
-              </p>
-            </div>
-
-            {(["lancamento-medo", "hook-curto", "testemunho", "convite", "antes-depois"] as const).map((cat) => {
-              const itens = SHORTS_EXTRA.filter(s => s.categoria === cat);
-              if (itens.length === 0) return null;
-              const labels: Record<string, string> = {
-                "lancamento-medo": "Lancamento Espelho do Medo",
-                "hook-curto": "Hooks curtos (15-20s)",
-                "testemunho": "Testemunhos",
-                "convite": "Convites gentis",
-                "antes-depois": "Antes / Depois",
-              };
-              return (
-                <div key={cat}>
-                  <p className="text-xs font-medium text-sage uppercase tracking-wider pt-2 pb-1">{labels[cat]}</p>
-                  {itens.map((s) => {
-                    const estado = estados[s.id] || "idle";
-                    return (
-                      <ItemVoz key={s.id} id={s.id} ficheiro={s.ficheiro}
-                        nome={s.nome} texto={s.texto} estado={estado} erro={erros[s.id]}
-                        disabled={aGerarTodos || !apiKey.trim()}
-                        onGerar={() => gerarVoz(s.id, s.ficheiro, s.texto)}
-                        temBlob={!!blobs[s.id]}
-                        uploadEstado={uploadEstados[s.id] || "idle"}
-                        uploadErro={uploadErros[s.id]}
-                        onUpload={() => uploadAudio(s.id, s.ficheiro)}
-                      />
-                    );
-                  })}
-                </div>
               );
             })}
           </div>
