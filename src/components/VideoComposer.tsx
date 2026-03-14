@@ -19,6 +19,8 @@ const PALETTE = {
 export type ComposerScene = VideoScene & {
   /** Data URL or object URL of the image for this scene */
   imageUrl: string | null;
+  /** Whether this scene has been approved for rendering */
+  approved: boolean;
 };
 
 type RenderState =
