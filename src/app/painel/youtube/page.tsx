@@ -154,43 +154,77 @@ function VideoCard({ video, expanded, onToggle }: {
             </p>
           </div>
 
-          {/* Gancho */}
-          <div>
-            <h4
-              className="text-xs font-semibold uppercase tracking-wider mb-2"
-              style={{ color: PALETTE.gold }}
-            >
-              Gancho (0:00 - 0:15)
-            </h4>
-            <blockquote
-              className="text-sm leading-relaxed pl-3"
-              style={{
-                color: PALETTE.cream + "E0",
-                borderLeft: `2px solid ${PALETTE.silhouette}`,
-              }}
-            >
-              &ldquo;{video.gancho}&rdquo;
-            </blockquote>
-          </div>
+          {/* Full script */}
+          {video.script && video.script.length > 0 && (
+            <div className="space-y-4">
+              {video.script.map((scene, i) => {
+                const sectionLabels: Record<string, string> = {
+                  gancho: "Gancho",
+                  situacao: "Situacao reconhecivel",
+                  padrao: "O padrao por baixo",
+                  gesto: "Gesto de consciencia",
+                  fecho: "Frase final + CTA",
+                };
+                const sectionColors: Record<string, string> = {
+                  gancho: PALETTE.silhouette,
+                  situacao: PALETTE.violet,
+                  padrao: PALETTE.gold,
+                  gesto: PALETTE.warmGold,
+                  fecho: PALETTE.silhouette,
+                };
+                return (
+                  <div key={i}>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span
+                        className="text-xs font-mono px-1.5 py-0.5 rounded"
+                        style={{ backgroundColor: sectionColors[scene.section] + "20", color: sectionColors[scene.section] }}
+                      >
+                        {scene.timestamp}
+                      </span>
+                      <h4
+                        className="text-xs font-semibold uppercase tracking-wider"
+                        style={{ color: sectionColors[scene.section] }}
+                      >
+                        {sectionLabels[scene.section] ?? scene.section}
+                      </h4>
+                    </div>
+                    <p
+                      className="text-xs mb-2 italic"
+                      style={{ color: PALETTE.cream + "50" }}
+                    >
+                      Visual: {scene.visual}
+                    </p>
+                    <blockquote
+                      className="text-sm leading-relaxed pl-3"
+                      style={{
+                        color: PALETTE.cream + "E0",
+                        borderLeft: `2px solid ${sectionColors[scene.section]}`,
+                      }}
+                    >
+                      {scene.narration}
+                    </blockquote>
+                  </div>
+                );
+              })}
+            </div>
+          )}
 
-          {/* Frase final */}
-          <div>
-            <h4
-              className="text-xs font-semibold uppercase tracking-wider mb-2"
-              style={{ color: PALETTE.gold }}
-            >
-              Frase Final (5:00 - 5:30)
-            </h4>
-            <blockquote
-              className="text-sm leading-relaxed pl-3"
+          {/* Copy full narration button */}
+          {video.script && video.script.length > 0 && (
+            <button
+              onClick={() => {
+                const fullText = video.script.map((s) => s.narration).join("\n\n");
+                navigator.clipboard.writeText(fullText);
+              }}
+              className="text-xs px-3 py-1.5 rounded-lg transition-colors"
               style={{
-                color: PALETTE.cream + "E0",
-                borderLeft: `2px solid ${PALETTE.warmGold}`,
+                backgroundColor: PALETTE.violet + "20",
+                color: PALETTE.violet,
               }}
             >
-              &ldquo;{video.fraseFinal}&rdquo;
-            </blockquote>
-          </div>
+              Copiar narracao completa
+            </button>
+          )}
 
           {/* YouTube description preview */}
           <details className="group">
