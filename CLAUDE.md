@@ -1057,22 +1057,29 @@ Todos os videos seguem o mesmo esqueleto:
 **O que o Claude Code faz:**
 1. Gera os scripts de todas as sub-aulas (a partir do catalogo)
 2. Gera os audios via ElevenLabs (sistema ja existe)
-3. Gera as imagens dos territorios e silhuetas via API de imagem (DALL-E ou equivalente)
+3. Gera as imagens dos territorios e silhuetas via ComfyUI API (ThinkDiffusion)
 4. Armazena tudo no Supabase (audios, imagens, materiais)
 5. Constroi a plataforma web (landing pages, dashboard, player, pagamento)
 6. Gera os manuais e cadernos de exercicios em PDF
 
-**O que o Claude Code NAO faz:** Montar video. A montagem final (juntar imagens animadas + audio + texto) requer ferramenta de video.
+**O que o Claude Code NAO faz:** Montar video final. A montagem (juntar clips animados + audio + texto animado) requer ferramenta de video.
 
-**Ferramenta de montagem:** Decisao pendente. Opcoes: Runway ($15/mes), montagem manual (CapCut, DaVinci Resolve), contratacao de animador.
+**Ferramenta de montagem:** Pendente. Opcoes: Wan 2.1 dentro do ThinkDiffusion (se gerar videos suficientemente longos), CapCut/DaVinci Resolve (montagem manual), ffmpeg via Claude Code (montagem programatica basica). Solucao a definir apos teste do primeiro piloto.
 
 **Pipeline de producao por video:**
 ```
-Claude Code: gera script → gera audio (ElevenLabs) → gera imagens dos territorios
+Claude Code: gera script → gera audio (ElevenLabs) → envia prompts ao ComfyUI (ThinkDiffusion) via API
+  - Paisagem do territorio (modulo correcto, estagio correcto)
+  - Silhueta na pose adequada (via ControlNet)
+  - Elementos simbolicos
+  ↓
+ThinkDiffusion: gera imagens e/ou videos animados (Wan 2.1)
+  ↓
+Claude Code: recebe assets e armazena no Supabase
   ↓
 Vivianne: aprova script, audio e imagens
   ↓
-Ferramenta de video: monta as cenas animadas + audio + texto
+Montagem final do video (juntar clips + audio + texto)
   ↓
 Vivianne: aprova video final
   ↓
@@ -1091,6 +1098,44 @@ O Claude Code gera e armazena no Supabase:
 
 Com ~80-100 imagens base, todos os videos podem ser montados.
 
+**Imagens de referencia para treinar o LoRA (15-20 aprovadas pela Vivianne):**
+
+Paisagens (8-10):
+1. Sala escura com espelhos cobertos, luz dourada (Ouro Proprio)
+2. Arvore com raizes expostas, fios vermelhos (Sangue e Seda)
+3. Rio violeta com duas margens (A Arte da Inteireza)
+4. Campo queimado com brotos verdes (Depois do Fogo)
+5. Encruzilhada em nevoeiro (Olhos Abertos)
+6. Paisagem que sugere formas corporais (A Pele Lembra)
+7. Espaco aberto com linha de luz no chao (Limite Sagrado)
+8. Caverna com flores bioluminescentes (Flores no Escuro)
+9. Caminho com pedras empilhadas (O Peso e o Chao)
+10. Sala circular com eco visual (Voz de Dentro)
+
+Silhuetas (5-7): De pe postura aberta, sentada reflexiva, curvada sob peso, maos no peito, a caminhar, duas silhuetas juntas, adulta + crianca. Todas sem rosto. Todas na paleta mestre. Todas no estilo editorial/poetico.
+
+### 9b. ThinkDiffusion — Ferramenta de Producao Visual
+
+**Decisao:** O ThinkDiffusion (thinkdiffusion.com) e a ferramenta de producao visual da Escola dos Veus. Substitui Midjourney, ChatGPT/DALL-E, e qualquer outra ferramenta de geracao de imagem e video mencionada anteriormente.
+
+**Porque o ThinkDiffusion:**
+1. **Consistencia visual:** Permite treinar um modelo LoRA com o estilo do Mundo dos Veus. Uma vez treinado, todas as imagens manteem o mesmo estilo.
+2. **Controlo de poses:** Com ControlNet (OpenPose), define-se a postura exacta da silhueta em cada cena.
+3. **Geracao de video:** Com Wan 2.1 integrado, gera video cinematico a partir de imagem ou texto — na mesma plataforma.
+4. **API via ComfyUI:** O ComfyUI dentro do ThinkDiffusion tem API integrada. O Claude Code pode ligar-se programaticamente — enviar prompts, receber imagens/videos, armazenar no Supabase. Pipeline automatizavel.
+
+**Setup inicial (fazer uma vez):**
+1. Criar conta no ThinkDiffusion (Hobby $0.99/hora para testar, Pro $19.99/mes se adoptar)
+2. Treinar modelo LoRA com o estilo do Mundo dos Veus (Kohya, 15-20 imagens de referencia aprovadas)
+3. Configurar workflows ComfyUI: geracao de paisagem, geracao de silhueta (ControlNet), geracao de video (Wan 2.1), composicao (paisagem + silhueta + elementos)
+4. Testar API: Claude Code liga-se ao ComfyUI via API, enviar prompt da primeira cena do Ouro Proprio → receber imagem → validar estilo
+
+**O que o Claude Code precisa de fazer:**
+1. Investigar a API do ComfyUI (docs.comfy.org)
+2. Criar script de integracao — enviar prompts ao ComfyUI via API, receber imagens, armazenar no Supabase
+3. Criar os workflows ComfyUI — ou fornecer templates que a Vivianne carrega no ThinkDiffusion
+4. Integrar no pipeline existente — script → audio (ElevenLabs) → visuais (ThinkDiffusion/ComfyUI) → Supabase
+
 ### 10. Sistema de Entrada (YouTube)
 
 Cada curso tem 2-3 videos YouTube gratuitos como porta de entrada. Sao ganchos emocionais que terminam sempre com convite para o curso completo. Cada gancho termina com: "Se isto te tocou, o curso completo esta em seteveus.space."
@@ -1106,17 +1151,26 @@ Cada curso tem 2-3 videos YouTube gratuitos como porta de entrada. Sao ganchos e
 | Servico | Custo |
 |---------|-------|
 | ElevenLabs | ~$5-22/mes |
-| Runway (se adoptado) | ~$15/mes |
+| ThinkDiffusion Pro | $19.99/mes (ou Hobby $0.99/hora) |
 | Supabase Pro | $25/mes (ja tem) |
 | Stripe | 2.9% + $0.30/tx |
-| Midjourney (se necessario) | $10/mes |
-| **TOTAL fixo** | **~$55-72/mes** |
+| **TOTAL fixo** | **~$50-67/mes** |
+
+**Custos ThinkDiffusion por producao:**
+
+| Item | Custo | Frequencia |
+|------|-------|------------|
+| Treino LoRA | 2-4 horas GPU ($2-4) | Uma vez |
+| Geracao de biblioteca (~100 imagens) | 5-10 horas ($5-10) | Uma vez |
+| Geracao por video-aula (~6 imagens + animacao) | 1-2 horas ($1-2) | Por video |
+| **Custo estimado Ouro Proprio completo (~24 videos)** | **~$30-50** | **Uma vez** |
 
 ### 12. Ficheiros de Referencia
 
-O Claude Code trabalha com 3 documentos:
+O Claude Code trabalha com estes documentos:
 1. **CLAUDE.md** — arquitectura tecnica (schema, Edge Functions, stack) + orientacoes consolidadas
 2. **src/data/courses.ts** — 10 cursos completos com modulos, sub-aulas, descricoes (catalogo em codigo)
 3. **CURSOS/ESCOLA DOS VEUS CONSOLIDADO.pdf** — documento original consolidado (manifesto, universo visual, site, formatos, producao, pipeline)
+4. **CURSOS/ADENDA THINKDIFFUSION.pdf** — adenda sobre ThinkDiffusion como ferramenta de producao visual
 
 Estes documentos substituem todos os prompts adicionais anteriores.
