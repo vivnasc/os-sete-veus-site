@@ -9,6 +9,11 @@ import {
   getTotalDuration,
 } from "@/data/youtube-scripts";
 import type { YouTubeScript, VideoScene } from "@/data/youtube-scripts";
+import {
+  drawCourseBackground,
+  drawCourseSilhouette,
+  drawCourseText,
+} from "@/lib/video-visuals";
 import Link from "next/link";
 
 const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
@@ -183,7 +188,7 @@ export default function YouTubePage() {
     return scenes.findIndex((s) => time >= s.adjustedStart && time < s.adjustedEnd);
   }
 
-  // Draw a frame on canvas
+  // Draw a frame on canvas — uses course visual identity
   const drawFrame = useCallback(
     (
       ctx: CanvasRenderingContext2D,
@@ -192,8 +197,9 @@ export default function YouTubePage() {
       time: number,
       loadedImages: Map<number, HTMLImageElement>
     ) => {
-      const sceneIdx = getCurrentSceneIndex(time);
-      const scene = scenes[sceneIdx];
+      const slug = selectedScript?.courseSlug || "ouro-proprio";
+      const idx = scenes.findIndex((s) => time >= s.adjustedStart && time < s.adjustedEnd);
+      const scene = scenes[idx >= 0 ? idx : scenes.length - 1];
       if (!scene) {
         ctx.fillStyle = "#1A1A2E";
         ctx.fillRect(0, 0, w, h);
@@ -201,14 +207,13 @@ export default function YouTubePage() {
       }
 
       const sceneDur = scene.adjustedEnd - scene.adjustedStart;
-      const sceneProgress = (time - scene.adjustedStart) / sceneDur;
+      const sceneProgress = Math.max(0, Math.min(1, (time - scene.adjustedStart) / sceneDur));
 
-      // Background
-      ctx.fillStyle = "#1A1A2E";
-      ctx.fillRect(0, 0, w, h);
+      // 1. Course-branded background (gradient + particles + glow)
+      drawCourseBackground(ctx, w, h, slug, time, sceneProgress);
 
-      // Image with Ken Burns
-      const img = loadedImages.get(sceneIdx);
+      // 2. User image (if provided) with Ken Burns on top
+      const img = loadedImages.get(idx);
       if (img) {
         const scale = 1 + sceneProgress * 0.06;
         const panX = sceneProgress * w * 0.02;
@@ -222,19 +227,19 @@ export default function YouTubePage() {
           drawW = w * scale;
           drawH = drawW / imgRatio;
         }
+        ctx.save();
+        ctx.globalAlpha = 0.6;
         ctx.drawImage(img, (w - drawW) / 2 + panX, (h - drawH) / 2, drawW, drawH);
-        ctx.fillStyle = "rgba(26, 26, 46, 0.4)";
+        ctx.restore();
+        // Overlay to blend with background
+        ctx.fillStyle = "rgba(26, 26, 46, 0.35)";
         ctx.fillRect(0, 0, w, h);
       }
 
-      // Vignette
-      const grad = ctx.createRadialGradient(w / 2, h / 2, w * 0.3, w / 2, h / 2, w * 0.7);
-      grad.addColorStop(0, "transparent");
-      grad.addColorStop(1, "rgba(26, 26, 46, 0.5)");
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, w, h);
+      // 3. Course-branded silhouette (pose based on scene type)
+      drawCourseSilhouette(ctx, w, h, slug, scene.type, sceneProgress);
 
-      // Cross-dissolve at scene boundaries
+      // 4. Text with fade
       const fadeTime = Math.min(1.0, sceneDur * 0.1);
       let textAlpha = 1;
       const timeInScene = time - scene.adjustedStart;
@@ -242,41 +247,12 @@ export default function YouTubePage() {
       if (timeInScene < fadeTime) textAlpha = timeInScene / fadeTime;
       if (timeFromEnd < fadeTime) textAlpha = Math.min(textAlpha, timeFromEnd / fadeTime);
 
-      // Overlay text
-      if (scene.overlayText) {
-        ctx.save();
-        ctx.globalAlpha = Math.max(0, Math.min(1, textAlpha));
+      drawCourseText(ctx, w, h, slug, scene.overlayText || "", scene.type, textAlpha);
 
-        const lines = scene.overlayText.split("\n");
-        const isTitle = scene.type === "abertura" || scene.type === "fecho" || scene.type === "cta";
-        const isFrase = scene.type === "frase_final";
-
-        const fontSize = isTitle
-          ? Math.round(w * 0.035)
-          : isFrase
-            ? Math.round(w * 0.028)
-            : Math.round(w * 0.022);
-
-        ctx.font = `${fontSize}px Georgia, serif`;
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.shadowColor = "rgba(0,0,0,0.7)";
-        ctx.shadowBlur = 20;
-        ctx.fillStyle = isTitle ? "#D4A853" : "#F5F0E6";
-
-        const yBase = isTitle || isFrase ? h * 0.5 : h * 0.78;
-        const lineH = fontSize * 1.6;
-        const startY = yBase - (lines.length * lineH) / 2;
-        lines.forEach((line, i) => {
-          ctx.fillText(line, w / 2, startY + i * lineH);
-        });
-
-        ctx.restore();
-      }
-
-      // Scene indicator bar at bottom
-      ctx.fillStyle = "rgba(201, 169, 110, 0.3)";
-      ctx.fillRect(0, h - 4, w * sceneProgress, 4);
+      // 5. Scene progress bar
+      const palette = { accent: scene.type === "abertura" ? "#C9A96E" : "#C9A96E33" };
+      ctx.fillStyle = palette.accent;
+      ctx.fillRect(0, h - 3, w * sceneProgress, 3);
     },
     [scenes]
   );
