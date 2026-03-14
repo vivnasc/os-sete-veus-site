@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase-server";
+import Stripe from "stripe";
 
 /**
  * POST /api/courses/checkout
@@ -67,64 +68,36 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create Stripe Checkout Session
+    const stripe = new Stripe(stripeSecretKey);
     const baseUrl =
       process.env.NEXT_PUBLIC_SITE_URL || request.nextUrl.origin;
 
-    const lineItems = course.stripe_price_id
-      ? [{ price: course.stripe_price_id, quantity: 1 }]
-      : [
-          {
-            price_data: {
-              currency: (course.currency || "usd").toLowerCase(),
-              product_data: { name: course.title },
-              unit_amount: course.price_cents || 4900,
+    const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] =
+      course.stripe_price_id
+        ? [{ price: course.stripe_price_id, quantity: 1 }]
+        : [
+            {
+              price_data: {
+                currency: (course.currency || "usd").toLowerCase(),
+                product_data: { name: course.title },
+                unit_amount: course.price_cents || 4900,
+              },
+              quantity: 1,
             },
-            quantity: 1,
-          },
-        ];
+          ];
 
-    const stripeRes = await fetch(
-      "https://api.stripe.com/v1/checkout/sessions",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${stripeSecretKey}`,
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: new URLSearchParams({
-          mode: "payment",
-          "line_items[0][quantity]": "1",
-          ...(course.stripe_price_id
-            ? { "line_items[0][price]": course.stripe_price_id }
-            : {
-                "line_items[0][price_data][currency]": (
-                  course.currency || "usd"
-                ).toLowerCase(),
-                "line_items[0][price_data][product_data][name]": course.title,
-                "line_items[0][price_data][unit_amount]": String(
-                  course.price_cents || 4900
-                ),
-              }),
-          success_url: `${baseUrl}/cursos/${courseSlug}/dashboard?success=true`,
-          cancel_url: `${baseUrl}/cursos/${courseSlug}?cancelled=true`,
-          "metadata[user_id]": user.id,
-          "metadata[course_slug]": courseSlug,
-          "metadata[course_id]": course.id,
-          customer_email: user.email || "",
-        }).toString(),
-      }
-    );
-
-    const session = await stripeRes.json();
-
-    if (!stripeRes.ok) {
-      console.error("Stripe error:", session);
-      return NextResponse.json(
-        { error: "Erro ao criar sessao de pagamento" },
-        { status: 500 }
-      );
-    }
+    const session = await stripe.checkout.sessions.create({
+      mode: "payment",
+      line_items: lineItems,
+      success_url: `${baseUrl}/cursos/${courseSlug}/dashboard?success=true`,
+      cancel_url: `${baseUrl}/cursos/${courseSlug}?cancelled=true`,
+      customer_email: user.email || undefined,
+      metadata: {
+        user_id: user.id,
+        course_slug: courseSlug,
+        course_id: course.id,
+      },
+    });
 
     return NextResponse.json({ url: session.url });
   } catch (error) {
