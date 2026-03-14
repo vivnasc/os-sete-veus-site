@@ -893,3 +893,398 @@ JOIN information_schema.key_column_usage kcu ON tc.constraint_name = kcu.constra
 JOIN information_schema.constraint_column_usage ccu ON ccu.constraint_name = tc.constraint_name
 WHERE tc.constraint_type = 'FOREIGN KEY' ORDER BY tc.table_name;
 ```
+
+---
+
+## Plataforma de Cursos — Orientacoes de Desenvolvimento
+
+### Mudanca de Paradigma
+
+O seteveus.space deixa de ser um site sobre os livros com uma seccao de cursos. Passa a ser uma **plataforma de transformacao** onde os cursos sao o produto principal e os livros, espelhos e nos sao o universo/contexto por tras. Quando alguem entra em seteveus.space, a primeira coisa que ve sao os cursos — a oferta principal. A filosofia (veus, espelhos, nos) e a profundidade para quem quer ir mais fundo, nao o ponto de entrada.
+
+### Direccao Criativa
+
+**Principio fundador:** Os veus, espelhos e nos NAO sao temas de curso. Sao a lente invisivel. Os cursos sao sobre a vida real — temas concretos que as pessoas enfrentam — ensinados com a sabedoria dos veus como fundacao que nunca e nomeada. A pessoa nunca ouve a palavra "veu." Sente-o nos exercicios, no corpo, nas perguntas que nunca lhe fizeram.
+
+**Publico:** Para todos, com voz feminina. A voz nasce da experiencia feminina mas nao exclui. Os temas sao humanos. A linguagem dirige-se a "ti", nao a "mulheres."
+
+**Voz da marca:** Educacional com calor. Presenca compassiva. "Vejo-te, e ha mais para ti." Nunca "ve como estas presa." Os cinco pilares: o mundo convida, o corpo lembra, fissura nao diagnostico, presenca compassiva nao disseccao, densidade que deixa respirar.
+
+**Diferencial:**
+1. **O corpo como porta de entrada, nao a mente.** Estes cursos comecam pelo corpo — onde sentes isto?
+2. **Exercicios que sao experiencias, nao tarefas.** Mudam algo em tempo real.
+3. **Vida real, nao teoria espiritual.** Dinheiro, maes, sexo, cansaco. Nao e transcendencia — e terca-feira.
+4. **Honestidade sem brutalidade.** A amiga que sabe mais do que diz e diz so o suficiente.
+5. **Filosofia invisivel.** Os veus dao profundidade sem jargao.
+
+**Nota legal:** Os cursos nao sao terapia, tratamento ou aconselhamento clinico. Cada curso inclui disclaimer: "Este curso nao substitui acompanhamento psicologico ou psiquiatrico."
+
+---
+
+### Nova Hierarquia do Site
+
+#### Homepage (seteveus.space)
+A landing page principal apresenta os 10 cursos como oferta central. Nao e uma pagina "sobre" — e uma pagina de accao.
+
+**Estrutura sugerida da homepage:**
+1. Hero — frase de impacto + CTA para explorar cursos
+2. Os 10 cursos — grid/cards com titulo-marca, subtitulo, e imagem
+3. Como funciona — formato breve (videos curtos, manual, exercicios)
+4. Diferencial — o que torna isto diferente (corpo como entrada, vida real, etc.)
+5. Preview gratuito — CTA para o modulo 1 gratuito de qualquer curso
+6. Universo Sete Veus — link para Espelhos, Nos, Livro, Podcast (secundario)
+
+#### Navegacao Principal (nova)
+
+```
+CURSOS    UNIVERSO    PODCAST    LIVRO    SOBRE    MINHA AREA
+```
+
+- **CURSOS** → catalogo dos 10 cursos (e tambem a homepage ou link directo dela)
+- **UNIVERSO** → dropdown ou pagina com: Espelhos, Nos, Ecos (a filosofia por tras)
+- **PODCAST** → mantem
+- **LIVRO** → livro fisico, mantem
+- **SOBRE** → sobre a marca/pseudonimo
+- **MINHA AREA** → dashboard do aluno (login, progresso, certificados, materiais)
+
+#### Fluxo do Utilizador
+
+```
+Homepage (ve cursos)
+  → Clica num curso (landing page com modulos, promessa, preview)
+    → Preview gratuito (modulo 1 sem pagar, com login)
+      → Compra (Stripe checkout)
+        → Dashboard do curso (progresso, videos, materiais)
+          → Certificado (ao completar 100%)
+```
+
+Quem quer profundidade: Homepage → UNIVERSO → Espelhos / Nos / Ecos
+
+---
+
+### Os 10 Cursos
+
+Cada curso e autonomo. A pessoa escolhe o que precisa. Nao ha sequencia obrigatoria.
+
+| # | Titulo (marca) | Subtitulo | Lente Invisivel |
+|---|---------------|-----------|-----------------|
+| 1 | **Ouro Proprio** | A relacao com dinheiro como espelho de ti | Veu da Ilusao, Medo, Culpa |
+| 2 | **Sangue e Seda** | A heranca invisivel entre maes e filhas | Veu do Silencio, Medo, Heranca |
+| 3 | **A Arte da Inteireza** | Amar sem te perderes no outro | Veu do Medo, Entrega, Ilusao |
+| 4 | **Depois do Fogo** | Quando a vida te pede para comecar de novo | Veu do Medo, Ilusao, Despertar |
+| 5 | **Olhos Abertos** | Decidir a partir de clareza, nao de medo | Veu do Medo, Ilusao |
+| 6 | **A Pele Lembra** | Aprender a ouvir o corpo antes de a mente racionalizar | Veu do Silencio |
+| 7 | **Limite Sagrado** | Limites, o preco de agradar, a culpa da recusa | Veu do Medo, Culpa, Ilusao |
+| 8 | **Flores no Escuro** | As perdas que nao sao morte mas doem como se fossem | Veu do Silencio, Medo |
+| 9 | **O Peso e o Chao** | Quando descansar nao resolve | Veu do Medo, Silencio, Entrega |
+| 10 | **Voz de Dentro** | Dizer o que precisas de dizer a quem mais importa | Veu do Silencio, Medo |
+
+---
+
+### Formato por Curso
+
+**Estrutura:**
+- **8 modulos** por curso (Sangue e Seda tem 9)
+- **2-3 sub-aulas** por modulo (cada sub-aula = 1 video curto)
+- **~20-24 videos curtos** por curso (duracao variavel)
+- **1 manual completo PDF** por curso (cobre todos os modulos)
+- **8 cadernos de exercicios** por curso (1 por modulo, com journal prompts e exercicios praticos)
+- **2-3 videos YouTube** por curso (gratuitos, ganchos de marketing, embedados no site)
+
+**Acesso:**
+- **Modulo 1: gratuito** (preview/marketing — todas as sub-aulas do modulo 1 acessiveis sem pagamento, requer login)
+- **Modulos 2-8: pagos** (acesso apos compra via Stripe)
+- **Manual PDF: pago** (incluido na compra do curso)
+- **Cadernos de exercicios: pagos** (incluidos na compra, 1 por modulo)
+- **Videos YouTube: gratuitos** (marketing, porta de entrada)
+
+**Producao:**
+Cada video de sub-aula e produzido no HeyGen com avatar AI (rosto da Vivianne, sob pseudonimo novo). Versoes PT e EN separadas (mesmo avatar, lip-sync por lingua).
+
+**Entrega:**
+Avatar AI (HeyGen Creator, $29/mes) com o rosto da Vivianne, sob pseudonimo novo (por definir, separado de Len Maro, Zihva, Ren Savaro, Vivianne dos Santos). Zero exposicao pessoal directa.
+
+---
+
+### Paginas do Curso (detalhe)
+
+#### Landing page do curso (/cursos/[slug])
+- Titulo-marca + subtitulo
+- Promessa (o que levas deste curso)
+- Arco emocional (a jornada em 2-3 frases)
+- Lista dos 8 modulos (titulos visiveis, sub-aulas colapsaveis)
+- Modulo 1 marcado como GRATUITO
+- O que inclui: X videos + manual + 8 cadernos de exercicios
+- CTA: "Comeca pelo Modulo 1 (gratis)" + "Inscreve-te no curso completo"
+- Preco
+- Diferencial (1-2 frases)
+
+#### Dashboard do aluno (/cursos/[slug]/dashboard)
+- Barra de progresso geral
+- 8 modulos com progresso individual
+- Sub-aulas com checkmarks (concluida/por fazer)
+- "Continua de onde paraste" (retomar ultimo video)
+- Acesso ao manual PDF
+- Acesso aos cadernos de exercicios (1 por modulo)
+- Certificado (aparece quando 100%)
+
+#### Sub-aula (/cursos/[slug]/modulo/[n]/[sub])
+- Player de video
+- Titulo da sub-aula
+- Botao "Marcar como concluida"
+- Navegacao: anterior / proxima sub-aula
+- Link para o caderno de exercicios do modulo
+
+#### Minha Area (/conta)
+- Cursos inscritos (com progresso de cada um)
+- Certificados obtidos
+- Materiais descarregados
+- Dados da conta
+
+---
+
+### Stack & Arquitectura Tecnica — Cursos
+
+**Infra:** Supabase (existente) + Stripe + YouTube
+
+#### Schema Supabase (Cursos)
+
+- **courses** — id, title, slug, description, language ('pt'/'en'), price_cents, currency, stripe_price_id, cover_url, is_published, created_at
+- **modules** — id, course_id (FK), title, description, sort_order, is_free (true para modulo 1)
+- **lessons** — id, module_id (FK), title, type ('video_protected'|'pdf_manual'|'pdf_exercises'), content_url, duration_min, sort_order, is_preview
+- **enrollments** — id, user_id (FK→auth.users), course_id (FK), stripe_payment_id, enrolled_at, completed_at, certificate_url
+- **lesson_progress** — id, user_id (FK), lesson_id (FK), status ('not_started'|'in_progress'|'completed'), completed_at, last_position_sec
+
+RLS em todas as tabelas.
+
+#### Edge Functions (Cursos)
+
+- **create-checkout** — cria Stripe Checkout Session
+- **handle-webhook** — recebe checkout.session.completed, cria enrollment
+- **get-lesson-content** — verifica enrollment (ou is_free para modulo 1), gera signed URL
+- **update-progress** — actualiza lesson_progress, calcula %, dispara certificado se 100%
+- **generate-certificate** — gera PDF do certificado, armazena no Storage
+
+#### Funcionalidades obrigatorias
+
+1. Autenticacao/login — Supabase Auth
+2. Pagamento — Stripe Checkout, webhook cria enrollment
+3. Progresso — tracking por sub-aula, retomar videos
+4. Certificado — PDF automatico ao completar 100%, codigo de verificacao publico
+5. Preview — Modulo 1 acessivel sem compra (requer login mas nao pagamento)
+
+#### URLs (Cursos)
+
+- `/cursos` — catalogo
+- `/cursos/[slug]` — landing page (ex: /cursos/ouro-proprio)
+- `/cursos/[slug]/dashboard` — dashboard (progresso, modulos, materiais)
+- `/cursos/[slug]/modulo/[n]/[sub]` — sub-aula com player de video
+- `/verificar/[codigo]` — verificacao publica de certificados
+- `/conta` — perfil, cursos inscritos, certificados
+
+#### Notas tecnicas
+
+- Stripe nao suporta MZN — USD como base, equivalente MZN na landing page
+- Videos no Supabase Storage bucket privado, signed URLs com expiracao de 2h
+- Videos YouTube embedados no site (apenas ganchos de marketing)
+- Cada sub-aula = 1 video curto (duracao variavel, nao fixa)
+
+#### Design (Cursos)
+
+Manter a paleta actual do seteveus.space (tons neutros, quentes) mas dar destaque visual aos cursos. Cada curso pode ter uma cor ou elemento visual proprio mantendo a coerencia da marca. Paleta de referencia: violeta #8B5CF6, dourado #C9A96E. Fundo escuro para as paginas de curso/dashboard. A homepage pode manter o tom actual do site mas com os cursos como foco visual.
+
+---
+
+### Catalogo Completo dos 10 Cursos
+
+#### CURSO 1 — Ouro Proprio
+**Subtitulo:** A relacao com dinheiro como espelho de ti
+**Promessa:** Vais perceber o que realmente dizes quando dizes "nao tenho dinheiro", "nao mereco cobrar isto", ou "se tiver demasiado, alguem vai sofrer." Vais mudar a conversa interna — e a conta bancaria vai reflectir isso.
+**Arco Emocional:** Comeca pelo desconforto de olhar para numeros. Passa pela descoberta dos padroes herdados. Atravessa a vergonha, a culpa de querer mais, o medo de perder. Chega a reconstrucao: separar valor pessoal de valor monetario. Termina com direccao: o que quero que o dinheiro financie na minha vida?
+
+| Modulo | Titulo | Sub-aulas |
+|--------|--------|-----------|
+| 1 | O Extracto como Espelho | A) O medo de olhar, B) Ler o extracto como um diario, C) O corpo e o dinheiro |
+| 2 | A Heranca Financeira Emocional | A) Os scripts de infancia, B) O que viste vs. o que ouviste, C) Reescrever os scripts |
+| 3 | A Vergonha do Dinheiro | A) Vergonha de nao ter, B) Vergonha de querer mais, C) Dinheiro e dignidade |
+| 4 | Cobrar, Receber, Merecer | A) O desconto automatico, B) A ligacao cobrar-merecer, C) Receber sem devolver imediatamente |
+| 5 | Gastar em Ti | A) A hierarquia dos gastos, B) Culpa e prazer, C) O investimento em ti como acto politico |
+| 6 | Dinheiro e Relacoes | A) Quem paga, manda?, B) Dependencia financeira e medo, C) A conversa sobre dinheiro que evitas |
+| 7 | Ganhar Mais Nao Resolve | A) O buraco que o dinheiro nao enche, B) Sabotagem financeira, C) Suficiente: quando e suficiente? |
+| 8 | Dinheiro como Liberdade | A) De sobrevivencia a direccao, B) O mapa do futuro que queres financiar, C) Liberdade, nao acumulacao |
+
+**Lente invisivel:** Veu da Ilusao (dinheiro e racional, pobreza e nobre, pedir e fraqueza). Veu do Medo (medo de ter, medo de perder, medo de cobrar). Veu da Culpa (culpa de querer mais, culpa de gastar em si).
+**YouTube:** "Porque sentes culpa quando gastas dinheiro em ti mesma?" (6 min) | "3 frases sobre dinheiro que a tua mae te ensinou sem saber" (7 min) | "O teste do preco: diz o teu valor em voz alta" (5 min)
+
+#### CURSO 2 — Sangue e Seda
+**Subtitulo:** A heranca invisivel entre maes e filhas
+**Promessa:** Vais aprender a ver a tua mae como mulher — nao como heroina nem como vila. E vais aprender a devolver-lhe o que e dela sem deixar de a amar.
+**Arco Emocional:** Comeca na idealizacao ou na raiva. Passa pela diferenciacao: onde acabo eu e comeca ela? Atravessa a heranca nao-dita, a culpa de crescer, a lealdade que prende. Chega ao lugar mais livre: ver a mae como mulher inteira e escolher o que levas.
+
+| Modulo | Titulo | Sub-aulas |
+|--------|--------|-----------|
+| 1 | A Mae que Carregas | A) A mae-personagem vs. a mae-pessoa, B) Memoria ou interpretacao? |
+| 2 | A Heranca que Nao Pediste | A) O que herdaste sem saber, B) Repeticao e oposicao: ambas sao heranca, C) Escolher o que mantens |
+| 3 | A Culpa de Crescer | A) Crescer como traicao, B) A lealdade invisivel, C) Ser livre sem abandonar |
+| 4 | A Raiva Sagrada | A) A raiva que nunca te permitiste, B) Raiva vs. rejeicao, C) O que fazer com a raiva |
+| 5 | O Silencio entre Mae e Filha | A) O que nunca foi dito, B) O silencio como proteccao, C) Quebrar o silencio sem destruir |
+| 6 | O Corpo da Mae, o Corpo da Filha | A) O que a mae te ensinou sobre o teu corpo, B) O corpo como territorio herdado |
+| 7 | Quando a Mae Nao Foi Suficiente | A) A mae que nao pode, B) Lamentar sem culpar, C) A mae interior |
+| 8 | Ser Filha e Ser Mae ao Mesmo Tempo | A) O loop geracional, B) Interromper o padrao, C) A materia que passas adiante |
+| 9 | Ver a Mulher, Nao So a Mae | A) A mae antes de ti, B) Ver sem perdoar (se nao quiseres), C) A despedida da filha que precisava |
+
+**Nota:** 9 modulos porque esta relacao merece profundidade, nao solucoes rapidas.
+**Lente invisivel:** Veu do Silencio (o nao-dito entre mae e filha), Veu do Medo (medo de trair ao crescer), Veu da Heranca (a transmissao geracional nao-verbal).
+**YouTube:** "3 sinais de que estas a repetir a vida da tua mae sem saber" (8 min) | "Porque discutir com a tua mae te faz sentir como se tivesses 12 anos" (6 min) | "A diferenca entre perdoar e compreender" (7 min)
+
+#### CURSO 3 — A Arte da Inteireza
+**Subtitulo:** Amar sem te perderes no outro
+**Promessa:** Vais aprender a estar presente numa relacao sem te dissolveres nela. Amor nao e fusao — e dois corpos inteiros que escolhem proximidade.
+**Arco Emocional:** Comeca pelo reconhecimento: em que momento deixas de te sentir? Passa pelos padroes. Atravessa a dor de relacoes passadas onde te perdeste. Reconstroi a imagem do que e estar com alguem sem abandonar o centro. Termina com a pratica diaria de presenca relacional.
+
+| Modulo | Titulo | Sub-aulas |
+|--------|--------|-----------|
+| 1 | O Momento em que Desapareces | A) O ponto de mutacao, B) Os sinais no corpo, C) O tanto faz que nao e tanto faz |
+| 2 | O Modelo de Amor que Absorveste | A) Amor como sacrificio, B) Amor como salvacao, C) Amor como fusao |
+| 3 | Atrair o Mesmo Padrao | A) A repeticao nao e azar, B) O familiar confundido com amor, C) Interromper o ciclo |
+| 4 | Ter Necessidades Nao e Ser Carente | A) A arma da palavra "carente", B) Nomear o que precisas, C) Pedir sem pedir desculpa |
+| 5 | Os Limites Dentro do Amor | A) Limites nao sao muros, B) O medo de perder ao limitar, C) Limites praticos |
+| 6 | Solidao vs. Solitude | A) O medo de ficar sozinha, B) Aprender a estar contigo, C) A relacao contigo como fundacao |
+| 7 | O Sexo como Termometro | A) Desejo autentico vs. desejo performativo, B) Prazer como direito, C) Falar sobre sexo sem vergonha |
+| 8 | Dois Corpos Inteiros | A) A imagem do amor saudavel, B) O espaco entre os dois, C) Ficar de forma diferente ou sair de forma inteira |
+
+**Lente invisivel:** Veu do Medo (medo do abandono), Veu da Entrega (confundir entrega com submissao), Veu da Ilusao (a fantasia de que amor = fusao).
+**YouTube:** "5 sinais de que estas a desaparecer numa relacao" (7 min) | "Porque atrais sempre o mesmo tipo de pessoa" (8 min) | "A diferenca entre estar disponivel e nao ter vida propria" (6 min)
+
+#### CURSO 4 — Depois do Fogo
+**Subtitulo:** Quando a vida te pede para comecar de novo
+**Promessa:** Vais aprender que recomecar nao e voltar a estaca zero — e comecar a partir de tudo o que ja viveste.
+**Arco Emocional:** Comeca no luto do que acabou. Passa pelo vazio entre o fim e o inicio. Reconstroi identidade fora dos papeis que desempenhaste. Atravessa o medo do desconhecido. Termina com os primeiros passos a partir de onde estas.
+
+| Modulo | Titulo | Sub-aulas |
+|--------|--------|-----------|
+| 1 | Chorar o que Acabou | A) A permissao de acabar de acabar, B) O elogio funebre ao que foi, C) O corpo no luto |
+| 2 | O Vazio que Assusta | A) O espaco entre o fim e o inicio, B) O vazio como solo, C) A diferenca entre pausa e paralisia |
+| 3 | Quem Sou Eu Sem Aquilo? | A) Identidade ligada a papeis, B) Os papeis que te definiram, C) Reconstruir identidade |
+| 4 | O Medo do Desconhecido | A) Porque o conhecido doi menos que o incerto, B) O corpo no medo, C) Avancar com medo |
+| 5 | O Peso das Opinioes | A) O que os outros esperam de ti, B) A vergonha do "falhanho", C) Recomecar em silencio |
+| 6 | Recomecar aos 30, 40, 50 | A) A mentira do "tarde demais", B) A sabedoria que a idade traz ao recomeco, C) O corpo que ja viveu |
+| 7 | O Dinheiro do Recomeco | A) A inseguranca financeira, B) Comecar com pouco, C) O minimo viavel emocional |
+| 8 | Comecar a Partir de Aqui | A) Nao apagar — integrar, B) Os primeiros passos, C) A mulher que ja recomecou |
+
+**Lente invisivel:** Veu do Medo (medo do desconhecido), Veu da Ilusao (recomecar = apagar), Veu do Despertar (o recomeco como nascimento).
+**YouTube:** "Porque recomecar da mais medo do que ficar" (7 min) | "A mentira do 'voltar a estaca zero'" (6 min) | "Como saber se e cedo ou tarde demais" (8 min)
+
+#### CURSO 5 — Olhos Abertos
+**Subtitulo:** Decidir a partir de clareza, nao de medo
+**Promessa:** Vais distinguir decisoes do medo das da clareza — e confiar no teu processo, mesmo sem certezas.
+**Arco Emocional:** Comeca na paralisia. Passa pelas vozes que nao sao tuas. Aprende a ouvir o corpo. Desmonta falsas dicotomias. Termina a viver com a escolha sem remorso.
+
+| Modulo | Titulo | Sub-aulas |
+|--------|--------|-----------|
+| 1 | A Paralisia e o que Ela Protege | A) Nao decidir e decidir, B) A ilusao de manter todas as opcoes abertas, C) O custo real da indecisao |
+| 2 | A Voz que Nao e Tua | A) Quem fala quando "decides", B) O "devias" como alarme, C) Encontrar a tua voz no ruido |
+| 3 | Decidir com o Corpo | A) O corpo sabe primeiro, B) Calibrar o sim e o nao corporal, C) Integrar corpo e mente |
+| 4 | Falsas Dicotomias | A) Ou isto ou aquilo, B) A pressao de urgencia artificial, C) Decidir por fases |
+| 5 | O Medo de Errar | A) Errar e humano, B) O erro como informacao, C) A decisao imperfeita vs. a indecisao perfeita |
+| 6 | Decidir por Ti (Nao por Todos) | A) A mulher que decide por todos e nada por si, B) Culpa de priorizar, C) O "egoismo" saudavel |
+| 7 | Decisoes Irrevogaveis e Revogaveis | A) A maioria e revogavel, B) As poucas irrevogaveis, C) Decidir sem garantias |
+| 8 | Viver com a Escolha | A) O remorso como habito, B) Cada sim implica um nao, C) A paz da decisao tomada |
+
+**Lente invisivel:** Veu do Medo (paralisia), Veu da Ilusao (a fantasia da escolha "certa"), sabedoria do corpo.
+**YouTube:** "Porque decides por todos e nada por ti" (6 min) | "O mito da decisao perfeita" (7 min) | "Exercicio de 2 minutos para saber o que queres" (5 min)
+
+#### CURSO 6 — A Pele Lembra
+**Subtitulo:** Aprender a ouvir o corpo antes de a mente racionalizar
+**Promessa:** Vais reconectar-te com a inteligencia do teu corpo — que sempre soube antes de ti.
+**Arco Emocional:** Comeca pela desconexao. Aprende literacia corporal. Passa pelos sintomas como linguagem. Calibra o sim e o nao do corpo. Aprende a habitar, nao so usar. Termina com o corpo como primeiro conselheiro.
+
+| Modulo | Titulo | Sub-aulas |
+|--------|--------|-----------|
+| 1 | O Corpo que Ignoras | A) Decadas a calar o corpo, B) A desconexao como norma, C) O body scan como primeiro passo |
+| 2 | Sintomas como Linguagem | A) A enxaqueca antes do Natal, B) A insonia da conversa evitada, C) Ler sintomas como frases |
+| 3 | A Memoria do Corpo | A) O corpo guarda o que a mente esquece, B) Triggers corporais, C) Honrar sem reviver |
+| 4 | O Sim e o Nao do Corpo | A) Expansao vs. contratura, B) Calibrar no quotidiano, C) Confiar na bussola |
+| 5 | O Corpo e as Emocoes | A) Onde vivem as emocoes no corpo, B) Emocoes suprimidas, C) Dar espaco sem explodir |
+| 6 | O Corpo e a Alimentacao | A) Comer para calar, B) Fome fisica vs. fome emocional, C) Ouvir o corpo a mesa |
+| 7 | O Corpo e o Descanso | A) Descanso real vs. distraccao, B) O que o TEU corpo precisa para descansar, C) Parar sem culpa |
+| 8 | Habitar (Nao So Usar) o Corpo | A) O corpo como ferramenta vs. o corpo como casa, B) Presenca corporalizada, C) O corpo como conselheiro |
+
+**Lente invisivel:** Veu do Silencio (o silencio imposto ao corpo, que o corpo quebra por sintomas). "O corpo lembra" e a essencia.
+**YouTube:** "O teu corpo esta a tentar dizer-te algo" (7 min) | "Porque ficas doente nas ferias" (6 min) | "Reconectar com o corpo em 3 minutos" (5 min)
+
+#### CURSO 7 — Limite Sagrado
+**Subtitulo:** Limites, o preco de agradar, a culpa da recusa
+**Promessa:** Vais dizer nao sem te sentires ma pessoa. Cada nao ao que nao e teu e um sim ao que e.
+**Arco Emocional:** Comeca pela arqueologia: de onde vem a incapacidade de recusar? Passa pelo custo real de dizer sim a tudo. Treina o nao. Termina com o nao como espaco para o sim.
+
+| Modulo | Titulo | Sub-aulas |
+|--------|--------|-----------|
+| 1 | A Boa Menina que Cresceu | A) O software de infancia, B) O preco de ser "boa", C) Actualizar o sistema |
+| 2 | O Preco do Sim Automatico | A) Contabilizar o custo, B) Os ultimos 7 dias, C) O corpo do sim falso |
+| 3 | A Culpa de Recusar | A) De onde vem a culpa, B) Culpa vs. responsabilidade, C) Atravessar a culpa |
+| 4 | A Diferenca entre Ser Amada e Ser Util | A) Quando confundes ser util com ser amada, B) O valor alem da utilidade, C) Relacoes transaccionais |
+| 5 | Nao Sem Desculpa | A) A anatomia da justificacao, B) O nao curto, C) O desconforto do silencio depois |
+| 6 | Limites no Trabalho | A) A mulher que faz tudo no escritorio, B) Dizer nao ao chefe, C) Promocao pelo sim vs. respeito pelo nao |
+| 7 | Limites com Familia | A) A familia como teste maximo, B) A chantagem emocional, C) Amar com limites |
+| 8 | O Nao como Espaco para o Sim | A) O que cabe quando largas, B) O sim autentico, C) Celebrar o nao |
+
+**Lente invisivel:** Veu do Medo (medo da rejeicao), Veu da Culpa (culpa de recusar), Veu da Ilusao (agradar e amor).
+**YouTube:** "Porque dizer nao te faz sentir culpada" (7 min) | "A diferenca entre ser amada e ser util" (8 min) | "Treino de 7 dias para a mulher que diz sim a tudo" (6 min)
+
+#### CURSO 8 — Flores no Escuro
+**Subtitulo:** As perdas que nao sao morte mas doem como se fossem
+**Promessa:** Vais fazer luto das perdas que ninguem valida: a amizade que acabou, o filho que nao veio, o futuro que imaginavas.
+**Arco Emocional:** Comeca pelo reconhecimento. Passa pela permissao de chorar o que nao tem funeral. Localiza o luto no corpo. Integra a perda na paisagem de quem es.
+
+| Modulo | Titulo | Sub-aulas |
+|--------|--------|-----------|
+| 1 | As Perdas que Nao Tem Funeral | A) Nomear o inomeavel, B) Porque ninguem valida, C) Dar peso ao que pesa |
+| 2 | A Permissao que Ninguem Te Deu | A) As frases que calam, B) A unica permissao que precisas, C) Chorar sem horario |
+| 3 | O Luto que Vive no Corpo | A) Garganta fechada, peito apertado, B) Localizar a perda, C) Dar espaco ao que esta preso |
+| 4 | Luto de Relacoes que Nao Acabaram | A) A relacao que mudou, B) Chorar o que era enquanto estas no que e, C) Aceitar a versao actual |
+| 5 | Luto de Versoes de Ti | A) A mulher que eras, B) A mulher que nunca foste, C) Honrar sem prender |
+| 6 | Luto e Culpa | A) A culpa do sobrevivente, B) A culpa de sentir alivio, C) Libertar a culpa sem negar a perda |
+| 7 | Rituais de Encerramento | A) Porque os rituais importam, B) Rituais simples, C) O ritual como corpo em accao |
+| 8 | Carregar Sem Ser Esmagada | A) Superar e violencia, B) A perda como paisagem, C) Viver com e nao apesar de |
+
+**Lente invisivel:** Veu do Silencio (luto silenciado, dor sem permissao), Veu do Medo (medo de abrir a ferida).
+**YouTube:** "As perdas que ninguem te deixou chorar" (8 min) | "Porque 'segue em frente' e o pior conselho" (6 min) | "Como honrar o que perdeste sem te afogares nele" (7 min)
+
+#### CURSO 9 — O Peso e o Chao
+**Subtitulo:** Quando descansar nao resolve
+**Promessa:** Vais perceber que o que te falta nao e ferias — e pores coisas no chao.
+**Arco Emocional:** Comeca pelo inventario do peso. Passa pelo que carregas que nao e teu. Distingue tipos de cansaco. Termina com a pratica de largar.
+
+| Modulo | Titulo | Sub-aulas |
+|--------|--------|-----------|
+| 1 | O Inventario do Peso | A) O que carregas, B) O que escolheste vs. o que te caiu em cima, C) O peso normalizado |
+| 2 | A Carga Mental Invisivel | A) O trabalho que ninguem ve, B) O CEO emocional da familia, C) Tornar visivel para negociar |
+| 3 | A Mulher que Segura Tudo | A) Quem segura a mulher que segura tudo?, B) O mito da mulher forte, C) Pedir ajuda como acto de coragem |
+| 4 | Tipos de Cansaco | A) Cansaco fisico, B) Cansaco emocional, C) Cansaco existencial |
+| 5 | O Falso Descanso | A) Scroll nao e descanso, B) Vinho nao e descanso, C) Descanso real |
+| 6 | A Exaustao como Mensagem | A) O corpo em greve, B) Burn-out nao e fraqueza, C) Ouvir antes de colapsar |
+| 7 | Largar Sem Culpa | A) O medo de que tudo desmorone, B) Largar nao e abandonar, C) O teste de largar |
+| 8 | Por no Chao | A) A arte de por no chao, B) O que fica e o que vai, C) Viver mais leve |
+
+**Lente invisivel:** Veu do Medo (se eu parar, tudo desmorona), Veu do Silencio (a exaustao feminina silenciada), Veu da Entrega (confundir entrega com esgotamento).
+**YouTube:** "Porque estas sempre cansada e ferias nao resolvem" (7 min) | "A carga mental invisivel" (8 min) | "Como largar sem culpa: o exercicio do papel no chao" (5 min)
+
+#### CURSO 10 — Voz de Dentro
+**Subtitulo:** Dizer o que precisas de dizer a quem mais importa
+**Promessa:** Vais ter a conversa que adias ha meses — nao como confronto, mas como verdade dita com cuidado.
+**Arco Emocional:** Comeca por identificar a conversa. Passa pela preparacao. Aprende a comecar. Aprende a sustentar. Prepara-te para o depois.
+
+| Modulo | Titulo | Sub-aulas |
+|--------|--------|-----------|
+| 1 | A Conversa que Vive em Ti | A) O loop mental, B) Porque evitas, C) O custo do silencio |
+| 2 | O que Queres Dizer vs. O que Queres que Aconteca | A) Separar as duas coisas, B) Ter a conversa sem depender do resultado, C) Abdicar do controlo do desfecho |
+| 3 | As Palavras que Ajudam e as que Destroem | A) "Tu sempre" e "Tu nunca", B) O tom conta mais que as palavras, C) A verdade dita com corpo |
+| 4 | Comecar a Conversa | A) A primeira frase, B) Comecar sem acusar, C) O timing |
+| 5 | Sustentar a Conversa | A) Quando o outro reage mal, B) Ouvir sem desistir, C) Pausar sem fugir |
+| 6 | Conversas com Parceiros | A) O nao-dito no casamento, B) Intimidade e verdade, C) Conversas sobre sexo, dinheiro, futuro |
+| 7 | Conversas com Pais | A) Falar com quem te criou, B) Quando nao vale a pena, C) Falar para ti, nao para ele |
+| 8 | O Depois | A) O silencio pos-conversa, B) O alivio inesperado, C) A relacao depois da verdade |
+
+**Lente invisivel:** Veu do Silencio (silencio como falsa proteccao, silencio geracional, silencio corrosivo), Veu do Medo (medo de dizer, medo do depois).
+**YouTube:** "A conversa que ensaias no chuveiro" (7 min) | "Porque o silencio doi mais que a verdade" (6 min) | "Como comecar sem as 3 palavras que arruinam tudo" (8 min)
