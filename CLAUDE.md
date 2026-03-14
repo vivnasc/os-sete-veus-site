@@ -893,3 +893,230 @@ JOIN information_schema.key_column_usage kcu ON tc.constraint_name = kcu.constra
 JOIN information_schema.constraint_column_usage ccu ON ccu.constraint_name = tc.constraint_name
 WHERE tc.constraint_type = 'FOREIGN KEY' ORDER BY tc.table_name;
 ```
+
+---
+
+## A Escola dos Veus — Documento Consolidado
+
+**Este documento substitui TODOS os prompts adicionais anteriores (producao, reestruturacao, fluxo, mascote, piloto). E a referencia unica para tudo o que nao e arquitectura tecnica nem catalogo de cursos.**
+
+### 1. Manifesto
+
+**Porque existe:** Porque ha coisas que toda a gente sente e quase ninguem diz. O aperto no estomago quando olhas para a conta bancaria. A culpa que aparece quando dizes nao. A conversa que ensaias no chuveiro ha meses. O cansaco que nao passa com ferias. O amor que te faz desaparecer. A raiva da tua mae que te faz sentir ma filha. A perda que ninguem te deixou chorar. A decisao que adias porque o medo e mais alto que a clareza. Tudo isto vive no corpo. Tudo isto tem um padrao. Tudo isto pode ser visto — se alguem te ajudar a olhar. A Escola dos Veus existe para isso.
+
+**O que e:** Nao e terapia. Nao e coaching. Nao e espiritualidade. E um lugar onde entras para ver o que sempre esteve la mas nunca foi nomeado. Cada curso e um territorio — uma zona da tua vida que precisas de atravessar com mais clareza. Os temas sao a vida real. O metodo e o corpo. A voz e de quem ja esteve onde tu estas.
+
+**O que nos torna diferentes:**
+1. Comecamos pelo corpo, nao pela mente.
+2. Os exercicios sao experiencias, nao tarefas.
+3. Vida real, nao teoria espiritual. Nao e transcendencia — e terca-feira.
+4. Honestidade sem brutalidade. "Vejo-te, e ha mais para ti."
+5. Filosofia invisivel. Os veus dao profundidade sem jargao.
+
+**Para quem e:** Para todos, com voz feminina. Para quem sente que carrega algo que nao sabe nomear. Para quem quer perceber — nao ser consertada.
+
+**Frase:** Ve o que estava invisivel.
+
+**Nota legal:** Cada curso inclui: "Este curso nao substitui acompanhamento psicologico ou psiquiatrico."
+
+### 2. Identidade
+
+- **Nome da escola:** Sete Veus (ou A Escola dos Veus)
+- **Frase:** Ve o que estava invisivel.
+- **Pseudonimo da instrutora:** [Por definir — deve funcionar em PT e EN, soar a educadora/guia, ser separado de Len Maro, Zihva, Ren Savaro, Vivianne dos Santos.]
+- **Tom verbal:** Calmo, proximo, filosofico. Nao e coach. Nao e terapeuta. E a guia que ja esteve onde tu estas. Fala a "tu". Usa o corpo como referencia. Faz perguntas que ficam. Usa silencio como ferramenta. Nunca diz "veu", "espelho" ou "no" como conceito.
+- **Tom visual:** Escuro, quente, poetico. Nunca clean/corporate. Nunca wellness/lotus.
+
+### 3. O Mundo dos Veus — Universo Visual
+
+O Mundo dos Veus e a representacao visual do mundo interno de uma pessoa. Nao e um planeta nem uma fantasia. Cada territorio e uma zona emocional. Quando a aluna entra num curso, entra numa parte de si mesma que ainda nao tinha visitado.
+
+**Constantes visuais (aplicam-se a TODOS os videos e materiais):**
+
+**O Ceu:** Azul-marinho profundo (#1A1A2E). O momento antes do amanhecer. Nunca dia pleno, nunca noite total. Muda dentro de cada curso: modulos 1-2 mais escuro, modulos 7-8 quase amanhecer (mas nunca chega — o amanhecer e da aluna).
+
+**A Silhueta:** Sem rosto. Sem raca. Sem idade. Terracota (#C4745A) com brilho dourado (#C9A96E). Sempre a mesma "pessoa" — a aluna projecta-se nela. Vocabulario corporal fixo:
+- De pe, imovel = presenca
+- Curvada = peso, medo
+- Sentada = reflexao
+- Maos no peito = auto-conexao
+- Maos abertas = recepcao
+- A caminhar = avanco
+- De costas = contemplacao
+- Mao estendida = coragem
+
+**A Paleta Mestre:**
+- Fundo: #1A1A2E (azul-marinho)
+- Silhueta: #C4745A (terracota) + #C9A96E (dourado)
+- Acentos: #8B5CF6 (violeta)
+- Texto: #F5F0E6 (creme)
+- Luz: #D4A853 (dourado quente)
+
+**Tipografia:** Uma unica fonte serifada elegante (Playfair Display ou Cormorant Garamond). Texto em creme sobre fundo escuro. Fade suave in/out.
+
+**Transicoes:** Dissolve lento entre cenas. Ecra escuro com respiracao entre sub-aulas. Nunca corte seco, nunca wipe, nunca zoom brusco.
+
+**Som:** Voz clone ElevenLabs da Vivianne. Musica ambiente subtil, quase inaudivel — textura, nao melodia. Silencio intencional entre seccoes.
+
+**Abertura de cada video:** O ceu do mundo. Camara desce ao territorio. Nome do curso + modulo + sub-aula em texto creme. Fade.
+
+**Fecho de cada video:** Territorio dissolve-se no ceu. Frase final no ecra. Fade para escuro. Logo Sete Veus. Silencio.
+
+#### Os 10 Territorios
+
+| # | Territorio | Curso | Cor Propria | Transformacao |
+|---|-----------|-------|-------------|---------------|
+| 1 | A Casa dos Espelhos Dourados | Ouro Proprio | Ambar | Espelhos cobertos → descobertos, reflexos distorcidos → claros |
+| 2 | A Arvore das Raizes Visiveis | Sangue e Seda | Vermelho escuro, seda | Raizes emaranhadas → reorganizadas, amanhecer atras da arvore |
+| 3 | A Ponte entre Duas Margens | A Arte da Inteireza | Violeta agua | Rio sem ponte → ponte completa, duas silhuetas inteiras com espaco |
+| 4 | O Campo Queimado | Depois do Fogo | Cinza carvao, laranja brasa, verde broto | Destruicao → vida nova, diferente do que era |
+| 5 | A Encruzilhada Infinita | Olhos Abertos | Azul nevoeiro, branco | Nevoeiro total → parcialmente claro, silhueta da o primeiro passo |
+| 6 | O Corpo-Paisagem | A Pele Lembra | Terracota rosado | Paisagem desconhecida → reconhecida e habitada |
+| 7 | A Muralha que Nasce do Chao | Limite Sagrado | Dourado luminoso | Sem limite → muralha de luz, com porta que a silhueta abre |
+| 8 | O Jardim Subterraneo | Flores no Escuro | Azul profundo + bioluminescentes | Caverna escura → iluminada pela luz das proprias flores |
+| 9 | O Caminho de Pedras | O Peso e o Chao | Cinza pedra | Curvada sob peso → de pe, leve, pedras no chao |
+| 10 | A Sala do Eco | Voz de Dentro | Violeta escuro, dourado eco | Silencio/sombra → voz/luz |
+
+**Conexoes entre territorios:**
+- Casa dos Espelhos reflecte brevemente a Arvore (dinheiro vem da familia)
+- Campo Queimado tem a Encruzilhada ao longe (recomecar implica decidir)
+- Jardim Subterraneo tem flores da cor da Sala do Eco (luto e silencio ligados)
+- Corpo-Paisagem tem o mesmo rio da Ponte (corpo e relacoes conectados)
+
+Quem faz um curso nao precisa de notar. Quem faz varios sente a coerencia.
+
+### 4. Formato dos Cursos
+
+**Estrutura por curso:**
+- 8 modulos (modulo 1 gratuito)
+- 2-3 sub-aulas por modulo (cada sub-aula = 1 video curto, duracao variavel)
+- ~20-24 videos por curso
+- 1 manual completo PDF (~40 paginas)
+- 8 cadernos de exercicios PDF (~5 paginas cada)
+- 2-3 videos YouTube (ganchos gratuitos)
+- Certificado automatico ao completar 100%
+- Versoes PT e EN separadas
+
+**Ordem de lancamento recomendada:**
+1. Ouro Proprio (porta universal — dinheiro e o tema mais activador)
+2. Limite Sagrado (ponte natural a partir do dinheiro)
+3. A Arte da Inteireza (relacoes — tema com grande procura)
+4. Restantes por decisao da Vivianne
+
+**Calendario:** 1 video por semana. 1 curso lancado a cada 2-3 meses.
+
+### 5. Formato do Manual (1 por curso)
+
+```
+CAPA — titulo, subtitulo, ilustracao do territorio, logo
+ANTES DE COMECARES — o que e, o que nao e, "o teu ritmo e o ritmo certo"
+MAPA DO CURSO — 8 modulos com check boxes, paisagem no estado inicial
+8 CAPITULOS (4 paginas cada):
+  - Titulo + ilustracao do territorio naquele estagio
+  - Resumo do modulo (complementa videos, nao repete)
+  - 3-5 perguntas de reflexao
+  - Espaco para escrever ("As tuas palavras")
+DEPOIS DE TERMINARES — reconhecimento, convite para outros cursos
+CONTRACAPA — logo, frase, URL
+```
+
+Design: paleta do territorio, fundo escuro, texto creme, tipografia serifada.
+
+### 6. Formato do Caderno de Exercicios (8 por curso)
+
+```
+CAPA — curso, modulo, ilustracao do territorio naquele estagio
+O EXERCICIO PRINCIPAL — titulo, instrucoes (max 5 passos), tom de convite
+ESPACO PARA FAZER — estruturado conforme o exercicio (linhas, mapa, carta, silhueta corporal)
+REFLEXAO — 3 perguntas de aprofundamento + espaco
+REGISTO — tabela: o que notei | onde senti | o que quero lembrar
+PONTE — 1 frase que liga ao proximo modulo
+```
+
+Design: mesma paleta do manual, mais leve, espacos reais de escrita, imprimivel.
+
+### 7. Estrutura Padrao de Cada Video-Aula
+
+Todos os videos seguem o mesmo esqueleto:
+
+1. **ABERTURA (10-15 seg)** — Ceu do Mundo dos Veus → camara desce ao territorio → titulo
+2. **PERGUNTA INICIAL (15-30 seg)** — Gancho. Pergunta forte que activa algo na aluna.
+3. **SITUACAO HUMANA (2-3 min)** — Descricao de algo concreto e reconhecivel. A aluna pensa "isto sou eu."
+4. **REVELACAO DO PADRAO (2-3 min)** — O que esta por baixo. O que nunca foi nomeado. A lente invisivel dos veus actua aqui.
+5. **GESTO DE CONSCIENCIA (1-2 min)** — Algo pequeno que a aluna pode fazer. Nao uma revolucao — um gesto.
+6. **FRASE FINAL (15-30 seg)** — Fica. Leva para o chuveiro, para a cama, para o carro.
+7. **FECHO (10-15 seg)** — Territorio dissolve no ceu → logo Sete Veus → silencio
+
+### 8. Producao dos Videos
+
+**O que e definido e nao muda:**
+- **Voz:** Clone ElevenLabs da Vivianne. Sistema ja funciona.
+- **Estilo:** Animacao mista — paisagens do Mundo dos Veus + silhuetas + motion graphics + texto animado. Tipo School of Life mas com universo visual proprio.
+- **Zero camara. Zero gravacao. Zero exposicao pessoal.**
+
+**O que o Claude Code faz:**
+1. Gera os scripts de todas as sub-aulas (a partir do catalogo)
+2. Gera os audios via ElevenLabs (sistema ja existe)
+3. Gera as imagens dos territorios e silhuetas via API de imagem (DALL-E ou equivalente)
+4. Armazena tudo no Supabase (audios, imagens, materiais)
+5. Constroi a plataforma web (landing pages, dashboard, player, pagamento)
+6. Gera os manuais e cadernos de exercicios em PDF
+
+**O que o Claude Code NAO faz:** Montar video. A montagem final (juntar imagens animadas + audio + texto) requer ferramenta de video.
+
+**Ferramenta de montagem:** Decisao pendente. Opcoes: Runway ($15/mes), montagem manual (CapCut, DaVinci Resolve), contratacao de animador.
+
+**Pipeline de producao por video:**
+```
+Claude Code: gera script → gera audio (ElevenLabs) → gera imagens dos territorios
+  ↓
+Vivianne: aprova script, audio e imagens
+  ↓
+Ferramenta de video: monta as cenas animadas + audio + texto
+  ↓
+Vivianne: aprova video final
+  ↓
+Upload: Supabase Storage → disponivel na plataforma
+```
+
+### 9. Biblioteca de Assets Visuais
+
+O Claude Code gera e armazena no Supabase:
+
+**Personagens (silhuetas em ~15 poses):** De pe, sentada, curvada, maos no peito, maos abertas, a caminhar, de costas, mao estendida, duas silhuetas juntas, duas separadas, adulta + crianca, rodeada de outras figuras, a segurar peso, a soltar algo, a abrir porta/veu.
+
+**Cenarios (10 territorios x 4 estagios = 40 paisagens):** Cada territorio em 4 variacoes: modulos 1-2 (fechado), 3-4 (primeiros sinais), 5-6 (transformacao), 7-8 (aberto).
+
+**Elementos simbolicos:** Espelhos, panos/veus, moedas, arvore, raizes, fios de seda, ponte de luz, rio, cinzas, brotos, nevoeiro, caminhos, mapa corporal, flores bioluminescentes, pedras, muralha de luz, paredes de eco, porta.
+
+Com ~80-100 imagens base, todos os videos podem ser montados.
+
+### 10. Sistema de Entrada (YouTube)
+
+Cada curso tem 2-3 videos YouTube gratuitos como porta de entrada. Sao ganchos emocionais que terminam sempre com convite para o curso completo. Cada gancho termina com: "Se isto te tocou, o curso completo esta em seteveus.space."
+
+### 11. Volumes e Custos
+
+**Materiais por curso:** 20-24 video-aulas, 1 manual PDF (~40 pag), 8 cadernos exercicios (~5 pag cada), 2-3 videos YouTube, ~10 imagens do territorio.
+
+**Total (10 cursos x 2 linguas):** ~400-480 videos, 20 manuais, 160 cadernos, 40-60 videos YouTube.
+
+**Custos mensais estimados:**
+
+| Servico | Custo |
+|---------|-------|
+| ElevenLabs | ~$5-22/mes |
+| Runway (se adoptado) | ~$15/mes |
+| Supabase Pro | $25/mes (ja tem) |
+| Stripe | 2.9% + $0.30/tx |
+| Midjourney (se necessario) | $10/mes |
+| **TOTAL fixo** | **~$55-72/mes** |
+
+### 12. Ficheiros de Referencia
+
+O Claude Code trabalha com 3 documentos:
+1. **CLAUDE.md** — arquitectura tecnica (schema, Edge Functions, stack) + orientacoes consolidadas
+2. **src/data/courses.ts** — 10 cursos completos com modulos, sub-aulas, descricoes (catalogo em codigo)
+3. **CURSOS/ESCOLA DOS VEUS CONSOLIDADO.pdf** — documento original consolidado (manifesto, universo visual, site, formatos, producao, pipeline)
+
+Estes documentos substituem todos os prompts adicionais anteriores.
