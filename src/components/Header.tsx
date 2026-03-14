@@ -6,14 +6,12 @@ import { useState } from "react";
 import { useAuth } from "@/components/AuthProvider";
 
 const navLinks: { href: string; label: string; highlight?: boolean; featured?: boolean }[] = [
-  { href: "/os-sete-veus", label: "Espelhos" },
-  { href: "/coleccao-nos", label: "Nós" },
-  { href: "/comprar", label: "Comprar" },
+  { href: "/cursos", label: "Cursos", featured: true },
+  { href: "/os-sete-veus", label: "Universo" },
+  { href: "/podcast", label: "Podcast" },
+  { href: "/livro-fisico", label: "Livro" },
   { href: "/sobre", label: "Sobre" },
   { href: "/comunidade", label: "Ecos", highlight: true },
-  { href: "/livro-fisico", label: "Livro Físico", featured: true },
-  { href: "/podcast", label: "Podcast" },
-  { href: "/contacto", label: "Contacto" },
 ];
 
 export default function Header() {
