@@ -245,6 +245,12 @@ export default function AdminPage() {
               icon="🔑"
             />
             <ActionCard
+              title="Producao Cursos"
+              description="Pipeline: scripts, audio, imagens, videos"
+              href="/admin/cursos/producao"
+              icon="▶"
+            />
+            <ActionCard
               title="Gerar Voz"
               description="Clips de voz — intros, teasers, stories e marketing"
               href="/admin/voz"
