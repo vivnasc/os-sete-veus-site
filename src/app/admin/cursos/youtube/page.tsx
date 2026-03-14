@@ -15,6 +15,7 @@ import VideoComposer from "@/components/VideoComposer";
 import Link from "next/link";
 
 const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
+const DEFAULT_VOICE_ID = "fnoNuVpfClX7lHKFbyZ2";
 
 type Tab = "scripts" | "montar" | "narracoes";
 
@@ -28,6 +29,12 @@ export default function YouTubePage() {
   const [selectedScript, setSelectedScript] = useState<YouTubeScript | null>(
     null
   );
+
+  // ElevenLabs config
+  const [apiKey, setApiKey] = useState("");
+  const [voiceId, setVoiceId] = useState(DEFAULT_VOICE_ID);
+  const [audioGenerating, setAudioGenerating] = useState(false);
+  const [audioError, setAudioError] = useState("");
 
   // Montagem state
   const [composerScenes, setComposerScenes] = useState<ComposerScene[]>([]);
@@ -75,6 +82,54 @@ export default function YouTubePage() {
     if (!selectedScript) return;
     const text = getFullNarration(selectedScript);
     navigator.clipboard.writeText(text);
+  }
+
+  async function generateAudio() {
+    if (!selectedScript || !apiKey) return;
+    setAudioGenerating(true);
+    setAudioError("");
+
+    try {
+      const narration = getFullNarration(selectedScript);
+
+      const res = await fetch("/api/admin/courses/generate-audio", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          script: narration,
+          courseSlug: selectedScript.courseSlug,
+          moduleNum: 0,
+          subLetter: `yt-hook-${selectedScript.hookIndex}`,
+          voiceId,
+          apiKey,
+          model: "v2",
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.erro || `Erro ${res.status}`);
+      }
+
+      const contentType = res.headers.get("Content-Type") || "";
+
+      if (contentType.includes("audio/")) {
+        // Direct audio download (no Supabase service key)
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        setAudioUrl(url);
+        setAudioFileName(`${selectedScript.courseSlug}-hook-${selectedScript.hookIndex}.mp3`);
+      } else {
+        // JSON response with Supabase URL
+        const data = await res.json();
+        setAudioUrl(data.url);
+        setAudioFileName(`${selectedScript.courseSlug}-hook-${selectedScript.hookIndex}.mp3`);
+      }
+    } catch (err) {
+      setAudioError(err instanceof Error ? err.message : "Erro ao gerar audio");
+    } finally {
+      setAudioGenerating(false);
+    }
   }
 
   if (!user || !isAdmin) {
@@ -258,12 +313,55 @@ export default function YouTubePage() {
                   </span>
                 </div>
 
-                {/* Audio upload */}
+                {/* Audio — generate or upload */}
                 <div className="bg-[#2a2a4a]/50 rounded-xl p-5 border border-[#3a3a5a]">
-                  <h3 className="text-sm font-medium text-[#C9A96E] mb-3">
-                    Audio (MP3 do ElevenLabs)
+                  <h3 className="text-sm font-medium text-[#C9A96E] mb-4">
+                    Audio
                   </h3>
 
+                  {/* ElevenLabs config */}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+                    <div>
+                      <label className="block text-xs text-[#666] mb-1">
+                        ElevenLabs API Key
+                      </label>
+                      <input
+                        type="password"
+                        value={apiKey}
+                        onChange={(e) => setApiKey(e.target.value)}
+                        placeholder="sk_..."
+                        className="w-full bg-[#1a1a2e] text-[#F5F0E6] text-sm rounded-lg px-3 py-2 border border-[#3a3a5a] outline-none focus:border-[#C9A96E]"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-[#666] mb-1">
+                        Voice ID
+                      </label>
+                      <input
+                        type="text"
+                        value={voiceId}
+                        onChange={(e) => setVoiceId(e.target.value)}
+                        className="w-full bg-[#1a1a2e] text-[#F5F0E6] text-sm rounded-lg px-3 py-2 border border-[#3a3a5a] outline-none focus:border-[#C9A96E]"
+                      />
+                    </div>
+                    <div className="flex items-end gap-2">
+                      <button
+                        onClick={generateAudio}
+                        disabled={!apiKey || audioGenerating}
+                        className="px-4 py-2 bg-[#D4A853] text-[#1A1A2E] rounded-lg text-sm font-medium hover:bg-[#C9A96E] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                      >
+                        {audioGenerating ? "A gerar..." : "Gerar Audio"}
+                      </button>
+                    </div>
+                  </div>
+
+                  {audioError && (
+                    <div className="mb-3 text-sm text-red-400 bg-red-900/20 rounded-lg px-3 py-2">
+                      {audioError}
+                    </div>
+                  )}
+
+                  {/* Or upload manually */}
                   <input
                     ref={audioInputRef}
                     type="file"
@@ -272,12 +370,12 @@ export default function YouTubePage() {
                     className="hidden"
                   />
 
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-4 border-t border-[#3a3a5a] pt-3">
                     <button
                       onClick={() => audioInputRef.current?.click()}
-                      className="px-4 py-2 bg-[#3a3a5a] text-[#F5F0E6] rounded-lg text-sm hover:bg-[#4a4a6a] transition-colors"
+                      className="px-3 py-1.5 bg-[#3a3a5a] text-[#a0a0b0] rounded text-xs hover:bg-[#4a4a6a] transition-colors"
                     >
-                      {audioUrl ? "Trocar audio" : "Carregar audio"}
+                      {audioUrl ? "Trocar ficheiro" : "Ou carregar MP3"}
                     </button>
 
                     {audioFileName && (
@@ -403,8 +501,9 @@ export default function YouTubePage() {
         {activeTab === "narracoes" && (
           <div className="space-y-6">
             <p className="text-sm text-[#a0a0b0]">
-              Copia o texto de narracao para colar no ElevenLabs. Cada script e
-              a narracao completa — gera um unico ficheiro de audio por hook.
+              Texto completo de narracao. Podes gerar audio directamente na tab
+              &quot;Montar Video&quot; ou copiar e colar manualmente no
+              ElevenLabs.
             </p>
 
             {scripts.length === 0 ? (
