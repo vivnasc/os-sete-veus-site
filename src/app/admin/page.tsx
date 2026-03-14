@@ -257,6 +257,12 @@ export default function AdminPage() {
               icon="◈"
             />
             <ActionCard
+              title="Videos YouTube"
+              description="Scripts, narracao e montagem de hooks"
+              href="/admin/cursos/youtube"
+              icon="▷"
+            />
+            <ActionCard
               title="Gerar Voz"
               description="Clips de voz — intros, teasers, stories e marketing"
               href="/admin/voz"
