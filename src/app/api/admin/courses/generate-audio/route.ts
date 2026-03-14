@@ -2,19 +2,29 @@ import { NextRequest, NextResponse } from "next/server";
 
 /**
  * POST /api/admin/courses/generate-audio
- * Generates audio for a course sub-lesson via ElevenLabs and uploads to Supabase.
+ * Generates audio via ElevenLabs and uploads to Supabase.
  *
- * Body: { script: string, courseSlug: string, moduleNum: number, subLetter: string, voiceId: string, apiKey: string, model?: "v2" | "v3" }
- * Returns: { url: string } (Supabase public URL of the audio)
+ * Body: { script, courseSlug, moduleNum, subLetter, voiceId?, apiKey?, model? }
+ * apiKey and voiceId fall back to env vars ELEVENLABS_API_KEY / ELEVENLABS_VOICE_ID
  */
 export async function POST(req: NextRequest) {
   try {
-    const { script, courseSlug, moduleNum, subLetter, voiceId, apiKey, model } =
-      await req.json();
+    const body = await req.json();
+    const { script, courseSlug, moduleNum, subLetter, model } = body;
 
-    if (!script || !courseSlug || !moduleNum || !subLetter || !voiceId || !apiKey) {
+    const apiKey = body.apiKey || process.env.ELEVENLABS_API_KEY;
+    const voiceId = body.voiceId || process.env.ELEVENLABS_VOICE_ID || "fnoNuVpfClX7lHKFbyZ2";
+
+    if (!script || !courseSlug || moduleNum === undefined || !subLetter) {
       return NextResponse.json(
-        { erro: "Campos obrigatorios em falta." },
+        { erro: "Campos obrigatorios: script, courseSlug, moduleNum, subLetter." },
+        { status: 400 }
+      );
+    }
+
+    if (!apiKey) {
+      return NextResponse.json(
+        { erro: "ELEVENLABS_API_KEY nao configurada. Define a env var ou envia apiKey no body." },
         { status: 400 }
       );
     }
