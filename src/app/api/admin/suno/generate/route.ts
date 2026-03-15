@@ -6,8 +6,11 @@ import { NextRequest, NextResponse } from "next/server";
  *   SUNO_API_URL — base URL do provider (ex: https://api.sunoapi.org)
  *   SUNO_API_KEY — API key do provider
  *
- * POST body: { prompt, instrumental?, title?, duration? }
- * Retorna: { taskId, status }
+ * POST body: { prompt, lyrics?, instrumental?, title?, duration? }
+ *
+ * Se lyrics estiver presente, usa o endpoint custom_generate (Suno Custom Mode)
+ * que aceita letras formatadas com [Verse], [Chorus], etc.
+ * Se nao, usa o endpoint generate (prompt-only mode).
  */
 export async function POST(req: NextRequest) {
   const apiUrl = process.env.SUNO_API_URL;
@@ -21,7 +24,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const { prompt, instrumental, title, duration } = await req.json();
+    const { prompt, lyrics, instrumental, title, duration } = await req.json();
 
     if (!prompt) {
       return NextResponse.json(
@@ -30,16 +33,30 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // If lyrics are provided, use custom_generate endpoint
+    // Otherwise use the standard generate endpoint
+    const hasLyrics = lyrics && typeof lyrics === "string" && lyrics.trim().length > 0;
+    const endpoint = hasLyrics ? "custom_generate" : "generate";
+
     const body: Record<string, unknown> = {
-      prompt,
-      make_instrumental: instrumental ?? true,
       wait_audio: false,
+      make_instrumental: instrumental ?? false,
     };
 
-    if (title) body.title = title;
+    if (hasLyrics) {
+      // Custom mode: prompt = style/genre tags, lyrics = actual song text
+      body.tags = prompt;
+      body.prompt = lyrics;
+      if (title) body.title = title;
+    } else {
+      // Standard mode: prompt = free-form description
+      body.prompt = prompt;
+      if (title) body.title = title;
+    }
+
     if (duration) body.duration = duration;
 
-    const res = await fetch(`${apiUrl}/api/generate`, {
+    const res = await fetch(`${apiUrl}/api/${endpoint}`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${apiKey}`,
@@ -51,7 +68,7 @@ export async function POST(req: NextRequest) {
     if (!res.ok) {
       const text = await res.text();
       return NextResponse.json(
-        { erro: `Suno API: ${res.status} — ${text}` },
+        { erro: `Suno API (${endpoint}): ${res.status} — ${text}` },
         { status: 500 }
       );
     }

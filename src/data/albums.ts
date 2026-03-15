@@ -21,6 +21,7 @@ export type AlbumTrack = {
   description: string;
   lang: "PT" | "EN";
   prompt: string;
+  lyrics: string;
   durationSeconds: number;
   audioUrl: string | null;
 };
