@@ -263,6 +263,12 @@ export default function AdminPage() {
               icon="▷"
             />
             <ActionCard
+              title="Guidelines Cursos"
+              description="Directrizes de producao: tom, visual, scripts"
+              href="/admin/cursos/guidelines"
+              icon="¶"
+            />
+            <ActionCard
               title="Gerar Voz"
               description="Clips de voz — intros, teasers, stories e marketing"
               href="/admin/voz"
@@ -285,6 +291,18 @@ export default function AdminPage() {
               description="Gerador livre com mockups e capas"
               href="/painel/marketing/gerador"
               icon="🎨"
+            />
+            <ActionCard
+              title="Brand Kit"
+              description="Paleta de cores, tipografia e identidade visual"
+              href="/painel/marca"
+              icon="◆"
+            />
+            <ActionCard
+              title="Dashboard Leitoras"
+              description="Estatisticas de leitura por veu"
+              href="/autora/dashboard"
+              icon="◎"
             />
             <ActionCard
               title="Notificacoes"
