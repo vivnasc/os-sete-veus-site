@@ -22,21 +22,21 @@ const COURSE_LIST: Record<
 > = {
   "ouro-proprio": {
     number: 1,
-    title: "Ouro Proprio",
-    subtitle: "A relacao com dinheiro como espelho de ti",
+    title: "Ouro Próprio",
+    subtitle: "A relação com dinheiro como espelho de ti",
     arcoEmocional:
-      "Comeca pelo desconforto de olhar para numeros. Passa pela descoberta dos padroes herdados. Atravessa a vergonha, a culpa de querer mais, o medo de perder. Chega a reconstrucao. Termina com direccao.",
+      "Começa pelo desconforto de olhar para números. Passa pela descoberta dos padrões herdados. Atravessa a vergonha, a culpa de querer mais, o medo de perder. Chega à reconstrução. Termina com direcção.",
     diferencial:
-      "Nao e um curso de financas pessoais. Ensina a desfazer o no emocional que impede a mulher de ganhar, guardar e gastar de forma alinhada com quem ela realmente e.",
+      "Não é um curso de finanças pessoais. Ensina a desfazer o nó emocional que impede a mulher de ganhar, guardar e gastar de forma alinhada com quem ela realmente é.",
     modules: [
       {
         number: 1,
         title: "O Extracto como Espelho",
-        description: "A relacao com dinheiro comeca por olhar.",
-        isFree: true,
+        description: "A relação com dinheiro começa por olhar.",
+        isFree: false,
         subLessons: [
           { letter: "A", title: "O medo de olhar" },
-          { letter: "B", title: "Ler o extracto como um diario" },
+          { letter: "B", title: "Ler o extracto como um diário" },
           { letter: "C", title: "O corpo e o dinheiro" },
         ],
         workbook: "Mapa financeiro emocional",
@@ -57,7 +57,7 @@ export async function generateMetadata({
   const course = COURSE_LIST[slug];
   const title = course?.title ?? "Curso";
   return {
-    title: `${title} — Sete Veus`,
+    title: `${title} — A Escola dos Véus`,
     description: course?.subtitle,
   };
 }
@@ -76,7 +76,7 @@ export default async function CourseLandingPage({ params }: PageProps) {
   if (!course) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-[#a0a0b0]">Curso nao encontrado.</p>
+        <p className="text-[#a0a0b0]">Curso não encontrado.</p>
       </div>
     );
   }
@@ -103,13 +103,13 @@ export default async function CourseLandingPage({ params }: PageProps) {
           href={`/cursos/${slug}/dashboard`}
           className="inline-block bg-[#8B5CF6] text-white px-8 py-3 rounded-lg font-sans text-center hover:bg-[#7c4ee4] transition-colors"
         >
-          Comeca pelo Modulo 1 (gratis)
+          Inscrever-me neste curso
         </Link>
         <a
           href="#modulos"
           className="inline-block border border-[#C9A96E] text-[#C9A96E] px-8 py-3 rounded-lg font-sans text-center hover:bg-[#C9A96E]/10 transition-colors"
         >
-          Ver modulos
+          Ver módulos
         </a>
       </section>
 
@@ -120,7 +120,7 @@ export default async function CourseLandingPage({ params }: PageProps) {
             <p className="text-2xl font-serif text-white">
               {course.modules?.length ?? 8}
             </p>
-            <p className="text-sm text-[#a0a0b0] mt-1">Modulos</p>
+            <p className="text-sm text-[#a0a0b0] mt-1">Módulos</p>
           </div>
           <div className="bg-[#252547] rounded-xl p-6">
             <p className="text-2xl font-serif text-white">
@@ -130,7 +130,7 @@ export default async function CourseLandingPage({ params }: PageProps) {
                 0
               ) ?? "~24"}
             </p>
-            <p className="text-sm text-[#a0a0b0] mt-1">Videos curtos</p>
+            <p className="text-sm text-[#a0a0b0] mt-1">Vídeos curtos</p>
           </div>
           <div className="bg-[#252547] rounded-xl p-6">
             <p className="text-2xl font-serif text-white">1</p>
@@ -141,7 +141,7 @@ export default async function CourseLandingPage({ params }: PageProps) {
               {course.modules?.length ?? 8}
             </p>
             <p className="text-sm text-[#a0a0b0] mt-1">
-              Cadernos de exercicios
+              Cadernos de exercícios
             </p>
           </div>
         </div>
@@ -172,11 +172,6 @@ export default async function CourseLandingPage({ params }: PageProps) {
                       {String(mod.number).padStart(2, "0")}
                     </span>
                     <span className="text-white font-serif">{mod.title}</span>
-                    {mod.isFree && (
-                      <span className="text-xs bg-[#C9A96E]/20 text-[#C9A96E] px-2 py-0.5 rounded font-sans">
-                        Gratuito
-                      </span>
-                    )}
                   </div>
                   <span className="text-[#a0a0b0] group-open:rotate-180 transition-transform">
                     &#9662;
@@ -217,7 +212,7 @@ export default async function CourseLandingPage({ params }: PageProps) {
       {course.youtubeHooks && course.youtubeHooks.length > 0 && (
         <section className="px-6 py-12 max-w-4xl mx-auto">
           <h2 className="font-serif text-2xl text-white mb-6">
-            Videos gratuitos
+            Vídeos gratuitos no YouTube
           </h2>
           <div className="grid gap-4 md:grid-cols-3">
             {course.youtubeHooks.map(
@@ -247,7 +242,7 @@ export default async function CourseLandingPage({ params }: PageProps) {
       {/* Pricing + CTA */}
       <section className="px-6 py-16 max-w-4xl mx-auto text-center">
         <p className="text-[#a0a0b0] text-sm mb-2">
-          Modulo 1 gratuito. Curso completo:
+          Curso completo:
         </p>
         <p className="text-4xl font-serif text-white mb-2">$49</p>
         <p className="text-sm text-[#a0a0b0] mb-8">USD / ~3100 MZN</p>
@@ -256,13 +251,7 @@ export default async function CourseLandingPage({ params }: PageProps) {
             href={`/cursos/${slug}/dashboard`}
             className="inline-block bg-[#8B5CF6] text-white px-8 py-3 rounded-lg font-sans hover:bg-[#7c4ee4] transition-colors"
           >
-            Comeca gratis
-          </Link>
-          <Link
-            href={`/cursos/${slug}/dashboard?checkout=true`}
-            className="inline-block border border-[#C9A96E] text-[#C9A96E] px-8 py-3 rounded-lg font-sans hover:bg-[#C9A96E]/10 transition-colors"
-          >
-            Inscreve-te no curso completo
+            Inscrever-me
           </Link>
         </div>
       </section>
@@ -270,7 +259,7 @@ export default async function CourseLandingPage({ params }: PageProps) {
       {/* Disclaimer */}
       <section className="px-6 pb-16 max-w-4xl mx-auto">
         <p className="text-xs text-[#606070] text-center">
-          Este curso nao substitui acompanhamento psicologico ou psiquiatrico.
+          Este curso não substitui acompanhamento psicológico ou psiquiátrico.
         </p>
       </section>
     </div>
