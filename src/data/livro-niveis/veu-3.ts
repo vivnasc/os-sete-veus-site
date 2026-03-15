@@ -56,7 +56,7 @@ export const veu3Niveis: NivelCapitulo[] = [
       'A pensadora compulsiva — a que acredita que se parar de analisar, o mundo desmorona. Transforma cada emoção em conceito, cada vivência em explicação. Pensar é a sua forma de controlar o incontrolável.',
       'A narradora interior — a que comenta tudo em tempo real, como se a vida precisasse de legendas. Sem a narração, sente-se exposta ao silêncio — e o silêncio aterroriza-a.',
       'A resolutora — a que transforma cada momento de paz num problema a resolver. Se não está a pensar numa solução, sente-se inútil. Confunde repouso com preguiça e presença com passividade.',
-      'A vigilante — a que não se permite descansar porque acredita que baixar a guarda é perigoso. O turbilhão mental é a sua sentinela permanente, sempre a vasculhar o horizonte a procura de ameaças.',
+      'A vigilante — a que não se permite descansar porque acredita que baixar a guarda é perigoso. O turbilhão mental é a sua sentinela permanente, sempre a vasculhar o horizonte à procura de ameaças.',
     ],
     veu_dominante_sinais: [
       'A primeira coisa que fazes ao acordar não é sentir — é pensar. Antes de abrir os olhos, a mente já está a correr listas, cenários, preocupações.',
@@ -277,14 +277,14 @@ export const veu3Niveis: NivelCapitulo[] = [
     sinais_do_veu: [
       'Quando alguém te provoca, escondes a raiva atrás de um sorriso sereno — e só à noite, sozinha, sentes o que realmente sentiste.',
       'Comparas-te espiritualmente com outros — quantas horas meditas, que livros leste, que retiros fizeste — como se houvesse uma tabela de classificação invisível.',
-      'Usas vocabulario espiritual para te distanciares das emoções: "isso é o meu ego", "estou a observar sem julgamento" — mas por dentro estás a ferver.',
+      'Usas vocabulário espiritual para te distanciares das emoções: "isso é o meu ego", "estou a observar sem julgamento" — mas por dentro estás a ferver.',
       'Tens medo de admitir que por vezes não sentes nada durante a prática — e finges uma paz que não está lá.',
       'A tua identidade espiritual tornou-se tão rígida como qualquer outro papel que já vestiste — só que esta parece "elevada".',
     ],
     guiao_reflexao: [
       'Escreve uma lista honesta de tudo o que a tua prática espiritual te dá — e depois uma lista do que te tira. Há algo na segunda lista que nunca admitirias em voz alta? Escreve-o agora.',
       'Pensa num momento em que a tua "máscara espiritual" caiu — raiva inesperada, ciúme, vaidade crua. Descreve esse momento sem o corrigir. O que ele te mostra sobre o que ainda está vivo por baixo da calma?',
-      'Imagina que durante um mes inteiro não podes usar nenhuma palavra espiritual — nem consciência, nem presença, nem ego, nem despertar. Como descrevias a tua experiência interior? Escreve-a nessa lingua nua.',
+      'Imagina que durante um mês inteiro não podes usar nenhuma palavra espiritual — nem consciência, nem presença, nem ego, nem despertar. Como descrevias a tua experiência interior? Escreve-a nessa língua nua.',
     ],
     espelho_pessoal: 'Se tirasses a roupa espiritual toda — as práticas, as palavras, a imagem — o que ficaria? E conseguirias amar o que ficasse?',
 
@@ -293,16 +293,16 @@ export const veu3Niveis: NivelCapitulo[] = [
       'A iluminada — a que construiu uma identidade em torno do despertar. Fala com suavidade estudada, sorri com compaixão calibrada, responde com sabedoria ensaiada. Por baixo, há medo: medo de ser comum, medo de não ser suficiente sem o figurino espiritual.',
       'A pacificadora — a que evita todo o conflito em nome da paz interior. Nunca confronta, nunca discorda, nunca levanta a voz. A calma não é presença — é fuga. E a raiva que não se permite sentir fermenta em silêncio.',
       'A transcendente — a que acredita que já está "acima" das emoções humanas. Desejo, ciúme, ambição — tudo isto é "do ego". Mas negar não é transcender. É esconder. E o que se esconde volta sempre, com mais força.',
-      'A coleccionadora espiritual — a que acumula práticas, retiros, mestres, livros como quem acumula troféus. Cada experiência nova confirma que está "a avançar". Mas o avanco é horizontal — nunca vai fundo porque ir fundo exigiria parar.',
+      'A coleccionadora espiritual — a que acumula práticas, retiros, mestres, livros como quem acumula troféus. Cada experiência nova confirma que está "a avançar". Mas o avanço é horizontal — nunca vai fundo porque ir fundo exigiria parar.',
     ],
     veu_dominante_sinais: [
       'Quando alguém te critica ou te provoca, a tua primeira reacção interna é "essa pessoa não está ao meu nível de consciência" — e essa reacção parece-te natural, não arrogante.',
-      'A tua prática espiritual tornou-se rotina rígida: se não meditas, se não fazes o ritual, sentes culpa — como se a tua paz dependesse de cumprir um horario.',
+      'A tua prática espiritual tornou-se rotina rígida: se não meditas, se não fazes o ritual, sentes culpa — como se a tua paz dependesse de cumprir um horário.',
       'Tens dificuldade em admitir emoções "baixas" — raiva, inveja, desejo — sem imediatamente as enquadrar como "lição" ou "teste do universo".',
-      'Quando estás com pessoas que não partilham o teu vocabulario espiritual, sentes-te isolada — como se elas vivessem num mundo mais denso e tu já não pertencesses ali.',
+      'Quando estás com pessoas que não partilham o teu vocabulário espiritual, sentes-te isolada — como se elas vivessem num mundo mais denso e tu já não pertencesses ali.',
       'Há uma parte de ti que sabe que algo na tua espiritualidade é performance — mas admiti-lo em voz alta parece demasiado arriscado, porque sem essa performance, quem és tu?',
     ],
-    mensagem_central: 'A espiritualidade não é um lugar onde chegas. É a honestidade com que te encontras em cada momento — mesmo nos momentos em que não te sentes nada espiritual. O ego vestido de luz é o mais difícil de reconhecer porque parece bonito, parece correcto, parece elevado. Mas a verdadeira presença não se anuncia. Não precisa de vocabulario especial, nem de postura impecável, nem de calma constante. A verdadeira presença inclui a raiva, o medo, a confusão — sem os transformar em problema. Não se trata de seres menos espiritual. Trata-se de seres mais honesta. E a honestidade, essa sim, é sagrada.',
+    mensagem_central: 'A espiritualidade não é um lugar onde chegas. É a honestidade com que te encontras em cada momento — mesmo nos momentos em que não te sentes nada espiritual. O ego vestido de luz é o mais difícil de reconhecer porque parece bonito, parece correcto, parece elevado. Mas a verdadeira presença não se anuncia. Não precisa de vocabulário especial, nem de postura impecável, nem de calma constante. A verdadeira presença inclui a raiva, o medo, a confusão — sem os transformar em problema. Não se trata de seres menos espiritual. Trata-se de seres mais honesta. E a honestidade, essa sim, é sagrada.',
 
     guiao_escrita: {
       contexto: 'Este exercício convida-te a olhar para a tua identidade espiritual como olharias para qualquer outra máscara — com curiosidade e coragem, sem a deitares fora, mas vendo-a como o que é: construção, não essência.',
@@ -314,13 +314,13 @@ export const veu3Niveis: NivelCapitulo[] = [
         'Para terminar, reescreve a tua relação com a espiritualidade em três linhas: uma sobre o que queres manter, uma sobre o que queres soltar, e uma sobre o que queres começar a permitir-te ser.',
       ],
       tempo_sugerido: '25-35 minutos',
-      nota_final: 'A máscara espiritual não é ma. Foi útil. Talvez tenha sido o caminho que te trouxe até aqui. Mas o caminho não é o destino. E quando o caminho se torna identidade rígida, deixa de te levar a algum lado — mantem-te a andar em círculos bem decorados. Este exercício não é para destruir a tua espiritualidade. É para a devolver a vida.',
+      nota_final: 'A máscara espiritual não é má. Foi útil. Talvez tenha sido o caminho que te trouxe até aqui. Mas o caminho não é o destino. E quando o caminho se torna identidade rígida, deixa de te levar a algum lado — mantém-te a andar em círculos bem decorados. Este exercício não é para destruir a tua espiritualidade. É para a devolver a vida.',
     },
   },
   {
     capitulo_numero: 12,
     resumo_acessivel: [
-      'O que acontece quando todas as máscaras espirituais se dissolvem? Abre-se não um vazio arido, mas um terreno vivo onde a respiração ganha nova textura.',
+      'O que acontece quando todas as máscaras espirituais se dissolvem? Abre-se não um vazio árido, mas um terreno vivo onde a respiração ganha nova textura.',
       'Este capítulo desmonta a fantasia de uma "chegada espiritual definitiva". Não há resposta final, não há ponto que feche o mistério.',
       'A espiritualidade livre é aquela que se funde com a vida diária — como sal na água. O sagrado respira no gesto mais simples.',
     ],
@@ -363,13 +363,13 @@ export const veu3Niveis: NivelCapitulo[] = [
     guiao_reflexao: [
       'Descreve o teu dia de ontem com o máximo detalhe — desde que acordaste até que adormeceste. Agora rele o que escreveste e sublinha cada momento que, visto com outros olhos, poderia ter sido sagrado. Quantos encontras?',
       'Escreve sobre o que aconteceria se desistisses de procurar. Não de viver, não de sentir — apenas de procurar. Se a busca parasse, o que ficaria? Escreve a partir desse silêncio.',
-      'Imagina a tua espiritualidade como sal dissolvido em água — invisível, inseparavel, presente em cada gole. Escreve como seria um dia vivido assim: sem rituais separados, sem momentos "especiais", apenas presença continua.',
+      'Imagina a tua espiritualidade como sal dissolvido em água — invisível, inseparável, presente em cada gole. Escreve como seria um dia vivido assim: sem rituais separados, sem momentos "especiais", apenas presença contínua.',
     ],
     espelho_pessoal: 'E se já tivesses chegado — e a única coisa que te impede de o ver fosse a crença de que ainda falta alguma coisa?',
 
     // Camada profunda
     mascaras: [
-      'A buscadora eterna — a que está sempre a procura do próximo ensinamento, do próximo mestre, da próxima revelação. Nunca pousa. Nunca descansa no que já sabe. A busca tornou-se refugio: enquanto procura, não precisa de encontrar.',
+      'A buscadora eterna — a que está sempre à procura do próximo ensinamento, do próximo mestre, da próxima revelação. Nunca pousa. Nunca descansa no que já sabe. A busca tornou-se refúgio: enquanto procura, não precisa de encontrar.',
       'A separadora — a que divide a vida em sagrado e mundano, espiritual e comum. O supermercado não é prática; a meditação sim. Esta divisão protege-a de ter de estar presente em tudo — reserva a presença para os momentos "elevados".',
       'A incompleta — a que acredita que lhe falta sempre algo para estar pronta. Mais um retiro, mais um livro, mais uma experiência. A incompletude não é verdade — é estratégia para não ter de parar e enfrentar o que já é.',
       'A guardiã do mistério — a que transforma a incerteza em ansiedade disfarçada de reverência. Diz "confio no universo" quando na verdade quer dizer "tenho medo de não saber". A humildade esconde o pânico.',
@@ -381,7 +381,7 @@ export const veu3Niveis: NivelCapitulo[] = [
       'Comparas o teu percurso espiritual com o de outros: quem medita mais, quem teve mais experiências, quem está "mais desperto". A espiritualidade tornou-se, sem que desses conta, mais uma arena de competição.',
       'Há uma parte de ti que suspira de alívio quando pensas: "ainda não cheguei lá" — porque se já tivesses chegado, não saberias o que fazer sem a busca.',
     ],
-    mensagem_central: 'E se não houvesse nenhum lugar para onde ir? E se a espiritualidade não fosse um caminho com princípio e fim, mas a qualidade com que habitas cada instante — incluindo os mais comuns, os mais aborrecidos, os mais mundanos? O sagrado não vive nos templos. Vive na forma como lavas as mãos, como olhas para alguém, como respiras quando ninguém está a ver. A fantasia de uma chegada definitiva é o último truque do véu: mantem-te a correr para que nunca pares o suficiente para perceber que já estás onde sempre quiseste estar. Não falta nada. Não há mais nenhum degrau. Há apenas isto — este momento, esta respiração, esta presença imperfeita e viva. E isso basta. Sempre bastou.',
+    mensagem_central: 'E se não houvesse nenhum lugar para onde ir? E se a espiritualidade não fosse um caminho com princípio e fim, mas a qualidade com que habitas cada instante — incluindo os mais comuns, os mais aborrecidos, os mais mundanos? O sagrado não vive nos templos. Vive na forma como lavas as mãos, como olhas para alguém, como respiras quando ninguém está a ver. A fantasia de uma chegada definitiva é o último truque do véu: mantém-te a correr para que nunca pares o suficiente para perceber que já estás onde sempre quiseste estar. Não falta nada. Não há mais nenhum degrau. Há apenas isto — este momento, esta respiração, esta presença imperfeita e viva. E isso basta. Sempre bastou.',
 
     guiao_escrita: {
       contexto: 'Este exercício convida-te a dissolver a fronteira entre o sagrado e o quotidiano — a encontrar presença não em momentos especiais, mas no tecido comum da tua vida.',
@@ -389,7 +389,7 @@ export const veu3Niveis: NivelCapitulo[] = [
         'Escreve uma descrição detalhada do teu dia de ontem — desde que acordaste até que adormeceste. Incluir tudo: os gestos banais, as esperas, os momentos em que não aconteceu nada de especial. Escreve como se estivesses a narrar a vida de outra pessoa, com atenção e sem julgamento.',
         'Agora rele o que escreveste e marca cada momento que, visto com outros olhos, poderia conter sacralidade. Um sabor, um olhar, uma respiração funda, um instante de silêncio. Quantos encontras? Escreve ao lado de cada um: "Isto também é sagrado."',
         'Escreve sobre o que aconteceria se parasseses de procurar. Não de viver, não de sentir, não de crescer — apenas de procurar. Se a busca acabasse agora, neste instante, o que ficaria? Escreve a partir desse lugar de repouso.',
-        'Imagina a tua espiritualidade como sal dissolvido em água — invisível, inseparavel, presente em cada gole. Descreve como seria um dia inteiro vivido assim: sem prática separada, sem hora espiritual, sem vocabulario especial. Apenas presença continua, misturada com tudo.',
+        'Imagina a tua espiritualidade como sal dissolvido em água — invisível, inseparável, presente em cada gole. Descreve como seria um dia inteiro vivido assim: sem prática separada, sem hora espiritual, sem vocabulário especial. Apenas presença contínua, misturada com tudo.',
         'Para terminar, escreve três frases. A primeira começa com "Larguei ___." A segunda com "Encontrei ___." A terceira com "Basta ___." Não planeies. Deixa as frases escreverem-se. O que aparece é a tua verdade deste momento.',
       ],
       tempo_sugerido: '25-35 minutos',

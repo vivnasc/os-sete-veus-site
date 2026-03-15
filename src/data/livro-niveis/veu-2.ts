@@ -131,7 +131,7 @@ export const veu2Niveis: NivelCapitulo[] = [
       'Se eu largar a busca de sentido, vou ficar a deriva para sempre.',
     ],
     sinais_do_veu: [
-      'Saltas de projecto em projecto, de paixão em paixão, a procura de algo que finalmente te preencha — e nada basta.',
+      'Saltas de projecto em projecto, de paixão em paixão, à procura de algo que finalmente te preencha — e nada basta.',
       'Sentes culpa quando não estás a ser "produtiva" ou "útil", como se existir não fosse suficiente.',
       'Quando o silêncio chega, preenches-o depressa — com ruído, com planos, com mais uma busca.',
       'Carregas mágoas antigas como se fossem parte de ti, e o corpo acusa o peso mesmo quando a mente diz que "já passou".',
@@ -154,7 +154,7 @@ export const veu2Niveis: NivelCapitulo[] = [
     veu_dominante_sinais: [
       'Percebes que a tua relação com o presente é sempre mediada pelo passado — mesmo nos momentos de alegria, há uma parte de ti que compara, mede, avalia a luz do que já viveste.',
       'Quando alguém te fala do futuro com entusiasmo, sentes um peso subtil — como se o futuro fosse apenas uma continuação inevitável dos padrões que já conheces.',
-      'A busca de sentido tornou-se o teu sentido. Não sabes existir sem estar a procura de algo — e essa busca, percebes agora, é uma forma de não estar presente.',
+      'A busca de sentido tornou-se o teu sentido. Não sabes existir sem estar à procura de algo — e essa busca, percebes agora, é uma forma de não estar presente.',
       'As tuas mágoas mais antigas não diminuiram com o tempo — cristalizaram. Tornaram-se parte da arquitectura com que vês o mundo, e já nem percebes onde acaba a mágoa e começa a tua visão da realidade.',
       'Tens dificuldade em receber coisas boas sem desconfiança. A alegria pura, sem contexto nem explicação, assusta-te — porque no teu mapa interno, o que vem sem aviso costuma ser armadilha.',
     ],
@@ -170,7 +170,7 @@ export const veu2Niveis: NivelCapitulo[] = [
         'Termina com esta frase, completando-a como quiseres: "Se eu poisasse este peso, o meu corpo finalmente poderia..."',
       ],
       tempo_sugerido: '20 minutos',
-      nota_final: 'O perdão não é um acto de generosidade para quem te magoou. É um acto de liberdade para quem carrega. E podes faze-lo no teu tempo, ao teu ritmo, sem pressa.',
+      nota_final: 'O perdão não é um acto de generosidade para quem te magoou. É um acto de liberdade para quem carrega. E podes fazê-lo no teu tempo, ao teu ritmo, sem pressa.',
     },
   },
   {
@@ -243,7 +243,7 @@ export const veu2Niveis: NivelCapitulo[] = [
       'Quando olhas para a tua infância, não é com curiosidade — é com uma porta fechada. Há algo lá que não queres ver, e toda a tua estrutura adulta foi construida para não ter de abrir essa porta.',
       'Reages ao presente com a intensidade do passado e só percebes depois. O corpo lembra o que a mente arquivou, e essas reacções antigas são o teu verdadeiro sistema de crenças — mais real do que qualquer filosofia.',
       'A tua relação com a espiritualidade tem mais medo do que maravilhamento. Práticas, rezas ou meditas não por encanto, mas por protecção — como quem faz um ritual para manter o caos a distância.',
-      'Percebes que há uma versão de ti — pequena, anterior a todas as crenças — que nunca foi ouvida. E tudo o que construiste por cima, por mais bonito que seja, não a consegue silenciar completamente.',
+      'Percebes que há uma versão de ti — pequena, anterior a todas as crenças — que nunca foi ouvida. E tudo o que construíste por cima, por mais bonito que seja, não a consegue silenciar completamente.',
     ],
     mensagem_central: 'As crenças que carregas não são inimigas. Mas algumas já não te pertencem — pertencem a criança que precisava de protecção, ao medo que precisava de forma, a solidão que precisava de explicação. Este capítulo não te pede para largar a tua fé. Pede-te para a examinar com honestidade: o que é crença viva, que respira e cresce contigo, e o que é armadura herdada que já te pesa mais do que protege? E há uma coisa mais, talvez a mais importante: dentro de ti vive ainda a impressão emocional da criança que foste. Não como metáfora bonita, mas como realidade no corpo — nos ombros que se contraem, na garganta que aperta, na reacção que te surpreende pela sua força. Essa criança não quer respostas cosmicas. Quer ser vista. Quer que finalmente pares e digas: eu sei que estás aí. Eu ouço-te.',
 
@@ -298,7 +298,7 @@ export const veu2Niveis: NivelCapitulo[] = [
       'Preciso de uma história nova — melhor, mais bonita — para substituir a antiga.',
       'Se não sei quem sou, não consigo avançar.',
       'O silêncio interior é perigoso — se eu parar, tudo desmorona.',
-      'Já fiz o trabalho interior — agora tenho a minha "versão evoluida".',
+      'Já fiz o trabalho interior — agora tenho a minha "versão evoluída".',
       'Os meus ciclos repetem-se porque o mundo é injusto, não porque haja algo em mim a repetir.',
     ],
     sinais_do_veu: [
@@ -309,7 +309,7 @@ export const veu2Niveis: NivelCapitulo[] = [
       'O silêncio assusta-te — e preenches cada pausa com pensamento, justificação ou mais uma narrativa sobre ti.',
     ],
     guiao_reflexao: [
-      'Escreve a história "espiritual" ou "evoluida" que construiste sobre ti nos últimos tempos. Agora le-a como se fosse de outra pessoa. É verdadeira — ou é mais uma armadura bonita?',
+      'Escreve a história "espiritual" ou "evoluída" que construíste sobre ti nos últimos tempos. Agora lê-a como se fosse de outra pessoa. É verdadeira — ou é mais uma armadura bonita?',
       'Pensa num ciclo que se repete na tua vida. Não o analises. Apenas descreve-o como se fosse uma cena de filme — com detalhes, sensações, cores. O que é que esse ciclo está a tentar mostrar-te que ainda não ouviste?',
       'Senta-te em silêncio durante dois minutos antes de escrever. Depois, sem pensar, completa esta frase dez vezes seguidas: "Sem nenhuma história, eu sou..." Não censures. Deixa vir.',
     ],
@@ -318,7 +318,7 @@ export const veu2Niveis: NivelCapitulo[] = [
     // Camada profunda
     mascaras: [
       'A renascida — a que construiu uma nova identidade sobre as cinzas da antiga e precisa que todos saibam o quanto mudou. "Eu antes era assim, agora sou assim." Mas a nova versão é tão rígida quanto a velha — só tem melhor embalagem.',
-      'A que já entendeu tudo — a que fala de ciclos, padrões e despertar com tal fluência que parece ter chegado ao fim da jornada. Mas a fluência é defesa. Enquanto explica, não precisa de sentir. O vocabulario do crescimento pessoal tornou-se o mais sofisticado dos escudos.',
+      'A que já entendeu tudo — a que fala de ciclos, padrões e despertar com tal fluência que parece ter chegado ao fim da jornada. Mas a fluência é defesa. Enquanto explica, não precisa de sentir. O vocabulário do crescimento pessoal tornou-se o mais sofisticado dos escudos.',
       'A fugitiva elegante — a que muda de cidade, de relação, de projecto sempre que o padrão antigo começa a repetir-se. Não foge por cobardia — foge porque acredita que o problema é o lugar, a pessoa, a circunstância. Nunca o padrão interno.',
       'A guardiã do silêncio — a que aprendeu que o silêncio é sagrado, mas usa-o como muro. Não fala, não partilha, não pede. Confunde recolhimento com isolamento. O silêncio, que devia ser espaço, tornou-se esconderijo.',
     ],
