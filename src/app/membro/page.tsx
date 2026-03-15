@@ -227,7 +227,7 @@ export default function MembroDashboard() {
                   {!loading && (
                     <div className="mt-4">
                       <p className="text-xs text-brown-400">
-                        {livro7Veus.veus.length} Veus · Filosofia e práticas de despertar
+                        {livro7Veus.veus.length} Véus · Filosofia e práticas de despertar
                       </p>
                     </div>
                   )}
@@ -522,7 +522,7 @@ export default function MembroDashboard() {
                     }}
                     className="mt-4 text-sm text-brown-400 underline hover:text-brown-600"
                   >
-                    Ja registei um código — verificar de novo
+                    Já registei um código — verificar de novo
                   </button>
                 )}
               </>
@@ -643,7 +643,7 @@ export default function MembroDashboard() {
                       </p>
                       <p className="font-sans text-xs text-brown-400">
                         {p.payment_method === "bank_transfer"
-                          ? "Transferencia bancaria"
+                          ? "Transferência bancária"
                           : p.payment_method === "mpesa"
                             ? "M-Pesa"
                             : p.payment_method === "paypal"

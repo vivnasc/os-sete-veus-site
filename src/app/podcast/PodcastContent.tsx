@@ -34,7 +34,7 @@ export default function PodcastContent() {
       <section className="px-6 py-16">
         <div className="mx-auto max-w-3xl">
           <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-brown-400">
-            Temporada 1 ~ 7 episodios
+            Temporada 1 ~ 7 episódios
           </p>
           <div className="mt-8 space-y-6">
             {episodes.map((ep) => (
@@ -51,7 +51,7 @@ export default function PodcastContent() {
                     <div className="flex items-start justify-between gap-4">
                       <div>
                         <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-brown-400">
-                          Episodio {ep.number} ~ {ep.durationEstimate}
+                          Episódio {ep.number} ~ {ep.durationEstimate}
                         </p>
                         <h2 className="mt-1 font-serif text-lg text-brown-900 sm:text-xl">
                           {ep.title}
@@ -64,7 +64,7 @@ export default function PodcastContent() {
                         className="mt-1 shrink-0 rounded-full px-2.5 py-0.5 font-sans text-[0.55rem] uppercase tracking-wider text-white"
                         style={{ background: ep.color }}
                       >
-                        Veu {ep.veu}
+                        Véu {ep.veu}
                       </span>
                     </div>
                     <p className="mt-3 font-serif text-sm leading-relaxed text-brown-600">
@@ -88,15 +88,15 @@ export default function PodcastContent() {
       <section className="bg-brown-50 px-6 py-16">
         <div className="mx-auto max-w-3xl text-center">
           <p className="font-sans text-[0.65rem] uppercase tracking-[0.25em] text-brown-400">
-            Episodios exclusivos
+            Episódios exclusivos
           </p>
           <h2 className="mt-3 font-serif text-2xl text-brown-900">
-            Por Tras do Veu
+            Por Trás do Véu
           </h2>
           <p className="mx-auto mt-4 max-w-lg font-serif text-sm leading-relaxed text-brown-600">
-            Para cada veu, existe um episodio mais profundo — uma reflexao
-            intima disponivel apenas para quem leu o Espelho correspondente.
-            Sete episodios. Sete reflexoes. So para quem viveu.
+            Para cada véu, existe um episódio mais profundo — uma reflexão
+            íntima disponível apenas para quem leu o Espelho correspondente.
+            Sete episódios. Sete reflexões. Só para quem viveu.
           </p>
           <Link
             href="/experiencias"
@@ -115,13 +115,13 @@ export default function PodcastContent() {
               Sobre o podcast
             </p>
             <h3 className="mt-2 font-serif text-lg text-brown-900">
-              Quem e a Vivianne?
+              Quem é a Vivianne?
             </h3>
             <p className="mt-3 font-serif text-sm leading-relaxed text-brown-600">
-              Vivianne dos Santos e economista, escritora e criadora da
-              plataforma Os Sete Veus do Despertar. Mocambicana, traz uma voz
-              que mistura rigor e ternura, analise e poesia. Nesta serie, partilha
-              as historias que a levaram a escrever os Espelhos — e convida-te a
+              Vivianne dos Santos é economista, escritora e criadora da
+              plataforma Os Sete Véus do Despertar. Moçambicana, traz uma voz
+              que mistura rigor e ternura, análise e poesia. Nesta série, partilha
+              as histórias que a levaram a escrever os Espelhos — e convida-te a
               olhar para os teus.
             </p>
             <Link

@@ -70,59 +70,59 @@ export const YOUTUBE_SCHEDULE = {
   timezone: "Africa/Maputo",
   durationRange: { min: 5, max: 7 },
   ctaDefault:
-    "Se isto te tocou, inscreve-te. A Escola dos Veus esta a chegar — e o primeiro curso e sobre a tua relacao com dinheiro.",
+    "Se isto te tocou, inscreve-te. A Escola dos Véus está a chegar — e o primeiro curso é sobre a tua relação com dinheiro.",
 } as const;
 
 export const YOUTUBE_DESCRIPTION_TEMPLATE = `[TITULO]
 
 [DESCRICAO_VIDEO]
 
-A Escola dos Veus e um lugar onde entras para ver o que estava invisivel. Cursos sobre a vida real — dinheiro, relacoes, corpo, limites, luto, decisoes — ensinados pela lente do corpo, nao da mente.
+A Escola dos Véus é um lugar onde entras para ver o que estava invisível. Cursos sobre a vida real — dinheiro, relações, corpo, limites, luto, decisões — ensinados pela lente do corpo, não da mente.
 
-O primeiro curso esta a chegar.
+O primeiro curso está a chegar.
 
-Inscreve-te para nao perderes.
+Inscreve-te para não perderes.
 seteveus.space
 
-#autoconhecimento #desenvolvimentopessoal #escoladosveus #corpo #emocoes`;
+#autoconhecimento #desenvolvimentopessoal #escoladosveus #corpo #emoções`;
 
 export const YOUTUBE_TAGS = [
   "autoconhecimento",
   "desenvolvimento pessoal",
-  "escola dos veus",
+  "escola dos véus",
   "corpo",
-  "emocoes",
+  "emoções",
   "mulheres",
-  "sete veus",
+  "sete véus",
 ];
 
-// ─── Checklist de publicacao ────────────────────────────────────────────────────
+// ─── Checklist de publicação ────────────────────────────────────────────────────
 
 export const VIDEO_CHECKLIST = [
-  "Titulo atractivo e emocional?",
-  "Thumbnail com visual do Mundo dos Veus?",
+  "Título atractivo e emocional?",
+  "Thumbnail com visual do Mundo dos Véus?",
   "Gancho nos primeiros 15 segundos?",
-  "Duracao 5-7 minutos?",
+  "Duração 5-7 minutos?",
   "Voz natural, ritmo calmo?",
-  "Visuais consistentes com a paleta Sete Veus?",
+  "Visuais consistentes com a paleta Sete Véus?",
   "Texto animado com frases-chave?",
   "Frase final que fica?",
-  "CTA: inscricao no canal + 'A Escola dos Veus esta a chegar'?",
+  "CTA: inscrição no canal + 'A Escola dos Véus está a chegar'?",
   "Legendas activas?",
-  "Descricao com: resumo + link seteveus.space + 'curso a chegar'?",
-  "Tags: autoconhecimento, desenvolvimento pessoal, mulheres, corpo, emocoes?",
+  "Descrição com: resumo + link seteveus.space + 'curso a chegar'?",
+  "Tags: autoconhecimento, desenvolvimento pessoal, mulheres, corpo, emoções?",
 ] as const;
 
-// ─── Producao pipeline ──────────────────────────────────────────────────────────
+// ─── Produção pipeline ──────────────────────────────────────────────────────────
 
 export const PRODUCTION_STEPS = [
   { step: 1, label: "Script aprovado", responsible: "Claude Code" },
-  { step: 2, label: "Gerar audio (ElevenLabs — voz clonada)", responsible: "Vivianne" },
-  { step: 3, label: "Gerar 4-6 imagens das cenas do territorio", responsible: "ElevenLabs" },
-  { step: 4, label: "Transformar imagens em clips de video", responsible: "ElevenLabs" },
-  { step: 5, label: "Montar clips + audio + texto + musica + legendas", responsible: "ElevenLabs Studio" },
+  { step: 2, label: "Gerar áudio (ElevenLabs — voz clonada)", responsible: "Vivianne" },
+  { step: 3, label: "Gerar 4-6 imagens das cenas do território", responsible: "ElevenLabs" },
+  { step: 4, label: "Transformar imagens em clips de vídeo", responsible: "ElevenLabs" },
+  { step: 5, label: "Montar clips + áudio + texto + música + legendas", responsible: "ElevenLabs Studio" },
   { step: 6, label: "Export MP4", responsible: "Vivianne" },
-  { step: 7, label: "Revisao final", responsible: "Vivianne" },
+  { step: 7, label: "Revisão final", responsible: "Vivianne" },
   { step: 8, label: "Upload YouTube (agendar para dia seguinte 18h)", responsible: "Vivianne" },
 ] as const;
 
@@ -134,7 +134,7 @@ export const YOUTUBE_WEEKS: YouTubeWeek[] = [
     number: 1,
     theme: "Entrada no Mundo",
     objective:
-      "Apresentar a voz, o estilo visual, e tocar nos temas mais universais. Ninguem te conhece ainda. Estes videos sao a primeira impressao.",
+      "Apresentar a voz, o estilo visual, e tocar nos temas mais universais. Ninguém te conhece ainda. Estes vídeos são a primeira impressão.",
     videos: [
       {
         number: 1,
@@ -144,98 +144,98 @@ export const YOUTUBE_WEEKS: YouTubeWeek[] = [
         week: 1,
         day: "terca",
         gancho:
-          "Gastas nos filhos sem pensar. Gastas na casa sem pestanejar. Mas quando e para ti — um creme, um livro, um cafe a sos — aparece a culpa. Porque?",
+          "Gastas nos filhos sem pensar. Gastas na casa sem pestanejar. Mas quando é para ti — um creme, um livro, um café a sós — aparece a culpa. Porquê?",
         fraseFinal:
-          "A culpa nao e tua. Foi ensinada. E o que foi ensinado pode ser desaprendido.",
+          "A culpa não é tua. Foi ensinada. E o que foi ensinado pode ser desaprendido.",
         description:
-          "E o tema mais universal e activador. Toda a mulher que comprou algo para si e sentiu culpa vai clicar. E emocional, e concreto, e abre a porta para tudo o resto.",
+          "É o tema mais universal e activador. Toda a mulher que comprou algo para si e sentiu culpa vai clicar. É emocional, é concreto, e abre a porta para tudo o resto.",
         status: "script_ready",
         script: [
           {
             timestamp: "0:00 - 0:15",
             section: "gancho",
-            visual: "Ceu azul-marinho profundo. Camara desce lentamente para a Casa dos Espelhos Dourados. Silhueta terracota de pe, imovel, frente a um espelho coberto.",
-            narration: "Gastas nos filhos sem pensar. Gastas na casa sem pestanejar. Mas quando e para ti — um creme, um livro, um cafe a sos — aparece a culpa. Porque?",
+            visual: "Céu azul-marinho profundo. Câmara desce lentamente para a Casa dos Espelhos Dourados. Silhueta terracota de pé, imóvel, frente a um espelho coberto.",
+            narration: "Gastas nos filhos sem pensar. Gastas na casa sem pestanejar. Mas quando é para ti — um creme, um livro, um café a sós — aparece a culpa. Porquê?",
           },
           {
             timestamp: "0:15 - 1:30",
             section: "situacao",
-            visual: "Silhueta sentada frente a varios espelhos. Cada espelho reflecte uma cena diferente: um carrinho de compras, uma factura, uma prateleira de loja. Tons dourados suaves.",
-            narration: "Imagina isto. Estas numa loja. Ves algo bonito. Algo so para ti. Nao e caro. Nao e um luxo absurdo. Pegas. Olhas. E depois vem aquela voz. 'Precisas mesmo disto?' 'Ha coisas mais importantes.' 'E se o dinheiro fizer falta?' Pousas. Sais. E no caminho para casa, sentes um alivio estranho — como se tivesses evitado um erro. Mas nao evitaste nenhum erro. Evitaste-te a ti. Agora pensa na ultima vez que compraste algo para os teus filhos. Ou para a casa. Ou para alguem que amas. Houve hesitacao? Houve culpa? Provavelmente nao. Porque gastar nos outros sente-se certo. Gastar em ti sente-se egoista. E esta diferenca — esta diferenca entre o que aceitas para os outros e o que te negas a ti — nao e acidental. Foi construida.",
+            visual: "Silhueta sentada frente a vários espelhos. Cada espelho reflecte uma cena diferente: um carrinho de compras, uma factura, uma prateleira de loja. Tons dourados suaves.",
+            narration: "Imagina isto. Estás numa loja. Vês algo bonito. Algo só para ti. Não é caro. Não é um luxo absurdo. Pegas. Olhas. E depois vem aquela voz. 'Precisas mesmo disto?' 'Há coisas mais importantes.' 'E se o dinheiro fizer falta?' Pousas. Sais. E no caminho para casa, sentes um alívio estranho — como se tivesses evitado um erro. Mas não evitaste nenhum erro. Evitaste-te a ti. Agora pensa na última vez que compraste algo para os teus filhos. Ou para a casa. Ou para alguém que amas. Houve hesitação? Houve culpa? Provavelmente não. Porque gastar nos outros sente-se certo. Gastar em ti sente-se egoísta. E esta diferença — esta diferença entre o que aceitas para os outros e o que te negas a ti — não é acidental. Foi construída.",
           },
           {
             timestamp: "1:30 - 3:30",
             section: "padrao",
-            visual: "Silhueta de pe numa sala de espelhos. Nos reflexos, aparecem silhuetas mais pequenas — a mesma pessoa em crianca. Os espelhos estao embaciados, com frases escritas na condensacao. A luz dourada comeca a entrar por uma fresta.",
-            narration: "A culpa que sentes quando gastas em ti nao nasceu contigo. Nasceu antes de ti. Nasceu na cozinha da tua mae, quando ela dizia 'nao precisamos disso' com a voz cansada. Nasceu no olhar do teu pai quando alguem falava de dinheiro e ele mudava de assunto. Nasceu nas vezes que viste a tua mae negar-se tudo — o creme, o vestido, o descanso — e chamarem-lhe boa mulher por isso. Tu absorveste uma equacao invisivel: mulher boa igual a mulher que nao gasta em si. Mulher egoista igual a mulher que se coloca primeiro. E esta equacao ficou gravada. Nao no pensamento — no corpo. E por isso que a culpa nao e uma ideia. E uma sensacao. Um aperto. Um desconforto fisico quando a caixa regista o valor. E por isso que nao basta dizeres a ti mesma 'eu mereco'. O corpo nao acredita em frases. O corpo acredita em padroes. E o padrao que aprendeste diz: tu es a ultima da fila. Sempre.",
+            visual: "Silhueta de pé numa sala de espelhos. Nos reflexos, aparecem silhuetas mais pequenas — a mesma pessoa em criança. Os espelhos estão embaciados, com frases escritas na condensação. A luz dourada começa a entrar por uma fresta.",
+            narration: "A culpa que sentes quando gastas em ti não nasceu contigo. Nasceu antes de ti. Nasceu na cozinha da tua mãe, quando ela dizia 'não precisamos disso' com a voz cansada. Nasceu no olhar do teu pai quando alguém falava de dinheiro e ele mudava de assunto. Nasceu nas vezes que viste a tua mãe negar-se tudo — o creme, o vestido, o descanso — e chamarem-lhe boa mulher por isso. Tu absorveste uma equação invisível: mulher boa igual a mulher que não gasta em si. Mulher egoísta igual a mulher que se coloca primeiro. E esta equação ficou gravada. Não no pensamento — no corpo. É por isso que a culpa não é uma ideia. É uma sensação. Um aperto. Um desconforto físico quando a caixa regista o valor. É por isso que não basta dizeres a ti mesma 'eu mereço'. O corpo não acredita em frases. O corpo acredita em padrões. E o padrão que aprendeste diz: tu és a última da fila. Sempre.",
           },
           {
             timestamp: "3:30 - 5:00",
             section: "gesto",
-            visual: "Silhueta de pe, maos no peito. A luz dourada cresce. Os espelhos comecam a desembaciar. A silhueta da um passo em frente, para mais perto de um espelho limpo.",
-            narration: "Quero propor-te uma coisa pequena. Nao uma revolucao. Um gesto. Na proxima semana, compra uma coisa so para ti. Algo pequeno. Pode ser um cafe especial, uma vela, um caderno. Algo que nao 'precisas'. Algo que existe so porque te da prazer. E quando a culpa aparecer — porque vai aparecer — nao a empurres. Nao te julgues por a sentires. Para. Respira. E pergunta-lhe: de quem es tu? De quem e esta voz que me diz que nao mereco? Nao precisas de responder agora. So precisas de ouvir a pergunta. Porque a culpa que nao se questiona repete-se para sempre. A culpa que se olha de frente comeca a perder forca.",
+            visual: "Silhueta de pé, mãos no peito. A luz dourada cresce. Os espelhos começam a desembaciar. A silhueta dá um passo em frente, para mais perto de um espelho limpo.",
+            narration: "Quero propor-te uma coisa pequena. Não uma revolução. Um gesto. Na próxima semana, compra uma coisa só para ti. Algo pequeno. Pode ser um café especial, uma vela, um caderno. Algo que não 'precisas'. Algo que existe só porque te dá prazer. E quando a culpa aparecer — porque vai aparecer — não a empurres. Não te julgues por a sentires. Para. Respira. E pergunta-lhe: de quem és tu? De quem é esta voz que me diz que não mereço? Não precisas de responder agora. Só precisas de ouvir a pergunta. Porque a culpa que não se questiona repete-se para sempre. A culpa que se olha de frente começa a perder força.",
           },
           {
             timestamp: "5:00 - 5:30",
             section: "fecho",
-            visual: "Territorio dissolve-se no ceu azul-marinho. Frase final em texto creme no ecra. Fade para escuro. Logo Sete Veus. Silencio.",
-            narration: "A culpa nao e tua. Foi ensinada. E o que foi ensinado pode ser desaprendido. Se isto te tocou, inscreve-te. A Escola dos Veus esta a chegar — e o primeiro curso e sobre a tua relacao com dinheiro.",
+            visual: "Território dissolve-se no céu azul-marinho. Frase final em texto creme no ecrã. Fade para escuro. Logo Sete Véus. Silêncio.",
+            narration: "A culpa não é tua. Foi ensinada. E o que foi ensinado pode ser desaprendido. Se isto te tocou, inscreve-te. A Escola dos Véus está a chegar — e o primeiro curso é sobre a tua relação com dinheiro.",
           },
         ],
       },
       {
         number: 2,
-        title: "3 frases sobre dinheiro que a tua mae te ensinou sem saber",
+        title: "3 frases sobre dinheiro que a tua mãe te ensinou sem saber",
         courseOrigin: "ouro-proprio",
         secondaryCourse: "sangue-e-seda",
-        territory: "Casa dos Espelhos Dourados + Arvore das Raizes",
+        territory: "Casa dos Espelhos Dourados + Árvore das Raízes",
         week: 1,
         day: "quinta",
         gancho:
-          "'Dinheiro nao cresce em arvores.' 'Nos nao somos dessa gente.' 'Rico e tudo egoista.' — Reconheces alguma?",
+          "'Dinheiro não cresce em árvores.' 'Nós não somos dessa gente.' 'Rico é tudo egoísta.' — Reconheces alguma?",
         fraseFinal:
-          "Antes dos 12 anos, ja tinhas um script completo sobre dinheiro. Nao te foi ensinado. Foi absorvido.",
+          "Antes dos 12 anos, já tinhas um script completo sobre dinheiro. Não te foi ensinado. Foi absorvido.",
         description:
-          "Mantem o tema dinheiro mas liga a familia. As pessoas que viram o video 1 reconhecem a continuidade. As que nao viram entram por outro angulo.",
+          "Mantém o tema dinheiro mas liga à família. As pessoas que viram o vídeo 1 reconhecem a continuidade. As que não viram entram por outro ângulo.",
         status: "script_ready",
         script: [
           {
             timestamp: "0:00 - 0:15",
             section: "gancho",
-            visual: "Ceu azul-marinho. Camara desce para a Casa dos Espelhos Dourados, transita para a Arvore das Raizes Visiveis ao fundo. Silhueta terracota de pe entre os dois territorios.",
-            narration: "'Dinheiro nao cresce em arvores.' 'Nos nao somos dessa gente.' 'Rico e tudo egoista.' Reconheces alguma?",
+            visual: "Céu azul-marinho. Câmara desce para a Casa dos Espelhos Dourados, transita para a Árvore das Raízes Visíveis ao fundo. Silhueta terracota de pé entre os dois territórios.",
+            narration: "'Dinheiro não cresce em árvores.' 'Nós não somos dessa gente.' 'Rico é tudo egoísta.' Reconheces alguma?",
           },
           {
             timestamp: "0:15 - 1:30",
             section: "situacao",
-            visual: "Silhueta sentada junto a Arvore das Raizes. As raizes sao visiveis, brilham em dourado. Nos ramos da arvore, aparecem silhuetas mais pequenas — figuras parentais. Tons quentes de terracota e ambar.",
-            narration: "Ha frases que ninguem se senta a ensinar-te. Ninguem abre um livro e diz 'agora vou explicar-te o que o dinheiro significa'. Nao funciona assim. Funciona no jantar, quando o teu pai suspira ao abrir uma carta do banco. Funciona na feira, quando a tua mae pousa o vestido que gostava e diz 'nao e para nos'. Funciona no tom de voz com que alguem dizia 'aquele la tem dinheiro' — como se ter dinheiro fosse uma doenca moral. Tu nao aprendeste o que o dinheiro e. Aprendeste o que o dinheiro significa na tua familia. E essas duas coisas sao muito diferentes.",
+            visual: "Silhueta sentada junto à Árvore das Raízes. As raízes são visíveis, brilham em dourado. Nos ramos da árvore, aparecem silhuetas mais pequenas — figuras parentais. Tons quentes de terracota e âmbar.",
+            narration: "Há frases que ninguém se senta a ensinar-te. Ninguém abre um livro e diz 'agora vou explicar-te o que o dinheiro significa'. Não funciona assim. Funciona no jantar, quando o teu pai suspira ao abrir uma carta do banco. Funciona na feira, quando a tua mãe pousa o vestido que gostava e diz 'não é para nós'. Funciona no tom de voz com que alguém dizia 'aquele lá tem dinheiro' — como se ter dinheiro fosse uma doença moral. Tu não aprendeste o que o dinheiro é. Aprendeste o que o dinheiro significa na tua família. E essas duas coisas são muito diferentes.",
           },
           {
             timestamp: "1:30 - 3:30",
             section: "padrao",
-            visual: "Silhueta de pe frente a Arvore. As raizes envolvem-na suavemente. Em cada raiz, texto em creme com frases herdadas. A silhueta toca numa raiz e ela brilha — depois escurece. Alternancia entre Casa dos Espelhos e Arvore.",
-            narration: "Vou dar-te tres frases. E quero que sintas — nao que penses — sintas qual delas mora em ti. A primeira: 'Dinheiro nao traz felicidade.' Parece sabedoria. Mas ouve o que esta por baixo. O que esta por baixo e: nao queiras demasiado. Nao ambiciones. Fica onde estas. Esta frase protege — mas tambem prende. A segunda: 'Nos nao somos dessa gente.' Esta e sobre pertenca. Sobre a ideia de que dinheiro e para outros. Que ha um lugar onde tu cabes — e nao e o lugar da abundancia. Esta frase define o tecto do que te permites ter. A terceira: 'Cuidado com quem tem dinheiro.' Esta e mais subtil. Ensina que riqueza e suspeita. Que quem ganha bem deve ter feito algo errado. E entao tu, inconscientemente, tratas o dinheiro como algo sujo. Algo de que te tens de manter longe para seres uma boa pessoa. Tres frases. Nenhuma foi dita com maldade. Todas foram ditas com medo. E o medo dos teus pais tornou-se o teu tecto.",
+            visual: "Silhueta de pé frente à Árvore. As raízes envolvem-na suavemente. Em cada raiz, texto em creme com frases herdadas. A silhueta toca numa raiz e ela brilha — depois escurece. Alternância entre Casa dos Espelhos e Árvore.",
+            narration: "Vou dar-te três frases. E quero que sintas — não que penses — sintas qual delas mora em ti. A primeira: 'Dinheiro não traz felicidade.' Parece sabedoria. Mas ouve o que está por baixo. O que está por baixo é: não queiras demasiado. Não ambiciones. Fica onde estás. Esta frase protege — mas também prende. A segunda: 'Nós não somos dessa gente.' Esta é sobre pertença. Sobre a ideia de que dinheiro é para outros. Que há um lugar onde tu cabes — e não é o lugar da abundância. Esta frase define o tecto do que te permites ter. A terceira: 'Cuidado com quem tem dinheiro.' Esta é mais subtil. Ensina que riqueza é suspeita. Que quem ganha bem deve ter feito algo errado. E então tu, inconscientemente, tratas o dinheiro como algo sujo. Algo de que te tens de manter longe para seres uma boa pessoa. Três frases. Nenhuma foi dita com maldade. Todas foram ditas com medo. E o medo dos teus pais tornou-se o teu tecto.",
           },
           {
             timestamp: "3:30 - 5:00",
             section: "gesto",
-            visual: "Silhueta sentada, maos abertas. A Arvore comeca a mudar — as raizes reorganizam-se suavemente. Luz dourada entra por entre os ramos. Uma raiz nova, mais fina, brota com uma cor diferente — mais clara.",
-            narration: "Pega num papel. Ou abre as notas do telemovel. E escreve as frases sobre dinheiro que cresceram contigo. Nao as que leste em livros. As que ouviste em casa. As que estavam no tom de voz, no suspiro, no olhar. Escreve-as como as ouviste. Depois, por baixo de cada uma, escreve: 'Isto nao e meu. Isto e de quem veio antes de mim.' Nao precisas de as apagar. Nao precisas de as substituir por afirmacoes positivas. So precisas de as devolver. De perceber que estas a viver com um mapa financeiro que foi desenhado por alguem que tinha medo. E o medo deles nao tem de ser o teu.",
+            visual: "Silhueta sentada, mãos abertas. A Árvore começa a mudar — as raízes reorganizam-se suavemente. Luz dourada entra por entre os ramos. Uma raiz nova, mais fina, brota com uma cor diferente — mais clara.",
+            narration: "Pega num papel. Ou abre as notas do telemóvel. E escreve as frases sobre dinheiro que cresceram contigo. Não as que leste em livros. As que ouviste em casa. As que estavam no tom de voz, no suspiro, no olhar. Escreve-as como as ouviste. Depois, por baixo de cada uma, escreve: 'Isto não é meu. Isto é de quem veio antes de mim.' Não precisas de as apagar. Não precisas de as substituir por afirmações positivas. Só precisas de as devolver. De perceber que estás a viver com um mapa financeiro que foi desenhado por alguém que tinha medo. E o medo deles não tem de ser o teu.",
           },
           {
             timestamp: "5:00 - 5:30",
             section: "fecho",
-            visual: "Territorio dissolve-se no ceu. Frase final em texto creme. Fade para escuro. Logo Sete Veus. Silencio.",
-            narration: "Antes dos 12 anos, ja tinhas um script completo sobre dinheiro. Nao te foi ensinado. Foi absorvido. Se isto te tocou, inscreve-te. A Escola dos Veus esta a chegar — e o primeiro curso e sobre a tua relacao com dinheiro.",
+            visual: "Território dissolve-se no céu. Frase final em texto creme. Fade para escuro. Logo Sete Véus. Silêncio.",
+            narration: "Antes dos 12 anos, já tinhas um script completo sobre dinheiro. Não te foi ensinado. Foi absorvido. Se isto te tocou, inscreve-te. A Escola dos Véus está a chegar — e o primeiro curso é sobre a tua relação com dinheiro.",
           },
         ],
       },
       {
         number: 3,
-        title: "A diferenca entre ser amada e ser util",
+        title: "A diferença entre ser amada e ser útil",
         courseOrigin: "limite-sagrado",
-        territory: "Muralha que Nasce do Chao",
+        territory: "Muralha que Nasce do Chão",
         week: 1,
         day: "sabado",
         gancho:

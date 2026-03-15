@@ -146,7 +146,7 @@ export default function LessonPage() {
   if (!lesson) {
     return (
       <div className="min-h-screen bg-[#1a1a2e] flex items-center justify-center">
-        <p className="text-[#a0a0b0]">Sub-aula nao encontrada.</p>
+        <p className="text-[#a0a0b0]">Sub-aula não encontrada.</p>
       </div>
     );
   }
@@ -179,10 +179,10 @@ export default function LessonPage() {
       <div className="min-h-screen bg-[#1a1a2e] flex items-center justify-center px-6">
         <div className="text-center max-w-md">
           <h1 className="font-serif text-2xl text-white mb-4">
-            Modulo bloqueado
+            Módulo bloqueado
           </h1>
           <p className="text-[#a0a0b0] mb-8">
-            Esta sub-aula faz parte do modulo {lesson.moduleNumber}. Inscreve-te
+            Esta sub-aula faz parte do módulo {lesson.moduleNumber}. Inscreve-te
             no curso completo para desbloquear.
           </p>
           <Link
@@ -206,7 +206,7 @@ export default function LessonPage() {
           </Link>
           <span>/</span>
           <span>
-            Modulo {lesson.moduleNumber}: {lesson.moduleTitle}
+            Módulo {lesson.moduleNumber}: {lesson.moduleTitle}
           </span>
           <span>/</span>
           <span className="text-[#e0e0e8]">
@@ -228,10 +228,10 @@ export default function LessonPage() {
           ) : (
             <div className="text-center p-8">
               <p className="text-[#606070] font-sans text-sm">
-                Video em producao
+                Vídeo em produção
               </p>
               <p className="text-[#404050] font-sans text-xs mt-2">
-                Em breve disponivel
+                Em breve disponível
               </p>
             </div>
           )}
@@ -253,14 +253,14 @@ export default function LessonPage() {
             onClick={markCompleted}
             className="bg-[#8B5CF6] text-white px-6 py-3 rounded-lg font-sans hover:bg-[#7c4ee4] transition-colors"
           >
-            Marcar como concluida
+            Marcar como concluída
           </button>
         ) : (
           <span className="text-[#8B5CF6] font-sans flex items-center gap-2">
             <span className="w-5 h-5 bg-[#8B5CF6] rounded-full flex items-center justify-center text-white text-xs">
               ✓
             </span>
-            Concluida
+            Concluída
           </span>
         )}
 
@@ -289,7 +289,7 @@ export default function LessonPage() {
             href={`/cursos/${slug}/modulo/${lesson.next.n}/${lesson.next.sub}`}
             className="text-[#8B5CF6] text-sm font-sans hover:underline"
           >
-            Proxima →
+            Próxima →
           </Link>
         ) : (
           <span />

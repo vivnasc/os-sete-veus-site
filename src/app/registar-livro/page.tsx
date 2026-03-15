@@ -267,7 +267,7 @@ function RegistarLivroContent() {
           {user && (
             <div className="rounded-lg border border-sage/30 bg-sage/5 p-4">
               <p className="text-sm text-sage">
-                Autenticada como {user.email}. O acesso sera adicionado a esta conta.
+                Autenticada como {user.email}. O acesso será adicionado a esta conta.
               </p>
             </div>
           )}
@@ -289,17 +289,17 @@ function RegistarLivroContent() {
 
         <div className="mt-8 rounded-lg border border-brown-100 bg-white/50 p-6 text-center">
           <h3 className="font-sans text-sm font-medium text-brown-700">
-            Nao tens um codigo?
+            Não tens um código?
           </h3>
           <p className="mt-2 text-sm text-brown-600">
-            Se compraste o livro fisico mas nao recebeste o codigo,
+            Se compraste o livro físico mas não recebeste o código,
             pede-o aqui:
           </p>
           <a
             href="/pedir-codigo"
             className="mt-3 inline-block rounded-lg border-2 border-sage bg-transparent px-6 py-2.5 font-sans text-sm font-medium uppercase tracking-wider text-sage transition-all hover:bg-sage hover:text-white"
           >
-            Pedir codigo de acesso
+            Pedir código de acesso
           </a>
         </div>
       </div>

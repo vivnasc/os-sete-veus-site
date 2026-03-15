@@ -412,7 +412,7 @@ export default function CapituloPage() {
     ? 'Fechar a Travessia'
     : isUltimoCapVeu
       ? `Fechar o Véu ${numeroVeu}`
-      : 'Proximo Capitulo'
+      : 'Próximo Capítulo'
 
   return (
     <div className={`min-h-screen ${modoNoturno ? 'bg-stone-950' : 'bg-stone-50'} transition-colors duration-500 ${showPlayer ? 'pb-20' : ''}`}>

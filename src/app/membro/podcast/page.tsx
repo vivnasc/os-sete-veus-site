@@ -37,7 +37,7 @@ function EpisodeCard({
           <div className="flex items-start justify-between gap-4">
             <div>
               <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-brown-400">
-                {ep.type === "exclusive" ? "Exclusivo" : "Publico"} ~{" "}
+                {ep.type === "exclusive" ? "Exclusivo" : "Público"} ~{" "}
                 {ep.durationEstimate}
               </p>
               <h3 className="mt-1 font-serif text-lg text-brown-900">
@@ -56,7 +56,7 @@ function EpisodeCard({
               className="mt-1 shrink-0 rounded-full px-2.5 py-0.5 font-sans text-[0.55rem] uppercase tracking-wider text-white"
               style={{ background: locked ? "#d4cfc7" : ep.color }}
             >
-              Veu {ep.veu}
+              Véu {ep.veu}
             </span>
           </div>
 
@@ -66,7 +66,7 @@ function EpisodeCard({
 
           {locked ? (
             <p className="mt-4 font-serif text-[0.75rem] italic text-brown-400">
-              Disponivel apos completar o Espelho correspondente.
+              Disponível após completar o Espelho correspondente.
             </p>
           ) : (
             <div className="mt-4 space-y-3">
@@ -78,7 +78,7 @@ function EpisodeCard({
                 onClick={() => setExpanded(!expanded)}
                 className="font-sans text-[0.6rem] uppercase tracking-wider text-sage transition-colors hover:text-sage-dark"
               >
-                {expanded ? "Fechar guiao" : "Ler guiao do episodio"}
+                {expanded ? "Fechar guião" : "Ler guião do episódio"}
               </button>
               {expanded && (
                 <div className="max-h-64 overflow-y-auto rounded-lg bg-brown-50 p-4">
@@ -134,7 +134,7 @@ export default function MembroPodcastPage() {
                 : "text-brown-500 hover:text-brown-700"
             }`}
           >
-            Episodios publicos (7)
+            Episódios públicos (7)
           </button>
           <button
             onClick={() => setTab("exclusive")}
@@ -144,7 +144,7 @@ export default function MembroPodcastPage() {
                 : "text-brown-500 hover:text-brown-700"
             }`}
           >
-            Por Tras do Veu (7)
+            Por Trás do Véu (7)
           </button>
         </div>
 
@@ -158,7 +158,7 @@ export default function MembroPodcastPage() {
             <>
               <div className="rounded-2xl border border-dashed border-brown-200 bg-brown-50 p-6 text-center">
                 <p className="font-serif text-sm text-brown-600">
-                  Os episodios exclusivos estao disponiveis para quem tem acesso
+                  Os episódios exclusivos estão disponíveis para quem tem acesso
                   aos Espelhos.
                 </p>
                 <Link
@@ -190,7 +190,7 @@ export default function MembroPodcastPage() {
               ))}
               <div className="mt-2 border-t border-brown-200 pt-2 font-bold">
                 <div className="flex justify-between">
-                  <span>Total episodios</span>
+                  <span>Total episódios</span>
                   <span>
                     {[...publicEps, ...exclusiveEps]
                       .reduce((s, e) => s + e.charCount, 0)
