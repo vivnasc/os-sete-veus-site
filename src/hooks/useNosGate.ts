@@ -17,9 +17,8 @@
 import { useEffect, useState, useCallback } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { chapters as ilusaoChapters } from "@/data/ebook";
-import { chapters as nosChapters } from "@/data/no-heranca";
 import { getNosForEspelho } from "@/data/nos-collection";
-import { loadEspelho, espelhoProgressKey } from "@/lib/content-registry";
+import { loadEspelho, espelhoProgressKey, loadNos, nosProgressKey } from "@/lib/content-registry";
 import { supabase } from "@/lib/supabase";
 import type { Chapter } from "@/data/ebook";
 import { ADMIN_EMAILS } from "@/lib/constants";
@@ -28,6 +27,7 @@ export function useNosGate(espelhoSlug = "veu-da-ilusao") {
   const { user, profile, loading: authLoading } = useAuth();
   const [progress, setProgress] = useState<Record<string, boolean>>({});
   const [espelhoChapters, setEspelhoChapters] = useState<Chapter[]>(ilusaoChapters);
+  const [nosChapters, setNosChapters] = useState<Chapter[]>([]);
   const [loading, setLoading] = useState(true);
 
   const isAdmin =
@@ -57,6 +57,14 @@ export function useNosGate(espelhoSlug = "veu-da-ilusao") {
       if (mod) setEspelhoChapters(mod.chapters);
     });
   }, [espelhoSlug]);
+
+  // Load chapters for the corresponding nos
+  useEffect(() => {
+    if (!nosBook?.slug) return;
+    loadNos(nosBook.slug).then((mod) => {
+      if (mod) setNosChapters(mod.chapters);
+    });
+  }, [nosBook?.slug]);
 
   const loadProgress = useCallback(async () => {
     try {
@@ -103,8 +111,10 @@ export function useNosGate(espelhoSlug = "veu-da-ilusao") {
   const espelhoCompletedCount = espelhoChapters.filter(
     (ch) => progress[espelhoProgressKey(espelhoSlug, ch.slug)]
   ).length;
+
+  const nosSlug = nosBook?.slug || "no-da-heranca";
   const nosCompletedCount = nosChapters.filter(
-    (ch) => progress[`nos-${ch.slug}`]
+    (ch) => progress[nosProgressKey(nosSlug, ch.slug)]
   ).length;
 
   return {

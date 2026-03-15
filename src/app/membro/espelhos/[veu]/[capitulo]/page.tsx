@@ -370,7 +370,7 @@ export default function EspelhoChapterPage({
                 </p>
               ) : hasNosIncluded ? (
                 <Link
-                  href="/membro/nos"
+                  href={`/membro/nos/${nosBook.slug}`}
                   className="mt-5 inline-block rounded-full bg-[#c9a87c] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b89a6c]"
                 >
                   Desatar este nó &rarr;

@@ -40,8 +40,7 @@ const nosRegistry: Record<string, () => Promise<ContentModule>> = {
     chapters: m.chapters,
     bookMeta: m.bookMeta,
   })),
-  // Próximos Nós — descomentar à medida que são publicados:
-  // "no-do-silencio": () => import("@/data/no-silencio").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
+  "no-do-silencio": () => import("@/data/no-silencio").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
   // "no-do-sacrificio": () => import("@/data/no-sacrificio").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
   // "no-da-vergonha": () => import("@/data/no-vergonha").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
   // "no-da-solidao": () => import("@/data/no-solidao").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
@@ -84,4 +83,21 @@ export function espelhoProgressKey(espelhoSlug: string, chapterSlug: string): st
  */
 export function getRegisteredEspelhoSlugs(): string[] {
   return Object.keys(espelhoRegistry);
+}
+
+/**
+ * Gera a chave de progresso para um capítulo de um Nó.
+ * Herança usa "nos-chapterSlug" (compatibilidade com leitoras existentes).
+ * Os restantes usam "nos-nosSlug/chapterSlug".
+ */
+export function nosProgressKey(nosSlug: string, chapterSlug: string): string {
+  if (nosSlug === "no-da-heranca") return `nos-${chapterSlug}`;
+  return `nos-${nosSlug}/${chapterSlug}`;
+}
+
+/**
+ * Lista de todos os slugs de nós registados.
+ */
+export function getRegisteredNosSlugs(): string[] {
+  return Object.keys(nosRegistry);
 }
