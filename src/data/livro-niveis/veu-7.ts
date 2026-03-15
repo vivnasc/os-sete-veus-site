@@ -4,19 +4,19 @@ export const veu7Niveis: NivelCapitulo[] = [
   {
     capitulo_numero: 25,
     resumo_acessivel: [
-      'Há um limiar que não se cruza com força nem com vontade. Cruza-se com entrega. O guardiao desse limiar não é uma figura exterior — é o último resíduo daquilo em nós que ainda precisa de saber para onde vai. Enquanto houver destino, há separação. O fluxo que se abre pede algo mais radical: caminhar sem mapa.',
-      'Este capítulo explora a tentação final do caminho — a necessidade de chegada. Depois de seis véus dissolvidos, a mente tenta reerguer-se com a promessa de um ponto final: iluminação, resolução, paz permanente. Mas o guardiao do limiar não pede que conquistes a passagem. Pede que desistas de precisar dela.',
-      'O rio sem margens fixas não é caos. E confiança radical na corrente. Cada gesto nasce do silêncio é regressa ao silêncio — sem necessidade de ser registado, medido ou validado. Aqui, caminhar é o único destino.',
+      'Há um limiar que não se cruza com força nem com vontade. Cruza-se com entrega. O guardião desse limiar não é uma figura exterior — é o último resíduo daquilo em nós que ainda precisa de saber para onde vai. Enquanto houver destino, há separação. O fluxo que se abre pede algo mais radical: caminhar sem mapa.',
+      'Este capítulo explora a tentação final do caminho — a necessidade de chegada. Depois de seis véus dissolvidos, a mente tenta reerguer-se com a promessa de um ponto final: iluminação, resolução, paz permanente. Mas o guardião do limiar não pede que conquistes a passagem. Pede que desistas de precisar dela.',
+      'O rio sem margens fixas não é caos. É confiança radical na corrente. Cada gesto nasce do silêncio e regressa ao silêncio — sem necessidade de ser registado, medido ou validado. Aqui, caminhar é o único destino.',
     ],
     perguntas_orientadoras: [
       'Depois de tudo o que já atravessaste interiormente, ainda há em ti uma parte que espera "chegar"? O que imagina encontrar nesse ponto de chegada?',
-      'Consegues distinguir entre confiança na vida é resignação? Onde sentes a diferença no corpo?',
+      'Consegues distinguir entre confiança na vida e resignação? Onde sentes a diferença no corpo?',
       'Se soubesses que não há destino final — que o caminho é tudo o que existe — continuarias a caminhar?',
     ],
     exemplos_concretos: [
       {
         contexto: 'Na prática diária',
-        texto: 'Imagina que meditas há anos, les, reflectes, trabalhas sombras. Um dia percebes que ainda estás a esperar o momento em que "tudo faz sentido". Essa espera é o guardiao do limiar — não te barra o caminho com obstáculo, barra-o com a promessa de chegada. O capítulo pergunta: o que acontece se parares de esperar?',
+        texto: 'Imagina que meditas há anos, les, reflectes, trabalhas sombras. Um dia percebes que ainda estás a esperar o momento em que "tudo faz sentido". Essa espera é o guardião do limiar — não te barra o caminho com obstáculo, barra-o com a promessa de chegada. O capítulo pergunta: o que acontece se parares de esperar?',
       },
       {
         contexto: 'Nas relações',
@@ -26,7 +26,7 @@ export const veu7Niveis: NivelCapitulo[] = [
     notas_contextuais: [
       {
         paragrafo_indice: 4,
-        texto: 'O "guardiao do limiar" aparece em quase todas as tradições iniciaticas — do Minotauro grego ao Mara do budismo, dos guardioes ancestrais africanos ao anjo com a espada flamejante no Eden. Em todas as versões, o guardiao não é inimigo: é espelho. Revela o que ainda carregas antes de entrares no espaço sagrado.',
+        texto: 'O "guardião do limiar" aparece em quase todas as tradições iniciáticas — do Minotauro grego ao Mara do budismo, dos guardiões ancestrais africanos ao anjo com a espada flamejante no Eden. Em todas as versões, o guardião não é inimigo: é espelho. Revela o que ainda carregas antes de entrares no espaço sagrado.',
       },
       {
         paragrafo_indice: 12,
@@ -34,56 +34,56 @@ export const veu7Niveis: NivelCapitulo[] = [
       },
       {
         paragrafo_indice: 20,
-        texto: 'Krishnamurti repetiu durante décadas: "a verdade é uma terra sem caminhos". Não há sistema, não há etapas, não há chegada. O guardiao do limiar é a última tentação de transformar a liberdade num novo método.',
+        texto: 'Krishnamurti repetiu durante décadas: "a verdade é uma terra sem caminhos". Não há sistema, não há etapas, não há chegada. O guardião do limiar é a última tentação de transformar a liberdade num novo método.',
       },
     ],
     termos_destacados: ['despertar', 'veu', 'Taoismo', 'samsara', 'anatta'],
 
     // Jornada de autodescobertas
     crencas_a_mapear: [
-      'Depois de tanto trabalho interior, mereco finalmente chegar a algum lado.',
+      'Depois de tanto trabalho interior, mereço finalmente chegar a algum lado.',
       'Se ainda não encontrei paz permanente, é porque me falta alguma coisa.',
       'Há um nível de consciência ao qual preciso de aceder para que a jornada se complete.',
-      'Se eu largar a busca, perco tudo o que construi até aqui.',
+      'Se eu largar a busca, perco tudo o que construí até aqui.',
       'O sofrimento só vai parar quando eu atingir a iluminação.',
     ],
     sinais_do_veu: [
       'Continuas a procurar o próximo livro, o próximo retiro, o próximo mestre — mesmo depois de tudo o que já atravessaste — como se ainda faltasse a peça decisiva.',
-      'Tens uma imagem interior de como "uma pessoa desperta" vive — é comparas-te com essa imagem, medindo a distância que te falta.',
-      'Quando sentes paz, a mente pergunta imediatamente: "será que é isto? Será que cheguei?" — é a pergunta destroi a paz.',
+      'Tens uma imagem interior de como "uma pessoa desperta" vive — e comparas-te com essa imagem, medindo a distância que te falta.',
+      'Quando sentes paz, a mente pergunta imediatamente: "será que é isto? Será que cheguei?" — e a pergunta destrói a paz.',
       'Tens dificuldade em aceitar que a jornada não termina — que não há linha de chegada nem diploma de consciência.',
-      'Usas o teu percurso espiritual como nova narrativa identitária: "eu sou a pessoa que percorreu este caminho" — é essa narrativa pesa tanto como as anteriores.',
+      'Usas o teu percurso espiritual como nova narrativa identitária: "eu sou a pessoa que percorreu este caminho" — e essa narrativa pesa tanto como as anteriores.',
     ],
     guiao_reflexao: [
-      'Escreve sobre o momento exacto em que percebeste que ainda estavas a esperar. O que imaginavas encontrar? Como seria o dia seguinte a "chegada"? Descreve-o com todos os detalhes — é depois rele. Reconheces nisso mais um véu?',
-      'Imagina que o guardiao do limiar te faz uma única pergunta: "O que trazes contigo que ainda pesa?" Escreve a resposta sem pensar demasiado. Depois olha para o que escreveste — é pergunta se estarias disposta a pousar isso no chão, aqui, agora.',
+      'Escreve sobre o momento exacto em que percebeste que ainda estavas a esperar. O que imaginavas encontrar? Como seria o dia seguinte a "chegada"? Descreve-o com todos os detalhes — e depois relê. Reconheces nisso mais um véu?',
+      'Imagina que o guardião do limiar te faz uma única pergunta: "O que trazes contigo que ainda pesa?" Escreve a resposta sem pensar demasiado. Depois olha para o que escreveste — e pergunta se estarias disposta a pousar isso no chão, aqui, agora.',
       'Escreve sobre um momento na tua vida em que caminhar sem destino — sem plano, sem rumo, sem razão — te deu mais do que qualquer chegada planeada. O que é que esse momento te ensinou sobre confiança?',
     ],
-    espelho_pessoal: 'Se soubesses que não há chegada — que este momento, exactamente como e, é tudo o que existe — conseguirias pousar o peso de ainda estar a caminho?',
+    espelho_pessoal: 'Se soubesses que não há chegada — que este momento, exactamente como é, é tudo o que existe — conseguirias pousar o peso de ainda estar a caminho?',
 
     // Camada profunda
     mascaras: [
       'A eterna buscadora — a que transforma cada descoberta num novo ponto de partida, porque parar significaria admitir que já está onde precisa de estar. Vive em trânsito permanente, coleccionando mapas para um território que só se revela a quem pousa a mochila.',
-      'A guardiã do limiar interior — a que se põe entre si mesma é a entrega, exigindo sempre mais uma prova, mais uma confirmação, mais um sinal antes de se permitir confiar. Protege-se da vastidão fingindo que ainda não está pronta.',
-      'A cartografa do invisível — a que precisa de nomear, classificar é organizar cada experiência interior para sentir que a compreendeu. Transforma o mistério em sistema, é o sistema em prisão. Só se sente segura quando o caminho tem etapas claras.',
-      'A que espera pela permissão — a que sabe, no fundo, que já atravessou o limiar, mas fica do lado de ca a espera que alguém lhe diga que pode entrar. Confunde humildade com hesitação. Confunde respeito com medo.',
+      'A guardiã do limiar interior — a que se põe entre si mesma e a entrega, exigindo sempre mais uma prova, mais uma confirmação, mais um sinal antes de se permitir confiar. Protege-se da vastidão fingindo que ainda não está pronta.',
+      'A cartografa do invisível — a que precisa de nomear, classificar e organizar cada experiência interior para sentir que a compreendeu. Transforma o mistério em sistema, e o sistema em prisão. Só se sente segura quando o caminho tem etapas claras.',
+      'A que espera pela permissão — a que sabe, no fundo, que já atravessou o limiar, mas fica do lado de cá à espera que alguém lhe diga que pode entrar. Confunde humildade com hesitação. Confunde respeito com medo.',
     ],
     veu_dominante_sinais: [
-      'Divides a tua vida entre "antes de despertar" e "depois de despertar" — é essa linha imaginaria impede-te de habitar o presente, porque estás sempre a medir de que lado estás.',
-      'Precisas de separar o que e "progresso real" do que e "recaida" — como se a consciência fosse uma escada com degraus que só sobem, é qualquer descida fosse falha.',
-      'Quando alguém te diz que não há nada a alcançar, sentes simultaneamente alívio é pânico — porque sem destino, o guardiao perde a função, é tu perdes a história que te sustenta.',
-      'Tens dois vocabularios: um para a vida espiritual é outro para a vida quotidiana — é essa separação linguística revela a dualidade mais profunda que carregas.',
+      'Divides a tua vida entre "antes de despertar" e "depois de despertar" — e essa linha imaginária impede-te de habitar o presente, porque estás sempre a medir de que lado estás.',
+      'Precisas de separar o que é "progresso real" do que é "recaída" — como se a consciência fosse uma escada com degraus que só sobem, e qualquer descida fosse falha.',
+      'Quando alguém te diz que não há nada a alcançar, sentes simultaneamente alívio e pânico — porque sem destino, o guardião perde a função, e tu perdes a história que te sustenta.',
+      'Tens dois vocabulários: um para a vida espiritual e outro para a vida quotidiana — e essa separação linguística revela a dualidade mais profunda que carregas.',
       'Percebes que a tua busca se tornou a tua identidade mais resistente — mais difícil de soltar do que qualquer crença, porque é a moldura onde todas as outras crenças vivem.',
     ],
-    mensagem_central: 'O guardiao do limiar não te pede uma palavra-passe. Não te pede que proves o que aprendeste, que mostres as tuas cicatrizes de guerra interior, que recites o que sabes. O guardiao pede-te uma única coisa — que largues a mão que segura a porta. Não porque a porta esteja trancada, mas porque a força com que a agarras é o único motivo pelo qual não se abre. Tu já estás do outro lado. Sempre estiveste. O limiar não é uma linha que separa dois espaços — é o instante em que percebes que nunca houve separação. Cada vez que tentaste "chegar", afastaste-te. Cada vez que largaste a tentativa, estavas la. O centro não se conquista. Reconhece-se. E este capítulo não te leva até ele. Apenas te lembra de que nunca saiste.',
+    mensagem_central: 'O guardião do limiar não te pede uma palavra-passe. Não te pede que proves o que aprendeste, que mostres as tuas cicatrizes de guerra interior, que recites o que sabes. O guardião pede-te uma única coisa — que largues a mão que segura a porta. Não porque a porta esteja trancada, mas porque a força com que a agarras é o único motivo pelo qual não se abre. Tu já estás do outro lado. Sempre estiveste. O limiar não é uma linha que separa dois espaços — é o instante em que percebes que nunca houve separação. Cada vez que tentaste "chegar", afastaste-te. Cada vez que largaste a tentativa, estavas la. O centro não se conquista. Reconhece-se. E este capítulo não te leva até ele. Apenas te lembra de que nunca saíste.',
     guiao_escrita: {
-      contexto: 'Este exercício convida-te a encontrar o guardiao do limiar na tua própria história — é a descobrir o que acontece quando, em vez de tentares passar por ele, te sentas ao seu lado.',
+      contexto: 'Este exercício convida-te a encontrar o guardião do limiar na tua própria história — e a descobrir o que acontece quando, em vez de tentares passar por ele, te sentas ao seu lado.',
       passos: [
-        'Fecha os olhos é imagina o limiar — a fronteira entre onde estás é onde acreditas que precisas de estar. Não o penses. Sente-o. Como é esse espaço? Que temperatura tem? Que luz existe ali?',
-        'Agora imagina o guardiao. Não lhe des uma forma predefinida — deixa que apareca. Pode ser uma figura, uma sensação, uma voz, um peso. Escreve o que viste ou sentiste, sem censurar.',
-        'Pergunta ao guardiao: "O que é que eu ainda carrego que me impede de atravessar?" Escreve a resposta que vier — mesmo que não faça sentido lógico. Deixa a mão escrever sem a mente editar.',
-        'Agora imagina que te sentas ao lado do guardiao. Não tentas passar. Não tentas convence-lo. Apenas ficas. Escreve o que acontece nesse ficar — no corpo, na respiração, no espaço a tua volta.',
-        'Rele tudo o que escreveste. Sublinha a frase que mais te toca. Essa frase é a tua chave — não para abrir uma porta, mas para perceber que a porta já estava aberta.',
+        'Fecha os olhos e imagina o limiar — a fronteira entre onde estás e onde acreditas que precisas de estar. Não o penses. Sente-o. Como é esse espaço? Que temperatura tem? Que luz existe ali?',
+        'Agora imagina o guardião. Não lhe dês uma forma predefinida — deixa que apareça. Pode ser uma figura, uma sensação, uma voz, um peso. Escreve o que viste ou sentiste, sem censurar.',
+        'Pergunta ao guardião: "O que é que eu ainda carrego que me impede de atravessar?" Escreve a resposta que vier — mesmo que não faça sentido lógico. Deixa a mão escrever sem a mente editar.',
+        'Agora imagina que te sentas ao lado do guardião. Não tentas passar. Não tentas convencê-lo. Apenas ficas. Escreve o que acontece nesse ficar — no corpo, na respiração, no espaço a tua volta.',
+        'Relê tudo o que escreveste. Sublinha a frase que mais te toca. Essa frase é a tua chave — não para abrir uma porta, mas para perceber que a porta já estava aberta.',
       ],
       tempo_sugerido: '30 a 40 minutos, num lugar onde ninguém te interrompa',
       nota_final: 'Não há respostas certas neste exercício. Há apenas o que apareceu. E o que apareceu já é suficiente — tal como tu.',
@@ -92,29 +92,29 @@ export const veu7Niveis: NivelCapitulo[] = [
   {
     capitulo_numero: 26,
     resumo_acessivel: [
-      'A dualidade entre espírito é matéria é talvez a separação mais antiga da humanidade. De um lado, o sagrado — silencioso, invisível, eterno. Do outro, o mundo — ruidoso, visível, passageiro. Este capítulo desfaz essa fronteira. Não há dois lados. Há um único tecido.',
-      'A integração não acontece num retiro, num templo ou num estado especial de consciência. Acontece quando lavas a louça é sentes o calor da água. Quando olhas alguém nós olhos sem agenda. Quando respiras é sabes que esse sopro é ao mesmo tempo matéria é mistério. O despertar que não desce ao corpo é fuga disfarçada de transcendência.',
-      'Viver com consciência desperta não é retirar-se do mundo. E habita-lo por inteiro — com as mãos na terra é os olhos abertos. O espírito não habita acima da matéria. Habita dentro dela. Cada gesto, cada encontro, cada passo é solo sagrado.',
+      'A dualidade entre espírito e matéria é talvez a separação mais antiga da humanidade. De um lado, o sagrado — silencioso, invisível, eterno. Do outro, o mundo — ruidoso, visível, passageiro. Este capítulo desfaz essa fronteira. Não há dois lados. Há um único tecido.',
+      'A integração não acontece num retiro, num templo ou num estado especial de consciência. Acontece quando lavas a louça e sentes o calor da água. Quando olhas alguém nos olhos sem agenda. Quando respiras e sabes que esse sopro é ao mesmo tempo matéria e mistério. O despertar que não desce ao corpo é fuga disfarçada de transcendência.',
+      'Viver com consciência desperta não é retirar-se do mundo. É habitá-lo por inteiro — com as mãos na terra e os olhos abertos. O espírito não habita acima da matéria. Habita dentro dela. Cada gesto, cada encontro, cada passo é solo sagrado.',
     ],
     perguntas_orientadoras: [
       'Onde na tua vida ainda tratas o "espiritual" como algo separado do "quotidiano"? O que aconteceria se essa fronteira se dissolvesse?',
-      'Consegues sentir o sagrado num gesto tão simples como descascar uma laranja ou caminhar até a porta?',
+      'Consegues sentir o sagrado num gesto tão simples como descascar uma laranja ou caminhar até à porta?',
       'O que muda na tua relação com o mundo quando percebes que o espírito não está fora da matéria — mas dentro dela?',
     ],
     exemplos_concretos: [
       {
         contexto: 'No quotidiano',
-        texto: 'Imagina que está manhã, ao fazer o café, paraste. Sentiste o peso da cafeteira, o som da água, o cheiro que se espalha. Não estavas a meditar — estavas a fazer café. Mas estavas presente. Essa presença no gesto comum é a integração de espírito é matéria de que o capítulo fala.',
+        texto: 'Imagina que esta manhã, ao fazer o café, paraste. Sentiste o peso da cafeteira, o som da água, o cheiro que se espalha. Não estavas a meditar — estavas a fazer café. Mas estavas presente. Essa presença no gesto comum é a integração de espírito e matéria de que o capítulo fala.',
       },
       {
         contexto: 'Na relação com os outros',
-        texto: 'Pensa numa conversa em que não tentaste ajudar, resolver ou impressionar — apenas ouviste. Nesse ouvir sem agenda, algo se abriu entre vocês que as palavras não explicam. O sagrado não precisa de altar. As vezes só precisa de silêncio entre duas pessoas.',
+        texto: 'Pensa numa conversa em que não tentaste ajudar, resolver ou impressionar — apenas ouviste. Nesse ouvir sem agenda, algo se abriu entre vocês que as palavras não explicam. O sagrado não precisa de altar. Às vezes só precisa de silêncio entre duas pessoas.',
       },
     ],
     notas_contextuais: [
       {
         paragrafo_indice: 5,
-        texto: 'O dualismo cartesiano (mente versus corpo, espírito versus matéria) moldou séculos de pensamento ocidental. Mas as tradições mais antigas — o tantra hindu, o Taoismo, as cosmologias africanas — sempre souberam que o visível é o invisível são um só tecido. A separação é construção da mente, não da realidade.',
+        texto: 'O dualismo cartesiano (mente versus corpo, espírito versus matéria) moldou séculos de pensamento ocidental. Mas as tradições mais antigas — o tantra hindu, o Taoismo, as cosmologias africanas — sempre souberam que o visível e o invisível são um só tecido. A separação é construção da mente, não da realidade.',
       },
       {
         paragrafo_indice: 12,
@@ -192,7 +192,7 @@ export const veu7Niveis: NivelCapitulo[] = [
     exemplos_concretos: [
       {
         contexto: 'Na vida interior',
-        texto: 'Imagina que depois de anos de caminhada interior — meditação, reflexão, sombras, dissoluções — te sentas numa cadeira a tarde é não fazes nada. Não meditas. Não reflectes. Não procuras. Apenas estás. E nesse estar, sem nome é sem esforço, sentes algo que não sabes descrever — mas que reconheces como o sítio de onde nunca saiste. Esse reconhecimento é o centro.',
+        texto: 'Imagina que depois de anos de caminhada interior — meditação, reflexão, sombras, dissoluções — te sentas numa cadeira a tarde é não fazes nada. Não meditas. Não reflectes. Não procuras. Apenas estás. E nesse estar, sem nome é sem esforço, sentes algo que não sabes descrever — mas que reconheces como o sítio de onde nunca saíste. Esse reconhecimento é o centro.',
       },
       {
         contexto: 'Na relação com o mundo',
