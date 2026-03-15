@@ -133,7 +133,7 @@ const COURSES: CourseData[] = [
         description: "A mãe-personagem vs. a mãe-pessoa.",
         isFree: false,
         subLessons: [
-          { letter: "A", title: "A mãe-personagem vs. a mãe-pessoa", description: "A distancia entre a mãe que construiste e a mulher que ela e." },
+          { letter: "A", title: "A mãe-personagem vs. a mãe-pessoa", description: "A distância entre a mãe que construíste e a mulher que ela e." },
           { letter: "B", title: "Memória ou interpretação?", description: "O que lembras e o que realmente aconteceu." },
         ],
         workbook: "Retrato da mãe interior",
@@ -248,7 +248,7 @@ const COURSES: CourseData[] = [
     title: "A Arte da Inteireza",
     subtitle: "Amar sem te perderes no outro",
     arcoEmocional:
-      "Começa pelo reconhecimento: em que momento deixas de te sentir? Passa pelos padrões. Atravessa a dor de relações passadas onde te perdeste. Reconstroi a imagem do que é estar com alguém sem abandonar o centro. Termina com a prática diaria de presença relacional.",
+      "Começa pelo reconhecimento: em que momento deixas de te sentir? Passa pelos padrões. Atravessa a dor de relações passadas onde te perdeste. Reconstrói a imagem do que é estar com alguém sem abandonar o centro. Termina com a prática diaria de presença relacional.",
     diferencial:
       "Não é um curso sobre relações. É sobre o momento exacto em que desapareces dentro de uma — e como voltar.",
     modules: [
@@ -343,10 +343,10 @@ const COURSES: CourseData[] = [
         isFree: false,
         subLessons: [
           { letter: "A", title: "A imagem do amor saudável", description: "O que é realmente estar com alguém sem te perder." },
-          { letter: "B", title: "O espaço entre os dois", description: "O espaço como sinal de saúde, não de distancia." },
+          { letter: "B", title: "O espaço entre os dois", description: "O espaço como sinal de saúde, não de distância." },
           { letter: "C", title: "Ficar de forma diferente ou sair de forma inteira", description: "Quando mudar a relação é quando terminá-la." },
         ],
-        workbook: "Visao da relação inteira",
+        workbook: "Visão da relação inteira",
       },
     ],
     youtubeHooks: [
@@ -363,17 +363,17 @@ const COURSES: CourseData[] = [
     title: "Depois do Fogo",
     subtitle: "Quando a vida te pede para começar de novo",
     arcoEmocional:
-      "Começa no luto do que acabou. Passa pelo vazio entre o fim e o inicio. Reconstroi identidade fora dos papéis que desempenhaste. Atravessa o medo do desconhecido. Termina com os primeiros passos a partir de onde estas.",
+      "Começa no luto do que acabou. Passa pelo vazio entre o fim e o início. Reconstrói identidade fora dos papéis que desempenhaste. Atravessa o medo do desconhecido. Termina com os primeiros passos a partir de onde estas.",
     diferencial:
-      "Não é um curso motivacional sobre recomeços. É sobre o espaço entre o fim e o inicio — e como habita-lo sem fugir.",
+      "Não é um curso motivacional sobre recomeços. É sobre o espaço entre o fim e o início — e como habitá-lo sem fugir.",
     modules: [
       {
         number: 1,
         title: "Chorar o que Acabou",
-        description: "A permissao de acabar de acabar.",
+        description: "A permissão de acabar de acabar.",
         isFree: false,
         subLessons: [
-          { letter: "A", title: "A permissao de acabar de acabar", description: "Dar tempo ao luto antes de correr para o novo." },
+          { letter: "A", title: "A permissão de acabar de acabar", description: "Dar tempo ao luto antes de correr para o novo." },
           { letter: "B", title: "O elogio fúnebre ao que foi", description: "Honrar o que existiu, mesmo que tenha doido." },
           { letter: "C", title: "O corpo no luto", description: "Onde mora o luto no teu corpo." },
         ],
@@ -382,12 +382,12 @@ const COURSES: CourseData[] = [
       {
         number: 2,
         title: "O Vazio que Assusta",
-        description: "O espaço entre o fim e o inicio.",
+        description: "O espaço entre o fim e o início.",
         isFree: false,
         subLessons: [
-          { letter: "A", title: "O espaço entre o fim e o inicio", description: "O limbo onde já não es quem eras e ainda não es quem vais ser." },
+          { letter: "A", title: "O espaço entre o fim e o início", description: "O limbo onde já não és quem eras e ainda não és quem vais ser." },
           { letter: "B", title: "O vazio como solo", description: "O vazio não é ausência — é preparação." },
-          { letter: "C", title: "A diferença entre pausa e paralisia", description: "Como distinguir repouso necessario de medo disfarçado." },
+          { letter: "C", title: "A diferença entre pausa e paralisia", description: "Como distinguir repouso necessário de medo disfarçado." },
         ],
         workbook: "Mapa do vazio",
       },
@@ -398,7 +398,7 @@ const COURSES: CourseData[] = [
         isFree: false,
         subLessons: [
           { letter: "A", title: "Identidade ligada a papéis", description: "O que sobra quando tiras o título, a relação, o papel." },
-          { letter: "B", title: "Os papéis que te definiram", description: "Mãe, esposa, profissional — quem es sem isso?" },
+          { letter: "B", title: "Os papéis que te definiram", description: "Mãe, esposa, profissional — quem és sem isso?" },
           { letter: "C", title: "Reconstruir identidade", description: "Construir a partir do que resta, não do que falta." },
         ],
         workbook: "Inventário de identidade",
@@ -488,9 +488,9 @@ const COURSES: CourseData[] = [
         description: "Não decidir é decidir.",
         isFree: false,
         subLessons: [
-          { letter: "A", title: "Não decidir é decidir", description: "A indecisao como decisão disfarçada." },
-          { letter: "B", title: "A ilusao de manter todas as opções abertas", description: "O custo de não escolher." },
-          { letter: "C", title: "O custo real da indecisao", description: "O que perdes enquanto não decides." },
+          { letter: "A", title: "Não decidir é decidir", description: "A indecisão como decisão disfarçada." },
+          { letter: "B", title: "A ilusão de manter todas as opções abertas", description: "O custo de não escolher." },
+          { letter: "C", title: "O custo real da indecisão", description: "O que perdes enquanto não decides." },
         ],
         workbook: "Inventário das decisões adiadas",
       },
@@ -512,7 +512,7 @@ const COURSES: CourseData[] = [
         description: "O corpo sabe primeiro.",
         isFree: false,
         subLessons: [
-          { letter: "A", title: "O corpo sabe primeiro", description: "A inteligencia somática na tomada de decisão." },
+          { letter: "A", title: "O corpo sabe primeiro", description: "A inteligência somática na tomada de decisão." },
           { letter: "B", title: "Calibrar o sim e o não corporal", description: "Aprender a ler a expansao e a contratura." },
           { letter: "C", title: "Integrar corpo e mente", description: "Quando o corpo e a mente discordam." },
         ],
@@ -537,10 +537,10 @@ const COURSES: CourseData[] = [
         isFree: false,
         subLessons: [
           { letter: "A", title: "Errar é humano", description: "Retirar o peso catastrófico do erro." },
-          { letter: "B", title: "O erro como informação", description: "Cada erro traz dados que a indecisao não traz." },
-          { letter: "C", title: "A decisão imperfeita vs. a indecisao perfeita", description: "Uma decisão imperfeita move. A indecisao perfeita paralisa." },
+          { letter: "B", title: "O erro como informação", description: "Cada erro traz dados que a indecisão não traz." },
+          { letter: "C", title: "A decisão imperfeita vs. a indecisão perfeita", description: "Uma decisão imperfeita move. A indecisão perfeita paralisa." },
         ],
-        workbook: "Diário de erros uteis",
+        workbook: "Diário de erros úteis",
       },
       {
         number: 6,
@@ -572,7 +572,7 @@ const COURSES: CourseData[] = [
         description: "A paz da decisão tomada.",
         isFree: false,
         subLessons: [
-          { letter: "A", title: "O remorso como hábito", description: "Quando o remorso é padrão, não resposta a uma ma decisão." },
+          { letter: "A", title: "O remorso como hábito", description: "Quando o remorso é padrão, não resposta a uma má decisão." },
           { letter: "B", title: "Cada sim implica um não", description: "Aceitar o luto de cada escolha feita." },
           { letter: "C", title: "A paz da decisão tomada", description: "A liberdade que vem depois de decidir." },
         ],
@@ -595,15 +595,15 @@ const COURSES: CourseData[] = [
     arcoEmocional:
       "Começa pela desconexão. Aprende literacia corporal. Passa pelos sintomas como linguagem. Calibra o sim e o não do corpo. Aprende a habitar, não só usar. Termina com o corpo como primeiro conselheiro.",
     diferencial:
-      "Não é um curso de wellness ou mindfulness. É sobre reconectar com a inteligencia do teu corpo — que sempre soube antes de ti.",
+      "Não é um curso de wellness ou mindfulness. É sobre reconectar com a inteligência do teu corpo — que sempre soube antes de ti.",
     modules: [
       {
         number: 1,
         title: "O Corpo que Ignoras",
-        description: "Decadas a calar o corpo.",
+        description: "Décadas a calar o corpo.",
         isFree: false,
         subLessons: [
-          { letter: "A", title: "Decadas a calar o corpo", description: "O hábito de ignorar o que o corpo diz." },
+          { letter: "A", title: "Décadas a calar o corpo", description: "O hábito de ignorar o que o corpo diz." },
           { letter: "B", title: "A desconexão como norma", description: "Quando não sentir se torna normal." },
           { letter: "C", title: "O body scan como primeiro passo", description: "A prática de voltar a habitar o corpo." },
         ],
@@ -628,7 +628,7 @@ const COURSES: CourseData[] = [
         isFree: false,
         subLessons: [
           { letter: "A", title: "O corpo guarda o que a mente esquece", description: "A memória somática e como se manifesta." },
-          { letter: "B", title: "Triggers corporais", description: "Reacções físicas a estimulos que a mente não reconhece." },
+          { letter: "B", title: "Triggers corporais", description: "Reacções físicas a estímulos que a mente não reconhece." },
           { letter: "C", title: "Honrar sem reviver", description: "Reconhecer a memória sem retraumatizar." },
         ],
         workbook: "Mapa de memórias corporais",
@@ -639,7 +639,7 @@ const COURSES: CourseData[] = [
         description: "Expansao vs. contratura.",
         isFree: false,
         subLessons: [
-          { letter: "A", title: "Expansao vs. contratura", description: "As duas respostas básicas do corpo a qualquer estimulo." },
+          { letter: "A", title: "Expansao vs. contratura", description: "As duas respostas básicas do corpo a qualquer estímulo." },
           { letter: "B", title: "Calibrar no quotidiano", description: "Praticar a leitura corporal nas decisões do dia-a-dia." },
           { letter: "C", title: "Confiar na bússola", description: "Confiar no corpo como instrumento de navegação." },
         ],
@@ -660,12 +660,12 @@ const COURSES: CourseData[] = [
       {
         number: 6,
         title: "O Corpo e a Alimentação",
-        description: "Ouvir o corpo a mesa.",
+        description: "Ouvir o corpo à mesa.",
         isFree: false,
         subLessons: [
           { letter: "A", title: "Comer para calar", description: "A alimentação como forma de silenciar emoções." },
           { letter: "B", title: "Fome fisica vs. fome emocional", description: "Distinguir as duas fomes." },
-          { letter: "C", title: "Ouvir o corpo a mesa", description: "Comer como acto de presença, não de fuga." },
+          { letter: "C", title: "Ouvir o corpo à mesa", description: "Comer como acto de presença, não de fuga." },
         ],
         workbook: "Diário alimentar emocional",
       },
@@ -687,7 +687,7 @@ const COURSES: CourseData[] = [
         description: "O corpo como casa, não como ferramenta.",
         isFree: false,
         subLessons: [
-          { letter: "A", title: "O corpo como ferramenta vs. o corpo como casa", description: "A diferença entre usar o corpo e habita-lo." },
+          { letter: "A", title: "O corpo como ferramenta vs. o corpo como casa", description: "A diferença entre usar o corpo e habitá-lo." },
           { letter: "B", title: "Presenca corporalizada", description: "Viver no corpo, não só na mente." },
           { letter: "C", title: "O corpo como conselheiro", description: "O corpo como o teu primeiro e mais fiel conselheiro." },
         ],
@@ -823,33 +823,33 @@ const COURSES: CourseData[] = [
     title: "Flores no Escuro",
     subtitle: "As perdas que não são morte mas doem como se fossem",
     arcoEmocional:
-      "Começa pelo reconhecimento. Passa pela permissao de chorar o que não tem funeral. Localiza o luto no corpo. Integra a perda na paisagem de quem es.",
+      "Começa pelo reconhecimento. Passa pela permissão de chorar o que não têm funeral. Localiza o luto no corpo. Integra a perda na paisagem de quem es.",
     diferencial:
-      "Não é um curso sobre superar perdas. É sobre fazer luto das perdas que ninguém valida — as que não tem funeral, flores ou condolencias.",
+      "Não é um curso sobre superar perdas. É sobre fazer luto das perdas que ninguém valida — as que não têm funeral, flores ou condolências.",
     modules: [
       {
         number: 1,
-        title: "As Perdas que Não Tem Funeral",
+        title: "As Perdas que Não Têm Funeral",
         description: "Nomear o inomeável.",
         isFree: false,
         subLessons: [
-          { letter: "A", title: "Nomear o inomeável", description: "Dar nome as perdas que o mundo não reconhece." },
-          { letter: "B", title: "Porque ninguém valida", description: "A solidao de um luto sem testemunhas." },
+          { letter: "A", title: "Nomear o inomeável", description: "Dar nome às perdas que o mundo não reconhece." },
+          { letter: "B", title: "Porque ninguém valida", description: "A solidão de um luto sem testemunhas." },
           { letter: "C", title: "Dar peso ao que pesa", description: "Validar a dor sem comparar com a dor dos outros." },
         ],
         workbook: "Inventário das perdas silenciosas",
       },
       {
         number: 2,
-        title: "A Permissao que Ninguem Te Deu",
-        description: "A única permissao que precisas.",
+        title: "A Permissão que Ninguém Te Deu",
+        description: "A única permissão que precisas.",
         isFree: false,
         subLessons: [
-          { letter: "A", title: "As frases que calam", description: "'Segue em frente', 'já passou', 'ha quem esteja pior'." },
-          { letter: "B", title: "A única permissao que precisas", description: "A tua própria permissao para sentir." },
-          { letter: "C", title: "Chorar sem horario", description: "A liberdade de chorar quando o corpo pede." },
+          { letter: "A", title: "As frases que calam", description: "'Segue em frente', 'já passou', 'há quem esteja pior'." },
+          { letter: "B", title: "A única permissão que precisas", description: "A tua própria permissão para sentir." },
+          { letter: "C", title: "Chorar sem horário", description: "A liberdade de chorar quando o corpo pede." },
         ],
-        workbook: "Carta de permissao",
+        workbook: "Carta de permissão",
       },
       {
         number: 3,
@@ -885,7 +885,7 @@ const COURSES: CourseData[] = [
           { letter: "B", title: "A mulher que nunca foste", description: "Chorar a versão de ti que nunca chegou a existir." },
           { letter: "C", title: "Honrar sem prender", description: "Guardar sem agarrar. Lembrar sem paralisar." },
         ],
-        workbook: "Carta as versoes de ti",
+        workbook: "Carta às versões de ti",
       },
       {
         number: 6,
@@ -948,7 +948,7 @@ const COURSES: CourseData[] = [
         description: "O que carregas.",
         isFree: false,
         subLessons: [
-          { letter: "A", title: "O que carregas", description: "Fazer o inventário honesto de tudo o que trazes as costas." },
+          { letter: "A", title: "O que carregas", description: "Fazer o inventário honesto de tudo o que trazes às costas." },
           { letter: "B", title: "O que escolheste vs. o que te caiu em cima", description: "Separar o peso escolhido do peso imposto." },
           { letter: "C", title: "O peso normalizado", description: "O peso que carregas há tanto tempo que já não sentes." },
         ],
@@ -957,12 +957,12 @@ const COURSES: CourseData[] = [
       {
         number: 2,
         title: "A Carga Mental Invisível",
-        description: "O trabalho que ninguém ve.",
+        description: "O trabalho que ninguém vê.",
         isFree: false,
         subLessons: [
-          { letter: "A", title: "O trabalho que ninguém ve", description: "A carga mental que não aparece em nenhuma lista." },
+          { letter: "A", title: "O trabalho que ninguém vê", description: "A carga mental que não aparece em nenhuma lista." },
           { letter: "B", title: "O CEO emocional da família", description: "Quando és a gestora emocional de toda a gente." },
-          { letter: "C", title: "Tornar visível para negociar", description: "Nomear a carga invisível para poder partilha-la." },
+          { letter: "C", title: "Tornar visível para negociar", description: "Nomear a carga invisível para poder partilha-lá." },
         ],
         workbook: "Mapa da carga mental",
       },
