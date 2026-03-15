@@ -22,7 +22,7 @@ export default function NotaContextual({ texto, modoNoturno = false }: Props) {
       <p className={`text-xs font-sans uppercase tracking-wide mb-1.5 ${
         modoNoturno ? 'text-stone-500' : 'text-stone-400'
       }`}>
-        Na pratica
+        Na prática
       </p>
       <p className={`text-sm font-sans leading-relaxed ${
         modoNoturno ? 'text-stone-400' : 'text-stone-600'

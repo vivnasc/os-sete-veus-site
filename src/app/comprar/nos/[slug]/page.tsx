@@ -29,7 +29,7 @@ export default function ComprarNoPage({ params }: { params: Promise<{ slug: stri
 
   const handleComprar = () => {
     const preco = moeda === 'MZN' ? `${nosBook.priceMT} MZN` : `$${nosBook.priceUSD} USD`
-    alert(`Comprar: ${nosBook.title}\nPreco: ${preco}\n\nSistema de pagamento sera integrado em breve!`)
+    alert(`Comprar: ${nosBook.title}\nPreço: ${preco}\n\nSistema de pagamento será integrado em breve!`)
   }
 
   return (
@@ -88,7 +88,7 @@ export default function ComprarNoPage({ params }: { params: Promise<{ slug: stri
                     : 'text-white hover:bg-white/20'
                 }`}
               >
-                USD (Dolar)
+                USD (Dólar)
               </button>
             </div>
           </div>
@@ -113,7 +113,7 @@ export default function ComprarNoPage({ params }: { params: Promise<{ slug: stri
             />
             <div>
               <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em]" style={{ color: nosBook.color }}>
-                No {nosBook.number} de 7
+                Nó {nosBook.number} de 7
               </p>
               <h2 className="font-serif text-2xl text-brown-900">{nosBook.title}</h2>
             </div>
@@ -143,7 +143,7 @@ export default function ComprarNoPage({ params }: { params: Promise<{ slug: stri
               Requisito
             </p>
             <p className="mt-1 text-sm text-brown-600">
-              Para ler este No, precisas de completar{' '}
+              Para ler este Nó, precisas de completar{' '}
               {espelho ? (
                 <Link href={`/comprar/espelhos`} className="underline hover:text-brown-800" style={{ color: nosBook.color }}>
                   {espelho.title}
@@ -183,7 +183,7 @@ export default function ComprarNoPage({ params }: { params: Promise<{ slug: stri
           </h3>
           <p className="mx-auto mt-3 max-w-md text-sm text-brown-600">
             O Pack 3 Espelhos ({moeda === 'MZN' ? `${(49 * 65).toLocaleString()} MZN` : '$49 USD'}) inclui 3 Nós gratuitamente.
-            A Jornada Completa ({moeda === 'MZN' ? `${(99 * 65).toLocaleString()} MZN` : '$99 USD'}) inclui todos os 7 Nos.
+            A Jornada Completa ({moeda === 'MZN' ? `${(99 * 65).toLocaleString()} MZN` : '$99 USD'}) inclui todos os 7 Nós.
           </p>
           <Link
             href="/comprar/espelhos"

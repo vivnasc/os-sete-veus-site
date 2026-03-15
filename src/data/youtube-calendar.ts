@@ -1,21 +1,21 @@
 /**
- * Calendario YouTube — A Escola dos Veus
+ * Calendário YouTube — A Escola dos Véus
  * ────────────────────────────────────────
- * 4 semanas | 12 videos | 3 por semana (Terca, Quinta, Sabado)
+ * 4 semanas | 12 vídeos | 3 por semana (Terça, Quinta, Sábado)
  *
- * Horario: 18h Maputo / 15h Lisboa / 13h Sao Paulo
- * Duracao: 5-7 minutos cada
+ * Horário: 18h Maputo / 15h Lisboa / 13h São Paulo
+ * Duração: 5-7 minutos cada
  *
- * Estrutura de cada video:
+ * Estrutura de cada vídeo:
  *   0:00 - 0:15  Gancho forte
- *   0:15 - 1:30  Situacao reconhecivel
- *   1:30 - 3:30  O padrao por baixo
- *   3:30 - 5:00  Gesto de consciencia
+ *   0:15 - 1:30  Situação reconhecível
+ *   1:30 - 3:30  O padrão por baixo
+ *   3:30 - 5:00  Gesto de consciência
  *   5:00 - 5:30  Frase final + CTA
  *
  * CTA (primeiras 4 semanas):
- *   "Se isto te tocou, inscreve-te. A Escola dos Veus esta a chegar
- *    — e o primeiro curso e sobre a tua relacao com dinheiro."
+ *   "Se isto te tocou, inscreve-te. A Escola dos Véus está a chegar
+ *    — e o primeiro curso é sobre a tua relação com dinheiro."
  */
 
 import type { CourseSlug } from "@/types/course";
@@ -26,10 +26,10 @@ export type YouTubeDay = "terca" | "quinta" | "sabado";
 
 export type VideoStatus =
   | "draft"        // script por escrever
-  | "script_ready" // script pronto, aguarda aprovacao
-  | "approved"     // script aprovado, pronto para producao
-  | "producing"    // em producao (audio + imagens + montagem)
-  | "review"       // montagem feita, aguarda revisao final
+  | "script_ready" // script pronto, aguarda aprovação
+  | "approved"     // script aprovado, pronto para produção
+  | "producing"    // em produção (áudio + imagens + montagem)
+  | "review"       // montagem feita, aguarda revisão final
   | "scheduled"    // agendado no YouTube
   | "published";   // publicado
 

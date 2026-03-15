@@ -242,7 +242,7 @@ export default function PortalVeuPage() {
           className="w-full max-w-md mb-12"
         >
           <p className={`text-sm ${cores.accent} mb-4 text-center`}>
-            {veu.capitulos.length} capitulos
+            {veu.capitulos.length} capítulos
             {capitulosCompletos.size > 0 && (
               <span className="ml-2 text-stone-500">
                 ({capitulosCompletos.size} de {veu.capitulos.length} completos)
