@@ -16,7 +16,7 @@ export const veu4Niveis: NivelCapitulo[] = [
     exemplos_concretos: [
       {
         contexto: 'Nas relações',
-        texto: 'Imagina que há anos es "a pessoa forte" da família — quem resolve, quem ouve, quem nunca pede. Um dia sentes-te esgotada e percebes que ninguém te pergunta como estás. O capítulo pergunta: será que o teu dar criou uma prisão para ambos os lados?',
+        texto: 'Imagina que há anos és "a pessoa forte" da família — quem resolve, quem ouve, quem nunca pede. Um dia sentes-te esgotada e percebes que ninguém te pergunta como estás. O capítulo pergunta: será que o teu dar criou uma prisão para ambos os lados?',
       },
       {
         contexto: 'Na reflexão pessoal',
@@ -73,7 +73,7 @@ export const veu4Niveis: NivelCapitulo[] = [
       'Quando alguém te diz "descansa", sentes irritação ou desconforto em vez de alívio — como se descansar fosse uma ofensa ao teu modo de estar no mundo.',
       'Medes o teu valor pelo que produzes num dia. Um dia sem tarefas concluídas é um dia perdido. Há uma contabilidade interior que nunca fecha a teu favor.',
       'Mesmo nas ferias ou nos dias livres, há uma parte de ti que calcula o próximo passo, o próximo projecto. O descanso é sempre provisório — prepara-se para o próximo esforço.',
-      'Quando alguém a tua volta para e simplesmente está, sentes desconfiança ou até desprezo suave — como se a quietude fosse preguiça disfarçada.',
+      'Quando alguém à tua volta para e simplesmente está, sentes desconfiança ou até desprezo suave — como se a quietude fosse preguiça disfarçada.',
     ],
     mensagem_central: 'Há um lugar em ti que confunde esforço com dignidade. Que acredita, no fundo, que só mereces existir se estiveres a dar, a fazer, a sustentar. Esse lugar não nasceu do nada — foi construído por anos de recompensa pelo sacrifício e silêncio diante do cansaço. Mas há uma verdade que o esforço constante tenta abafar: tu não precisas de te gastar para merecer ficar. O amor que exige que te dissolvas não é amor — é consumo. E o primeiro gesto de coragem não é fazer mais, é parar. Parar não como desistência, mas como acto radical de presença. Quando paras, o que surge não é vazio — é o som do teu próprio corpo a dizer-te, finalmente, o que precisa.',
     guiao_escrita: {
@@ -133,7 +133,7 @@ export const veu4Niveis: NivelCapitulo[] = [
     ],
     sinais_do_veu: [
       'Fazes tudo o que é esperado — trabalho, casa, relações — mas há meses que não sentes nada de verdade.',
-      'As pessoas dizem-te "es tão forte" e essa frase, em vez de te confortar, pesa-te como uma sentença.',
+      'As pessoas dizem-te "és tão forte" e essa frase, em vez de te confortar, pesa-te como uma sentença.',
       'Tens medo de parar porque, se parares, vais sentir o tamanho daquilo que tens evitado.',
       'Ris socialmente, respondes mensagens, cumpres horários — mas por dentro há um silêncio enorme que ninguém vê.',
       'Já tentaste descansar e não conseguiste — porque até o descanso se tornou mais uma tarefa a cumprir.',
@@ -193,15 +193,15 @@ export const veu4Niveis: NivelCapitulo[] = [
     notas_contextuais: [
       {
         paragrafo_indice: 5,
-        texto: 'A "estética da compensação" é quando o cuidado exterior substitui o contacto interior. Não é que o banho ou o chá sejam maus — é que sem presença real, tornam-se decoracao sobre vazio.',
+        texto: 'A "estética da compensação" é quando o cuidado exterior substitui o contacto interior. Não é que o banho ou o chá sejam maus — é que sem presença real, tornam-se decoração sobre vazio.',
       },
       {
         paragrafo_indice: 12,
-        texto: 'Sócrates dizia "só sei que nada sei". O texto retoma essa humildade: acumular conhecimento espiritual sem o integrar no corpo é na vida e "saber que não sacia". A sabedoria não é informação — é transformação.',
+        texto: 'Sócrates dizia "só sei que nada sei". O texto retoma essa humildade: acumular conhecimento espiritual sem o integrar no corpo e na vida é "saber que não sacia". A sabedoria não é informação — é transformação.',
       },
       {
         paragrafo_indice: 18,
-        texto: 'O neti-neti do Advaita Vedanta ("não isto, não aquilo") é o gesto de recusar todas as definições até que reste apenas o indizivel. E o antidoto contra o "seguidor da verdade perdida" — quem delega a própria autoridade a mestres externos.',
+        texto: 'O neti-neti do Advaita Vedanta ("não isto, não aquilo") é o gesto de recusar todas as definições até que reste apenas o indizivel. É o antídoto contra o "seguidor da verdade perdida" — quem delega a própria autoridade a mestres externos.',
       },
     ],
     termos_destacados: ['Ubuntu', 'existencialismo', 'despertar', 'veu'],
@@ -215,63 +215,63 @@ export const veu4Niveis: NivelCapitulo[] = [
       'Preciso de um mestre, um método ou um sistema para encontrar o meu caminho.',
     ],
     sinais_do_veu: [
-      'Transformaste o autocuidado numa nova lista de tarefas — meditar, journaling, yoga — é sentes culpa quando falhas um dia.',
-      'Coleccionas livros, cursos é retiros mas continuas a sentir o mesmo vazio — só que agora com mais vocabulario para o descrever.',
+      'Transformaste o autocuidado numa nova lista de tarefas — meditar, journaling, yoga — e sentes culpa quando falhas um dia.',
+      'Coleccionas livros, cursos e retiros mas continuas a sentir o mesmo vazio — só que agora com mais vocabulário para o descrever.',
       'Partilhas nas redes os teus rituais de bem-estar mas, no silêncio do quarto, não sabes se te fazem realmente bem ou apenas parecer bem.',
       'Usas o conhecimento espiritual para explicar a tua dor em vez de a sentir.',
       'Tens medo de largar as práticas porque sem elas não sabes quem és.',
     ],
     guiao_reflexao: [
       'Faz uma lista de tudo o que fazes "por ti". Agora, ao lado de cada item, escreve com honestidade: faço isto porque me nutre ou porque me faz sentir que estou a fazer o suficiente? Não há respostas erradas — há respostas honestas.',
-      'Escreve sobre um momento em que paraste tudo — sem ritual, sem prática, sem livro — é sentiste algo genuino. O que era? Se não te lembras de nenhum, escreve sobre o medo de parar.',
+      'Escreve sobre um momento em que paraste tudo — sem ritual, sem prática, sem livro — e sentiste algo genuíno. O que era? Se não te lembras de nenhum, escreve sobre o medo de parar.',
       'Imagina que te tiram todos os rótulos espirituais, todos os conhecimentos acumulados, todas as práticas. O que resta? Escreve a partir desse lugar vazio — sem pressa de o preencher.',
     ],
     espelho_pessoal: 'Aquilo que chamas de cuidar de ti está a aproximar-te ou a afastar-te do que realmente sentes?',
 
     // Camada profunda
     mascaras: [
-      'A espiritualizada — a que transformou o crescimento pessoal em novo esforço. Medita com disciplina militar, lê com voracidade, prática com rigor. O cuidado de si tornou-se mais um campo de performance. Não descansa — optimiza. E o esforço agora veste roupa de linho é cheira a incenso.',
-      'A coleccionadora de sabedoria — a que acumula livros, cursos, certificados é retiros como quem constrói uma armadura de conhecimento. Sabe tudo sobre chakras, sombra, trauma, apego — mas quando fica em silêncio consigo mesma, não sabe o que sente. O esforço intelectual protege-a do contacto directo com a dor.',
-      'A curadora ferida — a que cuida dos outros como forma de continuar a evitar o próprio repouso. Torna-se terapeuta, conselheira, ombro amigo — é o esforço de curar o mundo é a desculpa perfeita para nunca parar é olhar para as próprias feridas.',
-      'A que faz tudo certo — a que segue o protocolo do bem-estar a risca: água com limao, journaling matinal, gratidão antes de dormir. Cada gesto é cumprido com precisão. Mas se lhe perguntares "sentes-te bem?", a resposta honesta seria: "não sei — mas estou a fazer tudo o que devia."',
+      'A espiritualizada — a que transformou o crescimento pessoal em novo esforço. Medita com disciplina militar, lê com voracidade, prática com rigor. O cuidado de si tornou-se mais um campo de performance. Não descansa — optimiza. E o esforço agora veste roupa de linho e cheira a incenso.',
+      'A coleccionadora de sabedoria — a que acumula livros, cursos, certificados e retiros como quem constrói uma armadura de conhecimento. Sabe tudo sobre chakras, sombra, trauma, apego — mas quando fica em silêncio consigo mesma, não sabe o que sente. O esforço intelectual protege-a do contacto directo com a dor.',
+      'A curadora ferida — a que cuida dos outros como forma de continuar a evitar o próprio repouso. Torna-se terapeuta, conselheira, ombro amigo — e o esforço de curar o mundo é a desculpa perfeita para nunca parar e olhar para as próprias feridas.',
+      'A que faz tudo certo — a que segue o protocolo do bem-estar à risca: água com limão, journaling matinal, gratidão antes de dormir. Cada gesto é cumprido com precisão. Mas se lhe perguntares "sentes-te bem?", a resposta honesta seria: "não sei — mas estou a fazer tudo o que devia."',
     ],
     veu_dominante_sinais: [
-      'O teu "tempo para ti" tem horario, estrutura é objectivos — como se até o descanso precisasse de ser produtivo para contar.',
+      'O teu "tempo para ti" tem horário, estrutura e objectivos — como se até o descanso precisasse de ser produtivo para contar.',
       'Sentes culpa quando um dia passa sem que tenhas feito algo "pelo teu crescimento". Um dia vazio é um dia desperdicado, mesmo que o teu corpo estivesse a pedir exactamente isso.',
       'Já te apanhaste a transformar uma crise emocional numa "oportunidade de aprendizagem" — antes mesmo de a teres sentido a fundo. O esforço de compreender substitui a permissão de sofrer.',
-      'Tens mais conhecimento sobre ti mesma do que nunca — e, no entanto, a distância entre o que sabes é o que vives parece cada vez maior. O saber tornou-se novo esforço que te afasta do sentir.',
+      'Tens mais conhecimento sobre ti mesma do que nunca — e, no entanto, a distância entre o que sabes e o que vives parece cada vez maior. O saber tornou-se novo esforço que te afasta do sentir.',
       'Quando alguém próximo te diz "não precisas de fazer nada, só quero que estejas aqui", sentes desconforto. Estar — simplesmente estar — é o gesto mais difícil que te podem pedir.',
     ],
-    mensagem_central: 'Há uma armadilha tão subtil que quase parece liberdade: substituir o esforço de produzir pelo esforço de evoluir. Trocas-te a lista de tarefas do trabalho pela lista de tarefas da alma — é o peso não muda, só muda de nome. Mas o repouso verdadeiro não é mais um item para cumprir. Não é o banho perfeito, nem a meditação de vinte minutos, nem o livro certo na mesa de cabeceira. O repouso verdadeiro acontece quando deixas de te esforcar por ser alguém — até por ser alguém melhor. Quando o gesto de cuidar de ti nasce não da obrigação de mereceres descanso, mas do reconhecimento simples de que já es suficiente. Não precisas de mais um curso, mais um ritual, mais uma prática. Precisas de um momento de honestidade absoluta: estou a cuidar de mim ou estou a cumprir o protocolo do bem-estar para não sentir o que preciso de sentir?',
+    mensagem_central: 'Há uma armadilha tão subtil que quase parece liberdade: substituir o esforço de produzir pelo esforço de evoluir. Trocaste a lista de tarefas do trabalho pela lista de tarefas da alma — e o peso não muda, só muda de nome. Mas o repouso verdadeiro não é mais um item para cumprir. Não é o banho perfeito, nem a meditação de vinte minutos, nem o livro certo na mesa de cabeceira. O repouso verdadeiro acontece quando deixas de te esforçar por ser alguém — até por ser alguém melhor. Quando o gesto de cuidar de ti nasce não da obrigação de mereceres descanso, mas do reconhecimento simples de que já és suficiente. Não precisas de mais um curso, mais um ritual, mais uma prática. Precisas de um momento de honestidade absoluta: estou a cuidar de mim ou estou a cumprir o protocolo do bem-estar para não sentir o que preciso de sentir?',
     guiao_escrita: {
-      contexto: 'Este exercício convida-te a distinguir entre o autocuidado que te nutre é o autocuidado que te ocupa — entre presença é performance.',
+      contexto: 'Este exercício convida-te a distinguir entre o autocuidado que te nutre e o autocuidado que te ocupa — entre presença e performance.',
       passos: [
-        'Escreve no topo da página: "Aquilo que faço por mim." Lista todas as práticas, rituais é hábitos que consideras autocuidado. Inclui tudo: meditação, exercício, leituras, terapia, journaling, o que for.',
-        'Agora, ao lado de cada item, escreve uma de três palavras: "nutrição" (faz-me genuinamente bem), "hábito" (faço porque me habituei) ou "esforço" (faço porque sinto que devia). Se honesta — ninguém vai ler isto.',
+        'Escreve no topo da página: "Aquilo que faço por mim." Lista todas as práticas, rituais e hábitos que consideras autocuidado. Inclui tudo: meditação, exercício, leituras, terapia, journaling, o que for.',
+        'Agora, ao lado de cada item, escreve uma de três palavras: "nutrição" (faz-me genuinamente bem), "hábito" (faço porque me habituei) ou "esforço" (faço porque sinto que devia). Sê honesta — ninguém vai ler isto.',
         'Escolhe um item marcado como "esforço". Escreve-lhe: "Eu mantenho-te porque tenho medo de..." Completa a frase. Depois escreve: "Se te largasse, o que aconteceria?" Deixa a resposta surgir sem a controlares.',
-        'Agora pensa num momento recente em que não fizeste nada de especial — nenhuma prática, nenhum ritual — é sentiste paz. Se existiu, descreve-o. Se não te lembras de nenhum, escreve sobre isso: "Não me lembro de estar em paz sem esforço. O que isto me diz?"',
-        'Termina com está pergunta, respondendo do lugar mais honesto que encontrares: "O que o meu corpo me pede quando paro de lhe dar instruções?"',
+        'Agora pensa num momento recente em que não fizeste nada de especial — nenhuma prática, nenhum ritual — e sentiste paz. Se existiu, descreve-o. Se não te lembras de nenhum, escreve sobre isso: "Não me lembro de estar em paz sem esforço. O que isto me diz?"',
+        'Termina com esta pergunta, respondendo do lugar mais honesto que encontrares: "O que o meu corpo me pede quando paro de lhe dar instruções?"',
       ],
       tempo_sugerido: '25 a 35 minutos',
-      nota_final: 'O objectivo não é largares as tuas práticas. E perceberes quais te aproximam de ti é quais te distraem de ti. O cuidado verdadeiro não se parece com disciplina — parece-se com ternura.',
+      nota_final: 'O objectivo não é largares as tuas práticas. É perceberes quais te aproximam de ti e quais te distraem de ti. O cuidado verdadeiro não se parece com disciplina — parece-se com ternura.',
     },
   },
   {
     capitulo_numero: 16,
     resumo_acessivel: [
       'A busca exterior silencia-se — não por derrota, mas pela dissolução natural de um anseio esgotado. O corpo, antes agitado na procura de validação, descobre um repouso inesperado.',
-      'A verdade revela-se como presença, não como conceito. O silêncio deixa de ser ausência é torna-se o corpo vivo da verdade. A fé não é dogma rígido — é a respiração do ser.',
+      'A verdade revela-se como presença, não como conceito. O silêncio deixa de ser ausência e torna-se o corpo vivo da verdade. A fé não é dogma rígido — é a respiração do ser.',
       'A simplicidade do ser: a autenticidade não precisa de palco. O sagrado habita cada gesto ordinário.',
     ],
     perguntas_orientadoras: [
-      'Consegues distinguir entre a fé como crença é a fé como confiança no fluxo da vida?',
-      'O que acontece quando deixas de te esforcar por "ser espiritual" é simplesmente es?',
+      'Consegues distinguir entre a fé como crença e a fé como confiança no fluxo da vida?',
+      'O que acontece quando deixas de te esforçar por "ser espiritual" e simplesmente és?',
       'O desconhecido assusta-te — ou já começa a parecer-se com liberdade?',
     ],
     exemplos_concretos: [
       {
         contexto: 'Na prática diária',
-        texto: 'Imagina um dia em que não meditas, não les, não práticas nada "espiritual" — e, no entanto, sentes uma paz suave no acto de caminhar até ao mercado. Essa leveza sem esforço é o que o capítulo descreve como "a simplicidade do ser".',
+        texto: 'Imagina um dia em que não meditas, não lês, não praticas nada "espiritual" — e, no entanto, sentes uma paz suave no acto de caminhar até ao mercado. Essa leveza sem esforço é o que o capítulo descreve como "a simplicidade do ser".',
       },
     ],
     notas_contextuais: [
@@ -294,19 +294,19 @@ export const veu4Niveis: NivelCapitulo[] = [
     crencas_a_mapear: [
       'A paz interior é algo que se conquista, não algo que já está.',
       'Se paro de procurar, vou ficar para trás.',
-      'A espiritualidade exige esforço constante é disciplina.',
+      'A espiritualidade exige esforço constante e disciplina.',
       'Ainda não estou pronta — preciso de mais trabalho interior antes de poder simplesmente ser.',
-      'O sagrado está nós grandes momentos, não no gesto comum de descascar uma laranja.',
+      'O sagrado está nos grandes momentos, não no gesto comum de descascar uma laranja.',
     ],
     sinais_do_veu: [
-      'Sentes uma leveza estranha quando não fazes nada "espiritual" — é depois desconfias dela, como se não a merecesses.',
-      'Começas a perceber que as respostas que procuravas nós livros já viviam no teu silêncio — mas ainda tens medo de confiar nisso.',
+      'Sentes uma leveza estranha quando não fazes nada "espiritual" — e depois desconfias dela, como se não a merecesses.',
+      'Começas a perceber que as respostas que procuravas nos livros já viviam no teu silêncio — mas ainda tens medo de confiar nisso.',
       'A simplicidade atrai-te mas assusta-te: é como se viver sem esforço fosse demasiado fácil para ser verdade.',
-      'Sentes-te mais perto de ti quando lavas a louça em silêncio do que quando meditas com intenção — é isso confunde-te.',
+      'Sentes-te mais perto de ti quando lavas a louça em silêncio do que quando meditas com intenção — e isso confunde-te.',
       'Já não queres convencer ninguém de nada. O desejo de provar que sabes está a dissolver-se.',
     ],
     guiao_reflexao: [
-      'Escreve sobre um momento em que não estavas a fazer nada de especial — a caminhar, a olhar pela janela, a respirar — é sentiste que estavas inteira. Descreve esse momento com todos os sentidos. O que te diz sobre onde vive a verdade?',
+      'Escreve sobre um momento em que não estavas a fazer nada de especial — a caminhar, a olhar pela janela, a respirar — e sentiste que estavas inteira. Descreve esse momento com todos os sentidos. O que te diz sobre onde vive a verdade?',
       'Faz uma lista de tudo o que acreditavas que precisavas de ser, saber ou fazer para seres "suficiente". Agora risca cada item, um a um. O que sentes ao chegar ao fim da lista? Escreve a partir desse lugar.',
       'Escreve sobre o sagrado que encontras no ordinário — no café da manhã, na mão de alguém que amas, no cheiro da chuva. Não tentes ser poética. Tenta ser verdadeira. O sagrado não precisa de palco.',
     ],
@@ -316,24 +316,24 @@ export const veu4Niveis: NivelCapitulo[] = [
     mascaras: [
       'A buscadora eterna — a que não consegue parar de procurar. Passou a vida inteira a correr atrás de respostas, de mestres, de experiências transformadoras. O esforço de buscar tornou-se identidade. Se parar de procurar, quem é ela? O medo não é de não encontrar — é de descobrir que nunca precisou de procurar.',
       'A que ainda não está pronta — a que adia permanentemente a sua própria chegada. "Ainda preciso de mais um curso." "Ainda não estou suficientemente curada." "Ainda não sei o bastante." O esforço de se preparar é infinito porque reconhecer que já está pronta significaria não ter mais desculpa para não viver.',
-      'A guardadora do sagrado — a que construiu uma fortaleza de rituais, práticas é crenças ao redor da sua espiritualidade. Qualquer gesto fora do protocolo parece profanação. O esforço de manter o sagrado "puro" é na verdade medo de que o sagrado não precise dela — de que exista em toda a parte, com ou sem cerimónia.',
+      'A guardadora do sagrado — a que construiu uma fortaleza de rituais, práticas e crenças ao redor da sua espiritualidade. Qualquer gesto fora do protocolo parece profanação. O esforço de manter o sagrado "puro" é na verdade medo de que o sagrado não precise dela — de que exista em toda a parte, com ou sem cerimónia.',
     ],
     veu_dominante_sinais: [
       'Mesmo quando sentes paz, há uma voz que diz "isto não é suficiente" ou "isto não vai durar". O esforço de garantir a paz destroi a paz. Não consegues deixar que o momento simplesmente seja.',
       'Continuas a planear o teu crescimento espiritual como quem planeia uma carreira. Há metas, etapas, avaliações. A ideia de que não há destino — de que já chegaste — parece-te irresponsável.',
       'Quando sentes alegria sem razão, desconfias. Quando a vida flui sem esforço, procuras o que vai correr mal. Há uma vigilância interior que não te permite simplesmente receber o que já está.',
       'Comparas-te com outros caminhos espirituais, com outras pessoas, com versões ideais de ti mesma. O esforço de "chegar lá" impede-te de sentir que já estás aqui.',
-      'A quietude genuína — sem meditação guiada, sem música, sem propósito — provoca-te desconforto. O silêncio puro, sem moldura, parece-te vazio em vez de pleno. E nessa resistência que o véu se revela: o esforço não te larga, mesmo quando já não há nada para fazer.',
+      'A quietude genuína — sem meditação guiada, sem música, sem propósito — provoca-te desconforto. O silêncio puro, sem moldura, parece-te vazio em vez de pleno. É nessa resistência que o véu se revela: o esforço não te larga, mesmo quando já não há nada para fazer.',
     ],
-    mensagem_central: 'Há um momento na jornada em que toda a busca se dissolve — não porque falhaste, mas porque percebeste que aquilo que procuravas nunca esteve fora de ti. O esforço de encontrar a verdade era o único obstáculo entre ti é a verdade. Não há mais nada para conquistar, nenhum nível para alcançar, nenhum mestre que te possa dar o que já vive no teu silêncio. A consciência que emerge do aquietar não é prémio pelo trabalho feito. E o que sempre esteve aqui — tapado pelo ruido do esforço, pela agitação da busca, pela crença de que a plenitude era destino é não ponto de partida. Agora, o convite é radical na sua simplicidade: para. Não para fazer algo a seguir. Não para te preparares para a próxima etapa. Para — é fica. Fica com o som da tua respiração, com o peso das tuas mãos, com a luz que entra pela janela. E repara que nesse instante, sem esforço nenhum, a vida inteira está presente. Sempre esteve.',
+    mensagem_central: 'Há um momento na jornada em que toda a busca se dissolve — não porque falhaste, mas porque percebeste que aquilo que procuravas nunca esteve fora de ti. O esforço de encontrar a verdade era o único obstáculo entre ti e a verdade. Não há mais nada para conquistar, nenhum nível para alcançar, nenhum mestre que te possa dar o que já vive no teu silêncio. A consciência que emerge do aquietar não é prémio pelo trabalho feito. É o que sempre esteve aqui — tapado pelo ruído do esforço, pela agitação da busca, pela crença de que a plenitude era destino e não ponto de partida. Agora, o convite é radical na sua simplicidade: para. Não para fazer algo a seguir. Não para te preparares para a próxima etapa. Para — e fica. Fica com o som da tua respiração, com o peso das tuas mãos, com a luz que entra pela janela. E repara que nesse instante, sem esforço nenhum, a vida inteira está presente. Sempre esteve.',
     guiao_escrita: {
-      contexto: 'Este exercício não te pede que faças nada. Pede-te que pares — é que escrevas a partir desse lugar onde o esforço já se calou.',
+      contexto: 'Este exercício não te pede que faças nada. Pede-te que pares — e que escrevas a partir desse lugar onde o esforço já se calou.',
       passos: [
         'Antes de escrever, fica cinco minutos sem fazer absolutamente nada. Sem meditação, sem intenção, sem propósito. Apenas sentada, a respirar. Se o desconforto vier, deixa-o estar. Não o resolvas.',
-        'Quando os cinco minutos passarem, escreve a primeira frase que te vier a cabeça. Não a edites. Não a julgues. Deixa-a ser o que for. Essa frase é o teu ponto de partida.',
-        'A partir dessa frase, escreve durante dez minutos sem parar. Se não souberes o que escrever, escreve: "Não sei o que escrever é isso também está bem." Continua. O objectivo não é produzir um texto — é estar presente enquanto escreves.',
+        'Quando os cinco minutos passarem, escreve a primeira frase que te vier à cabeça. Não a edites. Não a julgues. Deixa-a ser o que for. Essa frase é o teu ponto de partida.',
+        'A partir dessa frase, escreve durante dez minutos sem parar. Se não souberes o que escrever, escreve: "Não sei o que escrever e isso também está bem." Continua. O objectivo não é produzir um texto — é estar presente enquanto escreves.',
         'Quando terminares, lê o que escreveste. Sublinha uma única frase — a que te parece mais verdadeira, a que te tocou sem esforço. Escreve-a novamente, separada, no fim da página.',
-        'Por último, escreve: "O que eu já sei sem precisar de procurar e..." Completa. Não com a cabeça — com o corpo. Com o que sentiste nestes minutos de quietude.',
+        'Por último, escreve: "O que eu já sei sem precisar de procurar é..." Completa. Não com a cabeça — com o corpo. Com o que sentiste nestes minutos de quietude.',
       ],
       tempo_sugerido: '20 a 30 minutos',
       nota_final: 'Se sentiste que não "fizeste o suficiente" neste exercício, repara: esse pensamento é o véu do esforço a falar. O que acabaste de fazer — parar, estar, escrever sem meta — é talvez o gesto mais corajoso que este capítulo te podia pedir.',

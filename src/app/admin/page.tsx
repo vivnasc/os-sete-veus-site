@@ -285,7 +285,7 @@ export default function AdminPage() {
 
         {/* ── Áudio ── */}
         <SectionTitle title="Áudio" />
-        <div className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
+        <div className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <ActionCard
             title="Gerar Voz"
             description="Intros, teasers, stories e marketing"
@@ -297,6 +297,12 @@ export default function AdminPage() {
             description="Sons ambiente com ElevenLabs"
             href="/admin/sons"
             icon="♪"
+          />
+          <ActionCard
+            title="Albums"
+            description="Produzir musica para todos os produtos"
+            href="/admin/producao/albums"
+            icon="♫"
           />
         </div>
 
