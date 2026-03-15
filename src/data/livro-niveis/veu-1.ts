@@ -257,7 +257,7 @@ export const veu1Niveis: NivelCapitulo[] = [
       'Tens dificuldade em aceitar que a identidade seja fluxo — precisas de algo sólido.',
     ],
     guiao_reflexao: [
-      'Das três vozes — Ocidente (eu como núcleo), Oriente (eu como fluxo), África (eu como relação) — qual ressoa mais em ti? Porque?',
+      'Das três vozes — Ocidente (eu como núcleo), Oriente (eu como fluxo), África (eu como relação) — qual ressoa mais em ti? Porquê?',
       'Há alguma tradição espiritual ou filosófica que te atrai mas que nunca te deste permissão para explorar? O que te impede?',
       'Escreve uma carta ao teu "eu" de há 5 anos. O que lhe dirias sobre quem te tornaste? E ao teu "eu" de daqui a 5 anos?',
     ],

@@ -45,7 +45,7 @@ export const veu3Niveis: NivelCapitulo[] = [
       'Já tiveste momentos de clareza súbita — e logo a seguir a mente apressou-se a explicar, rotular, arquivar o que sentiste.',
     ],
     guiao_reflexao: [
-      'Durante cinco minutos, escreve tudo o que a tua mente diz — sem filtro, sem censura. Depois rele como se fossem palavras de outra pessoa. O que notas? Há alguma voz ali que não é tua?',
+      'Durante cinco minutos, escreve tudo o que a tua mente diz — sem filtro, sem censura. Depois relê como se fossem palavras de outra pessoa. O que notas? Há alguma voz ali que não é tua?',
       'Descreve um momento em que estavas tão absorvida numa actividade que os pensamentos pararam. O que sentiste nesse intervalo? Quem eras tu sem a narração mental?',
       'Imagina que és o rio e ao mesmo tempo a margem. Escreve uma carta do rio à margem — e depois a resposta da margem ao rio. O que cada um precisa de dizer ao outro?',
     ],
@@ -361,7 +361,7 @@ export const veu3Niveis: NivelCapitulo[] = [
       'Acreditas que há um ponto de chegada — e que quem não o procura está a dormir.',
     ],
     guiao_reflexao: [
-      'Descreve o teu dia de ontem com o máximo detalhe — desde que acordaste até que adormeceste. Agora rele o que escreveste e sublinha cada momento que, visto com outros olhos, poderia ter sido sagrado. Quantos encontras?',
+      'Descreve o teu dia de ontem com o máximo detalhe — desde que acordaste até que adormeceste. Agora relê o que escreveste e sublinha cada momento que, visto com outros olhos, poderia ter sido sagrado. Quantos encontras?',
       'Escreve sobre o que aconteceria se desistisses de procurar. Não de viver, não de sentir — apenas de procurar. Se a busca parasse, o que ficaria? Escreve a partir desse silêncio.',
       'Imagina a tua espiritualidade como sal dissolvido em água — invisível, inseparável, presente em cada gole. Escreve como seria um dia vivido assim: sem rituais separados, sem momentos "especiais", apenas presença contínua.',
     ],
@@ -387,7 +387,7 @@ export const veu3Niveis: NivelCapitulo[] = [
       contexto: 'Este exercício convida-te a dissolver a fronteira entre o sagrado e o quotidiano — a encontrar presença não em momentos especiais, mas no tecido comum da tua vida.',
       passos: [
         'Escreve uma descrição detalhada do teu dia de ontem — desde que acordaste até que adormeceste. Incluir tudo: os gestos banais, as esperas, os momentos em que não aconteceu nada de especial. Escreve como se estivesses a narrar a vida de outra pessoa, com atenção e sem julgamento.',
-        'Agora rele o que escreveste e marca cada momento que, visto com outros olhos, poderia conter sacralidade. Um sabor, um olhar, uma respiração funda, um instante de silêncio. Quantos encontras? Escreve ao lado de cada um: "Isto também é sagrado."',
+        'Agora relê o que escreveste e marca cada momento que, visto com outros olhos, poderia conter sacralidade. Um sabor, um olhar, uma respiração funda, um instante de silêncio. Quantos encontras? Escreve ao lado de cada um: "Isto também é sagrado."',
         'Escreve sobre o que aconteceria se parasseses de procurar. Não de viver, não de sentir, não de crescer — apenas de procurar. Se a busca acabasse agora, neste instante, o que ficaria? Escreve a partir desse lugar de repouso.',
         'Imagina a tua espiritualidade como sal dissolvido em água — invisível, inseparável, presente em cada gole. Descreve como seria um dia inteiro vivido assim: sem prática separada, sem hora espiritual, sem vocabulário especial. Apenas presença contínua, misturada com tudo.',
         'Para terminar, escreve três frases. A primeira começa com "Larguei ___." A segunda com "Encontrei ___." A terceira com "Basta ___." Não planeies. Deixa as frases escreverem-se. O que aparece é a tua verdade deste momento.',
