@@ -148,7 +148,7 @@ export const veu2Niveis: NivelCapitulo[] = [
     mascaras: [
       'A buscadora incansável — a que está sempre a caminho de algo maior, melhor, mais profundo. Nunca chega. Nunca pousa. A busca é a identidade, e parar seria morrer um pouco.',
       'A martir silenciosa — a que carrega mágoas como oferendas, como se sofrer fosse a prova de que amou a serio. Perdoar seria admitir que a dor não valeu a pena.',
-      'A filosofa do sentido — a que precisa de uma razão para tudo, uma moldura existencial para cada gesto. Se algo não tem propósito, não merece espaço. Vive na cabeça porque o corpo não tem respostas.',
+      'A filósofa do sentido — a que precisa de uma razão para tudo, uma moldura existencial para cada gesto. Se algo não tem propósito, não merece espaço. Vive na cabeça porque o corpo não tem respostas.',
       'A ocupada sagrada — a que preenche cada minuto com actividade, com planos, com missões. O vazio é inimigo. O silêncio é ameaça. Se parar, o passado alcança-a.',
     ],
     veu_dominante_sinais: [

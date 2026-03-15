@@ -51,7 +51,7 @@ export const veu6Niveis: NivelCapitulo[] = [
       'Alcançaste algo importante e, em vez de celebrar, já estás a planear o próximo passo — como se parar fosse perigoso.',
       'Sentes ansiedade quando não tens metas definidas, como se a vida sem direcção fosse uma vida vazia.',
       'Defines-te pelo que conquistaste — e quando alguém te pergunta quem és, respondes com o que fazes.',
-      'Quando alguém a tua volta muda de rumo ou desiste de algo, julgas-o em silêncio — porque para ti, desistir é fraqueza.',
+      'Quando alguém à tua volta muda de rumo ou desiste de algo, julgas-o em silêncio — porque para ti, desistir é fraqueza.',
       'O descanso verdadeiro — sem produção, sem propósito, sem resultado — faz-te sentir culpada.',
     ],
     guiao_reflexao: [
@@ -177,9 +177,9 @@ export const veu6Niveis: NivelCapitulo[] = [
   {
     capitulo_numero: 24,
     resumo_acessivel: [
-      'O campo infinito abriu-se. Os mapas foram largados. E agora, no espaço vasto do não-saber, surge algo quase imperceptível: uma voz que não grita, não exige, não argumenta. A intuição. Não é a mente a disfarcar-se de sabedoria — é outra coisa. Um saber que vem antes das palavras.',
+      'O campo infinito abriu-se. Os mapas foram largados. E agora, no espaço vasto do não-saber, surge algo quase imperceptível: uma voz que não grita, não exige, não argumenta. A intuição. Não é a mente a disfarçar-se de sabedoria — é outra coisa. Um saber que vem antes das palavras.',
       'Este capítulo explora a confiança no que não tem prova. A intuição não se justifica. Não apresenta argumentos. Não pede permissão. Sussurra entre pensamentos, no corpo, nos sonhos, naquele momento em que "sabes" sem saber como sabes. E fomos treinados toda a vida a ignorá-la.',
-      'Aprender a ouvir a intuição é um acto de coragem. Porque significa confiar em algo que a mente não controla, que a lógica não válida, e que o mundo a tua volta pode não compreender. Mas é precisamente essa voz que te guia quando os mapas acabam.',
+      'Aprender a ouvir a intuição é um acto de coragem. Porque significa confiar em algo que a mente não controla, que a lógica não valida, e que o mundo à tua volta pode não compreender. Mas é precisamente essa voz que te guia quando os mapas acabam.',
     ],
     perguntas_orientadoras: [
       'Lembras-te de um momento em que sabias algo — no corpo, nas entranhas — antes de teres qualquer razão lógica para o saber?',

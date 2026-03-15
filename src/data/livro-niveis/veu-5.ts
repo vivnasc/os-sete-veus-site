@@ -10,7 +10,7 @@ export const veu5Niveis: NivelCapitulo[] = [
     ],
     perguntas_orientadoras: [
       'Houve algum momento na tua vida em que sentiste o corpo "desligar-se" — sem razão aparente, sem trauma claro — como se a energia simplesmente se tivesse retirado?',
-      'Quando o teu corpo silencia, a tua primeira reacção é tentar força-lo a funcionar — ou consegues escutar o que o silêncio quer dizer?',
+      'Quando o teu corpo silencia, a tua primeira reacção é tentar forçá-lo a funcionar — ou consegues escutar o que o silêncio quer dizer?',
       'O que aconteceria se deixasses o cansaço existir sem o corrigir?',
     ],
     exemplos_concretos: [
@@ -79,7 +79,7 @@ export const veu5Niveis: NivelCapitulo[] = [
     veu_dominante_sinais: [
       'A tua relação com o descanso é conflituosa: quando paras, sentes culpa. Quando não paras, sentes exaustão. Não encontras um lugar entre os dois.',
       'Tens períodos cíclicos em que a energia simplesmente se retira — sem causa médica clara — e a tua reacção é sempre a mesma: forçar-te a funcionar como se nada se passasse.',
-      'As pessoas a tua volta não sabem o que se passa contigo porque aprendeste a esconder tão bem que até tu esqueces que estás a esconder.',
+      'As pessoas à tua volta não sabem o que se passa contigo porque aprendeste a esconder tão bem que até tu esqueces que estás a esconder.',
       'Há uma sensação de peso que te acompanha há tempo — não ligada a nenhum evento específico, mas presente como pano de fundo, como humidade no ar.',
       'Quando alguém te pergunta como estás, a resposta automática é "cansada" — e essa palavra carrega muito mais do que fadiga física.',
     ],
@@ -339,7 +339,7 @@ export const veu5Niveis: NivelCapitulo[] = [
       'Se não estou a fazer algo, estou a perder tempo.',
       'O intervalo é espera — e a espera é sofrimento.',
       'Só tenho valor quando sou produtiva, útil, necessária.',
-      'Se eu parar, tudo a minha volta vai desmoronar.',
+      'Se eu parar, tudo à minha volta vai desmoronar.',
       'O vazio entre duas fases da vida é um problema a resolver, não um lugar para estar.',
     ],
     sinais_do_veu: [

@@ -16,7 +16,7 @@ export const veu7Niveis: NivelCapitulo[] = [
     exemplos_concretos: [
       {
         contexto: 'Na prática diária',
-        texto: 'Imagina que meditas há anos, les, reflectes, trabalhas sombras. Um dia percebes que ainda estás a esperar o momento em que "tudo faz sentido". Essa espera é o guardião do limiar — não te barra o caminho com obstáculo, barra-o com a promessa de chegada. O capítulo pergunta: o que acontece se parares de esperar?',
+        texto: 'Imagina que meditas há anos, lês, reflectes, trabalhas sombras. Um dia percebes que ainda estás a esperar o momento em que "tudo faz sentido". Essa espera é o guardião do limiar — não te barra o caminho com obstáculo, barra-o com a promessa de chegada. O capítulo pergunta: o que acontece se parares de esperar?',
       },
       {
         contexto: 'Nas relações',
@@ -82,7 +82,7 @@ export const veu7Niveis: NivelCapitulo[] = [
         'Fecha os olhos e imagina o limiar — a fronteira entre onde estás e onde acreditas que precisas de estar. Não o penses. Sente-o. Como é esse espaço? Que temperatura tem? Que luz existe ali?',
         'Agora imagina o guardião. Não lhe dês uma forma predefinida — deixa que apareça. Pode ser uma figura, uma sensação, uma voz, um peso. Escreve o que viste ou sentiste, sem censurar.',
         'Pergunta ao guardião: "O que é que eu ainda carrego que me impede de atravessar?" Escreve a resposta que vier — mesmo que não faça sentido lógico. Deixa a mão escrever sem a mente editar.',
-        'Agora imagina que te sentas ao lado do guardião. Não tentas passar. Não tentas convencê-lo. Apenas ficas. Escreve o que acontece nesse ficar — no corpo, na respiração, no espaço a tua volta.',
+        'Agora imagina que te sentas ao lado do guardião. Não tentas passar. Não tentas convencê-lo. Apenas ficas. Escreve o que acontece nesse ficar — no corpo, na respiração, no espaço à tua volta.',
         'Relê tudo o que escreveste. Sublinha a frase que mais te toca. Essa frase é a tua chave — não para abrir uma porta, mas para perceber que a porta já estava aberta.',
       ],
       tempo_sugerido: '30 a 40 minutos, num lugar onde ninguém te interrompa',
@@ -257,7 +257,7 @@ export const veu7Niveis: NivelCapitulo[] = [
         'Agora recorda os sete véus — ilusão, medo, culpa, identidade, controlo, desejo, dualidade. Para cada um, escreve uma única palavra que te vem quando pensas nele. Não expliques. Apenas uma palavra por véu. Olha para as sete palavras lado a lado.',
         'Escreve uma carta ao ser que eras quando começaste esta leitura. Não a adores. Não a corrijas. Fala-lhe como quem fala a alguém que ama e que sempre esteve a fazer o melhor que sabia. Diz-lhe o que descobriste — não sobre o mundo, mas sobre ela.',
         'Agora escreve uma única frase — a frase que, se fosse a única coisa que ficasse de toda esta jornada, bastaria. A frase que levarias contigo para uma ilha deserta, não como ensinamento, mas como companhia.',
-        'Fecha o caderno. Respira. Olha a tua volta. O mundo não mudou. Mas repara: alguma coisa em ti repousa agora de uma forma que não repousava antes. Não precisas de a nomear. Ela já sabe o que é.',
+        'Fecha o caderno. Respira. Olha à tua volta. O mundo não mudou. Mas repara: alguma coisa em ti repousa agora de uma forma que não repousava antes. Não precisas de a nomear. Ela já sabe o que é.',
       ],
       tempo_sugerido: '40 a 50 minutos, num momento que possas estar a sós sem pressa de ir para lado nenhum',
       nota_final: 'Se ao terminares sentires que não mudou nada — que és a mesma pessoa que eras antes desta leitura — repara com atenção. Talvez não tenhas mudado. Talvez tenhas apenas deixado de fingir que precisavas de mudar. E talvez isso seja tudo.',

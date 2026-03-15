@@ -73,7 +73,7 @@ export const veu4Niveis: NivelCapitulo[] = [
       'Quando alguém te diz "descansa", sentes irritação ou desconforto em vez de alívio — como se descansar fosse uma ofensa ao teu modo de estar no mundo.',
       'Medes o teu valor pelo que produzes num dia. Um dia sem tarefas concluídas é um dia perdido. Há uma contabilidade interior que nunca fecha a teu favor.',
       'Mesmo nas ferias ou nos dias livres, há uma parte de ti que calcula o próximo passo, o próximo projecto. O descanso é sempre provisório — prepara-se para o próximo esforço.',
-      'Quando alguém a tua volta para e simplesmente está, sentes desconfiança ou até desprezo suave — como se a quietude fosse preguiça disfarçada.',
+      'Quando alguém à tua volta para e simplesmente está, sentes desconfiança ou até desprezo suave — como se a quietude fosse preguiça disfarçada.',
     ],
     mensagem_central: 'Há um lugar em ti que confunde esforço com dignidade. Que acredita, no fundo, que só mereces existir se estiveres a dar, a fazer, a sustentar. Esse lugar não nasceu do nada — foi construído por anos de recompensa pelo sacrifício e silêncio diante do cansaço. Mas há uma verdade que o esforço constante tenta abafar: tu não precisas de te gastar para merecer ficar. O amor que exige que te dissolvas não é amor — é consumo. E o primeiro gesto de coragem não é fazer mais, é parar. Parar não como desistência, mas como acto radical de presença. Quando paras, o que surge não é vazio — é o som do teu próprio corpo a dizer-te, finalmente, o que precisa.',
     guiao_escrita: {
@@ -271,7 +271,7 @@ export const veu4Niveis: NivelCapitulo[] = [
     exemplos_concretos: [
       {
         contexto: 'Na prática diária',
-        texto: 'Imagina um dia em que não meditas, não les, não práticas nada "espiritual" — e, no entanto, sentes uma paz suave no acto de caminhar até ao mercado. Essa leveza sem esforço é o que o capítulo descreve como "a simplicidade do ser".',
+        texto: 'Imagina um dia em que não meditas, não lês, não praticas nada "espiritual" — e, no entanto, sentes uma paz suave no acto de caminhar até ao mercado. Essa leveza sem esforço é o que o capítulo descreve como "a simplicidade do ser".',
       },
     ],
     notas_contextuais: [
@@ -330,7 +330,7 @@ export const veu4Niveis: NivelCapitulo[] = [
       contexto: 'Este exercício não te pede que faças nada. Pede-te que pares — e que escrevas a partir desse lugar onde o esforço já se calou.',
       passos: [
         'Antes de escrever, fica cinco minutos sem fazer absolutamente nada. Sem meditação, sem intenção, sem propósito. Apenas sentada, a respirar. Se o desconforto vier, deixa-o estar. Não o resolvas.',
-        'Quando os cinco minutos passarem, escreve a primeira frase que te vier a cabeça. Não a edites. Não a julgues. Deixa-a ser o que for. Essa frase é o teu ponto de partida.',
+        'Quando os cinco minutos passarem, escreve a primeira frase que te vier à cabeça. Não a edites. Não a julgues. Deixa-a ser o que for. Essa frase é o teu ponto de partida.',
         'A partir dessa frase, escreve durante dez minutos sem parar. Se não souberes o que escrever, escreve: "Não sei o que escrever e isso também está bem." Continua. O objectivo não é produzir um texto — é estar presente enquanto escreves.',
         'Quando terminares, lê o que escreveste. Sublinha uma única frase — a que te parece mais verdadeira, a que te tocou sem esforço. Escreve-a novamente, separada, no fim da página.',
         'Por último, escreve: "O que eu já sei sem precisar de procurar é..." Completa. Não com a cabeça — com o corpo. Com o que sentiste nestes minutos de quietude.',
