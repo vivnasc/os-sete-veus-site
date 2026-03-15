@@ -383,7 +383,7 @@ export default async function ExperienciaDetailPage({
                   href="/entrar"
                   className="animate-pulse-glow inline-block rounded-md border-2 border-cream bg-cream px-10 py-4 font-sans text-[0.85rem] font-medium uppercase tracking-[0.15em] text-brown-900 transition-all hover:bg-transparent hover:text-cream"
                 >
-                  Comecar &mdash; ${exp.priceUSD}
+                  Começar &mdash; ${exp.priceUSD}
                 </Link>
                 <Link
                   href="/experiencias"
