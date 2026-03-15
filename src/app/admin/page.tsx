@@ -245,6 +245,24 @@ export default function AdminPage() {
               icon="🔑"
             />
             <ActionCard
+              title="Producao Cursos"
+              description="Pipeline: scripts, audio, imagens, videos"
+              href="/admin/cursos/producao"
+              icon="▶"
+            />
+            <ActionCard
+              title="Territorios Visuais"
+              description="40 paisagens do Mundo dos Veus"
+              href="/admin/cursos/territorios"
+              icon="◈"
+            />
+            <ActionCard
+              title="Videos YouTube"
+              description="Scripts, narracao e montagem de hooks"
+              href="/admin/cursos/youtube"
+              icon="▷"
+            />
+            <ActionCard
               title="Gerar Voz"
               description="Clips de voz — intros, teasers, stories e marketing"
               href="/admin/voz"

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase-server";
 import { nanoid } from "nanoid";
+import Stripe from "stripe";
 
 /**
  * POST /api/courses/webhook
@@ -30,15 +31,15 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // Verify webhook signature using Stripe API
-  // For production, use the stripe SDK. Here we do a minimal verification.
-  let event;
+  // Verify webhook signature using Stripe SDK
+  const stripe = new Stripe(stripeSecretKey);
+  let event: Stripe.Event;
   try {
-    // Construct event from raw body (simplified — in production use stripe.webhooks.constructEvent)
-    event = JSON.parse(body);
-  } catch {
+    event = stripe.webhooks.constructEvent(body, signature, stripeWebhookSecret);
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : "Assinatura invalida";
     return NextResponse.json(
-      { error: "Payload invalido" },
+      { error: `Webhook: ${msg}` },
       { status: 400 }
     );
   }
