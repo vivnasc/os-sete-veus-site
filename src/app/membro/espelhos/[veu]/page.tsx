@@ -363,7 +363,7 @@ export default function EspelhoHubPage({ params }: { params: Promise<{ veu: stri
                   </p>
                 ) : hasNosIncluded ? (
                   <Link
-                    href="/membro/nos"
+                    href={`/membro/nos/${nosBook.slug}`}
                     className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#c9a87c] px-5 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b8975b]"
                   >
                     Desatar este nó &rarr;
