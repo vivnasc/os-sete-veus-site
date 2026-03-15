@@ -6,7 +6,7 @@ export const veu6Niveis: NivelCapitulo[] = [
     resumo_acessivel: [
       'Chegamos. Ou pensamos que sim. Um diploma, uma relação estável, um emprego seguro, um corpo curado — é a mente sussurra: "pronto, agora posso descansar." Mas a matrix humana constrói ilusões de chegada. Cada meta alcancada cria a fantasia de um ponto final, quando na verdade a vida não para para nós aplaudir.',
       'Este capítulo despe a armadilha das conquistas que se tornam prisões. O título, o estatuto, o objectivo concretizado — tudo isto pode solidificar-se numa identidade rígida. "Sou a mulher que conseguiu." E a partir daí, qualquer movimento parece ameaça, porque se já chegaste, mover-se é admitir que não era o fim.',
-      'O véu do horizonte não é sobre desvalorizar o que conquistaste. E sobre reconhecer que nenhuma conquista te completa — porque tu não és um projecto a ser concluido. Es um fluxo.',
+      'O véu do horizonte não é sobre desvalorizar o que conquistaste. E sobre reconhecer que nenhuma conquista te completa — porque tu não és um projecto a ser concluído. Es um fluxo.',
     ],
     perguntas_orientadoras: [
       'Há alguma conquista na tua vida que, em vez de te libertar, te prendeu — porque agora tens medo de a perder?',
@@ -203,7 +203,7 @@ export const veu6Niveis: NivelCapitulo[] = [
       },
       {
         paragrafo_indice: 11,
-        texto: 'Sao João da Cruz chamou-lhe "noite escura da alma" — o momento em que todos os mapas falham, todos os mestres se calam, é só resta uma confiança nua no que não se ve. A intuição nasce nessa escuridao, não apesar dela, mas por causa dela.',
+        texto: 'Sao João da Cruz chamou-lhe "noite escura da alma" — o momento em que todos os mapas falham, todos os mestres se calam, é só resta uma confiança nua no que não se vê. A intuição nasce nessa escuridao, não apesar dela, mas por causa dela.',
       },
       {
         paragrafo_indice: 17,
@@ -237,14 +237,14 @@ export const veu6Niveis: NivelCapitulo[] = [
     // Camada profunda
     mascaras: [
       'A racionalista — a que só confia no que pode ser medido, provado, explicado. Construiu toda a sua vida sobre lógica é evidência, é quando algo não cabe nessa estrutura, descarta-o. A razão é a sua fortaleza, mas também a sua prisão — porque há coisas que a razão não alcança é que são verdadeiras mesmo assim.',
-      'A validadora externa — a que só acredita em si quando alguém confirma. Pode sentir algo com toda a força do corpo, mas se ninguém mais o ve, dúvida. Transformou a sua percepção numa coisa frágil, dependente de testemunhas. O que ela sabe sozinha nunca parece suficiente.',
+      'A validadora externa — a que só acredita em si quando alguém confirma. Pode sentir algo com toda a força do corpo, mas se ninguém mais o vê, dúvida. Transformou a sua percepção numa coisa frágil, dependente de testemunhas. O que ela sabe sozinha nunca parece suficiente.',
       'A cumpridora de protocolos — a que segue os passos "certos" em tudo: na carreira, na saúde, na espiritualidade. Se há um método, segue-o. Se há um especialista, obedece. A intuição é demasiado desordenada, demasiado pessoal, demasiado sua — é ela aprendeu que "o seu" não é de confiança.',
       'A tradutora compulsiva — a que precisa de converter cada sensação em palavras, cada pressentimento em explicação. Se não consegue articular o que sente, age como se não o sentisse. A intuição fala-lhe todos os dias, mas ela só ouve o que consegue traduzir — é o mais importante é quase sempre o que escapa a tradução.',
     ],
     veu_dominante_sinais: [
       'Tens uma história longa de momentos em que sabias — no corpo, no instinto — é mesmo assim escolheste o que "fazia sentido". E mais tarde confirmaste que o corpo tinha razão. Mas continuas a repetir o padrão.',
       'A tua relação com a autoridade é de dependência silenciosa. Precisas que alguém — um médico, um terapeuta, um livro, um mestre — te diga o que já sabes, para finalmente te permitires agir.',
-      'Sentes-te desligada do teu corpo. Vives "do pescoço para cima", é as sensações físicas são ruido de fundo que raramente consultas para tomar decisões. O corpo fala, mas tu aprendeste a não ouvir.',
+      'Sentes-te desligada do teu corpo. Vives "do pescoço para cima", é as sensações físicas são ruído de fundo que raramente consultas para tomar decisões. O corpo fala, mas tu aprendeste a não ouvir.',
       'Quando te encontras num momento de silêncio profundo — sem estimulos, sem tarefas, sem distracção — sentes desconforto. Não porque o silêncio seja vazio, mas porque nele a intuição fica audível, é ouvir-la obrigaria-te a mudar algo.',
       'Notas que muitas das decisões mais importantes da tua vida foram tomadas contra a tua intuição — é que as que correram melhor foram aquelas raras vezes em que confiaste no que não conseguias explicar.',
     ],

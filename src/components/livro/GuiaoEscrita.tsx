@@ -32,7 +32,7 @@ export default function GuiaoEscrita({ guiao, modoNoturno = false }: Props) {
         <p className={`text-xs font-sans uppercase tracking-wide mb-1 ${
           modoNoturno ? 'text-stone-500' : 'text-stone-400'
         }`}>
-          Exercicio de escrita guiada
+          Exercício de escrita guiada
         </p>
         <p className={`text-sm font-serif italic leading-relaxed ${
           modoNoturno ? 'text-stone-300' : 'text-stone-600'

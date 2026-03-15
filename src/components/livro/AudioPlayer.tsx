@@ -113,7 +113,7 @@ export default function AudioPlayer({
                   ? 'hover:bg-stone-800 text-stone-400'
                   : 'hover:bg-stone-100 text-stone-500'
             }`}
-            aria-label="Paragrafo anterior"
+            aria-label="Parágrafo anterior"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
               <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
@@ -152,7 +152,7 @@ export default function AudioPlayer({
                   ? 'hover:bg-stone-800 text-stone-400'
                   : 'hover:bg-stone-100 text-stone-500'
             }`}
-            aria-label="Proximo paragrafo"
+            aria-label="Próximo parágrafo"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
               <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
@@ -266,7 +266,7 @@ export default function AudioPlayer({
               ? 'hover:bg-stone-800 text-stone-600 hover:text-stone-400'
               : 'hover:bg-stone-100 text-stone-400 hover:text-stone-600'
           }`}
-          aria-label="Fechar leitor de audio"
+          aria-label="Fechar leitor de áudio"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
             <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />

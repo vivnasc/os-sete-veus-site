@@ -131,19 +131,19 @@ export default function OsSeteVeusPage() {
           <p className="font-sans text-[0.7rem] uppercase tracking-[0.25em] text-[#c9a87c]">
             A segunda dimensão
           </p>
-          <h2 className="mt-4 font-serif text-3xl text-brown-900">Colecção Nos</h2>
+          <h2 className="mt-4 font-serif text-3xl text-brown-900">Colecção Nós</h2>
           <p className="mx-auto mt-4 max-w-xl leading-relaxed text-brown-600">
             Os Espelhos mostram-te o véu que usas.
-            Os Nos mostram-te o que esse véu fez entre ti e outra pessoa.
+            Os Nós mostram-te o que esse véu fez entre ti e outra pessoa.
           </p>
           <p className="mx-auto mt-4 max-w-md text-sm text-brown-500">
-            Cada No desbloqueia-se ao completar o Espelho correspondente.
+            Cada Nó desbloqueia-se ao completar o Espelho correspondente.
           </p>
           <Link
             href="/coleccao-nos"
             className="mt-8 inline-block rounded-full border-2 border-[#c9a87c]/40 px-8 py-3 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-[#c9a87c] transition-all hover:border-[#c9a87c] hover:bg-[#c9a87c]/10"
           >
-            Explorar Colecção Nos
+            Explorar Colecção Nós
           </Link>
         </div>
       </section>

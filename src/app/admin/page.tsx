@@ -206,7 +206,7 @@ export default function AdminPage() {
         <div className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <ActionCard
             title="Pagamentos"
-            description="Aprovar transferencias e pagamentos"
+            description="Aprovar transferências e pagamentos"
             href="/admin/pagamentos"
             icon="💳"
             badge={stats?.pendingPayments || 0}
@@ -224,8 +224,8 @@ export default function AdminPage() {
             icon="🔗"
           />
           <ActionCard
-            title="Codigos"
-            description="Gerar e gerir codigos do livro"
+            title="Códigos"
+            description="Gerar e gerir códigos do livro"
             href="/autora/codigos"
             icon="🔑"
           />
@@ -235,14 +235,14 @@ export default function AdminPage() {
         <SectionTitle title="Livros e Leitura" />
         <div className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <ActionCard
-            title="Livro Fisico"
-            description="Ver e editar pagina de vendas"
+            title="Livro Físico"
+            description="Ver e editar página de vendas"
             href="/livros/edicao-fisica"
             icon="📖"
           />
           <ActionCard
             title="Leitoras"
-            description="Estatisticas de leitura por veu"
+            description="Estatísticas de leitura por véu"
             href="/autora/dashboard"
             icon="◎"
           />
@@ -254,18 +254,18 @@ export default function AdminPage() {
           />
         </div>
 
-        {/* ── Escola dos Veus ── */}
-        <SectionTitle title="Escola dos Veus" />
+        {/* ── Escola dos Véus ── */}
+        <SectionTitle title="Escola dos Véus" />
         <div className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <ActionCard
-            title="Producao"
-            description="Pipeline: scripts, audio, imagens"
+            title="Produção"
+            description="Pipeline: scripts, áudio, imagens"
             href="/admin/cursos/producao"
             icon="▶"
           />
           <ActionCard
-            title="Territorios"
-            description="Paisagens do Mundo dos Veus"
+            title="Territórios"
+            description="Paisagens do Mundo dos Véus"
             href="/admin/cursos/territorios"
             icon="◈"
           />
@@ -283,8 +283,8 @@ export default function AdminPage() {
           />
         </div>
 
-        {/* ── Audio ── */}
-        <SectionTitle title="Audio" />
+        {/* ── Áudio ── */}
+        <SectionTitle title="Áudio" />
         <div className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
           <ActionCard
             title="Gerar Voz"
@@ -304,7 +304,7 @@ export default function AdminPage() {
         <SectionTitle title="Marketing" />
         <div className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <ActionCard
-            title="Conteudo Pronto"
+            title="Conteúdo Pronto"
             description="Posts com imagem + legenda + WhatsApp"
             href="/painel/marketing"
             icon="📱"
@@ -327,20 +327,20 @@ export default function AdminPage() {
         <SectionTitle title="Sistema" />
         <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <ActionCard
-            title="Notificacoes"
-            description="Ver todas as notificacoes"
+            title="Notificações"
+            description="Ver todas as notificações"
             href="/admin/notificacoes"
             icon="🔔"
             badge={stats?.unreadNotifications || 0}
           />
           <ActionCard
             title="Analytics"
-            description="Metricas e estatisticas"
+            description="Métricas e estatísticas"
             href="/admin/analytics"
             icon="📊"
           />
           <ActionCard
-            title="Configuracoes"
+            title="Configurações"
             description="Ajustes gerais do site"
             href="/admin/configuracoes"
             icon="⚙️"

@@ -6,17 +6,17 @@ import Link from "next/link";
 const FAQ_RAPIDA = [
   {
     q: "Quanto tempo demora a resposta?",
-    a: "Respondemos em 24 horas nos dias uteis. Se for urgente, usa o Telegram.",
+    a: "Respondemos em 24 horas nos dias úteis. Se for urgente, usa o Telegram.",
   },
   {
-    q: "Comprei o livro fisico. Como acedo ao digital?",
-    a: "Pede o teu codigo de acesso na pagina dedicada.",
-    link: { label: "Pedir codigo", href: "/pedir-codigo" },
+    q: "Comprei o livro físico. Como acedo ao digital?",
+    a: "Pede o teu código de acesso na página dedicada.",
+    link: { label: "Pedir código", href: "/pedir-codigo" },
   },
   {
     q: "Como funciona o pagamento?",
-    a: "Aceitamos PayPal e M-Pesa. Apos envio do comprovativo, confirmamos em 24h.",
-    link: { label: "Ver metodos", href: "/comprar" },
+    a: "Aceitamos PayPal e M-Pesa. Após envio do comprovativo, confirmamos em 24h.",
+    link: { label: "Ver métodos", href: "/comprar" },
   },
 ];
 
@@ -53,7 +53,7 @@ export default function ContactoPage() {
       setStatus("sent");
       setForm({ name: "", email: "", subject: "", message: "" });
     } catch {
-      setErrorMsg("Erro de ligacao. Tenta novamente.");
+      setErrorMsg("Erro de ligação. Tenta novamente.");
       setStatus("error");
     }
   };
@@ -70,8 +70,8 @@ export default function ContactoPage() {
             Fala connosco.
           </h1>
           <p className="mx-auto mt-4 max-w-md font-body text-base leading-relaxed text-brown-600">
-            Tens uma duvida, sugestao ou precisas de ajuda? Estamos aqui.
-            Respondemos em 24 horas uteis.
+            Tens uma dúvida, sugestão ou precisas de ajuda? Estamos aqui.
+            Respondemos em 24 horas úteis.
           </p>
         </div>
       </section>
@@ -156,7 +156,7 @@ export default function ContactoPage() {
                     Mensagem enviada.
                   </p>
                   <p className="mt-2 text-sm text-brown-500">
-                    Respondemos em 24 horas uteis. Obrigada pela tua mensagem.
+                    Respondemos em 24 horas úteis. Obrigada pela tua mensagem.
                   </p>
                   <button
                     onClick={() => setStatus("idle")}
@@ -209,10 +209,10 @@ export default function ContactoPage() {
                     >
                       <option value="">Selecciona um assunto</option>
                       <option value="Pagamento">Pagamento</option>
-                      <option value="Codigo de acesso">Codigo de acesso</option>
-                      <option value="Problema tecnico">Problema tecnico</option>
-                      <option value="Duvida sobre conteudo">Duvida sobre conteudo</option>
-                      <option value="Sugestao">Sugestao</option>
+                      <option value="Código de acesso">Código de acesso</option>
+                      <option value="Problema técnico">Problema técnico</option>
+                      <option value="Dúvida sobre conteúdo">Dúvida sobre conteúdo</option>
+                      <option value="Sugestão">Sugestão</option>
                       <option value="Outro">Outro</option>
                     </select>
                   </div>

@@ -302,7 +302,7 @@ function PayPalContent() {
               }
               className="text-sm text-brown-500 underline hover:text-brown-700"
             >
-              Transferencia Bancaria
+              Transferência Bancária
             </button>
           </div>
         </div>

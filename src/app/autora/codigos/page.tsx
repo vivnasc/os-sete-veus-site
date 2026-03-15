@@ -271,7 +271,7 @@ export default function AutoraCodigosPage() {
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-cream">
-        <p className="text-brown-600">Carregando...</p>
+        <p className="text-brown-600">A carregar...</p>
       </div>
     )
   }
@@ -547,7 +547,7 @@ export default function AutoraCodigosPage() {
                   disabled={isGenerating}
                   className="w-full rounded-lg bg-sage px-6 py-3 font-sans text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-sage-dark disabled:opacity-50"
                 >
-                  {isGenerating ? 'Gerando...' : 'Gerar código único'}
+                  {isGenerating ? 'A gerar...' : 'Gerar código único'}
                 </button>
               </form>
 

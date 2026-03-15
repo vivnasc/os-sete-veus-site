@@ -161,7 +161,7 @@ export default function ColeccaoNosPage() {
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-serif text-3xl text-cream">Não sabes por onde começar?</h2>
           <p className="mx-auto mt-4 max-w-md leading-relaxed text-brown-200">
-            Começa pelo Espelho — o No virá quando estiveres pronta.
+            Começa pelo Espelho — o Nó virá quando estiveres pronta.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
