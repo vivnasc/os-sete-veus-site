@@ -63,7 +63,7 @@ export default function AutoraDashboardPage() {
       <div className="min-h-screen bg-stone-50 flex items-center justify-center">
         <div className="text-center">
           <div className="inline-block animate-spin text-6xl mb-4">⚬</div>
-          <p className="text-stone-600">Carregando...</p>
+          <p className="text-stone-600">A carregar...</p>
         </div>
       </div>
     )

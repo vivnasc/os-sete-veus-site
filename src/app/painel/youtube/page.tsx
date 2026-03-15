@@ -160,9 +160,9 @@ function VideoCard({ video, expanded, onToggle }: {
               {video.script.map((scene, i) => {
                 const sectionLabels: Record<string, string> = {
                   gancho: "Gancho",
-                  situacao: "Situacao reconhecivel",
-                  padrao: "O padrao por baixo",
-                  gesto: "Gesto de consciencia",
+                  situacao: "Situação reconhecível",
+                  padrao: "O padrão por baixo",
+                  gesto: "Gesto de consciência",
                   fecho: "Frase final + CTA",
                 };
                 const sectionColors: Record<string, string> = {
@@ -222,7 +222,7 @@ function VideoCard({ video, expanded, onToggle }: {
                 color: PALETTE.violet,
               }}
             >
-              Copiar narracao completa
+              Copiar narração completa
             </button>
           )}
 
@@ -232,7 +232,7 @@ function VideoCard({ video, expanded, onToggle }: {
               className="text-xs font-medium cursor-pointer"
               style={{ color: PALETTE.violet }}
             >
-              Ver descricao YouTube
+              Ver descrição YouTube
             </summary>
             <pre
               className="mt-2 text-xs p-3 rounded-lg whitespace-pre-wrap overflow-x-auto"
@@ -262,7 +262,7 @@ function ChecklistPanel() {
         className="text-sm font-semibold uppercase tracking-wider"
         style={{ color: PALETTE.gold }}
       >
-        Checklist por Video
+        Checklist por Vídeo
       </h3>
       <ul className="space-y-2">
         {VIDEO_CHECKLIST.map((item, i) => (
@@ -289,10 +289,10 @@ function PipelinePanel() {
         className="text-sm font-semibold uppercase tracking-wider"
         style={{ color: PALETTE.gold }}
       >
-        Pipeline de Producao
+        Pipeline de Produção
       </h3>
       <p className="text-xs" style={{ color: PALETTE.cream + "60" }}>
-        Producao na vespera (Seg/Qua/Sex). Ideal: 2-3 videos em avanco.
+        Produção na véspera (Seg/Qua/Sex). Ideal: 2-3 vídeos em avanço.
       </p>
       <ol className="space-y-2">
         {PRODUCTION_STEPS.map((s) => (
@@ -329,7 +329,7 @@ function StatsBar() {
       {[
         { label: "Total", value: all.length, color: PALETTE.cream },
         { label: "Rascunho", value: counts.draft, color: "#9CA3AF" },
-        { label: "Em producao", value: counts.producing + counts.review, color: "#93C5FD" },
+        { label: "Em produção", value: counts.producing + counts.review, color: "#93C5FD" },
         { label: "Publicados", value: counts.published + counts.scheduled, color: "#86EFAC" },
       ].map((s) => (
         <div
@@ -384,7 +384,7 @@ export default function YouTubeCalendarPage() {
                 className="text-lg sm:text-xl font-bold"
                 style={{ color: PALETTE.cream, fontFamily: "'Playfair Display', Georgia, serif" }}
               >
-                Calendario YouTube
+                Calendário YouTube
               </h1>
               <p className="text-xs" style={{ color: PALETTE.cream + "60" }}>
                 4 semanas · 12 videos · {YOUTUBE_SCHEDULE.daysOfWeek.map(getDayLabel).join(", ")} · {YOUTUBE_SCHEDULE.publishTime}h
@@ -523,7 +523,7 @@ export default function YouTubeCalendarPage() {
             className="text-xs font-semibold uppercase tracking-wider mb-2"
             style={{ color: PALETTE.silhouette }}
           >
-            CTA padrao (primeiras 4 semanas)
+            CTA padrão (primeiras 4 semanas)
           </h3>
           <p
             className="text-sm italic leading-relaxed"
@@ -545,13 +545,13 @@ export default function YouTubeCalendarPage() {
             className="text-xs font-semibold uppercase tracking-wider mb-3"
             style={{ color: PALETTE.gold }}
           >
-            Estrutura de cada video
+            Estrutura de cada vídeo
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
             {[
               { time: "0:00", label: "Gancho", dur: "15s" },
-              { time: "0:15", label: "Situacao", dur: "~75s" },
-              { time: "1:30", label: "Padrao", dur: "~2min" },
+              { time: "0:15", label: "Situação", dur: "~75s" },
+              { time: "1:30", label: "Padrão", dur: "~2min" },
               { time: "3:30", label: "Gesto", dur: "~90s" },
               { time: "5:00", label: "Frase + CTA", dur: "30s" },
             ].map((s) => (

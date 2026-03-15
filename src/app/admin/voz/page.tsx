@@ -800,10 +800,10 @@ export default function VozPage() {
         {aba === "podcast" && (
           <div className="space-y-3">
             <div className="rounded-lg border border-sage/20 bg-cream px-5 py-4">
-              <p className="text-sm font-medium text-forest">Serie: Conversas com o Espelho</p>
+              <p className="text-sm font-medium text-forest">Série: Conversas com o Espelho</p>
               <p className="mt-1 text-xs text-sage">
-                14 episodios + intro + outro. Total: {podcastCharCount.total.toLocaleString()} caracteres.
-                Publicos: 7 (~8 min). Exclusivos: 7 (~5 min).
+                14 episódios + intro + outro. Total: {podcastCharCount.total.toLocaleString()} caracteres.
+                Públicos: 7 (~8 min). Exclusivos: 7 (~5 min).
               </p>
             </div>
 
@@ -811,7 +811,7 @@ export default function VozPage() {
             <ItemVoz
               id="podcast-intro"
               ficheiro="podcast-intro.mp3"
-              nome="Intro (reutilizavel)"
+              nome="Intro (reutilizável)"
               texto={PODCAST_META.introScript}
               estado={estados["podcast-intro"] || "idle"}
               erro={erros["podcast-intro"]}
@@ -824,7 +824,7 @@ export default function VozPage() {
             />
 
             {/* Episodes */}
-            <p className="text-xs font-medium text-sage uppercase tracking-wider pt-2">Episodios publicos</p>
+            <p className="text-xs font-medium text-sage uppercase tracking-wider pt-2">Episódios públicos</p>
             {PODCAST_EPISODES.filter((ep) => ep.type === "public").map((ep) => {
               const id = `podcast-${ep.id}`;
               const ficheiro = `podcast-${ep.id}.mp3`;
@@ -843,7 +843,7 @@ export default function VozPage() {
               );
             })}
 
-            <p className="text-xs font-medium text-sage uppercase tracking-wider pt-2">Episodios exclusivos (membros)</p>
+            <p className="text-xs font-medium text-sage uppercase tracking-wider pt-2">Episódios exclusivos (membros)</p>
             {PODCAST_EPISODES.filter((ep) => ep.type === "exclusive").map((ep) => {
               const id = `podcast-${ep.id}`;
               const ficheiro = `podcast-${ep.id}.mp3`;
@@ -866,7 +866,7 @@ export default function VozPage() {
             <ItemVoz
               id="podcast-outro"
               ficheiro="podcast-outro.mp3"
-              nome="Outro (reutilizavel)"
+              nome="Outro (reutilizável)"
               texto={PODCAST_META.outroScript}
               estado={estados["podcast-outro"] || "idle"}
               erro={erros["podcast-outro"]}

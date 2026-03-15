@@ -135,7 +135,7 @@ export default function EspelhoPage() {
         {loadingReflexoes ? (
           <div className="text-center py-12">
             <div className="inline-block animate-spin text-6xl">⚬</div>
-            <p className="mt-4 text-white/60">Carregando tua travessia...</p>
+            <p className="mt-4 text-white/60">A carregar a tua travessia...</p>
           </div>
         ) : reflexoes.length === 0 ? (
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center">

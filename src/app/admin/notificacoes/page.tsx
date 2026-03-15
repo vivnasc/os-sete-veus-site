@@ -23,8 +23,8 @@ const TYPE_LABELS: Record<string, string> = {
   payment_created: "Novo Pagamento",
   payment_confirmed: "Confirmado",
   payment_rejected: "Rejeitado",
-  code_request: "Pedido Codigo",
-  code_redeemed: "Codigo Resgatado",
+  code_request: "Pedido Código",
+  code_redeemed: "Código Resgatado",
   special_link_used: "Link Especial",
   new_member: "Novo Membro",
   espelho_completed: "Espelho Completo",
@@ -46,13 +46,13 @@ const TYPE_COLORS: Record<string, string> = {
 
 const FILTER_OPTIONS = [
   { value: "all", label: "Todas" },
-  { value: "unread", label: "Nao lidas" },
+  { value: "unread", label: "Não lidas" },
   { value: "payment_proof", label: "Comprovativos" },
   { value: "payment_created", label: "Pagamentos" },
   { value: "payment_confirmed", label: "Confirmados" },
   { value: "payment_rejected", label: "Rejeitados" },
-  { value: "code_request", label: "Pedidos Codigo" },
-  { value: "code_redeemed", label: "Codigos" },
+  { value: "code_request", label: "Pedidos Código" },
+  { value: "code_redeemed", label: "Códigos" },
   { value: "special_link_used", label: "Links" },
   { value: "new_member", label: "Novos Membros" },
   { value: "espelho_completed", label: "Espelhos" },
@@ -141,9 +141,9 @@ export default function NotificacoesPage() {
     const days = Math.floor(diff / 86400000);
 
     if (mins < 1) return "agora mesmo";
-    if (mins < 60) return `ha ${mins}min`;
-    if (hours < 24) return `ha ${hours}h`;
-    if (days < 7) return `ha ${days}d`;
+    if (mins < 60) return `há ${mins}min`;
+    if (hours < 24) return `há ${hours}h`;
+    if (days < 7) return `há ${days}d`;
     return date.toLocaleDateString("pt-PT", {
       day: "numeric",
       month: "short",
@@ -172,11 +172,11 @@ export default function NotificacoesPage() {
                 ← Painel
               </Link>
               <h1 className="font-display text-3xl text-forest">
-                Notificacoes
+                Notificações
               </h1>
               {unreadCount > 0 && (
                 <p className="mt-1 text-sage">
-                  {unreadCount} nao {unreadCount === 1 ? "lida" : "lidas"}
+                  {unreadCount} não {unreadCount === 1 ? "lida" : "lidas"}
                 </p>
               )}
             </div>
@@ -217,7 +217,7 @@ export default function NotificacoesPage() {
           </div>
         ) : notifications.length === 0 ? (
           <div className="rounded-lg border border-sage/20 bg-white/50 p-12 text-center">
-            <p className="text-sage">Nenhuma notificacao encontrada.</p>
+            <p className="text-sage">Nenhuma notificação encontrada.</p>
           </div>
         ) : (
           <div className="space-y-3">

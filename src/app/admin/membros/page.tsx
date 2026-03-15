@@ -138,7 +138,7 @@ export default function AdminMembrosPage() {
             Conceder acesso manualmente
           </h2>
           <p className="mb-4 text-sm text-sage">
-            Usa isto para corrigir acessos ou dar acesso a alguem que teve problemas.
+            Usa isto para corrigir acessos ou dar acesso a alguém que teve problemas.
           </p>
           <form onSubmit={handleGrantAccess} className="flex flex-col gap-3 sm:flex-row sm:items-end">
             <div className="flex-1">
@@ -163,7 +163,7 @@ export default function AdminMembrosPage() {
                 onChange={(e) => setGrantType(e.target.value)}
                 className="rounded-lg border border-sage/30 bg-white px-4 py-2.5 text-sm text-forest focus:border-sage focus:outline-none focus:ring-2 focus:ring-sage/30"
               >
-                <option value="book">Livro Filosofico</option>
+                <option value="book">Livro Filosófico</option>
                 <option value="mirrors">Espelhos</option>
                 <option value="audiobook">Audiobook</option>
                 <option value="admin">Admin</option>

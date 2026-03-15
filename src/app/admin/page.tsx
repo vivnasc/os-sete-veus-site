@@ -269,8 +269,8 @@ export default function AdminPage() {
               icon="🎨"
             />
             <ActionCard
-              title="Notificacoes"
-              description="Ver todas as notificacoes"
+              title="Notificações"
+              description="Ver todas as notificações"
               href="/admin/notificacoes"
               icon="🔔"
               badge={stats?.unreadNotifications || 0}
