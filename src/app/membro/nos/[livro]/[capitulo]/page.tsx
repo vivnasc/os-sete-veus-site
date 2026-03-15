@@ -2,7 +2,8 @@
 
 import { use, useEffect, useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { chapters } from "@/data/no-heranca";
+import { loadNos, nosProgressKey } from "@/lib/content-registry";
+import { getNosBook } from "@/data/nos-collection";
 import { supabase } from "@/lib/supabase";
 import { useNosGate } from "@/hooks/useNosGate";
 import InteractiveChecklist from "@/components/InteractiveChecklist";
@@ -10,9 +11,13 @@ import ReflectionJournal from "@/components/ReflectionJournal";
 import BreathingExercise from "@/components/BreathingExercise";
 import { getReadingTime, formatReadingTime } from "@/lib/readingTime";
 import Link from "next/link";
+import type { ContentModule } from "@/lib/content-registry";
 
-export default function NosChapterPage({ params }: { params: Promise<{ capitulo: string }> }) {
-  const { capitulo } = use(params);
+export default function NosChapterPage({ params }: { params: Promise<{ livro: string; capitulo: string }> }) {
+  const { livro, capitulo } = use(params);
+  const nosMeta = getNosBook(livro);
+  const espelhoSlug = nosMeta?.espelhoSlug || "veu-da-ilusao";
+
   const {
     canAccessNos,
     hasNosPurchased,
@@ -22,17 +27,33 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
     isAdmin,
     authLoading,
     user,
-  } = useNosGate();
+  } = useNosGate(espelhoSlug);
   const router = useRouter();
+
+  const [content, setContent] = useState<ContentModule | null>(null);
+  const [contentLoading, setContentLoading] = useState(true);
+  const [showReflection, setShowReflection] = useState(false);
+  const [completed, setCompleted] = useState(false);
+  const [nightMode, setNightMode] = useState(false);
+  const endRef = useRef<HTMLDivElement>(null);
+
+  // Load book content dynamically
+  useEffect(() => {
+    setContentLoading(true);
+    loadNos(livro).then((mod) => {
+      setContent(mod);
+      setContentLoading(false);
+    });
+  }, [livro]);
+
+  const chapters = content?.chapters || [];
   const chapter = chapters.find((ch) => ch.slug === capitulo);
   const chapterIndex = chapters.findIndex((ch) => ch.slug === capitulo);
   const prevChapter = chapterIndex > 0 ? chapters[chapterIndex - 1] : null;
   const nextChapter = chapterIndex < chapters.length - 1 ? chapters[chapterIndex + 1] : null;
 
-  const [showReflection, setShowReflection] = useState(false);
-  const [completed, setCompleted] = useState(false);
-  const [nightMode, setNightMode] = useState(false);
-  const endRef = useRef<HTMLDivElement>(null);
+  // Use nosProgressKey for correct per-book chapter key
+  const chapterKey = chapter ? nosProgressKey(livro, chapter.slug) : "";
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -54,9 +75,6 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
     localStorage.setItem("reader-night-mode", String(next));
   };
 
-  // Use nos- prefix for chapter slugs to separate from Espelho progress
-  const chapterKey = chapter ? `nos-${chapter.slug}` : "";
-
   // Track reading progress
   const markAsRead = useCallback(async () => {
     try {
@@ -75,7 +93,7 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
       );
       setCompleted(true);
     } catch {
-      // Falha na ligacao — nao bloquear a leitura
+      // Falha na ligação — não bloquear a leitura
     }
   }, [chapter, chapterKey]);
 
@@ -97,7 +115,7 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
 
         if (data?.completed) setCompleted(true);
       } catch {
-        // Falha na ligacao — continuar sem estado
+        // Falha na ligação — continuar sem estado
       }
     };
     load();
@@ -119,7 +137,7 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
     return () => observer.disconnect();
   }, [completed, markAsRead]);
 
-  if (authLoading || !hasMirrorsAccess) {
+  if (authLoading || !hasMirrorsAccess || contentLoading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
         <div className="h-8 w-8 animate-spin rounded-full border-4 border-sage border-t-transparent" />
@@ -134,7 +152,7 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
       return (
         <section className="px-6 py-16 text-center">
           <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-[#7a8c6e]">
-            &#10003; Espelho da Ilusão — Completo
+            &#10003; Espelho — Completo
           </p>
           <p className="mt-4 font-serif text-lg text-brown-600">
             Para ler este nó, precisas de o adquirir.
@@ -159,9 +177,9 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
     return (
       <section className="px-6 py-16 text-center">
         <p className="font-serif text-lg text-brown-600">
-          Este nó só se desata depois do Espelho da Ilusão.
+          Este nó só se desata depois do Espelho correspondente.
         </p>
-        <Link href="/membro/nos" className="mt-4 inline-block text-[#c9a87c] hover:underline">
+        <Link href={`/membro/nos/${livro}`} className="mt-4 inline-block text-[#c9a87c] hover:underline">
           Voltar
         </Link>
       </section>
@@ -172,7 +190,7 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
     return (
       <section className="px-6 py-16 text-center">
         <p className="text-brown-600">Capítulo não encontrado.</p>
-        <Link href="/membro/nos" className="mt-4 inline-block text-[#c9a87c] hover:underline">
+        <Link href={`/membro/nos/${livro}`} className="mt-4 inline-block text-[#c9a87c] hover:underline">
           Voltar à leitura
         </Link>
       </section>
@@ -204,7 +222,7 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
           <div className="mb-12 text-center">
             <div className="flex items-center justify-between">
               <Link
-                href="/membro/nos"
+                href={`/membro/nos/${livro}`}
                 className={`font-sans text-[0.65rem] uppercase tracking-[0.15em] transition-colors ${nightMode ? "text-brown-500 hover:text-brown-400" : "text-brown-400 hover:text-brown-600"}`}
               >
                 &larr; Todos os capítulos
@@ -328,7 +346,7 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
           <nav className={`mt-16 flex items-center justify-between border-t pt-8 ${nightMode ? "border-brown-800" : "border-brown-100"}`}>
             {prevChapter ? (
               <Link
-                href={`/membro/nos/${prevChapter.slug}`}
+                href={`/membro/nos/${livro}/${prevChapter.slug}`}
                 className="group flex items-center gap-2 font-sans text-sm text-brown-400 transition-colors hover:text-brown-700"
               >
                 <span className="transition-transform group-hover:-translate-x-1">&larr;</span>
@@ -336,7 +354,7 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
               </Link>
             ) : (
               <Link
-                href="/membro/nos"
+                href={`/membro/nos/${livro}`}
                 className="font-sans text-sm text-brown-400 hover:text-brown-700"
               >
                 &larr; Índice
@@ -345,7 +363,7 @@ export default function NosChapterPage({ params }: { params: Promise<{ capitulo:
 
             {nextChapter ? (
               <Link
-                href={`/membro/nos/${nextChapter.slug}`}
+                href={`/membro/nos/${livro}/${nextChapter.slug}`}
                 className="group flex items-center gap-2 font-sans text-sm text-brown-400 transition-colors hover:text-brown-700"
               >
                 <span>{nextChapter.subtitle}</span>

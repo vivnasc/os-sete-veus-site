@@ -4,10 +4,9 @@ import { useAuth } from "@/components/AuthProvider";
 import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { chapters as ilusaoChapters } from "@/data/ebook";
-import { chapters as nosChapters } from "@/data/no-heranca";
 import { experiences } from "@/data/experiences";
 import { getNosForEspelho } from "@/data/nos-collection";
-import { loadEspelho, espelhoProgressKey } from "@/lib/content-registry";
+import { loadEspelho, espelhoProgressKey, loadNos, nosProgressKey } from "@/lib/content-registry";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 import Image from "next/image";
@@ -29,6 +28,7 @@ export default function MembroDashboard() {
   const [journalCount, setJournalCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const [espelhoData, setEspelhoData] = useState<EspelhoInfo[]>([]);
+  const [nosData, setNosData] = useState<Record<string, Chapter[]>>({});
   const [syncing, setSyncing] = useState(false);
   const [syncAttempted, setSyncAttempted] = useState(false);
   const [payments, setPayments] = useState<{ id: string; status: string; amount: number; currency: string; access_type_code: string; payment_method: string; created_at: string }[]>([]);
@@ -49,6 +49,25 @@ export default function MembroDashboard() {
       })
     ).then((results) => {
       setEspelhoData(results.filter((r): r is EspelhoInfo => r !== null));
+    });
+  }, []);
+
+  // Load all available nos chapter data
+  useEffect(() => {
+    import("@/data/nos-collection").then(({ getAvailableNos }) => {
+      const available = getAvailableNos();
+      Promise.all(
+        available.map(async (nos) => {
+          const mod = await loadNos(nos.slug);
+          return mod ? { slug: nos.slug, chapters: mod.chapters } : null;
+        })
+      ).then((results) => {
+        const map: Record<string, Chapter[]> = {};
+        results.forEach((r) => {
+          if (r) map[r.slug] = r.chapters;
+        });
+        setNosData(map);
+      });
     });
   }, []);
 
@@ -149,10 +168,15 @@ export default function MembroDashboard() {
     0
   );
 
-  // Nos progress
-  const nosCompletedChapters = nosChapters.filter((ch) => readingProgress[`nos-${ch.slug}`]).length;
-  const nosProgressPercent = Math.round((nosCompletedChapters / nosChapters.length) * 100);
-  const nextNosChapter = nosChapters.find((ch) => !readingProgress[`nos-${ch.slug}`]) || nosChapters[0];
+  // Nos progress — computed per nosBook slug
+  function getNosProgress(nosSlug: string) {
+    const chapters = nosData[nosSlug] || [];
+    if (chapters.length === 0) return { completed: 0, total: 0, percent: 0, nextChapter: null as Chapter | null };
+    const completed = chapters.filter((ch) => readingProgress[nosProgressKey(nosSlug, ch.slug)]).length;
+    const percent = Math.round((completed / chapters.length) * 100);
+    const nextChapter = chapters.find((ch) => !readingProgress[nosProgressKey(nosSlug, ch.slug)]) || chapters[0];
+    return { completed, total: chapters.length, percent, nextChapter };
+  }
 
   // Access
   const AUTHOR_EMAILS = ["viv.saraiva@gmail.com"];
@@ -341,7 +365,9 @@ export default function MembroDashboard() {
               )}
 
               {/* No — espelho completo */}
-              {nosBook && prog.isComplete && nosBook.status === "available" && (
+              {nosBook && prog.isComplete && nosBook.status === "available" && (() => {
+                const nosProg = getNosProgress(nosBook.slug);
+                return (
                 <div className="mt-3 overflow-hidden rounded-2xl border border-[#c9a87c]/40 bg-gradient-to-br from-[#faf7f2] to-white shadow-sm">
                   <div className="flex flex-col sm:flex-row">
                     <div className="flex items-center justify-center bg-gradient-to-br from-[#5a4d3e] to-[#3d3428] px-8 py-8 sm:w-48">
@@ -362,22 +388,22 @@ export default function MembroDashboard() {
                         <p className="mt-1 font-serif text-sm italic text-brown-500">
                           {nosBook.subtitle}
                         </p>
-                        {!loading && hasNosIncluded && (
+                        {!loading && hasNosIncluded && nosProg.total > 0 && (
                           <div className="mt-4">
                             <div className="flex items-center justify-between text-xs text-brown-400">
                               <span>
-                                {nosCompletedChapters === 0
+                                {nosProg.completed === 0
                                   ? nosBook.characters
-                                  : nosCompletedChapters === nosChapters.length
+                                  : nosProg.completed === nosProg.total
                                     ? "Leitura completa"
-                                    : `${nosCompletedChapters} de ${nosChapters.length} partes`}
+                                    : `${nosProg.completed} de ${nosProg.total} partes`}
                               </span>
-                              <span>{nosProgressPercent}%</span>
+                              <span>{nosProg.percent}%</span>
                             </div>
                             <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-brown-50">
                               <div
                                 className="h-full rounded-full bg-gradient-to-r from-[#c9a87c] to-[#a08060] transition-all duration-1000"
-                                style={{ width: `${nosProgressPercent}%` }}
+                                style={{ width: `${nosProg.percent}%` }}
                               />
                             </div>
                           </div>
@@ -388,16 +414,16 @@ export default function MembroDashboard() {
                           </p>
                         )}
                       </div>
-                      {hasNosIncluded ? (
+                      {hasNosIncluded && nosProg.nextChapter ? (
                         <Link
-                          href={`/membro/nos/${nextNosChapter.slug}`}
+                          href={`/membro/nos/${nosBook.slug}/${nosProg.nextChapter.slug}`}
                           className="mt-5 inline-flex items-center justify-center rounded-full bg-[#c9a87c] px-6 py-2.5 font-sans text-[0.7rem] uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#b8975b]"
                         >
-                          {nosCompletedChapters === 0
+                          {nosProg.completed === 0
                             ? "Desatar este nó"
-                            : nosCompletedChapters === nosChapters.length
+                            : nosProg.completed === nosProg.total
                               ? "Reler desde o início"
-                              : `Continuar — ${nextNosChapter.subtitle}`}
+                              : `Continuar — ${nosProg.nextChapter.subtitle}`}
                         </Link>
                       ) : (
                         <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:items-center">
@@ -418,7 +444,8 @@ export default function MembroDashboard() {
                     </div>
                   </div>
                 </div>
-              )}
+              );
+              })()}
             </div>
           );
         })}
