@@ -55,7 +55,7 @@ const COURSES: CourseData[] = [
         isFree: false,
         subLessons: [
           { letter: "A", title: "O desconto automático", description: "Porque baixas o preço antes de alguém pedir." },
-          { letter: "B", title: "A ligacao cobrar-merecer", description: "Cobrar o que vale é sentir que mereces receber." },
+          { letter: "B", title: "A ligação cobrar-merecer", description: "Cobrar o que vale é sentir que mereces receber." },
           { letter: "C", title: "Receber sem devolver imediatamente", description: "A dificuldade de receber sem compensar de volta." },
         ],
         workbook: "Exercício do preço justo",
@@ -104,7 +104,7 @@ const COURSES: CourseData[] = [
         subLessons: [
           { letter: "A", title: "De sobrevivência a direcção", description: "Sair do modo sobrevivência e entrar no modo escolha." },
           { letter: "B", title: "O mapa do futuro que queres financiar", description: "Desenhar o futuro que queres e calcular o que custa." },
-          { letter: "C", title: "Liberdade, não acumulacao", description: "Dinheiro como ferramenta de liberdade, não de segurança compulsiva." },
+          { letter: "C", title: "Liberdade, não acumulação", description: "Dinheiro como ferramenta de liberdade, não de segurança compulsiva." },
         ],
         workbook: "Mapa de liberdade financeira",
       },
@@ -134,7 +134,7 @@ const COURSES: CourseData[] = [
         isFree: false,
         subLessons: [
           { letter: "A", title: "A mãe-personagem vs. a mãe-pessoa", description: "A distancia entre a mãe que construiste e a mulher que ela e." },
-          { letter: "B", title: "Memória ou interpretacao?", description: "O que lembras e o que realmente aconteceu." },
+          { letter: "B", title: "Memória ou interpretação?", description: "O que lembras e o que realmente aconteceu." },
         ],
         workbook: "Retrato da mãe interior",
       },
@@ -528,7 +528,7 @@ const COURSES: CourseData[] = [
           { letter: "B", title: "A pressao de urgência artificial", description: "Nem tudo precisa de ser decidido agora." },
           { letter: "C", title: "Decidir por fases", description: "O direito de decidir aos poucos." },
         ],
-        workbook: "Desconstrucao de dilemas",
+        workbook: "Desconstrução de dilemas",
       },
       {
         number: 5,
@@ -564,7 +564,7 @@ const COURSES: CourseData[] = [
           { letter: "B", title: "As poucas irrevogaveis", description: "Identificar as decisões que merecem mais tempo." },
           { letter: "C", title: "Decidir sem garantias", description: "A coragem de decidir sem saber o resultado." },
         ],
-        workbook: "Classificacao de decisões",
+        workbook: "Classificação de decisões",
       },
       {
         number: 8,
@@ -897,7 +897,7 @@ const COURSES: CourseData[] = [
           { letter: "B", title: "A culpa de sentir alívio", description: "Quando o fim traz alívio e o alívio traz culpa." },
           { letter: "C", title: "Libertar a culpa sem negar a perda", description: "Largar a culpa sem minimizar o que perdeste." },
         ],
-        workbook: "Separacao luto-culpa",
+        workbook: "Separação luto-culpa",
       },
       {
         number: 7,
@@ -921,7 +921,7 @@ const COURSES: CourseData[] = [
           { letter: "B", title: "A perda como paisagem", description: "A perda não desaparece — integra-se na paisagem de quem es." },
           { letter: "C", title: "Viver com e não apesar de", description: "Viver com a perda, não apesar dela." },
         ],
-        workbook: "Integracao da perda",
+        workbook: "Integração da perda",
       },
     ],
     youtubeHooks: [
@@ -950,7 +950,7 @@ const COURSES: CourseData[] = [
         subLessons: [
           { letter: "A", title: "O que carregas", description: "Fazer o inventário honesto de tudo o que trazes as costas." },
           { letter: "B", title: "O que escolheste vs. o que te caiu em cima", description: "Separar o peso escolhido do peso imposto." },
-          { letter: "C", title: "O peso normalizado", description: "O peso que carregas ha tanto tempo que já não sentes." },
+          { letter: "C", title: "O peso normalizado", description: "O peso que carregas há tanto tempo que já não sentes." },
         ],
         workbook: "Inventário do peso",
       },
@@ -1055,7 +1055,7 @@ const COURSES: CourseData[] = [
     arcoEmocional:
       "Começa por identificar a conversa. Passa pela preparação. Aprende a começar. Aprende a sustentar. Prepara-te para o depois.",
     diferencial:
-      "Não é um curso de comunicação. É sobre ter a conversa que adias ha meses — não como confronto, mas como verdade dita com cuidado.",
+      "Não é um curso de comunicação. É sobre ter a conversa que adias há meses — não como confronto, mas como verdade dita com cuidado.",
     modules: [
       {
         number: 1,
@@ -1067,12 +1067,12 @@ const COURSES: CourseData[] = [
           { letter: "B", title: "Porque evitas", description: "O que te impede de ter a conversa." },
           { letter: "C", title: "O custo do silêncio", description: "O que te custa não dizer o que precisas de dizer." },
         ],
-        workbook: "Identificacao da conversa adiada",
+        workbook: "Identificação da conversa adiada",
       },
       {
         number: 2,
-        title: "O que Queres Dizer vs. O que Queres que Aconteca",
-        description: "Separar expressao de resultado.",
+        title: "O que Queres Dizer vs. O que Queres que Aconteça",
+        description: "Separar expressão de resultado.",
         isFree: false,
         subLessons: [
           { letter: "A", title: "Separar as duas coisas", description: "O que queres dizer e o que queres que mude são coisas diferentes." },
@@ -1151,7 +1151,7 @@ const COURSES: CourseData[] = [
           { letter: "B", title: "O alívio inesperado", description: "O alívio que vem depois de teres sido verdadeira." },
           { letter: "C", title: "A relação depois da verdade", description: "O que muda na relação quando a verdade entra." },
         ],
-        workbook: "Reflexao pós-conversa",
+        workbook: "Reflexão pós-conversa",
       },
     ],
     youtubeHooks: [
