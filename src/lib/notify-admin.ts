@@ -128,8 +128,8 @@ async function sendTelegramNotification(
     payment_created: "NOVO PEDIDO",
     payment_confirmed: "PAGAMENTO CONFIRMADO",
     payment_rejected: "PAGAMENTO REJEITADO",
-    code_request: "PEDIDO CODIGO",
-    code_redeemed: "CODIGO RESGATADO",
+    code_request: "PEDIDO CÓDIGO",
+    code_redeemed: "CÓDIGO RESGATADO",
     special_link_used: "LINK USADO",
     new_member: "NOVO MEMBRO",
     espelho_completed: "ESPELHO COMPLETO",
@@ -170,7 +170,7 @@ async function sendTelegramNotification(
 
     // Retry without formatting if HTML parsing failed
     const plainText = text.replace(/<[^>]*>/g, "");
-    console.log("[notify-admin] Retry sem formatacao...");
+    console.log("[notify-admin] Retry sem formatação...");
     const retryRes = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -371,7 +371,7 @@ export async function notifyEspelhoCompleted(data: {
   await notifyAdmin({
     type: "espelho_completed",
     title: "Espelho completo",
-    message: `${data.email} completou "${data.espelho_title}". Pronta para o No.`,
+    message: `${data.email} completou "${data.espelho_title}". Pronta para o Nó.`,
     details: {
       Email: data.email,
       Espelho: data.espelho_title,

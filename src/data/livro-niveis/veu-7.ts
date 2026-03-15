@@ -64,7 +64,7 @@ export const veu7Niveis: NivelCapitulo[] = [
     // Camada profunda
     mascaras: [
       'A eterna buscadora — a que transforma cada descoberta num novo ponto de partida, porque parar significaria admitir que já está onde precisa de estar. Vive em trânsito permanente, coleccionando mapas para um território que só se revela a quem pousa a mochila.',
-      'A guardia do limiar interior — a que se põe entre si mesma é a entrega, exigindo sempre mais uma prova, mais uma confirmação, mais um sinal antes de se permitir confiar. Protege-se da vastidao fingindo que ainda não está pronta.',
+      'A guardiã do limiar interior — a que se põe entre si mesma é a entrega, exigindo sempre mais uma prova, mais uma confirmação, mais um sinal antes de se permitir confiar. Protege-se da vastidão fingindo que ainda não está pronta.',
       'A cartografa do invisível — a que precisa de nomear, classificar é organizar cada experiência interior para sentir que a compreendeu. Transforma o mistério em sistema, é o sistema em prisão. Só se sente segura quando o caminho tem etapas claras.',
       'A que espera pela permissão — a que sabe, no fundo, que já atravessou o limiar, mas fica do lado de ca a espera que alguém lhe diga que pode entrar. Confunde humildade com hesitação. Confunde respeito com medo.',
     ],
@@ -153,7 +153,7 @@ export const veu7Niveis: NivelCapitulo[] = [
     mascaras: [
       'A asceta secreta — a que construiu uma hierarquia invisível entre o que e "elevado" é o que e "baixo", entre o espiritual é o mundano. Come, trabalha, convive — mas uma parte dela considera tudo isso inferior ao silêncio, a meditação, ao recolhimento. Vive no mundo com um pe fora dele.',
       'A que transcende em vez de sentir — a que aprendeu a subir quando a vida doi. Quando o corpo pede atenção, ela foge para o pensamento. Quando o conflito bate a porta, ela retira-se para a "paz interior". Confunde dissociação com despertar, é fuga com transcendência.',
-      'A guardia dos dois reinos — a que vive em permanente negociação entre espírito é matéria, como se fossem dois países em guerra fria. De manhã medita, a tarde trabalha, é sente que traiu um dos lados em cada transição. Nunca está inteira em lado nenhum porque acredita que são dois.',
+      'A guardiã dos dois reinos — a que vive em permanente negociação entre espírito é matéria, como se fossem dois países em guerra fria. De manhã medita, a tarde trabalha, é sente que traiu um dos lados em cada transição. Nunca está inteira em lado nenhum porque acredita que são dois.',
       'A que santifica o sofrimento — a que acredita que a dor é mais espiritual do que o prazer, que a privação é mais pura do que a abundância. Quando a vida lhe oferece alegria simples, desconfia. Quando o corpo pede descanso, resiste. Transformou a dualidade numa etica: o difícil é sagrado, o fácil é suspeito.',
     ],
     veu_dominante_sinais: [
@@ -171,7 +171,7 @@ export const veu7Niveis: NivelCapitulo[] = [
         'Agora faz esse gesto como se fosse a única coisa que existe. Sente a textura, a temperatura, o peso, o movimento. Não acrescentes nada espiritual — nenhum mantra, nenhuma intenção, nenhuma sacralização. Apenas está presente no gesto tal como ele e.',
         'Imediatamente depois, escreve o que aconteceu. O que sentiste no corpo? O que mudou na qualidade do gesto? Houve algum momento em que a fronteira entre "mundano" e "sagrado" se tornou impossível de encontrar?',
         'Escreve agora sobre as duas versões de ti — a que vive no mundo é a que busca o espírito. Da-lhes nomes se quiseres. Descreve cada uma com detalhe. Depois escreve-lhes uma carta conjunta, como se fosses alguém de fora, dizendo-lhes aquilo que ambas precisam de ouvir: que são a mesma.',
-        'Termina com uma única frase que comece assim: "O sagrado não está la — está..." Completa com o que sentiste durante o exercício. Não com o que achas que devias ter sentido.',
+        'Termina com uma única frase que comece assim: "O sagrado não está lá — está..." Completa com o que sentiste durante o exercício. Não com o que achas que devias ter sentido.',
       ],
       tempo_sugerido: '35 a 45 minutos, de preferência num dia em que tenhas tarefas quotidianas por fazer',
       nota_final: 'Se durante este exercício sentiste que não houve nada de especial — que foi apenas lavar louça ou apenas caminhar — então chegaste exactamente ao sítio que o capítulo descreve. O não-especial é o sagrado sem disfarce.',
@@ -180,7 +180,7 @@ export const veu7Niveis: NivelCapitulo[] = [
   {
     capitulo_numero: 27,
     resumo_acessivel: [
-      'Chegar ao último limiar não é alcançar um fim. E ouvir, pela primeira vez com clareza, um chamado que sempre esteve la — abafado pelas camadas de identidade, medo, narrativa, esforço é separação. O centro não é um ponto geográfico na alma. E a qualidade de presença que permanece quando todos os véus repousam.',
+      'Chegar ao último limiar não é alcançar um fim. E ouvir, pela primeira vez com clareza, um chamado que sempre esteve lá — abafado pelas camadas de identidade, medo, narrativa, esforço é separação. O centro não é um ponto geográfico na alma. E a qualidade de presença que permanece quando todos os véus repousam.',
       'Depois de vinte é seis capítulos de dissolução — de rótulos, histórias, turbilhão mental, máscaras emocionais, dualidades — o que resta não é vazio. E plenitude silenciosa. Não há nada a acrescentar. Não há nada a corrigir. O ser, tal como e, basta. E sempre bastou. Este capítulo não ensina mais nada. Apenas aponta para o que já está presente.',
       'O chamado do centro não é voz que fala. E silêncio que vibra. Não é destino que se alcança. E textura que se reconhece. Quando a leitora chega aqui, não está a terminar uma leitura — está a encontrar-se com aquilo que nenhuma palavra consegue conter, mas que cada palavra deste livro tentou, devagar, desvelar.',
     ],
@@ -202,7 +202,7 @@ export const veu7Niveis: NivelCapitulo[] = [
     notas_contextuais: [
       {
         paragrafo_indice: 4,
-        texto: 'O "núcleo silencioso" de que o texto fala ressoa com o Ein Sof da Cabala — o infinito sem atributos, anterior a toda a manifestação. Não é algo a atingir. E o fundo de tudo o que existe, incluindo de ti. O convite não é ir até la. E parar de fugir do que já está aqui.',
+        texto: 'O "núcleo silencioso" de que o texto fala ressoa com o Ein Sof da Cabala — o infinito sem atributos, anterior a toda a manifestação. Não é algo a atingir. E o fundo de tudo o que existe, incluindo de ti. O convite não é ir até lá. E parar de fugir do que já está aqui.',
       },
       {
         paragrafo_indice: 12,
@@ -239,8 +239,8 @@ export const veu7Niveis: NivelCapitulo[] = [
 
     // Camada profunda
     mascaras: [
-      'A que ainda não se permite chegar — a que ouve o silêncio do centro é recua, porque aceitar que já está la significaria que todo o esforço, toda a dor, toda a busca foram ao mesmo tempo reais é desnecessarios. Prefere continuar a caminhar a enfrentar a vertigem de já ter chegado.',
-      'A guardia do vazio — a que confunde o centro com ausência. Quando tudo se aquieta, entra em pânico, porque durante tanto tempo o movimento foi a sua única prova de estar viva. Sem agitação, sem drama interior, sem o próximo passo a dar, não sabe como existir. Protege-se do silêncio enchendo-o.',
+      'A que ainda não se permite chegar — a que ouve o silêncio do centro é recua, porque aceitar que já está lá significaria que todo o esforço, toda a dor, toda a busca foram ao mesmo tempo reais é desnecessarios. Prefere continuar a caminhar a enfrentar a vertigem de já ter chegado.',
+      'A guardiã do vazio — a que confunde o centro com ausência. Quando tudo se aquieta, entra em pânico, porque durante tanto tempo o movimento foi a sua única prova de estar viva. Sem agitação, sem drama interior, sem o próximo passo a dar, não sabe como existir. Protege-se do silêncio enchendo-o.',
       'A narradora da jornada — a que transformou o percurso de despertar na sua história mais preciosa. Conta-a a si mesma é aos outros com tal beleza que soltar essa narrativa parece perder uma obra de arte. O centro pede-lhe que pouse a caneta — é ela não sabe quem é sem a história que escreveu sobre si.',
     ],
     veu_dominante_sinais: [
@@ -249,7 +249,7 @@ export const veu7Niveis: NivelCapitulo[] = [
       'Há uma parte de ti que acredita secretamente que se realmente chegasses ao centro, a tua vida exterior teria de mudar radicalmente — é como a vida exterior não mudou o suficiente, usas isso como prova de que ainda não chegaste.',
       'Percebes que a dualidade mais persistente não é entre espírito é matéria, nem entre tu é o mundo — é entre quem tu és é a ideia de quem tu serias se estivesses "desperta". E essa última separação é a mais difícil de soltar porque parece ser a mais verdadeira.',
     ],
-    mensagem_central: 'Não há mais nada a dizer. E no entanto estás aqui, a ler, a espera de que algo se revele. Então deixa que se revele isto: tu és aquilo que procuravas. Não uma versão melhorada de ti. Não tu depois de mais trabalho interior. Não tu quando finalmente tudo se alinhar. Tu, agora. Com este corpo cansado ou desperto. Com está mente que ainda dúvida. Com este coração que aprendeu a bater entre a dor é a beleza sem pedir licenca a nenhuma das duas. O centro nunca esteve escondido. Estavas apenas a olhar com tanta intensidade para o horizonte que não reparavas que já pisavas o solo sagrado. Cada véu que tocaste ao longo deste livro não foi um obstáculo que ultrapassaste — foi uma camada de ti mesma que se deixou ver. E agora que todas se revelaram, o que resta não é alguém mais puro ou mais livre. E alguém mais inteiro. Alguém que já não precisa de separar a luz da sombra, o sagrado do mundano, o eu do outro. Alguém que pode, finalmente, pousar.',
+    mensagem_central: 'Não há mais nada a dizer. E no entanto estás aqui, a ler, a espera de que algo se revele. Então deixa que se revele isto: tu és aquilo que procuravas. Não uma versão melhorada de ti. Não tu depois de mais trabalho interior. Não tu quando finalmente tudo se alinhar. Tu, agora. Com este corpo cansado ou desperto. Com está mente que ainda dúvida. Com este coração que aprendeu a bater entre a dor é a beleza sem pedir licença a nenhuma das duas. O centro nunca esteve escondido. Estavas apenas a olhar com tanta intensidade para o horizonte que não reparavas que já pisavas o solo sagrado. Cada véu que tocaste ao longo deste livro não foi um obstáculo que ultrapassaste — foi uma camada de ti mesma que se deixou ver. E agora que todas se revelaram, o que resta não é alguém mais puro ou mais livre. E alguém mais inteiro. Alguém que já não precisa de separar a luz da sombra, o sagrado do mundano, o eu do outro. Alguém que pode, finalmente, pousar.',
     guiao_escrita: {
       contexto: 'Este é o último exercício. Não é um fecho — é uma abertura. Convida-te a olhar para toda a jornada é a reconhecer, numa única página, o que já sempre soubeste.',
       passos: [

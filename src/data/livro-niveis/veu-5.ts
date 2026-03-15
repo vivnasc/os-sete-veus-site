@@ -16,11 +16,11 @@ export const veu5Niveis: NivelCapitulo[] = [
     exemplos_concretos: [
       {
         contexto: 'No quotidiano',
-        texto: 'Imagina que um dia acordas é não tens vontade de nada. Não é tristeza — é uma espécie de neutralidade espessa. Tomas o pequeno-almoco no automático, respondes a mensagens sem sentir, é ao fim do dia percebes que não houve um único momento de presença real. Este capítulo diz-te: esse adormecimento pode ser o comeco de algo, não o fim.',
+        texto: 'Imagina que um dia acordas é não tens vontade de nada. Não é tristeza — é uma espécie de neutralidade espessa. Tomas o pequeno-almoço no automático, respondes a mensagens sem sentir, é ao fim do dia percebes que não houve um único momento de presença real. Este capítulo diz-te: esse adormecimento pode ser o começo de algo, não o fim.',
       },
       {
         contexto: 'Na vida interior',
-        texto: 'Pensa num período em que as coisas que antes te animavam — um projecto, uma relação, uma prática — deixaram de ter sabor. Não porque algo correu mal, mas porque algo em ti mudou sem pedir licenca. O corpo soube primeiro.',
+        texto: 'Pensa num período em que as coisas que antes te animavam — um projecto, uma relação, uma prática — deixaram de ter sabor. Não porque algo correu mal, mas porque algo em ti mudou sem pedir licença. O corpo soube primeiro.',
       },
     ],
     notas_contextuais: [
@@ -38,7 +38,7 @@ export const veu5Niveis: NivelCapitulo[] = [
       },
       {
         paragrafo_indice: 16,
-        texto: 'Em muitas tradições africanas, o período de reclusão antes da iniciacao é marcado por silêncio é imobilidade impostos. O corpo é retirado do movimento para que algo mais fundo possa falar. A cultura sabe o que o ego esqueceu: parar não é morrer.',
+        texto: 'Em muitas tradições africanas, o período de reclusão antes da iniciação é marcado por silêncio é imobilidade impostos. O corpo é retirado do movimento para que algo mais fundo possa falar. A cultura sabe o que o ego esqueceu: parar não é morrer.',
       },
       {
         paragrafo_indice: 20,
@@ -71,7 +71,7 @@ export const veu5Niveis: NivelCapitulo[] = [
 
     // Camada profunda
     mascaras: [
-      'A funcional — a que continua a funcionar mesmo quando tudo dentro de si parou. Levanta-se, veste-se, responde, cumpre. Ninguém nota que por dentro o motor desligou. A funcionalidade torna-se máscara perfeita: esconde a desolação atrás da competencia.',
+      'A funcional — a que continua a funcionar mesmo quando tudo dentro de si parou. Levanta-se, veste-se, responde, cumpre. Ninguém nota que por dentro o motor desligou. A funcionalidade torna-se máscara perfeita: esconde a desolação atrás da competência.',
       'A ocupada — a que preenche cada espaço de silêncio com actividade. Quando o corpo quer parar, ela acelera. Quando a energia se retira, ela força. O cansaço é interpretado como falha — nunca como mensagem.',
       'A envergonhada — a que sente culpa por não ter energia, por não querer participar, por não conseguir ser como era antes. A desolação parece-lhe defeito pessoal, é a vergonha impede-a de pedir ajuda ou simplesmente descansar.',
       'A diagnosticada — a que tenta traduzir o adormecimento do corpo em termos clinicos: depressão, burnout, fadiga crónica. O rótulo acalma a mente, mas impede-a de ouvir o que o corpo realmente está a dizer — que algo precisa de morrer para que outra coisa nasca.',
@@ -151,10 +151,10 @@ export const veu5Niveis: NivelCapitulo[] = [
       'Ter medo significa que não estou preparada para está travessia.',
     ],
     sinais_do_veu: [
-      'Há um medo de fundo na tua vida que não se liga a nenhuma situação concreta — está simplesmente la, como humidade no ar.',
+      'Há um medo de fundo na tua vida que não se liga a nenhuma situação concreta — está simplesmente lá, como humidade no ar.',
       'Tentas racionalizar a angústia é ela volta sempre, intacta, como se a lógica não lhe tocasse.',
       'Evitas o silêncio porque é nele que o medo se torna mais audível.',
-      'Preenches o tempo com actividade, ruido ou companhia para não ficares a sos com essa presença.',
+      'Preenches o tempo com actividade, ruído ou companhia para não ficares a sos com essa presença.',
       'Acordas de madrugada com inquietacao no corpo é não sabes porquê.',
     ],
     guiao_reflexao: [
@@ -169,10 +169,10 @@ export const veu5Niveis: NivelCapitulo[] = [
       'A controladora ansiosa — a que tenta mapear todos os perigos antes que acontecam. Se conseguir antecipar tudo, o medo não a apanha desprevenida. Mas a vigilância permanente é exaustão disfarçada de prudência.',
       'A corajosa de fachada — a que parece não ter medo de nada. Salta, arrisca, enfrenta — mas não por coragem genuína. Por incapacidade de ficar com o medo tempo suficiente para o sentir. A acção substitui o sentir.',
       'A espiritualizadora do medo — a que transforma cada angústia em "crescimento". "O universo está a testar-me." "Isto é para eu evoluir." A narrativa espiritual anestesia o tremor, mas não o dissolve.',
-      'A paralisada invisível — a que congela por dentro mas funciona por fora. Ninguém ve o medo porque ela aprendeu a mover-se apesar dele. Mas a vida vivida apesar do medo é uma vida vivida a meia voz.',
+      'A paralisada invisível — a que congela por dentro mas funciona por fora. Ninguém vê o medo porque ela aprendeu a mover-se apesar dele. Mas a vida vivida apesar do medo é uma vida vivida a meia voz.',
     ],
     veu_dominante_sinais: [
-      'Há um estado de fundo na tua vida que não é exactamente medo de algo — é uma inquietacao difusa que está sempre la, mesmo quando tudo parece bem.',
+      'Há um estado de fundo na tua vida que não é exactamente medo de algo — é uma inquietacao difusa que está sempre lá, mesmo quando tudo parece bem.',
       'Evitas certos tipos de silêncio, de escuro, de solidão — não por preferência, mas porque sentes que nesses espaços algo te espera que não queres encontrar.',
       'Tens dificuldade em distinguir entre intuição é medo: quando algo te diz "não", não sabes se é sabedoria do corpo ou pânico disfarçado.',
       'Acordas de madrugada com o corpo em alerta — coração a bater, respiração curta — sem nenhum motivo visível. E a tua primeira reacção é tentar perceber "de que" tens medo, como se nomear resolvesse.',
@@ -440,7 +440,7 @@ export const veu5Niveis: NivelCapitulo[] = [
     ],
     sinais_do_veu: [
       'Agarras-te a definições de ti mesma — mesmo as que já não servem — porque o indefinido te aterroriza.',
-      'Quando alguém te pergunta "quem és?", sentes urgência de responder algo sólido, como se o silêncio fosse inaceitavel.',
+      'Quando alguém te pergunta "quem és?", sentes urgência de responder algo sólido, como se o silêncio fosse inaceitável.',
       'Tens medo de que, se soltares tudo, não sobre nada — é esse "nada" paralisa-te.',
       'Evitas estados de expansão (na meditação, na natureza, na arte) porque sentes que podes "perder-te" neles.',
       'Há uma parte de ti que já sabe que o nome é provisório — mas outra que se agarra a ele com toda a força.',

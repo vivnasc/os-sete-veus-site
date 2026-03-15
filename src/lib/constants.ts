@@ -1,5 +1,5 @@
 /**
- * Constantes centralizadas do projecto Os Sete Veus
+ * Constantes centralizadas do projecto Os Sete Véus
  */
 
 // Emails com acesso de admin/autora
@@ -44,7 +44,7 @@ export const COURSE_SLUGS = [
   "voz-de-dentro",
 ] as const;
 
-// Precos dos cursos (USD como base, Stripe nao suporta MZN)
+// Preços dos cursos (USD como base, Stripe não suporta MZN)
 export const COURSE_PRICING = {
   individual: { usd: 49, mzn: 3100, brl: 199, eur: 46 },
 } as const;

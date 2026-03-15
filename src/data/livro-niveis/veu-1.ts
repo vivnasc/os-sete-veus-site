@@ -100,12 +100,12 @@ export const veu1Niveis: NivelCapitulo[] = [
   {
     capitulo_numero: 2,
     resumo_acessivel: [
-      'Todos usamos máscaras — no trabalho, em família, entre amigos. Não é falsidade. E uma forma de nós adaptarmos ao mundo. Mas o que acontece quando esquecemos que são máscaras?',
-      'Este capítulo explora como criamos versões de nós mesmos para pertencer, é o vazio que surge quando essas versões deixam de nós reflectir.',
-      'A insatisfação silenciosa — aquele peso ao fim do dia sem causa clara — pode ser o primeiro sinal de que a máscara já não nós serve. Não é erro. E convite.',
+      'Todos usamos máscaras — no trabalho, em família, entre amigos. Não é falsidade. É uma forma de nos adaptarmos ao mundo. Mas o que acontece quando esquecemos que são máscaras?',
+      'Este capítulo explora como criamos versões de nós mesmos para pertencer, e o vazio que surge quando essas versões deixam de nos reflectir.',
+      'A insatisfação silenciosa — aquele peso ao fim do dia sem causa clara — pode ser o primeiro sinal de que a máscara já não nos serve. Não é erro. É convite.',
     ],
     perguntas_orientadoras: [
-      'Existe alguma versão de ti que mostras ao mundo é que já não te representa?',
+      'Existe alguma versão de ti que mostras ao mundo e que já não te representa?',
       'Quando foi a última vez que sentiste um vazio sem explicação — como se algo essencial estivesse em falta mesmo quando "tudo está bem"?',
     ],
     exemplos_concretos: [
@@ -133,7 +133,7 @@ export const veu1Niveis: NivelCapitulo[] = [
       },
       {
         paragrafo_indice: 20,
-        texto: 'A "noite escura" de João da Cruz não é depressão. E um despojamento voluntário de todas as falsas seguranças para que algo mais autêntico possa emergir.',
+        texto: 'A "noite escura" de João da Cruz não é depressão. É um despojamento voluntário de todas as falsas seguranças para que algo mais autêntico possa emergir.',
       },
     ],
     termos_destacados: ['persona', 'Self', 'Sankofa', 'noite escura', 'Ubuntu', 'identidade'],
@@ -148,13 +148,13 @@ export const veu1Niveis: NivelCapitulo[] = [
     sinais_do_veu: [
       'Sentes um peso ao fim do dia que não tem causa clara — como se algo essencial estivesse em falta.',
       'Recebes elogios mas não te reconheces neles.',
-      'Adaptas o que dizes é como ages dependendo de quem está a frente.',
+      'Adaptas o que dizes e como ages dependendo de quem está à frente.',
       'Tens medo de dizer "não" porque achas que vais perder o lugar.',
       'Há partes de ti que só existem em silêncio, nunca partilhadas.',
     ],
     guiao_reflexao: [
       'Que máscara usas mais no trabalho? E em casa? São a mesma?',
-      'Descreve uma versão de ti que mostravas ao mundo é que já não sentes como verdadeira. Quando foi que deixou de servir?',
+      'Descreve uma versão de ti que mostravas ao mundo e que já não sentes como verdadeira. Quando foi que deixou de servir?',
       'Escreve algo que nunca disseste a ninguém sobre quem realmente es.',
     ],
     espelho_pessoal: 'Que parte de ti vive escondida — não por vergonha, mas por medo de não caber no olhar dos outros?',
@@ -162,47 +162,47 @@ export const veu1Niveis: NivelCapitulo[] = [
     // Camada profunda
     mascaras: [
       'A forte — a que todos procuram quando algo corre mal. Nunca lhe perguntam como está porque assumem que ela aguenta sempre. E ela aguenta. Até ao dia em que o corpo diz que não. Mas mesmo nesse dia, sorri. Porque a máscara já não é escolha — é reflexo.',
-      'A agradável — a que diz sim antes de sentir o que realmente quer. Não é submissão. E um medo antigo de que o conflito destrua o vínculo. Aprendeu cedo que ser amada é ser fácil de amar. E perdeu-se nessa facilidade.',
-      'A invisível — a que se fez pequena para não incomodar. Não por humildade genuína, mas porque uma vez mostrou-se inteira é o mundo não soube o que fazer com ela. Desde então, edita-se. Encolhe-se. E chama a isso "ser discreta".',
+      'A agradável — a que diz sim antes de sentir o que realmente quer. Não é submissão. É um medo antigo de que o conflito destrua o vínculo. Aprendeu cedo que ser amada é ser fácil de amar. E perdeu-se nessa facilidade.',
+      'A invisível — a que se fez pequena para não incomodar. Não por humildade genuína, mas porque uma vez mostrou-se inteira e o mundo não soube o que fazer com ela. Desde então, edita-se. Encolhe-se. E chama a isso "ser discreta".',
       'A perfeita — a que não se permite falhas visíveis. Cada erro é escondido, cada fragilidade é polida até parecer força. Vista de fora, parece ter tudo resolvido. Vista de dentro, está exausta de manter a fachada impecável.',
     ],
     veu_dominante_sinais: [
       'Reparas que nas tuas relações mais importantes há sempre uma versão de ti que fica de fora. Não mostras tudo a ninguém — não por maldade, mas porque nenhum espaço parece seguro o suficiente para quem és por inteiro.',
       'Quando estás sozinha, sentes um alívio estranho — como se finalmente pudesses pousar o peso. Mas esse alívio vem acompanhado de solidão, porque a pessoa que descansa no silêncio não é a mesma que o mundo conhece.',
-      'Tens uma história que contas sobre ti — a versão oficial — é uma história que vives por dentro. A distância entre as duas cresce com o tempo. E essa distância é o vazio que sentes ao fim do dia.',
+      'Tens uma história que contas sobre ti — a versão oficial — e uma história que vives por dentro. A distância entre as duas cresce com o tempo. E essa distância é o vazio que sentes ao fim do dia.',
       'Quando alguém se aproxima de mais, recuas. Não porque não queiras intimidade, mas porque intimidade verdadeira significaria mostrar a parte que vive atrás da máscara. E essa parte ainda não sabe se é bem-vinda.',
-      'Olhas para trás é percebes que muitas das tuas decisões — de carreira, de relação, de estilo de vida — foram tomadas pela máscara, não por ti. E agora não sabes como voltar atrás sem desmontar tudo.',
+      'Olhas para trás e percebes que muitas das tuas decisões — de carreira, de relação, de estilo de vida — foram tomadas pela máscara, não por ti. E agora não sabes como voltar atrás sem desmontar tudo.',
     ],
-    mensagem_central: 'Este capítulo não te pede que arranques as máscaras. Pede-te que as vejas. Que sintas o peso delas. Que reconheças que foste tu que as construiste — com inteligência, com amor, com medo — para sobreviver a algo que na altura era real. A máscara não é inimiga. Foi aliada. Mas uma aliada que ficou tempo de mais acaba por ocupar o lugar de quem protegia. O vazio que sentes não é sinal de que algo está partido. E sinal de que algo quer respirar. Alguma parte de ti, muito antiga é muito viva, está cansada de viver nós bastidores. Este capítulo é o momento em que lhe dizes: eu sei que estás aí.',
+    mensagem_central: 'Este capítulo não te pede que arranques as máscaras. Pede-te que as vejas. Que sintas o peso delas. Que reconheças que foste tu que as construiste — com inteligência, com amor, com medo — para sobreviver a algo que na altura era real. A máscara não é inimiga. Foi aliada. Mas uma aliada que ficou tempo de mais acaba por ocupar o lugar de quem protegia. O vazio que sentes não é sinal de que algo está partido. É sinal de que algo quer respirar. Alguma parte de ti, muito antiga e muito viva, está cansada de viver nos bastidores. Este capítulo é o momento em que lhe dizes: eu sei que estás aí.',
     guiao_escrita: {
-      contexto: 'Este exercício é um encontro com as tuas máscaras. Não para as destruir, mas para as reconhecer — é sentir o que vive por baixo delas.',
+      contexto: 'Este exercício é um encontro com as tuas máscaras. Não para as destruir, mas para as reconhecer — e sentir o que vive por baixo delas.',
       passos: [
         'Senta-te em silêncio durante um minuto. Sente o teu corpo na cadeira. Nota onde há tensão — ombros, mandíbula, peito. Essa tensão é informação.',
         'Escreve o nome de três pessoas importantes na tua vida. Ao lado de cada nome, descreve em uma ou duas frases quem és quando estás com essa pessoa. Que versão de ti aparece?',
         'Agora olha para essas três versões. Há alguma que sentes que é mais "tu" do que as outras? Ou há uma que sentes que é completamente fabricada? Escreve sobre isso.',
         'Pensa num momento recente em que sentiste aquele peso sem nome — o vazio ao fim do dia, a sensação de que algo falta. Descreve esse momento com detalhe: onde estavas, o que tinhas feito, o que sentiste no corpo.',
-        'Agora escreve uma frase que comece assim: "A parte de mim que ninguém ve e..." Deixa a mão continuar. Não penses. Escreve.',
+        'Agora escreve uma frase que comece assim: "A parte de mim que ninguém vê e..." Deixa a mão continuar. Não penses. Escreve.',
       ],
       tempo_sugerido: '20 minutos',
-      nota_final: 'Se sentiste desconforto ao escrever, isso não é sinal de que fizeste mal. E sinal de que tocaste em algo real. Guarda o que escreveste. Volta a ele daqui a uma semana.',
+      nota_final: 'Se sentiste desconforto ao escrever, isso não é sinal de que fizeste mal. É sinal de que tocaste em algo real. Guarda o que escreveste. Volta a ele daqui a uma semana.',
     },
   },
   {
     capitulo_numero: 3,
     resumo_acessivel: [
-      'Depois de questionar as máscaras é os rótulos, chega a pergunta inevitável: se não somos esse "eu" fixo, o que somos? Este capítulo ouve três vozes — Ocidente, Oriente e África.',
+      'Depois de questionar as máscaras e os rótulos, chega a pergunta inevitável: se não somos esse "eu" fixo, o que somos? Este capítulo ouve três vozes — Ocidente, Oriente e África.',
       'O Ocidente construiu o "eu" como centro sólido (Descartes: "penso, logo existo"). O Oriente questiona-o há séculos (Buddha: não há "eu" permanente). África lembra que o "eu" só floresce no "nós" (Ubuntu).',
       'No fim, as três vozes convergem: a identidade não é prisão — é passagem. As tradições místicas, de todas as geografias, falam de uma centelha comum que arde em cada ser.',
     ],
     perguntas_orientadoras: [
       'Quando pensas em "quem sou eu", a tua primeira resposta vem do pensamento (Ocidente), da percepção do fluxo (Oriente) ou das relações (África)?',
       'Há alguma tradição espiritual ou filosófica que ressoa em ti, mesmo que não a "sigas" formalmente?',
-      'O que sentes quando lê a ideia de que a identidade pode ser passagem é não destino?',
+      'O que sentes quando lê a ideia de que a identidade pode ser passagem e não destino?',
     ],
     exemplos_concretos: [
       {
         contexto: 'Na reflexão pessoal',
-        texto: 'Pensa em quem eras há cinco anos. E agora imagina quem serás daqui a cinco. Mudaste — é vais mudar. Se o "eu" fosse fixo, como explicarias essa transformação? Este capítulo sugere que não és a forma, mas o fluxo.',
+        texto: 'Pensa em quem eras há cinco anos. E agora imagina quem serás daqui a cinco. Mudaste — e vais mudar. Se o "eu" fosse fixo, como explicarias essa transformação? Este capítulo sugere que não és a forma, mas o fluxo.',
       },
       {
         contexto: 'No quotidiano',
@@ -216,11 +216,11 @@ export const veu1Niveis: NivelCapitulo[] = [
       },
       {
         paragrafo_indice: 8,
-        texto: 'Descartes ("penso, logo existo") separou mente é corpo. O texto questiona: "existo apenas quando penso?" Há vida antes do pensamento — respiração, presença, corpo.',
+        texto: 'Descartes ("penso, logo existo") separou mente e corpo. O texto questiona: "existo apenas quando penso?" Há vida antes do pensamento — respiração, presença, corpo.',
       },
       {
         paragrafo_indice: 10,
-        texto: 'Antonio Damasio, neurologista português, mostrou que o "eu" não é substância fixa mas dança entre corpo, mente é ambiente. A ciência moderna confirma o que as tradições espirituais já intuiam.',
+        texto: 'Antonio Damasio, neurologista português, mostrou que o "eu" não é substância fixa mas dança entre corpo, mente e ambiente. A ciência moderna confirma o que as tradições espirituais já intuiam.',
       },
       {
         paragrafo_indice: 14,
@@ -236,7 +236,7 @@ export const veu1Niveis: NivelCapitulo[] = [
       },
       {
         paragrafo_indice: 30,
-        texto: 'As místicas (Cabala, sufismo, cristianismo místico, hinduismo devocional) usam linguagens diferentes — luz, amor, vazio, entrega — mas todas descrevem o mesmo movimento: o eu sai do trono de centro absoluto é transforma-se em passagem.',
+        texto: 'As místicas (Cabala, sufismo, cristianismo místico, hinduismo devocional) usam linguagens diferentes — luz, amor, vazio, entrega — mas todas descrevem o mesmo movimento: o eu sai do trono de centro absoluto e transforma-se em passagem.',
       },
     ],
     termos_destacados: ['Ubuntu', 'anatta', 'Atman', 'Brahman', 'Taoismo', 'existencialismo', 'fana', 'Ein Sof', 'bhakti', 'noite escura', 'vacuidade', 'samsara', 'despertar'],
@@ -247,11 +247,11 @@ export const veu1Niveis: NivelCapitulo[] = [
       'Se eu perceber quem sou "de verdade", tudo se resolve.',
       'O Ocidente, o Oriente ou a África — um deles tem a resposta certa.',
       'A espiritualidade é para quem já sabe quem é.',
-      'A identidade é algo que se descobre uma vez é fica resolvido.',
+      'A identidade é algo que se descobre uma vez e fica resolvido.',
     ],
     sinais_do_veu: [
       'Saltas de tradição em tradição a procura da "resposta certa" sobre quem és.',
-      'Sentes-te dividida entre o pensamento racional é a intuição — como se tivesses de escolher.',
+      'Sentes-te dividida entre o pensamento racional e a intuição — como se tivesses de escolher.',
       'A ideia de que não há um "eu" permanente causa-te ansiedade em vez de alívio.',
       'Coleccionas conhecimento espiritual mas sentes que nada muda por dentro.',
       'Tens dificuldade em aceitar que a identidade seja fluxo — precisas de algo sólido.',
@@ -261,25 +261,25 @@ export const veu1Niveis: NivelCapitulo[] = [
       'Há alguma tradição espiritual ou filosófica que te atrai mas que nunca te deste permissão para explorar? O que te impede?',
       'Escreve uma carta ao teu "eu" de há 5 anos. O que lhe dirias sobre quem te tornaste? E ao teu "eu" de daqui a 5 anos?',
     ],
-    espelho_pessoal: 'Se todas as tradições, todas as filosofias, todas as respostas fossem retiradas — é ficasses só contigo é o silêncio — o que ouvirias?',
+    espelho_pessoal: 'Se todas as tradições, todas as filosofias, todas as respostas fossem retiradas — é ficasses só contigo e o silêncio — o que ouvirias?',
 
     // Camada profunda
     mascaras: [
-      'A buscadora — a que colecciona tradições, livros, retiros, mestres. Não por curiosidade genuína, mas por uma fome que nunca se sacia. Cada nova descoberta promete ser "a resposta", mas a resposta muda de forma antes de pousar. A busca tornou-se identidade — é sem ela, não sabe quem é.',
-      'A transcendente — a que se refugia no espírito para não sentir o corpo. Fala de consciência cósmica, de unidade, de além — mas tem dificuldade em estar presente numa conversa banal, num almoco de domingo, numa tarde sem propósito. A espiritualidade tornou-se fuga, não presença.',
-      'A racional — a que só confia no que pode ser explicado. Sente o puxao do mistério mas trava-o com lógica. Não é que não sinta — é que sentir sem compreender parece perigoso. Prefere o mapa ao território, a teoria a experiência.',
-      'A sintetica — a que tenta juntar tudo num sistema perfeito. Ocidente, Oriente, África — tudo tem de encaixar num modelo coerente. E a incoerência que a assusta. Porque se não há uma grande teoria unificada do eu, então talvez não haja chão nenhum.',
+      'A buscadora — a que colecciona tradições, livros, retiros, mestres. Não por curiosidade genuína, mas por uma fome que nunca se sacia. Cada nova descoberta promete ser "a resposta", mas a resposta muda de forma antes de pousar. A busca tornou-se identidade — e sem ela, não sabe quem é.',
+      'A transcendente — a que se refugia no espírito para não sentir o corpo. Fala de consciência cósmica, de unidade, de além — mas tem dificuldade em estar presente numa conversa banal, num almoço de domingo, numa tarde sem propósito. A espiritualidade tornou-se fuga, não presença.',
+      'A racional — a que só confia no que pode ser explicado. Sente o puxão do mistério mas trava-o com lógica. Não é que não sinta — é que sentir sem compreender parece perigoso. Prefere o mapa ao território, a teoria a experiência.',
+      'A sintética — a que tenta juntar tudo num sistema perfeito. Ocidente, Oriente, África — tudo tem de encaixar num modelo coerente. É a incoerência que a assusta. Porque se não há uma grande teoria unificada do eu, então talvez não haja chão nenhum.',
     ],
     veu_dominante_sinais: [
       'Há anos que procuras uma resposta sobre quem és — em livros, em terapias, em viagens, em relações. Cada resposta satisfaz durante um tempo, mas depois dissolve-se. E a procura recomeça. O padrão não é falha tua — é o véu da permanência a funcionar.',
-      'Sentes uma divisão interna entre partes de ti que parecem pertencer a mundos diferentes. A parte que pensa é a parte que sente. A parte que quer pertencer é a parte que quer ser livre. Não consegues unificá-las, é isso cansa-te de uma forma que ninguém ve.',
+      'Sentes uma divisão interna entre partes de ti que parecem pertencer a mundos diferentes. A parte que pensa e a parte que sente. A parte que quer pertencer e a parte que quer ser livre. Não consegues unificá-las, e isso cansa-te de uma forma que ninguém vê.',
       'Quando encontras uma ideia que te toca profundamente, a primeira reacção é querer agarrá-la, transformá-la em crença, fazer dela chão. Mas o que era vivo torna-se rígido. E tu ficas com a forma, sem a substância.',
-      'A pergunta "quem sou eu?" não te larga. Esta presente quando acordas, quando tomas decisões, quando olhas para o espelho. Não é filosofia — é urgência. E a intensidade dessa urgência é proporcional a força deste véu na tua vida.',
-      'Reparas que te sentes mais confortável a falar sobre a identidade do que a vive-la. Sabes descrever o fluxo, o Ubuntu, a impermanência — mas quando chega o momento de largar o controlo é simplesmente ser, o corpo resiste. O saber não chegou ao corpo.',
+      'A pergunta "quem sou eu?" não te larga. Está presente quando acordas, quando tomas decisões, quando olhas para o espelho. Não é filosofia — é urgência. E a intensidade dessa urgência é proporcional à força deste véu na tua vida.',
+      'Reparas que te sentes mais confortável a falar sobre a identidade do que a vive-la. Sabes descrever o fluxo, o Ubuntu, a impermanência — mas quando chega o momento de largar o controlo e simplesmente ser, o corpo resiste. O saber não chegou ao corpo.',
     ],
-    mensagem_central: 'Este capítulo não te dá uma resposta sobre quem és. E isso pode ser a coisa mais generosa que um capítulo pode fazer. As três vozes que ouviste — a do Ocidente que diz "pensa", a do Oriente que diz "larga", a de África que diz "liga-te" — não se contradizem. São três formas de dizer a mesma coisa: tu não és o que pensas que és, é isso não é tragedia. E liberdade. A identidade não é uma coisa que se encontra é se guarda numa caixa. E mais parecida com música — só existe enquanto está a ser tocada. Tu não precisas de resolver quem és. Precisas de te deixar tocar. Pelo silêncio, pelo outro, pelo misteiro que não cabe em nenhuma palavra. Este capítulo é o fim de uma procura é o início de uma escuta.',
+    mensagem_central: 'Este capítulo não te dá uma resposta sobre quem és. E isso pode ser a coisa mais generosa que um capítulo pode fazer. As três vozes que ouviste — a do Ocidente que diz "pensa", a do Oriente que diz "larga", a de África que diz "liga-te" — não se contradizem. São três formas de dizer a mesma coisa: tu não és o que pensas que és, e isso não é tragédia. É liberdade. A identidade não é uma coisa que se encontra e se guarda numa caixa. É mais parecida com música — só existe enquanto está a ser tocada. Tu não precisas de resolver quem és. Precisas de te deixar tocar. Pelo silêncio, pelo outro, pelo misteiro que não cabe em nenhuma palavra. Este capítulo é o fim de uma procura e o início de uma escuta.',
     guiao_escrita: {
-      contexto: 'Este exercício é uma conversa entre as três vozes que ouviste neste capítulo — a razão, a intuição é a pertença. Não vais escolher uma. Vais deixa-las falar.',
+      contexto: 'Este exercício é uma conversa entre as três vozes que ouviste neste capítulo — a razão, a intuição e a pertença. Não vais escolher uma. Vais deixa-las falar.',
       passos: [
         'Senta-te num lugar onde ninguém te interrompa. Se puderes, acende uma vela ou abre uma janela. Cria um espaço que te diga: aqui posso parar.',
         'Escreve no topo da página: "O que penso que sou." Por baixo, escreve tudo o que te vem a cabeça — papéis, qualidades, defeitos, histórias. Não filtres. Despeja.',
