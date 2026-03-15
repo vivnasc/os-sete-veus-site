@@ -33,18 +33,7 @@ type AlbumDef = Omit<Album, "tracks"> & { tracks: TrackDef[] };
 // Lyrics are stored in separate files to keep this file manageable
 import { ESPELHO_LYRICS } from "./lyrics-espelhos";
 import { NO_LYRICS } from "./lyrics-nos";
-
-// Livro + Cursos lyrics (imported when available)
-let LIVRO_LYRICS: Record<string, string> = {};
-let CURSO_LYRICS: Record<string, string> = {};
-try {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const lc = require("./lyrics-livro-cursos");
-  LIVRO_LYRICS = lc.LIVRO_LYRICS || {};
-  CURSO_LYRICS = lc.CURSO_LYRICS || {};
-} catch {
-  // File not yet created — lyrics will be empty
-}
+import { LIVRO_LYRICS, CURSO_LYRICS } from "./lyrics-livro-cursos";
 
 const ALL_LYRICS: Record<string, string> = {
   ...ESPELHO_LYRICS,
