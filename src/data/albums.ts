@@ -21,9 +21,30 @@ export type AlbumTrack = {
   description: string;
   lang: "PT" | "EN";
   prompt: string;
+  lyrics: string;
   durationSeconds: number;
   audioUrl: string | null;
 };
+
+// Internal type for track definitions (lyrics applied at export via applyLyrics)
+type TrackDef = Omit<AlbumTrack, "lyrics"> & { lyrics?: string };
+type AlbumDef = Omit<Album, "tracks"> & { tracks: TrackDef[] };
+
+// Lyrics are stored in separate files to keep this file manageable
+import { ESPELHO_LYRICS } from "./lyrics-espelhos";
+import { NO_LYRICS } from "./lyrics-nos";
+import { LIVRO_LYRICS, CURSO_LYRICS } from "./lyrics-livro-cursos";
+
+const ALL_LYRICS: Record<string, string> = {
+  ...ESPELHO_LYRICS,
+  ...NO_LYRICS,
+  ...LIVRO_LYRICS,
+  ...CURSO_LYRICS,
+};
+
+function getLyrics(albumSlug: string, trackNumber: number): string {
+  return ALL_LYRICS[`${albumSlug}/${trackNumber}`] || "";
+}
 
 export type Album = {
   slug: string;
@@ -75,7 +96,7 @@ function cursoPrompt(theme: string, emotion: string, production: string, lang: "
 // ESPELHOS (7 albums)
 // ─────────────────────────────────────────────
 
-const ESPELHO_ILUSAO: Album = {
+const ESPELHO_ILUSAO: AlbumDef = {
   slug: "espelho-ilusao",
   title: "O Espelho da Ilusao",
   subtitle: "Quando a vida que tens nao foi a que escolheste",
@@ -93,7 +114,7 @@ const ESPELHO_ILUSAO: Album = {
   ],
 };
 
-const ESPELHO_MEDO: Album = {
+const ESPELHO_MEDO: AlbumDef = {
   slug: "espelho-medo",
   title: "O Espelho do Medo",
   subtitle: "Quando o medo decide por ti",
@@ -111,7 +132,7 @@ const ESPELHO_MEDO: Album = {
   ],
 };
 
-const ESPELHO_CULPA: Album = {
+const ESPELHO_CULPA: AlbumDef = {
   slug: "espelho-culpa",
   title: "O Espelho da Culpa",
   subtitle: "Quando te castigas por querer mais",
@@ -129,7 +150,7 @@ const ESPELHO_CULPA: Album = {
   ],
 };
 
-const ESPELHO_IDENTIDADE: Album = {
+const ESPELHO_IDENTIDADE: AlbumDef = {
   slug: "espelho-identidade",
   title: "O Espelho da Identidade",
   subtitle: "Quando ja nao sabes quem es sem os outros",
@@ -147,7 +168,7 @@ const ESPELHO_IDENTIDADE: Album = {
   ],
 };
 
-const ESPELHO_CONTROLO: Album = {
+const ESPELHO_CONTROLO: AlbumDef = {
   slug: "espelho-controlo",
   title: "O Espelho do Controlo",
   subtitle: "Quando segurar e a unica forma que conheces",
@@ -165,7 +186,7 @@ const ESPELHO_CONTROLO: Album = {
   ],
 };
 
-const ESPELHO_DESEJO: Album = {
+const ESPELHO_DESEJO: AlbumDef = {
   slug: "espelho-desejo",
   title: "O Espelho do Desejo",
   subtitle: "Quando desejas tudo menos o que precisas",
@@ -183,7 +204,7 @@ const ESPELHO_DESEJO: Album = {
   ],
 };
 
-const ESPELHO_SEPARACAO: Album = {
+const ESPELHO_SEPARACAO: AlbumDef = {
   slug: "espelho-separacao",
   title: "O Espelho da Separacao",
   subtitle: "Quando te afastas de ti mesma para pertencer",
@@ -210,8 +231,8 @@ function noAlbum(
   slug: string,
   title: string,
   subtitle: string,
-  tracks: Omit<AlbumTrack, "audioUrl">[]
-): Album {
+  tracks: Omit<TrackDef, "audioUrl" | "lyrics">[]
+): AlbumDef {
   return {
     slug,
     title,
@@ -283,7 +304,7 @@ const NO_PERTENCA = noAlbum(7, "no-pertenca", "O No da Pertenca", "A separacao q
 // LIVRO FILOSOFICO (1 album)
 // ─────────────────────────────────────────────
 
-const LIVRO_FILOSOFICO: Album = {
+const LIVRO_FILOSOFICO: AlbumDef = {
   slug: "livro-filosofico",
   title: "Os Sete Temas do Despertar",
   subtitle: "Sete camadas de consciencia — uma cartografia interior para quem esta pronta a dissolver o que ja nao serve",
@@ -311,9 +332,9 @@ function cursoAlbum(
   courseSlug: string,
   title: string,
   subtitle: string,
-  territory: string,
-  tracks: Omit<AlbumTrack, "audioUrl">[]
-): Album {
+  _territory: string,
+  tracks: Omit<TrackDef, "audioUrl" | "lyrics">[]
+): AlbumDef {
   return {
     slug,
     title,
@@ -401,6 +422,18 @@ const CURSO_VOZ_DENTRO = cursoAlbum("curso-voz-dentro", "voz-de-dentro", "Voz de
 // EXPORT
 // ─────────────────────────────────────────────
 
+// Apply lyrics from separate files to all album tracks
+function applyLyrics(albumDef: AlbumDef): Album {
+  return {
+    ...albumDef,
+    tracks: albumDef.tracks.map((t) => ({
+      ...t,
+      lyrics: t.lyrics || getLyrics(albumDef.slug, t.number),
+      audioUrl: t.audioUrl ?? null,
+    })),
+  } as Album;
+}
+
 export const ALL_ALBUMS: Album[] = [
   // Espelhos
   ESPELHO_ILUSAO,
@@ -431,7 +464,7 @@ export const ALL_ALBUMS: Album[] = [
   CURSO_FLORES_ESCURO,
   CURSO_PESO_CHAO,
   CURSO_VOZ_DENTRO,
-];
+].map(applyLyrics);
 
 // Helpers
 export function getAlbumsByProduct(product: Album["product"]) {
