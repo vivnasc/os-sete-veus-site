@@ -82,7 +82,10 @@ function TrackRow({
         {String(track.number).padStart(2, "0")}
       </div>
       <div className="min-w-0 flex-1">
-        <p className="font-medium text-forest">{track.title}</p>
+        <div className="flex items-center gap-2">
+          <p className="font-medium text-forest">{track.title}</p>
+          <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${track.lang === "PT" ? "bg-sage/15 text-sage" : "bg-violet-100 text-violet-600"}`}>{track.lang}</span>
+        </div>
         <p className="text-sm text-sage">{track.description}</p>
         <details className="mt-2">
           <summary className="cursor-pointer text-xs text-sage/60 hover:text-sage">
@@ -230,8 +233,7 @@ export default function AlbumProductionPage() {
             Producao de Albums
           </h1>
           <p className="mt-1 text-sage">
-            Estilo Aruna Serena / Vozes da Terra — world music organica para
-            cada produto.
+            Contemporaneo organico-electronico — voz feminina com letra, PT e EN.
           </p>
           <div className="mt-4 flex items-center gap-6">
             <span className="rounded-full bg-sage/10 px-3 py-1 text-xs text-sage">
