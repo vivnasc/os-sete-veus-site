@@ -201,111 +201,150 @@ export default function AdminPage() {
           />
         </div>
 
-        {/* Quick Actions */}
-        <div className="mb-12">
-          <h2 className="mb-6 font-display text-2xl text-forest">
-            Acções Rápidas
-          </h2>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <ActionCard
-              title="Livro Físico"
-              description="Ver e editar página de vendas"
-              href="/livros/edicao-fisica"
-              icon="📖"
-            />
-            <ActionCard
-              title="Pagamentos Pendentes"
-              description="Aprovar transferências e pagamentos"
-              href="/admin/pagamentos"
-              icon="💳"
-              badge={stats?.pendingPayments || 0}
-            />
-            <ActionCard
-              title="Gestão de Membros"
-              description="Ver e gerir todos os membros"
-              href="/admin/membros"
-              icon="👥"
-            />
-            <ActionCard
-              title="Links Especiais"
-              description="Criar links para venda directa"
-              href="/admin/links-especiais"
-              icon="🔗"
-            />
-            <ActionCard
-              title="Ecos — Comunidade"
-              description="Ver a comunidade e moderar ecos"
-              href="/comunidade"
-              icon="~"
-            />
-            <ActionCard
-              title="Códigos de Acesso"
-              description="Gerar e gerir códigos do livro"
-              href="/autora/codigos"
-              icon="🔑"
-            />
-            <ActionCard
-              title="Producao Cursos"
-              description="Pipeline: scripts, audio, imagens, videos"
-              href="/admin/cursos/producao"
-              icon="▶"
-            />
-            <ActionCard
-              title="Territorios Visuais"
-              description="40 paisagens do Mundo dos Veus"
-              href="/admin/cursos/territorios"
-              icon="◈"
-            />
-            <ActionCard
-              title="Videos YouTube"
-              description="Scripts, narracao e montagem de hooks"
-              href="/admin/cursos/youtube"
-              icon="▷"
-            />
-            <ActionCard
-              title="Gerar Voz"
-              description="Clips de voz — intros, teasers, stories e marketing"
-              href="/admin/voz"
-              icon="◉"
-            />
-            <ActionCard
-              title="Gerar Sons"
-              description="Criar sons ambiente com ElevenLabs"
-              href="/admin/sons"
-              icon="♪"
-            />
-            <ActionCard
-              title="Conteúdo Pronto"
-              description="Posts prontos com imagem + legenda + WhatsApp"
-              href="/painel/marketing"
-              icon="📱"
-            />
-            <ActionCard
-              title="Criar Imagem"
-              description="Gerador livre com mockups e capas"
-              href="/painel/marketing/gerador"
-              icon="🎨"
-            />
-            <ActionCard
-              title="Notificacoes"
-              description="Ver todas as notificacoes"
-              href="/admin/notificacoes"
-              icon="🔔"
-              badge={stats?.unreadNotifications || 0}
-            />
-            <ActionCard
-              title="Analytics"
-              description="Métricas e estatísticas"
-              href="/admin/analytics"
-              icon="📊"
-            />
-            <ActionCard
-              title="Configurações"
-              description="Ajustes gerais do site"
-              href="/admin/configuracoes"
-              icon="⚙️"
-            />
-          </div>
+        {/* ── Vendas & Membros ── */}
+        <SectionTitle title="Vendas e Membros" />
+        <div className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <ActionCard
+            title="Pagamentos"
+            description="Aprovar transferencias e pagamentos"
+            href="/admin/pagamentos"
+            icon="💳"
+            badge={stats?.pendingPayments || 0}
+          />
+          <ActionCard
+            title="Membros"
+            description="Ver e gerir todos os membros"
+            href="/admin/membros"
+            icon="👥"
+          />
+          <ActionCard
+            title="Links Especiais"
+            description="Criar links para venda directa"
+            href="/admin/links-especiais"
+            icon="🔗"
+          />
+          <ActionCard
+            title="Codigos"
+            description="Gerar e gerir codigos do livro"
+            href="/autora/codigos"
+            icon="🔑"
+          />
+        </div>
+
+        {/* ── Livros & Leitura ── */}
+        <SectionTitle title="Livros e Leitura" />
+        <div className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ActionCard
+            title="Livro Fisico"
+            description="Ver e editar pagina de vendas"
+            href="/livros/edicao-fisica"
+            icon="📖"
+          />
+          <ActionCard
+            title="Leitoras"
+            description="Estatisticas de leitura por veu"
+            href="/autora/dashboard"
+            icon="◎"
+          />
+          <ActionCard
+            title="Comunidade"
+            description="Ver e moderar ecos"
+            href="/comunidade"
+            icon="~"
+          />
+        </div>
+
+        {/* ── Escola dos Veus ── */}
+        <SectionTitle title="Escola dos Veus" />
+        <div className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <ActionCard
+            title="Producao"
+            description="Pipeline: scripts, audio, imagens"
+            href="/admin/cursos/producao"
+            icon="▶"
+          />
+          <ActionCard
+            title="Territorios"
+            description="Paisagens do Mundo dos Veus"
+            href="/admin/cursos/territorios"
+            icon="◈"
+          />
+          <ActionCard
+            title="YouTube"
+            description="Scripts e montagem de hooks"
+            href="/admin/cursos/youtube"
+            icon="▷"
+          />
+          <ActionCard
+            title="Guidelines"
+            description="Tom, visual, scripts"
+            href="/admin/cursos/guidelines"
+            icon="¶"
+          />
+        </div>
+
+        {/* ── Audio ── */}
+        <SectionTitle title="Audio" />
+        <div className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
+          <ActionCard
+            title="Gerar Voz"
+            description="Intros, teasers, stories e marketing"
+            href="/admin/voz"
+            icon="◉"
+          />
+          <ActionCard
+            title="Gerar Sons"
+            description="Sons ambiente com ElevenLabs"
+            href="/admin/sons"
+            icon="♪"
+          />
+        </div>
+
+        {/* ── Marketing ── */}
+        <SectionTitle title="Marketing" />
+        <div className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ActionCard
+            title="Conteudo Pronto"
+            description="Posts com imagem + legenda + WhatsApp"
+            href="/painel/marketing"
+            icon="📱"
+          />
+          <ActionCard
+            title="Criar Imagem"
+            description="Gerador livre com mockups e capas"
+            href="/painel/marketing/gerador"
+            icon="🎨"
+          />
+          <ActionCard
+            title="Brand Kit"
+            description="Paleta, tipografia, identidade visual"
+            href="/painel/marca"
+            icon="◆"
+          />
+        </div>
+
+        {/* ── Sistema ── */}
+        <SectionTitle title="Sistema" />
+        <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ActionCard
+            title="Notificacoes"
+            description="Ver todas as notificacoes"
+            href="/admin/notificacoes"
+            icon="🔔"
+            badge={stats?.unreadNotifications || 0}
+          />
+          <ActionCard
+            title="Analytics"
+            description="Metricas e estatisticas"
+            href="/admin/analytics"
+            icon="📊"
+          />
+          <ActionCard
+            title="Configuracoes"
+            description="Ajustes gerais do site"
+            href="/admin/configuracoes"
+            icon="⚙️"
+          />
         </div>
 
         {/* Recent Activity */}
@@ -408,6 +447,14 @@ function StatCard({
   }
 
   return content;
+}
+
+function SectionTitle({ title }: { title: string }) {
+  return (
+    <h2 className="mb-4 mt-2 font-display text-lg text-forest/70 border-b border-sage/15 pb-2">
+      {title}
+    </h2>
+  );
 }
 
 function ActionCard({
