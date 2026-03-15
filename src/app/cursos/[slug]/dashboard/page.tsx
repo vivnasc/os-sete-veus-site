@@ -6,10 +6,11 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 
+const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
+
 type ModuleProgress = {
   moduleNumber: number;
   title: string;
-  isFree: boolean;
   subLessons: {
     letter: string;
     title: string;
@@ -19,7 +20,7 @@ type ModuleProgress = {
 
 export default function CourseDashboard() {
   const { slug } = useParams<{ slug: string }>();
-  const { user, loading: authLoading } = useAuth();
+  const { user, profile, loading: authLoading } = useAuth();
   const [courseData, setCourseData] = useState<{
     title: string;
     subtitle: string;
@@ -28,6 +29,10 @@ export default function CourseDashboard() {
   const [enrolled, setEnrolled] = useState(false);
   const [loading, setLoading] = useState(true);
   const [overallProgress, setOverallProgress] = useState(0);
+
+  const isAdmin =
+    profile?.is_admin === true ||
+    ADMIN_EMAILS.includes(user?.email || "");
 
   useEffect(() => {
     async function loadData() {
@@ -40,7 +45,6 @@ export default function CourseDashboard() {
         const modules: ModuleProgress[] = course.modules.map((mod) => ({
           moduleNumber: mod.number,
           title: mod.title,
-          isFree: mod.isFree,
           subLessons: mod.subLessons.map((sub) => ({
             letter: sub.letter,
             title: sub.title,
@@ -127,10 +131,13 @@ export default function CourseDashboard() {
   if (!courseData) {
     return (
       <div className="min-h-screen bg-[#1a1a2e] flex items-center justify-center">
-        <p className="text-[#a0a0b0]">Curso nao encontrado.</p>
+        <p className="text-[#a0a0b0]">Curso não encontrado.</p>
       </div>
     );
   }
+
+  // Admin or enrolled = full access
+  const hasFullAccess = enrolled || isAdmin;
 
   return (
     <div className="min-h-screen bg-[#1a1a2e] text-[#e0e0e8]">
@@ -146,6 +153,11 @@ export default function CourseDashboard() {
           {courseData.title}
         </h1>
         <p className="text-[#C9A96E] mt-1">{courseData.subtitle}</p>
+        {isAdmin && (
+          <span className="inline-block mt-2 text-xs bg-[#C9A96E]/20 text-[#C9A96E] px-2 py-0.5 rounded font-sans">
+            Acesso admin
+          </span>
+        )}
       </section>
 
       {/* Progress bar */}
@@ -164,7 +176,7 @@ export default function CourseDashboard() {
         {overallProgress === 100 && (
           <div className="mt-4 bg-[#C9A96E]/10 border border-[#C9A96E]/30 rounded-xl p-4 text-center">
             <p className="text-[#C9A96E] font-serif">
-              Curso concluido. O teu certificado esta disponivel.
+              Curso concluído. O teu certificado está disponível.
             </p>
           </div>
         )}
@@ -173,7 +185,7 @@ export default function CourseDashboard() {
       {/* Modules */}
       <section className="px-6 pb-16 max-w-4xl mx-auto space-y-4">
         {courseData.modules.map((mod) => {
-          const isLocked = !mod.isFree && !enrolled;
+          const isLocked = !hasFullAccess;
           const completedInModule = mod.subLessons.filter(
             (s) => s.completed
           ).length;
@@ -191,11 +203,6 @@ export default function CourseDashboard() {
                     {String(mod.moduleNumber).padStart(2, "0")}
                   </span>
                   <span className="text-white font-serif">{mod.title}</span>
-                  {mod.isFree && (
-                    <span className="text-xs bg-[#C9A96E]/20 text-[#C9A96E] px-2 py-0.5 rounded font-sans">
-                      Gratuito
-                    </span>
-                  )}
                   {isLocked && (
                     <span className="text-xs text-[#606070] font-sans">
                       Bloqueado
@@ -239,16 +246,15 @@ export default function CourseDashboard() {
         })}
       </section>
 
-      {/* Enroll CTA (if not enrolled) */}
-      {!enrolled && (
+      {/* Enroll CTA (if not enrolled and not admin) */}
+      {!hasFullAccess && (
         <section className="px-6 pb-16 max-w-4xl mx-auto text-center">
           <div className="bg-[#252547] border border-[#8B5CF6]/20 rounded-xl p-8">
             <h2 className="font-serif text-xl text-white mb-2">
               Desbloqueia o curso completo
             </h2>
             <p className="text-[#a0a0b0] text-sm mb-6">
-              O Modulo 1 e gratuito. Para aceder aos modulos 2-
-              {courseData.modules.length}, manual e cadernos de exercicios:
+              Acede a todos os {courseData.modules.length} módulos, manual e cadernos de exercícios.
             </p>
             <button
               onClick={async () => {

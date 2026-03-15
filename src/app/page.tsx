@@ -4,6 +4,32 @@ import NewsletterForm from "@/components/NewsletterForm";
 import ScrollReveal from "@/components/ScrollReveal";
 import AudioPlayer from "@/components/AudioPlayer";
 
+const FEATURED_COURSES = [
+  {
+    slug: "ouro-proprio",
+    number: 1,
+    title: "Ouro Próprio",
+    subtitle: "A relação com dinheiro como espelho de ti",
+    territory: "Casa dos Espelhos Dourados",
+    color: "#D4A853",
+  },
+  {
+    slug: "limite-sagrado",
+    number: 7,
+    title: "Limite Sagrado",
+    subtitle: "Limites, o preço de agradar, a culpa da recusa",
+    territory: "Muralha que Nasce do Chão",
+    color: "#C9A96E",
+  },
+  {
+    slug: "a-arte-da-inteireza",
+    number: 3,
+    title: "A Arte da Inteireza",
+    subtitle: "Amar sem te perderes no outro",
+    territory: "Ponte entre Duas Margens",
+    color: "#8B5CF6",
+  },
+];
 
 const espelhosPeek = [
   { title: "Espelho da Ilusão", tagline: "Quando a vida que tens não foi a que escolheste", image: "/images/espelho-ilusao.png" },
@@ -14,7 +40,7 @@ const espelhosPeek = [
 export default function Home() {
   return (
     <>
-      {/* Hero — animated dark gradient */}
+      {/* Hero */}
       <section className="hero-gradient-animated bg-gradient-to-br from-brown-800 via-[#3d3630] to-brown-900 px-6 py-32 sm:py-40">
         <div className="mx-auto max-w-3xl text-center">
           <ScrollReveal variant="scale" duration={0.9}>
@@ -28,12 +54,12 @@ export default function Home() {
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
             <h1 className="mt-8 font-serif text-4xl leading-tight tracking-tight text-cream sm:text-5xl md:text-[3.5rem]">
-              Para quem sente que merece mais da própria vida.
+              Vê o que estava invisível.
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={0.4}>
             <p className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-brown-200">
-              Sete histórias que te devolvem a ti mesma.
+              Cursos, livros e histórias que te devolvem a ti mesma.
               <br />
               Sem pressa. Sem fórmulas. Apenas verdade.
             </p>
@@ -41,16 +67,16 @@ export default function Home() {
           <ScrollReveal delay={0.6}>
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Link
-                href="/recursos/teste"
+                href="/cursos"
                 className="animate-pulse-glow inline-block rounded-md border-2 border-cream bg-cream px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-900 transition-all hover:bg-transparent hover:text-cream"
               >
-                Teste gratuito
+                Ver cursos
               </Link>
               <Link
                 href="/comprar/espelhos"
                 className="inline-block rounded-md border-2 border-brown-300 bg-transparent px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-200 transition-all hover:border-cream hover:bg-cream hover:text-brown-900"
               >
-                Ver Espelhos
+                Colecção Espelhos
               </Link>
             </div>
           </ScrollReveal>
@@ -68,13 +94,69 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Choose your path — cream section with 2 clear options */}
+      {/* A Escola dos Véus — Cursos (PRODUTO PRINCIPAL) */}
+      <section className="bg-[#1a1a2e] px-6 py-24">
+        <div className="mx-auto max-w-5xl">
+          <ScrollReveal>
+            <p className="text-center font-sans text-[0.65rem] uppercase tracking-[0.3em] text-[#8B5CF6]">
+              A Escola dos Véus
+            </p>
+            <h2 className="mt-3 text-center font-serif text-3xl text-[#F5F0E6] sm:text-4xl">
+              Cursos de transformação interior
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-center leading-relaxed text-[#a0a0b0]">
+              Dez territórios. Dez zonas da tua vida que precisas de atravessar com mais clareza.
+              Começa pelo corpo, não pela mente. Os exercícios são experiências, não tarefas.
+            </p>
+          </ScrollReveal>
+
+          <div className="mt-14 grid gap-8 sm:grid-cols-3">
+            {FEATURED_COURSES.map((course, i) => (
+              <ScrollReveal key={course.slug} delay={0.15 * i} variant="scale">
+                <Link
+                  href={`/cursos/${course.slug}`}
+                  className="group block rounded-2xl border border-white/[0.06] bg-white/[0.03] p-8 text-center transition-all duration-300 hover:border-[#8B5CF6]/30 hover:bg-white/[0.06] hover:shadow-[0_0_24px_rgba(139,92,246,0.08)]"
+                >
+                  <span className="font-sans text-xs font-medium uppercase tracking-[0.2em] text-[#8B5CF6]/70">
+                    Curso {String(course.number).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-4 font-serif text-xl text-[#F5F0E6] transition-colors group-hover:text-[#C9A96E]">
+                    {course.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-[#a0a0b0]">
+                    {course.subtitle}
+                  </p>
+                  <p className="mt-4 text-xs italic" style={{ color: course.color }}>
+                    {course.territory}
+                  </p>
+                </Link>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <ScrollReveal delay={0.3}>
+            <div className="mt-12 text-center">
+              <Link
+                href="/cursos"
+                className="inline-block rounded-md border-2 border-[#8B5CF6] bg-[#8B5CF6] px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-white transition-all hover:bg-transparent hover:text-[#8B5CF6]"
+              >
+                Ver os 10 cursos
+              </Link>
+              <p className="mt-4 text-xs text-[#606070]">
+                $49 USD por curso / ~3100 MZN
+              </p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Choose your path — Espelhos + Livro */}
       <section className="bg-cream px-6 py-24">
         <div className="mx-auto max-w-5xl">
           <ScrollReveal>
-            <h2 className="text-center font-serif text-3xl text-brown-900 sm:text-4xl">Escolhe o teu caminho</h2>
+            <h2 className="text-center font-serif text-3xl text-brown-900 sm:text-4xl">Também disponível</h2>
             <p className="mx-auto mt-4 max-w-xl text-center leading-relaxed text-brown-600">
-              Duas formas de começar a tua jornada de autoconhecimento
+              Além dos cursos, duas formas de começar a tua jornada de autoconhecimento
             </p>
           </ScrollReveal>
 
@@ -123,7 +205,7 @@ export default function Home() {
             <ScrollReveal delay={0.3} variant="scale">
               <div className="group relative overflow-hidden rounded-2xl border-2 border-brown-300 bg-white p-8 shadow-sm transition-all duration-300 hover:border-brown-400 hover:shadow-lg">
                 <h3 className="font-serif text-2xl text-brown-900">Livro Filosófico</h3>
-                <p className="mt-2 font-serif text-sm italic text-brown-700">"Os 7 Véus do Despertar" — obra filosófica</p>
+                <p className="mt-2 font-serif text-sm italic text-brown-700">&ldquo;Os 7 Véus do Despertar&rdquo; — obra filosófica</p>
                 <p className="mt-4 leading-relaxed text-brown-800">
                   Livro impresso sobre despertar de consciência — uma cartografia interior para dissolver
                   o que já não serve. Inclui também a <strong>versão digital do livro</strong> para ler no site.
@@ -297,69 +379,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Colecção Nós */}
-      <section className="bg-gradient-to-b from-[#1a1510] to-[#0a0a0a] px-6 py-24">
-        <div className="mx-auto max-w-5xl">
-          <ScrollReveal>
-            <p className="text-center font-sans text-[0.65rem] uppercase tracking-[0.3em] text-[#c9a87c]/60">
-              Colecção Nós
-            </p>
-            <h2 className="mt-3 text-center font-serif text-3xl text-cream sm:text-4xl">
-              Ficção relacional
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-center font-serif text-base leading-relaxed text-brown-300">
-              Os Espelhos mostram-te o véu que usas.
-              Os Nós mostram-te o que esse véu fez entre ti e outra pessoa.
-            </p>
-          </ScrollReveal>
-
-          {/* Cover grid — same size as Espelhos (3 columns) */}
-          <div className="mt-14 grid gap-8 sm:grid-cols-3">
-            {[
-              { num: "I", title: "Nó da Herança", sub: "O silêncio herdado entre mãe e filha", color: "#c9956a", image: "/images/capa-no-heran\u00e7a2.png", available: true },
-              { num: "II", title: "Nó do Silêncio", sub: "O que o medo calou entre eles", color: "#6a9dbe", image: "/images/capa-no-silencio2.png", available: false },
-              { num: "III", title: "Nó do Sacrifício", sub: "A culpa disfarçada de entrega", color: "#d06a6a", image: "/images/capa-no-sacrifico2.png", available: false },
-            ].map((no, i) => (
-              <ScrollReveal key={no.num} delay={0.15 * i} variant="scale">
-                <div className="text-center">
-                  <Image
-                    src={no.image}
-                    alt={no.title}
-                    width={220}
-                    height={330}
-                    className="mx-auto rounded-lg shadow-2xl transition-transform duration-500 hover:scale-105"
-                  />
-                  <h3 className="mt-5 font-serif text-lg text-cream">{no.title}</h3>
-                  <p className="mt-1 text-sm italic" style={{ color: `${no.color}bb` }}>
-                    {no.sub}
-                  </p>
-                  {no.available ? (
-                    <p className="mt-2 text-xs" style={{ color: no.color }}>Disponível</p>
-                  ) : (
-                    <p className="mt-2 text-xs text-brown-600">Em breve</p>
-                  )}
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <ScrollReveal delay={0.3}>
-            <p className="mx-auto mt-8 max-w-md text-center text-sm text-brown-500">
-              Cada Nó desbloqueia ao completar o Espelho correspondente.
-            </p>
-            <div className="mt-6 text-center">
-              <Link
-                href="/comprar/espelhos"
-                className="inline-block rounded-md border-2 border-[#c9a87c]/40 px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-[#c9b99a] transition-all hover:border-cream hover:text-cream"
-              >
-                Ver Colecção Espelhos
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Author teaser — cream section with photo */}
+      {/* Author teaser */}
       <section className="bg-cream px-6 py-24">
         <div className="mx-auto max-w-4xl">
           <div className="items-center gap-12 md:flex">
@@ -395,7 +415,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Comunidade — diferencial único */}
+      {/* Comunidade */}
       <section className="bg-gradient-to-b from-[#1a1510] to-[#2d2620] px-6 py-24">
         <div className="mx-auto max-w-4xl">
           <ScrollReveal>
@@ -503,7 +523,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Newsletter — beige section */}
+      {/* Newsletter */}
       <section className="bg-cream-dark px-6 py-24">
         <div className="mx-auto max-w-2xl text-center">
           <ScrollReveal>
@@ -531,16 +551,16 @@ export default function Home() {
           <ScrollReveal delay={0.2}>
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Link
-                href="/recursos/teste"
+                href="/cursos"
                 className="animate-pulse-glow inline-block rounded-md border-2 border-cream bg-cream px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-900 transition-all hover:bg-transparent hover:text-cream"
               >
-                Começa pelo teste gratuito
+                Ver cursos
               </Link>
               <Link
-                href="/experiencias"
+                href="/comprar/espelhos"
                 className="inline-block rounded-md border-2 border-brown-300 bg-transparent px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-brown-200 transition-all hover:border-cream hover:bg-cream hover:text-brown-900"
               >
-                Ver experiências digitais
+                Colecção Espelhos
               </Link>
             </div>
           </ScrollReveal>
