@@ -14,6 +14,8 @@ const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
 
 type TrackStatus = "idle" | "uploading" | "done" | "error" | "generating" | "polling";
 
+type CloneStatus = "idle" | "separating" | "converting" | "mixing" | "done" | "error";
+
 type SunoClip = {
   id: string;
   status: string;
@@ -24,6 +26,15 @@ type SunoClip = {
 type GeneratedClips = {
   clips: SunoClip[];
   selectedIndex: number;
+};
+
+type CloneResult = {
+  status: CloneStatus;
+  error?: string;
+  vocalUrl?: string;
+  backingUrl?: string;
+  convertedVocalUrl?: string;
+  mixedUrl?: string;
 };
 
 function trackKey(albumSlug: string, trackNum: number) {
@@ -73,8 +84,11 @@ function TrackRow({
   onRemove,
   onGenerate,
   onApproveClip,
+  onClone,
+  onApproveClone,
   audioUrl,
   generatedClips,
+  cloneResult,
 }: {
   album: Album;
   track: AlbumTrack;
@@ -84,8 +98,11 @@ function TrackRow({
   onRemove: () => void;
   onGenerate: () => void;
   onApproveClip: (clipUrl: string) => void;
+  onClone: (clipUrl: string) => void;
+  onApproveClone: () => void;
   audioUrl: string | null;
   generatedClips: GeneratedClips | null;
+  cloneResult: CloneResult | null;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [showLyrics, setShowLyrics] = useState(false);
@@ -151,7 +168,7 @@ function TrackRow({
           )}
 
           {/* Generated clips preview */}
-          {clipsReady && (
+          {clipsReady && !cloneResult?.mixedUrl && (
             <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50/50 p-3">
               <p className="mb-2 text-xs font-medium text-amber-800">
                 {generatedClips.clips.length} versao(oes) gerada(s) — ouve e escolhe:
@@ -170,12 +187,23 @@ function TrackRow({
                       {idx + 1}
                     </button>
                     <audio controls src={clip.audioUrl!} className="h-8 flex-1" />
-                    <button
-                      onClick={() => onApproveClip(clip.audioUrl!)}
-                      className="rounded-lg bg-forest px-3 py-1.5 text-xs text-white transition hover:bg-forest/80"
-                    >
-                      Aprovar
-                    </button>
+                    <div className="flex gap-1">
+                      <button
+                        onClick={() => onClone(clip.audioUrl!)}
+                        disabled={cloneResult?.status === "separating" || cloneResult?.status === "converting"}
+                        className="rounded-lg bg-violet-600 px-3 py-1.5 text-xs text-white transition hover:bg-violet-700 disabled:opacity-50"
+                        title="Separar vocal + aplicar clone da Vivianne"
+                      >
+                        Aplicar clone
+                      </button>
+                      <button
+                        onClick={() => onApproveClip(clip.audioUrl!)}
+                        className="rounded-lg bg-sage/20 px-3 py-1.5 text-xs text-sage transition hover:bg-sage/30"
+                        title="Aprovar sem clone (voz IA original)"
+                      >
+                        Sem clone
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -185,6 +213,49 @@ function TrackRow({
               >
                 Regenerar
               </button>
+            </div>
+          )}
+
+          {/* Clone progress */}
+          {cloneResult && cloneResult.status !== "idle" && cloneResult.status !== "done" && cloneResult.status !== "error" && (
+            <div className="mt-3 flex items-center gap-2 rounded-lg bg-violet-50 p-3">
+              <div className="h-4 w-4 animate-spin rounded-full border-2 border-violet-400 border-t-transparent" />
+              <span className="text-xs text-violet-700">
+                {cloneResult.status === "separating" && "A separar vocal do instrumental (Kits.ai)..."}
+                {cloneResult.status === "converting" && "A aplicar clone vocal da Vivianne (Kits.ai)..."}
+                {cloneResult.status === "mixing" && "A misturar vocal + instrumental..."}
+              </span>
+            </div>
+          )}
+
+          {/* Clone error */}
+          {cloneResult?.status === "error" && (
+            <p className="mt-2 text-xs text-red-500">Clone: {cloneResult.error}</p>
+          )}
+
+          {/* Clone result — preview and approve */}
+          {cloneResult?.mixedUrl && (
+            <div className="mt-3 rounded-lg border border-violet-200 bg-violet-50/50 p-3">
+              <p className="mb-2 text-xs font-medium text-violet-800">
+                Clone aplicado — ouve o resultado:
+              </p>
+              <audio controls src={cloneResult.mixedUrl} className="mb-2 h-8 w-full max-w-sm" />
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={onApproveClone}
+                  className="rounded-lg bg-forest px-4 py-1.5 text-xs text-white transition hover:bg-forest/80"
+                >
+                  Aprovar com clone
+                </button>
+                {clipsReady && (
+                  <button
+                    onClick={() => onClone(generatedClips!.clips[selectedClipIdx].audioUrl!)}
+                    className="text-xs text-sage hover:text-forest"
+                  >
+                    Tentar de novo
+                  </button>
+                )}
+              </div>
             </div>
           )}
 
@@ -271,12 +342,15 @@ export default function AlbumProductionPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [audioUrls, setAudioUrls] = useState<Record<string, string>>({});
   const [generatedClips, setGeneratedClips] = useState<Record<string, GeneratedClips>>({});
+  const [cloneResults, setCloneResults] = useState<Record<string, CloneResult>>({});
   const pollingRef = useRef<Record<string, NodeJS.Timeout>>({});
+  const clonePollingRef = useRef<Record<string, NodeJS.Timeout>>({});
 
   // Cleanup polling on unmount
   useEffect(() => {
     return () => {
       Object.values(pollingRef.current).forEach(clearInterval);
+      Object.values(clonePollingRef.current).forEach(clearInterval);
     };
   }, []);
 
@@ -352,6 +426,269 @@ export default function AlbumProductionPage() {
     (s, a) => s + a.tracks.filter((t) => t.lyrics).length,
     0
   );
+
+  // --- Voice clone pipeline ---
+  async function cloneTrack(albumSlug: string, track: AlbumTrack, clipAudioUrl: string) {
+    const key = trackKey(albumSlug, track.number);
+    setCloneResults((r) => ({ ...r, [key]: { status: "separating" } }));
+
+    try {
+      // Step 1: Separate vocals from instrumental
+      const sepRes = await fetch("/api/admin/kitsai/separate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ audioUrl: clipAudioUrl }),
+      });
+
+      if (!sepRes.ok) {
+        const data = await sepRes.json().catch(() => ({ erro: `HTTP ${sepRes.status}` }));
+        throw new Error(data.erro || `Separacao falhou: ${sepRes.status}`);
+      }
+
+      const sepData = await sepRes.json();
+      const sepJobId = sepData.jobId;
+
+      // Poll separation status
+      const sepResult = await pollKitsJob(key, "separation", sepJobId);
+      const vocalUrl = sepResult.vocalUrl as string | undefined;
+      const backingUrl = sepResult.backingUrl as string | undefined;
+      if (!vocalUrl || !backingUrl) {
+        throw new Error("Separacao nao retornou vocal ou instrumental.");
+      }
+
+      setCloneResults((r) => ({
+        ...r,
+        [key]: { status: "converting" as const, vocalUrl, backingUrl },
+      }));
+
+      // Step 2: Convert vocal to Vivianne's voice
+      const convRes = await fetch("/api/admin/kitsai/convert", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ vocalUrl }),
+      });
+
+      if (!convRes.ok) {
+        const data = await convRes.json().catch(() => ({ erro: `HTTP ${convRes.status}` }));
+        throw new Error(data.erro || `Conversao falhou: ${convRes.status}`);
+      }
+
+      const convData = await convRes.json();
+      const convJobId = convData.jobId;
+
+      // Poll conversion status
+      const convResult = await pollKitsJob(key, "conversion", convJobId);
+      const convertedVocalUrl = convResult.outputUrl as string | undefined;
+      if (!convertedVocalUrl) {
+        throw new Error("Conversao nao retornou URL do vocal convertido.");
+      }
+
+      setCloneResults((r) => ({
+        ...r,
+        [key]: {
+          status: "mixing" as const,
+          vocalUrl,
+          backingUrl,
+          convertedVocalUrl,
+        },
+      }));
+
+      // Step 3: Mix in browser via Web Audio API
+      const mixedUrl = await mixAudioInBrowser(convertedVocalUrl, backingUrl);
+
+      setCloneResults((r) => ({
+        ...r,
+        [key]: {
+          status: "done" as const,
+          vocalUrl,
+          backingUrl,
+          convertedVocalUrl,
+          mixedUrl,
+        },
+      }));
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
+      setCloneResults((r) => ({
+        ...r,
+        [key]: { status: "error", error: msg },
+      }));
+    }
+  }
+
+  function pollKitsJob(
+    key: string,
+    type: "separation" | "conversion",
+    jobId: string
+  ): Promise<Record<string, string | null>> {
+    return new Promise((resolve, reject) => {
+      const pollKey = `${key}-${type}`;
+
+      if (clonePollingRef.current[pollKey]) {
+        clearInterval(clonePollingRef.current[pollKey]);
+      }
+
+      const startTime = Date.now();
+      const maxWait = 5 * 60 * 1000; // 5 min
+
+      const interval = setInterval(async () => {
+        try {
+          if (Date.now() - startTime > maxWait) {
+            clearInterval(interval);
+            delete clonePollingRef.current[pollKey];
+            reject(new Error(`Timeout na ${type} (Kits.ai).`));
+            return;
+          }
+
+          const res = await fetch(`/api/admin/kitsai/status?type=${type}&id=${jobId}`);
+          if (!res.ok) return; // transient error, keep polling
+
+          const data = await res.json();
+          if (data.erro) return;
+
+          if (data.status === "complete" || data.status === "success") {
+            clearInterval(interval);
+            delete clonePollingRef.current[pollKey];
+            resolve(data);
+          } else if (data.status === "error" || data.status === "failed") {
+            clearInterval(interval);
+            delete clonePollingRef.current[pollKey];
+            reject(new Error(`Kits.ai ${type} falhou.`));
+          }
+        } catch {
+          // transient, keep polling
+        }
+      }, 4000);
+
+      clonePollingRef.current[pollKey] = interval;
+    });
+  }
+
+  async function mixAudioInBrowser(vocalUrl: string, backingUrl: string): Promise<string> {
+    const audioCtx = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
+
+    const [vocalBuf, backingBuf] = await Promise.all([
+      fetch(vocalUrl).then((r) => r.arrayBuffer()).then((b) => audioCtx.decodeAudioData(b)),
+      fetch(backingUrl).then((r) => r.arrayBuffer()).then((b) => audioCtx.decodeAudioData(b)),
+    ]);
+
+    const duration = Math.max(vocalBuf.duration, backingBuf.duration);
+    const sampleRate = audioCtx.sampleRate;
+    const channels = 2;
+    const offlineCtx = new OfflineAudioContext(channels, Math.ceil(duration * sampleRate), sampleRate);
+
+    const vocalSource = offlineCtx.createBufferSource();
+    vocalSource.buffer = vocalBuf;
+    const vocalGain = offlineCtx.createGain();
+    vocalGain.gain.value = 0.85;
+    vocalSource.connect(vocalGain).connect(offlineCtx.destination);
+
+    const backingSource = offlineCtx.createBufferSource();
+    backingSource.buffer = backingBuf;
+    const backingGain = offlineCtx.createGain();
+    backingGain.gain.value = 1.0;
+    backingSource.connect(backingGain).connect(offlineCtx.destination);
+
+    vocalSource.start(0);
+    backingSource.start(0);
+
+    const renderedBuffer = await offlineCtx.startRendering();
+
+    // Encode as WAV and create blob URL
+    const wavBlob = audioBufferToWav(renderedBuffer);
+    const url = URL.createObjectURL(wavBlob);
+
+    audioCtx.close();
+    return url;
+  }
+
+  function audioBufferToWav(buffer: AudioBuffer): Blob {
+    const numChannels = buffer.numberOfChannels;
+    const sampleRate = buffer.sampleRate;
+    const length = buffer.length * numChannels * 2;
+    const arrayBuffer = new ArrayBuffer(44 + length);
+    const view = new DataView(arrayBuffer);
+
+    function writeString(offset: number, str: string) {
+      for (let i = 0; i < str.length; i++) {
+        view.setUint8(offset + i, str.charCodeAt(i));
+      }
+    }
+
+    writeString(0, "RIFF");
+    view.setUint32(4, 36 + length, true);
+    writeString(8, "WAVE");
+    writeString(12, "fmt ");
+    view.setUint32(16, 16, true);
+    view.setUint16(20, 1, true);
+    view.setUint16(22, numChannels, true);
+    view.setUint32(24, sampleRate, true);
+    view.setUint32(28, sampleRate * numChannels * 2, true);
+    view.setUint16(32, numChannels * 2, true);
+    view.setUint16(34, 16, true);
+    writeString(36, "data");
+    view.setUint32(40, length, true);
+
+    let offset = 44;
+    for (let i = 0; i < buffer.length; i++) {
+      for (let ch = 0; ch < numChannels; ch++) {
+        const sample = Math.max(-1, Math.min(1, buffer.getChannelData(ch)[i]));
+        view.setInt16(offset, sample < 0 ? sample * 0x8000 : sample * 0x7fff, true);
+        offset += 2;
+      }
+    }
+
+    return new Blob([arrayBuffer], { type: "audio/wav" });
+  }
+
+  async function approveClone(albumSlug: string, track: AlbumTrack) {
+    const key = trackKey(albumSlug, track.number);
+    const clone = cloneResults[key];
+    if (!clone?.mixedUrl) return;
+
+    setStatuses((s) => ({ ...s, [key]: "uploading" }));
+
+    try {
+      // Fetch the mixed blob from the object URL
+      const mixedRes = await fetch(clone.mixedUrl);
+      const blob = await mixedRes.blob();
+
+      const formData = new FormData();
+      formData.append("file", new File([blob], "mixed.mp3", { type: "audio/mpeg" }));
+      formData.append("albumSlug", albumSlug);
+      formData.append("trackNumber", String(track.number));
+
+      const uploadRes = await fetch("/api/admin/kitsai/mix", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!uploadRes.ok) {
+        const data = await uploadRes.json().catch(() => ({ erro: `HTTP ${uploadRes.status}` }));
+        throw new Error(data.erro || `Erro ${uploadRes.status}`);
+      }
+
+      const data = await uploadRes.json();
+      setStatuses((s) => ({ ...s, [key]: "done" }));
+      setAudioUrls((u) => ({ ...u, [key]: data.url }));
+      setGeneratedClips((g) => {
+        const copy = { ...g };
+        delete copy[key];
+        return copy;
+      });
+      setCloneResults((r) => {
+        const copy = { ...r };
+        delete copy[key];
+        return copy;
+      });
+
+      // Cleanup object URL
+      URL.revokeObjectURL(clone.mixedUrl);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Erro desconhecido";
+      setStatuses((s) => ({ ...s, [key]: "error" }));
+      setErrors((e) => ({ ...e, [key]: msg }));
+    }
+  }
 
   async function generateTrack(albumSlug: string, track: AlbumTrack) {
     const key = trackKey(albumSlug, track.number);
@@ -525,17 +862,23 @@ export default function AlbumProductionPage() {
         {/* Pipeline info */}
         <div className="mb-8 rounded-xl border border-sage/20 bg-white p-6 text-sm text-sage space-y-2">
           <p className="font-medium text-forest">Pipeline de producao</p>
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-3 sm:grid-cols-3">
             <div className="rounded-lg bg-violet-50 p-3">
-              <p className="mb-1 text-xs font-medium text-violet-700">Via Suno API (automatico)</p>
-              <p className="text-xs text-violet-600">1. Clica "Gerar via Suno" na faixa</p>
-              <p className="text-xs text-violet-600">2. Ouve as versoes geradas</p>
-              <p className="text-xs text-violet-600">3. Aprova a melhor — vai para o Supabase</p>
+              <p className="mb-1 text-xs font-medium text-violet-700">Via Suno + Clone (recomendado)</p>
+              <p className="text-xs text-violet-600">1. "Gerar via Suno" — gera musica</p>
+              <p className="text-xs text-violet-600">2. "Aplicar clone" — separa stems + converte vocal (Kits.ai)</p>
+              <p className="text-xs text-violet-600">3. Ouve e aprova — vai para o Supabase</p>
+            </div>
+            <div className="rounded-lg bg-amber-50 p-3">
+              <p className="mb-1 text-xs font-medium text-amber-700">Via Suno sem clone</p>
+              <p className="text-xs text-amber-600">1. "Gerar via Suno" na faixa</p>
+              <p className="text-xs text-amber-600">2. "Sem clone" — usa voz IA original</p>
+              <p className="text-xs text-amber-600">3. Vai directo para o Supabase</p>
             </div>
             <div className="rounded-lg bg-sage/5 p-3">
               <p className="mb-1 text-xs font-medium text-sage">Via upload manual</p>
-              <p className="text-xs text-sage/80">1. Gera no Suno/Udio manualmente</p>
-              <p className="text-xs text-sage/80">2. Passa pelo RVC (clone de voz)</p>
+              <p className="text-xs text-sage/80">1. Gera externamente</p>
+              <p className="text-xs text-sage/80">2. Processa o clone manualmente</p>
               <p className="text-xs text-sage/80">3. Carrega o MP3 aqui</p>
             </div>
           </div>
@@ -606,7 +949,10 @@ export default function AlbumProductionPage() {
                     onRemove={() => removeTrack(album.slug, track.number)}
                     onGenerate={() => generateTrack(album.slug, track)}
                     onApproveClip={(url) => approveClip(album.slug, track, url)}
+                    onClone={(url) => cloneTrack(album.slug, track, url)}
+                    onApproveClone={() => approveClone(album.slug, track)}
                     generatedClips={generatedClips[key] || null}
+                    cloneResult={cloneResults[key] || null}
                   />
                 );
               })}
