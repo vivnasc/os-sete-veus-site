@@ -49,3 +49,8 @@ prisma.config.ts
 *.db
 dev.db*
 
+# LoRA training
+CURSOS/lora-training/dataset/
+CURSOS/lora-training/output/
+CURSOS/lora-training/logs/
+*.safetensors
