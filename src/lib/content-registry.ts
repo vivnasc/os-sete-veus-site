@@ -41,11 +41,11 @@ const nosRegistry: Record<string, () => Promise<ContentModule>> = {
     bookMeta: m.bookMeta,
   })),
   "no-do-silencio": () => import("@/data/no-silencio").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
-  // "no-do-sacrificio": () => import("@/data/no-sacrificio").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
-  // "no-da-vergonha": () => import("@/data/no-vergonha").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
-  // "no-da-solidao": () => import("@/data/no-solidao").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
-  // "no-do-vazio": () => import("@/data/no-vazio").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
-  // "no-da-pertenca": () => import("@/data/no-pertenca").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
+  "no-do-sacrificio": () => import("@/data/no-sacrificio").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
+  "no-da-vergonha": () => import("@/data/no-vergonha").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
+  "no-da-solidao": () => import("@/data/no-solidao").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
+  "no-do-vazio": () => import("@/data/no-vazio").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
+  "no-da-pertenca": () => import("@/data/no-pertenca").then(m => ({ chapters: m.chapters, bookMeta: m.bookMeta })),
 };
 
 export async function loadEspelho(slug: string): Promise<ContentModule | null> {
