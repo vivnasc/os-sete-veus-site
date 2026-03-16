@@ -33,6 +33,11 @@ import { chapters as desejoChapters } from "../src/data/espelho-desejo";
 import { chapters as separacaoChapters } from "../src/data/espelho-separacao";
 import { chapters as herancaChapters } from "../src/data/no-heranca";
 import { chapters as silencioChapters } from "../src/data/no-silencio";
+import { chapters as sacrificioChapters } from "../src/data/no-sacrificio";
+import { chapters as vergonhaChapters } from "../src/data/no-vergonha";
+import { chapters as solidaoChapters } from "../src/data/no-solidao";
+import { chapters as vazioChapters } from "../src/data/no-vazio";
+import { chapters as pertencaChapters } from "../src/data/no-pertenca";
 
 const LIVROS = [
   { slug: "espelho-ilusao",     chapters: ilusaoChapters },
@@ -44,6 +49,11 @@ const LIVROS = [
   { slug: "espelho-separacao",  chapters: separacaoChapters },
   { slug: "no-heranca",         chapters: herancaChapters },
   { slug: "no-silencio",        chapters: silencioChapters },
+  { slug: "no-sacrificio",      chapters: sacrificioChapters },
+  { slug: "no-vergonha",        chapters: vergonhaChapters },
+  { slug: "no-solidao",         chapters: solidaoChapters },
+  { slug: "no-vazio",           chapters: vazioChapters },
+  { slug: "no-pertenca",        chapters: pertencaChapters },
 ];
 
 // O texto narrado inclui uma pausa introdutória + a pergunta

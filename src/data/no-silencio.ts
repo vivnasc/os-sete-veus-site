@@ -3,20 +3,7 @@
 // Véu 2: Medo
 // Regra: Só lês este Nó depois de completares o Espelho do Medo
 
-export type Chapter = {
-  slug: string;
-  number: number;
-  title: string;
-  subtitle: string;
-  accentColor: string;
-  accentBg: string;
-  content: string[];
-  reflection: {
-    prompt: string;
-    journalQuestion: string;
-  };
-  checklist: string[];
-};
+import type { Chapter } from "./ebook";
 
 export const bookMeta = {
   title: "O Nó do Silêncio",
