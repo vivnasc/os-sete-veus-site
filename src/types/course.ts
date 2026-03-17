@@ -67,6 +67,15 @@ export type CourseMeta = {
   youtubeHookCount: number;
 };
 
+export type CategorySlug = "materia" | "herancas" | "ciclos" | "fronteiras";
+
+export type CourseCategory = {
+  slug: CategorySlug;
+  title: string;
+  subtitle: string;
+  courses: CourseSlug[];
+};
+
 export type LessonStatus = "not_started" | "in_progress" | "completed";
 
 export type LessonProgress = {
