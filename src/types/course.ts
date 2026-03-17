@@ -12,7 +12,8 @@ export type CourseSlug =
   | "limite-sagrado"
   | "flores-no-escuro"
   | "o-peso-e-o-chao"
-  | "voz-de-dentro";
+  | "voz-de-dentro"
+  | "o-fio-invisivel";
 
 export type SubLesson = {
   letter: string; // "A", "B", "C"

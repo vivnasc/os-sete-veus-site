@@ -1160,6 +1160,121 @@ const COURSES: CourseData[] = [
       { title: "Como começar sem as 3 palavras que arruinam tudo", durationMin: 8 },
     ],
   },
+
+  // ─── CURSO 11 — O Fio Invisível ───
+  {
+    slug: "o-fio-invisivel",
+    number: 11,
+    title: "O Fio Invisível",
+    subtitle: "A ligação entre todos nós e como a tua cura toca o todo",
+    arcoEmocional:
+      "Começa pela ilusão de que estás sozinha no que sentes. Passa pela descoberta de que carregas dores que não são tuas. Atravessa o reconhecimento de que o que fazes a ti mesma fazes ao todo. Chega à compreensão de que curar-te não é egoísmo — é o acto mais generoso que existe. Termina com a experiência de que quando uma mulher se liberta, algo se liberta em todas.",
+    diferencial:
+      "Não é um curso de espiritualidade nem de energia. É sobre a ciência e a experiência da ligação humana — como o que sentes afecta quem te rodeia, como o que carregas veio de quem veio antes de ti, e como a tua cura individual é a semente da cura colectiva.",
+    modules: [
+      {
+        number: 1,
+        title: "A Ilusão da Separação",
+        description: "Pensas que o que sentes é só teu.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Sozinha no que sentes", description: "A crença de que ninguém sente o que tu sentes — e como isso te isola." },
+          { letter: "B", title: "O espelho invisível", description: "Cada pessoa que te irrita, te inspira ou te magoa está a mostrar-te algo sobre ti." },
+          { letter: "C", title: "O fio que não vês", description: "A ligação que existe entre todos nós — no corpo, no sistema nervoso, no campo emocional." },
+        ],
+        workbook: "Mapa das minhas ligações invisíveis",
+      },
+      {
+        number: 2,
+        title: "O que Carregas que Não É Teu",
+        description: "As dores herdadas que vivem no teu corpo.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A herança emocional", description: "Os medos, vergonhas e silêncios que absorveste da tua família sem ninguém te dizer." },
+          { letter: "B", title: "O corpo como arquivo", description: "Onde guardas a dor dos outros — nas costas, no estômago, na garganta." },
+          { letter: "C", title: "Devolver o que não te pertence", description: "O exercício de separar a tua dor da dor que herdaste." },
+        ],
+        workbook: "Inventário do que carrego e do que é meu",
+      },
+      {
+        number: 3,
+        title: "O Contágio Emocional",
+        description: "Como o que sentes passa para quem te rodeia.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A sala muda quando entras", description: "Como o teu estado interno altera o ambiente à tua volta — sem dizeres uma palavra." },
+          { letter: "B", title: "Os teus filhos sentem tudo", description: "O que não dizes em voz alta, o corpo das crianças ouve." },
+          { letter: "C", title: "A ansiedade partilhada", description: "Como a ansiedade, a raiva e a tristeza se transmitem entre pessoas que se amam." },
+        ],
+        workbook: "Diário do contágio emocional",
+      },
+      {
+        number: 4,
+        title: "A Dualidade",
+        description: "Tu és individual e és o todo ao mesmo tempo.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Separada e ligada", description: "O paradoxo: és completamente tua e completamente parte de algo maior." },
+          { letter: "B", title: "O que faço a mim, faço ao mundo", description: "Quando te maltratas, há algo no colectivo que também se contrai." },
+          { letter: "C", title: "A responsabilidade gentil", description: "Isto não é culpa — é consciência. Cuidar de ti é cuidar do todo." },
+        ],
+        workbook: "Exercício da dualidade: eu e o todo",
+      },
+      {
+        number: 5,
+        title: "A Ferida Colectiva",
+        description: "O que todas as mulheres carregam.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A dor que não tem dono", description: "Há dores que são de todas — o silêncio, a submissão, a vergonha do corpo." },
+          { letter: "B", title: "A história que não foi contada", description: "Gerações de mulheres que engoliram o que sentiam para que tu pudesses existir." },
+          { letter: "C", title: "Sentir o colectivo no corpo", description: "Quando choras sem razão aparente, talvez estejas a chorar por muitas." },
+        ],
+        workbook: "Carta às mulheres que vieram antes",
+      },
+      {
+        number: 6,
+        title: "Curar-te Não É Egoísmo",
+        description: "A culpa de olhar para ti quando o mundo precisa de ajuda.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A armadilha do sacrifício", description: "A crença de que cuidar de ti é tirar algo aos outros." },
+          { letter: "B", title: "O oxigénio é para ti primeiro", description: "Não consegues dar o que não tens. A tua cura é a primeira oferenda." },
+          { letter: "C", title: "O egoísmo sagrado", description: "Quando te curas, libertas espaço para que outros se curem também." },
+        ],
+        workbook: "O que muda à minha volta quando eu mudo",
+      },
+      {
+        number: 7,
+        title: "Quebrar a Corrente",
+        description: "O padrão pára em ti.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O padrão que atravessa gerações", description: "A mãe da tua mãe também carregava isto. E a mãe dela." },
+          { letter: "B", title: "A decisão de não passar adiante", description: "O momento em que decides que isto pára aqui — não com raiva, com consciência." },
+          { letter: "C", title: "O que os teus filhos não vão herdar", description: "A liberdade que nasce quando quebras um padrão que tem séculos." },
+        ],
+        workbook: "Mapa do padrão intergeracional",
+      },
+      {
+        number: 8,
+        title: "A Ondulação",
+        description: "Quando uma se liberta, algo se liberta em todas.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A pedra na água", description: "Cada gesto de consciência cria ondas que não consegues ver mas que existem." },
+          { letter: "B", title: "A tua vida como oferenda", description: "Viver com clareza não é só para ti — é a contribuição mais silenciosa e mais poderosa." },
+          { letter: "C", title: "O fio que agora vês", description: "Não estás sozinha. Nunca estiveste. E agora sabes." },
+        ],
+        workbook: "Reflexão final: o que muda quando eu vejo o fio",
+      },
+    ],
+    youtubeHooks: [
+      { title: "Porque choras sem razão aparente", durationMin: 7 },
+      { title: "O que os teus filhos sentem quando tu não estás bem", durationMin: 8 },
+      { title: "A cura que começa em ti e toca quem te rodeia", durationMin: 6 },
+    ],
+  },
 ];
 
 export function getCourseBySlug(slug: string): CourseData | undefined {

@@ -976,12 +976,14 @@ O Mundo dos Veus e a representacao visual do mundo interno de uma pessoa. Nao e 
 | 8 | O Jardim Subterraneo | Flores no Escuro | Azul profundo + bioluminescentes | Caverna escura → iluminada pela luz das proprias flores |
 | 9 | O Caminho de Pedras | O Peso e o Chao | Cinza pedra | Curvada sob peso → de pe, leve, pedras no chao |
 | 10 | A Sala do Eco | Voz de Dentro | Violeta escuro, dourado eco | Silencio/sombra → voz/luz |
+| 11 | O Lago dos Reflexos Partilhados | O Fio Invisivel | Azul-prata, fios dourados | Superficie opaca → transparente, reflexos individuais fundem-se num so |
 
 **Conexoes entre territorios:**
 - Casa dos Espelhos reflecte brevemente a Arvore (dinheiro vem da familia)
 - Campo Queimado tem a Encruzilhada ao longe (recomecar implica decidir)
 - Jardim Subterraneo tem flores da cor da Sala do Eco (luto e silencio ligados)
 - Corpo-Paisagem tem o mesmo rio da Ponte (corpo e relacoes conectados)
+- Lago dos Reflexos Partilhados reflecte todos os outros territorios na sua superficie (a dualidade contem tudo)
 
 Quem faz um curso nao precisa de notar. Quem faz varios sente a coerencia.
 
