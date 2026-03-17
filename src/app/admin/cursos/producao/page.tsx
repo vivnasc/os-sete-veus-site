@@ -364,11 +364,6 @@ export default function CourseProductionPage() {
                         {String(mod.number).padStart(2, "0")}
                       </span>
                       <span className="text-white">{mod.title}</span>
-                      {mod.isFree && (
-                        <span className="text-xs bg-[#C9A96E]/20 text-mundo-dourado px-2 py-0.5 rounded">
-                          Gratuito
-                        </span>
-                      )}
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="text-xs text-mundo-muted">

@@ -13,7 +13,6 @@ type LessonData = {
   letter: string;
   title: string;
   description: string;
-  isFree: boolean;
   prev: { n: number; sub: string } | null;
   next: { n: number; sub: string } | null;
 };
@@ -61,7 +60,6 @@ export default function LessonPage() {
           letter: subLesson.letter,
           title: subLesson.title,
           description: subLesson.description,
-          isFree: mod.isFree,
           prev: currentIdx > 0 ? allLessons[currentIdx - 1] : null,
           next:
             currentIdx < allLessons.length - 1
@@ -93,7 +91,7 @@ export default function LessonPage() {
   useEffect(() => {
     async function loadVideo() {
       if (!user || !lesson) return;
-      if (!lesson.isFree && !enrolled) return;
+      if (!enrolled) return;
 
       try {
         const res = await fetch(
@@ -151,7 +149,7 @@ export default function LessonPage() {
     );
   }
 
-  const isLocked = !lesson.isFree && !enrolled && !profile?.is_admin;
+  const isLocked = !enrolled && !profile?.is_admin;
 
   if (!user) {
     return (

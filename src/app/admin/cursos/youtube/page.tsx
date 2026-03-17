@@ -38,6 +38,15 @@ export default function YouTubePage() {
     null
   );
 
+  // ElevenLabs config (optional — falls back to server env vars)
+  const [apiKey, setApiKey] = useState("");
+  const [voiceId, setVoiceId] = useState("");
+  const [speed, setSpeed] = useState(0.9);
+  const [showConfig, setShowConfig] = useState(false);
+
+  // Editable narration
+  const [editedNarration, setEditedNarration] = useState("");
+
   // Audio
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [audioDuration, setAudioDuration] = useState(0);
@@ -70,6 +79,7 @@ export default function YouTubePage() {
 
   function selectHook(script: YouTubeScript) {
     setSelectedScript(script);
+    setEditedNarration(getFullNarration(script));
     setAudioUrl(null);
     setAudioDuration(0);
     setScenes([]);
@@ -86,17 +96,22 @@ export default function YouTubePage() {
     setAudioError("");
 
     try {
-      const narration = getFullNarration(selectedScript);
+      const narration = editedNarration || getFullNarration(selectedScript);
+
+      const body: Record<string, unknown> = {
+        script: narration,
+        courseSlug: selectedScript.courseSlug,
+        moduleNum: 0,
+        subLetter: `yt-hook-${selectedScript.hookIndex}`,
+      };
+      if (apiKey.trim()) body.apiKey = apiKey.trim();
+      if (voiceId.trim()) body.voiceId = voiceId.trim();
+      body.speed = speed;
 
       const res = await fetch("/api/admin/courses/generate-audio", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          script: narration,
-          courseSlug: selectedScript.courseSlug,
-          moduleNum: 0,
-          subLetter: `yt-hook-${selectedScript.hookIndex}`,
-        }),
+        body: JSON.stringify(body),
       });
 
       if (!res.ok) {
@@ -560,14 +575,79 @@ export default function YouTubePage() {
               </p>
             </div>
 
-            {/* Script preview */}
-            <div className="border border-mundo-bg-surface rounded-xl p-5 max-h-64 overflow-y-auto">
-              <p className="text-xs text-mundo-muted-dark uppercase mb-3">
-                Narracao ({selectedScript.scenes.filter((s) => s.narration).length} seccoes)
-              </p>
-              <p className="text-sm text-[#d0d0d0] whitespace-pre-line leading-relaxed">
-                {getFullNarration(selectedScript)}
-              </p>
+            {/* Voice config (collapsible) */}
+            <div className="border border-mundo-bg-surface rounded-xl overflow-hidden">
+              <button
+                onClick={() => setShowConfig(!showConfig)}
+                className="w-full flex items-center justify-between px-5 py-3 text-sm text-mundo-muted hover:text-mundo-creme transition-colors"
+              >
+                <span>Configuracao de voz (opcional — usa env vars do Vercel por defeito)</span>
+                <span className={`transition-transform ${showConfig ? "rotate-180" : ""}`}>&#9662;</span>
+              </button>
+              {showConfig && (
+                <div className="px-5 pb-4 grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-mundo-bg-surface pt-4">
+                  <div>
+                    <label className="block text-xs text-mundo-muted mb-1">ElevenLabs API Key</label>
+                    <input
+                      type="password"
+                      value={apiKey}
+                      onChange={(e) => setApiKey(e.target.value)}
+                      className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
+                      placeholder="xi-... (deixa vazio para usar env var)"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-mundo-muted mb-1">Voice ID</label>
+                    <input
+                      type="text"
+                      value={voiceId}
+                      onChange={(e) => setVoiceId(e.target.value)}
+                      className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
+                      placeholder="fnoNuVpfClX7lHKFbyZ2 (deixa vazio para usar env var)"
+                    />
+                  </div>
+                  <div className="md:col-span-2">
+                    <label className="block text-xs text-mundo-muted mb-1">
+                      Velocidade da voz: {speed.toFixed(1)}x {speed < 0.9 ? "(mais lenta)" : speed > 1.0 ? "(mais rapida)" : "(natural)"}
+                    </label>
+                    <input
+                      type="range"
+                      min="0.5"
+                      max="1.5"
+                      step="0.05"
+                      value={speed}
+                      onChange={(e) => setSpeed(parseFloat(e.target.value))}
+                      className="w-full accent-mundo-dourado"
+                    />
+                    <div className="flex justify-between text-xs text-mundo-muted-dark mt-1">
+                      <span>0.5 (lenta)</span>
+                      <span>1.0 (normal)</span>
+                      <span>1.5 (rapida)</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Editable script */}
+            <div className="border border-mundo-bg-surface rounded-xl p-5">
+              <div className="flex items-center justify-between mb-3">
+                <p className="text-xs text-mundo-muted-dark uppercase">
+                  Narracao ({selectedScript.scenes.filter((s) => s.narration).length} seccoes) — editavel
+                </p>
+                <button
+                  onClick={() => setEditedNarration(getFullNarration(selectedScript))}
+                  className="text-xs text-mundo-muted hover:text-mundo-creme transition-colors"
+                >
+                  Repor original
+                </button>
+              </div>
+              <textarea
+                value={editedNarration}
+                onChange={(e) => setEditedNarration(e.target.value)}
+                className="w-full bg-mundo-bg border border-mundo-border rounded-lg px-4 py-3 text-sm text-[#d0d0d0] leading-relaxed resize-y min-h-48 max-h-96"
+                spellCheck={false}
+              />
             </div>
 
             {/* Generate or upload */}
