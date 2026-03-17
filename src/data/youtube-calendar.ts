@@ -732,6 +732,188 @@ export const YOUTUBE_WEEKS: YouTubeWeek[] = [
       },
     ],
   },
+  // ━━━ SEMANA 5 — A DUALIDADE: EU E O TODO ━━━
+  {
+    number: 5,
+    theme: "A Dualidade: Eu e o Todo",
+    objective:
+      "Introduzir a vertente colectiva — como a cura individual toca o todo, como estamos ligados, como o silencio familiar vive no corpo.",
+    videos: [
+      {
+        number: 13,
+        title: "Porque choras sem razão aparente",
+        courseOrigin: "o-fio-invisivel",
+        territory: "O Lago dos Reflexos Partilhados",
+        week: 5,
+        day: "terca",
+        gancho:
+          "Já te aconteceu chorares sem saber porquê? E se esse choro não for só teu?",
+        fraseFinal:
+          "Não estás sozinha no que sentes. Nunca estiveste. Há um fio invisível.",
+        description:
+          "Há choros que não são nossos. Há dores que vêm de antes. Hoje falamos do fio invisível que nos liga — e do que acontece quando o vemos.",
+        status: "draft",
+        script: [
+          {
+            timestamp: "0:00 - 0:15",
+            section: "gancho",
+            visual:
+              "Céu azul-marinho. Câmara desce para o Lago dos Reflexos Partilhados. Superfície opaca, prata escura. Silhueta sozinha na margem.",
+            narration:
+              "Já te aconteceu chorares sem saber porquê? Não é tristeza. Não é cansaço. É algo que sobe do fundo e não tem nome. E se esse choro não for só teu?",
+          },
+          {
+            timestamp: "0:15 - 1:30",
+            section: "situacao",
+            visual:
+              "Silhueta sentada junto ao lago. Reflexos vagos de outras figuras aparecem na água — gerações. Ondulações suaves.",
+            narration:
+              "Estás na cozinha. Acabaste de por as crianças a dormir. Sentas-te. E de repente os olhos enchem-se de água. Não aconteceu nada. O dia foi normal. Mas algo pesa. Algo quer sair. E se eu te dissesse que talvez não seja só teu? Que o que sentes pode vir de quem veio antes de ti?",
+          },
+          {
+            timestamp: "1:30 - 3:30",
+            section: "padrao",
+            visual:
+              "Lago a tornar-se transparente. Fios dourados a conectar reflexos de várias silhuetas na água — mãe, avó, bisavó. Sistema nervoso visível como rede de luz.",
+            narration:
+              "O sistema nervoso humano foi feito para se ligar. Para sentir o outro. Para carregar o que não é nomeado. O que a tua mãe sentiu e não disse, o teu corpo ouviu. O que a tua avó viveu e engoliu, ficou registado. E quando choras sem razão, pode ser que estejas a chorar por muitas. Não é fraqueza. É a prova de que estás ligada a algo maior do que tu.",
+          },
+          {
+            timestamp: "3:30 - 5:00",
+            section: "gesto",
+            visual:
+              "Silhueta com mãos no peito junto ao lago. Reflexos que se acalmam. Fios dourados brilham suavemente.",
+            narration:
+              "A próxima vez que chorares sem razão, não limpes as lágrimas logo. Põe a mão no peito e pergunta em silêncio: isto é meu ou é de alguém que veio antes de mim? Não precisas de resposta. O corpo sabe o que fazer com a pergunta certa.",
+          },
+          {
+            timestamp: "5:00 - 5:30",
+            section: "fecho",
+            visual:
+              "Lago transparente com fios dourados brilhantes. Dissolve no céu. Logo Sete Véus.",
+            narration:
+              "Não estás sozinha no que sentes. Nunca estiveste. Há um fio invisível que te liga a todas as que vieram antes. Se isto te tocou, inscreve-te. A Escola dos Véus está a chegar.",
+          },
+        ],
+      },
+      {
+        number: 14,
+        title: "O segredo que toda a tua família sabe mas ninguém diz",
+        courseOrigin: "o-silencio-que-grita",
+        secondaryCourse: "o-fio-invisivel",
+        territory: "A Caverna dos Ecos Mudos",
+        week: 5,
+        day: "quinta",
+        gancho:
+          "Na tua família, há alguma coisa de que ninguém fala? Uma pessoa que desapareceu da conversa?",
+        fraseFinal:
+          "O que a tua família nunca disse não desapareceu. Vive no teu corpo.",
+        description:
+          "Os segredos familiares não desaparecem quando ninguém fala deles. Passam para o corpo. Para a geração seguinte. Para ti.",
+        status: "draft",
+        script: [
+          {
+            timestamp: "0:00 - 0:15",
+            section: "gancho",
+            visual:
+              "Céu azul-marinho. Câmara desce para a Caverna dos Ecos Mudos. Escura, silenciosa. Paredes com marcas de palavras não ditas.",
+            narration:
+              "Na tua família, há alguma coisa de que ninguém fala? Um assunto que todos evitam? Uma história que muda de versão cada vez que alguém a conta?",
+          },
+          {
+            timestamp: "0:15 - 1:30",
+            section: "situacao",
+            visual:
+              "Várias silhuetas numa sala — família. Algumas viradas de costas. Sombras de palavras flutuam como ecos escuros.",
+            narration:
+              "Todas as famílias têm segredos. Às vezes é um divórcio que foi tratado como se nunca tivesse existido. Uma doença mental que se chamava 'nervos'. Uma gravidez que se escondeu. E tu cresceste nesse silêncio. Não te disseram para não falar — simplesmente percebeste. Pelo olhar da tua mãe quando o assunto se aproximava.",
+          },
+          {
+            timestamp: "1:30 - 3:30",
+            section: "padrao",
+            visual:
+              "Caverna com ecos visíveis. Ondas de luz nas paredes. Silhueta que abre a boca — primeiro som visual.",
+            narration:
+              "Os segredos familiares não desaparecem quando ninguém fala deles. Passam para o corpo. A ansiedade que sentes e não sabes explicar. A vergonha que aparece sem razão. O aperto na garganta quando alguém se aproxima de um tema proibido. Não é teu. Tornou-se teu porque ninguém lhe deu nome antes de ti. E quando uma pessoa na família finalmente fala, algo muda no sistema inteiro.",
+          },
+          {
+            timestamp: "3:30 - 5:00",
+            section: "gesto",
+            visual:
+              "Silhueta com mão estendida. Eco dourado a sair. Paredes da caverna a vibrar com luz.",
+            narration:
+              "Pega num papel. Escreve uma frase que começa assim: na minha família, nunca se fala sobre... Não penses. Escreve. Depois lê o que escreveste. E repara no que sentes no corpo ao ler.",
+          },
+          {
+            timestamp: "5:00 - 5:30",
+            section: "fecho",
+            visual:
+              "Caverna com ecos dourados. Dissolve no céu. Logo Sete Véus.",
+            narration:
+              "O que a tua família nunca disse não desapareceu. Vive no teu corpo. E talvez seja a tua vez de dar voz ao que foi calado. Se isto te tocou, inscreve-te. A Escola dos Véus está a chegar.",
+          },
+        ],
+      },
+      {
+        number: 15,
+        title: "O que calaste para ser aceite",
+        courseOrigin: "a-teia",
+        secondaryCourse: "o-espelho-do-outro",
+        territory: "O Bosque dos Fios Entrelaçados",
+        week: 5,
+        day: "sabado",
+        gancho:
+          "Quando foi a última vez que disseste o que realmente pensavas num grupo? A versão verdadeira.",
+        fraseFinal:
+          "Pertencer não é desaparecer. É ser vista como és e ainda assim ter lugar.",
+        description:
+          "O que abdicaste para pertencer? A fome de pertença governa mais do que pensas. Hoje falamos do que calaste para caber — e de como encontrar o teu lugar sem desaparecer.",
+        status: "draft",
+        script: [
+          {
+            timestamp: "0:00 - 0:15",
+            section: "gancho",
+            visual:
+              "Céu azul-marinho. Câmara desce para o Bosque dos Fios Entrelaçados. Fios emaranhados entre árvores. Silhueta presa.",
+            narration:
+              "Quando foi a última vez que disseste o que realmente pensavas num grupo? Não a versão educada. A versão verdadeira. A que guardas para o caminho de volta para casa.",
+          },
+          {
+            timestamp: "0:15 - 1:30",
+            section: "situacao",
+            visual:
+              "Silhueta em grupo — sorri mas o corpo está tenso. Fios que a prendem subtilmente. Depois: silhueta sozinha, boca aberta, finalmente a falar sem ninguém a ouvir.",
+            narration:
+              "Estás num almoço com amigas. Alguém diz algo com que não concordas. Sentes a vontade de dizer. Mas olhas à volta. E decides que não vale a pena. Então sorris. Acenas. E no carro, sozinha, dizes tudo o que devias ter dito. Mas já não conta.",
+          },
+          {
+            timestamp: "1:30 - 3:30",
+            section: "padrao",
+            visual:
+              "Fios que se afrouxam. Silhueta que recupera contorno. Bosque com luz verde-dourada a crescer.",
+            narration:
+              "Pertencer é a necessidade humana mais antiga. O cérebro trata a rejeição como ameaça de morte. Por isso aprendeste a adaptar-te. A moldar-te ao formato do grupo. Mas há um preço. Cada vez que te moldas, perdes um pedaço de contorno. E ao fim de anos, não sabes quem és sem a aprovação do outro. A boa notícia: podes pertencer sem desaparecer. Mas primeiro precisas de perceber o que abdicaste para caber.",
+          },
+          {
+            timestamp: "3:30 - 5:00",
+            section: "gesto",
+            visual:
+              "Silhueta no grupo, de pé, contorno definido. Fios que a ligam sem prender. Equilíbrio. Espelhos da Galeria dos Reflexos Vivos visíveis ao longe.",
+            narration:
+              "Esta semana, numa conversa em grupo, diz uma coisa verdadeira. Pode ser: eu penso diferente. Ou simplesmente: não. E repara no que acontece no teu corpo quando dizes.",
+          },
+          {
+            timestamp: "5:00 - 5:30",
+            section: "fecho",
+            visual:
+              "Bosque luminoso com teia equilibrada. Dissolve no céu. Logo Sete Véus.",
+            narration:
+              "Pertencer não é desaparecer. É ser vista como és e ainda assim ter lugar. Se isto te tocou, inscreve-te. A Escola dos Véus está a chegar — e há muito mais para ver.",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 // ─── Helpers ────────────────────────────────────────────────────────────────────

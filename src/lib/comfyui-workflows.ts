@@ -313,6 +313,42 @@ export const TERRITORY_PROMPTS: Record<
       "circular room filled with golden light-echoes, shadows transformed into warm resonance, voice and light unified",
     ],
   },
+  "o-fio-invisivel": {
+    name: "O Lago dos Reflexos Partilhados",
+    stages: [
+      "still lake with opaque silver-dark surface, no reflections visible, single silhouette alone on the shore, isolation, cold blue-silver tones",
+      "lake surface rippling, faint reflections of other figures appearing in the water, thin golden threads beginning to connect them, mysterious",
+      "lake becoming transparent, clear reflections of multiple silhouettes from different generations visible, golden threads glowing between reflections",
+      "fully transparent lake, individual reflections merging into one collective reflection, golden threads radiant, unity of individual and whole",
+    ],
+  },
+  "o-espelho-do-outro": {
+    name: "A Galeria dos Reflexos Vivos",
+    stages: [
+      "dark gallery with living mirrors showing other peoples faces and forms, silhouette looking outward never at itself, confusion, green-emerald tones",
+      "gallery mirrors beginning to show the silhouettes own form mixed with others, partial recognition, emerald and gold emerging",
+      "most mirrors clearly reflecting the silhouette with shadows of others behind, integration happening, warm emerald light",
+      "clear mirrors showing the silhouette with full clarity, others visible as context not identity, peaceful emerald-gold gallery",
+    ],
+  },
+  "o-silencio-que-grita": {
+    name: "A Caverna dos Ecos Mudos",
+    stages: [
+      "deep silent cavern, walls marked with shadows of unspoken words, total silence, grey-blue tones, ghostly white marks, heaviness",
+      "cavern with first visible echoes as grey waves on walls, silhouette with mouth slightly open, fear, faint light emerging",
+      "stronger echoes some turning golden, walls vibrating, silhouette speaking with visible sound waves emerging, blue-grey and gold",
+      "cavern filled with golden and white echoes, silence transformed into resonance, freed words illuminating the walls, liberation",
+    ],
+  },
+  "a-teia": {
+    name: "O Bosque dos Fios Entrelacados",
+    stages: [
+      "dark forest with tangled threads between trees, silhouette trapped in threads, suffocation, dark moss-green, no light",
+      "threads reorganizing, some cut, silhouette with more space, first mossy-golden light filtering through trees",
+      "visible organized web, threads connecting without trapping, silhouette at center free, green-golden light throughout forest",
+      "beautiful balanced web of golden threads between ancient trees, silhouette connected but whole, luminous moss-green forest, belonging without disappearing",
+    ],
+  },
 };
 
 /**

@@ -314,6 +314,72 @@ export const TERRITORY_GUIDES: Record<string, TerritoryVisualGuide> = {
       "Flores do Jardim Subterraneo tem esta mesma cor (luto e silencio ligados)",
     ],
   },
+  "o-fio-invisivel": {
+    course: "O Fio Invisivel",
+    territory: "O Lago dos Reflexos Partilhados",
+    color: "Azul-prata, fios dourados",
+    transformation:
+      "Superficie opaca → transparente, reflexos individuais fundem-se num so",
+    stageDescriptions: [
+      "Lago de superficie opaca, prata escura. Silhueta sozinha na margem. Nenhum reflexo visivel. Isolamento.",
+      "Superficie com ondulacoes. Reflexos vagos de outras figuras aparecem na agua. Fios dourados subtis.",
+      "Lago mais transparente. Reflexos claros de varias silhuetas — geracoes. Fios dourados ligam os reflexos.",
+      "Lago completamente transparente. Reflexos individuais fundem-se num reflexo colectivo. Fios dourados brilham. Unidade.",
+    ],
+    connections: [
+      "Reflecte todos os outros territorios na sua superficie (a dualidade contem tudo)",
+    ],
+  },
+  "o-espelho-do-outro": {
+    course: "O Espelho do Outro",
+    territory: "A Galeria dos Reflexos Vivos",
+    color: "Verde-esmeralda, dourado reflexo",
+    transformation:
+      "Espelhos que mostram outros → espelhos que mostram a propria silhueta",
+    stageDescriptions: [
+      "Galeria escura com espelhos vivos que mostram outras pessoas. Silhueta a olhar para fora, nunca para si. Confusao.",
+      "Alguns espelhos comecam a reflectir a propria silhueta misturada com o outro. Reconhecimento parcial.",
+      "Maioria dos espelhos mostra a silhueta claramente, com sombras do outro ao fundo. Integracao.",
+      "Espelhos claros. A silhueta ve-se com clareza. O outro aparece como contexto, nao como identidade. Paz.",
+    ],
+    connections: [
+      "Casa dos Espelhos Dourados e esta galeria sao versoes uma da outra (um olha para dentro, outro olha atraves do outro)",
+    ],
+  },
+  "o-silencio-que-grita": {
+    course: "O Silencio que Grita",
+    territory: "A Caverna dos Ecos Mudos",
+    color: "Cinza-azulado, branco fantasma",
+    transformation:
+      "Caverna silenciosa com ecos presos → caverna com ecos libertados como luz",
+    stageDescriptions: [
+      "Caverna profunda, silencio total. Paredes com marcas de palavras nao ditas — sombras de letras. Pesadez.",
+      "Primeiros ecos visiveis como ondas cinzentas nas paredes. Silhueta com boca entreaberta. Medo.",
+      "Ecos mais fortes, alguns dourados. Paredes a vibrar. Silhueta a falar — som visivel a sair.",
+      "Caverna cheia de ecos dourados e brancos. Silencio transformado em resonancia. Palavras libertadas iluminam as paredes.",
+    ],
+    connections: [
+      "Sala do Eco e esta caverna sao complementares (uma e a voz propria, outra e a voz familiar)",
+      "Arvore das Raizes Visiveis partilha raizes com esta caverna (heranca materna e silencio familiar)",
+    ],
+  },
+  "a-teia": {
+    course: "A Teia",
+    territory: "O Bosque dos Fios Entrelacados",
+    color: "Verde-musgo, dourado fio",
+    transformation:
+      "Fios emaranhados que prendem → teia organizada que sustenta",
+    stageDescriptions: [
+      "Bosque escuro com fios emaranhados entre arvores. Silhueta presa nos fios. Sufoco.",
+      "Fios a reorganizar-se. Alguns cortados. Silhueta com mais espaco. Bosque com primeira luz.",
+      "Teia visivel e organizada. Fios que ligam sem prender. Silhueta no centro, livre. Luz verde-dourada.",
+      "Teia bela e equilibrada. Fios dourados entre arvores. Silhueta ligada mas inteira. Bosque luminoso.",
+    ],
+    connections: [
+      "Ponte entre Duas Margens partilha o tema da ligacao (relacoes intimas vs. relacoes colectivas)",
+      "Lago dos Reflexos Partilhados reflecte este bosque (conexao individual vs. conexao colectiva)",
+    ],
+  },
 } as const;
 
 // ─── AUDIO PRODUCTION ───────────────────────────────────────────────────────
@@ -438,6 +504,10 @@ export const LAUNCH_ORDER = [
   { slug: "flores-no-escuro", priority: 8, reason: "Decisao da Vivianne" },
   { slug: "o-peso-e-o-chao", priority: 9, reason: "Decisao da Vivianne" },
   { slug: "voz-de-dentro", priority: 10, reason: "Decisao da Vivianne" },
+  { slug: "o-fio-invisivel", priority: 11, reason: "Dualidade — porta de entrada para a vertente colectiva" },
+  { slug: "o-espelho-do-outro", priority: 12, reason: "Decisao da Vivianne" },
+  { slug: "o-silencio-que-grita", priority: 13, reason: "Decisao da Vivianne" },
+  { slug: "a-teia", priority: 14, reason: "Decisao da Vivianne" },
 ] as const;
 
 // ─── LEGAL DISCLAIMER ───────────────────────────────────────────────────────

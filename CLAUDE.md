@@ -977,6 +977,9 @@ O Mundo dos Veus e a representacao visual do mundo interno de uma pessoa. Nao e 
 | 9 | O Caminho de Pedras | O Peso e o Chao | Cinza pedra | Curvada sob peso → de pe, leve, pedras no chao |
 | 10 | A Sala do Eco | Voz de Dentro | Violeta escuro, dourado eco | Silencio/sombra → voz/luz |
 | 11 | O Lago dos Reflexos Partilhados | O Fio Invisivel | Azul-prata, fios dourados | Superficie opaca → transparente, reflexos individuais fundem-se num so |
+| 12 | A Galeria dos Reflexos Vivos | O Espelho do Outro | Verde-esmeralda, dourado reflexo | Espelhos que mostram outros → espelhos que mostram a propria silhueta |
+| 13 | A Caverna dos Ecos Mudos | O Silencio que Grita | Cinza-azulado, branco fantasma | Caverna silenciosa com ecos presos → caverna com ecos libertados como luz |
+| 14 | O Bosque dos Fios Entrelacados | A Teia | Verde-musgo, dourado fio | Fios emaranhados que prendem → teia organizada que sustenta |
 
 **Conexoes entre territorios:**
 - Casa dos Espelhos reflecte brevemente a Arvore (dinheiro vem da familia)
@@ -984,6 +987,11 @@ O Mundo dos Veus e a representacao visual do mundo interno de uma pessoa. Nao e 
 - Jardim Subterraneo tem flores da cor da Sala do Eco (luto e silencio ligados)
 - Corpo-Paisagem tem o mesmo rio da Ponte (corpo e relacoes conectados)
 - Lago dos Reflexos Partilhados reflecte todos os outros territorios na sua superficie (a dualidade contem tudo)
+- Casa dos Espelhos Dourados e a Galeria dos Reflexos Vivos sao versoes uma da outra (um olha para dentro, outro olha atraves do outro)
+- Sala do Eco e a Caverna dos Ecos Mudos sao complementares (voz propria vs. voz familiar)
+- Arvore das Raizes Visiveis partilha raizes com a Caverna dos Ecos Mudos (heranca materna e silencio familiar)
+- Ponte entre Duas Margens e o Bosque dos Fios Entrelacados partilham o tema da ligacao (intima vs. colectiva)
+- Lago dos Reflexos Partilhados reflecte o Bosque (conexao individual vs. conexao colectiva)
 
 Quem faz um curso nao precisa de notar. Quem faz varios sente a coerencia.
 

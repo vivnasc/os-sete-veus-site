@@ -303,12 +303,360 @@ const ouroProprioHook3: YouTubeScript = {
   ],
 };
 
+// ─── O FIO INVISÍVEL — HOOK 1 ─────────────────────────────────────────────
+
+const fioInvisivelHook1: YouTubeScript = {
+  courseSlug: "o-fio-invisivel",
+  hookIndex: 0,
+  title: "Porque choras sem razão aparente",
+  durationMin: 7,
+  thumbnail: {
+    mainText: "Porque choras\nsem razão aparente",
+    subText: "Talvez não seja só teu",
+  },
+  scenes: [
+    {
+      type: "abertura",
+      narration: "",
+      overlayText: "Porque choras sem razão aparente",
+      durationSec: 12,
+      visualNote:
+        "Céu azul-marinho (#1A1A2E). Fade in lento do título em creme. Território do Lago dos Reflexos Partilhados ao longe — superfície opaca, prata.",
+    },
+    {
+      type: "pergunta",
+      narration:
+        "Já te aconteceu chorares sem saber porquê? Não é tristeza. Não é cansaço. É uma coisa que sobe do fundo e que não tem nome. E quando alguém te pergunta o que se passa, dizes: nada. Porque realmente não sabes.",
+      overlayText: "Nada. Porque realmente não sabes.",
+      durationSec: 30,
+      visualNote:
+        "Silhueta de pé, mãos no peito. Lago opaco ao fundo. Reflexos indistintos na superfície.",
+    },
+    {
+      type: "situacao",
+      narration:
+        "Imagina esta cena. Estás na cozinha. Acabaste de por as crianças a dormir. A casa está em silêncio. Sentas-te. E de repente — sem aviso — os olhos enchem-se de água.\n\nNão aconteceu nada. O dia foi normal. Ninguém te magoou. Mas algo pesa. Algo aperta. Algo quer sair e tu não sabes o que é.\n\nOu então estás a ver um filme. Uma cena qualquer — uma mãe que abraça uma filha, duas amigas que se reencontram — e começas a chorar de uma forma que não corresponde ao que estás a ver. Não é o filme. É outra coisa.\n\nE se eu te dissesse que talvez esse choro não seja só teu?",
+      overlayText: "",
+      durationSec: 100,
+      visualNote:
+        "Silhueta sentada, reflexiva. Lago com superfície que começa a ter ondulações suaves. Outros reflexos aparecem vagamente — silhuetas de outras figuras que não estão presentes.",
+    },
+    {
+      type: "revelacao",
+      narration:
+        "Há uma ideia que a ciência está cada vez mais a confirmar: nós não somos tão separados como pensamos. O que a tua mãe sentiu e não disse, o teu corpo ouviu. O que a tua avó viveu e engoliu, ficou registado. A ansiedade da tua melhor amiga que nunca te contou — tu sentiste-a na última vez que estiveram juntas.\n\nNão é magia. Não é energia. É biologia. O sistema nervoso humano foi feito para se ligar. Para sentir o outro. Para carregar o que não é nomeado.\n\nE quando choras sem razão, pode ser que estejas a chorar por muitas. Pela tua mãe que nunca chorou. Pela tua avó que não podia. Pela tua filha que ainda não sabe que vai precisar.\n\nEsse choro não é fraqueza. É a prova de que estás ligada a algo maior do que tu.",
+      overlayText: "Quando choras sem razão,\npode ser que estejas\na chorar por muitas.",
+      durationSec: 120,
+      visualNote:
+        "Lago a tornar-se transparente. Reflexos de várias silhuetas visíveis na água — gerações. Fios dourados a conectar os reflexos. Luz a crescer.",
+    },
+    {
+      type: "gesto",
+      narration:
+        "A próxima vez que chorares sem razão, não limpes as lágrimas logo. Fica. Põe a mão no peito. E pergunta em silêncio: isto é meu ou é de alguém que veio antes de mim? Não precisas de resposta. Só de pergunta. O corpo sabe o que fazer com a pergunta certa.",
+      overlayText: "Isto é meu\nou é de alguém\nque veio antes de mim?",
+      durationSec: 45,
+      visualNote:
+        "Silhueta com mãos no peito. Lago calmo. Reflexos que se fundem suavemente.",
+    },
+    {
+      type: "frase_final",
+      narration:
+        "Não estás sozinha no que sentes. Nunca estiveste. Há um fio invisível que te liga a todas as que vieram antes — e a todas as que vêm depois.",
+      overlayText:
+        "Não estás sozinha no que sentes.\nNunca estiveste.\nHá um fio invisível.",
+      durationSec: 18,
+      visualNote:
+        "Ecrã escuro. Texto em creme, serifado, centrado. Pausa longa.",
+    },
+    {
+      type: "cta",
+      narration:
+        "Se isto te tocou, o curso O Fio Invisível vai muito mais fundo. Oito módulos sobre a ligação entre todos nós — e como a tua cura toca o todo. O link está na descrição.",
+      overlayText: "O Fio Invisível\nseteveus.space",
+      durationSec: 18,
+      visualNote:
+        "Lago dos Reflexos Partilhados com superfície transparente. Fios dourados visíveis. URL no ecrã.",
+    },
+    {
+      type: "fecho",
+      narration: "",
+      overlayText: "Sete Véus",
+      durationSec: 8,
+      visualNote:
+        "Território dissolve no céu. Logo Sete Véus. Silêncio. Fade para negro.",
+    },
+  ],
+};
+
+// ─── O ESPELHO DO OUTRO — HOOK 1 ─────────────────────────────────────────
+
+const espelhoOutroHook1: YouTubeScript = {
+  courseSlug: "o-espelho-do-outro",
+  hookIndex: 0,
+  title: "Porque aquela pessoa te irrita tanto",
+  durationMin: 7,
+  thumbnail: {
+    mainText: "Porque aquela pessoa\nte irrita tanto",
+    subText: "O que o outro te mostra sobre ti",
+  },
+  scenes: [
+    {
+      type: "abertura",
+      narration: "",
+      overlayText: "Porque aquela pessoa te irrita tanto",
+      durationSec: 12,
+      visualNote:
+        "Céu azul-marinho. Título em creme. Território da Galeria dos Reflexos Vivos ao longe.",
+    },
+    {
+      type: "pergunta",
+      narration:
+        "Há alguém na tua vida — pode ser uma colega, uma cunhada, uma amiga de uma amiga — que te irrita de uma forma que não faz sentido. Não te fez nada de grave. Mas cada vez que fala, algo dentro de ti contrai. Já te perguntaste porquê?",
+      overlayText: "Cada vez que fala,\nalgo dentro de ti contrai.",
+      durationSec: 28,
+      visualNote:
+        "Duas silhuetas frente a frente. Uma tensa, outra relaxada. Galeria com espelhos vivos ao fundo.",
+    },
+    {
+      type: "situacao",
+      narration:
+        "Imagina. Estás num jantar. Ela está lá. Fala alto. Ocupa espaço. Diz o que pensa sem pedir licença. E tu, que passas a vida a medir palavras, a ponderar, a ter cuidado com o que dizes — sentes um calor a subir.\n\nNão é raiva exactamente. É irritação. Uma irritação que parece desproporcionada. Porque ela não te fez nada. Não te insultou. Não te traiu.\n\nMas irrita-te.\n\nE quando contas a alguém, dizes: não sei, há qualquer coisa nela que me incomoda. E essa qualquer coisa — essa coisa que não sabes nomear — é a pista mais importante que vais receber hoje.",
+      overlayText: "",
+      durationSec: 100,
+      visualNote:
+        "Silhueta sentada a observar outra silhueta que gesticula livremente. Espelhos na galeria que reflectem não a cena mas emoções — distorções cromáticas.",
+    },
+    {
+      type: "revelacao",
+      narration:
+        "O que te irrita no outro é quase sempre algo que vive em ti e que não te permites. Ela fala alto — e tu calaste-te a vida inteira. Ela ocupa espaço — e tu aprendeste a encolher. Ela diz o que pensa — e tu medes cada palavra com medo de incomodar.\n\nA irritação não é sobre ela. É sobre a parte de ti que gostava de ser assim mas que decidiu, há muito tempo, que isso não era permitido.\n\nIsto não significa que ela tem razão ou que é melhor. Significa que o teu corpo está a reagir a algo que reconhece — algo que é teu e que escondeste.\n\nO outro é um espelho. E quando o espelho te incomoda, raramente é por causa do espelho.",
+      overlayText: "Quando o espelho te incomoda,\nraramente é por causa\ndo espelho.",
+      durationSec: 110,
+      visualNote:
+        "Espelhos da galeria que se tornam mais claros. A silhueta vê o seu próprio reflexo no lugar da outra pessoa. Momento de reconhecimento.",
+    },
+    {
+      type: "gesto",
+      narration:
+        "Esta semana, quando alguém te irritar, pára. Não rejas logo. Pergunta-te: o que é que esta pessoa está a fazer que eu gostava de fazer e não me permito? Escreve a resposta. Não para ela. Para ti.",
+      overlayText: "O que é que eu gostava de fazer\ne não me permito?",
+      durationSec: 40,
+      visualNote:
+        "Silhueta com mão no peito, olhando para o próprio reflexo no espelho. Luz dourada.",
+    },
+    {
+      type: "frase_final",
+      narration:
+        "As pessoas que mais te incomodam são as que mais te ensinam. Não porque tenham razão — mas porque te mostram o que ainda está escondido.",
+      overlayText:
+        "As pessoas que mais te incomodam\nsão as que mais te ensinam.",
+      durationSec: 16,
+      visualNote:
+        "Ecrã escuro. Texto em creme, serifado. Pausa longa.",
+    },
+    {
+      type: "cta",
+      narration:
+        "Se isto te tocou, o curso O Espelho do Outro vai muito mais fundo. Oito módulos para aprenderes a ver-te através de cada relação. O link está na descrição.",
+      overlayText: "O Espelho do Outro\nseteveus.space",
+      durationSec: 18,
+      visualNote:
+        "Galeria dos Reflexos Vivos com espelhos claros. URL no ecrã.",
+    },
+    {
+      type: "fecho",
+      narration: "",
+      overlayText: "Sete Véus",
+      durationSec: 8,
+      visualNote:
+        "Território dissolve no céu. Logo Sete Véus. Silêncio.",
+    },
+  ],
+};
+
+// ─── O SILÊNCIO QUE GRITA — HOOK 1 ───────────────────────────────────────
+
+const silencioGritaHook1: YouTubeScript = {
+  courseSlug: "o-silencio-que-grita",
+  hookIndex: 0,
+  title: "O segredo que toda a tua família sabe mas ninguém diz",
+  durationMin: 7,
+  thumbnail: {
+    mainText: "O segredo que toda a família\nsabe mas ninguém diz",
+    subText: "O silêncio que vive no teu corpo",
+  },
+  scenes: [
+    {
+      type: "abertura",
+      narration: "",
+      overlayText: "O segredo que toda a tua família sabe\nmas ninguém diz",
+      durationSec: 12,
+      visualNote:
+        "Céu azul-marinho. Título em creme. Caverna dos Ecos Mudos ao longe — escura, silenciosa.",
+    },
+    {
+      type: "pergunta",
+      narration:
+        "Na tua família, há alguma coisa de que ninguém fala? Um assunto que todos evitam? Uma pessoa que desapareceu da conversa? Uma história que muda de versão cada vez que alguém a conta?",
+      overlayText: "Uma história que muda de versão\ncada vez que alguém a conta.",
+      durationSec: 25,
+      visualNote:
+        "Silhueta de pé numa caverna escura. Paredes que parecem absorver o som. Silêncio visual.",
+    },
+    {
+      type: "situacao",
+      narration:
+        "Todas as famílias têm segredos. Não precisa de ser um drama. Às vezes é um divórcio que foi tratado como se nunca tivesse existido. Uma doença mental que se chamava 'nervos'. Uma gravidez que se escondeu. Um avô que ninguém menciona.\n\nE tu cresceste nesse silêncio. Não te disseram para não falar — simplesmente percebeste. Pelo olhar da tua mãe quando o assunto se aproximava. Pela mudança de conversa. Pela tensão que entrava na sala quando alguém tocava no tema.\n\nE aprendeste: há coisas de que não se fala.\n\nO problema é que o corpo não aprendeu. O corpo guarda tudo. O que foi dito e o que foi calado. E o que foi calado pesa mais.",
+      overlayText: "",
+      durationSec: 110,
+      visualNote:
+        "Várias silhuetas numa sala — família. Algumas viradas de costas umas para as outras. Sombras de palavras não ditas flutuam como ecos escuros nas paredes.",
+    },
+    {
+      type: "revelacao",
+      narration:
+        "Os segredos familiares não desaparecem quando ninguém fala deles. Passam para o corpo. Para a geração seguinte. Para ti.\n\nA ansiedade que sentes e não sabes explicar. A vergonha que aparece sem razão. O medo de certas conversas. O aperto na garganta quando alguém se aproxima de um tema proibido.\n\nNão é teu. Ou melhor — tornou-se teu porque ninguém lhe deu nome antes de ti.\n\nE o mais estranho é isto: quando uma pessoa na família finalmente fala, algo muda no sistema inteiro. Como se o silêncio fosse uma represa — e uma única palavra bastasse para a água voltar a correr.",
+      overlayText: "Quando uma pessoa fala,\nalgo muda\nno sistema inteiro.",
+      durationSec: 100,
+      visualNote:
+        "Caverna que começa a ter ecos visíveis — ondas de luz nas paredes. Silhueta que abre a boca. Primeiro som visual.",
+    },
+    {
+      type: "gesto",
+      narration:
+        "Não precisas de confrontar ninguém. Pega num papel. Escreve uma frase que começa assim: na minha família, nunca se fala sobre... Não penses. Escreve. Depois lê o que escreveste. E repara no que sentes no corpo ao ler.",
+      overlayText: "Na minha família,\nnunca se fala sobre...",
+      durationSec: 40,
+      visualNote:
+        "Silhueta com mão estendida. Eco dourado a sair. Paredes da caverna a vibrar.",
+    },
+    {
+      type: "frase_final",
+      narration:
+        "O que a tua família nunca disse não desapareceu. Vive no teu corpo. E talvez seja a tua vez de dar voz ao que foi calado.",
+      overlayText:
+        "O que a tua família nunca disse\nnão desapareceu.\nVive no teu corpo.",
+      durationSec: 16,
+      visualNote:
+        "Ecrã escuro. Texto em creme. Pausa longa. Peso.",
+    },
+    {
+      type: "cta",
+      narration:
+        "Se isto te tocou, o curso O Silêncio que Grita vai muito mais fundo. Oito módulos para ouvir o que nunca foi dito — e começar a libertar o que já não te pertence. O link está na descrição.",
+      overlayText: "O Silêncio que Grita\nseteveus.space",
+      durationSec: 18,
+      visualNote:
+        "Caverna dos Ecos Mudos com ondas de luz dourada. URL no ecrã.",
+    },
+    {
+      type: "fecho",
+      narration: "",
+      overlayText: "Sete Véus",
+      durationSec: 8,
+      visualNote:
+        "Território dissolve no céu. Logo Sete Véus. Silêncio.",
+    },
+  ],
+};
+
+// ─── A TEIA — HOOK 1 ─────────────────────────────────────────────────────
+
+const teiaHook1: YouTubeScript = {
+  courseSlug: "a-teia",
+  hookIndex: 0,
+  title: "O que calaste para ser aceite",
+  durationMin: 7,
+  thumbnail: {
+    mainText: "O que calaste\npara ser aceite",
+    subText: "O preço da pertença",
+  },
+  scenes: [
+    {
+      type: "abertura",
+      narration: "",
+      overlayText: "O que calaste para ser aceite",
+      durationSec: 12,
+      visualNote:
+        "Céu azul-marinho. Título em creme. Bosque dos Fios Entrelaçados ao longe — fios verde-musgo e dourado.",
+    },
+    {
+      type: "pergunta",
+      narration:
+        "Quando foi a última vez que disseste o que realmente pensavas num grupo? Não a versão educada. Não a versão aceite. A versão verdadeira. A que guardas para ti no caminho de volta para casa.",
+      overlayText: "A versão que guardas\npara o caminho de volta.",
+      durationSec: 25,
+      visualNote:
+        "Silhueta rodeada por outras silhuetas — em grupo. A silhueta central ligeiramente mais pequena, encolhida.",
+    },
+    {
+      type: "situacao",
+      narration:
+        "Estás num almoço com amigas. Alguém diz algo com que não concordas. Sobre educação dos filhos. Sobre politica. Sobre a forma como outra amiga foi tratada.\n\nE sentes aquilo dentro de ti — a vontade de dizer. A tua versão. A tua verdade. Mas olhas à volta. E decides que não vale a pena. Que vai criar atrito. Que vão olhar para ti de lado.\n\nEntão sorris. Acenas. Mudas de assunto. E no caminho de volta para casa, no carro, sozinha — dizes tudo o que devias ter dito. Mas já não conta.\n\nIsto não acontece uma vez. Acontece sempre. Em cada grupo, em cada relação, em cada contexto onde sentes que a tua verdade pode custar-te o lugar.\n\nE a pergunta é: que lugar é esse, se para lá estar tens de desaparecer?",
+      overlayText: "",
+      durationSec: 110,
+      visualNote:
+        "Silhueta em grupo — sorri mas o corpo está tenso. Fios entrelaçados que a prendem subtilmente. Depois: silhueta sozinha no carro, boca aberta, finalmente a falar — mas sem ninguém a ouvir.",
+    },
+    {
+      type: "revelacao",
+      narration:
+        "Pertencer é a necessidade humana mais antiga. O cérebro trata a rejeição como uma ameaça de morte — literalmente. As mesmas zonas do cérebro que se activam com dor física activam-se quando és excluída.\n\nPor isso aprendeste cedo a adaptar-te. A ler a sala. A perceber o que é aceite e o que não é. A moldar-te ao formato do grupo.\n\nMas há um preço. E o preço é este: cada vez que te moldas, perdes um pedaço de contorno. E ao fim de anos, olhas para ti e não sabes quem és sem o grupo. Sem a aprovação. Sem o sorriso do outro.\n\nA boa notícia é que podes pertencer sem desaparecer. Mas primeiro precisas de perceber o que abdicaste para caber.",
+      overlayText: "Cada vez que te moldas,\nperdes um pedaço de contorno.",
+      durationSec: 100,
+      visualNote:
+        "Fios que se afrouxam gradualmente. Silhueta que recupera o contorno. Bosque que se torna mais luminoso — verde e dourado.",
+    },
+    {
+      type: "gesto",
+      narration:
+        "Esta semana, numa conversa em grupo, diz uma coisa verdadeira. Não precisa de ser polémica. Não precisa de ser grande. Pode ser: eu não concordo. Ou: eu penso diferente. Ou simplesmente: não. E repara no que acontece no teu corpo quando dizes.",
+      overlayText: "Eu penso diferente.",
+      durationSec: 40,
+      visualNote:
+        "Silhueta no grupo, agora de pé, com contorno definido. Fios que a ligam sem a prender. Equilíbrio.",
+    },
+    {
+      type: "frase_final",
+      narration:
+        "Pertencer não é desaparecer. Pertencer de verdade é ser vista como és — e ainda assim ter lugar.",
+      overlayText:
+        "Pertencer não é desaparecer.\nÉ ser vista como és\ne ainda assim ter lugar.",
+      durationSec: 16,
+      visualNote:
+        "Ecrã escuro. Texto em creme, serifado. Pausa.",
+    },
+    {
+      type: "cta",
+      narration:
+        "Se isto te tocou, o curso A Teia vai muito mais fundo. Oito módulos para aprenderes a pertencer sem desaparecer. O link está na descrição.",
+      overlayText: "A Teia\nseteveus.space",
+      durationSec: 18,
+      visualNote:
+        "Bosque dos Fios Entrelaçados com fios dourados equilibrados. URL no ecrã.",
+    },
+    {
+      type: "fecho",
+      narration: "",
+      overlayText: "Sete Véus",
+      durationSec: 8,
+      visualNote:
+        "Território dissolve no céu. Logo Sete Véus. Silêncio.",
+    },
+  ],
+};
+
 // ─── EXPORTS ──────────────────────────────────────────────────────────────
 
 export const YOUTUBE_SCRIPTS: YouTubeScript[] = [
   ouroProprioHook1,
   ouroProprioHook2,
   ouroProprioHook3,
+  fioInvisivelHook1,
+  espelhoOutroHook1,
+  silencioGritaHook1,
+  teiaHook1,
 ];
 
 export function getScriptsForCourse(courseSlug: string): YouTubeScript[] {

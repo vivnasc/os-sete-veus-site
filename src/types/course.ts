@@ -13,7 +13,10 @@ export type CourseSlug =
   | "flores-no-escuro"
   | "o-peso-e-o-chao"
   | "voz-de-dentro"
-  | "o-fio-invisivel";
+  | "o-fio-invisivel"
+  | "o-espelho-do-outro"
+  | "o-silencio-que-grita"
+  | "a-teia";
 
 export type SubLesson = {
   letter: string; // "A", "B", "C"

@@ -1275,6 +1275,351 @@ const COURSES: CourseData[] = [
       { title: "A cura que começa em ti e toca quem te rodeia", durationMin: 6 },
     ],
   },
+
+  // ─── CURSO 12 — O Espelho do Outro ───
+  {
+    slug: "o-espelho-do-outro",
+    number: 12,
+    title: "O Espelho do Outro",
+    subtitle: "O que te incomoda no outro vive em ti",
+    arcoEmocional:
+      "Começa pela irritação que não entendes. Passa pela descoberta de que o outro te mostra o que rejeitas em ti. Atravessa a sombra — o que escondes, o que negas, o que invejas. Chega ao ponto em que o inimigo se torna professor. Termina com a capacidade de te veres através de cada relação.",
+    diferencial:
+      "Não é um curso sobre relações nem sobre empatia. É sobre usar cada pessoa que te incomoda, te fascina ou te magoa como espelho — para veres o que ainda não olhaste em ti.",
+    modules: [
+      {
+        number: 1,
+        title: "A Irritação como Pista",
+        description: "O que te irrita no outro diz mais sobre ti.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A pessoa que te tira do sério", description: "Porque te afecta tanto alguém que devia ser indiferente." },
+          { letter: "B", title: "O gatilho escondido", description: "O que vês no outro que não queres ver em ti." },
+          { letter: "C", title: "O corpo quando reages", description: "Onde mora a irritação no teu corpo antes de vir à boca." },
+        ],
+        workbook: "Mapa dos meus gatilhos",
+      },
+      {
+        number: 2,
+        title: "A Projecção",
+        description: "O que pões no outro que é teu.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O mecanismo invisível", description: "Como projectamos nos outros o que não aceitamos em nós." },
+          { letter: "B", title: "Ele é egoísta ou tu não pedes?", description: "A diferença entre o que o outro faz e o que tu interpretas." },
+          { letter: "C", title: "Recolher a projecção", description: "O exercício de trazer de volta o que puseste no outro." },
+        ],
+        workbook: "Exercício de recolha de projecções",
+      },
+      {
+        number: 3,
+        title: "A Sombra",
+        description: "O que rejeitas em ti.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A parte que escondes", description: "Todos temos uma parte que não mostramos — e ela não desaparece." },
+          { letter: "B", title: "A raiva negada", description: "A raiva que dizes não sentir mas que governa as tuas reacções." },
+          { letter: "C", title: "Integrar a sombra", description: "Não é eliminá-la. É reconhecê-la e dar-lhe lugar." },
+        ],
+        workbook: "Diálogo com a sombra",
+      },
+      {
+        number: 4,
+        title: "A Admiração como Mapa",
+        description: "O que admiras no outro também é teu.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A inveja que não admites", description: "A inveja como sinal daquilo que queres mas não te permites." },
+          { letter: "B", title: "O outro como possibilidade", description: "O que admiras mostra o que já existe em ti, adormecido." },
+          { letter: "C", title: "Reclamar o que é teu", description: "Deixar de admirar de longe e começar a viver de perto." },
+        ],
+        workbook: "Inventário do que admiro e do que já é meu",
+      },
+      {
+        number: 5,
+        title: "O Inimigo como Professor",
+        description: "Quem mais te magoa mais te ensina.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A pessoa que não perdoas", description: "O que essa pessoa te mostrou que ninguém mais podia." },
+          { letter: "B", title: "A lição dentro da ferida", description: "Encontrar o ensinamento sem desculpar o que aconteceu." },
+          { letter: "C", title: "Soltar sem absolver", description: "Não precisas de perdoar para te libertar." },
+        ],
+        workbook: "Carta ao professor involuntário",
+      },
+      {
+        number: 6,
+        title: "O Parceiro como Espelho",
+        description: "Quem escolhes revela quem és.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Porque o escolheste", description: "O que te atraiu no início conta a história do que precisavas resolver." },
+          { letter: "B", title: "O espelho diário", description: "Viver com alguém é ser espelhada todos os dias — e isso cansa e cura." },
+          { letter: "C", title: "Crescer juntos ou separados", description: "Quando o espelho muda e a relação precisa de acompanhar." },
+        ],
+        workbook: "Mapa relacional: o que o outro me mostra",
+      },
+      {
+        number: 7,
+        title: "O Filho como Espelho",
+        description: "O espelho que não mente.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Ele faz o que tu fazes", description: "Os filhos não ouvem o que dizes — copiam o que vives." },
+          { letter: "B", title: "A ferida que se repete", description: "Quando vês no teu filho o que mais temes em ti." },
+          { letter: "C", title: "Deixá-lo ser diferente", description: "O acto de permitir que o filho não te espelhe — e amá-lo igual." },
+        ],
+        workbook: "Reflexão: o que o meu filho me mostra",
+      },
+      {
+        number: 8,
+        title: "Ver-te Através do Outro",
+        description: "O mundo inteiro é espelho.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Cada relação como porta", description: "Usar cada encontro como oportunidade de autoconhecimento." },
+          { letter: "B", title: "O reflexo limpo", description: "Quando já não projectas, o que vês no outro é o que está lá." },
+          { letter: "C", title: "O espelho que és para os outros", description: "Tu também és espelho. O que mostras a quem te rodeia." },
+        ],
+        workbook: "Prática diária do espelho relacional",
+      },
+    ],
+    youtubeHooks: [
+      { title: "Porque aquela pessoa te irrita tanto", durationMin: 7 },
+      { title: "O que a inveja te está a tentar dizer", durationMin: 6 },
+      { title: "Os teus filhos copiam o que vives, não o que dizes", durationMin: 8 },
+    ],
+  },
+
+  // ─── CURSO 13 — O Silêncio que Grita ───
+  {
+    slug: "o-silencio-que-grita",
+    number: 13,
+    title: "O Silêncio que Grita",
+    subtitle: "O que a tua família nunca disse vive no teu corpo",
+    arcoEmocional:
+      "Começa pelo peso que sentes e não sabes nomear. Passa pela descoberta de que há segredos na tua família que nunca foram ditos mas que moldaram tudo. Atravessa a lealdade ao silêncio e o medo de o quebrar. Chega à compreensão de que dar voz ao que foi calado liberta gerações. Termina com a tua primeira palavra.",
+    diferencial:
+      "Não é um curso de terapia familiar nem de constelações. É sobre ouvir o que nunca foi dito na tua família — e perceber como esses silêncios vivem no teu corpo, nas tuas escolhas e nos teus medos.",
+    modules: [
+      {
+        number: 1,
+        title: "O Peso sem Nome",
+        description: "Algo pesa e não sabes o quê.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O peso que não é teu", description: "A sensação de carregar algo que não consegues explicar." },
+          { letter: "B", title: "O corpo sabe antes de ti", description: "Os sintomas que aparecem sem causa — e a causa que ninguém nomeou." },
+          { letter: "C", title: "O que ninguém te contou", description: "A intuição de que há algo na tua família que ficou por dizer." },
+        ],
+        workbook: "Mapa do peso sem nome",
+      },
+      {
+        number: 2,
+        title: "O Segredo Familiar",
+        description: "O não-dito que moldou tudo.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O segredo que todos sabem", description: "Quando toda a família sabe mas ninguém diz — e o efeito disso." },
+          { letter: "B", title: "O silêncio como regra", description: "Famílias que aprenderam a não falar. O preço dessa aprendizagem." },
+          { letter: "C", title: "Os temas proibidos", description: "Dinheiro, doença, sexo, morte — os assuntos que a tua família evita." },
+        ],
+        workbook: "Inventário dos silêncios familiares",
+      },
+      {
+        number: 3,
+        title: "A Vergonha Herdada",
+        description: "A vergonha que veio antes de ti.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A vergonha da avó", description: "Vergonhas que passam de geração em geração sem serem nomeadas." },
+          { letter: "B", title: "O corpo da vergonha", description: "Onde vive a vergonha herdada: na postura, na voz, no olhar." },
+          { letter: "C", title: "Separar vergonhas", description: "Distinguir a tua vergonha da vergonha que absorveste." },
+        ],
+        workbook: "Arqueologia da vergonha familiar",
+      },
+      {
+        number: 4,
+        title: "A Doença como Linguagem",
+        description: "O corpo fala o que a boca calou.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O sintoma como mensagem", description: "Quando o corpo adoece para dizer o que ninguém disse." },
+          { letter: "B", title: "Padrões de doença na família", description: "As doenças que se repetem — e o que podem estar a dizer." },
+          { letter: "C", title: "Ouvir o corpo", description: "Aprender a escutar antes que o corpo precise de gritar." },
+        ],
+        workbook: "Diário corpo-silêncio",
+      },
+      {
+        number: 5,
+        title: "A Lealdade ao Silêncio",
+        description: "Calar por amor a quem calou.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A lealdade invisível", description: "Calamos para proteger quem amamos — mesmo que isso nos destrua." },
+          { letter: "B", title: "Trair o silêncio", description: "A sensação de traição quando pensas em falar sobre o que foi calado." },
+          { letter: "C", title: "Leal a quem?", description: "A pergunta que muda tudo: és leal ao silêncio ou és leal a ti?" },
+        ],
+        workbook: "Mapa das lealdades silenciosas",
+      },
+      {
+        number: 6,
+        title: "O Silêncio que Protege",
+        description: "Nem todo o silêncio é prisão.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O silêncio necessário", description: "Há silêncios que protegem. Aprender a distingui-los." },
+          { letter: "B", title: "Escolher o silêncio", description: "A diferença entre calar por medo e calar por escolha." },
+          { letter: "C", title: "O silêncio como presença", description: "Quando o silêncio deixa de ser fuga e se torna escuta." },
+        ],
+        workbook: "Exercício de discernimento: silêncio-prisão vs. silêncio-presença",
+      },
+      {
+        number: 7,
+        title: "Dar Voz ao Calado",
+        description: "Dizer pela primeira vez.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A primeira palavra", description: "O momento em que dizes o que nunca foi dito — nem que seja a ti mesma." },
+          { letter: "B", title: "Não é preciso gritar", description: "Dar voz não é confrontar. Pode ser um sussurro, uma carta, um diário." },
+          { letter: "C", title: "O corpo depois de falar", description: "O que acontece no corpo quando finalmente dizes." },
+        ],
+        workbook: "A carta ao silêncio",
+      },
+      {
+        number: 8,
+        title: "O Silêncio que Cura",
+        description: "Quando o silêncio deixa de pesar.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O que muda na família", description: "Quando uma pessoa fala, algo se reorganiza em todo o sistema." },
+          { letter: "B", title: "A herança que deixas", description: "Os teus filhos não vão carregar o que tu nomeaste." },
+          { letter: "C", title: "O novo silêncio", description: "O silêncio depois da verdade é diferente. É leve. É escolhido." },
+        ],
+        workbook: "Reflexão final: o que nomeei e o que libertei",
+      },
+    ],
+    youtubeHooks: [
+      { title: "O segredo que toda a tua família sabe mas ninguém diz", durationMin: 7 },
+      { title: "Porque adoeces sem razão aparente", durationMin: 6 },
+      { title: "A vergonha que sentes e que não é tua", durationMin: 8 },
+    ],
+  },
+
+  // ─── CURSO 14 — A Teia ───
+  {
+    slug: "a-teia",
+    number: 14,
+    title: "A Teia",
+    subtitle: "Pertencer sem desaparecer",
+    arcoEmocional:
+      "Começa pela fome de pertencer. Passa pelo preço que já pagaste para caber. Atravessa a rejeição como ferida fundadora. Aprende a distinguir grupos que te definem de grupos que te libertam. Chega ao paradoxo de pertencer a ti primeiro. Termina na teia que sustenta sem prender.",
+    diferencial:
+      "Não é um curso sobre socialização nem sobre solidão. É sobre a ecologia das emoções — como vivem entre pessoas, famílias e comunidades — e como encontrar o teu lugar sem te moldares ao que esperam de ti.",
+    modules: [
+      {
+        number: 1,
+        title: "A Fome de Pertencer",
+        description: "O desejo mais antigo.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A criança que queria caber", description: "O momento em que percebeste que eras diferente — e decidiste esconder isso." },
+          { letter: "B", title: "Pertencer como sobrevivência", description: "O cérebro trata a rejeição como ameaça de morte. Literalmente." },
+          { letter: "C", title: "A fome que fica", description: "Mesmo adulta, a fome de pertencer governa mais do que imaginas." },
+        ],
+        workbook: "Mapa da minha fome de pertença",
+      },
+      {
+        number: 2,
+        title: "O Preço da Pertença",
+        description: "O que abdicaste para caber.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O que calaste para ser aceite", description: "As opiniões, desejos e verdades que guardaste para não seres excluída." },
+          { letter: "B", title: "A máscara social", description: "A versão de ti que criaste para funcionar no grupo." },
+          { letter: "C", title: "O custo invisível", description: "O cansaço de ser quem não és para pertencer a quem não te vê." },
+        ],
+        workbook: "Inventário do que abdiquei",
+      },
+      {
+        number: 3,
+        title: "A Rejeição Fundadora",
+        description: "A primeira vez que ficaste de fora.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A memória que ficou", description: "A primeira rejeição que moldou a tua forma de te relacionares." },
+          { letter: "B", title: "O corpo da rejeição", description: "Onde vive a rejeição no teu corpo — e como se activa." },
+          { letter: "C", title: "A ferida que se repete", description: "Como recrias a rejeição em situações que não a pedem." },
+        ],
+        workbook: "Arqueologia da rejeição",
+      },
+      {
+        number: 4,
+        title: "O Grupo que Define",
+        description: "Quando pertencer te apaga.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O grupo como identidade", description: "Quando o 'nós' substitui o 'eu' e perdes o contorno." },
+          { letter: "B", title: "A pressão do igual", description: "O desconforto de pensares diferente dentro do grupo." },
+          { letter: "C", title: "Sair sem te perder", description: "O medo de ficar sozinha se deixares de concordar." },
+        ],
+        workbook: "Mapa dos meus grupos: onde me perco, onde me encontro",
+      },
+      {
+        number: 5,
+        title: "Emoções entre Pessoas",
+        description: "O campo emocional colectivo.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A emoção que não é tua", description: "Quando entras numa sala e sentes algo que não é teu." },
+          { letter: "B", title: "O contágio invisível", description: "Como absorves o medo, a raiva e a tristeza dos outros." },
+          { letter: "C", title: "Proteger sem fechar", description: "Estar presente sem absorver. Sentir sem te perderes." },
+        ],
+        workbook: "Exercício de fronteira emocional",
+      },
+      {
+        number: 6,
+        title: "A Solidão no Grupo",
+        description: "Rodeada de gente e sozinha.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A solidão disfarçada", description: "Estar acompanhada e sentir-te completamente sozinha." },
+          { letter: "B", title: "Ligação vs. presença", description: "Estar ligada não é estar presente. Presença é outra coisa." },
+          { letter: "C", title: "A coragem de estar presente", description: "Mostrar-te como és no grupo — sem filtro, sem máscara." },
+        ],
+        workbook: "Diário da presença autêntica",
+      },
+      {
+        number: 7,
+        title: "Pertencer a Ti Primeiro",
+        description: "A pertença começa por dentro.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O lar interno", description: "Antes de pertenceres a qualquer grupo, precisas de pertencer a ti." },
+          { letter: "B", title: "A relação contigo como raiz", description: "Quando te tens a ti, a necessidade de pertencer muda de forma." },
+          { letter: "C", title: "De fome a escolha", description: "Pertencer deixa de ser necessidade e torna-se escolha." },
+        ],
+        workbook: "Práticas de pertença interior",
+      },
+      {
+        number: 8,
+        title: "A Teia que Sustenta",
+        description: "Ligada sem estar presa.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A teia como escolha", description: "Construir ligações que sustentam sem sufocar." },
+          { letter: "B", title: "Dar e receber na medida", description: "O equilíbrio entre o que ofereces e o que recebes na teia." },
+          { letter: "C", title: "A pertença que liberta", description: "Quando pertencer já não é prisão nem necessidade — é casa." },
+        ],
+        workbook: "Visão da minha teia: quem sustenta, quem sufoca",
+      },
+    ],
+    youtubeHooks: [
+      { title: "O que calaste para ser aceite", durationMin: 7 },
+      { title: "Porque te sentes sozinha mesmo acompanhada", durationMin: 6 },
+      { title: "A rejeição que ainda governa a tua vida", durationMin: 8 },
+    ],
+  },
 ];
 
 export function getCourseBySlug(slug: string): CourseData | undefined {
