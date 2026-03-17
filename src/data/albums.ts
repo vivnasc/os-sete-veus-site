@@ -1,7 +1,7 @@
 /**
  * Albums de Musica — Sete Veus
  *
- * Estilo: Contemporaneo organico-electronico (AwakeSoul / Aruna Serena / Vozes da Nova Terra)
+ * Estilo: Contemporaneo organico-electronico (AwakeSoul / Loranne / Vozes da Nova Terra)
  * — Producao: electronica organica, pads, synths quentes, piano, cordas, percussao suave
  * — Voz: feminina, com letra, poetica, intima
  * — Lingua: PT e EN (indicado por faixa)
@@ -88,7 +88,7 @@ const VEU_COLORS: Record<number, string> = {
 export type TrackEnergy = "whisper" | "steady" | "pulse" | "anthem" | "raw";
 
 // Sabor musical — genero especifico (segunda dimensao alem da energia)
-// organic: o som base Aruna Serena (default)
+// organic: o som base Loranne (default)
 // marrabenta: marrabenta mocambicana, estilo Neyma — ritmo especifico, nao "africano" generico
 // house: house/dance, four-on-the-floor, como "Nada Me Faltara"
 // gospel: gospel/espiritual, coral, como um hino de igreja
