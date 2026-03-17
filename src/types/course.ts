@@ -12,7 +12,17 @@ export type CourseSlug =
   | "limite-sagrado"
   | "flores-no-escuro"
   | "o-peso-e-o-chao"
-  | "voz-de-dentro";
+  | "voz-de-dentro"
+  | "o-fio-invisivel"
+  | "o-espelho-do-outro"
+  | "o-silencio-que-grita"
+  | "a-teia"
+  | "a-chama"
+  | "a-mulher-antes-de-mae"
+  | "o-oficio-de-ser"
+  | "o-relogio-partido"
+  | "a-coroa-escondida"
+  | "a-fome";
 
 export type SubLesson = {
   letter: string; // "A", "B", "C"
@@ -55,6 +65,15 @@ export type CourseMeta = {
   moduleCount: number;
   totalSubLessons: number;
   youtubeHookCount: number;
+};
+
+export type CategorySlug = "materia" | "herancas" | "ciclos" | "fronteiras";
+
+export type CourseCategory = {
+  slug: CategorySlug;
+  title: string;
+  subtitle: string;
+  courses: CourseSlug[];
 };
 
 export type LessonStatus = "not_started" | "in_progress" | "completed";

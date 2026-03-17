@@ -971,17 +971,40 @@ O Mundo dos Veus e a representacao visual do mundo interno de uma pessoa. Nao e 
 | 3 | A Ponte entre Duas Margens | A Arte da Inteireza | Violeta agua | Rio sem ponte → ponte completa, duas silhuetas inteiras com espaco |
 | 4 | O Campo Queimado | Depois do Fogo | Cinza carvao, laranja brasa, verde broto | Destruicao → vida nova, diferente do que era |
 | 5 | A Encruzilhada Infinita | Olhos Abertos | Azul nevoeiro, branco | Nevoeiro total → parcialmente claro, silhueta da o primeiro passo |
-| 6 | O Corpo-Paisagem | A Pele Lembra | Terracota rosado | Paisagem desconhecida → reconhecida e habitada |
+| 6 | O Corpo-Paisagem | Pele Nua | Terracota rosado | Paisagem desconhecida → reconhecida e habitada |
 | 7 | A Muralha que Nasce do Chao | Limite Sagrado | Dourado luminoso | Sem limite → muralha de luz, com porta que a silhueta abre |
 | 8 | O Jardim Subterraneo | Flores no Escuro | Azul profundo + bioluminescentes | Caverna escura → iluminada pela luz das proprias flores |
 | 9 | O Caminho de Pedras | O Peso e o Chao | Cinza pedra | Curvada sob peso → de pe, leve, pedras no chao |
 | 10 | A Sala do Eco | Voz de Dentro | Violeta escuro, dourado eco | Silencio/sombra → voz/luz |
+| 11 | O Lago dos Reflexos Partilhados | O Fio Invisivel | Azul-prata, fios dourados | Superficie opaca → transparente, reflexos individuais fundem-se num so |
+| 12 | A Galeria dos Reflexos Vivos | O Espelho do Outro | Verde-esmeralda, dourado reflexo | Espelhos que mostram outros → espelhos que mostram a propria silhueta |
+| 13 | A Caverna dos Ecos Mudos | O Silencio que Grita | Cinza-azulado, branco fantasma | Caverna silenciosa com ecos presos → caverna com ecos libertados como luz |
+| 14 | O Bosque dos Fios Entrelacados | A Teia | Verde-musgo, dourado fio | Fios emaranhados que prendem → teia organizada que sustenta |
+| 15 | O Vulcao Adormecido | Brasa Viva | Vermelho-fogo, negro lava | Vulcao selado e escuro → vulcao com lava controlada que ilumina |
+| 16 | O Ninho que Pesa | Antes do Ninho | Ocre quente, branco ovo | Ninho que engole a silhueta → ninho com espaco para a silhueta inteira |
+| 17 | A Oficina Infinita | Maos Cansadas | Bronze, castanho quente | Oficina frenetica sem pausa → oficina com ritmo proprio e janela aberta |
+| 18 | O Jardim das Estacoes | Estacoes Partidas | Prateado, ambar outonal | Relogio gigante que aprisiona → relogio partido, jardim com todas as estacoes |
+| 19 | O Trono Coberto | Ouro e Sombra | Dourado real, purpura | Trono coberto por panos → trono descoberto, silhueta sentada de coroa |
+| 20 | A Mesa Vazia | Pao e Silencio | Terracota rosado, branco porcelana | Mesa vazia com silhueta faminta → mesa com comida e silhueta em paz |
 
 **Conexoes entre territorios:**
 - Casa dos Espelhos reflecte brevemente a Arvore (dinheiro vem da familia)
 - Campo Queimado tem a Encruzilhada ao longe (recomecar implica decidir)
 - Jardim Subterraneo tem flores da cor da Sala do Eco (luto e silencio ligados)
 - Corpo-Paisagem tem o mesmo rio da Ponte (corpo e relacoes conectados)
+- Lago dos Reflexos Partilhados reflecte todos os outros territorios na sua superficie (a dualidade contem tudo)
+- Casa dos Espelhos Dourados e a Galeria dos Reflexos Vivos sao versoes uma da outra (um olha para dentro, outro olha atraves do outro)
+- Sala do Eco e a Caverna dos Ecos Mudos sao complementares (voz propria vs. voz familiar)
+- Arvore das Raizes Visiveis partilha raizes com a Caverna dos Ecos Mudos (heranca materna e silencio familiar)
+- Ponte entre Duas Margens e o Bosque dos Fios Entrelacados partilham o tema da ligacao (intima vs. colectiva)
+- Lago dos Reflexos Partilhados reflecte o Bosque (conexao individual vs. conexao colectiva)
+- Vulcao Adormecido fornece fogo a Muralha de Limite Sagrado (sem raiva nao ha limites)
+- Vulcao Adormecido fornece fogo ao Trono Coberto (raiva como combustivel do poder)
+- Ninho que Pesa partilha raizes com a Arvore das Raizes Visiveis (ser filha e ser mae)
+- Oficina Infinita reflecte-se na Casa dos Espelhos Dourados (dinheiro e trabalho como espelhos de identidade)
+- Jardim das Estacoes partilha estacoes com o Campo Queimado (recomecos e tempo ligados)
+- Trono Coberto complementa Muralha de Limite Sagrado (limites protegem, poder ocupa)
+- Mesa Vazia partilha territorio corporal com Corpo-Paisagem (alimentacao e sexualidade como linguagens do corpo)
 
 Quem faz um curso nao precisa de notar. Quem faz varios sente a coerencia.
 
@@ -1106,7 +1129,7 @@ Paisagens (8-10):
 3. Rio violeta com duas margens (A Arte da Inteireza)
 4. Campo queimado com brotos verdes (Depois do Fogo)
 5. Encruzilhada em nevoeiro (Olhos Abertos)
-6. Paisagem que sugere formas corporais (A Pele Lembra)
+6. Paisagem que sugere formas corporais (Pele Nua)
 7. Espaco aberto com linha de luz no chao (Limite Sagrado)
 8. Caverna com flores bioluminescentes (Flores no Escuro)
 9. Caminho com pedras empilhadas (O Peso e o Chao)

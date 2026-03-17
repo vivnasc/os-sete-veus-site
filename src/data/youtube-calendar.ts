@@ -1,7 +1,7 @@
 /**
  * Calendário YouTube — A Escola dos Véus
  * ────────────────────────────────────────
- * 4 semanas | 12 vídeos | 3 por semana (Terça, Quinta, Sábado)
+ * 7 semanas | 21 vídeos | 3 por semana (Terça, Quinta, Sábado)
  *
  * Horário: 18h Maputo / 15h Lisboa / 13h São Paulo
  * Duração: 5-7 minutos cada
@@ -727,6 +727,548 @@ export const YOUTUBE_WEEKS: YouTubeWeek[] = [
             section: "fecho",
             visual: "Território dissolve-se no céu. Frase final em texto creme. Fade para escuro. Logo Sete Véus. Silêncio mais longo — este é o último vídeo.",
             narration: "Repetir é hereditário. Escolher é liberdade. A Escola dos Véus abre em breve — e o primeiro curso ajuda-te a ver o que herdaste sem saber. Se isto te tocou, inscreve-te. Há mais para ti.",
+          },
+        ],
+      },
+    ],
+  },
+  // ━━━ SEMANA 5 — A DUALIDADE: EU E O TODO ━━━
+  {
+    number: 5,
+    theme: "A Dualidade: Eu e o Todo",
+    objective:
+      "Introduzir a vertente colectiva — como a cura individual toca o todo, como estamos ligados, como o silencio familiar vive no corpo.",
+    videos: [
+      {
+        number: 13,
+        title: "Porque choras sem razão aparente",
+        courseOrigin: "o-fio-invisivel",
+        territory: "O Lago dos Reflexos Partilhados",
+        week: 5,
+        day: "terca",
+        gancho:
+          "Já te aconteceu chorares sem saber porquê? E se esse choro não for só teu?",
+        fraseFinal:
+          "Não estás sozinha no que sentes. Nunca estiveste. Há um fio invisível.",
+        description:
+          "Há choros que não são nossos. Há dores que vêm de antes. Hoje falamos do fio invisível que nos liga — e do que acontece quando o vemos.",
+        status: "draft",
+        script: [
+          {
+            timestamp: "0:00 - 0:15",
+            section: "gancho",
+            visual:
+              "Céu azul-marinho. Câmara desce para o Lago dos Reflexos Partilhados. Superfície opaca, prata escura. Silhueta sozinha na margem.",
+            narration:
+              "Já te aconteceu chorares sem saber porquê? Não é tristeza. Não é cansaço. É algo que sobe do fundo e não tem nome. E se esse choro não for só teu?",
+          },
+          {
+            timestamp: "0:15 - 1:30",
+            section: "situacao",
+            visual:
+              "Silhueta sentada junto ao lago. Reflexos vagos de outras figuras aparecem na água — gerações. Ondulações suaves.",
+            narration:
+              "Estás na cozinha. Acabaste de por as crianças a dormir. Sentas-te. E de repente os olhos enchem-se de água. Não aconteceu nada. O dia foi normal. Mas algo pesa. Algo quer sair. E se eu te dissesse que talvez não seja só teu? Que o que sentes pode vir de quem veio antes de ti?",
+          },
+          {
+            timestamp: "1:30 - 3:30",
+            section: "padrao",
+            visual:
+              "Lago a tornar-se transparente. Fios dourados a conectar reflexos de várias silhuetas na água — mãe, avó, bisavó. Sistema nervoso visível como rede de luz.",
+            narration:
+              "O sistema nervoso humano foi feito para se ligar. Para sentir o outro. Para carregar o que não é nomeado. O que a tua mãe sentiu e não disse, o teu corpo ouviu. O que a tua avó viveu e engoliu, ficou registado. E quando choras sem razão, pode ser que estejas a chorar por muitas. Não é fraqueza. É a prova de que estás ligada a algo maior do que tu.",
+          },
+          {
+            timestamp: "3:30 - 5:00",
+            section: "gesto",
+            visual:
+              "Silhueta com mãos no peito junto ao lago. Reflexos que se acalmam. Fios dourados brilham suavemente.",
+            narration:
+              "A próxima vez que chorares sem razão, não limpes as lágrimas logo. Põe a mão no peito e pergunta em silêncio: isto é meu ou é de alguém que veio antes de mim? Não precisas de resposta. O corpo sabe o que fazer com a pergunta certa.",
+          },
+          {
+            timestamp: "5:00 - 5:30",
+            section: "fecho",
+            visual:
+              "Lago transparente com fios dourados brilhantes. Dissolve no céu. Logo Sete Véus.",
+            narration:
+              "Não estás sozinha no que sentes. Nunca estiveste. Há um fio invisível que te liga a todas as que vieram antes. Se isto te tocou, inscreve-te. A Escola dos Véus está a chegar.",
+          },
+        ],
+      },
+      {
+        number: 14,
+        title: "O segredo que toda a tua família sabe mas ninguém diz",
+        courseOrigin: "o-silencio-que-grita",
+        secondaryCourse: "o-fio-invisivel",
+        territory: "A Caverna dos Ecos Mudos",
+        week: 5,
+        day: "quinta",
+        gancho:
+          "Na tua família, há alguma coisa de que ninguém fala? Uma pessoa que desapareceu da conversa?",
+        fraseFinal:
+          "O que a tua família nunca disse não desapareceu. Vive no teu corpo.",
+        description:
+          "Os segredos familiares não desaparecem quando ninguém fala deles. Passam para o corpo. Para a geração seguinte. Para ti.",
+        status: "draft",
+        script: [
+          {
+            timestamp: "0:00 - 0:15",
+            section: "gancho",
+            visual:
+              "Céu azul-marinho. Câmara desce para a Caverna dos Ecos Mudos. Escura, silenciosa. Paredes com marcas de palavras não ditas.",
+            narration:
+              "Na tua família, há alguma coisa de que ninguém fala? Um assunto que todos evitam? Uma história que muda de versão cada vez que alguém a conta?",
+          },
+          {
+            timestamp: "0:15 - 1:30",
+            section: "situacao",
+            visual:
+              "Várias silhuetas numa sala — família. Algumas viradas de costas. Sombras de palavras flutuam como ecos escuros.",
+            narration:
+              "Todas as famílias têm segredos. Às vezes é um divórcio que foi tratado como se nunca tivesse existido. Uma doença mental que se chamava 'nervos'. Uma gravidez que se escondeu. E tu cresceste nesse silêncio. Não te disseram para não falar — simplesmente percebeste. Pelo olhar da tua mãe quando o assunto se aproximava.",
+          },
+          {
+            timestamp: "1:30 - 3:30",
+            section: "padrao",
+            visual:
+              "Caverna com ecos visíveis. Ondas de luz nas paredes. Silhueta que abre a boca — primeiro som visual.",
+            narration:
+              "Os segredos familiares não desaparecem quando ninguém fala deles. Passam para o corpo. A ansiedade que sentes e não sabes explicar. A vergonha que aparece sem razão. O aperto na garganta quando alguém se aproxima de um tema proibido. Não é teu. Tornou-se teu porque ninguém lhe deu nome antes de ti. E quando uma pessoa na família finalmente fala, algo muda no sistema inteiro.",
+          },
+          {
+            timestamp: "3:30 - 5:00",
+            section: "gesto",
+            visual:
+              "Silhueta com mão estendida. Eco dourado a sair. Paredes da caverna a vibrar com luz.",
+            narration:
+              "Pega num papel. Escreve uma frase que começa assim: na minha família, nunca se fala sobre... Não penses. Escreve. Depois lê o que escreveste. E repara no que sentes no corpo ao ler.",
+          },
+          {
+            timestamp: "5:00 - 5:30",
+            section: "fecho",
+            visual:
+              "Caverna com ecos dourados. Dissolve no céu. Logo Sete Véus.",
+            narration:
+              "O que a tua família nunca disse não desapareceu. Vive no teu corpo. E talvez seja a tua vez de dar voz ao que foi calado. Se isto te tocou, inscreve-te. A Escola dos Véus está a chegar.",
+          },
+        ],
+      },
+      {
+        number: 15,
+        title: "O que calaste para ser aceite",
+        courseOrigin: "a-teia",
+        secondaryCourse: "o-espelho-do-outro",
+        territory: "O Bosque dos Fios Entrelaçados",
+        week: 5,
+        day: "sabado",
+        gancho:
+          "Quando foi a última vez que disseste o que realmente pensavas num grupo? A versão verdadeira.",
+        fraseFinal:
+          "Pertencer não é desaparecer. É ser vista como és e ainda assim ter lugar.",
+        description:
+          "O que abdicaste para pertencer? A fome de pertença governa mais do que pensas. Hoje falamos do que calaste para caber — e de como encontrar o teu lugar sem desaparecer.",
+        status: "draft",
+        script: [
+          {
+            timestamp: "0:00 - 0:15",
+            section: "gancho",
+            visual:
+              "Céu azul-marinho. Câmara desce para o Bosque dos Fios Entrelaçados. Fios emaranhados entre árvores. Silhueta presa.",
+            narration:
+              "Quando foi a última vez que disseste o que realmente pensavas num grupo? Não a versão educada. A versão verdadeira. A que guardas para o caminho de volta para casa.",
+          },
+          {
+            timestamp: "0:15 - 1:30",
+            section: "situacao",
+            visual:
+              "Silhueta em grupo — sorri mas o corpo está tenso. Fios que a prendem subtilmente. Depois: silhueta sozinha, boca aberta, finalmente a falar sem ninguém a ouvir.",
+            narration:
+              "Estás num almoço com amigas. Alguém diz algo com que não concordas. Sentes a vontade de dizer. Mas olhas à volta. E decides que não vale a pena. Então sorris. Acenas. E no carro, sozinha, dizes tudo o que devias ter dito. Mas já não conta.",
+          },
+          {
+            timestamp: "1:30 - 3:30",
+            section: "padrao",
+            visual:
+              "Fios que se afrouxam. Silhueta que recupera contorno. Bosque com luz verde-dourada a crescer.",
+            narration:
+              "Pertencer é a necessidade humana mais antiga. O cérebro trata a rejeição como ameaça de morte. Por isso aprendeste a adaptar-te. A moldar-te ao formato do grupo. Mas há um preço. Cada vez que te moldas, perdes um pedaço de contorno. E ao fim de anos, não sabes quem és sem a aprovação do outro. A boa notícia: podes pertencer sem desaparecer. Mas primeiro precisas de perceber o que abdicaste para caber.",
+          },
+          {
+            timestamp: "3:30 - 5:00",
+            section: "gesto",
+            visual:
+              "Silhueta no grupo, de pé, contorno definido. Fios que a ligam sem prender. Equilíbrio. Espelhos da Galeria dos Reflexos Vivos visíveis ao longe.",
+            narration:
+              "Esta semana, numa conversa em grupo, diz uma coisa verdadeira. Pode ser: eu penso diferente. Ou simplesmente: não. E repara no que acontece no teu corpo quando dizes.",
+          },
+          {
+            timestamp: "5:00 - 5:30",
+            section: "fecho",
+            visual:
+              "Bosque luminoso com teia equilibrada. Dissolve no céu. Logo Sete Véus.",
+            narration:
+              "Pertencer não é desaparecer. É ser vista como és e ainda assim ter lugar. Se isto te tocou, inscreve-te. A Escola dos Véus está a chegar — e há muito mais para ver.",
+          },
+        ],
+      },
+    ],
+  },
+  // ━━━ SEMANA 6 — O FOGO INTERIOR: RAIVA, MATERNIDADE E TRABALHO ━━━
+  {
+    number: 6,
+    theme: "O Fogo Interior: Raiva, Maternidade e Trabalho",
+    objective:
+      "Três temas intensos e universais — a raiva proibida, a identidade perdida na maternidade, e o trabalho como fuga. Temas que activam forte identificação.",
+    videos: [
+      {
+        number: 16,
+        title: "Porque sorris quando queres gritar",
+        courseOrigin: "a-chama",
+        territory: "O Vulcão Adormecido",
+        week: 6,
+        day: "terca",
+        gancho:
+          "A última vez que sentiste raiva a sério — o que fizeste com ela? Gritaste? Choraste? Ou sorriste e disseste 'está tudo bem'?",
+        fraseFinal:
+          "A raiva não é o contrário do amor. O silêncio forçado é.",
+        description:
+          "A raiva como emoção proibida para mulheres. O corpo que guarda o que a boca não diz. Tema com forte activação emocional.",
+        status: "draft",
+        script: [
+          {
+            timestamp: "0:00 - 0:15",
+            section: "gancho",
+            visual:
+              "Céu azul-marinho. Câmara desce para o Vulcão Adormecido. Superfície negra e fria. Silhueta rígida, mandíbula cerrada.",
+            narration:
+              "A última vez que sentiste raiva a sério — o que fizeste com ela? Gritaste? Choraste? Ou sorriste e disseste 'está tudo bem'?",
+          },
+          {
+            timestamp: "0:15 - 1:30",
+            section: "situacao",
+            visual:
+              "Silhueta a sorrir numa reunião enquanto o corpo fica tenso. Depois: silhueta sozinha no carro, mãos a tremer no volante. Fissuras subtis na superfície do vulcão.",
+            narration:
+              "Na reunião disseram-te que o projecto que fizeste sozinha ia ser apresentado por outra pessoa. Sentiste o calor subir. A mandíbula cerrar. Os olhos arder. Mas o que fizeste? Sorriste. Disseste 'claro, faz sentido'. E no carro, sozinha, as mãos tremiam no volante. Não de medo. De raiva. Uma raiva que nunca te ensinaram a ter. Porque meninas boas não gritam. Mulheres fortes não perdem o controlo. E tu — tu aprendeste tão bem a engolir que já nem sabes o que é raiva e o que é cansaço.",
+          },
+          {
+            timestamp: "1:30 - 3:30",
+            section: "padrao",
+            visual:
+              "Fissuras a abrir na superfície do vulcão. Lava visível por baixo. Silhueta que começa a sentir o calor. Mãos a abrir lentamente.",
+            narration:
+              "A raiva é a emoção mais censurada nas mulheres. Um homem com raiva é assertivo. Uma mulher com raiva é histérica. E tu aprendeste isso antes de teres palavras. Aprendeste que a raiva era perigosa. Que se a mostrasses, perdias amor. Perdias aprovação. Perdias o teu lugar. Então guardaste-a. Na mandíbula. Nas costas. No estômago. Transformaste-a em cansaço, em sarcasmo, em controlo, em choro. E o corpo aguentou — durante anos. Mas a raiva não desaparece porque a escondes. Cresce. E um dia sai — nos sítios errados, nas pessoas erradas, da forma errada. Não porque sejas má. Porque nunca te deixaram ser inteira.",
+          },
+          {
+            timestamp: "3:30 - 5:00",
+            section: "gesto",
+            visual:
+              "Silhueta de pé junto ao vulcão. Lava a fluir em canais controlados. Fogo que ilumina sem destruir. Silhueta com punhos abertos.",
+            narration:
+              "Esta semana, repara. Quando sorrires e o corpo disser outra coisa — para. Pergunta-te: estou a sorrir ou estou a engolir? Não precisas de gritar. Não precisas de explodir. Só precisas de notar. O primeiro passo para recuperar a raiva é reconhecê-la quando ela aparece.",
+          },
+          {
+            timestamp: "5:00 - 5:30",
+            section: "fecho",
+            visual:
+              "Vulcão com lava controlada. Dissolve no céu. Logo Sete Véus.",
+            narration:
+              "A raiva não é o contrário do amor. O silêncio forçado é. Se isto te tocou, inscreve-te. A Escola dos Véus abre em breve.",
+          },
+        ],
+      },
+      {
+        number: 17,
+        title: "Quando foi a última vez que alguém te chamou pelo teu nome",
+        courseOrigin: "a-mulher-antes-de-mae",
+        territory: "O Ninho que Pesa",
+        week: 6,
+        day: "quinta",
+        gancho:
+          "Pensa. Quando foi a última vez que alguém te chamou pelo teu nome? Não 'mãe'. Não 'amor'. O teu nome.",
+        fraseFinal:
+          "Sentir falta de ti mesma não é egoísmo. É o primeiro sinal de que ainda estás lá.",
+        description:
+          "A perda de identidade na maternidade. Tema de forte identificação para mães de todas as idades.",
+        status: "draft",
+        script: [
+          {
+            timestamp: "0:00 - 0:15",
+            section: "gancho",
+            visual:
+              "Céu azul-marinho. Câmara desce para o Ninho que Pesa. Ninho enorme. Silhueta quase invisível dentro dele.",
+            narration:
+              "Quando foi a última vez que alguém te chamou pelo teu nome? Não 'mãe'. Não 'amor'. O teu nome. O que sentiste?",
+          },
+          {
+            timestamp: "0:15 - 1:30",
+            section: "situacao",
+            visual:
+              "Silhueta dentro do ninho, rodeada de movimento — pequenas silhuetas que precisam, puxam, chamam. Depois: silhueta sozinha na casa de banho, olhar perdido no espelho. Primeiro momento de silêncio.",
+            narration:
+              "São sete da manhã. Já fizeste três coisas antes de abrir os olhos — o lanche, a mochila, o banho. O teu café ficou frio. Outra vez. Na casa de banho, cinco minutos. É o único sítio onde ninguém bate. Olhas-te ao espelho e por um segundo não reconheces quem está ali. Não é que estejas mal. É que não estás. A mulher que eras antes dos filhos — a que dançava, a que lia, a que tinha opiniões sobre cinema — onde foi?",
+          },
+          {
+            timestamp: "1:30 - 3:30",
+            section: "padrao",
+            visual:
+              "Silhueta a emergir lentamente do ninho. Contorno próprio a aparecer. Duas formas da mesma pessoa — mãe e mulher — começam a separar-se.",
+            narration:
+              "Ninguém te avisou que quando um filho nasce, uma mulher morre. Não fisicamente. Mas a versão de ti que existia antes — a que tinha tempo, corpo, desejo, nome — essa desapareceu. E no lugar dela ficou 'mãe'. Uma função. Uma lista de tarefas. Uma culpa infinita. E o mais cruel: se sentes falta de ti mesma, a culpa duplica. Porque uma boa mãe não devia querer ser outra coisa. Devia bastar. Mas não basta. E sentir isso não te faz má mãe. Faz-te humana. Faz-te inteira. Faz-te uma mulher que existia antes dos filhos e que merece continuar a existir.",
+          },
+          {
+            timestamp: "3:30 - 5:00",
+            section: "gesto",
+            visual:
+              "Silhueta fora do ninho, mão no próprio peito. Ninho bonito atrás. Espaço entre as duas. Luz ocre quente.",
+            narration:
+              "Esta semana, faz uma coisa só tua. Não para os filhos. Não para a casa. Não para o parceiro. Pode ser ler dez páginas. Pode ser andar à chuva. Pode ser sentar-te e não fazer nada durante quinze minutos. E quando a culpa aparecer — e vai aparecer — repara nela. Não a obedeças. Só repara.",
+          },
+          {
+            timestamp: "5:00 - 5:30",
+            section: "fecho",
+            visual:
+              "Ninho com espaço. Silhueta inteira. Dissolve no céu. Logo Sete Véus.",
+            narration:
+              "Sentir falta de ti mesma não é egoísmo. É o primeiro sinal de que ainda estás lá. Se isto te tocou, inscreve-te. A Escola dos Véus abre em breve.",
+          },
+        ],
+      },
+      {
+        number: 18,
+        title: "Porque o cansaço não passa com férias",
+        courseOrigin: "o-oficio-de-ser",
+        territory: "A Oficina Infinita",
+        week: 6,
+        day: "sabado",
+        gancho:
+          "Voltaste de férias. Descansaste. Dormiste. E na segunda-feira, quando abriste o portátil, sentiste exactamente o mesmo cansaço de antes. Porquê?",
+        fraseFinal:
+          "O cansaço que não passa com férias não é do corpo. É da vida que levas.",
+        description:
+          "O burnout como mensagem, não como fraqueza. O trabalho como fuga de si mesma. Tema com forte ressonância em mulheres profissionais.",
+        status: "draft",
+        script: [
+          {
+            timestamp: "0:00 - 0:15",
+            section: "gancho",
+            visual:
+              "Céu azul-marinho. Câmara desce para a Oficina Infinita. Máquinas a trabalhar sem parar. Silhueta curvada sobre a mesa. Sem janela.",
+            narration:
+              "Voltaste de férias. Descansaste. Dormiste. E na segunda-feira, quando abriste o portátil, o cansaço era exactamente o mesmo. Como se nunca tivesses saído. Porquê?",
+          },
+          {
+            timestamp: "0:15 - 1:30",
+            section: "situacao",
+            visual:
+              "Silhueta a correr entre máquinas. Agenda cheia visível como engrenagens. Depois: silhueta parada num domingo — vazia, sem saber o que fazer consigo.",
+            narration:
+              "A tua semana é uma máquina perfeita. Reuniões, entregas, emails, decisões. Tens orgulho de ser eficiente. De dar conta. De nunca falhar. Mas num domingo, quando não há nada para fazer, sentes um vazio. Não sabes o que fazer contigo quando não estás a produzir. E o que fazes? Abres o portátil. Respondes a emails. Crias tarefas. Porque parar é sentir. E sentir — isso não está na agenda.",
+          },
+          {
+            timestamp: "1:30 - 3:30",
+            section: "padrao",
+            visual:
+              "Algumas máquinas a parar. Janela a abrir. Luz bronze a entrar. Silhueta a endireitar-se lentamente.",
+            narration:
+              "O burnout não é trabalhar demais. É viver de menos. O corpo cansa-se de manter uma vida que não alimenta. E o trabalho torna-se o anestésico perfeito — é o único sítio onde sentes que vales alguma coisa. Tiras valor do que produzes. Do cargo. Do reconhecimento. E quando isso para — nas férias, numa pausa, numa doença — não há nada por baixo. Só o vazio. O burnout é o corpo a dizer: estou cansado de ser uma máquina. Quero ser uma pessoa. Não é fraqueza. É a mensagem mais importante que vais receber.",
+          },
+          {
+            timestamp: "3:30 - 5:00",
+            section: "gesto",
+            visual:
+              "Oficina mais calma. Janela aberta. Silhueta sentada, sem fazer nada. Luz bronze quente. Paz.",
+            narration:
+              "Amanhã, quando abrires o portátil, para. Antes de responderes ao primeiro email, pergunta-te: estou a fazer isto porque preciso ou porque parar me assusta? Se a resposta te incomodar, fica com ela. Não a resolvas. Só nota.",
+          },
+          {
+            timestamp: "5:00 - 5:30",
+            section: "fecho",
+            visual:
+              "Oficina com janela aberta. Dissolve no céu. Logo Sete Véus.",
+            narration:
+              "O cansaço que não passa com férias não é do corpo. É da vida que levas. Se isto te tocou, inscreve-te. A Escola dos Véus abre em breve.",
+          },
+        ],
+      },
+    ],
+  },
+  // ━━━ SEMANA 7 — TEMPO, PODER E O CORPO QUE FALA ━━━
+  {
+    number: 7,
+    theme: "Tempo, Poder e o Corpo que Fala",
+    objective:
+      "Fechar o ciclo com temas de maturidade — o tempo, o poder escondido, e a relação com a comida. Temas que completam o panorama da Escola.",
+    videos: [
+      {
+        number: 19,
+        title: "Porque sentes que já é tarde demais",
+        courseOrigin: "o-relogio-partido",
+        territory: "O Jardim das Estações",
+        week: 7,
+        day: "terca",
+        gancho:
+          "Já é tarde para mudar de vida. Já é tarde para começar algo novo. Já é tarde para seres quem querias ser. Tens a certeza?",
+        fraseFinal:
+          "Nunca é tarde para agora. O único momento que tens é este.",
+        description:
+          "A narrativa do 'já é tarde' como prisão. O medo de envelhecer. Os prazos inventados pela sociedade. Forte ressonância em mulheres 35+.",
+        status: "draft",
+        script: [
+          {
+            timestamp: "0:00 - 0:15",
+            section: "gancho",
+            visual:
+              "Céu azul-marinho. Câmara desce para o Jardim das Estações. Relógio gigante. Flores a nascer e morrer em segundos. Silhueta a correr.",
+            narration:
+              "Já é tarde para mudar. Já é tarde para começar. Já é tarde para seres quem querias ser. Tens a certeza? Ou é o relógio a falar por ti?",
+          },
+          {
+            timestamp: "0:15 - 1:30",
+            section: "situacao",
+            visual:
+              "Silhueta a olhar para trás — versões mais jovens de si a desaparecer. Depois: silhueta parada a meio do jardim, relógio enorme atrás. Imobilizada.",
+            narration:
+              "Tinhas planos. Ias viajar. Ias escrever. Ias começar aquele negócio. Ias dizer o que sentias. E depois a vida aconteceu. Os filhos. O trabalho. As contas. E agora olhas para trás e pensas: perdi tempo. Devia ter feito há dez anos. E olhas para a frente e pensas: já não vale a pena. É tarde. Tenho 42 anos. Ou 48. Ou 55. E o relógio bate mais alto que qualquer desejo.",
+          },
+          {
+            timestamp: "1:30 - 3:30",
+            section: "padrao",
+            visual:
+              "Relógio com fissuras. Tempo a abrandar. Estações a coexistir — primavera e outono lado a lado. Silhueta a parar de correr.",
+            narration:
+              "Casar até aos 30. Filhos até aos 35. Carreira até aos 40. Corpo perfeito até aos 45. Quem decidiu isto? Não foste tu. Foram regras que absorveste antes de teres voz. E agora vives com um relógio interno que te diz que cada ano que passa é um ano perdido. Mas repara: quando dizes 'é tarde', o que realmente sentes é medo. Medo de falhar. Medo de parecer ridícula. Medo de começar do zero quando os outros parecem ter chegado. Mas 'tarde' é uma ilusão. Não existe um horário certo para a tua vida. Existe este momento. E neste momento ainda estás aqui. Ainda estás viva. E isso é o suficiente para começar.",
+          },
+          {
+            timestamp: "3:30 - 5:00",
+            section: "gesto",
+            visual:
+              "Relógio partido. Jardim com todas as estações em paz. Silhueta sentada, presente. Luz âmbar-prateada.",
+            narration:
+              "Pega num papel. Escreve uma coisa que adias porque achas que é tarde. Uma só. Agora escreve por baixo: o que me impede não é o tempo — é o medo de quê? Lê o que escreveste. O inimigo nunca foi o relógio. Foi o que acreditas sobre ti.",
+          },
+          {
+            timestamp: "5:00 - 5:30",
+            section: "fecho",
+            visual:
+              "Jardim sem relógio. Todas as estações. Dissolve no céu. Logo Sete Véus.",
+            narration:
+              "Nunca é tarde para agora. O único momento que tens é este. Se isto te tocou, inscreve-te. A Escola dos Véus abre em breve.",
+          },
+        ],
+      },
+      {
+        number: 20,
+        title: "A auto-sabotagem explicada: porque estragas quando está a correr bem",
+        courseOrigin: "a-coroa-escondida",
+        territory: "O Trono Coberto",
+        week: 7,
+        day: "quinta",
+        gancho:
+          "Estava a correr bem. Tinhas finalmente conseguido. E depois fizeste aquela coisa — sabotaste. Porquê?",
+        fraseFinal:
+          "Não estragas porque não mereces. Estragas porque ter é mais assustador que querer.",
+        description:
+          "A auto-sabotagem como protecção inconsciente. O medo de brilhar, de ter sucesso, de ser vista. Tema que gera forte reconhecimento.",
+        status: "draft",
+        script: [
+          {
+            timestamp: "0:00 - 0:15",
+            section: "gancho",
+            visual:
+              "Céu azul-marinho. Câmara desce para o Trono Coberto. Sala escura. Trono coberto por panos. Silhueta encolhida, de costas.",
+            narration:
+              "Estava a correr bem. Tinhas finalmente conseguido. E depois fizeste aquela coisa. Sabotaste. Porquê?",
+          },
+          {
+            timestamp: "0:15 - 1:30",
+            section: "situacao",
+            visual:
+              "Silhueta quase a sentar-se no trono — recua. Panos voltam a cobrir. Depois: silhueta pequena num canto, alívio e vergonha ao mesmo tempo.",
+            narration:
+              "Recebeste a promoção. Ou o convite. Ou o elogio. E durante cinco minutos sentiste-te bem. Mas depois começou. O pensamento: vão descobrir. Não sou assim tão boa. Foi sorte. E sem perceberes, começaste a fazer coisas que estragavam tudo. Chegaste atrasada. Não respondeste ao email. Arranjaste uma discussão. Desististe antes de começar. E quando tudo desmoronou, sentiste uma coisa estranha: alívio. Não era felicidade. Era: pelo menos já não tenho de sustentar aquilo.",
+          },
+          {
+            timestamp: "1:30 - 3:30",
+            section: "padrao",
+            visual:
+              "Panos a cair do trono. Dourado e púrpura a aparecer. Silhueta a olhar para o trono com medo e curiosidade. Luz a crescer.",
+            narration:
+              "A auto-sabotagem não é estupidez. É protecção. O teu sistema nervoso aprendeu que ter é perigoso. Talvez porque quando eras pequena, ter atenção significava inveja. Ou porque quando brilhavas, alguém te apagava. Ou porque aprendeste que o sucesso significa solidão — que se fores demasiado, os outros vão embora. Então o corpo cria um mecanismo: destrói antes que seja destruído. Sabota antes que alguém te tire o que conquistaste. É um reflexo de sobrevivência. Mas já não precisas dele. A criança que aprendeu que brilhar era perigoso já cresceu. E a adulta pode decidir: desta vez, fico.",
+          },
+          {
+            timestamp: "3:30 - 5:00",
+            section: "gesto",
+            visual:
+              "Silhueta de pé junto ao trono. Mão a tocar no encosto. Hesitação a transformar-se em decisão. Luz dourada-púrpura.",
+            narration:
+              "A próxima vez que algo correr bem — e sentires a vontade de estragar — para. Respira. E diz internamente: isto é medo, não verdade. Posso ter isto. Não precisas de sentar no trono hoje. Só precisas de parar de o cobrir.",
+          },
+          {
+            timestamp: "5:00 - 5:30",
+            section: "fecho",
+            visual:
+              "Trono descoberto. Silhueta de pé. Dissolve no céu. Logo Sete Véus.",
+            narration:
+              "Não estragas porque não mereces. Estragas porque ter é mais assustador que querer. Se isto te tocou, inscreve-te. A Escola dos Véus abre em breve.",
+          },
+        ],
+      },
+      {
+        number: 21,
+        title: "O que procuras no frigorífico à meia-noite",
+        courseOrigin: "a-fome",
+        territory: "A Mesa Vazia",
+        week: 7,
+        day: "sabado",
+        gancho:
+          "Não tens fome. Sabes que não tens fome. Mas abres o frigorífico na mesma. O que procuras lá dentro?",
+        fraseFinal:
+          "A fome que te leva ao frigorífico à meia-noite não é de comida. É de ti.",
+        description:
+          "A relação emocional com a comida. O corpo como campo de batalha. Tema profundamente íntimo que gera forte identificação. Fecho do ciclo de vídeos.",
+        status: "draft",
+        script: [
+          {
+            timestamp: "0:00 - 0:15",
+            section: "gancho",
+            visual:
+              "Céu azul-marinho. Câmara desce para a Mesa Vazia. Mesa enorme e vazia. Silhueta sentada à frente. Prato vazio. Escuridão.",
+            narration:
+              "Não tens fome. Sabes que não tens fome. Mas abres o frigorífico na mesma. De pé, no escuro da cozinha. O que procuras lá dentro?",
+          },
+          {
+            timestamp: "0:15 - 1:30",
+            section: "situacao",
+            visual:
+              "Silhueta na cozinha escura, luz do frigorífico no rosto. Come de pé, rápido, quase escondida. Depois: silhueta sentada na cama, culpa visível como sombra sobre o corpo.",
+            narration:
+              "São onze da noite. O dia foi longo. Os miúdos dormiram. O parceiro dorme. E tu estás na cozinha. De pé. A comer pão com manteiga. Ou chocolate. Ou restos. Não com prazer — com urgência. Como se enchesses um buraco. Comes rápido. Quase sem respirar. E quando paras, a culpa chega. O tribunal interno abre sessão: outra vez. Devias ter mais controlo. Amanhã começas a dieta. Mas amanhã o buraco volta. E tu também.",
+          },
+          {
+            timestamp: "1:30 - 3:30",
+            section: "padrao",
+            visual:
+              "Mesa a ganhar alimentos. Silhueta a sentar-se. Luz rosada a crescer. Conflito entre fome e culpa visível — duas sombras.",
+            narration:
+              "A fome emocional não é gula. É linguagem. É o corpo a pedir o que não sabe pedir com palavras. Conforto. Presença. Prazer. Segurança. Aprendeste cedo que a comida era tudo isso. Na cozinha da tua mãe, comida era amor. Recusar era rejeitar. E agora, quando te sentes vazia, o corpo vai buscar o que conhece: o frigorífico. Mas o frigorífico não tem o que procuras. Não há queijo suficiente para preencher solidão. Não há chocolate suficiente para compensar a vida que adias. O que procuras no prato é o que te falta na vida. E enquanto não nomeares essa falta, vais continuar a comer de pé, no escuro, às onze da noite.",
+          },
+          {
+            timestamp: "3:30 - 5:00",
+            section: "gesto",
+            visual:
+              "Silhueta sentada à mesa com comida. Come devagar. Luz rosada quente. Presença. Sem culpa.",
+            narration:
+              "Da próxima vez que fores ao frigorífico fora de horas — para. Antes de abrir, pergunta-te: do que tenho fome realmente? Não da comida — do quê? E espera pela resposta. Pode ser: descanso. Pode ser: atenção. Pode ser: silêncio. Pode ser: prazer. Quando souberes, podes decidir: como é que me alimento disso sem usar o prato?",
+          },
+          {
+            timestamp: "5:00 - 5:30",
+            section: "fecho",
+            visual:
+              "Mesa bonita. Silhueta em paz. Dissolve no céu. Logo Sete Véus. Silêncio mais longo.",
+            narration:
+              "A fome que te leva ao frigorífico à meia-noite não é de comida. É de ti. Se isto te tocou, inscreve-te. A Escola dos Véus abre em breve — e há mais para ver.",
           },
         ],
       },

@@ -586,11 +586,11 @@ const COURSES: CourseData[] = [
     ],
   },
 
-  // ─── CURSO 6 — A Pele Lembra ───
+  // ─── CURSO 6 — Pele Nua ───
   {
     slug: "a-pele-lembra",
     number: 6,
-    title: "A Pele Lembra",
+    title: "Pele Nua",
     subtitle: "Aprender a ouvir o corpo antes de a mente racionalizar",
     arcoEmocional:
       "Começa pela desconexão. Aprende literacia corporal. Passa pelos sintomas como linguagem. Calibra o sim e o não do corpo. Aprende a habitar, não só usar. Termina com o corpo como primeiro conselheiro.",
@@ -1158,6 +1158,1156 @@ const COURSES: CourseData[] = [
       { title: "A conversa que ensaias no chuveiro", durationMin: 7 },
       { title: "Porque o silêncio doi mais que a verdade", durationMin: 6 },
       { title: "Como começar sem as 3 palavras que arruinam tudo", durationMin: 8 },
+    ],
+  },
+
+  // ─── CURSO 11 — O Fio Invisível ───
+  {
+    slug: "o-fio-invisivel",
+    number: 11,
+    title: "O Fio Invisível",
+    subtitle: "A ligação entre todos nós e como a tua cura toca o todo",
+    arcoEmocional:
+      "Começa pela ilusão de que estás sozinha no que sentes. Passa pela descoberta de que carregas dores que não são tuas. Atravessa o reconhecimento de que o que fazes a ti mesma fazes ao todo. Chega à compreensão de que curar-te não é egoísmo — é o acto mais generoso que existe. Termina com a experiência de que quando uma mulher se liberta, algo se liberta em todas.",
+    diferencial:
+      "Não é um curso de espiritualidade nem de energia. É sobre a ciência e a experiência da ligação humana — como o que sentes afecta quem te rodeia, como o que carregas veio de quem veio antes de ti, e como a tua cura individual é a semente da cura colectiva.",
+    modules: [
+      {
+        number: 1,
+        title: "A Ilusão da Separação",
+        description: "Pensas que o que sentes é só teu.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Sozinha no que sentes", description: "A crença de que ninguém sente o que tu sentes — e como isso te isola." },
+          { letter: "B", title: "O espelho invisível", description: "Cada pessoa que te irrita, te inspira ou te magoa está a mostrar-te algo sobre ti." },
+          { letter: "C", title: "O fio que não vês", description: "A ligação que existe entre todos nós — no corpo, no sistema nervoso, no campo emocional." },
+        ],
+        workbook: "Mapa das minhas ligações invisíveis",
+      },
+      {
+        number: 2,
+        title: "O que Carregas que Não É Teu",
+        description: "As dores herdadas que vivem no teu corpo.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A herança emocional", description: "Os medos, vergonhas e silêncios que absorveste da tua família sem ninguém te dizer." },
+          { letter: "B", title: "O corpo como arquivo", description: "Onde guardas a dor dos outros — nas costas, no estômago, na garganta." },
+          { letter: "C", title: "Devolver o que não te pertence", description: "O exercício de separar a tua dor da dor que herdaste." },
+        ],
+        workbook: "Inventário do que carrego e do que é meu",
+      },
+      {
+        number: 3,
+        title: "O Contágio Emocional",
+        description: "Como o que sentes passa para quem te rodeia.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A sala muda quando entras", description: "Como o teu estado interno altera o ambiente à tua volta — sem dizeres uma palavra." },
+          { letter: "B", title: "Os teus filhos sentem tudo", description: "O que não dizes em voz alta, o corpo das crianças ouve." },
+          { letter: "C", title: "A ansiedade partilhada", description: "Como a ansiedade, a raiva e a tristeza se transmitem entre pessoas que se amam." },
+        ],
+        workbook: "Diário do contágio emocional",
+      },
+      {
+        number: 4,
+        title: "A Dualidade",
+        description: "Tu és individual e és o todo ao mesmo tempo.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Separada e ligada", description: "O paradoxo: és completamente tua e completamente parte de algo maior." },
+          { letter: "B", title: "O que faço a mim, faço ao mundo", description: "Quando te maltratas, há algo no colectivo que também se contrai." },
+          { letter: "C", title: "A responsabilidade gentil", description: "Isto não é culpa — é consciência. Cuidar de ti é cuidar do todo." },
+        ],
+        workbook: "Exercício da dualidade: eu e o todo",
+      },
+      {
+        number: 5,
+        title: "A Ferida Colectiva",
+        description: "O que todas as mulheres carregam.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A dor que não tem dono", description: "Há dores que são de todas — o silêncio, a submissão, a vergonha do corpo." },
+          { letter: "B", title: "A história que não foi contada", description: "Gerações de mulheres que engoliram o que sentiam para que tu pudesses existir." },
+          { letter: "C", title: "Sentir o colectivo no corpo", description: "Quando choras sem razão aparente, talvez estejas a chorar por muitas." },
+        ],
+        workbook: "Carta às mulheres que vieram antes",
+      },
+      {
+        number: 6,
+        title: "Curar-te Não É Egoísmo",
+        description: "A culpa de olhar para ti quando o mundo precisa de ajuda.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A armadilha do sacrifício", description: "A crença de que cuidar de ti é tirar algo aos outros." },
+          { letter: "B", title: "O oxigénio é para ti primeiro", description: "Não consegues dar o que não tens. A tua cura é a primeira oferenda." },
+          { letter: "C", title: "O egoísmo sagrado", description: "Quando te curas, libertas espaço para que outros se curem também." },
+        ],
+        workbook: "O que muda à minha volta quando eu mudo",
+      },
+      {
+        number: 7,
+        title: "Quebrar a Corrente",
+        description: "O padrão pára em ti.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O padrão que atravessa gerações", description: "A mãe da tua mãe também carregava isto. E a mãe dela." },
+          { letter: "B", title: "A decisão de não passar adiante", description: "O momento em que decides que isto pára aqui — não com raiva, com consciência." },
+          { letter: "C", title: "O que os teus filhos não vão herdar", description: "A liberdade que nasce quando quebras um padrão que tem séculos." },
+        ],
+        workbook: "Mapa do padrão intergeracional",
+      },
+      {
+        number: 8,
+        title: "A Ondulação",
+        description: "Quando uma se liberta, algo se liberta em todas.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A pedra na água", description: "Cada gesto de consciência cria ondas que não consegues ver mas que existem." },
+          { letter: "B", title: "A tua vida como oferenda", description: "Viver com clareza não é só para ti — é a contribuição mais silenciosa e mais poderosa." },
+          { letter: "C", title: "O fio que agora vês", description: "Não estás sozinha. Nunca estiveste. E agora sabes." },
+        ],
+        workbook: "Reflexão final: o que muda quando eu vejo o fio",
+      },
+    ],
+    youtubeHooks: [
+      { title: "Porque choras sem razão aparente", durationMin: 7 },
+      { title: "O que os teus filhos sentem quando tu não estás bem", durationMin: 8 },
+      { title: "A cura que começa em ti e toca quem te rodeia", durationMin: 6 },
+    ],
+  },
+
+  // ─── CURSO 12 — O Espelho do Outro ───
+  {
+    slug: "o-espelho-do-outro",
+    number: 12,
+    title: "O Espelho do Outro",
+    subtitle: "O que te incomoda no outro vive em ti",
+    arcoEmocional:
+      "Começa pela irritação que não entendes. Passa pela descoberta de que o outro te mostra o que rejeitas em ti. Atravessa a sombra — o que escondes, o que negas, o que invejas. Chega ao ponto em que o inimigo se torna professor. Termina com a capacidade de te veres através de cada relação.",
+    diferencial:
+      "Não é um curso sobre relações nem sobre empatia. É sobre usar cada pessoa que te incomoda, te fascina ou te magoa como espelho — para veres o que ainda não olhaste em ti.",
+    modules: [
+      {
+        number: 1,
+        title: "A Irritação como Pista",
+        description: "O que te irrita no outro diz mais sobre ti.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A pessoa que te tira do sério", description: "Porque te afecta tanto alguém que devia ser indiferente." },
+          { letter: "B", title: "O gatilho escondido", description: "O que vês no outro que não queres ver em ti." },
+          { letter: "C", title: "O corpo quando reages", description: "Onde mora a irritação no teu corpo antes de vir à boca." },
+        ],
+        workbook: "Mapa dos meus gatilhos",
+      },
+      {
+        number: 2,
+        title: "A Projecção",
+        description: "O que pões no outro que é teu.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O mecanismo invisível", description: "Como projectamos nos outros o que não aceitamos em nós." },
+          { letter: "B", title: "Ele é egoísta ou tu não pedes?", description: "A diferença entre o que o outro faz e o que tu interpretas." },
+          { letter: "C", title: "Recolher a projecção", description: "O exercício de trazer de volta o que puseste no outro." },
+        ],
+        workbook: "Exercício de recolha de projecções",
+      },
+      {
+        number: 3,
+        title: "A Sombra",
+        description: "O que rejeitas em ti.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A parte que escondes", description: "Todos temos uma parte que não mostramos — e ela não desaparece." },
+          { letter: "B", title: "A raiva negada", description: "A raiva que dizes não sentir mas que governa as tuas reacções." },
+          { letter: "C", title: "Integrar a sombra", description: "Não é eliminá-la. É reconhecê-la e dar-lhe lugar." },
+        ],
+        workbook: "Diálogo com a sombra",
+      },
+      {
+        number: 4,
+        title: "A Admiração como Mapa",
+        description: "O que admiras no outro também é teu.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A inveja que não admites", description: "A inveja como sinal daquilo que queres mas não te permites." },
+          { letter: "B", title: "O outro como possibilidade", description: "O que admiras mostra o que já existe em ti, adormecido." },
+          { letter: "C", title: "Reclamar o que é teu", description: "Deixar de admirar de longe e começar a viver de perto." },
+        ],
+        workbook: "Inventário do que admiro e do que já é meu",
+      },
+      {
+        number: 5,
+        title: "O Inimigo como Professor",
+        description: "Quem mais te magoa mais te ensina.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A pessoa que não perdoas", description: "O que essa pessoa te mostrou que ninguém mais podia." },
+          { letter: "B", title: "A lição dentro da ferida", description: "Encontrar o ensinamento sem desculpar o que aconteceu." },
+          { letter: "C", title: "Soltar sem absolver", description: "Não precisas de perdoar para te libertar." },
+        ],
+        workbook: "Carta ao professor involuntário",
+      },
+      {
+        number: 6,
+        title: "O Parceiro como Espelho",
+        description: "Quem escolhes revela quem és.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Porque o escolheste", description: "O que te atraiu no início conta a história do que precisavas resolver." },
+          { letter: "B", title: "O espelho diário", description: "Viver com alguém é ser espelhada todos os dias — e isso cansa e cura." },
+          { letter: "C", title: "Crescer juntos ou separados", description: "Quando o espelho muda e a relação precisa de acompanhar." },
+        ],
+        workbook: "Mapa relacional: o que o outro me mostra",
+      },
+      {
+        number: 7,
+        title: "O Filho como Espelho",
+        description: "O espelho que não mente.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Ele faz o que tu fazes", description: "Os filhos não ouvem o que dizes — copiam o que vives." },
+          { letter: "B", title: "A ferida que se repete", description: "Quando vês no teu filho o que mais temes em ti." },
+          { letter: "C", title: "Deixá-lo ser diferente", description: "O acto de permitir que o filho não te espelhe — e amá-lo igual." },
+        ],
+        workbook: "Reflexão: o que o meu filho me mostra",
+      },
+      {
+        number: 8,
+        title: "Ver-te Através do Outro",
+        description: "O mundo inteiro é espelho.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Cada relação como porta", description: "Usar cada encontro como oportunidade de autoconhecimento." },
+          { letter: "B", title: "O reflexo limpo", description: "Quando já não projectas, o que vês no outro é o que está lá." },
+          { letter: "C", title: "O espelho que és para os outros", description: "Tu também és espelho. O que mostras a quem te rodeia." },
+        ],
+        workbook: "Prática diária do espelho relacional",
+      },
+    ],
+    youtubeHooks: [
+      { title: "Porque aquela pessoa te irrita tanto", durationMin: 7 },
+      { title: "O que a inveja te está a tentar dizer", durationMin: 6 },
+      { title: "Os teus filhos copiam o que vives, não o que dizes", durationMin: 8 },
+    ],
+  },
+
+  // ─── CURSO 13 — O Silêncio que Grita ───
+  {
+    slug: "o-silencio-que-grita",
+    number: 13,
+    title: "O Silêncio que Grita",
+    subtitle: "O que a tua família nunca disse vive no teu corpo",
+    arcoEmocional:
+      "Começa pelo peso que sentes e não sabes nomear. Passa pela descoberta de que há segredos na tua família que nunca foram ditos mas que moldaram tudo. Atravessa a lealdade ao silêncio e o medo de o quebrar. Chega à compreensão de que dar voz ao que foi calado liberta gerações. Termina com a tua primeira palavra.",
+    diferencial:
+      "Não é um curso de terapia familiar nem de constelações. É sobre ouvir o que nunca foi dito na tua família — e perceber como esses silêncios vivem no teu corpo, nas tuas escolhas e nos teus medos.",
+    modules: [
+      {
+        number: 1,
+        title: "O Peso sem Nome",
+        description: "Algo pesa e não sabes o quê.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O peso que não é teu", description: "A sensação de carregar algo que não consegues explicar." },
+          { letter: "B", title: "O corpo sabe antes de ti", description: "Os sintomas que aparecem sem causa — e a causa que ninguém nomeou." },
+          { letter: "C", title: "O que ninguém te contou", description: "A intuição de que há algo na tua família que ficou por dizer." },
+        ],
+        workbook: "Mapa do peso sem nome",
+      },
+      {
+        number: 2,
+        title: "O Segredo Familiar",
+        description: "O não-dito que moldou tudo.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O segredo que todos sabem", description: "Quando toda a família sabe mas ninguém diz — e o efeito disso." },
+          { letter: "B", title: "O silêncio como regra", description: "Famílias que aprenderam a não falar. O preço dessa aprendizagem." },
+          { letter: "C", title: "Os temas proibidos", description: "Dinheiro, doença, sexo, morte — os assuntos que a tua família evita." },
+        ],
+        workbook: "Inventário dos silêncios familiares",
+      },
+      {
+        number: 3,
+        title: "A Vergonha Herdada",
+        description: "A vergonha que veio antes de ti.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A vergonha da avó", description: "Vergonhas que passam de geração em geração sem serem nomeadas." },
+          { letter: "B", title: "O corpo da vergonha", description: "Onde vive a vergonha herdada: na postura, na voz, no olhar." },
+          { letter: "C", title: "Separar vergonhas", description: "Distinguir a tua vergonha da vergonha que absorveste." },
+        ],
+        workbook: "Arqueologia da vergonha familiar",
+      },
+      {
+        number: 4,
+        title: "A Doença como Linguagem",
+        description: "O corpo fala o que a boca calou.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O sintoma como mensagem", description: "Quando o corpo adoece para dizer o que ninguém disse." },
+          { letter: "B", title: "Padrões de doença na família", description: "As doenças que se repetem — e o que podem estar a dizer." },
+          { letter: "C", title: "Ouvir o corpo", description: "Aprender a escutar antes que o corpo precise de gritar." },
+        ],
+        workbook: "Diário corpo-silêncio",
+      },
+      {
+        number: 5,
+        title: "A Lealdade ao Silêncio",
+        description: "Calar por amor a quem calou.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A lealdade invisível", description: "Calamos para proteger quem amamos — mesmo que isso nos destrua." },
+          { letter: "B", title: "Trair o silêncio", description: "A sensação de traição quando pensas em falar sobre o que foi calado." },
+          { letter: "C", title: "Leal a quem?", description: "A pergunta que muda tudo: és leal ao silêncio ou és leal a ti?" },
+        ],
+        workbook: "Mapa das lealdades silenciosas",
+      },
+      {
+        number: 6,
+        title: "O Silêncio que Protege",
+        description: "Nem todo o silêncio é prisão.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O silêncio necessário", description: "Há silêncios que protegem. Aprender a distingui-los." },
+          { letter: "B", title: "Escolher o silêncio", description: "A diferença entre calar por medo e calar por escolha." },
+          { letter: "C", title: "O silêncio como presença", description: "Quando o silêncio deixa de ser fuga e se torna escuta." },
+        ],
+        workbook: "Exercício de discernimento: silêncio-prisão vs. silêncio-presença",
+      },
+      {
+        number: 7,
+        title: "Dar Voz ao Calado",
+        description: "Dizer pela primeira vez.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A primeira palavra", description: "O momento em que dizes o que nunca foi dito — nem que seja a ti mesma." },
+          { letter: "B", title: "Não é preciso gritar", description: "Dar voz não é confrontar. Pode ser um sussurro, uma carta, um diário." },
+          { letter: "C", title: "O corpo depois de falar", description: "O que acontece no corpo quando finalmente dizes." },
+        ],
+        workbook: "A carta ao silêncio",
+      },
+      {
+        number: 8,
+        title: "O Silêncio que Cura",
+        description: "Quando o silêncio deixa de pesar.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O que muda na família", description: "Quando uma pessoa fala, algo se reorganiza em todo o sistema." },
+          { letter: "B", title: "A herança que deixas", description: "Os teus filhos não vão carregar o que tu nomeaste." },
+          { letter: "C", title: "O novo silêncio", description: "O silêncio depois da verdade é diferente. É leve. É escolhido." },
+        ],
+        workbook: "Reflexão final: o que nomeei e o que libertei",
+      },
+    ],
+    youtubeHooks: [
+      { title: "O segredo que toda a tua família sabe mas ninguém diz", durationMin: 7 },
+      { title: "Porque adoeces sem razão aparente", durationMin: 6 },
+      { title: "A vergonha que sentes e que não é tua", durationMin: 8 },
+    ],
+  },
+
+  // ─── CURSO 14 — A Teia ───
+  {
+    slug: "a-teia",
+    number: 14,
+    title: "A Teia",
+    subtitle: "Pertencer sem desaparecer",
+    arcoEmocional:
+      "Começa pela fome de pertencer. Passa pelo preço que já pagaste para caber. Atravessa a rejeição como ferida fundadora. Aprende a distinguir grupos que te definem de grupos que te libertam. Chega ao paradoxo de pertencer a ti primeiro. Termina na teia que sustenta sem prender.",
+    diferencial:
+      "Não é um curso sobre socialização nem sobre solidão. É sobre a ecologia das emoções — como vivem entre pessoas, famílias e comunidades — e como encontrar o teu lugar sem te moldares ao que esperam de ti.",
+    modules: [
+      {
+        number: 1,
+        title: "A Fome de Pertencer",
+        description: "O desejo mais antigo.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A criança que queria caber", description: "O momento em que percebeste que eras diferente — e decidiste esconder isso." },
+          { letter: "B", title: "Pertencer como sobrevivência", description: "O cérebro trata a rejeição como ameaça de morte. Literalmente." },
+          { letter: "C", title: "A fome que fica", description: "Mesmo adulta, a fome de pertencer governa mais do que imaginas." },
+        ],
+        workbook: "Mapa da minha fome de pertença",
+      },
+      {
+        number: 2,
+        title: "O Preço da Pertença",
+        description: "O que abdicaste para caber.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O que calaste para ser aceite", description: "As opiniões, desejos e verdades que guardaste para não seres excluída." },
+          { letter: "B", title: "A máscara social", description: "A versão de ti que criaste para funcionar no grupo." },
+          { letter: "C", title: "O custo invisível", description: "O cansaço de ser quem não és para pertencer a quem não te vê." },
+        ],
+        workbook: "Inventário do que abdiquei",
+      },
+      {
+        number: 3,
+        title: "A Rejeição Fundadora",
+        description: "A primeira vez que ficaste de fora.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A memória que ficou", description: "A primeira rejeição que moldou a tua forma de te relacionares." },
+          { letter: "B", title: "O corpo da rejeição", description: "Onde vive a rejeição no teu corpo — e como se activa." },
+          { letter: "C", title: "A ferida que se repete", description: "Como recrias a rejeição em situações que não a pedem." },
+        ],
+        workbook: "Arqueologia da rejeição",
+      },
+      {
+        number: 4,
+        title: "O Grupo que Define",
+        description: "Quando pertencer te apaga.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O grupo como identidade", description: "Quando o 'nós' substitui o 'eu' e perdes o contorno." },
+          { letter: "B", title: "A pressão do igual", description: "O desconforto de pensares diferente dentro do grupo." },
+          { letter: "C", title: "Sair sem te perder", description: "O medo de ficar sozinha se deixares de concordar." },
+        ],
+        workbook: "Mapa dos meus grupos: onde me perco, onde me encontro",
+      },
+      {
+        number: 5,
+        title: "Emoções entre Pessoas",
+        description: "O campo emocional colectivo.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A emoção que não é tua", description: "Quando entras numa sala e sentes algo que não é teu." },
+          { letter: "B", title: "O contágio invisível", description: "Como absorves o medo, a raiva e a tristeza dos outros." },
+          { letter: "C", title: "Proteger sem fechar", description: "Estar presente sem absorver. Sentir sem te perderes." },
+        ],
+        workbook: "Exercício de fronteira emocional",
+      },
+      {
+        number: 6,
+        title: "A Solidão no Grupo",
+        description: "Rodeada de gente e sozinha.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A solidão disfarçada", description: "Estar acompanhada e sentir-te completamente sozinha." },
+          { letter: "B", title: "Ligação vs. presença", description: "Estar ligada não é estar presente. Presença é outra coisa." },
+          { letter: "C", title: "A coragem de estar presente", description: "Mostrar-te como és no grupo — sem filtro, sem máscara." },
+        ],
+        workbook: "Diário da presença autêntica",
+      },
+      {
+        number: 7,
+        title: "Pertencer a Ti Primeiro",
+        description: "A pertença começa por dentro.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O lar interno", description: "Antes de pertenceres a qualquer grupo, precisas de pertencer a ti." },
+          { letter: "B", title: "A relação contigo como raiz", description: "Quando te tens a ti, a necessidade de pertencer muda de forma." },
+          { letter: "C", title: "De fome a escolha", description: "Pertencer deixa de ser necessidade e torna-se escolha." },
+        ],
+        workbook: "Práticas de pertença interior",
+      },
+      {
+        number: 8,
+        title: "A Teia que Sustenta",
+        description: "Ligada sem estar presa.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A teia como escolha", description: "Construir ligações que sustentam sem sufocar." },
+          { letter: "B", title: "Dar e receber na medida", description: "O equilíbrio entre o que ofereces e o que recebes na teia." },
+          { letter: "C", title: "A pertença que liberta", description: "Quando pertencer já não é prisão nem necessidade — é casa." },
+        ],
+        workbook: "Visão da minha teia: quem sustenta, quem sufoca",
+      },
+    ],
+    youtubeHooks: [
+      { title: "O que calaste para ser aceite", durationMin: 7 },
+      { title: "Porque te sentes sozinha mesmo acompanhada", durationMin: 6 },
+      { title: "A rejeição que ainda governa a tua vida", durationMin: 8 },
+    ],
+  },
+
+  // ─── CURSO 15 — A Chama ───
+  {
+    slug: "a-chama",
+    number: 15,
+    title: "Brasa Viva",
+    subtitle: "A raiva que nunca te deixaram sentir",
+    arcoEmocional:
+      "Começa pela negação da raiva. Passa pelo reconhecimento de que a raiva vive no corpo há anos. Atravessa o medo do que acontece se a deixares sair. Aprende a distinguir raiva destrutiva de raiva informativa. Chega à raiva como combustível para mudança. Termina com a chama que ilumina em vez de queimar.",
+    diferencial:
+      "Não é um curso de gestão de raiva nem de controlo emocional. É sobre a relação proibida que a maioria das mulheres tem com a raiva — e como recuperá-la como força, não como vergonha.",
+    modules: [
+      {
+        number: 1,
+        title: "A Raiva Proibida",
+        description: "A emoção que te ensinaram a esconder.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Boa menina não grita", description: "O momento em que aprendeste que a raiva era proibida para ti." },
+          { letter: "B", title: "Onde guardaste a raiva", description: "Se não a expressaste, onde foi parar? Mandíbula, costas, estômago." },
+          { letter: "C", title: "A raiva disfarçada", description: "Quando a raiva se mascara de cansaço, sarcasmo, controlo ou choro." },
+        ],
+        workbook: "Mapa da minha raiva escondida",
+      },
+      {
+        number: 2,
+        title: "O Medo de Explodir",
+        description: "Se abro a porta, o que sai?",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A panela de pressão", description: "O medo de que se deixares sair um pouco, sai tudo." },
+          { letter: "B", title: "A crença de que vais destruir", description: "O terror de magoar quem amas se mostrares a raiva." },
+          { letter: "C", title: "A raiva contida vs. a raiva expressa", description: "Nenhuma é saudável nos extremos. Há um caminho do meio." },
+        ],
+        workbook: "Inventário dos medos sobre a raiva",
+      },
+      {
+        number: 3,
+        title: "A Raiva como Informação",
+        description: "O que a raiva te está a dizer.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A raiva como alarme", description: "A raiva diz-te que algo foi ultrapassado, violado ou ignorado." },
+          { letter: "B", title: "De que tens raiva realmente?", description: "Debaixo da raiva do trânsito está a raiva da vida que levas." },
+          { letter: "C", title: "A raiva justa", description: "Há raivas que estão certas. Que são a resposta correcta ao que te fizeram." },
+        ],
+        workbook: "Diário da raiva: o que ela me diz",
+      },
+      {
+        number: 4,
+        title: "A Raiva Antiga",
+        description: "A raiva que tem anos.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A raiva da infância", description: "O que sentiste aos 8 anos e ainda carregas aos 40." },
+          { letter: "B", title: "A raiva da mãe, do pai", description: "A raiva que não te permitiste sentir por quem te criou." },
+          { letter: "C", title: "A raiva de ti mesma", description: "A mais difícil de todas — a raiva por teres ficado, calado, aceite." },
+        ],
+        workbook: "Carta à raiva que guardaste",
+      },
+      {
+        number: 5,
+        title: "A Raiva no Corpo",
+        description: "Sentir a raiva sem a pensar.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O corpo da raiva", description: "Calor, tensão, punhos cerrados — o vocabulário físico da raiva." },
+          { letter: "B", title: "Mover a raiva", description: "Exercícios que movem a energia da raiva pelo corpo sem destruir nada." },
+          { letter: "C", title: "A raiva como fogo controlado", description: "Aprender a sentir o fogo sem te queimares nem queimares os outros." },
+        ],
+        workbook: "Práticas corporais para a raiva",
+      },
+      {
+        number: 6,
+        title: "A Raiva e os Limites",
+        description: "Sem raiva não há limites.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A raiva como combustível", description: "Os limites nascem da raiva — sem ela, não sabes onde terminas." },
+          { letter: "B", title: "Dizer não com fogo", description: "A diferença entre dizer não com medo e dizer não com raiva limpa." },
+          { letter: "C", title: "A raiva que protege", description: "A raiva que te defende, que defende os teus filhos, que defende a tua dignidade." },
+        ],
+        workbook: "Exercício: limites nascidos da raiva",
+      },
+      {
+        number: 7,
+        title: "A Raiva e o Amor",
+        description: "Podes amar e ter raiva ao mesmo tempo.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A raiva dentro do amor", description: "Ter raiva de quem amas não significa que não amas." },
+          { letter: "B", title: "A raiva como intimidade", description: "Mostrar a raiva a alguém é um acto de confiança, não de agressão." },
+          { letter: "C", title: "Raiva vs. violência", description: "A raiva é uma emoção. A violência é uma escolha. São coisas diferentes." },
+        ],
+        workbook: "Mapa: raiva e amor na mesma relação",
+      },
+      {
+        number: 8,
+        title: "A Chama que Ilumina",
+        description: "Da raiva à clareza.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A raiva transformada", description: "Quando a raiva já não queima — ilumina o que precisa de mudar." },
+          { letter: "B", title: "A mulher com fogo", description: "Uma mulher com acesso à sua raiva é uma mulher inteira." },
+          { letter: "C", title: "A chama que fica", description: "Não apagar a chama. Aprender a viver com ela acesa." },
+        ],
+        workbook: "Reflexão final: a minha relação com a chama",
+      },
+    ],
+    youtubeHooks: [
+      { title: "Porque sorris quando queres gritar", durationMin: 7 },
+      { title: "A raiva que guardas há anos e que o corpo já não aguenta", durationMin: 8 },
+      { title: "Sem raiva não há limites", durationMin: 6 },
+    ],
+  },
+
+  // ─── CURSO 16 — A Mulher Antes de Mãe ───
+  {
+    slug: "a-mulher-antes-de-mae",
+    number: 16,
+    title: "Antes do Ninho",
+    subtitle: "Quem eras antes de seres de alguém",
+    arcoEmocional:
+      "Começa pela perda de identidade que ninguém nomeia. Passa pela culpa de sentir falta de quem eras. Atravessa a raiva e o ressentimento secretos. Aprende a separar a mãe da mulher. Chega à reconstrução de uma identidade que inclua ambas. Termina com a permissão de existir para além dos teus filhos.",
+    diferencial:
+      "Não é um curso de parentalidade nem de maternidade consciente. É sobre a mulher que desapareceu quando se tornou mãe — e como encontrá-la sem culpa.",
+    modules: [
+      {
+        number: 1,
+        title: "A Mulher que Desapareceu",
+        description: "O dia em que deixaste de ser tu.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O dia em que nasceram dois", description: "Quando o teu filho nasceu, uma versão de ti morreu. Ninguém te disse." },
+          { letter: "B", title: "A saudade de ti mesma", description: "Sentir falta de quem eras antes — e a culpa que vem com essa saudade." },
+          { letter: "C", title: "O nome antes de mãe", description: "Quando foi a última vez que alguém te chamou pelo nome, não por 'mãe'?" },
+        ],
+        workbook: "Retrato da mulher antes de mãe",
+      },
+      {
+        number: 2,
+        title: "A Culpa Infinita",
+        description: "O que quer que faças, nunca é suficiente.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A culpa de trabalhar", description: "Se trabalhas, devias estar com eles. Se estás com eles, devias estar a produzir." },
+          { letter: "B", title: "A culpa de querer tempo", description: "O luxo proibido de querer uma hora só tua." },
+          { letter: "C", title: "A culpa como corrente", description: "A culpa materna como sistema de controlo que te impede de viver." },
+        ],
+        workbook: "Inventário das culpas maternas",
+      },
+      {
+        number: 3,
+        title: "O Ressentimento Secreto",
+        description: "O que não podes dizer em voz alta.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Amo-os e ressinto-me", description: "As duas coisas existem ao mesmo tempo. E nenhuma anula a outra." },
+          { letter: "B", title: "O ressentimento do parceiro", description: "Quando o desequilíbrio de carga se torna raiva silenciosa." },
+          { letter: "C", title: "Dizer o indizível", description: "Dar voz ao ressentimento sem destruir o que construíste." },
+        ],
+        workbook: "A carta que não posso enviar",
+      },
+      {
+        number: 4,
+        title: "O Corpo Depois dos Filhos",
+        description: "O corpo que já não reconheces.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O corpo que deu vida", description: "O que aconteceu ao teu corpo — e o que ninguém te preparou para sentir." },
+          { letter: "B", title: "Tocar e ser tocada", description: "Quando o corpo está tão requisitado pelos filhos que o toque do parceiro é invasão." },
+          { letter: "C", title: "Habitar o corpo de novo", description: "Voltar ao corpo como teu, não como de alguém." },
+        ],
+        workbook: "Mapa corporal: antes e depois",
+      },
+      {
+        number: 5,
+        title: "Mãe Perfeita, Mãe Real",
+        description: "A imagem impossível.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A mãe do Instagram", description: "A comparação com uma imagem que não existe." },
+          { letter: "B", title: "A mãe que a tua mãe foi", description: "Repetir ou rejeitar — ambas são reacções ao modelo que tiveste." },
+          { letter: "C", title: "A mãe suficiente", description: "Não perfeita. Não negligente. Suficiente. E isso basta." },
+        ],
+        workbook: "Retrato da mãe que quero ser vs. a que sou",
+      },
+      {
+        number: 6,
+        title: "O Desejo Adormecido",
+        description: "Querer coisas que não são sobre os filhos.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O que querias antes?", description: "Os sonhos que puseste de lado quando te tornaste mãe." },
+          { letter: "B", title: "Desejar sem pedir licença", description: "Querer coisas para ti sem precisar de justificar." },
+          { letter: "C", title: "O exemplo que dás", description: "Uma mãe que vive é o melhor exemplo que um filho pode ter." },
+        ],
+        workbook: "Lista dos desejos adormecidos",
+      },
+      {
+        number: 7,
+        title: "Separar a Mãe da Mulher",
+        description: "Tu não és só mãe.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A fusão de identidades", description: "Quando 'mãe' come todas as outras versões de ti." },
+          { letter: "B", title: "Espaço para as duas", description: "A mulher e a mãe podem coexistir — mas precisam de espaço separado." },
+          { letter: "C", title: "Sair sem abandonar", description: "Teres vida própria não é abandonar os teus filhos." },
+        ],
+        workbook: "Mapa das minhas identidades",
+      },
+      {
+        number: 8,
+        title: "A Mulher Inteira",
+        description: "Mãe e tudo o resto.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Recuperar o nome", description: "Voltar a ser chamada pelo teu nome. Voltar a sentir-te tu." },
+          { letter: "B", title: "O legado que queres deixar", description: "Não o que fizeste por eles — mas quem foste enquanto os criavas." },
+          { letter: "C", title: "A mulher inteira", description: "Mãe. Mulher. Pessoa. Tudo ao mesmo tempo, sem hierarquia." },
+        ],
+        workbook: "Carta à mulher inteira que sou",
+      },
+    ],
+    youtubeHooks: [
+      { title: "Quando foi a última vez que alguém te chamou pelo teu nome", durationMin: 7 },
+      { title: "O ressentimento que nenhuma mãe pode dizer em voz alta", durationMin: 8 },
+      { title: "Sentir falta de ti mesma não é egoísmo", durationMin: 6 },
+    ],
+  },
+
+  // ─── CURSO 17 — O Ofício de Ser ───
+  {
+    slug: "o-oficio-de-ser",
+    number: 17,
+    title: "Mãos Cansadas",
+    subtitle: "Quando o trabalho te define e o propósito te escapa",
+    arcoEmocional:
+      "Começa pelo cansaço que não passa com férias. Passa pela descoberta de que te defines pelo que produzes. Atravessa o burnout como sintoma, não como fraqueza. Separa produtividade de valor. Chega à pergunta: o que farias se ninguém estivesse a ver? Termina com a reconstrução de um propósito que não te consuma.",
+    diferencial:
+      "Não é um curso de produtividade nem de carreira. É sobre a mulher que se esconde atrás do trabalho para não ter de olhar para si — e o que acontece quando o trabalho já não a sustenta.",
+    modules: [
+      {
+        number: 1,
+        title: "O Cansaço que Não Passa",
+        description: "Férias não resolvem isto.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Cansada de quê exactamente?", description: "Quando o cansaço não é do corpo — é da vida que levas." },
+          { letter: "B", title: "Ocupada não é viva", description: "A agenda cheia como fuga de ti mesma." },
+          { letter: "C", title: "O burnout como mensagem", description: "O burnout não é fraqueza. É o corpo a dizer que algo precisa de mudar." },
+        ],
+        workbook: "Mapa do meu cansaço",
+      },
+      {
+        number: 2,
+        title: "Eu Sou o que Produzo",
+        description: "A identidade presa ao trabalho.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Sem título, quem sou?", description: "O que sobra de ti quando tiras o cargo, o projeto, a empresa." },
+          { letter: "B", title: "Produzir para existir", description: "Quando parar é desaparecer — e desaparecer é insuportável." },
+          { letter: "C", title: "O vício do reconhecimento", description: "Trabalhar para ser vista, validada, aplaudida — e o vazio quando ninguém aplaude." },
+        ],
+        workbook: "Inventário: quem sou sem o trabalho",
+      },
+      {
+        number: 3,
+        title: "A Ambição Envergonhada",
+        description: "Querer mais e sentir que não devias.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Querer e esconder", description: "A ambição que guardas porque te disseram que é demasiado." },
+          { letter: "B", title: "Ambição feminina", description: "O que acontece quando uma mulher diz: eu quero mais. Sem pedir desculpa." },
+          { letter: "C", title: "Ambição vs. ganância", description: "A diferença entre querer crescer e querer possuir." },
+        ],
+        workbook: "A minha ambição nomeada",
+      },
+      {
+        number: 4,
+        title: "O Trabalho como Fuga",
+        description: "O que evitas quando te entregues ao trabalho.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Trabalhar para não sentir", description: "Quando o trabalho é o anestésico mais socialmente aceite." },
+          { letter: "B", title: "O que aparece quando paras", description: "A solidão, a tristeza, o vazio que surgem nos dias de folga." },
+          { letter: "C", title: "Parar sem colapsar", description: "Aprender a parar antes de o corpo te obrigar." },
+        ],
+        workbook: "Diário dos dias em que paro",
+      },
+      {
+        number: 5,
+        title: "O Dinheiro e o Propósito",
+        description: "Fazer o que amas e pagar as contas.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O conflito eterno", description: "A tensão entre o que precisas de ganhar e o que te faz sentir viva." },
+          { letter: "B", title: "Propósito não paga renda", description: "A honestidade de que precisas de dinheiro — e isso não invalida o propósito." },
+          { letter: "C", title: "O suficiente", description: "Quanto é suficiente? E suficiente para quem?" },
+        ],
+        workbook: "Mapa: dinheiro vs. sentido",
+      },
+      {
+        number: 6,
+        title: "A Síndrome da Impostora",
+        description: "Não mereço estar aqui.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A voz que diz que vão descobrir", description: "O medo constante de que percebam que não és tão boa como pareces." },
+          { letter: "B", title: "Competência invisível", description: "Quando o que fazes bem se torna invisível porque parece 'natural'." },
+          { letter: "C", title: "Ocupar o lugar", description: "Estás aqui porque mereces. Ponto." },
+        ],
+        workbook: "Exercício: provas da minha competência",
+      },
+      {
+        number: 7,
+        title: "O que Farias se Ninguém Visse?",
+        description: "O propósito para lá da validação.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A pergunta incómoda", description: "Se ninguém soubesse, se ninguém aplaudisse — o que farias?" },
+          { letter: "B", title: "O chamamento silencioso", description: "A coisa que te puxa e que ignoras porque não é 'prática'." },
+          { letter: "C", title: "Propósito pequeno", description: "Nem todo o propósito é mudar o mundo. Às vezes é cozinhar, ensinar, cuidar." },
+        ],
+        workbook: "O meu propósito sem audiência",
+      },
+      {
+        number: 8,
+        title: "Trabalhar sem Desaparecer",
+        description: "O trabalho como parte, não como tudo.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Trabalhar com presença", description: "Estar no trabalho sem que o trabalho te consuma." },
+          { letter: "B", title: "A mulher que trabalha e vive", description: "O equilíbrio não é 50/50. É presença em cada coisa." },
+          { letter: "C", title: "O ofício de ser", description: "O maior ofício não é o que fazes. É quem és enquanto fazes." },
+        ],
+        workbook: "Visão: o trabalho no lugar certo",
+      },
+    ],
+    youtubeHooks: [
+      { title: "Porque o cansaço não passa com férias", durationMin: 7 },
+      { title: "O que evitas quando te entregues ao trabalho", durationMin: 6 },
+      { title: "A síndrome da impostora explicada em 7 minutos", durationMin: 8 },
+    ],
+  },
+
+  // ─── CURSO 18 — O Relógio Partido ───
+  {
+    slug: "o-relogio-partido",
+    number: 18,
+    title: "Estações Partidas",
+    subtitle: "A relação com o tempo que te rouba o presente",
+    arcoEmocional:
+      "Começa pela pressa crónica. Passa pelo medo de envelhecer e pelo luto da juventude. Atravessa a narrativa do 'já é tarde'. Descobre que o tempo vivido conta mais que o tempo passado. Chega à presença. Termina com a liberdade de viver sem relógio.",
+    diferencial:
+      "Não é um curso de gestão do tempo nem de mindfulness. É sobre a relação emocional com o tempo — o medo de envelhecer, a pressa de viver, a invisibilidade que a idade traz, e a liberdade de largar o relógio.",
+    modules: [
+      {
+        number: 1,
+        title: "A Pressa de Viver",
+        description: "Corres mas não chegas.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A urgência sem nome", description: "A sensação constante de que devias estar noutro sítio, a fazer outra coisa." },
+          { letter: "B", title: "O corpo em modo pressa", description: "O sistema nervoso que nunca desliga — e o preço que pagas." },
+          { letter: "C", title: "Para onde corres?", description: "Se parasses agora, o que te esperava? E porque tens medo disso?" },
+        ],
+        workbook: "Mapa da minha pressa",
+      },
+      {
+        number: 2,
+        title: "O Medo de Envelhecer",
+        description: "O corpo que muda e o espelho que assusta.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O espelho que mudou", description: "Quando o reflexo já não corresponde à imagem que tens de ti." },
+          { letter: "B", title: "A invisibilidade", description: "O momento em que a sociedade começa a não te ver — e o que isso faz." },
+          { letter: "C", title: "O luto da juventude", description: "Chorar a mulher que foste sem te agarrares a ela." },
+        ],
+        workbook: "Carta ao meu corpo que envelhece",
+      },
+      {
+        number: 3,
+        title: "Já É Tarde Demais",
+        description: "A mentira mais cruel.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Os prazos inventados", description: "Casar até aos 30. Filhos até aos 35. Carreira até aos 40. Quem decidiu isto?" },
+          { letter: "B", title: "As vidas não vividas", description: "O luto pelas versões de ti que ficaram por viver." },
+          { letter: "C", title: "Nunca é tarde para agora", description: "O único momento real é este. Tudo o resto é história." },
+        ],
+        workbook: "Desconstrução dos prazos",
+      },
+      {
+        number: 4,
+        title: "A Menopausa como Território",
+        description: "A passagem que ninguém preparou.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O corpo que muda de novo", description: "Calores, insónia, humor — e a sensação de que perdeste o controlo." },
+          { letter: "B", title: "O luto da fertilidade", description: "Mesmo que não quisesses mais filhos, o fim da possibilidade pesa." },
+          { letter: "C", title: "A mulher que nasce depois", description: "Depois da menopausa há uma mulher mais livre do que imaginas." },
+        ],
+        workbook: "Diário da passagem",
+      },
+      {
+        number: 5,
+        title: "O Tempo Roubado",
+        description: "Os anos que deste a quem não merecia.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Os anos que deste", description: "A relação, o trabalho, a situação que te roubou tempo — e a raiva disso." },
+          { letter: "B", title: "O tempo não volta", description: "A aceitação mais difícil: não podes recuperar o que já passou." },
+          { letter: "C", title: "Reclamar o que resta", description: "Não podes ter o tempo de volta. Mas podes usar o que resta de forma diferente." },
+        ],
+        workbook: "O que faço com o tempo que me resta",
+      },
+      {
+        number: 6,
+        title: "A Sabedoria do Corpo Vivido",
+        description: "O que sabes agora que não sabias antes.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O que a idade trouxe", description: "As certezas, a paciência, o não que se diz sem culpa." },
+          { letter: "B", title: "Cicatrizes como mapa", description: "Cada marca no corpo conta uma história de sobrevivência." },
+          { letter: "C", title: "A beleza do vivido", description: "O corpo vivido tem uma beleza que o corpo jovem não tem: a da verdade." },
+        ],
+        workbook: "Inventário da minha sabedoria",
+      },
+      {
+        number: 7,
+        title: "Presença",
+        description: "Largar o passado e o futuro.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O vício do futuro", description: "Viver para o 'quando' em vez do 'agora'." },
+          { letter: "B", title: "O peso do passado", description: "Viver presa ao 'se tivesse' em vez do 'estou aqui'." },
+          { letter: "C", title: "O presente como casa", description: "O único sítio onde realmente vives é agora." },
+        ],
+        workbook: "Práticas de presença",
+      },
+      {
+        number: 8,
+        title: "O Relógio Partido",
+        description: "Viver sem contar o tempo.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Partir o relógio", description: "Largar a urgência. Largar os prazos. Largar a contagem." },
+          { letter: "B", title: "O tempo vivido", description: "Medir a vida pelo que sentiste, não pelo que cumpriste." },
+          { letter: "C", title: "A mulher sem pressa", description: "Uma mulher sem pressa é uma mulher perigosa — porque vê tudo." },
+        ],
+        workbook: "Reflexão final: a minha relação com o tempo",
+      },
+    ],
+    youtubeHooks: [
+      { title: "Porque sentes que já é tarde demais", durationMin: 7 },
+      { title: "O medo de envelhecer que ninguém admite", durationMin: 8 },
+      { title: "O que a menopausa não te disseram", durationMin: 6 },
+    ],
+  },
+
+  // ─── CURSO 19 — A Coroa Escondida ───
+  {
+    slug: "a-coroa-escondida",
+    number: 19,
+    title: "Ouro e Sombra",
+    subtitle: "O poder que tens e te assusta",
+    arcoEmocional:
+      "Começa pelo encolhimento — o hábito de te fazeres pequena. Passa pela descoberta de que o medo de brilhar é tão forte como o medo de falhar. Atravessa a auto-sabotagem como protecção. Aprende a ocupar espaço sem pedir desculpa. Chega ao poder como responsabilidade, não como ameaça. Termina de coroa na cabeça.",
+    diferencial:
+      "Não é um curso de empowerment nem de liderança feminina. É sobre a mulher que sabe que pode mais mas se esconde — e o que acontece quando para de se esconder.",
+    modules: [
+      {
+        number: 1,
+        title: "A Mulher que Encolhe",
+        description: "O hábito de te fazeres pequena.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Desculpa, posso falar?", description: "O reflexo de pedir permissão para existir." },
+          { letter: "B", title: "O corpo que encolhe", description: "A postura, o tom de voz, o espaço que não ocupas." },
+          { letter: "C", title: "Quando começaste a encolher", description: "O momento em que percebeste que brilhar incomodava alguém." },
+        ],
+        workbook: "Mapa dos sítios onde encolho",
+      },
+      {
+        number: 2,
+        title: "O Medo de Brilhar",
+        description: "Se me virem, o que acontece?",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Visibilidade como perigo", description: "Ser vista é ser julgada. E ser julgada é ser destruída. Será?" },
+          { letter: "B", title: "O medo do sucesso", description: "O medo de que se conseguires, perdes algo — amigos, normalidade, segurança." },
+          { letter: "C", title: "O brilho dos outros", description: "Quando o sucesso dos outros te incomoda — e o que isso revela sobre o teu." },
+        ],
+        workbook: "Inventário dos medos de ser vista",
+      },
+      {
+        number: 3,
+        title: "A Auto-Sabotagem",
+        description: "A forma mais subtil de te protegeres.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Quase mas não", description: "O padrão de chegares perto e recuares. De quase conseguires e depois estragares." },
+          { letter: "B", title: "A protecção inconsciente", description: "A sabotagem protege-te de quê? De ser invejada? Rejeitada? Abandonada?" },
+          { letter: "C", title: "Parar de te trair", description: "Reconhecer o momento exacto em que te sabotais — e escolher diferente." },
+        ],
+        workbook: "Diário da auto-sabotagem",
+      },
+      {
+        number: 4,
+        title: "Ocupar Espaço",
+        description: "Sem pedir desculpa.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A sala inteira é tua", description: "O exercício de entrar num espaço e não te desculpares por existir." },
+          { letter: "B", title: "Falar sem diminuir", description: "Dizer o que sabes sem 'talvez', sem 'não sei se', sem 'desculpa, mas'." },
+          { letter: "C", title: "O corpo que ocupa", description: "Postura, voz, olhar — o vocabulário físico do poder." },
+        ],
+        workbook: "Exercícios de presença e espaço",
+      },
+      {
+        number: 5,
+        title: "O Poder e a Solidão",
+        description: "Quanto mais forte, mais sozinha?",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A mulher forte e sozinha", description: "O mito de que poder feminino afasta. E o que realmente acontece." },
+          { letter: "B", title: "Mudar de círculo", description: "Quando cresces, nem todos vêm contigo. E isso não é perda." },
+          { letter: "C", title: "Poder com ligação", description: "O verdadeiro poder não isola — atrai quem está ao mesmo nível." },
+        ],
+        workbook: "Mapa: poder e relações",
+      },
+      {
+        number: 6,
+        title: "O Dinheiro como Poder",
+        description: "A mulher que ganha e o que isso muda.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Ganhar mais que ele", description: "O desconforto quando a mulher ganha mais — e o que isso revela." },
+          { letter: "B", title: "Pedir o que vales", description: "A dificuldade de cobrar, negociar, pedir aumento." },
+          { letter: "C", title: "Dinheiro como liberdade", description: "Quando o dinheiro deixa de ser sobrevivência e se torna escolha." },
+        ],
+        workbook: "Exercício: o que peço e o que mereço",
+      },
+      {
+        number: 7,
+        title: "A Responsabilidade do Poder",
+        description: "Com poder vem clareza.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Poder não é dominação", description: "O poder feminino não é sobre controlar — é sobre estar inteira." },
+          { letter: "B", title: "O impacto que tens", description: "Quando reconheces o impacto que a tua presença tem nos outros." },
+          { letter: "C", title: "Usar o poder com cuidado", description: "Poder com consciência. Força com gentileza. Verdade com amor." },
+        ],
+        workbook: "Reflexão: o meu poder e a minha responsabilidade",
+      },
+      {
+        number: 8,
+        title: "A Coroa",
+        description: "Põe a coroa na cabeça.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A coroa que escondes", description: "O poder que tens e que guardas para não incomodar." },
+          { letter: "B", title: "Brilhar não tira luz", description: "O teu brilho não diminui o dos outros. Ilumina o caminho." },
+          { letter: "C", title: "A mulher inteira e poderosa", description: "De coroa na cabeça. Sem pedir permissão. Sem pedir desculpa." },
+        ],
+        workbook: "Carta à mulher poderosa que sou",
+      },
+    ],
+    youtubeHooks: [
+      { title: "Porque te fazes pequena quando devias ocupar espaço", durationMin: 7 },
+      { title: "A auto-sabotagem explicada: porque estragas quando está a correr bem", durationMin: 8 },
+      { title: "O medo de brilhar é maior que o medo de falhar", durationMin: 6 },
+    ],
+  },
+
+  // ─── CURSO 20 — A Fome ───
+  {
+    slug: "a-fome",
+    number: 20,
+    title: "Pão e Silêncio",
+    subtitle: "O que comes quando não tens fome de comida",
+    arcoEmocional:
+      "Começa pela fome que não é de comida. Passa pela descoberta de que o corpo usa a comida como linguagem. Atravessa a guerra com o espelho e com a balança. Aprende a ouvir o que a fome realmente pede. Chega à paz com o corpo e com o prato. Termina a comer com presença, não com culpa.",
+    diferencial:
+      "Não é um curso de nutrição nem de dieta. É sobre a relação emocional com a comida — o que comes quando estás triste, ansiosa, vazia — e o que realmente precisas quando abres o frigorífico à meia-noite.",
+    modules: [
+      {
+        number: 1,
+        title: "A Fome que Não É de Comida",
+        description: "O frigorífico à meia-noite.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O que procuras no prato", description: "Quando abres o frigorífico, não é fome. É outra coisa. O quê?" },
+          { letter: "B", title: "Comer para não sentir", description: "A comida como anestésico — rápido, acessível, socialmente aceite." },
+          { letter: "C", title: "A fome emocional", description: "Distinguir a fome do estômago da fome do coração." },
+        ],
+        workbook: "Diário: o que sinto antes de comer",
+      },
+      {
+        number: 2,
+        title: "A Guerra com o Espelho",
+        description: "O corpo como inimigo.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O reflexo que rejeitas", description: "O que vês quando te olhas ao espelho — e o que realmente está lá." },
+          { letter: "B", title: "O corpo que aprendeste a odiar", description: "Quem te ensinou que o teu corpo não estava bem? E quando?" },
+          { letter: "C", title: "A balança como juiz", description: "O número que define o teu dia — e como isso te controla." },
+        ],
+        workbook: "Arqueologia da imagem corporal",
+      },
+      {
+        number: 3,
+        title: "O Peso como Armadura",
+        description: "O corpo que se protege.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O peso que protege", description: "Quando o corpo ganha peso para te proteger — de quê?" },
+          { letter: "B", title: "Invisível por escolha", description: "O peso como forma de desaparecer, de não ser desejada, de não ser vista." },
+          { letter: "C", title: "O que está debaixo do peso", description: "Se tirasses o peso, o que ficava exposto?" },
+        ],
+        workbook: "Diálogo com o peso",
+      },
+      {
+        number: 4,
+        title: "A Dieta como Castigo",
+        description: "Privar-te para te redimires.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Restringir para controlar", description: "Quando a dieta é a única coisa que sentes que controlas." },
+          { letter: "B", title: "O ciclo culpa-privação", description: "Comes, culpas-te, privar-te, cedes, culpas-te. O ciclo sem fim." },
+          { letter: "C", title: "Comer sem regras", description: "A ideia assustadora de comer sem dieta. O que acontece?" },
+        ],
+        workbook: "Mapa do meu ciclo alimentar",
+      },
+      {
+        number: 5,
+        title: "A Comida como Amor",
+        description: "O que a comida representou na tua família.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "A cozinha da tua mãe", description: "A comida como linguagem de amor — e o que isso te ensinou." },
+          { letter: "B", title: "Recusar comida é recusar amor", description: "Quando dizer 'não, obrigada' à mesa é sentido como rejeição." },
+          { letter: "C", title: "Separar comida de afecto", description: "Aprender a receber amor de formas que não passam pelo prato." },
+        ],
+        workbook: "A história da comida na minha família",
+      },
+      {
+        number: 6,
+        title: "O Corpo como Casa",
+        description: "Habitar em vez de punir.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Viver no corpo", description: "A diferença entre viver no corpo e viver contra o corpo." },
+          { letter: "B", title: "Ouvir a fome real", description: "Reaprender os sinais: fome, saciedade, prazer, rejeição." },
+          { letter: "C", title: "Mover por prazer", description: "Movimento como celebração do corpo, não como castigo." },
+        ],
+        workbook: "Práticas de escuta corporal",
+      },
+      {
+        number: 7,
+        title: "Comer com Presença",
+        description: "O prato como espelho.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "Comer devagar", description: "O acto radical de comer com atenção." },
+          { letter: "B", title: "O prazer sem culpa", description: "Comer chocolate sem tribunal interno. Comer pão sem remorso." },
+          { letter: "C", title: "A refeição como ritual", description: "Transformar a refeição num momento de presença, não de guerra." },
+        ],
+        workbook: "Diário de refeições conscientes",
+      },
+      {
+        number: 8,
+        title: "A Paz com o Prato",
+        description: "Quando a comida deixa de ser luta.",
+        isFree: false,
+        subLessons: [
+          { letter: "A", title: "O corpo que já não é inimigo", description: "Quando olhas para o espelho e o que vês é suficiente." },
+          { letter: "B", title: "A fome que sabe o que quer", description: "Quando a fome já não é confusa — é clara, simples, tua." },
+          { letter: "C", title: "A mulher que come em paz", description: "Sem guerra. Sem culpa. Sem tribunal. Só comida, corpo e presença." },
+        ],
+        workbook: "Carta ao meu corpo e ao meu prato",
+      },
+    ],
+    youtubeHooks: [
+      { title: "O que procuras no frigorífico à meia-noite", durationMin: 7 },
+      { title: "A guerra com o espelho que ninguém admite", durationMin: 6 },
+      { title: "Porque a dieta nunca funciona de verdade", durationMin: 8 },
     ],
   },
 ];

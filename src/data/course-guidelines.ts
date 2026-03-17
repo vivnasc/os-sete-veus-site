@@ -241,7 +241,7 @@ export const TERRITORY_GUIDES: Record<string, TerritoryVisualGuide> = {
     connections: [],
   },
   "a-pele-lembra": {
-    course: "A Pele Lembra",
+    course: "Pele Nua",
     territory: "O Corpo-Paisagem",
     color: "Terracota rosado",
     transformation: "Paisagem desconhecida → reconhecida e habitada",
@@ -312,6 +312,169 @@ export const TERRITORY_GUIDES: Record<string, TerritoryVisualGuide> = {
     ],
     connections: [
       "Flores do Jardim Subterraneo tem esta mesma cor (luto e silencio ligados)",
+    ],
+  },
+  "o-fio-invisivel": {
+    course: "O Fio Invisivel",
+    territory: "O Lago dos Reflexos Partilhados",
+    color: "Azul-prata, fios dourados",
+    transformation:
+      "Superficie opaca → transparente, reflexos individuais fundem-se num so",
+    stageDescriptions: [
+      "Lago de superficie opaca, prata escura. Silhueta sozinha na margem. Nenhum reflexo visivel. Isolamento.",
+      "Superficie com ondulacoes. Reflexos vagos de outras figuras aparecem na agua. Fios dourados subtis.",
+      "Lago mais transparente. Reflexos claros de varias silhuetas — geracoes. Fios dourados ligam os reflexos.",
+      "Lago completamente transparente. Reflexos individuais fundem-se num reflexo colectivo. Fios dourados brilham. Unidade.",
+    ],
+    connections: [
+      "Reflecte todos os outros territorios na sua superficie (a dualidade contem tudo)",
+    ],
+  },
+  "o-espelho-do-outro": {
+    course: "O Espelho do Outro",
+    territory: "A Galeria dos Reflexos Vivos",
+    color: "Verde-esmeralda, dourado reflexo",
+    transformation:
+      "Espelhos que mostram outros → espelhos que mostram a propria silhueta",
+    stageDescriptions: [
+      "Galeria escura com espelhos vivos que mostram outras pessoas. Silhueta a olhar para fora, nunca para si. Confusao.",
+      "Alguns espelhos comecam a reflectir a propria silhueta misturada com o outro. Reconhecimento parcial.",
+      "Maioria dos espelhos mostra a silhueta claramente, com sombras do outro ao fundo. Integracao.",
+      "Espelhos claros. A silhueta ve-se com clareza. O outro aparece como contexto, nao como identidade. Paz.",
+    ],
+    connections: [
+      "Casa dos Espelhos Dourados e esta galeria sao versoes uma da outra (um olha para dentro, outro olha atraves do outro)",
+    ],
+  },
+  "o-silencio-que-grita": {
+    course: "O Silencio que Grita",
+    territory: "A Caverna dos Ecos Mudos",
+    color: "Cinza-azulado, branco fantasma",
+    transformation:
+      "Caverna silenciosa com ecos presos → caverna com ecos libertados como luz",
+    stageDescriptions: [
+      "Caverna profunda, silencio total. Paredes com marcas de palavras nao ditas — sombras de letras. Pesadez.",
+      "Primeiros ecos visiveis como ondas cinzentas nas paredes. Silhueta com boca entreaberta. Medo.",
+      "Ecos mais fortes, alguns dourados. Paredes a vibrar. Silhueta a falar — som visivel a sair.",
+      "Caverna cheia de ecos dourados e brancos. Silencio transformado em resonancia. Palavras libertadas iluminam as paredes.",
+    ],
+    connections: [
+      "Sala do Eco e esta caverna sao complementares (uma e a voz propria, outra e a voz familiar)",
+      "Arvore das Raizes Visiveis partilha raizes com esta caverna (heranca materna e silencio familiar)",
+    ],
+  },
+  "a-teia": {
+    course: "A Teia",
+    territory: "O Bosque dos Fios Entrelacados",
+    color: "Verde-musgo, dourado fio",
+    transformation:
+      "Fios emaranhados que prendem → teia organizada que sustenta",
+    stageDescriptions: [
+      "Bosque escuro com fios emaranhados entre arvores. Silhueta presa nos fios. Sufoco.",
+      "Fios a reorganizar-se. Alguns cortados. Silhueta com mais espaco. Bosque com primeira luz.",
+      "Teia visivel e organizada. Fios que ligam sem prender. Silhueta no centro, livre. Luz verde-dourada.",
+      "Teia bela e equilibrada. Fios dourados entre arvores. Silhueta ligada mas inteira. Bosque luminoso.",
+    ],
+    connections: [
+      "Ponte entre Duas Margens partilha o tema da ligacao (relacoes intimas vs. relacoes colectivas)",
+      "Lago dos Reflexos Partilhados reflecte este bosque (conexao individual vs. conexao colectiva)",
+    ],
+  },
+  "a-chama": {
+    course: "Brasa Viva",
+    territory: "O Vulcao Adormecido",
+    color: "Vermelho-fogo, negro lava",
+    transformation:
+      "Vulcao selado e escuro → vulcao com lava controlada que ilumina",
+    stageDescriptions: [
+      "Vulcao adormecido, selado. Superficie negra e fria. Silhueta rigida, mandibula cerrada. Pressao invisivel.",
+      "Fissuras na superficie. Lava visivel por baixo. Calor a subir. Silhueta tensa mas consciente.",
+      "Lava a fluir em canais controlados. Fogo visivel mas nao destrutivo. Silhueta de pe, punhos abertos.",
+      "Vulcao activo e belo. Lava ilumina a paisagem. Fogo controlado como fonte de luz. Silhueta poderosa.",
+    ],
+    connections: [
+      "Muralha de Limite Sagrado usa este fogo como combustivel (sem raiva nao ha limites)",
+    ],
+  },
+  "a-mulher-antes-de-mae": {
+    course: "Antes do Ninho",
+    territory: "O Ninho que Pesa",
+    color: "Ocre quente, branco ovo",
+    transformation:
+      "Ninho que engole a silhueta → ninho com espaco para a silhueta inteira",
+    stageDescriptions: [
+      "Ninho enorme que engole a silhueta. So se ve a mae — a mulher desapareceu. Ocre pesado.",
+      "Silhueta comeca a emergir do ninho. Contorno proprio visivel. Primeiro espaco entre mae e ninho.",
+      "Silhueta dentro e fora do ninho. Duas formas da mesma pessoa. Luz ocre quente.",
+      "Ninho bonito com espaco. Silhueta inteira — mae e mulher ao mesmo tempo. Equilíbrio. Luz dourada.",
+    ],
+    connections: [
+      "Arvore das Raizes Visiveis partilha raizes com este ninho (ser filha e ser mae)",
+    ],
+  },
+  "o-oficio-de-ser": {
+    course: "Maos Cansadas",
+    territory: "A Oficina Infinita",
+    color: "Bronze, castanho quente",
+    transformation:
+      "Oficina frenetica sem pausa → oficina com ritmo proprio e janela aberta",
+    stageDescriptions: [
+      "Oficina escura, maquinas a trabalhar sem parar. Silhueta curvada sobre a mesa. Sem janela. Exaustao.",
+      "Algumas maquinas param. Silhueta endireita-se. Uma fresta de luz. Primeira pausa.",
+      "Oficina mais calma. Janela entreaberta. Silhueta trabalha com ritmo proprio. Luz bronze quente.",
+      "Oficina com janela aberta. Silhueta trabalha e para. Dentro e fora. Ritmo. Proposito sem prisao.",
+    ],
+    connections: [
+      "Casa dos Espelhos Dourados reflecte esta oficina (dinheiro e trabalho como espelhos de identidade)",
+    ],
+  },
+  "o-relogio-partido": {
+    course: "Estacoes Partidas",
+    territory: "O Jardim das Estacoes",
+    color: "Prateado, ambar outonal",
+    transformation:
+      "Relogio gigante que aprisiona → relogio partido, jardim com todas as estacoes ao mesmo tempo",
+    stageDescriptions: [
+      "Jardim dominado por relogio gigante. Tudo acelerado — flores nascem e morrem em segundos. Silhueta a correr. Angustia.",
+      "Relogio com fissuras. Tempo a abrandar. Algumas flores param. Silhueta mais lenta.",
+      "Relogio partido. Estacoes coexistem — primavera e outono lado a lado. Silhueta parada, a observar.",
+      "Sem relogio. Jardim com todas as estacoes em harmonia. Silhueta sentada, presente. Paz ambar-prateada.",
+    ],
+    connections: [
+      "Campo Queimado partilha a ideia de estacoes (recomecos e tempo ligados)",
+    ],
+  },
+  "a-coroa-escondida": {
+    course: "Ouro e Sombra",
+    territory: "O Trono Coberto",
+    color: "Dourado real, purpura",
+    transformation:
+      "Trono coberto por panos e sombras → trono descoberto, silhueta sentada de coroa",
+    stageDescriptions: [
+      "Sala escura com trono coberto por panos. Silhueta de costas, encolhida. Nao sabe que o trono e seu.",
+      "Panos a escorregar. Trono parcialmente visivel. Silhueta olha para ele. Medo e curiosidade.",
+      "Trono descoberto, dourado e purpura. Silhueta de pe junto ao trono. Hesitacao.",
+      "Silhueta sentada no trono. Coroa na cabeca. Sem pedir permissao. Luz dourada e purpura. Presenca total.",
+    ],
+    connections: [
+      "Muralha de Limite Sagrado e este trono complementam-se (limites protegem, poder ocupa)",
+      "Vulcao Adormecido fornece o fogo para este trono (raiva como combustivel do poder)",
+    ],
+  },
+  "a-fome": {
+    course: "Pao e Silencio",
+    territory: "A Mesa Vazia",
+    color: "Terracota rosado, branco porcelana",
+    transformation:
+      "Mesa vazia com silhueta faminta → mesa com comida e silhueta em paz",
+    stageDescriptions: [
+      "Mesa enorme e vazia. Silhueta sentada a frente, faminta. Prato vazio. Escuridao. Carencia.",
+      "Mesa com alguns alimentos. Silhueta hesitante. Conflito entre fome e culpa. Luz fraca.",
+      "Mesa com comida variada. Silhueta a comer com atencao. Sem culpa. Luz rosada quente.",
+      "Mesa bonita, comida simples. Silhueta em paz com o prato. Corpo habitado. Presenca. Terracota e porcelana.",
+    ],
+    connections: [
+      "Corpo-Paisagem partilha o mesmo territorio corporal (sexualidade e alimentacao como linguagens do corpo)",
     ],
   },
 } as const;
@@ -438,6 +601,16 @@ export const LAUNCH_ORDER = [
   { slug: "flores-no-escuro", priority: 8, reason: "Decisao da Vivianne" },
   { slug: "o-peso-e-o-chao", priority: 9, reason: "Decisao da Vivianne" },
   { slug: "voz-de-dentro", priority: 10, reason: "Decisao da Vivianne" },
+  { slug: "o-fio-invisivel", priority: 11, reason: "Dualidade — porta de entrada para a vertente colectiva" },
+  { slug: "o-espelho-do-outro", priority: 12, reason: "Decisao da Vivianne" },
+  { slug: "o-silencio-que-grita", priority: 13, reason: "Decisao da Vivianne" },
+  { slug: "a-teia", priority: 14, reason: "Decisao da Vivianne" },
+  { slug: "a-chama", priority: 15, reason: "Raiva — emocao mais proibida, ponte para limites e poder" },
+  { slug: "a-mulher-antes-de-mae", priority: 16, reason: "Decisao da Vivianne" },
+  { slug: "o-oficio-de-ser", priority: 17, reason: "Decisao da Vivianne" },
+  { slug: "o-relogio-partido", priority: 18, reason: "Decisao da Vivianne" },
+  { slug: "a-coroa-escondida", priority: 19, reason: "Decisao da Vivianne" },
+  { slug: "a-fome", priority: 20, reason: "Decisao da Vivianne" },
 ] as const;
 
 // ─── LEGAL DISCLAIMER ───────────────────────────────────────────────────────
