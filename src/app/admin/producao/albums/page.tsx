@@ -882,7 +882,7 @@ export default function AlbumProductionPage() {
               ) : null;
             })}
             {/* Flavor distribution */}
-            {(["afro", "house", "gospel"] as TrackFlavor[]).map((f) => {
+            {(["marrabenta", "house", "gospel"] as TrackFlavor[]).map((f) => {
               const count = ALL_ALBUMS.reduce(
                 (s, a) => s + a.tracks.filter((t) => t.flavor === f).length,
                 0
