@@ -241,7 +241,7 @@ export const TERRITORY_GUIDES: Record<string, TerritoryVisualGuide> = {
     connections: [],
   },
   "a-pele-lembra": {
-    course: "A Pele Lembra",
+    course: "Pele Nua",
     territory: "O Corpo-Paisagem",
     color: "Terracota rosado",
     transformation: "Paisagem desconhecida → reconhecida e habitada",

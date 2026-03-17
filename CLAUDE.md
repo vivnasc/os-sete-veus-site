@@ -971,7 +971,7 @@ O Mundo dos Veus e a representacao visual do mundo interno de uma pessoa. Nao e 
 | 3 | A Ponte entre Duas Margens | A Arte da Inteireza | Violeta agua | Rio sem ponte → ponte completa, duas silhuetas inteiras com espaco |
 | 4 | O Campo Queimado | Depois do Fogo | Cinza carvao, laranja brasa, verde broto | Destruicao → vida nova, diferente do que era |
 | 5 | A Encruzilhada Infinita | Olhos Abertos | Azul nevoeiro, branco | Nevoeiro total → parcialmente claro, silhueta da o primeiro passo |
-| 6 | O Corpo-Paisagem | A Pele Lembra | Terracota rosado | Paisagem desconhecida → reconhecida e habitada |
+| 6 | O Corpo-Paisagem | Pele Nua | Terracota rosado | Paisagem desconhecida → reconhecida e habitada |
 | 7 | A Muralha que Nasce do Chao | Limite Sagrado | Dourado luminoso | Sem limite → muralha de luz, com porta que a silhueta abre |
 | 8 | O Jardim Subterraneo | Flores no Escuro | Azul profundo + bioluminescentes | Caverna escura → iluminada pela luz das proprias flores |
 | 9 | O Caminho de Pedras | O Peso e o Chao | Cinza pedra | Curvada sob peso → de pe, leve, pedras no chao |
@@ -1129,7 +1129,7 @@ Paisagens (8-10):
 3. Rio violeta com duas margens (A Arte da Inteireza)
 4. Campo queimado com brotos verdes (Depois do Fogo)
 5. Encruzilhada em nevoeiro (Olhos Abertos)
-6. Paisagem que sugere formas corporais (A Pele Lembra)
+6. Paisagem que sugere formas corporais (Pele Nua)
 7. Espaco aberto com linha de luz no chao (Limite Sagrado)
 8. Caverna com flores bioluminescentes (Flores no Escuro)
 9. Caminho com pedras empilhadas (O Peso e o Chao)

@@ -586,11 +586,11 @@ const COURSES: CourseData[] = [
     ],
   },
 
-  // ─── CURSO 6 — A Pele Lembra ───
+  // ─── CURSO 6 — Pele Nua ───
   {
     slug: "a-pele-lembra",
     number: 6,
-    title: "A Pele Lembra",
+    title: "Pele Nua",
     subtitle: "Aprender a ouvir o corpo antes de a mente racionalizar",
     arcoEmocional:
       "Começa pela desconexão. Aprende literacia corporal. Passa pelos sintomas como linguagem. Calibra o sim e o não do corpo. Aprende a habitar, não só usar. Termina com o corpo como primeiro conselheiro.",

@@ -46,7 +46,7 @@ const COURSE_LIST = [
   {
     slug: "a-pele-lembra",
     number: 6,
-    title: "A Pele Lembra",
+    title: "Pele Nua",
     subtitle: "Aprender a ouvir o corpo antes de a mente racionalizar",
     tag: null,
   },
