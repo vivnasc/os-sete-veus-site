@@ -86,7 +86,7 @@ const PALETTES: Record<string, CoursePalette> = {
     textAccent: "#ECEFF1",
     particleColors: ["#B0BEC5", "#ECEFF1", "#FFFFFF", "#78909C"],
   },
-  "a-pele-lembra": {
+  "pele-nua": {
     bg: "#1F1518",
     bgDeep: "#0F0A0C",
     accent: "#D4A08A",
@@ -184,7 +184,7 @@ const COURSE_PARTICLE_TYPE: Record<string, ParticleType> = {
   "a-arte-da-inteireza": "mist",
   "depois-do-fogo": "embers",
   "olhos-abertos": "mist",
-  "a-pele-lembra": "gold_dust",
+  "pele-nua": "gold_dust",
   "limite-sagrado": "gold_dust",
   "flores-no-escuro": "flowers",
   "o-peso-e-o-chao": "stones",

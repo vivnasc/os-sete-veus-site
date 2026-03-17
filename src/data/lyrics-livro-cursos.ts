@@ -953,11 +953,11 @@ the first step was always yours to take
 `,
 
   // ═══════════════════════════════════════════
-  // A PELE LEMBRA — "O corpo como territorio"
+  // PELE NUA — "O corpo como territorio"
   // Corpo-Paisagem
   // ═══════════════════════════════════════════
 
-  "curso-pele-lembra/1": `[Verse 1]
+  "curso-pele-nua/1": `[Verse 1]
 Ha montanhas nos teus ombros
 ha rios nos teus bracos
 Um territorio desconhecido
@@ -986,7 +986,7 @@ Descobre o que a carne sabe
 o corpo e o teu primeiro lar
 `,
 
-  "curso-pele-lembra/2": `[Verse 1]
+  "curso-pele-nua/2": `[Verse 1]
 The skin remembers every hand
 that held too tight or pulled away
 The neck recalls the words unspoken
@@ -1015,7 +1015,7 @@ The skin remembers so you can listen
 the body speaks in its own tongue
 `,
 
-  "curso-pele-lembra/3": `[Verse 1]
+  "curso-pele-nua/3": `[Verse 1]
 Voltar ao corpo e voltar a casa
 depois de anos na estrada
 Abrir a porta devagar
@@ -1044,7 +1044,7 @@ Bem-vinda de volta ao corpo
 ele esperou por ti, sem pressa
 `,
 
-  "curso-pele-lembra/4": `[Verse 1]
+  "curso-pele-nua/4": `[Verse 1]
 The search for home led you so far
 through cities, lovers, changing names
 But home was never in a place

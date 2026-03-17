@@ -592,7 +592,7 @@ export const YOUTUBE_WEEKS: YouTubeWeek[] = [
       {
         number: 10,
         title: "O teu corpo está a tentar dizer-te algo — estás a ouvir?",
-        courseOrigin: "a-pele-lembra",
+        courseOrigin: "pele-nua",
         territory: "Corpo-Paisagem",
         week: 4,
         day: "terca",
