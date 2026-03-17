@@ -4,20 +4,22 @@ import { useAuth } from "@/components/AuthProvider";
 import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 import { useEffect, useState, useRef, useCallback } from "react";
+import { supabase } from "@/lib/supabase";
 
 const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
 
 type Proposal = {
   id: string;
-  bookSlug: string;
-  chapterSlug: string;
-  chapterTitle: string;
-  paragraphIndex: number;
-  originalText: string;
-  proposedChange: string;
+  book_slug: string;
+  book_title: string;
+  chapter_slug: string;
+  chapter_title: string;
+  paragraph_index: number;
+  original_text: string;
+  proposed_text: string;
   note: string;
-  status: "pending" | "applied" | "rejected";
-  createdAt: string;
+  status: "pending" | "applied" | "rejected" | "skipped";
+  created_at: string;
 };
 
 type ChapterData = {
@@ -59,6 +61,7 @@ export default function LivroRevisaoPage() {
   const [editNote, setEditNote] = useState("");
   const [showProposals, setShowProposals] = useState(false);
   const [showExport, setShowExport] = useState(false);
+  const [saving, setSaving] = useState(false);
 
   const contentRef = useRef<HTMLDivElement>(null);
   const editRef = useRef<HTMLTextAreaElement>(null);
@@ -69,23 +72,20 @@ export default function LivroRevisaoPage() {
     }
   }, [user, isAdmin, authLoading, router]);
 
-  // Load proposals from localStorage
-  useEffect(() => {
-    const saved = localStorage.getItem(`revisao-proposals-${livroSlug}`);
-    if (saved) setProposals(JSON.parse(saved));
+  // Load proposals from Supabase
+  const loadProposals = useCallback(async () => {
+    const { data } = await supabase
+      .from("revision_proposals")
+      .select("*")
+      .eq("book_slug", livroSlug)
+      .eq("status", "pending")
+      .order("created_at", { ascending: true });
+    if (data) setProposals(data as Proposal[]);
   }, [livroSlug]);
 
-  // Save proposals to localStorage
-  const saveProposals = useCallback(
-    (updated: Proposal[]) => {
-      setProposals(updated);
-      localStorage.setItem(
-        `revisao-proposals-${livroSlug}`,
-        JSON.stringify(updated)
-      );
-    },
-    [livroSlug]
-  );
+  useEffect(() => {
+    if (user && isAdmin && livroSlug) loadProposals();
+  }, [user, isAdmin, livroSlug, loadProposals]);
 
   // Load book content
   useEffect(() => {
@@ -130,8 +130,8 @@ export default function LivroRevisaoPage() {
     setEditNote("");
   }
 
-  function submitProposal() {
-    if (editingParagraph === null) return;
+  async function submitProposal() {
+    if (editingParagraph === null || saving) return;
     const chapter = chapters[currentChapter];
     const original = chapter.content[editingParagraph];
 
@@ -141,38 +141,45 @@ export default function LivroRevisaoPage() {
       return;
     }
 
-    const proposal: Proposal = {
-      id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-      bookSlug: livroSlug,
-      chapterSlug: chapter.slug,
-      chapterTitle: `${chapter.title}: ${chapter.subtitle}`,
-      paragraphIndex: editingParagraph,
-      originalText: original,
-      proposedChange: editText,
-      note: editNote,
-      status: "pending",
-      createdAt: new Date().toISOString(),
-    };
+    setSaving(true);
+    const { error } = await supabase.from("revision_proposals").insert({
+      book_slug: livroSlug,
+      book_title: bookMeta?.title || livroSlug,
+      chapter_slug: chapter.slug,
+      chapter_title: `${chapter.title}: ${chapter.subtitle}`,
+      paragraph_index: editingParagraph,
+      original_text: original,
+      proposed_text: editText,
+      note: editNote || "",
+      created_by: user?.id,
+    });
 
-    saveProposals([...proposals, proposal]);
+    if (!error) {
+      await loadProposals();
+    }
+    setSaving(false);
     cancelEdit();
   }
 
-  function removeProposal(id: string) {
-    saveProposals(proposals.filter((p) => p.id !== id));
+  async function removeProposal(id: string) {
+    await supabase
+      .from("revision_proposals")
+      .update({ status: "skipped" })
+      .eq("id", id);
+    setProposals(proposals.filter((p) => p.id !== id));
   }
 
   function getProposalsForChapter(chapterSlug: string) {
     return proposals.filter(
-      (p) => p.chapterSlug === chapterSlug && p.status === "pending"
+      (p) => p.chapter_slug === chapterSlug && p.status === "pending"
     );
   }
 
   function getParagraphProposal(chapterSlug: string, paragraphIndex: number) {
     return proposals.find(
       (p) =>
-        p.chapterSlug === chapterSlug &&
-        p.paragraphIndex === paragraphIndex &&
+        p.chapter_slug === chapterSlug &&
+        p.paragraph_index === paragraphIndex &&
         p.status === "pending"
     );
   }
@@ -187,18 +194,18 @@ export default function LivroRevisaoPage() {
 
     const byChapter = new Map<string, Proposal[]>();
     for (const p of pending) {
-      const list = byChapter.get(p.chapterTitle) || [];
+      const list = byChapter.get(p.chapter_title) || [];
       list.push(p);
-      byChapter.set(p.chapterTitle, list);
+      byChapter.set(p.chapter_title, list);
     }
 
     for (const [chapter, props] of byChapter) {
       output += `---\n## ${chapter}\n\n`;
       for (const p of props) {
-        output += `### Paragrafo ${p.paragraphIndex + 1}\n`;
+        output += `### Paragrafo ${p.paragraph_index + 1}\n`;
         if (p.note) output += `Nota: ${p.note}\n\n`;
-        output += `ORIGINAL:\n${p.originalText.slice(0, 200)}${p.originalText.length > 200 ? "..." : ""}\n\n`;
-        output += `PROPOSTA:\n${p.proposedChange.slice(0, 200)}${p.proposedChange.length > 200 ? "..." : ""}\n\n`;
+        output += `ORIGINAL:\n${p.original_text.slice(0, 200)}${p.original_text.length > 200 ? "..." : ""}\n\n`;
+        output += `PROPOSTA:\n${p.proposed_text.slice(0, 200)}${p.proposed_text.length > 200 ? "..." : ""}\n\n`;
       }
     }
 
@@ -475,9 +482,10 @@ export default function LivroRevisaoPage() {
                         <div className="flex gap-2">
                           <button
                             onClick={submitProposal}
-                            className="rounded-lg bg-sage px-4 py-2 text-sm font-medium text-white hover:bg-sage/80 transition-colors"
+                            disabled={saving}
+                            className="rounded-lg bg-sage px-4 py-2 text-sm font-medium text-white hover:bg-sage/80 transition-colors disabled:opacity-50"
                           >
-                            Guardar proposta
+                            {saving ? "A guardar..." : "Guardar proposta"}
                           </button>
                           <button
                             onClick={cancelEdit}
@@ -581,7 +589,7 @@ export default function LivroRevisaoPage() {
                       >
                         <div className="mb-2 flex items-center justify-between">
                           <span className="text-xs font-medium text-sage">
-                            {p.chapterTitle}
+                            {p.chapter_title}
                           </span>
                           <button
                             onClick={() => removeProposal(p.id)}
@@ -597,18 +605,18 @@ export default function LivroRevisaoPage() {
                         )}
                         <div className="mb-2 rounded bg-red-50 p-2">
                           <p className="text-xs text-red-800/70 line-through leading-relaxed">
-                            {p.originalText.slice(0, 120)}
-                            {p.originalText.length > 120 ? "..." : ""}
+                            {p.original_text.slice(0, 120)}
+                            {p.original_text.length > 120 ? "..." : ""}
                           </p>
                         </div>
                         <div className="rounded bg-green-50 p-2">
                           <p className="text-xs text-green-800/70 leading-relaxed">
-                            {p.proposedChange.slice(0, 120)}
-                            {p.proposedChange.length > 120 ? "..." : ""}
+                            {p.proposed_text.slice(0, 120)}
+                            {p.proposed_text.length > 120 ? "..." : ""}
                           </p>
                         </div>
                         <p className="mt-2 text-[10px] text-sage/50">
-                          {new Date(p.createdAt).toLocaleDateString("pt-PT")}
+                          {new Date(p.created_at).toLocaleDateString("pt-PT")}
                         </p>
                       </div>
                     ))}
