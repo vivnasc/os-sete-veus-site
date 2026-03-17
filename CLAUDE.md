@@ -1,5 +1,16 @@
 # Os Sete Véus — Visão Completa do Projecto
 
+## Inicio de Sessao
+
+**No inicio de cada sessao, verificar se ha notas de revisao pendentes:**
+```bash
+npx tsx scripts/apply-proposals.ts
+```
+Se houver notas pendentes, informar a Vivianne e perguntar se quer que sejam aplicadas.
+As notas estao na tabela `revision_proposals` (Supabase) com `status = 'pending'`.
+A Vivianne marca paragrafos com notas descritivas (ex: "tom pesado", "simplificar").
+O Claude le a nota, le o paragrafo original, reescreve conforme a indicacao, e aplica no ficheiro de dados correspondente.
+
 ## Descricao
 
 Plataforma digital de leitura transformativa criada por Vivianne dos Santos. Oferece livros digitais (Espelhos e Nós) com leitura sequencial desbloqueável, diário reflexivo, comunidade anónima (Ecos) e painel de administração. O utilizador final é a leitora que procura autoconhecimento; a coach Vivianne gere tudo via painel admin (HUB-CONTROLO).
