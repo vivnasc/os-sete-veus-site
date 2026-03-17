@@ -381,7 +381,7 @@ export const TERRITORY_GUIDES: Record<string, TerritoryVisualGuide> = {
     ],
   },
   "a-chama": {
-    course: "A Chama",
+    course: "Brasa Viva",
     territory: "O Vulcao Adormecido",
     color: "Vermelho-fogo, negro lava",
     transformation:
@@ -397,7 +397,7 @@ export const TERRITORY_GUIDES: Record<string, TerritoryVisualGuide> = {
     ],
   },
   "a-mulher-antes-de-mae": {
-    course: "A Mulher Antes de Mae",
+    course: "Antes do Ninho",
     territory: "O Ninho que Pesa",
     color: "Ocre quente, branco ovo",
     transformation:
@@ -413,7 +413,7 @@ export const TERRITORY_GUIDES: Record<string, TerritoryVisualGuide> = {
     ],
   },
   "o-oficio-de-ser": {
-    course: "O Oficio de Ser",
+    course: "Maos Cansadas",
     territory: "A Oficina Infinita",
     color: "Bronze, castanho quente",
     transformation:
@@ -429,7 +429,7 @@ export const TERRITORY_GUIDES: Record<string, TerritoryVisualGuide> = {
     ],
   },
   "o-relogio-partido": {
-    course: "O Relogio Partido",
+    course: "Estacoes Partidas",
     territory: "O Jardim das Estacoes",
     color: "Prateado, ambar outonal",
     transformation:
@@ -445,7 +445,7 @@ export const TERRITORY_GUIDES: Record<string, TerritoryVisualGuide> = {
     ],
   },
   "a-coroa-escondida": {
-    course: "A Coroa Escondida",
+    course: "Ouro e Sombra",
     territory: "O Trono Coberto",
     color: "Dourado real, purpura",
     transformation:
@@ -462,7 +462,7 @@ export const TERRITORY_GUIDES: Record<string, TerritoryVisualGuide> = {
     ],
   },
   "a-fome": {
-    course: "A Fome",
+    course: "Pao e Silencio",
     territory: "A Mesa Vazia",
     color: "Terracota rosado, branco porcelana",
     transformation:

@@ -1625,7 +1625,7 @@ const COURSES: CourseData[] = [
   {
     slug: "a-chama",
     number: 15,
-    title: "A Chama",
+    title: "Brasa Viva",
     subtitle: "A raiva que nunca te deixaram sentir",
     arcoEmocional:
       "Começa pela negação da raiva. Passa pelo reconhecimento de que a raiva vive no corpo há anos. Atravessa o medo do que acontece se a deixares sair. Aprende a distinguir raiva destrutiva de raiva informativa. Chega à raiva como combustível para mudança. Termina com a chama que ilumina em vez de queimar.",
@@ -1740,7 +1740,7 @@ const COURSES: CourseData[] = [
   {
     slug: "a-mulher-antes-de-mae",
     number: 16,
-    title: "A Mulher Antes de Mãe",
+    title: "Antes do Ninho",
     subtitle: "Quem eras antes de seres de alguém",
     arcoEmocional:
       "Começa pela perda de identidade que ninguém nomeia. Passa pela culpa de sentir falta de quem eras. Atravessa a raiva e o ressentimento secretos. Aprende a separar a mãe da mulher. Chega à reconstrução de uma identidade que inclua ambas. Termina com a permissão de existir para além dos teus filhos.",
@@ -1855,7 +1855,7 @@ const COURSES: CourseData[] = [
   {
     slug: "o-oficio-de-ser",
     number: 17,
-    title: "O Ofício de Ser",
+    title: "Mãos Cansadas",
     subtitle: "Quando o trabalho te define e o propósito te escapa",
     arcoEmocional:
       "Começa pelo cansaço que não passa com férias. Passa pela descoberta de que te defines pelo que produzes. Atravessa o burnout como sintoma, não como fraqueza. Separa produtividade de valor. Chega à pergunta: o que farias se ninguém estivesse a ver? Termina com a reconstrução de um propósito que não te consuma.",
@@ -1970,7 +1970,7 @@ const COURSES: CourseData[] = [
   {
     slug: "o-relogio-partido",
     number: 18,
-    title: "O Relógio Partido",
+    title: "Estações Partidas",
     subtitle: "A relação com o tempo que te rouba o presente",
     arcoEmocional:
       "Começa pela pressa crónica. Passa pelo medo de envelhecer e pelo luto da juventude. Atravessa a narrativa do 'já é tarde'. Descobre que o tempo vivido conta mais que o tempo passado. Chega à presença. Termina com a liberdade de viver sem relógio.",
@@ -2085,7 +2085,7 @@ const COURSES: CourseData[] = [
   {
     slug: "a-coroa-escondida",
     number: 19,
-    title: "A Coroa Escondida",
+    title: "Ouro e Sombra",
     subtitle: "O poder que tens e te assusta",
     arcoEmocional:
       "Começa pelo encolhimento — o hábito de te fazeres pequena. Passa pela descoberta de que o medo de brilhar é tão forte como o medo de falhar. Atravessa a auto-sabotagem como protecção. Aprende a ocupar espaço sem pedir desculpa. Chega ao poder como responsabilidade, não como ameaça. Termina de coroa na cabeça.",
@@ -2200,7 +2200,7 @@ const COURSES: CourseData[] = [
   {
     slug: "a-fome",
     number: 20,
-    title: "A Fome",
+    title: "Pão e Silêncio",
     subtitle: "O que comes quando não tens fome de comida",
     arcoEmocional:
       "Começa pela fome que não é de comida. Passa pela descoberta de que o corpo usa a comida como linguagem. Atravessa a guerra com o espelho e com a balança. Aprende a ouvir o que a fome realmente pede. Chega à paz com o corpo e com o prato. Termina a comer com presença, não com culpa.",

@@ -980,12 +980,12 @@ O Mundo dos Veus e a representacao visual do mundo interno de uma pessoa. Nao e 
 | 12 | A Galeria dos Reflexos Vivos | O Espelho do Outro | Verde-esmeralda, dourado reflexo | Espelhos que mostram outros → espelhos que mostram a propria silhueta |
 | 13 | A Caverna dos Ecos Mudos | O Silencio que Grita | Cinza-azulado, branco fantasma | Caverna silenciosa com ecos presos → caverna com ecos libertados como luz |
 | 14 | O Bosque dos Fios Entrelacados | A Teia | Verde-musgo, dourado fio | Fios emaranhados que prendem → teia organizada que sustenta |
-| 15 | O Vulcao Adormecido | A Chama | Vermelho-fogo, negro lava | Vulcao selado e escuro → vulcao com lava controlada que ilumina |
-| 16 | O Ninho que Pesa | A Mulher Antes de Mae | Ocre quente, branco ovo | Ninho que engole a silhueta → ninho com espaco para a silhueta inteira |
-| 17 | A Oficina Infinita | O Oficio de Ser | Bronze, castanho quente | Oficina frenetica sem pausa → oficina com ritmo proprio e janela aberta |
-| 18 | O Jardim das Estacoes | O Relogio Partido | Prateado, ambar outonal | Relogio gigante que aprisiona → relogio partido, jardim com todas as estacoes |
-| 19 | O Trono Coberto | A Coroa Escondida | Dourado real, purpura | Trono coberto por panos → trono descoberto, silhueta sentada de coroa |
-| 20 | A Mesa Vazia | A Fome | Terracota rosado, branco porcelana | Mesa vazia com silhueta faminta → mesa com comida e silhueta em paz |
+| 15 | O Vulcao Adormecido | Brasa Viva | Vermelho-fogo, negro lava | Vulcao selado e escuro → vulcao com lava controlada que ilumina |
+| 16 | O Ninho que Pesa | Antes do Ninho | Ocre quente, branco ovo | Ninho que engole a silhueta → ninho com espaco para a silhueta inteira |
+| 17 | A Oficina Infinita | Maos Cansadas | Bronze, castanho quente | Oficina frenetica sem pausa → oficina com ritmo proprio e janela aberta |
+| 18 | O Jardim das Estacoes | Estacoes Partidas | Prateado, ambar outonal | Relogio gigante que aprisiona → relogio partido, jardim com todas as estacoes |
+| 19 | O Trono Coberto | Ouro e Sombra | Dourado real, purpura | Trono coberto por panos → trono descoberto, silhueta sentada de coroa |
+| 20 | A Mesa Vazia | Pao e Silencio | Terracota rosado, branco porcelana | Mesa vazia com silhueta faminta → mesa com comida e silhueta em paz |
 
 **Conexoes entre territorios:**
 - Casa dos Espelhos reflecte brevemente a Arvore (dinheiro vem da familia)

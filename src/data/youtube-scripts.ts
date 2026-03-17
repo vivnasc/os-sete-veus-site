@@ -715,8 +715,8 @@ const chamaHook1: YouTubeScript = {
     {
       type: "cta",
       narration:
-        "Se isto te tocou, o curso A Chama vai muito mais fundo. Oito módulos para recuperares a tua raiva como força. O link está na descrição.",
-      overlayText: "A Chama\nseteveus.space",
+        "Se isto te tocou, o curso Brasa Viva vai muito mais fundo. Oito módulos para recuperares a tua raiva como força. O link está na descrição.",
+      overlayText: "Brasa Viva\nseteveus.space",
       durationSec: 18,
       visualNote:
         "Vulcão com lava controlada. Luz vermelha e dourada. URL no ecrã.",
@@ -800,8 +800,8 @@ const mulherAntesDeMaeHook1: YouTubeScript = {
     {
       type: "cta",
       narration:
-        "Se isto te tocou, o curso A Mulher Antes de Mãe vai muito mais fundo. Oito módulos para te reencontrares sem culpa. O link está na descrição.",
-      overlayText: "A Mulher Antes de Mãe\nseteveus.space",
+        "Se isto te tocou, o curso Antes do Ninho vai muito mais fundo. Oito módulos para te reencontrares sem culpa. O link está na descrição.",
+      overlayText: "Antes do Ninho\nseteveus.space",
       durationSec: 18,
       visualNote:
         "Ninho com espaço. Silhueta inteira. URL no ecrã.",
@@ -885,8 +885,8 @@ const oficioDeSerHook1: YouTubeScript = {
     {
       type: "cta",
       narration:
-        "Se isto te tocou, o curso O Ofício de Ser vai muito mais fundo. Oito módulos para trabalhares sem desaparecer. O link está na descrição.",
-      overlayText: "O Ofício de Ser\nseteveus.space",
+        "Se isto te tocou, o curso Mãos Cansadas vai muito mais fundo. Oito módulos para trabalhares sem desaparecer. O link está na descrição.",
+      overlayText: "Mãos Cansadas\nseteveus.space",
       durationSec: 18,
       visualNote:
         "Oficina com janela aberta. Luz quente. URL no ecrã.",
@@ -970,8 +970,8 @@ const relogioPartidoHook1: YouTubeScript = {
     {
       type: "cta",
       narration:
-        "Se isto te tocou, o curso O Relógio Partido vai muito mais fundo. Oito módulos para largares a pressa e viveres no presente. O link está na descrição.",
-      overlayText: "O Relógio Partido\nseteveus.space",
+        "Se isto te tocou, o curso Estações Partidas vai muito mais fundo. Oito módulos para largares a pressa e viveres no presente. O link está na descrição.",
+      overlayText: "Estações Partidas\nseteveus.space",
       durationSec: 18,
       visualNote:
         "Jardim sem relógio. Todas as estações. URL no ecrã.",
@@ -1055,8 +1055,8 @@ const coroaEscondidaHook1: YouTubeScript = {
     {
       type: "cta",
       narration:
-        "Se isto te tocou, o curso A Coroa Escondida vai muito mais fundo. Oito módulos para parares de te esconder. O link está na descrição.",
-      overlayText: "A Coroa Escondida\nseteveus.space",
+        "Se isto te tocou, o curso Ouro e Sombra vai muito mais fundo. Oito módulos para parares de te esconder. O link está na descrição.",
+      overlayText: "Ouro e Sombra\nseteveus.space",
       durationSec: 18,
       visualNote:
         "Trono descoberto. Silhueta de pé, coroa visível. Dourado-púrpura. URL no ecrã.",
@@ -1140,8 +1140,8 @@ const fomeHook1: YouTubeScript = {
     {
       type: "cta",
       narration:
-        "Se isto te tocou, o curso A Fome vai muito mais fundo. Oito módulos para fazeres as pazes com o prato e com o corpo. O link está na descrição.",
-      overlayText: "A Fome\nseteveus.space",
+        "Se isto te tocou, o curso Pão e Silêncio vai muito mais fundo. Oito módulos para fazeres as pazes com o prato e com o corpo. O link está na descrição.",
+      overlayText: "Pão e Silêncio\nseteveus.space",
       durationSec: 18,
       visualNote:
         "Mesa bonita. Silhueta em paz. Terracota e porcelana. URL no ecrã.",
