@@ -358,6 +358,10 @@ export default function AlbumProductionPage() {
   const [audioUrls, setAudioUrls] = useState<Record<string, string>>({});
   const [generatedClips, setGeneratedClips] = useState<Record<string, GeneratedClips>>({});
   const [cloneResults, setCloneResults] = useState<Record<string, CloneResult>>({});
+  const [voiceModels, setVoiceModels] = useState<{ id: string | number; title: string; status: string }[]>([]);
+  const [selectedVoiceModel, setSelectedVoiceModel] = useState<string>("");
+  const [voiceModelsLoading, setVoiceModelsLoading] = useState(false);
+  const [voiceModelsError, setVoiceModelsError] = useState("");
   const pollingRef = useRef<Record<string, NodeJS.Timeout>>({});
   const clonePollingRef = useRef<Record<string, NodeJS.Timeout>>({});
 
@@ -477,10 +481,12 @@ export default function AlbumProductionPage() {
       }));
 
       // Step 2: Convert vocal to Vivianne's voice
+      const convBody: Record<string, unknown> = { vocalUrl };
+      if (selectedVoiceModel) convBody.voiceModelId = Number(selectedVoiceModel);
       const convRes = await fetch("/api/admin/kitsai/convert", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ vocalUrl }),
+        body: JSON.stringify(convBody),
       });
 
       if (!convRes.ok) {
@@ -920,6 +926,62 @@ export default function AlbumProductionPage() {
               <p className="text-xs text-sage/80">2. Processa o clone manualmente</p>
               <p className="text-xs text-sage/80">3. Carrega o MP3 aqui</p>
             </div>
+          </div>
+        </div>
+
+        {/* Voice Model Selector */}
+        <div className="mb-6 rounded-xl border border-violet-200 bg-violet-50/50 p-4">
+          <div className="flex flex-wrap items-center gap-3">
+            <p className="text-xs font-medium text-violet-800">Modelo de voz (Kits.ai):</p>
+            {voiceModels.length > 0 ? (
+              <select
+                value={selectedVoiceModel}
+                onChange={(e) => setSelectedVoiceModel(e.target.value)}
+                className="rounded-lg border border-violet-200 bg-white px-3 py-1.5 text-xs text-forest"
+              >
+                <option value="">Usar default do servidor</option>
+                {voiceModels.map((m) => (
+                  <option key={m.id} value={String(m.id)}>
+                    {m.title || `Modelo ${m.id}`} ({m.status})
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <span className="text-xs text-sage">Nenhum modelo carregado</span>
+            )}
+            <button
+              onClick={async () => {
+                setVoiceModelsLoading(true);
+                setVoiceModelsError("");
+                try {
+                  const res = await fetch("/api/admin/kitsai/models");
+                  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                  const data = await res.json();
+                  if (data.erro) throw new Error(data.erro);
+                  setVoiceModels(data.models || []);
+                  if (data.models?.length === 1) {
+                    setSelectedVoiceModel(String(data.models[0].id));
+                  }
+                } catch (err: unknown) {
+                  const msg = err instanceof Error ? err.message : "Erro";
+                  setVoiceModelsError(msg);
+                } finally {
+                  setVoiceModelsLoading(false);
+                }
+              }}
+              disabled={voiceModelsLoading}
+              className="rounded-lg bg-violet-600 px-3 py-1.5 text-xs text-white transition hover:bg-violet-700 disabled:opacity-50"
+            >
+              {voiceModelsLoading ? "A carregar..." : "Buscar modelos"}
+            </button>
+            {selectedVoiceModel && (
+              <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] text-violet-700">
+                ID: {selectedVoiceModel}
+              </span>
+            )}
+            {voiceModelsError && (
+              <span className="text-xs text-red-500">{voiceModelsError}</span>
+            )}
           </div>
         </div>
 
