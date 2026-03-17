@@ -6,7 +6,7 @@ export const COURSE_CATEGORIES: CourseCategory[] = [
     title: "Matéria",
     subtitle: "O que vive no corpo",
     courses: [
-      "a-pele-lembra",
+      "pele-nua",
       "o-peso-e-o-chao",
       "a-chama",
       "a-fome",

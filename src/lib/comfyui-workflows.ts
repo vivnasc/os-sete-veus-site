@@ -268,7 +268,7 @@ export const TERRITORY_PROMPTS: Record<
       "crossroads with one path clearly chosen, silhouette taking first step, remaining fog gentle not threatening, peaceful clarity",
     ],
   },
-  "a-pele-lembra": {
+  "pele-nua": {
     name: "O Corpo-Paisagem",
     stages: [
       "surreal landscape that suggests body forms, hills like shoulders, rivers like veins, caves like organs, unfamiliar and disconnected, dark",

@@ -37,7 +37,7 @@ export const COURSE_SLUGS = [
   "a-arte-da-inteireza",
   "depois-do-fogo",
   "olhos-abertos",
-  "a-pele-lembra",
+  "pele-nua",
   "limite-sagrado",
   "flores-no-escuro",
   "o-peso-e-o-chao",

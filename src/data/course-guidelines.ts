@@ -240,7 +240,7 @@ export const TERRITORY_GUIDES: Record<string, TerritoryVisualGuide> = {
     ],
     connections: [],
   },
-  "a-pele-lembra": {
+  "pele-nua": {
     course: "Pele Nua",
     territory: "O Corpo-Paisagem",
     color: "Terracota rosado",
@@ -597,7 +597,7 @@ export const LAUNCH_ORDER = [
   { slug: "sangue-e-seda", priority: 4, reason: "Decisao da Vivianne" },
   { slug: "depois-do-fogo", priority: 5, reason: "Decisao da Vivianne" },
   { slug: "olhos-abertos", priority: 6, reason: "Decisao da Vivianne" },
-  { slug: "a-pele-lembra", priority: 7, reason: "Decisao da Vivianne" },
+  { slug: "pele-nua", priority: 7, reason: "Decisao da Vivianne" },
   { slug: "flores-no-escuro", priority: 8, reason: "Decisao da Vivianne" },
   { slug: "o-peso-e-o-chao", priority: 9, reason: "Decisao da Vivianne" },
   { slug: "voz-de-dentro", priority: 10, reason: "Decisao da Vivianne" },

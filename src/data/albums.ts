@@ -383,7 +383,7 @@ const CURSO_OLHOS_ABERTOS = cursoAlbum("curso-olhos-abertos", "olhos-abertos", "
   { number: 4, title: "First Step", description: "A silhueta da o primeiro passo", lang: "EN", prompt: cursoPrompt("the first step, choosing a direction, walking forward", "decisive, brave, clear, momentum", "decisive rhythm beginning, first clear step, direction found", "EN"), durationSeconds: 300 },
 ]);
 
-const CURSO_PELE_LEMBRA = cursoAlbum("curso-pele-lembra", "a-pele-lembra", "Pele Nua", "O corpo como territorio", "Corpo-Paisagem", [
+const CURSO_PELE_NUA = cursoAlbum("curso-pele-nua", "pele-nua", "Pele Nua", "O corpo como territorio", "Corpo-Paisagem", [
   { number: 1, title: "Mapa do Corpo", description: "O corpo como paisagem desconhecida", lang: "PT", prompt: cursoPrompt("body map, the body as unknown landscape to explore", "exploratory, somatic, discovering, curious", "body-percussion-like textures, exploring melody, somatic awareness", "PT"), durationSeconds: 240 },
   { number: 2, title: "Skin Memory", description: "O que a pele guardou", lang: "EN", prompt: cursoPrompt("skin memory, what the body stored and kept", "tactile, remembered, stored sensations surfacing", "textural intimate sounds, memory-like melody, touch and warmth", "EN"), durationSeconds: 240 },
   { number: 3, title: "Habitar", description: "Voltar a viver no corpo", lang: "PT", prompt: cursoPrompt("inhabiting, returning to live in the body again", "embodied, present, grounded, arrived", "grounded rhythm, inhabited vocal, fully present production", "PT"), durationSeconds: 240 },
@@ -459,7 +459,7 @@ export const ALL_ALBUMS: Album[] = [
   CURSO_ARTE_INTEIREZA,
   CURSO_DEPOIS_FOGO,
   CURSO_OLHOS_ABERTOS,
-  CURSO_PELE_LEMBRA,
+  CURSO_PELE_NUA,
   CURSO_LIMITE_SAGRADO,
   CURSO_FLORES_ESCURO,
   CURSO_PESO_CHAO,
