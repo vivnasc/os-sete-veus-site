@@ -6,8 +6,10 @@ import Link from "next/link";
 import {
   ALL_ALBUMS,
   getAlbumsByProduct,
+  ENERGY_LABELS,
   type Album,
   type AlbumTrack,
+  type TrackEnergy,
 } from "@/data/albums";
 
 const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
@@ -127,6 +129,11 @@ function TrackRow({
           <div className="flex items-center gap-2">
             <p className="font-medium text-forest">{track.title}</p>
             <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${track.lang === "PT" ? "bg-sage/15 text-sage" : "bg-violet-100 text-violet-600"}`}>{track.lang}</span>
+            {track.energy && (
+              <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${ENERGY_LABELS[track.energy].color}`}>
+                {ENERGY_LABELS[track.energy].emoji} {ENERGY_LABELS[track.energy].label}
+              </span>
+            )}
             {track.lyrics && (
               <span className="rounded px-1.5 py-0.5 text-[10px] bg-green-50 text-green-600">
                 Letra
@@ -337,6 +344,7 @@ export default function AlbumProductionPage() {
     profile?.is_admin || ADMIN_EMAILS.includes(user?.email || "");
 
   const [filter, setFilter] = useState("all");
+  const [viewMode, setViewMode] = useState<"producao" | "letras">("producao");
   const [selectedAlbum, setSelectedAlbum] = useState<string | null>(null);
   const [statuses, setStatuses] = useState<Record<string, TrackStatus>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -854,6 +862,18 @@ export default function AlbumProductionPage() {
             <span className="rounded-full bg-green-50 px-3 py-1 text-xs text-green-700">
               {totalWithLyrics}/{totalTracks} com letra
             </span>
+            {/* Energy distribution */}
+            {(["whisper", "steady", "pulse", "anthem", "raw"] as TrackEnergy[]).map((e) => {
+              const count = ALL_ALBUMS.reduce(
+                (s, a) => s + a.tracks.filter((t) => t.energy === e).length,
+                0
+              );
+              return count > 0 ? (
+                <span key={e} className={`rounded-full px-3 py-1 text-xs ${ENERGY_LABELS[e].color}`}>
+                  {ENERGY_LABELS[e].emoji} {count} {ENERGY_LABELS[e].label.toLowerCase()}
+                </span>
+              ) : null;
+            })}
           </div>
         </div>
       </div>
@@ -884,13 +904,87 @@ export default function AlbumProductionPage() {
           </div>
         </div>
 
-        {/* Filter */}
-        <div className="mb-6">
+        {/* Filter + View Mode */}
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
           <ProductFilter active={filter} onChange={setFilter} />
+          <div className="flex gap-1 rounded-full bg-sage/10 p-1">
+            <button
+              onClick={() => setViewMode("producao")}
+              className={`rounded-full px-4 py-2 text-xs font-sans uppercase tracking-wider transition-colors ${
+                viewMode === "producao"
+                  ? "bg-white text-forest shadow-sm"
+                  : "text-sage hover:text-forest"
+              }`}
+            >
+              Producao
+            </button>
+            <button
+              onClick={() => setViewMode("letras")}
+              className={`rounded-full px-4 py-2 text-xs font-sans uppercase tracking-wider transition-colors ${
+                viewMode === "letras"
+                  ? "bg-white text-forest shadow-sm"
+                  : "text-sage hover:text-forest"
+              }`}
+            >
+              Letras
+            </button>
+          </div>
         </div>
 
-        {/* Album list or detail */}
-        {album ? (
+        {/* Lyrics view */}
+        {viewMode === "letras" && (
+          <div className="space-y-8">
+            <div className="rounded-xl border border-sage/20 bg-white p-6">
+              <p className="text-sm text-sage">
+                Revisa todas as letras antes de gastar creditos. Cada faixa mostra a letra completa, a energia e o idioma.
+              </p>
+            </div>
+            {albums.map((a) => (
+              <div key={a.slug} className="rounded-xl border border-sage/20 bg-white overflow-hidden">
+                <div className="border-b border-sage/10 p-4 flex items-center gap-3">
+                  <div className="h-3 w-3 rounded-full" style={{ background: a.color }} />
+                  <h3 className="font-display text-lg text-forest">{a.title}</h3>
+                  <span className="rounded bg-sage/10 px-2 py-0.5 text-[0.6rem] uppercase tracking-wider text-sage">
+                    {a.product === "espelho" ? "Espelho" : a.product === "no" ? "No" : a.product === "livro" ? "Livro" : "Curso"}
+                  </span>
+                  <span className="text-xs text-green-600 ml-auto">
+                    {a.tracks.filter(t => t.lyrics).length}/{a.tracks.length} letras
+                  </span>
+                </div>
+                <div className="divide-y divide-sage/5">
+                  {a.tracks.map((t) => (
+                    <div key={t.number} className="p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="font-mono text-xs text-sage/50">{String(t.number).padStart(2, "0")}</span>
+                        <span className="font-medium text-forest">{t.title}</span>
+                        <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${t.lang === "PT" ? "bg-sage/15 text-sage" : "bg-violet-100 text-violet-600"}`}>{t.lang}</span>
+                        {t.energy && (
+                          <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${ENERGY_LABELS[t.energy].color}`}>
+                            {ENERGY_LABELS[t.energy].emoji} {ENERGY_LABELS[t.energy].label}
+                          </span>
+                        )}
+                        {!t.lyrics && (
+                          <span className="rounded px-1.5 py-0.5 text-[10px] bg-amber-50 text-amber-600">Sem letra</span>
+                        )}
+                      </div>
+                      <p className="text-xs text-sage/60 mb-2">{t.description}</p>
+                      {t.lyrics ? (
+                        <pre className="whitespace-pre-wrap rounded bg-cream/50 p-4 font-mono text-xs text-sage/80 leading-relaxed max-h-80 overflow-y-auto">
+                          {t.lyrics}
+                        </pre>
+                      ) : (
+                        <p className="text-xs text-sage/40 italic">Letra ainda nao escrita.</p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Album list or detail (production mode) */}
+        {viewMode === "producao" && album && (
           <div>
             <button
               onClick={() => setSelectedAlbum(null)}
@@ -958,7 +1052,10 @@ export default function AlbumProductionPage() {
               })}
             </div>
           </div>
-        ) : (
+        )}
+
+        {/* Album grid (production mode, no album selected) */}
+        {viewMode === "producao" && !album && (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {albums.map((a) => {
               const done = a.tracks.filter(
