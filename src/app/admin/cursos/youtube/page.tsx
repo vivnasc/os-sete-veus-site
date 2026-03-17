@@ -7,8 +7,12 @@ import {
   getScriptsForCourse,
   getFullNarration,
 } from "@/data/youtube-scripts";
-import type { YouTubeScript } from "@/data/youtube-scripts";
+import type { YouTubeScript, VideoScene } from "@/data/youtube-scripts";
+import type { ComposerScene } from "@/components/VideoComposer";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+const VideoComposer = dynamic(() => import("@/components/VideoComposer"), { ssr: false });
 
 const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
 const DEFAULT_VOICE_ID = "fnoNuVpfClX7lHKFbyZ2";
@@ -248,6 +252,26 @@ export default function YouTubePage() {
       const key = sceneKey(hook.courseSlug, hook.hookIndex, i);
       return statuses[key]?.imageStatus === "done";
     }).length;
+  }
+
+  // ── Build composer scenes ──────────────────────────────────────────
+
+  function buildComposerScenes(hook: YouTubeScript): ComposerScene[] {
+    return hook.scenes.map((scene: VideoScene, idx: number) => {
+      const key = sceneKey(hook.courseSlug, hook.hookIndex, idx);
+      const st = getStatus(key);
+      return {
+        ...scene,
+        imageUrl: st.imageUrl,
+        approved: true,
+      };
+    });
+  }
+
+  function isReadyToCompose(hook: YouTubeScript): boolean {
+    const audioKey = `${hook.courseSlug}-hook${hook.hookIndex}-full`;
+    const audioSt = getStatus(audioKey);
+    return audioSt.audioStatus === "done" && getHookImageCount(hook) > 0;
   }
 
   // ── Render ────────────────────────────────────────────────────────
@@ -586,27 +610,40 @@ export default function YouTubePage() {
                       </div>
                     </div>
 
-                    {/* ── Download all ── */}
+                    {/* ── Compor Video Automaticamente ── */}
                     <div className="border-t border-mundo-bg pt-4">
-                      <p className="text-xs text-mundo-muted mb-2">
-                        Descarrega o audio e as imagens. Monta o video final no CapCut, DaVinci Resolve ou editor preferido.
-                      </p>
-                      <div className="flex gap-3">
-                        {audioSt.audioUrl && (
-                          <a
-                            href={audioSt.audioUrl}
-                            download={`${hook.courseSlug}-hook${hook.hookIndex + 1}.mp3`}
-                            className="text-xs px-3 py-1.5 bg-mundo-dourado/20 text-mundo-dourado rounded hover:bg-mundo-dourado/30"
-                          >
-                            Descarregar audio
-                          </a>
-                        )}
-                        {imageCount > 0 && (
-                          <span className="text-xs text-mundo-muted py-1.5">
-                            {imageCount} imagens prontas (clica em cada para descarregar)
-                          </span>
-                        )}
-                      </div>
+                      {isReadyToCompose(hook) ? (
+                        <div>
+                          <h3 className="text-sm text-mundo-dourado mb-3">
+                            Compor Video
+                          </h3>
+                          <p className="text-xs text-mundo-muted mb-4">
+                            Audio + imagens prontas. O video e composto automaticamente com transicoes dissolve, Ken Burns e texto animado.
+                          </p>
+                          <VideoComposer
+                            scenes={buildComposerScenes(hook)}
+                            audioUrl={audioSt.audioUrl}
+                            title={hook.title}
+                          />
+                        </div>
+                      ) : (
+                        <div>
+                          <p className="text-xs text-mundo-muted mb-2">
+                            Para compor o video automaticamente, gera o audio e pelo menos uma imagem.
+                          </p>
+                          <div className="flex gap-3">
+                            {audioSt.audioUrl && (
+                              <a
+                                href={audioSt.audioUrl}
+                                download={`${hook.courseSlug}-hook${hook.hookIndex + 1}.mp3`}
+                                className="text-xs px-3 py-1.5 bg-mundo-dourado/20 text-mundo-dourado rounded hover:bg-mundo-dourado/30"
+                              >
+                                Descarregar audio
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </details>
