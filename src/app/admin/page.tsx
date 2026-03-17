@@ -233,7 +233,13 @@ export default function AdminPage() {
 
         {/* ── Livros & Leitura ── */}
         <SectionTitle title="Livros e Leitura" />
-        <div className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <ActionCard
+            title="Revisao"
+            description="Validar Espelhos e Nos antes da publicacao"
+            href="/admin/revisao"
+            icon="◇"
+          />
           <ActionCard
             title="Livro Fisico"
             description="Ver e editar pagina de vendas"

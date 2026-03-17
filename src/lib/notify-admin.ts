@@ -28,6 +28,7 @@ export type NotificationType =
   | "special_link_used"    // Link especial usado
   | "new_member"           // Novo membro registado
   | "espelho_completed"    // Leitora completou um Espelho
+  | "review_needed"        // Revisão de conteúdo necessária antes da publicação
   | "general";             // Notificação genérica
 
 type NotificationData = {
@@ -133,6 +134,7 @@ async function sendTelegramNotification(
     special_link_used: "LINK USADO",
     new_member: "NOVO MEMBRO",
     espelho_completed: "ESPELHO COMPLETO",
+    review_needed: "REVISAO NECESSARIA",
     general: "ALERTA",
   };
 
@@ -200,6 +202,7 @@ function formatWhatsAppMessage(data: NotificationData): string {
     special_link_used: "🔗",
     new_member: "👋",
     espelho_completed: "🪞",
+    review_needed: "📋",
     general: "📢",
   }[data.type];
 
@@ -359,6 +362,29 @@ export async function notifyPaymentRejected(data: {
       Email: data.user_email,
       Valor: `${data.amount} ${data.currency}`,
       Motivo: data.reason || "—",
+    },
+  });
+}
+
+export async function notifyReviewNeeded(data: {
+  espelho_title: string;
+  no_title?: string;
+  launch_date: string;
+  days_until: number;
+}) {
+  const items = [data.espelho_title];
+  if (data.no_title) items.push(data.no_title);
+
+  await notifyAdmin({
+    type: "review_needed",
+    title: `Revisão necessária — publicação em ${data.days_until} dias`,
+    message: `${items.join(" + ")} publica${items.length > 1 ? "m" : ""} a ${data.launch_date}. Revê o conteúdo antes.`,
+    details: {
+      Espelho: data.espelho_title,
+      Nó: data.no_title || "—",
+      "Data publicação": data.launch_date,
+      "Dias restantes": data.days_until,
+      Link: "https://seteveus.space/admin/revisao",
     },
   });
 }
