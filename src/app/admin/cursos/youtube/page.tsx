@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { getAllCourses } from "@/data/courses";
 import {
@@ -30,8 +30,60 @@ type SceneStatus = {
   editedNarration: string | null;
 };
 
+// Image in the library (uploaded by user)
+type LibraryImage = {
+  id: string;
+  name: string;
+  url: string;
+  tags: string[]; // auto-extracted from filename
+};
+
+// Map scene types to likely image keywords
+const SCENE_IMAGE_HINTS: Record<string, string[]> = {
+  abertura: ["territorio", "paisagem", "casa", "espelho", "campo", "ponte", "arvore", "jardim", "caminho", "sala", "lago"],
+  pergunta: ["silhueta", "presenca", "reflexao", "contemplacao"],
+  situacao: ["silhueta", "avanco", "peso", "coragem", "contemplacao"],
+  revelacao: ["espelho", "composicao", "territorio", "paisagem"],
+  gesto: ["silhueta", "autoconexao", "recepcao", "abrir", "soltar", "maos"],
+  frase_final: ["escuro", "territorio", "paisagem"],
+  cta: ["territorio", "paisagem", "ouro", "espelho", "casa"],
+  fecho: ["escuro", "territorio"],
+};
+
+// Map course slugs to territory image keywords
+const COURSE_TERRITORY_MAP: Record<string, string[]> = {
+  "ouro-proprio": ["ouro", "espelho", "casa", "dourado"],
+  "sangue-e-seda": ["sangue", "seda", "arvore", "raiz"],
+  "arte-da-inteireza": ["inteireza", "ponte", "margem"],
+  "depois-do-fogo": ["fogo", "campo", "queimado", "broto"],
+  "olhos-abertos": ["olhos", "aberto", "encruzilhada", "nevoeiro"],
+  "pele-nua": ["pele", "lembra", "corpo", "paisagem"],
+  "limite-sagrado": ["limite", "sagrado", "muralha", "luz"],
+  "flores-no-escuro": ["flores", "escuro", "jardim", "subterraneo", "bioluminescen"],
+  "peso-e-o-chao": ["peso", "chao", "caminho", "pedra"],
+  "voz-de-dentro": ["voz", "dentro", "sala", "eco"],
+};
+
 function sceneKey(courseSlug: string, hookIndex: number, sceneIndex: number) {
   return `${courseSlug}-hook${hookIndex}-scene${sceneIndex}`;
+}
+
+function extractTags(filename: string): string[] {
+  const name = filename
+    .replace(/\.[^.]+$/, "") // remove extension
+    .toLowerCase()
+    .replace(/[-_]/g, " ");
+  return name.split(/\s+/).filter((w) => w.length > 2);
+}
+
+function scoreMatch(tags: string[], keywords: string[]): number {
+  let score = 0;
+  for (const tag of tags) {
+    for (const kw of keywords) {
+      if (tag.includes(kw) || kw.includes(tag)) score++;
+    }
+  }
+  return score;
 }
 
 export default function YouTubePage() {
@@ -46,12 +98,17 @@ export default function YouTubePage() {
   const [speed, setSpeed] = useState(0.9);
   const [comfyuiUrl, setComfyuiUrl] = useState("");
   const [loraName, setLoraName] = useState("");
+  const [showConfig, setShowConfig] = useState(false);
 
   // Selection
   const [selectedCourse, setSelectedCourse] = useState("");
 
   // Per-scene statuses
   const [statuses, setStatuses] = useState<Record<string, SceneStatus>>({});
+
+  // Image library
+  const [library, setLibrary] = useState<LibraryImage[]>([]);
+  const [libraryDragOver, setLibraryDragOver] = useState(false);
 
   // Batch
   const [batchRunning, setBatchRunning] = useState(false);
@@ -61,8 +118,43 @@ export default function YouTubePage() {
   // Full narration editing per hook
   const [fullNarrations, setFullNarrations] = useState<Record<string, string>>({});
 
+  // Supabase library loading
+  const [libraryLoading, setLibraryLoading] = useState(false);
+
   const courses = getAllCourses();
   const hooks = selectedCourse ? getScriptsForCourse(selectedCourse) : [];
+
+  // Load images from Supabase on course change
+  useEffect(() => {
+    if (!selectedCourse) return;
+    loadLibraryFromSupabase(selectedCourse);
+  }, [selectedCourse]);
+
+  async function loadLibraryFromSupabase(courseSlug: string) {
+    setLibraryLoading(true);
+    try {
+      const res = await fetch(`/api/admin/courses/list-assets?courseSlug=${courseSlug}&type=youtube`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data.images && data.images.length > 0) {
+          const supabaseImages: LibraryImage[] = data.images.map((img: { name: string; url: string }) => ({
+            id: `sb-${img.name}`,
+            name: img.name,
+            url: img.url,
+            tags: extractTags(img.name),
+          }));
+          setLibrary((prev) => {
+            // merge, don't duplicate
+            const existing = new Set(prev.map((i) => i.name));
+            return [...prev, ...supabaseImages.filter((i) => !existing.has(i.name))];
+          });
+        }
+      }
+    } catch {
+      // silently fail - library is optional
+    }
+    setLibraryLoading(false);
+  }
 
   if (!user || !isAdmin) {
     return (
@@ -89,7 +181,7 @@ export default function YouTubePage() {
   function updateStatus(key: string, patch: Partial<SceneStatus>) {
     setStatuses((prev) => ({
       ...prev,
-      [key]: { ...getStatus(key), ...patch },
+      [key]: { ...(prev[key] || getStatus(key)), ...patch },
     }));
   }
 
@@ -105,6 +197,95 @@ export default function YouTubePage() {
   function setEditableNarration(hook: YouTubeScript, value: string) {
     const key = getFullNarrationKey(hook);
     setFullNarrations((prev) => ({ ...prev, [key]: value }));
+  }
+
+  // ── Library: bulk upload ──────────────────────────────────────────
+
+  function addToLibrary(files: FileList | File[]) {
+    const newImages: LibraryImage[] = [];
+    for (const file of Array.from(files)) {
+      if (!file.type.startsWith("image/")) continue;
+      const url = URL.createObjectURL(file);
+      newImages.push({
+        id: `local-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+        name: file.name,
+        url,
+        tags: extractTags(file.name),
+      });
+    }
+    setLibrary((prev) => [...prev, ...newImages]);
+    return newImages;
+  }
+
+  // ── Auto-assign images to scenes ──────────────────────────────────
+
+  function autoAssignImages(hook: YouTubeScript) {
+    if (library.length === 0) return;
+
+    const courseKeywords = COURSE_TERRITORY_MAP[hook.courseSlug] || [];
+    const used = new Set<string>();
+
+    hook.scenes.forEach((scene, idx) => {
+      const key = sceneKey(hook.courseSlug, hook.hookIndex, idx);
+      const st = getStatus(key);
+      if (st.imageStatus === "done") return; // already has image
+
+      const sceneKeywords = [
+        ...(SCENE_IMAGE_HINTS[scene.type] || []),
+        ...courseKeywords,
+      ];
+
+      // Score each library image
+      let bestImg: LibraryImage | null = null;
+      let bestScore = 0;
+
+      for (const img of library) {
+        if (used.has(img.id)) continue;
+        const s = scoreMatch(img.tags, sceneKeywords);
+        if (s > bestScore) {
+          bestScore = s;
+          bestImg = img;
+        }
+      }
+
+      // If no keyword match, use territory images for territory scenes, silhouettes for silhouette scenes
+      if (!bestImg) {
+        const isSilhouetteScene = ["pergunta", "situacao", "gesto"].includes(scene.type);
+        for (const img of library) {
+          if (used.has(img.id)) continue;
+          const isSilhouetteImg = img.tags.some((t) => t.includes("silhueta") || t.includes("silhouette"));
+          if (isSilhouetteScene === isSilhouetteImg) {
+            bestImg = img;
+            break;
+          }
+        }
+      }
+
+      // Fallback: use any remaining image
+      if (!bestImg) {
+        for (const img of library) {
+          if (!used.has(img.id)) {
+            bestImg = img;
+            break;
+          }
+        }
+      }
+
+      if (bestImg) {
+        used.add(bestImg.id);
+        updateStatus(key, { imageStatus: "done", imageUrl: bestImg.url });
+      }
+    });
+  }
+
+  // ── Bulk: upload + auto-assign in one step ────────────────────────
+
+  function handleBulkDrop(hook: YouTubeScript, files: FileList | File[]) {
+    const newImages = addToLibrary(files);
+    if (newImages.length > 0) {
+      // Small delay to let state update
+      setTimeout(() => autoAssignImages(hook), 100);
+    }
   }
 
   // ── Audio generation ──────────────────────────────────────────────
@@ -153,12 +334,9 @@ export default function YouTubePage() {
     }
   }
 
-  // ── Image generation per scene ────────────────────────────────────
+  // ── Image generation per scene (ThinkDiffusion) ───────────────────
 
-  async function generateSceneImage(
-    hook: YouTubeScript,
-    sceneIdx: number
-  ) {
+  async function generateSceneImage(hook: YouTubeScript, sceneIdx: number) {
     const scene = hook.scenes[sceneIdx];
     if (!scene) return;
     const key = sceneKey(hook.courseSlug, hook.hookIndex, sceneIdx);
@@ -200,14 +378,8 @@ export default function YouTubePage() {
     }
   }
 
-  // ── Batch: all images for a hook ──────────────────────────────────
-
   async function batchGenerateImages(hook: YouTubeScript) {
-    if (!comfyuiUrl.trim()) {
-      alert("Coloca o URL do ComfyUI (ThinkDiffusion).");
-      return;
-    }
-
+    if (!comfyuiUrl.trim()) return;
     shouldStop.current = false;
     setBatchRunning(true);
     setBatchProgress({ current: 0, total: hook.scenes.length });
@@ -215,34 +387,36 @@ export default function YouTubePage() {
     for (let i = 0; i < hook.scenes.length; i++) {
       if (shouldStop.current) break;
       setBatchProgress({ current: i + 1, total: hook.scenes.length });
-
       const key = sceneKey(hook.courseSlug, hook.hookIndex, i);
       const st = getStatus(key);
       if (st.imageStatus === "done") continue;
-
       await generateSceneImage(hook, i);
-
-      if (i < hook.scenes.length - 1) {
-        await new Promise((r) => setTimeout(r, 3000));
-      }
+      if (i < hook.scenes.length - 1) await new Promise((r) => setTimeout(r, 3000));
     }
-
     setBatchRunning(false);
-    setBatchProgress({ current: 0, total: 0 });
   }
 
-  // ── Upload handler ────────────────────────────────────────────────
+  // ── Single image upload ───────────────────────────────────────────
 
   function handleImageUpload(hook: YouTubeScript, sceneIdx: number, file: File) {
     const url = URL.createObjectURL(file);
     const key = sceneKey(hook.courseSlug, hook.hookIndex, sceneIdx);
     updateStatus(key, { imageStatus: "done", imageUrl: url });
+    // Also add to library
+    addToLibrary([file]);
   }
 
   function handleAudioUpload(hook: YouTubeScript, file: File) {
     const url = URL.createObjectURL(file);
     const key = `${hook.courseSlug}-hook${hook.hookIndex}-full`;
     updateStatus(key, { audioStatus: "done", audioUrl: url });
+  }
+
+  // ── Assign library image to scene ─────────────────────────────────
+
+  function assignLibraryImage(hook: YouTubeScript, sceneIdx: number, img: LibraryImage) {
+    const key = sceneKey(hook.courseSlug, hook.hookIndex, sceneIdx);
+    updateStatus(key, { imageStatus: "done", imageUrl: img.url });
   }
 
   // ── Counts ────────────────────────────────────────────────────────
@@ -254,17 +428,13 @@ export default function YouTubePage() {
     }).length;
   }
 
-  // ── Build composer scenes ──────────────────────────────────────────
+  // ── Build composer scenes ─────────────────────────────────────────
 
   function buildComposerScenes(hook: YouTubeScript): ComposerScene[] {
     return hook.scenes.map((scene: VideoScene, idx: number) => {
       const key = sceneKey(hook.courseSlug, hook.hookIndex, idx);
       const st = getStatus(key);
-      return {
-        ...scene,
-        imageUrl: st.imageUrl,
-        approved: true,
-      };
+      return { ...scene, imageUrl: st.imageUrl, approved: true };
     });
   }
 
@@ -284,94 +454,138 @@ export default function YouTubePage() {
             HUB
           </Link>
           <span className="text-mundo-border">/</span>
-          <h1 className="font-serif text-3xl text-white">
-            Videos YouTube
-          </h1>
+          <h1 className="font-serif text-3xl text-white">Videos YouTube</h1>
         </div>
         <p className="text-mundo-muted text-sm mb-8">
-          Pipeline: scripts → audio (ElevenLabs) → imagens (ThinkDiffusion) → montagem (CapCut/DaVinci)
+          Larga as imagens do OneDrive, gera o audio, e o video monta-se sozinho.
         </p>
 
-        {/* ── Config ─────────────────────────────────────────── */}
-        <div className="bg-mundo-bg-surface rounded-xl p-6 mb-8 space-y-4">
-          <h2 className="text-white font-sans font-medium mb-4">Configuracao</h2>
+        {/* ── Config (collapsible) ─────────────────────────────── */}
+        <div className="bg-mundo-bg-surface rounded-xl mb-8 overflow-hidden">
+          <button
+            onClick={() => setShowConfig(!showConfig)}
+            className="w-full flex items-center justify-between px-6 py-4 text-sm text-mundo-muted hover:text-mundo-creme"
+          >
+            <span>Configuracao (ElevenLabs, ThinkDiffusion)</span>
+            <span className={`transition-transform ${showConfig ? "rotate-180" : ""}`}>&#9662;</span>
+          </button>
+          {showConfig && (
+            <div className="px-6 pb-6 grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-mundo-bg pt-4">
+              <div>
+                <label className="block text-xs text-mundo-muted mb-1">ElevenLabs API Key</label>
+                <input type="password" value={apiKey} onChange={(e) => setApiKey(e.target.value)}
+                  className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
+                  placeholder="xi-... (vazio = env var do Vercel)" />
+              </div>
+              <div>
+                <label className="block text-xs text-mundo-muted mb-1">Voice ID</label>
+                <input type="text" value={voiceId} onChange={(e) => setVoiceId(e.target.value)}
+                  className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white" />
+              </div>
+              <div>
+                <label className="block text-xs text-mundo-muted mb-1">Modelo</label>
+                <select value={modelo} onChange={(e) => setModelo(e.target.value as "v2" | "v3")}
+                  className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white">
+                  <option value="v2">Multilingual v2</option>
+                  <option value="v3">Eleven v3</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-xs text-mundo-muted mb-1">Velocidade: {speed.toFixed(1)}x</label>
+                <input type="range" min="0.5" max="1.5" step="0.05" value={speed}
+                  onChange={(e) => setSpeed(parseFloat(e.target.value))} className="w-full accent-mundo-dourado" />
+              </div>
+              <div>
+                <label className="block text-xs text-mundo-muted mb-1">ComfyUI URL (ThinkDiffusion)</label>
+                <input type="text" value={comfyuiUrl} onChange={(e) => setComfyuiUrl(e.target.value)}
+                  className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
+                  placeholder="https://your-instance.thinkdiffusion.com" />
+              </div>
+              <div>
+                <label className="block text-xs text-mundo-muted mb-1">LoRA (opcional)</label>
+                <input type="text" value={loraName} onChange={(e) => setLoraName(e.target.value)}
+                  className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
+                  placeholder="seteveus-style.safetensors" />
+              </div>
+            </div>
+          )}
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-xs text-mundo-muted mb-1">ElevenLabs API Key</label>
-              <input
-                type="password"
-                value={apiKey}
-                onChange={(e) => setApiKey(e.target.value)}
-                className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
-                placeholder="xi-... (deixa vazio para usar env var do Vercel)"
-              />
-            </div>
-            <div>
-              <label className="block text-xs text-mundo-muted mb-1">Voice ID</label>
-              <input
-                type="text"
-                value={voiceId}
-                onChange={(e) => setVoiceId(e.target.value)}
-                className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
-              />
-            </div>
-            <div>
-              <label className="block text-xs text-mundo-muted mb-1">Modelo ElevenLabs</label>
-              <select
-                value={modelo}
-                onChange={(e) => setModelo(e.target.value as "v2" | "v3")}
-                className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
-              >
-                <option value="v2">Multilingual v2</option>
-                <option value="v3">Eleven v3</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-xs text-mundo-muted mb-1">
-                Velocidade: {speed.toFixed(1)}x
+        {/* ── Image Library (drag-drop zone) ─────────────────── */}
+        <div
+          className={`rounded-xl mb-8 border-2 border-dashed transition-all ${
+            libraryDragOver
+              ? "border-mundo-dourado bg-mundo-dourado/5"
+              : library.length > 0
+              ? "border-mundo-border bg-mundo-bg-surface"
+              : "border-mundo-muted-dark bg-mundo-bg-surface"
+          }`}
+          onDragOver={(e) => { e.preventDefault(); setLibraryDragOver(true); }}
+          onDragLeave={() => setLibraryDragOver(false)}
+          onDrop={(e) => {
+            e.preventDefault();
+            setLibraryDragOver(false);
+            if (e.dataTransfer.files.length > 0) {
+              addToLibrary(e.dataTransfer.files);
+            }
+          }}
+        >
+          {library.length === 0 ? (
+            <div className="py-12 text-center">
+              <p className="text-mundo-muted text-lg mb-2">
+                Larga aqui as imagens do OneDrive
+              </p>
+              <p className="text-mundo-muted-dark text-xs mb-4">
+                Aceita multiplas imagens. Auto-atribui as cenas por nome do ficheiro.
+              </p>
+              <label className="inline-block px-4 py-2 bg-mundo-bg border border-mundo-border rounded text-sm text-mundo-muted cursor-pointer hover:text-mundo-creme">
+                Ou clica para seleccionar
+                <input type="file" accept="image/*" multiple
+                  onChange={(e) => { if (e.target.files) addToLibrary(e.target.files); }}
+                  className="hidden" />
               </label>
-              <input
-                type="range"
-                min="0.5"
-                max="1.5"
-                step="0.05"
-                value={speed}
-                onChange={(e) => setSpeed(parseFloat(e.target.value))}
-                className="w-full accent-mundo-dourado"
-              />
+              {libraryLoading && <p className="text-xs text-mundo-muted mt-3">A carregar do Supabase...</p>}
             </div>
-            <div>
-              <label className="block text-xs text-mundo-muted mb-1">ComfyUI URL (ThinkDiffusion)</label>
-              <input
-                type="text"
-                value={comfyuiUrl}
-                onChange={(e) => setComfyuiUrl(e.target.value)}
-                className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
-                placeholder="https://your-instance.thinkdiffusion.com"
-              />
+          ) : (
+            <div className="p-4">
+              <div className="flex items-center justify-between mb-3">
+                <p className="text-xs text-mundo-muted uppercase">
+                  Biblioteca — {library.length} imagens
+                </p>
+                <div className="flex items-center gap-2">
+                  <label className="text-xs text-mundo-muted cursor-pointer hover:text-mundo-creme">
+                    + Adicionar mais
+                    <input type="file" accept="image/*" multiple
+                      onChange={(e) => { if (e.target.files) addToLibrary(e.target.files); }}
+                      className="hidden" />
+                  </label>
+                  <button onClick={() => setLibrary([])}
+                    className="text-xs text-mundo-muted-dark hover:text-red-400">Limpar</button>
+                </div>
+              </div>
+              <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 gap-2">
+                {library.map((img) => (
+                  <div key={img.id} className="aspect-square rounded overflow-hidden border border-mundo-border group relative"
+                    title={img.name}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={img.url} alt={img.name} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-1">
+                      <span className="text-[8px] text-white text-center leading-tight break-all">
+                        {img.name.replace(/\.[^.]+$/, "")}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div>
-              <label className="block text-xs text-mundo-muted mb-1">LoRA Model Name (opcional)</label>
-              <input
-                type="text"
-                value={loraName}
-                onChange={(e) => setLoraName(e.target.value)}
-                className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
-                placeholder="mundo-dos-veus-v1.safetensors"
-              />
-            </div>
-          </div>
+          )}
         </div>
 
         {/* ── Course selector ────────────────────────────────── */}
         <div className="mb-8">
           <label className="block text-sm text-mundo-muted mb-2">Selecciona o curso</label>
-          <select
-            value={selectedCourse}
-            onChange={(e) => setSelectedCourse(e.target.value)}
-            className="bg-mundo-bg-surface border border-mundo-border rounded px-4 py-3 text-white w-full max-w-md"
-          >
+          <select value={selectedCourse} onChange={(e) => setSelectedCourse(e.target.value)}
+            className="bg-mundo-bg-surface border border-mundo-border rounded px-4 py-3 text-white w-full max-w-md">
             <option value="">-- Escolhe um curso --</option>
             {courses.map((c) => {
               const courseHooks = getScriptsForCourse(c.slug);
@@ -391,17 +605,14 @@ export default function YouTubePage() {
               const audioKey = `${hook.courseSlug}-hook${hook.hookIndex}-full`;
               const audioSt = getStatus(audioKey);
               const imageCount = getHookImageCount(hook);
+              const ready = isReadyToCompose(hook);
 
               return (
-                <details
-                  key={`${hook.courseSlug}-${hook.hookIndex}`}
-                  className="bg-mundo-bg-surface rounded-xl overflow-hidden group"
-                >
+                <details key={`${hook.courseSlug}-${hook.hookIndex}`}
+                  className="bg-mundo-bg-surface rounded-xl overflow-hidden group">
                   <summary className="flex items-center justify-between px-6 py-4 cursor-pointer list-none">
                     <div className="flex items-center gap-3">
-                      <span className="text-mundo-violeta font-mono text-sm w-8">
-                        H{hook.hookIndex + 1}
-                      </span>
+                      <span className="text-mundo-violeta font-mono text-sm w-8">H{hook.hookIndex + 1}</span>
                       <div>
                         <span className="text-white">{hook.title}</span>
                         <span className="text-xs text-mundo-muted ml-3">
@@ -410,108 +621,105 @@ export default function YouTubePage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
-                      {audioSt.audioStatus === "done" && (
+                      {ready && <span className="text-xs text-green-400">Pronto</span>}
+                      {!ready && audioSt.audioStatus === "done" && (
                         <span className="text-xs text-green-400">Audio OK</span>
                       )}
                       <span className="text-xs text-mundo-muted">
                         Imagens: {imageCount}/{hook.scenes.length}
                       </span>
-                      <span className="text-mundo-muted group-open:rotate-180 transition-transform">
-                        &#9662;
-                      </span>
+                      <span className="text-mundo-muted group-open:rotate-180 transition-transform">&#9662;</span>
                     </div>
                   </summary>
 
                   <div className="px-6 pb-6 border-t border-mundo-bg space-y-6 pt-4">
-                    {/* ── Full narration (editable) ── */}
-                    <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <p className="text-xs text-mundo-muted uppercase">
-                          Narracao completa — editavel
-                        </p>
-                        <button
-                          onClick={() => setEditableNarration(hook, getFullNarration(hook))}
-                          className="text-xs text-mundo-muted hover:text-mundo-creme"
-                        >
-                          Repor original
-                        </button>
-                      </div>
-                      <textarea
-                        value={getEditableNarration(hook)}
-                        onChange={(e) => setEditableNarration(hook, e.target.value)}
-                        className="w-full bg-mundo-bg border border-mundo-border rounded-lg px-4 py-3 text-sm text-mundo-creme-suave leading-relaxed resize-y min-h-32 max-h-64"
-                        spellCheck={false}
-                      />
 
-                      <div className="flex items-center gap-3 mt-3">
-                        <button
-                          onClick={() => generateHookAudio(hook)}
+                    {/* ── Quick actions bar ── */}
+                    <div className="flex flex-wrap items-center gap-3">
+                      {library.length > 0 && imageCount < hook.scenes.length && (
+                        <button onClick={() => autoAssignImages(hook)}
+                          className="text-sm px-4 py-2 bg-mundo-violeta text-white rounded hover:bg-mundo-violeta/80">
+                          Auto-atribuir imagens da biblioteca
+                        </button>
+                      )}
+                      {audioSt.audioStatus !== "done" && (
+                        <button onClick={() => generateHookAudio(hook)}
                           disabled={audioSt.audioStatus === "generating"}
-                          className={`text-sm px-4 py-2 rounded ${
-                            audioSt.audioStatus === "done"
-                              ? "bg-green-800/40 text-green-300"
-                              : audioSt.audioStatus === "generating"
-                              ? "bg-yellow-800/40 text-yellow-300 animate-pulse"
-                              : audioSt.audioStatus === "error"
-                              ? "bg-red-800/40 text-red-300"
-                              : "bg-mundo-dourado text-mundo-bg hover:bg-mundo-dourado-quente"
-                          }`}
-                        >
-                          {audioSt.audioStatus === "generating"
-                            ? "A gerar audio..."
-                            : audioSt.audioStatus === "done"
-                            ? "Regerar audio"
-                            : audioSt.audioStatus === "error"
-                            ? "Tentar de novo"
-                            : "Gerar Audio (ElevenLabs)"}
+                          className="text-sm px-4 py-2 bg-mundo-dourado text-mundo-bg rounded hover:bg-mundo-dourado-quente disabled:opacity-40">
+                          {audioSt.audioStatus === "generating" ? "A gerar audio..." : "Gerar Audio"}
                         </button>
-
+                      )}
+                      {audioSt.audioStatus !== "done" && (
                         <label className="text-sm px-4 py-2 bg-mundo-bg border border-mundo-border rounded text-mundo-muted cursor-pointer hover:text-mundo-creme">
                           Carregar MP3
-                          <input
-                            type="file"
-                            accept="audio/*"
-                            onChange={(e) => {
-                              const f = e.target.files?.[0];
-                              if (f) handleAudioUpload(hook, f);
-                            }}
-                            className="hidden"
-                          />
+                          <input type="file" accept="audio/*"
+                            onChange={(e) => { const f = e.target.files?.[0]; if (f) handleAudioUpload(hook, f); }}
+                            className="hidden" />
                         </label>
-                      </div>
-
-                      {audioSt.audioError && (
-                        <p className="text-xs text-red-400 mt-2">{audioSt.audioError}</p>
                       )}
-                      {audioSt.audioUrl && (
-                        <audio controls src={audioSt.audioUrl} className="mt-3 h-10 w-full max-w-lg" />
+                      {comfyuiUrl.trim() && imageCount < hook.scenes.length && !batchRunning && (
+                        <button onClick={() => batchGenerateImages(hook)}
+                          className="text-sm px-4 py-2 bg-mundo-border text-mundo-muted rounded hover:bg-mundo-bg-surface">
+                          Gerar imagens (ThinkDiffusion)
+                        </button>
+                      )}
+                      {batchRunning && (
+                        <button onClick={() => { shouldStop.current = true; }}
+                          className="text-sm px-3 py-2 bg-red-600/80 text-white rounded">
+                          Parar ({batchProgress.current}/{batchProgress.total})
+                        </button>
                       )}
                     </div>
 
+                    {/* Audio status */}
+                    {audioSt.audioError && <p className="text-xs text-red-400">{audioSt.audioError}</p>}
+                    {audioSt.audioUrl && (
+                      <div className="flex items-center gap-3">
+                        <audio controls src={audioSt.audioUrl} className="h-10 flex-1 max-w-lg" />
+                        <button onClick={() => generateHookAudio(hook)}
+                          disabled={audioSt.audioStatus === "generating"}
+                          className="text-xs text-mundo-muted hover:text-mundo-creme">
+                          Regerar
+                        </button>
+                      </div>
+                    )}
+
+                    {/* ── Narration (collapsible) ── */}
+                    <details className="bg-mundo-bg rounded-lg">
+                      <summary className="px-4 py-3 text-xs text-mundo-muted cursor-pointer">
+                        Script da narracao (editavel)
+                      </summary>
+                      <div className="px-4 pb-4">
+                        <textarea
+                          value={getEditableNarration(hook)}
+                          onChange={(e) => setEditableNarration(hook, e.target.value)}
+                          className="w-full bg-transparent border border-mundo-border rounded-lg px-3 py-2 text-sm text-mundo-creme-suave leading-relaxed resize-y min-h-32 max-h-64"
+                          spellCheck={false} />
+                        <button onClick={() => setEditableNarration(hook, getFullNarration(hook))}
+                          className="text-xs text-mundo-muted hover:text-mundo-creme mt-1">
+                          Repor original
+                        </button>
+                      </div>
+                    </details>
+
                     {/* ── Scenes with images ── */}
                     <div>
-                      <div className="flex items-center justify-between mb-3">
-                        <p className="text-xs text-mundo-muted uppercase">
-                          Cenas — imagens para cada momento
+                      <p className="text-xs text-mundo-muted uppercase mb-3">
+                        Cenas — clica na imagem para substituir, ou larga imagens na biblioteca acima
+                      </p>
+
+                      {/* Bulk drop zone for this hook */}
+                      <div
+                        className="border border-dashed border-mundo-muted-dark rounded-lg p-2 mb-3 text-center"
+                        onDragOver={(e) => e.preventDefault()}
+                        onDrop={(e) => {
+                          e.preventDefault();
+                          if (e.dataTransfer.files.length > 0) handleBulkDrop(hook, e.dataTransfer.files);
+                        }}
+                      >
+                        <p className="text-xs text-mundo-muted-dark py-1">
+                          Larga imagens aqui para auto-atribuir a este hook
                         </p>
-                        <div className="flex items-center gap-2">
-                          {batchRunning ? (
-                            <button
-                              onClick={() => { shouldStop.current = true; }}
-                              className="text-xs bg-red-600/80 text-white px-3 py-1.5 rounded hover:bg-red-600"
-                            >
-                              Parar ({batchProgress.current}/{batchProgress.total})
-                            </button>
-                          ) : (
-                            <button
-                              onClick={() => batchGenerateImages(hook)}
-                              disabled={!comfyuiUrl.trim()}
-                              className="text-xs bg-mundo-violeta text-white px-3 py-1.5 rounded hover:bg-mundo-violeta/80 disabled:opacity-40"
-                            >
-                              Gerar todas as imagens
-                            </button>
-                          )}
-                        </div>
                       </div>
 
                       <div className="space-y-3">
@@ -519,10 +727,7 @@ export default function YouTubePage() {
                           const key = sceneKey(hook.courseSlug, hook.hookIndex, idx);
                           const st = getStatus(key);
                           return (
-                            <div
-                              key={idx}
-                              className="flex gap-4 bg-mundo-bg rounded-lg p-4"
-                            >
+                            <div key={idx} className="flex gap-4 bg-mundo-bg rounded-lg p-4">
                               {/* Image preview / upload */}
                               <div
                                 className="w-40 h-24 rounded-lg overflow-hidden flex-shrink-0 border border-mundo-border cursor-pointer relative group/img"
@@ -530,11 +735,17 @@ export default function YouTubePage() {
                                   const input = document.createElement("input");
                                   input.type = "file";
                                   input.accept = "image/*";
-                                  input.onchange = (e) => {
-                                    const f = (e.target as HTMLInputElement).files?.[0];
+                                  input.onchange = (ev) => {
+                                    const f = (ev.target as HTMLInputElement).files?.[0];
                                     if (f) handleImageUpload(hook, idx, f);
                                   };
                                   input.click();
+                                }}
+                                onDragOver={(e) => e.preventDefault()}
+                                onDrop={(e) => {
+                                  e.preventDefault();
+                                  const f = e.dataTransfer.files[0];
+                                  if (f?.type.startsWith("image/")) handleImageUpload(hook, idx, f);
                                 }}
                               >
                                 {st.imageUrl ? (
@@ -558,51 +769,44 @@ export default function YouTubePage() {
                                   <span className="text-mundo-violeta font-mono text-xs uppercase">
                                     {idx + 1}. {scene.type}
                                   </span>
-                                  <span className="text-mundo-muted text-xs">
-                                    ~{scene.durationSec}s
-                                  </span>
+                                  <span className="text-mundo-muted text-xs">~{scene.durationSec}s</span>
                                 </div>
                                 {scene.overlayText && (
-                                  <p className="text-sm text-white mb-1">
-                                    &ldquo;{scene.overlayText}&rdquo;
-                                  </p>
+                                  <p className="text-sm text-white mb-1">&ldquo;{scene.overlayText}&rdquo;</p>
                                 )}
                                 {scene.narration && (
-                                  <p className="text-xs text-mundo-muted-dark line-clamp-2">
-                                    {scene.narration}
-                                  </p>
+                                  <p className="text-xs text-mundo-muted-dark line-clamp-2">{scene.narration}</p>
                                 )}
-                                <p className="text-xs text-mundo-border mt-1 italic">
-                                  {scene.visualNote}
-                                </p>
-                                {st.imageError && (
-                                  <p className="text-xs text-red-400 mt-1">{st.imageError}</p>
-                                )}
+                                <p className="text-xs text-mundo-border mt-1 italic">{scene.visualNote}</p>
+                                {st.imageError && <p className="text-xs text-red-400 mt-1">{st.imageError}</p>}
                               </div>
 
                               {/* Actions */}
                               <div className="flex flex-col gap-2 shrink-0">
-                                <button
-                                  onClick={() => generateSceneImage(hook, idx)}
-                                  disabled={!comfyuiUrl.trim() || st.imageStatus === "generating"}
-                                  className={`text-xs px-3 py-1.5 rounded ${
-                                    st.imageStatus === "done"
-                                      ? "bg-green-800/40 text-green-300"
-                                      : st.imageStatus === "generating"
-                                      ? "bg-yellow-800/40 text-yellow-300 animate-pulse"
-                                      : st.imageStatus === "error"
-                                      ? "bg-red-800/40 text-red-300"
-                                      : "bg-mundo-border text-mundo-muted hover:bg-mundo-bg-surface"
-                                  }`}
-                                >
-                                  {st.imageStatus === "generating"
-                                    ? "A gerar..."
-                                    : st.imageStatus === "done"
-                                    ? "Regerar"
-                                    : st.imageStatus === "error"
-                                    ? "Tentar de novo"
-                                    : "Gerar imagem"}
-                                </button>
+                                {comfyuiUrl.trim() && (
+                                  <button onClick={() => generateSceneImage(hook, idx)}
+                                    disabled={st.imageStatus === "generating"}
+                                    className={`text-xs px-3 py-1.5 rounded ${
+                                      st.imageStatus === "generating"
+                                        ? "bg-yellow-800/40 text-yellow-300 animate-pulse"
+                                        : "bg-mundo-border text-mundo-muted hover:bg-mundo-bg-surface"
+                                    }`}>
+                                    {st.imageStatus === "generating" ? "A gerar..." : "Gerar (IA)"}
+                                  </button>
+                                )}
+                                {/* Library quick-pick: show first 3 matching images */}
+                                {!st.imageUrl && library.length > 0 && (
+                                  <div className="flex gap-1">
+                                    {library.slice(0, 3).map((img) => (
+                                      <button key={img.id} onClick={() => assignLibraryImage(hook, idx, img)}
+                                        className="w-6 h-6 rounded overflow-hidden border border-mundo-border hover:border-mundo-dourado"
+                                        title={img.name}>
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                        <img src={img.url} alt="" className="w-full h-full object-cover" />
+                                      </button>
+                                    ))}
+                                  </div>
+                                )}
                               </div>
                             </div>
                           );
@@ -610,15 +814,13 @@ export default function YouTubePage() {
                       </div>
                     </div>
 
-                    {/* ── Compor Video Automaticamente ── */}
+                    {/* ── Compor Video ── */}
                     <div className="border-t border-mundo-bg pt-4">
                       {isReadyToCompose(hook) ? (
                         <div>
-                          <h3 className="text-sm text-mundo-dourado mb-3">
-                            Compor Video
-                          </h3>
+                          <h3 className="text-sm text-mundo-dourado mb-3">Compor Video</h3>
                           <p className="text-xs text-mundo-muted mb-4">
-                            Audio + imagens prontas. O video e composto automaticamente com transicoes dissolve, Ken Burns e texto animado.
+                            Audio + {imageCount} imagens. Transicoes dissolve, Ken Burns, texto animado.
                           </p>
                           <VideoComposer
                             scenes={buildComposerScenes(hook)}
@@ -627,22 +829,13 @@ export default function YouTubePage() {
                           />
                         </div>
                       ) : (
-                        <div>
-                          <p className="text-xs text-mundo-muted mb-2">
-                            Para compor o video automaticamente, gera o audio e pelo menos uma imagem.
-                          </p>
-                          <div className="flex gap-3">
-                            {audioSt.audioUrl && (
-                              <a
-                                href={audioSt.audioUrl}
-                                download={`${hook.courseSlug}-hook${hook.hookIndex + 1}.mp3`}
-                                className="text-xs px-3 py-1.5 bg-mundo-dourado/20 text-mundo-dourado rounded hover:bg-mundo-dourado/30"
-                              >
-                                Descarregar audio
-                              </a>
-                            )}
-                          </div>
-                        </div>
+                        <p className="text-xs text-mundo-muted">
+                          {audioSt.audioStatus !== "done" && imageCount === 0
+                            ? "Falta: audio + imagens"
+                            : audioSt.audioStatus !== "done"
+                            ? "Falta: audio"
+                            : "Falta: pelo menos 1 imagem"}
+                        </p>
                       )}
                     </div>
                   </div>
@@ -653,9 +846,7 @@ export default function YouTubePage() {
         )}
 
         {selectedCourse && hooks.length === 0 && (
-          <p className="text-mundo-muted text-sm">
-            Este curso ainda nao tem hooks YouTube definidos.
-          </p>
+          <p className="text-mundo-muted text-sm">Este curso ainda nao tem hooks YouTube definidos.</p>
         )}
       </div>
     </div>
