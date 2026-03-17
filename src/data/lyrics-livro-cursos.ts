@@ -1559,4 +1559,1156 @@ Sing, because the silence asked you
 sing, because the song is you
 `,
 
+  // ═══════════════════════════════════════════
+  // O FIO INVISIVEL — "A ligacao entre todos nos"
+  // Lago dos Reflexos Partilhados
+  // ═══════════════════════════════════════════
+
+  "curso-fio-invisivel/1": `[Verse 1]
+O lago esta parado
+a superficie nao mostra nada
+Sozinha na margem
+sem reflexo, sem pegada
+
+[Verse 2]
+Acreditaste que eras ilha
+que o teu caminho era so teu
+Mas por baixo da agua escura
+ha fios que o silencio teceu
+
+[Chorus]
+Superficie opaca
+que esconde o que nos liga
+Um fio invisivel
+que nenhuma distancia obriga
+
+[Bridge]
+Nao precisas de o ver
+para saber que existe
+O fio entre nos
+e anterior a qualquer triste
+
+[Outro]
+O lago espera
+que olhes para a agua
+e vejas mais do que a ti mesma
+`,
+
+  "curso-fio-invisivel/2": `[Verse 1]
+There's a golden thread between us
+thin as breath and strong as bone
+You cannot see it in the daylight
+but you feel it when alone
+
+[Verse 2]
+Every wound you heal in silence
+sends a ripple through the lake
+Every truth you dare to whisper
+makes another mirror wake
+
+[Chorus]
+Golden thread, golden thread
+connecting what was never said
+Between your healing and the world
+an invisible belonging is unfurled
+
+[Bridge]
+You are not alone in this
+your courage touches those you'll never know
+The thread remembers what the mind forgets
+that we are woven in the undertow
+
+[Outro]
+Pull the thread gently
+and feel who answers on the other side
+`,
+
+  "curso-fio-invisivel/3": `[Verse 1]
+Na agua transparente
+vejo o rosto da minha avo
+Ao lado, o da minha mae
+e ao fundo, o da filha que nao tenho
+
+[Verse 2]
+Geracoes no mesmo lago
+cada uma com o seu veu
+Mas o fio que nos liga
+e mais antigo que qualquer ceu
+
+[Chorus]
+Reflexos de quem veio antes
+reflexos de quem vem depois
+O lago guarda todas
+e nao distingue as nossas vozes
+
+[Outro]
+Somos todas a mesma agua
+em corpos diferentes
+O lago sabe isso
+desde sempre
+`,
+
+  "curso-fio-invisivel/4": `[Verse 1]
+The reflections merge as one
+individual and whole
+The lake is finally transparent
+showing every single soul
+
+[Verse 2]
+What seemed like isolation
+was a thread too thin to see
+Now the golden web is shining
+and it starts and ends with me
+
+[Chorus]
+Unity, unity
+not the loss of who I am
+But the knowing that my healing
+is a thread in something grand
+
+[Bridge]
+I am one, I am all
+I am drop and I am sea
+The invisible connection
+was the truest part of me
+
+[Outro]
+The lake reflects it clearly now
+we were never truly apart
+The thread was always golden
+and it lives inside the heart
+`,
+
+  // ═══════════════════════════════════════════
+  // O ESPELHO DO OUTRO — "O que o outro revela"
+  // Galeria dos Reflexos Vivos
+  // ═══════════════════════════════════════════
+
+  "curso-espelho-outro/1": `[Verse 1]
+Na galeria escura
+os espelhos mostram outros rostos
+Procuro-me em cada moldura
+e encontro apenas os teus gestos
+
+[Verse 2]
+O que me irrita em ti
+e o que nao aceito em mim
+O que admiro no teu olhar
+e o que ainda nao deixei sair
+
+[Chorus]
+Galeria escura
+onde o outro e o espelho
+O que vejo la fora
+vive dentro do meu ventre velho
+
+[Outro]
+Antes de julgar o outro
+olha para o que ele te mostra de ti
+`,
+
+  "curso-espelho-outro/2": `[Verse 1]
+The mirror shows my face at last
+mixed with shadows of your own
+What I hated in your silence
+was the silence I had grown
+
+[Verse 2]
+What I loved in your ambition
+was the dream I never dared
+What I feared in your rejection
+was the wound I never shared
+
+[Chorus]
+Mirror self, mirror self
+you were showing me all along
+Every judgment was a message
+every critic was a song
+
+[Bridge]
+I see me now in every face
+the brave, the broken, the unkind
+The other was a mirror
+for the parts I left behind
+
+[Outro]
+Partial recognition
+is the bravest place to start
+`,
+
+  "curso-espelho-outro/3": `[Verse 1]
+Os espelhos ficam claros
+o outro ja nao me define
+Vejo-me com os meus contornos
+sem precisar que ninguem me alinhe
+
+[Verse 2]
+O que era julgamento
+tornou-se reconhecimento
+O que era projeccao
+tornou-se integracao
+
+[Chorus]
+Integracao
+o outro como contexto
+nao como identidade
+O espelho mostra-me inteira
+com toda a minha verdade
+
+[Outro]
+Ja nao preciso do outro
+para saber quem sou
+O espelho limpo mostra
+o que sempre esteve no meu fundo
+`,
+
+  "curso-espelho-outro/4": `[Verse 1]
+Clear glass, clear glass
+I see myself at last
+The others are the background
+to the present, not the past
+
+[Verse 2]
+No more projection
+no more hiding in your face
+I stand before the mirror
+and I recognize my place
+
+[Chorus]
+Clear glass shows the truth
+that I was looking for outside
+What was always mine to carry
+was the self I tried to hide
+
+[Bridge]
+Thank you for the mirror
+thank you for the pain
+Every face that triggered
+helped me see myself again
+
+[Outro]
+The gallery is peaceful now
+each mirror shows the same
+A woman whole and unafraid
+who finally knows her name
+`,
+
+  // ═══════════════════════════════════════════
+  // O SILENCIO QUE GRITA — "O que nunca foi dito"
+  // Caverna dos Ecos Mudos
+  // ═══════════════════════════════════════════
+
+  "curso-silencio-grita/1": `[Verse 1]
+A caverna e silenciosa
+mas as paredes tem marcas
+Palavras que nunca foram ditas
+vivem como sombras nas arcas
+
+[Verse 2]
+A tua familia calou
+o que devia ter gritado
+E tu herdaste o silencio
+como quem herda um legado
+
+[Chorus]
+Caverna muda
+onde os ecos foram presos
+O que nunca foi dito
+pesa mais que mil excessos
+
+[Outro]
+O silencio da familia
+nao e paz — e medo antigo
+`,
+
+  "curso-silencio-grita/2": `[Verse 1]
+The first word cracks the silence
+like a stone against the wall
+It echoes through the cavern
+and it frightens as it falls
+
+[Verse 2]
+For years they kept it quiet
+every truth a swallowed scream
+And now you stand here shaking
+daring to disturb the dream
+
+[Chorus]
+First word, first word
+breaking what was never broken
+The silence was the prison
+and the word is the first token
+
+[Bridge]
+It does not need to be perfect
+it does not need to be loud
+It just needs to be honest
+and spoken, not just thought
+
+[Outro]
+The cavern trembles
+but it does not fall
+The first word held more courage
+than the silence held at all
+`,
+
+  "curso-silencio-grita/3": `[Verse 1]
+Os ecos tornam-se dourados
+as paredes comecam a vibrar
+O que era silencio pesado
+transforma-se em voz a cantar
+
+[Verse 2]
+Cada palavra libertada
+ilumina uma sombra na parede
+O que a familia calou
+agora e a tua verdade que arde
+
+[Chorus]
+Ecos dourados
+onde antes era cinza
+A voz que sai agora
+e a mesma que a familia aprisiona
+
+[Outro]
+As palavras libertadas
+nao destroem — iluminam
+O que era medo de falar
+tornou-se forca que germina
+`,
+
+  "curso-silencio-grita/4": `[Verse 1]
+The walls are singing golden now
+the echoes freed at last
+Each word illuminates the shadow
+of a heavy family past
+
+[Verse 2]
+Resonance where silence lived
+and light where darkness grew
+The cavern holds the truth now
+and the truth sounds just like you
+
+[Chorus]
+Resonance, resonance
+the silence learned to sing
+Every word a liberation
+every echo offering
+
+[Bridge]
+This is not revenge or blame
+this is not a war declared
+This is simply truth returning
+to the voice that always cared
+
+[Outro]
+The cavern glows with golden light
+the family silence breaks
+Not with anger, not with shame
+but with the sound a whole heart makes
+`,
+
+  // ═══════════════════════════════════════════
+  // A TEIA — "Pertencer sem desaparecer"
+  // Bosque dos Fios Entrelacados
+  // ═══════════════════════════════════════════
+
+  "curso-teia/1": `[Verse 1]
+Fios por todo o lado
+entre arvores escuras
+Cada fio uma ligacao
+cada ligacao uma amarra
+
+[Verse 2]
+Pertencer custava-te a pele
+pertencer custava-te o ar
+Para seres aceite
+tinhas de te deixar de amar
+
+[Chorus]
+Fios presos
+que sufocam quem pertence
+A teia sem espaco
+e uma prisao que se esquece
+
+[Outro]
+Pertencer nao devia custar
+a pessoa que tu es
+`,
+
+  "curso-teia/2": `[Verse 1]
+Some threads needed cutting
+not in anger, not in spite
+But in the quiet knowing
+that belonging needs your light
+
+[Verse 2]
+You cut the ones that strangled
+kept the ones that held with care
+Now the web is reorganized
+and you can finally breathe in there
+
+[Chorus]
+Cut free, cut free
+not from love but from the cage
+Selective liberation
+is the bravest kind of stage
+
+[Bridge]
+The forest fills with golden light
+where tangled darkness used to grow
+Each thread you chose to keep
+now has the space to glow
+
+[Outro]
+Freedom is not leaving
+freedom is choosing how to stay
+`,
+
+  "curso-teia/3": `[Verse 1]
+A teia agora e bonita
+fios dourados entre arvores
+Cada ligacao e escolhida
+cada pertenca sem dores
+
+[Verse 2]
+Estas no centro e estas livre
+ligada mas nao perdida
+O bosque brilha a tua volta
+e a teia sustenta a vida
+
+[Chorus]
+Teia bonita
+que liga sem prender
+Uma rede de ouro
+que te deixa ser quem es e crescer
+
+[Outro]
+Pertencer sem desaparecer
+e a teia mais bonita
+Cada fio uma escolha
+cada escolha infinita
+`,
+
+  "curso-teia/4": `[Verse 1]
+I belong and I am whole
+the web is golden, not a cage
+Every thread a conscious choice
+every bond a turned new page
+
+[Verse 2]
+The forest shines with living light
+the moss is warm beneath my feet
+I am connected to the world
+and the connection is complete
+
+[Chorus]
+Belong, belong
+without the cost of disappearing
+Whole within the web of life
+whole within the threads of feeling
+
+[Bridge]
+This is what community means
+not drowning in the we
+But standing tall within the whole
+and still being fully free
+
+[Outro]
+The web is golden
+the forest is alive
+I am whole
+and I belong
+`,
+
+  // ═══════════════════════════════════════════
+  // A CHAMA — "A raiva como forca"
+  // Vulcao Adormecido
+  // ═══════════════════════════════════════════
+
+  "curso-chama/1": `[Verse 1]
+O vulcao esta selado
+a superficie negra e fria
+Mandibula cerrada, punhos fechados
+a pressao cresce dia a dia
+
+[Verse 2]
+Ensinaram-te que a raiva
+e feia, e perigosa, e ma
+Entao engoliste o fogo
+e chamaste-lhe estar la
+
+[Chorus]
+Selado, selado
+o vulcao que ninguem ve
+A raiva escondida
+e a que mais te pode corroer
+
+[Outro]
+O fogo nao desaparece
+so porque fechas os olhos
+`,
+
+  "curso-chama/2": `[Verse 1]
+The surface starts to crack
+the lava shows its glow
+The anger you denied
+is ready now to flow
+
+[Verse 2]
+Not destruction, not a bomb
+not the rage that burns the town
+But the fire that was buried
+finally allowed to come around
+
+[Chorus]
+Crack, crack
+the first fissure lets it breathe
+The anger is not evil
+it is the force beneath
+
+[Bridge]
+Feel the heat beneath the surface
+feel the power in the flame
+This is not your enemy
+this is you reclaiming your name
+
+[Outro]
+The crack is not the end
+it is the very start
+Of meeting the fire
+that lives inside your heart
+`,
+
+  "curso-chama/3": `[Verse 1]
+A lava flui em canais
+controlada, nao destruida
+O fogo agora ilumina
+a paisagem da tua vida
+
+[Verse 2]
+A raiva nao e o contrario do amor
+a raiva e a guarda do que importa
+Sem fogo nao ha limites
+sem chama nao ha porta
+
+[Chorus]
+Fogo controlado
+que ilumina em vez de queimar
+A raiva como aliada
+que te ensina a nao calar
+
+[Outro]
+O vulcao nao explode
+quando o deixas respirar
+O fogo controlado
+e o mais bonito de guardar
+`,
+
+  "curso-chama/4": `[Verse 1]
+The volcano blazes beautiful
+controlled and fierce and bright
+The lava lights the landscape
+turns the darkness into light
+
+[Verse 2]
+This is not the rage that hurts
+this is the fire that protects
+The sacred blaze that guards the throne
+the flame that self-respects
+
+[Chorus]
+Blaze, blaze
+the volcano is alive
+Not with destruction but with power
+the brightest way to thrive
+
+[Bridge]
+Every boundary needs fire
+every crown needs flame
+Every woman who reclaims her rage
+will never be the same
+
+[Outro]
+Blaze on, beautiful volcano
+your fire is your right
+The world needs women burning bright
+not women dimming their own light
+`,
+
+  // ═══════════════════════════════════════════
+  // A MULHER ANTES DE MAE — "Quem eras antes do ninho"
+  // Ninho que Pesa
+  // ═══════════════════════════════════════════
+
+  "curso-mulher-mae/1": `[Verse 1]
+O ninho cresceu a tua volta
+ate nao se ver mais nada
+So a mae — nunca a mulher
+so o dar — nunca a chegada
+
+[Verse 2]
+Desapareceste dentro do cuidar
+do embalar, do alimentar
+E quando alguem te perguntava quem es
+respondias com o nome dos filhos, nao o teu
+
+[Chorus]
+Ninho pesado
+que engole quem tu eras
+A mae comeu a mulher
+e ninguem notou a perda
+
+[Outro]
+Ha uma mulher por baixo da mae
+e ela ainda respira
+`,
+
+  "curso-mulher-mae/2": `[Verse 1]
+Before the nest there was a woman
+with desires of her own
+With dreams that had no children in them
+with a life that was her own
+
+[Verse 2]
+She read books at midnight
+she danced alone in the rain
+She had a body she inhabited
+not one defined by someone's claim
+
+[Chorus]
+Before, before
+who were you before the nest
+Before the endless giving
+before you gave away your rest
+
+[Bridge]
+She is still there
+beneath the mothering, the care
+She is waiting for permission
+to breathe her own air
+
+[Outro]
+Remember her
+she remembers you
+`,
+
+  "curso-mulher-mae/3": `[Verse 1]
+Duas formas no mesmo corpo
+mae e mulher ao mesmo tempo
+Nao e preciso escolher
+nao e preciso ter medo
+
+[Verse 2]
+O ninho agora tem espaco
+para quem cuida e para quem e
+A mae nao apaga a mulher
+a mulher nao apaga a mae
+
+[Chorus]
+Duas formas
+da mesma pessoa inteira
+Coexistencia bonita
+sem culpa, sem fronteira
+
+[Outro]
+Nao es so mae
+nao es so mulher
+Es as duas coisas
+e isso e o teu poder
+`,
+
+  "curso-mulher-mae/4": `[Verse 1]
+The nest is whole and beautiful
+with space enough for all of me
+The mother and the woman
+living in the same body, free
+
+[Verse 2]
+I do not choose between them
+they are not at war inside
+The nest holds both with gentleness
+with warmth and golden pride
+
+[Chorus]
+Whole nest, whole nest
+room for who I am complete
+Mother, woman, dreamer, dancer
+standing on my own two feet
+
+[Bridge]
+The guilt dissolves like morning fog
+the should dissolves like ice
+I am not one or the other
+I am both, and that's the price
+No — not the price
+the prize
+
+[Outro]
+The nest is light now
+and the woman sings again
+Inside the mother, inside the woman
+lives a world without amen
+`,
+
+  // ═══════════════════════════════════════════
+  // O OFICIO DE SER — "Trabalho com proposito"
+  // Oficina Infinita
+  // ═══════════════════════════════════════════
+
+  "curso-oficio-ser/1": `[Verse 1]
+As maquinas nao param
+o ritmo nao e teu
+A oficina escura e sem janela
+e tu ja nem sabes o que era teu
+
+[Verse 2]
+Trabalhas ate cair
+levantas-te e trabalhas mais
+O valor mede-se em horas
+e a exaustao mede-se em sinais
+
+[Chorus]
+Maquinas, maquinas
+que nao param de girar
+O oficio sem proposito
+e uma forma lenta de apagar
+
+[Outro]
+A oficina sem janela
+e uma prisao que pagas tu
+`,
+
+  "curso-oficio-ser/2": `[Verse 1]
+The machines stop turning
+for the first time in years
+The silence that remains
+is louder than the gears
+
+[Verse 2]
+You straighten up and notice
+a crack of light above the door
+The first pause in a lifetime
+and you want to feel some more
+
+[Chorus]
+Pause, pause
+the first one since you can remember
+The light is warm like April
+after a long December
+
+[Bridge]
+You don't need to run
+to prove you matter
+You don't need to break
+to hear the shatter
+
+[Outro]
+The first pause
+is the first act of respect
+For the body that has carried you
+through everything unchecked
+`,
+
+  "curso-oficio-ser/3": `[Verse 1]
+A oficina agora tem ritmo
+um ritmo que e teu e de mais ninguem
+A janela esta entreaberta
+e la fora ha alguem
+
+[Verse 2]
+Trabalhas porque queres
+nao porque deves ou tens medo
+O oficio e presenca
+nao e uma fuga nem um degredo
+
+[Chorus]
+Ritmo proprio
+da oficina com janela
+Trabalhar sem prisao
+e a mais bonita sentinela
+
+[Outro]
+O proposito nao e o produto
+e a presenca no fazer
+O oficio mais sagrado
+e o oficio de ser
+`,
+
+  "curso-oficio-ser/4": `[Verse 1]
+The window's open wide now
+the workshop breathes with me
+I work and pause and work again
+in rhythm, whole and free
+
+[Verse 2]
+The craft is in the presence
+not the product on the shelf
+The finest thing I ever made
+was the decision to be myself
+
+[Chorus]
+Craft, craft
+the sacred art of being here
+Not running from the emptiness
+but filling it with care
+
+[Bridge]
+Purpose is not performance
+purpose is not speed
+Purpose is the quiet knowing
+that you are all you need
+
+[Outro]
+The workshop hums with warmth
+the window shows the sky
+I am here, I am working
+I am enough, and that is why
+`,
+
+  // ═══════════════════════════════════════════
+  // O RELOGIO PARTIDO — "Libertar-se do tempo"
+  // Jardim das Estacoes
+  // ═══════════════════════════════════════════
+
+  "curso-relogio/1": `[Verse 1]
+O relogio e gigante
+e governa o jardim
+As flores nascem e morrem
+num segundo sem fim
+
+[Verse 2]
+Corres de estacao em estacao
+sem parar para ver
+A primavera vira outono
+antes de a poderes viver
+
+[Chorus]
+Relogio gigante
+que aprisiona o presente
+Vives a correr do tempo
+e o tempo vive-te na mente
+
+[Outro]
+O jardim existe sem o relogio
+foste tu que esqueceste
+`,
+
+  "curso-relogio/2": `[Verse 1]
+The clock is cracking now
+its hands are slowing down
+The flowers pause mid-bloom
+the autumn leaves don't touch the ground
+
+[Verse 2]
+For the first time in forever
+time is not the enemy
+The garden holds its breath
+and waits for you to simply be
+
+[Chorus]
+Cracking time, cracking time
+the prison of the clock undone
+When time stops ruling everything
+the present has begun
+
+[Bridge]
+You don't need more hours
+you need more presence in the ones you have
+The clock was never your master
+it was just a habit made of glass
+
+[Outro]
+Let it crack
+let it break
+the garden doesn't need the clock
+to know when flowers wake
+`,
+
+  "curso-relogio/3": `[Verse 1]
+O relogio partiu
+e as estacoes coexistem
+Primavera e outono lado a lado
+e ambas insistem
+
+[Verse 2]
+Sentada no jardim
+sem pressa de chegar
+Todas as estacoes sao agora
+e agora e o unico lugar
+
+[Chorus]
+Estacoes juntas
+sem ordem nem calendario
+O jardim sem relogio
+e o mais bonito santuario
+
+[Outro]
+O tempo nao e inimigo
+quando deixas de o perseguir
+O presente e tudo o que tens
+e tudo o que podes sentir
+`,
+
+  "curso-relogio/4": `[Verse 1]
+No clock, no rush, no running
+the garden breathes in time
+All seasons live together
+and every moment is sublime
+
+[Verse 2]
+I sit beneath the autumn tree
+beside the springtime bloom
+There is no past or future here
+there is no leaving room
+
+[Chorus]
+Present, present
+the only place that's real
+When the clock stops ticking
+you begin to feel
+
+[Bridge]
+Amber light and silver calm
+the garden knows no haste
+Every second lived in presence
+is a second not gone to waste
+
+[Outro]
+The clock is broken
+and I am finally free
+The garden has no schedule
+and neither now does me
+`,
+
+  // ═══════════════════════════════════════════
+  // A COROA ESCONDIDA — "O poder que e teu"
+  // Trono Coberto
+  // ═══════════════════════════════════════════
+
+  "curso-coroa/1": `[Verse 1]
+O trono esta coberto
+de panos e de medo
+Pequena e encolhida
+viras-lhe as costas cedo
+
+[Verse 2]
+Nao sabes que e teu
+ninguem te disse que era
+O poder assusta mais
+quando nao sabes que te espera
+
+[Chorus]
+Trono coberto
+na sala mais escura
+O poder que e teu
+escondido numa moldura
+
+[Outro]
+O trono nao desaparece
+so porque nao olhas para ele
+`,
+
+  "curso-coroa/2": `[Verse 1]
+The cloths are slipping slowly
+revealing gold and deep dark purple
+You see it now, the throne
+and your heart begins to circle
+
+[Verse 2]
+Fear and curiosity
+dancing in your chest
+You want to look away
+but something whispers you are blessed
+
+[Chorus]
+Unveiled, unveiled
+the power you were hiding from
+It was never someone else's
+it was yours, the whole time, all along
+
+[Bridge]
+Touch it if you dare
+the wood is warm beneath your hand
+This throne was always waiting
+for the woman brave enough to stand
+
+[Outro]
+The cloths are on the floor
+the throne is bare and bright
+You are the only one
+who can choose to take a seat tonight
+`,
+
+  "curso-coroa/3": `[Verse 1]
+De pe junto ao trono
+hesitas, mas nao foges
+A mao estende-se devagar
+o poder ja nao te corroi
+
+[Verse 2]
+Nao e arrogancia
+nao e vaidade nem excesso
+E saber que mereces
+sem pedir licenca nem processo
+
+[Chorus]
+Hesitacao
+entre o medo e a grandeza
+A coroa pesa menos
+do que o medo da tua inteireza
+
+[Outro]
+Sentar-se no trono
+nao e tomar o que e dos outros
+E ocupar o que e teu
+sem pedir desculpa ao mundo
+`,
+
+  "curso-coroa/4": `[Verse 1]
+Seated on the throne at last
+the crown upon my head
+No permission asked, no apology
+no shrinking from what's said
+
+[Verse 2]
+The golden purple light
+fills the room from wall to wall
+I am not too much, not too little
+I am exactly all
+
+[Chorus]
+Crown, crown
+the weight of it is light
+When you stop apologizing
+for your power and your might
+
+[Bridge]
+Every woman has a throne
+buried under years of small
+Under niceness, under quiet
+under making herself crawl
+
+[Outro]
+Rise now, take your seat
+the crown was always yours
+The only thing between you and power
+was the closing of your doors
+`,
+
+  // ═══════════════════════════════════════════
+  // A FOME — "O corpo e a fome"
+  // Mesa Vazia
+  // ═══════════════════════════════════════════
+
+  "curso-fome/1": `[Verse 1]
+A mesa esta vazia
+o prato nao tem nada
+Sentada a frente
+faminta e calada
+
+[Verse 2]
+A fome nao e de comida
+e de algo sem nome
+Comes para encher o vazio
+e o vazio come-te e some
+
+[Chorus]
+Mesa vazia
+fome sem fundo
+Comes o que nao precisas
+para nao sentir o mundo
+
+[Outro]
+A fome mais antiga
+nao se mata com comida
+`,
+
+  "curso-fome/2": `[Verse 1]
+This hunger has no name
+it lives beneath the skin
+You eat to fill the silence
+but the emptiness moves in
+
+[Verse 2]
+It's not about the food
+it never really was
+It's about the thing you're starving for
+that has no name, no cause
+
+[Chorus]
+Hunger, hunger
+unnamed and unconfessed
+The plate is full but you are empty
+the body feeds, the soul is stressed
+
+[Bridge]
+What are you really hungry for
+when midnight pulls you to the fridge
+What is the meal that's missing
+from the table of your bridge
+
+[Outro]
+Name the hunger
+and the hunger changes shape
+What was mindless consumption
+becomes a conscious landscape
+`,
+
+  "curso-fome/3": `[Verse 1]
+Comer com atencao
+sem culpa, sem pressa
+Cada garfada e presenca
+cada sabor e uma promessa
+
+[Verse 2]
+O corpo nao e inimigo
+o apetite nao e defeito
+Comer e um acto de amor
+quando e feito com respeito
+
+[Chorus]
+Comer em paz
+sem a guerra do controlo
+Sem a culpa que envenenam
+sem o medo de ser todo
+
+[Outro]
+A mesa agora tem comida
+e a comida tem sabor
+Comes porque mereces
+e nao ha nada de menor
+`,
+
+  "curso-fome/4": `[Verse 1]
+The table is set simply
+porcelain and bread
+The body is at peace now
+with every bite ahead
+
+[Verse 2]
+No guilt, no punishment
+no counting, no control
+Just a woman at a table
+feeding body, feeding soul
+
+[Chorus]
+Feast, feast
+the simplest kind of feast
+When the war with food is over
+and the body finds its peace
+
+[Bridge]
+Terracotta warmth and porcelain white
+the colors of a meal made right
+Not perfect, not controlled
+but eaten with delight
+
+[Outro]
+I am at peace with the plate
+I am at peace with the body
+The hunger found its name
+and the name was simply me
+`,
+
 };

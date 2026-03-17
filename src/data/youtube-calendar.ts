@@ -1274,6 +1274,129 @@ export const YOUTUBE_WEEKS: YouTubeWeek[] = [
       },
     ],
   },
+  // ━━━ SEMANA 8 — RECOMEÇO E PROJECÇÃO ━━━
+  {
+    number: 8,
+    theme: "Recomeço e Projecção",
+    objective:
+      "Fechar o ciclo com os dois cursos que faltam — a reinvenção após a destruição e o que vemos no outro como espelho de nós.",
+    videos: [
+      {
+        number: 22,
+        title: "O dia em que a tua vida ardeu — e o que cresceu depois",
+        courseOrigin: "depois-do-fogo" as CourseSlug,
+        territory: "Campo Queimado",
+        week: 8,
+        day: "terca" as const,
+        gancho:
+          "Houve um dia em que tudo mudou. O emprego, a relação, a saúde, a confiança — algo ardeu. E tu ficaste de pé no meio das cinzas. A pergunta não é como reconstruir o que era. É: o que pode crescer agora que o terreno está livre?",
+        fraseFinal:
+          "O que cresce depois do fogo nunca é igual ao que ardeu. E isso não é tragédia — é território novo.",
+        description:
+          "O tema do recomeço forçado. Para quem perdeu algo grande — emprego, relação, identidade — e precisa de reconstruir sem saber como.",
+        status: "draft" as const,
+        script: [
+          {
+            timestamp: "0:00 - 0:15",
+            section: "gancho",
+            visual:
+              "Céu azul-marinho. Câmara desce para o Campo Queimado. Terra negra, cinzas, troncos carbonizados. Silhueta de pé no meio da devastação.",
+            narration:
+              "Houve um dia em que tudo mudou. O emprego, a relação, a saúde, a confiança — algo ardeu. E tu ficaste de pé no meio das cinzas.",
+          },
+          {
+            timestamp: "0:15 - 1:30",
+            section: "situacao",
+            visual:
+              "Silhueta caminha pelo campo queimado. Cinzas levantam-se com cada passo. Ao longe, vê-se a Encruzilhada — recomeçar implica decidir.",
+            narration:
+              "Acordas e por um segundo esqueces. Depois lembras. E o peso volta. A relação que acabou. O emprego que perdeste. A pessoa que eras e já não és. Olhas à volta e nada se parece com o que era. Os amigos dizem que vai ficar bem. Que o tempo cura. Que o que não mata fortalece. Mas tu não queres ser forte. Queres que doa menos. Queres acordar sem aquele segundo de esquecimento seguido do impacto da realidade.",
+          },
+          {
+            timestamp: "1:30 - 3:30",
+            section: "padrao",
+            visual:
+              "Campo com primeiros brotos verdes entre cinzas. Brasas alaranjadas sob a terra. Silhueta ajoelhada, a tocar na terra.",
+            narration:
+              "O erro que quase toda a gente comete depois do fogo é tentar reconstruir o que era. A mesma casa, a mesma vida, o mesmo formato. Como se o objectivo fosse voltar ao ponto de partida. Mas o terreno mudou. Tu mudaste. E o que cresce em terra queimada não é o que lá estava antes — é outra coisa. Diferente. Às vezes mais forte. Sempre diferente. O luto não é só pelo que perdeste. É pela versão de ti que existia naquele contexto. Essa versão morreu com o fogo. E enquanto tentares ressuscitá-la, vais sofrer. Porque ela não volta. O que vem a seguir é novo.",
+          },
+          {
+            timestamp: "3:30 - 5:00",
+            section: "gesto",
+            visual:
+              "Brotos verdes crescem. Silhueta de pé, a olhar para o horizonte onde o céu começa a clarear. Não é dia ainda — mas já não é noite.",
+            narration:
+              "Esta semana, faz uma coisa. Pega num caderno e escreve no topo: 'O que é possível agora que não era antes.' Não o que perdeste. O que se abriu. Pode ser pouco. Pode ser uma linha. Mas obriga-te a olhar para o espaço — não para o buraco. Porque o fogo destruiu. Mas também limpou o terreno. E há coisas que só crescem em terra que já ardeu.",
+          },
+          {
+            timestamp: "5:00 - 5:30",
+            section: "fecho",
+            visual:
+              "Campo com vida nova. Dissolve no céu. Logo Sete Véus. Silêncio.",
+            narration:
+              "O que cresce depois do fogo nunca é igual ao que ardeu. E isso não é tragédia — é território novo. Se isto te tocou, inscreve-te. A Escola dos Véus está a chegar.",
+          },
+        ],
+      },
+      {
+        number: 23,
+        title: "Porque é que certas pessoas te irritam tanto?",
+        courseOrigin: "o-espelho-do-outro" as CourseSlug,
+        territory: "Galeria dos Reflexos Vivos",
+        week: 8,
+        day: "quinta" as const,
+        gancho:
+          "Há pessoas que te irritam sem razão aparente. Não fizeram nada de grave. Mas algo nelas te incomoda profundamente. E se o que te irrita no outro for exactamente o que não aceitas em ti?",
+        fraseFinal:
+          "O outro não é o problema. O outro é o espelho que não pediste mas de que precisavas.",
+        description:
+          "A projecção como mecanismo inconsciente. O que vemos nos outros como reflexo de nós. Tema com forte potencial de engagement.",
+        status: "draft" as const,
+        script: [
+          {
+            timestamp: "0:00 - 0:15",
+            section: "gancho",
+            visual:
+              "Céu azul-marinho. Câmara desce para a Galeria dos Reflexos Vivos. Espelhos vivos em molduras verde-esmeralda. Cada espelho mostra uma pessoa diferente. Silhueta de costas, a olhar para os espelhos.",
+            narration:
+              "Há pessoas que te irritam sem razão aparente. Não fizeram nada de grave. Mas algo nelas te incomoda profundamente. E se o que te irrita no outro for exactamente o que não aceitas em ti?",
+          },
+          {
+            timestamp: "0:15 - 1:30",
+            section: "situacao",
+            visual:
+              "Silhueta a caminhar pela galeria. Cada espelho mostra um rosto diferente — o colega arrogante, a amiga dramática, o parceiro distante. A silhueta reage a cada um com tensão visível.",
+            narration:
+              "Pensas na colega do trabalho. A que fala alto. A que se promove. A que ocupa espaço sem pedir licença. Irrita-te. Dizes que é arrogância. Que é falta de noção. Mas há algo mais. Pensas no amigo que cancelou à última hora. Outra vez. Dizes que é falta de respeito. Que não te valoriza. Mas a irritação que sentes é desproporcional. Porque não é só sobre ele. É sobre ti.",
+          },
+          {
+            timestamp: "1:30 - 3:30",
+            section: "padrao",
+            visual:
+              "Os espelhos começam a mudar. Em vez de mostrarem outros, começam a reflectir a própria silhueta. Mistura de reflexos — o rosto do outro com a forma da silhueta. Reconhecimento parcial.",
+            narration:
+              "A colega que te irrita com a sua 'arrogância' — talvez te irrite porque ocupa o espaço que tu não te permites. O amigo que cancela — talvez te irrite porque tu nunca te dás permissão de cancelar. A pessoa excessivamente emocional — talvez te irrite porque tu bloqueaste as tuas emoções há anos. Isto chama-se projecção. E não é fraqueza — é informação. Cada vez que alguém te irrita desproporcionalmente, essa pessoa está a mostrar-te algo sobre ti. Pode ser uma qualidade que reprimes. Um desejo que negas. Uma ferida que não curastes. O outro não é o problema. O outro é o mensageiro.",
+          },
+          {
+            timestamp: "3:30 - 5:00",
+            section: "gesto",
+            visual:
+              "Silhueta frente a um espelho que agora mostra o seu próprio reflexo com clareza. Verde-esmeralda suave. Mãos no peito.",
+            narration:
+              "Pensa numa pessoa que te irrita. Não alguém que te fez mal — alguém que te incomoda sem razão proporcional. Agora pergunta: o que é que essa pessoa faz que eu não me permito? O que é que essa pessoa tem que eu gostaria de ter? O que é que essa pessoa mostra que eu prefiro esconder? A resposta pode surpreender-te. E pode ser a coisa mais útil que aprendes esta semana.",
+          },
+          {
+            timestamp: "5:00 - 5:30",
+            section: "fecho",
+            visual:
+              "Galeria com espelhos claros. Silhueta em paz. Dissolve no céu. Logo Sete Véus.",
+            narration:
+              "O outro não é o problema. O outro é o espelho que não pediste mas de que precisavas. Se isto te tocou, inscreve-te. A Escola dos Véus está a chegar.",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 // ─── Helpers ────────────────────────────────────────────────────────────────────

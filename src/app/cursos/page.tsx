@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Cursos de Autoconhecimento — A Escola dos Véus",
   description:
-    "Dez cursos de autoconhecimento por Vivianne dos Santos. Jornadas de transformação interior sobre dinheiro, relações, limites, perda, corpo e voz.",
+    "Vinte cursos de autoconhecimento por Vivianne dos Santos. Jornadas de transformação interior sobre dinheiro, relações, limites, perda, corpo, voz, raiva, maternidade, trabalho, tempo e poder.",
 };
 
 const COURSE_LIST = [
@@ -78,6 +78,76 @@ const COURSE_LIST = [
     subtitle: "Dizer o que precisas de dizer a quem mais importa",
     tag: null,
   },
+  {
+    slug: "o-fio-invisivel",
+    number: 11,
+    title: "O Fio Invisível",
+    subtitle: "A ligação entre todos nós e como a tua cura toca o todo",
+    tag: null,
+  },
+  {
+    slug: "o-espelho-do-outro",
+    number: 12,
+    title: "O Espelho do Outro",
+    subtitle: "O que te incomoda no outro vive em ti",
+    tag: null,
+  },
+  {
+    slug: "o-silencio-que-grita",
+    number: 13,
+    title: "O Silêncio que Grita",
+    subtitle: "O que a tua família nunca disse vive no teu corpo",
+    tag: null,
+  },
+  {
+    slug: "a-teia",
+    number: 14,
+    title: "A Teia",
+    subtitle: "Pertencer sem desaparecer",
+    tag: null,
+  },
+  {
+    slug: "a-chama",
+    number: 15,
+    title: "A Chama",
+    subtitle: "A raiva que nunca te deixaram sentir",
+    tag: null,
+  },
+  {
+    slug: "a-mulher-antes-de-mae",
+    number: 16,
+    title: "A Mulher Antes de Mãe",
+    subtitle: "Quem eras antes de seres de alguém",
+    tag: null,
+  },
+  {
+    slug: "o-oficio-de-ser",
+    number: 17,
+    title: "O Ofício de Ser",
+    subtitle: "Quando o trabalho te define e o propósito te escapa",
+    tag: null,
+  },
+  {
+    slug: "o-relogio-partido",
+    number: 18,
+    title: "O Relógio Partido",
+    subtitle: "A relação com o tempo que te rouba o presente",
+    tag: null,
+  },
+  {
+    slug: "a-coroa-escondida",
+    number: 19,
+    title: "A Coroa Escondida",
+    subtitle: "O poder que tens e te assusta",
+    tag: null,
+  },
+  {
+    slug: "a-fome",
+    number: 20,
+    title: "A Fome",
+    subtitle: "O que comes quando não tens fome de comida",
+    tag: null,
+  },
 ];
 
 export default function CursosPage() {
@@ -92,7 +162,7 @@ export default function CursosPage() {
           Cursos
         </h1>
         <p className="mx-auto mt-6 max-w-xl font-sans text-base leading-relaxed text-gray-400 sm:text-lg">
-          Dez jornadas de transformação interior. Cada uma é um território
+          Vinte jornadas de transformação interior. Cada uma é um território
           — uma zona da tua vida que precisas de atravessar com mais clareza.
         </p>
         <div className="mx-auto mt-8 h-px w-16 bg-[#8B5CF6]/40" />

@@ -30,7 +30,7 @@ export const ALL_PRODUCTS = [
   "experiencia-veu-separacao",
 ];
 
-// Slugs dos 10 cursos
+// Slugs dos 20 cursos
 export const COURSE_SLUGS = [
   "ouro-proprio",
   "sangue-e-seda",
@@ -42,6 +42,16 @@ export const COURSE_SLUGS = [
   "flores-no-escuro",
   "o-peso-e-o-chao",
   "voz-de-dentro",
+  "o-fio-invisivel",
+  "o-espelho-do-outro",
+  "o-silencio-que-grita",
+  "a-teia",
+  "a-chama",
+  "a-mulher-antes-de-mae",
+  "o-oficio-de-ser",
+  "o-relogio-partido",
+  "a-coroa-escondida",
+  "a-fome",
 ] as const;
 
 // Preços dos cursos (USD como base, Stripe não suporta MZN)
