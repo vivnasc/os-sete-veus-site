@@ -10,208 +10,279 @@ export const ESPELHO_LYRICS: Record<string, string> = {
   // ─────────────────────────────────────────────
 
   "espelho-ilusao/1": `[Verse 1]
-Acordo e o tecto e o mesmo
-As maos conhecem o gesto antes de mim
-Cafe, chaves, porta, rua
-O corpo vai, a alma ficou a dormir
+Pes no chao frio
+Mao no interruptor
+A luz acende mas por dentro
+Ainda esta escuro
+
+[Pre-Chorus]
+Ha qualquer coisa a mexer-se
+Debaixo da pele, debaixo do sono
 
 [Chorus]
-Antes da pergunta ha um tremor
-Um silencio que insiste em ser ouvido
-Antes da resposta ha um corpo
-Que ja sabe o que a mente ainda nao quis sentir
+Acorda, acorda
+Nao e o despertador, sou eu
+Acorda, acorda
+Ha tanto tempo que nao me ouves
+Acorda
 
 [Verse 2]
-Ha uma fissura na rotina
-Uma luz que entra por onde nao devia
-Um segundo entre o despertar e o levantar
-Onde tudo podia ser diferente
+O espelho embaciado
+Limpo com a mao
+Um rosto que conheco
+Mas hoje nao reconheco, nao
+
+[Chorus]
+Acorda, acorda
+Nao e o despertador, sou eu
+Acorda, acorda
+Ha tanto tempo que nao me ouves
+Acorda
 
 [Bridge]
-Despertar nao e abrir os olhos
-E deixar que o que dorme se mova
-E sentir o peso do que carregas
-Sem ainda saber o nome que tem
+Um tremor no peito
+Sem nome, sem forma
+So um sussurro
+Que diz: ainda estas aqui?
 
 [Outro]
-O momento antes da pergunta
-E ja a pergunta em si`,
+Acorda
+Acorda
+Sou eu`,
 
   "espelho-ilusao/2": `[Verse 1]
-I wore it so long I forgot it was borrowed
-Stitched to my skin by hands that meant well
-Every button was someone else's answer
-Every seam a story I never got to tell
+I wore your name like a second skin
+Smiled the smile you handed me
+Good girl, good grades, good life, good wife
+I never asked if it was free
 
 [Chorus]
-This coat I never chose
-It kept me warm but kept me small
-This coat I never chose
-I thought it was my skin
-But it was just a wall
+Who dressed me up
+In someone else's dream
+Who buttoned up my throat
+And told me it was clean
+I'm pulling at the seams
+I'm pulling at the seams
 
 [Verse 2]
-Mother said wear this, it suits you
-Father said this one will last
-I dressed for safety, dressed for silence
-Dressed for a future shaped like the past
+Mother's voice lives in my spine
+Father's silence in my jaw
+I carry them in how I sit
+In every room I'm too small for
+
+[Chorus]
+Who dressed me up
+In someone else's dream
+Who buttoned up my throat
+And told me it was clean
+I'm pulling at the seams
+I'm pulling at the seams
 
 [Bridge]
-What would I reach for if the wardrobe were empty
-What would I feel against bare arms and sky
-What if the cold is just the beginning
-Of learning what it means to be alive
+What's underneath
+When I take it all off
+Bare arms, bare chest
+Is that enough
 
 [Outro]
-I am taking off what was never mine
-Thread by thread, I find the line`,
+Thread by thread
+I find my skin
+Thread by thread
+I let me in`,
 
   "espelho-ilusao/3": `[Verse 1]
-Acordo, visto, saio, volto
+Esquerda, direita, esquerda, direita
 O corpo sabe o caminho de cor
-As maos fazem o que sempre fizeram
-Sem precisar do que sinto por dentro
+Semaforo, porta, senha, sorriso
+Nao preciso de mim para isto funcionar
+
+[Pre-Chorus]
+Repete, repete, repete
 
 [Chorus]
-Automatismos, linhas invisiveis
-Que guiam os dias sem eu decidir
-Automatismos, a vida repete-se
-E eu assisto de longe a passar por mim
+Quem e que esta a viver esta vida
+Se eu nao estou ca dentro
+Quem e que responde quando chamam o meu nome
+Se eu nao estou ca dentro, nao
 
 [Verse 2]
-Sorrio quando esperam o sorriso
-Respondo o que ja respondi mil vezes
-Ha quanto tempo nao paro
-Para ouvir o que o silencio quer dizer
+Bom dia, tudo bem, ate amanha
+As mesmas palavras, o mesmo sabor
+Quando e que parei de sentir o chao
+Quando e que perdi a minha propria cor
+
+[Chorus]
+Quem e que esta a viver esta vida
+Se eu nao estou ca dentro
+Quem e que responde quando chamam o meu nome
+Se eu nao estou ca dentro, nao
 
 [Bridge]
-E se eu parasse aqui
-No meio do gesto, no meio do passo
-E se eu deixasse a mao suspensa
-E perguntasse: isto sou eu?
+E se eu parasse agora
+No meio do passo
+Se ficasse aqui
+Quieta no espaco
 
 [Outro]
-O gesto parou
-E no espaco entre dois movimentos
-Nasceu uma escolha`,
+Parei
+E o silencio
+Tinha a minha voz`,
 
   "espelho-ilusao/4": `[Verse 1]
-O cafe esfria entre as maos
-A manha espera como sempre espera
-Mas hoje ha uma pergunta
-Que nao existia ontem
+O cafe esfria na chavena
+A manha espera, eu nao
+Hoje ha um no na garganta
+Que nunca esteve la antes
 
 [Chorus]
-Quando foi que eu escolhi isto
-Esta mesa, esta casa, este papel
-Quando foi que eu disse sim
-A uma vida que alguem desenhou por mim
+Quando e que eu disse sim a tudo isto
+Quando e que eu disse sim
+Ninguem me perguntou
+E eu nao parei para ouvir
+Quando e que eu disse sim
 
 [Verse 2]
-Nao houve um dia, nao houve um momento
-Foi um rio lento que me trouxe ate aqui
-Cada pequeno sim sem pensar
-Cada nao que engoli com o cafe
+O acucar dissolve sem resistir
+A colher gira sempre para o mesmo lado
+Olho para as minhas maos
+E nao sei se sao minhas ou emprestadas
+
+[Chorus]
+Quando e que eu disse sim a tudo isto
+Quando e que eu disse sim
+Ninguem me perguntou
+E eu nao parei para ouvir
+Quando e que eu disse sim
 
 [Bridge]
-A pergunta nao pede resposta
-Pede apenas que fiques com ela
-Que a deixes pousar na mesa
-Ao lado da chavena fria
+A chavena pesa
+Como se tivesse tudo la dentro
+Todos os dias iguais
+Todos os sins que nunca senti
 
 [Outro]
-O cafe ja nao importa
-A pergunta ficou`,
+Despejo o cafe pelo cano abaixo
+E fico a olhar para as maos vazias
+Vazias, finalmente`,
 
   "espelho-ilusao/5": `[Verse 1]
-Before the thought could form a word
-Before the mind could name the ache
-The body shifted, the shoulders dropped
-Something in the chest began to break
+My shoulders knew before my mind
+They dropped the weight I wouldn't name
+My stomach spoke at every meal
+It held the words I couldn't claim
+
+[Pre-Chorus]
+Mmm, listen
 
 [Chorus]
-The body knows, the body knew
-Before you found the courage to look
-The body kept the truth you hid
-In every page of every unread book
+The body knows, oh
+The body always knows
+It kept the score
+Behind closed doors
+The body knows
 
 [Verse 2]
-The stomach clenched at the dinner table
-The throat closed on the word you almost said
-The hands shook holding what you built
-The body mourned what the mind denied instead
+My throat went tight at the dinner table
+My hands went cold reaching for the phone
+My chest caved in when I said I'm fine
+The body lives where the mind won't go
+
+[Chorus]
+The body knows, oh
+The body always knows
+It kept the score
+Behind closed doors
+The body knows
 
 [Bridge]
-Listen where the tension lives
-Follow where the breath won't go
-The body is the oldest map
-Of everything you already know
+Put your hand right here
+Where it burns, where it aches
+That's where the truth's been sleeping
+That's where the truth's been awake
 
 [Outro]
 The body knows
-It always knew
-Now let the mind
-Catch up to you`,
+Just let it speak
+The body knows
+Just let it breathe`,
 
   "espelho-ilusao/6": `[Verse 1]
-Nao preciso de um terramoto
-Nem de um espelho que me grite a verdade
-Basta uma luz quieta
-Basta ver sem precisar de mudar
+Nao preciso de gritar
+Nao preciso de partir nada
+So preciso de ficar aqui
+Com os olhos abertos, parada
 
 [Chorus]
-Honestidade quieta
-Sem drama, sem pressa, sem ruido
-Honestidade quieta
-Apenas ver o que la esta
-E deixar que seja suficiente
+Deixa estar, deixa estar
+Nao mexe, nao foge, nao muda
+Deixa estar, deixa estar
+A verdade nao precisa de pressa
+So precisa que eu fique
 
 [Verse 2]
-Nao e confissao, nao e revelacao
-E so o acto simples de nao desviar o olhar
-De ficar com o que aparece
-Sem maquilhar, sem fugir, sem julgar
+O espelho nao mente
+Mas tambem nao grita
+Mostra so o que esta
+Se eu tiver coragem de olhar
+
+[Chorus]
+Deixa estar, deixa estar
+Nao mexe, nao foge, nao muda
+Deixa estar, deixa estar
+A verdade nao precisa de pressa
+So precisa que eu fique
 
 [Bridge]
-Ha uma gentileza em ver sem reagir
-Ha uma forca em ficar parada
-Quando tudo em ti quer correr
-A verdade pede apenas presenca
+A agua parada
+Reflecte mais fundo
+Do que a agua que corre
+Reflecte o mundo
 
 [Outro]
-Quieta como a agua que nao se move
-Mas reflecte tudo`,
+Quieta
+Fico quieta
+E vejo tudo`,
 
   "espelho-ilusao/7": `[Verse 1]
-Houve um momento em que tudo parou
-O vento, o ruido, o papel que eu era
-Houve um momento em que vi
-E ja nao podia fingir que nao vi
+Caiu, caiu
+Sem vento, sem mao, sem aviso
+Caiu o que eu vestia por cima de mim
+E nao ha como vestir outra vez
 
 [Chorus]
 O veu cai
-E nao ha como apanhar o que caiu
+E eu estou aqui por baixo
 O veu cai
-E por baixo nao ha monstro
-Ha so tu, inteira, nua, viva
+Nua, viva, inteira
+O veu cai
+E nao ha monstro nenhum
+So eu, so eu, so eu
 
 [Verse 2]
-Nao foi um raio, nao foi um grito
-Foi mais parecido com um suspiro fundo
-Um reconhecimento antigo
-Como encontrar uma carta que tu propria escreveste
+Nao foi um trovao
+Foi um suspiro
+Como abrir uma carta antiga
+Escrita pela minha propria mao
+
+[Chorus]
+O veu cai
+E eu estou aqui por baixo
+O veu cai
+Nua, viva, inteira
+O veu cai
+E nao ha monstro nenhum
+So eu, so eu, so eu
 
 [Bridge]
-O primeiro veu e o mais leve
-Mas e o que muda tudo
-Porque uma vez que viste
-Os olhos ja nao fecham da mesma forma
+Uma vez que viste
+Nao ha como des-ver
+Uma vez que sentiste
+Nao ha como voltar a dormir
 
 [Outro]
 O veu caiu
 E eu ainda estou aqui
-Mais leve
-Mais real
+Mais leve, mais real
 Mais eu`,
 
   // ─────────────────────────────────────────────
