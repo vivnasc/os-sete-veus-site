@@ -17,7 +17,7 @@ export default function CursosLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-[#1a1a2e] text-gray-100">
+    <div className="min-h-screen bg-mundo-bg text-mundo-creme">
       {children}
     </div>
   );

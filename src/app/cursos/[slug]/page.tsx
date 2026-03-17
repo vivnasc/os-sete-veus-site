@@ -76,23 +76,23 @@ export default async function CourseLandingPage({ params }: PageProps) {
   if (!course) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-[#a0a0b0]">Curso não encontrado.</p>
+        <p className="text-mundo-muted">Curso não encontrado.</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#1a1a2e] text-[#e0e0e8]">
+    <div className="min-h-screen bg-mundo-bg text-mundo-creme-suave">
       {/* Hero */}
       <section className="px-6 pt-20 pb-16 max-w-4xl mx-auto text-center">
-        <p className="text-[#8B5CF6] text-sm font-sans tracking-widest uppercase mb-4">
+        <p className="text-mundo-violeta text-sm font-sans tracking-widest uppercase mb-4">
           Curso {course.number}
         </p>
         <h1 className="font-serif text-4xl md:text-5xl text-white mb-4">
           {course.title}
         </h1>
-        <p className="text-xl text-[#C9A96E] mb-8">{course.subtitle}</p>
-        <p className="text-[#a0a0b0] max-w-2xl mx-auto leading-relaxed">
+        <p className="text-xl text-mundo-dourado mb-8">{course.subtitle}</p>
+        <p className="text-mundo-muted max-w-2xl mx-auto leading-relaxed">
           {course.arcoEmocional}
         </p>
       </section>
@@ -101,13 +101,13 @@ export default async function CourseLandingPage({ params }: PageProps) {
       <section className="px-6 pb-12 max-w-4xl mx-auto flex flex-col sm:flex-row gap-4 justify-center">
         <Link
           href={`/cursos/${slug}/dashboard`}
-          className="inline-block bg-[#8B5CF6] text-white px-8 py-3 rounded-lg font-sans text-center hover:bg-[#7c4ee4] transition-colors"
+          className="inline-block bg-mundo-violeta text-white px-8 py-3 rounded-lg font-sans text-center hover:bg-mundo-violeta/80 transition-colors"
         >
           Inscrever-me neste curso
         </Link>
         <a
           href="#modulos"
-          className="inline-block border border-[#C9A96E] text-[#C9A96E] px-8 py-3 rounded-lg font-sans text-center hover:bg-[#C9A96E]/10 transition-colors"
+          className="inline-block border border-[#C9A96E] text-mundo-dourado px-8 py-3 rounded-lg font-sans text-center hover:bg-[#C9A96E]/10 transition-colors"
         >
           Ver módulos
         </a>
@@ -116,13 +116,13 @@ export default async function CourseLandingPage({ params }: PageProps) {
       {/* What's included */}
       <section className="px-6 py-12 max-w-4xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          <div className="bg-[#252547] rounded-xl p-6">
+          <div className="bg-mundo-bg-surface rounded-xl p-6">
             <p className="text-2xl font-serif text-white">
               {course.modules?.length ?? 8}
             </p>
-            <p className="text-sm text-[#a0a0b0] mt-1">Módulos</p>
+            <p className="text-sm text-mundo-muted mt-1">Módulos</p>
           </div>
-          <div className="bg-[#252547] rounded-xl p-6">
+          <div className="bg-mundo-bg-surface rounded-xl p-6">
             <p className="text-2xl font-serif text-white">
               {course.modules?.reduce(
                 (a: number, m: { subLessons: unknown[] }) =>
@@ -130,17 +130,17 @@ export default async function CourseLandingPage({ params }: PageProps) {
                 0
               ) ?? "~24"}
             </p>
-            <p className="text-sm text-[#a0a0b0] mt-1">Vídeos curtos</p>
+            <p className="text-sm text-mundo-muted mt-1">Vídeos curtos</p>
           </div>
-          <div className="bg-[#252547] rounded-xl p-6">
+          <div className="bg-mundo-bg-surface rounded-xl p-6">
             <p className="text-2xl font-serif text-white">1</p>
-            <p className="text-sm text-[#a0a0b0] mt-1">Manual PDF</p>
+            <p className="text-sm text-mundo-muted mt-1">Manual PDF</p>
           </div>
-          <div className="bg-[#252547] rounded-xl p-6">
+          <div className="bg-mundo-bg-surface rounded-xl p-6">
             <p className="text-2xl font-serif text-white">
               {course.modules?.length ?? 8}
             </p>
-            <p className="text-sm text-[#a0a0b0] mt-1">
+            <p className="text-sm text-mundo-muted mt-1">
               Cadernos de exercícios
             </p>
           </div>
@@ -164,21 +164,21 @@ export default async function CourseLandingPage({ params }: PageProps) {
             }) => (
               <details
                 key={mod.number}
-                className="group bg-[#252547] rounded-xl overflow-hidden"
+                className="group bg-mundo-bg-surface rounded-xl overflow-hidden"
               >
                 <summary className="flex items-center justify-between px-6 py-5 cursor-pointer list-none">
                   <div className="flex items-center gap-4">
-                    <span className="text-[#8B5CF6] font-sans text-sm font-medium w-8">
+                    <span className="text-mundo-violeta font-sans text-sm font-medium w-8">
                       {String(mod.number).padStart(2, "0")}
                     </span>
                     <span className="text-white font-serif">{mod.title}</span>
                   </div>
-                  <span className="text-[#a0a0b0] group-open:rotate-180 transition-transform">
+                  <span className="text-mundo-muted group-open:rotate-180 transition-transform">
                     &#9662;
                   </span>
                 </summary>
                 <div className="px-6 pb-5 border-t border-[#1a1a2e]">
-                  <p className="text-[#a0a0b0] text-sm mt-4 mb-3">
+                  <p className="text-mundo-muted text-sm mt-4 mb-3">
                     {mod.description}
                   </p>
                   <ul className="space-y-2">
@@ -188,7 +188,7 @@ export default async function CourseLandingPage({ params }: PageProps) {
                           key={sub.letter}
                           className="flex items-center gap-3 text-sm"
                         >
-                          <span className="text-[#8B5CF6] font-sans font-medium">
+                          <span className="text-mundo-violeta font-sans font-medium">
                             {sub.letter})
                           </span>
                           <span className="text-[#c0c0d0]">{sub.title}</span>
@@ -197,7 +197,7 @@ export default async function CourseLandingPage({ params }: PageProps) {
                     )}
                   </ul>
                   {mod.workbook && (
-                    <p className="text-xs text-[#C9A96E] mt-3">
+                    <p className="text-xs text-mundo-dourado mt-3">
                       Caderno: {mod.workbook}
                     </p>
                   )}
@@ -217,9 +217,9 @@ export default async function CourseLandingPage({ params }: PageProps) {
           <div className="grid gap-4 md:grid-cols-3">
             {course.youtubeHooks.map(
               (hook: { title: string; durationMin: number }, i: number) => (
-                <div key={i} className="bg-[#252547] rounded-xl p-5">
-                  <p className="text-[#e0e0e8] text-sm mb-2">{hook.title}</p>
-                  <p className="text-xs text-[#a0a0b0]">
+                <div key={i} className="bg-mundo-bg-surface rounded-xl p-5">
+                  <p className="text-mundo-creme-suave text-sm mb-2">{hook.title}</p>
+                  <p className="text-xs text-mundo-muted">
                     {hook.durationMin} min
                   </p>
                 </div>
@@ -231,25 +231,25 @@ export default async function CourseLandingPage({ params }: PageProps) {
 
       {/* Diferencial */}
       <section className="px-6 py-12 max-w-4xl mx-auto">
-        <div className="bg-[#252547] border border-[#8B5CF6]/20 rounded-xl p-8">
+        <div className="bg-mundo-bg-surface border border-[#8B5CF6]/20 rounded-xl p-8">
           <h2 className="font-serif text-xl text-white mb-4">
             O que torna este curso diferente
           </h2>
-          <p className="text-[#a0a0b0] leading-relaxed">{course.diferencial}</p>
+          <p className="text-mundo-muted leading-relaxed">{course.diferencial}</p>
         </div>
       </section>
 
       {/* Pricing + CTA */}
       <section className="px-6 py-16 max-w-4xl mx-auto text-center">
-        <p className="text-[#a0a0b0] text-sm mb-2">
+        <p className="text-mundo-muted text-sm mb-2">
           Curso completo:
         </p>
         <p className="text-4xl font-serif text-white mb-2">$49</p>
-        <p className="text-sm text-[#a0a0b0] mb-8">USD / ~3100 MZN</p>
+        <p className="text-sm text-mundo-muted mb-8">USD / ~3100 MZN</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href={`/cursos/${slug}/dashboard`}
-            className="inline-block bg-[#8B5CF6] text-white px-8 py-3 rounded-lg font-sans hover:bg-[#7c4ee4] transition-colors"
+            className="inline-block bg-mundo-violeta text-white px-8 py-3 rounded-lg font-sans hover:bg-mundo-violeta/80 transition-colors"
           >
             Inscrever-me
           </Link>

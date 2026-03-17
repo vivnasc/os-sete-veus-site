@@ -441,8 +441,8 @@ export default function YouTubePage() {
 
   if (!user || !isAdmin) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#1a1a2e]">
-        <p className="text-[#a0a0b0]">Acesso restrito.</p>
+      <div className="flex min-h-screen items-center justify-center bg-mundo-bg">
+        <p className="text-mundo-muted">Acesso restrito.</p>
       </div>
     );
   }
@@ -452,19 +452,19 @@ export default function YouTubePage() {
   // ── Render ──────────────────────────────────────────────────────────
 
   return (
-    <div className="min-h-screen bg-[#1a1a2e] text-[#F5F0E6]">
+    <div className="min-h-screen bg-mundo-bg text-mundo-creme">
       {/* Header */}
-      <div className="border-b border-[#2a2a4a] px-6 py-4">
+      <div className="border-b border-mundo-bg-surface px-6 py-4">
         <div className="flex items-center justify-between max-w-5xl mx-auto">
           <div className="flex items-center gap-4">
             <Link
               href="/admin"
-              className="text-[#a0a0b0] hover:text-[#F5F0E6] text-sm"
+              className="text-mundo-muted hover:text-mundo-creme text-sm"
             >
               HUB
             </Link>
-            <span className="text-[#3a3a5a]">/</span>
-            <h1 className="text-lg font-medium text-[#C9A96E]">
+            <span className="text-mundo-border">/</span>
+            <h1 className="text-lg font-medium text-mundo-dourado">
               Videos YouTube
             </h1>
           </div>
@@ -485,7 +485,7 @@ export default function YouTubePage() {
                       ? "bg-[#C9A96E] text-[#1a1a2e]"
                       : step > s
                         ? "bg-green-800 text-green-200"
-                        : "bg-[#2a2a4a] text-[#666]"
+                        : "bg-mundo-bg-surface text-mundo-muted-dark"
                   }`}
                 >
                   {step > s ? "\u2713" : s}
@@ -493,7 +493,7 @@ export default function YouTubePage() {
                 {s < 4 && (
                   <div
                     className={`w-8 h-0.5 ${
-                      step > s ? "bg-green-800" : "bg-[#2a2a4a]"
+                      step > s ? "bg-green-800" : "bg-mundo-bg-surface"
                     }`}
                   />
                 )}
@@ -508,10 +508,10 @@ export default function YouTubePage() {
         {step === 1 && (
           <div className="space-y-6">
             <div>
-              <h2 className="text-xl text-[#C9A96E] mb-1">
+              <h2 className="text-xl text-mundo-dourado mb-1">
                 1. Escolhe o video
               </h2>
-              <p className="text-sm text-[#a0a0b0]">
+              <p className="text-sm text-mundo-muted">
                 Cada curso tem 2-3 hooks gratuitos para YouTube.
               </p>
             </div>
@@ -521,7 +521,7 @@ export default function YouTubePage() {
               if (hooks.length === 0) return null;
               return (
                 <div key={course.slug} className="space-y-3">
-                  <h3 className="text-sm text-[#666] uppercase tracking-wider">
+                  <h3 className="text-sm text-mundo-muted-dark uppercase tracking-wider">
                     {course.number}. {course.title}
                   </h3>
                   {hooks.map((hook) => (
@@ -531,13 +531,13 @@ export default function YouTubePage() {
                       className={`w-full text-left border rounded-xl p-5 transition-all hover:border-[#C9A96E]/50 ${
                         selectedScript === hook
                           ? "border-[#C9A96E] bg-[#C9A96E]/5"
-                          : "border-[#2a2a4a]"
+                          : "border-mundo-bg-surface"
                       }`}
                     >
-                      <p className="text-[#F5F0E6] font-medium">
+                      <p className="text-mundo-creme font-medium">
                         {hook.title}
                       </p>
-                      <p className="text-xs text-[#a0a0b0] mt-1">
+                      <p className="text-xs text-mundo-muted mt-1">
                         {hook.durationMin} min — {hook.scenes.length} cenas
                       </p>
                     </button>
@@ -552,17 +552,17 @@ export default function YouTubePage() {
         {step === 2 && selectedScript && (
           <div className="space-y-6">
             <div>
-              <h2 className="text-xl text-[#C9A96E] mb-1">
+              <h2 className="text-xl text-mundo-dourado mb-1">
                 2. Audio — {selectedScript.title}
               </h2>
-              <p className="text-sm text-[#a0a0b0]">
+              <p className="text-sm text-mundo-muted">
                 Gera o audio com a tua voz (ElevenLabs) ou carrega um MP3.
               </p>
             </div>
 
             {/* Script preview */}
-            <div className="border border-[#2a2a4a] rounded-xl p-5 max-h-64 overflow-y-auto">
-              <p className="text-xs text-[#666] uppercase mb-3">
+            <div className="border border-mundo-bg-surface rounded-xl p-5 max-h-64 overflow-y-auto">
+              <p className="text-xs text-mundo-muted-dark uppercase mb-3">
                 Narracao ({selectedScript.scenes.filter((s) => s.narration).length} seccoes)
               </p>
               <p className="text-sm text-[#d0d0d0] whitespace-pre-line leading-relaxed">
@@ -582,9 +582,9 @@ export default function YouTubePage() {
                   : "Gerar Audio (ElevenLabs)"}
               </button>
 
-              <span className="text-[#3a3a5a]">ou</span>
+              <span className="text-mundo-border">ou</span>
 
-              <label className="px-4 py-3 bg-[#2a2a4a] text-[#a0a0b0] rounded-lg text-sm cursor-pointer hover:bg-[#3a3a5a] transition-colors">
+              <label className="px-4 py-3 bg-mundo-bg-surface text-mundo-muted rounded-lg text-sm cursor-pointer hover:bg-mundo-bg-surface transition-colors">
                 Carregar MP3
                 <input
                   type="file"
@@ -608,7 +608,7 @@ export default function YouTubePage() {
                   <div className="h-3 w-3 rounded-full bg-green-500" />
                   <span className="text-sm text-green-300">Audio pronto</span>
                   {audioDuration > 0 && (
-                    <span className="text-xs text-[#a0a0b0]">
+                    <span className="text-xs text-mundo-muted">
                       {Math.floor(audioDuration / 60)}:{String(Math.floor(audioDuration % 60)).padStart(2, "0")} —{" "}
                       {scenes.length} cenas calculadas
                     </span>
@@ -635,7 +635,7 @@ export default function YouTubePage() {
 
             <button
               onClick={() => setStep(1)}
-              className="text-sm text-[#666] hover:text-[#a0a0b0]"
+              className="text-sm text-mundo-muted-dark hover:text-mundo-muted"
             >
               Voltar
             </button>
@@ -646,10 +646,10 @@ export default function YouTubePage() {
         {step === 3 && selectedScript && (
           <div className="space-y-6">
             <div>
-              <h2 className="text-xl text-[#C9A96E] mb-1">
+              <h2 className="text-xl text-mundo-dourado mb-1">
                 3. Rever — {selectedScript.title}
               </h2>
-              <p className="text-sm text-[#a0a0b0]">
+              <p className="text-sm text-mundo-muted">
                 Ve o video completo. Adiciona imagens se quiseres. Quando estiveres satisfeita, aprova.
               </p>
             </div>
@@ -667,7 +667,7 @@ export default function YouTubePage() {
             <div className="flex items-center gap-4">
               <button
                 onClick={togglePlayback}
-                className="px-4 py-2 bg-[#2a2a4a] text-[#F5F0E6] rounded-lg text-sm hover:bg-[#3a3a5a] transition-colors"
+                className="px-4 py-2 bg-mundo-bg-surface text-mundo-creme rounded-lg text-sm hover:bg-mundo-bg-surface transition-colors"
               >
                 {playing ? "Pausar" : "Reproduzir"}
               </button>
@@ -682,7 +682,7 @@ export default function YouTubePage() {
                 className="flex-1"
               />
 
-              <span className="text-xs text-[#a0a0b0] tabular-nums w-24 text-right">
+              <span className="text-xs text-mundo-muted tabular-nums w-24 text-right">
                 {formatTime(currentTime)} / {formatTime(audioDuration)}
               </span>
             </div>
@@ -699,7 +699,7 @@ export default function YouTubePage() {
 
             {/* Scene timeline with image slots */}
             <div>
-              <h3 className="text-sm text-[#C9A96E] mb-3">
+              <h3 className="text-sm text-mundo-dourado mb-3">
                 Cenas ({scenes.length}) — clica para adicionar imagem
               </h3>
               <div className="grid grid-cols-4 sm:grid-cols-8 gap-2">
@@ -711,7 +711,7 @@ export default function YouTubePage() {
                         ? "border-[#C9A96E] ring-1 ring-[#C9A96E]/30"
                         : scene.imageUrl
                           ? "border-[#3a3a5a]"
-                          : "border-[#2a2a4a] border-dashed"
+                          : "border-mundo-bg-surface border-dashed"
                     }`}
                     onClick={() => {
                       const input = document.createElement("input");
@@ -731,7 +731,7 @@ export default function YouTubePage() {
                         handleImageUpload(idx, file);
                     }}
                   >
-                    <div className="aspect-video bg-[#1A1A2E] flex items-center justify-center relative">
+                    <div className="aspect-video bg-mundo-bg flex items-center justify-center relative">
                       {scene.imageUrl ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img
@@ -740,27 +740,27 @@ export default function YouTubePage() {
                           className="w-full h-full object-cover"
                         />
                       ) : (
-                        <span className="text-[#3a3a5a] text-lg">+</span>
+                        <span className="text-mundo-border text-lg">+</span>
                       )}
                     </div>
-                    <div className="px-1.5 py-1 bg-[#2a2a4a]/50">
-                      <p className="text-[9px] text-[#666] uppercase font-mono truncate">
+                    <div className="px-1.5 py-1 bg-mundo-bg-surface/50">
+                      <p className="text-[9px] text-mundo-muted-dark uppercase font-mono truncate">
                         {idx + 1}. {scene.type}
                       </p>
-                      <p className="text-[9px] text-[#a0a0b0]">
+                      <p className="text-[9px] text-mundo-muted">
                         {formatTime(scene.adjustedStart)}-{formatTime(scene.adjustedEnd)}
                       </p>
                     </div>
                   </div>
                 ))}
               </div>
-              <p className="text-[10px] text-[#666] mt-2">
+              <p className="text-[10px] text-mundo-muted-dark mt-2">
                 Cenas sem imagem usam fundo escuro com texto. Imagens opcionais.
               </p>
             </div>
 
             {/* Approve */}
-            <div className="flex items-center gap-4 pt-4 border-t border-[#2a2a4a]">
+            <div className="flex items-center gap-4 pt-4 border-t border-mundo-bg-surface">
               {!approved ? (
                 <button
                   onClick={() => {
@@ -780,7 +780,7 @@ export default function YouTubePage() {
 
               <button
                 onClick={() => setStep(2)}
-                className="text-sm text-[#666] hover:text-[#a0a0b0]"
+                className="text-sm text-mundo-muted-dark hover:text-mundo-muted"
               >
                 Voltar
               </button>
@@ -792,10 +792,10 @@ export default function YouTubePage() {
         {step === 4 && selectedScript && (
           <div className="space-y-6">
             <div>
-              <h2 className="text-xl text-[#C9A96E] mb-1">
+              <h2 className="text-xl text-mundo-dourado mb-1">
                 4. Exportar — {selectedScript.title}
               </h2>
-              <p className="text-sm text-[#a0a0b0]">
+              <p className="text-sm text-mundo-muted">
                 Gera o video final em 1920x1080. Demora o tempo do audio (
                 {formatTime(audioDuration)}).
               </p>
@@ -814,13 +814,13 @@ export default function YouTubePage() {
 
             {exporting && (
               <div className="space-y-3">
-                <div className="h-4 bg-[#2a2a4a] rounded-full overflow-hidden">
+                <div className="h-4 bg-mundo-bg-surface rounded-full overflow-hidden">
                   <div
                     className="h-full bg-[#D4A853] transition-all duration-300"
                     style={{ width: `${exportProgress * 100}%` }}
                   />
                 </div>
-                <div className="flex justify-between text-xs text-[#a0a0b0]">
+                <div className="flex justify-between text-xs text-mundo-muted">
                   <span>A gravar... {Math.round(exportProgress * 100)}%</span>
                   <span>{formatTime(exportProgress * audioDuration)} / {formatTime(audioDuration)}</span>
                 </div>
@@ -864,7 +864,7 @@ export default function YouTubePage() {
                       setExportUrl(null);
                       setStep(3);
                     }}
-                    className="px-4 py-3 bg-[#2a2a4a] text-[#a0a0b0] rounded-lg text-sm hover:bg-[#3a3a5a] transition-colors"
+                    className="px-4 py-3 bg-mundo-bg-surface text-mundo-muted rounded-lg text-sm hover:bg-mundo-bg-surface transition-colors"
                   >
                     Refazer
                   </button>
@@ -874,7 +874,7 @@ export default function YouTubePage() {
 
             <button
               onClick={() => setStep(3)}
-              className="text-sm text-[#666] hover:text-[#a0a0b0]"
+              className="text-sm text-mundo-muted-dark hover:text-mundo-muted"
             >
               Voltar para pre-visualizacao
             </button>

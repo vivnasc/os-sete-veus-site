@@ -101,25 +101,25 @@ export default function CourseDashboard() {
 
   if (loading || authLoading) {
     return (
-      <div className="min-h-screen bg-[#1a1a2e] flex items-center justify-center">
-        <p className="text-[#a0a0b0]">A carregar...</p>
+      <div className="min-h-screen bg-mundo-bg flex items-center justify-center">
+        <p className="text-mundo-muted">A carregar...</p>
       </div>
     );
   }
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-[#1a1a2e] flex items-center justify-center px-6">
+      <div className="min-h-screen bg-mundo-bg flex items-center justify-center px-6">
         <div className="text-center max-w-md">
           <h1 className="font-serif text-2xl text-white mb-4">
             Entra na tua conta
           </h1>
-          <p className="text-[#a0a0b0] mb-8">
+          <p className="text-mundo-muted mb-8">
             Precisas de estar autenticada para aceder ao curso.
           </p>
           <Link
             href="/entrar"
-            className="inline-block bg-[#8B5CF6] text-white px-8 py-3 rounded-lg font-sans hover:bg-[#7c4ee4] transition-colors"
+            className="inline-block bg-mundo-violeta text-white px-8 py-3 rounded-lg font-sans hover:bg-mundo-violeta/80 transition-colors"
           >
             Entrar
           </Link>
@@ -130,8 +130,8 @@ export default function CourseDashboard() {
 
   if (!courseData) {
     return (
-      <div className="min-h-screen bg-[#1a1a2e] flex items-center justify-center">
-        <p className="text-[#a0a0b0]">Curso não encontrado.</p>
+      <div className="min-h-screen bg-mundo-bg flex items-center justify-center">
+        <p className="text-mundo-muted">Curso não encontrado.</p>
       </div>
     );
   }
@@ -140,21 +140,21 @@ export default function CourseDashboard() {
   const hasFullAccess = enrolled || isAdmin;
 
   return (
-    <div className="min-h-screen bg-[#1a1a2e] text-[#e0e0e8]">
+    <div className="min-h-screen bg-mundo-bg text-mundo-creme-suave">
       {/* Header */}
       <section className="px-6 pt-12 pb-8 max-w-4xl mx-auto">
         <Link
           href={`/cursos/${slug}`}
-          className="text-[#8B5CF6] text-sm font-sans hover:underline"
+          className="text-mundo-violeta text-sm font-sans hover:underline"
         >
           ← Voltar ao curso
         </Link>
         <h1 className="font-serif text-3xl text-white mt-4">
           {courseData.title}
         </h1>
-        <p className="text-[#C9A96E] mt-1">{courseData.subtitle}</p>
+        <p className="text-mundo-dourado mt-1">{courseData.subtitle}</p>
         {isAdmin && (
-          <span className="inline-block mt-2 text-xs bg-[#C9A96E]/20 text-[#C9A96E] px-2 py-0.5 rounded font-sans">
+          <span className="inline-block mt-2 text-xs bg-[#C9A96E]/20 text-mundo-dourado px-2 py-0.5 rounded font-sans">
             Acesso admin
           </span>
         )}
@@ -163,19 +163,19 @@ export default function CourseDashboard() {
       {/* Progress bar */}
       <section className="px-6 pb-8 max-w-4xl mx-auto">
         <div className="flex items-center gap-4">
-          <div className="flex-1 bg-[#252547] rounded-full h-3 overflow-hidden">
+          <div className="flex-1 bg-mundo-bg-surface rounded-full h-3 overflow-hidden">
             <div
-              className="bg-[#8B5CF6] h-full rounded-full transition-all duration-500"
+              className="bg-mundo-violeta h-full rounded-full transition-all duration-500"
               style={{ width: `${overallProgress}%` }}
             />
           </div>
-          <span className="text-sm font-sans text-[#a0a0b0]">
+          <span className="text-sm font-sans text-mundo-muted">
             {overallProgress}%
           </span>
         </div>
         {overallProgress === 100 && (
           <div className="mt-4 bg-[#C9A96E]/10 border border-[#C9A96E]/30 rounded-xl p-4 text-center">
-            <p className="text-[#C9A96E] font-serif">
+            <p className="text-mundo-dourado font-serif">
               Curso concluído. O teu certificado está disponível.
             </p>
           </div>
@@ -193,13 +193,13 @@ export default function CourseDashboard() {
           return (
             <div
               key={mod.moduleNumber}
-              className={`bg-[#252547] rounded-xl overflow-hidden ${
+              className={`bg-mundo-bg-surface rounded-xl overflow-hidden ${
                 isLocked ? "opacity-60" : ""
               }`}
             >
               <div className="px-6 py-5 flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <span className="text-[#8B5CF6] font-sans text-sm font-medium w-8">
+                  <span className="text-mundo-violeta font-sans text-sm font-medium w-8">
                     {String(mod.moduleNumber).padStart(2, "0")}
                   </span>
                   <span className="text-white font-serif">{mod.title}</span>
@@ -209,7 +209,7 @@ export default function CourseDashboard() {
                     </span>
                   )}
                 </div>
-                <span className="text-xs text-[#a0a0b0] font-sans">
+                <span className="text-xs text-mundo-muted font-sans">
                   {completedInModule}/{mod.subLessons.length}
                 </span>
               </div>
@@ -219,12 +219,12 @@ export default function CourseDashboard() {
                     <Link
                       key={sub.letter}
                       href={`/cursos/${slug}/modulo/${mod.moduleNumber}/${sub.letter.toLowerCase()}`}
-                      className="flex items-center gap-3 text-sm py-2 px-3 rounded-lg hover:bg-[#1a1a2e] transition-colors"
+                      className="flex items-center gap-3 text-sm py-2 px-3 rounded-lg hover:bg-mundo-bg transition-colors"
                     >
                       <span
                         className={`w-5 h-5 rounded-full border flex items-center justify-center text-xs ${
                           sub.completed
-                            ? "bg-[#8B5CF6] border-[#8B5CF6] text-white"
+                            ? "bg-mundo-violeta border-[#8B5CF6] text-white"
                             : "border-[#606070] text-[#606070]"
                         }`}
                       >
@@ -232,7 +232,7 @@ export default function CourseDashboard() {
                       </span>
                       <span
                         className={
-                          sub.completed ? "text-[#a0a0b0]" : "text-[#e0e0e8]"
+                          sub.completed ? "text-mundo-muted" : "text-mundo-creme-suave"
                         }
                       >
                         {sub.title}
@@ -249,11 +249,11 @@ export default function CourseDashboard() {
       {/* Enroll CTA (if not enrolled and not admin) */}
       {!hasFullAccess && (
         <section className="px-6 pb-16 max-w-4xl mx-auto text-center">
-          <div className="bg-[#252547] border border-[#8B5CF6]/20 rounded-xl p-8">
+          <div className="bg-mundo-bg-surface border border-[#8B5CF6]/20 rounded-xl p-8">
             <h2 className="font-serif text-xl text-white mb-2">
               Desbloqueia o curso completo
             </h2>
-            <p className="text-[#a0a0b0] text-sm mb-6">
+            <p className="text-mundo-muted text-sm mb-6">
               Acede a todos os {courseData.modules.length} módulos, manual e cadernos de exercícios.
             </p>
             <button
@@ -266,7 +266,7 @@ export default function CourseDashboard() {
                 const data = await res.json();
                 if (data.url) window.location.href = data.url;
               }}
-              className="inline-block bg-[#8B5CF6] text-white px-8 py-3 rounded-lg font-sans hover:bg-[#7c4ee4] transition-colors"
+              className="inline-block bg-mundo-violeta text-white px-8 py-3 rounded-lg font-sans hover:bg-mundo-violeta/80 transition-colors"
             >
               Inscrever-me — $49
             </button>
