@@ -395,6 +395,16 @@ export default function RevisaoPage() {
                     </button>
                   </div>
 
+                  {/* Actions */}
+                  <div className="mt-4 flex items-center gap-3">
+                    <Link
+                      href={`/admin/revisao/${currentBook.slug}`}
+                      className="rounded-lg bg-forest px-4 py-2 text-sm font-medium text-white hover:bg-forest/80 transition-colors"
+                    >
+                      Abrir editor de revisão
+                    </Link>
+                  </div>
+
                   {/* Chapter buttons */}
                   {currentBook.chapters.length > 0 && (
                     <div className="mt-4 flex flex-wrap gap-2">
