@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { getAllCourses } from "@/data/courses";
 import {
   getScriptsForCourse,
   getFullNarration,
 } from "@/data/youtube-scripts";
-import type { YouTubeScript, VideoScene } from "@/data/youtube-scripts";
+import type { YouTubeScript } from "@/data/youtube-scripts";
 import type { ComposerScene } from "@/components/VideoComposer";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -431,7 +431,7 @@ export default function YouTubePage() {
   // ── Build composer scenes ─────────────────────────────────────────
 
   function buildComposerScenes(hook: YouTubeScript): ComposerScene[] {
-    return hook.scenes.map((scene: VideoScene, idx: number) => {
+    return hook.scenes.map((scene, idx) => {
       const key = sceneKey(hook.courseSlug, hook.hookIndex, idx);
       const st = getStatus(key);
       return { ...scene, imageUrl: st.imageUrl, approved: true };
@@ -816,25 +816,18 @@ export default function YouTubePage() {
 
                     {/* ── Compor Video ── */}
                     <div className="border-t border-mundo-bg pt-4">
-                      {isReadyToCompose(hook) ? (
-                        <div>
-                          <h3 className="text-sm text-mundo-dourado mb-3">Compor Video</h3>
-                          <p className="text-xs text-mundo-muted mb-4">
-                            Audio + {imageCount} imagens. Transicoes dissolve, Ken Burns, texto animado.
-                          </p>
-                          <VideoComposer
-                            scenes={buildComposerScenes(hook)}
-                            audioUrl={audioSt.audioUrl}
-                            title={hook.title}
-                          />
-                        </div>
+                      {imageCount > 0 ? (
+                        <VideoComposer
+                          scenes={buildComposerScenes(hook)}
+                          audioUrl={audioSt.audioUrl}
+                          title={hook.title}
+                          comfyuiUrl={comfyuiUrl}
+                          courseSlug={hook.courseSlug}
+                          hookIndex={hook.hookIndex}
+                        />
                       ) : (
                         <p className="text-xs text-mundo-muted">
-                          {audioSt.audioStatus !== "done" && imageCount === 0
-                            ? "Falta: audio + imagens"
-                            : audioSt.audioStatus !== "done"
-                            ? "Falta: audio"
-                            : "Falta: pelo menos 1 imagem"}
+                          Adiciona imagens as cenas para gerar video clips com Wan 2.1.
                         </p>
                       )}
                     </div>

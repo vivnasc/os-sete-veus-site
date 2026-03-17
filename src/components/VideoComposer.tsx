@@ -1,18 +1,8 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef } from "react";
 import type { VideoScene } from "@/data/youtube-scripts";
-
-// ─── PALETTE ──────────────────────────────────────────────────────────────
-
-const PALETTE = {
-  bg: "#1A1A2E",
-  cream: "#F5F0E6",
-  gold: "#D4A853",
-  terracotta: "#C4745A",
-  violet: "#8B5CF6",
-  goldWarm: "#C9A96E",
-};
+import { SCENE_MOTION_PROMPTS } from "@/lib/comfyui-workflows";
 
 // ─── TYPES ────────────────────────────────────────────────────────────────
 
@@ -21,670 +11,364 @@ export type ComposerScene = VideoScene & {
   approved: boolean;
 };
 
-type RenderState =
-  | { status: "idle" }
-  | { status: "rendering"; progress: number; currentScene: number }
-  | { status: "done"; blobUrl: string }
-  | { status: "error"; message: string };
+type ClipStatus = "idle" | "generating" | "done" | "error";
 
-// ─── TIMING: build a timeline from scenes ─────────────────────────────────
-
-type TimelineEntry = {
-  sceneIdx: number;
-  startTime: number;
-  endTime: number;
-  duration: number;
+type SceneClip = {
+  status: ClipStatus;
+  videoUrl: string | null;
+  error: string | null;
 };
-
-function buildTimeline(scenes: ComposerScene[]): TimelineEntry[] {
-  const timeline: TimelineEntry[] = [];
-  let t = 0;
-  for (let i = 0; i < scenes.length; i++) {
-    const dur = scenes[i].durationSec;
-    timeline.push({ sceneIdx: i, startTime: t, endTime: t + dur, duration: dur });
-    t += dur;
-  }
-  return timeline;
-}
-
-function findSceneAtTime(timeline: TimelineEntry[], time: number): {
-  entry: TimelineEntry;
-  progress: number;
-  timeInScene: number;
-} {
-  for (const entry of timeline) {
-    if (time >= entry.startTime && time < entry.endTime) {
-      const timeInScene = time - entry.startTime;
-      return { entry, progress: timeInScene / entry.duration, timeInScene };
-    }
-  }
-  // Past end: return last scene at 100%
-  const last = timeline[timeline.length - 1];
-  return { entry: last, progress: 1, timeInScene: last.duration };
-}
 
 // ─── COMPONENT ────────────────────────────────────────────────────────────
 
+/**
+ * VideoComposer — orchestrates real video clip generation via Wan 2.1.
+ *
+ * Pipeline per scene:
+ *   1. Source image (uploaded by user or generated) →
+ *   2. Wan 2.1 on ThinkDiffusion (image-to-video) →
+ *   3. Animated video clip (5-10 seconds) →
+ *   4. All clips + audio → final video (ffmpeg or manual montage)
+ */
 export default function VideoComposer({
   scenes,
   audioUrl,
   title,
-  fps = 30,
-  width = 1920,
-  height = 1080,
+  comfyuiUrl,
+  courseSlug,
+  hookIndex,
 }: {
   scenes: ComposerScene[];
   audioUrl: string | null;
   title: string;
-  fps?: number;
-  width?: number;
-  height?: number;
+  comfyuiUrl?: string;
+  courseSlug?: string;
+  hookIndex?: number;
 }) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const previewCanvasRef = useRef<HTMLCanvasElement>(null);
-  const [renderState, setRenderState] = useState<RenderState>({ status: "idle" });
-  const [previewScene, setPreviewScene] = useState(0);
-  const [previewTime, setPreviewTime] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const cancelRef = useRef(false);
-  const previewAudioRef = useRef<HTMLAudioElement | null>(null);
-  const animFrameRef = useRef<number>(0);
+  const [clips, setClips] = useState<Record<number, SceneClip>>({});
+  const [batchRunning, setBatchRunning] = useState(false);
+  const [batchProgress, setBatchProgress] = useState({ current: 0, total: 0 });
+  const shouldStop = useRef(false);
 
-  const timeline = buildTimeline(scenes);
-  const totalDuration = timeline.length > 0 ? timeline[timeline.length - 1].endTime : 0;
-
-  // ── Preview: draw a single frame ──────────────────────────────────
-
-  const drawPreview = useCallback(
-    async (time: number) => {
-      const canvas = previewCanvasRef.current;
-      if (!canvas) return;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return;
-
-      canvas.width = width / 2;
-      canvas.height = height / 2;
-
-      const tl = buildTimeline(scenes);
-      if (tl.length === 0) return;
-
-      const { entry, progress } = findSceneAtTime(tl, time);
-      const scene = scenes[entry.sceneIdx];
-      if (!scene) return;
-
-      // Also get next scene for cross-dissolve
-      const transitionDur = 1.0; // 1 second cross-dissolve
-      const timeUntilEnd = entry.endTime - time;
-      const nextEntry = entry.sceneIdx < scenes.length - 1 ? tl[entry.sceneIdx + 1] : null;
-
-      await drawScene(ctx, scene, progress, canvas.width, canvas.height);
-
-      // Cross-dissolve into next scene
-      if (nextEntry && timeUntilEnd < transitionDur) {
-        const alpha = 1 - timeUntilEnd / transitionDur;
-        ctx.save();
-        ctx.globalAlpha = alpha;
-        await drawScene(ctx, scenes[nextEntry.sceneIdx], 0, canvas.width, canvas.height);
-        ctx.restore();
-      }
-    },
-    [scenes, width, height]
-  );
-
-  // Preview: scrubbing
-  useEffect(() => {
-    if (!isPlaying) {
-      const tl = buildTimeline(scenes);
-      if (tl.length === 0) return;
-      const entry = tl[previewScene];
-      if (!entry) return;
-      drawPreview(entry.startTime + previewTime);
-    }
-  }, [previewScene, previewTime, drawPreview, isPlaying, scenes]);
-
-  // ── Preview: play with audio sync ─────────────────────────────────
-
-  function startPreviewPlayback() {
-    if (!audioUrl) return;
-    const audio = new Audio(audioUrl);
-    previewAudioRef.current = audio;
-    setIsPlaying(true);
-
-    audio.play().then(() => {
-      const tick = () => {
-        if (!previewAudioRef.current || previewAudioRef.current.paused) {
-          setIsPlaying(false);
-          return;
-        }
-        const t = audio.currentTime;
-        drawPreview(t);
-
-        // Update UI scene/time indicators
-        const tl = buildTimeline(scenes);
-        const { entry, timeInScene } = findSceneAtTime(tl, t);
-        setPreviewScene(entry.sceneIdx);
-        setPreviewTime(timeInScene);
-
-        animFrameRef.current = requestAnimationFrame(tick);
-      };
-      animFrameRef.current = requestAnimationFrame(tick);
-    }).catch(() => {
-      setIsPlaying(false);
-    });
-
-    audio.onended = () => {
-      setIsPlaying(false);
-      cancelAnimationFrame(animFrameRef.current);
-    };
+  function getClip(idx: number): SceneClip {
+    return clips[idx] || { status: "idle", videoUrl: null, error: null };
   }
 
-  function stopPreviewPlayback() {
-    if (previewAudioRef.current) {
-      previewAudioRef.current.pause();
-      previewAudioRef.current = null;
-    }
-    cancelAnimationFrame(animFrameRef.current);
-    setIsPlaying(false);
+  function updateClip(idx: number, patch: Partial<SceneClip>) {
+    setClips((prev) => ({
+      ...prev,
+      [idx]: { ...getClip(idx), ...patch },
+    }));
   }
 
-  // ── Render: audio-driven recording ────────────────────────────────
+  const doneClips = scenes.filter((_, i) => getClip(i).status === "done").length;
+  const hasComfyUI = !!comfyuiUrl?.trim();
 
-  async function renderVideo() {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+  // ── Generate a single video clip ──────────────────────────────────
 
-    canvas.width = width;
-    canvas.height = height;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+  async function generateClip(idx: number) {
+    const scene = scenes[idx];
+    if (!scene?.imageUrl || !hasComfyUI || !courseSlug) return;
 
-    cancelRef.current = false;
-    setRenderState({ status: "rendering", progress: 0, currentScene: 0 });
+    updateClip(idx, { status: "generating", error: null });
 
-    // Pre-load all images
-    const loadedImages = await preloadImages(scenes);
+    try {
+      const motionPrompt = buildMotionPrompt(scene);
 
-    // Set up canvas stream for recording
-    const stream = canvas.captureStream(fps);
-
-    // Set up audio
-    let audioElement: HTMLAudioElement | null = null;
-    let audioCtx: AudioContext | null = null;
-
-    if (audioUrl) {
-      audioElement = new Audio(audioUrl);
-      audioElement.crossOrigin = "anonymous";
-      // Pre-load audio completely
-      await new Promise<void>((resolve) => {
-        audioElement!.oncanplaythrough = () => resolve();
-        audioElement!.onerror = () => resolve();
-        audioElement!.load();
+      const res = await fetch("/api/admin/courses/generate-video", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          comfyuiUrl: comfyuiUrl!.trim(),
+          sourceImageUrl: scene.imageUrl,
+          motionPrompt,
+          courseSlug,
+          sceneLabel: `yt-hook${hookIndex ?? 0}-scene${idx}`,
+          durationSec: scene.durationSec <= 15 ? 5 : 10,
+          width: 1280,
+          height: 720,
+        }),
       });
 
-      try {
-        audioCtx = new AudioContext();
-        const source = audioCtx.createMediaElementSource(audioElement);
-        const dest = audioCtx.createMediaStreamDestination();
-        source.connect(dest);
-        source.connect(audioCtx.destination);
-        for (const track of dest.stream.getAudioTracks()) {
-          stream.addTrack(track);
-        }
-      } catch {
-        // Audio mixing failed — continue without audio in stream
-      }
-    }
-
-    const mimeType = MediaRecorder.isTypeSupported("video/webm;codecs=vp9,opus")
-      ? "video/webm;codecs=vp9,opus"
-      : MediaRecorder.isTypeSupported("video/webm;codecs=vp9")
-      ? "video/webm;codecs=vp9"
-      : "video/webm";
-
-    const recorder = new MediaRecorder(stream, {
-      mimeType,
-      videoBitsPerSecond: 8_000_000,
-    });
-
-    const chunks: BlobPart[] = [];
-    recorder.ondataavailable = (e) => {
-      if (e.data.size > 0) chunks.push(e.data);
-    };
-
-    const donePromise = new Promise<Blob>((resolve) => {
-      recorder.onstop = () => resolve(new Blob(chunks, { type: mimeType }));
-    });
-
-    recorder.start(500);
-
-    // Start audio playback — this is the MASTER CLOCK
-    if (audioElement) {
-      audioElement.currentTime = 0;
-      await audioElement.play().catch(() => {});
-    }
-
-    const tl = buildTimeline(scenes);
-    const transitionDur = 1.0;
-
-    // Render loop: driven by audio.currentTime (or performance.now fallback)
-    const startWallTime = performance.now();
-
-    const renderFrame = () => {
-      if (cancelRef.current) {
-        recorder.stop();
-        if (audioElement) audioElement.pause();
-        return;
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({ erro: `HTTP ${res.status}` }));
+        throw new Error(data.erro || `Erro ${res.status}`);
       }
 
-      // Master time: audio if available, wall-clock otherwise
-      const currentTime = audioElement
-        ? audioElement.currentTime
-        : (performance.now() - startWallTime) / 1000;
-
-      if (currentTime >= totalDuration || (audioElement && audioElement.ended)) {
-        // Render final frame
-        const { entry, progress } = findSceneAtTime(tl, totalDuration - 0.01);
-        drawSceneSync(ctx, scenes[entry.sceneIdx], progress, width, height, loadedImages.get(entry.sceneIdx) || null);
-
-        // Small delay to ensure last frames are captured
-        setTimeout(() => {
-          recorder.stop();
-          if (audioElement) audioElement.pause();
-        }, 200);
-        return;
-      }
-
-      // Find current scene from master time
-      const { entry, progress } = findSceneAtTime(tl, currentTime);
-      const scene = scenes[entry.sceneIdx];
-
-      // Draw current scene
-      drawSceneSync(ctx, scene, progress, width, height, loadedImages.get(entry.sceneIdx) || null);
-
-      // Cross-dissolve into next scene
-      const timeUntilEnd = entry.endTime - currentTime;
-      if (entry.sceneIdx < scenes.length - 1 && timeUntilEnd < transitionDur) {
-        const nextIdx = entry.sceneIdx + 1;
-        const alpha = 1 - timeUntilEnd / transitionDur;
-        ctx.save();
-        ctx.globalAlpha = alpha;
-        drawSceneSync(ctx, scenes[nextIdx], 0, width, height, loadedImages.get(nextIdx) || null);
-        ctx.restore();
-      }
-
-      setRenderState({
-        status: "rendering",
-        progress: currentTime / totalDuration,
-        currentScene: entry.sceneIdx,
-      });
-
-      requestAnimationFrame(renderFrame);
-    };
-
-    requestAnimationFrame(renderFrame);
-
-    const blob = await donePromise;
-    const blobUrl = URL.createObjectURL(blob);
-
-    if (audioCtx) audioCtx.close().catch(() => {});
-
-    if (cancelRef.current) {
-      setRenderState({ status: "idle" });
-    } else {
-      setRenderState({ status: "done", blobUrl });
+      const data = await res.json();
+      updateClip(idx, { status: "done", videoUrl: data.url });
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Erro desconhecido";
+      updateClip(idx, { status: "error", error: msg });
     }
   }
 
-  function cancelRender() {
-    cancelRef.current = true;
-    setRenderState({ status: "idle" });
+  // ── Generate all clips ────────────────────────────────────────────
+
+  async function generateAllClips() {
+    if (!hasComfyUI) return;
+
+    shouldStop.current = false;
+    setBatchRunning(true);
+
+    const scenesWithImages = scenes
+      .map((s, i) => ({ scene: s, idx: i }))
+      .filter(({ scene, idx }) => scene.imageUrl && getClip(idx).status !== "done");
+
+    setBatchProgress({ current: 0, total: scenesWithImages.length });
+
+    for (let i = 0; i < scenesWithImages.length; i++) {
+      if (shouldStop.current) break;
+      setBatchProgress({ current: i + 1, total: scenesWithImages.length });
+      await generateClip(scenesWithImages[i].idx);
+
+      // Wan 2.1 is heavy — wait between clips
+      if (i < scenesWithImages.length - 1) {
+        await new Promise((r) => setTimeout(r, 5000));
+      }
+    }
+
+    setBatchRunning(false);
   }
 
-  // ── UI ──────────────────────────────────────────────────────────────
+  // ── Upload a video clip manually ──────────────────────────────────
+
+  function handleClipUpload(idx: number, file: File) {
+    const url = URL.createObjectURL(file);
+    updateClip(idx, { status: "done", videoUrl: url });
+  }
+
+  // ── Build motion prompt from scene ────────────────────────────────
+
+  function buildMotionPrompt(scene: ComposerScene): string {
+    const baseMotion = SCENE_MOTION_PROMPTS[scene.type] || SCENE_MOTION_PROMPTS["situacao"];
+    // Add visual note context for more specific animation
+    const visualContext = scene.visualNote
+      ? `, ${scene.visualNote.replace(/[#()\[\]]/g, "").slice(0, 100)}`
+      : "";
+    return `${baseMotion}${visualContext}, smooth slow cinematic motion, 24fps, high quality`;
+  }
+
+  // ── Render ────────────────────────────────────────────────────────
 
   return (
     <div className="space-y-6">
-      {/* Preview */}
-      <div>
-        <div className="bg-black rounded-lg overflow-hidden inline-block shadow-2xl">
-          <canvas
-            ref={previewCanvasRef}
-            style={{ width: 640, height: 360 }}
-            className="block"
-          />
+      {/* Status bar */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h3 className="text-sm text-mundo-dourado font-medium">
+            Video Clips — Wan 2.1
+          </h3>
+          <p className="text-xs text-mundo-muted mt-1">
+            Cada imagem e animada em video real pelo Wan 2.1 no ThinkDiffusion.
+            {!hasComfyUI && " Configura o URL do ComfyUI acima."}
+          </p>
         </div>
-
-        {/* Transport controls */}
-        <div className="flex items-center gap-4 mt-3">
+        <div className="text-right">
+          <span className="text-sm text-mundo-creme-suave">
+            {doneClips}/{scenes.length} clips
+          </span>
           {audioUrl && (
-            <button
-              onClick={isPlaying ? stopPreviewPlayback : startPreviewPlayback}
-              className={`px-4 py-2 rounded text-sm font-medium transition-colors ${
-                isPlaying
-                  ? "bg-red-900/50 text-red-300 hover:bg-red-900/70"
-                  : "bg-mundo-violeta/80 text-white hover:bg-mundo-violeta"
-              }`}
-            >
-              {isPlaying ? "Parar" : "Pre-visualizar com audio"}
-            </button>
-          )}
-
-          {!isPlaying && (
-            <>
-              <select
-                value={previewScene}
-                onChange={(e) => {
-                  setPreviewScene(Number(e.target.value));
-                  setPreviewTime(0);
-                }}
-                className="bg-mundo-bg text-mundo-creme-suave text-sm rounded px-2 py-1 border border-mundo-border"
-              >
-                {scenes.map((s, i) => (
-                  <option key={i} value={i}>
-                    {i + 1}. {s.type} ({s.durationSec}s)
-                  </option>
-                ))}
-              </select>
-
-              <input
-                type="range"
-                min={0}
-                max={scenes[previewScene]?.durationSec || 1}
-                step={0.1}
-                value={previewTime}
-                onChange={(e) => setPreviewTime(Number(e.target.value))}
-                className="w-32 accent-mundo-dourado"
-              />
-              <span className="text-xs text-mundo-muted">{previewTime.toFixed(1)}s</span>
-            </>
-          )}
-
-          {isPlaying && (
-            <div className="flex-1">
-              <div className="h-1.5 bg-mundo-border rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-mundo-violeta transition-all duration-100"
-                  style={{
-                    width: `${totalDuration > 0
-                      ? ((timeline[previewScene]?.startTime || 0) + previewTime) / totalDuration * 100
-                      : 0}%`
-                  }}
-                />
-              </div>
-            </div>
+            <span className="text-xs text-green-400 block">Audio OK</span>
           )}
         </div>
       </div>
 
-      {/* Hidden render canvas */}
-      <canvas ref={canvasRef} className="hidden" />
-
-      {/* Render controls */}
-      <div className="flex items-center gap-4">
-        {renderState.status === "idle" && (
+      {/* Batch actions */}
+      <div className="flex items-center gap-3">
+        {!batchRunning && hasComfyUI && doneClips < scenes.length && (
           <button
-            onClick={renderVideo}
-            disabled={scenes.length === 0}
-            className="px-6 py-2.5 bg-mundo-dourado text-mundo-bg rounded-lg font-medium hover:bg-mundo-dourado-quente disabled:opacity-50 transition-colors"
+            onClick={generateAllClips}
+            className="px-5 py-2.5 bg-mundo-dourado text-mundo-bg rounded-lg font-medium hover:bg-mundo-dourado-quente transition-colors"
           >
-            Gerar Video
+            Gerar todos os video clips
           </button>
         )}
-
-        {renderState.status === "rendering" && (
+        {batchRunning && (
           <>
             <div className="flex-1">
-              <div className="h-3 bg-mundo-border rounded-full overflow-hidden">
+              <div className="h-2 bg-mundo-border rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-mundo-dourado transition-all duration-300"
-                  style={{ width: `${renderState.progress * 100}%` }}
+                  className="h-full bg-mundo-dourado transition-all duration-1000"
+                  style={{ width: `${batchProgress.total > 0 ? (batchProgress.current / batchProgress.total) * 100 : 0}%` }}
                 />
               </div>
               <p className="text-xs text-mundo-muted mt-1">
-                Cena {renderState.currentScene + 1}/{scenes.length} — {Math.round(renderState.progress * 100)}%
-                <span className="text-mundo-muted-dark ml-2">
-                  (o audio e o relogio — sincronizacao perfeita)
-                </span>
+                Clip {batchProgress.current}/{batchProgress.total} — Wan 2.1 a animar...
               </p>
             </div>
             <button
-              onClick={cancelRender}
+              onClick={() => { shouldStop.current = true; }}
               className="px-4 py-2 bg-red-900/50 text-red-300 rounded-lg text-sm hover:bg-red-900/70"
             >
-              Cancelar
+              Parar
             </button>
           </>
         )}
-
-        {renderState.status === "done" && (
-          <div className="space-y-3">
-            <div className="flex items-center gap-4">
-              <a
-                href={renderState.blobUrl}
-                download={`${title.replace(/[^a-zA-Z0-9]/g, "-")}.webm`}
-                className="px-6 py-2.5 bg-green-800/50 text-green-300 rounded-lg font-medium hover:bg-green-800/70"
-              >
-                Descarregar Video (.webm)
-              </a>
-              <button
-                onClick={() => setRenderState({ status: "idle" })}
-                className="px-4 py-2 bg-mundo-bg-surface text-mundo-muted rounded-lg text-sm hover:text-mundo-creme"
-              >
-                Gerar novamente
-              </button>
-            </div>
-            {/* Inline preview of rendered video */}
-            <video
-              controls
-              src={renderState.blobUrl}
-              className="rounded-lg max-w-[640px] shadow-2xl"
-            />
-          </div>
-        )}
-
-        {renderState.status === "error" && (
-          <div className="text-red-400 text-sm">
-            Erro: {renderState.message}
-            <button onClick={() => setRenderState({ status: "idle" })} className="ml-4 underline">
-              Tentar outra vez
-            </button>
-          </div>
-        )}
       </div>
+
+      {/* Scene clips grid */}
+      <div className="grid grid-cols-1 gap-3">
+        {scenes.map((scene, idx) => {
+          const clip = getClip(idx);
+          return (
+            <div key={idx} className="flex gap-4 bg-mundo-bg rounded-lg p-4">
+              {/* Video preview or image */}
+              <div className="w-48 h-28 rounded-lg overflow-hidden flex-shrink-0 border border-mundo-border relative">
+                {clip.videoUrl ? (
+                  <video
+                    src={clip.videoUrl}
+                    className="w-full h-full object-cover"
+                    muted
+                    loop
+                    autoPlay
+                    playsInline
+                    onMouseEnter={(e) => (e.target as HTMLVideoElement).play()}
+                  />
+                ) : scene.imageUrl ? (
+                  <>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={scene.imageUrl} alt="" className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                      <span className="text-white/60 text-xs">Foto estatica</span>
+                    </div>
+                  </>
+                ) : (
+                  <div className="w-full h-full bg-mundo-bg-surface flex items-center justify-center">
+                    <span className="text-mundo-muted-dark text-xs">Sem imagem</span>
+                  </div>
+                )}
+                {clip.status === "generating" && (
+                  <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="w-6 h-6 border-2 border-mundo-dourado border-t-transparent rounded-full animate-spin mx-auto mb-1" />
+                      <span className="text-xs text-mundo-dourado">Wan 2.1...</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Scene info */}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-mundo-violeta font-mono text-xs uppercase">
+                    {idx + 1}. {scene.type}
+                  </span>
+                  <span className="text-mundo-muted text-xs">~{scene.durationSec}s</span>
+                  {clip.status === "done" && (
+                    <span className="text-xs text-green-400">Video OK</span>
+                  )}
+                </div>
+                {scene.overlayText && (
+                  <p className="text-sm text-white mb-1">&ldquo;{scene.overlayText}&rdquo;</p>
+                )}
+                <p className="text-xs text-mundo-border italic line-clamp-2">
+                  {scene.visualNote}
+                </p>
+                {clip.error && (
+                  <p className="text-xs text-red-400 mt-1">{clip.error}</p>
+                )}
+              </div>
+
+              {/* Actions */}
+              <div className="flex flex-col gap-2 shrink-0">
+                {hasComfyUI && scene.imageUrl && clip.status !== "generating" && (
+                  <button
+                    onClick={() => generateClip(idx)}
+                    className={`text-xs px-3 py-1.5 rounded transition-colors ${
+                      clip.status === "done"
+                        ? "bg-green-800/40 text-green-300 hover:bg-green-800/60"
+                        : clip.status === "error"
+                        ? "bg-red-800/40 text-red-300 hover:bg-red-800/60"
+                        : "bg-mundo-dourado/20 text-mundo-dourado hover:bg-mundo-dourado/30"
+                    }`}
+                  >
+                    {clip.status === "done" ? "Regerar" : clip.status === "error" ? "Tentar de novo" : "Animar (Wan 2.1)"}
+                  </button>
+                )}
+                <label className="text-xs px-3 py-1.5 bg-mundo-bg-surface text-mundo-muted rounded cursor-pointer hover:text-mundo-creme text-center">
+                  Carregar clip
+                  <input
+                    type="file"
+                    accept="video/*,.webp"
+                    onChange={(e) => {
+                      const f = e.target.files?.[0];
+                      if (f) handleClipUpload(idx, f);
+                    }}
+                    className="hidden"
+                  />
+                </label>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Download / export section */}
+      {doneClips > 0 && (
+        <div className="border-t border-mundo-bg pt-4 space-y-3">
+          <h4 className="text-sm text-mundo-dourado">Exportar</h4>
+
+          {/* Option 1: Download all clips + audio for manual montage */}
+          <div className="flex flex-wrap gap-3">
+            {scenes.map((scene, idx) => {
+              const clip = getClip(idx);
+              if (!clip.videoUrl) return null;
+              return (
+                <a
+                  key={idx}
+                  href={clip.videoUrl}
+                  download={`${idx + 1}-${scene.type}.webp`}
+                  className="text-xs px-3 py-1.5 bg-mundo-bg-surface text-mundo-muted rounded hover:text-mundo-creme"
+                >
+                  {idx + 1}. {scene.type}
+                </a>
+              );
+            })}
+            {audioUrl && (
+              <a
+                href={audioUrl}
+                download={`${title.replace(/[^a-zA-Z0-9]/g, "-")}-audio.mp3`}
+                className="text-xs px-3 py-1.5 bg-mundo-dourado/20 text-mundo-dourado rounded hover:bg-mundo-dourado/30"
+              >
+                Audio completo
+              </a>
+            )}
+          </div>
+
+          <p className="text-xs text-mundo-muted">
+            Descarrega os clips + audio e monta no CapCut, DaVinci Resolve ou outro editor.
+            Os clips ja estao animados — so precisas de os juntar com o audio e adicionar o texto.
+          </p>
+
+          {/* Montage instructions */}
+          <details className="bg-mundo-bg rounded-lg">
+            <summary className="px-4 py-3 text-xs text-mundo-muted cursor-pointer">
+              Guia de montagem rapida
+            </summary>
+            <div className="px-4 pb-4 text-xs text-mundo-muted-dark space-y-2">
+              <p>1. Abre o CapCut (gratis) ou DaVinci Resolve</p>
+              <p>2. Importa todos os clips por ordem (1-abertura, 2-pergunta, etc.)</p>
+              <p>3. Importa o audio e coloca na timeline</p>
+              <p>4. Alinha cada clip com a parte correspondente do audio</p>
+              <p>5. Adiciona o texto de overlay por cima de cada clip</p>
+              <p>6. Adiciona transicoes dissolve (0.5-1s) entre clips</p>
+              <p>7. Exporta em 1080p MP4</p>
+            </div>
+          </details>
+        </div>
+      )}
+
+      {/* Not enough to compose */}
+      {doneClips === 0 && !batchRunning && (
+        <p className="text-xs text-mundo-muted">
+          {!hasComfyUI
+            ? "Configura o URL do ComfyUI (ThinkDiffusion) acima para gerar video clips."
+            : scenes.every((s) => !s.imageUrl)
+            ? "Adiciona imagens as cenas primeiro (biblioteca ou upload individual)."
+            : "Clica 'Gerar todos os video clips' para animar as imagens com Wan 2.1."}
+        </p>
+      )}
     </div>
   );
-}
-
-// ─── IMAGE PRELOADING ──────────────────────────────────────────────────
-
-async function preloadImages(scenes: ComposerScene[]): Promise<Map<number, HTMLImageElement>> {
-  const map = new Map<number, HTMLImageElement>();
-  await Promise.all(
-    scenes.map(
-      (scene, idx) =>
-        new Promise<void>((resolve) => {
-          if (!scene.imageUrl) { resolve(); return; }
-          const img = new Image();
-          img.crossOrigin = "anonymous";
-          img.onload = () => { map.set(idx, img); resolve(); };
-          img.onerror = () => resolve();
-          img.src = scene.imageUrl;
-        })
-    )
-  );
-  return map;
-}
-
-// ─── ASYNC DRAW (for preview) ──────────────────────────────────────────
-
-async function drawScene(
-  ctx: CanvasRenderingContext2D,
-  scene: ComposerScene,
-  progress: number,
-  w: number,
-  h: number
-) {
-  let img: HTMLImageElement | null = null;
-  if (scene.imageUrl) {
-    img = await new Promise<HTMLImageElement | null>((resolve) => {
-      const i = new Image();
-      i.crossOrigin = "anonymous";
-      i.onload = () => resolve(i);
-      i.onerror = () => resolve(null);
-      i.src = scene.imageUrl!;
-    });
-  }
-  drawSceneSync(ctx, scene, progress, w, h, img);
-}
-
-// ─── SYNC DRAW (for recording) ─────────────────────────────────────────
-
-function drawSceneSync(
-  ctx: CanvasRenderingContext2D,
-  scene: ComposerScene | VideoScene,
-  progress: number,
-  w: number,
-  h: number,
-  img: HTMLImageElement | null
-) {
-  // 1. Background
-  ctx.fillStyle = PALETTE.bg;
-  ctx.fillRect(0, 0, w, h);
-
-  // 2. Image with Ken Burns (slow, cinematic)
-  if (img) {
-    // Vary Ken Burns direction per scene type for visual variety
-    const isEvenScene = (scene as ComposerScene).approved !== undefined;
-    const zoomSpeed = 0.06;
-    const panSpeed = 0.025;
-    const scale = 1.05 + progress * zoomSpeed;
-
-    // Alternate pan direction based on scene type hash
-    const typeHash = scene.type.charCodeAt(0) % 4;
-    const panXDir = typeHash < 2 ? 1 : -1;
-    const panYDir = typeHash % 2 === 0 ? 1 : -1;
-    const panX = progress * w * panSpeed * panXDir;
-    const panY = progress * h * panSpeed * 0.5 * panYDir;
-
-    ctx.save();
-
-    // Cover-fit the image
-    const imgRatio = img.width / img.height;
-    const canvasRatio = w / h;
-    let drawW: number, drawH: number;
-
-    if (imgRatio > canvasRatio) {
-      drawH = h * scale;
-      drawW = drawH * imgRatio;
-    } else {
-      drawW = w * scale;
-      drawH = drawW / imgRatio;
-    }
-
-    const x = (w - drawW) / 2 + panX;
-    const y = (h - drawH) / 2 + panY;
-
-    ctx.drawImage(img, x, y, drawW, drawH);
-
-    // Cinematic overlay: darker at edges, lighter at center
-    ctx.fillStyle = "rgba(26, 26, 46, 0.35)";
-    ctx.fillRect(0, 0, w, h);
-
-    ctx.restore();
-  }
-
-  // 3. Vignette
-  const gradient = ctx.createRadialGradient(w / 2, h / 2, w * 0.25, w / 2, h / 2, w * 0.75);
-  gradient.addColorStop(0, "transparent");
-  gradient.addColorStop(1, "rgba(26, 26, 46, 0.65)");
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, w, h);
-
-  // 4. Text overlay with word-by-word fade-in
-  if (scene.overlayText) {
-    drawAnimatedText(ctx, scene, progress, w, h);
-  }
-}
-
-// ─── ANIMATED TEXT ─────────────────────────────────────────────────────
-
-function drawAnimatedText(
-  ctx: CanvasRenderingContext2D,
-  scene: ComposerScene | VideoScene,
-  progress: number,
-  w: number,
-  h: number
-) {
-  const text = scene.overlayText;
-  if (!text) return;
-
-  const isTitle = scene.type === "abertura" || scene.type === "fecho" || scene.type === "cta";
-  const isFrase = scene.type === "frase_final";
-
-  // Font sizing
-  const fontSize = isTitle
-    ? Math.round(w * 0.032)
-    : isFrase
-    ? Math.round(w * 0.026)
-    : Math.round(w * 0.02);
-
-  const fontFamily = '"Playfair Display", "Cormorant Garamond", Georgia, serif';
-  ctx.font = `${fontSize}px ${fontFamily}`;
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-
-  const lines = text.split("\n");
-  const lineHeight = fontSize * 1.7;
-
-  // Position: center for title/frase, lower third otherwise
-  const yBase = isTitle || isFrase ? h * 0.5 : h * 0.8;
-  const totalTextHeight = lines.length * lineHeight;
-  const startY = yBase - totalTextHeight / 2;
-
-  // Animation: fade in lines sequentially, hold, then fade out all
-  // Fade-in takes first 30% of scene duration
-  // Hold for 50%
-  // Fade-out takes last 20%
-
-  const fadeInEnd = 0.3;
-  const fadeOutStart = 0.8;
-
-  // Overall opacity (for fade-out)
-  let globalAlpha = 1;
-  if (progress > fadeOutStart) {
-    globalAlpha = Math.max(0, 1 - (progress - fadeOutStart) / (1 - fadeOutStart));
-  }
-
-  ctx.save();
-  ctx.shadowColor = "rgba(0, 0, 0, 0.8)";
-  ctx.shadowBlur = 24;
-  ctx.shadowOffsetY = 3;
-
-  lines.forEach((line, lineIdx) => {
-    // Each line fades in sequentially during the fade-in period
-    const lineDelay = lines.length > 1 ? (lineIdx / lines.length) * fadeInEnd : 0;
-    const lineEnd = lineDelay + fadeInEnd / Math.max(lines.length, 1);
-
-    let lineAlpha = 1;
-    if (progress < lineDelay) {
-      lineAlpha = 0;
-    } else if (progress < lineEnd) {
-      lineAlpha = (progress - lineDelay) / (lineEnd - lineDelay);
-    }
-
-    // Combine with global fade-out
-    const finalAlpha = lineAlpha * globalAlpha;
-    if (finalAlpha <= 0) return;
-
-    ctx.globalAlpha = finalAlpha;
-
-    // Subtle slide-up animation during fade-in
-    const slideOffset = (1 - lineAlpha) * fontSize * 0.3;
-    const y = startY + lineIdx * lineHeight + slideOffset;
-
-    ctx.fillStyle = isTitle ? PALETTE.gold : PALETTE.cream;
-    ctx.fillText(line, w / 2, y);
-  });
-
-  ctx.restore();
 }
