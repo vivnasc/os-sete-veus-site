@@ -1,17 +1,17 @@
 /**
- * Script para ler propostas de revisão pendentes do Supabase
- * e gerar instruções para aplicar nos ficheiros de dados.
+ * Script para ler notas de revisão pendentes do Supabase.
+ *
+ * A Vivianne marca parágrafos com notas (ex: "tom pesado", "simplificar").
+ * O Claude Code lê estas notas, reescreve o texto, e aplica.
  *
  * Uso:
- *   npx tsx scripts/apply-proposals.ts          # lista propostas pendentes
- *   npx tsx scripts/apply-proposals.ts --apply   # aplica e marca como applied
+ *   npx tsx scripts/apply-proposals.ts              # lista notas pendentes
+ *   npx tsx scripts/apply-proposals.ts --mark-done  # marca todas como aplicadas
  *
  * Requer: NEXT_PUBLIC_SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY no .env.local
  */
 
 import { createClient } from "@supabase/supabase-js";
-import * as fs from "fs";
-import * as path from "path";
 
 const SUPABASE_URL =
   process.env.NEXT_PUBLIC_SUPABASE_URL ||
@@ -47,7 +47,7 @@ const BOOK_FILE_MAP: Record<string, string> = {
   "no-da-pertenca": "src/data/no-pertenca.ts",
 };
 
-type Proposal = {
+type Annotation = {
   id: string;
   book_slug: string;
   book_title: string;
@@ -55,13 +55,12 @@ type Proposal = {
   chapter_title: string;
   paragraph_index: number;
   original_text: string;
-  proposed_text: string;
   note: string;
   status: string;
   created_at: string;
 };
 
-async function fetchPending(): Promise<Proposal[]> {
+async function fetchPending(): Promise<Annotation[]> {
   const { data, error } = await supabase
     .from("revision_proposals")
     .select("*")
@@ -71,43 +70,10 @@ async function fetchPending(): Promise<Proposal[]> {
     .order("paragraph_index");
 
   if (error) {
-    console.error("Erro ao buscar propostas:", error.message);
+    console.error("Erro ao buscar notas:", error.message);
     process.exit(1);
   }
-  return (data || []) as Proposal[];
-}
-
-function applyToFile(
-  filePath: string,
-  original: string,
-  replacement: string
-): boolean {
-  const fullPath = path.join(process.cwd(), filePath);
-  if (!fs.existsSync(fullPath)) {
-    console.error(`  Ficheiro não encontrado: ${filePath}`);
-    return false;
-  }
-
-  const content = fs.readFileSync(fullPath, "utf-8");
-
-  // Escape the original for string matching inside TS template literals
-  // The content array uses regular strings, so we search for the exact text
-  if (!content.includes(original)) {
-    // Try with escaped quotes
-    const escaped = original.replace(/"/g, '\\"');
-    if (!content.includes(escaped)) {
-      console.error(`  Texto original não encontrado no ficheiro`);
-      console.error(`  Primeiros 80 chars: "${original.slice(0, 80)}..."`);
-      return false;
-    }
-    const updated = content.replace(escaped, replacement.replace(/"/g, '\\"'));
-    fs.writeFileSync(fullPath, updated, "utf-8");
-    return true;
-  }
-
-  const updated = content.replace(original, replacement);
-  fs.writeFileSync(fullPath, updated, "utf-8");
-  return true;
+  return (data || []) as Annotation[];
 }
 
 async function markApplied(ids: string[]) {
@@ -125,60 +91,50 @@ async function markApplied(ids: string[]) {
 }
 
 async function main() {
-  const doApply = process.argv.includes("--apply");
+  const markDone = process.argv.includes("--mark-done");
 
-  console.log("Buscando propostas pendentes...\n");
-  const proposals = await fetchPending();
+  console.log("Buscando notas de revisão pendentes...\n");
+  const annotations = await fetchPending();
 
-  if (proposals.length === 0) {
-    console.log("Nenhuma proposta pendente.");
+  if (annotations.length === 0) {
+    console.log("Nenhuma nota pendente.");
     return;
   }
 
-  console.log(`${proposals.length} proposta(s) pendente(s):\n`);
+  console.log(`${annotations.length} nota(s) pendente(s):\n`);
 
   // Agrupar por livro
-  const byBook = new Map<string, Proposal[]>();
-  for (const p of proposals) {
-    const list = byBook.get(p.book_slug) || [];
-    list.push(p);
-    byBook.set(p.book_slug, list);
+  const byBook = new Map<string, Annotation[]>();
+  for (const a of annotations) {
+    const list = byBook.get(a.book_slug) || [];
+    list.push(a);
+    byBook.set(a.book_slug, list);
   }
 
-  const appliedIds: string[] = [];
-
-  for (const [bookSlug, props] of byBook) {
+  for (const [bookSlug, notes] of byBook) {
     const filePath = BOOK_FILE_MAP[bookSlug];
-    console.log(`━━━ ${props[0].book_title} (${bookSlug}) ━━━`);
+    console.log(`━━━ ${notes[0].book_title} (${bookSlug}) ━━━`);
     console.log(`    Ficheiro: ${filePath || "DESCONHECIDO"}`);
-    console.log(`    ${props.length} proposta(s)\n`);
+    console.log(`    ${notes.length} nota(s)\n`);
 
-    for (const p of props) {
-      console.log(`  ${p.chapter_title} — Parágrafo ${p.paragraph_index + 1}`);
-      if (p.note) console.log(`  Nota: ${p.note}`);
-      console.log(`  Original:  "${p.original_text.slice(0, 60)}..."`);
-      console.log(`  Proposta:  "${p.proposed_text.slice(0, 60)}..."`);
-
-      if (doApply && filePath) {
-        const success = applyToFile(filePath, p.original_text, p.proposed_text);
-        if (success) {
-          console.log(`  ✓ Aplicada`);
-          appliedIds.push(p.id);
-        } else {
-          console.log(`  ✗ Falhou — aplicar manualmente`);
-        }
-      }
+    for (const a of notes) {
+      console.log(`  📌 ${a.chapter_title} — Parágrafo ${a.paragraph_index + 1}`);
+      console.log(`     Nota: "${a.note}"`);
+      console.log(`     Texto: "${a.original_text.slice(0, 100)}${a.original_text.length > 100 ? "..." : ""}"`);
+      console.log(`     ID: ${a.id}`);
       console.log();
     }
   }
 
-  if (doApply && appliedIds.length > 0) {
-    console.log(`Marcando ${appliedIds.length} proposta(s) como aplicadas...`);
-    await markApplied(appliedIds);
+  if (markDone) {
+    const allIds = annotations.map((a) => a.id);
+    console.log(`Marcando ${allIds.length} nota(s) como aplicadas...`);
+    await markApplied(allIds);
     console.log("Feito.");
-  } else if (!doApply) {
+  } else {
     console.log("─────────────────────────────────────────");
-    console.log("Para aplicar: npx tsx scripts/apply-proposals.ts --apply");
+    console.log("O Claude Code lê estas notas, reescreve os parágrafos,");
+    console.log("e depois corre: npx tsx scripts/apply-proposals.ts --mark-done");
   }
 }
 

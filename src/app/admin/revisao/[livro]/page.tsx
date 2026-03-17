@@ -8,7 +8,7 @@ import { supabase } from "@/lib/supabase";
 
 const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
 
-type Proposal = {
+type Annotation = {
   id: string;
   book_slug: string;
   book_title: string;
@@ -16,9 +16,8 @@ type Proposal = {
   chapter_title: string;
   paragraph_index: number;
   original_text: string;
-  proposed_text: string;
   note: string;
-  status: "pending" | "applied" | "rejected" | "skipped";
+  status: "pending" | "applied" | "skipped";
   created_at: string;
 };
 
@@ -54,17 +53,17 @@ export default function LivroRevisaoPage() {
   const [loading, setLoading] = useState(true);
   const [bookType, setBookType] = useState<"espelho" | "no">("espelho");
 
-  // Proposals
-  const [proposals, setProposals] = useState<Proposal[]>([]);
-  const [editingParagraph, setEditingParagraph] = useState<number | null>(null);
-  const [editText, setEditText] = useState("");
-  const [editNote, setEditNote] = useState("");
-  const [showProposals, setShowProposals] = useState(false);
-  const [showExport, setShowExport] = useState(false);
+  // Annotations
+  const [annotations, setAnnotations] = useState<Annotation[]>([]);
+  const [annotatingParagraph, setAnnotatingParagraph] = useState<number | null>(
+    null
+  );
+  const [annotationNote, setAnnotationNote] = useState("");
+  const [showAnnotations, setShowAnnotations] = useState(false);
   const [saving, setSaving] = useState(false);
 
   const contentRef = useRef<HTMLDivElement>(null);
-  const editRef = useRef<HTMLTextAreaElement>(null);
+  const noteRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     if (!authLoading && (!user || !isAdmin)) {
@@ -72,20 +71,20 @@ export default function LivroRevisaoPage() {
     }
   }, [user, isAdmin, authLoading, router]);
 
-  // Load proposals from Supabase
-  const loadProposals = useCallback(async () => {
+  // Load annotations from Supabase
+  const loadAnnotations = useCallback(async () => {
     const { data } = await supabase
       .from("revision_proposals")
       .select("*")
       .eq("book_slug", livroSlug)
       .eq("status", "pending")
       .order("created_at", { ascending: true });
-    if (data) setProposals(data as Proposal[]);
+    if (data) setAnnotations(data as Annotation[]);
   }, [livroSlug]);
 
   useEffect(() => {
-    if (user && isAdmin && livroSlug) loadProposals();
-  }, [user, isAdmin, livroSlug, loadProposals]);
+    if (user && isAdmin && livroSlug) loadAnnotations();
+  }, [user, isAdmin, livroSlug, loadAnnotations]);
 
   // Load book content
   useEffect(() => {
@@ -98,7 +97,6 @@ export default function LivroRevisaoPage() {
     try {
       const { loadEspelho, loadNos } = await import("@/lib/content-registry");
 
-      // Try as Espelho first, then Nó
       let mod = await loadEspelho(livroSlug);
       if (mod) {
         setBookType("espelho");
@@ -117,29 +115,21 @@ export default function LivroRevisaoPage() {
     setLoading(false);
   }
 
-  function startEdit(paragraphIndex: number, text: string) {
-    setEditingParagraph(paragraphIndex);
-    setEditText(text);
-    setEditNote("");
-    setTimeout(() => editRef.current?.focus(), 100);
+  function startAnnotation(paragraphIndex: number) {
+    setAnnotatingParagraph(paragraphIndex);
+    setAnnotationNote("");
+    setTimeout(() => noteRef.current?.focus(), 100);
   }
 
-  function cancelEdit() {
-    setEditingParagraph(null);
-    setEditText("");
-    setEditNote("");
+  function cancelAnnotation() {
+    setAnnotatingParagraph(null);
+    setAnnotationNote("");
   }
 
-  async function submitProposal() {
-    if (editingParagraph === null || saving) return;
+  async function submitAnnotation() {
+    if (annotatingParagraph === null || saving || !annotationNote.trim()) return;
     const chapter = chapters[currentChapter];
-    const original = chapter.content[editingParagraph];
-
-    // Don't save if nothing changed
-    if (editText.trim() === original.trim() && !editNote.trim()) {
-      cancelEdit();
-      return;
-    }
+    const original = chapter.content[annotatingParagraph];
 
     setSaving(true);
     const { error } = await supabase.from("revision_proposals").insert({
@@ -147,81 +137,48 @@ export default function LivroRevisaoPage() {
       book_title: bookMeta?.title || livroSlug,
       chapter_slug: chapter.slug,
       chapter_title: `${chapter.title}: ${chapter.subtitle}`,
-      paragraph_index: editingParagraph,
+      paragraph_index: annotatingParagraph,
       original_text: original,
-      proposed_text: editText,
-      note: editNote || "",
+      proposed_text: "",
+      note: annotationNote,
       created_by: user?.id,
     });
 
     if (!error) {
-      await loadProposals();
+      await loadAnnotations();
     }
     setSaving(false);
-    cancelEdit();
+    cancelAnnotation();
   }
 
-  async function removeProposal(id: string) {
+  async function removeAnnotation(id: string) {
     await supabase
       .from("revision_proposals")
       .update({ status: "skipped" })
       .eq("id", id);
-    setProposals(proposals.filter((p) => p.id !== id));
+    setAnnotations(annotations.filter((a) => a.id !== id));
   }
 
-  function getProposalsForChapter(chapterSlug: string) {
-    return proposals.filter(
-      (p) => p.chapter_slug === chapterSlug && p.status === "pending"
+  function getAnnotationsForChapter(chapterSlug: string) {
+    return annotations.filter(
+      (a) => a.chapter_slug === chapterSlug && a.status === "pending"
     );
   }
 
-  function getParagraphProposal(chapterSlug: string, paragraphIndex: number) {
-    return proposals.find(
-      (p) =>
-        p.chapter_slug === chapterSlug &&
-        p.paragraph_index === paragraphIndex &&
-        p.status === "pending"
+  function getParagraphAnnotation(chapterSlug: string, paragraphIndex: number) {
+    return annotations.find(
+      (a) =>
+        a.chapter_slug === chapterSlug &&
+        a.paragraph_index === paragraphIndex &&
+        a.status === "pending"
     );
-  }
-
-  function exportProposals() {
-    const pending = proposals.filter((p) => p.status === "pending");
-    if (pending.length === 0) return "";
-
-    let output = `# Propostas de Revisão — ${bookMeta?.title || livroSlug}\n`;
-    output += `Data: ${new Date().toLocaleDateString("pt-PT")}\n`;
-    output += `Total: ${pending.length} proposta${pending.length > 1 ? "s" : ""}\n\n`;
-
-    const byChapter = new Map<string, Proposal[]>();
-    for (const p of pending) {
-      const list = byChapter.get(p.chapter_title) || [];
-      list.push(p);
-      byChapter.set(p.chapter_title, list);
-    }
-
-    for (const [chapter, props] of byChapter) {
-      output += `---\n## ${chapter}\n\n`;
-      for (const p of props) {
-        output += `### Paragrafo ${p.paragraph_index + 1}\n`;
-        if (p.note) output += `Nota: ${p.note}\n\n`;
-        output += `ORIGINAL:\n${p.original_text.slice(0, 200)}${p.original_text.length > 200 ? "..." : ""}\n\n`;
-        output += `PROPOSTA:\n${p.proposed_text.slice(0, 200)}${p.proposed_text.length > 200 ? "..." : ""}\n\n`;
-      }
-    }
-
-    return output;
-  }
-
-  function copyExport() {
-    const text = exportProposals();
-    navigator.clipboard.writeText(text);
   }
 
   const chapter = chapters[currentChapter];
-  const chapterProposals = chapter
-    ? getProposalsForChapter(chapter.slug)
+  const chapterAnnotations = chapter
+    ? getAnnotationsForChapter(chapter.slug)
     : [];
-  const pendingCount = proposals.filter((p) => p.status === "pending").length;
+  const pendingCount = annotations.filter((a) => a.status === "pending").length;
 
   if (authLoading || !user || !isAdmin) {
     return (
@@ -281,80 +238,41 @@ export default function LivroRevisaoPage() {
             </div>
             <div className="flex items-center gap-2 flex-shrink-0">
               <button
-                onClick={() => setShowProposals(!showProposals)}
+                onClick={() => setShowAnnotations(!showAnnotations)}
                 className={`relative rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
-                  showProposals
+                  showAnnotations
                     ? "bg-sage text-white"
                     : "bg-white border border-sage/20 text-forest hover:bg-sage/10"
                 }`}
               >
-                Propostas
+                Notas
                 {pendingCount > 0 && (
                   <span className="absolute -top-1.5 -right-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] text-white">
                     {pendingCount}
                   </span>
                 )}
               </button>
-              {pendingCount > 0 && (
-                <button
-                  onClick={() => setShowExport(!showExport)}
-                  className="rounded-lg border border-sage/20 bg-white px-3 py-1.5 text-xs font-medium text-forest hover:bg-sage/10 transition-colors"
-                >
-                  Exportar
-                </button>
-              )}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Export modal */}
-      {showExport && (
-        <div className="fixed inset-0 z-30 flex items-center justify-center bg-black/40 p-4">
-          <div className="max-h-[80vh] w-full max-w-2xl overflow-auto rounded-lg bg-white p-6 shadow-xl">
-            <div className="mb-4 flex items-center justify-between">
-              <h2 className="font-display text-xl text-forest">
-                Exportar Propostas
-              </h2>
-              <button
-                onClick={() => setShowExport(false)}
-                className="text-sage hover:text-forest"
-              >
-                Fechar
-              </button>
-            </div>
-            <p className="mb-4 text-sm text-sage">
-              Copia este texto e cola numa conversa para aplicar as alterações.
-            </p>
-            <pre className="mb-4 max-h-96 overflow-auto rounded-lg bg-sage/5 p-4 text-xs text-forest/80 whitespace-pre-wrap">
-              {exportProposals()}
-            </pre>
-            <button
-              onClick={copyExport}
-              className="rounded-lg bg-sage px-5 py-2.5 text-sm font-medium text-white hover:bg-sage/80 transition-colors"
-            >
-              Copiar para clipboard
-            </button>
-          </div>
-        </div>
-      )}
-
       <div className="mx-auto max-w-6xl px-6 py-8">
         <div className="flex gap-8">
           {/* Main content */}
           <div
-            className={`flex-1 min-w-0 ${showProposals ? "lg:max-w-[60%]" : ""}`}
+            className={`flex-1 min-w-0 ${showAnnotations ? "lg:max-w-[60%]" : ""}`}
           >
             {/* Chapter navigation */}
             <div className="mb-6 flex items-center gap-2 overflow-x-auto pb-2">
               {chapters.map((ch, i) => {
-                const chProposals = getProposalsForChapter(ch.slug);
+                const chNotes = getAnnotationsForChapter(ch.slug);
                 return (
                   <button
                     key={ch.slug}
                     onClick={() => {
                       setCurrentChapter(i);
-                      cancelEdit();
+                      cancelAnnotation();
                       contentRef.current?.scrollTo(0, 0);
                     }}
                     className={`relative flex-shrink-0 rounded-lg border px-3 py-2 text-xs font-medium transition-colors ${
@@ -364,9 +282,9 @@ export default function LivroRevisaoPage() {
                     }`}
                   >
                     {ch.title}
-                    {chProposals.length > 0 && (
+                    {chNotes.length > 0 && (
                       <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-amber-500 text-[9px] text-white">
-                        {chProposals.length}
+                        {chNotes.length}
                       </span>
                     )}
                   </button>
@@ -388,10 +306,10 @@ export default function LivroRevisaoPage() {
               <h2 className="font-display text-3xl text-forest">
                 {chapter.subtitle}
               </h2>
-              {chapterProposals.length > 0 && (
+              {chapterAnnotations.length > 0 && (
                 <p className="mt-2 text-xs text-amber-600">
-                  {chapterProposals.length} proposta
-                  {chapterProposals.length > 1 ? "s" : ""} neste capítulo
+                  {chapterAnnotations.length} nota
+                  {chapterAnnotations.length > 1 ? "s" : ""} neste capítulo
                 </p>
               )}
             </div>
@@ -407,11 +325,8 @@ export default function LivroRevisaoPage() {
                   );
                 }
 
-                const hasProposal = !!getParagraphProposal(
-                  chapter.slug,
-                  i
-                );
-                const isEditing = editingParagraph === i;
+                const annotation = getParagraphAnnotation(chapter.slug, i);
+                const isAnnotating = annotatingParagraph === i;
                 const isDialogue = paragraph.startsWith("—");
 
                 return (
@@ -419,12 +334,12 @@ export default function LivroRevisaoPage() {
                     {/* Paragraph */}
                     <div
                       onClick={() => {
-                        if (!isEditing) startEdit(i, paragraph);
+                        if (!isAnnotating) startAnnotation(i);
                       }}
                       className={`cursor-pointer rounded-lg px-4 py-3 transition-all ${
-                        isEditing
+                        isAnnotating
                           ? "bg-sage/10 ring-2 ring-sage/30"
-                          : hasProposal
+                          : annotation
                             ? "bg-amber-50 border-l-4 border-amber-400"
                             : "hover:bg-sage/5"
                       }`}
@@ -440,55 +355,44 @@ export default function LivroRevisaoPage() {
                       </p>
 
                       {/* Hover hint */}
-                      {!isEditing && !hasProposal && (
+                      {!isAnnotating && !annotation && (
                         <span className="absolute right-2 top-2 hidden text-[10px] text-sage/40 group-hover:inline">
-                          clica para editar
+                          clica para anotar
                         </span>
                       )}
 
-                      {hasProposal && !isEditing && (
+                      {annotation && !isAnnotating && (
                         <span className="absolute right-2 top-2 text-[10px] text-amber-500">
-                          proposta pendente
+                          {annotation.note.slice(0, 30)}
+                          {annotation.note.length > 30 ? "..." : ""}
                         </span>
                       )}
                     </div>
 
-                    {/* Edit panel */}
-                    {isEditing && (
+                    {/* Annotation panel */}
+                    {isAnnotating && (
                       <div className="mt-2 rounded-lg border border-sage/20 bg-white p-4 shadow-sm">
                         <label className="mb-1 block text-xs font-medium text-sage">
-                          Texto proposto
+                          O que precisa de melhorar neste parágrafo?
                         </label>
                         <textarea
-                          ref={editRef}
-                          value={editText}
-                          onChange={(e) => setEditText(e.target.value)}
-                          rows={Math.min(
-                            12,
-                            Math.max(3, editText.split("\n").length + 1)
-                          )}
+                          ref={noteRef}
+                          value={annotationNote}
+                          onChange={(e) => setAnnotationNote(e.target.value)}
+                          rows={3}
+                          placeholder="Ex: tom pesado, simplificar a frase, falta emoção, repetitivo, diálogo forçado..."
                           className="mb-3 w-full resize-y rounded-lg border border-sage/30 bg-white px-3 py-2 text-sm text-forest leading-relaxed placeholder:text-sage/50 focus:border-sage focus:outline-none focus:ring-2 focus:ring-sage/20"
-                        />
-                        <label className="mb-1 block text-xs font-medium text-sage">
-                          Nota (opcional — o que queres mudar e porquê)
-                        </label>
-                        <input
-                          type="text"
-                          value={editNote}
-                          onChange={(e) => setEditNote(e.target.value)}
-                          placeholder="Ex: tom demasiado pesado, simplificar..."
-                          className="mb-3 w-full rounded-lg border border-sage/30 bg-white px-3 py-2 text-sm text-forest placeholder:text-sage/50 focus:border-sage focus:outline-none focus:ring-2 focus:ring-sage/20"
                         />
                         <div className="flex gap-2">
                           <button
-                            onClick={submitProposal}
-                            disabled={saving}
+                            onClick={submitAnnotation}
+                            disabled={saving || !annotationNote.trim()}
                             className="rounded-lg bg-sage px-4 py-2 text-sm font-medium text-white hover:bg-sage/80 transition-colors disabled:opacity-50"
                           >
-                            {saving ? "A guardar..." : "Guardar proposta"}
+                            {saving ? "A guardar..." : "Marcar"}
                           </button>
                           <button
-                            onClick={cancelEdit}
+                            onClick={cancelAnnotation}
                             className="rounded-lg border border-sage/20 px-4 py-2 text-sm text-sage hover:text-forest transition-colors"
                           >
                             Cancelar
@@ -537,7 +441,7 @@ export default function LivroRevisaoPage() {
               <button
                 onClick={() => {
                   setCurrentChapter(Math.max(0, currentChapter - 1));
-                  cancelEdit();
+                  cancelAnnotation();
                   window.scrollTo(0, 0);
                 }}
                 disabled={currentChapter === 0}
@@ -553,7 +457,7 @@ export default function LivroRevisaoPage() {
                   setCurrentChapter(
                     Math.min(chapters.length - 1, currentChapter + 1)
                   );
-                  cancelEdit();
+                  cancelAnnotation();
                   window.scrollTo(0, 0);
                 }}
                 disabled={currentChapter === chapters.length - 1}
@@ -564,59 +468,51 @@ export default function LivroRevisaoPage() {
             </div>
           </div>
 
-          {/* Proposals sidebar */}
-          {showProposals && (
+          {/* Annotations sidebar */}
+          {showAnnotations && (
             <div className="hidden lg:block w-[340px] flex-shrink-0">
               <div className="sticky top-16">
                 <h3 className="mb-4 text-sm font-medium text-sage uppercase tracking-wide">
-                  Propostas ({pendingCount})
+                  Notas de revisão ({pendingCount})
                 </h3>
 
                 {pendingCount === 0 && (
                   <p className="text-sm text-sage/60">
-                    Nenhuma proposta ainda. Clica num parágrafo para propor
-                    alterações.
+                    Nenhuma nota ainda. Clica num parágrafo para marcar o que
+                    precisa de melhorar.
                   </p>
                 )}
 
                 <div className="space-y-3 max-h-[calc(100vh-8rem)] overflow-y-auto pr-1">
-                  {proposals
-                    .filter((p) => p.status === "pending")
-                    .map((p) => (
+                  {annotations
+                    .filter((a) => a.status === "pending")
+                    .map((a) => (
                       <div
-                        key={p.id}
+                        key={a.id}
                         className="rounded-lg border border-sage/20 bg-white/80 p-4"
                       >
                         <div className="mb-2 flex items-center justify-between">
                           <span className="text-xs font-medium text-sage">
-                            {p.chapter_title}
+                            {a.chapter_title}
                           </span>
                           <button
-                            onClick={() => removeProposal(p.id)}
+                            onClick={() => removeAnnotation(a.id)}
                             className="text-xs text-red-400 hover:text-red-600"
                           >
                             remover
                           </button>
                         </div>
-                        {p.note && (
-                          <p className="mb-2 text-xs text-amber-600 italic">
-                            {p.note}
-                          </p>
-                        )}
-                        <div className="mb-2 rounded bg-red-50 p-2">
-                          <p className="text-xs text-red-800/70 line-through leading-relaxed">
-                            {p.original_text.slice(0, 120)}
-                            {p.original_text.length > 120 ? "..." : ""}
-                          </p>
-                        </div>
-                        <div className="rounded bg-green-50 p-2">
-                          <p className="text-xs text-green-800/70 leading-relaxed">
-                            {p.proposed_text.slice(0, 120)}
-                            {p.proposed_text.length > 120 ? "..." : ""}
+                        <p className="mb-2 text-sm text-amber-700 font-medium">
+                          {a.note}
+                        </p>
+                        <div className="rounded bg-sage/5 p-2">
+                          <p className="text-xs text-forest/60 leading-relaxed">
+                            {a.original_text.slice(0, 150)}
+                            {a.original_text.length > 150 ? "..." : ""}
                           </p>
                         </div>
                         <p className="mt-2 text-[10px] text-sage/50">
-                          {new Date(p.created_at).toLocaleDateString("pt-PT")}
+                          {new Date(a.created_at).toLocaleDateString("pt-PT")}
                         </p>
                       </div>
                     ))}
