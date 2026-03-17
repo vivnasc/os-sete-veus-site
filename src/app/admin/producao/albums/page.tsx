@@ -7,9 +7,11 @@ import {
   ALL_ALBUMS,
   getAlbumsByProduct,
   ENERGY_LABELS,
+  FLAVOR_LABELS,
   type Album,
   type AlbumTrack,
   type TrackEnergy,
+  type TrackFlavor,
 } from "@/data/albums";
 
 const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
@@ -132,6 +134,11 @@ function TrackRow({
             {track.energy && (
               <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${ENERGY_LABELS[track.energy].color}`}>
                 {ENERGY_LABELS[track.energy].emoji} {ENERGY_LABELS[track.energy].label}
+              </span>
+            )}
+            {track.flavor && track.flavor !== "organic" && (
+              <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${FLAVOR_LABELS[track.flavor].color}`}>
+                {FLAVOR_LABELS[track.flavor].emoji} {FLAVOR_LABELS[track.flavor].label}
               </span>
             )}
             {track.lyrics && (
@@ -874,6 +881,18 @@ export default function AlbumProductionPage() {
                 </span>
               ) : null;
             })}
+            {/* Flavor distribution */}
+            {(["marrabenta", "house", "gospel"] as TrackFlavor[]).map((f) => {
+              const count = ALL_ALBUMS.reduce(
+                (s, a) => s + a.tracks.filter((t) => t.flavor === f).length,
+                0
+              );
+              return count > 0 ? (
+                <span key={f} className={`rounded-full px-3 py-1 text-xs ${FLAVOR_LABELS[f].color}`}>
+                  {FLAVOR_LABELS[f].emoji} {count} {FLAVOR_LABELS[f].label.toLowerCase()}
+                </span>
+              ) : null;
+            })}
           </div>
         </div>
       </div>
@@ -961,6 +980,11 @@ export default function AlbumProductionPage() {
                         {t.energy && (
                           <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${ENERGY_LABELS[t.energy].color}`}>
                             {ENERGY_LABELS[t.energy].emoji} {ENERGY_LABELS[t.energy].label}
+                          </span>
+                        )}
+                        {t.flavor && t.flavor !== "organic" && (
+                          <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${FLAVOR_LABELS[t.flavor].color}`}>
+                            {FLAVOR_LABELS[t.flavor].emoji} {FLAVOR_LABELS[t.flavor].label}
                           </span>
                         )}
                         {!t.lyrics && (
