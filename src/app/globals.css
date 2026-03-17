@@ -43,7 +43,9 @@
   --color-mundo-creme: #F5F0E6;
   --color-mundo-creme-suave: #E8E0D0;
 
-  /* Cores por Territorio (Escola dos Veus — 10 cursos) */
+  /* Cores por Territorio (Escola dos Veus — 20 cursos) */
+
+  /* Originais (1-10) */
   --color-territorio-1: #D4A853;   /* Ouro Proprio — ambar */
   --color-territorio-2: #8B3A3A;   /* Sangue e Seda — vermelho escuro */
   --color-territorio-3: #7B68EE;   /* A Arte da Inteireza — violeta agua */
@@ -51,13 +53,28 @@
   --color-territorio-4-brasa: #E8651A; /* Depois do Fogo — laranja brasa */
   --color-territorio-4-broto: #4A7C3F; /* Depois do Fogo — verde broto */
   --color-territorio-5: #6B8CAE;   /* Olhos Abertos — azul nevoeiro */
-  --color-territorio-6: #C4745A;   /* A Pele Lembra — terracota rosado */
+  --color-territorio-6: #C4745A;   /* Pele Nua — terracota rosado */
   --color-territorio-7: #D4A853;   /* Limite Sagrado — dourado luminoso */
   --color-territorio-8: #1A3A5C;   /* Flores no Escuro — azul profundo */
   --color-territorio-8-bio: #4AE8A0; /* Flores no Escuro — bioluminescente */
   --color-territorio-9: #808080;   /* O Peso e o Chao — cinza pedra */
   --color-territorio-10: #4A0E6A;  /* Voz de Dentro — violeta escuro */
   --color-territorio-10-eco: #C9A96E; /* Voz de Dentro — dourado eco */
+
+  /* Dualidade (11-20) */
+  --color-territorio-11: #B8860B;  /* O Fio Invisivel — dourado antigo */
+  --color-territorio-12: #4682B4;  /* O Espelho do Outro — azul aco */
+  --color-territorio-13: #2F2F2F;  /* O Silencio que Grita — quase negro */
+  --color-territorio-13-grito: #CD5C5C; /* O Silencio que Grita — vermelho eco */
+  --color-territorio-14: #9370DB;  /* A Teia — violeta medio */
+  --color-territorio-15: #DC143C;  /* Brasa Viva — carmesim */
+  --color-territorio-15-chama: #FF6347; /* Brasa Viva — laranja fogo */
+  --color-territorio-16: #8B7355;  /* Antes do Ninho — castanho quente */
+  --color-territorio-17: #A0522D;  /* Maos Cansadas — siena */
+  --color-territorio-18: #708090;  /* Estacoes Partidas — cinza ardosia */
+  --color-territorio-19: #DAA520;  /* Ouro e Sombra — dourado vivo */
+  --color-territorio-19-sombra: #4B0082; /* Ouro e Sombra — indigo */
+  --color-territorio-20: #8B4513;  /* Pao e Silencio — castanho terra */
 
   /* Typography */
   --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
@@ -312,6 +329,16 @@ body {
 .territorio-badge[data-territorio="8"] { background-color: var(--color-territorio-8-bio); }
 .territorio-badge[data-territorio="9"] { background-color: var(--color-territorio-9); }
 .territorio-badge[data-territorio="10"] { background-color: var(--color-territorio-10); }
+.territorio-badge[data-territorio="11"] { background-color: var(--color-territorio-11); }
+.territorio-badge[data-territorio="12"] { background-color: var(--color-territorio-12); }
+.territorio-badge[data-territorio="13"] { background-color: var(--color-territorio-13-grito); }
+.territorio-badge[data-territorio="14"] { background-color: var(--color-territorio-14); }
+.territorio-badge[data-territorio="15"] { background-color: var(--color-territorio-15); }
+.territorio-badge[data-territorio="16"] { background-color: var(--color-territorio-16); }
+.territorio-badge[data-territorio="17"] { background-color: var(--color-territorio-17); }
+.territorio-badge[data-territorio="18"] { background-color: var(--color-territorio-18); }
+.territorio-badge[data-territorio="19"] { background-color: var(--color-territorio-19); }
+.territorio-badge[data-territorio="20"] { background-color: var(--color-territorio-20); }
 
 /* Territory glow — border accent for cards */
 .territorio-glow[data-territorio="1"] { box-shadow: 0 0 20px rgba(212, 168, 83, 0.15); border-color: rgba(212, 168, 83, 0.3); }
@@ -324,6 +351,16 @@ body {
 .territorio-glow[data-territorio="8"] { box-shadow: 0 0 20px rgba(74, 232, 160, 0.15); border-color: rgba(74, 232, 160, 0.3); }
 .territorio-glow[data-territorio="9"] { box-shadow: 0 0 20px rgba(128, 128, 128, 0.15); border-color: rgba(128, 128, 128, 0.3); }
 .territorio-glow[data-territorio="10"] { box-shadow: 0 0 20px rgba(139, 92, 246, 0.15); border-color: rgba(139, 92, 246, 0.3); }
+.territorio-glow[data-territorio="11"] { box-shadow: 0 0 20px rgba(184, 134, 11, 0.15); border-color: rgba(184, 134, 11, 0.3); }
+.territorio-glow[data-territorio="12"] { box-shadow: 0 0 20px rgba(70, 130, 180, 0.15); border-color: rgba(70, 130, 180, 0.3); }
+.territorio-glow[data-territorio="13"] { box-shadow: 0 0 20px rgba(205, 92, 92, 0.15); border-color: rgba(205, 92, 92, 0.3); }
+.territorio-glow[data-territorio="14"] { box-shadow: 0 0 20px rgba(147, 112, 219, 0.15); border-color: rgba(147, 112, 219, 0.3); }
+.territorio-glow[data-territorio="15"] { box-shadow: 0 0 20px rgba(220, 20, 60, 0.15); border-color: rgba(220, 20, 60, 0.3); }
+.territorio-glow[data-territorio="16"] { box-shadow: 0 0 20px rgba(139, 115, 85, 0.15); border-color: rgba(139, 115, 85, 0.3); }
+.territorio-glow[data-territorio="17"] { box-shadow: 0 0 20px rgba(160, 82, 45, 0.15); border-color: rgba(160, 82, 45, 0.3); }
+.territorio-glow[data-territorio="18"] { box-shadow: 0 0 20px rgba(112, 128, 144, 0.15); border-color: rgba(112, 128, 144, 0.3); }
+.territorio-glow[data-territorio="19"] { box-shadow: 0 0 20px rgba(218, 165, 32, 0.15); border-color: rgba(218, 165, 32, 0.3); }
+.territorio-glow[data-territorio="20"] { box-shadow: 0 0 20px rgba(139, 69, 19, 0.15); border-color: rgba(139, 69, 19, 0.3); }
 
 /* ===================================================
    Sky gradient — Mundo dos Veus sky backdrop
