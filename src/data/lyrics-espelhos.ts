@@ -315,1332 +315,1552 @@ Eu sempre estive aqui`,
   // ─────────────────────────────────────────────
 
   "espelho-medo/1": `[Verse 1]
-Cuidado com o degrau
-Cuidado com a palavra
-Cuidado com o sonho grande de mais
-Cuidado contigo mesma
-
-[Chorus]
-Cuidado, disseram-me
-E eu fiz do cuidado uma casa
-Cuidado, repeti
-E esqueci que la fora havia estrada
+Cuidado com a esquina, cuidado com o chao
+Cuidado com o riso, cuidado com a mao
+Cuidado com o mundo que te pode magoar
+Cuidado, cuidadinho, nao vais tropecar
 
 [Verse 2]
-A proteccao virou prisao
-As paredes que guardavam
-Comecaram a apertar
-O ar que eu precisava para respirar
+Guardei os teus cuidados dentro de um frasco
+Bebi-os a golinhos ate ficar de laco
+Construi uma casa com paredes de cristal
+Bonita por fora, sufocante por igual
 
-[Bridge]
-E se o cuidado que me deram
-Nao era meu para guardar
-E se a cautela de outros
-Me roubou o direito de errar
+[Chorus]
+Quem me ensinou a ter tanto medo
+De cair, de errar, de sangrar
+Quem me embrulhou em tanto segredo
+Que esqueci como e respirar
+Quem fechou a porta por amor
+E perdeu a chave sem querer
+Fiquei tao guardada, tao segura
+Que me esqueci de viver
+
+[Verse 3]
+A janela mostra um ceu que eu conheco
+Azul como os sonhos que eu nao meco
+A porta range e pede-me coragem
+Ha um jardim do outro lado da paisagem
+
+[Chorus]
+Quem me ensinou a ter tanto medo
+De cair, de errar, de sangrar
+Quem me embrulhou em tanto segredo
+Que esqueci como e respirar
 
 [Outro]
-Cuidado, digo eu agora
-Mas a porta esta aberta`,
+A porta esta aberta
+O vento entra
+E eu saio
+Descalca, tremula
+Mas saio`,
 
   "espelho-medo/2": `[Verse 1]
-I count the weight of every word
-Before I let it leave my mouth
-Calibrate the risk of truth
-Map the safest southern route
-
-[Chorus]
-Measured words, measured life
-Every sentence double-checked
-Measured words, measured nights
-What I lost in being correct
+I rehearse the sentence in the shower steam
+Practise every pause and every smile
+Cut the honest version from the scene
+And serve the one that's safe across the mile
 
 [Verse 2]
-I rehearse the conversation
-In the shower, in the car
-Edit out the honest version
-Keep the one that leaves no scar
+I weigh each syllable like gold on glass
+I measure out my laughter by the spoon
+I've polished every answer till it shines
+But the truth still hums a crooked little tune
 
-[Bridge]
-What if the unedited sentence
-Is the only one worth hearing
-What if the word I swallowed
-Was the bridge I needed building
+[Chorus]
+What if I said the wrong and lovely thing
+The messy word that blooms between my teeth
+What if the thing I've held behind my tongue
+Is the only song worth underneath
+The only song worth singing underneath
+
+[Verse 3]
+My mouth became a museum of the safe
+Each word displayed behind a velvet rope
+But late at night the wild ones rattle cages
+And whisper darling, we're your only hope
+
+[Chorus]
+What if I said the wrong and lovely thing
+The messy word that blooms between my teeth
+What if the thing I've held behind my tongue
+Is the only song worth underneath
+The only song worth singing underneath
 
 [Outro]
 One unmeasured word
-That is all it takes
-To feel the ground shift
-Under everything I fake`,
+Falls like rain on stone
+And suddenly the desert
+Doesn't feel like home alone`,
 
   "espelho-medo/3": `[Verse 1]
-Nao me mexo e chamo-lhe sabedoria
-Nao decido e chamo-lhe paciencia
-Fico parada entre dois caminhos
-E digo que estou a reflectir
-
-[Chorus]
-Paralisia bonita
-Vestida de prudencia e bom senso
-Paralisia bonita
-O medo de roupa elegante
-A dizer que ainda nao e o momento
+Fico aqui na esquina entre o sim e o nao
+Com os pes colados ao alcatrao
+Chamo-lhe paciencia, chamo-lhe prudencia
+Mas o nome verdadeiro e solidao
 
 [Verse 2]
-Os dias passam e eu fico
-Na mesma esquina, no mesmo talvez
-O mundo gira a minha volta
-E eu fico quieta a contar os ses
+O relogio conta as horas que eu nao vivo
+Os dias passam como barcos pelo rio
+Eu fico na margem a acenar
+Com os bolsos cheios de talvez e de vazio
+
+[Chorus]
+O medo vestiu-se de elegancia
+Pos gravata e disse espera mais um pouco
+E eu esperei, com tanta graca
+Que ninguem reparou que eu estava louca
+De vontade de correr
+De vontade de saltar
+De vontade de fazer o que a pele quer gritar
 
 [Bridge]
-A prudencia verdadeira move-se
-O medo e que congela
-A diferenca esta no corpo
-Um respira, o outro aperta
+Ha um passo entre o pensar e o viver
+So um passo, um so
+E esse passo nao precisa de certeza
+So precisa de um pe no chao e o outro no
 
 [Outro]
-Bonita, sim
-Mas parada
-E a vida nao espera
-Pela moldura perfeita`,
+O primeiro passo e torto
+E tremulo e pequeno
+Mas e meu, e vivo
+E vale mais que cem perfeitos no caderno`,
 
   "espelho-medo/4": `[Verse 1]
-Antes da cabeca saber
-O estomago ja apertou
-Antes de eu encontrar a razao
-O corpo ja encontrou
-
-[Chorus]
-O estomago sabe
-O que a mente ainda debate
-O estomago sabe
-Ha uma verdade que vive mais abaixo
-Que qualquer pensamento
+A barriga aperta antes da boca falar
+O peito fecha antes do medo chegar
+As maos tremem antes de eu saber
+O que o corpo inteiro ja tentou dizer
 
 [Verse 2]
-Aquele no que aparece
-Quando dizes sim mas e nao
-Aquele calor subito
-Quando alguem toca na ferida sem querer
+Aquele calor que sobe pela espinha
+Quando alguem diz fica e tu queres ir
+Aquele frio que mora nas entranhas
+Quando dizes sim mas queres fugir
+
+[Chorus]
+Ha um mapa desenhado em carne e osso
+Ha um rio que corre por debaixo
+De cada gesto certo, cada sorriso grosso
+Cada mentira doce, cada abraco
+O corpo nao esquece
+O corpo nao perdoa
+O corpo e a unica verdade que se ouve a toa
 
 [Bridge]
-Nao e intuicao magica
-E o corpo a fazer o seu trabalho
-A registar o que a mente
-Aprendeu a ignorar
+Pousa a mao onde doi
+Fica quieta e ouve bem
+O teu corpo fala-te ha anos
+So que a cabeca finge que nao tem ninguem
 
 [Outro]
-Pousa a mao no centro
-Respira
-Ouve`,
+Respiro fundo
+Ouco o ventre
+Ouco os ossos
+Ouco tudo o que ja sei
+Mas finjo que nao sinto`,
 
   "espelho-medo/5": `[Verse 1]
-I used to run when fear arrived
-Slammed the door and drew the blind
-Built a fortress out of calm
-Held my breath and held my mind
-
-[Chorus]
-But the messenger keeps knocking
-Not to harm, not to break
-The messenger keeps knocking
-Fear is not the fire
-Fear is the smoke that says awake
+I built a wall with steady hands
+I locked the door and hid the key
+I called it peace, I called it safe
+But all I locked inside was me
 
 [Verse 2]
-It came before the job I quit
-It came before the love I found
-Fear was never the enemy
-It was the only honest sound
+Fear came knocking like the rain
+I stuffed my ears with lullabies
+But rain don't care about the roof
+It finds the cracks, it always tries
 
-[Bridge]
-What if you sat with the trembling
-Let it speak its piece and go
-What if fear was just a lantern
-Lighting what you need to know
+[Chorus]
+What if fear is not the fire
+But the lantern in the hall
+What if trembling is the door
+Opening when you hear the call
+What if fear's the oldest friend
+Walking with me through the night
+Not to push me off the edge
+But to show me where's the light
+
+[Verse 3]
+It shook me right before the leap
+That changed my life from grey to gold
+It woke me up before the love
+That made me finally feel whole
+
+[Chorus]
+What if fear is not the fire
+But the lantern in the hall
+What if trembling is the door
+Opening when you hear the call
 
 [Outro]
-Not my enemy
-My oldest, strangest guide
-Walking beside me
-On the other side`,
+So walk with me, old friend
+I know your voice, I know your face
+I will not run from you again
+We'll find the morning at the same pace`,
 
   "espelho-medo/6": `[Verse 1]
-O medo fala e eu ouco
-Cada silaba, cada aviso
-Conheco a sua voz de cor
-Sei o mapa que ele desenhou por mim
-
-[Chorus]
-Ouco-te mas vou
-Ouco-te mas hoje os meus pes decidem
-Ouco-te mas vou
-Nao contra ti, nao apesar de ti
-Com o teu som ainda nos ouvidos, vou
+Ouves a tua voz na minha orelha
+Sinto o teu peso nos meus pes
+Conheco-te como se conhece uma cancao velha
+Que a gente canta sem saber porque
 
 [Verse 2]
-Nao e heroismo, nao e salto
-E o pequeno gesto de abrir a porta
-De dizer a frase que ensaiei mil vezes
-De dar o passo que o corpo pede ha meses
+Falas-me de abismos e de quedas
+De noites frias e de fins
+Mas eu olho para as minhas maos abertas
+E vejo que estao cheias de jardins
+
+[Chorus]
+Ouco-te, ouco-te
+Mas os meus pes ja decidiram
+Ouco-te, ouco-te
+Mas as raizes que me prendem
+Hoje viraram asas
+E eu vou com o teu nome nos ouvidos
+Vou tremendo, vou cantando
+Vou
 
 [Bridge]
-A coragem nao e a ausencia do medo
-E o medo a caminhar contigo
-E tu a caminhar na mesma
-Dois no mesmo corpo, um so caminho
+A coragem tem o gosto do medo
+Temperado com um bocadinho de sol
+E um bocadinho de loucura
+E um bocadinho de a vida e so uma
 
 [Outro]
 Ouco-te
-Mas hoje
+Agradeco-te
+E vou
+Com as pernas a tremer
+E o coracao aos pulos
 Vou`,
 
   "espelho-medo/7": `[Verse 1]
-Nao ha pressa em iluminar
-O que viveu tanto tempo no escuro
-Cada sombra tem o seu tempo
-Cada verdade o seu momento de amadurecer
-
-[Chorus]
-Devagar, devagar
-A luz nao precisa de ser relampago
-Devagar, devagar
-Basta uma vela
-E a coragem de nao a soprar
+A vela treme na minha mao
+A chama e tao pequena, tao fragil
+Mas ilumina mais que qualquer trovao
+Porque a luz que dura nasce facil
 
 [Verse 2]
-O medo nao se vence num dia
-Nem em sete capitulos perfeitos
-Vive-se com ele, ao lado dele
-Como vizinhos que aprenderam a respeitar-se
+Nao preciso de matar o medo
+Nem de o vencer numa batalha
+Posso caminhar com ele ao lado
+Como quem leva um filho pela manha
+
+[Chorus]
+Devagar como a lua sobe
+Devagar como a mare vem
+Devagar como a ferida fecha
+Devagar como quem quer bem
+Nao ha pressa nesta estrada
+Nao ha meta nem final
+Ha so a luz desta vela
+E a beleza de andar, de andar
 
 [Bridge]
-Ha uma paciencia que nao e fraqueza
-Ha uma lentidao que nao e atraso
-E a sabedoria do corpo
-Que sabe que curar e devagar
+O medo e eu somos vizinhos velhos
+Partilhamos a varanda e o por-do-sol
+Ele conta-me historias de perigo
+Eu ofereco-lhe um lugar ao sol
 
 [Outro]
-Devagar
-Como quem abre uma porta antiga
-Sem saber o que ha do outro lado
-Mas sem medo de olhar`,
+Devagar, devagar
+A cura nao tem relogio
+Devagar, devagar
+Cada passo e uma oração
+Cada tremor e uma cancao`,
 
   // ─────────────────────────────────────────────
   // ESPELHO DA CULPA (Veu 3 — guilt for wanting more)
   // ─────────────────────────────────────────────
 
   "espelho-culpa/1": `[Verse 1]
-Ha uma voz que nao e minha
-Mas fala com a minha boca
-Devias estar a trabalhar
-Devias estar a cuidar de alguem
-
-[Chorus]
-A voz baixa, sempre a voz baixa
-Que diz que nao mereco o descanso
-A voz baixa, sempre presente
-Que transforma prazer em pecado
+Ha uma voz que mora entre os ossos
+Que acorda antes de mim de manha
+Diz levanta-te, nao descansas
+Diz que a tua paz e uma mentira estranha
 
 [Verse 2]
-Le um livro e ela diz que e egoismo
-Senta-te e ela conta os minutos
-Ri e ela lembra-te de quem sofre
-Existe e ela cobra-te a existencia
+Sento-me a ler e ela sussurra
+Devias estar a fazer mais
+Deito-me a olhar para o tecto
+E ela conta-me os pecados mortais
 
-[Bridge]
-De quem e esta voz
-Que confunde presenca com producao
-Que mede o valor de um dia
-Pelo cansaco e nao pela paz
+[Chorus]
+Essa voz, essa voz
+Tem a boca da minha mae
+Tem os olhos do padre
+Tem o peso da fe
+Mas nao e minha, nao e minha
+Eu aprendi a repeti-la
+Ate esquecer que a garganta
+Tinha outra musica mais tranquila
+
+[Verse 3]
+O sol entra pela janela
+E a voz diz que nao o mereco
+A chuva cai no meu cabelo
+E a voz diz que o prazer tem preco
+
+[Chorus]
+Essa voz, essa voz
+Tem a boca da minha mae
+Tem os olhos do padre
+Tem o peso da fe
+Mas nao e minha, nao e minha
 
 [Outro]
-Hoje ouvi a voz baixa
-E pela primeira vez
-Nao obedeci`,
+Hoje a voz falou
+E eu deixei-a falar
+Mas os meus pes
+Levaram-me ao jardim na mesma`,
 
   "espelho-culpa/2": `[Verse 1]
-She gives and gives and calls it love
-She bends and bends and calls it grace
-The altar of her emptiness
-Dressed up in a smiling face
-
-[Chorus]
-Disguised virtue, invisible chains
-Duty wearing a halo of gold
-Disguised virtue, who does it serve
-When the giver has nothing left to hold
+She pours herself like Sunday wine
+Into every cup but her own
+She calls it grace, she calls it kind
+She calls it love but it's a loan
 
 [Verse 2]
-She learned to disappear with kindness
-Erase herself in someone's need
-The world applauds her selflessness
-While something inside begins to bleed
+Her hands are always full of others
+Her back is bent from bowing low
+The world applauds her golden giving
+While she bleeds beneath the show
 
-[Bridge]
-What if the giving had a door
-Not to close but just to see
-Who stands on each side of the gift
-And which one is actually free
+[Chorus]
+Oh, sweet martyr in the mirror
+With your halo and your chains
+Who told you love was disappearing
+Who told you virtue was the pain
+You give and give until you're hollow
+You smile and smile until you break
+But darling, who will hold the woman
+When the woman is the one who shakes
+
+[Verse 3]
+She learned to vanish into kindness
+To fold herself into the need
+To make herself so very useful
+She forgot she was a seed
+
+[Chorus]
+Oh, sweet martyr in the mirror
+With your halo and your chains
+Who told you love was disappearing
+Who told you virtue was the pain
 
 [Outro]
-Virtue unmasked
-Is just a tired woman
-Learning that love
-Should not cost everything`,
+Love should not cost you
+Everything you are
+Love should leave you fuller
+Not an empty jar`,
 
   "espelho-culpa/3": `[Verse 1]
-Ha uma diferenca que ninguem ensina
-Entre o suspiro de alivio e a alegria real
-Entre acabar uma tarefa
-E comecar algo que te faz brilhar
-
-[Chorus]
-Alivio ou alegria
-Dever ou querer de verdade
-Alivio ou alegria
-Vivi tanto tempo no primeiro
-Que esqueci o sabor do segundo
+Acabei a lista e suspirei
+Deitei-me na cama e fechei os olhos
+Disse a mim mesma ja esta feito
+Mas o peito ainda tinha espelhos
 
 [Verse 2]
-O alivio diz que acabou
-A alegria diz que comecou
-Um fecha uma porta com cansaco
-Outro abre uma janela com as maos
+O alivio sabe a agua morna
+A alegria sabe a fruta do quintal
+Um e o fim de uma obrigacao
+O outro e o principio de um festival
+
+[Chorus]
+Eu confundi durante anos
+O descanso com a felicidade
+O dever cumprido com o desejo
+A gaiola aberta com a liberdade
+Mas ha qualquer coisa que brilha
+Que nao vem do fim de uma tarefa
+Vem do fundo, vem da barriga
+Vem do lugar onde a vida e festa
 
 [Bridge]
-Nao e mau sentir alivio
-Mas nao confundas alivio com vida
-Ha um lugar mais fundo
-Onde o desejo nao pede desculpa
+Nao quero so o suspiro do fim
+Quero o arrepio do inicio
+Nao quero so o alivio
+Quero a danca, o salto, o precipicio
 
 [Outro]
-Hoje nao quero so o alivio
-Quero a coisa inteira
-A que brilha
-A que pede espaco
-A que e minha`,
+Hoje acordei e nao fiz a lista
+Fiz o que o corpo me pediu
+E pela primeira vez em anos
+A manha inteira me sorriu`,
 
   "espelho-culpa/4": `[Verse 1]
-A minha avo carregou isto
-A minha mae carregou depois
-Chegou a mim embrulhado em silencio
-Com o peso de todas as vozes
-
-[Chorus]
-Heranca que nao pedi
-Culpa que nao e minha mas que sinto
-Heranca que nao escolhi
-Passada de mao em mao
-Como uma pedra que ninguem pousa
+A minha avo lavava roupa no rio
+Com as maos rachadas e o ventre cheio
+Nunca disse quero, nunca disse eu
+Morreu com os sonhos ainda no seio
 
 [Verse 2]
-A culpa de querer mais que a mae teve
-A culpa de dizer nao quando ela nunca disse
-A culpa de viver uma vida
-Que as mulheres antes de mim nao puderam
+A minha mae herdou o silencio
+Vestiu-o como vestido de domingo
+Disse sim quando queria gritar
+E chamou-lhe amor, chamou-lhe abrigo
 
-[Bridge]
-Posso honrar quem veio antes
-Sem carregar o que era delas
-Posso amar a minha mae
-E escolher um caminho diferente
+[Chorus]
+E eu carrego esta pedra que nao e minha
+De mae para filha, de filha para neta
+Esta culpa antiga como a chuva
+De querer mais do que a vida nos deixa
+De querer mais do que elas puderam
+De dizer nao quando ninguem dizia
+De viver alto, de sonhar longe
+De escolher a minha propria via
+
+[Verse 3]
+Posso amar a minha mae de joelhos
+E mesmo assim caminhar para a frente
+Posso honrar as maos da minha avo
+E ter as minhas maos livres e quentes
+
+[Chorus]
+E eu carrego esta pedra que nao e minha
+De mae para filha, de filha para neta
+Esta culpa antiga como a chuva
+De querer mais do que a vida nos deixa
 
 [Outro]
-Pouso a pedra aqui
-Nao e abandono
-E respeito
-Por mim e por quem a carregou`,
+Pouso a pedra no chao
+Com as duas maos
+Nao e traicao
+E o fim de uma corrente
+E o comeco de uma cancao`,
 
   "espelho-culpa/5": `[Verse 1]
-I was taught to earn my place
-To prove my worth with every step
-That love was something you worked for
-And rest was just a pause to prep
-
-[Chorus]
-But deserve is not a mountain to climb
-Deserve is the ground beneath your feet
-You don't earn the right to breathe
-You don't earn your own heartbeat
+I earned my breakfast with obedience
+I earned my bed by being small
+I earned my mother's tired approval
+By never asking much at all
 
 [Verse 2]
-What if you stopped performing goodness
-And sat with empty hands and still
-What if the universe said welcome
-Not because you climbed the hill
+I grew into a woman earning
+Every sunrise, every meal
+As if the sky would ask for payment
+As if the rain would make me kneel
 
-[Bridge]
-The child never wondered
-If she deserved the morning light
-She opened her eyes and it was there
-And that was always right
+[Chorus]
+But the birds don't earn the morning
+And the river doesn't pay for rain
+The wildflower grows without permission
+And still the sun comes back again
+So tell me, tell me, who decided
+That my breath must have a price
+That my rest must be a trophy
+And my joy must be earned twice
+
+[Verse 3]
+The child I was would laugh at all this
+She'd roll in grass without a thought
+She never asked if she was worthy
+She simply was, and that was all she brought
+
+[Chorus]
+But the birds don't earn the morning
+And the river doesn't pay for rain
+The wildflower grows without permission
+And still the sun comes back again
 
 [Outro]
-You deserve
-Not because you gave enough
-But because you are
-And that was always
-Always enough`,
+I deserve the light
+Not because I've earned my stay
+But because I'm here
+And here was never mine to pay`,
 
   "espelho-culpa/6": `[Verse 1]
-Ha um peso que carrego ha tanto tempo
-Que ja confundo o peso com o corpo
-Ha uma obrigacao tao antiga
-Que ja nao sei onde ela acaba e eu comeco
-
-[Chorus]
-Posso pousar isto
-Posso abrir as maos e deixar cair
-Posso pousar isto
-Nao e fraqueza, nao e traicao
-E so o acto de finalmente existir
+Carreguei tanto nas costas
+Que ja nao sei onde acabo eu
+E onde comeca o fardo
+O corpo curvou, a alma desceu
 
 [Verse 2]
-Pousar nao e abandonar
-E reconhecer que nao era meu
-Que carreguei por amor ou por medo
-Mas que o meu corpo precisa de ar
+As maos fechadas ha tantos anos
+Que os dedos esqueceram como abrir
+A pele colou-se ao peso
+Como se largar fosse morrir
+
+[Chorus]
+Mas eu abro as maos devagar
+E deixo cair no chao
+Tudo o que nunca foi meu
+Tudo o que eu chamava obrigacao
+E o chao recebe sem julgar
+E o ar entra nos pulmoes
+E o espaco que aparece
+Tem o tamanho de mil perdoes
 
 [Bridge]
-Imagina as maos abertas
-Imagina o chao a receber o peso
-Imagina o espaco que nasce
-Onde antes so havia fardo
+Pousar nao e abandonar
+E dar ao corpo o que lhe pertence
+E dizer aos ombros cansados
+Podem descansar, nao ha urgencia
 
 [Outro]
 Pousei
-E o mundo nao acabou
+E o mundo nao caiu
 Pousei
-E eu comecei`,
+E eu nasci`,
 
   "espelho-culpa/7": `[Verse 1]
-Nao preciso de me partir
-Para ver o que esta por dentro
-Nao preciso de me castigar
-Para merecer a mudanca
-
-[Chorus]
-Ternura, a forca mais rara
-Desmontar sem destruir
-Ternura, olhar sem acusar
-Ver o padrao e sorrir
-Porque agora sei o seu nome
+Nao preciso de me partir ao meio
+Para ver o que trago ca dentro
+Nao preciso de sangue nem de castigo
+Basta um espelho e um momento
 
 [Verse 2]
-A culpa foi uma professora severa
-Mas eu ja nao sou a sua aluna
-Posso agradecer a licao
-E seguir sem a sua permissao
+A culpa ensinou-me a ser dura
+Comigo mesma, sempre comigo
+Mas hoje troco o chicote
+Por um colo, por um abrigo
+
+[Chorus]
+Ternura, ternura
+A forca que ninguem me ensinou
+Olhar para as minhas feridas
+Como quem rega uma flor
+Ternura, ternura
+A mao que eu nunca tive
+Agora nasce dos meus dedos
+E toca-me como quem vive
 
 [Bridge]
-Ha uma forma de mudar
-Que nao exige violencia
-Ha uma forma de crescer
-Que comeca com a mao no peito
+Ha uma forca que nao grita
+Que nao parte, que nao doi
+Que chega de mansinho como a brisa
+E cura tudo o que a raiva nao curou
 
 [Outro]
-Ternura comigo mesma
-Como nunca ninguem me ensinou
-E agora
-Sou eu quem ensina`,
+Ponho a mao no peito
+E digo baixinho
+Estou aqui
+Estou contigo
+E chega, e chega
+Es mais do que suficiente`,
 
   // ─────────────────────────────────────────────
   // ESPELHO DA IDENTIDADE (Veu 4 — not knowing who you are)
   // ─────────────────────────────────────────────
 
   "espelho-identidade/1": `[Verse 1]
-Acordo e visto a mae responsavel
-Ao almoco sou a colega agradavel
-A noite troco para a parceira paciente
-E em nenhum desses rostos me encontro
-
-[Chorus]
-Mascaras, tantas mascaras
-Cada uma perfeita para o palco
-Mascaras, tao bem feitas
-Que ja nao sei qual e a pele
-E qual e o pano
+De manha sou a mae que sorri na porta
+A meio do dia a colega perfeita
+A noite a mulher que ninguem importa
+Deito-me e nao sei qual delas se deita
 
 [Verse 2]
-Ha uma para as reunioes
-Outra para os jantares de familia
-Uma para o espelho da casa de banho
-E outra para quando ninguem esta a ver
+Tenho uma cara para cada sala
+Uma voz para cada telefone
+Um riso certo para cada gala
+E um choro que nao tem dono nem nome
+
+[Chorus]
+Quem sou eu quando tiro os disfarces
+Quando o palco apaga a luz
+Quem sou eu quando ninguem aplaude
+Quando nao ha figurino nem cruz
+Ha um rosto por baixo de tudo
+Que eu ainda nao vi
+Mas sinto-o a respirar no escuro
+Sinto-o a chamar por mim
 
 [Bridge]
-O problema nao e ter mascaras
-E nao saber qual delas tirar
-E vestir tantas ao mesmo tempo
-Que o rosto por baixo esqueceu como respirar
+Nao e ter mascaras que me assusta
+E nao saber qual e a cara
+Ter vestido tantas peles
+Que a minha ficou rara
 
 [Outro]
-Debaixo de todas
+Debaixo de tudo
 Ha alguem
-Que ainda nao conheci`,
+Que espera
+Com a paciencia
+De quem nunca desistiu`,
 
   "espelho-identidade/2": `[Verse 1]
-When the room is empty
-And the door is closed
-When there's no one watching
-No one to compose for
-
-[Chorus]
-Who are you
-When no one needs you to be something
-Who are you
-In the silence between roles
-In the pause before performing
-Who are you
+When the house is empty and the lights go low
+When the curtains close and there's no more show
+When the phone stops ringing and the world moves on
+Tell me who's the woman when the audience is gone
 
 [Verse 2]
-Stripped of every title
-Mother, daughter, friend
-When the labels fall away
-Who is there at the end
+Strip away the mother, strip away the wife
+Strip away the daughter and the careful life
+Strip away the good one, strip away the strong
+Tell me what is left when every label's wrong
+
+[Chorus]
+Who are you in the dark, love
+Who are you when nobody sees
+Who are you when the mirror's quiet
+And there's only you and the breeze
+I don't know her yet
+But I can feel her breathe
+Somewhere underneath this costume
+She's been waiting to be free
 
 [Bridge]
-Maybe the answer isn't a name
-Maybe it's a feeling
-A warmth that has no audience
-A breath that needs no meaning
+Maybe she's not a name
+Maybe she's not a role
+Maybe she's just a warmth
+That doesn't need a soul to hold
 
 [Outro]
-I don't know yet
-And maybe that's the truest thing
-I've ever said`,
+I don't know who I am
+And oh, that's the truest thing
+These lips have ever said
+The truest, sweetest thing`,
 
   "espelho-identidade/3": `[Verse 1]
-Construi uma armadura com certezas
-Cada opiniao forte e uma placa de aco
-Cada eu sei o que quero
-E mais uma camada de proteccao
-
-[Chorus]
-Armadura, a certeza que parece forca
-Mas que pesa mais a cada dia
-Armadura, tao polida por fora
-Mas por dentro so ha escuro e frio
+Construi uma torre com opinioes
+Cada certeza um tijolo a mais
+Eu sei quem sou, eu sei o que quero
+Dizia eu, com a voz dos meus pais
 
 [Verse 2]
-Ninguem ve a menina por baixo
-A que tem medo de dizer nao sei
-A que gostava de chorar em publico
-Mas aprendeu que isso nao se faz
+A armadura brilha tanto
+Que ninguem ve o que esta por tras
+Uma menina de joelhos
+Com vontade de chorar em paz
+
+[Chorus]
+Mas a armadura pesa, pesa
+E o coracao bate mais devagar
+Tao protegida, tao perfeita
+Que ate o ar tem medo de entrar
+E se eu tirasse peca a peca
+E ficasse so com a pele e o vento
+E se tremer nao fosse fraqueza
+Mas o mais corajoso dos movimentos
 
 [Bridge]
-E se a forca nao fosse rigidez
-E se a verdadeira proteccao
-Fosse ter a coragem de tremer
-E ainda assim ficar de pe
+A menina por baixo do aco
+Tem os olhos cheios de mar
+Tem as maos cheias de perguntas
+E uma vontade louca de voar
 
 [Outro]
-A armadura range
-Ja nao serve
+A armadura cai no chao
+Com um barulho enorme
 E por baixo
-Ha pele
-Viva`,
+So ha pele
+Quente, viva
+A respirar`,
 
   "espelho-identidade/4": `[Verse 1]
 Ha um espelho que nao esta na parede
-Esta no meio do peito, a meia-luz
-Nao reflecte o que visto
-Reflecte o que sinto quando ninguem ve
-
-[Chorus]
-Espelho interior
-Olhar sem julgar o que aparece
-Espelho interior
-Nao e bonito nem feio
-E so verdadeiro
+Esta algures entre o peito e a garganta
+Nao mostra a roupa nem o penteado
+Mostra a verdade que nos espanta
 
 [Verse 2]
-Vi-me cansada e nao me condenei
-Vi-me perdida e nao procurei saida
-Fiquei ali, diante de mim mesma
-Como quem encontra uma desconhecida e diz senta-te
+Olhei para dentro e vi-me cansada
+Vi-me perdida, vi-me nua
+Nao desviei, nao fugi
+Fiquei ali como a lua
+
+[Chorus]
+Sem julgar, sem julgar
+Olho e deixo estar
+Como quem olha para o mar
+Sem querer mudar a mare
+Sem querer contar as ondas
+Sem querer que o sal seja mais doce
+So olhar, so ficar
+So deixar que a verdade me conheca
 
 [Bridge]
-O julgamento e o veu mais fino
-Transparente mas sempre presente
-Olhar sem julgar e um acto radical
-E o comeco de tudo
+E se o espelho nao mente
+Porque e que eu fecho os olhos
+E se o que vejo e bonito
+Mesmo com todos os estragos
 
 [Outro]
 Olhei
 E pela primeira vez
-Nao quis mudar nada
-Quis apenas ver`,
+Sorri para o que vi
+Sem querer ser mais
+Sem querer ser menos
+So eu, parada, ali`,
 
   "espelho-identidade/5": `[Verse 1]
-Take away the name they gave you
-Take away the job, the home
-Take away the list of shoulds
-And sit with what remains alone
-
-[Chorus]
-Nameless, formless, undefined
-Not broken, not empty, not less
-Nameless is not nothing
-Nameless is before the dress
-Before the labels, before the stage
-Nameless is the page
+Take away my name and watch me tremble
+Take away the job, the house, the ring
+Take away the story I've been telling
+And see if there's a bird that still can sing
 
 [Verse 2]
-There's a place before identity
-Before the story and the role
-A place that doesn't need a mirror
-To know that it is whole
+Before the dress, before the language
+Before the first time someone said be this
+There was a creature made of starlight
+Who didn't know that she could miss
+
+[Chorus]
+Nameless is not empty
+Nameless is the sky before the dawn
+Nameless is the canvas before colour
+Nameless is the silence before song
+And I am standing in that silence
+With my arms wide open to the rain
+Nameless, nameless, beautiful
+Like a river with no name
 
 [Bridge]
-This is not emptiness
-This is the canvas
-This is not lost
-This is the start
+I am not my story
+I am not my shame
+I am not the boxes
+I am not the frame
 
 [Outro]
 Nameless
 And for the first time
-Completely here`,
+Not afraid
+Not lost
+Just here
+Just whole
+Just breathing`,
 
   "espelho-identidade/6": `[Verse 1]
-Agora sei que tenho mascaras
-E posso escolher qual vestir
-Nao por medo, nao por habito
-Mas porque faz sentido aqui
-
-[Chorus]
-Escolher a mascara
-Sem colar a pele, sem esquecer o rosto
-Escolher a mascara
-Com a leveza de quem sabe
-Que por baixo existe alguem inteiro
+Agora vejo as mascaras na mesa
+Cada uma com a sua cor
+Escolho a que me serve esta manha
+Nao por medo, mas por amor
 
 [Verse 2]
-A mae nao e tudo o que eu sou
-Mas e uma parte que eu honro
-A profissional nao me define
-Mas e uma forma que eu habito com cuidado
+A mae que sou e um vestido lindo
+Mas nao e a minha pele toda
+A mulher que trabalha e uma moldura
+Mas o quadro muda com a roda
+
+[Chorus]
+Visto e dispo como quem danca
+Com a leveza de quem ja sabe
+Que debaixo de cada roupa
+Mora alguem que nao cabe
+Em nenhum nome, em nenhuma caixa
+Em nenhum papel, em nenhum lugar
+Alguem que e tudo e nao e nada
+Alguem que aprendeu a brincar
 
 [Bridge]
-A liberdade nao e nao ter papeis
-E saber que nenhum deles e a historia toda
-E poder tirar, trocar, pausar
-Sem perder o chao debaixo dos pes
+A liberdade nao e estar nua
+E poder vestir sem desaparecer
+E saber que cada mascara e um jogo
+E que o jogo nao me faz perder
 
 [Outro]
 Hoje escolhi esta
-Amanha talvez outra
-Mas o rosto por baixo
-Ja nao precisa de permissao`,
+Com um sorriso nos labios
+E o rosto por baixo
+Descansa feliz
+Porque ja nao precisa de se esconder`,
 
   "espelho-identidade/7": `[Verse 1]
-Nao tenho provas de quem sou
-Nao tenho certificados da minha essencia
-Nao tenho um discurso ensaiado
-Sobre o meu valor e a minha presenca
-
-[Chorus]
-Eu sem justificacao
-Sem pedir desculpa por ocupar espaco
-Eu sem justificacao
-Existir como o mar existe
-Sem explicar as ondas
+Nao trago provas do que valho
+Nao trago selos nem certidao
+Trago so este corpo inteiro
+E estas maos e este coracao
 
 [Verse 2]
-Nao preciso de ser util para ser real
-Nao preciso de razao para estar aqui
-Nao preciso de historia, de merito, de prova
-Preciso apenas de me deixar existir
+Nao peco desculpa por estar aqui
+Nao peco licenca para respirar
+O mar nao explica as suas ondas
+Eu nao explico o meu lugar
+
+[Chorus]
+Eu, eu, eu
+Sem moldura e sem manual
+Eu, eu, eu
+Como a chuva que cai porque cai
+Como o sol que nasce porque nasce
+Como o vento que sopra sem razao
+Eu existo como existe
+O primeiro batimento do coracao
 
 [Bridge]
-Ha uma soberania silenciosa
-Em simplesmente ser
-Sem palco, sem aplauso
-Sem ninguem a dizer que esta bem
+Ha uma rainha no silencio
+Que nao precisa de coroa
+Que nao precisa de aplauso
+Que brilha so porque e boa
 
 [Outro]
 Eu
-Sem mais nada
+Sem desculpa
 Eu
-E chega`,
+Sem pedir
+Eu
+E isso basta
+Eu
+E isso e tudo o que preciso de dizer`,
 
   // ─────────────────────────────────────────────
   // ESPELHO DO CONTROLO (Veu 5 — holding on as the only way)
   // ─────────────────────────────────────────────
 
   "espelho-controlo/1": `[Verse 1]
-As almofadas no seu lugar
-Os emails respondidos antes de dormir
-A agenda sem buracos
-Cada minuto com razao de existir
-
-[Chorus]
-Segurar, segurar, segurar
-Como se o mundo dependesse das minhas maos
-Segurar, segurar, segurar
-Porque se eu largo
-Quem e que segura o chao
+As almofadas na posicao certa
+Os sapatos alinhados junto a porta
+A agenda fechada como fortaleza
+Cada minuto conta, nada importa
 
 [Verse 2]
-A casa limpa e a mente em ordem
-Cada plano um escudo contra o caos
-Mas debaixo de tanta organizacao
-Ha um tremor que ninguem viu
+Lavo os pratos antes de secar
+Fecho as portas antes de sair
+Verifico duas vezes, tres, quatro
+Como se a vida pudesse fugir
+
+[Chorus]
+Segura, segura, segura
+As maos ja doem mas eu nao largo
+Se eu soltar o mundo cai
+Se eu parar ninguem faz o parto
+Segura, segura, segura
+Como quem agarra areia na mao
+Quanto mais aperto mais escapa
+Mas eu nao sei outra cancao
 
 [Bridge]
-Segurar e a minha forma de amar
-Segurar e a minha forma de existir
-Mas as maos ja doem
-E eu finjo que nao sinto
+E se soltar nao fosse o fim
+E se o mundo soubesse girar
+Sem as minhas maos no volante
+Sem o meu medo a comandar
 
 [Outro]
 Tudo no lugar
-Menos eu`,
+Tudo arrumado
+Tudo perfeito
+Menos eu
+Que estou a tremer
+No meio de tanta ordem`,
 
   "espelho-controlo/2": `[Verse 1]
-They call me at midnight
-They call me at dawn
-I'm the one who fixes
-I'm the rock they lean on
-
-[Chorus]
-Reliable, always reliable
-The one who never breaks
-Reliable, always reliable
-But who holds the one
-Who holds everyone awake
+They call at midnight and I answer still
+They call at dawn before the coffee's warm
+I am the lighthouse on the frozen hill
+I am the shelter from the coming storm
 
 [Verse 2]
-I wear it like an honour
-This weight upon my chest
-If I'm needed then I matter
-If I stop then I am less
+I wear this strength like jewellery on my wrist
+I hold the ceiling up with just my spine
+If I am needed then I must exist
+If I stop holding, who will hold the line
+
+[Chorus]
+But who holds the woman who holds the world
+Who rocks the one that rocks them all to sleep
+Who catches her when all the plates have fallen
+Who sits beside her when she starts to weep
+Reliable, reliable
+The word they carved into my chest
+But underneath the marble statue
+There's a woman wanting rest
 
 [Bridge]
-What if being needed
-Is just another cage
-What if the strongest thing
-Is turning this last page
-And saying I don't know
-I can't, I'm tired today
+What if I said I can't today
+What if the rock became the river
+What if the strongest thing I've done
+Is finally learning how to shiver
 
 [Outro]
-Reliable
-But also
-Human
-Also breaking
+Reliable, yes
+But also tired
+Also tender
+Also human
 Also here`,
 
   "espelho-controlo/3": `[Verse 1]
-O tecto e escuro e a mente nao para
-Rever a conversa, rever a decisao
-O que eu devia ter dito, o que nao disse
-O que pode correr mal amanha de manha
-
-[Chorus]
-Tres da manha e os pensamentos em circulos
-A mesma estrada sem saida, sem fim
-Tres da manha e o corpo exausto
-Mas a cabeca recusa-se a desistir de mim
+O tecto escuro nao me responde
+Mas eu pergunto na mesma
+O que eu devia ter dito ao almoco
+O que vai acontecer na sexta
 
 [Verse 2]
-Refaco a lista, recomeco o plano
-Organizo o futuro na escuridao
-Como se pensar mais fosse a solucao
-Para o que so o sono pode curar
+O travesseiro sabe de cor
+As voltas que eu dou na cama
+A cabeca e um comboio
+Que nao para em nenhuma estacao, nenhuma rama
+
+[Chorus]
+Tres da manha e o mundo dorme
+Menos eu, menos eu
+Tres da manha e a mente corre
+Como um rio que nao e meu
+Roda, roda, o mesmo medo
+Roda, roda, o mesmo sim
+Tres da manha e eu sou um segredo
+Que nao consigo guardar de mim
 
 [Bridge]
-E se as tres da manha nao precisam de solucoes
-Precisam de silencio
-Precisam que eu deixe os problemas no chao
-E confie que amanha eles continuam la
+E se as tres da manha nao precisam de mim
+E se eu pudesse deitar os pensamentos no chao
+Como roupa suja ao lado da cama
+E confiar que amanha ha solucao
 
 [Outro]
 Tres da manha
-E pela primeira vez
-Nao e a mente que fala
-E o corpo que diz
-Chega, dorme, larga`,
+Fecho os olhos
+Deixo o comboio partir sem mim
+E o corpo sussurra
+Dorme, querida
+Amanha o mundo continua assim`,
 
   "espelho-controlo/4": `[Verse 1]
-Se eu souber o proximo passo
-Nada de mau pode acontecer
-Se eu preparar cada cenario
-A vida nao me pode surpreender
-
-[Chorus]
-Ilusao de seguranca
-O mapa que redesenho cada noite
-Ilusao de seguranca
-Um castelo de vidro tao bonito
-Que esqueco que e fragil
+Desenhei um mapa para cada dia
+Com as estradas todas marcadas a vermelho
+Cada curva prevista, cada paragem
+Cada sol, cada chuva, cada espelho
 
 [Verse 2]
-Controlei o horario das criancas
-Controlei a comida e o dinheiro
-Controlei cada variavel possivel
-E ainda assim o imprevisto veio
+Controlei as horas e a comida
+Controlei o dinheiro e o amor
+Segurei tudo com as duas maos
+Ate o dia em que veio a flor
+
+[Chorus]
+A flor nasceu no meio do cimento
+Onde eu nao plantei, onde eu nao previ
+A vida riu-se do meu mapa inteiro
+E fez o que quis apesar de mim
+O castelo de vidro, tao bonito
+Partiu-se com a brisa do jardim
+E eu fiquei ali no meio dos cacos
+A perceber que o caos tambem e um hino
 
 [Bridge]
-O vidro nao parte porque falhaste
-Parte porque e vidro
-O imprevisto nao e castigo
-E so a vida a ser vida
+O vidro parte porque e vidro
+O vento sopra porque sopra
+A vida nao e uma inimiga
+E a unica estrada que importa
 
 [Outro]
-A seguranca nao vive no plano
-Vive no corpo que sabe cair
-E levantar-se`,
+O mapa rasgou-se
+E por baixo
+Havia campo aberto
+Havia ceu
+Havia espaco para me perder
+E me encontrar ao mesmo tempo`,
 
   "espelho-controlo/5": `[Verse 1]
-I planned the route and packed for rain
-I checked the map and checked again
-Counted every possible wrong turn
-Built a wall at every bend
-
-[Chorus]
-But trust is the road without a map
-Trust is the rain without the coat
-Trust is letting go of the wheel
-And finding you still float
+I packed an umbrella for the sun
+I wore a coat in June
+I planned for every kind of storm
+And missed the afternoon
 
 [Verse 2]
-I don't know how the story ends
-I can't control the final scene
-But something in me softens now
-At all the space between
+I held the wheel so tight my knuckles
+Turned to winter white
+I steered through every bend and corner
+And forgot to see the light
+
+[Chorus]
+But the river doesn't need my hands
+The river finds the sea
+The moon pulls up the tide at night
+Without consulting me
+And what if trust is just the art
+Of letting go the rope
+And finding that the fall itself
+Was always lined with hope
 
 [Bridge]
-Trust is not the absence of fear
-Trust is fear with open hands
-Saying I don't know what's coming
-But I know where I stand
+I don't know the ending
+I don't know the way
+But my feet are in the water
+And the water feels like grace
 
 [Outro]
-I let go
-And the river held me
-I let go
-And I was still here`,
+I let go of the wheel
+And the road kept on
+I let go of the rain
+And I danced till dawn`,
 
   "espelho-controlo/6": `[Verse 1]
-Larguei o telefone por uma hora
-O mundo continuou sem a minha resposta
-Larguei a lista, larguei o plano
-E o dia nao desmoronou
-
-[Chorus]
-Largar nao e desistir
-E descobrir que o peso nao era meu
-Largar nao e abandonar
-E perceber que o mundo sabe girar
-Sem as minhas maos no volante
+Desliguei o telefone a tarde inteira
+O mundo girou sem a minha mao
+O jantar queimou e ninguem chorou
+A louca ficou no balcao
 
 [Verse 2]
-O jantar nao foi perfeito e ninguem morreu
-A reuniao correu sem o meu email
-A casa ficou um pouco desarrumada
-E o ceu continuou no seu lugar
+A cama ficou por fazer
+O email ficou por mandar
+A reuniao aconteceu sem mim
+E o sol continuou a brilhar
+
+[Chorus]
+E eu ri, eu ri
+Como nao ria ha tanto tempo
+Ri de alivio, ri de susto
+Ri de ver que o firmamento
+Nao precisava das minhas maos
+Para se manter de pe
+Ri porque fui dispensavel
+E ser dispensavel sabe a cafe
+Sabe a manha de domingo
+Sabe a liberdade, sabe a fe
 
 [Bridge]
-Ha um alivio estranho em nao ser precisa
-Ha uma liberdade em ser dispensavel
-Nao inutil, nao pequena
-Apenas livre, apenas humana
+Nao sou pequena por nao ser precisa
+Sou leve, sou humana, sou real
+Nao sou fraca por ter largado
+Sou corajosa por saber cair
 
 [Outro]
 Larguei
-E ri
-Porque o mundo continuou
-E eu finalmente parei`,
+E o mundo deu uma volta
+E voltou
+E eu estava la
+A rir
+Com as maos abertas
+Finalmente abertas`,
 
   "espelho-controlo/7": `[Verse 1]
-Nao e uma tecnica, nao e um metodo
-E mais simples do que qualquer plano
-E ar a entrar, ar a sair
-E o unico controlo que nao me prende
-
-[Chorus]
-Respirar, so respirar
-Na inspiracao ha espaco
-Respirar, so respirar
-Na expiracao ha liberdade
-E entre as duas ha silencio
+O ar entra como um rio manso
+Enche-me o peito como um barco ao mar
+O ar sai e leva tudo
+As listas, os medos, o que esta por tratar
 
 [Verse 2]
-Respiro e o corpo alarga
-Respiro e a mente pousa
-Respiro e nao preciso de mais
-Do que este segundo inteiro
+Nao ha tecnica nem segredo
+Nao ha metodo nem guru
+Ha so este gesto antigo
+De inspirar o ceu e soltar o escuro
+
+[Chorus]
+Respira, respira
+O mundo pode esperar
+Respira, respira
+Entre a entrada e a saida do ar
+Mora um silencio tao bonito
+Que parece um lugar
+Onde nada me persegue
+Onde tudo pode pousar
 
 [Bridge]
-Na respiracao nao ha futuro
-Na respiracao nao ha lista
-Ha so o agora, o aqui
-O corpo vivo, a presenca
+Na inspiracao nao ha amanha
+Na expiracao nao ha ontem
+Ha so o agora, este instante
+Como uma perola entre os dentes
 
 [Outro]
-Inspira
-Expira
-Isso
-E tudo
-E suficiente`,
+Inspiro o ceu
+Expiro o peso
+E entre os dois
+Encontro-me
+Aqui
+Inteira
+Viva
+So a respirar`,
 
   // ─────────────────────────────────────────────
   // ESPELHO DO DESEJO (Veu 6 — desiring everything except what you need)
   // ─────────────────────────────────────────────
 
   "espelho-desejo/1": `[Verse 1]
-Mais um curso, mais um projecto
-Mais uma lista para o fim de semana
-Preencho os dias como quem tapa buracos
-Sem parar para ver o que esta por baixo
-
-[Chorus]
-Preencher, preencher, preencher
-O silencio com ruido bonito
-Preencher, preencher, preencher
-Porque se eu parar
-Ouco o que nao quero ouvir
+Mais um curso, mais um plano
+Mais um livro, mais um jantar
+Preencho os dias como quem pinta
+Um quadro para nao ter de olhar
 
 [Verse 2]
-A agenda cheia parece uma vida cheia
-Mas no fim do dia o vazio e o mesmo
-A produtividade como anestesia
-O fazer como forma de nao sentir
+A agenda brilha como vitrina
+Cada hora tem o seu destino
+Mas quando a noite chega e eu deito
+Ouco o eco do mesmo hino
+
+[Chorus]
+Barulho bonito, barulho bonito
+Para tapar o silencio que grita
+Para tapar o buraco no peito
+Que nenhuma lista, nenhuma receita
+Consegue encher, consegue curar
+Barulho bonito para nao ouvir
+O que mora la no fundo
+O que tem medo de existir
 
 [Bridge]
-E se o vazio nao for inimigo
-E se for o unico espaco honesto
-O lugar onde nada mente
-Onde o desejo verdadeiro mora
+E se eu ficasse quieta um minuto
+E se eu deixasse o vazio falar
+E se o vazio nao fosse o inimigo
+Mas o unico amigo a dizer a verdade
 
 [Outro]
-Parei
-E no silencio
-Ouvi`,
+Parei de correr
+Sentei-me no chao
+E o silencio
+Cantou-me uma cancao
+Tao bonita
+Que chorei`,
 
   "espelho-desejo/2": `[Verse 1]
-I bought the thing and felt the rush
-Three hours of bright and then the hush
-Scheduled another dinner date
-To fill the space I couldn't name
-
-[Chorus]
-What's missing has no price tag
-What's missing has no face
-What's missing doesn't fit inside
-A calendar or case
-What's missing is the question
-I keep running from this place
+I bought the dress, I felt the glow
+It lasted from the shop to home
+I booked the flight, I packed the bag
+And woke up still and still alone
 
 [Verse 2]
-I scrolled and scrolled until my eyes
-Forgot what they were looking for
-I planned a trip to somewhere new
-But the ache was there before
+I scrolled and scrolled through other lives
+I liked and shared and double-tapped
+I filled the cart, I checked the box
+And still the hungry thing came back
+
+[Chorus]
+What's missing has no price
+What's missing has no name
+It doesn't live in any store
+Or any holiday or frame
+It's sitting in the corner
+Of the room I never clean
+The quietest, hungriest, truest thing
+I've ever dared not see
+Oh, what's missing, what's missing
 
 [Bridge]
-What if it's not a thing but a way
-Of being still enough to hear
-The voice that whispers underneath
-The one I've buried under years
+What if I stopped the search
+And sat down in the ache
+What if the empty was the answer
+Not the problem, not the mistake
 
 [Outro]
 What's missing
-Is not out there
-It's the quiet I refused
-To enter`,
+Is right here
+In the silence I've been running from
+For years and years and years`,
 
   "espelho-desejo/3": `[Verse 1]
-Aprendei a querer menos
-Para nao incomodar quem ficava
-Aprendei a encolher o desejo
-Como quem encolhe a roupa no armario
-
-[Chorus]
-Mais pequena, sempre mais pequena
-Para caber no espaco que me deram
-Mais pequena, sempre mais pequena
-Ate o desejo ser tao fino
-Que ja ninguem o via
+Encolhi o sonho para caber na sala
+Encolhi a voz para caber no jantar
+Encolhi o corpo para nao incomodar
+E quase desapareci sem dar por nada
 
 [Verse 2]
-Nao peco muito, nao espero muito
+Nao peco muito, nao espero nada
 Nao sonho alto para nao cair
-Fiz-me tao pequena tao bonita
-Que quase desapareci
+Fiz-me tao pequena, tao educada
+Que ate a sombra se esqueceu de mim
+
+[Chorus]
+Mas ha qualquer coisa que nao encolhe
+Ha uma raiz que cresce no escuro
+Que empurra o chao, que parte a pedra
+Que diz eu existo e eu sou o futuro
+Mais pequena nao, mais quieta nao
+Mais invisivel nao, nunca mais
+O meu tamanho real e um segredo
+Que o mundo ainda nao viu, mas vai
 
 [Bridge]
-Mas ha uma parte que nao encolhe
-Que bate mesmo quando eu a ignoro
-Ha um desejo que nao pede licenca
-Que cresce no escuro como raiz
+A menina que encolheram
+Tem o tamanho de um oceano
+Tem a forca de uma mare
+Tem a furia de um vulcao
 
 [Outro]
-Mais pequena nao
-Nunca mais
-O meu tamanho real
-Ainda esta por descobrir`,
+Cresço
+Cresço sem pedir licenca
+Cresço como a erva daninha
+Que ninguem consegue arrancar
+Bonita, selvagem
+E minha`,
 
   "espelho-desejo/4": `[Verse 1]
-Uma hora sem telefone
-Sem lista, sem tarefa, sem papel
-Uma hora so com o tecto
-E o som do relogio na parede
-
-[Chorus]
-A hora vazia
-Onde nada acontece e tudo aparece
-A hora vazia
-O desconforto de estar so comigo
-Sem distraccao, sem fuga, sem abrigo
+Desliguei tudo e fiquei
+Com o tecto e com o chao
+Com o tic-tac do relogio
+E as minhas maos sem ocupacao
 
 [Verse 2]
-Os primeiros minutos sao agonia
-A mente pede actividade como um vicio
-Mas depois, devagar, o corpo pousa
-E no silencio nasce outra coisa
+Os primeiros minutos ardem
+Como alcool numa ferida
+A mente grita faz qualquer coisa
+Como se o vazio fosse uma despedida
+
+[Chorus]
+Mas depois, devagar
+A agua acalma e o fundo aparece
+E no fundo ha coisas lindas
+Que so o silencio conhece
+Uma vontade antiga de dançar
+Um cheiro de jasmim e de quintal
+Uma menina a correr descalca
+Com um riso de animal
 
 [Bridge]
 Na hora vazia o desejo fala
-Nao o desejo de coisas
-Mas o desejo de ser
-De sentir sem pressa
-De existir sem produzir
+Nao pede coisas, nao pede pressa
+Pede so que eu fique quieta
+E ouca o que a vida me confessa
 
 [Outro]
-Uma hora
+Uma hora vazia
 E dentro dela
-Uma vida inteira
-A pedir para ser vivida`,
+O universo inteiro
+A minha mao sobre o meu ventre
+E a certeza de que estou cheia
+De tudo o que importa`,
 
   "espelho-desejo/5": `[Verse 1]
-I filled my life with beautiful noise
-With plans and goals and golden toys
-I smiled and said I'm fine, I'm full
-While something ached beneath it all
-
-[Chorus]
-I'm done pretending I am full
-When every drawer is overflowing
-But the centre still is cold
-I'm done performing satisfaction
-When the truth is I am
-Beautifully, honestly empty
+I filled my house with pretty things
+My calendar with golden dates
+I wore the smile, I played the part
+And set the table, fixed the plates
 
 [Verse 2]
-Empty is not failure
-Empty is not lack
-It's the bowl before the water
-It's the silence before the track
+But every drawer was overflowing
+Every shelf was picture-true
+And in the middle of the plenty
+Stood a woman hungry through and through
+
+[Chorus]
+Let me be empty, let me be bare
+Let me be the bowl before the soup
+Let me be the garden before the seed
+Let me be the sky before the droop
+Of rain, of colour, of anything
+Let me stand in nothing for a while
+Let me learn to love the empty page
+Before I try to fill it with a smile
 
 [Bridge]
-Let me be empty long enough
-To hear what wants to fill me
-Not with noise, not with more
-But with the real thing, the still thing
+Empty isn't broken
+Empty isn't wrong
+Empty is the deepest breath
+Before the deepest song
 
 [Outro]
-Empty
-And finally
-Honest
-About it`,
+I'm empty now
+And honest, finally
+The cupboards are bare
+And I am free
+Beautifully, terrifyingly free`,
 
   "espelho-desejo/6": `[Verse 1]
-Debaixo dos desejos emprestados
-Debaixo do que vi nos outros
-Ha um desejo que e so meu
-Que nao precisa de nome nem de destino
-
-[Chorus]
-Desejo verdadeiro
-O que a minha vida esta a pedir
-Nao o que eu deveria querer
-Nao o que ficaria bem na moldura
-Mas o que faz o corpo inteiro vibrar
+Debaixo dos sonhos que me emprestaram
+Debaixo do quero que nunca foi meu
+Ha um desejo que vem de tao fundo
+Que tem o sabor do primeiro ceu
 
 [Verse 2]
-Nao e grande nem pequeno
-Nao e nobre nem vergonhoso
-E meu como o batimento do coracao
-Presente antes de qualquer pergunta
+Nao tem nome, nao tem forma
+Nao cabe numa moldura de parede
+E quente como sangue nas veias
+E teimoso como a seca que pede
+
+[Chorus]
+E meu, e meu, e meu
+Como a voz, como a pele, como o sal
+Nao precisa de licenca
+Nao precisa de sinal
+Pulsa como o coracao
+Que nunca ninguem mandou bater
+E meu, o unico desejo
+Que nao tenho de aprender
 
 [Bridge]
-O desejo verdadeiro nao grita
-Nao precisa de convencer ninguem
-Existe como o sangue existe
-Sem explicacao, sem justificacao
+Nao e o que eu devia querer
+Nao e o que ficava bem na foto
+E o que me faz tremer por dentro
+E o que me faz sentir que estou no topo
 
 [Outro]
 Sinto-o agora
-Aqui
-No centro
-E e meu`,
+Aqui no centro do meu corpo
+Quente, vivo, meu
+Como um fogo que ninguem acendeu
+Mas que arde, arde, arde`,
 
   "espelho-desejo/7": `[Verse 1]
-O vazio que eu temia
-Nao era ausencia, era espaco
-O nada que eu fugia
-Era o lugar mais cheio que conheci
-
-[Chorus]
-Espaco para o que vem
-Espaco para o que cresce
-Espaco nao e vazio
-E o chao antes da semente
-E o silencio antes da voz
+O vazio que eu fugia
+Era um campo de trigo ao sol
+O nada que eu temia
+Era o ceu antes do arco-iris
 
 [Verse 2]
-Olho para os cantos vazios da vida
-E ja nao sinto medo
-Sinto possibilidade
-Sinto ar, sinto campo, sinto abertura
+Olho para os espacos da minha vida
+E vejo janelas, nao buracos
+Vejo terra fertil, nao abandono
+Vejo o principio de cem retratos
+
+[Chorus]
+Espaco, espaco
+Como o ventre antes do filho
+Como o palco antes da dança
+Como a noite antes do brilho
+Nao tenho medo do vazio
+O vazio e onde tudo nasce
+Onde a semente encontra terra
+Onde o amor encontra a face
 
 [Bridge]
-Nao preciso de preencher cada segundo
-Nao preciso de justificar cada pausa
-O espaco e tao valioso como o cheio
-O silencio tao rico como o som
+A pausa entre duas notas
+E a musica mais bonita
+O branco entre as palavras
+E a poesia mais escrita
 
 [Outro]
 Espaco
-Finalmente
-Espaco
-E dentro dele
-Tudo o que preciso
-Ja esta`,
+Dentro de mim
+Como um jardim por plantar
+E eu tenho sementes nos bolsos
+E terra nas maos
+E todo o tempo do mundo
+Para deixar florescer`,
 
   // ─────────────────────────────────────────────
   // ESPELHO DA SEPARACAO (Veu 7 — distancing from yourself to belong)
   // ─────────────────────────────────────────────
 
   "espelho-separacao/1": `[Verse 1]
-Arredondei os cantos para caber na sala
-Apaguei a voz para caber na conversa
-Mudei de forma tantas vezes
-Que ja nao sei qual e a minha
-
-[Chorus]
-Encolher para caber
-Na moldura que os outros fizeram
-Encolher para caber
-E perder a forma, perder o contorno
-Perder o direito ao meu proprio tamanho
+Arredondei os cantos para caber na porta
+Limei as arestas para nao magoar
+Fiz-me de agua para caber no copo
+E quase me esqueci de ser mar
 
 [Verse 2]
-Disseram-me que amor e adaptacao
-Que pertencer e ser igual
-Mas cada vez que me moldei
-Ficou menos de mim no final
+Disseram-me que amor e ser moldavel
+Que pertencer e ter o mesmo feitio
+Mas cada vez que me parti para caber
+Ficou menos de mim no armario
+
+[Chorus]
+Eu era oceano e fiz-me poca
+Eu era montanha e fiz-me areia
+Eu era trovao e fiz-me eco
+Para caber na vida alheia
+Mas ha uma mare que nao obedece
+Ha uma onda que vem de dentro
+Que diz o meu tamanho e imenso
+E eu nao me encolho mais, nao, nao me encolho
 
 [Bridge]
-Ha uma diferenca entre flexibilidade e desaparecimento
-Entre amar e apagar-se
-Entre dar espaco ao outro
-E nao ter espaco nenhum
+Ha uma diferenca entre a agua que se adapta
+E a agua que desaparece
+Uma abraca a forma do rio
+Outra seca e ninguem aquece
 
 [Outro]
-Desencolho
-Devagar
-Sem pedir licenca
-Ao tamanho que sempre foi meu`,
+Cresço de volta
+Como a mare que sobe sem aviso
+Devagar, sem pedir licenca
+Ao tamanho que sempre foi preciso`,
 
   "espelho-separacao/2": `[Verse 1]
-We share a bed, we share a roof
-We share the morning and the night
-But somewhere in the space between
-We lost each other out of sight
+We share the bread, we share the bed
+We share the silence and the rain
+You know the way I like my tea
+I know the shape of all your pain
+
+[Verse 2]
+But somewhere in the passing years
+The passing salt, the passing time
+We learned each other's surfaces
+And left the deeper rooms behind
 
 [Chorus]
 Together but alone
-Two people in the same room
-Looking at different walls
-Together but alone
-The loneliest address
+Two satellites in the same dark sky
+Orbiting the same cold sun
+Too close to leave, too far to cry
+The loneliest address in the world
 Is where the love still lives
-But no one's home at all
-
-[Verse 2]
-I know your coffee order
-You know the way I sleep
-We built a life of knowing
-But forgot to go in deep
+But no one's brave enough to knock
+On the door the other never gives
 
 [Bridge]
-What if being alone together
-Is the wake-up call we need
-To stop performing closeness
-And start being honestly
-Separate and still
-Choosing to be near
+What if we stopped performing close
+And stood apart enough to see
+That choosing you from here, right here
+Is braver than just proximity
 
 [Outro]
-Together, truly
-Or alone, honestly
-But not this
-Not this quiet war
-Of almost`,
+Together truly
+Or alone with grace
+But not this gentle war
+This almost-touching empty space`,
 
   "espelho-separacao/3": `[Verse 1]
-Ha uma pergunta que evito ha anos
-Que empurro para debaixo da rotina
-Que tapo com trabalho e com cuidado
-Que afogo no barulho dos dias
+Ha uma pergunta guardada ha anos
+No fundo da gaveta dos lencois
+Debaixo da rotina e dos enganos
+Debaixo dos sorrisos e dos nois
+
+[Verse 2]
+Nao e traicao, nao e abandono
+Nao quer destruir nenhum castelo
+Quer so saber se debaixo do trono
+Ha alguem vivo debaixo do veu
 
 [Chorus]
 Se eu fosse so eu, quem seria
-Sem o marido, sem os filhos, sem o nome
-Se eu fosse so eu, quem seria
-A pergunta que ninguem faz
-Porque a resposta pode ser silencio
-
-[Verse 2]
-Nao e abandono, nao e rejeicao
-E apenas a pergunta mais honesta
-A que nao quer destruir nada
-Mas precisa de saber o que existe
+Sem o sobrenome e sem o anel
+Se eu fosse so eu, o que eu faria
+Com este corpo, com este ceu
+Se nao houvesse ninguem a espera
+Se o jantar nao fosse obrigacao
+Quem sou eu quando sou so eu
+Qual e a minha propria cancao
 
 [Bridge]
 Talvez a resposta nao seja um nome
-Nem uma profissao
-Talvez seja um sabor, uma direcao
-Uma forma de respirar que e so minha
+Mas um sabor, um cheiro, uma textura
+A forma como respiro quando ninguem olha
+A forma como danço no escuro
 
 [Outro]
 Se eu fosse so eu
-Comecava por aqui
-Por este segundo
-Por esta respiracao
-Por esta coragem de perguntar`,
+Comecava aqui
+Por este suspiro
+Por esta pergunta
+Que finalmente saiu`,
 
   "espelho-separacao/4": `[Verse 1]
-Nao e uma ruptura, nao e um adeus
-E um espaco que nasce entre dois corpos
-Uma distancia que nao separa
-Mas que deixa cada um ver o outro inteiro
-
-[Chorus]
-Separar nao e destruir
-E criar espaco para existir
-Separar nao e partir
-E plantar dois pes firmes no chao
-E dizer eu estou aqui, e tu ali
-E entre nos ha ar para respirar
+Nao e um muro, e uma varanda
+De onde eu te vejo inteiro e tu me ves
+Nao e uma fuga, e uma danca
+Com espaco entre os dois pes
 
 [Verse 2]
-Passei a vida a fundir-me com os outros
-A desaparecer dentro de nos
-Agora aprendo a dificil arte
-De ser eu dentro da relacao
+Passei a vida a derreter-me
+No molde de quem eu amava
+Perdi o contorno, perdi a margem
+Perdi a praia onde a onda acabava
+
+[Chorus]
+Mas separar e um acto de amor
+Como a terra que solta a raiz
+Para a arvore crescer mais alta
+Para o fruto ser mais feliz
+Eu aqui, tu ali
+E entre nos o ar que faltava
+Eu inteira, tu inteiro
+E o amor finalmente basta
 
 [Bridge]
-O amor nao precisa de fusao
-Precisa de dois inteiros
-Que escolhem estar juntos
-Sem se perderem um no outro
+O amor nao e fusao
+E danca, e espaco, e dois
+E escolher ficar ao lado
+Sem ser um so depois
 
 [Outro]
-Separar
-Para finalmente
-Encontrar`,
+Separar nao e o fim
+E o comeco de nos ver
+Como duas luzes juntas
+Que brilham mais por ser`,
 
   "espelho-separacao/5": `[Verse 1]
-I let go and watched what fell
-The roles that never fit me well
-The pleasing and the holding tight
-The dimming of my own true light
-
-[Chorus]
-What remains is not the wreckage
-What remains is not the loss
-What remains when all the extra leaves
-Is everything that matters most
-Only what no longer served
-Had the grace to go
+I opened up my hands and watched
+The autumn leaves come tumbling down
+The roles I wore like winter coats
+The smiles I stitched into a gown
 
 [Verse 2]
-The friendships built on fear stayed down
-The habits made of hiding too
-But what was real, what was mine
-Rose back up and said I'm you
+The friendships built on fear fell first
+The habits made of holding on
+But what was real stayed rooted deep
+Like roses after the storm has gone
+
+[Chorus]
+What remains when everything falls
+Is not the wreckage, not the loss
+It's the diamond underneath the dust
+It's the bridge beneath the moss
+What remains is strong and soft
+Like hands that learned to let things be
+What remains when all the noise has passed
+Is only, only, only me
 
 [Bridge]
-I thought that letting go meant less
-But look at all this space
-Look at what survived the fire
-Look at what remains
+I thought that less would feel like dying
+I thought the fire would burn it all
+But look at what survived the flames
+The wildest flowers, standing tall
 
 [Outro]
 What remains
-Is strong and soft
-And finally
-And only
-Mine`,
+Is gold and gentle
+What remains
+Is brave and small
+What remains
+Is mine forever
+What remains
+Is all`,
 
   "espelho-separacao/6": `[Verse 1]
-Ha um caminho que conheco de cor
-Mas nao e uma estrada, e um regresso
-Um voltar ao centro, ao comeco
-Ao lugar onde eu ja estava antes de tudo
-
-[Chorus]
-Regresso a mim mesma
-Como quem regressa a casa depois de anos
-Regresso a mim mesma
-A porta esta aberta, a luz esta acesa
-Alguem me esperou todo este tempo
+Ha um caminho entre as costelas
+Que da para um sitio que eu conheco
+Um lugar com cheiro a terra molhada
+E uma porta que nunca fecho
 
 [Verse 2]
-Nao e a mesma que saiu
-Voltei com marcas, com historias, com rugas
+Nao sou a mesma que saiu ha anos
+Trago rugas novas e cicatrizes
 Mas o chao reconhece os meus pes
-E as paredes lembram-se do meu nome
+E as paredes guardam os meus risos
+
+[Chorus]
+Regresso a mim como quem regressa a casa
+Depois de uma viagem pelo mar
+A luz esta acesa na cozinha
+Alguem deixou o chá a aquecer no luar
+E esse alguem sou eu, sempre fui eu
+A espera de mim na porta aberta
+Com os bracos quentes e a voz que diz
+Bem-vinda, estavas perta, tao perta
 
 [Bridge]
 O regresso nao e voltar atras
-E chegar finalmente ao lugar
-Onde sempre quis estar
-Que e aqui, comigo, em paz
+E chegar ao unico lugar
+Que ninguem me pode tirar
+O meu corpo, o meu chao, o meu compas
 
 [Outro]
 Estou em casa
-Nao num lugar
-Num corpo
-Neste corpo
-Finalmente meu`,
+Nao numa morada
+Num corpo, neste corpo
+Finalmente amada
+Por quem mais importa
+Por mim`,
 
   "espelho-separacao/7": `[Verse 1]
-Sete camadas de silencio
-Sete formas de nao ver
-Sete veus que cobriram a luz
-Que sempre esteve dentro de mim
-
-[Chorus]
-Sete veus, sete regressos
-Cada um mais fundo, cada um mais perto
-Sete veus, sete espelhos
-E no ultimo nao ha reflexo
-Ha so presenca
+Sete vezes a luz tentou entrar
+Sete vezes eu fechei a cortina
+Sete camadas de tecido fino
+Entre eu e a menina
 
 [Verse 2]
-O primeiro veu era ilusao
-O segundo era medo vestido de cuidado
-O terceiro culpa, o quarto mascara
-O quinto controlo, o sexto desejo desviado
+O primeiro era a ilusao dourada
+O segundo o medo vestido de seda
+O terceiro a culpa, o quarto a mascara
+O quinto as maos fechadas, o sexto a fome cega
+
+[Chorus]
+E o setimo cai agora
+Como a neve cai no chao
+Sem barulho, sem violencia
+So a graca da estacao
+E debaixo de sete veus
+Nao ha monstro, nao ha escuro
+Ha uma mulher de olhos abertos
+Com as maos no proprio futuro
+Sete veus, sete veus
+Cairam todos e eu danço
+Na luz que sempre esteve aqui
+Debaixo de tanto, tanto, tanto
 
 [Bridge]
-O setimo veu e este
-O que separa de ti mesma
-E quando cai, nao ha mais camadas
-Ha so o corpo, o ar, o agora
+Cada veu que cai e um rio
+Que corre para o mesmo mar
+Cada veu que cai e um beijo
+Que eu me dou sem hesitar
 
 [Outro]
 Sete veus cairam
 E eu continuo aqui
-Nao mais leve
-Nao mais forte
-Mais real
-Mais inteira
+Mais real, mais inteira
 Mais eu
-Finalmente, eu`,
+Finalmente eu
+Como sempre devia ter sido
+Como sempre fui`,
 };
