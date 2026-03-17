@@ -20,6 +20,7 @@ export type AlbumTrack = {
   title: string;
   description: string;
   lang: "PT" | "EN";
+  energy: TrackEnergy;
   prompt: string;
   lyrics: string;
   durationSeconds: number;
@@ -27,7 +28,8 @@ export type AlbumTrack = {
 };
 
 // Internal type for track definitions (lyrics applied at export via applyLyrics)
-type TrackDef = Omit<AlbumTrack, "lyrics"> & { lyrics?: string };
+// energy defaults to "whisper" if omitted — retrocompativel com todas as faixas existentes
+type TrackDef = Omit<AlbumTrack, "lyrics" | "energy"> & { lyrics?: string; energy?: TrackEnergy };
 type AlbumDef = Omit<Album, "tracks"> & { tracks: TrackDef[] };
 
 // Lyrics are stored in separate files to keep this file manageable
@@ -75,21 +77,38 @@ const VEU_COLORS: Record<number, string> = {
 // Helpers para prompts Suno AI
 // ─────────────────────────────────────────────
 
-const BASE_STYLE = "Contemporary organic-electronic, AwakeSoul. Warm female vocals with poetic lyrics. Soft synth pads, piano, subtle percussion, strings. Intimate, contemplative, transformative. No autotune. Clean vocal production.";
+// Energia da faixa — define o registo musical
+// whisper: intimo, contemplativo (o que ja existia)
+// steady: medio, grounded, walking pace
+// pulse: energetico, ritmico, para correr/carro
+// anthem: declarativo, forte, hino de afirmacao
+// raw: cru, emocional, sem filtro
+export type TrackEnergy = "whisper" | "steady" | "pulse" | "anthem" | "raw";
 
-function espelhoPrompt(theme: string, emotion: string, production: string, lang: "PT" | "EN"): string {
+const ENERGY_STYLES: Record<TrackEnergy, string> = {
+  whisper: "Contemporary organic-electronic, AwakeSoul. Warm female vocals with poetic lyrics. Soft synth pads, piano, subtle percussion, strings. Intimate, contemplative, transformative. No autotune. Clean vocal production.",
+  steady: "Contemporary organic-electronic. Warm female vocals with poetic lyrics. Mid-tempo groove, grounded rhythm, acoustic guitar, warm bass, light percussion, piano accents. Walking pace, present, embodied. No autotune. Clean vocal production.",
+  pulse: "Contemporary pop-electronic, empowering. Strong female vocals with conviction. Driving beat, rhythmic synths, bass-forward, claps, energy builds. Upbeat, momentum, forward motion. Great for running or driving. No autotune. Clean vocal production.",
+  anthem: "Contemporary empowerment anthem. Powerful female vocals, declarative, full-chested. Big chorus, layered vocals, driving drums, rising strings, synth stabs. Bold, celebratory, unstoppable. Stadium energy meets intimacy. No autotune. Clean vocal production.",
+  raw: "Stripped-back emotional. Raw female vocals, close-mic, imperfect beauty. Minimal production — solo piano or guitar, breath sounds, silence as instrument. Vulnerable, unpolished, real. No autotune. Clean vocal production.",
+};
+
+// Retrocompatibilidade: BASE_STYLE = whisper (o default anterior)
+const BASE_STYLE = ENERGY_STYLES.whisper;
+
+function espelhoPrompt(theme: string, emotion: string, production: string, lang: "PT" | "EN", energy: TrackEnergy = "whisper"): string {
   const langNote = lang === "PT" ? "Lyrics in Portuguese." : "Lyrics in English.";
-  return `${BASE_STYLE} ${langNote} ${emotion}. ${production}. Theme: ${theme}.`;
+  return `${ENERGY_STYLES[energy]} ${langNote} ${emotion}. ${production}. Theme: ${theme}.`;
 }
 
-function noPrompt(theme: string, emotion: string, production: string, lang: "PT" | "EN"): string {
+function noPrompt(theme: string, emotion: string, production: string, lang: "PT" | "EN", energy: TrackEnergy = "whisper"): string {
   const langNote = lang === "PT" ? "Lyrics in Portuguese." : "Lyrics in English.";
-  return `${BASE_STYLE} ${langNote} Duet energy, two vocal textures in dialogue. ${emotion}. ${production}. Theme: ${theme}.`;
+  return `${ENERGY_STYLES[energy]} ${langNote} Duet energy, two vocal textures in dialogue. ${emotion}. ${production}. Theme: ${theme}.`;
 }
 
-function cursoPrompt(theme: string, emotion: string, production: string, lang: "PT" | "EN"): string {
+function cursoPrompt(theme: string, emotion: string, production: string, lang: "PT" | "EN", energy: TrackEnergy = "whisper"): string {
   const langNote = lang === "PT" ? "Lyrics in Portuguese." : "Lyrics in English.";
-  return `${BASE_STYLE} ${langNote} Evolving, grounded, building. ${emotion}. ${production}. Theme: ${theme}.`;
+  return `${ENERGY_STYLES[energy]} ${langNote} Evolving, grounded, building. ${emotion}. ${production}. Theme: ${theme}.`;
 }
 
 // ─────────────────────────────────────────────
@@ -104,13 +123,13 @@ const ESPELHO_ILUSAO: AlbumDef = {
   veu: 1,
   color: VEU_COLORS[1],
   tracks: [
-    { number: 1, title: "Despertar", description: "O momento antes da pergunta", lang: "PT", prompt: espelhoPrompt("awakening, first question", "dreamy, ethereal, slowly waking", "soft piano, reverb pads, whispering layers, slow build", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 2, title: "The Coat I Never Chose", description: "A vida construida por outros", lang: "EN", prompt: espelhoPrompt("inherited life, wearing someone else's choices", "melancholic, gentle tension, realization", "piano arpeggios, warm synth bass, subtle strings, breath textures", "EN"), durationSeconds: 240, audioUrl: null },
-    { number: 3, title: "Automatismos", description: "Os gestos que se repetem sem pensar", lang: "PT", prompt: espelhoPrompt("autopilot, repetition, mechanical living", "hypnotic, circular, slowly awakening", "looping piano motif, electronic pulse, vocal layers building awareness", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 4, title: "A Pergunta do Cafe", description: "Quando foi que eu escolhi isto?", lang: "PT", prompt: espelhoPrompt("small question over morning coffee that changes everything", "curious, tender, dawning realization", "acoustic guitar, soft pad, intimate vocal close-mic, minimal percussion", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 5, title: "The Body Knows", description: "O corpo ja sabia antes da mente", lang: "EN", prompt: espelhoPrompt("body wisdom, somatic truth, the body knew first", "grounding, warm, pulsing with life", "heartbeat rhythm, warm bass, organic percussion, breath sounds woven in", "EN"), durationSeconds: 240, audioUrl: null },
-    { number: 6, title: "Honestidade Quieta", description: "Ver sem dramatizar", lang: "PT", prompt: espelhoPrompt("quiet honesty, seeing without drama, soft truth", "peaceful, still, accepting", "solo piano, distant choir pad, water-like textures, spacious", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 7, title: "O Veu Cai", description: "O primeiro reconhecimento", lang: "PT", prompt: espelhoPrompt("the veil falls, first sight of truth, liberation", "liberating, tender, spacious, cathartic", "full arrangement, rising strings, vocal crescendo, open resolution, emotional release", "PT"), durationSeconds: 300, audioUrl: null },
+    { number: 1, title: "Despertar", description: "O momento antes da pergunta", lang: "PT", energy: "whisper", prompt: espelhoPrompt("awakening, first question", "dreamy, ethereal, slowly waking", "soft piano, reverb pads, whispering layers, slow build", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "The Coat I Never Chose", description: "A vida construida por outros", lang: "EN", energy: "steady", prompt: espelhoPrompt("inherited life, wearing someone else's choices", "melancholic, gentle tension, realization", "piano arpeggios, warm synth bass, subtle strings, walking rhythm", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Automatismos", description: "Os gestos que se repetem sem pensar", lang: "PT", energy: "pulse", prompt: espelhoPrompt("autopilot, repetition, mechanical living", "hypnotic, circular, building urgency", "looping piano motif, electronic pulse, driving beat, vocal layers building", "PT", "pulse"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "A Pergunta do Cafe", description: "Quando foi que eu escolhi isto?", lang: "PT", energy: "raw", prompt: espelhoPrompt("small question over morning coffee that changes everything", "curious, tender, dawning realization", "acoustic guitar, intimate vocal close-mic, minimal, breath sounds", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "The Body Knows", description: "O corpo ja sabia antes da mente", lang: "EN", energy: "steady", prompt: espelhoPrompt("body wisdom, somatic truth, the body knew first", "grounding, warm, pulsing with life", "heartbeat rhythm, warm bass, organic percussion, breath sounds woven in", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "Honestidade Quieta", description: "Ver sem dramatizar", lang: "PT", energy: "whisper", prompt: espelhoPrompt("quiet honesty, seeing without drama, soft truth", "peaceful, still, accepting", "solo piano, distant choir pad, water-like textures, spacious", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "O Veu Cai", description: "O primeiro reconhecimento", lang: "PT", energy: "anthem", prompt: espelhoPrompt("the veil falls, first sight of truth, liberation", "liberating, powerful, cathartic, declarative", "full arrangement, rising strings, driving drums, vocal crescendo, triumphant release", "PT", "anthem"), durationSeconds: 300, audioUrl: null },
   ],
 };
 
@@ -122,13 +141,13 @@ const ESPELHO_MEDO: AlbumDef = {
   veu: 2,
   color: VEU_COLORS[2],
   tracks: [
-    { number: 1, title: "Cuidado", description: "A palavra que protege e aprisiona", lang: "PT", prompt: espelhoPrompt("caution, the word that protects and imprisons", "tense, careful, restrained, whispered", "muted piano, low synth drone, sparse percussion, silence as instrument", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 2, title: "Measured Words", description: "Medir cada silaba antes de falar", lang: "EN", prompt: espelhoPrompt("measuring every word, self-censorship, walking on glass", "contained, precise, anxious undertone", "plucked strings, soft electronic pulse, gaps of silence, tension building", "EN"), durationSeconds: 240, audioUrl: null },
-    { number: 3, title: "Paralisia Bonita", description: "A indecisao que parece prudencia", lang: "PT", prompt: espelhoPrompt("beautiful paralysis, indecision disguised as wisdom", "frozen, elegant stillness, aching beauty", "sustained synth drone, single piano notes dropping, wind textures", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 4, title: "O Estomago Sabe", description: "Quando o corpo fala primeiro", lang: "PT", prompt: espelhoPrompt("gut feeling, body alarm, visceral knowledge", "visceral, uneasy then softening into acceptance", "low bass pulse, organic percussion building, rising warmth, body-felt", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 5, title: "Messenger", description: "O medo como guia, nao inimigo", lang: "EN", prompt: espelhoPrompt("fear as messenger not enemy, reframing fear", "compassionate, understanding, spacious, wise", "warm melody over pad, gentle choir texture, earth-like grounding", "EN"), durationSeconds: 240, audioUrl: null },
-    { number: 6, title: "Ouco-te Mas Vou", description: "Coragem quotidiana", lang: "PT", prompt: espelhoPrompt("I hear you but I'm going, daily courage, moving forward", "brave, warm, determined, empowering", "full rhythm emerging, rising vocal melody, strength in production", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 7, title: "Devagar", description: "Iluminar sem pressa", lang: "PT", prompt: espelhoPrompt("slowly, illuminating without rush, gentle seeing", "patient, luminous, at peace, resolution", "open harmonics, warm pad fading into light, peaceful vocal", "PT"), durationSeconds: 300, audioUrl: null },
+    { number: 1, title: "Cuidado", description: "A palavra que protege e aprisiona", lang: "PT", energy: "whisper", prompt: espelhoPrompt("caution, the word that protects and imprisons", "tense, careful, restrained, whispered", "muted piano, low synth drone, sparse percussion, silence as instrument", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "Measured Words", description: "Medir cada silaba antes de falar", lang: "EN", energy: "steady", prompt: espelhoPrompt("measuring every word, self-censorship, walking on glass", "contained, precise, anxious undertone", "plucked strings, electronic pulse, walking tempo, tension building", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Paralisia Bonita", description: "A indecisao que parece prudencia", lang: "PT", energy: "raw", prompt: espelhoPrompt("beautiful paralysis, indecision disguised as wisdom", "frozen, aching beauty, painfully honest", "solo piano, single notes dropping into silence, wind textures", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "O Estomago Sabe", description: "Quando o corpo fala primeiro", lang: "PT", energy: "pulse", prompt: espelhoPrompt("gut feeling, body alarm, visceral knowledge", "visceral, urgent, body-driven", "low bass pulse, driving organic percussion, rising intensity, body-felt", "PT", "pulse"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Messenger", description: "O medo como guia, nao inimigo", lang: "EN", energy: "steady", prompt: espelhoPrompt("fear as messenger not enemy, reframing fear", "compassionate, understanding, spacious, wise", "warm melody over pad, gentle choir texture, earth-like grounding", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "Ouco-te Mas Vou", description: "Coragem quotidiana", lang: "PT", energy: "anthem", prompt: espelhoPrompt("I hear you but I'm going, daily courage, moving forward", "brave, determined, empowering, declarative", "full rhythm, driving drums, rising vocal melody, powerful chorus, strength", "PT", "anthem"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "Devagar", description: "Iluminar sem pressa", lang: "PT", energy: "whisper", prompt: espelhoPrompt("slowly, illuminating without rush, gentle seeing", "patient, luminous, at peace, resolution", "open harmonics, warm pad fading into light, peaceful vocal", "PT", "whisper"), durationSeconds: 300, audioUrl: null },
   ],
 };
 
@@ -140,13 +159,13 @@ const ESPELHO_CULPA: AlbumDef = {
   veu: 3,
   color: VEU_COLORS[3],
   tracks: [
-    { number: 1, title: "A Voz Baixa", description: "Devias estar a fazer outra coisa", lang: "PT", prompt: espelhoPrompt("the quiet voice saying you should be doing something else", "heavy, subdued, whispering inner critic", "low piano, muted synth, breath-like textures, minimal", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 2, title: "Disguised Virtue", description: "Quando dar e obrigacao invisivel", lang: "EN", prompt: espelhoPrompt("giving as invisible obligation, false virtue, duty as love", "burdened, noble sadness, heaviness disguised as goodness", "slow strings, weighted bass, sighing pad textures", "EN"), durationSeconds: 240, audioUrl: null },
-    { number: 3, title: "Alivio ou Alegria", description: "A diferenca entre querer e dever", lang: "PT", prompt: espelhoPrompt("relief vs joy, duty vs desire, learning the difference", "contrasting, questioning, tender discovery", "two melodic lines interweaving, piano and vocal, dialogue between duty and want", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 4, title: "Heranca", description: "A culpa que nao e tua", lang: "PT", prompt: espelhoPrompt("inherited guilt, ancestral weight, not yours to carry", "ancient, heavy then slowly releasing", "deep pad, ancestral-feeling vocal, gradual lightening of texture", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 5, title: "Deserve", description: "Merecer nao se conquista", lang: "EN", prompt: espelhoPrompt("deserving is not earned, inherent worth, you already deserve", "warm, affirming, gentle, like an embrace", "warm strings, soft heartbeat rhythm, comforting vocal", "EN"), durationSeconds: 240, audioUrl: null },
-    { number: 6, title: "Pousar", description: "Posso pousar isto", lang: "PT", prompt: espelhoPrompt("laying it down, I can put this down, permission to release", "liberating, exhaling, lighter with each note", "descending melody, opening space, bird-like synth textures", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 7, title: "Ternura", description: "Desmontar sem te castigar", lang: "PT", prompt: espelhoPrompt("tenderness, dismantling without punishment, self-compassion", "gentle, loving, free, final resolution", "full warm arrangement, vocal harmonics, resolution into peace", "PT"), durationSeconds: 300, audioUrl: null },
+    { number: 1, title: "A Voz Baixa", description: "Devias estar a fazer outra coisa", lang: "PT", energy: "raw", prompt: espelhoPrompt("the quiet voice saying you should be doing something else", "heavy, subdued, painfully honest", "solo voice, low piano, muted synth, breath-like textures, minimal", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "Disguised Virtue", description: "Quando dar e obrigacao invisivel", lang: "EN", energy: "steady", prompt: espelhoPrompt("giving as invisible obligation, false virtue, duty as love", "burdened, building awareness", "slow strings, walking rhythm, weighted bass, sighing pad textures", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Alivio ou Alegria", description: "A diferenca entre querer e dever", lang: "PT", energy: "pulse", prompt: espelhoPrompt("relief vs joy, duty vs desire, learning the difference", "contrasting, energetic questioning", "two melodic lines competing, driving piano, rhythmic vocal, building momentum", "PT", "pulse"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "Heranca", description: "A culpa que nao e tua", lang: "PT", energy: "whisper", prompt: espelhoPrompt("inherited guilt, ancestral weight, not yours to carry", "ancient, heavy then slowly releasing", "deep pad, ancestral-feeling vocal, gradual lightening of texture", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Deserve", description: "Merecer nao se conquista", lang: "EN", energy: "anthem", prompt: espelhoPrompt("deserving is not earned, inherent worth, you already deserve", "warm, affirming, powerful, like a declaration", "warm strings, building drums, layered vocals, empowering chorus", "EN", "anthem"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "Pousar", description: "Posso pousar isto", lang: "PT", energy: "steady", prompt: espelhoPrompt("laying it down, I can put this down, permission to release", "liberating, exhaling, lighter with each note", "descending melody, opening space, walking rhythm, bird-like synth textures", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "Ternura", description: "Desmontar sem te castigar", lang: "PT", energy: "whisper", prompt: espelhoPrompt("tenderness, dismantling without punishment, self-compassion", "gentle, loving, free, final resolution", "full warm arrangement, vocal harmonics, resolution into peace", "PT", "whisper"), durationSeconds: 300, audioUrl: null },
   ],
 };
 
@@ -158,13 +177,13 @@ const ESPELHO_IDENTIDADE: AlbumDef = {
   veu: 4,
   color: VEU_COLORS[4],
   tracks: [
-    { number: 1, title: "Mascaras", description: "Os papeis que vestem a pele", lang: "PT", prompt: espelhoPrompt("masks, roles, personas, wearing different skins", "layered, complex, shifting textures", "morphing synth textures, multiple vocal layers, shape-shifting production", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 2, title: "Who Are You", description: "Quando ninguem te esta a ver", lang: "EN", prompt: espelhoPrompt("who are you when nobody is watching, unmasked and raw", "vulnerable, bare, honest, intimate", "solo vocal with minimal piano, silence, breath, raw", "EN"), durationSeconds: 240, audioUrl: null },
-    { number: 3, title: "Armadura", description: "A certeza que parece forca", lang: "PT", prompt: espelhoPrompt("armor, certainty that looks like strength, false protection", "rigid then slowly softening, melting", "crystalline synth slowly melting into warm pad, tension to release", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 4, title: "Espelho Interior", description: "Olhar sem julgar", lang: "PT", prompt: espelhoPrompt("inner mirror, looking without judging, self-seeing", "reflective, still water, contemplative", "water-like textures, reflective piano, gentle harmonics", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 5, title: "Nameless", description: "O que sobra quando tiras tudo", lang: "EN", prompt: espelhoPrompt("what remains when you strip everything away, nameless essence", "minimal, essential, spacious, pure being", "single sustained note, silence, breath, then gentle emergence", "EN"), durationSeconds: 240, audioUrl: null },
-    { number: 6, title: "Escolher a Mascara", description: "Usar sem colar a pele", lang: "PT", prompt: espelhoPrompt("choosing the mask consciously, wearing without fusing", "playful, light, aware, free", "rhythmic piano, dancing melody, lightness and joy", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 7, title: "Eu Sem Justificacao", description: "Existir sem provar nada", lang: "PT", prompt: espelhoPrompt("existing without justification, being without proving", "peaceful, whole, complete, sovereign", "open harmonics, grounding bass, vocal peace, full resolution", "PT"), durationSeconds: 300, audioUrl: null },
+    { number: 1, title: "Mascaras", description: "Os papeis que vestem a pele", lang: "PT", energy: "steady", prompt: espelhoPrompt("masks, roles, personas, wearing different skins", "layered, complex, shifting textures", "morphing synth textures, multiple vocal layers, walking rhythm", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "Who Are You", description: "Quando ninguem te esta a ver", lang: "EN", energy: "raw", prompt: espelhoPrompt("who are you when nobody is watching, unmasked and raw", "vulnerable, bare, honest, intimate", "solo vocal with minimal piano, silence, breath, raw", "EN", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Armadura", description: "A certeza que parece forca", lang: "PT", energy: "pulse", prompt: espelhoPrompt("armor, certainty that looks like strength, false protection", "rigid, building energy, breaking through", "crystalline synth, driving percussion, tension building to release", "PT", "pulse"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "Espelho Interior", description: "Olhar sem julgar", lang: "PT", energy: "whisper", prompt: espelhoPrompt("inner mirror, looking without judging, self-seeing", "reflective, still water, contemplative", "water-like textures, reflective piano, gentle harmonics", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Nameless", description: "O que sobra quando tiras tudo", lang: "EN", energy: "raw", prompt: espelhoPrompt("what remains when you strip everything away, nameless essence", "minimal, essential, spacious, pure being", "single sustained note, silence, breath, then gentle emergence", "EN", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "Escolher a Mascara", description: "Usar sem colar a pele", lang: "PT", energy: "pulse", prompt: espelhoPrompt("choosing the mask consciously, wearing without fusing", "playful, energetic, free, joyful", "rhythmic piano, dancing melody, driving beat, lightness and joy", "PT", "pulse"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "Eu Sem Justificacao", description: "Existir sem provar nada", lang: "PT", energy: "anthem", prompt: espelhoPrompt("existing without justification, being without proving", "sovereign, powerful, complete, declarative", "full arrangement, layered vocals, driving drums, grounding bass, triumphant", "PT", "anthem"), durationSeconds: 300, audioUrl: null },
   ],
 };
 
@@ -176,13 +195,13 @@ const ESPELHO_CONTROLO: AlbumDef = {
   veu: 5,
   color: VEU_COLORS[5],
   tracks: [
-    { number: 1, title: "Segurar", description: "A necessidade de ter tudo no lugar", lang: "PT", prompt: espelhoPrompt("holding tight, needing everything in place, control", "tense, ordered, gripping, mechanical precision", "tight electronic rhythm, precise synth, contained energy", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 2, title: "Reliable", description: "A pessoa a quem todos recorrem", lang: "EN", prompt: espelhoPrompt("the reliable one, always available, the cost of being needed", "noble but exhausted, carrying the world", "steady rhythm carrying a heavy melody, weighted strings", "EN"), durationSeconds: 240, audioUrl: null },
-    { number: 3, title: "Tres da Manha", description: "A insonia de repassar tudo", lang: "PT", prompt: espelhoPrompt("3am insomnia, replaying everything, mental loops", "restless, circular, dark, nocturnal", "night textures, repetitive piano motif, uneasy electronic pulse", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 4, title: "Ilusao de Seguranca", description: "Se eu controlo, nada de mau acontece", lang: "PT", prompt: espelhoPrompt("illusion of safety, if I control nothing bad happens", "fragile certainty, glass-like, about to crack", "crystalline sounds, building tension, moment before breaking", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 5, title: "Trust", description: "Aceitar que nao controlamos o resultado", lang: "EN", prompt: espelhoPrompt("trust, accepting we don't control the outcome, surrender", "opening, releasing, flowing like water", "flowing piano melody, loosening rhythm, water textures", "EN"), durationSeconds: 240, audioUrl: null },
-    { number: 6, title: "Largar", description: "O mundo continua quando nao fazes", lang: "PT", prompt: espelhoPrompt("letting go, the world continues when you stop doing", "relief, surprise, lightness, wonder", "open spacious mix, bright textures, free vocal melody", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 7, title: "Respirar", description: "Na respiracao, ha liberdade", lang: "PT", prompt: espelhoPrompt("breathing, in breath there is freedom", "free, expansive, peaceful, infinite", "breath-synced rhythm, open harmonics, vast warm soundscape", "PT"), durationSeconds: 300, audioUrl: null },
+    { number: 1, title: "Segurar", description: "A necessidade de ter tudo no lugar", lang: "PT", energy: "pulse", prompt: espelhoPrompt("holding tight, needing everything in place, control", "tense, ordered, gripping, driving urgency", "tight electronic rhythm, precise synth, driving beat, contained energy", "PT", "pulse"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "Reliable", description: "A pessoa a quem todos recorrem", lang: "EN", energy: "steady", prompt: espelhoPrompt("the reliable one, always available, the cost of being needed", "noble but exhausted, carrying the world", "steady rhythm carrying a heavy melody, weighted strings", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Tres da Manha", description: "A insonia de repassar tudo", lang: "PT", energy: "raw", prompt: espelhoPrompt("3am insomnia, replaying everything, mental loops", "restless, circular, dark, painfully honest", "night textures, solo piano, repetitive motif, uneasy silence", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "Ilusao de Seguranca", description: "Se eu controlo, nada de mau acontece", lang: "PT", energy: "whisper", prompt: espelhoPrompt("illusion of safety, if I control nothing bad happens", "fragile certainty, glass-like, about to crack", "crystalline sounds, building tension, moment before breaking", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Trust", description: "Aceitar que nao controlamos o resultado", lang: "EN", energy: "steady", prompt: espelhoPrompt("trust, accepting we don't control the outcome, surrender", "opening, releasing, flowing like water", "flowing piano melody, loosening rhythm, water textures", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "Largar", description: "O mundo continua quando nao fazes", lang: "PT", energy: "anthem", prompt: espelhoPrompt("letting go, the world continues when you stop doing", "relief, triumphant, lightness, liberation", "full arrangement, bright textures, driving chorus, free vocal melody", "PT", "anthem"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "Respirar", description: "Na respiracao, ha liberdade", lang: "PT", energy: "whisper", prompt: espelhoPrompt("breathing, in breath there is freedom", "free, expansive, peaceful, infinite", "breath-synced rhythm, open harmonics, vast warm soundscape", "PT", "whisper"), durationSeconds: 300, audioUrl: null },
   ],
 };
 
@@ -194,13 +213,13 @@ const ESPELHO_DESEJO: AlbumDef = {
   veu: 6,
   color: VEU_COLORS[6],
   tracks: [
-    { number: 1, title: "Preencher", description: "Encher o tempo para nao ouvir o vazio", lang: "PT", prompt: espelhoPrompt("filling time to avoid hearing the void, busy emptiness", "busy, scattered, anxious, fragmented", "fast light electronic textures, fragmented melody, restless production", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 2, title: "What's Missing", description: "O que nao se compra nem se agenda", lang: "EN", prompt: espelhoPrompt("what's missing, what you can't buy or schedule, unnamed longing", "yearning, deep, searching, aching beauty", "searching vocal melody, deep pad, longing strings", "EN"), durationSeconds: 240, audioUrl: null },
-    { number: 3, title: "Mais Pequena", description: "Querer menos para nao incomodar", lang: "PT", prompt: espelhoPrompt("making yourself smaller, wanting less to not bother anyone", "diminished, quiet, hidden, barely there", "very soft production, contained vocal, small intimate sounds", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 4, title: "A Hora Vazia", description: "Uma hora sem nada", lang: "PT", prompt: espelhoPrompt("the empty hour, sitting with nothing, no agenda", "spacious, uncomfortable then gradually peaceful", "silence, then slow emergence of piano, minimal, space as music", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 5, title: "Empty", description: "Parar de fingir que esta cheia", lang: "EN", prompt: espelhoPrompt("stop pretending you're full, honest emptying", "releasing, honest, raw, courageous vulnerability", "descending melody, stripping layers, raw vocal", "EN"), durationSeconds: 240, audioUrl: null },
-    { number: 6, title: "Desejo Verdadeiro", description: "O que a tua vida esta a pedir", lang: "PT", prompt: espelhoPrompt("true desire, what your life is asking of you", "warm, deep, knowing, embodied wanting", "rich warm synth tones, grounding bass, gentle warmth building", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 7, title: "Espaco", description: "O vazio nao e ausencia — e espaco", lang: "PT", prompt: espelhoPrompt("space, emptiness is not absence, it is room", "open, vast, potential, full of possibility", "vast soundscape, open harmonics, voice floating in space, possibility", "PT"), durationSeconds: 300, audioUrl: null },
+    { number: 1, title: "Preencher", description: "Encher o tempo para nao ouvir o vazio", lang: "PT", energy: "pulse", prompt: espelhoPrompt("filling time to avoid hearing the void, busy emptiness", "busy, scattered, anxious, driving", "fast electronic textures, fragmented melody, driving restless beat", "PT", "pulse"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "What's Missing", description: "O que nao se compra nem se agenda", lang: "EN", energy: "raw", prompt: espelhoPrompt("what's missing, what you can't buy or schedule, unnamed longing", "yearning, deep, painfully honest", "solo vocal, searching melody, deep pad, longing strings", "EN", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Mais Pequena", description: "Querer menos para nao incomodar", lang: "PT", energy: "whisper", prompt: espelhoPrompt("making yourself smaller, wanting less to not bother anyone", "diminished, quiet, hidden, barely there", "very soft production, contained vocal, small intimate sounds", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "A Hora Vazia", description: "Uma hora sem nada", lang: "PT", energy: "steady", prompt: espelhoPrompt("the empty hour, sitting with nothing, no agenda", "spacious, walking pace, gradually peaceful", "gentle walking rhythm, slow emergence of piano, space as music", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Empty", description: "Parar de fingir que esta cheia", lang: "EN", energy: "raw", prompt: espelhoPrompt("stop pretending you're full, honest emptying", "releasing, honest, raw, courageous vulnerability", "descending melody, stripping layers, raw vocal", "EN", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "Desejo Verdadeiro", description: "O que a tua vida esta a pedir", lang: "PT", energy: "anthem", prompt: espelhoPrompt("true desire, what your life is asking of you", "warm, powerful, knowing, declarative", "rich warm synth, driving drums, layered vocals, empowering build", "PT", "anthem"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "Espaco", description: "O vazio nao e ausencia — e espaco", lang: "PT", energy: "whisper", prompt: espelhoPrompt("space, emptiness is not absence, it is room", "open, vast, potential, full of possibility", "vast soundscape, open harmonics, voice floating in space, possibility", "PT", "whisper"), durationSeconds: 300, audioUrl: null },
   ],
 };
 
@@ -212,13 +231,13 @@ const ESPELHO_SEPARACAO: AlbumDef = {
   veu: 7,
   color: VEU_COLORS[7],
   tracks: [
-    { number: 1, title: "Encolher para Caber", description: "Adaptar, moldar, perder a forma", lang: "PT", prompt: espelhoPrompt("shrinking to fit, adapting, losing your own shape", "constrained, adapting, diminishing, compressed", "compressed synth, constrained vocal, tight production, limited range", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 2, title: "Together but Alone", description: "A solidao dentro da relacao", lang: "EN", prompt: espelhoPrompt("loneliness inside the relationship, together but alone", "lonely, disconnected, aching, two separate worlds", "two separate melodic lines not meeting, sadness in the gap", "EN"), durationSeconds: 240, audioUrl: null },
-    { number: 3, title: "A Pergunta Evitada", description: "Se eu fosse so eu, quem seria?", lang: "PT", prompt: espelhoPrompt("the avoided question: who would I be if I were just me?", "brave, trembling, honest, raw courage", "single voice rising from silence, tentative piano, courage building", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 4, title: "Separar", description: "Criar espaco, nao destruir", lang: "PT", prompt: espelhoPrompt("separating to create space, not to destroy", "bittersweet, necessary, tender, growth through distance", "melody splitting gracefully into two lines, both beautiful", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 5, title: "What Remains", description: "So sai o que ja nao servia", lang: "EN", prompt: espelhoPrompt("what remains after letting go, only what no longer served leaves", "clear, pure, distilled, essential", "minimal clear tones, essential beauty, purified sound", "EN"), durationSeconds: 240, audioUrl: null },
-    { number: 6, title: "Regresso", description: "O regresso a ti mesma", lang: "PT", prompt: espelhoPrompt("homecoming, the return to yourself", "warm, arriving, recognition, coming home", "returning melody, warmth rising, recognition in the voice", "PT"), durationSeconds: 240, audioUrl: null },
-    { number: 7, title: "Sete Veus", description: "Sete camadas, sete regressos", lang: "PT", prompt: espelhoPrompt("seven veils, seven layers, seven returns, completion", "complete, whole, celebratory, at peace, full circle", "full arrangement, all emotional themes woven, vocal crescendo, peaceful resolution", "PT"), durationSeconds: 300, audioUrl: null },
+    { number: 1, title: "Encolher para Caber", description: "Adaptar, moldar, perder a forma", lang: "PT", energy: "whisper", prompt: espelhoPrompt("shrinking to fit, adapting, losing your own shape", "constrained, adapting, diminishing, compressed", "compressed synth, constrained vocal, tight production, limited range", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "Together but Alone", description: "A solidao dentro da relacao", lang: "EN", energy: "raw", prompt: espelhoPrompt("loneliness inside the relationship, together but alone", "lonely, disconnected, painfully honest", "solo voice, two separate melodic lines not meeting, sadness in the gap", "EN", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "A Pergunta Evitada", description: "Se eu fosse so eu, quem seria?", lang: "PT", energy: "steady", prompt: espelhoPrompt("the avoided question: who would I be if I were just me?", "brave, building, honest, gathering courage", "single voice rising, tentative piano, walking rhythm, courage building", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "Separar", description: "Criar espaco, nao destruir", lang: "PT", energy: "pulse", prompt: espelhoPrompt("separating to create space, not to destroy", "bittersweet, determined, forward momentum", "driving rhythm, melody splitting into two lines, both beautiful, energy", "PT", "pulse"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "What Remains", description: "So sai o que ja nao servia", lang: "EN", energy: "whisper", prompt: espelhoPrompt("what remains after letting go, only what no longer served leaves", "clear, pure, distilled, essential", "minimal clear tones, essential beauty, purified sound", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "Regresso", description: "O regresso a ti mesma", lang: "PT", energy: "steady", prompt: espelhoPrompt("homecoming, the return to yourself", "warm, arriving, recognition, coming home", "returning melody, warmth rising, walking rhythm, recognition in the voice", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "Sete Veus", description: "Sete camadas, sete regressos", lang: "PT", energy: "anthem", prompt: espelhoPrompt("seven veils, seven layers, seven returns, completion", "complete, whole, celebratory, triumphant, full circle", "full arrangement, driving drums, layered vocals, all themes woven, triumphant crescendo", "PT", "anthem"), durationSeconds: 300, audioUrl: null },
   ],
 };
 
@@ -245,59 +264,59 @@ function noAlbum(
 }
 
 const NO_HERANCA = noAlbum(1, "no-heranca", "O No da Heranca", "O silencio herdado entre mae e filha", [
-  { number: 1, title: "A Mae que Viu", description: "Helena sempre soube", lang: "PT", prompt: noPrompt("mother who always saw, patient knowing", "patient, aching, maternal, waiting love", "warm cello-like synth, maternal vocal texture, gentle humming layer", "PT"), durationSeconds: 240 },
-  { number: 2, title: "Years of Waiting", description: "Esperar que a filha veja", lang: "EN", prompt: noPrompt("years of waiting for your daughter to see, patient love", "slow, patient, enduring, time stretching", "sustained pad, patient piano, sense of time passing gently", "EN"), durationSeconds: 240 },
-  { number: 3, title: "Duas Mulheres", description: "Mae e filha, frente a frente", lang: "PT", prompt: noPrompt("two women face to face, mother and daughter, raw meeting", "raw, vulnerable, brave, tender confrontation", "two vocal textures meeting, tentative harmony building", "PT"), durationSeconds: 240 },
-  { number: 4, title: "O Que Nunca Foi Dito", description: "Palavras guardadas uma vida", lang: "PT", prompt: noPrompt("words kept a lifetime, what was never said, breaking silence", "heavy, breaking open, cathartic release", "silence breaking into melody, words becoming music, emotional release", "PT"), durationSeconds: 240 },
-  { number: 5, title: "Desatar", description: "O no que se solta", lang: "PT", prompt: noPrompt("untying the knot, the bond that loosens, freedom together", "freeing, tender, relieved, resolution", "loosening rhythm, opening melody, relief washing through, warm ending", "PT"), durationSeconds: 300 },
+  { number: 1, title: "A Mae que Viu", description: "Helena sempre soube", lang: "PT", energy: "whisper", prompt: noPrompt("mother who always saw, patient knowing", "patient, aching, maternal, waiting love", "warm cello-like synth, maternal vocal texture, gentle humming layer", "PT", "whisper"), durationSeconds: 240 },
+  { number: 2, title: "Years of Waiting", description: "Esperar que a filha veja", lang: "EN", energy: "steady", prompt: noPrompt("years of waiting for your daughter to see, patient love", "slow, patient, enduring, building", "sustained pad, patient piano, walking rhythm, time passing", "EN", "steady"), durationSeconds: 240 },
+  { number: 3, title: "Duas Mulheres", description: "Mae e filha, frente a frente", lang: "PT", energy: "raw", prompt: noPrompt("two women face to face, mother and daughter, raw meeting", "raw, vulnerable, brave, painfully honest", "two vocal textures meeting, tentative harmony, stripped production", "PT", "raw"), durationSeconds: 240 },
+  { number: 4, title: "O Que Nunca Foi Dito", description: "Palavras guardadas uma vida", lang: "PT", energy: "pulse", prompt: noPrompt("words kept a lifetime, what was never said, breaking silence", "heavy, breaking open, cathartic, urgent", "silence breaking into driving melody, words as rhythm, emotional momentum", "PT", "pulse"), durationSeconds: 240 },
+  { number: 5, title: "Desatar", description: "O no que se solta", lang: "PT", energy: "anthem", prompt: noPrompt("untying the knot, the bond that loosens, freedom together", "freeing, triumphant, relieved, declarative", "full arrangement, driving rhythm, layered vocals, triumphant release", "PT", "anthem"), durationSeconds: 300 },
 ]);
 
 const NO_SILENCIO = noAlbum(2, "no-silencio", "O No do Silencio", "O que o medo calou entre eles", [
-  { number: 1, title: "O Que Nao Disse", description: "Rui e Ana e o silencio entre eles", lang: "PT", prompt: noPrompt("what was never said between lovers, loaded silence", "tense, loaded silence, aching with unsaid words", "two melodic lines in silence, tension in the gaps, longing", "PT"), durationSeconds: 240 },
-  { number: 2, title: "Protect or Hide", description: "Quando proteger e esconder", lang: "EN", prompt: noPrompt("protecting as hiding, love expressed as silence", "conflicted, protective, lonely in togetherness", "guarded vocal melody, restrained production, emotional walls", "EN"), durationSeconds: 240 },
-  { number: 3, title: "A Primeira Palavra", description: "Quebrar o silencio", lang: "PT", prompt: noPrompt("the first word that breaks the silence, brave beginning", "brave, trembling, hopeful, cracking open", "first note breaking silence, tentative vocal dialogue emerging", "PT"), durationSeconds: 240 },
-  { number: 4, title: "Ouvir de Verdade", description: "Quando ouvir e mais que escutar", lang: "PT", prompt: noPrompt("truly hearing, listening deeper than words", "open, receptive, present, understanding dawning", "call and response vocal, deepening harmony, understanding growing", "PT"), durationSeconds: 240 },
-  { number: 5, title: "Voice", description: "Encontrar a voz que calaste", lang: "EN", prompt: noPrompt("finding the voice you silenced, speaking truth at last", "empowered, clear, connected, liberated", "two voices in full harmony, strength and clarity, liberation", "EN"), durationSeconds: 300 },
+  { number: 1, title: "O Que Nao Disse", description: "Rui e Ana e o silencio entre eles", lang: "PT", energy: "raw", prompt: noPrompt("what was never said between lovers, loaded silence", "tense, painfully honest, aching", "solo voice, two melodic lines in silence, tension in gaps", "PT", "raw"), durationSeconds: 240 },
+  { number: 2, title: "Protect or Hide", description: "Quando proteger e esconder", lang: "EN", energy: "steady", prompt: noPrompt("protecting as hiding, love expressed as silence", "conflicted, protective, walking pace", "guarded vocal melody, mid-tempo rhythm, emotional walls", "EN", "steady"), durationSeconds: 240 },
+  { number: 3, title: "A Primeira Palavra", description: "Quebrar o silencio", lang: "PT", energy: "whisper", prompt: noPrompt("the first word that breaks the silence, brave beginning", "brave, trembling, hopeful, cracking open", "first note breaking silence, tentative vocal dialogue emerging", "PT", "whisper"), durationSeconds: 240 },
+  { number: 4, title: "Ouvir de Verdade", description: "Quando ouvir e mais que escutar", lang: "PT", energy: "pulse", prompt: noPrompt("truly hearing, listening deeper than words", "open, energetic, present, understanding building", "call and response vocal, driving rhythm, deepening harmony", "PT", "pulse"), durationSeconds: 240 },
+  { number: 5, title: "Voice", description: "Encontrar a voz que calaste", lang: "EN", energy: "anthem", prompt: noPrompt("finding the voice you silenced, speaking truth at last", "empowered, declarative, liberated, triumphant", "two voices in powerful harmony, driving drums, liberation", "EN", "anthem"), durationSeconds: 300 },
 ]);
 
 const NO_SACRIFICIO = noAlbum(3, "no-sacrificio", "O No do Sacrificio", "A culpa disfarcada de entrega", [
-  { number: 1, title: "Dar Ate Esvaziar", description: "Filipe e Luisa e a entrega sem retorno", lang: "PT", prompt: noPrompt("giving until empty, sacrifice without return", "depleted, noble, exhausted, hollow generosity", "diminishing melody, notes being given away, fading production", "PT"), durationSeconds: 240 },
-  { number: 2, title: "Love or Debt", description: "Quando amar parece pagar", lang: "EN", prompt: noPrompt("love as debt, paying off guilt through giving", "transactional, weighted, sad realization", "counting rhythmic pattern, weighted bass, heaviness", "EN"), durationSeconds: 240 },
-  { number: 3, title: "Receber", description: "Aprender a receber sem culpa", lang: "PT", prompt: noPrompt("learning to receive without guilt, accepting grace", "opening, softening, grateful, permission", "warmth flowing in, receiving melody, gratitude in voice", "PT"), durationSeconds: 240 },
-  { number: 4, title: "Dois Inteiros", description: "Dois que dao por escolha", lang: "PT", prompt: noPrompt("two whole people giving by choice, not obligation", "balanced, mutual, joyful, equal", "balanced duet, mutual rhythm, wholeness in harmony", "PT"), durationSeconds: 240 },
-  { number: 5, title: "True Giving", description: "Dar sem se perder", lang: "EN", prompt: noPrompt("true giving without losing yourself, generous freedom", "generous, free, loving, complete", "generous flowing melody, love without cost, free vocal", "EN"), durationSeconds: 300 },
+  { number: 1, title: "Dar Ate Esvaziar", description: "Filipe e Luisa e a entrega sem retorno", lang: "PT", energy: "steady", prompt: noPrompt("giving until empty, sacrifice without return", "depleted, noble, exhausted", "diminishing melody, walking rhythm, notes being given away", "PT", "steady"), durationSeconds: 240 },
+  { number: 2, title: "Love or Debt", description: "Quando amar parece pagar", lang: "EN", energy: "pulse", prompt: noPrompt("love as debt, paying off guilt through giving", "transactional, driving, urgent realization", "counting rhythmic pattern, driving beat, weighted bass", "EN", "pulse"), durationSeconds: 240 },
+  { number: 3, title: "Receber", description: "Aprender a receber sem culpa", lang: "PT", energy: "whisper", prompt: noPrompt("learning to receive without guilt, accepting grace", "opening, softening, grateful, permission", "warmth flowing in, receiving melody, gratitude in voice", "PT", "whisper"), durationSeconds: 240 },
+  { number: 4, title: "Dois Inteiros", description: "Dois que dao por escolha", lang: "PT", energy: "pulse", prompt: noPrompt("two whole people giving by choice, not obligation", "balanced, joyful, energetic, equal", "balanced duet, driving mutual rhythm, wholeness in harmony", "PT", "pulse"), durationSeconds: 240 },
+  { number: 5, title: "True Giving", description: "Dar sem se perder", lang: "EN", energy: "anthem", prompt: noPrompt("true giving without losing yourself, generous freedom", "generous, powerful, loving, declarative", "generous flowing melody, layered vocals, triumphant chorus", "EN", "anthem"), durationSeconds: 300 },
 ]);
 
 const NO_VERGONHA = noAlbum(4, "no-vergonha", "O No da Vergonha", "A mascara que caiu entre dois estranhos", [
-  { number: 1, title: "Dois Estranhos", description: "Vitor e Mariana e o encontro sem mascara", lang: "PT", prompt: noPrompt("two strangers meeting unmasked, raw encounter", "raw, exposed, curious, electric honesty", "two unfamiliar melodic textures meeting, curiosity in the mix", "PT"), durationSeconds: 240 },
-  { number: 2, title: "Seen", description: "A vergonha de ser reconhecido", lang: "EN", prompt: noPrompt("being truly seen, the shame of being recognized", "vulnerable, exposed, trembling, naked beauty", "exposed solo vocal, stripped production, trembling beauty", "EN"), durationSeconds: 240 },
-  { number: 3, title: "Sem Papeis", description: "Quando os papeis caem entre dois", lang: "PT", prompt: noPrompt("roles falling away between two people, authenticity emerging", "liberating, honest, brave, truth surfacing", "layers dropping away in production, simplifying to truth", "PT"), durationSeconds: 240 },
-  { number: 4, title: "Reconhecimento", description: "Eu vejo-te. E tu a mim.", lang: "PT", prompt: noPrompt("I see you and you see me, mutual recognition", "connecting, warm, deep, profound meeting", "two melodies finding harmony, recognition, warmth building", "PT"), durationSeconds: 240 },
-  { number: 5, title: "Unapologetic", description: "Existir sem pedir desculpa", lang: "EN", prompt: noPrompt("existing without apology, unapologetic being", "free, proud, tender strength, sovereign", "proud melody standing tall, tender vocal strength, resolution", "EN"), durationSeconds: 300 },
+  { number: 1, title: "Dois Estranhos", description: "Vitor e Mariana e o encontro sem mascara", lang: "PT", energy: "steady", prompt: noPrompt("two strangers meeting unmasked, raw encounter", "raw, exposed, curious, electric", "two unfamiliar melodic textures meeting, walking rhythm, curiosity", "PT", "steady"), durationSeconds: 240 },
+  { number: 2, title: "Seen", description: "A vergonha de ser reconhecido", lang: "EN", energy: "raw", prompt: noPrompt("being truly seen, the shame of being recognized", "vulnerable, exposed, trembling, naked beauty", "exposed solo vocal, stripped production, trembling beauty", "EN", "raw"), durationSeconds: 240 },
+  { number: 3, title: "Sem Papeis", description: "Quando os papeis caem entre dois", lang: "PT", energy: "pulse", prompt: noPrompt("roles falling away between two people, authenticity emerging", "liberating, energetic, brave, momentum", "driving rhythm, layers dropping away, simplifying to truth", "PT", "pulse"), durationSeconds: 240 },
+  { number: 4, title: "Reconhecimento", description: "Eu vejo-te. E tu a mim.", lang: "PT", energy: "whisper", prompt: noPrompt("I see you and you see me, mutual recognition", "connecting, warm, deep, intimate", "two melodies finding harmony, recognition, warmth building", "PT", "whisper"), durationSeconds: 240 },
+  { number: 5, title: "Unapologetic", description: "Existir sem pedir desculpa", lang: "EN", energy: "anthem", prompt: noPrompt("existing without apology, unapologetic being", "free, proud, powerful, sovereign", "proud melody, driving drums, layered vocal strength, triumphant", "EN", "anthem"), durationSeconds: 300 },
 ]);
 
 const NO_SOLIDAO = noAlbum(5, "no-solidao", "O No da Solidao", "O controlo que isolou quem mais amava", [
-  { number: 1, title: "Ilha", description: "Isabel e Pedro e o isolamento do controlo", lang: "PT", prompt: noPrompt("island, isolation through control, surrounded but alone", "isolated, surrounded by silence, lonely in control", "solo vocal surrounded by empty space, island of sound", "PT"), durationSeconds: 240 },
-  { number: 2, title: "Holding Too Tight", description: "Quando cuidar e aprisionar", lang: "EN", prompt: noPrompt("holding too tight, when caring becomes a cage", "gripping, suffocating love, well-meaning imprisonment", "tight rhythmic pattern around a trapped melody, tension", "EN"), durationSeconds: 240 },
-  { number: 3, title: "Soltar", description: "Abrir as maos", lang: "PT", prompt: noPrompt("releasing, opening hands, letting go of grip", "releasing, letting flow, exhaling control", "opening rhythm, releasing notes into space, breathing room", "PT"), durationSeconds: 240 },
-  { number: 4, title: "Lado a Lado", description: "Estar junto sem segurar", lang: "PT", prompt: noPrompt("side by side, together without holding, respectful closeness", "parallel, peaceful, trusting, mature love", "two parallel melodies with respectful space between, trust", "PT"), durationSeconds: 240 },
-  { number: 5, title: "Bridge", description: "A solidao que se transforma em ponte", lang: "EN", prompt: noPrompt("solitude becoming a bridge, loneliness transformed to connection", "connecting, transforming, hopeful, beautiful evolution", "bridge melody connecting two voices, meeting in the middle, hope", "EN"), durationSeconds: 300 },
+  { number: 1, title: "Ilha", description: "Isabel e Pedro e o isolamento do controlo", lang: "PT", energy: "raw", prompt: noPrompt("island, isolation through control, surrounded but alone", "isolated, painfully honest, lonely", "solo vocal surrounded by empty space, island of sound", "PT", "raw"), durationSeconds: 240 },
+  { number: 2, title: "Holding Too Tight", description: "Quando cuidar e aprisionar", lang: "EN", energy: "pulse", prompt: noPrompt("holding too tight, when caring becomes a cage", "gripping, urgent, suffocating energy", "tight driving rhythm around a trapped melody, tension", "EN", "pulse"), durationSeconds: 240 },
+  { number: 3, title: "Soltar", description: "Abrir as maos", lang: "PT", energy: "whisper", prompt: noPrompt("releasing, opening hands, letting go of grip", "releasing, letting flow, exhaling control", "opening rhythm, releasing notes into space, breathing room", "PT", "whisper"), durationSeconds: 240 },
+  { number: 4, title: "Lado a Lado", description: "Estar junto sem segurar", lang: "PT", energy: "steady", prompt: noPrompt("side by side, together without holding, respectful closeness", "parallel, peaceful, trusting, walking together", "two parallel melodies, walking rhythm, respectful space, trust", "PT", "steady"), durationSeconds: 240 },
+  { number: 5, title: "Bridge", description: "A solidao que se transforma em ponte", lang: "EN", energy: "anthem", prompt: noPrompt("solitude becoming a bridge, loneliness transformed to connection", "connecting, triumphant, hopeful, powerful", "bridge melody connecting voices, driving drums, triumphant hope", "EN", "anthem"), durationSeconds: 300 },
 ]);
 
 const NO_VAZIO = noAlbum(6, "no-vazio", "O No do Vazio", "O desejo que esvaziou a amizade", [
-  { number: 1, title: "Amigas", description: "Lena e Sofia e o que o desejo fez entre elas", lang: "PT", prompt: noPrompt("friends, what desire did to the friendship", "nostalgic, aching, lost, bittersweet memory", "nostalgic melody, fading harmony, sense of loss", "PT"), durationSeconds: 240 },
-  { number: 2, title: "The Hole", description: "O vazio que nenhuma relacao preenche", lang: "EN", prompt: noPrompt("the void no relationship fills, inner emptiness", "empty, echoing, honest, unflinching truth", "hollow reverb textures, echo, vast empty sonic space", "EN"), durationSeconds: 240 },
-  { number: 3, title: "Sem Preencher", description: "Estar no vazio sem fugir", lang: "PT", prompt: noPrompt("sitting with emptiness without fleeing, staying present", "still, present, brave, courageous stillness", "minimal production, still vocal, courageous silence", "PT"), durationSeconds: 240 },
-  { number: 4, title: "Reencontro", description: "Reencontrar sem exigir", lang: "PT", prompt: noPrompt("reunion without demands, meeting again freely", "reconnecting, open, mature, wiser", "two melodies reconnecting wiser and freer, maturity", "PT"), durationSeconds: 240 },
-  { number: 5, title: "True Friendship", description: "O espaco onde o desejo verdadeiro mora", lang: "EN", prompt: noPrompt("true friendship, the space where authentic desire lives", "genuine, warm, complete, satisfied peace", "warm duet, complete and satisfied, peaceful resolution", "EN"), durationSeconds: 300 },
+  { number: 1, title: "Amigas", description: "Lena e Sofia e o que o desejo fez entre elas", lang: "PT", energy: "whisper", prompt: noPrompt("friends, what desire did to the friendship", "nostalgic, aching, lost, bittersweet", "nostalgic melody, fading harmony, sense of loss", "PT", "whisper"), durationSeconds: 240 },
+  { number: 2, title: "The Hole", description: "O vazio que nenhuma relacao preenche", lang: "EN", energy: "raw", prompt: noPrompt("the void no relationship fills, inner emptiness", "empty, echoing, painfully honest", "solo vocal, hollow reverb textures, vast empty sonic space", "EN", "raw"), durationSeconds: 240 },
+  { number: 3, title: "Sem Preencher", description: "Estar no vazio sem fugir", lang: "PT", energy: "steady", prompt: noPrompt("sitting with emptiness without fleeing, staying present", "still, present, building courage", "minimal but grounded production, walking rhythm, still vocal", "PT", "steady"), durationSeconds: 240 },
+  { number: 4, title: "Reencontro", description: "Reencontrar sem exigir", lang: "PT", energy: "pulse", prompt: noPrompt("reunion without demands, meeting again freely", "reconnecting, energetic, joyful, wiser", "two driving melodies reconnecting, rhythmic joy, maturity", "PT", "pulse"), durationSeconds: 240 },
+  { number: 5, title: "True Friendship", description: "O espaco onde o desejo verdadeiro mora", lang: "EN", energy: "anthem", prompt: noPrompt("true friendship, the space where authentic desire lives", "genuine, powerful, complete, celebratory", "warm duet, layered vocals, driving chorus, triumphant peace", "EN", "anthem"), durationSeconds: 300 },
 ]);
 
 const NO_PERTENCA = noAlbum(7, "no-pertenca", "O No da Pertenca", "A separacao que reinventou o lar", [
-  { number: 1, title: "O Lar que Sufocava", description: "Helena T. e Miguel C. e o lar que ja nao cabia", lang: "PT", prompt: noPrompt("the home that suffocated, outgrown space", "claustrophobic, heavy, outgrown, needing air", "compressed production, heavy textures, need for space audible", "PT"), durationSeconds: 240 },
-  { number: 2, title: "Leaving", description: "A coragem de sair para encontrar", lang: "EN", prompt: noPrompt("courage to leave in order to find, necessary departure", "brave, sad, necessary, bittersweet courage", "departure melody, brave vocal steps forward, bittersweet beauty", "EN"), durationSeconds: 240 },
-  { number: 3, title: "Sozinho", description: "O vazio fertil da solidao", lang: "PT", prompt: noPrompt("fertile solitude, alone but growing, discovering self", "solitary, growing, spacious, self-discovery", "solo vocal growing and expanding, discovering new range", "PT"), durationSeconds: 240 },
-  { number: 4, title: "Reinventar", description: "Construir de novo, diferente", lang: "PT", prompt: noPrompt("rebuilding different this time, reinvention", "creative, hopeful, new, fresh foundation", "new melodic construction, different rhythm, hope in newness", "PT"), durationSeconds: 240 },
-  { number: 5, title: "Belonging", description: "Pertencer comeca por dentro", lang: "EN", prompt: noPrompt("belonging starts within, self-belonging is home", "whole, home, complete, deep peace", "coming home melody, complete vocal, peaceful and whole, final resolution", "EN"), durationSeconds: 300 },
+  { number: 1, title: "O Lar que Sufocava", description: "Helena T. e Miguel C. e o lar que ja nao cabia", lang: "PT", energy: "pulse", prompt: noPrompt("the home that suffocated, outgrown space", "claustrophobic, driving urgency, needing air", "compressed production, driving beat, heavy textures, need for space", "PT", "pulse"), durationSeconds: 240 },
+  { number: 2, title: "Leaving", description: "A coragem de sair para encontrar", lang: "EN", energy: "raw", prompt: noPrompt("courage to leave in order to find, necessary departure", "brave, painfully honest, bittersweet", "solo departure melody, brave vocal, stripped production", "EN", "raw"), durationSeconds: 240 },
+  { number: 3, title: "Sozinho", description: "O vazio fertil da solidao", lang: "PT", energy: "whisper", prompt: noPrompt("fertile solitude, alone but growing, discovering self", "solitary, growing, spacious, self-discovery", "solo vocal growing and expanding, discovering new range", "PT", "whisper"), durationSeconds: 240 },
+  { number: 4, title: "Reinventar", description: "Construir de novo, diferente", lang: "PT", energy: "steady", prompt: noPrompt("rebuilding different this time, reinvention", "creative, hopeful, new, building", "new melodic construction, walking rhythm, hope in newness", "PT", "steady"), durationSeconds: 240 },
+  { number: 5, title: "Belonging", description: "Pertencer comeca por dentro", lang: "EN", energy: "anthem", prompt: noPrompt("belonging starts within, self-belonging is home", "whole, powerful, complete, triumphant peace", "coming home melody, layered vocals, driving drums, triumphant resolution", "EN", "anthem"), durationSeconds: 300 },
 ]);
 
 // ─────────────────────────────────────────────
@@ -428,6 +447,7 @@ function applyLyrics(albumDef: AlbumDef): Album {
     ...albumDef,
     tracks: albumDef.tracks.map((t) => ({
       ...t,
+      energy: t.energy || "whisper",
       lyrics: t.lyrics || getLyrics(albumDef.slug, t.number),
       audioUrl: t.audioUrl ?? null,
     })),
@@ -482,3 +502,12 @@ export function getAlbumsByVeu(veu: number) {
 export function getTotalTracks() {
   return ALL_ALBUMS.reduce((sum, a) => sum + a.tracks.length, 0);
 }
+
+// Labels e cores para a energia de cada faixa (usados na UI)
+export const ENERGY_LABELS: Record<TrackEnergy, { label: string; emoji: string; color: string }> = {
+  whisper: { label: "Sussurro", emoji: "~", color: "bg-blue-50 text-blue-600" },
+  steady: { label: "Constante", emoji: "—", color: "bg-green-50 text-green-600" },
+  pulse: { label: "Pulso", emoji: "+", color: "bg-orange-50 text-orange-600" },
+  anthem: { label: "Hino", emoji: "!", color: "bg-red-50 text-red-600" },
+  raw: { label: "Cru", emoji: "*", color: "bg-purple-50 text-purple-600" },
+};
