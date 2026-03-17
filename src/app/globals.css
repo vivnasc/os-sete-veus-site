@@ -20,7 +20,7 @@
   --color-gold: #c9b896;
   --color-gold-dark: #a08b6c;
 
-  /* Per-veu accent colors */
+  /* Per-veu accent colors (Espelhos — light theme) */
   --color-veu-1: #c9b896;
   --color-veu-2: #8b9b8e;
   --color-veu-3: #c08aaa;
@@ -29,8 +29,39 @@
   --color-veu-6: #ab9375;
   --color-veu-7: #baaacc;
 
+  /* ===== Mundo dos Veus — Paleta Mestre (Escola/Cursos) ===== */
+  --color-mundo-bg: #1A1A2E;
+  --color-mundo-bg-light: #232340;
+  --color-mundo-bg-surface: #2A2A4A;
+  --color-mundo-terracota: #C4745A;
+  --color-mundo-terracota-light: #D4896F;
+  --color-mundo-dourado: #C9A96E;
+  --color-mundo-dourado-quente: #D4A853;
+  --color-mundo-dourado-claro: #E0C48A;
+  --color-mundo-violeta: #8B5CF6;
+  --color-mundo-violeta-suave: #A78BFA;
+  --color-mundo-creme: #F5F0E6;
+  --color-mundo-creme-suave: #E8E0D0;
+
+  /* Cores por Territorio (Escola dos Veus — 10 cursos) */
+  --color-territorio-1: #D4A853;   /* Ouro Proprio — ambar */
+  --color-territorio-2: #8B3A3A;   /* Sangue e Seda — vermelho escuro */
+  --color-territorio-3: #7B68EE;   /* A Arte da Inteireza — violeta agua */
+  --color-territorio-4: #4A4A4A;   /* Depois do Fogo — cinza carvao */
+  --color-territorio-4-brasa: #E8651A; /* Depois do Fogo — laranja brasa */
+  --color-territorio-4-broto: #4A7C3F; /* Depois do Fogo — verde broto */
+  --color-territorio-5: #6B8CAE;   /* Olhos Abertos — azul nevoeiro */
+  --color-territorio-6: #C4745A;   /* A Pele Lembra — terracota rosado */
+  --color-territorio-7: #D4A853;   /* Limite Sagrado — dourado luminoso */
+  --color-territorio-8: #1A3A5C;   /* Flores no Escuro — azul profundo */
+  --color-territorio-8-bio: #4AE8A0; /* Flores no Escuro — bioluminescente */
+  --color-territorio-9: #808080;   /* O Peso e o Chao — cinza pedra */
+  --color-territorio-10: #4A0E6A;  /* Voz de Dentro — violeta escuro */
+  --color-territorio-10-eco: #C9A96E; /* Voz de Dentro — dourado eco */
+
   /* Typography */
   --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-body: Georgia, "Times New Roman", serif;
 }
@@ -148,4 +179,232 @@ body {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===================================================
+   MUNDO DOS VEUS — Dark sections (Escola/Cursos)
+   =================================================== */
+
+/* Base dark section — used for course pages */
+.mundo-section {
+  background-color: var(--color-mundo-bg);
+  color: var(--color-mundo-creme);
+  font-family: var(--font-display);
+}
+
+.mundo-section ::selection {
+  background-color: var(--color-mundo-violeta);
+  color: var(--color-mundo-creme);
+}
+
+/* Surface card within dark section */
+.mundo-card {
+  background-color: var(--color-mundo-bg-surface);
+  border: 1px solid rgba(201, 169, 110, 0.12);
+  border-radius: 12px;
+}
+
+.mundo-card:hover {
+  border-color: rgba(201, 169, 110, 0.25);
+}
+
+/* Typography within dark sections */
+.mundo-heading {
+  font-family: var(--font-display);
+  color: var(--color-mundo-creme);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+.mundo-subheading {
+  font-family: var(--font-display);
+  color: var(--color-mundo-dourado);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.mundo-body {
+  font-family: var(--font-display);
+  color: var(--color-mundo-creme-suave);
+  font-weight: 300;
+  line-height: 1.9;
+}
+
+/* Silhueta glow — terracota with gold highlight */
+.mundo-silhueta {
+  color: var(--color-mundo-terracota);
+  filter: drop-shadow(0 0 12px rgba(201, 169, 110, 0.3));
+}
+
+/* Gold accent line — divider */
+.mundo-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-mundo-dourado) 20%,
+    var(--color-mundo-dourado) 80%,
+    transparent 100%
+  );
+  opacity: 0.3;
+}
+
+/* CTA button — dark theme */
+.mundo-cta {
+  background: linear-gradient(135deg, var(--color-mundo-terracota), var(--color-mundo-terracota-light));
+  color: var(--color-mundo-creme);
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 32px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mundo-cta:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 0 24px rgba(196, 116, 90, 0.3);
+}
+
+/* Secondary CTA — outlined */
+.mundo-cta-outline {
+  background: transparent;
+  color: var(--color-mundo-dourado);
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  border: 1px solid rgba(201, 169, 110, 0.4);
+  border-radius: 8px;
+  padding: 12px 32px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mundo-cta-outline:hover {
+  border-color: var(--color-mundo-dourado);
+  background: rgba(201, 169, 110, 0.08);
+}
+
+/* ===================================================
+   Per-territory visual accents
+   =================================================== */
+
+/* Territory badge — small colored indicator */
+.territorio-badge {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.territorio-badge[data-territorio="1"] { background-color: var(--color-territorio-1); }
+.territorio-badge[data-territorio="2"] { background-color: var(--color-territorio-2); }
+.territorio-badge[data-territorio="3"] { background-color: var(--color-territorio-3); }
+.territorio-badge[data-territorio="4"] { background-color: var(--color-territorio-4-brasa); }
+.territorio-badge[data-territorio="5"] { background-color: var(--color-territorio-5); }
+.territorio-badge[data-territorio="6"] { background-color: var(--color-territorio-6); }
+.territorio-badge[data-territorio="7"] { background-color: var(--color-territorio-7); }
+.territorio-badge[data-territorio="8"] { background-color: var(--color-territorio-8-bio); }
+.territorio-badge[data-territorio="9"] { background-color: var(--color-territorio-9); }
+.territorio-badge[data-territorio="10"] { background-color: var(--color-territorio-10); }
+
+/* Territory glow — border accent for cards */
+.territorio-glow[data-territorio="1"] { box-shadow: 0 0 20px rgba(212, 168, 83, 0.15); border-color: rgba(212, 168, 83, 0.3); }
+.territorio-glow[data-territorio="2"] { box-shadow: 0 0 20px rgba(139, 58, 58, 0.15); border-color: rgba(139, 58, 58, 0.3); }
+.territorio-glow[data-territorio="3"] { box-shadow: 0 0 20px rgba(123, 104, 238, 0.15); border-color: rgba(123, 104, 238, 0.3); }
+.territorio-glow[data-territorio="4"] { box-shadow: 0 0 20px rgba(232, 101, 26, 0.15); border-color: rgba(232, 101, 26, 0.3); }
+.territorio-glow[data-territorio="5"] { box-shadow: 0 0 20px rgba(107, 140, 174, 0.15); border-color: rgba(107, 140, 174, 0.3); }
+.territorio-glow[data-territorio="6"] { box-shadow: 0 0 20px rgba(196, 116, 90, 0.15); border-color: rgba(196, 116, 90, 0.3); }
+.territorio-glow[data-territorio="7"] { box-shadow: 0 0 20px rgba(212, 168, 83, 0.15); border-color: rgba(212, 168, 83, 0.3); }
+.territorio-glow[data-territorio="8"] { box-shadow: 0 0 20px rgba(74, 232, 160, 0.15); border-color: rgba(74, 232, 160, 0.3); }
+.territorio-glow[data-territorio="9"] { box-shadow: 0 0 20px rgba(128, 128, 128, 0.15); border-color: rgba(128, 128, 128, 0.3); }
+.territorio-glow[data-territorio="10"] { box-shadow: 0 0 20px rgba(139, 92, 246, 0.15); border-color: rgba(139, 92, 246, 0.3); }
+
+/* ===================================================
+   Sky gradient — Mundo dos Veus sky backdrop
+   =================================================== */
+
+/* The sky: deep navy, pre-dawn moment */
+.mundo-sky {
+  background: linear-gradient(
+    180deg,
+    #0D0D1A 0%,
+    var(--color-mundo-bg) 40%,
+    #1E1E3A 100%
+  );
+}
+
+/* Sky with dawn hint — for later modules (5-8) */
+.mundo-sky-dawn {
+  background: linear-gradient(
+    180deg,
+    #0D0D1A 0%,
+    var(--color-mundo-bg) 30%,
+    #1E1E3A 70%,
+    #2A1A30 100%
+  );
+}
+
+/* Slow breathe animation — for transitions between sections */
+@keyframes breathe {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.animate-breathe {
+  animation: breathe 6s ease-in-out infinite;
+}
+
+/* Dissolve transition — for Mundo dos Veus video-style transitions */
+@keyframes dissolve-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes dissolve-out {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.animate-dissolve-in {
+  animation: dissolve-in 1.2s ease-in-out;
+}
+
+.animate-dissolve-out {
+  animation: dissolve-out 1.2s ease-in-out;
+}
+
+/* Text fade — for quotes and phrases */
+@keyframes text-reveal {
+  0% { opacity: 0; letter-spacing: 0.3em; }
+  100% { opacity: 1; letter-spacing: 0.06em; }
+}
+
+.animate-text-reveal {
+  animation: text-reveal 1.8s ease-out;
+}
+
+/* Gold shimmer — for special moments */
+@keyframes gold-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.mundo-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-mundo-creme) 0%,
+    var(--color-mundo-dourado) 50%,
+    var(--color-mundo-creme) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gold-shimmer 4s linear infinite;
 }
