@@ -1,443 +1,68 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { getAllCourses } from "@/data/courses";
 import {
   getScriptsForCourse,
   getFullNarration,
-  getTotalDuration,
 } from "@/data/youtube-scripts";
 import type { YouTubeScript, VideoScene } from "@/data/youtube-scripts";
-import {
-  drawCourseBackground,
-  drawCourseSilhouette,
-  drawCourseText,
-} from "@/lib/video-visuals";
+import type { ComposerScene } from "@/components/VideoComposer";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+const VideoComposer = dynamic(() => import("@/components/VideoComposer"), { ssr: false });
 
 const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
+const DEFAULT_VOICE_ID = "fnoNuVpfClX7lHKFbyZ2";
 
-type Step = 1 | 2 | 3 | 4;
+type AudioStatus = "idle" | "generating" | "done" | "error";
+type ImageStatus = "idle" | "generating" | "done" | "error";
 
-// Scene with runtime data (image, timing adjusted to audio)
-type RuntimeScene = VideoScene & {
+type SceneStatus = {
+  audioStatus: AudioStatus;
+  audioUrl: string | null;
+  audioError: string | null;
+  imageStatus: ImageStatus;
   imageUrl: string | null;
-  adjustedStart: number;
-  adjustedEnd: number;
+  imageError: string | null;
+  editedNarration: string | null;
 };
+
+function sceneKey(courseSlug: string, hookIndex: number, sceneIndex: number) {
+  return `${courseSlug}-hook${hookIndex}-scene${sceneIndex}`;
+}
 
 export default function YouTubePage() {
   const { user, profile } = useAuth();
   const isAdmin =
     profile?.is_admin || ADMIN_EMAILS.includes(user?.email || "");
 
-  // Wizard state
-  const [step, setStep] = useState<Step>(1);
-  const [selectedScript, setSelectedScript] = useState<YouTubeScript | null>(
-    null
-  );
+  // Config
+  const [apiKey, setApiKey] = useState("");
+  const [voiceId, setVoiceId] = useState(DEFAULT_VOICE_ID);
+  const [modelo, setModelo] = useState<"v2" | "v3">("v2");
+  const [speed, setSpeed] = useState(0.9);
+  const [comfyuiUrl, setComfyuiUrl] = useState("");
+  const [loraName, setLoraName] = useState("");
 
-  // Audio
-  const [audioUrl, setAudioUrl] = useState<string | null>(null);
-  const [audioDuration, setAudioDuration] = useState(0);
-  const [audioGenerating, setAudioGenerating] = useState(false);
-  const [audioError, setAudioError] = useState("");
+  // Selection
+  const [selectedCourse, setSelectedCourse] = useState("");
 
-  // Scenes with images
-  const [scenes, setScenes] = useState<RuntimeScene[]>([]);
+  // Per-scene statuses
+  const [statuses, setStatuses] = useState<Record<string, SceneStatus>>({});
 
-  // Preview
-  const previewCanvasRef = useRef<HTMLCanvasElement>(null);
-  const previewAudioRef = useRef<HTMLAudioElement>(null);
-  const [playing, setPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-  const animFrameRef = useRef<number>(0);
+  // Batch
+  const [batchRunning, setBatchRunning] = useState(false);
+  const [batchProgress, setBatchProgress] = useState({ current: 0, total: 0 });
+  const shouldStop = useRef(false);
 
-  // Export
-  const [exporting, setExporting] = useState(false);
-  const [exportProgress, setExportProgress] = useState(0);
-  const [exportUrl, setExportUrl] = useState<string | null>(null);
-  const exportCanvasRef = useRef<HTMLCanvasElement>(null);
-  const cancelExportRef = useRef(false);
-
-  // Video approved
-  const [approved, setApproved] = useState(false);
+  // Full narration editing per hook
+  const [fullNarrations, setFullNarrations] = useState<Record<string, string>>({});
 
   const courses = getAllCourses();
-
-  // ── Step 1: Select hook ─────────────────────────────────────────────
-
-  function selectHook(script: YouTubeScript) {
-    setSelectedScript(script);
-    setAudioUrl(null);
-    setAudioDuration(0);
-    setScenes([]);
-    setApproved(false);
-    setExportUrl(null);
-    setStep(2);
-  }
-
-  // ── Step 2: Generate audio ──────────────────────────────────────────
-
-  async function generateAudio() {
-    if (!selectedScript) return;
-    setAudioGenerating(true);
-    setAudioError("");
-
-    try {
-      const narration = getFullNarration(selectedScript);
-
-      const res = await fetch("/api/admin/courses/generate-audio", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          script: narration,
-          courseSlug: selectedScript.courseSlug,
-          moduleNum: 0,
-          subLetter: `yt-hook-${selectedScript.hookIndex}`,
-        }),
-      });
-
-      if (!res.ok) {
-        const data = await res.json().catch(() => null);
-        throw new Error(data?.erro || `Erro ${res.status}`);
-      }
-
-      const contentType = res.headers.get("Content-Type") || "";
-
-      if (contentType.includes("audio/")) {
-        const blob = await res.blob();
-        const url = URL.createObjectURL(blob);
-        setAudioUrl(url);
-      } else {
-        const data = await res.json();
-        setAudioUrl(data.url);
-      }
-    } catch (err) {
-      setAudioError(
-        err instanceof Error ? err.message : "Erro ao gerar audio"
-      );
-    } finally {
-      setAudioGenerating(false);
-    }
-  }
-
-  function handleAudioUpload(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const url = URL.createObjectURL(file);
-    setAudioUrl(url);
-  }
-
-  // When audio loads, get duration and build scene timeline
-  function onAudioLoaded(e: React.SyntheticEvent<HTMLAudioElement>) {
-    const dur = e.currentTarget.duration;
-    if (!isFinite(dur) || !selectedScript) return;
-    setAudioDuration(dur);
-    buildSceneTimeline(selectedScript, dur);
-  }
-
-  function buildSceneTimeline(script: YouTubeScript, totalDuration: number) {
-    const scriptTotal = script.scenes.reduce(
-      (s, sc) => s + sc.durationSec,
-      0
-    );
-    const ratio = totalDuration / scriptTotal;
-
-    let cursor = 0;
-    const built: RuntimeScene[] = script.scenes.map((sc) => {
-      const adjusted = sc.durationSec * ratio;
-      const start = cursor;
-      cursor += adjusted;
-      return {
-        ...sc,
-        imageUrl: null,
-        adjustedStart: start,
-        adjustedEnd: cursor,
-      };
-    });
-
-    setScenes(built);
-    setApproved(false);
-    setExportUrl(null);
-  }
-
-  function advanceToPreview() {
-    if (audioUrl && scenes.length > 0) {
-      setStep(3);
-    }
-  }
-
-  // ── Step 3: Preview & approve ───────────────────────────────────────
-
-  function handleImageUpload(idx: number, file: File) {
-    const url = URL.createObjectURL(file);
-    setScenes((prev) =>
-      prev.map((s, i) => (i === idx ? { ...s, imageUrl: url } : s))
-    );
-    setApproved(false);
-  }
-
-  // Find current scene based on time
-  function getCurrentScene(time: number): RuntimeScene | null {
-    return scenes.find((s) => time >= s.adjustedStart && time < s.adjustedEnd) || null;
-  }
-
-  function getCurrentSceneIndex(time: number): number {
-    return scenes.findIndex((s) => time >= s.adjustedStart && time < s.adjustedEnd);
-  }
-
-  // Draw a frame on canvas — uses course visual identity
-  const drawFrame = useCallback(
-    (
-      ctx: CanvasRenderingContext2D,
-      w: number,
-      h: number,
-      time: number,
-      loadedImages: Map<number, HTMLImageElement>
-    ) => {
-      const slug = selectedScript?.courseSlug || "ouro-proprio";
-      const idx = scenes.findIndex((s) => time >= s.adjustedStart && time < s.adjustedEnd);
-      const scene = scenes[idx >= 0 ? idx : scenes.length - 1];
-      if (!scene) {
-        ctx.fillStyle = "#1A1A2E";
-        ctx.fillRect(0, 0, w, h);
-        return;
-      }
-
-      const sceneDur = scene.adjustedEnd - scene.adjustedStart;
-      const sceneProgress = Math.max(0, Math.min(1, (time - scene.adjustedStart) / sceneDur));
-
-      // 1. Course-branded background (gradient + particles + glow)
-      drawCourseBackground(ctx, w, h, slug, time, sceneProgress);
-
-      // 2. User image (if provided) with Ken Burns on top
-      const img = loadedImages.get(idx);
-      if (img) {
-        const scale = 1 + sceneProgress * 0.06;
-        const panX = sceneProgress * w * 0.02;
-        const imgRatio = img.width / img.height;
-        const canvasRatio = w / h;
-        let drawW: number, drawH: number;
-        if (imgRatio > canvasRatio) {
-          drawH = h * scale;
-          drawW = drawH * imgRatio;
-        } else {
-          drawW = w * scale;
-          drawH = drawW / imgRatio;
-        }
-        ctx.save();
-        ctx.globalAlpha = 0.6;
-        ctx.drawImage(img, (w - drawW) / 2 + panX, (h - drawH) / 2, drawW, drawH);
-        ctx.restore();
-        // Overlay to blend with background
-        ctx.fillStyle = "rgba(26, 26, 46, 0.35)";
-        ctx.fillRect(0, 0, w, h);
-      }
-
-      // 3. Course-branded silhouette (pose based on scene type)
-      drawCourseSilhouette(ctx, w, h, slug, scene.type, sceneProgress);
-
-      // 4. Text with fade
-      const fadeTime = Math.min(1.0, sceneDur * 0.1);
-      let textAlpha = 1;
-      const timeInScene = time - scene.adjustedStart;
-      const timeFromEnd = scene.adjustedEnd - time;
-      if (timeInScene < fadeTime) textAlpha = timeInScene / fadeTime;
-      if (timeFromEnd < fadeTime) textAlpha = Math.min(textAlpha, timeFromEnd / fadeTime);
-
-      drawCourseText(ctx, w, h, slug, scene.overlayText || "", scene.type, textAlpha);
-
-      // 5. Scene progress bar
-      const palette = { accent: scene.type === "abertura" ? "#C9A96E" : "#C9A96E33" };
-      ctx.fillStyle = palette.accent;
-      ctx.fillRect(0, h - 3, w * sceneProgress, 3);
-    },
-    [scenes]
-  );
-
-  // Preview playback
-  const previewImagesRef = useRef<Map<number, HTMLImageElement>>(new Map());
-
-  useEffect(() => {
-    // Preload images
-    const map = new Map<number, HTMLImageElement>();
-    scenes.forEach((scene, idx) => {
-      if (scene.imageUrl) {
-        const img = new Image();
-        img.crossOrigin = "anonymous";
-        img.src = scene.imageUrl;
-        img.onload = () => {
-          map.set(idx, img);
-          previewImagesRef.current = new Map(map);
-        };
-      }
-    });
-    previewImagesRef.current = map;
-  }, [scenes]);
-
-  function togglePlayback() {
-    const audio = previewAudioRef.current;
-    if (!audio || !audioUrl) return;
-
-    if (playing) {
-      audio.pause();
-      setPlaying(false);
-      cancelAnimationFrame(animFrameRef.current);
-    } else {
-      audio.play();
-      setPlaying(true);
-      animatePreview();
-    }
-  }
-
-  function animatePreview() {
-    const audio = previewAudioRef.current;
-    const canvas = previewCanvasRef.current;
-    if (!audio || !canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const tick = () => {
-      if (audio.paused || audio.ended) {
-        setPlaying(false);
-        return;
-      }
-      setCurrentTime(audio.currentTime);
-      drawFrame(ctx, canvas.width, canvas.height, audio.currentTime, previewImagesRef.current);
-      animFrameRef.current = requestAnimationFrame(tick);
-    };
-    tick();
-  }
-
-  function seekPreview(time: number) {
-    const audio = previewAudioRef.current;
-    const canvas = previewCanvasRef.current;
-    if (!audio || !canvas) return;
-
-    audio.currentTime = time;
-    setCurrentTime(time);
-    const ctx = canvas.getContext("2d");
-    if (ctx) {
-      drawFrame(ctx, canvas.width, canvas.height, time, previewImagesRef.current);
-    }
-  }
-
-  // Draw initial frame when entering step 3
-  useEffect(() => {
-    if (step === 3) {
-      const canvas = previewCanvasRef.current;
-      if (!canvas) return;
-      canvas.width = 960;
-      canvas.height = 540;
-      const ctx = canvas.getContext("2d");
-      if (ctx) {
-        drawFrame(ctx, 960, 540, 0, previewImagesRef.current);
-      }
-    }
-  }, [step, drawFrame]);
-
-  // ── Step 4: Export ──────────────────────────────────────────────────
-
-  async function exportVideo() {
-    const canvas = exportCanvasRef.current;
-    if (!canvas || !audioUrl) return;
-
-    canvas.width = 1920;
-    canvas.height = 1080;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    setExporting(true);
-    setExportProgress(0);
-    cancelExportRef.current = false;
-
-    // Preload images at export resolution
-    const exportImages = new Map<number, HTMLImageElement>();
-    await Promise.all(
-      scenes.map(
-        (scene, idx) =>
-          new Promise<void>((resolve) => {
-            if (!scene.imageUrl) { resolve(); return; }
-            const img = new Image();
-            img.crossOrigin = "anonymous";
-            img.onload = () => { exportImages.set(idx, img); resolve(); };
-            img.onerror = () => resolve();
-            img.src = scene.imageUrl;
-          })
-      )
-    );
-
-    // Setup recording
-    const fps = 30;
-    const stream = canvas.captureStream(fps);
-
-    const audioEl = new Audio(audioUrl);
-    audioEl.crossOrigin = "anonymous";
-
-    try {
-      const audioCtx = new AudioContext();
-      const source = audioCtx.createMediaElementSource(audioEl);
-      const dest = audioCtx.createMediaStreamDestination();
-      source.connect(dest);
-      source.connect(audioCtx.destination);
-      for (const track of dest.stream.getAudioTracks()) {
-        stream.addTrack(track);
-      }
-    } catch {
-      // Continue without audio in recording
-    }
-
-    const mimeType = MediaRecorder.isTypeSupported("video/webm;codecs=vp9")
-      ? "video/webm;codecs=vp9"
-      : "video/webm";
-
-    const recorder = new MediaRecorder(stream, {
-      mimeType,
-      videoBitsPerSecond: 5_000_000,
-    });
-
-    const chunks: BlobPart[] = [];
-    recorder.ondataavailable = (e) => {
-      if (e.data.size > 0) chunks.push(e.data);
-    };
-
-    const donePromise = new Promise<Blob>((resolve) => {
-      recorder.onstop = () => resolve(new Blob(chunks, { type: mimeType }));
-    });
-
-    recorder.start(1000);
-    audioEl.currentTime = 0;
-    audioEl.play().catch(() => {});
-
-    const renderFrame = () => {
-      if (cancelExportRef.current || audioEl.ended || audioEl.paused) {
-        recorder.stop();
-        audioEl.pause();
-        return;
-      }
-
-      drawFrame(ctx, 1920, 1080, audioEl.currentTime, exportImages);
-      setExportProgress(audioDuration > 0 ? audioEl.currentTime / audioDuration : 0);
-      requestAnimationFrame(renderFrame);
-    };
-
-    // Wait for audio to start playing
-    audioEl.onended = () => {
-      setTimeout(() => recorder.stop(), 500);
-    };
-
-    renderFrame();
-
-    const blob = await donePromise;
-    const url = URL.createObjectURL(blob);
-    setExportUrl(url);
-    setExporting(false);
-  }
-
-  // ── Guard ───────────────────────────────────────────────────────────
+  const hooks = selectedCourse ? getScriptsForCourse(selectedCourse) : [];
 
   if (!user || !isAdmin) {
     return (
@@ -447,446 +72,592 @@ export default function YouTubePage() {
     );
   }
 
-  const sceneIdx = getCurrentSceneIndex(currentTime);
+  function getStatus(key: string): SceneStatus {
+    return (
+      statuses[key] || {
+        audioStatus: "idle",
+        audioUrl: null,
+        audioError: null,
+        imageStatus: "idle",
+        imageUrl: null,
+        imageError: null,
+        editedNarration: null,
+      }
+    );
+  }
 
-  // ── Render ──────────────────────────────────────────────────────────
+  function updateStatus(key: string, patch: Partial<SceneStatus>) {
+    setStatuses((prev) => ({
+      ...prev,
+      [key]: { ...getStatus(key), ...patch },
+    }));
+  }
+
+  function getFullNarrationKey(hook: YouTubeScript) {
+    return `${hook.courseSlug}-hook${hook.hookIndex}`;
+  }
+
+  function getEditableNarration(hook: YouTubeScript) {
+    const key = getFullNarrationKey(hook);
+    return fullNarrations[key] ?? getFullNarration(hook);
+  }
+
+  function setEditableNarration(hook: YouTubeScript, value: string) {
+    const key = getFullNarrationKey(hook);
+    setFullNarrations((prev) => ({ ...prev, [key]: value }));
+  }
+
+  // ── Audio generation ──────────────────────────────────────────────
+
+  async function generateHookAudio(hook: YouTubeScript) {
+    const narration = getEditableNarration(hook);
+    const key = `${hook.courseSlug}-hook${hook.hookIndex}-full`;
+
+    updateStatus(key, { audioStatus: "generating", audioError: null });
+
+    try {
+      const body: Record<string, unknown> = {
+        script: narration,
+        courseSlug: hook.courseSlug,
+        moduleNum: 0,
+        subLetter: `yt-hook-${hook.hookIndex}`,
+        model: modelo,
+        speed,
+      };
+      if (apiKey.trim()) body.apiKey = apiKey.trim();
+      if (voiceId.trim()) body.voiceId = voiceId.trim();
+
+      const res = await fetch("/api/admin/courses/generate-audio", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({ erro: `HTTP ${res.status}` }));
+        throw new Error(data.erro || `Erro ${res.status}`);
+      }
+
+      const contentType = res.headers.get("content-type") || "";
+      if (contentType.includes("audio/")) {
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        updateStatus(key, { audioStatus: "done", audioUrl: url });
+      } else {
+        const data = await res.json();
+        updateStatus(key, { audioStatus: "done", audioUrl: data.url });
+      }
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Erro desconhecido";
+      updateStatus(key, { audioStatus: "error", audioError: msg });
+    }
+  }
+
+  // ── Image generation per scene ────────────────────────────────────
+
+  async function generateSceneImage(
+    hook: YouTubeScript,
+    sceneIdx: number
+  ) {
+    const scene = hook.scenes[sceneIdx];
+    if (!scene) return;
+    const key = sceneKey(hook.courseSlug, hook.hookIndex, sceneIdx);
+    if (!comfyuiUrl.trim()) return;
+
+    updateStatus(key, { imageStatus: "generating", imageError: null });
+
+    try {
+      const { buildLandscapeWorkflow } = await import("@/lib/comfyui-workflows");
+      const prompt = `${scene.visualNote}. Style: dark atmospheric, pre-dawn sky #1A1A2E, terracotta silhouette, gold accents, cinematic, School of Life aesthetic`;
+      const workflow = buildLandscapeWorkflow({
+        prompt,
+        loraName: loraName || undefined,
+      });
+
+      const res = await fetch("/api/admin/courses/generate-image", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          comfyuiUrl: comfyuiUrl.trim(),
+          workflow,
+          courseSlug: hook.courseSlug,
+          moduleNum: 0,
+          assetType: "youtube",
+          filename: `yt-hook${hook.hookIndex}-scene${sceneIdx}.png`,
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({ erro: `HTTP ${res.status}` }));
+        throw new Error(data.erro || `Erro ${res.status}`);
+      }
+
+      const data = await res.json();
+      updateStatus(key, { imageStatus: "done", imageUrl: data.url });
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Erro desconhecido";
+      updateStatus(key, { imageStatus: "error", imageError: msg });
+    }
+  }
+
+  // ── Batch: all images for a hook ──────────────────────────────────
+
+  async function batchGenerateImages(hook: YouTubeScript) {
+    if (!comfyuiUrl.trim()) {
+      alert("Coloca o URL do ComfyUI (ThinkDiffusion).");
+      return;
+    }
+
+    shouldStop.current = false;
+    setBatchRunning(true);
+    setBatchProgress({ current: 0, total: hook.scenes.length });
+
+    for (let i = 0; i < hook.scenes.length; i++) {
+      if (shouldStop.current) break;
+      setBatchProgress({ current: i + 1, total: hook.scenes.length });
+
+      const key = sceneKey(hook.courseSlug, hook.hookIndex, i);
+      const st = getStatus(key);
+      if (st.imageStatus === "done") continue;
+
+      await generateSceneImage(hook, i);
+
+      if (i < hook.scenes.length - 1) {
+        await new Promise((r) => setTimeout(r, 3000));
+      }
+    }
+
+    setBatchRunning(false);
+    setBatchProgress({ current: 0, total: 0 });
+  }
+
+  // ── Upload handler ────────────────────────────────────────────────
+
+  function handleImageUpload(hook: YouTubeScript, sceneIdx: number, file: File) {
+    const url = URL.createObjectURL(file);
+    const key = sceneKey(hook.courseSlug, hook.hookIndex, sceneIdx);
+    updateStatus(key, { imageStatus: "done", imageUrl: url });
+  }
+
+  function handleAudioUpload(hook: YouTubeScript, file: File) {
+    const url = URL.createObjectURL(file);
+    const key = `${hook.courseSlug}-hook${hook.hookIndex}-full`;
+    updateStatus(key, { audioStatus: "done", audioUrl: url });
+  }
+
+  // ── Counts ────────────────────────────────────────────────────────
+
+  function getHookImageCount(hook: YouTubeScript) {
+    return hook.scenes.filter((_, i) => {
+      const key = sceneKey(hook.courseSlug, hook.hookIndex, i);
+      return statuses[key]?.imageStatus === "done";
+    }).length;
+  }
+
+  // ── Build composer scenes ──────────────────────────────────────────
+
+  function buildComposerScenes(hook: YouTubeScript): ComposerScene[] {
+    return hook.scenes.map((scene: VideoScene, idx: number) => {
+      const key = sceneKey(hook.courseSlug, hook.hookIndex, idx);
+      const st = getStatus(key);
+      return {
+        ...scene,
+        imageUrl: st.imageUrl,
+        approved: true,
+      };
+    });
+  }
+
+  function isReadyToCompose(hook: YouTubeScript): boolean {
+    const audioKey = `${hook.courseSlug}-hook${hook.hookIndex}-full`;
+    const audioSt = getStatus(audioKey);
+    return audioSt.audioStatus === "done" && getHookImageCount(hook) > 0;
+  }
+
+  // ── Render ────────────────────────────────────────────────────────
 
   return (
-    <div className="min-h-screen bg-mundo-bg text-mundo-creme">
-      {/* Header */}
-      <div className="border-b border-mundo-bg-surface px-6 py-4">
-        <div className="flex items-center justify-between max-w-5xl mx-auto">
-          <div className="flex items-center gap-4">
-            <Link
-              href="/admin"
-              className="text-mundo-muted hover:text-mundo-creme text-sm"
-            >
-              HUB
-            </Link>
-            <span className="text-mundo-border">/</span>
-            <h1 className="text-lg font-medium text-mundo-dourado">
-              Videos YouTube
-            </h1>
-          </div>
+    <div className="min-h-screen bg-mundo-bg text-mundo-creme-suave p-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="flex items-center gap-4 mb-2">
+          <Link href="/admin" className="text-mundo-muted hover:text-mundo-creme text-sm">
+            HUB
+          </Link>
+          <span className="text-mundo-border">/</span>
+          <h1 className="font-serif text-3xl text-white">
+            Videos YouTube
+          </h1>
+        </div>
+        <p className="text-mundo-muted text-sm mb-8">
+          Pipeline: scripts → audio (ElevenLabs) → imagens (ThinkDiffusion) → montagem (CapCut/DaVinci)
+        </p>
 
-          {/* Step indicator */}
-          <div className="flex items-center gap-2">
-            {[1, 2, 3, 4].map((s) => (
-              <div key={s} className="flex items-center gap-2">
-                <button
-                  onClick={() => {
-                    if (s === 1) setStep(1);
-                    if (s === 2 && selectedScript) setStep(2);
-                    if (s === 3 && audioUrl && scenes.length > 0) setStep(3);
-                    if (s === 4 && approved) setStep(4);
-                  }}
-                  className={`h-8 w-8 rounded-full text-xs font-medium transition-all ${
-                    step === s
-                      ? "bg-[#C9A96E] text-[#1a1a2e]"
-                      : step > s
-                        ? "bg-green-800 text-green-200"
-                        : "bg-mundo-bg-surface text-mundo-muted-dark"
-                  }`}
-                >
-                  {step > s ? "\u2713" : s}
-                </button>
-                {s < 4 && (
-                  <div
-                    className={`w-8 h-0.5 ${
-                      step > s ? "bg-green-800" : "bg-mundo-bg-surface"
-                    }`}
-                  />
-                )}
-              </div>
-            ))}
+        {/* ── Config ─────────────────────────────────────────── */}
+        <div className="bg-mundo-bg-surface rounded-xl p-6 mb-8 space-y-4">
+          <h2 className="text-white font-sans font-medium mb-4">Configuracao</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-xs text-mundo-muted mb-1">ElevenLabs API Key</label>
+              <input
+                type="password"
+                value={apiKey}
+                onChange={(e) => setApiKey(e.target.value)}
+                className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
+                placeholder="xi-... (deixa vazio para usar env var do Vercel)"
+              />
+            </div>
+            <div>
+              <label className="block text-xs text-mundo-muted mb-1">Voice ID</label>
+              <input
+                type="text"
+                value={voiceId}
+                onChange={(e) => setVoiceId(e.target.value)}
+                className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
+              />
+            </div>
+            <div>
+              <label className="block text-xs text-mundo-muted mb-1">Modelo ElevenLabs</label>
+              <select
+                value={modelo}
+                onChange={(e) => setModelo(e.target.value as "v2" | "v3")}
+                className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
+              >
+                <option value="v2">Multilingual v2</option>
+                <option value="v3">Eleven v3</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-xs text-mundo-muted mb-1">
+                Velocidade: {speed.toFixed(1)}x
+              </label>
+              <input
+                type="range"
+                min="0.5"
+                max="1.5"
+                step="0.05"
+                value={speed}
+                onChange={(e) => setSpeed(parseFloat(e.target.value))}
+                className="w-full accent-mundo-dourado"
+              />
+            </div>
+            <div>
+              <label className="block text-xs text-mundo-muted mb-1">ComfyUI URL (ThinkDiffusion)</label>
+              <input
+                type="text"
+                value={comfyuiUrl}
+                onChange={(e) => setComfyuiUrl(e.target.value)}
+                className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
+                placeholder="https://your-instance.thinkdiffusion.com"
+              />
+            </div>
+            <div>
+              <label className="block text-xs text-mundo-muted mb-1">LoRA Model Name (opcional)</label>
+              <input
+                type="text"
+                value={loraName}
+                onChange={(e) => setLoraName(e.target.value)}
+                className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
+                placeholder="mundo-dos-veus-v1.safetensors"
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="max-w-5xl mx-auto px-6 py-8">
-        {/* ════════════ STEP 1: Escolher Hook ════════════ */}
-        {step === 1 && (
-          <div className="space-y-6">
-            <div>
-              <h2 className="text-xl text-mundo-dourado mb-1">
-                1. Escolhe o video
-              </h2>
-              <p className="text-sm text-mundo-muted">
-                Cada curso tem 2-3 hooks gratuitos para YouTube.
-              </p>
-            </div>
-
-            {courses.map((course) => {
-              const hooks = getScriptsForCourse(course.slug);
-              if (hooks.length === 0) return null;
+        {/* ── Course selector ────────────────────────────────── */}
+        <div className="mb-8">
+          <label className="block text-sm text-mundo-muted mb-2">Selecciona o curso</label>
+          <select
+            value={selectedCourse}
+            onChange={(e) => setSelectedCourse(e.target.value)}
+            className="bg-mundo-bg-surface border border-mundo-border rounded px-4 py-3 text-white w-full max-w-md"
+          >
+            <option value="">-- Escolhe um curso --</option>
+            {courses.map((c) => {
+              const courseHooks = getScriptsForCourse(c.slug);
               return (
-                <div key={course.slug} className="space-y-3">
-                  <h3 className="text-sm text-mundo-muted-dark uppercase tracking-wider">
-                    {course.number}. {course.title}
-                  </h3>
-                  {hooks.map((hook) => (
-                    <button
-                      key={`${hook.courseSlug}-${hook.hookIndex}`}
-                      onClick={() => selectHook(hook)}
-                      className={`w-full text-left border rounded-xl p-5 transition-all hover:border-[#C9A96E]/50 ${
-                        selectedScript === hook
-                          ? "border-[#C9A96E] bg-[#C9A96E]/5"
-                          : "border-mundo-bg-surface"
-                      }`}
-                    >
-                      <p className="text-mundo-creme font-medium">
-                        {hook.title}
-                      </p>
-                      <p className="text-xs text-mundo-muted mt-1">
-                        {hook.durationMin} min — {hook.scenes.length} cenas
-                      </p>
-                    </button>
-                  ))}
-                </div>
+                <option key={c.slug} value={c.slug} disabled={courseHooks.length === 0}>
+                  {c.number}. {c.title} — {courseHooks.length} hooks
+                </option>
+              );
+            })}
+          </select>
+        </div>
+
+        {/* ── Hooks list ─────────────────────────────────────── */}
+        {hooks.length > 0 && (
+          <div className="space-y-4">
+            {hooks.map((hook) => {
+              const audioKey = `${hook.courseSlug}-hook${hook.hookIndex}-full`;
+              const audioSt = getStatus(audioKey);
+              const imageCount = getHookImageCount(hook);
+
+              return (
+                <details
+                  key={`${hook.courseSlug}-${hook.hookIndex}`}
+                  className="bg-mundo-bg-surface rounded-xl overflow-hidden group"
+                >
+                  <summary className="flex items-center justify-between px-6 py-4 cursor-pointer list-none">
+                    <div className="flex items-center gap-3">
+                      <span className="text-mundo-violeta font-mono text-sm w-8">
+                        H{hook.hookIndex + 1}
+                      </span>
+                      <div>
+                        <span className="text-white">{hook.title}</span>
+                        <span className="text-xs text-mundo-muted ml-3">
+                          {hook.durationMin} min — {hook.scenes.length} cenas
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      {audioSt.audioStatus === "done" && (
+                        <span className="text-xs text-green-400">Audio OK</span>
+                      )}
+                      <span className="text-xs text-mundo-muted">
+                        Imagens: {imageCount}/{hook.scenes.length}
+                      </span>
+                      <span className="text-mundo-muted group-open:rotate-180 transition-transform">
+                        &#9662;
+                      </span>
+                    </div>
+                  </summary>
+
+                  <div className="px-6 pb-6 border-t border-mundo-bg space-y-6 pt-4">
+                    {/* ── Full narration (editable) ── */}
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <p className="text-xs text-mundo-muted uppercase">
+                          Narracao completa — editavel
+                        </p>
+                        <button
+                          onClick={() => setEditableNarration(hook, getFullNarration(hook))}
+                          className="text-xs text-mundo-muted hover:text-mundo-creme"
+                        >
+                          Repor original
+                        </button>
+                      </div>
+                      <textarea
+                        value={getEditableNarration(hook)}
+                        onChange={(e) => setEditableNarration(hook, e.target.value)}
+                        className="w-full bg-mundo-bg border border-mundo-border rounded-lg px-4 py-3 text-sm text-mundo-creme-suave leading-relaxed resize-y min-h-32 max-h-64"
+                        spellCheck={false}
+                      />
+
+                      <div className="flex items-center gap-3 mt-3">
+                        <button
+                          onClick={() => generateHookAudio(hook)}
+                          disabled={audioSt.audioStatus === "generating"}
+                          className={`text-sm px-4 py-2 rounded ${
+                            audioSt.audioStatus === "done"
+                              ? "bg-green-800/40 text-green-300"
+                              : audioSt.audioStatus === "generating"
+                              ? "bg-yellow-800/40 text-yellow-300 animate-pulse"
+                              : audioSt.audioStatus === "error"
+                              ? "bg-red-800/40 text-red-300"
+                              : "bg-mundo-dourado text-mundo-bg hover:bg-mundo-dourado-quente"
+                          }`}
+                        >
+                          {audioSt.audioStatus === "generating"
+                            ? "A gerar audio..."
+                            : audioSt.audioStatus === "done"
+                            ? "Regerar audio"
+                            : audioSt.audioStatus === "error"
+                            ? "Tentar de novo"
+                            : "Gerar Audio (ElevenLabs)"}
+                        </button>
+
+                        <label className="text-sm px-4 py-2 bg-mundo-bg border border-mundo-border rounded text-mundo-muted cursor-pointer hover:text-mundo-creme">
+                          Carregar MP3
+                          <input
+                            type="file"
+                            accept="audio/*"
+                            onChange={(e) => {
+                              const f = e.target.files?.[0];
+                              if (f) handleAudioUpload(hook, f);
+                            }}
+                            className="hidden"
+                          />
+                        </label>
+                      </div>
+
+                      {audioSt.audioError && (
+                        <p className="text-xs text-red-400 mt-2">{audioSt.audioError}</p>
+                      )}
+                      {audioSt.audioUrl && (
+                        <audio controls src={audioSt.audioUrl} className="mt-3 h-10 w-full max-w-lg" />
+                      )}
+                    </div>
+
+                    {/* ── Scenes with images ── */}
+                    <div>
+                      <div className="flex items-center justify-between mb-3">
+                        <p className="text-xs text-mundo-muted uppercase">
+                          Cenas — imagens para cada momento
+                        </p>
+                        <div className="flex items-center gap-2">
+                          {batchRunning ? (
+                            <button
+                              onClick={() => { shouldStop.current = true; }}
+                              className="text-xs bg-red-600/80 text-white px-3 py-1.5 rounded hover:bg-red-600"
+                            >
+                              Parar ({batchProgress.current}/{batchProgress.total})
+                            </button>
+                          ) : (
+                            <button
+                              onClick={() => batchGenerateImages(hook)}
+                              disabled={!comfyuiUrl.trim()}
+                              className="text-xs bg-mundo-violeta text-white px-3 py-1.5 rounded hover:bg-mundo-violeta/80 disabled:opacity-40"
+                            >
+                              Gerar todas as imagens
+                            </button>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="space-y-3">
+                        {hook.scenes.map((scene, idx) => {
+                          const key = sceneKey(hook.courseSlug, hook.hookIndex, idx);
+                          const st = getStatus(key);
+                          return (
+                            <div
+                              key={idx}
+                              className="flex gap-4 bg-mundo-bg rounded-lg p-4"
+                            >
+                              {/* Image preview / upload */}
+                              <div
+                                className="w-40 h-24 rounded-lg overflow-hidden flex-shrink-0 border border-mundo-border cursor-pointer relative group/img"
+                                onClick={() => {
+                                  const input = document.createElement("input");
+                                  input.type = "file";
+                                  input.accept = "image/*";
+                                  input.onchange = (e) => {
+                                    const f = (e.target as HTMLInputElement).files?.[0];
+                                    if (f) handleImageUpload(hook, idx, f);
+                                  };
+                                  input.click();
+                                }}
+                              >
+                                {st.imageUrl ? (
+                                  <>
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img src={st.imageUrl} alt="" className="w-full h-full object-cover" />
+                                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
+                                      <span className="text-white text-xs">Substituir</span>
+                                    </div>
+                                  </>
+                                ) : (
+                                  <div className="w-full h-full bg-mundo-bg-surface flex items-center justify-center">
+                                    <span className="text-mundo-muted-dark text-2xl">+</span>
+                                  </div>
+                                )}
+                              </div>
+
+                              {/* Scene info */}
+                              <div className="flex-1 min-w-0">
+                                <div className="flex items-center gap-2 mb-1">
+                                  <span className="text-mundo-violeta font-mono text-xs uppercase">
+                                    {idx + 1}. {scene.type}
+                                  </span>
+                                  <span className="text-mundo-muted text-xs">
+                                    ~{scene.durationSec}s
+                                  </span>
+                                </div>
+                                {scene.overlayText && (
+                                  <p className="text-sm text-white mb-1">
+                                    &ldquo;{scene.overlayText}&rdquo;
+                                  </p>
+                                )}
+                                {scene.narration && (
+                                  <p className="text-xs text-mundo-muted-dark line-clamp-2">
+                                    {scene.narration}
+                                  </p>
+                                )}
+                                <p className="text-xs text-mundo-border mt-1 italic">
+                                  {scene.visualNote}
+                                </p>
+                                {st.imageError && (
+                                  <p className="text-xs text-red-400 mt-1">{st.imageError}</p>
+                                )}
+                              </div>
+
+                              {/* Actions */}
+                              <div className="flex flex-col gap-2 shrink-0">
+                                <button
+                                  onClick={() => generateSceneImage(hook, idx)}
+                                  disabled={!comfyuiUrl.trim() || st.imageStatus === "generating"}
+                                  className={`text-xs px-3 py-1.5 rounded ${
+                                    st.imageStatus === "done"
+                                      ? "bg-green-800/40 text-green-300"
+                                      : st.imageStatus === "generating"
+                                      ? "bg-yellow-800/40 text-yellow-300 animate-pulse"
+                                      : st.imageStatus === "error"
+                                      ? "bg-red-800/40 text-red-300"
+                                      : "bg-mundo-border text-mundo-muted hover:bg-mundo-bg-surface"
+                                  }`}
+                                >
+                                  {st.imageStatus === "generating"
+                                    ? "A gerar..."
+                                    : st.imageStatus === "done"
+                                    ? "Regerar"
+                                    : st.imageStatus === "error"
+                                    ? "Tentar de novo"
+                                    : "Gerar imagem"}
+                                </button>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {/* ── Compor Video Automaticamente ── */}
+                    <div className="border-t border-mundo-bg pt-4">
+                      {isReadyToCompose(hook) ? (
+                        <div>
+                          <h3 className="text-sm text-mundo-dourado mb-3">
+                            Compor Video
+                          </h3>
+                          <p className="text-xs text-mundo-muted mb-4">
+                            Audio + imagens prontas. O video e composto automaticamente com transicoes dissolve, Ken Burns e texto animado.
+                          </p>
+                          <VideoComposer
+                            scenes={buildComposerScenes(hook)}
+                            audioUrl={audioSt.audioUrl}
+                            title={hook.title}
+                          />
+                        </div>
+                      ) : (
+                        <div>
+                          <p className="text-xs text-mundo-muted mb-2">
+                            Para compor o video automaticamente, gera o audio e pelo menos uma imagem.
+                          </p>
+                          <div className="flex gap-3">
+                            {audioSt.audioUrl && (
+                              <a
+                                href={audioSt.audioUrl}
+                                download={`${hook.courseSlug}-hook${hook.hookIndex + 1}.mp3`}
+                                className="text-xs px-3 py-1.5 bg-mundo-dourado/20 text-mundo-dourado rounded hover:bg-mundo-dourado/30"
+                              >
+                                Descarregar audio
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </details>
               );
             })}
           </div>
         )}
 
-        {/* ════════════ STEP 2: Gerar Audio ════════════ */}
-        {step === 2 && selectedScript && (
-          <div className="space-y-6">
-            <div>
-              <h2 className="text-xl text-mundo-dourado mb-1">
-                2. Audio — {selectedScript.title}
-              </h2>
-              <p className="text-sm text-mundo-muted">
-                Gera o audio com a tua voz (ElevenLabs) ou carrega um MP3.
-              </p>
-            </div>
-
-            {/* Script preview */}
-            <div className="border border-mundo-bg-surface rounded-xl p-5 max-h-64 overflow-y-auto">
-              <p className="text-xs text-mundo-muted-dark uppercase mb-3">
-                Narracao ({selectedScript.scenes.filter((s) => s.narration).length} seccoes)
-              </p>
-              <p className="text-sm text-[#d0d0d0] whitespace-pre-line leading-relaxed">
-                {getFullNarration(selectedScript)}
-              </p>
-            </div>
-
-            {/* Generate or upload */}
-            <div className="flex items-center gap-4">
-              <button
-                onClick={generateAudio}
-                disabled={audioGenerating}
-                className="px-6 py-3 bg-[#D4A853] text-[#1a1a2e] rounded-lg font-medium hover:bg-[#C9A96E] disabled:opacity-40 transition-colors"
-              >
-                {audioGenerating
-                  ? "A gerar com a tua voz..."
-                  : "Gerar Audio (ElevenLabs)"}
-              </button>
-
-              <span className="text-mundo-border">ou</span>
-
-              <label className="px-4 py-3 bg-mundo-bg-surface text-mundo-muted rounded-lg text-sm cursor-pointer hover:bg-mundo-bg-surface transition-colors">
-                Carregar MP3
-                <input
-                  type="file"
-                  accept="audio/*"
-                  onChange={handleAudioUpload}
-                  className="hidden"
-                />
-              </label>
-            </div>
-
-            {audioError && (
-              <div className="text-sm text-red-400 bg-red-900/20 rounded-lg px-4 py-3">
-                {audioError}
-              </div>
-            )}
-
-            {/* Audio player + advance */}
-            {audioUrl && (
-              <div className="border border-green-800/50 bg-green-900/10 rounded-xl p-5 space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="h-3 w-3 rounded-full bg-green-500" />
-                  <span className="text-sm text-green-300">Audio pronto</span>
-                  {audioDuration > 0 && (
-                    <span className="text-xs text-mundo-muted">
-                      {Math.floor(audioDuration / 60)}:{String(Math.floor(audioDuration % 60)).padStart(2, "0")} —{" "}
-                      {scenes.length} cenas calculadas
-                    </span>
-                  )}
-                </div>
-
-                <audio
-                  ref={previewAudioRef}
-                  src={audioUrl}
-                  controls
-                  onLoadedMetadata={onAudioLoaded}
-                  className="w-full"
-                />
-
-                <button
-                  onClick={advanceToPreview}
-                  disabled={scenes.length === 0}
-                  className="px-6 py-3 bg-[#C9A96E] text-[#1a1a2e] rounded-lg font-medium hover:bg-[#D4A853] disabled:opacity-40 transition-colors"
-                >
-                  Continuar para pre-visualizacao
-                </button>
-              </div>
-            )}
-
-            <button
-              onClick={() => setStep(1)}
-              className="text-sm text-mundo-muted-dark hover:text-mundo-muted"
-            >
-              Voltar
-            </button>
-          </div>
-        )}
-
-        {/* ════════════ STEP 3: Preview & Approve ════════════ */}
-        {step === 3 && selectedScript && (
-          <div className="space-y-6">
-            <div>
-              <h2 className="text-xl text-mundo-dourado mb-1">
-                3. Rever — {selectedScript.title}
-              </h2>
-              <p className="text-sm text-mundo-muted">
-                Ve o video completo. Adiciona imagens se quiseres. Quando estiveres satisfeita, aprova.
-              </p>
-            </div>
-
-            {/* Video preview */}
-            <div className="bg-black rounded-xl overflow-hidden">
-              <canvas
-                ref={previewCanvasRef}
-                style={{ width: "100%", aspectRatio: "16/9" }}
-                className="block"
-              />
-            </div>
-
-            {/* Playback controls */}
-            <div className="flex items-center gap-4">
-              <button
-                onClick={togglePlayback}
-                className="px-4 py-2 bg-mundo-bg-surface text-mundo-creme rounded-lg text-sm hover:bg-mundo-bg-surface transition-colors"
-              >
-                {playing ? "Pausar" : "Reproduzir"}
-              </button>
-
-              <input
-                type="range"
-                min={0}
-                max={audioDuration || 1}
-                step={0.1}
-                value={currentTime}
-                onChange={(e) => seekPreview(Number(e.target.value))}
-                className="flex-1"
-              />
-
-              <span className="text-xs text-mundo-muted tabular-nums w-24 text-right">
-                {formatTime(currentTime)} / {formatTime(audioDuration)}
-              </span>
-            </div>
-
-            {/* Audio element (hidden, controlled by preview) */}
-            {audioUrl && (
-              <audio
-                ref={previewAudioRef}
-                src={audioUrl}
-                onLoadedMetadata={onAudioLoaded}
-                className="hidden"
-              />
-            )}
-
-            {/* Scene timeline with image slots */}
-            <div>
-              <h3 className="text-sm text-mundo-dourado mb-3">
-                Cenas ({scenes.length}) — clica para adicionar imagem
-              </h3>
-              <div className="grid grid-cols-4 sm:grid-cols-8 gap-2">
-                {scenes.map((scene, idx) => (
-                  <div
-                    key={idx}
-                    className={`border rounded-lg overflow-hidden cursor-pointer transition-all ${
-                      sceneIdx === idx
-                        ? "border-[#C9A96E] ring-1 ring-[#C9A96E]/30"
-                        : scene.imageUrl
-                          ? "border-[#3a3a5a]"
-                          : "border-mundo-bg-surface border-dashed"
-                    }`}
-                    onClick={() => {
-                      const input = document.createElement("input");
-                      input.type = "file";
-                      input.accept = "image/*";
-                      input.onchange = (e) => {
-                        const file = (e.target as HTMLInputElement).files?.[0];
-                        if (file) handleImageUpload(idx, file);
-                      };
-                      input.click();
-                    }}
-                    onDragOver={(e) => e.preventDefault()}
-                    onDrop={(e) => {
-                      e.preventDefault();
-                      const file = e.dataTransfer.files[0];
-                      if (file?.type.startsWith("image/"))
-                        handleImageUpload(idx, file);
-                    }}
-                  >
-                    <div className="aspect-video bg-mundo-bg flex items-center justify-center relative">
-                      {scene.imageUrl ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={scene.imageUrl}
-                          alt=""
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <span className="text-mundo-border text-lg">+</span>
-                      )}
-                    </div>
-                    <div className="px-1.5 py-1 bg-mundo-bg-surface/50">
-                      <p className="text-[9px] text-mundo-muted-dark uppercase font-mono truncate">
-                        {idx + 1}. {scene.type}
-                      </p>
-                      <p className="text-[9px] text-mundo-muted">
-                        {formatTime(scene.adjustedStart)}-{formatTime(scene.adjustedEnd)}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <p className="text-[10px] text-mundo-muted-dark mt-2">
-                Cenas sem imagem usam fundo escuro com texto. Imagens opcionais.
-              </p>
-            </div>
-
-            {/* Approve */}
-            <div className="flex items-center gap-4 pt-4 border-t border-mundo-bg-surface">
-              {!approved ? (
-                <button
-                  onClick={() => {
-                    setApproved(true);
-                    setStep(4);
-                  }}
-                  className="px-6 py-3 bg-green-700 text-white rounded-lg font-medium hover:bg-green-600 transition-colors"
-                >
-                  Aprovar e exportar
-                </button>
-              ) : (
-                <div className="flex items-center gap-2">
-                  <div className="h-3 w-3 rounded-full bg-green-500" />
-                  <span className="text-sm text-green-300">Aprovado</span>
-                </div>
-              )}
-
-              <button
-                onClick={() => setStep(2)}
-                className="text-sm text-mundo-muted-dark hover:text-mundo-muted"
-              >
-                Voltar
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* ════════════ STEP 4: Export ════════════ */}
-        {step === 4 && selectedScript && (
-          <div className="space-y-6">
-            <div>
-              <h2 className="text-xl text-mundo-dourado mb-1">
-                4. Exportar — {selectedScript.title}
-              </h2>
-              <p className="text-sm text-mundo-muted">
-                Gera o video final em 1920x1080. Demora o tempo do audio (
-                {formatTime(audioDuration)}).
-              </p>
-            </div>
-
-            <canvas ref={exportCanvasRef} className="hidden" />
-
-            {!exportUrl && !exporting && (
-              <button
-                onClick={exportVideo}
-                className="px-8 py-4 bg-[#D4A853] text-[#1a1a2e] rounded-xl font-medium text-lg hover:bg-[#C9A96E] transition-colors"
-              >
-                Gerar Video (1920x1080)
-              </button>
-            )}
-
-            {exporting && (
-              <div className="space-y-3">
-                <div className="h-4 bg-mundo-bg-surface rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-[#D4A853] transition-all duration-300"
-                    style={{ width: `${exportProgress * 100}%` }}
-                  />
-                </div>
-                <div className="flex justify-between text-xs text-mundo-muted">
-                  <span>A gravar... {Math.round(exportProgress * 100)}%</span>
-                  <span>{formatTime(exportProgress * audioDuration)} / {formatTime(audioDuration)}</span>
-                </div>
-                <button
-                  onClick={() => { cancelExportRef.current = true; setExporting(false); }}
-                  className="text-sm text-red-400 hover:text-red-300"
-                >
-                  Cancelar
-                </button>
-              </div>
-            )}
-
-            {exportUrl && (
-              <div className="border border-green-800/50 bg-green-900/10 rounded-xl p-6 space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="h-3 w-3 rounded-full bg-green-500" />
-                  <span className="text-lg text-green-300">
-                    Video pronto
-                  </span>
-                </div>
-
-                <video
-                  src={exportUrl}
-                  controls
-                  className="w-full rounded-lg"
-                  style={{ maxHeight: 400 }}
-                />
-
-                <div className="flex gap-4">
-                  <a
-                    href={exportUrl}
-                    download={`${selectedScript.title.replace(/[^a-zA-Z0-9\u00C0-\u017F ]/g, "").replace(/ +/g, "-")}.webm`}
-                    className="px-6 py-3 bg-green-700 text-white rounded-lg font-medium hover:bg-green-600 transition-colors"
-                  >
-                    Descarregar .webm
-                  </a>
-
-                  <button
-                    onClick={() => {
-                      setApproved(false);
-                      setExportUrl(null);
-                      setStep(3);
-                    }}
-                    className="px-4 py-3 bg-mundo-bg-surface text-mundo-muted rounded-lg text-sm hover:bg-mundo-bg-surface transition-colors"
-                  >
-                    Refazer
-                  </button>
-                </div>
-              </div>
-            )}
-
-            <button
-              onClick={() => setStep(3)}
-              className="text-sm text-mundo-muted-dark hover:text-mundo-muted"
-            >
-              Voltar para pre-visualizacao
-            </button>
-          </div>
+        {selectedCourse && hooks.length === 0 && (
+          <p className="text-mundo-muted text-sm">
+            Este curso ainda nao tem hooks YouTube definidos.
+          </p>
         )}
       </div>
     </div>
   );
-}
-
-function formatTime(sec: number): string {
-  const m = Math.floor(sec / 60);
-  const s = Math.floor(sec % 60);
-  return `${m}:${String(s).padStart(2, "0")}`;
 }

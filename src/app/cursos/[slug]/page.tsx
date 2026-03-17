@@ -13,7 +13,6 @@ const COURSE_LIST: Record<
       number: number;
       title: string;
       description: string;
-      isFree: boolean;
       subLessons: { letter: string; title: string }[];
       workbook: string | null;
     }[];
@@ -33,7 +32,6 @@ const COURSE_LIST: Record<
         number: 1,
         title: "O Extracto como Espelho",
         description: "A relação com dinheiro começa por olhar.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O medo de olhar" },
           { letter: "B", title: "Ler o extracto como um diário" },
@@ -158,7 +156,6 @@ export default async function CourseLandingPage({ params }: PageProps) {
               number: number;
               title: string;
               description: string;
-              isFree: boolean;
               subLessons: { letter: string; title: string }[];
               workbook: string | null;
             }) => (

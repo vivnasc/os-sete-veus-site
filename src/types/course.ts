@@ -34,7 +34,6 @@ export type CourseModule = {
   number: number;
   title: string;
   description: string;
-  isFree: boolean;
   subLessons: SubLesson[];
   workbook: string | null;
 };

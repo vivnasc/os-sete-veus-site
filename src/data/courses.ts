@@ -16,7 +16,6 @@ const COURSES: CourseData[] = [
         number: 1,
         title: "O Extracto como Espelho",
         description: "A relação com dinheiro começa por olhar.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O medo de olhar", description: "O primeiro passo é abrir o extracto sem desviar o olhar." },
           { letter: "B", title: "Ler o extracto como um diário", description: "Cada linha conta uma história sobre o que valorizas." },
@@ -28,7 +27,6 @@ const COURSES: CourseData[] = [
         number: 2,
         title: "A Herança Financeira Emocional",
         description: "O dinheiro que herdaste sem saber.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Os scripts de infância", description: "As frases sobre dinheiro que absorveste antes dos 10 anos." },
           { letter: "B", title: "O que viste vs. o que ouviste", description: "O que os teus pais faziam com dinheiro vs. o que diziam." },
@@ -40,7 +38,6 @@ const COURSES: CourseData[] = [
         number: 3,
         title: "A Vergonha do Dinheiro",
         description: "A vergonha que silencia a conversa sobre dinheiro.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Vergonha de não ter", description: "A vergonha de não ter o suficiente e o que ela esconde." },
           { letter: "B", title: "Vergonha de querer mais", description: "A vergonha de ambicionar e o que ela protege." },
@@ -52,7 +49,6 @@ const COURSES: CourseData[] = [
         number: 4,
         title: "Cobrar, Receber, Merecer",
         description: "O no entre o que cobras e o que acreditas merecer.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O desconto automático", description: "Porque baixas o preço antes de alguém pedir." },
           { letter: "B", title: "A ligação cobrar-merecer", description: "Cobrar o que vale é sentir que mereces receber." },
@@ -64,7 +60,6 @@ const COURSES: CourseData[] = [
         number: 5,
         title: "Gastar em Ti",
         description: "A hierarquia invisível dos teus gastos.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A hierarquia dos gastos", description: "Onde te colocas na lista de prioridades financeiras." },
           { letter: "B", title: "Culpa e prazer", description: "Gastar em ti sem a voz que diz que és egoísta." },
@@ -76,7 +71,6 @@ const COURSES: CourseData[] = [
         number: 6,
         title: "Dinheiro e Relações",
         description: "O dinheiro como linguagem nas relações.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Quem paga, manda?", description: "A dinâmica de poder escondida nas contas partilhadas." },
           { letter: "B", title: "Dependência financeira e medo", description: "Quando a dependência financeira alimenta o medo de sair." },
@@ -88,7 +82,6 @@ const COURSES: CourseData[] = [
         number: 7,
         title: "Ganhar Mais Não Resolve",
         description: "O buraco que o dinheiro não enche.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O buraco que o dinheiro não enche", description: "Quando mais dinheiro não traz mais paz." },
           { letter: "B", title: "Sabotagem financeira", description: "Os padrões que te fazem perder o que ganhas." },
@@ -100,7 +93,6 @@ const COURSES: CourseData[] = [
         number: 8,
         title: "Dinheiro como Liberdade",
         description: "De sobrevivência a direcção.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "De sobrevivência a direcção", description: "Sair do modo sobrevivência e entrar no modo escolha." },
           { letter: "B", title: "O mapa do futuro que queres financiar", description: "Desenhar o futuro que queres e calcular o que custa." },
@@ -131,7 +123,6 @@ const COURSES: CourseData[] = [
         number: 1,
         title: "A Mãe que Carregas",
         description: "A mãe-personagem vs. a mãe-pessoa.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A mãe-personagem vs. a mãe-pessoa", description: "A distância entre a mãe que construíste e a mulher que ela e." },
           { letter: "B", title: "Memória ou interpretação?", description: "O que lembras e o que realmente aconteceu." },
@@ -142,7 +133,6 @@ const COURSES: CourseData[] = [
         number: 2,
         title: "A Herança que Não Pediste",
         description: "O que herdaste sem saber.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O que herdaste sem saber", description: "Os padrões que passaram de mãe para filha sem palavras." },
           { letter: "B", title: "Repetição e oposição: ambas são herança", description: "Repetir a mãe ou fazer o oposto — ambas são respostas a ela." },
@@ -154,7 +144,6 @@ const COURSES: CourseData[] = [
         number: 3,
         title: "A Culpa de Crescer",
         description: "Crescer como traição silenciosa.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Crescer como traição", description: "A sensação de que evoluir é abandonar a mãe." },
           { letter: "B", title: "A lealdade invisível", description: "Os compromissos inconscientes que te prendem ao passado." },
@@ -166,7 +155,6 @@ const COURSES: CourseData[] = [
         number: 4,
         title: "A Raiva Sagrada",
         description: "A raiva que nunca te permitiste.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A raiva que nunca te permitiste", description: "A raiva guardada que pesa mais do que a expressada." },
           { letter: "B", title: "Raiva vs. rejeição", description: "Sentir raiva da mãe não é rejeitá-la." },
@@ -178,7 +166,6 @@ const COURSES: CourseData[] = [
         number: 5,
         title: "O Silêncio entre Mãe e Filha",
         description: "O que nunca foi dito entre vos.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O que nunca foi dito", description: "As palavras que ficaram por dizer entre mãe e filha." },
           { letter: "B", title: "O silêncio como protecção", description: "O silêncio que protege mas também aprisiona." },
@@ -190,7 +177,6 @@ const COURSES: CourseData[] = [
         number: 6,
         title: "O Corpo da Mãe, o Corpo da Filha",
         description: "O que a mãe te ensinou sobre o teu corpo.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O que a mãe te ensinou sobre o teu corpo", description: "As mensagens sobre o corpo feminino que absorveste." },
           { letter: "B", title: "O corpo como territorio herdado", description: "O teu corpo como extensao do corpo da tua mãe." },
@@ -201,7 +187,6 @@ const COURSES: CourseData[] = [
         number: 7,
         title: "Quando a Mãe Não Foi Suficiente",
         description: "A mãe que não pode dar o que não tinha.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A mãe que não pode", description: "Distinguir entre não quis e não pôde." },
           { letter: "B", title: "Lamentar sem culpar", description: "Sentir a falta sem transformar em acusação." },
@@ -213,7 +198,6 @@ const COURSES: CourseData[] = [
         number: 8,
         title: "Ser Filha e Ser Mãe ao Mesmo Tempo",
         description: "O loop geracional e como interrompê-lo.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O loop geracional", description: "O que passas adiante sem querer." },
           { letter: "B", title: "Interromper o padrão", description: "Escolher conscientemente o que transmites." },
@@ -225,7 +209,6 @@ const COURSES: CourseData[] = [
         number: 9,
         title: "Ver a Mulher, Não Só a Mãe",
         description: "A despedida da filha que precisava.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A mãe antes de ti", description: "A mulher que a tua mãe era antes de ser tua mãe." },
           { letter: "B", title: "Ver sem perdoar (se não quiseres)", description: "Compreender não exige perdao. Ver é suficiente." },
@@ -256,7 +239,6 @@ const COURSES: CourseData[] = [
         number: 1,
         title: "O Momento em que Desapareces",
         description: "O ponto de mutação em que deixas de ser tu.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O ponto de mutação", description: "O momento exacto em que deixas de te sentir dentro da relação." },
           { letter: "B", title: "Os sinais no corpo", description: "O corpo avisa antes da mente perceber." },
@@ -268,7 +250,6 @@ const COURSES: CourseData[] = [
         number: 2,
         title: "O Modelo de Amor que Absorveste",
         description: "O modelo de amor que carregas sem saber.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Amor como sacrifício", description: "Quando aprendeste que amar é abdicar." },
           { letter: "B", title: "Amor como salvação", description: "Quando procuras no outro o que falta em ti." },
@@ -280,7 +261,6 @@ const COURSES: CourseData[] = [
         number: 3,
         title: "Atrair o Mesmo Padrão",
         description: "A repetição não é azar.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A repetição não é azar", description: "Porque atrais o mesmo tipo de relação." },
           { letter: "B", title: "O familiar confundido com amor", description: "Quando o que doi é confundido com intimidade." },
@@ -292,7 +272,6 @@ const COURSES: CourseData[] = [
         number: 4,
         title: "Ter Necessidades Não é Ser Carente",
         description: "Nomear o que precisas sem pedir desculpa.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A arma da palavra 'carente'", description: "Como a palavra 'carente' é usada para te silenciar." },
           { letter: "B", title: "Nomear o que precisas", description: "A diferença entre necessidade e dependência." },
@@ -304,7 +283,6 @@ const COURSES: CourseData[] = [
         number: 5,
         title: "Os Limites Dentro do Amor",
         description: "Limites não são muros.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Limites não são muros", description: "A diferença entre proteger-te e fechar-te." },
           { letter: "B", title: "O medo de perder ao limitar", description: "O medo de que limites afastem quem amas." },
@@ -316,7 +294,6 @@ const COURSES: CourseData[] = [
         number: 6,
         title: "Solidao vs. Solitude",
         description: "A diferença entre estar sozinha e estar contigo.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O medo de ficar sozinha", description: "O medo que te faz aceitar menos do que mereces." },
           { letter: "B", title: "Aprender a estar contigo", description: "A prática de solitude como fundação do amor." },
@@ -328,7 +305,6 @@ const COURSES: CourseData[] = [
         number: 7,
         title: "O Sexo como Termometro",
         description: "O que o desejo revela sobre a relação.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Desejo autêntico vs. desejo performativo", description: "A diferença entre querer e achar que deves querer." },
           { letter: "B", title: "Prazer como direito", description: "O prazer não é bónus — é linguagem." },
@@ -340,7 +316,6 @@ const COURSES: CourseData[] = [
         number: 8,
         title: "Dois Corpos Inteiros",
         description: "Amor como proximidade entre corpos inteiros.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A imagem do amor saudável", description: "O que é realmente estar com alguém sem te perder." },
           { letter: "B", title: "O espaço entre os dois", description: "O espaço como sinal de saúde, não de distância." },
@@ -371,7 +346,6 @@ const COURSES: CourseData[] = [
         number: 1,
         title: "Chorar o que Acabou",
         description: "A permissão de acabar de acabar.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A permissão de acabar de acabar", description: "Dar tempo ao luto antes de correr para o novo." },
           { letter: "B", title: "O elogio fúnebre ao que foi", description: "Honrar o que existiu, mesmo que tenha doido." },
@@ -383,7 +357,6 @@ const COURSES: CourseData[] = [
         number: 2,
         title: "O Vazio que Assusta",
         description: "O espaço entre o fim e o início.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O espaço entre o fim e o início", description: "O limbo onde já não és quem eras e ainda não és quem vais ser." },
           { letter: "B", title: "O vazio como solo", description: "O vazio não é ausência — é preparação." },
@@ -395,7 +368,6 @@ const COURSES: CourseData[] = [
         number: 3,
         title: "Quem Sou Eu Sem Aquilo?",
         description: "Identidade além dos papéis.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Identidade ligada a papéis", description: "O que sobra quando tiras o título, a relação, o papel." },
           { letter: "B", title: "Os papéis que te definiram", description: "Mãe, esposa, profissional — quem és sem isso?" },
@@ -407,7 +379,6 @@ const COURSES: CourseData[] = [
         number: 4,
         title: "O Medo do Desconhecido",
         description: "Avancar com medo.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Porque o conhecido doi menos que o incerto", description: "A preferencia pelo sofrimento familiar." },
           { letter: "B", title: "O corpo no medo", description: "As respostas físicas ao desconhecido." },
@@ -419,7 +390,6 @@ const COURSES: CourseData[] = [
         number: 5,
         title: "O Peso das Opiniões",
         description: "Recomeçar em silêncio.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O que os outros esperam de ti", description: "As expectativas externas que pesam no recomeço." },
           { letter: "B", title: "A vergonha do 'falhanço'", description: "O estigma de recomeçar como se fosse fracasso." },
@@ -431,7 +401,6 @@ const COURSES: CourseData[] = [
         number: 6,
         title: "Recomeçar aos 30, 40, 50",
         description: "A mentira do tarde demais.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A mentira do 'tarde demais'", description: "Desmontar a narrativa do prazo de validade." },
           { letter: "B", title: "A sabedoria que a idade traz ao recomeço", description: "O que sabes agora que não sabias antes." },
@@ -443,7 +412,6 @@ const COURSES: CourseData[] = [
         number: 7,
         title: "O Dinheiro do Recomeco",
         description: "A insegurança financeira do recomeço.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A insegurança financeira", description: "O medo financeiro como barreira ao recomeço." },
           { letter: "B", title: "Começar com pouco", description: "O mínimo viável para dar o primeiro passo." },
@@ -455,7 +423,6 @@ const COURSES: CourseData[] = [
         number: 8,
         title: "Começar a Partir de Aqui",
         description: "Não apagar — integrar.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Não apagar — integrar", description: "Recomeçar não é apagar. É construir com o que tens." },
           { letter: "B", title: "Os primeiros passos", description: "Acções pequenas que mudam a direcção." },
@@ -486,7 +453,6 @@ const COURSES: CourseData[] = [
         number: 1,
         title: "A Paralisia e o que Ela Protege",
         description: "Não decidir é decidir.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Não decidir é decidir", description: "A indecisão como decisão disfarçada." },
           { letter: "B", title: "A ilusão de manter todas as opções abertas", description: "O custo de não escolher." },
@@ -498,7 +464,6 @@ const COURSES: CourseData[] = [
         number: 2,
         title: "A Voz que Não é Tua",
         description: "Quem fala quando decides.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Quem fala quando 'decides'", description: "As vozes internas que se mascaram de tuas." },
           { letter: "B", title: "O 'devias' como alarme", description: "Cada 'devias' é sinal de uma voz que não é tua." },
@@ -510,7 +475,6 @@ const COURSES: CourseData[] = [
         number: 3,
         title: "Decidir com o Corpo",
         description: "O corpo sabe primeiro.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O corpo sabe primeiro", description: "A inteligência somática na tomada de decisão." },
           { letter: "B", title: "Calibrar o sim e o não corporal", description: "Aprender a ler a expansao e a contratura." },
@@ -522,7 +486,6 @@ const COURSES: CourseData[] = [
         number: 4,
         title: "Falsas Dicotomias",
         description: "Ou isto ou aquilo — sera?",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Ou isto ou aquilo", description: "A maioria das decisões não é binária." },
           { letter: "B", title: "A pressao de urgência artificial", description: "Nem tudo precisa de ser decidido agora." },
@@ -534,7 +497,6 @@ const COURSES: CourseData[] = [
         number: 5,
         title: "O Medo de Errar",
         description: "O erro como informação.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Errar é humano", description: "Retirar o peso catastrófico do erro." },
           { letter: "B", title: "O erro como informação", description: "Cada erro traz dados que a indecisão não traz." },
@@ -546,7 +508,6 @@ const COURSES: CourseData[] = [
         number: 6,
         title: "Decidir por Ti (Não por Todos)",
         description: "A mulher que decide por todos e nada por si.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A mulher que decide por todos e nada por si", description: "O padrão de priorizar as decisões dos outros." },
           { letter: "B", title: "Culpa de priorizar", description: "A culpa de te colocares em primeiro." },
@@ -558,7 +519,6 @@ const COURSES: CourseData[] = [
         number: 7,
         title: "Decisões Irrevogáveis e Revogáveis",
         description: "A maioria é revogável.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A maioria é revogável", description: "Quase tudo pode ser refeito, ajustado, redirecionado." },
           { letter: "B", title: "As poucas irrevogaveis", description: "Identificar as decisões que merecem mais tempo." },
@@ -570,7 +530,6 @@ const COURSES: CourseData[] = [
         number: 8,
         title: "Viver com a Escolha",
         description: "A paz da decisão tomada.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O remorso como hábito", description: "Quando o remorso é padrão, não resposta a uma má decisão." },
           { letter: "B", title: "Cada sim implica um não", description: "Aceitar o luto de cada escolha feita." },
@@ -601,7 +560,6 @@ const COURSES: CourseData[] = [
         number: 1,
         title: "O Corpo que Ignoras",
         description: "Décadas a calar o corpo.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Décadas a calar o corpo", description: "O hábito de ignorar o que o corpo diz." },
           { letter: "B", title: "A desconexão como norma", description: "Quando não sentir se torna normal." },
@@ -613,7 +571,6 @@ const COURSES: CourseData[] = [
         number: 2,
         title: "Sintomas como Linguagem",
         description: "O corpo fala quando a boca se cala.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A enxaqueca antes do Natal", description: "Os padrões entre o corpo e os eventos da vida." },
           { letter: "B", title: "A insónia da conversa evitada", description: "Quando o corpo acorda o que a mente quer esquecer." },
@@ -625,7 +582,6 @@ const COURSES: CourseData[] = [
         number: 3,
         title: "A Memória do Corpo",
         description: "O corpo guarda o que a mente esquece.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O corpo guarda o que a mente esquece", description: "A memória somática e como se manifesta." },
           { letter: "B", title: "Triggers corporais", description: "Reacções físicas a estímulos que a mente não reconhece." },
@@ -637,7 +593,6 @@ const COURSES: CourseData[] = [
         number: 4,
         title: "O Sim e o Não do Corpo",
         description: "Expansao vs. contratura.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Expansao vs. contratura", description: "As duas respostas básicas do corpo a qualquer estímulo." },
           { letter: "B", title: "Calibrar no quotidiano", description: "Praticar a leitura corporal nas decisões do dia-a-dia." },
@@ -649,7 +604,6 @@ const COURSES: CourseData[] = [
         number: 5,
         title: "O Corpo e as Emocoes",
         description: "Onde vivem as emoções no corpo.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Onde vivem as emoções no corpo", description: "Mapear onde cada emoção se aloja fisicamente." },
           { letter: "B", title: "Emocoes suprimidas", description: "O custo físico de emoções não expressadas." },
@@ -661,7 +615,6 @@ const COURSES: CourseData[] = [
         number: 6,
         title: "O Corpo e a Alimentação",
         description: "Ouvir o corpo à mesa.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Comer para calar", description: "A alimentação como forma de silenciar emoções." },
           { letter: "B", title: "Fome fisica vs. fome emocional", description: "Distinguir as duas fomes." },
@@ -673,7 +626,6 @@ const COURSES: CourseData[] = [
         number: 7,
         title: "O Corpo e o Descanso",
         description: "Descanso real vs. distracção.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Descanso real vs. distracção", description: "A diferença entre descansar e apenas parar de trabalhar." },
           { letter: "B", title: "O que o TEU corpo precisa para descansar", description: "O descanso personalizado — não existe receita universal." },
@@ -685,7 +637,6 @@ const COURSES: CourseData[] = [
         number: 8,
         title: "Habitar (Não Só Usar) o Corpo",
         description: "O corpo como casa, não como ferramenta.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O corpo como ferramenta vs. o corpo como casa", description: "A diferença entre usar o corpo e habitá-lo." },
           { letter: "B", title: "Presenca corporalizada", description: "Viver no corpo, não só na mente." },
@@ -716,7 +667,6 @@ const COURSES: CourseData[] = [
         number: 1,
         title: "A Boa Menina que Cresceu",
         description: "O software de infância que ainda corre.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O software de infância", description: "Os programas de obediência que ainda correm em ti." },
           { letter: "B", title: "O preço de ser 'boa'", description: "O custo acumulado de agradar." },
@@ -728,7 +678,6 @@ const COURSES: CourseData[] = [
         number: 2,
         title: "O Preço do Sim Automatico",
         description: "Contabilizar o custo de dizer sim a tudo.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Contabilizar o custo", description: "Quanto te custa cada sim que não é teu." },
           { letter: "B", title: "Os últimos 7 dias", description: "Exercício: quantos sins automáticos nos últimos 7 dias?" },
@@ -740,7 +689,6 @@ const COURSES: CourseData[] = [
         number: 3,
         title: "A Culpa de Recusar",
         description: "De onde vem a culpa de dizer não.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "De onde vem a culpa", description: "A arqueologia da culpa: quando aprendeste que não = má pessoa." },
           { letter: "B", title: "Culpa vs. responsabilidade", description: "Separar culpa real de culpa herdada." },
@@ -752,7 +700,6 @@ const COURSES: CourseData[] = [
         number: 4,
         title: "A Diferença entre Ser Amada e Ser Útil",
         description: "Quando confundes ser útil com ser amada.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Quando confundes ser útil com ser amada", description: "A armadilha de pensar que so serves se serves." },
           { letter: "B", title: "O valor além da utilidade", description: "O que és quando não estás a fazer nada por ninguém." },
@@ -764,7 +711,6 @@ const COURSES: CourseData[] = [
         number: 5,
         title: "Não Sem Desculpa",
         description: "O não curto e sem justificação.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A anatomia da justificação", description: "Porque sentes necessidade de justificar cada não." },
           { letter: "B", title: "O não curto", description: "Prática: dizer não em menos de 10 palavras." },
@@ -776,7 +722,6 @@ const COURSES: CourseData[] = [
         number: 6,
         title: "Limites no Trabalho",
         description: "Dizer não ao chefe, aos colegas, ao sistema.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A mulher que faz tudo no escritório", description: "O padrão de carregar o peso emocional e prático do trabalho." },
           { letter: "B", title: "Dizer não ao chefe", description: "Estratégias para limitar sem sabotar a carreira." },
@@ -788,7 +733,6 @@ const COURSES: CourseData[] = [
         number: 7,
         title: "Limites com Familia",
         description: "A família como teste máximo.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A família como teste máximo", description: "Porque é mais difícil dizer não a família." },
           { letter: "B", title: "A chantagem emocional", description: "Reconhecer e responder a chantagem emocional." },
@@ -800,7 +744,6 @@ const COURSES: CourseData[] = [
         number: 8,
         title: "O Não como Espaco para o Sim",
         description: "O que cabe quando largas.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O que cabe quando largas", description: "O espaço que se abre quando dizes não ao que não é teu." },
           { letter: "B", title: "O sim autêntico", description: "Quando o sim nasce da liberdade, não da obrigação." },
@@ -831,7 +774,6 @@ const COURSES: CourseData[] = [
         number: 1,
         title: "As Perdas que Não Têm Funeral",
         description: "Nomear o inomeável.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Nomear o inomeável", description: "Dar nome às perdas que o mundo não reconhece." },
           { letter: "B", title: "Porque ninguém valida", description: "A solidão de um luto sem testemunhas." },
@@ -843,7 +785,6 @@ const COURSES: CourseData[] = [
         number: 2,
         title: "A Permissão que Ninguém Te Deu",
         description: "A única permissão que precisas.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "As frases que calam", description: "'Segue em frente', 'já passou', 'há quem esteja pior'." },
           { letter: "B", title: "A única permissão que precisas", description: "A tua própria permissão para sentir." },
@@ -855,7 +796,6 @@ const COURSES: CourseData[] = [
         number: 3,
         title: "O Luto que Vive no Corpo",
         description: "Localizar a perda no corpo.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Garganta fechada, peito apertado", description: "Os locais fisicos onde o luto se instala." },
           { letter: "B", title: "Localizar a perda", description: "Mapear onde a perda vive no teu corpo." },
@@ -867,7 +807,6 @@ const COURSES: CourseData[] = [
         number: 4,
         title: "Luto de Relações que Não Acabaram",
         description: "Chorar o que era enquanto estas no que e.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A relação que mudou", description: "Quando a relação não acabou mas já não e a mesma." },
           { letter: "B", title: "Chorar o que era enquanto estas no que e", description: "Fazer luto de uma versão da relação sem sair dela." },
@@ -879,7 +818,6 @@ const COURSES: CourseData[] = [
         number: 5,
         title: "Luto de Versoes de Ti",
         description: "A mulher que eras é a que nunca foste.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A mulher que eras", description: "Fazer luto de quem eras antes de tudo mudar." },
           { letter: "B", title: "A mulher que nunca foste", description: "Chorar a versão de ti que nunca chegou a existir." },
@@ -891,7 +829,6 @@ const COURSES: CourseData[] = [
         number: 6,
         title: "Luto e Culpa",
         description: "A culpa como companheira do luto.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A culpa do sobrevivente", description: "A culpa de continuar quando alguém ou algo ficou para tras." },
           { letter: "B", title: "A culpa de sentir alívio", description: "Quando o fim traz alívio e o alívio traz culpa." },
@@ -903,7 +840,6 @@ const COURSES: CourseData[] = [
         number: 7,
         title: "Rituais de Encerramento",
         description: "Porque os rituais importam.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Porque os rituais importam", description: "O ritual como ponte entre o dentro e o fora." },
           { letter: "B", title: "Rituais simples", description: "Rituais que podes fazer sozinha, hoje, sem nada especial." },
@@ -915,7 +851,6 @@ const COURSES: CourseData[] = [
         number: 8,
         title: "Carregar Sem Ser Esmagada",
         description: "A perda como paisagem, não como destino.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Superar é violência", description: "'Superar' é uma palavra violenta para quem perdeu." },
           { letter: "B", title: "A perda como paisagem", description: "A perda não desaparece — integra-se na paisagem de quem es." },
@@ -946,7 +881,6 @@ const COURSES: CourseData[] = [
         number: 1,
         title: "O Inventário do Peso",
         description: "O que carregas.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O que carregas", description: "Fazer o inventário honesto de tudo o que trazes às costas." },
           { letter: "B", title: "O que escolheste vs. o que te caiu em cima", description: "Separar o peso escolhido do peso imposto." },
@@ -958,7 +892,6 @@ const COURSES: CourseData[] = [
         number: 2,
         title: "A Carga Mental Invisível",
         description: "O trabalho que ninguém vê.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O trabalho que ninguém vê", description: "A carga mental que não aparece em nenhuma lista." },
           { letter: "B", title: "O CEO emocional da família", description: "Quando és a gestora emocional de toda a gente." },
@@ -970,7 +903,6 @@ const COURSES: CourseData[] = [
         number: 3,
         title: "A Mulher que Segura Tudo",
         description: "O mito da mulher forte.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Quem segura a mulher que segura tudo?", description: "A pergunta que ninguém faz." },
           { letter: "B", title: "O mito da mulher forte", description: "A armadilha de ser admirada pela resistência." },
@@ -982,7 +914,6 @@ const COURSES: CourseData[] = [
         number: 4,
         title: "Tipos de Cansaco",
         description: "Nem todo o cansaco se resolve da mesma forma.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Cansaco físico", description: "O cansaco que o sono resolve." },
           { letter: "B", title: "Cansaco emocional", description: "O cansaco que o sono não resolve." },
@@ -994,7 +925,6 @@ const COURSES: CourseData[] = [
         number: 5,
         title: "O Falso Descanso",
         description: "Scroll não é descanso.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Scroll não é descanso", description: "As actividades que parecem descanso mas esgotam." },
           { letter: "B", title: "Vinho não é descanso", description: "A diferença entre anestesiar e descansar." },
@@ -1006,7 +936,6 @@ const COURSES: CourseData[] = [
         number: 6,
         title: "A Exaustão como Mensagem",
         description: "O corpo em greve.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O corpo em greve", description: "Quando o corpo para porque tu não paras." },
           { letter: "B", title: "Burn-out não é fraqueza", description: "Burn-out e o resultado de um sistema, não de uma falha pessoal." },
@@ -1018,7 +947,6 @@ const COURSES: CourseData[] = [
         number: 7,
         title: "Largar Sem Culpa",
         description: "O medo de que tudo desmorone.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O medo de que tudo desmorone", description: "O medo de que se largares, tudo cai." },
           { letter: "B", title: "Largar não e abandonar", description: "A diferença entre largar e ser irresponsável." },
@@ -1030,7 +958,6 @@ const COURSES: CourseData[] = [
         number: 8,
         title: "Pôr no Chão",
         description: "A arte de pôr no chão.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A arte de pôr no chão", description: "A prática de pousar o que não é teu." },
           { letter: "B", title: "O que fica e o que vai", description: "Escolher conscientemente o que continuas a carregar." },
@@ -1061,7 +988,6 @@ const COURSES: CourseData[] = [
         number: 1,
         title: "A Conversa que Vive em Ti",
         description: "O loop mental da conversa que adias.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O loop mental", description: "A conversa que ensaias no chuveiro, no carro, antes de dormir." },
           { letter: "B", title: "Porque evitas", description: "O que te impede de ter a conversa." },
@@ -1073,7 +999,6 @@ const COURSES: CourseData[] = [
         number: 2,
         title: "O que Queres Dizer vs. O que Queres que Aconteça",
         description: "Separar expressão de resultado.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Separar as duas coisas", description: "O que queres dizer e o que queres que mude são coisas diferentes." },
           { letter: "B", title: "Ter a conversa sem depender do resultado", description: "Falar para ti, não para controlar a resposta do outro." },
@@ -1085,7 +1010,6 @@ const COURSES: CourseData[] = [
         number: 3,
         title: "As Palavras que Ajudam e as que Destroem",
         description: "A verdade dita com corpo.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "'Tu sempre' e 'Tu nunca'", description: "As frases que activam defesa em vez de escuta." },
           { letter: "B", title: "O tom conta mais que as palavras", description: "O corpo fala mais alto que o vocabulário." },
@@ -1097,7 +1021,6 @@ const COURSES: CourseData[] = [
         number: 4,
         title: "Começar a Conversa",
         description: "A primeira frase.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A primeira frase", description: "A frase que abre a porta sem a partir." },
           { letter: "B", title: "Começar sem acusar", description: "Iniciar pela experiência, não pela acusação." },
@@ -1109,7 +1032,6 @@ const COURSES: CourseData[] = [
         number: 5,
         title: "Sustentar a Conversa",
         description: "Quando o outro reage mal.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Quando o outro reage mal", description: "O que fazer quando a reacção não é a que esperavas." },
           { letter: "B", title: "Ouvir sem desistir", description: "A capacidade de ouvir a resposta sem abandonar a tua verdade." },
@@ -1121,7 +1043,6 @@ const COURSES: CourseData[] = [
         number: 6,
         title: "Conversas com Parceiros",
         description: "O não-dito no casamento.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O não-dito no casamento", description: "As conversas que o casamento acumula em silêncio." },
           { letter: "B", title: "Intimidade e verdade", description: "A verdade como fundação da intimidade real." },
@@ -1133,7 +1054,6 @@ const COURSES: CourseData[] = [
         number: 7,
         title: "Conversas com Pais",
         description: "Falar com quem te criou.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Falar com quem te criou", description: "A complexidade de dizer a verdade a quem te deu a vida." },
           { letter: "B", title: "Quando não vale a pena", description: "Quando a conversa é para ti, não para ele." },
@@ -1145,7 +1065,6 @@ const COURSES: CourseData[] = [
         number: 8,
         title: "O Depois",
         description: "O silêncio pós-conversa.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O silêncio pós-conversa", description: "O espaço estranho depois de dizer o que precisavas." },
           { letter: "B", title: "O alívio inesperado", description: "O alívio que vem depois de teres sido verdadeira." },
@@ -1176,7 +1095,6 @@ const COURSES: CourseData[] = [
         number: 1,
         title: "A Ilusão da Separação",
         description: "Pensas que o que sentes é só teu.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Sozinha no que sentes", description: "A crença de que ninguém sente o que tu sentes — e como isso te isola." },
           { letter: "B", title: "O espelho invisível", description: "Cada pessoa que te irrita, te inspira ou te magoa está a mostrar-te algo sobre ti." },
@@ -1188,7 +1106,6 @@ const COURSES: CourseData[] = [
         number: 2,
         title: "O que Carregas que Não É Teu",
         description: "As dores herdadas que vivem no teu corpo.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A herança emocional", description: "Os medos, vergonhas e silêncios que absorveste da tua família sem ninguém te dizer." },
           { letter: "B", title: "O corpo como arquivo", description: "Onde guardas a dor dos outros — nas costas, no estômago, na garganta." },
@@ -1200,7 +1117,6 @@ const COURSES: CourseData[] = [
         number: 3,
         title: "O Contágio Emocional",
         description: "Como o que sentes passa para quem te rodeia.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A sala muda quando entras", description: "Como o teu estado interno altera o ambiente à tua volta — sem dizeres uma palavra." },
           { letter: "B", title: "Os teus filhos sentem tudo", description: "O que não dizes em voz alta, o corpo das crianças ouve." },
@@ -1212,7 +1128,6 @@ const COURSES: CourseData[] = [
         number: 4,
         title: "A Dualidade",
         description: "Tu és individual e és o todo ao mesmo tempo.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Separada e ligada", description: "O paradoxo: és completamente tua e completamente parte de algo maior." },
           { letter: "B", title: "O que faço a mim, faço ao mundo", description: "Quando te maltratas, há algo no colectivo que também se contrai." },
@@ -1224,7 +1139,6 @@ const COURSES: CourseData[] = [
         number: 5,
         title: "A Ferida Colectiva",
         description: "O que todas as mulheres carregam.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A dor que não tem dono", description: "Há dores que são de todas — o silêncio, a submissão, a vergonha do corpo." },
           { letter: "B", title: "A história que não foi contada", description: "Gerações de mulheres que engoliram o que sentiam para que tu pudesses existir." },
@@ -1236,7 +1150,6 @@ const COURSES: CourseData[] = [
         number: 6,
         title: "Curar-te Não É Egoísmo",
         description: "A culpa de olhar para ti quando o mundo precisa de ajuda.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A armadilha do sacrifício", description: "A crença de que cuidar de ti é tirar algo aos outros." },
           { letter: "B", title: "O oxigénio é para ti primeiro", description: "Não consegues dar o que não tens. A tua cura é a primeira oferenda." },
@@ -1248,7 +1161,6 @@ const COURSES: CourseData[] = [
         number: 7,
         title: "Quebrar a Corrente",
         description: "O padrão pára em ti.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O padrão que atravessa gerações", description: "A mãe da tua mãe também carregava isto. E a mãe dela." },
           { letter: "B", title: "A decisão de não passar adiante", description: "O momento em que decides que isto pára aqui — não com raiva, com consciência." },
@@ -1260,7 +1172,6 @@ const COURSES: CourseData[] = [
         number: 8,
         title: "A Ondulação",
         description: "Quando uma se liberta, algo se liberta em todas.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A pedra na água", description: "Cada gesto de consciência cria ondas que não consegues ver mas que existem." },
           { letter: "B", title: "A tua vida como oferenda", description: "Viver com clareza não é só para ti — é a contribuição mais silenciosa e mais poderosa." },
@@ -1291,7 +1202,6 @@ const COURSES: CourseData[] = [
         number: 1,
         title: "A Irritação como Pista",
         description: "O que te irrita no outro diz mais sobre ti.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A pessoa que te tira do sério", description: "Porque te afecta tanto alguém que devia ser indiferente." },
           { letter: "B", title: "O gatilho escondido", description: "O que vês no outro que não queres ver em ti." },
@@ -1303,7 +1213,6 @@ const COURSES: CourseData[] = [
         number: 2,
         title: "A Projecção",
         description: "O que pões no outro que é teu.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O mecanismo invisível", description: "Como projectamos nos outros o que não aceitamos em nós." },
           { letter: "B", title: "Ele é egoísta ou tu não pedes?", description: "A diferença entre o que o outro faz e o que tu interpretas." },
@@ -1315,7 +1224,6 @@ const COURSES: CourseData[] = [
         number: 3,
         title: "A Sombra",
         description: "O que rejeitas em ti.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A parte que escondes", description: "Todos temos uma parte que não mostramos — e ela não desaparece." },
           { letter: "B", title: "A raiva negada", description: "A raiva que dizes não sentir mas que governa as tuas reacções." },
@@ -1327,7 +1235,6 @@ const COURSES: CourseData[] = [
         number: 4,
         title: "A Admiração como Mapa",
         description: "O que admiras no outro também é teu.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A inveja que não admites", description: "A inveja como sinal daquilo que queres mas não te permites." },
           { letter: "B", title: "O outro como possibilidade", description: "O que admiras mostra o que já existe em ti, adormecido." },
@@ -1339,7 +1246,6 @@ const COURSES: CourseData[] = [
         number: 5,
         title: "O Inimigo como Professor",
         description: "Quem mais te magoa mais te ensina.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A pessoa que não perdoas", description: "O que essa pessoa te mostrou que ninguém mais podia." },
           { letter: "B", title: "A lição dentro da ferida", description: "Encontrar o ensinamento sem desculpar o que aconteceu." },
@@ -1351,7 +1257,6 @@ const COURSES: CourseData[] = [
         number: 6,
         title: "O Parceiro como Espelho",
         description: "Quem escolhes revela quem és.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Porque o escolheste", description: "O que te atraiu no início conta a história do que precisavas resolver." },
           { letter: "B", title: "O espelho diário", description: "Viver com alguém é ser espelhada todos os dias — e isso cansa e cura." },
@@ -1363,7 +1268,6 @@ const COURSES: CourseData[] = [
         number: 7,
         title: "O Filho como Espelho",
         description: "O espelho que não mente.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Ele faz o que tu fazes", description: "Os filhos não ouvem o que dizes — copiam o que vives." },
           { letter: "B", title: "A ferida que se repete", description: "Quando vês no teu filho o que mais temes em ti." },
@@ -1375,7 +1279,6 @@ const COURSES: CourseData[] = [
         number: 8,
         title: "Ver-te Através do Outro",
         description: "O mundo inteiro é espelho.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Cada relação como porta", description: "Usar cada encontro como oportunidade de autoconhecimento." },
           { letter: "B", title: "O reflexo limpo", description: "Quando já não projectas, o que vês no outro é o que está lá." },
@@ -1406,7 +1309,6 @@ const COURSES: CourseData[] = [
         number: 1,
         title: "O Peso sem Nome",
         description: "Algo pesa e não sabes o quê.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O peso que não é teu", description: "A sensação de carregar algo que não consegues explicar." },
           { letter: "B", title: "O corpo sabe antes de ti", description: "Os sintomas que aparecem sem causa — e a causa que ninguém nomeou." },
@@ -1418,7 +1320,6 @@ const COURSES: CourseData[] = [
         number: 2,
         title: "O Segredo Familiar",
         description: "O não-dito que moldou tudo.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O segredo que todos sabem", description: "Quando toda a família sabe mas ninguém diz — e o efeito disso." },
           { letter: "B", title: "O silêncio como regra", description: "Famílias que aprenderam a não falar. O preço dessa aprendizagem." },
@@ -1430,7 +1331,6 @@ const COURSES: CourseData[] = [
         number: 3,
         title: "A Vergonha Herdada",
         description: "A vergonha que veio antes de ti.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A vergonha da avó", description: "Vergonhas que passam de geração em geração sem serem nomeadas." },
           { letter: "B", title: "O corpo da vergonha", description: "Onde vive a vergonha herdada: na postura, na voz, no olhar." },
@@ -1442,7 +1342,6 @@ const COURSES: CourseData[] = [
         number: 4,
         title: "A Doença como Linguagem",
         description: "O corpo fala o que a boca calou.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O sintoma como mensagem", description: "Quando o corpo adoece para dizer o que ninguém disse." },
           { letter: "B", title: "Padrões de doença na família", description: "As doenças que se repetem — e o que podem estar a dizer." },
@@ -1454,7 +1353,6 @@ const COURSES: CourseData[] = [
         number: 5,
         title: "A Lealdade ao Silêncio",
         description: "Calar por amor a quem calou.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A lealdade invisível", description: "Calamos para proteger quem amamos — mesmo que isso nos destrua." },
           { letter: "B", title: "Trair o silêncio", description: "A sensação de traição quando pensas em falar sobre o que foi calado." },
@@ -1466,7 +1364,6 @@ const COURSES: CourseData[] = [
         number: 6,
         title: "O Silêncio que Protege",
         description: "Nem todo o silêncio é prisão.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O silêncio necessário", description: "Há silêncios que protegem. Aprender a distingui-los." },
           { letter: "B", title: "Escolher o silêncio", description: "A diferença entre calar por medo e calar por escolha." },
@@ -1478,7 +1375,6 @@ const COURSES: CourseData[] = [
         number: 7,
         title: "Dar Voz ao Calado",
         description: "Dizer pela primeira vez.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A primeira palavra", description: "O momento em que dizes o que nunca foi dito — nem que seja a ti mesma." },
           { letter: "B", title: "Não é preciso gritar", description: "Dar voz não é confrontar. Pode ser um sussurro, uma carta, um diário." },
@@ -1490,7 +1386,6 @@ const COURSES: CourseData[] = [
         number: 8,
         title: "O Silêncio que Cura",
         description: "Quando o silêncio deixa de pesar.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O que muda na família", description: "Quando uma pessoa fala, algo se reorganiza em todo o sistema." },
           { letter: "B", title: "A herança que deixas", description: "Os teus filhos não vão carregar o que tu nomeaste." },
@@ -1521,7 +1416,6 @@ const COURSES: CourseData[] = [
         number: 1,
         title: "A Fome de Pertencer",
         description: "O desejo mais antigo.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A criança que queria caber", description: "O momento em que percebeste que eras diferente — e decidiste esconder isso." },
           { letter: "B", title: "Pertencer como sobrevivência", description: "O cérebro trata a rejeição como ameaça de morte. Literalmente." },
@@ -1533,7 +1427,6 @@ const COURSES: CourseData[] = [
         number: 2,
         title: "O Preço da Pertença",
         description: "O que abdicaste para caber.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O que calaste para ser aceite", description: "As opiniões, desejos e verdades que guardaste para não seres excluída." },
           { letter: "B", title: "A máscara social", description: "A versão de ti que criaste para funcionar no grupo." },
@@ -1545,7 +1438,6 @@ const COURSES: CourseData[] = [
         number: 3,
         title: "A Rejeição Fundadora",
         description: "A primeira vez que ficaste de fora.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A memória que ficou", description: "A primeira rejeição que moldou a tua forma de te relacionares." },
           { letter: "B", title: "O corpo da rejeição", description: "Onde vive a rejeição no teu corpo — e como se activa." },
@@ -1557,7 +1449,6 @@ const COURSES: CourseData[] = [
         number: 4,
         title: "O Grupo que Define",
         description: "Quando pertencer te apaga.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O grupo como identidade", description: "Quando o 'nós' substitui o 'eu' e perdes o contorno." },
           { letter: "B", title: "A pressão do igual", description: "O desconforto de pensares diferente dentro do grupo." },
@@ -1569,7 +1460,6 @@ const COURSES: CourseData[] = [
         number: 5,
         title: "Emoções entre Pessoas",
         description: "O campo emocional colectivo.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A emoção que não é tua", description: "Quando entras numa sala e sentes algo que não é teu." },
           { letter: "B", title: "O contágio invisível", description: "Como absorves o medo, a raiva e a tristeza dos outros." },
@@ -1581,7 +1471,6 @@ const COURSES: CourseData[] = [
         number: 6,
         title: "A Solidão no Grupo",
         description: "Rodeada de gente e sozinha.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A solidão disfarçada", description: "Estar acompanhada e sentir-te completamente sozinha." },
           { letter: "B", title: "Ligação vs. presença", description: "Estar ligada não é estar presente. Presença é outra coisa." },
@@ -1593,7 +1482,6 @@ const COURSES: CourseData[] = [
         number: 7,
         title: "Pertencer a Ti Primeiro",
         description: "A pertença começa por dentro.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O lar interno", description: "Antes de pertenceres a qualquer grupo, precisas de pertencer a ti." },
           { letter: "B", title: "A relação contigo como raiz", description: "Quando te tens a ti, a necessidade de pertencer muda de forma." },
@@ -1605,7 +1493,6 @@ const COURSES: CourseData[] = [
         number: 8,
         title: "A Teia que Sustenta",
         description: "Ligada sem estar presa.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A teia como escolha", description: "Construir ligações que sustentam sem sufocar." },
           { letter: "B", title: "Dar e receber na medida", description: "O equilíbrio entre o que ofereces e o que recebes na teia." },
@@ -1636,7 +1523,6 @@ const COURSES: CourseData[] = [
         number: 1,
         title: "A Raiva Proibida",
         description: "A emoção que te ensinaram a esconder.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Boa menina não grita", description: "O momento em que aprendeste que a raiva era proibida para ti." },
           { letter: "B", title: "Onde guardaste a raiva", description: "Se não a expressaste, onde foi parar? Mandíbula, costas, estômago." },
@@ -1648,7 +1534,6 @@ const COURSES: CourseData[] = [
         number: 2,
         title: "O Medo de Explodir",
         description: "Se abro a porta, o que sai?",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A panela de pressão", description: "O medo de que se deixares sair um pouco, sai tudo." },
           { letter: "B", title: "A crença de que vais destruir", description: "O terror de magoar quem amas se mostrares a raiva." },
@@ -1660,7 +1545,6 @@ const COURSES: CourseData[] = [
         number: 3,
         title: "A Raiva como Informação",
         description: "O que a raiva te está a dizer.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A raiva como alarme", description: "A raiva diz-te que algo foi ultrapassado, violado ou ignorado." },
           { letter: "B", title: "De que tens raiva realmente?", description: "Debaixo da raiva do trânsito está a raiva da vida que levas." },
@@ -1672,7 +1556,6 @@ const COURSES: CourseData[] = [
         number: 4,
         title: "A Raiva Antiga",
         description: "A raiva que tem anos.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A raiva da infância", description: "O que sentiste aos 8 anos e ainda carregas aos 40." },
           { letter: "B", title: "A raiva da mãe, do pai", description: "A raiva que não te permitiste sentir por quem te criou." },
@@ -1684,7 +1567,6 @@ const COURSES: CourseData[] = [
         number: 5,
         title: "A Raiva no Corpo",
         description: "Sentir a raiva sem a pensar.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O corpo da raiva", description: "Calor, tensão, punhos cerrados — o vocabulário físico da raiva." },
           { letter: "B", title: "Mover a raiva", description: "Exercícios que movem a energia da raiva pelo corpo sem destruir nada." },
@@ -1696,7 +1578,6 @@ const COURSES: CourseData[] = [
         number: 6,
         title: "A Raiva e os Limites",
         description: "Sem raiva não há limites.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A raiva como combustível", description: "Os limites nascem da raiva — sem ela, não sabes onde terminas." },
           { letter: "B", title: "Dizer não com fogo", description: "A diferença entre dizer não com medo e dizer não com raiva limpa." },
@@ -1708,7 +1589,6 @@ const COURSES: CourseData[] = [
         number: 7,
         title: "A Raiva e o Amor",
         description: "Podes amar e ter raiva ao mesmo tempo.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A raiva dentro do amor", description: "Ter raiva de quem amas não significa que não amas." },
           { letter: "B", title: "A raiva como intimidade", description: "Mostrar a raiva a alguém é um acto de confiança, não de agressão." },
@@ -1720,7 +1600,6 @@ const COURSES: CourseData[] = [
         number: 8,
         title: "A Chama que Ilumina",
         description: "Da raiva à clareza.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A raiva transformada", description: "Quando a raiva já não queima — ilumina o que precisa de mudar." },
           { letter: "B", title: "A mulher com fogo", description: "Uma mulher com acesso à sua raiva é uma mulher inteira." },
@@ -1751,7 +1630,6 @@ const COURSES: CourseData[] = [
         number: 1,
         title: "A Mulher que Desapareceu",
         description: "O dia em que deixaste de ser tu.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O dia em que nasceram dois", description: "Quando o teu filho nasceu, uma versão de ti morreu. Ninguém te disse." },
           { letter: "B", title: "A saudade de ti mesma", description: "Sentir falta de quem eras antes — e a culpa que vem com essa saudade." },
@@ -1763,7 +1641,6 @@ const COURSES: CourseData[] = [
         number: 2,
         title: "A Culpa Infinita",
         description: "O que quer que faças, nunca é suficiente.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A culpa de trabalhar", description: "Se trabalhas, devias estar com eles. Se estás com eles, devias estar a produzir." },
           { letter: "B", title: "A culpa de querer tempo", description: "O luxo proibido de querer uma hora só tua." },
@@ -1775,7 +1652,6 @@ const COURSES: CourseData[] = [
         number: 3,
         title: "O Ressentimento Secreto",
         description: "O que não podes dizer em voz alta.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Amo-os e ressinto-me", description: "As duas coisas existem ao mesmo tempo. E nenhuma anula a outra." },
           { letter: "B", title: "O ressentimento do parceiro", description: "Quando o desequilíbrio de carga se torna raiva silenciosa." },
@@ -1787,7 +1663,6 @@ const COURSES: CourseData[] = [
         number: 4,
         title: "O Corpo Depois dos Filhos",
         description: "O corpo que já não reconheces.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O corpo que deu vida", description: "O que aconteceu ao teu corpo — e o que ninguém te preparou para sentir." },
           { letter: "B", title: "Tocar e ser tocada", description: "Quando o corpo está tão requisitado pelos filhos que o toque do parceiro é invasão." },
@@ -1799,7 +1674,6 @@ const COURSES: CourseData[] = [
         number: 5,
         title: "Mãe Perfeita, Mãe Real",
         description: "A imagem impossível.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A mãe do Instagram", description: "A comparação com uma imagem que não existe." },
           { letter: "B", title: "A mãe que a tua mãe foi", description: "Repetir ou rejeitar — ambas são reacções ao modelo que tiveste." },
@@ -1811,7 +1685,6 @@ const COURSES: CourseData[] = [
         number: 6,
         title: "O Desejo Adormecido",
         description: "Querer coisas que não são sobre os filhos.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O que querias antes?", description: "Os sonhos que puseste de lado quando te tornaste mãe." },
           { letter: "B", title: "Desejar sem pedir licença", description: "Querer coisas para ti sem precisar de justificar." },
@@ -1823,7 +1696,6 @@ const COURSES: CourseData[] = [
         number: 7,
         title: "Separar a Mãe da Mulher",
         description: "Tu não és só mãe.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A fusão de identidades", description: "Quando 'mãe' come todas as outras versões de ti." },
           { letter: "B", title: "Espaço para as duas", description: "A mulher e a mãe podem coexistir — mas precisam de espaço separado." },
@@ -1835,7 +1707,6 @@ const COURSES: CourseData[] = [
         number: 8,
         title: "A Mulher Inteira",
         description: "Mãe e tudo o resto.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Recuperar o nome", description: "Voltar a ser chamada pelo teu nome. Voltar a sentir-te tu." },
           { letter: "B", title: "O legado que queres deixar", description: "Não o que fizeste por eles — mas quem foste enquanto os criavas." },
@@ -1866,7 +1737,6 @@ const COURSES: CourseData[] = [
         number: 1,
         title: "O Cansaço que Não Passa",
         description: "Férias não resolvem isto.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Cansada de quê exactamente?", description: "Quando o cansaço não é do corpo — é da vida que levas." },
           { letter: "B", title: "Ocupada não é viva", description: "A agenda cheia como fuga de ti mesma." },
@@ -1878,7 +1748,6 @@ const COURSES: CourseData[] = [
         number: 2,
         title: "Eu Sou o que Produzo",
         description: "A identidade presa ao trabalho.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Sem título, quem sou?", description: "O que sobra de ti quando tiras o cargo, o projeto, a empresa." },
           { letter: "B", title: "Produzir para existir", description: "Quando parar é desaparecer — e desaparecer é insuportável." },
@@ -1890,7 +1759,6 @@ const COURSES: CourseData[] = [
         number: 3,
         title: "A Ambição Envergonhada",
         description: "Querer mais e sentir que não devias.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Querer e esconder", description: "A ambição que guardas porque te disseram que é demasiado." },
           { letter: "B", title: "Ambição feminina", description: "O que acontece quando uma mulher diz: eu quero mais. Sem pedir desculpa." },
@@ -1902,7 +1770,6 @@ const COURSES: CourseData[] = [
         number: 4,
         title: "O Trabalho como Fuga",
         description: "O que evitas quando te entregues ao trabalho.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Trabalhar para não sentir", description: "Quando o trabalho é o anestésico mais socialmente aceite." },
           { letter: "B", title: "O que aparece quando paras", description: "A solidão, a tristeza, o vazio que surgem nos dias de folga." },
@@ -1914,7 +1781,6 @@ const COURSES: CourseData[] = [
         number: 5,
         title: "O Dinheiro e o Propósito",
         description: "Fazer o que amas e pagar as contas.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O conflito eterno", description: "A tensão entre o que precisas de ganhar e o que te faz sentir viva." },
           { letter: "B", title: "Propósito não paga renda", description: "A honestidade de que precisas de dinheiro — e isso não invalida o propósito." },
@@ -1926,7 +1792,6 @@ const COURSES: CourseData[] = [
         number: 6,
         title: "A Síndrome da Impostora",
         description: "Não mereço estar aqui.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A voz que diz que vão descobrir", description: "O medo constante de que percebam que não és tão boa como pareces." },
           { letter: "B", title: "Competência invisível", description: "Quando o que fazes bem se torna invisível porque parece 'natural'." },
@@ -1938,7 +1803,6 @@ const COURSES: CourseData[] = [
         number: 7,
         title: "O que Farias se Ninguém Visse?",
         description: "O propósito para lá da validação.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A pergunta incómoda", description: "Se ninguém soubesse, se ninguém aplaudisse — o que farias?" },
           { letter: "B", title: "O chamamento silencioso", description: "A coisa que te puxa e que ignoras porque não é 'prática'." },
@@ -1950,7 +1814,6 @@ const COURSES: CourseData[] = [
         number: 8,
         title: "Trabalhar sem Desaparecer",
         description: "O trabalho como parte, não como tudo.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Trabalhar com presença", description: "Estar no trabalho sem que o trabalho te consuma." },
           { letter: "B", title: "A mulher que trabalha e vive", description: "O equilíbrio não é 50/50. É presença em cada coisa." },
@@ -1981,7 +1844,6 @@ const COURSES: CourseData[] = [
         number: 1,
         title: "A Pressa de Viver",
         description: "Corres mas não chegas.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A urgência sem nome", description: "A sensação constante de que devias estar noutro sítio, a fazer outra coisa." },
           { letter: "B", title: "O corpo em modo pressa", description: "O sistema nervoso que nunca desliga — e o preço que pagas." },
@@ -1993,7 +1855,6 @@ const COURSES: CourseData[] = [
         number: 2,
         title: "O Medo de Envelhecer",
         description: "O corpo que muda e o espelho que assusta.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O espelho que mudou", description: "Quando o reflexo já não corresponde à imagem que tens de ti." },
           { letter: "B", title: "A invisibilidade", description: "O momento em que a sociedade começa a não te ver — e o que isso faz." },
@@ -2005,7 +1866,6 @@ const COURSES: CourseData[] = [
         number: 3,
         title: "Já É Tarde Demais",
         description: "A mentira mais cruel.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Os prazos inventados", description: "Casar até aos 30. Filhos até aos 35. Carreira até aos 40. Quem decidiu isto?" },
           { letter: "B", title: "As vidas não vividas", description: "O luto pelas versões de ti que ficaram por viver." },
@@ -2017,7 +1877,6 @@ const COURSES: CourseData[] = [
         number: 4,
         title: "A Menopausa como Território",
         description: "A passagem que ninguém preparou.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O corpo que muda de novo", description: "Calores, insónia, humor — e a sensação de que perdeste o controlo." },
           { letter: "B", title: "O luto da fertilidade", description: "Mesmo que não quisesses mais filhos, o fim da possibilidade pesa." },
@@ -2029,7 +1888,6 @@ const COURSES: CourseData[] = [
         number: 5,
         title: "O Tempo Roubado",
         description: "Os anos que deste a quem não merecia.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Os anos que deste", description: "A relação, o trabalho, a situação que te roubou tempo — e a raiva disso." },
           { letter: "B", title: "O tempo não volta", description: "A aceitação mais difícil: não podes recuperar o que já passou." },
@@ -2041,7 +1899,6 @@ const COURSES: CourseData[] = [
         number: 6,
         title: "A Sabedoria do Corpo Vivido",
         description: "O que sabes agora que não sabias antes.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O que a idade trouxe", description: "As certezas, a paciência, o não que se diz sem culpa." },
           { letter: "B", title: "Cicatrizes como mapa", description: "Cada marca no corpo conta uma história de sobrevivência." },
@@ -2053,7 +1910,6 @@ const COURSES: CourseData[] = [
         number: 7,
         title: "Presença",
         description: "Largar o passado e o futuro.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O vício do futuro", description: "Viver para o 'quando' em vez do 'agora'." },
           { letter: "B", title: "O peso do passado", description: "Viver presa ao 'se tivesse' em vez do 'estou aqui'." },
@@ -2065,7 +1921,6 @@ const COURSES: CourseData[] = [
         number: 8,
         title: "O Relógio Partido",
         description: "Viver sem contar o tempo.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Partir o relógio", description: "Largar a urgência. Largar os prazos. Largar a contagem." },
           { letter: "B", title: "O tempo vivido", description: "Medir a vida pelo que sentiste, não pelo que cumpriste." },
@@ -2096,7 +1951,6 @@ const COURSES: CourseData[] = [
         number: 1,
         title: "A Mulher que Encolhe",
         description: "O hábito de te fazeres pequena.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Desculpa, posso falar?", description: "O reflexo de pedir permissão para existir." },
           { letter: "B", title: "O corpo que encolhe", description: "A postura, o tom de voz, o espaço que não ocupas." },
@@ -2108,7 +1962,6 @@ const COURSES: CourseData[] = [
         number: 2,
         title: "O Medo de Brilhar",
         description: "Se me virem, o que acontece?",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Visibilidade como perigo", description: "Ser vista é ser julgada. E ser julgada é ser destruída. Será?" },
           { letter: "B", title: "O medo do sucesso", description: "O medo de que se conseguires, perdes algo — amigos, normalidade, segurança." },
@@ -2120,7 +1973,6 @@ const COURSES: CourseData[] = [
         number: 3,
         title: "A Auto-Sabotagem",
         description: "A forma mais subtil de te protegeres.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Quase mas não", description: "O padrão de chegares perto e recuares. De quase conseguires e depois estragares." },
           { letter: "B", title: "A protecção inconsciente", description: "A sabotagem protege-te de quê? De ser invejada? Rejeitada? Abandonada?" },
@@ -2132,7 +1984,6 @@ const COURSES: CourseData[] = [
         number: 4,
         title: "Ocupar Espaço",
         description: "Sem pedir desculpa.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A sala inteira é tua", description: "O exercício de entrar num espaço e não te desculpares por existir." },
           { letter: "B", title: "Falar sem diminuir", description: "Dizer o que sabes sem 'talvez', sem 'não sei se', sem 'desculpa, mas'." },
@@ -2144,7 +1995,6 @@ const COURSES: CourseData[] = [
         number: 5,
         title: "O Poder e a Solidão",
         description: "Quanto mais forte, mais sozinha?",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A mulher forte e sozinha", description: "O mito de que poder feminino afasta. E o que realmente acontece." },
           { letter: "B", title: "Mudar de círculo", description: "Quando cresces, nem todos vêm contigo. E isso não é perda." },
@@ -2156,7 +2006,6 @@ const COURSES: CourseData[] = [
         number: 6,
         title: "O Dinheiro como Poder",
         description: "A mulher que ganha e o que isso muda.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Ganhar mais que ele", description: "O desconforto quando a mulher ganha mais — e o que isso revela." },
           { letter: "B", title: "Pedir o que vales", description: "A dificuldade de cobrar, negociar, pedir aumento." },
@@ -2168,7 +2017,6 @@ const COURSES: CourseData[] = [
         number: 7,
         title: "A Responsabilidade do Poder",
         description: "Com poder vem clareza.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Poder não é dominação", description: "O poder feminino não é sobre controlar — é sobre estar inteira." },
           { letter: "B", title: "O impacto que tens", description: "Quando reconheces o impacto que a tua presença tem nos outros." },
@@ -2180,7 +2028,6 @@ const COURSES: CourseData[] = [
         number: 8,
         title: "A Coroa",
         description: "Põe a coroa na cabeça.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A coroa que escondes", description: "O poder que tens e que guardas para não incomodar." },
           { letter: "B", title: "Brilhar não tira luz", description: "O teu brilho não diminui o dos outros. Ilumina o caminho." },
@@ -2211,7 +2058,6 @@ const COURSES: CourseData[] = [
         number: 1,
         title: "A Fome que Não É de Comida",
         description: "O frigorífico à meia-noite.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O que procuras no prato", description: "Quando abres o frigorífico, não é fome. É outra coisa. O quê?" },
           { letter: "B", title: "Comer para não sentir", description: "A comida como anestésico — rápido, acessível, socialmente aceite." },
@@ -2223,7 +2069,6 @@ const COURSES: CourseData[] = [
         number: 2,
         title: "A Guerra com o Espelho",
         description: "O corpo como inimigo.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O reflexo que rejeitas", description: "O que vês quando te olhas ao espelho — e o que realmente está lá." },
           { letter: "B", title: "O corpo que aprendeste a odiar", description: "Quem te ensinou que o teu corpo não estava bem? E quando?" },
@@ -2235,7 +2080,6 @@ const COURSES: CourseData[] = [
         number: 3,
         title: "O Peso como Armadura",
         description: "O corpo que se protege.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O peso que protege", description: "Quando o corpo ganha peso para te proteger — de quê?" },
           { letter: "B", title: "Invisível por escolha", description: "O peso como forma de desaparecer, de não ser desejada, de não ser vista." },
@@ -2247,7 +2091,6 @@ const COURSES: CourseData[] = [
         number: 4,
         title: "A Dieta como Castigo",
         description: "Privar-te para te redimires.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Restringir para controlar", description: "Quando a dieta é a única coisa que sentes que controlas." },
           { letter: "B", title: "O ciclo culpa-privação", description: "Comes, culpas-te, privar-te, cedes, culpas-te. O ciclo sem fim." },
@@ -2259,7 +2102,6 @@ const COURSES: CourseData[] = [
         number: 5,
         title: "A Comida como Amor",
         description: "O que a comida representou na tua família.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "A cozinha da tua mãe", description: "A comida como linguagem de amor — e o que isso te ensinou." },
           { letter: "B", title: "Recusar comida é recusar amor", description: "Quando dizer 'não, obrigada' à mesa é sentido como rejeição." },
@@ -2271,7 +2113,6 @@ const COURSES: CourseData[] = [
         number: 6,
         title: "O Corpo como Casa",
         description: "Habitar em vez de punir.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Viver no corpo", description: "A diferença entre viver no corpo e viver contra o corpo." },
           { letter: "B", title: "Ouvir a fome real", description: "Reaprender os sinais: fome, saciedade, prazer, rejeição." },
@@ -2283,7 +2124,6 @@ const COURSES: CourseData[] = [
         number: 7,
         title: "Comer com Presença",
         description: "O prato como espelho.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "Comer devagar", description: "O acto radical de comer com atenção." },
           { letter: "B", title: "O prazer sem culpa", description: "Comer chocolate sem tribunal interno. Comer pão sem remorso." },
@@ -2295,7 +2135,6 @@ const COURSES: CourseData[] = [
         number: 8,
         title: "A Paz com o Prato",
         description: "Quando a comida deixa de ser luta.",
-        isFree: false,
         subLessons: [
           { letter: "A", title: "O corpo que já não é inimigo", description: "Quando olhas para o espelho e o que vês é suficiente." },
           { letter: "B", title: "A fome que sabe o que quer", description: "Quando a fome já não é confusa — é clara, simples, tua." },
