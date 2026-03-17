@@ -47,8 +47,8 @@ export default function GuidelinesPage() {
 
   if (!user || !isAdmin) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#1a1a2e]">
-        <p className="text-[#a0a0b0]">Acesso restrito.</p>
+      <div className="flex min-h-screen items-center justify-center bg-mundo-bg">
+        <p className="text-mundo-muted">Acesso restrito.</p>
       </div>
     );
   }
@@ -100,34 +100,34 @@ export default function GuidelinesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#1a1a2e] text-[#e0e0e8]">
+    <div className="min-h-screen bg-mundo-bg text-mundo-creme-suave">
       {/* Header */}
-      <div className="border-b border-[#3a3a5c] px-6 py-6">
+      <div className="border-b border-mundo-border px-6 py-6">
         <div className="mx-auto max-w-6xl flex items-center justify-between">
           <div>
             <h1 className="font-serif text-2xl text-white">
               Guidelines de Producao
             </h1>
-            <p className="mt-1 text-sm text-[#a0a0b0]">
+            <p className="mt-1 text-sm text-mundo-muted">
               Referencia completa para produzir cada curso da Escola dos Veus
             </p>
           </div>
           <div className="flex gap-4 text-sm">
             <Link
               href="/admin/cursos/producao"
-              className="text-[#a0a0b0] hover:text-white transition-colors"
+              className="text-mundo-muted hover:text-white transition-colors"
             >
               Producao
             </Link>
             <Link
               href="/admin/cursos/territorios"
-              className="text-[#a0a0b0] hover:text-white transition-colors"
+              className="text-mundo-muted hover:text-white transition-colors"
             >
               Territorios
             </Link>
             <Link
               href="/admin"
-              className="text-[#a0a0b0] hover:text-white transition-colors"
+              className="text-mundo-muted hover:text-white transition-colors"
             >
               Admin
             </Link>
@@ -136,7 +136,7 @@ export default function GuidelinesPage() {
       </div>
 
       {/* Tabs */}
-      <div className="border-b border-[#3a3a5c] px-6">
+      <div className="border-b border-mundo-border px-6">
         <div className="mx-auto max-w-6xl flex gap-1 overflow-x-auto">
           {tabs.map((tab) => (
             <button
@@ -145,7 +145,7 @@ export default function GuidelinesPage() {
               className={`px-4 py-3 text-sm whitespace-nowrap transition-colors ${
                 activeTab === tab.key
                   ? "text-white border-b-2 border-[#8B5CF6]"
-                  : "text-[#a0a0b0] hover:text-white"
+                  : "text-mundo-muted hover:text-white"
               }`}
             >
               {tab.label}
@@ -158,11 +158,11 @@ export default function GuidelinesPage() {
         {/* ── Script Structure ── */}
         {activeTab === "script" && (
           <div className="space-y-6">
-            <div className="bg-[#252547] rounded-xl p-6">
+            <div className="bg-mundo-bg-surface rounded-xl p-6">
               <h2 className="text-white font-serif text-xl mb-2">
                 Estrutura de Cada Video-Aula
               </h2>
-              <p className="text-[#a0a0b0] text-sm mb-6">
+              <p className="text-mundo-muted text-sm mb-6">
                 Todos os videos seguem esta estrutura. Duracao total:{" "}
                 {SCRIPT_STRUCTURE.totalDurationMin.min}-
                 {SCRIPT_STRUCTURE.totalDurationMin.max} minutos.
@@ -171,9 +171,9 @@ export default function GuidelinesPage() {
                 {SCRIPT_STRUCTURE.sections.map((section, i) => (
                   <div
                     key={section.name}
-                    className="flex gap-4 bg-[#1a1a2e] rounded-lg p-4"
+                    className="flex gap-4 bg-mundo-bg rounded-lg p-4"
                   >
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#8B5CF6]/20 flex items-center justify-center text-[#8B5CF6] text-sm font-mono">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-mundo-violeta/20 flex items-center justify-center text-mundo-violeta text-sm font-mono">
                       {i + 1}
                     </div>
                     <div className="flex-1">
@@ -181,14 +181,14 @@ export default function GuidelinesPage() {
                         <h3 className="text-white font-medium">
                           {section.label}
                         </h3>
-                        <span className="text-xs text-[#C9A96E]">
+                        <span className="text-xs text-mundo-dourado">
                           {section.durationSec.min}-{section.durationSec.max}s
                         </span>
                       </div>
-                      <p className="text-sm text-[#a0a0b0] mb-2">
+                      <p className="text-sm text-mundo-muted mb-2">
                         {section.instruction}
                       </p>
-                      <p className="text-xs text-[#8B5CF6]/70 italic">
+                      <p className="text-xs text-mundo-violeta/70 italic">
                         Voz: {section.voiceNote}
                       </p>
                     </div>
@@ -202,19 +202,19 @@ export default function GuidelinesPage() {
         {/* ── Tone ── */}
         {activeTab === "tone" && (
           <div className="space-y-6">
-            <div className="bg-[#252547] rounded-xl p-6">
+            <div className="bg-mundo-bg-surface rounded-xl p-6">
               <h2 className="text-white font-serif text-xl mb-4">
                 Tom e Voz
               </h2>
               <div className="grid gap-6 md:grid-cols-2">
                 <div>
-                  <h3 className="text-[#C9A96E] text-sm font-medium mb-2">
+                  <h3 className="text-mundo-dourado text-sm font-medium mb-2">
                     Quem fala
                   </h3>
-                  <p className="text-sm text-[#a0a0b0]">
+                  <p className="text-sm text-mundo-muted">
                     {TONE_GUIDELINES.voice.who}
                   </p>
-                  <p className="text-sm text-[#a0a0b0] mt-2">
+                  <p className="text-sm text-mundo-muted mt-2">
                     {TONE_GUIDELINES.voice.style}
                   </p>
                   <p className="text-sm text-white mt-2">
@@ -222,10 +222,10 @@ export default function GuidelinesPage() {
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-[#C9A96E] text-sm font-medium mb-2">
+                  <h3 className="text-mundo-dourado text-sm font-medium mb-2">
                     Escrita
                   </h3>
-                  <div className="space-y-2 text-sm text-[#a0a0b0]">
+                  <div className="space-y-2 text-sm text-mundo-muted">
                     <p>
                       <span className="text-white">Frases:</span>{" "}
                       {TONE_GUIDELINES.writing.sentenceLength}
@@ -248,26 +248,26 @@ export default function GuidelinesPage() {
             </div>
 
             <div className="grid gap-6 md:grid-cols-2">
-              <div className="bg-[#252547] rounded-xl p-6">
+              <div className="bg-mundo-bg-surface rounded-xl p-6">
                 <h3 className="text-red-400 text-sm font-medium mb-3">
                   Proibido
                 </h3>
                 <ul className="space-y-2">
                   {TONE_GUIDELINES.voice.forbidden.map((item, i) => (
-                    <li key={i} className="text-sm text-[#a0a0b0] flex gap-2">
+                    <li key={i} className="text-sm text-mundo-muted flex gap-2">
                       <span className="text-red-400 shrink-0">x</span>
                       {item}
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="bg-[#252547] rounded-xl p-6">
+              <div className="bg-mundo-bg-surface rounded-xl p-6">
                 <h3 className="text-green-400 text-sm font-medium mb-3">
                   Encorajado
                 </h3>
                 <ul className="space-y-2">
                   {TONE_GUIDELINES.voice.encouraged.map((item, i) => (
-                    <li key={i} className="text-sm text-[#a0a0b0] flex gap-2">
+                    <li key={i} className="text-sm text-mundo-muted flex gap-2">
                       <span className="text-green-400 shrink-0">+</span>
                       {item}
                     </li>
@@ -281,7 +281,7 @@ export default function GuidelinesPage() {
         {/* ── Visual ── */}
         {activeTab === "visual" && (
           <div className="space-y-6">
-            <div className="bg-[#252547] rounded-xl p-6">
+            <div className="bg-mundo-bg-surface rounded-xl p-6">
               <h2 className="text-white font-serif text-xl mb-4">
                 Paleta Visual
               </h2>
@@ -294,7 +294,7 @@ export default function GuidelinesPage() {
                     />
                     <div>
                       <p className="text-sm text-white">{name}</p>
-                      <p className="text-xs text-[#a0a0b0] font-mono">{hex}</p>
+                      <p className="text-xs text-mundo-muted font-mono">{hex}</p>
                     </div>
                   </div>
                 ))}
@@ -302,29 +302,29 @@ export default function GuidelinesPage() {
             </div>
 
             <div className="grid gap-6 md:grid-cols-2">
-              <div className="bg-[#252547] rounded-xl p-6">
-                <h3 className="text-[#C9A96E] text-sm font-medium mb-3">
+              <div className="bg-mundo-bg-surface rounded-xl p-6">
+                <h3 className="text-mundo-dourado text-sm font-medium mb-3">
                   Ceu
                 </h3>
-                <p className="text-sm text-[#a0a0b0]">
+                <p className="text-sm text-mundo-muted">
                   {VISUAL_GUIDELINES.sky.description}
                 </p>
-                <p className="text-sm text-[#a0a0b0] mt-2">
+                <p className="text-sm text-mundo-muted mt-2">
                   {VISUAL_GUIDELINES.sky.progression}
                 </p>
               </div>
-              <div className="bg-[#252547] rounded-xl p-6">
-                <h3 className="text-[#C9A96E] text-sm font-medium mb-3">
+              <div className="bg-mundo-bg-surface rounded-xl p-6">
+                <h3 className="text-mundo-dourado text-sm font-medium mb-3">
                   Silhueta
                 </h3>
-                <p className="text-sm text-[#a0a0b0] mb-3">
+                <p className="text-sm text-mundo-muted mb-3">
                   {VISUAL_GUIDELINES.silhouette.description}
                 </p>
                 <div className="space-y-1">
                   {Object.entries(VISUAL_GUIDELINES.silhouette.poses).map(
                     ([key, desc]) => (
-                      <p key={key} className="text-xs text-[#a0a0b0]">
-                        <span className="text-[#8B5CF6] font-mono">
+                      <p key={key} className="text-xs text-mundo-muted">
+                        <span className="text-mundo-violeta font-mono">
                           {key}
                         </span>{" "}
                         — {desc}
@@ -333,22 +333,22 @@ export default function GuidelinesPage() {
                   )}
                 </div>
               </div>
-              <div className="bg-[#252547] rounded-xl p-6">
-                <h3 className="text-[#C9A96E] text-sm font-medium mb-3">
+              <div className="bg-mundo-bg-surface rounded-xl p-6">
+                <h3 className="text-mundo-dourado text-sm font-medium mb-3">
                   Tipografia
                 </h3>
-                <p className="text-sm text-[#a0a0b0]">
+                <p className="text-sm text-mundo-muted">
                   {VISUAL_GUIDELINES.typography.font}
                 </p>
-                <p className="text-sm text-[#a0a0b0] mt-1">
+                <p className="text-sm text-mundo-muted mt-1">
                   {VISUAL_GUIDELINES.typography.color}
                 </p>
               </div>
-              <div className="bg-[#252547] rounded-xl p-6">
-                <h3 className="text-[#C9A96E] text-sm font-medium mb-3">
+              <div className="bg-mundo-bg-surface rounded-xl p-6">
+                <h3 className="text-mundo-dourado text-sm font-medium mb-3">
                   Transicoes
                 </h3>
-                <p className="text-sm text-[#a0a0b0]">
+                <p className="text-sm text-mundo-muted">
                   {VISUAL_GUIDELINES.transitions.style}
                 </p>
                 <p className="text-sm text-red-400 mt-2 text-xs">
@@ -369,34 +369,34 @@ export default function GuidelinesPage() {
               {Object.entries(TERRITORY_GUIDES).map(([slug, guide]) => (
                 <div
                   key={slug}
-                  className="bg-[#252547] rounded-xl p-5 space-y-3"
+                  className="bg-mundo-bg-surface rounded-xl p-5 space-y-3"
                 >
                   <div>
                     <h3 className="text-white font-medium">
                       {guide.territory}
                     </h3>
-                    <p className="text-[#C9A96E] text-sm">{guide.course}</p>
-                    <p className="text-xs text-[#a0a0b0] mt-1">
+                    <p className="text-mundo-dourado text-sm">{guide.course}</p>
+                    <p className="text-xs text-mundo-muted mt-1">
                       Cor: {guide.color}
                     </p>
                   </div>
-                  <p className="text-sm text-[#a0a0b0]">
+                  <p className="text-sm text-mundo-muted">
                     {guide.transformation}
                   </p>
                   <div className="space-y-2">
                     {guide.stageDescriptions.map((desc, i) => (
                       <div key={i} className="flex gap-2">
-                        <span className="text-xs text-[#8B5CF6] font-mono shrink-0 mt-0.5">
+                        <span className="text-xs text-mundo-violeta font-mono shrink-0 mt-0.5">
                           {i + 1}
                         </span>
-                        <p className="text-xs text-[#a0a0b0]">{desc}</p>
+                        <p className="text-xs text-mundo-muted">{desc}</p>
                       </div>
                     ))}
                   </div>
                   {guide.connections.length > 0 && (
-                    <div className="border-t border-[#3a3a5c] pt-2">
+                    <div className="border-t border-mundo-border pt-2">
                       {guide.connections.map((c, i) => (
-                        <p key={i} className="text-xs text-[#8B5CF6]/60 italic">
+                        <p key={i} className="text-xs text-mundo-violeta/60 italic">
                           ~ {c}
                         </p>
                       ))}
@@ -410,44 +410,44 @@ export default function GuidelinesPage() {
 
         {/* ── Audio ── */}
         {activeTab === "audio" && (
-          <div className="bg-[#252547] rounded-xl p-6">
+          <div className="bg-mundo-bg-surface rounded-xl p-6">
             <h2 className="text-white font-serif text-xl mb-4">
               Audio — ElevenLabs
             </h2>
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-3">
-                <p className="text-sm text-[#a0a0b0]">
+                <p className="text-sm text-mundo-muted">
                   <span className="text-white">Voice ID:</span>{" "}
-                  <code className="text-[#8B5CF6]">
+                  <code className="text-mundo-violeta">
                     {AUDIO_GUIDELINES.voiceId}
                   </code>
                 </p>
-                <p className="text-sm text-[#a0a0b0]">
+                <p className="text-sm text-mundo-muted">
                   <span className="text-white">Modelo v2:</span>{" "}
                   {AUDIO_GUIDELINES.model}
                 </p>
-                <p className="text-sm text-[#a0a0b0]">
+                <p className="text-sm text-mundo-muted">
                   <span className="text-white">Modelo v3:</span>{" "}
                   {AUDIO_GUIDELINES.modelV3}
                 </p>
-                <p className="text-sm text-[#a0a0b0]">
+                <p className="text-sm text-mundo-muted">
                   <span className="text-white">Formato:</span>{" "}
                   {AUDIO_GUIDELINES.format}
                 </p>
-                <p className="text-sm text-[#a0a0b0]">
+                <p className="text-sm text-mundo-muted">
                   <span className="text-white">Naming:</span>{" "}
-                  <code className="text-[#C9A96E] text-xs">
+                  <code className="text-mundo-dourado text-xs">
                     {AUDIO_GUIDELINES.naming}
                   </code>
                 </p>
               </div>
               <div className="space-y-3">
-                <h3 className="text-[#C9A96E] text-sm font-medium">
+                <h3 className="text-mundo-dourado text-sm font-medium">
                   Settings
                 </h3>
                 {Object.entries(AUDIO_GUIDELINES.settings).map(
                   ([key, val]) => (
-                    <p key={key} className="text-sm text-[#a0a0b0]">
+                    <p key={key} className="text-sm text-mundo-muted">
                       <span className="text-white font-mono text-xs">
                         {key}:
                       </span>{" "}
@@ -457,8 +457,8 @@ export default function GuidelinesPage() {
                 )}
               </div>
             </div>
-            <div className="mt-6 border-t border-[#3a3a5c] pt-4">
-              <h3 className="text-[#C9A96E] text-sm font-medium mb-2">
+            <div className="mt-6 border-t border-mundo-border pt-4">
+              <h3 className="text-mundo-dourado text-sm font-medium mb-2">
                 Marcadores de Pausa
               </h3>
               <div className="flex flex-wrap gap-3">
@@ -466,7 +466,7 @@ export default function GuidelinesPage() {
                   ([key, val]) => (
                     <code
                       key={key}
-                      className="bg-[#1a1a2e] text-[#8B5CF6] px-3 py-1 rounded text-sm"
+                      className="bg-mundo-bg text-mundo-violeta px-3 py-1 rounded text-sm"
                     >
                       {val}
                     </code>
@@ -480,14 +480,14 @@ export default function GuidelinesPage() {
         {/* ── PDFs ── */}
         {activeTab === "pdf" && (
           <div className="space-y-6">
-            <div className="bg-[#252547] rounded-xl p-6">
+            <div className="bg-mundo-bg-surface rounded-xl p-6">
               <h2 className="text-white font-serif text-xl mb-4">
                 Manual do Curso (~{MANUAL_GUIDELINES.pages} paginas)
               </h2>
               <ol className="space-y-2">
                 {MANUAL_GUIDELINES.structure.map((item, i) => (
-                  <li key={i} className="flex gap-3 text-sm text-[#a0a0b0]">
-                    <span className="text-[#8B5CF6] font-mono shrink-0">
+                  <li key={i} className="flex gap-3 text-sm text-mundo-muted">
+                    <span className="text-mundo-violeta font-mono shrink-0">
                       {i + 1}.
                     </span>
                     {item}
@@ -495,15 +495,15 @@ export default function GuidelinesPage() {
                 ))}
               </ol>
             </div>
-            <div className="bg-[#252547] rounded-xl p-6">
+            <div className="bg-mundo-bg-surface rounded-xl p-6">
               <h2 className="text-white font-serif text-xl mb-4">
                 Caderno de Exercicios ({WORKBOOK_GUIDELINES.count} por curso, ~
                 {WORKBOOK_GUIDELINES.pagesPerWorkbook} pag cada)
               </h2>
               <ol className="space-y-2">
                 {WORKBOOK_GUIDELINES.structure.map((item, i) => (
-                  <li key={i} className="flex gap-3 text-sm text-[#a0a0b0]">
-                    <span className="text-[#8B5CF6] font-mono shrink-0">
+                  <li key={i} className="flex gap-3 text-sm text-mundo-muted">
+                    <span className="text-mundo-violeta font-mono shrink-0">
                       {i + 1}.
                     </span>
                     {item}
@@ -517,14 +517,14 @@ export default function GuidelinesPage() {
         {/* ── Pipeline ── */}
         {activeTab === "pipeline" && (
           <div className="space-y-6">
-            <div className="bg-[#252547] rounded-xl p-6">
+            <div className="bg-mundo-bg-surface rounded-xl p-6">
               <h2 className="text-white font-serif text-xl mb-4">
                 Pipeline de Producao
               </h2>
               <div className="flex flex-wrap gap-2 mb-6">
                 {PIPELINE_STAGES.map((stage, i) => (
                   <div key={stage.stage} className="flex items-center gap-2">
-                    <div className="bg-[#8B5CF6]/20 text-[#8B5CF6] px-3 py-1.5 rounded text-sm">
+                    <div className="bg-mundo-violeta/20 text-mundo-violeta px-3 py-1.5 rounded text-sm">
                       {stage.label}
                     </div>
                     {i < PIPELINE_STAGES.length - 1 && (
@@ -537,12 +537,12 @@ export default function GuidelinesPage() {
                 {PIPELINE_STAGES.map((stage) => (
                   <div
                     key={stage.stage}
-                    className="bg-[#1a1a2e] rounded-lg p-4"
+                    className="bg-mundo-bg rounded-lg p-4"
                   >
                     <h3 className="text-white text-sm font-medium">
                       {stage.label}
                     </h3>
-                    <p className="text-xs text-[#a0a0b0] mt-1">
+                    <p className="text-xs text-mundo-muted mt-1">
                       {stage.description}
                     </p>
                   </div>
@@ -550,7 +550,7 @@ export default function GuidelinesPage() {
               </div>
             </div>
 
-            <div className="bg-[#252547] rounded-xl p-6">
+            <div className="bg-mundo-bg-surface rounded-xl p-6">
               <h2 className="text-white font-serif text-xl mb-4">
                 Ordem de Lancamento
               </h2>
@@ -558,15 +558,15 @@ export default function GuidelinesPage() {
                 {LAUNCH_ORDER.map((item) => (
                   <div
                     key={item.slug}
-                    className="flex items-center gap-4 bg-[#1a1a2e] rounded-lg px-4 py-3"
+                    className="flex items-center gap-4 bg-mundo-bg rounded-lg px-4 py-3"
                   >
-                    <span className="text-[#C9A96E] font-mono text-sm w-6">
+                    <span className="text-mundo-dourado font-mono text-sm w-6">
                       {item.priority}.
                     </span>
                     <span className="text-white text-sm flex-1">
                       {item.slug}
                     </span>
-                    <span className="text-xs text-[#a0a0b0]">
+                    <span className="text-xs text-mundo-muted">
                       {item.reason}
                     </span>
                   </div>
@@ -574,8 +574,8 @@ export default function GuidelinesPage() {
               </div>
             </div>
 
-            <div className="bg-[#252547] rounded-xl p-4">
-              <p className="text-xs text-[#a0a0b0] italic">
+            <div className="bg-mundo-bg-surface rounded-xl p-4">
+              <p className="text-xs text-mundo-muted italic">
                 {LEGAL_DISCLAIMER}
               </p>
             </div>
@@ -585,18 +585,18 @@ export default function GuidelinesPage() {
         {/* ── Prompt Generator ── */}
         {activeTab === "generator" && (
           <div className="space-y-6">
-            <div className="bg-[#252547] rounded-xl p-6">
+            <div className="bg-mundo-bg-surface rounded-xl p-6">
               <h2 className="text-white font-serif text-xl mb-4">
                 Gerador de Prompts
               </h2>
-              <p className="text-sm text-[#a0a0b0] mb-6">
+              <p className="text-sm text-mundo-muted mb-6">
                 Selecciona um curso e sub-aula para gerar o prompt de script ou
                 visual.
               </p>
 
               <div className="grid gap-4 md:grid-cols-3 mb-6">
                 <div>
-                  <label className="block text-xs text-[#a0a0b0] mb-1">
+                  <label className="block text-xs text-mundo-muted mb-1">
                     Curso
                   </label>
                   <select
@@ -606,7 +606,7 @@ export default function GuidelinesPage() {
                       setSelectedModule(1);
                       setSelectedSub("A");
                     }}
-                    className="w-full bg-[#1a1a2e] border border-[#3a3a5c] rounded px-3 py-2 text-sm text-white"
+                    className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
                   >
                     <option value="">Seleccionar...</option>
                     {courses.map((c) => (
@@ -618,7 +618,7 @@ export default function GuidelinesPage() {
                 </div>
                 {course && (
                   <div>
-                    <label className="block text-xs text-[#a0a0b0] mb-1">
+                    <label className="block text-xs text-mundo-muted mb-1">
                       Modulo
                     </label>
                     <select
@@ -627,7 +627,7 @@ export default function GuidelinesPage() {
                         setSelectedModule(Number(e.target.value));
                         setSelectedSub("A");
                       }}
-                      className="w-full bg-[#1a1a2e] border border-[#3a3a5c] rounded px-3 py-2 text-sm text-white"
+                      className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
                     >
                       {course.modules.map((m) => (
                         <option key={m.number} value={m.number}>
@@ -639,13 +639,13 @@ export default function GuidelinesPage() {
                 )}
                 {course && (
                   <div>
-                    <label className="block text-xs text-[#a0a0b0] mb-1">
+                    <label className="block text-xs text-mundo-muted mb-1">
                       Sub-aula
                     </label>
                     <select
                       value={selectedSub}
                       onChange={(e) => setSelectedSub(e.target.value)}
-                      className="w-full bg-[#1a1a2e] border border-[#3a3a5c] rounded px-3 py-2 text-sm text-white"
+                      className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
                     >
                       {course.modules
                         .find((m) => m.number === selectedModule)
@@ -663,7 +663,7 @@ export default function GuidelinesPage() {
                 <button
                   onClick={generateScriptPrompt}
                   disabled={!course}
-                  className="bg-[#8B5CF6] text-white px-4 py-2 rounded text-sm hover:bg-[#7c4ee4] disabled:opacity-40"
+                  className="bg-mundo-violeta text-white px-4 py-2 rounded text-sm hover:bg-mundo-violeta/80 disabled:opacity-40"
                 >
                   Gerar Prompt de Script
                 </button>
@@ -672,7 +672,7 @@ export default function GuidelinesPage() {
                     generateVisualPromptForSection("situacao_humana")
                   }
                   disabled={!course}
-                  className="bg-[#C9A96E]/20 text-[#C9A96E] px-4 py-2 rounded text-sm hover:bg-[#C9A96E]/30 disabled:opacity-40"
+                  className="bg-[#C9A96E]/20 text-mundo-dourado px-4 py-2 rounded text-sm hover:bg-[#C9A96E]/30 disabled:opacity-40"
                 >
                   Gerar Prompt Visual
                 </button>
@@ -680,14 +680,14 @@ export default function GuidelinesPage() {
 
               {generatedPrompt && (
                 <div className="relative">
-                  <pre className="bg-[#1a1a2e] rounded-lg p-4 text-sm text-[#a0a0b0] whitespace-pre-wrap overflow-x-auto max-h-[60vh] overflow-y-auto">
+                  <pre className="bg-mundo-bg rounded-lg p-4 text-sm text-mundo-muted whitespace-pre-wrap overflow-x-auto max-h-[60vh] overflow-y-auto">
                     {generatedPrompt}
                   </pre>
                   <button
                     onClick={() =>
                       navigator.clipboard.writeText(generatedPrompt)
                     }
-                    className="absolute top-3 right-3 text-xs bg-[#3a3a5c] text-[#a0a0b0] px-3 py-1 rounded hover:bg-[#4a4a6c]"
+                    className="absolute top-3 right-3 text-xs bg-[#3a3a5c] text-mundo-muted px-3 py-1 rounded hover:bg-[#4a4a6c]"
                   >
                     Copiar
                   </button>

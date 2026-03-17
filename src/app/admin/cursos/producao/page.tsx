@@ -45,8 +45,8 @@ export default function CourseProductionPage() {
 
   if (!user || !isAdmin) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#1a1a2e]">
-        <p className="text-[#a0a0b0]">Acesso restrito.</p>
+      <div className="flex min-h-screen items-center justify-center bg-mundo-bg">
+        <p className="text-mundo-muted">Acesso restrito.</p>
       </div>
     );
   }
@@ -220,77 +220,77 @@ export default function CourseProductionPage() {
     : 0;
 
   return (
-    <div className="min-h-screen bg-[#1a1a2e] text-[#e0e0e8] p-6">
+    <div className="min-h-screen bg-mundo-bg text-mundo-creme-suave p-6">
       <div className="max-w-5xl mx-auto">
         <h1 className="font-serif text-3xl text-white mb-2">
           Producao de Cursos
         </h1>
-        <p className="text-[#a0a0b0] text-sm mb-8">
+        <p className="text-mundo-muted text-sm mb-8">
           Pipeline: scripts → audio (ElevenLabs) → imagens (ThinkDiffusion) → Supabase
         </p>
 
         {/* Config section */}
-        <div className="bg-[#252547] rounded-xl p-6 mb-8 space-y-4">
+        <div className="bg-mundo-bg-surface rounded-xl p-6 mb-8 space-y-4">
           <h2 className="text-white font-sans font-medium mb-4">Configuracao</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs text-[#a0a0b0] mb-1">
+              <label className="block text-xs text-mundo-muted mb-1">
                 ElevenLabs API Key
               </label>
               <input
                 type="password"
                 value={apiKey}
                 onChange={(e) => setApiKey(e.target.value)}
-                className="w-full bg-[#1a1a2e] border border-[#3a3a5c] rounded px-3 py-2 text-sm text-white"
+                className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
                 placeholder="xi-..."
               />
             </div>
             <div>
-              <label className="block text-xs text-[#a0a0b0] mb-1">
+              <label className="block text-xs text-mundo-muted mb-1">
                 Voice ID
               </label>
               <input
                 type="text"
                 value={voiceId}
                 onChange={(e) => setVoiceId(e.target.value)}
-                className="w-full bg-[#1a1a2e] border border-[#3a3a5c] rounded px-3 py-2 text-sm text-white"
+                className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
               />
             </div>
             <div>
-              <label className="block text-xs text-[#a0a0b0] mb-1">
+              <label className="block text-xs text-mundo-muted mb-1">
                 Modelo ElevenLabs
               </label>
               <select
                 value={modelo}
                 onChange={(e) => setModelo(e.target.value as "v2" | "v3")}
-                className="w-full bg-[#1a1a2e] border border-[#3a3a5c] rounded px-3 py-2 text-sm text-white"
+                className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
               >
                 <option value="v2">Multilingual v2</option>
                 <option value="v3">Eleven v3</option>
               </select>
             </div>
             <div>
-              <label className="block text-xs text-[#a0a0b0] mb-1">
+              <label className="block text-xs text-mundo-muted mb-1">
                 ComfyUI URL (ThinkDiffusion)
               </label>
               <input
                 type="text"
                 value={comfyuiUrl}
                 onChange={(e) => setComfyuiUrl(e.target.value)}
-                className="w-full bg-[#1a1a2e] border border-[#3a3a5c] rounded px-3 py-2 text-sm text-white"
+                className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
                 placeholder="https://your-instance.thinkdiffusion.com"
               />
             </div>
             <div>
-              <label className="block text-xs text-[#a0a0b0] mb-1">
+              <label className="block text-xs text-mundo-muted mb-1">
                 LoRA Model Name (opcional)
               </label>
               <input
                 type="text"
                 value={loraName}
                 onChange={(e) => setLoraName(e.target.value)}
-                className="w-full bg-[#1a1a2e] border border-[#3a3a5c] rounded px-3 py-2 text-sm text-white"
+                className="w-full bg-mundo-bg border border-mundo-border rounded px-3 py-2 text-sm text-white"
                 placeholder="mundo-dos-veus-v1.safetensors"
               />
             </div>
@@ -299,13 +299,13 @@ export default function CourseProductionPage() {
 
         {/* Course selector */}
         <div className="mb-8">
-          <label className="block text-sm text-[#a0a0b0] mb-2">
+          <label className="block text-sm text-mundo-muted mb-2">
             Selecciona o curso
           </label>
           <select
             value={selectedCourse}
             onChange={(e) => setSelectedCourse(e.target.value)}
-            className="bg-[#252547] border border-[#3a3a5c] rounded px-4 py-3 text-white w-full max-w-md"
+            className="bg-mundo-bg-surface border border-mundo-border rounded px-4 py-3 text-white w-full max-w-md"
           >
             <option value="">-- Escolhe um curso --</option>
             {courses.map((c) => (
@@ -324,10 +324,10 @@ export default function CourseProductionPage() {
                 <h2 className="font-serif text-2xl text-white">
                   {course.title}
                 </h2>
-                <p className="text-[#C9A96E] text-sm">{course.subtitle}</p>
+                <p className="text-mundo-dourado text-sm">{course.subtitle}</p>
               </div>
               <div className="flex items-center gap-4">
-                <span className="text-sm text-[#a0a0b0]">
+                <span className="text-sm text-mundo-muted">
                   Audio: {audioCount}/{totalLessons}
                 </span>
                 {batchRunning ? (
@@ -343,7 +343,7 @@ export default function CourseProductionPage() {
                   <button
                     onClick={() => batchGenerateAudio(course)}
                     disabled={!apiKey.trim()}
-                    className="bg-[#8B5CF6] text-white px-4 py-2 rounded text-sm hover:bg-[#7c4ee4] disabled:opacity-40"
+                    className="bg-mundo-violeta text-white px-4 py-2 rounded text-sm hover:bg-mundo-violeta/80 disabled:opacity-40"
                   >
                     Gerar todos os audios
                   </button>
@@ -356,25 +356,25 @@ export default function CourseProductionPage() {
               {course.modules.map((mod) => (
                 <details
                   key={mod.number}
-                  className="bg-[#252547] rounded-xl overflow-hidden group"
+                  className="bg-mundo-bg-surface rounded-xl overflow-hidden group"
                 >
                   <summary className="flex items-center justify-between px-6 py-4 cursor-pointer list-none">
                     <div className="flex items-center gap-3">
-                      <span className="text-[#8B5CF6] font-mono text-sm w-8">
+                      <span className="text-mundo-violeta font-mono text-sm w-8">
                         {String(mod.number).padStart(2, "0")}
                       </span>
                       <span className="text-white">{mod.title}</span>
                       {mod.isFree && (
-                        <span className="text-xs bg-[#C9A96E]/20 text-[#C9A96E] px-2 py-0.5 rounded">
+                        <span className="text-xs bg-[#C9A96E]/20 text-mundo-dourado px-2 py-0.5 rounded">
                           Gratuito
                         </span>
                       )}
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs text-[#a0a0b0]">
+                      <span className="text-xs text-mundo-muted">
                         {mod.subLessons.length} sub-aulas
                       </span>
-                      <span className="text-[#a0a0b0] group-open:rotate-180 transition-transform">
+                      <span className="text-mundo-muted group-open:rotate-180 transition-transform">
                         &#9662;
                       </span>
                     </div>
@@ -386,18 +386,18 @@ export default function CourseProductionPage() {
                       return (
                         <div
                           key={sub.letter}
-                          className="flex items-start gap-4 bg-[#1a1a2e] rounded-lg p-4"
+                          className="flex items-start gap-4 bg-mundo-bg rounded-lg p-4"
                         >
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1">
-                              <span className="text-[#8B5CF6] font-mono text-sm">
+                              <span className="text-mundo-violeta font-mono text-sm">
                                 {sub.letter})
                               </span>
                               <span className="text-white text-sm">
                                 {sub.title}
                               </span>
                             </div>
-                            <p className="text-xs text-[#a0a0b0] truncate">
+                            <p className="text-xs text-mundo-muted truncate">
                               {sub.description}
                             </p>
                             {st.audioError && (
@@ -434,7 +434,7 @@ export default function CourseProductionPage() {
                                   ? "bg-yellow-800/40 text-yellow-300 animate-pulse"
                                   : st.audioStatus === "error"
                                   ? "bg-red-800/40 text-red-300"
-                                  : "bg-[#3a3a5c] text-[#a0a0b0] hover:bg-[#4a4a6c]"
+                                  : "bg-[#3a3a5c] text-mundo-muted hover:bg-[#4a4a6c]"
                               }`}
                             >
                               {st.audioStatus === "generating"
@@ -465,7 +465,7 @@ export default function CourseProductionPage() {
                                   ? "bg-yellow-800/40 text-yellow-300 animate-pulse"
                                   : st.imageStatus === "error"
                                   ? "bg-red-800/40 text-red-300"
-                                  : "bg-[#3a3a5c] text-[#a0a0b0] hover:bg-[#4a4a6c]"
+                                  : "bg-[#3a3a5c] text-mundo-muted hover:bg-[#4a4a6c]"
                               }`}
                             >
                               {st.imageStatus === "generating"

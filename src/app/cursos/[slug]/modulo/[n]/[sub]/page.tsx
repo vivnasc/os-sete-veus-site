@@ -137,16 +137,16 @@ export default function LessonPage() {
 
   if (loading || authLoading) {
     return (
-      <div className="min-h-screen bg-[#1a1a2e] flex items-center justify-center">
-        <p className="text-[#a0a0b0]">A carregar...</p>
+      <div className="min-h-screen bg-mundo-bg flex items-center justify-center">
+        <p className="text-mundo-muted">A carregar...</p>
       </div>
     );
   }
 
   if (!lesson) {
     return (
-      <div className="min-h-screen bg-[#1a1a2e] flex items-center justify-center">
-        <p className="text-[#a0a0b0]">Sub-aula não encontrada.</p>
+      <div className="min-h-screen bg-mundo-bg flex items-center justify-center">
+        <p className="text-mundo-muted">Sub-aula não encontrada.</p>
       </div>
     );
   }
@@ -155,17 +155,17 @@ export default function LessonPage() {
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-[#1a1a2e] flex items-center justify-center px-6">
+      <div className="min-h-screen bg-mundo-bg flex items-center justify-center px-6">
         <div className="text-center max-w-md">
           <h1 className="font-serif text-2xl text-white mb-4">
             Entra na tua conta
           </h1>
-          <p className="text-[#a0a0b0] mb-8">
+          <p className="text-mundo-muted mb-8">
             Precisas de estar autenticada para ver esta aula.
           </p>
           <Link
             href="/entrar"
-            className="inline-block bg-[#8B5CF6] text-white px-8 py-3 rounded-lg font-sans hover:bg-[#7c4ee4] transition-colors"
+            className="inline-block bg-mundo-violeta text-white px-8 py-3 rounded-lg font-sans hover:bg-mundo-violeta/80 transition-colors"
           >
             Entrar
           </Link>
@@ -176,18 +176,18 @@ export default function LessonPage() {
 
   if (isLocked) {
     return (
-      <div className="min-h-screen bg-[#1a1a2e] flex items-center justify-center px-6">
+      <div className="min-h-screen bg-mundo-bg flex items-center justify-center px-6">
         <div className="text-center max-w-md">
           <h1 className="font-serif text-2xl text-white mb-4">
             Módulo bloqueado
           </h1>
-          <p className="text-[#a0a0b0] mb-8">
+          <p className="text-mundo-muted mb-8">
             Esta sub-aula faz parte do módulo {lesson.moduleNumber}. Inscreve-te
             no curso completo para desbloquear.
           </p>
           <Link
             href={`/cursos/${slug}/dashboard?checkout=true`}
-            className="inline-block bg-[#8B5CF6] text-white px-8 py-3 rounded-lg font-sans hover:bg-[#7c4ee4] transition-colors"
+            className="inline-block bg-mundo-violeta text-white px-8 py-3 rounded-lg font-sans hover:bg-mundo-violeta/80 transition-colors"
           >
             Inscrever-me
           </Link>
@@ -197,10 +197,10 @@ export default function LessonPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#1a1a2e] text-[#e0e0e8]">
+    <div className="min-h-screen bg-mundo-bg text-mundo-creme-suave">
       {/* Breadcrumb */}
       <div className="px-6 pt-8 max-w-4xl mx-auto">
-        <div className="flex items-center gap-2 text-sm text-[#a0a0b0] font-sans">
+        <div className="flex items-center gap-2 text-sm text-mundo-muted font-sans">
           <Link href={`/cursos/${slug}/dashboard`} className="hover:underline">
             {lesson.courseTitle}
           </Link>
@@ -209,7 +209,7 @@ export default function LessonPage() {
             Módulo {lesson.moduleNumber}: {lesson.moduleTitle}
           </span>
           <span>/</span>
-          <span className="text-[#e0e0e8]">
+          <span className="text-mundo-creme-suave">
             {lesson.letter}) {lesson.title}
           </span>
         </div>
@@ -217,7 +217,7 @@ export default function LessonPage() {
 
       {/* Video player */}
       <section className="px-6 py-8 max-w-4xl mx-auto">
-        <div className="aspect-video bg-[#252547] rounded-xl flex items-center justify-center overflow-hidden">
+        <div className="aspect-video bg-mundo-bg-surface rounded-xl flex items-center justify-center overflow-hidden">
           {videoUrl ? (
             <video
               src={videoUrl}
@@ -243,7 +243,7 @@ export default function LessonPage() {
         <h1 className="font-serif text-2xl text-white mb-2">
           {lesson.letter}) {lesson.title}
         </h1>
-        <p className="text-[#a0a0b0] leading-relaxed">{lesson.description}</p>
+        <p className="text-mundo-muted leading-relaxed">{lesson.description}</p>
       </section>
 
       {/* Actions */}
@@ -251,13 +251,13 @@ export default function LessonPage() {
         {!completed ? (
           <button
             onClick={markCompleted}
-            className="bg-[#8B5CF6] text-white px-6 py-3 rounded-lg font-sans hover:bg-[#7c4ee4] transition-colors"
+            className="bg-mundo-violeta text-white px-6 py-3 rounded-lg font-sans hover:bg-mundo-violeta/80 transition-colors"
           >
             Marcar como concluída
           </button>
         ) : (
-          <span className="text-[#8B5CF6] font-sans flex items-center gap-2">
-            <span className="w-5 h-5 bg-[#8B5CF6] rounded-full flex items-center justify-center text-white text-xs">
+          <span className="text-mundo-violeta font-sans flex items-center gap-2">
+            <span className="w-5 h-5 bg-mundo-violeta rounded-full flex items-center justify-center text-white text-xs">
               ✓
             </span>
             Concluída
@@ -266,7 +266,7 @@ export default function LessonPage() {
 
         <Link
           href={`/cursos/${slug}/dashboard`}
-          className="text-[#a0a0b0] text-sm font-sans hover:underline"
+          className="text-mundo-muted text-sm font-sans hover:underline"
         >
           Voltar ao dashboard
         </Link>
@@ -277,7 +277,7 @@ export default function LessonPage() {
         {lesson.prev ? (
           <Link
             href={`/cursos/${slug}/modulo/${lesson.prev.n}/${lesson.prev.sub}`}
-            className="text-[#8B5CF6] text-sm font-sans hover:underline"
+            className="text-mundo-violeta text-sm font-sans hover:underline"
           >
             ← Anterior
           </Link>
@@ -287,7 +287,7 @@ export default function LessonPage() {
         {lesson.next ? (
           <Link
             href={`/cursos/${slug}/modulo/${lesson.next.n}/${lesson.next.sub}`}
-            className="text-[#8B5CF6] text-sm font-sans hover:underline"
+            className="text-mundo-violeta text-sm font-sans hover:underline"
           >
             Próxima →
           </Link>
