@@ -647,6 +647,516 @@ const teiaHook1: YouTubeScript = {
   ],
 };
 
+// ─── A CHAMA — HOOK 1 ────────────────────────────────────────────────────
+
+const chamaHook1: YouTubeScript = {
+  courseSlug: "a-chama",
+  hookIndex: 0,
+  title: "Porque sorris quando queres gritar",
+  durationMin: 7,
+  thumbnail: {
+    mainText: "Porque sorris\nquando queres gritar",
+    subText: "A raiva que guardas",
+  },
+  scenes: [
+    {
+      type: "abertura",
+      narration: "",
+      overlayText: "Porque sorris quando queres gritar",
+      durationSec: 12,
+      visualNote:
+        "Céu azul-marinho. Título em creme. Vulcão Adormecido ao longe — superfície negra, brilho vermelho por baixo.",
+    },
+    {
+      type: "pergunta",
+      narration:
+        "A última vez que sentiste raiva a sério — o que fizeste com ela? Gritaste? Choraste? Ou sorriste e disseste 'está tudo bem'?",
+      overlayText: "O que fizeste\ncom a tua raiva?",
+      durationSec: 20,
+      visualNote:
+        "Silhueta rígida, mandíbula cerrada. Fundo escuro com brilho vermelho subtil por baixo da superfície.",
+    },
+    {
+      type: "situacao",
+      narration:
+        "Na reunião disseram-te que o projecto que fizeste sozinha ia ser apresentado por outra pessoa. Sentiste o calor subir. A mandíbula cerrar. Os olhos arder.\n\nMas o que fizeste? Sorriste. Disseste 'claro, faz sentido'. E no carro, sozinha, as mãos tremiam no volante. Não de medo. De raiva.\n\nUma raiva que nunca te ensinaram a ter. Porque meninas boas não gritam. Mulheres fortes não perdem o controlo. E tu — tu aprendeste tão bem a engolir que já nem sabes o que é raiva e o que é cansaço.\n\nA mandíbula dói. As costas travam. O estômago fecha. E tu chamas a tudo isto 'stress'.",
+      overlayText: "",
+      durationSec: 110,
+      visualNote:
+        "Silhueta a sorrir numa reunião — corpo tenso. Depois: silhueta no carro, mãos a tremer. Fissuras a aparecer na superfície do vulcão.",
+    },
+    {
+      type: "revelacao",
+      narration:
+        "A raiva é a emoção mais censurada nas mulheres. Um homem com raiva é assertivo. Uma mulher com raiva é histérica. E tu aprendeste isso antes de teres palavras.\n\nAprendeste que a raiva era perigosa. Que se a mostrasses, perdias amor. Perdias aprovação. Perdias o teu lugar.\n\nEntão guardaste-a. Na mandíbula. Nas costas. No estômago. Transformaste-a em cansaço, em sarcasmo, em controlo, em choro.\n\nMas a raiva não desaparece porque a escondes. Cresce. E um dia sai — nos sítios errados, nas pessoas erradas, da forma errada.\n\nNão porque sejas má. Porque nunca te deixaram ser inteira.",
+      overlayText: "A raiva não desaparece\nporque a escondes.\nCresce.",
+      durationSec: 100,
+      visualNote:
+        "Fissuras a abrir na superfície do vulcão. Lava visível. Calor a subir. Silhueta que começa a sentir — mãos a abrir lentamente.",
+    },
+    {
+      type: "gesto",
+      narration:
+        "Esta semana, repara. Quando sorrires e o corpo disser outra coisa — para. Pergunta-te: estou a sorrir ou estou a engolir? Não precisas de gritar. Não precisas de explodir. Só precisas de notar.",
+      overlayText: "Estou a sorrir\nou estou a engolir?",
+      durationSec: 35,
+      visualNote:
+        "Silhueta de pé junto ao vulcão. Lava em canais controlados. Fogo que ilumina sem destruir.",
+    },
+    {
+      type: "frase_final",
+      narration:
+        "A raiva não é o contrário do amor. O silêncio forçado é.",
+      overlayText: "A raiva não é o contrário do amor.\nO silêncio forçado é.",
+      durationSec: 14,
+      visualNote:
+        "Ecrã escuro. Texto em creme, serifado. Pausa.",
+    },
+    {
+      type: "cta",
+      narration:
+        "Se isto te tocou, o curso A Chama vai muito mais fundo. Oito módulos para recuperares a tua raiva como força. O link está na descrição.",
+      overlayText: "A Chama\nseteveus.space",
+      durationSec: 18,
+      visualNote:
+        "Vulcão com lava controlada. Luz vermelha e dourada. URL no ecrã.",
+    },
+    {
+      type: "fecho",
+      narration: "",
+      overlayText: "Sete Véus",
+      durationSec: 8,
+      visualNote:
+        "Território dissolve no céu. Logo Sete Véus. Silêncio.",
+    },
+  ],
+};
+
+// ─── A MULHER ANTES DE MÃE — HOOK 1 ────────────────────────────────────
+
+const mulherAntesDeMaeHook1: YouTubeScript = {
+  courseSlug: "a-mulher-antes-de-mae",
+  hookIndex: 0,
+  title: "Quando foi a última vez que alguém te chamou pelo teu nome",
+  durationMin: 7,
+  thumbnail: {
+    mainText: "O teu nome\nantes de 'mãe'",
+    subText: "A mulher que desapareceu",
+  },
+  scenes: [
+    {
+      type: "abertura",
+      narration: "",
+      overlayText: "Quando foi a última vez que alguém te chamou pelo teu nome?",
+      durationSec: 12,
+      visualNote:
+        "Céu azul-marinho. Título em creme. Ninho que Pesa ao longe — enorme, ocre quente.",
+    },
+    {
+      type: "pergunta",
+      narration:
+        "Pensa. Quando foi a última vez que alguém te chamou pelo teu nome? Não 'mãe'. Não 'amor'. O teu nome. E o que sentiste?",
+      overlayText: "O teu nome.\nLembras-te dele?",
+      durationSec: 20,
+      visualNote:
+        "Silhueta dentro de ninho enorme. Quase invisível. Só se vê 'mãe' — a mulher desapareceu.",
+    },
+    {
+      type: "situacao",
+      narration:
+        "São sete da manhã. Já fizeste três coisas antes de abrir os olhos — o lanche, a mochila, o banho. O teu café ficou frio. Outra vez.\n\nNa casa de banho, cinco minutos. É o único sítio onde ninguém bate. Olhas-te ao espelho e por um segundo não reconheces quem está ali.\n\nNão é que estejas mal. É que não estás. A mulher que eras antes dos filhos — a que dançava, a que lia, a que tinha opiniões sobre cinema — onde foi?\n\nE quando alguém te pergunta 'como estás?' respondes sempre a mesma coisa: 'estou bem, os miúdos estão bem'. Os miúdos estão bem. E tu?",
+      overlayText: "",
+      durationSec: 110,
+      visualNote:
+        "Silhueta no ninho, rodeada de pequenas silhuetas que puxam, precisam, chamam. Depois: silhueta sozinha na casa de banho, olhar perdido no espelho.",
+    },
+    {
+      type: "revelacao",
+      narration:
+        "Ninguém te avisou que quando um filho nasce, uma mulher morre. Não fisicamente. Mas a versão de ti que existia antes — a que tinha tempo, corpo, desejo, nome — essa desapareceu.\n\nE no lugar dela ficou 'mãe'. Uma função. Uma lista de tarefas. Uma culpa infinita.\n\nE o mais cruel: se sentes falta de ti mesma, a culpa duplica. Porque uma boa mãe não devia querer ser outra coisa. Devia bastar.\n\nMas não basta. E sentir isso não te faz má mãe. Faz-te humana. Faz-te inteira. Faz-te uma mulher que existia antes dos filhos e que merece continuar a existir.",
+      overlayText: "Quando um filho nasce,\numa mulher desaparece.\nNinguém te avisou.",
+      durationSec: 100,
+      visualNote:
+        "Silhueta a emergir do ninho. Contorno próprio a aparecer. Duas formas da mesma pessoa — mãe e mulher — a separar-se suavemente.",
+    },
+    {
+      type: "gesto",
+      narration:
+        "Esta semana, faz uma coisa só tua. Não para os filhos. Não para a casa. Pode ser ler dez páginas. Pode ser andar à chuva. Pode ser sentar-te e não fazer nada durante quinze minutos. E quando a culpa aparecer — repara nela. Não a obedeças. Só repara.",
+      overlayText: "Uma coisa só tua.\nSem culpa.",
+      durationSec: 40,
+      visualNote:
+        "Silhueta fora do ninho, mão no próprio peito. Ninho bonito atrás. Espaço entre as duas. Luz ocre quente.",
+    },
+    {
+      type: "frase_final",
+      narration:
+        "Sentir falta de ti mesma não é egoísmo. É o primeiro sinal de que ainda estás lá.",
+      overlayText: "Sentir falta de ti mesma\nnão é egoísmo.",
+      durationSec: 14,
+      visualNote:
+        "Ecrã escuro. Texto em creme, serifado. Pausa.",
+    },
+    {
+      type: "cta",
+      narration:
+        "Se isto te tocou, o curso A Mulher Antes de Mãe vai muito mais fundo. Oito módulos para te reencontrares sem culpa. O link está na descrição.",
+      overlayText: "A Mulher Antes de Mãe\nseteveus.space",
+      durationSec: 18,
+      visualNote:
+        "Ninho com espaço. Silhueta inteira. URL no ecrã.",
+    },
+    {
+      type: "fecho",
+      narration: "",
+      overlayText: "Sete Véus",
+      durationSec: 8,
+      visualNote:
+        "Território dissolve no céu. Logo Sete Véus. Silêncio.",
+    },
+  ],
+};
+
+// ─── O OFÍCIO DE SER — HOOK 1 ───────────────────────────────────────────
+
+const oficioDeSerHook1: YouTubeScript = {
+  courseSlug: "o-oficio-de-ser",
+  hookIndex: 0,
+  title: "Porque o cansaço não passa com férias",
+  durationMin: 7,
+  thumbnail: {
+    mainText: "O cansaço\nque não passa",
+    subText: "Férias não resolvem isto",
+  },
+  scenes: [
+    {
+      type: "abertura",
+      narration: "",
+      overlayText: "Porque o cansaço não passa com férias",
+      durationSec: 12,
+      visualNote:
+        "Céu azul-marinho. Título em creme. Oficina Infinita ao longe — máquinas, escuro, sem janela.",
+    },
+    {
+      type: "pergunta",
+      narration:
+        "Voltaste de férias. Descansaste. Dormiste. E na segunda-feira, quando abriste o portátil, o cansaço era exactamente o mesmo. Como se nunca tivesses saído. Porquê?",
+      overlayText: "Porquê?",
+      durationSec: 22,
+      visualNote:
+        "Silhueta curvada sobre mesa. Máquinas a trabalhar. Sem janela. Bronze escuro.",
+    },
+    {
+      type: "situacao",
+      narration:
+        "A tua semana é uma máquina perfeita. Reuniões, entregas, emails, decisões. Tens orgulho de ser eficiente. De dar conta. De nunca falhar.\n\nMas num domingo, quando não há nada para fazer, sentes um vazio. Não sabes o que fazer contigo quando não estás a produzir. E o que fazes? Abres o portátil. Respondes a emails. Crias tarefas.\n\nPorque parar é sentir. E sentir — isso não está na agenda.\n\nE quando alguém te pergunta 'o que gostas de fazer?' ficas em branco. Porque há anos que 'fazer' significa trabalho. E tudo o resto desapareceu.",
+      overlayText: "",
+      durationSec: 100,
+      visualNote:
+        "Silhueta a correr entre máquinas. Agenda cheia como engrenagens. Depois: silhueta parada num domingo — vazia, perdida sem tarefas.",
+    },
+    {
+      type: "revelacao",
+      narration:
+        "O burnout não é trabalhar demais. É viver de menos. O corpo cansa-se de manter uma vida que não alimenta.\n\nE o trabalho torna-se o anestésico perfeito — é o único sítio onde sentes que vales alguma coisa. Tiras valor do que produzes. Do cargo. Do reconhecimento.\n\nE quando isso para — nas férias, numa pausa, numa doença — não há nada por baixo. Só o vazio.\n\nO burnout é o corpo a dizer: estou cansado de ser uma máquina. Quero ser uma pessoa. Não é fraqueza. É a mensagem mais importante que vais receber.",
+      overlayText: "O burnout não é\ntrabalhar demais.\nÉ viver de menos.",
+      durationSec: 95,
+      visualNote:
+        "Máquinas a parar. Janela a abrir. Luz bronze a entrar. Silhueta a endireitar-se lentamente.",
+    },
+    {
+      type: "gesto",
+      narration:
+        "Amanhã, antes de abrires o portátil, para. Pergunta-te: estou a fazer isto porque preciso ou porque parar me assusta? Se a resposta te incomodar, fica com ela. Não a resolvas. Só nota.",
+      overlayText: "Preciso ou parar\nassusta-me?",
+      durationSec: 35,
+      visualNote:
+        "Oficina calma. Janela aberta. Silhueta sentada sem fazer nada. Luz bronze quente.",
+    },
+    {
+      type: "frase_final",
+      narration:
+        "O cansaço que não passa com férias não é do corpo. É da vida que levas.",
+      overlayText: "Não é do corpo.\nÉ da vida que levas.",
+      durationSec: 14,
+      visualNote:
+        "Ecrã escuro. Texto em creme, serifado. Pausa.",
+    },
+    {
+      type: "cta",
+      narration:
+        "Se isto te tocou, o curso O Ofício de Ser vai muito mais fundo. Oito módulos para trabalhares sem desaparecer. O link está na descrição.",
+      overlayText: "O Ofício de Ser\nseteveus.space",
+      durationSec: 18,
+      visualNote:
+        "Oficina com janela aberta. Luz quente. URL no ecrã.",
+    },
+    {
+      type: "fecho",
+      narration: "",
+      overlayText: "Sete Véus",
+      durationSec: 8,
+      visualNote:
+        "Território dissolve no céu. Logo Sete Véus. Silêncio.",
+    },
+  ],
+};
+
+// ─── O RELÓGIO PARTIDO — HOOK 1 ────────────────────────────────────────
+
+const relogioPartidoHook1: YouTubeScript = {
+  courseSlug: "o-relogio-partido",
+  hookIndex: 0,
+  title: "Porque sentes que já é tarde demais",
+  durationMin: 7,
+  thumbnail: {
+    mainText: "Já é tarde\ndemais?",
+    subText: "A mentira mais cruel",
+  },
+  scenes: [
+    {
+      type: "abertura",
+      narration: "",
+      overlayText: "Porque sentes que já é tarde demais",
+      durationSec: 12,
+      visualNote:
+        "Céu azul-marinho. Título em creme. Jardim das Estações ao longe — relógio gigante, flores aceleradas.",
+    },
+    {
+      type: "pergunta",
+      narration:
+        "Já é tarde para mudar de vida. Já é tarde para começar algo novo. Já é tarde para seres quem querias ser. Tens a certeza? Ou é o relógio a falar por ti?",
+      overlayText: "É o relógio\na falar por ti?",
+      durationSec: 22,
+      visualNote:
+        "Silhueta a correr num jardim com relógio enorme. Flores a nascer e morrer em segundos. Prateado e âmbar.",
+    },
+    {
+      type: "situacao",
+      narration:
+        "Tinhas planos. Ias viajar. Ias escrever. Ias começar aquele negócio. Ias dizer o que sentias. E depois a vida aconteceu. Os filhos. O trabalho. As contas.\n\nE agora olhas para trás e pensas: perdi tempo. Devia ter feito há dez anos. E olhas para a frente e pensas: já não vale a pena. É tarde. Tenho 42 anos. Ou 48. Ou 55.\n\nE o relógio bate mais alto que qualquer desejo.\n\nVês outras pessoas a começar — mais novas, mais livres — e pensas: para elas ainda dá. Para mim já passou.",
+      overlayText: "",
+      durationSec: 100,
+      visualNote:
+        "Silhueta a olhar para trás — versões mais jovens a desaparecer. Depois: silhueta parada, relógio enorme atrás. Imobilizada pelo tempo.",
+    },
+    {
+      type: "revelacao",
+      narration:
+        "Casar até aos 30. Filhos até aos 35. Carreira até aos 40. Corpo perfeito até aos 45. Quem decidiu isto? Não foste tu.\n\nForam regras que absorveste antes de teres voz. E agora vives com um relógio interno que te diz que cada ano que passa é um ano perdido.\n\nMas repara: quando dizes 'é tarde', o que realmente sentes é medo. Medo de falhar. Medo de parecer ridícula. Medo de começar do zero quando os outros parecem ter chegado.\n\n'Tarde' é uma ilusão. Não existe um horário certo para a tua vida. Existe este momento. E neste momento ainda estás aqui. Ainda estás viva. E isso é o suficiente para começar.",
+      overlayText: "'Tarde' é uma ilusão.\nNão existe um horário certo\npara a tua vida.",
+      durationSec: 100,
+      visualNote:
+        "Relógio com fissuras. Tempo a abrandar. Estações a coexistir — primavera e outono lado a lado. Silhueta a parar de correr.",
+    },
+    {
+      type: "gesto",
+      narration:
+        "Pega num papel. Escreve uma coisa que adias porque achas que é tarde. Uma só. Agora escreve por baixo: o que me impede não é o tempo — é o medo de quê? Lê o que escreveste. O inimigo nunca foi o relógio.",
+      overlayText: "O inimigo nunca\nfoi o relógio.",
+      durationSec: 40,
+      visualNote:
+        "Relógio partido. Jardim com todas as estações em paz. Silhueta sentada, presente. Luz âmbar-prateada.",
+    },
+    {
+      type: "frase_final",
+      narration:
+        "Nunca é tarde para agora. O único momento que tens é este.",
+      overlayText: "Nunca é tarde\npara agora.",
+      durationSec: 12,
+      visualNote:
+        "Ecrã escuro. Texto em creme, serifado. Pausa.",
+    },
+    {
+      type: "cta",
+      narration:
+        "Se isto te tocou, o curso O Relógio Partido vai muito mais fundo. Oito módulos para largares a pressa e viveres no presente. O link está na descrição.",
+      overlayText: "O Relógio Partido\nseteveus.space",
+      durationSec: 18,
+      visualNote:
+        "Jardim sem relógio. Todas as estações. URL no ecrã.",
+    },
+    {
+      type: "fecho",
+      narration: "",
+      overlayText: "Sete Véus",
+      durationSec: 8,
+      visualNote:
+        "Território dissolve no céu. Logo Sete Véus. Silêncio.",
+    },
+  ],
+};
+
+// ─── A COROA ESCONDIDA — HOOK 1 ────────────────────────────────────────
+
+const coroaEscondidaHook1: YouTubeScript = {
+  courseSlug: "a-coroa-escondida",
+  hookIndex: 0,
+  title: "A auto-sabotagem explicada: porque estragas quando está a correr bem",
+  durationMin: 8,
+  thumbnail: {
+    mainText: "Porque estragas\nquando corre bem",
+    subText: "A auto-sabotagem",
+  },
+  scenes: [
+    {
+      type: "abertura",
+      narration: "",
+      overlayText: "Porque estragas quando está a correr bem",
+      durationSec: 12,
+      visualNote:
+        "Céu azul-marinho. Título em creme. Trono Coberto ao longe — sala escura, panos sobre o trono.",
+    },
+    {
+      type: "pergunta",
+      narration:
+        "Estava a correr bem. Tinhas finalmente conseguido. E depois fizeste aquela coisa. Sabotaste. Porquê?",
+      overlayText: "Porquê?",
+      durationSec: 18,
+      visualNote:
+        "Silhueta encolhida de costas para um trono coberto. Sala escura. Dourado e púrpura escondidos sob panos.",
+    },
+    {
+      type: "situacao",
+      narration:
+        "Recebeste a promoção. Ou o convite. Ou o elogio. E durante cinco minutos sentiste-te bem. Mas depois começou.\n\nO pensamento: vão descobrir. Não sou assim tão boa. Foi sorte.\n\nE sem perceberes, começaste a fazer coisas que estragavam tudo. Chegaste atrasada. Não respondeste ao email. Arranjaste uma discussão. Desististe antes de começar.\n\nE quando tudo desmoronou, sentiste uma coisa estranha: alívio. Não era felicidade. Era: pelo menos já não tenho de sustentar aquilo.\n\nE o padrão repete-se. Sempre que te aproximas de algo bom — sabotais. Como um relógio.",
+      overlayText: "",
+      durationSec: 110,
+      visualNote:
+        "Silhueta quase a sentar-se no trono — recua. Panos voltam a cobrir. Silhueta no canto — alívio e vergonha.",
+    },
+    {
+      type: "revelacao",
+      narration:
+        "A auto-sabotagem não é estupidez. É protecção. O teu sistema nervoso aprendeu que ter é perigoso.\n\nTalvez porque quando eras pequena, ter atenção significava inveja. Ou porque quando brilhavas, alguém te apagava. Ou porque aprendeste que o sucesso significa solidão — que se fores demasiado, os outros vão embora.\n\nEntão o corpo cria um mecanismo: destrói antes que seja destruído. Sabota antes que alguém te tire o que conquistaste.\n\nÉ um reflexo de sobrevivência. Mas já não precisas dele. A criança que aprendeu que brilhar era perigoso já cresceu. E a adulta pode decidir: desta vez, fico.",
+      overlayText: "A auto-sabotagem não é\nestupidez.\nÉ protecção.",
+      durationSec: 105,
+      visualNote:
+        "Panos a cair do trono. Dourado e púrpura a aparecer. Silhueta a olhar com medo e curiosidade. Luz a crescer.",
+    },
+    {
+      type: "gesto",
+      narration:
+        "A próxima vez que algo correr bem — e sentires a vontade de estragar — para. Respira. E diz internamente: isto é medo, não verdade. Posso ter isto. Não precisas de sentar no trono hoje. Só precisas de parar de o cobrir.",
+      overlayText: "Isto é medo,\nnão verdade.\nPosso ter isto.",
+      durationSec: 40,
+      visualNote:
+        "Silhueta de pé junto ao trono. Mão a tocar no encosto. Hesitação a transformar-se em decisão.",
+    },
+    {
+      type: "frase_final",
+      narration:
+        "Não estragas porque não mereces. Estragas porque ter é mais assustador que querer.",
+      overlayText: "Ter é mais assustador\nque querer.",
+      durationSec: 14,
+      visualNote:
+        "Ecrã escuro. Texto em creme, serifado. Pausa.",
+    },
+    {
+      type: "cta",
+      narration:
+        "Se isto te tocou, o curso A Coroa Escondida vai muito mais fundo. Oito módulos para parares de te esconder. O link está na descrição.",
+      overlayText: "A Coroa Escondida\nseteveus.space",
+      durationSec: 18,
+      visualNote:
+        "Trono descoberto. Silhueta de pé, coroa visível. Dourado-púrpura. URL no ecrã.",
+    },
+    {
+      type: "fecho",
+      narration: "",
+      overlayText: "Sete Véus",
+      durationSec: 8,
+      visualNote:
+        "Território dissolve no céu. Logo Sete Véus. Silêncio.",
+    },
+  ],
+};
+
+// ─── A FOME — HOOK 1 ────────────────────────────────────────────────────
+
+const fomeHook1: YouTubeScript = {
+  courseSlug: "a-fome",
+  hookIndex: 0,
+  title: "O que procuras no frigorífico à meia-noite",
+  durationMin: 7,
+  thumbnail: {
+    mainText: "O frigorífico\nà meia-noite",
+    subText: "A fome que não é de comida",
+  },
+  scenes: [
+    {
+      type: "abertura",
+      narration: "",
+      overlayText: "O que procuras no frigorífico à meia-noite",
+      durationSec: 12,
+      visualNote:
+        "Céu azul-marinho. Título em creme. Mesa Vazia ao longe — mesa enorme, prato vazio, escuridão.",
+    },
+    {
+      type: "pergunta",
+      narration:
+        "Não tens fome. Sabes que não tens fome. Mas abres o frigorífico na mesma. De pé, no escuro da cozinha. O que procuras lá dentro?",
+      overlayText: "O que procuras\nlá dentro?",
+      durationSec: 20,
+      visualNote:
+        "Silhueta sentada frente a mesa vazia. Prato vazio. Luz fraca terracota-rosada.",
+    },
+    {
+      type: "situacao",
+      narration:
+        "São onze da noite. O dia foi longo. Os miúdos dormiram. O parceiro dorme. E tu estás na cozinha. De pé. A comer pão com manteiga. Ou chocolate. Ou restos.\n\nNão com prazer — com urgência. Como se enchesses um buraco. Comes rápido. Quase sem respirar.\n\nE quando paras, a culpa chega. O tribunal interno abre sessão: outra vez. Devias ter mais controlo. Amanhã começas a dieta.\n\nMas amanhã o buraco volta. E tu também.",
+      overlayText: "",
+      durationSec: 100,
+      visualNote:
+        "Silhueta na cozinha escura, luz do frigorífico no rosto. Come de pé, rápido, escondida. Depois: sentada na cama, culpa como sombra sobre o corpo.",
+    },
+    {
+      type: "revelacao",
+      narration:
+        "A fome emocional não é gula. É linguagem. É o corpo a pedir o que não sabe pedir com palavras. Conforto. Presença. Prazer. Segurança.\n\nAprendeste cedo que a comida era tudo isso. Na cozinha da tua mãe, comida era amor. Recusar era rejeitar.\n\nE agora, quando te sentes vazia, o corpo vai buscar o que conhece: o frigorífico.\n\nMas o frigorífico não tem o que procuras. Não há queijo suficiente para preencher solidão. Não há chocolate suficiente para compensar a vida que adias.\n\nO que procuras no prato é o que te falta na vida. E enquanto não nomeares essa falta, vais continuar a comer de pé, no escuro, às onze da noite.",
+      overlayText: "O que procuras no prato\né o que te falta\nna vida.",
+      durationSec: 105,
+      visualNote:
+        "Mesa a ganhar alimentos. Silhueta a sentar-se. Luz rosada a crescer. Duas sombras: fome e culpa.",
+    },
+    {
+      type: "gesto",
+      narration:
+        "Da próxima vez que fores ao frigorífico fora de horas — para. Antes de abrir, pergunta-te: do que tenho fome realmente? Não da comida — do quê? E espera pela resposta.",
+      overlayText: "Do que tenho fome\nrealmente?",
+      durationSec: 35,
+      visualNote:
+        "Silhueta sentada à mesa com comida. Come devagar. Luz rosada quente. Presença.",
+    },
+    {
+      type: "frase_final",
+      narration:
+        "A fome que te leva ao frigorífico à meia-noite não é de comida. É de ti.",
+      overlayText: "A fome não é de comida.\nÉ de ti.",
+      durationSec: 14,
+      visualNote:
+        "Ecrã escuro. Texto em creme, serifado. Pausa.",
+    },
+    {
+      type: "cta",
+      narration:
+        "Se isto te tocou, o curso A Fome vai muito mais fundo. Oito módulos para fazeres as pazes com o prato e com o corpo. O link está na descrição.",
+      overlayText: "A Fome\nseteveus.space",
+      durationSec: 18,
+      visualNote:
+        "Mesa bonita. Silhueta em paz. Terracota e porcelana. URL no ecrã.",
+    },
+    {
+      type: "fecho",
+      narration: "",
+      overlayText: "Sete Véus",
+      durationSec: 8,
+      visualNote:
+        "Território dissolve no céu. Logo Sete Véus. Silêncio.",
+    },
+  ],
+};
+
 // ─── EXPORTS ──────────────────────────────────────────────────────────────
 
 export const YOUTUBE_SCRIPTS: YouTubeScript[] = [
@@ -657,6 +1167,12 @@ export const YOUTUBE_SCRIPTS: YouTubeScript[] = [
   espelhoOutroHook1,
   silencioGritaHook1,
   teiaHook1,
+  chamaHook1,
+  mulherAntesDeMaeHook1,
+  oficioDeSerHook1,
+  relogioPartidoHook1,
+  coroaEscondidaHook1,
+  fomeHook1,
 ];
 
 export function getScriptsForCourse(courseSlug: string): YouTubeScript[] {

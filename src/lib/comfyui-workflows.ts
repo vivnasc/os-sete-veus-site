@@ -349,6 +349,60 @@ export const TERRITORY_PROMPTS: Record<
       "beautiful balanced web of golden threads between ancient trees, silhouette connected but whole, luminous moss-green forest, belonging without disappearing",
     ],
   },
+  "a-chama": {
+    name: "O Vulcao Adormecido",
+    stages: [
+      "dormant sealed volcano, black cold surface, silhouette rigid with clenched jaw, invisible pressure underneath, dark red undertones",
+      "cracks in surface revealing lava underneath, heat rising, silhouette tense but aware, red-orange glow emerging",
+      "lava flowing in controlled channels, fire visible but not destructive, silhouette standing with open fists, warm fierce light",
+      "active beautiful volcano, lava illuminating the landscape, controlled fire as source of light, powerful silhouette, red and gold",
+    ],
+  },
+  "a-mulher-antes-de-mae": {
+    name: "O Ninho que Pesa",
+    stages: [
+      "enormous nest consuming the silhouette, only the mother visible the woman disappeared, heavy ochre tones, overwhelming",
+      "silhouette beginning to emerge from nest, own contour visible, first space between mother and nest, warmer ochre",
+      "silhouette both inside and outside the nest, two forms of the same person, warm ochre light, coexistence",
+      "beautiful nest with space, whole silhouette mother and woman simultaneously, balance, golden ochre light",
+    ],
+  },
+  "o-oficio-de-ser": {
+    name: "A Oficina Infinita",
+    stages: [
+      "dark workshop with machines running nonstop, silhouette hunched over desk, no window, exhaustion, bronze-dark tones",
+      "some machines stopping, silhouette straightening up, a crack of light, first pause, bronze warming",
+      "calmer workshop, window half-open, silhouette working at own rhythm, warm bronze light filtering in",
+      "workshop with open window, silhouette working and pausing, inside and outside, rhythm, purpose without prison, warm bronze",
+    ],
+  },
+  "o-relogio-partido": {
+    name: "O Jardim das Estacoes",
+    stages: [
+      "garden dominated by giant clock, everything accelerated flowers blooming and dying in seconds, silhouette running, silver-grey anguish",
+      "clock cracking, time slowing, some flowers pausing, silhouette slower, amber light beginning",
+      "broken clock, seasons coexisting spring and autumn side by side, silhouette standing still observing, amber-silver",
+      "no clock, garden with all seasons in harmony, silhouette seated present, peaceful amber-silver light, timeless beauty",
+    ],
+  },
+  "a-coroa-escondida": {
+    name: "O Trono Coberto",
+    stages: [
+      "dark room with throne covered by cloths and shadows, silhouette small and hunched turning away, does not know the throne is hers, purple-dark",
+      "cloths slipping off, throne partially visible gold and purple, silhouette looking at it, fear and curiosity",
+      "throne uncovered golden and purple, silhouette standing next to it, hesitation, reaching toward it",
+      "silhouette seated on throne, crown on head, without permission, golden-purple light, total presence and power",
+    ],
+  },
+  "a-fome": {
+    name: "A Mesa Vazia",
+    stages: [
+      "enormous empty table, silhouette seated in front famished, empty plate, darkness, craving and lack, rosewood-dark",
+      "table with some food, silhouette hesitant, conflict between hunger and guilt, weak rosewood light",
+      "table with varied food, silhouette eating with attention, no guilt, warm rosy light, presence",
+      "beautiful simple table, silhouette at peace with the plate, inhabited body, presence, terracotta and white porcelain, warmth",
+    ],
+  },
 };
 
 /**

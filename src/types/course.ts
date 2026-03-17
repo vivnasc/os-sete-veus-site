@@ -16,7 +16,13 @@ export type CourseSlug =
   | "o-fio-invisivel"
   | "o-espelho-do-outro"
   | "o-silencio-que-grita"
-  | "a-teia";
+  | "a-teia"
+  | "a-chama"
+  | "a-mulher-antes-de-mae"
+  | "o-oficio-de-ser"
+  | "o-relogio-partido"
+  | "a-coroa-escondida"
+  | "a-fome";
 
 export type SubLesson = {
   letter: string; // "A", "B", "C"
