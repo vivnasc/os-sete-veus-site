@@ -3,6 +3,19 @@
 import { createContext, useContext, useState, useRef, useCallback, useEffect, type ReactNode } from "react";
 import type { Album, AlbumTrack } from "@/data/albums";
 
+/**
+ * Convert direct Supabase audio URLs to the streaming proxy.
+ * This hides the real storage URL from the browser so users cannot
+ * right-click → save or copy the direct link.
+ */
+function proxyUrl(track: AlbumTrack, album: Album): string | null {
+  if (!track.audioUrl) return null;
+  // If already a proxy URL, keep it
+  if (track.audioUrl.startsWith("/api/music/stream")) return track.audioUrl;
+  // Route through proxy
+  return `/api/music/stream?album=${encodeURIComponent(album.slug)}&track=${track.number}`;
+}
+
 type RepeatMode = "off" | "all" | "one";
 
 type MusicPlayerState = {
@@ -121,10 +134,12 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       }
 
       const nextTrack = prev.queue[nextIdx];
-      if (nextTrack?.audioUrl) {
+      const album = prev.queueAlbum;
+      const src = nextTrack && album ? proxyUrl(nextTrack, album) : null;
+      if (src) {
         const audio = audioRef.current;
         if (audio) {
-          audio.src = nextTrack.audioUrl;
+          audio.src = src;
           audio.play().catch(() => {});
         }
       }
@@ -133,7 +148,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
         ...prev,
         currentTrack: nextTrack,
         currentAlbum: prev.queueAlbum,
-        isPlaying: !!nextTrack?.audioUrl,
+        isPlaying: !!src,
       };
     });
   }, []);
@@ -143,9 +158,10 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     if (!audio) return;
 
     const queue = trackList || album.tracks;
+    const src = proxyUrl(track, album);
 
-    if (track.audioUrl) {
-      audio.src = track.audioUrl;
+    if (src) {
+      audio.src = src;
       audio.play().catch(() => {});
     }
 
@@ -155,7 +171,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       currentAlbum: album,
       queue,
       queueAlbum: album,
-      isPlaying: !!track.audioUrl,
+      isPlaying: !!src,
       showFullPlayer: true,
     }));
   }, []);
@@ -199,8 +215,10 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       }
 
       const prevTrack = prev.queue[prevIdx];
-      if (prevTrack?.audioUrl) {
-        audio.src = prevTrack.audioUrl;
+      const album = prev.queueAlbum;
+      const src = prevTrack && album ? proxyUrl(prevTrack, album) : null;
+      if (src) {
+        audio.src = src;
         audio.play().catch(() => {});
       }
 
@@ -208,7 +226,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
         ...prev,
         currentTrack: prevTrack,
         currentAlbum: prev.queueAlbum,
-        isPlaying: !!prevTrack?.audioUrl,
+        isPlaying: !!src,
       };
     });
   }, []);

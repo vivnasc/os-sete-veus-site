@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { MusicPlayerProvider } from "@/contexts/MusicPlayerContext";
 import MiniPlayer from "@/components/music/MiniPlayer";
 import FullPlayer from "@/components/music/FullPlayer";
+import NoDownload from "@/components/music/NoDownload";
 
 export const metadata: Metadata = {
   title: {
@@ -20,6 +21,7 @@ export default function MusicLayout({ children }: { children: React.ReactNode })
         </div>
         <MiniPlayer />
         <FullPlayer />
+        <NoDownload />
       </div>
     </MusicPlayerProvider>
   );
