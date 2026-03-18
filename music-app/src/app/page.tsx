@@ -1,7 +1,6 @@
 import { ALL_ALBUMS as ALBUMS } from "@/data/albums";
 import AlbumCard from "@/components/music/AlbumCard";
 import Image from "next/image";
-import Link from "next/link";
 
 export const metadata = {
   title: "Véus",
@@ -16,24 +15,25 @@ export default function MusicHomePage() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#C9A96E]/15 via-transparent to-transparent" />
-        <div className="relative px-6 pt-16 pb-12 max-w-screen-lg mx-auto">
-          <Image src="/logo-veus.png" alt="Véus" width={200} height={80} className="h-16 sm:h-20 w-auto" priority />
-          <p className="mt-4 text-[#a0a0b0] max-w-md leading-relaxed">
-            Musica original do universo Sete Veus. Cada album e uma viagem sonora
-            que acompanha a leitura dos Espelhos, dos Nos e dos Cursos.
-          </p>
-          <Link
-            href="/upload"
-            className="mt-4 inline-flex items-center gap-2 text-xs text-[#666680] hover:text-[#C9A96E] transition-colors"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
-              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" />
-            </svg>
-            Carregar musicas
-          </Link>
+      {/* Hero — like Apple Music */}
+      <div className="relative overflow-hidden bg-gradient-to-b from-[#C9A96E]/10 via-[#0D0D1A] to-transparent">
+        <div className="relative flex flex-col items-center text-center px-6 pt-16 pb-14">
+          <Image
+            src="/Loranne.png"
+            alt="Loranne"
+            width={300}
+            height={400}
+            className="h-56 sm:h-72 md:h-80 w-auto rounded-2xl shadow-2xl"
+            priority
+          />
+          <Image
+            src="/logo-veus.png"
+            alt="Véus"
+            width={200}
+            height={80}
+            className="h-10 sm:h-14 w-auto mt-8"
+          />
+          <p className="mt-2 text-sm text-[#C9A96E] tracking-widest">by Loranne</p>
         </div>
       </div>
 

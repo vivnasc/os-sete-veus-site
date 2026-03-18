@@ -37,7 +37,7 @@ export default function AlbumCard({ album }: Props) {
         </div>
       </div>
       <p className="mt-2 text-sm font-medium text-[#F5F0E6] truncate">{album.title}</p>
-      <p className="text-xs text-[#a0a0b0] truncate">{album.subtitle}</p>
+      <p className="text-xs text-[#a0a0b0] truncate">Loranne</p>
     </Link>
   );
 }

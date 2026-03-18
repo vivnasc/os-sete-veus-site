@@ -117,7 +117,18 @@ function Sidebar() {
       {/* Spacer */}
       <div className="flex-1" />
 
-      <div className="p-4" />
+      {/* Admin */}
+      <div className="px-3 pb-4">
+        <Link
+          href="/musica/upload"
+          className="flex items-center gap-3 px-3 py-2 rounded-lg text-xs text-[#666680] hover:text-[#a0a0b0] hover:bg-white/5 transition-colors"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4 opacity-50">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" />
+          </svg>
+          Carregar musicas
+        </Link>
+      </div>
     </aside>
   );
 }
