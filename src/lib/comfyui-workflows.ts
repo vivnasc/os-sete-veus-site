@@ -424,3 +424,220 @@ export const SILHOUETTE_POSES = {
   releasing: "hands opening to release something upward, letting go",
   opening_door: "silhouette pushing open a door or lifting a veil, threshold",
 } as const;
+
+// ─── WAN 2.1 IMAGE-TO-VIDEO WORKFLOW ──────────────────────────────────────
+
+type Img2VidOpts = {
+  /** Motion prompt describing the animation */
+  motionPrompt: string;
+  /** Negative prompt for motion */
+  negativePrompt?: string;
+  /** Duration in seconds (5 or 10) */
+  durationSec?: number;
+  /** FPS (default 24) */
+  fps?: number;
+  /** Resolution width */
+  width?: number;
+  /** Resolution height */
+  height?: number;
+  /** Seed for reproducibility */
+  seed?: number;
+  /** Denoise strength (0-1, lower = closer to original image) */
+  denoise?: number;
+  /** CFG scale */
+  cfg?: number;
+  /** Number of sampling steps */
+  steps?: number;
+};
+
+/**
+ * Build a Wan 2.1 image-to-video workflow for ComfyUI.
+ *
+ * This takes a source image and animates it into a video clip.
+ * The source image is uploaded to ComfyUI separately via /upload/image endpoint,
+ * and its filename is passed here.
+ *
+ * Pipeline:
+ *   LoadImage → Wan2.1 I2V Model → CLIPTextEncode → KSampler → VideoLinearCFGGuidance → Decode → SaveAnimatedWEBP
+ *
+ * Compatible with ThinkDiffusion ComfyUI instances that have Wan 2.1 installed.
+ */
+export function buildImageToVideoWorkflow(
+  sourceImageFilename: string,
+  opts: Img2VidOpts
+) {
+  const {
+    motionPrompt,
+    negativePrompt = "static, frozen, no movement, blurry, distorted, low quality, watermark, text",
+    durationSec = 5,
+    fps = 24,
+    width = 1280,
+    height = 720,
+    seed = Math.floor(Math.random() * 2 ** 32),
+    denoise = 0.85,
+    cfg = 6,
+    steps = 30,
+  } = opts;
+
+  const numFrames = durationSec * fps;
+
+  const workflow: Record<string, unknown> = {
+    // Load the source image
+    "load_image": {
+      class_type: "LoadImage",
+      inputs: {
+        image: sourceImageFilename,
+      },
+    },
+
+    // Load Wan 2.1 I2V model
+    "load_model": {
+      class_type: "UNETLoader",
+      inputs: {
+        unet_name: "wan2.1_i2v_720p_bf16.safetensors",
+        weight_dtype: "bf16",
+      },
+    },
+
+    // Load CLIP for Wan 2.1
+    "load_clip": {
+      class_type: "CLIPLoader",
+      inputs: {
+        clip_name: "umt5_xxl_fp8_e4m3fn.safetensors",
+        type: "wan",
+      },
+    },
+
+    // Load VAE
+    "load_vae": {
+      class_type: "VAELoader",
+      inputs: {
+        vae_name: "wan_2.1_vae.safetensors",
+      },
+    },
+
+    // Encode positive prompt (motion description)
+    "clip_encode_pos": {
+      class_type: "CLIPTextEncode",
+      inputs: {
+        text: motionPrompt,
+        clip: ["load_clip", 0],
+      },
+    },
+
+    // Encode negative prompt
+    "clip_encode_neg": {
+      class_type: "CLIPTextEncode",
+      inputs: {
+        text: negativePrompt,
+        clip: ["load_clip", 0],
+      },
+    },
+
+    // Encode the source image to VAE latent
+    "vae_encode": {
+      class_type: "VAEEncode",
+      inputs: {
+        pixels: ["load_image", 0],
+        vae: ["load_vae", 0],
+      },
+    },
+
+    // Wan I2V conditioning: connects source image + text
+    "wan_i2v_cond": {
+      class_type: "WanImageToVideo",
+      inputs: {
+        clip_vision_output: ["load_image", 0],
+        conditioning: ["clip_encode_pos", 0],
+        vae: ["load_vae", 0],
+        width,
+        height,
+        length: numFrames,
+      },
+    },
+
+    // Empty latent video (for video frames)
+    "empty_latent": {
+      class_type: "EmptyLatentVideo",
+      inputs: {
+        width,
+        height,
+        length: numFrames,
+        batch_size: 1,
+      },
+    },
+
+    // Apply VideoLinearCFGGuidance for temporal coherence
+    "cfg_guidance": {
+      class_type: "VideoLinearCFGGuidance",
+      inputs: {
+        model: ["load_model", 0],
+        min_cfg: 1.0,
+      },
+    },
+
+    // Sample
+    "sampler": {
+      class_type: "KSampler",
+      inputs: {
+        seed,
+        steps,
+        cfg,
+        sampler_name: "euler",
+        scheduler: "normal",
+        denoise,
+        model: ["cfg_guidance", 0],
+        positive: ["wan_i2v_cond", 0],
+        negative: ["clip_encode_neg", 0],
+        latent_image: ["empty_latent", 0],
+      },
+    },
+
+    // Decode latent back to pixel video
+    "vae_decode": {
+      class_type: "VAEDecode",
+      inputs: {
+        samples: ["sampler", 0],
+        vae: ["load_vae", 0],
+      },
+    },
+
+    // Save as animated WebP (or MP4 via VHS nodes)
+    "save_video": {
+      class_type: "SaveAnimatedWEBP",
+      inputs: {
+        filename_prefix: "seteveus-video",
+        fps,
+        lossless: false,
+        quality: 90,
+        method: "default",
+        images: ["vae_decode", 0],
+      },
+    },
+  };
+
+  return workflow;
+}
+
+/**
+ * Scene-specific motion prompts for YouTube hooks.
+ * Describes HOW the scene should animate (not what it looks like).
+ */
+export const SCENE_MOTION_PROMPTS: Record<string, string> = {
+  abertura:
+    "slow cinematic camera drift downward through clouds, gentle atmospheric movement, particles of golden light floating slowly, pre-dawn sky gradually brightening",
+  pergunta:
+    "silhouette breathing slowly, chest rising and falling gently, subtle wind moving hair/fabric, atmospheric particles drifting, contemplative stillness with life",
+  situacao:
+    "slow camera tracking movement, environment alive with subtle motion — leaves rustling, water rippling, dust motes floating in light beams, cinematic parallax between foreground and background",
+  revelacao:
+    "mirrors slowly uncovering, veils lifting and dissolving, light gradually intensifying from warm golden source, dramatic slow reveal, shadows retreating",
+  gesto:
+    "silhouette slowly extending hand, golden particles gathering around the gesture, warm light pulse emanating from the movement, gentle purposeful motion",
+  frase_final:
+    "very slow zoom into darkness, text area breathing with subtle light, particles settling like dust after a storm, contemplative stillness",
+  cta:
+    "territory scene alive — gentle wind, floating particles, warm golden light pulsing slowly, inviting and warm atmosphere",
+  fecho:
+    "slow dissolve upward into deep navy sky, territory fading gently, last golden particles ascending and disappearing, fade to peaceful darkness",
+};
