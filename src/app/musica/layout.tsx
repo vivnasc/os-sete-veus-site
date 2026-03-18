@@ -9,65 +9,131 @@ import NoDownload from "@/components/music/NoDownload";
 
 function Sidebar() {
   const pathname = usePathname();
+  const isHome = pathname === "/musica";
+  const isGenre = pathname.startsWith("/musica/genero");
+  const isMood = pathname.startsWith("/musica/mood");
 
   return (
-    <aside className="hidden md:flex flex-col w-56 bg-black/40 border-r border-white/5 p-4 gap-6">
+    <aside className="hidden md:flex flex-col w-56 bg-black/50 border-r border-white/5 shrink-0">
       {/* Logo */}
-      <Link href="/musica" className="flex items-center gap-2.5 px-2 py-1">
-        <div className="h-8 w-8 rounded-full bg-gradient-to-br from-[#C9A96E] to-[#8B5CF6] flex items-center justify-center">
-          <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4 text-white">
-            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
-          </svg>
-        </div>
-        <span className="font-display text-base font-semibold text-[#F5F0E6]">Sete Ecos</span>
-      </Link>
+      <div className="p-5 pb-4">
+        <Link href="/musica" className="flex items-center gap-2.5">
+          <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-[#8B5CF6] to-[#C9A96E] flex items-center justify-center">
+            <svg viewBox="0 0 24 24" fill="currentColor" className="h-4.5 w-4.5 text-white">
+              <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
+            </svg>
+          </div>
+          <div>
+            <span className="font-display text-lg font-bold text-[#F5F0E6] leading-none">Ecos</span>
+            <span className="block text-[10px] text-[#666680] tracking-wider uppercase">Music</span>
+          </div>
+        </Link>
+      </div>
 
-      {/* Nav */}
-      <nav className="space-y-1">
+      {/* Main nav */}
+      <nav className="px-3 space-y-0.5">
         <Link
           href="/musica"
-          className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
-            pathname === "/musica"
-              ? "bg-white/10 text-[#F5F0E6] font-medium"
-              : "text-[#a0a0b0] hover:text-[#F5F0E6] hover:bg-white/5"
+          className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
+            isHome ? "bg-white/10 text-[#F5F0E6] font-medium" : "text-[#a0a0b0] hover:text-[#F5F0E6] hover:bg-white/5"
           }`}
         >
-          <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+          <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 opacity-70">
             <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
           </svg>
-          Inicio
-        </Link>
-        <Link
-          href="/"
-          className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-[#a0a0b0] hover:text-[#F5F0E6] hover:bg-white/5 transition-colors"
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
-            <path d="M19 12H5M12 19l-7-7 7-7" />
-          </svg>
-          Voltar ao site
+          Explorar
         </Link>
       </nav>
 
-      {/* Divider */}
-      <div className="border-t border-white/5" />
+      {/* Generos */}
+      <div className="px-3 mt-6">
+        <p className="text-[10px] uppercase tracking-widest text-[#666680] px-3 mb-2">Generos</p>
+        <nav className="space-y-0.5">
+          {[
+            { slug: "organic", label: "Organico", color: "#4ade80" },
+            { slug: "marrabenta", label: "Marrabenta", color: "#f59e0b" },
+            { slug: "house", label: "House", color: "#ec4899" },
+            { slug: "gospel", label: "Gospel", color: "#eab308" },
+          ].map(g => (
+            <Link
+              key={g.slug}
+              href={`/musica/genero/${g.slug}`}
+              className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
+                pathname === `/musica/genero/${g.slug}` ? "bg-white/10 text-[#F5F0E6]" : "text-[#a0a0b0] hover:text-[#F5F0E6] hover:bg-white/5"
+              }`}
+            >
+              <span className="h-2.5 w-2.5 rounded-full shrink-0" style={{ backgroundColor: g.color }} />
+              {g.label}
+            </Link>
+          ))}
+        </nav>
+      </div>
 
-      {/* Collections */}
-      <div className="flex-1 overflow-y-auto space-y-1">
-        <p className="text-[10px] uppercase tracking-widest text-[#666680] px-3 mb-2">Coleccoes</p>
-        {[
-          { label: "Espelhos", href: "/musica#espelhos" },
-          { label: "Nos", href: "/musica#nos" },
-          { label: "Livro", href: "/musica#livro" },
-          { label: "Cursos", href: "/musica#cursos" },
-        ].map(item => (
-          <Link
-            key={item.label}
-            href={item.href}
-            className="block px-3 py-1.5 rounded text-sm text-[#a0a0b0] hover:text-[#F5F0E6] hover:bg-white/5 transition-colors"
-          >
-            {item.label}
-          </Link>
-        ))}
+      {/* Moods */}
+      <div className="px-3 mt-6">
+        <p className="text-[10px] uppercase tracking-widest text-[#666680] px-3 mb-2">Mood</p>
+        <nav className="space-y-0.5">
+          {[
+            { slug: "whisper", label: "Sussurro", icon: "~" },
+            { slug: "steady", label: "Constante", icon: "—" },
+            { slug: "pulse", label: "Pulso", icon: "+" },
+            { slug: "anthem", label: "Hino", icon: "!" },
+            { slug: "raw", label: "Cru", icon: "*" },
+          ].map(m => (
+            <Link
+              key={m.slug}
+              href={`/musica/mood/${m.slug}`}
+              className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
+                pathname === `/musica/mood/${m.slug}` ? "bg-white/10 text-[#F5F0E6]" : "text-[#a0a0b0] hover:text-[#F5F0E6] hover:bg-white/5"
+              }`}
+            >
+              <span className="text-xs font-mono text-[#666680] w-4 text-center">{m.icon}</span>
+              {m.label}
+            </Link>
+          ))}
+        </nav>
+      </div>
+
+      {/* Temas */}
+      <div className="px-3 mt-6">
+        <p className="text-[10px] uppercase tracking-widest text-[#666680] px-3 mb-2">Temas</p>
+        <nav className="space-y-0.5">
+          {[
+            { slug: "auto-amor", label: "Auto-Amor" },
+            { slug: "auto-poder", label: "Auto-Poder" },
+            { slug: "limites", label: "Limites" },
+            { slug: "raizes", label: "Raizes" },
+            { slug: "corpo", label: "O Corpo" },
+            { slug: "recomecar", label: "Recomecar" },
+            { slug: "silencio", label: "O Silencio" },
+          ].map(t => (
+            <Link
+              key={t.slug}
+              href={`/musica/tema/${t.slug}`}
+              className={`block px-3 py-2 rounded-lg text-sm transition-colors ${
+                pathname === `/musica/tema/${t.slug}` ? "bg-white/10 text-[#F5F0E6]" : "text-[#a0a0b0] hover:text-[#F5F0E6] hover:bg-white/5"
+              }`}
+            >
+              {t.label}
+            </Link>
+          ))}
+        </nav>
+      </div>
+
+      {/* Spacer */}
+      <div className="flex-1" />
+
+      {/* Back to site */}
+      <div className="p-4 border-t border-white/5">
+        <Link
+          href="/"
+          className="flex items-center gap-2 text-xs text-[#666680] hover:text-[#a0a0b0] transition-colors"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+          seteveus.space
+        </Link>
       </div>
     </aside>
   );
@@ -75,20 +141,17 @@ function Sidebar() {
 
 function MobileNav() {
   return (
-    <header className="md:hidden flex items-center justify-between px-4 py-3 bg-black/40 border-b border-white/5">
+    <header className="md:hidden flex items-center justify-between px-4 py-3 bg-black/50 border-b border-white/5">
       <Link href="/musica" className="flex items-center gap-2">
-        <div className="h-7 w-7 rounded-full bg-gradient-to-br from-[#C9A96E] to-[#8B5CF6] flex items-center justify-center">
+        <div className="h-7 w-7 rounded-lg bg-gradient-to-br from-[#8B5CF6] to-[#C9A96E] flex items-center justify-center">
           <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5 text-white">
             <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
           </svg>
         </div>
-        <span className="font-display text-sm font-semibold text-[#F5F0E6]">Sete Ecos</span>
+        <span className="font-display text-sm font-bold text-[#F5F0E6]">Ecos</span>
       </Link>
-      <Link
-        href="/"
-        className="text-xs text-[#666680] hover:text-[#a0a0b0] transition-colors"
-      >
-        Voltar ao site
+      <Link href="/" className="text-xs text-[#666680] hover:text-[#a0a0b0] transition-colors">
+        seteveus.space
       </Link>
     </header>
   );
@@ -97,15 +160,12 @@ function MobileNav() {
 export default function MusicLayout({ children }: { children: React.ReactNode }) {
   return (
     <MusicPlayerProvider>
-      {/* Full-screen app shell — hides main site Header/Footer */}
       <div className="fixed inset-0 z-50 flex flex-col bg-[#0A0A14]">
         <div className="flex flex-1 overflow-hidden">
           <Sidebar />
           <div className="flex-1 flex flex-col overflow-hidden">
             <MobileNav />
-            <main className="flex-1 overflow-y-auto">
-              {children}
-            </main>
+            <main className="flex-1 overflow-y-auto">{children}</main>
           </div>
         </div>
         <MiniPlayer />
