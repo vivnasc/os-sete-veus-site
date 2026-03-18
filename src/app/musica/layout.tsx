@@ -44,10 +44,10 @@ function Sidebar() {
         <p className="text-[10px] uppercase tracking-widest text-[#666680] px-3 mb-2">Generos</p>
         <nav className="space-y-0.5">
           {[
-            { slug: "organic", label: "Organico", color: "#4ade80" },
-            { slug: "marrabenta", label: "Marrabenta", color: "#f59e0b" },
-            { slug: "house", label: "House", color: "#ec4899" },
-            { slug: "gospel", label: "Gospel", color: "#eab308" },
+            { slug: "organic", label: "Organico", color: "#8B7355" },
+            { slug: "marrabenta", label: "Marrabenta", color: "#C4745A" },
+            { slug: "house", label: "House", color: "#8B5CF6" },
+            { slug: "gospel", label: "Gospel", color: "#C9A96E" },
           ].map(g => (
             <Link
               key={g.slug}
