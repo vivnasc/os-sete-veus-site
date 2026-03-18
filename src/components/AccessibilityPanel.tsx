@@ -55,9 +55,6 @@ export default function AccessibilityPanel() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
   };
 
-  // Hide on music streaming app
-  if (pathname?.startsWith("/musica")) return null;
-
   return (
     <>
       {/* Floating trigger */}

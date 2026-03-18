@@ -3,6 +3,9 @@
 import { useState } from "react";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
 import ShareModal from "./ShareModal";
+import AudioVisualizer from "./AudioVisualizer";
+import QueuePanel from "./QueuePanel";
+import SleepTimer from "./SleepTimer";
 
 function fmt(s: number) {
   if (!isFinite(s) || s < 0) return "0:00";
@@ -33,6 +36,8 @@ export default function FullPlayer() {
   } = useMusicPlayer();
 
   const [showShare, setShowShare] = useState(false);
+  const [showQueue, setShowQueue] = useState(false);
+  const [showSleep, setShowSleep] = useState(false);
 
   if (!showFullPlayer || !currentTrack) return null;
 
@@ -58,17 +63,40 @@ export default function FullPlayer() {
           </svg>
         </button>
         <div className="text-center">
-          <p className="text-xs uppercase tracking-widest text-[#a0a0b0]">A ouvir do album</p>
+          <p className="text-xs uppercase tracking-widest text-[#a0a0b0]">A ouvir do álbum</p>
           <p className="text-sm font-medium text-[#F5F0E6] mt-0.5">{currentAlbum?.title}</p>
         </div>
-        <button
-          onClick={() => setShowShare(true)}
-          className="p-2 -mr-2 text-[#a0a0b0] hover:text-[#F5F0E6] transition-colors"
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
-            <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" />
-          </svg>
-        </button>
+        <div className="flex items-center gap-1">
+          {/* Sleep timer button */}
+          <button
+            onClick={() => setShowSleep(true)}
+            className="p-2 text-[#a0a0b0] hover:text-[#F5F0E6] transition-colors"
+            title="Sleep timer"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+            </svg>
+          </button>
+          {/* Queue button */}
+          <button
+            onClick={() => setShowQueue(true)}
+            className="p-2 text-[#a0a0b0] hover:text-[#F5F0E6] transition-colors"
+            title="Fila"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
+              <path d="M4 6h16M4 10h16M4 14h10M4 18h7" />
+            </svg>
+          </button>
+          {/* Share button */}
+          <button
+            onClick={() => setShowShare(true)}
+            className="p-2 -mr-2 text-[#a0a0b0] hover:text-[#F5F0E6] transition-colors"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
+              <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Content area */}
@@ -91,15 +119,25 @@ export default function FullPlayer() {
                   );
                 })
               ) : (
-                <p className="text-[#a0a0b0] font-display text-lg">Letra nao disponivel.</p>
+                <p className="text-[#a0a0b0] font-display text-lg">Letra não disponível.</p>
               )}
             </div>
           </div>
         ) : (
-          /* Album art view */
-          <div className="w-full max-w-xs">
+          /* Album art + visualizer */
+          <div className="w-full max-w-xs relative">
+            {/* Audio visualizer behind the album art */}
+            <div className="absolute inset-0 -m-16 flex items-center justify-center pointer-events-none">
+              <div className="w-[350px] h-[350px] sm:w-[400px] sm:h-[400px]">
+                <AudioVisualizer
+                  color={albumColor}
+                  isPlaying={isPlaying}
+                  currentTime={currentTime}
+                />
+              </div>
+            </div>
             <div
-              className="aspect-square rounded-2xl shadow-2xl flex items-center justify-center"
+              className="relative aspect-square rounded-2xl shadow-2xl flex items-center justify-center"
               style={{ backgroundColor: albumColor }}
             >
               <div className="text-center px-6">
@@ -210,7 +248,7 @@ export default function FullPlayer() {
         </div>
       </div>
 
-      {/* Share modal */}
+      {/* Modals */}
       {showShare && currentTrack && currentAlbum && (
         <ShareModal
           track={currentTrack}
@@ -218,6 +256,8 @@ export default function FullPlayer() {
           onClose={() => setShowShare(false)}
         />
       )}
+      <QueuePanel isOpen={showQueue} onClose={() => setShowQueue(false)} />
+      <SleepTimer isOpen={showSleep} onClose={() => setShowSleep(false)} />
     </div>
   );
 }
