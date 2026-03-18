@@ -86,17 +86,28 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
                 )}
               </div>
 
-              {/* Play all button */}
-              <button
-                onClick={() => playAlbum(album)}
-                className="mt-6 inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium text-[#0D0D1A] transition-transform hover:scale-105"
-                style={{ backgroundColor: albumColor }}
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-                Ouvir album
-              </button>
+              {/* Play all + upload buttons */}
+              <div className="mt-6 flex items-center gap-3">
+                <button
+                  onClick={() => playAlbum(album)}
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium text-[#0D0D1A] transition-transform hover:scale-105"
+                  style={{ backgroundColor: albumColor }}
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                  Ouvir album
+                </button>
+                <Link
+                  href={`/musica/upload`}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-sm text-[#a0a0b0] border border-white/10 hover:bg-white/5 transition-colors"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" />
+                  </svg>
+                  Carregar
+                </Link>
+              </div>
             </div>
           </div>
         </div>

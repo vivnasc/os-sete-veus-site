@@ -33,6 +33,15 @@ export default function MusicHomePage() {
             Musica original do universo Sete Veus. Cada album e uma viagem sonora
             que acompanha a leitura dos Espelhos, dos Nos e dos Cursos.
           </p>
+          <Link
+            href="/musica/upload"
+            className="mt-4 inline-flex items-center gap-2 text-xs text-[#666680] hover:text-[#C9A96E] transition-colors"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" />
+            </svg>
+            Carregar musicas
+          </Link>
         </div>
       </div>
 
