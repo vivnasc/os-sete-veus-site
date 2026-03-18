@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Album } from "@/data/albums";
-import { getAlbumCover } from "@/lib/album-covers";
+import { getAlbumCover, getAlbumBadge } from "@/lib/album-covers";
 
 type Props = {
   album: Album;
@@ -11,6 +11,7 @@ type Props = {
 
 export default function AlbumCard({ album }: Props) {
   const cover = getAlbumCover(album);
+  const badge = getAlbumBadge(album);
 
   return (
     <Link
@@ -32,13 +33,13 @@ export default function AlbumCard({ album }: Props) {
         />
         {/* Bottom gradient for text readability */}
         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
-        {/* Veu badge */}
-        {album.veu && (
+        {/* Badge */}
+        {badge && (
           <span
             className="absolute top-2 right-2 text-[10px] font-medium px-2 py-0.5 rounded-full backdrop-blur-sm"
             style={{ backgroundColor: `${album.color}80`, color: "#F5F0E6" }}
           >
-            Véu {album.veu}
+            {badge}
           </span>
         )}
       </div>

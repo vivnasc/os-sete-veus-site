@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ALL_ALBUMS as ALBUMS } from "@/data/albums";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
-import { getAlbumCover } from "@/lib/album-covers";
+import { getAlbumCover, getAlbumBadge } from "@/lib/album-covers";
 import TrackRow from "@/components/music/TrackRow";
 
 function fmt(s: number) {
@@ -36,6 +36,7 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
   const totalMinutes = Math.ceil(totalDuration / 60);
   const albumColor = album.color;
   const cover = getAlbumCover(album);
+  const badge = getAlbumBadge(album);
 
   return (
     <div className="min-h-screen">
@@ -94,9 +95,9 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
               <div className="flex items-center gap-3 mt-4 text-xs text-[#666680]">
                 <span>{album.tracks.length} faixas</span>
                 <span>~{totalMinutes} min</span>
-                {album.veu && (
+                {badge && (
                   <span className="px-2 py-0.5 rounded-full border border-white/10">
-                    Veu {album.veu}
+                    {badge}
                   </span>
                 )}
               </div>
