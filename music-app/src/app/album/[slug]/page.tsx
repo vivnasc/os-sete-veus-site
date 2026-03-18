@@ -75,6 +75,7 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
               <h1 className="font-display text-3xl sm:text-4xl font-bold text-[#F5F0E6] mt-1 leading-tight">
                 {album.title}
               </h1>
+              <p className="text-sm text-[#C9A96E] mt-1">Loranne</p>
               <p className="text-[#a0a0b0] mt-2">{album.subtitle}</p>
               <div className="flex items-center gap-3 mt-4 text-xs text-[#666680]">
                 <span>{album.tracks.length} faixas</span>
@@ -132,7 +133,7 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
             {album.tracks.length} faixas — {fmt(totalDuration)} de duracao total
           </p>
           <p className="text-xs text-[#666680] mt-1">
-            Sete Ecos Music — music.seteveus.space
+            Véus
           </p>
         </div>
       </div>

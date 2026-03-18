@@ -7,15 +7,19 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Sete Ecos Music",
-    template: "%s | Sete Ecos Music",
+    default: "Véus",
+    template: "%s | Véus",
   },
   description: "Musica original do universo Sete Veus. Streaming, letras e partilha.",
-  metadataBase: new URL("https://music.seteveus.space"),
+  metadataBase: new URL("https://veus.app"),
+  icons: {
+    icon: "/favicon.png",
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
-    title: "Sete Ecos Music",
+    title: "Véus",
     description: "Musica original do universo Sete Veus. 35 albums, 200+ faixas.",
-    siteName: "Sete Ecos Music",
+    siteName: "Véus",
     locale: "pt_PT",
     type: "website",
   },
