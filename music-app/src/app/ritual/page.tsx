@@ -5,6 +5,7 @@ import { ALL_ALBUMS } from "@/data/albums";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
 import type { Album, AlbumTrack } from "@/data/albums";
 import Link from "next/link";
+import { ESPELHO_NAMES_ARRAY } from "@/lib/album-covers";
 
 // Ritual: a guided listening experience with breathing pauses,
 // reflections, and progressive visual transformation.
@@ -18,7 +19,7 @@ type RitualConfig = {
   intention: string;
 };
 
-const VEU_NAMES = ["", "Ilusão", "Medo", "Culpa", "Identidade", "Controlo", "Desejo", "Separação"];
+const VEU_NAMES = ESPELHO_NAMES_ARRAY;
 const VEU_COLORS = ["", "#c9b896", "#8b9b8e", "#b07a7a", "#ab9375", "#8aaaca", "#c08aaa", "#baaacc"];
 
 const REFLECTIONS: Record<number, string[]> = {
@@ -387,7 +388,7 @@ export default function RitualPage() {
         {/* Header */}
         <div className="relative z-10 text-center pt-8 px-6">
           <p className="text-xs uppercase tracking-widest text-[#666680]">
-            Ritual — Véu {config?.veu} · {VEU_NAMES[config?.veu || 1]}
+            Ritual — {VEU_NAMES[config?.veu || 1]}
           </p>
           {config?.intention && (
             <p className="text-sm text-[#a0a0b0] mt-1 font-display italic">&ldquo;{config.intention}&rdquo;</p>
@@ -512,7 +513,7 @@ export default function RitualPage() {
             O véu dissolveu-se.
           </h2>
           <p className="text-[#a0a0b0] mb-2">
-            Véu {config?.veu} — {VEU_NAMES[config?.veu || 1]}
+            {VEU_NAMES[config?.veu || 1]}
           </p>
           {config?.intention && (
             <p className="text-sm text-[#666680] font-display italic mb-8">
