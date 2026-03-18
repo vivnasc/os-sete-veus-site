@@ -2,8 +2,10 @@
 
 import { use } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ALL_ALBUMS as ALBUMS } from "@/data/albums";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
+import { getAlbumCover } from "@/lib/album-covers";
 import TrackRow from "@/components/music/TrackRow";
 
 function fmt(s: number) {
@@ -33,15 +35,24 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
   const totalDuration = album.tracks.reduce((acc, t) => acc + t.durationSeconds, 0);
   const totalMinutes = Math.ceil(totalDuration / 60);
   const albumColor = album.color;
+  const cover = getAlbumCover(album);
 
   return (
     <div className="min-h-screen">
       {/* Album header */}
       <div className="relative overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-30 blur-[80px]"
-          style={{ backgroundColor: albumColor }}
-        />
+        {/* Background image blur */}
+        <div className="absolute inset-0">
+          <Image
+            src={cover}
+            alt=""
+            fill
+            className="object-cover blur-[60px] scale-110 opacity-30"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0D0D1A]/50 via-[#0D0D1A]/80 to-[#0D0D1A]" />
+        </div>
+
         <div className="relative px-6 pt-12 pb-8 max-w-screen-lg mx-auto">
           <Link
             href="/"
@@ -55,16 +66,19 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
 
           <div className="flex flex-col sm:flex-row gap-6 items-start">
             {/* Album art */}
-            <div
-              className="w-48 h-48 sm:w-56 sm:h-56 rounded-xl shadow-2xl shrink-0 flex items-center justify-center"
-              style={{
-                backgroundColor: albumColor,
-                background: `linear-gradient(135deg, ${albumColor} 0%, ${albumColor}88 100%)`,
-              }}
-            >
-              <svg viewBox="0 0 24 24" fill="currentColor" className="h-16 w-16 text-white/25">
-                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
-              </svg>
+            <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-xl shadow-2xl shrink-0 overflow-hidden relative">
+              <Image
+                src={cover}
+                alt={album.title}
+                fill
+                sizes="224px"
+                className="object-cover"
+                priority
+              />
+              <div
+                className="absolute inset-0 opacity-20 mix-blend-multiply"
+                style={{ backgroundColor: albumColor }}
+              />
             </div>
 
             {/* Album info */}

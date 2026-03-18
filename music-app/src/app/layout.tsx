@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   description: "Musica original do universo Sete Veus. Streaming, letras e partilha.",
   metadataBase: new URL("https://veus.app"),
   icons: {
-    icon: "/favicon.png",
-    apple: "/apple-touch-icon.png",
+    icon: "/music_veus_faicon.png",
+    apple: "/music_veus_faicon.png",
   },
   openGraph: {
     title: "Véus",

@@ -22,9 +22,6 @@ export default function Header() {
   const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
   const isAdmin = profile?.is_admin === true || ADMIN_EMAILS.includes(user?.email || "");
 
-  // Hide header on music streaming app
-  if (pathname?.startsWith("/musica")) return null;
-
   return (
     <header className="w-full border-b border-brown-100 bg-cream">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">

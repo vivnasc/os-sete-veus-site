@@ -1,10 +1,11 @@
 import { ALL_ALBUMS as ALBUMS } from "@/data/albums";
 import AlbumCard from "@/components/music/AlbumCard";
 import Image from "next/image";
+import NavBar from "@/components/music/NavBar";
 
 export const metadata = {
   title: "Véus",
-  description: "Musica original do universo Sete Veus. 35 albums, 200+ faixas.",
+  description: "Música original do universo Sete Véus. 35 álbums, 200+ faixas.",
 };
 
 export default function MusicHomePage() {
@@ -15,32 +16,50 @@ export default function MusicHomePage() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero — like Apple Music */}
-      <div className="relative overflow-hidden bg-gradient-to-b from-[#C9A96E]/10 via-[#0D0D1A] to-transparent">
-        <div className="relative flex flex-col items-center text-center px-6 pt-16 pb-14">
+      {/* Nav bar */}
+      <NavBar />
+
+      {/* Hero */}
+      <div className="relative overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/Loranne.png"
+            alt=""
+            fill
+            className="object-cover object-top opacity-40 blur-[2px]"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0D0D1A]/60 via-[#0D0D1A]/70 to-[#0D0D1A]" />
+        </div>
+
+        <div className="relative flex flex-col items-center text-center px-6 pt-8 pb-14">
           <Image
             src="/Loranne.png"
             alt="Loranne"
-            width={300}
-            height={400}
-            className="h-56 sm:h-72 md:h-80 w-auto rounded-2xl shadow-2xl"
+            width={400}
+            height={500}
+            className="h-64 sm:h-80 md:h-96 w-auto rounded-2xl shadow-2xl ring-1 ring-white/10"
             priority
           />
           <Image
-            src="/logo-veus.png"
+            src="/music_veus_logoname.png"
             alt="Véus"
-            width={200}
-            height={80}
-            className="h-16 sm:h-20 w-auto mt-8"
+            width={400}
+            height={160}
+            className="h-20 sm:h-24 md:h-28 w-auto mt-8"
           />
-          <p className="mt-2 text-sm text-[#C9A96E] tracking-widest">by Loranne</p>
+          <p className="mt-3 text-base text-[#C9A96E] tracking-widest font-display">by Loranne</p>
+          <p className="mt-2 text-sm text-[#666680] max-w-md">
+            Música original do universo Sete Véus. 35 álbums, 200+ faixas.
+          </p>
         </div>
       </div>
 
-      <div className="max-w-screen-lg mx-auto px-6 space-y-12 pb-12">
+      <div className="max-w-screen-lg mx-auto px-6 space-y-14 pb-32">
         {/* Espelhos */}
         <section>
-          <h2 className="font-display text-xl font-semibold text-[#F5F0E6] mb-4">Espelhos</h2>
+          <h2 className="font-display text-2xl font-semibold text-[#F5F0E6] mb-2">Espelhos</h2>
           <p className="text-sm text-[#666680] mb-6">Um álbum por véu. A banda sonora da tua transformação interior.</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {espelhos.map(album => (
@@ -49,9 +68,9 @@ export default function MusicHomePage() {
           </div>
         </section>
 
-        {/* Nos */}
+        {/* Nós */}
         <section>
-          <h2 className="font-display text-xl font-semibold text-[#F5F0E6] mb-4">Nós</h2>
+          <h2 className="font-display text-2xl font-semibold text-[#F5F0E6] mb-2">Nós</h2>
           <p className="text-sm text-[#666680] mb-6">O que se passa entre duas pessoas quando um véu cai.</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {nos.map(album => (
@@ -63,7 +82,7 @@ export default function MusicHomePage() {
         {/* Livro */}
         {livro.length > 0 && (
           <section>
-            <h2 className="font-display text-xl font-semibold text-[#F5F0E6] mb-4">Livro Filosófico</h2>
+            <h2 className="font-display text-2xl font-semibold text-[#F5F0E6] mb-4">Livro Filosófico</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
               {livro.map(album => (
                 <AlbumCard key={album.slug} album={album} />
@@ -75,7 +94,7 @@ export default function MusicHomePage() {
         {/* Cursos */}
         {cursos.length > 0 && (
           <section>
-            <h2 className="font-display text-xl font-semibold text-[#F5F0E6] mb-4">Cursos</h2>
+            <h2 className="font-display text-2xl font-semibold text-[#F5F0E6] mb-2">Cursos</h2>
             <p className="text-sm text-[#666680] mb-6">A música dos 20 territórios da Escola dos Véus.</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
               {cursos.map(album => (
