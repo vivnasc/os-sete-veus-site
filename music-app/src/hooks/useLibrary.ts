@@ -1,64 +1,147 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import type { AlbumTrack, Album } from "@/data/albums";
+import { supabase } from "@/lib/supabase";
 
 type FavoriteItem = {
   trackNumber: number;
   albumSlug: string;
-  addedAt: string; // ISO date
+  addedAt: string;
 };
 
 type RecentItem = {
   trackNumber: number;
   albumSlug: string;
-  playedAt: string; // ISO date
+  playedAt: string;
 };
 
 export function useLibrary() {
-  // State
   const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
   const [recents, setRecents] = useState<RecentItem[]>([]);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  // Load from localStorage on mount
+  // Check auth state
   useEffect(() => {
-    try {
-      const favs = localStorage.getItem("veus-favorites");
-      if (favs) setFavorites(JSON.parse(favs));
-      const recs = localStorage.getItem("veus-recents");
-      if (recs) setRecents(JSON.parse(recs));
-    } catch {}
+    supabase.auth.getUser().then(({ data }) => {
+      setUserId(data.user?.id || null);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUserId(session?.user?.id || null);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
-  // Save to localStorage whenever state changes
+  // Load data from Supabase when authenticated
   useEffect(() => {
-    localStorage.setItem("veus-favorites", JSON.stringify(favorites));
-  }, [favorites]);
+    if (!userId) {
+      setLoading(false);
+      return;
+    }
 
-  useEffect(() => {
-    localStorage.setItem("veus-recents", JSON.stringify(recents));
-  }, [recents]);
+    async function load() {
+      const [favsResult, recentsResult] = await Promise.all([
+        supabase
+          .from("music_favorites")
+          .select("track_number, album_slug, created_at")
+          .eq("user_id", userId!)
+          .order("created_at", { ascending: false }),
+        supabase
+          .from("music_recents")
+          .select("track_number, album_slug, played_at")
+          .eq("user_id", userId!)
+          .order("played_at", { ascending: false })
+          .limit(50),
+      ]);
+
+      if (favsResult.data) {
+        setFavorites(favsResult.data.map(f => ({
+          trackNumber: f.track_number,
+          albumSlug: f.album_slug,
+          addedAt: f.created_at,
+        })));
+      }
+
+      if (recentsResult.data) {
+        setRecents(recentsResult.data.map(r => ({
+          trackNumber: r.track_number,
+          albumSlug: r.album_slug,
+          playedAt: r.played_at,
+        })));
+      }
+
+      setLoading(false);
+    }
+
+    load();
+  }, [userId]);
 
   const isFavorite = useCallback((trackNumber: number, albumSlug: string) => {
     return favorites.some(f => f.trackNumber === trackNumber && f.albumSlug === albumSlug);
   }, [favorites]);
 
-  const toggleFavorite = useCallback((trackNumber: number, albumSlug: string) => {
-    setFavorites(prev => {
-      const exists = prev.some(f => f.trackNumber === trackNumber && f.albumSlug === albumSlug);
-      if (exists) {
-        return prev.filter(f => !(f.trackNumber === trackNumber && f.albumSlug === albumSlug));
-      }
-      return [...prev, { trackNumber, albumSlug, addedAt: new Date().toISOString() }];
-    });
-  }, []);
+  const toggleFavorite = useCallback(async (trackNumber: number, albumSlug: string) => {
+    const exists = favorites.some(f => f.trackNumber === trackNumber && f.albumSlug === albumSlug);
 
-  const addToRecents = useCallback((trackNumber: number, albumSlug: string) => {
+    if (exists) {
+      setFavorites(prev => prev.filter(f => !(f.trackNumber === trackNumber && f.albumSlug === albumSlug)));
+      if (userId) {
+        await supabase
+          .from("music_favorites")
+          .delete()
+          .eq("user_id", userId)
+          .eq("track_number", trackNumber)
+          .eq("album_slug", albumSlug);
+      }
+    } else {
+      const item: FavoriteItem = { trackNumber, albumSlug, addedAt: new Date().toISOString() };
+      setFavorites(prev => [item, ...prev]);
+      if (userId) {
+        await supabase
+          .from("music_favorites")
+          .insert({ user_id: userId, track_number: trackNumber, album_slug: albumSlug });
+      }
+    }
+  }, [favorites, userId]);
+
+  const addToRecents = useCallback(async (trackNumber: number, albumSlug: string) => {
+    const item: RecentItem = { trackNumber, albumSlug, playedAt: new Date().toISOString() };
     setRecents(prev => {
       const filtered = prev.filter(r => !(r.trackNumber === trackNumber && r.albumSlug === albumSlug));
-      return [{ trackNumber, albumSlug, playedAt: new Date().toISOString() }, ...filtered].slice(0, 50);
+      return [item, ...filtered].slice(0, 50);
     });
-  }, []);
 
-  return { favorites, recents, isFavorite, toggleFavorite, addToRecents };
+    if (userId) {
+      await supabase
+        .from("music_recents")
+        .insert({ user_id: userId, track_number: trackNumber, album_slug: albumSlug });
+
+      // Update listening stats (upsert)
+      const { data: existing } = await supabase
+        .from("music_listening_stats")
+        .select("id, listen_count")
+        .eq("user_id", userId)
+        .eq("album_slug", albumSlug)
+        .eq("track_number", trackNumber)
+        .single();
+
+      if (existing) {
+        await supabase
+          .from("music_listening_stats")
+          .update({
+            listen_count: existing.listen_count + 1,
+            last_listened_at: new Date().toISOString(),
+          })
+          .eq("id", existing.id);
+      } else {
+        await supabase
+          .from("music_listening_stats")
+          .insert({ user_id: userId, album_slug: albumSlug, track_number: trackNumber });
+      }
+    }
+  }, [userId]);
+
+  return { favorites, recents, isFavorite, toggleFavorite, addToRecents, userId, loading };
 }
