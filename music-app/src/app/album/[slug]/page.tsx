@@ -132,7 +132,7 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
             {album.tracks.length} faixas — {fmt(totalDuration)} de duracao total
           </p>
           <p className="text-xs text-[#666680] mt-1">
-            Sete Ecos Music — music.seteveus.space
+            Véus — music.seteveus.space
           </p>
         </div>
       </div>

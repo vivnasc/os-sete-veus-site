@@ -3,7 +3,7 @@ import AlbumCard from "@/components/music/AlbumCard";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Sete Ecos Music",
+  title: "Véus",
   description: "Musica original do universo Sete Veus. 35 albums, 200+ faixas.",
 };
 
@@ -25,9 +25,8 @@ export default function MusicHomePage() {
             </svg>
             seteveus.space
           </a>
-          <h1 className="font-display text-4xl sm:text-5xl font-bold text-[#F5F0E6] leading-tight">
-            Sete Ecos
-            <span className="block text-lg sm:text-xl font-normal text-[#a0a0b0] mt-2">Music</span>
+          <h1 className="font-display text-4xl sm:text-5xl font-bold text-[#F5F0E6] leading-tight tracking-widest">
+            VÉUS
           </h1>
           <p className="mt-4 text-[#a0a0b0] max-w-md leading-relaxed">
             Musica original do universo Sete Veus. Cada album e uma viagem sonora

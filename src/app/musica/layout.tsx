@@ -18,15 +18,7 @@ function Sidebar() {
       {/* Logo */}
       <div className="p-5 pb-4">
         <Link href="/musica" className="flex items-center gap-2.5">
-          <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-[#8B5CF6] to-[#C9A96E] flex items-center justify-center">
-            <svg viewBox="0 0 24 24" fill="currentColor" className="h-4.5 w-4.5 text-white">
-              <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
-            </svg>
-          </div>
-          <div>
-            <span className="font-display text-lg font-bold text-[#F5F0E6] leading-none">Ecos</span>
-            <span className="block text-[10px] text-[#666680] tracking-wider uppercase">Music</span>
-          </div>
+          <span className="font-display text-xl font-semibold text-[#C9A96E] tracking-[0.25em] leading-none">VÉUS</span>
         </Link>
       </div>
 
@@ -143,12 +135,7 @@ function MobileNav() {
   return (
     <header className="md:hidden flex items-center justify-between px-4 py-3 bg-black/50 border-b border-white/5">
       <Link href="/musica" className="flex items-center gap-2">
-        <div className="h-7 w-7 rounded-lg bg-gradient-to-br from-[#8B5CF6] to-[#C9A96E] flex items-center justify-center">
-          <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5 text-white">
-            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
-          </svg>
-        </div>
-        <span className="font-display text-sm font-bold text-[#F5F0E6]">Ecos</span>
+        <span className="font-display text-base font-semibold text-[#C9A96E] tracking-[0.25em] leading-none">VÉUS</span>
       </Link>
       <Link href="/" className="text-xs text-[#666680] hover:text-[#a0a0b0] transition-colors">
         seteveus.space
