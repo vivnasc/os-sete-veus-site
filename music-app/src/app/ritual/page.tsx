@@ -296,10 +296,24 @@ export default function RitualPage() {
     );
   }
 
+  // ───── Shared close button for fullscreen phases ─────
+  const closeButton = (
+    <Link
+      href="/"
+      className="absolute top-4 left-4 z-50 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[#a0a0b0] hover:text-[#F5F0E6]"
+      onClick={() => { if (isPlaying) togglePlay(); }}
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </Link>
+  );
+
   // ───── BREATHING PHASE ─────
   if (phase === "breathing") {
     return (
       <div className="fixed inset-0 z-40 flex flex-col items-center justify-center" style={{ background: `linear-gradient(180deg, ${color}15 0%, #0D0D1A 60%)` }}>
+        {closeButton}
         {/* Breathing circle */}
         <div className="relative">
           <div
@@ -360,6 +374,7 @@ export default function RitualPage() {
 
     return (
       <div className="fixed inset-0 z-40 flex flex-col" style={{ background: `linear-gradient(180deg, ${color}15 0%, #0D0D1A 50%)` }}>
+        {closeButton}
         {/* Véu dissolve progress */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div
@@ -455,6 +470,7 @@ export default function RitualPage() {
 
     return (
       <div className="fixed inset-0 z-40 flex flex-col items-center justify-center px-8" style={{ background: `linear-gradient(180deg, ${color}10 0%, #0D0D1A 60%)` }}>
+        {closeButton}
         <div className="max-w-md text-center">
           <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mx-auto mb-8">
             <svg viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" className="h-6 w-6">
@@ -482,6 +498,7 @@ export default function RitualPage() {
   if (phase === "transition") {
     return (
       <div className="fixed inset-0 z-40 flex items-center justify-center" style={{ backgroundColor: "#0D0D1A" }}>
+        {closeButton}
         <div
           className="w-4 h-4 rounded-full animate-pulse"
           style={{ backgroundColor: color }}
@@ -494,6 +511,7 @@ export default function RitualPage() {
   if (phase === "closing") {
     return (
       <div className="fixed inset-0 z-40 flex flex-col items-center justify-center px-8" style={{ background: `linear-gradient(180deg, ${color}15 0%, #0D0D1A 60%)` }}>
+        {closeButton}
         <div className="max-w-md text-center">
           {/* Véu fully dissolved visualization */}
           <div className="relative w-32 h-32 mx-auto mb-8">
