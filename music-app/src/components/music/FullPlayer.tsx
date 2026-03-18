@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
 import ShareModal from "./ShareModal";
-import AudioVisualizer from "./AudioVisualizer";
+// AudioVisualizer removed — using CSS animations instead
 import QueuePanel from "./QueuePanel";
 import SleepTimer from "./SleepTimer";
 
@@ -124,18 +124,17 @@ export default function FullPlayer() {
             </div>
           </div>
         ) : (
-          /* Album art + visualizer */
+          /* Album art with pulsing glow */
           <div className="w-full max-w-xs relative">
-            {/* Audio visualizer behind the album art */}
-            <div className="absolute inset-0 -m-16 flex items-center justify-center pointer-events-none">
-              <div className="w-[350px] h-[350px] sm:w-[400px] sm:h-[400px]">
-                <AudioVisualizer
-                  color={albumColor}
-                  isPlaying={isPlaying}
-                  currentTime={currentTime}
+            {/* Pulsing glow ring behind album art */}
+            {isPlaying && (
+              <div className="absolute inset-0 -m-6 flex items-center justify-center pointer-events-none">
+                <div
+                  className="w-full h-full rounded-3xl opacity-30 blur-[30px] animate-pulse"
+                  style={{ backgroundColor: albumColor }}
                 />
               </div>
-            </div>
+            )}
             <div
               className="relative aspect-square rounded-2xl shadow-2xl flex items-center justify-center"
               style={{ backgroundColor: albumColor }}
