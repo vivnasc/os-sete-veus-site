@@ -2,9 +2,20 @@ import { ALL_ALBUMS as ALBUMS } from "@/data/albums";
 import AlbumCard from "@/components/music/AlbumCard";
 
 export const metadata = {
-  title: "Musica — Sete Ecos",
+  title: "Sete Ecos Music",
   description: "Musica original do universo Sete Veus.",
 };
+
+function Section({ id, title, subtitle, children }: { id: string; title: string; subtitle?: string; children: React.ReactNode }) {
+  return (
+    <section id={id}>
+      <h2 className="font-display text-lg font-semibold text-[#F5F0E6] mb-1">{title}</h2>
+      {subtitle && <p className="text-xs text-[#666680] mb-4">{subtitle}</p>}
+      {!subtitle && <div className="mb-4" />}
+      {children}
+    </section>
+  );
+}
 
 export default function MusicHomePage() {
   const espelhos = ALBUMS.filter(a => a.product === "espelho");
@@ -13,62 +24,55 @@ export default function MusicHomePage() {
   const cursos = ALBUMS.filter(a => a.product === "curso");
 
   return (
-    <div className="max-w-screen-lg mx-auto px-6 py-12 space-y-12">
-      {/* Titulo */}
+    <div className="px-6 py-8 max-w-screen-xl mx-auto space-y-10">
+      {/* Welcome */}
       <div>
-        <h1 className="font-display text-3xl sm:text-4xl font-bold text-[#F5F0E6]">
-          Musica
+        <h1 className="font-display text-2xl sm:text-3xl font-bold text-[#F5F0E6]">
+          Boa noite
         </h1>
-        <p className="mt-2 text-[#a0a0b0] max-w-md">
-          Cada album acompanha a leitura dos Espelhos, dos Nos e dos Cursos.
+        <p className="text-sm text-[#a0a0b0] mt-1">
+          35 albums. 200+ faixas. A banda sonora do teu despertar.
         </p>
       </div>
 
       {/* Espelhos */}
-      <section>
-        <h2 className="font-display text-xl font-semibold text-[#F5F0E6] mb-4">Espelhos</h2>
-        <p className="text-sm text-[#666680] mb-6">Um album por veu. A banda sonora da tua transformacao interior.</p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      <Section id="espelhos" title="Espelhos" subtitle="Um album por veu. A banda sonora da transformacao interior.">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {espelhos.map(album => (
             <AlbumCard key={album.slug} album={album} />
           ))}
         </div>
-      </section>
+      </Section>
 
       {/* Nos */}
-      <section>
-        <h2 className="font-display text-xl font-semibold text-[#F5F0E6] mb-4">Nos</h2>
-        <p className="text-sm text-[#666680] mb-6">O que se passa entre duas pessoas quando um veu cai.</p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      <Section id="nos" title="Nos" subtitle="O que se passa entre duas pessoas quando um veu cai.">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {nos.map(album => (
             <AlbumCard key={album.slug} album={album} />
           ))}
         </div>
-      </section>
+      </Section>
 
       {/* Livro */}
       {livro.length > 0 && (
-        <section>
-          <h2 className="font-display text-xl font-semibold text-[#F5F0E6] mb-4">Livro Filosofico</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <Section id="livro" title="Livro Filosofico">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {livro.map(album => (
               <AlbumCard key={album.slug} album={album} />
             ))}
           </div>
-        </section>
+        </Section>
       )}
 
       {/* Cursos */}
       {cursos.length > 0 && (
-        <section>
-          <h2 className="font-display text-xl font-semibold text-[#F5F0E6] mb-4">Cursos</h2>
-          <p className="text-sm text-[#666680] mb-6">A musica dos 20 territorios da Escola dos Veus.</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <Section id="cursos" title="Cursos" subtitle="A musica dos 20 territorios da Escola dos Veus.">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {cursos.map(album => (
               <AlbumCard key={album.slug} album={album} />
             ))}
           </div>
-        </section>
+        </Section>
       )}
     </div>
   );
