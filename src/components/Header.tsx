@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { useAuth } from "@/components/AuthProvider";
 
 const navLinks: { href: string; label: string; highlight?: boolean; featured?: boolean }[] = [
@@ -17,8 +18,12 @@ const navLinks: { href: string; label: string; highlight?: boolean; featured?: b
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const { user, profile } = useAuth();
+  const pathname = usePathname();
   const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
   const isAdmin = profile?.is_admin === true || ADMIN_EMAILS.includes(user?.email || "");
+
+  // Hide header on music streaming app
+  if (pathname?.startsWith("/musica")) return null;
 
   return (
     <header className="w-full border-b border-brown-100 bg-cream">

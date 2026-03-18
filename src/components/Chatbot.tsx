@@ -201,7 +201,8 @@ export default function Chatbot() {
   // Esconder chatbot em todas as paginas de leitura do livro
   const isReadingPage = pathname?.startsWith('/livro/')
     || pathname?.startsWith('/membro/leitura/')
-    || pathname?.startsWith('/membro/nos/');
+    || pathname?.startsWith('/membro/nos/')
+    || pathname?.startsWith('/musica');
 
   // Scroll to bottom when history changes
   useEffect(() => {
