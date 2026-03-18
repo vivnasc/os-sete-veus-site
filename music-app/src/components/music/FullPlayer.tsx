@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
+import { getAlbumCover } from "@/lib/album-covers";
 import ShareModal from "./ShareModal";
 // AudioVisualizer removed — using CSS animations instead
 import QueuePanel from "./QueuePanel";
@@ -135,16 +137,20 @@ export default function FullPlayer() {
                 />
               </div>
             )}
-            <div
-              className="relative aspect-square rounded-2xl shadow-2xl flex items-center justify-center"
-              style={{ backgroundColor: albumColor }}
-            >
-              <div className="text-center px-6">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="h-16 w-16 text-white/30 mx-auto mb-4">
-                  <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
-                </svg>
-                <p className="font-display text-sm text-white/50">{currentAlbum?.subtitle}</p>
-              </div>
+            <div className="relative aspect-square rounded-2xl shadow-2xl overflow-hidden">
+              {currentAlbum && (
+                <Image
+                  src={getAlbumCover(currentAlbum)}
+                  alt={currentAlbum.title}
+                  fill
+                  sizes="320px"
+                  className="object-cover"
+                />
+              )}
+              <div
+                className="absolute inset-0 opacity-20 mix-blend-multiply"
+                style={{ backgroundColor: albumColor }}
+              />
             </div>
           </div>
         )}

@@ -1,35 +1,46 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import type { Album } from "@/data/albums";
+import { getAlbumCover } from "@/lib/album-covers";
 
 type Props = {
   album: Album;
 };
 
-const PRODUCT_LABELS: Record<string, string> = {
-  espelho: "Espelho",
-  no: "No",
-  livro: "Livro",
-  curso: "Curso",
-};
-
 export default function AlbumCard({ album }: Props) {
+  const cover = getAlbumCover(album);
+
   return (
     <Link
       href={`/album/${album.slug}`}
       className="group block"
     >
-      <div
-        className="aspect-square rounded-xl shadow-lg flex items-center justify-center transition-transform group-hover:scale-[1.03] group-hover:shadow-2xl"
-        style={{
-          backgroundColor: album.color,
-          background: `linear-gradient(135deg, ${album.color} 0%, ${album.color}88 100%)`,
-        }}
-      >
-        <svg viewBox="0 0 24 24" fill="currentColor" className="h-10 w-10 text-white/15">
-          <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
-        </svg>
+      <div className="relative aspect-square rounded-xl shadow-lg overflow-hidden transition-transform group-hover:scale-[1.03] group-hover:shadow-2xl">
+        <Image
+          src={cover}
+          alt={album.title}
+          fill
+          sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+          className="object-cover"
+        />
+        {/* Color overlay for brand identity */}
+        <div
+          className="absolute inset-0 opacity-40 mix-blend-multiply"
+          style={{ backgroundColor: album.color }}
+        />
+        {/* Bottom gradient for text readability */}
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
+        {/* Veu badge */}
+        {album.veu && (
+          <span
+            className="absolute top-2 right-2 text-[10px] font-medium px-2 py-0.5 rounded-full backdrop-blur-sm"
+            style={{ backgroundColor: `${album.color}80`, color: "#F5F0E6" }}
+          >
+            Véu {album.veu}
+          </span>
+        )}
       </div>
       <p className="mt-2 text-sm font-medium text-[#F5F0E6] truncate">{album.title}</p>
       <p className="text-xs text-[#a0a0b0] truncate">Loranne</p>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
@@ -18,8 +19,17 @@ export default function NavBar() {
     <nav className="sticky top-0 z-30 bg-[#0D0D1A]/90 backdrop-blur-xl border-b border-white/5">
       <div className="max-w-screen-lg mx-auto px-6 flex items-center justify-between h-14">
         {/* Logo */}
-        <Link href="/" className="font-display text-lg font-semibold text-[#C9A96E] tracking-wider">
-          VÉUS
+        <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/music_veus_faicon.png"
+            alt="Véus"
+            width={28}
+            height={28}
+            className="h-7 w-7"
+          />
+          <span className="font-display text-lg font-semibold text-[#C9A96E] tracking-wider">
+            VÉUS
+          </span>
         </Link>
 
         {/* Nav links */}

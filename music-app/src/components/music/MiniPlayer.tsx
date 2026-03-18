@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
+import { getAlbumCover } from "@/lib/album-covers";
 
 function fmt(s: number) {
   if (!isFinite(s) || s < 0) return "0:00";
@@ -39,17 +41,26 @@ export default function MiniPlayer() {
 
       <div className="bg-[#1A1A2E]/95 backdrop-blur-xl border-t border-white/5">
         <div className="mx-auto max-w-screen-lg px-4 py-3 flex items-center gap-3">
-          {/* Album art / color block */}
+          {/* Album art thumbnail */}
           <button
             onClick={() => setShowFullPlayer(true)}
-            className="h-11 w-11 shrink-0 rounded-lg shadow-lg"
-            style={{ backgroundColor: albumColor }}
+            className="h-11 w-11 shrink-0 rounded-lg shadow-lg overflow-hidden relative"
           >
-            <div className="flex h-full w-full items-center justify-center">
-              <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 text-white/60">
-                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
-              </svg>
-            </div>
+            {currentAlbum ? (
+              <Image
+                src={getAlbumCover(currentAlbum)}
+                alt={currentAlbum.title}
+                fill
+                sizes="44px"
+                className="object-cover"
+              />
+            ) : (
+              <div className="flex h-full w-full items-center justify-center" style={{ backgroundColor: albumColor }}>
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 text-white/60">
+                  <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
+                </svg>
+              </div>
+            )}
           </button>
 
           {/* Track info */}

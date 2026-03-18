@@ -1,7 +1,6 @@
 import { ALL_ALBUMS as ALBUMS } from "@/data/albums";
 import AlbumCard from "@/components/music/AlbumCard";
 import Image from "next/image";
-import Link from "next/link";
 import NavBar from "@/components/music/NavBar";
 
 export const metadata = {
@@ -21,22 +20,34 @@ export default function MusicHomePage() {
       <NavBar />
 
       {/* Hero */}
-      <div className="relative overflow-hidden bg-gradient-to-b from-[#C9A96E]/10 via-[#0D0D1A] to-transparent">
+      <div className="relative overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/Loranne.png"
+            alt=""
+            fill
+            className="object-cover object-top opacity-40 blur-[2px]"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0D0D1A]/60 via-[#0D0D1A]/70 to-[#0D0D1A]" />
+        </div>
+
         <div className="relative flex flex-col items-center text-center px-6 pt-8 pb-14">
           <Image
             src="/Loranne.png"
             alt="Loranne"
             width={400}
             height={500}
-            className="h-64 sm:h-80 md:h-96 w-auto rounded-2xl shadow-2xl"
+            className="h-64 sm:h-80 md:h-96 w-auto rounded-2xl shadow-2xl ring-1 ring-white/10"
             priority
           />
           <Image
-            src="/logo-veus.png"
+            src="/music_veus_logoname.png"
             alt="Véus"
             width={400}
             height={160}
-            className="h-24 sm:h-32 md:h-36 w-auto mt-8"
+            className="h-20 sm:h-24 md:h-28 w-auto mt-8"
           />
           <p className="mt-3 text-base text-[#C9A96E] tracking-widest font-display">by Loranne</p>
           <p className="mt-2 text-sm text-[#666680] max-w-md">
