@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | Véus",
   },
   description: "Musica original do universo Sete Veus. Streaming, letras e partilha.",
-  metadataBase: new URL("https://music.seteveus.space"),
+  metadataBase: new URL("https://veus.app"),
   icons: {
     icon: "/favicon.png",
     apple: "/apple-touch-icon.png",

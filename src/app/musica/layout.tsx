@@ -117,18 +117,7 @@ function Sidebar() {
       {/* Spacer */}
       <div className="flex-1" />
 
-      {/* Back to site */}
-      <div className="p-4 border-t border-white/5">
-        <Link
-          href="/"
-          className="flex items-center gap-2 text-xs text-[#666680] hover:text-[#a0a0b0] transition-colors"
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
-            <path d="M19 12H5M12 19l-7-7 7-7" />
-          </svg>
-          seteveus.space
-        </Link>
-      </div>
+      <div className="p-4" />
     </aside>
   );
 }
