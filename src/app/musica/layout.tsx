@@ -94,6 +94,32 @@ function Sidebar() {
         </nav>
       </div>
 
+      {/* Temas */}
+      <div className="px-3 mt-6">
+        <p className="text-[10px] uppercase tracking-widest text-[#666680] px-3 mb-2">Temas</p>
+        <nav className="space-y-0.5">
+          {[
+            { slug: "auto-amor", label: "Auto-Amor" },
+            { slug: "auto-poder", label: "Auto-Poder" },
+            { slug: "limites", label: "Limites" },
+            { slug: "raizes", label: "Raizes" },
+            { slug: "corpo", label: "O Corpo" },
+            { slug: "recomecar", label: "Recomecar" },
+            { slug: "silencio", label: "O Silencio" },
+          ].map(t => (
+            <Link
+              key={t.slug}
+              href={`/musica/tema/${t.slug}`}
+              className={`block px-3 py-2 rounded-lg text-sm transition-colors ${
+                pathname === `/musica/tema/${t.slug}` ? "bg-white/10 text-[#F5F0E6]" : "text-[#a0a0b0] hover:text-[#F5F0E6] hover:bg-white/5"
+              }`}
+            >
+              {t.label}
+            </Link>
+          ))}
+        </nav>
+      </div>
+
       {/* Spacer */}
       <div className="flex-1" />
 
