@@ -31,7 +31,7 @@ export default function MusicHomePage() {
             alt="Véus"
             width={200}
             height={80}
-            className="h-10 sm:h-14 w-auto mt-8"
+            className="h-16 sm:h-20 w-auto mt-8"
           />
           <p className="mt-2 text-sm text-[#C9A96E] tracking-widest">by Loranne</p>
         </div>
@@ -41,7 +41,7 @@ export default function MusicHomePage() {
         {/* Espelhos */}
         <section>
           <h2 className="font-display text-xl font-semibold text-[#F5F0E6] mb-4">Espelhos</h2>
-          <p className="text-sm text-[#666680] mb-6">Um album por veu. A banda sonora da tua transformacao interior.</p>
+          <p className="text-sm text-[#666680] mb-6">Um álbum por véu. A banda sonora da tua transformação interior.</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {espelhos.map(album => (
               <AlbumCard key={album.slug} album={album} />
@@ -51,8 +51,8 @@ export default function MusicHomePage() {
 
         {/* Nos */}
         <section>
-          <h2 className="font-display text-xl font-semibold text-[#F5F0E6] mb-4">Nos</h2>
-          <p className="text-sm text-[#666680] mb-6">O que se passa entre duas pessoas quando um veu cai.</p>
+          <h2 className="font-display text-xl font-semibold text-[#F5F0E6] mb-4">Nós</h2>
+          <p className="text-sm text-[#666680] mb-6">O que se passa entre duas pessoas quando um véu cai.</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {nos.map(album => (
               <AlbumCard key={album.slug} album={album} />
@@ -63,7 +63,7 @@ export default function MusicHomePage() {
         {/* Livro */}
         {livro.length > 0 && (
           <section>
-            <h2 className="font-display text-xl font-semibold text-[#F5F0E6] mb-4">Livro Filosofico</h2>
+            <h2 className="font-display text-xl font-semibold text-[#F5F0E6] mb-4">Livro Filosófico</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
               {livro.map(album => (
                 <AlbumCard key={album.slug} album={album} />
@@ -76,7 +76,7 @@ export default function MusicHomePage() {
         {cursos.length > 0 && (
           <section>
             <h2 className="font-display text-xl font-semibold text-[#F5F0E6] mb-4">Cursos</h2>
-            <p className="text-sm text-[#666680] mb-6">A musica dos 20 territorios da Escola dos Veus.</p>
+            <p className="text-sm text-[#666680] mb-6">A música dos 20 territórios da Escola dos Véus.</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
               {cursos.map(album => (
                 <AlbumCard key={album.slug} album={album} />
