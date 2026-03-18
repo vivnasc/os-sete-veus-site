@@ -1,6 +1,7 @@
 import { ALL_ALBUMS as ALBUMS } from "@/data/albums";
 import AlbumCard from "@/components/music/AlbumCard";
 import Image from "next/image";
+import Link from "next/link";
 import NavBar from "@/components/music/NavBar";
 
 export const metadata = {
@@ -57,6 +58,27 @@ export default function MusicHomePage() {
       </div>
 
       <div className="max-w-screen-lg mx-auto px-6 space-y-14 pb-32">
+        {/* Quick access - Shorts */}
+        <section>
+          <Link
+            href="/shorts"
+            className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/8 transition-colors group"
+          >
+            <div className="w-12 h-12 rounded-xl bg-[#C9A96E]/10 flex items-center justify-center flex-shrink-0">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="1.5" className="h-6 w-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-[#F5F0E6] font-medium">Shorts</p>
+              <p className="text-xs text-[#666680]">Fragmentos de letras em formato vertical.</p>
+            </div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#666680" strokeWidth="2" className="h-5 w-5 group-hover:translate-x-1 transition-transform">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
+        </section>
+
         {/* Espelhos */}
         <section>
           <h2 className="font-display text-2xl font-semibold text-[#F5F0E6] mb-2">Espelhos</h2>
