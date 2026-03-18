@@ -1,5 +1,6 @@
 import { ALL_ALBUMS as ALBUMS } from "@/data/albums";
 import AlbumCard from "@/components/music/AlbumCard";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = {
@@ -25,9 +26,7 @@ export default function MusicHomePage() {
             </svg>
             seteveus.space
           </a>
-          <h1 className="font-display text-4xl sm:text-5xl font-bold text-[#F5F0E6] leading-tight tracking-widest">
-            VÉUS
-          </h1>
+          <Image src="/logo-veus.png" alt="Véus" width={200} height={80} className="h-16 sm:h-20 w-auto" priority />
           <p className="mt-4 text-[#a0a0b0] max-w-md leading-relaxed">
             Musica original do universo Sete Veus. Cada album e uma viagem sonora
             que acompanha a leitura dos Espelhos, dos Nos e dos Cursos.

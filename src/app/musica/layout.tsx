@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MusicPlayerProvider } from "@/contexts/MusicPlayerContext";
@@ -18,7 +19,8 @@ function Sidebar() {
       {/* Logo */}
       <div className="p-5 pb-4">
         <Link href="/musica" className="flex items-center gap-2.5">
-          <span className="font-display text-xl font-semibold text-[#C9A96E] tracking-[0.25em] leading-none">VÉUS</span>
+          <Image src="/images/music_veus_faicon.png" alt="Véus" width={32} height={32} className="h-8 w-8" />
+          <span className="font-display text-lg font-semibold text-[#C9A96E] tracking-[0.2em] leading-none">VÉUS</span>
         </Link>
       </div>
 
@@ -135,7 +137,8 @@ function MobileNav() {
   return (
     <header className="md:hidden flex items-center justify-between px-4 py-3 bg-black/50 border-b border-white/5">
       <Link href="/musica" className="flex items-center gap-2">
-        <span className="font-display text-base font-semibold text-[#C9A96E] tracking-[0.25em] leading-none">VÉUS</span>
+        <Image src="/images/music_veus_faicon.png" alt="Véus" width={24} height={24} className="h-6 w-6" />
+        <span className="font-display text-sm font-semibold text-[#C9A96E] tracking-[0.2em] leading-none">VÉUS</span>
       </Link>
       <Link href="/" className="text-xs text-[#666680] hover:text-[#a0a0b0] transition-colors">
         seteveus.space
