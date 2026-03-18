@@ -105,14 +105,15 @@ const ENERGY_STYLES: Record<TrackEnergy, string> = {
 // Modificadores de sabor — so aplicados quando o sabor nao e "organic"
 const FLAVOR_MODIFIERS: Record<TrackFlavor, string> = {
   organic: "",
-  marrabenta: "Marrabenta mocambicana, estilo Neyma. Guitar-driven groove, shaker percussion, warm bass rhythm, danceable Mozambican feel, joyful and grounded.",
-  house: "House music influence, four-on-the-floor kick, deep bass, hi-hat groove, synth stabs, club warmth, dance-floor energy, infectious rhythmic drive.",
-  gospel: "Gospel-inspired, choir harmonies, hand claps, organ warmth, uplifting spiritual energy, community singing feel, call-and-response vocals, celebratory, transcendent.",
+  marrabenta: "OVERRIDE GENRE: Marrabenta mocambicana. NOT pop, NOT generic afrobeat. Reference: Neyma, Lizha James, Stewart Sukuma. Acoustic/electric guitar riff as lead instrument (bright, rhythmic, syncopated picking pattern). Shaker + djembe + timbila-inspired percussion. Bass guitar walking groove. 120-140 BPM. Swinging, danceable, joyful. Mozambican coastal groove. Guitar riff must be prominent and driving the song.",
+  house: "OVERRIDE GENRE: Deep house / afro house. NOT pop. Four-on-the-floor kick drum (steady, hypnotic). Deep sub-bass. Open hi-hats. Warm synth chords. Filtered loops. 120-125 BPM. Groove-driven, minimal, warm. Club warmth, not radio pop. Reference: Black Coffee, Culoe De Song.",
+  gospel: "OVERRIDE GENRE: African gospel. NOT pop. Hammond organ, choir harmonies (4+ voices), hand claps on 2 and 4. Call-and-response vocals. Piano chords. Uplifting, spiritual, communal. Building to crescendo. Reference: Soweto Gospel Choir, Joyous Celebration.",
 };
 
 function buildPromptWithFlavor(basePrompt: string, flavor: TrackFlavor): string {
   const mod = FLAVOR_MODIFIERS[flavor];
-  return mod ? `${basePrompt} ${mod}` : basePrompt;
+  // Flavor modifier comes FIRST so Suno prioritizes genre over base style
+  return mod ? `${mod} ${basePrompt}` : basePrompt;
 }
 
 // Retrocompatibilidade: BASE_STYLE = whisper (o default anterior)
