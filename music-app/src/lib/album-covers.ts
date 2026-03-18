@@ -1,16 +1,20 @@
 /**
  * Mapeamento de imagens da Loranne por espelho.
  *
- * Loranne.png  — retrato principal (hero)
- * Loranne-velas.png — cenario cinematografico com velas (livro)
- * Loranne2.png — corpo inteiro, movimento, danca (Controlo — libertar)
- * Loranne3.png — contemplativa, oracao (Culpa — sacrificio)
- * Loranne4.png — coberta, misteriosa, escondida (Medo — silencio)
- * Loranne5.png — intima, deitada, vulneravel (Desejo — entrega)
- * Loranne6.png — close-ups introspectivos (Identidade — espelho)
- * Loranne7.png — retratos refinados, 4 poses (Ilusao — primeira revelacao)
- * Loranne8.png — close-ups finais, revelacao (Separacao — despedida)
- * Loranne-veus-coloridos.png — referencia visual das cores por espelho
+ * Todas as collages foram cropadas em poses individuais em /poses/.
+ * 63 poses extraidas + 1 hero = 64 imagens individuais.
+ *
+ * Collages originais (mantidas como referencia):
+ * Loranne.png  — retrato principal (hero, ja individual)
+ * Loranne2.png — 9 poses: corpo inteiro, movimento, danca
+ * Loranne3.png — 9 poses: contemplativa, oracao
+ * Loranne4.png — 9 poses: coberta, misteriosa, escondida
+ * Loranne5.png — 8 poses: intima, deitada, vulneravel
+ * Loranne6.png — 9 poses: close-ups introspectivos
+ * Loranne7.png — 4 poses: retratos refinados
+ * Loranne8.png — 4 poses: close-ups finais, revelacao
+ * Loranne-velas.png — 4 poses: cenario cinematografico com velas
+ * Loranne-veus-coloridos.png — 6 poses: cores por espelho
  */
 
 import type { Album } from "@/data/albums";
@@ -29,26 +33,53 @@ export const ESPELHO_NAMES: Record<number, string> = {
 // Nomes como array indexado (posicao 0 vazia para alinhar com veu 1-7)
 export const ESPELHO_NAMES_ARRAY = ["", "Ilusão", "Medo", "Culpa", "Identidade", "Controlo", "Desejo", "Separação"];
 
+// Capa principal de cada espelho (melhor pose individual)
 const ESPELHO_COVERS: Record<number, string> = {
-  1: "/Loranne7.png",  // Ilusao — retratos refinados, ver pela primeira vez
-  2: "/Loranne4.png",  // Medo — coberta, escondida, silenciosa
-  3: "/Loranne3.png",  // Culpa — contemplativa, oracao, sacrificio
-  4: "/Loranne6.png",  // Identidade — introspectiva, procura de si
-  5: "/Loranne2.png",  // Controlo — movimento, danca, libertar
-  6: "/Loranne5.png",  // Desejo — intima, vulneravel, entrega
-  7: "/Loranne8.png",  // Separacao — close-ups finais, revelacao
+  1: "/poses/loranne7-01.png",   // Ilusao — mao no rosto, revelacao elegante
+  2: "/poses/loranne4-05.png",   // Medo — completamente coberta, de pe
+  3: "/poses/loranne3-05.png",   // Culpa — oracao, maos juntas
+  4: "/poses/loranne6-05.png",   // Identidade — sentada, maos no colo, introspectiva
+  5: "/poses/loranne2-03.png",   // Controlo — danca com braco alto
+  6: "/poses/loranne5-02.png",   // Desejo — intima, deitada, veu fluindo
+  7: "/poses/loranne8-02.png",   // Separacao — mao no rosto, veu a soltar
 };
 
-// Cursos rodam pelas imagens
-const CURSO_COVERS = [
-  "/Loranne.png",
-  "/Loranne2.png",
-  "/Loranne3.png",
-  "/Loranne4.png",
-  "/Loranne5.png",
-  "/Loranne6.png",
-  "/Loranne7.png",
-  "/Loranne8.png",
+// Todas as poses disponiveis por serie (para rodar nos cursos e faixas)
+export const ALL_POSES = [
+  // Hero
+  "/poses/loranne-hero.png",
+  // Loranne2: movimento, danca (9 poses)
+  "/poses/loranne2-01.png", "/poses/loranne2-02.png", "/poses/loranne2-03.png",
+  "/poses/loranne2-04.png", "/poses/loranne2-05.png", "/poses/loranne2-06.png",
+  "/poses/loranne2-07.png", "/poses/loranne2-08.png", "/poses/loranne2-09.png",
+  // Loranne3: contemplacao, oracao (9 poses)
+  "/poses/loranne3-01.png", "/poses/loranne3-02.png", "/poses/loranne3-03.png",
+  "/poses/loranne3-04.png", "/poses/loranne3-05.png", "/poses/loranne3-06.png",
+  "/poses/loranne3-07.png", "/poses/loranne3-08.png", "/poses/loranne3-09.png",
+  // Loranne4: misteriosa, coberta (9 poses)
+  "/poses/loranne4-01.png", "/poses/loranne4-02.png", "/poses/loranne4-03.png",
+  "/poses/loranne4-04.png", "/poses/loranne4-05.png", "/poses/loranne4-06.png",
+  "/poses/loranne4-07.png", "/poses/loranne4-08.png", "/poses/loranne4-09.png",
+  // Loranne5: intima, vulneravel (8 poses)
+  "/poses/loranne5-01.png", "/poses/loranne5-02.png", "/poses/loranne5-03.png",
+  "/poses/loranne5-04.png", "/poses/loranne5-05.png", "/poses/loranne5-06.png",
+  "/poses/loranne5-07.png", "/poses/loranne5-08.png",
+  // Loranne6: close-ups introspectivos (9 poses)
+  "/poses/loranne6-01.png", "/poses/loranne6-02.png", "/poses/loranne6-03.png",
+  "/poses/loranne6-04.png", "/poses/loranne6-05.png", "/poses/loranne6-06.png",
+  "/poses/loranne6-07.png", "/poses/loranne6-08.png", "/poses/loranne6-09.png",
+  // Loranne7: retratos refinados (4 poses)
+  "/poses/loranne7-01.png", "/poses/loranne7-02.png",
+  "/poses/loranne7-03.png", "/poses/loranne7-04.png",
+  // Loranne8: revelacao final (4 poses)
+  "/poses/loranne8-01.png", "/poses/loranne8-02.png",
+  "/poses/loranne8-03.png", "/poses/loranne8-04.png",
+  // Velas: cenario cinematografico (4 poses)
+  "/poses/velas-01.png", "/poses/velas-02.png",
+  "/poses/velas-03.png", "/poses/velas-04.png",
+  // Coloridos: cores por espelho (6 poses)
+  "/poses/coloridos-01.png", "/poses/coloridos-02.png", "/poses/coloridos-03.png",
+  "/poses/coloridos-04.png", "/poses/coloridos-05.png", "/poses/coloridos-06.png",
 ];
 
 export function getAlbumCover(album: Album): string {
@@ -56,16 +87,17 @@ export function getAlbumCover(album: Album): string {
     return ESPELHO_COVERS[album.veu];
   }
   if (album.product === "livro") {
-    return "/Loranne-velas.png";
+    return "/poses/velas-02.png";
   }
   if (album.product === "curso") {
+    // Rotate through all poses based on slug hash
     let hash = 0;
     for (let i = 0; i < album.slug.length; i++) {
       hash = ((hash << 5) - hash + album.slug.charCodeAt(i)) | 0;
     }
-    return CURSO_COVERS[Math.abs(hash) % CURSO_COVERS.length];
+    return ALL_POSES[Math.abs(hash) % ALL_POSES.length];
   }
-  return "/Loranne.png";
+  return "/poses/loranne-hero.png";
 }
 
 /** Label para o badge do album — so o nome, sem prefixo */
