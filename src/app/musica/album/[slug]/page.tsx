@@ -19,12 +19,10 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
 
   if (!album) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="flex-1 flex items-center justify-center p-8">
         <div className="text-center">
-          <p className="text-[#a0a0b0] text-lg mb-4">Album nao encontrado.</p>
-          <Link href="/musica" className="text-sm text-[#C9A96E] hover:underline">
-            Voltar
-          </Link>
+          <p className="text-[#a0a0b0] mb-4">Album nao encontrado.</p>
+          <Link href="/musica" className="text-sm text-[#C9A96E] hover:underline">Voltar</Link>
         </div>
       </div>
     );
@@ -32,20 +30,19 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
 
   const totalDuration = album.tracks.reduce((acc, t) => acc + t.durationSeconds, 0);
   const totalMinutes = Math.ceil(totalDuration / 60);
-  const albumColor = album.color;
 
   return (
-    <div className="min-h-screen">
-      {/* Album header */}
+    <div>
+      {/* Album header with gradient */}
       <div className="relative overflow-hidden">
         <div
-          className="absolute inset-0 opacity-30 blur-[80px]"
-          style={{ backgroundColor: albumColor }}
+          className="absolute inset-0 opacity-40"
+          style={{ background: `linear-gradient(180deg, ${album.color} 0%, transparent 100%)` }}
         />
-        <div className="relative px-6 pt-12 pb-8 max-w-screen-lg mx-auto">
+        <div className="relative px-6 pt-8 pb-6 max-w-screen-xl mx-auto">
           <Link
             href="/musica"
-            className="inline-flex items-center gap-2 text-xs text-[#666680] hover:text-[#a0a0b0] transition-colors mb-8"
+            className="inline-flex items-center gap-1.5 text-xs text-white/40 hover:text-white/70 transition-colors mb-6"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
               <path d="M19 12H5M12 19l-7-7 7-7" />
@@ -54,29 +51,26 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
           </Link>
 
           <div className="flex flex-col sm:flex-row gap-6 items-start">
-            {/* Album art */}
+            {/* Album cover */}
             <div
-              className="w-48 h-48 sm:w-56 sm:h-56 rounded-xl shadow-2xl shrink-0 flex items-center justify-center"
+              className="w-40 h-40 sm:w-52 sm:h-52 rounded-xl shadow-2xl shrink-0 flex items-center justify-center"
               style={{
-                backgroundColor: albumColor,
-                background: `linear-gradient(135deg, ${albumColor} 0%, ${albumColor}88 100%)`,
+                background: `linear-gradient(135deg, ${album.color} 0%, ${album.color}66 100%)`,
               }}
             >
-              <svg viewBox="0 0 24 24" fill="currentColor" className="h-16 w-16 text-white/25">
+              <svg viewBox="0 0 24 24" fill="currentColor" className="h-14 w-14 text-white/20">
                 <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
               </svg>
             </div>
 
-            {/* Album info */}
-            <div className="flex-1">
-              <span className="text-xs uppercase tracking-widest text-[#666680]">
-                Album
-              </span>
-              <h1 className="font-display text-3xl sm:text-4xl font-bold text-[#F5F0E6] mt-1 leading-tight">
+            {/* Info */}
+            <div className="flex-1 min-w-0">
+              <p className="text-[10px] uppercase tracking-widest text-white/40">Album</p>
+              <h1 className="font-display text-2xl sm:text-3xl font-bold text-[#F5F0E6] mt-1 leading-tight">
                 {album.title}
               </h1>
-              <p className="text-[#a0a0b0] mt-2">{album.subtitle}</p>
-              <div className="flex items-center gap-3 mt-4 text-xs text-[#666680]">
+              <p className="text-sm text-white/50 mt-1">{album.subtitle}</p>
+              <div className="flex items-center gap-3 mt-3 text-xs text-white/30">
                 <span>{album.tracks.length} faixas</span>
                 <span>~{totalMinutes} min</span>
                 {album.veu && (
@@ -86,35 +80,23 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
                 )}
               </div>
 
-              {/* Play all + upload buttons */}
-              <div className="mt-6 flex items-center gap-3">
-                <button
-                  onClick={() => playAlbum(album)}
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium text-[#0D0D1A] transition-transform hover:scale-105"
-                  style={{ backgroundColor: albumColor }}
-                >
-                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                  Ouvir album
-                </button>
-                <Link
-                  href={`/musica/upload`}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-sm text-[#a0a0b0] border border-white/10 hover:bg-white/5 transition-colors"
-                >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
-                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" />
-                  </svg>
-                  Carregar
-                </Link>
-              </div>
+              <button
+                onClick={() => playAlbum(album)}
+                className="mt-5 inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium text-black transition-transform hover:scale-105 active:scale-95"
+                style={{ backgroundColor: album.color }}
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+                Ouvir album
+              </button>
             </div>
           </div>
         </div>
       </div>
 
       {/* Track list */}
-      <div className="max-w-screen-lg mx-auto px-6 py-6">
+      <div className="max-w-screen-xl mx-auto px-6 py-4">
         <div className="space-y-0.5">
           {album.tracks.map(track => (
             <TrackRow
@@ -126,14 +108,8 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
           ))}
         </div>
 
-        {/* Album footer */}
-        <div className="mt-8 pt-6 border-t border-white/5">
-          <p className="text-xs text-[#666680]">
-            {album.tracks.length} faixas — {fmt(totalDuration)} de duracao total
-          </p>
-          <p className="text-xs text-[#666680] mt-1">
-            Sete Ecos Music — seteveus.space
-          </p>
+        <div className="mt-6 pt-4 border-t border-white/5 text-xs text-[#666680]">
+          {album.tracks.length} faixas — {fmt(totalDuration)} total
         </div>
       </div>
     </div>
