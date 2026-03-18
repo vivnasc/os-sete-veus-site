@@ -140,9 +140,7 @@ function MobileNav() {
         <Image src="/images/music_veus_faicon.png" alt="Véus" width={24} height={24} className="h-6 w-6" />
         <span className="font-display text-sm font-semibold text-[#C9A96E] tracking-[0.2em] leading-none">VÉUS</span>
       </Link>
-      <Link href="/" className="text-xs text-[#666680] hover:text-[#a0a0b0] transition-colors">
-        seteveus.space
-      </Link>
+      <div />
     </header>
   );
 }

@@ -20,12 +20,6 @@ export default function MusicHomePage() {
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#C9A96E]/15 via-transparent to-transparent" />
         <div className="relative px-6 pt-16 pb-12 max-w-screen-lg mx-auto">
-          <a href="https://seteveus.space" className="inline-flex items-center gap-2 text-xs text-[#666680] hover:text-[#a0a0b0] transition-colors mb-8">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
-              <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
-            seteveus.space
-          </a>
           <Image src="/logo-veus.png" alt="Véus" width={200} height={80} className="h-16 sm:h-20 w-auto" priority />
           <p className="mt-4 text-[#a0a0b0] max-w-md leading-relaxed">
             Musica original do universo Sete Veus. Cada album e uma viagem sonora
