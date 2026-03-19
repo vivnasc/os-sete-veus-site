@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef, useCallback, useEffect } from "react";
-import { useAuth } from "@/components/AuthProvider";
 import Link from "next/link";
 import {
   ALL_ALBUMS,
@@ -61,15 +60,15 @@ function ProductFilter({
   ];
 
   return (
-    <div className="flex gap-1 rounded-full bg-sage/10 p-1">
+    <div className="flex gap-1 rounded-full bg-mundo-muted-dark/10 p-1">
       {tabs.map((t) => (
         <button
           key={t.key}
           onClick={() => onChange(t.key)}
           className={`rounded-full px-4 py-2 text-xs font-sans uppercase tracking-wider transition-colors ${
             active === t.key
-              ? "bg-white text-forest shadow-sm"
-              : "text-sage hover:text-forest"
+              ? "bg-mundo-bg-light text-mundo-creme shadow-sm"
+              : "text-mundo-muted hover:text-mundo-creme"
           }`}
         >
           {t.label}
@@ -122,15 +121,15 @@ function TrackRow({
   const clipsReady = hasClips && generatedClips.clips.every(c => c.audioUrl);
 
   return (
-    <div className="rounded-lg border border-sage/20 bg-white px-5 py-4">
+    <div className="rounded-lg border border-mundo-muted-dark/30 bg-mundo-bg-light px-5 py-4">
       <div className="flex items-start gap-4">
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sage/10 font-mono text-sm text-sage">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-mundo-muted-dark/10 font-mono text-sm text-mundo-muted">
           {String(track.number).padStart(2, "0")}
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2">
-            <p className="font-medium text-forest">{track.title}</p>
-            <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${track.lang === "PT" ? "bg-sage/15 text-sage" : "bg-violet-100 text-violet-600"}`}>{track.lang}</span>
+            <p className="font-medium text-mundo-creme">{track.title}</p>
+            <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${track.lang === "PT" ? "bg-mundo-muted-dark/15 text-mundo-muted" : "bg-violet-100 text-violet-600"}`}>{track.lang}</span>
             {track.energy && (
               <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${ENERGY_LABELS[track.energy].color}`}>
                 {ENERGY_LABELS[track.energy].emoji} {ENERGY_LABELS[track.energy].label}
@@ -147,17 +146,17 @@ function TrackRow({
               </span>
             )}
           </div>
-          <p className="text-sm text-sage">{track.description}</p>
-          <p className="mt-1 text-xs text-sage/50">
+          <p className="text-sm text-mundo-muted">{track.description}</p>
+          <p className="mt-1 text-xs text-mundo-muted/50">
             ~{Math.floor(track.durationSeconds / 60)}:{String(track.durationSeconds % 60).padStart(2, "0")} min
           </p>
 
           {/* Prompt */}
           <details className="mt-2">
-            <summary className="cursor-pointer text-xs text-sage/60 hover:text-sage">
+            <summary className="cursor-pointer text-xs text-mundo-muted/60 hover:text-mundo-muted">
               Ver prompt
             </summary>
-            <p className="mt-1 rounded bg-cream p-2 font-mono text-xs text-sage/80">
+            <p className="mt-1 rounded bg-mundo-bg p-2 font-mono text-xs text-mundo-muted/80">
               {track.prompt}
             </p>
           </details>
@@ -165,10 +164,10 @@ function TrackRow({
           {/* Lyrics */}
           {track.lyrics && (
             <details className="mt-1" open={showLyrics} onToggle={(e) => setShowLyrics((e.target as HTMLDetailsElement).open)}>
-              <summary className="cursor-pointer text-xs text-sage/60 hover:text-sage">
+              <summary className="cursor-pointer text-xs text-mundo-muted/60 hover:text-mundo-muted">
                 Ver letra
               </summary>
-              <pre className="mt-1 whitespace-pre-wrap rounded bg-cream p-3 font-mono text-xs text-sage/80 leading-relaxed max-h-64 overflow-y-auto">
+              <pre className="mt-1 whitespace-pre-wrap rounded bg-mundo-bg p-3 font-mono text-xs text-mundo-muted/80 leading-relaxed max-h-64 overflow-y-auto">
                 {track.lyrics}
               </pre>
             </details>
@@ -194,8 +193,8 @@ function TrackRow({
                       onClick={() => setSelectedClipIdx(idx)}
                       className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold transition ${
                         selectedClipIdx === idx
-                          ? "bg-forest text-white"
-                          : "bg-sage/10 text-sage hover:bg-sage/20"
+                          ? "bg-mundo-dourado text-white"
+                          : "bg-mundo-muted-dark/10 text-mundo-muted hover:bg-mundo-muted-dark/20"
                       }`}
                     >
                       {idx + 1}
@@ -212,7 +211,7 @@ function TrackRow({
                       </button>
                       <button
                         onClick={() => onApproveClip(clip.audioUrl!)}
-                        className="rounded-lg bg-sage/20 px-3 py-1.5 text-xs text-sage transition hover:bg-sage/30"
+                        className="rounded-lg bg-mundo-muted-dark/20 px-3 py-1.5 text-xs text-mundo-muted transition hover:bg-mundo-muted-dark/30"
                         title="Aprovar sem clone (voz IA original)"
                       >
                         Sem clone
@@ -223,7 +222,7 @@ function TrackRow({
               </div>
               <button
                 onClick={onGenerate}
-                className="mt-2 text-xs text-sage hover:text-forest"
+                className="mt-2 text-xs text-mundo-muted hover:text-mundo-creme"
               >
                 Regenerar
               </button>
@@ -257,14 +256,14 @@ function TrackRow({
               <div className="flex items-center gap-2">
                 <button
                   onClick={onApproveClone}
-                  className="rounded-lg bg-forest px-4 py-1.5 text-xs text-white transition hover:bg-forest/80"
+                  className="rounded-lg bg-mundo-dourado px-4 py-1.5 text-xs text-white transition hover:bg-mundo-dourado/80"
                 >
                   Aprovar com clone
                 </button>
                 {clipsReady && (
                   <button
                     onClick={() => onClone(generatedClips!.clips[selectedClipIdx].audioUrl!)}
-                    className="text-xs text-sage hover:text-forest"
+                    className="text-xs text-mundo-muted hover:text-mundo-creme"
                   >
                     Tentar de novo
                   </button>
@@ -302,7 +301,7 @@ function TrackRow({
               title={!track.lyrics ? "Letra em falta — adiciona a letra primeiro" : "Gerar musica via Suno API"}
               className={`rounded-lg px-4 py-2 text-xs transition ${
                 !track.lyrics
-                  ? "bg-sage/10 text-sage/40 cursor-not-allowed"
+                  ? "bg-mundo-muted-dark/10 text-mundo-muted/40 cursor-not-allowed"
                   : "bg-violet-600 text-white hover:bg-violet-700"
               }`}
             >
@@ -325,10 +324,10 @@ function TrackRow({
                 disabled={status === "uploading"}
                 className={`rounded-lg px-4 py-2 text-xs transition ${
                   status === "done"
-                    ? "bg-sage/20 text-sage"
+                    ? "bg-mundo-muted-dark/20 text-mundo-muted"
                     : status === "uploading"
                     ? "animate-pulse bg-amber-50 text-amber-600"
-                    : "bg-forest text-white hover:bg-forest/80"
+                    : "bg-mundo-dourado text-white hover:bg-mundo-dourado/80"
                 }`}
               >
                 {status === "uploading"
@@ -346,9 +345,7 @@ function TrackRow({
 }
 
 export default function AlbumProductionPage() {
-  const { user, profile } = useAuth();
-  const isAdmin =
-    profile?.is_admin || ADMIN_EMAILS.includes(user?.email || "");
+  const [isAdmin] = useState(true); // No auth in music app — admin-only route
 
   const [filter, setFilter] = useState("all");
   const [viewMode, setViewMode] = useState<"producao" | "letras">("producao");
@@ -422,13 +419,7 @@ export default function AlbumProductionPage() {
     }, 5 * 60 * 1000);
   }, []);
 
-  if (!user || !isAdmin) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-cream">
-        <div className="h-12 w-12 animate-spin rounded-full border-4 border-sage border-t-transparent" />
-      </div>
-    );
-  }
+
 
   const albums =
     filter === "all"
@@ -846,30 +837,30 @@ export default function AlbumProductionPage() {
   }
 
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen bg-mundo-bg">
       {/* Header */}
-      <div className="border-b border-sage/20 bg-white/50">
+      <div className="border-b border-mundo-muted-dark/30 bg-mundo-bg-light/50">
         <div className="mx-auto max-w-5xl px-6 py-8">
           <Link
-            href="/admin"
-            className="mb-4 inline-block text-sm text-sage hover:text-forest"
+            href="/"
+            className="mb-4 inline-block text-sm text-mundo-muted hover:text-mundo-creme"
           >
-            ← Painel
+            ← Inicio
           </Link>
-          <h1 className="font-display text-3xl text-forest">
+          <h1 className="font-display text-3xl text-mundo-creme">
             Producao de Albums
           </h1>
-          <p className="mt-1 text-sage">
+          <p className="mt-1 text-mundo-muted">
             Contemporaneo organico-electronico — voz feminina com letra, PT e EN.
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-4">
-            <span className="rounded-full bg-sage/10 px-3 py-1 text-xs text-sage">
+            <span className="rounded-full bg-mundo-muted-dark/10 px-3 py-1 text-xs text-mundo-muted">
               {ALL_ALBUMS.length} albums
             </span>
-            <span className="rounded-full bg-sage/10 px-3 py-1 text-xs text-sage">
+            <span className="rounded-full bg-mundo-muted-dark/10 px-3 py-1 text-xs text-mundo-muted">
               {totalTracks} faixas
             </span>
-            <span className="rounded-full bg-sage/10 px-3 py-1 text-xs text-sage">
+            <span className="rounded-full bg-mundo-muted-dark/10 px-3 py-1 text-xs text-mundo-muted">
               {totalDone}/{totalTracks} carregadas
             </span>
             <span className="rounded-full bg-green-50 px-3 py-1 text-xs text-green-700">
@@ -905,8 +896,8 @@ export default function AlbumProductionPage() {
 
       <div className="mx-auto max-w-5xl px-6 py-10">
         {/* Pipeline info */}
-        <div className="mb-8 rounded-xl border border-sage/20 bg-white p-6 text-sm text-sage space-y-2">
-          <p className="font-medium text-forest">Pipeline de producao</p>
+        <div className="mb-8 rounded-xl border border-mundo-muted-dark/30 bg-mundo-bg-light p-6 text-sm text-mundo-muted space-y-2">
+          <p className="font-medium text-mundo-creme">Pipeline de producao</p>
           <div className="grid gap-3 sm:grid-cols-3">
             <div className="rounded-lg bg-violet-50 p-3">
               <p className="mb-1 text-xs font-medium text-violet-700">Via Suno + Clone (recomendado)</p>
@@ -920,11 +911,11 @@ export default function AlbumProductionPage() {
               <p className="text-xs text-amber-600">2. "Sem clone" — usa voz IA original</p>
               <p className="text-xs text-amber-600">3. Vai directo para o Supabase</p>
             </div>
-            <div className="rounded-lg bg-sage/5 p-3">
-              <p className="mb-1 text-xs font-medium text-sage">Via upload manual</p>
-              <p className="text-xs text-sage/80">1. Gera externamente</p>
-              <p className="text-xs text-sage/80">2. Processa o clone manualmente</p>
-              <p className="text-xs text-sage/80">3. Carrega o MP3 aqui</p>
+            <div className="rounded-lg bg-mundo-muted-dark/5 p-3">
+              <p className="mb-1 text-xs font-medium text-mundo-muted">Via upload manual</p>
+              <p className="text-xs text-mundo-muted/80">1. Gera externamente</p>
+              <p className="text-xs text-mundo-muted/80">2. Processa o clone manualmente</p>
+              <p className="text-xs text-mundo-muted/80">3. Carrega o MP3 aqui</p>
             </div>
           </div>
         </div>
@@ -937,7 +928,7 @@ export default function AlbumProductionPage() {
               <select
                 value={selectedVoiceModel}
                 onChange={(e) => setSelectedVoiceModel(e.target.value)}
-                className="rounded-lg border border-violet-200 bg-white px-3 py-1.5 text-xs text-forest"
+                className="rounded-lg border border-violet-200 bg-mundo-bg-light px-3 py-1.5 text-xs text-mundo-creme"
               >
                 <option value="">Usar default do servidor</option>
                 {voiceModels.map((m) => (
@@ -947,7 +938,7 @@ export default function AlbumProductionPage() {
                 ))}
               </select>
             ) : (
-              <span className="text-xs text-sage">Nenhum modelo carregado</span>
+              <span className="text-xs text-mundo-muted">Nenhum modelo carregado</span>
             )}
             <button
               onClick={async () => {
@@ -988,13 +979,13 @@ export default function AlbumProductionPage() {
         {/* Filter + View Mode */}
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
           <ProductFilter active={filter} onChange={setFilter} />
-          <div className="flex gap-1 rounded-full bg-sage/10 p-1">
+          <div className="flex gap-1 rounded-full bg-mundo-muted-dark/10 p-1">
             <button
               onClick={() => setViewMode("producao")}
               className={`rounded-full px-4 py-2 text-xs font-sans uppercase tracking-wider transition-colors ${
                 viewMode === "producao"
-                  ? "bg-white text-forest shadow-sm"
-                  : "text-sage hover:text-forest"
+                  ? "bg-mundo-bg-light text-mundo-creme shadow-sm"
+                  : "text-mundo-muted hover:text-mundo-creme"
               }`}
             >
               Producao
@@ -1003,8 +994,8 @@ export default function AlbumProductionPage() {
               onClick={() => setViewMode("letras")}
               className={`rounded-full px-4 py-2 text-xs font-sans uppercase tracking-wider transition-colors ${
                 viewMode === "letras"
-                  ? "bg-white text-forest shadow-sm"
-                  : "text-sage hover:text-forest"
+                  ? "bg-mundo-bg-light text-mundo-creme shadow-sm"
+                  : "text-mundo-muted hover:text-mundo-creme"
               }`}
             >
               Letras
@@ -1015,30 +1006,30 @@ export default function AlbumProductionPage() {
         {/* Lyrics view */}
         {viewMode === "letras" && (
           <div className="space-y-8">
-            <div className="rounded-xl border border-sage/20 bg-white p-6">
-              <p className="text-sm text-sage">
+            <div className="rounded-xl border border-mundo-muted-dark/30 bg-mundo-bg-light p-6">
+              <p className="text-sm text-mundo-muted">
                 Revisa todas as letras antes de gastar creditos. Cada faixa mostra a letra completa, a energia e o idioma.
               </p>
             </div>
             {albums.map((a) => (
-              <div key={a.slug} className="rounded-xl border border-sage/20 bg-white overflow-hidden">
-                <div className="border-b border-sage/10 p-4 flex items-center gap-3">
+              <div key={a.slug} className="rounded-xl border border-mundo-muted-dark/30 bg-mundo-bg-light overflow-hidden">
+                <div className="border-b border-mundo-muted-dark/20 p-4 flex items-center gap-3">
                   <div className="h-3 w-3 rounded-full" style={{ background: a.color }} />
-                  <h3 className="font-display text-lg text-forest">{a.title}</h3>
-                  <span className="rounded bg-sage/10 px-2 py-0.5 text-[0.6rem] uppercase tracking-wider text-sage">
+                  <h3 className="font-display text-lg text-mundo-creme">{a.title}</h3>
+                  <span className="rounded bg-mundo-muted-dark/10 px-2 py-0.5 text-[0.6rem] uppercase tracking-wider text-mundo-muted">
                     {a.product === "espelho" ? "Espelho" : a.product === "no" ? "No" : a.product === "livro" ? "Livro" : "Curso"}
                   </span>
                   <span className="text-xs text-green-600 ml-auto">
                     {a.tracks.filter(t => t.lyrics).length}/{a.tracks.length} letras
                   </span>
                 </div>
-                <div className="divide-y divide-sage/5">
+                <div className="divide-y divide-mundo-muted-dark/10">
                   {a.tracks.map((t) => (
                     <div key={t.number} className="p-4">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="font-mono text-xs text-sage/50">{String(t.number).padStart(2, "0")}</span>
-                        <span className="font-medium text-forest">{t.title}</span>
-                        <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${t.lang === "PT" ? "bg-sage/15 text-sage" : "bg-violet-100 text-violet-600"}`}>{t.lang}</span>
+                        <span className="font-mono text-xs text-mundo-muted/50">{String(t.number).padStart(2, "0")}</span>
+                        <span className="font-medium text-mundo-creme">{t.title}</span>
+                        <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${t.lang === "PT" ? "bg-mundo-muted-dark/15 text-mundo-muted" : "bg-violet-100 text-violet-600"}`}>{t.lang}</span>
                         {t.energy && (
                           <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${ENERGY_LABELS[t.energy].color}`}>
                             {ENERGY_LABELS[t.energy].emoji} {ENERGY_LABELS[t.energy].label}
@@ -1053,13 +1044,13 @@ export default function AlbumProductionPage() {
                           <span className="rounded px-1.5 py-0.5 text-[10px] bg-amber-50 text-amber-600">Sem letra</span>
                         )}
                       </div>
-                      <p className="text-xs text-sage/60 mb-2">{t.description}</p>
+                      <p className="text-xs text-mundo-muted/60 mb-2">{t.description}</p>
                       {t.lyrics ? (
-                        <pre className="whitespace-pre-wrap rounded bg-cream/50 p-4 font-mono text-xs text-sage/80 leading-relaxed max-h-80 overflow-y-auto">
+                        <pre className="whitespace-pre-wrap rounded bg-mundo-bg/50 p-4 font-mono text-xs text-mundo-muted/80 leading-relaxed max-h-80 overflow-y-auto">
                           {t.lyrics}
                         </pre>
                       ) : (
-                        <p className="text-xs text-sage/40 italic">Letra ainda nao escrita.</p>
+                        <p className="text-xs text-mundo-muted/40 italic">Letra ainda nao escrita.</p>
                       )}
                     </div>
                   ))}
@@ -1074,7 +1065,7 @@ export default function AlbumProductionPage() {
           <div>
             <button
               onClick={() => setSelectedAlbum(null)}
-              className="mb-6 text-sm text-sage hover:text-forest"
+              className="mb-6 text-sm text-mundo-muted hover:text-mundo-creme"
             >
               ← Voltar aos albums
             </button>
@@ -1085,13 +1076,13 @@ export default function AlbumProductionPage() {
                   className="h-3 w-3 rounded-full"
                   style={{ background: album.color }}
                 />
-                <h2 className="font-display text-2xl text-forest">
+                <h2 className="font-display text-2xl text-mundo-creme">
                   {album.title}
                 </h2>
               </div>
-              <p className="mt-1 text-sage">{album.subtitle}</p>
+              <p className="mt-1 text-mundo-muted">{album.subtitle}</p>
               <div className="mt-2 flex items-center gap-3">
-                <span className="rounded bg-sage/10 px-2 py-0.5 text-xs text-sage">
+                <span className="rounded bg-mundo-muted-dark/10 px-2 py-0.5 text-xs text-mundo-muted">
                   {album.product === "espelho"
                     ? "Espelho"
                     : album.product === "no"
@@ -1101,7 +1092,7 @@ export default function AlbumProductionPage() {
                     : "Curso"}
                   {album.veu ? ` — Veu ${album.veu}` : ""}
                 </span>
-                <span className="text-xs text-sage/60">
+                <span className="text-xs text-mundo-muted/60">
                   {album.tracks.length} faixas ·{" "}
                   {Math.floor(
                     album.tracks.reduce((s, t) => s + t.durationSeconds, 0) / 60
@@ -1156,14 +1147,14 @@ export default function AlbumProductionPage() {
                 <button
                   key={a.slug}
                   onClick={() => setSelectedAlbum(a.slug)}
-                  className="group rounded-xl border border-sage/20 bg-white p-5 text-left transition hover:shadow-md"
+                  className="group rounded-xl border border-mundo-muted-dark/30 bg-mundo-bg-light p-5 text-left transition hover:shadow-md"
                 >
                   <div className="flex items-start justify-between">
                     <div
                       className="h-2.5 w-2.5 rounded-full mt-1"
                       style={{ background: a.color }}
                     />
-                    <span className="rounded bg-sage/10 px-2 py-0.5 text-[0.6rem] uppercase tracking-wider text-sage">
+                    <span className="rounded bg-mundo-muted-dark/10 px-2 py-0.5 text-[0.6rem] uppercase tracking-wider text-mundo-muted">
                       {a.product === "espelho"
                         ? "Espelho"
                         : a.product === "no"
@@ -1173,14 +1164,14 @@ export default function AlbumProductionPage() {
                         : "Curso"}
                     </span>
                   </div>
-                  <h3 className="mt-3 font-display text-lg text-forest group-hover:text-forest/80">
+                  <h3 className="mt-3 font-display text-lg text-mundo-creme group-hover:text-mundo-creme/80">
                     {a.title}
                   </h3>
-                  <p className="mt-0.5 text-sm text-sage line-clamp-1">
+                  <p className="mt-0.5 text-sm text-mundo-muted line-clamp-1">
                     {a.subtitle}
                   </p>
                   <div className="mt-3 flex items-center justify-between">
-                    <span className="text-xs text-sage/60">
+                    <span className="text-xs text-mundo-muted/60">
                       {a.tracks.length} faixas · ~{totalMin} min
                     </span>
                     <div className="flex items-center gap-2">
@@ -1190,7 +1181,7 @@ export default function AlbumProductionPage() {
                         </span>
                       )}
                       {done > 0 && (
-                        <span className="text-xs text-forest">
+                        <span className="text-xs text-mundo-creme">
                           {done}/{a.tracks.length}
                         </span>
                       )}
@@ -1207,7 +1198,7 @@ export default function AlbumProductionPage() {
                         </div>
                       )}
                       {done > 0 && (
-                        <div className="h-1 flex-1 rounded-full bg-sage/10">
+                        <div className="h-1 flex-1 rounded-full bg-mundo-muted-dark/10">
                           <div
                             className="h-1 rounded-full bg-sage transition-all"
                             style={{ width: `${(done / a.tracks.length) * 100}%` }}
