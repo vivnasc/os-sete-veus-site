@@ -55,3 +55,4 @@ CURSOS/lora-training/output/
 CURSOS/lora-training/logs/
 *.safetensors
 *.zip
+!public/downloads/*.zip
