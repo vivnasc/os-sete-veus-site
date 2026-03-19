@@ -8,9 +8,11 @@ export default function MiniPlayer() {
   const {
     currentTrack,
     currentAlbum,
+    queue,
     isPlaying,
     currentTime,
     duration,
+    shuffle,
     togglePlay,
     next,
     previous,
@@ -21,6 +23,12 @@ export default function MiniPlayer() {
 
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
   const albumColor = currentAlbum?.color || "#C9A96E";
+
+  // Find next track in queue
+  const currentIdx = queue.findIndex(t => t.number === currentTrack.number);
+  const nextTrack = !shuffle && currentIdx >= 0 && currentIdx < queue.length - 1
+    ? queue[currentIdx + 1]
+    : null;
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40" role="region" aria-label="Mini player">
@@ -56,7 +64,7 @@ export default function MiniPlayer() {
             )}
           </button>
 
-          {/* Track info */}
+          {/* Track info + next track */}
           <button
             onClick={() => setShowFullPlayer(true)}
             className="flex-1 min-w-0 text-left"
@@ -64,9 +72,15 @@ export default function MiniPlayer() {
             <p className="text-sm font-medium text-[#F5F0E6] truncate">
               {currentTrack.title}
             </p>
-            <p className="text-xs text-[#a0a0b0] truncate">
-              {currentAlbum?.title || "Sete Veus"}
-            </p>
+            {nextTrack ? (
+              <p className="text-xs text-[#666680] truncate">
+                A seguir: {nextTrack.title}
+              </p>
+            ) : (
+              <p className="text-xs text-[#a0a0b0] truncate">
+                {currentAlbum?.title || "Sete Veus"}
+              </p>
+            )}
           </button>
 
           {/* Controls */}

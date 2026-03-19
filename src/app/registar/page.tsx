@@ -123,7 +123,7 @@ export default function RegistarPage() {
               htmlFor="password"
               className="font-sans text-sm font-medium text-brown-700"
             >
-              Password
+              Palavra-passe
             </label>
             <div className="relative mt-1">
               <input
@@ -180,7 +180,7 @@ export default function RegistarPage() {
               </button>
             </div>
             <p className="mt-1 font-sans text-xs text-brown-400">
-              A password será guardada no teu navegador
+              A palavra-passe será guardada no teu navegador
             </p>
           </div>
 

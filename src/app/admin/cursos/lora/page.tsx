@@ -224,7 +224,7 @@ export default function LoRAPage() {
               <p className="text-sm text-mundo-creme-suave mb-3">
                 O dataset tem <strong>59 imagens + 59 descricoes</strong> (118 ficheiros). Primeiro descarrega tudo para o teu computador:
               </p>
-              <a href="/api/admin/courses/download-dataset" download="seteveus-dataset.zip"
+              <a href="/downloads/seteveus-dataset.zip" download="seteveus-dataset.zip"
                 className="inline-block px-4 py-2 bg-mundo-dourado text-mundo-bg rounded hover:bg-mundo-dourado-quente text-sm font-medium">
                 Descarregar dataset (69MB ZIP)
               </a>
@@ -413,7 +413,7 @@ export default function LoRAPage() {
               <Instruction num={3}>
                 <div>
                   <p>No ComfyUI, importa o workflow de teste:</p>
-                  <a href="/api/admin/courses/download-lora-workflow" download="comfyui-test-workflow.json"
+                  <a href="/downloads/comfyui-test-workflow.json" download="comfyui-test-workflow.json"
                     className="inline-block mt-2 px-4 py-2 bg-mundo-violeta text-white rounded hover:bg-mundo-violeta/80 text-sm">
                     Descarregar workflow de teste
                   </a>
