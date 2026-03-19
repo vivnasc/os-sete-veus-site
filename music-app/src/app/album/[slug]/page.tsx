@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ALL_ALBUMS as ALBUMS } from "@/data/albums";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
+import { useSubscriptionGate } from "@/contexts/SubscriptionContext";
 import { useDownloads } from "@/hooks/useDownloads";
 import { getAlbumCover, getAlbumBadge } from "@/lib/album-covers";
 import TrackRow from "@/components/music/TrackRow";
@@ -19,6 +20,7 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
   const { slug } = use(params);
   const album = ALBUMS.find(a => a.slug === slug);
   const { currentTrack, currentAlbum, playAlbum } = useMusicPlayer();
+  const { isPremium, requestPlay } = useSubscriptionGate();
   const { saveAlbum, isSaved } = useDownloads();
 
   if (!album) {
@@ -120,7 +122,10 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
                   const allSaved = album.tracks.every(t => isSaved(album.slug, t.number));
                   return (
                     <button
-                      onClick={() => saveAlbum(album)}
+                      onClick={() => {
+                        if (!isPremium) { requestPlay(2, album.title, albumColor); return; }
+                        saveAlbum(album);
+                      }}
                       disabled={allSaved}
                       className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-sm border transition-colors ${
                         allSaved

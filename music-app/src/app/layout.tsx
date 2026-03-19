@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { MusicPlayerProvider } from "@/contexts/MusicPlayerContext";
+import { SubscriptionProvider } from "@/contexts/SubscriptionContext";
 import MiniPlayer from "@/components/music/MiniPlayer";
 import FullPlayer from "@/components/music/FullPlayer";
 import NoDownload from "@/components/music/NoDownload";
@@ -53,21 +54,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="antialiased">
         <MusicPlayerProvider>
-          <div className="min-h-screen bg-[#0D0D1A] text-[#F5F0E6]">
-            <a
-              href="#main-content"
-              className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#C9A96E] focus:text-[#0D0D1A] focus:rounded-lg"
-            >
-              Saltar para o conteudo
-            </a>
-            <div id="main-content" className="pb-24">
-              {children}
+          <SubscriptionProvider>
+            <div className="min-h-screen bg-[#0D0D1A] text-[#F5F0E6]">
+              <a
+                href="#main-content"
+                className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#C9A96E] focus:text-[#0D0D1A] focus:rounded-lg"
+              >
+                Saltar para o conteudo
+              </a>
+              <div id="main-content" className="pb-24">
+                {children}
+              </div>
+              <MiniPlayer />
+              <FullPlayer />
+              <NoDownload />
+              <RegisterSW />
             </div>
-            <MiniPlayer />
-            <FullPlayer />
-            <NoDownload />
-            <RegisterSW />
-          </div>
+          </SubscriptionProvider>
         </MusicPlayerProvider>
       </body>
     </html>
