@@ -8,23 +8,28 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Véus",
-    template: "%s | Véus",
+    default: "Veus",
+    template: "%s | Veus",
   },
-  description: "Musica original do universo Sete Veus. Streaming, letras e partilha.",
+  description: "Musica original do universo Sete Veus. Banda sonora para a tua transformacao.",
   metadataBase: new URL("https://veus.app"),
+  manifest: "/manifest.json",
   icons: {
     icon: "/music_veus_faicon.png",
-    apple: "/music_veus_faicon.png",
+    apple: "/apple-touch-icon.png",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Veus",
   },
   openGraph: {
-    title: "Véus",
-    description: "Musica original do universo Sete Veus. 35 albums, 200+ faixas.",
-    siteName: "Véus",
+    title: "Veus",
+    description: "Musica original do universo Sete Veus. Banda sonora para a tua transformacao.",
+    siteName: "Veus",
     locale: "pt_PT",
     type: "website",
   },
-  manifest: "/manifest.json",
 };
 
 export const viewport: Viewport = {
@@ -32,7 +37,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
-  userScalable: false,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -49,7 +54,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="antialiased">
         <MusicPlayerProvider>
           <div className="min-h-screen bg-[#0D0D1A] text-[#F5F0E6]">
-            <div className="pb-24">
+            <a
+              href="#main-content"
+              className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#C9A96E] focus:text-[#0D0D1A] focus:rounded-lg"
+            >
+              Saltar para o conteudo
+            </a>
+            <div id="main-content" className="pb-24">
               {children}
             </div>
             <MiniPlayer />

@@ -98,6 +98,7 @@ const GENRES = [
 export default function SearchPage() {
   const [query, setQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
+  const [activeFilter, setActiveFilter] = useState<{ type: "mood" | "genre"; slug: string } | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { currentTrack, currentAlbum } = useMusicPlayer();
@@ -114,6 +115,23 @@ export default function SearchPage() {
   }, [query]);
 
   const results = useMemo(() => searchAll(debouncedQuery), [debouncedQuery]);
+
+  // Filter by mood or genre when a pill is active
+  const filteredTracks = useMemo(() => {
+    if (!activeFilter) return [];
+    const all: TrackWithAlbum[] = [];
+    for (const album of ALL_ALBUMS) {
+      for (const track of album.tracks) {
+        if (activeFilter.type === "mood" && track.energy === activeFilter.slug) {
+          all.push({ track, album });
+        } else if (activeFilter.type === "genre" && track.flavor === activeFilter.slug) {
+          all.push({ track, album });
+        }
+      }
+    }
+    return all;
+  }, [activeFilter]);
+
   const hasQuery = debouncedQuery.trim().length > 0;
   const hasResults =
     results.albums.length > 0 ||
@@ -210,8 +228,25 @@ export default function SearchPage() {
       {/* Body */}
       <div className="px-4 pb-32">
         {!hasQuery ? (
-          /* ── Empty state: suggestions ── */
+          /* ── Empty state: suggestions + filters ── */
           <div className="pt-6 space-y-8">
+            {/* Active filter header */}
+            {activeFilter && (
+              <div className="flex items-center justify-between">
+                <h2 className="text-sm font-semibold text-[#F5F0E6]">
+                  {activeFilter.type === "mood" ? "Energia" : "Genero"}:{" "}
+                  <span className="text-[#C9A96E] capitalize">{activeFilter.slug}</span>
+                  <span className="text-[#666680] font-normal ml-2">({filteredTracks.length} faixas)</span>
+                </h2>
+                <button
+                  onClick={() => setActiveFilter(null)}
+                  className="text-xs text-[#666680] hover:text-[#a0a0b0] px-2 py-1 rounded-full bg-white/5"
+                >
+                  Limpar
+                </button>
+              </div>
+            )}
+
             {/* Mood pills */}
             <section>
               <h2 className="text-sm font-semibold text-[#a0a0b0] uppercase tracking-wider mb-3">
@@ -221,7 +256,12 @@ export default function SearchPage() {
                 {MOODS.map((m) => (
                   <button
                     key={m.slug}
-                    className="px-4 py-2 rounded-full bg-white/5 text-sm text-[#F5F0E6] hover:bg-white/10 transition-colors capitalize"
+                    onClick={() => setActiveFilter(activeFilter?.slug === m.slug ? null : { type: "mood", slug: m.slug })}
+                    className={`px-4 py-2 rounded-full text-sm transition-colors capitalize ${
+                      activeFilter?.slug === m.slug && activeFilter.type === "mood"
+                        ? "bg-[#C9A96E]/20 text-[#C9A96E] ring-1 ring-[#C9A96E]/30"
+                        : "bg-white/5 text-[#F5F0E6] hover:bg-white/10"
+                    }`}
                   >
                     {m.label}
                   </button>
@@ -238,13 +278,37 @@ export default function SearchPage() {
                 {GENRES.map((g) => (
                   <button
                     key={g.slug}
-                    className="px-4 py-2 rounded-full bg-white/5 text-sm text-[#F5F0E6] hover:bg-white/10 transition-colors capitalize"
+                    onClick={() => setActiveFilter(activeFilter?.slug === g.slug ? null : { type: "genre", slug: g.slug })}
+                    className={`px-4 py-2 rounded-full text-sm transition-colors capitalize ${
+                      activeFilter?.slug === g.slug && activeFilter.type === "genre"
+                        ? "bg-[#C9A96E]/20 text-[#C9A96E] ring-1 ring-[#C9A96E]/30"
+                        : "bg-white/5 text-[#F5F0E6] hover:bg-white/10"
+                    }`}
                   >
                     {g.label}
                   </button>
                 ))}
               </div>
             </section>
+
+            {/* Filtered results */}
+            {activeFilter && filteredTracks.length > 0 && (
+              <section>
+                <div className="space-y-0.5">
+                  {filteredTracks.map(({ track, album }) => (
+                    <TrackRow
+                      key={`${album.slug}-${track.number}`}
+                      track={track}
+                      album={album}
+                      isActive={
+                        currentTrack?.number === track.number &&
+                        currentAlbum?.slug === album.slug
+                      }
+                    />
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
         ) : !hasResults ? (
           /* ── No results ── */

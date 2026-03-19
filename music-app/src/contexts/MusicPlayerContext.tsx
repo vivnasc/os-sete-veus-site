@@ -4,6 +4,13 @@ import { createContext, useContext, useState, useRef, useCallback, useEffect, ty
 import { ALL_ALBUMS, type Album, type AlbumTrack } from "@/data/albums";
 import { getCachedAudioUrl } from "@/hooks/useDownloads";
 
+export function formatTime(s: number): string {
+  if (!isFinite(s) || s < 0) return "0:00";
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return `${m}:${sec.toString().padStart(2, "0")}`;
+}
+
 // Extended track type that may carry albumSlug from curated lists
 type QueueTrack = AlbumTrack & { albumSlug?: string };
 

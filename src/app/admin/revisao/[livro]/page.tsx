@@ -55,11 +55,13 @@ export default function LivroRevisaoPage() {
 
   // Annotations
   const [annotations, setAnnotations] = useState<Annotation[]>([]);
+  const [appliedAnnotations, setAppliedAnnotations] = useState<Annotation[]>([]);
   const [annotatingParagraph, setAnnotatingParagraph] = useState<number | null>(
     null
   );
   const [annotationNote, setAnnotationNote] = useState("");
   const [showAnnotations, setShowAnnotations] = useState(false);
+  const [sidebarTab, setSidebarTab] = useState<"pending" | "applied">("pending");
   const [saving, setSaving] = useState(false);
 
   const contentRef = useRef<HTMLDivElement>(null);
@@ -73,13 +75,22 @@ export default function LivroRevisaoPage() {
 
   // Load annotations from Supabase
   const loadAnnotations = useCallback(async () => {
-    const { data } = await supabase
+    const { data: pending } = await supabase
       .from("revision_proposals")
       .select("*")
       .eq("book_slug", livroSlug)
       .eq("status", "pending")
       .order("created_at", { ascending: true });
-    if (data) setAnnotations(data as Annotation[]);
+    if (pending) setAnnotations(pending as Annotation[]);
+
+    const { data: applied } = await supabase
+      .from("revision_proposals")
+      .select("*")
+      .eq("book_slug", livroSlug)
+      .eq("status", "applied")
+      .order("created_at", { ascending: false })
+      .limit(50);
+    if (applied) setAppliedAnnotations(applied as Annotation[]);
   }, [livroSlug]);
 
   useEffect(() => {
@@ -472,51 +483,119 @@ export default function LivroRevisaoPage() {
           {showAnnotations && (
             <div className="hidden lg:block w-[340px] flex-shrink-0">
               <div className="sticky top-16">
-                <h3 className="mb-4 text-sm font-medium text-sage uppercase tracking-wide">
-                  Notas de revisão ({pendingCount})
-                </h3>
+                {/* Tabs */}
+                <div className="mb-4 flex gap-1 rounded-lg bg-sage/10 p-1">
+                  <button
+                    onClick={() => setSidebarTab("pending")}
+                    className={`flex-1 rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
+                      sidebarTab === "pending"
+                        ? "bg-white text-forest shadow-sm"
+                        : "text-sage hover:text-forest"
+                    }`}
+                  >
+                    Pendentes ({pendingCount})
+                  </button>
+                  <button
+                    onClick={() => setSidebarTab("applied")}
+                    className={`flex-1 rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
+                      sidebarTab === "applied"
+                        ? "bg-white text-forest shadow-sm"
+                        : "text-sage hover:text-forest"
+                    }`}
+                  >
+                    Aplicadas ({appliedAnnotations.length})
+                  </button>
+                </div>
 
-                {pendingCount === 0 && (
-                  <p className="text-sm text-sage/60">
-                    Nenhuma nota ainda. Clica num parágrafo para marcar o que
-                    precisa de melhorar.
-                  </p>
+                {/* Pending tab */}
+                {sidebarTab === "pending" && (
+                  <>
+                    {pendingCount === 0 && (
+                      <p className="text-sm text-sage/60">
+                        Nenhuma nota pendente. Clica num parágrafo para marcar o
+                        que precisa de melhorar.
+                      </p>
+                    )}
+
+                    <div className="space-y-3 max-h-[calc(100vh-8rem)] overflow-y-auto pr-1">
+                      {annotations
+                        .filter((a) => a.status === "pending")
+                        .map((a) => (
+                          <div
+                            key={a.id}
+                            className="rounded-lg border border-sage/20 bg-white/80 p-4"
+                          >
+                            <div className="mb-2 flex items-center justify-between">
+                              <span className="text-xs font-medium text-sage">
+                                {a.chapter_title}
+                              </span>
+                              <button
+                                onClick={() => removeAnnotation(a.id)}
+                                className="text-xs text-red-400 hover:text-red-600"
+                              >
+                                remover
+                              </button>
+                            </div>
+                            <p className="mb-2 text-sm text-amber-700 font-medium">
+                              {a.note}
+                            </p>
+                            <div className="rounded bg-sage/5 p-2">
+                              <p className="text-xs text-forest/60 leading-relaxed">
+                                {a.original_text.slice(0, 150)}
+                                {a.original_text.length > 150 ? "..." : ""}
+                              </p>
+                            </div>
+                            <p className="mt-2 text-[10px] text-sage/50">
+                              {new Date(a.created_at).toLocaleDateString(
+                                "pt-PT"
+                              )}
+                            </p>
+                          </div>
+                        ))}
+                    </div>
+                  </>
                 )}
 
-                <div className="space-y-3 max-h-[calc(100vh-8rem)] overflow-y-auto pr-1">
-                  {annotations
-                    .filter((a) => a.status === "pending")
-                    .map((a) => (
-                      <div
-                        key={a.id}
-                        className="rounded-lg border border-sage/20 bg-white/80 p-4"
-                      >
-                        <div className="mb-2 flex items-center justify-between">
-                          <span className="text-xs font-medium text-sage">
-                            {a.chapter_title}
-                          </span>
-                          <button
-                            onClick={() => removeAnnotation(a.id)}
-                            className="text-xs text-red-400 hover:text-red-600"
-                          >
-                            remover
-                          </button>
-                        </div>
-                        <p className="mb-2 text-sm text-amber-700 font-medium">
-                          {a.note}
-                        </p>
-                        <div className="rounded bg-sage/5 p-2">
-                          <p className="text-xs text-forest/60 leading-relaxed">
-                            {a.original_text.slice(0, 150)}
-                            {a.original_text.length > 150 ? "..." : ""}
+                {/* Applied tab */}
+                {sidebarTab === "applied" && (
+                  <>
+                    {appliedAnnotations.length === 0 && (
+                      <p className="text-sm text-sage/60">
+                        Nenhuma nota aplicada ainda.
+                      </p>
+                    )}
+
+                    <div className="space-y-3 max-h-[calc(100vh-8rem)] overflow-y-auto pr-1">
+                      {appliedAnnotations.map((a) => (
+                        <div
+                          key={a.id}
+                          className="rounded-lg border border-green-200 bg-green-50/50 p-4"
+                        >
+                          <div className="mb-2 flex items-center justify-between">
+                            <span className="text-xs font-medium text-sage">
+                              {a.chapter_title}
+                            </span>
+                            <span className="text-[10px] text-green-600 font-medium">
+                              aplicada
+                            </span>
+                          </div>
+                          <p className="mb-2 text-sm text-forest/70">
+                            {a.note}
+                          </p>
+                          <div className="rounded bg-sage/5 p-2">
+                            <p className="text-xs text-forest/50 leading-relaxed">
+                              {a.original_text.slice(0, 150)}
+                              {a.original_text.length > 150 ? "..." : ""}
+                            </p>
+                          </div>
+                          <p className="mt-2 text-[10px] text-sage/50">
+                            {new Date(a.created_at).toLocaleDateString("pt-PT")}
                           </p>
                         </div>
-                        <p className="mt-2 text-[10px] text-sage/50">
-                          {new Date(a.created_at).toLocaleDateString("pt-PT")}
-                        </p>
-                      </div>
-                    ))}
-                </div>
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           )}
