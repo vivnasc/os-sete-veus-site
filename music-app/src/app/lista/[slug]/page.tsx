@@ -2,7 +2,17 @@ import { ALL_LISTS, resolveList } from "@/data/curated-lists";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import ListTrackRow from "@/components/music/ListTrackRow";
+import VersionTracks from "@/components/music/VersionTracks";
 import NavBar from "@/components/music/NavBar";
+import type { TrackEnergy } from "@/data/albums";
+
+const MOOD_ENERGY_MAP: Record<string, TrackEnergy> = {
+  "mood-sussurro": "whisper",
+  "mood-constante": "steady",
+  "mood-pulso": "pulse",
+  "mood-hino": "anthem",
+  "mood-cru": "raw",
+};
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -23,6 +33,7 @@ export default async function ListPage({ params }: Props) {
 
   const tracks = resolveList(list);
   const categoryLabel = list.category === "genero" ? "Género" : list.category === "mood" ? "Mood" : "Tema";
+  const moodEnergy = MOOD_ENERGY_MAP[list.slug];
 
   return (
     <div className="min-h-screen">
@@ -67,6 +78,11 @@ export default async function ListPage({ params }: Props) {
             <ListTrackRow key={`${track.albumSlug}-${track.number}`} track={track} index={i} allTracks={tracks} />
           ))}
         </div>
+
+        {/* Version variants for mood lists */}
+        {moodEnergy && (
+          <VersionTracks energy={moodEnergy} listColor={list.color} startIndex={tracks.length} />
+        )}
       </div>
     </div>
   );
