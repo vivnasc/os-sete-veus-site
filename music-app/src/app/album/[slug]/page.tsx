@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ALL_ALBUMS as ALBUMS } from "@/data/albums";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
+import { useDownloads } from "@/hooks/useDownloads";
 import { getAlbumCover, getAlbumBadge } from "@/lib/album-covers";
 import TrackRow from "@/components/music/TrackRow";
 
@@ -18,6 +19,7 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
   const { slug } = use(params);
   const album = ALBUMS.find(a => a.slug === slug);
   const { currentTrack, currentAlbum, playAlbum } = useMusicPlayer();
+  const { saveAlbum, isSaved } = useDownloads();
 
   if (!album) {
     return (
@@ -114,6 +116,36 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
                   </svg>
                   Ouvir album
                 </button>
+                {(() => {
+                  const allSaved = album.tracks.every(t => isSaved(album.slug, t.number));
+                  return (
+                    <button
+                      onClick={() => saveAlbum(album)}
+                      disabled={allSaved}
+                      className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-sm border transition-colors ${
+                        allSaved
+                          ? "text-green-400 border-green-400/20 bg-green-400/5"
+                          : "text-[#a0a0b0] border-white/10 hover:bg-white/5"
+                      } disabled:cursor-default`}
+                    >
+                      {allSaved ? (
+                        <>
+                          <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+                            <path d="M20 6L9 17l-5-5" />
+                          </svg>
+                          Guardado offline
+                        </>
+                      ) : (
+                        <>
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                          </svg>
+                          Guardar offline
+                        </>
+                      )}
+                    </button>
+                  );
+                })()}
                 <Link
                   href="/upload"
                   className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-sm text-[#a0a0b0] border border-white/10 hover:bg-white/5 transition-colors"

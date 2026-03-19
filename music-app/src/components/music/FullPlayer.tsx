@@ -4,8 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
 import { getAlbumCover } from "@/lib/album-covers";
+import { useDownloads } from "@/hooks/useDownloads";
 import ShareModal from "./ShareModal";
-// AudioVisualizer removed — using CSS animations instead
 import QueuePanel from "./QueuePanel";
 import SleepTimer from "./SleepTimer";
 
@@ -40,6 +40,7 @@ export default function FullPlayer() {
   const [showShare, setShowShare] = useState(false);
   const [showQueue, setShowQueue] = useState(false);
   const [showSleep, setShowSleep] = useState(false);
+  const { saveTrack, removeTrack, getSaveState, isSaved } = useDownloads();
 
   if (!showFullPlayer || !currentTrack) return null;
 
@@ -69,6 +70,36 @@ export default function FullPlayer() {
           <p className="text-sm font-medium text-[#F5F0E6] mt-0.5">{currentAlbum?.title}</p>
         </div>
         <div className="flex items-center gap-1">
+          {/* Save offline button */}
+          {currentAlbum && (() => {
+            const state = getSaveState(currentAlbum.slug, currentTrack.number);
+            const saved = isSaved(currentAlbum.slug, currentTrack.number);
+            return (
+              <button
+                onClick={() => saved
+                  ? removeTrack(currentAlbum!.slug, currentTrack.number)
+                  : saveTrack(currentTrack, currentAlbum!)
+                }
+                disabled={state === "saving"}
+                className={`p-2 transition-colors ${saved ? "text-green-400" : "text-[#a0a0b0] hover:text-[#F5F0E6]"} disabled:opacity-50`}
+                title={saved ? "Remover do offline" : "Guardar offline"}
+              >
+                {state === "saving" ? (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5 animate-spin">
+                    <circle cx="12" cy="12" r="10" strokeDasharray="32" strokeDashoffset="12" />
+                  </svg>
+                ) : saved ? (
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+                    <path d="M20 6L9 17l-5-5" />
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                  </svg>
+                )}
+              </button>
+            );
+          })()}
           {/* Sleep timer button */}
           <button
             onClick={() => setShowSleep(true)}

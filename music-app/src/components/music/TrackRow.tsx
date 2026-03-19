@@ -1,6 +1,7 @@
 "use client";
 
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
+import { useDownloads } from "@/hooks/useDownloads";
 import type { Album, AlbumTrack } from "@/data/albums";
 
 type Props = {
@@ -18,7 +19,10 @@ function fmt(s: number) {
 
 export default function TrackRow({ track, album, isActive }: Props) {
   const { playTrack, isPlaying, togglePlay } = useMusicPlayer();
+  const { saveTrack, removeTrack, getSaveState, isSaved } = useDownloads();
   const albumColor = album.color || "#C9A96E";
+  const saveState = getSaveState(album.slug, track.number);
+  const saved = isSaved(album.slug, track.number);
 
   function handleClick() {
     if (isActive) {
@@ -67,6 +71,31 @@ export default function TrackRow({ track, album, isActive }: Props) {
       <span className="text-[10px] px-1.5 py-0.5 rounded border border-white/10 text-[#666680] shrink-0">
         {track.lang}
       </span>
+
+      {/* Save offline button */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          saved ? removeTrack(album.slug, track.number) : saveTrack(track, album);
+        }}
+        disabled={saveState === "saving"}
+        className={`p-1.5 shrink-0 transition-colors ${saved ? "text-green-400/60" : "text-[#666680] hover:text-[#a0a0b0]"} disabled:opacity-50`}
+        title={saved ? "Remover do offline" : "Guardar offline"}
+      >
+        {saveState === "saving" ? (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5 animate-spin">
+            <circle cx="12" cy="12" r="10" strokeDasharray="32" strokeDashoffset="12" />
+          </svg>
+        ) : saved ? (
+          <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5 text-green-400/60">
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+        ) : (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
+          </svg>
+        )}
+      </button>
 
       {/* Duration */}
       <span className="text-xs text-[#666680] tabular-nums shrink-0 w-10 text-right">
