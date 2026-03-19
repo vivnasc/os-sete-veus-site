@@ -410,7 +410,7 @@ const COURSES: CourseData[] = [
       },
       {
         number: 7,
-        title: "O Dinheiro do Recomeco",
+        title: "O Dinheiro do Recomeço",
         description: "A insegurança financeira do recomeço.",
         subLessons: [
           { letter: "A", title: "A insegurança financeira", description: "O medo financeiro como barreira ao recomeço." },
@@ -425,15 +425,15 @@ const COURSES: CourseData[] = [
         description: "Não apagar — integrar.",
         subLessons: [
           { letter: "A", title: "Não apagar — integrar", description: "Recomeçar não é apagar. É construir com o que tens." },
-          { letter: "B", title: "Os primeiros passos", description: "Acções pequenas que mudam a direcção." },
-          { letter: "C", title: "A mulher que já recomecou", description: "Reconhecer que o recomeço já esta em curso." },
+          { letter: "B", title: "Os primeiros passos", description: "Ações pequenas que mudam a direção." },
+          { letter: "C", title: "A mulher que já recomeçou", description: "Reconhecer que o recomeço já está em curso." },
         ],
         workbook: "Os 7 primeiros passos",
       },
     ],
     youtubeHooks: [
       { title: "Porque recomeçar da mais medo do que ficar", durationMin: 7 },
-      { title: "A mentira do 'voltar a estaca zero'", durationMin: 6 },
+      { title: "A mentira do 'voltar à estaca zero'", durationMin: 6 },
       { title: "Como saber se é cedo ou tarde demais", durationMin: 8 },
     ],
   },

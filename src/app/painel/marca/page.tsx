@@ -414,7 +414,7 @@ export default function MarcaPage() {
                   Não é ingratidão — é honestidade.
                 </p>
                 <p className="mt-6 font-sans text-xs leading-relaxed text-brown-500">
-                  Dar-te permissão é o primeiro acto de coragem.
+                  Dar-te permissão é o primeiro ato de coragem.
                 </p>
                 <div className="absolute bottom-8 left-0 right-0 text-center">
                   <span className="rounded-full bg-sage px-6 py-2 font-sans text-[0.6rem] uppercase tracking-[0.15em] text-white">
