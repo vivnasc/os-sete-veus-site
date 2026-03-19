@@ -4,7 +4,7 @@
  * Audio is cached separately in IndexedDB by the app code.
  */
 
-const CACHE_NAME = "veus-v1";
+const CACHE_NAME = "veus-v2";
 
 // App shell — pages and static assets to cache on install
 const APP_SHELL = [
@@ -20,7 +20,7 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL))
   );
-  self.skipWaiting();
+  // Do NOT skipWaiting() automatically — wait for user to accept the update
 });
 
 self.addEventListener("activate", (event) => {
@@ -30,6 +30,13 @@ self.addEventListener("activate", (event) => {
     )
   );
   self.clients.claim();
+});
+
+// Listen for SKIP_WAITING message from the app
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
 });
 
 self.addEventListener("fetch", (event) => {
