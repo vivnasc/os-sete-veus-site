@@ -163,35 +163,31 @@ function TrackRow({
           </div>
           <p className="text-sm text-mundo-muted mt-0.5">{track.description}</p>
 
-          {/* Prompt */}
+          {/* Copy buttons — always visible */}
+          <div className="mt-2 flex items-center gap-2">
+            <CopyButton text={track.prompt} label="Copiar prompt" />
+            {track.lyrics && <CopyButton text={track.lyrics} label="Copiar letra" />}
+          </div>
+
+          {/* Prompt expandable */}
           <details className="mt-2">
             <summary className="cursor-pointer text-xs text-mundo-muted/60 hover:text-mundo-muted">
               Ver prompt
             </summary>
-            <div className="mt-1">
-              <div className="flex justify-end mb-1">
-                <CopyButton text={track.prompt} label="Copiar prompt" />
-              </div>
-              <p className="rounded bg-mundo-bg p-2 font-mono text-xs text-mundo-muted/80">
-                {track.prompt}
-              </p>
-            </div>
+            <p className="mt-1 rounded bg-mundo-bg p-2 font-mono text-xs text-mundo-muted/80">
+              {track.prompt}
+            </p>
           </details>
 
-          {/* Lyrics */}
+          {/* Lyrics expandable */}
           {track.lyrics && (
             <details className="mt-1" open={showLyrics} onToggle={(e) => setShowLyrics((e.target as HTMLDetailsElement).open)}>
               <summary className="cursor-pointer text-xs text-mundo-muted/60 hover:text-mundo-muted">
                 Ver letra
               </summary>
-              <div className="mt-1">
-                <div className="flex justify-end mb-1">
-                  <CopyButton text={track.lyrics} label="Copiar letra" />
-                </div>
-                <pre className="whitespace-pre-wrap rounded bg-mundo-bg p-3 font-mono text-xs text-mundo-muted/80 leading-relaxed max-h-64 overflow-y-auto">
-                  {track.lyrics}
-                </pre>
-              </div>
+              <pre className="mt-1 whitespace-pre-wrap rounded bg-mundo-bg p-3 font-mono text-xs text-mundo-muted/80 leading-relaxed max-h-64 overflow-y-auto">
+                {track.lyrics}
+              </pre>
             </details>
           )}
 
