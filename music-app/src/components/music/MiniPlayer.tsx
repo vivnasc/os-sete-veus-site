@@ -1,15 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
+import { useMusicPlayer, formatTime } from "@/contexts/MusicPlayerContext";
 import { getAlbumCover } from "@/lib/album-covers";
-
-function fmt(s: number) {
-  if (!isFinite(s) || s < 0) return "0:00";
-  const m = Math.floor(s / 60);
-  const sec = Math.floor(s % 60);
-  return `${m}:${sec.toString().padStart(2, "0")}`;
-}
 
 export default function MiniPlayer() {
   const {
@@ -30,7 +23,7 @@ export default function MiniPlayer() {
   const albumColor = currentAlbum?.color || "#C9A96E";
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40">
+    <div className="fixed bottom-0 left-0 right-0 z-40" role="region" aria-label="Mini player">
       {/* Progress bar */}
       <div className="h-0.5 bg-white/10">
         <div
@@ -78,7 +71,7 @@ export default function MiniPlayer() {
 
           {/* Controls */}
           <div className="flex items-center gap-2">
-            <button onClick={previous} className="p-1.5 text-[#a0a0b0] hover:text-[#F5F0E6] transition-colors">
+            <button onClick={previous} className="p-1.5 text-[#a0a0b0] hover:text-[#F5F0E6] transition-colors" aria-label="Faixa anterior">
               <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
                 <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
               </svg>
@@ -87,6 +80,7 @@ export default function MiniPlayer() {
               onClick={togglePlay}
               className="flex h-9 w-9 items-center justify-center rounded-full text-[#0D0D1A] transition-transform hover:scale-105"
               style={{ backgroundColor: albumColor }}
+              aria-label={isPlaying ? "Pausar" : "Reproduzir"}
             >
               {isPlaying ? (
                 <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
@@ -98,7 +92,7 @@ export default function MiniPlayer() {
                 </svg>
               )}
             </button>
-            <button onClick={next} className="p-1.5 text-[#a0a0b0] hover:text-[#F5F0E6] transition-colors">
+            <button onClick={next} className="p-1.5 text-[#a0a0b0] hover:text-[#F5F0E6] transition-colors" aria-label="Proxima faixa">
               <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
                 <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
               </svg>
@@ -107,7 +101,7 @@ export default function MiniPlayer() {
 
           {/* Time */}
           <span className="hidden sm:block text-xs text-[#666680] tabular-nums w-20 text-right">
-            {fmt(currentTime)} / {fmt(duration)}
+            {formatTime(currentTime)} / {formatTime(duration)}
           </span>
         </div>
       </div>

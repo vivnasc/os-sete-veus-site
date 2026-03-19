@@ -19,16 +19,19 @@ export function useLibrary() {
   const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
   const [recents, setRecents] = useState<RecentItem[]>([]);
   const [userId, setUserId] = useState<string | null>(null);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   // Check auth state
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
       setUserId(data.user?.id || null);
+      setUserEmail(data.user?.email || null);
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUserId(session?.user?.id || null);
+      setUserEmail(session?.user?.email || null);
     });
 
     return () => subscription.unsubscribe();
@@ -143,5 +146,5 @@ export function useLibrary() {
     }
   }, [userId]);
 
-  return { favorites, recents, isFavorite, toggleFavorite, addToRecents, userId, loading };
+  return { favorites, recents, isFavorite, toggleFavorite, addToRecents, userId, userEmail, loading };
 }

@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
 import { getAlbumCover } from "@/lib/album-covers";
 import { useDownloads } from "@/hooks/useDownloads";
+import { useLibrary } from "@/hooks/useLibrary";
 import ShareModal from "./ShareModal";
 import QueuePanel from "./QueuePanel";
 import SleepTimer from "./SleepTimer";
@@ -41,6 +43,8 @@ export default function FullPlayer() {
   const [showQueue, setShowQueue] = useState(false);
   const [showSleep, setShowSleep] = useState(false);
   const { saveTrack, removeTrack, getSaveState, isSaved } = useDownloads();
+  const { isFavorite, toggleFavorite, userId } = useLibrary();
+  const router = useRouter();
 
   if (!showFullPlayer || !currentTrack) return null;
 
@@ -191,11 +195,32 @@ export default function FullPlayer() {
       <div className="relative z-10 px-8 pb-safe-bottom pb-8">
         {/* Track name */}
         <div className="flex items-center justify-between mb-6">
-          <div className="min-w-0 flex-1">
-            <h2 className="font-display text-xl font-semibold text-[#F5F0E6] truncate">
-              {currentTrack.title}
-            </h2>
-            <p className="text-sm text-[#a0a0b0] truncate">{currentAlbum?.title}</p>
+          <div className="min-w-0 flex-1 flex items-center gap-3">
+            <div className="min-w-0 flex-1">
+              <h2 className="font-display text-xl font-semibold text-[#F5F0E6] truncate">
+                {currentTrack.title}
+              </h2>
+              <p className="text-sm text-[#a0a0b0] truncate">{currentAlbum?.title}</p>
+            </div>
+            {/* Favorite heart */}
+            <button
+              onClick={() => {
+                if (!userId) { router.push("/login"); return; }
+                if (currentAlbum) toggleFavorite(currentTrack.number, currentAlbum.slug);
+              }}
+              className="p-2 shrink-0 transition-colors"
+              title={isFavorite(currentTrack.number, currentAlbum?.slug || "") ? "Remover dos favoritos" : "Adicionar aos favoritos"}
+            >
+              {isFavorite(currentTrack.number, currentAlbum?.slug || "") ? (
+                <svg viewBox="0 0 24 24" fill="#e74c3c" stroke="#e74c3c" strokeWidth="2" className="h-5 w-5">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" fill="none" stroke="#a0a0b0" strokeWidth="2" className="h-5 w-5 hover:stroke-[#F5F0E6]">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                </svg>
+              )}
+            </button>
           </div>
           <div className="flex items-center gap-2 ml-4">
             <span className="text-xs px-2 py-0.5 rounded-full border border-white/10 text-[#a0a0b0]">
