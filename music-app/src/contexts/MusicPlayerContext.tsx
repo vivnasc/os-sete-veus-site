@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, useRef, useCallback, useEffect, type ReactNode } from "react";
 import type { Album, AlbumTrack } from "@/data/albums";
+import { getCachedAudioUrl } from "@/hooks/useDownloads";
 
 /**
  * Build the streaming proxy URL for a track.
@@ -14,6 +15,21 @@ function proxyUrl(track: AlbumTrack, album: Album): string {
   if (track.audioUrl?.startsWith("/api/music/stream")) return track.audioUrl;
   // Always route through proxy — the file may exist even if audioUrl is null
   return `/api/music/stream?album=${encodeURIComponent(album.slug)}&track=${track.number}`;
+}
+
+/**
+ * Resolve the best audio source for a track:
+ * 1. If cached offline in IndexedDB → use blob URL (instant, works offline)
+ * 2. Otherwise → use streaming proxy
+ */
+async function resolveAudioSrc(track: AlbumTrack, album: Album): Promise<string> {
+  try {
+    const cached = await getCachedAudioUrl(album.slug, track.number);
+    if (cached) return cached;
+  } catch {
+    // IndexedDB unavailable, fall through
+  }
+  return proxyUrl(track, album);
 }
 
 type RepeatMode = "off" | "all" | "one";
@@ -55,8 +71,36 @@ export function useMusicPlayer() {
   return ctx;
 }
 
+/**
+ * Helper: set audio source (resolving cache first) and play.
+ * Revokes any previous blob URL to prevent memory leaks.
+ */
+async function setSourceAndPlay(
+  audio: HTMLAudioElement,
+  track: AlbumTrack,
+  album: Album,
+  prevBlobRef: React.MutableRefObject<string | null>
+) {
+  // Clean up previous blob URL if any
+  if (prevBlobRef.current) {
+    URL.revokeObjectURL(prevBlobRef.current);
+    prevBlobRef.current = null;
+  }
+
+  const src = await resolveAudioSrc(track, album);
+
+  // Track blob URLs for cleanup
+  if (src.startsWith("blob:")) {
+    prevBlobRef.current = src;
+  }
+
+  audio.src = src;
+  audio.play().catch(() => {});
+}
+
 export function MusicPlayerProvider({ children }: { children: ReactNode }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const blobUrlRef = useRef<string | null>(null);
   const [state, setState] = useState<MusicPlayerState>({
     currentTrack: null,
     currentAlbum: null,
@@ -142,11 +186,9 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       const nextTrack = prev.queue[nextIdx];
       const album = prev.queueAlbum;
       if (nextTrack && album) {
-        const src = proxyUrl(nextTrack, album);
         const audio = audioRef.current;
         if (audio) {
-          audio.src = src;
-          audio.play().catch(() => {});
+          setSourceAndPlay(audio, nextTrack, album, blobUrlRef);
         }
       }
 
@@ -164,9 +206,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     if (!audio) return;
 
     const queue = trackList || album.tracks;
-    const src = proxyUrl(track, album);
-    audio.src = src;
-    audio.play().catch(() => {});
+    setSourceAndPlay(audio, track, album, blobUrlRef);
 
     setState(s => ({
       ...s,
@@ -220,9 +260,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       const prevTrack = prev.queue[prevIdx];
       const album = prev.queueAlbum;
       if (prevTrack && album) {
-        const src = proxyUrl(prevTrack, album);
-        audio.src = src;
-        audio.play().catch(() => {});
+        setSourceAndPlay(audio, prevTrack, album, blobUrlRef);
       }
 
       return {
