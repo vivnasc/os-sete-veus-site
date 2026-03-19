@@ -166,7 +166,8 @@ export default function UploadPage() {
   const handleFileSelect = useCallback((album: Album, track: AlbumTrack, files: FileList | null) => {
     if (!files || files.length === 0) return;
     const file = files[0];
-    if (!file.type.startsWith("audio/")) {
+    const isAudio = file.type.startsWith("audio/") || /\.(mp3|wav|m4a|aac|ogg|flac|wma)$/i.test(file.name);
+    if (!isAudio) {
       const key = trackKey(album.slug, track.number);
       setUploadStatuses(prev => ({
         ...prev,
@@ -182,7 +183,7 @@ export default function UploadPage() {
   const handleBulkUpload = useCallback(async (album: Album, files: FileList | null) => {
     if (!files || files.length === 0) return;
 
-    const fileArray = Array.from(files).filter(f => f.type.startsWith("audio/"));
+    const fileArray = Array.from(files).filter(f => f.type.startsWith("audio/") || /\.(mp3|wav|m4a|aac|ogg|flac|wma)$/i.test(f.name));
     fileArray.sort((a, b) => a.name.localeCompare(b.name));
     const version = versionName.trim() || undefined;
 
@@ -348,7 +349,7 @@ export default function UploadPage() {
                 <input
                   ref={bulkInputRef}
                   type="file"
-                  accept="audio/*"
+                  accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg,audio/mpeg,audio/mp3,audio/wav,audio/x-wav,audio/mp4,audio/aac,audio/ogg"
                   multiple
                   className="hidden"
                   onChange={e => handleBulkUpload(selectedAlbum, e.target.files)}
@@ -427,7 +428,7 @@ export default function UploadPage() {
                         <input
                           ref={el => { fileInputRefs.current[key] = el; }}
                           type="file"
-                          accept="audio/*"
+                          accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg,audio/mpeg,audio/mp3,audio/wav,audio/x-wav,audio/mp4,audio/aac,audio/ogg"
                           className="hidden"
                           onChange={e => handleFileSelect(selectedAlbum, track, e.target.files)}
                         />
