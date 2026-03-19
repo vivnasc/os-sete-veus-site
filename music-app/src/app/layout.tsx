@@ -3,6 +3,7 @@ import { MusicPlayerProvider } from "@/contexts/MusicPlayerContext";
 import MiniPlayer from "@/components/music/MiniPlayer";
 import FullPlayer from "@/components/music/FullPlayer";
 import NoDownload from "@/components/music/NoDownload";
+import RegisterSW from "@/components/RegisterSW";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -29,6 +30,15 @@ export const metadata: Metadata = {
     locale: "pt_PT",
     type: "website",
   },
+  manifest: "/manifest.json",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0D0D1A",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export const viewport: Viewport = {
@@ -65,6 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <MiniPlayer />
             <FullPlayer />
             <NoDownload />
+            <RegisterSW />
           </div>
         </MusicPlayerProvider>
       </body>

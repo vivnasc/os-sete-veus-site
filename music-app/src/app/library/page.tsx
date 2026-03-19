@@ -6,6 +6,7 @@ import { ALL_ALBUMS } from "@/data/albums";
 import type { Album, AlbumTrack } from "@/data/albums";
 import { useMusicPlayer, formatTime as fmt } from "@/contexts/MusicPlayerContext";
 import { useLibrary } from "@/hooks/useLibrary";
+import { useDownloads } from "@/hooks/useDownloads";
 
 // ─────────────────────────────────────────────
 // Helpers
@@ -34,12 +35,13 @@ function timeAgo(iso: string) {
 // Component
 // ─────────────────────────────────────────────
 
-type Tab = "favoritos" | "recentes";
+type Tab = "favoritos" | "recentes" | "offline";
 
 export default function LibraryPage() {
   const [activeTab, setActiveTab] = useState<Tab>("favoritos");
   const { favorites, recents } = useLibrary();
   const { playTrack, currentTrack, currentAlbum, isPlaying, togglePlay } = useMusicPlayer();
+  const { savedMeta, removeTrack } = useDownloads();
 
   function handleTrackClick(track: AlbumTrack, album: Album) {
     if (currentTrack?.number === track.number && currentAlbum?.slug === album.slug) {
@@ -99,12 +101,88 @@ export default function LibraryPage() {
           >
             Recentes
           </button>
+          <button
+            onClick={() => setActiveTab("offline")}
+            className={`pb-3 text-sm font-medium transition-colors border-b-2 flex items-center gap-1.5 ${
+              activeTab === "offline"
+                ? "text-[#F5F0E6] border-[#C9A96E]"
+                : "text-[#666680] border-transparent hover:text-[#a0a0b0]"
+            }`}
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
+            </svg>
+            Offline
+            {savedMeta.length > 0 && (
+              <span className="text-[10px] bg-white/10 px-1.5 py-0.5 rounded-full">{savedMeta.length}</span>
+            )}
+          </button>
         </div>
       </div>
 
       {/* Body */}
       <div className="px-4 pb-32">
-        {activeTab === "favoritos" ? (
+        {activeTab === "offline" ? (
+          savedMeta.length === 0 ? (
+            <div className="flex flex-col items-center justify-center pt-24 text-center">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-12 w-12 text-[#333350] mb-4">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
+              </svg>
+              <p className="text-[#F5F0E6] font-medium mb-1">Nada guardado offline</p>
+              <p className="text-sm text-[#666680] max-w-[240px]">Toca no icone de download numa faixa para a ouvir sem internet</p>
+            </div>
+          ) : (
+            <div className="pt-4 space-y-0.5">
+              {savedMeta.map(meta => {
+                const resolved = resolveTrack(meta.trackNumber, meta.albumSlug);
+                if (!resolved) return null;
+                const { track, album } = resolved;
+                const isActive = currentTrack?.number === track.number && currentAlbum?.slug === album.slug;
+
+                return (
+                  <div
+                    key={`${meta.albumSlug}-${meta.trackNumber}`}
+                    className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${isActive ? "bg-white/10" : "hover:bg-white/5"}`}
+                  >
+                    <button
+                      onClick={() => handleTrackClick(track, album)}
+                      className="flex-1 flex items-center gap-3 min-w-0 text-left"
+                    >
+                      {/* Offline icon */}
+                      <div className="shrink-0">
+                        <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4 text-green-400/60">
+                          <path d="M20 6L9 17l-5-5" />
+                        </svg>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className={`text-sm font-medium truncate ${isActive ? "text-[#C9A96E]" : "text-[#F5F0E6]"}`}>
+                          {track.title}
+                        </p>
+                        <p className="text-xs text-[#666680] truncate">{album.title}</p>
+                      </div>
+                      <span className="shrink-0 text-[10px] font-medium text-[#666680] bg-white/5 px-1.5 py-0.5 rounded">
+                        {track.lang}
+                      </span>
+                      <span className="shrink-0 text-xs text-[#666680] tabular-nums w-10 text-right">
+                        {fmt(track.durationSeconds)}
+                      </span>
+                    </button>
+                    {/* Remove button */}
+                    <button
+                      onClick={() => removeTrack(meta.albumSlug, meta.trackNumber)}
+                      className="shrink-0 p-1.5 text-[#666680] hover:text-red-400 transition-colors"
+                      title="Remover do offline"
+                    >
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
+                        <path d="M18 6L6 18M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          )
+        ) : activeTab === "favoritos" ? (
           favorites.length === 0 ? (
             /* Empty state: Favoritos */
             <div className="flex flex-col items-center justify-center pt-24 text-center">

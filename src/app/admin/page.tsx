@@ -306,8 +306,8 @@ export default function AdminPage() {
           />
           <ActionCard
             title="Albums"
-            description="Produzir musica para todos os produtos"
-            href="/admin/producao/albums"
+            description="Produzir musica (na app de musica)"
+            href="https://musicseteveus.vercel.app/admin/producao"
             icon="♫"
           />
         </div>

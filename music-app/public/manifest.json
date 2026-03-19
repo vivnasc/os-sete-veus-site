@@ -1,7 +1,7 @@
 {
-  "name": "Veus — Musica Transformativa",
+  "name": "Veus — Musica Sete Veus",
   "short_name": "Veus",
-  "description": "Musica original do universo Sete Veus. 35 albums, 200+ faixas por Loranne.",
+  "description": "Musica original do universo Sete Veus. Streaming e offline.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0D0D1A",
@@ -17,15 +17,7 @@
       "src": "/apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png"
-    },
-    {
-      "src": "/music_veus_faicon.png",
-      "sizes": "any",
-      "type": "image/png",
-      "purpose": "maskable"
     }
   ],
-  "categories": ["music", "entertainment"],
-  "lang": "pt",
-  "dir": "ltr"
+  "categories": ["music", "entertainment"]
 }
