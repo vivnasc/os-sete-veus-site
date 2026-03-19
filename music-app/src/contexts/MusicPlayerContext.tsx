@@ -4,15 +4,15 @@ import { createContext, useContext, useState, useRef, useCallback, useEffect, ty
 import type { Album, AlbumTrack } from "@/data/albums";
 
 /**
- * Convert direct Supabase audio URLs to the streaming proxy.
- * This hides the real storage URL from the browser so users cannot
- * right-click → save or copy the direct link.
+ * Build the streaming proxy URL for a track.
+ * Always routes through the proxy — even if audioUrl is null in the data,
+ * the file may exist in Supabase Storage (uploaded via /upload).
+ * The proxy returns 404 if the file doesn't exist, which the player handles gracefully.
  */
-function proxyUrl(track: AlbumTrack, album: Album): string | null {
-  if (!track.audioUrl) return null;
+function proxyUrl(track: AlbumTrack, album: Album): string {
   // If already a proxy URL, keep it
-  if (track.audioUrl.startsWith("/api/music/stream")) return track.audioUrl;
-  // Route through proxy
+  if (track.audioUrl?.startsWith("/api/music/stream")) return track.audioUrl;
+  // Always route through proxy — the file may exist even if audioUrl is null
   return `/api/music/stream?album=${encodeURIComponent(album.slug)}&track=${track.number}`;
 }
 
@@ -85,12 +85,17 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     const onEnded = () => handleEnded();
     const onPlay = () => setState(s => ({ ...s, isPlaying: true }));
     const onPause = () => setState(s => ({ ...s, isPlaying: false }));
+    const onError = () => {
+      // Audio file not found or failed to load — stop playback gracefully
+      setState(s => ({ ...s, isPlaying: false }));
+    };
 
     audio.addEventListener("timeupdate", onTime);
     audio.addEventListener("loadedmetadata", onMeta);
     audio.addEventListener("ended", onEnded);
     audio.addEventListener("play", onPlay);
     audio.addEventListener("pause", onPause);
+    audio.addEventListener("error", onError);
 
     return () => {
       audio.removeEventListener("timeupdate", onTime);
@@ -98,6 +103,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       audio.removeEventListener("ended", onEnded);
       audio.removeEventListener("play", onPlay);
       audio.removeEventListener("pause", onPause);
+      audio.removeEventListener("error", onError);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -135,8 +141,8 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
 
       const nextTrack = prev.queue[nextIdx];
       const album = prev.queueAlbum;
-      const src = nextTrack && album ? proxyUrl(nextTrack, album) : null;
-      if (src) {
+      if (nextTrack && album) {
+        const src = proxyUrl(nextTrack, album);
         const audio = audioRef.current;
         if (audio) {
           audio.src = src;
@@ -148,7 +154,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
         ...prev,
         currentTrack: nextTrack,
         currentAlbum: prev.queueAlbum,
-        isPlaying: !!src,
+        isPlaying: !!(nextTrack && album),
       };
     });
   }, []);
@@ -159,11 +165,8 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
 
     const queue = trackList || album.tracks;
     const src = proxyUrl(track, album);
-
-    if (src) {
-      audio.src = src;
-      audio.play().catch(() => {});
-    }
+    audio.src = src;
+    audio.play().catch(() => {});
 
     setState(s => ({
       ...s,
@@ -171,7 +174,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       currentAlbum: album,
       queue,
       queueAlbum: album,
-      isPlaying: !!src,
+      isPlaying: true,
       showFullPlayer: true,
     }));
   }, []);
@@ -216,8 +219,8 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
 
       const prevTrack = prev.queue[prevIdx];
       const album = prev.queueAlbum;
-      const src = prevTrack && album ? proxyUrl(prevTrack, album) : null;
-      if (src) {
+      if (prevTrack && album) {
+        const src = proxyUrl(prevTrack, album);
         audio.src = src;
         audio.play().catch(() => {});
       }
@@ -226,7 +229,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
         ...prev,
         currentTrack: prevTrack,
         currentAlbum: prev.queueAlbum,
-        isPlaying: !!src,
+        isPlaying: !!(prevTrack && album),
       };
     });
   }, []);
