@@ -1,27 +1,28 @@
 "use client";
 
 import { createContext, useContext, useState, useRef, useCallback, useEffect, type ReactNode } from "react";
-import type { Album, AlbumTrack } from "@/data/albums";
+import { ALL_ALBUMS, type Album, type AlbumTrack } from "@/data/albums";
 import { getCachedAudioUrl } from "@/hooks/useDownloads";
 
+// Extended track type that may carry albumSlug from curated lists
+type QueueTrack = AlbumTrack & { albumSlug?: string };
+
 /**
- * Build the streaming proxy URL for a track.
- * Always routes through the proxy — even if audioUrl is null in the data,
- * the file may exist in Supabase Storage (uploaded via /upload).
- * The proxy returns 404 if the file doesn't exist, which the player handles gracefully.
+ * Resolve the album for a track in the queue.
+ * If track has albumSlug (from curated list), use that. Otherwise fallback to queueAlbum.
  */
+function resolveAlbumForTrack(track: QueueTrack, fallback: Album | null): Album | null {
+  if (track.albumSlug) {
+    return ALL_ALBUMS.find(a => a.slug === track.albumSlug) || fallback;
+  }
+  return fallback;
+}
+
 function proxyUrl(track: AlbumTrack, album: Album): string {
-  // If already a proxy URL, keep it
   if (track.audioUrl?.startsWith("/api/music/stream")) return track.audioUrl;
-  // Always route through proxy — the file may exist even if audioUrl is null
   return `/api/music/stream?album=${encodeURIComponent(album.slug)}&track=${track.number}`;
 }
 
-/**
- * Resolve the best audio source for a track:
- * 1. If cached offline in IndexedDB → use blob URL (instant, works offline)
- * 2. Otherwise → use streaming proxy
- */
 async function resolveAudioSrc(track: AlbumTrack, album: Album): Promise<string> {
   try {
     const cached = await getCachedAudioUrl(album.slug, track.number);
@@ -37,7 +38,7 @@ type RepeatMode = "off" | "all" | "one";
 type MusicPlayerState = {
   currentTrack: AlbumTrack | null;
   currentAlbum: Album | null;
-  queue: AlbumTrack[];
+  queue: QueueTrack[];
   queueAlbum: Album | null;
   isPlaying: boolean;
   currentTime: number;
@@ -71,17 +72,12 @@ export function useMusicPlayer() {
   return ctx;
 }
 
-/**
- * Helper: set audio source (resolving cache first) and play.
- * Revokes any previous blob URL to prevent memory leaks.
- */
 async function setSourceAndPlay(
   audio: HTMLAudioElement,
   track: AlbumTrack,
   album: Album,
   prevBlobRef: React.MutableRefObject<string | null>
 ) {
-  // Clean up previous blob URL if any
   if (prevBlobRef.current) {
     URL.revokeObjectURL(prevBlobRef.current);
     prevBlobRef.current = null;
@@ -89,7 +85,6 @@ async function setSourceAndPlay(
 
   const src = await resolveAudioSrc(track, album);
 
-  // Track blob URLs for cleanup
   if (src.startsWith("blob:")) {
     prevBlobRef.current = src;
   }
@@ -116,7 +111,6 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     showLyrics: false,
   });
 
-  // Ensure audio element exists
   useEffect(() => {
     if (!audioRef.current) {
       audioRef.current = new Audio();
@@ -130,7 +124,6 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     const onPlay = () => setState(s => ({ ...s, isPlaying: true }));
     const onPause = () => setState(s => ({ ...s, isPlaying: false }));
     const onError = () => {
-      // Audio file not found or failed to load — stop playback gracefully
       setState(s => ({ ...s, isPlaying: false }));
     };
 
@@ -163,7 +156,9 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
         return prev;
       }
 
-      const currentIdx = prev.queue.findIndex(t => t.number === prev.currentTrack?.number);
+      const currentIdx = prev.queue.findIndex(t => t.number === prev.currentTrack?.number && (
+        !(t as QueueTrack).albumSlug || (t as QueueTrack).albumSlug === prev.currentAlbum?.slug
+      ));
       let nextIdx: number;
 
       if (prev.shuffle) {
@@ -184,7 +179,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       }
 
       const nextTrack = prev.queue[nextIdx];
-      const album = prev.queueAlbum;
+      const album = resolveAlbumForTrack(nextTrack, prev.queueAlbum);
       if (nextTrack && album) {
         const audio = audioRef.current;
         if (audio) {
@@ -195,7 +190,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       return {
         ...prev,
         currentTrack: nextTrack,
-        currentAlbum: prev.queueAlbum,
+        currentAlbum: album,
         isPlaying: !!(nextTrack && album),
       };
     });
@@ -243,14 +238,15 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     const audio = audioRef.current;
     if (!audio) return;
 
-    // If more than 3 seconds in, restart current track
     if (audio.currentTime > 3) {
       audio.currentTime = 0;
       return;
     }
 
     setState(prev => {
-      const currentIdx = prev.queue.findIndex(t => t.number === prev.currentTrack?.number);
+      const currentIdx = prev.queue.findIndex(t => t.number === prev.currentTrack?.number && (
+        !(t as QueueTrack).albumSlug || (t as QueueTrack).albumSlug === prev.currentAlbum?.slug
+      ));
       const prevIdx = currentIdx - 1;
       if (prevIdx < 0) {
         audio.currentTime = 0;
@@ -258,7 +254,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       }
 
       const prevTrack = prev.queue[prevIdx];
-      const album = prev.queueAlbum;
+      const album = resolveAlbumForTrack(prevTrack, prev.queueAlbum);
       if (prevTrack && album) {
         setSourceAndPlay(audio, prevTrack, album, blobUrlRef);
       }
@@ -266,7 +262,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       return {
         ...prev,
         currentTrack: prevTrack,
-        currentAlbum: prev.queueAlbum,
+        currentAlbum: album,
         isPlaying: !!(prevTrack && album),
       };
     });

@@ -64,7 +64,7 @@ export default async function ListPage({ params }: Props) {
       <div className="max-w-screen-lg mx-auto px-6 pb-32">
         <div className="divide-y divide-white/5">
           {tracks.map((track, i) => (
-            <ListTrackRow key={`${track.albumSlug}-${track.number}`} track={track} index={i} listSlug={list.slug} />
+            <ListTrackRow key={`${track.albumSlug}-${track.number}`} track={track} index={i} allTracks={tracks} />
           ))}
         </div>
       </div>
