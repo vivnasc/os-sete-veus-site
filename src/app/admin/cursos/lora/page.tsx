@@ -349,11 +349,11 @@ export default function LoRAPage() {
 
               <Instruction num={3}>
                 <div>
-                  <p>A interface mostra o progresso. Quando vires <strong>"Training complete"</strong>, esta feito.</p>
+                  <p>A interface mostra o progresso. Quando vires <strong>"Training complete"</strong>, está feito.</p>
                   <div className="bg-mundo-bg rounded-lg p-3 mt-2 text-xs space-y-1">
-                    <p className="text-mundo-muted">O numero "loss" deve estar entre:</p>
+                    <p className="text-mundo-muted">O número "loss" deve estar entre:</p>
                     <p className="text-green-400">0.06 - 0.10 = Bom</p>
-                    <p className="text-yellow-400">Abaixo de 0.04 = Pode estar a decorar (nao generaliza)</p>
+                    <p className="text-yellow-400">Abaixo de 0.04 = Pode estar a decorar (não generaliza)</p>
                     <p className="text-red-400">Acima de 0.12 = Nao esta a aprender bem</p>
                   </div>
                 </div>
