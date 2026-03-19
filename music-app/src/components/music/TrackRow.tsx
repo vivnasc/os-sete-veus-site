@@ -1,7 +1,9 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
 import { useDownloads } from "@/hooks/useDownloads";
+import { useLibrary } from "@/hooks/useLibrary";
 import type { Album, AlbumTrack } from "@/data/albums";
 
 type Props = {
@@ -20,7 +22,10 @@ function fmt(s: number) {
 export default function TrackRow({ track, album, isActive }: Props) {
   const { playTrack, isPlaying, togglePlay } = useMusicPlayer();
   const { saveTrack, removeTrack, getSaveState, isSaved } = useDownloads();
+  const { isFavorite: isFav, toggleFavorite, userId } = useLibrary();
+  const router = useRouter();
   const albumColor = album.color || "#C9A96E";
+  const favorited = isFav(track.number, album.slug);
   const saveState = getSaveState(album.slug, track.number);
   const saved = isSaved(album.slug, track.number);
 
@@ -71,6 +76,21 @@ export default function TrackRow({ track, album, isActive }: Props) {
       <span className="text-[10px] px-1.5 py-0.5 rounded border border-white/10 text-[#666680] shrink-0">
         {track.lang}
       </span>
+
+      {/* Favorite heart */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          if (!userId) { router.push("/login"); return; }
+          toggleFavorite(track.number, album.slug);
+        }}
+        className={`p-1.5 shrink-0 transition-colors ${favorited ? "text-red-400" : "text-[#666680] hover:text-[#a0a0b0]"}`}
+        title={favorited ? "Remover dos favoritos" : "Favorito"}
+      >
+        <svg viewBox="0 0 24 24" fill={favorited ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+        </svg>
+      </button>
 
       {/* Save offline button */}
       <button

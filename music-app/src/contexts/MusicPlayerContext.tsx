@@ -4,6 +4,13 @@ import { createContext, useContext, useState, useRef, useCallback, useEffect, ty
 import type { Album, AlbumTrack } from "@/data/albums";
 import { getCachedAudioUrl } from "@/hooks/useDownloads";
 
+export function formatTime(s: number): string {
+  if (!isFinite(s) || s < 0) return "0:00";
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return `${m}:${sec.toString().padStart(2, "0")}`;
+}
+
 /**
  * Build the streaming proxy URL for a track.
  * Always routes through the proxy — even if audioUrl is null in the data,

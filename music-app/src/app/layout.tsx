@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     default: "Veus",
     template: "%s | Veus",
   },
-  description: "Musica original do universo Sete Veus. Streaming, letras e partilha.",
+  description: "Musica original do universo Sete Veus. Banda sonora para a tua transformacao.",
   metadataBase: new URL("https://veus.app"),
   manifest: "/manifest.json",
   icons: {
@@ -25,20 +25,11 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Veus",
-    description: "Musica original do universo Sete Veus. 35 albums, 200+ faixas.",
+    description: "Musica original do universo Sete Veus. Banda sonora para a tua transformacao.",
     siteName: "Veus",
     locale: "pt_PT",
     type: "website",
   },
-  manifest: "/manifest.json",
-};
-
-export const viewport: Viewport = {
-  themeColor: "#0D0D1A",
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
 };
 
 export const viewport: Viewport = {

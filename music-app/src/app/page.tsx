@@ -8,7 +8,7 @@ import NavBar from "@/components/music/NavBar";
 
 export const metadata = {
   title: "Veus",
-  description: "Musica original do universo Sete Veus. 35 albums, 200+ faixas.",
+  description: "Musica original do universo Sete Veus. Banda sonora para a tua transformacao.",
 };
 
 function allTracks(): { track: AlbumTrack; album: Album }[] {
@@ -70,7 +70,7 @@ export default function MusicHomePage() {
           />
           <p className="mt-3 text-base text-[#C9A96E] tracking-widest font-display">by Loranne</p>
           <p className="mt-2 text-sm text-[#666680] max-w-md">
-            Música original do universo Sete Véus. 35 álbums, 200+ faixas.
+            Cada faixa nasceu de um veu. Musica original para a tua transformacao.
           </p>
         </div>
       </div>
