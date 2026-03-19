@@ -1,13 +1,14 @@
 import { ALL_ALBUMS, type AlbumTrack, type Album } from "@/data/albums";
 import { GENEROS, MOODS, TEMAS, ALL_LISTS, resolveList } from "@/data/curated-lists";
 import AlbumCard from "@/components/music/AlbumCard";
+import FraseDoDia from "@/components/music/FraseDoDia";
 import Image from "next/image";
 import Link from "next/link";
 import NavBar from "@/components/music/NavBar";
 
 export const metadata = {
-  title: "Véus",
-  description: "Música original do universo Sete Véus. 35 álbums, 200+ faixas.",
+  title: "Veus",
+  description: "Musica original do universo Sete Veus. 35 albums, 200+ faixas.",
 };
 
 function allTracks(): { track: AlbumTrack; album: Album }[] {
@@ -76,7 +77,10 @@ export default function MusicHomePage() {
 
       <div className="max-w-screen-lg mx-auto px-6 space-y-14 pb-32">
 
-        {/* Quick picks — Géneros + Moods */}
+        {/* Frase do Dia */}
+        <FraseDoDia />
+
+        {/* Quick picks — Generos + Moods */}
         <section>
           <h2 className="font-display text-2xl font-semibold text-[#F5F0E6] mb-4">Explora por mood</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">

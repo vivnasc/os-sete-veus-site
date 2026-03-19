@@ -13,7 +13,7 @@ export default function ShareModal({ track, album, onClose }: Props) {
   const [copied, setCopied] = useState(false);
 
   const shareUrl = typeof window !== "undefined"
-    ? `${window.location.origin}/musica/album/${album.slug}?faixa=${track.number}`
+    ? `${window.location.origin}/album/${album.slug}?faixa=${track.number}`
     : "";
 
   const shareText = `"${track.title}" do album "${album.title}" — Véus`;

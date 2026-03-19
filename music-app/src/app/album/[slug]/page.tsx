@@ -4,15 +4,9 @@ import { use } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ALL_ALBUMS as ALBUMS } from "@/data/albums";
-import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
+import { useMusicPlayer, formatTime as fmt } from "@/contexts/MusicPlayerContext";
 import { getAlbumCover, getAlbumBadge } from "@/lib/album-covers";
 import TrackRow from "@/components/music/TrackRow";
-
-function fmt(s: number) {
-  const m = Math.floor(s / 60);
-  const sec = Math.floor(s % 60);
-  return `${m}:${sec.toString().padStart(2, "0")}`;
-}
 
 export default function AlbumPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);

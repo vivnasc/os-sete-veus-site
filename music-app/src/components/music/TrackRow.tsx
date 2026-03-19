@@ -1,6 +1,6 @@
 "use client";
 
-import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
+import { useMusicPlayer, formatTime as fmt } from "@/contexts/MusicPlayerContext";
 import type { Album, AlbumTrack } from "@/data/albums";
 
 type Props = {
@@ -8,13 +8,6 @@ type Props = {
   album: Album;
   isActive: boolean;
 };
-
-function fmt(s: number) {
-  if (!isFinite(s) || s < 0) return "0:00";
-  const m = Math.floor(s / 60);
-  const sec = Math.floor(s % 60);
-  return `${m}:${sec.toString().padStart(2, "0")}`;
-}
 
 export default function TrackRow({ track, album, isActive }: Props) {
   const { playTrack, isPlaying, togglePlay } = useMusicPlayer();

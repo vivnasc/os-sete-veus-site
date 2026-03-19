@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ALL_ALBUMS } from "@/data/albums";
 import type { Album, AlbumTrack } from "@/data/albums";
-import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
+import { useMusicPlayer, formatTime as fmt } from "@/contexts/MusicPlayerContext";
 import { useLibrary } from "@/hooks/useLibrary";
 
 // ─────────────────────────────────────────────
@@ -28,13 +28,6 @@ function timeAgo(iso: string) {
   if (hours < 24) return `ha ${hours}h`;
   const days = Math.floor(hours / 24);
   return `ha ${days}d`;
-}
-
-function fmt(s: number) {
-  if (!isFinite(s) || s < 0) return "0:00";
-  const m = Math.floor(s / 60);
-  const sec = Math.floor(s % 60);
-  return `${m}:${sec.toString().padStart(2, "0")}`;
 }
 
 // ─────────────────────────────────────────────
