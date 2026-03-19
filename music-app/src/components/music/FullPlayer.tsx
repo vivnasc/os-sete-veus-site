@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
@@ -46,13 +46,81 @@ export default function FullPlayer() {
   const { isFavorite, toggleFavorite, userId } = useLibrary();
   const router = useRouter();
 
+  // ── Browser back button support ──
+  // Push a history entry when the full player opens so that pressing
+  // the hardware/software back button closes the player instead of
+  // navigating away from the page.
+  const didPushState = useRef(false);
+
+  useEffect(() => {
+    if (showFullPlayer && currentTrack) {
+      if (!didPushState.current) {
+        window.history.pushState({ veusPlayer: true }, "");
+        didPushState.current = true;
+      }
+
+      function onPopState() {
+        setShowFullPlayer(false);
+      }
+      window.addEventListener("popstate", onPopState);
+      return () => window.removeEventListener("popstate", onPopState);
+    } else {
+      // If player closed programmatically (not via back), pop the extra entry
+      if (didPushState.current) {
+        didPushState.current = false;
+        // Only go back if we pushed the entry (check state)
+        if (window.history.state?.veusPlayer) {
+          window.history.back();
+        }
+      }
+    }
+  }, [showFullPlayer, currentTrack, setShowFullPlayer]);
+
+  // ── Swipe down to close ──
+  const touchStartY = useRef(0);
+  const touchDeltaY = useRef(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const onTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartY.current = e.touches[0].clientY;
+    touchDeltaY.current = 0;
+  }, []);
+
+  const onTouchMove = useCallback((e: React.TouchEvent) => {
+    touchDeltaY.current = e.touches[0].clientY - touchStartY.current;
+    // Apply visual drag effect
+    if (touchDeltaY.current > 0 && containerRef.current) {
+      const translate = Math.min(touchDeltaY.current * 0.5, 200);
+      containerRef.current.style.transform = `translateY(${translate}px)`;
+      containerRef.current.style.opacity = `${1 - translate / 400}`;
+    }
+  }, []);
+
+  const onTouchEnd = useCallback(() => {
+    if (containerRef.current) {
+      containerRef.current.style.transform = "";
+      containerRef.current.style.opacity = "";
+    }
+    // If swiped down more than 80px, close the player
+    if (touchDeltaY.current > 80) {
+      setShowFullPlayer(false);
+    }
+  }, [setShowFullPlayer]);
+
   if (!showFullPlayer || !currentTrack) return null;
 
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
   const albumColor = currentAlbum?.color || "#C9A96E";
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col" style={{ background: `linear-gradient(180deg, ${albumColor}22 0%, #0D0D1A 40%)` }}>
+    <div
+      ref={containerRef}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+      className="fixed inset-0 z-50 flex flex-col transition-[transform,opacity] duration-200 ease-out"
+      style={{ background: `linear-gradient(180deg, ${albumColor}22 0%, #0D0D1A 40%)` }}
+    >
       {/* Background glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full opacity-20 blur-[120px] pointer-events-none"
@@ -63,9 +131,10 @@ export default function FullPlayer() {
       <div className="relative z-10 flex items-center justify-between px-6 pt-safe-top py-4">
         <button
           onClick={() => setShowFullPlayer(false)}
-          className="p-2 -ml-2 text-[#a0a0b0] hover:text-[#F5F0E6] transition-colors"
+          className="p-3 -ml-3 text-[#a0a0b0] hover:text-[#F5F0E6] transition-colors active:bg-white/5 rounded-xl"
+          aria-label="Fechar player"
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-7 w-7">
             <path d="M19 9l-7 7-7-7" />
           </svg>
         </button>
