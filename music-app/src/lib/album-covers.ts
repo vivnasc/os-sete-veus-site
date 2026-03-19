@@ -44,6 +44,41 @@ const ESPELHO_COVERS: Record<number, string> = {
   7: "/poses/loranne8-02.png",   // Separacao — mao no rosto, veu a soltar
 };
 
+// Capa de cada No (distinta do Espelho correspondente)
+const NO_COVERS: Record<number, string> = {
+  1: "/poses/loranne6-01.png",   // Heranca — close-up introspectivo, olhar maternal
+  2: "/poses/loranne4-02.png",   // Silencio — coberta, misteriosa
+  3: "/poses/loranne3-02.png",   // Sacrificio — contemplativa, entrega
+  4: "/poses/loranne6-08.png",   // Vergonha — close-up, revelacao
+  5: "/poses/loranne4-08.png",   // Solidao — coberta, isolamento
+  6: "/poses/loranne5-05.png",   // Vazio — intima, vulneravel
+  7: "/poses/loranne8-04.png",   // Pertenca — revelacao final
+};
+
+// Capa de cada curso (explicita, sem colisoes)
+const CURSO_COVERS: Record<string, string> = {
+  "curso-ouro-proprio":    "/poses/coloridos-01.png",   // Ouro Proprio — cores, dourado
+  "curso-sangue-seda":     "/poses/loranne3-01.png",    // Sangue e Seda — contemplativa
+  "curso-arte-inteireza":  "/poses/loranne2-01.png",    // Arte da Inteireza — movimento
+  "curso-depois-fogo":     "/poses/velas-01.png",       // Depois do Fogo — velas, fogo
+  "curso-olhos-abertos":   "/poses/loranne4-01.png",    // Olhos Abertos — coberta, nevoeiro
+  "curso-pele-nua":        "/poses/loranne5-01.png",    // Pele Nua — intima, corpo
+  "curso-limite-sagrado":  "/poses/loranne2-05.png",    // Limite Sagrado — movimento, forca
+  "curso-flores-escuro":   "/poses/loranne3-07.png",    // Flores no Escuro — contemplacao profunda
+  "curso-peso-chao":       "/poses/loranne4-03.png",    // Peso e o Chao — coberta, peso
+  "curso-voz-dentro":      "/poses/loranne6-02.png",    // Voz de Dentro — close-up, voz
+  "curso-fio-invisivel":   "/poses/loranne5-04.png",    // Fio Invisivel — intima, ligacao
+  "curso-espelho-outro":   "/poses/loranne6-07.png",    // Espelho do Outro — close-up, reflexo
+  "curso-silencio-grita":  "/poses/loranne4-06.png",    // Silencio que Grita — coberta, silencio
+  "curso-teia":            "/poses/loranne3-03.png",    // Teia — contemplativa, ligacao
+  "curso-chama":           "/poses/velas-03.png",       // Chama — velas, fogo
+  "curso-mulher-mae":      "/poses/loranne5-06.png",    // Mulher Antes de Mae — intima
+  "curso-oficio-ser":      "/poses/loranne2-07.png",    // Oficio de Ser — movimento, trabalho
+  "curso-relogio":         "/poses/coloridos-03.png",   // Relogio Partido — cores, tempo
+  "curso-coroa":           "/poses/loranne7-03.png",    // Coroa Escondida — retrato refinado
+  "curso-fome":            "/poses/coloridos-05.png",   // Fome — cores, corpo
+};
+
 // Todas as poses disponiveis por serie (para rodar nos cursos e faixas)
 export const ALL_POSES = [
   // Hero
@@ -83,19 +118,21 @@ export const ALL_POSES = [
 ];
 
 export function getAlbumCover(album: Album): string {
-  if (album.veu && ESPELHO_COVERS[album.veu]) {
+  // Espelhos — pose fixa por veu
+  if (album.product === "espelho" && album.veu && ESPELHO_COVERS[album.veu]) {
     return ESPELHO_COVERS[album.veu];
   }
+  // Nos — pose distinta do espelho correspondente
+  if (album.product === "no" && album.veu && NO_COVERS[album.veu]) {
+    return NO_COVERS[album.veu];
+  }
+  // Livro filosofico
   if (album.product === "livro") {
     return "/poses/velas-02.png";
   }
-  if (album.product === "curso") {
-    // Rotate through all poses based on slug hash
-    let hash = 0;
-    for (let i = 0; i < album.slug.length; i++) {
-      hash = ((hash << 5) - hash + album.slug.charCodeAt(i)) | 0;
-    }
-    return ALL_POSES[Math.abs(hash) % ALL_POSES.length];
+  // Cursos — pose explicita por slug
+  if (album.product === "curso" && CURSO_COVERS[album.slug]) {
+    return CURSO_COVERS[album.slug];
   }
   return "/poses/loranne-hero.png";
 }
