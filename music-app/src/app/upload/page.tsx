@@ -2,8 +2,9 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
-import { ALL_ALBUMS as ALBUMS, type Album, type AlbumTrack } from "@/data/albums";
+import { ALL_ALBUMS as ALBUMS, type Album, type AlbumTrack, type TrackEnergy, ENERGY_LABELS } from "@/data/albums";
 import { supabase } from "@/lib/supabase";
+import { detectEnergyFromVersion, ENERGY_OPTIONS } from "@/lib/version-energy";
 
 const ADMIN_EMAIL = "viv.saraiva@gmail.com";
 
@@ -42,6 +43,7 @@ export default function UploadPage() {
   const [uploadStatuses, setUploadStatuses] = useState<Record<string, TrackUploadStatus>>({});
   const [filter, setFilter] = useState<string>("");
   const [versionName, setVersionName] = useState<string>("");
+  const [versionEnergy, setVersionEnergy] = useState<TrackEnergy | "">("");
   const [trackVersions, setTrackVersions] = useState<Record<string, TrackVersion[]>>({});
   const [showVersions, setShowVersions] = useState<string | null>(null);
   const fileInputRefs = useRef<Record<string, HTMLInputElement | null>>({});
@@ -129,6 +131,27 @@ export default function UploadPage() {
         [key]: { state: "done", progress: 100, url: data.url },
       }));
 
+      // Save version metadata if this is a named version
+      if (version) {
+        const track = album.tracks.find(t => trackKey(album.slug, t.number) === key);
+        const energy = versionEnergy || track?.energy || "whisper";
+        try {
+          await fetch("/api/admin/track-versions", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              album_slug: album.slug,
+              track_number: track?.number,
+              version_name: version,
+              energy,
+              audio_url: data.url,
+            }),
+          });
+        } catch {
+          // Version metadata save is best-effort
+        }
+      }
+
       // Reload versions
       await loadVersions(album.slug);
     } catch (err) {
@@ -138,7 +161,7 @@ export default function UploadPage() {
         [key]: { state: "error", progress: 0, error: msg },
       }));
     }
-  }, []);
+  }, [versionEnergy]);
 
   const handleFileSelect = useCallback((album: Album, track: AlbumTrack, files: FileList | null) => {
     if (!files || files.length === 0) return;
@@ -244,15 +267,56 @@ export default function UploadPage() {
               type="text"
               placeholder="Versao (ex: v2, remix)"
               value={versionName}
-              onChange={e => setVersionName(e.target.value.replace(/[^a-zA-Z0-9_-]/g, ""))}
+              onChange={e => {
+                const val = e.target.value.replace(/[^a-zA-Z0-9_-]/g, "");
+                setVersionName(val);
+                const detected = detectEnergyFromVersion(val);
+                if (detected) setVersionEnergy(detected);
+                else if (val === "") setVersionEnergy("");
+              }}
               className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-sm text-[#F5F0E6] placeholder-[#666680] focus:outline-none focus:border-[#C9A96E]/50"
             />
           </div>
         </div>
         {versionName && (
-          <p className="text-xs text-[#C9A96E] mt-2">
-            Os uploads serao guardados como versao "{versionName}" (ex: faixa-01-{versionName}.mp3)
-          </p>
+          <div className="mt-3 space-y-2">
+            <p className="text-xs text-[#C9A96E]">
+              Os uploads serao guardados como versao "{versionName}" (ex: faixa-01-{versionName}.mp3)
+            </p>
+
+            {/* Energy picker for version */}
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-[#666680]">Energia da versao:</span>
+              <div className="flex gap-1.5">
+                {ENERGY_OPTIONS.map(opt => (
+                  <button
+                    key={opt.value}
+                    onClick={() => setVersionEnergy(opt.value)}
+                    className={`px-2.5 py-1 rounded-lg text-xs transition-colors border ${
+                      versionEnergy === opt.value
+                        ? "border-[#C9A96E] text-[#F5F0E6] bg-[#C9A96E]/20"
+                        : "border-white/10 text-[#666680] hover:text-[#a0a0b0] hover:bg-white/5"
+                    }`}
+                  >
+                    {ENERGY_LABELS[opt.value].emoji} {opt.label}
+                  </button>
+                ))}
+              </div>
+              {versionEnergy && (
+                <button
+                  onClick={() => setVersionEnergy("")}
+                  className="text-[10px] text-[#666680] hover:text-[#a0a0b0]"
+                >
+                  limpar
+                </button>
+              )}
+            </div>
+            {!versionEnergy && (
+              <p className="text-[10px] text-[#666680]">
+                Sem energia? Usa a energia original da faixa.
+              </p>
+            )}
+          </div>
         )}
       </div>
 
