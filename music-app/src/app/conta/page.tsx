@@ -5,11 +5,13 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { useLibrary } from "@/hooks/useLibrary";
+import { useSubscriptionGate } from "@/contexts/SubscriptionContext";
 import NavBar from "@/components/music/NavBar";
 
 export default function ContaPage() {
   const router = useRouter();
   const { userId, favorites, recents } = useLibrary();
+  const { status: subStatus, isPremium, requestPlay } = useSubscriptionGate();
   const [email, setEmail] = useState<string | null>(null);
 
   useEffect(() => {
@@ -38,6 +40,27 @@ export default function ContaPage() {
         <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5 mb-4">
           <p className="text-xs text-[#666680] mb-1">Email</p>
           <p className="text-sm text-[#F5F0E6]">{email || "..."}</p>
+        </div>
+
+        {/* Subscription */}
+        <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5 mb-4">
+          <p className="text-xs text-[#666680] mb-1">Subscricao</p>
+          {isPremium ? (
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-green-400" />
+              <p className="text-sm text-[#F5F0E6]">Veus Music — Activa</p>
+            </div>
+          ) : (
+            <div>
+              <p className="text-sm text-[#a0a0b0] mb-2">Plano gratuito — 1 faixa por album</p>
+              <button
+                onClick={() => requestPlay(2, undefined, "#C9A96E")}
+                className="text-sm text-[#C9A96E] hover:underline"
+              >
+                Subscrever Veus Music
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Stats */}
