@@ -13,11 +13,7 @@ import {
   type TrackFlavor,
 } from "@/data/albums";
 
-const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
-
 type TrackStatus = "idle" | "uploading" | "done" | "error" | "generating" | "polling";
-
-type CloneStatus = "idle" | "separating" | "converting" | "mixing" | "done" | "error";
 
 type SunoClip = {
   id: string;
@@ -28,16 +24,6 @@ type SunoClip = {
 
 type GeneratedClips = {
   clips: SunoClip[];
-  selectedIndex: number;
-};
-
-type CloneResult = {
-  status: CloneStatus;
-  error?: string;
-  vocalUrl?: string;
-  backingUrl?: string;
-  convertedVocalUrl?: string;
-  mixedUrl?: string;
 };
 
 function trackKey(albumSlug: string, trackNum: number) {
@@ -67,7 +53,7 @@ function ProductFilter({
           onClick={() => onChange(t.key)}
           className={`rounded-full px-4 py-2 text-xs font-sans uppercase tracking-wider transition-colors ${
             active === t.key
-              ? "bg-mundo-bg-light text-mundo-creme shadow-sm"
+              ? "bg-mundo-bg text-mundo-creme shadow-sm"
               : "text-mundo-muted hover:text-mundo-creme"
           }`}
         >
@@ -79,7 +65,6 @@ function ProductFilter({
 }
 
 function TrackRow({
-  album,
   track,
   status,
   error,
@@ -87,29 +72,25 @@ function TrackRow({
   onRemove,
   onGenerate,
   onApproveClip,
-  onClone,
-  onApproveClone,
   audioUrl,
   generatedClips,
-  cloneResult,
+  editedTitle,
+  onTitleChange,
 }: {
-  album: Album;
   track: AlbumTrack;
   status: TrackStatus;
   error: string | null;
   onUpload: (file: File) => void;
   onRemove: () => void;
   onGenerate: () => void;
-  onApproveClip: (clipUrl: string) => void;
-  onClone: (clipUrl: string) => void;
-  onApproveClone: () => void;
+  onApproveClip: (clipUrl: string, sunoTitle: string) => void;
   audioUrl: string | null;
   generatedClips: GeneratedClips | null;
-  cloneResult: CloneResult | null;
+  editedTitle: string | null;
+  onTitleChange: (title: string) => void;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [showLyrics, setShowLyrics] = useState(false);
-  const [selectedClipIdx, setSelectedClipIdx] = useState(0);
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -119,6 +100,7 @@ function TrackRow({
   const isGenerating = status === "generating" || status === "polling";
   const hasClips = generatedClips && generatedClips.clips.length > 0;
   const clipsReady = hasClips && generatedClips.clips.every(c => c.audioUrl);
+  const displayTitle = editedTitle ?? track.title;
 
   return (
     <div className="rounded-lg border border-mundo-muted-dark/30 bg-mundo-bg-light px-5 py-4">
@@ -127,9 +109,22 @@ function TrackRow({
           {String(track.number).padStart(2, "0")}
         </div>
         <div className="min-w-0 flex-1">
+          {/* Editable title */}
+          <div className="flex items-center gap-2 mb-1">
+            <input
+              type="text"
+              value={displayTitle}
+              onChange={(e) => onTitleChange(e.target.value)}
+              className="bg-transparent font-medium text-mundo-creme border-b border-transparent hover:border-mundo-muted-dark/30 focus:border-mundo-dourado focus:outline-none px-0 py-0.5 min-w-0 flex-1 max-w-xs"
+            />
+            {editedTitle && editedTitle !== track.title && (
+              <span className="rounded px-1.5 py-0.5 text-[10px] bg-mundo-dourado/20 text-mundo-dourado">
+                editado
+              </span>
+            )}
+          </div>
           <div className="flex items-center gap-2">
-            <p className="font-medium text-mundo-creme">{track.title}</p>
-            <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${track.lang === "PT" ? "bg-mundo-muted-dark/15 text-mundo-muted" : "bg-violet-100 text-violet-600"}`}>{track.lang}</span>
+            <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${track.lang === "PT" ? "bg-mundo-muted-dark/15 text-mundo-muted" : "bg-violet-900/30 text-violet-400"}`}>{track.lang}</span>
             {track.energy && (
               <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${ENERGY_LABELS[track.energy].color}`}>
                 {ENERGY_LABELS[track.energy].emoji} {ENERGY_LABELS[track.energy].label}
@@ -141,24 +136,29 @@ function TrackRow({
               </span>
             )}
             {track.lyrics && (
-              <span className="rounded px-1.5 py-0.5 text-[10px] bg-green-50 text-green-600">
+              <span className="rounded px-1.5 py-0.5 text-[10px] bg-green-900/30 text-green-400">
                 Letra
               </span>
             )}
           </div>
-          <p className="text-sm text-mundo-muted">{track.description}</p>
-          <p className="mt-1 text-xs text-mundo-muted/50">
-            ~{Math.floor(track.durationSeconds / 60)}:{String(track.durationSeconds % 60).padStart(2, "0")} min
-          </p>
+          <p className="text-sm text-mundo-muted mt-0.5">{track.description}</p>
 
           {/* Prompt */}
           <details className="mt-2">
             <summary className="cursor-pointer text-xs text-mundo-muted/60 hover:text-mundo-muted">
               Ver prompt
             </summary>
-            <p className="mt-1 rounded bg-mundo-bg p-2 font-mono text-xs text-mundo-muted/80">
-              {track.prompt}
-            </p>
+            <div className="mt-1 relative group/prompt">
+              <button
+                onClick={() => { navigator.clipboard.writeText(track.prompt); }}
+                className="absolute top-1.5 right-1.5 rounded bg-mundo-muted-dark/20 px-2 py-1 text-[10px] text-mundo-muted opacity-0 group-hover/prompt:opacity-100 transition hover:bg-mundo-muted-dark/40"
+              >
+                Copiar
+              </button>
+              <p className="rounded bg-mundo-bg p-2 pr-16 font-mono text-xs text-mundo-muted/80">
+                {track.prompt}
+              </p>
+            </div>
           </details>
 
           {/* Lyrics */}
@@ -167,9 +167,17 @@ function TrackRow({
               <summary className="cursor-pointer text-xs text-mundo-muted/60 hover:text-mundo-muted">
                 Ver letra
               </summary>
-              <pre className="mt-1 whitespace-pre-wrap rounded bg-mundo-bg p-3 font-mono text-xs text-mundo-muted/80 leading-relaxed max-h-64 overflow-y-auto">
-                {track.lyrics}
-              </pre>
+              <div className="mt-1 relative group/lyrics">
+                <button
+                  onClick={() => { navigator.clipboard.writeText(track.lyrics); }}
+                  className="absolute top-1.5 right-1.5 rounded bg-mundo-muted-dark/20 px-2 py-1 text-[10px] text-mundo-muted opacity-0 group-hover/lyrics:opacity-100 transition hover:bg-mundo-muted-dark/40"
+                >
+                  Copiar
+                </button>
+                <pre className="whitespace-pre-wrap rounded bg-mundo-bg p-3 pr-16 font-mono text-xs text-mundo-muted/80 leading-relaxed max-h-64 overflow-y-auto">
+                  {track.lyrics}
+                </pre>
+              </div>
             </details>
           )}
 
@@ -180,43 +188,22 @@ function TrackRow({
             <audio controls src={audioUrl} className="mt-2 h-8 w-full max-w-xs" />
           )}
 
-          {/* Generated clips preview */}
-          {clipsReady && !cloneResult?.mixedUrl && (
-            <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50/50 p-3">
-              <p className="mb-2 text-xs font-medium text-amber-800">
-                {generatedClips.clips.length} versao(oes) gerada(s) — ouve e escolhe:
+          {/* Generated clips — pick and approve */}
+          {clipsReady && (
+            <div className="mt-3 rounded-lg border border-amber-700/30 bg-amber-950/30 p-3">
+              <p className="mb-2 text-xs font-medium text-amber-400">
+                {generatedClips.clips.length} versao(oes) gerada(s) — ouve e aprova:
               </p>
               <div className="space-y-2">
-                {generatedClips.clips.map((clip, idx) => (
+                {generatedClips.clips.map((clip) => (
                   <div key={clip.id} className="flex items-center gap-3">
-                    <button
-                      onClick={() => setSelectedClipIdx(idx)}
-                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold transition ${
-                        selectedClipIdx === idx
-                          ? "bg-mundo-dourado text-white"
-                          : "bg-mundo-muted-dark/10 text-mundo-muted hover:bg-mundo-muted-dark/20"
-                      }`}
-                    >
-                      {idx + 1}
-                    </button>
                     <audio controls src={clip.audioUrl!} className="h-8 flex-1" />
-                    <div className="flex gap-1">
-                      <button
-                        onClick={() => onClone(clip.audioUrl!)}
-                        disabled={cloneResult?.status === "separating" || cloneResult?.status === "converting"}
-                        className="rounded-lg bg-violet-600 px-3 py-1.5 text-xs text-white transition hover:bg-violet-700 disabled:opacity-50"
-                        title="Separar vocal + aplicar clone da Vivianne"
-                      >
-                        Aplicar clone
-                      </button>
-                      <button
-                        onClick={() => onApproveClip(clip.audioUrl!)}
-                        className="rounded-lg bg-mundo-muted-dark/20 px-3 py-1.5 text-xs text-mundo-muted transition hover:bg-mundo-muted-dark/30"
-                        title="Aprovar sem clone (voz IA original)"
-                      >
-                        Sem clone
-                      </button>
-                    </div>
+                    <button
+                      onClick={() => onApproveClip(clip.audioUrl!, clip.title)}
+                      className="shrink-0 rounded-lg bg-mundo-dourado px-3 py-1.5 text-xs text-white transition hover:bg-mundo-dourado/80"
+                    >
+                      Aprovar
+                    </button>
                   </div>
                 ))}
               </div>
@@ -229,54 +216,11 @@ function TrackRow({
             </div>
           )}
 
-          {/* Clone progress */}
-          {cloneResult && cloneResult.status !== "idle" && cloneResult.status !== "done" && cloneResult.status !== "error" && (
-            <div className="mt-3 flex items-center gap-2 rounded-lg bg-violet-50 p-3">
-              <div className="h-4 w-4 animate-spin rounded-full border-2 border-violet-400 border-t-transparent" />
-              <span className="text-xs text-violet-700">
-                {cloneResult.status === "separating" && "A separar vocal do instrumental (Kits.ai)..."}
-                {cloneResult.status === "converting" && "A aplicar clone vocal da Vivianne (Kits.ai)..."}
-                {cloneResult.status === "mixing" && "A misturar vocal + instrumental..."}
-              </span>
-            </div>
-          )}
-
-          {/* Clone error */}
-          {cloneResult?.status === "error" && (
-            <p className="mt-2 text-xs text-red-500">Clone: {cloneResult.error}</p>
-          )}
-
-          {/* Clone result — preview and approve */}
-          {cloneResult?.mixedUrl && (
-            <div className="mt-3 rounded-lg border border-violet-200 bg-violet-50/50 p-3">
-              <p className="mb-2 text-xs font-medium text-violet-800">
-                Clone aplicado — ouve o resultado:
-              </p>
-              <audio controls src={cloneResult.mixedUrl} className="mb-2 h-8 w-full max-w-sm" />
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={onApproveClone}
-                  className="rounded-lg bg-mundo-dourado px-4 py-1.5 text-xs text-white transition hover:bg-mundo-dourado/80"
-                >
-                  Aprovar com clone
-                </button>
-                {clipsReady && (
-                  <button
-                    onClick={() => onClone(generatedClips!.clips[selectedClipIdx].audioUrl!)}
-                    className="text-xs text-mundo-muted hover:text-mundo-creme"
-                  >
-                    Tentar de novo
-                  </button>
-                )}
-              </div>
-            </div>
-          )}
-
           {/* Polling indicator */}
           {isGenerating && !clipsReady && (
-            <div className="mt-3 flex items-center gap-2 rounded-lg bg-amber-50 p-3">
+            <div className="mt-3 flex items-center gap-2 rounded-lg bg-amber-950/30 p-3">
               <div className="h-4 w-4 animate-spin rounded-full border-2 border-amber-400 border-t-transparent" />
-              <span className="text-xs text-amber-700">
+              <span className="text-xs text-amber-400">
                 {status === "generating" ? "A enviar para o Suno..." : "A aguardar geracao (pode demorar 30-60s)..."}
               </span>
             </div>
@@ -298,7 +242,7 @@ function TrackRow({
             <button
               onClick={onGenerate}
               disabled={!track.lyrics}
-              title={!track.lyrics ? "Letra em falta — adiciona a letra primeiro" : "Gerar musica via Suno API"}
+              title={!track.lyrics ? "Letra em falta" : "Gerar via Suno"}
               className={`rounded-lg px-4 py-2 text-xs transition ${
                 !track.lyrics
                   ? "bg-mundo-muted-dark/10 text-mundo-muted/40 cursor-not-allowed"
@@ -314,7 +258,7 @@ function TrackRow({
             audioUrl ? (
               <button
                 onClick={onRemove}
-                className="rounded-lg bg-red-50 px-3 py-1.5 text-xs text-red-600 transition hover:bg-red-100"
+                className="rounded-lg bg-red-900/30 px-3 py-1.5 text-xs text-red-400 transition hover:bg-red-900/50"
               >
                 Remover
               </button>
@@ -323,18 +267,12 @@ function TrackRow({
                 onClick={() => inputRef.current?.click()}
                 disabled={status === "uploading"}
                 className={`rounded-lg px-4 py-2 text-xs transition ${
-                  status === "done"
-                    ? "bg-mundo-muted-dark/20 text-mundo-muted"
-                    : status === "uploading"
-                    ? "animate-pulse bg-amber-50 text-amber-600"
-                    : "bg-mundo-dourado text-white hover:bg-mundo-dourado/80"
+                  status === "uploading"
+                    ? "animate-pulse bg-amber-900/30 text-amber-400"
+                    : "bg-mundo-muted-dark/20 text-mundo-muted hover:bg-mundo-muted-dark/30"
                 }`}
               >
-                {status === "uploading"
-                  ? "A enviar..."
-                  : status === "done"
-                  ? "Enviado"
-                  : "Carregar MP3"}
+                {status === "uploading" ? "A enviar..." : "Carregar MP3"}
               </button>
             )
           )}
@@ -345,8 +283,6 @@ function TrackRow({
 }
 
 export default function AlbumProductionPage() {
-  const [isAdmin] = useState(true); // No auth in music app — admin-only route
-
   const [filter, setFilter] = useState("all");
   const [viewMode, setViewMode] = useState<"producao" | "letras">("producao");
   const [selectedAlbum, setSelectedAlbum] = useState<string | null>(null);
@@ -354,24 +290,16 @@ export default function AlbumProductionPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [audioUrls, setAudioUrls] = useState<Record<string, string>>({});
   const [generatedClips, setGeneratedClips] = useState<Record<string, GeneratedClips>>({});
-  const [cloneResults, setCloneResults] = useState<Record<string, CloneResult>>({});
-  const [voiceModels, setVoiceModels] = useState<{ id: string | number; title: string; status: string }[]>([]);
-  const [selectedVoiceModel, setSelectedVoiceModel] = useState<string>("");
-  const [voiceModelsLoading, setVoiceModelsLoading] = useState(false);
-  const [voiceModelsError, setVoiceModelsError] = useState("");
+  const [editedTitles, setEditedTitles] = useState<Record<string, string>>({});
   const pollingRef = useRef<Record<string, NodeJS.Timeout>>({});
-  const clonePollingRef = useRef<Record<string, NodeJS.Timeout>>({});
 
-  // Cleanup polling on unmount
   useEffect(() => {
     return () => {
       Object.values(pollingRef.current).forEach(clearInterval);
-      Object.values(clonePollingRef.current).forEach(clearInterval);
     };
   }, []);
 
   const pollStatus = useCallback((key: string, clipIds: string[]) => {
-    // Clear any existing polling for this key
     if (pollingRef.current[key]) {
       clearInterval(pollingRef.current[key]);
     }
@@ -394,18 +322,17 @@ export default function AlbumProductionPage() {
 
           setGeneratedClips((g) => ({
             ...g,
-            [key]: { clips: data.clips, selectedIndex: 0 },
+            [key]: { clips: data.clips },
           }));
           setStatuses((s) => ({ ...s, [key]: "idle" }));
         }
       } catch {
-        // Keep polling — transient errors are normal
+        // transient
       }
     }, 5000);
 
     pollingRef.current[key] = interval;
 
-    // Stop after 5 minutes
     setTimeout(() => {
       if (pollingRef.current[key]) {
         clearInterval(pollingRef.current[key]);
@@ -414,12 +341,10 @@ export default function AlbumProductionPage() {
           if (s[key] === "polling") return { ...s, [key]: "error" };
           return s;
         });
-        setErrors((e) => ({ ...e, [key]: "Timeout — a geracao demorou demasiado. Tenta de novo." }));
+        setErrors((e) => ({ ...e, [key]: "Timeout — tenta de novo." }));
       }
     }, 5 * 60 * 1000);
   }, []);
-
-
 
   const albums =
     filter === "all"
@@ -436,271 +361,6 @@ export default function AlbumProductionPage() {
     (s, a) => s + a.tracks.filter((t) => t.lyrics).length,
     0
   );
-
-  // --- Voice clone pipeline ---
-  async function cloneTrack(albumSlug: string, track: AlbumTrack, clipAudioUrl: string) {
-    const key = trackKey(albumSlug, track.number);
-    setCloneResults((r) => ({ ...r, [key]: { status: "separating" } }));
-
-    try {
-      // Step 1: Separate vocals from instrumental
-      const sepRes = await fetch("/api/admin/kitsai/separate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ audioUrl: clipAudioUrl }),
-      });
-
-      if (!sepRes.ok) {
-        const data = await sepRes.json().catch(() => ({ erro: `HTTP ${sepRes.status}` }));
-        throw new Error(data.erro || `Separacao falhou: ${sepRes.status}`);
-      }
-
-      const sepData = await sepRes.json();
-      const sepJobId = sepData.jobId;
-
-      // Poll separation status
-      const sepResult = await pollKitsJob(key, "separation", sepJobId);
-      const vocalUrl = sepResult.vocalUrl as string | undefined;
-      const backingUrl = sepResult.backingUrl as string | undefined;
-      if (!vocalUrl || !backingUrl) {
-        throw new Error("Separacao nao retornou vocal ou instrumental.");
-      }
-
-      setCloneResults((r) => ({
-        ...r,
-        [key]: { status: "converting" as const, vocalUrl, backingUrl },
-      }));
-
-      // Step 2: Convert vocal to Vivianne's voice
-      const convBody: Record<string, unknown> = { vocalUrl };
-      if (selectedVoiceModel) convBody.voiceModelId = Number(selectedVoiceModel);
-      const convRes = await fetch("/api/admin/kitsai/convert", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(convBody),
-      });
-
-      if (!convRes.ok) {
-        const data = await convRes.json().catch(() => ({ erro: `HTTP ${convRes.status}` }));
-        throw new Error(data.erro || `Conversao falhou: ${convRes.status}`);
-      }
-
-      const convData = await convRes.json();
-      const convJobId = convData.jobId;
-
-      // Poll conversion status
-      const convResult = await pollKitsJob(key, "conversion", convJobId);
-      const convertedVocalUrl = convResult.outputUrl as string | undefined;
-      if (!convertedVocalUrl) {
-        throw new Error("Conversao nao retornou URL do vocal convertido.");
-      }
-
-      setCloneResults((r) => ({
-        ...r,
-        [key]: {
-          status: "mixing" as const,
-          vocalUrl,
-          backingUrl,
-          convertedVocalUrl,
-        },
-      }));
-
-      // Step 3: Mix in browser via Web Audio API
-      const mixedUrl = await mixAudioInBrowser(convertedVocalUrl, backingUrl);
-
-      setCloneResults((r) => ({
-        ...r,
-        [key]: {
-          status: "done" as const,
-          vocalUrl,
-          backingUrl,
-          convertedVocalUrl,
-          mixedUrl,
-        },
-      }));
-    } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : String(err);
-      setCloneResults((r) => ({
-        ...r,
-        [key]: { status: "error", error: msg },
-      }));
-    }
-  }
-
-  function pollKitsJob(
-    key: string,
-    type: "separation" | "conversion",
-    jobId: string
-  ): Promise<Record<string, string | null>> {
-    return new Promise((resolve, reject) => {
-      const pollKey = `${key}-${type}`;
-
-      if (clonePollingRef.current[pollKey]) {
-        clearInterval(clonePollingRef.current[pollKey]);
-      }
-
-      const startTime = Date.now();
-      const maxWait = 5 * 60 * 1000; // 5 min
-
-      const interval = setInterval(async () => {
-        try {
-          if (Date.now() - startTime > maxWait) {
-            clearInterval(interval);
-            delete clonePollingRef.current[pollKey];
-            reject(new Error(`Timeout na ${type} (Kits.ai).`));
-            return;
-          }
-
-          const res = await fetch(`/api/admin/kitsai/status?type=${type}&id=${jobId}`);
-          if (!res.ok) return; // transient error, keep polling
-
-          const data = await res.json();
-          if (data.erro) return;
-
-          if (data.status === "complete" || data.status === "success") {
-            clearInterval(interval);
-            delete clonePollingRef.current[pollKey];
-            resolve(data);
-          } else if (data.status === "error" || data.status === "failed") {
-            clearInterval(interval);
-            delete clonePollingRef.current[pollKey];
-            reject(new Error(`Kits.ai ${type} falhou.`));
-          }
-        } catch {
-          // transient, keep polling
-        }
-      }, 4000);
-
-      clonePollingRef.current[pollKey] = interval;
-    });
-  }
-
-  async function mixAudioInBrowser(vocalUrl: string, backingUrl: string): Promise<string> {
-    const audioCtx = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
-
-    const [vocalBuf, backingBuf] = await Promise.all([
-      fetch(vocalUrl).then((r) => r.arrayBuffer()).then((b) => audioCtx.decodeAudioData(b)),
-      fetch(backingUrl).then((r) => r.arrayBuffer()).then((b) => audioCtx.decodeAudioData(b)),
-    ]);
-
-    const duration = Math.max(vocalBuf.duration, backingBuf.duration);
-    const sampleRate = audioCtx.sampleRate;
-    const channels = 2;
-    const offlineCtx = new OfflineAudioContext(channels, Math.ceil(duration * sampleRate), sampleRate);
-
-    const vocalSource = offlineCtx.createBufferSource();
-    vocalSource.buffer = vocalBuf;
-    const vocalGain = offlineCtx.createGain();
-    vocalGain.gain.value = 0.85;
-    vocalSource.connect(vocalGain).connect(offlineCtx.destination);
-
-    const backingSource = offlineCtx.createBufferSource();
-    backingSource.buffer = backingBuf;
-    const backingGain = offlineCtx.createGain();
-    backingGain.gain.value = 1.0;
-    backingSource.connect(backingGain).connect(offlineCtx.destination);
-
-    vocalSource.start(0);
-    backingSource.start(0);
-
-    const renderedBuffer = await offlineCtx.startRendering();
-
-    // Encode as WAV and create blob URL
-    const wavBlob = audioBufferToWav(renderedBuffer);
-    const url = URL.createObjectURL(wavBlob);
-
-    audioCtx.close();
-    return url;
-  }
-
-  function audioBufferToWav(buffer: AudioBuffer): Blob {
-    const numChannels = buffer.numberOfChannels;
-    const sampleRate = buffer.sampleRate;
-    const length = buffer.length * numChannels * 2;
-    const arrayBuffer = new ArrayBuffer(44 + length);
-    const view = new DataView(arrayBuffer);
-
-    function writeString(offset: number, str: string) {
-      for (let i = 0; i < str.length; i++) {
-        view.setUint8(offset + i, str.charCodeAt(i));
-      }
-    }
-
-    writeString(0, "RIFF");
-    view.setUint32(4, 36 + length, true);
-    writeString(8, "WAVE");
-    writeString(12, "fmt ");
-    view.setUint32(16, 16, true);
-    view.setUint16(20, 1, true);
-    view.setUint16(22, numChannels, true);
-    view.setUint32(24, sampleRate, true);
-    view.setUint32(28, sampleRate * numChannels * 2, true);
-    view.setUint16(32, numChannels * 2, true);
-    view.setUint16(34, 16, true);
-    writeString(36, "data");
-    view.setUint32(40, length, true);
-
-    let offset = 44;
-    for (let i = 0; i < buffer.length; i++) {
-      for (let ch = 0; ch < numChannels; ch++) {
-        const sample = Math.max(-1, Math.min(1, buffer.getChannelData(ch)[i]));
-        view.setInt16(offset, sample < 0 ? sample * 0x8000 : sample * 0x7fff, true);
-        offset += 2;
-      }
-    }
-
-    return new Blob([arrayBuffer], { type: "audio/wav" });
-  }
-
-  async function approveClone(albumSlug: string, track: AlbumTrack) {
-    const key = trackKey(albumSlug, track.number);
-    const clone = cloneResults[key];
-    if (!clone?.mixedUrl) return;
-
-    setStatuses((s) => ({ ...s, [key]: "uploading" }));
-
-    try {
-      // Fetch the mixed blob from the object URL
-      const mixedRes = await fetch(clone.mixedUrl);
-      const blob = await mixedRes.blob();
-
-      const formData = new FormData();
-      formData.append("file", new File([blob], "mixed.mp3", { type: "audio/mpeg" }));
-      formData.append("albumSlug", albumSlug);
-      formData.append("trackNumber", String(track.number));
-
-      const uploadRes = await fetch("/api/admin/kitsai/mix", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!uploadRes.ok) {
-        const data = await uploadRes.json().catch(() => ({ erro: `HTTP ${uploadRes.status}` }));
-        throw new Error(data.erro || `Erro ${uploadRes.status}`);
-      }
-
-      const data = await uploadRes.json();
-      setStatuses((s) => ({ ...s, [key]: "done" }));
-      setAudioUrls((u) => ({ ...u, [key]: data.url }));
-      setGeneratedClips((g) => {
-        const copy = { ...g };
-        delete copy[key];
-        return copy;
-      });
-      setCloneResults((r) => {
-        const copy = { ...r };
-        delete copy[key];
-        return copy;
-      });
-
-      // Cleanup object URL
-      URL.revokeObjectURL(clone.mixedUrl);
-    } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : "Erro desconhecido";
-      setStatuses((s) => ({ ...s, [key]: "error" }));
-      setErrors((e) => ({ ...e, [key]: msg }));
-    }
-  }
 
   async function generateTrack(albumSlug: string, track: AlbumTrack) {
     const key = trackKey(albumSlug, track.number);
@@ -719,7 +379,7 @@ export default function AlbumProductionPage() {
         body: JSON.stringify({
           prompt: track.prompt,
           lyrics: track.lyrics,
-          title: track.title,
+          title: editedTitles[key] || track.title,
           instrumental: false,
         }),
       });
@@ -735,17 +395,15 @@ export default function AlbumProductionPage() {
       }
 
       const clipIds = data.clips.map((c: SunoClip) => c.id);
-
-      // Check if clips are already ready (wait_audio was true)
       const allReady = data.clips.every((c: SunoClip) => c.audioUrl);
+
       if (allReady) {
         setGeneratedClips((g) => ({
           ...g,
-          [key]: { clips: data.clips, selectedIndex: 0 },
+          [key]: { clips: data.clips },
         }));
         setStatuses((s) => ({ ...s, [key]: "idle" }));
       } else {
-        // Start polling
         pollStatus(key, clipIds);
       }
     } catch (err: unknown) {
@@ -755,14 +413,18 @@ export default function AlbumProductionPage() {
     }
   }
 
-  async function approveClip(albumSlug: string, track: AlbumTrack, clipAudioUrl: string) {
+  async function approveClip(albumSlug: string, track: AlbumTrack, clipAudioUrl: string, sunoTitle: string) {
     const key = trackKey(albumSlug, track.number);
     setStatuses((s) => ({ ...s, [key]: "uploading" }));
 
+    // If Suno gave a better title, save it
+    if (sunoTitle && sunoTitle !== track.title && !editedTitles[key]) {
+      setEditedTitles((t) => ({ ...t, [key]: sunoTitle }));
+    }
+
     try {
-      // Download the clip audio and upload to Supabase
       const audioRes = await fetch(clipAudioUrl);
-      if (!audioRes.ok) throw new Error("Erro ao descarregar o audio do Suno.");
+      if (!audioRes.ok) throw new Error("Erro ao descarregar o audio.");
       const blob = await audioRes.blob();
 
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}.mp3`;
@@ -851,7 +513,7 @@ export default function AlbumProductionPage() {
             Producao de Albums
           </h1>
           <p className="mt-1 text-mundo-muted">
-            Contemporaneo organico-electronico — voz feminina com letra, PT e EN.
+            Gera via Suno, ouve, edita o titulo, aprova.
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-4">
             <span className="rounded-full bg-mundo-muted-dark/10 px-3 py-1 text-xs text-mundo-muted">
@@ -863,10 +525,9 @@ export default function AlbumProductionPage() {
             <span className="rounded-full bg-mundo-muted-dark/10 px-3 py-1 text-xs text-mundo-muted">
               {totalDone}/{totalTracks} carregadas
             </span>
-            <span className="rounded-full bg-green-50 px-3 py-1 text-xs text-green-700">
+            <span className="rounded-full bg-green-900/30 px-3 py-1 text-xs text-green-400">
               {totalWithLyrics}/{totalTracks} com letra
             </span>
-            {/* Energy distribution */}
             {(["whisper", "steady", "pulse", "anthem", "raw"] as TrackEnergy[]).map((e) => {
               const count = ALL_ALBUMS.reduce(
                 (s, a) => s + a.tracks.filter((t) => t.energy === e).length,
@@ -878,7 +539,6 @@ export default function AlbumProductionPage() {
                 </span>
               ) : null;
             })}
-            {/* Flavor distribution */}
             {(["marrabenta", "house", "gospel"] as TrackFlavor[]).map((f) => {
               const count = ALL_ALBUMS.reduce(
                 (s, a) => s + a.tracks.filter((t) => t.flavor === f).length,
@@ -895,87 +555,6 @@ export default function AlbumProductionPage() {
       </div>
 
       <div className="mx-auto max-w-5xl px-6 py-10">
-        {/* Pipeline info */}
-        <div className="mb-8 rounded-xl border border-mundo-muted-dark/30 bg-mundo-bg-light p-6 text-sm text-mundo-muted space-y-2">
-          <p className="font-medium text-mundo-creme">Pipeline de producao</p>
-          <div className="grid gap-3 sm:grid-cols-3">
-            <div className="rounded-lg bg-violet-50 p-3">
-              <p className="mb-1 text-xs font-medium text-violet-700">Via Suno + Clone (recomendado)</p>
-              <p className="text-xs text-violet-600">1. "Gerar via Suno" — gera musica</p>
-              <p className="text-xs text-violet-600">2. "Aplicar clone" — separa stems + converte vocal (Kits.ai)</p>
-              <p className="text-xs text-violet-600">3. Ouve e aprova — vai para o Supabase</p>
-            </div>
-            <div className="rounded-lg bg-amber-50 p-3">
-              <p className="mb-1 text-xs font-medium text-amber-700">Via Suno sem clone</p>
-              <p className="text-xs text-amber-600">1. "Gerar via Suno" na faixa</p>
-              <p className="text-xs text-amber-600">2. "Sem clone" — usa voz IA original</p>
-              <p className="text-xs text-amber-600">3. Vai directo para o Supabase</p>
-            </div>
-            <div className="rounded-lg bg-mundo-muted-dark/5 p-3">
-              <p className="mb-1 text-xs font-medium text-mundo-muted">Via upload manual</p>
-              <p className="text-xs text-mundo-muted/80">1. Gera externamente</p>
-              <p className="text-xs text-mundo-muted/80">2. Processa o clone manualmente</p>
-              <p className="text-xs text-mundo-muted/80">3. Carrega o MP3 aqui</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Voice Model Selector */}
-        <div className="mb-6 rounded-xl border border-violet-200 bg-violet-50/50 p-4">
-          <div className="flex flex-wrap items-center gap-3">
-            <p className="text-xs font-medium text-violet-800">Modelo de voz (Kits.ai):</p>
-            {voiceModels.length > 0 ? (
-              <select
-                value={selectedVoiceModel}
-                onChange={(e) => setSelectedVoiceModel(e.target.value)}
-                className="rounded-lg border border-violet-200 bg-mundo-bg-light px-3 py-1.5 text-xs text-mundo-creme"
-              >
-                <option value="">Usar default do servidor</option>
-                {voiceModels.map((m) => (
-                  <option key={m.id} value={String(m.id)}>
-                    {m.title || `Modelo ${m.id}`} ({m.status})
-                  </option>
-                ))}
-              </select>
-            ) : (
-              <span className="text-xs text-mundo-muted">Nenhum modelo carregado</span>
-            )}
-            <button
-              onClick={async () => {
-                setVoiceModelsLoading(true);
-                setVoiceModelsError("");
-                try {
-                  const res = await fetch("/api/admin/kitsai/models");
-                  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                  const data = await res.json();
-                  if (data.erro) throw new Error(data.erro);
-                  setVoiceModels(data.models || []);
-                  if (data.models?.length === 1) {
-                    setSelectedVoiceModel(String(data.models[0].id));
-                  }
-                } catch (err: unknown) {
-                  const msg = err instanceof Error ? err.message : "Erro";
-                  setVoiceModelsError(msg);
-                } finally {
-                  setVoiceModelsLoading(false);
-                }
-              }}
-              disabled={voiceModelsLoading}
-              className="rounded-lg bg-violet-600 px-3 py-1.5 text-xs text-white transition hover:bg-violet-700 disabled:opacity-50"
-            >
-              {voiceModelsLoading ? "A carregar..." : "Buscar modelos"}
-            </button>
-            {selectedVoiceModel && (
-              <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] text-violet-700">
-                ID: {selectedVoiceModel}
-              </span>
-            )}
-            {voiceModelsError && (
-              <span className="text-xs text-red-500">{voiceModelsError}</span>
-            )}
-          </div>
-        </div>
-
         {/* Filter + View Mode */}
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
           <ProductFilter active={filter} onChange={setFilter} />
@@ -984,7 +563,7 @@ export default function AlbumProductionPage() {
               onClick={() => setViewMode("producao")}
               className={`rounded-full px-4 py-2 text-xs font-sans uppercase tracking-wider transition-colors ${
                 viewMode === "producao"
-                  ? "bg-mundo-bg-light text-mundo-creme shadow-sm"
+                  ? "bg-mundo-bg text-mundo-creme shadow-sm"
                   : "text-mundo-muted hover:text-mundo-creme"
               }`}
             >
@@ -994,7 +573,7 @@ export default function AlbumProductionPage() {
               onClick={() => setViewMode("letras")}
               className={`rounded-full px-4 py-2 text-xs font-sans uppercase tracking-wider transition-colors ${
                 viewMode === "letras"
-                  ? "bg-mundo-bg-light text-mundo-creme shadow-sm"
+                  ? "bg-mundo-bg text-mundo-creme shadow-sm"
                   : "text-mundo-muted hover:text-mundo-creme"
               }`}
             >
@@ -1008,7 +587,7 @@ export default function AlbumProductionPage() {
           <div className="space-y-8">
             <div className="rounded-xl border border-mundo-muted-dark/30 bg-mundo-bg-light p-6">
               <p className="text-sm text-mundo-muted">
-                Revisa todas as letras antes de gastar creditos. Cada faixa mostra a letra completa, a energia e o idioma.
+                Revisa todas as letras antes de gastar creditos.
               </p>
             </div>
             {albums.map((a) => (
@@ -1017,9 +596,9 @@ export default function AlbumProductionPage() {
                   <div className="h-3 w-3 rounded-full" style={{ background: a.color }} />
                   <h3 className="font-display text-lg text-mundo-creme">{a.title}</h3>
                   <span className="rounded bg-mundo-muted-dark/10 px-2 py-0.5 text-[0.6rem] uppercase tracking-wider text-mundo-muted">
-                    {a.product === "espelho" ? "Espelho" : a.product === "no" ? "No" : a.product === "livro" ? "Livro" : "Curso"}
+                    {a.product}
                   </span>
-                  <span className="text-xs text-green-600 ml-auto">
+                  <span className="text-xs text-green-400 ml-auto">
                     {a.tracks.filter(t => t.lyrics).length}/{a.tracks.length} letras
                   </span>
                 </div>
@@ -1029,7 +608,7 @@ export default function AlbumProductionPage() {
                       <div className="flex items-center gap-2 mb-2">
                         <span className="font-mono text-xs text-mundo-muted/50">{String(t.number).padStart(2, "0")}</span>
                         <span className="font-medium text-mundo-creme">{t.title}</span>
-                        <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${t.lang === "PT" ? "bg-mundo-muted-dark/15 text-mundo-muted" : "bg-violet-100 text-violet-600"}`}>{t.lang}</span>
+                        <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${t.lang === "PT" ? "bg-mundo-muted-dark/15 text-mundo-muted" : "bg-violet-900/30 text-violet-400"}`}>{t.lang}</span>
                         {t.energy && (
                           <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${ENERGY_LABELS[t.energy].color}`}>
                             {ENERGY_LABELS[t.energy].emoji} {ENERGY_LABELS[t.energy].label}
@@ -1039,9 +618,6 @@ export default function AlbumProductionPage() {
                           <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${FLAVOR_LABELS[t.flavor].color}`}>
                             {FLAVOR_LABELS[t.flavor].emoji} {FLAVOR_LABELS[t.flavor].label}
                           </span>
-                        )}
-                        {!t.lyrics && (
-                          <span className="rounded px-1.5 py-0.5 text-[10px] bg-amber-50 text-amber-600">Sem letra</span>
                         )}
                       </div>
                       <p className="text-xs text-mundo-muted/60 mb-2">{t.description}</p>
@@ -1060,7 +636,7 @@ export default function AlbumProductionPage() {
           </div>
         )}
 
-        {/* Album list or detail (production mode) */}
+        {/* Album detail */}
         {viewMode === "producao" && album && (
           <div>
             <button
@@ -1072,35 +648,16 @@ export default function AlbumProductionPage() {
 
             <div className="mb-6">
               <div className="flex items-center gap-3">
-                <div
-                  className="h-3 w-3 rounded-full"
-                  style={{ background: album.color }}
-                />
-                <h2 className="font-display text-2xl text-mundo-creme">
-                  {album.title}
-                </h2>
+                <div className="h-3 w-3 rounded-full" style={{ background: album.color }} />
+                <h2 className="font-display text-2xl text-mundo-creme">{album.title}</h2>
               </div>
               <p className="mt-1 text-mundo-muted">{album.subtitle}</p>
               <div className="mt-2 flex items-center gap-3">
                 <span className="rounded bg-mundo-muted-dark/10 px-2 py-0.5 text-xs text-mundo-muted">
-                  {album.product === "espelho"
-                    ? "Espelho"
-                    : album.product === "no"
-                    ? "No"
-                    : album.product === "livro"
-                    ? "Livro"
-                    : "Curso"}
-                  {album.veu ? ` — Veu ${album.veu}` : ""}
+                  {album.product}{album.veu ? ` — Veu ${album.veu}` : ""}
                 </span>
                 <span className="text-xs text-mundo-muted/60">
-                  {album.tracks.length} faixas ·{" "}
-                  {Math.floor(
-                    album.tracks.reduce((s, t) => s + t.durationSeconds, 0) / 60
-                  )}{" "}
-                  min total
-                </span>
-                <span className="text-xs text-green-600">
-                  {album.tracks.filter(t => t.lyrics).length}/{album.tracks.length} letras
+                  {album.tracks.length} faixas · {Math.floor(album.tracks.reduce((s, t) => s + t.durationSeconds, 0) / 60)} min
                 </span>
               </div>
             </div>
@@ -1111,7 +668,6 @@ export default function AlbumProductionPage() {
                 return (
                   <TrackRow
                     key={track.number}
-                    album={album}
                     track={track}
                     status={statuses[key] || "idle"}
                     error={errors[key] || null}
@@ -1119,11 +675,10 @@ export default function AlbumProductionPage() {
                     onUpload={(file) => uploadTrack(album.slug, track, file)}
                     onRemove={() => removeTrack(album.slug, track.number)}
                     onGenerate={() => generateTrack(album.slug, track)}
-                    onApproveClip={(url) => approveClip(album.slug, track, url)}
-                    onClone={(url) => cloneTrack(album.slug, track, url)}
-                    onApproveClone={() => approveClone(album.slug, track)}
+                    onApproveClip={(url, title) => approveClip(album.slug, track, url, title)}
                     generatedClips={generatedClips[key] || null}
-                    cloneResult={cloneResults[key] || null}
+                    editedTitle={editedTitles[key] || null}
+                    onTitleChange={(title) => setEditedTitles((t) => ({ ...t, [key]: title }))}
                   />
                 );
               })}
@@ -1131,7 +686,7 @@ export default function AlbumProductionPage() {
           </div>
         )}
 
-        {/* Album grid (production mode, no album selected) */}
+        {/* Album grid */}
         {viewMode === "producao" && !album && (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {albums.map((a) => {
@@ -1147,64 +702,37 @@ export default function AlbumProductionPage() {
                 <button
                   key={a.slug}
                   onClick={() => setSelectedAlbum(a.slug)}
-                  className="group rounded-xl border border-mundo-muted-dark/30 bg-mundo-bg-light p-5 text-left transition hover:shadow-md"
+                  className="group rounded-xl border border-mundo-muted-dark/30 bg-mundo-bg-light p-5 text-left transition hover:border-mundo-muted-dark/50"
                 >
                   <div className="flex items-start justify-between">
-                    <div
-                      className="h-2.5 w-2.5 rounded-full mt-1"
-                      style={{ background: a.color }}
-                    />
+                    <div className="h-2.5 w-2.5 rounded-full mt-1" style={{ background: a.color }} />
                     <span className="rounded bg-mundo-muted-dark/10 px-2 py-0.5 text-[0.6rem] uppercase tracking-wider text-mundo-muted">
-                      {a.product === "espelho"
-                        ? "Espelho"
-                        : a.product === "no"
-                        ? "No"
-                        : a.product === "livro"
-                        ? "Livro"
-                        : "Curso"}
+                      {a.product}
                     </span>
                   </div>
-                  <h3 className="mt-3 font-display text-lg text-mundo-creme group-hover:text-mundo-creme/80">
+                  <h3 className="mt-3 font-display text-lg text-mundo-creme group-hover:text-mundo-dourado transition-colors">
                     {a.title}
                   </h3>
-                  <p className="mt-0.5 text-sm text-mundo-muted line-clamp-1">
-                    {a.subtitle}
-                  </p>
+                  <p className="mt-0.5 text-sm text-mundo-muted line-clamp-1">{a.subtitle}</p>
                   <div className="mt-3 flex items-center justify-between">
                     <span className="text-xs text-mundo-muted/60">
                       {a.tracks.length} faixas · ~{totalMin} min
                     </span>
                     <div className="flex items-center gap-2">
                       {withLyrics > 0 && (
-                        <span className="text-[10px] text-green-600">
-                          {withLyrics} letras
-                        </span>
+                        <span className="text-[10px] text-green-400">{withLyrics} letras</span>
                       )}
                       {done > 0 && (
-                        <span className="text-xs text-mundo-creme">
-                          {done}/{a.tracks.length}
-                        </span>
+                        <span className="text-xs text-mundo-dourado">{done}/{a.tracks.length}</span>
                       )}
                     </div>
                   </div>
                   {(done > 0 || withLyrics > 0) && (
-                    <div className="mt-2 flex gap-1">
-                      {withLyrics > 0 && (
-                        <div className="h-1 flex-1 rounded-full bg-green-100">
-                          <div
-                            className="h-1 rounded-full bg-green-400 transition-all"
-                            style={{ width: `${(withLyrics / a.tracks.length) * 100}%` }}
-                          />
-                        </div>
-                      )}
-                      {done > 0 && (
-                        <div className="h-1 flex-1 rounded-full bg-mundo-muted-dark/10">
-                          <div
-                            className="h-1 rounded-full bg-sage transition-all"
-                            style={{ width: `${(done / a.tracks.length) * 100}%` }}
-                          />
-                        </div>
-                      )}
+                    <div className="mt-2 h-1 rounded-full bg-mundo-muted-dark/10">
+                      <div
+                        className="h-1 rounded-full bg-mundo-dourado transition-all"
+                        style={{ width: `${(Math.max(done, withLyrics) / a.tracks.length) * 100}%` }}
+                      />
                     </div>
                   )}
                 </button>
