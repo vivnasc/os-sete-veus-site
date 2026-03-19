@@ -39,7 +39,7 @@ export default function RevisaoPage() {
   } | null>(null);
   const [loadingContent, setLoadingContent] = useState(false);
   const [validatedBooks, setValidatedBooks] = useState<Set<string>>(new Set());
-  const [filter, setFilter] = useState<"all" | "urgent" | "espelhos" | "nos">("all");
+  const [filter, setFilter] = useState<"all" | "urgent" | "published" | "espelhos" | "nos">("all");
 
   useEffect(() => {
     if (!authLoading && (!user || !isAdmin)) {
@@ -62,17 +62,12 @@ export default function RevisaoPage() {
     const now = new Date();
     const result: BookToReview[] = [];
 
-    // Espelhos not yet available
+    // All Espelhos with data
     for (const e of experiences) {
-      if (e.status === "available" && !e.launchDate) continue;
-
       const launch = e.launchDate ? new Date(e.launchDate) : null;
       const daysUntil = launch
         ? Math.ceil((launch.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
         : null;
-
-      // Already launched and live
-      if (daysUntil !== null && daysUntil < -7) continue;
 
       result.push({
         type: "espelho",
@@ -88,9 +83,8 @@ export default function RevisaoPage() {
       });
     }
 
-    // Nos not yet available
+    // All Nos with data
     for (const n of nosCollection) {
-      if (n.status === "available") continue;
       if (!n.dataFile) continue;
 
       const espelho = experiences.find((e) => e.slug === n.espelhoSlug);
@@ -100,8 +94,6 @@ export default function RevisaoPage() {
       const daysUntil = launch
         ? Math.ceil((launch.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
         : null;
-
-      if (daysUntil !== null && daysUntil < -7) continue;
 
       result.push({
         type: "no",
@@ -219,6 +211,7 @@ export default function RevisaoPage() {
 
   const filteredBooks = books.filter((b) => {
     if (filter === "urgent") return b.daysUntilLaunch !== null && b.daysUntilLaunch <= 10 && b.daysUntilLaunch > 0;
+    if (filter === "published") return b.status === "available";
     if (filter === "espelhos") return b.type === "espelho";
     if (filter === "nos") return b.type === "no";
     return true;
@@ -280,6 +273,7 @@ export default function RevisaoPage() {
               { key: "all", label: "Todos" },
               { key: "urgent", label: `Urgentes${urgentCount > 0 ? ` (${urgentCount})` : ""}` },
               { key: "espelhos", label: "Espelhos" },
+              { key: "published", label: "Publicados" },
               { key: "nos", label: "Nós" },
             ] as const
           ).map((f) => (
