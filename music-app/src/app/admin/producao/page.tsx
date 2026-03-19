@@ -13,6 +13,26 @@ import {
   type TrackFlavor,
 } from "@/data/albums";
 
+function CopyButton({ text, label = "Copiar" }: { text: string; label?: string }) {
+  const [copied, setCopied] = useState(false);
+  return (
+    <button
+      onClick={() => {
+        navigator.clipboard.writeText(text);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 1500);
+      }}
+      className={`shrink-0 rounded px-2.5 py-1 text-[11px] font-medium transition ${
+        copied
+          ? "bg-green-800/40 text-green-400"
+          : "bg-mundo-muted-dark/20 text-mundo-muted hover:bg-mundo-muted-dark/40 hover:text-mundo-creme"
+      }`}
+    >
+      {copied ? "Copiado" : label}
+    </button>
+  );
+}
+
 type TrackStatus = "idle" | "uploading" | "done" | "error" | "generating" | "polling";
 
 type SunoClip = {
@@ -148,14 +168,11 @@ function TrackRow({
             <summary className="cursor-pointer text-xs text-mundo-muted/60 hover:text-mundo-muted">
               Ver prompt
             </summary>
-            <div className="mt-1 relative group/prompt">
-              <button
-                onClick={() => { navigator.clipboard.writeText(track.prompt); }}
-                className="absolute top-1.5 right-1.5 rounded bg-mundo-muted-dark/20 px-2 py-1 text-[10px] text-mundo-muted opacity-0 group-hover/prompt:opacity-100 transition hover:bg-mundo-muted-dark/40"
-              >
-                Copiar
-              </button>
-              <p className="rounded bg-mundo-bg p-2 pr-16 font-mono text-xs text-mundo-muted/80">
+            <div className="mt-1">
+              <div className="flex justify-end mb-1">
+                <CopyButton text={track.prompt} label="Copiar prompt" />
+              </div>
+              <p className="rounded bg-mundo-bg p-2 font-mono text-xs text-mundo-muted/80">
                 {track.prompt}
               </p>
             </div>
@@ -167,14 +184,11 @@ function TrackRow({
               <summary className="cursor-pointer text-xs text-mundo-muted/60 hover:text-mundo-muted">
                 Ver letra
               </summary>
-              <div className="mt-1 relative group/lyrics">
-                <button
-                  onClick={() => { navigator.clipboard.writeText(track.lyrics); }}
-                  className="absolute top-1.5 right-1.5 rounded bg-mundo-muted-dark/20 px-2 py-1 text-[10px] text-mundo-muted opacity-0 group-hover/lyrics:opacity-100 transition hover:bg-mundo-muted-dark/40"
-                >
-                  Copiar
-                </button>
-                <pre className="whitespace-pre-wrap rounded bg-mundo-bg p-3 pr-16 font-mono text-xs text-mundo-muted/80 leading-relaxed max-h-64 overflow-y-auto">
+              <div className="mt-1">
+                <div className="flex justify-end mb-1">
+                  <CopyButton text={track.lyrics} label="Copiar letra" />
+                </div>
+                <pre className="whitespace-pre-wrap rounded bg-mundo-bg p-3 font-mono text-xs text-mundo-muted/80 leading-relaxed max-h-64 overflow-y-auto">
                   {track.lyrics}
                 </pre>
               </div>
@@ -622,11 +636,20 @@ export default function AlbumProductionPage() {
                       </div>
                       <p className="text-xs text-mundo-muted/60 mb-2">{t.description}</p>
                       {t.lyrics ? (
-                        <pre className="whitespace-pre-wrap rounded bg-mundo-bg/50 p-4 font-mono text-xs text-mundo-muted/80 leading-relaxed max-h-80 overflow-y-auto">
-                          {t.lyrics}
-                        </pre>
+                        <div>
+                          <div className="flex items-center gap-2 mb-1">
+                            <CopyButton text={t.lyrics} label="Copiar letra" />
+                            <CopyButton text={t.prompt} label="Copiar prompt" />
+                          </div>
+                          <pre className="whitespace-pre-wrap rounded bg-mundo-bg/50 p-4 font-mono text-xs text-mundo-muted/80 leading-relaxed max-h-80 overflow-y-auto">
+                            {t.lyrics}
+                          </pre>
+                        </div>
                       ) : (
-                        <p className="text-xs text-mundo-muted/40 italic">Letra ainda nao escrita.</p>
+                        <div className="flex items-center gap-3">
+                          <p className="text-xs text-mundo-muted/40 italic">Letra ainda não escrita.</p>
+                          <CopyButton text={t.prompt} label="Copiar prompt" />
+                        </div>
                       )}
                     </div>
                   ))}
