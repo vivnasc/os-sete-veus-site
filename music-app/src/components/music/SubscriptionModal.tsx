@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { SUBSCRIPTION_PRICE } from "@/hooks/useSubscription";
 import { supabase } from "@/lib/supabase";
@@ -17,12 +17,11 @@ export default function SubscriptionModal({ onClose, trackTitle, albumColor = "#
   const [loading, setLoading] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
 
-  // Check auth
-  useState(() => {
+  useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
       setUserId(data.user?.id || null);
     });
-  });
+  }, []);
 
   async function handleSubscribe() {
     if (!userId) {

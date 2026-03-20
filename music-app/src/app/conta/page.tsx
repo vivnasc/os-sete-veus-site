@@ -11,7 +11,7 @@ import NavBar from "@/components/music/NavBar";
 export default function ContaPage() {
   const router = useRouter();
   const { userId, favorites, recents } = useLibrary();
-  const { status: subStatus, isPremium, requestPlay } = useSubscriptionGate();
+  const { isPremium, requestPlay } = useSubscriptionGate();
   const [email, setEmail] = useState<string | null>(null);
 
   useEffect(() => {

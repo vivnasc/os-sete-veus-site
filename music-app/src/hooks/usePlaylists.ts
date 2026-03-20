@@ -123,7 +123,7 @@ export function usePlaylists() {
       .from("music_playlist_tracks")
       .upsert(
         { playlist_id: playlistId, track_number: trackNumber, album_slug: albumSlug, position: nextPos },
-        { onConflict: "playlist_id,track_number,album_slug" }
+        { onConflict: "playlist_id, track_number, album_slug" }
       );
 
     await loadPlaylists();
