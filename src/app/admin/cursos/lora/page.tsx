@@ -75,7 +75,7 @@ export default function LoRAPage() {
         progress: data.progress ?? s.progress,
         logsTail: data.logs_tail ?? s.logsTail,
         error: data.error,
-        outputUrl: data.output?.weights || data.output?.version || null,
+        outputUrl: data.weights_url || data.replicate_url || null,
       }));
     } catch {
       // Network error, keep polling
@@ -152,7 +152,7 @@ export default function LoRAPage() {
           <h1 className="font-serif text-2xl text-white">Treinar LoRA</h1>
         </div>
         <p className="text-mundo-muted text-sm mb-8">
-          Um botao. O Replicate treina o modelo por ti. ~$0.50, ~15 minutos.
+          Um botao. O Replicate treina o modelo por ti. ~$1.50, ~2-5 minutos.
         </p>
 
         {/* ═══════════════════════════════════════════════════════ */}
@@ -191,7 +191,7 @@ export default function LoRAPage() {
         <div className="bg-mundo-bg-surface rounded-xl p-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg text-white">seteveus_style</h2>
-            <span className="text-xs text-mundo-muted">SDXL LoRA · 59 imagens · 1024x1024</span>
+            <span className="text-xs text-mundo-muted">Flux LoRA · 59 imagens</span>
           </div>
 
           {/* IDLE state */}
@@ -200,10 +200,10 @@ export default function LoRAPage() {
               <div className="bg-mundo-bg rounded-lg p-4 mb-4 text-xs text-mundo-muted space-y-1">
                 <p>O que vai acontecer:</p>
                 <p className="text-mundo-creme-suave">1. O Replicate descarrega o dataset (59 imagens + descricoes)</p>
-                <p className="text-mundo-creme-suave">2. Pre-processa as imagens automaticamente</p>
-                <p className="text-mundo-creme-suave">3. Treina o LoRA durante ~1000 passos (~15 min)</p>
-                <p className="text-mundo-creme-suave">4. Devolve o ficheiro .safetensors pronto a usar</p>
-                <p className="mt-2">Custo: ~$0.50 USD (cobrado pelo Replicate)</p>
+                <p className="text-mundo-creme-suave">2. Pre-processa e legenda as imagens automaticamente</p>
+                <p className="text-mundo-creme-suave">3. Treina o LoRA durante ~1000 passos (~2-5 min)</p>
+                <p className="text-mundo-creme-suave">4. Guarda o ficheiro .safetensors no Supabase automaticamente</p>
+                <p className="mt-2">Custo: ~$1.50 USD (cobrado pelo Replicate)</p>
               </div>
 
               <button onClick={startTraining}
@@ -333,7 +333,7 @@ export default function LoRAPage() {
           <div className="grid grid-cols-2 gap-3 text-xs">
             <div>
               <span className="text-mundo-muted">Modelo base</span>
-              <p className="text-mundo-creme-suave">SDXL 1.0</p>
+              <p className="text-mundo-creme-suave">Flux.1 (Black Forest Labs)</p>
             </div>
             <div>
               <span className="text-mundo-muted">Metodo</span>
@@ -341,15 +341,15 @@ export default function LoRAPage() {
             </div>
             <div>
               <span className="text-mundo-muted">Dataset</span>
-              <p className="text-mundo-creme-suave">59 imagens + captions</p>
+              <p className="text-mundo-creme-suave">59 imagens + auto-caption</p>
             </div>
             <div>
               <span className="text-mundo-muted">Trigger word</span>
               <p className="text-mundo-dourado font-mono">seteveus_style</p>
             </div>
             <div>
-              <span className="text-mundo-muted">Resolucao</span>
-              <p className="text-mundo-creme-suave">1024x1024</p>
+              <span className="text-mundo-muted">Trainer</span>
+              <p className="text-mundo-creme-suave">fast-flux-trainer (8x H100)</p>
             </div>
             <div>
               <span className="text-mundo-muted">Servico</span>

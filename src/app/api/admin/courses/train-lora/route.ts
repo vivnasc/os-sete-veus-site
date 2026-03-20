@@ -2,18 +2,19 @@ import { NextRequest, NextResponse } from "next/server";
 
 /**
  * POST /api/admin/courses/train-lora
- * Triggers SDXL LoRA training via Replicate API.
+ * Triggers Flux LoRA training via Replicate's fast-flux-trainer.
  *
  * The dataset ZIP is served from our own site at /downloads/seteveus-dataset.zip
- * Replicate downloads it, trains the LoRA, and returns the weights.
+ * Replicate downloads it, trains the LoRA (~2 min), and returns the weights.
+ *
+ * IMPORTANT: Replicate output URLs expire after 1 hour.
+ * The status endpoint handles saving to Supabase Storage.
  *
  * Requires env var: REPLICATE_API_TOKEN
  *
  * Body (optional): {
  *   trigger_word?: string,        // default "seteveus_style"
- *   max_train_steps?: number,     // default 1000
- *   lora_lr?: number,             // default 1e-4
- *   resolution?: number,          // default 1024
+ *   steps?: number,               // default 1000
  * }
  *
  * Returns: { training_id: string, status: string }
@@ -30,19 +31,16 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json().catch(() => ({}));
     const trigger_word = body.trigger_word || "seteveus_style";
-    const max_train_steps = body.max_train_steps || 1000;
-    const lora_lr = body.lora_lr || 1e-4;
-    const resolution = body.resolution || 1024;
+    const steps = body.steps || 1000;
 
     // The dataset ZIP URL - served statically from our own site
     const origin = req.headers.get("origin") || req.headers.get("host") || "";
     const protocol = origin.startsWith("http") ? "" : "https://";
     const datasetUrl = `${protocol}${origin}/downloads/seteveus-dataset.zip`;
 
-    // Replicate model for SDXL LoRA training
-    // Using the official stability-ai/sdxl training endpoint
+    // Use Replicate's fast-flux-trainer: ~2 min, ~$1.46
     const response = await fetch(
-      "https://api.replicate.com/v1/models/stability-ai/sdxl/versions/7762fd07cf82c948538e41f63f77d685e02b063e37e496e96eefd46c929f9bdc/trainings",
+      "https://api.replicate.com/v1/models/replicate/fast-flux-trainer/versions/f463fbfc8a26cb6e0cba3ac8cc83eb62d0e43aac1e45a10cf5ae0fc22d7e4ab2/trainings",
       {
         method: "POST",
         headers: {
@@ -53,14 +51,12 @@ export async function POST(req: NextRequest) {
           destination: body.destination || undefined,
           input: {
             input_images: datasetUrl,
-            token_string: trigger_word,
-            caption_prefix: `${trigger_word}, `,
-            max_train_steps,
-            lora_lr,
-            resolution,
-            is_lora: true,
-            seed: 42,
+            trigger_word,
+            steps,
+            autocaption: true,
+            lora_rank: 32,
           },
+          // Webhook to auto-save weights (before they expire in 1hr)
           webhook: body.webhook || undefined,
           webhook_events_filter: ["completed"],
         }),
@@ -81,7 +77,7 @@ export async function POST(req: NextRequest) {
       training_id: training.id,
       status: training.status,
       url: training.urls?.get || null,
-      message: "Treino iniciado. Demora ~10-15 minutos.",
+      message: "Treino iniciado. Demora ~2-5 minutos.",
     });
   } catch (e: unknown) {
     const message = e instanceof Error ? e.message : "Erro desconhecido";
