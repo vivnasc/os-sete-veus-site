@@ -392,7 +392,7 @@ export const COURSE_WAVES: {
       { slug: "a-arte-da-inteireza" as CourseSlug, title: "A Arte da Inteireza", number: 3 },
       { slug: "pele-nua" as CourseSlug, title: "Pele Nua", number: 6 },
     ],
-    focus: "Relacoes + corpo. Temas de alta procura. Completa as 4 categorias.",
+    focus: "Relações + corpo. Temas de alta procura. Completa as 4 categorias.",
   },
   {
     wave: 4,
@@ -401,28 +401,28 @@ export const COURSE_WAVES: {
       { slug: "depois-do-fogo" as CourseSlug, title: "Depois do Fogo", number: 4 },
       { slug: "flores-no-escuro" as CourseSlug, title: "Flores no Escuro", number: 8 },
     ],
-    focus: "Recomecos e perdas. Mais profundo — requer audiencia ja construida.",
+    focus: "Recomeços e perdas. Mais profundo — requer audiência já construída.",
   },
   {
     wave: 5,
     quarter: "Q2 2027",
     courses: [
-      { slug: "o-peso-e-o-chao" as CourseSlug, title: "O Peso e o Chao", number: 9 },
+      { slug: "o-peso-e-o-chao" as CourseSlug, title: "O Peso e o Chão", number: 9 },
       { slug: "olhos-abertos" as CourseSlug, title: "Olhos Abertos", number: 5 },
       { slug: "voz-de-dentro" as CourseSlug, title: "Voz de Dentro", number: 10 },
     ],
-    focus: "Completa os 10 cursos originais. Cansaco + decisoes + voz.",
+    focus: "Completa os 10 cursos originais. Cansaço + decisões + voz.",
   },
   {
     wave: 6,
     quarter: "Q3 2027",
     courses: [
-      { slug: "o-fio-invisivel" as CourseSlug, title: "O Fio Invisivel", number: 11 },
+      { slug: "o-fio-invisivel" as CourseSlug, title: "O Fio Invisível", number: 11 },
       { slug: "o-espelho-do-outro" as CourseSlug, title: "O Espelho do Outro", number: 12 },
-      { slug: "o-silencio-que-grita" as CourseSlug, title: "O Silencio que Grita", number: 13 },
+      { slug: "o-silencio-que-grita" as CourseSlug, title: "O Silêncio que Grita", number: 13 },
       { slug: "a-teia" as CourseSlug, title: "A Teia", number: 14 },
     ],
-    focus: "Cursos de dualidade — eu e o colectivo. Comunidade ja madura.",
+    focus: "Cursos de dualidade — eu e o colectivo. Comunidade já madura.",
   },
   {
     wave: 7,
@@ -430,12 +430,12 @@ export const COURSE_WAVES: {
     courses: [
       { slug: "a-chama" as CourseSlug, title: "Brasa Viva", number: 15 },
       { slug: "a-mulher-antes-de-mae" as CourseSlug, title: "Antes do Ninho", number: 16 },
-      { slug: "o-oficio-de-ser" as CourseSlug, title: "Maos Cansadas", number: 17 },
-      { slug: "o-relogio-partido" as CourseSlug, title: "Estacoes Partidas", number: 18 },
+      { slug: "o-oficio-de-ser" as CourseSlug, title: "Mãos Cansadas", number: 17 },
+      { slug: "o-relogio-partido" as CourseSlug, title: "Estações Partidas", number: 18 },
       { slug: "a-coroa-escondida" as CourseSlug, title: "Ouro e Sombra", number: 19 },
-      { slug: "a-fome" as CourseSlug, title: "Pao e Silencio", number: 20 },
+      { slug: "a-fome" as CourseSlug, title: "Pão e Silêncio", number: 20 },
     ],
-    focus: "Cursos finais de dualidade. Fecho do catalogo completo.",
+    focus: "Cursos finais de dualidade. Fecho do catálogo completo.",
   },
 ];
 
