@@ -6,8 +6,11 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 
+type Mode = "login" | "register";
+
 export default function LoginPage() {
   const router = useRouter();
+  const [mode, setMode] = useState<Mode>("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -19,28 +22,57 @@ export default function LoginPage() {
   const [magicLinkSent, setMagicLinkSent] = useState(false);
   const [magicLinkLoading, setMagicLinkLoading] = useState(false);
 
-  async function handlePasswordLogin(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
     setLoading(true);
 
-    const { error: authError } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    setLoading(false);
-
-    if (authError) {
-      if (authError.message.includes("Email not confirmed")) {
-        setError("O teu email ainda não foi confirmado. Verifica a tua caixa de entrada ou usa o link mágico abaixo.");
-      } else if (authError.message.includes("Invalid login credentials")) {
-        setError("Email ou palavra-passe incorrectos.");
+    if (mode === "register") {
+      if (password.length < 6) {
+        setError("A palavra-passe deve ter pelo menos 6 caracteres.");
+        setLoading(false);
+        return;
+      }
+      const { error: signUpError } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo: `${window.location.origin}/library`,
+        },
+      });
+      setLoading(false);
+      if (signUpError) {
+        if (signUpError.message.includes("already registered")) {
+          setError("Este email já tem conta. Tenta entrar.");
+        } else {
+          setError(signUpError.message);
+        }
       } else {
-        setError(authError.message);
+        // Try signing in immediately
+        const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
+        if (!signInError) {
+          router.push("/library");
+        } else {
+          setError("Conta criada. Verifica o teu email para confirmar e depois volta para entrar.");
+        }
       }
     } else {
-      router.push("/library");
+      const { error: signInError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      setLoading(false);
+      if (signInError) {
+        if (signInError.message.includes("Email not confirmed")) {
+          setError("O teu email ainda não foi confirmado. Verifica a tua caixa de entrada ou usa o link mágico abaixo.");
+        } else if (signInError.message.includes("Invalid login credentials")) {
+          setError("Email ou palavra-passe incorrectos.");
+        } else {
+          setError(signInError.message);
+        }
+      } else {
+        router.push("/library");
+      }
     }
   }
 
@@ -65,6 +97,7 @@ export default function LoginPage() {
     }
   }
 
+  // Magic link sent confirmation
   if (magicLinkSent) {
     return (
       <div className="min-h-screen bg-[#0D0D1A] flex flex-col items-center justify-center px-6">
@@ -109,10 +142,13 @@ export default function LoginPage() {
 
       <div className="max-w-sm w-full">
         <h1 className="font-display text-2xl font-semibold text-[#F5F0E6] text-center mb-2">
-          Entra na tua biblioteca
+          {mode === "login" ? "Entra na tua biblioteca" : "Cria a tua conta"}
         </h1>
         <p className="text-sm text-[#666680] text-center mb-8">
-          Guarda favoritos, ouve offline e reencontra o que já ouviste.
+          {mode === "login"
+            ? "Guarda favoritos, ouve offline e reencontra o que já ouviste."
+            : "Cria uma conta para guardar os teus favoritos e ouvir offline."
+          }
         </p>
 
         {magicLinkMode ? (
@@ -157,8 +193,8 @@ export default function LoginPage() {
             </button>
           </form>
         ) : (
-          /* Password login form */
-          <form onSubmit={handlePasswordLogin} className="space-y-4">
+          /* Email + password form */
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="email" className="block text-xs text-[#a0a0b0] mb-1.5">
                 Email
@@ -184,10 +220,12 @@ export default function LoginPage() {
                   id="password"
                   type={showPassword ? "text" : "password"}
                   required
+                  minLength={6}
                   value={password}
                   onChange={e => setPassword(e.target.value)}
+                  placeholder={mode === "register" ? "Mínimo 6 caracteres" : "A tua palavra-passe"}
                   className="w-full px-4 py-3 pr-12 rounded-xl bg-white/5 border border-white/10 text-sm text-[#F5F0E6] placeholder-[#666680] focus:outline-none focus:border-[#C9A96E]/50 transition-colors"
-                  autoComplete="current-password"
+                  autoComplete={mode === "register" ? "new-password" : "current-password"}
                 />
                 <button
                   type="button"
@@ -216,26 +254,43 @@ export default function LoginPage() {
               disabled={loading || !email || !password}
               className="w-full py-3 rounded-xl bg-[#C9A96E] text-[#0D0D1A] font-medium text-sm hover:bg-[#d4b87a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? "A entrar..." : "Entrar"}
+              {loading ? "A processar..." : mode === "login" ? "Entrar" : "Criar conta"}
             </button>
 
-            <button
-              type="button"
-              onClick={() => { setMagicLinkMode(true); setError(""); }}
-              className="w-full text-sm text-[#666680] hover:text-[#a0a0b0] transition-colors"
-            >
-              Entrar com link mágico (sem palavra-passe)
-            </button>
+            {mode === "login" && (
+              <button
+                type="button"
+                onClick={() => { setMagicLinkMode(true); setError(""); }}
+                className="w-full text-sm text-[#666680] hover:text-[#a0a0b0] transition-colors"
+              >
+                Entrar com link mágico (sem palavra-passe)
+              </button>
+            )}
           </form>
         )}
 
-        <div className="mt-8 text-center">
-          <p className="text-xs text-[#666680]">
-            Ainda não tens conta?{" "}
-            <Link href="/registar" className="text-[#C9A96E] hover:underline">
-              Cria aqui
-            </Link>
-          </p>
+        <div className="mt-6 text-center">
+          {mode === "login" ? (
+            <p className="text-sm text-[#666680]">
+              Ainda não tens conta?{" "}
+              <button
+                onClick={() => { setMode("register"); setError(""); setMagicLinkMode(false); }}
+                className="text-[#C9A96E] hover:underline"
+              >
+                Cria aqui
+              </button>
+            </p>
+          ) : (
+            <p className="text-sm text-[#666680]">
+              Já tens conta?{" "}
+              <button
+                onClick={() => { setMode("login"); setError(""); }}
+                className="text-[#C9A96E] hover:underline"
+              >
+                Entra aqui
+              </button>
+            </p>
+          )}
         </div>
 
         <div className="mt-6 text-center">

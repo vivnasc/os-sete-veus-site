@@ -242,7 +242,7 @@ function TrackRow({
           <input
             ref={inputRef}
             type="file"
-            accept="audio/*"
+            accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg,audio/mpeg,audio/mp3,audio/wav,audio/x-wav,audio/mp4,audio/aac,audio/ogg"
             onChange={handleFileChange}
             className="hidden"
           />
