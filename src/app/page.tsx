@@ -78,6 +78,14 @@ export default function Home() {
               >
                 Colecção Espelhos
               </Link>
+              <a
+                href="https://music.seteveus.space"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block rounded-md border-2 border-[#C9A96E]/60 bg-transparent px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-[#C9A96E] transition-all hover:border-[#C9A96E] hover:bg-[#C9A96E] hover:text-brown-900"
+              >
+                Music Véus
+              </a>
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.8}>
@@ -266,6 +274,70 @@ export default function Home() {
                   Pedir código
                 </Link>
               </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Music Véus */}
+      <section className="bg-[#0a0a0f] px-6 py-24">
+        <div className="mx-auto max-w-5xl">
+          <ScrollReveal>
+            <p className="text-center font-sans text-[0.65rem] uppercase tracking-[0.3em] text-[#C9A96E]">
+              Music Véus
+            </p>
+            <h2 className="mt-3 text-center font-serif text-3xl text-[#F5F0E6] sm:text-4xl">
+              A banda sonora da tua jornada
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-center leading-relaxed text-[#a0a0b0]">
+              Música original criada para cada véu, cada emoção, cada momento de transformação.
+              Mais de 35 álbuns temáticos que acompanham a tua leitura e o teu despertar.
+            </p>
+          </ScrollReveal>
+
+          <div className="mt-14 grid gap-8 sm:grid-cols-3">
+            {[
+              {
+                title: "Espelhos Sonoros",
+                desc: "Composições que reflectem cada véu — da ilusão à separação",
+                icon: "♫",
+              },
+              {
+                title: "Paisagens Interiores",
+                desc: "Ambientes imersivos para leitura, reflexão e práticas guiadas",
+                icon: "◊",
+              },
+              {
+                title: "Ritmos do Despertar",
+                desc: "De lo-fi contemplativo a batidas orgânicas que movem o corpo",
+                icon: "~",
+              },
+            ].map((item, i) => (
+              <ScrollReveal key={item.title} delay={0.15 * i} variant="scale">
+                <div className="rounded-2xl border border-[#C9A96E]/15 bg-white/[0.03] p-8 text-center transition-all duration-300 hover:border-[#C9A96E]/40 hover:bg-white/[0.06]">
+                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#C9A96E]/10">
+                    <span className="font-serif text-2xl text-[#C9A96E]">{item.icon}</span>
+                  </div>
+                  <h3 className="mt-4 font-serif text-lg text-[#F5F0E6]">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-[#a0a0b0]">{item.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <ScrollReveal delay={0.3}>
+            <div className="mt-12 text-center">
+              <a
+                href="https://music.seteveus.space"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block rounded-md border-2 border-[#C9A96E] bg-[#C9A96E] px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-[#0a0a0f] transition-all hover:bg-transparent hover:text-[#C9A96E]"
+              >
+                Ouvir Music Véus
+              </a>
+              <p className="mt-4 text-xs text-[#808090]">
+                A primeira faixa de cada álbum é gratuita. Subscrição a partir de $4.99/mês.
+              </p>
             </div>
           </ScrollReveal>
         </div>

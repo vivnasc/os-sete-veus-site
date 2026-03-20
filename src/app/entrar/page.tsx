@@ -160,7 +160,8 @@ function EntrarContent() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-brown-400 hover:text-brown-600"
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-brown-500 hover:text-brown-700"
+                aria-label={showPassword ? "Esconder palavra-passe" : "Mostrar palavra-passe"}
               >
                 {showPassword ? (
                   <svg
