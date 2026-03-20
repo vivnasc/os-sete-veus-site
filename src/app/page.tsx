@@ -335,8 +335,8 @@ export default function Home() {
               >
                 Ouvir Music Véus
               </a>
-              <p className="mt-4 text-xs text-[#606070]">
-                Disponível gratuitamente
+              <p className="mt-4 text-xs text-[#808090]">
+                A primeira faixa de cada álbum é gratuita. Subscrição a partir de $4.99/mês.
               </p>
             </div>
           </ScrollReveal>
