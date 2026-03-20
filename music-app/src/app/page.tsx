@@ -1,5 +1,5 @@
 import { ALL_ALBUMS, type AlbumTrack, type Album } from "@/data/albums";
-import { GENEROS, MOODS, TEMAS, ALL_LISTS, resolveList } from "@/data/curated-lists";
+import { GENEROS, MOODS, TEMAS } from "@/data/curated-lists";
 import AlbumCard from "@/components/music/AlbumCard";
 import FraseDoDia from "@/components/music/FraseDoDia";
 import TopTracksSection from "@/components/music/TopTracksSection";
