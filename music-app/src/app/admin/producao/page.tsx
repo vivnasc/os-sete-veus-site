@@ -55,6 +55,8 @@ function CopyButton({ text, label = "Copiar" }: { text: string; label?: string }
 
 type TrackStatus = "idle" | "uploading" | "done" | "error" | "generating" | "polling";
 
+const ENERGY_OPTIONS = ["whisper", "steady", "pulse", "anthem", "raw"] as const;
+
 type SunoClip = {
   id: string;
   status: string;
@@ -104,6 +106,114 @@ function ProductFilter({
   );
 }
 
+function ClipApprovalRow({
+  clip,
+  clipIndex,
+  hasMainAudio,
+  existingVersions,
+  trackEnergy,
+  onApproveMain,
+  onApproveVersion,
+}: {
+  clip: SunoClip;
+  clipIndex: number;
+  hasMainAudio: boolean;
+  existingVersions: string[];
+  trackEnergy: string;
+  onApproveMain: () => void;
+  onApproveVersion: (name: string, energy: string) => void;
+}) {
+  const [mode, setMode] = useState<"pick" | "version">("pick");
+  const [versionName, setVersionName] = useState(`suno-v${clipIndex + 1}`);
+  const [energy, setEnergy] = useState(trackEnergy || "whisper");
+
+  const nameExists = existingVersions.includes(versionName);
+
+  return (
+    <div className="rounded-lg border border-mundo-muted-dark/20 bg-mundo-bg/50 p-3">
+      <div className="flex items-center gap-2 mb-2">
+        <span className="text-[10px] text-mundo-muted font-mono">#{clipIndex + 1}</span>
+        {clip.title && <span className="text-xs text-mundo-creme">{clip.title}</span>}
+      </div>
+      <audio controls src={clip.audioUrl!} className="h-8 w-full mb-2" />
+
+      {mode === "pick" ? (
+        <div className="flex items-center gap-2">
+          {!hasMainAudio && (
+            <button
+              onClick={onApproveMain}
+              className="rounded-lg bg-mundo-dourado px-3 py-1.5 text-xs text-white transition hover:bg-mundo-dourado/80"
+            >
+              Aprovar principal
+            </button>
+          )}
+          <button
+            onClick={() => setMode("version")}
+            className="rounded-lg bg-violet-600 px-3 py-1.5 text-xs text-white transition hover:bg-violet-700"
+          >
+            Guardar versão
+          </button>
+          {hasMainAudio && (
+            <button
+              onClick={onApproveMain}
+              className="rounded-lg bg-mundo-muted-dark/20 px-3 py-1.5 text-xs text-mundo-muted transition hover:bg-mundo-muted-dark/30"
+            >
+              Substituir principal
+            </button>
+          )}
+        </div>
+      ) : (
+        <div className="space-y-2">
+          <div className="flex items-center gap-2">
+            <input
+              type="text"
+              value={versionName}
+              onChange={(e) => setVersionName(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ""))}
+              placeholder="nome-da-versão"
+              className="flex-1 rounded-lg bg-mundo-bg px-3 py-1.5 text-xs text-mundo-creme border border-mundo-muted-dark/30 focus:border-violet-500 focus:outline-none"
+            />
+          </div>
+          {nameExists && (
+            <p className="text-[10px] text-amber-400">Versão "{versionName}" já existe — será substituída.</p>
+          )}
+          <div className="flex gap-1">
+            {ENERGY_OPTIONS.map((e) => (
+              <button
+                key={e}
+                onClick={() => setEnergy(e)}
+                className={`rounded px-2 py-1 text-[10px] font-bold uppercase transition ${
+                  energy === e
+                    ? ENERGY_LABELS[e].color
+                    : "bg-mundo-muted-dark/10 text-mundo-muted hover:text-mundo-creme"
+                }`}
+              >
+                {ENERGY_LABELS[e].emoji} {ENERGY_LABELS[e].label}
+              </button>
+            ))}
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => {
+                if (versionName) onApproveVersion(versionName, energy);
+              }}
+              disabled={!versionName}
+              className="rounded-lg bg-violet-600 px-3 py-1.5 text-xs text-white transition hover:bg-violet-700 disabled:opacity-50"
+            >
+              Guardar "{versionName}"
+            </button>
+            <button
+              onClick={() => setMode("pick")}
+              className="text-xs text-mundo-muted hover:text-mundo-creme"
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function TrackRow({
   track,
   status,
@@ -112,7 +222,9 @@ function TrackRow({
   onRemove,
   onGenerate,
   onApproveClip,
+  onApproveAsVersion,
   audioUrl,
+  existingVersions,
   generatedClips,
   editedTitle,
   onTitleChange,
@@ -124,7 +236,9 @@ function TrackRow({
   onRemove: () => void;
   onGenerate: () => void;
   onApproveClip: (clipUrl: string, sunoTitle: string) => void;
+  onApproveAsVersion: (clipUrl: string, sunoTitle: string, versionName: string, energy: string) => void;
   audioUrl: string | null;
+  existingVersions: string[];
   generatedClips: GeneratedClips | null;
   editedTitle: string | null;
   onTitleChange: (title: string) => void;
@@ -218,23 +332,35 @@ function TrackRow({
             <audio controls src={audioUrl} className="mt-2 h-8 w-full max-w-xs" />
           )}
 
-          {/* Generated clips — pick and approve */}
+          {/* Existing versions */}
+          {existingVersions.length > 0 && (
+            <div className="mt-2 flex flex-wrap gap-1">
+              {existingVersions.map((v) => (
+                <span key={v} className="rounded bg-violet-900/30 px-2 py-0.5 text-[10px] text-violet-400">
+                  {v}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Generated clips — approve as main or save as version */}
           {clipsReady && (
             <div className="mt-3 rounded-lg border border-amber-700/30 bg-amber-950/30 p-3">
               <p className="mb-2 text-xs font-medium text-amber-400">
-                {generatedClips.clips.length} versão(ões) gerada(s) — ouve e aprova:
+                {generatedClips.clips.length} versão(ões) gerada(s) — aprova ou guarda como versão:
               </p>
-              <div className="space-y-2">
-                {generatedClips.clips.map((clip) => (
-                  <div key={clip.id} className="flex items-center gap-3">
-                    <audio controls src={clip.audioUrl!} className="h-8 flex-1" />
-                    <button
-                      onClick={() => onApproveClip(clip.audioUrl!, clip.title)}
-                      className="shrink-0 rounded-lg bg-mundo-dourado px-3 py-1.5 text-xs text-white transition hover:bg-mundo-dourado/80"
-                    >
-                      Aprovar
-                    </button>
-                  </div>
+              <div className="space-y-3">
+                {generatedClips.clips.map((clip, idx) => (
+                  <ClipApprovalRow
+                    key={clip.id}
+                    clip={clip}
+                    clipIndex={idx}
+                    hasMainAudio={!!audioUrl}
+                    existingVersions={existingVersions}
+                    trackEnergy={track.energy}
+                    onApproveMain={() => onApproveClip(clip.audioUrl!, clip.title)}
+                    onApproveVersion={(name, energy) => onApproveAsVersion(clip.audioUrl!, clip.title, name, energy)}
+                  />
                 ))}
               </div>
               <button
@@ -321,6 +447,7 @@ export default function AlbumProductionPage() {
   const [audioUrls, setAudioUrls] = useState<Record<string, string>>({});
   const [generatedClips, setGeneratedClips] = useState<Record<string, GeneratedClips>>({});
   const [editedTitles, setEditedTitles] = useState<Record<string, string>>({});
+  const [trackVersions, setTrackVersions] = useState<Record<string, string[]>>({}); // key → version names
   const pollingRef = useRef<Record<string, NodeJS.Timeout>>({});
   const titleSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
 
@@ -355,6 +482,22 @@ export default function AlbumProductionPage() {
             saved[key] = (val as { title: string }).title;
           }
           setEditedTitles((t) => ({ ...saved, ...t }));
+        }
+      })
+      .catch(() => {});
+
+    // Load existing track versions
+    fetch("/api/admin/track-versions")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.versions) {
+          const vMap: Record<string, string[]> = {};
+          for (const v of data.versions as { album_slug: string; track_number: number; version_name: string }[]) {
+            const key = `${v.album_slug}-t${v.track_number}`;
+            if (!vMap[key]) vMap[key] = [];
+            vMap[key].push(v.version_name);
+          }
+          setTrackVersions(vMap);
         }
       })
       .catch(() => {});
@@ -513,10 +656,99 @@ export default function AlbumProductionPage() {
       const data = await uploadRes.json();
       setStatuses((s) => ({ ...s, [key]: "done" }));
       setAudioUrls((u) => ({ ...u, [key]: data.url }));
+      // Remove only the approved clip, keep others
       setGeneratedClips((g) => {
-        const copy = { ...g };
-        delete copy[key];
-        return copy;
+        const current = g[key];
+        if (!current) return g;
+        const remaining = current.clips.filter((c) => c.audioUrl !== clipAudioUrl);
+        if (remaining.length === 0) {
+          const copy = { ...g };
+          delete copy[key];
+          return copy;
+        }
+        return { ...g, [key]: { clips: remaining } };
+      });
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Erro desconhecido";
+      setStatuses((s) => ({ ...s, [key]: "error" }));
+      setErrors((e) => ({ ...e, [key]: msg }));
+    }
+  }
+
+  async function approveAsVersion(
+    albumSlug: string,
+    track: AlbumTrack,
+    clipAudioUrl: string,
+    sunoTitle: string,
+    versionName: string,
+    energy: string
+  ) {
+    const key = trackKey(albumSlug, track.number);
+    setStatuses((s) => ({ ...s, [key]: "uploading" }));
+
+    try {
+      const audioRes = await fetch(clipAudioUrl);
+      if (!audioRes.ok) throw new Error("Erro ao descarregar o áudio.");
+      const blob = await audioRes.blob();
+
+      // Upload as version file
+      const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-${versionName}.mp3`;
+      const formData = new FormData();
+      formData.append("file", new File([blob], filename, { type: "audio/mpeg" }));
+      formData.append("filename", filename);
+
+      const uploadRes = await fetch("/api/admin/upload-audio", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!uploadRes.ok) {
+        const data = await uploadRes.json().catch(() => ({ erro: `HTTP ${uploadRes.status}` }));
+        throw new Error(data.erro || `Erro ${uploadRes.status}`);
+      }
+
+      const uploadData = await uploadRes.json();
+
+      // Save version metadata to track_versions table
+      await fetch("/api/admin/track-versions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          album_slug: albumSlug,
+          track_number: track.number,
+          version_name: versionName,
+          energy,
+          audio_url: uploadData.url,
+        }),
+      });
+
+      // Save title if Suno provided one
+      if (sunoTitle) {
+        saveTitle(albumSlug, track.number, sunoTitle, "suno");
+      }
+
+      // Update local version list
+      setTrackVersions((v) => {
+        const existing = v[key] || [];
+        if (!existing.includes(versionName)) {
+          return { ...v, [key]: [...existing, versionName] };
+        }
+        return v;
+      });
+
+      setStatuses((s) => ({ ...s, [key]: statuses[key] === "uploading" ? (audioUrls[key] ? "done" : "idle") : s[key] }));
+
+      // Remove the approved clip, keep others
+      setGeneratedClips((g) => {
+        const current = g[key];
+        if (!current) return g;
+        const remaining = current.clips.filter((c) => c.audioUrl !== clipAudioUrl);
+        if (remaining.length === 0) {
+          const copy = { ...g };
+          delete copy[key];
+          return copy;
+        }
+        return { ...g, [key]: { clips: remaining } };
       });
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Erro desconhecido";
@@ -762,6 +994,8 @@ export default function AlbumProductionPage() {
                     onRemove={() => removeTrack(album.slug, track.number)}
                     onGenerate={() => generateTrack(album.slug, track)}
                     onApproveClip={(url, title) => approveClip(album.slug, track, url, title)}
+                    onApproveAsVersion={(url, title, name, energy) => approveAsVersion(album.slug, track, url, title, name, energy)}
+                    existingVersions={trackVersions[key] || []}
                     generatedClips={generatedClips[key] || null}
                     editedTitle={editedTitles[key] || null}
                     onTitleChange={(title) => {
