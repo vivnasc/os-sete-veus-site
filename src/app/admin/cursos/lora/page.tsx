@@ -1,138 +1,134 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import Link from "next/link";
 
 const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
 
-type Step = 1 | 2 | 3 | 4 | 5 | 6;
+type TrainingStatus = "idle" | "starting" | "processing" | "succeeded" | "failed" | "canceled";
 
-const STEPS: { num: Step; title: string }[] = [
-  { num: 1, title: "Abrir ThinkDiffusion" },
-  { num: 2, title: "Upload das imagens" },
-  { num: 3, title: "Configurar" },
-  { num: 4, title: "Treinar" },
-  { num: 5, title: "Testar" },
-  { num: 6, title: "Guardar" },
-];
-
-const CONFIG = {
-  sourceModel: {
-    "Model type": "SDXL",
-    "Pretrained model": "sd_xl_base_1.0.safetensors",
-    "Save trained model as": "safetensors",
-    "Save precision": "fp16",
-  },
-  folders: {
-    "Training images folder": "/workspace/dataset/seteveus",
-    "Output folder": "/workspace/output",
-    "Logging folder": "/workspace/logs",
-    "Model output name": "seteveus_style",
-  },
-  training: {
-    "Train batch size": "1",
-    "Epoch": "20",
-    "Save every N epochs": "1",
-    "Mixed precision": "fp16",
-    "Cache latents": "ON",
-    "Cache latents to disk": "ON",
-    "Clip skip": "2",
-    "Seed": "42",
-    "Gradient checkpointing": "ON",
-    "Noise offset": "0.05",
-  },
-  optimizer: {
-    "Optimizer": "AdamW8bit",
-    "Learning rate": "1e-4",
-    "Unet learning rate": "1e-4",
-    "Text encoder learning rate": "5e-5",
-    "LR scheduler": "cosine_with_restarts",
-    "LR warmup steps": "100",
-    "Number of cycles": "3",
-  },
-  network: {
-    "Network rank (dim)": "32",
-    "Network alpha": "16",
-    "Train UNet": "ON",
-    "Train Text Encoder": "ON",
-  },
-  sample: {
-    "Sample every N epochs": "5",
-    "Sample sampler": "Euler a",
-    "Sample prompt": "seteveus_style, dark moody landscape with golden light, deep navy blue sky, oil painting style, atmospheric, editorial poetic illustration",
-  },
-};
-
-const TEST_PROMPTS = [
-  {
-    name: "Paisagem nova",
-    positive: "seteveus_style, ancient library with floating golden books, deep navy blue walls, warm amber candlelight, oil painting style, moody atmospheric, editorial poetic illustration",
-    negative: "bright, colorful, cartoon, anime, photo, realistic face, text, watermark",
-  },
-  {
-    name: "Silhueta nova",
-    positive: "seteveus_style, faceless woman silhouette dancing with flowing golden fabric, deep navy blue background, terracotta and gold tones, oil painting style, moody atmospheric, editorial poetic illustration",
-    negative: "face, eyes, realistic skin, photo, bright colors, cartoon, text, watermark",
-  },
-  {
-    name: "Territorio novo",
-    positive: "seteveus_style, vast dark ocean with golden light reflecting on water surface, deep navy blue sky, single small boat, oil painting style, moody atmospheric, editorial poetic illustration",
-    negative: "bright, colorful, cartoon, text, watermark, realistic face",
-  },
-];
-
-function CopyBtn({ text, label }: { text: string; label?: string }) {
-  const [copied, setCopied] = useState(false);
-  return (
-    <button
-      onClick={() => {
-        navigator.clipboard.writeText(text);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-      }}
-      className={`text-xs px-2 py-0.5 rounded shrink-0 transition-colors ${
-        copied ? "bg-green-800/40 text-green-300" : "bg-mundo-bg text-mundo-muted hover:text-mundo-creme"
-      }`}
-    >
-      {copied ? "Copiado" : label || "Copiar"}
-    </button>
-  );
-}
-
-function ConfigTable({ title, values }: { title: string; values: Record<string, string> }) {
-  return (
-    <div className="mb-4">
-      <h4 className="text-xs text-mundo-muted uppercase mb-2">{title}</h4>
-      <div className="bg-mundo-bg rounded-lg overflow-hidden">
-        {Object.entries(values).map(([key, val]) => (
-          <div key={key} className="flex items-center justify-between px-4 py-2 border-b border-mundo-bg-surface last:border-0">
-            <span className="text-sm text-mundo-creme-suave">{key}</span>
-            <div className="flex items-center gap-2">
-              <code className="text-sm text-mundo-dourado font-mono">{val}</code>
-              <CopyBtn text={val} />
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function Instruction({ num, children }: { num: number; children: React.ReactNode }) {
-  return (
-    <div className="flex items-start gap-3">
-      <span className="text-mundo-dourado font-mono w-6 shrink-0 text-sm">{num}.</span>
-      <div className="text-sm text-mundo-creme-suave">{children}</div>
-    </div>
-  );
+interface TrainingState {
+  status: TrainingStatus;
+  trainingId: string | null;
+  progress: number;
+  error: string | null;
+  outputUrl: string | null;
+  logsTail: string | null;
 }
 
 export default function LoRAPage() {
   const { user, profile } = useAuth();
   const isAdmin = profile?.is_admin || ADMIN_EMAILS.includes(user?.email || "");
-  const [currentStep, setCurrentStep] = useState<Step>(1);
-  const [completedSteps, setCompletedSteps] = useState<Set<Step>>(new Set());
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const [state, setState] = useState<TrainingState>({
+    status: "idle",
+    trainingId: null,
+    progress: 0,
+    error: null,
+    outputUrl: null,
+    logsTail: null,
+  });
+
+  const [showLogs, setShowLogs] = useState(false);
+
+  // Restore training state from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem("lora-training");
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (parsed.trainingId && (parsed.status === "starting" || parsed.status === "processing")) {
+          setState(parsed);
+        } else if (parsed.status === "succeeded") {
+          setState(parsed);
+        }
+      } catch {
+        // ignore
+      }
+    }
+  }, []);
+
+  // Save state to localStorage
+  useEffect(() => {
+    if (state.trainingId) {
+      localStorage.setItem("lora-training", JSON.stringify(state));
+    }
+  }, [state]);
+
+  // Poll for status
+  const checkStatus = useCallback(async () => {
+    if (!state.trainingId) return;
+    try {
+      const res = await fetch(`/api/admin/courses/train-lora/status?id=${state.trainingId}`);
+      const data = await res.json();
+
+      if (data.erro) {
+        setState((s) => ({ ...s, error: data.erro, status: "failed" }));
+        return;
+      }
+
+      setState((s) => ({
+        ...s,
+        status: data.status as TrainingStatus,
+        progress: data.progress ?? s.progress,
+        logsTail: data.logs_tail ?? s.logsTail,
+        error: data.error,
+        outputUrl: data.weights_url || data.replicate_url || null,
+      }));
+    } catch {
+      // Network error, keep polling
+    }
+  }, [state.trainingId]);
+
+  // Start/stop polling
+  useEffect(() => {
+    if (state.status === "starting" || state.status === "processing") {
+      pollRef.current = setInterval(checkStatus, 10000); // every 10s
+      return () => {
+        if (pollRef.current) clearInterval(pollRef.current);
+      };
+    } else {
+      if (pollRef.current) clearInterval(pollRef.current);
+    }
+  }, [state.status, checkStatus]);
+
+  async function startTraining() {
+    setState({ status: "starting", trainingId: null, progress: 0, error: null, outputUrl: null, logsTail: null });
+
+    try {
+      const res = await fetch("/api/admin/courses/train-lora", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({}),
+      });
+      const data = await res.json();
+
+      if (data.erro) {
+        setState((s) => ({ ...s, status: "failed", error: data.erro }));
+        return;
+      }
+
+      setState((s) => ({
+        ...s,
+        trainingId: data.training_id,
+        status: "starting",
+      }));
+    } catch (e) {
+      setState((s) => ({
+        ...s,
+        status: "failed",
+        error: e instanceof Error ? e.message : "Erro de rede",
+      }));
+    }
+  }
+
+  function resetTraining() {
+    localStorage.removeItem("lora-training");
+    if (pollRef.current) clearInterval(pollRef.current);
+    setState({ status: "idle", trainingId: null, progress: 0, error: null, outputUrl: null, logsTail: null });
+  }
 
   if (!user || !isAdmin) {
     return (
@@ -142,375 +138,227 @@ export default function LoRAPage() {
     );
   }
 
-  function markDone(step: Step) {
-    setCompletedSteps((prev) => new Set([...prev, step]));
-    if (step < 6) setCurrentStep((step + 1) as Step);
-  }
+  const isActive = state.status === "starting" || state.status === "processing";
+  const isDone = state.status === "succeeded";
+  const isFailed = state.status === "failed" || state.status === "canceled";
 
   return (
     <div className="min-h-screen bg-mundo-bg text-mundo-creme-suave p-6">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-2xl mx-auto">
+        {/* Header */}
         <div className="flex items-center gap-4 mb-2">
           <Link href="/admin" className="text-mundo-muted hover:text-mundo-creme text-sm">HUB</Link>
           <span className="text-mundo-border">/</span>
           <h1 className="font-serif text-2xl text-white">Treinar LoRA</h1>
         </div>
         <p className="text-mundo-muted text-sm mb-8">
-          6 passos. Tudo pelo browser. Sem terminal. ~$4-5 no total.
+          Um botao. O Replicate treina o modelo por ti. ~$1.50, ~2-5 minutos.
         </p>
 
-        {/* Progress bar */}
-        <div className="flex items-center gap-1 mb-8">
-          {STEPS.map((s) => (
-            <button key={s.num} onClick={() => setCurrentStep(s.num)}
-              className={`flex-1 py-2 px-1 rounded text-xs text-center transition-colors ${
-                currentStep === s.num
-                  ? "bg-mundo-dourado text-mundo-bg font-medium"
-                  : completedSteps.has(s.num)
-                  ? "bg-green-800/40 text-green-300"
-                  : "bg-mundo-bg-surface text-mundo-muted"
-              }`}>
-              {completedSteps.has(s.num) ? "OK " : ""}{s.num}. {s.title}
-            </button>
-          ))}
+        {/* ═══════════════════════════════════════════════════════ */}
+        {/* Setup check */}
+        {/* ═══════════════════════════════════════════════════════ */}
+        <div className="bg-mundo-bg-surface rounded-xl p-6 mb-6">
+          <h2 className="text-sm text-mundo-muted uppercase mb-4">Pre-requisito</h2>
+          <div className="flex items-start gap-3">
+            <span className="text-mundo-dourado font-mono shrink-0">1.</span>
+            <div className="text-sm">
+              <p>Vai ao <strong>Replicate.com</strong>, cria conta, e copia o teu API Token:</p>
+              <a href="https://replicate.com/account/api-tokens" target="_blank" rel="noopener noreferrer"
+                className="inline-block mt-2 px-3 py-1.5 bg-mundo-bg text-mundo-dourado border border-mundo-border rounded hover:border-mundo-dourado text-xs">
+                Abrir Replicate → API Tokens
+              </a>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 mt-3">
+            <span className="text-mundo-dourado font-mono shrink-0">2.</span>
+            <div className="text-sm">
+              <p>No Vercel, adiciona a variavel de ambiente:</p>
+              <div className="bg-mundo-bg rounded-lg p-3 mt-2 flex items-center justify-between gap-2">
+                <code className="text-xs text-mundo-dourado">REPLICATE_API_TOKEN = (o token que copiaste)</code>
+              </div>
+              <a href="https://vercel.com/dashboard" target="_blank" rel="noopener noreferrer"
+                className="inline-block mt-2 px-3 py-1.5 bg-mundo-bg text-mundo-muted border border-mundo-border rounded hover:border-mundo-dourado text-xs">
+                Vercel → Settings → Environment Variables
+              </a>
+            </div>
+          </div>
         </div>
 
         {/* ═══════════════════════════════════════════════════════ */}
-        {/* STEP 1 */}
+        {/* Training card */}
         {/* ═══════════════════════════════════════════════════════ */}
-        {currentStep === 1 && (
-          <div className="bg-mundo-bg-surface rounded-xl p-6 space-y-4">
-            <h2 className="text-lg text-white">1. Abrir ThinkDiffusion</h2>
-
-            <div className="space-y-3">
-              <Instruction num={1}>
-                <p>Abre o ThinkDiffusion no browser:</p>
-                <a href="https://www.thinkdiffusion.com" target="_blank" rel="noopener noreferrer"
-                  className="inline-block mt-2 px-4 py-2 bg-mundo-dourado text-mundo-bg rounded hover:bg-mundo-dourado-quente text-sm font-medium">
-                  Abrir ThinkDiffusion
-                </a>
-              </Instruction>
-
-              <Instruction num={2}>
-                <p>Cria conta ou faz login. Escolhe o plano <strong>Hobby ($0.99/hora)</strong>.</p>
-                <p className="text-xs text-mundo-muted mt-1">O treino todo custa ~$4-5.</p>
-              </Instruction>
-
-              <Instruction num={3}>
-                <div>
-                  <p>No dashboard, clica <strong>"Launch"</strong>.</p>
-                  <p className="mt-1">Selecciona <strong>"Kohya SS"</strong> na lista de aplicacoes.</p>
-                  <p className="mt-1">Escolhe uma maquina com <strong>RTX 3090</strong> ou melhor.</p>
-                  <p className="text-xs text-mundo-muted mt-2">Abre num separador novo do browser. Espera 1-3 minutos ate aparecer a interface.</p>
-                </div>
-              </Instruction>
-            </div>
-
-            <button onClick={() => markDone(1)}
-              className="mt-4 px-6 py-2 bg-green-800/40 text-green-300 rounded hover:bg-green-800/60">
-              Feito — Kohya SS esta aberto
-            </button>
+        <div className="bg-mundo-bg-surface rounded-xl p-6">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg text-white">seteveus_style</h2>
+            <span className="text-xs text-mundo-muted">Flux LoRA · 59 imagens</span>
           </div>
-        )}
 
-        {/* ═══════════════════════════════════════════════════════ */}
-        {/* STEP 2 */}
-        {/* ═══════════════════════════════════════════════════════ */}
-        {currentStep === 2 && (
-          <div className="bg-mundo-bg-surface rounded-xl p-6 space-y-4">
-            <h2 className="text-lg text-white">2. Upload das imagens</h2>
+          {/* IDLE state */}
+          {state.status === "idle" && (
+            <div>
+              <div className="bg-mundo-bg rounded-lg p-4 mb-4 text-xs text-mundo-muted space-y-1">
+                <p>O que vai acontecer:</p>
+                <p className="text-mundo-creme-suave">1. O Replicate descarrega o dataset (59 imagens + descricoes)</p>
+                <p className="text-mundo-creme-suave">2. Pre-processa e legenda as imagens automaticamente</p>
+                <p className="text-mundo-creme-suave">3. Treina o LoRA durante ~1000 passos (~2-5 min)</p>
+                <p className="text-mundo-creme-suave">4. Guarda o ficheiro .safetensors no Supabase automaticamente</p>
+                <p className="mt-2">Custo: ~$1.50 USD (cobrado pelo Replicate)</p>
+              </div>
 
-            <div className="bg-mundo-bg rounded-lg p-4 mb-2">
-              <p className="text-sm text-mundo-creme-suave mb-3">
-                O dataset tem <strong>59 imagens + 59 descricoes</strong> (118 ficheiros). Primeiro descarrega tudo para o teu computador:
-              </p>
-              <a href="/downloads/seteveus-dataset.zip" download="seteveus-dataset.zip"
-                className="inline-block px-4 py-2 bg-mundo-dourado text-mundo-bg rounded hover:bg-mundo-dourado-quente text-sm font-medium">
-                Descarregar dataset (69MB ZIP)
-              </a>
-              <p className="text-xs text-mundo-muted mt-2">Guarda no ambiente de trabalho. Depois descompacta (botao direito → "Extrair aqui").</p>
+              <button onClick={startTraining}
+                className="w-full py-3 bg-mundo-dourado text-mundo-bg rounded-lg hover:bg-mundo-dourado-quente font-medium text-sm transition-colors">
+                Treinar LoRA
+              </button>
             </div>
+          )}
 
-            <div className="space-y-3">
-              <Instruction num={1}>
-                <p>Descompacta o ZIP no teu computador. Vais ter uma pasta:</p>
-                <code className="text-xs text-mundo-dourado block mt-1">dataset / seteveus / 20_seteveus_style / (118 ficheiros)</code>
-              </Instruction>
-
-              <Instruction num={2}>
-                <div>
-                  <p>No ThinkDiffusion (Kohya SS), procura o <strong>File Browser</strong>.</p>
-                  <p className="text-xs text-mundo-muted mt-1">
-                    E o icone de pasta no lado esquerdo. Se nao vires, procura um separador que diga "Files" ou "File Manager".
-                  </p>
+          {/* ACTIVE state */}
+          {isActive && (
+            <div>
+              <div className="mb-4">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm text-mundo-creme-suave">
+                    {state.status === "starting" ? "A iniciar..." : "A treinar..."}
+                  </span>
+                  <span className="text-xs text-mundo-muted">
+                    {state.progress > 0 ? `${state.progress}%` : "..."}
+                  </span>
                 </div>
-              </Instruction>
-
-              <Instruction num={3}>
-                <div>
-                  <p>No File Browser, cria esta estrutura de pastas (botao direito → "New Folder"):</p>
-                  <div className="bg-mundo-bg rounded p-3 mt-2 text-xs font-mono text-mundo-dourado space-y-0.5">
-                    <p>/workspace/</p>
-                    <p>&nbsp;&nbsp;dataset/</p>
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;seteveus/</p>
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20_seteveus_style/</p>
-                  </div>
-                  <p className="text-xs text-mundo-muted mt-2">
-                    O nome "20_seteveus_style" e importante — nao mudes.
-                  </p>
+                <div className="w-full bg-mundo-bg rounded-full h-2">
+                  <div
+                    className="bg-mundo-dourado h-2 rounded-full transition-all duration-1000"
+                    style={{ width: `${Math.max(state.progress, state.status === "starting" ? 2 : 5)}%` }}
+                  />
                 </div>
-              </Instruction>
+              </div>
 
-              <Instruction num={4}>
-                <div>
-                  <p>Entra na pasta <code className="text-mundo-dourado">20_seteveus_style</code> no File Browser.</p>
-                  <p className="mt-1"><strong>Arrasta todos os 118 ficheiros</strong> (.png + .txt) da pasta do teu computador para dentro do File Browser.</p>
-                  <p className="text-xs text-mundo-muted mt-2">
-                    Podes seleccionar tudo com Ctrl+A na pasta do computador e arrastar para o browser.
-                    O upload demora uns minutos (69MB).
-                  </p>
+              <div className="bg-mundo-bg rounded-lg p-3 text-xs text-mundo-muted">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="inline-block w-2 h-2 bg-yellow-500 rounded-full animate-pulse" />
+                  <span>A processar no Replicate...</span>
                 </div>
-              </Instruction>
+                <p>Podes fechar esta pagina. O treino continua. Volta depois para ver o resultado.</p>
+                {state.trainingId && (
+                  <p className="mt-1 text-mundo-border font-mono">ID: {state.trainingId}</p>
+                )}
+              </div>
 
-              <Instruction num={5}>
-                <div>
-                  <p>Confirma que ficaram <strong>118 ficheiros</strong> dentro de <code className="text-mundo-dourado">20_seteveus_style</code>.</p>
-                  <p className="text-xs text-mundo-muted mt-1">59 imagens .png + 59 descricoes .txt</p>
+              {/* Logs toggle */}
+              {state.logsTail && (
+                <div className="mt-3">
+                  <button onClick={() => setShowLogs(!showLogs)} className="text-xs text-mundo-muted hover:text-mundo-creme">
+                    {showLogs ? "Esconder logs" : "Ver logs"}
+                  </button>
+                  {showLogs && (
+                    <pre className="mt-2 bg-mundo-bg rounded-lg p-3 text-xs text-mundo-muted font-mono overflow-x-auto max-h-40 overflow-y-auto">
+                      {state.logsTail}
+                    </pre>
+                  )}
                 </div>
-              </Instruction>
+              )}
             </div>
+          )}
 
-            <div className="bg-yellow-900/20 border border-yellow-800/30 rounded-lg p-3 text-xs text-yellow-300 mt-2">
-              <strong>Nota sobre o modelo SDXL:</strong> O ThinkDiffusion normalmente ja tem o modelo SDXL 1.0 pre-instalado.
-              Se no passo seguinte o Kohya SS nao encontrar o modelo, procura na lista de modelos disponiveis dentro da interface
-              e selecciona "sd_xl_base_1.0" ou "SDXL 1.0".
-            </div>
-
-            <button onClick={() => markDone(2)}
-              className="mt-4 px-6 py-2 bg-green-800/40 text-green-300 rounded hover:bg-green-800/60">
-              Feito — 118 ficheiros carregados
-            </button>
-          </div>
-        )}
-
-        {/* ═══════════════════════════════════════════════════════ */}
-        {/* STEP 3 */}
-        {/* ═══════════════════════════════════════════════════════ */}
-        {currentStep === 3 && (
-          <div className="bg-mundo-bg-surface rounded-xl p-6 space-y-4">
-            <h2 className="text-lg text-white">3. Configurar o Treino</h2>
-            <p className="text-sm text-mundo-muted mb-2">
-              No Kohya SS, vai ao separador <strong>"LoRA"</strong>. Preenche cada campo com os valores abaixo.
-              Usa o botao "Copiar" para nao errar.
-            </p>
-
-            <ConfigTable title="Source Model" values={CONFIG.sourceModel} />
-            <ConfigTable title="Folders" values={CONFIG.folders} />
-
-            <div className="bg-yellow-900/20 border border-yellow-800/30 rounded-lg p-3 text-xs text-yellow-300">
-              "Training images folder" aponta para <code>/workspace/dataset/seteveus</code> — a pasta MAE, nao a subpasta.
-              O Kohya le a subpasta automaticamente.
-            </div>
-
-            <ConfigTable title="Training Parameters" values={CONFIG.training} />
-            <ConfigTable title="Optimizer" values={CONFIG.optimizer} />
-            <ConfigTable title="Network (LoRA)" values={CONFIG.network} />
-            <ConfigTable title="Sample Images (opcional)" values={CONFIG.sample} />
-
-            <button onClick={() => markDone(3)}
-              className="mt-4 px-6 py-2 bg-green-800/40 text-green-300 rounded hover:bg-green-800/60">
-              Feito — Tudo preenchido
-            </button>
-          </div>
-        )}
-
-        {/* ═══════════════════════════════════════════════════════ */}
-        {/* STEP 4 */}
-        {/* ═══════════════════════════════════════════════════════ */}
-        {currentStep === 4 && (
-          <div className="bg-mundo-bg-surface rounded-xl p-6 space-y-4">
-            <h2 className="text-lg text-white">4. Treinar</h2>
-
-            <div className="space-y-3">
-              <Instruction num={1}>
-                <p>Clica <strong>"Start Training"</strong> no Kohya SS.</p>
-              </Instruction>
-
-              <Instruction num={2}>
-                <div>
-                  <p>Espera <strong>2-4 horas</strong>. Podes deixar o separador aberto e ir fazer outra coisa.</p>
-                  <div className="bg-mundo-bg rounded-lg p-3 mt-2 text-xs text-mundo-muted space-y-0.5">
-                    <p>RTX 3090 → ~3-4 horas</p>
-                    <p>RTX 4090 → ~2-3 horas</p>
-                    <p>A100 → ~1.5-2 horas</p>
-                  </div>
+          {/* SUCCESS state */}
+          {isDone && (
+            <div>
+              <div className="bg-green-900/20 border border-green-800/30 rounded-lg p-4 mb-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-green-400 text-lg">OK</span>
+                  <span className="text-sm text-green-300">LoRA treinado com sucesso</span>
                 </div>
-              </Instruction>
 
-              <Instruction num={3}>
-                <div>
-                  <p>A interface mostra o progresso. Quando vires <strong>"Training complete"</strong>, está feito.</p>
-                  <div className="bg-mundo-bg rounded-lg p-3 mt-2 text-xs space-y-1">
-                    <p className="text-mundo-muted">O número "loss" deve estar entre:</p>
-                    <p className="text-green-400">0.06 - 0.10 = Bom</p>
-                    <p className="text-yellow-400">Abaixo de 0.04 = Pode estar a decorar (não generaliza)</p>
-                    <p className="text-red-400">Acima de 0.12 = Nao esta a aprender bem</p>
-                  </div>
-                </div>
-              </Instruction>
-
-              <Instruction num={4}>
-                <div>
-                  <p>O resultado fica em <code className="text-mundo-dourado">/workspace/output/</code>:</p>
-                  <div className="bg-mundo-bg rounded p-3 mt-2 text-xs text-mundo-muted font-mono space-y-0.5">
-                    <p>seteveus_style.safetensors <span className="text-mundo-creme-suave">(ultimo)</span></p>
-                    <p>seteveus_style-000005.safetensors <span className="text-mundo-creme-suave">(epoch 5)</span></p>
-                    <p>seteveus_style-000010.safetensors <span className="text-mundo-creme-suave">(epoch 10)</span></p>
-                    <p>seteveus_style-000015.safetensors <span className="text-mundo-creme-suave">(epoch 15)</span></p>
-                    <p>seteveus_style-000020.safetensors <span className="text-mundo-creme-suave">(epoch 20)</span></p>
-                  </div>
-                </div>
-              </Instruction>
-            </div>
-
-            <button onClick={() => markDone(4)}
-              className="mt-4 px-6 py-2 bg-green-800/40 text-green-300 rounded hover:bg-green-800/60">
-              Feito — Treino completo
-            </button>
-          </div>
-        )}
-
-        {/* ═══════════════════════════════════════════════════════ */}
-        {/* STEP 5 */}
-        {/* ═══════════════════════════════════════════════════════ */}
-        {currentStep === 5 && (
-          <div className="bg-mundo-bg-surface rounded-xl p-6 space-y-4">
-            <h2 className="text-lg text-white">5. Testar no ComfyUI</h2>
-
-            <div className="space-y-3">
-              <Instruction num={1}>
-                <div>
-                  <p>Volta ao dashboard do ThinkDiffusion e lanca o <strong>ComfyUI</strong> (aplicacao diferente do Kohya SS).</p>
-                  <p className="text-xs text-mundo-muted mt-1">Se ja tiveres o ComfyUI aberto, usa esse.</p>
-                </div>
-              </Instruction>
-
-              <Instruction num={2}>
-                <div>
-                  <p>No File Browser do ComfyUI, copia o ficheiro do LoRA para a pasta de loras:</p>
-                  <div className="bg-mundo-bg rounded p-3 mt-2 text-xs space-y-1">
-                    <p className="text-mundo-muted">De:</p>
-                    <p className="text-mundo-dourado font-mono">/workspace/output/seteveus_style.safetensors</p>
-                    <p className="text-mundo-muted mt-1">Para:</p>
-                    <p className="text-mundo-dourado font-mono">/workspace/ComfyUI/models/loras/</p>
-                  </div>
-                  <p className="text-xs text-mundo-muted mt-2">
-                    No File Browser: selecciona o ficheiro, botao direito → Copy, navega ate a pasta loras, botao direito → Paste.
-                  </p>
-                </div>
-              </Instruction>
-
-              <Instruction num={3}>
-                <div>
-                  <p>No ComfyUI, importa o workflow de teste:</p>
-                  <a href="/downloads/comfyui-test-workflow.json" download="comfyui-test-workflow.json"
-                    className="inline-block mt-2 px-4 py-2 bg-mundo-violeta text-white rounded hover:bg-mundo-violeta/80 text-sm">
-                    Descarregar workflow de teste
+                {state.outputUrl && (
+                  <a href={state.outputUrl} target="_blank" rel="noopener noreferrer"
+                    className="inline-block px-4 py-2 bg-green-800/40 text-green-300 rounded hover:bg-green-800/60 text-sm">
+                    Descarregar seteveus_style.safetensors
                   </a>
-                  <p className="text-xs text-mundo-muted mt-2">
-                    Descarrega o ficheiro e depois arrasta-o para cima da interface do ComfyUI. Ele carrega automaticamente.
+                )}
+
+                {!state.outputUrl && (
+                  <p className="text-xs text-green-400/60">
+                    O modelo foi treinado. Verifica no dashboard do Replicate.
                   </p>
-                </div>
-              </Instruction>
+                )}
+              </div>
 
-              <Instruction num={4}>
-                <div>
-                  <p>Clica <strong>"Queue Prompt"</strong> no ComfyUI. Deve gerar uma imagem no estilo Sete Veus.</p>
-                  <p className="text-xs text-mundo-muted mt-1">Se a imagem sair bem, o LoRA funciona.</p>
-                </div>
-              </Instruction>
+              <div className="bg-mundo-bg rounded-lg p-4 text-xs text-mundo-muted space-y-2">
+                <p className="uppercase text-mundo-creme-suave">Como usar</p>
+                <p>1. Descarrega o ficheiro .safetensors</p>
+                <p>2. No ComfyUI (ThinkDiffusion), faz upload para <code className="text-mundo-dourado">/workspace/ComfyUI/models/loras/</code></p>
+                <p>3. No no LoraLoader, selecciona o ficheiro e usa forca <strong>0.7</strong></p>
+                <p>4. No prompt, usa a palavra <code className="text-mundo-dourado">seteveus_style</code></p>
+              </div>
+
+              <button onClick={resetTraining}
+                className="mt-4 text-xs text-mundo-muted hover:text-mundo-creme">
+                Treinar de novo
+              </button>
             </div>
+          )}
 
-            {/* Extra test prompts */}
-            <div className="mt-4">
-              <p className="text-xs text-mundo-muted uppercase mb-3">Testa mais prompts (copia o texto positivo para o no CLIPTextEncode do ComfyUI)</p>
-              {TEST_PROMPTS.map((tp, i) => (
-                <div key={i} className="bg-mundo-bg rounded-lg p-4 mb-3">
-                  <p className="text-sm text-white mb-2">{tp.name}</p>
-                  <div className="flex items-start justify-between gap-2 mb-1">
-                    <p className="text-xs text-green-400 flex-1">{tp.positive}</p>
-                    <CopyBtn text={tp.positive} label="Copiar" />
-                  </div>
-                </div>
-              ))}
+          {/* FAILED state */}
+          {isFailed && (
+            <div>
+              <div className="bg-red-900/20 border border-red-800/30 rounded-lg p-4 mb-4">
+                <p className="text-sm text-red-300 mb-1">Erro no treino</p>
+                <p className="text-xs text-red-400/80">{state.error || "Erro desconhecido"}</p>
+                {state.logsTail && (
+                  <pre className="mt-2 text-xs text-red-400/60 font-mono overflow-x-auto max-h-32 overflow-y-auto">
+                    {state.logsTail}
+                  </pre>
+                )}
+              </div>
+
+              <div className="flex gap-3">
+                <button onClick={startTraining}
+                  className="px-4 py-2 bg-mundo-dourado text-mundo-bg rounded hover:bg-mundo-dourado-quente text-sm">
+                  Tentar de novo
+                </button>
+                <button onClick={resetTraining}
+                  className="px-4 py-2 bg-mundo-bg text-mundo-muted border border-mundo-border rounded hover:border-mundo-dourado text-sm">
+                  Cancelar
+                </button>
+              </div>
             </div>
-
-            <div className="bg-mundo-bg rounded-lg p-4 text-xs space-y-1">
-              <p className="text-mundo-muted uppercase mb-2">Qual epoch escolher?</p>
-              <p className="text-mundo-creme-suave">Experimenta gerar com <strong>epoch 10</strong> e <strong>epoch 15</strong>. Normalmente um deles e o melhor.</p>
-              <p className="text-mundo-muted mt-1">Se as imagens parecerem muito iguais ao dataset → usa epoch mais baixo (10).</p>
-              <p className="text-mundo-muted">Se nao tiver estilo suficiente → usa epoch mais alto (15 ou 20).</p>
-            </div>
-
-            <div className="bg-mundo-bg rounded-lg p-4 text-xs space-y-1">
-              <p className="text-mundo-muted uppercase mb-2">Forca do LoRA (no no LoraLoader)</p>
-              <p><span className="text-mundo-muted">0.5-0.6</span> — Subtil</p>
-              <p><span className="text-mundo-dourado">0.7-0.8</span> — Ideal</p>
-              <p><span className="text-red-400">0.9-1.0</span> — Muito forte</p>
-            </div>
-
-            <button onClick={() => markDone(5)}
-              className="mt-4 px-6 py-2 bg-green-800/40 text-green-300 rounded hover:bg-green-800/60">
-              Feito — O LoRA funciona
-            </button>
-          </div>
-        )}
+          )}
+        </div>
 
         {/* ═══════════════════════════════════════════════════════ */}
-        {/* STEP 6 */}
+        {/* Info */}
         {/* ═══════════════════════════════════════════════════════ */}
-        {currentStep === 6 && (
-          <div className="bg-mundo-bg-surface rounded-xl p-6 space-y-4">
-            <h2 className="text-lg text-white">6. Guardar o LoRA</h2>
-
-            <div className="space-y-3">
-              <Instruction num={1}>
-                <div>
-                  <p>No File Browser do ThinkDiffusion, vai a <code className="text-mundo-dourado">/workspace/output/</code></p>
-                  <p className="mt-1">Selecciona o <code className="text-mundo-dourado">.safetensors</code> do epoch que escolheste.</p>
-                  <p className="mt-1">Clica com o botao direito → <strong>Download</strong>. Guarda no teu OneDrive ou computador.</p>
-                </div>
-              </Instruction>
-
-              <Instruction num={2}>
-                <div>
-                  <p>O LoRA ja esta na pasta <code className="text-mundo-dourado">/workspace/ComfyUI/models/loras/</code> do ThinkDiffusion.</p>
-                  <p className="text-xs text-mundo-muted mt-1">
-                    Da proxima vez que lancares o ComfyUI no ThinkDiffusion, o LoRA ja esta disponivel.
-                  </p>
-                </div>
-              </Instruction>
+        <div className="mt-6 bg-mundo-bg-surface rounded-xl p-6">
+          <h3 className="text-sm text-mundo-muted uppercase mb-3">Detalhes tecnicos</h3>
+          <div className="grid grid-cols-2 gap-3 text-xs">
+            <div>
+              <span className="text-mundo-muted">Modelo base</span>
+              <p className="text-mundo-creme-suave">Flux.1 (Black Forest Labs)</p>
             </div>
-
-            <div className="bg-green-900/20 border border-green-800/30 rounded-lg p-4 mt-4">
-              <p className="text-sm text-green-300 font-medium mb-2">Proximo passo</p>
-              <p className="text-xs text-green-400/80">
-                Vai a <strong>Videos YouTube</strong>. No campo "LoRA Model Name", escreve
-                <code className="text-green-300 mx-1">seteveus_style.safetensors</code>
-                e as imagens geradas pelo ComfyUI ficam no estilo do Mundo dos Veus.
-              </p>
-              <Link href="/admin/cursos/youtube"
-                className="inline-block mt-3 px-4 py-2 bg-mundo-dourado text-mundo-bg rounded hover:bg-mundo-dourado-quente text-sm font-medium">
-                Ir para Videos YouTube
-              </Link>
+            <div>
+              <span className="text-mundo-muted">Metodo</span>
+              <p className="text-mundo-creme-suave">LoRA (rank 32)</p>
             </div>
-
-            <button onClick={() => markDone(6)}
-              className="mt-4 px-6 py-2 bg-green-800/40 text-green-300 rounded hover:bg-green-800/60">
-              Tudo feito
-            </button>
+            <div>
+              <span className="text-mundo-muted">Dataset</span>
+              <p className="text-mundo-creme-suave">59 imagens + auto-caption</p>
+            </div>
+            <div>
+              <span className="text-mundo-muted">Trigger word</span>
+              <p className="text-mundo-dourado font-mono">seteveus_style</p>
+            </div>
+            <div>
+              <span className="text-mundo-muted">Trainer</span>
+              <p className="text-mundo-creme-suave">fast-flux-trainer (8x H100)</p>
+            </div>
+            <div>
+              <span className="text-mundo-muted">Servico</span>
+              <a href="https://replicate.com" target="_blank" rel="noopener noreferrer" className="text-mundo-creme-suave hover:text-mundo-dourado">
+                Replicate.com
+              </a>
+            </div>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );
