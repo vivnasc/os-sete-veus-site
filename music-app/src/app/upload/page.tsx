@@ -120,7 +120,18 @@ export default function UploadPage() {
         body: formData,
       });
 
-      const data = await res.json();
+      let data;
+      const contentType = res.headers.get("content-type") || "";
+      if (contentType.includes("application/json")) {
+        data = await res.json();
+      } else {
+        const text = await res.text();
+        throw new Error(
+          res.status === 413
+            ? "Ficheiro demasiado grande (max ~4.5MB no Vercel)"
+            : `Erro do servidor (${res.status}): ${text.slice(0, 120)}`
+        );
+      }
 
       if (!res.ok) {
         throw new Error(data.erro || "Upload falhou");

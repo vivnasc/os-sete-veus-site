@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { SUPABASE_URL } from "@/lib/supabase-server";
-import NodeID3 from "node-id3";
 
 const BUCKET = "audios";
+
+export const maxDuration = 60;
 
 export async function POST(req: NextRequest) {
   try {
@@ -38,35 +39,43 @@ export async function POST(req: NextRequest) {
 
     let audioBuffer = Buffer.from(await file.arrayBuffer());
 
-    // Embed ID3 tags if metadata provided
+    // Embed ID3 tags only if metadata provided — dynamic import to avoid breaking
+    // the route when node-id3 can't load on Vercel
     if (title || artist || album) {
-      const tags: NodeID3.Tags = {};
-      if (title) tags.title = title;
-      if (artist) tags.artist = artist;
-      if (album) tags.album = album;
-      if (trackNumber) tags.trackNumber = trackNumber;
-      if (year) tags.year = year;
+      try {
+        const NodeID3 = (await import("node-id3")).default;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const tags: any = {};
+        if (title) tags.title = title;
+        if (artist) tags.artist = artist;
+        if (album) tags.album = album;
+        if (trackNumber) tags.trackNumber = trackNumber;
+        if (year) tags.year = year;
 
-      // Fetch and embed cover art
-      if (coverPath) {
-        try {
-          const coverBuffer = await fetchCoverImage(coverPath, supabase);
-          if (coverBuffer) {
-            tags.image = {
-              mime: "image/png",
-              type: { id: 3, name: "front cover" },
-              description: "Album cover",
-              imageBuffer: coverBuffer,
-            };
+        // Fetch and embed cover art
+        if (coverPath) {
+          try {
+            const coverBuffer = await fetchCoverImage(coverPath, supabase);
+            if (coverBuffer) {
+              tags.image = {
+                mime: "image/png",
+                type: { id: 3, name: "front cover" },
+                description: "Album cover",
+                imageBuffer: coverBuffer,
+              };
+            }
+          } catch {
+            // Cover fetch failed — continue without cover
           }
-        } catch {
-          // Cover fetch failed — continue without cover
         }
-      }
 
-      const tagged = NodeID3.update(tags, audioBuffer);
-      if (tagged) {
-        audioBuffer = Buffer.from(tagged);
+        const tagged = NodeID3.update(tags, audioBuffer);
+        if (tagged) {
+          audioBuffer = Buffer.from(tagged);
+        }
+      } catch {
+        // node-id3 failed to load — upload without tags
+        console.warn("node-id3 unavailable, uploading without ID3 tags");
       }
     }
 
@@ -92,7 +101,7 @@ export async function POST(req: NextRequest) {
 }
 
 /**
- * Fetch cover image — tries Supabase Storage first, then public URL, then local file
+ * Fetch cover image — tries Supabase Storage first, then public URL
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function fetchCoverImage(
