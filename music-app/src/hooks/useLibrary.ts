@@ -119,7 +119,10 @@ export function useLibrary() {
     if (userId) {
       await supabase
         .from("music_recents")
-        .insert({ user_id: userId, track_number: trackNumber, album_slug: albumSlug });
+        .upsert(
+          { user_id: userId, track_number: trackNumber, album_slug: albumSlug, played_at: new Date().toISOString() },
+          { onConflict: "user_id, track_number, album_slug" }
+        );
 
       // Update listening stats (upsert)
       const { data: existing } = await supabase

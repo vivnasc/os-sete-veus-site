@@ -6,7 +6,7 @@ import { ALL_ALBUMS as ALBUMS, type Album, type AlbumTrack, type TrackEnergy, EN
 import { supabase } from "@/lib/supabase";
 import { detectEnergyFromVersion, ENERGY_OPTIONS } from "@/lib/version-energy";
 
-const ADMIN_EMAIL = "viv.saraiva@gmail.com";
+import { ADMIN_EMAIL } from "@/lib/admin-auth";
 
 type UploadState = "idle" | "uploading" | "done" | "error";
 
@@ -67,13 +67,7 @@ export default function UploadPage() {
       )
     : ALBUMS;
 
-  // Load versions for selected album
-  useEffect(() => {
-    if (!selectedAlbum) return;
-    loadVersions(selectedAlbum.slug);
-  }, [selectedAlbum]);
-
-  async function loadVersions(albumSlug: string) {
+  const loadVersions = useCallback(async (albumSlug: string) => {
     try {
       const { data, error } = await supabase.storage
         .from("audios")
@@ -99,7 +93,13 @@ export default function UploadPage() {
     } catch {
       // ignore
     }
-  }
+  }, []);
+
+  // Load versions for selected album
+  useEffect(() => {
+    if (!selectedAlbum) return;
+    loadVersions(selectedAlbum.slug);
+  }, [selectedAlbum, loadVersions]);
 
   const uploadFile = useCallback(async (file: File, album: Album, track: AlbumTrack, version?: string) => {
     const key = trackKey(album.slug, track.number);

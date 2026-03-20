@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { requireAdmin } from "@/lib/admin-auth";
 
 /**
  * Verifica o estado de clips Suno em geracao.
@@ -6,6 +7,9 @@ import { NextRequest, NextResponse } from "next/server";
  * Retorna: { clips: [{ id, status, audioUrl }] }
  */
 export async function GET(req: NextRequest) {
+  const auth = await requireAdmin(req.headers.get("cookie"));
+  if (!auth.ok) return auth.response;
+
   const apiUrl = process.env.SUNO_API_URL;
   const apiKey = process.env.SUNO_API_KEY;
 

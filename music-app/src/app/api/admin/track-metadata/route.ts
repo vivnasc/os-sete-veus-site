@@ -1,27 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
-import { SUPABASE_URL } from "@/lib/supabase-server";
+import { requireAdmin } from "@/lib/admin-auth";
 
 /**
  * GET /api/admin/track-metadata — lista todos os títulos personalizados
  * POST /api/admin/track-metadata — guardar/actualizar título de uma faixa
  */
 
-function getSupabase() {
-  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!serviceKey) return null;
-  return createClient(SUPABASE_URL, serviceKey, { auth: { persistSession: false } });
-}
+export async function GET(req: NextRequest) {
+  const auth = await requireAdmin(req.headers.get("cookie"));
+  if (!auth.ok) return auth.response;
 
-export async function GET() {
-  const supabase = getSupabase();
-  if (!supabase) {
-    return NextResponse.json({ erro: "SUPABASE_SERVICE_ROLE_KEY não configurada." }, { status: 500 });
-  }
+  const supabase = auth.supabase;
 
   const { data, error } = await supabase
     .from("track_metadata")
-    .select("album_slug, track_number, custom_title, title_source");
+    .select("album_slug, track_number, custom_title, title_source")
+    .returns<{ album_slug: string; track_number: number; custom_title: string; title_source: string }[]>();
 
   if (error) {
     return NextResponse.json({ erro: error.message }, { status: 500 });
@@ -42,10 +36,10 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-  const supabase = getSupabase();
-  if (!supabase) {
-    return NextResponse.json({ erro: "SUPABASE_SERVICE_ROLE_KEY não configurada." }, { status: 500 });
-  }
+  const auth = await requireAdmin(req.headers.get("cookie"));
+  if (!auth.ok) return auth.response;
+
+  const supabase = auth.supabase;
 
   const body = await req.json();
   const { albumSlug, trackNumber, title, source } = body;

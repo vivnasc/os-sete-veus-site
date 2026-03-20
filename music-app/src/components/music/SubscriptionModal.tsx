@@ -29,32 +29,8 @@ export default function SubscriptionModal({ onClose, trackTitle, albumColor = "#
       return;
     }
 
-    setLoading(true);
-
-    // For now, activate subscription directly (payment integration to be added)
-    const expiresAt = new Date();
-    if (plan === "monthly") {
-      expiresAt.setMonth(expiresAt.getMonth() + 1);
-    } else {
-      expiresAt.setFullYear(expiresAt.getFullYear() + 1);
-    }
-
-    const { error } = await supabase
-      .from("music_subscriptions")
-      .upsert({
-        user_id: userId,
-        plan,
-        status: "active",
-        started_at: new Date().toISOString(),
-        expires_at: expiresAt.toISOString(),
-      }, { onConflict: "user_id" });
-
-    setLoading(false);
-
-    if (!error) {
-      // Reload to pick up new subscription
-      window.location.reload();
-    }
+    // Payment integration not yet available — show message
+    alert("Pagamento ainda não disponível. Contacta viv.saraiva@gmail.com para acesso.");
   }
 
   const selected = SUBSCRIPTION_PRICE[plan];

@@ -1,18 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
-import { SUPABASE_URL } from "@/lib/supabase-server";
+import { requireAdmin } from "@/lib/admin-auth";
 
 export async function POST(req: NextRequest) {
+  const auth = await requireAdmin(req.headers.get("cookie"));
+  if (!auth.ok) return auth.response;
+
+  const supabase = auth.supabase;
+
   try {
-    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-    if (!serviceKey) {
-      return NextResponse.json({ erro: "SUPABASE_SERVICE_ROLE_KEY não configurada." }, { status: 500 });
-    }
-
-    const supabase = createClient(SUPABASE_URL, serviceKey, {
-      auth: { persistSession: false },
-    });
-
     const body = await req.json();
     const { album_slug, track_number, version_name, energy, audio_url } = body;
 
@@ -40,17 +35,13 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const auth = await requireAdmin(req.headers.get("cookie"));
+  if (!auth.ok) return auth.response;
+
+  const supabase = auth.supabase;
+
   try {
-    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-    if (!serviceKey) {
-      return NextResponse.json({ erro: "SUPABASE_SERVICE_ROLE_KEY não configurada." }, { status: 500 });
-    }
-
-    const supabase = createClient(SUPABASE_URL, serviceKey, {
-      auth: { persistSession: false },
-    });
-
     const { data, error } = await supabase
       .from("track_versions")
       .select("*")

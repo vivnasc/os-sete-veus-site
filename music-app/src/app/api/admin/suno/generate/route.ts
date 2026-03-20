@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { requireAdmin } from "@/lib/admin-auth";
 
 /**
  * Gera musica via Suno API (wrapper de terceiros).
@@ -13,6 +14,9 @@ import { NextRequest, NextResponse } from "next/server";
  * Se nao, usa o endpoint generate (prompt-only mode).
  */
 export async function POST(req: NextRequest) {
+  const auth = await requireAdmin(req.headers.get("cookie"));
+  if (!auth.ok) return auth.response;
+
   const apiUrl = process.env.SUNO_API_URL;
   const apiKey = process.env.SUNO_API_KEY;
 

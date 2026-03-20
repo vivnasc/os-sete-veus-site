@@ -1,6 +1,5 @@
-import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
-import { SUPABASE_URL } from "@/lib/supabase-server";
+import { NextRequest, NextResponse } from "next/server";
+import { requireAdmin } from "@/lib/admin-auth";
 
 const BUCKET = "audios";
 
@@ -9,15 +8,11 @@ const BUCKET = "audios";
  * Retorna um Set-like array de chaves "albumSlug/trackNumber".
  * GET /api/admin/audio-status
  */
-export async function GET() {
-  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!serviceKey) {
-    return NextResponse.json({ erro: "SUPABASE_SERVICE_ROLE_KEY em falta" }, { status: 500 });
-  }
+export async function GET(req: NextRequest) {
+  const auth = await requireAdmin(req.headers.get("cookie"));
+  if (!auth.ok) return auth.response;
 
-  const supabase = createClient(SUPABASE_URL, serviceKey, {
-    auth: { persistSession: false },
-  });
+  const supabase = auth.supabase;
 
   // List all folders inside albums/
   const { data: folders, error: foldersError } = await supabase.storage

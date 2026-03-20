@@ -22,6 +22,10 @@ CREATE TABLE IF NOT EXISTS public.music_recents (
   played_at timestamptz DEFAULT now()
 );
 
+-- Unique constraint: one entry per user+track (upsert replaces on replay)
+ALTER TABLE public.music_recents
+  ADD CONSTRAINT music_recents_user_track_unique UNIQUE (user_id, track_number, album_slug);
+
 -- Index for fast lookups
 CREATE INDEX IF NOT EXISTS idx_music_recents_user_played
   ON public.music_recents(user_id, played_at DESC);
