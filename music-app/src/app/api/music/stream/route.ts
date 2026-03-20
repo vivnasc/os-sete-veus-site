@@ -33,7 +33,7 @@ export async function GET(req: NextRequest) {
   const upstream = await fetch(storageUrl, { headers });
 
   if (!upstream.ok && upstream.status !== 206) {
-    return NextResponse.json({ error: "Audio nao encontrado" }, { status: 404 });
+    return NextResponse.json({ error: "Áudio não encontrado" }, { status: 404 });
   }
 
   const responseHeaders = new Headers();

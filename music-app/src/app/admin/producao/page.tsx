@@ -202,7 +202,7 @@ function TrackRow({
           {clipsReady && (
             <div className="mt-3 rounded-lg border border-amber-700/30 bg-amber-950/30 p-3">
               <p className="mb-2 text-xs font-medium text-amber-400">
-                {generatedClips.clips.length} versao(oes) gerada(s) — ouve e aprova:
+                {generatedClips.clips.length} versão(ões) gerada(s) — ouve e aprova:
               </p>
               <div className="space-y-2">
                 {generatedClips.clips.map((clip) => (
@@ -231,7 +231,7 @@ function TrackRow({
             <div className="mt-3 flex items-center gap-2 rounded-lg bg-amber-950/30 p-3">
               <div className="h-4 w-4 animate-spin rounded-full border-2 border-amber-400 border-t-transparent" />
               <span className="text-xs text-amber-400">
-                {status === "generating" ? "A enviar para o Suno..." : "A aguardar geracao (pode demorar 30-60s)..."}
+                {status === "generating" ? "A enviar para o Suno..." : "A aguardar geração (pode demorar 30-60s)..."}
               </span>
             </div>
           )}
@@ -302,6 +302,29 @@ export default function AlbumProductionPage() {
   const [generatedClips, setGeneratedClips] = useState<Record<string, GeneratedClips>>({});
   const [editedTitles, setEditedTitles] = useState<Record<string, string>>({});
   const pollingRef = useRef<Record<string, NodeJS.Timeout>>({});
+
+  // Load existing audio status from Supabase Storage on mount
+  useEffect(() => {
+    fetch("/api/admin/audio-status")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.existing) {
+          const newStatuses: Record<string, TrackStatus> = {};
+          const newUrls: Record<string, string> = {};
+          for (const key of data.existing as string[]) {
+            newStatuses[key] = "done";
+            // Construct proxy URL for preview
+            const match = key.match(/^(.+)-t(\d+)$/);
+            if (match) {
+              newUrls[key] = `/api/music/stream?album=${match[1]}&track=${match[2]}`;
+            }
+          }
+          setStatuses((s) => ({ ...newStatuses, ...s }));
+          setAudioUrls((u) => ({ ...newUrls, ...u }));
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     return () => {
@@ -434,7 +457,7 @@ export default function AlbumProductionPage() {
 
     try {
       const audioRes = await fetch(clipAudioUrl);
-      if (!audioRes.ok) throw new Error("Erro ao descarregar o audio.");
+      if (!audioRes.ok) throw new Error("Erro ao descarregar o áudio.");
       const blob = await audioRes.blob();
 
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}.mp3`;
@@ -517,13 +540,13 @@ export default function AlbumProductionPage() {
             href="/"
             className="mb-4 inline-block text-sm text-mundo-muted hover:text-mundo-creme"
           >
-            ← Inicio
+            ← Início
           </Link>
           <h1 className="font-display text-3xl text-mundo-creme">
-            Producao de Albums
+            Produção de Álbuns
           </h1>
           <p className="mt-1 text-mundo-muted">
-            Gera via Suno, ouve, edita o titulo, aprova.
+            Gera via Suno, ouve, edita o título, aprova.
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-4">
             <span className="rounded-full bg-mundo-muted-dark/10 px-3 py-1 text-xs text-mundo-muted">
@@ -577,7 +600,7 @@ export default function AlbumProductionPage() {
                   : "text-mundo-muted hover:text-mundo-creme"
               }`}
             >
-              Producao
+              Produção
             </button>
             <button
               onClick={() => setViewMode("letras")}
@@ -597,7 +620,7 @@ export default function AlbumProductionPage() {
           <div className="space-y-8">
             <div className="rounded-xl border border-mundo-muted-dark/30 bg-mundo-bg-light p-6">
               <p className="text-sm text-mundo-muted">
-                Revisa todas as letras antes de gastar creditos.
+                Revisa todas as letras antes de gastar créditos.
               </p>
             </div>
             {albums.map((a) => (

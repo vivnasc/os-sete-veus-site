@@ -11,7 +11,7 @@ type Period = "week" | "month" | "year" | "all";
 
 const PERIOD_LABELS: Record<Period, string> = {
   week: "Esta semana",
-  month: "Este mes",
+  month: "Este mês",
   year: "Este ano",
   all: "Sempre",
 };
@@ -95,7 +95,7 @@ export default function TopTracksPage() {
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#333350] mb-4">
               <path d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
             </svg>
-            <p className="text-[#F5F0E6] font-medium mb-1">Inicia sessao</p>
+            <p className="text-[#F5F0E6] font-medium mb-1">Inicia sessão</p>
             <p className="text-sm text-[#666680]">Para ver as tuas mais ouvidas</p>
             <Link href="/login" className="mt-4 text-sm text-[#C9A96E] hover:underline">Entrar</Link>
           </div>
@@ -111,7 +111,7 @@ export default function TopTracksPage() {
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
             </svg>
             <p className="text-[#F5F0E6] font-medium mb-1">Sem dados ainda</p>
-            <p className="text-sm text-[#666680]">Ouve musica e as tuas mais ouvidas aparecerão aqui</p>
+            <p className="text-sm text-[#666680]">Ouve música e as tuas mais ouvidas aparecerão aqui</p>
           </div>
         ) : (
           <>

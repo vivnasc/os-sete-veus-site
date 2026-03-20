@@ -44,7 +44,7 @@ export default function ContaPage() {
 
         {/* Subscription */}
         <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5 mb-4">
-          <p className="text-xs text-[#666680] mb-1">Subscricao</p>
+          <p className="text-xs text-[#666680] mb-1">Subscrição</p>
           {isPremium ? (
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-green-400" />
@@ -52,7 +52,7 @@ export default function ContaPage() {
             </div>
           ) : (
             <div>
-              <p className="text-sm text-[#a0a0b0] mb-2">Plano gratuito — 1 faixa por album</p>
+              <p className="text-sm text-[#a0a0b0] mb-2">Plano gratuito — 1 faixa por álbum</p>
               <button
                 onClick={() => requestPlay(2, undefined, "#C9A96E")}
                 className="text-sm text-[#C9A96E] hover:underline"

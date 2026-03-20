@@ -228,7 +228,7 @@ export default function RitualPage() {
             Ritual de Escuta
           </h1>
           <p className="text-sm text-[#666680] text-center mb-10">
-            Uma experiencia guiada. Respiracao, musica e reflexao.
+            Uma experiência guiada. Respiração, música e reflexão.
           </p>
 
           {/* Véu selection */}

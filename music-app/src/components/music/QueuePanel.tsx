@@ -207,7 +207,7 @@ export default function QueuePanel({ isOpen, onClose }: Props) {
           {upcomingTracks.length > 0 && (
             <div className="px-3">
               <p className="text-[11px] uppercase tracking-wider text-[#666680] mb-2 px-1">
-                Proximas
+                Próximas
               </p>
               <div className="space-y-0.5">
                 {upcomingTracks.map((track) => (

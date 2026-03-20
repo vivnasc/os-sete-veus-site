@@ -55,6 +55,7 @@ type MusicPlayerState = {
   repeat: RepeatMode;
   showFullPlayer: boolean;
   showLyrics: boolean;
+  audioError: string | null;
 };
 
 type MusicPlayerActions = {
@@ -69,6 +70,7 @@ type MusicPlayerActions = {
   cycleRepeat: () => void;
   setShowFullPlayer: (v: boolean) => void;
   setShowLyrics: (v: boolean) => void;
+  clearAudioError: () => void;
 };
 
 const MusicPlayerContext = createContext<(MusicPlayerState & MusicPlayerActions) | null>(null);
@@ -116,6 +118,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     repeat: "off",
     showFullPlayer: false,
     showLyrics: false,
+    audioError: null,
   });
 
   useEffect(() => {
@@ -131,7 +134,13 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     const onPlay = () => setState(s => ({ ...s, isPlaying: true }));
     const onPause = () => setState(s => ({ ...s, isPlaying: false }));
     const onError = () => {
-      setState(s => ({ ...s, isPlaying: false }));
+      setState(s => ({
+        ...s,
+        isPlaying: false,
+        audioError: s.currentTrack
+          ? `"${s.currentTrack.title}" ainda não tem áudio disponível.`
+          : "Erro ao carregar áudio.",
+      }));
     };
 
     audio.addEventListener("timeupdate", onTime);
@@ -218,6 +227,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       queueAlbum: album,
       isPlaying: true,
       showFullPlayer: true,
+      audioError: null,
     }));
   }, []);
 
@@ -305,6 +315,10 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     setState(s => ({ ...s, showLyrics: v }));
   }, []);
 
+  const clearAudioError = useCallback(() => {
+    setState(s => ({ ...s, audioError: null }));
+  }, []);
+
   return (
     <MusicPlayerContext.Provider
       value={{
@@ -320,6 +334,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
         cycleRepeat,
         setShowFullPlayer,
         setShowLyrics,
+        clearAudioError,
       }}
     >
       {children}

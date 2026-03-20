@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
 
   if (!apiUrl || !apiKey) {
     return NextResponse.json(
-      { erro: "SUNO_API_URL ou SUNO_API_KEY nao configuradas." },
+      { erro: "SUNO_API_URL ou SUNO_API_KEY não configuradas." },
       { status: 500 }
     );
   }
@@ -90,7 +90,7 @@ export async function POST(req: NextRequest) {
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
     return NextResponse.json(
-      { erro: "Excepcao: " + msg },
+      { erro: "Excepção: " + msg },
       { status: 500 }
     );
   }

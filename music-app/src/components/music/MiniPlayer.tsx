@@ -13,10 +13,12 @@ export default function MiniPlayer() {
     currentTime,
     duration,
     shuffle,
+    audioError,
     togglePlay,
     next,
     previous,
     setShowFullPlayer,
+    clearAudioError,
   } = useMusicPlayer();
 
   if (!currentTrack) return null;
@@ -32,6 +34,15 @@ export default function MiniPlayer() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40" role="region" aria-label="Mini player">
+      {/* Audio error toast */}
+      {audioError && (
+        <div className="bg-red-900/90 backdrop-blur-sm px-4 py-2.5 flex items-center justify-between">
+          <p className="text-xs text-red-200">{audioError}</p>
+          <button onClick={clearAudioError} className="ml-3 text-red-300 hover:text-white text-xs shrink-0">
+            Fechar
+          </button>
+        </div>
+      )}
       {/* Progress bar */}
       <div className="h-0.5 bg-white/10">
         <div
@@ -106,7 +117,7 @@ export default function MiniPlayer() {
                 </svg>
               )}
             </button>
-            <button onClick={next} className="p-1.5 text-[#a0a0b0] hover:text-[#F5F0E6] transition-colors" aria-label="Proxima faixa">
+            <button onClick={next} className="p-1.5 text-[#a0a0b0] hover:text-[#F5F0E6] transition-colors" aria-label="Próxima faixa">
               <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
                 <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
               </svg>

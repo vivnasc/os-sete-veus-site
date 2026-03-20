@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ erro: "Supabase upload erro: " + error.message }, { status: 500 });
     }
 
-    const url = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${encodeURIComponent(filename)}`;
+    const url = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${filename}`;
     return NextResponse.json({ url });
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
