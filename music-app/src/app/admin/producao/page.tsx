@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
+import { parseBlob } from "music-metadata-browser";
 import {
   ALL_ALBUMS,
   getAlbumsByProduct,
@@ -12,6 +13,25 @@ import {
   type TrackEnergy,
   type TrackFlavor,
 } from "@/data/albums";
+
+/** Read ID3 title from an MP3 File */
+async function readId3Title(file: File): Promise<string | null> {
+  try {
+    const metadata = await parseBlob(file);
+    return metadata.common.title || null;
+  } catch {
+    return null;
+  }
+}
+
+/** Save title to database */
+async function saveTitle(albumSlug: string, trackNumber: number, title: string, source: string) {
+  await fetch("/api/admin/track-metadata", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ albumSlug, trackNumber, title, source }),
+  }).catch(() => {});
+}
 
 function CopyButton({ text, label = "Copiar" }: { text: string; label?: string }) {
   const [copied, setCopied] = useState(false);
@@ -302,8 +322,9 @@ export default function AlbumProductionPage() {
   const [generatedClips, setGeneratedClips] = useState<Record<string, GeneratedClips>>({});
   const [editedTitles, setEditedTitles] = useState<Record<string, string>>({});
   const pollingRef = useRef<Record<string, NodeJS.Timeout>>({});
+  const titleSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
 
-  // Load existing audio status from Supabase Storage on mount
+  // Load existing audio status + saved titles on mount
   useEffect(() => {
     fetch("/api/admin/audio-status")
       .then((r) => r.json())
@@ -313,7 +334,6 @@ export default function AlbumProductionPage() {
           const newUrls: Record<string, string> = {};
           for (const key of data.existing as string[]) {
             newStatuses[key] = "done";
-            // Construct proxy URL for preview
             const match = key.match(/^(.+)-t(\d+)$/);
             if (match) {
               newUrls[key] = `/api/music/stream?album=${match[1]}&track=${match[2]}`;
@@ -321,6 +341,20 @@ export default function AlbumProductionPage() {
           }
           setStatuses((s) => ({ ...newStatuses, ...s }));
           setAudioUrls((u) => ({ ...newUrls, ...u }));
+        }
+      })
+      .catch(() => {});
+
+    // Load saved custom titles
+    fetch("/api/admin/track-metadata")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.titles) {
+          const saved: Record<string, string> = {};
+          for (const [key, val] of Object.entries(data.titles)) {
+            saved[key] = (val as { title: string }).title;
+          }
+          setEditedTitles((t) => ({ ...saved, ...t }));
         }
       })
       .catch(() => {});
@@ -453,6 +487,7 @@ export default function AlbumProductionPage() {
     // If Suno gave a better title, save it
     if (sunoTitle && sunoTitle !== track.title && !editedTitles[key]) {
       setEditedTitles((t) => ({ ...t, [key]: sunoTitle }));
+      saveTitle(albumSlug, track.number, sunoTitle, "suno");
     }
 
     try {
@@ -496,6 +531,9 @@ export default function AlbumProductionPage() {
     setErrors((e) => ({ ...e, [key]: "" }));
 
     try {
+      // Read ID3 title from MP3 before uploading
+      const id3Title = await readId3Title(file);
+
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}.mp3`;
       const formData = new FormData();
       formData.append("file", file);
@@ -514,6 +552,12 @@ export default function AlbumProductionPage() {
       const data = await res.json();
       setStatuses((s) => ({ ...s, [key]: "done" }));
       setAudioUrls((u) => ({ ...u, [key]: data.url }));
+
+      // If MP3 has an ID3 title, use it (unless already manually edited)
+      if (id3Title && !editedTitles[key]) {
+        setEditedTitles((t) => ({ ...t, [key]: id3Title }));
+        saveTitle(albumSlug, track.number, id3Title, "id3");
+      }
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Erro desconhecido";
       setStatuses((s) => ({ ...s, [key]: "error" }));
@@ -696,7 +740,7 @@ export default function AlbumProductionPage() {
               <p className="mt-1 text-mundo-muted">{album.subtitle}</p>
               <div className="mt-2 flex items-center gap-3">
                 <span className="rounded bg-mundo-muted-dark/10 px-2 py-0.5 text-xs text-mundo-muted">
-                  {album.product}{album.veu ? ` — Veu ${album.veu}` : ""}
+                  {album.product}{album.veu ? ` — Véu ${album.veu}` : ""}
                 </span>
                 <span className="text-xs text-mundo-muted/60">
                   {album.tracks.length} faixas · {Math.floor(album.tracks.reduce((s, t) => s + t.durationSeconds, 0) / 60)} min
@@ -720,7 +764,16 @@ export default function AlbumProductionPage() {
                     onApproveClip={(url, title) => approveClip(album.slug, track, url, title)}
                     generatedClips={generatedClips[key] || null}
                     editedTitle={editedTitles[key] || null}
-                    onTitleChange={(title) => setEditedTitles((t) => ({ ...t, [key]: title }))}
+                    onTitleChange={(title) => {
+                      setEditedTitles((t) => ({ ...t, [key]: title }));
+                      // Debounce save to DB (1s after last keystroke)
+                      if (titleSaveRef.current[key]) clearTimeout(titleSaveRef.current[key]);
+                      titleSaveRef.current[key] = setTimeout(() => {
+                        if (title && title !== track.title) {
+                          saveTitle(album.slug, track.number, title, "manual");
+                        }
+                      }, 1000);
+                    }}
                   />
                 );
               })}
