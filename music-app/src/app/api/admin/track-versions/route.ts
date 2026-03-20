@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
       .from("track_versions")
       .upsert(
         { album_slug, track_number, version_name, energy, audio_url },
-        { onConflict: "album_slug,track_number,version_name" }
+        { onConflict: "album_slug, track_number, version_name" }
       )
       .select()
       .single();

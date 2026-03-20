@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
       custom_title: title,
       title_source: source || "manual",
       updated_at: new Date().toISOString(),
-    }, { onConflict: "album_slug,track_number" });
+    }, { onConflict: "album_slug, track_number" });
 
   if (error) {
     return NextResponse.json({ erro: error.message }, { status: 500 });
