@@ -9,8 +9,8 @@ import { ALL_ALBUMS } from "@/data/albums";
  * Shareable. Intimate. Like a daily oracle from the music.
  */
 
-function getDailyLyric(): { line: string; trackTitle: string; albumTitle: string; albumSlug: string; albumColor: string } | null {
-  const allLines: { line: string; trackTitle: string; albumTitle: string; albumSlug: string; albumColor: string }[] = [];
+function getDailyLyric() {
+  const allLines: { line: string; trackTitle: string; trackNumber: number; albumTitle: string; albumSlug: string; albumColor: string }[] = [];
 
   for (const album of ALL_ALBUMS) {
     for (const track of album.tracks) {
@@ -23,6 +23,7 @@ function getDailyLyric(): { line: string; trackTitle: string; albumTitle: string
         allLines.push({
           line: line.trim(),
           trackTitle: track.title,
+          trackNumber: track.number,
           albumTitle: album.title,
           albumSlug: album.slug,
           albumColor: album.color,
@@ -45,12 +46,17 @@ export default function FraseDoDia() {
 
   if (!daily) return null;
 
+  const partilhaUrl = `/partilha/${daily.albumSlug}/${daily.trackNumber}`;
+
   async function share() {
-    const text = `"${daily!.line}"\n— ${daily!.trackTitle}, Loranne\nveus.app/album/${daily!.albumSlug}`;
+    const fullUrl = typeof window !== "undefined"
+      ? `${window.location.origin}${partilhaUrl}`
+      : partilhaUrl;
+    const text = `"${daily!.line}"\n— ${daily!.trackTitle}, Loranne\n\n${fullUrl}`;
 
     if (typeof navigator !== "undefined" && navigator.share) {
       try {
-        await navigator.share({ text });
+        await navigator.share({ text, url: fullUrl });
         return;
       } catch {
         // User cancelled or not supported

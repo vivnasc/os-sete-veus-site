@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
@@ -14,21 +14,25 @@ type Props = {
   trackNumber: number;
   trackTitle: string;
   trackDescription: string;
-  audioUrl: string | null;
   coverSrc: string;
+  lyricLine?: string;
 };
 
 export default function PartilhaClient({
   albumSlug, albumTitle, albumColor,
   trackNumber, trackTitle, trackDescription,
-  audioUrl, coverSrc,
+  coverSrc, lyricLine,
 }: Props) {
   const [isSubscriber, setIsSubscriber] = useState<boolean | null>(null);
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  const [audioEl, setAudioEl] = useState<HTMLAudioElement | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [ended, setEnded] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  // Build stream URL (works even when audioUrl in data is null)
+  const streamUrl = `/api/music/stream?album=${encodeURIComponent(albumSlug)}&track=${trackNumber}`;
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
@@ -43,9 +47,8 @@ export default function PartilhaClient({
   }, [isSubscriber, albumSlug, trackNumber]);
 
   useEffect(() => {
-    if (!audioUrl) return;
-    const audio = new Audio(audioUrl);
-    setAudioEl(audio);
+    const audio = new Audio(streamUrl);
+    audioRef.current = audio;
 
     const onTime = () => {
       if (audio.currentTime >= PREVIEW_SECONDS) {
@@ -60,26 +63,61 @@ export default function PartilhaClient({
       }
     };
     const onEnded = () => { setPlaying(false); setEnded(true); setProgress(100); };
+    const onError = () => { /* audio not available yet — show CTA anyway */ };
 
     audio.addEventListener("timeupdate", onTime);
     audio.addEventListener("ended", onEnded);
+    audio.addEventListener("error", onError);
 
     return () => {
       audio.pause();
       audio.removeEventListener("timeupdate", onTime);
       audio.removeEventListener("ended", onEnded);
+      audio.removeEventListener("error", onError);
     };
-  }, [audioUrl]);
+  }, [streamUrl]);
 
   function togglePlay() {
-    if (!audioEl || ended) return;
+    if (!audioRef.current || ended) return;
     if (playing) {
-      audioEl.pause();
+      audioRef.current.pause();
       setPlaying(false);
     } else {
-      audioEl.play();
+      audioRef.current.play().catch(() => {
+        // autoplay blocked or audio unavailable
+      });
       setPlaying(true);
     }
+  }
+
+  function replay() {
+    if (!audioRef.current) return;
+    audioRef.current.currentTime = 0;
+    setEnded(false);
+    setProgress(0);
+    setCurrentTime(0);
+    audioRef.current.play().catch(() => {});
+    setPlaying(true);
+  }
+
+  async function shareThis() {
+    const shareUrl = typeof window !== "undefined"
+      ? `${window.location.origin}/partilha/${albumSlug}/${trackNumber}`
+      : "";
+    const text = `"${trackTitle}" — ${albumTitle} | Loranne\n${shareUrl}`;
+
+    if (typeof navigator !== "undefined" && navigator.share) {
+      try {
+        await navigator.share({ title: trackTitle, text, url: shareUrl });
+        return;
+      } catch { /* cancelled */ }
+    }
+
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch { /* ignore */ }
   }
 
   function fmt(s: number) {
@@ -113,68 +151,99 @@ export default function PartilhaClient({
         {/* Track info */}
         <p className="text-xs uppercase tracking-widest text-[#666680] mb-2">{albumTitle}</p>
         <h1 className="font-display text-2xl font-bold text-[#F5F0E6] mb-1">{trackTitle}</h1>
-        <p className="text-sm text-[#a0a0b0] mb-8">{trackDescription}</p>
+        <p className="text-sm text-[#a0a0b0] mb-2">{trackDescription}</p>
+        <p className="text-xs text-[#666680] mb-6">by Loranne</p>
 
-        {/* Player */}
-        {audioUrl ? (
-          <div className="w-full mb-8">
-            {/* Progress bar */}
-            <div className="w-full h-1 rounded-full bg-white/10 mb-3 overflow-hidden">
-              <div
-                className="h-full rounded-full transition-all duration-300"
-                style={{ width: `${progress}%`, backgroundColor: albumColor }}
-              />
-            </div>
-            <div className="flex justify-between text-[10px] text-[#666680] tabular-nums mb-4">
-              <span>{fmt(currentTime)}</span>
-              <span>{fmt(PREVIEW_SECONDS)}</span>
-            </div>
-
-            {!ended ? (
-              <button
-                onClick={togglePlay}
-                className="mx-auto flex items-center justify-center w-16 h-16 rounded-full transition-transform hover:scale-105"
-                style={{ backgroundColor: albumColor }}
-              >
-                {playing ? (
-                  <svg viewBox="0 0 24 24" fill="#0D0D1A" className="h-7 w-7">
-                    <rect x="6" y="4" width="4" height="16" rx="1" />
-                    <rect x="14" y="4" width="4" height="16" rx="1" />
-                  </svg>
-                ) : (
-                  <svg viewBox="0 0 24 24" fill="#0D0D1A" className="h-7 w-7 ml-1">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                )}
-              </button>
-            ) : (
-              <div className="space-y-3">
-                <p className="text-sm text-[#a0a0b0]">O preview terminou.</p>
-                <p className="text-sm text-[#F5F0E6]">Queres ouvir a faixa completa?</p>
-              </div>
-            )}
-          </div>
-        ) : (
-          <div className="w-full mb-8 py-6 rounded-xl bg-white/[0.03] border border-white/5">
-            <p className="text-sm text-[#666680]">Em breve.</p>
-          </div>
+        {/* Lyric highlight */}
+        {lyricLine && (
+          <blockquote className="w-full text-sm italic text-[#F5F0E6]/70 mb-6 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/5">
+            &ldquo;{lyricLine}&rdquo;
+          </blockquote>
         )}
 
-        {/* CTA */}
+        {/* Player */}
+        <div className="w-full mb-6">
+          {/* Progress bar */}
+          <div className="w-full h-1.5 rounded-full bg-white/10 mb-3 overflow-hidden">
+            <div
+              className="h-full rounded-full transition-all duration-300"
+              style={{ width: `${progress}%`, backgroundColor: albumColor }}
+            />
+          </div>
+          <div className="flex justify-between text-[10px] text-[#666680] tabular-nums mb-4">
+            <span>{fmt(currentTime)}</span>
+            <span>{fmt(PREVIEW_SECONDS)} preview</span>
+          </div>
+
+          {!ended ? (
+            <button
+              onClick={togglePlay}
+              className="mx-auto flex items-center justify-center w-16 h-16 rounded-full transition-transform hover:scale-105 active:scale-95"
+              style={{ backgroundColor: albumColor }}
+            >
+              {playing ? (
+                <svg viewBox="0 0 24 24" fill="#0D0D1A" className="h-7 w-7">
+                  <rect x="6" y="4" width="4" height="16" rx="1" />
+                  <rect x="14" y="4" width="4" height="16" rx="1" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" fill="#0D0D1A" className="h-7 w-7 ml-1">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              )}
+            </button>
+          ) : (
+            <div className="space-y-4">
+              <p className="text-sm text-[#F5F0E6]">Isto foi so o inicio.</p>
+              <p className="text-xs text-[#a0a0b0]">A faixa completa esta a tua espera.</p>
+              <button
+                onClick={replay}
+                className="text-xs text-[#666680] hover:text-[#a0a0b0] transition-colors underline underline-offset-2"
+              >
+                Ouvir de novo
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* Primary CTA */}
         <Link
-          href={`/album/${albumSlug}?faixa=${trackNumber}`}
-          className="w-full py-4 rounded-xl font-medium text-sm text-center transition-colors hover:opacity-90"
+          href="/registar"
+          className="w-full py-4 rounded-xl font-medium text-sm text-center transition-all hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-lg"
           style={{ backgroundColor: albumColor, color: "#0D0D1A" }}
         >
-          Ouvir completo no Veus
+          Ouvir completo — cria a tua conta
         </Link>
 
+        {/* Secondary CTA */}
         <Link
           href="/"
-          className="mt-3 text-xs text-[#666680] hover:text-[#a0a0b0] transition-colors"
+          className="mt-3 w-full py-3 rounded-xl text-sm text-center bg-white/5 hover:bg-white/10 transition-colors text-[#a0a0b0]"
         >
-          Explorar mais música
+          Explorar mais musica
         </Link>
+
+        {/* Share button */}
+        <button
+          onClick={shareThis}
+          className="mt-4 flex items-center gap-1.5 text-xs text-[#666680] hover:text-[#a0a0b0] transition-colors"
+        >
+          {copied ? (
+            <>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5 text-green-400">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              Link copiado
+            </>
+          ) : (
+            <>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+                <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" />
+              </svg>
+              Partilhar esta faixa
+            </>
+          )}
+        </button>
 
         {/* Branding */}
         <div className="mt-12 flex items-center gap-2 opacity-50">
