@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
-import { SUPABASE_URL } from "@/lib/supabase-server";
+import { requireAdmin } from "@/lib/admin-auth";
 
 const BUCKET = "audios";
 
@@ -10,19 +9,12 @@ const BUCKET = "audios";
  * POST /api/admin/signed-upload-url { filename: "albums/espelho-ilusao/faixa-01.mp3" }
  */
 export async function POST(req: NextRequest) {
+  const auth = await requireAdmin(req.headers.get("cookie"));
+  if (!auth.ok) return auth.response;
+
+  const supabase = auth.supabase;
+
   try {
-    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-    if (!serviceKey) {
-      return NextResponse.json(
-        { erro: "SUPABASE_SERVICE_ROLE_KEY nao configurada." },
-        { status: 500 }
-      );
-    }
-
-    const supabase = createClient(SUPABASE_URL, serviceKey, {
-      auth: { persistSession: false },
-    });
-
     const { filename } = await req.json();
     if (!filename || typeof filename !== "string") {
       return NextResponse.json({ erro: "filename obrigatorio." }, { status: 400 });

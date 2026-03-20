@@ -35,8 +35,19 @@ export default function PartilhaClient({
   const streamUrl = `/api/music/stream?album=${encodeURIComponent(albumSlug)}&track=${trackNumber}`;
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => {
-      setIsSubscriber(!!data.user);
+    supabase.auth.getUser().then(async ({ data }) => {
+      if (!data.user) {
+        setIsSubscriber(false);
+        return;
+      }
+      // Check actual subscription status
+      const { data: sub } = await supabase
+        .from("music_subscriptions")
+        .select("status, expires_at")
+        .eq("user_id", data.user.id)
+        .eq("status", "active")
+        .single();
+      setIsSubscriber(!!sub && new Date(sub.expires_at) > new Date());
     });
   }, []);
 

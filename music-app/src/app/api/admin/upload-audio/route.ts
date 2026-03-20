@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { requireAdmin } from "@/lib/admin-auth";
 import { SUPABASE_URL } from "@/lib/supabase-server";
 
 const BUCKET = "audios";
@@ -7,20 +7,12 @@ const BUCKET = "audios";
 export const maxDuration = 60;
 
 export async function POST(req: NextRequest) {
+  const auth = await requireAdmin(req.headers.get("cookie"));
+  if (!auth.ok) return auth.response;
+
+  const supabase = auth.supabase;
+
   try {
-    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-    if (!serviceKey) {
-      return NextResponse.json(
-        { erro: "SUPABASE_SERVICE_ROLE_KEY não configurada no Vercel." },
-        { status: 500 }
-      );
-    }
-
-    const supabase = createClient(SUPABASE_URL, serviceKey, {
-      auth: { persistSession: false },
-    });
-
     const formData = await req.formData();
     const file = formData.get("file") as File | null;
     const filename = formData.get("filename") as string | null;

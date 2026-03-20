@@ -95,9 +95,10 @@ export default function SleepTimer({ isOpen, onClose }: SleepTimerProps) {
     }, FADE_INTERVAL);
   }, [volume, setVolume, isPlaying, togglePlay, showGoodnight]);
 
-  // Countdown timer
+  // Countdown timer — restart interval whenever remainingSeconds changes from null/0 to a positive value
+  const isCountingDown = remainingSeconds !== null && remainingSeconds > 0;
   useEffect(() => {
-    if (remainingSeconds === null || remainingSeconds <= 0) return;
+    if (!isCountingDown) return;
 
     countdownRef.current = setInterval(() => {
       setRemainingSeconds((prev) => {
@@ -119,7 +120,7 @@ export default function SleepTimer({ isOpen, onClose }: SleepTimerProps) {
         countdownRef.current = null;
       }
     };
-  }, [remainingSeconds !== null && remainingSeconds > 0]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [isCountingDown]);
 
   // When countdown reaches 0, start fade
   useEffect(() => {
