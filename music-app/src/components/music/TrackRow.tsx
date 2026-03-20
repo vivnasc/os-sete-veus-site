@@ -7,6 +7,7 @@ import { useSubscriptionGate } from "@/contexts/SubscriptionContext";
 import { useDownloads } from "@/hooks/useDownloads";
 import { useLibrary } from "@/hooks/useLibrary";
 import ShareModal from "./ShareModal";
+import AddToPlaylistModal from "./AddToPlaylistModal";
 import type { Album, AlbumTrack } from "@/data/albums";
 
 type Props = {
@@ -36,6 +37,7 @@ export default function TrackRow({ track, album, isActive }: Props) {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [shareOpen, setShareOpen] = useState(false);
+  const [playlistOpen, setPlaylistOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   // Close menu on click outside
@@ -199,6 +201,20 @@ export default function TrackRow({ track, album, isActive }: Props) {
                 onClick={(e) => {
                   e.stopPropagation();
                   setMenuOpen(false);
+                  if (!userId) { router.push("/login"); return; }
+                  setPlaylistOpen(true);
+                }}
+                className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-[#F5F0E6] hover:bg-white/5 transition-colors text-left"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4 text-[#a0a0b0]">
+                  <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                Adicionar a playlist
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setMenuOpen(false);
                   router.push(`/album/${album.slug}`);
                 }}
                 className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-[#F5F0E6] hover:bg-white/5 transition-colors text-left"
@@ -221,6 +237,15 @@ export default function TrackRow({ track, album, isActive }: Props) {
       {/* Share modal */}
       {shareOpen && (
         <ShareModal track={track} album={album} onClose={() => setShareOpen(false)} />
+      )}
+
+      {/* Add to playlist modal */}
+      {playlistOpen && (
+        <AddToPlaylistModal
+          trackNumber={track.number}
+          albumSlug={album.slug}
+          onClose={() => setPlaylistOpen(false)}
+        />
       )}
     </>
   );
