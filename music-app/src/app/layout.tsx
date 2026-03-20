@@ -13,12 +13,16 @@ export const metadata: Metadata = {
     default: "Veus",
     template: "%s | Veus",
   },
-  description: "Musica original do universo Sete Veus. Banda sonora para a tua transformacao.",
+  description: "Música original do universo Sete Véus. Banda sonora para a tua transformação.",
   metadataBase: new URL("https://veus.app"),
   manifest: "/manifest.json",
   icons: {
-    icon: "/music_veus_faicon.png",
-    apple: "/apple-touch-icon.png",
+    icon: [
+      { url: "/favicon.png", sizes: "48x48", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: { url: "/apple-touch-icon.png", sizes: "180x180" },
   },
   appleWebApp: {
     capable: true,
@@ -27,7 +31,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Veus",
-    description: "Musica original do universo Sete Veus. Banda sonora para a tua transformacao.",
+    description: "Música original do universo Sete Véus. Banda sonora para a tua transformação.",
     siteName: "Veus",
     locale: "pt_PT",
     type: "website",
