@@ -16,6 +16,7 @@ export default function QueuePanel({ isOpen, onClose }: Props) {
     queueAlbum,
     isPlaying,
     shuffle,
+    infinite,
     repeat,
     playTrack,
   } = useMusicPlayer();
@@ -68,6 +69,14 @@ export default function QueuePanel({ isOpen, onClose }: Props) {
                   style={{ backgroundColor: `${albumColor}20`, color: albumColor }}
                 >
                   (Aleatorio)
+                </span>
+              )}
+              {infinite && (
+                <span
+                  className="text-[10px] px-1.5 py-0.5 rounded-full font-medium"
+                  style={{ backgroundColor: `${albumColor}20`, color: albumColor }}
+                >
+                  Infinito
                 </span>
               )}
               {repeat !== "off" && (

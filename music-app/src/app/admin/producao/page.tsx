@@ -13,6 +13,7 @@ import {
   type TrackEnergy,
   type TrackFlavor,
 } from "@/data/albums";
+import { getAlbumCover } from "@/lib/album-covers";
 
 /** Read ID3 title from an MP3 File */
 async function readId3Title(file: File): Promise<string | null> {
@@ -70,6 +71,25 @@ type GeneratedClips = {
 
 function trackKey(albumSlug: string, trackNum: number) {
   return `${albumSlug}-t${trackNum}`;
+}
+
+function buildUploadForm(
+  blob: Blob,
+  filename: string,
+  album: Album,
+  track: AlbumTrack,
+  titleOverride?: string | null
+): FormData {
+  const formData = new FormData();
+  formData.append("file", new File([blob], filename, { type: "audio/mpeg" }));
+  formData.append("filename", filename);
+  formData.append("title", titleOverride || track.title);
+  formData.append("artist", "Vivianne dos Santos");
+  formData.append("album", album.title);
+  formData.append("trackNumber", String(track.number));
+  formData.append("year", "2026");
+  formData.append("coverPath", getAlbumCover(album));
+  return formData;
 }
 
 function ProductFilter({
@@ -223,6 +243,7 @@ function TrackRow({
   onGenerate,
   onApproveClip,
   onApproveAsVersion,
+  onUploadVersion,
   audioUrl,
   existingVersions,
   generatedClips,
@@ -237,6 +258,7 @@ function TrackRow({
   onGenerate: () => void;
   onApproveClip: (clipUrl: string, sunoTitle: string) => void;
   onApproveAsVersion: (clipUrl: string, sunoTitle: string, versionName: string, energy: string) => void;
+  onUploadVersion: (file: File, versionName: string, energy: string) => void;
   audioUrl: string | null;
   existingVersions: string[];
   generatedClips: GeneratedClips | null;
@@ -250,6 +272,11 @@ function TrackRow({
     const file = e.target.files?.[0];
     if (file) onUpload(file);
   }
+
+  const [showVersionUpload, setShowVersionUpload] = useState(false);
+  const [versionUploadName, setVersionUploadName] = useState("remix-1");
+  const [versionUploadEnergy, setVersionUploadEnergy] = useState(track.energy || "whisper");
+  const versionInputRef = useRef<HTMLInputElement>(null);
 
   const isGenerating = status === "generating" || status === "polling";
   const hasClips = generatedClips && generatedClips.clips.length > 0;
@@ -332,16 +359,76 @@ function TrackRow({
             <audio controls src={audioUrl} className="mt-2 h-8 w-full max-w-xs" />
           )}
 
-          {/* Existing versions */}
-          {existingVersions.length > 0 && (
-            <div className="mt-2 flex flex-wrap gap-1">
-              {existingVersions.map((v) => (
-                <span key={v} className="rounded bg-violet-900/30 px-2 py-0.5 text-[10px] text-violet-400">
-                  {v}
-                </span>
-              ))}
-            </div>
-          )}
+          {/* Existing versions + add more */}
+          <div className="mt-2">
+            {existingVersions.length > 0 && (
+              <div className="flex flex-wrap gap-1 mb-2">
+                {existingVersions.map((v) => (
+                  <span key={v} className="rounded bg-violet-900/30 px-2 py-0.5 text-[10px] text-violet-400">
+                    {v}
+                  </span>
+                ))}
+              </div>
+            )}
+            <button
+              onClick={() => setShowVersionUpload(!showVersionUpload)}
+              className="text-[11px] text-violet-400 hover:text-violet-300 transition"
+            >
+              + Adicionar versão / remix
+            </button>
+            {showVersionUpload && (
+              <div className="mt-2 rounded-lg border border-violet-800/30 bg-violet-950/20 p-3 space-y-2">
+                <input
+                  ref={versionInputRef}
+                  type="file"
+                  accept="audio/mpeg,audio/mp3"
+                  className="hidden"
+                  onChange={(e) => {
+                    const f = e.target.files?.[0];
+                    if (f && versionUploadName) {
+                      onUploadVersion(f, versionUploadName, versionUploadEnergy);
+                      setShowVersionUpload(false);
+                    }
+                  }}
+                />
+                <div className="flex items-center gap-2">
+                  <label className="text-[10px] text-mundo-muted w-12">Nome:</label>
+                  <input
+                    type="text"
+                    value={versionUploadName}
+                    onChange={(e) => setVersionUploadName(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ""))}
+                    placeholder="remix-1, acoustic, live..."
+                    className="flex-1 rounded bg-mundo-bg px-2 py-1 text-xs text-mundo-creme border border-mundo-muted-dark/30 focus:border-violet-500 focus:outline-none"
+                  />
+                </div>
+                {existingVersions.includes(versionUploadName) && (
+                  <p className="text-[10px] text-amber-400">"{versionUploadName}" já existe — será substituída.</p>
+                )}
+                <div className="flex gap-1">
+                  {ENERGY_OPTIONS.map((e) => (
+                    <button
+                      key={e}
+                      onClick={() => setVersionUploadEnergy(e)}
+                      className={`rounded px-2 py-1 text-[10px] font-bold uppercase transition ${
+                        versionUploadEnergy === e
+                          ? ENERGY_LABELS[e].color
+                          : "bg-mundo-muted-dark/10 text-mundo-muted hover:text-mundo-creme"
+                      }`}
+                    >
+                      {ENERGY_LABELS[e].emoji} {ENERGY_LABELS[e].label}
+                    </button>
+                  ))}
+                </div>
+                <button
+                  onClick={() => versionInputRef.current?.click()}
+                  disabled={!versionUploadName}
+                  className="rounded-lg bg-violet-600 px-3 py-1.5 text-xs text-white transition hover:bg-violet-700 disabled:opacity-50"
+                >
+                  Escolher MP3
+                </button>
+              </div>
+            )}
+          </div>
 
           {/* Generated clips — approve as main or save as version */}
           {clipsReady && (
@@ -638,10 +725,9 @@ export default function AlbumProductionPage() {
       if (!audioRes.ok) throw new Error("Erro ao descarregar o áudio.");
       const blob = await audioRes.blob();
 
+      const album = ALL_ALBUMS.find(a => a.slug === albumSlug)!;
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}.mp3`;
-      const formData = new FormData();
-      formData.append("file", new File([blob], filename, { type: "audio/mpeg" }));
-      formData.append("filename", filename);
+      const formData = buildUploadForm(blob, filename, album, track, editedTitles[key] || sunoTitle);
 
       const uploadRes = await fetch("/api/admin/upload-audio", {
         method: "POST",
@@ -691,11 +777,10 @@ export default function AlbumProductionPage() {
       if (!audioRes.ok) throw new Error("Erro ao descarregar o áudio.");
       const blob = await audioRes.blob();
 
-      // Upload as version file
+      const album = ALL_ALBUMS.find(a => a.slug === albumSlug)!;
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-${versionName}.mp3`;
-      const formData = new FormData();
-      formData.append("file", new File([blob], filename, { type: "audio/mpeg" }));
-      formData.append("filename", filename);
+      const versionTitle = `${sunoTitle || track.title} (${versionName})`;
+      const formData = buildUploadForm(blob, filename, album, track, versionTitle);
 
       const uploadRes = await fetch("/api/admin/upload-audio", {
         method: "POST",
@@ -757,6 +842,58 @@ export default function AlbumProductionPage() {
     }
   }
 
+  async function uploadVersion(albumSlug: string, track: AlbumTrack, file: File, versionName: string, energy: string) {
+    const key = trackKey(albumSlug, track.number);
+    setStatuses((s) => ({ ...s, [key]: "uploading" }));
+
+    try {
+      const album = ALL_ALBUMS.find(a => a.slug === albumSlug)!;
+      const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-${versionName}.mp3`;
+      const versionTitle = `${track.title} (${versionName})`;
+      const formData = buildUploadForm(file, filename, album, track, versionTitle);
+
+      const uploadRes = await fetch("/api/admin/upload-audio", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!uploadRes.ok) {
+        const data = await uploadRes.json().catch(() => ({ erro: `HTTP ${uploadRes.status}` }));
+        throw new Error(data.erro || `Erro ${uploadRes.status}`);
+      }
+
+      const uploadData = await uploadRes.json();
+
+      // Save version metadata
+      await fetch("/api/admin/track-versions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          album_slug: albumSlug,
+          track_number: track.number,
+          version_name: versionName,
+          energy,
+          audio_url: uploadData.url,
+        }),
+      });
+
+      // Update local version list
+      setTrackVersions((v) => {
+        const existing = v[key] || [];
+        if (!existing.includes(versionName)) {
+          return { ...v, [key]: [...existing, versionName] };
+        }
+        return v;
+      });
+
+      setStatuses((s) => ({ ...s, [key]: audioUrls[key] ? "done" : "idle" }));
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Erro desconhecido";
+      setStatuses((s) => ({ ...s, [key]: "error" }));
+      setErrors((e) => ({ ...e, [key]: msg }));
+    }
+  }
+
   async function uploadTrack(albumSlug: string, track: AlbumTrack, file: File) {
     const key = trackKey(albumSlug, track.number);
     setStatuses((s) => ({ ...s, [key]: "uploading" }));
@@ -766,10 +903,9 @@ export default function AlbumProductionPage() {
       // Read ID3 title from MP3 before uploading
       const id3Title = await readId3Title(file);
 
+      const album = ALL_ALBUMS.find(a => a.slug === albumSlug)!;
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}.mp3`;
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("filename", filename);
+      const formData = buildUploadForm(file, filename, album, track, editedTitles[key] || id3Title);
 
       const res = await fetch("/api/admin/upload-audio", {
         method: "POST",
@@ -995,6 +1131,7 @@ export default function AlbumProductionPage() {
                     onGenerate={() => generateTrack(album.slug, track)}
                     onApproveClip={(url, title) => approveClip(album.slug, track, url, title)}
                     onApproveAsVersion={(url, title, name, energy) => approveAsVersion(album.slug, track, url, title, name, energy)}
+                    onUploadVersion={(file, name, energy) => uploadVersion(album.slug, track, file, name, energy)}
                     existingVersions={trackVersions[key] || []}
                     generatedClips={generatedClips[key] || null}
                     editedTitle={editedTitles[key] || null}

@@ -15,6 +15,7 @@
     "@supabase/supabase-js": "^2.95.3",
     "music-metadata-browser": "^2.5.11",
     "next": "16.1.6",
+    "node-id3": "^0.2.9",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },
