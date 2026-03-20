@@ -72,8 +72,8 @@ export default function RegisterSW() {
 
         {/* Text */}
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-medium text-[#F5F0E6]">Nova versao disponivel</p>
-          <p className="text-xs text-[#666680]">Actualiza para a versao mais recente.</p>
+          <p className="text-sm font-medium text-[#F5F0E6]">Nova versão disponível</p>
+          <p className="text-xs text-[#666680]">Actualiza para a versão mais recente.</p>
         </div>
 
         {/* Buttons */}

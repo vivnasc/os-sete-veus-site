@@ -293,7 +293,7 @@ export default function LibraryPage() {
               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#333350] mb-4">
                 <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
               </svg>
-              <p className="text-[#F5F0E6] font-medium mb-1">Ainda sem historico</p>
+              <p className="text-[#F5F0E6] font-medium mb-1">Ainda sem histórico</p>
               <p className="text-sm text-[#666680]">As faixas que ouves aparecem aqui</p>
             </div>
           ) : (

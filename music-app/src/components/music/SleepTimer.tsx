@@ -214,7 +214,7 @@ export default function SleepTimer({ isOpen, onClose }: SleepTimerProps) {
             Temporizador
           </h2>
           <p className="text-sm text-[#F5F0E6]/50 mt-1">
-            A musica para suavemente
+            A música pára suavemente
           </p>
         </div>
 

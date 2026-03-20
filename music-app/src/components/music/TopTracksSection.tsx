@@ -11,7 +11,7 @@ type Period = "week" | "month" | "year";
 
 const PERIOD_LABELS: Record<Period, string> = {
   week: "Esta semana",
-  month: "Este mes",
+  month: "Este mês",
   year: "Este ano",
 };
 

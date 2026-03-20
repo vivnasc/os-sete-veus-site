@@ -110,8 +110,8 @@ export default function SubscriptionModal({ onClose, trackTitle, albumColor = "#
             {[
               "175 faixas originais, sem limites",
               "Downloads para ouvir offline",
-              "Ritual diario personalizado",
-              "Novas faixas a cada lancamento",
+              "Ritual diário personalizado",
+              "Novas faixas a cada lançamento",
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-3">
                 <svg viewBox="0 0 24 24" fill="none" stroke={albumColor} strokeWidth="2" className="h-4 w-4 shrink-0">
@@ -134,7 +134,7 @@ export default function SubscriptionModal({ onClose, trackTitle, albumColor = "#
             >
               <p className="text-xs text-[#666680]">Mensal</p>
               <p className="text-lg font-semibold text-[#F5F0E6] mt-0.5">$4.99</p>
-              <p className="text-[10px] text-[#666680]">por mes</p>
+              <p className="text-[10px] text-[#666680]">por mês</p>
             </button>
             <button
               onClick={() => setPlan("yearly")}
@@ -151,7 +151,7 @@ export default function SubscriptionModal({ onClose, trackTitle, albumColor = "#
               )}
               <p className="text-xs text-[#666680]">Anual</p>
               <p className="text-lg font-semibold text-[#F5F0E6] mt-0.5">$39.99</p>
-              <p className="text-[10px] text-[#666680]">$3.33/mes</p>
+              <p className="text-[10px] text-[#666680]">$3.33/mês</p>
             </button>
           </div>
 
@@ -162,12 +162,12 @@ export default function SubscriptionModal({ onClose, trackTitle, albumColor = "#
             className="w-full mt-6 py-3 rounded-full text-sm font-semibold text-[#0D0D1A] transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50"
             style={{ backgroundColor: albumColor }}
           >
-            {loading ? "A processar..." : userId ? `Subscrever — ${selected.label}` : "Iniciar sessao para subscrever"}
+            {loading ? "A processar..." : userId ? `Subscrever — ${selected.label}` : "Iniciar sessão para subscrever"}
           </button>
 
           {/* Fine print */}
           <p className="text-[10px] text-[#666680] text-center mt-3">
-            Cancela a qualquer momento. A primeira faixa de cada album e sempre gratuita.
+            Cancela a qualquer momento. A primeira faixa de cada álbum é sempre gratuita.
           </p>
         </div>
       </div>

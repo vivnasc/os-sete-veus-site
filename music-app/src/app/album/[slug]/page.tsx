@@ -27,7 +27,7 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <p className="text-[#a0a0b0] text-lg mb-4">Album nao encontrado.</p>
+          <p className="text-[#a0a0b0] text-lg mb-4">Álbum não encontrado.</p>
           <Link href="/" className="text-sm text-[#C9A96E] hover:underline">
             Voltar
           </Link>
@@ -182,7 +182,7 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
         {/* Album footer */}
         <div className="mt-8 pt-6 border-t border-white/5">
           <p className="text-xs text-[#666680]">
-            {album.tracks.length} faixas — {fmt(totalDuration)} de duracao total
+            {album.tracks.length} faixas — {fmt(totalDuration)} de duração total
           </p>
           <p className="text-xs text-[#666680] mt-1">
             Véus

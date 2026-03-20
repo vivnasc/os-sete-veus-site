@@ -27,6 +27,7 @@ export default function FullPlayer() {
     currentTime,
     duration,
     shuffle,
+    infinite,
     repeat,
     showFullPlayer,
     togglePlay,
@@ -34,6 +35,7 @@ export default function FullPlayer() {
     previous,
     seek,
     toggleShuffle,
+    toggleInfinite,
     cycleRepeat,
     setShowFullPlayer,
   } = useMusicPlayer();
@@ -360,6 +362,23 @@ export default function FullPlayer() {
               {repeat === "one" && (
                 <span className="absolute -top-0.5 -right-0.5 text-[8px] font-bold">1</span>
               )}
+            </button>
+          </div>
+
+          {/* Infinite mode toggle */}
+          <div className="flex justify-center mt-2">
+            <button
+              onClick={toggleInfinite}
+              className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] transition-colors ${
+                infinite
+                  ? "bg-white/10 text-white"
+                  : "text-[#666680] hover:text-[#a0a0b0]"
+              }`}
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+                <path d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.133-8-12.739-8-4.585 0-4.585 8 0 8 5.606 0 7.644-8 12.74-8z" />
+              </svg>
+              {infinite ? "Infinito" : "Infinito"}
             </button>
           </div>
         </div>

@@ -212,9 +212,9 @@ export default function UploadPage() {
         </svg>
         <h1 className="font-display text-xl font-semibold text-[#F5F0E6] mb-2">Acesso restrito</h1>
         <p className="text-sm text-[#666680] text-center mb-6 max-w-xs">
-          Esta pagina e exclusiva para a administradora.
+          Esta página é exclusiva para a administradora.
           {userEmail && (
-            <span className="block mt-2 text-[#a0a0b0]">Sessao: {userEmail}</span>
+            <span className="block mt-2 text-[#a0a0b0]">Sessão: {userEmail}</span>
           )}
         </p>
         <Link
@@ -242,7 +242,7 @@ export default function UploadPage() {
         </Link>
 
         <h1 className="font-display text-3xl font-bold text-[#F5F0E6]">
-          Carregar Musicas
+          Carregar Músicas
         </h1>
         <p className="text-sm text-[#a0a0b0] mt-2">
           Carrega ficheiros de audio para o Supabase. Aceita MP3, WAV e outros formatos de audio.
@@ -282,12 +282,12 @@ export default function UploadPage() {
         {versionName && (
           <div className="mt-3 space-y-2">
             <p className="text-xs text-[#C9A96E]">
-              Os uploads serao guardados como versao "{versionName}" (ex: faixa-01-{versionName}.mp3)
+              Os uploads serão guardados como versão "{versionName}" (ex: faixa-01-{versionName}.mp3)
             </p>
 
             {/* Energy picker for version */}
             <div className="flex items-center gap-2">
-              <span className="text-xs text-[#666680]">Energia da versao:</span>
+              <span className="text-xs text-[#666680]">Energia da versão:</span>
               <div className="flex gap-1.5">
                 {ENERGY_OPTIONS.map(opt => (
                   <button
@@ -401,7 +401,7 @@ export default function UploadPage() {
                           onClick={() => setShowVersions(isExpanded ? null : key)}
                           className="shrink-0 text-xs text-[#C9A96E]/70 hover:text-[#C9A96E] transition-colors flex items-center gap-1"
                         >
-                          <span>{versions.length} {versions.length === 1 ? "versao" : "versoes"}</span>
+                          <span>{versions.length} {versions.length === 1 ? "versão" : "versões"}</span>
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`h-3 w-3 transition-transform ${isExpanded ? "rotate-180" : ""}`}>
                             <path d="M19 9l-7 7-7-7" />
                           </svg>
@@ -481,14 +481,14 @@ export default function UploadPage() {
               </p>
               {versionName && (
                 <p className="text-xs text-[#C9A96E] mt-1 font-mono">
-                  albums/{selectedAlbum.slug}/faixa-01-{versionName}.mp3 (versao)
+                  albums/{selectedAlbum.slug}/faixa-01-{versionName}.mp3 (versão)
                 </p>
               )}
               <p className="text-xs text-[#666680] mt-2">
                 O upload com "Carregar todas" associa os ficheiros por ordem (primeiro ficheiro = faixa 1, etc.).
               </p>
               <p className="text-xs text-[#666680] mt-1">
-                Para adicionar versoes alternativas, escreve o nome da versao no campo acima (ex: "v2", "remix", "acoustic").
+                Para adicionar versões alternativas, escreve o nome da versão no campo acima (ex: "v2", "remix", "acoustic").
               </p>
             </div>
           </div>

@@ -173,7 +173,7 @@ export default function PartilhaClient({
           href="/"
           className="mt-3 text-xs text-[#666680] hover:text-[#a0a0b0] transition-colors"
         >
-          Explorar mais musica
+          Explorar mais música
         </Link>
 
         {/* Branding */}

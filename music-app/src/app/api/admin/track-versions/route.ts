@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
   try {
     const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
     if (!serviceKey) {
-      return NextResponse.json({ erro: "SUPABASE_SERVICE_ROLE_KEY nao configurada." }, { status: 500 });
+      return NextResponse.json({ erro: "SUPABASE_SERVICE_ROLE_KEY não configurada." }, { status: 500 });
     }
 
     const supabase = createClient(SUPABASE_URL, serviceKey, {
@@ -44,7 +44,7 @@ export async function GET() {
   try {
     const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
     if (!serviceKey) {
-      return NextResponse.json({ erro: "SUPABASE_SERVICE_ROLE_KEY nao configurada." }, { status: 500 });
+      return NextResponse.json({ erro: "SUPABASE_SERVICE_ROLE_KEY não configurada." }, { status: 500 });
     }
 
     const supabase = createClient(SUPABASE_URL, serviceKey, {

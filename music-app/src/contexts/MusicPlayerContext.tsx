@@ -52,9 +52,11 @@ type MusicPlayerState = {
   duration: number;
   volume: number;
   shuffle: boolean;
+  infinite: boolean;
   repeat: RepeatMode;
   showFullPlayer: boolean;
   showLyrics: boolean;
+  audioError: string | null;
 };
 
 type MusicPlayerActions = {
@@ -66,9 +68,11 @@ type MusicPlayerActions = {
   seek: (time: number) => void;
   setVolume: (v: number) => void;
   toggleShuffle: () => void;
+  toggleInfinite: () => void;
   cycleRepeat: () => void;
   setShowFullPlayer: (v: boolean) => void;
   setShowLyrics: (v: boolean) => void;
+  clearAudioError: () => void;
 };
 
 const MusicPlayerContext = createContext<(MusicPlayerState & MusicPlayerActions) | null>(null);
@@ -113,9 +117,11 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     duration: 0,
     volume: 1,
     shuffle: false,
+    infinite: false,
     repeat: "off",
     showFullPlayer: false,
     showLyrics: false,
+    audioError: null,
   });
 
   useEffect(() => {
@@ -131,7 +137,13 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     const onPlay = () => setState(s => ({ ...s, isPlaying: true }));
     const onPause = () => setState(s => ({ ...s, isPlaying: false }));
     const onError = () => {
-      setState(s => ({ ...s, isPlaying: false }));
+      setState(s => ({
+        ...s,
+        isPlaying: false,
+        audioError: s.currentTrack
+          ? `"${s.currentTrack.title}" ainda não tem áudio disponível.`
+          : "Erro ao carregar áudio.",
+      }));
     };
 
     audio.addEventListener("timeupdate", onTime);
@@ -180,6 +192,35 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       if (nextIdx >= prev.queue.length) {
         if (prev.repeat === "all") {
           nextIdx = 0;
+        } else if (prev.infinite && prev.currentTrack) {
+          // Infinite mode: pick a random track with same energy from all albums
+          const currentEnergy = prev.currentTrack.energy;
+          const allTracks = ALL_ALBUMS.flatMap(a =>
+            a.tracks.map(t => ({ ...t, albumSlug: a.slug } as QueueTrack))
+          );
+          const sameEnergy = allTracks.filter(
+            t => t.energy === currentEnergy && !(t.number === prev.currentTrack!.number && t.albumSlug === prev.currentAlbum?.slug)
+          );
+          if (sameEnergy.length > 0) {
+            const pick = sameEnergy[Math.floor(Math.random() * sameEnergy.length)];
+            const pickAlbum = ALL_ALBUMS.find(a => a.slug === pick.albumSlug);
+            if (pickAlbum) {
+              // Add to queue and play
+              const newQueue = [...prev.queue, pick];
+              const audio = audioRef.current;
+              if (audio) {
+                setSourceAndPlay(audio, pick, pickAlbum, blobUrlRef);
+              }
+              return {
+                ...prev,
+                currentTrack: pick,
+                currentAlbum: pickAlbum,
+                queue: newQueue,
+                isPlaying: true,
+              };
+            }
+          }
+          return { ...prev, isPlaying: false };
         } else {
           return { ...prev, isPlaying: false };
         }
@@ -218,6 +259,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       queueAlbum: album,
       isPlaying: true,
       showFullPlayer: true,
+      audioError: null,
     }));
   }, []);
 
@@ -290,6 +332,10 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     setState(s => ({ ...s, shuffle: !s.shuffle }));
   }, []);
 
+  const toggleInfinite = useCallback(() => {
+    setState(s => ({ ...s, infinite: !s.infinite }));
+  }, []);
+
   const cycleRepeat = useCallback(() => {
     setState(s => ({
       ...s,
@@ -305,6 +351,10 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     setState(s => ({ ...s, showLyrics: v }));
   }, []);
 
+  const clearAudioError = useCallback(() => {
+    setState(s => ({ ...s, audioError: null }));
+  }, []);
+
   return (
     <MusicPlayerContext.Provider
       value={{
@@ -317,9 +367,11 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
         seek,
         setVolume,
         toggleShuffle,
+        toggleInfinite,
         cycleRepeat,
         setShowFullPlayer,
         setShowLyrics,
+        clearAudioError,
       }}
     >
       {children}

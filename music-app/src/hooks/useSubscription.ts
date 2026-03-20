@@ -6,7 +6,7 @@ import { supabase } from "@/lib/supabase";
 export type SubscriptionStatus = "free" | "active" | "cancelled" | "loading";
 
 const PRICE = {
-  monthly: { amount: 4.99, label: "$4.99/mes" },
+  monthly: { amount: 4.99, label: "$4.99/mês" },
   yearly: { amount: 39.99, label: "$39.99/ano" },
 } as const;
 

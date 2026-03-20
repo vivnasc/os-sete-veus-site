@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
+import { parseBlob } from "music-metadata-browser";
 import {
   ALL_ALBUMS,
   getAlbumsByProduct,
@@ -12,6 +13,26 @@ import {
   type TrackEnergy,
   type TrackFlavor,
 } from "@/data/albums";
+import { getAlbumCover } from "@/lib/album-covers";
+
+/** Read ID3 title from an MP3 File */
+async function readId3Title(file: File): Promise<string | null> {
+  try {
+    const metadata = await parseBlob(file);
+    return metadata.common.title || null;
+  } catch {
+    return null;
+  }
+}
+
+/** Save title to database */
+async function saveTitle(albumSlug: string, trackNumber: number, title: string, source: string) {
+  await fetch("/api/admin/track-metadata", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ albumSlug, trackNumber, title, source }),
+  }).catch(() => {});
+}
 
 function CopyButton({ text, label = "Copiar" }: { text: string; label?: string }) {
   const [copied, setCopied] = useState(false);
@@ -35,6 +56,8 @@ function CopyButton({ text, label = "Copiar" }: { text: string; label?: string }
 
 type TrackStatus = "idle" | "uploading" | "done" | "error" | "generating" | "polling";
 
+const ENERGY_OPTIONS = ["whisper", "steady", "pulse", "anthem", "raw"] as const;
+
 type SunoClip = {
   id: string;
   status: string;
@@ -48,6 +71,25 @@ type GeneratedClips = {
 
 function trackKey(albumSlug: string, trackNum: number) {
   return `${albumSlug}-t${trackNum}`;
+}
+
+function buildUploadForm(
+  blob: Blob,
+  filename: string,
+  album: Album,
+  track: AlbumTrack,
+  titleOverride?: string | null
+): FormData {
+  const formData = new FormData();
+  formData.append("file", new File([blob], filename, { type: "audio/mpeg" }));
+  formData.append("filename", filename);
+  formData.append("title", titleOverride || track.title);
+  formData.append("artist", "Vivianne dos Santos");
+  formData.append("album", album.title);
+  formData.append("trackNumber", String(track.number));
+  formData.append("year", "2026");
+  formData.append("coverPath", getAlbumCover(album));
+  return formData;
 }
 
 function ProductFilter({
@@ -84,6 +126,114 @@ function ProductFilter({
   );
 }
 
+function ClipApprovalRow({
+  clip,
+  clipIndex,
+  hasMainAudio,
+  existingVersions,
+  trackEnergy,
+  onApproveMain,
+  onApproveVersion,
+}: {
+  clip: SunoClip;
+  clipIndex: number;
+  hasMainAudio: boolean;
+  existingVersions: string[];
+  trackEnergy: string;
+  onApproveMain: () => void;
+  onApproveVersion: (name: string, energy: string) => void;
+}) {
+  const [mode, setMode] = useState<"pick" | "version">("pick");
+  const [versionName, setVersionName] = useState(`suno-v${clipIndex + 1}`);
+  const [energy, setEnergy] = useState(trackEnergy || "whisper");
+
+  const nameExists = existingVersions.includes(versionName);
+
+  return (
+    <div className="rounded-lg border border-mundo-muted-dark/20 bg-mundo-bg/50 p-3">
+      <div className="flex items-center gap-2 mb-2">
+        <span className="text-[10px] text-mundo-muted font-mono">#{clipIndex + 1}</span>
+        {clip.title && <span className="text-xs text-mundo-creme">{clip.title}</span>}
+      </div>
+      <audio controls src={clip.audioUrl!} className="h-8 w-full mb-2" />
+
+      {mode === "pick" ? (
+        <div className="flex items-center gap-2">
+          {!hasMainAudio && (
+            <button
+              onClick={onApproveMain}
+              className="rounded-lg bg-mundo-dourado px-3 py-1.5 text-xs text-white transition hover:bg-mundo-dourado/80"
+            >
+              Aprovar principal
+            </button>
+          )}
+          <button
+            onClick={() => setMode("version")}
+            className="rounded-lg bg-violet-600 px-3 py-1.5 text-xs text-white transition hover:bg-violet-700"
+          >
+            Guardar versão
+          </button>
+          {hasMainAudio && (
+            <button
+              onClick={onApproveMain}
+              className="rounded-lg bg-mundo-muted-dark/20 px-3 py-1.5 text-xs text-mundo-muted transition hover:bg-mundo-muted-dark/30"
+            >
+              Substituir principal
+            </button>
+          )}
+        </div>
+      ) : (
+        <div className="space-y-2">
+          <div className="flex items-center gap-2">
+            <input
+              type="text"
+              value={versionName}
+              onChange={(e) => setVersionName(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ""))}
+              placeholder="nome-da-versão"
+              className="flex-1 rounded-lg bg-mundo-bg px-3 py-1.5 text-xs text-mundo-creme border border-mundo-muted-dark/30 focus:border-violet-500 focus:outline-none"
+            />
+          </div>
+          {nameExists && (
+            <p className="text-[10px] text-amber-400">Versão "{versionName}" já existe — será substituída.</p>
+          )}
+          <div className="flex gap-1">
+            {ENERGY_OPTIONS.map((e) => (
+              <button
+                key={e}
+                onClick={() => setEnergy(e)}
+                className={`rounded px-2 py-1 text-[10px] font-bold uppercase transition ${
+                  energy === e
+                    ? ENERGY_LABELS[e].color
+                    : "bg-mundo-muted-dark/10 text-mundo-muted hover:text-mundo-creme"
+                }`}
+              >
+                {ENERGY_LABELS[e].emoji} {ENERGY_LABELS[e].label}
+              </button>
+            ))}
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => {
+                if (versionName) onApproveVersion(versionName, energy);
+              }}
+              disabled={!versionName}
+              className="rounded-lg bg-violet-600 px-3 py-1.5 text-xs text-white transition hover:bg-violet-700 disabled:opacity-50"
+            >
+              Guardar "{versionName}"
+            </button>
+            <button
+              onClick={() => setMode("pick")}
+              className="text-xs text-mundo-muted hover:text-mundo-creme"
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function TrackRow({
   track,
   status,
@@ -92,7 +242,10 @@ function TrackRow({
   onRemove,
   onGenerate,
   onApproveClip,
+  onApproveAsVersion,
+  onUploadVersion,
   audioUrl,
+  existingVersions,
   generatedClips,
   editedTitle,
   onTitleChange,
@@ -104,7 +257,10 @@ function TrackRow({
   onRemove: () => void;
   onGenerate: () => void;
   onApproveClip: (clipUrl: string, sunoTitle: string) => void;
+  onApproveAsVersion: (clipUrl: string, sunoTitle: string, versionName: string, energy: string) => void;
+  onUploadVersion: (file: File, versionName: string, energy: string) => void;
   audioUrl: string | null;
+  existingVersions: string[];
   generatedClips: GeneratedClips | null;
   editedTitle: string | null;
   onTitleChange: (title: string) => void;
@@ -116,6 +272,11 @@ function TrackRow({
     const file = e.target.files?.[0];
     if (file) onUpload(file);
   }
+
+  const [showVersionUpload, setShowVersionUpload] = useState(false);
+  const [versionUploadName, setVersionUploadName] = useState("remix-1");
+  const [versionUploadEnergy, setVersionUploadEnergy] = useState(track.energy || "whisper");
+  const versionInputRef = useRef<HTMLInputElement>(null);
 
   const isGenerating = status === "generating" || status === "polling";
   const hasClips = generatedClips && generatedClips.clips.length > 0;
@@ -198,23 +359,95 @@ function TrackRow({
             <audio controls src={audioUrl} className="mt-2 h-8 w-full max-w-xs" />
           )}
 
-          {/* Generated clips — pick and approve */}
+          {/* Existing versions + add more */}
+          <div className="mt-2">
+            {existingVersions.length > 0 && (
+              <div className="flex flex-wrap gap-1 mb-2">
+                {existingVersions.map((v) => (
+                  <span key={v} className="rounded bg-violet-900/30 px-2 py-0.5 text-[10px] text-violet-400">
+                    {v}
+                  </span>
+                ))}
+              </div>
+            )}
+            <button
+              onClick={() => setShowVersionUpload(!showVersionUpload)}
+              className="text-[11px] text-violet-400 hover:text-violet-300 transition"
+            >
+              + Adicionar versão / remix
+            </button>
+            {showVersionUpload && (
+              <div className="mt-2 rounded-lg border border-violet-800/30 bg-violet-950/20 p-3 space-y-2">
+                <input
+                  ref={versionInputRef}
+                  type="file"
+                  accept="audio/mpeg,audio/mp3"
+                  className="hidden"
+                  onChange={(e) => {
+                    const f = e.target.files?.[0];
+                    if (f && versionUploadName) {
+                      onUploadVersion(f, versionUploadName, versionUploadEnergy);
+                      setShowVersionUpload(false);
+                    }
+                  }}
+                />
+                <div className="flex items-center gap-2">
+                  <label className="text-[10px] text-mundo-muted w-12">Nome:</label>
+                  <input
+                    type="text"
+                    value={versionUploadName}
+                    onChange={(e) => setVersionUploadName(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ""))}
+                    placeholder="remix-1, acoustic, live..."
+                    className="flex-1 rounded bg-mundo-bg px-2 py-1 text-xs text-mundo-creme border border-mundo-muted-dark/30 focus:border-violet-500 focus:outline-none"
+                  />
+                </div>
+                {existingVersions.includes(versionUploadName) && (
+                  <p className="text-[10px] text-amber-400">"{versionUploadName}" já existe — será substituída.</p>
+                )}
+                <div className="flex gap-1">
+                  {ENERGY_OPTIONS.map((e) => (
+                    <button
+                      key={e}
+                      onClick={() => setVersionUploadEnergy(e)}
+                      className={`rounded px-2 py-1 text-[10px] font-bold uppercase transition ${
+                        versionUploadEnergy === e
+                          ? ENERGY_LABELS[e].color
+                          : "bg-mundo-muted-dark/10 text-mundo-muted hover:text-mundo-creme"
+                      }`}
+                    >
+                      {ENERGY_LABELS[e].emoji} {ENERGY_LABELS[e].label}
+                    </button>
+                  ))}
+                </div>
+                <button
+                  onClick={() => versionInputRef.current?.click()}
+                  disabled={!versionUploadName}
+                  className="rounded-lg bg-violet-600 px-3 py-1.5 text-xs text-white transition hover:bg-violet-700 disabled:opacity-50"
+                >
+                  Escolher MP3
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Generated clips — approve as main or save as version */}
           {clipsReady && (
             <div className="mt-3 rounded-lg border border-amber-700/30 bg-amber-950/30 p-3">
               <p className="mb-2 text-xs font-medium text-amber-400">
-                {generatedClips.clips.length} versao(oes) gerada(s) — ouve e aprova:
+                {generatedClips.clips.length} versão(ões) gerada(s) — aprova ou guarda como versão:
               </p>
-              <div className="space-y-2">
-                {generatedClips.clips.map((clip) => (
-                  <div key={clip.id} className="flex items-center gap-3">
-                    <audio controls src={clip.audioUrl!} className="h-8 flex-1" />
-                    <button
-                      onClick={() => onApproveClip(clip.audioUrl!, clip.title)}
-                      className="shrink-0 rounded-lg bg-mundo-dourado px-3 py-1.5 text-xs text-white transition hover:bg-mundo-dourado/80"
-                    >
-                      Aprovar
-                    </button>
-                  </div>
+              <div className="space-y-3">
+                {generatedClips.clips.map((clip, idx) => (
+                  <ClipApprovalRow
+                    key={clip.id}
+                    clip={clip}
+                    clipIndex={idx}
+                    hasMainAudio={!!audioUrl}
+                    existingVersions={existingVersions}
+                    trackEnergy={track.energy}
+                    onApproveMain={() => onApproveClip(clip.audioUrl!, clip.title)}
+                    onApproveVersion={(name, energy) => onApproveAsVersion(clip.audioUrl!, clip.title, name, energy)}
+                  />
                 ))}
               </div>
               <button
@@ -231,7 +464,7 @@ function TrackRow({
             <div className="mt-3 flex items-center gap-2 rounded-lg bg-amber-950/30 p-3">
               <div className="h-4 w-4 animate-spin rounded-full border-2 border-amber-400 border-t-transparent" />
               <span className="text-xs text-amber-400">
-                {status === "generating" ? "A enviar para o Suno..." : "A aguardar geracao (pode demorar 30-60s)..."}
+                {status === "generating" ? "A enviar para o Suno..." : "A aguardar geração (pode demorar 30-60s)..."}
               </span>
             </div>
           )}
@@ -301,7 +534,61 @@ export default function AlbumProductionPage() {
   const [audioUrls, setAudioUrls] = useState<Record<string, string>>({});
   const [generatedClips, setGeneratedClips] = useState<Record<string, GeneratedClips>>({});
   const [editedTitles, setEditedTitles] = useState<Record<string, string>>({});
+  const [trackVersions, setTrackVersions] = useState<Record<string, string[]>>({}); // key → version names
   const pollingRef = useRef<Record<string, NodeJS.Timeout>>({});
+  const titleSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
+
+  // Load existing audio status + saved titles on mount
+  useEffect(() => {
+    fetch("/api/admin/audio-status")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.existing) {
+          const newStatuses: Record<string, TrackStatus> = {};
+          const newUrls: Record<string, string> = {};
+          for (const key of data.existing as string[]) {
+            newStatuses[key] = "done";
+            const match = key.match(/^(.+)-t(\d+)$/);
+            if (match) {
+              newUrls[key] = `/api/music/stream?album=${match[1]}&track=${match[2]}`;
+            }
+          }
+          setStatuses((s) => ({ ...newStatuses, ...s }));
+          setAudioUrls((u) => ({ ...newUrls, ...u }));
+        }
+      })
+      .catch(() => {});
+
+    // Load saved custom titles
+    fetch("/api/admin/track-metadata")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.titles) {
+          const saved: Record<string, string> = {};
+          for (const [key, val] of Object.entries(data.titles)) {
+            saved[key] = (val as { title: string }).title;
+          }
+          setEditedTitles((t) => ({ ...saved, ...t }));
+        }
+      })
+      .catch(() => {});
+
+    // Load existing track versions
+    fetch("/api/admin/track-versions")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.versions) {
+          const vMap: Record<string, string[]> = {};
+          for (const v of data.versions as { album_slug: string; track_number: number; version_name: string }[]) {
+            const key = `${v.album_slug}-t${v.track_number}`;
+            if (!vMap[key]) vMap[key] = [];
+            vMap[key].push(v.version_name);
+          }
+          setTrackVersions(vMap);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     return () => {
@@ -430,17 +717,17 @@ export default function AlbumProductionPage() {
     // If Suno gave a better title, save it
     if (sunoTitle && sunoTitle !== track.title && !editedTitles[key]) {
       setEditedTitles((t) => ({ ...t, [key]: sunoTitle }));
+      saveTitle(albumSlug, track.number, sunoTitle, "suno");
     }
 
     try {
       const audioRes = await fetch(clipAudioUrl);
-      if (!audioRes.ok) throw new Error("Erro ao descarregar o audio.");
+      if (!audioRes.ok) throw new Error("Erro ao descarregar o áudio.");
       const blob = await audioRes.blob();
 
+      const album = ALL_ALBUMS.find(a => a.slug === albumSlug)!;
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}.mp3`;
-      const formData = new FormData();
-      formData.append("file", new File([blob], filename, { type: "audio/mpeg" }));
-      formData.append("filename", filename);
+      const formData = buildUploadForm(blob, filename, album, track, editedTitles[key] || sunoTitle);
 
       const uploadRes = await fetch("/api/admin/upload-audio", {
         method: "POST",
@@ -455,11 +742,151 @@ export default function AlbumProductionPage() {
       const data = await uploadRes.json();
       setStatuses((s) => ({ ...s, [key]: "done" }));
       setAudioUrls((u) => ({ ...u, [key]: data.url }));
+      // Remove only the approved clip, keep others
       setGeneratedClips((g) => {
-        const copy = { ...g };
-        delete copy[key];
-        return copy;
+        const current = g[key];
+        if (!current) return g;
+        const remaining = current.clips.filter((c) => c.audioUrl !== clipAudioUrl);
+        if (remaining.length === 0) {
+          const copy = { ...g };
+          delete copy[key];
+          return copy;
+        }
+        return { ...g, [key]: { clips: remaining } };
       });
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Erro desconhecido";
+      setStatuses((s) => ({ ...s, [key]: "error" }));
+      setErrors((e) => ({ ...e, [key]: msg }));
+    }
+  }
+
+  async function approveAsVersion(
+    albumSlug: string,
+    track: AlbumTrack,
+    clipAudioUrl: string,
+    sunoTitle: string,
+    versionName: string,
+    energy: string
+  ) {
+    const key = trackKey(albumSlug, track.number);
+    setStatuses((s) => ({ ...s, [key]: "uploading" }));
+
+    try {
+      const audioRes = await fetch(clipAudioUrl);
+      if (!audioRes.ok) throw new Error("Erro ao descarregar o áudio.");
+      const blob = await audioRes.blob();
+
+      const album = ALL_ALBUMS.find(a => a.slug === albumSlug)!;
+      const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-${versionName}.mp3`;
+      const versionTitle = `${sunoTitle || track.title} (${versionName})`;
+      const formData = buildUploadForm(blob, filename, album, track, versionTitle);
+
+      const uploadRes = await fetch("/api/admin/upload-audio", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!uploadRes.ok) {
+        const data = await uploadRes.json().catch(() => ({ erro: `HTTP ${uploadRes.status}` }));
+        throw new Error(data.erro || `Erro ${uploadRes.status}`);
+      }
+
+      const uploadData = await uploadRes.json();
+
+      // Save version metadata to track_versions table
+      await fetch("/api/admin/track-versions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          album_slug: albumSlug,
+          track_number: track.number,
+          version_name: versionName,
+          energy,
+          audio_url: uploadData.url,
+        }),
+      });
+
+      // Save title if Suno provided one
+      if (sunoTitle) {
+        saveTitle(albumSlug, track.number, sunoTitle, "suno");
+      }
+
+      // Update local version list
+      setTrackVersions((v) => {
+        const existing = v[key] || [];
+        if (!existing.includes(versionName)) {
+          return { ...v, [key]: [...existing, versionName] };
+        }
+        return v;
+      });
+
+      setStatuses((s) => ({ ...s, [key]: statuses[key] === "uploading" ? (audioUrls[key] ? "done" : "idle") : s[key] }));
+
+      // Remove the approved clip, keep others
+      setGeneratedClips((g) => {
+        const current = g[key];
+        if (!current) return g;
+        const remaining = current.clips.filter((c) => c.audioUrl !== clipAudioUrl);
+        if (remaining.length === 0) {
+          const copy = { ...g };
+          delete copy[key];
+          return copy;
+        }
+        return { ...g, [key]: { clips: remaining } };
+      });
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Erro desconhecido";
+      setStatuses((s) => ({ ...s, [key]: "error" }));
+      setErrors((e) => ({ ...e, [key]: msg }));
+    }
+  }
+
+  async function uploadVersion(albumSlug: string, track: AlbumTrack, file: File, versionName: string, energy: string) {
+    const key = trackKey(albumSlug, track.number);
+    setStatuses((s) => ({ ...s, [key]: "uploading" }));
+
+    try {
+      const album = ALL_ALBUMS.find(a => a.slug === albumSlug)!;
+      const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-${versionName}.mp3`;
+      const versionTitle = `${track.title} (${versionName})`;
+      const formData = buildUploadForm(file, filename, album, track, versionTitle);
+
+      const uploadRes = await fetch("/api/admin/upload-audio", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!uploadRes.ok) {
+        const data = await uploadRes.json().catch(() => ({ erro: `HTTP ${uploadRes.status}` }));
+        throw new Error(data.erro || `Erro ${uploadRes.status}`);
+      }
+
+      const uploadData = await uploadRes.json();
+
+      // Save version metadata
+      await fetch("/api/admin/track-versions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          album_slug: albumSlug,
+          track_number: track.number,
+          version_name: versionName,
+          energy,
+          audio_url: uploadData.url,
+        }),
+      });
+
+      // Update local version list
+      setTrackVersions((v) => {
+        const existing = v[key] || [];
+        if (!existing.includes(versionName)) {
+          return { ...v, [key]: [...existing, versionName] };
+        }
+        return v;
+      });
+
+      setStatuses((s) => ({ ...s, [key]: audioUrls[key] ? "done" : "idle" }));
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Erro desconhecido";
       setStatuses((s) => ({ ...s, [key]: "error" }));
@@ -473,10 +900,12 @@ export default function AlbumProductionPage() {
     setErrors((e) => ({ ...e, [key]: "" }));
 
     try {
+      // Read ID3 title from MP3 before uploading
+      const id3Title = await readId3Title(file);
+
+      const album = ALL_ALBUMS.find(a => a.slug === albumSlug)!;
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}.mp3`;
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("filename", filename);
+      const formData = buildUploadForm(file, filename, album, track, editedTitles[key] || id3Title);
 
       const res = await fetch("/api/admin/upload-audio", {
         method: "POST",
@@ -491,6 +920,12 @@ export default function AlbumProductionPage() {
       const data = await res.json();
       setStatuses((s) => ({ ...s, [key]: "done" }));
       setAudioUrls((u) => ({ ...u, [key]: data.url }));
+
+      // If MP3 has an ID3 title, use it (unless already manually edited)
+      if (id3Title && !editedTitles[key]) {
+        setEditedTitles((t) => ({ ...t, [key]: id3Title }));
+        saveTitle(albumSlug, track.number, id3Title, "id3");
+      }
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Erro desconhecido";
       setStatuses((s) => ({ ...s, [key]: "error" }));
@@ -517,13 +952,13 @@ export default function AlbumProductionPage() {
             href="/"
             className="mb-4 inline-block text-sm text-mundo-muted hover:text-mundo-creme"
           >
-            ← Inicio
+            ← Início
           </Link>
           <h1 className="font-display text-3xl text-mundo-creme">
-            Producao de Albums
+            Produção de Álbuns
           </h1>
           <p className="mt-1 text-mundo-muted">
-            Gera via Suno, ouve, edita o titulo, aprova.
+            Gera via Suno, ouve, edita o título, aprova.
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-4">
             <span className="rounded-full bg-mundo-muted-dark/10 px-3 py-1 text-xs text-mundo-muted">
@@ -577,7 +1012,7 @@ export default function AlbumProductionPage() {
                   : "text-mundo-muted hover:text-mundo-creme"
               }`}
             >
-              Producao
+              Produção
             </button>
             <button
               onClick={() => setViewMode("letras")}
@@ -597,7 +1032,7 @@ export default function AlbumProductionPage() {
           <div className="space-y-8">
             <div className="rounded-xl border border-mundo-muted-dark/30 bg-mundo-bg-light p-6">
               <p className="text-sm text-mundo-muted">
-                Revisa todas as letras antes de gastar creditos.
+                Revisa todas as letras antes de gastar créditos.
               </p>
             </div>
             {albums.map((a) => (
@@ -673,7 +1108,7 @@ export default function AlbumProductionPage() {
               <p className="mt-1 text-mundo-muted">{album.subtitle}</p>
               <div className="mt-2 flex items-center gap-3">
                 <span className="rounded bg-mundo-muted-dark/10 px-2 py-0.5 text-xs text-mundo-muted">
-                  {album.product}{album.veu ? ` — Veu ${album.veu}` : ""}
+                  {album.product}{album.veu ? ` — Véu ${album.veu}` : ""}
                 </span>
                 <span className="text-xs text-mundo-muted/60">
                   {album.tracks.length} faixas · {Math.floor(album.tracks.reduce((s, t) => s + t.durationSeconds, 0) / 60)} min
@@ -695,9 +1130,21 @@ export default function AlbumProductionPage() {
                     onRemove={() => removeTrack(album.slug, track.number)}
                     onGenerate={() => generateTrack(album.slug, track)}
                     onApproveClip={(url, title) => approveClip(album.slug, track, url, title)}
+                    onApproveAsVersion={(url, title, name, energy) => approveAsVersion(album.slug, track, url, title, name, energy)}
+                    onUploadVersion={(file, name, energy) => uploadVersion(album.slug, track, file, name, energy)}
+                    existingVersions={trackVersions[key] || []}
                     generatedClips={generatedClips[key] || null}
                     editedTitle={editedTitles[key] || null}
-                    onTitleChange={(title) => setEditedTitles((t) => ({ ...t, [key]: title }))}
+                    onTitleChange={(title) => {
+                      setEditedTitles((t) => ({ ...t, [key]: title }));
+                      // Debounce save to DB (1s after last keystroke)
+                      if (titleSaveRef.current[key]) clearTimeout(titleSaveRef.current[key]);
+                      titleSaveRef.current[key] = setTimeout(() => {
+                        if (title && title !== track.title) {
+                          saveTitle(album.slug, track.number, title, "manual");
+                        }
+                      }, 1000);
+                    }}
                   />
                 );
               })}
