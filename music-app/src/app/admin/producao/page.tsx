@@ -92,6 +92,41 @@ function buildUploadForm(
   return formData;
 }
 
+/**
+ * Upload audio via signed URL (bypasses Vercel 4.5MB body limit).
+ * Falls back to /api/admin/upload-audio for small files if signed URL fails.
+ */
+async function uploadViaSignedUrl(blob: Blob, filename: string): Promise<string> {
+  // Step 1: Get signed upload URL
+  const signedRes = await fetch("/api/admin/signed-upload-url", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ filename }),
+  });
+
+  if (!signedRes.ok) {
+    const errData = await signedRes.json().catch(() => ({}));
+    throw new Error(errData.erro || `Erro ao gerar URL de upload (${signedRes.status})`);
+  }
+
+  const { signedUrl } = await signedRes.json();
+
+  // Step 2: Upload directly to Supabase Storage
+  const uploadRes = await fetch(signedUrl, {
+    method: "PUT",
+    headers: { "Content-Type": "audio/mpeg" },
+    body: blob,
+  });
+
+  if (!uploadRes.ok) {
+    const errText = await uploadRes.text().catch(() => "");
+    throw new Error(`Upload falhou (${uploadRes.status}): ${errText.slice(0, 120)}`);
+  }
+
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://tdytdamtfillqyklgrmb.supabase.co";
+  return `${supabaseUrl}/storage/v1/object/public/audios/${filename}`;
+}
+
 function ProductFilter({
   active,
   onChange,
@@ -725,23 +760,11 @@ export default function AlbumProductionPage() {
       if (!audioRes.ok) throw new Error("Erro ao descarregar o áudio.");
       const blob = await audioRes.blob();
 
-      const album = ALL_ALBUMS.find(a => a.slug === albumSlug)!;
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}.mp3`;
-      const formData = buildUploadForm(blob, filename, album, track, editedTitles[key] || sunoTitle);
+      const url = await uploadViaSignedUrl(blob, filename);
 
-      const uploadRes = await fetch("/api/admin/upload-audio", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!uploadRes.ok) {
-        const data = await uploadRes.json().catch(() => ({ erro: `HTTP ${uploadRes.status}` }));
-        throw new Error(data.erro || `Erro ${uploadRes.status}`);
-      }
-
-      const data = await uploadRes.json();
       setStatuses((s) => ({ ...s, [key]: "done" }));
-      setAudioUrls((u) => ({ ...u, [key]: data.url }));
+      setAudioUrls((u) => ({ ...u, [key]: url }));
       // Remove only the approved clip, keep others
       setGeneratedClips((g) => {
         const current = g[key];
@@ -777,22 +800,8 @@ export default function AlbumProductionPage() {
       if (!audioRes.ok) throw new Error("Erro ao descarregar o áudio.");
       const blob = await audioRes.blob();
 
-      const album = ALL_ALBUMS.find(a => a.slug === albumSlug)!;
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-${versionName}.mp3`;
-      const versionTitle = `${sunoTitle || track.title} (${versionName})`;
-      const formData = buildUploadForm(blob, filename, album, track, versionTitle);
-
-      const uploadRes = await fetch("/api/admin/upload-audio", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!uploadRes.ok) {
-        const data = await uploadRes.json().catch(() => ({ erro: `HTTP ${uploadRes.status}` }));
-        throw new Error(data.erro || `Erro ${uploadRes.status}`);
-      }
-
-      const uploadData = await uploadRes.json();
+      const uploadUrl = await uploadViaSignedUrl(blob, filename);
 
       // Save version metadata to track_versions table
       await fetch("/api/admin/track-versions", {
@@ -803,7 +812,7 @@ export default function AlbumProductionPage() {
           track_number: track.number,
           version_name: versionName,
           energy,
-          audio_url: uploadData.url,
+          audio_url: uploadUrl,
         }),
       });
 
@@ -849,20 +858,7 @@ export default function AlbumProductionPage() {
     try {
       const album = ALL_ALBUMS.find(a => a.slug === albumSlug)!;
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-${versionName}.mp3`;
-      const versionTitle = `${track.title} (${versionName})`;
-      const formData = buildUploadForm(file, filename, album, track, versionTitle);
-
-      const uploadRes = await fetch("/api/admin/upload-audio", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!uploadRes.ok) {
-        const data = await uploadRes.json().catch(() => ({ erro: `HTTP ${uploadRes.status}` }));
-        throw new Error(data.erro || `Erro ${uploadRes.status}`);
-      }
-
-      const uploadData = await uploadRes.json();
+      const uploadUrl = await uploadViaSignedUrl(file, filename);
 
       // Save version metadata
       await fetch("/api/admin/track-versions", {
@@ -873,7 +869,7 @@ export default function AlbumProductionPage() {
           track_number: track.number,
           version_name: versionName,
           energy,
-          audio_url: uploadData.url,
+          audio_url: uploadUrl,
         }),
       });
 
@@ -903,23 +899,11 @@ export default function AlbumProductionPage() {
       // Read ID3 title from MP3 before uploading
       const id3Title = await readId3Title(file);
 
-      const album = ALL_ALBUMS.find(a => a.slug === albumSlug)!;
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}.mp3`;
-      const formData = buildUploadForm(file, filename, album, track, editedTitles[key] || id3Title);
+      const url = await uploadViaSignedUrl(file, filename);
 
-      const res = await fetch("/api/admin/upload-audio", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({ erro: `HTTP ${res.status}` }));
-        throw new Error(data.erro || `Erro ${res.status}`);
-      }
-
-      const data = await res.json();
       setStatuses((s) => ({ ...s, [key]: "done" }));
-      setAudioUrls((u) => ({ ...u, [key]: data.url }));
+      setAudioUrls((u) => ({ ...u, [key]: url }));
 
       // If MP3 has an ID3 title, use it (unless already manually edited)
       if (id3Title && !editedTitles[key]) {

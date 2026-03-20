@@ -174,8 +174,8 @@ const TEMA_AUTO_AMOR: CuratedList = {
     { albumSlug: "espelho-desejo", trackNumber: 6 },    // Habitar o Desejo
     { albumSlug: "espelho-desejo", trackNumber: 7 },    // Inteira
     { albumSlug: "curso-pele-nua", trackNumber: 3 },    // Habitar
-    { albumSlug: "curso-ouro-proprio", trackNumber: 7 }, // Abundancia
-    { albumSlug: "no-heranca", trackNumber: 7 },        // O Fio Dourado
+    { albumSlug: "curso-ouro-proprio", trackNumber: 4 }, // Abundance
+    { albumSlug: "no-heranca", trackNumber: 5 },        // Desatar
   ],
 };
 
@@ -194,8 +194,8 @@ const TEMA_AUTO_PODER: CuratedList = {
     { albumSlug: "espelho-ilusao", trackNumber: 7 },     // O Veu Cai
     { albumSlug: "espelho-separacao", trackNumber: 7 },  // Sete Veus
     { albumSlug: "curso-limite-sagrado", trackNumber: 3 }, // Dizer Nao
-    { albumSlug: "curso-ouro-e-sombra", trackNumber: 7 }, // Soberania
-    { albumSlug: "curso-brasa-viva", trackNumber: 3 },   // Fogo Controlado
+    { albumSlug: "curso-coroa", trackNumber: 4 },          // Crown
+    { albumSlug: "curso-chama", trackNumber: 3 },         // Fogo Controlado
     { albumSlug: "no-silencio", trackNumber: 5 },        // Voice
   ],
 };
@@ -216,8 +216,8 @@ const TEMA_LIMITES: CuratedList = {
     { albumSlug: "espelho-controlo", trackNumber: 5 },     // Trust
     { albumSlug: "espelho-controlo", trackNumber: 6 },     // Largar
     { albumSlug: "espelho-medo", trackNumber: 6 },         // Ouco-te Mas Vou
-    { albumSlug: "no-sacrificio", trackNumber: 4 },        // Boundary
-    { albumSlug: "curso-brasa-viva", trackNumber: 3 },     // Fogo Controlado
+    { albumSlug: "no-sacrificio", trackNumber: 4 },        // Dois Inteiros
+    { albumSlug: "curso-chama", trackNumber: 3 },          // Fogo Controlado
   ],
 };
 
@@ -229,16 +229,16 @@ const TEMA_RAIZES: CuratedList = {
   color: "#8b5c3e",
   icon: "tree-deciduous",
   tracks: [
-    { albumSlug: "curso-sangue-e-seda", trackNumber: 1 }, // Raizes
-    { albumSlug: "curso-sangue-e-seda", trackNumber: 2 }, // Seda
-    { albumSlug: "curso-sangue-e-seda", trackNumber: 3 }, // Sangue
-    { albumSlug: "curso-sangue-e-seda", trackNumber: 4 }, // Tecer
+    { albumSlug: "curso-sangue-seda", trackNumber: 1 }, // Raizes
+    { albumSlug: "curso-sangue-seda", trackNumber: 2 }, // The Inner Mother
+    { albumSlug: "curso-sangue-seda", trackNumber: 3 }, // Sangue
+    { albumSlug: "curso-sangue-seda", trackNumber: 4 }, // Silk
     { albumSlug: "espelho-culpa", trackNumber: 4 },       // Heranca
     { albumSlug: "espelho-ilusao", trackNumber: 2 },      // The Coat I Never Chose
     { albumSlug: "no-heranca", trackNumber: 1 },          // O Silencio de Helena
     { albumSlug: "no-heranca", trackNumber: 3 },          // Duas Mulheres
     { albumSlug: "curso-ouro-proprio", trackNumber: 3 },  // Heranca Financeira
-    { albumSlug: "no-pertenca", trackNumber: 7 },         // O Lar Inventado
+    { albumSlug: "no-pertenca", trackNumber: 4 },         // Reinventar
   ],
 };
 
@@ -258,8 +258,8 @@ const TEMA_O_CORPO: CuratedList = {
     { albumSlug: "espelho-medo", trackNumber: 4 },       // O Estomago Sabe
     { albumSlug: "espelho-desejo", trackNumber: 3 },     // O Que o Corpo Pede
     { albumSlug: "espelho-controlo", trackNumber: 7 },   // Respirar
-    { albumSlug: "curso-maos-cansadas", trackNumber: 2 }, // Pausa
-    { albumSlug: "curso-pao-e-silencio", trackNumber: 1 }, // Fome
+    { albumSlug: "curso-oficio-ser", trackNumber: 2 },    // Pause
+    { albumSlug: "curso-fome", trackNumber: 1 },          // Mesa Vazia
   ],
 };
 
@@ -271,16 +271,16 @@ const TEMA_RECOMECAR: CuratedList = {
   color: "#6b8e5a",
   icon: "sprout",
   tracks: [
-    { albumSlug: "curso-depois-do-fogo", trackNumber: 1 }, // Cinza
-    { albumSlug: "curso-depois-do-fogo", trackNumber: 2 }, // O Que Sobrou
-    { albumSlug: "curso-depois-do-fogo", trackNumber: 3 }, // Broto
-    { albumSlug: "curso-depois-do-fogo", trackNumber: 4 }, // Terra Nova
+    { albumSlug: "curso-depois-fogo", trackNumber: 1 }, // Cinzas
+    { albumSlug: "curso-depois-fogo", trackNumber: 2 }, // Ember
+    { albumSlug: "curso-depois-fogo", trackNumber: 3 }, // Broto
+    { albumSlug: "curso-depois-fogo", trackNumber: 4 }, // Different
     { albumSlug: "espelho-separacao", trackNumber: 4 },    // Separar
     { albumSlug: "espelho-separacao", trackNumber: 5 },    // Rebuild
     { albumSlug: "espelho-separacao", trackNumber: 6 },    // Raizes no Ar
     { albumSlug: "espelho-separacao", trackNumber: 7 },    // Sete Veus
-    { albumSlug: "no-pertenca", trackNumber: 6 },          // Criar
-    { albumSlug: "curso-estacoes-partidas", trackNumber: 4 }, // Renovar
+    { albumSlug: "no-pertenca", trackNumber: 4 },          // Reinventar
+    { albumSlug: "curso-relogio", trackNumber: 4 },       // Present
   ],
 };
 
@@ -299,9 +299,9 @@ const TEMA_O_SILENCIO: CuratedList = {
     { albumSlug: "no-heranca", trackNumber: 4 },           // O Que Nunca Foi Dito
     { albumSlug: "espelho-medo", trackNumber: 1 },         // Cuidado
     { albumSlug: "espelho-medo", trackNumber: 7 },         // Devagar
-    { albumSlug: "curso-voz-de-dentro", trackNumber: 1 },  // Eco
-    { albumSlug: "curso-voz-de-dentro", trackNumber: 2 },  // Escuta
-    { albumSlug: "curso-silencio-que-grita", trackNumber: 1 }, // Mudo
+    { albumSlug: "curso-voz-dentro", trackNumber: 1 },     // Silêncio
+    { albumSlug: "curso-voz-dentro", trackNumber: 2 },     // Echo
+    { albumSlug: "curso-silencio-grita", trackNumber: 1 }, // Caverna Muda
   ],
 };
 
