@@ -111,19 +111,30 @@ export default function UploadPage() {
     }));
 
     try {
-      // Upload directly to Supabase Storage (bypasses Vercel 4.5MB body limit)
-      const arrayBuffer = await file.arrayBuffer();
-      const uint8 = new Uint8Array(arrayBuffer);
+      // Step 1: Get a signed upload URL from the server (uses service role key)
+      const signedRes = await fetch("/api/admin/signed-upload-url", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ filename }),
+      });
 
-      const { error } = await supabase.storage
-        .from("audios")
-        .upload(filename, uint8, {
-          contentType: "audio/mpeg",
-          upsert: true,
-        });
+      if (!signedRes.ok) {
+        const errData = await signedRes.json().catch(() => ({}));
+        throw new Error(errData.erro || `Erro ao gerar URL de upload (${signedRes.status})`);
+      }
 
-      if (error) {
-        throw new Error(error.message);
+      const { signedUrl } = await signedRes.json();
+
+      // Step 2: Upload directly to Supabase Storage (bypasses Vercel 4.5MB limit)
+      const uploadRes = await fetch(signedUrl, {
+        method: "PUT",
+        headers: { "Content-Type": "audio/mpeg" },
+        body: file,
+      });
+
+      if (!uploadRes.ok) {
+        const errText = await uploadRes.text().catch(() => "");
+        throw new Error(`Upload falhou (${uploadRes.status}): ${errText.slice(0, 120)}`);
       }
 
       const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://tdytdamtfillqyklgrmb.supabase.co";
