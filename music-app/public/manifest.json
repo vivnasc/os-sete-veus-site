@@ -10,7 +10,7 @@
   "icons": [
     {
       "src": "/favicon.png",
-      "sizes": "32x32",
+      "sizes": "48x48",
       "type": "image/png"
     },
     {
@@ -24,7 +24,7 @@
       "type": "image/png"
     },
     {
-      "src": "/music_veus_faicon.png",
+      "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
