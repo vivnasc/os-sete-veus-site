@@ -2,6 +2,7 @@ import { ALL_ALBUMS, type AlbumTrack, type Album } from "@/data/albums";
 import { GENEROS, MOODS, TEMAS, ALL_LISTS, resolveList } from "@/data/curated-lists";
 import AlbumCard from "@/components/music/AlbumCard";
 import FraseDoDia from "@/components/music/FraseDoDia";
+import TopTracksSection from "@/components/music/TopTracksSection";
 import Image from "next/image";
 import Link from "next/link";
 import NavBar from "@/components/music/NavBar";
@@ -79,6 +80,9 @@ export default function MusicHomePage() {
 
         {/* Frase do Dia */}
         <FraseDoDia />
+
+        {/* Mais Ouvidas (personalizado, so aparece se autenticado com dados) */}
+        <TopTracksSection />
 
         {/* Quick picks — Generos + Moods */}
         <section>

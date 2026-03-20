@@ -3,6 +3,7 @@ import { MusicPlayerProvider } from "@/contexts/MusicPlayerContext";
 import { SubscriptionProvider } from "@/contexts/SubscriptionContext";
 import MiniPlayer from "@/components/music/MiniPlayer";
 import FullPlayer from "@/components/music/FullPlayer";
+import PlayTracker from "@/components/music/PlayTracker";
 import NoDownload from "@/components/music/NoDownload";
 import RegisterSW from "@/components/RegisterSW";
 import "./globals.css";
@@ -67,6 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </div>
               <MiniPlayer />
               <FullPlayer />
+              <PlayTracker />
               <NoDownload />
               <RegisterSW />
             </div>
