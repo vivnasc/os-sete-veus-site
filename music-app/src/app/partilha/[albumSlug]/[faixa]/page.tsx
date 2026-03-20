@@ -7,6 +7,18 @@ type Props = {
   params: Promise<{ albumSlug: string; faixa: string }>;
 };
 
+function pickLyricLine(lyrics: string | undefined): string | undefined {
+  if (!lyrics) return undefined;
+  const lines = lyrics.split("\n").filter(l => {
+    const t = l.trim();
+    return t.length > 15 && t.length < 100 && !t.startsWith("[");
+  });
+  if (lines.length === 0) return undefined;
+  // Deterministic: pick based on day
+  const day = Math.floor(Date.now() / 86400000);
+  return lines[day % lines.length].trim();
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { albumSlug, faixa } = await params;
   const trackNum = parseInt(faixa, 10);
@@ -18,8 +30,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const cover = getAlbumCover(album);
-  const title = `${track.title} — ${album.title}`;
-  const description = track.description || `Ouve "${track.title}" do album ${album.title} no Veus.`;
+  const title = `${track.title} — ${album.title} | Loranne`;
+  const description = track.description || `Ouve "${track.title}" do album ${album.title}. Musica original para a tua transformacao.`;
 
   return {
     title,
@@ -63,6 +75,7 @@ export default async function PartilhaPage({ params }: Props) {
   }
 
   const cover = getAlbumCover(album);
+  const lyricLine = pickLyricLine(track.lyrics);
 
   return (
     <PartilhaClient
@@ -72,8 +85,8 @@ export default async function PartilhaPage({ params }: Props) {
       trackNumber={track.number}
       trackTitle={track.title}
       trackDescription={track.description}
-      audioUrl={track.audioUrl}
       coverSrc={cover}
+      lyricLine={lyricLine}
     />
   );
 }

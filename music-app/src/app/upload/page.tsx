@@ -111,51 +111,43 @@ export default function UploadPage() {
     }));
 
     try {
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("filename", filename);
+      // Upload directly to Supabase Storage (bypasses Vercel 4.5MB body limit)
+      const arrayBuffer = await file.arrayBuffer();
+      const uint8 = new Uint8Array(arrayBuffer);
 
-      const res = await fetch("/api/admin/upload-audio", {
-        method: "POST",
-        body: formData,
-      });
+      const { error } = await supabase.storage
+        .from("audios")
+        .upload(filename, uint8, {
+          contentType: "audio/mpeg",
+          upsert: true,
+        });
 
-      let data;
-      const contentType = res.headers.get("content-type") || "";
-      if (contentType.includes("application/json")) {
-        data = await res.json();
-      } else {
-        const text = await res.text();
-        throw new Error(
-          res.status === 413
-            ? "Ficheiro demasiado grande (max ~4.5MB no Vercel)"
-            : `Erro do servidor (${res.status}): ${text.slice(0, 120)}`
-        );
+      if (error) {
+        throw new Error(error.message);
       }
 
-      if (!res.ok) {
-        throw new Error(data.erro || "Upload falhou");
-      }
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://tdytdamtfillqyklgrmb.supabase.co";
+      const url = `${supabaseUrl}/storage/v1/object/public/audios/${filename}`;
 
       setUploadStatuses(prev => ({
         ...prev,
-        [key]: { state: "done", progress: 100, url: data.url },
+        [key]: { state: "done", progress: 100, url },
       }));
 
       // Save version metadata if this is a named version
       if (version) {
-        const track = album.tracks.find(t => trackKey(album.slug, t.number) === key);
-        const energy = versionEnergy || track?.energy || "whisper";
+        const matchedTrack = album.tracks.find(t => trackKey(album.slug, t.number) === key);
+        const energy = versionEnergy || matchedTrack?.energy || "whisper";
         try {
           await fetch("/api/admin/track-versions", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               album_slug: album.slug,
-              track_number: track?.number,
+              track_number: matchedTrack?.number,
               version_name: version,
               energy,
-              audio_url: data.url,
+              audio_url: url,
             }),
           });
         } catch {
