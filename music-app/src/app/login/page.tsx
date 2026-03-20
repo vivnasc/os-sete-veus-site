@@ -13,6 +13,29 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [resetSent, setResetSent] = useState(false);
+  const [resetLoading, setResetLoading] = useState(false);
+
+  async function handleResetPassword() {
+    if (!email) {
+      setError("Escreve o teu email primeiro.");
+      return;
+    }
+    setError("");
+    setResetLoading(true);
+
+    const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/login`,
+    });
+
+    setResetLoading(false);
+
+    if (resetError) {
+      setError("Erro ao enviar. Tenta novamente.");
+    } else {
+      setResetSent(true);
+    }
+  }
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
@@ -110,12 +133,27 @@ export default function LoginPage() {
 
           {error && <p className="text-xs text-red-400">{error}</p>}
 
+          {resetSent && (
+            <p className="text-xs text-[#C9A96E]">
+              Email enviado. Verifica a tua caixa de entrada.
+            </p>
+          )}
+
           <button
             type="submit"
             disabled={loading || !email || !password}
             className="w-full py-3 rounded-xl bg-[#C9A96E] text-[#0D0D1A] font-medium text-sm hover:bg-[#d4b87a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? "A entrar..." : "Entrar"}
+          </button>
+
+          <button
+            type="button"
+            onClick={handleResetPassword}
+            disabled={resetLoading}
+            className="w-full text-xs text-[#666680] hover:text-[#a0a0b0] transition-colors"
+          >
+            {resetLoading ? "A enviar..." : "Esqueci a palavra-passe"}
           </button>
         </form>
 
