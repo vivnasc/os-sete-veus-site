@@ -1,0 +1,38 @@
+[model]
+pretrained_model_name_or_path = "stabilityai/stable-diffusion-xl-base-1.0"
+v2 = false
+v_parameterization = false
+
+[dataset]
+resolution = [512, 768]
+batch_size = 1
+enable_bucket = true
+min_bucket_reso = 256
+max_bucket_reso = 1024
+bucket_reso_steps = 64
+
+[training]
+output_dir = "./output"
+output_name = "loranne-lora"
+save_model_as = "safetensors"
+max_train_epochs = 12
+learning_rate = 5e-5
+unet_lr = 5e-5
+text_encoder_lr = 1e-5
+lr_scheduler = "cosine_with_restarts"
+lr_warmup_steps = 50
+optimizer_type = "AdamW8bit"
+mixed_precision = "fp16"
+save_precision = "fp16"
+seed = 42
+clip_skip = 2
+max_token_length = 150
+
+[network]
+network_module = "networks.lora"
+network_dim = 32
+network_alpha = 16
+
+[logging]
+logging_dir = "./logs"
+log_prefix = "loranne"

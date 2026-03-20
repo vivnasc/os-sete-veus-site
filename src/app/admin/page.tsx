@@ -233,7 +233,13 @@ export default function AdminPage() {
 
         {/* ── Livros & Leitura ── */}
         <SectionTitle title="Livros e Leitura" />
-        <div className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <ActionCard
+            title="Revisao"
+            description="Validar Espelhos e Nos antes da publicacao"
+            href="/admin/revisao"
+            icon="◇"
+          />
           <ActionCard
             title="Livro Físico"
             description="Ver e editar página de vendas"
@@ -300,8 +306,8 @@ export default function AdminPage() {
           />
           <ActionCard
             title="Albums"
-            description="Produzir musica para todos os produtos"
-            href="/admin/producao/albums"
+            description="Produzir musica (na app de musica)"
+            href="https://musicseteveus.vercel.app/admin/producao"
             icon="♫"
           />
         </div>

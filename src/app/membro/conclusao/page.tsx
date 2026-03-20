@@ -163,7 +163,7 @@ export default function ConclusaoPage() {
               <p className="font-serif text-base leading-relaxed text-brown-700">
                 Terminaste a leitura de O Espelho da Ilusão. Não é pouco. Muitas pessoas começam
                 coisas que exigem presença e desistem a meio — não por fraqueza, mas porque
-                olhar para dentro é o acto mais corajoso que existe.
+                olhar para dentro é o ato mais corajoso que existe.
               </p>
               <p className="mt-4 font-serif text-base leading-relaxed text-brown-700">
                 Tu ficaste. Tu leste. Tu escreveste. Tu permitiste-te sentir.

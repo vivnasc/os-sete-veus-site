@@ -121,7 +121,7 @@ export default function AutoraCodigosPage() {
       `Para activar o acesso:\n` +
       `1. Vai a seteveus.space/registar-livro\n` +
       `2. Insere o código ${code}\n` +
-      `3. Coloca o teu email e cria uma password\n` +
+      `3. Coloca o teu email e cria uma palavra-passe\n` +
       `4. Acesso imediato!\n\n` +
       `Qualquer dúvida, estou aqui.`
     )
@@ -137,7 +137,7 @@ export default function AutoraCodigosPage() {
       `Para activar o acesso:\n` +
       `1. Vai a seteveus.space/registar-livro\n` +
       `2. Insere o código ${code}\n` +
-      `3. Coloca o teu email e cria uma password\n` +
+      `3. Coloca o teu email e cria uma palavra-passe\n` +
       `4. Acesso imediato!\n\n` +
       `Qualquer dúvida, responde a este email.\n\n` +
       `Com carinho,\nVivianne`

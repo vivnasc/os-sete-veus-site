@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { usePathname } from "next/navigation";
 
 type Settings = {
   fontSize: number; // 0 = normal, 1 = large, 2 = extra large
@@ -15,6 +16,7 @@ const fontSizeLabels = ["A", "A+", "A++"];
 const fontSizeClasses = ["", "text-lg", "text-xl"];
 
 export default function AccessibilityPanel() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [settings, setSettings] = useState<Settings>(defaults);
 

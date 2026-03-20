@@ -41,7 +41,7 @@ const themePatterns: {
   {
     theme: "Relações",
     keywords: ["alguém", "família", "mãe", "filh", "amig", "marido", "relação", "espera", "outr"],
-    insight: "As tuas reflexões tocam em relações importantes. Os véus que usamos muitas vezes formam-se na presença dos outros — reconhecê-los é um acto de amor próprio.",
+    insight: "As tuas reflexões tocam em relações importantes. Os véus que usamos muitas vezes formam-se na presença dos outros — reconhecê-los é um ato de amor próprio.",
     color: "#c08aaa",
   },
   {
@@ -249,7 +249,7 @@ export default function EspelhoPage() {
             <div className="rounded-2xl border border-[#7a8c6e]/20 bg-[#7a8c6e]/5 px-8 py-8 text-center">
               <p className="font-serif text-lg text-brown-700">
                 {entries.length >= 5
-                  ? "Escreveste muito. Cada palavra foi um acto de coragem. Este espelho é teu — volta quando quiseres reler-te."
+                  ? "Escreveste muito. Cada palavra foi um ato de coragem. Este espelho é teu — volta quando quiseres reler-te."
                   : entries.length >= 3
                     ? "Estás a construir algo bonito. Cada reflexão é uma peça do puzzle que és tu."
                     : "O teu espelho está a ganhar forma. Continua a ler e a escrever — há mais de ti para descobrir."}

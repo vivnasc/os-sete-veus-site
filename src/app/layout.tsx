@@ -32,6 +32,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://seteveus.space"),
   icons: {
     icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
     ],
@@ -39,18 +40,28 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "Sete Ecos — Plataforma de Autoconhecimento",
+    title: "Os Sete Véus — Plataforma de Autoconhecimento",
     description:
-      "Leitura integrada, diário de reflexão, práticas guiadas e recursos gratuitos. Mais do que livros — um ecossistema de regresso a ti.",
-    siteName: "Sete Ecos",
+      "Cursos, livros e histórias que te devolvem a ti mesma. Leitura integrada, diário de reflexão, práticas guiadas e comunidade. Por Vivianne dos Santos.",
+    siteName: "Os Sete Véus",
     locale: "pt_PT",
     type: "website",
+    url: "https://seteveus.space",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Os Sete Véus — Histórias que te devolvem a ti mesma",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sete Ecos — Plataforma de Autoconhecimento",
+    title: "Os Sete Véus — Plataforma de Autoconhecimento",
     description:
-      "Leitura integrada, diário de reflexão, práticas guiadas e recursos gratuitos. Mais do que livros — um ecossistema de regresso a ti.",
+      "Cursos, livros e histórias que te devolvem a ti mesma. Leitura integrada, diário de reflexão, práticas guiadas e comunidade.",
+    images: ["/opengraph-image"],
   },
 };
 

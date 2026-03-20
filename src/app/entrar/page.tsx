@@ -45,7 +45,7 @@ function EntrarContent() {
     setLoading(false);
 
     if (err) {
-      setError("Email ou password incorrectos. Tenta novamente.");
+      setError("Email ou palavra-passe incorrectos. Tenta novamente.");
     } else {
       router.push("/membro");
     }
@@ -105,7 +105,7 @@ function EntrarContent() {
               Conta criada com sucesso!
             </p>
             <p className="mt-1 font-sans text-xs text-brown-600">
-              Agora faz login abaixo com a tua password
+              Agora faz login abaixo com a tua palavra-passe
             </p>
           </div>
         )}
@@ -137,13 +137,13 @@ function EntrarContent() {
                 htmlFor="password"
                 className="font-sans text-sm font-medium text-brown-700"
               >
-                Password
+                Palavra-passe
               </label>
               <Link
                 href="/recuperar-senha"
                 className="font-sans text-xs text-sage hover:underline"
               >
-                Esqueci minha senha
+                Esqueci a minha palavra-passe
               </Link>
             </div>
             <div className="relative mt-1">
@@ -160,7 +160,8 @@ function EntrarContent() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-brown-400 hover:text-brown-600"
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-brown-500 hover:text-brown-700"
+                aria-label={showPassword ? "Esconder palavra-passe" : "Mostrar palavra-passe"}
               >
                 {showPassword ? (
                   <svg

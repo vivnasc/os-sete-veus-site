@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const pathname = usePathname();
+
   return (
     <footer className="bg-gradient-to-b from-brown-800 to-brown-900 text-brown-200">
       <div className="mx-auto max-w-6xl px-6 py-16">
