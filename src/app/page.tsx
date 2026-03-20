@@ -291,7 +291,7 @@ export default function Home() {
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center leading-relaxed text-[#a0a0b0]">
               Música original criada para cada véu, cada emoção, cada momento de transformação.
-              35 álbuns temáticos que acompanham a tua leitura e o teu despertar.
+              Mais de 35 álbuns temáticos que acompanham a tua leitura e o teu despertar.
             </p>
           </ScrollReveal>
 
