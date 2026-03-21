@@ -122,6 +122,7 @@ export default function FullPlayer() {
   const hasLyrics = !!currentTrack.lyrics;
 
   return (
+    <>
     <div
       ref={containerRef}
       onTouchStart={onTouchStart}
@@ -384,16 +385,19 @@ export default function FullPlayer() {
         </div>
       </div>
 
-      {/* Modals */}
-      {showShare && currentTrack && currentAlbum && (
-        <ShareModal
-          track={currentTrack}
-          album={currentAlbum}
-          onClose={() => setShowShare(false)}
-        />
-      )}
-      <QueuePanel isOpen={showQueue} onClose={() => setShowQueue(false)} />
-      <SleepTimer isOpen={showSleep} onClose={() => setShowSleep(false)} />
     </div>
+
+    {/* Modals — rendered outside the overflow-hidden container so they're
+        never clipped when the swipe handler applies a transform */}
+    {showShare && currentTrack && currentAlbum && (
+      <ShareModal
+        track={currentTrack}
+        album={currentAlbum}
+        onClose={() => setShowShare(false)}
+      />
+    )}
+    <QueuePanel isOpen={showQueue} onClose={() => setShowQueue(false)} />
+    <SleepTimer isOpen={showSleep} onClose={() => setShowSleep(false)} />
+    </>
   );
 }
