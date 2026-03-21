@@ -78,18 +78,34 @@ export default function FullPlayer() {
   }, [showFullPlayer, currentTrack, setShowFullPlayer]);
 
   // ── Swipe down to close ──
+  // Minimum movement in px before the swipe visual effect kicks in.
+  // Without this dead-zone, any finger wobble during a button tap
+  // applies a transform to the container, which makes the browser
+  // cancel the pending click event → buttons "don't do anything".
+  const SWIPE_THRESHOLD = 12;
   const touchStartY = useRef(0);
   const touchDeltaY = useRef(0);
+  const isSwiping = useRef(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const onTouchStart = useCallback((e: React.TouchEvent) => {
     touchStartY.current = e.touches[0].clientY;
     touchDeltaY.current = 0;
+    isSwiping.current = false;
   }, []);
 
   const onTouchMove = useCallback((e: React.TouchEvent) => {
     touchDeltaY.current = e.touches[0].clientY - touchStartY.current;
-    // Apply visual drag effect
+
+    // Only start the visual drag after the dead-zone threshold
+    if (!isSwiping.current) {
+      if (touchDeltaY.current > SWIPE_THRESHOLD) {
+        isSwiping.current = true;
+      } else {
+        return; // still inside dead-zone, do nothing
+      }
+    }
+
     if (touchDeltaY.current > 0 && containerRef.current) {
       const translate = Math.min(touchDeltaY.current * 0.5, 200);
       containerRef.current.style.transform = `translateY(${translate}px)`;
@@ -102,10 +118,11 @@ export default function FullPlayer() {
       containerRef.current.style.transform = "";
       containerRef.current.style.opacity = "";
     }
-    // If swiped down more than 80px, close the player
-    if (touchDeltaY.current > 80) {
+    // Only close if user was actively swiping (not just tapping)
+    if (isSwiping.current && touchDeltaY.current > 80) {
       setShowFullPlayer(false);
     }
+    isSwiping.current = false;
   }, [setShowFullPlayer]);
 
   if (!showFullPlayer || !currentTrack) return null;
