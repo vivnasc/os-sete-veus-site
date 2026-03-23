@@ -9,6 +9,7 @@ const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
 
 const ADMIN_NAV = [
   { href: "/admin", label: "Dashboard" },
+  { href: "/admin/alunas", label: "Alunas" },
   { href: "/admin/cursos", label: "Cursos" },
   { href: "/admin/conteudo", label: "Conteudo" },
   { href: "/admin/analytics", label: "Analytics" },
