@@ -6,7 +6,7 @@ import { COURSES } from "@/data/courses";
 type ContentType = "video" | "workbook" | "youtube";
 
 export default function AdminConteudoPage() {
-  const [selectedCourse, setSelectedCourse] = useState(COURSES[0]?.slug ?? "");
+  const [selectedCourse, setSelectedCourse] = useState<string>(COURSES[0]?.slug ?? "");
   const course = COURSES.find((c) => c.slug === selectedCourse);
 
   return (
