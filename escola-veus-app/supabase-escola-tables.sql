@@ -34,11 +34,11 @@ CREATE TABLE IF NOT EXISTS public.escola_journal (
   user_id uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
   course_slug text NOT NULL,
   module_number int NOT NULL,
-  sublesson_letter text, -- null = reflexao do modulo inteiro (caderno)
+  sublesson_letter text NOT NULL DEFAULT '_', -- '_' = reflexao do modulo inteiro (caderno)
   content text NOT NULL DEFAULT '',
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz NOT NULL DEFAULT now(),
-  UNIQUE(user_id, course_slug, module_number, COALESCE(sublesson_letter, '_'))
+  UNIQUE(user_id, course_slug, module_number, sublesson_letter)
 );
 
 -- Certificados

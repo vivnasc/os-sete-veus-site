@@ -22,11 +22,7 @@ export function useJournal(courseSlug: string, moduleNumber: number, sublessonLe
       .eq("course_slug", courseSlug)
       .eq("module_number", moduleNumber);
 
-    if (sublessonLetter) {
-      query.eq("sublesson_letter", sublessonLetter);
-    } else {
-      query.is("sublesson_letter", null);
-    }
+    query.eq("sublesson_letter", sublessonLetter || "_");
 
     const { data } = await query.single();
     if (data) {
@@ -47,7 +43,7 @@ export function useJournal(courseSlug: string, moduleNumber: number, sublessonLe
           user_id: user.id,
           course_slug: courseSlug,
           module_number: moduleNumber,
-          sublesson_letter: sublessonLetter || null,
+          sublesson_letter: sublessonLetter || "_",
           content: text,
           updated_at: new Date().toISOString(),
         },
