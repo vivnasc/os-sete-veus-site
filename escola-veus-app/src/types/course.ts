@@ -1,5 +1,5 @@
 /**
- * Course types — mirrored from parent repo src/types/course.ts
+ * Types for the Sete Véus course platform (seteveus.space)
  */
 
 export type CourseSlug =
@@ -25,7 +25,7 @@ export type CourseSlug =
   | "a-fome";
 
 export type SubLesson = {
-  letter: string;
+  letter: string; // "A", "B", "C"
   title: string;
   description: string;
 };
@@ -54,6 +54,18 @@ export type CourseData = {
   youtubeHooks: YouTubeHook[];
 };
 
+export type CourseMeta = {
+  slug: CourseSlug;
+  number: number;
+  title: string;
+  subtitle: string;
+  arcoEmocional: string;
+  diferencial: string;
+  moduleCount: number;
+  totalSubLessons: number;
+  youtubeHookCount: number;
+};
+
 export type CategorySlug = "materia" | "herancas" | "ciclos" | "fronteiras";
 
 export type CourseCategory = {
@@ -61,4 +73,24 @@ export type CourseCategory = {
   title: string;
   subtitle: string;
   courses: CourseSlug[];
+};
+
+export type LessonStatus = "not_started" | "in_progress" | "completed";
+
+export type LessonProgress = {
+  lessonId: string;
+  status: LessonStatus;
+  completedAt: string | null;
+  lastPositionSec: number;
+};
+
+export type Enrollment = {
+  id: string;
+  userId: string;
+  courseSlug: string;
+  stripePaymentId: string | null;
+  enrolledAt: string;
+  completedAt: string | null;
+  certificateUrl: string | null;
+  certificateCode: string | null;
 };
