@@ -693,6 +693,7 @@ export default function AlbumProductionPage() {
     (s, a) => s + a.tracks.filter((t) => t.lyrics).length,
     0
   );
+  const totalVersions = Object.values(trackVersions).reduce((s, v) => s + v.length, 0);
 
   async function generateTrack(albumSlug: string, track: AlbumTrack) {
     const key = trackKey(albumSlug, track.number);
@@ -957,6 +958,11 @@ export default function AlbumProductionPage() {
             <span className="rounded-full bg-green-900/30 px-3 py-1 text-xs text-green-400">
               {totalWithLyrics}/{totalTracks} com letra
             </span>
+            {totalVersions > 0 && (
+              <span className="rounded-full bg-violet-900/30 px-3 py-1 text-xs text-violet-400">
+                {totalVersions} versões
+              </span>
+            )}
             {(["whisper", "steady", "pulse", "anthem", "raw"] as TrackEnergy[]).map((e) => {
               const count = ALL_ALBUMS.reduce(
                 (s, a) => s + a.tracks.filter((t) => t.energy === e).length,
@@ -1144,6 +1150,10 @@ export default function AlbumProductionPage() {
                 (t) => statuses[trackKey(a.slug, t.number)] === "done"
               ).length;
               const withLyrics = a.tracks.filter((t) => t.lyrics).length;
+              const albumVersions = a.tracks.reduce(
+                (s, t) => s + (trackVersions[trackKey(a.slug, t.number)]?.length || 0),
+                0
+              );
               const totalMin = Math.floor(
                 a.tracks.reduce((s, t) => s + t.durationSeconds, 0) / 60
               );
@@ -1171,6 +1181,9 @@ export default function AlbumProductionPage() {
                     <div className="flex items-center gap-2">
                       {withLyrics > 0 && (
                         <span className="text-[10px] text-green-400">{withLyrics} letras</span>
+                      )}
+                      {albumVersions > 0 && (
+                        <span className="text-[10px] text-violet-400">{albumVersions} v.</span>
                       )}
                       {done > 0 && (
                         <span className="text-xs text-mundo-dourado">{done}/{a.tracks.length}</span>

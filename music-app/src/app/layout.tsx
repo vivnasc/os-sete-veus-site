@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     template: "%s | Veus",
   },
   description: "Música original do universo Sete Véus. Banda sonora para a tua transformação.",
-  metadataBase: new URL("https://veus.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://music.seteveus.space"),
   manifest: "/manifest.json",
   icons: {
     icon: [
