@@ -321,8 +321,9 @@ function TrackRow({
   return (
     <div className="rounded-lg border border-mundo-muted-dark/30 bg-mundo-bg-light px-5 py-4">
       <div className="flex items-start gap-4">
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-mundo-muted-dark/10 font-mono text-sm text-mundo-muted">
+        <div className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-mundo-muted-dark/10 font-mono text-sm text-mundo-muted">
           {String(track.number).padStart(2, "0")}
+          <span className={`absolute -top-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-mundo-bg-light ${audioUrl ? "bg-green-500" : "bg-mundo-muted-dark/30"}`} />
         </div>
         <div className="min-w-0 flex-1">
           {/* Editable title */}
@@ -693,6 +694,7 @@ export default function AlbumProductionPage() {
     (s, a) => s + a.tracks.filter((t) => t.lyrics).length,
     0
   );
+  const totalVersions = Object.values(trackVersions).reduce((s, v) => s + v.length, 0);
 
   async function generateTrack(albumSlug: string, track: AlbumTrack) {
     const key = trackKey(albumSlug, track.number);
@@ -957,6 +959,11 @@ export default function AlbumProductionPage() {
             <span className="rounded-full bg-green-900/30 px-3 py-1 text-xs text-green-400">
               {totalWithLyrics}/{totalTracks} com letra
             </span>
+            {totalVersions > 0 && (
+              <span className="rounded-full bg-violet-900/30 px-3 py-1 text-xs text-violet-400">
+                {totalVersions} versões
+              </span>
+            )}
             {(["whisper", "steady", "pulse", "anthem", "raw"] as TrackEnergy[]).map((e) => {
               const count = ALL_ALBUMS.reduce(
                 (s, a) => s + a.tracks.filter((t) => t.energy === e).length,
@@ -1090,13 +1097,29 @@ export default function AlbumProductionPage() {
                 <h2 className="font-display text-2xl text-mundo-creme">{album.title}</h2>
               </div>
               <p className="mt-1 text-mundo-muted">{album.subtitle}</p>
-              <div className="mt-2 flex items-center gap-3">
+              <div className="mt-2 flex flex-wrap items-center gap-3">
                 <span className="rounded bg-mundo-muted-dark/10 px-2 py-0.5 text-xs text-mundo-muted">
                   {album.product}{album.veu ? ` — Véu ${album.veu}` : ""}
                 </span>
                 <span className="text-xs text-mundo-muted/60">
                   {album.tracks.length} faixas · {Math.floor(album.tracks.reduce((s, t) => s + t.durationSeconds, 0) / 60)} min
                 </span>
+                {(() => {
+                  const albumDone = album.tracks.filter(t => statuses[trackKey(album.slug, t.number)] === "done").length;
+                  const albumVer = album.tracks.reduce((s, t) => s + (trackVersions[trackKey(album.slug, t.number)]?.length || 0), 0);
+                  return (
+                    <>
+                      <span className={`rounded px-2 py-0.5 text-xs font-medium ${albumDone === album.tracks.length ? "bg-green-900/30 text-green-400" : albumDone > 0 ? "bg-mundo-dourado/20 text-mundo-dourado" : "bg-mundo-muted-dark/10 text-mundo-muted/50"}`}>
+                        {albumDone}/{album.tracks.length} com audio
+                      </span>
+                      {albumVer > 0 && (
+                        <span className="rounded bg-violet-900/30 px-2 py-0.5 text-xs text-violet-400">
+                          {albumVer} versoes
+                        </span>
+                      )}
+                    </>
+                  );
+                })()}
               </div>
             </div>
 
@@ -1144,6 +1167,10 @@ export default function AlbumProductionPage() {
                 (t) => statuses[trackKey(a.slug, t.number)] === "done"
               ).length;
               const withLyrics = a.tracks.filter((t) => t.lyrics).length;
+              const albumVersions = a.tracks.reduce(
+                (s, t) => s + (trackVersions[trackKey(a.slug, t.number)]?.length || 0),
+                0
+              );
               const totalMin = Math.floor(
                 a.tracks.reduce((s, t) => s + t.durationSeconds, 0) / 60
               );
@@ -1172,9 +1199,12 @@ export default function AlbumProductionPage() {
                       {withLyrics > 0 && (
                         <span className="text-[10px] text-green-400">{withLyrics} letras</span>
                       )}
-                      {done > 0 && (
-                        <span className="text-xs text-mundo-dourado">{done}/{a.tracks.length}</span>
+                      {albumVersions > 0 && (
+                        <span className="text-[10px] text-violet-400">{albumVersions} v.</span>
                       )}
+                      <span className={`text-xs font-medium ${done === a.tracks.length ? "text-green-400" : done > 0 ? "text-mundo-dourado" : "text-mundo-muted/40"}`}>
+                        {done}/{a.tracks.length} audio
+                      </span>
                     </div>
                   </div>
                   {(done > 0 || withLyrics > 0) && (

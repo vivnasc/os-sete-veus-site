@@ -115,17 +115,17 @@ export default function PartilhaClient({
     const shareUrl = typeof window !== "undefined"
       ? `${window.location.origin}/partilha/${albumSlug}/${trackNumber}`
       : "";
-    const text = `"${trackTitle}" — ${albumTitle} | Loranne\n${shareUrl}`;
+    const shareText = `"${trackTitle}" — ${albumTitle} | Loranne`;
 
     if (typeof navigator !== "undefined" && navigator.share) {
       try {
-        await navigator.share({ title: trackTitle, text, url: shareUrl });
+        await navigator.share({ title: trackTitle, text: shareText, url: shareUrl });
         return;
       } catch { /* cancelled */ }
     }
 
     try {
-      await navigator.clipboard.writeText(text);
+      await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch { /* ignore */ }
