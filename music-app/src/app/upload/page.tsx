@@ -95,6 +95,25 @@ export default function UploadPage() {
     }
   }, []);
 
+  // Track which album slugs have audio in Supabase Storage (persists across refresh)
+  const [storageStatus, setStorageStatus] = useState<Record<string, boolean>>({});
+
+  // Load audio status for all albums on mount (shows which tracks exist in storage)
+  useEffect(() => {
+    if (!authed) return;
+    fetch("/api/admin/audio-status")
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (!data?.existing) return;
+        const map: Record<string, boolean> = {};
+        for (const key of data.existing as string[]) {
+          map[key] = true;
+        }
+        setStorageStatus(map);
+      })
+      .catch(() => {});
+  }, [authed]);
+
   // Load versions for selected album
   useEffect(() => {
     if (!selectedAlbum) return;
@@ -164,6 +183,12 @@ export default function UploadPage() {
         } catch {
           // Version metadata save is best-effort
         }
+      }
+
+      // Update storage status for this track
+      const sKey = `${album.slug}-t${track.number}`;
+      if (!version) {
+        setStorageStatus(prev => ({ ...prev, [sKey]: true }));
       }
 
       // Reload versions
@@ -384,7 +409,9 @@ export default function UploadPage() {
               {selectedAlbum.tracks.map(track => {
                 const key = trackKey(selectedAlbum.slug, track.number);
                 const status = uploadStatuses[key];
-                const hasAudio = !!track.audioUrl || status?.state === "done";
+                const storageKey = `${selectedAlbum.slug}-t${track.number}`;
+                const inStorage = !!storageStatus[storageKey];
+                const hasAudio = !!track.audioUrl || status?.state === "done" || inStorage;
                 const versions = trackVersions[key] || [];
                 const isExpanded = showVersions === key;
 
@@ -403,7 +430,7 @@ export default function UploadPage() {
                         <p className="text-sm text-[#F5F0E6] truncate">{track.title}</p>
                         <p className="text-xs text-[#666680] truncate">
                           {track.lang} — {fmt(track.durationSeconds)}
-                          {track.audioUrl && (
+                          {(track.audioUrl || inStorage) && (
                             <span className="ml-2 text-green-400/70">audio existente</span>
                           )}
                         </p>
@@ -525,13 +552,12 @@ export default function UploadPage() {
                   <h2 className="text-sm uppercase tracking-widest text-[#666680] mb-3">{labels[product]}</h2>
                   <div className="space-y-1">
                     {albumsInCategory.map(album => {
-                      const tracksWithAudio = album.tracks.filter(t => t.audioUrl).length;
-                      const uploadedTracks = album.tracks.filter(t => {
-                        const key = trackKey(album.slug, t.number);
-                        return uploadStatuses[key]?.state === "done";
-                      }).length;
                       const total = album.tracks.length;
-                      const ready = tracksWithAudio + uploadedTracks;
+                      const ready = album.tracks.filter(t => {
+                        const key = trackKey(album.slug, t.number);
+                        const sKey = `${album.slug}-t${t.number}`;
+                        return !!t.audioUrl || uploadStatuses[key]?.state === "done" || !!storageStatus[sKey];
+                      }).length;
 
                       return (
                         <button
