@@ -156,16 +156,16 @@ export default function VideoComposer({
       {/* Status bar */}
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-sm text-mundo-dourado font-medium">
+          <h3 className="text-sm text-escola-dourado font-medium">
             Video Clips — Wan 2.1
           </h3>
-          <p className="text-xs text-mundo-muted mt-1">
+          <p className="text-xs text-escola-creme-50 mt-1">
             Cada imagem e animada em video real pelo Wan 2.1 no ThinkDiffusion.
             {!hasComfyUI && " Configura o URL do ComfyUI acima."}
           </p>
         </div>
         <div className="text-right">
-          <span className="text-sm text-mundo-creme-suave">
+          <span className="text-sm text-escola-creme">
             {doneClips}/{scenes.length} clips
           </span>
           {audioUrl && (
@@ -179,7 +179,7 @@ export default function VideoComposer({
         {!batchRunning && hasComfyUI && doneClips < scenes.length && (
           <button
             onClick={generateAllClips}
-            className="px-5 py-2.5 bg-mundo-dourado text-mundo-bg rounded-lg font-medium hover:bg-mundo-dourado-quente transition-colors"
+            className="px-5 py-2.5 bg-escola-dourado text-escola-bg rounded-lg font-medium hover:bg-escola-dourado-quente transition-colors"
           >
             Gerar todos os video clips
           </button>
@@ -187,13 +187,13 @@ export default function VideoComposer({
         {batchRunning && (
           <>
             <div className="flex-1">
-              <div className="h-2 bg-mundo-border rounded-full overflow-hidden">
+              <div className="h-2 bg-escola-border rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-mundo-dourado transition-all duration-1000"
+                  className="h-full bg-escola-dourado transition-all duration-1000"
                   style={{ width: `${batchProgress.total > 0 ? (batchProgress.current / batchProgress.total) * 100 : 0}%` }}
                 />
               </div>
-              <p className="text-xs text-mundo-muted mt-1">
+              <p className="text-xs text-escola-creme-50 mt-1">
                 Clip {batchProgress.current}/{batchProgress.total} — Wan 2.1 a animar...
               </p>
             </div>
@@ -212,9 +212,9 @@ export default function VideoComposer({
         {scenes.map((scene, idx) => {
           const clip = getClip(idx);
           return (
-            <div key={idx} className="flex gap-4 bg-mundo-bg rounded-lg p-4">
+            <div key={idx} className="flex gap-4 bg-escola-bg rounded-lg p-4">
               {/* Video preview or image */}
-              <div className="w-48 h-28 rounded-lg overflow-hidden flex-shrink-0 border border-mundo-border relative">
+              <div className="w-48 h-28 rounded-lg overflow-hidden flex-shrink-0 border border-escola-border relative">
                 {clip.videoUrl ? (
                   <video
                     src={clip.videoUrl}
@@ -230,19 +230,19 @@ export default function VideoComposer({
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={scene.imageUrl} alt="" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                      <span className="text-white/60 text-xs">Foto estatica</span>
+                      <span className="text-escola-creme/60 text-xs">Foto estatica</span>
                     </div>
                   </>
                 ) : (
-                  <div className="w-full h-full bg-mundo-bg-surface flex items-center justify-center">
-                    <span className="text-mundo-muted-dark text-xs">Sem imagem</span>
+                  <div className="w-full h-full bg-escola-card flex items-center justify-center">
+                    <span className="text-escola-creme-50 text-xs">Sem imagem</span>
                   </div>
                 )}
                 {clip.status === "generating" && (
                   <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
                     <div className="text-center">
-                      <div className="w-6 h-6 border-2 border-mundo-dourado border-t-transparent rounded-full animate-spin mx-auto mb-1" />
-                      <span className="text-xs text-mundo-dourado">Wan 2.1...</span>
+                      <div className="w-6 h-6 border-2 border-escola-dourado border-t-transparent rounded-full animate-spin mx-auto mb-1" />
+                      <span className="text-xs text-escola-dourado">Wan 2.1...</span>
                     </div>
                   </div>
                 )}
@@ -251,18 +251,18 @@ export default function VideoComposer({
               {/* Scene info */}
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-mundo-violeta font-mono text-xs uppercase">
+                  <span className="text-escola-dourado font-mono text-xs uppercase">
                     {idx + 1}. {scene.type}
                   </span>
-                  <span className="text-mundo-muted text-xs">~{scene.durationSec}s</span>
+                  <span className="text-escola-creme-50 text-xs">~{scene.durationSec}s</span>
                   {clip.status === "done" && (
                     <span className="text-xs text-green-400">Video OK</span>
                   )}
                 </div>
                 {scene.overlayText && (
-                  <p className="text-sm text-white mb-1">&ldquo;{scene.overlayText}&rdquo;</p>
+                  <p className="text-sm text-escola-creme mb-1">&ldquo;{scene.overlayText}&rdquo;</p>
                 )}
-                <p className="text-xs text-mundo-border italic line-clamp-2">
+                <p className="text-xs text-escola-creme-50 italic line-clamp-2">
                   {scene.visualNote}
                 </p>
                 {clip.error && (
@@ -280,13 +280,13 @@ export default function VideoComposer({
                         ? "bg-green-800/40 text-green-300 hover:bg-green-800/60"
                         : clip.status === "error"
                         ? "bg-red-800/40 text-red-300 hover:bg-red-800/60"
-                        : "bg-mundo-dourado/20 text-mundo-dourado hover:bg-mundo-dourado/30"
+                        : "bg-escola-dourado/20 text-escola-dourado hover:bg-escola-dourado/30"
                     }`}
                   >
                     {clip.status === "done" ? "Regerar" : clip.status === "error" ? "Tentar de novo" : "Animar (Wan 2.1)"}
                   </button>
                 )}
-                <label className="text-xs px-3 py-1.5 bg-mundo-bg-surface text-mundo-muted rounded cursor-pointer hover:text-mundo-creme text-center">
+                <label className="text-xs px-3 py-1.5 bg-escola-card text-escola-creme-50 rounded cursor-pointer hover:text-escola-creme text-center">
                   Carregar clip
                   <input
                     type="file"
@@ -306,8 +306,8 @@ export default function VideoComposer({
 
       {/* Download / export section */}
       {doneClips > 0 && (
-        <div className="border-t border-mundo-bg pt-4 space-y-3">
-          <h4 className="text-sm text-mundo-dourado">Exportar</h4>
+        <div className="border-t border-escola-bg pt-4 space-y-3">
+          <h4 className="text-sm text-escola-dourado">Exportar</h4>
 
           {/* Option 1: Download all clips + audio for manual montage */}
           <div className="flex flex-wrap gap-3">
@@ -319,7 +319,7 @@ export default function VideoComposer({
                   key={idx}
                   href={clip.videoUrl}
                   download={`${idx + 1}-${scene.type}.webp`}
-                  className="text-xs px-3 py-1.5 bg-mundo-bg-surface text-mundo-muted rounded hover:text-mundo-creme"
+                  className="text-xs px-3 py-1.5 bg-escola-card text-escola-creme-50 rounded hover:text-escola-creme"
                 >
                   {idx + 1}. {scene.type}
                 </a>
@@ -329,24 +329,24 @@ export default function VideoComposer({
               <a
                 href={audioUrl}
                 download={`${title.replace(/[^a-zA-Z0-9]/g, "-")}-audio.mp3`}
-                className="text-xs px-3 py-1.5 bg-mundo-dourado/20 text-mundo-dourado rounded hover:bg-mundo-dourado/30"
+                className="text-xs px-3 py-1.5 bg-escola-dourado/20 text-escola-dourado rounded hover:bg-escola-dourado/30"
               >
                 Audio completo
               </a>
             )}
           </div>
 
-          <p className="text-xs text-mundo-muted">
+          <p className="text-xs text-escola-creme-50">
             Descarrega os clips + audio e monta no CapCut, DaVinci Resolve ou outro editor.
             Os clips ja estao animados — so precisas de os juntar com o audio e adicionar o texto.
           </p>
 
           {/* Montage instructions */}
-          <details className="bg-mundo-bg rounded-lg">
-            <summary className="px-4 py-3 text-xs text-mundo-muted cursor-pointer">
+          <details className="bg-escola-bg rounded-lg">
+            <summary className="px-4 py-3 text-xs text-escola-creme-50 cursor-pointer">
               Guia de montagem rapida
             </summary>
-            <div className="px-4 pb-4 text-xs text-mundo-muted-dark space-y-2">
+            <div className="px-4 pb-4 text-xs text-escola-creme-50 space-y-2">
               <p>1. Abre o CapCut (gratis) ou DaVinci Resolve</p>
               <p>2. Importa todos os clips por ordem (1-abertura, 2-pergunta, etc.)</p>
               <p>3. Importa o audio e coloca na timeline</p>
@@ -361,7 +361,7 @@ export default function VideoComposer({
 
       {/* Not enough to compose */}
       {doneClips === 0 && !batchRunning && (
-        <p className="text-xs text-mundo-muted">
+        <p className="text-xs text-escola-creme-50">
           {!hasComfyUI
             ? "Configura o URL do ComfyUI (ThinkDiffusion) acima para gerar video clips."
             : scenes.every((s) => !s.imageUrl)
