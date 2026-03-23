@@ -1,35 +1,51 @@
-import { notFound } from "next/navigation";
+"use client";
+
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { COURSES, getCourseBySlug } from "@/data/courses";
 import { getCategoryForCourse } from "@/data/course-categories";
+import { useAuth } from "@/contexts/AuthContext";
+import { useProgress } from "@/hooks/useProgress";
 
-export function generateStaticParams() {
-  return COURSES.map((c) => ({ slug: c.slug }));
-}
+export default function CursoPage() {
+  const params = useParams();
+  const slug = params.slug as string;
+  const { user } = useAuth();
+  const { courseProgress, isModuleCompleted, isModuleAccessible, startCourse, loading } =
+    useProgress(slug);
 
-export default async function CursoPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
   const course = getCourseBySlug(slug);
-  if (!course) notFound();
+  if (!course) {
+    return (
+      <div className="flex min-h-[50dvh] items-center justify-center">
+        <p className="text-escola-creme-50">Curso nao encontrado.</p>
+      </div>
+    );
+  }
 
   const category = getCategoryForCourse(slug);
+  const totalModules = course.modules.length;
+  const completedCount = courseProgress?.modules_completed?.length ?? 0;
+  const progressPct = Math.round((completedCount / totalModules) * 100);
+  const isStarted = !!courseProgress;
+  const isComplete = !!courseProgress?.completed_at;
+
+  const handleStart = async () => {
+    await startCourse();
+  };
 
   return (
     <div className="mx-auto max-w-lg px-4 pt-8 pb-8">
       {/* Back */}
       <Link
-        href="/"
+        href={isStarted ? "/" : "/cursos"}
         className="mb-6 inline-flex items-center gap-1 text-xs text-escola-creme-50 hover:text-escola-creme"
       >
-        <span>&larr;</span> Cursos
+        <span>&larr;</span> {isStarted ? "Inicio" : "Cursos"}
       </Link>
 
       {/* Header */}
-      <header className="mb-8">
+      <header className="mb-6">
         {category && (
           <span className="mb-2 block text-xs uppercase tracking-widest text-escola-dourado/60">
             {category.title}
@@ -42,6 +58,36 @@ export default async function CursoPage({
           {course.subtitle}
         </p>
       </header>
+
+      {/* Progress bar (if started) */}
+      {isStarted && !isComplete && (
+        <div className="mb-6">
+          <div className="mb-1 flex items-center justify-between">
+            <span className="text-xs text-escola-creme-50">
+              {completedCount} de {totalModules} modulos
+            </span>
+            <span className="text-xs font-medium text-escola-dourado">{progressPct}%</span>
+          </div>
+          <div className="h-1.5 overflow-hidden rounded-full bg-escola-border">
+            <div
+              className="h-full rounded-full bg-escola-dourado transition-all"
+              style={{ width: `${progressPct}%` }}
+            />
+          </div>
+        </div>
+      )}
+
+      {isComplete && (
+        <div className="mb-6 rounded-xl border border-escola-dourado/30 bg-escola-dourado/5 p-4 text-center">
+          <p className="text-sm font-medium text-escola-dourado">Curso completo</p>
+          <Link
+            href={`/cursos/${slug}/completo`}
+            className="mt-1 text-xs text-escola-creme-50 hover:text-escola-creme"
+          >
+            Ver certificado &rarr;
+          </Link>
+        </div>
+      )}
 
       {/* Arc */}
       <div className="mb-8 rounded-xl border border-escola-border bg-escola-card p-5">
@@ -58,38 +104,125 @@ export default async function CursoPage({
         Modulos
       </h2>
       <div className="space-y-3">
-        {course.modules.map((mod) => (
-          <Link
-            key={mod.number}
-            href={`/cursos/${course.slug}/${mod.number}`}
-            className="block rounded-xl border border-escola-border bg-escola-card p-4 transition-colors hover:border-escola-dourado/40"
-          >
-            <div className="flex items-center gap-3">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-escola-dourado/10 text-sm font-medium text-escola-dourado">
-                {mod.number}
-              </span>
-              <div className="min-w-0">
-                <h3 className="text-sm font-medium text-escola-creme">
-                  {mod.title}
-                </h3>
-                <p className="mt-0.5 text-xs text-escola-creme-50">
-                  {mod.description}
-                </p>
-              </div>
-            </div>
-            <div className="mt-2 flex gap-1.5 pl-11">
-              {mod.subLessons.map((sl) => (
-                <span
-                  key={sl.letter}
-                  className="rounded bg-escola-bg px-1.5 py-0.5 text-[10px] text-escola-creme-50"
+        {course.modules.map((mod) => {
+          const completed = isModuleCompleted(mod.number);
+          const accessible = isModuleAccessible(mod.number);
+          const isCurrent = courseProgress?.current_module === mod.number;
+
+          return (
+            <div key={mod.number}>
+              {accessible ? (
+                <Link
+                  href={`/cursos/${slug}/${mod.number}`}
+                  className={`block rounded-xl border p-4 transition-colors ${
+                    isCurrent
+                      ? "border-escola-dourado/40 bg-escola-card"
+                      : completed
+                        ? "border-escola-dourado/20 bg-escola-card"
+                        : "border-escola-border bg-escola-card hover:border-escola-dourado/40"
+                  }`}
                 >
-                  {sl.letter}
-                </span>
-              ))}
+                  <div className="flex items-center gap-3">
+                    {/* Status indicator */}
+                    <span
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-medium ${
+                        completed
+                          ? "bg-escola-dourado/20 text-escola-dourado"
+                          : isCurrent
+                            ? "bg-escola-dourado/10 text-escola-dourado"
+                            : "bg-escola-bg text-escola-creme-50"
+                      }`}
+                    >
+                      {completed ? (
+                        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      ) : (
+                        mod.number
+                      )}
+                    </span>
+
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2">
+                        <h3 className="text-sm font-medium text-escola-creme">
+                          {mod.title}
+                        </h3>
+                        {isCurrent && !completed && (
+                          <span className="rounded-full bg-escola-dourado/10 px-2 py-0.5 text-[10px] text-escola-dourado">
+                            actual
+                          </span>
+                        )}
+                      </div>
+                      <p className="mt-0.5 text-xs text-escola-creme-50">
+                        {mod.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Sub-lesson indicators */}
+                  <div className="mt-2 flex gap-1.5 pl-11">
+                    {mod.subLessons.map((sl) => (
+                      <span
+                        key={sl.letter}
+                        className="rounded bg-escola-bg px-1.5 py-0.5 text-[10px] text-escola-creme-50"
+                      >
+                        {sl.letter}
+                      </span>
+                    ))}
+                    {mod.workbook && (
+                      <span className="rounded bg-escola-bg px-1.5 py-0.5 text-[10px] text-escola-creme-50">
+                        Caderno
+                      </span>
+                    )}
+                  </div>
+                </Link>
+              ) : (
+                <div className="rounded-xl border border-escola-border/50 bg-escola-card/50 p-4 opacity-50">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-escola-bg text-sm text-escola-creme-50">
+                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                        <path d="M7 11V7a5 5 0 0110 0v4" />
+                      </svg>
+                    </span>
+                    <div className="min-w-0">
+                      <h3 className="text-sm font-medium text-escola-creme-50">
+                        {mod.title}
+                      </h3>
+                      <p className="mt-0.5 text-[10px] text-escola-creme-50">
+                        Completa o Modulo {mod.number - 1} para desbloquear
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
-          </Link>
-        ))}
+          );
+        })}
       </div>
+
+      {/* Start CTA (if not started) */}
+      {!isStarted && user && (
+        <div className="mt-8">
+          <button
+            onClick={handleStart}
+            className="w-full rounded-lg bg-escola-dourado px-6 py-3 text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
+          >
+            Comecar este curso
+          </button>
+        </div>
+      )}
+
+      {!user && (
+        <div className="mt-8">
+          <Link
+            href="/entrar"
+            className="block w-full rounded-lg bg-escola-dourado px-6 py-3 text-center text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
+          >
+            Entrar para comecar
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
