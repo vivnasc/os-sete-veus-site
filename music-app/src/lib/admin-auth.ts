@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { SUPABASE_URL } from "./supabase-server";
 
@@ -10,10 +10,52 @@ export { ADMIN_EMAIL };
 type AnySupabaseClient = SupabaseClient<any, any, any>;
 
 /**
+ * Extract the access token from the request.
+ * Checks Authorization header first, then falls back to cookies.
+ */
+function extractToken(reqOrCookie: NextRequest | string | null): string | null {
+  if (reqOrCookie instanceof Request) {
+    // Check Authorization: Bearer <token>
+    const authHeader = reqOrCookie.headers.get("authorization");
+    if (authHeader?.startsWith("Bearer ")) {
+      return authHeader.slice(7);
+    }
+    // Fallback to cookie
+    const cookie = reqOrCookie.headers.get("cookie");
+    if (cookie) {
+      const match = cookie.match(/sb-[^-]+-auth-token=([^;]+)/);
+      if (match) {
+        try {
+          const parsed = JSON.parse(decodeURIComponent(match[1]));
+          return Array.isArray(parsed) ? parsed[0] : parsed;
+        } catch {
+          return decodeURIComponent(match[1]);
+        }
+      }
+    }
+    return null;
+  }
+  // Legacy: raw cookie string
+  if (typeof reqOrCookie === "string") {
+    const match = reqOrCookie.match(/sb-[^-]+-auth-token=([^;]+)/);
+    if (match) {
+      try {
+        const parsed = JSON.parse(decodeURIComponent(match[1]));
+        return Array.isArray(parsed) ? parsed[0] : parsed;
+      } catch {
+        return decodeURIComponent(match[1]);
+      }
+    }
+  }
+  return null;
+}
+
+/**
  * Verify the request comes from the admin user.
+ * Accepts NextRequest (reads Authorization header + cookies) or raw cookie string.
  * Returns the Supabase service client if authorized, or a 401/403 response.
  */
-export async function requireAdmin(cookieHeader: string | null): Promise<
+export async function requireAdmin(reqOrCookie: NextRequest | string | null): Promise<
   | { ok: true; supabase: AnySupabaseClient }
   | { ok: false; response: NextResponse }
 > {
@@ -39,11 +81,13 @@ export async function requireAdmin(cookieHeader: string | null): Promise<
     };
   }
 
-  // Use anon key to verify the user's JWT from cookies/headers
+  const token = extractToken(reqOrCookie);
+
+  // Create client with the extracted token
   const userClient = createClient(SUPABASE_URL, anonKey, {
     auth: { persistSession: false },
     global: {
-      headers: cookieHeader ? { cookie: cookieHeader } : {},
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
     },
   });
 

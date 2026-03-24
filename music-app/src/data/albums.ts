@@ -681,7 +681,6 @@ const ESP_AMEM: AlbumDef = spiritualAlbum("espiritual-amem", "Amém", "O 'sim' q
   { number: 4, title: "Grão", description: "Um grão — pequeno, parte do todo. O amém é sussurro.", lang: "PT", energy: "raw", prompt: spiritualPrompt("a grain, tiny, part of the whole, amen as whisper not stadium", "tiny, humble, part-of-whole, collective whisper", "minimal raw vocal, grain-like textures, tiny humble production, whisper amen", "PT", "raw"), durationSeconds: 270, audioUrl: null },
 ]);
 
-// ─────────────────────────────────────────────
 // ALBUM 11: PRECE (the raw human cry to something bigger)
 // ─────────────────────────────────────────────
 
@@ -796,6 +795,21 @@ const ESP_CHAMA_ULTIMA: AlbumDef = spiritualAlbum("espiritual-chama-ultima", "Ch
   { number: 4, title: "Still Burning", description: "Depois de tudo — ainda ardes", lang: "EN", energy: "pulse", prompt: spiritualPrompt("after everything, still burning, inextinguishable, refusal to die", "defiant, burning, inextinguishable, fierce-alive", "driving fire rhythm, burning vocal, inextinguishable energy, fierce pulse", "EN", "pulse"), durationSeconds: 240, audioUrl: null },
   { number: 5, title: "Chama", description: "A chama que és — não metáfora, presença", lang: "PT", energy: "anthem", flavor: "gospel", prompt: spiritualPrompt("you are the flame, not metaphor but presence, eternal fire-self", "blazing, present, eternal, flame-as-self", "gospel choir fire, organ blaze, anthem vocal, eternal flame building, transcendent", "PT", "anthem", "gospel"), durationSeconds: 300, audioUrl: null },
 ]);
+
+// Apply lyrics from separate files to all album tracks
+function applyLyrics(albumDef: AlbumDef): Album {
+  return {
+    ...albumDef,
+    tracks: albumDef.tracks.map((t) => ({
+      ...t,
+      energy: t.energy || "whisper",
+      flavor: t.flavor || "organic",
+      vocalMode: t.vocalMode || "solo",
+      lyrics: t.lyrics || getLyrics(albumDef.slug, t.number),
+      audioUrl: t.audioUrl ?? null,
+    })),
+  } as Album;
+}
 
 // VIDA (22 albums)
 // A vida inteira — do acordar ao adormecer,
@@ -1045,21 +1059,6 @@ const VIDA_PENUMBRA = vidaAlbum("vida-penumbra", "Penumbra", "o limiar, o espaç
 // ─────────────────────────────────────────────
 // EXPORT
 // ─────────────────────────────────────────────
-
-// Apply lyrics from separate files to all album tracks
-function applyLyrics(albumDef: AlbumDef): Album {
-  return {
-    ...albumDef,
-    tracks: albumDef.tracks.map((t) => ({
-      ...t,
-      energy: t.energy || "whisper",
-      flavor: t.flavor || "organic",
-      vocalMode: t.vocalMode || "solo",
-      lyrics: t.lyrics || getLyrics(albumDef.slug, t.number),
-      audioUrl: t.audioUrl ?? null,
-    })),
-  } as Album;
-}
 
 export const ALL_ALBUMS: Album[] = [
   // Espelhos

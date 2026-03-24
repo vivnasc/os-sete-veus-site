@@ -14,6 +14,7 @@ import {
   type TrackFlavor,
 } from "@/data/albums";
 import { getAlbumCover } from "@/lib/album-covers";
+import { adminFetch } from "@/lib/admin-fetch";
 
 /** Read ID3 title from an MP3 File */
 async function readId3Title(file: File): Promise<string | null> {
@@ -27,7 +28,7 @@ async function readId3Title(file: File): Promise<string | null> {
 
 /** Save title to database */
 async function saveTitle(albumSlug: string, trackNumber: number, title: string, source: string) {
-  await fetch("/api/admin/track-metadata", {
+  await adminFetch("/api/admin/track-metadata", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ albumSlug, trackNumber, title, source }),
@@ -98,7 +99,7 @@ function buildUploadForm(
  */
 async function uploadViaSignedUrl(blob: Blob, filename: string): Promise<string> {
   // Step 1: Get signed upload URL
-  const signedRes = await fetch("/api/admin/signed-upload-url", {
+  const signedRes = await adminFetch("/api/admin/signed-upload-url", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ filename }),
@@ -583,7 +584,7 @@ export default function AlbumProductionPage() {
 
   // Load existing audio status + saved titles on mount
   useEffect(() => {
-    fetch("/api/admin/audio-status")
+    adminFetch("/api/admin/audio-status")
       .then((r) => r.json())
       .then((data) => {
         if (data.existing) {
@@ -603,7 +604,7 @@ export default function AlbumProductionPage() {
       .catch(() => {});
 
     // Load saved custom titles
-    fetch("/api/admin/track-metadata")
+    adminFetch("/api/admin/track-metadata")
       .then((r) => r.json())
       .then((data) => {
         if (data.titles) {
@@ -617,7 +618,7 @@ export default function AlbumProductionPage() {
       .catch(() => {});
 
     // Load existing track versions
-    fetch("/api/admin/track-versions")
+    adminFetch("/api/admin/track-versions")
       .then((r) => r.json())
       .then((data) => {
         if (data.versions) {
@@ -648,7 +649,7 @@ export default function AlbumProductionPage() {
 
     const interval = setInterval(async () => {
       try {
-        const res = await fetch(`/api/admin/suno/status?ids=${clipIds.join(",")}`);
+        const res = await adminFetch(`/api/admin/suno/status?ids=${clipIds.join(",")}`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
         const data = await res.json();
@@ -714,7 +715,7 @@ export default function AlbumProductionPage() {
     });
 
     try {
-      const res = await fetch("/api/admin/suno/generate", {
+      const res = await adminFetch("/api/admin/suno/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -813,7 +814,7 @@ export default function AlbumProductionPage() {
       const uploadUrl = await uploadViaSignedUrl(blob, filename);
 
       // Save version metadata to track_versions table
-      await fetch("/api/admin/track-versions", {
+      await adminFetch("/api/admin/track-versions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -870,7 +871,7 @@ export default function AlbumProductionPage() {
       const uploadUrl = await uploadViaSignedUrl(file, filename);
 
       // Save version metadata
-      await fetch("/api/admin/track-versions", {
+      await adminFetch("/api/admin/track-versions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

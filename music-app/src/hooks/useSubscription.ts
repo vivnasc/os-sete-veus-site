@@ -12,6 +12,8 @@ const PRICE = {
 
 export { PRICE as SUBSCRIPTION_PRICE };
 
+const ADMIN_EMAIL = "viv.saraiva@gmail.com";
+
 export function useSubscription() {
   const [status, setStatus] = useState<SubscriptionStatus>("loading");
   const [userId, setUserId] = useState<string | null>(null);
@@ -25,6 +27,12 @@ export function useSubscription() {
         return;
       }
       setUserId(user.id);
+
+      // Admin bypasses subscription gate
+      if (user.email === ADMIN_EMAIL) {
+        setStatus("active");
+        return;
+      }
 
       const { data: profile } = await supabase
         .from("music_subscriptions")
