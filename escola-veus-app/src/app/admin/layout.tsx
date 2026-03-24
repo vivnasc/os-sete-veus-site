@@ -12,6 +12,11 @@ const ADMIN_NAV = [
   { href: "/admin/alunas", label: "Alunas" },
   { href: "/admin/cursos", label: "Cursos" },
   { href: "/admin/conteudo", label: "Conteudo" },
+  { href: "/admin/producao", label: "Producao" },
+  { href: "/admin/territorios", label: "Territorios" },
+  { href: "/admin/youtube", label: "YouTube" },
+  { href: "/admin/lora", label: "LoRA" },
+  { href: "/admin/guidelines", label: "Guidelines" },
   { href: "/admin/analytics", label: "Analytics" },
 ] as const;
 

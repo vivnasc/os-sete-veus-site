@@ -1,21 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { NavBar } from "@/components/escola/NavBar";
 import "./globals.css";
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-serif",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Escola dos Veus — Cursos",
@@ -36,8 +22,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt" className={`${cormorant.variable} ${inter.variable}`}>
-      <body className="bg-escola-bg text-escola-creme">
+    <html lang="pt">
+      <body className="font-sans bg-escola-bg text-escola-creme">
         <AuthProvider>
           <main className="pb-nav min-h-dvh">
             {children}
