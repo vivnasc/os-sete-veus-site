@@ -1636,38 +1636,44 @@ lavada`,
 
   "espiritual-agua-viva/4": `[Verse 1]
 My lungs burned for air
-My arms fought the weight
+my arms fought the weight
 I pushed through the surface
-Like breaking a plate
+like shattering a plate
 
 [Verse 2]
 The first breath was jagged
-The first breath was raw
-Like swallowing daylight
-Through a throat made of straw
+the first breath was raw
+like swallowing daylight
+through a throat made of straw
 
 [Chorus]
-Surface
-I came back gasping
-Surface
-I came back loud
-Surface
-Not graceful not gentle
-Sputtering alive
-Dripping with the proof
-That I survived
+Surface — I came back gasping
+surface — I came back loud
+not graceful, not glowing
+not wrapped in a cloud
+just dripping and heaving
+and stinging and alive —
+surface is not a miracle
+it's just the proof you survived
+
+[Verse 3]
+My chest is still shaking
+my eyes are still burned
+the water falls off me
+like a story I've returned
 
 [Bridge]
-My chest is heaving
-My eyes are stinging
-The water falls off me
-Like a skin I wore too long
+I didn't rise transformed
+I didn't emerge remade
+I just broke through the water
+I just wasn't afraid
 
 [Outro]
 I'm not reborn
+I'm not undone
 I'm just breathing
-For the first time
-On purpose`,
+on purpose
+for once`,
 
   // ─────────────────────────────────────────────
   // ALBUM 10: AMEM (the "yes" we say together)
@@ -1675,36 +1681,45 @@ On purpose`,
 
   "espiritual-amem/1": `[Verse 1]
 Pensei que o caminho era so meu
-Que o peso era so meu para levar
-Que a escuridao era so minha
-E que ninguem ia reparar
+que o peso so eu o sabia levar
+que a escuridao era privada
+que ninguem ia reparar
 
 [Verse 2]
-Ate que uma voz ao lado
-Disse eu tambem
-E o peito abriu um espaco
-Que nao sabia que tinha
+Depois uma voz do meu lado
+disse baixinho: eu tambem
+e o peito abriu um espaco
+que nao sabia que tinha ninguem
 
 [Chorus]
-Sozinha nao
-Nao e fraqueza — e espanto
-Sozinha nao
-Alguem chegou e ficou
-Sozinha nao
-E o choque de perceber
-Que o meu silencio
-Tinha eco noutra voz
+Sozinha nao — e o espanto
+sozinha nao — nao e fraqueza
+sozinha nao — e o choque de perceber
+que o meu silencio
+tinha eco em outra dureza
+eu tambem, eu tambem —
+tres palavras que partem a armadura
+eu tambem, eu tambem —
+o que pensava ser so meu
+afinal e de outra criatura
+
+[Verse 3]
+A mao que me tocou o ombro
+nao pediu nada em troca
+nao explicou nem consolou —
+so ficou sem ser convoca
 
 [Bridge]
-A mao que me tocou o ombro
-Nao pediu nada
-Nao explicou
-So ficou
+Nao e que a dor desapareceu
+nao e que ficou mais leve
+e que de repente tinha nome
+e o nome de outra gente
 
 [Outro]
 Sozinha nao
-E a frase que me parte
-E me reconstroi ao mesmo tempo`,
+e a frase que me parte
+e me reconstroi
+ao mesmo tempo`,
 
   "espiritual-amem/2": `[Verse 1]
 No bread no wine
@@ -1937,69 +1952,87 @@ e alguma coisa
 neste escuro
 ouve`,
 
-  "espiritual-prece/4": `[Verse]
-My bones remember a language
-My tongue forgot
-A rhythm older than words
-Beating in my ribs
+  "espiritual-prece/4": `[Verse 1]
+[Female] I forgot how to kneel
+forgot how to be still
+My calendar says Tuesday
+but my body says ancient hill
 
-[Verse]
-My hands move without permission
-My spine curves to something ancient
-The prayer lives in my marrow
-Not in my mouth
+[Verse 2]
+[Male] My ribs remember something
+my name has never said
+A rhythm in the calcium
+that lived before the dead
 
 [Chorus]
-Bones know
-What the mind refuses
-Bones know
-The oldest prayer
-Written in calcium and breath
-Before any book was opened
-Bones know
+[Both] Bones know
+[Male] what the mind refuses
+[Female] bones know
+[Male] before the word was spoken
+[Both] Written in marrow and in breath
+this prayer was never broken
+Bones know — the oldest language
+bones know — before the book
+bones know — we just stopped listening
+bones know — come back and look
+
+[Verse 3]
+[Female] My hands curve without asking
+[Male] my spine bends to the pull
+[Female] Something below my thinking
+[Male] something below the skull
 
 [Bridge]
-Every cell is bowing
-Every joint is speaking
-The body never stopped praying
-We just stopped listening
+[Both] Every cell is bowing
+every joint is speaking
+the body never stopped praying
+we just stopped seeking
 
 [Outro]
-My bones are praying
-Let me follow them home`,
+[Female] My bones are praying
+[Male] let me follow them
+[Both] home`,
 
-  "espiritual-prece/5": `[Verse]
-Ja nao peco nada
-Ja nao quero nada
-Fico aqui sentada
-Com as maos no colo
+  "espiritual-prece/5": `[Verse 1]
+Ja pedi com o grito
+ja pedi com o pranto
+Ja pedi ao silencio
+ja pedi ao espanto
 
-[Verse]
-A ultima prece e esta
-Ficar
-Nao fugir do escuro
-Nao procurar a luz
+[Verse 2]
+Agora nao peco nada
+agora as maos estao no colo
+Nao e paz o que sinto
+e so o peso do solo
 
 [Chorus]
-Ficar
-Essa e a prece
-Ficar
-Com o que doi
-Ficar com o que nao entendo
+Ficar — isso e a ultima prece
+ficar — sem pedir nem saber
 Ficar com o corpo que tenho
-Ficar
+ficar com o que vai doer
+Nao e resignacao nem rendica
+e a carne que escolhe o real
+Ficar — essa e a prece
+ficar — no escuro total
+
+[Verse 3]
+Ja disse tudo o que sabia
+ja gritei tudo o que tinha
+Agora o silencio e meu
+e a noite e minha vizinha
 
 [Bridge]
 Nao ha mais palavras
-Ja disse tudo
-Ja gritei tudo
-Agora fico
+nao ha mais nomes
+O que resta e so o peito
+aberto como dois volumes
 
 [Outro]
 A ultima prece
-Nao tem som
-E so presenca
-No escuro`,
+nao tem som
+e so presenca
+no escuro
+fico`,
 
   // ─────────────────────────────────────────────
   // ALBUM 12: CENTELHA (the divine spark inside)
@@ -2427,37 +2460,59 @@ A mais velha oracao
 As costelas respiram
 Ainda`,
 
-  "espiritual-catedral/4": `[Verse]
-My skin remembers
-The hand on my shoulder at seventeen
-The cold floor at midnight
-The first time someone held me right
+  "espiritual-catedral/4": `[Verse 1]
+[Female]
+My skin remembers the cold of the floor
+The night you found me and didn't say a word
+You sat beside me until morning came
+That silence was the loudest thing I heard
 
-[Verse]
-Every touch left a note
-Every scar left a verse
-My body is a hymn
-Written by everyone who stayed
+[Verse 2]
+[Male]
+My skin remembers the weight of your hand
+On my back when I could not stand straight
+I was learning how to carry something heavy
+You were showing me to redistribute weight
 
 [Chorus]
-Hymn of skin
-Sung in touch
-Hymn of skin
-Written in nerve and memory
-I am a living song
-Composed by every hand
-That dared to stay
+[Both]
+Hymn of skin — we are written in touch
+Hymn of skin — the body holds what words can't
+Every nerve a kind of knowing
+Every scar a kind of truth
+The skin remembers — always more than you
+
+[Verse 3]
+[Female]
+I have been touched by hands that didn't see me
+[Male]
+I have touched and not known what I held
+[Both]
+But there are moments the skin becomes a witness
+A record of the things we never spelled
+
+[Chorus]
+[Both]
+Hymn of skin — we are written in touch
+Hymn of skin — the body holds what words can't
+Every nerve a kind of knowing
+Every scar a kind of truth
+The skin remembers — always more than you
 
 [Bridge]
-Dance this body
-Move this hymn
-Let the skin remember
-What the mind forgot
+[Female]
+Move this body like it belongs to you
+[Male]
+Let the skin remember what the mind released
+[Both]
+We are living songs still being written
+By every hand that stayed and held its peace
 
 [Outro]
-My skin is singing
+[Both]
+The skin is singing
 Can you hear it
-My skin is singing`,
+The skin is singing`,
 
   "espiritual-catedral/5": `[Verse]
 Procurei em templos
