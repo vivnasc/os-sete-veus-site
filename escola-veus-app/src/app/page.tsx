@@ -30,18 +30,15 @@ export default function HomePage() {
         <div className="mx-auto max-w-screen-lg px-6 pt-8 pb-32">
           {/* Header */}
           <header className="mb-10 text-center">
-            <div className="relative mx-auto mb-4 h-20 w-20">
+            <div className="relative mx-auto mb-6 h-32 w-32 sm:h-40 sm:w-40">
               <Image
-                src="/Escola-dos-veus-favicon.png"
+                src="/Escola-dos-veus-logo.png"
                 alt="Escola dos Véus"
                 fill
-                className="object-contain"
+                className="object-contain drop-shadow-[0_0_24px_rgba(201,169,110,0.3)]"
                 priority
               />
             </div>
-            <h1 className="font-serif text-2xl font-semibold text-escola-creme">
-              Escola dos Véus
-            </h1>
           </header>
 
           {/* Continuar */}
@@ -160,17 +157,17 @@ export default function HomePage() {
   return (
     <div className="min-h-dvh">
       {/* Hero */}
-      <div className="flex flex-col items-center text-center px-6 pt-10 pb-12">
-        <div className="relative h-36 w-36 sm:h-44 sm:w-44 mb-4">
+      <div className="flex flex-col items-center text-center px-6 pt-12 pb-14">
+        <div className="relative h-48 w-48 sm:h-60 sm:w-60 mb-6">
           <Image
             src="/Escola-dos-veus-logo.png"
             alt="Escola dos Véus"
             fill
-            className="object-contain drop-shadow-[0_0_30px_rgba(201,169,110,0.25)]"
+            className="object-contain drop-shadow-[0_0_40px_rgba(201,169,110,0.35)]"
             priority
           />
         </div>
-        <p className="font-serif text-lg text-escola-creme/70 italic mb-6">
+        <p className="font-serif text-xl sm:text-2xl text-escola-creme/70 italic mb-8">
           Vê o que estava invisível.
         </p>
         <div className="w-full max-w-xs space-y-3">
