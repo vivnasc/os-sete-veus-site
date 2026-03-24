@@ -141,6 +141,7 @@ function ProductFilter({
     { key: "livro", label: "Livro" },
     { key: "curso", label: "Cursos" },
     { key: "espiritual", label: "Espiritual" },
+    { key: "vida", label: "Vida" },
   ];
 
   return (
@@ -351,6 +352,11 @@ function TrackRow({
             {track.flavor && track.flavor !== "organic" && (
               <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${FLAVOR_LABELS[track.flavor].color}`}>
                 {FLAVOR_LABELS[track.flavor].emoji} {FLAVOR_LABELS[track.flavor].label}
+              </span>
+            )}
+            {track.vocalMode === "duet" && (
+              <span className="rounded px-1.5 py-0.5 text-[10px] font-bold uppercase bg-pink-900/30 text-pink-400">
+                Dueto
               </span>
             )}
             {track.lyrics && (
