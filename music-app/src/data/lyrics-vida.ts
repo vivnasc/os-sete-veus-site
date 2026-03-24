@@ -905,4 +905,167 @@ A ultima carinha
 Boa noite
 Boa noite a mim`,
 
+
+  // ─────────────────────────────────────────────
+  // LUZ CRUA (manha, primeiro gesto)
+  // ─────────────────────────────────────────────
+
+  "vida-luz-crua/1": `[Verse 1]
+Antes de abrir os olhos
+O mundo ja existe la fora
+Os passaros cantam seus orgulhos
+Mas eu fico mais uma hora
+
+[Verse 2]
+Atras das palpebras e tudo morno
+O nome ainda nao voltou
+Nao sou mae nem dona do contorno
+So o corpo que aqui ficou
+
+[Chorus]
+Antes dos olhos
+Antes do nome
+Antes dos molhos
+Antes da fome
+Sou so um corpo
+Que ainda respira
+No escuro morto
+De quem nao expira
+
+[Outro]
+Mais um momento
+So mais um momento no escuro`,
+
+  "vida-luz-crua/2": `[Verse 1]
+A bird outside, the first of many
+A pipe that groans inside the wall
+The world kept spinning, spent its penny
+And didn't need me here at all
+
+[Verse 2]
+My ears are new, the sounds are strange
+Like hearing for the very first time
+The fridge, the wind, the subtle change
+Of morning writing its own rhyme
+
+[Chorus]
+First sound, first sound
+The world announces it survived
+First sound, first sound
+While I was gone, it stayed alive
+The rain, the click, the neighbour's door
+The ordinary miracle
+Of everything that was before
+I opened eyes to hear it all
+
+[Outro]
+The first sound
+Always the same surprise`,
+
+  "vida-luz-crua/3": `[Verse 1]
+Os pes tocam o chao frio
+Um choque que acorda a pele
+A gravidade e um fio
+Que me puxa para aquele
+
+[Verse 2]
+Lugar chamado agora
+Lugar chamado aqui
+A coluna se endireita devagar
+De vertebra em vertebra eu me vi
+
+[Chorus]
+Pes no chao
+A manha entra pelo corpo
+Pes no chao
+O dia comeca a ter um porto
+Cada passo e um contrato
+Com a terra que me segura
+De pe, descalca, exacto
+Nesta fria formosura
+
+[Outro]
+Pes no chao
+Cheguei ao dia`,
+
+  "vida-luz-crua/4": `[Verse 1]
+The water fills the kettle slow
+The pitch goes up as level rises
+I flip the switch, I watch it glow
+The morning and its small surprises
+
+[Verse 2]
+The steam begins to curl and climb
+The mug gets warm between my hands
+I take my first sip before time
+Has made its usual demands
+
+[Chorus]
+The kettle sings its simple song
+The ritual before the rush
+The moment where I still belong
+To silence and the morning hush
+One cup, one breath, one quiet minute
+Before the world comes crashing through
+This morning holds a god within it
+And the god is in the brew
+
+[Outro]
+One sip
+And the day begins`,
+
+  "vida-luz-crua/5": `[Verse 1]
+De pe junto a janela
+A chavena quente na mao
+O dia estica a sua tela
+E eu escolho a direcao
+
+[Verse 2]
+Nao e uma lista nem um plano
+Nao e uma obrigacao
+E mais como virar o volante humano
+Para o norte do coracao
+
+[Chorus]
+Intencao
+Sem forca, so direcao
+Intencao
+A bussola sem pressao
+Aponto para onde quero ir
+O corpo alinha devagar
+Nao preciso de decidir
+So de apontar e respirar
+
+[Outro]
+Para ali
+E o caminho e meu`,
+
+  "vida-luz-crua/6": `[Verse 1]
+The shoulders roll, the neck extends
+The body wants to move at last
+The morning cold against the skin
+Reminds me that the night has passed
+
+[Verse 2]
+My legs remember what they're for
+My arms swing open to the light
+I step outside through my own door
+Into a world that feels just right
+
+[Chorus]
+Daybreak in the body first
+Before the sun confirms the day
+The muscles quench their morning thirst
+The bones begin to sway
+Daybreak, daybreak
+The body leads the way
+Daybreak, daybreak
+There's nothing left to say
+But move, just move
+Into the light
+
+[Outro]
+The day begins
+In the body first`,
+
 };
