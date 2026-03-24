@@ -354,6 +354,11 @@ function TrackRow({
                 {FLAVOR_LABELS[track.flavor].emoji} {FLAVOR_LABELS[track.flavor].label}
               </span>
             )}
+            {track.vocalMode === "duet" && (
+              <span className="rounded px-1.5 py-0.5 text-[10px] font-bold uppercase bg-pink-900/30 text-pink-400">
+                Dueto
+              </span>
+            )}
             {track.lyrics && (
               <span className="rounded px-1.5 py-0.5 text-[10px] bg-green-900/30 text-green-400">
                 Letra
