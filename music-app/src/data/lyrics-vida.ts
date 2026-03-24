@@ -524,4 +524,196 @@ As someone I've become
 I return
 Changed and still the same`,
 
+
+  // ─────────────────────────────────────────────
+  // O TEAR (foco, trabalho, criacao)
+  // ─────────────────────────────────────────────
+
+  "vida-o-tear/1": `[Verse 1]
+O fio puxa e eu sigo
+Sem pensar para onde vai
+Os olhos estreitam o abrigo
+Do mundo que la fora cai
+
+[Verse 2]
+Os dedos encontram o ritmo
+A mente afina e esvazia
+Ha um ponto entre o grito e o hino
+Onde mora a maestria
+
+[Chorus]
+O fio, o fio
+Nao se pode partir
+O fio, o fio
+E a unica coisa a seguir
+Quando o mundo e barulho
+O fio e a minha voz
+Um caminho de orgulho
+Entre mim e o apos
+
+[Outro]
+Segue o fio
+Segue o fio`,
+
+  "vida-o-tear/2": `[Verse 1]
+Beneath the thought there runs a stream
+A current moving without light
+My hands obey a deeper dream
+My mind steps gently out of sight
+
+[Verse 2]
+The river carries what I make
+Before I know what it will be
+The current knows what shape to take
+My only job is to agree
+
+[Chorus]
+Undercurrent, undercurrent
+Flowing underneath the day
+Carry me where I am meant
+Take the thinking mind away
+Undercurrent, silent thread
+Moving faster than I know
+Hands keep making, nothing said
+In the deep beneath the flow
+
+[Outro]
+Under, under
+Flowing under everything`,
+
+  "vida-o-tear/3": `[Verse 1]
+As maos amassam, costuram, escrevem
+Os dedos sabem o que fazer
+A mente solta como as nuvens se atrevem
+A mente nao precisa de saber
+
+[Verse 2]
+O martelo bate no prego certeiro
+A agulha encontra o tecido
+As maos ocupadas sao o verdadeiro
+Templo onde me tenho escondido
+
+[Chorus]
+Maos ocupadas
+A mente descansa
+Maos ocupadas
+O corpo que danca
+Enquanto os dedos trabalham
+A alma respira
+As maos nunca falham
+Quando a cabeca se retira
+
+[Outro]
+Trabalha, trabalha
+As maos sabem o caminho`,
+
+  "vida-o-tear/4": `[Verse 1]
+Back and forth the shuttle flies
+Thread crosses thread in steady time
+The pattern grows before my eyes
+Without a plan, without a rhyme
+
+[Verse 2]
+The loom keeps clicking like a clock
+That measures something deeper than the hour
+A rhythm steady as a rock
+That holds attention like a flower
+
+[Chorus]
+The loom, the loom
+The rhythm of the making
+The loom, the room
+Where nothing else is waking
+Just the thread and just the hand
+Just the pattern slowly growing
+Nothing here I need to understand
+Just the weaving, just the knowing
+
+[Outro]
+Click, click
+The loom knows`,
+
+  "vida-o-tear/5": `[Verse 1]
+A tinta toca o papel
+E o mundo para de girar
+A caneta risca o que e fiel
+Ao que eu nao consigo falar
+
+[Verse 2]
+As teclas clicam no silencio
+As palavras nascem sozinhas
+Cada frase e um acrescimo
+Ao caminho de pegadas minhas
+
+[Chorus]
+Tinta e papel
+Tinta e verdade
+Cada palavra e fiel
+A minha vontade
+O mundo para quando escrevo
+O tempo perde a forma
+Sou mais viva quando levo
+A tinta a contornar a norma
+
+[Outro]
+Escrevo, logo existo
+Escrevo, logo respiro`,
+
+  "vida-o-tear/6": `[Verse 1]
+Something took the wheel from me
+My hands are moving on their own
+The clock forgot its tyranny
+The seeds are planting, fully grown
+
+[Pre-Chorus]
+Faster now, the current pulls
+The making makes itself through me
+
+[Chorus]
+The rhythm of making
+Takes over the mind
+The rhythm of making
+Leaves doubt behind
+My hands are the instrument
+My body is the tool
+Creation isn't heaven-sent
+It's muscle, bone, and fuel
+
+[Verse 2]
+Time dissolved an hour ago
+The room could burn and I'd still paint
+The body found a deeper flow
+Than any prayer to any saint
+
+[Outro]
+Making, making
+The rhythm won't stop`,
+
+  "vida-o-tear/7": `[Verse 1]
+As ferramentas pousam na mesa
+As maos ainda quentes de criar
+Olho para o que existe em surpresa
+Algo que ontem nao tinha lugar
+
+[Verse 2]
+Nao ha aplausos nem plateia
+So o silencio de quem fez
+A satisfacao que se ateia
+Na certeza de cada vez
+
+[Chorus]
+A peca pronta
+O silencio de quem criou
+A peca pronta
+Nao precisa que eu explique o que passou
+So existe agora
+Onde antes era nada
+Isto e a hora
+Mais sagrada
+
+[Outro]
+Pronto
+Esta pronto
+E eu descanso`,
+
 };
