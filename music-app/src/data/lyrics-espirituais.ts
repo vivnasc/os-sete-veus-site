@@ -1823,39 +1823,44 @@ nos`,
 
   "espiritual-amem/4": `[Verse 1]
 Sou um grao de areia
-Num deserto que nao acaba
-Tao pequena que o vento
-Me podia levar sem falta
+num deserto sem limite
+tao pequena que o vento
+me poderia tirar do que habite
 
 [Verse 2]
 Mas o grao nao esta sozinho
-Ha milhoes ao meu redor
-E juntos fazemos deserto
-E o deserto e o que tem valor
+ha milhoes que nao se veem
+e juntos somos deserto —
+e o deserto e o que nos contem
 
 [Chorus]
-Grao
-Pequeno e necessario
-Grao
-Invisivel e sagrado
-Amem nao e um grito
-Amem e um sussurro
-E o sim que sai de dentro
-Quando aceitas que es so um grao
-E que isso basta
-E que isso e tudo
+Grao, grao
+pequeno e necessario
+grao, grao
+invisivel e sagrado
+amem nao e o grito do estadio
+amem e o sussurro que sai de dentro
+quando aceitas que es so um grao
+e que esse grao e o fundamento
+
+[Verse 3]
+Nao preciso de ser montanha
+para que a terra me sinta sob o peso
+basta existir com o meu tamanho
+basta o simples gesto
 
 [Bridge]
-Nao preciso de ser montanha
-Para que a terra me sinta
-Basta existir neste lugar
-Com o peso da minha pegada
+Um grao diz amem
+nao ao ceu — a si mesmo
+nao para ser ouvido —
+para nao perder o fio do que penso
 
 [Outro]
 Amem
-Nao e o fim da oracao
-E o comeco
-De dizer sim ao que sou`,
+nao e o fim da oracao
+e o comeco
+de dizer sim
+ao que sou`,
 
   // ─────────────────────────────────────────────
   // ALBUM 11: PRECE (desperation — raw crying, not devotion)
@@ -2145,70 +2150,83 @@ once
 and the dark
 changed shape`,
 
-  "espiritual-centelha/3": `[Verse]
-Nao e fogo que destroi
-E fogo que aquece
-O incendio manso que arde
-Sem queimar a casa
+  "espiritual-centelha/3": `[Verse 1]
+Nao e fogo que destroi portas
+nao e labaredas nem grito
+E o fogo que aquece as paredes
+devagar e silencito
 
-[Verse]
-Cada dia um pouco mais
-A pele muda devagar
-O que era medo vira brasa
-O que era brasa vira luz
+[Verse 2]
+Cada manhã um pouco mais quente
+cada noite um pouco mais funda
+O que era medo virou brasa
+o que era brasa agora pounda
 
 [Chorus]
-Incendio manso
-Arde sem pressa
-Incendio manso
-Transforma sem violencia
-Deixa o corpo aprender
-A temperatura da verdade
-Devagar
+Incendio manso — arde sem pressa
+incendio manso — transforma sem dor
+Deixa o corpo aprender a temperatura
+do que e verdadeiro por amor
+Nao precisa de destruir para mudar
+nao precisa de gritar para ser real
+Incendio manso — no teu ritmo
+incendio manso — devagar
+
+[Verse 3]
+A paciencia e o combustivel
+a confianca e o oxigenio
+O corpo sabe a velocidade certa
+tem a sua propria regencia
 
 [Bridge]
-A paciencia e o combustivel
-A confianca e o oxigenio
 Arde arde
-No teu ritmo
+no teu ritmo proprio
+Arde arde
+sem precisar de ser notoria
 
 [Outro]
 Manso
-Como so o fogo verdadeiro sabe ser`,
+como so o fogo verdadeiro
+sabe ser`,
 
-  "espiritual-centelha/4": `[Verse]
-Houve noites tao escuras
-Que esqueci que tinha luz
-Houve dias tao pesados
-Que o peito nao abria
+  "espiritual-centelha/4": `[Verse 1]
+Houve noites tao fechadas
+que esqueci que tinha luz
+Houve dias tao carregados
+que o peito nao abriu
 
-[Verse]
-Mas aqui dentro
-No sitio mais fundo
-Onde ninguem chega
-Ainda brilha
+[Verse 2]
+Tiraram-me o nome e o lugar
+tiraram-me a voz e a saida
+Mas no fundo mais fundo do escuro
+ainda havia a centelha acendida
 
 [Chorus]
-Ainda brilha
-Depois de tudo
-Ainda brilha
-Contra o escuro
-Nao e coragem
-Nao e teimosia
-E a centelha que ninguem
-Conseguiu apagar
+Ainda brilha — depois de tudo
+ainda brilha — contra o escuro
+Nao e coragem nem teimosia
+e o fogo que e mais puro
+Podem tirar o que e de fora
+ninguem tira o que nasceu
+Ainda brilha — e isso basta
+ainda brilha — este e o meu
+
+[Verse 3]
+Nao precisei de alimentar
+nao precisei de soprar
+Ela sobreviveu sozinha
+ao que tentou me apagar
 
 [Bridge]
-Podem tirar tudo
-A voz o nome o lugar
-Mas esta luz
-Esta luz nao se tira
-Porque nasceu comigo
+Esta luz nao se pede emprestada
+nao se vende nem se da
+Nasceu comigo la dentro
+e comigo vai ficar
 
 [Outro]
 Ainda brilha
-E isso basta
-Ainda brilha`,
+e isso basta
+ainda brilha`,
 
   // ─────────────────────────────────────────────
   // ALBUM 13: VASTIDAO (the terrifying and beautiful vastness)
