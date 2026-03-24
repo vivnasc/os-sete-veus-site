@@ -16,6 +16,10 @@
  * - 20 Espirituais (coleccao Espiritual — espiritualidade crua, corporal, sem religiao)
  */
 
+// Vocal arrangement — solo (Loranne only) or duet (Loranne + male voice)
+// In duets, Loranne remains dominant; the male voice adds depth on specific verses/bridges
+export type TrackVocal = "solo" | "duet";
+
 export type AlbumTrack = {
   number: number;
   title: string;
@@ -23,6 +27,7 @@ export type AlbumTrack = {
   lang: "PT" | "EN";
   energy: TrackEnergy;
   flavor: TrackFlavor;
+  vocal: TrackVocal;
   prompt: string;
   lyrics: string;
   durationSeconds: number;
@@ -32,7 +37,7 @@ export type AlbumTrack = {
 // Internal type for track definitions (lyrics applied at export via applyLyrics)
 // energy defaults to "whisper" if omitted — retrocompativel com todas as faixas existentes
 // flavor defaults to "organic" if omitted
-type TrackDef = Omit<AlbumTrack, "lyrics" | "energy" | "flavor"> & { lyrics?: string; energy?: TrackEnergy; flavor?: TrackFlavor };
+type TrackDef = Omit<AlbumTrack, "lyrics" | "energy" | "flavor" | "vocal"> & { lyrics?: string; energy?: TrackEnergy; flavor?: TrackFlavor; vocal?: TrackVocal };
 type AlbumDef = Omit<Album, "tracks"> & { tracks: TrackDef[] };
 
 // Lyrics are stored in separate files to keep this file manageable
@@ -559,9 +564,13 @@ const ESPIRITUAL_COLORS: Record<number, string> = {
   20: "#B07A4A", // Chama Última — âmbar fogo
 };
 
-function spiritualPrompt(theme: string, emotion: string, production: string, lang: "PT" | "EN", energy: TrackEnergy = "whisper", flavor: TrackFlavor = "organic"): string {
+// Duet modifier — appended to prompt when vocal = "duet"
+const DUET_MODIFIER = "Male and female vocal duet. Female voice dominant (lead), warm deep male voice on verses marked [Male] or [Both]. Natural chemistry, two perspectives, intimate dialogue. Not a backing vocal — a real second voice with weight.";
+
+function spiritualPrompt(theme: string, emotion: string, production: string, lang: "PT" | "EN", energy: TrackEnergy = "whisper", flavor: TrackFlavor = "organic", vocal: TrackVocal = "solo"): string {
   const langNote = lang === "PT" ? "Lyrics in Portuguese." : "Lyrics in English.";
-  return buildPromptWithFlavor(`${ENERGY_STYLES[energy]} ${langNote} Sacred but not religious, body-centred, breath as prayer. ${emotion}. ${production}. Theme: ${theme}.`, flavor);
+  const duetNote = vocal === "duet" ? ` ${DUET_MODIFIER}` : "";
+  return buildPromptWithFlavor(`${ENERGY_STYLES[energy]} ${langNote} Sacred but not religious, body-centred, breath as prayer.${duetNote} ${emotion}. ${production}. Theme: ${theme}.`, flavor);
 }
 
 function spiritualAlbum(slug: string, title: string, subtitle: string, color: string, tracks: TrackDef[]): AlbumDef {
@@ -772,6 +781,7 @@ function applyLyrics(albumDef: AlbumDef): Album {
       ...t,
       energy: t.energy || "whisper",
       flavor: t.flavor || "organic",
+      vocal: t.vocal || "solo",
       lyrics: t.lyrics || getLyrics(albumDef.slug, t.number),
       audioUrl: t.audioUrl ?? null,
     })),

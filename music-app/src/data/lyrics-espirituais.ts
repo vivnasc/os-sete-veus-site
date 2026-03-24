@@ -1008,135 +1008,265 @@ Quando sou a agua`,
   // ─────────────────────────────────────────────
 
   "espiritual-maos-abertas/1": `[Verse 1]
-Dar nao e um gesto grande
-Nao e um palco nem uma cruz
+Dar nao e um acto de coragem
+Nao e titulo nem licao
 E a mao que pousa o pao na mesa
-Sem pedir aplausos nem mais luz
+Sem discurso, sem comocao
 
 [Verse 2]
-Dar e o corpo que se inclina
-Sem calcular o que recebe
-E a voz que diz toma, e teu
-Sem guardar recibo do que deve
+O corpo inclina-se devagar
+Como quem conhece este gesto
+Toma, e teu — tres palavras simples
+Que cabem todas num protesto
 
 [Chorus]
-Dar e so abrir a mao
-Sem fechar o peito
-Dar e so abrir a mao
-E continuar inteira
-Nao e heroismo
-E gesto — simples e directo
+Dar e so isto
+A mao que se abre no ar
+Dar e so isto
+O pao que passa de par em par
+Nao precisa de nome
+Nao precisa de altar
+So a mao, so o gesto
+So o pao sobre o lar
+
+[Verse 3]
+Nao guardo o recibo do que dei
+Nao peso o que recebi em troca
+O gesto e inteiro por si mesmo
+A generosidade nao se choca
+
+[Chorus]
+Dar e so isto
+A mao que se abre no ar
+Dar e so isto
+O pao que passa de par em par
+Nao precisa de nome
+Nao precisa de altar
+So a mao, so o gesto
+So o pao sobre o lar
 
 [Bridge]
-Nao preciso de me esvaziar
-Para encher a tua mesa
-O que dou nao me diminui
-Se eu souber onde comeco
+Nao me esvazio quando dou
+O poco nao seca na dacao
+O que oferto ainda e meu
+Ate ao momento da entrega — entao
+
+[Chorus]
+Dar e so isto
+A mao que se abre no ar
+Dar e so isto
+O pao que passa de par em par
+Nao precisa de nome
+Nao precisa de altar
+So a mao, so o gesto
+So o pao sobre o lar
 
 [Outro]
 A mao abre
-E nada se parte`,
+O pao parte
+Nada se perde
+Nada se parte`,
 
-  "espiritual-maos-abertas/2": `[Verse 1]
-I gave until my hands were shaking
-Gave until my chest went hollow
-Poured and poured into the cup
-And no one asked if I could swallow
+  "espiritual-maos-abertas/2": `[Verse 1 - Female]
+I gave the morning, gave the night
+Gave until my spine went thin
+Poured the last drop into silence
+And smiled like it was discipline
 
-[Verse 2]
-I wore my emptiness like virtue
-Called my burnout consecration
-Every bone a little altar
-Built for someone else's salvation
+[Verse 2 - Male]
+I watched you carry what was heavy
+Watched you call the weight a gift
+Watched your hands grow pale and steady
+Like a body set adrift
 
-[Chorus]
-Empty cup
-Nothing left to pour
-Empty cup
-Cracked across the floor
-You can't give water
-From a well that's dry
-You can't save the world
-If you let yourself die
+[Pre-Chorus - Both]
+Tell me — where does the river go
+When the river has no shore?
+Tell me — what does the candle know
+About burning to the floor?
 
-[Bridge]
+[Chorus - Both]
+Empty cup, empty cup
+You gave until the giving broke you
+Empty cup, empty cup
+And no one stopped to look
+You poured your marrow, poured your marrow
+Into every open hand
+And I was standing in the narrow
+Trying to understand
+
+[Verse 3 - Female]
+I wore my hollow like a virtue
+Built a chapel out of lack
+Thought the ache was consecration
+Thought the loss was giving back
+
+[Verse 4 - Male]
+But I see the cost in your breathing
+See it in the way you stand
+Like you're bracing for another asking
+Like you've nothing left to hand
+
+[Pre-Chorus - Both]
+Tell me — where does the river go
+When the river has no shore?
+Tell me — what does the candle know
+About burning to the floor?
+
+[Chorus - Both]
+Empty cup, empty cup
+You gave until the giving broke you
+Empty cup, empty cup
+And no one stopped to look
+You poured your marrow, poured your marrow
+Into every open hand
+And I was standing in the narrow
+Trying to understand
+
+[Bridge - Female]
+I don't know how to receive
+I only know how to bleed
+
+[Bridge - Male]
+Then let me be the one who gives
+Let me fill what you can't see
+
+[Bridge - Both]
+The first gift is not to the world
+The first gift is not to the world
+It's to the body that carried everything
+
+[Outro - Both]
 Sit down
 Put the cup away
-Your hands are bleeding
-From the giving
-
-[Outro]
-The first gift
-Is not to the world
-It's to this body
-That carried everything`,
+You are not less
+For needing this today`,
 
   "espiritual-maos-abertas/3": `[Verse 1]
-Servir nao custa a alma
-Quando os pes estao no chao
-Servir e a mao que cozinha
-Com ritmo e nao obrigacao
+Entro na cozinha de manha cedo
+O chao ainda frio, o ar ainda escuro
+Mas os pes sabem o que fazer
+E o corpo move-se no compasso puro
 
 [Verse 2]
-Ponho a mesa com cuidado
-Como quem arruma um altar
-Nao sagrado — so bonito
-Um lugar para alguem se sentar
+Ponho a panela, mexo devagar
+Como se a colher fosse um instrumento
+Servir nao cansa quando e danca
+Cada gesto tem o seu momento
 
 [Chorus]
-Servir e danca
-Nao e sacrificio
-Servir e o corpo
-Que se move com oficio
-As maos que dao
-Sem se perder
-As maos que servem
-E sabem dizer basta
+Sirvo com os pes no chao
+Sirvo com o corpo inteiro
+Sirvo sem perder o fio
+Sirvo e sou eu — verdadeiro
+Nao e o peso do servir
+Que me faz dobrar o joelho
+E a graca do servir
+Que me faz brilhar no espelho
+
+[Verse 3]
+Ha quem sirva a medo, ha quem sirva a custo
+Ha quem confunda entrega com castigo
+Eu sirvo porque o corpo quer o gosto
+Porque a mesa farta e amigo
+
+[Verse 4]
+Marrabenta nos quadris quando carrego
+O prato que aquece a mao enquanto passo
+Deixo a musica entrar no que entrego
+Nao e trabalho — e abrir espaco
+
+[Chorus]
+Sirvo com os pes no chao
+Sirvo com o corpo inteiro
+Sirvo sem perder o fio
+Sirvo e sou eu — verdadeiro
+Nao e o peso do servir
+Que me faz dobrar o joelho
+E a graca do servir
+Que me faz brilhar no espelho
 
 [Bridge]
-A alegria nao se mede
-Pelo que se perde
-Mede-se pelo que sobra
-Quando a mesa e posta
+Digo basta quando chega a hora
+O basta tambem faz parte do oficio
+Servir bem exige que me honre
+Antes de honrar o servico
+
+[Chorus]
+Sirvo com os pes no chao
+Sirvo com o corpo inteiro
+Sirvo sem perder o fio
+Sirvo e sou eu — verdadeiro
+Nao e o peso do servir
+Que me faz dobrar o joelho
+E a graca do servir
+Que me faz brilhar no espelho
 
 [Outro]
 Sirvo porque quero
-Nao porque devo
-E a diferenca muda tudo`,
+Nao porque me rendem
+As maos servem livres
+Quando os pés compreendem`,
 
   "espiritual-maos-abertas/4": `[Verse 1]
-My hands are open
-Not because I'm giving up
-But because I'm giving
-The way a tree gives shade
+My hands are open to the morning light
+Not surrendered — just released
+Like a tree that holds its leaves all summer
+Then lets go without caprice
 
 [Verse 2]
-Not sacrifice
-Not performance
-Just the weight of something ripe
-Falling from the branch
+The shade falls where the shade is needed
+Not because the tree decides
+It falls because the tree is standing
+And the sun is on one side
 
 [Chorus]
-Open hands
-Not giving away
-Open hands
-Just making space
-For what needs to leave
-And what needs to stay
-Open hands
-Are not empty hands
+Open hands, open hands
+Like a tree that gives its shade
+Open hands, open hands
+This is not a debt being paid
+I offer what I have to offer
+I keep what keeps me whole
+Open hands are not empty hands
+They're the fullest kind of soul
+
+[Verse 3]
+I used to think that giving cost me
+Used to clench against the loss
+But the fruit that drops from the branch feeds something
+And the branch still holds the moss
+
+[Verse 4]
+So my palms face up in the quiet
+Not in asking, not in prayer
+Just in being what I'm being
+Just in putting something there
+
+[Chorus]
+Open hands, open hands
+Like a tree that gives its shade
+Open hands, open hands
+This is not a debt being paid
+I offer what I have to offer
+I keep what keeps me whole
+Open hands are not empty hands
+They're the fullest kind of soul
 
 [Bridge]
-The palm faces up
-And nothing falls through
-The fingers uncurl
-And the world comes closer
+The hand that gives
+Must know its own weight
+Must feel its own warmth
+Before it reaches out
+The tree that shades
+Was first a seed that held
+Everything it needed
+Without a doubt
 
 [Outro]
-I am not less
-For what I offer
-I am more
-For what I let go`,
+Open — not empty
+Offered — not lost
+Still standing in the morning
+Still rooted in the frost`,
 
   // ─────────────────────────────────────────────
   // ALBUM 8: RAIZ E CEU (feet on earth, head in stars)
