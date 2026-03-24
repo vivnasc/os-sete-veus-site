@@ -50,7 +50,7 @@ export default function ModuloPage() {
       <header className="mb-6">
         <div className="mb-1 flex items-center gap-2">
           <span className="text-xs text-escola-dourado/60">
-            Modulo {mod.number} de {course.modules.length}
+            Módulo {mod.number} de {course.modules.length}
           </span>
           {completed && (
             <span className="rounded-full bg-escola-dourado/10 px-2 py-0.5 text-[10px] text-escola-dourado">
@@ -68,7 +68,7 @@ export default function ModuloPage() {
       {!hasAccess ? (
         <div className="rounded-xl border border-escola-dourado/30 bg-escola-card p-6 text-center">
           <p className="mb-3 text-sm text-escola-creme-50">
-            Este modulo faz parte do curso completo.
+            Este módulo faz parte do curso completo.
           </p>
           <Link
             href="/subscrever"
@@ -80,13 +80,13 @@ export default function ModuloPage() {
       ) : !accessible ? (
         <div className="rounded-xl border border-escola-border bg-escola-card p-6 text-center">
           <p className="mb-2 text-sm text-escola-creme-50">
-            Completa o Modulo {moduloNum - 1} para desbloquear.
+            Completa o Módulo {moduloNum - 1} para desbloquear.
           </p>
           <Link
             href={`/cursos/${slug}/${moduloNum - 1}`}
             className="text-sm text-escola-dourado hover:underline"
           >
-            Ir para Modulo {moduloNum - 1}
+            Ir para Módulo {moduloNum - 1}
           </Link>
         </div>
       ) : (
@@ -114,7 +114,7 @@ export default function ModuloPage() {
               href={`/cursos/${slug}/${moduloNum}/${firstIncomplete.letter.toLowerCase()}`}
               className="mb-6 block rounded-lg bg-escola-dourado px-6 py-3 text-center text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
             >
-              {completedSubs === 0 ? "Comecar" : "Continuar"} &rarr; Sub-aula {firstIncomplete.letter}
+              {completedSubs === 0 ? "Começar" : "Continuar"} &rarr; Sub-aula {firstIncomplete.letter}
             </Link>
           )}
 
@@ -175,7 +175,7 @@ export default function ModuloPage() {
                 </span>
                 <div>
                   <h3 className="text-xs uppercase tracking-wide text-escola-dourado">
-                    Caderno de exercicios
+                    Caderno de exercícios
                   </h3>
                   <p className="mt-0.5 text-sm text-escola-creme">{mod.workbook}</p>
                 </div>
@@ -189,7 +189,7 @@ export default function ModuloPage() {
               href={`/cursos/${slug}/${moduloNum}/completo`}
               className="mt-4 block rounded-lg bg-escola-dourado/10 px-6 py-3 text-center text-sm font-medium text-escola-dourado"
             >
-              Ver conclusao do modulo
+              Ver conclusão do módulo
             </Link>
           )}
         </>
@@ -202,7 +202,7 @@ export default function ModuloPage() {
             href={`/cursos/${slug}/${mod.number - 1}`}
             className="text-xs text-escola-creme-50 hover:text-escola-creme"
           >
-            &larr; Modulo {mod.number - 1}
+            &larr; Módulo {mod.number - 1}
           </Link>
         )}
         <span />
@@ -211,7 +211,7 @@ export default function ModuloPage() {
             href={`/cursos/${slug}/${mod.number + 1}`}
             className="text-xs text-escola-creme-50 hover:text-escola-creme"
           >
-            Modulo {mod.number + 1} &rarr;
+            Módulo {mod.number + 1} &rarr;
           </Link>
         )}
       </div>
@@ -222,7 +222,7 @@ export default function ModuloPage() {
 function NotFound() {
   return (
     <div className="flex min-h-[50dvh] items-center justify-center">
-      <p className="text-escola-creme-50">Modulo nao encontrado.</p>
+      <p className="text-escola-creme-50">Módulo não encontrado.</p>
     </div>
   );
 }

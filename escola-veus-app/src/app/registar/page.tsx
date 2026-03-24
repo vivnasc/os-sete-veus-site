@@ -37,7 +37,7 @@ export default function RegistarPage() {
 
     if (authError) {
       if (authError.message.includes("already registered")) {
-        setError("Este email ja tem conta. Tenta entrar.");
+        setError("Este email já tem conta. Tenta entrar.");
       } else {
         setError(authError.message);
       }
@@ -59,7 +59,7 @@ export default function RegistarPage() {
           alt="Escola dos Véus"
           width={64}
           height={64}
-          className="h-16 w-16 rounded-2xl"
+          className="h-20 w-20 rounded-2xl"
         />
       </Link>
 
@@ -68,7 +68,7 @@ export default function RegistarPage() {
           Cria a tua conta
         </h1>
         <p className="text-sm text-escola-creme-50 text-center mb-8">
-          Comeca a tua jornada de autoconhecimento.
+          Começa a tua jornada de autoconhecimento.
         </p>
 
         <form onSubmit={handleRegister} className="space-y-4">
@@ -137,7 +137,7 @@ export default function RegistarPage() {
 
         <div className="mt-8 text-center">
           <p className="text-xs text-escola-creme-50">
-            Ja tens conta?{" "}
+            Já tens conta?{" "}
             <Link href="/entrar" className="text-escola-dourado hover:underline">
               Entra aqui
             </Link>

@@ -57,7 +57,7 @@ export default function ModuloCompletoPage() {
 
       {/* Title */}
       <h1 className="mb-2 font-serif text-2xl font-semibold text-escola-creme">
-        Modulo {moduloNum} — Completo
+        Módulo {moduloNum} — Completo
       </h1>
       <p className="mb-2 font-serif text-lg text-escola-dourado">
         {mod.title}
@@ -66,9 +66,9 @@ export default function ModuloCompletoPage() {
       {/* Description / closing phrase */}
       <p className="mb-8 max-w-xs text-sm leading-relaxed text-escola-creme-50">
         {isLastModule
-          ? "Atravessaste este territorio inteiro. O que viste fica contigo."
+          ? "Atravessaste este território inteiro. O que viste fica contigo."
           : nextModule
-            ? `O proximo territorio espera. ${nextModule.description}`
+            ? `O próximo território espera. ${nextModule.description}`
             : "Pausa. Respira. O que viste fica contigo."}
       </p>
 
@@ -79,14 +79,14 @@ export default function ModuloCompletoPage() {
             href={`/cursos/${slug}/${moduloNum + 1}`}
             className="rounded-lg bg-escola-dourado px-6 py-3 text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
           >
-            Continuar para Modulo {moduloNum + 1}
+            Continuar para Módulo {moduloNum + 1}
           </Link>
         ) : (
           <Link
             href={`/cursos/${slug}/completo`}
             className="rounded-lg bg-escola-dourado px-6 py-3 text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
           >
-            Ver conclusao do curso
+            Ver conclusão do curso
           </Link>
         )}
 

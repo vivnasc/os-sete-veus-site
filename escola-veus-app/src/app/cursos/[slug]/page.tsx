@@ -18,7 +18,7 @@ export default function CursoPage() {
   if (!course) {
     return (
       <div className="flex min-h-[50dvh] items-center justify-center">
-        <p className="text-escola-creme-50">Curso nao encontrado.</p>
+        <p className="text-escola-creme-50">Curso não encontrado.</p>
       </div>
     );
   }
@@ -41,7 +41,7 @@ export default function CursoPage() {
         href={isStarted ? "/" : "/cursos"}
         className="mb-6 inline-flex items-center gap-1 text-xs text-escola-creme-50 hover:text-escola-creme"
       >
-        <span>&larr;</span> {isStarted ? "Inicio" : "Cursos"}
+        <span>&larr;</span> {isStarted ? "Início" : "Cursos"}
       </Link>
 
       {/* Header */}
@@ -64,7 +64,7 @@ export default function CursoPage() {
         <div className="mb-6">
           <div className="mb-1 flex items-center justify-between">
             <span className="text-xs text-escola-creme-50">
-              {completedCount} de {totalModules} modulos
+              {completedCount} de {totalModules} módulos
             </span>
             <span className="text-xs font-medium text-escola-dourado">{progressPct}%</span>
           </div>
@@ -101,7 +101,7 @@ export default function CursoPage() {
 
       {/* Modules */}
       <h2 className="mb-4 font-serif text-lg font-medium text-escola-creme">
-        Modulos
+        Módulos
       </h2>
       <div className="space-y-3">
         {course.modules.map((mod) => {
@@ -190,7 +190,7 @@ export default function CursoPage() {
                         {mod.title}
                       </h3>
                       <p className="mt-0.5 text-[10px] text-escola-creme-50">
-                        Completa o Modulo {mod.number - 1} para desbloquear
+                        Completa o Módulo {mod.number - 1} para desbloquear
                       </p>
                     </div>
                   </div>
@@ -201,6 +201,32 @@ export default function CursoPage() {
         })}
       </div>
 
+      {/* YouTube hooks */}
+      {course.youtubeHooks && course.youtubeHooks.length > 0 && (
+        <section className="mt-10">
+          <h2 className="mb-4 font-serif text-lg font-medium text-escola-creme">
+            Vídeos gratuitos no YouTube
+          </h2>
+          <div className="space-y-2">
+            {course.youtubeHooks.map((hook: { title: string; durationMin: number }, i: number) => (
+              <div key={i} className="rounded-xl border border-escola-border bg-escola-card p-4">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-500/10">
+                    <svg className="h-4 w-4 text-red-400" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 00.5 6.19 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.81 3.02 3.02 0 002.12 2.14c1.88.55 9.38.55 9.38.55s7.5 0 9.38-.55a3.02 3.02 0 002.12-2.14A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.81zM9.75 15.02V8.98L15.5 12l-5.75 3.02z" />
+                    </svg>
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm text-escola-creme">{hook.title}</p>
+                    <p className="text-xs text-escola-creme-50">{hook.durationMin} min</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Start CTA (if not started) */}
       {!isStarted && user && (
         <div className="mt-8">
@@ -208,7 +234,7 @@ export default function CursoPage() {
             onClick={handleStart}
             className="w-full rounded-lg bg-escola-dourado px-6 py-3 text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
           >
-            Comecar este curso
+            Começar este curso
           </button>
         </div>
       )}
@@ -219,7 +245,7 @@ export default function CursoPage() {
             href="/entrar"
             className="block w-full rounded-lg bg-escola-dourado px-6 py-3 text-center text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
           >
-            Entrar para comecar
+            Entrar para começar
           </Link>
         </div>
       )}

@@ -35,7 +35,7 @@ export default function CursosPage() {
                     {course.subtitle}
                   </p>
                   <p className="mt-2 text-xs text-escola-dourado/60">
-                    {course.modules.length} modulos
+                    {course.modules.length} módulos
                   </p>
                 </Link>
               );
