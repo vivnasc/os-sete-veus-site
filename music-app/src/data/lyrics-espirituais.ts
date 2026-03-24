@@ -3929,4 +3929,512 @@ E a chama
 So a chama
 Sempre so a chama`,
 
+  // ─────────────────────────────────────────────
+  // NOVAS FAIXAS — Sagrado Selvagem (6-10)
+  // ─────────────────────────────────────────────
+
+  "espiritual-sagrado-selvagem/6": `[Verse 1]
+O chao me chama e eu respondo com o pe
+o quadril desenha o que a boca nao diz
+nao preciso saber pra onde o corpo me le
+o ritmo antigo me faz de raiz
+
+[Verse 2]
+A cintura gira como agua no rio
+os bracos abrem o que a mente fechou
+nao ha passo errado, nao ha passo vazio
+cada gesto acorda o que em mim demorou
+
+[Chorus]
+Danca, danca, danca
+o corpo sabe o caminho sozinho
+Danca, danca, danca
+o suor e agua benta, o chao e santuario
+Danca ate o peso soltar
+danca ate o nome esquecer
+o corpo em movimento e a unica oracao
+que eu sei fazer
+
+[Verse 3]
+A terra treme por baixo dos meus pes descalcos
+o tambor bate onde bate o coracao
+nao preciso de templo, nao preciso de palcos
+o meu corpo inteiro e a celebracao
+
+[Bridge]
+Fecha os olhos
+solta o ar
+deixa o corpo te levar
+nao pergunta
+nao controla
+a danca reza por nos quando a voz nao fala
+
+[Outro]
+Pe no chao
+mao no ar
+a danca e tudo o que eu sei rezar`,
+
+  "espiritual-sagrado-selvagem/7": `[Verse 1]
+The light went out and I stopped running
+my knees found earth, my hands found still
+the dark is not the thing that's hunting
+the dark is where I learn to feel
+
+[Verse 2]
+The moon pulls back behind the mountain
+the tide inside my blood goes low
+I used to fight this kind of quiet
+now I let the nothing grow
+
+[Chorus]
+Dark moon, dark moon
+hold me where the light won't reach
+Dark moon, dark moon
+there are things the dark can teach
+In the black I find my breathing
+in the black I find my ground
+dark moon, dark moon
+what was lost is being found
+
+[Verse 3]
+My body knows the time for folding
+the way the seed knows when to sleep
+not every season asks for blooming
+some roots go slow and some go deep
+
+[Bridge]
+No stars tonight
+no need to shine
+the womb is dark
+and that's the sign
+rest here
+rest here
+the dawn will come but not from fear
+
+[Outro]
+Close your eyes
+the dark is kind
+the moon returns
+she always finds you`,
+
+  "espiritual-sagrado-selvagem/8": `[Verse 1]
+Eu trago no sangue uma mulher que nunca vi
+que pariu de pe, que chorou calada no quintal
+que engoliu o grito pra que eu pudesse existir
+que fez da dor um pao, da fome um ritual
+
+[Verse 2]
+A minha avo carregou a agua na cabeca
+a mae da minha avo carregou a mae no colo
+nenhuma teve tempo de chorar a sua peca
+mas cada uma plantou coragem neste solo
+
+[Chorus]
+As que vieram antes
+as que vieram antes de mim
+vivem nas minhas maos quando eu amasso o barro
+vivem na minha voz quando eu digo que sim
+As que vieram antes
+nao morreram, nao se foram
+o que elas nao puderam dizer
+eu carrego e nao me calo mais
+
+[Verse 3]
+A bisavo que casou com quem nao escolheu
+a tia que fugiu de noite sem sapato
+a prima que ficou e mesmo assim nao se perdeu
+cada uma me ensinou sem dizer um so relato
+
+[Bridge]
+Eu sou a boca que elas nao tiveram
+eu sou o passo que elas nao puderam dar
+eu sou a filha de todas as que sobreviveram
+e a forca delas nao me deixa recuar
+
+[Outro]
+Mae da minha mae
+da mae da minha mae
+eu estou de pe
+eu estou de pe
+eu estou de pe por voces`,
+
+  "espiritual-sagrado-selvagem/9": `[Verse 1]
+There's a fire in my chest that I was told to swallow
+a fist behind my teeth they said was not allowed
+I smiled through every theft and turned the other hollow
+but the ground beneath my feet is screaming loud
+
+[Verse 2]
+They dressed my rage in shame and called it ugly woman
+they said be soft, be sweet, be less, be still
+but anger is the oldest thing that's human
+and mine has kept me breathing through the kill
+
+[Chorus]
+Holy rage, holy rage
+burn what needs to burn
+holy rage, holy rage
+I am done with swallowing the world
+this fire is not madness
+this fire is not sin
+holy rage, holy rage
+the NO that lets me begin
+
+[Verse 3]
+My mother bit her tongue until it bled in silence
+my sister broke her knuckles on a wall
+I will not turn this heat into polite compliance
+I'd rather be the storm than never fall
+
+[Bridge]
+I am not asking for permission
+I am not sorry for the heat
+every woman who was told to simmer
+is the reason that I'm on my feet
+feel it in the jaw
+feel it in the hands
+the body knows when enough
+is enough is enough
+
+[Outro]
+Let it burn
+let it burn
+what survives the fire
+was always yours`,
+
+  "espiritual-sagrado-selvagem/10": `[Verse 1]
+O sangue desce como a mare que obedece
+a lua puxa e o meu corpo responde
+nao ha vergonha no que nasce e desaparece
+o que se perde volta, o que se esconde
+
+[Verse 2]
+A minha mae sangrou e a mae dela sangrou
+e a primeira mulher sangrou olhando o ceu
+ninguem ensinou a lua a ser o que ela e
+ninguem precisa me ensinar o ritmo meu
+
+[Chorus]
+Sangue e lua, sangue e lua
+o corpo sabe a hora de soltar
+sangue e lua, sangue e lua
+o que sangra nao esta a quebrar
+esta a limpar, esta a voltar
+o ventre e mare, o ventre e estacao
+sangue e lua, sangue e lua
+nao ha vergonha nesta repeticao
+
+[Verse 3]
+O inverno vive dentro de mim quatro semanas
+o verao regressa sem pedir licenca
+a dor que vem nao e castigo, nao e drama
+e o peso exacto de quem cria existencia
+
+[Bridge]
+Tres dias de silencio
+tres dias de raiz
+o corpo pede recolhimento
+e eu finalmente digo sim
+deito e sangro
+sangro e sou
+cada ciclo me devolve inteira
+ao lugar de onde eu sou
+
+[Outro]
+A lua volta
+o sangue volta
+eu volto
+sempre volto`,
+
+  // ─────────────────────────────────────────────
+  // NOVAS FAIXAS — Ritual (6-10)
+  // ─────────────────────────────────────────────
+
+  "espiritual-ritual/6": `[Verse 1]
+O lencol ainda guarda a forma
+do corpo que sonhou sem lei
+Passo a mao como quem perdoa
+o que de noite nao contei
+
+[Verse 2]
+Estico a ponta, aliso a dobra
+o travesseiro volta ao seu lugar
+Cada gesto e uma palavra
+que digo ao dia antes de comecar
+
+[Chorus]
+Fazer a cama, fazer a cama
+alisar o que a noite desfez
+Fazer a cama, fazer a cama
+o caos tem cura — e so uma vez
+Mao sobre mao, pano sobre pano
+construo o altar de cada dia
+Fazer a cama e o primeiro engano
+bonito — chamar ordem a alegria
+
+[Verse 3]
+A almofada nao precisa ser perfeita
+nem o lencol esticado como lei
+Precisa so de maos que aceitem
+comecar de novo — como eu comecei
+
+[Outro]
+Aliso o lencol
+aliso a mente
+o dia ainda nao chegou
+mas ja estou presente`,
+
+  "espiritual-ritual/7": `[Verse 1]
+Left foot then right foot
+the oldest conversation known
+The ground receives me every time
+I never walk alone
+
+[Verse 2]
+Not going somewhere particular
+not running from a place
+Just heel and toe and heel and toe
+the slowest kind of grace
+
+[Chorus]
+Walking, walking
+not arriving — just the way
+Walking, walking
+every step a thing I pray
+The earth is patient underneath
+she holds me as I go
+Walking, walking
+the only sermon that I know
+
+[Verse 3]
+The pavement cracks, the grass is wet
+the gravel speaks in tongues
+My shadow stretches out ahead
+like breath inside my lungs
+
+[Bridge]
+I do not need a mountain trail
+I do not need a shrine
+The hallway to the kitchen door
+is consecrated ground — is mine
+
+[Outro]
+Left foot
+right foot
+left foot
+home`,
+
+  "espiritual-ritual/8": `[Verse 1]
+O alho parte entre os dedos
+o azeite aquece na mao
+O sal nao pede licenca
+cai como quem sabe a direccao
+
+[Verse 2]
+A cebola chora por mim
+enquanto eu corto sem parar
+O lume baixo, a tampa posta
+ha coisas que so curam devagar
+
+[Chorus]
+Alquimia, alquimia
+a panela sabe o que eu sei
+Alquimia, alquimia
+transformo o cru no que sonhei
+Com estas maos, com este lume
+com este sal e esta cancao
+Alquimia — nao e receita
+e a fome inteira do coracao
+
+[Verse 3]
+O coentro fresco no final
+a pimenta que abre o peito
+O arroz que incha como quem respira
+nada aqui precisa ser perfeito
+
+[Bridge]
+A minha mae fazia isto
+sem medir, sem pensar, sem ver
+A cozinha era o unico lugar
+onde ela se deixava ser
+
+[Outro]
+Prova, ajusta
+prova outra vez
+A vida e isto —
+temperar ate fazer sentido
+de cada vez`,
+
+  "espiritual-ritual/9": `[Verse 1]
+The bathroom light is merciless
+it shows me every year
+The skin beneath my eyes is thin
+the morning makes it clear
+
+[Verse 2]
+I lean in close — not to fix
+not searching for a flaw
+Just standing with the woman there
+the rawest thing I saw
+
+[Chorus]
+Mirror, mirror
+I am not looking away this time
+Mirror, mirror
+every line on me is mine
+No filter and no angle
+no shadow and no door
+Mirror, mirror
+show me what the dark is for
+
+[Verse 3]
+The mouth that said too much last night
+the jaw still holding on
+The forehead where I carry doubt
+before I put it on
+
+[Bridge]
+I used to flinch — look then leave
+adjust and walk away
+But now I stand until I see
+the face beneath the face I play
+
+[Outro]
+There you are
+still here
+still here
+still yours`,
+
+  "espiritual-ritual/10": `[Verse 1]
+O botao sai devagar
+a camisa escorrega do ombro
+Cada peca que cai no chao
+e um peso que nao tem assombro
+
+[Verse 2]
+A meia enrolada no tornozelo
+o cinto que apertou demais
+Tiro tudo como quem tira
+as palavras que nao voltam mais
+
+[Chorus]
+Despir o dia, despir o dia
+largar a pele que vesti
+Despir o dia, despir o dia
+devolver tudo o que fingi
+A roupa cai, o corpo lembra
+o que carregou sem avisar
+Despir o dia e o unico gesto
+que me devolve ao meu lugar
+
+[Verse 3]
+O espelho agora mostra outra
+nao a que saiu de manha
+Esta tem os ombros baixos
+e uma verdade que nao se estranha
+
+[Bridge]
+Nao e vaidade, nao e cansaco
+e o corpo a dizer — ja chega
+Cada peca era uma mascara
+cada manga uma entrega
+
+[Outro]
+Nua — nao de roupa
+nua de tudo o que foi
+O dia acaba onde comeca
+a unica que ninguem me doi`,
+
+  // ─────────────────────────────────────────────
+  // NOVAS FAIXAS — Silencio (6) + Agua Viva (5)
+  // ─────────────────────────────────────────────
+
+  "espiritual-silencio/6": `[Verse 1]
+Ha uma parte de ti que nao treme
+que nao foge quando o peito arde
+que nao grita quando o mundo geme
+que nao chega cedo nem chega tarde
+
+[Verse 2]
+Ha uma parte de ti que nao sangra
+que ve o medo sem ser o medo
+que ouve o choro e nao se magoa
+que olha o fogo e nao tem receio
+
+[Chorus]
+A testemunha
+so observa
+A testemunha
+nao se perde
+Tu nao es a tempestade
+tu nao es o vento forte
+Tu es o ceu que ve a chuva
+sem mudar de forma ou sorte
+
+[Verse 3]
+Fecha os olhos e repara
+no que fica quando tudo para
+nao e vazio nem e nada
+e a presenca mais antiga e mais sagrada
+
+[Bridge]
+Atras do nome atras da historia
+atras da culpa atras da gloria
+ha qualquer coisa que respira
+sem opiniao sem medo sem memoria
+
+[Outro]
+Nao precisas de fazer nada
+so estar aqui
+A testemunha ja acordou
+dentro de ti`,
+
+  "espiritual-agua-viva/5": `[Verse 1]
+Saiste de casa sem guarda-chuva
+o ceu ja estava cinzento e grave
+A primeira gota bateu na nuca
+e o corpo inteiro soube a verdade
+
+[Verse 2]
+Nao ha telhado que te proteja
+do que precisa de te molhar
+A pele sabe o que a mente nega
+ha coisas que so a agua sabe lavar
+
+[Chorus]
+Chuva
+deixa cair
+Chuva
+deixa vir
+Abre os bracos no meio da rua
+deixa o ceu decidir
+Chuva
+nao fujas nao
+Ha so agua a correr pela cara
+como uma bencao sem mao
+
+[Verse 3]
+Cada gota carrega um peso
+que nao e teu mas que tu guardavas
+Escorre a magoa escorre o preco
+escorre o nome de quem te marcava
+
+[Bridge]
+Nao precisa de igreja
+nao precisa de altar
+A agua cai sobre o justo
+e sobre quem nao sabe rezar
+O baptismo e de barro
+de cabelo colado a pele
+De roupa encharcada e riso
+de quem ja nao foge de si mesma
+
+[Outro]
+Fica na chuva
+fica
+Ate a ultima gota
+ate o ultimo rio
+que te corre pelo corpo
+te devolver ao teu nome proprio`,
+
 };
