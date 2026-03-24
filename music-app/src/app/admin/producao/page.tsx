@@ -140,6 +140,7 @@ function ProductFilter({
     { key: "no", label: "Nos" },
     { key: "livro", label: "Livro" },
     { key: "curso", label: "Cursos" },
+    { key: "espiritual", label: "Espiritual" },
   ];
 
   return (

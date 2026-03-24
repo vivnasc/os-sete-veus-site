@@ -8,11 +8,12 @@
  * — Universal: sem caixa etnica, instrumentacao varia conforme o tema
  * — Tom: intimo, transformativo, poetico, contemplativo
  *
- * 35 albums:
+ * 45 albums:
  * - 7 Espelhos (1 por veu)
  * - 7 Nos (1 por veu)
  * - 1 Livro filosofico
  * - 20 Cursos (1 por curso)
+ * - 10 Espirituais (coleccao Espiritual — espiritualidade crua, corporal, sem religiao)
  */
 
 export type AlbumTrack = {
@@ -38,12 +39,14 @@ type AlbumDef = Omit<Album, "tracks"> & { tracks: TrackDef[] };
 import { ESPELHO_LYRICS } from "./lyrics-espelhos";
 import { NO_LYRICS } from "./lyrics-nos";
 import { LIVRO_LYRICS, CURSO_LYRICS } from "./lyrics-livro-cursos";
+import { ESPIRITUAL_LYRICS } from "./lyrics-espirituais";
 
 const ALL_LYRICS: Record<string, string> = {
   ...ESPELHO_LYRICS,
   ...NO_LYRICS,
   ...LIVRO_LYRICS,
   ...CURSO_LYRICS,
+  ...ESPIRITUAL_LYRICS,
 };
 
 function getLyrics(albumSlug: string, trackNumber: number): string {
@@ -54,7 +57,7 @@ export type Album = {
   slug: string;
   title: string;
   subtitle: string;
-  product: "espelho" | "no" | "livro" | "curso";
+  product: "espelho" | "no" | "livro" | "curso" | "espiritual";
   veu?: number;
   courseSlug?: string;
   color: string;
@@ -530,6 +533,108 @@ const CURSO_FOME = cursoAlbum("curso-fome", "a-fome", "A Fome", "O corpo e a fom
 ]);
 
 // ─────────────────────────────────────────────
+// ESPIRITUAIS (10 albums — espiritualidade crua, corporal, sem religiao)
+// ─────────────────────────────────────────────
+
+const ESPIRITUAL_COLORS: Record<number, string> = {
+  1: "#A89070", // Oração Sem Palavras — areia quente
+  2: "#6B8E5A", // Sagrado Selvagem — verde floresta
+  3: "#C4A87A", // Ritual — dourado terroso
+  4: "#B8A0C8", // Graça — lavanda suave
+  5: "#4A5A7A", // Silêncio Sagrado — azul noite
+  6: "#8A7060", // Entrega — terra escura
+  7: "#D4A853", // Mãos Abertas — dourado quente
+  8: "#6A8A70", // Raiz e Céu — verde-terra
+  9: "#5A8AA0", // Água Viva — azul água
+  10: "#9A7A6A", // Amém — terracota suave
+};
+
+function spiritualPrompt(theme: string, emotion: string, production: string, lang: "PT" | "EN", energy: TrackEnergy = "whisper", flavor: TrackFlavor = "organic"): string {
+  const langNote = lang === "PT" ? "Lyrics in Portuguese." : "Lyrics in English.";
+  return buildPromptWithFlavor(`${ENERGY_STYLES[energy]} ${langNote} Sacred but not religious, body-centred, breath as prayer. ${emotion}. ${production}. Theme: ${theme}.`, flavor);
+}
+
+function spiritualAlbum(slug: string, title: string, subtitle: string, color: string, tracks: TrackDef[]): AlbumDef {
+  return { slug, title, subtitle, product: "espiritual", color, tracks };
+}
+
+const ESP_ORACAO: AlbumDef = spiritualAlbum("espiritual-oracao", "Oração Sem Palavras", "Quando as palavras não chegam, o corpo reza", ESPIRITUAL_COLORS[1], [
+  { number: 1, title: "Respira", description: "A oração que vem antes da linguagem", lang: "PT", energy: "raw", prompt: spiritualPrompt("breathing as prayer, exhaustion before language", "exhausted, raw, desperate breath, surrendering", "close-mic breathing, minimal piano, raw vocal, silence as space", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "Hands", description: "Palmas abertas, a receber o nada e o tudo", lang: "EN", energy: "whisper", prompt: spiritualPrompt("open palms receiving nothing and everything", "receptive, open, tender, empty-full", "soft piano, gentle pads, open space, breath textures", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+  { number: 3, title: "De Joelhos", description: "Não submissão — escolher o chão", lang: "PT", energy: "steady", prompt: spiritualPrompt("kneeling by choice, choosing the ground, humility as strength", "grounded, chosen, strong in lowness, dignified", "warm bass, steady rhythm, grounded vocal, acoustic guitar", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+  { number: 4, title: "The Space Between Breaths", description: "A pausa onde o sagrado mora", lang: "EN", energy: "whisper", prompt: spiritualPrompt("the gap between breaths where the sacred lives", "suspended, sacred, liminal, infinite pause", "suspended pads, breath sounds, liminal space, barely there percussion", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+  { number: 5, title: "Amém do Corpo", description: "O amém que não se diz — sente-se", lang: "PT", energy: "raw", prompt: spiritualPrompt("the body's own amen, not spoken but felt in bones", "visceral, affirming, bodily truth, physical prayer", "raw close vocal, body percussion, heartbeat bass, minimal", "PT", "raw"), durationSeconds: 270, audioUrl: null },
+]);
+
+const ESP_SAGRADO_SELVAGEM: AlbumDef = spiritualAlbum("espiritual-sagrado-selvagem", "Sagrado Selvagem", "O divino na tempestade, na terra, no corpo animal", ESPIRITUAL_COLORS[2], [
+  { number: 1, title: "Terra", description: "Pés na lama — o sagrado é raiz", lang: "PT", energy: "steady", flavor: "marrabenta", prompt: spiritualPrompt("feet in mud, sacred is dirt and root", "earthy, grounded, primal, joyful connection to soil", "marrabenta guitar groove, earth percussion, warm grounded vocal", "PT", "steady", "marrabenta"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "Storm Prayer", description: "Rezar no meio da tempestade, não depois", lang: "EN", energy: "pulse", prompt: spiritualPrompt("praying in the storm, not after it, worship in chaos", "urgent, stormy, fierce, wild prayer", "driving rain textures, urgent rhythm, fierce vocal, storm energy", "EN", "pulse"), durationSeconds: 240, audioUrl: null },
+  { number: 3, title: "Bicho", description: "O animal em ti que sabe antes de pensares", lang: "PT", energy: "raw", prompt: spiritualPrompt("the animal self, instinct before thought, wild knowing", "primal, instinctive, raw, untamed", "raw vocal growl, primal percussion, stripped production, animal energy", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+  { number: 4, title: "Barefoot", description: "Caminhar sem armadura — pele na terra", lang: "EN", energy: "steady", prompt: spiritualPrompt("walking barefoot, skin on earth, unarmoured presence", "vulnerable, present, connected, bare", "acoustic guitar, walking rhythm, bare production, earth textures", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+  { number: 5, title: "Fogo Dentro", description: "O fogo que não destrói — o sagrado em chamas", lang: "PT", energy: "anthem", flavor: "gospel", prompt: spiritualPrompt("the fire within that doesn't destroy, sacred blaze", "blazing, sacred, powerful, transcendent fire", "gospel choir, organ warmth, blazing vocal, fire energy, building power", "PT", "anthem", "gospel"), durationSeconds: 300, audioUrl: null },
+]);
+
+const ESP_RITUAL: AlbumDef = spiritualAlbum("espiritual-ritual", "Ritual", "O sagrado no gesto comum — café como cerimónia", ESPIRITUAL_COLORS[3], [
+  { number: 1, title: "Manhã", description: "O primeiro gesto do dia, antes do mundo entrar", lang: "PT", energy: "whisper", prompt: spiritualPrompt("first gesture of the day, before the world enters", "dawn, tender, quiet ceremony, waking", "soft morning piano, gentle light textures, quiet vocal, dawn pads", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "Bread", description: "Partir pão — a comunhão mais simples", lang: "EN", energy: "steady", prompt: spiritualPrompt("breaking bread, simplest communion, nourishment as sacred", "warm, nourishing, communal, simple", "warm acoustic guitar, steady gentle rhythm, nourishing vocal, bread warmth", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+  { number: 3, title: "Água nas Mãos", description: "Lavar as mãos — lavar o que passou", lang: "PT", energy: "whisper", prompt: spiritualPrompt("washing hands as ritual, water carrying away what's done", "cleansing, light, flowing, releasing", "water textures, flowing piano, light vocal, cleansing pads", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+  { number: 4, title: "Threshold", description: "Cada porta é passagem — cada entrada, uma escolha", lang: "EN", energy: "steady", prompt: spiritualPrompt("every doorway is a passage, every entrance a choice", "liminal, aware, choosing, conscious entry", "steady walking rhythm, door-like resonance, aware vocal, threshold textures", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+  { number: 5, title: "Fecho os Olhos", description: "O ritual de voltar a ti", lang: "PT", energy: "raw", prompt: spiritualPrompt("closing your eyes, the ritual of returning to yourself", "inward, intimate, returning, self-meeting", "raw close vocal, minimal piano, breath sounds, inward silence", "PT", "raw"), durationSeconds: 270, audioUrl: null },
+]);
+
+const ESP_GRACA: AlbumDef = spiritualAlbum("espiritual-graca", "Graça", "Receber sem merecer — amolecer", ESPIRITUAL_COLORS[4], [
+  { number: 1, title: "Não Mereci", description: "O choque de receber o que não ganhaste", lang: "PT", energy: "raw", prompt: spiritualPrompt("shock of receiving what you didn't earn, undeserved grace", "stunned, overwhelmed, grateful shock, unearned", "raw vocal, sparse piano, stunned silence, emotion breaking through", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "Softening", description: "A armadura cai — não por fraqueza, por prontidão", lang: "EN", energy: "whisper", prompt: spiritualPrompt("armour falling away, not weakness but readiness, softening", "softening, yielding, ready, tender strength", "soft dissolving pads, tender vocal, melting textures, warmth arriving", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+  { number: 3, title: "Cai Sobre Mim", description: "A graça que cai como chuva — tu ficas parada", lang: "PT", energy: "steady", flavor: "gospel", prompt: spiritualPrompt("grace falling like rain, just standing there receiving", "receiving, open, rained upon, standing in grace", "gospel organ warmth, rain textures, steady receiving vocal, choir hum", "PT", "steady", "gospel"), durationSeconds: 270, audioUrl: null },
+  { number: 4, title: "Unearned", description: "A beleza do que nunca foi devido", lang: "EN", energy: "whisper", prompt: spiritualPrompt("beauty of what was never owed, unearned gifts", "grateful, humbled, beautiful, undeserved beauty", "gentle piano arpeggios, grateful vocal, light strings, beauty textures", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+]);
+
+const ESP_SILENCIO: AlbumDef = spiritualAlbum("espiritual-silencio", "Silêncio Sagrado", "A plenitude da quietude", ESPIRITUAL_COLORS[5], [
+  { number: 1, title: "Cala", description: "A ordem para calar — mas gentil, como o mar depois da onda", lang: "PT", energy: "whisper", prompt: spiritualPrompt("command to be silent, gentle like sea after wave", "hushing, gentle command, settling, ocean calm", "ocean-like pads, gentle shushing textures, settling vocal, wave sounds", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "Still", description: "Quietude como prática — não paz, disciplina", lang: "EN", energy: "whisper", prompt: spiritualPrompt("stillness as practice, not peace but discipline", "disciplined, still, practiced, held silence", "minimal production, held notes, disciplined vocal, practiced stillness", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+  { number: 3, title: "O Vazio Cheio", description: "O vazio que na verdade está cheio", lang: "PT", energy: "raw", prompt: spiritualPrompt("emptiness that is actually full, paradox of silence", "paradoxical, full-empty, profound, surprising", "raw vocal in empty space, paradox textures, fullness emerging from nothing", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+  { number: 4, title: "Listen", description: "O silêncio não é ausência — é outra forma de ouvir", lang: "EN", energy: "steady", prompt: spiritualPrompt("silence as different listening, not absence but attention", "attentive, listening, hearing the unheard, present", "subtle textures emerging from silence, attentive vocal, listening production", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+  { number: 5, title: "Catedral Interior", description: "A catedral por dentro — sem paredes, sem tecto", lang: "PT", energy: "whisper", prompt: spiritualPrompt("cathedral inside, no walls, no roof, just infinite space", "vast, interior, sacred space, limitless", "vast reverb, cathedral space, whisper vocal, infinite pads", "PT", "whisper"), durationSeconds: 270, audioUrl: null },
+]);
+
+const ESP_ENTREGA: AlbumDef = spiritualAlbum("espiritual-entrega", "Entrega", "Largar o controlo — confiar no que não se vê", ESPIRITUAL_COLORS[6], [
+  { number: 1, title: "Segurar", description: "A exaustão de segurar tudo — antes da queda", lang: "PT", energy: "raw", prompt: spiritualPrompt("exhaustion of holding everything, before the fall", "exhausted, gripping, desperate, about to break", "tense raw vocal, gripping textures, exhaustion in production, tension bass", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "Freefall", description: "O momento de largar — não paz, vertigem", lang: "EN", energy: "pulse", prompt: spiritualPrompt("moment of letting go, not peace but vertigo, freefall", "vertiginous, falling, exhilarating terror, released", "falling synth textures, vertigo rhythm, released vocal, freefall production", "EN", "pulse"), durationSeconds: 240, audioUrl: null },
+  { number: 3, title: "Mãos Vazias", description: "Mãos vazias — nada para segurar. E chega.", lang: "PT", energy: "steady", prompt: spiritualPrompt("empty hands, nothing to hold, and it's enough", "empty, sufficient, peaceful emptiness, released", "open acoustic guitar, empty-handed vocal, steady lightness, space", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+  { number: 4, title: "Trust the Dark", description: "Confiar na escuridão por onde cais", lang: "EN", energy: "whisper", prompt: spiritualPrompt("trusting darkness you're falling through, faith without sight", "trusting, dark, blind faith, surrender", "dark pads, trust textures, whisper vocal, falling through darkness", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+  { number: 5, title: "Rio", description: "Tornar-se o rio — não nadar, fluir", lang: "PT", energy: "steady", prompt: spiritualPrompt("becoming the river, not swimming but flowing", "flowing, surrendered, becoming, river-self", "flowing water textures, river rhythm, becoming vocal, fluid production", "PT", "steady"), durationSeconds: 270, audioUrl: null },
+]);
+
+const ESP_MAOS_ABERTAS: AlbumDef = spiritualAlbum("espiritual-maos-abertas", "Mãos Abertas", "Dar sem te perderes — servir como presença", ESPIRITUAL_COLORS[7], [
+  { number: 1, title: "Dar", description: "O gesto de dar — simples, não heroico", lang: "PT", energy: "steady", prompt: spiritualPrompt("the gesture of giving, simple not heroic", "simple, generous, warm, grounded giving", "warm steady rhythm, simple vocal, giving textures, acoustic warmth", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "Empty Cup", description: "Não podes dar do vazio — a verdade da depleção", lang: "EN", energy: "raw", prompt: spiritualPrompt("can't pour from empty, truth of depletion", "depleted, honest, empty, needing to receive first", "raw depleted vocal, empty textures, honest production, sparse", "EN", "raw"), durationSeconds: 240, audioUrl: null },
+  { number: 3, title: "Servir", description: "Servir sem custar a alma — alegria no dar", lang: "PT", energy: "steady", flavor: "marrabenta", prompt: spiritualPrompt("service that doesn't cost your soul, joy in giving", "joyful, generous, rhythmic, service as dance", "marrabenta joy rhythm, generous vocal, dancing service, warm bass", "PT", "steady", "marrabenta"), durationSeconds: 240, audioUrl: null },
+  { number: 4, title: "Open Hands", description: "Mãos abertas — não dar tudo, oferecer", lang: "EN", energy: "whisper", prompt: spiritualPrompt("hands open, not giving away but offering", "offering, gentle, present, open", "gentle open pads, offering vocal, tender production, hands-open space", "EN", "whisper"), durationSeconds: 270, audioUrl: null },
+]);
+
+const ESP_RAIZ_CEU: AlbumDef = spiritualAlbum("espiritual-raiz-ceu", "Raiz e Céu", "Pés na terra, cabeça nas estrelas", ESPIRITUAL_COLORS[8], [
+  { number: 1, title: "Raiz", description: "Raízes — profundas, escuras, necessárias", lang: "PT", energy: "steady", prompt: spiritualPrompt("roots deep dark necessary, invisible foundation", "deep, rooted, foundational, dark earth", "deep bass, root textures, grounded vocal, earth rhythm", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "Sky Inside", description: "O céu não está acima — está no teu peito", lang: "EN", energy: "whisper", prompt: spiritualPrompt("sky not above but inside your chest, inner vastness", "vast, interior, expansive, sky-inside", "expansive pads, sky textures, whisper vocal, chest resonance", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+  { number: 3, title: "Vertical", description: "A coluna como eixo — entre terra e céu", lang: "PT", energy: "pulse", prompt: spiritualPrompt("spine as axis between earth and heaven, vertical being", "vertical, aligned, energized, axis", "driving vertical rhythm, spine-like bass, aligned vocal, ascending energy", "PT", "pulse"), durationSeconds: 240, audioUrl: null },
+  { number: 4, title: "Both", description: "Ser raiz e céu ao mesmo tempo", lang: "EN", energy: "steady", prompt: spiritualPrompt("being root and sky simultaneously, no contradiction", "dual, harmonious, complete, both-at-once", "dual melody layers, harmonious production, complete vocal, root-and-sky", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+  { number: 5, title: "Árvore", description: "Tu és a árvore — enraizada e a crescer", lang: "PT", energy: "anthem", prompt: spiritualPrompt("you are the tree, rooted and reaching, growing upward", "majestic, rooted, reaching, tree-strong", "rising anthem production, rooted bass, reaching vocal, tree-strength strings", "PT", "anthem"), durationSeconds: 300, audioUrl: null },
+]);
+
+const ESP_AGUA_VIVA: AlbumDef = spiritualAlbum("espiritual-agua-viva", "Água Viva", "Limpeza, renascimento — baptismo sem igreja", ESPIRITUAL_COLORS[9], [
+  { number: 1, title: "Fonte", description: "A nascente — onde a água começa, antes de ter nome", lang: "PT", energy: "whisper", prompt: spiritualPrompt("the spring where water begins, before it's named", "emerging, pure, beginning, source", "spring water textures, emerging piano, source vocal, pure beginning", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "Wash", description: "Lavar — não culpa, apenas deixar a água levar", lang: "EN", energy: "steady", prompt: spiritualPrompt("washing, not guilt, letting water carry away what's done", "cleansing, releasing, flowing away, water taking", "flowing water rhythm, cleansing vocal, releasing textures, steady flow", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+  { number: 3, title: "Mergulho", description: "Mergulhar — imersão total, renascimento pela água", lang: "PT", energy: "pulse", prompt: spiritualPrompt("diving under, full immersion, rebirth through water", "submerged, reborn, total immersion, underwater", "underwater textures, diving rhythm, submerged vocal, rebirth building", "PT", "pulse"), durationSeconds: 240, audioUrl: null },
+  { number: 4, title: "Surface", description: "Quebrar a superfície — a inspiração do renascido", lang: "EN", energy: "raw", prompt: spiritualPrompt("breaking the surface, gasping, alive, reborn", "gasping, alive, reborn, raw emergence", "surface-breaking textures, gasping vocal, raw alive production, air rushing", "EN", "raw"), durationSeconds: 270, audioUrl: null },
+]);
+
+const ESP_AMEM: AlbumDef = spiritualAlbum("espiritual-amem", "Amém", "O 'sim' que dizemos juntas", ESPIRITUAL_COLORS[10], [
+  { number: 1, title: "Sozinha Não", description: "O momento em que percebes que não estás só", lang: "PT", energy: "raw", prompt: spiritualPrompt("realizing you're not alone, shock of belonging", "shocked, belonging, raw realization, not-alone", "raw vocal breaking, belonging textures, realization in production, raw", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "Communion", description: "Não pão e vinho — apenas estar na mesma sala com a verdade", lang: "EN", energy: "steady", flavor: "gospel", prompt: spiritualPrompt("not bread and wine, just being in the same room with truth", "communal, truthful, together, shared presence", "gospel warmth, communal vocal, shared rhythm, truth presence", "EN", "steady", "gospel"), durationSeconds: 240, audioUrl: null },
+  { number: 3, title: "Nós", description: "'Nós' — o plural que salva, vozes juntas", lang: "PT", energy: "anthem", flavor: "gospel", prompt: spiritualPrompt("we, the plural that saves, voices together", "collective, powerful, together, saving plural", "gospel choir building, anthem vocal, together rhythm, collective power", "PT", "anthem", "gospel"), durationSeconds: 300, audioUrl: null },
+  { number: 4, title: "Grão", description: "Um grão — pequeno, parte do todo. O amém é sussurro.", lang: "PT", energy: "raw", prompt: spiritualPrompt("a grain, tiny, part of the whole, amen as whisper not stadium", "tiny, humble, part-of-whole, collective whisper", "minimal raw vocal, grain-like textures, tiny humble production, whisper amen", "PT", "raw"), durationSeconds: 270, audioUrl: null },
+]);
+
+// ─────────────────────────────────────────────
 // EXPORT
 // ─────────────────────────────────────────────
 
@@ -587,6 +692,17 @@ export const ALL_ALBUMS: Album[] = [
   CURSO_RELOGIO,
   CURSO_COROA,
   CURSO_FOME,
+  // Espirituais
+  ESP_ORACAO,
+  ESP_SAGRADO_SELVAGEM,
+  ESP_RITUAL,
+  ESP_GRACA,
+  ESP_SILENCIO,
+  ESP_ENTREGA,
+  ESP_MAOS_ABERTAS,
+  ESP_RAIZ_CEU,
+  ESP_AGUA_VIVA,
+  ESP_AMEM,
 ].map(applyLyrics);
 
 // Helpers
