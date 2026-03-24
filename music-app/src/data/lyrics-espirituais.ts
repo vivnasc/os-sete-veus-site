@@ -1326,35 +1326,41 @@ mas e por ti
 que tudo cresce`,
 
   "espiritual-raiz-ceu/2": `[Verse 1]
-I kept looking up
-For something bigger than my lungs
-But the sky was never up there
-It was pressed between my ribs
+I kept looking up for something wide
+some ceiling I could finally break
+but the sky was never overhead —
+it lived beneath my shoulder blade
 
 [Verse 2]
-I searched cathedrals
-I searched the stars
-But the vastness I was craving
-Was already in my chest
+I searched the nave, I watched the stars
+I climbed the hill through wind and cold
+but the vastness I was burning for
+was pressed between my ribs all along
 
 [Chorus]
-The sky inside
-Doesn't need a roof
-The sky inside
-Doesn't need proof
-It's the breath that fills
-Without instruction
-The space that holds
-Without construction
+Sky inside, sky inside
+you don't need a steeple
+sky inside, sky inside
+you don't need a sign
+the breath that widens when you stop demanding —
+the space between your bones
+is your shrine
+
+[Verse 3]
+Press your palm between your collarbones
+feel the hollow living there
+that's where the infinite begins
+not above, but in the dare
 
 [Bridge]
-Put your hand between your collarbones
-Feel the hollow there
-That's where the sky begins
-Not above — but where you dare to breathe
+Not up, not out, not somewhere else
+not a tower or a distant sign
+the sky you've been chasing all this time
+has always been inside
 
 [Outro]
 You are not beneath the sky
+You are the sky
 You carry it`,
 
   "espiritual-raiz-ceu/3": `[Verse 1]
@@ -1743,69 +1749,81 @@ E o comeco
 De dizer sim ao que sou`,
 
   // ─────────────────────────────────────────────
-  // ALBUM 11: PRECE (the raw human cry to something bigger)
+  // ALBUM 11: PRECE (desperation — raw crying, not devotion)
   // ─────────────────────────────────────────────
 
-  "espiritual-prece/1": `[Verse]
-Nao sei a quem falo
-Nao sei se alguem ouve
-So sei que este peito
-Nao aguenta mais sozinho
+  "espiritual-prece/1": `[Verse 1]
+Nao sei a quem dirijo
+nao sei se ha quem escute
+So sei que este joelho
+dobrou porque nao aguente
 
-[Verse]
+[Verse 2]
 As maos nao se juntam por fe
-Juntam-se por desespero
-A boca abre e o que sai
-Nao e palavra e gemido
+juntam-se porque tremem
+A boca abre e nao sai voz
+so o ar que o desespero bebe
 
 [Chorus]
-Pede
-Nao importa a quem
-Pede com a voz que tens
-Pede com o corpo partido
-O chao ouve
-O ar ouve
-Alguma coisa ha-de ouvir
+Pede — com o poco seco
+pede — com a voz que falha
+pede com o corpo em farrapos
+antes que a noite te engolha
+O chao recebe o grito
+o ar carrega a dor
+Pede sem saber o nome
+de quem podes chamar
 
-[Bridge]
+[Verse 3]
 Nao e oracao bonita
-E o grito que fica
-Quando a vergonha sai
+nao e fe nem disciplina
+E a carne que nao aguenta
+e a garganta que se afina
+
+[Bridge]
+Quando a vergonha ja saiu
+quando o orgulho ja nao tem peso
+o que resta e so o peito
+nu e aberto e aceso
 
 [Outro]
 Pede
-Mesmo sem saber o que pedes
-Pede`,
+mesmo sem saber o que pedes
+pede
+porque o grito ja saiu`,
 
-  "espiritual-prece/2": `[Verse]
-I asked the sky
-And the sky said nothing
-I asked the ground
-And the ground was cold
+  "espiritual-prece/2": `[Verse 1]
+I pressed my mouth against the dark
+and asked for any sign
+The ceiling gave me nothing back
+the window gave me pine
 
-[Verse]
-So I sat with the silence
-Like an old friend
-Who never answers
-But always stays
+[Verse 2]
+I asked the sky at 3 a.m.
+the sky just held its cold
+I asked the ground below my feet
+the ground was four years old
 
 [Chorus]
-Unanswered
-My prayer hangs in the air
-Unanswered
-And I stay here anyway
-Not because I believe
-But because I have nowhere else to go
+Unanswered — the prayer still rising
+unanswered — I'm still here
+Not because I believe in answers
+but because I have nowhere
+else to put this weight, this asking
+this mouth against the wall
+Unanswered — and I stay
+unanswered — through it all
 
 [Bridge]
-Maybe the silence
-Is the answer
-Maybe the waiting
-Is the prayer
+Maybe the silence is not indifference
+maybe the waiting is the ground
+maybe I'm praying to the part of me
+that has not yet been found
 
 [Outro]
+I will keep asking into the dark
 I will keep asking
-Into the dark
+mouth to the wall
 I will keep asking`,
 
   "espiritual-prece/3": `[Verse]
@@ -2204,31 +2222,46 @@ So nao sabia`,
   // ALBUM 14: CATEDRAL (the body as sacred architecture)
   // ─────────────────────────────────────────────
 
-  "espiritual-catedral/1": `[Verse]
-No centro do corpo
-Ha uma sala vazia
-Com paredes altas
-E eco no chao
+  "espiritual-catedral/1": `[Verse 1]
+No centro do corpo existe
+Uma nave comprida e calma
+Com paredes que sao carne
+E eco que guarda a alma
 
-[Verse]
-Entro descalca
-As maos ao longo do corpo
-O silencio aqui dentro
-Tem o peso de uma oracao
+[Verse 2]
+Entro descalca devagar
+As maos abertas pelo caminho
+O barulho fica la fora
+Aqui dentro so me ouço a mim
 
 [Chorus]
-Nave
-O centro onde o eco vive
-Nave
-O lugar onde me encontro
-Quando la fora e barulho
-Aqui dentro e catedral
-Aqui dentro e casa
+Nave — o eco mora aqui
+Nave — o centro que e meu
+Quando o mundo nao tem chao
+Esta sala tem o eu
+
+[Verse 3]
+As paredes respiram comigo
+O silencio tem o seu peso
+Nao e vazio — e presenca
+O mais velho dos regresses
+
+[Chorus]
+Nave — o eco mora aqui
+Nave — o centro que e meu
+Quando o mundo nao tem chao
+Esta sala tem o eu
+
+[Bridge]
+Ha uma quietude que nao e morte
+Um espaco que nao e ausencia
+Entro aqui sem pedir licenca
+Esta nave e a minha heranca
 
 [Outro]
 Entro
-Sento-me
-E o eco faz o resto`,
+Sento
+O eco faz o resto`,
 
   "espiritual-catedral/2": `[Verse]
 There are cracks in my walls
