@@ -8,12 +8,13 @@
  * — Universal: sem caixa étnica, instrumentação varia conforme o tema
  * — Tom: íntimo, transformativo, poético, contemplativo
  *
- * 45 albums:
+ * 67 albums:
  * - 7 Espelhos (1 por veu)
  * - 7 Nós (1 por véu)
  * - 1 Livro filosófico
  * - 20 Cursos (1 por curso)
  * - 10 Espirituais (espiritualidade universal, sem religião)
+ * - 22 Vida (a vida inteira — do acordar ao adormecer)
  */
 
 export type AlbumTrack = {
@@ -40,6 +41,7 @@ import { ESPELHO_LYRICS } from "./lyrics-espelhos";
 import { NO_LYRICS } from "./lyrics-nos";
 import { LIVRO_LYRICS, CURSO_LYRICS } from "./lyrics-livro-cursos";
 import { ESPIRITUAL_LYRICS } from "./lyrics-espirituais";
+import { VIDA_LYRICS } from "./lyrics-vida";
 
 const ALL_LYRICS: Record<string, string> = {
   ...ESPELHO_LYRICS,
@@ -47,6 +49,7 @@ const ALL_LYRICS: Record<string, string> = {
   ...LIVRO_LYRICS,
   ...CURSO_LYRICS,
   ...ESPIRITUAL_LYRICS,
+  ...VIDA_LYRICS,
 };
 
 function getLyrics(albumSlug: string, trackNumber: number): string {
@@ -57,7 +60,7 @@ export type Album = {
   slug: string;
   title: string;
   subtitle: string;
-  product: "espelho" | "no" | "livro" | "curso" | "espiritual";
+  product: "espelho" | "no" | "livro" | "curso" | "espiritual" | "vida";
   veu?: number;
   courseSlug?: string;
   color: string;
@@ -636,6 +639,38 @@ const ESPIRITUAL_ENTREGA = espiritualAlbum("espiritual-entrega", "A Entrega", "L
   { number: 4, title: "Carried", description: "Ser carregada pelo que é maior", lang: "EN", prompt: espiritualPrompt("being carried by something greater — surrendered to grace, the exhausted child finally picked up, no more walking", "carried, surrendered, peaceful, the deep rest of being held by what you cannot name", "gentle pads carrying the vocal like arms, whispered gospel warmth, surrendered to larger harmony, cradled", "EN"), durationSeconds: 240 },
   { number: 5, title: "Rio Abaixo", description: "Deixar o rio levar", lang: "PT", energy: "steady", prompt: espiritualPrompt("letting the river carry you — downstream surrender, trust as liberation, the body floating, the mind finally quiet", "free, surrendered, flowing with life, the peace of not swimming upstream anymore", "flowing river production, water textures, surrendered vocal floating on warm current, steady and peaceful not triumphant", "PT", "steady"), durationSeconds: 300 },
 ]);
+
+// ─────────────────────────────────────────────
+// VIDA (22 albums)
+// A vida inteira — do acordar ao adormecer,
+// do treino ao banho, da raiva ao amor.
+// Uma mulher pode viver um dia inteiro
+// e nunca sair do universo da Loranne.
+// ─────────────────────────────────────────────
+
+function vidaPrompt(theme: string, emotion: string, production: string, lang: "PT" | "EN", energy: TrackEnergy = "whisper", flavor: TrackFlavor = "organic"): string {
+  const langNote = lang === "PT" ? "Lyrics in Portuguese." : "Lyrics in English.";
+  return buildPromptWithFlavor(`${ENERGY_STYLES[energy]} ${langNote} Music for living — the soundtrack of a body moving through a real day. Not about feelings, inside them. ${emotion}. ${production}. Theme: ${theme}.`, flavor);
+}
+
+function vidaAlbum(
+  slug: string,
+  title: string,
+  subtitle: string,
+  color: string,
+  tracks: Omit<TrackDef, "audioUrl" | "lyrics">[]
+): AlbumDef {
+  return {
+    slug,
+    title,
+    subtitle,
+    product: "vida",
+    color,
+    tracks: tracks.map((t) => ({ ...t, audioUrl: null })),
+  };
+}
+
+// --- VIDA ALBUMS PLACEHOLDER (defined below) ---
 
 // ─────────────────────────────────────────────
 // EXPORT
