@@ -533,74 +533,78 @@ sem desconto`,
   // ALBUM 4: GRACA (receiving what you didn't earn, softening)
   // ─────────────────────────────────────────────
 
-  "espiritual-graca/1": `[Verse]
-Nao fiz nada para merecer isto
-Nao rezei nao pedi nao negociei
-E mesmo assim
-Chegou
+  "espiritual-graca/1": `[Verse 1]
+Nao fiz nada para merecer
+nao rezei nao paguei nenhum preco
+E no entanto chegou de mansinho
+e encheu-me o peito como um especo
 
-[Verse]
-Como chuva em dia de sol
-Como uma carta sem remetente
-Algo encheu-me o peito
-Sem que eu tivesse aberto a porta
+[Verse 2]
+Tremi como quem apanha frio
+mas nao era frio — era assombro
+Receber o que nunca pedi
+pesa mais do que o que eu carrego no ombro
 
 [Chorus]
 Nao mereci
-E veio na mesma
+e veio na mesma
 Nao mereci
-E ficou na mesma
-A graca nao pede merecimento
-Pede so
-Que estejas parada o suficiente
-Para a sentir
+e ficou na mesma
+A graca nao espera convite
+cai onde cai
+no justo no torto no vazio
+nao mereci — e so por isso choro
+
+[Verse 3]
+O susto de nao merecer nada
+e que nao te pede nenhuma razao
+O corpo aceita antes da cabeca
+e a cabeca rende-se entao
 
 [Bridge]
-O corpo treme
-Nao de frio
-De espanto
-De receber sem ter pedido
+Deixei entrar o que nao chamei
+abri uma porta sem ter chave
+Isto que sinto nao tem nome certo
+mas tem peso e tem cheiro e e suave
 
 [Outro]
 Nao mereci
-E isso e o mais bonito
-Que alguma vez me aconteceu`,
+e isso e o mais bonito
+que alguma vez me aconteceu`,
 
-  "espiritual-graca/2": `[Verse]
-The armour didn't fall
-It melted
-Slowly like ice in the sun
-I didn't even notice
+  "espiritual-graca/2": `[Verse 1]
+The armour didn't fall with drama
+it melted slow, like morning ice
+One day my shoulders just forgot
+the cost of holding something twice
 
-[Verse]
-One day my shoulders dropped
+[Verse 2]
 My jaw unclenched at dinner
-My fists forgot to close
-And I forgot to mind
+my fists forgot the shape of fear
+The body drops what the mind still grips
+when the wound has run its year
 
 [Chorus]
 Softening
-Not weakness
+not weakness — witness
 Softening
-Readiness
-The body knowing
-It can stop defending
-What was never under attack
+the body's quiet yes
+The bravest thing these bones have done
+is learn to hold with less
 Softening
-Is the bravest thing
-These bones have done
+the armour was never mine to keep
 
 [Bridge]
-You don't take armour off
-With your hands
-You take it off
-By forgetting you wore it
+You don't remove the armour with your hands
+you just stop remembering it's there
+The skin remembers how to breathe
+beneath the weight of all that air
 
 [Outro]
 I am soft now
-Not broken
-Soft
-Like something that can finally bend`,
+Not broken — open
+Something that can finally bend
+toward the light`,
 
   "espiritual-graca/3": `[Verse]
 Estou de pe no meio de nada
@@ -1282,36 +1286,44 @@ Still rooted in the frost`,
   // ─────────────────────────────────────────────
 
   "espiritual-raiz-ceu/1": `[Verse 1]
-A raiz nao se ve
-Trabalha no escuro
-Segura o que tem peso
-Sem pedir futuro
+A raiz trabalha no escuro
+sem palco e sem louvor
+ninguem fotografa o fundo
+ninguem te diz o seu valor
 
 [Verse 2]
-A raiz e o que fica
-Quando o vento leva tudo
-O que ninguem fotografa
-O que cresce no mais fundo
+O que sustenta nao brilha
+o chao nao pede atencao
+mas tudo o que se ergue acima
+nasce desta fundacao
 
 [Chorus]
-Raiz
-Escura e necessaria
-Raiz
-Invisivel e ordinaria
-Ninguem aplaude o que sustenta
-Ninguem agradece ao chao
-Mas e daqui que tudo nasce
-Desta silenciosa fundacao
+Raiz, raiz
+escura e necessaria
+raiz, raiz
+funda e solitaria
+ninguem chega ao fruto
+sem antes ter descido
+pelo escuro que trabalha
+pelo fundo que tem vivido
+
+[Verse 3]
+Os meus pes conhecem barro
+as minhas maos conhecem terra
+o que me segura ao mundo
+nao tem nome — e forca certa
 
 [Bridge]
-Os meus pes conhecem terra
-As minhas maos conhecem barro
-O que me segura ao mundo
-Nao tem nome — tem peso
+Antes de subir ha um descer
+antes da copa ha o enlameado
+antes da flor ha o que a fez
+o que nunca foi fotografado
 
 [Outro]
-Antes de subir
-Aprende a descer`,
+Raiz
+ninguem te ve
+mas e por ti
+que tudo cresce`,
 
   "espiritual-raiz-ceu/2": `[Verse 1]
 I kept looking up
