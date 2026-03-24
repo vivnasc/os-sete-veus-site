@@ -592,9 +592,13 @@ const ESPIRITUAL_COLORS: Record<number, string> = {
   20: "#B07A4A", // Chama Última — âmbar fogo
 };
 
-function spiritualPrompt(theme: string, emotion: string, production: string, lang: "PT" | "EN", energy: TrackEnergy = "whisper", flavor: TrackFlavor = "organic"): string {
+// Duet modifier — appended to prompt when vocalMode = "duet"
+const DUET_MODIFIER = "Male and female vocal duet. Female voice dominant (lead), warm deep male voice on verses marked [Male] or [Both]. Natural chemistry, two perspectives, intimate dialogue. Not a backing vocal — a real second voice with weight.";
+
+function spiritualPrompt(theme: string, emotion: string, production: string, lang: "PT" | "EN", energy: TrackEnergy = "whisper", flavor: TrackFlavor = "organic", vocal: VocalMode = "solo"): string {
   const langNote = lang === "PT" ? "Lyrics in Portuguese." : "Lyrics in English.";
-  return buildPromptWithFlavor(`${ENERGY_STYLES[energy]} ${langNote} Sacred but not religious, body-centred, breath as prayer. ${emotion}. ${production}. Theme: ${theme}.`, flavor);
+  const duetNote = vocal === "duet" ? ` ${DUET_MODIFIER}` : "";
+  return buildPromptWithFlavor(`${ENERGY_STYLES[energy]} ${langNote} Sacred but not religious, body-centred, breath as prayer.${duetNote} ${emotion}. ${production}. Theme: ${theme}.`, flavor);
 }
 
 function spiritualAlbum(slug: string, title: string, subtitle: string, color: string, tracks: TrackDef[]): AlbumDef {
@@ -611,7 +615,7 @@ const ESP_ORACAO: AlbumDef = spiritualAlbum("espiritual-oracao", "Oração Sem P
 
 const ESP_SAGRADO_SELVAGEM: AlbumDef = spiritualAlbum("espiritual-sagrado-selvagem", "Sagrado Selvagem", "O divino na tempestade, na terra, no corpo animal", ESPIRITUAL_COLORS[2], [
   { number: 1, title: "Terra", description: "Pés na lama — o sagrado é raiz", lang: "PT", energy: "steady", flavor: "marrabenta", prompt: spiritualPrompt("feet in mud, sacred is dirt and root", "earthy, grounded, primal, joyful connection to soil", "marrabenta guitar groove, earth percussion, warm grounded vocal", "PT", "steady", "marrabenta"), durationSeconds: 240, audioUrl: null },
-  { number: 2, title: "Storm Prayer", description: "Rezar no meio da tempestade, não depois", lang: "EN", energy: "pulse", prompt: spiritualPrompt("praying in the storm, not after it, worship in chaos", "urgent, stormy, fierce, wild prayer", "driving rain textures, urgent rhythm, fierce vocal, storm energy", "EN", "pulse"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "Storm Prayer", description: "Rezar no meio da tempestade, não depois", lang: "EN", energy: "pulse", vocalMode: "duet", prompt: spiritualPrompt("praying in the storm, not after it, worship in chaos", "urgent, stormy, fierce, wild prayer", "driving rain textures, urgent rhythm, fierce vocal, storm energy", "EN", "pulse", "organic", "duet"), durationSeconds: 240, audioUrl: null },
   { number: 3, title: "Bicho", description: "O animal em ti que sabe antes de pensares", lang: "PT", energy: "raw", prompt: spiritualPrompt("the animal self, instinct before thought, wild knowing", "primal, instinctive, raw, untamed", "raw vocal growl, primal percussion, stripped production, animal energy", "PT", "raw"), durationSeconds: 240, audioUrl: null },
   { number: 4, title: "Barefoot", description: "Caminhar sem armadura — pele na terra", lang: "EN", energy: "steady", prompt: spiritualPrompt("walking barefoot, skin on earth, unarmoured presence", "vulnerable, present, connected, bare", "acoustic guitar, walking rhythm, bare production, earth textures", "EN", "steady"), durationSeconds: 240, audioUrl: null },
   { number: 5, title: "Fogo Dentro", description: "O fogo que não destrói — o sagrado em chamas", lang: "PT", energy: "anthem", flavor: "gospel", prompt: spiritualPrompt("the fire within that doesn't destroy, sacred blaze", "blazing, sacred, powerful, transcendent fire", "gospel choir, organ warmth, blazing vocal, fire energy, building power", "PT", "anthem", "gospel"), durationSeconds: 300, audioUrl: null },
