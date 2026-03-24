@@ -1,4 +1,4 @@
 {
   "framework": "nextjs",
-  "ignoreCommand": "git diff --quiet HEAD~1 HEAD -- escola-veus-app/"
+  "ignoreCommand": "git diff --quiet HEAD~1 HEAD -- ."
 }
