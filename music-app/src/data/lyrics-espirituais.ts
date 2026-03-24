@@ -1722,35 +1722,59 @@ e me reconstroi
 ao mesmo tempo`,
 
   "espiritual-amem/2": `[Verse 1]
-No bread no wine
-No book no hymn
-Just twelve of us
-In a borrowed room
+[Female]
+No bread, no wine, no borrowed hymn
+just a room with too much truth inside
+and someone at the table who stayed
+when everything in me wanted to hide
+
+[Male]
+I came with nothing formal, nothing fixed
+just the weight I'd carried without name
+and you were there across the table
+looking like you'd carried just the same
+
+[Both]
+This is communion — the act of staying
+this is communion — in the same air
+with the same weight between us unspoken —
+that's the only church that's ever been there
 
 [Verse 2]
-Someone cried
-Someone laughed too loud
-Someone sat in silence
-And that was prayer enough
+[Female]
+Someone cried — it wasn't elegant
+someone laughed because the crying broke the room
+and someone sat in absolute silence
+and that silence held us like a womb
+
+[Male]
+I looked around and every face was different
+but every face had worn the thing I'd worn
+not the same — but known, the way a scar is known
+the way a body knows itself when torn
 
 [Chorus]
-Communion
-Is just the act of staying
-Communion
-When the truth gets heavy
-In the same room
-With the same weight
-Breathing the same air
-That's communion
-That's the only church I need
+[Both]
+Communion, communion
+is just the act of staying when it's hard
+communion, communion
+is the breath you share across the yard
+no ceremony asked of us
+no ritual required —
+just the same room, same weight, same air
+and the willingness to not retire
 
 [Bridge]
-I looked around the circle
-And every face was mine
-Not the same — but known
-The way a scar knows skin
+[Female]
+We didn't plan to save each other
+[Male]
+We didn't come to be the cure
+[Both]
+We just stayed inside the same truth
+and that turned out to be enough
 
 [Outro]
+[Both]
 We didn't sing
 We didn't pray
 We just stayed
@@ -1758,40 +1782,44 @@ And that was everything`,
 
   "espiritual-amem/3": `[Verse 1]
 Eu sozinha sou sussurro
-Tu sozinha es sussurro
-Mas juntas somos vento
-Que ninguem mandou soprar
+tu sozinha es sussurro tambem
+mas quando as duas abrimos a boca
+somos vento que ninguem contem
 
 [Verse 2]
-Nao e coro ensaiado
-Nao e palco nem cancao
-E a voz que sai do peito
-Quando alguem te da a mao
+Nao e coro ensaiado nem palco
+nao e cancao com letra certa
+e a voz que sai do peito fundo
+quando alguem toca a porta aberta
 
 [Chorus]
-Nos
-A palavra que salva
-Nos
-O plural que nos basta
-Nos
-As vozes que se encontram
-No mesmo chao
-No mesmo medo
-Na mesma verdade
-Nos — e isso chega
+Nos, nos
+a palavra que salva
+nos, nos
+o plural que nos basta
+as vozes que se encontram
+no mesmo chao, no mesmo medo
+na mesma verdade partilhada —
+nos, e isso e tudo o que e sagrado
+
+[Verse 3]
+Nao precisamos de ser bonitas
+nao precisamos de ser fortes
+basta que as vozes se encostem
+antes de ficarmos surdas e absortas
 
 [Bridge]
 Abre a boca
-Deixa sair o som
-Nao importa se e bonito
-Importa que e teu
+deixa sair o som cru
+nao importa se e bonito —
+importa que e teu, importa que e tu
 
 [Outro]
 Nos
-Juntas
-De pes no chao
-De peito aberto
-Nos`,
+juntas
+de pes no chao
+de peito aberto
+nos`,
 
   "espiritual-amem/4": `[Verse 1]
 Sou um grao de areia
@@ -2038,68 +2066,84 @@ fico`,
   // ALBUM 12: CENTELHA (the divine spark inside)
   // ─────────────────────────────────────────────
 
-  "espiritual-centelha/1": `[Verse]
-Antes da chama
-Ha um instante
-Tao pequeno que quase nao existe
-Um tremor no peito
+  "espiritual-centelha/1": `[Verse 1]
+Antes da chama ha um instante
+tao fino que mal existe
+Um tremor a meio do peito
+um arrepio que persiste
 
-[Verse]
-Nao e pensamento
-Nao e decisao
-E o corpo que sabe
-Antes de tu saberes
+[Verse 2]
+Nao e pensamento nem sinal
+nao e decisao nem escolha
+E o corpo que compreende
+antes que a mente acolha
 
 [Chorus]
-Faisca
-Alguma coisa acordou
-Faisca
-Antes de ver ja senti
-Aqui no centro do peito
-Onde o medo mora
-Acendeu
+Faisca — antes de ver ja sente
+faisca — no centro do real
+Aqui onde o medo tem casa
+alguma coisa acendeu o farol
+Nao perguntes o que foi
+nao tentes dar-lhe nome
+A faisca nao pede licenca
+atravessa o que dorme
+
+[Verse 3]
+A mao treme sem razao
+o ar muda de qualidade
+O peito sabe antes do cerebro
+que chegou a claridade
 
 [Bridge]
-Nao perguntes o que e
-Nao tentes perceber
 Deixa arder
+sem precisar de saber o que arde
+Deixa arder
+antes que o medo te aparde
 
 [Outro]
 A faisca nao pede permissao
-Simplesmente acende`,
+simplesmente
+acende`,
 
-  "espiritual-centelha/2": `[Verse]
-There was a sound
-Like a match in a dark room
-One strike
-And the whole architecture changed
+  "espiritual-centelha/2": `[Verse 1]
+[Male] I carried a match for years
+kept it dry against my skin
+Waiting for a room that was ready
+waiting for someone to let me in
 
-[Verse]
-I can't unsee it
-I can't unfeel it
-The spark hit my spine
-And rewired everything
+[Verse 2]
+[Female] I was the room all along
+walls that had forgotten they could hold
+All it took was one small friction
+one strike against the cold
 
 [Chorus]
-Lit
-I am lit
-From the inside out
-Lit
-Like a city
-That was dark for years
-And someone
-Found the switch
+[Both] Lit — from a single moment
+[Male] lit — I was the match
+[Female] lit — I was the room igniting
+[Both] lit — no going back
+Not a switch, not a circuit
+not a wire or a grid
+A spark between two bodies
+that's what the darkness hid
+
+[Verse 3]
+[Male] The fire moved through the ceiling
+[Female] the fire moved through the floor
+[Both] We stood inside the burning
+and finally felt the core
 
 [Bridge]
-You can't go back
-To the dark
-Once you've seen
-Your own light
+[Female] You can't unbuild a fire
+[Male] you can't unsee the bright
+[Both] You carry it in the marrow
+this is how bodies hold light
 
 [Outro]
-Lit
-Once
-And forever changed`,
+[Both] Lit
+once
+and the dark
+changed shape`,
 
   "espiritual-centelha/3": `[Verse]
 Nao e fogo que destroi
@@ -2514,33 +2558,41 @@ The skin is singing
 Can you hear it
 The skin is singing`,
 
-  "espiritual-catedral/5": `[Verse]
-Procurei em templos
-Procurei em livros
-Procurei em vozes
-Que falavam mais alto que a minha
+  "espiritual-catedral/5": `[Verse 1]
+Procurei em templos de pedra
+Procurei em livros sagrados
+Procurei em vozes mais altas
+Que sempre me deixaram de lado
 
-[Verse]
-Ate que um dia parei
-Pus a mao no peito
-E senti o altar
-Que sempre esteve aqui
+[Verse 2]
+Andei de joelhos no marmore
+Andei com a cabeca dobrada
+Ate que um dia me levantei
+E pus a mao no peito — parei
 
 [Chorus]
-Altar
-O altar e aqui
-Altar
-Dentro de mim
-Nao preciso de tecto
-Nao preciso de padre
-O sagrado mora
-Onde eu respiro
+O altar e aqui — sempre esteve aqui
+Dentro do peito — nao no edificio
+O sagrado nao precisa de tecto
+O altar sou eu — esse e o inicio
+
+[Verse 3]
+Este corpo e o lugar mais real
+Esta respiracao e o ritual
+Nao preciso de aprovacao
+Para entrar no meu catedral
+
+[Chorus]
+O altar e aqui — sempre esteve aqui
+Dentro do peito — nao no edificio
+O sagrado nao precisa de tecto
+O altar sou eu — esse e o inicio
 
 [Bridge]
-Este corpo e o templo
-Esta pele e a parede
-Este coracao
-E o altar onde tudo acontece
+Nao e arrogancia — e regresso
+Nao e rejeicao — e clareza
+O sagrado tem a forma do corpo
+Tem o peso e a textura desta espessura
 
 [Outro]
 Aqui
