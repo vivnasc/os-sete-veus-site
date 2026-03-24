@@ -1,5 +1,5 @@
 // Lyrics for Espiritual albums — Suno AI format
-// 10 albums x 4-5 tracks = 46 songs
+// 20 albums x 4-5 tracks = 92 songs
 // Style: raw, intimate, body-centred spirituality — not religious, not institutional
 // The sacred lives in breath, in the body, in silence, in surrender
 // Tone: spoken-word/poetic, intimate, corporal, honest
@@ -1590,5 +1590,1543 @@ Amem
 Nao e o fim da oracao
 E o comeco
 De dizer sim ao que sou`,
+
+  // ─────────────────────────────────────────────
+  // ALBUM 11: PRECE (the raw human cry to something bigger)
+  // ─────────────────────────────────────────────
+
+  "espiritual-prece/1": `[Verse]
+Nao sei a quem falo
+Nao sei se alguem ouve
+So sei que este peito
+Nao aguenta mais sozinho
+
+[Verse]
+As maos nao se juntam por fe
+Juntam-se por desespero
+A boca abre e o que sai
+Nao e palavra e gemido
+
+[Chorus]
+Pede
+Nao importa a quem
+Pede com a voz que tens
+Pede com o corpo partido
+O chao ouve
+O ar ouve
+Alguma coisa ha-de ouvir
+
+[Bridge]
+Nao e oracao bonita
+E o grito que fica
+Quando a vergonha sai
+
+[Outro]
+Pede
+Mesmo sem saber o que pedes
+Pede`,
+
+  "espiritual-prece/2": `[Verse]
+I asked the sky
+And the sky said nothing
+I asked the ground
+And the ground was cold
+
+[Verse]
+So I sat with the silence
+Like an old friend
+Who never answers
+But always stays
+
+[Chorus]
+Unanswered
+My prayer hangs in the air
+Unanswered
+And I stay here anyway
+Not because I believe
+But because I have nowhere else to go
+
+[Bridge]
+Maybe the silence
+Is the answer
+Maybe the waiting
+Is the prayer
+
+[Outro]
+I will keep asking
+Into the dark
+I will keep asking`,
+
+  "espiritual-prece/3": `[Verse]
+Ninguem vem
+Ninguem chega a este lugar
+E o desamparo e tao grande
+Que so cabe Deus ou nada
+
+[Verse]
+Os joelhos no chao frio
+As maos sem forca
+O peito aberto como ferida
+E mesmo assim rezo
+
+[Chorus]
+Desamparo
+O lugar mais perto do sagrado
+Desamparo
+Onde a pele toca o chao
+E o chao responde
+Com o peso do mundo inteiro
+
+[Bridge]
+Nao preciso de catedral
+Preciso deste chao
+Nao preciso de padre
+Preciso desta solidao
+
+[Outro]
+Rezo do fundo
+Do lugar onde ninguem vem
+E alguma coisa
+Ouve`,
+
+  "espiritual-prece/4": `[Verse]
+My bones remember a language
+My tongue forgot
+A rhythm older than words
+Beating in my ribs
+
+[Verse]
+My hands move without permission
+My spine curves to something ancient
+The prayer lives in my marrow
+Not in my mouth
+
+[Chorus]
+Bones know
+What the mind refuses
+Bones know
+The oldest prayer
+Written in calcium and breath
+Before any book was opened
+Bones know
+
+[Bridge]
+Every cell is bowing
+Every joint is speaking
+The body never stopped praying
+We just stopped listening
+
+[Outro]
+My bones are praying
+Let me follow them home`,
+
+  "espiritual-prece/5": `[Verse]
+Ja nao peco nada
+Ja nao quero nada
+Fico aqui sentada
+Com as maos no colo
+
+[Verse]
+A ultima prece e esta
+Ficar
+Nao fugir do escuro
+Nao procurar a luz
+
+[Chorus]
+Ficar
+Essa e a prece
+Ficar
+Com o que doi
+Ficar com o que nao entendo
+Ficar com o corpo que tenho
+Ficar
+
+[Bridge]
+Nao ha mais palavras
+Ja disse tudo
+Ja gritei tudo
+Agora fico
+
+[Outro]
+A ultima prece
+Nao tem som
+E so presenca
+No escuro`,
+
+  // ─────────────────────────────────────────────
+  // ALBUM 12: CENTELHA (the divine spark inside)
+  // ─────────────────────────────────────────────
+
+  "espiritual-centelha/1": `[Verse]
+Antes da chama
+Ha um instante
+Tao pequeno que quase nao existe
+Um tremor no peito
+
+[Verse]
+Nao e pensamento
+Nao e decisao
+E o corpo que sabe
+Antes de tu saberes
+
+[Chorus]
+Faisca
+Alguma coisa acordou
+Faisca
+Antes de ver ja senti
+Aqui no centro do peito
+Onde o medo mora
+Acendeu
+
+[Bridge]
+Nao perguntes o que e
+Nao tentes perceber
+Deixa arder
+
+[Outro]
+A faisca nao pede permissao
+Simplesmente acende`,
+
+  "espiritual-centelha/2": `[Verse]
+There was a sound
+Like a match in a dark room
+One strike
+And the whole architecture changed
+
+[Verse]
+I can't unsee it
+I can't unfeel it
+The spark hit my spine
+And rewired everything
+
+[Chorus]
+Lit
+I am lit
+From the inside out
+Lit
+Like a city
+That was dark for years
+And someone
+Found the switch
+
+[Bridge]
+You can't go back
+To the dark
+Once you've seen
+Your own light
+
+[Outro]
+Lit
+Once
+And forever changed`,
+
+  "espiritual-centelha/3": `[Verse]
+Nao e fogo que destroi
+E fogo que aquece
+O incendio manso que arde
+Sem queimar a casa
+
+[Verse]
+Cada dia um pouco mais
+A pele muda devagar
+O que era medo vira brasa
+O que era brasa vira luz
+
+[Chorus]
+Incendio manso
+Arde sem pressa
+Incendio manso
+Transforma sem violencia
+Deixa o corpo aprender
+A temperatura da verdade
+Devagar
+
+[Bridge]
+A paciencia e o combustivel
+A confianca e o oxigenio
+Arde arde
+No teu ritmo
+
+[Outro]
+Manso
+Como so o fogo verdadeiro sabe ser`,
+
+  "espiritual-centelha/4": `[Verse]
+Houve noites tao escuras
+Que esqueci que tinha luz
+Houve dias tao pesados
+Que o peito nao abria
+
+[Verse]
+Mas aqui dentro
+No sitio mais fundo
+Onde ninguem chega
+Ainda brilha
+
+[Chorus]
+Ainda brilha
+Depois de tudo
+Ainda brilha
+Contra o escuro
+Nao e coragem
+Nao e teimosia
+E a centelha que ninguem
+Conseguiu apagar
+
+[Bridge]
+Podem tirar tudo
+A voz o nome o lugar
+Mas esta luz
+Esta luz nao se tira
+Porque nasceu comigo
+
+[Outro]
+Ainda brilha
+E isso basta
+Ainda brilha`,
+
+  // ─────────────────────────────────────────────
+  // ALBUM 13: VASTIDAO (the terrifying and beautiful vastness)
+  // ─────────────────────────────────────────────
+
+  "espiritual-vastidao/1": `[Verse]
+De pe diante do mar
+As palavras param
+A boca abre e nao sai nada
+So o vento entra
+
+[Verse]
+Tao grande que o medo
+Se torna outra coisa
+Nao e panico
+E rendica
+
+[Chorus]
+Oceano
+Leva o que nao preciso
+Oceano
+Mostra-me o tamanho real
+Das coisas que carrego
+Sao tao pequenas vistas daqui
+Tao pequenas
+
+[Bridge]
+Nao preciso de ser grande
+Preciso de ver o grande
+E deixar-me ser pequena
+
+[Outro]
+O mar nao pede nada
+So continua
+E eu fico a olhar`,
+
+  "espiritual-vastidao/2": `[Verse]
+I looked up
+And the sky had no edge
+No frame no wall no end
+Just space eating space
+
+[Verse]
+My chest cracked open
+Not from pain
+From too much room
+Too much air
+
+[Chorus]
+Terrified and free
+I am falling
+Into everything
+Terrified and free
+There is no ground
+And that is the point
+No ground
+
+[Bridge]
+The vertigo is not the problem
+The holding on was the problem
+Let go
+Let go
+
+[Outro]
+I fell
+And the falling
+Was the flying`,
+
+  "espiritual-vastidao/3": `[Verse]
+O calcio nos meus ossos
+Veio de uma estrela morta
+O ferro no meu sangue
+Nasceu numa explosao
+
+[Verse]
+Nao sou especial
+Sou material
+Do mesmo tecido
+Que fez o universo
+
+[Chorus]
+Poeira de estrelas
+No peito de uma mulher
+Poeira de estrelas
+Nos olhos que choram
+A mesma materia
+Que acendeu galaxias
+Respira em mim agora
+
+[Bridge]
+Nao es separada
+Nunca foste
+Es o universo
+A olhar para si proprio
+
+[Outro]
+Poeira
+Sagrada poeira
+A respirar`,
+
+  "espiritual-vastidao/4": `[Verse]
+I am small
+Smaller than I thought
+Smaller than my plans
+Smaller than my voice
+
+[Verse]
+And in the smallness
+Something opens
+A door I couldn't see
+When I was trying to be big
+
+[Chorus]
+Small
+Not broken
+Small
+Not less
+Just the right size
+To fit through the eye
+Of this needle called living
+
+[Bridge]
+The trees don't try to be the sky
+The river doesn't try to be the sea
+They arrive
+By being exactly what they are
+
+[Outro]
+Small
+And finally
+Enough`,
+
+  "espiritual-vastidao/5": `[Verse]
+Diziam que o peito e pequeno
+Que so cabe o coracao
+Mas eu abri o meu
+E coube o mundo inteiro
+
+[Verse]
+Coube a dor e coube o mar
+Coube o medo e coube a luz
+Coube o silencio de mil noites
+E o grito de quem volta
+
+[Chorus]
+Cabe tudo
+Dentro deste corpo
+Cabe tudo
+Dentro deste peito
+O infinito nao esta la fora
+Esta aqui
+Onde as costelas protegem
+O que nao tem fim
+
+[Bridge]
+Nao sou pequena demais
+Sou vasta por dentro
+Cada respiracao
+E um universo a expandir
+
+[Outro]
+Cabe tudo
+Sempre coube
+So nao sabia`,
+
+  // ─────────────────────────────────────────────
+  // ALBUM 14: CATEDRAL (the body as sacred architecture)
+  // ─────────────────────────────────────────────
+
+  "espiritual-catedral/1": `[Verse]
+No centro do corpo
+Ha uma sala vazia
+Com paredes altas
+E eco no chao
+
+[Verse]
+Entro descalca
+As maos ao longo do corpo
+O silencio aqui dentro
+Tem o peso de uma oracao
+
+[Chorus]
+Nave
+O centro onde o eco vive
+Nave
+O lugar onde me encontro
+Quando la fora e barulho
+Aqui dentro e catedral
+Aqui dentro e casa
+
+[Outro]
+Entro
+Sento-me
+E o eco faz o resto`,
+
+  "espiritual-catedral/2": `[Verse]
+There are cracks in my walls
+I used to call them damage
+But the light is coming through
+In colours I have never seen
+
+[Verse]
+Every fracture tells a story
+Every break lets something in
+I am not a ruin
+I am stained glass
+
+[Chorus]
+Stained glass
+Light through the wounds
+Stained glass
+Beautiful because broken
+Every colour earned
+Every shard still holding
+The whole picture together
+
+[Bridge]
+Don't fix the cracks
+They are the windows now
+Don't hide the scars
+They are where the light gets in
+
+[Outro]
+I am stained glass
+And the light
+Is pouring through`,
+
+  "espiritual-catedral/3": `[Verse]
+As costelas sao arcos
+Curvas de osso e forca
+Protegem o que e mole
+O que pulsa o que treme
+
+[Verse]
+Nao foram feitas de pedra
+Mas aguentam o mundo
+A arquitectura mais antiga
+Vive dentro de mim
+
+[Chorus]
+Costelas
+Arcos de catedral
+Costelas
+Que guardam o sagrado
+O coracao nao tem porta
+Tem osso
+E o osso nao cede
+
+[Bridge]
+Ponho a mao no peito
+E sinto a estrutura
+A catedral esta viva
+E respira comigo
+
+[Outro]
+Osso e silencio
+A mais velha oracao`,
+
+  "espiritual-catedral/4": `[Verse]
+My skin remembers
+The hand on my shoulder at seventeen
+The cold floor at midnight
+The first time someone held me right
+
+[Verse]
+Every touch left a note
+Every scar left a verse
+My body is a hymn
+Written by everyone who stayed
+
+[Chorus]
+Hymn of skin
+Sung in touch
+Hymn of skin
+Written in nerve and memory
+I am a living song
+Composed by every hand
+That dared to stay
+
+[Bridge]
+Dance this body
+Move this hymn
+Let the skin remember
+What the mind forgot
+
+[Outro]
+My skin is singing
+Can you hear it
+My skin is singing`,
+
+  "espiritual-catedral/5": `[Verse]
+Procurei em templos
+Procurei em livros
+Procurei em vozes
+Que falavam mais alto que a minha
+
+[Verse]
+Ate que um dia parei
+Pus a mao no peito
+E senti o altar
+Que sempre esteve aqui
+
+[Chorus]
+Altar
+O altar e aqui
+Altar
+Dentro de mim
+Nao preciso de tecto
+Nao preciso de padre
+O sagrado mora
+Onde eu respiro
+
+[Bridge]
+Este corpo e o templo
+Esta pele e a parede
+Este coracao
+E o altar onde tudo acontece
+
+[Outro]
+Aqui
+Sempre foi aqui
+O altar sou eu`,
+
+  // ─────────────────────────────────────────────
+  // ALBUM 15: GRAO (being one grain in the infinite)
+  // ─────────────────────────────────────────────
+
+  "espiritual-grao/1": `[Verse]
+Um
+So um
+Nao preciso de ser multidao
+Nao preciso de ser montanha
+
+[Verse]
+Um corpo uma voz
+Um lugar neste chao
+Um par de maos
+Que faz o que pode
+
+[Chorus]
+Um
+E isso basta
+Um
+Nao e pouco
+E o numero mais honesto
+O mais corajoso
+Ser um e saber
+Que um e suficiente
+
+[Bridge]
+Nao preciso de ser tudo
+Preciso de ser isto
+Aqui agora
+Inteira
+
+[Outro]
+Um
+So um
+E isso basta`,
+
+  "espiritual-grao/2": `[Verse]
+A grain of sand
+Sits on the beach
+Not worried about the ocean
+Not trying to be a rock
+
+[Verse]
+It holds its shape
+In wind and water
+Tiny
+And completely itself
+
+[Chorus]
+Sand
+I am sand
+Holding the whole beach
+In my stillness
+Sand
+Not less than the mountain
+Just smaller
+And closer to the ground
+
+[Bridge]
+The beach is made
+Of a billion grains
+Each one enough
+Each one the beach
+
+[Outro]
+I am one grain
+And the beach
+Is not the beach
+Without me`,
+
+  "espiritual-grao/3": `[Verse]
+Nao sou o centro
+Nunca fui
+E que alivio
+Que descanso enorme
+
+[Verse]
+Sou parte
+Uma gota no rio
+Um fio na teia
+Uma nota no coro
+
+[Chorus]
+Pertencer
+Nao e ser importante
+Pertencer
+E ser parte
+Do que e maior que eu
+Do que nao precisa de mim
+Mas me inclui
+
+[Bridge]
+O rio nao precisa desta gota
+Mas esta gota
+Precisa do rio
+E o rio aceita
+
+[Outro]
+Pertenco
+Sem merito
+Sem esforco
+Pertenco`,
+
+  "espiritual-grao/4": `[Verse]
+I spent years
+Trying to be everything
+The loudest voice
+The biggest room
+
+[Verse]
+Until I stopped
+And heard the quiet truth
+I don't need to be everything
+I just need to be here
+
+[Chorus]
+Enough
+I am enough
+Not everything
+But enough
+Enough to take up space
+Enough to breathe
+Enough to say
+This is my place
+
+[Bridge]
+We are enough
+Together
+Grain by grain
+We are the shore
+
+[Outro]
+Enough
+Not everything
+Enough
+And that is everything`,
+
+  // ─────────────────────────────────────────────
+  // ALBUM 16: MESMA AGUA (we are all the same water)
+  // ─────────────────────────────────────────────
+
+  "espiritual-mesma-agua/1": `[Verse]
+Uma gota no rio
+Nao sabe que e rio
+Cai da chuva e pensa
+Que esta a cair sozinha
+
+[Verse]
+Mas o rio ja sabe
+Ja a sentiu chegar
+O rio nao pergunta
+O rio deixa entrar
+
+[Chorus]
+Somos a mesma agua
+A mesma sede a mesma sede
+O que corre em ti
+Ja correu em mim
+
+[Bridge]
+Nao ha margem entre nos
+So a ilusao de pele
+O teu suor e o meu
+Sabem ao mesmo sal
+
+[Outro]
+Uma so
+Sempre foi uma so`,
+
+  "espiritual-mesma-agua/2": `[Verse]
+You wash your face in the morning
+With the same water
+That fell on a stranger's roof last night
+That fed a field you'll never see
+
+[Verse]
+The river doesn't choose
+Whose thirst to quench
+It moves through everything
+Without asking what it means
+
+[Chorus]
+Same river
+Running through your veins
+Through the woman on the bus
+Through the child in the rain
+Same river
+We just forgot its name
+
+[Bridge]
+There is no mine
+There is no yours
+Just water
+Finding its way home
+
+[Outro]
+Same river
+Always the same`,
+
+  "espiritual-mesma-agua/3": `[Verse]
+O mar e salgado
+Como os meus olhos
+Quando choro
+Nao invento agua nova
+Choro o mar antigo
+
+[Verse]
+A minha avo chorou este sal
+E a mae dela tambem
+Lagrimas velhas num rosto novo
+A agua nao esquece de onde vem
+
+[Chorus]
+Sal
+O que me arde nos olhos
+E o mesmo que flutua no mar
+Sal
+Nao ha lagrima sozinha
+Ha um oceano a chorar
+
+[Bridge]
+Se a tua dor tem gosto
+Poe na lingua
+E o sabor de todas nos
+
+[Outro]
+Sal
+O mais antigo
+Dos lacos`,
+
+  "espiritual-mesma-agua/4": `[Verse]
+Every creek feeds a river
+Every river finds the sea
+And the sea becomes the rain
+That falls on you and me
+
+[Verse]
+I thought I was a puddle
+Stuck and going nowhere
+But a puddle is a sky
+Reflected without knowing
+
+[Chorus]
+Tributary
+I'm a tributary
+You're a tributary
+Nobody flows alone
+Nobody flows alone
+
+[Bridge]
+The dance of meeting
+Where your current hits mine
+And we don't disappear
+We become wider
+
+[Outro]
+Tributary
+Flowing into something
+We can't see from here`,
+
+  "espiritual-mesma-agua/5": `[Verse]
+Ha um lugar onde o rio
+Para de ter nome
+Onde a agua doce beija o sal
+E nenhuma resiste
+
+[Verse]
+Toda a minha vida
+Tentei ser margem
+Segurar a agua
+Dar-lhe forma e direcao
+
+[Chorus]
+Desaguar
+E chegar ao lugar
+Onde ja nao controlas
+E o mar te aceita igual
+Desaguar
+E deixar de ser rio
+Para ser parte do mar
+
+[Bridge]
+Nao e morrer
+E alargar
+Perder o nome
+Ganhar o mar
+
+[Outro]
+Desaguar
+O principio e o fim
+Sao a mesma agua`,
+
+  // ─────────────────────────────────────────────
+  // ALBUM 17: ALEM DO NOME (the divine beyond naming)
+  // ─────────────────────────────────────────────
+
+  "espiritual-alem-nome/1": `[Verse]
+Disseram-me Deus
+E nao coube
+Disseram-me universo
+E soou a poster
+
+[Verse]
+Disseram-me energia
+E pensei em electricidade
+Disseram-me fonte
+E vi uma torneira
+
+[Chorus]
+Sem nome
+O que sinto nao tem nome
+E nao precisa
+O peito sabe
+Antes da boca tentar
+
+[Bridge]
+Se te nomeio
+Encolho-te
+Se te calo
+Sinto-te maior
+
+[Outro]
+Sem nome
+Fica assim
+Sem nome`,
+
+  "espiritual-alem-nome/2": `[Verse]
+Not God
+That word carries too many buildings
+Too many rules written by men
+Who never once asked my body what it knew
+
+[Verse]
+Not the universe
+That sounds like a poster
+In a waiting room
+Where nobody waits for anything real
+
+[Chorus]
+What's left
+When every name is taken off
+When every label falls
+What's left
+Is the thing itself
+And it doesn't need me
+To call it anything
+
+[Bridge]
+I stopped naming it
+And it got closer
+I stopped reaching
+And it arrived
+
+[Outro]
+Not God
+Not light
+Not energy
+Just this`,
+
+  "espiritual-alem-nome/3": `[Verse]
+Ha um buraco no centro
+De tudo o que sei
+Nao e falta
+Nao e ferida
+E espaco
+
+[Verse]
+Tentei encher com nomes
+Com livros com respostas
+Com altares improvisados
+Em cozinhas e em carros
+
+[Chorus]
+O buraco no meio
+Nao precisa de ser tapado
+Nao precisa de nome
+Nao precisa de mim
+So precisa de ficar
+Aberto
+
+[Bridge]
+Cabe tudo no vazio
+Se parares de ter medo dele
+O vazio nao e ausencia
+E o sitio onde cabe o que nao sabes
+
+[Outro]
+O buraco no meio
+E a porta`,
+
+  "espiritual-alem-nome/4": `[Verse]
+Antes de Deus
+Antes de palavra
+Antes do pensamento
+Formar a sua casca
+
+[Verse]
+Um som
+Que nao e som
+E vibracao no osso
+Antes do ouvido saber ouvir
+
+[Chorus]
+Hum
+O som de antes
+Hum
+O som de tudo
+Nao e canto nao e reza
+E o corpo a vibrar
+Com o que nao sabe dizer
+
+[Bridge]
+Fecha a boca
+Abre o peito
+O som sai por dentro
+Para dentro
+
+[Outro]
+Hum
+E tudo
+E nada
+E o nome antes dos nomes`,
+
+  // ─────────────────────────────────────────────
+  // ALBUM 18: RESPIRAR (breath as the most basic sacred act)
+  // ─────────────────────────────────────────────
+
+  "espiritual-respirar/1": `[Verse]
+O ar entra
+Nao porque eu mande
+Entra porque o corpo
+Ainda quer estar aqui
+
+[Verse]
+Cada inspiracao
+E um sim involuntario
+O corpo diz sim
+Antes de eu decidir
+
+[Chorus]
+Inspira
+Recebe o mundo inteiro
+Num gesto que nao pensas
+Inspira
+O ar nao te pergunta
+Se mereces
+
+[Bridge]
+Os pulmoes abrem
+Como maos
+A receber
+O que nao pediram
+
+[Outro]
+Inspira
+O milagre mais simples
+E o que fazes agora`,
+
+  "espiritual-respirar/2": `[Verse]
+Between the in
+And the out
+There is a room
+You've never visited
+
+[Verse]
+Hold it
+Not to control
+But to notice
+This sliver of stillness
+Between two movements
+
+[Chorus]
+Hold
+The space between breaths
+Where nothing happens
+And everything waits
+Hold
+Not forever
+Just long enough
+To feel the edge
+
+[Bridge]
+In this pause
+You are not breathing
+And you are not dying
+You are just
+Here
+
+[Outro]
+Hold
+And know
+The pause
+Is yours`,
+
+  "espiritual-respirar/3": `[Verse]
+O ar sai
+E leva
+O que eu segurava
+Sem saber
+
+[Verse]
+Expiro a conversa de ontem
+Expiro a raiva guardada na mandibula
+Expiro o medo que morava nos ombros
+Expiro e fico mais leve
+
+[Chorus]
+Expira
+Nao e perder
+E devolver
+O que nunca foi teu
+Expira
+O corpo sabe
+O que soltar
+
+[Bridge]
+Nao precisas de saber
+O que estas a largar
+O ar sabe
+Os pulmoes sabem
+Tu so precisas
+De deixar sair
+
+[Outro]
+Expira
+E confia
+No vazio que fica`,
+
+  "espiritual-respirar/4": `[Verse]
+Lungs tight
+Air thin
+The room too small
+The panic rising in
+
+[Verse]
+When the breath won't come
+The body screams
+Not in words
+In muscle in nerve in sweat
+
+[Chorus]
+Breathless
+Is the body begging
+For one more chance
+Breathless
+Is the proof
+You were never indifferent
+To being alive
+
+[Bridge]
+When air is taken
+You understand
+Every breath before
+Was a gift
+You never unwrapped
+
+[Outro]
+Breathless
+And still wanting
+One more`,
+
+  "espiritual-respirar/5": `[Verse]
+A noite toda
+Respirei sem querer
+O corpo trabalhou por mim
+Enquanto eu dormia
+
+[Verse]
+Nao mandei nos pulmoes
+Nao contei as vezes
+O peito subiu e desceu
+Como as mares
+
+[Chorus]
+Respiro
+Sem decidir
+O corpo sabe
+O corpo cuida
+Respiro
+E o ritmo mais velho
+Que tenho
+
+[Bridge]
+Se o corpo confia no ar
+E o ar confia no corpo
+Talvez eu possa confiar
+Em alguma coisa tambem
+
+[Outro]
+Respiro
+Nao porque mando
+Porque o corpo
+Ainda quer ficar`,
+
+  // ─────────────────────────────────────────────
+  // ALBUM 19: CINZA E SEMENTE (death and rebirth — compost spirituality)
+  // ─────────────────────────────────────────────
+
+  "espiritual-cinza-semente/1": `[Verse]
+Queimou
+Nao ha outra palavra
+O que era
+Ja nao e
+
+[Verse]
+Nao me pecam para ver beleza nisto
+A cinza nao e bonita
+Cheira a fim
+E o fim nao e poetico
+
+[Chorus]
+Queimou
+E eu fiquei de pe
+No meio do que sobrou
+Sem saber para onde ir
+Queimou
+E o chao ficou preto
+E os meus pes ficaram pretos
+E eu fiquei
+
+[Bridge]
+A verdade da cinza
+E que e quente
+Ainda queima
+Quem tenta tocar cedo demais
+
+[Outro]
+Queimou
+E isso e tudo
+Por agora
+E tudo`,
+
+  "espiritual-cinza-semente/2": `[Verse]
+The apple core
+Thrown behind the fence
+Is not garbage
+It is a conversation with the soil
+
+[Verse]
+What rots
+Becomes rich
+What falls apart
+Becomes the floor
+For something new to stand on
+
+[Chorus]
+Compost
+The ugly work of becoming
+Compost
+The smell of change
+That nobody wants to sit with
+But everything grows from
+
+[Bridge]
+You don't get flowers
+Without the stink
+You don't get fruit
+Without the rot
+That is the deal
+That is the whole deal
+
+[Outro]
+Compost
+Not pretty
+But honest
+And alive`,
+
+  "espiritual-cinza-semente/3": `[Verse]
+Debaixo da terra
+Onde ninguem ve
+Algo abre
+Devagar como um segredo
+
+[Verse]
+A semente nao sabe
+Que vai ser arvore
+So sabe que o escuro
+E onde precisa de estar
+
+[Chorus]
+Debaixo
+Onde ninguem aplaude
+Onde ninguem fotografa
+Debaixo
+O trabalho mais sagrado
+Acontece sem testemunhas
+
+[Bridge]
+Tens medo do escuro
+Mas o escuro
+E onde tudo comeca
+Raizes nao precisam de sol
+Para saber a direcao
+
+[Outro]
+Debaixo
+Confia
+O escuro sabe
+O que faz`,
+
+  "espiritual-cinza-semente/4": `[Verse]
+The first green
+Is almost nothing
+A tremble in the dirt
+A breath of colour
+So faint you might miss it
+
+[Verse]
+After the fire
+After the winter
+After the long silence
+Something ridiculous happens
+Life insists
+
+[Chorus]
+First green
+Fragile as a whisper
+Strong as a fist
+First green
+The audacity of growing
+When everything said stop
+
+[Bridge]
+It does not ask permission
+It does not check the forecast
+It simply pushes through
+Because that is what life does
+When left alone
+It returns
+
+[Outro]
+First green
+Not a miracle
+Just the world
+Refusing to stay empty`,
+
+  // ─────────────────────────────────────────────
+  // ALBUM 20: CHAMA ULTIMA (the eternal flame — what remains)
+  // ─────────────────────────────────────────────
+
+  "espiritual-chama-ultima/1": `[Verse]
+Tira o nome
+Tira o emprego
+Tira a morada
+E as roupas todas
+
+[Verse]
+Tira o cabelo
+Tira a historia
+Tira as pessoas
+Que dizem que te conhecem
+
+[Chorus]
+O que fica
+Quando nao sobra nada
+O que fica
+E o que sempre esteve
+Antes de tudo o que tiraram
+E o que nunca ninguem
+Conseguiu tocar
+
+[Bridge]
+Nao tenho medo
+De ficar nua
+Tenho medo
+De descobrir
+Que nua sou mais
+
+[Outro]
+Tira tudo
+E ve
+O que nao se tira`,
+
+  "espiritual-chama-ultima/2": `[Verse]
+An ember
+In the dark
+So small
+You'd miss it
+If you weren't looking
+With your hands
+
+[Verse]
+Not a blaze
+Not a bonfire
+Not a declaration
+Just a glow
+That refuses
+Quietly
+To go out
+
+[Chorus]
+Ember
+You thought you were finished
+Ember
+You thought the cold won
+But here you are
+Small and stubborn
+Warm to the touch
+
+[Bridge]
+You don't need to be a fire
+To matter
+You just need
+To still be warm
+When the morning comes
+
+[Outro]
+Ember
+Still here
+Still here`,
+
+  "espiritual-chama-ultima/3": `[Verse]
+Debaixo da pele
+Debaixo do musculo
+Debaixo da gordura e do medo
+Ha osso
+
+[Verse]
+O osso nao mente
+Nao se esconde
+Nao finge ser mais do que e
+E a estrutura que segura
+O que o mundo ve
+
+[Chorus]
+Osso
+O que es antes de tudo
+Osso
+O que restas depois de tudo
+A parte de ti
+Que nao se queima
+Que nao se dobra
+Que nao pede desculpa
+
+[Bridge]
+Se alguma vez duvidares
+Do que es
+Poe a mao no pulso
+E sente o osso
+Isso es tu
+Antes de teres nome
+
+[Outro]
+Osso
+O essencial
+Nao se veste`,
+
+  "espiritual-chama-ultima/4": `[Verse]
+They said the fire was out
+They said the night had won
+They counted the ashes
+And wrote their reports
+
+[Verse]
+But underneath
+Where nobody checked
+Something red
+Was still breathing
+
+[Chorus]
+Still burning
+After everything
+Still burning
+Not because I chose to
+But because the fire
+Doesn't know
+How to ask permission
+To stop
+
+[Bridge]
+They can take the wood
+They can take the air
+They can pour their water
+And I will burn
+Wet and stubborn
+And alive
+
+[Outro]
+Still burning
+That is not hope
+That is fact`,
+
+  "espiritual-chama-ultima/5": `[Verse]
+Nao e metafora
+Nao e imagem bonita
+A chama que sou
+E real como fome
+
+[Verse]
+Arde nas maos
+Quando toco o que importa
+Arde no peito
+Quando digo a verdade
+Arde nos olhos
+Quando finalmente vejo
+
+[Chorus]
+Chama
+Nao a que ilumina os outros
+Chama
+A que me queima primeiro a mim
+A que nao pedi
+A que nao controlo
+A que sou
+
+[Bridge]
+Se me apagares
+Acendo
+Se me enterrares
+Brilho no escuro
+A chama nao e escolha
+E o que resta
+Quando tudo o mais arde
+
+[Outro]
+Chama
+A ultima coisa
+Que restas
+Quando ja nao restas nada
+E a chama`,
 
 };
