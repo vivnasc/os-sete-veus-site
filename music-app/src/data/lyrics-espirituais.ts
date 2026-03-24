@@ -353,170 +353,181 @@ foste feita para isso`,
   // ALBUM 3: RITUAL (sacred in common gestures, coffee as ceremony)
   // ─────────────────────────────────────────────
 
-  "espiritual-ritual/1": `[Verse]
-A luz entra pela janela
-Antes de eu abrir os olhos
-O corpo ja esta acordado
-O mundo ainda nao
+  "espiritual-ritual/1": `[Verse 1]
+Antes do mundo entrar pela porta
+antes do primeiro ruido do dia
+Ha um gesto que so pertence a ti
+um silencio que ainda nao virou agonia
 
-[Verse]
-Ponho os pes no chao frio
-Devagar como quem pisa agua
-O primeiro gesto do dia
-E o mais honesto que tenho
+[Verse 2]
+A luz ainda nao sabe o teu nome
+os passos ainda nao tem destino
+E esse momento justo antes de tudo
+que guarda o fio mais fino
 
 [Chorus]
-Manha
-Antes do telefone
-Manha
-Antes do espelho
-Antes do mundo entrar
-Ha este momento
-So meu
-Descalca e quieta
-E inteira
+Manha, manha
+antes de seres de alguem
+Es so tua, so tua
+e isso e mais do que convem
+Descalca no chao frio
+antes que o dia te alcance
+A manha e o unico ritual
+que ninguem te pode tirar — e danca
 
 [Bridge]
-Ninguem ve o que faco
-Nos primeiros cinco minutos
+Ninguem ve o que fazes
+nos primeiros cinco minutos
 E por isso que sao sagrados
+e por isso que sao teus
 
 [Outro]
 A manha e minha
-Antes de ser de alguem`,
+antes de ser de alguem
+O corpo sabe disso
+antes da mente tambem`,
 
-  "espiritual-ritual/2": `[Verse]
+  "espiritual-ritual/2": `[Verse 1]
 The crust breaks in my hands
-Steam rises like a sigh
+steam rises like a sigh
 No altar no sacrament
-Just flour and fire and time
+just flour and fire and time
 
-[Verse]
-I set the table for one
-Or sometimes set for four
-Each plate placed with attention
+[Verse 2]
+I set the table slow
+each plate placed with attention
 Each glass a little door
+each fork a small invention
 
 [Chorus]
-Bread
-The oldest ritual
-Bread
-The simplest truth
-That nourishment is sacred
-That the hands that feed
-Are the hands that heal
-Bread
-Broken and shared
+Break it, break it
+bread between two hands
+Flour and fire and time together
+the simplest thing that understands
+Break it, break it
+the oldest ritual we know
+Nourishment is sacred
+when the hands that feed are slow
 
 [Bridge]
 You don't need wine
-You don't need a blessing
+you don't need a blessing
 Just the warmth of something baked
-And the willingness to eat it
+and the willingness to eat it
 
 [Outro]
 Break the bread
-That is the whole prayer`,
+that is the whole prayer
+Break the bread
+and know that you were there`,
 
-  "espiritual-ritual/3": `[Verse]
-A torneira abre
-A agua cai nas maos
-Fria primeiro depois morna
-Como uma historia que muda de tom
+  "espiritual-ritual/3": `[Verse 1]
+A torneira abre devagar
+a agua cai nas maos abertas
+Fria primeiro, depois morna
+como uma historia que desperta
 
-[Verse]
-Esfrego os dedos devagar
-Nao por estarem sujos
+[Verse 2]
+Esfrego os dedos sem pressa
+nao por estarem sujos de verdade
 Mas porque o gesto lava
-O que as maos fizeram
+o que as maos carregam da cidade
 
 [Chorus]
 Agua nas maos
-Lava o que passou
+lava o que passou
 Agua nas maos
-O gesto mais comum
-E a cerimonia
-Que ninguem ve
-Agua que leva
-O que ja nao preciso
+o gesto mais comum que se encontrou
+Ninguem ve a cerimonia
+de uma torneira a dar
+Agua que leva o dia
+e me devolve ao lugar
 
 [Bridge]
 As maos ficam molhadas
-E por um momento
-Nao seguram nada
-E isso e o bastante
+e por um momento
+nao seguram nada
+e isso e sacramento
 
 [Outro]
 Deixa a agua levar
-O que nao e teu para guardar`,
+o que nao era teu
+Deixa a agua pousar
+o que o dia te deu`,
 
-  "espiritual-ritual/4": `[Verse]
+  "espiritual-ritual/4": `[Verse 1]
+[Female]
 I stand before the door
-My hand upon the handle
-Not yet in not yet out
-Balanced on the edge
+my hand upon the handle
+Not yet in, not yet out
+balanced on a candle
 
-[Verse]
+[Verse 2]
+[Male]
 Every door I've ever crossed
-Changed what came after
+changed what came after
 The threshold doesn't care
-If I'm ready or I'm not
+if I bring grief or laughter
 
 [Chorus]
-Threshold
-Every entrance is a choice
-Threshold
-Every door a small death
-Of who you were
-Before you turned the handle
-And a birth
-Of who you'll be
-On the other side
+[Both]
+Threshold, threshold
+every door is passage
+Every step across the frame
+is a word in our own language
+Threshold, threshold
+nothing stays the same
+Once you cross you leave behind
+the person and the name
 
 [Bridge]
-Pause here
-Feel the frame beneath your fingers
+[Female]
+Pause here, feel the frame
+[Male]
 This is the last second
+[Both]
 Of the person walking in
+the last breath before the reckoning
 
 [Outro]
+[Both]
 Step through
-You are not the same
-As the one who stood outside`,
+you are not the same
+Step through
+nothing stays the same`,
 
-  "espiritual-ritual/5": `[Verse]
-Fecho os olhos
-E o mundo la fora
-Fica do lado de fora
-Onde pertence
+  "espiritual-ritual/5": `[Verse 1]
+Fecho os olhos e o mundo la fora
+fica do lado de fora onde pertence
+Nao e fuga — e o gesto mais honesto
+que o corpo faz quando a mente esquece
 
-[Verse]
-Atras das palpebras
-Ha um quarto que ninguem conhece
-Sem mobilia sem janela
-So eu e o meu silencio
+[Verse 2]
+Foste expulsa de tantos sitios
+de mesas, de casas, de conversas com dono
+Mas aqui dentro ninguem te expulsou
+aqui dentro ainda es teu proprio trono
 
 [Chorus]
+Fecho os olhos e volto
+ao unico lugar que me ficou
+Fecho os olhos e estou inteira
+sem espelho, sem mascara, sem dor
 Fecho os olhos
-E volto
-Ao unico lugar
-Que nunca me expulsou
-Fecho os olhos
-E estou inteira
-Sem espelho
-Sem testemunha
-Sem mascara
+e encontro quem la ficou
 
 [Bridge]
 O mundo pede-te aberta
-O ritual pede-te fechada
-So um momento
-So uma respiracao
+o ritual pede-te fechada
+So um momento, so uma respiracao
+e tu de volta — sem desconto, sem fachada
 
 [Outro]
 Fecho os olhos
-E encontro
-Quem la ficou a espera`,
+e encontro
+quem la ficou a espera
+Ainda es tu
+sem desconto`,
 
   // ─────────────────────────────────────────────
   // ALBUM 4: GRACA (receiving what you didn't earn, softening)
