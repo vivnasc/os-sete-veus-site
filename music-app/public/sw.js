@@ -20,7 +20,8 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL))
   );
-  // Do NOT skipWaiting() automatically — wait for user to accept the update
+  // Auto-update: skip waiting immediately so the new SW activates
+  self.skipWaiting();
 });
 
 self.addEventListener("activate", (event) => {
@@ -30,13 +31,6 @@ self.addEventListener("activate", (event) => {
     )
   );
   self.clients.claim();
-});
-
-// Listen for SKIP_WAITING message from the app
-self.addEventListener("message", (event) => {
-  if (event.data && event.data.type === "SKIP_WAITING") {
-    self.skipWaiting();
-  }
 });
 
 self.addEventListener("fetch", (event) => {
