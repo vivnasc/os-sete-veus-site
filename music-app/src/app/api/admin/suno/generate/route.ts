@@ -2,16 +2,16 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/admin-auth";
 
 /**
- * Gera musica via Suno API (wrapper de terceiros).
- * Env vars necessarias:
- *   SUNO_API_URL — base URL do provider (ex: https://api.sunoapi.org)
- *   SUNO_API_KEY — API key do provider
+ * Gera musica via API.box (apibox.erweima.ai) — wrapper Suno.
+ * Env vars:
+ *   SUNO_API_URL — base URL (ex: https://apibox.erweima.ai)
+ *   SUNO_API_KEY — Bearer token
  *
- * POST body: { prompt, lyrics?, instrumental?, title?, duration? }
+ * POST body: { prompt, lyrics?, instrumental?, title?, model? }
  *
- * Se lyrics estiver presente, usa o endpoint custom_generate (Suno Custom Mode)
- * que aceita letras formatadas com [Verse], [Chorus], etc.
- * Se nao, usa o endpoint generate (prompt-only mode).
+ * API.box usa um endpoint unico /api/v1/generate com customMode flag.
+ * Se lyrics estiver presente → customMode: true (prompt=lyrics, style=prompt)
+ * Se nao → customMode: false (prompt=descricao livre)
  */
 export async function POST(req: NextRequest) {
   const auth = await requireAdmin(req);
@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const { prompt, lyrics, instrumental, title, duration } = await req.json();
+    const { prompt, lyrics, instrumental, title, model } = await req.json();
 
     if (!prompt) {
       return NextResponse.json(
@@ -37,83 +37,64 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // If lyrics are provided, use custom_generate endpoint
-    // Otherwise use the standard generate endpoint
     const hasLyrics = lyrics && typeof lyrics === "string" && lyrics.trim().length > 0;
-    const baseEndpoint = hasLyrics ? "custom_generate" : "generate";
 
+    // API.box unified endpoint with customMode flag
     const body: Record<string, unknown> = {
-      wait_audio: false,
-      make_instrumental: instrumental ?? false,
+      customMode: hasLyrics,
+      instrumental: instrumental ?? false,
+      model: model || "V4",
     };
 
     if (hasLyrics) {
-      // Custom mode: prompt = style/genre tags, lyrics = actual song text
-      body.tags = prompt;
+      // Custom mode: prompt = lyrics, style = genre/style tags
       body.prompt = lyrics;
-      if (title) body.title = title;
+      body.style = prompt;
+      body.title = title || "Sem titulo";
     } else {
-      // Standard mode: prompt = free-form description
+      // Non-custom mode: prompt = free-form description
       body.prompt = prompt;
-      if (title) body.title = title;
     }
 
-    if (duration) body.duration = duration;
-
-    const jsonBody = JSON.stringify(body);
-    const headers = {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    };
-
-    // Try multiple endpoint paths (different Suno wrapper versions)
-    const paths = [
-      `/api/${baseEndpoint}`,
-      `/api/v1/${baseEndpoint}`,
-      `/v1/${baseEndpoint}`,
-      `/${baseEndpoint}`,
-    ];
-
-    let res: Response | null = null;
-    let lastError = "";
-
-    for (const path of paths) {
-      const url = `${apiUrl}${path}`;
-      const attempt = await fetch(url, { method: "POST", headers, body: jsonBody });
-      if (attempt.status !== 404) {
-        res = attempt;
-        break;
-      }
-      lastError = `${url} → 404`;
-    }
-
-    if (!res) {
-      return NextResponse.json(
-        { erro: `Suno API: nenhum endpoint encontrado. Ultimo tentado: ${lastError}. Verifica SUNO_API_URL.` },
-        { status: 502 }
-      );
-    }
+    const res = await fetch(`${apiUrl}/api/v1/generate`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
 
     if (!res.ok) {
       const text = await res.text();
       return NextResponse.json(
-        { erro: `Suno API (${baseEndpoint}): ${res.status} — ${text}` },
+        { erro: `Suno API: ${res.status} — ${text}` },
         { status: 500 }
       );
     }
 
     const data = await res.json();
 
-    // Most providers return an array of generated clips
-    // Each clip has: id, status, audio_url, etc.
-    const clips = Array.isArray(data) ? data : data.data || data.clips || [data];
+    // API.box returns { code: 200, data: { taskId, sunoData: [...] } }
+    if (data.code && data.code !== 200) {
+      return NextResponse.json(
+        { erro: `Suno API code ${data.code}: ${data.msg || JSON.stringify(data)}` },
+        { status: 500 }
+      );
+    }
+
+    const taskId = data.data?.taskId || data.taskId;
+    const sunoData = data.data?.sunoData || data.data || [];
+    const clips = Array.isArray(sunoData) ? sunoData : [sunoData];
 
     return NextResponse.json({
+      taskId,
       clips: clips.map((c: Record<string, unknown>) => ({
-        id: c.id,
+        id: c.id || taskId,
         status: c.status || "processing",
-        audioUrl: c.audio_url || null,
+        audioUrl: c.audioUrl || c.audio_url || c.streamAudioUrl || null,
         title: c.title || title || "",
+        duration: c.duration || null,
       })),
     });
   } catch (err: unknown) {

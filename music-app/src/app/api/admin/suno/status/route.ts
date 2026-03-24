@@ -2,9 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/admin-auth";
 
 /**
- * Verifica o estado de clips Suno em geracao.
- * GET ?ids=id1,id2
- * Retorna: { clips: [{ id, status, audioUrl }] }
+ * Verifica o estado de clips Suno em geracao (API.box / apibox.erweima.ai).
+ * GET ?ids=taskId1,taskId2
+ *
+ * API.box usa /api/v1/generate/record-info?taskId=XXX
+ * Retorna: { clips: [{ id, status, audioUrl, title, duration }] }
  */
 export async function GET(req: NextRequest) {
   const auth = await requireAdmin(req);
@@ -29,28 +31,59 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const res = await fetch(`${apiUrl}/api/get?ids=${ids}`, {
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-      },
-    });
+    const taskIds = ids.split(",").map(s => s.trim()).filter(Boolean);
+    const allClips: Record<string, unknown>[] = [];
 
-    if (!res.ok) {
-      const text = await res.text();
-      return NextResponse.json(
-        { erro: `Suno API: ${res.status} — ${text}` },
-        { status: 500 }
-      );
+    for (const taskId of taskIds) {
+      // API.box status endpoint
+      const res = await fetch(`${apiUrl}/api/v1/generate/record-info?taskId=${taskId}`, {
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+        },
+      });
+
+      if (!res.ok) {
+        // Try legacy endpoint as fallback
+        const legacyRes = await fetch(`${apiUrl}/api/get?ids=${taskId}`, {
+          headers: { Authorization: `Bearer ${apiKey}` },
+        });
+
+        if (legacyRes.ok) {
+          const legacyData = await legacyRes.json();
+          const items = Array.isArray(legacyData) ? legacyData : legacyData.data || [legacyData];
+          allClips.push(...items);
+          continue;
+        }
+
+        continue;
+      }
+
+      const data = await res.json();
+
+      // API.box returns { code: 200, data: { taskId, sunoData: [...], status } }
+      const record = data.data || data;
+      const sunoData = record.sunoData || record.suno_data || [];
+      const items = Array.isArray(sunoData) ? sunoData : [sunoData];
+
+      if (items.length > 0) {
+        allClips.push(...items);
+      } else {
+        // If no sunoData yet, return the task itself with its status
+        allClips.push({
+          id: taskId,
+          status: record.status || "processing",
+          audioUrl: null,
+          title: record.title || "",
+          duration: null,
+        });
+      }
     }
 
-    const data = await res.json();
-    const clips = Array.isArray(data) ? data : data.data || data.clips || [data];
-
     return NextResponse.json({
-      clips: clips.map((c: Record<string, unknown>) => ({
-        id: c.id,
-        status: c.status || "unknown",
-        audioUrl: c.audio_url || null,
+      clips: allClips.map((c: Record<string, unknown>) => ({
+        id: c.id || "",
+        status: mapStatus(c.status as string),
+        audioUrl: c.audioUrl || c.audio_url || c.streamAudioUrl || null,
         title: c.title || "",
         duration: c.duration || null,
       })),
@@ -62,4 +95,14 @@ export async function GET(req: NextRequest) {
       { status: 500 }
     );
   }
+}
+
+/** Map API.box status to our standard statuses */
+function mapStatus(status: string | undefined): string {
+  if (!status) return "processing";
+  const s = status.toLowerCase();
+  if (s === "complete" || s === "completed" || s === "done") return "complete";
+  if (s === "error" || s === "failed") return "error";
+  if (s === "text" || s === "first" || s === "processing" || s === "pending") return "processing";
+  return s;
 }
