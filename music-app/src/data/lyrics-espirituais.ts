@@ -11,345 +11,343 @@ export const ESPIRITUAL_LYRICS: Record<string, string> = {
   // ALBUM 1: ORACAO SEM PALAVRAS (when words don't reach, the body prays)
   // ─────────────────────────────────────────────
 
-  "espiritual-oracao/1": `[Verse]
-O ar entra pelos labios
-Antes da primeira palavra
-O peito sobe devagar
-Como quem reza sem saber
+  "espiritual-oracao/1": `[Verse 1]
+Antes de haver palavra
+ha um peito que se fecha
+O ar nao quer entrar
+a noite nao arrefece
 
-[Verse]
-Nao ha texto nao ha livro
-So o corpo e o seu cansaco
-A boca abre e nao sai voz
-Sai so o peso de um abraco
+[Verse 2]
+Deito no chao de pedra
+os ossos pedem tudo
+Nao ha o que pedir
+so este corpo rude
 
 [Chorus]
 Respira
-Antes da linguagem
+antes do nome que tens
 Respira
-Antes do pensamento
-O corpo ja sabia rezar
-Antes de tu lhe dares nome
+antes do que ainda vens
+O peito e o templo
+a lingua pode calar
 Respira
-E isso basta
+que isso ja e rezar
 
 [Bridge]
-Os pulmoes nao precisam de fe
-Precisam de ar
-E o ar vem
-Sempre vem
+Nao ha altar mais limpo
+do que um pulmao cansado
+Nao ha oracao mais honesta
+do que um corpo deitado
 
 [Outro]
-Respira
-A oracao mais velha
-E a que nao tem palavras`,
+Antes de haver palavra
+ha um peito que se abre
+O ar quer entrar agora
+a noite ja e madre`,
 
-  "espiritual-oracao/2": `[Verse]
-My palms are open
-Facing up like two small boats
-Carrying nothing
-But the weight of what I hope
+  "espiritual-oracao/2": `[Verse 1]
+I opened my hands at dawn
+not asking, not reaching far
+Just holding the open air
+the way you'd hold a scar
 
-[Verse]
+[Verse 2]
 I don't know who I'm asking
 I don't know who receives
-But something in my hands
-Remembers how to grieve
+But something in my palms
+remembers how to grieve
 
 [Chorus]
-Hands
-Open hands
-Receiving nothing
-And everything at once
-Hands
-That held too tight
-Now learning
-How to simply hold the air
+These hands have held too tightly
+these hands have learned to break
+Now open on the altar
+of all I cannot take
+Receiving what I'm given
+releasing what I own
+These hands, these empty hands
+are not alone
 
 [Bridge]
-The emptiness between my fingers
-Is not absence
-It is space
-For what I cannot name to land
+Nothing and everything
+land the same in open palms
+Nothing and everything
+sound the same as the sacred calls
 
 [Outro]
-My hands are open
-That is all I know
-That is all I need`,
+I closed my hands at evening
+not finished, not afraid
+Just hands that had been open
+and knew what prayer was made`,
 
-  "espiritual-oracao/3": `[Verse]
-Nao e submissao
-E escolha
-Os joelhos dobram porque o corpo
-Ja nao aguenta ser tao alto
+  "espiritual-oracao/3": `[Verse 1]
+Dobro os joelhos por vontade
+nao por peso que me forca
+Este chao frio e firme
+recebe o que me encorpa
 
-[Verse]
-Nao ha templo nao ha chao sagrado
-So estas pernas que cedem
-E esta testa que toca a terra
-Como quem beija o que resta
+[Verse 2]
+Nao me humilhei a ninguem
+nao curvei a cabeca em vao
+Dobrar os joelhos e diferente
+quando a escolha e minha mao
 
 [Chorus]
-De joelhos
-Nao por fraqueza
-De joelhos
-Por decisao
-O chao recebe-me
-Sem pedir explicacao
-De joelhos
-A gravidade e gentil
-Quando escolhes descer
+De joelhos e inteira
+de joelhos e de pe
+Ha uma dignidade serena
+em saber o que se e
+Baixei porque quis baixar
+levantarei quando for
+De joelhos e onde aprendo
+o nome do meu valor
 
 [Bridge]
-A dignidade nao esta de pe
-A dignidade esta
-Onde o corpo decide ficar
+Nao e fraqueza nenhuma
+e a forca que recolhe
+Nao e rendicao ao medo
+e o medo que se acolhe
 
 [Outro]
-Escolho o chao
-E o chao segura-me`,
+Dobro os joelhos por vontade
+e o chao recebe bem
+De joelhos, inteira, quieta
+sou de mim o que me convem`,
 
-  "espiritual-oracao/4": `[Verse]
-I stopped asking
-And the room got still
-Not empty still
-But full the way a lung
-Is full before the breath comes out
+  "espiritual-oracao/4": `[Verse 1]
+There is a place no clock can find
+between the in and out
+A country with no language yet
+before belief, before doubt
 
-[Verse]
+[Verse 2]
 No voice no sign no light
-Just the hum beneath the floor
+just the hum beneath the floor
 The warmth behind my sternum
-That was always there before
+that was always there before
 
 [Chorus]
-The space between my breaths
-Is where the answer lives
-Not in words
-Not in proof
-In the pause
-Where my body softens
-And something holds me
-Without hands
+The space between the breaths
+is where the sacred lives
+Not in the asking or the answer
+but the pause the body gives
+I am most alive right now
+right here, between the two
+The space between the breaths
+is where I find what's true
 
 [Bridge]
-I was waiting for thunder
-But the answer was a whisper
-So quiet I had to stop
-Everything to hear it
+Hold it just a moment
+hold it just right here
+The universe contracted
+to the space between the fear
 
 [Outro]
-The answer came
-In silence
-The answer came
-In warmth`,
+There is a place no clock can find
+and I have been there now
+The space between the breaths
+is my cathedral and my vow`,
 
-  "espiritual-oracao/5": `[Verse]
-Nao pertence a ninguem
-Este amem que sai do peito
-Nao e de igreja nem mesquita
-Nao e bonito nem perfeito
+  "espiritual-oracao/5": `[Verse 1]
+Nao disse amem com a boca
+nao levantei a voz
+O corpo disse amem por mim
+foi mais honesto dos dois
 
-[Verse]
-E o som que o corpo faz
-Quando aceita o que nao sabe
-Quando os ossos dizem sim
-Antes da boca abrir a chave
+[Verse 2]
+Os ombros desceram sozinhos
+quando a tensao se soltou
+As maos tremeram um instante
+foi o amem que ficou
 
 [Chorus]
 Amem do corpo
-Nao se diz — sente-se
-Amem do corpo
-Nos joelhos que dobram
-No peito que abre
-Na garganta que larga
-O que segurava
-Amem sem dono
-Amem de todos
+amem da carne viva
+Amem que nao se diz
+mas que nao morre nem deriva
+Nao preciso de palavras
+para o sagrado sentir
+O corpo e o amem que fica
+quando tudo vai partir
 
 [Bridge]
-O corpo inteiro vibra
-Como uma corda tocada
-Por dentro
-Sem mao nenhuma
+Antes da lingua ja havia fe
+antes da lingua o corpo ja rezava em pe
+Nao com palavras — com pulso e com pele
+nao com doutrina — com o peso que nao doi mais nele
 
 [Outro]
-Amem
-Nao e o fim
-E o comeco do que nao precisa
-De ser dito`,
+Nao disse amem com a boca
+mas disse com o ser
+O corpo tem um idioma
+e e o primeiro a responder`,
 
   // ─────────────────────────────────────────────
   // ALBUM 2: SAGRADO SELVAGEM (divine in storm, earth, animal body)
   // ─────────────────────────────────────────────
 
-  "espiritual-sagrado-selvagem/1": `[Verse]
+  "espiritual-sagrado-selvagem/1": `[Verse 1]
 Os pes afundam na lama
-O barro sobe entre os dedos
-O chao nao e limpo
-O chao e real
+o barro sobe entre os dedos
+Nao ha templo mais antigo
+do que este chao sem segredos
 
-[Verse]
-Aqui nao ha mosaico
-Nao ha marmore nem flor
-Ha raiz que rebenta pedra
-Ha terra que cheira a suor
-
-[Chorus]
-Terra
-O sagrado esta na lama
-Terra
-O divino esta no barro
-Onde os pes se afundam
-O corpo sabe
-Que pertence a algum lugar
-
-[Bridge]
-A terra nao precisa de permissao
-Para ser santa
-Basta que os teus pes
-A toquem com verdade
-
-[Outro]
-Descalca
-Com lama nos pes
-Finalmente em casa`,
-
-  "espiritual-sagrado-selvagem/2": `[Verse]
-The rain hits my face
-Like a fist made of water
-I don't run
-I don't cover my head
-
-[Verse]
-The prayer in the calm
-Was practice
-The prayer in the storm
-Is real
+[Verse 2]
+A chuva fez este caminho
+as raizes abriram a pedra
+Nao precisas de altar nem cantico
+ajoelha aqui — a terra e sagrada
 
 [Chorus]
-Storm prayer
-Not after the thunder
-Storm prayer
-In the middle of the flood
-With water in my lungs
-And wind against my chest
-This is where I find
-What the quiet couldn't teach
+Terra, terra, tens o meu nome
+feito de argila, feito de sal
+Terra, terra, tu es o corpo
+antes de qualquer sinal
 
 [Bridge]
-The lightning doesn't wait
-For you to be ready
-Neither does the sacred
-It comes when it comes
+Nao e medo que me dobra ao chao
+e reconhecimento, e fidelidade
+Esta terra ja me conhecia
+antes de eu saber a minha identidade
 
 [Outro]
-I pray louder
-When the rain is louder
-And the sky
-Prays back`,
+Enterro os pes
+e fico
+Aqui e sagrado
+aqui e real`,
 
-  "espiritual-sagrado-selvagem/3": `[Verse]
-Antes do pensamento
-Ha o cheiro
-Antes da palavra
-Ha o pelo que se arrepia
+  "espiritual-sagrado-selvagem/2": `[Verse 1]
+[Female]
+I don't pray when the storm has passed
+I pray when the thunder shakes the frame
+When lightning splits the old oak open
+I call your name into the flame
 
-[Verse]
-O bicho dentro de mim
-Sabe coisas que eu esqueci
-Sabe quando e perigo
-Sabe quando e amor
-Sem precisar de traduzir
+[Verse 2]
+[Male]
+I am the pressure building under
+the charge that breaks before the rain
+I cannot soften what I carry
+I am the force inside the vein
 
 [Chorus]
-Bicho
-O animal que mora aqui
-Bicho
-Debaixo da educacao
-Debaixo do nome
-Debaixo da roupa
-Ha uma criatura
-Que nunca se perdeu
+[Both]
+We don't pray for shelter
+we pray inside the storm
+Not asking it to leave us
+but asking to be born
 
 [Bridge]
-O corpo reage antes
-O estomago sabe antes
-Os pelos sabem antes
-Tu es o ultimo a saber
+[Female]
+Tell me how you hold this fury
+[Male]
+Tell me how you stay and pray
+[Both]
+We are the storm and the devotion
+we are the dark before the day
 
 [Outro]
-Confia no bicho
-Ele nunca te mentiu`,
+[Female]
+Still here
+[Male]
+Still burning
+[Both]
+This is the prayer
+this is the turning`,
 
-  "espiritual-sagrado-selvagem/4": `[Verse]
-No shoes no armour
-Just the sole of my foot
-And the skin of the earth
-Having a conversation
+  "espiritual-sagrado-selvagem/3": `[Verse 1]
+Ha uma coisa em mim que sabe antes
+que fareja o perigo e o desejo igual
+Nao aprendeu em livro nenhum
+e mais velho do que qualquer sinal
 
-[Verse]
-Every stone a letter
-Every root a sentence
-The ground is not flat
-It is speaking
+[Verse 2]
+Quando o corpo se fecha sem razao
+quando os cabelos da nuca se erguem
+O bicho ja leu o que a mente nega
+e move-se antes de tu o entenderes
 
 [Chorus]
-Barefoot
-Skin on earth
-Barefoot
-Nothing between
-My nerve endings
-And the world
-Barefoot
-Vulnerable as a prayer
-Real as dirt
+Bicho, bicho, nao me envergonhes
+Bicho, bicho, tu es o que sou
+Antes da palavra, antes da mascara
+eras tu que me guardava, foste tu que me salvou
 
 [Bridge]
-My shoes were walls
-Between me and the ground
-Now the ground knows my name
-And I know its temperature
+Nao te domino, nao te destruo
+aprendo a ouvir-te antes de agir
+O bicho nao e o que me perde
+e o que me impede de me perder a fingir
 
 [Outro]
-Walk slowly
-The earth is listening
-To your feet`,
+Escuta
+o bicho sabe
+Escuta
+antes de falar`,
 
-  "espiritual-sagrado-selvagem/5": `[Verse]
-Ha um fogo ca dentro
-Que nao queima a casa
-Arde no peito
-E ilumina a sala
+  "espiritual-sagrado-selvagem/4": `[Verse 1]
+No shoes between my skin and stone
+no layer left to soften what is real
+The soles of feet have their own knowing
+a different kind of sight, a different kind of feel
 
-[Verse]
-Nao e raiva nao e furia
-E a chama que aquece
-O que o medo arrefeceu
-O que o silencio escureceu
+[Verse 2]
+I used to armour every surface
+protect myself from gravel, root and cold
+But armour doesn't let you feel the living
+and I was getting numb inside the fold
 
 [Chorus]
-Fogo dentro
-Nao destrue — acende
-Fogo dentro
-Nao consome — revela
-Arde no centro do peito
-Onde a voz comeca
-E o medo acaba
-Fogo dentro
-Sagrado e selvagem
+Barefoot on the morning ground
+barefoot where the roots come through
+Nothing between me and what is holy
+nothing between the earth and what is true
 
 [Bridge]
-Deixa arder
-Nao tenhas medo do calor
-O fogo que vem de dentro
-Nao deixa cinza — deixa luz
+To walk without protection is not reckless
+it's choosing to be present to the place
+To let the ground receive your full attention
+to meet the world with your unguarded face
 
 [Outro]
-Ardo
-E nao me consumo
-Ardo
-E finalmente vejo`,
+One step then another
+the ground holds
+the ground holds`,
+
+  "espiritual-sagrado-selvagem/5": `[Verse 1]
+Ha um fogo em mim que nao e raiva
+nao e febre, nao e destruicao
+E o que fica quando tiras tudo
+a brasa quieta no centro do coracao
+
+[Verse 2]
+Tentei apaga-lo com o medo
+tentei abafa-lo com a vergonha e o sim
+Mas ele sobreviveu a todas as cinzas
+sempre voltou, sempre voltou a mim
+
+[Chorus]
+Fogo dentro, fogo sagrado
+que nao consome, que nao mente, que nao some
+Fogo dentro, fogo que espera
+mais antigo do que o meu proprio nome
+
+[Verse 3]
+As que vieram antes de mim
+tambem carregaram esta chama escondida
+Cosiram-na nas bainhas das saias
+passaram-na de mao em mao, de vida em vida
+
+[Bridge]
+Nao preciso de altar para arderes
+nao preciso de permissao para brilhar
+O sagrado nao vive na altura
+vive aqui, vive agora, vive no lugar
+
+[Outro]
+Arde
+nao te apagues
+Arde
+foste feita para isso`,
 
   // ─────────────────────────────────────────────
   // ALBUM 3: RITUAL (sacred in common gestures, coffee as ceremony)
