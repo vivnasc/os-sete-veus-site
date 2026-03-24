@@ -56,14 +56,22 @@ export async function POST(req: NextRequest) {
       body.prompt = prompt;
     }
 
-    const res = await fetch(`${apiUrl}/api/v1/generate`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
+    const jsonBody = JSON.stringify(body);
+    const headers = {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    };
+
+    // Try primary endpoint, fallback to alternative
+    let res = await fetch(`${apiUrl}/api/v1/generate`, {
+      method: "POST", headers, body: jsonBody,
     });
+
+    if (res.status === 404) {
+      res = await fetch(`${apiUrl}/api/suno/submit/music`, {
+        method: "POST", headers, body: jsonBody,
+      });
+    }
 
     if (!res.ok) {
       const text = await res.text();

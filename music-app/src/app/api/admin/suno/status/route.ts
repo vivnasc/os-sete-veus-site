@@ -43,15 +43,27 @@ export async function GET(req: NextRequest) {
       });
 
       if (!res.ok) {
-        // Try legacy endpoint as fallback
-        const legacyRes = await fetch(`${apiUrl}/api/get?ids=${taskId}`, {
+        // Try alternative endpoint /api/suno/fetch
+        const altRes = await fetch(`${apiUrl}/api/suno/fetch?taskId=${taskId}`, {
           headers: { Authorization: `Bearer ${apiKey}` },
         });
 
-        if (legacyRes.ok) {
-          const legacyData = await legacyRes.json();
-          const items = Array.isArray(legacyData) ? legacyData : legacyData.data || [legacyData];
-          allClips.push(...items);
+        if (altRes.ok) {
+          const altData = await altRes.json();
+          const altRecord = altData.data || altData;
+          const altSuno = altRecord.response?.sunoData || altRecord.sunoData || [];
+          const altItems = Array.isArray(altSuno) ? altSuno : [altSuno];
+          if (altItems.length > 0) {
+            allClips.push(...altItems);
+          } else {
+            allClips.push({
+              id: taskId,
+              status: altRecord.status || "processing",
+              audioUrl: null,
+              title: "",
+              duration: null,
+            });
+          }
           continue;
         }
 
