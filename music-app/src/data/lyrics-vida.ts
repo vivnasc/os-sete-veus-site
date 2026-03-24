@@ -1777,4 +1777,331 @@ E o sabor de depois da dor
 Chorei tudo
 E agora sinto fome de viver`,
 
+
+  // ─────────────────────────────────────────────
+  // LAVA QUIETA (raiva contida, fogo por dentro)
+  // ─────────────────────────────────────────────
+
+  "vida-lava-quieta/1": `[Verse 1]
+A garganta fecha em torno das palavras
+O maxilar aperta ate doer
+Engulo o fogo como engulo as magoas
+E sinto-o arder
+
+[Verse 2]
+O estomago segura o que a boca recusa
+O corpo e a prisao da minha voz
+A raiva e tao educada e tao reclusa
+Que ninguem sabe o que ha entre nos
+
+[Chorus]
+Engolir
+O grito que desce de volta
+Engolir
+E a violencia mais oculta
+O silencio que nao e paz
+E a jaula mais elegante
+A raiva que o corpo traz
+E que ninguem ve por diante
+
+[Outro]
+Engoli outra vez
+Engoli outra vez`,
+
+  "vida-lava-quieta/2": `[Verse 1]
+Beneath the ash the embers glow
+A steady heat that no one sees
+I smile above, I burn below
+The surface cool, the centre seize
+
+[Verse 2]
+My hands are still beneath the table
+My voice is measured, even, kind
+But underneath I am a fable
+Of fire the polite refuse to find
+
+[Chorus]
+Smolder, smolder
+Beneath the calm exterior
+Smolder, smolder
+The surface is inferior
+To what burns underneath
+The years of swallowed flame
+I clench my jaw, I grit my teeth
+And no one knows my name is rage
+
+[Outro]
+Burning, still burning
+Beneath the smile`,
+
+  "vida-lava-quieta/3": `[Verse 1]
+O punho fecha dentro do bolso
+As unhas marcam meias-luas na palma
+O pe bate debaixo da mesa feito louco
+E ninguem ve a tempestade na alma
+
+[Verse 2]
+O corpo vibra numa frequencia
+Que so eu consigo ouvir
+A raiva tem paciencia
+Quando nao a deixam sair
+
+[Chorus]
+O punho
+Fechado onde ninguem ve
+O punho
+E a raiva de quem nao cre
+Que um dia vai ter licenca
+Para abrir a mao
+O punho e a sentenca
+De quem guarda a explosao
+
+[Outro]
+Abre a mao
+Abre a mao`,
+
+  "vida-lava-quieta/4": `[Verse 1]
+The tunnel narrows, vision blurs
+The blood rushes from chest to face
+My hands are shaking, not from nerves
+But from the voltage of this place
+
+[Verse 2]
+I see in red, I breathe in red
+The colour fills me like a flood
+Every word I should have said
+Is boiling in my blood
+
+[Chorus]
+Red, everything red
+The body full of fire
+Red, like the unsaid
+Like a building on a pyre
+Not a colour but a heat
+A frequency, a state
+The moment where the heartbeat
+Can no longer sit and wait
+
+[Outro]
+Red
+I am red`,
+
+  "vida-lava-quieta/5": `[Verse 1]
+A boca abre como uma represa
+A primeira palavra sai a tremer
+Depois vem o rio, a surpresa
+De ouvir a minha propria voz a arder
+
+[Verse 2]
+De pe na cozinha eu digo tudo
+O que guardei debaixo dos anos
+A voz treme mas nao e muda
+E os ombros largam os seus enganos
+
+[Chorus]
+Dizer
+Finalmente dizer o que engoli
+Dizer
+A voz que eu escondi
+Nao e calma, nao e gentil
+Mas e minha e e real
+Cada palavra e um projétil
+De verdade sem igual
+
+[Bridge]
+Os ombros descem a cada frase
+A coluna endireita o que curvou
+Dizer e a base
+De quem finalmente se encontrou
+
+[Outro]
+Disse
+Finalmente disse`,
+
+  "vida-lava-quieta/6": `[Verse 1]
+The breath slows down, the hands unclench
+The room comes back in shapes and lines
+The fury cools upon the bench
+Like lava cooling into vines
+
+[Verse 2]
+The clarity that follows rage
+Is sharper than a winter's knife
+I read the world like a new page
+With eyes washed clean by fire and life
+
+[Chorus]
+The cooling, the cooling
+Rage becomes the glass
+The cooling, no fooling
+This clarity will last
+Not the absence of the flame
+But its transformation into sight
+I see everything the same
+But nothing hides from this new light
+
+[Outro]
+Clear now
+Crystal clear`,
+
+  // ─────────────────────────────────────────────
+  // ANCORA (ansiedade, panico, chao)
+  // ─────────────────────────────────────────────
+
+  "vida-ancora/1": `[Verse 1]
+O peito fecha como uma gaiola
+As costelas apertam o ar
+O chao desaparece, nao consola
+As maos procuram onde agarrar
+
+[Verse 2]
+O suor frio corre pelas costas
+O coracao bate nos ouvidos
+O mundo gira e as respostas
+Estao todas perdidas nos sentidos
+
+[Chorus]
+O aperto
+O chao que some debaixo de mim
+O aperto
+O corpo que grita por um fim
+A solidao do panico
+E a pior que ha
+Dentro do meu organico
+Ninguem me vai buscar
+
+[Outro]
+Respira
+So respira`,
+
+  "vida-ancora/2": `[Verse 1]
+Bare feet find the floor beneath the fear
+The tile is cold, the wood is real
+The ground that seemed to disappear
+Is underneath me, cool as steel
+
+[Verse 2]
+I press my weight into the earth
+My heels dig down, my toes spread wide
+The body finds its second birth
+In gravity it cannot hide
+
+[Chorus]
+Ground, find the ground
+It's underneath the shaking
+Ground, feel the ground
+The earth is not forsaking
+Solid and slow
+The floor remembers you
+Let the body know
+The ground will see you through
+
+[Outro]
+I found the ground
+It was here all along`,
+
+  "vida-ancora/3": `[Verse 1]
+Cinco coisas que eu vejo agora
+A cortina azul, a fenda no tecto
+Quatro coisas que a pele explora
+O tecido da cadeira, o metal directo
+
+[Verse 2]
+Tres sons que entram nos ouvidos
+O relogio, a rua, o meu respirar
+Dois cheiros que ficam perdidos
+O cafe, o sabao a brilhar
+
+[Chorus]
+Cinco sentidos
+A ancora que me traz de volta
+Cinco sentidos
+A porta que se abre e nao se solta
+O real e o que eu toco
+O real e o que eu vejo
+Nao preciso de mais nada pouco
+So a certeza deste azulejo
+
+[Outro]
+Cinco, quatro, tres, dois
+Estou aqui`,
+
+  "vida-ancora/4": `[Verse 1]
+The chair holds me, the clock still ticks
+The air comes in and goes back out
+My fingers are no longer bricks
+My chest begins to open out
+
+[Verse 2]
+Just here, just now, just this one room
+Just this one breath, just this one chair
+The panic lifts its heavy gloom
+And I discover I am here
+
+[Chorus]
+Here, just here
+Nothing else is needed now
+Here, just here
+The body teaches how
+To be exactly where I am
+Without the weight of where I'm not
+To drop the should, to drop the plan
+And hold what I have already got
+
+[Outro]
+Here
+Just here`,
+
+  "vida-ancora/5": `[Verse 1]
+No bolso ha uma pedra lisa
+Que o polegar conhece de cor
+A superficie e uma divisa
+Entre o panico e o amor
+
+[Verse 2]
+Atravesso a multidao com ela
+A mao fechada no segredo
+A pedra quente e a minha estrela
+A minha ancora contra o medo
+
+[Chorus]
+Pedra no bolso
+O chao que levo comigo
+Pedra no bolso
+O meu mais antigo abrigo
+Quando o mundo gira demais
+A mao encontra a pedra
+E o corpo sabe que e capaz
+De nao se desfazer em pedra
+
+[Outro]
+A pedra esta aqui
+Eu estou aqui`,
+
+  "vida-ancora/6": `[Verse 1]
+Both feet on the floor, the weight is even
+My shoulders back, my spine is mine
+The ground is real, I have a reason
+To trust the world beneath this line
+
+[Verse 2]
+The shaking stopped, the breath is deep
+My hands are warm, my jaw is loose
+The body found the ground to keep
+And I have nothing left to lose
+
+[Chorus]
+Solid, solid
+The ground is back, it holds
+Solid, solid
+My body knows, unfolds
+I survived the shaking
+I am standing still
+The earth is not forsaking
+The woman on this hill
+
+[Outro]
+Solid ground
+I am solid ground`,
+
 };
