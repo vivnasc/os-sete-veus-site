@@ -606,75 +606,84 @@ Not broken — open
 Something that can finally bend
 toward the light`,
 
-  "espiritual-graca/3": `[Verse]
-Estou de pe no meio de nada
-E comeca a chover
-Nao chuva de tempestade
-Chuva de quem cuida de mim
-
-[Verse]
-Nao me mexo nao fujo
-Abro os bracos
-E deixo a agua escorrer
-Pelo cabelo pelas maos pelo peito
+  "espiritual-graca/3": `[Verse 1]
+[Female] Estou de pe no meio do vazio
+os bracos caidos ao lado do corpo
+Nao rezei nao pedi nao chamei
+mas ouvi a tua voz no contorno
 
 [Chorus]
-Cai sobre mim
-O que eu nunca soube pedir
-Cai sobre mim
-O que eu nunca soube receber
-A graca nao espera convite
-Cai como chuva
-No justo e no perdido
-E eu estou aqui
-De bracos abertos
-A deixar-me molhar
+[Both] Cai sobre mim
+[Male] como chuva que ninguem convocou
+[Female] Cai sobre mim
+[Male] sou a voz que o silencio mandou
+[Both] A graca nao escolhe o merecido
+cai no justo e no perdido
+Cai — e eu abro os bracos
+e deixo-me molhar
+
+[Verse 2]
+[Male] Sou a chuva que nao pede licenca
+que molha o que estava seco por dentro
+Nao vim castigar nem recompensar
+so cair — e isso e o meu intento
+
+[Chorus]
+[Both] Cai sobre mim
+[Male] como chuva que ninguem convocou
+[Female] Cai sobre mim
+[Male] sou a voz que o silencio mandou
+[Both] A graca nao escolhe o merecido
+cai no justo e no perdido
+Cai — e eu abro os bracos
+e deixo-me molhar
 
 [Bridge]
-A chuva nao escolhe
-Onde cair
-So cai
-E o chao recebe
+[Female] Aprendi a fugir da gentileza
+[Male] Aprendi a cair sem te avisar
+[Both] Mas aqui entre a chuva e o silencio
+ha um espaco que chama a descansar
 
 [Outro]
-Cai sobre mim
-Eu ja nao fujo
-Da gentileza`,
+[Female] Cai sobre mim
+[Male] Ja estou a cair
+[Both] E eu ja nao fujo da gentileza`,
 
-  "espiritual-graca/4": `[Verse]
+  "espiritual-graca/4": `[Verse 1]
 I did not earn this sunrise
-I did not earn these lungs
+or the lungs that let me breathe
 This morning came regardless
-This breath arrived unsung
+and the light fell without leave
 
-[Verse]
+[Verse 2]
 No invoice for the birdsong
-No receipt for how you smiled
-No one charged me for the moment
-I remembered I'm alive
+no receipt for how the rain
+landed on my upturned face
+and asked for nothing in exchange
 
 [Chorus]
-Unearned
-The most beautiful things
-Unearned
-The light on the table
-The laughter in the hall
-The fact that you exist
-At all
-Was never owed
-Never earned
-Just given
+Unearned — the most beautiful things
+Unearned — the light, the bird, the dawn
+Nothing asked you to deserve it
+nothing checks what you have done
+Unearned — just open up your hands
+
+[Verse 3]
+You did not earn the person
+who said your name like it was new
+You did not earn the morning
+that kept arriving just for you
 
 [Bridge]
 Stop trying to deserve it
-You were never asked to pay
-Just open up your hands
-And let it stay
+you were never asked to pay
+Just hold your hands out empty
+and let the unearned stay
 
 [Outro]
 Unearned
 And that is why
-It is so tender`,
+it is so tender`,
 
   // ─────────────────────────────────────────────
   // ALBUM 5: SILENCIO SAGRADO (fullness of quietude)
@@ -1460,38 +1469,46 @@ both
 and whole is home`,
 
   "espiritual-raiz-ceu/5": `[Verse 1]
-Plantaram-me ha muitos anos
-Num lugar que nao escolhi
-E as raizes foram fundo
-Antes de eu saber de mim
+Plantaram-me num lugar estranho
+num solo que nao escolhi
+mas as raizes foram fundo
+antes de eu saber de mim
 
 [Verse 2]
 Cresci torta contra o vento
-Os ramos todos para um lado
-Mas o tronco nao partiu
-Ficou firme — e ficou marcado
+os galhos para o lado errado
+mas o tronco nao partiu —
+ficou firme e ficou marcado
 
 [Chorus]
-Sou a arvore
-Com raiz no escuro e copa no ceu
-Sou a arvore
-Que ninguem plantou — que se plantou
-Sou a arvore
-Que da sombra sem pedir
-E alcanca o ceu
-Sem sair daqui
+Sou a arvore, sou a arvore
+raiz no escuro, copa no ar
+sou a arvore, sou a arvore
+ninguem me plantou — fui eu a plantar
+dou sombra sem pedir nada
+alcanço o ceu sem me mover
+sou o que fica quando tudo passa
+sou o que cresce sem se perder
+
+[Verse 3]
+Os passaros nao ficam sempre
+as estacoes mudam a pele
+mas o centro nao se curva —
+o centro e o que me manteve
 
 [Bridge]
-Os passaros vem e vao
-As estacoes mudam a pele
-Mas o centro nao se move
-O centro e o que me manteve
+Nao sou o fruto que cai
+nao sou a folha que parte
+sou o tronco que testemunha
+a beleza e o acidente
 
 [Outro]
-Estou enraizada
-Estou a crescer
-E as duas coisas
-Sao a mesma coisa`,
+Enraizada
+e a crescer
+as duas coisas
+sao a mesma coisa
+sou a arvore
+sou inteira`,
 
   // ─────────────────────────────────────────────
   // ALBUM 9: AGUA VIVA (cleansing, rebirth, baptism without church)
@@ -1499,104 +1516,123 @@ Sao a mesma coisa`,
 
   "espiritual-agua-viva/1": `[Verse 1]
 Ha um sitio onde a agua nasce
-Antes de ter nome ou rio
-Antes de ser chuva ou mar
-Antes de tocar o frio
+antes de ter nome ou rumo
+antes de ser chuva ou fio
+antes de fazer consumo
 
 [Verse 2]
-E uma fenda entre as pedras
-Um sussurro entre a terra
-A agua sai sem direcção
-Sem mapa e sem guerra
+Uma fenda entre as pedras frias
+um pulsar que vem de dentro
+a agua surge sem aviso
+sem map e sem intento
 
 [Chorus]
-Fonte
-Onde tudo comeca limpo
-Fonte
-Onde a agua nao tem dono
-Fonte
-So o pulsar quieto
-Da terra a oferecer
-O que nunca lhe pediram
+Fonte, fonte
+onde tudo comeca limpo
+fonte, fonte
+a agua ainda nao tem dono
+antes do nome ha o pulsar
+antes do rio ha o silencio
+a terra nao espera ser pedida —
+simplesmente da o que tem dentro
+
+[Verse 3]
+Encosta o ouvido ao chao duro
+ouve o que corre por baixo
+a agua mais antiga do mundo
+e a que ainda nao chegou ao raio
 
 [Bridge]
-Encosta o ouvido ao chao
-Ouve o que corre por baixo
-A agua mais antiga
-E a que ainda nao chegou
+Antes da sede ha a fonte
+antes da fonte ha a fisura
+antes da fisura ha o escuro
+e o escuro guarda a agua pura
 
 [Outro]
-A fonte nao precisa
-Que alguem lhe de permissao
-Para nascer`,
+A fonte nao pede licenca
+nao espera quem a reclame
+nasce porque tem de nascer
+antes de ter nome — antes de ter fome`,
 
   "espiritual-agua-viva/2": `[Verse 1]
-The water doesn't ask
-What you've done
-It runs across your hands
-And takes what's come undone
+It's 3am and the kitchen's dark
+and I'm standing at the sink
+the tap is running over both my hands
+and I don't stop to think
 
 [Verse 2]
-Not holy water
-Not a priest's decree
-Just the kitchen tap
-At half past three
+Not holy water, no one's watching now
+no rite, no book, no bell
+just the cold against my palms
+and whatever fell
 
 [Chorus]
-Wash
-Let the water carry
-What your hands held too long
-Wash
-Not a ritual
-Just a letting go
-Let the water take
-What you can't hold anymore
+Wash, wash
+let the water carry
+what your hands held too long
+wash, wash
+not a ceremony —
+just the tap, just the dark
+just the sound of letting go
+just the small release of something gone
+
+[Verse 3]
+Your skin remembers every grip
+your knuckles know the strain
+the water doesn't fix a thing
+it just takes away the stain
 
 [Bridge]
-Your skin remembers every grip
-Your knuckles know the strain
-The water doesn't fix a thing
-It just takes away the stain
+I didn't come here praying
+I didn't come to be saved
+I just needed something colder
+than the thing I'd been afraid
 
 [Outro]
 You don't need a river
-You don't need a sea
-Just open the tap
-And let it leave`,
+you don't need the sea
+just the kitchen, just the 3am
+just the tap running free`,
 
   "espiritual-agua-viva/3": `[Verse 1]
-Fecho os olhos
-Dobro os joelhos
-A agua cobre-me a cabeca
-E o silencio e o mais velho
+Fecho os olhos na beira da agua
+dobro os joelhos devagar
+nao ha padre nem promessa —
+so a coragem de mergulhar
 
 [Verse 2]
-Nao ha padre nem baptismo
-Nao ha vela nem altar
-So o meu corpo e a agua
-E a coragem de mergulhar
+A agua cobre-me a cabeca
+o silencio e o mais antigo
+nao ha vela nem baptismo
+so o corpo como abrigo
 
 [Chorus]
-Mergulho
-E por baixo nao ha medo
-Mergulho
-E por baixo ha so o que sou
-Mergulho
-O corpo inteiro submerso
-No que eu sempre evitei
-E a agua nao me afoga
-A agua reconhece-me
+Mergulho, mergulho
+por baixo nao ha medo
+mergulho, mergulho
+por baixo ha so o que sou
+o corpo inteiro submerso
+no que eu sempre contornei
+a agua nao me afoga —
+a agua me reconhece
+
+[Verse 3]
+O fundo nao e escuro
+o fundo e so quietude
+e no silencio submerso
+o coracao bate com plenitude
 
 [Bridge]
-O fundo nao e escuro
-O fundo e so silencio
-E no silencio
-O coracao bate mais alto
+Nao e morte — e descida
+nao e fim — e um descer
+para o fundo onde se guarda
+o que eu nao quis ver
 
 [Outro]
 Quando voltar a superficie
-Serei a mesma
-Mas lavada por dentro`,
+serei a mesma
+mas por dentro
+lavada`,
 
   "espiritual-agua-viva/4": `[Verse 1]
 My lungs burned for air
@@ -1856,37 +1892,50 @@ I will keep asking
 mouth to the wall
 I will keep asking`,
 
-  "espiritual-prece/3": `[Verse]
-Ninguem vem
-Ninguem chega a este lugar
-E o desamparo e tao grande
-Que so cabe Deus ou nada
+  "espiritual-prece/3": `[Verse 1]
+Ninguem vem a este lugar
+ninguem conhece este fundo
+O desamparo e tao vasto
+que cabe o mundo
 
-[Verse]
-Os joelhos no chao frio
-As maos sem forca
+[Verse 2]
+Os joelhos no chao de pedra
+as maos sem forca nenhuma
 O peito aberto como ferida
-E mesmo assim rezo
+a boca que nao depura
 
 [Chorus]
-Desamparo
-O lugar mais perto do sagrado
-Desamparo
-Onde a pele toca o chao
-E o chao responde
-Com o peso do mundo inteiro
+Desamparo — chao sagrado
+desamparo — toca o real
+Nao ha catedral mais honesta
+que este escuro total
+Onde ninguem chega com consolo
+onde o orgulho nao tem vez
+O desamparo e o templo
+o lugar onde o sagrado desce
+
+[Verse 3]
+Nao preciso de altar nem vela
+preciso deste frio
+Nao preciso de ritual
+so preciso deste rio
+que corre mesmo quando
+a margem nao se ve
+O desamparo e o templo
+o mais nobre que ha de pe
 
 [Bridge]
-Nao preciso de catedral
-Preciso deste chao
-Nao preciso de padre
-Preciso desta solidao
+Vim com as maos vazias
+vim com o corpo exausto
+Vim sem saber o que pedir
+vim so porque era o custo
 
 [Outro]
 Rezo do fundo
-Do lugar onde ninguem vem
-E alguma coisa
-Ouve`,
+do lugar onde ninguem vem
+e alguma coisa
+neste escuro
+ouve`,
 
   "espiritual-prece/4": `[Verse]
 My bones remember a language
@@ -2336,36 +2385,47 @@ I did not choose
 These are the doors
 I walked through`,
 
-  "espiritual-catedral/3": `[Verse]
+  "espiritual-catedral/3": `[Verse 1]
 As costelas sao arcos
-Curvas de osso e forca
-Protegem o que e mole
-O que pulsa o que treme
+Curvados sobre o sagrado
+Protegem o que nao tem nome
+O que pulsa o que e amado
 
-[Verse]
+[Verse 2]
 Nao foram feitas de pedra
-Mas aguentam o mundo
+Mas aguentam tudo o que peso
 A arquitectura mais antiga
-Vive dentro de mim
+Vive dentro deste peito
 
 [Chorus]
-Costelas
-Arcos de catedral
-Costelas
-Que guardam o sagrado
-O coracao nao tem porta
-Tem osso
-E o osso nao cede
+Costelas — arcos do catedral
+O osso que guarda o que e real
+O coracao nao tem porta — tem osso
+E o osso nao cede ao que passa
+
+[Verse 3]
+Ponho a mao no peito esquerdo
+E sinto os arcos a respirar
+A catedral esta viva
+Nao precisa de outro lugar
+
+[Chorus]
+Costelas — arcos do catedral
+O osso que guarda o que e real
+O coracao nao tem porta — tem osso
+E o osso nao cede ao que passa
 
 [Bridge]
-Ponho a mao no peito
-E sinto a estrutura
-A catedral esta viva
-E respira comigo
+Quantas vezes curvei o corpo
+Quantas vezes o osso aguentou
+Nao foi tecto nem parede
+Foi este arco que me salvou
 
 [Outro]
 Osso e silencio
-A mais velha oracao`,
+A mais velha oracao
+As costelas respiram
+Ainda`,
 
   "espiritual-catedral/4": `[Verse]
 My skin remembers
