@@ -716,4 +716,193 @@ Pronto
 Esta pronto
 E eu descanso`,
 
+
+  // ─────────────────────────────────────────────
+  // RENDICAO (adormecer, largar o dia)
+  // ─────────────────────────────────────────────
+
+  "vida-rendicao/1": `[Verse 1]
+O telefone vira de face
+O ecra apaga a sua luz
+O dia pousa com a sua grace
+E o escuro me conduz
+
+[Verse 2]
+A lampada faz o ultimo clique
+O quarto encontra a sua noite
+Nao ha mais nada que me implique
+Nao ha mais nada que me acoite
+
+[Chorus]
+Desligar
+Como quem desliga a luz de um templo
+Desligar
+E o mais gentil exemplo
+De que o dia teve um fim
+E agora o escuro cuida de mim
+
+[Outro]
+Desliga, desliga
+A noite ja chegou`,
+
+  "vida-rendicao/2": `[Verse 1]
+My eyelids pull like velvet curtains
+Across a stage that's done its show
+The muscles soften into certain
+Surrender only bodies know
+
+[Verse 2]
+The jaw unclenches, forehead smooths
+The face forgets the mask it wore
+The body finds its oldest grooves
+And asks for nothing anymore
+
+[Chorus]
+Heavy lids, heavy lids
+Close the day behind your eyes
+Let the dark do what it did
+Before we learned to theorize
+Heavy lids, let them fall
+The body's asking you to rest
+You don't need to hold it all
+Just lay your head upon your chest
+
+[Outro]
+Close now
+Close now
+Let them fall`,
+
+  "vida-rendicao/3": `[Verse 1]
+Dez, nove, oito
+O corpo afunda no colchao
+Sete, seis, cinco
+Ja nao ha razao
+
+[Verse 2]
+Quatro, tres
+Os numeros perdem a forma
+Dois
+Qual e mesmo a norma
+
+[Chorus]
+A ultima contagem
+Ate nao haver mais nada
+A ultima contagem
+E a porta mais sagrada
+Os numeros derretem
+Como gelo ao sol
+As palavras perdem
+Todo o seu anzol
+
+[Outro]
+Um
+E depois
+So o escuro`,
+
+  "vida-rendicao/4": `[Verse 1]
+The bed becomes a boat that floats
+On water made of dark and air
+My body sheds its heavy coats
+And drifts beyond the reach of care
+
+[Verse 2]
+A face appears behind my eyes
+That I have never seen before
+The room dissolves, the gravity dies
+I'm neither ceiling, neither floor
+
+[Chorus]
+Drift, drift
+Between the real and the dream
+Drift, drift
+Nothing is quite what it seems
+The body twitches at the edge
+Where waking loses its hold
+I step across the narrow ledge
+Into a sleep as old as gold
+
+[Outro]
+Drifting now
+Between here and there`,
+
+  "vida-rendicao/5": `[Verse 1]
+O corpo fica mais pesado
+Que o colchao que o segura
+Os bracos sao de chumbo dourado
+A gravidade e uma ternura
+
+[Verse 2]
+As pernas afundam na terra
+Os dedos perdem a vontade
+O peito encontra a sua serra
+De respiracao e saudade
+
+[Chorus]
+O peso bom
+O peso de quem vai dormir
+O peso bom
+De quem nao precisa de fugir
+A cama engole devagar
+O corpo aceita o convite
+Nao ha mais nada para dar
+So o escuro e o seu limite
+
+[Outro]
+Pesado e bom
+Pesado e casa`,
+
+  "vida-rendicao/6": `[Verse 1]
+Where does the skin end and the sheet begin
+The borders blur like ink in rain
+I can't remember where I've been
+Or what I thought was my domain
+
+[Verse 2]
+The self dissolves like salt in dark
+No name, no shape, no history
+Just warmth without a question mark
+Just breath without the mystery
+
+[Chorus]
+Dissolve, dissolve
+Into the night like water
+Dissolve, absolve
+The day and all that caught her
+I don't need to be someone tonight
+I don't need a name
+Let me disappear in the quiet
+Let the darkness stake its claim
+
+[Outro]
+Dissolving now
+Into the dark
+Into the nothing
+That holds everything`,
+
+  "vida-rendicao/7": `[Verse 1]
+Boa noite, maos cansadas
+Boa noite, pes que andaram
+Boa noite, costas pesadas
+Boa noite, olhos que choraram
+
+[Verse 2]
+Boa noite, mente inquieta
+Boa noite, coracao
+Boa noite a tudo o que aperta
+Boa noite a toda a razao
+
+[Chorus]
+Noite boa
+O ultimo sussurro antes do fim
+Noite boa
+O dia foi gentil comigo e eu com ele enfim
+Agora o escuro vem
+Agora a paz e minha
+Noite boa, meu bem
+A ultima carinha
+
+[Outro]
+Boa noite
+Boa noite a mim`,
+
 };
