@@ -12,7 +12,6 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/Escola-dos-veus-favicon.png", sizes: "192x192", type: "image/png" },
     ],
     apple: { url: "/Escola-dos-veus-favicon.png", sizes: "180x180" },
