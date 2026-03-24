@@ -2753,4 +2753,351 @@ Is lighter than the breast
 I offer
 Everything I am`,
 
+
+  // ─────────────────────────────────────────────
+  // LINHAGEM (heranca, sangue)
+  // ─────────────────────────────────────────────
+
+  "vida-linhagem/1": `[Verse 1]
+As maos amassam como as dela
+O pulso gira no mesmo angulo
+Nao aprendi esta maneira bela
+O sangue ja sabia o vocabulo
+
+[Verse 2]
+No jardim escolho as ervas
+Com os mesmos dedos que ela usou
+As maos da avo nas minhas reservas
+Gestos que ninguem me ensinou
+
+[Chorus]
+A avo
+Que vive nas minhas maos
+A avo
+Que mora nos meus gestos vaos
+Cada vez que amasso o pao
+Cada vez que parto o sal
+Os dedos dela na minha mao
+Fazem o ritual
+
+[Outro]
+Avo
+Estou a amassar como tu`,
+
+  "vida-linhagem/2": `[Verse 1]
+A pulse beneath the wrist that knows
+A language older than my name
+The body flinches at a smell it chose
+Before I was this frame
+
+[Verse 2]
+My muscles tense at sounds I've never heard
+My hands grip in a pattern not my own
+The blood remembers every word
+In a dialect of flesh and bone
+
+[Chorus]
+Blood memory, blood memory
+What the cells refuse to forget
+Blood memory, blood memory
+The archive underneath the sweat
+I carry ancestors in my nerves
+In reflexes I didn't choose
+The body serves what it preserves
+Long before I learned to lose
+
+[Outro]
+The blood remembers
+What the mind forgot`,
+
+  "vida-linhagem/3": `[Verse 1]
+Seguro a chavena com as duas maos
+Fico a janela a ver chover
+Herancas que nao sao de tostoes
+Mas de formas de ser e de viver
+
+[Verse 2]
+A coluna direita da minha mae
+A teimosia do meu pai
+O suspiro antes de pe
+Que a minha avo sempre dai
+
+[Chorus]
+Heranca
+Que nao tem nada a ver com dinheiro
+Heranca
+E o gesto verdadeiro
+De quem veio antes de mim
+De quem me moldou sem molde
+O que herdei nao tem fim
+Nao e ouro mas nao se dissolve
+
+[Outro]
+Herdei
+Muito mais do que sei`,
+
+  "vida-linhagem/4": `[Verse 1]
+I caught my reflection in the glass
+And saw my mother's hands arrange the flowers
+The same knuckles that I'd watch in class
+For hours and hours and hours
+
+[Verse 2]
+The veins are rising in the same design
+The skin is thinning in the same slow way
+These hands are hers and also mine
+A conversation held in clay
+
+[Chorus]
+Mother's hands, mother's hands
+Now my hands, now my work
+Mother's hands understand
+What the mind can't shirk
+I am becoming who I watched
+Growing up across the years
+Every gesture that she notched
+Now lives between my fingers here
+
+[Outro]
+Your hands, my hands
+The same`,
+
+  "vida-linhagem/5": `[Verse 1]
+Os ombros carregam trouxas em pano
+Os pes conhecem estradas nunca andadas
+Os habitos chegaram com o engano
+De serem meus, mas sao herancas guardadas
+
+[Verse 2]
+A forma de contar o troco
+A forma de trancar a porta duas vezes
+A reza antes de cada almoço
+O sal por cima do ombro as vezes
+
+[Chorus]
+O que trouxeste
+O que carregaste sem escolher
+O que trouxeste
+E o que te faz quem vais ser
+O orgulho misturado com cansaco
+De quem nao larga o que e seu
+Cada habito e um abraco
+De quem veio antes e ja morreu
+
+[Outro]
+Trouxe tudo
+E nao devolvo nada`,
+
+  "vida-linhagem/6": `[Verse 1]
+The roots push through the pavement cracks
+They split the concrete reaching down
+No force above can pull them back
+These roots were meant to hold the crown
+
+[Verse 2]
+Not relics kept behind the glass
+But living tendrils, green and fierce
+They feed the trunk, they build the mass
+Of everything the future mirrors
+
+[Chorus]
+Roots alive, roots alive
+Not history but happening now
+Roots alive, roots alive
+The deepest kind of vow
+Growing still beneath the street
+Feeding what we cannot see
+Every branch, every leaf
+Began beneath the knee
+
+[Outro]
+Alive
+The roots are alive`,
+
+  // ─────────────────────────────────────────────
+  // MARE VIVA (ciclos, encher e esvaziar)
+  // ─────────────────────────────────────────────
+
+  "vida-mare-viva/1": `[Verse 1]
+A agua entra pela areia
+Enche as pegadas uma a uma
+Sem pressa, sem cadeia
+So a certeza da sua espuma
+
+[Verse 2]
+Os pulmoes expandem com a mare
+O corpo aceita o que se aproxima
+Nao ha nada que prepare
+Para a plenitude que se estima
+
+[Chorus]
+Encher
+A mare que vem sem avisar
+Encher
+O corpo que aprende a aceitar
+Devagar e sempre
+A agua sabe o caminho
+Encher como quem sembre
+Um campo com o seu carinho
+
+[Outro]
+Enche, enche
+Devagar e com certeza`,
+
+  "vida-mare-viva/2": `[Verse 1]
+Standing chest-deep in the warm
+Every pore is open wide
+The body held without a storm
+By the fullness of the tide
+
+[Verse 2]
+The glass is trembling at the rim
+The meniscus holds its breath
+Everything is full to the brim
+Beautiful and close to death
+
+[Chorus]
+High tide, high tide
+Everything is brimming now
+High tide, high tide
+The body doesn't know just how
+Much it can contain
+Before it overflows
+The pleasure and the pain
+Of fullness as it grows
+
+[Outro]
+Full
+Completely full`,
+
+  "vida-mare-viva/3": `[Verse 1]
+No topo da onda o tempo para
+O corpo pesa zero entre dois mundos
+A respiracao suspende a sua cara
+E tudo fica imove nos segundos
+
+[Verse 2]
+Antes de descer, antes de cair
+Ha este instante que nao tem nome
+Nem o futuro pode intervir
+Nesta pausa que ninguem consome
+
+[Chorus]
+A pausa no topo
+Onde a agua esquece a gravidade
+A pausa no topo
+E a mais bela liberdade
+Nem subida nem descida
+So o ponto onde tudo se encontra
+A vida suspendida
+Na beleza de quem nao confronta
+
+[Outro]
+Suspensa
+No topo`,
+
+  "vida-mare-viva/4": `[Verse 1]
+The water pulls across the stones
+A sound of gentle giving back
+The warmth leaves slowly from the bones
+The beach grows wider, cold and black
+
+[Verse 2]
+The room empties after everyone goes
+The chair still warm where someone sat
+The tide recedes, the body knows
+That fullness was a borrowed hat
+
+[Chorus]
+Ebb, ebb
+The dignity of letting go
+Ebb, ebb
+Without a scene, without a show
+The courage of retreating
+From the places we once filled
+The beauty of depleting
+What was never ours to build
+
+[Outro]
+Let it go
+Let the water leave`,
+
+  "vida-mare-viva/5": `[Verse 1]
+O fundo do mar esta exposto
+As conchas, as criaturas, o chao
+O vazio mostra o seu rosto
+E nao e feio, e clarificacao
+
+[Verse 2]
+As maos abertas sem nada dentro
+A barriga vazia depois da mare
+O vazio e o verdadeiro centro
+Onde tudo que nasce se refere
+
+[Chorus]
+Vazio fertil
+O chao depois da agua ir
+Vazio fertil
+Onde tudo vai vir
+Nao e falta, e espaco
+Nao e perda, e preparacao
+O vazio e o braco
+Que se abre para a estacao
+
+[Outro]
+Vazio
+E pronto para encher de novo`,
+
+  "vida-mare-viva/6": `[Verse 1]
+Somewhere in the silence the water turns
+A pivot point no instrument can find
+The outgoing tide no longer yearns
+It simply changes its own mind
+
+[Verse 2]
+The exhale shifts to an inhale
+The grief softens into green
+The body tells a different tale
+Without a word to mark the scene
+
+[Chorus]
+Turn, turn
+The invisible reversal
+Turn, turn
+The quiet universal
+Moment where it all begins
+To come back from the edge
+The magic in the thins
+That holds the water's pledge
+
+[Outro]
+It's turning
+It's already coming back`,
+
+  "vida-mare-viva/7": `[Verse 1]
+A agua volta para as mesmas pegadas
+As mesmas conchas, as mesmas rochas
+A filha torna-se mae nas jornadas
+E a mae torna-se avo nas colchas
+
+[Verse 2]
+A mesma cancao numa boca nova
+O mesmo amor em maos novas
+Tudo volta como a chuva prova
+Que as estacoes sao as mesmas trovas
+
+[Chorus]
+Volta
+Tudo volta, nada se perde
+Volta
+O ciclo nunca desmente
+O que foi vai ser de novo
+Nao igual mas semelhante
+O rio encontra o seu povo
+E o mar beija o navegante
+
+[Outro]
+Volta, volta
+Tudo volta a casa`,
+
 };
