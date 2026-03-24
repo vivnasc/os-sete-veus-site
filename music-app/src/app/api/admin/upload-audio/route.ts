@@ -7,7 +7,7 @@ const BUCKET = "audios";
 export const maxDuration = 60;
 
 export async function POST(req: NextRequest) {
-  const auth = await requireAdmin(req.headers.get("cookie"));
+  const auth = await requireAdmin(req);
   if (!auth.ok) return auth.response;
 
   const supabase = auth.supabase;

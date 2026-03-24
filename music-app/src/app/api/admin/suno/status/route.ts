@@ -7,7 +7,7 @@ import { requireAdmin } from "@/lib/admin-auth";
  * Retorna: { clips: [{ id, status, audioUrl }] }
  */
 export async function GET(req: NextRequest) {
-  const auth = await requireAdmin(req.headers.get("cookie"));
+  const auth = await requireAdmin(req);
   if (!auth.ok) return auth.response;
 
   const apiUrl = process.env.SUNO_API_URL;

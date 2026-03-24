@@ -7,7 +7,7 @@ import { requireAdmin } from "@/lib/admin-auth";
  */
 
 export async function GET(req: NextRequest) {
-  const auth = await requireAdmin(req.headers.get("cookie"));
+  const auth = await requireAdmin(req);
   if (!auth.ok) return auth.response;
 
   const supabase = auth.supabase;
@@ -36,7 +36,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const auth = await requireAdmin(req.headers.get("cookie"));
+  const auth = await requireAdmin(req);
   if (!auth.ok) return auth.response;
 
   const supabase = auth.supabase;

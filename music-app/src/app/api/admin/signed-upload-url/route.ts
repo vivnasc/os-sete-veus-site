@@ -9,7 +9,7 @@ const BUCKET = "audios";
  * POST /api/admin/signed-upload-url { filename: "albums/espelho-ilusao/faixa-01.mp3" }
  */
 export async function POST(req: NextRequest) {
-  const auth = await requireAdmin(req.headers.get("cookie"));
+  const auth = await requireAdmin(req);
   if (!auth.ok) return auth.response;
 
   const supabase = auth.supabase;
