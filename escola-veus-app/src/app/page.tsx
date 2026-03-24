@@ -45,7 +45,7 @@ export default function HomePage() {
           <div className="relative">
             <Image
               src="/hero-mandala.png"
-              alt="Os 7 Veus"
+              alt="Os 7 Véus"
               width={320}
               height={320}
               className="h-52 sm:h-64 md:h-72 w-auto rounded-2xl shadow-2xl ring-1 ring-white/10"
@@ -58,15 +58,15 @@ export default function HomePage() {
             <Image
               src="/Escola-dos-veus-favicon.png"
               alt=""
-              width={48}
-              height={48}
-              className="h-12 w-12 rounded-xl"
+              width={80}
+              height={80}
+              className="h-20 w-20 rounded-2xl"
             />
             <h1 className="font-serif text-2xl sm:text-3xl font-semibold text-escola-creme tracking-wide">
-              Escola dos Veus
+              Escola dos Véus
             </h1>
             <p className="text-sm text-escola-dourado tracking-widest">
-              Ve o que estava invisivel.
+              Vê o que estava invisível.
             </p>
           </div>
 
@@ -127,7 +127,7 @@ export default function HomePage() {
                     <div className="flex-1 min-w-0">
                       <p className="text-escola-creme font-medium truncate">{course.title}</p>
                       <p className="text-xs text-escola-creme-50">
-                        Modulo {p.current_module}, Sub-aula {p.current_sublesson}
+                        Módulo {p.current_module}, Sub-aula {p.current_sublesson}
                       </p>
                     </div>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5 text-escola-creme-50/40 group-hover:translate-x-1 transition-transform flex-shrink-0">
@@ -205,7 +205,7 @@ export default function HomePage() {
                       </svg>
                     </div>
                     <p className="text-sm font-medium text-escola-creme truncate">{course.title}</p>
-                    <p className="text-[10px] text-escola-creme-50 mt-0.5">{course.modules.length} modulos</p>
+                    <p className="text-[10px] text-escola-creme-50 mt-0.5">{course.modules.length} módulos</p>
                   </Card>
                 );
               })}
