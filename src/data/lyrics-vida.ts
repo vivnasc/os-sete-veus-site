@@ -2104,4 +2104,325 @@ The woman on this hill
 Solid ground
 I am solid ground`,
 
+
+  // ─────────────────────────────────────────────
+  // COMPANHIA PROPRIA (solidao escolhida)
+  // ─────────────────────────────────────────────
+
+  "vida-companhia-propria/1": `[Verse 1]
+A mesa tem um prato so
+Um guardanapo, um copo, uma vela
+O empregado nao sentiu do
+O que eu sinto ao sentar-me nela
+
+[Verse 2]
+Nao e triste, nao e coragem
+E so a escolha de quem sabe
+Que a melhor companhia na viagem
+As vezes e a chave que nao abre
+
+[Chorus]
+Mesa para uma
+Sem pena, sem falta
+Mesa para uma
+A solidao mais alta
+E a que se escolhe
+Sem drama nem dor
+A cadeira que se acolhe
+So com o meu calor
+
+[Outro]
+Uma mesa
+Uma paz`,
+
+  "vida-companhia-propria/2": `[Verse 1]
+I make my own rain, my own shine
+My own wind that clears the sky
+I don't need another's sign
+To know if I should laugh or cry
+
+[Verse 2]
+The clouds inside are mine to read
+The temperature is mine to set
+I am the garden and the seed
+The sunrise and the violet
+
+[Chorus]
+My own weather, my own weather
+Self-contained and warm inside
+My own weather, my own weather
+I don't need another's tide
+To tell me when to bloom or rest
+To tell me when to run or stay
+I am my own compass, my own nest
+My own specific shade of grey
+
+[Outro]
+My weather
+My world`,
+
+  "vida-companhia-propria/3": `[Verse 1]
+O telefone virado para baixo
+O silencio que escolhi de proposito
+Nao e castigo nem despacho
+E o luxo do meu proprio hospicio
+
+[Verse 2]
+O quarto vazio porque eu quis
+A ausencia de som como um presente
+O silencio feliz
+De quem esta inteiramente presente
+
+[Chorus]
+O silencio escolhido
+Nao e o que me impuseram
+O silencio querido
+E o que os meus ossos quiseram
+Oico os meus pensamentos
+Pousar como folhas no chao
+Sem ventos, sem lamentos
+So a minha propria cancao
+
+[Outro]
+Escolhi o silencio
+E ele escolheu-me a mim`,
+
+  "vida-companhia-propria/4": `[Verse 1]
+I walk through my apartment slow
+I touch the walls, I fix the frames
+This room is full of what I know
+My books, my scent, my secret names
+
+[Verse 2]
+I sit right in the centre of the floor
+And feel the space expand around
+This room needs nothing else, no more
+I fill it with my very sound
+
+[Chorus]
+Whole room, whole room
+I am enough to fill this space
+Whole room, whole room
+My presence decorates the place
+No gaps that need a guest to fill
+No silence that requires a voice
+The room is whole, the room is still
+And I am here by choice
+
+[Outro]
+Full room
+Full life`,
+
+  "vida-companhia-propria/5": `[Verse 1]
+A vela acesa, o prato feito
+A musica que eu escolhi
+Jantar sozinha e um direito
+Que so agora descobri
+
+[Verse 2]
+Sem ecra, sem distracao
+O garfo encontra cada sabor
+A boca mastiga com atencao
+E cada pedaco tem amor
+
+[Chorus]
+Jantar sozinha
+Com a vela e o vinho e o meu prato
+Jantar sozinha
+E o mais sagrado acto
+De quem se trata como hospede
+De quem se cozinha com carinho
+A noite inteira e o meu vespere
+E eu sou o meu proprio caminho
+
+[Outro]
+So eu e o prato
+E e o suficiente`,
+
+  "vida-companhia-propria/6": `[Verse 1]
+I sat on the edge of the bed tonight
+And something landed in my chest
+Not sadness, something else, a light
+That whispered you have passed the test
+
+[Verse 2]
+The tears came not from hurt or lack
+But from the shock of finally seeing
+I don't need anyone to have my back
+I am my own sufficient being
+
+[Chorus]
+Enough, enough
+I am enough for me
+Enough, enough
+The hardest word to be
+Not spoken by another's mouth
+But rising from my own deep well
+The compass pointing further south
+Than anyone could ever tell
+
+[Outro]
+Enough
+I am enough`,
+
+  // ─────────────────────────────────────────────
+  // PORCELANA (ritual, autocuidado)
+  // ─────────────────────────────────────────────
+
+  "vida-porcelana/1": `[Verse 1]
+A agua quente bate na nuca
+O corpo curva-se de alivio
+O vapor sobe como uma fuga
+De tudo o que foi um desvio
+
+[Verse 2]
+Os musculos soltam um a um
+Como nos que se desfazem
+A agua lava o que e comum
+E transforma em algo que me fazem
+
+[Chorus]
+A agua quente
+A primeira gentileza
+A agua quente
+Cura qualquer aspereza
+Nao preciso de mais nada
+Que este vapor e esta pele
+A agua e a mais sagrada
+Das coisas que o corpo pede
+
+[Outro]
+Agua quente
+A mais simples oracao`,
+
+  "vida-porcelana/2": `[Verse 1]
+The jar opens, the scent arrives
+A signal that the day is done
+My fingers dip, my skin revives
+A ceremony begun
+
+[Verse 2]
+The mirror, then the brush, the cream
+Each gesture placed with care
+A ritual made of steam
+And time I choose to spare
+
+[Chorus]
+Ceremony, ceremony
+The small daily prayer
+Ceremony, ceremony
+Of tending what is there
+No audience, no stage
+Just the bathroom and the light
+This body at this age
+Deserving of the night
+
+[Outro]
+The small ceremony
+That nobody sees`,
+
+  "vida-porcelana/3": `[Verse 1]
+As maos passam creme no braco
+Com a mesma atencao que dou a outros
+O cotovelo, o pulso, o laco
+Entre mim e os meus proprios encontros
+
+[Verse 2]
+Nunca me toquei assim
+Com intencao e sem pressa
+As minhas maos cuidam de mim
+Como quem reza sem missa
+
+[Chorus]
+Creme na pele
+As maos que cuidam sem pedir
+Creme na pele
+A forma mais gentil de existir
+Tocar-me como se importasse
+Tratar-me como se eu fosse
+Alguem que merecesse que passasse
+As maos com a mesma doce
+
+[Outro]
+Toca com cuidado
+Toca como quem ama`,
+
+  "vida-porcelana/4": `[Verse 1]
+I stand before the glass and look
+Not the quick glance of the morning rush
+But the long gaze of an open book
+Without the need to blush
+
+[Verse 2]
+The lines around my eyes are maps
+Of every laugh and every cry
+The belly soft, perhaps, perhaps
+This is the body that won't lie
+
+[Chorus]
+The mirror, the mirror
+Without cruelty, without a filter
+The mirror, the mirror
+Shows me I am built, not wilter
+Every mark a story told
+Every curve a chapter lived
+This body growing old
+Is the truest gift I'm given
+
+[Outro]
+I see you
+And I choose to be kind`,
+
+  "vida-porcelana/5": `[Verse 1]
+O elastico sai do cabelo
+O peso cai sobre os ombros
+O couro cabeludo sente o zelo
+De finalmente estar sem escombros
+
+[Verse 2]
+Agito a cabeca devagar
+O cabelo danca sem vergonha
+O dia soltou-se a par
+Da mascara e da sua ronha
+
+[Chorus]
+Cabelo solto
+O sinal de que o dia acabou
+Cabelo solto
+A mulher que se libertou
+Do que os outros precisam de ver
+Da forma que esperam de mim
+Cabelo solto e ser
+Quem sou quando o publico tem fim
+
+[Outro]
+Solto
+Finalmente solto`,
+
+  "vida-porcelana/6": `[Verse 1]
+My hand upon my own warm cheek
+The gesture that I'd give a child
+The word I finally learned to speak
+To myself, so long exiled
+
+[Verse 2]
+Tender, tender on the tongue
+Like medicine, like morning rain
+The word I should have always sung
+Instead of shouldering the pain
+
+[Chorus]
+Tender, be tender
+With the body that you are
+Tender, surrender
+To the kindness of the scar
+You were taught to be so hard
+You were taught to be so strong
+But the tenderest regard
+Is where you've belonged all along
+
+[Outro]
+Tender
+Be tender with yourself`,
+
 };
