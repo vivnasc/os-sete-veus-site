@@ -6,12 +6,13 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/components/AuthProvider";
 
-const navLinks: { href: string; label: string; highlight?: boolean; featured?: boolean }[] = [
+const navLinks: { href: string; label: string; highlight?: boolean; featured?: boolean; external?: boolean }[] = [
   { href: "/cursos", label: "Cursos", featured: true },
   { href: "/os-sete-veus", label: "Universo" },
   { href: "/podcast", label: "Podcast" },
   { href: "/livro-fisico", label: "Livro" },
   { href: "/sobre", label: "Sobre" },
+  { href: "https://music.seteveus.space", label: "Music", external: true },
   { href: "/comunidade", label: "Ecos", highlight: true },
 ];
 
@@ -77,6 +78,16 @@ export default function Header() {
                 </span>
                 {link.label}
               </Link>
+            ) : link.external ? (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-sans text-[0.8rem] uppercase tracking-[0.12em] text-[#C9A96E] transition-colors hover:text-[#D4A853]"
+              >
+                {link.label}
+              </a>
             ) : (
               <Link
                 key={link.href}
@@ -166,6 +177,17 @@ export default function Header() {
                   </span>
                   {link.label}
                 </Link>
+              ) : link.external ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="font-sans text-base uppercase tracking-[0.1em] text-[#C9A96E] transition-colors hover:text-[#D4A853]"
+                >
+                  {link.label}
+                </a>
               ) : (
                 <Link
                   key={link.href}

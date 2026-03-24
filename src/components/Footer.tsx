@@ -23,7 +23,7 @@ export default function Footer() {
               <p className="font-serif text-lg text-cream">Os Sete Véus</p>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-brown-300">
-              Histórias para quem está pronta para se escolher.
+              Histórias, cursos e música para quem está pronta para se escolher.
             </p>
           </div>
 
@@ -38,6 +38,7 @@ export default function Footer() {
               <Link href="/ecossistema" className="text-sm text-brown-300 hover:text-cream">Ecossistema</Link>
               <Link href="/sobre" className="text-sm text-brown-300 hover:text-cream">A Vivianne</Link>
               <Link href="/recursos" className="text-sm text-brown-300 hover:text-cream">Recursos Gratuitos</Link>
+              <a href="https://music.seteveus.space" target="_blank" rel="noopener noreferrer" className="text-sm text-[#C9A96E] hover:text-cream">Music Véus</a>
               <Link href="/livro-fisico" className="text-sm text-brown-300 hover:text-cream">Livro Físico</Link>
               <Link href="/pedir-codigo" className="text-sm text-brown-300 hover:text-cream">Pedir código de acesso</Link>
               <Link href="/contacto" className="text-sm text-brown-300 hover:text-cream">Contacto</Link>

@@ -23,6 +23,7 @@ export default function MusicHomePage() {
   const nos = ALL_ALBUMS.filter(a => a.product === "no");
   const livro = ALL_ALBUMS.filter(a => a.product === "livro");
   const cursos = ALL_ALBUMS.filter(a => a.product === "curso");
+  const espirituais = ALL_ALBUMS.filter(a => a.product === "espiritual");
 
   const all = allTracks();
   const whisper = all.filter(t => t.track.energy === "whisper").slice(0, 8);
@@ -253,6 +254,19 @@ export default function MusicHomePage() {
             <p className="text-sm text-[#666680] mb-6">A música dos 20 territórios da Escola dos Véus.</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
               {cursos.map(album => (
+                <AlbumCard key={album.slug} album={album} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Espiritual */}
+        {espirituais.length > 0 && (
+          <section>
+            <h2 className="font-display text-2xl font-semibold text-[#F5F0E6] mb-2">Espiritual</h2>
+            <p className="text-sm text-[#666680] mb-6">Espiritualidade crua — o sagrado no corpo, na respiração, no silêncio.</p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+              {espirituais.map(album => (
                 <AlbumCard key={album.slug} album={album} />
               ))}
             </div>

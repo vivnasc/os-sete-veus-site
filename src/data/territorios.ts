@@ -15,7 +15,7 @@ export const TERRITORIOS: Territorio[] = [
     numero: 1,
     slug: "ouro-proprio",
     nome: "A Casa dos Espelhos Dourados",
-    curso: "Ouro Proprio",
+    curso: "Ouro Próprio",
     corPrincipal: "#D4A853",
     categoria: "herancas",
     transformacao: "Espelhos cobertos a descobertos, reflexos distorcidos a claros",
@@ -23,11 +23,11 @@ export const TERRITORIOS: Territorio[] = [
   {
     numero: 2,
     slug: "sangue-e-seda",
-    nome: "A Arvore das Raizes Visiveis",
+    nome: "A Árvore das Raízes Visíveis",
     curso: "Sangue e Seda",
     corPrincipal: "#8B3A3A",
     categoria: "herancas",
-    transformacao: "Raizes emaranhadas a reorganizadas, amanhecer atras da arvore",
+    transformacao: "Raízes emaranhadas a reorganizadas, amanhecer atrás da árvore",
   },
   {
     numero: 3,
@@ -36,7 +36,7 @@ export const TERRITORIOS: Territorio[] = [
     curso: "A Arte da Inteireza",
     corPrincipal: "#7B68EE",
     categoria: "fronteiras",
-    transformacao: "Rio sem ponte a ponte completa, duas silhuetas inteiras com espaco",
+    transformacao: "Rio sem ponte a ponte completa, duas silhuetas inteiras com espaço",
   },
   {
     numero: 4,
@@ -46,7 +46,7 @@ export const TERRITORIOS: Territorio[] = [
     corPrincipal: "#4A4A4A",
     corSecundaria: "#E8651A",
     categoria: "ciclos",
-    transformacao: "Destruicao a vida nova, diferente do que era",
+    transformacao: "Destruição a vida nova, diferente do que era",
   },
   {
     numero: 5,
@@ -55,7 +55,7 @@ export const TERRITORIOS: Territorio[] = [
     curso: "Olhos Abertos",
     corPrincipal: "#6B8CAE",
     categoria: "ciclos",
-    transformacao: "Nevoeiro total a parcialmente claro, silhueta da o primeiro passo",
+    transformacao: "Nevoeiro total a parcialmente claro, silhueta dá o primeiro passo",
   },
   {
     numero: 6,
@@ -69,7 +69,7 @@ export const TERRITORIOS: Territorio[] = [
   {
     numero: 7,
     slug: "limite-sagrado",
-    nome: "A Muralha que Nasce do Chao",
+    nome: "A Muralha que Nasce do Chão",
     curso: "Limite Sagrado",
     corPrincipal: "#D4A853",
     categoria: "fronteiras",
@@ -78,21 +78,21 @@ export const TERRITORIOS: Territorio[] = [
   {
     numero: 8,
     slug: "flores-no-escuro",
-    nome: "O Jardim Subterraneo",
+    nome: "O Jardim Subterrâneo",
     curso: "Flores no Escuro",
     corPrincipal: "#1A3A5C",
     corSecundaria: "#4AE8A0",
     categoria: "ciclos",
-    transformacao: "Caverna escura a iluminada pela luz das proprias flores",
+    transformacao: "Caverna escura a iluminada pela luz das próprias flores",
   },
   {
     numero: 9,
     slug: "o-peso-e-o-chao",
     nome: "O Caminho de Pedras",
-    curso: "O Peso e o Chao",
+    curso: "O Peso e o Chão",
     corPrincipal: "#808080",
     categoria: "materia",
-    transformacao: "Curvada sob peso a de pe, leve, pedras no chao",
+    transformacao: "Curvada sob peso a de pé, leve, pedras no chão",
   },
   {
     numero: 10,
@@ -102,15 +102,15 @@ export const TERRITORIOS: Territorio[] = [
     corPrincipal: "#4A0E6A",
     corSecundaria: "#C9A96E",
     categoria: "fronteiras",
-    transformacao: "Silencio/sombra a voz/luz",
+    transformacao: "Silêncio/sombra a voz/luz",
   },
 
   // ─── 10 Territorios de Dualidade ───
   {
     numero: 11,
     slug: "o-fio-invisivel",
-    nome: "O Tear Cosmico",
-    curso: "O Fio Invisivel",
+    nome: "O Tear Cósmico",
+    curso: "O Fio Invisível",
     corPrincipal: "#B8860B",
     corSecundaria: "#F0E6D0",
     categoria: "herancas",
@@ -124,13 +124,13 @@ export const TERRITORIOS: Territorio[] = [
     corPrincipal: "#4682B4",
     corSecundaria: "#87CEEB",
     categoria: "fronteiras",
-    transformacao: "Agua turva a cristalina, dois reflexos que se reconhecem",
+    transformacao: "Água turva a cristalina, dois reflexos que se reconhecem",
   },
   {
     numero: 13,
     slug: "o-silencio-que-grita",
     nome: "A Cripta dos Ecos",
-    curso: "O Silencio que Grita",
+    curso: "O Silêncio que Grita",
     corPrincipal: "#2F2F2F",
     corSecundaria: "#CD5C5C",
     categoria: "herancas",
@@ -144,17 +144,17 @@ export const TERRITORIOS: Territorio[] = [
     corPrincipal: "#9370DB",
     corSecundaria: "#E6E6FA",
     categoria: "fronteiras",
-    transformacao: "Teia que prende a teia que sustenta, cada no brilha",
+    transformacao: "Teia que prende a teia que sustenta, cada nó brilha",
   },
   {
     numero: 15,
     slug: "a-chama",
-    nome: "O Vulcao Interior",
+    nome: "O Vulcão Interior",
     curso: "Brasa Viva",
     corPrincipal: "#DC143C",
     corSecundaria: "#FF6347",
     categoria: "materia",
-    transformacao: "Magma contido a erupcao controlada, fogo que ilumina sem destruir",
+    transformacao: "Magma contido a erupção controlada, fogo que ilumina sem destruir",
   },
   {
     numero: 16,
@@ -170,17 +170,17 @@ export const TERRITORIOS: Territorio[] = [
     numero: 17,
     slug: "o-oficio-de-ser",
     nome: "A Oficina Abandonada",
-    curso: "Maos Cansadas",
+    curso: "Mãos Cansadas",
     corPrincipal: "#A0522D",
     corSecundaria: "#D2B48C",
     categoria: "ciclos",
-    transformacao: "Ferramentas gastas a maos que escolhem o que construir",
+    transformacao: "Ferramentas gastas a mãos que escolhem o que construir",
   },
   {
     numero: 18,
     slug: "o-relogio-partido",
     nome: "A Ampulheta Partida",
-    curso: "Estacoes Partidas",
+    curso: "Estações Partidas",
     corPrincipal: "#708090",
     corSecundaria: "#C0C0C0",
     categoria: "ciclos",
@@ -200,7 +200,7 @@ export const TERRITORIOS: Territorio[] = [
     numero: 20,
     slug: "a-fome",
     nome: "A Mesa Vazia",
-    curso: "Pao e Silencio",
+    curso: "Pão e Silêncio",
     corPrincipal: "#8B4513",
     corSecundaria: "#FAEBD7",
     categoria: "materia",
@@ -209,14 +209,14 @@ export const TERRITORIOS: Territorio[] = [
 ];
 
 export const SILHUETA_POSES = [
-  "presenca",        // De pe, imovel
+  "presenca",        // De pé, imóvel
   "peso",            // Curvada
   "reflexao",        // Sentada
-  "autoconexao",     // Maos no peito
-  "recepcao",        // Maos abertas
+  "autoconexao",     // Mãos no peito
+  "recepcao",        // Mãos abertas
   "avanco",          // A caminhar
   "contemplacao",    // De costas
-  "coragem",         // Mao estendida
+  "coragem",         // Mão estendida
 ] as const;
 
 export type SilhuetaPose = typeof SILHUETA_POSES[number];
