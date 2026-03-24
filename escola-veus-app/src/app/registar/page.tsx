@@ -6,57 +6,48 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 
-export default function EntrarPage() {
+export default function RegistarPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [resetSent, setResetSent] = useState(false);
-  const [resetLoading, setResetLoading] = useState(false);
 
-  async function handleResetPassword() {
-    if (!email) {
-      setError("Escreve o teu email primeiro.");
-      return;
-    }
-    setError("");
-    setResetLoading(true);
-
-    const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/entrar`,
-    });
-
-    setResetLoading(false);
-
-    if (resetError) {
-      setError("Erro ao enviar. Tenta novamente.");
-    } else {
-      setResetSent(true);
-    }
-  }
-
-  async function handleLogin(e: React.FormEvent) {
+  async function handleRegister(e: React.FormEvent) {
     e.preventDefault();
     setError("");
+
+    if (password.length < 6) {
+      setError("A palavra-passe deve ter pelo menos 6 caracteres.");
+      return;
+    }
+
     setLoading(true);
 
-    const { error: authError } = await supabase.auth.signInWithPassword({
+    const { error: authError } = await supabase.auth.signUp({
       email,
       password,
+      options: {
+        emailRedirectTo: `${window.location.origin}/cursos`,
+      },
     });
 
     setLoading(false);
 
     if (authError) {
-      if (authError.message.includes("Invalid login credentials")) {
-        setError("Email ou palavra-passe incorrectos.");
+      if (authError.message.includes("already registered")) {
+        setError("Este email ja tem conta. Tenta entrar.");
       } else {
         setError(authError.message);
       }
     } else {
-      router.push("/cursos");
+      const { error: loginErr } = await supabase.auth.signInWithPassword({ email, password });
+      if (!loginErr) {
+        router.push("/cursos");
+      } else {
+        router.push("/entrar");
+      }
     }
   }
 
@@ -74,13 +65,13 @@ export default function EntrarPage() {
 
       <div className="max-w-sm w-full">
         <h1 className="font-serif text-2xl font-semibold text-escola-creme text-center mb-2">
-          Entra na tua escola
+          Cria a tua conta
         </h1>
         <p className="text-sm text-escola-creme-50 text-center mb-8">
-          Cursos, exercicios e reflexoes ao teu ritmo.
+          Comeca a tua jornada de autoconhecimento.
         </p>
 
-        <form onSubmit={handleLogin} className="space-y-4">
+        <form onSubmit={handleRegister} className="space-y-4">
           <div>
             <label htmlFor="email" className="block text-xs text-escola-creme-50 mb-1.5">
               Email
@@ -106,10 +97,12 @@ export default function EntrarPage() {
                 id="password"
                 type={showPassword ? "text" : "password"}
                 required
+                minLength={6}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                placeholder="Minimo 6 caracteres"
                 className="w-full px-4 py-3 pr-12 rounded-xl bg-white/5 border border-white/10 text-sm text-escola-creme placeholder:text-escola-creme-50 focus:outline-none focus:border-escola-dourado/50 transition-colors"
-                autoComplete="current-password"
+                autoComplete="new-password"
               />
               <button
                 type="button"
@@ -133,35 +126,20 @@ export default function EntrarPage() {
 
           {error && <p className="text-xs text-red-400">{error}</p>}
 
-          {resetSent && (
-            <p className="text-xs text-escola-dourado">
-              Email enviado. Verifica a tua caixa de entrada.
-            </p>
-          )}
-
           <button
             type="submit"
             disabled={loading || !email || !password}
             className="w-full py-3 rounded-xl bg-escola-dourado text-escola-bg font-medium text-sm hover:bg-escola-dourado-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {loading ? "A entrar..." : "Entrar"}
-          </button>
-
-          <button
-            type="button"
-            onClick={handleResetPassword}
-            disabled={resetLoading}
-            className="w-full text-xs text-escola-creme-50 hover:text-escola-creme transition-colors"
-          >
-            {resetLoading ? "A enviar..." : "Esqueci a palavra-passe"}
+            {loading ? "A criar..." : "Criar conta"}
           </button>
         </form>
 
         <div className="mt-8 text-center">
           <p className="text-xs text-escola-creme-50">
-            Ainda nao tens conta?{" "}
-            <Link href="/registar" className="text-escola-dourado hover:underline">
-              Cria aqui
+            Ja tens conta?{" "}
+            <Link href="/entrar" className="text-escola-dourado hover:underline">
+              Entra aqui
             </Link>
           </p>
         </div>
