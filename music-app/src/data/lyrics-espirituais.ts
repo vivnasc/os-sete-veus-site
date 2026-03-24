@@ -1098,16 +1098,6 @@ Nao peso o que recebi em troca
 O gesto e inteiro por si mesmo
 A generosidade nao se choca
 
-[Chorus]
-Dar e so isto
-A mao que se abre no ar
-Dar e so isto
-O pao que passa de par em par
-Nao precisa de nome
-Nao precisa de altar
-So a mao, so o gesto
-So o pao sobre o lar
-
 [Bridge]
 Nao me esvazio quando dou
 O poco nao seca na dacao
@@ -1221,7 +1211,7 @@ Cada gesto tem o seu momento
 Sirvo com os pes no chao
 Sirvo com o corpo inteiro
 Sirvo sem perder o fio
-Sirvo e sou eu — verdadeiro
+Sirvo e sou eu — verdadeira
 Nao e o peso do servir
 Que me faz dobrar o joelho
 E a graca do servir
@@ -1239,16 +1229,6 @@ O prato que aquece a mao enquanto passo
 Deixo a musica entrar no que entrego
 Nao e trabalho — e abrir espaco
 
-[Chorus]
-Sirvo com os pes no chao
-Sirvo com o corpo inteiro
-Sirvo sem perder o fio
-Sirvo e sou eu — verdadeiro
-Nao e o peso do servir
-Que me faz dobrar o joelho
-E a graca do servir
-Que me faz brilhar no espelho
-
 [Bridge]
 Digo basta quando chega a hora
 O basta tambem faz parte do oficio
@@ -1259,7 +1239,7 @@ Antes de honrar o servico
 Sirvo com os pes no chao
 Sirvo com o corpo inteiro
 Sirvo sem perder o fio
-Sirvo e sou eu — verdadeiro
+Sirvo e sou eu — verdadeira
 Nao e o peso do servir
 Que me faz dobrar o joelho
 E a graca do servir
@@ -1269,7 +1249,7 @@ Que me faz brilhar no espelho
 Sirvo porque quero
 Nao porque me rendem
 As maos servem livres
-Quando os pés compreendem`,
+Quando os pes compreendem`,
 
   "espiritual-maos-abertas/4": `[Verse 1]
 My hands are open to the morning light
@@ -2495,6 +2475,10 @@ Nave — o eco mora aqui
 Nave — o centro que e meu
 Quando o mundo nao tem chao
 Esta sala tem o eu
+Nave — nao precisa de altar
+Nave — ja e sagrada assim
+O silencio que vive em mim
+Nao pede que eu o justifique
 
 [Verse 3]
 As paredes respiram comigo
@@ -2507,6 +2491,10 @@ Nave — o eco mora aqui
 Nave — o centro que e meu
 Quando o mundo nao tem chao
 Esta sala tem o eu
+Nave — nao precisa de altar
+Nave — ja e sagrada assim
+O silencio que vive em mim
+Nao pede que eu o justifique
 
 [Bridge]
 Ha uma quietude que nao e morte
@@ -2720,6 +2708,10 @@ Um — e isso chega
 Um — nao e pouco
 O numero mais corajoso
 E o numero que e eu
+Um — nao precisa de eco
+Um — nao precisa de prova
+A pessoa inteira que habito
+E toda a casa que aprovo
 
 [Verse 3]
 Nao preciso de ser multidao
@@ -2732,6 +2724,10 @@ Um — e isso chega
 Um — nao e pouco
 O numero mais corajoso
 E o numero que e eu
+Um — nao precisa de eco
+Um — nao precisa de prova
+A pessoa inteira que habito
+E toda a casa que aprovo
 
 [Bridge]
 Nao e derrota ser singular
@@ -2891,784 +2887,1046 @@ And that is the whole story`,
   // ALBUM 16: MESMA AGUA (we are all the same water)
   // ─────────────────────────────────────────────
 
-  "espiritual-mesma-agua/1": `[Verse]
-Uma gota no rio
-Nao sabe que e rio
-Cai da chuva e pensa
-Que esta a cair sozinha
+  "espiritual-mesma-agua/1": `[Verse 1]
+Caio do ceu sem saber o que sou
+Uma gota pequena no ar
+Nao sei o rio de onde vim
+Nem sei aonde vou parar
 
-[Verse]
-Mas o rio ja sabe
-Ja a sentiu chegar
-O rio nao pergunta
-O rio deixa entrar
+[Verse 2]
+Toco o chao e dissolvo devagar
+A terra bebe o que era meu
+E o que eu era ja nao esta
+Mas o que sou nao morreu
 
 [Chorus]
-Somos a mesma agua
-A mesma sede a mesma sede
-O que corre em ti
-Ja correu em mim
-
-[Bridge]
-Nao ha margem entre nos
-So a ilusao de pele
-O teu suor e o meu
-Sabem ao mesmo sal
-
-[Outro]
 Uma so
-Sempre foi uma so`,
+debaixo de mil nomes
+Uma so
+debaixo de mil rostos
+A agua nao tem fronteira
+A agua nao tem posto
+Uma so
+do mar ate a nuvem
+Uma so
+do choro ate o gosto
 
-  "espiritual-mesma-agua/2": `[Verse]
-You wash your face in the morning
-With the same water
-That fell on a stranger's roof last night
-That fed a field you'll never see
+[Verse 3]
+Ja nao pergunto se sou gota ou mar
+A margem nao me define
+O que me move nao tem nome
+E o que me une nao me mina
 
-[Verse]
-The river doesn't choose
-Whose thirst to quench
-It moves through everything
-Without asking what it means
+[Bridge]
+Sente a agua no teu corpo
+Sente o peso no teu pe
+O que te atravessa agora
+E o mesmo que me fez
+
+[Outro]
+Gota
+Rio
+Mar
+Uma so`,
+
+  "espiritual-mesma-agua/2": `[Verse 1]
+I feel it in the morning
+Before I know my name
+A current moving through me
+That does not know my shame
+
+[Verse 2]
+You feel it in your body
+That pull beneath your skin
+The river does not ask you
+Where you have always been
 
 [Chorus]
 Same river
-Running through your veins
-Through the woman on the bus
-Through the child in the rain
+running under different ground
 Same river
-We just forgot its name
+making the same sound
+You are not the stone
+You are what moves the stone
+Same river
+no one runs alone
+
+[Verse 3]
+I carried what my mother
+Could never set aside
+The current did not leave me
+It only went inside
 
 [Bridge]
-There is no mine
-There is no yours
-Just water
-Finding its way home
+Feel the pull behind your sternum
+Feel the tide behind your eyes
+Everything that moves in rivers
+Moves in you tonight
 
 [Outro]
+The river does not end
+It only changes name
 Same river
-Always the same`,
+all the same`,
 
-  "espiritual-mesma-agua/3": `[Verse]
-O mar e salgado
-Como os meus olhos
-Quando choro
-Nao invento agua nova
-Choro o mar antigo
+  "espiritual-mesma-agua/3": `[Verse 1]
+Chorei tanto que fui ao mar perguntar
+Onde vai o que eu choro aqui
+O mar disse nao sei distinguir
+O que e meu do que e de ti
 
-[Verse]
-A minha avo chorou este sal
-E a mae dela tambem
-Lagrimas velhas num rosto novo
-A agua nao esquece de onde vem
+[Verse 2]
+Levo a lingua ao canto dos labios
+Tem o gosto do oceano fundo
+O corpo ja sabe o que a cabeca
+Ainda esta a descobrir no mundo
 
 [Chorus]
 Sal
-O que me arde nos olhos
-E o mesmo que flutua no mar
+o teu choro e sal
 Sal
-Nao ha lagrima sozinha
-Ha um oceano a chorar
+o mar e sal
+A dor que te encharca por dentro
+Ja viveu no litoral
+Sal
+o que cais e sal
+Nao choras so por ti
+Choras por todas as que choram igual
+
+[Verse 3]
+Passo a mao no rosto molhado
+Nao sei se e chuva ou se sou eu
+O ceu tambem tem os seus dias
+O ceu tambem as vezes chove e deu
 
 [Bridge]
-Se a tua dor tem gosto
-Poe na lingua
-E o sabor de todas nos
+Sente o sal na garganta
+Sente o ardor nos olhos teus
+Esse e o mesmo sal do mar
+Esse e o mesmo sal de Deus
 
 [Outro]
-Sal
-O mais antigo
-Dos lacos`,
+Sal no rosto
+Sal no mar
+Sal`,
 
-  "espiritual-mesma-agua/4": `[Verse]
-Every creek feeds a river
-Every river finds the sea
-And the sea becomes the rain
-That falls on you and me
+  "espiritual-mesma-agua/4": `[Verse 1]
+I come from the hill where the rains begin
+Where the red earth drinks the sky
+I find the river somewhere in the valley
+And I do not stop to ask her why
 
-[Verse]
-I thought I was a puddle
-Stuck and going nowhere
-But a puddle is a sky
-Reflected without knowing
+[Verse 2]
+My grandmother walked this water's edge
+Her feet made the same soft sound
+Every life that ever moved through here
+Has moved this same red ground
 
 [Chorus]
 Tributary
-I'm a tributary
-You're a tributary
-Nobody flows alone
-Nobody flows alone
+every life runs into something larger
+Tributary
+every grief finds the water
+You are not the end
+You are the way the river bends
+Tributary
+every story adds the current
+Tributary
+nothing here is permanent
+
+[Verse 3]
+The marrabenta plays at the delta mouth
+Where the fresh water meets the brine
+I dance because my body knows the meeting
+Of your current meeting mine
 
 [Bridge]
-The dance of meeting
-Where your current hits mine
-And we don't disappear
-We become wider
+Feel your feet on the wet ground
+Feel the pull toward the sea
+Every river finds its ending
+In what it was born to be
 
 [Outro]
-Tributary
-Flowing into something
-We can't see from here`,
+Running
+Running
+Into the open sea`,
 
-  "espiritual-mesma-agua/5": `[Verse]
-Ha um lugar onde o rio
-Para de ter nome
-Onde a agua doce beija o sal
-E nenhuma resiste
+  "espiritual-mesma-agua/5": `[Verse 1]
+Ha um lugar onde o rio para
+De saber que e rio ainda
+Onde o nome que carregava
+Se abre e nao tem saida
 
-[Verse]
-Toda a minha vida
-Tentei ser margem
-Segurar a agua
-Dar-lhe forma e direcao
+[Verse 2]
+Ha um lugar no meu peito
+Onde tudo ja chegou
+Onde a dor nao pede licenca
+E o amor nunca se acabou
 
 [Chorus]
 Desaguar
-E chegar ao lugar
-Onde ja nao controlas
-E o mar te aceita igual
+deixar ir o que me trazia
 Desaguar
-E deixar de ser rio
-Para ser parte do mar
+nao e morte e e vida
+Deixar o nome na margem
+Deixar o medo na areia
+Desaguar
+onde todas as aguas chegam
+Desaguar
+onde nenhuma agua e pequena
+
+[Verse 3]
+Eu tambem carreguei pedras
+Eu tambem fui rio fundo
+Mas o mar nao pede provas
+De quanto percorri o mundo
 
 [Bridge]
-Nao e morrer
-E alargar
-Perder o nome
-Ganhar o mar
+Sente o momento antes de chegar
+Quando o rio ja nao e so rio
+Quando o corpo sabe antes de saber
+Que chegou o que era meu
 
 [Outro]
-Desaguar
-O principio e o fim
-Sao a mesma agua`,
+Aqui
+Juntas
+Desaguamos
+Juntas`,
 
   // ─────────────────────────────────────────────
   // ALBUM 17: ALEM DO NOME (the divine beyond naming)
   // ─────────────────────────────────────────────
 
-  "espiritual-alem-nome/1": `[Verse]
-Disseram-me Deus
-E nao coube
-Disseram-me universo
-E soou a poster
+  "espiritual-alem-nome/1": `[Verse 1]
+Quando acabam as palavras todas
+E o silencio fica so
+Ha qualquer coisa ainda acesa
+Que nao sabe dizer adeus nao
 
-[Verse]
-Disseram-me energia
-E pensei em electricidade
-Disseram-me fonte
-E vi uma torneira
+[Verse 2]
+Ponho o nome de Deus na lingua
+Nao encaixa no que sinto aqui
+Ponho o nome do universo
+Tambem nao cabe em mim
 
 [Chorus]
 Sem nome
-O que sinto nao tem nome
-E nao precisa
-O peito sabe
-Antes da boca tentar
+e so assim que chega
+Sem nome
+e so assim que fica
+Nao e o que eu chamo
+E o que me chama a mim
+Sem nome
+antes de qualquer crenca
+Sem nome
+antes de qualquer principio
+
+[Verse 3]
+O bebe nao sabe ainda falar
+E ja sente o que eu esqueci
+Ha qualquer coisa anterior ao nome
+Que eu tinha antes de ser eu assim
 
 [Bridge]
-Se te nomeio
-Encolho-te
-Se te calo
-Sinto-te maior
+Deixa cair o que aprendeste a dizer
+Deixa o peito respirar sem traduzir
+O que fica depois de tudo cair
+E o unico que nunca vai partir
 
 [Outro]
 Sem nome
-Fica assim
-Sem nome`,
+Sem nome
+Aqui`,
 
-  "espiritual-alem-nome/2": `[Verse]
-Not God
-That word carries too many buildings
-Too many rules written by men
-Who never once asked my body what it knew
+  "espiritual-alem-nome/2": `[Verse 1]
+I tried the word God and it closed a door
+I tried universe and it rang hollow
+I tried source and light and higher power
+But nothing fit the ache I carry
 
-[Verse]
-Not the universe
-That sounds like a poster
-In a waiting room
-Where nobody waits for anything real
+[Verse 2]
+It is not a being and it is not a force
+It is not the heaven they described to me
+It is the thing that happens in the chest
+Before the mind can turn it into a belief
 
 [Chorus]
-What's left
-When every name is taken off
-When every label falls
-What's left
-Is the thing itself
-And it doesn't need me
-To call it anything
+Not God
+not the word they gave you
+Not God
+not the name they laid on you
+Something older than the language
+Something under every stone
+Not God
+as anyone has said it
+Not God
+but not alone
+
+[Verse 3]
+My mother kneeled on Sunday and I kneeled
+But what we touched was probably the same
+She called it Jesus I call it nothing
+We were both reaching past the name
 
 [Bridge]
-I stopped naming it
-And it got closer
-I stopped reaching
-And it arrived
+Feel it in the body
+before you call it anything
+The tremor that arrives at 3am
+The quiet after crying
+The thing that stays when everything is gone
 
 [Outro]
-Not God
-Not light
-Not energy
-Just this`,
+Not the word
+What the word is reaching for
+That`,
 
-  "espiritual-alem-nome/3": `[Verse]
-Ha um buraco no centro
-De tudo o que sei
-Nao e falta
-Nao e ferida
-E espaco
+  "espiritual-alem-nome/3": `[Verse 1]
+Tenho a casa cheia de coisas bonitas
+Tenho as respostas que me pediram
+Mas no meio do peito ha um buraco
+Que nenhuma dessas coisas encheram
 
-[Verse]
-Tentei encher com nomes
-Com livros com respostas
-Com altares improvisados
-Em cozinhas e em carros
+[Verse 2]
+Tentei com amor e quase chegou
+Tentei com trabalho e distraia
+Tentei com crenca e aconchegou
+Mas de manha la estava ele ainda
 
 [Chorus]
 O buraco no meio
-Nao precisa de ser tapado
-Nao precisa de nome
-Nao precisa de mim
-So precisa de ficar
+nao e para tapar
+O buraco no meio
+nao e para curar
+E a porta que ficou aberta
+Quando tudo o mais fechou
+O buraco no meio
+e o sitio mais inteiro
+O buraco no meio
+e o sitio mais meu
+
+[Verse 3]
+Aprendi a deitar o dedo ali
+Aprendi a nao ter medo do oco
+E percebi que o que eu procurava fora
+Era o espaco que eu deixava pouco a pouco
+
+[Bridge]
+Sente o vazio no esterno
+Nao o empurres para longe
+E a respiracao que nao se completa
+E o lugar onde o sagrado te esconde
+
+[Outro]
+Aqui
 Aberto
+Meu`,
 
-[Bridge]
-Cabe tudo no vazio
-Se parares de ter medo dele
-O vazio nao e ausencia
-E o sitio onde cabe o que nao sabes
+  "espiritual-alem-nome/4": `[Verse 1]
+Antes da palavra havia um som
+Antes do som havia o ar
+Antes do ar havia o peito
+Antes do peito havia o que nao da para nomear
 
-[Outro]
-O buraco no meio
-E a porta`,
-
-  "espiritual-alem-nome/4": `[Verse]
-Antes de Deus
-Antes de palavra
-Antes do pensamento
-Formar a sua casca
-
-[Verse]
-Um som
-Que nao e som
-E vibracao no osso
-Antes do ouvido saber ouvir
+[Verse 2]
+A boca abre e sai um hum
+Nao e palavra e nao e prece
+E o corpo a lembrar ao espirito
+Que ainda existe que ainda aparece
 
 [Chorus]
 Hum
-O som de antes
+antes do amem e o hum
 Hum
-O som de tudo
-Nao e canto nao e reza
-E o corpo a vibrar
-Com o que nao sabe dizer
+antes do nome e o hum
+O peito vibra e a voz responde
+Ao que a boca nunca disse
+Hum
+quando nao ha mais nada
+Hum
+quando nada mais sufice
+
+[Verse 3]
+Na igreja havia orgao e havia letra
+Mas o que ficava era a vibracao
+O corpo sente antes de acreditar
+O hum e anterior a opiniao
 
 [Bridge]
-Fecha a boca
-Abre o peito
-O som sai por dentro
-Para dentro
+Fecha os olhos
+Deixa o som nascer no peito
+Nao e certo nem e errado
+E o mais antigo dos respeitos
+Hum
+Hum
 
 [Outro]
 Hum
-E tudo
-E nada
-E o nome antes dos nomes`,
+Hum
+Hum
+So isso
+So isso`,
 
   // ─────────────────────────────────────────────
   // ALBUM 18: RESPIRAR (breath as the most basic sacred act)
   // ─────────────────────────────────────────────
 
-  "espiritual-respirar/1": `[Verse]
-O ar entra
-Nao porque eu mande
-Entra porque o corpo
-Ainda quer estar aqui
+  "espiritual-respirar/1": `[Verse 1]
+Abre a boca devagar
+deixa o mundo entrar
+o ar que vem de tao longe
+agora e teu lugar
 
-[Verse]
-Cada inspiracao
-E um sim involuntario
-O corpo diz sim
-Antes de eu decidir
-
-[Chorus]
-Inspira
-Recebe o mundo inteiro
-Num gesto que nao pensas
-Inspira
-O ar nao te pergunta
-Se mereces
-
-[Bridge]
-Os pulmoes abrem
-Como maos
-A receber
-O que nao pediram
-
-[Outro]
-Inspira
-O milagre mais simples
-E o que fazes agora`,
-
-  "espiritual-respirar/2": `[Verse]
-Between the in
-And the out
-There is a room
-You've never visited
-
-[Verse]
-Hold it
-Not to control
-But to notice
-This sliver of stillness
-Between two movements
+[Verse 2]
+Nao e teu o vento
+mas ele vem a ti
+enche o que estava vazio
+como sempre foi assim
 
 [Chorus]
-Hold
-The space between breaths
-Where nothing happens
-And everything waits
-Hold
-Not forever
-Just long enough
-To feel the edge
+Inspira, inspira
+o que e vivo nao pede licenca
+inspira, inspira
+cada vez que recebes comecas
+inspira o medo inspira a manha
+inspira o que ainda nao tem nome
+o mundo entra em ti pela garganta
+e tu nao tens de merecer o que te tome
 
-[Bridge]
-In this pause
-You are not breathing
-And you are not dying
-You are just
-Here
-
-[Outro]
-Hold
-And know
-The pause
-Is yours`,
-
-  "espiritual-respirar/3": `[Verse]
-O ar sai
-E leva
-O que eu segurava
-Sem saber
-
-[Verse]
-Expiro a conversa de ontem
-Expiro a raiva guardada na mandibula
-Expiro o medo que morava nos ombros
-Expiro e fico mais leve
-
-[Chorus]
-Expira
-Nao e perder
-E devolver
-O que nunca foi teu
-Expira
-O corpo sabe
-O que soltar
+[Verse 3]
+Ha um pulmao que nao conheces
+que abre mesmo assim
+que recebe o que nao pedes
+o ar que e fim e inicio
 
 [Bridge]
 Nao precisas de saber
-O que estas a largar
-O ar sabe
-Os pulmoes sabem
-Tu so precisas
-De deixar sair
+como e que funciona
+so precisas de abrir
+o que o corpo abandona
+
+[Outro]
+Inspira
+so isso
+inspira`,
+
+  "espiritual-respirar/2": `[Verse 1]
+The moment between the in and out
+is longer than you think
+the body knows to pause there
+right there at the brink
+
+[Verse 2]
+You are holding something
+you don't have a word for
+the lungs just wait in silence
+before they ask for more
+
+[Chorus]
+Hold, hold
+the space between two worlds
+hold, hold
+where breath becomes a choice
+hold what you don't know yet
+hold what can't be spoken
+hold yourself right there
+before the moment opens
+
+[Verse 3]
+This is not about control
+this is not about fear
+this is just the body
+saying: you are here
+
+[Bridge]
+Between the wave and shore
+between the note and rest
+this is where you live
+this pause inside your chest
+
+[Outro]
+Hold
+just hold
+then let it go`,
+
+  "espiritual-respirar/3": `[Verse 1]
+Sai pela boca o que nao precisas
+o ar usado o ar que ja fez
+o corpo sabe o que e gasto
+largas sem saber quantas vezes
+
+[Verse 2]
+Ha coisas que guardas como ar velho
+que ocupam espaco que e teu
+largar nao e perder o que importa
+e so devolver o que nao te deu
+
+[Chorus]
+Expira, expira
+o que entrou tem de sair
+expira, expira
+nao ha amor em nao ceder
+expira o orgulho expira a defesa
+expira o que ja cumpriu a sua vez
+o corpo nunca mente quando cansa
+largas e ja nao sabes que largas
+
+[Verse 3]
+Nao e fraqueza o que sai de ti
+e o ciclo que te mantem viva
+o que expiras volta ao mundo
+como o que recebes foi vivido
+
+[Bridge]
+Nao segures o que ja passou
+o pulmao nao te perdoa
+o que nao largas asfixia
+ate o que ainda e tua
 
 [Outro]
 Expira
-E confia
-No vazio que fica`,
+devagar
+expira`,
 
-  "espiritual-respirar/4": `[Verse]
-Lungs tight
-Air thin
-The room too small
-The panic rising in
+  "espiritual-respirar/4": `[Verse 1]
+The chest locks up without warning
+the throat forgets its job
+the body grabs for something
+that isn't there to grab
 
-[Verse]
-When the breath won't come
-The body screams
-Not in words
-In muscle in nerve in sweat
+[Verse 2]
+This is not a metaphor
+the lungs are made of want
+when the air runs out the body
+becomes its own font
 
 [Chorus]
-Breathless
-Is the body begging
-For one more chance
-Breathless
-Is the proof
-You were never indifferent
-To being alive
+Breathless, breathless
+the body doesn't lie
+breathless, breathless
+it screams before you cry
+breathless in the panic
+breathless in the grief
+breathless is the body
+begging for relief
+breathless, breathless
+even here you're still alive
+
+[Verse 3]
+You can't think your way to oxygen
+the ribs know what to do
+the gasp that comes before the sob
+is the body fighting for you
 
 [Bridge]
-When air is taken
-You understand
-Every breath before
-Was a gift
-You never unwrapped
+Not weak not broken
+not too much not wrong
+the breathless moment passes
+you've been here all along
 
 [Outro]
 Breathless
-And still wanting
-One more`,
+and then
+the breath`,
 
-  "espiritual-respirar/5": `[Verse]
-A noite toda
-Respirei sem querer
-O corpo trabalhou por mim
-Enquanto eu dormia
+  "espiritual-respirar/5": `[Verse 1]
+Nao foste tu que decidiste
+a primeira vez que encheste os pulmoes
+o corpo simplesmente abriu
+e tomou o que era teu
 
-[Verse]
-Nao mandei nos pulmoes
-Nao contei as vezes
-O peito subiu e desceu
-Como as mares
+[Verse 2]
+A respiracao nao pede
+nao explica e nao espera
+acontece enquanto dormes
+enquanto choras enquanto ceras
 
 [Chorus]
-Respiro
-Sem decidir
-O corpo sabe
-O corpo cuida
-Respiro
-E o ritmo mais velho
-Que tenho
+Respiro, respiro
+sem saber que estou a respirar
+respiro, respiro
+ha vida que nao precisa de gestionar
+respiro quando o medo e grande
+respiro quando a logica falhou
+respiro antes de saber a resposta
+o corpo antecede o que a mente ainda nao viu
+
+[Verse 3]
+Deixa o diafragma decidir
+ele sabe mais do que parece
+ha uma sabedoria no involuntario
+que so aparece quando cedes
 
 [Bridge]
-Se o corpo confia no ar
-E o ar confia no corpo
-Talvez eu possa confiar
-Em alguma coisa tambem
+Nao sejas o gestor do teu proprio ar
+as vezes a melhor coisa e nao fazer nada
+o corpo sobe e desce sem tua ordem
+a vida mais profunda e a que nao e planeada
 
 [Outro]
 Respiro
-Nao porque mando
-Porque o corpo
-Ainda quer ficar`,
+mesmo assim
+respiro`,
 
   // ─────────────────────────────────────────────
   // ALBUM 19: CINZA E SEMENTE (death and rebirth — compost spirituality)
   // ─────────────────────────────────────────────
 
-  "espiritual-cinza-semente/1": `[Verse]
-Queimou
-Nao ha outra palavra
-O que era
-Ja nao e
+  "espiritual-cinza-semente/1": `[Verse 1]
+Nao foi bonito como dizem
+nao foi necessario nao foi certo
+ardeu porque ardeu porque ardeu
+e o fogo nao pediu teu consentimento
 
-[Verse]
-Nao me pecam para ver beleza nisto
-A cinza nao e bonita
-Cheira a fim
-E o fim nao e poetico
+[Verse 2]
+Ficou a cinza e ficou o cheiro
+ficou o espaco que antes era cheio
+nao romantizes o que destruiu
+o que se perdeu nao volta ao meio
 
 [Chorus]
-Queimou
-E eu fiquei de pe
-No meio do que sobrou
-Sem saber para onde ir
-Queimou
-E o chao ficou preto
-E os meus pes ficaram pretos
-E eu fiquei
+Queimou, queimou
+nao ha palavra melhor
+queimou, queimou
+sem heroismo sem glamour
+queimou a casa queimou o plano
+queimou o que julgavas resistente
+e o que ficou nao e licao nem premio
+e so o que sobrou de ti presente
+
+[Verse 3]
+A dor do fogo nao tem metafora
+e so dor e e so real
+nao aprendeste porque sofreu
+sofreu e ja nao ha igual
 
 [Bridge]
-A verdade da cinza
-E que e quente
-Ainda queima
-Quem tenta tocar cedo demais
+Mas aqui estas
+na cinza ainda quente
+aqui estas
+nao inteira mas presente
+nao precisas de tirar licao do fogo
+so precisas de nao mentir sobre o que ardeu
 
 [Outro]
 Queimou
-E isso e tudo
-Por agora
-E tudo`,
+e ficaste
+queimou`,
 
-  "espiritual-cinza-semente/2": `[Verse]
-The apple core
-Thrown behind the fence
-Is not garbage
-It is a conversation with the soil
+  "espiritual-cinza-semente/2": `[Verse 1]
+The fruit goes soft before it feeds the ground
+the leaf turns dark before it gives its gift
+the body of the thing that lived and fell
+becomes the thing that helps the new one lift
 
-[Verse]
-What rots
-Becomes rich
-What falls apart
-Becomes the floor
-For something new to stand on
+[Verse 2]
+There's nothing clean about this kind of grace
+it smells like ending looks like loss and rot
+but underneath the surface something stirs
+becoming what it wasn't what it's not
 
 [Chorus]
+Compost, compost
+the beautiful and rotten are the same
+compost, compost
+nothing that has lived is lost in vain
+compost the grief compost the failure
+compost what you built and watched it die
+everything that breaks becomes the basis
+of what reaches next time for the sky
+
+[Verse 3]
+You don't need to understand the process
+you don't need to see it turn to soil
+the dark below the surface does its work
+without your witness without your toil
+
+[Bridge]
+Not a lesson
+not a plan
+not a system you can manage with your hand
+just the world
+eating what it made
+paying forward to the ones who come afraid
+
+[Outro]
 Compost
-The ugly work of becoming
-Compost
-The smell of change
-That nobody wants to sit with
-But everything grows from
+and wait
+compost`,
 
-[Bridge]
-You don't get flowers
-Without the stink
-You don't get fruit
-Without the rot
-That is the deal
-That is the whole deal
+  "espiritual-cinza-semente/3": `[Verse 1]
+Nao sabes que esta la
+ainda nao tem forma
+a semente no escuro
+nao conhece a norma
 
-[Outro]
-Compost
-Not pretty
-But honest
-And alive`,
-
-  "espiritual-cinza-semente/3": `[Verse]
-Debaixo da terra
-Onde ninguem ve
-Algo abre
-Devagar como um segredo
-
-[Verse]
-A semente nao sabe
-Que vai ser arvore
-So sabe que o escuro
-E onde precisa de estar
+[Verse 2]
+Nao ha luz debaixo da terra
+nao ha mapa nao ha guia
+a semente nao decide
+so acontece o que tinha
 
 [Chorus]
-Debaixo
-Onde ninguem aplaude
-Onde ninguem fotografa
-Debaixo
-O trabalho mais sagrado
-Acontece sem testemunhas
+Debaixo, debaixo
+ha vida que nao se ve
+debaixo, debaixo
+ha raiz antes do pe
+debaixo do medo ha o corpo
+debaixo do silencio ha o som
+debaixo do que julgavas vazio
+cresce o que ainda nao tem tom
+
+[Verse 3]
+Nao forces o que cresce
+nao abras o que esta fechado
+a semente sabe o tempo
+melhor do que o teu planeado
 
 [Bridge]
-Tens medo do escuro
-Mas o escuro
-E onde tudo comeca
-Raizes nao precisam de sol
-Para saber a direcao
+So o escuro sabe
+o que o escuro guarda
+so a terra sabe
+a que hora o frio acalma
+tu nao precisas de ver
+para que o que cresce seja real
 
 [Outro]
 Debaixo
-Confia
-O escuro sabe
-O que faz`,
+ainda
+debaixo`,
 
-  "espiritual-cinza-semente/4": `[Verse]
-The first green
-Is almost nothing
-A tremble in the dirt
-A breath of colour
-So faint you might miss it
+  "espiritual-cinza-semente/4": `[Verse 1]
+You almost miss it if you aren't looking down
+a colour that's not ready to be seen
+the smallest thing that ever dared to grow
+the first impossible impossible green
 
-[Verse]
-After the fire
-After the winter
-After the long silence
-Something ridiculous happens
-Life insists
+[Verse 2]
+It has no armor for the frost that comes
+it has no strategy for wind or drought
+it just exists in its own fragile way
+not knowing what it's doing without doubt
 
 [Chorus]
-First green
-Fragile as a whisper
-Strong as a fist
-First green
-The audacity of growing
-When everything said stop
+First green, first green
+so tender it could break
+first green, first green
+too early but awake
+first green through the ash field
+first green through the cold
+first green doesn't know yet
+that it will grow old
+first green, first green
+this is where it starts
+
+[Verse 3]
+Don't protect it too much with your hands
+don't name it don't explain it don't project
+the first green only needs what the first green needs
+the rain the dark the time the raw respect
 
 [Bridge]
-It does not ask permission
-It does not check the forecast
-It simply pushes through
-Because that is what life does
-When left alone
-It returns
+Not a promise
+not a sign
+not a signal from the universe that you'll be fine
+just a thing
+that grows because it grows
+in the place where something else already knows
 
 [Outro]
 First green
-Not a miracle
-Just the world
-Refusing to stay empty`,
+just that
+first green`,
 
   // ─────────────────────────────────────────────
   // ALBUM 20: CHAMA ULTIMA (the eternal flame — what remains)
   // ─────────────────────────────────────────────
 
-  "espiritual-chama-ultima/1": `[Verse]
-Tira o nome
-Tira o emprego
-Tira a morada
-E as roupas todas
+  "espiritual-chama-ultima/1": `[Verse 1]
+Tira o nome que te puseram cedo
+Tira o emprego que te da o lugar
+Tira a morada, tira o papel
+O que fica quando nao ha onde estar
 
-[Verse]
-Tira o cabelo
-Tira a historia
-Tira as pessoas
-Que dizem que te conhecem
+[Verse 2]
+Tira a historia que contaste tantas vezes
+Tira as roupas que a ocasiao exige
+Tira os titulos, os papeis, as promessas
+O que fica quando ninguem te dirige
+
+[Pre-Chorus]
+Nao tenho medo de ficar nua
+Tenho medo do que vou ver
+Que nua sou mais do que pensava
+Que nua sei quem posso ser
 
 [Chorus]
-O que fica
-Quando nao sobra nada
-O que fica
-E o que sempre esteve
-Antes de tudo o que tiraram
-E o que nunca ninguem
-Conseguiu tocar
+Tira tudo — o que fica e teu
+Tira tudo — o que nao se vai embora
+Tira tudo — isso e o que nasceu
+Antes do nome, antes da hora
+Nao e o titulo que te faz inteira
+Nao e o papel que te da valor
+O que fica quando tiras tudo
+E o que sempre foste — anterior
+
+[Verse 3]
+Chego ao osso, chego ao silencio puro
+Chego ao ponto onde o eco para
+Aqui nao ha versao nem discurso
+Aqui sou a coisa mais rara
 
 [Bridge]
-Nao tenho medo
-De ficar nua
-Tenho medo
-De descobrir
-Que nua sou mais
+Ha uma coisa que nao se tira
+Que nem o tempo sabe desfazer
+Que vive antes de teres historia
+Que vai ficar quando ja nao deres
+
+[Chorus]
+Tira tudo — o que fica e teu
+Tira tudo — o que nao se vai embora
+Tira tudo — isso e o que nasceu
+Antes do nome, antes da hora
+Nao e o titulo que te faz inteira
+Nao e o papel que te da valor
+O que fica quando tiras tudo
+E o que sempre foste — anterior
 
 [Outro]
 Tira tudo
-E ve
-O que nao se tira`,
+Fica parada
+Ve o que nao se tira
+Ve o que sempre estava`,
 
-  "espiritual-chama-ultima/2": `[Verse]
-An ember
-In the dark
-So small
-You'd miss it
-If you weren't looking
-With your hands
+  "espiritual-chama-ultima/2": `[Verse 1]
+You could miss it in the dark — it's that small
+A red point holding on inside the cold
+Not looking for the wind, not looking for the wall
+Just breathing slow on what it can't be told
 
-[Verse]
-Not a blaze
-Not a bonfire
-Not a declaration
-Just a glow
-That refuses
-Quietly
-To go out
+[Verse 2]
+Not a blaze — no one would call this a blaze
+Not the kind of fire people stop to name
+Just a point of heat inside the haze
+That refused to be extinguished by the rain
+
+[Pre-Chorus]
+You don't need to fill the room with light
+You don't need to make the darkness run
+You just need to hold through one more night
+Small and warm until the morning comes
 
 [Chorus]
-Ember
-You thought you were finished
-Ember
-You thought the cold won
-But here you are
-Small and stubborn
-Warm to the touch
+Ember — you thought you were finished
+Ember — you thought the cold had won
+Smaller than the story of a fire
+Warmer than the winter you've become
+Ember — not asking to be noticed
+Ember — not trying to be bright
+Something in you would not stop existing
+One red point against the endless night
+
+[Verse 3]
+The ones who counted ashes left you there
+They wrote their cold reports and walked away
+But underneath the grey was something rare —
+The thing that heat leaves in when heat won't stay
 
 [Bridge]
-You don't need to be a fire
-To matter
-You just need
-To still be warm
-When the morning comes
+To be an ember is not defeat
+It is the most determined kind of light
+You are not a ruin — you are heat
+Still here — which is the hardest word tonight
+
+[Chorus]
+Ember — you thought you were finished
+Ember — you thought the cold had won
+Smaller than the story of a fire
+Warmer than the winter you've become
+Ember — not asking to be noticed
+Ember — not trying to be bright
+Something in you would not stop existing
+One red point against the endless night
 
 [Outro]
 Ember
 Still here
+Still here
+Warm to the touch
 Still here`,
 
-  "espiritual-chama-ultima/3": `[Verse]
-Debaixo da pele
-Debaixo do musculo
-Debaixo da gordura e do medo
-Ha osso
+  "espiritual-chama-ultima/3": `[Verse 1]
+Debaixo da pele existe o musculo tenso
+Debaixo do musculo existe o medo antigo
+Debaixo do medo, antes de tudo o que penso
+Ha osso — que e meu e nao tem inimigo
 
-[Verse]
-O osso nao mente
-Nao se esconde
-Nao finge ser mais do que e
-E a estrutura que segura
-O que o mundo ve
+[Verse 2]
+O osso nao mente, nao serve de mascara
+Nao finge ser mais do que a estrutura da
+Segura o corpo quando tudo fracassa
+Segura o centro quando o centro cai
+
+[Pre-Chorus]
+Poe a mao no pulso
+Sente o que resiste
+Antes de teres historia
+Antes de toda a lista
 
 [Chorus]
-Osso
-O que es antes de tudo
-Osso
-O que restas depois de tudo
-A parte de ti
-Que nao se queima
-Que nao se dobra
-Que nao pede desculpa
+Osso — o que es antes de tudo
+Osso — o que restas depois de tudo
+Nao se queima, nao se dobra, nao pede desculpa
+Nao precisa de vestir para provar
+Osso — anterior a qualquer titulo
+Osso — posterior a qualquer final
+A parte de ti que nunca foi emprestada
+E a parte de ti que nao se pode dar
+
+[Verse 3]
+Ha dias em que a carne nao aguenta
+Dias em que a pele parece fina
+Mas o osso fica — calado, contenta
+Com ser a verdade mais pequena
 
 [Bridge]
-Se alguma vez duvidares
-Do que es
-Poe a mao no pulso
-E sente o osso
-Isso es tu
-Antes de teres nome
+Marrabenta no quadril quando a vida pesa
+Marrabenta no peito quando o tempo aperta
+O osso absorve o ritmo, abraca a certeza
+Nao e rigidez — e a base desperta
+
+[Chorus]
+Osso — o que es antes de tudo
+Osso — o que restas depois de tudo
+Nao se queima, nao se dobra, nao pede desculpa
+Nao precisa de vestir para provar
+Osso — anterior a qualquer titulo
+Osso — posterior a qualquer final
+A parte de ti que nunca foi emprestada
+E a parte de ti que nao se pode dar
 
 [Outro]
 Osso
 O essencial
-Nao se veste`,
+Nao se veste
+Nao se empresta
+Nao se esquece`,
 
-  "espiritual-chama-ultima/4": `[Verse]
-They said the fire was out
-They said the night had won
-They counted the ashes
-And wrote their reports
+  "espiritual-chama-ultima/4": `[Verse 1]
+They said the fire was out — they made their calls
+They counted what was left and wrote it down
+They put their hands against the cooling walls
+And told themselves there was no fire to be found
 
-[Verse]
-But underneath
-Where nobody checked
-Something red
-Was still breathing
+[Verse 2]
+But underneath the layer no one checked
+Where the grey went deep against the black
+Something red was holding its own breath
+Something warm was quietly fighting back
+
+[Pre-Chorus]
+Not because I wanted to persist
+Not because I chose to still be here
+Just because the fire in my fist
+Doesn't ask my fear for permission to appear
 
 [Chorus]
-Still burning
-After everything
-Still burning
-Not because I chose to
-But because the fire
-Doesn't know
-How to ask permission
-To stop
+Still burning — after everything they tried
+Still burning — after every cold they sent
+Not a choice — the flame does not decide
+It just is — and that is what it meant
+Still burning — not as proof of anything
+Not as answer to the ones who said I'm through
+Just burning — the way a fact keeps factoring
+Still burning — that is all I have to do
+
+[Verse 3]
+They can take the wood, they can take the air
+Pour their winter down across my skin
+I will burn wet and stubborn in the where
+They forgot to look — which is within
 
 [Bridge]
-They can take the wood
-They can take the air
-They can pour their water
-And I will burn
-Wet and stubborn
-And alive
+There is no courage here — just physics
+No drama in the ember's refusal
+The fire doesn't know the word for finished
+Survival is not always a decision
+
+[Chorus]
+Still burning — after everything they tried
+Still burning — after every cold they sent
+Not a choice — the flame does not decide
+It just is — and that is what it meant
+Still burning — not as proof of anything
+Not as answer to the ones who said I'm through
+Just burning — the way a fact keeps factoring
+Still burning — that is all I have to do
 
 [Outro]
 Still burning
 That is not hope
+That is fact
 That is fact`,
 
-  "espiritual-chama-ultima/5": `[Verse]
-Nao e metafora
-Nao e imagem bonita
-A chama que sou
-E real como fome
+  "espiritual-chama-ultima/5": `[Verse 1]
+Nao e metafora, nao e imagem bonita
+Nao e a palavra que se usa no poema
+A chama que sou e real como fome
+Real como o corpo quando o corpo condena
 
-[Verse]
-Arde nas maos
-Quando toco o que importa
-Arde no peito
-Quando digo a verdade
-Arde nos olhos
-Quando finalmente vejo
+[Verse 2]
+Arde nas maos quando toco o que importa
+Arde no peito quando digo a verdade
+Arde nos olhos quando finalmente vejo
+O que estava aqui antes desta cidade
+
+[Pre-Chorus]
+Nao pedi para arder assim
+Nao escolhi ser desta forma feita
+Mas ha fogo no centro de mim
+Que nao espera — que nao aceita
 
 [Chorus]
-Chama
-Nao a que ilumina os outros
-Chama
-A que me queima primeiro a mim
-A que nao pedi
-A que nao controlo
-A que sou
+Chama — nao a que ilumina os outros
+Chama — a que me queima primeiro a mim
+A que nao e simbolo nem emblema
+A que nao para perto nem no fim
+Chama — a que existe mesmo apagada
+Chama — a que acende quando resta nada
+Sou isto aqui — nao promessa nem dogma
+Sou a chama — antes de ser mais alguem
+
+[Verse 3]
+Nao e gospel que me enche de luz
+Nao e a letra que me faz chama
+E o fogo que o corpo conduz
+Quando finalmente ouve quem chama
 
 [Bridge]
-Se me apagares
-Acendo
-Se me enterrares
-Brilho no escuro
-A chama nao e escolha
-E o que resta
-Quando tudo o mais arde
+Se me apagares, acendo
+Se me enterrares, brilho no escuro
+Se me deixares em silencio, espero
+E sou o primeiro calor do futuro
+A chama nao e escolha — e o que resta
+E o que persiste quando tudo cedeu
+E o que nunca precisou de festa
+Para saber que sempre foi meu
+
+[Chorus]
+Chama — nao a que ilumina os outros
+Chama — a que me queima primeiro a mim
+A que nao e simbolo nem emblema
+A que nao para perto nem no fim
+Chama — a que existe mesmo apagada
+Chama — a que acende quando resta nada
+Sou isto aqui — nao promessa nem dogma
+Sou a chama — antes de ser mais alguem
 
 [Outro]
 Chama
 A ultima coisa
-Que restas
-Quando ja nao restas nada
-E a chama`,
+Quando ja nao resta nada
+E a chama
+So a chama
+Sempre so a chama`,
 
 };
