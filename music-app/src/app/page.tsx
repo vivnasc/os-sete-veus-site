@@ -67,8 +67,8 @@ export default function MusicHomePage() {
             src="/music_veus_logoname.png"
             alt="Véus"
             width={400}
-            height={160}
-            className="h-20 sm:h-24 md:h-28 w-auto mt-8"
+            height={507}
+            className="h-28 sm:h-32 md:h-40 w-auto mt-8"
           />
           <p className="mt-3 text-base text-[#C9A96E] tracking-widest font-display">by Loranne</p>
           <p className="mt-2 text-sm text-[#666680] max-w-md">
