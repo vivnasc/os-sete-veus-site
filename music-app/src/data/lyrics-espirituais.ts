@@ -195,7 +195,7 @@ do que este chao sem segredos
 A chuva fez este caminho
 as raizes abriram a pedra
 Nao precisas de altar nem cantico
-ajoelha aqui — a terra e sagrada
+ajoelha aqui — a terra te agrada
 
 [Chorus]
 Terra, terra, tens o meu nome
@@ -537,7 +537,7 @@ sem desconto`,
 Nao fiz nada para merecer
 nao rezei nao paguei nenhum preco
 E no entanto chegou de mansinho
-e encheu-me o peito como um especo
+e encheu-me o peito como um apreco
 
 [Verse 2]
 Tremi como quem apanha frio
@@ -765,7 +765,7 @@ Built with trembling hands`,
 O quarto estava vazio e nao estava
 tirei os moveis os quadros os sons
 E o que sobrou entre as quatro paredes
-pesava mais do que as proprias raizes e poes
+pesava mais do que as proprias razoes
 
 [Verse 2]
 Desci as caixas todas para o corredor
@@ -885,7 +885,7 @@ cada musculo uma suplicacao
 
 [Verse 2]
 Seguro o tecto com os ombros curvados
-Seguro o chao com os joelhos em brao
+Seguro o chao com os joelhos no chao
 Seguro o ar nos pulmoes contraidos
 como se largar fosse a minha traicao
 
@@ -1565,7 +1565,7 @@ antes de fazer consumo
 Uma fenda entre as pedras frias
 um pulsar que vem de dentro
 a agua surge sem aviso
-sem map e sem intento
+sem mapa e sem intento
 
 [Chorus]
 Fonte, fonte
@@ -1746,9 +1746,9 @@ afinal e de outra criatura
 
 [Verse 3]
 A mao que me tocou o ombro
-nao pediu nada em troca
+nao pediu retorno ou prova
 nao explicou nem consolou —
-so ficou sem ser convoca
+so ficou — presenca nova
 
 [Bridge]
 Nao e que a dor desapareceu
@@ -1866,7 +1866,7 @@ nos`,
 Sou um grao de areia
 num deserto sem limite
 tao pequena que o vento
-me poderia tirar do que habite
+me poderia tirar do que existe
 
 [Verse 2]
 Mas o grao nao esta sozinho
@@ -1886,7 +1886,7 @@ e que esse grao e o fundamento
 
 [Verse 3]
 Nao preciso de ser montanha
-para que a terra me sinta sob o peso
+para que a terra me sinta por isso
 basta existir com o meu tamanho
 basta o simples gesto
 
@@ -1911,19 +1911,19 @@ ao que sou`,
 Nao sei a quem dirijo
 nao sei se ha quem escute
 So sei que este joelho
-dobrou porque nao aguente
+dobrou porque nao aguentou
 
 [Verse 2]
 As maos nao se juntam por fe
 juntam-se porque tremem
 A boca abre e nao sai voz
-so o ar que o desespero bebe
+so o ar que o desespero estremece
 
 [Chorus]
 Pede — com o poco seco
 pede — com a voz que falha
 pede com o corpo em farrapos
-antes que a noite te engolha
+antes que a noite te engula
 O chao recebe o grito
 o ar carrega a dor
 Pede sem saber o nome
@@ -2084,7 +2084,7 @@ Ficar — isso e a ultima prece
 ficar — sem pedir nem saber
 Ficar com o corpo que tenho
 ficar com o que vai doer
-Nao e resignacao nem rendica
+Nao e resignacao nem rendicao
 e a carne que escolhe o real
 Ficar — essa e a prece
 ficar — no escuro total
@@ -2144,7 +2144,7 @@ que chegou a claridade
 Deixa arder
 sem precisar de saber o que arde
 Deixa arder
-antes que o medo te aparde
+antes que o medo te acobarde
 
 [Outro]
 A faisca nao pede permissao
@@ -2195,13 +2195,13 @@ changed shape`,
 Nao e fogo que destroi portas
 nao e labaredas nem grito
 E o fogo que aquece as paredes
-devagar e silencito
+devagar e infinito
 
 [Verse 2]
 Cada manhã um pouco mais quente
 cada noite um pouco mais funda
 O que era medo virou brasa
-o que era brasa agora pounda
+o que era brasa agora funda
 
 [Chorus]
 Incendio manso — arde sem pressa
@@ -2283,7 +2283,7 @@ so o sal que entra na mente
 Tao grande que o medo muda
 deixa de ser o que era
 Nao e panico que me invade
-e a rendica que me espera
+e a rendicao que me espera
 
 [Chorus]
 Oceano — mais largo que o meu nome
@@ -2377,7 +2377,7 @@ Poeira de estrelas — sou o cosmos
 poeira de estrelas — a respirar aqui
 
 [Verse 3]
-A morte de uma estrela durou milenioes
+A morte de uma estrela durou milenios
 para fazer este ferro que corre
 O universo nao se apressou a criar-me
 a paciencia que o cosmos tem nao morre
@@ -2575,7 +2575,7 @@ A arquitectura mais antiga
 Vive dentro deste peito
 
 [Chorus]
-Costelas — arcos do catedral
+Costelas — arcos da catedral
 O osso que guarda o que e real
 O coracao nao tem porta — tem osso
 E o osso nao cede ao que passa
@@ -2587,7 +2587,7 @@ A catedral esta viva
 Nao precisa de outro lugar
 
 [Chorus]
-Costelas — arcos do catedral
+Costelas — arcos da catedral
 O osso que guarda o que e real
 O coracao nao tem porta — tem osso
 E o osso nao cede ao que passa
@@ -2680,7 +2680,7 @@ O altar sou eu — esse e o inicio
 Este corpo e o lugar mais real
 Esta respiracao e o ritual
 Nao preciso de aprovacao
-Para entrar no meu catedral
+Para entrar na minha catedral
 
 [Chorus]
 O altar e aqui — sempre esteve aqui
