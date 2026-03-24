@@ -18,7 +18,7 @@ export default function CursoPage() {
   if (!course) {
     return (
       <div className="flex min-h-[50dvh] items-center justify-center">
-        <p className="text-escola-creme-50">Curso nao encontrado.</p>
+        <p className="text-escola-creme-50">Curso não encontrado.</p>
       </div>
     );
   }
@@ -41,7 +41,7 @@ export default function CursoPage() {
         href={isStarted ? "/" : "/cursos"}
         className="mb-6 inline-flex items-center gap-1 text-xs text-escola-creme-50 hover:text-escola-creme"
       >
-        <span>&larr;</span> {isStarted ? "Inicio" : "Cursos"}
+        <span>&larr;</span> {isStarted ? "Início" : "Cursos"}
       </Link>
 
       {/* Header */}
@@ -64,7 +64,7 @@ export default function CursoPage() {
         <div className="mb-6">
           <div className="mb-1 flex items-center justify-between">
             <span className="text-xs text-escola-creme-50">
-              {completedCount} de {totalModules} modulos
+              {completedCount} de {totalModules} módulos
             </span>
             <span className="text-xs font-medium text-escola-dourado">{progressPct}%</span>
           </div>
@@ -208,7 +208,7 @@ export default function CursoPage() {
             onClick={handleStart}
             className="w-full rounded-lg bg-escola-dourado px-6 py-3 text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
           >
-            Comecar este curso
+            Começar este curso
           </button>
         </div>
       )}

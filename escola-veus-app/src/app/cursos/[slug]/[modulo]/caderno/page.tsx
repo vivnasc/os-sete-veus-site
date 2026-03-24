@@ -29,7 +29,7 @@ export default function CadernoPage() {
     return (
       <div className="mx-auto flex min-h-[60dvh] max-w-lg flex-col items-center justify-center px-4 text-center">
         <p className="mb-3 text-sm text-escola-creme-50">
-          Este modulo faz parte do curso completo.
+          Este módulo faz parte do curso completo.
         </p>
         <Link
           href="/subscrever"
@@ -55,19 +55,19 @@ export default function CadernoPage() {
         href={`/cursos/${slug}/${moduloNum}`}
         className="mb-6 inline-flex items-center gap-1 text-xs text-escola-creme-50 hover:text-escola-creme"
       >
-        <span>&larr;</span> Modulo {moduloNum}
+        <span>&larr;</span> Módulo {moduloNum}
       </Link>
 
       {/* Header */}
       <header className="mb-8">
         <span className="mb-1 block text-xs uppercase tracking-widest text-escola-dourado/60">
-          Caderno de exercicios
+          Caderno de exercícios
         </span>
         <h1 className="font-serif text-2xl font-semibold text-escola-creme">
           {mod.workbook}
         </h1>
         <p className="mt-2 text-sm text-escola-creme-50">
-          Modulo {moduloNum} &middot; {course.title}
+          Módulo {moduloNum} &middot; {course.title}
         </p>
       </header>
 
@@ -91,23 +91,23 @@ export default function CadernoPage() {
       {/* Journal / reflection */}
       <div className="mb-8">
         <h2 className="mb-2 text-xs uppercase tracking-wide text-escola-dourado">
-          O teu espaco
+          O teu espaço
         </h2>
         <p className="mb-4 text-sm text-escola-creme-50">
-          Antes de fechares este modulo, escreve o que ficou. Nao ha respostas certas — apenas as tuas.
+          Antes de fechares este módulo, escreve o que ficou. Não há respostas certas — apenas as tuas.
         </p>
 
         <textarea
           value={content}
           onChange={(e) => updateContent(e.target.value)}
-          placeholder="O que me ficou deste modulo..."
+          placeholder="O que me ficou deste módulo..."
           className="min-h-[160px] w-full resize-y rounded-xl border border-escola-border bg-escola-bg px-4 py-3 font-serif text-sm leading-relaxed text-escola-creme placeholder:text-escola-creme-50 focus:border-escola-dourado/40 focus:outline-none"
         />
 
         <div className="mt-2 flex items-center justify-between">
           <span className="text-[10px] text-escola-creme-50">
             {wordCount > 0 && `${wordCount} ${wordCount === 1 ? "palavra" : "palavras"}`}
-            {wordCount >= 50 && " — estas a ir fundo"}
+            {wordCount >= 50 && " — estás a ir fundo"}
           </span>
           <span className="text-[10px] text-escola-creme-50">
             {!saved ? "A guardar..." : content.length > 0 ? "Guardado" : ""}
@@ -119,8 +119,8 @@ export default function CadernoPage() {
           <div className="mt-3 flex flex-wrap gap-2">
             {[
               "O que me surpreendeu foi...",
-              "Reconheco que...",
-              "O que quero lembrar e...",
+              "Reconheço que...",
+              "O que quero lembrar é...",
             ].map((phrase) => (
               <button
                 key={phrase}
@@ -137,12 +137,12 @@ export default function CadernoPage() {
       {/* Complete module */}
       {completed ? (
         <div className="text-center">
-          <p className="mb-3 text-xs text-escola-creme-50">Modulo completado</p>
+          <p className="mb-3 text-xs text-escola-creme-50">Módulo completado</p>
           <Link
             href={`/cursos/${slug}/${moduloNum}/completo`}
             className="inline-block rounded-lg bg-escola-dourado/10 px-6 py-3 text-sm font-medium text-escola-dourado"
           >
-            Ver conclusao
+            Ver conclusão
           </Link>
         </div>
       ) : (
@@ -150,7 +150,7 @@ export default function CadernoPage() {
           onClick={handleComplete}
           className="w-full rounded-lg bg-escola-dourado px-6 py-3 text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
         >
-          Completar modulo
+          Completar módulo
         </button>
       )}
     </div>
@@ -160,7 +160,7 @@ export default function CadernoPage() {
 function NotFound() {
   return (
     <div className="flex min-h-[50dvh] items-center justify-center">
-      <p className="text-escola-creme-50">Nao encontrado.</p>
+      <p className="text-escola-creme-50">Não encontrado.</p>
     </div>
   );
 }

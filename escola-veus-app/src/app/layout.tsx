@@ -5,10 +5,10 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Escola dos Veus",
-    template: "%s | Escola dos Veus",
+    default: "Escola dos Véus",
+    template: "%s | Escola dos Véus",
   },
-  description: "Ve o que estava invisivel. Cursos de autoconhecimento pela Vivianne dos Santos.",
+  description: "Vê o que estava invisível. Cursos de autoconhecimento pela Vivianne dos Santos.",
   manifest: "/manifest.json",
   icons: {
     icon: [
@@ -19,12 +19,12 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Escola dos Veus",
+    title: "Escola dos Véus",
   },
   openGraph: {
-    title: "Escola dos Veus",
-    description: "Ve o que estava invisivel. Cursos de autoconhecimento pela Vivianne dos Santos.",
-    siteName: "Escola dos Veus",
+    title: "Escola dos Véus",
+    description: "Vê o que estava invisível. Cursos de autoconhecimento pela Vivianne dos Santos.",
+    siteName: "Escola dos Véus",
     locale: "pt_PT",
     type: "website",
   },

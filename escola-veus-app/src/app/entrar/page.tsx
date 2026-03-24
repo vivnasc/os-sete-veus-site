@@ -68,7 +68,7 @@ export default function EntrarPage() {
           alt="Escola dos Véus"
           width={64}
           height={64}
-          className="h-16 w-16 rounded-2xl"
+          className="h-20 w-20 rounded-2xl"
         />
       </Link>
 
@@ -77,7 +77,7 @@ export default function EntrarPage() {
           Entra na tua escola
         </h1>
         <p className="text-sm text-escola-creme-50 text-center mb-8">
-          Cursos, exercicios e reflexoes ao teu ritmo.
+          Cursos, exercícios e reflexões ao teu ritmo.
         </p>
 
         <form onSubmit={handleLogin} className="space-y-4">
@@ -159,7 +159,7 @@ export default function EntrarPage() {
 
         <div className="mt-8 text-center">
           <p className="text-xs text-escola-creme-50">
-            Ainda nao tens conta?{" "}
+            Ainda não tens conta?{" "}
             <Link href="/registar" className="text-escola-dourado hover:underline">
               Cria aqui
             </Link>
