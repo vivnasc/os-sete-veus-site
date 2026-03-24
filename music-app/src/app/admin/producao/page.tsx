@@ -141,6 +141,7 @@ function ProductFilter({
     { key: "livro", label: "Livro" },
     { key: "curso", label: "Cursos" },
     { key: "espiritual", label: "Espiritual" },
+    { key: "vida", label: "Vida" },
   ];
 
   return (
