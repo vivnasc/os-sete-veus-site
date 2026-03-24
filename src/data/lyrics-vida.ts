@@ -1068,4 +1068,357 @@ Into the light
 The day begins
 In the body first`,
 
+
+  // ─────────────────────────────────────────────
+  // O PAO E O SAL (casa, cozinha)
+  // ─────────────────────────────────────────────
+
+  "vida-pao-sal/1": `[Verse 1]
+O prato pousa na toalha
+O copo alinha com a faca
+Cada gesto e uma medalha
+De amor que nao se destaca
+
+[Verse 2]
+A mesa posta e uma oracao
+Sem deus, sem templo, sem altar
+So as maos e a dedicacao
+De quem prepara para amar
+
+[Chorus]
+A mesa posta
+A cerimonia de quem cuida
+A mesa posta
+E a ofrenda mais valida
+Cada prato no lugar
+E uma forma de dizer
+Eu preparei-me para te amar
+Antes de te ver
+
+[Outro]
+Esta posta
+A mesa esta posta para ti`,
+
+  "vida-pao-sal/2": `[Verse 1]
+The pot sits low, the lid askew
+A bubble rises, waits, and pops
+The kitchen fills with something true
+That cannot rush, that never stops
+
+[Verse 2]
+The steam moves slow like morning thought
+The smell gets deeper by the hour
+This meal can't be hurried, can't be bought
+It needs the one ingredient — slower
+
+[Chorus]
+Simmer, simmer
+Let the patience do the work
+Simmer, simmer
+In the quiet, flavours lurk
+No shortcut to the taste of love
+No fast lane to a meal well made
+The best things I am thinking of
+Are the ones I let the time persuade
+
+[Outro]
+Simmer
+Let it simmer`,
+
+  "vida-pao-sal/3": `[Verse 1]
+Uma pitada entre os dedos
+O pulso gira o moinho
+Sao os mais pequenos segredos
+Que mudam o sabor do caminho
+
+[Verse 2]
+Um limao espremido a mao
+Transforma o prato inteiro
+O gesto certo na estacao
+E o tempero verdadeiro
+
+[Chorus]
+Tempero
+O pequeno gesto que muda tudo
+Tempero
+De quem sabe que o profundo
+Mora nos detalhes
+Nos graos de sal
+Nas ervas que espalhas
+No toque final
+
+[Outro]
+Uma pitada
+E tudo muda`,
+
+  "vida-pao-sal/4": `[Verse 1]
+Flour on my forearms like a second skin
+The dough resists and then gives in
+My palms push forward, pull and fold
+A rhythm older than I'm told
+
+[Verse 2]
+The mind goes quiet when the hands work deep
+The kneading sets the thinking free
+My fingers find the ancient beat
+Of bread that's been made since the sea
+
+[Chorus]
+Flour hands, flour hands
+The dough knows what I need
+Flour hands understand
+What words can never feed
+Push and fold and turn again
+The body finds its prayer
+In the making of the bread
+There's nothing else but here
+
+[Outro]
+Push, fold, turn
+The oldest meditation`,
+
+  "vida-pao-sal/5": `[Verse 1]
+O cheiro entra antes de mim
+Pela porta mal aberta
+Pao no forno, cafe sem fim
+A casa esta desperta
+
+[Verse 2]
+Nao e o lugar, sao as paredes
+Que absorveram tantos anos
+De cebola nas frigideiras redes
+De risos, de enganos
+
+[Chorus]
+Cheiro de casa
+Antes de ser endereco
+Cheiro de casa
+E o primeiro apreco
+Que o nariz reconhece
+Antes dos olhos verem
+O cheiro que permanece
+Quando as pessoas se querem
+
+[Outro]
+Este cheiro
+E a minha casa inteira`,
+
+  "vida-pao-sal/6": `[Verse 1]
+Too many chairs around the table
+Elbows bumping, plates passed hand to hand
+Somebody's laughing with their mouth full
+Nobody cares about the plan
+
+[Verse 2]
+The bread is torn, not cut with knives
+The wine is poured a little high
+Around this table there are lives
+That don't need reasons, don't ask why
+
+[Chorus]
+Sunday meal, Sunday meal
+The oldest church I know
+Sunday meal, Sunday meal
+Where love has room to grow
+No sermon and no hymn required
+Just the passing of the salt
+The kind of sacred we desired
+Before the world taught us to halt
+
+[Bridge]
+Grandma's recipe, nobody's diet
+Children running, nobody quiet
+This is the mess that holds us whole
+This table is the human soul
+
+[Outro]
+Pass the bread
+We're all here`,
+
+  // ─────────────────────────────────────────────
+  // DERIVA (estrada, viagem, caminhar)
+  // ─────────────────────────────────────────────
+
+  "vida-deriva/1": `[Verse 1]
+A chave roda na fechadura
+A porta fecha atras de mim
+O saco pesa a sua ternura
+De quem vai sem saber o fim
+
+[Verse 2]
+Tres passos e ja nao sou
+A mesma que estava la dentro
+A rua engole quem partiu
+O vento apaga o meu lamento
+
+[Chorus]
+A porta fecha
+E o comeco e nao o fim
+A porta fecha
+E a estrada abre-se em mim
+Deixo tudo para tras
+As chaves no bolso a bater
+Cada passo e mais e mais
+Longe de quem eu fui ontem a dizer
+
+[Outro]
+Fecho a porta
+O caminho abre`,
+
+  "vida-deriva/2": `[Verse 1]
+The road unfolds like a letter I wrote
+To someone I haven't yet met
+The horizon is pulling this body afloat
+Past the borders of worry and debt
+
+[Verse 2]
+My foot finds the pedal, my hand finds the wheel
+The windshield is wider than thought
+There's a version of me that I'm starting to feel
+That the mirror at home never caught
+
+[Chorus]
+Open road, open road
+Nothing ahead but the light
+Open road, open road
+I'm shedding the skin of the night
+Every mile a new chance
+Every turn a surprise
+On the open road I dance
+With my own open eyes
+
+[Outro]
+Open, open
+The road is mine`,
+
+  "vida-deriva/3": `[Verse 1]
+Pela janela passa o campo
+Depois a vila, depois o campo
+Os pensamentos soltam-se como bando
+De passaros sem dono nem acampamento
+
+[Verse 2]
+Nao seguro nenhum
+Deixo-os passar como a paisagem
+Cada um vai sem rumo algum
+Como nuvens numa viagem
+
+[Chorus]
+Paisagem
+Passa como passa o que eu penso
+Paisagem
+Nada e tao denso
+Quando estas em movimento
+Cada colina e um pensamento
+Que veio e foi
+E nao deu mais tormento
+
+[Outro]
+Passa, passa
+Tudo passa`,
+
+  "vida-deriva/4": `[Verse 1]
+The odometer clicks its quiet math
+The miles accumulate like prayer
+My body settles on the path
+Of going slowly everywhere
+
+[Verse 2]
+The longer that I drive, the less
+The urgent things seem quite so loud
+The distance teaches me to bless
+The silence underneath the cloud
+
+[Chorus]
+Miles and miles and miles
+The meditation of the road
+Every hundred changes the dial
+Of the weight I've always towed
+Miles are not just distance here
+They're a currency of peace
+Each one buys a little clear
+Each one brings a small release
+
+[Outro]
+Miles
+Just miles and quiet`,
+
+  "vida-deriva/5": `[Verse 1]
+A janela abre e o vento entra
+O cabelo voa sem pedir licenca
+O mundo inteiro se concentra
+Neste momento sem sentenca
+
+[Verse 2]
+Grito qualquer coisa para o ar
+Que ninguem ouve nem precisa
+O vento leva o meu gritar
+E transforma-o em brisa
+
+[Chorus]
+Janela aberta
+O vento na cara e liberdade
+Janela aberta
+Nao ha idade
+Sou crianca outra vez
+Com o ar nos dentes
+O vento sabe o que eu nao sei
+E leva-me entre as correntes
+
+[Outro]
+Abre a janela
+Abre tudo`,
+
+  "vida-deriva/6": `[Verse 1]
+I step out where nobody knows my name
+The street signs speak a different tongue
+The light falls at a different aim
+The air tastes differently among
+
+[Verse 2]
+No history here, no reputation
+Just a stranger with a bag and eyes
+The freedom of a new location
+Where nobody expects me to be wise
+
+[Chorus]
+Stranger's town, stranger's town
+Nobody knows my face
+Stranger's town, stranger's town
+I'm invisible in this place
+And it's beautiful, it's light
+To be nobody for a day
+To walk through someone else's night
+And have nothing left to say
+
+[Outro]
+Nobody knows me here
+And that's the gift`,
+
+  "vida-deriva/7": `[Verse 1]
+A estrada conhecida reaparece
+Mas os meus olhos sao de vidro novo
+A porta abre e tudo parece
+O mesmo mas eu sou outro povo
+
+[Verse 2]
+A cozinha cheira ao que sempre cheirou
+O relogio bate a mesma hora
+Mas quem aqui entrou
+Ja nao e quem saiu la fora
+
+[Chorus]
+O regresso
+Voltar mudada sem saber onde
+O regresso
+E um rio que esconde
+A viagem nos ossos
+A estrada na pele
+Os quilometros nossos
+Que ninguem ve mas que se sente
+
+[Outro]
+Voltei
+Mas voltei diferente`,
+
 };
