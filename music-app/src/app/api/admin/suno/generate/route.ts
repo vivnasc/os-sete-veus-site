@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
     // If lyrics are provided, use custom_generate endpoint
     // Otherwise use the standard generate endpoint
     const hasLyrics = lyrics && typeof lyrics === "string" && lyrics.trim().length > 0;
-    const endpoint = hasLyrics ? "custom_generate" : "generate";
+    const baseEndpoint = hasLyrics ? "custom_generate" : "generate";
 
     const body: Record<string, unknown> = {
       wait_audio: false,
@@ -60,19 +60,44 @@ export async function POST(req: NextRequest) {
 
     if (duration) body.duration = duration;
 
-    const res = await fetch(`${apiUrl}/api/${endpoint}`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
+    const jsonBody = JSON.stringify(body);
+    const headers = {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    };
+
+    // Try multiple endpoint paths (different Suno wrapper versions)
+    const paths = [
+      `/api/${baseEndpoint}`,
+      `/api/v1/${baseEndpoint}`,
+      `/v1/${baseEndpoint}`,
+      `/${baseEndpoint}`,
+    ];
+
+    let res: Response | null = null;
+    let lastError = "";
+
+    for (const path of paths) {
+      const url = `${apiUrl}${path}`;
+      const attempt = await fetch(url, { method: "POST", headers, body: jsonBody });
+      if (attempt.status !== 404) {
+        res = attempt;
+        break;
+      }
+      lastError = `${url} → 404`;
+    }
+
+    if (!res) {
+      return NextResponse.json(
+        { erro: `Suno API: nenhum endpoint encontrado. Ultimo tentado: ${lastError}. Verifica SUNO_API_URL.` },
+        { status: 502 }
+      );
+    }
 
     if (!res.ok) {
       const text = await res.text();
       return NextResponse.json(
-        { erro: `Suno API (${endpoint}): ${res.status} — ${text}` },
+        { erro: `Suno API (${baseEndpoint}): ${res.status} — ${text}` },
         { status: 500 }
       );
     }
