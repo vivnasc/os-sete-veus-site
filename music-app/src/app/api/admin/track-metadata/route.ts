@@ -18,6 +18,10 @@ export async function GET(req: NextRequest) {
     .returns<{ album_slug: string; track_number: number; custom_title: string; title_source: string }[]>();
 
   if (error) {
+    // Table may not exist yet — return empty instead of 500
+    if (error.code === "42P01" || error.message?.includes("does not exist")) {
+      return NextResponse.json({ titles: {} });
+    }
     return NextResponse.json({ erro: error.message }, { status: 500 });
   }
 
@@ -59,6 +63,10 @@ export async function POST(req: NextRequest) {
     }, { onConflict: "album_slug, track_number" });
 
   if (error) {
+    // Table may not exist yet
+    if (error.code === "42P01" || error.message?.includes("does not exist")) {
+      return NextResponse.json({ erro: "Tabela track_metadata ainda não existe. Cria-a no Supabase." }, { status: 503 });
+    }
     return NextResponse.json({ erro: error.message }, { status: 500 });
   }
 

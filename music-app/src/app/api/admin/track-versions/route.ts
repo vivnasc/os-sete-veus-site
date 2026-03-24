@@ -25,6 +25,9 @@ export async function POST(req: NextRequest) {
       .single();
 
     if (error) {
+      if (error.code === "42P01" || error.message?.includes("does not exist")) {
+        return NextResponse.json({ erro: "Tabela track_versions ainda não existe. Cria-a no Supabase." }, { status: 503 });
+      }
       return NextResponse.json({ erro: error.message }, { status: 500 });
     }
 
@@ -49,6 +52,10 @@ export async function GET(req: NextRequest) {
       .order("track_number");
 
     if (error) {
+      // Table may not exist yet — return empty instead of 500
+      if (error.code === "42P01" || error.message?.includes("does not exist")) {
+        return NextResponse.json({ versions: [] });
+      }
       return NextResponse.json({ erro: error.message }, { status: 500 });
     }
 
