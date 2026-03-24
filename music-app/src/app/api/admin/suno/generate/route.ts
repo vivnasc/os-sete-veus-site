@@ -39,11 +39,17 @@ export async function POST(req: NextRequest) {
 
     const hasLyrics = lyrics && typeof lyrics === "string" && lyrics.trim().length > 0;
 
+    // Build the app's base URL for the callback
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL
+      || process.env.VERCEL_URL && `https://${process.env.VERCEL_URL}`
+      || req.nextUrl.origin;
+
     // API.box unified endpoint with customMode flag
     const body: Record<string, unknown> = {
       customMode: hasLyrics,
       instrumental: instrumental ?? false,
       model: model || "V4",
+      callBackUrl: `${appUrl}/api/admin/suno/callback`,
     };
 
     if (hasLyrics) {
@@ -62,13 +68,13 @@ export async function POST(req: NextRequest) {
       "Content-Type": "application/json",
     };
 
-    // Try primary endpoint, fallback to alternative
-    let res = await fetch(`${apiUrl}/api/v1/generate`, {
+    // Try /api/suno/submit/music (API.box primary), fallback to /api/v1/generate
+    let res = await fetch(`${apiUrl}/api/suno/submit/music`, {
       method: "POST", headers, body: jsonBody,
     });
 
     if (res.status === 404) {
-      res = await fetch(`${apiUrl}/api/suno/submit/music`, {
+      res = await fetch(`${apiUrl}/api/v1/generate`, {
         method: "POST", headers, body: jsonBody,
       });
     }
