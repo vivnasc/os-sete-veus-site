@@ -2232,100 +2232,126 @@ ainda brilha`,
   // ALBUM 13: VASTIDAO (the terrifying and beautiful vastness)
   // ─────────────────────────────────────────────
 
-  "espiritual-vastidao/1": `[Verse]
-De pe diante do mar
-As palavras param
+  "espiritual-vastidao/1": `[Verse 1]
+De pe diante do oceano
+as palavras param no dente
 A boca abre e nao sai nada
-So o vento entra
+so o sal que entra na mente
 
-[Verse]
-Tao grande que o medo
-Se torna outra coisa
-Nao e panico
-E rendica
+[Verse 2]
+Tao grande que o medo muda
+deixa de ser o que era
+Nao e panico que me invade
+e a rendica que me espera
 
 [Chorus]
-Oceano
-Leva o que nao preciso
-Oceano
-Mostra-me o tamanho real
-Das coisas que carrego
-Sao tao pequenas vistas daqui
-Tao pequenas
+Oceano — mais largo que o meu nome
+oceano — mais fundo que a minha dor
+As coisas que carrego sao pequenas
+vistas daqui do teu clamor
+Nao preciso de ser imensa
+preciso de ver o imenso
+Oceano — leva o que e demais
+oceano — o peso que dispensa
+
+[Verse 3]
+Fico de pe na beirada
+as ondas chegam aos pes
+Nao me pedem que eu seja grande
+pedem que eu esteja desta vez
 
 [Bridge]
-Nao preciso de ser grande
-Preciso de ver o grande
-E deixar-me ser pequena
+A minha historia e um canto de areia
+o oceano tem milhoes
+O alívio e nao ser o centro
+e so ser das suas accoes
 
 [Outro]
 O mar nao pede nada
-So continua
-E eu fico a olhar`,
+so continua
+e eu fico
+a olhar`,
 
-  "espiritual-vastidao/2": `[Verse]
-I looked up
-And the sky had no edge
-No frame no wall no end
-Just space eating space
+  "espiritual-vastidao/2": `[Verse 1]
+[Female] I looked up and the sky had no edge
+no frame no ceiling no wall
+[Male] I looked up and felt my body
+give something up to the sprawl
 
-[Verse]
-My chest cracked open
-Not from pain
-From too much room
-Too much air
+[Verse 2]
+[Female] My chest cracked open sideways
+not from pain but from the room
+[Male] Too much air, too much horizon
+too much space to hold the wound
 
 [Chorus]
-Terrified and free
-I am falling
-Into everything
-Terrified and free
-There is no ground
-And that is the point
-No ground
+[Both] Terrified and free — we are falling
+terrified and free — into the vast
+[Female] there is no ground below us
+[Male] and that's the point at last
+[Both] Not the vertigo that breaks you
+the holding on was the fall
+Terrified and free — together
+terrified and free — through it all
+
+[Verse 3]
+[Female] I reached for something solid
+[Male] I reached across for you
+[Both] And found that hands were enough
+when the sky comes pouring through
 
 [Bridge]
-The vertigo is not the problem
-The holding on was the problem
-Let go
-Let go
+[Both] The holding on was the problem
+the letting go is the flight
+We fall into the infinite
+and the infinite holds us right
 
 [Outro]
-I fell
-And the falling
-Was the flying`,
+[Female] I fell
+[Male] I fell
+[Both] and the falling
+was the only
+ground`,
 
-  "espiritual-vastidao/3": `[Verse]
+  "espiritual-vastidao/3": `[Verse 1]
 O calcio nos meus ossos
-Veio de uma estrela morta
+veio de uma estrela morta
 O ferro no meu sangue
-Nasceu numa explosao
+nasceu de uma explosao torta
 
-[Verse]
-Nao sou especial
-Sou material
-Do mesmo tecido
-Que fez o universo
+[Verse 2]
+Cada celula construida
+de materia que ja ardeu
+Nao sou original nem nova
+sou o universo que se perdeu
 
 [Chorus]
-Poeira de estrelas
-No peito de uma mulher
-Poeira de estrelas
-Nos olhos que choram
-A mesma materia
-Que acendeu galaxias
-Respira em mim agora
+Poeira de estrelas — no peito de uma mulher
+poeira de estrelas — nos olhos que choram hoje
+A mesma materia que acendeu galaxias
+respira e palpita e se apoia
+Nao sou separada do que e imenso
+nunca fui uma ilha em si
+Poeira de estrelas — sou o cosmos
+poeira de estrelas — a respirar aqui
+
+[Verse 3]
+A morte de uma estrela durou milenioes
+para fazer este ferro que corre
+O universo nao se apressou a criar-me
+a paciencia que o cosmos tem nao morre
 
 [Bridge]
 Nao es separada
-Nunca foste
-Es o universo
-A olhar para si proprio
+nunca foste menor
+Es o universo que se dobra
+para ver a sua propria cor
 
 [Outro]
 Poeira
-Sagrada poeira
-A respirar`,
+sagrada poeira
+a respirar
+sagrada`,
 
   "espiritual-vastidao/4": `[Verse]
 I am small
