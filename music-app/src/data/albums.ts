@@ -619,6 +619,11 @@ const ESP_SAGRADO_SELVAGEM: AlbumDef = spiritualAlbum("espiritual-sagrado-selvag
   { number: 3, title: "Bicho", description: "O animal em ti que sabe antes de pensares", lang: "PT", energy: "raw", prompt: spiritualPrompt("the animal self, instinct before thought, wild knowing", "primal, instinctive, raw, untamed", "raw vocal growl, primal percussion, stripped production, animal energy", "PT", "raw"), durationSeconds: 240, audioUrl: null },
   { number: 4, title: "Barefoot", description: "Caminhar sem armadura — pele na terra", lang: "EN", energy: "steady", prompt: spiritualPrompt("walking barefoot, skin on earth, unarmoured presence", "vulnerable, present, connected, bare", "acoustic guitar, walking rhythm, bare production, earth textures", "EN", "steady"), durationSeconds: 240, audioUrl: null },
   { number: 5, title: "Fogo Dentro", description: "O fogo que não destrói — o sagrado em chamas", lang: "PT", energy: "anthem", flavor: "gospel", prompt: spiritualPrompt("the fire within that doesn't destroy, sacred blaze", "blazing, sacred, powerful, transcendent fire", "gospel choir, organ warmth, blazing vocal, fire energy, building power", "PT", "anthem", "gospel"), durationSeconds: 300, audioUrl: null },
+  { number: 6, title: "Dança", description: "O corpo em movimento como oração — pés na terra, quadris que rezam", lang: "PT", energy: "pulse", flavor: "marrabenta", prompt: spiritualPrompt("dance as prayer, body moving without thinking, feet on earth, hips remembering", "ecstatic, grounded, rhythmic prayer, body-led worship", "marrabenta guitar driving, body percussion, ecstatic vocal, dance-prayer rhythm", "PT", "pulse", "marrabenta"), durationSeconds: 260, audioUrl: null },
+  { number: 7, title: "Dark Moon", description: "Sacred darkness — what grows when you stop fighting the dark", lang: "EN", energy: "whisper", prompt: spiritualPrompt("sacred darkness, the night as teacher, moon cycles, the body's tides", "dark, receptive, lunar, restful darkness", "dark ambient pads, lunar textures, whisper vocal, night sounds", "EN", "whisper"), durationSeconds: 260, audioUrl: null },
+  { number: 8, title: "As Que Vieram Antes", description: "As mulheres que vieram antes de ti — a sabedoria nos teus ossos", lang: "PT", energy: "anthem", flavor: "gospel", prompt: spiritualPrompt("ancestors, the women who came before you, their wisdom in your bones", "ancestral, powerful, inherited strength, lineage", "gospel choir building, ancestral drums, anthem vocal, lineage power", "PT", "anthem", "gospel"), durationSeconds: 300, audioUrl: null },
+  { number: 9, title: "Holy Rage", description: "Anger as fuel, not poison — the fire that says NO", lang: "EN", energy: "raw", prompt: spiritualPrompt("sacred anger, righteous rage that protects, the fire that says NO", "fierce, righteous, burning, protective fury", "raw fierce vocal, aggressive drums, fire textures, righteous energy", "EN", "raw"), durationSeconds: 250, audioUrl: null },
+  { number: 10, title: "Sangue e Lua", description: "O corpo que sangra e volta — ciclos, marés, estações na carne", lang: "PT", energy: "steady", prompt: spiritualPrompt("menstruation, tides, seasons in the flesh, the sacred in what bleeds and returns", "cyclical, lunar, embodied, rhythmic blood", "steady lunar rhythm, tidal bass, embodied vocal, cycle textures", "PT", "steady"), durationSeconds: 260, audioUrl: null },
 ]);
 
 const ESP_RITUAL: AlbumDef = spiritualAlbum("espiritual-ritual", "Ritual", "O sagrado no gesto comum — café como cerimónia", ESPIRITUAL_COLORS[3], [
@@ -627,6 +632,11 @@ const ESP_RITUAL: AlbumDef = spiritualAlbum("espiritual-ritual", "Ritual", "O sa
   { number: 3, title: "Água nas Mãos", description: "Lavar as mãos — lavar o que passou", lang: "PT", energy: "whisper", prompt: spiritualPrompt("washing hands as ritual, water carrying away what's done", "cleansing, light, flowing, releasing", "water textures, flowing piano, light vocal, cleansing pads", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
   { number: 4, title: "Threshold", description: "Cada porta é passagem — cada entrada, uma escolha", lang: "EN", energy: "steady", prompt: spiritualPrompt("every doorway is a passage, every entrance a choice", "liminal, aware, choosing, conscious entry", "steady walking rhythm, door-like resonance, aware vocal, threshold textures", "EN", "steady"), durationSeconds: 240, audioUrl: null },
   { number: 5, title: "Fecho os Olhos", description: "O ritual de voltar a ti", lang: "PT", energy: "raw", prompt: spiritualPrompt("closing your eyes, the ritual of returning to yourself", "inward, intimate, returning, self-meeting", "raw close vocal, minimal piano, breath sounds, inward silence", "PT", "raw"), durationSeconds: 270, audioUrl: null },
+  { number: 6, title: "Fazer a Cama", description: "Alisar o caos da noite — o primeiro gesto de intenção", lang: "PT", energy: "whisper", prompt: spiritualPrompt("making the bed as sacred act, smoothing chaos into order each morning", "gentle, intentional, morning order, quiet ceremony", "soft piano, gentle textures, whisper vocal, morning light pads", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+  { number: 7, title: "Walking", description: "Not arriving — just the way. Each step a prayer.", lang: "EN", energy: "steady", prompt: spiritualPrompt("walking as meditation, not going somewhere but being in the going", "meditative, grounded, rhythmic, step-prayer", "walking rhythm, steady acoustic guitar, meditative vocal, ground textures", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+  { number: 8, title: "Alquimia", description: "A cozinha como laboratório — mãos que transformam o cru", lang: "PT", energy: "steady", flavor: "marrabenta", prompt: spiritualPrompt("cooking as alchemy, hands transforming raw into nourishment, kitchen as sacred lab", "warm, transformative, nourishing, kitchen ceremony", "marrabenta guitar warmth, kitchen rhythms, warm vocal, spice textures", "PT", "steady", "marrabenta"), durationSeconds: 250, audioUrl: null },
+  { number: 9, title: "The Mirror", description: "Looking at yourself — really looking. Not fixing. Just seeing.", lang: "EN", energy: "raw", prompt: spiritualPrompt("looking at yourself in the mirror, really looking, not fixing, the courage of your own face", "raw, honest, unflinching, self-meeting", "raw close vocal, mirror silence, honest minimal production, bare", "EN", "raw"), durationSeconds: 240, audioUrl: null },
+  { number: 10, title: "Despir o Dia", description: "Remover a roupa, remover o dia — o corpo devolve-se", lang: "PT", energy: "whisper", prompt: spiritualPrompt("undressing at end of day, removing clothes removing the day, unmasking", "releasing, evening, undressing, returning to self", "soft evening piano, releasing pads, whisper vocal, night arriving", "PT", "whisper"), durationSeconds: 250, audioUrl: null },
 ]);
 
 const ESP_GRACA: AlbumDef = spiritualAlbum("espiritual-graca", "Graça", "Receber sem merecer — amolecer", ESPIRITUAL_COLORS[4], [
@@ -642,6 +652,7 @@ const ESP_SILENCIO: AlbumDef = spiritualAlbum("espiritual-silencio", "Silêncio 
   { number: 3, title: "O Vazio Cheio", description: "O vazio que na verdade está cheio", lang: "PT", energy: "raw", prompt: spiritualPrompt("emptiness that is actually full, paradox of silence", "paradoxical, full-empty, profound, surprising", "raw vocal in empty space, paradox textures, fullness emerging from nothing", "PT", "raw"), durationSeconds: 240, audioUrl: null },
   { number: 4, title: "Listen", description: "O silêncio não é ausência — é outra forma de ouvir", lang: "EN", energy: "steady", prompt: spiritualPrompt("silence as different listening, not absence but attention", "attentive, listening, hearing the unheard, present", "subtle textures emerging from silence, attentive vocal, listening production", "EN", "steady"), durationSeconds: 240, audioUrl: null },
   { number: 5, title: "Catedral Interior", description: "A catedral por dentro — sem paredes, sem tecto", lang: "PT", energy: "whisper", prompt: spiritualPrompt("cathedral inside, no walls, no roof, just infinite space", "vast, interior, sacred space, limitless", "vast reverb, cathedral space, whisper vocal, infinite pads", "PT", "whisper"), durationSeconds: 270, audioUrl: null },
+  { number: 6, title: "A Testemunha", description: "A parte de ti que observa sem julgar — o céu que vê a tempestade", lang: "PT", energy: "steady", prompt: spiritualPrompt("the witness, the part that watches without judging, consciousness itself", "observing, still, witnessing, sky-mind", "steady grounded bass, observing vocal, witness textures, still presence", "PT", "steady"), durationSeconds: 250, audioUrl: null },
 ]);
 
 const ESP_ENTREGA: AlbumDef = spiritualAlbum("espiritual-entrega", "Entrega", "Largar o controlo — confiar no que não se vê", ESPIRITUAL_COLORS[6], [
@@ -672,6 +683,7 @@ const ESP_AGUA_VIVA: AlbumDef = spiritualAlbum("espiritual-agua-viva", "Água Vi
   { number: 2, title: "Wash", description: "Lavar — não culpa, apenas deixar a água levar", lang: "EN", energy: "steady", prompt: spiritualPrompt("washing, not guilt, letting water carry away what's done", "cleansing, releasing, flowing away, water taking", "flowing water rhythm, cleansing vocal, releasing textures, steady flow", "EN", "steady"), durationSeconds: 240, audioUrl: null },
   { number: 3, title: "Mergulho", description: "Mergulhar — imersão total, renascimento pela água", lang: "PT", energy: "pulse", prompt: spiritualPrompt("diving under, full immersion, rebirth through water", "submerged, reborn, total immersion, underwater", "underwater textures, diving rhythm, submerged vocal, rebirth building", "PT", "pulse"), durationSeconds: 240, audioUrl: null },
   { number: 4, title: "Surface", description: "Quebrar a superfície — a inspiração do renascido", lang: "EN", energy: "raw", prompt: spiritualPrompt("breaking the surface, gasping, alive, reborn", "gasping, alive, reborn, raw emergence", "surface-breaking textures, gasping vocal, raw alive production, air rushing", "EN", "raw"), durationSeconds: 270, audioUrl: null },
+  { number: 5, title: "Chuva", description: "Ficar na chuva de braços abertos — baptismo sem igreja", lang: "PT", energy: "anthem", prompt: spiritualPrompt("standing in rain with arms open, letting it wash, rain as baptism without church", "open, washed, baptismal, receiving rain", "building rain textures, anthem vocal, baptismal swell, open sky production", "PT", "anthem"), durationSeconds: 280, audioUrl: null },
 ]);
 
 const ESP_AMEM: AlbumDef = spiritualAlbum("espiritual-amem", "Amém", "O 'sim' que dizemos juntas", ESPIRITUAL_COLORS[10], [
@@ -1057,6 +1069,151 @@ const VIDA_PENUMBRA = vidaAlbum("vida-penumbra", "Penumbra", "o limiar, o espaç
 
 
 // ─────────────────────────────────────────────
+// ESPIRITUAIS MISTURADOS (10 albums de ~10 faixas)
+// ─────────────────────────────────────────────
+
+// Helper: pick a track from an existing album and renumber it, preserving lyrics
+function pick(album: AlbumDef, trackNum: number, newNumber: number): TrackDef {
+  const t = album.tracks.find(t => t.number === trackNum);
+  if (!t) throw new Error(`Track ${trackNum} not found in ${album.slug}`);
+  return { ...t, number: newNumber, lyrics: ALL_LYRICS[`${album.slug}/${trackNum}`] || "" };
+}
+
+const MIX_TRAVESSIA: AlbumDef = { slug: "travessia", title: "Travessia", subtitle: "Do amanhecer ao escuro — o dia inteiro da alma", product: "espiritual", color: "#c9a96e", tracks: [
+  pick(ESP_RITUAL, 1, 1),              // Manhã
+  pick(ESP_ORACAO, 4, 2),              // The Space Between Breaths
+  pick(ESP_SAGRADO_SELVAGEM, 1, 3),    // Terra
+  pick(ESP_SAGRADO_SELVAGEM, 9, 4),    // Holy Rage
+  pick(ESP_AGUA_VIVA, 3, 5),           // Mergulho
+  pick(ESP_SAGRADO_SELVAGEM, 8, 6),    // As Que Vieram Antes
+  pick(ESP_SILENCIO, 2, 7),            // Still
+  pick(ESP_CINZA_SEMENTE, 1, 8),       // Queimou
+  pick(ESP_CINZA_SEMENTE, 4, 9),       // First Green
+  pick(ESP_ORACAO, 1, 10),             // Respira
+  pick(ESP_SAGRADO_SELVAGEM, 7, 11),   // Dark Moon
+]};
+
+const MIX_HUMUS: AlbumDef = { slug: "humus", title: "Húmus", subtitle: "O que cai se transforma — o fértil debaixo da cinza", product: "espiritual", color: "#8b7355", tracks: [
+  pick(ESP_RITUAL, 6, 1),              // Fazer a Cama
+  pick(ESP_SAGRADO_SELVAGEM, 4, 2),    // Barefoot
+  pick(ESP_MESMA_AGUA, 3, 3),          // Sal
+  pick(ESP_ENTREGA, 4, 4),             // Trust the Dark
+  pick(ESP_RAIZ_CEU, 3, 5),            // Vertical
+  pick(ESP_MAOS_ABERTAS, 2, 6),        // Empty Cup
+  pick(ESP_GRACA, 3, 7),               // Cai Sobre Mim
+  pick(ESP_CINZA_SEMENTE, 2, 8),       // Compost
+  pick(ESP_CHAMA_ULTIMA, 5, 9),        // Chama
+  pick(ESP_CINZA_SEMENTE, 3, 10),      // Debaixo
+]};
+
+const MIX_FOLEGO: AlbumDef = { slug: "folego", title: "Fôlego", subtitle: "Entre o inspirar e o expirar — tudo o que cabe num sopro", product: "espiritual", color: "#7a9b8e", tracks: [
+  pick(ESP_RESPIRAR, 1, 1),            // Inspira
+  pick(ESP_RITUAL, 4, 2),              // Threshold
+  pick(ESP_SAGRADO_SELVAGEM, 3, 3),    // Bicho
+  pick(ESP_SAGRADO_SELVAGEM, 2, 4),    // Storm Prayer
+  pick(ESP_ENTREGA, 3, 5),             // Mãos Vazias
+  pick(ESP_PRECE, 2, 6),               // Unanswered
+  pick(ESP_SAGRADO_SELVAGEM, 6, 7),    // Dança
+  pick(ESP_CHAMA_ULTIMA, 2, 8),        // Ember
+  pick(ESP_ALEM_NOME, 4, 9),           // Hum
+  pick(ESP_RESPIRAR, 3, 10),           // Expira
+]};
+
+const MIX_DEMORA: AlbumDef = { slug: "demora", title: "Demora", subtitle: "A coragem de ficar — devagar, devagar", product: "espiritual", color: "#6b8a7a", tracks: [
+  pick(ESP_SILENCIO, 6, 1),            // A Testemunha
+  pick(ESP_GRACA, 2, 2),               // Softening
+  pick(ESP_SILENCIO, 3, 3),            // O Vazio Cheio
+  pick(ESP_RITUAL, 7, 4),              // Walking
+  pick(ESP_PRECE, 1, 5),               // Pede
+  pick(ESP_ORACAO, 2, 6),              // Hands
+  pick(ESP_CENTELHA, 3, 7),            // Incêndio Manso
+  pick(ESP_RESPIRAR, 4, 8),            // Breathless
+  pick(ESP_RAIZ_CEU, 5, 9),            // Árvore
+  pick(ESP_AGUA_VIVA, 2, 10),          // Wash
+  pick(ESP_RITUAL, 5, 11),             // Fecho os Olhos
+]};
+
+const MIX_CORPO_CELESTE: AlbumDef = { slug: "corpo-celeste", title: "Corpo Celeste", subtitle: "A pele feita de estrelas — o universo que respira em ti", product: "espiritual", color: "#8aaaca", tracks: [
+  pick(ESP_VASTIDAO, 1, 1),            // Oceano
+  pick(ESP_CATEDRAL, 2, 2),            // Cicatriz
+  pick(ESP_CATEDRAL, 3, 3),            // Costelas
+  pick(ESP_CATEDRAL, 4, 4),            // Hymn of Skin
+  pick(ESP_VASTIDAO, 3, 5),            // Poeira de Estrelas
+  pick(ESP_VASTIDAO, 2, 6),            // Terrified and Free
+  pick(ESP_SAGRADO_SELVAGEM, 10, 7),   // Sangue e Lua
+  pick(ESP_VASTIDAO, 4, 8),            // Small
+  pick(ESP_VASTIDAO, 5, 9),            // Cabe Tudo
+  pick(ESP_RITUAL, 9, 10),             // The Mirror
+]};
+
+const MIX_CORRENTEZA: AlbumDef = { slug: "correnteza", title: "Correnteza", subtitle: "O que corre em ti já correu em todas", product: "espiritual", color: "#5a8a9b", tracks: [
+  pick(ESP_AGUA_VIVA, 1, 1),           // Fonte
+  pick(ESP_MESMA_AGUA, 2, 2),          // Same River
+  pick(ESP_GRACA, 1, 3),               // Não Mereci
+  pick(ESP_ENTREGA, 2, 4),             // Freefall
+  pick(ESP_MAOS_ABERTAS, 1, 5),        // Dar
+  pick(ESP_AMEM, 2, 6),                // Communion
+  pick(ESP_MESMA_AGUA, 1, 7),          // Uma Só
+  pick(ESP_MESMA_AGUA, 4, 8),          // Tributary
+  pick(ESP_MESMA_AGUA, 5, 9),          // Desaguar
+  pick(ESP_RITUAL, 3, 10),             // Água nas Mãos
+]};
+
+const MIX_O_QUE_RESTA: AlbumDef = { slug: "o-que-resta", title: "O Que Resta", subtitle: "Quando se tira tudo — o essencial não se veste", product: "espiritual", color: "#c4745a", tracks: [
+  pick(ESP_CATEDRAL, 1, 1),            // Nave
+  pick(ESP_SILENCIO, 4, 2),            // Listen
+  pick(ESP_CHAMA_ULTIMA, 1, 3),        // Tira Tudo
+  pick(ESP_CENTELHA, 2, 4),            // Lit
+  pick(ESP_CENTELHA, 1, 5),            // Faísca
+  pick(ESP_CHAMA_ULTIMA, 4, 6),        // Still Burning
+  pick(ESP_CHAMA_ULTIMA, 3, 7),        // Osso
+  pick(ESP_ALEM_NOME, 2, 8),           // Not God
+  pick(ESP_CATEDRAL, 5, 9),            // Altar
+  pick(ESP_SILENCIO, 1, 10),           // Cala
+  pick(ESP_GRACA, 4, 11),              // Unearned
+]};
+
+const MIX_LIMIAR: AlbumDef = { slug: "limiar", title: "Limiar", subtitle: "Entre a raiz e o céu — o lugar onde tudo muda", product: "espiritual", color: "#ab9375", tracks: [
+  pick(ESP_RAIZ_CEU, 1, 1),            // Raiz
+  pick(ESP_RAIZ_CEU, 4, 2),            // Both
+  pick(ESP_ENTREGA, 1, 3),             // Segurar
+  pick(ESP_AGUA_VIVA, 4, 4),           // Surface
+  pick(ESP_ENTREGA, 5, 5),             // Rio
+  pick(ESP_MAOS_ABERTAS, 4, 6),        // Open Hands
+  pick(ESP_AGUA_VIVA, 5, 7),           // Chuva
+  pick(ESP_RAIZ_CEU, 2, 8),            // Sky Inside
+  pick(ESP_ORACAO, 3, 9),              // De Joelhos
+  pick(ESP_RITUAL, 8, 10),             // Alquimia
+]};
+
+const MIX_O_CIRCULO: AlbumDef = { slug: "o-circulo", title: "O Círculo", subtitle: "Não estás sozinha — a dor tem eco, o eco tem nome", product: "espiritual", color: "#baaacc", tracks: [
+  pick(ESP_ALEM_NOME, 1, 1),           // Sem Nome
+  pick(ESP_PRECE, 4, 2),               // Bones Know
+  pick(ESP_PRECE, 3, 3),               // Desamparo
+  pick(ESP_RITUAL, 2, 4),              // Bread
+  pick(ESP_AMEM, 1, 5),                // Sozinha Não
+  pick(ESP_GRAO, 4, 6),                // Enough
+  pick(ESP_GRAO, 1, 7),                // Um
+  pick(ESP_GRAO, 2, 8),                // Sand
+  pick(ESP_AMEM, 3, 9),                // Nós
+  pick(ESP_PRECE, 5, 10),              // A Última Prece
+]};
+
+const MIX_O_GESTO: AlbumDef = { slug: "o-gesto", title: "O Gesto", subtitle: "O sagrado que vive no quotidiano — no osso, no grão, no gesto", product: "espiritual", color: "#c08aaa", tracks: [
+  pick(ESP_SILENCIO, 5, 1),            // Catedral Interior
+  pick(ESP_RESPIRAR, 2, 2),            // Hold
+  pick(ESP_ORACAO, 5, 3),              // Amém do Corpo
+  pick(ESP_SAGRADO_SELVAGEM, 5, 4),    // Fogo Dentro
+  pick(ESP_MAOS_ABERTAS, 3, 5),        // Servir
+  pick(ESP_AMEM, 4, 6),                // Grão
+  pick(ESP_CENTELHA, 4, 7),            // Ainda Brilha
+  pick(ESP_GRAO, 3, 8),                // Pertencer
+  pick(ESP_ALEM_NOME, 3, 9),           // O Buraco no Meio
+  pick(ESP_RESPIRAR, 5, 10),           // Respiro
+  pick(ESP_RITUAL, 10, 11),            // Despir o Dia
+]};
+
+// ─────────────────────────────────────────────
 // EXPORT
 // ─────────────────────────────────────────────
 
@@ -1100,27 +1257,17 @@ export const ALL_ALBUMS: Album[] = [
   CURSO_RELOGIO,
   CURSO_COROA,
   CURSO_FOME,
-  // Espirituais
-  ESP_ORACAO,
-  ESP_SAGRADO_SELVAGEM,
-  ESP_RITUAL,
-  ESP_GRACA,
-  ESP_SILENCIO,
-  ESP_ENTREGA,
-  ESP_MAOS_ABERTAS,
-  ESP_RAIZ_CEU,
-  ESP_AGUA_VIVA,
-  ESP_AMEM,
-  ESP_PRECE,
-  ESP_CENTELHA,
-  ESP_VASTIDAO,
-  ESP_CATEDRAL,
-  ESP_GRAO,
-  ESP_MESMA_AGUA,
-  ESP_ALEM_NOME,
-  ESP_RESPIRAR,
-  ESP_CINZA_SEMENTE,
-  ESP_CHAMA_ULTIMA,
+  // Espirituais (10 albums misturados)
+  MIX_TRAVESSIA,
+  MIX_HUMUS,
+  MIX_FOLEGO,
+  MIX_DEMORA,
+  MIX_CORPO_CELESTE,
+  MIX_CORRENTEZA,
+  MIX_O_QUE_RESTA,
+  MIX_LIMIAR,
+  MIX_O_CIRCULO,
+  MIX_O_GESTO,
   // Vida
   VIDA_SANGUE_ACESO,
   VIDA_SILENCIO_FERTIL,
