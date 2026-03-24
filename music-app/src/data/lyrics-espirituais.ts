@@ -8,6 +8,840 @@
 export const ESPIRITUAL_LYRICS: Record<string, string> = {
 
   // ─────────────────────────────────────────────
+  // ALBUM 1: ORACAO SEM PALAVRAS (when words don't reach, the body prays)
+  // ─────────────────────────────────────────────
+
+  "espiritual-oracao/1": `[Verse]
+O ar entra pelos labios
+Antes da primeira palavra
+O peito sobe devagar
+Como quem reza sem saber
+
+[Verse]
+Nao ha texto nao ha livro
+So o corpo e o seu cansaco
+A boca abre e nao sai voz
+Sai so o peso de um abraco
+
+[Chorus]
+Respira
+Antes da linguagem
+Respira
+Antes do pensamento
+O corpo ja sabia rezar
+Antes de tu lhe dares nome
+Respira
+E isso basta
+
+[Bridge]
+Os pulmoes nao precisam de fe
+Precisam de ar
+E o ar vem
+Sempre vem
+
+[Outro]
+Respira
+A oracao mais velha
+E a que nao tem palavras`,
+
+  "espiritual-oracao/2": `[Verse]
+My palms are open
+Facing up like two small boats
+Carrying nothing
+But the weight of what I hope
+
+[Verse]
+I don't know who I'm asking
+I don't know who receives
+But something in my hands
+Remembers how to grieve
+
+[Chorus]
+Hands
+Open hands
+Receiving nothing
+And everything at once
+Hands
+That held too tight
+Now learning
+How to simply hold the air
+
+[Bridge]
+The emptiness between my fingers
+Is not absence
+It is space
+For what I cannot name to land
+
+[Outro]
+My hands are open
+That is all I know
+That is all I need`,
+
+  "espiritual-oracao/3": `[Verse]
+Nao e submissao
+E escolha
+Os joelhos dobram porque o corpo
+Ja nao aguenta ser tao alto
+
+[Verse]
+Nao ha templo nao ha chao sagrado
+So estas pernas que cedem
+E esta testa que toca a terra
+Como quem beija o que resta
+
+[Chorus]
+De joelhos
+Nao por fraqueza
+De joelhos
+Por decisao
+O chao recebe-me
+Sem pedir explicacao
+De joelhos
+A gravidade e gentil
+Quando escolhes descer
+
+[Bridge]
+A dignidade nao esta de pe
+A dignidade esta
+Onde o corpo decide ficar
+
+[Outro]
+Escolho o chao
+E o chao segura-me`,
+
+  "espiritual-oracao/4": `[Verse]
+I stopped asking
+And the room got still
+Not empty still
+But full the way a lung
+Is full before the breath comes out
+
+[Verse]
+No voice no sign no light
+Just the hum beneath the floor
+The warmth behind my sternum
+That was always there before
+
+[Chorus]
+The space between my breaths
+Is where the answer lives
+Not in words
+Not in proof
+In the pause
+Where my body softens
+And something holds me
+Without hands
+
+[Bridge]
+I was waiting for thunder
+But the answer was a whisper
+So quiet I had to stop
+Everything to hear it
+
+[Outro]
+The answer came
+In silence
+The answer came
+In warmth`,
+
+  "espiritual-oracao/5": `[Verse]
+Nao pertence a ninguem
+Este amem que sai do peito
+Nao e de igreja nem mesquita
+Nao e bonito nem perfeito
+
+[Verse]
+E o som que o corpo faz
+Quando aceita o que nao sabe
+Quando os ossos dizem sim
+Antes da boca abrir a chave
+
+[Chorus]
+Amem do corpo
+Nao se diz — sente-se
+Amem do corpo
+Nos joelhos que dobram
+No peito que abre
+Na garganta que larga
+O que segurava
+Amem sem dono
+Amem de todos
+
+[Bridge]
+O corpo inteiro vibra
+Como uma corda tocada
+Por dentro
+Sem mao nenhuma
+
+[Outro]
+Amem
+Nao e o fim
+E o comeco do que nao precisa
+De ser dito`,
+
+  // ─────────────────────────────────────────────
+  // ALBUM 2: SAGRADO SELVAGEM (divine in storm, earth, animal body)
+  // ─────────────────────────────────────────────
+
+  "espiritual-sagrado-selvagem/1": `[Verse]
+Os pes afundam na lama
+O barro sobe entre os dedos
+O chao nao e limpo
+O chao e real
+
+[Verse]
+Aqui nao ha mosaico
+Nao ha marmore nem flor
+Ha raiz que rebenta pedra
+Ha terra que cheira a suor
+
+[Chorus]
+Terra
+O sagrado esta na lama
+Terra
+O divino esta no barro
+Onde os pes se afundam
+O corpo sabe
+Que pertence a algum lugar
+
+[Bridge]
+A terra nao precisa de permissao
+Para ser santa
+Basta que os teus pes
+A toquem com verdade
+
+[Outro]
+Descalca
+Com lama nos pes
+Finalmente em casa`,
+
+  "espiritual-sagrado-selvagem/2": `[Verse]
+The rain hits my face
+Like a fist made of water
+I don't run
+I don't cover my head
+
+[Verse]
+The prayer in the calm
+Was practice
+The prayer in the storm
+Is real
+
+[Chorus]
+Storm prayer
+Not after the thunder
+Storm prayer
+In the middle of the flood
+With water in my lungs
+And wind against my chest
+This is where I find
+What the quiet couldn't teach
+
+[Bridge]
+The lightning doesn't wait
+For you to be ready
+Neither does the sacred
+It comes when it comes
+
+[Outro]
+I pray louder
+When the rain is louder
+And the sky
+Prays back`,
+
+  "espiritual-sagrado-selvagem/3": `[Verse]
+Antes do pensamento
+Ha o cheiro
+Antes da palavra
+Ha o pelo que se arrepia
+
+[Verse]
+O bicho dentro de mim
+Sabe coisas que eu esqueci
+Sabe quando e perigo
+Sabe quando e amor
+Sem precisar de traduzir
+
+[Chorus]
+Bicho
+O animal que mora aqui
+Bicho
+Debaixo da educacao
+Debaixo do nome
+Debaixo da roupa
+Ha uma criatura
+Que nunca se perdeu
+
+[Bridge]
+O corpo reage antes
+O estomago sabe antes
+Os pelos sabem antes
+Tu es o ultimo a saber
+
+[Outro]
+Confia no bicho
+Ele nunca te mentiu`,
+
+  "espiritual-sagrado-selvagem/4": `[Verse]
+No shoes no armour
+Just the sole of my foot
+And the skin of the earth
+Having a conversation
+
+[Verse]
+Every stone a letter
+Every root a sentence
+The ground is not flat
+It is speaking
+
+[Chorus]
+Barefoot
+Skin on earth
+Barefoot
+Nothing between
+My nerve endings
+And the world
+Barefoot
+Vulnerable as a prayer
+Real as dirt
+
+[Bridge]
+My shoes were walls
+Between me and the ground
+Now the ground knows my name
+And I know its temperature
+
+[Outro]
+Walk slowly
+The earth is listening
+To your feet`,
+
+  "espiritual-sagrado-selvagem/5": `[Verse]
+Ha um fogo ca dentro
+Que nao queima a casa
+Arde no peito
+E ilumina a sala
+
+[Verse]
+Nao e raiva nao e furia
+E a chama que aquece
+O que o medo arrefeceu
+O que o silencio escureceu
+
+[Chorus]
+Fogo dentro
+Nao destrue — acende
+Fogo dentro
+Nao consome — revela
+Arde no centro do peito
+Onde a voz comeca
+E o medo acaba
+Fogo dentro
+Sagrado e selvagem
+
+[Bridge]
+Deixa arder
+Nao tenhas medo do calor
+O fogo que vem de dentro
+Nao deixa cinza — deixa luz
+
+[Outro]
+Ardo
+E nao me consumo
+Ardo
+E finalmente vejo`,
+
+  // ─────────────────────────────────────────────
+  // ALBUM 3: RITUAL (sacred in common gestures, coffee as ceremony)
+  // ─────────────────────────────────────────────
+
+  "espiritual-ritual/1": `[Verse]
+A luz entra pela janela
+Antes de eu abrir os olhos
+O corpo ja esta acordado
+O mundo ainda nao
+
+[Verse]
+Ponho os pes no chao frio
+Devagar como quem pisa agua
+O primeiro gesto do dia
+E o mais honesto que tenho
+
+[Chorus]
+Manha
+Antes do telefone
+Manha
+Antes do espelho
+Antes do mundo entrar
+Ha este momento
+So meu
+Descalca e quieta
+E inteira
+
+[Bridge]
+Ninguem ve o que faco
+Nos primeiros cinco minutos
+E por isso que sao sagrados
+
+[Outro]
+A manha e minha
+Antes de ser de alguem`,
+
+  "espiritual-ritual/2": `[Verse]
+The crust breaks in my hands
+Steam rises like a sigh
+No altar no sacrament
+Just flour and fire and time
+
+[Verse]
+I set the table for one
+Or sometimes set for four
+Each plate placed with attention
+Each glass a little door
+
+[Chorus]
+Bread
+The oldest ritual
+Bread
+The simplest truth
+That nourishment is sacred
+That the hands that feed
+Are the hands that heal
+Bread
+Broken and shared
+
+[Bridge]
+You don't need wine
+You don't need a blessing
+Just the warmth of something baked
+And the willingness to eat it
+
+[Outro]
+Break the bread
+That is the whole prayer`,
+
+  "espiritual-ritual/3": `[Verse]
+A torneira abre
+A agua cai nas maos
+Fria primeiro depois morna
+Como uma historia que muda de tom
+
+[Verse]
+Esfrego os dedos devagar
+Nao por estarem sujos
+Mas porque o gesto lava
+O que as maos fizeram
+
+[Chorus]
+Agua nas maos
+Lava o que passou
+Agua nas maos
+O gesto mais comum
+E a cerimonia
+Que ninguem ve
+Agua que leva
+O que ja nao preciso
+
+[Bridge]
+As maos ficam molhadas
+E por um momento
+Nao seguram nada
+E isso e o bastante
+
+[Outro]
+Deixa a agua levar
+O que nao e teu para guardar`,
+
+  "espiritual-ritual/4": `[Verse]
+I stand before the door
+My hand upon the handle
+Not yet in not yet out
+Balanced on the edge
+
+[Verse]
+Every door I've ever crossed
+Changed what came after
+The threshold doesn't care
+If I'm ready or I'm not
+
+[Chorus]
+Threshold
+Every entrance is a choice
+Threshold
+Every door a small death
+Of who you were
+Before you turned the handle
+And a birth
+Of who you'll be
+On the other side
+
+[Bridge]
+Pause here
+Feel the frame beneath your fingers
+This is the last second
+Of the person walking in
+
+[Outro]
+Step through
+You are not the same
+As the one who stood outside`,
+
+  "espiritual-ritual/5": `[Verse]
+Fecho os olhos
+E o mundo la fora
+Fica do lado de fora
+Onde pertence
+
+[Verse]
+Atras das palpebras
+Ha um quarto que ninguem conhece
+Sem mobilia sem janela
+So eu e o meu silencio
+
+[Chorus]
+Fecho os olhos
+E volto
+Ao unico lugar
+Que nunca me expulsou
+Fecho os olhos
+E estou inteira
+Sem espelho
+Sem testemunha
+Sem mascara
+
+[Bridge]
+O mundo pede-te aberta
+O ritual pede-te fechada
+So um momento
+So uma respiracao
+
+[Outro]
+Fecho os olhos
+E encontro
+Quem la ficou a espera`,
+
+  // ─────────────────────────────────────────────
+  // ALBUM 4: GRACA (receiving what you didn't earn, softening)
+  // ─────────────────────────────────────────────
+
+  "espiritual-graca/1": `[Verse]
+Nao fiz nada para merecer isto
+Nao rezei nao pedi nao negociei
+E mesmo assim
+Chegou
+
+[Verse]
+Como chuva em dia de sol
+Como uma carta sem remetente
+Algo encheu-me o peito
+Sem que eu tivesse aberto a porta
+
+[Chorus]
+Nao mereci
+E veio na mesma
+Nao mereci
+E ficou na mesma
+A graca nao pede merecimento
+Pede so
+Que estejas parada o suficiente
+Para a sentir
+
+[Bridge]
+O corpo treme
+Nao de frio
+De espanto
+De receber sem ter pedido
+
+[Outro]
+Nao mereci
+E isso e o mais bonito
+Que alguma vez me aconteceu`,
+
+  "espiritual-graca/2": `[Verse]
+The armour didn't fall
+It melted
+Slowly like ice in the sun
+I didn't even notice
+
+[Verse]
+One day my shoulders dropped
+My jaw unclenched at dinner
+My fists forgot to close
+And I forgot to mind
+
+[Chorus]
+Softening
+Not weakness
+Softening
+Readiness
+The body knowing
+It can stop defending
+What was never under attack
+Softening
+Is the bravest thing
+These bones have done
+
+[Bridge]
+You don't take armour off
+With your hands
+You take it off
+By forgetting you wore it
+
+[Outro]
+I am soft now
+Not broken
+Soft
+Like something that can finally bend`,
+
+  "espiritual-graca/3": `[Verse]
+Estou de pe no meio de nada
+E comeca a chover
+Nao chuva de tempestade
+Chuva de quem cuida de mim
+
+[Verse]
+Nao me mexo nao fujo
+Abro os bracos
+E deixo a agua escorrer
+Pelo cabelo pelas maos pelo peito
+
+[Chorus]
+Cai sobre mim
+O que eu nunca soube pedir
+Cai sobre mim
+O que eu nunca soube receber
+A graca nao espera convite
+Cai como chuva
+No justo e no perdido
+E eu estou aqui
+De bracos abertos
+A deixar-me molhar
+
+[Bridge]
+A chuva nao escolhe
+Onde cair
+So cai
+E o chao recebe
+
+[Outro]
+Cai sobre mim
+Eu ja nao fujo
+Da gentileza`,
+
+  "espiritual-graca/4": `[Verse]
+I did not earn this sunrise
+I did not earn these lungs
+This morning came regardless
+This breath arrived unsung
+
+[Verse]
+No invoice for the birdsong
+No receipt for how you smiled
+No one charged me for the moment
+I remembered I'm alive
+
+[Chorus]
+Unearned
+The most beautiful things
+Unearned
+The light on the table
+The laughter in the hall
+The fact that you exist
+At all
+Was never owed
+Never earned
+Just given
+
+[Bridge]
+Stop trying to deserve it
+You were never asked to pay
+Just open up your hands
+And let it stay
+
+[Outro]
+Unearned
+And that is why
+It is so tender`,
+
+  // ─────────────────────────────────────────────
+  // ALBUM 5: SILENCIO SAGRADO (fullness of quietude)
+  // ─────────────────────────────────────────────
+
+  "espiritual-silencio/1": `[Verse]
+Cala
+Como o mar depois da onda
+Cala
+Como o corpo depois do choro
+
+[Verse]
+Nao e castigo
+E descanso
+A boca fecha
+E o mundo finalmente respira
+
+[Chorus]
+Cala
+Nao por ordem
+Cala
+Por convite
+O silencio nao e vazio
+E o espaco
+Onde a voz descansa
+Antes de voltar mais clara
+
+[Bridge]
+A onda volta sempre
+Mas o silencio entre ondas
+E onde o mar se lembra
+Do que e
+
+[Outro]
+Cala
+E ouve
+O que sobra
+Quando a voz se vai`,
+
+  "espiritual-silencio/2": `[Verse]
+Sit still
+Not because it's peaceful
+But because the muscles learn
+To stop performing rest
+
+[Verse]
+The mind will scream
+The body will itch
+The clock will tick
+Like a judge on a bench
+
+[Chorus]
+Still
+Not peace but practice
+Still
+Not calm but choice
+The discipline of staying
+When every nerve says move
+Still
+Until the noise
+Becomes a hum
+And the hum
+Becomes enough
+
+[Bridge]
+You will want to run
+Sit anyway
+You will want to speak
+Breathe anyway
+
+[Outro]
+Stillness is not a gift
+It is a skill
+Built with trembling hands`,
+
+  "espiritual-silencio/3": `[Verse]
+O quarto esta vazio
+Mas nao esta vazio
+Ha qualquer coisa entre as paredes
+Que nao se ve mas se sente
+
+[Verse]
+Tirei tudo la de dentro
+Os moveis os quadros os sons
+E o que sobrou
+Pesava mais do que o que tirei
+
+[Chorus]
+O vazio cheio
+Nao e contradicao
+O vazio cheio
+E o que sobra
+Quando tiras tudo
+E descobres
+Que o nada
+Tem mais peso
+Do que pensavas
+
+[Bridge]
+O silencio nao e ausencia
+E presenca sem disfarce
+O vazio nao e falta
+E espaco sem paredes
+
+[Outro]
+Esvaziei tudo
+E fiquei cheia
+Pela primeira vez`,
+
+  "espiritual-silencio/4": `[Verse]
+I used to think that silence
+Was the sound of nothing there
+But silence has a texture
+Like the weight of different air
+
+[Verse]
+I hear the house expanding
+I hear my own blood move
+I hear the space between my thoughts
+Like footsteps in a room
+
+[Chorus]
+Listen
+Not for the sound
+Listen
+For what's underneath
+The hum beneath the quiet
+The pulse behind the pause
+Silence is not empty
+Silence is just listening
+Without the noise
+Getting in the way
+
+[Bridge]
+Close your mouth
+Open your chest
+The ears are not enough
+You need to hear
+With everything
+
+[Outro]
+I listened to the silence
+And it said my name`,
+
+  "espiritual-silencio/5": `[Verse]
+Nao tem tecto
+Nao tem paredes
+Nao tem porta nem campainha
+So o peito aberto
+E o silencio la dentro
+
+[Verse]
+A catedral mais alta
+Que alguma vez pisei
+Nao tinha pedra nem vitral
+Tinha so o espaco
+Entre uma respiracao e outra
+
+[Chorus]
+Catedral interior
+Sem arquitecto
+Catedral interior
+Sem projecto
+Construida com silencio
+Sustentada com presenca
+A nave e o meu peito
+O altar e o meu centro
+
+[Bridge]
+Nao precisas de ir a lado nenhum
+O templo esta aqui
+Entre as tuas costelas
+Atras dos teus olhos
+
+[Outro]
+Entra
+Esta sempre aberta
+A catedral que es tu`,
+
+  // ─────────────────────────────────────────────
   // ALBUM 6: ENTREGA (letting go of control, trusting the unseen)
   // ─────────────────────────────────────────────
 
