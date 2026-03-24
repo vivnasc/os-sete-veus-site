@@ -1,4 +1,3 @@
 {
-  "framework": "nextjs",
-  "ignoreCommand": "bash -c 'git fetch origin HEAD --depth=2 2>/dev/null; git diff --quiet HEAD~1 HEAD -- .'"
+  "framework": "nextjs"
 }

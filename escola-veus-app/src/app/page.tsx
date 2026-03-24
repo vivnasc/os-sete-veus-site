@@ -26,53 +26,63 @@ export default function HomePage() {
 
   return (
     <div className="min-h-dvh">
-      {/* ─── HERO (estilo music-app) ─── */}
+      {/* ─── HERO ─── */}
       <div className="relative overflow-hidden">
-        {/* Imagem de fundo com blur */}
+        {/* Mandala como fundo blur */}
         <div className="absolute inset-0">
           <Image
             src="/hero-mandala.png"
             alt=""
             fill
-            className="object-cover object-center opacity-30 blur-[2px]"
+            className="object-cover object-center opacity-20 blur-sm scale-110"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-escola-bg/60 via-escola-bg/70 to-escola-bg" />
+          <div className="absolute inset-0 bg-gradient-to-b from-escola-bg/40 via-escola-bg/60 to-escola-bg" />
         </div>
 
-        <div className="relative flex flex-col items-center text-center px-6 pt-8 pb-14">
-          {/* Mandala como "capa" */}
-          <Image
-            src="/hero-mandala.png"
-            alt="Os 7 Véus"
-            width={400}
-            height={400}
-            className="h-56 sm:h-72 md:h-80 w-auto rounded-2xl shadow-2xl ring-1 ring-white/10"
-            priority
-          />
+        <div className="relative flex flex-col items-center text-center px-6 pt-12 pb-16">
+          {/* Mandala card */}
+          <div className="relative">
+            <Image
+              src="/hero-mandala.png"
+              alt="Os 7 Véus"
+              width={320}
+              height={320}
+              className="h-52 sm:h-64 md:h-72 w-auto rounded-2xl shadow-2xl ring-1 ring-white/10"
+              priority
+            />
+          </div>
 
-          {/* Logo — grande, legível, já contém nome + slogan */}
-          <Image
-            src="/Escola-dos-veus-logo.png"
-            alt="Escola dos Véus — Vê o que estava invisível"
-            width={600}
-            height={300}
-            className="h-40 sm:h-48 md:h-56 w-auto mt-8"
-          />
+          {/* Favicon + nome */}
+          <div className="mt-10 flex flex-col items-center gap-3">
+            <Image
+              src="/Escola-dos-veus-favicon.png"
+              alt=""
+              width={80}
+              height={80}
+              className="h-20 w-20 rounded-2xl"
+            />
+            <h1 className="font-serif text-2xl sm:text-3xl font-semibold text-escola-creme tracking-wide">
+              Escola dos Véus
+            </h1>
+            <p className="text-sm text-escola-dourado tracking-widest">
+              Vê o que estava invisível.
+            </p>
+          </div>
 
           {/* CTA */}
-          <div className="mt-8 w-full max-w-xs space-y-3">
+          <div className="mt-10 w-full max-w-xs space-y-3">
             {!user ? (
               <>
                 <Link
                   href="/entrar"
-                  className="block w-full rounded-lg bg-escola-dourado px-4 py-3.5 text-center text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
+                  className="block w-full py-3.5 rounded-xl bg-escola-dourado text-center text-sm font-medium text-escola-bg hover:bg-escola-dourado-light transition-colors"
                 >
                   Entrar
                 </Link>
                 <Link
                   href="/registar"
-                  className="block w-full rounded-lg border border-escola-dourado/30 px-4 py-3.5 text-center text-sm text-escola-creme-50 transition-colors hover:border-escola-dourado/60 hover:text-escola-creme"
+                  className="block w-full py-3.5 rounded-xl border border-white/10 text-center text-sm text-escola-creme hover:bg-white/5 transition-colors"
                 >
                   Criar conta
                 </Link>
@@ -80,7 +90,7 @@ export default function HomePage() {
             ) : (
               <Link
                 href="/cursos"
-                className="block w-full rounded-lg bg-escola-dourado px-4 py-3.5 text-center text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
+                className="block w-full py-3.5 rounded-xl bg-escola-dourado text-center text-sm font-medium text-escola-bg hover:bg-escola-dourado-light transition-colors"
               >
                 Explorar cursos
               </Link>
@@ -89,7 +99,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ─── CONTEÚDO ─── */}
+      {/* ─── CONTEUDO ─── */}
       <div className="max-w-screen-lg mx-auto px-6 space-y-14 pb-32">
 
         {/* Progresso (autenticado) */}
@@ -167,7 +177,7 @@ export default function HomePage() {
           </section>
         )}
 
-        {/* Catálogo por categoria */}
+        {/* Catalogo por categoria */}
         {COURSE_CATEGORIES.map((cat) => (
           <section key={cat.slug}>
             <h2 className="font-serif text-2xl font-semibold text-escola-creme mb-2">
@@ -208,7 +218,7 @@ export default function HomePage() {
           <div className="text-center pt-4">
             <Link
               href="/entrar"
-              className="inline-block rounded-lg bg-escola-dourado px-8 py-3 text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
+              className="inline-block rounded-xl bg-escola-dourado px-8 py-3 text-sm font-medium text-escola-bg hover:bg-escola-dourado-light transition-colors"
             >
               Entrar na escola
             </Link>

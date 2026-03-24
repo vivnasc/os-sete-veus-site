@@ -7,10 +7,10 @@ const PLANS = [
   {
     id: "trial",
     name: "Experimenta",
-    price: "Gratis",
+    price: "Grátis",
     period: "7 dias",
     description: "Acesso completo durante 7 dias. Sem compromisso.",
-    cta: "Comecar trial",
+    cta: "Começar trial",
     highlight: false,
   },
   {

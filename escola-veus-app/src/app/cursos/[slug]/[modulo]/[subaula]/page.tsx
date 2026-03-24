@@ -19,14 +19,14 @@ export default function SubaulaPage() {
     useProgress(slug);
 
   const course = getCourseBySlug(slug);
-  if (!course) return <NotFound msg="Curso nao encontrado." />;
+  if (!course) return <NotFound msg="Curso não encontrado." />;
 
   const mod = course.modules.find((m) => m.number === moduloNum);
-  if (!mod) return <NotFound msg="Modulo nao encontrado." />;
+  if (!mod) return <NotFound msg="Módulo não encontrado." />;
 
   const subIndex = mod.subLessons.findIndex((sl) => sl.letter === subaulaLetter);
   const sub = mod.subLessons[subIndex];
-  if (!sub) return <NotFound msg="Sub-aula nao encontrada." />;
+  if (!sub) return <NotFound msg="Sub-aula não encontrada." />;
 
   const isFreeTier = mod.number === 1;
   const hasAccess = isFreeTier || isSubscribed;
@@ -35,7 +35,7 @@ export default function SubaulaPage() {
     return (
       <div className="mx-auto flex min-h-[60dvh] max-w-lg flex-col items-center justify-center px-4 text-center">
         <p className="mb-3 text-sm text-escola-creme-50">
-          Este modulo faz parte do curso completo.
+          Este módulo faz parte do curso completo.
         </p>
         <Link
           href="/subscrever"
@@ -51,16 +51,16 @@ export default function SubaulaPage() {
     return (
       <div className="mx-auto flex min-h-[60dvh] max-w-lg flex-col items-center justify-center px-4 text-center">
         <p className="mb-2 font-serif text-lg text-escola-creme">
-          Este modulo ainda nao esta acessivel.
+          Este módulo ainda não está acessível.
         </p>
         <p className="mb-6 text-sm text-escola-creme-50">
-          Completa o Modulo {moduloNum - 1} para desbloquear.
+          Completa o Módulo {moduloNum - 1} para desbloquear.
         </p>
         <Link
           href={`/cursos/${slug}/${moduloNum - 1}`}
           className="text-sm text-escola-dourado hover:underline"
         >
-          Ir para Modulo {moduloNum - 1}
+          Ir para Módulo {moduloNum - 1}
         </Link>
       </div>
     );
@@ -99,7 +99,7 @@ export default function SubaulaPage() {
         href={`/cursos/${slug}/${moduloNum}`}
         className="mb-6 inline-flex items-center gap-1 text-xs text-escola-creme-50 hover:text-escola-creme"
       >
-        <span>&larr;</span> Modulo {moduloNum}
+        <span>&larr;</span> Módulo {moduloNum}
       </Link>
 
       {/* Header */}
@@ -109,7 +109,7 @@ export default function SubaulaPage() {
             {sub.letter}
           </span>
           <span className="text-xs text-escola-creme-50">
-            Modulo {moduloNum} de {course.modules.length}
+            Módulo {moduloNum} de {course.modules.length}
           </span>
         </div>
         <h1 className="font-serif text-2xl font-semibold text-escola-creme">
@@ -125,7 +125,7 @@ export default function SubaulaPage() {
               <polygon points="5 3 19 12 5 21 5 3" />
             </svg>
           </div>
-          <span className="text-sm text-escola-creme-50">Video em breve</span>
+          <span className="text-sm text-escola-creme-50">Vídeo em breve</span>
         </div>
       </div>
 
@@ -153,14 +153,14 @@ export default function SubaulaPage() {
                 href={mod.workbook ? `/cursos/${slug}/${moduloNum}/caderno` : `/cursos/${slug}/${moduloNum}/completo`}
                 className="w-full rounded-lg bg-escola-dourado/10 px-6 py-3 text-center text-sm font-medium text-escola-dourado transition-opacity hover:opacity-90"
               >
-                {mod.workbook ? "Ir para o caderno" : "Ver conclusao do modulo"}
+                {mod.workbook ? "Ir para o caderno" : "Ver conclusão do módulo"}
               </Link>
             ) : (
               <Link
                 href={`/cursos/${slug}/${moduloNum}/${nextSubLetter!.toLowerCase()}`}
                 className="w-full rounded-lg bg-escola-dourado/10 px-6 py-3 text-center text-sm font-medium text-escola-dourado transition-opacity hover:opacity-90"
               >
-                Proxima sub-aula &rarr;
+                Próxima sub-aula &rarr;
               </Link>
             )}
           </div>
@@ -191,7 +191,7 @@ export default function SubaulaPage() {
             href={`/cursos/${slug}/${moduloNum - 1}`}
             className="text-xs text-escola-creme-50 hover:text-escola-creme"
           >
-            &larr; Modulo {moduloNum - 1}
+            &larr; Módulo {moduloNum - 1}
           </Link>
         )}
         <span />
@@ -232,7 +232,7 @@ function MicroReflection({
       >
         <div>
           <h3 className="text-xs uppercase tracking-wide text-escola-dourado">
-            Pausa para reflexao
+            Pausa para reflexão
           </h3>
           <p className="mt-1 text-sm text-escola-creme-50">
             O que te ficou desta sub-aula?
@@ -246,7 +246,7 @@ function MicroReflection({
           <textarea
             value={content}
             onChange={(e) => updateContent(e.target.value)}
-            placeholder="Escreve aqui... Este espaco e so teu."
+            placeholder="Escreve aqui... Este espaço é só teu."
             className="min-h-[100px] w-full resize-y rounded-lg border border-escola-border bg-escola-bg px-4 py-3 font-serif text-sm leading-relaxed text-escola-creme placeholder:text-escola-creme-50 focus:border-escola-dourado/40 focus:outline-none"
           />
           <div className="mt-2 flex items-center justify-between">
