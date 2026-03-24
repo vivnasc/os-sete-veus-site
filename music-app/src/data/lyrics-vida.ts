@@ -1421,4 +1421,360 @@ Que ninguem ve mas que se sente
 Voltei
 Mas voltei diferente`,
 
+
+  // ─────────────────────────────────────────────
+  // CORPO A CORPO (intimidade, proximidade)
+  // ─────────────────────────────────────────────
+
+  "vida-corpo-a-corpo/1": `[Verse 1]
+Milimetro por milimetro
+O corpo desliza no sofa
+O ar entre nos e um espectro
+De tudo o que a boca nao prova
+
+[Verse 2]
+A pele arrepia antes de tocar
+O pelo levanta de antecipacao
+Ha um campo entre eu e o teu lugar
+Que vibra mais que o coracao
+
+[Chorus]
+Aproximar
+Sem pressa, sem medo, sem voz
+Aproximar
+E o espaco derrete entre nos
+Cada centimetro e um universo
+Cada segundo e uma oração
+O ultimo milimetro e o verso
+Que eu nunca soube de cor ate agora nao
+
+[Outro]
+Mais perto
+Mais perto`,
+
+  "vida-corpo-a-corpo/2": `[Verse 1]
+Before the word there was the touch
+Before the name there was the skin
+I didn't know I needed much
+Until your warmth found its way in
+
+[Verse 2]
+My fingertips read you like braille
+Each ridge, each hollow, each warm line
+The body's oldest fairy tale
+Written in a language more than mine
+
+[Chorus]
+Skin, just skin
+The first and final word
+Skin, let me in
+To the language never heard
+No dictionary, no translation
+Just the heat between two hands
+The body's own communication
+That the thinking mind won't understand
+
+[Outro]
+Skin to skin
+The truest conversation`,
+
+  "vida-corpo-a-corpo/3": `[Verse 1]
+O espaco entre dois corpos
+E mais carregado que o toque
+Sinto os pelos como soros
+Electricos antes do choque
+
+[Verse 2]
+O ultimo centimetro treme
+Como corda de violino
+O ar entre nos e a semente
+De tudo o que sera destino
+
+[Chorus]
+O espaco entre
+E mais quente que a pele
+O espaco entre
+E onde o desejo se rebele
+Nao toco ainda
+Deixo o ar arder
+A distancia e linda
+Quando esta prestes a morrer
+
+[Outro]
+Quase
+Quase la`,
+
+  "vida-corpo-a-corpo/4": `[Verse 1]
+Your exhale becomes my in
+My breath becomes your next
+We're sharing air beneath the skin
+In a language with no text
+
+[Verse 2]
+Foreheads touching, eyes are closed
+The world contracts to this
+Two rhythms gently juxtaposed
+Before the first real kiss
+
+[Chorus]
+Breath to breath
+We trade the air between us
+Breath to breath
+No word could ever free us
+The way this breathing does
+Two lungs in conversation
+The oldest form of trust
+A wordless declaration
+
+[Outro]
+Breathe in what I breathe out
+Breathe out what I breathe in`,
+
+  "vida-corpo-a-corpo/5": `[Verse 1]
+As maos abrem sem reserva
+A pele fala o que eu nao sei
+O corpo perde a sua cerca
+E eu entrego-me a esta lei
+
+[Verse 2]
+Nao ha mais mascara nem filtro
+Nao ha mais vergonha nem muro
+O corpo e o unico livro
+Que se le inteiro no escuro
+
+[Chorus]
+Entrega de pele
+Dar-me toda sem sobras
+Entrega de pele
+Onde as maos sao as obras
+O corpo sabe a lingua
+Que a mente nunca aprendeu
+Cada toque distingue
+O que e teu do que e meu
+E desfaz a fronteira
+
+[Outro]
+Entrego
+Entrego tudo`,
+
+  "vida-corpo-a-corpo/6": `[Verse 1]
+The room returns in shapes and shades
+The ceiling fan still turns its round
+The sweat is cooling, the light fades
+My hand is resting on the sound
+
+[Verse 2]
+Of your heartbeat slowing down
+Like a song that's found its end
+No need to speak, no need for sound
+Just the silence that two bodies lend
+
+[Chorus]
+After, after
+The quiet between two skins
+After, after
+Where tenderness begins
+No words could match this peace
+No poem hold this weight
+The body finds release
+And learns that love can wait
+
+[Bridge]
+Your breathing, slow and deep
+My hand upon your chest
+This is the kind of sleep
+That only follows rest
+
+[Outro]
+After
+The most honest silence`,
+
+  // ─────────────────────────────────────────────
+  // DILUVIO MANSO (chorar, luto, desabar)
+  // ─────────────────────────────────────────────
+
+  "vida-diluvio-manso/1": `[Verse 1]
+Os joelhos cedem no chao da cozinha
+As maos agarram a borda da pia
+A coisa que eu segurava sozinha
+Desceu pelo corpo como uma maré fria
+
+[Verse 2]
+Ninguem deu licenca pra isto
+Ninguem assinou a autorizacao
+Mas o corpo decidiu por instinto
+Que hoje era o dia da inundacao
+
+[Chorus]
+Permissao
+Para desabar sem explicacao
+Permissao
+Para ser a chuva e a inundacao
+Nao e fraqueza, nao e derrota
+E o corpo a cobrar o que lhe devem
+Cada lagrima e uma nota
+De tudo o que segurei para sempre
+
+[Outro]
+Cai
+Deixa cair`,
+
+  "vida-diluvio-manso/2": `[Verse 1]
+The crack starts small, a hairline in the wall
+A tremor in the voice you barely hear
+And then the whole thing starts to fall
+The dam that held you disappears
+
+[Verse 2]
+Years of held breath flood the room
+The body shakes with what it stored
+Every swallowed word, every perfumed gloom
+Breaks through the surface you adored
+
+[Chorus]
+The dam, the dam
+It breaks and there's no stopping it
+The dam, the dam
+The force of everything I kept
+The terrible relief
+Of finally letting go
+The beauty in the grief
+Of letting the water flow
+
+[Outro]
+Let it break
+Let it all come through`,
+
+  "vida-diluvio-manso/3": `[Verse 1]
+As lagrimas secam na face
+Apertam a pele de sal
+O mesmo sal que o mar desfaz
+O mesmo sal que e mineral
+
+[Verse 2]
+O corpo e oceano por dentro
+O choro e a mare que sobe
+Sou agua e sal e vento
+E nada disto me corroi
+
+[Chorus]
+Salgado
+O sal das lagrimas e do mar
+Salgado
+O mesmo sal que sabe curar
+Nao estou partida
+Sou agua que corre
+A dor e valida
+E o sal socorre
+
+[Outro]
+Sal
+O mesmo sal em tudo`,
+
+  "vida-diluvio-manso/4": `[Verse 1]
+My feet are heavy on the gravel road
+The grocery bags are in my hands
+I carry this invisible load
+That nobody else understands
+
+[Verse 2]
+The checkout girl said have a nice day
+I smiled and almost meant it too
+The body bends beneath the weight
+Of getting through, just getting through
+
+[Chorus]
+Carry, carry
+The grief that has no name
+Carry, carry
+Through the sunshine and the rain
+Not weakness but the work
+Of living with the weight
+The daily quiet murk
+Of showing up and showing late
+But showing up
+
+[Outro]
+One foot
+Then the other
+Carry on`,
+
+  "vida-diluvio-manso/5": `[Verse 1]
+A cadeira vazia na mesa
+O telefone que nao toca mais
+A ausencia pesa mais do que pesa
+A presenca em tempos normais
+
+[Verse 2]
+Estendo a mao para ligar
+Antes de lembrar que nao ha rede
+O gesto fica suspenso no ar
+Como agua que nao tem sede
+
+[Chorus]
+A falta
+O peso do que ja nao esta
+A falta
+E a sombra mais real que ha
+Mais pesada que o corpo
+Mais densa que a presenca
+A ausencia e um porto
+Onde nunca ha sentenca
+
+[Outro]
+Falta
+Falta tanto`,
+
+  "vida-diluvio-manso/6": `[Verse 1]
+Rain falls behind my eyes all day
+A weather no one else can see
+The drops are soft, they find their way
+Through everything I used to be
+
+[Verse 2]
+I let it fall, I don't resist
+This season needed to arrive
+The internal rain, the morning mist
+That cleans the places left alive
+
+[Chorus]
+Rain inside, rain inside
+The weather that is only mine
+Rain inside, let it ride
+The water that will make me fine
+Not destruction, not the flood
+But the monsoon after drought
+The rain that feeds the mud
+That something new will sprout about
+
+[Outro]
+Let it rain
+Let it wash me clean`,
+
+  "vida-diluvio-manso/7": `[Verse 1]
+Os olhos inchados mas leves por tras
+A cara lavada de tudo
+Ha uma fome estranha que vem e que traz
+O corpo de volta do mudo
+
+[Verse 2]
+Peco agua, peco pao
+As coisas mais simples do mundo
+O corpo pede com a mao
+Depois do choro mais profundo
+
+[Chorus]
+Depois do choro
+Uma leveza estranha fica
+Depois do choro
+O ar e fresco e a vida e rica
+Como o ceu depois da chuva
+Quando a luz tem outra cor
+O corpo encontra a sua uva
+E o sabor de depois da dor
+
+[Outro]
+Chorei tudo
+E agora sinto fome de viver`,
+
 };
