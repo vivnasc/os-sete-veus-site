@@ -1364,70 +1364,100 @@ You are the sky
 You carry it`,
 
   "espiritual-raiz-ceu/3": `[Verse 1]
-A coluna e o eixo
-Entre terra e qualquer ceu
-A gravidade puxa em baixo
-A leveza chama de la do breu
+A coluna e o eixo do mundo
+entre a lama e o mais azul
+a gravidade puxa em baixo
+a leveza chama do sul
 
 [Verse 2]
 Nao sou so o que me prende
-Nao sou so o que me eleva
-Sou a linha vertical
-Que entre os dois se atravessa
+nao sou so o que me quer
+sou a linha que os une
+sou o corpo inteiro a ser
 
 [Chorus]
-Vertical
-Os pes na lama
-Vertical
-A testa nas estrelas
-Vertical
-O corpo inteiro e templo
-Entre o peso e a promessa
+Vertical, vertical
+os pes na lama e funda
+vertical, vertical
+a cabeca no ceu que abunda
+nao escolho um lado so —
+sou o eixo entre os dois extremos
+o templo nao e la em cima
+o templo e este corpo inteiro
+
+[Verse 3]
+A base dos pes no chao firme
+o topo da cabeca no ar
+tudo o que sou existe
+neste comprimento singular
 
 [Bridge]
-A base dos pes no chao
-O topo da cabeca no vento
-Tudo o que sou existe
-Neste comprimento
+Nao preciso de subir para voar
+nao preciso de cair para enraizar
+sou a distancia que e medida
+do centro da terra ao ceu sem par
 
 [Outro]
-Nao preciso de escolher
-Entre raiz e voo
-Sou a linha que os une`,
+Vertical
+nem so raiz
+nem so ceu
+sou o eixo
+sou eu`,
 
   "espiritual-raiz-ceu/4": `[Verse 1]
-They told me pick a side
-The mud or the sublime
-But I was never one or other
-I was both at the same time
+[Male]
+I am the weight of stone and root
+the patient dark below
+the thing that holds when storms arrive
+the anchor in the flow
 
-[Verse 2]
-My feet know stone and soil
-My chest knows open air
-I am the weight that holds me steady
-And the wind inside my hair
+[Female]
+I am the open, uncontained
+the reaching and the wide
+the breath that doesn't ask permission
+the undefended sky inside
+
+[Both]
+We are not opposites divided
+we are the one thing learning how to grow
 
 [Chorus]
-Both
-Root and reaching
-Both
-Grounded and gone
-Both
-Heavy and holy
-Both
-Dusk and dawn
-I don't split in two to live
-I stand in the middle and I give
+[Both]
+Both — root and reaching
+both — grounded and wide
+both — he holds the earth in place
+both — she carries all the sky
+the tree is what we make between us
+neither one complete alone
+she is the sky he leans into
+he is the ground she calls home
+
+[Verse 2]
+[Male]
+I used to call my weight a flaw
+a heaviness to mourn
+but she taught me that the root goes deep
+so the tree won't be torn
+
+[Female]
+I used to call my lightness loss
+a drifting without ground
+but he showed me how the sky needs roots
+to keep from coming down
 
 [Bridge]
-The tree doesn't choose
-Between the dark below
-And the light above
-It grows in both directions
+[Both]
+The tree doesn't choose between the dark below
+and the light that lives above
+it grows in both directions —
+that's not tension, that's love
 
 [Outro]
-I am both
-And both is whole`,
+[Both]
+Both
+and both is whole
+both
+and whole is home`,
 
   "espiritual-raiz-ceu/5": `[Verse 1]
 Plantaram-me ha muitos anos
@@ -2263,37 +2293,48 @@ Entro
 Sento
 O eco faz o resto`,
 
-  "espiritual-catedral/2": `[Verse]
-There are cracks in my walls
-I used to call them damage
-But the light is coming through
-In colours I have never seen
+  // Track 2: "Cicatriz" — scars as doorways, not beauty
+  "espiritual-catedral/2": `[Verse 1]
+There are lines across my body
+That I drew by living wrong
+Every scar holds a decision
+Every mark is where I broke
 
-[Verse]
-Every fracture tells a story
-Every break lets something in
-I am not a ruin
-I am stained glass
+[Verse 2]
+I won't call this beautiful
+I won't dress the damage up
+But I am still inside this body
+And these scars are where I start
 
 [Chorus]
-Stained glass
-Light through the wounds
-Stained glass
-Beautiful because broken
-Every colour earned
-Every shard still holding
-The whole picture together
+Cicatriz — not a decoration
+Cicatriz — a door I stumbled through
+Something entered when I split open
+Now I carry what I knew
+
+[Verse 3]
+Some wounds were slow to close
+Some barely left a seam
+Some still pull when weather changes
+Some still visit me in dreams
+
+[Chorus]
+Cicatriz — not a decoration
+Cicatriz — a door I stumbled through
+Something entered when I split open
+Now I carry what I knew
 
 [Bridge]
-Don't fix the cracks
-They are the windows now
-Don't hide the scars
-They are where the light gets in
+I am not healed — I am altered
+I am not whole — I am opened
+Every scar a place of entry
+Every mark its own education
 
 [Outro]
-I am stained glass
-And the light
-Is pouring through`,
+These are the lines
+I did not choose
+These are the doors
+I walked through`,
 
   "espiritual-catedral/3": `[Verse]
 As costelas sao arcos
