@@ -281,4 +281,247 @@ Rest now
 You earned this quiet
 Rest now`,
 
+
+  // ─────────────────────────────────────────────
+  // SILENCIO FERTIL (meditacao, pausa)
+  // ─────────────────────────────────────────────
+
+  "vida-silencio-fertil/1": `[Verse 1]
+Sento-me no chao
+Os joelhos tocam a terra
+A coluna encontra a direcao
+Que o dia inteiro enterra
+
+[Verse 2]
+Os ombros descem devagar
+Como folhas que largam o ramo
+Ja nao preciso de carregar
+O peso de quem finjo que amo
+
+[Chorus]
+Sentar
+So sentar e ja chegar
+Nao ha nada para resolver
+So este chao e este respirar
+So este corpo a aprender
+A estar
+
+[Verse 3]
+O mundo pode esperar la fora
+A lista pode crescer
+Aqui dentro nao ha hora
+So o agora a acontecer
+
+[Outro]
+Sentada, cheguei
+Sentada, estou aqui`,
+
+  "vida-silencio-fertil/2": `[Verse 1]
+The ripples slow and slow and slow
+The surface finds its glass
+The thoughts that tumbled to and fro
+Settle down at last
+
+[Verse 2]
+No need to chase the quiet here
+It comes when I stop reaching
+The mind as clear as atmosphere
+Without a single teaching
+
+[Chorus]
+Still water, still water
+Nothing left to stir
+The mind becomes the daughter
+Of the silence she prefers
+Still water, still water
+Transparent to the floor
+I see what lives beneath her
+And I don't need any more
+
+[Bridge]
+Like a pond after the rain
+When every drop has found its place
+The clarity that follows pain
+Is written on the water's face
+
+[Outro]
+Still, still, still water`,
+
+  "vida-silencio-fertil/3": `[Verse 1]
+As costelas abrem como portas
+O ar entra frio e sai quente
+Nao ha mais palavras mortas
+So o corpo, simplesmente
+
+[Verse 2]
+A barriga sobe e desce
+Como a mare sem lua
+Nao ha nada que acontece
+Que esta respiracao nao sua
+
+[Chorus]
+O corpo respira
+Sem pedir licenca
+O corpo respira
+Sem nenhuma crenca
+So o ar que entra
+So o ar que sai
+O resto e invencao
+Que o corpo nao trai
+
+[Verse 3]
+Cada inspiracao e um mundo
+Cada expiracao e adeus
+O corpo sabe no mais fundo
+Que respirar e o nome de Deus
+
+[Outro]
+Inspira
+Expira
+So isto`,
+
+  "vida-silencio-fertil/4": `[Verse 1]
+Between one thought and the next
+A gap opens like a door
+In that silence, nothing's vexed
+Nothing's keeping score
+
+[Verse 2]
+It lasts a breath, it lasts a blink
+But in that space I'm free
+I'm not the one who has to think
+I'm just the one who sees
+
+[Chorus]
+Between thoughts
+There's a country with no name
+Between thoughts
+Nothing's broken, nothing's tame
+Just the open sky
+Of a mind that learned to pause
+Between the question why
+And the silence that's the cause
+
+[Bridge]
+I can't hold it and it doesn't stay
+But I know now where it lives
+In the nothing between words I say
+In the everything silence gives
+
+[Outro]
+Between, between
+The peace between`,
+
+  "vida-silencio-fertil/5": `[Verse 1]
+Pensei que estava vazio
+Sentei e esperei o pior
+Mas o vazio era um rio
+Cheio de cor
+
+[Verse 2]
+Dentro do nada encontrei tudo
+O silencio era uma voz
+O espaco era um escudo
+Que me protegia de nos
+
+[Chorus]
+Vazio cheio
+O nada transborda
+Vazio cheio
+A ausencia acorda
+O que pensei que faltava
+Ja estava aqui
+A plenitude morava
+No que eu nunca vi
+
+[Outro]
+Cheio, cheio
+O vazio esta cheio
+Cheio de mim`,
+
+  "vida-silencio-fertil/6": `[Verse 1]
+A bell rings through the fog
+A single note, a golden thread
+It finds me in the inner bog
+And gently pulls me from the dead
+
+[Verse 2]
+The room returns in shapes and sounds
+The clock remembers how to tick
+My body settles on the ground
+The world is slow and warm and thick
+
+[Chorus]
+The bell, the bell
+It calls me back from where I went
+The bell can tell
+The difference between lost and spent
+Come back now, come back slow
+The world is still the world
+Come back with what you know
+From the silence unfurled
+
+[Outro]
+I'm here
+The bell brought me here`,
+
+  "vida-silencio-fertil/7": `[Verse 1]
+Nao ha lugar para ir
+Nao ha nada para consertar
+O corpo pode existir
+Sem precisar de se explicar
+
+[Verse 2]
+A urgencia derreteu
+A lista evaporou
+O que faltava desapareceu
+Quando eu parei e bastou
+
+[Chorus]
+Nenhum lugar
+Nenhuma pressa
+Nenhum altar
+Nenhuma promessa
+So este chao e este ar
+So este corpo a respirar
+Sem destino, sem razao
+So a mao no coracao
+
+[Outro]
+Nada para fazer
+Nada para ser
+So estar`,
+
+  "vida-silencio-fertil/8": `[Verse 1]
+Fingers move, the blood returns
+Eyelids flutter to the light
+The room I left so long ago
+Has changed its angle, changed its white
+
+[Verse 2]
+I stand on legs that feel like new
+The doorknob cold against my palm
+I carry silence like a clue
+Into the noise, into the calm
+
+[Chorus]
+Return, return
+With quiet in my bones
+The world still burns
+But I have found my stones
+Return with eyes
+That saw behind the veil
+The ordinary lives
+Inside a different scale
+
+[Bridge]
+The kettle whistles like before
+The street still hums its hum
+But I am standing at the door
+As someone I've become
+
+[Outro]
+I return
+Changed and still the same`,
+
 };
