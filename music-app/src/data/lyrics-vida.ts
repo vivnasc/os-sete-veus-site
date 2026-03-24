@@ -2425,4 +2425,332 @@ Is where you've belonged all along
 Tender
 Be tender with yourself`,
 
+
+  // ─────────────────────────────────────────────
+  // RESCALDO (pos-conflito, depois da tempestade)
+  // ─────────────────────────────────────────────
+
+  "vida-rescaldo/1": `[Verse 1]
+A luz entra cinzenta pela cortina
+O corpo rigido de quem dormiu em guarda
+A almofada humida, a rotina
+De um dia que comeca com ressaca
+
+[Verse 2]
+A chaleira e um acto de fe
+A chavena quente entre as maos
+O silencio ja nao e
+O que era antes das questoes
+
+[Chorus]
+A manha seguinte
+Depois da guerra que ficou
+A manha seguinte
+E fragil mas chegou
+A luz nao e bonita
+Mas e luz e chega
+A manha nao e escrita
+Mas o dia nao se nega
+
+[Outro]
+Amanheceu
+Apesar de tudo amanheceu`,
+
+  "vida-rescaldo/2": `[Verse 1]
+My fingers sift through what is left
+The outlines hold though substance burned
+In devastation, strangely deft
+At seeing what I never learned
+
+[Verse 2]
+The ash is warm beneath my hands
+A residue of what was real
+The truth revealed in blackened lands
+Is simpler than I thought I'd feel
+
+[Chorus]
+Ash, just ash
+But still warm enough to mean
+Ash, just ash
+The clearest I have ever been
+What burns away was never mine
+What stays is mineral and true
+The fire drew a crooked line
+Between the false and the breakthrough
+
+[Outro]
+In the ash
+I found what's real`,
+
+  "vida-rescaldo/3": `[Verse 1]
+A chavena de cafe na mesa sem palavra
+A mao que encontra a outra mao na cama
+O cobertor puxado sobre quem descansa
+A desculpa que nao precisa de programa
+
+[Verse 2]
+O almoco feito sem que ninguem peca
+A porta aberta para o ar entrar
+As maos dizem o que a boca nao comeca
+As maos sabem como reparar
+
+[Chorus]
+Desculpa muda
+O pedido que vem nas maos
+Desculpa muda
+Mais verdadeira que sermoes
+Um gesto vale mais que mil palavras
+Quando as palavras ja falharam
+As maos reparam as traves
+Que as bocas quebraram
+
+[Outro]
+Um cafe na mesa
+E tudo o que precisas de dizer`,
+
+  "vida-rescaldo/4": `[Verse 1]
+One hand drum first, then bass arrives
+Then guitar finds a careful chord
+Two people building what survives
+Not with a speech but with a board
+
+[Verse 2]
+Stone by stone from either bank
+The bridge extends across the flood
+No word of blame, no word of rank
+Just labour done in quiet blood
+
+[Chorus]
+Rebuild, rebuild
+Not the old bridge painted new
+Rebuild, rebuild
+Something we've never walked through
+Stone by careful stone
+From my side and from yours
+The bridge is better grown
+When both of us lay floors
+
+[Outro]
+We're building
+We're building something new`,
+
+  "vida-rescaldo/5": `[Verse 1]
+O dedo passa pela cicatriz
+A pele levantada como um mapa
+O corpo guarda o que a mente diz
+Que nao merece mas que nunca escapa
+
+[Verse 2]
+Nao e castigo esta marca
+E prova de que sobrevivi
+O corpo escreve a sua arca
+Na pele de quem nunca desistiu de si
+
+[Chorus]
+A cicatriz
+Nao e vergonha, e historia
+A cicatriz
+E a mais honesta memoria
+Cada marca e um capitulo
+Que o corpo nao editou
+A cicatriz e o titulo
+Do livro que a vida me contou
+
+[Outro]
+Esta cicatriz
+E minha e eu fico com ela`,
+
+  "vida-rescaldo/6": `[Verse 1]
+We walk across the wood still pale
+The railing smooth beneath our hands
+Below the water tells its tale
+Of bridges lost in other lands
+
+[Verse 2]
+This one we chose, this one we built
+Not from the rubble of the past
+A different shape, a different tilt
+A bridge designed at last to last
+
+[Chorus]
+New bridge, new bridge
+Not the old one rebuilt but new
+New bridge, new bridge
+With a better view
+The water flows the same below
+The river hasn't changed its mind
+But we chose a different way to go
+And left the old design behind
+
+[Outro]
+A new bridge
+Between us`,
+
+  // ─────────────────────────────────────────────
+  // OFERENDA (gratidao, o sagrado sem igreja)
+  // ─────────────────────────────────────────────
+
+  "vida-oferenda/1": `[Verse 1]
+A cabeca inclina-se de leve
+Nao e submissao, e reconhecimento
+O peito abre quando a boca bebe
+A palavra mais simples do momento
+
+[Verse 2]
+Obrigada ao corpo que me trouxe
+Obrigada ao pao que esta na mesa
+Obrigada a manha que me ouve
+Obrigada a esta natureza
+
+[Chorus]
+Obrigada
+A palavra mais pesada
+Obrigada
+Quando e dita com a alma toda
+Nao ha ritual mais puro
+Que esta silaba na boca
+Obrigada ao futuro
+E a cada coisa que me toca
+
+[Outro]
+Obrigada
+So obrigada`,
+
+  "vida-oferenda/2": `[Verse 1]
+I took a pen and made a list
+Of everything I'm grateful for
+The coffee first, the morning mist
+Then friends, then health, then so much more
+
+[Verse 2]
+The list grew longer than the page
+The stranger's smile, the bus on time
+The book I'm reading at this age
+The silence and this quiet rhyme
+
+[Chorus]
+The list, the list
+Surprises me with all it holds
+The list, the list
+Is longer than the mind unfolds
+When you start to count what's here
+Instead of what is gone
+The world becomes so clear
+You wonder what you waited on
+
+[Outro]
+Keep writing
+The list is never done`,
+
+  "vida-oferenda/3": `[Verse 1]
+As maos no peito, ambas abertas
+Os olhos fecham, o ar aprofunda
+Debaixo das costelas, as descobertas
+De quem para e encontra o que abunda
+
+[Verse 2]
+O coracao bate contra as palmas
+Como quem bate a uma porta
+Ha tanta coisa debaixo das calmas
+Que so as maos no peito transporta
+
+[Chorus]
+Maos no peito
+Sinto o que la esta
+Maos no peito
+E tanto, tanto ja
+Nao preciso de templo
+Nao preciso de altar
+As maos sao o exemplo
+Do sagrado a pulsar
+
+[Outro]
+Sinto
+Sinto tudo aqui dentro`,
+
+  "vida-oferenda/4": `[Verse 1]
+Before the fork, before the bite
+A pause that no one taught me how
+My hands are still, the table's right
+And something sacred fills the now
+
+[Verse 2]
+No god required for this grace
+Just eyes that see the plate as prayer
+The bread, the salt, the quiet space
+The miracle of being here
+
+[Chorus]
+Grace, grace
+Before the meal of being alive
+Grace, grace
+No scripture needs to arrive
+Just the breath before the taste
+Just the seeing of the food
+Nothing holy goes to waste
+When attention is the mood
+
+[Outro]
+Grace
+For all of this`,
+
+  "vida-oferenda/5": `[Verse 1]
+Olho a volta e vejo pela primeira vez
+A cadeira, a janela, a luz no chao
+As maos no colo, o que o instante fez
+De cada coisa uma constelacao
+
+[Verse 2]
+Saude para estar aqui sentada
+Olhos para ver, ar para respirar
+Tecto, chao, o prato e a faca
+Ja e tanto, ja e demais para contar
+
+[Chorus]
+O que tenho
+Neste instante ja e tanto
+O que tenho
+E o verdadeiro encanto
+Nao e o que falta
+E o que esta aqui
+A abundancia mais alta
+E a que eu nunca vi
+Ate agora
+
+[Outro]
+Tenho tanto
+Tanto agora`,
+
+  "vida-oferenda/6": `[Verse 1]
+I stand inside the open door
+The morning reaches for my face
+My palms turn upward from the floor
+I offer myself to this place
+
+[Verse 2]
+Not asking, not requesting more
+Not holding, not defending ground
+Just standing at the open door
+And letting the day make its sound
+
+[Chorus]
+Offering, offering
+My body to the day
+Offering, offering
+With nothing left to say
+Palms up and open wide
+No armour and no shield
+The only thing inside
+Is what the heart can yield
+
+[Bridge]
+The tears that come from gratitude
+Are warmer than the rest
+The body in this altitude
+Is lighter than the breast
+
+[Outro]
+I offer
+Everything I am`,
+
 };
