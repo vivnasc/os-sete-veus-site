@@ -689,179 +689,189 @@ it is so tender`,
   // ALBUM 5: SILENCIO SAGRADO (fullness of quietude)
   // ─────────────────────────────────────────────
 
-  "espiritual-silencio/1": `[Verse]
-Cala
-Como o mar depois da onda
-Cala
-Como o corpo depois do choro
+  "espiritual-silencio/1": `[Verse 1]
+Cala como o mar depois da onda
+como o corpo depois de chorar
+Nao e castigo nem abandono
+e o espaco antes de voltar
 
-[Verse]
-Nao e castigo
-E descanso
-A boca fecha
-E o mundo finalmente respira
+[Verse 2]
+A boca fecha e o mundo respira
+os ombros pousam no seu lugar
+Nao precisas de dizer mais nada
+para seres inteira de par
 
 [Chorus]
+Cala — por convite nao por ordem
+Cala — o silencio e teu lar
+Cala — a voz descansa entre ondas
+e volta mais limpa ao falar
 Cala
-Nao por ordem
-Cala
-Por convite
-O silencio nao e vazio
-E o espaco
-Onde a voz descansa
-Antes de voltar mais clara
+
+[Verse 3]
+Nao ha nada perdido no silencio
+ha qualquer coisa que se encontra
+O que ficou e mais verdadeiro
+do que tudo o que a voz confronta
 
 [Bridge]
-A onda volta sempre
-Mas o silencio entre ondas
-E onde o mar se lembra
-Do que e
+A onda volta sempre para a margem
+mas o silencio entre ondas e o mar
+e nesse espaco quieto sem disfarce
+o mar se lembra do que e de verdade
 
 [Outro]
 Cala
 E ouve
-O que sobra
-Quando a voz se vai`,
+o que sobra quando a voz se vai`,
 
-  "espiritual-silencio/2": `[Verse]
-Sit still
-Not because it's peaceful
-But because the muscles learn
-To stop performing rest
+  "espiritual-silencio/2": `[Verse 1]
+Sit still — not because it's peaceful
+but because the muscles learn
+to stop performing rest for others
+and let the silence take its turn
 
-[Verse]
-The mind will scream
-The body will itch
-The clock will tick
-Like a judge on a bench
+[Verse 2]
+The mind will rage, the body fidget
+the clock will judge you from the shelf
+But stillness isn't calm — it's practice
+the discipline of staying with yourself
 
 [Chorus]
-Still
-Not peace but practice
-Still
-Not calm but choice
-The discipline of staying
-When every nerve says move
-Still
-Until the noise
-Becomes a hum
-And the hum
-Becomes enough
+Still — not peace but presence
+Still — not calm but choice
+Hold the trembling without fixing
+let the quiet find its voice
+Still — until the noise becomes a hum
+
+[Verse 3]
+You'll want to reach for something certain
+some sound to fill the aching room
+But underneath the want for comfort
+there's a clarity that needs the gloom
 
 [Bridge]
-You will want to run
-Sit anyway
-You will want to speak
-Breathe anyway
+You will want to run — sit anyway
+You will want to speak — breathe instead
+Stillness built with trembling hands
+is the bravest thing you've ever said
 
 [Outro]
 Stillness is not a gift
 It is a skill
 Built with trembling hands`,
 
-  "espiritual-silencio/3": `[Verse]
-O quarto esta vazio
-Mas nao esta vazio
-Ha qualquer coisa entre as paredes
-Que nao se ve mas se sente
+  "espiritual-silencio/3": `[Verse 1]
+O quarto estava vazio e nao estava
+tirei os moveis os quadros os sons
+E o que sobrou entre as quatro paredes
+pesava mais do que as proprias raizes e poes
 
-[Verse]
-Tirei tudo la de dentro
-Os moveis os quadros os sons
-E o que sobrou
-Pesava mais do que o que tirei
+[Verse 2]
+Desci as caixas todas para o corredor
+fiquei sozinha com o chao e o ar
+E ali no meio daquele nao-nada
+percebi que nunca estive tao cheia de estar
 
 [Chorus]
+O vazio cheio — nao e contradicao
+O vazio cheio — e o que fica no chao
+Quando tiras tudo o que punhas la dentro
+descobres que o nada tem peso e intencao
 O vazio cheio
-Nao e contradicao
-O vazio cheio
-E o que sobra
-Quando tiras tudo
-E descobres
-Que o nada
-Tem mais peso
-Do que pensavas
+
+[Verse 3]
+Nao e falta — e espaco que respira
+nao e ausencia — e presenca a nu
+O que eu chamava vazio era armadura
+o que sobrou quando a tirei sou eu
 
 [Bridge]
 O silencio nao e ausencia
-E presenca sem disfarce
+e presenca sem disfarce
 O vazio nao e falta
-E espaco sem paredes
+e o espaco onde me reconheco na face
 
 [Outro]
 Esvaziei tudo
-E fiquei cheia
-Pela primeira vez`,
+e fiquei cheia
+pela primeira vez`,
 
-  "espiritual-silencio/4": `[Verse]
+  "espiritual-silencio/4": `[Verse 1]
 I used to think that silence
-Was the sound of nothing there
+was the sound of nothing there
 But silence has a texture
-Like the weight of different air
+like the weight of held-back air
 
-[Verse]
+[Verse 2]
 I hear the house expanding
 I hear my own blood move
 I hear the space between my thoughts
-Like footsteps in a room
+like footsteps in a room
 
 [Chorus]
-Listen
-Not for the sound
-Listen
-For what's underneath
+Listen — not for the sound
+Listen — for what's beneath the ground
 The hum beneath the quiet
-The pulse behind the pause
+the pulse behind the pause
 Silence is not empty
-Silence is just listening
-Without the noise
-Getting in the way
+silence keeps its laws
+Listen — until you hear yourself
+
+[Verse 3]
+The body has been speaking
+in a frequency I missed
+all the things I couldn't say out loud
+exist in every fist
 
 [Bridge]
 Close your mouth
 Open your chest
 The ears are not enough
-You need to hear
-With everything
+You need to listen
+with your skin, your lungs
+with everything that's tough
 
 [Outro]
 I listened to the silence
 And it said my name`,
 
-  "espiritual-silencio/5": `[Verse]
-Nao tem tecto
-Nao tem paredes
-Nao tem porta nem campainha
-So o peito aberto
-E o silencio la dentro
+  "espiritual-silencio/5": `[Verse 1]
+Nao tem tecto nem campainha
+nao tem vitral nem altar de pedra
+So o peito aberto na escuridao
+e o silencio que nele se entrega
 
-[Verse]
-A catedral mais alta
-Que alguma vez pisei
-Nao tinha pedra nem vitral
-Tinha so o espaco
-Entre uma respiracao e outra
+[Verse 2]
+A catedral mais alta que pisei
+nao tinha coluna nem nave
+tinha o espaco entre respiracoes
+e uma luz que nenhuma vela trave
 
 [Chorus]
-Catedral interior
-Sem arquitecto
-Catedral interior
-Sem projecto
-Construida com silencio
-Sustentada com presenca
-A nave e o meu peito
-O altar e o meu centro
+Catedral interior — sem arquitecto
+Catedral interior — sem projecto
+A nave e o meu peito a se abrir
+o altar e o meu centro quieto
+Catedral que nao precisa de ser vista
+para ser sagrada e ser real
+
+[Verse 3]
+Entrei muitas vezes sem saber
+que estava a entrar num templo
+Sentei no chao de pedra do meu corpo
+e encontrei o que nao tem exemplo
 
 [Bridge]
 Nao precisas de ir a lado nenhum
-O templo esta aqui
-Entre as tuas costelas
-Atras dos teus olhos
+o templo esta aqui
+Entre as tuas costelas e os teus olhos
+no silencio que te da a ti
 
 [Outro]
 Entra
 Esta sempre aberta
-A catedral que es tu`,
+a catedral que es tu`,
 
   // ─────────────────────────────────────────────
   // ALBUM 6: ENTREGA (letting go of control, trusting the unseen)
@@ -869,161 +879,192 @@ A catedral que es tu`,
 
   "espiritual-entrega/1": `[Verse 1]
 Tenho os dedos brancos de apertar
-As unhas cravadas na palma da mao
+as unhas cravadas na palma da mao
 O corpo inteiro feito de segurar
-Cada musculo uma oração
+cada musculo uma suplicacao
 
 [Verse 2]
-Seguro o tecto com os ombros
-Seguro o chao com os joelhos
-Seguro o ar dentro dos pulmoes
-Como se o mundo fosse meu espelho
+Seguro o tecto com os ombros curvados
+Seguro o chao com os joelhos em brao
+Seguro o ar nos pulmoes contraidos
+como se largar fosse a minha traicao
 
 [Chorus]
 Estou cansada de segurar
-O que nunca foi meu para ter
+o que nunca foi meu para ter
 Estou cansada de nao largar
-O que me pesa sem eu saber
-Ha um chao por baixo dos meus pes
-Que nao precisa que eu o segure
+o que me parte sem eu perceber
+Ha um chao aqui por baixo dos meus pes
+que nao precisa que eu o segure
+
+[Verse 3]
+Os bracos ja nao aguantam o peso
+mas a mente ainda nao sabe pousar
+E o corpo que pede com todo o seu tremor
+o que a cabeca nao consegue aceitar
 
 [Bridge]
-Os bracos tremem
-O peito fecha
-Os dentes cerram
-E o corpo pesa
+Os bracos tremem o peito fecha
+os dentes cerram e o corpo cede
+Nao e fraqueza — e o peso a dizer
+que nenhum corpo aguenta o que este pede
 
 [Outro]
 Talvez cair
-Seja o primeiro gesto
-De confiar`,
+seja o primeiro gesto
+de confiar`,
 
   "espiritual-entrega/2": `[Verse 1]
 I held the ceiling with my teeth
 I held the morning with my fists
 And when my fingers finally opened
-I didn't float — I dropped
+the air was colder than I missed
 
 [Verse 2]
-No angel caught me
-No soft light poured
-Just the wind and my own weight
-And the sound of the floor getting close
+No angel caught me in the current
+no soft light broke the fall
+Just wind against my open eyelids
+and the ground below it all
 
 [Chorus]
 Freefall doesn't feel like peace
 Freefall feels like losing grip
 Freefall is the breath between
-The ledge and the next heartbeat
+the ledge and the next heartbeat's skip
 Not grace — just gravity
-Doing what it always did
+doing what it always did
+
+[Verse 3]
+My stomach lives inside my throat now
+my hands are reaching, finding air
+This isn't trust — it's just the falling
+and not knowing what is there
 
 [Bridge]
 Stomach in my throat
-Eyes wide open
-Hands grabbing nothing
-Nothing holding back
+eyes burning wide
+hands grabbing nothing — nothing back
+The vertigo is not the danger
+the danger was the grip I had
 
 [Outro]
 I'm falling
-And I haven't landed yet
+I haven't landed yet
 And maybe that's the point`,
 
   "espiritual-entrega/3": `[Verse 1]
-Abro as maos e nao ha nada
-Nem chave nem promessa nem mapa
+Abro as maos e nao ha nada —
+nem chave nem mapa nem razao
 So a pele e o ar entre os dedos
-E o espaco vazio que me basta
+e o vazio que me cabe na mao
 
 [Verse 2]
-Nao tenho provas de que existo
-Nao tenho nada para mostrar
-So estas maos que ja largaram
-Tudo o que nao sabiam carregar
+Nao tenho provas do que carregava
+nao tenho nada que possa mostrar
+So estas maos que ja aprenderam
+a forma de largar e de estar
 
 [Chorus]
-Maos vazias
-Nao e pobreza — e escolha
-Maos vazias
-Nao e perda — e entrega
-Maos vazias
+Maos vazias — nao e pobreza e escolha
+Maos vazias — nao e perda e entrega
 Abertas como um peito que respira
+abertas onde o peso nao se apega
+Maos vazias — e assim que eu existo
+
+[Verse 3]
+O vazio das maos nao e falta
+e espaco para o que vem a seguir
+Nao preciso de segurar o mundo
+para saber que sou capaz de ir
 
 [Bridge]
 O que sobra quando largas tudo
-E o peso dos teus ossos
-E o som do teu coracao
-A bater sem pedir licenca
+e o peso certo dos teus ossos
+e o som do teu coracao batendo
+sem pedir licenca nem propostos
 
 [Outro]
 Nao preciso de segurar
-Para existir`,
+para existir`,
 
   "espiritual-entrega/4": `[Verse 1]
-I can't see the bottom
-I can't see my hands
-The dark is not a wall
-It's where the ground expands
-
-[Verse 2]
-My knees remember falling
-My skin remembers cold
-But somewhere past the terror
-There's a place I wasn't told
+[Female] I can't see the bottom from this place
+I can't see my hands before my face
+The dark has no edge, no wall, no seam
+I'm letting go of what I thought I'd keep
 
 [Chorus]
-Trust the dark
-Not because it's kind
-Trust the dark
-Because your eyes will find
-What the light was hiding
-All along
-Trust the dark
-It knows where you belong
+[Female] Trust the dark
+[Male] I am the dark
+[Female] Trust the dark
+[Male] I hold what falls apart
+[Both] Not because the dark is kind or bright
+but because the ground is here
+beyond the reach of light
+Trust the dark — it knows your name
+
+[Verse 2]
+[Male] I'm not the absence that you fear at night
+I'm what remains when you release the fight
+Your knees remember cold, your skin knows fear
+but something past the terror brought you here
+
+[Chorus]
+[Female] Trust the dark
+[Male] I am the dark
+[Female] Trust the dark
+[Male] I hold what falls apart
+[Both] Not because the dark is kind or bright
+but because the ground is here
+beyond the reach of light
+Trust the dark — it knows your name
 
 [Bridge]
-Close your eyes
-The dark is not the enemy
-Close your hands
-The dark is just the space
-Between one breath
-And everything that follows
+[Female] Close my eyes — the dark is everywhere
+[Male] Close your hands — let go of the repair
+[Both] The dark is just the space between one breath
+and everything that follows after death
 
 [Outro]
-I can't see
-But I can feel the ground
-Rising up to meet me`,
+[Female] I can't see
+[Male] But I can hold you in the fall
+[Both] The ground is rising up to meet you
+trust the dark — it holds us all`,
 
   "espiritual-entrega/5": `[Verse 1]
 Ja nao nado contra a agua
-Ja nao luto com a corrente
+ja nao luto com a corrente fria
 O meu corpo virou margem
-E a margem virou nascente
+e a margem virou a propria via
 
 [Verse 2]
-O rio nao tem pressa
-O rio nao tem medo
-O rio nao pergunta
-Se o mar lhe guarda um lugar
+O rio nao tem pressa nem receio
+o rio nao pergunta se chega ao mar
+Vai porque ir e a sua natureza
+nao porque alguem o foi ensinar
 
 [Chorus]
+Sou o rio — nao a pedra no caminho
+Sou o rio — nao a mao que agarra o fundo
+Sou o movimento — nao a margem que resiste
+e o rio sabe ir por este mundo
 Sou o rio
-Nao a pedra no caminho
-Sou o rio
-Nao a mao que agarra o fundo
-Sou o rio
-E o rio sabe ir
-Sem saber onde e que acaba
+
+[Verse 3]
+O que era eu quando segurava tudo
+era um lago parado sem saida
+Agora que me movo com a agua
+descubro o que e estar viva
 
 [Bridge]
 A agua passa pelo peito
-Passa pelos joelhos
-Passa pelo que eu fui
-E leva tudo sem violencia
+passa pelos joelhos e pelo que eu fui
+Leva o que ja nao preciso de ser
+e deixa o que sempre foi meu aqui
 
 [Outro]
 Nao preciso de nadar
-Quando sou a agua`,
+quando sou a agua`,
 
   // ─────────────────────────────────────────────
   // ALBUM 7: MAOS ABERTAS (giving without losing yourself)
@@ -2353,70 +2394,85 @@ sagrada poeira
 a respirar
 sagrada`,
 
-  "espiritual-vastidao/4": `[Verse]
+  "espiritual-vastidao/4": `[Verse 1]
 I am small
-Smaller than I thought
-Smaller than my plans
-Smaller than my voice
+smaller than my plans had claimed
+Smaller than the space I occupied
+before I learned to be ashamed
 
-[Verse]
-And in the smallness
-Something opens
-A door I couldn't see
-When I was trying to be big
+[Verse 2]
+I spent so long expanding
+pushing edges, filling rooms
+Smallness felt like failure
+like the dark side of the moons
 
 [Chorus]
-Small
-Not broken
-Small
-Not less
-Just the right size
-To fit through the eye
-Of this needle called living
+Small — not broken, not defeated
+small — the right size for this life
+Just narrow enough to fit the needle
+just quiet enough to cut the strife
+The river doesn't try to be the ocean
+the tree doesn't try to be the sky
+Small — and finally arriving
+small — no longer asking why
+
+[Verse 3]
+In the smallness something opened
+a door too tight for bigger hands
+A life that fits exactly
+what this body understands
 
 [Bridge]
-The trees don't try to be the sky
-The river doesn't try to be the sea
-They arrive
-By being exactly what they are
+They arrive by being precisely
+what they are and nothing more
+Smallness is not the opposite of greatness
+it's the key inside the door
 
 [Outro]
 Small
-And finally
-Enough`,
+and finally
+enough`,
 
-  "espiritual-vastidao/5": `[Verse]
+  "espiritual-vastidao/5": `[Verse 1]
 Diziam que o peito e pequeno
-Que so cabe o coracao
-Mas eu abri o meu
-E coube o mundo inteiro
+que so cabe o coracao
+Mas eu abri o meu devagar
+e coube a criacao
 
-[Verse]
-Coube a dor e coube o mar
-Coube o medo e coube a luz
+[Verse 2]
+Coube a dor e coube o oceano
+coube o medo e coube a luz
 Coube o silencio de mil noites
-E o grito de quem volta
+e o grito de quem se reduz
 
 [Chorus]
-Cabe tudo
-Dentro deste corpo
-Cabe tudo
-Dentro deste peito
+Cabe tudo — dentro deste corpo
+cabe tudo — dentro deste peito
 O infinito nao esta la fora
-Esta aqui
-Onde as costelas protegem
-O que nao tem fim
+esta aqui no meu direito
+Onde as costelas guardam
+o que nao tem tamanho nem fim
+Cabe tudo — sempre coube
+cabe tudo — dentro de mim
+
+[Verse 3]
+Cada respiracao e um universo
+a expandir sem pedir licenca
+O corpo e o vaso maior
+que a mente jamais compreenca
 
 [Bridge]
 Nao sou pequena demais
+para o que o mundo me pede
 Sou vasta por dentro
-Cada respiracao
-E um universo a expandir
+o cosmos aqui sucede
 
 [Outro]
 Cabe tudo
-Sempre coube
-So nao sabia`,
+sempre coube
+so nao sabia
+que eu era
+o espaco`,
 
   // ─────────────────────────────────────────────
   // ALBUM 14: CATEDRAL (the body as sacred architecture)
@@ -2647,99 +2703,124 @@ O altar sou eu`,
   // ALBUM 15: GRAO (being one grain in the infinite)
   // ─────────────────────────────────────────────
 
-  "espiritual-grao/1": `[Verse]
-Um
-So um
-Nao preciso de ser multidao
-Nao preciso de ser montanha
+  "espiritual-grao/1": `[Verse 1]
+Fui ensinada a ser mais
+A ocupar mais e dar mais
+Mas ha uma coisa que aprendi
+A custo do que me custou
 
-[Verse]
-Um corpo uma voz
+[Verse 2]
+Um corpo — so um
+Uma voz que e a minha
 Um lugar neste chao
-Um par de maos
-Que faz o que pode
+Uma vida que e so esta
 
 [Chorus]
-Um
-E isso basta
-Um
-Nao e pouco
-E o numero mais honesto
-O mais corajoso
-Ser um e saber
-Que um e suficiente
+Um — e isso chega
+Um — nao e pouco
+O numero mais corajoso
+E o numero que e eu
+
+[Verse 3]
+Nao preciso de ser multidao
+Nao preciso de ser montanha
+Preciso de ser isto aqui
+Esta e a unica campanha
+
+[Chorus]
+Um — e isso chega
+Um — nao e pouco
+O numero mais corajoso
+E o numero que e eu
 
 [Bridge]
-Nao preciso de ser tudo
-Preciso de ser isto
-Aqui agora
-Inteira
+Nao e derrota ser singular
+Nao e fraqueza ser finita
+Ser um e a forma mais honesta
+De existir — intacta e inteira
 
 [Outro]
 Um
 So um
-E isso basta`,
+E isso chega`,
 
-  "espiritual-grao/2": `[Verse]
-A grain of sand
-Sits on the beach
-Not worried about the ocean
-Not trying to be a rock
+  "espiritual-grao/2": `[Verse 1]
+A grain of sand holds its position
+Through tide and wind and passing years
+Not trying to be anything other
+Not moved by what it cannot hear
 
-[Verse]
-It holds its shape
-In wind and water
-Tiny
-And completely itself
+[Verse 2]
+It does not mourn the missing mountain
+It does not ache for greater scale
+It rests inside the larger stillness
+And lets the slow erosion sail
 
 [Chorus]
-Sand
-I am sand
-Holding the whole beach
-In my stillness
-Sand
-Not less than the mountain
-Just smaller
-And closer to the ground
+Sand — just a grain in the quiet
+Sand — small enough to be true
+The beach is not less for my smallness
+The ocean does not need me to move
+
+[Verse 3]
+There is a power in the smallest
+That stillness does not mean defeat
+A grain of sand outlasts the pressure
+By knowing when to yield and keep
+
+[Chorus]
+Sand — just a grain in the quiet
+Sand — small enough to be true
+The beach is not less for my smallness
+The ocean does not need me to move
 
 [Bridge]
-The beach is made
-Of a billion grains
-Each one enough
-Each one the beach
+A billion grains make a shore
+Not one of them is more or less
+Each one the beach in its completeness
+Each one enough — no more to confess
 
 [Outro]
 I am one grain
-And the beach
-Is not the beach
-Without me`,
+The beach is whole
+Without ambition
+Still and full`,
 
-  "espiritual-grao/3": `[Verse]
-Nao sou o centro
-Nunca fui
-E que alivio
-Que descanso enorme
+  "espiritual-grao/3": `[Verse 1]
+Nao sou o centro — nunca fui
+Passei anos a fingir que era
+Mas a verdade e um alivio
+Maior do que qualquer quimera
 
-[Verse]
-Sou parte
-Uma gota no rio
-Um fio na teia
-Uma nota no coro
+[Verse 2]
+Sou parte — uma gota no rio
+Um fio na teia que sustenta
+Uma nota no coro imenso
+Que canta antes e depois de mim
 
 [Chorus]
-Pertencer
-Nao e ser importante
-Pertencer
-E ser parte
-Do que e maior que eu
-Do que nao precisa de mim
-Mas me inclui
+Pertencer — nao e ser importante
+Pertencer — e ter lugar no real
+Fazer parte do que e maior que eu
+Esse e o descanso — e isso basta
+
+[Verse 3]
+O rio nao precisa desta gota
+Mas corre melhor quando ela esta
+E esta gota precisa do rio
+Para saber onde vai chegar
+
+[Chorus]
+Pertencer — nao e ser importante
+Pertencer — e ter lugar no real
+Fazer parte do que e maior que eu
+Esse e o descanso — e isso basta
 
 [Bridge]
-O rio nao precisa desta gota
-Mas esta gota
-Precisa do rio
-E o rio aceita
+Que alivio deixar de ser tudo
+Que descanso enorme nao ter de provar
+Pertenco sem merito sem esforco
+Pertenco — e isso e suficiente
 
 [Outro]
 Pertenco
@@ -2747,39 +2828,64 @@ Sem merito
 Sem esforco
 Pertenco`,
 
-  "espiritual-grao/4": `[Verse]
-I spent years
-Trying to be everything
-The loudest voice
-The biggest room
+  "espiritual-grao/4": `[Verse 1]
+[Female]
+I spent years trying to be everything
+The loudest voice in every hall
+Exhausted from the constant proving
+That I was worth the space at all
 
-[Verse]
-Until I stopped
-And heard the quiet truth
-I don't need to be everything
-I just need to be here
+[Verse 2]
+[Male]
+I spent years shrinking from the centre
+Convinced that small was how to stay
+Both of us avoiding something
+Both of us just in the way
 
 [Chorus]
-Enough
-I am enough
-Not everything
-But enough
-Enough to take up space
-Enough to breathe
-Enough to say
-This is my place
+[Both]
+Enough — I am enough — we are enough
+Not everything but fully here
+Enough to take the space we came for
+Enough to say — I will not disappear
+
+[Verse 3]
+[Female]
+The grain does not need to be an ocean
+[Male]
+The shore does not need every grain
+[Both]
+But the shore is made of what is given
+And what is given is not in vain
+
+[Chorus]
+[Both]
+Enough — I am enough — we are enough
+Not everything but fully here
+Enough to take the space we came for
+Enough to say — I will not disappear
 
 [Bridge]
-We are enough
-Together
-Grain by grain
-We are the shore
+[Female]
+Say it like you mean it
+[Male]
+I am enough
+[Female]
+Say it like you feel it
+[Male]
+I am enough
+[Both]
+Say it to the silence
+Say it to the doubt
+Enough — not everything
+Enough — no need to shout
 
 [Outro]
+[Both]
 Enough
 Not everything
 Enough
-And that is everything`,
+And that is the whole story`,
 
   // ─────────────────────────────────────────────
   // ALBUM 16: MESMA AGUA (we are all the same water)
