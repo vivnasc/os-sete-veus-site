@@ -8,11 +8,12 @@
  * — Universal: sem caixa étnica, instrumentação varia conforme o tema
  * — Tom: íntimo, transformativo, poético, contemplativo
  *
- * 35 albums:
+ * 45 albums:
  * - 7 Espelhos (1 por veu)
  * - 7 Nós (1 por véu)
  * - 1 Livro filosófico
  * - 20 Cursos (1 por curso)
+ * - 10 Espirituais (espiritualidade universal, sem religião)
  */
 
 export type AlbumTrack = {
@@ -38,12 +39,14 @@ type AlbumDef = Omit<Album, "tracks"> & { tracks: TrackDef[] };
 import { ESPELHO_LYRICS } from "./lyrics-espelhos";
 import { NO_LYRICS } from "./lyrics-nos";
 import { LIVRO_LYRICS, CURSO_LYRICS } from "./lyrics-livro-cursos";
+import { ESPIRITUAL_LYRICS } from "./lyrics-espirituais";
 
 const ALL_LYRICS: Record<string, string> = {
   ...ESPELHO_LYRICS,
   ...NO_LYRICS,
   ...LIVRO_LYRICS,
   ...CURSO_LYRICS,
+  ...ESPIRITUAL_LYRICS,
 };
 
 function getLyrics(albumSlug: string, trackNumber: number): string {
@@ -54,7 +57,7 @@ export type Album = {
   slug: string;
   title: string;
   subtitle: string;
-  product: "espelho" | "no" | "livro" | "curso";
+  product: "espelho" | "no" | "livro" | "curso" | "espiritual";
   veu?: number;
   courseSlug?: string;
   color: string;
@@ -531,6 +534,110 @@ const CURSO_FOME = cursoAlbum("curso-fome", "a-fome", "A Fome", "O corpo e a fom
 ]);
 
 // ─────────────────────────────────────────────
+// ESPIRITUAIS (10 albums)
+// Espiritualidade universal — sem religião,
+// centelha divina, oração, expansão, amor
+// ─────────────────────────────────────────────
+
+function espiritualPrompt(theme: string, emotion: string, production: string, lang: "PT" | "EN", energy: TrackEnergy = "whisper", flavor: TrackFlavor = "organic"): string {
+  const langNote = lang === "PT" ? "Lyrics in Portuguese." : "Lyrics in English.";
+  return buildPromptWithFlavor(`${ENERGY_STYLES[energy]} ${langNote} Soul music — not worship, not religion. The raw sacred that lives in every human chest. Spiritual without denomination, intimate with the infinite. ${emotion}. ${production}. Theme: ${theme}.`, flavor);
+}
+
+function espiritualAlbum(
+  slug: string,
+  title: string,
+  subtitle: string,
+  color: string,
+  tracks: Omit<TrackDef, "audioUrl" | "lyrics">[]
+): AlbumDef {
+  return {
+    slug,
+    title,
+    subtitle,
+    product: "espiritual",
+    color,
+    tracks: tracks.map((t) => ({ ...t, audioUrl: null })),
+  };
+}
+
+const ESPIRITUAL_PRECE = espiritualAlbum("espiritual-prece", "Prece sem Nome", "A oração que não pertence a nenhuma religião", "#D4A853", [
+  { number: 1, title: "Antes da Palavra", description: "O silêncio antes da prece", lang: "PT", prompt: espiritualPrompt("silence before prayer, the space before words reach the divine, the held breath before speaking to something vast", "sacred stillness, reverent, the body preparing to ask", "deep silence with breath, single sustained note, vast reverb, sacred space, silence as presence not absence", "PT"), durationSeconds: 240 },
+  { number: 2, title: "Unnamed Prayer", description: "A prece que não tem dono", lang: "EN", prompt: espiritualPrompt("prayer without religion, universal plea, the human animal speaking to the infinite with no script", "humble, vast, intimate, surrendering, a child talking to the sky", "solo voice in cathedral space, minimal piano, vastness, echo as the divine responding", "EN"), durationSeconds: 240 },
+  { number: 3, title: "Joelhos", description: "Ajoelhar sem templo", lang: "PT", energy: "raw", prompt: espiritualPrompt("kneeling without a temple, prayer as raw human need, the knees that bend because the soul is too heavy to stand", "raw, vulnerable, bare, pleading and peaceful, body-prayer", "raw close-mic vocal, breath as rhythm, piano single notes, silence between phrases longer than the phrases", "PT", "raw"), durationSeconds: 240 },
+  { number: 4, title: "The Answer", description: "A resposta que vem em silêncio", lang: "EN", prompt: espiritualPrompt("the answer comes in silence, divine response felt not heard, the moment you stop asking and feel held", "receiving, peaceful, grateful, cradled by something nameless", "gentle pads opening like arms, warmth arriving, vocal softening into gratitude, no percussion — only breath and held notes", "EN"), durationSeconds: 240 },
+  { number: 5, title: "Amém sem Deus", description: "Um amém que é de todos", lang: "PT", energy: "steady", flavor: "gospel", prompt: espiritualPrompt("amen without denomination, universal blessing, sacred yes — not a shout but a warm exhale of the collective", "warm, communal, gentle power, a room full of people breathing together", "gospel warmth without stadium energy, organ warmth, hummed voices gathering, communal amen as shared breath not triumph", "PT", "steady", "gospel"), durationSeconds: 300 },
+]);
+
+const ESPIRITUAL_CENTELHA = espiritualAlbum("espiritual-centelha", "A Centelha", "A fagulha divina que vive em cada ser", "#F5C842", [
+  { number: 1, title: "Fagulha", description: "O primeiro instante de consciência", lang: "PT", prompt: espiritualPrompt("first spark of consciousness, the divine ember that wakes before the mind does, a candle lit in the dark of the body", "awakening, tiny, miraculous, first light, something ancient stirring", "single bright note expanding, tiny spark growing, cosmic birth sound, warmth arriving from inside not outside", "PT"), durationSeconds: 240 },
+  { number: 2, title: "Divine Fragment", description: "Um pedaço do todo em cada um", lang: "EN", prompt: espiritualPrompt("a fragment of the divine in every being, the ocean in the drop, holographic wholeness in a single cell", "wonder, awe at smallness containing everything, sacred humility", "warm expanding harmony, each note containing the whole chord, fractal beauty, intimate not grand", "EN"), durationSeconds: 240 },
+  { number: 3, title: "Reconhecer", description: "Ver a centelha no outro", lang: "PT", energy: "steady", flavor: "marrabenta", prompt: espiritualPrompt("seeing the divine spark in another person, namaste without words, the moment eyes meet and both know", "tender recognition, warmth of seeing, the body softening in someone's presence", "warm rhythmic base, two melodies recognizing each other, Mozambican warmth, gentle percussion like heartbeats syncing", "PT", "steady", "marrabenta"), durationSeconds: 240 },
+  { number: 4, title: "Same Fire", description: "O mesmo fogo em todos", lang: "EN", energy: "pulse", prompt: espiritualPrompt("the same fire burns in all of us, universal divinity, not worship but recognition — the same flame in seven billion chests", "alive, pulsing, communal fire, burning together, not triumphant but true", "fire-like pulse, layered vocals building like flames, communal energy that rises from the ground not the sky", "EN", "pulse"), durationSeconds: 300 },
+]);
+
+const ESPIRITUAL_VASTIDAO = espiritualAlbum("espiritual-vastidao", "Vastidão", "O universo que vive dentro de ti", "#1A1A4E", [
+  { number: 1, title: "Cosmos Interior", description: "O universo cabe no peito", lang: "PT", prompt: espiritualPrompt("inner cosmos, the universe lives inside your chest, you contain galaxies and don't know it", "vast, infinite, intimate enormity, cosmic awe living in a human ribcage", "deep space pads, cosmic reverb, heartbeat as celestial rhythm, intimate not cinematic", "PT"), durationSeconds: 240 },
+  { number: 2, title: "Stardust", description: "Somos feitos de estrelas", lang: "EN", energy: "steady", prompt: espiritualPrompt("we are made of stardust, cosmic origin, the iron in your blood was forged in a dying star", "wonder, scientific awe, belonging to the cosmos, body as astronomy", "shimmering high textures, warm bass of gravity, stardust melody, wonder without grandiosity", "EN", "steady"), durationSeconds: 240 },
+  { number: 3, title: "Infinito Pequeno", description: "O infinito no grão de areia", lang: "PT", energy: "raw", prompt: espiritualPrompt("infinity in a grain of sand, the enormous in the tiny, Blake's eternity in an hour", "microscopic wonder, sacred detail, the tears that come from looking too closely at anything", "minimal intimate production, vast reverb on small sounds, infinity in a single note, breath as cosmos", "PT", "raw"), durationSeconds: 240 },
+  { number: 4, title: "Expansion", description: "Expandir como o universo expande", lang: "EN", energy: "pulse", prompt: espiritualPrompt("expanding like the universe expands, your personal expansion mirrors the cosmic, growing beyond your own skin", "expanding, growing, limitless, joyful vastness, the body opening", "ever-expanding production, layers adding organically, rhythm widening like a heartbeat accelerating with awe", "EN", "pulse"), durationSeconds: 240 },
+  { number: 5, title: "Sem Margem", description: "Onde tu acabas o todo começa", lang: "PT", prompt: espiritualPrompt("where you end the whole begins, no edge between self and universe, dissolving into everything", "borderless, dissolved, oceanic, the relief of losing the edge of yourself", "dissolving boundaries in sound, melody becoming harmony becoming silence becoming everything, whispered not declared", "PT"), durationSeconds: 300 },
+]);
+
+const ESPIRITUAL_MAOS_ABERTAS = espiritualAlbum("espiritual-maos-abertas", "Mãos Abertas", "O amor que se dá sem esperar volta", "#C9A96E", [
+  { number: 1, title: "Dar", description: "O gesto mais antigo", lang: "PT", energy: "steady", prompt: espiritualPrompt("giving, the oldest gesture, open hands offering — not charity but overflow, the body moving toward another body", "generous, warm, ancient, the hands that open before the mind decides", "warm open chords, generous melody flowing outward, walking pace of someone carrying food to a neighbor", "PT", "steady"), durationSeconds: 240 },
+  { number: 2, title: "The Stranger", description: "Amar quem não conheces", lang: "EN", prompt: espiritualPrompt("loving a stranger, compassion without reason, the irrational tenderness for someone you will never see again", "tender, undefended, brave, the softness that has no explanation", "open warm production, unguarded vocal, the sound of walking toward someone you don't know, gentle and uncertain", "EN"), durationSeconds: 240 },
+  { number: 3, title: "Próximo", description: "Quem é o meu próximo", lang: "PT", energy: "steady", flavor: "marrabenta", prompt: espiritualPrompt("who is my neighbor, Ubuntu — I am because you are, the Mozambican knowing that no one is alone", "communal, warm, Mozambican warmth, the body that leans toward other bodies", "communal rhythm, warm bass, neighborly melody, Mozambican generosity, the sound of a shared meal", "PT", "steady", "marrabenta"), durationSeconds: 240 },
+  { number: 4, title: "Overflow", description: "Quando o copo transborda para os outros", lang: "EN", energy: "pulse", flavor: "house", prompt: espiritualPrompt("when the cup overflows to others, abundance shared, love that multiplies by giving away", "overflowing, joyful, generous, the body that can't contain its own warmth", "flowing production building, cup overflowing textures, shared joy rhythm, dance of abundance", "EN", "pulse", "house"), durationSeconds: 240 },
+  { number: 5, title: "Servir", description: "Servir como forma de orar", lang: "PT", energy: "steady", flavor: "gospel", prompt: espiritualPrompt("service as prayer, serving others as the truest form of kneeling, hands in the earth as hands in prayer", "devoted, humble, grounded power, the sacred dignity of useful hands", "gospel warmth without triumph, choir layers like many hands working, devoted vocal, sacred work as worship — steady not soaring", "PT", "steady", "gospel"), durationSeconds: 300 },
+]);
+
+const ESPIRITUAL_CATEDRAL = espiritualAlbum("espiritual-catedral", "A Catedral Interior", "O templo que não precisa de paredes", "#8B5CF6", [
+  { number: 1, title: "Sem Tecto", description: "O sagrado sem edifício", lang: "PT", prompt: espiritualPrompt("sacred without building, holiness without walls, prayer under open sky — God lives where the roof leaks", "open, free, wild holiness, the sacred that needs no permission", "open air reverb, no walls in the production, sky-like pads, wind as choir", "PT"), durationSeconds: 240 },
+  { number: 2, title: "Inner Altar", description: "O altar que carregas contigo", lang: "EN", energy: "raw", prompt: espiritualPrompt("inner altar, the sacred space you carry everywhere, the altar is your sternum, the candle is your breath", "centered, intimate, stripped to essence, portable sacred", "raw close-mic vocal, minimal piano, the sound of a body sitting still and finding its own cathedral", "EN", "raw"), durationSeconds: 240 },
+  { number: 3, title: "Ritual Diário", description: "O café como sacramento", lang: "PT", energy: "steady", prompt: espiritualPrompt("daily ritual as sacrament, morning coffee as communion, the sacred hidden in the ordinary — cup, steam, light on the table", "intimate, ordinary-sacred, domestic holiness, the kitchen as temple", "gentle walking rhythm, kitchen warmth elevated, minimal piano, steam and breath, the sacred mundane", "PT", "steady"), durationSeconds: 240 },
+  { number: 4, title: "Sanctuary", description: "O corpo como santuário", lang: "EN", prompt: espiritualPrompt("body as sanctuary, flesh as temple, embodied divinity — not transcendence but incarnation, the divine chose a body", "embodied, intimate, sacred, reverent toward skin and bone and breath", "heartbeat and breath as sacred instruments, warm pads cradling the vocal, intimate not rising — the body is already holy", "EN"), durationSeconds: 300 },
+]);
+
+const ESPIRITUAL_GRAO = espiritualAlbum("espiritual-grao", "O Grão de Luz", "O divino escondido no quotidiano", "#E8D5A3", [
+  { number: 1, title: "Ordinário", description: "A santidade da terça-feira", lang: "PT", energy: "steady", prompt: espiritualPrompt("holiness of Tuesday, divinity in the ordinary — the sacred hides in routines, not in revelations", "mundane beauty, everyday sacred, the quiet miracle of doing the same thing again", "gentle domestic rhythm, simple piano with the warmth of a kitchen, everyday sounds made beautiful", "PT", "steady"), durationSeconds: 240 },
+  { number: 2, title: "Small Light", description: "A luz no gesto mais simples", lang: "EN", prompt: espiritualPrompt("light in the simplest gesture, holding a cup, touching a hand, the divine mundane — God in the detail", "gentle, precise, luminous small things, the tears that come from paying attention", "precise gentle melody, each note a small light, warm attention in production, whispered and delicate", "EN"), durationSeconds: 240 },
+  { number: 3, title: "Milagre Quieto", description: "Os milagres que ninguém nota", lang: "PT", energy: "raw", prompt: espiritualPrompt("quiet miracles nobody notices — heartbeat, breath, sunrise again, the fact that you woke up at all", "subtle wonder, gratitude for breathing, the miracle of being alive right now", "raw minimal vocal, breath sounds, heartbeat, wonder at existence, close-mic intimacy", "PT", "raw"), durationSeconds: 240 },
+  { number: 4, title: "Sacred Ground", description: "Cada chão é terra santa", lang: "EN", energy: "steady", flavor: "marrabenta", prompt: espiritualPrompt("every ground is holy ground, sacred earth wherever you stand — the Mozambican red soil, the kitchen floor, the hospital corridor", "grounded, holy, Mozambican earth, the feet that know the ground is sacred", "earthy Mozambican rhythm, grounded bass, holy ground melody, the body that dances because the earth is alive", "EN", "steady", "marrabenta"), durationSeconds: 240 },
+  { number: 5, title: "Grão", description: "Um grão de luz basta", lang: "PT", energy: "raw", prompt: espiritualPrompt("one grain of light is enough — small divinity, sufficient, a mustard seed, not a cathedral", "sufficient, whole, tiny and luminous, the peace of knowing that a grain is enough", "raw single voice, minimal piano, a single note that contains everything, no crescendo — the grain stays a grain and that is the miracle", "PT", "raw"), durationSeconds: 300 },
+]);
+
+const ESPIRITUAL_MESMA_AGUA = espiritualAlbum("espiritual-mesma-agua", "A Mesma Água", "Somos todos o mesmo rio", "#5B8FA8", [
+  { number: 1, title: "Nascente", description: "A fonte comum", lang: "PT", prompt: espiritualPrompt("common source, the spring where all water begins — before religion, before language, there was this", "pure, original, primal oneness, the innocence of the first drop", "water-like textures, pure source tone, spring emerging from silence, delicate and ancient", "PT"), durationSeconds: 240 },
+  { number: 2, title: "Tributaries", description: "Rios diferentes, mesma água", lang: "EN", energy: "pulse", prompt: espiritualPrompt("different rivers same water, tributaries of one source — every culture a different river, every river the same rain", "diverse, flowing, converging, beautifully different yet same, the joy of convergence", "multiple melodic streams flowing together, diverse rhythms converging into one current, momentum of water finding water", "EN", "pulse"), durationSeconds: 240 },
+  { number: 3, title: "Tu em Mim", description: "Eu existo em ti, tu existes em mim", lang: "PT", energy: "steady", flavor: "marrabenta", prompt: espiritualPrompt("I exist in you, you exist in me — Ubuntu, interbeing, the Mozambican knowing that a person is a person through other people", "Ubuntu, interconnected, mutual, held by each other, the warmth of being woven", "warm communal rhythm, call-and-response melody, Mozambican Ubuntu feeling, two voices becoming one", "PT", "steady", "marrabenta"), durationSeconds: 240 },
+  { number: 4, title: "Ocean", description: "O oceano que somos juntos", lang: "EN", energy: "anthem", prompt: espiritualPrompt("the ocean we are together, all drops becoming sea — not losing yourself but finding the bigger self", "oceanic, vast, communal, the overwhelming relief of not being alone", "ocean-wave production, massive communal vocal, all-becoming-one crescendo, the anthem of dissolution into love", "EN", "anthem"), durationSeconds: 300 },
+]);
+
+const ESPIRITUAL_ALEM_NOME = espiritualAlbum("espiritual-alem-nome", "Além do Nome", "O sagrado que não cabe em nenhum nome", "#9B7EC8", [
+  { number: 1, title: "Todos os Nomes", description: "Deus, Alá, Brahman, Universo — todos tentam", lang: "PT", prompt: espiritualPrompt("all names for God — Deus, Allah, Brahman, Universe, Love — every religion tries, none captures, all point at the same silence", "vast, humbling, beyond language, tender respect for every tradition's attempt", "layered whispered names becoming melody, respectful of all traditions, voices in many languages dissolving into one hum", "PT"), durationSeconds: 240 },
+  { number: 2, title: "Unnameable", description: "O que não cabe em palavra", lang: "EN", energy: "raw", prompt: espiritualPrompt("the unnameable, what no word contains — the moment you stop naming and start feeling, divine beyond language", "beyond words, vast silence, wordless knowing, the relief of giving up the dictionary", "wordless vocal melody, beyond-language textures, raw voice without words, silence as the truest name", "EN", "raw"), durationSeconds: 240 },
+  { number: 3, title: "Mistério", description: "Não saber é a verdadeira fé", lang: "PT", prompt: espiritualPrompt("not knowing as true faith, mystery as home — the comfort of admitting you don't know and finding peace there", "humble, surrendered, comfortable in mystery, the deep peace of unanswered questions", "whispered vocal in vast space, comfort in not-knowing, mystery as beauty, no resolution in the harmony", "PT"), durationSeconds: 240 },
+  { number: 4, title: "Presence", description: "O que fica quando largas todos os nomes", lang: "EN", energy: "steady", flavor: "gospel", prompt: espiritualPrompt("what remains when you drop all names — pure presence, raw divinity, the warm nothing that holds everything", "pure, present, beyond all form, the luminous emptiness that is actually full", "layers stripping away to warm vocal, gospel tenderness not triumph, presence as the quiet answer, steady and grounded", "EN", "steady", "gospel"), durationSeconds: 300 },
+]);
+
+const ESPIRITUAL_RESPIRAR = espiritualAlbum("espiritual-respirar", "Respirar o Todo", "Cada inspiração é uma oração", "#7BA68B", [
+  { number: 1, title: "Inspirar", description: "Receber o mundo inteiro", lang: "PT", prompt: espiritualPrompt("inhale — receiving the whole world in one breath, the lungs as prayer bowls, the ribs opening like a church door", "receiving, opening, expanding, the sacred intake of being alive", "breath-in texture, expanding pads, receiving everything in one inhale, the body as instrument of the divine", "PT"), durationSeconds: 240 },
+  { number: 2, title: "Exhale", description: "Devolver-se ao todo", lang: "EN", prompt: espiritualPrompt("exhale — giving yourself back to everything, dissolving into the whole, the generosity of letting go of the air", "releasing, dissolving, giving, the surrender of breath returning to the room", "exhale textures, melody releasing, dissolving self into wholeness, whispered and falling gently", "EN"), durationSeconds: 240 },
+  { number: 3, title: "Entre Dois Sopros", description: "O espaço entre respirações", lang: "PT", energy: "raw", prompt: espiritualPrompt("the space between breaths — the gap where eternity lives, the pause that is more alive than any breath", "still, eternal, timeless, the gap between moments where you are most yourself", "silence between notes, stillness, eternity in the pause, close-mic capturing the absence of breath as its own music", "PT", "raw"), durationSeconds: 240 },
+  { number: 4, title: "One Breath", description: "Uma só respiração em todos os pulmões", lang: "EN", energy: "steady", prompt: espiritualPrompt("one breath in all lungs — universal breathing, synchronized life, every chest rising together right now across the planet", "synchronized, communal, alive together, the intimacy of sharing air", "gentle communal rhythm, synchronized breathing textures, steady pulse of collective lungs, warm not driving", "EN", "steady"), durationSeconds: 240 },
+  { number: 5, title: "Sopro", description: "O sopro que nos criou a todos", lang: "PT", energy: "anthem", prompt: espiritualPrompt("the breath that created all of us — the first divine exhale, creation as a sigh, the universe born from a single breath", "creative, primordial, magnificent, the origin-breath that became everything", "creation-like building, from silence to full symphony, the first breath becoming stars and rivers and you", "PT", "anthem"), durationSeconds: 300 },
+]);
+
+const ESPIRITUAL_ENTREGA = espiritualAlbum("espiritual-entrega", "A Entrega", "Largar o controlo e confiar no que não se vê", "#C4745A", [
+  { number: 1, title: "Segurar", description: "O cansaço de controlar tudo", lang: "PT", energy: "raw", prompt: espiritualPrompt("exhaustion of controlling everything — the white knuckles, the jaw clenched at night, the body that forgot how to soften", "exhausted, gripping, heavy, the raw fatigue of never letting go", "tense held textures, gripping rhythm, exhausted vocal, close-mic capturing the strain in the breath", "PT", "raw"), durationSeconds: 240 },
+  { number: 2, title: "Freefall", description: "Cair sem rede", lang: "EN", energy: "raw", prompt: espiritualPrompt("freefall — falling without a net, the terrifying beauty of trusting the unknown, the stomach dropping and the heart opening", "falling, surrendering, terrified and free, the vertigo of letting go", "falling melody, no ground in production, raw vocal in descent, the sound of gravity as prayer", "EN", "raw"), durationSeconds: 240 },
+  { number: 3, title: "Confiança", description: "Confiar no que não se vê", lang: "PT", energy: "steady", prompt: espiritualPrompt("trusting what you cannot see — faith beyond evidence, the body relaxing into mystery, the hands opening", "trusting, grounded in mystery, held by invisible hands, the warmth of not needing to know", "warm grounded bass, steady trusting melody, held by unseen warmth, the sound of hands unclenching", "PT", "steady"), durationSeconds: 240 },
+  { number: 4, title: "Carried", description: "Ser carregada pelo que é maior", lang: "EN", prompt: espiritualPrompt("being carried by something greater — surrendered to grace, the exhausted child finally picked up, no more walking", "carried, surrendered, peaceful, the deep rest of being held by what you cannot name", "gentle pads carrying the vocal like arms, whispered gospel warmth, surrendered to larger harmony, cradled", "EN"), durationSeconds: 240 },
+  { number: 5, title: "Rio Abaixo", description: "Deixar o rio levar", lang: "PT", energy: "steady", prompt: espiritualPrompt("letting the river carry you — downstream surrender, trust as liberation, the body floating, the mind finally quiet", "free, surrendered, flowing with life, the peace of not swimming upstream anymore", "flowing river production, water textures, surrendered vocal floating on warm current, steady and peaceful not triumphant", "PT", "steady"), durationSeconds: 300 },
+]);
+
+// ─────────────────────────────────────────────
 // EXPORT
 // ─────────────────────────────────────────────
 
@@ -588,6 +695,17 @@ export const ALL_ALBUMS: Album[] = [
   CURSO_RELOGIO,
   CURSO_COROA,
   CURSO_FOME,
+  // Espirituais
+  ESPIRITUAL_PRECE,
+  ESPIRITUAL_CENTELHA,
+  ESPIRITUAL_VASTIDAO,
+  ESPIRITUAL_MAOS_ABERTAS,
+  ESPIRITUAL_CATEDRAL,
+  ESPIRITUAL_GRAO,
+  ESPIRITUAL_MESMA_AGUA,
+  ESPIRITUAL_ALEM_NOME,
+  ESPIRITUAL_RESPIRAR,
+  ESPIRITUAL_ENTREGA,
 ].map(applyLyrics);
 
 // Helpers
