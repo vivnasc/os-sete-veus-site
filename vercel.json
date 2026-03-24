@@ -1,5 +1,5 @@
 {
-  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- . ':!music-app' ':!escola-veus-app'",
+  "ignoreCommand": "bash -c 'git fetch origin HEAD --depth=2 2>/dev/null; git diff --quiet HEAD~1 HEAD -- . \":!music-app\" \":!escola-veus-app\"'",
   "crons": [
     {
       "path": "/api/cron/publish",
