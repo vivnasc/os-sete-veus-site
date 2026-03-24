@@ -14,7 +14,7 @@ import { requireAdmin } from "@/lib/admin-auth";
  * Se nao, usa o endpoint generate (prompt-only mode).
  */
 export async function POST(req: NextRequest) {
-  const auth = await requireAdmin(req.headers.get("cookie"));
+  const auth = await requireAdmin(req);
   if (!auth.ok) return auth.response;
 
   const apiUrl = process.env.SUNO_API_URL;

@@ -592,9 +592,13 @@ const ESPIRITUAL_COLORS: Record<number, string> = {
   20: "#B07A4A", // Chama Última — âmbar fogo
 };
 
-function spiritualPrompt(theme: string, emotion: string, production: string, lang: "PT" | "EN", energy: TrackEnergy = "whisper", flavor: TrackFlavor = "organic"): string {
+// Duet modifier — appended to prompt when vocalMode = "duet"
+const DUET_MODIFIER = "Male and female vocal duet. Female voice dominant (lead), warm deep male voice on verses marked [Male] or [Both]. Natural chemistry, two perspectives, intimate dialogue. Not a backing vocal — a real second voice with weight.";
+
+function spiritualPrompt(theme: string, emotion: string, production: string, lang: "PT" | "EN", energy: TrackEnergy = "whisper", flavor: TrackFlavor = "organic", vocal: VocalMode = "solo"): string {
   const langNote = lang === "PT" ? "Lyrics in Portuguese." : "Lyrics in English.";
-  return buildPromptWithFlavor(`${ENERGY_STYLES[energy]} ${langNote} Sacred but not religious, body-centred, breath as prayer. ${emotion}. ${production}. Theme: ${theme}.`, flavor);
+  const duetNote = vocal === "duet" ? ` ${DUET_MODIFIER}` : "";
+  return buildPromptWithFlavor(`${ENERGY_STYLES[energy]} ${langNote} Sacred but not religious, body-centred, breath as prayer.${duetNote} ${emotion}. ${production}. Theme: ${theme}.`, flavor);
 }
 
 function spiritualAlbum(slug: string, title: string, subtitle: string, color: string, tracks: TrackDef[]): AlbumDef {
@@ -611,7 +615,7 @@ const ESP_ORACAO: AlbumDef = spiritualAlbum("espiritual-oracao", "Oração Sem P
 
 const ESP_SAGRADO_SELVAGEM: AlbumDef = spiritualAlbum("espiritual-sagrado-selvagem", "Sagrado Selvagem", "O divino na tempestade, na terra, no corpo animal", ESPIRITUAL_COLORS[2], [
   { number: 1, title: "Terra", description: "Pés na lama — o sagrado é raiz", lang: "PT", energy: "steady", flavor: "marrabenta", prompt: spiritualPrompt("feet in mud, sacred is dirt and root", "earthy, grounded, primal, joyful connection to soil", "marrabenta guitar groove, earth percussion, warm grounded vocal", "PT", "steady", "marrabenta"), durationSeconds: 240, audioUrl: null },
-  { number: 2, title: "Storm Prayer", description: "Rezar no meio da tempestade, não depois", lang: "EN", energy: "pulse", prompt: spiritualPrompt("praying in the storm, not after it, worship in chaos", "urgent, stormy, fierce, wild prayer", "driving rain textures, urgent rhythm, fierce vocal, storm energy", "EN", "pulse"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "Storm Prayer", description: "Rezar no meio da tempestade, não depois", lang: "EN", energy: "pulse", vocalMode: "duet", prompt: spiritualPrompt("praying in the storm, not after it, worship in chaos", "urgent, stormy, fierce, wild prayer", "driving rain textures, urgent rhythm, fierce vocal, storm energy", "EN", "pulse", "organic", "duet"), durationSeconds: 240, audioUrl: null },
   { number: 3, title: "Bicho", description: "O animal em ti que sabe antes de pensares", lang: "PT", energy: "raw", prompt: spiritualPrompt("the animal self, instinct before thought, wild knowing", "primal, instinctive, raw, untamed", "raw vocal growl, primal percussion, stripped production, animal energy", "PT", "raw"), durationSeconds: 240, audioUrl: null },
   { number: 4, title: "Barefoot", description: "Caminhar sem armadura — pele na terra", lang: "EN", energy: "steady", prompt: spiritualPrompt("walking barefoot, skin on earth, unarmoured presence", "vulnerable, present, connected, bare", "acoustic guitar, walking rhythm, bare production, earth textures", "EN", "steady"), durationSeconds: 240, audioUrl: null },
   { number: 5, title: "Fogo Dentro", description: "O fogo que não destrói — o sagrado em chamas", lang: "PT", energy: "anthem", flavor: "gospel", prompt: spiritualPrompt("the fire within that doesn't destroy, sacred blaze", "blazing, sacred, powerful, transcendent fire", "gospel choir, organ warmth, blazing vocal, fire energy, building power", "PT", "anthem", "gospel"), durationSeconds: 300, audioUrl: null },
@@ -675,6 +679,121 @@ const ESP_AMEM: AlbumDef = spiritualAlbum("espiritual-amem", "Amém", "O 'sim' q
   { number: 2, title: "Communion", description: "Não pão e vinho — apenas estar na mesma sala com a verdade", lang: "EN", energy: "steady", flavor: "gospel", prompt: spiritualPrompt("not bread and wine, just being in the same room with truth", "communal, truthful, together, shared presence", "gospel warmth, communal vocal, shared rhythm, truth presence", "EN", "steady", "gospel"), durationSeconds: 240, audioUrl: null },
   { number: 3, title: "Nós", description: "'Nós' — o plural que salva, vozes juntas", lang: "PT", energy: "anthem", flavor: "gospel", prompt: spiritualPrompt("we, the plural that saves, voices together", "collective, powerful, together, saving plural", "gospel choir building, anthem vocal, together rhythm, collective power", "PT", "anthem", "gospel"), durationSeconds: 300, audioUrl: null },
   { number: 4, title: "Grão", description: "Um grão — pequeno, parte do todo. O amém é sussurro.", lang: "PT", energy: "raw", prompt: spiritualPrompt("a grain, tiny, part of the whole, amen as whisper not stadium", "tiny, humble, part-of-whole, collective whisper", "minimal raw vocal, grain-like textures, tiny humble production, whisper amen", "PT", "raw"), durationSeconds: 270, audioUrl: null },
+]);
+
+// ALBUM 11: PRECE (the raw human cry to something bigger)
+// ─────────────────────────────────────────────
+
+const ESP_PRECE: AlbumDef = spiritualAlbum("espiritual-prece", "Prece", "O grito cru ao que não tem nome", ESPIRITUAL_COLORS[11], [
+  { number: 1, title: "Pede", description: "O pedido que sai do peito antes da vergonha", lang: "PT", energy: "raw", flavor: "organic", prompt: spiritualPrompt("the raw cry from the chest before shame catches up", "desperate, unfiltered, chest-cracking, first cry", "close-mic raw vocal, solo piano, breath sounds, silence between phrases", "PT", "raw", "organic"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "Unanswered", description: "When the sky says nothing back", lang: "EN", energy: "whisper", flavor: "organic", prompt: spiritualPrompt("praying into silence, no answer, staying anyway", "lonely, persistent, faith-without-proof, waiting", "sparse pads, breath textures, distant piano, vast empty space", "EN", "whisper", "organic"), durationSeconds: 240, audioUrl: null },
+  { number: 3, title: "Desamparo", description: "O lugar onde ninguem chega — e rezas na mesma", lang: "PT", energy: "steady", flavor: "gospel", prompt: spiritualPrompt("helplessness as holy ground, praying from the floor", "abandoned, grounded, humble, still praying", "gospel organ warmth, steady low rhythm, grounded vocal, communal hum", "PT", "steady", "gospel"), durationSeconds: 270, audioUrl: null },
+  { number: 4, title: "Bones Know", description: "The body prays in a language the mind forgot", lang: "EN", energy: "pulse", flavor: "organic", prompt: spiritualPrompt("the body remembering prayer the mind forgot, bones as memory", "embodied, pulsing, ancient, cellular memory", "driving heartbeat bass, body percussion, rhythmic vocal, pulse building", "EN", "pulse", "organic"), durationSeconds: 240, audioUrl: null },
+  { number: 5, title: "A Ultima Prece", description: "Nao pedir nada — so ficar", lang: "PT", energy: "raw", flavor: "organic", prompt: spiritualPrompt("the last prayer is not asking, just staying, just being present", "surrendered, final, peaceful desperation, presence", "raw vocal fading, minimal piano, long silences, breath as instrument", "PT", "raw", "organic"), durationSeconds: 300, audioUrl: null },
+]);
+
+// ─────────────────────────────────────────────
+// ALBUM 12: CENTELHA (the divine spark inside)
+// ─────────────────────────────────────────────
+
+const ESP_CENTELHA: AlbumDef = spiritualAlbum("espiritual-centelha", "Centelha", "O instante em que algo se acende por dentro", ESPIRITUAL_COLORS[12], [
+  { number: 1, title: "Faisca", description: "Antes da chama — o instante antes de perceber", lang: "PT", energy: "whisper", flavor: "organic", prompt: spiritualPrompt("the instant before understanding, the spark before flame", "anticipatory, electric, pre-awakening, on the edge", "quiet tension, rising pads, whisper vocal, tiny percussion sparks", "PT", "whisper", "organic"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "Lit", description: "The moment the match strikes — something changes forever", lang: "EN", energy: "pulse", flavor: "house", prompt: spiritualPrompt("the match striking, the moment of ignition, irreversible change", "ignited, irreversible, electric, awakened", "house kick building, synth sparks, driving energy, vocal catching fire", "EN", "pulse", "house"), durationSeconds: 240, audioUrl: null },
+  { number: 3, title: "Incendio Manso", description: "Arder sem pressa — a transformacao lenta", lang: "PT", energy: "steady", flavor: "marrabenta", prompt: spiritualPrompt("burning slowly, gentle fire, transformation without violence", "warm, patient, transforming, slow burn", "marrabenta guitar groove, warm shaker, dancing flame rhythm, grounded joy", "PT", "steady", "marrabenta"), durationSeconds: 270, audioUrl: null },
+  { number: 4, title: "Ainda Brilha", description: "A centelha que sobrevive ao escuro", lang: "PT", energy: "anthem", flavor: "organic", prompt: spiritualPrompt("the spark surviving darkness, still glowing after everything", "resilient, luminous, defiant, still alive", "building anthem vocal, rising strings, layered chorus, triumphant warmth", "PT", "anthem", "organic"), durationSeconds: 300, audioUrl: null },
+]);
+
+// ─────────────────────────────────────────────
+// ALBUM 13: VASTIDAO (the terrifying and beautiful vastness)
+// ─────────────────────────────────────────────
+
+const ESP_VASTIDAO: AlbumDef = spiritualAlbum("espiritual-vastidao", "Vastidão", "Sentir-se pequena e ligada a tudo ao mesmo tempo", ESPIRITUAL_COLORS[13], [
+  { number: 1, title: "Oceano", description: "Olhar para algo tao grande que as palavras param", lang: "PT", energy: "whisper", flavor: "organic", prompt: spiritualPrompt("facing the ocean, words stopping, smallness as relief", "oceanic, dissolved, overwhelmed, relieved", "vast pads, ocean textures, distant vocal, immense space", "PT", "whisper", "organic"), durationSeconds: 270, audioUrl: null },
+  { number: 2, title: "Terrified and Free", description: "The vertigo of vastness — falling into the infinite", lang: "EN", energy: "raw", flavor: "organic", prompt: spiritualPrompt("vertigo of the infinite, terror and freedom at once", "terrified, liberated, falling, dissolving", "raw vocal with reverb, dissonant piano, vast empty production, vertigo textures", "EN", "raw", "organic"), durationSeconds: 240, audioUrl: null },
+  { number: 3, title: "Poeira de Estrelas", description: "Es feita do mesmo material que o universo", lang: "PT", energy: "steady", flavor: "organic", prompt: spiritualPrompt("stardust in the body, the universe in the cells, cosmic belonging", "cosmic, humble, connected, ancient", "warm bass, celestial pads, steady groove, starlight textures", "PT", "steady", "organic"), durationSeconds: 240, audioUrl: null },
+  { number: 4, title: "Small", description: "Being small is not a problem — it is the answer", lang: "EN", energy: "whisper", flavor: "organic", prompt: spiritualPrompt("smallness as wisdom, being tiny as liberation, not insignificant but free", "tiny, free, wise, surrendered", "minimal piano, breath space, gentle vocal, intimate vastness", "EN", "whisper", "organic"), durationSeconds: 240, audioUrl: null },
+  { number: 5, title: "Cabe Tudo", description: "Dentro do peito cabe o universo inteiro", lang: "PT", energy: "anthem", flavor: "gospel", prompt: spiritualPrompt("the chest containing the entire universe, inner vastness", "expansive, full, overflowing, sacred", "gospel choir rising, anthem vocal, organ swells, universe-in-the-chest", "PT", "anthem", "gospel"), durationSeconds: 300, audioUrl: null },
+]);
+
+// ─────────────────────────────────────────────
+// ALBUM 14: CATEDRAL (the body as sacred architecture)
+// ─────────────────────────────────────────────
+
+const ESP_CATEDRAL: AlbumDef = spiritualAlbum("espiritual-catedral", "Catedral", "O corpo como lugar sagrado — a arquitectura de dentro", ESPIRITUAL_COLORS[14], [
+  { number: 1, title: "Nave", description: "O centro do corpo — onde o eco vive", lang: "PT", energy: "whisper", flavor: "organic", prompt: spiritualPrompt("the nave of the body, the centre where the echo lives, inner architecture", "cavernous, sacred, resonant, internal", "reverberant vocal, cathedral pads, resonant bass, acoustic space", "PT", "whisper", "organic"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "Stained Glass", description: "Light coming through the cracks — not broken, illuminated", lang: "EN", energy: "steady", flavor: "organic", prompt: spiritualPrompt("light through cracks, not broken but illuminated, stained glass body", "luminous, fractured, beautiful, light-through-wounds", "warm steady rhythm, light textures, prismatic pads, gentle revelation", "EN", "steady", "organic"), durationSeconds: 240, audioUrl: null },
+  { number: 3, title: "Costelas", description: "As costelas como arcos de catedral — protegem o que e sagrado", lang: "PT", energy: "raw", flavor: "organic", prompt: spiritualPrompt("ribs as cathedral arches, protecting the sacred heart, bone as architecture", "protective, structural, tender, architectural", "raw vocal, minimal production, bone-like percussion, hollow resonance", "PT", "raw", "organic"), durationSeconds: 240, audioUrl: null },
+  { number: 4, title: "Hymn of Skin", description: "The skin remembers every touch — a living hymn", lang: "EN", energy: "pulse", flavor: "marrabenta", prompt: spiritualPrompt("skin as hymnal, touch as prayer, the body's memory of every hand", "tactile, remembering, alive, sacred surface", "marrabenta guitar pulse, shaker rhythm, skin percussion, dancing hymn", "EN", "pulse", "marrabenta"), durationSeconds: 240, audioUrl: null },
+  { number: 5, title: "Altar", description: "O altar e aqui — dentro de ti, nao num edificio", lang: "PT", energy: "anthem", flavor: "organic", prompt: spiritualPrompt("the altar is inside, not in a building, you are the sacred space", "consecrated, powerful, self-sacred, declared", "anthem vocal rising, layered voices, building drums, declaration of inner sanctity", "PT", "anthem", "organic"), durationSeconds: 300, audioUrl: null },
+]);
+
+// ─────────────────────────────────────────────
+// ALBUM 15: GRAO (being one grain in the infinite)
+// ─────────────────────────────────────────────
+
+const ESP_GRAO: AlbumDef = spiritualAlbum("espiritual-grao", "Grão", "Ser um grão no infinito — a humildade como poder", ESPIRITUAL_COLORS[15], [
+  { number: 1, title: "Um", description: "Um — so um. E isso basta.", lang: "PT", energy: "raw", flavor: "organic", prompt: spiritualPrompt("being one, just one, and that being enough", "singular, humble, sufficient, essential", "raw solo vocal, silence, one piano note, breath", "PT", "raw", "organic"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "Sand", description: "A grain of sand that held the whole beach in its stillness", lang: "EN", energy: "whisper", flavor: "organic", prompt: spiritualPrompt("a grain of sand containing the beach, stillness holding everything", "still, contained, infinite-in-small, patient", "soft pads, sand textures, minimal whisper vocal, gentle percussion", "EN", "whisper", "organic"), durationSeconds: 240, audioUrl: null },
+  { number: 3, title: "Pertencer", description: "Nao es o centro — es parte. E isso e melhor.", lang: "PT", energy: "steady", flavor: "organic", prompt: spiritualPrompt("not the centre but part of everything, belonging without importance", "belonging, humble, part-of-whole, relieved", "warm bass groove, communal pads, steady rhythm, grounded vocal", "PT", "steady", "organic"), durationSeconds: 270, audioUrl: null },
+  { number: 4, title: "Enough", description: "The radical act of being enough without being everything", lang: "EN", energy: "anthem", flavor: "gospel", prompt: spiritualPrompt("being enough without being everything, sufficiency as revolution", "sufficient, radical, peaceful, declared", "gospel choir building, anthem declaration, organ swells, communal enough", "EN", "anthem", "gospel"), durationSeconds: 300, audioUrl: null },
+]);
+
+// ─────────────────────────────────────────────
+// ALBUM 16: MESMA AGUA (we are all the same water)
+// ─────────────────────────────────────────────
+
+const ESP_MESMA_AGUA: AlbumDef = spiritualAlbum("espiritual-mesma-agua", "Mesma Água", "Somos todas a mesma água — ligadas pelo que corre em nós", ESPIRITUAL_COLORS[16], [
+  { number: 1, title: "Uma Só", description: "A gota que percebe que é rio", lang: "PT", energy: "whisper", prompt: spiritualPrompt("a single drop realizing it is the river, shared humanity", "tender, dissolving, belonging, water-one", "soft flowing piano, water textures, whisper vocal, dissolving pads", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "Same River", description: "O rio que corre em ti corre em todas", lang: "EN", energy: "steady", prompt: spiritualPrompt("the river that runs through you runs through everyone, shared current", "connected, flowing, communal, same-water", "steady flowing rhythm, connected vocal, river bass, communal warmth", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+  { number: 3, title: "Sal", description: "Lágrimas e mar — o mesmo sal", lang: "PT", energy: "raw", prompt: spiritualPrompt("tears and ocean share the same salt, grief connects", "raw, salty, oceanic grief, shared tears", "raw vocal, ocean textures, salt-thick production, grief and connection", "PT", "raw"), durationSeconds: 250, audioUrl: null },
+  { number: 4, title: "Tributary", description: "Cada vida é um afluente — nenhuma corre sozinha", lang: "EN", energy: "pulse", flavor: "marrabenta", prompt: spiritualPrompt("every life a tributary, none flows alone, rivers converging", "joyful, converging, rhythmic, dancing rivers meeting", "marrabenta guitar, flowing rhythm, joyful converging vocal, river dance", "EN", "pulse", "marrabenta"), durationSeconds: 240, audioUrl: null },
+  { number: 5, title: "Desaguar", description: "Onde todas as águas se encontram — o fim que é início", lang: "PT", energy: "anthem", prompt: spiritualPrompt("where all waters meet, estuary, the end that is beginning", "vast, arriving, communal, oceanic gathering", "building anthem, ocean swell, arriving vocal, communal strings, vast", "PT", "anthem"), durationSeconds: 300, audioUrl: null },
+]);
+
+// ─────────────────────────────────────────────
+// ALBUM 17: ALEM DO NOME (the divine beyond naming)
+// ─────────────────────────────────────────────
+
+const ESP_ALEM_NOME: AlbumDef = spiritualAlbum("espiritual-alem-nome", "Além do Nome", "O que não cabe em Deus, universo, energia — o que fica quando os nomes acabam", ESPIRITUAL_COLORS[17], [
+  { number: 1, title: "Sem Nome", description: "O que sentes quando os nomes todos falham", lang: "PT", energy: "whisper", prompt: spiritualPrompt("what you feel when every name fails, the nameless sacred", "awed, speechless, nameless, beyond language", "vast quiet pads, speechless vocal, nameless space, beyond-words production", "PT", "whisper"), durationSeconds: 260, audioUrl: null },
+  { number: 2, title: "Not God", description: "Não Deus, não universo, não energia — o que resta", lang: "EN", energy: "raw", prompt: spiritualPrompt("not God, not universe, not energy, what remains when all names fail", "stripping, honest, raw negation, arriving at nameless", "stripped raw vocal, negation textures, honest minimal piano, silence", "EN", "raw"), durationSeconds: 240, audioUrl: null },
+  { number: 3, title: "O Buraco no Meio", description: "O vazio que nenhum nome tapa — e que não precisa de ser tapado", lang: "PT", energy: "steady", prompt: spiritualPrompt("the hole in the centre no name covers, sacred void, not needing to be filled", "hollow, sacred, accepting, void-as-home", "hollow resonant bass, accepting vocal, void textures, steady grounded rhythm", "PT", "steady"), durationSeconds: 250, audioUrl: null },
+  { number: 4, title: "Hum", description: "O som antes da palavra — o hum que tudo contém", lang: "PT", energy: "anthem", flavor: "gospel", prompt: spiritualPrompt("the sound before the word, the hum that contains everything, primordial vibration", "primordial, vibrating, everything-and-nothing, transcendent hum", "gospel choir humming, organ drone, primordial vibration, building to transcendence", "PT", "anthem", "gospel"), durationSeconds: 300, audioUrl: null },
+]);
+
+// ─────────────────────────────────────────────
+// ALBUM 18: RESPIRAR (breath as the most basic sacred act)
+// ─────────────────────────────────────────────
+
+const ESP_RESPIRAR: AlbumDef = spiritualAlbum("espiritual-respirar", "Respirar", "O milagre mecânico — o ar que entra sem pedires", ESPIRITUAL_COLORS[18], [
+  { number: 1, title: "Inspira", description: "O ar que entra — receber o mundo", lang: "PT", energy: "whisper", prompt: spiritualPrompt("inhale, receiving the world, air entering the body", "receiving, expanding, gentle, air-as-gift", "breath-synced pads, expanding vocal, inhale textures, gentle piano", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "Hold", description: "O momento em que seguras — o espaço entre", lang: "EN", energy: "raw", prompt: spiritualPrompt("holding breath, the space between inhale and exhale, suspended", "suspended, held, tense-tender, between", "suspended silence, held vocal, tension textures, between-breaths production", "EN", "raw"), durationSeconds: 230, audioUrl: null },
+  { number: 3, title: "Expira", description: "Largar o ar — largar o que já não serves", lang: "PT", energy: "steady", prompt: spiritualPrompt("exhale, releasing what no longer serves, letting go through breath", "releasing, lightening, exhale-as-surrender, letting-go", "exhale textures, releasing vocal, lightening pads, steady falling rhythm", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+  { number: 4, title: "Breathless", description: "Quando o ar falta — o corpo que grita para viver", lang: "EN", energy: "pulse", prompt: spiritualPrompt("breathless, when air is missing, the body screaming to live", "urgent, gasping, desperate, alive-through-lack", "urgent driving rhythm, gasping vocal, desperate textures, life-force pulse", "EN", "pulse"), durationSeconds: 240, audioUrl: null },
+  { number: 5, title: "Respiro", description: "A respiração que não controlas — o corpo que sabe", lang: "PT", energy: "steady", flavor: "house", prompt: spiritualPrompt("the breath you don't control, the body that knows, automatic sacred", "trusting, automatic, body-knowing, rhythmic breath", "four-on-the-floor breath rhythm, house warmth, trusting vocal, body-knowing groove", "PT", "steady", "house"), durationSeconds: 270, audioUrl: null },
+]);
+
+// ─────────────────────────────────────────────
+// ALBUM 19: CINZA E SEMENTE (death and rebirth — compost spirituality)
+// ─────────────────────────────────────────────
+
+const ESP_CINZA_SEMENTE: AlbumDef = spiritualAlbum("espiritual-cinza-semente", "Cinza e Semente", "O que cresce do que acabou — espiritualidade do composto", ESPIRITUAL_COLORS[19], [
+  { number: 1, title: "Queimou", description: "O que ardeu — sem romantizar a perda", lang: "PT", energy: "raw", prompt: spiritualPrompt("what burned down, not romanticizing loss, ash reality", "devastated, honest, ash-covered, raw loss", "raw devastated vocal, ash textures, honest stripped production, burnt", "PT", "raw"), durationSeconds: 250, audioUrl: null },
+  { number: 2, title: "Compost", description: "A beleza podre — o que apodrece alimenta", lang: "EN", energy: "steady", prompt: spiritualPrompt("rotting beauty, what decomposes feeds, compost as teacher", "decomposing, nourishing, ugly-beautiful, fertile rot", "earthy bass, decomposing textures, steady organic rhythm, fertile vocal", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+  { number: 3, title: "Debaixo", description: "O que cresce no escuro — a semente que não vês", lang: "PT", energy: "whisper", prompt: spiritualPrompt("what grows in the dark, the seed you cannot see, underground faith", "underground, patient, invisible growth, dark faith", "subterranean bass, patient piano, underground vocal, dark growing textures", "PT", "whisper"), durationSeconds: 260, audioUrl: null },
+  { number: 4, title: "First Green", description: "O primeiro verde — tão frágil que quase não é", lang: "EN", energy: "anthem", prompt: spiritualPrompt("first green shoot, so fragile it almost isn't, new life from ash", "fragile, emerging, tender-strong, first-life", "building from silence, emerging vocal, tender strings growing, anthem of fragility", "EN", "anthem"), durationSeconds: 280, audioUrl: null },
+]);
+
+// ─────────────────────────────────────────────
+// ALBUM 20: CHAMA ULTIMA (the eternal flame — what remains)
+// ─────────────────────────────────────────────
+
+const ESP_CHAMA_ULTIMA: AlbumDef = spiritualAlbum("espiritual-chama-ultima", "Chama Última", "O que resta quando tudo o resto é tirado", ESPIRITUAL_COLORS[20], [
+  { number: 1, title: "Tira Tudo", description: "Tira o nome, o papel, a roupa, a história — o que fica?", lang: "PT", energy: "raw", prompt: spiritualPrompt("strip everything away, name role clothes history, what remains", "stripped, exposed, essential, nothing-left", "raw stripped vocal, removal textures, bare production, essential silence", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "Ember", description: "A brasa que não apaga — pequena mas viva", lang: "EN", energy: "whisper", prompt: spiritualPrompt("the ember that won't die, small but alive, irreducible flame", "glowing, persistent, small-but-alive, ember-warmth", "warm glowing pads, persistent vocal, ember textures, small fire piano", "EN", "whisper"), durationSeconds: 250, audioUrl: null },
+  { number: 3, title: "Osso", description: "O osso debaixo da carne — o que és antes de tudo", lang: "PT", energy: "steady", flavor: "marrabenta", prompt: spiritualPrompt("bone beneath flesh, what you are before everything, irreducible self", "essential, bone-deep, irreducible, primal structure", "marrabenta bone rhythm, essential groove, deep vocal, primal structure bass", "PT", "steady", "marrabenta"), durationSeconds: 240, audioUrl: null },
+  { number: 4, title: "Still Burning", description: "Depois de tudo — ainda ardes", lang: "EN", energy: "pulse", prompt: spiritualPrompt("after everything, still burning, inextinguishable, refusal to die", "defiant, burning, inextinguishable, fierce-alive", "driving fire rhythm, burning vocal, inextinguishable energy, fierce pulse", "EN", "pulse"), durationSeconds: 240, audioUrl: null },
+  { number: 5, title: "Chama", description: "A chama que és — não metáfora, presença", lang: "PT", energy: "anthem", flavor: "gospel", prompt: spiritualPrompt("you are the flame, not metaphor but presence, eternal fire-self", "blazing, present, eternal, flame-as-self", "gospel choir fire, organ blaze, anthem vocal, eternal flame building, transcendent", "PT", "anthem", "gospel"), durationSeconds: 300, audioUrl: null },
 ]);
 
 // Apply lyrics from separate files to all album tracks
@@ -936,121 +1055,6 @@ const VIDA_PENUMBRA = vidaAlbum("vida-penumbra", "Penumbra", "o limiar, o espaç
   { number: 6, title: "The In-Between", description: "O espaço entre, que contém toda a possibilidade.", lang: "EN", prompt: vidaPrompt("The space between two heartbeats where everything exists — every choice, every path, every version of yourself. The gap between exhale and inhale", "Vast quiet possibility, the paradox of emptiness that contains everything. Peaceful infinity, the surrender to not-knowing as the most spacious place", "Extended silence broken by single piano notes at unpredictable intervals. Ambient pad shifting between major and minor, the faintest heartbeat underneath, ending in open silence that feels like a beginning", "EN"), durationSeconds: 300 },
 ]);
 
-// ─────────────────────────────────────────────
-// ALBUM 11: PRECE (the raw human cry to something bigger)
-// ─────────────────────────────────────────────
-
-const ESP_PRECE: AlbumDef = spiritualAlbum("espiritual-prece", "Prece", "O grito cru ao que não tem nome", ESPIRITUAL_COLORS[11], [
-  { number: 1, title: "Pede", description: "O pedido que sai do peito antes da vergonha", lang: "PT", energy: "raw", flavor: "organic", prompt: spiritualPrompt("the raw cry from the chest before shame catches up", "desperate, unfiltered, chest-cracking, first cry", "close-mic raw vocal, solo piano, breath sounds, silence between phrases", "PT", "raw", "organic"), durationSeconds: 240, audioUrl: null },
-  { number: 2, title: "Unanswered", description: "When the sky says nothing back", lang: "EN", energy: "whisper", flavor: "organic", prompt: spiritualPrompt("praying into silence, no answer, staying anyway", "lonely, persistent, faith-without-proof, waiting", "sparse pads, breath textures, distant piano, vast empty space", "EN", "whisper", "organic"), durationSeconds: 240, audioUrl: null },
-  { number: 3, title: "Desamparo", description: "O lugar onde ninguem chega — e rezas na mesma", lang: "PT", energy: "steady", flavor: "gospel", prompt: spiritualPrompt("helplessness as holy ground, praying from the floor", "abandoned, grounded, humble, still praying", "gospel organ warmth, steady low rhythm, grounded vocal, communal hum", "PT", "steady", "gospel"), durationSeconds: 270, audioUrl: null },
-  { number: 4, title: "Bones Know", description: "The body prays in a language the mind forgot", lang: "EN", energy: "pulse", flavor: "organic", prompt: spiritualPrompt("the body remembering prayer the mind forgot, bones as memory", "embodied, pulsing, ancient, cellular memory", "driving heartbeat bass, body percussion, rhythmic vocal, pulse building", "EN", "pulse", "organic"), durationSeconds: 240, audioUrl: null },
-  { number: 5, title: "A Ultima Prece", description: "Nao pedir nada — so ficar", lang: "PT", energy: "raw", flavor: "organic", prompt: spiritualPrompt("the last prayer is not asking, just staying, just being present", "surrendered, final, peaceful desperation, presence", "raw vocal fading, minimal piano, long silences, breath as instrument", "PT", "raw", "organic"), durationSeconds: 300, audioUrl: null },
-]);
-
-// ─────────────────────────────────────────────
-// ALBUM 12: CENTELHA (the divine spark inside)
-// ─────────────────────────────────────────────
-
-const ESP_CENTELHA: AlbumDef = spiritualAlbum("espiritual-centelha", "Centelha", "O instante em que algo se acende por dentro", ESPIRITUAL_COLORS[12], [
-  { number: 1, title: "Faisca", description: "Antes da chama — o instante antes de perceber", lang: "PT", energy: "whisper", flavor: "organic", prompt: spiritualPrompt("the instant before understanding, the spark before flame", "anticipatory, electric, pre-awakening, on the edge", "quiet tension, rising pads, whisper vocal, tiny percussion sparks", "PT", "whisper", "organic"), durationSeconds: 240, audioUrl: null },
-  { number: 2, title: "Lit", description: "The moment the match strikes — something changes forever", lang: "EN", energy: "pulse", flavor: "house", prompt: spiritualPrompt("the match striking, the moment of ignition, irreversible change", "ignited, irreversible, electric, awakened", "house kick building, synth sparks, driving energy, vocal catching fire", "EN", "pulse", "house"), durationSeconds: 240, audioUrl: null },
-  { number: 3, title: "Incendio Manso", description: "Arder sem pressa — a transformacao lenta", lang: "PT", energy: "steady", flavor: "marrabenta", prompt: spiritualPrompt("burning slowly, gentle fire, transformation without violence", "warm, patient, transforming, slow burn", "marrabenta guitar groove, warm shaker, dancing flame rhythm, grounded joy", "PT", "steady", "marrabenta"), durationSeconds: 270, audioUrl: null },
-  { number: 4, title: "Ainda Brilha", description: "A centelha que sobrevive ao escuro", lang: "PT", energy: "anthem", flavor: "organic", prompt: spiritualPrompt("the spark surviving darkness, still glowing after everything", "resilient, luminous, defiant, still alive", "building anthem vocal, rising strings, layered chorus, triumphant warmth", "PT", "anthem", "organic"), durationSeconds: 300, audioUrl: null },
-]);
-
-// ─────────────────────────────────────────────
-// ALBUM 13: VASTIDAO (the terrifying and beautiful vastness)
-// ─────────────────────────────────────────────
-
-const ESP_VASTIDAO: AlbumDef = spiritualAlbum("espiritual-vastidao", "Vastidão", "Sentir-se pequena e ligada a tudo ao mesmo tempo", ESPIRITUAL_COLORS[13], [
-  { number: 1, title: "Oceano", description: "Olhar para algo tao grande que as palavras param", lang: "PT", energy: "whisper", flavor: "organic", prompt: spiritualPrompt("facing the ocean, words stopping, smallness as relief", "oceanic, dissolved, overwhelmed, relieved", "vast pads, ocean textures, distant vocal, immense space", "PT", "whisper", "organic"), durationSeconds: 270, audioUrl: null },
-  { number: 2, title: "Terrified and Free", description: "The vertigo of vastness — falling into the infinite", lang: "EN", energy: "raw", flavor: "organic", prompt: spiritualPrompt("vertigo of the infinite, terror and freedom at once", "terrified, liberated, falling, dissolving", "raw vocal with reverb, dissonant piano, vast empty production, vertigo textures", "EN", "raw", "organic"), durationSeconds: 240, audioUrl: null },
-  { number: 3, title: "Poeira de Estrelas", description: "Es feita do mesmo material que o universo", lang: "PT", energy: "steady", flavor: "organic", prompt: spiritualPrompt("stardust in the body, the universe in the cells, cosmic belonging", "cosmic, humble, connected, ancient", "warm bass, celestial pads, steady groove, starlight textures", "PT", "steady", "organic"), durationSeconds: 240, audioUrl: null },
-  { number: 4, title: "Small", description: "Being small is not a problem — it is the answer", lang: "EN", energy: "whisper", flavor: "organic", prompt: spiritualPrompt("smallness as wisdom, being tiny as liberation, not insignificant but free", "tiny, free, wise, surrendered", "minimal piano, breath space, gentle vocal, intimate vastness", "EN", "whisper", "organic"), durationSeconds: 240, audioUrl: null },
-  { number: 5, title: "Cabe Tudo", description: "Dentro do peito cabe o universo inteiro", lang: "PT", energy: "anthem", flavor: "gospel", prompt: spiritualPrompt("the chest containing the entire universe, inner vastness", "expansive, full, overflowing, sacred", "gospel choir rising, anthem vocal, organ swells, universe-in-the-chest", "PT", "anthem", "gospel"), durationSeconds: 300, audioUrl: null },
-]);
-
-// ─────────────────────────────────────────────
-// ALBUM 14: CATEDRAL (the body as sacred architecture)
-// ─────────────────────────────────────────────
-
-const ESP_CATEDRAL: AlbumDef = spiritualAlbum("espiritual-catedral", "Catedral", "O corpo como lugar sagrado — a arquitectura de dentro", ESPIRITUAL_COLORS[14], [
-  { number: 1, title: "Nave", description: "O centro do corpo — onde o eco vive", lang: "PT", energy: "whisper", flavor: "organic", prompt: spiritualPrompt("the nave of the body, the centre where the echo lives, inner architecture", "cavernous, sacred, resonant, internal", "reverberant vocal, cathedral pads, resonant bass, acoustic space", "PT", "whisper", "organic"), durationSeconds: 240, audioUrl: null },
-  { number: 2, title: "Stained Glass", description: "Light coming through the cracks — not broken, illuminated", lang: "EN", energy: "steady", flavor: "organic", prompt: spiritualPrompt("light through cracks, not broken but illuminated, stained glass body", "luminous, fractured, beautiful, light-through-wounds", "warm steady rhythm, light textures, prismatic pads, gentle revelation", "EN", "steady", "organic"), durationSeconds: 240, audioUrl: null },
-  { number: 3, title: "Costelas", description: "As costelas como arcos de catedral — protegem o que e sagrado", lang: "PT", energy: "raw", flavor: "organic", prompt: spiritualPrompt("ribs as cathedral arches, protecting the sacred heart, bone as architecture", "protective, structural, tender, architectural", "raw vocal, minimal production, bone-like percussion, hollow resonance", "PT", "raw", "organic"), durationSeconds: 240, audioUrl: null },
-  { number: 4, title: "Hymn of Skin", description: "The skin remembers every touch — a living hymn", lang: "EN", energy: "pulse", flavor: "marrabenta", prompt: spiritualPrompt("skin as hymnal, touch as prayer, the body's memory of every hand", "tactile, remembering, alive, sacred surface", "marrabenta guitar pulse, shaker rhythm, skin percussion, dancing hymn", "EN", "pulse", "marrabenta"), durationSeconds: 240, audioUrl: null },
-  { number: 5, title: "Altar", description: "O altar e aqui — dentro de ti, nao num edificio", lang: "PT", energy: "anthem", flavor: "organic", prompt: spiritualPrompt("the altar is inside, not in a building, you are the sacred space", "consecrated, powerful, self-sacred, declared", "anthem vocal rising, layered voices, building drums, declaration of inner sanctity", "PT", "anthem", "organic"), durationSeconds: 300, audioUrl: null },
-]);
-
-// ─────────────────────────────────────────────
-// ALBUM 15: GRAO (being one grain in the infinite)
-// ─────────────────────────────────────────────
-
-const ESP_GRAO: AlbumDef = spiritualAlbum("espiritual-grao", "Grão", "Ser um grão no infinito — a humildade como poder", ESPIRITUAL_COLORS[15], [
-  { number: 1, title: "Um", description: "Um — so um. E isso basta.", lang: "PT", energy: "raw", flavor: "organic", prompt: spiritualPrompt("being one, just one, and that being enough", "singular, humble, sufficient, essential", "raw solo vocal, silence, one piano note, breath", "PT", "raw", "organic"), durationSeconds: 240, audioUrl: null },
-  { number: 2, title: "Sand", description: "A grain of sand that held the whole beach in its stillness", lang: "EN", energy: "whisper", flavor: "organic", prompt: spiritualPrompt("a grain of sand containing the beach, stillness holding everything", "still, contained, infinite-in-small, patient", "soft pads, sand textures, minimal whisper vocal, gentle percussion", "EN", "whisper", "organic"), durationSeconds: 240, audioUrl: null },
-  { number: 3, title: "Pertencer", description: "Nao es o centro — es parte. E isso e melhor.", lang: "PT", energy: "steady", flavor: "organic", prompt: spiritualPrompt("not the centre but part of everything, belonging without importance", "belonging, humble, part-of-whole, relieved", "warm bass groove, communal pads, steady rhythm, grounded vocal", "PT", "steady", "organic"), durationSeconds: 270, audioUrl: null },
-  { number: 4, title: "Enough", description: "The radical act of being enough without being everything", lang: "EN", energy: "anthem", flavor: "gospel", prompt: spiritualPrompt("being enough without being everything, sufficiency as revolution", "sufficient, radical, peaceful, declared", "gospel choir building, anthem declaration, organ swells, communal enough", "EN", "anthem", "gospel"), durationSeconds: 300, audioUrl: null },
-]);
-
-// ─────────────────────────────────────────────
-// ALBUM 16: MESMA AGUA (we are all the same water)
-// ─────────────────────────────────────────────
-
-const ESP_MESMA_AGUA: AlbumDef = spiritualAlbum("espiritual-mesma-agua", "Mesma Água", "Somos todas a mesma água — ligadas pelo que corre em nós", ESPIRITUAL_COLORS[16], [
-  { number: 1, title: "Uma Só", description: "A gota que percebe que é rio", lang: "PT", energy: "whisper", prompt: spiritualPrompt("a single drop realizing it is the river, shared humanity", "tender, dissolving, belonging, water-one", "soft flowing piano, water textures, whisper vocal, dissolving pads", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
-  { number: 2, title: "Same River", description: "O rio que corre em ti corre em todas", lang: "EN", energy: "steady", prompt: spiritualPrompt("the river that runs through you runs through everyone, shared current", "connected, flowing, communal, same-water", "steady flowing rhythm, connected vocal, river bass, communal warmth", "EN", "steady"), durationSeconds: 240, audioUrl: null },
-  { number: 3, title: "Sal", description: "Lágrimas e mar — o mesmo sal", lang: "PT", energy: "raw", prompt: spiritualPrompt("tears and ocean share the same salt, grief connects", "raw, salty, oceanic grief, shared tears", "raw vocal, ocean textures, salt-thick production, grief and connection", "PT", "raw"), durationSeconds: 250, audioUrl: null },
-  { number: 4, title: "Tributary", description: "Cada vida é um afluente — nenhuma corre sozinha", lang: "EN", energy: "pulse", flavor: "marrabenta", prompt: spiritualPrompt("every life a tributary, none flows alone, rivers converging", "joyful, converging, rhythmic, dancing rivers meeting", "marrabenta guitar, flowing rhythm, joyful converging vocal, river dance", "EN", "pulse", "marrabenta"), durationSeconds: 240, audioUrl: null },
-  { number: 5, title: "Desaguar", description: "Onde todas as águas se encontram — o fim que é início", lang: "PT", energy: "anthem", prompt: spiritualPrompt("where all waters meet, estuary, the end that is beginning", "vast, arriving, communal, oceanic gathering", "building anthem, ocean swell, arriving vocal, communal strings, vast", "PT", "anthem"), durationSeconds: 300, audioUrl: null },
-]);
-
-// ─────────────────────────────────────────────
-// ALBUM 17: ALEM DO NOME (the divine beyond naming)
-// ─────────────────────────────────────────────
-
-const ESP_ALEM_NOME: AlbumDef = spiritualAlbum("espiritual-alem-nome", "Além do Nome", "O que não cabe em Deus, universo, energia — o que fica quando os nomes acabam", ESPIRITUAL_COLORS[17], [
-  { number: 1, title: "Sem Nome", description: "O que sentes quando os nomes todos falham", lang: "PT", energy: "whisper", prompt: spiritualPrompt("what you feel when every name fails, the nameless sacred", "awed, speechless, nameless, beyond language", "vast quiet pads, speechless vocal, nameless space, beyond-words production", "PT", "whisper"), durationSeconds: 260, audioUrl: null },
-  { number: 2, title: "Not God", description: "Não Deus, não universo, não energia — o que resta", lang: "EN", energy: "raw", prompt: spiritualPrompt("not God, not universe, not energy, what remains when all names fail", "stripping, honest, raw negation, arriving at nameless", "stripped raw vocal, negation textures, honest minimal piano, silence", "EN", "raw"), durationSeconds: 240, audioUrl: null },
-  { number: 3, title: "O Buraco no Meio", description: "O vazio que nenhum nome tapa — e que não precisa de ser tapado", lang: "PT", energy: "steady", prompt: spiritualPrompt("the hole in the centre no name covers, sacred void, not needing to be filled", "hollow, sacred, accepting, void-as-home", "hollow resonant bass, accepting vocal, void textures, steady grounded rhythm", "PT", "steady"), durationSeconds: 250, audioUrl: null },
-  { number: 4, title: "Hum", description: "O som antes da palavra — o hum que tudo contém", lang: "PT", energy: "anthem", flavor: "gospel", prompt: spiritualPrompt("the sound before the word, the hum that contains everything, primordial vibration", "primordial, vibrating, everything-and-nothing, transcendent hum", "gospel choir humming, organ drone, primordial vibration, building to transcendence", "PT", "anthem", "gospel"), durationSeconds: 300, audioUrl: null },
-]);
-
-// ─────────────────────────────────────────────
-// ALBUM 18: RESPIRAR (breath as the most basic sacred act)
-// ─────────────────────────────────────────────
-
-const ESP_RESPIRAR: AlbumDef = spiritualAlbum("espiritual-respirar", "Respirar", "O milagre mecânico — o ar que entra sem pedires", ESPIRITUAL_COLORS[18], [
-  { number: 1, title: "Inspira", description: "O ar que entra — receber o mundo", lang: "PT", energy: "whisper", prompt: spiritualPrompt("inhale, receiving the world, air entering the body", "receiving, expanding, gentle, air-as-gift", "breath-synced pads, expanding vocal, inhale textures, gentle piano", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
-  { number: 2, title: "Hold", description: "O momento em que seguras — o espaço entre", lang: "EN", energy: "raw", prompt: spiritualPrompt("holding breath, the space between inhale and exhale, suspended", "suspended, held, tense-tender, between", "suspended silence, held vocal, tension textures, between-breaths production", "EN", "raw"), durationSeconds: 230, audioUrl: null },
-  { number: 3, title: "Expira", description: "Largar o ar — largar o que já não serves", lang: "PT", energy: "steady", prompt: spiritualPrompt("exhale, releasing what no longer serves, letting go through breath", "releasing, lightening, exhale-as-surrender, letting-go", "exhale textures, releasing vocal, lightening pads, steady falling rhythm", "PT", "steady"), durationSeconds: 240, audioUrl: null },
-  { number: 4, title: "Breathless", description: "Quando o ar falta — o corpo que grita para viver", lang: "EN", energy: "pulse", prompt: spiritualPrompt("breathless, when air is missing, the body screaming to live", "urgent, gasping, desperate, alive-through-lack", "urgent driving rhythm, gasping vocal, desperate textures, life-force pulse", "EN", "pulse"), durationSeconds: 240, audioUrl: null },
-  { number: 5, title: "Respiro", description: "A respiração que não controlas — o corpo que sabe", lang: "PT", energy: "steady", flavor: "house", prompt: spiritualPrompt("the breath you don't control, the body that knows, automatic sacred", "trusting, automatic, body-knowing, rhythmic breath", "four-on-the-floor breath rhythm, house warmth, trusting vocal, body-knowing groove", "PT", "steady", "house"), durationSeconds: 270, audioUrl: null },
-]);
-
-// ─────────────────────────────────────────────
-// ALBUM 19: CINZA E SEMENTE (death and rebirth — compost spirituality)
-// ─────────────────────────────────────────────
-
-const ESP_CINZA_SEMENTE: AlbumDef = spiritualAlbum("espiritual-cinza-semente", "Cinza e Semente", "O que cresce do que acabou — espiritualidade do composto", ESPIRITUAL_COLORS[19], [
-  { number: 1, title: "Queimou", description: "O que ardeu — sem romantizar a perda", lang: "PT", energy: "raw", prompt: spiritualPrompt("what burned down, not romanticizing loss, ash reality", "devastated, honest, ash-covered, raw loss", "raw devastated vocal, ash textures, honest stripped production, burnt", "PT", "raw"), durationSeconds: 250, audioUrl: null },
-  { number: 2, title: "Compost", description: "A beleza podre — o que apodrece alimenta", lang: "EN", energy: "steady", prompt: spiritualPrompt("rotting beauty, what decomposes feeds, compost as teacher", "decomposing, nourishing, ugly-beautiful, fertile rot", "earthy bass, decomposing textures, steady organic rhythm, fertile vocal", "EN", "steady"), durationSeconds: 240, audioUrl: null },
-  { number: 3, title: "Debaixo", description: "O que cresce no escuro — a semente que não vês", lang: "PT", energy: "whisper", prompt: spiritualPrompt("what grows in the dark, the seed you cannot see, underground faith", "underground, patient, invisible growth, dark faith", "subterranean bass, patient piano, underground vocal, dark growing textures", "PT", "whisper"), durationSeconds: 260, audioUrl: null },
-  { number: 4, title: "First Green", description: "O primeiro verde — tão frágil que quase não é", lang: "EN", energy: "anthem", prompt: spiritualPrompt("first green shoot, so fragile it almost isn't, new life from ash", "fragile, emerging, tender-strong, first-life", "building from silence, emerging vocal, tender strings growing, anthem of fragility", "EN", "anthem"), durationSeconds: 280, audioUrl: null },
-]);
-
-// ─────────────────────────────────────────────
-// ALBUM 20: CHAMA ULTIMA (the eternal flame — what remains)
-// ─────────────────────────────────────────────
-
-const ESP_CHAMA_ULTIMA: AlbumDef = spiritualAlbum("espiritual-chama-ultima", "Chama Última", "O que resta quando tudo o resto é tirado", ESPIRITUAL_COLORS[20], [
-  { number: 1, title: "Tira Tudo", description: "Tira o nome, o papel, a roupa, a história — o que fica?", lang: "PT", energy: "raw", prompt: spiritualPrompt("strip everything away, name role clothes history, what remains", "stripped, exposed, essential, nothing-left", "raw stripped vocal, removal textures, bare production, essential silence", "PT", "raw"), durationSeconds: 240, audioUrl: null },
-  { number: 2, title: "Ember", description: "A brasa que não apaga — pequena mas viva", lang: "EN", energy: "whisper", prompt: spiritualPrompt("the ember that won't die, small but alive, irreducible flame", "glowing, persistent, small-but-alive, ember-warmth", "warm glowing pads, persistent vocal, ember textures, small fire piano", "EN", "whisper"), durationSeconds: 250, audioUrl: null },
-  { number: 3, title: "Osso", description: "O osso debaixo da carne — o que és antes de tudo", lang: "PT", energy: "steady", flavor: "marrabenta", prompt: spiritualPrompt("bone beneath flesh, what you are before everything, irreducible self", "essential, bone-deep, irreducible, primal structure", "marrabenta bone rhythm, essential groove, deep vocal, primal structure bass", "PT", "steady", "marrabenta"), durationSeconds: 240, audioUrl: null },
-  { number: 4, title: "Still Burning", description: "Depois de tudo — ainda ardes", lang: "EN", energy: "pulse", prompt: spiritualPrompt("after everything, still burning, inextinguishable, refusal to die", "defiant, burning, inextinguishable, fierce-alive", "driving fire rhythm, burning vocal, inextinguishable energy, fierce pulse", "EN", "pulse"), durationSeconds: 240, audioUrl: null },
-  { number: 5, title: "Chama", description: "A chama que és — não metáfora, presença", lang: "PT", energy: "anthem", flavor: "gospel", prompt: spiritualPrompt("you are the flame, not metaphor but presence, eternal fire-self", "blazing, present, eternal, flame-as-self", "gospel choir fire, organ blaze, anthem vocal, eternal flame building, transcendent", "PT", "anthem", "gospel"), durationSeconds: 300, audioUrl: null },
-]);
 
 // ─────────────────────────────────────────────
 // EXPORT
