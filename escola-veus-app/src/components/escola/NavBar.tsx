@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/contexts/AuthContext";
 
 const NAV_ITEMS = [
   { href: "/", label: "Inicio", icon: HomeIcon },
@@ -11,8 +12,11 @@ const NAV_ITEMS = [
 
 export function NavBar() {
   const pathname = usePathname();
+  const { user, loading } = useAuth();
   const isAdmin = pathname?.startsWith("/admin");
-  if (isAdmin) return null;
+  const isLanding = pathname === "/" && !user && !loading;
+  const isEntrar = pathname === "/entrar";
+  if (isAdmin || isLanding || isEntrar) return null;
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-escola-border bg-escola-bg/95 backdrop-blur-md">
