@@ -45,9 +45,16 @@ O segundo já não para
 O corpo acorda e depois
 Já não precisa de cara
 
+[Bridge]
+A batalha nunca é contra o treino
+A batalha é contra o sofá
+O corpo sabe que o mais pequeno
+Gesto é o que o vai salvar
+
 [Outro]
 Um passo, só um
-O resto vem atrás`,
+O resto vem atrás
+Sempre vem`,
 
   "vida-sangue-aceso/2": `[Verse 1]
 Something shifted in the spine
@@ -115,7 +122,20 @@ Que me torna animal
 
 [Chorus]
 Suor sagrado
-Cai de mim o que não sou`,
+Cai de mim o que não sou
+Suor sagrado
+O corpo sabe aonde vou
+
+[Bridge]
+O suor não é sujidade
+É o corpo a contar a verdade
+Cada gota é uma liberdade
+Que escorre da minha metade
+
+[Outro]
+Suor sagrado
+Cai de mim
+Tudo o que não é meu`,
 
   "vida-sangue-aceso/4": `[Verse 1]
 Lungs on fire, heart in my ears
@@ -150,7 +170,13 @@ You're bigger than the fall
 
 [Chorus]
 Breathless and alive
-Breathless and I'm free`,
+Breathless and I'm free
+Everything I held inside
+Burns right out of me
+
+[Outro]
+Breathless
+And finally free`,
 
   "vida-sangue-aceso/5": `[Verse 1]
 Os braços tremem, a voz diz chega
@@ -176,10 +202,17 @@ A dor é só a porta
 O corpo mente quando grita
 A alma nunca aborta
 
+[Bridge]
+O limite que eu achava que existia
+Era só uma linha desenhada a giz
+O corpo vai mais longe que eu sabia
+Mais longe do que o medo me prediz
+
 [Outro]
 Mais uma
 Mais uma
-Mais uma`,
+Mais uma
+Sempre mais uma`,
 
   "vida-sangue-aceso/6": `[Verse 1]
 There's a place at thirty clicks
@@ -209,10 +242,27 @@ Sweat and tears, I can't tell which
 Nothing pretty, nothing grand
 Just a woman in the ditch who keeps going
 
+[Chorus]
+The wall, the wall
+It rises and I see it clear
+But I won't fall
+Not here, not now, not from fear
+The wall was always mine
+A door I hadn't tried
+I push through every line
+With nothing left to hide
+
+[Bridge]
+On the other side of the wall
+There's a version of me waiting
+Who already survived the fall
+And is patiently celebrating
+
 [Outro]
 One more step
 One more
-One more`,
+One more
+Through the wall`,
 
   "vida-sangue-aceso/7": `[Verse 1]
 Braços abertos, grito ao céu
@@ -243,10 +293,23 @@ Cada fibra conta a historia
 [Chorus]
 Descarga
 O corpo explode de alegria
+Descarga
+A dor virou poesia
+Tudo o que estava preso
+Salta como fogo
+Não há mais peso
+Só este jogo sagrado
+
+[Bridge]
+Tudo o que carreguei durante o dia
+Os nomes, os pesos, as contas por pagar
+O corpo libertou numa explosão de alegria
+E agora só existe o respirar
 
 [Outro]
 Livre, livre, livre
-O corpo livre`,
+O corpo livre
+Finalmente livre`,
 
   "vida-sangue-aceso/8": `[Verse 1]
 The heart slows down like evening tide
@@ -259,6 +322,22 @@ Muscles humming, warm and loose
 The body thanking every bone
 No more effort, no excuse
 Just the sweetness of alone
+
+[Chorus]
+Cool down, cool down
+Let the fire become the glow
+Cool down, lay it down
+Every cell already knows
+You gave it all today
+You left nothing on the floor
+Cool down, it's okay
+The body asks for nothing more
+
+[Verse 3]
+The towel against the neck feels kind
+The water cold against the throat
+The body leaves the war behind
+And wraps itself in its own coat
 
 [Chorus]
 Cool down, cool down
@@ -932,9 +1011,32 @@ Que ainda respira
 No escuro morto
 De quem não expira
 
+[Verse 3]
+O lençol guarda o calor da noite
+As mãos encontram o peito quente
+Neste ultimo instante antes do açoite
+Do dia que me quer de pé e presente
+
+[Chorus]
+Antes dos olhos
+Antes do nome
+Antes dos molhos
+Antes da fome
+Sou só um corpo
+Que ainda respira
+No escuro morto
+De quem não expira
+
+[Bridge]
+Este momento antes de tudo
+É o mais honesto do meu dia
+Sem máscara, sem escudo
+Só a pele e a sua geografia
+
 [Outro]
 Mais um momento
-Só mais um momento no escuro`,
+Só mais um momento no escuro
+Antes de ser quem o mundo espera`,
 
   "vida-luz-crua/2": `[Verse 1]
 A bird outside, the first of many
@@ -958,9 +1060,32 @@ The ordinary miracle
 Of everything that was before
 I opened eyes to hear it all
 
+[Verse 3]
+The kettle starts its patient hiss
+A dog barks somewhere down the street
+Each sound a small domestic kiss
+That makes the waking feel complete
+
+[Chorus]
+First sound, first sound
+The world announces it survived
+First sound, first sound
+While I was gone, it stayed alive
+The rain, the click, the neighbour's door
+The ordinary miracle
+Of everything that was before
+I opened eyes to hear it all
+
+[Bridge]
+How many mornings did I rush
+Past all the music in the air
+Now every creak and every hush
+Is a prayer that I was unaware
+
 [Outro]
 The first sound
-Always the same surprise`,
+Always the same surprise
+Always the same grace`,
 
   "vida-luz-crua/3": `[Verse 1]
 Os pés tocam o chão frio
@@ -984,9 +1109,32 @@ Com a terra que me segura
 De pé, descalca, exacto
 Nesta fria formosura
 
+[Verse 3]
+O corpo todo desperta por partes
+Os dedos primeiro depois os joelhos
+A manhã distribui as suas artes
+Pelos ossos, pelos tendões velhos
+
+[Chorus]
+Pes no chão
+A manhã entra pelo corpo
+Pes no chão
+O dia começa a ter um porto
+Cada passo é um contrato
+Com a terra que me segura
+De pé, descalca, exacto
+Nesta fria formosura
+
+[Bridge]
+O primeiro contacto com o chão
+É o corpo a lembrar que existe
+Que tem peso e tem direcção
+E que a gravidade insiste
+
 [Outro]
 Pes no chão
-Cheguei ao dia`,
+Cheguei ao dia
+Estou aqui`,
 
   "vida-luz-crua/4": `[Verse 1]
 The water fills the kettle slow
@@ -1010,9 +1158,32 @@ Before the world comes crashing through
 This morning holds a god within it
 And the god is in the brew
 
+[Verse 3]
+The sugar dissolves without a sound
+The spoon makes circles slow and sure
+In this small orbit I have found
+The only morning ritual that's pure
+
+[Chorus]
+The kettle sings its simple song
+The ritual before the rush
+The moment where I still belong
+To silence and the morning hush
+One cup, one breath, one quiet minute
+Before the world comes crashing through
+This morning holds a god within it
+And the god is in the brew
+
+[Bridge]
+Before the inbox and the noise
+Before the mask goes on again
+This cup of warmth is the only choice
+That's truly mine before the ten
+
 [Outro]
 One sip
-And the day begins`,
+And the day begins
+But gently`,
 
   "vida-luz-crua/5": `[Verse 1]
 De pé junto a janela
@@ -1036,9 +1207,32 @@ O corpo alinha devagar
 Não preciso de decidir
 Só de apontar e respirar
 
+[Verse 3]
+A manhã aceita o que eu lhe dou
+A direcção que escolhi sem peso
+O dia torna-se o que eu sou
+Quando começo sem excesso
+
+[Chorus]
+Intenção
+Sem força, só direcção
+Intenção
+A bussola sem pressão
+Aponto para onde quero ir
+O corpo alinha devagar
+Não preciso de decidir
+Só de apontar e respirar
+
+[Bridge]
+Não é controlo, é atenção
+Não é força, é presença
+A intenção é a mais gentil versão
+De quem sabe o que quer sem urgência
+
 [Outro]
 Para ali
-É o caminho e meu`,
+É o caminho e meu
+E começa agora`,
 
   "vida-luz-crua/6": `[Verse 1]
 The shoulders roll, the neck extends
@@ -1064,9 +1258,34 @@ There's nothing left to say
 But move, just move
 Into the light
 
+[Verse 3]
+The air is sharp and clean and new
+The lungs expand to meet the cold
+The body knows exactly who
+I am before the day takes hold
+
+[Chorus]
+Daybreak in the body first
+Before the sun confirms the day
+The muscles quench their morning thirst
+The bones begin to sway
+Daybreak, daybreak
+The body leads the way
+Daybreak, daybreak
+There's nothing left to say
+But move, just move
+Into the light
+
+[Bridge]
+The mind will catch up by the noon
+The heart will follow by the night
+But the body knew since before the moon
+That mornings are made of light
+
 [Outro]
 The day begins
-In the body first`,
+In the body first
+Always in the body first`,
 
 
   // ─────────────────────────────────────────────
@@ -3258,6 +3477,28 @@ The lungs that open like a church
 My feet don't touch the ground, I know
 I'm standing on a holy perch
 
+[Verse 2]
+The laughter spills without a plan
+The body shakes with something raw
+I'm not performing for a man
+I'm breaking every quiet law
+
+[Chorus]
+Joy, joy, joy
+Explosive and unapologetic
+Joy, joy, joy
+The body is magnetic
+No explanation, no excuse
+The holy yes of flesh and bone
+A woman finally breaking loose
+From every rule she's ever known
+
+[Verse 3]
+The neighbours hear and let them hear
+The walls are shaking with my sound
+I lost the need to disappear
+The joy has burned the ceiling down
+
 [Chorus]
 Joy, joy, joy
 Explosive and unapologetic
@@ -3276,7 +3517,8 @@ Is the glory in your hand
 
 [Outro]
 Joy
-Pure reckless joy`,
+Pure reckless joy
+The only prayer I need`,
 
   "vida-descalca/5": `[Verse 1]
 As ancas balancam antes do pensamento
@@ -4031,6 +4273,12 @@ The circles spreading past my sight
 One woman's voice, one woman's will
 That reached a shore I'll never write
 
+[Verse 2]
+The message sent without a stamp
+The kindness thrown without a net
+A single light inside a lamp
+That lit a room I've never met
+
 [Chorus]
 Ripple, ripple
 The wave I never see arrive
@@ -4041,15 +4289,44 @@ A word I said last summer
 Became somebody's light
 Their winter became their summer
 
+[Verse 3]
+I'll never know the lives I touched
+The doors that opened from my voice
+The hearts that quietly were hushed
+And then made a different choice
+
+[Chorus]
+Ripple, ripple
+The wave I never see arrive
+Ripple, ripple
+The echo that's still alive
+In someone else's room tonight
+A word I said last summer
+Became somebody's light
+Their winter became their summer
+
+[Bridge]
+We measure impact by what we can count
+But the truest waves are never seen
+They travel past the furthest mount
+To places where we've never been
+
 [Outro]
 Ripple
-Further than I know`,
+Further than I know
+Further than I'll ever know`,
 
   "vida-ressonancia/3": `[Verse 1]
 Duas mulheres numa mesa
 A mesma ferida diferente
 O choque do reconhecimento pesa
 E ao mesmo tempo e um presente
+
+[Verse 2]
+Os olhos encontram-se por cima do café
+A frase começa e o corpo treme
+Alguém que sabe o que eu sei
+Alguém que carrega a mesma semente
 
 [Chorus]
 Duas vozes
@@ -4061,15 +4338,44 @@ A harmonia do encontro
 Quando a verdade convem
 É o mundo ganha contorno
 
+[Verse 3]
+A vergonha dissolve-se entre as duas
+As histórias cruzam-se como rios
+As palavras já não são cruas
+Quando encontram os seus pares e os seus fios
+
+[Chorus]
+Duas vozes
+Encontram-se no escuro
+Duas vozes
+Mais fortes que qualquer muro
+Tu também? Tu também?
+A harmonia do encontro
+Quando a verdade convem
+É o mundo ganha contorno
+
+[Bridge]
+A solidão mais funda é a que pensa
+Que ninguém no mundo sente igual
+Mas basta uma voz que vença
+O silêncio para curar o mal
+
 [Outro]
 Tu também
-Não estou sozinha`,
+Não estou sozinha
+Nunca estive`,
 
   "vida-ressonancia/4": `[Verse 1]
 Women standing, shoulders close
 Breathing in the same slow time
 Nobody leads, nobody chose
 But the circle holds the rhyme
+
+[Verse 2]
+A hand extends without a word
+A stranger's palm against my own
+The warmth of being seen and heard
+Without a single judgement thrown
 
 [Chorus]
 The circle, the circle
@@ -4081,15 +4387,44 @@ The breath that we all share
 The circle doesn't rise or fall
 It just holds us there
 
+[Verse 3]
+The tears of one become the rain
+That waters every root below
+In circles we transform our pain
+Into a river's gentle flow
+
+[Chorus]
+The circle, the circle
+That holds everyone who enters
+The circle, the circle
+Where nobody is at the centre
+Except the space between us all
+The breath that we all share
+The circle doesn't rise or fall
+It just holds us there
+
+[Bridge]
+I walked in as a single note
+And found myself inside a chord
+The circle wrapped around my throat
+And turned my silence into word
+
 [Outro]
 The circle holds
-The circle holds us all`,
+The circle holds us all
+Every one of us`,
 
   "vida-ressonancia/5": `[Verse 1]
 A voz atravessa paredes
 Não é um grito, e uma frequência
 Que encontra quem está nas redes
 Do mesmo sono, da mesma ausência
+
+[Verse 2]
+Uma mulher levanta-se primeiro
+Depois outra e depois mais dez
+O despertar é contagioso e inteiro
+Quando uma voz diz o que todas sentem uma vez
 
 [Chorus]
 Chamada
@@ -4101,15 +4436,44 @@ Acorda, acorda, acorda
 O chamamento e o caminho
 Que a tua voz acorda
 
+[Verse 3]
+Não é preciso gritar para ser ouvida
+Basta a verdade na voz que treme
+Uma palavra pode mudar uma vida
+Quando encontra o coração que geme
+
+[Chorus]
+Chamada
+A voz que acorda as outras
+Chamada
+As portas que se abrem contra as troutas
+Do rio que corre sozinho
+Acorda, acorda, acorda
+O chamamento e o caminho
+Que a tua voz acorda
+
+[Bridge]
+A primeira a falar carrega o peso
+De todas as que virão depois
+Mas o silêncio tem um preço
+Mais alto que a coragem das vozes
+
 [Outro]
 Acorda
-Acorda comigo`,
+Acorda comigo
+O mundo precisa da tua voz`,
 
   "vida-ressonancia/6": `[Verse 1]
 A room of lungs expanding as one
 Fifty women breathing in
 The isolation is undone
 The unity begins to spin
+
+[Verse 2]
+The exhale of one lifts the next
+The rhythm finds itself in air
+No conductor, no pretext
+Just bodies learning how to share
 
 [Chorus]
 We breathe, we breathe
@@ -4121,15 +4485,60 @@ But swelling like the tide
 Underneath the sacred arch
 Of women side by side
 
+[Verse 3]
+The room becomes a single chest
+That rises with a common will
+Each woman giving it her best
+By simply being deeply still
+
+[Chorus]
+We breathe, we breathe
+Together as one lung
+We breathe, we breathe
+The oldest song unsung
+Rising not like soldiers march
+But swelling like the tide
+Underneath the sacred arch
+Of women side by side
+
+[Bridge]
+I came alone into this room
+A stranger among strangers here
+But breath undid the lonely gloom
+And turned the distant into near
+
 [Outro]
 We breathe
-One breath, all of us`,
+One breath, all of us
+One breath that holds the world`,
 
   "vida-ressonancia/7": `[Verse 1]
 Cada mulher que engoliu a voz
 Agora abre a boca ao mesmo tempo
 O chão treme debaixo de nós
 Como um terramoto de contentamento
+
+[Verse 2]
+As mãos encontram outras mãos
+Os olhos brilham sem combinar
+O que estava preso nas gavetas e nos vãos
+Agora ecoa como um mar
+
+[Chorus]
+Todas
+O sim colectivo
+Todas
+O acto mais vivo
+Não somos soldadas, somos dancas
+Não é raiva, e chegada
+O trovão das nossas canças
+Faz tremer a estrada
+
+[Verse 3]
+Uma começou e as outras seguiram
+Não por obrigação mas por verdade
+As vozes que durante anos se calaram
+Agora cantam com liberdade
 
 [Chorus]
 Todas
@@ -4149,7 +4558,8 @@ Que ninguém nós vai calar
 
 [Outro]
 Todas
-Todas nós`,
+Todas nós
+Todas juntas`,
 
   // ─────────────────────────────────────────────
   // PENUMBRA (o limiar, o espaço entre)
@@ -4161,6 +4571,12 @@ O céu segura a respiração
 As formas existem sem projecto
 Entre a luz é a escuridão
 
+[Verse 2]
+As árvores perdem o contorno
+Os pássaros calam-se de vez
+O mundo prepara o seu retorno
+Ao escuro que o desfez
+
 [Chorus]
 Nem noite
 Ainda não
@@ -4171,15 +4587,44 @@ Entre ficar e partir
 Entre o que viveu e o que sentiu
 Entre adormecer e resistir
 
+[Verse 3]
+Os candeeiros ainda não acendem
+As estrelas ainda não chegaram
+Neste espaço onde as cores se rendem
+Vivo o que as palavras não nomearam
+
+[Chorus]
+Nem noite
+Ainda não
+Nem noite
+Só a suspensão
+De um mundo que não se decidiu
+Entre ficar e partir
+Entre o que viveu e o que sentiu
+Entre adormecer e resistir
+
+[Bridge]
+Ha uma beleza no que não se decide
+No instante antes de cair
+O corpo neste limiar reside
+Como quem aprendeu a não fugir
+
 [Outro]
 Nem noite
-Ainda não`,
+Ainda não
+Mas quase`,
 
   "vida-penumbra/2": `[Verse 1]
 The first grey light before the birds
 The air holds something undelivered
 My eyes are open without words
 The world exists but hasn't shivered
+
+[Verse 2]
+The shapes of furniture emerge
+Like islands from a silver sea
+The room and I are on the verge
+Of something neither one can be
 
 [Chorus]
 Nor day, nor day
@@ -4191,15 +4636,44 @@ And nothing has been chosen
 The morning is invisible
 And beautifully frozen
 
+[Verse 3]
+A car passes outside the glass
+Its headlights sweep across the wall
+This moment doesn't want to last
+It wants to hold before the fall
+
+[Chorus]
+Nor day, nor day
+Not yet, not yet the sun
+Nor day, nor day
+The world has not begun
+Everything is possible
+And nothing has been chosen
+The morning is invisible
+And beautifully frozen
+
+[Bridge]
+I hold this breath between two worlds
+The one I left, the one ahead
+The flag of nothing still unfurled
+Before the living and the dead
+
 [Outro]
 Nor day
-Not yet`,
+Not yet
+Not yet but almost`,
 
   "vida-penumbra/3": `[Verse 1]
 De pé na porta entre dois quartos
 Um pé de cada lado da soleira
 O corpo dividido em dois repartos
 Entre a temperatura e a maneira
+
+[Verse 2]
+A luz de um quarto é quente e dourada
+A luz do outro é azul e fria
+Nenhuma é errada, nenhuma é acertada
+São duas versões da mesma melodia
 
 [Chorus]
 O limiar
@@ -4211,15 +4685,44 @@ Nenhuma mais certa que a outra
 No limiar as ofertas
 São infinitas como a noute
 
+[Verse 3]
+E se o limiar for o destino
+E se a porta for a própria casa
+E se o espaço entre é divino
+E a escolha é a ilusão que nos arrasa
+
+[Chorus]
+O limiar
+O lugar que não escolhe
+O limiar
+Onde o tempo se recolhe
+Ambas as portas abertas
+Nenhuma mais certa que a outra
+No limiar as ofertas
+São infinitas como a noute
+
+[Bridge]
+Passei a vida a atravessar depressa
+Cada porta, cada soleira e cada muro
+Agora paro e é na pausa que se expressa
+O que de mais verdadeiro há no escuro
+
 [Outro]
 No limiar
-Parada entre dois mundos`,
+Parada entre dois mundos
+E em paz com ambos`,
 
   "vida-penumbra/4": `[Verse 1]
 Toes curled over the diving edge
 The water far below reflects a face
 I'm standing on the narrow ledge
 Between this and the other place
+
+[Verse 2]
+The wind pushes gently at my back
+The gravity invites me down
+But here upon this narrow track
+I wear the in-between like a crown
 
 [Chorus]
 Threshold, threshold
@@ -4231,15 +4734,44 @@ With both doors open wide
 The beauty of the in-between
 Is having nothing to decide
 
+[Verse 3]
+The jumpers jump, the standers stand
+But I have learned to love the ledge
+The view from here is wider than
+The safety on the other edge
+
+[Chorus]
+Threshold, threshold
+The edge before the fall
+Threshold, threshold
+The pause before the call
+Neither here nor there I stand
+With both doors open wide
+The beauty of the in-between
+Is having nothing to decide
+
+[Bridge]
+Every great leap began right here
+With toes curled over the unknown
+The threshold isn't made of fear
+It's made of everything I've grown
+
 [Outro]
 Standing
-At the edge of everything`,
+At the edge of everything
+Where everything begins`,
 
   "vida-penumbra/5": `[Verse 1]
 O corpo no topo do salto
 A gravidade em pausa
 Os pulmões cheios no mais alto
 Ponto antes da causa
+
+[Verse 2]
+A moeda gira no ar
+Coroa ou cruz ainda não se sabe
+O destino está por decidir
+Neste instante tudo cabe
 
 [Chorus]
 Suspensa
@@ -4251,9 +4783,32 @@ Não pertenço ao dia
 Sou a ponte
 Entre a dor é a alegria
 
+[Verse 3]
+A onda está no ponto mais alto
+O vidro treme antes de quebrar
+Há uma beleza neste salto
+Que só quem pára consegue encontrar
+
+[Chorus]
+Suspensa
+Entre dois estados
+Suspensa
+Nos dois lados
+Não pertenço a noite
+Não pertenço ao dia
+Sou a ponte
+Entre a dor é a alegria
+
+[Bridge]
+A vida inteira é este instante
+Entre o que foi e o que virá
+O corpo sabe ser o navegante
+Do espaço entre o aqui e o lá
+
 [Outro]
 Suspensa
-Nem aqui nem lá`,
+Nem aqui nem lá
+E por isso livre`,
 
   "vida-penumbra/6": `[Verse 1]
 Between two heartbeats there's a space
@@ -4276,6 +4831,28 @@ Every path, every choice
 Every life I could have led
 Lives inside this quiet voice
 Between the living and the dead
+
+[Verse 3]
+The pause between two notes of song
+Where music lives its truest life
+The space where we have all along
+Been free from every form of strife
+
+[Chorus]
+The in-between
+The space that holds it all
+The in-between
+Too vast to be this small
+Every path, every choice
+Every life I could have led
+Lives inside this quiet voice
+Between the living and the dead
+
+[Bridge]
+I spent my whole life choosing sides
+Afraid of the unfinished space
+But here between the turning tides
+I found the most forgiving place
 
 [Outro]
 Between
