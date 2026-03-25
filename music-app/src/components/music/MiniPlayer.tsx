@@ -33,7 +33,7 @@ export default function MiniPlayer() {
     : null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40" role="region" aria-label="Mini player">
+    <div className="fixed bottom-0 left-0 right-0 z-40" style={{ paddingBottom: "env(safe-area-inset-bottom)" }} role="region" aria-label="Mini player">
       {/* Audio error toast */}
       {audioError && (
         <div className="bg-red-900/90 backdrop-blur-sm px-4 py-2.5 flex items-center justify-between">

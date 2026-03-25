@@ -18,7 +18,7 @@ export default function NavBar() {
   const isAdmin = userEmail === ADMIN_EMAIL;
 
   return (
-    <nav className="sticky top-0 z-30 bg-[#0D0D1A]/90 backdrop-blur-xl border-b border-white/5">
+    <nav className="sticky top-0 z-30 bg-[#0D0D1A]/90 backdrop-blur-xl border-b border-white/5" style={{ paddingTop: "env(safe-area-inset-top)" }}>
       <div className="max-w-screen-lg mx-auto px-6 flex items-center justify-between h-14">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
