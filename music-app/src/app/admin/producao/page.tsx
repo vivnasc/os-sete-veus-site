@@ -104,6 +104,11 @@ function buildUploadForm(
  * Falls back to /api/admin/upload-audio for small files if signed URL fails.
  */
 async function uploadViaSignedUrl(blob: Blob, filename: string): Promise<string> {
+  // Validate blob has actual content
+  if (!blob.size || blob.size < 1000) {
+    throw new Error(`Ficheiro vazio ou demasiado pequeno (${blob.size} bytes). O download do Suno pode ter falhado.`);
+  }
+
   // Step 1: Get signed upload URL
   const signedRes = await adminFetch("/api/admin/signed-upload-url", {
     method: "POST",
@@ -119,9 +124,10 @@ async function uploadViaSignedUrl(blob: Blob, filename: string): Promise<string>
   const { signedUrl } = await signedRes.json();
 
   // Step 2: Upload directly to Supabase Storage
+  const contentType = filename.endsWith(".mp3") ? "audio/mpeg" : blob.type || "application/octet-stream";
   const uploadRes = await fetch(signedUrl, {
     method: "PUT",
-    headers: { "Content-Type": "audio/mpeg" },
+    headers: { "Content-Type": contentType },
     body: blob,
   });
 
@@ -936,10 +942,20 @@ export default function AlbumProductionPage() {
     }
 
     try {
-      // Download and upload audio
-      const audioRes = await fetch(clipAudioUrl);
-      if (!audioRes.ok) throw new Error("Erro ao descarregar o áudio.");
+      // Download audio via server proxy (bypasses CORS + validates size)
+      let audioRes = await adminFetch("/api/admin/proxy-download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: clipAudioUrl }),
+      });
+      // Fallback to direct fetch if proxy fails
+      if (!audioRes.ok) {
+        console.warn("Proxy download failed, trying direct fetch...");
+        audioRes = await fetch(clipAudioUrl);
+      }
+      if (!audioRes.ok) throw new Error(`Erro ao descarregar o áudio (${audioRes.status}).`);
       const blob = await audioRes.blob();
+      if (blob.size < 1000) throw new Error(`Audio vazio (${blob.size} bytes). O URL do Suno pode ter expirado. Tenta regenerar.`);
 
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}.mp3`;
       const url = await uploadViaSignedUrl(blob, filename);
