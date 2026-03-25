@@ -68,10 +68,12 @@ export async function GET(req: NextRequest) {
         continue;
       }
 
-      // Parse the response — API.box nests data in various ways
+      // Parse the response — API.box nests data in various ways:
+      // { data: { taskId, status, response: { sunoData: [...] } } }
+      // { data: { taskId, status, response: { data: [...] } } }
       const record = (data.data as Record<string, unknown>) || data;
       const response = (record.response as Record<string, unknown>) || record;
-      const sunoData = (response.sunoData || record.sunoData || record.suno_data || []) as Record<string, unknown>[];
+      const sunoData = (response.sunoData || response.data || record.sunoData || record.suno_data || []) as Record<string, unknown>[];
       const items = Array.isArray(sunoData) ? sunoData : [sunoData];
 
       // Extract clips from sunoData with full metadata

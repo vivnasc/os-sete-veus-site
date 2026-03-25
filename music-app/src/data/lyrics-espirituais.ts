@@ -3854,6 +3854,18 @@ The beach is whole
 Without ambition
 Still and full`,
 
+[Bridge]
+A billion grains make a shore
+Not one of them is more or less
+Each one the beach in its completeness
+Each one enough — no more to confess
+
+[Outro]
+I am one grain
+The beach is whole
+Without ambition
+Still and full`,
+
   "o-circulo/9": `[Verse 1]
 Eu sozinha sou sussurro
 tu sozinha es sussurro também
