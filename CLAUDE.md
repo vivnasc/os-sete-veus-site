@@ -2,7 +2,7 @@
 
 ## Inicio de Sessao
 
-**No inicio de cada sessao, verificar se ha notas de revisao pendentes:**
+**1. Verificar notas de revisao pendentes:**
 ```bash
 npx tsx scripts/apply-proposals.ts
 ```
@@ -10,6 +10,19 @@ Se houver notas pendentes, informar a Vivianne e perguntar se quer que sejam apl
 As notas estao na tabela `revision_proposals` (Supabase) com `status = 'pending'`.
 A Vivianne marca paragrafos com notas descritivas (ex: "tom pesado", "simplificar").
 O Claude le a nota, le o paragrafo original, reescreve conforme a indicacao, e aplica no ficheiro de dados correspondente.
+
+**2. Ler o estado da producao dos cursos:**
+Ficheiro: `CURSOS/PRODUCAO-STATUS.md`
+Contem: estado actual de cada componente, proxima accao, decisoes tomadas, pipeline obrigatorio.
+**Actualizar este ficheiro no final de cada sessao de trabalho.**
+
+**3. Producao de conteudo dos cursos:**
+- Scripts das aulas: `src/data/course-scripts/{slug}.ts`
+- Manuais: `src/data/course-manuals/{slug}.ts`
+- Cadernos: `src/data/course-workbooks/{slug}.ts`
+- YouTube: `src/data/course-youtube/{slug}.ts`
+- Guidelines: `src/data/course-guidelines.ts`
+- Estrutura: `src/data/courses.ts`
 
 ## Descricao
 
