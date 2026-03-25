@@ -156,6 +156,7 @@ function ProductFilter({
     { key: "espiritual", label: "Espiritual" },
     { key: "vida", label: "Vida" },
     { key: "cosmic", label: "Cosmic" },
+    { key: "romance", label: "Romance" },
   ];
 
   return (
