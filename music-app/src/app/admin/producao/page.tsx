@@ -389,7 +389,7 @@ function TrackRow({
   onCancel: () => void;
   onApproveClip: (clipUrl: string, sunoTitle: string, imageUrl: string | null) => void;
   onApproveAsVersion: (clipUrl: string, sunoTitle: string, versionName: string, energy: string, imageUrl?: string | null) => void;
-  onUploadVersion: (file: File, versionName: string, energy: string) => void;
+  onUploadVersion: (file: File, versionName: string, energy: string, coverFile?: File | null) => void;
   audioUrl: string | null;
   existingVersions: string[];
   generatedClips: GeneratedClips | null;
@@ -407,7 +407,9 @@ function TrackRow({
   const [showVersionUpload, setShowVersionUpload] = useState(false);
   const [versionUploadName, setVersionUploadName] = useState("remix-1");
   const [versionUploadEnergy, setVersionUploadEnergy] = useState(track.energy || "whisper");
+  const [versionCoverFile, setVersionCoverFile] = useState<File | null>(null);
   const versionInputRef = useRef<HTMLInputElement>(null);
+  const coverInputRef = useRef<HTMLInputElement>(null);
 
   const isGenerating = status === "generating" || status === "polling";
   const hasClips = generatedClips && generatedClips.clips.length > 0;
@@ -523,8 +525,9 @@ function TrackRow({
                   onChange={(e) => {
                     const f = e.target.files?.[0];
                     if (f && versionUploadName) {
-                      onUploadVersion(f, versionUploadName, versionUploadEnergy);
+                      onUploadVersion(f, versionUploadName, versionUploadEnergy, versionCoverFile);
                       setShowVersionUpload(false);
+                      setVersionCoverFile(null);
                     }
                   }}
                 />
@@ -555,6 +558,28 @@ function TrackRow({
                       {ENERGY_LABELS[e].emoji} {ENERGY_LABELS[e].label}
                     </button>
                   ))}
+                </div>
+                {/* Cover image upload */}
+                <div className="flex items-center gap-2">
+                  <input
+                    ref={coverInputRef}
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(e) => {
+                      const f = e.target.files?.[0];
+                      if (f) setVersionCoverFile(f);
+                    }}
+                  />
+                  <button
+                    onClick={() => coverInputRef.current?.click()}
+                    className="rounded-lg bg-mundo-muted-dark/20 px-3 py-1.5 text-xs text-mundo-muted transition hover:bg-mundo-muted-dark/30"
+                  >
+                    {versionCoverFile ? `Capa: ${versionCoverFile.name.slice(0, 20)}` : "Adicionar capa (opcional)"}
+                  </button>
+                  {versionCoverFile && (
+                    <button onClick={() => setVersionCoverFile(null)} className="text-[10px] text-red-400 hover:text-red-300">Remover</button>
+                  )}
                 </div>
                 <button
                   onClick={() => versionInputRef.current?.click()}
@@ -1015,7 +1040,7 @@ export default function AlbumProductionPage() {
     }
   }
 
-  async function uploadVersion(albumSlug: string, track: AlbumTrack, file: File, versionName: string, energy: string) {
+  async function uploadVersion(albumSlug: string, track: AlbumTrack, file: File, versionName: string, energy: string, coverFile?: File | null) {
     const key = trackKey(albumSlug, track.number);
     setStatuses((s) => ({ ...s, [key]: "uploading" }));
 
@@ -1023,6 +1048,15 @@ export default function AlbumProductionPage() {
       const album = ALL_ALBUMS.find(a => a.slug === albumSlug)!;
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-${versionName}.mp3`;
       const uploadUrl = await uploadViaSignedUrl(file, filename);
+
+      // Upload cover image if provided
+      if (coverFile) {
+        try {
+          const ext = coverFile.name.split(".").pop() || "jpg";
+          const coverFilename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-${versionName}-cover.${ext}`;
+          await uploadViaSignedUrl(coverFile, coverFilename);
+        } catch { /* cover upload is optional */ }
+      }
 
       // Save version metadata
       await adminFetch("/api/admin/track-versions", {
@@ -1137,7 +1171,7 @@ export default function AlbumProductionPage() {
                 </span>
               ) : null;
             })}
-            {(["marrabenta", "afrobeat", "bossa", "jazz", "folk", "house", "gospel"] as TrackFlavor[]).map((f) => {
+            {(["afrobeat", "bossa", "jazz", "folk", "house", "gospel"] as TrackFlavor[]).map((f) => {
               const count = ALL_ALBUMS.reduce(
                 (s, a) => s + a.tracks.filter((t) => t.flavor === f).length,
                 0
@@ -1363,7 +1397,7 @@ export default function AlbumProductionPage() {
                     }}
                     onApproveClip={(url, title, imgUrl) => approveClip(album.slug, track, url, title, imgUrl)}
                     onApproveAsVersion={(url, title, name, energy) => approveAsVersion(album.slug, track, url, title, name, energy)}
-                    onUploadVersion={(file, name, energy) => uploadVersion(album.slug, track, file, name, energy)}
+                    onUploadVersion={(file, name, energy, coverFile) => uploadVersion(album.slug, track, file, name, energy, coverFile)}
                     existingVersions={trackVersions[key] || []}
                     generatedClips={generatedClips[key] || null}
                     editedTitle={editedTitles[key] || null}

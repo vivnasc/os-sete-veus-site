@@ -67,7 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               >
                 Saltar para o conteudo
               </a>
-              <div id="main-content" className="pb-24">
+              <div id="main-content" className="pb-24" style={{ paddingTop: "env(safe-area-inset-top)" }}>
                 {children}
               </div>
               <MiniPlayer />

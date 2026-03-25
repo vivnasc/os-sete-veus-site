@@ -100,7 +100,7 @@ antes de qualquer sinal
 [Bridge]
 Não é medo que me dobra ao chão
 e reconhecimento, e fidelidade
-Esta terra já me conhecia
+Está terra já me conhecia
 antes de eu saber a minha identidade
 
 [Outro]
@@ -508,7 +508,7 @@ O que é meu do que é de ti
 Levo a lingua ao canto dos lábios
 Tem o gosto do oceano fundo
 O corpo já sabe o que a cabeça
-Ainda esta a descobrir no mundo
+Ainda está a descobrir no mundo
 
 [Chorus]
 Sal
@@ -614,7 +614,7 @@ neste comprimento singular
 [Bridge]
 Não preciso de subir para voar
 não preciso de cair para enraizar
-sou a distancia que é medida
+sou a distância que é medida
 do centro da terra ao céu sem par
 
 [Outro]
@@ -1231,7 +1231,7 @@ Hum
 quando nada mais sufice
 
 [Verse 3]
-Na igreja havia orgao e havia letra
+Na igreja havia órgão e havia letra
 Mas o que ficava era a vibração
 O corpo sente antes de acreditar
 O hum e anterior a opiniao
@@ -1323,8 +1323,8 @@ não é vazio nem e nada
 e a presença mais antiga e mais sagrada
 
 [Bridge]
-Atras do nome atras da historia
-atras da culpa atras da gloria
+Atrás do nome atrás da historia
+atrás da culpa atrás da gloria
 há qualquer coisa que respira
 sem opiniao sem medo sem memoria
 
@@ -1820,7 +1820,7 @@ O coração não tem porta — tem osso
 [Verse 3]
 Ponho a mão no peito esquerdo
 E sinto os arcos a respirar
-A catedral esta viva
+A catedral está viva
 Não precisa de outro lugar
 
 [Chorus]
@@ -1992,8 +1992,8 @@ ninguém precisa me ensinar o ritmo meu
 Sangue e lua, sangue e lua
 o corpo sabe a hora de soltar
 sangue e lua, sangue e lua
-o que sangra não esta a quebrar
-esta a limpar, esta a voltar
+o que sangra não está a quebrar
+está a limpar, está a voltar
 o ventre e mare, o ventre e estação
 sangue e lua, sangue e lua
 não há vergonha nesta repeticao
@@ -2002,7 +2002,7 @@ não há vergonha nesta repeticao
 O inverno vive dentro de mim quatro semanas
 o verao regressa sem pedir licença
 a dor que vem não é castigo, não é drama
-e o peso exacto de quem cria existencia
+e o peso exacto de quem cria existência
 
 [Bridge]
 Três dias de silêncio
@@ -2074,8 +2074,8 @@ e o grito de quem se reduz
 [Chorus]
 Cabe tudo — dentro deste corpo
 cabe tudo — dentro deste peito
-O infinito não esta lá fora
-esta aqui no meu direito
+O infinito não está lá fora
+está aqui no meu direito
 Onde as costelas guardam
 o que não tem tamanho nem fim
 Cabe tudo — sempre coube
@@ -2419,7 +2419,7 @@ Nem sei aonde vou parar
 [Verse 2]
 Toco o chão e dissolvo devagar
 A terra bebé o que era meu
-É o que eu era já não esta
+É o que eu era já não está
 Mas o que sou não morreu
 
 [Chorus]
@@ -2589,7 +2589,7 @@ Aqui dentro só me ouço a mim
 Nave — o eco mora aqui
 Nave — o centro que é meu
 Quando o mundo não tem chão
-Esta sala tem o eu
+Está sala tem o eu
 Nave — não precisa de altar
 Nave — já e sagrada assim
 O silêncio que vive em mim
@@ -2605,7 +2605,7 @@ O mais velho dos regresses
 Nave — o eco mora aqui
 Nave — o centro que é meu
 Quando o mundo não tem chão
-Esta sala tem o eu
+Está sala tem o eu
 Nave — não precisa de altar
 Nave — já e sagrada assim
 O silêncio que vive em mim
@@ -2615,7 +2615,7 @@ Não pede que eu o justifique
 Há uma quietude que não é morte
 Um espaço que não é ausência
 Entro aqui sem pedir licença
-Esta nave e a minha herança
+Está nave e a minha herança
 
 [Outro]
 Entro
@@ -2971,7 +2971,7 @@ O altar sou eu — esse e o inicio
 
 [Verse 3]
 Este corpo é o lugar mais real
-Esta respiracao e o ritual
+Está respiracao e o ritual
 Não preciso de aprovacao
 Para entrar na minha catedral
 
@@ -3358,7 +3358,7 @@ deixa o céu decidir
 Chuva
 não fujas não
 Há só água a correr pela cara
-como uma bencao sem mão
+como uma bênção sem mão
 
 [Verse 3]
 Cada gota carrega um peso
@@ -3474,7 +3474,7 @@ a panela sabe o que eu sei
 Alquimia, alquimia
 transformo o cru no que sonhei
 Com estas mãos, com este lume
-com este sal e esta canção
+com este sal e está canção
 Alquimia — não é receita
 e a fome inteira do coração
 
@@ -3773,7 +3773,7 @@ A custo do que me custou
 Um corpo — só um
 Uma voz que é a minha
 Um lugar neste chão
-Uma vida que é só esta
+Uma vida que é só está
 
 [Chorus]
 Um — e isso chega
@@ -3789,7 +3789,7 @@ E toda a casa que aprovo
 Não preciso de ser multidao
 Não preciso de ser montanha
 Preciso de ser isto aqui
-Esta e a única campanha
+Está e a única campanha
 
 [Chorus]
 Um — e isso chega
@@ -3968,13 +3968,13 @@ e encontrei o que não tem exemplo
 
 [Bridge]
 Não precisas de ir a lado nenhum
-o templo esta aqui
+o templo está aqui
 Entre as tuas costelas e os teus olhos
 no silêncio que te da a ti
 
 [Outro]
 Entra
-Esta sempre aberta
+Está sempre aberta
 a catedral que es tu`,
 
   "o-gesto/2": `[Verse 1]
@@ -4070,7 +4070,7 @@ mais antigo do que o meu próprio nome
 
 [Verse 3]
 As que vieram antes de mim
-também carregaram esta chama escondida
+também carregaram está chama escondida
 Cosiram-na nas bainhas das saias
 passaram-na de mão em mão, de vida em vida
 
@@ -4149,7 +4149,7 @@ tão pequena que o vento
 me poderia tirar do que existe
 
 [Verse 2]
-Mas o grao não esta sozinho
+Mas o grao não está sozinho
 há milhoes que não se veem
 e juntos somos deserto —
 e o deserto e o que nós contem
@@ -4158,7 +4158,7 @@ e o deserto e o que nós contem
 Grao, grao
 pequeno e necessario
 grao, grao
-invisivel e sagrado
+invisível e sagrado
 amem não é o grito do estadio
 amem e o sussurro que sai de dentro
 quando aceitas que es só um grao
@@ -4212,7 +4212,7 @@ Ela sobreviveu sozinha
 ao que tentou me apagar
 
 [Bridge]
-Esta luz não se pede emprestada
+Está luz não se pede emprestada
 não se vende nem se da
 Nasceu comigo lá dentro
 e comigo vai ficar
@@ -4242,8 +4242,8 @@ Esse e o descanso — e isso basta
 
 [Verse 3]
 O rio não precisa desta gota
-Mas corre melhor quando ela esta
-E esta gota precisa do rio
+Mas corre melhor quando ela está
+E está gota precisa do rio
 Para saber onde vai chegar
 
 [Chorus]
@@ -4369,7 +4369,7 @@ que me devolve ao meu lugar
 [Verse 3]
 O espelho agora mostra outra
 não a que saiu de manhã
-Esta tem os ombros baixos
+Está tem os ombros baixos
 e uma verdade que não se estranha
 
 [Bridge]

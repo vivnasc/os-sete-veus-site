@@ -22,7 +22,7 @@ Saio porta fora a fingir
 Que sou quem disseram
 
 [Chorus]
-Algo treme ca por dentro
+Algo treme cá por dentro
 Algo quer nascer
 Como a flor que parte o cimento
 Só pra poder viver
@@ -38,7 +38,7 @@ Uma voz que fala tão de leve
 Que só ouço quando e de madrugada
 
 [Chorus]
-Algo treme ca por dentro
+Algo treme cá por dentro
 Algo quer nascer
 Como a flor que parte o cimento
 Só pra poder viver
@@ -104,9 +104,9 @@ Sem nunca me ouvir
 
 [Chorus]
 Roda, roda, roda sem parar
-Quem é esta mulher que vive no meu lugar
+Quem é está mulher que vive no meu lugar
 Roda, roda, roda sem sentir
-Há alguém ca dentro a pedir pra sair
+Há alguém cá dentro a pedir pra sair
 A pedir pra sair
 
 [Verse 3]
@@ -117,9 +117,9 @@ A espera de me conhecer
 
 [Chorus]
 Roda, roda, roda sem parar
-Quem é esta mulher que vive no meu lugar
+Quem é está mulher que vive no meu lugar
 Roda, roda, roda sem sentir
-Há alguém ca dentro a pedir pra sair
+Há alguém cá dentro a pedir pra sair
 A pedir pra sair
 
 [Bridge]
@@ -236,7 +236,7 @@ Não preciso de mudar
 Só preciso deste instante
 Quieto como o fundo do mar
 Só preciso de me ver
-Sem fugir, sem disfarcar
+Sem fugir, sem disfarçar
 Como a água que não corre
 Mas reflecte o céu inteiro ao luar
 
@@ -252,7 +252,7 @@ Não preciso de mudar
 Só preciso deste instante
 Quieto como o fundo do mar
 Só preciso de me ver
-Sem fugir, sem disfarcar
+Sem fugir, sem disfarçar
 Como a água que não corre
 Mas reflecte o céu inteiro ao luar
 
@@ -540,7 +540,7 @@ Vou`,
 A vela treme na minha mão
 A chama e tão pequena, tão frágil
 Mas ilumina mais que qualquer trovão
-Porque a luz que dura nasce facil
+Porque a luz que dura nasce fácil
 
 [Verse 2]
 Não preciso de matar o medo
@@ -560,7 +560,7 @@ Há só a luz desta vela
 
 [Bridge]
 O medo é eu somos vizinhos velhos
-Partilhamos a varanda e o por-do-sol
+Partilhamos a varanda e o pôr-do-sol
 Ele conta-me historias de perigo
 Eu ofereco-lhe um lugar ao sol
 
@@ -703,9 +703,9 @@ Disse sim quando queria gritar
 E chamou-lhe amor, chamou-lhe abrigo
 
 [Chorus]
-E eu carrego esta pedra que não é minha
+E eu carrego está pedra que não é minha
 De mãe para filha, de filha para neta
-Esta culpa antiga como a chuva
+Está culpa antiga como a chuva
 De querer mais do que a vida nós deixa
 De querer mais do que elas puderam
 De dizer não quando ninguém dizia
@@ -719,9 +719,9 @@ Posso honrar as mãos da minha avó
 E ter as minhas mãos livres e quentes
 
 [Chorus]
-E eu carrego esta pedra que não é minha
+E eu carrego está pedra que não é minha
 De mãe para filha, de filha para neta
-Esta culpa antiga como a chuva
+Está culpa antiga como a chuva
 De querer mais do que a vida nós deixa
 
 [Outro]
@@ -807,7 +807,7 @@ E eu nasci`,
 
   "espelho-culpa/7": `[Verse 1]
 Não preciso de me partir ao meio
-Para ver o que trago ca dentro
+Para ver o que trago cá dentro
 Não preciso de sangue nem de castigo
 Basta um espelho e um momento
 
@@ -951,7 +951,7 @@ Quente, viva
 A respirar`,
 
   "espelho-identidade/4": `[Verse 1]
-Há um espelho que não esta na parede
+Há um espelho que não está na parede
 Está algures entre o peito e a garganta
 Não mostra a roupa nem o penteado
 Mostra a verdade que nós espanta
@@ -1026,7 +1026,7 @@ Just breathing`,
   "espelho-identidade/6": `[Verse 1]
 Agora vejo as máscaras na mesa
 Cada uma com a sua cor
-Escolho a que me serve esta manhã
+Escolho a que me serve está manhã
 Não por medo, mas por amor
 
 [Verse 2]
@@ -1052,7 +1052,7 @@ E saber que cada máscara e um jogo
 E que o jogo não me faz perder
 
 [Outro]
-Hoje escolhi esta
+Hoje escolhi está
 Com um sorriso nós lábios
 É o rosto por baixo
 Descansa feliz
@@ -1447,7 +1447,7 @@ Há uma raiz que cresce no escuro
 Que empurra o chão, que parte a pedra
 Que diz eu existo e eu sou o futuro
 Mais pequena não, mais quieta não
-Mais invisivel não, nunca mais
+Mais invisível não, nunca mais
 O meu tamanho real e um segredo
 Que o mundo ainda não viu, mas vai
 
@@ -1712,7 +1712,7 @@ A forma como danço no escuro
 Se eu fosse só eu
 Começava aqui
 Por este suspiro
-Por esta pergunta
+Por está pergunta
 Que finalmente saiu`,
 
   "espelho-separacao/4": `[Verse 1]
@@ -1810,7 +1810,7 @@ Com os braços quentes e a voz que diz
 Bem-vinda, estavas perta, tão perta
 
 [Bridge]
-O regresso não é voltar atras
+O regresso não é voltar atrás
 E chegar ao único lugar
 Que ninguém me pode tirar
 O meu corpo, o meu chão, o meu compás
