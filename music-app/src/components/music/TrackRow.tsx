@@ -201,7 +201,6 @@ export default function TrackRow({ track, album, isActive }: Props) {
                 onClick={(e) => {
                   e.stopPropagation();
                   setMenuOpen(false);
-                  if (!userId) { router.push("/login"); return; }
                   setPlaylistOpen(true);
                 }}
                 className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-[#F5F0E6] hover:bg-white/5 transition-colors text-left"
