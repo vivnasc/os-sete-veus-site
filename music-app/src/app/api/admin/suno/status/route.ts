@@ -119,7 +119,7 @@ export async function GET(req: NextRequest) {
 function mapStatus(status: string | undefined): string {
   if (!status) return "processing";
   const s = status.toLowerCase();
-  if (s === "complete" || s === "completed" || s === "done" || s === "success") return "complete";
+  if (s.includes("success") || s === "complete" || s === "completed" || s === "done") return "complete";
   if (s.includes("fail") || s.includes("error") || s === "cancelled" || s === "canceled") return "error";
   if (s === "text" || s === "first" || s === "processing" || s === "pending" || s === "queued" || s === "running") return "processing";
   return s;
