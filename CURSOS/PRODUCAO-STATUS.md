@@ -20,13 +20,13 @@
 | APIs de producao | COMPLETO | 6 API routes (audio, imagem, video, LoRA, test, assets) |
 | Imagens de referencia | PARCIAL | ~60 imagens em `CURSOS/imagens/` |
 | **Scripts das aulas** | **EM CURSO** | **24/480 scripts escritos (Ouro Proprio completo — DRAFT)** |
-| **Manuais (PDF)** | **NAO INICIADO** | 0/20 manuais escritos |
+| **Manuais (PDF)** | **EM CURSO** | **1/20 manuais escritos (Ouro Proprio — DRAFT) + pipeline PDF** |
 | **Cadernos exercicios** | **NAO INICIADO** | 0/160 cadernos escritos |
 | **Scripts YouTube** | **NAO INICIADO** | 0/~50 scripts (so titulos existem) |
 | Audios (ElevenLabs) | NAO INICIADO | Depende dos scripts |
 | Visuais (ThinkDiffusion) | NAO INICIADO | Depende do LoRA + scripts |
 | LoRA treinado | NAO INICIADO | Infra pronta, modelo nao treinado |
-| PDFs gerados | NAO INICIADO | Pipeline nao implementado |
+| PDFs gerados | EM CURSO | Pipeline implementado (`@react-pdf/renderer`) + API route |
 | Tabelas Supabase cursos | NAO EXISTE | Falta `course_content`, `course_assets` |
 
 ---
@@ -75,14 +75,14 @@ Razao: porta universal — dinheiro e o tema mais activador.
 
 | Modulo | Titulo | Scripts | Manual | Caderno | Audio | Visual |
 |--------|--------|---------|--------|---------|-------|--------|
-| 1 | O Extracto como Espelho | DRAFT (3/3) | — | — | — | — |
-| 2 | A Heranca Financeira Emocional | DRAFT (3/3) | — | — | — | — |
-| 3 | A Vergonha do Dinheiro | DRAFT (3/3) | — | — | — | — |
-| 4 | Cobrar, Receber, Merecer | DRAFT (3/3) | — | — | — | — |
-| 5 | Gastar em Ti | DRAFT (3/3) | — | — | — | — |
-| 6 | Dinheiro e Relacoes | DRAFT (3/3) | — | — | — | — |
-| 7 | Ganhar Mais Nao Resolve | DRAFT (3/3) | — | — | — | — |
-| 8 | Dinheiro como Liberdade | DRAFT (3/3) | — | — | — | — |
+| 1 | O Extracto como Espelho | DRAFT (3/3) | DRAFT | — | — | — |
+| 2 | A Heranca Financeira Emocional | DRAFT (3/3) | DRAFT | — | — | — |
+| 3 | A Vergonha do Dinheiro | DRAFT (3/3) | DRAFT | — | — | — |
+| 4 | Cobrar, Receber, Merecer | DRAFT (3/3) | DRAFT | — | — | — |
+| 5 | Gastar em Ti | DRAFT (3/3) | DRAFT | — | — | — |
+| 6 | Dinheiro e Relacoes | DRAFT (3/3) | DRAFT | — | — | — |
+| 7 | Ganhar Mais Nao Resolve | DRAFT (3/3) | DRAFT | — | — | — |
+| 8 | Dinheiro como Liberdade | DRAFT (3/3) | DRAFT | — | — | — |
 
 Legenda: — = nao iniciado | DRAFT = rascunho | APROVADO = Vivianne aprovou | PRODUZIDO = asset gerado
 
@@ -132,12 +132,11 @@ Legenda: — = nao iniciado | DRAFT = rascunho | APROVADO = Vivianne aprovou | P
 
 ## Proxima Accao (para a proxima sessao)
 
-**OPCAO A — Revisao dos scripts pela Vivianne:**
-Os 24 scripts do Ouro Proprio estao em DRAFT. A Vivianne deve reve-los e marcar como APROVADO ou deixar notas de revisao (via `revision_proposals` no Supabase ou directamente no ficheiro).
+**OPCAO A — Revisao pela Vivianne:**
+Os 24 scripts e o manual do Ouro Proprio estao em DRAFT. A Vivianne deve reve-los e marcar como APROVADO ou deixar notas de revisao.
 
-**OPCAO B — Continuar producao de conteudo:**
-Se a Vivianne quiser avancar em paralelo:
-1. Escrever o manual do Ouro Proprio (`src/data/course-manuals/ouro-proprio.ts`)
+**OPCAO B — Continuar producao de conteudo do Ouro Proprio:**
+1. ~~Escrever o manual do Ouro Proprio~~ FEITO
 2. Escrever os 8 cadernos de exercicios (`src/data/course-workbooks/ouro-proprio.ts`)
 3. Escrever os 2-3 scripts YouTube (`src/data/course-youtube/ouro-proprio.ts`)
 
@@ -156,7 +155,7 @@ src/data/course-scripts/
   ...
 
 src/data/course-manuals/
-  ouro-proprio.ts          ← conteudo do manual (8 capitulos)
+  ouro-proprio.ts          ← conteudo do manual (8 capitulos) (DRAFT COMPLETO)
   ...
 
 src/data/course-workbooks/
@@ -177,6 +176,9 @@ src/data/course-youtube/
 | `src/data/courses.ts` | Estrutura dos 20 cursos (modulos, sub-aulas, titulos) |
 | `src/data/course-guidelines.ts` | Guidelines de producao (tom, estrutura, visual) |
 | `src/data/course-scripts/ouro-proprio.ts` | **24 scripts DRAFT do Ouro Proprio** |
+| `src/data/course-manuals/ouro-proprio.ts` | **Manual DRAFT do Ouro Proprio (8 capitulos)** |
+| `src/lib/pdf/manual-template.tsx` | **Template PDF com identidade visual + licenca** |
+| `src/app/api/courses/manual/route.ts` | **API para gerar PDF personalizado** |
 | `src/data/territorios.ts` | 10 territorios visuais |
 | `src/types/course.ts` | Types TypeScript dos cursos |
 | `CLAUDE.md` | Arquitectura tecnica completa do projecto |
