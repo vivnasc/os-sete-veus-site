@@ -22,13 +22,26 @@ export async function GET(req: NextRequest) {
 
   const safeAlbum = album.replace(/[^a-z0-9-]/g, "");
   const safeTrack = String(parseInt(track, 10)).padStart(2, "0");
+  const version = searchParams.get("version");
+  const safeVersion = version ? version.replace(/[^a-z0-9-]/g, "") : null;
   const rangeHeader = req.headers.get("range");
   const fetchHeaders: HeadersInit = {};
   if (rangeHeader) fetchHeaders["Range"] = rangeHeader;
 
+  // If specific version requested, serve it directly
+  if (safeVersion) {
+    const versionUrl = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/albums/${safeAlbum}/faixa-${safeTrack}-${safeVersion}.mp3`;
+    const upstream = await fetch(versionUrl, { headers: fetchHeaders });
+    if (upstream.ok || upstream.status === 206) {
+      return buildResponse(upstream);
+    }
+    return NextResponse.json({ error: "Versão não encontrada" }, { status: 404 });
+  }
+
   // Try main file first
   const mainUrl = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/albums/${safeAlbum}/faixa-${safeTrack}.mp3`;
   let upstream = await fetch(mainUrl, { headers: fetchHeaders });
+  console.log(`[stream] ${safeAlbum}/faixa-${safeTrack}.mp3 → ${upstream.status}`);
 
   // If main file doesn't exist, try to find a version
   if (!upstream.ok && upstream.status !== 206) {
@@ -59,6 +72,10 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Áudio não encontrado" }, { status: 404 });
   }
 
+  return buildResponse(upstream);
+}
+
+function buildResponse(upstream: Response) {
   const responseHeaders = new Headers();
   responseHeaders.set("Content-Type", "audio/mpeg");
   responseHeaders.set("Accept-Ranges", "bytes");
