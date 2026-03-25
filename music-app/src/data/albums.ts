@@ -1015,6 +1015,26 @@ const COSMIC_VIAGEM: AlbumDef = {
   ],
 };
 
+const COSMIC_ETER: AlbumDef = {
+  slug: "cosmic-eter",
+  title: "Éter",
+  subtitle: "O invisível que se sente. O que vive entre os corpos, entre as palavras.",
+  product: "cosmic",
+  color: "#0a1628",
+  tracks: [
+    { number: 1, title: "Entre", description: "O espaço entre duas pessoas numa sala", lang: "PT", energy: "whisper", prompt: cosmicPrompt("the space between two people in a room, the invisible field", "tense, electric, intimate, unnamed", "soft ambient pads, subtle tension strings, close-mic vocal, breath sounds", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "The Pause", description: "A pausa entre duas notas de música", lang: "EN", energy: "whisper", prompt: cosmicPrompt("the pause between two musical notes, sacred silence", "still, suspended, holy emptiness", "piano with long silences, reverb, spacious production, minimal", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Invisível", description: "O que não se vê mas se sente na pele", lang: "PT", energy: "steady", prompt: cosmicPrompt("the invisible felt on the skin, goosebumps without cause", "mysterious, somatic, knowing, electric", "warm bass, subtle percussion, intimate vocal, mysterious textures", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "Thin Air", description: "Respirar algo que não tem nome", lang: "EN", energy: "whisper", prompt: cosmicPrompt("breathing something nameless, the substance between things", "ethereal, wondering, childlike awe", "airy synths, breath textures, floating vocal, spacious", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "O Que Fica", description: "Quando a sala esvazia, o que permanece", lang: "PT", energy: "raw", prompt: cosmicPrompt("what remains when everyone leaves, the warmth in empty chairs", "tender, melancholic, grateful, present", "solo piano, raw vocal, minimal, silence as instrument", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "Gravity Between", description: "A gravidade entre dois corpos que se atraem", lang: "EN", energy: "steady", prompt: cosmicPrompt("gravitational pull between two bodies, attraction as physics", "magnetic, yearning, physical, inevitable", "deep bass pulse, warm strings, building tension, embodied vocal", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "Tecido", description: "O tecido invisível que liga tudo", lang: "PT", energy: "steady", prompt: cosmicPrompt("invisible fabric connecting everything, quantum field as thread", "connected, vast, tender, woven", "layered textures, warm pads, organic percussion, weaving vocal lines", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 8, title: "The Space You Left", description: "O espaço que alguém deixou quando partiu", lang: "EN", energy: "raw", prompt: cosmicPrompt("the shape of someone's absence, living in the space they left", "grief, tenderness, presence in absence", "sparse piano, raw vocal, silence, achingly minimal", "EN", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 9, title: "Quase", description: "Quase tocar, quase dizer, quase ser", lang: "PT", energy: "pulse", prompt: cosmicPrompt("almost touching, almost saying, the weight of almost", "urgent, restless, brave, decisive", "building rhythm, driving pulse, determined vocal, momentum", "PT", "pulse"), durationSeconds: 240, audioUrl: null },
+    { number: 10, title: "Ether", description: "O éter como elemento, como presença", lang: "EN", energy: "whisper", prompt: cosmicPrompt("ether as the fifth element, the substance of space itself", "ancient, scientific, mystical, humming", "deep drone, ethereal pads, choir textures, contemplative vocal", "EN", "whisper"), durationSeconds: 300, audioUrl: null },
+  ],
+};
+
 // ─────────────────────────────────────────────
 // EXPORT
 // ─────────────────────────────────────────────
@@ -1095,6 +1115,7 @@ export const ALL_ALBUMS: Album[] = [
   VIDA_PENUMBRA,
   // Cosmic
   COSMIC_VIAGEM,
+  COSMIC_ETER,
 ].map(applyLyrics);
 
 // Helpers

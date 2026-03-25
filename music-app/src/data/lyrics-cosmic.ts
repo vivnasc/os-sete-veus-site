@@ -521,4 +521,514 @@ Everywhere I go
 And nowhere
 At all`,
 
+  // ─────────────────────────────────────────────
+  // ÉTER — O invisível que se sente
+  // ─────────────────────────────────────────────
+
+  "cosmic-eter/1": `[Verse 1]
+Estás na sala e eu estou na sala
+E entre nós há qualquer coisa densa
+Que não se vê nem se pode tocar
+Mas que pesa mais que qualquer sentença
+
+[Verse 2]
+Não é o ar nem é o silêncio
+É outra coisa entre a pele e a pele
+Um campo que os olhos não medem
+Mas que o corpo reconhece quando estremece
+
+[Chorus]
+Entre
+O que vive entre dois corpos
+Entre
+O que mora entre dois olhos
+Não tem nome nem tem forma
+Mas decide tudo por nós
+Entre — o sítio onde a verdade mora
+Antes de virar voz
+
+[Verse 3]
+Já saíste e a sala mudou
+Ficou mais leve ou mais vazia
+O entre que existia entre nós
+Desmanchou-se como o fim do dia
+
+[Chorus]
+Entre
+O que vive entre dois corpos
+Entre
+O que mora entre dois olhos
+Não tem nome nem tem forma
+Mas decide tudo por nós
+Entre — o sítio onde a verdade mora
+Antes de virar voz
+
+[Bridge]
+Ninguém fala do entre
+Porque ninguém o sabe dizer
+Mas toda a gente o sente
+Quando alguém acaba de sair ou de aparecer
+
+[Outro]
+Entre
+É onde tudo acontece
+Antes de acontecer`,
+
+  "cosmic-eter/2": `[Verse 1]
+Between the note that ends
+And the note that starts
+There is a country
+Without a map or charts
+
+[Verse 2]
+The pianist knows it
+The way a diver knows the deep
+That half-second of nothing
+Where the music learns to weep
+
+[Chorus]
+The pause
+Where everything is held
+The pause
+Where nothing has been spelled
+Not silence — something fuller
+Not empty — something true
+The pause between two notes
+Is the music passing through
+
+[Verse 3]
+I want to live inside the pause
+Between my heartbeats too
+That sliver of eternity
+That I keep rushing through
+
+[Chorus]
+The pause
+Where everything is held
+The pause
+Where nothing has been spelled
+Not silence — something fuller
+Not empty — something true
+The pause between two notes
+Is the music passing through
+
+[Bridge]
+What if the music isn't the sound
+But the space the sound surrounds
+What if I am not the noise I make
+But the quiet in between the rounds
+
+[Outro]
+The pause
+Not empty
+Full
+Of everything
+That sound
+Cannot contain`,
+
+  "cosmic-eter/3": `[Verse 1]
+Não o vejo mas a pele sabe
+Qualquer coisa passou por aqui
+Como um perfume sem dono
+Como um calor sem raiz
+
+[Verse 2]
+A ciência diz que é o sistema nervoso
+O padre diz que é presença
+Eu digo que é o invisível
+A fazer-se sentir sem licença
+
+[Chorus]
+Invisível
+Mas a pele não mente
+Invisível
+Mas o corpo é mais inteligente
+Que os olhos que precisam de prova
+O invisível é o que eu sinto
+Quando mais ninguém nota nada
+E eu fico com o corpo tinto
+
+[Verse 3]
+Há pessoas que entram nas salas
+E o ar muda de temperatura
+Não disseram nada, não fizeram nada
+Mas o invisível já cá está com fartura
+
+[Chorus]
+Invisível
+Mas a pele não mente
+Invisível
+Mas o corpo é mais inteligente
+Que os olhos que precisam de prova
+O invisível é o que eu sinto
+Quando mais ninguém nota nada
+E eu fico com o corpo tinto
+
+[Bridge]
+Talvez um dia a ciência chegue lá
+E dê nome ao que o corpo já conhece
+Até lá eu confio na pele
+Que arrepia quando o invisível aparece
+
+[Outro]
+Invisível
+Mas eu sinto
+E isso basta`,
+
+  "cosmic-eter/4": `[Verse 1]
+I breathe in something without a name
+Something the lungs don't recognise
+Thinner than oxygen, thicker than nothing
+It lives behind my closed eyes
+
+[Verse 2]
+It fills the room after an argument
+It lines the walls of an empty church
+It is the thing you cannot point at
+But spend your whole life trying to search
+
+[Chorus]
+Thin air
+That isn't thin at all
+Thin air
+That holds me when I fall
+The invisible is not the absent
+The invisible is what remains
+When you strip away the visible
+And only truth sustains
+
+[Verse 3]
+Children breathe it without question
+Animals move through it like water
+We are the only ones who forgot
+That thin air is the universe's daughter
+
+[Chorus]
+Thin air
+That isn't thin at all
+Thin air
+That holds me when I fall
+The invisible is not the absent
+The invisible is what remains
+When you strip away the visible
+And only truth sustains
+
+[Bridge]
+I want to unlearn my eyes
+And trust the skin again
+The way I did before I was taught
+That only the seen is sane
+
+[Outro]
+Thin air
+Thick with everything
+I forgot
+To feel`,
+
+  "cosmic-eter/5": `[Verse 1]
+Saíram todos e a sala ficou
+Com o formato dos seus corpos no ar
+As cadeiras ainda quentes
+O riso ainda a vibrar
+
+[Verse 2]
+O chá esfriou na chávena
+A vela consumiu-se até ao fim
+Mas o que fica não é o vazio
+É uma presença feita de quem esteve aqui
+
+[Chorus]
+O que fica
+Quando todos partem
+O que fica
+Não é saudade nem é arte
+É a impressão dos corpos no espaço
+É o calor que demora a sair
+O que fica é o entre
+Que ainda não aprendeu a partir
+
+[Verse 3]
+Amanhã ninguém se lembra
+Da forma exacta da conversa
+Mas o corpo lembra o calor
+E o calor é o que atravessa
+
+[Chorus]
+O que fica
+Quando todos partem
+O que fica
+Não é saudade nem é arte
+É a impressão dos corpos no espaço
+É o calor que demora a sair
+O que fica é o entre
+Que ainda não aprendeu a partir
+
+[Bridge]
+As paredes guardam o que nós esquecemos
+As casas sabem mais que os donos
+O que fica não precisa de nome
+Vive nos cantos, nos ecos, nos sonos
+
+[Outro]
+O que fica
+Fica
+Mesmo quando já não há
+Ninguém para notar`,
+
+  "cosmic-eter/6": `[Verse 1]
+I stand two metres from your skin
+And something pulls without a rope
+A force with no direction home
+A magnet dressed in hope
+
+[Verse 2]
+You haven't moved and I haven't moved
+But the space between has changed
+The distance shrank without permission
+Like time that rearranged
+
+[Chorus]
+Gravity between
+Two bodies in a room
+Gravity between
+The ache before the bloom
+Not touch, not yet, not quite
+But the field that says you're near
+Gravity between
+Is the loudest thing I hear
+
+[Verse 3]
+Every atom in my chest
+Leans slightly towards your side
+Like flowers toward the window
+Like the moon controls the tide
+
+[Chorus]
+Gravity between
+Two bodies in a room
+Gravity between
+The ache before the bloom
+Not touch, not yet, not quite
+But the field that says you're near
+Gravity between
+Is the loudest thing I hear
+
+[Bridge]
+The physicists call it weak force
+The poets call it longing
+I call it the truth the body speaks
+When the mouth is busy wronging
+
+[Outro]
+Gravity
+Between
+Not touching
+But held`,
+
+  "cosmic-eter/7": `[Verse 1]
+Há um fio que eu não vejo
+Que liga o meu peito ao teu
+Que liga a árvore à chuva
+Que liga a terra ao céu
+
+[Verse 2]
+Não é corda nem é corrente
+Não se parte quando puxo
+É mais como uma respiração
+Que partilhamos sem discussão
+
+[Chorus]
+Tecido
+Invisível entre tudo o que existe
+Tecido
+Que não se corta e não resiste
+Liga-me a ti, liga-me ao chão
+Liga a estrela ao grão de pão
+Tecido
+Feito de nada e de tudo ao mesmo tempo
+
+[Verse 3]
+Quando corto uma árvore sinto
+Quando morre alguém que não conheço choro
+Não é fraqueza é o tecido
+Que me lembra que nada é só nosso
+
+[Chorus]
+Tecido
+Invisível entre tudo o que existe
+Tecido
+Que não se corta e não resiste
+Liga-me a ti, liga-me ao chão
+Liga a estrela ao grão de pão
+Tecido
+Feito de nada e de tudo ao mesmo tempo
+
+[Bridge]
+Os cientistas chamam-lhe campo quântico
+Os avós chamam-lhe destino
+Eu chamo-lhe o tecido
+Que me coseu ao divino
+
+[Outro]
+Tecido
+Não se vê
+Mas segura
+Tudo`,
+
+  "cosmic-eter/8": `[Verse 1]
+The chair is still warm
+Where you used to sit
+The dent in the pillow
+Where your head would fit
+
+[Verse 2]
+The mug with the chip
+You said gave it charm
+The silence that shaped itself
+Around your arm
+
+[Chorus]
+The space you left
+Is not empty at all
+The space you left
+Still echoes down the hall
+It has your temperature
+It has your weight
+The space you left
+Arrived before you came and stays after late
+
+[Verse 3]
+People say fill the gap
+Move the furniture around
+But how do you move the air
+That still carries your sound
+
+[Chorus]
+The space you left
+Is not empty at all
+The space you left
+Still echoes down the hall
+It has your temperature
+It has your weight
+The space you left
+Arrived before you came and stays after late
+
+[Bridge]
+I don't want to fill it
+I want to sit inside it
+The shape of your absence
+Is the truest portrait
+
+[Outro]
+The space you left
+I live in it
+Carefully
+Like a museum
+Of air`,
+
+  "cosmic-eter/9": `[Verse 1]
+Quase toquei na tua mão
+Quase disse o que sentia
+Quase fiquei mais um segundo
+Quase mudava o que seria
+
+[Verse 2]
+O quase tem o peso de um planeta
+Cheio de tudo o que não foi
+Cheio de portas meio abertas
+Cheio de gente que quase se doeu
+
+[Chorus]
+Quase
+A palavra mais pesada
+Quase
+A distância mais sagrada
+Entre o que sou e o que seria
+Se o medo não mandasse
+Quase — a vida inteira
+Que vivi na margem antes que passasse
+
+[Verse 3]
+Há quem viva uma vida de quases
+E morra cheio de talvez
+Há quem cruze a linha num segundo
+E mude tudo de uma vez
+
+[Chorus]
+Quase
+A palavra mais pesada
+Quase
+A distância mais sagrada
+Entre o que sou e o que seria
+Se o medo não mandasse
+Quase — a vida inteira
+Que vivi na margem antes que passasse
+
+[Bridge]
+Hoje não vou quase
+Hoje vou inteira
+Mesmo que o inteira
+Seja mais pequena que a quimera
+
+[Outro]
+Quase
+Nunca mais
+Hoje
+É tudo ou é a paz
+De ter tentado`,
+
+  "cosmic-eter/10": `[Verse 1]
+The Greeks believed in something
+Between the earth and stars
+A substance without substance
+That held the sky in jars
+
+[Verse 2]
+They called it ether — the fifth element
+Not fire, not water, not air
+The thing that fills the nothing
+The presence everywhere
+
+[Chorus]
+Ether
+The substance of the space
+Ether
+The medium with no face
+Not god, not ghost, not gravity
+Just the hum beneath the hum
+Ether
+What everything is made of
+Before it becomes something — or someone
+
+[Verse 3]
+I feel it in the morning
+Before the first thought lands
+I feel it in the evening
+When I stop using my hands
+
+[Chorus]
+Ether
+The substance of the space
+Ether
+The medium with no face
+Not god, not ghost, not gravity
+Just the hum beneath the hum
+Ether
+What everything is made of
+Before it becomes something — or someone
+
+[Bridge]
+The scientists retired the word
+Said there's no such thing
+But my body disagrees
+Every time the silence starts to sing
+
+[Outro]
+Ether
+Still here
+Still humming
+Still holding
+Everything
+Together`,
+
 };
