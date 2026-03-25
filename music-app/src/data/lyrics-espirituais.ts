@@ -1052,11 +1052,11 @@ Só estas mãos que já aprenderam
 a forma de largar e de estar
 
 [Chorus]
-Maos vazias — não é pobreza e escolha
-Maos vazias — não é perda e entrega
+Mãos vazias — não é pobreza e escolha
+Mãos vazias — não é perda e entrega
 Abertas como um peito que respira
 abertas onde o peso não se apega
-Maos vazias — e assim que eu existo
+Mãos vazias — e assim que eu existo
 
 [Verse 3]
 O vazio das mãos não é falta
@@ -1134,7 +1134,7 @@ que eu sei fazer
 A terra treme por baixo dos meus pés descalcos
 o tambor bate onde bate o coração
 não preciso de templo, não preciso de palcos
-o meu corpo inteiro e a celebracao
+o meu corpo inteiro e a celebração
 
 [Bridge]
 Fecha os olhos

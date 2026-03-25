@@ -283,7 +283,7 @@ Rest now`,
 
 
   // ─────────────────────────────────────────────
-  // SILÊNCIO FERTIL (meditacao, pausa)
+  // SILÊNCIO FERTIL (meditação, pausa)
   // ─────────────────────────────────────────────
 
   "vida-silêncio-fértil/1": `[Verse 1]
@@ -2587,7 +2587,7 @@ A new bridge
 Between us`,
 
   // ─────────────────────────────────────────────
-  // OFERENDA (gratidao, o sagrado sem igreja)
+  // OFERENDA (gratidão, o sagrado sem igreja)
   // ─────────────────────────────────────────────
 
   "vida-oferenda/1": `[Verse 1]

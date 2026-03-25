@@ -1062,7 +1062,7 @@ e as janelas ainda te procuram
 Habitar e mais que estar
 e sentir o peso no colchao
 E ouvir o sangue a correr
-e chamar-lhe gratidao
+e chamar-lhe gratidão
 
 [Bridge]
 Não precisas de corpo perfeito
