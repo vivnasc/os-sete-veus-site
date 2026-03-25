@@ -36,8 +36,8 @@ que ninguém te pode tirar — e dança
 [Bridge]
 Ninguém vê o que fazes
 nós primeiros cinco minutos
-E por isso que sao sagrados
-e por isso que sao teus
+E por isso que são sagrados
+e por isso que são teus
 
 [Outro]
 A manhã e minha
@@ -197,7 +197,7 @@ lavada`,
 Eu trago no sangue uma mulher que nunca vi
 que pariu de pé, que chorou calada no quintal
 que engoliu o grito pra que eu pudesse existir
-que fez da dor um pao, da fome um ritual
+que fez da dor um pão, da fome um ritual
 
 [Verse 2]
 A minha avó carregou a água na cabeça
@@ -289,7 +289,7 @@ queimou, queimou
 sem heroismo sem glamour
 queimou a casa queimou o plano
 queimou o que julgavas resistente
-e o que ficou não é licao nem premio
+e o que ficou não é lição nem premio
 e só o que sobrou de ti presente
 
 [Verse 3]
@@ -303,7 +303,7 @@ Mas aqui estas
 na cinza ainda quente
 aqui estas
 não inteira mas presente
-não precisas de tirar licao do fogo
+não precisas de tirar lição do fogo
 só precisas de não mentir sobre o que ardeu
 
 [Outro]
@@ -378,7 +378,7 @@ que isso já e rezar
 
 [Bridge]
 Não há altar mais limpo
-do que um pulmao cansado
+do que um pulmão cansado
 Não há oração mais honesta
 do que um corpo deitado
 
@@ -913,7 +913,7 @@ o mundo entra em ti pela garganta
 e tu não tens de merecer o que te tome
 
 [Verse 3]
-Há um pulmao que não conheces
+Há um pulmão que não conheces
 que abre mesmo assim
 que recebe o que não pedes
 o ar que é fim e inicio
@@ -1234,7 +1234,7 @@ quando nada mais sufice
 Na igreja havia órgão e havia letra
 Mas o que ficava era a vibração
 O corpo sente antes de acreditar
-O hum e anterior a opiniao
+O hum e anterior a opinião
 
 [Bridge]
 Fecha os olhos
@@ -1281,7 +1281,7 @@ como o que recebes foi vivido
 
 [Bridge]
 Não segures o que já passou
-o pulmao não te perdoa
+o pulmão não te perdoa
 o que não largas asfixia
 até o que ainda e tua
 
@@ -1326,7 +1326,7 @@ e a presença mais antiga e mais sagrada
 Atrás do nome atrás da historia
 atrás da culpa atrás da gloria
 há qualquer coisa que respira
-sem opiniao sem medo sem memoria
+sem opinião sem medo sem memoria
 
 [Outro]
 Não precisas de fazer nada
@@ -1381,7 +1381,7 @@ E ali no meio daquele não-nada
 percebi que nunca estive tão cheia de estar
 
 [Chorus]
-O vazio cheio — não é contradicao
+O vazio cheio — não é contradição
 O vazio cheio — é o que fica no chão
 Quando tiras tudo o que punhas lá dentro
 descobres que o nada tem peso e intenção
@@ -1636,7 +1636,7 @@ a beleza e o acidente
 Enraizada
 e a crescer
 as duas coisas
-sao a mesma coisa
+são a mesma coisa
 sou a árvore
 sou inteira`,
 
@@ -1727,12 +1727,12 @@ só o sal que entra na mente
 Tão grande que o medo muda
 deixa de ser o que era
 Não é panico que me invade
-e a rendicao que me espera
+e a rendição que me espera
 
 [Chorus]
 Oceano — mais largo que o meu nome
 oceano — mais fundo que a minha dor
-As coisas que carrego sao pequenas
+As coisas que carrego são pequenas
 vistas daqui do teu clamor
 Não preciso de ser imensa
 preciso de ver o imenso
@@ -1800,7 +1800,7 @@ These are the doors
 I walked through`,
 
   "corpo-celeste/3": `[Verse 1]
-As costelas sao arcos
+As costelas são arcos
 Curvados sobre o sagrado
 Protegem o que não tem nome
 O que pulsa o que é amado
@@ -1899,7 +1899,7 @@ The skin is singing`,
 O calcio nós meus ossos
 veio de uma estrela morta
 O ferro no meu sangue
-nasceu de uma explosao torta
+nasceu de uma explosão torta
 
 [Verse 2]
 Cada celula construida
@@ -1996,11 +1996,11 @@ o que sangra não está a quebrar
 está a limpar, está a voltar
 o ventre e mare, o ventre e estação
 sangue e lua, sangue e lua
-não há vergonha nesta repeticao
+não há vergonha nesta repetição
 
 [Verse 3]
 O inverno vive dentro de mim quatro semanas
-o verao regressa sem pedir licença
+o verão regressa sem pedir licença
 a dor que vem não é castigo, não é drama
 e o peso exacto de quem cria existência
 
@@ -2063,7 +2063,7 @@ enough`,
 Diziam que o peito e pequeno
 que só cabe o coração
 Mas eu abri o meu devagar
-e coube a criacao
+e coube a criação
 
 [Verse 2]
 Coube a dor é coube o oceano
@@ -2250,7 +2250,7 @@ não mereci — e só por isso choro
 O susto de não merecer nada
 e que não te pede nenhuma razão
 O corpo aceita antes da cabeça
-e a cabeça rende-se entao
+e a cabeça rende-se então
 
 [Bridge]
 Deixei entrar o que não chamei
@@ -2303,9 +2303,9 @@ And maybe that's the point`,
 
   "correnteza/5": `[Verse 1]
 Dar não é um acto de coragem
-Não é titulo nem licao
-É a mão que pousa o pao na mesa
-Sem discurso, sem comocao
+Não é titulo nem lição
+É a mão que pousa o pão na mesa
+Sem discurso, sem comoção
 
 [Verse 2]
 O corpo inclina-se devagar
@@ -2317,11 +2317,11 @@ Que cabem todas num protesto
 Dar e só isto
 A mão que se abre no ar
 Dar e só isto
-O pao que passa de par em par
+O pão que passa de par em par
 Não precisa de nome
 Não precisa de altar
 Só a mão, só o gesto
-Só o pao sobre o lar
+Só o pão sobre o lar
 
 [Verse 3]
 Não guardo o recibo do que dei
@@ -2331,23 +2331,23 @@ A generosidade não se choca
 
 [Bridge]
 Não me esvazio quando dou
-O poco não seca na dacao
+O poco não seca na dação
 O que oferto ainda e meu
-Até ao momento da entrega — entao
+Até ao momento da entrega — então
 
 [Chorus]
 Dar e só isto
 A mão que se abre no ar
 Dar e só isto
-O pao que passa de par em par
+O pão que passa de par em par
 Não precisa de nome
 Não precisa de altar
 Só a mão, só o gesto
-Só o pao sobre o lar
+Só o pão sobre o lar
 
 [Outro]
 A mão abre
-O pao parte
+O pão parte
 Nada se perde
 Nada se parte`,
 
@@ -2576,7 +2576,7 @@ o que o dia te deu`,
   "o-que-resta/1": `[Verse 1]
 No centro do corpo existe
 Uma nave comprida e calma
-Com paredes que sao carne
+Com paredes que são carne
 E eco que guarda a alma
 
 [Verse 2]
@@ -2669,7 +2669,7 @@ O que fica quando não há onde estar
 
 [Verse 2]
 Tira a historia que contaste tantas vezes
-Tira as roupas que a ocasiao exige
+Tira as roupas que a ocasião exige
 Tira os titulos, os papeis, as promessas
 O que fica quando ninguém te dirige
 
@@ -2692,7 +2692,7 @@ O que fica quando tiras tudo
 [Verse 3]
 Chego ao osso, chego ao silêncio puro
 Chego ao ponto onde o eco para
-Aqui não há versao nem discurso
+Aqui não há versão nem discurso
 Aqui sou a coisa mais rara
 
 [Bridge]
@@ -2972,7 +2972,7 @@ O altar sou eu — esse e o inicio
 [Verse 3]
 Este corpo é o lugar mais real
 Está respiração e o ritual
-Não preciso de aprovacao
+Não preciso de aprovação
 Para entrar na minha catedral
 
 [Chorus]
@@ -2983,7 +2983,7 @@ O altar sou eu — esse e o inicio
 
 [Bridge]
 Não é arrogancia — e regresso
-Não é rejeicao — e clareza
+Não é rejeição — e clareza
 O sagrado tem a forma do corpo
 Tem o peso e a textura desta espessura
 
@@ -3078,7 +3078,7 @@ ninguém te diz o seu valor
 O que sustenta não brilha
 o chão não pede atenção
 mas tudo o que se ergue acima
-nasce desta fundacao
+nasce desta fundação
 
 [Chorus]
 Raiz, raiz
@@ -3167,7 +3167,7 @@ and whole is home`,
 Tenho os dedos brancos de apertar
 as unhas cravadas na palma da mão
 O corpo inteiro feito de segurar
-cada musculo uma suplicacao
+cada musculo uma suplicação
 
 [Verse 2]
 Seguro o tecto com os ombros curvados
@@ -3430,7 +3430,7 @@ recebe o que me encorpa
 
 [Verse 2]
 Não me humilhei a ninguém
-não curvei a cabeça em vao
+não curvei a cabeça em vão
 Dobrar os joelhos e diferente
 quando a escolha e minha mão
 
@@ -3447,7 +3447,7 @@ o nome do meu valor
 [Bridge]
 Não é fraqueza nenhuma
 e a força que recolhe
-Não é rendicao ao medo
+Não é rendição ao medo
 e o medo que se acolhe
 
 [Outro]
@@ -3786,7 +3786,7 @@ A pessoa inteira que habito
 E toda a casa que aprovo
 
 [Verse 3]
-Não preciso de ser multidao
+Não preciso de ser multidão
 Não preciso de ser montanha
 Preciso de ser isto aqui
 Está e a única campanha
@@ -3903,7 +3903,7 @@ já pedi ao espanto
 
 [Verse 2]
 Agora não peco nada
-agora as mãos estao no colo
+agora as mãos estão no colo
 Não é paz o que sinto
 e só o peso do solo
 
@@ -3912,7 +3912,7 @@ Ficar — isso é a última prece
 ficar — sem pedir nem saber
 Ficar com o corpo que tenho
 ficar com o que vai doer
-Não é resignacao nem rendicao
+Não é resignação nem rendição
 e a carne que escolhe o real
 Ficar — essa e a prece
 ficar — no escuro total
@@ -4143,26 +4143,26 @@ As mãos servem livres
 Quando os pés compreendem`,
 
   "o-gesto/6": `[Verse 1]
-Sou um grao de areia
+Sou um grão de areia
 num deserto sem limite
 tão pequena que o vento
 me poderia tirar do que existe
 
 [Verse 2]
-Mas o grao não está sozinho
+Mas o grão não está sozinho
 há milhoes que não se veem
 e juntos somos deserto —
 e o deserto e o que nós contem
 
 [Chorus]
-Grao, grao
+Grão, grão
 pequeno e necessario
-grao, grao
+grão, grão
 invisível e sagrado
 amem não é o grito do estadio
 amem e o sussurro que sai de dentro
-quando aceitas que es só um grao
-e que esse grao e o fundamento
+quando aceitas que es só um grão
+e que esse grão e o fundamento
 
 [Verse 3]
 Não preciso de ser montanha
@@ -4171,7 +4171,7 @@ basta existir com o meu tamanho
 basta o simples gesto
 
 [Bridge]
-Um grao diz amem
+Um grão diz amem
 não ao céu — a si mesmo
 não para ser ouvido —
 para não perder o fio do que penso
@@ -4345,7 +4345,7 @@ mesmo assim
 respiro`,
 
   "o-gesto/11": `[Verse 1]
-O botao sai devagar
+O botão sai devagar
 a camisa escorrega do ombro
 Cada peça que cai no chão
 e um peso que não tem assombro

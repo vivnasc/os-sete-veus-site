@@ -312,6 +312,34 @@ export default function SearchPage() {
                 </div>
               </section>
             )}
+
+            {/* Browse by collection */}
+            {!activeFilter && (
+              <>
+                {[
+                  { title: "Espelhos", sub: "A transformação interior", products: ["espelho"] },
+                  { title: "Nós", sub: "Entre duas pessoas", products: ["no"] },
+                  { title: "Espiritual", sub: "O sagrado no corpo", products: ["espiritual"] },
+                  { title: "Vida", sub: "Música do dia-a-dia", products: ["vida"] },
+                  { title: "Cursos", sub: "Escola dos Véus", products: ["curso"] },
+                  { title: "Livro", sub: "Livro filosófico", products: ["livro"] },
+                ].map(({ title, sub, products }) => {
+                  const albums = ALL_ALBUMS.filter(a => products.includes(a.product));
+                  if (albums.length === 0) return null;
+                  return (
+                    <section key={title}>
+                      <h2 className="text-sm font-semibold text-[#a0a0b0] uppercase tracking-wider mb-1">{title}</h2>
+                      <p className="text-xs text-[#666680] mb-3">{sub}</p>
+                      <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                        {albums.map(album => (
+                          <AlbumCard key={album.slug} album={album} />
+                        ))}
+                      </div>
+                    </section>
+                  );
+                })}
+              </>
+            )}
           </div>
         ) : !hasResults ? (
           /* ── No results ── */

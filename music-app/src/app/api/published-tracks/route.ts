@@ -10,7 +10,7 @@ const BUCKET = "audios";
  */
 export async function GET() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!url || !key) {
     return NextResponse.json({ tracks: [] });
@@ -19,22 +19,34 @@ export async function GET() {
   const supabase = createClient(url, key);
 
   try {
-    const { data: folders } = await supabase.storage
-      .from(BUCKET)
-      .list("albums", { limit: 200 });
-
     const tracks: string[] = [];
+    const seen = new Set<string>();
 
-    for (const folder of folders || []) {
-      if (!folder.name) continue;
-      const { data: files } = await supabase.storage
+    // Scan both "albums/" prefix and root level folders
+    for (const prefix of ["albums", ""]) {
+      const { data: folders } = await supabase.storage
         .from(BUCKET)
-        .list(`albums/${folder.name}`, { limit: 100 });
+        .list(prefix || undefined, { limit: 200 });
 
-      for (const file of files || []) {
-        const mainMatch = file.name.match(/^faixa-(\d+)\.mp3$/);
-        if (mainMatch) {
-          tracks.push(`${folder.name}-t${parseInt(mainMatch[1], 10)}`);
+      for (const folder of folders || []) {
+        if (!folder.name || !folder.id) continue; // skip files, only folders
+        // Skip non-album folders
+        if (folder.name.startsWith("carousel-") || folder.name.startsWith("citacao-")) continue;
+
+        const folderPath = prefix ? `${prefix}/${folder.name}` : folder.name;
+        const { data: files } = await supabase.storage
+          .from(BUCKET)
+          .list(folderPath, { limit: 100 });
+
+        for (const file of files || []) {
+          const mainMatch = file.name.match(/^faixa-(\d+)\.mp3$/);
+          if (mainMatch) {
+            const key = `${folder.name}-t${parseInt(mainMatch[1], 10)}`;
+            if (!seen.has(key)) {
+              seen.add(key);
+              tracks.push(key);
+            }
+          }
         }
       }
     }

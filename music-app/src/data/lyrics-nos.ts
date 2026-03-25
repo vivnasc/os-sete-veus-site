@@ -82,7 +82,7 @@ Eu fico de pé como quem vai e vem
 Duas mulheres frente a frente enfim
 O espelho partido entre as duas mãos
 Tu es o rio que eu nunca atravessei
-Eu sou a margem que ficou em vao
+Eu sou a margem que ficou em vão
 
 [Verse 2]
 Mãe, que é que viste quando eu não via
@@ -100,7 +100,7 @@ Basta a verdade nua entre nós
 Duas mulheres
 Finalmente juntas
 Sem véu no rosto
-Sem guiao na boca`,
+Sem guião na boca`,
 
   "no-heranca/4": `[Verse 1]
 Guardei palavras como quem guarda porcelana
@@ -129,8 +129,8 @@ Para soltar o que ficou na prateleira
 [Outro]
 Estas palavras
 Guardadas tanto tempo
-Não sao acusacao
-Sao sementes
+Não são acusação
+São sementes
 Que abrem o que ficou fechado
 Entre nós duas`,
 
@@ -329,7 +329,7 @@ For its song`,
   // ─────────────────────────────────────────────
 
   "no-sacrificio/1": `[Verse 1]
-Dou-te o melhor lugar a mesa e o último pao
+Dou-te o melhor lugar a mesa e o último pão
 Dou-te o casaco quando a chuva cai
 Dou-te as horas todas do meu corpo
 E fico nu como árvore em janeiro — sem folhas e sem pai
@@ -412,7 +412,7 @@ E medo de ser vista e ser feliz
 
 [Bridge]
 Receber não é fraqueza nem divida
-Receber e abrir a porta sem questao
+Receber e abrir a porta sem questão
 E deixar entrar o sol que te procura
 Sem pedir recibo a cada estação
 
@@ -433,7 +433,7 @@ E tu eras jardim antes de me conhecer
 [Chorus]
 Dois inteiros que se escolhem
 Não por fome mas por flor
-Dois que dao porque transbordam
+Dois que dão porque transbordam
 Não porque tem medo da dor
 
 [Verse 2]
@@ -502,8 +502,8 @@ Tu olhaste para mim como quem vê o mar
 E eu não tinha máscara para te entregar
 
 [Chorus]
-Dois estranhos sem papel nem guiao
-Sem armadura, sem actuacao
+Dois estranhos sem papel nem guião
+Sem armadura, sem actuação
 Tu sem a capa que vestias no mundo
 Eu sem o vidro que chamava coração
 
@@ -570,7 +570,7 @@ E por baixo estava só a pele — transparente
 
 [Chorus]
 Sem papeis, sem personagem
-Sem o guiao que decoramos a vida inteira
+Sem o guião que decoramos a vida inteira
 O que sobra quando tiramos tudo
 É o que nunca nós deixamos — a alma nua e verdadeira
 
@@ -607,14 +607,14 @@ Eu sei porque também tremo a noite
 Eu sei porque também calei o amor
 
 [Verse 2]
-Tu vês-me por trás da minha invencao
+Tu vês-me por trás da minha invenção
 Ves a rapariga que fugia para dentro
 Ves o medo que eu chamava de distância
 Ves o fogo que eu chamava de vento
 
 [Bridge]
 Quando duas pessoas se reconhecem
-Não é porque sao espelhos iguais
+Não é porque são espelhos iguais
 E porque a ferida de uma
 Fala a lingua da outra sem sinais
 
@@ -747,8 +747,8 @@ Solto a ideia do que deviamos amar
 
 [Bridge]
 E ao soltar descubro uma verdade
-Que as mãos vazias não sao mãos sem força
-Sao mãos que finalmente podem tocar
+Que as mãos vazias não são mãos sem força
+São mãos que finalmente podem tocar
 Sem garra, sem prisão — com pele é com graça
 
 [Outro]

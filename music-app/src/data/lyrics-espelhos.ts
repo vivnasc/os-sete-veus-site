@@ -395,7 +395,7 @@ Doesn't feel like home alone`,
 
   "espelho-medo/3": `[Verse 1]
 Fico aqui na esquina entre o sim e o não
-Com os pés colados ao alcatrao
+Com os pés colados ao alcatrão
 Chamo-lhe paciência, chamo-lhe prudencia
 Mas o nome verdadeiro e solidão
 
@@ -510,7 +510,7 @@ Que a gente canta sem saber porque
 Falas-me de abismos e de quedas
 De noites frias e de fins
 Mas eu olho para as minhas mãos abertas
-E vejo que estao cheias de jardins
+E vejo que estão cheias de jardins
 
 [Chorus]
 Ouço-te, ouço-te
@@ -1060,7 +1060,7 @@ Porque já não precisa de se esconder`,
 
   "espelho-identidade/7": `[Verse 1]
 Não trago provas do que valho
-Não trago selos nem certidao
+Não trago selos nem certidão
 Trago só este corpo inteiro
 E estas mãos e este coração
 
@@ -1281,12 +1281,12 @@ And I danced till dawn`,
 Desliguei o telefone a tarde inteira
 O mundo girou sem a minha mão
 O jantar queimou e ninguém chorou
-A louca ficou no balcao
+A louca ficou no balcão
 
 [Verse 2]
 A cama ficou por fazer
 O email ficou por mandar
-A reuniao aconteceu sem mim
+A reunião aconteceu sem mim
 É o sol continuou a brilhar
 
 [Chorus]
@@ -1455,7 +1455,7 @@ Que o mundo ainda não viu, mas vai
 A menina que encolheram
 Tem o tamanho de um oceano
 Tem a força de uma mare
-Tem a furia de um vulcao
+Tem a furia de um vulcão
 
 [Outro]
 Cresço
@@ -1469,7 +1469,7 @@ E minha`,
 Desliguei tudo é fiquei
 Com o tecto e com o chão
 Com o tic-tac do relógio
-E as minhas mãos sem ocupacao
+E as minhas mãos sem ocupação
 
 [Verse 2]
 Os primeiros minutos ardem

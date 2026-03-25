@@ -366,7 +366,7 @@ O corpo respira
 Sem nenhuma crença
 Só o ar que entra
 Só o ar que sai
-O resto é invencao
+O resto é invenção
 Que o corpo não trai
 
 [Verse 3]
@@ -526,7 +526,7 @@ Changed and still the same`,
 
 
   // ─────────────────────────────────────────────
-  // O TEAR (foco, trabalho, criacao)
+  // O TEAR (foco, trabalho, criação)
   // ─────────────────────────────────────────────
 
   "vida-o-tear/1": `[Verse 1]
@@ -590,7 +590,7 @@ A mente não precisa de saber
 [Verse 2]
 O martelo bate no prego certeiro
 A agulha encontra o tecido
-As mãos ocupadas sao o verdadeiro
+As mãos ocupadas são o verdadeiro
 Templo onde me tenho escondido
 
 [Chorus]
@@ -774,7 +774,7 @@ Let them fall`,
 
   "vida-rendicao/3": `[Verse 1]
 Dez, nove, oito
-O corpo afunda no colchao
+O corpo afunda no colchão
 Sete, seis, cinco
 Já não há razão
 
@@ -827,8 +827,8 @@ Between here and there`,
 
   "vida-rendicao/5": `[Verse 1]
 O corpo fica mais pesado
-Que o colchao que o segura
-Os braços sao de chumbo dourado
+Que o colchão que o segura
+Os braços são de chumbo dourado
 A gravidade e uma ternura
 
 [Verse 2]
@@ -1027,9 +1027,9 @@ E mais como virar o volante humano
 Para o norte do coração
 
 [Chorus]
-Intencao
+Intenção
 Sem força, só direcção
-Intencao
+Intenção
 A bussola sem pressão
 Aponto para onde quero ir
 O corpo alinha devagar
@@ -1082,7 +1082,7 @@ De amor que não se destaca
 [Verse 2]
 A mesa posta e uma oração
 Sem deus, sem templo, sem altar
-Só as mãos e a dedicacao
+Só as mãos e a dedicação
 De quem prepara para amar
 
 [Chorus]
@@ -1128,7 +1128,7 @@ Let it simmer`,
   "vida-pao-sal/3": `[Verse 1]
 Uma pitada entre os dedos
 O pulso gira o moinho
-Sao os mais pequenos segredos
+São os mais pequenos segredos
 Que mudam o sabor do caminho
 
 [Verse 2]
@@ -1180,11 +1180,11 @@ The oldest meditation`,
   "vida-pao-sal/5": `[Verse 1]
 O cheiro entra antes de mim
 Pela porta mal aberta
-Pao no forno, café sem fim
+Pão no forno, café sem fim
 A casa está desperta
 
 [Verse 2]
-Não é o lugar, sao as paredes
+Não é o lugar, são as paredes
 Que absorveram tantos anos
 De cebola nas frigideiras redes
 De risos, de enganos
@@ -1397,7 +1397,7 @@ And that's the gift`,
 
   "vida-deriva/7": `[Verse 1]
 A estrada conhecida reaparece
-Mas os meus olhos sao de vidro novo
+Mas os meus olhos são de vidro novo
 A porta abre e tudo parece
 O mesmo mas eu sou outro povo
 
@@ -1434,7 +1434,7 @@ De tudo o que a boca não prova
 
 [Verse 2]
 A pele arrepia antes de tocar
-O pelo levanta de antecipacao
+O pelo levanta de antecipação
 Há um campo entre eu e o teu lugar
 Que vibra mais que o coração
 
@@ -1546,7 +1546,7 @@ Que se le inteiro no escuro
 Entrega de pele
 Dar-me toda sem sobras
 Entrega de pele
-Onde as mãos sao as obras
+Onde as mãos são as obras
 O corpo sabe a lingua
 Que a mente nunca aprendeu
 Cada toque distingue
@@ -1601,15 +1601,15 @@ Desceu pelo corpo como uma maré fria
 
 [Verse 2]
 Ninguém deu licença pra isto
-Ninguém assinou a autorizacao
+Ninguém assinou a autorização
 Mas o corpo decidiu por instinto
-Que hoje era o dia da inundacao
+Que hoje era o dia da inundação
 
 [Chorus]
-Permissao
+Permissão
 Para desabar sem explicação
-Permissao
-Para ser a chuva e a inundacao
+Permissão
+Para ser a chuva e a inundação
 Não é fraqueza, não é derrota
 É o corpo a cobrar o que lhe devem
 Cada lagrima e uma nota
@@ -1758,7 +1758,7 @@ Há uma fome estranha que vem e que traz
 O corpo de volta do mudo
 
 [Verse 2]
-Peco água, peco pao
+Peco água, peco pão
 As coisas mais simples do mundo
 O corpo pede com a mão
 Depois do choro mais profundo
@@ -1854,7 +1854,7 @@ O punho
 Que um dia vai ter licença
 Para abrir a mão
 O punho e a sentenca
-De quem guarda a explosao
+De quem guarda a explosão
 
 [Outro]
 Abre a mão
@@ -1958,7 +1958,7 @@ As mãos procuram onde agarrar
 O suor frio corre pelas costas
 O coração bate nós ouvidos
 O mundo gira e as respostas
-Estao todas perdidas nós sentidos
+Estão todas perdidas nós sentidos
 
 [Chorus]
 O aperto
@@ -2010,7 +2010,7 @@ O tecido da cadeira, o metal directo
 Três sons que entram nós ouvidos
 O relógio, a rua, o meu respirar
 Dois cheiros que ficam perdidos
-O café, o sabao a brilhar
+O café, o sabão a brilhar
 
 [Chorus]
 Cinco sentidos
@@ -2059,7 +2059,7 @@ A superficie e uma divisa
 Entre o panico e o amor
 
 [Verse 2]
-Atravesso a multidao com ela
+Atravesso a multidão com ela
 A mão fechada no segredo
 A pedra quente e a minha estrela
 A minha ancora contra o medo
@@ -2220,7 +2220,7 @@ Jantar sozinha é um direito
 Que só agora descobri
 
 [Verse 2]
-Sem ecra, sem distracao
+Sem ecra, sem distracção
 O garfo encontra cada sabor
 A boca mastiga com atenção
 E cada pedaco tem amor
@@ -2592,13 +2592,13 @@ Between us`,
 
   "vida-oferenda/1": `[Verse 1]
 A cabeça inclina-se de leve
-Não é submissao, e reconhecimento
+Não é submissão, e reconhecimento
 O peito abre quando a boca bebé
 A palavra mais simples do momento
 
 [Verse 2]
 Obrigada ao corpo que me trouxe
-Obrigada ao pao que está na mesa
+Obrigada ao pão que está na mesa
 Obrigada a manhã que me ouve
 Obrigada a está natureza
 
@@ -2661,7 +2661,7 @@ Mãos no peito
 E tanto, tanto já
 Não preciso de templo
 Não preciso de altar
-As mãos sao o exemplo
+As mãos são o exemplo
 Do sagrado a pulsar
 
 [Outro]
@@ -2698,7 +2698,7 @@ For all of this`,
 Olho a volta e vejo pela primeira vez
 A cadeira, a janela, a luz no chão
 As mãos no colo, o que o instante fez
-De cada coisa uma constelacao
+De cada coisa uma constelação
 
 [Verse 2]
 Saude para estar aqui sentada
@@ -2775,7 +2775,7 @@ A avó
 Que vive nas minhas mãos
 A avó
 Que mora nós meus gestos vaos
-Cada vez que amasso o pao
+Cada vez que amasso o pão
 Cada vez que parto o sal
 Os dedos dela na minha mão
 Fazem o ritual
@@ -2813,7 +2813,7 @@ What the mind forgot`,
   "vida-linhagem/3": `[Verse 1]
 Seguro a chávena com as duas mãos
 Fico a janela a ver chover
-Herancas que não sao de tostoes
+Herancas que não são de tostoes
 Mas de formas de ser é de viver
 
 [Verse 2]
@@ -2866,7 +2866,7 @@ The same`,
 Os ombros carregam trouxas em pano
 Os pés conhecem estradas nunca andadas
 Os habitos chegaram com o engano
-De serem meus, mas sao herancas guardadas
+De serem meus, mas são herancas guardadas
 
 [Verse 2]
 A forma de contar o troco
@@ -3026,7 +3026,7 @@ Let the water leave`,
 O fundo do mar está exposto
 As conchas, as criaturas, o chão
 O vazio mostra o seu rosto
-E não é feio, e clarificacao
+E não é feio, e clarificação
 
 [Verse 2]
 As mãos abertas sem nada dentro
@@ -3084,7 +3084,7 @@ A filha torna-se mãe nas jornadas
 A mesma canção numa boca nova
 O mesmo amor em mãos novas
 Tudo volta como a chuva prova
-Que as estacoes sao as mesmas trovas
+Que as estacoes são as mesmas trovas
 
 [Chorus]
 Volta
@@ -3153,7 +3153,7 @@ Dance at home`,
 
   "vida-descalca/3": `[Verse 1]
 Numa terca-feira qualquer
-Sem razão nem justificacao
+Sem razão nem justificação
 Os braços abrem como mulher
 Que encontrou a sua estação
 
@@ -3282,7 +3282,7 @@ Burning slow
 Burning sure`,
 
   "vida-brasa-lenta/3": `[Verse 1]
-O pao fermenta debaixo do pano
+O pão fermenta debaixo do pano
 O fermento trabalha sem ter pressa
 A fome quer o imediato engano
 Mas o tempo e quem confessa
@@ -3693,7 +3693,7 @@ Onde o tempo se recolhe
 Ambas as portas abertas
 Nenhuma mais certa que a outra
 No limiar as ofertas
-Sao infinitas como a noute
+São infinitas como a noute
 
 [Outro]
 No limiar
