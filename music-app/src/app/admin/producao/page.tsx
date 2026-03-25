@@ -681,7 +681,12 @@ export default function AlbumProductionPage() {
         }
 
         // Show poll progress in the error field (as debug info)
-        const clipStatuses = (data.clips || []).map((c: SunoClip) => c.status);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const clipStatuses = (data.clips || []).map((c: any) => {
+          const raw = c.rawStatus ? ` (raw:${c.rawStatus})` : "";
+          const audio = c.audioUrl ? " +audio" : "";
+          return `${c.status}${raw}${audio}`;
+        });
         lastPollInfo = `Poll #${pollCount}: ${clipStatuses.join(", ")}`;
         setErrors((e) => ({ ...e, [key]: lastPollInfo }));
 
