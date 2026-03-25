@@ -38,29 +38,43 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Versão não encontrada" }, { status: 404 });
   }
 
-  // Try main file first
-  const mainUrl = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/albums/${safeAlbum}/faixa-${safeTrack}.mp3`;
-  let upstream = await fetch(mainUrl, { headers: fetchHeaders });
-  console.log(`[stream] ${safeAlbum}/faixa-${safeTrack}.mp3 → ${upstream.status}`);
+  // Try both paths: albums/SLUG/ and SLUG/ (some files stored without albums/ prefix)
+  const paths = [
+    `albums/${safeAlbum}/faixa-${safeTrack}.mp3`,
+    `${safeAlbum}/faixa-${safeTrack}.mp3`,
+  ];
 
-  // If main file doesn't exist, try to find a version
+  let upstream: Response | null = null;
+  for (const path of paths) {
+    const url = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${path}`;
+    const res = await fetch(url, { headers: fetchHeaders });
+    console.log(`[stream] ${path} → ${res.status}`);
+    if (res.ok || res.status === 206) {
+      upstream = res;
+      break;
+    }
+  }
+
+  if (!upstream) upstream = await fetch(`${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${paths[0]}`, { headers: fetchHeaders });
+
+  // If main file doesn't exist, try to find a version in both paths
   if (!upstream.ok && upstream.status !== 206) {
     try {
       const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
       const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
       if (url && key) {
-        const supabase = createClient(url, key);
-        const { data: files } = await supabase.storage
-          .from(BUCKET)
-          .list(`albums/${safeAlbum}`, { limit: 50 });
-
-        const versionFile = files?.find(f =>
-          f.name.startsWith(`faixa-${safeTrack}-`) && f.name.endsWith(".mp3")
-        );
-
-        if (versionFile) {
-          const versionUrl = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/albums/${safeAlbum}/${versionFile.name}`;
-          upstream = await fetch(versionUrl, { headers: fetchHeaders });
+        const sb = createClient(url, key);
+        // Try both folder structures
+        for (const folder of [`albums/${safeAlbum}`, safeAlbum]) {
+          const { data: files } = await sb.storage.from(BUCKET).list(folder, { limit: 50 });
+          const versionFile = files?.find(f =>
+            f.name.startsWith(`faixa-${safeTrack}-`) && f.name.endsWith(".mp3")
+          );
+          if (versionFile) {
+            const versionUrl = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${folder}/${versionFile.name}`;
+            upstream = await fetch(versionUrl, { headers: fetchHeaders });
+            if (upstream.ok || upstream.status === 206) break;
+          }
         }
       }
     } catch {
