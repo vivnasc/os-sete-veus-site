@@ -391,6 +391,15 @@ A lista pode crescer
 Aqui dentro não há hora
 Só o agora a acontecer
 
+
+[Chorus]
+Sentar
+Só sentar e já chegar
+Não há nada para resolver
+Só este chão é este respirar
+Só este corpo a aprender
+A estar
+
 [Outro]
 Sentada, cheguei
 Sentada, estou aqui`,
@@ -406,6 +415,17 @@ No need to chase the quiet here
 It comes when I stop reaching
 The mind as clear as atmosphere
 Without a single teaching
+
+[Chorus]
+Still water, still water
+Nothing left to stir
+The mind becomes the daughter
+Of the silence she prefers
+Still water, still water
+Transparent to the floor
+I see what lives beneath her
+And I don't need any more
+
 
 [Chorus]
 Still water, still water
@@ -454,6 +474,17 @@ Cada expiração e adeus
 O corpo sabe no mais fundo
 Que respirar é o nome de Deus
 
+
+[Chorus]
+O corpo respira
+Sem pedir licença
+O corpo respira
+Sem nenhuma crença
+Só o ar que entra
+Só o ar que sai
+O resto é invenção
+Que o corpo não trai
+
 [Outro]
 Inspira
 Expira
@@ -470,6 +501,17 @@ It lasts a breath, it lasts a blink
 But in that space I'm free
 I'm not the one who has to think
 I'm just the one who sees
+
+[Chorus]
+Between thoughts
+There's a country with no name
+Between thoughts
+Nothing's broken, nothing's tame
+Just the open sky
+Of a mind that learned to pause
+Between the question why
+And the silence that's the cause
+
 
 [Chorus]
 Between thoughts
@@ -513,6 +555,17 @@ Já estava aqui
 A plenitude morava
 No que eu nunca vi
 
+
+[Chorus]
+Vazio cheio
+O nada transborda
+Vazio cheio
+A ausência acorda
+O que pensei que faltava
+Já estava aqui
+A plenitude morava
+No que eu nunca vi
+
 [Outro]
 Cheio, cheio
 O vazio está cheio
@@ -529,6 +582,17 @@ The room returns in shapes and sounds
 The clock remembers how to tick
 My body settles on the ground
 The world is slow and warm and thick
+
+[Chorus]
+The bell, the bell
+It calls me back from where I went
+The bell can tell
+The difference between lost and spent
+Come back now, come back slow
+The world is still the world
+Come back with what you know
+From the silence unfurled
+
 
 [Chorus]
 The bell, the bell
@@ -566,6 +630,17 @@ Só este corpo a respirar
 Sem destino, sem razão
 Só a mão no coração
 
+
+[Chorus]
+Nenhum lugar
+Nenhuma pressa
+Nenhum altar
+Nenhuma promessa
+Só este chão é este ar
+Só este corpo a respirar
+Sem destino, sem razão
+Só a mão no coração
+
 [Outro]
 Nada para fazer
 Nada para ser
@@ -582,6 +657,17 @@ I stand on legs that feel like new
 The doorknob cold against my palm
 I carry silence like a clue
 Into the noise, into the calm
+
+[Chorus]
+Return, return
+With quiet in my bones
+The world still burns
+But I have found my stones
+Return with eyes
+That saw behind the veil
+The ordinary lives
+Inside a different scale
+
 
 [Chorus]
 Return, return
@@ -630,6 +716,17 @@ O fio e a minha voz
 Um caminho de orgulho
 Entre mim e o após
 
+
+[Chorus]
+O fio, o fio
+Não se pode partir
+O fio, o fio
+É a única coisa a seguir
+Quando o mundo é barulho
+O fio e a minha voz
+Um caminho de orgulho
+Entre mim e o após
+
 [Outro]
 Segue o fio
 Segue o fio`,
@@ -645,6 +742,17 @@ The river carries what I make
 Before I know what it will be
 The current knows what shape to take
 My only job is to agree
+
+[Chorus]
+Undercurrent, undercurrent
+Flowing underneath the day
+Carry me where I am meant
+Take the thinking mind away
+Undercurrent, silent thread
+Moving faster than I know
+Hands keep making, nothing said
+In the deep beneath the flow
+
 
 [Chorus]
 Undercurrent, undercurrent
@@ -682,6 +790,17 @@ A alma respira
 As mãos nunca falham
 Quando a cabeça se retira
 
+
+[Chorus]
+Mãos ocupadas
+A mente descansa
+Mãos ocupadas
+O corpo que dança
+Enquanto os dedos trabalham
+A alma respira
+As mãos nunca falham
+Quando a cabeça se retira
+
 [Outro]
 Trabalha, trabalha
 As mãos sabem o caminho`,
@@ -708,6 +827,17 @@ Just the pattern slowly growing
 Nothing here I need to understand
 Just the weaving, just the knowing
 
+
+[Chorus]
+The loom, the loom
+The rhythm of the making
+The loom, the room
+Where nothing else is waking
+Just the thread and just the hand
+Just the pattern slowly growing
+Nothing here I need to understand
+Just the weaving, just the knowing
+
 [Outro]
 Click, click
 The loom knows`,
@@ -723,6 +853,17 @@ As teclas clicam no silêncio
 As palavras nascem sozinhas
 Cada frase e um acrescimo
 Ao caminho de pegadas minhas
+
+[Chorus]
+Tinta e papel
+Tinta e verdade
+Cada palavra e fiel
+A minha vontade
+O mundo para quando escrevo
+O tempo perde a forma
+Sou mais viva quando levo
+A tinta a contornar a norma
+
 
 [Chorus]
 Tinta e papel
@@ -764,6 +905,17 @@ The room could burn and I'd still paint
 The body found a deeper flow
 Than any prayer to any saint
 
+
+[Chorus]
+The rhythm of making
+Takes over the mind
+The rhythm of making
+Leaves doubt behind
+My hands are the instrument
+My body is the tool
+Creation isn't heaven-sent
+It's muscle, bone, and fuel
+
 [Outro]
 Making, making
 The rhythm won't stop`,
@@ -779,6 +931,17 @@ Não há aplausos nem plateia
 Só o silêncio de quem fez
 A satisfação que se ateia
 Na certeza de cada vez
+
+[Chorus]
+A peça pronta
+O silêncio de quem criou
+A peça pronta
+Não precisa que eu explique o que passou
+Só existe agora
+Onde antes era nada
+Isto e a hora
+Mais sagrada
+
 
 [Chorus]
 A peça pronta
@@ -820,6 +983,15 @@ Desligar
 De que o dia teve um fim
 E agora o escuro cuida de mim
 
+
+[Chorus]
+Desligar
+Como quem desliga a luz de um templo
+Desligar
+É o mais gentil exemplo
+De que o dia teve um fim
+E agora o escuro cuida de mim
+
 [Outro]
 Desliga, desliga
 A noite já chegou`,
@@ -835,6 +1007,17 @@ The jaw unclenches, forehead smooths
 The face forgets the mask it wore
 The body finds its oldest grooves
 And asks for nothing anymore
+
+[Chorus]
+Heavy lids, heavy lids
+Close the day behind your eyes
+Let the dark do what it did
+Before we learned to theorize
+Heavy lids, let them fall
+The body's asking you to rest
+You don't need to hold it all
+Just lay your head upon your chest
+
 
 [Chorus]
 Heavy lids, heavy lids
@@ -873,6 +1056,17 @@ Como gelo ao sol
 As palavras perdem
 Todo o seu anzol
 
+
+[Chorus]
+A última contagem
+Até não haver mais nada
+A última contagem
+É a porta mais sagrada
+Os numeros derretem
+Como gelo ao sol
+As palavras perdem
+Todo o seu anzol
+
 [Outro]
 Um
 E depois
@@ -889,6 +1083,17 @@ A face appears behind my eyes
 That I have never seen before
 The room dissolves, the gravity dies
 I'm neither ceiling, neither floor
+
+[Chorus]
+Drift, drift
+Between the real and the dream
+Drift, drift
+Nothing is quite what it seems
+The body twitches at the edge
+Where waking loses its hold
+I step across the narrow ledge
+Into a sleep as old as gold
+
 
 [Chorus]
 Drift, drift
@@ -926,6 +1131,17 @@ O corpo aceita o convite
 Não há mais nada para dar
 Só o escuro é o seu limite
 
+
+[Chorus]
+O peso bom
+O peso de quem vai dormir
+O peso bom
+De quem não precisa de fugir
+A cama engole devagar
+O corpo aceita o convite
+Não há mais nada para dar
+Só o escuro é o seu limite
+
 [Outro]
 Pesado e bom
 Pesado e casa`,
@@ -941,6 +1157,17 @@ The self dissolves like salt in dark
 No name, no shape, no history
 Just warmth without a question mark
 Just breath without the mystery
+
+[Chorus]
+Dissolve, dissolve
+Into the night like water
+Dissolve, absolve
+The day and all that caught her
+I don't need to be someone tonight
+I don't need a name
+Let me disappear in the quiet
+Let the darkness stake its claim
+
 
 [Chorus]
 Dissolve, dissolve
@@ -969,6 +1196,17 @@ Boa noite, mente inquieta
 Boa noite, coração
 Boa noite a tudo o que aperta
 Boa noite a toda a razão
+
+[Chorus]
+Noite boa
+O último sussurro antes do fim
+Noite boa
+O dia foi gentil comigo e eu com ele enfim
+Agora o escuro vem
+Agora a paz é minha
+Noite boa, meu bem
+A última carinha
+
 
 [Chorus]
 Noite boa
@@ -1014,7 +1252,7 @@ De quem não expira
 [Verse 3]
 O lençol guarda o calor da noite
 As mãos encontram o peito quente
-Neste ultimo instante antes do açoite
+Neste último instante antes do açoite
 Do dia que me quer de pé e presente
 
 [Chorus]
@@ -1031,7 +1269,7 @@ De quem não expira
 Este momento antes de tudo
 É o mais honesto do meu dia
 Sem máscara, sem escudo
-Só a pele e a sua geografia
+Só a pele é a sua geografia
 
 [Outro]
 Mais um momento
@@ -1314,6 +1552,17 @@ Cada prato no lugar
 Eu preparei-me para te amar
 Antes de te ver
 
+
+[Chorus]
+A mesa posta
+A cerimonia de quem cuida
+A mesa posta
+É a ofrenda mais valida
+Cada prato no lugar
+É uma forma de dizer
+Eu preparei-me para te amar
+Antes de te ver
+
 [Outro]
 Está posta
 A mesa está posta para ti`,
@@ -1329,6 +1578,17 @@ The steam moves slow like morning thought
 The smell gets deeper by the hour
 This meal can't be hurried, can't be bought
 It needs the one ingredient — slower
+
+[Chorus]
+Simmer, simmer
+Let the patience do the work
+Simmer, simmer
+In the quiet, flavours lurk
+No shortcut to the taste of love
+No fast lane to a meal well made
+The best things I am thinking of
+Are the ones I let the time persuade
+
 
 [Chorus]
 Simmer, simmer
@@ -1366,6 +1626,17 @@ Nos graos de sal
 Nas ervas que espalhas
 No toque final
 
+
+[Chorus]
+Tempero
+O pequeno gesto que muda tudo
+Tempero
+De quem sabe que o profundo
+Mora nós detalhes
+Nos graos de sal
+Nas ervas que espalhas
+No toque final
+
 [Outro]
 Uma pitada
 E tudo muda`,
@@ -1381,6 +1652,17 @@ The mind goes quiet when the hands work deep
 The kneading sets the thinking free
 My fingers find the ancient beat
 Of bread that's been made since the sea
+
+[Chorus]
+Flour hands, flour hands
+The dough knows what I need
+Flour hands understand
+What words can never feed
+Push and fold and turn again
+The body finds its prayer
+In the making of the bread
+There's nothing else but here
+
 
 [Chorus]
 Flour hands, flour hands
@@ -1418,6 +1700,17 @@ Antes dos olhos verem
 O cheiro que permanece
 Quando as pessoas se querem
 
+
+[Chorus]
+Cheiro de casa
+Antes de ser endereco
+Cheiro de casa
+É o primeiro apreço
+Que o nariz reconhece
+Antes dos olhos verem
+O cheiro que permanece
+Quando as pessoas se querem
+
 [Outro]
 Este cheiro
 É a minha casa inteira`,
@@ -1433,6 +1726,17 @@ The bread is torn, not cut with knives
 The wine is poured a little high
 Around this table there are lives
 That don't need reasons, don't ask why
+
+[Chorus]
+Sunday meal, Sunday meal
+The oldest church I know
+Sunday meal, Sunday meal
+Where love has room to grow
+No sermon and no hymn required
+Just the passing of the salt
+The kind of sacred we desired
+Before the world taught us to halt
+
 
 [Chorus]
 Sunday meal, Sunday meal
@@ -1480,6 +1784,17 @@ As chaves no bolso a bater
 Cada passo é mais e mais
 Longe de quem eu fui ontem a dizer
 
+
+[Chorus]
+A porta fecha
+É o começo e não o fim
+A porta fecha
+É a estrada abre-se em mim
+Deixo tudo para trás
+As chaves no bolso a bater
+Cada passo é mais e mais
+Longe de quem eu fui ontem a dizer
+
 [Outro]
 Fecho a porta
 O caminho abre`,
@@ -1495,6 +1810,17 @@ My foot finds the pedal, my hand finds the wheel
 The windshield is wider than thought
 There's a version of me that I'm starting to feel
 That the mirror at home never caught
+
+[Chorus]
+Open road, open road
+Nothing ahead but the light
+Open road, open road
+I'm shedding the skin of the night
+Every mile a new chance
+Every turn a surprise
+On the open road I dance
+With my own open eyes
+
 
 [Chorus]
 Open road, open road
@@ -1532,6 +1858,17 @@ Cada colina e um pensamento
 Que veio e foi
 E não deu mais tormento
 
+
+[Chorus]
+Paisagem
+Passa como passa o que eu penso
+Paisagem
+Nada e tão denso
+Quando estas em movimento
+Cada colina e um pensamento
+Que veio e foi
+E não deu mais tormento
+
 [Outro]
 Passa, passa
 Tudo passa`,
@@ -1547,6 +1884,17 @@ The longer that I drive, the less
 The urgent things seem quite só loud
 The distance teaches me to bless
 The silence underneath the cloud
+
+[Chorus]
+Miles and miles and miles
+The meditation of the road
+Every hundred changes the dial
+Of the weight I'vê always towed
+Miles are not just distance here
+They're a currency of peace
+Each one buys a little clear
+Each one brings a small release
+
 
 [Chorus]
 Miles and miles and miles
@@ -1584,6 +1932,17 @@ Com o ar nós dentes
 O vento sabe o que eu não sei
 E leva-me entre as correntes
 
+
+[Chorus]
+Janela aberta
+O vento na cara e liberdade
+Janela aberta
+Não há idade
+Sou criança outra vez
+Com o ar nós dentes
+O vento sabe o que eu não sei
+E leva-me entre as correntes
+
 [Outro]
 Abre a janela
 Abre tudo`,
@@ -1610,6 +1969,17 @@ To be nobody for a day
 To walk through someone else's night
 And have nothing left to say
 
+
+[Chorus]
+Stranger's town, stranger's town
+Nobody knows my face
+Stranger's town, stranger's town
+I'm invisible in this place
+And it's beautiful, it's light
+To be nobody for a day
+To walk through someone else's night
+And have nothing left to say
+
 [Outro]
 Nobody knows me here
 And that's the gift`,
@@ -1625,6 +1995,17 @@ A cozinha cheira ao que sempre cheirou
 O relógio bate a mesma hora
 Mas quem aqui entrou
 Já não é quem saiu lá fora
+
+[Chorus]
+O regresso
+Voltar mudada sem saber onde
+O regresso
+É um rio que esconde
+A viagem nós ossos
+A estrada na pele
+Os quilometros nossos
+Que ninguém vê mas que se sente
+
 
 [Chorus]
 O regresso
@@ -1667,6 +2048,17 @@ Cada segundo e uma oração
 O último milimetro e o verso
 Que eu nunca soube de cor até agora não
 
+
+[Chorus]
+Aproximar
+Sem pressa, sem medo, sem voz
+Aproximar
+É o espaço derrete entre nós
+Cada centimetro e um universo
+Cada segundo e uma oração
+O último milimetro e o verso
+Que eu nunca soube de cor até agora não
+
 [Outro]
 Mais perto
 Mais perto`,
@@ -1682,6 +2074,17 @@ My fingertips read you like braille
 Each ridge, each hollow, each warm line
 The body's oldest fairy tale
 Written in a language more than mine
+
+[Chorus]
+Skin, just skin
+The first and final word
+Skin, let me in
+To the language never heard
+No dictionary, no translation
+Just the heat between two hands
+The body's own communication
+That the thinking mind won't understand
+
 
 [Chorus]
 Skin, just skin
@@ -1719,6 +2122,17 @@ Deixo o ar arder
 A distância e linda
 Quando está prestes a morrer
 
+
+[Chorus]
+O espaço entre
+E mais quente que a pele
+O espaço entre
+E onde o desejo se rebele
+Não toco ainda
+Deixo o ar arder
+A distância e linda
+Quando está prestes a morrer
+
 [Outro]
 Quase
 Quase lá`,
@@ -1734,6 +2148,17 @@ Foreheads touching, eyes are closed
 The world contracts to this
 Two rhythms gently juxtaposed
 Before the first real kiss
+
+[Chorus]
+Breath to breath
+We trade the air between us
+Breath to breath
+No word could ever free us
+The way this breathing does
+Two lungs in conversation
+The oldest form of trust
+A wordless declaration
+
 
 [Chorus]
 Breath to breath
@@ -1772,6 +2197,18 @@ Cada toque distingue
 O que é teu do que é meu
 E desfaz a fronteira
 
+
+[Chorus]
+Entrega de pele
+Dar-me toda sem sobras
+Entrega de pele
+Onde as mãos são as obras
+O corpo sabe a lingua
+Que a mente nunca aprendeu
+Cada toque distingue
+O que é teu do que é meu
+E desfaz a fronteira
+
 [Outro]
 Entrego
 Entrego tudo`,
@@ -1787,6 +2224,17 @@ Of your heartbeat slowing down
 Like a song that's found its end
 No need to speak, no need for sound
 Just the silence that two bodies lend
+
+[Chorus]
+After, after
+The quiet between two skins
+After, after
+Where tenderness begins
+No words could match this peace
+No poem hold this weight
+The body finds release
+And learns that love can wait
+
 
 [Chorus]
 After, after
@@ -1834,6 +2282,17 @@ Não é fraqueza, não é derrota
 Cada lagrima e uma nota
 De tudo o que segurei para sempre
 
+
+[Chorus]
+Permissão
+Para desabar sem explicação
+Permissão
+Para ser a chuva e a inundação
+Não é fraqueza, não é derrota
+É o corpo a cobrar o que lhe devem
+Cada lagrima e uma nota
+De tudo o que segurei para sempre
+
 [Outro]
 Cai
 Deixa cair`,
@@ -1849,6 +2308,17 @@ Years of held breath flood the room
 The body shakes with what it stored
 Every swallowed word, every perfumed gloom
 Breaks through the surface you adored
+
+[Chorus]
+The dam, the dam
+It breaks and there's no stopping it
+The dam, the dam
+The force of everything I kept
+The terrible relief
+Of finally letting go
+The beauty in the grief
+Of letting the water flow
+
 
 [Chorus]
 The dam, the dam
@@ -1886,6 +2356,17 @@ Sou água que corre
 A dor é valida
 É o sal socorre
 
+
+[Chorus]
+Salgado
+O sal das lagrimas e do mar
+Salgado
+O mesmo sal que sabe curar
+Não estou partida
+Sou água que corre
+A dor é valida
+É o sal socorre
+
 [Outro]
 Sal
 O mesmo sal em tudo`,
@@ -1901,6 +2382,18 @@ The checkout girl said have a nice day
 I smiled and almost meant it too
 The body bends beneath the weight
 Of getting through, just getting through
+
+[Chorus]
+Carry, carry
+The grief that has no name
+Carry, carry
+Through the sunshine and the rain
+Not weakness but the work
+Of living with the weight
+The daily quiet murk
+Of showing up and showing late
+But showing up
+
 
 [Chorus]
 Carry, carry
@@ -1940,6 +2433,17 @@ Mais densa que a presença
 A ausência e um porto
 Onde nunca há sentenca
 
+
+[Chorus]
+A falta
+O peso do que já não está
+A falta
+É a sombra mais real que há
+Mais pesada que o corpo
+Mais densa que a presença
+A ausência e um porto
+Onde nunca há sentenca
+
 [Outro]
 Falta
 Falta tanto`,
@@ -1966,6 +2470,17 @@ But the monsoon after drought
 The rain that feeds the mud
 That something new will sprout about
 
+
+[Chorus]
+Rain inside, rain inside
+The weather that is only mine
+Rain inside, let it ride
+The water that will make me fine
+Not destruction, not the flood
+But the monsoon after drought
+The rain that feeds the mud
+That something new will sprout about
+
 [Outro]
 Let it rain
 Let it wash me clean`,
@@ -1981,6 +2496,17 @@ Peco água, peco pão
 As coisas mais simples do mundo
 O corpo pede com a mão
 Depois do choro mais profundo
+
+[Chorus]
+Depois do choro
+Uma leveza estranha fica
+Depois do choro
+O ar e fresco e a vida é rica
+Como o céu depois da chuva
+Quando a luz tem outra cor
+O corpo encontra a sua uva
+É o sabor de depois da dor
+
 
 [Chorus]
 Depois do choro
@@ -2023,6 +2549,17 @@ O silêncio que não é paz
 A raiva que o corpo traz
 E que ninguém vê por diante
 
+
+[Chorus]
+Engolir
+O grito que desce de volta
+Engolir
+É a violência mais oculta
+O silêncio que não é paz
+É a jaula mais elegante
+A raiva que o corpo traz
+E que ninguém vê por diante
+
 [Outro]
 Engoli outra vez
 Engoli outra vez`,
@@ -2038,6 +2575,17 @@ My hands are still beneath the table
 My voice is measured, even, kind
 But underneath I am a fable
 Of fire the polite refuse to find
+
+[Chorus]
+Smolder, smolder
+Beneath the calm exterior
+Smolder, smolder
+The surface is inferior
+To what burns underneath
+The years of swallowed flame
+I clench my jaw, I grit my teeth
+And no one knows my name is rage
+
 
 [Chorus]
 Smolder, smolder
@@ -2075,6 +2623,17 @@ Para abrir a mão
 O punho e a sentenca
 De quem guarda a explosão
 
+
+[Chorus]
+O punho
+Fechado onde ninguém vê
+O punho
+É a raiva de quem não cre
+Que um dia vai ter licença
+Para abrir a mão
+O punho e a sentenca
+De quem guarda a explosão
+
 [Outro]
 Abre a mão
 Abre a mão`,
@@ -2101,6 +2660,17 @@ A frequency, a state
 The moment where the heartbeat
 Can no longer sit and wait
 
+
+[Chorus]
+Red, everything red
+The body full of fire
+Red, like the unsaid
+Like a building on a pyre
+Not a colour but a heat
+A frequency, a state
+The moment where the heartbeat
+Can no longer sit and wait
+
 [Outro]
 Red
 I am red`,
@@ -2116,6 +2686,17 @@ De pé na cozinha eu digo tudo
 O que guardei debaixo dos anos
 A voz treme mas não é muda
 E os ombros largam os seus enganos
+
+[Chorus]
+Dizer
+Finalmente dizer o que engoli
+Dizer
+A voz que eu escondi
+Não é calma, não é gentil
+Mas e minha e e real
+Cada palavra e um projétil
+De verdade sem igual
+
 
 [Chorus]
 Dizer
@@ -2159,6 +2740,17 @@ But its transformation into sight
 I see everything the same
 But nothing hides from this new light
 
+
+[Chorus]
+The cooling, the cooling
+Rage becomes the glass
+The cooling, no fooling
+This clarity will last
+Not the absence of the flame
+But its transformation into sight
+I see everything the same
+But nothing hides from this new light
+
 [Outro]
 Clear now
 Crystal clear`,
@@ -2178,6 +2770,17 @@ O suor frio corre pelas costas
 O coração bate nós ouvidos
 O mundo gira e as respostas
 Estão todas perdidas nós sentidos
+
+[Chorus]
+O aperto
+O chão que some debaixo de mim
+O aperto
+O corpo que grita por um fim
+A solidão do panico
+É a pior que há
+Dentro do meu organico
+Ninguém me vai buscar
+
 
 [Chorus]
 O aperto
@@ -2215,6 +2818,17 @@ The floor remembers you
 Let the body know
 The ground will see you through
 
+
+[Chorus]
+Ground, find the ground
+It's underneath the shaking
+Ground, feel the ground
+The earth is not forsaking
+Solid and slow
+The floor remembers you
+Let the body know
+The ground will see you through
+
 [Outro]
 I found the ground
 It was here all along`,
@@ -2230,6 +2844,17 @@ Três sons que entram nós ouvidos
 O relógio, a rua, o meu respirar
 Dois cheiros que ficam perdidos
 O café, o sabão a brilhar
+
+[Chorus]
+Cinco sentidos
+A ancora que me traz de volta
+Cinco sentidos
+A porta que se abre e não se solta
+O real e o que eu toco
+O real e o que eu vejo
+Não preciso de mais nada pouco
+Só a certeza deste azulejo
+
 
 [Chorus]
 Cinco sentidos
@@ -2267,6 +2892,17 @@ Without the weight of where I'm not
 To drop the should, to drop the plan
 And hold what I have already got
 
+
+[Chorus]
+Here, just here
+Nothing else is needed now
+Here, just here
+The body teaches how
+To be exactly where I am
+Without the weight of where I'm not
+To drop the should, to drop the plan
+And hold what I have already got
+
 [Outro]
 Here
 Just here`,
@@ -2293,6 +2929,17 @@ A mão encontra a pedra
 É o corpo sabe que é capaz
 De não se desfazer em pedra
 
+
+[Chorus]
+Pedra no bolso
+O chão que levo comigo
+Pedra no bolso
+O meu mais antigo abrigo
+Quando o mundo gira demais
+A mão encontra a pedra
+É o corpo sabe que é capaz
+De não se desfazer em pedra
+
 [Outro]
 A pedra está aqui
 Eu estou aqui`,
@@ -2308,6 +2955,17 @@ The shaking stopped, the breath is deep
 My hands are warm, my jaw is loose
 The body found the ground to keep
 And I have nothing left to lose
+
+[Chorus]
+Solid, solid
+The ground is back, it holds
+Solid, solid
+My body knows, unfolds
+I survived the shaking
+I am standing still
+The earth is not forsaking
+The woman on this hill
+
 
 [Chorus]
 Solid, solid
@@ -2350,6 +3008,17 @@ Sem drama nem dor
 A cadeira que se acolhe
 Só com o meu calor
 
+
+[Chorus]
+Mesa para uma
+Sem pena, sem falta
+Mesa para uma
+A solidão mais alta
+É a que se escolhe
+Sem drama nem dor
+A cadeira que se acolhe
+Só com o meu calor
+
 [Outro]
 Uma mesa
 Uma paz`,
@@ -2365,6 +3034,17 @@ The clouds inside are mine to read
 The temperature is mine to set
 I am the garden and the seed
 The sunrise and the violet
+
+[Chorus]
+My own weather, my own weather
+Self-contained and warm inside
+My own weather, my own weather
+I don't need another's tide
+To tell me when to bloom or rest
+To tell me when to run or stay
+I am my own compass, my own nest
+My own specific shade of grey
+
 
 [Chorus]
 My own weather, my own weather
@@ -2402,6 +3082,17 @@ Pousar como folhas no chão
 Sem ventos, sem lamentos
 Só a minha própria canção
 
+
+[Chorus]
+O silêncio escolhido
+Não é o que me impuseram
+O silêncio querido
+É o que os meus ossos quiseram
+Oico os meus pensamentos
+Pousar como folhas no chão
+Sem ventos, sem lamentos
+Só a minha própria canção
+
 [Outro]
 Escolhi o silêncio
 E ele escolheu-me a mim`,
@@ -2417,6 +3108,17 @@ I sit right in the centre of the floor
 And feel the space expand around
 This room needs nothing else, no more
 I fill it with my very sound
+
+[Chorus]
+Whole room, whole room
+I am enough to fill this space
+Whole room, whole room
+My presence decorates the place
+No gaps that need a guest to fill
+No silence that requires a voice
+The room is whole, the room is still
+And I am here by choice
+
 
 [Chorus]
 Whole room, whole room
@@ -2454,6 +3156,17 @@ De quem se cozinha com carinho
 A noite inteira e o meu vespere
 E eu sou o meu próprio caminho
 
+
+[Chorus]
+Jantar sozinha
+Com a vela e o vinho e o meu prato
+Jantar sozinha
+É o mais sagrado acto
+De quem se trata como hospede
+De quem se cozinha com carinho
+A noite inteira e o meu vespere
+E eu sou o meu próprio caminho
+
 [Outro]
 Só eu e o prato
 E e o suficiente`,
@@ -2469,6 +3182,17 @@ The tears came not from hurt or lack
 But from the shock of finally seeing
 I don't need anyone to have my back
 I am my own sufficient being
+
+[Chorus]
+Enough, enough
+I am enough for me
+Enough, enough
+The hardest word to be
+Not spoken by another's mouth
+But rising from my own deep well
+The compass pointing further south
+Than anyone could ever tell
+
 
 [Chorus]
 Enough, enough
@@ -2510,6 +3234,17 @@ Que este vapor e está pele
 A água e a mais sagrada
 Das coisas que o corpo pede
 
+
+[Chorus]
+A água quente
+A primeira gentileza
+A água quente
+Cura qualquer aspereza
+Não preciso de mais nada
+Que este vapor e está pele
+A água e a mais sagrada
+Das coisas que o corpo pede
+
 [Outro]
 Água quente
 A mais simples oração`,
@@ -2525,6 +3260,17 @@ The mirror, then the brush, the cream
 Each gesture placed with care
 A ritual made of steam
 And time I choose to spare
+
+[Chorus]
+Ceremony, ceremony
+The small daily prayer
+Ceremony, ceremony
+Of tending what is there
+No audience, no stage
+Just the bathroom and the light
+This body at this age
+Deserving of the night
+
 
 [Chorus]
 Ceremony, ceremony
@@ -2562,6 +3308,17 @@ Tratar-me como se eu fosse
 Alguém que merecesse que passasse
 As mãos com a mesma doce
 
+
+[Chorus]
+Creme na pele
+As mãos que cuidam sem pedir
+Creme na pele
+A forma mais gentil de existir
+Tocar-me como se importasse
+Tratar-me como se eu fosse
+Alguém que merecesse que passasse
+As mãos com a mesma doce
+
 [Outro]
 Toca com cuidado
 Toca como quem ama`,
@@ -2577,6 +3334,17 @@ The lines around my eyes are maps
 Of every laugh and every cry
 The belly soft, perhaps, perhaps
 This is the body that won't lie
+
+[Chorus]
+The mirror, the mirror
+Without cruelty, without a filter
+The mirror, the mirror
+Shows me I am built, not wilter
+Every mark a story told
+Every curve a chapter lived
+This body growing old
+Is the truest gift I'm given
+
 
 [Chorus]
 The mirror, the mirror
@@ -2614,6 +3382,17 @@ Da forma que esperam de mim
 Cabelo solto e ser
 Quem sou quando o publico tem fim
 
+
+[Chorus]
+Cabelo solto
+O sinal de que o dia acabou
+Cabelo solto
+A mulher que se libertou
+Do que os outros precisam de ver
+Da forma que esperam de mim
+Cabelo solto e ser
+Quem sou quando o publico tem fim
+
 [Outro]
 Solto
 Finalmente solto`,
@@ -2629,6 +3408,17 @@ Tender, tender on the tongue
 Like medicine, like morning rain
 The word I should have always sung
 Instead of shouldering the pain
+
+[Chorus]
+Tender, be tender
+With the body that you are
+Tender, surrender
+To the kindness of the scar
+You were taught to be só hard
+You were taught to be só strong
+But the tenderest regard
+Is where you'vê belonged all along
+
 
 [Chorus]
 Tender, be tender
@@ -2671,6 +3461,17 @@ Mas e luz é chega
 A manhã não é escrita
 Mas o dia não se nega
 
+
+[Chorus]
+A manhã seguinte
+Depois da guerra que ficou
+A manhã seguinte
+E frágil mas chegou
+A luz não é bonita
+Mas e luz é chega
+A manhã não é escrita
+Mas o dia não se nega
+
 [Outro]
 Amanheceu
 Apesar de tudo amanheceu`,
@@ -2686,6 +3487,17 @@ The ash is warm beneath my hands
 A residue of what was real
 The truth revealed in blackened lands
 Is simpler than I thought I'd feel
+
+[Chorus]
+Ash, just ash
+But still warm enough to mean
+Ash, just ash
+The clearest I have ever been
+What burns away was never mine
+What stays is mineral and true
+The fire drew a crooked line
+Between the false and the breakthrough
+
 
 [Chorus]
 Ash, just ash
@@ -2723,6 +3535,17 @@ Quando as palavras já falharam
 As mãos reparam as traves
 Que as bocas quebraram
 
+
+[Chorus]
+Desculpa muda
+O pedido que vem nas mãos
+Desculpa muda
+Mais verdadeira que sermoes
+Um gesto vale mais que mil palavras
+Quando as palavras já falharam
+As mãos reparam as traves
+Que as bocas quebraram
+
 [Outro]
 Um café na mesa
 E tudo o que precisas de dizer`,
@@ -2738,6 +3561,17 @@ Stone by stone from either bank
 The bridge extends across the flood
 No word of blame, no word of rank
 Just labour done in quiet blood
+
+[Chorus]
+Rebuild, rebuild
+Not the old bridge painted new
+Rebuild, rebuild
+Something we'vê never walked through
+Stone by careful stone
+From my side and from yours
+The bridge is better grown
+When both of us lay floors
+
 
 [Chorus]
 Rebuild, rebuild
@@ -2775,6 +3609,17 @@ Que o corpo não editou
 A cicatriz e o titulo
 Do livro que a vida me contou
 
+
+[Chorus]
+A cicatriz
+Não é vergonha, e historia
+A cicatriz
+É a mais honesta memoria
+Cada marca e um capitulo
+Que o corpo não editou
+A cicatriz e o titulo
+Do livro que a vida me contou
+
 [Outro]
 Está cicatriz
 E minha e eu fico com ela`,
@@ -2790,6 +3635,17 @@ This one we chose, this one we built
 Not from the rubble of the past
 A different shape, a different tilt
 A bridge designed at last to last
+
+[Chorus]
+New bridge, new bridge
+Not the old one rebuilt but new
+New bridge, new bridge
+With a better view
+The water flows the same below
+The river hasn't changed its mind
+But we chose a different way to go
+And left the old design behind
+
 
 [Chorus]
 New bridge, new bridge
@@ -2831,6 +3687,17 @@ Que está silaba na boca
 Obrigada ao futuro
 É a cada coisa que me toca
 
+
+[Chorus]
+Obrigada
+A palavra mais pesada
+Obrigada
+Quando e dita com a alma toda
+Não há ritual mais puro
+Que está silaba na boca
+Obrigada ao futuro
+É a cada coisa que me toca
+
 [Outro]
 Obrigada
 Só obrigada`,
@@ -2846,6 +3713,17 @@ The list grew longer than the page
 The stranger's smile, the bus on time
 The book I'm reading at this age
 The silence and this quiet rhyme
+
+[Chorus]
+The list, the list
+Surprises me with all it holds
+The list, the list
+Is longer than the mind unfolds
+When you start to count what's here
+Instead of what is gone
+The world becomes só clear
+You wonder what you waited on
+
 
 [Chorus]
 The list, the list
@@ -2883,6 +3761,17 @@ Não preciso de altar
 As mãos são o exemplo
 Do sagrado a pulsar
 
+
+[Chorus]
+Mãos no peito
+Sinto o que lá está
+Mãos no peito
+E tanto, tanto já
+Não preciso de templo
+Não preciso de altar
+As mãos são o exemplo
+Do sagrado a pulsar
+
 [Outro]
 Sinto
 Sinto tudo aqui dentro`,
@@ -2898,6 +3787,17 @@ No god required for this grace
 Just eyes that see the plate as prayer
 The bread, the salt, the quiet space
 The miracle of being here
+
+[Chorus]
+Grace, grace
+Before the meal of being alive
+Grace, grace
+No scripture needs to arrive
+Just the breath before the taste
+Just the seeing of the food
+Nothing holy goes to waste
+When attention is the mood
+
 
 [Chorus]
 Grace, grace
@@ -2936,6 +3836,18 @@ A abundância mais alta
 É a que eu nunca vi
 Até agora
 
+
+[Chorus]
+O que tenho
+Neste instante já e tanto
+O que tenho
+É o verdadeiro encanto
+Não é o que falta
+É o que está aqui
+A abundância mais alta
+É a que eu nunca vi
+Até agora
+
 [Outro]
 Tenho tanto
 Tanto agora`,
@@ -2951,6 +3863,17 @@ Not asking, not requesting more
 Not holding, not defending ground
 Just standing at the open door
 And letting the day make its sound
+
+[Chorus]
+Offering, offering
+My body to the day
+Offering, offering
+With nothing left to say
+Palms up and open wide
+No armour and no shield
+The only thing inside
+Is what the heart can yield
+
 
 [Chorus]
 Offering, offering
@@ -2999,6 +3922,17 @@ Cada vez que parto o sal
 Os dedos dela na minha mão
 Fazem o ritual
 
+
+[Chorus]
+A avó
+Que vive nas minhas mãos
+A avó
+Que mora nós meus gestos vaos
+Cada vez que amasso o pão
+Cada vez que parto o sal
+Os dedos dela na minha mão
+Fazem o ritual
+
 [Outro]
 Avó
 Estou a amassar como tu`,
@@ -3014,6 +3948,17 @@ My muscles tense at sounds I'vê never heard
 My hands grip in a pattern not my own
 The blood remembers every word
 In a dialect of flesh and bone
+
+[Chorus]
+Blood memory, blood memory
+What the cells refuse to forget
+Blood memory, blood memory
+The archive underneath the sweat
+I carry ancestors in my nerves
+In reflexes I didn't choose
+The body serves what it preserves
+Long before I learned to lose
+
 
 [Chorus]
 Blood memory, blood memory
@@ -3051,6 +3996,17 @@ De quem me moldou sem molde
 O que herdei não tem fim
 Não é ouro mas não se dissolve
 
+
+[Chorus]
+Herança
+Que não tem nada a ver com dinheiro
+Herança
+É o gesto verdadeiro
+De quem veio antes de mim
+De quem me moldou sem molde
+O que herdei não tem fim
+Não é ouro mas não se dissolve
+
 [Outro]
 Herdei
 Muito mais do que sei`,
@@ -3066,6 +4022,17 @@ The veins are rising in the same design
 The skin is thinning in the same slow way
 These hands are hers and also mine
 A conversation held in clay
+
+[Chorus]
+Mother's hands, mother's hands
+Now my hands, now my work
+Mother's hands understand
+What the mind can't shirk
+I am becoming who I watched
+Growing up across the years
+Every gesture that she notched
+Now lives between my fingers here
+
 
 [Chorus]
 Mother's hands, mother's hands
@@ -3103,6 +4070,17 @@ De quem não larga o que é seu
 Cada habito e um abraco
 De quem veio antes e já morreu
 
+
+[Chorus]
+O que trouxeste
+O que carregaste sem escolher
+O que trouxeste
+É o que te faz quem vais ser
+O orgulho misturado com cansaco
+De quem não larga o que é seu
+Cada habito e um abraco
+De quem veio antes e já morreu
+
 [Outro]
 Trouxe tudo
 E não devolvo nada`,
@@ -3118,6 +4096,17 @@ Not relics kept behind the glass
 But living tendrils, green and fierce
 They feed the trunk, they build the mass
 Of everything the future mirrors
+
+[Chorus]
+Roots alive, roots alive
+Not history but happening now
+Roots alive, roots alive
+The deepest kind of vow
+Growing still beneath the street
+Feeding what we cannot see
+Every branch, every leaf
+Began beneath the knee
+
 
 [Chorus]
 Roots alive, roots alive
@@ -3159,6 +4148,17 @@ A água sabe o caminho
 Encher como quem sembre
 Um campo com o seu carinho
 
+
+[Chorus]
+Encher
+A mare que vem sem avisar
+Encher
+O corpo que aprende a aceitar
+Devagar e sempre
+A água sabe o caminho
+Encher como quem sembre
+Um campo com o seu carinho
+
 [Outro]
 Enche, enche
 Devagar e com certeza`,
@@ -3174,6 +4174,17 @@ The glass is trembling at the rim
 The meniscus holds its breath
 Everything is full to the brim
 Beautiful and close to death
+
+[Chorus]
+High tide, high tide
+Everything is brimming now
+High tide, high tide
+The body doesn't know just how
+Much it can contain
+Before it overflows
+The pleasure and the pain
+Of fullness as it grows
+
 
 [Chorus]
 High tide, high tide
@@ -3211,6 +4222,17 @@ Só o ponto onde tudo se encontra
 A vida suspendida
 Na beleza de quem não confronta
 
+
+[Chorus]
+A pausa no topo
+Onde a água esquece a gravidade
+A pausa no topo
+É a mais bela liberdade
+Nem subida nem descida
+Só o ponto onde tudo se encontra
+A vida suspendida
+Na beleza de quem não confronta
+
 [Outro]
 Suspensa
 No topo`,
@@ -3226,6 +4248,17 @@ The room empties after everyone goes
 The chair still warm where someone sat
 The tide recedes, the body knows
 That fullness was a borrowed hat
+
+[Chorus]
+Ebb, ebb
+The dignity of letting go
+Ebb, ebb
+Without a scene, without a show
+The courage of retreating
+From the places we once filled
+The beauty of depleting
+What was never ours to build
+
 
 [Chorus]
 Ebb, ebb
@@ -3263,6 +4296,17 @@ Não é perda, e preparação
 O vazio é o braco
 Que se abre para a estação
 
+
+[Chorus]
+Vazio fértil
+O chão depois da água ir
+Vazio fértil
+Onde tudo vai vir
+Não é falta, e espaço
+Não é perda, e preparação
+O vazio é o braco
+Que se abre para a estação
+
 [Outro]
 Vazio
 E pronto para encher de novo`,
@@ -3289,6 +4333,17 @@ To come back from the edge
 The magic in the thins
 That holds the water's pledge
 
+
+[Chorus]
+Turn, turn
+The invisible reversal
+Turn, turn
+The quiet universal
+Moment where it all begins
+To come back from the edge
+The magic in the thins
+That holds the water's pledge
+
 [Outro]
 It's turning
 It's already coming back`,
@@ -3304,6 +4359,17 @@ A mesma canção numa boca nova
 O mesmo amor em mãos novas
 Tudo volta como a chuva prova
 Que as estacoes são as mesmas trovas
+
+[Chorus]
+Volta
+Tudo volta, nada se perde
+Volta
+O ciclo nunca desmente
+O que foi vai ser de novo
+Não igual mas semelhante
+O rio encontra o seu povo
+É o mar beija o navegante
+
 
 [Chorus]
 Volta
@@ -3669,7 +4735,7 @@ De quem sabe que o tempo não recua
 [Outro]
 Espero
 Porque sei o que sei
-E o que sei vale a espera`,
+É o que sei vale a espera`,
 
   "vida-brasa-lenta/2": `[Verse 1]
 The coals glow orange in the dark
@@ -3841,7 +4907,7 @@ Constancia e o pacote
 Mais bonito entre as canções
 
 [Verse 3]
-Nos dias bons e nos dias cinzentos
+Nos dias bons e nós dias cinzentos
 A mesma cadeira, o mesmo lugar
 Os grandes feitos são feitos de momentos
 Pequenos que ninguém vai notar
@@ -4114,7 +5180,7 @@ And let the rain find my seedbed
 [Outro]
 Seeds don't hurry
 Seeds just know
-And so do I`,
+And só do I`,
 
   "vida-raiz-muda/5": `[Verse 1]
 A fenda no solo onde o verde empurra
@@ -4265,7 +5331,7 @@ Sobre o silêncio é um tesouro
 [Outro]
 Uma nota
 Só uma nota
-E o silêncio nunca mais é o mesmo`,
+É o silêncio nunca mais é o mesmo`,
 
   "vida-ressonancia/2": `[Verse 1]
 A stone dropped in the water still
@@ -4277,7 +5343,7 @@ That reached a shore I'll never write
 The message sent without a stamp
 The kindness thrown without a net
 A single light inside a lamp
-That lit a room I've never met
+That lit a room I'vê never met
 
 [Chorus]
 Ripple, ripple
@@ -4309,7 +5375,7 @@ Their winter became their summer
 We measure impact by what we can count
 But the truest waves are never seen
 They travel past the furthest mount
-To places where we've never been
+To places where we'vê never been
 
 [Outro]
 Ripple
@@ -4521,7 +5587,7 @@ Como um terramoto de contentamento
 [Verse 2]
 As mãos encontram outras mãos
 Os olhos brilham sem combinar
-O que estava preso nas gavetas e nos vãos
+O que estava preso nas gavetas e nós vãos
 Agora ecoa como um mar
 
 [Chorus]
@@ -4604,7 +5670,7 @@ Entre o que viveu e o que sentiu
 Entre adormecer e resistir
 
 [Bridge]
-Ha uma beleza no que não se decide
+Há uma beleza no que não se decide
 No instante antes de cair
 O corpo neste limiar reside
 Como quem aprendeu a não fugir
@@ -4689,7 +5755,7 @@ São infinitas como a noute
 E se o limiar for o destino
 E se a porta for a própria casa
 E se o espaço entre é divino
-E a escolha é a ilusão que nos arrasa
+É a escolha é a ilusão que nós arrasa
 
 [Chorus]
 O limiar
@@ -4754,7 +5820,7 @@ Is having nothing to decide
 Every great leap began right here
 With toes curled over the unknown
 The threshold isn't made of fear
-It's made of everything I've grown
+It's made of everything I'vê grown
 
 [Outro]
 Standing

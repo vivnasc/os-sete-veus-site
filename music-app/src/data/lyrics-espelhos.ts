@@ -91,7 +91,7 @@ And for the first time I can feel my own
 I can feel my own
 
 [Bridge]
-The stitching runs so deep it hums
+The stitching runs só deep it hums
 A lullaby of borrowed thread
 But I am pulling at the seam
 And finding gold beneath the dread
