@@ -283,7 +283,7 @@ Rest now`,
 
 
   // ─────────────────────────────────────────────
-  // SILÊNCIO FERTIL (meditacao, pausa)
+  // SILÊNCIO FERTIL (meditação, pausa)
   // ─────────────────────────────────────────────
 
   "vida-silêncio-fértil/1": `[Verse 1]
@@ -363,7 +363,7 @@ Que esta respiracao não sua
 O corpo respira
 Sem pedir licença
 O corpo respira
-Sem nenhuma crenca
+Sem nenhuma crença
 Só o ar que entra
 Só o ar que sai
 O resto e invencao
@@ -484,7 +484,7 @@ Nenhum altar
 Nenhuma promessa
 Só este chão é este ar
 Só este corpo a respirar
-Sem destino, sem razao
+Sem destino, sem razão
 Só a mao no coração
 
 [Outro]
@@ -776,7 +776,7 @@ Let them fall`,
 Dez, nove, oito
 O corpo afunda no colchao
 Sete, seis, cinco
-Já não há razao
+Já não há razão
 
 [Verse 2]
 Quatro, tres
@@ -889,7 +889,7 @@ Boa noite, olhos que choraram
 Boa noite, mente inquieta
 Boa noite, coração
 Boa noite a tudo o que aperta
-Boa noite a toda a razao
+Boa noite a toda a razão
 
 [Chorus]
 Noite boa
@@ -978,7 +978,7 @@ De vertebra em vertebra eu me vi
 Pes no chão
 A manhã entra pelo corpo
 Pes no chão
-O dia comeca a ter um porto
+O dia começa a ter um porto
 Cada passo e um contrato
 Com a terra que me segura
 De pé, descalca, exacto
@@ -1021,8 +1021,8 @@ O dia estica a sua tela
 E eu escolho a direcao
 
 [Verse 2]
-Não e uma lista nem um plano
-Não e uma obrigação
+Não é uma lista nem um plano
+Não é uma obrigação
 E mais como virar o volante humano
 Para o norte do coração
 
@@ -1030,7 +1030,7 @@ Para o norte do coração
 Intencao
 Sem força, só direcao
 Intencao
-A bussola sem pressao
+A bussola sem pressão
 Aponto para onde quero ir
 O corpo alinha devagar
 Não preciso de decidir
@@ -1184,7 +1184,7 @@ Pao no forno, café sem fim
 A casa esta desperta
 
 [Verse 2]
-Não e o lugar, sao as paredes
+Não é o lugar, sao as paredes
 Que absorveram tantos anos
 De cebola nas frigideiras redes
 De risos, de enganos
@@ -1360,7 +1360,7 @@ Janela aberta
 O vento na cara e liberdade
 Janela aberta
 Não há idade
-Sou crianca outra vez
+Sou criança outra vez
 Com o ar nós dentes
 O vento sabe o que eu não sei
 E leva-me entre as correntes
@@ -1405,7 +1405,7 @@ O mesmo mas eu sou outro povo
 A cozinha cheira ao que sempre cheirou
 O relógio bate a mesma hora
 Mas quem aqui entrou
-Já não e quem saiu la fora
+Já não é quem saiu la fora
 
 [Chorus]
 O regresso
@@ -1610,7 +1610,7 @@ Permissao
 Para desabar sem explicacao
 Permissao
 Para ser a chuva e a inundacao
-Não e fraqueza, não e derrota
+Não é fraqueza, não é derrota
 É o corpo a cobrar o que lhe devem
 Cada lagrima e uma nota
 De tudo o que segurei para sempre
@@ -1790,7 +1790,7 @@ E sinto-o arder
 
 [Verse 2]
 O estomago segura o que a boca recusa
-O corpo é a prisao da minha voz
+O corpo é a prisão da minha voz
 A raiva é tao educada e tao reclusa
 Que ninguem sabe o que há entre nós
 
@@ -1799,7 +1799,7 @@ Engolir
 O grito que desce de volta
 Engolir
 É a violência mais oculta
-O silêncio que não e paz
+O silêncio que não é paz
 É a jaula mais elegante
 A raiva que o corpo traz
 E que ninguem ve por diante
@@ -1895,7 +1895,7 @@ De ouvir a minha própria voz a arder
 [Verse 2]
 De pé na cozinha eu digo tudo
 O que guardei debaixo dos anos
-A voz treme mas não e muda
+A voz treme mas não é muda
 E os ombros largam os seus enganos
 
 [Chorus]
@@ -1903,7 +1903,7 @@ Dizer
 Finalmente dizer o que engoli
 Dizer
 A voz que eu escondi
-Não e calma, não e gentil
+Não é calma, não é gentil
 Mas e minha e e real
 Cada palavra e um projétil
 De verdade sem igual
@@ -2116,7 +2116,7 @@ O empregado não sentiu do
 O que eu sinto ao sentar-me nela
 
 [Verse 2]
-Não e triste, não e coragem
+Não é triste, não é coragem
 E só a escolha de quem sabe
 Que a melhor companhia na viagem
 As vezes e a chave que não abre
@@ -2164,7 +2164,7 @@ My world`,
   "vida-companhia-própria/3": `[Verse 1]
 O telefone virado para baixo
 O silêncio que escolhi de propósito
-Não e castigo nem despacho
+Não é castigo nem despacho
 É o luxo do meu próprio hospicio
 
 [Verse 2]
@@ -2175,7 +2175,7 @@ De quem esta inteiramente presente
 
 [Chorus]
 O silêncio escolhido
-Não e o que me impuseram
+Não é o que me impuseram
 O silêncio querido
 É o que os meus ossos quiseram
 Oico os meus pensamentos
@@ -2222,7 +2222,7 @@ Que só agora descobri
 [Verse 2]
 Sem ecra, sem distracao
 O garfo encontra cada sabor
-A boca mastiga com atencao
+A boca mastiga com atenção
 E cada pedaco tem amor
 
 [Chorus]
@@ -2323,13 +2323,13 @@ That nobody sees`,
 
   "vida-porcelana/3": `[Verse 1]
 As mãos passam creme no braco
-Com a mesma atencao que dou a outros
+Com a mesma atenção que dou a outros
 O cotovelo, o pulso, o laco
 Entre mim e os meus proprios encontros
 
 [Verse 2]
 Nunca me toquei assim
-Com intencao e sem pressa
+Com intenção e sem pressa
 As minhas mãos cuidam de mim
 Como quem reza sem missa
 
@@ -2434,12 +2434,12 @@ Be tender with yourself`,
 A luz entra cinzenta pela cortina
 O corpo rigido de quem dormiu em guarda
 A almofada humida, a rotina
-De um dia que comeca com ressaca
+De um dia que começa com ressaca
 
 [Verse 2]
 A chaleira e um acto de fé
 A chávena quente entre as mãos
-O silêncio já não e
+O silêncio já não é
 O que era antes das questoes
 
 [Chorus]
@@ -2447,9 +2447,9 @@ A manhã seguinte
 Depois da guerra que ficou
 A manhã seguinte
 E frágil mas chegou
-A luz não e bonita
+A luz não é bonita
 Mas e luz e chega
-A manhã não e escrita
+A manhã não é escrita
 Mas o dia não se nega
 
 [Outro]
@@ -2491,7 +2491,7 @@ A desculpa que não precisa de programa
 [Verse 2]
 O almoço feito sem que ninguem peça
 A porta aberta para o ar entrar
-As mãos dizem o que a boca não comeca
+As mãos dizem o que a boca não começa
 As mãos sabem como reparar
 
 [Chorus]
@@ -2541,14 +2541,14 @@ O corpo guarda o que a mente diz
 Que não merece mas que nunca escapa
 
 [Verse 2]
-Não e castigo esta marca
+Não é castigo esta marca
 E prova de que sobrevivi
 O corpo escreve a sua arca
 Na pele de quem nunca desistiu de si
 
 [Chorus]
 A cicatriz
-Não e vergonha, e historia
+Não é vergonha, e historia
 A cicatriz
 É a mais honesta memoria
 Cada marca e um capitulo
@@ -2587,13 +2587,13 @@ A new bridge
 Between us`,
 
   // ─────────────────────────────────────────────
-  // OFERENDA (gratidao, o sagrado sem igreja)
+  // OFERENDA (gratidão, o sagrado sem igreja)
   // ─────────────────────────────────────────────
 
   "vida-oferenda/1": `[Verse 1]
 A cabeça inclina-se de leve
-Não e submissao, e reconhecimento
-O peito abre quando a boca bebe
+Não é submissao, e reconhecimento
+O peito abre quando a boca bebé
 A palavra mais simples do momento
 
 [Verse 2]
@@ -2711,9 +2711,9 @@ O que tenho
 Neste instante já e tanto
 O que tenho
 É o verdadeiro encanto
-Não e o que falta
+Não é o que falta
 É o que está aqui
-A abundancia mais alta
+A abundância mais alta
 É a que eu nunca vi
 Até agora
 
@@ -2755,7 +2755,7 @@ Everything I am`,
 
 
   // ─────────────────────────────────────────────
-  // LINHAGEM (heranca, sangue)
+  // LINHAGEM (herança, sangue)
   // ─────────────────────────────────────────────
 
   "vida-linhagem/1": `[Verse 1]
@@ -2823,14 +2823,14 @@ O suspiro antes de pé
 Que a minha avó sempre dai
 
 [Chorus]
-Heranca
+Herança
 Que não tem nada a ver com dinheiro
-Heranca
+Herança
 É o gesto verdadeiro
 De quem veio antes de mim
 De quem me moldou sem molde
 O que herdei não tem fim
-Não e ouro mas não se dissolve
+Não é ouro mas não se dissolve
 
 [Outro]
 Herdei
@@ -3026,7 +3026,7 @@ Let the water leave`,
 O fundo do mar esta exposto
 As conchas, as criaturas, o chão
 O vazio mostra o seu rosto
-E não e feio, e clarificacao
+E não é feio, e clarificacao
 
 [Verse 2]
 As mãos abertas sem nada dentro
@@ -3039,8 +3039,8 @@ Vazio fértil
 O chão depois da água ir
 Vazio fértil
 Onde tudo vai vir
-Não e falta, e espaço
-Não e perda, e preparacao
+Não é falta, e espaço
+Não é perda, e preparacao
 O vazio é o braco
 Que se abre para a estação
 
@@ -3153,14 +3153,14 @@ Dance at home`,
 
   "vida-descalca/3": `[Verse 1]
 Numa terca-feira qualquer
-Sem razao nem justificacao
+Sem razão nem justificacao
 Os braços abrem como mulher
 Que encontrou a sua estação
 
 [Chorus]
-Sem razao
+Sem razão
 Celebro sem motivo
-Sem razao
+Sem razão
 É o acto mais vivo
 Porque o sol entrou pela janela
 Porque o café estava bom
@@ -3168,8 +3168,8 @@ Porque estou viva e bela
 E isso é motivo de som
 
 [Outro]
-Sem razao
-A melhor razao`,
+Sem razão
+A melhor razão`,
 
   "vida-descalca/4": `[Verse 1]
 The shout that comes from deep below
@@ -3205,7 +3205,7 @@ Antes da mente decidir
 
 [Chorus]
 O corpo sabe
-Celebrar antes de ter razao
+Celebrar antes de ter razão
 O corpo sabe
 A dança e a mais velha oração
 Os musculos lembram
@@ -3243,8 +3243,8 @@ Barefoot and infinite`,
 
   "vida-brasa-lenta/1": `[Verse 1]
 As mãos pousam no colo sem pressa
-A decisao ainda não esta pronta
-A paciência não e fraqueza
+A decisão ainda não esta pronta
+A paciência não é fraqueza
 É a força que ninguem conta
 
 [Chorus]
@@ -3253,7 +3253,7 @@ Não como espera mas como poder
 Paciencia
 É a arte de saber ser
 A mulher que não se apressa
-Não e lenta, e certeira
+Não é lenta, e certeira
 A força que nunca cessa
 É a que arde na fogueira mais ligeira
 
@@ -3383,7 +3383,7 @@ Só o futuro
 
 [Outro]
 No escuro
-Onde tudo comeca`,
+Onde tudo começa`,
 
   "vida-raiz-muda/2": `[Verse 1]
 The long cold winter of the bulb
@@ -3415,7 +3415,7 @@ Que se entrega ao que se prova
 Escuro fértil
 A escuridão que cria
 Escuro fértil
-Não e a noite fria
+Não é a noite fria
 É o útero da terra
 É o ventre do chão
 O escuro que se aferra
@@ -3492,7 +3492,7 @@ I was already here`,
   "vida-ressonancia/1": `[Verse 1]
 Uma voz num quarto vazio
 Uma mulher com os olhos fechados
-A vibração comeca no fio
+A vibração começa no fio
 Do peito e sai pelos lados
 
 [Chorus]
@@ -3571,7 +3571,7 @@ The circle holds us all`,
 
   "vida-ressonancia/5": `[Verse 1]
 A voz atravessa paredes
-Não e um grito, e uma frequência
+Não é um grito, e uma frequência
 Que encontra quem está nas redes
 Do mesmo sono, da mesma ausência
 
@@ -3621,7 +3621,7 @@ O sim colectivo
 Todas
 O acto mais vivo
 Não somos soldadas, somos dancas
-Não e raiva, e chegada
+Não é raiva, e chegada
 O trovão das nossas canças
 Faz tremer a estrada
 

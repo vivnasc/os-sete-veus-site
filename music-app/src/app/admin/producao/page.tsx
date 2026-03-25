@@ -168,6 +168,75 @@ function ProductFilter({
   );
 }
 
+function formatTime(s: number) {
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return `${m}:${sec.toString().padStart(2, "0")}`;
+}
+
+function MiniPlayer({ src }: { src: string }) {
+  const ref = useRef<HTMLAudioElement>(null);
+  const [playing, setPlaying] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [duration, setDuration] = useState(0);
+
+  useEffect(() => {
+    const a = ref.current;
+    if (!a) return;
+    const onTime = () => setCurrent(a.currentTime);
+    const onMeta = () => setDuration(a.duration || 0);
+    const onEnd = () => setPlaying(false);
+    a.addEventListener("timeupdate", onTime);
+    a.addEventListener("loadedmetadata", onMeta);
+    a.addEventListener("durationchange", onMeta);
+    a.addEventListener("ended", onEnd);
+    return () => {
+      a.removeEventListener("timeupdate", onTime);
+      a.removeEventListener("loadedmetadata", onMeta);
+      a.removeEventListener("durationchange", onMeta);
+      a.removeEventListener("ended", onEnd);
+    };
+  }, []);
+
+  function toggle() {
+    const a = ref.current;
+    if (!a) return;
+    if (playing) { a.pause(); } else { a.play(); }
+    setPlaying(!playing);
+  }
+
+  function seek(e: React.MouseEvent<HTMLDivElement>) {
+    const a = ref.current;
+    if (!a || !duration) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    a.currentTime = pct * duration;
+  }
+
+  const pct = duration > 0 ? (current / duration) * 100 : 0;
+
+  return (
+    <div className="mb-2">
+      <audio ref={ref} src={src} preload="metadata" />
+      <div className="flex items-center gap-2">
+        <button onClick={toggle} className="shrink-0 text-mundo-creme hover:text-white">
+          {playing ? (
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><rect x="5" y="4" width="3" height="12" rx="1"/><rect x="12" y="4" width="3" height="12" rx="1"/></svg>
+          ) : (
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><polygon points="6,3 17,10 6,17"/></svg>
+          )}
+        </button>
+        <span className="shrink-0 text-[10px] font-mono text-mundo-muted w-8 text-right">{formatTime(current)}</span>
+        <div className="flex-1 h-2 rounded-full bg-mundo-muted-dark/30 cursor-pointer relative" onClick={seek}>
+          <div className="h-full rounded-full bg-violet-500 transition-all" style={{ width: `${pct}%` }} />
+          <div className="absolute top-1/2 -translate-y-1/2 h-3 w-3 rounded-full bg-white shadow" style={{ left: `${pct}%`, marginLeft: -6 }} />
+        </div>
+        <span className="shrink-0 text-[10px] font-mono text-mundo-muted w-8">{duration > 0 ? formatTime(duration) : "--:--"}</span>
+      </div>
+    </div>
+  );
+}
+
 function ClipApprovalRow({
   clip,
   clipIndex,
@@ -208,7 +277,7 @@ function ClipApprovalRow({
         {clip.title && <span className="text-xs text-mundo-creme">{clip.title}</span>}
         {clip.model && <span className="text-[10px] text-mundo-muted/50">{clip.model}</span>}
       </div>
-      <audio controls src={clip.audioUrl!} className="h-8 w-full mb-2" />
+      <MiniPlayer src={clip.audioUrl!} />
 
       {mode === "pick" ? (
         <div className="flex items-center gap-2">
@@ -1063,7 +1132,7 @@ export default function AlbumProductionPage() {
                 </span>
               ) : null;
             })}
-            {(["afrobeat", "bossa", "jazz", "folk", "house", "gospel"] as TrackFlavor[]).map((f) => {
+            {(["marrabenta", "afrobeat", "bossa", "jazz", "folk", "house", "gospel"] as TrackFlavor[]).map((f) => {
               const count = ALL_ALBUMS.reduce(
                 (s, a) => s + a.tracks.filter((t) => t.flavor === f).length,
                 0

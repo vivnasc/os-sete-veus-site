@@ -9,7 +9,7 @@ export const ESPELHO_LYRICS: Record<string, string> = {
   // ESPELHO DA ILUSAO (Véu 1 — awakening from illusion)
   // ─────────────────────────────────────────────
 
-  "espelho-ilusao/1": `[Verse 1]
+  "espelho-ilusão/1": `[Verse 1]
 A manhã entra de mansinho
 Pela fresta da persiana
 O meu corpo já conhece o caminho
@@ -52,7 +52,7 @@ Estou a acordar
 Devagar, devagar
 Estou a acordar`,
 
-  "espelho-ilusao/2": `[Verse 1]
+  "espelho-ilusão/2": `[Verse 1]
 I learned to smile before I learned to speak
 Wore my mother's worry like a chain
 Good girl, don't ask, don't wander, don't be weak
@@ -90,7 +90,7 @@ Stitch by stitch I find there's nothing wrong
 Underneath the coat, beneath it all
 I've been here all along`,
 
-  "espelho-ilusao/3": `[Verse 1]
+  "espelho-ilusão/3": `[Verse 1]
 Gira a chave, gira a mao
 Gira o dia sempre igual
 Gira a roda, gira o chão
@@ -134,7 +134,7 @@ Parei
 Parei
 E era eu`,
 
-  "espelho-ilusao/4": `[Verse 1]
+  "espelho-ilusão/4": `[Verse 1]
 O café arrefece entre as mãos
 A cozinha cheira a sempre
 Lembro-me de hortelã e limão
@@ -174,7 +174,7 @@ Vejo-o descer, desaparecer
 E as minhas mãos ficam a tremer
 Com a leveza de não ter`,
 
-  "espelho-ilusao/5": `[Verse 1]
+  "espelho-ilusão/5": `[Verse 1]
 My shoulders held it first, the ache
 Before I had a word for pain
 My ribs remembered what I lost
@@ -218,7 +218,7 @@ Feel the drum beneath the bone
 That's the rhythm of the truth
 You were never meant to carry alone`,
 
-  "espelho-ilusao/6": `[Verse 1]
+  "espelho-ilusão/6": `[Verse 1]
 A chuva cai e não tem pressa
 A lua nasce sem pedir licença
 A árvore não força a flor
@@ -226,7 +226,7 @@ A flor não força a sua essência
 
 [Verse 2]
 Sentei-me no chão da cozinha
-Sem motivo, sem razao
+Sem motivo, sem razão
 Com as costas contra o azulejo frio
 É a mao pousada no coração
 
@@ -241,7 +241,7 @@ Como a água que não corre
 Mas reflecte o céu inteiro ao luar
 
 [Verse 3]
-A verdade não e um trovão
+A verdade não é um trovão
 Não vem com força nem com medo
 Vem como a brisa pela mao
 Vem devagar, vem quase em segredo
@@ -262,7 +262,7 @@ Quieta como a manhã
 Fico aqui
 E deixo-me chegar`,
 
-  "espelho-ilusao/7": `[Verse 1]
+  "espelho-ilusão/7": `[Verse 1]
 Eu vi, eu vi
 O que não se pode des-ver
 O pano caiu no chão
@@ -406,7 +406,7 @@ Eu fico na margem a acenar
 Com os bolsos cheios de talvez e de vazio
 
 [Chorus]
-O medo vestiu-se de elegancia
+O medo vestiu-se de elegância
 Pos gravata e disse espera mais um pouco
 E eu esperei, com tanta graça
 Que ninguem reparou que eu estava louca
@@ -592,7 +592,7 @@ Essa voz, essa voz
 Tem a boca da minha mãe
 Tem os olhos do padre
 Tem o peso da fé
-Mas não e minha, não e minha
+Mas não é minha, não é minha
 Eu aprendi a repeti-la
 Até esquecer que a garganta
 Tinha outra música mais tranquila
@@ -608,7 +608,7 @@ Essa voz, essa voz
 Tem a boca da minha mãe
 Tem os olhos do padre
 Tem o peso da fé
-Mas não e minha, não e minha
+Mas não é minha, não é minha
 
 [Outro]
 Hoje a voz falou
@@ -703,7 +703,7 @@ Disse sim quando queria gritar
 E chamou-lhe amor, chamou-lhe abrigo
 
 [Chorus]
-E eu carrego esta pedra que não e minha
+E eu carrego esta pedra que não é minha
 De mãe para filha, de filha para neta
 Esta culpa antiga como a chuva
 De querer mais do que a vida nós deixa
@@ -719,7 +719,7 @@ Posso honrar as mãos da minha avó
 E ter as minhas mãos livres e quentes
 
 [Chorus]
-E eu carrego esta pedra que não e minha
+E eu carrego esta pedra que não é minha
 De mãe para filha, de filha para neta
 Esta culpa antiga como a chuva
 De querer mais do que a vida nós deixa
@@ -727,7 +727,7 @@ De querer mais do que a vida nós deixa
 [Outro]
 Pouso a pedra no chão
 Com as duas mãos
-Não e traição
+Não é traição
 É o fim de uma corrente
 É o começo de uma canção`,
 
@@ -774,7 +774,7 @@ And here was never mine to pay`,
   "espelho-culpa/6": `[Verse 1]
 Carreguei tanto nas costas
 Que já não sei onde acabo eu
-E onde comeca o fardo
+E onde começa o fardo
 O corpo curvou, a alma desceu
 
 [Verse 2]
@@ -794,7 +794,7 @@ Tudo o que eu chamava obrigação
 Tem o tamanho de mil perdoes
 
 [Bridge]
-Pousar não e abandonar
+Pousar não é abandonar
 E dar ao corpo o que lhe pertence
 E dizer aos ombros cansados
 Podem descansar, não há urgência
@@ -868,7 +868,7 @@ Mas sinto-o a respirar no escuro
 Sinto-o a chamar por mim
 
 [Bridge]
-Não e ter máscaras que me assusta
+Não é ter máscaras que me assusta
 E não saber qual é a cara
 Ter vestido tantas peles
 Que a minha ficou rara
@@ -974,7 +974,7 @@ Só deixar que a verdade me conheca
 
 [Bridge]
 E se o espelho não mente
-Porque e que eu fecho os olhos
+Porque é que eu fecho os olhos
 E se o que vejo e bonito
 Mesmo com todos os estragos
 
@@ -1031,7 +1031,7 @@ Não por medo, mas por amor
 
 [Verse 2]
 A mãe que sou e um vestido lindo
-Mas não e a minha pele toda
+Mas não é a minha pele toda
 A mulher que trabalha e uma moldura
 Mas o quadro muda com a roda
 
@@ -1042,11 +1042,11 @@ Que debaixo de cada roupa
 Mora alguem que não cabe
 Em nenhum nome, em nenhuma caixa
 Em nenhum papel, em nenhum lugar
-Alguem que é tudo é não e nada
+Alguem que é tudo é não é nada
 Alguem que aprendeu a brincar
 
 [Bridge]
-A liberdade não e estar nua
+A liberdade não é estar nua
 E poder vestir sem desaparecer
 E saber que cada máscara e um jogo
 E que o jogo não me faz perder
@@ -1076,7 +1076,7 @@ Sem moldura e sem manual
 Eu, eu, eu
 Como a chuva que cai porque cai
 Como o sol que nasce porque nasce
-Como o vento que sopra sem razao
+Como o vento que sopra sem razão
 Eu existo como existe
 O primeiro batimento do coração
 
@@ -1084,7 +1084,7 @@ O primeiro batimento do coração
 Há uma rainha no silêncio
 Que não precisa de coroa
 Que não precisa de aplauso
-Que brilha só porque e boa
+Que brilha só porque é boa
 
 [Outro]
 Eu
@@ -1101,7 +1101,7 @@ E isso é tudo o que preciso de dizer`,
   // ─────────────────────────────────────────────
 
   "espelho-controlo/1": `[Verse 1]
-As almofadas na posicao certa
+As almofadas na posição certa
 Os sapatos alinhados junto a porta
 A agenda fechada como fortaleza
 Cada minuto conta, nada importa
@@ -1187,7 +1187,7 @@ Que não para em nenhuma estação, nenhuma rama
 Tres da manhã e o mundo dorme
 Menos eu, menos eu
 Tres da manhã e a mente corre
-Como um rio que não e meu
+Como um rio que não é meu
 Roda, roda, o mesmo medo
 Roda, roda, o mesmo sim
 Tres da manhã e eu sou um segredo
@@ -1230,9 +1230,9 @@ E eu fiquei ali no meio dos cacos
 A perceber que o caos também e um hino
 
 [Bridge]
-O vidro parte porque e vidro
+O vidro parte porque é vidro
 O vento sopra porque sopra
-A vida não e uma inimiga
+A vida não é uma inimiga
 É a única estrada que importa
 
 [Outro]
@@ -1559,8 +1559,8 @@ Que nunca ninguem mandou bater
 Que não tenho de aprender
 
 [Bridge]
-Não e o que eu devia querer
-Não e o que ficava bem na foto
+Não é o que eu devia querer
+Não é o que ficava bem na foto
 É o que me faz tremer por dentro
 É o que me faz sentir que estou no topo
 
@@ -1687,7 +1687,7 @@ Debaixo da rotina e dos enganos
 Debaixo dos sorrisos e dos nóis
 
 [Verse 2]
-Não e traição, não e abandono
+Não é traição, não é abandono
 Não quer destruir nenhum castelo
 Quer só saber se debaixo do trono
 Há alguem vivo debaixo do véu
@@ -1716,9 +1716,9 @@ Por esta pergunta
 Que finalmente saiu`,
 
   "espelho-separação/4": `[Verse 1]
-Não e um muro, e uma varanda
+Não é um muro, e uma varanda
 De onde eu te vejo inteiro e tu me ves
-Não e uma fuga, e uma dança
+Não é uma fuga, e uma dança
 Com espaço entre os dois pés
 
 [Verse 2]
@@ -1738,13 +1738,13 @@ Eu inteira, tu inteiro
 É o amor finalmente basta
 
 [Bridge]
-O amor não e fusão
+O amor não é fusão
 E dança, e espaço, e dois
 E escolher ficar ao lado
 Sem ser um só depois
 
 [Outro]
-Separar não e o fim
+Separar não é o fim
 É o começo de nós ver
 Como duas luzes juntas
 Que brilham mais por ser`,
@@ -1810,7 +1810,7 @@ Com os braços quentes e a voz que diz
 Bem-vinda, estavas perta, tao perta
 
 [Bridge]
-O regresso não e voltar atras
+O regresso não é voltar atras
 E chegar ao único lugar
 Que ninguem me pode tirar
 O meu corpo, o meu chão, o meu compás
@@ -1830,7 +1830,7 @@ Sete camadas de tecido fino
 Entre eu e a menina
 
 [Verse 2]
-O primeiro era a ilusao dourada
+O primeiro era a ilusão dourada
 O segundo o medo vestido de seda
 O terceiro a culpa, o quarto a máscara
 O quinto as mãos fechadas, o sexto a fome cega

@@ -445,7 +445,7 @@ o que de noite não contei
 Estico a ponta, aliso a dobra
 o travesseiro volta ao seu lugar
 Cada gesto e uma palavra
-que digo ao dia antes de comecar
+que digo ao dia antes de começar
 
 [Chorus]
 Fazer a cama, fazer a cama
@@ -461,7 +461,7 @@ bonito — chamar ordem a alegria
 A almofada não precisa ser perfeita
 nem o lencol esticado como lei
 Precisa só de mãos que aceitem
-comecar de novo — como eu comecei
+começar de novo — como eu comecei
 
 [Outro]
 Aliso o lencol
@@ -906,7 +906,7 @@ como sempre foi assim
 Inspira, inspira
 o que é vivo não pede licença
 inspira, inspira
-cada vez que recebes comecas
+cada vez que recebes começas
 inspira o medo inspira a manhã
 inspira o que ainda não tem nome
 o mundo entra em ti pela garganta
@@ -977,7 +977,7 @@ Não aprendeu em livro nenhum
 e mais velho do que qualquer sinal
 
 [Verse 2]
-Quando o corpo se fecha sem razao
+Quando o corpo se fecha sem razão
 quando os cabelos da nuca se erguem
 O bicho já leu o que a mente nega
 e move-se antes de tu o entenderes
@@ -1041,7 +1041,7 @@ this is the turning`,
 
   "folego/5": `[Verse 1]
 Abro as mãos e não há nada —
-nem chave nem mapa nem razao
+nem chave nem mapa nem razão
 Só a pele é o ar entre os dedos
 e o vazio que me cabe na mao
 
@@ -1052,11 +1052,11 @@ Só estas mãos que já aprenderam
 a forma de largar e de estar
 
 [Chorus]
-Maos vazias — não é pobreza e escolha
-Maos vazias — não é perda e entrega
+Mãos vazias — não é pobreza e escolha
+Mãos vazias — não é perda e entrega
 Abertas como um peito que respira
 abertas onde o peso não se apega
-Maos vazias — e assim que eu existo
+Mãos vazias — e assim que eu existo
 
 [Verse 3]
 O vazio das mãos não é falta
@@ -1134,7 +1134,7 @@ que eu sei fazer
 A terra treme por baixo dos meus pés descalcos
 o tambor bate onde bate o coração
 não preciso de templo, não preciso de palcos
-o meu corpo inteiro e a celebracao
+o meu corpo inteiro e a celebração
 
 [Bridge]
 Fecha os olhos
@@ -1384,7 +1384,7 @@ percebi que nunca estive tao cheia de estar
 O vazio cheio — não é contradicao
 O vazio cheio — e o que fica no chão
 Quando tiras tudo o que punhas la dentro
-descobres que o nada tem peso e intencao
+descobres que o nada tem peso e intenção
 O vazio cheio
 
 [Verse 3]
@@ -1542,7 +1542,7 @@ incendio manso — devagar
 
 [Verse 3]
 A paciência e o combustivel
-a confianca e o oxigenio
+a confiança e o oxigenio
 O corpo sabe a velocidade certa
 tem a sua própria regencia
 
@@ -2158,7 +2158,7 @@ sem mapa e sem intento
 
 [Chorus]
 Fonte, fonte
-onde tudo comeca limpo
+onde tudo começa limpo
 fonte, fonte
 a água ainda não tem dono
 antes do nome há o pulsar
@@ -2248,7 +2248,7 @@ não mereci — e só por isso choro
 
 [Verse 3]
 O susto de não merecer nada
-e que não te pede nenhuma razao
+e que não te pede nenhuma razão
 O corpo aceita antes da cabeça
 e a cabeça rende-se entao
 
@@ -2418,7 +2418,7 @@ Nem sei aonde vou parar
 
 [Verse 2]
 Toco o chão e dissolvo devagar
-A terra bebe o que era meu
+A terra bebé o que era meu
 É o que eu era já não esta
 Mas o que sou não morreu
 
@@ -2615,7 +2615,7 @@ Não pede que eu o justifique
 Há uma quietude que não é morte
 Um espaço que não é ausência
 Entro aqui sem pedir licença
-Esta nave e a minha heranca
+Esta nave e a minha herança
 
 [Outro]
 Entro
@@ -2765,7 +2765,7 @@ um arrepio que persiste
 
 [Verse 2]
 Não é pensamento nem sinal
-não é decisao nem escolha
+não é decisão nem escolha
 É o corpo que compreende
 antes que a mente acolha
 
@@ -2780,7 +2780,7 @@ A faisca não pede licença
 atravessa o que dorme
 
 [Verse 3]
-A mao treme sem razao
+A mao treme sem razão
 o ar muda de qualidade
 O peito sabe antes do cerebro
 que chegou a claridade
@@ -2792,7 +2792,7 @@ Deixa arder
 antes que o medo te acobarde
 
 [Outro]
-A faisca não pede permissao
+A faisca não pede permissão
 simplesmente
 acende`,
 
@@ -3076,7 +3076,7 @@ ninguem te diz o seu valor
 
 [Verse 2]
 O que sustenta não brilha
-o chão não pede atencao
+o chão não pede atenção
 mas tudo o que se ergue acima
 nasce desta fundacao
 
@@ -3460,7 +3460,7 @@ sou de mim o que me convem`,
 O alho parte entre os dedos
 o azeite aquece na mao
 O sal não pede licença
-cai como quem sabe a direccao
+cai como quem sabe a direcção
 
 [Verse 2]
 A cebola chora por mim
@@ -3521,12 +3521,12 @@ e só assim que fica
 Não é o que eu chamo
 É o que me chama a mim
 Sem nome
-antes de qualquer crenca
+antes de qualquer crença
 Sem nome
 antes de qualquer princípio
 
 [Verse 3]
-O bebe não sabe ainda falar
+O bebé não sabe ainda falar
 E já sente o que eu esqueci
 Há qualquer coisa anterior ao nome
 Que eu tinha antes de ser eu assim
@@ -4024,7 +4024,7 @@ foi mais honesto dos dois
 
 [Verse 2]
 Os ombros desceram sozinhos
-quando a tensao se soltou
+quando a tensão se soltou
 As mãos tremeram um instante
 foi o amem que ficou
 
@@ -4052,7 +4052,7 @@ e e o primeiro a responder`,
 
   "o-gesto/4": `[Verse 1]
 Há um fogo em mim que não é raiva
-não é febre, não é destruicao
+não é febre, não é destruição
 É o que fica quando tiras tudo
 a brasa quieta no centro do coração
 
@@ -4076,7 +4076,7 @@ passaram-na de mao em mao, de vida em vida
 
 [Bridge]
 Não preciso de altar para arderes
-não preciso de permissao para brilhar
+não preciso de permissão para brilhar
 O sagrado não vive na altura
 vive aqui, vive agora, vive no lugar
 
@@ -4273,7 +4273,7 @@ Que nenhuma dessas coisas encheram
 [Verse 2]
 Tentei com amor é quase chegou
 Tentei com trabalho e distraia
-Tentei com crenca e aconchegou
+Tentei com crença e aconchegou
 Mas de manhã la estava ele ainda
 
 [Chorus]
@@ -4381,7 +4381,7 @@ cada manga uma entrega
 [Outro]
 Nua — não de roupa
 nua de tudo o que foi
-O dia acaba onde comeca
+O dia acaba onde começa
 a única que ninguem me dói`,
 
 };

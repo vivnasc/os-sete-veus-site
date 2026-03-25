@@ -11,7 +11,7 @@ export const NO_LYRICS: Record<string, string> = {
   // O silêncio herdado entre mãe e filha
   // ─────────────────────────────────────────────
 
-  "no-heranca/1": `[Verse 1]
+  "no-herança/1": `[Verse 1]
 Eu vi-te antes de te veres ao espelho
 Descalca pelo corredor a correr sem chão
 Tinhas nós olhos uma tempestade antiga
@@ -42,7 +42,7 @@ E agora que acordas
 Posso finalmente
 Soltar o ar`,
 
-  "no-heranca/2": `[Verse 1]
+  "no-herança/2": `[Verse 1]
 I watched you wear a coat that wasn't yours
 Smiling at a mirror cracked with borrowed light
 I wanted to reach across the kitchen table
@@ -72,7 +72,7 @@ Not from weakness
 But because the waking
 Had to bloom from you`,
 
-  "no-heranca/3": `[Verse 1]
+  "no-herança/3": `[Verse 1]
 Duas mulheres numa cozinha em brasa
 O vapor sobe e o silêncio também
 Tu sentas-te no lugar que sempre foi teu
@@ -102,7 +102,7 @@ Finalmente juntas
 Sem véu no rosto
 Sem guiao na boca`,
 
-  "no-heranca/4": `[Verse 1]
+  "no-herança/4": `[Verse 1]
 Guardei palavras como quem guarda porcelana
 Atras do vidro onde ninguem podia tocar
 Cada frase que engoli virou raiz amarga
@@ -134,14 +134,14 @@ Sao sementes
 Que abrem o que ficou fechado
 Entre nós duas`,
 
-  "no-heranca/5": `[Verse 1]
+  "no-herança/5": `[Verse 1]
 O fio que nós prendia era de seda e nevoeiro
 Feito de silêncio e de boas intencoes
 Apertava sem doer, segurava sem se ver
 E nós duas confundimos esses nós com coração
 
 [Chorus]
-Desatar não e destruir o que era nosso
+Desatar não é destruir o que era nosso
 Desatar e dar ao fio espaço e ar
 O no que nós unia era o mesmo no
 Que nós impedia de nós encontrar
@@ -150,18 +150,18 @@ Que nós impedia de nós encontrar
 Agora solto e sinto as mãos vazias de ti
 Mas e um vazio que finalmente e meu
 Tu soltas e descobres o mesmo céu
-É o espaço entre nós já não e adeus
+É o espaço entre nós já não é adeus
 
 [Bridge]
 O no que cai entre mãe e filha
-Não e um corte — e uma flor que se abre
+Não é um corte — e uma flor que se abre
 O fio continua entre as duas
 Mas agora tem espaço para a tarde
 
 [Outro]
 Desatamos
 É o que fica
-Não e menos
+Não é menos
 E mais verdadeiro
 Mais leve
 Mais inteiro`,
@@ -234,7 +234,7 @@ My own roof`,
   "no-silêncio/3": `[Verse 1]
 A boca seca, o peito a bater como mar
 Como quem salta de um penhasco para o sal
-A primeira palavra não e grande nem bonita
+A primeira palavra não é grande nem bonita
 E apenas um tremor que sai do fundo animal
 
 [Chorus]
@@ -268,8 +268,8 @@ Ouvir de verdade é terra firme
 E ficar quieto quando a casa esta em chamadas
 
 [Chorus]
-Ouvir de verdade não e concordar
-Não e resolver o que arde nem consertar
+Ouvir de verdade não é concordar
+Não é resolver o que arde nem consertar
 E estar contigo na escuridão
 Sem tentar acender nenhuma estrela no ar
 
@@ -335,14 +335,14 @@ Dou-te as horas todas do meu corpo
 E fico nu como árvore em janeiro — sem folhas e sem pai
 
 [Chorus]
-Dar até esvaziar não e amor
+Dar até esvaziar não é amor
 É um rio que se seca para encher o mar
 Cada gesto que te entreguei de cor
 Foi mais um pedaco meu a evaporar
 
 [Verse 2]
 Tu recebes e agradeces com os olhos
-Cheios de uma culpa que não tem razao
+Cheios de uma culpa que não tem razão
 Porque cada vez que eu te dou tudo
 Tu sentes que me deves o coração
 
@@ -354,7 +354,7 @@ Vi um homem a pagar-se sem ter valor
 
 [Outro]
 Dar até esvaziar
-Não e generosidade
+Não é generosidade
 E medo antigo
 De não valer nada
 De mãos vazias`,
@@ -395,7 +395,7 @@ Of keeping count`,
   "no-sacrificio/3": `[Verse 1]
 Não sei receber sem procurar a conta
 Quando me das eu procuro a factura escondida
-Onde esta o preço, qual é a condicao
+Onde esta o preço, qual é a condição
 O que é que vou pagar com a minha vida
 
 [Chorus]
@@ -407,11 +407,11 @@ Como a chuva que cai sem protocolo
 [Verse 2]
 Das-me um beijo e eu pergunto o que devo
 Trazes-me flores e eu penso no que fiz
-Não e humildade este recusar constante
+Não é humildade este recusar constante
 E medo de ser vista e ser feliz
 
 [Bridge]
-Receber não e fraqueza nem divida
+Receber não é fraqueza nem divida
 Receber e abrir a porta sem questao
 E deixar entrar o sol que te procura
 Sem pedir recibo a cada estação
@@ -601,7 +601,7 @@ Vejo as mãos que tremiam como folhas
 Debaixo da mesa onde batias sem pudor
 
 [Chorus]
-Reconhecer não e julgar nem condenar
+Reconhecer não é julgar nem condenar
 E olhar e dizer eu sei de cor
 Eu sei porque também tremo a noite
 Eu sei porque também calei o amor
@@ -614,7 +614,7 @@ Ves o fogo que eu chamava de vento
 
 [Bridge]
 Quando duas pessoas se reconhecem
-Não e porque sao espelhos iguais
+Não é porque sao espelhos iguais
 E porque a ferida de uma
 Fala a lingua da outra sem sinais
 
@@ -682,7 +682,7 @@ Mais te perdia a cada hora
 Os horarios, as listas, as rotinas
 Tudo era controlo a fingir de ternura
 Tu sorrias e eu não via
-Que o teu sorriso era uma prisao madura
+Que o teu sorriso era uma prisão madura
 
 [Bridge]
 Pedro, quando foi que o cuidar
@@ -694,7 +694,7 @@ Virou não te deixar ir embora
 A ilha que construi
 Para nós proteger do mar
 Acabou por ser
-A razao de te afastar`,
+A razão de te afastar`,
 
   "no-solidão/2": `[Verse 1]
 I held you like a bird inside my palm
@@ -749,7 +749,7 @@ Solto a ideia do que deviamos amar
 E ao soltar descubro uma verdade
 Que as mãos vazias não sao mãos sem força
 Sao mãos que finalmente podem tocar
-Sem garra, sem prisao — com pele é com graça
+Sem garra, sem prisão — com pele é com graça
 
 [Outro]
 Solto
@@ -779,7 +779,7 @@ E isso é mais bonito que qualquer discurso
 [Bridge]
 Estar junto sem segurar nem apertar
 É a forma mais madura de se amar
-Não e distancia, não e frieza
+Não é distancia, não é frieza
 E confiar no chão que pisamos a par
 
 [Outro]
@@ -928,7 +928,7 @@ E continua meu depois de te perder
 Sem preencher
 Descubro
 Que o vazio
-Não e ausência —
+Não é ausência —
 E terra fértil
 Para o que vem`,
 
@@ -942,7 +942,7 @@ E eu já sei nadar sem a tua rede
 Reencontro sem exigir nem pedir
 Sem pedir que sejas o meu chão
 Reencontro como quem volta
-A uma casa que não e prisao
+A uma casa que não é prisão
 
 [Verse 2]
 Já não preciso que me salves da maré
@@ -952,13 +952,13 @@ E me digas como tens andado — só assim
 
 [Bridge]
 O reencontro mais bonito
-Não e o que apaga o que se partiu
+Não é o que apaga o que se partiu
 É o que olha para os estilhacos
 E diz eu sei — e mesmo assim estou aqui
 
 [Outro]
 Reencontro
-Não e voltar atras
+Não é voltar atras
 E caminhar em frente
 Lado a lado
 Com os olhos
@@ -1075,7 +1075,7 @@ Sem a tua respiracao de noite
 Sem o teu café, sem o teu calor
 
 [Chorus]
-Sozinho não e o mesmo que perdido
+Sozinho não é o mesmo que perdido
 Sozinho e descobrir que existo aqui
 Sem o reflexo dos teus olhos na janela
 Sem a moldura que fizeste para mim
@@ -1095,7 +1095,7 @@ Que não precisa de ninguem para ter fim
 [Outro]
 Sozinho
 E pela primeira vez
-Não e abandono
+Não é abandono
 E encontro
 Comigo mesmo
 Sem intermediario
@@ -1104,11 +1104,11 @@ Sem medo`,
   "no-pertenca/4": `[Verse 1]
 Não volto a construir a mesma casa
 Não volto a por os quadros no mesmo lugar
-Se recomecar e refazer de novo
+Se recomeçar e refazer de novo
 Que seja novo como o primeiro luar
 
 [Chorus]
-Reinventar não e esquecer o que foi
+Reinventar não é esquecer o que foi
 E lembrar e escolher diferente
 E olhar para os estilhacos no chão
 E dizer obrigada — e seguir em frente

@@ -22,8 +22,8 @@ Ninguem te disse que existia
 ninguem te ensinou o seu jeito
 
 [Verse 2]
-Não e coragem o que te falta
-não e força nem outro livro
+Não é coragem o que te falta
+não é força nem outro livro
 E só parar, largar o peso
 e ouvir o rio que sempre esteve vivo
 
@@ -91,7 +91,7 @@ a sala antiga e a que mais te atrai
 
 [Chorus]
 Larga a cadeira, abre a janela
-O presente não precisa de permissao
+O presente não precisa de permissão
 A liberdade não esta no que viveste
 esta no que fazes com a respiracao
 
@@ -147,11 +147,11 @@ cada noite um novo abaco
 Mas há um cansaco que não dorme
 que não cede com ferias nem verao
 Um peso que não mora no corpo
-mora na crenca de que nunca basta o pao
+mora na crença de que nunca basta o pao
 
 [Chorus]
 Para — não há nada a conquistar
-A plenitude não e uma meta
+A plenitude não é uma meta
 Esta aqui, no exacto lugar
 onde largaste a bicicleta
 
@@ -262,7 +262,7 @@ inside the centre of your soul
 `,
 
   "livro-filosofico/9": `[Verse 1]
-Chegaste ao fim que não e fim
+Chegaste ao fim que não é fim
 ao espelho que não distorce
 Olhas e não te reconheces
 porque já não há máscara que force
@@ -270,7 +270,7 @@ porque já não há máscara que force
 [Verse 2]
 Cada véu que atravessaste
 era uma camada de ti mesma
-O medo, a culpa, a ilusao
+O medo, a culpa, a ilusão
 tudo era pele — nada era condena
 
 [Chorus]
@@ -319,8 +319,8 @@ e tu sempre longe da luz
 
 [Chorus]
 Os espelhos estao dourados
-mas o ouro não e deles
-O que brilha não e o preço
+mas o ouro não é deles
+O que brilha não é o preço
 o que brilha es tu — sem véus
 
 [Bridge]
@@ -380,7 +380,7 @@ Uma forma de olhar o mundo
 onde nunca há o suficiente
 
 [Chorus]
-A heranca financeira
+A herança financeira
 não se conta em notas
 Conta-se no aperto que sentes
 quando decides que mereces mais
@@ -482,7 +482,7 @@ e podes ama-las e ainda assim crescer
 [Bridge]
 Olha para baixo, sem medo
 ve o que te sustenta no chão
-Nem tudo o que é raiz e prisao
+Nem tudo o que é raiz e prisão
 nem tudo o que é antigo e em vao
 
 [Outro]
@@ -534,7 +534,7 @@ Herdaste o corpo que se cala
 e chama a isso de servico
 
 [Chorus]
-O sangue não e destino
+O sangue não é destino
 e materia, e memoria
 Podes sentir o que ela sentiu
 sem repetir a sua historia
@@ -593,15 +593,15 @@ ilumina o que ela guardou
 
 [Chorus]
 Amanhece devagar
-não há pressa em recomecar
+não há pressa em recomeçar
 A árvore esta reorganizada
-e a sombra já não e prisao
+e a sombra já não é prisão
 
 [Bridge]
 Honras tudo o que viveste
 honras quem veio antes de ti
 Mas agora os ramos sao teus
-e o céu comeca aqui
+e o céu começa aqui
 
 [Outro]
 A árvore respira contigo
@@ -626,9 +626,9 @@ O espelho mostrava o rosto de alguem
 que vivia apenas para ser de nós
 
 [Chorus]
-Desaparecer não e amor
+Desaparecer não é amor
 e o medo vestido de entrega
-Perderes-te no outro não e dar
+Perderes-te no outro não é dar
 e esquecer quem eras antes da prega
 
 [Bridge]
@@ -682,7 +682,7 @@ Uma sala tua, só tua
 onde habitas sem pedir licença
 
 [Verse 2]
-Estar inteira não e estar sozinha
+Estar inteira não é estar sozinha
 e estar presente no que es
 Antes de amar, antes de dar
 saber que existes de uma vez
@@ -696,7 +696,7 @@ não precisa de implorar por alguem
 [Bridge]
 Ninguem te completa, ninguem te parte
 ninguem te da o que já possuis
-A inteireza não e orgulho
+A inteireza não é orgulho
 e o chão de onde o amor se ergue
 
 [Outro]
@@ -734,7 +734,7 @@ where two whole people dare to stay
 `,
 
   // ═══════════════════════════════════════════
-  // DEPOIS DO FOGO — "Recomecar após a destruicao"
+  // DEPOIS DO FOGO — "Recomeçar após a destruição"
   // Campo Queimado
   // ═══════════════════════════════════════════
 
@@ -805,13 +805,13 @@ Um broto tao pequeno e frágil
 que quase não se ve na terra
 
 [Verse 2]
-Não e a flor que era antes
-não e a árvore que conhecias
+Não é a flor que era antes
+não é a árvore que conhecias
 E outra coisa, nova, estranha
 com raízes que ainda não sabias
 
 [Chorus]
-O broto não pede permissao
+O broto não pede permissão
 nasce porque a terra o chama
 Depois do fogo a vida volta
 diferente, quieta, sem drama
@@ -878,7 +878,7 @@ e o medo cresce em cada vale
 [Chorus]
 No nevoeiro ninguem te julga
 ninguem te pede que escolhas já
-A confusao e temporaria
+A confusão e temporaria
 o nevoeiro vai levantar
 
 [Bridge]
@@ -934,7 +934,7 @@ A clareza não chega de repente
 chega como a respiracao
 
 [Chorus]
-A clareza não e uma explosao
+A clareza não é uma explosao
 e uma brisa que limpa a vista
 Não precisas de ver tudo
 só o passo seguinte basta
@@ -995,7 +995,7 @@ que carregas sem olhar para baixo
 [Verse 2]
 Viveste anos a fugir do corpo
 a tratar dele como maquina
-Mas o corpo não e ferramenta
+Mas o corpo não é ferramenta
 e a paisagem onde tudo habita
 
 [Chorus]
@@ -1062,7 +1062,7 @@ e as janelas ainda te procuram
 Habitar e mais que estar
 e sentir o peso no colchao
 E ouvir o sangue a correr
-e chamar-lhe gratidao
+e chamar-lhe gratidão
 
 [Bridge]
 Não precisas de corpo perfeito
@@ -1128,8 +1128,8 @@ A bondade sem limite
 e uma forma de sumir também
 
 [Bridge]
-Não e egoismo ter fronteira
-não e frieza ter contorno
+Não é egoismo ter fronteira
+não é frieza ter contorno
 E saber que quem tu es
 precisa de espaço para o retorno
 
@@ -1171,7 +1171,7 @@ your boundary is made of gold
 
   "curso-limite-sagrado/3": `[Verse 1]
 A muralha tem uma porta
-não e muro, não e fortaleza
+não é muro, não é fortaleza
 A porta abre-se por dentro
 e só tu tens a certeza
 
@@ -1184,12 +1184,12 @@ entre o amor é a ferida crua
 [Chorus]
 A porta e o acto mais sagrado
 decidir quem entra, quem fica
-Não e rejeicao, não e castigo
+Não é rejeicao, não é castigo
 e a escolha de quem cuida
 
 [Bridge]
-Dizer não e abrir a porta certa
-dizer não e proteger o sim
+Dizer não é abrir a porta certa
+dizer não é proteger o sim
 O limite não exclui o amor
 o limite traz o amor a ti
 
@@ -1247,7 +1247,7 @@ O luto não pede que fales
 só pede que saibas ficar
 
 [Chorus]
-A caverna não e castigo
+A caverna não é castigo
 e o lugar onde o luto mora
 Não se atravessa com pressa
 atravessa-se devagar — sem hora
@@ -1302,7 +1302,7 @@ sao formas que não tem nome
 
 [Verse 2]
 A beleza que cresce no luto
-não e bonita como um jardim
+não é bonita como um jardim
 E bonita como uma cicatriz
 que te lembra que sobreviveste a ti
 
@@ -1430,14 +1430,14 @@ O chão recebeu-as sem julgamento
 o chão não pergunta de onde vem
 
 [Chorus]
-Pousar não e abandonar
+Pousar não é abandonar
 pousar é devolver a terra
-O que não e teu não te protege
-o que não e teu só te enterra
+O que não é teu não te protege
+o que não é teu só te enterra
 
 [Bridge]
 Não precisas de largar tudo
-comeca por uma só pedra
+começa por uma só pedra
 Sente o ombro que se levanta
 sente o ar que entra com a entrega
 
@@ -1493,7 +1493,7 @@ Com palavras emprestadas
 com a voz de todos menos tu no po
 
 [Chorus]
-O silêncio não e ausência
+O silêncio não é ausência
 e o espaço antes da verdade
 A sala vazia não esta vazia
 esta cheia da tua vontade
@@ -1501,7 +1501,7 @@ esta cheia da tua vontade
 [Bridge]
 Não forces o primeiro som
 ele vem quando estiveres pronta
-O silêncio não e inimigo
+O silêncio não é inimigo
 e o ventre da tua resposta
 
 [Outro]
@@ -1547,8 +1547,8 @@ Por baixo do tom que usavas
 para agradar, para ser aceite
 
 [Verse 2]
-Não e grave nem aguda
-não e forte nem delicada
+Não é grave nem aguda
+não é forte nem delicada
 É a voz que sai quando não pensas
 a que emerge desarmada
 
@@ -1862,7 +1862,7 @@ pesa mais que mil excessos
 
 [Outro]
 O silêncio da familia
-não e paz — e medo antigo
+não é paz — e medo antigo
 Um rio que corre por baixo
 e espera por quem lhe de abrigo
 `,
@@ -1900,7 +1900,7 @@ than the silence held at all
 
   "curso-silêncio-grita/3": `[Verse 1]
 Os ecos tornam-se dourados
-as paredes comecam a vibrar
+as paredes começam a vibrar
 O que era silêncio pesado
 transforma-se em voz a cantar
 
@@ -1975,7 +1975,7 @@ tinhas de te deixar de amar
 Fios presos que sufocam
 quem pertence e quem se esquece
 A teia sem espaço livre
-e uma prisao que não parece
+e uma prisão que não parece
 
 [Outro]
 Pertencer não devia custar
@@ -2078,7 +2078,7 @@ and I belong
 O vulcao esta selado
 a superficie negra e fria
 Mandibula cerrada, punhos fechados
-a pressao cresce dia a dia
+a pressão cresce dia a dia
 
 [Verse 2]
 Ensinaram-te que a raiva
@@ -2137,7 +2137,7 @@ O fogo agora ilumina
 a paisagem da tua vida
 
 [Verse 2]
-A raiva não e o contrario do amor
+A raiva não é o contrario do amor
 a raiva é a guarda do que importa
 Sem fogo não há limites
 sem chama não há porta
@@ -2248,8 +2248,8 @@ she remembers you
   "curso-mulher-mãe/3": `[Verse 1]
 Duas formas no mesmo corpo
 mãe e mulher ao mesmo tempo
-Não e preciso escolher
-não e preciso ter medo
+Não é preciso escolher
+não é preciso ter medo
 
 [Verse 2]
 O ninho agora tem espaço
@@ -2310,7 +2310,7 @@ lives a world without amen
 
   "curso-oficio-ser/1": `[Verse 1]
 As maquinas não param
-o ritmo não e teu
+o ritmo não é teu
 A oficina escura e sem janela
 e tu já nem sabes o que era teu
 
@@ -2328,7 +2328,7 @@ e uma forma lenta de apagar
 
 [Outro]
 A oficina sem janela
-e uma prisao que pagas tu
+e uma prisão que pagas tu
 Mas há uma porta escondida
 e do outro lado há céu e há luz
 `,
@@ -2374,16 +2374,16 @@ e la fora há alguem
 Trabalhas porque queres
 não porque deves ou tens medo
 O oficio e presença
-não e uma fuga nem um degredo
+não é uma fuga nem um degredo
 
 [Chorus]
 Ritmo próprio
 da oficina com janela
-Trabalhar sem prisao
+Trabalhar sem prisão
 e a mais bonita sentinela
 
 [Outro]
-O propósito não e o produto
+O propósito não é o produto
 e a presença no fazer
 O oficio mais sagrado
 e o oficio de ser
@@ -2500,7 +2500,7 @@ O jardim sem relógio
 e o mais bonito santuario
 
 [Outro]
-O tempo não e inimigo
+O tempo não é inimigo
 quando deixas de o perseguir
 O presente e tudo o que tens
 e tudo o que podes sentir
@@ -2605,8 +2605,8 @@ A mao estende-se devagar
 o poder já não te corroi
 
 [Verse 2]
-Não e arrogancia
-não e vaidade nem excesso
+Não é arrogancia
+não é vaidade nem excesso
 E saber que mereces
 sem pedir licença nem processo
 
@@ -2618,7 +2618,7 @@ do que o medo da tua inteireza
 
 [Outro]
 Sentar-se no trono
-não e tomar o que é dos outros
+não é tomar o que é dos outros
 E ocupar o que é teu
 sem pedir desculpa ao mundo
 `,
@@ -2666,7 +2666,7 @@ Sentada em frente ao silêncio
 faminta e calada
 
 [Verse 2]
-A fome não e de comida
+A fome não é de comida
 e de algo sem nome
 Comes para encher o vazio
 e o vazio come-te e some
@@ -2716,14 +2716,14 @@ becomes a conscious landscape
 `,
 
   "curso-fome/3": `[Verse 1]
-Comer com atencao
+Comer com atenção
 sem culpa, sem pressa
 Cada garfada e presença
 cada sabor e uma promessa
 
 [Verse 2]
-O corpo não e inimigo
-o apetite não e defeito
+O corpo não é inimigo
+o apetite não é defeito
 Comer e um acto de amor
 quando e feito com respeito
 
