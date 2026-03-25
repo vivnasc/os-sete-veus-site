@@ -13,7 +13,7 @@ import { requireAdmin } from "@/lib/admin-auth";
  * Non-custom mode: prompt=free description
  */
 
-const MAX_STYLE_LENGTH = 200; // Keep concise — longer styles can cause short songs
+const MAX_STYLE_LENGTH = 300; // Flavor (~100) + base context (~200)
 const MAX_RETRIES = 2;
 const RETRY_DELAY_MS = 3000;
 
