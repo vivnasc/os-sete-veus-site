@@ -11,7 +11,7 @@ export const NO_LYRICS: Record<string, string> = {
   // O silêncio herdado entre mãe e filha
   // ─────────────────────────────────────────────
 
-  "no-heranca/1": `[Verse 1]
+  "no-herança/1": `[Verse 1]
 Eu vi-te antes de te veres ao espelho
 Descalca pelo corredor a correr sem chão
 Tinhas nós olhos uma tempestade antiga
@@ -25,7 +25,7 @@ E eu preferi calar a te partir ao luar
 
 [Verse 2]
 Os domingos foram caindo como folhas
-Cada almoço um ensaio de silêncio e sal
+Cada almoço um ensaio de silêncio é sal
 Tu cresceste a pensar que eu não sabia
 Eu envelheci a ver-te de longe no quintal
 
@@ -42,7 +42,7 @@ E agora que acordas
 Posso finalmente
 Soltar o ar`,
 
-  "no-heranca/2": `[Verse 1]
+  "no-herança/2": `[Verse 1]
 I watched you wear a coat that wasn't yours
 Smiling at a mirror cracked with borrowed light
 I wanted to reach across the kitchen table
@@ -72,7 +72,7 @@ Not from weakness
 But because the waking
 Had to bloom from you`,
 
-  "no-heranca/3": `[Verse 1]
+  "no-herança/3": `[Verse 1]
 Duas mulheres numa cozinha em brasa
 O vapor sobe e o silêncio também
 Tu sentas-te no lugar que sempre foi teu
@@ -102,9 +102,9 @@ Finalmente juntas
 Sem véu no rosto
 Sem guiao na boca`,
 
-  "no-heranca/4": `[Verse 1]
+  "no-herança/4": `[Verse 1]
 Guardei palavras como quem guarda porcelana
-Atras do vidro onde ninguem podia tocar
+Atras do vidro onde ninguém podia tocar
 Cada frase que engoli virou raiz amarga
 Cada verdade que calei virou luar
 
@@ -134,9 +134,9 @@ Sao sementes
 Que abrem o que ficou fechado
 Entre nós duas`,
 
-  "no-heranca/5": `[Verse 1]
+  "no-herança/5": `[Verse 1]
 O fio que nós prendia era de seda e nevoeiro
-Feito de silêncio e de boas intencoes
+Feito de silêncio é de boas intencoes
 Apertava sem doer, segurava sem se ver
 E nós duas confundimos esses nós com coração
 
@@ -171,7 +171,7 @@ Mais inteiro`,
   // O que o medo calou entre eles
   // ─────────────────────────────────────────────
 
-  "no-silencio/1": `[Verse 1]
+  "no-silêncio/1": `[Verse 1]
 Sentados a mesa com o jantar a arrefecer
 O relógio marca o que nós não dizemos
 Tu olhas para o prato, eu olho para a janela
@@ -191,7 +191,7 @@ Mas quando te vejo a voz não quer chegar
 
 [Bridge]
 O medo fez de nós dois actores
-Num palco onde ninguem aplaude
+Num palco onde ninguém aplaude
 Tu calas o que eu preciso ouvir
 Eu escondo o que tu precisas saber
 
@@ -201,7 +201,7 @@ Cresceu entre nós
 E agora transborda
 Do silêncio`,
 
-  "no-silencio/2": `[Verse 1]
+  "no-silêncio/2": `[Verse 1]
 I told myself the quiet was a garden
 That every swallowed word would plant a seed
 That if I kept the silence deep enough
@@ -231,7 +231,7 @@ But I was only
 Hiding underneath
 My own roof`,
 
-  "no-silencio/3": `[Verse 1]
+  "no-silêncio/3": `[Verse 1]
 A boca seca, o peito a bater como mar
 Como quem salta de um penhasco para o sal
 A primeira palavra não é grande nem bonita
@@ -244,7 +244,7 @@ E dizer eu tenho medo é ouvir o eco
 E descobrir que tu tremias no mesmo sitio
 
 [Verse 2]
-Não sabia que uma frase tao pequena
+Não sabia que uma frase tão pequena
 Podia abrir a terra inteira entre nós dois
 Um eu preciso de ti dito a meia-voz
 Que derreteu o gelo de tantos invernos sois
@@ -261,7 +261,7 @@ O silêncio não morre
 Transforma-se em espaço
 Para a palavra que vem depois`,
 
-  "no-silencio/4": `[Verse 1]
+  "no-silêncio/4": `[Verse 1]
 Pensava que ouvir era esperar o meu momento
 De largar as frases que já trazia ensaiadas
 Ouvir de verdade é terra firme
@@ -291,7 +291,7 @@ Ouvir de verdade
 Para encontrar
 O que o silêncio nós roubou`,
 
-  "no-silencio/5": `[Verse 1]
+  "no-silêncio/5": `[Verse 1]
 There was a time my voice lived underground
 A river pressed beneath the stones I said
 The polite laugh, the careful borrowed sound
@@ -401,7 +401,7 @@ O que é que vou pagar com a minha vida
 [Chorus]
 Receber e ficar quieta
 Com as mãos abertas e o peito ao sol
-E aceitar que alguem te de sem preço
+E aceitar que alguém te de sem preço
 Como a chuva que cai sem protocolo
 
 [Verse 2]
@@ -446,7 +446,7 @@ O que te oferecem de coração aberto e grado
 O amor entre dois inteiros
 Não pesa nem cobra nem mede
 E como água entre duas margens
-Corre livre e ninguem a prende
+Corre livre e ninguém a prende
 
 [Outro]
 Dois inteiros
@@ -498,7 +498,7 @@ At last`,
   "no-vergonha/1": `[Verse 1]
 Encontrei-te num lugar sem mapa nem parede
 Sem nome, sem historia, sem moldura no olhar
-Tu olhaste para mim como quem ve o mar
+Tu olhaste para mim como quem vê o mar
 E eu não tinha máscara para te entregar
 
 [Chorus]
@@ -595,7 +595,7 @@ E isso
 Basta e sobra`,
 
   "no-vergonha/4": `[Verse 1]
-Eu vejo-te por tras do que construiste
+Eu vejo-te por trás do que construiste
 Vejo o rapaz que fingia não ter dor
 Vejo as mãos que tremiam como folhas
 Debaixo da mesa onde batias sem pudor
@@ -607,7 +607,7 @@ Eu sei porque também tremo a noite
 Eu sei porque também calei o amor
 
 [Verse 2]
-Tu ves-me por tras da minha invencao
+Tu vês-me por trás da minha invencao
 Ves a rapariga que fugia para dentro
 Ves o medo que eu chamava de distancia
 Ves o fogo que eu chamava de vento
@@ -666,7 +666,7 @@ That bloom within`,
   // O controlo que isolou quem mais amava
   // ─────────────────────────────────────────────
 
-  "no-solidao/1": `[Verse 1]
+  "no-solidão/1": `[Verse 1]
 Construi uma ilha a volta de nós dois
 Cada regra era um muro de coral
 Tu ficavas seguro, eu ficava no centro
@@ -674,7 +674,7 @@ Tu ficavas seguro, eu ficava no centro
 
 [Chorus]
 Ilha que eu construi de amor é medo
-Tao bonita vista de longe e de fora
+Tão bonita vista de longe e de fora
 Quanto mais te segurava no segredo
 Mais te perdia a cada hora
 
@@ -696,7 +696,7 @@ Para nós proteger do mar
 Acabou por ser
 A razão de te afastar`,
 
-  "no-solidao/2": `[Verse 1]
+  "no-solidão/2": `[Verse 1]
 I held you like a bird inside my palm
 Só careful, só precise, só terrified
 I thought that if I opened up my fingers
@@ -727,7 +727,7 @@ Lost the very thing
 I was building walls
 To keep from going`,
 
-  "no-solidao/3": `[Verse 1]
+  "no-solidão/3": `[Verse 1]
 Abro as mãos e não sei o que fazer com elas
 Palmas pro céu, vazias como o dia
 Sem agenda, sem redea, sem controlo
@@ -758,11 +758,11 @@ Descubro que o amor
 Não se segura —
 Cultiva-se como flor`,
 
-  "no-solidao/4": `[Verse 1]
+  "no-solidão/4": `[Verse 1]
 Já não estou atras de ti nem tu de mim
 Já não verifico nem controlo mais a hora
 Estamos no mesmo quarto pela primeira vez
-Sem que ninguem vigie a luz que vai la fora
+Sem que ninguém vigie a luz que vai lá fora
 
 [Chorus]
 Lado a lado como duas arvores
@@ -791,7 +791,7 @@ Ficar
 Como quem planta
 E espera a flor`,
 
-  "no-solidao/5": `[Verse 1]
+  "no-solidão/5": `[Verse 1]
 I lived inside a tower made of rules
 Convinced the walls were keeping danger out
 But when I looked through every tiny window
@@ -908,14 +908,14 @@ E descubro que o vazio tem o meu tamanho
 
 [Chorus]
 Sem preencher, sem fugir para longe
-Sem chamar ninguem para ocupar
+Sem chamar ninguém para ocupar
 O espaço que é meu por dentro
 Aprendo finalmente a habitar
 
 [Verse 2]
 Antes o vazio era um monstro escuro
 Agora e só uma sala por pintar
-Posso enche-la, posso deixa-la
+Posso enche-lá, posso deixa-lá
 Posso entrar e sair sem me explicar
 
 [Bridge]
@@ -935,7 +935,7 @@ Para o que vem`,
   "no-vazio/4": `[Verse 1]
 Voltamos a encontrar-nós num café de outubro
 Sem a fome, sem a pressa, sem a sede
-Tu olhas para mim como quem ve um rio
+Tu olhas para mim como quem vê um rio
 E eu já sei nadar sem a tua rede
 
 [Chorus]
@@ -1033,7 +1033,7 @@ Passou a ser entrar numa sala
 [Outro]
 O lar que nós sufocava
 Não precisava de mais ar
-Precisava que alguem
+Precisava que alguém
 Tivesse a coragem de partir sem olhar`,
 
   "no-pertenca/2": `[Verse 1]
@@ -1090,7 +1090,7 @@ Mas depois o silêncio mudou de tom
 Neste vazio fértil descubro
 Coisas que não sabia sobre mim
 Descubro que tenho uma voz própria
-Que não precisa de ninguem para ter fim
+Que não precisa de ninguém para ter fim
 
 [Outro]
 Sozinho
@@ -1116,7 +1116,7 @@ E dizer obrigada — e seguir em frente
 [Verse 2]
 As paredes desta vez tem mais janelas
 O telhado desta vez deixa entrar o céu
-A porta não tem chave porque ninguem
+A porta não tem chave porque ninguém
 Precisa de fugir do que é seu
 
 [Bridge]

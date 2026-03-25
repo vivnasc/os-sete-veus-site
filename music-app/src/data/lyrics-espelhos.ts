@@ -9,7 +9,7 @@ export const ESPELHO_LYRICS: Record<string, string> = {
   // ESPELHO DA ILUSAO (Véu 1 — awakening from illusion)
   // ─────────────────────────────────────────────
 
-  "espelho-ilusao/1": `[Verse 1]
+  "espelho-ilusão/1": `[Verse 1]
 A manhã entra de mansinho
 Pela fresta da persiana
 O meu corpo já conhece o caminho
@@ -34,7 +34,7 @@ Até que eu me despir
 [Verse 3]
 Há uma fissura no silêncio
 Uma brasa quase fria
-Uma voz que fala tao de leve
+Uma voz que fala tão de leve
 Que só ouço quando e de madrugada
 
 [Chorus]
@@ -52,7 +52,7 @@ Estou a acordar
 Devagar, devagar
 Estou a acordar`,
 
-  "espelho-ilusao/2": `[Verse 1]
+  "espelho-ilusão/2": `[Verse 1]
 I learned to smile before I learned to speak
 Wore my mother's worry like a chain
 Good girl, don't ask, don't wander, don't be weak
@@ -88,9 +88,9 @@ I can feel my own
 Stitch by stitch I let the fabric fall
 Stitch by stitch I find there's nothing wrong
 Underneath the coat, beneath it all
-I've been here all along`,
+I'vê been here all along`,
 
-  "espelho-ilusao/3": `[Verse 1]
+  "espelho-ilusão/3": `[Verse 1]
 Gira a chave, gira a mao
 Gira o dia sempre igual
 Gira a roda, gira o chão
@@ -106,7 +106,7 @@ Sem nunca me ouvir
 Roda, roda, roda sem parar
 Quem é esta mulher que vive no meu lugar
 Roda, roda, roda sem sentir
-Há alguem ca dentro a pedir pra sair
+Há alguém ca dentro a pedir pra sair
 A pedir pra sair
 
 [Verse 3]
@@ -119,7 +119,7 @@ A espera de me conhecer
 Roda, roda, roda sem parar
 Quem é esta mulher que vive no meu lugar
 Roda, roda, roda sem sentir
-Há alguem ca dentro a pedir pra sair
+Há alguém ca dentro a pedir pra sair
 A pedir pra sair
 
 [Bridge]
@@ -134,7 +134,7 @@ Parei
 Parei
 E era eu`,
 
-  "espelho-ilusao/4": `[Verse 1]
+  "espelho-ilusão/4": `[Verse 1]
 O café arrefece entre as mãos
 A cozinha cheira a sempre
 Lembro-me de hortelã e limão
@@ -174,7 +174,7 @@ Vejo-o descer, desaparecer
 E as minhas mãos ficam a tremer
 Com a leveza de não ter`,
 
-  "espelho-ilusao/5": `[Verse 1]
+  "espelho-ilusão/5": `[Verse 1]
 My shoulders held it first, the ache
 Before I had a word for pain
 My ribs remembered what I lost
@@ -190,7 +190,7 @@ Like arms around a lullaby
 Oh, the body keeps the tale
 Written underneath the skin
 Every scar's a letter sent
-From the girl I've always been
+From the girl I'vê always been
 The body hums a melody
 The mind forgot to sing
 And if you press your ear right here
@@ -206,7 +206,7 @@ And held them like the living dead
 Oh, the body keeps the tale
 Written underneath the skin
 Every scar's a letter sent
-From the girl I've always been
+From the girl I'vê always been
 The body hums a melody
 The mind forgot to sing
 And if you press your ear right here
@@ -218,7 +218,7 @@ Feel the drum beneath the bone
 That's the rhythm of the truth
 You were never meant to carry alone`,
 
-  "espelho-ilusao/6": `[Verse 1]
+  "espelho-ilusão/6": `[Verse 1]
 A chuva cai e não tem pressa
 A lua nasce sem pedir licença
 A árvore não força a flor
@@ -262,7 +262,7 @@ Quieta como a manhã
 Fico aqui
 E deixo-me chegar`,
 
-  "espelho-ilusao/7": `[Verse 1]
+  "espelho-ilusão/7": `[Verse 1]
 Eu vi, eu vi
 O que não se pode des-ver
 O pano caiu no chão
@@ -333,7 +333,7 @@ Quem me embrulhou em tanto segredo
 Que esqueci como é respirar
 Quem fechou a porta por amor
 E perdeu a chave sem querer
-Fiquei tao guardada, tao segura
+Fiquei tão guardada, tão segura
 Que me esqueci de viver
 
 [Verse 3]
@@ -364,13 +364,13 @@ And serve the one that's safe across the mile
 [Verse 2]
 I weigh each syllable like gold on glass
 I measure out my laughter by the spoon
-I've polished every answer till it shines
+I'vê polished every answer till it shines
 But the truth still hums a crooked little tune
 
 [Chorus]
 What if I said the wrong and lovely thing
 The messy word that blooms between my teeth
-What if the thing I've held behind my tongue
+What if the thing I'vê held behind my tongue
 Is the only song worth underneath
 The only song worth singing underneath
 
@@ -383,7 +383,7 @@ And whisper darling, we're your only hope
 [Chorus]
 What if I said the wrong and lovely thing
 The messy word that blooms between my teeth
-What if the thing I've held behind my tongue
+What if the thing I'vê held behind my tongue
 Is the only song worth underneath
 The only song worth singing underneath
 
@@ -409,7 +409,7 @@ Com os bolsos cheios de talvez e de vazio
 O medo vestiu-se de elegância
 Pos gravata e disse espera mais um pouco
 E eu esperei, com tanta graça
-Que ninguem reparou que eu estava louca
+Que ninguém reparou que eu estava louca
 De vontade de correr
 De vontade de saltar
 De vontade de fazer o que a pele quer gritar
@@ -434,7 +434,7 @@ O que o corpo inteiro já tentou dizer
 
 [Verse 2]
 Aquele calor que sobe pela espinha
-Quando alguem diz fica e tu queres ir
+Quando alguém diz fica e tu queres ir
 Aquele frio que mora nas entranhas
 Quando dizes sim mas queres fugir
 
@@ -451,7 +451,7 @@ O corpo é a única verdade que se ouve a toa
 Pousa a mao onde dói
 Fica quieta e ouve bem
 O teu corpo fala-te há anos
-Só que a cabeça finge que não tem ninguem
+Só que a cabeça finge que não tem ninguém
 
 [Outro]
 Respiro fundo
@@ -538,7 +538,7 @@ Vou`,
 
   "espelho-medo/7": `[Verse 1]
 A vela treme na minha mao
-A chama e tao pequena, tao frágil
+A chama e tão pequena, tão frágil
 Mas ilumina mais que qualquer trovão
 Porque a luz que dura nasce facil
 
@@ -593,7 +593,7 @@ Tem a boca da minha mãe
 Tem os olhos do padre
 Tem o peso da fé
 Mas não é minha, não é minha
-Eu aprendi a repeti-la
+Eu aprendi a repeti-lá
 Até esquecer que a garganta
 Tinha outra música mais tranquila
 
@@ -708,7 +708,7 @@ De mãe para filha, de filha para neta
 Esta culpa antiga como a chuva
 De querer mais do que a vida nós deixa
 De querer mais do que elas puderam
-De dizer não quando ninguem dizia
+De dizer não quando ninguém dizia
 De viver alto, de sonhar longe
 De escolher a minha própria via
 
@@ -767,7 +767,7 @@ And still the sun comes back again
 
 [Outro]
 I deserve the light
-Not because I've earned my stay
+Not because I'vê earned my stay
 But because I'm here
 And here was never mine to pay`,
 
@@ -819,7 +819,7 @@ Por um colo, por um abrigo
 
 [Chorus]
 Ternura, ternura
-A força que ninguem me ensinou
+A força que ninguém me ensinou
 Olhar para as minhas feridas
 Como quem rega uma flor
 Ternura, ternura
@@ -848,7 +848,7 @@ Es mais do que suficiente`,
   "espelho-identidade/1": `[Verse 1]
 De manhã sou a mãe que sorri na porta
 A meio do dia a colega perfeita
-A noite a mulher que ninguem importa
+A noite a mulher que ninguém importa
 Deito-me e não sei qual delas se deita
 
 [Verse 2]
@@ -860,7 +860,7 @@ Um riso certo para cada gala
 [Chorus]
 Quem sou eu quando tiro os disfarces
 Quando o palco apaga a luz
-Quem sou eu quando ninguem aplaude
+Quem sou eu quando ninguém aplaude
 Quando não há figurino nem cruz
 Há um rosto por baixo de tudo
 Que eu ainda não vi
@@ -875,7 +875,7 @@ Que a minha ficou rara
 
 [Outro]
 Debaixo de tudo
-Há alguem
+Há alguém
 Que espera
 Com a paciência
 De quem nunca desistiu`,
@@ -922,14 +922,14 @@ Dizia eu, com a voz dos meus pais
 
 [Verse 2]
 A armadura brilha tanto
-Que ninguem ve o que está por tras
+Que ninguém vê o que está por trás
 Uma menina de joelhos
 Com vontade de chorar em paz
 
 [Chorus]
 Mas a armadura pesa, pesa
 É o coração bate mais devagar
-Tao protegida, tao perfeita
+Tão protegida, tão perfeita
 Que até o ar tem medo de entrar
 E se eu tirasse peça a peça
 E ficasse só com a pele é o vento
@@ -989,7 +989,7 @@ Só eu, parada, ali`,
   "espelho-identidade/5": `[Verse 1]
 Take away my name and watch me tremble
 Take away the job, the house, the ring
-Take away the story I've been telling
+Take away the story I'vê been telling
 And see if there's a bird that still can sing
 
 [Verse 2]
@@ -1039,11 +1039,11 @@ Mas o quadro muda com a roda
 Visto e dispo como quem dança
 Com a leveza de quem já sabe
 Que debaixo de cada roupa
-Mora alguem que não cabe
+Mora alguém que não cabe
 Em nenhum nome, em nenhuma caixa
 Em nenhum papel, em nenhum lugar
-Alguem que é tudo é não é nada
-Alguem que aprendeu a brincar
+Alguém que é tudo é não é nada
+Alguém que aprendeu a brincar
 
 [Bridge]
 A liberdade não é estar nua
@@ -1116,7 +1116,7 @@ Como se a vida pudesse fugir
 Segura, segura, segura
 As mãos já doem mas eu não largo
 Se eu soltar o mundo cai
-Se eu parar ninguem faz o parto
+Se eu parar ninguém faz o parto
 Segura, segura, segura
 Como quem agarra areia na mao
 Quanto mais aperto mais escapa
@@ -1161,7 +1161,7 @@ There's a woman wanting rest
 [Bridge]
 What if I said I can't today
 What if the rock became the river
-What if the strongest thing I've done
+What if the strongest thing I'vê done
 Is finally learning how to shiver
 
 [Outro]
@@ -1224,7 +1224,7 @@ A flor nasceu no meio do cimento
 Onde eu não plantei, onde eu não previ
 A vida riu-se do meu mapa inteiro
 E fez o que quis apesar de mim
-O castelo de vidro, tao bonito
+O castelo de vidro, tão bonito
 Partiu-se com a brisa do jardim
 E eu fiquei ali no meio dos cacos
 A perceber que o caos também e um hino
@@ -1280,7 +1280,7 @@ And I danced till dawn`,
   "espelho-controlo/6": `[Verse 1]
 Desliguei o telefone a tarde inteira
 O mundo girou sem a minha mao
-O jantar queimou e ninguem chorou
+O jantar queimou e ninguém chorou
 A louca ficou no balcao
 
 [Verse 2]
@@ -1311,7 +1311,7 @@ Sou corajosa por saber cair
 Larguei
 É o mundo deu uma volta
 E voltou
-E eu estava la
+E eu estava lá
 A rir
 Com as mãos abertas
 Finalmente abertas`,
@@ -1333,7 +1333,7 @@ Respira, respira
 O mundo pode esperar
 Respira, respira
 Entre a entrada e a saida do ar
-Mora um silêncio tao bonito
+Mora um silêncio tão bonito
 Que parece um lugar
 Onde nada me persegue
 Onde tudo pode pousar
@@ -1377,7 +1377,7 @@ Para tapar o buraco no peito
 Que nenhuma lista, nenhuma receita
 Consegue encher, consegue curar
 Barulho bonito para não ouvir
-O que mora la no fundo
+O que mora lá no fundo
 O que tem medo de existir
 
 [Bridge]
@@ -1391,7 +1391,7 @@ Parei de correr
 Sentei-me no chão
 É o silêncio
 Cantou-me uma canção
-Tao bonita
+Tão bonita
 Que chorei`,
 
   "espelho-desejo/2": `[Verse 1]
@@ -1414,7 +1414,7 @@ Or any holiday or frame
 It's sitting in the corner
 Of the room I never clean
 The quietest, hungriest, truest thing
-I've ever dared not see
+I'vê ever dared not see
 Oh, what's missing, what's missing
 
 [Bridge]
@@ -1426,7 +1426,7 @@ Not the problem, not the mistake
 [Outro]
 What's missing
 Is right here
-In the silence I've been running from
+In the silence I'vê been running from
 For years and years and years`,
 
   "espelho-desejo/3": `[Verse 1]
@@ -1438,7 +1438,7 @@ E quase desapareci sem dar por nada
 [Verse 2]
 Não peco muito, não espero nada
 Não sonho alto para não cair
-Fiz-me tao pequena, tao educada
+Fiz-me tão pequena, tão educada
 Que até a sombra se esqueceu de mim
 
 [Chorus]
@@ -1461,7 +1461,7 @@ Tem a furia de um vulcao
 Cresço
 Cresço sem pedir licença
 Cresço como a erva daninha
-Que ninguem consegue arrancar
+Que ninguém consegue arrancar
 Bonita, selvagem
 E minha`,
 
@@ -1539,7 +1539,7 @@ Beautifully, terrifyingly free`,
   "espelho-desejo/6": `[Verse 1]
 Debaixo dos sonhos que me emprestaram
 Debaixo do quero que nunca foi meu
-Há um desejo que vem de tao fundo
+Há um desejo que vem de tão fundo
 Que tem o sabor do primeiro céu
 
 [Verse 2]
@@ -1554,7 +1554,7 @@ Como a voz, como a pele, como o sal
 Não precisa de licença
 Não precisa de sinal
 Pulsa como o coração
-Que nunca ninguem mandou bater
+Que nunca ninguém mandou bater
 É meu, o único desejo
 Que não tenho de aprender
 
@@ -1568,7 +1568,7 @@ Não é o que ficava bem na foto
 Sinto-o agora
 Aqui no centro do meu corpo
 Quente, vivo, meu
-Como um fogo que ninguem acendeu
+Como um fogo que ninguém acendeu
 Mas que arde, arde, arde`,
 
   "espelho-desejo/7": `[Verse 1]
@@ -1612,7 +1612,7 @@ Para deixar florescer`,
   // ESPELHO DA SEPARACAO (Véu 7 — distancing from yourself to belong)
   // ─────────────────────────────────────────────
 
-  "espelho-separacao/1": `[Verse 1]
+  "espelho-separação/1": `[Verse 1]
 Arredondei os cantos para caber na porta
 Limei as arestas para não magoar
 Fiz-me de água para caber no copo
@@ -1638,7 +1638,7 @@ E eu não me encolho mais, não, não me encolho
 Há uma diferença entre a água que se adapta
 É a água que desaparece
 Uma abraca a forma do rio
-Outra seca e ninguem aquece
+Outra seca e ninguém aquece
 
 [Outro]
 Cresço de volta
@@ -1646,7 +1646,7 @@ Como a mare que sobe sem aviso
 Devagar, sem pedir licença
 Ao tamanho que sempre foi preciso`,
 
-  "espelho-separacao/2": `[Verse 1]
+  "espelho-separação/2": `[Verse 1]
 We share the bread, we share the bed
 We share the silence and the rain
 You know the way I like my tea
@@ -1680,7 +1680,7 @@ Or alone with grace
 But not this gentle war
 This almost-touching empty space`,
 
-  "espelho-separacao/3": `[Verse 1]
+  "espelho-separação/3": `[Verse 1]
 Há uma pergunta guardada há anos
 No fundo da gaveta dos lençóis
 Debaixo da rotina e dos enganos
@@ -1690,14 +1690,14 @@ Debaixo dos sorrisos e dos nóis
 Não é traição, não é abandono
 Não quer destruir nenhum castelo
 Quer só saber se debaixo do trono
-Há alguem vivo debaixo do véu
+Há alguém vivo debaixo do véu
 
 [Chorus]
 Se eu fosse só eu, quem seria
 Sem o sobrenome é sem o anel
 Se eu fosse só eu, o que eu faria
 Com este corpo, com este céu
-Se não houvesse ninguem a espera
+Se não houvesse ninguém a espera
 Se o jantar não fosse obrigação
 Quem sou eu quando sou só eu
 Qual é a minha própria canção
@@ -1705,7 +1705,7 @@ Qual é a minha própria canção
 [Bridge]
 Talvez a resposta não seja um nome
 Mas um sabor, um cheiro, uma textura
-A forma como respiro quando ninguem olha
+A forma como respiro quando ninguém olha
 A forma como danço no escuro
 
 [Outro]
@@ -1715,9 +1715,9 @@ Por este suspiro
 Por esta pergunta
 Que finalmente saiu`,
 
-  "espelho-separacao/4": `[Verse 1]
+  "espelho-separação/4": `[Verse 1]
 Não é um muro, e uma varanda
-De onde eu te vejo inteiro e tu me ves
+De onde eu te vejo inteiro e tu me vês
 Não é uma fuga, e uma dança
 Com espaço entre os dois pés
 
@@ -1749,7 +1749,7 @@ Separar não é o fim
 Como duas luzes juntas
 Que brilham mais por ser`,
 
-  "espelho-separacao/5": `[Verse 1]
+  "espelho-separação/5": `[Verse 1]
 I opened up my hands and watched
 The autumn leaves come tumbling down
 The roles I wore like winter coats
@@ -1787,7 +1787,7 @@ Is mine forever
 What remains
 Is all`,
 
-  "espelho-separacao/6": `[Verse 1]
+  "espelho-separação/6": `[Verse 1]
 Há um caminho entre as costelas
 Que da para um sitio que eu conheco
 Um lugar com cheiro a terra molhada
@@ -1803,16 +1803,16 @@ E as paredes guardam os meus risos
 Regresso a mim como quem regressa a casa
 Depois de uma viagem pelo mar
 A luz está acesa na cozinha
-Alguem deixou o chá a aquecer no luar
-É esse alguem sou eu, sempre fui eu
+Alguém deixou o chá a aquecer no luar
+É esse alguém sou eu, sempre fui eu
 A espera de mim na porta aberta
 Com os braços quentes e a voz que diz
-Bem-vinda, estavas perta, tao perta
+Bem-vinda, estavas perta, tão perta
 
 [Bridge]
 O regresso não é voltar atras
 E chegar ao único lugar
-Que ninguem me pode tirar
+Que ninguém me pode tirar
 O meu corpo, o meu chão, o meu compás
 
 [Outro]
@@ -1823,7 +1823,7 @@ Finalmente amada
 Por quem mais importa
 Por mim`,
 
-  "espelho-separacao/7": `[Verse 1]
+  "espelho-separação/7": `[Verse 1]
 Sete vezes a luz tentou entrar
 Sete vezes eu fechei a cortina
 Sete camadas de tecido fino

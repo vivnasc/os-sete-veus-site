@@ -25,23 +25,23 @@ que guarda o fio mais fino
 
 [Chorus]
 Manhã, manhã
-antes de seres de alguem
+antes de seres de alguém
 Es só tua, só tua
 e isso é mais do que convem
 Descalca no chão frio
 antes que o dia te alcance
 A manhã e o único ritual
-que ninguem te pode tirar — e dança
+que ninguém te pode tirar — e dança
 
 [Bridge]
-Ninguem ve o que fazes
+Ninguém vê o que fazes
 nós primeiros cinco minutos
 E por isso que sao sagrados
 e por isso que sao teus
 
 [Outro]
 A manhã e minha
-antes de ser de alguem
+antes de ser de alguém
 O corpo sabe disso
 antes da mente também`,
 
@@ -161,7 +161,7 @@ só a coragem de mergulhar
 
 [Verse 2]
 A água cobre-me a cabeça
-o silêncio e o mais antigo
+o silêncio é o mais antigo
 não há vela nem baptismo
 só o corpo como abrigo
 
@@ -263,7 +263,7 @@ there's a clarity that needs the gloom
 You will want to run — sit anyway
 You will want to speak — breathe instead
 Stillness built with trembling hands
-is the bravest thing you've ever said
+is the bravest thing you'vê ever said
 
 [Outro]
 Stillness is not a gift
@@ -602,7 +602,7 @@ vertical, vertical
 a cabeça no céu que abunda
 não escolho um lado só —
 sou o eixo entre os dois extremos
-o templo não é la em cima
+o templo não é lá em cima
 o templo e este corpo inteiro
 
 [Verse 3]
@@ -662,7 +662,7 @@ Thought the loss was giving back
 But I see the cost in your breathing
 See it in the way you stand
 Like you're bracing for another asking
-Like you've nothing left to hand
+Like you'vê nothing left to hand
 
 [Pre-Chorus - Both]
 Tell me — where does the river go
@@ -707,7 +707,7 @@ mas ouvi a tua voz no contorno
 
 [Chorus]
 [Both] Cai sobre mim
-[Male] como chuva que ninguem convocou
+[Male] como chuva que ninguém convocou
 [Female] Cai sobre mim
 [Male] sou a voz que o silêncio mandou
 [Both] A graça não escolhe o merecido
@@ -723,7 +723,7 @@ só cair — e isso é o meu intento
 
 [Chorus]
 [Both] Cai sobre mim
-[Male] como chuva que ninguem convocou
+[Male] como chuva que ninguém convocou
 [Female] Cai sobre mim
 [Male] sou a voz que o silêncio mandou
 [Both] A graça não escolhe o merecido
@@ -809,7 +809,7 @@ A que não para perto nem no fim
 Chama — a que existe mesmo apagada
 Chama — a que acende quando resta nada
 Sou isto aqui — não promessa nem dogma
-Sou a chama — antes de ser mais alguem
+Sou a chama — antes de ser mais alguém
 
 [Verse 3]
 Não é gospel que me enche de luz
@@ -835,7 +835,7 @@ A que não para perto nem no fim
 Chama — a que existe mesmo apagada
 Chama — a que acende quando resta nada
 Sou isto aqui — não promessa nem dogma
-Sou a chama — antes de ser mais alguem
+Sou a chama — antes de ser mais alguém
 
 [Outro]
 Chama
@@ -846,7 +846,7 @@ Só a chama
 Sempre só a chama`,
 
   "humus/10": `[Verse 1]
-Não sabes que está la
+Não sabes que está lá
 ainda não tem forma
 a semente no escuro
 não conhece a norma
@@ -859,7 +859,7 @@ só acontece o que tinha
 
 [Chorus]
 Debaixo, debaixo
-há vida que não se ve
+há vida que não se vê
 debaixo, debaixo
 há raiz antes do pé
 debaixo do medo há o corpo
@@ -893,7 +893,7 @@ debaixo`,
   "folego/1": `[Verse 1]
 Abre a boca devagar
 deixa o mundo entrar
-o ar que vem de tao longe
+o ar que vem de tão longe
 agora e teu lugar
 
 [Verse 2]
@@ -938,7 +938,7 @@ balanced on a candle
 
 [Verse 2]
 [Male]
-Every door I've ever crossed
+Every door I'vê ever crossed
 changed what came after
 The threshold doesn't care
 if I bring grief or laughter
@@ -1171,7 +1171,7 @@ Small and warm until the morning comes
 Ember — you thought you were finished
 Ember — you thought the cold had won
 Smaller than the story of a fire
-Warmer than the winter you've become
+Warmer than the winter you'vê become
 Ember — not asking to be noticed
 Ember — not trying to be bright
 Something in you would not stop existing
@@ -1193,7 +1193,7 @@ Still here — which is the hardest word tonight
 Ember — you thought you were finished
 Ember — you thought the cold had won
 Smaller than the story of a fire
-Warmer than the winter you've become
+Warmer than the winter you'vê become
 Ember — not asking to be noticed
 Ember — not trying to be bright
 Something in you would not stop existing
@@ -1302,7 +1302,7 @@ que não chega cedo nem chega tarde
 
 [Verse 2]
 Há uma parte de ti que não sangra
-que ve o medo sem ser o medo
+que vê o medo sem ser o medo
 que ouve o choro e não se magoa
 que olha o fogo e não tem receio
 
@@ -1313,7 +1313,7 @@ A testemunha
 não se perde
 Tu não es a tempestade
 tu não es o vento forte
-Tu es o céu que ve a chuva
+Tu es o céu que vê a chuva
 sem mudar de forma ou sorte
 
 [Verse 3]
@@ -1378,12 +1378,12 @@ pesava mais do que as proprias razoes
 Desci as caixas todas para o corredor
 fiquei sozinha com o chão e o ar
 E ali no meio daquele não-nada
-percebi que nunca estive tao cheia de estar
+percebi que nunca estive tão cheia de estar
 
 [Chorus]
 O vazio cheio — não é contradicao
 O vazio cheio — e o que fica no chão
-Quando tiras tudo o que punhas la dentro
+Quando tiras tudo o que punhas lá dentro
 descobres que o nada tem peso e intenção
 O vazio cheio
 
@@ -1591,7 +1591,7 @@ is the body fighting for you
 Not weak not broken
 not too much not wrong
 the breathless moment passes
-you've been here all along
+you'vê been here all along
 
 [Outro]
 Breathless
@@ -1614,7 +1614,7 @@ ficou firme e ficou marcado
 Sou a árvore, sou a árvore
 raiz no escuro, copa no ar
 sou a árvore, sou a árvore
-ninguem me plantou — fui eu a plantar
+ninguém me plantou — fui eu a plantar
 dou sombra sem pedir nada
 alcanço o céu sem me mover
 sou o que fica quando tudo passa
@@ -1681,7 +1681,7 @@ just the kitchen, just the 3am
 just the tap running free`,
 
   "demora/11": `[Verse 1]
-Fecho os olhos e o mundo la fora
+Fecho os olhos e o mundo lá fora
 fica do lado de fora onde pertence
 Não é fuga — e o gesto mais honesto
 que o corpo faz quando a mente esquece
@@ -1689,7 +1689,7 @@ que o corpo faz quando a mente esquece
 [Verse 2]
 Foste expulsa de tantos sitios
 de mesas, de casas, de conversas com dono
-Mas aqui dentro ninguem te expulsou
+Mas aqui dentro ninguém te expulsou
 aqui dentro ainda es teu próprio trono
 
 [Chorus]
@@ -1698,7 +1698,7 @@ ao único lugar que me ficou
 Fecho os olhos e estou inteira
 sem espelho, sem máscara, sem dor
 Fecho os olhos
-e encontro quem la ficou
+e encontro quem lá ficou
 
 [Bridge]
 O mundo pede-te aberta
@@ -1709,7 +1709,7 @@ e tu de volta — sem desconto, sem fachada
 [Outro]
 Fecho os olhos
 e encontro
-quem la ficou a espera
+quem lá ficou a espera
 Ainda es tu
 sem desconto`,
 
@@ -1724,7 +1724,7 @@ A boca abre e não sai nada
 só o sal que entra na mente
 
 [Verse 2]
-Tao grande que o medo muda
+Tão grande que o medo muda
 deixa de ser o que era
 Não é panico que me invade
 e a rendicao que me espera
@@ -1985,8 +1985,8 @@ o que se perde volta, o que se esconde
 [Verse 2]
 A minha mãe sangrou e a mãe dela sangrou
 e a primeira mulher sangrou olhando o céu
-ninguem ensinou a lua a ser o que ela e
-ninguem precisa me ensinar o ritmo meu
+ninguém ensinou a lua a ser o que ela e
+ninguém precisa me ensinar o ritmo meu
 
 [Chorus]
 Sangue e lua, sangue e lua
@@ -2067,14 +2067,14 @@ e coube a criacao
 
 [Verse 2]
 Coube a dor e coube o oceano
-coube o medo e coube a luz
+coube o medo é coube a luz
 Coube o silêncio de mil noites
 e o grito de quem se reduz
 
 [Chorus]
 Cabe tudo — dentro deste corpo
 cabe tudo — dentro deste peito
-O infinito não esta la fora
+O infinito não esta lá fora
 esta aqui no meu direito
 Onde as costelas guardam
 o que não tem tamanho nem fim
@@ -2552,7 +2552,7 @@ o que as mãos carregam da cidade
 lava o que passou
 Água nas mãos
 o gesto mais comum que se encontrou
-Ninguem ve a cerimonia
+Ninguém vê a cerimonia
 de uma torneira a dar
 Água que leva o dia
 e me devolve ao lugar
@@ -2582,7 +2582,7 @@ E eco que guarda a alma
 [Verse 2]
 Entro descalca devagar
 As mãos abertas pelo caminho
-O barulho fica la fora
+O barulho fica lá fora
 Aqui dentro só me ouço a mim
 
 [Chorus]
@@ -2671,7 +2671,7 @@ O que fica quando não há onde estar
 Tira a historia que contaste tantas vezes
 Tira as roupas que a ocasiao exige
 Tira os titulos, os papeis, as promessas
-O que fica quando ninguem te dirige
+O que fica quando ninguém te dirige
 
 [Pre-Chorus]
 Não tenho medo de ficar nua
@@ -2714,8 +2714,8 @@ O que fica quando tiras tudo
 [Outro]
 Tira tudo
 Fica parada
-Ve o que não se tira
-Ve o que sempre estava`,
+Vê o que não se tira
+Vê o que sempre estava`,
 
   "o-que-resta/4": `[Verse 1]
 [Male] I carried a match for years
@@ -2759,7 +2759,7 @@ changed shape`,
 
   "o-que-resta/5": `[Verse 1]
 Antes da chama há um instante
-tao fino que mal existe
+tão fino que mal existe
 Um tremor a meio do peito
 um arrepio que persiste
 
@@ -3006,7 +3006,7 @@ para seres inteira de par
 
 [Chorus]
 Cala — por convite não por ordem
-Cala — o silêncio e teu lar
+Cala — o silêncio é teu lar
 Cala — a voz descansa entre ondas
 e volta mais limpa ao falar
 Cala
@@ -3071,8 +3071,8 @@ it is só tender`,
   "limiar/1": `[Verse 1]
 A raiz trabalha no escuro
 sem palco e sem louvor
-ninguem fotografa o fundo
-ninguem te diz o seu valor
+ninguém fotografa o fundo
+ninguém te diz o seu valor
 
 [Verse 2]
 O que sustenta não brilha
@@ -3082,10 +3082,10 @@ nasce desta fundacao
 
 [Chorus]
 Raiz, raiz
-escura e necessaria
+escura é necessaria
 raiz, raiz
 funda e solitaria
-ninguem chega ao fruto
+ninguém chega ao fruto
 sem antes ter descido
 pelo escuro que trabalha
 pelo fundo que tem vivido
@@ -3104,7 +3104,7 @@ o que nunca foi fotografado
 
 [Outro]
 Raiz
-ninguem te ve
+ninguém te vê
 mas e por ti
 que tudo cresce`,
 
@@ -3226,7 +3226,7 @@ it's just the proof you survived
 My chest is still shaking
 my eyes are still burned
 the water falls off me
-like a story I've returned
+like a story I'vê returned
 
 [Bridge]
 I didn't rise transformed
@@ -3251,7 +3251,7 @@ e a margem virou a própria via
 O rio não tem pressa nem receio
 o rio não pergunta se chega ao mar
 Vai porque ir e a sua natureza
-não porque alguem o foi ensinar
+não porque alguém o foi ensinar
 
 [Chorus]
 Sou o rio — não a pedra no caminho
@@ -3414,7 +3414,7 @@ not above, but in the dare
 [Bridge]
 Not up, not out, not somewhere else
 not a tower or a distant sign
-the sky you've been chasing all this time
+the sky you'vê been chasing all this time
 has always been inside
 
 [Outro]
@@ -3429,7 +3429,7 @@ Este chão frio e firme
 recebe o que me encorpa
 
 [Verse 2]
-Não me humilhei a ninguem
+Não me humilhei a ninguém
 não curvei a cabeça em vao
 Dobrar os joelhos e diferente
 quando a escolha e minha mao
@@ -3584,9 +3584,9 @@ we just stopped seeking
 [Both] home`,
 
   "o-circulo/3": `[Verse 1]
-Ninguem vem a este lugar
-ninguem conhece este fundo
-O desamparo e tao vasto
+Ninguém vem a este lugar
+ninguém conhece este fundo
+O desamparo é tão vasto
 que cabe o mundo
 
 [Verse 2]
@@ -3600,9 +3600,9 @@ Desamparo — chão sagrado
 desamparo — toca o real
 Não há catedral mais honesta
 que este escuro total
-Onde ninguem chega com consolo
+Onde ninguém chega com consolo
 onde o orgulho não tem vez
-O desamparo e o templo
+O desamparo é o templo
 o lugar onde o sagrado desce
 
 [Verse 3]
@@ -3611,8 +3611,8 @@ preciso deste frio
 Não preciso de ritual
 só preciso deste rio
 que corre mesmo quando
-a margem não se ve
-O desamparo e o templo
+a margem não se vê
+O desamparo é o templo
 o mais nobre que há de pé
 
 [Bridge]
@@ -3623,7 +3623,7 @@ vim só porque era o custo
 
 [Outro]
 Rezo do fundo
-do lugar onde ninguem vem
+do lugar onde ninguém vem
 e alguma coisa
 neste escuro
 ouve`,
@@ -3666,13 +3666,13 @@ and know that you were there`,
 Pensei que o caminho era só meu
 que o peso só eu o sabia levar
 que a escuridão era privada
-que ninguem ia reparar
+que ninguém ia reparar
 
 [Verse 2]
 Depois uma voz do meu lado
 disse baixinho: eu também
 e o peito abriu um espaço
-que não sabia que tinha ninguem
+que não sabia que tinha ninguém
 
 [Chorus]
 Sozinha não — e o espanto
@@ -3858,13 +3858,13 @@ Still and full`,
 Eu sozinha sou sussurro
 tu sozinha es sussurro também
 mas quando as duas abrimos a boca
-somos vento que ninguem contem
+somos vento que ninguém contem
 
 [Verse 2]
 Não é coro ensaiado nem palco
 não é canção com letra certa
 e a voz que sai do peito fundo
-quando alguem toca a porta aberta
+quando alguém toca a porta aberta
 
 [Chorus]
 Nos, nós
@@ -3920,7 +3920,7 @@ ficar — no escuro total
 [Verse 3]
 Já disse tudo o que sabia
 já gritei tudo o que tinha
-Agora o silêncio e meu
+Agora o silêncio é meu
 e a noite e minha vizinha
 
 [Bridge]
@@ -4145,7 +4145,7 @@ Quando os pés compreendem`,
   "o-gesto/6": `[Verse 1]
 Sou um grao de areia
 num deserto sem limite
-tao pequena que o vento
+tão pequena que o vento
 me poderia tirar do que existe
 
 [Verse 2]
@@ -4184,9 +4184,9 @@ de dizer sim
 ao que sou`,
 
   "o-gesto/7": `[Verse 1]
-Houve noites tao fechadas
+Houve noites tão fechadas
 que esqueci que tinha luz
-Houve dias tao carregados
+Houve dias tão carregados
 que o peito não abriu
 
 [Verse 2]
@@ -4201,7 +4201,7 @@ ainda brilha — contra o escuro
 Não é coragem nem teimosia
 e o fogo que é mais puro
 Podem tirar o que é de fora
-ninguem tira o que nasceu
+ninguém tira o que nasceu
 Ainda brilha — e isso basta
 ainda brilha — este e o meu
 
@@ -4214,7 +4214,7 @@ ao que tentou me apagar
 [Bridge]
 Esta luz não se pede emprestada
 não se vende nem se da
-Nasceu comigo la dentro
+Nasceu comigo lá dentro
 e comigo vai ficar
 
 [Outro]
@@ -4274,7 +4274,7 @@ Que nenhuma dessas coisas encheram
 Tentei com amor é quase chegou
 Tentei com trabalho e distraia
 Tentei com crença e aconchegou
-Mas de manhã la estava ele ainda
+Mas de manhã lá estava ele ainda
 
 [Chorus]
 O buraco no meio
@@ -4322,7 +4322,7 @@ Respiro, respiro
 sem saber que estou a respirar
 respiro, respiro
 há vida que não precisa de gestionar
-respiro quando o medo e grande
+respiro quando o medo é grande
 respiro quando a logica falhou
 respiro antes de saber a resposta
 o corpo antecede o que a mente ainda não viu
@@ -4382,6 +4382,6 @@ cada manga uma entrega
 Nua — não de roupa
 nua de tudo o que foi
 O dia acaba onde começa
-a única que ninguem me dói`,
+a única que ninguém me dói`,
 
 };

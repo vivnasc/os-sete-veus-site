@@ -286,7 +286,7 @@ Rest now`,
   // SILÊNCIO FERTIL (meditação, pausa)
   // ─────────────────────────────────────────────
 
-  "vida-silencio-fertil/1": `[Verse 1]
+  "vida-silêncio-fértil/1": `[Verse 1]
 Sento-me no chão
 Os joelhos tocam a terra
 A coluna encontra a direcao
@@ -307,7 +307,7 @@ Só este corpo a aprender
 A estar
 
 [Verse 3]
-O mundo pode esperar la fora
+O mundo pode esperar lá fora
 A lista pode crescer
 Aqui dentro não há hora
 Só o agora a acontecer
@@ -316,7 +316,7 @@ Só o agora a acontecer
 Sentada, cheguei
 Sentada, estou aqui`,
 
-  "vida-silencio-fertil/2": `[Verse 1]
+  "vida-silêncio-fértil/2": `[Verse 1]
 The ripples slow and slow and slow
 The surface finds its glass
 The thoughts that tumbled to and fro
@@ -347,7 +347,7 @@ Is written on the water's face
 [Outro]
 Still, still, still water`,
 
-  "vida-silencio-fertil/3": `[Verse 1]
+  "vida-silêncio-fértil/3": `[Verse 1]
 As costelas abrem como portas
 O ar entra frio e sai quente
 Não há mais palavras mortas
@@ -380,7 +380,7 @@ Inspira
 Expira
 Só isto`,
 
-  "vida-silencio-fertil/4": `[Verse 1]
+  "vida-silêncio-fértil/4": `[Verse 1]
 Between one thought and the next
 A gap opens like a door
 In that silence, nothing's vexed
@@ -412,7 +412,7 @@ In the everything silence gives
 Between, between
 The peace between`,
 
-  "vida-silencio-fertil/5": `[Verse 1]
+  "vida-silêncio-fértil/5": `[Verse 1]
 Pensei que estava vazio
 Sentei e esperei o pior
 Mas o vazio era um rio
@@ -439,7 +439,7 @@ Cheio, cheio
 O vazio esta cheio
 Cheio de mim`,
 
-  "vida-silencio-fertil/6": `[Verse 1]
+  "vida-silêncio-fértil/6": `[Verse 1]
 A bell rings through the fog
 A single note, a golden thread
 It finds me in the inner bog
@@ -465,7 +465,7 @@ From the silence unfurled
 I'm here
 The bell brought me here`,
 
-  "vida-silencio-fertil/7": `[Verse 1]
+  "vida-silêncio-fértil/7": `[Verse 1]
 Não há lugar para ir
 Não há nada para consertar
 O corpo pode existir
@@ -492,7 +492,7 @@ Nada para fazer
 Nada para ser
 Só estar`,
 
-  "vida-silencio-fertil/8": `[Verse 1]
+  "vida-silêncio-fértil/8": `[Verse 1]
 Fingers move, the blood returns
 Eyelids flutter to the light
 The room I left só long ago
@@ -518,7 +518,7 @@ Inside a different scale
 The kettle whistles like before
 The street still hums its hum
 But I am standing at the door
-As someone I've become
+As someone I'vê become
 
 [Outro]
 I return
@@ -533,7 +533,7 @@ Changed and still the same`,
 O fio puxa e eu sigo
 Sem pensar para onde vai
 Os olhos estreitam o abrigo
-Do mundo que la fora cai
+Do mundo que lá fora cai
 
 [Verse 2]
 Os dedos encontram o ritmo
@@ -854,7 +854,7 @@ Pesado e casa`,
   "vida-rendicao/6": `[Verse 1]
 Where does the skin end and the sheet begin
 The borders blur like ink in rain
-I can't remember where I've been
+I can't remember where I'vê been
 Or what I thought was my domain
 
 [Verse 2]
@@ -912,7 +912,7 @@ Boa noite a mim`,
 
   "vida-luz-crua/1": `[Verse 1]
 Antes de abrir os olhos
-O mundo já existe la fora
+O mundo já existe lá fora
 Os passaros cantam seus orgulhos
 Mas eu fico mais uma hora
 
@@ -1247,7 +1247,7 @@ De quem vai sem saber o fim
 
 [Verse 2]
 Tres passos e já não sou
-A mesma que estava la dentro
+A mesma que estava lá dentro
 A rua engole quem partiu
 O vento apaga o meu lamento
 
@@ -1256,7 +1256,7 @@ A porta fecha
 É o começo e não o fim
 A porta fecha
 É a estrada abre-se em mim
-Deixo tudo para tras
+Deixo tudo para trás
 As chaves no bolso a bater
 Cada passo e mais e mais
 Longe de quem eu fui ontem a dizer
@@ -1307,7 +1307,7 @@ Como nuvens numa viagem
 Paisagem
 Passa como passa o que eu penso
 Paisagem
-Nada e tao denso
+Nada e tão denso
 Quando estas em movimento
 Cada colina e um pensamento
 Que veio e foi
@@ -1333,7 +1333,7 @@ The silence underneath the cloud
 Miles and miles and miles
 The meditation of the road
 Every hundred changes the dial
-Of the weight I've always towed
+Of the weight I'vê always towed
 Miles are not just distance here
 They're a currency of peace
 Each one buys a little clear
@@ -1351,7 +1351,7 @@ Neste momento sem sentenca
 
 [Verse 2]
 Grito qualquer coisa para o ar
-Que ninguem ouve nem precisa
+Que ninguém ouve nem precisa
 O vento leva o meu gritar
 E transforma-o em brisa
 
@@ -1405,7 +1405,7 @@ O mesmo mas eu sou outro povo
 A cozinha cheira ao que sempre cheirou
 O relógio bate a mesma hora
 Mas quem aqui entrou
-Já não é quem saiu la fora
+Já não é quem saiu lá fora
 
 [Chorus]
 O regresso
@@ -1415,7 +1415,7 @@ O regresso
 A viagem nós ossos
 A estrada na pele
 Os quilometros nossos
-Que ninguem ve mas que se sente
+Que ninguém vê mas que se sente
 
 [Outro]
 Voltei
@@ -1502,7 +1502,7 @@ Quando esta prestes a morrer
 
 [Outro]
 Quase
-Quase la`,
+Quase lá`,
 
   "vida-corpo-a-corpo/4": `[Verse 1]
 Your exhale becomes my in
@@ -1600,8 +1600,8 @@ A coisa que eu segurava sozinha
 Desceu pelo corpo como uma maré fria
 
 [Verse 2]
-Ninguem deu licença pra isto
-Ninguem assinou a autorizacao
+Ninguém deu licença pra isto
+Ninguém assinou a autorizacao
 Mas o corpo decidiu por instinto
 Que hoje era o dia da inundacao
 
@@ -1752,7 +1752,7 @@ Let it rain
 Let it wash me clean`,
 
   "vida-diluvio-manso/7": `[Verse 1]
-Os olhos inchados mas leves por tras
+Os olhos inchados mas leves por trás
 A cara lavada de tudo
 Há uma fome estranha que vem e que traz
 O corpo de volta do mudo
@@ -1791,8 +1791,8 @@ E sinto-o arder
 [Verse 2]
 O estomago segura o que a boca recusa
 O corpo é a prisão da minha voz
-A raiva é tao educada e tao reclusa
-Que ninguem sabe o que há entre nós
+A raiva é tão educada e tão reclusa
+Que ninguém sabe o que há entre nós
 
 [Chorus]
 Engolir
@@ -1802,7 +1802,7 @@ Engolir
 O silêncio que não é paz
 É a jaula mais elegante
 A raiva que o corpo traz
-E que ninguem ve por diante
+E que ninguém vê por diante
 
 [Outro]
 Engoli outra vez
@@ -1838,7 +1838,7 @@ Beneath the smile`,
 O punho fecha dentro do bolso
 As unhas marcam meias-luas na palma
 O pé bate debaixo da mesa feito louco
-E ninguem ve a tempestade na alma
+E ninguém vê a tempestade na alma
 
 [Verse 2]
 O corpo vibra numa frequência
@@ -1848,7 +1848,7 @@ Quando não a deixam sair
 
 [Chorus]
 O punho
-Fechado onde ninguem ve
+Fechado onde ninguém vê
 O punho
 É a raiva de quem não cre
 Que um dia vai ter licença
@@ -1968,7 +1968,7 @@ O corpo que grita por um fim
 A solidão do panico
 É a pior que há
 Dentro do meu organico
-Ninguem me vai buscar
+Ninguém me vai buscar
 
 [Outro]
 Respira
@@ -2109,7 +2109,7 @@ I am solid ground`,
   // COMPANHIA PROPRIA (solidão escolhida)
   // ─────────────────────────────────────────────
 
-  "vida-companhia-propria/1": `[Verse 1]
+  "vida-companhia-própria/1": `[Verse 1]
 A mesa tem um prato só
 Um guardanapo, um copo, uma vela
 O empregado não sentiu do
@@ -2135,7 +2135,7 @@ Só com o meu calor
 Uma mesa
 Uma paz`,
 
-  "vida-companhia-propria/2": `[Verse 1]
+  "vida-companhia-própria/2": `[Verse 1]
 I make my own rain, my own shine
 My own wind that clears the sky
 I don't need another's sign
@@ -2161,7 +2161,7 @@ My own specific shade of grey
 My weather
 My world`,
 
-  "vida-companhia-propria/3": `[Verse 1]
+  "vida-companhia-própria/3": `[Verse 1]
 O telefone virado para baixo
 O silêncio que escolhi de propósito
 Não é castigo nem despacho
@@ -2187,7 +2187,7 @@ Só a minha própria canção
 Escolhi o silêncio
 E ele escolheu-me a mim`,
 
-  "vida-companhia-propria/4": `[Verse 1]
+  "vida-companhia-própria/4": `[Verse 1]
 I walk through my apartment slow
 I touch the walls, I fix the frames
 This room is full of what I know
@@ -2213,7 +2213,7 @@ And I am here by choice
 Full room
 Full life`,
 
-  "vida-companhia-propria/5": `[Verse 1]
+  "vida-companhia-própria/5": `[Verse 1]
 A vela acesa, o prato feito
 A música que eu escolhi
 Jantar sozinha e um direito
@@ -2239,7 +2239,7 @@ E eu sou o meu próprio caminho
 Só eu e o prato
 E e o suficiente`,
 
-  "vida-companhia-propria/6": `[Verse 1]
+  "vida-companhia-própria/6": `[Verse 1]
 I sat on the edge of the bed tonight
 And something landed in my chest
 Not sadness, something else, a light
@@ -2340,7 +2340,7 @@ Creme na pele
 A forma mais gentil de existir
 Tocar-me como se importasse
 Tratar-me como se eu fosse
-Alguem que merecesse que passasse
+Alguém que merecesse que passasse
 As mãos com a mesma doce
 
 [Outro]
@@ -2419,7 +2419,7 @@ To the kindness of the scar
 You were taught to be só hard
 You were taught to be só strong
 But the tenderest regard
-Is where you've belonged all along
+Is where you'vê belonged all along
 
 [Outro]
 Tender
@@ -2427,7 +2427,7 @@ Be tender with yourself`,
 
 
   // ─────────────────────────────────────────────
-  // RESCALDO (pos-conflito, depois da tempestade)
+  // RESCALDO (pós-conflito, depois da tempestade)
   // ─────────────────────────────────────────────
 
   "vida-rescaldo/1": `[Verse 1]
@@ -2489,7 +2489,7 @@ O cobertor puxado sobre quem descansa
 A desculpa que não precisa de programa
 
 [Verse 2]
-O almoço feito sem que ninguem peça
+O almoço feito sem que ninguém peça
 A porta aberta para o ar entrar
 As mãos dizem o que a boca não começa
 As mãos sabem como reparar
@@ -2524,7 +2524,7 @@ Just labour done in quiet blood
 Rebuild, rebuild
 Not the old bridge painted new
 Rebuild, rebuild
-Something we've never walked through
+Something we'vê never walked through
 Stone by careful stone
 From my side and from yours
 The bridge is better grown
@@ -2656,7 +2656,7 @@ Que só as mãos no peito transporta
 
 [Chorus]
 Mãos no peito
-Sinto o que la esta
+Sinto o que lá esta
 Mãos no peito
 E tanto, tanto já
 Não preciso de templo
@@ -2768,7 +2768,7 @@ O sangue já sabia o vocabulo
 No jardim escolho as ervas
 Com os mesmos dedos que ela usou
 As mãos da avó nas minhas reservas
-Gestos que ninguem me ensinou
+Gestos que ninguém me ensinou
 
 [Chorus]
 A avó
@@ -2791,7 +2791,7 @@ The body flinches at a smell it chose
 Before I was this frame
 
 [Verse 2]
-My muscles tense at sounds I've never heard
+My muscles tense at sounds I'vê never heard
 My hands grip in a pattern not my own
 The blood remembers every word
 In a dialect of flesh and bone
@@ -2980,7 +2980,7 @@ E tudo fica imove nós segundos
 Antes de descer, antes de cair
 Há este instante que não tem nome
 Nem o futuro pode intervir
-Nesta pausa que ninguem consome
+Nesta pausa que ninguém consome
 
 [Chorus]
 A pausa no topo
@@ -3245,7 +3245,7 @@ Barefoot and infinite`,
 As mãos pousam no colo sem pressa
 A decisão ainda não esta pronta
 A paciência não é fraqueza
-É a força que ninguem conta
+É a força que ninguém conta
 
 [Chorus]
 Paciencia
@@ -3367,13 +3367,13 @@ The warmth that stays`,
 
   "vida-raiz-muda/1": `[Verse 1]
 A terra prensa de todos os lados
-A escuridão humida onde ninguem ve
+A escuridão humida onde ninguém vê
 As sementes abrem nós seus estados
 Privados de qualquer porque
 
 [Chorus]
 Debaixo da terra
-Onde ninguem vem ver
+Onde ninguém vem ver
 Debaixo da terra
 E onde eu aprendo a ser
 O trabalho verdadeiro
@@ -3399,7 +3399,7 @@ In the patient dark I lurk
 Building roots that no one sees
 Storing strength for the unseen
 Growing slowly by degrees
-Toward a spring I've never been
+Toward a spring I'vê never been
 
 [Outro]
 Not yet
@@ -3629,7 +3629,7 @@ Faz tremer a estrada
 Os pés batem em unissono
 O sim viaja pelo ar
 O corpo inteiro e um hino
-Que ninguem nós vai calar
+Que ninguém nós vai calar
 
 [Outro]
 Todas
@@ -3737,7 +3737,7 @@ Entre a dor e a alegria
 
 [Outro]
 Suspensa
-Nem aqui nem la`,
+Nem aqui nem lá`,
 
   "vida-penumbra/6": `[Verse 1]
 Between two heartbeats there's a space
