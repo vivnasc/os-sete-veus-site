@@ -3111,6 +3111,12 @@ Os dedos abrem no chão frio
 O pé respira como um canto
 De quem voltou do seu desvio
 
+[Verse 2]
+A meia sai como uma pele
+Que já não serve para nada
+O chão recebe quem se atreve
+A sentir a terra sagrada
+
 [Chorus]
 Tira os sapatos
 O chão é teu, a noite é tua
@@ -3121,9 +3127,32 @@ Que a terra está aqui em baixo
 É o corpo agradece
 Cada passo descalco
 
+[Verse 3]
+De pé na relva molhada
+Os dedos agarram a terra
+A planta do pé encontra a morada
+Que nenhum sapato encerra
+
+[Chorus]
+Tira os sapatos
+O chão é teu, a noite é tua
+Tira os sapatos
+A liberdade é nua
+Os pés sabem o que a cabeça esquece
+Que a terra está aqui em baixo
+É o corpo agradece
+Cada passo descalco
+
+[Bridge]
+Houve um tempo em que corria descalca
+Sem pensar no que o chão podia fazer
+Os pés sabiam o caminho sem falta
+Antes de eu aprender a temer
+
 [Outro]
 Descalca
-O chão é meu`,
+O chão é meu
+E sempre foi`,
 
   "vida-descalca/2": `[Verse 1]
 Midnight on the kitchen floor
@@ -3147,15 +3176,44 @@ The world is fast asleep
 But here beneath the kitchen glow
 I move to my own beat
 
+[Verse 3]
+The song ends but my body stays
+Still swaying in the afterglow
+Some dances last for all my days
+This one the world will never know
+
+[Chorus]
+Kitchen floor, kitchen floor
+The dance that no one sees
+Kitchen floor, kitchen floor
+I'm dancing as I please
+Midnight and the fridge hums low
+The world is fast asleep
+But here beneath the kitchen glow
+I move to my own beat
+
+[Bridge]
+The tiles are cold beneath my soles
+The moonlight strips the room of lies
+I dance to fill the quiet holes
+That daylight never satisfies
+
 [Outro]
 Dance alone
-Dance at home`,
+Dance at home
+The truest stage I own`,
 
   "vida-descalca/3": `[Verse 1]
 Numa terca-feira qualquer
 Sem razão nem justificação
 Os braços abrem como mulher
 Que encontrou a sua estação
+
+[Verse 2]
+O corpo gira na cozinha
+A saia roda sem plateia
+A alegria que é só minha
+Não precisa de cadeia
 
 [Chorus]
 Sem razão
@@ -3167,9 +3225,32 @@ Porque o café estava bom
 Porque estou viva e bela
 E isso é motivo de som
 
+[Verse 3]
+As mãos batem palmas sozinhas
+Os pés marcam o compasso
+As paredes são testemunhas
+De cada riso e cada passo
+
+[Chorus]
+Sem razão
+Celebro sem motivo
+Sem razão
+É o acto mais vivo
+Porque o sol entrou pela janela
+Porque o café estava bom
+Porque estou viva e bela
+E isso é motivo de som
+
+[Bridge]
+Quantas vezes esperei permissão
+Para sentir o que já sentia
+Hoje danço sem explicação
+A alegria é a minha geografia
+
 [Outro]
 Sem razão
-A melhor razão`,
+A melhor razão
+A única razão`,
 
   "vida-descalca/4": `[Verse 1]
 The shout that comes from deep below
@@ -3203,6 +3284,12 @@ Os pés batem antes do ouvido ouvir
 O corpo sabe o seu sacramento
 Antes da mente decidir
 
+[Verse 2]
+A coluna ondula como um rio
+Os ombros largam o que carregavam
+O corpo quente contra o frio
+Das razoes que me aprisionavam
+
 [Chorus]
 O corpo sabe
 Celebrar antes de ter razão
@@ -3213,15 +3300,44 @@ O ritmo que a mente esqueceu
 As celulas tremem
 Com o que o corpo aprendeu
 
+[Verse 3]
+Os braços desenham no ar
+Circulos que a logica não traça
+O corpo não precisa de pensar
+Para encontrar a sua graça
+
+[Chorus]
+O corpo sabe
+Celebrar antes de ter razão
+O corpo sabe
+A dança e a mais velha oração
+Os musculos lembram
+O ritmo que a mente esqueceu
+As celulas tremem
+Com o que o corpo aprendeu
+
+[Bridge]
+Antes das palavras havia o gesto
+Antes da razão havia o pulso
+O corpo guarda o que é mais honesto
+No ritmo antigo de cada impulso
+
 [Outro]
 O corpo sabe
-Confia nele`,
+Confia nele
+Sempre soube`,
 
   "vida-descalca/6": `[Verse 1]
 Every surface is a stage
 The grass, the sand, the kitchen tile
 My feet have turned another page
 Of dancing in a wilder style
+
+[Verse 2]
+The earth is warm beneath my arch
+The puddles splash without a care
+I walk through rain without the march
+Of someone going somewhere
 
 [Chorus]
 Barefoot, barefoot
@@ -3233,9 +3349,32 @@ Remember what the shoes forgot
 That every step can be amen
 And every floor's a sacred spot
 
+[Verse 3]
+From carpet to the morning dew
+From pavement to the river's edge
+Each surface tells me something new
+About the body and its pledge
+
+[Chorus]
+Barefoot, barefoot
+Limitless and free
+Barefoot, barefoot
+The truest I can be
+The toes that grip the world again
+Remember what the shoes forgot
+That every step can be amen
+And every floor's a sacred spot
+
+[Bridge]
+I peeled away the armour from my feet
+And found the nerve that feels the world
+Each texture and each grain of heat
+A universe beneath me, unfurled
+
 [Outro]
 Barefoot
-Barefoot and infinite`,
+Barefoot and infinite
+Barefoot and alive`,
 
   // ─────────────────────────────────────────────
   // BRASA LENTA (força quieta, paciência)
@@ -3247,6 +3386,12 @@ A decisão ainda não está pronta
 A paciência não é fraqueza
 É a força que ninguém conta
 
+[Verse 2]
+O relógio bate sem me apressar
+As horas passam como água no rio
+O corpo sabe quando é hora de actuar
+Até lá respiro o meu silêncio frio
+
 [Chorus]
 Paciencia
 Não como espera mas como poder
@@ -3257,15 +3402,44 @@ Não é lenta, e certeira
 A força que nunca cessa
 É a que arde na fogueira mais ligeira
 
+[Verse 3]
+As respostas chegam quando estão maduras
+As raízes crescem antes das flores
+A paciência mora nas texturas
+Do tempo que não cede a pressões exteriores
+
+[Chorus]
+Paciencia
+Não como espera mas como poder
+Paciencia
+É a arte de saber ser
+A mulher que não se apressa
+Não é lenta, e certeira
+A força que nunca cessa
+É a que arde na fogueira mais ligeira
+
+[Bridge]
+Quem me ensinou que esperar era fraqueza
+Nunca viu a semente abrir a pedra
+A paciência é a maior riqueza
+De quem sabe que o tempo não recua
+
 [Outro]
 Espero
-Porque sei o que sei`,
+Porque sei o que sei
+E o que sei vale a espera`,
 
   "vida-brasa-lenta/2": `[Verse 1]
 The coals glow orange in the dark
 No flame to see, just steady heat
 The room warms from a single spark
 That doesn't rush and won't retreat
+
+[Verse 2]
+The flashy fire burns itself out
+In minutes flat, in ash and smoke
+But coals don't need to scream or shout
+They warm the room before you woke
 
 [Chorus]
 Slow burn, slow burn
@@ -3277,15 +3451,44 @@ Just heat that finds its way
 Through walls and through the clay
 Of everything that stays
 
+[Verse 3]
+The morning comes and still they glow
+A patience carved from living coal
+The kind of warmth that's always slow
+And always reaching for the whole
+
+[Chorus]
+Slow burn, slow burn
+The fire that doesn't rush
+Slow burn, slow burn
+The power in the hush
+No drama, no display
+Just heat that finds its way
+Through walls and through the clay
+Of everything that stays
+
+[Bridge]
+I used to envy those who blazed
+Bright and loud and quickly gone
+Now I know the ones who stayed
+Are the ones who kept burning on
+
 [Outro]
 Burning slow
-Burning sure`,
+Burning sure
+Burning still`,
 
   "vida-brasa-lenta/3": `[Verse 1]
 O pão fermenta debaixo do pano
 O fermento trabalha sem ter pressa
 A fome quer o imediato engano
 Mas o tempo e quem confessa
+
+[Verse 2]
+A sopa precisa do lume baixo
+O arroz precisa do seu vapor
+O que é bom nunca vem de despacho
+O que é bom nasce devagar do amor
 
 [Chorus]
 O tempo certo
@@ -3297,15 +3500,44 @@ O sabor que só o tempo traz
 Cada coisa no seu já
 Cada fruto na sua paz
 
+[Verse 3]
+A criança cresce centimetro a centimetro
+O inverno derrete folha a folha
+O que resiste ao cronometro
+É o que a vida recolha
+
+[Chorus]
+O tempo certo
+Não o tempo rapido
+O tempo certo
+É o mais capacitado
+Para dar o que a pressa não da
+O sabor que só o tempo traz
+Cada coisa no seu já
+Cada fruto na sua paz
+
+[Bridge]
+Vivi a vida a correr para a frente
+Sem notar que o caminho era o destino
+Agora sento e o tempo é diferente
+Cada segundo tem o seu hino
+
 [Outro]
 O tempo certo
-Nunca chega tarde`,
+Nunca chega tarde
+Sempre chega certo`,
 
   "vida-brasa-lenta/4": `[Verse 1]
 The tree bends in the hurricane
 But doesn't break, it holds the line
 Beneath the soil, no wind, no rain
 Can reach the roots that intertwine
+
+[Verse 2]
+The branches snap but the trunk stays true
+The leaves are gone but the bark is thick
+What holds the tree is out of view
+The deepest strength is the slowest trick
 
 [Chorus]
 Roots hold, roots hold
@@ -3317,15 +3549,44 @@ The grip you'll never see
 The deepest, truest ground
 That keeps the standing tree
 
+[Verse 3]
+The storm will pass as storms all do
+The sky will clear and birds return
+But what stood firm while the wind blew
+Is what the roots had time to learn
+
+[Chorus]
+Roots hold, roots hold
+Invisible and fierce below
+Roots hold when storms unfold
+The strength that doesn't show
+The power underground
+The grip you'll never see
+The deepest, truest ground
+That keeps the standing tree
+
+[Bridge]
+Nobody claps for what survives
+No trophy for the tree that stayed
+The quiet glory of our lives
+Is in the ground that we have laid
+
 [Outro]
 Holding
-The roots are holding`,
+The roots are holding
+The roots have always held`,
 
   "vida-brasa-lenta/5": `[Verse 1]
 As mesmas mãos abrem a mesma porta
 Cada manhã sem aplausos
 O corpo senta-se e não importa
 Se há inspiração ou se há pausas
+
+[Verse 2]
+A repetição não é monotonia
+É a forma mais nobre de estar
+A constância tem a sua melodia
+Que só quem insiste pode escutar
 
 [Chorus]
 Constancia
@@ -3337,15 +3598,44 @@ Só a cadeira e as mãos
 Constancia e o pacote
 Mais bonito entre as canções
 
+[Verse 3]
+Nos dias bons e nos dias cinzentos
+A mesma cadeira, o mesmo lugar
+Os grandes feitos são feitos de momentos
+Pequenos que ninguém vai notar
+
+[Chorus]
+Constancia
+O poder de aparecer outra vez
+Constancia
+A heroina do talvez
+Sem drama nem holofote
+Só a cadeira e as mãos
+Constancia e o pacote
+Mais bonito entre as canções
+
+[Bridge]
+O talento é barulhento e fugaz
+A disciplina é muda e leal
+A constância é o que realmente faz
+O extraordinário parecer normal
+
 [Outro]
 Outra vez
-Apareco outra vez`,
+Apareco outra vez
+E amanhã outra vez`,
 
   "vida-brasa-lenta/6": `[Verse 1]
 The last glow in the fireplace
 At three AM when no one's here
 The heat that holds the room in grace
 Long after every flame is clear
+
+[Verse 2]
+The house is sleeping, walls are still
+The ember pulses like a heart
+A warmth that bends to its own will
+The final act, the truest part
 
 [Chorus]
 Embers, embers
@@ -3357,9 +3647,32 @@ The heat that holds you through the night
 The quiet after everyone
 Has gone and left the light
 
+[Verse 3]
+Come morning there's a trace of ash
+A circle where the warmth once lived
+No spectacle, no bright white flash
+Just everything the ember gives
+
+[Chorus]
+Embers, embers
+Glow longer than the flame
+Embers, embers
+More warmth without the name
+The fire that stays when shows are done
+The heat that holds you through the night
+The quiet after everyone
+Has gone and left the light
+
+[Bridge]
+The ones who last are never loud
+They warm the room from underneath
+Not looking for a cheering crowd
+Just glowing with a quiet belief
+
 [Outro]
 Embers
-The warmth that stays`,
+The warmth that stays
+Long after the fire forgets its name`,
 
   // ─────────────────────────────────────────────
   // RAIZ MUDA (crescimento invisível)
@@ -3371,6 +3684,12 @@ A escuridão humida onde ninguém vê
 As sementes abrem nós seus estados
 Privados de qualquer porque
 
+[Verse 2]
+As minhocas trabalham em silêncio
+Os fungos tecem redes invisíveis
+A vida pulsa sem reconhecimento
+Em camadas profundas e temíveis
+
 [Chorus]
 Debaixo da terra
 Onde ninguém vem ver
@@ -3381,15 +3700,44 @@ Acontece no escuro
 Sem plateia nem letreiro
 Só o futuro
 
+[Verse 3]
+Os meus dias parecem iguais por fora
+As mudanças não se veem na superfície
+Mas lá dentro algo se demora
+E cresce sem que ninguém o noticie
+
+[Chorus]
+Debaixo da terra
+Onde ninguém vem ver
+Debaixo da terra
+E onde eu aprendo a ser
+O trabalho verdadeiro
+Acontece no escuro
+Sem plateia nem letreiro
+Só o futuro
+
+[Bridge]
+O visível é só a ponta
+Do que se construiu sem testemunha
+A vida mais bonita é a que se conta
+Depois de germinar na penumbra
+
 [Outro]
 No escuro
-Onde tudo começa`,
+Onde tudo começa
+E ninguém vê`,
 
   "vida-raiz-muda/2": `[Verse 1]
 The long cold winter of the bulb
 Alive but showing nothing new
 A patience that the mind can't sculpt
 The body knows what it must do
+
+[Verse 2]
+The snow above, the frost below
+The world has written me as dead
+But underneath the silent show
+A different story's being fed
 
 [Chorus]
 Before the bloom
@@ -3401,15 +3749,44 @@ Storing strength for the unseen
 Growing slowly by degrees
 Toward a spring I'vê never been
 
+[Verse 3]
+Months of nothing, months of still
+The surface frozen, hard and bare
+But deep inside the quiet will
+Is braiding something beyond compare
+
+[Chorus]
+Before the bloom
+The long invisible work
+Before the bloom
+In the patient dark I lurk
+Building roots that no one sees
+Storing strength for the unseen
+Growing slowly by degrees
+Toward a spring I'vê never been
+
+[Bridge]
+The ones who bloom the brightest knew
+The longest winters underground
+The beauty everyone will view
+Was built in silence, without sound
+
 [Outro]
 Not yet
-But soon`,
+But soon
+The bloom is near`,
 
   "vida-raiz-muda/3": `[Verse 1]
 O composto, a bela podridão
 Que faz nascer a vida nova
 As mãos na terra escura, a mão
 Que se entrega ao que se prova
+
+[Verse 2]
+As cascas de laranja e o café
+As folhas mortas do outono
+O que acabou transforma-se em fé
+Na escuridão sem dono
 
 [Chorus]
 Escuro fértil
@@ -3421,15 +3798,44 @@ Não é a noite fria
 O escuro que se aferra
 A transformação
 
+[Verse 3]
+A morte alimenta o que vai nascer
+O lixo vira jardim
+O que pareceu acabar e morrer
+Era um começo sem fim
+
+[Chorus]
+Escuro fértil
+A escuridão que cria
+Escuro fértil
+Não é a noite fria
+É o útero da terra
+É o ventre do chão
+O escuro que se aferra
+A transformação
+
+[Bridge]
+As minhas dores mais antigas
+São o composto do que vem
+As feridas mais fadigas
+Alimentam o meu amanhã também
+
 [Outro]
 No escuro
-A vida fermenta`,
+A vida fermenta
+E prepara-se para nascer`,
 
   "vida-raiz-muda/4": `[Verse 1]
 A seed in dry earth has no clock
 No calendar, no deadline due
 It waits without a single knock
 For rain it always knew was true
+
+[Verse 2]
+No bargaining with the soil or sky
+No panic in the endless wait
+The seed has never asked it why
+It simply trusts the rain won't be late
 
 [Chorus]
 Patience of seeds
@@ -3441,15 +3847,44 @@ When conditions come they rise
 The wisdom of their gentle fizz
 Asks nothing of the skies
 
+[Verse 3]
+A thousand seeds will never sprout
+A million more will feed the birds
+But one will push its green shoot out
+Without a need for human words
+
+[Chorus]
+Patience of seeds
+No concept of delay
+Patience of seeds
+They don't know the word for late
+The readiness is all there is
+When conditions come they rise
+The wisdom of their gentle fizz
+Asks nothing of the skies
+
+[Bridge]
+What if I could trust like that
+Without the clock, without the dread
+Just hold the shape of where I'm at
+And let the rain find my seedbed
+
 [Outro]
 Seeds don't hurry
-Seeds just know`,
+Seeds just know
+And so do I`,
 
   "vida-raiz-muda/5": `[Verse 1]
 A fenda no solo onde o verde empurra
 A folha impossível que moveu terra
 O primeiro sinal depois da penumbra
 Pequeno e frágil mas que nunca erra
+
+[Verse 2]
+Tão pequena que quase não se nota
+Translúcida contra a luz do sol
+Mas carrega a força de uma rota
+Que nenhuma tempestade tirou do farol
 
 [Chorus]
 A primeira folha
@@ -3461,15 +3896,44 @@ Depois da paciência toda
 Rompe o chão o futuro
 Numa folha que é uma boda
 
+[Verse 3]
+Amanhã já ninguém se lembra
+Deste momento de ruptura
+Mas a folha sabe que nasceu em Setembro
+Dentro da mais densa escuridão pura
+
+[Chorus]
+A primeira folha
+Triunfo silencioso
+A primeira folha
+O gesto mais formoso
+Depois dos meses de escuro
+Depois da paciência toda
+Rompe o chão o futuro
+Numa folha que é uma boda
+
+[Bridge]
+Eu também rompi a superfície
+Depois de tanto tempo enterrada
+O mundo viu e não deu notícia
+Mas eu sei o que custou esta chegada
+
 [Outro]
 Rompi
-A primeira folha sou eu`,
+A primeira folha sou eu
+E estou aqui`,
 
   "vida-raiz-muda/6": `[Verse 1]
 The slow unfurling of what always was
 Coiled inside like a spring
 Not transformation but the cause
 Revealing what was always happening
+
+[Verse 2]
+I thought I needed to be fixed
+To be remade, to be reborn
+But everything was always mixed
+Inside me since before the dawn
 
 [Chorus]
 Becoming, becoming
@@ -3481,9 +3945,32 @@ The hands I was always building
 The life I was moving toward
 Is the one I'm finally living
 
+[Verse 3]
+The caterpillar doesn't know
+The butterfly was there all along
+The becoming is the letting go
+Of the story that I had it wrong
+
+[Chorus]
+Becoming, becoming
+What I already am
+Becoming, becoming
+Without a master plan
+The face I was growing toward
+The hands I was always building
+The life I was moving toward
+Is the one I'm finally living
+
+[Bridge]
+There's nothing to achieve or earn
+No final form to reach or find
+The only lesson left to learn
+Is that I was never behind
+
 [Outro]
 Becoming
-I was already here`,
+I was already here
+I always was`,
 
   // ─────────────────────────────────────────────
   // RESSONANCIA (despertar colectivo)
@@ -3495,6 +3982,12 @@ Uma mulher com os olhos fechados
 A vibração começa no fio
 Do peito e sai pelos lados
 
+[Verse 2]
+A nota encontra a parede
+E volta transformada em eco
+O som não pede nem concede
+Só vibra dentro do que é seco
+
 [Chorus]
 Uma nota
 Uma mulher, um começo
@@ -3505,9 +3998,32 @@ Antes de eu abrir a boca
 Uma nota e a poesia
 Mais corajosa que se toca
 
+[Verse 3]
+A vizinha ouve através da porta
+O som atravessa sem licença
+Uma nota nunca está morta
+Quando carrega a sua essência
+
+[Chorus]
+Uma nota
+Uma mulher, um começo
+Uma nota
+É o mais puro apreço
+Pelo silêncio que existia
+Antes de eu abrir a boca
+Uma nota e a poesia
+Mais corajosa que se toca
+
+[Bridge]
+Não preciso que o mundo ouça
+Não preciso de ser coro
+Uma voz que se debruça
+Sobre o silêncio é um tesouro
+
 [Outro]
 Uma nota
-Só uma nota`,
+Só uma nota
+E o silêncio nunca mais é o mesmo`,
 
   "vida-ressonancia/2": `[Verse 1]
 A stone dropped in the water still
