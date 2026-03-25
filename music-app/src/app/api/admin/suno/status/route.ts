@@ -74,7 +74,7 @@ export async function GET(req: NextRequest) {
       const sunoData = (response.sunoData || record.sunoData || record.suno_data || []) as Record<string, unknown>[];
       const items = Array.isArray(sunoData) ? sunoData : [sunoData];
 
-      // Extract clips from sunoData
+      // Extract clips from sunoData with full metadata
       if (items.length > 0 && (items[0]?.id || items[0]?.audio_url || items[0]?.audioUrl)) {
         for (const item of items) {
           allClips.push({
@@ -83,6 +83,13 @@ export async function GET(req: NextRequest) {
             audioUrl: item.audioUrl || item.audio_url || item.streamAudioUrl || item.stream_audio_url || null,
             title: item.title || "",
             duration: item.duration || null,
+            // Metadata from Suno
+            imageUrl: item.imageUrl || item.image_url || item.imageLargeUrl || item.image_large_url || null,
+            tags: item.tags || (item.metadata as Record<string, unknown>)?.tags || item.style || null,
+            model: item.modelName || item.model_name || item.model || null,
+            prompt: item.prompt || null,
+            gptDescriptionPrompt: item.gptDescriptionPrompt || item.gpt_description_prompt || null,
+            lyric: item.lyric || null,
           });
         }
       } else {
@@ -92,6 +99,9 @@ export async function GET(req: NextRequest) {
           audioUrl: null,
           title: (record.title as string) || "",
           duration: null,
+          imageUrl: null,
+          tags: null,
+          model: null,
         });
       }
     }
@@ -104,6 +114,9 @@ export async function GET(req: NextRequest) {
         audioUrl: c.audioUrl || c.audio_url || c.streamAudioUrl || null,
         title: c.title || "",
         duration: c.duration || null,
+        imageUrl: c.imageUrl || c.image_url || c.imageLargeUrl || c.image_large_url || null,
+        tags: c.tags || null,
+        model: c.model || null,
       })),
     });
   } catch (err: unknown) {

@@ -19,34 +19,34 @@ export const VIDA_LYRICS: Record<string, string> = {
   "vida-sangue-aceso/1": `[Verse 1]
 O sofa puxa, a cama chama
 O corpo diz amanha
-Mas ha um fogo que nao se apaga
-Uma brasa que nao engana
+Mas há um fogo que não se apaga
+Uma brasa que não engana
 
 [Pre-Chorus]
-Um pe no chao
+Um pé no chão
 Depois o outro
-O mundo treme, eu nao
+O mundo treme, eu não
 
 [Chorus]
 O primeiro passo dói
-O segundo ja nao para
+O segundo já não para
 O corpo acorda e depois
-Ja nao precisa de cara
+Já não precisa de cara
 
 [Verse 2]
 As pernas pesam como chumbo
 O ar ainda e frio
-Mas ha qualquer coisa no fundo
+Mas há qualquer coisa no fundo
 Que transforma medo em rio
 
 [Chorus]
 O primeiro passo dói
-O segundo ja nao para
+O segundo já não para
 O corpo acorda e depois
-Ja nao precisa de cara
+Já não precisa de cara
 
 [Outro]
-Um passo, so um
+Um passo, só um
 O resto vem atras`,
 
   "vida-sangue-aceso/2": `[Verse 1]
@@ -87,19 +87,19 @@ Was always calling my name`,
 
   "vida-sangue-aceso/3": `[Verse 1]
 Suor escorre pela testa
-Pinga no chao como chuva
+Pinga no chão como chuva
 O corpo limpa o que resta
-Das palavras que nao se usam
+Das palavras que não se usam
 
 [Verse 2]
 Cada gota lava um peso
 Cada gota e uma oração
-Nao preciso de um templo preso
-Quando o altar e o meu chao
+Não preciso de um templo preso
+Quando o altar e o meu chão
 
 [Chorus]
 Suor sagrado
-Cai de mim o que nao sou
+Cai de mim o que não sou
 Suor sagrado
 O corpo sabe aonde vou
 Purifica o que ficou
@@ -110,12 +110,12 @@ O suor dissolve
 [Verse 3]
 Os musculos ardem em fogo
 A pele brilha de sal
-Ha qualquer coisa neste jogo
+Há qualquer coisa neste jogo
 Que me torna animal
 
 [Chorus]
 Suor sagrado
-Cai de mim o que nao sou`,
+Cai de mim o que não sou`,
 
   "vida-sangue-aceso/4": `[Verse 1]
 Lungs on fire, heart in my ears
@@ -153,26 +153,26 @@ Breathless and alive
 Breathless and I'm free`,
 
   "vida-sangue-aceso/5": `[Verse 1]
-Os bracos tremem, a voz diz chega
+Os braços tremem, a voz diz chega
 O corpo implora que eu pare
-Mas ha uma forca que nao nega
-Uma vontade que nao cabe
+Mas há uma força que não nega
+Uma vontade que não cabe
 
 [Chorus]
-Mais uma, so mais uma
+Mais uma, só mais uma
 O corpo mente quando grita
-A forca vem da espuma
-Da onda que nunca e a ultima
+A força vem da espuma
+Da onda que nunca e a última
 
 [Verse 2]
 As pernas queimam, o suor cega
-As maos agarram o que podem
-Ha uma parte que se entrega
+As mãos agarram o que podem
+Há uma parte que se entrega
 E outra que nunca se move
 
 [Chorus]
-Mais uma, so mais uma
-A dor e so a porta
+Mais uma, só mais uma
+A dor e só a porta
 O corpo mente quando grita
 A alma nunca aborta
 
@@ -215,14 +215,14 @@ One more
 One more`,
 
   "vida-sangue-aceso/7": `[Verse 1]
-Bracos abertos, grito ao ceu
-O corpo vazio e electrico
-Tudo o que segurei ja se derreteu
-Sobrou so o meu ritmico
+Braços abertos, grito ao céu
+O corpo vazio é electrico
+Tudo o que segurei já se derreteu
+Sobrou só o meu ritmico
 
 [Pre-Chorus]
-Nao ha mais nada para dar
-Nao ha mais nada para guardar
+Não há mais nada para dar
+Não há mais nada para guardar
 
 [Chorus]
 Descarga
@@ -231,12 +231,12 @@ Descarga
 A dor virou poesia
 Tudo o que estava preso
 Salta como fogo
-Nao ha mais peso
-So este jogo sagrado
+Não há mais peso
+Só este jogo sagrado
 
 [Verse 2]
 As celulas vibram em coro
-As maos tremem de vitoria
+As mãos tremem de vitoria
 Cada musculo grita ouro
 Cada fibra conta a historia
 
@@ -283,11 +283,11 @@ Rest now`,
 
 
   // ─────────────────────────────────────────────
-  // SILENCIO FERTIL (meditacao, pausa)
+  // SILÊNCIO FERTIL (meditacao, pausa)
   // ─────────────────────────────────────────────
 
-  "vida-silencio-fertil/1": `[Verse 1]
-Sento-me no chao
+  "vida-silêncio-fértil/1": `[Verse 1]
+Sento-me no chão
 Os joelhos tocam a terra
 A coluna encontra a direcao
 Que o dia inteiro enterra
@@ -295,28 +295,28 @@ Que o dia inteiro enterra
 [Verse 2]
 Os ombros descem devagar
 Como folhas que largam o ramo
-Ja nao preciso de carregar
+Já não preciso de carregar
 O peso de quem finjo que amo
 
 [Chorus]
 Sentar
-So sentar e ja chegar
-Nao ha nada para resolver
-So este chao e este respirar
-So este corpo a aprender
+Só sentar e já chegar
+Não há nada para resolver
+Só este chão é este respirar
+Só este corpo a aprender
 A estar
 
 [Verse 3]
 O mundo pode esperar la fora
 A lista pode crescer
-Aqui dentro nao ha hora
-So o agora a acontecer
+Aqui dentro não há hora
+Só o agora a acontecer
 
 [Outro]
 Sentada, cheguei
 Sentada, estou aqui`,
 
-  "vida-silencio-fertil/2": `[Verse 1]
+  "vida-silêncio-fértil/2": `[Verse 1]
 The ripples slow and slow and slow
 The surface finds its glass
 The thoughts that tumbled to and fro
@@ -347,40 +347,40 @@ Is written on the water's face
 [Outro]
 Still, still, still water`,
 
-  "vida-silencio-fertil/3": `[Verse 1]
+  "vida-silêncio-fértil/3": `[Verse 1]
 As costelas abrem como portas
 O ar entra frio e sai quente
-Nao ha mais palavras mortas
-So o corpo, simplesmente
+Não há mais palavras mortas
+Só o corpo, simplesmente
 
 [Verse 2]
 A barriga sobe e desce
 Como a mare sem lua
-Nao ha nada que acontece
-Que esta respiracao nao sua
+Não há nada que acontece
+Que esta respiracao não sua
 
 [Chorus]
 O corpo respira
-Sem pedir licenca
+Sem pedir licença
 O corpo respira
 Sem nenhuma crenca
-So o ar que entra
-So o ar que sai
+Só o ar que entra
+Só o ar que sai
 O resto e invencao
-Que o corpo nao trai
+Que o corpo não trai
 
 [Verse 3]
-Cada inspiracao e um mundo
-Cada expiracao e adeus
+Cada inspiração e um mundo
+Cada expiração e adeus
 O corpo sabe no mais fundo
-Que respirar e o nome de Deus
+Que respirar é o nome de Deus
 
 [Outro]
 Inspira
 Expira
-So isto`,
+Só isto`,
 
-  "vida-silencio-fertil/4": `[Verse 1]
+  "vida-silêncio-fértil/4": `[Verse 1]
 Between one thought and the next
 A gap opens like a door
 In that silence, nothing's vexed
@@ -412,7 +412,7 @@ In the everything silence gives
 Between, between
 The peace between`,
 
-  "vida-silencio-fertil/5": `[Verse 1]
+  "vida-silêncio-fértil/5": `[Verse 1]
 Pensei que estava vazio
 Sentei e esperei o pior
 Mas o vazio era um rio
@@ -420,17 +420,17 @@ Cheio de cor
 
 [Verse 2]
 Dentro do nada encontrei tudo
-O silencio era uma voz
-O espaco era um escudo
-Que me protegia de nos
+O silêncio era uma voz
+O espaço era um escudo
+Que me protegia de nós
 
 [Chorus]
 Vazio cheio
 O nada transborda
 Vazio cheio
-A ausencia acorda
+A ausência acorda
 O que pensei que faltava
-Ja estava aqui
+Já estava aqui
 A plenitude morava
 No que eu nunca vi
 
@@ -439,7 +439,7 @@ Cheio, cheio
 O vazio esta cheio
 Cheio de mim`,
 
-  "vida-silencio-fertil/6": `[Verse 1]
+  "vida-silêncio-fértil/6": `[Verse 1]
 A bell rings through the fog
 A single note, a golden thread
 It finds me in the inner bog
@@ -465,14 +465,14 @@ From the silence unfurled
 I'm here
 The bell brought me here`,
 
-  "vida-silencio-fertil/7": `[Verse 1]
-Nao ha lugar para ir
-Nao ha nada para consertar
+  "vida-silêncio-fértil/7": `[Verse 1]
+Não há lugar para ir
+Não há nada para consertar
 O corpo pode existir
 Sem precisar de se explicar
 
 [Verse 2]
-A urgencia derreteu
+A urgência derreteu
 A lista evaporou
 O que faltava desapareceu
 Quando eu parei e bastou
@@ -482,20 +482,20 @@ Nenhum lugar
 Nenhuma pressa
 Nenhum altar
 Nenhuma promessa
-So este chao e este ar
-So este corpo a respirar
+Só este chão é este ar
+Só este corpo a respirar
 Sem destino, sem razao
-So a mao no coracao
+Só a mao no coração
 
 [Outro]
 Nada para fazer
 Nada para ser
-So estar`,
+Só estar`,
 
-  "vida-silencio-fertil/8": `[Verse 1]
+  "vida-silêncio-fértil/8": `[Verse 1]
 Fingers move, the blood returns
 Eyelids flutter to the light
-The room I left so long ago
+The room I left só long ago
 Has changed its angle, changed its white
 
 [Verse 2]
@@ -538,18 +538,18 @@ Do mundo que la fora cai
 [Verse 2]
 Os dedos encontram o ritmo
 A mente afina e esvazia
-Ha um ponto entre o grito e o hino
+Há um ponto entre o grito e o hino
 Onde mora a maestria
 
 [Chorus]
 O fio, o fio
-Nao se pode partir
+Não se pode partir
 O fio, o fio
-E a unica coisa a seguir
-Quando o mundo e barulho
+É a única coisa a seguir
+Quando o mundo é barulho
 O fio e a minha voz
 Um caminho de orgulho
-Entre mim e o apos
+Entre mim e o após
 
 [Outro]
 Segue o fio
@@ -582,30 +582,30 @@ Under, under
 Flowing under everything`,
 
   "vida-o-tear/3": `[Verse 1]
-As maos amassam, costuram, escrevem
+As mãos amassam, costuram, escrevem
 Os dedos sabem o que fazer
 A mente solta como as nuvens se atrevem
-A mente nao precisa de saber
+A mente não precisa de saber
 
 [Verse 2]
 O martelo bate no prego certeiro
 A agulha encontra o tecido
-As maos ocupadas sao o verdadeiro
+As mãos ocupadas sao o verdadeiro
 Templo onde me tenho escondido
 
 [Chorus]
-Maos ocupadas
+Mãos ocupadas
 A mente descansa
-Maos ocupadas
-O corpo que danca
+Mãos ocupadas
+O corpo que dança
 Enquanto os dedos trabalham
 A alma respira
-As maos nunca falham
-Quando a cabeca se retira
+As mãos nunca falham
+Quando a cabeça se retira
 
 [Outro]
 Trabalha, trabalha
-As maos sabem o caminho`,
+As mãos sabem o caminho`,
 
   "vida-o-tear/4": `[Verse 1]
 Back and forth the shuttle flies
@@ -635,12 +635,12 @@ The loom knows`,
 
   "vida-o-tear/5": `[Verse 1]
 A tinta toca o papel
-E o mundo para de girar
-A caneta risca o que e fiel
-Ao que eu nao consigo falar
+É o mundo para de girar
+A caneta risca o que é fiel
+Ao que eu não consigo falar
 
 [Verse 2]
-As teclas clicam no silencio
+As teclas clicam no silêncio
 As palavras nascem sozinhas
 Cada frase e um acrescimo
 Ao caminho de pegadas minhas
@@ -691,22 +691,22 @@ The rhythm won't stop`,
 
   "vida-o-tear/7": `[Verse 1]
 As ferramentas pousam na mesa
-As maos ainda quentes de criar
+As mãos ainda quentes de criar
 Olho para o que existe em surpresa
-Algo que ontem nao tinha lugar
+Algo que ontem não tinha lugar
 
 [Verse 2]
-Nao ha aplausos nem plateia
-So o silencio de quem fez
+Não há aplausos nem plateia
+Só o silêncio de quem fez
 A satisfacao que se ateia
 Na certeza de cada vez
 
 [Chorus]
-A peca pronta
-O silencio de quem criou
-A peca pronta
-Nao precisa que eu explique o que passou
-So existe agora
+A peça pronta
+O silêncio de quem criou
+A peça pronta
+Não precisa que eu explique o que passou
+Só existe agora
 Onde antes era nada
 Isto e a hora
 Mais sagrada
@@ -725,25 +725,25 @@ E eu descanso`,
 O telefone vira de face
 O ecra apaga a sua luz
 O dia pousa com a sua grace
-E o escuro me conduz
+É o escuro me conduz
 
 [Verse 2]
-A lampada faz o ultimo clique
+A lampada faz o último clique
 O quarto encontra a sua noite
-Nao ha mais nada que me implique
-Nao ha mais nada que me acoite
+Não há mais nada que me implique
+Não há mais nada que me acoite
 
 [Chorus]
 Desligar
 Como quem desliga a luz de um templo
 Desligar
-E o mais gentil exemplo
+É o mais gentil exemplo
 De que o dia teve um fim
 E agora o escuro cuida de mim
 
 [Outro]
 Desliga, desliga
-A noite ja chegou`,
+A noite já chegou`,
 
   "vida-rendicao/2": `[Verse 1]
 My eyelids pull like velvet curtains
@@ -776,19 +776,19 @@ Let them fall`,
 Dez, nove, oito
 O corpo afunda no colchao
 Sete, seis, cinco
-Ja nao ha razao
+Já não há razao
 
 [Verse 2]
 Quatro, tres
 Os numeros perdem a forma
 Dois
-Qual e mesmo a norma
+Qual é mesmo a norma
 
 [Chorus]
-A ultima contagem
-Ate nao haver mais nada
-A ultima contagem
-E a porta mais sagrada
+A última contagem
+Até não haver mais nada
+A última contagem
+É a porta mais sagrada
 Os numeros derretem
 Como gelo ao sol
 As palavras perdem
@@ -797,7 +797,7 @@ Todo o seu anzol
 [Outro]
 Um
 E depois
-So o escuro`,
+Só o escuro`,
 
   "vida-rendicao/4": `[Verse 1]
 The bed becomes a boat that floats
@@ -828,7 +828,7 @@ Between here and there`,
   "vida-rendicao/5": `[Verse 1]
 O corpo fica mais pesado
 Que o colchao que o segura
-Os bracos sao de chumbo dourado
+Os braços sao de chumbo dourado
 A gravidade e uma ternura
 
 [Verse 2]
@@ -841,11 +841,11 @@ De respiracao e saudade
 O peso bom
 O peso de quem vai dormir
 O peso bom
-De quem nao precisa de fugir
+De quem não precisa de fugir
 A cama engole devagar
 O corpo aceita o convite
-Nao ha mais nada para dar
-So o escuro e o seu limite
+Não há mais nada para dar
+Só o escuro e o seu limite
 
 [Outro]
 Pesado e bom
@@ -880,26 +880,26 @@ Into the nothing
 That holds everything`,
 
   "vida-rendicao/7": `[Verse 1]
-Boa noite, maos cansadas
-Boa noite, pes que andaram
+Boa noite, mãos cansadas
+Boa noite, pés que andaram
 Boa noite, costas pesadas
 Boa noite, olhos que choraram
 
 [Verse 2]
 Boa noite, mente inquieta
-Boa noite, coracao
+Boa noite, coração
 Boa noite a tudo o que aperta
 Boa noite a toda a razao
 
 [Chorus]
 Noite boa
-O ultimo sussurro antes do fim
+O último sussurro antes do fim
 Noite boa
 O dia foi gentil comigo e eu com ele enfim
 Agora o escuro vem
 Agora a paz e minha
 Noite boa, meu bem
-A ultima carinha
+A última carinha
 
 [Outro]
 Boa noite
@@ -907,34 +907,34 @@ Boa noite a mim`,
 
 
   // ─────────────────────────────────────────────
-  // LUZ CRUA (manha, primeiro gesto)
+  // LUZ CRUA (manhã, primeiro gesto)
   // ─────────────────────────────────────────────
 
   "vida-luz-crua/1": `[Verse 1]
 Antes de abrir os olhos
-O mundo ja existe la fora
+O mundo já existe la fora
 Os passaros cantam seus orgulhos
 Mas eu fico mais uma hora
 
 [Verse 2]
 Atras das palpebras e tudo morno
-O nome ainda nao voltou
-Nao sou mae nem dona do contorno
-So o corpo que aqui ficou
+O nome ainda não voltou
+Não sou mãe nem dona do contorno
+Só o corpo que aqui ficou
 
 [Chorus]
 Antes dos olhos
 Antes do nome
 Antes dos molhos
 Antes da fome
-Sou so um corpo
+Sou só um corpo
 Que ainda respira
 No escuro morto
-De quem nao expira
+De quem não expira
 
 [Outro]
 Mais um momento
-So mais um momento no escuro`,
+Só mais um momento no escuro`,
 
   "vida-luz-crua/2": `[Verse 1]
 A bird outside, the first of many
@@ -963,7 +963,7 @@ The first sound
 Always the same surprise`,
 
   "vida-luz-crua/3": `[Verse 1]
-Os pes tocam o chao frio
+Os pés tocam o chão frio
 Um choque que acorda a pele
 A gravidade e um fio
 Que me puxa para aquele
@@ -975,17 +975,17 @@ A coluna se endireita devagar
 De vertebra em vertebra eu me vi
 
 [Chorus]
-Pes no chao
-A manha entra pelo corpo
-Pes no chao
+Pes no chão
+A manhã entra pelo corpo
+Pes no chão
 O dia comeca a ter um porto
 Cada passo e um contrato
 Com a terra que me segura
-De pe, descalca, exacto
+De pé, descalca, exacto
 Nesta fria formosura
 
 [Outro]
-Pes no chao
+Pes no chão
 Cheguei ao dia`,
 
   "vida-luz-crua/4": `[Verse 1]
@@ -1015,30 +1015,30 @@ One sip
 And the day begins`,
 
   "vida-luz-crua/5": `[Verse 1]
-De pe junto a janela
-A chavena quente na mao
+De pé junto a janela
+A chávena quente na mao
 O dia estica a sua tela
 E eu escolho a direcao
 
 [Verse 2]
-Nao e uma lista nem um plano
-Nao e uma obrigacao
+Não e uma lista nem um plano
+Não e uma obrigação
 E mais como virar o volante humano
-Para o norte do coracao
+Para o norte do coração
 
 [Chorus]
 Intencao
-Sem forca, so direcao
+Sem força, só direcao
 Intencao
 A bussola sem pressao
 Aponto para onde quero ir
 O corpo alinha devagar
-Nao preciso de decidir
-So de apontar e respirar
+Não preciso de decidir
+Só de apontar e respirar
 
 [Outro]
 Para ali
-E o caminho e meu`,
+É o caminho e meu`,
 
   "vida-luz-crua/6": `[Verse 1]
 The shoulders roll, the neck extends
@@ -1077,21 +1077,21 @@ In the body first`,
 O prato pousa na toalha
 O copo alinha com a faca
 Cada gesto e uma medalha
-De amor que nao se destaca
+De amor que não se destaca
 
 [Verse 2]
-A mesa posta e uma oracao
+A mesa posta e uma oração
 Sem deus, sem templo, sem altar
-So as maos e a dedicacao
+Só as mãos e a dedicacao
 De quem prepara para amar
 
 [Chorus]
 A mesa posta
 A cerimonia de quem cuida
 A mesa posta
-E a ofrenda mais valida
+É a ofrenda mais valida
 Cada prato no lugar
-E uma forma de dizer
+É uma forma de dizer
 Eu preparei-me para te amar
 Antes de te ver
 
@@ -1132,17 +1132,17 @@ Sao os mais pequenos segredos
 Que mudam o sabor do caminho
 
 [Verse 2]
-Um limao espremido a mao
+Um limão espremido a mao
 Transforma o prato inteiro
-O gesto certo na estacao
-E o tempero verdadeiro
+O gesto certo na estação
+É o tempero verdadeiro
 
 [Chorus]
 Tempero
 O pequeno gesto que muda tudo
 Tempero
 De quem sabe que o profundo
-Mora nos detalhes
+Mora nós detalhes
 Nos graos de sal
 Nas ervas que espalhas
 No toque final
@@ -1180,11 +1180,11 @@ The oldest meditation`,
   "vida-pao-sal/5": `[Verse 1]
 O cheiro entra antes de mim
 Pela porta mal aberta
-Pao no forno, cafe sem fim
+Pao no forno, café sem fim
 A casa esta desperta
 
 [Verse 2]
-Nao e o lugar, sao as paredes
+Não e o lugar, sao as paredes
 Que absorveram tantos anos
 De cebola nas frigideiras redes
 De risos, de enganos
@@ -1193,7 +1193,7 @@ De risos, de enganos
 Cheiro de casa
 Antes de ser endereco
 Cheiro de casa
-E o primeiro apreco
+É o primeiro apreço
 Que o nariz reconhece
 Antes dos olhos verem
 O cheiro que permanece
@@ -1201,7 +1201,7 @@ Quando as pessoas se querem
 
 [Outro]
 Este cheiro
-E a minha casa inteira`,
+É a minha casa inteira`,
 
   "vida-pao-sal/6": `[Verse 1]
 Too many chairs around the table
@@ -1246,16 +1246,16 @@ O saco pesa a sua ternura
 De quem vai sem saber o fim
 
 [Verse 2]
-Tres passos e ja nao sou
+Tres passos e já não sou
 A mesma que estava la dentro
 A rua engole quem partiu
 O vento apaga o meu lamento
 
 [Chorus]
 A porta fecha
-E o comeco e nao o fim
+É o começo e não o fim
 A porta fecha
-E a estrada abre-se em mim
+É a estrada abre-se em mim
 Deixo tudo para tras
 As chaves no bolso a bater
 Cada passo e mais e mais
@@ -1298,7 +1298,7 @@ Os pensamentos soltam-se como bando
 De passaros sem dono nem acampamento
 
 [Verse 2]
-Nao seguro nenhum
+Não seguro nenhum
 Deixo-os passar como a paisagem
 Cada um vai sem rumo algum
 Como nuvens numa viagem
@@ -1311,7 +1311,7 @@ Nada e tao denso
 Quando estas em movimento
 Cada colina e um pensamento
 Que veio e foi
-E nao deu mais tormento
+E não deu mais tormento
 
 [Outro]
 Passa, passa
@@ -1325,7 +1325,7 @@ Of going slowly everywhere
 
 [Verse 2]
 The longer that I drive, the less
-The urgent things seem quite so loud
+The urgent things seem quite só loud
 The distance teaches me to bless
 The silence underneath the cloud
 
@@ -1345,7 +1345,7 @@ Just miles and quiet`,
 
   "vida-deriva/5": `[Verse 1]
 A janela abre e o vento entra
-O cabelo voa sem pedir licenca
+O cabelo voa sem pedir licença
 O mundo inteiro se concentra
 Neste momento sem sentenca
 
@@ -1359,10 +1359,10 @@ E transforma-o em brisa
 Janela aberta
 O vento na cara e liberdade
 Janela aberta
-Nao ha idade
+Não há idade
 Sou crianca outra vez
-Com o ar nos dentes
-O vento sabe o que eu nao sei
+Com o ar nós dentes
+O vento sabe o que eu não sei
 E leva-me entre as correntes
 
 [Outro]
@@ -1403,16 +1403,16 @@ O mesmo mas eu sou outro povo
 
 [Verse 2]
 A cozinha cheira ao que sempre cheirou
-O relogio bate a mesma hora
+O relógio bate a mesma hora
 Mas quem aqui entrou
-Ja nao e quem saiu la fora
+Já não e quem saiu la fora
 
 [Chorus]
 O regresso
 Voltar mudada sem saber onde
 O regresso
-E um rio que esconde
-A viagem nos ossos
+É um rio que esconde
+A viagem nós ossos
 A estrada na pele
 Os quilometros nossos
 Que ninguem ve mas que se sente
@@ -1429,24 +1429,24 @@ Mas voltei diferente`,
   "vida-corpo-a-corpo/1": `[Verse 1]
 Milimetro por milimetro
 O corpo desliza no sofa
-O ar entre nos e um espectro
-De tudo o que a boca nao prova
+O ar entre nós e um espectro
+De tudo o que a boca não prova
 
 [Verse 2]
 A pele arrepia antes de tocar
 O pelo levanta de antecipacao
-Ha um campo entre eu e o teu lugar
-Que vibra mais que o coracao
+Há um campo entre eu e o teu lugar
+Que vibra mais que o coração
 
 [Chorus]
 Aproximar
 Sem pressa, sem medo, sem voz
 Aproximar
-E o espaco derrete entre nos
+É o espaço derrete entre nós
 Cada centimetro e um universo
 Cada segundo e uma oração
-O ultimo milimetro e o verso
-Que eu nunca soube de cor ate agora nao
+O último milimetro e o verso
+Que eu nunca soube de cor até agora não
 
 [Outro]
 Mais perto
@@ -1479,23 +1479,23 @@ Skin to skin
 The truest conversation`,
 
   "vida-corpo-a-corpo/3": `[Verse 1]
-O espaco entre dois corpos
+O espaço entre dois corpos
 E mais carregado que o toque
 Sinto os pelos como soros
 Electricos antes do choque
 
 [Verse 2]
-O ultimo centimetro treme
+O último centimetro treme
 Como corda de violino
-O ar entre nos e a semente
+O ar entre nós e a semente
 De tudo o que sera destino
 
 [Chorus]
-O espaco entre
+O espaço entre
 E mais quente que a pele
-O espaco entre
+O espaço entre
 E onde o desejo se rebele
-Nao toco ainda
+Não toco ainda
 Deixo o ar arder
 A distancia e linda
 Quando esta prestes a morrer
@@ -1531,26 +1531,26 @@ Breathe in what I breathe out
 Breathe out what I breathe in`,
 
   "vida-corpo-a-corpo/5": `[Verse 1]
-As maos abrem sem reserva
-A pele fala o que eu nao sei
+As mãos abrem sem reserva
+A pele fala o que eu não sei
 O corpo perde a sua cerca
 E eu entrego-me a esta lei
 
 [Verse 2]
-Nao ha mais mascara nem filtro
-Nao ha mais vergonha nem muro
-O corpo e o unico livro
+Não há mais máscara nem filtro
+Não há mais vergonha nem muro
+O corpo é o único livro
 Que se le inteiro no escuro
 
 [Chorus]
 Entrega de pele
 Dar-me toda sem sobras
 Entrega de pele
-Onde as maos sao as obras
+Onde as mãos sao as obras
 O corpo sabe a lingua
 Que a mente nunca aprendeu
 Cada toque distingue
-O que e teu do que e meu
+O que é teu do que é meu
 E desfaz a fronteira
 
 [Outro]
@@ -1594,13 +1594,13 @@ The most honest silence`,
   // ─────────────────────────────────────────────
 
   "vida-diluvio-manso/1": `[Verse 1]
-Os joelhos cedem no chao da cozinha
-As maos agarram a borda da pia
+Os joelhos cedem no chão da cozinha
+As mãos agarram a borda da pia
 A coisa que eu segurava sozinha
 Desceu pelo corpo como uma maré fria
 
 [Verse 2]
-Ninguem deu licenca pra isto
+Ninguem deu licença pra isto
 Ninguem assinou a autorizacao
 Mas o corpo decidiu por instinto
 Que hoje era o dia da inundacao
@@ -1610,8 +1610,8 @@ Permissao
 Para desabar sem explicacao
 Permissao
 Para ser a chuva e a inundacao
-Nao e fraqueza, nao e derrota
-E o corpo a cobrar o que lhe devem
+Não e fraqueza, não e derrota
+É o corpo a cobrar o que lhe devem
 Cada lagrima e uma nota
 De tudo o que segurei para sempre
 
@@ -1649,12 +1649,12 @@ Let it all come through`,
 As lagrimas secam na face
 Apertam a pele de sal
 O mesmo sal que o mar desfaz
-O mesmo sal que e mineral
+O mesmo sal que é mineral
 
 [Verse 2]
-O corpo e oceano por dentro
+O corpo é oceano por dentro
 O choro e a mare que sobe
-Sou agua e sal e vento
+Sou água e sal e vento
 E nada disto me corroi
 
 [Chorus]
@@ -1662,10 +1662,10 @@ Salgado
 O sal das lagrimas e do mar
 Salgado
 O mesmo sal que sabe curar
-Nao estou partida
-Sou agua que corre
+Não estou partida
+Sou água que corre
 A dor e valida
-E o sal socorre
+É o sal socorre
 
 [Outro]
 Sal
@@ -1701,25 +1701,25 @@ Carry on`,
 
   "vida-diluvio-manso/5": `[Verse 1]
 A cadeira vazia na mesa
-O telefone que nao toca mais
-A ausencia pesa mais do que pesa
-A presenca em tempos normais
+O telefone que não toca mais
+A ausência pesa mais do que pesa
+A presença em tempos normais
 
 [Verse 2]
 Estendo a mao para ligar
-Antes de lembrar que nao ha rede
+Antes de lembrar que não há rede
 O gesto fica suspenso no ar
-Como agua que nao tem sede
+Como água que não tem sede
 
 [Chorus]
 A falta
-O peso do que ja nao esta
+O peso do que já não esta
 A falta
-E a sombra mais real que ha
+É a sombra mais real que há
 Mais pesada que o corpo
-Mais densa que a presenca
-A ausencia e um porto
-Onde nunca ha sentenca
+Mais densa que a presença
+A ausência e um porto
+Onde nunca há sentenca
 
 [Outro]
 Falta
@@ -1754,11 +1754,11 @@ Let it wash me clean`,
   "vida-diluvio-manso/7": `[Verse 1]
 Os olhos inchados mas leves por tras
 A cara lavada de tudo
-Ha uma fome estranha que vem e que traz
+Há uma fome estranha que vem e que traz
 O corpo de volta do mudo
 
 [Verse 2]
-Peco agua, peco pao
+Peco água, peco pao
 As coisas mais simples do mundo
 O corpo pede com a mao
 Depois do choro mais profundo
@@ -1767,11 +1767,11 @@ Depois do choro mais profundo
 Depois do choro
 Uma leveza estranha fica
 Depois do choro
-O ar e fresco e a vida e rica
-Como o ceu depois da chuva
+O ar e fresco e a vida é rica
+Como o céu depois da chuva
 Quando a luz tem outra cor
 O corpo encontra a sua uva
-E o sabor de depois da dor
+É o sabor de depois da dor
 
 [Outro]
 Chorei tudo
@@ -1784,23 +1784,23 @@ E agora sinto fome de viver`,
 
   "vida-lava-quieta/1": `[Verse 1]
 A garganta fecha em torno das palavras
-O maxilar aperta ate doer
+O maxilar aperta até doer
 Engulo o fogo como engulo as magoas
 E sinto-o arder
 
 [Verse 2]
 O estomago segura o que a boca recusa
-O corpo e a prisao da minha voz
-A raiva e tao educada e tao reclusa
-Que ninguem sabe o que ha entre nos
+O corpo é a prisao da minha voz
+A raiva é tao educada e tao reclusa
+Que ninguem sabe o que há entre nós
 
 [Chorus]
 Engolir
 O grito que desce de volta
 Engolir
-E a violencia mais oculta
-O silencio que nao e paz
-E a jaula mais elegante
+É a violência mais oculta
+O silêncio que não e paz
+É a jaula mais elegante
 A raiva que o corpo traz
 E que ninguem ve por diante
 
@@ -1837,21 +1837,21 @@ Beneath the smile`,
   "vida-lava-quieta/3": `[Verse 1]
 O punho fecha dentro do bolso
 As unhas marcam meias-luas na palma
-O pe bate debaixo da mesa feito louco
+O pé bate debaixo da mesa feito louco
 E ninguem ve a tempestade na alma
 
 [Verse 2]
-O corpo vibra numa frequencia
-Que so eu consigo ouvir
-A raiva tem paciencia
-Quando nao a deixam sair
+O corpo vibra numa frequência
+Que só eu consigo ouvir
+A raiva tem paciência
+Quando não a deixam sair
 
 [Chorus]
 O punho
 Fechado onde ninguem ve
 O punho
-E a raiva de quem nao cre
-Que um dia vai ter licenca
+É a raiva de quem não cre
+Que um dia vai ter licença
 Para abrir a mao
 O punho e a sentenca
 De quem guarda a explosao
@@ -1890,12 +1890,12 @@ I am red`,
 A boca abre como uma represa
 A primeira palavra sai a tremer
 Depois vem o rio, a surpresa
-De ouvir a minha propria voz a arder
+De ouvir a minha própria voz a arder
 
 [Verse 2]
-De pe na cozinha eu digo tudo
+De pé na cozinha eu digo tudo
 O que guardei debaixo dos anos
-A voz treme mas nao e muda
+A voz treme mas não e muda
 E os ombros largam os seus enganos
 
 [Chorus]
@@ -1903,7 +1903,7 @@ Dizer
 Finalmente dizer o que engoli
 Dizer
 A voz que eu escondi
-Nao e calma, nao e gentil
+Não e calma, não e gentil
 Mas e minha e e real
 Cada palavra e um projétil
 De verdade sem igual
@@ -1945,34 +1945,34 @@ Clear now
 Crystal clear`,
 
   // ─────────────────────────────────────────────
-  // ANCORA (ansiedade, panico, chao)
+  // ANCORA (ansiedade, panico, chão)
   // ─────────────────────────────────────────────
 
   "vida-ancora/1": `[Verse 1]
 O peito fecha como uma gaiola
 As costelas apertam o ar
-O chao desaparece, nao consola
-As maos procuram onde agarrar
+O chão desaparece, não consola
+As mãos procuram onde agarrar
 
 [Verse 2]
 O suor frio corre pelas costas
-O coracao bate nos ouvidos
+O coração bate nós ouvidos
 O mundo gira e as respostas
-Estao todas perdidas nos sentidos
+Estao todas perdidas nós sentidos
 
 [Chorus]
 O aperto
-O chao que some debaixo de mim
+O chão que some debaixo de mim
 O aperto
 O corpo que grita por um fim
-A solidao do panico
-E a pior que ha
+A solidão do panico
+É a pior que há
 Dentro do meu organico
 Ninguem me vai buscar
 
 [Outro]
 Respira
-So respira`,
+Só respira`,
 
   "vida-ancora/2": `[Verse 1]
 Bare feet find the floor beneath the fear
@@ -2007,20 +2007,20 @@ Quatro coisas que a pele explora
 O tecido da cadeira, o metal directo
 
 [Verse 2]
-Tres sons que entram nos ouvidos
-O relogio, a rua, o meu respirar
+Tres sons que entram nós ouvidos
+O relógio, a rua, o meu respirar
 Dois cheiros que ficam perdidos
-O cafe, o sabao a brilhar
+O café, o sabao a brilhar
 
 [Chorus]
 Cinco sentidos
 A ancora que me traz de volta
 Cinco sentidos
-A porta que se abre e nao se solta
+A porta que se abre e não se solta
 O real e o que eu toco
 O real e o que eu vejo
-Nao preciso de mais nada pouco
-So a certeza deste azulejo
+Não preciso de mais nada pouco
+Só a certeza deste azulejo
 
 [Outro]
 Cinco, quatro, tres, dois
@@ -2053,7 +2053,7 @@ Here
 Just here`,
 
   "vida-ancora/5": `[Verse 1]
-No bolso ha uma pedra lisa
+No bolso há uma pedra lisa
 Que o polegar conhece de cor
 A superficie e uma divisa
 Entre o panico e o amor
@@ -2066,13 +2066,13 @@ A minha ancora contra o medo
 
 [Chorus]
 Pedra no bolso
-O chao que levo comigo
+O chão que levo comigo
 Pedra no bolso
 O meu mais antigo abrigo
 Quando o mundo gira demais
 A mao encontra a pedra
-E o corpo sabe que e capaz
-De nao se desfazer em pedra
+É o corpo sabe que é capaz
+De não se desfazer em pedra
 
 [Outro]
 A pedra esta aqui
@@ -2106,36 +2106,36 @@ I am solid ground`,
 
 
   // ─────────────────────────────────────────────
-  // COMPANHIA PROPRIA (solidao escolhida)
+  // COMPANHIA PROPRIA (solidão escolhida)
   // ─────────────────────────────────────────────
 
-  "vida-companhia-propria/1": `[Verse 1]
-A mesa tem um prato so
+  "vida-companhia-própria/1": `[Verse 1]
+A mesa tem um prato só
 Um guardanapo, um copo, uma vela
-O empregado nao sentiu do
+O empregado não sentiu do
 O que eu sinto ao sentar-me nela
 
 [Verse 2]
-Nao e triste, nao e coragem
-E so a escolha de quem sabe
+Não e triste, não e coragem
+E só a escolha de quem sabe
 Que a melhor companhia na viagem
-As vezes e a chave que nao abre
+As vezes e a chave que não abre
 
 [Chorus]
 Mesa para uma
 Sem pena, sem falta
 Mesa para uma
-A solidao mais alta
-E a que se escolhe
+A solidão mais alta
+É a que se escolhe
 Sem drama nem dor
 A cadeira que se acolhe
-So com o meu calor
+Só com o meu calor
 
 [Outro]
 Uma mesa
 Uma paz`,
 
-  "vida-companhia-propria/2": `[Verse 1]
+  "vida-companhia-própria/2": `[Verse 1]
 I make my own rain, my own shine
 My own wind that clears the sky
 I don't need another's sign
@@ -2161,33 +2161,33 @@ My own specific shade of grey
 My weather
 My world`,
 
-  "vida-companhia-propria/3": `[Verse 1]
+  "vida-companhia-própria/3": `[Verse 1]
 O telefone virado para baixo
-O silencio que escolhi de proposito
-Nao e castigo nem despacho
-E o luxo do meu proprio hospicio
+O silêncio que escolhi de propósito
+Não e castigo nem despacho
+É o luxo do meu próprio hospicio
 
 [Verse 2]
 O quarto vazio porque eu quis
-A ausencia de som como um presente
-O silencio feliz
+A ausência de som como um presente
+O silêncio feliz
 De quem esta inteiramente presente
 
 [Chorus]
-O silencio escolhido
-Nao e o que me impuseram
-O silencio querido
-E o que os meus ossos quiseram
+O silêncio escolhido
+Não e o que me impuseram
+O silêncio querido
+É o que os meus ossos quiseram
 Oico os meus pensamentos
-Pousar como folhas no chao
+Pousar como folhas no chão
 Sem ventos, sem lamentos
-So a minha propria cancao
+Só a minha própria canção
 
 [Outro]
-Escolhi o silencio
+Escolhi o silêncio
 E ele escolheu-me a mim`,
 
-  "vida-companhia-propria/4": `[Verse 1]
+  "vida-companhia-própria/4": `[Verse 1]
 I walk through my apartment slow
 I touch the walls, I fix the frames
 This room is full of what I know
@@ -2213,11 +2213,11 @@ And I am here by choice
 Full room
 Full life`,
 
-  "vida-companhia-propria/5": `[Verse 1]
+  "vida-companhia-própria/5": `[Verse 1]
 A vela acesa, o prato feito
-A musica que eu escolhi
+A música que eu escolhi
 Jantar sozinha e um direito
-Que so agora descobri
+Que só agora descobri
 
 [Verse 2]
 Sem ecra, sem distracao
@@ -2229,17 +2229,17 @@ E cada pedaco tem amor
 Jantar sozinha
 Com a vela e o vinho e o meu prato
 Jantar sozinha
-E o mais sagrado acto
+É o mais sagrado acto
 De quem se trata como hospede
 De quem se cozinha com carinho
 A noite inteira e o meu vespere
-E eu sou o meu proprio caminho
+E eu sou o meu próprio caminho
 
 [Outro]
-So eu e o prato
+Só eu e o prato
 E e o suficiente`,
 
-  "vida-companhia-propria/6": `[Verse 1]
+  "vida-companhia-própria/6": `[Verse 1]
 I sat on the edge of the bed tonight
 And something landed in my chest
 Not sadness, something else, a light
@@ -2270,30 +2270,30 @@ I am enough`,
   // ─────────────────────────────────────────────
 
   "vida-porcelana/1": `[Verse 1]
-A agua quente bate na nuca
-O corpo curva-se de alivio
+A água quente bate na nuca
+O corpo curva-se de alívio
 O vapor sobe como uma fuga
 De tudo o que foi um desvio
 
 [Verse 2]
 Os musculos soltam um a um
-Como nos que se desfazem
-A agua lava o que e comum
+Como nós que se desfazem
+A água lava o que é comum
 E transforma em algo que me fazem
 
 [Chorus]
-A agua quente
+A água quente
 A primeira gentileza
-A agua quente
+A água quente
 Cura qualquer aspereza
-Nao preciso de mais nada
+Não preciso de mais nada
 Que este vapor e esta pele
-A agua e a mais sagrada
+A água e a mais sagrada
 Das coisas que o corpo pede
 
 [Outro]
-Agua quente
-A mais simples oracao`,
+Água quente
+A mais simples oração`,
 
   "vida-porcelana/2": `[Verse 1]
 The jar opens, the scent arrives
@@ -2322,7 +2322,7 @@ The small ceremony
 That nobody sees`,
 
   "vida-porcelana/3": `[Verse 1]
-As maos passam creme no braco
+As mãos passam creme no braco
 Com a mesma atencao que dou a outros
 O cotovelo, o pulso, o laco
 Entre mim e os meus proprios encontros
@@ -2330,18 +2330,18 @@ Entre mim e os meus proprios encontros
 [Verse 2]
 Nunca me toquei assim
 Com intencao e sem pressa
-As minhas maos cuidam de mim
+As minhas mãos cuidam de mim
 Como quem reza sem missa
 
 [Chorus]
 Creme na pele
-As maos que cuidam sem pedir
+As mãos que cuidam sem pedir
 Creme na pele
 A forma mais gentil de existir
 Tocar-me como se importasse
 Tratar-me como se eu fosse
 Alguem que merecesse que passasse
-As maos com a mesma doce
+As mãos com a mesma doce
 
 [Outro]
 Toca com cuidado
@@ -2380,10 +2380,10 @@ O couro cabeludo sente o zelo
 De finalmente estar sem escombros
 
 [Verse 2]
-Agito a cabeca devagar
-O cabelo danca sem vergonha
+Agito a cabeça devagar
+O cabelo dança sem vergonha
 O dia soltou-se a par
-Da mascara e da sua ronha
+Da máscara e da sua ronha
 
 [Chorus]
 Cabelo solto
@@ -2403,7 +2403,7 @@ Finalmente solto`,
 My hand upon my own warm cheek
 The gesture that I'd give a child
 The word I finally learned to speak
-To myself, so long exiled
+To myself, só long exiled
 
 [Verse 2]
 Tender, tender on the tongue
@@ -2416,8 +2416,8 @@ Tender, be tender
 With the body that you are
 Tender, surrender
 To the kindness of the scar
-You were taught to be so hard
-You were taught to be so strong
+You were taught to be só hard
+You were taught to be só strong
 But the tenderest regard
 Is where you've belonged all along
 
@@ -2437,20 +2437,20 @@ A almofada humida, a rotina
 De um dia que comeca com ressaca
 
 [Verse 2]
-A chaleira e um acto de fe
-A chavena quente entre as maos
-O silencio ja nao e
+A chaleira e um acto de fé
+A chávena quente entre as mãos
+O silêncio já não e
 O que era antes das questoes
 
 [Chorus]
-A manha seguinte
+A manhã seguinte
 Depois da guerra que ficou
-A manha seguinte
-E fragil mas chegou
-A luz nao e bonita
+A manhã seguinte
+E frágil mas chegou
+A luz não e bonita
 Mas e luz e chega
-A manha nao e escrita
-Mas o dia nao se nega
+A manhã não e escrita
+Mas o dia não se nega
 
 [Outro]
 Amanheceu
@@ -2483,29 +2483,29 @@ In the ash
 I found what's real`,
 
   "vida-rescaldo/3": `[Verse 1]
-A chavena de cafe na mesa sem palavra
+A chávena de café na mesa sem palavra
 A mao que encontra a outra mao na cama
 O cobertor puxado sobre quem descansa
-A desculpa que nao precisa de programa
+A desculpa que não precisa de programa
 
 [Verse 2]
-O almoco feito sem que ninguem peca
+O almoço feito sem que ninguem peça
 A porta aberta para o ar entrar
-As maos dizem o que a boca nao comeca
-As maos sabem como reparar
+As mãos dizem o que a boca não comeca
+As mãos sabem como reparar
 
 [Chorus]
 Desculpa muda
-O pedido que vem nas maos
+O pedido que vem nas mãos
 Desculpa muda
 Mais verdadeira que sermoes
 Um gesto vale mais que mil palavras
-Quando as palavras ja falharam
-As maos reparam as traves
+Quando as palavras já falharam
+As mãos reparam as traves
 Que as bocas quebraram
 
 [Outro]
-Um cafe na mesa
+Um café na mesa
 E tudo o que precisas de dizer`,
 
   "vida-rescaldo/4": `[Verse 1]
@@ -2538,21 +2538,21 @@ We're building something new`,
 O dedo passa pela cicatriz
 A pele levantada como um mapa
 O corpo guarda o que a mente diz
-Que nao merece mas que nunca escapa
+Que não merece mas que nunca escapa
 
 [Verse 2]
-Nao e castigo esta marca
+Não e castigo esta marca
 E prova de que sobrevivi
 O corpo escreve a sua arca
 Na pele de quem nunca desistiu de si
 
 [Chorus]
 A cicatriz
-Nao e vergonha, e historia
+Não e vergonha, e historia
 A cicatriz
-E a mais honesta memoria
+É a mais honesta memoria
 Cada marca e um capitulo
-Que o corpo nao editou
+Que o corpo não editou
 A cicatriz e o titulo
 Do livro que a vida me contou
 
@@ -2591,15 +2591,15 @@ Between us`,
   // ─────────────────────────────────────────────
 
   "vida-oferenda/1": `[Verse 1]
-A cabeca inclina-se de leve
-Nao e submissao, e reconhecimento
+A cabeça inclina-se de leve
+Não e submissao, e reconhecimento
 O peito abre quando a boca bebe
 A palavra mais simples do momento
 
 [Verse 2]
 Obrigada ao corpo que me trouxe
-Obrigada ao pao que esta na mesa
-Obrigada a manha que me ouve
+Obrigada ao pao que está na mesa
+Obrigada a manhã que me ouve
 Obrigada a esta natureza
 
 [Chorus]
@@ -2607,20 +2607,20 @@ Obrigada
 A palavra mais pesada
 Obrigada
 Quando e dita com a alma toda
-Nao ha ritual mais puro
+Não há ritual mais puro
 Que esta silaba na boca
 Obrigada ao futuro
-E a cada coisa que me toca
+É a cada coisa que me toca
 
 [Outro]
 Obrigada
-So obrigada`,
+Só obrigada`,
 
   "vida-oferenda/2": `[Verse 1]
 I took a pen and made a list
 Of everything I'm grateful for
 The coffee first, the morning mist
-Then friends, then health, then so much more
+Then friends, then health, then só much more
 
 [Verse 2]
 The list grew longer than the page
@@ -2635,7 +2635,7 @@ The list, the list
 Is longer than the mind unfolds
 When you start to count what's here
 Instead of what is gone
-The world becomes so clear
+The world becomes só clear
 You wonder what you waited on
 
 [Outro]
@@ -2643,25 +2643,25 @@ Keep writing
 The list is never done`,
 
   "vida-oferenda/3": `[Verse 1]
-As maos no peito, ambas abertas
+As mãos no peito, ambas abertas
 Os olhos fecham, o ar aprofunda
 Debaixo das costelas, as descobertas
 De quem para e encontra o que abunda
 
 [Verse 2]
-O coracao bate contra as palmas
+O coração bate contra as palmas
 Como quem bate a uma porta
-Ha tanta coisa debaixo das calmas
-Que so as maos no peito transporta
+Há tanta coisa debaixo das calmas
+Que só as mãos no peito transporta
 
 [Chorus]
-Maos no peito
+Mãos no peito
 Sinto o que la esta
-Maos no peito
-E tanto, tanto ja
-Nao preciso de templo
-Nao preciso de altar
-As maos sao o exemplo
+Mãos no peito
+E tanto, tanto já
+Não preciso de templo
+Não preciso de altar
+As mãos sao o exemplo
 Do sagrado a pulsar
 
 [Outro]
@@ -2696,26 +2696,26 @@ For all of this`,
 
   "vida-oferenda/5": `[Verse 1]
 Olho a volta e vejo pela primeira vez
-A cadeira, a janela, a luz no chao
-As maos no colo, o que o instante fez
+A cadeira, a janela, a luz no chão
+As mãos no colo, o que o instante fez
 De cada coisa uma constelacao
 
 [Verse 2]
 Saude para estar aqui sentada
 Olhos para ver, ar para respirar
-Tecto, chao, o prato e a faca
-Ja e tanto, ja e demais para contar
+Tecto, chão, o prato e a faca
+Já e tanto, já e demais para contar
 
 [Chorus]
 O que tenho
-Neste instante ja e tanto
+Neste instante já e tanto
 O que tenho
-E o verdadeiro encanto
-Nao e o que falta
-E o que esta aqui
+É o verdadeiro encanto
+Não e o que falta
+É o que está aqui
 A abundancia mais alta
-E a que eu nunca vi
-Ate agora
+É a que eu nunca vi
+Até agora
 
 [Outro]
 Tenho tanto
@@ -2759,29 +2759,29 @@ Everything I am`,
   // ─────────────────────────────────────────────
 
   "vida-linhagem/1": `[Verse 1]
-As maos amassam como as dela
+As mãos amassam como as dela
 O pulso gira no mesmo angulo
-Nao aprendi esta maneira bela
-O sangue ja sabia o vocabulo
+Não aprendi esta maneira bela
+O sangue já sabia o vocabulo
 
 [Verse 2]
 No jardim escolho as ervas
 Com os mesmos dedos que ela usou
-As maos da avo nas minhas reservas
+As mãos da avó nas minhas reservas
 Gestos que ninguem me ensinou
 
 [Chorus]
-A avo
-Que vive nas minhas maos
-A avo
-Que mora nos meus gestos vaos
+A avó
+Que vive nas minhas mãos
+A avó
+Que mora nós meus gestos vaos
 Cada vez que amasso o pao
 Cada vez que parto o sal
 Os dedos dela na minha mao
 Fazem o ritual
 
 [Outro]
-Avo
+Avó
 Estou a amassar como tu`,
 
   "vida-linhagem/2": `[Verse 1]
@@ -2811,26 +2811,26 @@ The blood remembers
 What the mind forgot`,
 
   "vida-linhagem/3": `[Verse 1]
-Seguro a chavena com as duas maos
+Seguro a chávena com as duas mãos
 Fico a janela a ver chover
-Herancas que nao sao de tostoes
-Mas de formas de ser e de viver
+Herancas que não sao de tostoes
+Mas de formas de ser é de viver
 
 [Verse 2]
-A coluna direita da minha mae
+A coluna direita da minha mãe
 A teimosia do meu pai
-O suspiro antes de pe
-Que a minha avo sempre dai
+O suspiro antes de pé
+Que a minha avó sempre dai
 
 [Chorus]
 Heranca
-Que nao tem nada a ver com dinheiro
+Que não tem nada a ver com dinheiro
 Heranca
-E o gesto verdadeiro
+É o gesto verdadeiro
 De quem veio antes de mim
 De quem me moldou sem molde
-O que herdei nao tem fim
-Nao e ouro mas nao se dissolve
+O que herdei não tem fim
+Não e ouro mas não se dissolve
 
 [Outro]
 Herdei
@@ -2864,7 +2864,7 @@ The same`,
 
   "vida-linhagem/5": `[Verse 1]
 Os ombros carregam trouxas em pano
-Os pes conhecem estradas nunca andadas
+Os pés conhecem estradas nunca andadas
 Os habitos chegaram com o engano
 De serem meus, mas sao herancas guardadas
 
@@ -2878,15 +2878,15 @@ O sal por cima do ombro as vezes
 O que trouxeste
 O que carregaste sem escolher
 O que trouxeste
-E o que te faz quem vais ser
+É o que te faz quem vais ser
 O orgulho misturado com cansaco
-De quem nao larga o que e seu
+De quem não larga o que é seu
 Cada habito e um abraco
-De quem veio antes e ja morreu
+De quem veio antes e já morreu
 
 [Outro]
 Trouxe tudo
-E nao devolvo nada`,
+E não devolvo nada`,
 
   "vida-linhagem/6": `[Verse 1]
 The roots push through the pavement cracks
@@ -2919,15 +2919,15 @@ The roots are alive`,
   // ─────────────────────────────────────────────
 
   "vida-mare-viva/1": `[Verse 1]
-A agua entra pela areia
+A água entra pela areia
 Enche as pegadas uma a uma
 Sem pressa, sem cadeia
-So a certeza da sua espuma
+Só a certeza da sua espuma
 
 [Verse 2]
-Os pulmoes expandem com a mare
+Os pulmões expandem com a mare
 O corpo aceita o que se aproxima
-Nao ha nada que prepare
+Não há nada que prepare
 Para a plenitude que se estima
 
 [Chorus]
@@ -2936,7 +2936,7 @@ A mare que vem sem avisar
 Encher
 O corpo que aprende a aceitar
 Devagar e sempre
-A agua sabe o caminho
+A água sabe o caminho
 Encher como quem sembre
 Um campo com o seu carinho
 
@@ -2974,23 +2974,23 @@ Completely full`,
 No topo da onda o tempo para
 O corpo pesa zero entre dois mundos
 A respiracao suspende a sua cara
-E tudo fica imove nos segundos
+E tudo fica imove nós segundos
 
 [Verse 2]
 Antes de descer, antes de cair
-Ha este instante que nao tem nome
+Há este instante que não tem nome
 Nem o futuro pode intervir
 Nesta pausa que ninguem consome
 
 [Chorus]
 A pausa no topo
-Onde a agua esquece a gravidade
+Onde a água esquece a gravidade
 A pausa no topo
-E a mais bela liberdade
+É a mais bela liberdade
 Nem subida nem descida
-So o ponto onde tudo se encontra
+Só o ponto onde tudo se encontra
 A vida suspendida
-Na beleza de quem nao confronta
+Na beleza de quem não confronta
 
 [Outro]
 Suspensa
@@ -3024,25 +3024,25 @@ Let the water leave`,
 
   "vida-mare-viva/5": `[Verse 1]
 O fundo do mar esta exposto
-As conchas, as criaturas, o chao
+As conchas, as criaturas, o chão
 O vazio mostra o seu rosto
-E nao e feio, e clarificacao
+E não e feio, e clarificacao
 
 [Verse 2]
-As maos abertas sem nada dentro
+As mãos abertas sem nada dentro
 A barriga vazia depois da mare
-O vazio e o verdadeiro centro
+O vazio é o verdadeiro centro
 Onde tudo que nasce se refere
 
 [Chorus]
-Vazio fertil
-O chao depois da agua ir
-Vazio fertil
+Vazio fértil
+O chão depois da água ir
+Vazio fértil
 Onde tudo vai vir
-Nao e falta, e espaco
-Nao e perda, e preparacao
-O vazio e o braco
-Que se abre para a estacao
+Não e falta, e espaço
+Não e perda, e preparacao
+O vazio é o braco
+Que se abre para a estação
 
 [Outro]
 Vazio
@@ -3075,14 +3075,14 @@ It's turning
 It's already coming back`,
 
   "vida-mare-viva/7": `[Verse 1]
-A agua volta para as mesmas pegadas
+A água volta para as mesmas pegadas
 As mesmas conchas, as mesmas rochas
-A filha torna-se mae nas jornadas
-E a mae torna-se avo nas colchas
+A filha torna-se mãe nas jornadas
+É a mãe torna-se avó nas colchas
 
 [Verse 2]
-A mesma cancao numa boca nova
-O mesmo amor em maos novas
+A mesma canção numa boca nova
+O mesmo amor em mãos novas
 Tudo volta como a chuva prova
 Que as estacoes sao as mesmas trovas
 
@@ -3092,9 +3092,9 @@ Tudo volta, nada se perde
 Volta
 O ciclo nunca desmente
 O que foi vai ser de novo
-Nao igual mas semelhante
+Não igual mas semelhante
 O rio encontra o seu povo
-E o mar beija o navegante
+É o mar beija o navegante
 
 [Outro]
 Volta, volta
@@ -3107,23 +3107,23 @@ Tudo volta a casa`,
 
   "vida-descalca/1": `[Verse 1]
 Os sapatos voam para o canto
-Os dedos abrem no chao frio
-O pe respira como um canto
+Os dedos abrem no chão frio
+O pé respira como um canto
 De quem voltou do seu desvio
 
 [Chorus]
 Tira os sapatos
-O chao e teu, a noite e tua
+O chão é teu, a noite é tua
 Tira os sapatos
-A liberdade e nua
-Os pes sabem o que a cabeca esquece
+A liberdade é nua
+Os pés sabem o que a cabeça esquece
 Que a terra esta aqui em baixo
-E o corpo agradece
+É o corpo agradece
 Cada passo descalco
 
 [Outro]
 Descalca
-O chao e meu`,
+O chão é meu`,
 
   "vida-descalca/2": `[Verse 1]
 Midnight on the kitchen floor
@@ -3154,18 +3154,18 @@ Dance at home`,
   "vida-descalca/3": `[Verse 1]
 Numa terca-feira qualquer
 Sem razao nem justificacao
-Os bracos abrem como mulher
-Que encontrou a sua estacao
+Os braços abrem como mulher
+Que encontrou a sua estação
 
 [Chorus]
 Sem razao
 Celebro sem motivo
 Sem razao
-E o acto mais vivo
+É o acto mais vivo
 Porque o sol entrou pela janela
-Porque o cafe estava bom
+Porque o café estava bom
 Porque estou viva e bela
-E isso e motivo de som
+E isso é motivo de som
 
 [Outro]
 Sem razao
@@ -3199,7 +3199,7 @@ Pure reckless joy`,
 
   "vida-descalca/5": `[Verse 1]
 As ancas balancam antes do pensamento
-Os pes batem antes do ouvido ouvir
+Os pés batem antes do ouvido ouvir
 O corpo sabe o seu sacramento
 Antes da mente decidir
 
@@ -3207,7 +3207,7 @@ Antes da mente decidir
 O corpo sabe
 Celebrar antes de ter razao
 O corpo sabe
-A danca e a mais velha oracao
+A dança e a mais velha oração
 Os musculos lembram
 O ritmo que a mente esqueceu
 As celulas tremem
@@ -3238,24 +3238,24 @@ Barefoot
 Barefoot and infinite`,
 
   // ─────────────────────────────────────────────
-  // BRASA LENTA (forca quieta, paciencia)
+  // BRASA LENTA (força quieta, paciência)
   // ─────────────────────────────────────────────
 
   "vida-brasa-lenta/1": `[Verse 1]
-As maos pousam no colo sem pressa
-A decisao ainda nao esta pronta
-A paciencia nao e fraqueza
-E a forca que ninguem conta
+As mãos pousam no colo sem pressa
+A decisao ainda não esta pronta
+A paciência não e fraqueza
+É a força que ninguem conta
 
 [Chorus]
 Paciencia
-Nao como espera mas como poder
+Não como espera mas como poder
 Paciencia
-E a arte de saber ser
-A mulher que nao se apressa
-Nao e lenta, e certeira
-A forca que nunca cessa
-E a que arde na fogueira mais ligeira
+É a arte de saber ser
+A mulher que não se apressa
+Não e lenta, e certeira
+A força que nunca cessa
+É a que arde na fogueira mais ligeira
 
 [Outro]
 Espero
@@ -3289,12 +3289,12 @@ Mas o tempo e quem confessa
 
 [Chorus]
 O tempo certo
-Nao o tempo rapido
+Não o tempo rapido
 O tempo certo
-E o mais capacitado
-Para dar o que a pressa nao da
-O sabor que so o tempo traz
-Cada coisa no seu ja
+É o mais capacitado
+Para dar o que a pressa não da
+O sabor que só o tempo traz
+Cada coisa no seu já
 Cada fruto na sua paz
 
 [Outro]
@@ -3322,10 +3322,10 @@ Holding
 The roots are holding`,
 
   "vida-brasa-lenta/5": `[Verse 1]
-As mesmas maos abrem a mesma porta
-Cada manha sem aplausos
-O corpo senta-se e nao importa
-Se ha inspiracao ou se ha pausas
+As mesmas mãos abrem a mesma porta
+Cada manhã sem aplausos
+O corpo senta-se e não importa
+Se há inspiração ou se há pausas
 
 [Chorus]
 Constancia
@@ -3333,9 +3333,9 @@ O poder de aparecer outra vez
 Constancia
 A heroina do talvez
 Sem drama nem holofote
-So a cadeira e as maos
+Só a cadeira e as mãos
 Constancia e o pacote
-Mais bonito entre as cancoes
+Mais bonito entre as canções
 
 [Outro]
 Outra vez
@@ -3367,8 +3367,8 @@ The warmth that stays`,
 
   "vida-raiz-muda/1": `[Verse 1]
 A terra prensa de todos os lados
-A escuridao humida onde ninguem ve
-As sementes abrem nos seus estados
+A escuridão humida onde ninguem ve
+As sementes abrem nós seus estados
 Privados de qualquer porque
 
 [Chorus]
@@ -3379,7 +3379,7 @@ E onde eu aprendo a ser
 O trabalho verdadeiro
 Acontece no escuro
 Sem plateia nem letreiro
-So o futuro
+Só o futuro
 
 [Outro]
 No escuro
@@ -3406,20 +3406,20 @@ Not yet
 But soon`,
 
   "vida-raiz-muda/3": `[Verse 1]
-O composto, a bela podridao
+O composto, a bela podridão
 Que faz nascer a vida nova
-As maos na terra escura, a mao
+As mãos na terra escura, a mao
 Que se entrega ao que se prova
 
 [Chorus]
-Escuro fertil
-A escuridao que cria
-Escuro fertil
-Nao e a noite fria
-E o utero da terra
-E o ventre do chao
+Escuro fértil
+A escuridão que cria
+Escuro fértil
+Não e a noite fria
+É o útero da terra
+É o ventre do chão
 O escuro que se aferra
-A transformacao
+A transformação
 
 [Outro]
 No escuro
@@ -3449,7 +3449,7 @@ Seeds just know`,
 A fenda no solo onde o verde empurra
 A folha impossivel que moveu terra
 O primeiro sinal depois da penumbra
-Pequeno e fragil mas que nunca erra
+Pequeno e frágil mas que nunca erra
 
 [Chorus]
 A primeira folha
@@ -3457,9 +3457,9 @@ Triunfo silencioso
 A primeira folha
 O gesto mais formoso
 Depois dos meses de escuro
-Depois da paciencia toda
-Rompe o chao o futuro
-Numa folha que e uma boda
+Depois da paciência toda
+Rompe o chão o futuro
+Numa folha que é uma boda
 
 [Outro]
 Rompi
@@ -3492,22 +3492,22 @@ I was already here`,
   "vida-ressonancia/1": `[Verse 1]
 Uma voz num quarto vazio
 Uma mulher com os olhos fechados
-A vibracao comeca no fio
+A vibração comeca no fio
 Do peito e sai pelos lados
 
 [Chorus]
 Uma nota
-Uma mulher, um comeco
+Uma mulher, um começo
 Uma nota
-E o mais puro apreco
-Pelo silencio que existia
+É o mais puro apreço
+Pelo silêncio que existia
 Antes de eu abrir a boca
 Uma nota e a poesia
 Mais corajosa que se toca
 
 [Outro]
 Uma nota
-So uma nota`,
+Só uma nota`,
 
   "vida-ressonancia/2": `[Verse 1]
 A stone dropped in the water still
@@ -3540,14 +3540,14 @@ Duas vozes
 Encontram-se no escuro
 Duas vozes
 Mais fortes que qualquer muro
-Tu tambem? Tu tambem?
+Tu também? Tu também?
 A harmonia do encontro
 Quando a verdade convem
-E o mundo ganha contorno
+É o mundo ganha contorno
 
 [Outro]
-Tu tambem
-Nao estou sozinha`,
+Tu também
+Não estou sozinha`,
 
   "vida-ressonancia/4": `[Verse 1]
 Women standing, shoulders close
@@ -3571,9 +3571,9 @@ The circle holds us all`,
 
   "vida-ressonancia/5": `[Verse 1]
 A voz atravessa paredes
-Nao e um grito, e uma frequencia
-Que encontra quem esta nas redes
-Do mesmo sono, da mesma ausencia
+Não e um grito, e uma frequência
+Que encontra quem está nas redes
+Do mesmo sono, da mesma ausência
 
 [Chorus]
 Chamada
@@ -3612,7 +3612,7 @@ One breath, all of us`,
   "vida-ressonancia/7": `[Verse 1]
 Cada mulher que engoliu a voz
 Agora abre a boca ao mesmo tempo
-O chao treme debaixo de nos
+O chão treme debaixo de nós
 Como um terramoto de contentamento
 
 [Chorus]
@@ -3620,44 +3620,44 @@ Todas
 O sim colectivo
 Todas
 O acto mais vivo
-Nao somos soldadas, somos dancas
-Nao e raiva, e chegada
-O trovao das nossas cancas
+Não somos soldadas, somos dancas
+Não e raiva, e chegada
+O trovão das nossas canças
 Faz tremer a estrada
 
 [Bridge]
-Os pes batem em unissono
+Os pés batem em unissono
 O sim viaja pelo ar
 O corpo inteiro e um hino
-Que ninguem nos vai calar
+Que ninguem nós vai calar
 
 [Outro]
 Todas
-Todas nos`,
+Todas nós`,
 
   // ─────────────────────────────────────────────
-  // PENUMBRA (o limiar, o espaco entre)
+  // PENUMBRA (o limiar, o espaço entre)
   // ─────────────────────────────────────────────
 
   "vida-penumbra/1": `[Verse 1]
-O ultimo azul antes do preto
-O ceu segura a respiracao
+O último azul antes do preto
+O céu segura a respiracao
 As formas existem sem projecto
-Entre a luz e a escuridao
+Entre a luz e a escuridão
 
 [Chorus]
 Nem noite
-Ainda nao
+Ainda não
 Nem noite
-So a suspensao
-De um mundo que nao se decidiu
+Só a suspensão
+De um mundo que não se decidiu
 Entre ficar e partir
 Entre o que viveu e o que sentiu
 Entre adormecer e resistir
 
 [Outro]
 Nem noite
-Ainda nao`,
+Ainda não`,
 
   "vida-penumbra/2": `[Verse 1]
 The first grey light before the birds
@@ -3680,14 +3680,14 @@ Nor day
 Not yet`,
 
   "vida-penumbra/3": `[Verse 1]
-De pe na porta entre dois quartos
-Um pe de cada lado da soleira
+De pé na porta entre dois quartos
+Um pé de cada lado da soleira
 O corpo dividido em dois repartos
 Entre a temperatura e a maneira
 
 [Chorus]
 O limiar
-O lugar que nao escolhe
+O lugar que não escolhe
 O limiar
 Onde o tempo se recolhe
 Ambas as portas abertas
@@ -3722,7 +3722,7 @@ At the edge of everything`,
   "vida-penumbra/5": `[Verse 1]
 O corpo no topo do salto
 A gravidade em pausa
-Os pulmoes cheios no mais alto
+Os pulmões cheios no mais alto
 Ponto antes da causa
 
 [Chorus]
@@ -3730,8 +3730,8 @@ Suspensa
 Entre dois estados
 Suspensa
 Nos dois lados
-Nao pertenco a noite
-Nao pertenco ao dia
+Não pertenço a noite
+Não pertenço ao dia
 Sou a ponte
 Entre a dor e a alegria
 

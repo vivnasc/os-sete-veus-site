@@ -16,34 +16,34 @@
 export const LIVRO_LYRICS: Record<string, string> = {
 
   "livro-filosofico/1": `[Verse 1]
-Ha uma porta que nao se ve
+Há uma porta que não se ve
 no centro exacto do teu peito
 Ninguem te disse que existia
 ninguem te ensinou o seu jeito
 
 [Verse 2]
-Nao e coragem o que te falta
-nao e forca nem outro livro
-E so parar, largar o peso
+Não e coragem o que te falta
+não e força nem outro livro
+E só parar, largar o peso
 e ouvir o rio que sempre esteve vivo
 
 [Chorus]
-O convite nao vem de fora
-nao chega numa voz alheia
+O convite não vem de fora
+não chega numa voz alheia
 Chega quando finalmente paras
 e descobres que es tu a vela
 
 [Bridge]
-Nao ha mapa para este trilho
-nao ha guia que va a frente
-So a tua respiracao
-e o silencio que consente
+Não há mapa para este trilho
+não há guia que va a frente
+Só a tua respiracao
+e o silêncio que consente
 
 [Outro]
 Entra devagar
 como quem volta a casa
 Tudo o que procuras
-ja tem o teu nome na brasa
+já tem o teu nome na brasa
 `,
 
   "livro-filosofico/2": `[Verse 1]
@@ -80,29 +80,29 @@ the only truth is in the unfolding
   "livro-filosofico/3": `[Verse 1]
 A memoria e uma sala escura
 com cadeiras viradas para tras
-Sentas-te e olhas o que ja foi
-como se pudesses mudar o que ja nao faz
+Sentas-te e olhas o que já foi
+como se pudesses mudar o que já não faz
 
 [Verse 2]
 Cada historia que contas de ti
-tem uma porta que nao abres nunca mais
-O presente bate e tu nao atendes
+tem uma porta que não abres nunca mais
+O presente bate e tu não atendes
 a sala antiga e a que mais te atrai
 
 [Chorus]
 Larga a cadeira, abre a janela
-O presente nao precisa de permissao
-A liberdade nao esta no que viveste
+O presente não precisa de permissao
+A liberdade não esta no que viveste
 esta no que fazes com a respiracao
 
 [Bridge]
-Nao es o que te aconteceu
-nao es a cicatriz no mapa
-Es o corpo que esta aqui agora
+Não es o que te aconteceu
+não es a cicatriz no mapa
+Es o corpo que está aqui agora
 es o ar que entra e que escapa
 
 [Outro]
-O passado ja te deu o que tinha
+O passado já te deu o que tinha
 o presente espera, quieto, por ti
 `,
 
@@ -139,19 +139,19 @@ forever patient, forever true
 
   "livro-filosofico/5": `[Verse 1]
 Aprendeste que parar e morrer
-que o descanso e para os fracos
+que o descanso é para os fracos
 Cada dia uma nova trincheira
 cada noite um novo abaco
 
 [Verse 2]
-Mas ha um cansaco que nao dorme
-que nao cede com ferias nem verao
-Um peso que nao mora no corpo
+Mas há um cansaco que não dorme
+que não cede com ferias nem verao
+Um peso que não mora no corpo
 mora na crenca de que nunca basta o pao
 
 [Chorus]
-Para — nao ha nada a conquistar
-A plenitude nao e uma meta
+Para — não há nada a conquistar
+A plenitude não e uma meta
 Esta aqui, no exacto lugar
 onde largaste a bicicleta
 
@@ -159,12 +159,12 @@ onde largaste a bicicleta
 O esforco encobriu o repouso
 a busca escondeu a chegada
 Tao ocupada a perseguir o sol
-que nao viste a luz na tua sacada
+que não viste a luz na tua sacada
 
 [Outro]
 Senta-te, respira fundo
-A vida nao precisa de mais nada
-So do corpo quieto no chao
+A vida não precisa de mais nada
+Só do corpo quieto no chão
 e da alma desarmada
 `,
 
@@ -208,14 +208,14 @@ com os olhos presos numa entrega
 [Verse 2]
 Mas a linha afasta-se contigo
 e a chegada nunca se apresenta
-Nao porque falhaste o caminho
+Não porque falhaste o caminho
 mas porque o caminhar e a resposta lenta
 
 [Chorus]
-Nao ha destino, nao ha fim
-A consciencia nao tem margem
-Es o oceano, nao a costa
-es o voo — nao a aterragem
+Não há destino, não há fim
+A consciência não tem margem
+Es o oceano, não a costa
+es o voo — não a aterragem
 
 [Bridge]
 Larga a ideia de chegar
@@ -225,9 +225,9 @@ que reflecte a tua pergunta
 
 [Outro]
 Caminha sem destino
-descobre que ja estas
+descobre que já estas
 onde sempre precisaste de estar
-e o caminho sempre foi o compas
+e o caminho sempre foi o compás
 `,
 
   "livro-filosofico/8": `[Verse 1]
@@ -262,34 +262,34 @@ inside the centre of your soul
 `,
 
   "livro-filosofico/9": `[Verse 1]
-Chegaste ao fim que nao e fim
-ao espelho que nao distorce
-Olhas e nao te reconheces
-porque ja nao ha mascara que force
+Chegaste ao fim que não e fim
+ao espelho que não distorce
+Olhas e não te reconheces
+porque já não há máscara que force
 
 [Verse 2]
-Cada veu que atravessaste
+Cada véu que atravessaste
 era uma camada de ti mesma
 O medo, a culpa, a ilusao
 tudo era pele — nada era condena
 
 [Chorus]
-O espelho mostra o que ja era
+O espelho mostra o que já era
 antes de qualquer pergunta minha
 Tudo o que procuraste fora
 vivia dentro — intacto e em linha
 
 [Bridge]
-Nao precisavas de te encontrar
+Não precisavas de te encontrar
 precisavas de parar de fugir
-Nao precisavas de te curar
+Não precisavas de te curar
 precisavas de te deixar existir
 
 [Outro]
 Olha devagar, sem pressa
-O reflexo ja nao mente
+O reflexo já não mente
 Es tu — sempre foste tu
-o principio e o presente
+o princípio e o presente
 `,
 
 };
@@ -305,10 +305,10 @@ export const CURSO_LYRICS: Record<string, string> = {
   // Casa dos Espelhos Dourados
   // ═══════════════════════════════════════════
 
-  "curso-ouro-proprio/1": `[Verse 1]
-Ha uma sala cheia de espelhos
+  "curso-ouro-próprio/1": `[Verse 1]
+Há uma sala cheia de espelhos
 onde o teu valor se reflecte
-Cada moldura tem um preco
+Cada moldura tem um preço
 cada reflexo tem um peso que te infecte
 
 [Verse 2]
@@ -319,15 +319,15 @@ e tu sempre longe da luz
 
 [Chorus]
 Os espelhos estao dourados
-mas o ouro nao e deles
-O que brilha nao e o preco
-o que brilha es tu — sem veus
+mas o ouro não e deles
+O que brilha não e o preço
+o que brilha es tu — sem véus
 
 [Bridge]
 Entra na sala devagar
 deixa os numeros la fora
 Olha para o que se reflecte
-quando o medo nao te ancora
+quando o medo não te ancora
 
 [Outro]
 O territorio do dinheiro
@@ -336,7 +336,7 @@ O ouro sempre esteve dentro
 do peito que abandonavas
 `,
 
-  "curso-ouro-proprio/2": `[Verse 1]
+  "curso-ouro-próprio/2": `[Verse 1]
 The numbers sit there on the page
 like witnesses that cannot lie
 You learned to look the other way
@@ -367,36 +367,36 @@ They're just the footprints of your living
 not the verdict — just the how
 `,
 
-  "curso-ouro-proprio/3": `[Verse 1]
-A tua mae guardava moedas
+  "curso-ouro-próprio/3": `[Verse 1]
+A tua mãe guardava moedas
 dentro de uma lata velha
 O teu pai nunca falou de contas
-o silencio era a sua regra
+o silêncio era a sua regra
 
 [Verse 2]
 Herdaste mais do que dinheiro
 herdaste medo, culpa, escassez
 Uma forma de olhar o mundo
-onde nunca ha o suficiente
+onde nunca há o suficiente
 
 [Chorus]
 A heranca financeira
-nao se conta em notas
+não se conta em notas
 Conta-se no aperto que sentes
 quando decides que mereces mais
 
 [Bridge]
 O dinheiro dos teus pais
-nao precisa ser o teu
+não precisa ser o teu
 Podes honrar a sua historia
 e escrever outra com a tua mao
 
 [Outro]
-As raizes sao tuas
-mas a arvore podes escolher
+As raízes sao tuas
+mas a árvore podes escolher
 `,
 
-  "curso-ouro-proprio/4": `[Verse 1]
+  "curso-ouro-próprio/4": `[Verse 1]
 You were taught that wanting more
 was greedy, selfish, out of line
 That good women live with less
@@ -427,67 +427,67 @@ Like sunlight on an open palm
 it comes to those who let it through
 `,
 
-  "curso-ouro-proprio/5": `[Verse 1]
-O espelho velho ja nao serve
+  "curso-ouro-próprio/5": `[Verse 1]
+O espelho velho já não serve
 o reflexo era de outra era
 Hoje escolhes o que vales
-nao pelo mundo, mas por dentro
+não pelo mundo, mas por dentro
 
 [Verse 2]
-O ouro nao esta na conta
-nao esta no que conquistaste
+O ouro não esta na conta
+não esta no que conquistaste
 Esta na forma como olhas
 para tudo o que criaste
 
 [Chorus]
-O novo espelho nao distorce
-nao te pede que sejas mais
+O novo espelho não distorce
+não te pede que sejas mais
 Reflecte exactamente o que es
-e o que es ja e de mais
+e o que es já e de mais
 
 [Bridge]
 Escolhe o reflexo com cuidado
-nao o que o mundo quer que vejas
-Escolhe o que sabes que e verdade
+não o que o mundo quer que vejas
+Escolhe o que sabes que é verdade
 quando mais ninguem te observa
 
 [Outro]
 O espelho dourado agora es tu
-sem moldura, sem preco, so luz
+sem moldura, sem preço, só luz
 `,
 
   // ═══════════════════════════════════════════
-  // SANGUE E SEDA — "A tua mae, a tua historia"
-  // Arvore das Raizes Visiveis
+  // SANGUE E SEDA — "A tua mãe, a tua historia"
+  // Árvore das Raizes Visiveis
   // ═══════════════════════════════════════════
 
   "curso-sangue-seda/1": `[Verse 1]
-Ha uma arvore que nasceu antes de ti
-com raizes que nao escolheste
+Há uma árvore que nasceu antes de ti
+com raízes que não escolheste
 Cresce no centro do teu peito
 e alimenta-se do que sentes
 
 [Verse 2]
-As raizes vao longe, tao longe
-ate avos que nunca viste
+As raízes vao longe, tao longe
+até avos que nunca viste
 Carregas o peso de historias
 que ninguem te pediu que ouvisse
 
 [Chorus]
-As raizes nao sao correntes
+As raízes não sao correntes
 mesmo quando parecem prender
 Sao a terra de onde vieste
 e podes ama-las e ainda assim crescer
 
 [Bridge]
 Olha para baixo, sem medo
-ve o que te sustenta no chao
-Nem tudo o que e raiz e prisao
-nem tudo o que e antigo e em vao
+ve o que te sustenta no chão
+Nem tudo o que é raiz e prisao
+nem tudo o que é antigo e em vao
 
 [Outro]
 O que veio antes de ti
-tambem te trouxe ate aqui
+também te trouxe até aqui
 `,
 
   "curso-sangue-seda/2": `[Verse 1]
@@ -525,7 +525,7 @@ and learned to hold her own somehow
 O sangue traz mais do que vida
 traz o grito que ela engoliu
 A forma como baixas os olhos
-quando alguem te diz que nao
+quando alguem te diz que não
 
 [Verse 2]
 Herdaste a forma de amar
@@ -534,15 +534,15 @@ Herdaste o corpo que se cala
 e chama a isso de servico
 
 [Chorus]
-O sangue nao e destino
+O sangue não e destino
 e materia, e memoria
 Podes sentir o que ela sentiu
 sem repetir a sua historia
 
 [Bridge]
 O que corre nas tuas veias
-nao te condena, nao te prende
-E a forca de quem veio antes
+não te condena, não te prende
+É a força de quem veio antes
 e agora atraves de ti se estende
 
 [Outro]
@@ -580,32 +580,32 @@ tenderness will find its home
 `,
 
   "curso-sangue-seda/5": `[Verse 1]
-A arvore ja nao sufoca
-as raizes encontraram ordem
+A árvore já não sufoca
+as raízes encontraram ordem
 O que estava emaranhado
 agora respira com o vento
 
 [Verse 2]
-Ha luz entre os ramos velhos
-ha espaco para folhas novas
-O amanhecer nao apaga a noite
+Há luz entre os ramos velhos
+há espaço para folhas novas
+O amanhecer não apaga a noite
 ilumina o que ela guardou
 
 [Chorus]
 Amanhece devagar
-nao ha pressa em recomecar
-A arvore esta reorganizada
-e a sombra ja nao e prisao
+não há pressa em recomecar
+A árvore esta reorganizada
+e a sombra já não e prisao
 
 [Bridge]
 Honras tudo o que viveste
 honras quem veio antes de ti
 Mas agora os ramos sao teus
-e o ceu comeca aqui
+e o céu comeca aqui
 
 [Outro]
-A arvore respira contigo
-raizes na terra, ramos no ar
+A árvore respira contigo
+raízes na terra, ramos no ar
 `,
 
   // ═══════════════════════════════════════════
@@ -615,26 +615,26 @@ raizes na terra, ramos no ar
 
   "curso-arte-inteireza/1": `[Verse 1]
 Comecou devagar, quase sem sentir
-Uma cedencia aqui, um silencio ali
+Uma cedencia aqui, um silêncio ali
 Primeiro foi o gosto, depois a vontade
 Depois o corpo inteiro entregue a metade
 
 [Verse 2]
 Acordaste um dia sem saber quem eras
-Sem opiniao propria, sem fome, sem voz
+Sem opiniao própria, sem fome, sem voz
 O espelho mostrava o rosto de alguem
-que vivia apenas para ser de nos
+que vivia apenas para ser de nós
 
 [Chorus]
-Desaparecer nao e amor
+Desaparecer não e amor
 e o medo vestido de entrega
-Perderes-te no outro nao e dar
+Perderes-te no outro não e dar
 e esquecer quem eras antes da prega
 
 [Bridge]
 Onde estavas quando te perdeste
 em que esquina te calaste enfim
-O amor nao pede que desaparecias
+O amor não pede que desaparecias
 o amor pede que voltes a ti
 
 [Outro]
@@ -676,13 +676,13 @@ roots entwined beneath the air
 `,
 
   "curso-arte-inteireza/3": `[Verse 1]
-Ha um lugar em ti que nao precisa
+Há um lugar em ti que não precisa
 de ninguem para se acender
-Uma sala tua, so tua
-onde habitas sem pedir licenca
+Uma sala tua, só tua
+onde habitas sem pedir licença
 
 [Verse 2]
-Estar inteira nao e estar sozinha
+Estar inteira não e estar sozinha
 e estar presente no que es
 Antes de amar, antes de dar
 saber que existes de uma vez
@@ -691,13 +691,13 @@ saber que existes de uma vez
 Inteira antes de ser par
 completa antes de se dar
 O amor que nasce de quem se tem
-nao precisa de implorar por alguem
+não precisa de implorar por alguem
 
 [Bridge]
 Ninguem te completa, ninguem te parte
-ninguem te da o que ja possuis
-A inteireza nao e orgulho
-e o chao de onde o amor se ergue
+ninguem te da o que já possuis
+A inteireza não e orgulho
+e o chão de onde o amor se ergue
 
 [Outro]
 Es inteira, mesmo quando tremes
@@ -734,7 +734,7 @@ where two whole people dare to stay
 `,
 
   // ═══════════════════════════════════════════
-  // DEPOIS DO FOGO — "Recomecar apos a destruicao"
+  // DEPOIS DO FOGO — "Recomecar após a destruicao"
   // Campo Queimado
   // ═══════════════════════════════════════════
 
@@ -745,28 +745,28 @@ Ficaste no meio do campo
 rodeada de cinza e de tristeza
 
 [Verse 2]
-As maos procuram o que era
+As mãos procuram o que era
 os olhos procuram o que foi
-Mas a paisagem ja e outra
-e o antigo nao volta — ja nao doi
+Mas a paisagem já e outra
+e o antigo não volta — já não dói
 
 [Chorus]
-Cinzas nao sao o fim da historia
+Cinzas não sao o fim da historia
 sao o que resta quando a mentira arde
 O que sobrevive ao fogo
 e o que era verdade — cedo ou tarde
 
 [Bridge]
-Nao tentes reconstruir o mesmo
+Não tentes reconstruir o mesmo
 o que ardeu precisava de arder
 Fica aqui entre as cinzas
-e deixa o chao ensinar-te a ser
+e deixa o chão ensinar-te a ser
 
 [Outro]
 Respira a fumaca que passa
 o ar limpo vem a seguir
 Como a terra depois da chuva
-o chao sabe como florir
+o chão sabe como florir
 `,
 
   "curso-depois-fogo/2": `[Verse 1]
@@ -801,30 +801,30 @@ quiet, patient, and alive
   "curso-depois-fogo/3": `[Verse 1]
 No meio das cinzas aparece
 um verde que ninguem esperava
-Um broto tao pequeno e fragil
-que quase nao se ve na terra
+Um broto tao pequeno e frágil
+que quase não se ve na terra
 
 [Verse 2]
-Nao e a flor que era antes
-nao e a arvore que conhecias
+Não e a flor que era antes
+não e a árvore que conhecias
 E outra coisa, nova, estranha
-com raizes que ainda nao sabias
+com raízes que ainda não sabias
 
 [Chorus]
-O broto nao pede permissao
+O broto não pede permissao
 nasce porque a terra o chama
 Depois do fogo a vida volta
 diferente, quieta, sem drama
 
 [Bridge]
-Nao apresses o que cresce
-nao forces o que nasce agora
+Não apresses o que cresce
+não forces o que nasce agora
 O broto sabe o seu caminho
 mesmo sem sol, mesmo sem hora
 
 [Outro]
-Ha vida onde houve fogo
-ha verde onde houve dor
+Há vida onde houve fogo
+há verde onde houve dor
 `,
 
   "curso-depois-fogo/4": `[Verse 1]
@@ -865,30 +865,30 @@ you're the version that the flames believed through
 
   "curso-olhos-abertos/1": `[Verse 1]
 O nevoeiro e tao espesso
-que as maos nao veem os dedos
-Cada passo e um acto de fe
+que as mãos não veem os dedos
+Cada passo e um acto de fé
 cada direcao um segredo
 
 [Verse 2]
 Ficas parada no cruzamento
 a espera que o caminho fale
-Mas o caminho esta em silencio
+Mas o caminho esta em silêncio
 e o medo cresce em cada vale
 
 [Chorus]
 No nevoeiro ninguem te julga
-ninguem te pede que escolhas ja
+ninguem te pede que escolhas já
 A confusao e temporaria
 o nevoeiro vai levantar
 
 [Bridge]
-Nao forces a clareza agora
+Não forces a clareza agora
 ela vem quando estiveres pronta
 Fica no nevoeiro sem panico
-a vista chega, nao se afugenta
+a vista chega, não se afugenta
 
 [Outro]
-Respira no que nao se ve
+Respira no que não se ve
 o caminho vai aparecer
 `,
 
@@ -922,31 +922,31 @@ the crossroads cannot hold you here
 `,
 
   "curso-olhos-abertos/3": `[Verse 1]
-Ha um vento que empurra o nevoeiro
-devagar, sem violencia
+Há um vento que empurra o nevoeiro
+devagar, sem violência
 A paisagem vai surgindo
-com a paciencia da evidencia
+com a paciência da evidencia
 
 [Verse 2]
 Primeiro vem os contornos
-depois as cores, depois o chao
-A clareza nao chega de repente
+depois as cores, depois o chão
+A clareza não chega de repente
 chega como a respiracao
 
 [Chorus]
-A clareza nao e uma explosao
+A clareza não e uma explosao
 e uma brisa que limpa a vista
-Nao precisas de ver tudo
-so o passo seguinte basta
+Não precisas de ver tudo
+só o passo seguinte basta
 
 [Bridge]
 O nevoeiro esta a levantar
-nao porque forcaste a vista
+não porque forcaste a vista
 Mas porque te deixaste estar
 e a verdade fez-se conquista
 
 [Outro]
-Ja consegues ver o chao
+Já consegues ver o chão
 o proximo passo e teu
 `,
 
@@ -987,32 +987,32 @@ every step will find its wake
   // ═══════════════════════════════════════════
 
   "curso-pele-nua/1": `[Verse 1]
-Ha montanhas nos teus ombros
-ha rios nos teus bracos
+Há montanhas nós teus ombros
+há rios nós teus braços
 Um territorio desconhecido
 que carregas sem olhar para baixo
 
 [Verse 2]
 Viveste anos a fugir do corpo
 a tratar dele como maquina
-Mas o corpo nao e ferramenta
+Mas o corpo não e ferramenta
 e a paisagem onde tudo habita
 
 [Chorus]
-O mapa do corpo nao tem legenda
-so tem sensacoes por nomear
+O mapa do corpo não tem legenda
+só tem sensacoes por nomear
 Passa os dedos por cada linha
 e deixa o corpo falar
 
 [Bridge]
-Onde doi, ha historia
-onde pesa, ha verdade
+Onde dói, há historia
+onde pesa, há verdade
 O corpo guarda o que a mente esquece
-e espera com paciencia e saudade
+e espera com paciência e saudade
 
 [Outro]
 Descobre o que a carne sabe
-o corpo e o teu primeiro lar
+o corpo é o teu primeiro lar
 `,
 
   "curso-pele-nua/2": `[Verse 1]
@@ -1040,14 +1040,14 @@ Not a cure and not an answer
 just attention long overdue
 
 [Outro]
-The skin remembers so you listen
+The skin remembers só you listen
 the body speaks in its own tongue
 Like the earth that knows the season
 every scar is a song unsung
 `,
 
   "curso-pele-nua/3": `[Verse 1]
-Voltar ao corpo e voltar a casa
+Voltar ao corpo é voltar a casa
 depois de anos na estrada
 Abrir a porta devagar
 e encontrar tudo onde estava
@@ -1055,7 +1055,7 @@ e encontrar tudo onde estava
 [Verse 2]
 Os moveis podem ter mudado
 as paredes podem ter rachaduras
-Mas o chao ainda te conhece
+Mas o chão ainda te conhece
 e as janelas ainda te procuram
 
 [Chorus]
@@ -1065,9 +1065,9 @@ E ouvir o sangue a correr
 e chamar-lhe gratidao
 
 [Bridge]
-Nao precisas de corpo perfeito
+Não precisas de corpo perfeito
 precisas de corpo habitado
-Um lugar onde entras de manha
+Um lugar onde entras de manhã
 e sabes que es bem-chegada
 
 [Outro]
@@ -1076,7 +1076,7 @@ ele esperou por ti, sem pressa
 `,
 
   "curso-pele-nua/4": `[Verse 1]
-The search for home led you so far
+The search for home led you só far
 through cities, lovers, changing names
 But home was never in a place
 it lived beneath your skin and veins
@@ -1105,8 +1105,8 @@ the body is where belonging lives
 `,
 
   // ═══════════════════════════════════════════
-  // LIMITE SAGRADO — "Dizer nao sem culpa"
-  // Muralha que Nasce do Chao
+  // LIMITE SAGRADO — "Dizer não sem culpa"
+  // Muralha que Nasce do Chão
   // ═══════════════════════════════════════════
 
   "curso-limite-sagrado/1": `[Verse 1]
@@ -1119,25 +1119,25 @@ e tu ficavas cada vez mais incerta
 Chamavas-lhe generosidade
 chamavas-lhe ser boa pessoa
 Mas o corpo sabia a verdade —
-cada sim custava uma peca tua inteira
+cada sim custava uma peça tua inteira
 
 [Chorus]
 Sem muralha, sem proteccao
 o vento leva tudo o que tens
 A bondade sem limite
-e uma forma de sumir tambem
+e uma forma de sumir também
 
 [Bridge]
-Nao e egoismo ter fronteira
-nao e frieza ter contorno
+Não e egoismo ter fronteira
+não e frieza ter contorno
 E saber que quem tu es
-precisa de espaco para o retorno
+precisa de espaço para o retorno
 
 [Outro]
-O chao onde estavas aberta
+O chão onde estavas aberta
 agora pede uma muralha tua
 Uma linha de luz no barro
-que diz aqui comeco eu — e nao recua
+que diz aqui começo eu — e não recua
 `,
 
   "curso-limite-sagrado/2": `[Verse 1]
@@ -1171,26 +1171,26 @@ your boundary is made of gold
 
   "curso-limite-sagrado/3": `[Verse 1]
 A muralha tem uma porta
-nao e muro, nao e fortaleza
+não e muro, não e fortaleza
 A porta abre-se por dentro
-e so tu tens a certeza
+e só tu tens a certeza
 
 [Verse 2]
-Ha quem entre e te ilumine
-ha quem entre e te diminua
-A porta ensina-te a diferenca
-entre o amor e a ferida crua
+Há quem entre e te ilumine
+há quem entre e te diminua
+A porta ensina-te a diferença
+entre o amor é a ferida crua
 
 [Chorus]
 A porta e o acto mais sagrado
 decidir quem entra, quem fica
-Nao e rejeicao, nao e castigo
+Não e rejeicao, não e castigo
 e a escolha de quem cuida
 
 [Bridge]
-Dizer nao e abrir a porta certa
-dizer nao e proteger o sim
-O limite nao exclui o amor
+Dizer não e abrir a porta certa
+dizer não e proteger o sim
+O limite não exclui o amor
 o limite traz o amor a ti
 
 [Outro]
@@ -1235,33 +1235,33 @@ that says — this ground is sacred stone
   // ═══════════════════════════════════════════
 
   "curso-flores-escuro/1": `[Verse 1]
-A caverna nao tem janelas
-nao tem relogio nem saida
+A caverna não tem janelas
+não tem relógio nem saida
 O escuro e tao completo
-que o corpo esquece que e vida
+que o corpo esquece que é vida
 
 [Verse 2]
-Sentaste-te no chao de pedra
-e deixaste o silencio entrar
-O luto nao pede que fales
-so pede que saibas ficar
+Sentaste-te no chão de pedra
+e deixaste o silêncio entrar
+O luto não pede que fales
+só pede que saibas ficar
 
 [Chorus]
-A caverna nao e castigo
+A caverna não e castigo
 e o lugar onde o luto mora
-Nao se atravessa com pressa
+Não se atravessa com pressa
 atravessa-se devagar — sem hora
 
 [Bridge]
 No escuro total os olhos
 aprendem a ver de outra forma
-Nao com luz mas com presenca
-nao com vista mas com a alma
+Não com luz mas com presença
+não com vista mas com a alma
 
 [Outro]
 Fica na caverna o tempo que precisares
-o escuro nao te vai engolir
-Ate as pedras mais profundas
+o escuro não te vai engolir
+Até as pedras mais profundas
 guardam sementes por abrir
 `,
 
@@ -1296,31 +1296,31 @@ could not extinguish, only deepen
 
   "curso-flores-escuro/3": `[Verse 1]
 No meio do escuro nascem flores
-que ninguem plantou de proposito
-Nao sao rosas nem sao lirios
-sao formas que nao tem nome
+que ninguem plantou de propósito
+Não sao rosas nem sao lirios
+sao formas que não tem nome
 
 [Verse 2]
 A beleza que cresce no luto
-nao e bonita como um jardim
+não e bonita como um jardim
 E bonita como uma cicatriz
 que te lembra que sobreviveste a ti
 
 [Chorus]
 Flores no escuro, flores sem sol
-beleza que nao pede aplausos
+beleza que não pede aplausos
 Crescem porque a vida insiste
-mesmo quando tu ja nao ousas
+mesmo quando tu já não ousas
 
 [Bridge]
-Nao arranques o que nasce
-nao digas que e cedo de mais
+Não arranques o que nasce
+não digas que é cedo de mais
 As flores do luto sao sagradas
 sao a prova de que ainda es capaz
 
 [Outro]
 Deixa florescer o que cresce
-o escuro tambem sabe criar
+o escuro também sabe criar
 `,
 
   "curso-flores-escuro/4": `[Verse 1]
@@ -1357,21 +1357,21 @@ the garden lives because you stayed
   // Caminho de Pedras
   // ═══════════════════════════════════════════
 
-  "curso-peso-chao/1": `[Verse 1]
-Ha pedras nos teus ombros
-que carregas ha tanto tempo
-que ja nao sabes se sao tuas
+  "curso-peso-chão/1": `[Verse 1]
+Há pedras nós teus ombros
+que carregas há tanto tempo
+que já não sabes se sao tuas
 ou se nasceste com o peso
 
 [Verse 2]
 Uma pedra e a expectativa
 outra e a promessa que fizeste
 Outra e a culpa de quem partiu
-e outra e o amor que nao te deveste
+e outra e o amor que não te deveste
 
 [Chorus]
-As pedras pesam mas nao falam
-nao te pedem que as carregues
+As pedras pesam mas não falam
+não te pedem que as carregues
 Es tu que decides o peso
 es tu que decides se segues
 
@@ -1386,7 +1386,7 @@ O caminho esta cheio de pedras
 mas nenhuma te pertence por lei
 `,
 
-  "curso-peso-chao/2": `[Verse 1]
+  "curso-peso-chão/2": `[Verse 1]
 Your spine has curved beneath the load
 your shoulders lean into the wind
 You walk as if the ground might break
@@ -1417,36 +1417,36 @@ Your spine remembers standing tall
 like a tree remembers sky and wind
 `,
 
-  "curso-peso-chao/3": `[Verse 1]
+  "curso-peso-chão/3": `[Verse 1]
 A primeira pedra que pousaste
 fez um som que te assustou
 Tao habituada ao peso estavas
-que o alivio te apavorou
+que o alívio te apavorou
 
 [Verse 2]
 Depois veio a segunda pedra
-e a terceira e a quarta tambem
-O chao recebeu-as sem julgamento
-o chao nao pergunta de onde vem
+e a terceira e a quarta também
+O chão recebeu-as sem julgamento
+o chão não pergunta de onde vem
 
 [Chorus]
-Pousar nao e abandonar
-pousar e devolver a terra
-O que nao e teu nao te protege
-o que nao e teu so te enterra
+Pousar não e abandonar
+pousar é devolver a terra
+O que não e teu não te protege
+o que não e teu só te enterra
 
 [Bridge]
-Nao precisas de largar tudo
-comeca por uma so pedra
+Não precisas de largar tudo
+comeca por uma só pedra
 Sente o ombro que se levanta
 sente o ar que entra com a entrega
 
 [Outro]
-O chao aceita o que pousares
+O chão aceita o que pousares
 e tu aceitas ser mais leve
 `,
 
-  "curso-peso-chao/4": `[Verse 1]
+  "curso-peso-chão/4": `[Verse 1]
 The stones lie scattered on the ground
 like monuments to what you bore
 Your shoulders rise, your lungs expand
@@ -1483,32 +1483,32 @@ the stones remain but you do not
   "curso-voz-dentro/1": `[Verse 1]
 A sala esta vazia como o mar
 as paredes esperam um som
-Sentaste-te no centro do silencio
-e o silencio fez-se teu tom
+Sentaste-te no centro do silêncio
+e o silêncio fez-se teu tom
 
 [Verse 2]
-Ha quanto tempo nao te ouves
-ha quanto tempo falas so
+Há quanto tempo não te ouves
+há quanto tempo falas só
 Com palavras emprestadas
 com a voz de todos menos tu no po
 
 [Chorus]
-O silencio nao e ausencia
-e o espaco antes da verdade
-A sala vazia nao esta vazia
+O silêncio não e ausência
+e o espaço antes da verdade
+A sala vazia não esta vazia
 esta cheia da tua vontade
 
 [Bridge]
-Nao forces o primeiro som
+Não forces o primeiro som
 ele vem quando estiveres pronta
-O silencio nao e inimigo
+O silêncio não e inimigo
 e o ventre da tua resposta
 
 [Outro]
 A sala espera sem pressa
 o primeiro som sera teu
 Como a chuva que espera a nuvem
-a tua voz espera o teu ceu
+a tua voz espera o teu céu
 `,
 
   "curso-voz-dentro/2": `[Verse 1]
@@ -1547,15 +1547,15 @@ Por baixo do tom que usavas
 para agradar, para ser aceite
 
 [Verse 2]
-Nao e grave nem aguda
-nao e forte nem delicada
-E a voz que sai quando nao pensas
+Não e grave nem aguda
+não e forte nem delicada
+É a voz que sai quando não pensas
 a que emerge desarmada
 
 [Chorus]
-A tua voz nao precisa de ensaio
-nao precisa de palco nem plateia
-Precisa so de te ouvires
+A tua voz não precisa de ensaio
+não precisa de palco nem plateia
+Precisa só de te ouvires
 sem te corrigires, sem meia
 
 [Bridge]
@@ -1601,39 +1601,39 @@ sing, because the song is you
 `,
 
   // ═══════════════════════════════════════════
-  // O FIO INVISIVEL — "A ligacao entre todos nos"
+  // O FIO INVISIVEL — "A ligacao entre todos nós"
   // Lago dos Reflexos Partilhados
   // ═══════════════════════════════════════════
 
   "curso-fio-invisivel/1": `[Verse 1]
 O lago esta parado como vidro
-a superficie nao mostra nada
+a superficie não mostra nada
 Sozinha na margem do mundo
 sem reflexo e sem pegada
 
 [Verse 2]
 Acreditaste que eras ilha
-que o teu caminho era so teu
-Mas por baixo da agua escura
-ha fios que o silencio teceu
+que o teu caminho era só teu
+Mas por baixo da água escura
+há fios que o silêncio teceu
 
 [Chorus]
 Superficie opaca
-que esconde o que nos liga
+que esconde o que nós liga
 Um fio invisivel
 que nenhuma distancia obriga
 
 [Bridge]
-Nao precisas de o ver
+Não precisas de o ver
 para saber que ele existe
-O fio entre nos dois
+O fio entre nós dois
 e anterior a qualquer triste
 
 [Outro]
 O lago espera
-que olhes para a agua
+que olhes para a água
 e descubras que nunca estiveste
-tao so como a sombra te agua
+tao só como a sombra te água
 `,
 
   "curso-fio-invisivel/2": `[Verse 1]
@@ -1666,25 +1666,25 @@ and feel who answers on the other side
 `,
 
   "curso-fio-invisivel/3": `[Verse 1]
-Na agua transparente
-vejo o rosto da minha avo
-Ao lado, o da minha mae
-e ao fundo, o da filha que nao tenho
+Na água transparente
+vejo o rosto da minha avó
+Ao lado, o da minha mãe
+e ao fundo, o da filha que não tenho
 
 [Verse 2]
 Geracoes no mesmo lago
-cada uma com o seu veu
-Mas o fio que nos liga
-e mais antigo que qualquer ceu
+cada uma com o seu véu
+Mas o fio que nós liga
+e mais antigo que qualquer céu
 
 [Chorus]
 Reflexos de quem veio antes
 reflexos de quem vem depois
 O lago guarda todas
-e nao distingue as nossas vozes
+e não distingue as nossas vozes
 
 [Outro]
-Somos todas a mesma agua
+Somos todas a mesma água
 em corpos diferentes
 O lago sabe isso
 desde sempre
@@ -1728,15 +1728,15 @@ and it lives inside the heart
 
   "curso-espelho-outro/1": `[Verse 1]
 Na galeria escura os rostos
-brilham como velas nos espelhos
+brilham como velas nós espelhos
 Procuro-me em cada moldura
 e encontro apenas os teus gestos velhos
 
 [Verse 2]
 O que me irrita em ti
-e o que nao aceito em mim
+e o que não aceito em mim
 O que admiro no teu olhar
-e o que ainda nao deixei sair
+e o que ainda não deixei sair
 
 [Chorus]
 Galeria escura
@@ -1748,7 +1748,7 @@ vive dentro de mim — tao velho
 Antes de julgar o outro
 olha para o que te mostra de ti
 Como o lago reflecte a margem
-o outro reflecte o que ha em mim
+o outro reflecte o que há em mim
 `,
 
   "curso-espelho-outro/2": `[Verse 1]
@@ -1782,7 +1782,7 @@ is the bravest place to start
 
   "curso-espelho-outro/3": `[Verse 1]
 Os espelhos ficam claros
-o outro ja nao me define
+o outro já não me define
 Vejo-me com os meus contornos
 sem precisar que ninguem me alinhe
 
@@ -1795,12 +1795,12 @@ tornou-se integracao
 [Chorus]
 Integracao
 o outro como contexto
-nao como identidade
+não como identidade
 O espelho mostra-me inteira
 com toda a minha verdade
 
 [Outro]
-Ja nao preciso do outro
+Já não preciso do outro
 para saber quem sou
 O espelho limpo mostra
 o que sempre esteve no meu fundo
@@ -1838,11 +1838,11 @@ who finally knows her name
 `,
 
   // ═══════════════════════════════════════════
-  // O SILENCIO QUE GRITA — "O que nunca foi dito"
+  // O SILÊNCIO QUE GRITA — "O que nunca foi dito"
   // Caverna dos Ecos Mudos
   // ═══════════════════════════════════════════
 
-  "curso-silencio-grita/1": `[Verse 1]
+  "curso-silêncio-grita/1": `[Verse 1]
 A caverna e silenciosa
 mas as paredes tem marcas
 Palavras que nunca foram ditas
@@ -1851,7 +1851,7 @@ vivem como sombras nas arcas
 [Verse 2]
 A tua familia calou
 o que devia ter gritado
-E tu herdaste o silencio
+E tu herdaste o silêncio
 como quem herda um legado
 
 [Chorus]
@@ -1861,13 +1861,13 @@ O que nunca foi dito
 pesa mais que mil excessos
 
 [Outro]
-O silencio da familia
-nao e paz — e medo antigo
+O silêncio da familia
+não e paz — e medo antigo
 Um rio que corre por baixo
 e espera por quem lhe de abrigo
 `,
 
-  "curso-silencio-grita/2": `[Verse 1]
+  "curso-silêncio-grita/2": `[Verse 1]
 The first word cracks the silence
 like a stone against the wall
 It echoes through the cavern
@@ -1898,10 +1898,10 @@ The first word held more courage
 than the silence held at all
 `,
 
-  "curso-silencio-grita/3": `[Verse 1]
+  "curso-silêncio-grita/3": `[Verse 1]
 Os ecos tornam-se dourados
 as paredes comecam a vibrar
-O que era silencio pesado
+O que era silêncio pesado
 transforma-se em voz a cantar
 
 [Verse 2]
@@ -1918,12 +1918,12 @@ e a mesma que a familia aprisiona
 
 [Outro]
 As palavras libertadas
-nao destroem — iluminam
+não destroem — iluminam
 O que era medo de falar
-tornou-se forca que germina
+tornou-se força que germina
 `,
 
-  "curso-silencio-grita/4": `[Verse 1]
+  "curso-silêncio-grita/4": `[Verse 1]
 The walls are singing golden now
 the echoes freed at last
 Each word illuminates the shadow
@@ -1974,14 +1974,14 @@ tinhas de te deixar de amar
 [Chorus]
 Fios presos que sufocam
 quem pertence e quem se esquece
-A teia sem espaco livre
-e uma prisao que nao parece
+A teia sem espaço livre
+e uma prisao que não parece
 
 [Outro]
-Pertencer nao devia custar
+Pertencer não devia custar
 a pessoa que tu es
-Como a arvore pertence ao bosque
-sem perder as proprias raizes dos pes
+Como a árvore pertence ao bosque
+sem perder as proprias raízes dos pés
 `,
 
   "curso-teia/2": `[Verse 1]
@@ -2021,7 +2021,7 @@ cada pertenca sem dores
 
 [Verse 2]
 Estas no centro e estas livre
-ligada mas nao perdida
+ligada mas não perdida
 O bosque brilha a tua volta
 e a teia sustenta a vida
 
@@ -2070,7 +2070,7 @@ and I belong
 `,
 
   // ═══════════════════════════════════════════
-  // A CHAMA — "A raiva como forca"
+  // A CHAMA — "A raiva como força"
   // Vulcao Adormecido
   // ═══════════════════════════════════════════
 
@@ -2084,7 +2084,7 @@ a pressao cresce dia a dia
 Ensinaram-te que a raiva
 e feia, perigosa e ma
 Entao engoliste o fogo
-e chamaste-lhe calma — mas nao esta
+e chamaste-lhe calma — mas não esta
 
 [Chorus]
 Selado, selado
@@ -2093,8 +2093,8 @@ A raiva escondida
 e a que mais te vai corroer
 
 [Outro]
-O fogo nao desaparece
-so porque fechas os olhos
+O fogo não desaparece
+só porque fechas os olhos
 Arde por dentro como brasa
 debaixo de tantos refolhos
 `,
@@ -2132,24 +2132,24 @@ that lives inside your heart
 
   "curso-chama/3": `[Verse 1]
 A lava flui em canais
-controlada, nao destruida
+controlada, não destruida
 O fogo agora ilumina
 a paisagem da tua vida
 
 [Verse 2]
-A raiva nao e o contrario do amor
-a raiva e a guarda do que importa
-Sem fogo nao ha limites
-sem chama nao ha porta
+A raiva não e o contrario do amor
+a raiva é a guarda do que importa
+Sem fogo não há limites
+sem chama não há porta
 
 [Chorus]
 Fogo controlado
 que ilumina em vez de queimar
 A raiva como aliada
-que te ensina a nao calar
+que te ensina a não calar
 
 [Outro]
-O vulcao nao explode
+O vulcao não explode
 quando o deixas respirar
 O fogo controlado
 e o mais bonito de guardar
@@ -2191,11 +2191,11 @@ not women dimming their own light
   // Ninho que Pesa
   // ═══════════════════════════════════════════
 
-  "curso-mulher-mae/1": `[Verse 1]
+  "curso-mulher-mãe/1": `[Verse 1]
 O ninho cresceu a tua volta
-ate nao se ver mais nada
-So a mae — nunca a mulher
-so o dar — nunca a chegada
+até não se ver mais nada
+Só a mãe — nunca a mulher
+só o dar — nunca a chegada
 
 [Verse 2]
 Desapareceste dentro do cuidar
@@ -2206,17 +2206,17 @@ respondias com o nome dos filhos — nunca o teu luar
 [Chorus]
 Ninho pesado
 que engole quem tu eras
-A mae comeu a mulher
+A mãe comeu a mulher
 e ninguem notou a perda
 
 [Outro]
-Ha uma mulher por baixo da mae
+Há uma mulher por baixo da mãe
 e ela ainda respira
 Como uma raiz debaixo da neve
 espera a primavera que a inspira
 `,
 
-  "curso-mulher-mae/2": `[Verse 1]
+  "curso-mulher-mãe/2": `[Verse 1]
 Before the nest there was a woman
 with desires of her own
 With dreams that had no children in them
@@ -2245,17 +2245,17 @@ Remember her
 she remembers you
 `,
 
-  "curso-mulher-mae/3": `[Verse 1]
+  "curso-mulher-mãe/3": `[Verse 1]
 Duas formas no mesmo corpo
-mae e mulher ao mesmo tempo
-Nao e preciso escolher
-nao e preciso ter medo
+mãe e mulher ao mesmo tempo
+Não e preciso escolher
+não e preciso ter medo
 
 [Verse 2]
-O ninho agora tem espaco
-para quem cuida e para quem e
-A mae nao apaga a mulher
-a mulher nao apaga a mae
+O ninho agora tem espaço
+para quem cuida e para quem é
+A mãe não apaga a mulher
+a mulher não apaga a mãe
 
 [Chorus]
 Duas formas
@@ -2264,13 +2264,13 @@ Coexistencia bonita
 sem culpa, sem fronteira
 
 [Outro]
-Nao es so mae
-nao es so mulher
+Não es só mãe
+não es só mulher
 Es as duas coisas
-e isso e o teu poder
+e isso é o teu poder
 `,
 
-  "curso-mulher-mae/4": `[Verse 1]
+  "curso-mulher-mãe/4": `[Verse 1]
 The nest is whole and beautiful
 with space enough for all of me
 The mother and the woman
@@ -2304,33 +2304,33 @@ lives a world without amen
 `,
 
   // ═══════════════════════════════════════════
-  // O OFICIO DE SER — "Trabalho com proposito"
+  // O OFICIO DE SER — "Trabalho com propósito"
   // Oficina Infinita
   // ═══════════════════════════════════════════
 
   "curso-oficio-ser/1": `[Verse 1]
-As maquinas nao param
-o ritmo nao e teu
+As maquinas não param
+o ritmo não e teu
 A oficina escura e sem janela
-e tu ja nem sabes o que era teu
+e tu já nem sabes o que era teu
 
 [Verse 2]
-Trabalhas ate cair
+Trabalhas até cair
 levantas-te e trabalhas mais
 O valor mede-se em horas
 e a exaustao mede-se em sinais
 
 [Chorus]
 Maquinas, maquinas
-que nao param de girar
-O oficio sem proposito
+que não param de girar
+O oficio sem propósito
 e uma forma lenta de apagar
 
 [Outro]
 A oficina sem janela
 e uma prisao que pagas tu
-Mas ha uma porta escondida
-e do outro lado ha ceu e ha luz
+Mas há uma porta escondida
+e do outro lado há céu e há luz
 `,
 
   "curso-oficio-ser/2": `[Verse 1]
@@ -2366,25 +2366,25 @@ through everything unchecked
 
   "curso-oficio-ser/3": `[Verse 1]
 A oficina agora tem ritmo
-um ritmo que e teu e de mais ninguem
+um ritmo que é teu e de mais ninguem
 A janela esta entreaberta
-e la fora ha alguem
+e la fora há alguem
 
 [Verse 2]
 Trabalhas porque queres
-nao porque deves ou tens medo
-O oficio e presenca
-nao e uma fuga nem um degredo
+não porque deves ou tens medo
+O oficio e presença
+não e uma fuga nem um degredo
 
 [Chorus]
-Ritmo proprio
+Ritmo próprio
 da oficina com janela
 Trabalhar sem prisao
 e a mais bonita sentinela
 
 [Outro]
-O proposito nao e o produto
-e a presenca no fazer
+O propósito não e o produto
+e a presença no fazer
 O oficio mais sagrado
 e o oficio de ser
 `,
@@ -2421,36 +2421,36 @@ I am enough, and that is why
 `,
 
   // ═══════════════════════════════════════════
-  // O RELOGIO PARTIDO — "Libertar-se do tempo"
+  // O RELÓGIO PARTIDO — "Libertar-se do tempo"
   // Jardim das Estacoes
   // ═══════════════════════════════════════════
 
-  "curso-relogio/1": `[Verse 1]
-O relogio e gigante
+  "curso-relógio/1": `[Verse 1]
+O relógio e gigante
 e governa o jardim
 As flores nascem e morrem
 num segundo sem fim
 
 [Verse 2]
-Corres de estacao em estacao
+Corres de estação em estação
 sem parar para ver
 A primavera vira outono
 antes de a poderes viver
 
 [Chorus]
-Relogio gigante
+Relógio gigante
 que aprisiona o presente
 Vives a correr do tempo
 e o tempo vive-te na mente
 
 [Outro]
-O jardim existe sem o relogio
+O jardim existe sem o relógio
 foste tu que esqueceste
-Que as flores nao precisam de horas
-precisam so de quem as veste
+Que as flores não precisam de horas
+precisam só de quem as veste
 `,
 
-  "curso-relogio/2": `[Verse 1]
+  "curso-relógio/2": `[Verse 1]
 The clock is cracking now
 its hands are slowing down
 The flowers pause mid-bloom
@@ -2481,8 +2481,8 @@ the garden doesn't need the clock
 to know when flowers wake
 `,
 
-  "curso-relogio/3": `[Verse 1]
-O relogio partiu
+  "curso-relógio/3": `[Verse 1]
+O relógio partiu
 e as estacoes coexistem
 Primavera e outono lado a lado
 e ambas insistem
@@ -2491,22 +2491,22 @@ e ambas insistem
 Sentada no jardim
 sem pressa de chegar
 Todas as estacoes sao agora
-e agora e o unico lugar
+e agora e o único lugar
 
 [Chorus]
 Estacoes juntas
 sem ordem nem calendario
-O jardim sem relogio
+O jardim sem relógio
 e o mais bonito santuario
 
 [Outro]
-O tempo nao e inimigo
+O tempo não e inimigo
 quando deixas de o perseguir
 O presente e tudo o que tens
 e tudo o que podes sentir
 `,
 
-  "curso-relogio/4": `[Verse 1]
+  "curso-relógio/4": `[Verse 1]
 No clock, no rush, no running
 the garden breathes in time
 All seasons live together
@@ -2538,7 +2538,7 @@ and neither now does me
 `,
 
   // ═══════════════════════════════════════════
-  // A COROA ESCONDIDA — "O poder que e teu"
+  // A COROA ESCONDIDA — "O poder que é teu"
   // Trono Coberto
   // ═══════════════════════════════════════════
 
@@ -2549,22 +2549,22 @@ Pequena e encolhida
 viras-lhe as costas cedo
 
 [Verse 2]
-Nao sabes que e teu
+Não sabes que é teu
 ninguem te disse que era
 O poder assusta mais
-quando nao sabes que te espera
+quando não sabes que te espera
 
 [Chorus]
 Trono coberto
 na sala mais escura
-O poder que e teu
+O poder que é teu
 escondido numa moldura
 
 [Outro]
-O trono nao desaparece
-so porque nao olhas para ele
-Como a lua nao se apaga
-so porque fechas a janela dele
+O trono não desaparece
+só porque não olhas para ele
+Como a lua não se apaga
+só porque fechas a janela dele
 `,
 
   "curso-coroa/2": `[Verse 1]
@@ -2599,27 +2599,27 @@ who can choose to take a seat tonight
 `,
 
   "curso-coroa/3": `[Verse 1]
-De pe junto ao trono
-hesitas, mas nao foges
+De pé junto ao trono
+hesitas, mas não foges
 A mao estende-se devagar
-o poder ja nao te corroi
+o poder já não te corroi
 
 [Verse 2]
-Nao e arrogancia
-nao e vaidade nem excesso
+Não e arrogancia
+não e vaidade nem excesso
 E saber que mereces
-sem pedir licenca nem processo
+sem pedir licença nem processo
 
 [Chorus]
 Hesitacao
-entre o medo e a grandeza
+entre o medo é a grandeza
 A coroa pesa menos
 do que o medo da tua inteireza
 
 [Outro]
 Sentar-se no trono
-nao e tomar o que e dos outros
-E ocupar o que e teu
+não e tomar o que é dos outros
+E ocupar o que é teu
 sem pedir desculpa ao mundo
 `,
 
@@ -2655,18 +2655,18 @@ was the closing of your doors
 `,
 
   // ═══════════════════════════════════════════
-  // A FOME — "O corpo e a fome"
+  // A FOME — "O corpo é a fome"
   // Mesa Vazia
   // ═══════════════════════════════════════════
 
   "curso-fome/1": `[Verse 1]
 A mesa esta vazia
-o prato nao tem nada
-Sentada em frente ao silencio
+o prato não tem nada
+Sentada em frente ao silêncio
 faminta e calada
 
 [Verse 2]
-A fome nao e de comida
+A fome não e de comida
 e de algo sem nome
 Comes para encher o vazio
 e o vazio come-te e some
@@ -2674,12 +2674,12 @@ e o vazio come-te e some
 [Chorus]
 Mesa vazia
 fome sem fundo
-Comes o que nao precisas
-para nao sentir o mundo
+Comes o que não precisas
+para não sentir o mundo
 
 [Outro]
 A fome mais antiga
-nao se mata com comida
+não se mata com comida
 Mata-se com o nome certo
 e a coragem de ser ouvida
 `,
@@ -2718,12 +2718,12 @@ becomes a conscious landscape
   "curso-fome/3": `[Verse 1]
 Comer com atencao
 sem culpa, sem pressa
-Cada garfada e presenca
+Cada garfada e presença
 cada sabor e uma promessa
 
 [Verse 2]
-O corpo nao e inimigo
-o apetite nao e defeito
+O corpo não e inimigo
+o apetite não e defeito
 Comer e um acto de amor
 quando e feito com respeito
 
@@ -2737,7 +2737,7 @@ sem o medo de ser todo
 A mesa agora tem comida
 e a comida tem sabor
 Comes porque mereces
-e nao ha nada de menor
+e não há nada de menor
 `,
 
   "curso-fome/4": `[Verse 1]
