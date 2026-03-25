@@ -1015,6 +1015,26 @@ const COSMIC_VIAGEM: AlbumDef = {
   ],
 };
 
+const COSMIC_ORBITA: AlbumDef = {
+  slug: "cosmic-orbita",
+  title: "Órbita",
+  subtitle: "As forças invisíveis que nos movem. Ciclos, hábitos, gravidade.",
+  product: "cosmic",
+  color: "#1a0a2e",
+  tracks: [
+    { number: 1, title: "Ciclo", description: "Repetir os mesmos erros como planetas na mesma rota", lang: "PT", energy: "steady", prompt: cosmicPrompt("repeating patterns, orbiting the same mistakes, cycles as planetary motion", "circular, restless, self-aware, resigned", "circular melodic motif, steady rhythm, warm vocal, looping textures", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "Pull", description: "Ser puxada por algo que não se vê", lang: "EN", energy: "steady", prompt: cosmicPrompt("invisible pull, being drawn by forces you cannot name", "magnetic, yearning, surrendering, curious", "deep bass pull, warm strings, intimate vocal, building tension", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Lua", description: "A lua como metáfora das marés internas", lang: "PT", energy: "whisper", prompt: cosmicPrompt("the moon controlling inner tides, menstrual cycles, emotional rhythms", "tidal, feminine, ancient, surrendered", "soft piano, tidal swells, intimate vocal, moonlit production", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "The Same Door", description: "Entrar sempre pela mesma porta", lang: "EN", energy: "steady", prompt: cosmicPrompt("always choosing the same door, same patterns in love, inherited orbits", "wry, honest, compassionate, self-aware", "acoustic guitar, walking rhythm, conversational vocal, warm", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Rota", description: "A rota que o corpo segue sem a mente saber", lang: "PT", energy: "pulse", prompt: cosmicPrompt("the body's secret route, feet that know the way, body GPS", "driven, embodied, unstoppable, honest", "driving rhythm, bass-forward, determined vocal, forward motion", "PT", "pulse"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "Tides", description: "Marés internas que sobem e descem sem controlo", lang: "EN", energy: "whisper", prompt: cosmicPrompt("internal tides, emotional swelling and emptying, trusting the rhythm", "fluid, patient, trusting, cyclical", "swelling pads, tidal dynamics, patient vocal, wave-like production", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "Repetição", description: "A beleza e o terror de repetir", lang: "PT", energy: "steady", prompt: cosmicPrompt("repetition as cosmic patience, the universe repeating until we hear", "patient, spiralling, deepening, hopeful", "looping motif that evolves, layered vocal, building warmth", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 8, title: "Orbit", description: "Orbitar alguém como um planeta orbita o sol", lang: "EN", energy: "raw", prompt: cosmicPrompt("orbiting someone you love from a distance, devotion without contact", "lonely, devoted, accepting, vast", "sparse, spacious, raw vocal, distant piano, orbital atmosphere", "EN", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 9, title: "O Que Me Puxa", description: "A força invisível, a gravidade do que não resolvi", lang: "PT", energy: "raw", prompt: cosmicPrompt("the invisible pull of unresolved grief, gravity of what was never mourned", "heavy, surrendering, brave, descending", "minimal, deep bass, raw close-mic vocal, descent into stillness", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 10, title: "Return", description: "Voltar sempre ao mesmo ponto, mas diferente", lang: "EN", energy: "anthem", prompt: cosmicPrompt("returning to the same place but changed, spiral not circle", "wise, triumphant, peaceful, arrived", "building from minimal to full, anthemic climax, powerful vocal, resolution", "EN", "anthem"), durationSeconds: 300, audioUrl: null },
+  ],
+};
+
 const COSMIC_ETER: AlbumDef = {
   slug: "cosmic-eter",
   title: "Éter",
@@ -1116,6 +1136,7 @@ export const ALL_ALBUMS: Album[] = [
   // Cosmic
   COSMIC_VIAGEM,
   COSMIC_ETER,
+  COSMIC_ORBITA,
 ].map(applyLyrics);
 
 // Helpers
