@@ -13,7 +13,7 @@ import { requireAdmin } from "@/lib/admin-auth";
  * Non-custom mode: prompt=free description
  */
 
-const MAX_STYLE_LENGTH = 400; // API.box accepts up to 500
+const MAX_STYLE_LENGTH = 200; // Keep concise — longer styles can cause short songs
 const MAX_RETRIES = 2;
 const RETRY_DELAY_MS = 3000;
 
@@ -62,7 +62,9 @@ async function callSunoApi(
     "Content-Type": "application/json",
   };
 
-  console.log("[suno/generate] sending:", JSON.stringify(body).slice(0, 600));
+  console.log("[suno/generate] prompt length:", body.prompt ? String(body.prompt).length : 0, "style length:", body.style ? String(body.style).length : 0, "model:", body.model);
+  console.log("[suno/generate] style:", body.style);
+  console.log("[suno/generate] prompt (first 500):", String(body.prompt).slice(0, 500));
 
   // Try /api/suno/submit/music first, fallback to /api/v1/generate
   let res = await fetch(`${apiUrl}/api/suno/submit/music`, {
