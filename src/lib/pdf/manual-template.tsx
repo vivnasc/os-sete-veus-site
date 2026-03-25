@@ -25,6 +25,7 @@ import type {
 
 // ─── FONTS ─────────────────────────────────────────────────────────────────
 
+// Cormorant Garamond via Google Fonts (production)
 Font.register({
   family: "Cormorant",
   fonts: [
@@ -47,6 +48,34 @@ Font.register({
     },
   ],
 });
+
+// Liberation Serif (local fallback — metrically equivalent to Times)
+Font.register({
+  family: "SerifFallback",
+  fonts: [
+    {
+      src: "/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf",
+      fontWeight: 400,
+    },
+    {
+      src: "/usr/share/fonts/truetype/liberation/LiberationSerif-Italic.ttf",
+      fontWeight: 400,
+      fontStyle: "italic",
+    },
+    {
+      src: "/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf",
+      fontWeight: 600,
+    },
+    {
+      src: "/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf",
+      fontWeight: 700,
+    },
+  ],
+});
+
+// Use Cormorant in production, SerifFallback locally
+const FONT_FAMILY =
+  process.env.NODE_ENV === "production" ? "Cormorant" : "SerifFallback";
 
 // ─── COLORS ────────────────────────────────────────────────────────────────
 
@@ -72,7 +101,7 @@ const s = StyleSheet.create({
     paddingTop: 60,
     paddingBottom: 70,
     paddingHorizontal: 50,
-    fontFamily: "Cormorant",
+    fontFamily: FONT_FAMILY,
     color: C.creme,
   },
 

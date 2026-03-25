@@ -21,7 +21,7 @@
 | Imagens de referencia | PARCIAL | ~60 imagens em `CURSOS/imagens/` |
 | **Scripts das aulas** | **EM CURSO** | **24/480 scripts escritos (Ouro Proprio completo — DRAFT)** |
 | **Manuais (PDF)** | **EM CURSO** | **1/20 manuais escritos (Ouro Proprio — DRAFT) + pipeline PDF** |
-| **Cadernos exercicios** | **NAO INICIADO** | 0/160 cadernos escritos |
+| **Cadernos exercicios** | **EM CURSO** | **8/160 cadernos escritos (Ouro Proprio — DRAFT)** |
 | **Scripts YouTube** | **NAO INICIADO** | 0/~50 scripts (so titulos existem) |
 | Audios (ElevenLabs) | NAO INICIADO | Depende dos scripts |
 | Visuais (ThinkDiffusion) | NAO INICIADO | Depende do LoRA + scripts |
@@ -75,14 +75,14 @@ Razao: porta universal — dinheiro e o tema mais activador.
 
 | Modulo | Titulo | Scripts | Manual | Caderno | Audio | Visual |
 |--------|--------|---------|--------|---------|-------|--------|
-| 1 | O Extracto como Espelho | DRAFT (3/3) | DRAFT | — | — | — |
-| 2 | A Heranca Financeira Emocional | DRAFT (3/3) | DRAFT | — | — | — |
-| 3 | A Vergonha do Dinheiro | DRAFT (3/3) | DRAFT | — | — | — |
-| 4 | Cobrar, Receber, Merecer | DRAFT (3/3) | DRAFT | — | — | — |
-| 5 | Gastar em Ti | DRAFT (3/3) | DRAFT | — | — | — |
-| 6 | Dinheiro e Relacoes | DRAFT (3/3) | DRAFT | — | — | — |
-| 7 | Ganhar Mais Nao Resolve | DRAFT (3/3) | DRAFT | — | — | — |
-| 8 | Dinheiro como Liberdade | DRAFT (3/3) | DRAFT | — | — | — |
+| 1 | O Extracto como Espelho | DRAFT (3/3) | DRAFT | DRAFT | — | — |
+| 2 | A Heranca Financeira Emocional | DRAFT (3/3) | DRAFT | DRAFT | — | — |
+| 3 | A Vergonha do Dinheiro | DRAFT (3/3) | DRAFT | DRAFT | — | — |
+| 4 | Cobrar, Receber, Merecer | DRAFT (3/3) | DRAFT | DRAFT | — | — |
+| 5 | Gastar em Ti | DRAFT (3/3) | DRAFT | DRAFT | — | — |
+| 6 | Dinheiro e Relacoes | DRAFT (3/3) | DRAFT | DRAFT | — | — |
+| 7 | Ganhar Mais Nao Resolve | DRAFT (3/3) | DRAFT | DRAFT | — | — |
+| 8 | Dinheiro como Liberdade | DRAFT (3/3) | DRAFT | DRAFT | — | — |
 
 Legenda: — = nao iniciado | DRAFT = rascunho | APROVADO = Vivianne aprovou | PRODUZIDO = asset gerado
 
@@ -137,7 +137,7 @@ Os 24 scripts e o manual do Ouro Proprio estao em DRAFT. A Vivianne deve reve-lo
 
 **OPCAO B — Continuar producao de conteudo do Ouro Proprio:**
 1. ~~Escrever o manual do Ouro Proprio~~ FEITO
-2. Escrever os 8 cadernos de exercicios (`src/data/course-workbooks/ouro-proprio.ts`)
+2. ~~Escrever os 8 cadernos de exercicios~~ FEITO
 3. Escrever os 2-3 scripts YouTube (`src/data/course-youtube/ouro-proprio.ts`)
 
 **OPCAO C — Comecar o segundo curso:**
@@ -159,7 +159,7 @@ src/data/course-manuals/
   ...
 
 src/data/course-workbooks/
-  ouro-proprio.ts          ← conteudo dos 8 cadernos
+  ouro-proprio.ts          ← conteudo dos 8 cadernos (DRAFT COMPLETO)
   ...
 
 src/data/course-youtube/
@@ -177,6 +177,7 @@ src/data/course-youtube/
 | `src/data/course-guidelines.ts` | Guidelines de producao (tom, estrutura, visual) |
 | `src/data/course-scripts/ouro-proprio.ts` | **24 scripts DRAFT do Ouro Proprio** |
 | `src/data/course-manuals/ouro-proprio.ts` | **Manual DRAFT do Ouro Proprio (8 capitulos)** |
+| `src/data/course-workbooks/ouro-proprio.ts` | **8 cadernos de exercicios DRAFT do Ouro Proprio** |
 | `src/lib/pdf/manual-template.tsx` | **Template PDF com identidade visual + licenca** |
 | `src/app/api/courses/manual/route.ts` | **API para gerar PDF personalizado** |
 | `src/data/territorios.ts` | 10 territorios visuais |
