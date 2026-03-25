@@ -64,6 +64,10 @@ type SunoClip = {
   status: string;
   audioUrl: string | null;
   title: string;
+  imageUrl?: string | null;
+  duration?: number | null;
+  tags?: string | null;
+  model?: string | null;
 };
 
 type GeneratedClips = {
@@ -189,9 +193,20 @@ function ClipApprovalRow({
 
   return (
     <div className="rounded-lg border border-mundo-muted-dark/20 bg-mundo-bg/50 p-3">
+      <div className="flex gap-3">
+        {/* Suno cover image */}
+        {clip.imageUrl && (
+          <img
+            src={clip.imageUrl}
+            alt={clip.title || "Suno cover"}
+            className="h-20 w-20 shrink-0 rounded-lg object-cover"
+          />
+        )}
+        <div className="flex-1 min-w-0">
       <div className="flex items-center gap-2 mb-2">
         <span className="text-[10px] text-mundo-muted font-mono">#{clipIndex + 1}</span>
         {clip.title && <span className="text-xs text-mundo-creme">{clip.title}</span>}
+        {clip.model && <span className="text-[10px] text-mundo-muted/50">{clip.model}</span>}
       </div>
       <audio controls src={clip.audioUrl!} className="h-8 w-full mb-2" />
 
@@ -268,6 +283,8 @@ function ClipApprovalRow({
           </div>
         </div>
       )}
+        </div>{/* end flex-1 */}
+      </div>{/* end flex gap-3 */}
     </div>
   );
 }
@@ -296,8 +313,8 @@ function TrackRow({
   onRemove: () => void;
   onGenerate: () => void;
   onCancel: () => void;
-  onApproveClip: (clipUrl: string, sunoTitle: string) => void;
-  onApproveAsVersion: (clipUrl: string, sunoTitle: string, versionName: string, energy: string) => void;
+  onApproveClip: (clipUrl: string, sunoTitle: string, imageUrl: string | null) => void;
+  onApproveAsVersion: (clipUrl: string, sunoTitle: string, versionName: string, energy: string, imageUrl?: string | null) => void;
   onUploadVersion: (file: File, versionName: string, energy: string) => void;
   audioUrl: string | null;
   existingVersions: string[];
@@ -491,8 +508,8 @@ function TrackRow({
                     hasMainAudio={!!audioUrl}
                     existingVersions={existingVersions}
                     trackEnergy={track.energy}
-                    onApproveMain={() => onApproveClip(clip.audioUrl!, clip.title)}
-                    onApproveVersion={(name, energy) => onApproveAsVersion(clip.audioUrl!, clip.title, name, energy)}
+                    onApproveMain={() => onApproveClip(clip.audioUrl!, clip.title, clip.imageUrl || null)}
+                    onApproveVersion={(name, energy) => onApproveAsVersion(clip.audioUrl!, clip.title, name, energy, clip.imageUrl || null)}
                   />
                 ))}
               </div>
@@ -803,7 +820,7 @@ export default function AlbumProductionPage() {
     }
   }
 
-  async function approveClip(albumSlug: string, track: AlbumTrack, clipAudioUrl: string, sunoTitle: string) {
+  async function approveClip(albumSlug: string, track: AlbumTrack, clipAudioUrl: string, sunoTitle: string, imageUrl?: string | null) {
     const key = trackKey(albumSlug, track.number);
     setStatuses((s) => ({ ...s, [key]: "uploading" }));
 
@@ -814,12 +831,27 @@ export default function AlbumProductionPage() {
     }
 
     try {
+      // Download and upload audio
       const audioRes = await fetch(clipAudioUrl);
       if (!audioRes.ok) throw new Error("Erro ao descarregar o áudio.");
       const blob = await audioRes.blob();
 
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}.mp3`;
       const url = await uploadViaSignedUrl(blob, filename);
+
+      // Download and upload Suno cover image if available
+      if (imageUrl) {
+        try {
+          const imgRes = await fetch(imageUrl);
+          if (imgRes.ok) {
+            const imgBlob = await imgRes.blob();
+            const imgFilename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-cover.jpg`;
+            await uploadViaSignedUrl(imgBlob, imgFilename);
+          }
+        } catch {
+          // Image upload is optional — don't fail the approval
+        }
+      }
 
       setStatuses((s) => ({ ...s, [key]: "done" }));
       setAudioUrls((u) => ({ ...u, [key]: url }));
@@ -1255,7 +1287,7 @@ export default function AlbumProductionPage() {
                       setErrors((e) => ({ ...e, [k]: "" }));
                       setGeneratedClips((g) => { const c = { ...g }; delete c[k]; return c; });
                     }}
-                    onApproveClip={(url, title) => approveClip(album.slug, track, url, title)}
+                    onApproveClip={(url, title, imgUrl) => approveClip(album.slug, track, url, title, imgUrl)}
                     onApproveAsVersion={(url, title, name, energy) => approveAsVersion(album.slug, track, url, title, name, energy)}
                     onUploadVersion={(file, name, energy) => uploadVersion(album.slug, track, file, name, energy)}
                     existingVersions={trackVersions[key] || []}
