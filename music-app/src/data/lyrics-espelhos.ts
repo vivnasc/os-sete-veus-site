@@ -9,7 +9,7 @@ export const ESPELHO_LYRICS: Record<string, string> = {
   // ESPELHO DA ILUSAO (Véu 1 — awakening from illusion)
   // ─────────────────────────────────────────────
 
-  "espelho-ilusão/1": `[Verse 1]
+  "espelho-ilusao/1": `[Verse 1]
 A manhã entra de mansinho
 Pela fresta da persiana
 O meu corpo já conhece o caminho
@@ -52,7 +52,7 @@ Estou a acordar
 Devagar, devagar
 Estou a acordar`,
 
-  "espelho-ilusão/2": `[Verse 1]
+  "espelho-ilusao/2": `[Verse 1]
 I learned to smile before I learned to speak
 Wore my mother's worry like a chain
 Good girl, don't ask, don't wander, don't be weak
@@ -90,8 +90,8 @@ Stitch by stitch I find there's nothing wrong
 Underneath the coat, beneath it all
 I'vê been here all along`,
 
-  "espelho-ilusão/3": `[Verse 1]
-Gira a chave, gira a mao
+  "espelho-ilusao/3": `[Verse 1]
+Gira a chave, gira a mão
 Gira o dia sempre igual
 Gira a roda, gira o chão
 Gira a vida sem sinal
@@ -134,7 +134,7 @@ Parei
 Parei
 E era eu`,
 
-  "espelho-ilusão/4": `[Verse 1]
+  "espelho-ilusao/4": `[Verse 1]
 O café arrefece entre as mãos
 A cozinha cheira a sempre
 Lembro-me de hortelã e limão
@@ -174,7 +174,7 @@ Vejo-o descer, desaparecer
 E as minhas mãos ficam a tremer
 Com a leveza de não ter`,
 
-  "espelho-ilusão/5": `[Verse 1]
+  "espelho-ilusao/5": `[Verse 1]
 My shoulders held it first, the ache
 Before I had a word for pain
 My ribs remembered what I lost
@@ -218,7 +218,7 @@ Feel the drum beneath the bone
 That's the rhythm of the truth
 You were never meant to carry alone`,
 
-  "espelho-ilusão/6": `[Verse 1]
+  "espelho-ilusao/6": `[Verse 1]
 A chuva cai e não tem pressa
 A lua nasce sem pedir licença
 A árvore não força a flor
@@ -228,7 +228,7 @@ A flor não força a sua essência
 Sentei-me no chão da cozinha
 Sem motivo, sem razão
 Com as costas contra o azulejo frio
-É a mao pousada no coração
+É a mão pousada no coração
 
 [Chorus]
 Não preciso de ser mais
@@ -243,7 +243,7 @@ Mas reflecte o céu inteiro ao luar
 [Verse 3]
 A verdade não é um trovão
 Não vem com força nem com medo
-Vem como a brisa pela mao
+Vem como a brisa pela mão
 Vem devagar, vem quase em segredo
 
 [Chorus]
@@ -262,7 +262,7 @@ Quieta como a manhã
 Fico aqui
 E deixo-me chegar`,
 
-  "espelho-ilusão/7": `[Verse 1]
+  "espelho-ilusao/7": `[Verse 1]
 Eu vi, eu vi
 O que não se pode des-ver
 O pano caiu no chão
@@ -316,7 +316,7 @@ Eu sempre estive aqui`,
 
   "espelho-medo/1": `[Verse 1]
 Cuidado com a esquina, cuidado com o chão
-Cuidado com o riso, cuidado com a mao
+Cuidado com o riso, cuidado com a mão
 Cuidado com o mundo que te pode magoar
 Cuidado, cuidadinho, não vais tropecar
 
@@ -421,7 +421,7 @@ Só um passo, um só
 Só precisa de um pé no chão é o outro no
 
 [Outro]
-O primeiro passo e torto
+O primeiro passo é torto
 E tremulo e pequeno
 Mas e meu, e vivo
 E vale mais que cem perfeitos no caderno`,
@@ -448,7 +448,7 @@ O corpo não perdoa
 O corpo é a única verdade que se ouve a toa
 
 [Bridge]
-Pousa a mao onde dói
+Pousa a mão onde dói
 Fica quieta e ouve bem
 O teu corpo fala-te há anos
 Só que a cabeça finge que não tem ninguém
@@ -537,7 +537,7 @@ Com as pernas a tremer
 Vou`,
 
   "espelho-medo/7": `[Verse 1]
-A vela treme na minha mao
+A vela treme na minha mão
 A chama e tão pequena, tão frágil
 Mas ilumina mais que qualquer trovão
 Porque a luz que dura nasce facil
@@ -568,7 +568,7 @@ Eu ofereco-lhe um lugar ao sol
 Devagar, devagar
 A cura não tem relógio
 Devagar, devagar
-Cada passo e uma oração
+Cada passo é uma oração
 Cada tremor e uma canção`,
 
   // ─────────────────────────────────────────────
@@ -579,7 +579,7 @@ Cada tremor e uma canção`,
 Há uma voz que mora entre os ossos
 Que acorda antes de mim de manhã
 Diz levanta-te, não descansas
-Diz que a tua paz e uma mentira estranha
+Diz que a tua paz é uma mentira estranha
 
 [Verse 2]
 Sento-me a ler e ela sussurra
@@ -823,7 +823,7 @@ A força que ninguém me ensinou
 Olhar para as minhas feridas
 Como quem rega uma flor
 Ternura, ternura
-A mao que eu nunca tive
+A mão que eu nunca tive
 Agora nasce dos meus dedos
 E toca-me como quem vive
 
@@ -834,7 +834,7 @@ Que chega de mansinho como a brisa
 É cura tudo o que a raiva não curou
 
 [Outro]
-Ponho a mao no peito
+Ponho a mão no peito
 E digo baixinho
 Estou aqui
 Estou contigo
@@ -1109,7 +1109,7 @@ Cada minuto conta, nada importa
 [Verse 2]
 Lavo os pratos antes de secar
 Fecho as portas antes de sair
-Verifico duas vezes, tres, quatro
+Verifico duas vezes, três, quatro
 Como se a vida pudesse fugir
 
 [Chorus]
@@ -1118,7 +1118,7 @@ As mãos já doem mas eu não largo
 Se eu soltar o mundo cai
 Se eu parar ninguém faz o parto
 Segura, segura, segura
-Como quem agarra areia na mao
+Como quem agarra areia na mão
 Quanto mais aperto mais escapa
 Mas eu não sei outra canção
 
@@ -1184,23 +1184,23 @@ A cabeça é um comboio
 Que não para em nenhuma estação, nenhuma rama
 
 [Chorus]
-Tres da manhã e o mundo dorme
+Três da manhã e o mundo dorme
 Menos eu, menos eu
-Tres da manhã e a mente corre
+Três da manhã e a mente corre
 Como um rio que não é meu
 Roda, roda, o mesmo medo
 Roda, roda, o mesmo sim
-Tres da manhã e eu sou um segredo
+Três da manhã e eu sou um segredo
 Que não consigo guardar de mim
 
 [Bridge]
-E se as tres da manhã não precisam de mim
+E se as três da manhã não precisam de mim
 E se eu pudesse deitar os pensamentos no chão
 Como roupa suja ao lado da cama
 E confiar que amanha há solução
 
 [Outro]
-Tres da manhã
+Três da manhã
 Fecho os olhos
 Deixo o comboio partir sem mim
 É o corpo sussurra
@@ -1279,7 +1279,7 @@ And I danced till dawn`,
 
   "espelho-controlo/6": `[Verse 1]
 Desliguei o telefone a tarde inteira
-O mundo girou sem a minha mao
+O mundo girou sem a minha mão
 O jantar queimou e ninguém chorou
 A louca ficou no balcao
 
@@ -1497,7 +1497,7 @@ E ouca o que a vida me confessa
 Uma hora vazia
 E dentro dela
 O universo inteiro
-A minha mao sobre o meu ventre
+A minha mão sobre o meu ventre
 É a certeza de que estou cheia
 De tudo o que importa`,
 
@@ -1612,7 +1612,7 @@ Para deixar florescer`,
   // ESPELHO DA SEPARACAO (Véu 7 — distancing from yourself to belong)
   // ─────────────────────────────────────────────
 
-  "espelho-separação/1": `[Verse 1]
+  "espelho-separacao/1": `[Verse 1]
 Arredondei os cantos para caber na porta
 Limei as arestas para não magoar
 Fiz-me de água para caber no copo
@@ -1646,7 +1646,7 @@ Como a mare que sobe sem aviso
 Devagar, sem pedir licença
 Ao tamanho que sempre foi preciso`,
 
-  "espelho-separação/2": `[Verse 1]
+  "espelho-separacao/2": `[Verse 1]
 We share the bread, we share the bed
 We share the silence and the rain
 You know the way I like my tea
@@ -1680,7 +1680,7 @@ Or alone with grace
 But not this gentle war
 This almost-touching empty space`,
 
-  "espelho-separação/3": `[Verse 1]
+  "espelho-separacao/3": `[Verse 1]
 Há uma pergunta guardada há anos
 No fundo da gaveta dos lençóis
 Debaixo da rotina e dos enganos
@@ -1715,7 +1715,7 @@ Por este suspiro
 Por esta pergunta
 Que finalmente saiu`,
 
-  "espelho-separação/4": `[Verse 1]
+  "espelho-separacao/4": `[Verse 1]
 Não é um muro, e uma varanda
 De onde eu te vejo inteiro e tu me vês
 Não é uma fuga, e uma dança
@@ -1749,7 +1749,7 @@ Separar não é o fim
 Como duas luzes juntas
 Que brilham mais por ser`,
 
-  "espelho-separação/5": `[Verse 1]
+  "espelho-separacao/5": `[Verse 1]
 I opened up my hands and watched
 The autumn leaves come tumbling down
 The roles I wore like winter coats
@@ -1787,7 +1787,7 @@ Is mine forever
 What remains
 Is all`,
 
-  "espelho-separação/6": `[Verse 1]
+  "espelho-separacao/6": `[Verse 1]
 Há um caminho entre as costelas
 Que da para um sitio que eu conheco
 Um lugar com cheiro a terra molhada
@@ -1823,7 +1823,7 @@ Finalmente amada
 Por quem mais importa
 Por mim`,
 
-  "espelho-separação/7": `[Verse 1]
+  "espelho-separacao/7": `[Verse 1]
 Sete vezes a luz tentou entrar
 Sete vezes eu fechei a cortina
 Sete camadas de tecido fino
