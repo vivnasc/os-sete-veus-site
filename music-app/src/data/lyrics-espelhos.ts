@@ -47,6 +47,12 @@ Debaixo do que eu fui
 E não me deixa sossegar
 Até que eu me despir
 
+[Bridge]
+Debaixo da pele que me deram
+Há uma pele que eu conheço
+Cheira a terra depois da chuva
+Cheira ao nome que eu mereço
+
 [Outro]
 Estou a acordar
 Devagar, devagar
@@ -83,6 +89,12 @@ A sleeve that's slipping off my shoulder bone
 I'm standing in a strange and tender light
 And for the first time I can feel my own
 I can feel my own
+
+[Bridge]
+The stitching runs só deep it hums
+A lullaby of borrowed thread
+But I am pulling at the seam
+And finding gold beneath the dread
 
 [Outro]
 Stitch by stitch I let the fabric fall
@@ -168,6 +180,12 @@ E eu deixei de perguntar por onde vim
 Quando é que perdi a sede
 Quando é que o café ganhou
 
+[Bridge]
+As mãos da minha avó sabiam
+Que a sede não se mata com rotina
+Sabia-se com os olhos fechados
+Sabia-se ouvindo a cozinha
+
 [Outro]
 Despejo o café devagar
 Vejo-o descer, desaparecer
@@ -212,6 +230,12 @@ The mind forgot to sing
 And if you press your ear right here
 You'll hear me remembering
 
+[Bridge]
+The knees remember kneeling down
+The wrists remember being held
+The belly holds the oldest grief
+The one the mouth has never spelled
+
 [Outro]
 Press your hand against your chest
 Feel the drum beneath the bone
@@ -255,6 +279,12 @@ Só preciso de me ver
 Sem fugir, sem disfarçar
 Como a água que não corre
 Mas reflecte o céu inteiro ao luar
+
+[Bridge]
+A rendição não é derrota
+É a coragem de parar
+De deixar o corpo em branco
+E confiar no que vem sem eu chamar
 
 [Outro]
 Fico aqui
@@ -348,6 +378,12 @@ De cair, de errar, de sangrar
 Quem me embrulhou em tanto segredo
 Que esqueci como é respirar
 
+[Bridge]
+A porta range como quem pede
+Que alguém a empurre devagar
+Não precisa de força nem de pressa
+Só de um corpo que se atreva a entrar
+
 [Outro]
 A porta está aberta
 O vento entra
@@ -387,6 +423,12 @@ What if the thing I'vê held behind my tongue
 Is the only song worth underneath
 The only song worth singing underneath
 
+[Bridge]
+The wild words rattle in their jars
+They know the velvet rope is thin
+They know that one unscripted breath
+Could let the whole museum in
+
 [Outro]
 One unmeasured word
 Falls like rain on stone
@@ -404,6 +446,16 @@ O relógio conta as horas que eu não vivo
 Os dias passam como barcos pelo rio
 Eu fico na margem a acenar
 Com os bolsos cheios de talvez e de vazio
+
+[Chorus]
+O medo vestiu-se de elegância
+Pos gravata e disse espera mais um pouco
+E eu esperei, com tanta graça
+Que ninguém reparou que eu estava louca
+De vontade de correr
+De vontade de saltar
+De vontade de fazer o que a pele quer gritar
+
 
 [Chorus]
 O medo vestiu-se de elegância
@@ -437,6 +489,16 @@ Aquele calor que sobe pela espinha
 Quando alguém diz fica e tu queres ir
 Aquele frio que mora nas entranhas
 Quando dizes sim mas queres fugir
+
+[Chorus]
+Há um mapa desenhado em carne e osso
+Há um rio que corre por debaixo
+De cada gesto certo, cada sorriso grosso
+Cada mentira doce, cada abraco
+O corpo não esquece
+O corpo não perdoa
+O corpo é a única verdade que se ouve a toa
+
 
 [Chorus]
 Há um mapa desenhado em carne e osso
@@ -494,6 +556,12 @@ But the lantern in the hall
 What if trembling is the door
 Opening when you hear the call
 
+[Bridge]
+I pressed my hand against the dark
+And felt it press me gently back
+Not a wall, not an enemy
+Just the weight of every step I lacked
+
 [Outro]
 Só walk with me, old friend
 I know your voice, I know your face
@@ -511,6 +579,17 @@ Falas-me de abismos e de quedas
 De noites frias e de fins
 Mas eu olho para as minhas mãos abertas
 E vejo que estão cheias de jardins
+
+[Chorus]
+Ouço-te, ouço-te
+Mas os meus pés já decidiram
+Ouço-te, ouço-te
+Mas as raízes que me prendem
+Hoje viraram asas
+E eu vou com o teu nome nós ouvidos
+Vou tremendo, vou cantando
+Vou
+
 
 [Chorus]
 Ouço-te, ouço-te
@@ -547,6 +626,17 @@ Não preciso de matar o medo
 Nem de o vencer numa batalha
 Posso caminhar com ele ao lado
 Como quem leva um filho pela manhã
+
+[Chorus]
+Devagar como a lua sobe
+Devagar como a mare vem
+Devagar como a ferida fecha
+Devagar como quem quer bem
+Não há pressa nesta estrada
+Não há meta nem final
+Há só a luz desta vela
+É a beleza de andar, de andar
+
 
 [Chorus]
 Devagar como a lua sobe
@@ -610,6 +700,12 @@ Tem os olhos do padre
 Tem o peso da fé
 Mas não é minha, não é minha
 
+[Bridge]
+A voz cala-se quando eu caminho
+Para o jardim com os pés descalços
+Cala-se quando o corpo decide
+Que a manhã não precisa de mais passos
+
 [Outro]
 Hoje a voz falou
 E eu deixei-a falar
@@ -650,6 +746,12 @@ With your halo and your chains
 Who told you love was disappearing
 Who told you virtue was the pain
 
+[Bridge]
+There's a girl beneath the giving
+With her own cup gathering dust
+She forgot she was allowed to drink
+She forgot that thirst was not a must
+
 [Outro]
 Love should not cost you
 Everything you are
@@ -667,6 +769,17 @@ O alívio sabe a água morna
 A alegria sabe a fruta do quintal
 Um e o fim de uma obrigação
 O outro e o princípio de um festival
+
+[Chorus]
+Eu confundi durante anos
+O descanso com a felicidade
+O dever cumprido com o desejo
+A gaiola aberta com a liberdade
+Mas há qualquer coisa que brilha
+Que não vem do fim de uma tarefa
+Vem do fundo, vem da barriga
+Vem do lugar onde a vida é festa
+
 
 [Chorus]
 Eu confundi durante anos
@@ -724,6 +837,12 @@ De mãe para filha, de filha para neta
 Está culpa antiga como a chuva
 De querer mais do que a vida nós deixa
 
+[Bridge]
+Avó, perdoa-me por querer o sol
+Mãe, perdoa-me por dizer que não
+Não é traição ao vosso sangue
+É a flor que nasce da mesma raiz no chão
+
 [Outro]
 Pouso a pedra no chão
 Com as duas mãos
@@ -765,6 +884,12 @@ And the river doesn't pay for rain
 The wildflower grows without permission
 And still the sun comes back again
 
+[Bridge]
+The child inside me rolls in grass
+She doesn't ask if she may stay
+She fills her lungs with summer air
+And never thinks to earn the day
+
 [Outro]
 I deserve the light
 Not because I'vê earned my stay
@@ -782,6 +907,17 @@ As mãos fechadas há tantos anos
 Que os dedos esqueceram como abrir
 A pele colou-se ao peso
 Como se largar fosse morrir
+
+[Chorus]
+Mas eu abro as mãos devagar
+E deixo cair no chão
+Tudo o que nunca foi meu
+Tudo o que eu chamava obrigação
+É o chão recebe sem julgar
+É o ar entra nós pulmões
+É o espaço que aparece
+Tem o tamanho de mil perdoes
+
 
 [Chorus]
 Mas eu abro as mãos devagar
@@ -816,6 +952,17 @@ A culpa ensinou-me a ser dura
 Comigo mesma, sempre comigo
 Mas hoje troco o chicote
 Por um colo, por um abrigo
+
+[Chorus]
+Ternura, ternura
+A força que ninguém me ensinou
+Olhar para as minhas feridas
+Como quem rega uma flor
+Ternura, ternura
+A mão que eu nunca tive
+Agora nasce dos meus dedos
+E toca-me como quem vive
+
 
 [Chorus]
 Ternura, ternura
@@ -867,6 +1014,17 @@ Que eu ainda não vi
 Mas sinto-o a respirar no escuro
 Sinto-o a chamar por mim
 
+
+[Chorus]
+Quem sou eu quando tiro os disfarces
+Quando o palco apaga a luz
+Quem sou eu quando ninguém aplaude
+Quando não há figurino nem cruz
+Há um rosto por baixo de tudo
+Que eu ainda não vi
+Mas sinto-o a respirar no escuro
+Sinto-o a chamar por mim
+
 [Bridge]
 Não é ter máscaras que me assusta
 E não saber qual é a cara
@@ -902,6 +1060,17 @@ But I can feel her breathe
 Somewhere underneath this costume
 She's been waiting to be free
 
+
+[Chorus]
+Who are you in the dark, love
+Who are you when nobody sees
+Who are you when the mirror's quiet
+And there's only you and the breeze
+I don't know her yet
+But I can feel her breathe
+Somewhere underneath this costume
+She's been waiting to be free
+
 [Bridge]
 Maybe she's not a name
 Maybe she's not a role
@@ -925,6 +1094,17 @@ A armadura brilha tanto
 Que ninguém vê o que está por trás
 Uma menina de joelhos
 Com vontade de chorar em paz
+
+[Chorus]
+Mas a armadura pesa, pesa
+É o coração bate mais devagar
+Tão protegida, tão perfeita
+Que até o ar tem medo de entrar
+E se eu tirasse peça a peça
+E ficasse só com a pele é o vento
+E se tremer não fosse fraqueza
+Mas o mais corajoso dos movimentos
+
 
 [Chorus]
 Mas a armadura pesa, pesa
@@ -972,6 +1152,17 @@ Sem querer que o sal seja mais doce
 Só olhar, só ficar
 Só deixar que a verdade me conheca
 
+
+[Chorus]
+Sem julgar, sem julgar
+Olho e deixo estar
+Como quem olha para o mar
+Sem querer mudar a mare
+Sem querer contar as ondas
+Sem querer que o sal seja mais doce
+Só olhar, só ficar
+Só deixar que a verdade me conheca
+
 [Bridge]
 E se o espelho não mente
 Porque é que eu fecho os olhos
@@ -997,6 +1188,17 @@ Before the dress, before the language
 Before the first time someone said be this
 There was a creature made of starlight
 Who didn't know that she could miss
+
+[Chorus]
+Nameless is not empty
+Nameless is the sky before the dawn
+Nameless is the canvas before colour
+Nameless is the silence before song
+And I am standing in that silence
+With my arms wide open to the rain
+Nameless, nameless, beautiful
+Like a river with no name
+
 
 [Chorus]
 Nameless is not empty
@@ -1045,6 +1247,17 @@ Em nenhum papel, em nenhum lugar
 Alguém que é tudo é não é nada
 Alguém que aprendeu a brincar
 
+
+[Chorus]
+Visto e dispo como quem dança
+Com a leveza de quem já sabe
+Que debaixo de cada roupa
+Mora alguém que não cabe
+Em nenhum nome, em nenhuma caixa
+Em nenhum papel, em nenhum lugar
+Alguém que é tudo é não é nada
+Alguém que aprendeu a brincar
+
 [Bridge]
 A liberdade não é estar nua
 E poder vestir sem desaparecer
@@ -1069,6 +1282,17 @@ Não peco desculpa por estar aqui
 Não peco licença para respirar
 O mar não explica as suas ondas
 Eu não explico o meu lugar
+
+[Chorus]
+Eu, eu, eu
+Sem moldura e sem manual
+Eu, eu, eu
+Como a chuva que cai porque cai
+Como o sol que nasce porque nasce
+Como o vento que sopra sem razão
+Eu existo como existe
+O primeiro batimento do coração
+
 
 [Chorus]
 Eu, eu, eu
@@ -1122,6 +1346,17 @@ Como quem agarra areia na mão
 Quanto mais aperto mais escapa
 Mas eu não sei outra canção
 
+
+[Chorus]
+Segura, segura, segura
+As mãos já doem mas eu não largo
+Se eu soltar o mundo cai
+Se eu parar ninguém faz o parto
+Segura, segura, segura
+Como quem agarra areia na mão
+Quanto mais aperto mais escapa
+Mas eu não sei outra canção
+
 [Bridge]
 E se soltar não fosse o fim
 E se o mundo soubesse girar
@@ -1158,6 +1393,17 @@ The word they carved into my chest
 But underneath the marble statue
 There's a woman wanting rest
 
+
+[Chorus]
+But who holds the woman who holds the world
+Who rocks the one that rocks them all to sleep
+Who catches her when all the plates have fallen
+Who sits beside her when she starts to weep
+Reliable, reliable
+The word they carved into my chest
+But underneath the marble statue
+There's a woman wanting rest
+
 [Bridge]
 What if I said I can't today
 What if the rock became the river
@@ -1182,6 +1428,17 @@ O travesseiro sabe de cor
 As voltas que eu dou na cama
 A cabeça é um comboio
 Que não para em nenhuma estação, nenhuma rama
+
+[Chorus]
+Três da manhã e o mundo dorme
+Menos eu, menos eu
+Três da manhã e a mente corre
+Como um rio que não é meu
+Roda, roda, o mesmo medo
+Roda, roda, o mesmo sim
+Três da manhã e eu sou um segredo
+Que não consigo guardar de mim
+
 
 [Chorus]
 Três da manhã e o mundo dorme
@@ -1229,6 +1486,17 @@ Partiu-se com a brisa do jardim
 E eu fiquei ali no meio dos cacos
 A perceber que o caos também e um hino
 
+
+[Chorus]
+A flor nasceu no meio do cimento
+Onde eu não plantei, onde eu não previ
+A vida riu-se do meu mapa inteiro
+E fez o que quis apesar de mim
+O castelo de vidro, tão bonito
+Partiu-se com a brisa do jardim
+E eu fiquei ali no meio dos cacos
+A perceber que o caos também e um hino
+
 [Bridge]
 O vidro parte porque é vidro
 O vento sopra porque sopra
@@ -1254,6 +1522,17 @@ I held the wheel só tight my knuckles
 Turned to winter white
 I steered through every bend and corner
 And forgot to see the light
+
+[Chorus]
+But the river doesn't need my hands
+The river finds the sea
+The moon pulls up the tide at night
+Without consulting me
+And what if trust is just the art
+Of letting go the rope
+And finding that the fall itself
+Was always lined with hope
+
 
 [Chorus]
 But the river doesn't need my hands
@@ -1301,6 +1580,19 @@ E ser dispensavel sabe a café
 Sabe a manhã de domingo
 Sabe a liberdade, sabe a fé
 
+
+[Chorus]
+E eu ri, eu ri
+Como não ria há tanto tempo
+Ri de alívio, ri de susto
+Ri de ver que o firmamento
+Não precisava das minhas mãos
+Para se manter de pé
+Ri porque fui dispensavel
+E ser dispensavel sabe a café
+Sabe a manhã de domingo
+Sabe a liberdade, sabe a fé
+
 [Bridge]
 Não sou pequena por não ser precisa
 Sou leve, sou humana, sou real
@@ -1327,6 +1619,17 @@ Não há tecnica nem segredo
 Não há método nem guru
 Há só este gesto antigo
 De inspirar o céu e soltar o escuro
+
+[Chorus]
+Respira, respira
+O mundo pode esperar
+Respira, respira
+Entre a entrada e a saida do ar
+Mora um silêncio tão bonito
+Que parece um lugar
+Onde nada me persegue
+Onde tudo pode pousar
+
 
 [Chorus]
 Respira, respira
@@ -1380,6 +1683,17 @@ Barulho bonito para não ouvir
 O que mora lá no fundo
 O que tem medo de existir
 
+
+[Chorus]
+Barulho bonito, barulho bonito
+Para tapar o silêncio que grita
+Para tapar o buraco no peito
+Que nenhuma lista, nenhuma receita
+Consegue encher, consegue curar
+Barulho bonito para não ouvir
+O que mora lá no fundo
+O que tem medo de existir
+
 [Bridge]
 E se eu ficasse quieta um minuto
 E se eu deixasse o vazio falar
@@ -1417,6 +1731,18 @@ The quietest, hungriest, truest thing
 I'vê ever dared not see
 Oh, what's missing, what's missing
 
+
+[Chorus]
+What's missing has no price
+What's missing has no name
+It doesn't live in any store
+Or any holiday or frame
+It's sitting in the corner
+Of the room I never clean
+The quietest, hungriest, truest thing
+I'vê ever dared not see
+Oh, what's missing, what's missing
+
 [Bridge]
 What if I stopped the search
 And sat down in the ache
@@ -1440,6 +1766,17 @@ Não peco muito, não espero nada
 Não sonho alto para não cair
 Fiz-me tão pequena, tão educada
 Que até a sombra se esqueceu de mim
+
+[Chorus]
+Mas há qualquer coisa que não encolhe
+Há uma raiz que cresce no escuro
+Que empurra o chão, que parte a pedra
+Que diz eu existo e eu sou o futuro
+Mais pequena não, mais quieta não
+Mais invisível não, nunca mais
+O meu tamanho real e um segredo
+Que o mundo ainda não viu, mas vai
+
 
 [Chorus]
 Mas há qualquer coisa que não encolhe
@@ -1487,6 +1824,17 @@ Um cheiro de jasmim e de quintal
 Uma menina a correr descalca
 Com um riso de animal
 
+
+[Chorus]
+Mas depois, devagar
+A água acalma e o fundo aparece
+E no fundo há coisas lindas
+Que só o silêncio conhece
+Uma vontade antiga de dançar
+Um cheiro de jasmim e de quintal
+Uma menina a correr descalca
+Com um riso de animal
+
 [Bridge]
 Na hora vazia o desejo fala
 Não pede coisas, não pede pressa
@@ -1512,6 +1860,17 @@ But every drawer was overflowing
 Every shelf was picture-true
 And in the middle of the plenty
 Stood a woman hungry through and through
+
+[Chorus]
+Let me be empty, let me be bare
+Let me be the bowl before the soup
+Let me be the garden before the seed
+Let me be the sky before the droop
+Of rain, of colour, of anything
+Let me stand in nothing for a while
+Let me learn to love the empty page
+Before I try to fill it with a smile
+
 
 [Chorus]
 Let me be empty, let me be bare
@@ -1558,6 +1917,17 @@ Que nunca ninguém mandou bater
 É meu, o único desejo
 Que não tenho de aprender
 
+
+[Chorus]
+É meu, e meu, e meu
+Como a voz, como a pele, como o sal
+Não precisa de licença
+Não precisa de sinal
+Pulsa como o coração
+Que nunca ninguém mandou bater
+É meu, o único desejo
+Que não tenho de aprender
+
 [Bridge]
 Não é o que eu devia querer
 Não é o que ficava bem na foto
@@ -1582,6 +1952,17 @@ Olho para os espaços da minha vida
 E vejo janelas, não buracos
 Vejo terra fértil, não abandono
 Vejo o princípio de cem retratos
+
+[Chorus]
+Espaço, espaço
+Como o ventre antes do filho
+Como o palco antes da dança
+Como a noite antes do brilho
+Não tenho medo do vazio
+O vazio é onde tudo nasce
+Onde a semente encontra terra
+Onde o amor encontra a face
+
 
 [Chorus]
 Espaço, espaço
@@ -1634,6 +2015,17 @@ Há uma onda que vem de dentro
 Que diz o meu tamanho e imenso
 E eu não me encolho mais, não, não me encolho
 
+
+[Chorus]
+Eu era oceano e fiz-me poça
+Eu era montanha e fiz-me areia
+Eu era trovão e fiz-me eco
+Para caber na vida alheia
+Mas há uma mare que não obedece
+Há uma onda que vem de dentro
+Que diz o meu tamanho e imenso
+E eu não me encolho mais, não, não me encolho
+
 [Bridge]
 Há uma diferença entre a água que se adapta
 É a água que desaparece
@@ -1668,6 +2060,17 @@ Is where the love still lives
 But no one's brave enough to knock
 On the door the other never gives
 
+
+[Chorus]
+Together but alone
+Two satellites in the same dark sky
+Orbiting the same cold sun
+Too close to leave, too far to cry
+The loneliest address in the world
+Is where the love still lives
+But no one's brave enough to knock
+On the door the other never gives
+
 [Bridge]
 What if we stopped performing close
 And stood apart enough to see
@@ -1691,6 +2094,17 @@ Não é traição, não é abandono
 Não quer destruir nenhum castelo
 Quer só saber se debaixo do trono
 Há alguém vivo debaixo do véu
+
+[Chorus]
+Se eu fosse só eu, quem seria
+Sem o sobrenome é sem o anel
+Se eu fosse só eu, o que eu faria
+Com este corpo, com este céu
+Se não houvesse ninguém a espera
+Se o jantar não fosse obrigação
+Quem sou eu quando sou só eu
+Qual é a minha própria canção
+
 
 [Chorus]
 Se eu fosse só eu, quem seria
@@ -1737,6 +2151,17 @@ E entre nós o ar que faltava
 Eu inteira, tu inteiro
 É o amor finalmente basta
 
+
+[Chorus]
+Mas separar é um acto de amor
+Como a terra que solta a raiz
+Para a árvore crescer mais alta
+Para o fruto ser mais feliz
+Eu aqui, tu ali
+E entre nós o ar que faltava
+Eu inteira, tu inteiro
+É o amor finalmente basta
+
 [Bridge]
 O amor não é fusão
 E dança, e espaço, e dois
@@ -1760,6 +2185,17 @@ The friendships built on fear fell first
 The habits made of holding on
 But what was real stayed rooted deep
 Like roses after the storm has gone
+
+[Chorus]
+What remains when everything falls
+Is not the wreckage, not the loss
+It's the diamond underneath the dust
+It's the bridge beneath the moss
+What remains is strong and soft
+Like hands that learned to let things be
+What remains when all the noise has passed
+Is only, only, only me
+
 
 [Chorus]
 What remains when everything falls
@@ -1809,6 +2245,17 @@ A espera de mim na porta aberta
 Com os braços quentes e a voz que diz
 Bem-vinda, estavas perta, tão perta
 
+
+[Chorus]
+Regresso a mim como quem regressa a casa
+Depois de uma viagem pelo mar
+A luz está acesa na cozinha
+Alguém deixou o chá a aquecer no luar
+É esse alguém sou eu, sempre fui eu
+A espera de mim na porta aberta
+Com os braços quentes e a voz que diz
+Bem-vinda, estavas perta, tão perta
+
 [Bridge]
 O regresso não é voltar atrás
 E chegar ao único lugar
@@ -1834,6 +2281,21 @@ O primeiro era a ilusão dourada
 O segundo o medo vestido de seda
 O terceiro a culpa, o quarto a máscara
 O quinto as mãos fechadas, o sexto a fome cega
+
+[Chorus]
+É o setimo cai agora
+Como a neve cai no chão
+Sem barulho, sem violência
+Só a graça da estação
+E debaixo de sete véus
+Não há monstro, não há escuro
+Há uma mulher de olhos abertos
+Com as mãos no próprio futuro
+Sete véus, sete véus
+Cairam todos e eu danço
+Na luz que sempre esteve aqui
+Debaixo de tanto, tanto, tanto
+
 
 [Chorus]
 É o setimo cai agora

@@ -49,6 +49,7 @@ import { NO_LYRICS } from "./lyrics-nos";
 import { LIVRO_LYRICS, CURSO_LYRICS } from "./lyrics-livro-cursos";
 import { ESPIRITUAL_LYRICS } from "./lyrics-espirituais";
 import { VIDA_LYRICS } from "./lyrics-vida";
+import { COSMIC_LYRICS } from "./lyrics-cosmic";
 
 const ALL_LYRICS: Record<string, string> = {
   ...ESPELHO_LYRICS,
@@ -57,6 +58,7 @@ const ALL_LYRICS: Record<string, string> = {
   ...CURSO_LYRICS,
   ...ESPIRITUAL_LYRICS,
   ...VIDA_LYRICS,
+  ...COSMIC_LYRICS,
 };
 
 function getLyrics(albumSlug: string, trackNumber: number): string {
@@ -67,7 +69,7 @@ export type Album = {
   slug: string;
   title: string;
   subtitle: string;
-  product: "espelho" | "no" | "livro" | "curso" | "espiritual" | "vida";
+  product: "espelho" | "no" | "livro" | "curso" | "espiritual" | "vida" | "cosmic";
   veu?: number;
   courseSlug?: string;
   color: string;
@@ -162,6 +164,11 @@ function buildPromptWithFlavor(basePrompt: string, flavor: TrackFlavor | null): 
 
 // Retrocompatibilidade: BASE_STYLE = whisper (o default anterior)
 const BASE_STYLE = ENERGY_STYLES.whisper;
+
+function cosmicPrompt(theme: string, emotion: string, production: string, lang: "PT" | "EN", energy: TrackEnergy = "whisper", flavor: TrackFlavor | null = null): string {
+  const langNote = lang === "PT" ? "Lyrics in Portuguese." : "Lyrics in English.";
+  return buildPromptWithFlavor(`${ENERGY_STYLES[energy]} ${langNote} Cosmic, vast, ethereal but grounded. Body as portal to the infinite. ${emotion}. ${production}. Theme: ${theme}.`, flavor);
+}
 
 function espelhoPrompt(theme: string, emotion: string, production: string, lang: "PT" | "EN", energy: TrackEnergy = "whisper", flavor: TrackFlavor | null = null): string {
   const langNote = lang === "PT" ? "Lyrics in Portuguese." : "Lyrics in English.";
@@ -985,6 +992,30 @@ function applyLyrics(albumDef: AlbumDef): Album {
 }
 
 // ─────────────────────────────────────────────
+// COSMIC
+// ─────────────────────────────────────────────
+
+const COSMIC_VIAGEM: AlbumDef = {
+  slug: "cosmic-viagem",
+  title: "Viagem",
+  subtitle: "O corpo como portal cósmico. Todas as noites volto a casa.",
+  product: "cosmic",
+  color: "#1a0533",
+  tracks: [
+    { number: 1, title: "Voltar a Casa", description: "Viagem astral — o regresso nocturno", lang: "PT", energy: "whisper", prompt: cosmicPrompt("astral travel, leaving the body at night, returning home to the infinite", "ethereal, floating, peaceful detachment", "soft ambient pads, reverb-drenched piano, distant choir, breath textures", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "Weightless", description: "Flutuar sem corpo, a leveza de sair", lang: "EN", energy: "whisper", prompt: cosmicPrompt("weightlessness, leaving the body behind, floating without gravity", "light, ascending, free, dissolving", "ambient synth layers, no drums, floating vocal, spacious reverb", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Anterior", description: "O lugar antes do nome e da dor", lang: "PT", energy: "steady", prompt: cosmicPrompt("before birth, before name, ancestral cosmic memory", "ancient, vast, primal, wondering", "deep bass drone, subtle percussion, warm vocal, ancestral textures", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "The Cord", description: "O fio que te puxa de volta ao corpo", lang: "EN", energy: "steady", prompt: cosmicPrompt("the silver cord between body and soul, being pulled back to flesh", "tension between freedom and gravity, bittersweet return", "pulsing bass, elastic textures, grounded drums, yearning vocal", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Sem Pele", description: "Existir sem fronteiras", lang: "PT", energy: "raw", prompt: cosmicPrompt("dissolving boundaries, no skin, no edges, merging with everything", "vast, vulnerable, ecstatic dissolution", "minimal, spacious, raw vocal close-mic, subtle drone, silence as instrument", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "Stardust", description: "Somos feitos de estrelas mortas", lang: "EN", energy: "steady", prompt: cosmicPrompt("we are made of dead stars, atoms that travelled billions of years", "wonder, humility, cosmic perspective, borrowed body", "warm acoustic guitar, gentle strings, contemplative vocal, cosmic warmth", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "A Maré de Dentro", description: "O oceano interior que sobe quando ficas quieta", lang: "PT", energy: "whisper", prompt: cosmicPrompt("inner ocean, internal tide that rises at night, emotions as water", "deep, tidal, surrendering, fluid", "water-like textures, soft piano, swelling pads, intimate vocal", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 8, title: "Eclipse", description: "Quando a sombra e a luz se encontram em ti", lang: "EN", energy: "pulse", prompt: cosmicPrompt("eclipse, shadow meeting light inside, totality, honesty of darkness", "dramatic, honest, powerful, brief truth", "building drums, dramatic strings, powerful vocal, light and shadow dynamics", "EN", "pulse"), durationSeconds: 240, audioUrl: null },
+    { number: 9, title: "Frequência", description: "Vibrar na mesma nota que o universo", lang: "PT", energy: "steady", flavor: "afrobeat", prompt: cosmicPrompt("cosmic frequency, vibrating with the universe, the hum beneath everything", "resonant, connected, rhythmic, alive", "deep bass pulse, organic percussion, warm vocal, rhythmic groove", "PT", "steady", "afrobeat"), durationSeconds: 240, audioUrl: null },
+    { number: 10, title: "Home Is Not a Place", description: "Casa não é sítio — é estado", lang: "EN", energy: "anthem", prompt: cosmicPrompt("home as vibration not location, belonging everywhere and nowhere", "declarative, free, powerful, settled", "building anthem, piano to full band, choir, powerful vocal declaration", "EN", "anthem"), durationSeconds: 300, audioUrl: null },
+  ],
+};
+
+// ─────────────────────────────────────────────
 // EXPORT
 // ─────────────────────────────────────────────
 
@@ -1062,6 +1093,8 @@ export const ALL_ALBUMS: Album[] = [
   VIDA_RAIZ_MUDA,
   VIDA_RESSONANCIA,
   VIDA_PENUMBRA,
+  // Cosmic
+  COSMIC_VIAGEM,
 ].map(applyLyrics);
 
 // Helpers

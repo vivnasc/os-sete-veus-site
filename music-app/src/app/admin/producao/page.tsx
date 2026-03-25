@@ -155,6 +155,7 @@ function ProductFilter({
     { key: "curso", label: "Cursos" },
     { key: "espiritual", label: "Espiritual" },
     { key: "vida", label: "Vida" },
+    { key: "cosmic", label: "Cosmic" },
   ];
 
   return (
@@ -387,6 +388,8 @@ function TrackRow({
   generatedClips,
   editedTitle,
   onTitleChange,
+  editedLyrics,
+  onLyricsChange,
 }: {
   track: AlbumTrack;
   status: TrackStatus;
@@ -403,6 +406,8 @@ function TrackRow({
   generatedClips: GeneratedClips | null;
   editedTitle: string | null;
   onTitleChange: (title: string) => void;
+  editedLyrics: string | null;
+  onLyricsChange: (lyrics: string) => void;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [showLyrics, setShowLyrics] = useState(false);
@@ -474,7 +479,7 @@ function TrackRow({
           {/* Copy buttons — always visible */}
           <div className="mt-2 flex items-center gap-2">
             <CopyButton text={track.prompt} label="Copiar prompt" />
-            {track.lyrics && <CopyButton text={track.lyrics} label="Copiar letra" />}
+            {track.lyrics && <CopyButton text={editedLyrics ?? track.lyrics} label="Copiar letra" />}
           </div>
 
           {/* Prompt expandable */}
@@ -487,15 +492,18 @@ function TrackRow({
             </p>
           </details>
 
-          {/* Lyrics expandable */}
+          {/* Lyrics expandable + editable */}
           {track.lyrics && (
             <details className="mt-1" open={showLyrics} onToggle={(e) => setShowLyrics((e.target as HTMLDetailsElement).open)}>
               <summary className="cursor-pointer text-xs text-mundo-muted/60 hover:text-mundo-muted">
-                Ver letra
+                Ver letra {editedLyrics !== null && editedLyrics !== track.lyrics && <span className="text-amber-400 ml-1">(editada)</span>}
               </summary>
-              <pre className="mt-1 whitespace-pre-wrap rounded bg-mundo-bg p-3 font-mono text-xs text-mundo-muted/80 leading-relaxed max-h-64 overflow-y-auto">
-                {track.lyrics}
-              </pre>
+              <textarea
+                value={editedLyrics ?? track.lyrics}
+                onChange={(e) => onLyricsChange(e.target.value)}
+                className="mt-1 w-full whitespace-pre-wrap rounded bg-mundo-bg p-3 font-mono text-xs text-mundo-muted/80 leading-relaxed min-h-[16rem] max-h-[32rem] overflow-y-auto border border-mundo-muted-dark/20 focus:border-violet-500 focus:outline-none resize-y"
+                spellCheck={false}
+              />
             </details>
           )}
 
@@ -719,6 +727,7 @@ export default function AlbumProductionPage() {
   const [audioUrls, setAudioUrls] = useState<Record<string, string>>({});
   const [generatedClips, setGeneratedClips] = useState<Record<string, GeneratedClips>>({});
   const [editedTitles, setEditedTitles] = useState<Record<string, string>>({});
+  const [editedLyrics, setEditedLyrics] = useState<Record<string, string>>({});
   const [trackVersions, setTrackVersions] = useState<Record<string, VersionInfo[]>>({}); // key → versions
   const [sunoModel, setSunoModel] = useState("V5");
   const pollingRef = useRef<Record<string, NodeJS.Timeout>>({});
@@ -895,7 +904,7 @@ export default function AlbumProductionPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           prompt: track.prompt,
-          lyrics: track.lyrics,
+          lyrics: editedLyrics[key] || track.lyrics,
           title: editedTitles[key] || track.title,
           instrumental: false,
           model: sunoModel,
@@ -1425,13 +1434,16 @@ export default function AlbumProductionPage() {
                     editedTitle={editedTitles[key] || null}
                     onTitleChange={(title) => {
                       setEditedTitles((t) => ({ ...t, [key]: title }));
-                      // Debounce save to DB (1s after last keystroke)
                       if (titleSaveRef.current[key]) clearTimeout(titleSaveRef.current[key]);
                       titleSaveRef.current[key] = setTimeout(() => {
                         if (title && title !== track.title) {
                           saveTitle(album.slug, track.number, title, "manual");
                         }
                       }, 1000);
+                    }}
+                    editedLyrics={editedLyrics[key] || null}
+                    onLyricsChange={(lyrics) => {
+                      setEditedLyrics((l) => ({ ...l, [key]: lyrics }));
                     }}
                   />
                 );

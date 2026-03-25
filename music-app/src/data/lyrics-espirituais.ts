@@ -33,6 +33,16 @@ antes que o dia te alcance
 A manhã e o único ritual
 que ninguém te pode tirar — e dança
 
+[Chorus]
+Manhã, manhã
+antes de seres de alguém
+Es só tua, só tua
+e isso é mais do que convem
+Descalca no chão frio
+antes que o dia te alcance
+A manhã e o único ritual
+que ninguém te pode tirar — e dança
+
 [Bridge]
 Ninguém vê o que fazes
 nós primeiros cinco minutos
@@ -67,6 +77,16 @@ right here, between the two
 The space between the breaths
 is where I find what's true
 
+[Chorus]
+The space between the breaths
+is where the sacred lives
+Not in the asking or the answer
+but the pause the body gives
+I am most alive right now
+right here, between the two
+The space between the breaths
+is where I find what's true
+
 [Bridge]
 Hold it just a moment
 hold it just right here
@@ -90,6 +110,12 @@ A chuva fez este caminho
 as raízes abriram a pedra
 Não precisas de altar nem cantico
 ajoelha aqui — a terra te agrada
+
+[Chorus]
+Terra, terra, tens o meu nome
+feito de argila, feito de sal
+Terra, terra, tu es o corpo
+antes de qualquer sinal
 
 [Chorus]
 Terra, terra, tens o meu nome
@@ -137,6 +163,16 @@ my sister broke her knuckles on a wall
 I will not turn this heat into polite compliance
 I'd rather be the storm than never fall
 
+[Chorus]
+Holy rage, holy rage
+burn what needs to burn
+holy rage, holy rage
+I am done with swallowing the world
+this fire is not madness
+this fire is not sin
+holy rage, holy rage
+the NO that lets me begin
+
 [Bridge]
 I am not asking for permission
 I am not sorry for the heat
@@ -181,6 +217,16 @@ o fundo e só quietude
 e no silêncio submerso
 o coração bate com plenitude
 
+[Chorus]
+Mergulho, mergulho
+por baixo não há medo
+mergulho, mergulho
+por baixo há só o que sou
+o corpo inteiro submerso
+no que eu sempre contornei
+a água não me afoga —
+a água me reconhece
+
 [Bridge]
 Não é morte — e descida
 não é fim — é um descer
@@ -221,6 +267,16 @@ a tia que fugiu de noite sem sapato
 a prima que ficou e mesmo assim não se perdeu
 cada uma me ensinou sem dizer um só relato
 
+[Chorus]
+As que vieram antes
+as que vieram antes de mim
+vivem nas minhas mãos quando eu amasso o barro
+vivem na minha voz quando eu digo que sim
+As que vieram antes
+não morreram, não se foram
+o que elas não puderam dizer
+eu carrego e não me calo mais
+
 [Bridge]
 Eu sou a boca que elas não tiveram
 eu sou o passo que elas não puderam dar
@@ -258,6 +314,13 @@ You'll want to reach for something certain
 some sound to fill the aching room
 But underneath the want for comfort
 there's a clarity that needs the gloom
+
+[Chorus]
+Still — not peace but presence
+Still — not calm but choice
+Hold the trembling without fixing
+let the quiet find its voice
+Still — until the noise becomes a hum
 
 [Bridge]
 You will want to run — sit anyway
@@ -297,6 +360,16 @@ A dor do fogo não tem metafora
 e só dor é e só real
 não aprendeste porque sofreu
 sofreu e já não há igual
+
+[Chorus]
+Queimou, queimou
+não há palavra melhor
+queimou, queimou
+sem heroismo sem glamour
+queimou a casa queimou o plano
+queimou o que julgavas resistente
+e o que ficou não é lição nem premio
+e só o que sobrou de ti presente
 
 [Bridge]
 Mas aqui estas
@@ -341,6 +414,18 @@ don't name it don't explain it don't project
 the first green only needs what the first green needs
 the rain the dark the time the raw respect
 
+[Chorus]
+First green, first green
+só tender it could break
+first green, first green
+too early but awake
+first green through the ash field
+first green through the cold
+first green doesn't know yet
+that it will grow old
+first green, first green
+this is where it starts
+
 [Bridge]
 Not a promise
 not a sign
@@ -365,6 +450,16 @@ Deito no chão de pedra
 os ossos pedem tudo
 Não há o que pedir
 só este corpo rude
+
+[Chorus]
+Respira
+antes do nome que tens
+Respira
+antes do que ainda vens
+O peito e o templo
+a lingua pode calar
+Respira
+que isso já e rezar
 
 [Chorus]
 Respira
@@ -416,6 +511,16 @@ the way the seed knows when to sleep
 not every season asks for blooming
 some roots go slow and some go deep
 
+[Chorus]
+Dark moon, dark moon
+hold me where the light won't reach
+Dark moon, dark moon
+there are things the dark can teach
+In the black I find my breathing
+in the black I find my ground
+dark moon, dark moon
+what was lost is being found
+
 [Bridge]
 No stars tonight
 no need to shine
@@ -463,6 +568,16 @@ nem o lencol esticado como lei
 Precisa só de mãos que aceitem
 começar de novo — como eu comecei
 
+[Chorus]
+Fazer a cama, fazer a cama
+alisar o que a noite desfez
+Fazer a cama, fazer a cama
+o caos tem cura — e só uma vez
+Mão sobre mão, pano sobre pano
+construo o altar de cada dia
+Fazer a cama e o primeiro engano
+bonito — chamar ordem a alegria
+
 [Outro]
 Aliso o lencol
 aliso a mente
@@ -480,6 +595,12 @@ I used to armour every surface
 protect myself from gravel, root and cold
 But armour doesn't let you feel the living
 and I was getting numb inside the fold
+
+[Chorus]
+Barefoot on the morning ground
+barefoot where the roots come through
+Nothing between me and what is holy
+nothing between the earth and what is true
 
 [Chorus]
 Barefoot on the morning ground
@@ -527,6 +648,18 @@ Passo a mão no rosto molhado
 Não sei se e chuva ou se sou eu
 O céu também tem os seus dias
 O céu também as vezes chove e deu
+
+[Chorus]
+Sal
+o teu choro e sal
+Sal
+o mar e sal
+A dor que te encharca por dentro
+Já viveu no litoral
+Sal
+o que cais e sal
+Não choras só por ti
+Choras por todas as que choram igual
 
 [Bridge]
 Sente o sal na garganta
@@ -610,6 +743,16 @@ A base dos pés no chão firme
 o topo da cabeça no ar
 tudo o que sou existe
 neste comprimento singular
+
+[Chorus]
+Vertical, vertical
+os pés na lama e funda
+vertical, vertical
+a cabeça no céu que abunda
+não escolho um lado só —
+sou o eixo entre os dois extremos
+o templo não é lá em cima
+o templo e este corpo inteiro
 
 [Bridge]
 Não preciso de subir para voar
@@ -770,6 +913,16 @@ you don't need to see it turn to soil
 the dark below the surface does its work
 without your witness without your toil
 
+[Chorus]
+Compost, compost
+the beautiful and rotten are the same
+compost, compost
+nothing that has lived is lost in vain
+compost the grief compost the failure
+compost what you built and watched it die
+everything that breaks becomes the basis
+of what reaches next time for the sky
+
 [Bridge]
 Not a lesson
 not a plan
@@ -873,6 +1026,16 @@ não abras o que está fechado
 a semente sabe o tempo
 melhor do que o teu planeado
 
+[Chorus]
+Debaixo, debaixo
+há vida que não se vê
+debaixo, debaixo
+há raiz antes do pé
+debaixo do medo há o corpo
+debaixo do silêncio há o som
+debaixo do que julgavas vazio
+cresce o que ainda não tem tom
+
 [Bridge]
 Só o escuro sabe
 o que o escuro guarda
@@ -917,6 +1080,16 @@ Há um pulmão que não conheces
 que abre mesmo assim
 que recebe o que não pedes
 o ar que é fim e inicio
+
+[Chorus]
+Inspira, inspira
+o que é vivo não pede licença
+inspira, inspira
+cada vez que recebes começas
+inspira o medo inspira a manhã
+inspira o que ainda não tem nome
+o mundo entra em ti pela garganta
+e tu não tens de merecer o que te tome
 
 [Bridge]
 Não precisas de saber
@@ -981,6 +1154,12 @@ Quando o corpo se fecha sem razão
 quando os cabelos da nuca se erguem
 O bicho já leu o que a mente nega
 e move-se antes de tu o entenderes
+
+[Chorus]
+Bicho, bicho, não me envergonhes
+Bicho, bicho, tu es o que sou
+Antes da palavra, antes da máscara
+eras tu que me guardava, foste tu que me salvou
 
 [Chorus]
 Bicho, bicho, não me envergonhes
@@ -1064,6 +1243,13 @@ e espaço para o que vem a seguir
 Não preciso de segurar o mundo
 para saber que sou capaz de ir
 
+[Chorus]
+Mãos vazias — não é pobreza e escolha
+Mãos vazias — não é perda e entrega
+Abertas como um peito que respira
+abertas onde o peso não se apega
+Mãos vazias — e assim que eu existo
+
 [Bridge]
 O que sobra quando largas tudo
 e o peso certo dos teus ossos
@@ -1085,6 +1271,16 @@ I asked the sky at 3 a.m.
 the sky just held its cold
 I asked the ground below my feet
 the ground was four years old
+
+[Chorus]
+Unanswered — the prayer still rising
+unanswered — I'm still here
+Not because I believe in answers
+but because I have nowhere
+else to put this weight, this asking
+this mouth against the wall
+Unanswered — and I stay
+unanswered — through it all
 
 [Chorus]
 Unanswered — the prayer still rising
@@ -1135,6 +1331,16 @@ A terra treme por baixo dos meus pés descalcos
 o tambor bate onde bate o coração
 não preciso de templo, não preciso de palcos
 o meu corpo inteiro e a celebração
+
+[Chorus]
+Dança, dança, dança
+o corpo sabe o caminho sozinho
+Dança, dança, dança
+o suor e água benta, o chão e santuario
+Dança até o peso soltar
+dança até o nome esquecer
+o corpo em movimento e a única oração
+que eu sei fazer
 
 [Bridge]
 Fecha os olhos
@@ -1236,6 +1442,18 @@ Mas o que ficava era a vibração
 O corpo sente antes de acreditar
 O hum e anterior a opinião
 
+[Chorus]
+Hum
+antes do amem e o hum
+Hum
+antes do nome é o hum
+O peito vibra e a voz responde
+Ao que a boca nunca disse
+Hum
+quando não há mais nada
+Hum
+quando nada mais sufice
+
 [Bridge]
 Fecha os olhos
 Deixa o som nascer no peito
@@ -1278,6 +1496,16 @@ Não é fraqueza o que sai de ti
 e o ciclo que te mantem viva
 o que expiras volta ao mundo
 como o que recebes foi vivido
+
+[Chorus]
+Expira, expira
+o que entrou tem de sair
+expira, expira
+não há amor em não ceder
+expira o orgulho expira a defesa
+expira o que já cumpriu a sua vez
+o corpo nunca mente quando cansa
+largas e já não sabes que largas
 
 [Bridge]
 Não segures o que já passou
@@ -1322,6 +1550,16 @@ no que fica quando tudo para
 não é vazio nem e nada
 e a presença mais antiga e mais sagrada
 
+[Chorus]
+A testemunha
+só observa
+A testemunha
+não se perde
+Tu não es a tempestade
+tu não es o vento forte
+Tu es o céu que vê a chuva
+sem mudar de forma ou sorte
+
 [Bridge]
 Atrás do nome atrás da historia
 atrás da culpa atrás da gloria
@@ -1345,6 +1583,16 @@ My jaw unclenched at dinner
 my fists forgot the shape of fear
 The body drops what the mind still grips
 when the wound has run its year
+
+[Chorus]
+Softening
+not weakness — witness
+Softening
+the body's quiet yes
+The bravest thing these bones have done
+is learn to hold with less
+Softening
+the armour was never mine to keep
 
 [Chorus]
 Softening
@@ -1393,6 +1641,13 @@ não é ausência — e presença a nu
 O que eu chamava vazio era armadura
 o que sobrou quando a tirei sou eu
 
+[Chorus]
+O vazio cheio — não é contradição
+O vazio cheio — é o que fica no chão
+Quando tiras tudo o que punhas lá dentro
+descobres que o nada tem peso e intenção
+O vazio cheio
+
 [Bridge]
 O silêncio não é ausência
 e presença sem disfarce
@@ -1431,6 +1686,16 @@ The pavement cracks, the grass is wet
 the gravel speaks in tongues
 My shadow stretches out ahead
 like breath inside my lungs
+
+[Chorus]
+Walking, walking
+not arriving — just the way
+Walking, walking
+every step a thing I pray
+The earth is patient underneath
+she holds me as I go
+Walking, walking
+the only sermon that I know
 
 [Bridge]
 I do not need a mountain trail
@@ -1472,6 +1737,16 @@ não é fé nem disciplina
 É a carne que não aguenta
 e a garganta que se afina
 
+[Chorus]
+Pede — com o poco seco
+pede — com a voz que falha
+pede com o corpo em farrapos
+antes que a noite te engula
+O chão recebe o grito
+o ar carrega a dor
+Pede sem saber o nome
+de quem podes chamar
+
 [Bridge]
 Quando a vergonha já saiu
 quando o orgulho já não tem peso
@@ -1495,6 +1770,16 @@ I don't know who I'm asking
 I don't know who receives
 But something in my palms
 remembers how to grieve
+
+[Chorus]
+These hands have held too tightly
+these hands have learned to break
+Now open on the altar
+of all I cannot take
+Receiving what I'm given
+releasing what I own
+These hands, these empty hands
+are not alone
 
 [Chorus]
 These hands have held too tightly
@@ -1546,6 +1831,16 @@ a confiança e o oxigenio
 O corpo sabe a velocidade certa
 tem a sua própria regencia
 
+[Chorus]
+Incendio manso — arde sem pressa
+incendio manso — transforma sem dor
+Deixa o corpo aprender a temperatura
+do que é verdadeiro por amor
+Não precisa de destruir para mudar
+não precisa de gritar para ser real
+Incendio manso — no teu ritmo
+incendio manso — devagar
+
 [Bridge]
 Arde arde
 no teu ritmo próprio
@@ -1587,6 +1882,18 @@ the ribs know what to do
 the gasp that comes before the sob
 is the body fighting for you
 
+[Chorus]
+Breathless, breathless
+the body doesn't lie
+breathless, breathless
+it screams before you cry
+breathless in the panic
+breathless in the grief
+breathless is the body
+begging for relief
+breathless, breathless
+even here you're still alive
+
 [Bridge]
 Not weak not broken
 not too much not wrong
@@ -1625,6 +1932,16 @@ Os passaros não ficam sempre
 as estacoes mudam a pele
 mas o centro não se curva —
 o centro e o que me manteve
+
+[Chorus]
+Sou a árvore, sou a árvore
+raiz no escuro, copa no ar
+sou a árvore, sou a árvore
+ninguém me plantou — fui eu a plantar
+dou sombra sem pedir nada
+alcanço o céu sem me mover
+sou o que fica quando tudo passa
+sou o que cresce sem se perder
 
 [Bridge]
 Não sou o fruto que cai
@@ -1668,6 +1985,16 @@ your knuckles know the strain
 the water doesn't fix a thing
 it just takes away the stain
 
+[Chorus]
+Wash, wash
+let the water carry
+what your hands held too long
+wash, wash
+not a ceremony —
+just the tap, just the dark
+just the sound of letting go
+just the small release of something gone
+
 [Bridge]
 I didn't come here praying
 I didn't come to be saved
@@ -1691,6 +2018,14 @@ Foste expulsa de tantos sitios
 de mesas, de casas, de conversas com dono
 Mas aqui dentro ninguém te expulsou
 aqui dentro ainda es teu próprio trono
+
+[Chorus]
+Fecho os olhos e volto
+ao único lugar que me ficou
+Fecho os olhos e estou inteira
+sem espelho, sem máscara, sem dor
+Fecho os olhos
+e encontro quem lá ficou
 
 [Chorus]
 Fecho os olhos e volto
@@ -1744,6 +2079,16 @@ Fico de pé na beirada
 as ondas chegam aos pés
 Não me pedem que eu seja grande
 pedem que eu esteja desta vez
+
+[Chorus]
+Oceano — mais largo que o meu nome
+oceano — mais fundo que a minha dor
+As coisas que carrego são pequenas
+vistas daqui do teu clamor
+Não preciso de ser imensa
+preciso de ver o imenso
+Oceano — leva o que é demais
+oceano — o peso que dispensa
 
 [Bridge]
 A minha historia e um canto de areia
@@ -1923,6 +2268,16 @@ para fazer este ferro que corre
 O universo não se apressou a criar-me
 a paciência que o cosmos tem não morre
 
+[Chorus]
+Poeira de estrelas — no peito de uma mulher
+poeira de estrelas — nós olhos que choram hoje
+A mesma materia que acendeu galaxias
+respira e palpita e se apoia
+Não sou separada do que é imenso
+nunca fui uma ilha em si
+Poeira de estrelas — sou o cosmos
+poeira de estrelas — a respirar aqui
+
 [Bridge]
 Não es separada
 nunca foste menor
@@ -2004,6 +2359,16 @@ o verão regressa sem pedir licença
 a dor que vem não é castigo, não é drama
 e o peso exacto de quem cria existência
 
+[Chorus]
+Sangue e lua, sangue e lua
+o corpo sabe a hora de soltar
+sangue e lua, sangue e lua
+o que sangra não está a quebrar
+está a limpar, está a voltar
+o ventre e mare, o ventre e estação
+sangue e lua, sangue e lua
+não há vergonha nesta repetição
+
 [Bridge]
 Três dias de silêncio
 três dias de raiz
@@ -2048,6 +2413,16 @@ a door too tight for bigger hands
 A life that fits exactly
 what this body understands
 
+[Chorus]
+Small — not broken, not defeated
+small — the right size for this life
+Just narrow enough to fit the needle
+just quiet enough to cut the strife
+The river doesn't try to be the ocean
+the tree doesn't try to be the sky
+Small — and finally arriving
+small — no longer asking why
+
 [Bridge]
 They arrive by being precisely
 what they are and nothing more
@@ -2086,6 +2461,16 @@ Cada respiração e um universo
 a expandir sem pedir licença
 O corpo é o vaso maior
 que a mente jamais compreenca
+
+[Chorus]
+Cabe tudo — dentro deste corpo
+cabe tudo — dentro deste peito
+O infinito não está lá fora
+está aqui no meu direito
+Onde as costelas guardam
+o que não tem tamanho nem fim
+Cabe tudo — sempre coube
+cabe tudo — dentro de mim
 
 [Bridge]
 Não sou pequena demais
@@ -2127,6 +2512,16 @@ The mouth that said too much last night
 the jaw still holding on
 The forehead where I carry doubt
 before I put it on
+
+[Chorus]
+Mirror, mirror
+I am not looking away this time
+Mirror, mirror
+every line on me is mine
+No filter and no angle
+no shadow and no door
+Mirror, mirror
+show me what the dark is for
 
 [Bridge]
 I used to flinch — look then leave
@@ -2172,6 +2567,16 @@ ouve o que corre por baixo
 a água mais antiga do mundo
 e a que ainda não chegou ao raio
 
+[Chorus]
+Fonte, fonte
+onde tudo começa limpo
+fonte, fonte
+a água ainda não tem dono
+antes do nome há o pulsar
+antes do rio há o silêncio
+a terra não espera ser pedida —
+simplesmente da o que tem dentro
+
 [Bridge]
 Antes da sede há a fonte
 antes da fonte há a fisura
@@ -2211,6 +2616,16 @@ I carried what my mother
 Could never set aside
 The current did not leave me
 It only went inside
+
+[Chorus]
+Same river
+running under different ground
+Same river
+making the same sound
+You are not the stone
+You are what moves the stone
+Same river
+no one runs alone
 
 [Bridge]
 Feel the pull behind your sternum
@@ -2252,6 +2667,16 @@ e que não te pede nenhuma razão
 O corpo aceita antes da cabeça
 e a cabeça rende-se então
 
+[Chorus]
+Não mereci
+e veio na mesma
+Não mereci
+e ficou na mesma
+A graça não espera convite
+cai onde cai
+no justo no torto no vazio
+não mereci — e só por isso choro
+
 [Bridge]
 Deixei entrar o que não chamei
 abri uma porta sem ter chave
@@ -2288,6 +2713,14 @@ My stomach lives inside my throat now
 my hands are reaching, finding air
 This isn't trust — it's just the falling
 and not knowing what is there
+
+[Chorus]
+Freefall doesn't feel like peace
+Freefall feels like losing grip
+Freefall is the breath between
+the ledge and the next heartbeat's skip
+Not grace — just gravity
+doing what it always did
 
 [Bridge]
 Stomach in my throat
@@ -2440,6 +2873,18 @@ A margem não me define
 O que me move não tem nome
 É o que me une não me mina
 
+[Chorus]
+Uma só
+debaixo de mil nomes
+Uma só
+debaixo de mil rostos
+A água não tem fronteira
+A água não tem posto
+Uma só
+do mar até a nuvem
+Uma só
+do choro até o gosto
+
 [Bridge]
 Sente a água no teu corpo
 Sente o peso no teu pé
@@ -2482,6 +2927,18 @@ Where the fresh water meets the brine
 I dance because my body knows the meeting
 Of your current meeting mine
 
+[Chorus]
+Tributary
+every life runs into something larger
+Tributary
+every grief finds the water
+You are not the end
+You are the way the river bends
+Tributary
+every story adds the current
+Tributary
+nothing here is permanent
+
 [Bridge]
 Feel your feet on the wet ground
 Feel the pull toward the sea
@@ -2523,6 +2980,18 @@ Eu também fui rio fundo
 Mas o mar não pede provas
 De quanto percorri o mundo
 
+[Chorus]
+Desaguar
+deixar ir o que me trazia
+Desaguar
+não é morte e e vida
+Deixar o nome na margem
+Deixar o medo na areia
+Desaguar
+onde todas as aguas chegam
+Desaguar
+onde nenhuma água e pequena
+
 [Bridge]
 Sente o momento antes de chegar
 Quando o rio já não é só rio
@@ -2546,6 +3015,16 @@ Esfrego os dedos sem pressa
 não por estarem sujos de verdade
 Mas porque o gesto lava
 o que as mãos carregam da cidade
+
+[Chorus]
+Água nas mãos
+lava o que passou
+Água nas mãos
+o gesto mais comum que se encontrou
+Ninguém vê a cerimonia
+de uma torneira a dar
+Água que leva o dia
+e me devolve ao lugar
 
 [Chorus]
 Água nas mãos
@@ -2648,6 +3127,15 @@ The body has been speaking
 in a frequency I missed
 all the things I couldn't say out loud
 exist in every fist
+
+[Chorus]
+Listen — not for the sound
+Listen — for what's beneath the ground
+The hum beneath the quiet
+the pulse behind the pause
+Silence is not empty
+silence keeps its laws
+Listen — until you hear yourself
 
 [Bridge]
 Close your mouth
@@ -2784,6 +3272,16 @@ A mão treme sem razão
 o ar muda de qualidade
 O peito sabe antes do cerebro
 que chegou a claridade
+
+[Chorus]
+Faisca — antes de ver já sente
+faisca — no centro do real
+Aqui onde o medo tem casa
+alguma coisa acendeu o farol
+Não perguntes o que foi
+não tentes dar-lhe nome
+A faisca não pede licença
+atravessa o que dorme
 
 [Bridge]
 Deixa arder
@@ -2939,6 +3437,18 @@ But what we touched was probably the same
 She called it Jesus I call it nothing
 We were both reaching past the name
 
+[Chorus]
+Not God
+not the word they gave you
+Not God
+not the name they laid on you
+Something older than the language
+Something under every stone
+Not God
+as anyone has said it
+Not God
+but not alone
+
 [Bridge]
 Feel it in the body
 before you call it anything
@@ -3017,6 +3527,13 @@ há qualquer coisa que se encontra
 O que ficou e mais verdadeiro
 do que tudo o que a voz confronta
 
+[Chorus]
+Cala — por convite não por ordem
+Cala — o silêncio é teu lar
+Cala — a voz descansa entre ondas
+e volta mais limpa ao falar
+Cala
+
 [Bridge]
 A onda volta sempre para a margem
 mas o silêncio entre ondas e o mar
@@ -3052,6 +3569,13 @@ You did not earn the person
 who said your name like it was new
 You did not earn the morning
 that kept arriving just for you
+
+[Chorus]
+Unearned — the most beautiful things
+Unearned — the light, the bird, the dawn
+Nothing asked you to deserve it
+nothing checks what you have done
+Unearned — just open up your hands
 
 [Bridge]
 Stop trying to deserve it
@@ -3095,6 +3619,16 @@ Os meus pés conhecem barro
 as minhas mãos conhecem terra
 o que me segura ao mundo
 não tem nome — e força certa
+
+[Chorus]
+Raiz, raiz
+escura é necessaria
+raiz, raiz
+funda e solitaria
+ninguém chega ao fruto
+sem antes ter descido
+pelo escuro que trabalha
+pelo fundo que tem vivido
 
 [Bridge]
 Antes de subir há um descer
@@ -3189,6 +3723,14 @@ mas a mente ainda não sabe pousar
 É o corpo que pede com todo o seu tremor
 o que a cabeça não consegue aceitar
 
+[Chorus]
+Estou cansada de segurar
+o que nunca foi meu para ter
+Estou cansada de não largar
+o que me parte sem eu perceber
+Há um chão aqui por baixo dos meus pés
+que não precisa que eu o segure
+
 [Bridge]
 Os braços tremem o peito fecha
 os dentes cerram e o corpo cede
@@ -3228,6 +3770,16 @@ my eyes are still burned
 the water falls off me
 like a story I'vê returned
 
+[Chorus]
+Surface — I came back gasping
+surface — I came back loud
+not graceful, not glowing
+not wrapped in a cloud
+just dripping and heaving
+and stinging and alive —
+surface is not a miracle
+it's just the proof you survived
+
 [Bridge]
 I didn't rise transformed
 I didn't emerge remade
@@ -3265,6 +3817,13 @@ O que era eu quando segurava tudo
 era um lago parado sem saida
 Agora que me movo com a água
 descubro o que é estar viva
+
+[Chorus]
+Sou o rio — não a pedra no caminho
+Sou o rio — não a mão que agarra o fundo
+Sou o movimento — não a margem que resiste
+e o rio sabe ir por este mundo
+Sou o rio
 
 [Bridge]
 A água passa pelo peito
@@ -3366,6 +3925,18 @@ que não é teu mas que tu guardavas
 Escorre a magoa escorre o preço
 escorre o nome de quem te marcava
 
+[Chorus]
+Chuva
+deixa cair
+Chuva
+deixa vir
+Abre os braços no meio da rua
+deixa o céu decidir
+Chuva
+não fujas não
+Há só água a correr pela cara
+como uma bênção sem mão
+
 [Bridge]
 Não precisa de igreja
 não precisa de altar
@@ -3411,6 +3982,15 @@ feel the hollow living there
 that's where the infinite begins
 not above, but in the dare
 
+[Chorus]
+Sky inside, sky inside
+you don't need a steeple
+sky inside, sky inside
+you don't need a sign
+the breath that widens when you stop demanding —
+the space between your bones
+is your shrine
+
 [Bridge]
 Not up, not out, not somewhere else
 not a tower or a distant sign
@@ -3433,6 +4013,16 @@ Não me humilhei a ninguém
 não curvei a cabeça em vão
 Dobrar os joelhos e diferente
 quando a escolha e minha mão
+
+[Chorus]
+De joelhos e inteira
+de joelhos e de pé
+Há uma dignidade serena
+em saber o que se e
+Baixei porque quis baixar
+levantarei quando for
+De joelhos e onde aprendo
+o nome do meu valor
 
 [Chorus]
 De joelhos e inteira
@@ -3484,6 +4074,16 @@ a pimenta que abre o peito
 O arroz que incha como quem respira
 nada aqui precisa ser perfeito
 
+[Chorus]
+Alquimia, alquimia
+a panela sabe o que eu sei
+Alquimia, alquimia
+transformo o cru no que sonhei
+Com estas mãos, com este lume
+com este sal e está canção
+Alquimia — não é receita
+e a fome inteira do coração
+
 [Bridge]
 A minha mãe fazia isto
 sem medir, sem pensar, sem ver
@@ -3530,6 +4130,18 @@ O bebé não sabe ainda falar
 E já sente o que eu esqueci
 Há qualquer coisa anterior ao nome
 Que eu tinha antes de ser eu assim
+
+[Chorus]
+Sem nome
+e só assim que chega
+Sem nome
+e só assim que fica
+Não é o que eu chamo
+É o que me chama a mim
+Sem nome
+antes de qualquer crença
+Sem nome
+antes de qualquer princípio
 
 [Bridge]
 Deixa cair o que aprendeste a dizer
@@ -3615,6 +4227,16 @@ a margem não se vê
 O desamparo é o templo
 o mais nobre que há de pé
 
+[Chorus]
+Desamparo — chão sagrado
+desamparo — toca o real
+Não há catedral mais honesta
+que este escuro total
+Onde ninguém chega com consolo
+onde o orgulho não tem vez
+O desamparo é o templo
+o lugar onde o sagrado desce
+
 [Bridge]
 Vim com as mãos vazias
 vim com o corpo exausto
@@ -3639,6 +4261,16 @@ I set the table slow
 each plate placed with attention
 Each glass a little door
 each fork a small invention
+
+[Chorus]
+Break it, break it
+bread between two hands
+Flour and fire and time together
+the simplest thing that understands
+Break it, break it
+the oldest ritual we know
+Nourishment is sacred
+when the hands that feed are slow
 
 [Chorus]
 Break it, break it
@@ -3691,6 +4323,18 @@ A mão que me tocou o ombro
 não pediu retorno ou prova
 não explicou nem consolou —
 só ficou — presença nova
+
+[Chorus]
+Sozinha não — é o espanto
+sozinha não — não é fraqueza
+sozinha não — é o choque de perceber
+que o meu silêncio
+tinha eco em outra dureza
+eu também, eu também —
+três palavras que partem a armadura
+eu também, eu também —
+o que pensava ser só meu
+afinal é de outra criatura
 
 [Bridge]
 Não é que a dor desapareceu
@@ -3882,6 +4526,16 @@ não precisamos de ser fortes
 basta que as vozes se encostem
 antes de ficarmos surdas e absortas
 
+[Chorus]
+Nos, nós
+a palavra que salva
+nós, nós
+o plural que nós basta
+as vozes que se encontram
+no mesmo chão, no mesmo medo
+na mesma verdade partilhada —
+nós, e isso é tudo o que é sagrado
+
 [Bridge]
 Abre a boca
 deixa sair o som cru
@@ -3922,6 +4576,16 @@ Já disse tudo o que sabia
 já gritei tudo o que tinha
 Agora o silêncio é meu
 e a noite e minha vizinha
+
+[Chorus]
+Ficar — isso é a última prece
+ficar — sem pedir nem saber
+Ficar com o corpo que tenho
+ficar com o que vai doer
+Não é resignação nem rendição
+e a carne que escolhe o real
+Ficar — essa e a prece
+ficar — no escuro total
 
 [Bridge]
 Não há mais palavras
@@ -3966,6 +4630,14 @@ que estava a entrar num templo
 Sentei no chão de pedra do meu corpo
 e encontrei o que não tem exemplo
 
+[Chorus]
+Catedral interior — sem arquitecto
+Catedral interior — sem projecto
+A nave e o meu peito a se abrir
+o altar e o meu centro quieto
+Catedral que não precisa de ser vista
+para ser sagrada e ser real
+
 [Bridge]
 Não precisas de ir a lado nenhum
 o templo está aqui
@@ -4005,6 +4677,16 @@ this is not about fear
 this is just the body
 saying: you are here
 
+[Chorus]
+Hold, hold
+the space between two worlds
+hold, hold
+where breath becomes a choice
+hold what you don't know yet
+hold what can't be spoken
+hold yourself right there
+before the moment opens
+
 [Bridge]
 Between the wave and shore
 between the note and rest
@@ -4027,6 +4709,16 @@ Os ombros desceram sozinhos
 quando a tensão se soltou
 As mãos tremeram um instante
 foi o amem que ficou
+
+[Chorus]
+Amem do corpo
+amem da carne viva
+Amem que não se diz
+mas que não morre nem deriva
+Não preciso de palavras
+para o sagrado sentir
+O corpo é o amem que fica
+quando tudo vai partir
 
 [Chorus]
 Amem do corpo
@@ -4073,6 +4765,12 @@ As que vieram antes de mim
 também carregaram está chama escondida
 Cosiram-na nas bainhas das saias
 passaram-na de mão em mão, de vida em vida
+
+[Chorus]
+Fogo dentro, fogo sagrado
+que não consome, que não mente, que não some
+Fogo dentro, fogo que espera
+mais antigo do que o meu próprio nome
 
 [Bridge]
 Não preciso de altar para arderes
@@ -4170,6 +4868,16 @@ para que a terra me sinta por isso
 basta existir com o meu tamanho
 basta o simples gesto
 
+[Chorus]
+Grão, grão
+pequeno e necessario
+grão, grão
+invisível e sagrado
+amem não é o grito do estadio
+amem e o sussurro que sai de dentro
+quando aceitas que es só um grão
+e que esse grão e o fundamento
+
 [Bridge]
 Um grão diz amem
 não ao céu — a si mesmo
@@ -4210,6 +4918,16 @@ Não precisei de alimentar
 não precisei de soprar
 Ela sobreviveu sozinha
 ao que tentou me apagar
+
+[Chorus]
+Ainda brilha — depois de tudo
+ainda brilha — contra o escuro
+Não é coragem nem teimosia
+e o fogo que é mais puro
+Podem tirar o que é de fora
+ninguém tira o que nasceu
+Ainda brilha — e isso basta
+ainda brilha — este e o meu
 
 [Bridge]
 Está luz não se pede emprestada
@@ -4294,6 +5012,18 @@ Aprendi a não ter medo do oco
 E percebi que o que eu procurava fora
 Era o espaço que eu deixava pouco a pouco
 
+[Chorus]
+O buraco no meio
+não é para tapar
+O buraco no meio
+não é para curar
+É a porta que ficou aberta
+Quando tudo o mais fechou
+O buraco no meio
+e o sitio mais inteiro
+O buraco no meio
+e o sitio mais meu
+
 [Bridge]
 Sente o vazio no esterno
 Não o empurres para longe
@@ -4333,6 +5063,16 @@ ele sabe mais do que parece
 há uma sabedoria no involuntario
 que só aparece quando cedes
 
+[Chorus]
+Respiro, respiro
+sem saber que estou a respirar
+respiro, respiro
+há vida que não precisa de gestionar
+respiro quando o medo é grande
+respiro quando a logica falhou
+respiro antes de saber a resposta
+o corpo antecede o que a mente ainda não viu
+
 [Bridge]
 Não sejas o gestor do teu próprio ar
 as vezes a melhor coisa e não fazer nada
@@ -4371,6 +5111,16 @@ O espelho agora mostra outra
 não a que saiu de manhã
 Está tem os ombros baixos
 e uma verdade que não se estranha
+
+[Chorus]
+Despir o dia, despir o dia
+largar a pele que vesti
+Despir o dia, despir o dia
+devolver tudo o que fingi
+A roupa cai, o corpo lembra
+o que carregou sem avisar
+Despir o dia e o único gesto
+que me devolve ao meu lugar
 
 [Bridge]
 Não é vaidade, não é cansaco

@@ -33,6 +33,12 @@ não chega numa voz alheia
 Chega quando finalmente paras
 e descobres que es tu a vela
 
+[Chorus]
+O convite não vem de fora
+não chega numa voz alheia
+Chega quando finalmente paras
+e descobres que es tu a vela
+
 [Bridge]
 Não há mapa para este trilho
 não há guia que va a frente
@@ -43,8 +49,7 @@ e o silêncio que consente
 Entra devagar
 como quem volta a casa
 Tudo o que procuras
-já tem o teu nome na brasa
-`,
+já tem o teu nome na brasa`,
 
   "livro-filosofico/2": `[Verse 1]
 We carved our names from solid stone
@@ -64,6 +69,12 @@ The self you grip is made of rain
 Let the permanence dissolve like morning
 and find what lives beneath the pain
 
+[Chorus]
+Nothing stays — nothing was meant to stay
+The self you grip is made of rain
+Let the permanence dissolve like morning
+and find what lives beneath the pain
+
 [Bridge]
 You are not the name they carved for you
 not the story you rehearsed alone
@@ -74,8 +85,7 @@ you are the river, not the stone
 Let it change, let it change
 what is real does not need holding
 Let it flow like water through your hands
-the only truth is in the unfolding
-`,
+the only truth is in the unfolding`,
 
   "livro-filosofico/3": `[Verse 1]
 A memoria e uma sala escura
@@ -95,6 +105,12 @@ O presente não precisa de permissão
 A liberdade não está no que viveste
 está no que fazes com a respiração
 
+[Chorus]
+Larga a cadeira, abre a janela
+O presente não precisa de permissão
+A liberdade não está no que viveste
+está no que fazes com a respiração
+
 [Bridge]
 Não es o que te aconteceu
 não es a cicatriz no mapa
@@ -103,8 +119,7 @@ es o ar que entra e que escapa
 
 [Outro]
 O passado já te deu o que tinha
-o presente espera, quieto, por ti
-`,
+o presente espera, quieto, por ti`,
 
   "livro-filosofico/4": `[Verse 1]
 Thoughts arrive like starving birds
@@ -124,6 +139,12 @@ the weather always passes through
 Underneath the storm there lives
 a stillness nothing can undo
 
+[Chorus]
+The whirlwind is not who you are
+the weather always passes through
+Underneath the storm there lives
+a stillness nothing can undo
+
 [Bridge]
 Stop reaching for the quiet shore
 it is not something you can chase
@@ -134,8 +155,7 @@ before you tried to find its place
 Be still — the wind will pass
 and what remains is only you
 Like the sky behind the storm
-forever patient, forever true
-`,
+forever patient, forever true`,
 
   "livro-filosofico/5": `[Verse 1]
 Aprendeste que parar e morrer
@@ -155,6 +175,12 @@ A plenitude não é uma meta
 Está aqui, no exacto lugar
 onde largaste a bicicleta
 
+[Chorus]
+Para — não há nada a conquistar
+A plenitude não é uma meta
+Está aqui, no exacto lugar
+onde largaste a bicicleta
+
 [Bridge]
 O esforco encobriu o repouso
 a busca escondeu a chegada
@@ -165,8 +191,7 @@ que não viste a luz na tua sacada
 Senta-te, respira fundo
 A vida não precisa de mais nada
 Só do corpo quieto no chão
-e da alma desarmada
-`,
+e da alma desarmada`,
 
   "livro-filosofico/6": `[Verse 1]
 There is a field that frightens you
@@ -186,6 +211,12 @@ of all the things you cannot name
 The fertile dark will hold your roots
 until you bloom without the shame
 
+[Chorus]
+Let the emptiness be full
+of all the things you cannot name
+The fertile dark will hold your roots
+until you bloom without the shame
+
 [Bridge]
 What looks like nothing holds the most
 the cave before the cathedral
@@ -196,8 +227,7 @@ and let the silence be your cradle
 Desolation is not the end
 it is the pause before the garden
 The darkest field you'vê ever crossed
-is where the flowers learn to harden
-`,
+is where the flowers learn to harden`,
 
   "livro-filosofico/7": `[Verse 1]
 O horizonte prometeu-te um fim
@@ -217,6 +247,12 @@ A consciência não tem margem
 Es o oceano, não a costa
 es o voo — não a aterragem
 
+[Chorus]
+Não há destino, não há fim
+A consciência não tem margem
+Es o oceano, não a costa
+es o voo — não a aterragem
+
 [Bridge]
 Larga a ideia de chegar
 larga o mapa e a bussola
@@ -227,8 +263,7 @@ que reflecte a tua pergunta
 Caminha sem destino
 descobre que já estas
 onde sempre precisaste de estar
-e o caminho sempre foi o compás
-`,
+e o caminho sempre foi o compás`,
 
   "livro-filosofico/8": `[Verse 1]
 You drew a line between the light
@@ -248,6 +283,12 @@ wearing different cloaks and faces
 The separation was the veil
 the unity was in the spaces
 
+[Chorus]
+There was never two — just one
+wearing different cloaks and faces
+The separation was the veil
+the unity was in the spaces
+
 [Bridge]
 Hold your darkness in your arms
 it is your light turned inside out
@@ -258,8 +299,7 @@ the peace was always here throughout
 One breath, one sky, one silence
 what was divided now is whole
 The light and dark were always dancing
-inside the centre of your soul
-`,
+inside the centre of your soul`,
 
   "livro-filosofico/9": `[Verse 1]
 Chegaste ao fim que não é fim
@@ -279,6 +319,12 @@ antes de qualquer pergunta minha
 Tudo o que procuraste fora
 vivia dentro — intacto e em linha
 
+[Chorus]
+O espelho mostra o que já era
+antes de qualquer pergunta minha
+Tudo o que procuraste fora
+vivia dentro — intacto e em linha
+
 [Bridge]
 Não precisavas de te encontrar
 precisavas de parar de fugir
@@ -289,8 +335,7 @@ precisavas de te deixar existir
 Olha devagar, sem pressa
 O reflexo já não mente
 Es tu — sempre foste tu
-o princípio e o presente
-`,
+o princípio e o presente`,
 
 };
 
@@ -323,6 +368,12 @@ mas o ouro não é deles
 O que brilha não é o preço
 o que brilha es tu — sem véus
 
+[Chorus]
+Os espelhos estão dourados
+mas o ouro não é deles
+O que brilha não é o preço
+o que brilha es tu — sem véus
+
 [Bridge]
 Entra na sala devagar
 deixa os numeros lá fora
@@ -333,8 +384,7 @@ quando o medo não te ancora
 O territorio do dinheiro
 e mais teu do que pensavas
 O ouro sempre esteve dentro
-do peito que abandonavas
-`,
+do peito que abandonavas`,
 
   "curso-ouro-proprio/2": `[Verse 1]
 The numbers sit there on the page
@@ -354,6 +404,12 @@ they are not here to judge your name
 They show you where your life has been
 and where your truth began to change
 
+[Chorus]
+Look at the numbers, do not flinch
+they are not here to judge your name
+They show you where your life has been
+and where your truth began to change
+
 [Bridge]
 What you avoid will follow you like rain
 what you confront will set you free
@@ -364,8 +420,7 @@ it only asks that you can see
 Open the page and breathe
 the numbers cannot hurt you now
 They're just the footprints of your living
-not the verdict — just the how
-`,
+not the verdict — just the how`,
 
   "curso-ouro-proprio/3": `[Verse 1]
 A tua mãe guardava moedas
@@ -385,6 +440,12 @@ não se conta em notas
 Conta-se no aperto que sentes
 quando decides que mereces mais
 
+[Chorus]
+A herança financeira
+não se conta em notas
+Conta-se no aperto que sentes
+quando decides que mereces mais
+
 [Bridge]
 O dinheiro dos teus pais
 não precisa ser o teu
@@ -393,8 +454,7 @@ e escrever outra com a tua mão
 
 [Outro]
 As raízes são tuas
-mas a árvore podes escolher
-`,
+mas a árvore podes escolher`,
 
   "curso-ouro-proprio/4": `[Verse 1]
 You were taught that wanting more
@@ -414,6 +474,12 @@ abundance does not need your guilt
 You deserve the table full
 the harvest of the life you built
 
+[Chorus]
+Open your hands and let it come
+abundance does not need your guilt
+You deserve the table full
+the harvest of the life you built
+
 [Bridge]
 The universe is not a vault
 with numbered keys for chosen few
@@ -424,8 +490,7 @@ and some of it belongs to you
 Receive without apology
 the gold was always meant for you
 Like sunlight on an open palm
-it comes to those who let it through
-`,
+it comes to those who let it through`,
 
   "curso-ouro-proprio/5": `[Verse 1]
 O espelho velho já não serve
@@ -445,6 +510,12 @@ não te pede que sejas mais
 Reflecte exactamente o que es
 e o que es já e de mais
 
+[Chorus]
+O novo espelho não distorce
+não te pede que sejas mais
+Reflecte exactamente o que es
+e o que es já e de mais
+
 [Bridge]
 Escolhe o reflexo com cuidado
 não o que o mundo quer que vejas
@@ -453,8 +524,7 @@ quando mais ninguém te observa
 
 [Outro]
 O espelho dourado agora es tu
-sem moldura, sem preço, só luz
-`,
+sem moldura, sem preço, só luz`,
 
   // ═══════════════════════════════════════════
   // SANGUE E SEDA — "A tua mãe, a tua historia"
@@ -479,6 +549,12 @@ mesmo quando parecem prender
 São a terra de onde vieste
 e podes ama-las e ainda assim crescer
 
+[Chorus]
+As raízes não são correntes
+mesmo quando parecem prender
+São a terra de onde vieste
+e podes ama-las e ainda assim crescer
+
 [Bridge]
 Olha para baixo, sem medo
 vê o que te sustenta no chão
@@ -487,8 +563,7 @@ nem tudo o que é antigo e em vão
 
 [Outro]
 O que veio antes de ti
-também te trouxe até aqui
-`,
+também te trouxe até aqui`,
 
   "curso-sangue-seda/2": `[Verse 1]
 She lives inside you still — the mother
@@ -508,6 +583,12 @@ she is the fear that learned to love
 She held too tight because she knew
 how fast a heart falls from above
 
+[Chorus]
+The inner mother is not your enemy
+she is the fear that learned to love
+She held too tight because she knew
+how fast a heart falls from above
+
 [Bridge]
 You can hear her and still move
 you can love her and still choose
@@ -518,8 +599,7 @@ it is the wound that needs the truth
 Let her rest inside your chest
 you are the mother to yourself now
 The daughter grew beyond the nest
-and learned to hold her own somehow
-`,
+and learned to hold her own somehow`,
 
   "curso-sangue-seda/3": `[Verse 1]
 O sangue traz mais do que vida
@@ -539,6 +619,12 @@ e materia, e memoria
 Podes sentir o que ela sentiu
 sem repetir a sua historia
 
+[Chorus]
+O sangue não é destino
+e materia, e memoria
+Podes sentir o que ela sentiu
+sem repetir a sua historia
+
 [Bridge]
 O que corre nas tuas veias
 não te condena, não te prende
@@ -547,8 +633,7 @@ e agora atraves de ti se estende
 
 [Outro]
 O sangue lembra, mas tu decides
-o que fazer com o que herdaste
-`,
+o que fazer com o que herdaste`,
 
   "curso-sangue-seda/4": `[Verse 1]
 After all the tearing through
@@ -568,6 +653,12 @@ after all the weight of blood
 Softness is not weakness, never
 softness is the truest love
 
+[Chorus]
+Silk upon the wound, the lightness
+after all the weight of blood
+Softness is not weakness, never
+softness is the truest love
+
 [Bridge]
 Wrap the story in forgiveness
 not for her, not even yet
@@ -576,8 +667,7 @@ for carrying what you could not set
 
 [Outro]
 Let the silk replace the rope
-tenderness will find its home
-`,
+tenderness will find its home`,
 
   "curso-sangue-seda/5": `[Verse 1]
 A árvore já não sufoca
@@ -597,6 +687,12 @@ não há pressa em recomeçar
 A árvore está reorganizada
 e a sombra já não é prisão
 
+[Chorus]
+Amanhece devagar
+não há pressa em recomeçar
+A árvore está reorganizada
+e a sombra já não é prisão
+
 [Bridge]
 Honras tudo o que viveste
 honras quem veio antes de ti
@@ -605,8 +701,7 @@ e o céu começa aqui
 
 [Outro]
 A árvore respira contigo
-raízes na terra, ramos no ar
-`,
+raízes na terra, ramos no ar`,
 
   // ═══════════════════════════════════════════
   // A ARTE DA INTEIREZA — "Amar sem te perderes"
@@ -631,6 +726,12 @@ e o medo vestido de entrega
 Perderes-te no outro não é dar
 e esquecer quem eras antes da prega
 
+[Chorus]
+Desaparecer não é amor
+e o medo vestido de entrega
+Perderes-te no outro não é dar
+e esquecer quem eras antes da prega
+
 [Bridge]
 Onde estavas quando te perdeste
 em que esquina te calaste enfim
@@ -641,8 +742,7 @@ o amor pede que voltes a ti
 Volta devagar para ti
 o outro pode esperar lá fora
 Tu es a primeira visita
-que o teu corpo espera agora
-`,
+que o teu corpo espera agora`,
 
   "curso-arte-inteireza/2": `[Verse 1]
 There is a river running through
@@ -662,6 +762,12 @@ not by ropes or bridges forced
 The river holds the space between us
 and the space is not a loss
 
+[Chorus]
+Two shores connected by the water
+not by ropes or bridges forced
+The river holds the space between us
+and the space is not a loss
+
 [Bridge]
 I can see you from my shore
 you can see me from your own
@@ -672,8 +778,7 @@ to know that neither stands alone
 Two shores, one river, one horizon
 love is distance held with care
 Like two trees beside the current
-roots entwined beneath the air
-`,
+roots entwined beneath the air`,
 
   "curso-arte-inteireza/3": `[Verse 1]
 Há um lugar em ti que não precisa
@@ -693,6 +798,12 @@ completa antes de se dar
 O amor que nasce de quem se tem
 não precisa de implorar por alguém
 
+[Chorus]
+Inteira antes de ser par
+completa antes de se dar
+O amor que nasce de quem se tem
+não precisa de implorar por alguém
+
 [Bridge]
 Ninguém te completa, ninguém te parte
 ninguém te da o que já possuis
@@ -701,8 +812,7 @@ e o chão de onde o amor se ergue
 
 [Outro]
 Es inteira, mesmo quando tremes
-es inteira, mesmo quando amas
-`,
+es inteira, mesmo quando amas`,
 
   "curso-arte-inteireza/4": `[Verse 1]
 The bridge was never made of stone
@@ -722,6 +832,12 @@ it is two people choosing clear
 To meet without dissolving
 to love without the fear
 
+[Chorus]
+The bridge is not surrender
+it is two people choosing clear
+To meet without dissolving
+to love without the fear
+
 [Bridge]
 We built this crossing with our honesty
 with every truth we dared to say
@@ -730,8 +846,7 @@ upon their own ground first each day
 
 [Outro]
 Meet me on the bridge of seeing
-where two whole people dare to stay
-`,
+where two whole people dare to stay`,
 
   // ═══════════════════════════════════════════
   // DEPOIS DO FOGO — "Recomeçar após a destruição"
@@ -756,6 +871,12 @@ são o que resta quando a mentira arde
 O que sobrevive ao fogo
 e o que era verdade — cedo ou tarde
 
+[Chorus]
+Cinzas não são o fim da historia
+são o que resta quando a mentira arde
+O que sobrevive ao fogo
+e o que era verdade — cedo ou tarde
+
 [Bridge]
 Não tentes reconstruir o mesmo
 o que ardeu precisava de arder
@@ -766,8 +887,7 @@ e deixa o chão ensinar-te a ser
 Respira a fumaca que passa
 o ar limpo vem a seguir
 Como a terra depois da chuva
-o chão sabe como florir
-`,
+o chão sabe como florir`,
 
   "curso-depois-fogo/2": `[Verse 1]
 Underneath the ash there burns
@@ -787,6 +907,12 @@ that you were forged before the flame
 The burning was not your destruction
 it was the kiln that freed your name
 
+[Chorus]
+The ember knows what you forgot
+that you were forged before the flame
+The burning was not your destruction
+it was the kiln that freed your name
+
 [Bridge]
 Hold the ember in your hands
 feel the warmth of what survived
@@ -795,8 +921,7 @@ but the part of you alive
 
 [Outro]
 You are the ember, still burning
-quiet, patient, and alive
-`,
+quiet, patient, and alive`,
 
   "curso-depois-fogo/3": `[Verse 1]
 No meio das cinzas aparece
@@ -816,6 +941,12 @@ nasce porque a terra o chama
 Depois do fogo a vida volta
 diferente, quieta, sem drama
 
+[Chorus]
+O broto não pede permissão
+nasce porque a terra o chama
+Depois do fogo a vida volta
+diferente, quieta, sem drama
+
 [Bridge]
 Não apresses o que cresce
 não forces o que nasce agora
@@ -824,8 +955,7 @@ mesmo sem sol, mesmo sem hora
 
 [Outro]
 Há vida onde houve fogo
-há verde onde houve dor
-`,
+há verde onde houve dor`,
 
   "curso-depois-fogo/4": `[Verse 1]
 You keep comparing what you have
@@ -845,6 +975,12 @@ different is what fire creates
 The old was beautiful, of course
 but this is yours — and this is grace
 
+[Chorus]
+Different is not less, not broken
+different is what fire creates
+The old was beautiful, of course
+but this is yours — and this is grace
+
 [Bridge]
 Stop mourning what the flames consumed
 start looking at what chose to grow
@@ -855,8 +991,7 @@ the seeds know more than you could know
 You are different now, and whole
 the fire did not ruin you — it freed you
 Like gold that passes through the furnace
-you're the version that the flames believed through
-`,
+you're the version that the flames believed through`,
 
   // ═══════════════════════════════════════════
   // OLHOS ABERTOS — "Decidir com clareza"
@@ -881,6 +1016,12 @@ ninguém te pede que escolhas já
 A confusão e temporaria
 o nevoeiro vai levantar
 
+[Chorus]
+No nevoeiro ninguém te julga
+ninguém te pede que escolhas já
+A confusão e temporaria
+o nevoeiro vai levantar
+
 [Bridge]
 Não forces a clareza agora
 ela vem quando estiveres pronta
@@ -889,8 +1030,7 @@ a vista chega, não se afugenta
 
 [Outro]
 Respira no que não se vê
-o caminho vai aparecer
-`,
+o caminho vai aparecer`,
 
   "curso-olhos-abertos/2": `[Verse 1]
 A thousand paths diverge from here
@@ -910,6 +1050,12 @@ no road without its share of stones
 The crossroads is not where you fail
 it is where you learn to trust your bones
 
+[Chorus]
+There is no perfect path to choose
+no road without its share of stones
+The crossroads is not where you fail
+it is where you learn to trust your bones
+
 [Bridge]
 The paralysis of many doors
 is just the fear of closing one
@@ -918,8 +1064,7 @@ becomes a window to the sun
 
 [Outro]
 Stand still, then choose, then breathe
-the crossroads cannot hold you here
-`,
+the crossroads cannot hold you here`,
 
   "curso-olhos-abertos/3": `[Verse 1]
 Há um vento que empurra o nevoeiro
@@ -939,6 +1084,12 @@ e uma brisa que limpa a vista
 Não precisas de ver tudo
 só o passo seguinte basta
 
+[Chorus]
+A clareza não é uma explosão
+e uma brisa que limpa a vista
+Não precisas de ver tudo
+só o passo seguinte basta
+
 [Bridge]
 O nevoeiro está a levantar
 não porque forcaste a vista
@@ -947,8 +1098,7 @@ e a verdade fez-se conquista
 
 [Outro]
 Já consegues ver o chão
-o proximo passo é teu
-`,
+o proximo passo é teu`,
 
   "curso-olhos-abertos/4": `[Verse 1]
 The fog has lifted just enough
@@ -968,6 +1118,12 @@ not because the ground is rough
 But because you chose to walk
 and choosing is already enough
 
+[Chorus]
+The first step is the hardest one
+not because the ground is rough
+But because you chose to walk
+and choosing is already enough
+
 [Bridge]
 One foot forward then the next
 the road appears beneath your stride
@@ -978,8 +1134,7 @@ you were waiting for the tide
 Walk now — the path will hold
 the first step was always yours to take
 Like a river finds the valley
-every step will find its wake
-`,
+every step will find its wake`,
 
   // ═══════════════════════════════════════════
   // PELE NUA — "O corpo como territorio"
@@ -1004,6 +1159,12 @@ só tem sensacoes por nomear
 Passa os dedos por cada linha
 e deixa o corpo falar
 
+[Chorus]
+O mapa do corpo não tem legenda
+só tem sensacoes por nomear
+Passa os dedos por cada linha
+e deixa o corpo falar
+
 [Bridge]
 Onde dói, há historia
 onde pesa, há verdade
@@ -1012,8 +1173,7 @@ e espera com paciência e saudade
 
 [Outro]
 Descobre o que a carne sabe
-o corpo é o teu primeiro lar
-`,
+o corpo é o teu primeiro lar`,
 
   "curso-pele-nua/2": `[Verse 1]
 The skin remembers every hand
@@ -1033,6 +1193,12 @@ it holds the truth without a story
 Just sensation, just the echo
 of a body keeping inventory
 
+[Chorus]
+Skin memory does not lie
+it holds the truth without a story
+Just sensation, just the echo
+of a body keeping inventory
+
 [Bridge]
 Touch the place that holds the weight
 and ask it what it needs from you
@@ -1043,8 +1209,7 @@ just attention long overdue
 The skin remembers só you listen
 the body speaks in its own tongue
 Like the earth that knows the season
-every scar is a song unsung
-`,
+every scar is a song unsung`,
 
   "curso-pele-nua/3": `[Verse 1]
 Voltar ao corpo é voltar a casa
@@ -1064,6 +1229,12 @@ e sentir o peso no colchão
 E ouvir o sangue a correr
 e chamar-lhe gratidão
 
+[Chorus]
+Habitar e mais que estar
+e sentir o peso no colchão
+E ouvir o sangue a correr
+e chamar-lhe gratidão
+
 [Bridge]
 Não precisas de corpo perfeito
 precisas de corpo habitado
@@ -1072,8 +1243,7 @@ e sabes que es bem-chegada
 
 [Outro]
 Bem-vinda de volta ao corpo
-ele esperou por ti, sem pressa
-`,
+ele esperou por ti, sem pressa`,
 
   "curso-pele-nua/4": `[Verse 1]
 The search for home led you só far
@@ -1093,6 +1263,12 @@ built from years of being here
 No decoration, no perfection
 just the warmth of being near
 
+[Chorus]
+Home body, sacred architecture
+built from years of being here
+No decoration, no perfection
+just the warmth of being near
+
 [Bridge]
 Stop running from the house you are
 stop renovating what is sound
@@ -1101,8 +1277,7 @@ your body is the holiest ground
 
 [Outro]
 You are home, you always were
-the body is where belonging lives
-`,
+the body is where belonging lives`,
 
   // ═══════════════════════════════════════════
   // LIMITE SAGRADO — "Dizer não sem culpa"
@@ -1127,6 +1302,12 @@ o vento leva tudo o que tens
 A bondade sem limite
 e uma forma de sumir também
 
+[Chorus]
+Sem muralha, sem protecção
+o vento leva tudo o que tens
+A bondade sem limite
+e uma forma de sumir também
+
 [Bridge]
 Não é egoismo ter fronteira
 não é frieza ter contorno
@@ -1137,8 +1318,7 @@ precisa de espaço para o retorno
 O chão onde estavas aberta
 agora pede uma muralha tua
 Uma linha de luz no barro
-que diz aqui começo eu — e não recua
-`,
+que diz aqui começo eu — e não recua`,
 
   "curso-limite-sagrado/2": `[Verse 1]
 From deep inside the ground it rises
@@ -1158,6 +1338,12 @@ built from truth and not from rage
 This is where my kindness starts
 this is where I turn the page
 
+[Chorus]
+Wall of light, wall of knowing
+built from truth and not from rage
+This is where my kindness starts
+this is where I turn the page
+
 [Bridge]
 The wall is luminous, not solid
 it bends but it does not break
@@ -1166,8 +1352,7 @@ but only love, for your own sake
 
 [Outro]
 The light is rising from within
-your boundary is made of gold
-`,
+your boundary is made of gold`,
 
   "curso-limite-sagrado/3": `[Verse 1]
 A muralha tem uma porta
@@ -1187,6 +1372,12 @@ decidir quem entra, quem fica
 Não é rejeição, não é castigo
 e a escolha de quem cuida
 
+[Chorus]
+A porta e o acto mais sagrado
+decidir quem entra, quem fica
+Não é rejeição, não é castigo
+e a escolha de quem cuida
+
 [Bridge]
 Dizer não é abrir a porta certa
 dizer não é proteger o sim
@@ -1195,8 +1386,7 @@ o limite traz o amor a ti
 
 [Outro]
 A chave e tua, sempre foi
-a porta espera pela tua mão
-`,
+a porta espera pela tua mão`,
 
   "curso-limite-sagrado/4": `[Verse 1]
 There is nothing more courageous
@@ -1216,6 +1406,12 @@ not from pain but from devotion
 Sacred is the space you keep
 sacred is your self-protection
 
+[Chorus]
+Sacred is the line you draw
+not from pain but from devotion
+Sacred is the space you keep
+sacred is your self-protection
+
 [Bridge]
 Love does not demand your absence
 love does not require your shrinking
@@ -1226,8 +1422,7 @@ is standing tall while others are sinking
 The limit is an act of love
 the most holy thing you own
 A garden gate made out of gold
-that says — this ground is sacred stone
-`,
+that says — this ground is sacred stone`,
 
   // ═══════════════════════════════════════════
   // FLORES NO ESCURO — "Atravessar o luto"
@@ -1252,6 +1447,12 @@ e o lugar onde o luto mora
 Não se atravessa com pressa
 atravessa-se devagar — sem hora
 
+[Chorus]
+A caverna não é castigo
+e o lugar onde o luto mora
+Não se atravessa com pressa
+atravessa-se devagar — sem hora
+
 [Bridge]
 No escuro total os olhos
 aprendem a ver de outra forma
@@ -1262,8 +1463,7 @@ não com vista mas com a alma
 Fica na caverna o tempo que precisares
 o escuro não te vai engolir
 Até as pedras mais profundas
-guardam sementes por abrir
-`,
+guardam sementes por abrir`,
 
   "curso-flores-escuro/2": `[Verse 1]
 In the deepest part of dark
@@ -1283,6 +1483,12 @@ light that owes nothing to the sun
 Born from grief and born from patience
 born from staying when you wanted to run
 
+[Chorus]
+Glow inside the underground
+light that owes nothing to the sun
+Born from grief and born from patience
+born from staying when you wanted to run
+
 [Bridge]
 The cave is not your enemy
 the darkness is not your grave
@@ -1291,8 +1497,7 @@ is the most courageous light you gave
 
 [Outro]
 There is light in you that grief
-could not extinguish, only deepen
-`,
+could not extinguish, only deepen`,
 
   "curso-flores-escuro/3": `[Verse 1]
 No meio do escuro nascem flores
@@ -1312,6 +1517,12 @@ beleza que não pede aplausos
 Crescem porque a vida insiste
 mesmo quando tu já não ousas
 
+[Chorus]
+Flores no escuro, flores sem sol
+beleza que não pede aplausos
+Crescem porque a vida insiste
+mesmo quando tu já não ousas
+
 [Bridge]
 Não arranques o que nasce
 não digas que é cedo de mais
@@ -1320,8 +1531,7 @@ são a prova de que ainda es capaz
 
 [Outro]
 Deixa florescer o que cresce
-o escuro também sabe criar
-`,
+o escuro também sabe criar`,
 
   "curso-flores-escuro/4": `[Verse 1]
 The cave has turned into a garden
@@ -1341,6 +1551,12 @@ where no one thought a seed could stay
 Grief did not destroy the garden
 grief became the soil one day
 
+[Chorus]
+The garden grows beneath the surface
+where no one thought a seed could stay
+Grief did not destroy the garden
+grief became the soil one day
+
 [Bridge]
 You did not plant these flowers choosing
 they grew because you chose to stay
@@ -1349,8 +1565,7 @@ you turned the night into the day
 
 [Outro]
 The underground is luminous
-the garden lives because you stayed
-`,
+the garden lives because you stayed`,
 
   // ═══════════════════════════════════════════
   // O PESO E O CHAO — "Largar o que carregas"
@@ -1375,6 +1590,12 @@ não te pedem que as carregues
 Es tu que decides o peso
 es tu que decides se segues
 
+[Chorus]
+As pedras pesam mas não falam
+não te pedem que as carregues
+Es tu que decides o peso
+es tu que decides se segues
+
 [Bridge]
 Cada pedra tem um nome
 cada peso tem um rosto
@@ -1383,8 +1604,7 @@ e pergunta se e teu de facto
 
 [Outro]
 O caminho está cheio de pedras
-mas nenhuma te pertence por lei
-`,
+mas nenhuma te pertence por lei`,
 
   "curso-peso-chao/2": `[Verse 1]
 Your spine has curved beneath the load
@@ -1404,6 +1624,12 @@ it is the shape of what you carried
 Your body knows a different posture
 the one it held before it married
 
+[Chorus]
+Bent is not your natural state
+it is the shape of what you carried
+Your body knows a different posture
+the one it held before it married
+
 [Bridge]
 Feel the curve inside your back
 the ache that whispers every morning
@@ -1414,8 +1640,7 @@ it is the weight that needs a warning
 You were not born bent
 the weight was given, not designed
 Your spine remembers standing tall
-like a tree remembers sky and wind
-`,
+like a tree remembers sky and wind`,
 
   "curso-peso-chao/3": `[Verse 1]
 A primeira pedra que pousaste
@@ -1435,6 +1660,12 @@ pousar é devolver a terra
 O que não é teu não te protege
 o que não é teu só te enterra
 
+[Chorus]
+Pousar não é abandonar
+pousar é devolver a terra
+O que não é teu não te protege
+o que não é teu só te enterra
+
 [Bridge]
 Não precisas de largar tudo
 começa por uma só pedra
@@ -1443,8 +1674,7 @@ sente o ar que entra com a entrega
 
 [Outro]
 O chão aceita o que pousares
-e tu aceitas ser mais leve
-`,
+e tu aceitas ser mais leve`,
 
   "curso-peso-chao/4": `[Verse 1]
 The stones lie scattered on the ground
@@ -1464,6 +1694,12 @@ a testament to what you shed
 You are lighter than you thought
 you are more than what you carried
 
+[Chorus]
+Standing tall, the stones below
+a testament to what you shed
+You are lighter than you thought
+you are more than what you carried
+
 [Bridge]
 The road ahead has no more burden
 only footsteps, only ground
@@ -1472,8 +1708,7 @@ and even that is barely sound
 
 [Outro]
 You are standing, light and free
-the stones remain but you do not
-`,
+the stones remain but you do not`,
 
   // ═══════════════════════════════════════════
   // VOZ DE DENTRO — "Encontrar a tua voz"
@@ -1498,6 +1733,12 @@ e o espaço antes da verdade
 A sala vazia não está vazia
 está cheia da tua vontade
 
+[Chorus]
+O silêncio não é ausência
+e o espaço antes da verdade
+A sala vazia não está vazia
+está cheia da tua vontade
+
 [Bridge]
 Não forces o primeiro som
 ele vem quando estiveres pronta
@@ -1508,8 +1749,7 @@ e o ventre da tua resposta
 A sala espera sem pressa
 o primeiro som será teu
 Como a chuva que espera a nuvem
-a tua voz espera o teu céu
-`,
+a tua voz espera o teu céu`,
 
   "curso-voz-dentro/2": `[Verse 1]
 You spoke a word into the dark
@@ -1529,6 +1769,12 @@ the first sound that you recognised
 Not the voice of those who shaped you
 but the one that lives inside
 
+[Chorus]
+Echo, echo of your being
+the first sound that you recognised
+Not the voice of those who shaped you
+but the one that lives inside
+
 [Bridge]
 Speak again, and hear it clearer
 every echo makes it true
@@ -1537,8 +1783,7 @@ the room is only holding you
 
 [Outro]
 The echo says what you forgot
-you have a voice, and it is yours
-`,
+you have a voice, and it is yours`,
 
   "curso-voz-dentro/3": `[Verse 1]
 A voz estava sempre lá
@@ -1558,6 +1803,12 @@ não precisa de palco nem plateia
 Precisa só de te ouvires
 sem te corrigires, sem meia
 
+[Chorus]
+A tua voz não precisa de ensaio
+não precisa de palco nem plateia
+Precisa só de te ouvires
+sem te corrigires, sem meia
+
 [Bridge]
 Fala como falas sozinha
 quando ninguém te está a ouvir
@@ -1566,8 +1817,7 @@ e essa a voz que quer sair
 
 [Outro]
 A voz que sempre esteve lá
-agora finalmente ecoa
-`,
+agora finalmente ecoa`,
 
   "curso-voz-dentro/4": `[Verse 1]
 The silence breaks with something warm
@@ -1587,6 +1837,12 @@ sing the voice that was denied
 Sing the years of silent waiting
 sing the truth you kept inside
 
+[Chorus]
+Sing now, sing without permission
+sing the voice that was denied
+Sing the years of silent waiting
+sing the truth you kept inside
+
 [Bridge]
 This is not performance, not a show
 this is the sacred act of being heard
@@ -1597,8 +1853,7 @@ every silence finds its word
 The room is full of your own voice
 and nothing in the world sounds truer
 Sing, because the silence asked you
-sing, because the song is you
-`,
+sing, because the song is you`,
 
   // ═══════════════════════════════════════════
   // O FIO INVISIVEL — "A ligação entre todos nós"
@@ -1623,6 +1878,12 @@ que esconde o que nós liga
 Um fio invisível
 que nenhuma distância obriga
 
+[Chorus]
+Superficie opaca
+que esconde o que nós liga
+Um fio invisível
+que nenhuma distância obriga
+
 [Bridge]
 Não precisas de o ver
 para saber que ele existe
@@ -1633,8 +1894,7 @@ e anterior a qualquer triste
 O lago espera
 que olhes para a água
 e descubras que nunca estiveste
-tão só como a sombra te água
-`,
+tão só como a sombra te água`,
 
   "curso-fio-invisivel/2": `[Verse 1]
 There's a golden thread between us
@@ -1654,6 +1914,12 @@ connecting what was never said
 Between your healing and the world
 an invisible belonging is unfurled
 
+[Chorus]
+Golden thread, golden thread
+connecting what was never said
+Between your healing and the world
+an invisible belonging is unfurled
+
 [Bridge]
 You are not alone in this
 your courage touches those you'll never know
@@ -1662,8 +1928,7 @@ that we are woven in the undertow
 
 [Outro]
 Pull the thread gently
-and feel who answers on the other side
-`,
+and feel who answers on the other side`,
 
   "curso-fio-invisivel/3": `[Verse 1]
 Na água transparente
@@ -1683,12 +1948,17 @@ reflexos de quem vem depois
 O lago guarda todas
 e não distingue as nossas vozes
 
+[Chorus]
+Reflexos de quem veio antes
+reflexos de quem vem depois
+O lago guarda todas
+e não distingue as nossas vozes
+
 [Outro]
 Somos todas a mesma água
 em corpos diferentes
 O lago sabe isso
-desde sempre
-`,
+desde sempre`,
 
   "curso-fio-invisivel/4": `[Verse 1]
 The reflections merge as one
@@ -1708,6 +1978,12 @@ not the loss of who I am
 But the knowing that my healing
 is a thread in something grand
 
+[Chorus]
+Unity, unity
+not the loss of who I am
+But the knowing that my healing
+is a thread in something grand
+
 [Bridge]
 I am one, I am all
 I am drop and I am sea
@@ -1718,8 +1994,7 @@ was the truest part of me
 The lake reflects it clearly now
 we were never truly apart
 The thread was always golden
-and it lives inside the heart
-`,
+and it lives inside the heart`,
 
   // ═══════════════════════════════════════════
   // O ESPELHO DO OUTRO — "O que o outro revela"
@@ -1744,12 +2019,17 @@ onde o outro e o meu espelho
 O que vejo lá fora
 vive dentro de mim — tão velho
 
+[Chorus]
+Galeria escura
+onde o outro e o meu espelho
+O que vejo lá fora
+vive dentro de mim — tão velho
+
 [Outro]
 Antes de julgar o outro
 olha para o que te mostra de ti
 Como o lago reflecte a margem
-o outro reflecte o que há em mim
-`,
+o outro reflecte o que há em mim`,
 
   "curso-espelho-outro/2": `[Verse 1]
 The mirror shows my face at last
@@ -1769,6 +2049,12 @@ you were showing me all along
 Every judgment was a message
 every critic was a song
 
+[Chorus]
+Mirror self, mirror self
+you were showing me all along
+Every judgment was a message
+every critic was a song
+
 [Bridge]
 I see me now in every face
 the brave, the broken, the unkind
@@ -1777,8 +2063,7 @@ for the parts I left behind
 
 [Outro]
 Partial recognition
-is the bravest place to start
-`,
+is the bravest place to start`,
 
   "curso-espelho-outro/3": `[Verse 1]
 Os espelhos ficam claros
@@ -1799,12 +2084,18 @@ não como identidade
 O espelho mostra-me inteira
 com toda a minha verdade
 
+[Chorus]
+Integração
+o outro como contexto
+não como identidade
+O espelho mostra-me inteira
+com toda a minha verdade
+
 [Outro]
 Já não preciso do outro
 para saber quem sou
 O espelho limpo mostra
-o que sempre esteve no meu fundo
-`,
+o que sempre esteve no meu fundo`,
 
   "curso-espelho-outro/4": `[Verse 1]
 Clear glass, clear glass
@@ -1824,6 +2115,12 @@ that I was looking for outside
 What was always mine to carry
 was the self I tried to hide
 
+[Chorus]
+Clear glass shows the truth
+that I was looking for outside
+What was always mine to carry
+was the self I tried to hide
+
 [Bridge]
 Thank you for the mirror
 thank you for the pain
@@ -1834,8 +2131,7 @@ helped me see myself again
 The gallery is peaceful now
 each mirror shows the same
 A woman whole and unafraid
-who finally knows her name
-`,
+who finally knows her name`,
 
   // ═══════════════════════════════════════════
   // O SILÊNCIO QUE GRITA — "O que nunca foi dito"
@@ -1860,12 +2156,17 @@ onde os ecos foram presos
 O que nunca foi dito
 pesa mais que mil excessos
 
+[Chorus]
+Caverna muda
+onde os ecos foram presos
+O que nunca foi dito
+pesa mais que mil excessos
+
 [Outro]
 O silêncio da familia
 não é paz — e medo antigo
 Um rio que corre por baixo
-e espera por quem lhe de abrigo
-`,
+e espera por quem lhe de abrigo`,
 
   "curso-silencio-grita/2": `[Verse 1]
 The first word cracks the silence
@@ -1885,6 +2186,12 @@ breaking what was never broken
 The silence was the prison
 and the word is the first token
 
+[Chorus]
+First word, first word
+breaking what was never broken
+The silence was the prison
+and the word is the first token
+
 [Bridge]
 It does not need to be perfect
 it does not need to be loud
@@ -1895,8 +2202,7 @@ and spoken — not just a cloud
 The cavern trembles
 but it does not fall
 The first word held more courage
-than the silence held at all
-`,
+than the silence held at all`,
 
   "curso-silencio-grita/3": `[Verse 1]
 Os ecos tornam-se dourados
@@ -1916,12 +2222,17 @@ onde antes era cinza
 A voz que sai agora
 e a mesma que a familia aprisiona
 
+[Chorus]
+Ecos dourados
+onde antes era cinza
+A voz que sai agora
+e a mesma que a familia aprisiona
+
 [Outro]
 As palavras libertadas
 não destroem — iluminam
 O que era medo de falar
-tornou-se força que germina
-`,
+tornou-se força que germina`,
 
   "curso-silencio-grita/4": `[Verse 1]
 The walls are singing golden now
@@ -1941,6 +2252,12 @@ the silence learned to sing
 Every word a liberation
 every echo offering
 
+[Chorus]
+Resonance, resonance
+the silence learned to sing
+Every word a liberation
+every echo offering
+
 [Bridge]
 This is not revenge or blame
 this is not a war declared
@@ -1951,8 +2268,7 @@ to the voice that always cared
 The cavern glows with golden light
 the family silence breaks
 Not with anger, not with shame
-but with the sound a whole heart makes
-`,
+but with the sound a whole heart makes`,
 
   // ═══════════════════════════════════════════
   // A TEIA — "Pertencer sem desaparecer"
@@ -1977,12 +2293,17 @@ quem pertence e quem se esquece
 A teia sem espaço livre
 e uma prisão que não parece
 
+[Chorus]
+Fios presos que sufocam
+quem pertence e quem se esquece
+A teia sem espaço livre
+e uma prisão que não parece
+
 [Outro]
 Pertencer não devia custar
 a pessoa que tu es
 Como a árvore pertence ao bosque
-sem perder as proprias raízes dos pés
-`,
+sem perder as proprias raízes dos pés`,
 
   "curso-teia/2": `[Verse 1]
 Some threads needed cutting
@@ -2002,6 +2323,12 @@ not from love but from the cage
 Selective liberation
 is the bravest kind of stage
 
+[Chorus]
+Cut free, cut free
+not from love but from the cage
+Selective liberation
+is the bravest kind of stage
+
 [Bridge]
 The forest fills with golden light
 where tangled darkness used to grow
@@ -2010,8 +2337,7 @@ now has the space to glow
 
 [Outro]
 Freedom is not leaving
-freedom is choosing how to stay
-`,
+freedom is choosing how to stay`,
 
   "curso-teia/3": `[Verse 1]
 A teia agora e bonita
@@ -2031,12 +2357,17 @@ que liga sem prender
 Uma rede de ouro
 que te deixa ser quem es e crescer
 
+[Chorus]
+Teia bonita
+que liga sem prender
+Uma rede de ouro
+que te deixa ser quem es e crescer
+
 [Outro]
 Pertencer sem desaparecer
 e a teia mais bonita
 Cada fio uma escolha
-cada escolha infinita
-`,
+cada escolha infinita`,
 
   "curso-teia/4": `[Verse 1]
 I belong and I am whole
@@ -2056,6 +2387,12 @@ without the cost of disappearing
 Whole within the web of life
 whole within the threads of feeling
 
+[Chorus]
+Belong, belong
+without the cost of disappearing
+Whole within the web of life
+whole within the threads of feeling
+
 [Bridge]
 This is what community means
 not drowning in the we
@@ -2066,8 +2403,7 @@ and still being fully free
 The web is golden
 the forest is alive
 I am whole
-and I belong
-`,
+and I belong`,
 
   // ═══════════════════════════════════════════
   // A CHAMA — "A raiva como força"
@@ -2092,12 +2428,17 @@ o vulcão que ninguém vê
 A raiva escondida
 e a que mais te vai corroer
 
+[Chorus]
+Selado, selado
+o vulcão que ninguém vê
+A raiva escondida
+e a que mais te vai corroer
+
 [Outro]
 O fogo não desaparece
 só porque fechas os olhos
 Arde por dentro como brasa
-debaixo de tantos refolhos
-`,
+debaixo de tantos refolhos`,
 
   "curso-chama/2": `[Verse 1]
 The surface starts to crack
@@ -2117,6 +2458,12 @@ the first fissure lets it breathe
 The anger is not evil
 it is the force beneath
 
+[Chorus]
+Crack, crack
+the first fissure lets it breathe
+The anger is not evil
+it is the force beneath
+
 [Bridge]
 Feel the heat beneath the surface
 feel the power in the flame
@@ -2127,8 +2474,7 @@ this is you reclaiming your name
 The crack is not the end
 it is the very start
 Of meeting the fire
-that lives inside your heart
-`,
+that lives inside your heart`,
 
   "curso-chama/3": `[Verse 1]
 A lava flui em canais
@@ -2148,12 +2494,17 @@ que ilumina em vez de queimar
 A raiva como aliada
 que te ensina a não calar
 
+[Chorus]
+Fogo controlado
+que ilumina em vez de queimar
+A raiva como aliada
+que te ensina a não calar
+
 [Outro]
 O vulcão não explode
 quando o deixas respirar
 O fogo controlado
-e o mais bonito de guardar
-`,
+e o mais bonito de guardar`,
 
   "curso-chama/4": `[Verse 1]
 The volcano blazes beautiful
@@ -2173,6 +2524,12 @@ the volcano is alive
 Not with destruction but with power
 the brightest way to thrive
 
+[Chorus]
+Blaze, blaze
+the volcano is alive
+Not with destruction but with power
+the brightest way to thrive
+
 [Bridge]
 Every boundary needs fire
 every crown needs flame
@@ -2183,8 +2540,7 @@ will never be the same
 Blaze on, beautiful volcano
 your fire is your right
 The world needs women burning bright
-not women dimming their own light
-`,
+not women dimming their own light`,
 
   // ═══════════════════════════════════════════
   // A MULHER ANTES DE MAE — "Quem eras antes do ninho"
@@ -2209,12 +2565,17 @@ que engole quem tu eras
 A mãe comeu a mulher
 e ninguém notou a perda
 
+[Chorus]
+Ninho pesado
+que engole quem tu eras
+A mãe comeu a mulher
+e ninguém notou a perda
+
 [Outro]
 Há uma mulher por baixo da mãe
 e ela ainda respira
 Como uma raiz debaixo da neve
-espera a primavera que a inspira
-`,
+espera a primavera que a inspira`,
 
   "curso-mulher-mae/2": `[Verse 1]
 Before the nest there was a woman
@@ -2234,6 +2595,12 @@ who were you before the nest
 Before the endless giving
 before you gave away your rest
 
+[Chorus]
+Before, before
+who were you before the nest
+Before the endless giving
+before you gave away your rest
+
 [Bridge]
 She is still there
 beneath the mothering, the care
@@ -2242,8 +2609,7 @@ to breathe her own air
 
 [Outro]
 Remember her
-she remembers you
-`,
+she remembers you`,
 
   "curso-mulher-mae/3": `[Verse 1]
 Duas formas no mesmo corpo
@@ -2263,12 +2629,17 @@ da mesma pessoa inteira
 Coexistencia bonita
 sem culpa, sem fronteira
 
+[Chorus]
+Duas formas
+da mesma pessoa inteira
+Coexistencia bonita
+sem culpa, sem fronteira
+
 [Outro]
 Não es só mãe
 não es só mulher
 Es as duas coisas
-e isso é o teu poder
-`,
+e isso é o teu poder`,
 
   "curso-mulher-mae/4": `[Verse 1]
 The nest is whole and beautiful
@@ -2288,6 +2659,12 @@ room for who I am complete
 Mother, woman, dreamer, dancer
 standing on my own two feet
 
+[Chorus]
+Whole nest, whole nest
+room for who I am complete
+Mother, woman, dreamer, dancer
+standing on my own two feet
+
 [Bridge]
 The guilt dissolves like morning fog
 the should dissolves like ice
@@ -2300,8 +2677,7 @@ the prize
 The nest is light now
 and the woman sings again
 Inside the mother, inside the woman
-lives a world without amen
-`,
+lives a world without amen`,
 
   // ═══════════════════════════════════════════
   // O OFICIO DE SER — "Trabalho com propósito"
@@ -2326,12 +2702,17 @@ que não param de girar
 O oficio sem propósito
 e uma forma lenta de apagar
 
+[Chorus]
+Maquinas, maquinas
+que não param de girar
+O oficio sem propósito
+e uma forma lenta de apagar
+
 [Outro]
 A oficina sem janela
 e uma prisão que pagas tu
 Mas há uma porta escondida
-e do outro lado há céu e há luz
-`,
+e do outro lado há céu e há luz`,
 
   "curso-oficio-ser/2": `[Verse 1]
 The machines stop turning
@@ -2351,6 +2732,12 @@ the first one since you can remember
 The light is warm like April
 after a long December
 
+[Chorus]
+Pause, pause
+the first one since you can remember
+The light is warm like April
+after a long December
+
 [Bridge]
 You don't need to run
 to prove you matter
@@ -2361,8 +2748,7 @@ to hear the shatter
 The first pause
 is the first act of respect
 For the body that has carried you
-through everything unchecked
-`,
+through everything unchecked`,
 
   "curso-oficio-ser/3": `[Verse 1]
 A oficina agora tem ritmo
@@ -2382,12 +2768,17 @@ da oficina com janela
 Trabalhar sem prisão
 e a mais bonita sentinela
 
+[Chorus]
+Ritmo próprio
+da oficina com janela
+Trabalhar sem prisão
+e a mais bonita sentinela
+
 [Outro]
 O propósito não é o produto
 e a presença no fazer
 O oficio mais sagrado
-e o oficio de ser
-`,
+e o oficio de ser`,
 
   "curso-oficio-ser/4": `[Verse 1]
 The window's open wide now
@@ -2407,6 +2798,12 @@ the sacred art of being here
 Not running from the emptiness
 but filling it with care
 
+[Chorus]
+Craft, craft
+the sacred art of being here
+Not running from the emptiness
+but filling it with care
+
 [Bridge]
 Purpose is not performance
 purpose is not speed
@@ -2417,8 +2814,7 @@ that you are all you need
 The workshop hums with warmth
 the window shows the sky
 I am here, I am working
-I am enough, and that is why
-`,
+I am enough, and that is why`,
 
   // ═══════════════════════════════════════════
   // O RELÓGIO PARTIDO — "Libertar-se do tempo"
@@ -2443,12 +2839,17 @@ que aprisiona o presente
 Vives a correr do tempo
 e o tempo vive-te na mente
 
+[Chorus]
+Relógio gigante
+que aprisiona o presente
+Vives a correr do tempo
+e o tempo vive-te na mente
+
 [Outro]
 O jardim existe sem o relógio
 foste tu que esqueceste
 Que as flores não precisam de horas
-precisam só de quem as veste
-`,
+precisam só de quem as veste`,
 
   "curso-relogio/2": `[Verse 1]
 The clock is cracking now
@@ -2468,6 +2869,12 @@ the prison of the clock undone
 When time stops ruling everything
 the present has begun
 
+[Chorus]
+Cracking time, cracking time
+the prison of the clock undone
+When time stops ruling everything
+the present has begun
+
 [Bridge]
 You don't need more hours
 you need more presence in the ones you have
@@ -2478,8 +2885,7 @@ it was just a habit made of glass
 Let it crack
 let it break
 the garden doesn't need the clock
-to know when flowers wake
-`,
+to know when flowers wake`,
 
   "curso-relogio/3": `[Verse 1]
 O relógio partiu
@@ -2499,12 +2905,17 @@ sem ordem nem calendario
 O jardim sem relógio
 e o mais bonito santuario
 
+[Chorus]
+Estacoes juntas
+sem ordem nem calendario
+O jardim sem relógio
+e o mais bonito santuario
+
 [Outro]
 O tempo não é inimigo
 quando deixas de o perseguir
 O presente e tudo o que tens
-e tudo o que podes sentir
-`,
+e tudo o que podes sentir`,
 
   "curso-relogio/4": `[Verse 1]
 No clock, no rush, no running
@@ -2524,6 +2935,12 @@ the only place that's real
 When the clock stops ticking
 you begin to feel
 
+[Chorus]
+Present, present
+the only place that's real
+When the clock stops ticking
+you begin to feel
+
 [Bridge]
 Amber light and silver calm
 the garden knows no haste
@@ -2534,8 +2951,7 @@ is a second not gone to waste
 The clock is broken
 and I am finally free
 The garden has no schedule
-and neither now does me
-`,
+and neither now does me`,
 
   // ═══════════════════════════════════════════
   // A COROA ESCONDIDA — "O poder que é teu"
@@ -2560,12 +2976,17 @@ na sala mais escura
 O poder que é teu
 escondido numa moldura
 
+[Chorus]
+Trono coberto
+na sala mais escura
+O poder que é teu
+escondido numa moldura
+
 [Outro]
 O trono não desaparece
 só porque não olhas para ele
 Como a lua não se apaga
-só porque fechas a janela dele
-`,
+só porque fechas a janela dele`,
 
   "curso-coroa/2": `[Verse 1]
 The cloths are slipping slowly
@@ -2585,6 +3006,12 @@ the power you were hiding from
 It was never someone else's
 it was yours, the whole time, all along
 
+[Chorus]
+Unveiled, unveiled
+the power you were hiding from
+It was never someone else's
+it was yours, the whole time, all along
+
 [Bridge]
 Touch it if you dare
 the wood is warm beneath your hand
@@ -2595,8 +3022,7 @@ for the woman brave enough to stand
 The cloths are on the floor
 the throne is bare and bright
 You are the only one
-who can choose to take a seat tonight
-`,
+who can choose to take a seat tonight`,
 
   "curso-coroa/3": `[Verse 1]
 De pé junto ao trono
@@ -2616,12 +3042,17 @@ entre o medo é a grandeza
 A coroa pesa menos
 do que o medo da tua inteireza
 
+[Chorus]
+Hesitação
+entre o medo é a grandeza
+A coroa pesa menos
+do que o medo da tua inteireza
+
 [Outro]
 Sentar-se no trono
 não é tomar o que é dos outros
 E ocupar o que é teu
-sem pedir desculpa ao mundo
-`,
+sem pedir desculpa ao mundo`,
 
   "curso-coroa/4": `[Verse 1]
 Seated on the throne at last
@@ -2641,6 +3072,12 @@ the weight of it is light
 When you stop apologizing
 for your power and your might
 
+[Chorus]
+Crown, crown
+the weight of it is light
+When you stop apologizing
+for your power and your might
+
 [Bridge]
 Every woman has a throne
 buried under years of small
@@ -2651,8 +3088,7 @@ under making herself crawl
 Rise now, take your seat
 the crown was always yours
 The only thing between you and power
-was the closing of your doors
-`,
+was the closing of your doors`,
 
   // ═══════════════════════════════════════════
   // A FOME — "O corpo é a fome"
@@ -2677,12 +3113,17 @@ fome sem fundo
 Comes o que não precisas
 para não sentir o mundo
 
+[Chorus]
+Mesa vazia
+fome sem fundo
+Comes o que não precisas
+para não sentir o mundo
+
 [Outro]
 A fome mais antiga
 não se mata com comida
 Mata-se com o nome certo
-e a coragem de ser ouvida
-`,
+e a coragem de ser ouvida`,
 
   "curso-fome/2": `[Verse 1]
 This hunger has no name
@@ -2702,6 +3143,12 @@ unnamed and unconfessed
 The plate is full but you are empty
 the body feeds, the soul is stressed
 
+[Chorus]
+Hunger, hunger
+unnamed and unconfessed
+The plate is full but you are empty
+the body feeds, the soul is stressed
+
 [Bridge]
 What are you really hungry for
 when midnight pulls you to the fridge
@@ -2712,8 +3159,7 @@ from the table of your bridge
 Name the hunger
 and the hunger changes shape
 What was mindless consumption
-becomes a conscious landscape
-`,
+becomes a conscious landscape`,
 
   "curso-fome/3": `[Verse 1]
 Comer com atenção
@@ -2733,12 +3179,17 @@ sem a guerra do controlo
 Sem a culpa que envenenam
 sem o medo de ser todo
 
+[Chorus]
+Comer em paz
+sem a guerra do controlo
+Sem a culpa que envenenam
+sem o medo de ser todo
+
 [Outro]
 A mesa agora tem comida
 e a comida tem sabor
 Comes porque mereces
-e não há nada de menor
-`,
+e não há nada de menor`,
 
   "curso-fome/4": `[Verse 1]
 The table is set simply
@@ -2758,6 +3209,12 @@ the simplest kind of feast
 When the war with food is over
 and the body finds its peace
 
+[Chorus]
+Feast, feast
+the simplest kind of feast
+When the war with food is over
+and the body finds its peace
+
 [Bridge]
 Terracotta warmth and porcelain white
 the colors of a meal made right
@@ -2768,7 +3225,6 @@ but eaten with delight
 I am at peace with the plate
 I am at peace with the body
 The hunger found its name
-and the name was simply me
-`,
+and the name was simply me`,
 
 };
