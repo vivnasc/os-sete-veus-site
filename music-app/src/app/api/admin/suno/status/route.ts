@@ -35,43 +35,62 @@ export async function GET(req: NextRequest) {
     const allClips: Record<string, unknown>[] = [];
 
     for (const taskId of taskIds) {
-      // Try /api/suno/fetch first (API.box primary), fallback to /api/v1/generate/record-info
-      let res = await fetch(`${apiUrl}/api/suno/fetch?taskId=${taskId}`, {
-        headers: { Authorization: `Bearer ${apiKey}` },
-      });
+      const headers = { Authorization: `Bearer ${apiKey}` };
 
-      if (res.status === 404) {
-        res = await fetch(`${apiUrl}/api/v1/generate/record-info?taskId=${taskId}`, {
-          headers: { Authorization: `Bearer ${apiKey}` },
+      // Try multiple endpoints — API.box has several
+      let data: Record<string, unknown> | null = null;
+
+      // 1. GET /api/suno/fetch?taskId=XXX
+      let res = await fetch(`${apiUrl}/api/suno/fetch?taskId=${taskId}`, { headers });
+
+      if (res.ok) {
+        data = await res.json();
+      } else if (res.status !== 404) {
+        // Try POST variant
+        res = await fetch(`${apiUrl}/api/suno/fetch`, {
+          method: "POST",
+          headers: { ...headers, "Content-Type": "application/json" },
+          body: JSON.stringify({ taskId }),
         });
+        if (res.ok) data = await res.json();
       }
 
-      if (!res.ok) {
-        allClips.push({
-          id: taskId,
-          status: "processing",
-          audioUrl: null,
-          title: "",
-          duration: null,
-        });
+      // 2. Fallback: GET /api/v1/generate/record-info?taskId=XXX
+      if (!data) {
+        res = await fetch(`${apiUrl}/api/v1/generate/record-info?taskId=${taskId}`, { headers });
+        if (res.ok) data = await res.json();
+      }
+
+      console.log("[suno/status] taskId:", taskId, "raw:", JSON.stringify(data).slice(0, 800));
+
+      if (!data) {
+        allClips.push({ id: taskId, status: "processing", audioUrl: null, title: "", duration: null });
         continue;
       }
 
-      const data = await res.json();
-
-      // API.box returns { code: 200, data: { taskId, status, response: { sunoData: [...] } } }
-      const record = data.data || data;
-      const sunoData = record.response?.sunoData || record.sunoData || record.suno_data || [];
+      // Parse the response — API.box nests data in various ways
+      const record = (data.data as Record<string, unknown>) || data;
+      const response = (record.response as Record<string, unknown>) || record;
+      const sunoData = (response.sunoData || record.sunoData || record.suno_data || []) as Record<string, unknown>[];
       const items = Array.isArray(sunoData) ? sunoData : [sunoData];
 
-      if (items.length > 0 && items[0]?.id) {
-        allClips.push(...items);
+      // Extract clips from sunoData
+      if (items.length > 0 && (items[0]?.id || items[0]?.audio_url || items[0]?.audioUrl)) {
+        for (const item of items) {
+          allClips.push({
+            id: item.id || taskId,
+            status: item.status || record.status || "processing",
+            audioUrl: item.audioUrl || item.audio_url || item.streamAudioUrl || item.stream_audio_url || null,
+            title: item.title || "",
+            duration: item.duration || null,
+          });
+        }
       } else {
         allClips.push({
           id: taskId,
-          status: record.status || "processing",
+          status: (record.status as string) || "processing",
           audioUrl: null,
-          title: record.title || "",
+          title: (record.title as string) || "",
           duration: null,
         });
       }

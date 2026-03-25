@@ -647,13 +647,29 @@ export default function AlbumProductionPage() {
 
     setStatuses((s) => ({ ...s, [key]: "polling" }));
 
+    let pollCount = 0;
     const interval = setInterval(async () => {
+      pollCount++;
       try {
         const res = await adminFetch(`/api/admin/suno/status?ids=${clipIds.join(",")}`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
         const data = await res.json();
         if (data.erro) throw new Error(data.erro);
+
+        // Log poll results for debugging
+        const clipStatuses = (data.clips || []).map((c: SunoClip) => `${c.status}${c.audioUrl ? " +audio" : ""}`);
+        console.log(`[poll #${pollCount}] ${key}:`, clipStatuses.join(", "));
+
+        // Check if any clip has an error
+        const hasError = data.clips.some((c: SunoClip) => c.status === "error");
+        if (hasError) {
+          clearInterval(pollingRef.current[key]);
+          delete pollingRef.current[key];
+          setStatuses((s) => ({ ...s, [key]: "error" }));
+          setErrors((e) => ({ ...e, [key]: "Suno devolveu erro na geração." }));
+          return;
+        }
 
         const allDone = data.clips.every((c: SunoClip) => c.status === "complete" && c.audioUrl);
 
@@ -667,8 +683,9 @@ export default function AlbumProductionPage() {
           }));
           setStatuses((s) => ({ ...s, [key]: "idle" }));
         }
-      } catch {
-        // transient
+      } catch (err) {
+        console.warn(`[poll #${pollCount}] ${key} error:`, err);
+        // transient — continue polling
       }
     }, 5000);
 

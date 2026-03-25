@@ -88,6 +88,7 @@ export async function POST(req: NextRequest) {
     }
 
     const data = await res.json();
+    console.log("[suno/generate] raw response:", JSON.stringify(data).slice(0, 1000));
 
     // API.box returns { code: 200, data: { taskId, sunoData: [...] } }
     if (data.code && data.code !== 200) {
@@ -98,19 +99,29 @@ export async function POST(req: NextRequest) {
     }
 
     const taskId = data.data?.taskId || data.taskId;
-    const sunoData = data.data?.sunoData || data.data || [];
-    const clips = Array.isArray(sunoData) ? sunoData : [sunoData];
+    const sunoData = data.data?.sunoData || data.data?.response?.sunoData || [];
+    const clips = Array.isArray(sunoData) && sunoData.length > 0 ? sunoData : [];
 
-    return NextResponse.json({
-      taskId,
-      clips: clips.map((c: Record<string, unknown>) => ({
-        id: c.id || taskId,
-        status: c.status || "processing",
-        audioUrl: c.audioUrl || c.audio_url || c.streamAudioUrl || null,
-        title: c.title || title || "",
-        duration: c.duration || null,
-      })),
-    });
+    // If no clips yet (async generation), return taskId as the clip id for polling
+    const resultClips = clips.length > 0
+      ? clips.map((c: Record<string, unknown>) => ({
+          id: c.id || taskId,
+          status: c.status || "processing",
+          audioUrl: c.audioUrl || c.audio_url || c.streamAudioUrl || null,
+          title: c.title || title || "",
+          duration: c.duration || null,
+        }))
+      : [{
+          id: taskId,
+          status: "processing",
+          audioUrl: null,
+          title: title || "",
+          duration: null,
+        }];
+
+    console.log("[suno/generate] taskId:", taskId, "clips:", resultClips.length);
+
+    return NextResponse.json({ taskId, clips: resultClips });
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
     return NextResponse.json(
