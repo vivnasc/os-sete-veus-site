@@ -3,6 +3,9 @@ import { GENEROS, MOODS, TEMAS } from "@/data/curated-lists";
 import AlbumCard from "@/components/music/AlbumCard";
 import FraseDoDia from "@/components/music/FraseDoDia";
 import TopTracksSection from "@/components/music/TopTracksSection";
+import RecentlyPlayedSection from "@/components/music/RecentlyPlayedSection";
+import ParaTiSection from "@/components/music/ParaTiSection";
+import NovidadesSection from "@/components/music/NovidadesSection";
 import Image from "next/image";
 import Link from "next/link";
 import NavBar from "@/components/music/NavBar";
@@ -81,6 +84,15 @@ export default function MusicHomePage() {
 
         {/* Frase do Dia */}
         <FraseDoDia />
+
+        {/* Ouvidos recentemente */}
+        <RecentlyPlayedSection />
+
+        {/* Para ti — recomendações personalizadas */}
+        <ParaTiSection />
+
+        {/* Novidades — faixas recém-publicadas */}
+        <NovidadesSection />
 
         {/* Mais Ouvidas (personalizado, so aparece se autenticado com dados) */}
         <TopTracksSection />
