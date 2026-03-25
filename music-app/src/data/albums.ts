@@ -67,7 +67,7 @@ export type Album = {
   slug: string;
   title: string;
   subtitle: string;
-  product: "espelho" | "no" | "livro" | "curso" | "espiritual" | "vida";
+  product: "espelho" | "no" | "livro" | "curso" | "espiritual" | "vida" | "cosmic";
   veu?: number;
   courseSlug?: string;
   color: string;
