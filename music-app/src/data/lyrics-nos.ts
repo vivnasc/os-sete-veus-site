@@ -11,11 +11,11 @@ export const NO_LYRICS: Record<string, string> = {
   // O silêncio herdado entre mãe e filha
   // ─────────────────────────────────────────────
 
-  "no-herança/1": `[Verse 1]
+  "no-heranca/1": `[Verse 1]
 Eu vi-te antes de te veres ao espelho
 Descalca pelo corredor a correr sem chão
 Tinhas nós olhos uma tempestade antiga
-Que eu não sabia acalmar com a minha mao
+Que eu não sabia acalmar com a minha mão
 
 [Chorus]
 A mãe que viu guardou a chuva inteira
@@ -42,7 +42,7 @@ E agora que acordas
 Posso finalmente
 Soltar o ar`,
 
-  "no-herança/2": `[Verse 1]
+  "no-heranca/2": `[Verse 1]
 I watched you wear a coat that wasn't yours
 Smiling at a mirror cracked with borrowed light
 I wanted to reach across the kitchen table
@@ -72,7 +72,7 @@ Not from weakness
 But because the waking
 Had to bloom from you`,
 
-  "no-herança/3": `[Verse 1]
+  "no-heranca/3": `[Verse 1]
 Duas mulheres numa cozinha em brasa
 O vapor sobe e o silêncio também
 Tu sentas-te no lugar que sempre foi teu
@@ -88,7 +88,7 @@ Eu sou a margem que ficou em vao
 Mãe, que é que viste quando eu não via
 Quando eu sorria e tu olhavas pro chão
 Quando eu dizia que a vida era bonita
-E tu apertavas o pano contra a mao
+E tu apertavas o pano contra a mão
 
 [Bridge]
 Não preciso que me protejas mais
@@ -102,7 +102,7 @@ Finalmente juntas
 Sem véu no rosto
 Sem guiao na boca`,
 
-  "no-herança/4": `[Verse 1]
+  "no-heranca/4": `[Verse 1]
 Guardei palavras como quem guarda porcelana
 Atras do vidro onde ninguém podia tocar
 Cada frase que engoli virou raiz amarga
@@ -134,7 +134,7 @@ Sao sementes
 Que abrem o que ficou fechado
 Entre nós duas`,
 
-  "no-herança/5": `[Verse 1]
+  "no-heranca/5": `[Verse 1]
 O fio que nós prendia era de seda e nevoeiro
 Feito de silêncio é de boas intencoes
 Apertava sem doer, segurava sem se ver
@@ -154,7 +154,7 @@ Tu soltas e descobres o mesmo céu
 
 [Bridge]
 O no que cai entre mãe e filha
-Não é um corte — e uma flor que se abre
+Não é um corte — é uma flor que se abre
 O fio continua entre as duas
 Mas agora tem espaço para a tarde
 
@@ -171,7 +171,7 @@ Mais inteiro`,
   // O que o medo calou entre eles
   // ─────────────────────────────────────────────
 
-  "no-silêncio/1": `[Verse 1]
+  "no-silencio/1": `[Verse 1]
 Sentados a mesa com o jantar a arrefecer
 O relógio marca o que nós não dizemos
 Tu olhas para o prato, eu olho para a janela
@@ -201,7 +201,7 @@ Cresceu entre nós
 E agora transborda
 Do silêncio`,
 
-  "no-silêncio/2": `[Verse 1]
+  "no-silencio/2": `[Verse 1]
 I told myself the quiet was a garden
 That every swallowed word would plant a seed
 That if I kept the silence deep enough
@@ -231,7 +231,7 @@ But I was only
 Hiding underneath
 My own roof`,
 
-  "no-silêncio/3": `[Verse 1]
+  "no-silencio/3": `[Verse 1]
 A boca seca, o peito a bater como mar
 Como quem salta de um penhasco para o sal
 A primeira palavra não é grande nem bonita
@@ -261,7 +261,7 @@ O silêncio não morre
 Transforma-se em espaço
 Para a palavra que vem depois`,
 
-  "no-silêncio/4": `[Verse 1]
+  "no-silencio/4": `[Verse 1]
 Pensava que ouvir era esperar o meu momento
 De largar as frases que já trazia ensaiadas
 Ouvir de verdade é terra firme
@@ -291,7 +291,7 @@ Ouvir de verdade
 Para encontrar
 O que o silêncio nós roubou`,
 
-  "no-silêncio/5": `[Verse 1]
+  "no-silencio/5": `[Verse 1]
 There was a time my voice lived underground
 A river pressed beneath the stones I said
 The polite laugh, the careful borrowed sound
@@ -666,7 +666,7 @@ That bloom within`,
   // O controlo que isolou quem mais amava
   // ─────────────────────────────────────────────
 
-  "no-solidão/1": `[Verse 1]
+  "no-solidao/1": `[Verse 1]
 Construi uma ilha a volta de nós dois
 Cada regra era um muro de coral
 Tu ficavas seguro, eu ficava no centro
@@ -696,7 +696,7 @@ Para nós proteger do mar
 Acabou por ser
 A razão de te afastar`,
 
-  "no-solidão/2": `[Verse 1]
+  "no-solidao/2": `[Verse 1]
 I held you like a bird inside my palm
 Só careful, só precise, só terrified
 I thought that if I opened up my fingers
@@ -727,7 +727,7 @@ Lost the very thing
 I was building walls
 To keep from going`,
 
-  "no-solidão/3": `[Verse 1]
+  "no-solidao/3": `[Verse 1]
 Abro as mãos e não sei o que fazer com elas
 Palmas pro céu, vazias como o dia
 Sem agenda, sem redea, sem controlo
@@ -758,7 +758,7 @@ Descubro que o amor
 Não se segura —
 Cultiva-se como flor`,
 
-  "no-solidão/4": `[Verse 1]
+  "no-solidao/4": `[Verse 1]
 Já não estou atras de ti nem tu de mim
 Já não verifico nem controlo mais a hora
 Estamos no mesmo quarto pela primeira vez
@@ -791,7 +791,7 @@ Ficar
 Como quem planta
 E espera a flor`,
 
-  "no-solidão/5": `[Verse 1]
+  "no-solidao/5": `[Verse 1]
 I lived inside a tower made of rules
 Convinced the walls were keeping danger out
 But when I looked through every tiny window

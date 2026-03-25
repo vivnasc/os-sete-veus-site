@@ -172,7 +172,7 @@ E outra que nunca se move
 
 [Chorus]
 Mais uma, só mais uma
-A dor e só a porta
+A dor é só a porta
 O corpo mente quando grita
 A alma nunca aborta
 
@@ -286,7 +286,7 @@ Rest now`,
   // SILÊNCIO FERTIL (meditação, pausa)
   // ─────────────────────────────────────────────
 
-  "vida-silêncio-fértil/1": `[Verse 1]
+  "vida-silencio-fertil/1": `[Verse 1]
 Sento-me no chão
 Os joelhos tocam a terra
 A coluna encontra a direcao
@@ -316,7 +316,7 @@ Só o agora a acontecer
 Sentada, cheguei
 Sentada, estou aqui`,
 
-  "vida-silêncio-fértil/2": `[Verse 1]
+  "vida-silencio-fertil/2": `[Verse 1]
 The ripples slow and slow and slow
 The surface finds its glass
 The thoughts that tumbled to and fro
@@ -347,9 +347,9 @@ Is written on the water's face
 [Outro]
 Still, still, still water`,
 
-  "vida-silêncio-fértil/3": `[Verse 1]
+  "vida-silencio-fertil/3": `[Verse 1]
 As costelas abrem como portas
-O ar entra frio e sai quente
+O ar entra frio é sai quente
 Não há mais palavras mortas
 Só o corpo, simplesmente
 
@@ -366,7 +366,7 @@ O corpo respira
 Sem nenhuma crença
 Só o ar que entra
 Só o ar que sai
-O resto e invencao
+O resto é invencao
 Que o corpo não trai
 
 [Verse 3]
@@ -380,7 +380,7 @@ Inspira
 Expira
 Só isto`,
 
-  "vida-silêncio-fértil/4": `[Verse 1]
+  "vida-silencio-fertil/4": `[Verse 1]
 Between one thought and the next
 A gap opens like a door
 In that silence, nothing's vexed
@@ -412,7 +412,7 @@ In the everything silence gives
 Between, between
 The peace between`,
 
-  "vida-silêncio-fértil/5": `[Verse 1]
+  "vida-silencio-fertil/5": `[Verse 1]
 Pensei que estava vazio
 Sentei e esperei o pior
 Mas o vazio era um rio
@@ -439,7 +439,7 @@ Cheio, cheio
 O vazio esta cheio
 Cheio de mim`,
 
-  "vida-silêncio-fértil/6": `[Verse 1]
+  "vida-silencio-fertil/6": `[Verse 1]
 A bell rings through the fog
 A single note, a golden thread
 It finds me in the inner bog
@@ -465,7 +465,7 @@ From the silence unfurled
 I'm here
 The bell brought me here`,
 
-  "vida-silêncio-fértil/7": `[Verse 1]
+  "vida-silencio-fertil/7": `[Verse 1]
 Não há lugar para ir
 Não há nada para consertar
 O corpo pode existir
@@ -485,14 +485,14 @@ Nenhuma promessa
 Só este chão é este ar
 Só este corpo a respirar
 Sem destino, sem razão
-Só a mao no coração
+Só a mão no coração
 
 [Outro]
 Nada para fazer
 Nada para ser
 Só estar`,
 
-  "vida-silêncio-fértil/8": `[Verse 1]
+  "vida-silencio-fertil/8": `[Verse 1]
 Fingers move, the blood returns
 Eyelids flutter to the light
 The room I left só long ago
@@ -779,7 +779,7 @@ Sete, seis, cinco
 Já não há razão
 
 [Verse 2]
-Quatro, tres
+Quatro, três
 Os numeros perdem a forma
 Dois
 Qual é mesmo a norma
@@ -845,7 +845,7 @@ De quem não precisa de fugir
 A cama engole devagar
 O corpo aceita o convite
 Não há mais nada para dar
-Só o escuro e o seu limite
+Só o escuro é o seu limite
 
 [Outro]
 Pesado e bom
@@ -897,7 +897,7 @@ O último sussurro antes do fim
 Noite boa
 O dia foi gentil comigo e eu com ele enfim
 Agora o escuro vem
-Agora a paz e minha
+Agora a paz é minha
 Noite boa, meu bem
 A última carinha
 
@@ -979,7 +979,7 @@ Pes no chão
 A manhã entra pelo corpo
 Pes no chão
 O dia começa a ter um porto
-Cada passo e um contrato
+Cada passo é um contrato
 Com a terra que me segura
 De pé, descalca, exacto
 Nesta fria formosura
@@ -1016,7 +1016,7 @@ And the day begins`,
 
   "vida-luz-crua/5": `[Verse 1]
 De pé junto a janela
-A chávena quente na mao
+A chávena quente na mão
 O dia estica a sua tela
 E eu escolho a direcao
 
@@ -1076,7 +1076,7 @@ In the body first`,
   "vida-pao-sal/1": `[Verse 1]
 O prato pousa na toalha
 O copo alinha com a faca
-Cada gesto e uma medalha
+Cada gesto é uma medalha
 De amor que não se destaca
 
 [Verse 2]
@@ -1132,7 +1132,7 @@ Sao os mais pequenos segredos
 Que mudam o sabor do caminho
 
 [Verse 2]
-Um limão espremido a mao
+Um limão espremido a mão
 Transforma o prato inteiro
 O gesto certo na estação
 É o tempero verdadeiro
@@ -1246,7 +1246,7 @@ O saco pesa a sua ternura
 De quem vai sem saber o fim
 
 [Verse 2]
-Tres passos e já não sou
+Três passos e já não sou
 A mesma que estava lá dentro
 A rua engole quem partiu
 O vento apaga o meu lamento
@@ -1258,7 +1258,7 @@ A porta fecha
 É a estrada abre-se em mim
 Deixo tudo para trás
 As chaves no bolso a bater
-Cada passo e mais e mais
+Cada passo é mais e mais
 Longe de quem eu fui ontem a dizer
 
 [Outro]
@@ -1664,7 +1664,7 @@ Salgado
 O mesmo sal que sabe curar
 Não estou partida
 Sou água que corre
-A dor e valida
+A dor é valida
 É o sal socorre
 
 [Outro]
@@ -1706,7 +1706,7 @@ A ausência pesa mais do que pesa
 A presença em tempos normais
 
 [Verse 2]
-Estendo a mao para ligar
+Estendo a mão para ligar
 Antes de lembrar que não há rede
 O gesto fica suspenso no ar
 Como água que não tem sede
@@ -1760,7 +1760,7 @@ O corpo de volta do mudo
 [Verse 2]
 Peco água, peco pao
 As coisas mais simples do mundo
-O corpo pede com a mao
+O corpo pede com a mão
 Depois do choro mais profundo
 
 [Chorus]
@@ -1852,13 +1852,13 @@ Fechado onde ninguém vê
 O punho
 É a raiva de quem não cre
 Que um dia vai ter licença
-Para abrir a mao
+Para abrir a mão
 O punho e a sentenca
 De quem guarda a explosao
 
 [Outro]
-Abre a mao
-Abre a mao`,
+Abre a mão
+Abre a mão`,
 
   "vida-lava-quieta/4": `[Verse 1]
 The tunnel narrows, vision blurs
@@ -2007,7 +2007,7 @@ Quatro coisas que a pele explora
 O tecido da cadeira, o metal directo
 
 [Verse 2]
-Tres sons que entram nós ouvidos
+Três sons que entram nós ouvidos
 O relógio, a rua, o meu respirar
 Dois cheiros que ficam perdidos
 O café, o sabao a brilhar
@@ -2023,7 +2023,7 @@ Não preciso de mais nada pouco
 Só a certeza deste azulejo
 
 [Outro]
-Cinco, quatro, tres, dois
+Cinco, quatro, três, dois
 Estou aqui`,
 
   "vida-ancora/4": `[Verse 1]
@@ -2060,7 +2060,7 @@ Entre o panico e o amor
 
 [Verse 2]
 Atravesso a multidao com ela
-A mao fechada no segredo
+A mão fechada no segredo
 A pedra quente e a minha estrela
 A minha ancora contra o medo
 
@@ -2070,7 +2070,7 @@ O chão que levo comigo
 Pedra no bolso
 O meu mais antigo abrigo
 Quando o mundo gira demais
-A mao encontra a pedra
+A mão encontra a pedra
 É o corpo sabe que é capaz
 De não se desfazer em pedra
 
@@ -2109,7 +2109,7 @@ I am solid ground`,
   // COMPANHIA PROPRIA (solidão escolhida)
   // ─────────────────────────────────────────────
 
-  "vida-companhia-própria/1": `[Verse 1]
+  "vida-companhia-propria/1": `[Verse 1]
 A mesa tem um prato só
 Um guardanapo, um copo, uma vela
 O empregado não sentiu do
@@ -2135,7 +2135,7 @@ Só com o meu calor
 Uma mesa
 Uma paz`,
 
-  "vida-companhia-própria/2": `[Verse 1]
+  "vida-companhia-propria/2": `[Verse 1]
 I make my own rain, my own shine
 My own wind that clears the sky
 I don't need another's sign
@@ -2161,7 +2161,7 @@ My own specific shade of grey
 My weather
 My world`,
 
-  "vida-companhia-própria/3": `[Verse 1]
+  "vida-companhia-propria/3": `[Verse 1]
 O telefone virado para baixo
 O silêncio que escolhi de propósito
 Não é castigo nem despacho
@@ -2187,7 +2187,7 @@ Só a minha própria canção
 Escolhi o silêncio
 E ele escolheu-me a mim`,
 
-  "vida-companhia-própria/4": `[Verse 1]
+  "vida-companhia-propria/4": `[Verse 1]
 I walk through my apartment slow
 I touch the walls, I fix the frames
 This room is full of what I know
@@ -2213,10 +2213,10 @@ And I am here by choice
 Full room
 Full life`,
 
-  "vida-companhia-própria/5": `[Verse 1]
+  "vida-companhia-propria/5": `[Verse 1]
 A vela acesa, o prato feito
 A música que eu escolhi
-Jantar sozinha e um direito
+Jantar sozinha é um direito
 Que só agora descobri
 
 [Verse 2]
@@ -2239,7 +2239,7 @@ E eu sou o meu próprio caminho
 Só eu e o prato
 E e o suficiente`,
 
-  "vida-companhia-própria/6": `[Verse 1]
+  "vida-companhia-propria/6": `[Verse 1]
 I sat on the edge of the bed tonight
 And something landed in my chest
 Not sadness, something else, a light
@@ -2448,7 +2448,7 @@ Depois da guerra que ficou
 A manhã seguinte
 E frágil mas chegou
 A luz não é bonita
-Mas e luz e chega
+Mas e luz é chega
 A manhã não é escrita
 Mas o dia não se nega
 
@@ -2484,7 +2484,7 @@ I found what's real`,
 
   "vida-rescaldo/3": `[Verse 1]
 A chávena de café na mesa sem palavra
-A mao que encontra a outra mao na cama
+A mão que encontra a outra mão na cama
 O cobertor puxado sobre quem descansa
 A desculpa que não precisa de programa
 
@@ -2777,7 +2777,7 @@ A avó
 Que mora nós meus gestos vaos
 Cada vez que amasso o pao
 Cada vez que parto o sal
-Os dedos dela na minha mao
+Os dedos dela na minha mão
 Fazem o ritual
 
 [Outro]
@@ -3408,7 +3408,7 @@ But soon`,
   "vida-raiz-muda/3": `[Verse 1]
 O composto, a bela podridão
 Que faz nascer a vida nova
-As mãos na terra escura, a mao
+As mãos na terra escura, a mão
 Que se entrega ao que se prova
 
 [Chorus]
@@ -3643,7 +3643,7 @@ Todas nós`,
 O último azul antes do preto
 O céu segura a respiracao
 As formas existem sem projecto
-Entre a luz e a escuridão
+Entre a luz é a escuridão
 
 [Chorus]
 Nem noite
@@ -3733,7 +3733,7 @@ Nos dois lados
 Não pertenço a noite
 Não pertenço ao dia
 Sou a ponte
-Entre a dor e a alegria
+Entre a dor é a alegria
 
 [Outro]
 Suspensa

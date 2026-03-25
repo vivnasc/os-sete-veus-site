@@ -183,7 +183,7 @@ o coração bate com plenitude
 
 [Bridge]
 Não é morte — e descida
-não é fim — e um descer
+não é fim — é um descer
 para o fundo onde se guarda
 o que eu não quis ver
 
@@ -294,7 +294,7 @@ e só o que sobrou de ti presente
 
 [Verse 3]
 A dor do fogo não tem metafora
-e só dor e e só real
+e só dor é e só real
 não aprendeste porque sofreu
 sofreu e já não há igual
 
@@ -438,13 +438,13 @@ she always finds you`,
   "humus/1": `[Verse 1]
 O lencol ainda guarda a forma
 do corpo que sonhou sem lei
-Passo a mao como quem perdoa
+Passo a mão como quem perdoa
 o que de noite não contei
 
 [Verse 2]
 Estico a ponta, aliso a dobra
 o travesseiro volta ao seu lugar
-Cada gesto e uma palavra
+Cada gesto é uma palavra
 que digo ao dia antes de começar
 
 [Chorus]
@@ -452,7 +452,7 @@ Fazer a cama, fazer a cama
 alisar o que a noite desfez
 Fazer a cama, fazer a cama
 o caos tem cura — e só uma vez
-Mao sobre mao, pano sobre pano
+Mão sobre mão, pano sobre pano
 construo o altar de cada dia
 Fazer a cama e o primeiro engano
 bonito — chamar ordem a alegria
@@ -523,7 +523,7 @@ Não choras só por ti
 Choras por todas as que choram igual
 
 [Verse 3]
-Passo a mao no rosto molhado
+Passo a mão no rosto molhado
 Não sei se e chuva ou se sou eu
 O céu também tem os seus dias
 O céu também as vezes chove e deu
@@ -822,7 +822,7 @@ Se me apagares, acendo
 Se me enterrares, brilho no escuro
 Se me deixares em silêncio, espero
 E sou o primeiro calor do futuro
-A chama não é escolha — e o que resta
+A chama não é escolha — é o que resta
 É o que persiste quando tudo cedeu
 É o que nunca precisou de festa
 Para saber que sempre foi meu
@@ -1043,7 +1043,7 @@ this is the turning`,
 Abro as mãos e não há nada —
 nem chave nem mapa nem razão
 Só a pele é o ar entre os dedos
-e o vazio que me cabe na mao
+e o vazio que me cabe na mão
 
 [Verse 2]
 Não tenho provas do que carregava
@@ -1146,7 +1146,7 @@ a dança reza por nós quando a voz não fala
 
 [Outro]
 Pe no chão
-mao no ar
+mão no ar
 a dança e tudo o que eu sei rezar`,
 
   "folego/8": `[Verse 1]
@@ -1222,7 +1222,7 @@ Que ainda existe que ainda aparece
 Hum
 antes do amem e o hum
 Hum
-antes do nome e o hum
+antes do nome é o hum
 O peito vibra e a voz responde
 Ao que a boca nunca disse
 Hum
@@ -1304,7 +1304,7 @@ que não chega cedo nem chega tarde
 Há uma parte de ti que não sangra
 que vê o medo sem ser o medo
 que ouve o choro e não se magoa
-que olha o fogo e não tem receio
+que olha o fogo é não tem receio
 
 [Chorus]
 A testemunha
@@ -1382,7 +1382,7 @@ percebi que nunca estive tão cheia de estar
 
 [Chorus]
 O vazio cheio — não é contradicao
-O vazio cheio — e o que fica no chão
+O vazio cheio — é o que fica no chão
 Quando tiras tudo o que punhas lá dentro
 descobres que o nada tem peso e intenção
 O vazio cheio
@@ -1683,7 +1683,7 @@ just the tap running free`,
   "demora/11": `[Verse 1]
 Fecho os olhos e o mundo lá fora
 fica do lado de fora onde pertence
-Não é fuga — e o gesto mais honesto
+Não é fuga — é o gesto mais honesto
 que o corpo faz quando a mente esquece
 
 [Verse 2]
@@ -1818,7 +1818,7 @@ O coração não tem porta — tem osso
 É o osso não cede ao que passa
 
 [Verse 3]
-Ponho a mao no peito esquerdo
+Ponho a mão no peito esquerdo
 E sinto os arcos a respirar
 A catedral esta viva
 Não precisa de outro lugar
@@ -2005,8 +2005,8 @@ a dor que vem não é castigo, não é drama
 e o peso exacto de quem cria existencia
 
 [Bridge]
-Tres dias de silêncio
-tres dias de raiz
+Três dias de silêncio
+três dias de raiz
 o corpo pede recolhimento
 e eu finalmente digo sim
 deito e sangro
@@ -2066,7 +2066,7 @@ Mas eu abri o meu devagar
 e coube a criacao
 
 [Verse 2]
-Coube a dor e coube o oceano
+Coube a dor é coube o oceano
 coube o medo é coube a luz
 Coube o silêncio de mil noites
 e o grito de quem se reduz
@@ -2304,29 +2304,29 @@ And maybe that's the point`,
   "correnteza/5": `[Verse 1]
 Dar não é um acto de coragem
 Não é titulo nem licao
-É a mao que pousa o pao na mesa
+É a mão que pousa o pao na mesa
 Sem discurso, sem comocao
 
 [Verse 2]
 O corpo inclina-se devagar
 Como quem conhece este gesto
-Toma, e teu — tres palavras simples
+Toma, e teu — três palavras simples
 Que cabem todas num protesto
 
 [Chorus]
 Dar e só isto
-A mao que se abre no ar
+A mão que se abre no ar
 Dar e só isto
 O pao que passa de par em par
 Não precisa de nome
 Não precisa de altar
-Só a mao, só o gesto
+Só a mão, só o gesto
 Só o pao sobre o lar
 
 [Verse 3]
 Não guardo o recibo do que dei
 Não peso o que recebi em troca
-O gesto e inteiro por si mesmo
+O gesto é inteiro por si mesmo
 A generosidade não se choca
 
 [Bridge]
@@ -2337,16 +2337,16 @@ Até ao momento da entrega — entao
 
 [Chorus]
 Dar e só isto
-A mao que se abre no ar
+A mão que se abre no ar
 Dar e só isto
 O pao que passa de par em par
 Não precisa de nome
 Não precisa de altar
-Só a mao, só o gesto
+Só a mão, só o gesto
 Só o pao sobre o lar
 
 [Outro]
-A mao abre
+A mão abre
 O pao parte
 Nada se perde
 Nada se parte`,
@@ -2780,7 +2780,7 @@ A faisca não pede licença
 atravessa o que dorme
 
 [Verse 3]
-A mao treme sem razão
+A mão treme sem razão
 o ar muda de qualidade
 O peito sabe antes do cerebro
 que chegou a claridade
@@ -2865,7 +2865,7 @@ Segura o corpo quando tudo fracassa
 Segura o centro quando o centro cai
 
 [Pre-Chorus]
-Poe a mao no pulso
+Poe a mão no pulso
 Sente o que resiste
 Antes de teres historia
 Antes de toda a lista
@@ -2890,7 +2890,7 @@ Com ser a verdade mais pequena
 Marrabenta no quadril quando a vida pesa
 Marrabenta no peito quando o tempo aperta
 O osso absorve o ritmo, abraca a certeza
-Não é rigidez — e a base desperta
+Não é rigidez — é a base desperta
 
 [Chorus]
 Osso — o que es antes de tudo
@@ -2961,7 +2961,7 @@ Que sempre me deixaram de lado
 Andei de joelhos no marmore
 Andei com a cabeça dobrada
 Até que um dia me levantei
-E pus a mao no peito — parei
+E pus a mão no peito — parei
 
 [Chorus]
 O altar e aqui — sempre esteve aqui
@@ -3165,7 +3165,7 @@ and whole is home`,
 
   "limiar/3": `[Verse 1]
 Tenho os dedos brancos de apertar
-as unhas cravadas na palma da mao
+as unhas cravadas na palma da mão
 O corpo inteiro feito de segurar
 cada musculo uma suplicacao
 
@@ -3192,7 +3192,7 @@ o que a cabeça não consegue aceitar
 [Bridge]
 Os braços tremem o peito fecha
 os dentes cerram e o corpo cede
-Não é fraqueza — e o peso a dizer
+Não é fraqueza — é o peso a dizer
 que nenhum corpo aguenta o que este pede
 
 [Outro]
@@ -3255,7 +3255,7 @@ não porque alguém o foi ensinar
 
 [Chorus]
 Sou o rio — não a pedra no caminho
-Sou o rio — não a mao que agarra o fundo
+Sou o rio — não a mão que agarra o fundo
 Sou o movimento — não a margem que resiste
 e o rio sabe ir por este mundo
 Sou o rio
@@ -3358,7 +3358,7 @@ deixa o céu decidir
 Chuva
 não fujas não
 Há só água a correr pela cara
-como uma bencao sem mao
+como uma bencao sem mão
 
 [Verse 3]
 Cada gota carrega um peso
@@ -3425,14 +3425,14 @@ You carry it`,
   "limiar/9": `[Verse 1]
 Dobro os joelhos por vontade
 não por peso que me força
-Este chão frio e firme
+Este chão frio é firme
 recebe o que me encorpa
 
 [Verse 2]
 Não me humilhei a ninguém
 não curvei a cabeça em vao
 Dobrar os joelhos e diferente
-quando a escolha e minha mao
+quando a escolha e minha mão
 
 [Chorus]
 De joelhos e inteira
@@ -3458,7 +3458,7 @@ sou de mim o que me convem`,
 
   "limiar/10": `[Verse 1]
 O alho parte entre os dedos
-o azeite aquece na mao
+o azeite aquece na mão
 O sal não pede licença
 cai como quem sabe a direcção
 
@@ -3675,19 +3675,19 @@ e o peito abriu um espaço
 que não sabia que tinha ninguém
 
 [Chorus]
-Sozinha não — e o espanto
+Sozinha não — é o espanto
 sozinha não — não é fraqueza
-sozinha não — e o choque de perceber
+sozinha não — é o choque de perceber
 que o meu silêncio
 tinha eco em outra dureza
 eu também, eu também —
-tres palavras que partem a armadura
+três palavras que partem a armadura
 eu também, eu também —
 o que pensava ser só meu
-afinal e de outra criatura
+afinal é de outra criatura
 
 [Verse 3]
-A mao que me tocou o ombro
+A mão que me tocou o ombro
 não pediu retorno ou prova
 não explicou nem consolou —
 só ficou — presença nova
@@ -4072,7 +4072,7 @@ mais antigo do que o meu próprio nome
 As que vieram antes de mim
 também carregaram esta chama escondida
 Cosiram-na nas bainhas das saias
-passaram-na de mao em mao, de vida em vida
+passaram-na de mão em mão, de vida em vida
 
 [Bridge]
 Não preciso de altar para arderes
@@ -4116,7 +4116,7 @@ Porque a mesa farta e amigo
 
 [Verse 4]
 Marrabenta nós quadris quando carrego
-O prato que aquece a mao enquanto passo
+O prato que aquece a mão enquanto passo
 Deixo a música entrar no que entrego
 Não é trabalho — e abrir espaço
 
@@ -4190,7 +4190,7 @@ Houve dias tão carregados
 que o peito não abriu
 
 [Verse 2]
-Tiraram-me o nome e o lugar
+Tiraram-me o nome é o lugar
 tiraram-me a voz é a saida
 Mas no fundo mais fundo do escuro
 ainda havia a centelha acendida
