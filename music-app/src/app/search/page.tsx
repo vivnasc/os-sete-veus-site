@@ -86,7 +86,6 @@ const MOODS = [
 
 const GENRES = [
   { label: "Organic", slug: "organic" },
-  { label: "Marrabenta", slug: "marrabenta" },
   { label: "House", slug: "house" },
   { label: "Gospel", slug: "gospel" },
 ];
