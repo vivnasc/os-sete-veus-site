@@ -1,20 +1,31 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ALL_ALBUMS, type AlbumTrack, type Album } from "@/data/albums";
 
-function allTracksWithAudio(): { track: AlbumTrack; album: Album }[] {
-  return ALL_ALBUMS.flatMap((album) =>
-    album.tracks
-      .filter((t) => t.audioUrl)
-      .map((track) => ({ track, album }))
-  );
-}
-
 export default function NovidadesSection() {
-  const published = allTracksWithAudio();
-  // Take the last 8 (most recently added = end of the array)
-  const novidades = published.slice(-8).reverse();
+  const [novidades, setNovidades] = useState<{ track: AlbumTrack; album: Album }[]>([]);
+
+  useEffect(() => {
+    fetch("/api/published-tracks")
+      .then((r) => r.json())
+      .then((data) => {
+        const items: { track: AlbumTrack; album: Album }[] = [];
+        for (const key of (data.tracks || []) as string[]) {
+          const match = key.match(/^(.+)-t(\d+)$/);
+          if (!match) continue;
+          const [, albumSlug, trackNum] = match;
+          const album = ALL_ALBUMS.find((a) => a.slug === albumSlug);
+          if (!album) continue;
+          const track = album.tracks.find((t) => t.number === Number(trackNum));
+          if (!track) continue;
+          items.push({ track, album });
+        }
+        setNovidades(items.slice(-8).reverse());
+      })
+      .catch(() => {});
+  }, []);
 
   if (novidades.length === 0) return null;
 
@@ -47,7 +58,7 @@ export default function NovidadesSection() {
             <p className="text-sm font-medium text-[#F5F0E6] truncate">
               {track.title}
             </p>
-            <p className="text-xs text-[#666680] truncate mt-0.5">Loranne</p>
+            <p className="text-xs text-[#666680] truncate mt-0.5">{album.title}</p>
           </Link>
         ))}
       </div>
