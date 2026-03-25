@@ -100,6 +100,7 @@ export async function GET(req: NextRequest) {
       clips: allClips.map((c: Record<string, unknown>) => ({
         id: c.id || "",
         status: mapStatus(c.status as string),
+        rawStatus: c.status || null,
         audioUrl: c.audioUrl || c.audio_url || c.streamAudioUrl || null,
         title: c.title || "",
         duration: c.duration || null,
