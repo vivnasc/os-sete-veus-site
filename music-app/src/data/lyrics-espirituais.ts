@@ -11,17 +11,17 @@ export const ESPIRITUAL_LYRICS: Record<string, string> = {
   // ALBUM 1: ORACAO SEM PALAVRAS (when words don't reach, the body prays)
   // ─────────────────────────────────────────────
 
-  "espiritual-oracao/1": `[Verse 1]
+  "espiritual-oração/1": `[Verse 1]
 Antes de haver palavra
-ha um peito que se fecha
-O ar nao quer entrar
-a noite nao arrefece
+há um peito que se fecha
+O ar não quer entrar
+a noite não arrefece
 
 [Verse 2]
-Deito no chao de pedra
+Deito no chão de pedra
 os ossos pedem tudo
-Nao ha o que pedir
-so este corpo rude
+Não há o que pedir
+só este corpo rude
 
 [Chorus]
 Respira
@@ -31,21 +31,21 @@ antes do que ainda vens
 O peito e o templo
 a lingua pode calar
 Respira
-que isso ja e rezar
+que isso já e rezar
 
 [Bridge]
-Nao ha altar mais limpo
+Não há altar mais limpo
 do que um pulmao cansado
-Nao ha oracao mais honesta
+Não há oração mais honesta
 do que um corpo deitado
 
 [Outro]
 Antes de haver palavra
-ha um peito que se abre
+há um peito que se abre
 O ar quer entrar agora
-a noite ja e madre`,
+a noite já e madre`,
 
-  "espiritual-oracao/2": `[Verse 1]
+  "espiritual-oração/2": `[Verse 1]
 I opened my hands at dawn
 not asking, not reaching far
 Just holding the open air
@@ -79,22 +79,22 @@ not finished, not afraid
 Just hands that had been open
 and knew what prayer was made`,
 
-  "espiritual-oracao/3": `[Verse 1]
+  "espiritual-oração/3": `[Verse 1]
 Dobro os joelhos por vontade
-nao por peso que me forca
-Este chao frio e firme
+não por peso que me força
+Este chão frio e firme
 recebe o que me encorpa
 
 [Verse 2]
-Nao me humilhei a ninguem
-nao curvei a cabeca em vao
+Não me humilhei a ninguem
+não curvei a cabeça em vao
 Dobrar os joelhos e diferente
 quando a escolha e minha mao
 
 [Chorus]
 De joelhos e inteira
-de joelhos e de pe
-Ha uma dignidade serena
+de joelhos e de pé
+Há uma dignidade serena
 em saber o que se e
 Baixei porque quis baixar
 levantarei quando for
@@ -102,18 +102,18 @@ De joelhos e onde aprendo
 o nome do meu valor
 
 [Bridge]
-Nao e fraqueza nenhuma
-e a forca que recolhe
-Nao e rendicao ao medo
+Não e fraqueza nenhuma
+e a força que recolhe
+Não e rendicao ao medo
 e o medo que se acolhe
 
 [Outro]
 Dobro os joelhos por vontade
-e o chao recebe bem
+e o chão recebe bem
 De joelhos, inteira, quieta
 sou de mim o que me convem`,
 
-  "espiritual-oracao/4": `[Verse 1]
+  "espiritual-oração/4": `[Verse 1]
 There is a place no clock can find
 between the in and out
 A country with no language yet
@@ -147,36 +147,36 @@ and I have been there now
 The space between the breaths
 is my cathedral and my vow`,
 
-  "espiritual-oracao/5": `[Verse 1]
-Nao disse amem com a boca
-nao levantei a voz
+  "espiritual-oração/5": `[Verse 1]
+Não disse amem com a boca
+não levantei a voz
 O corpo disse amem por mim
 foi mais honesto dos dois
 
 [Verse 2]
 Os ombros desceram sozinhos
 quando a tensao se soltou
-As maos tremeram um instante
+As mãos tremeram um instante
 foi o amem que ficou
 
 [Chorus]
 Amem do corpo
 amem da carne viva
-Amem que nao se diz
-mas que nao morre nem deriva
-Nao preciso de palavras
+Amem que não se diz
+mas que não morre nem deriva
+Não preciso de palavras
 para o sagrado sentir
-O corpo e o amem que fica
+O corpo é o amem que fica
 quando tudo vai partir
 
 [Bridge]
-Antes da lingua ja havia fe
-antes da lingua o corpo ja rezava em pe
-Nao com palavras — com pulso e com pele
-nao com doutrina — com o peso que nao doi mais nele
+Antes da lingua já havia fé
+antes da lingua o corpo já rezava em pé
+Não com palavras — com pulso e com pele
+não com doutrina — com o peso que não dói mais nele
 
 [Outro]
-Nao disse amem com a boca
+Não disse amem com a boca
 mas disse com o ser
 O corpo tem um idioma
 e e o primeiro a responder`,
@@ -186,15 +186,15 @@ e e o primeiro a responder`,
   // ─────────────────────────────────────────────
 
   "espiritual-sagrado-selvagem/1": `[Verse 1]
-Os pes afundam na lama
+Os pés afundam na lama
 o barro sobe entre os dedos
-Nao ha templo mais antigo
-do que este chao sem segredos
+Não há templo mais antigo
+do que este chão sem segredos
 
 [Verse 2]
 A chuva fez este caminho
-as raizes abriram a pedra
-Nao precisas de altar nem cantico
+as raízes abriram a pedra
+Não precisas de altar nem cantico
 ajoelha aqui — a terra e sagrada
 
 [Chorus]
@@ -204,13 +204,13 @@ Terra, terra, tu es o corpo
 antes de qualquer sinal
 
 [Bridge]
-Nao e medo que me dobra ao chao
+Não e medo que me dobra ao chão
 e reconhecimento, e fidelidade
-Esta terra ja me conhecia
+Esta terra já me conhecia
 antes de eu saber a minha identidade
 
 [Outro]
-Enterro os pes
+Enterro os pés
 e fico
 Aqui e sagrado
 aqui e real`,
@@ -255,27 +255,27 @@ This is the prayer
 this is the turning`,
 
   "espiritual-sagrado-selvagem/3": `[Verse 1]
-Ha uma coisa em mim que sabe antes
+Há uma coisa em mim que sabe antes
 que fareja o perigo e o desejo igual
-Nao aprendeu em livro nenhum
+Não aprendeu em livro nenhum
 e mais velho do que qualquer sinal
 
 [Verse 2]
 Quando o corpo se fecha sem razao
 quando os cabelos da nuca se erguem
-O bicho ja leu o que a mente nega
+O bicho já leu o que a mente nega
 e move-se antes de tu o entenderes
 
 [Chorus]
-Bicho, bicho, nao me envergonhes
+Bicho, bicho, não me envergonhes
 Bicho, bicho, tu es o que sou
-Antes da palavra, antes da mascara
+Antes da palavra, antes da máscara
 eras tu que me guardava, foste tu que me salvou
 
 [Bridge]
-Nao te domino, nao te destruo
+Não te domino, não te destruo
 aprendo a ouvir-te antes de agir
-O bicho nao e o que me perde
+O bicho não e o que me perde
 e o que me impede de me perder a fingir
 
 [Outro]
@@ -314,10 +314,10 @@ the ground holds
 the ground holds`,
 
   "espiritual-sagrado-selvagem/5": `[Verse 1]
-Ha um fogo em mim que nao e raiva
-nao e febre, nao e destruicao
-E o que fica quando tiras tudo
-a brasa quieta no centro do coracao
+Há um fogo em mim que não e raiva
+não e febre, não e destruicao
+É o que fica quando tiras tudo
+a brasa quieta no centro do coração
 
 [Verse 2]
 Tentei apaga-lo com o medo
@@ -327,25 +327,25 @@ sempre voltou, sempre voltou a mim
 
 [Chorus]
 Fogo dentro, fogo sagrado
-que nao consome, que nao mente, que nao some
+que não consome, que não mente, que não some
 Fogo dentro, fogo que espera
-mais antigo do que o meu proprio nome
+mais antigo do que o meu próprio nome
 
 [Verse 3]
 As que vieram antes de mim
-tambem carregaram esta chama escondida
+também carregaram esta chama escondida
 Cosiram-na nas bainhas das saias
 passaram-na de mao em mao, de vida em vida
 
 [Bridge]
-Nao preciso de altar para arderes
-nao preciso de permissao para brilhar
-O sagrado nao vive na altura
+Não preciso de altar para arderes
+não preciso de permissao para brilhar
+O sagrado não vive na altura
 vive aqui, vive agora, vive no lugar
 
 [Outro]
 Arde
-nao te apagues
+não te apagues
 Arde
 foste feita para isso`,
 
@@ -356,36 +356,36 @@ foste feita para isso`,
   "espiritual-ritual/1": `[Verse 1]
 Antes do mundo entrar pela porta
 antes do primeiro ruido do dia
-Ha um gesto que so pertence a ti
-um silencio que ainda nao virou agonia
+Há um gesto que só pertence a ti
+um silêncio que ainda não virou agonia
 
 [Verse 2]
-A luz ainda nao sabe o teu nome
-os passos ainda nao tem destino
-E esse momento justo antes de tudo
+A luz ainda não sabe o teu nome
+os passos ainda não tem destino
+É esse momento justo antes de tudo
 que guarda o fio mais fino
 
 [Chorus]
-Manha, manha
+Manhã, manhã
 antes de seres de alguem
-Es so tua, so tua
-e isso e mais do que convem
-Descalca no chao frio
+Es só tua, só tua
+e isso é mais do que convem
+Descalca no chão frio
 antes que o dia te alcance
-A manha e o unico ritual
-que ninguem te pode tirar — e danca
+A manhã e o único ritual
+que ninguem te pode tirar — e dança
 
 [Bridge]
 Ninguem ve o que fazes
-nos primeiros cinco minutos
+nós primeiros cinco minutos
 E por isso que sao sagrados
 e por isso que sao teus
 
 [Outro]
-A manha e minha
+A manhã e minha
 antes de ser de alguem
 O corpo sabe disso
-antes da mente tambem`,
+antes da mente também`,
 
   "espiritual-ritual/2": `[Verse 1]
 The crust breaks in my hands
@@ -423,36 +423,36 @@ and know that you were there`,
 
   "espiritual-ritual/3": `[Verse 1]
 A torneira abre devagar
-a agua cai nas maos abertas
+a água cai nas mãos abertas
 Fria primeiro, depois morna
 como uma historia que desperta
 
 [Verse 2]
 Esfrego os dedos sem pressa
-nao por estarem sujos de verdade
+não por estarem sujos de verdade
 Mas porque o gesto lava
-o que as maos carregam da cidade
+o que as mãos carregam da cidade
 
 [Chorus]
-Agua nas maos
+Água nas mãos
 lava o que passou
-Agua nas maos
+Água nas mãos
 o gesto mais comum que se encontrou
 Ninguem ve a cerimonia
 de uma torneira a dar
-Agua que leva o dia
+Água que leva o dia
 e me devolve ao lugar
 
 [Bridge]
-As maos ficam molhadas
+As mãos ficam molhadas
 e por um momento
-nao seguram nada
-e isso e sacramento
+não seguram nada
+e isso é sacramento
 
 [Outro]
-Deixa a agua levar
-o que nao era teu
-Deixa a agua pousar
+Deixa a água levar
+o que não era teu
+Deixa a água pousar
 o que o dia te deu`,
 
   "espiritual-ritual/4": `[Verse 1]
@@ -499,27 +499,27 @@ nothing stays the same`,
   "espiritual-ritual/5": `[Verse 1]
 Fecho os olhos e o mundo la fora
 fica do lado de fora onde pertence
-Nao e fuga — e o gesto mais honesto
+Não e fuga — e o gesto mais honesto
 que o corpo faz quando a mente esquece
 
 [Verse 2]
 Foste expulsa de tantos sitios
 de mesas, de casas, de conversas com dono
 Mas aqui dentro ninguem te expulsou
-aqui dentro ainda es teu proprio trono
+aqui dentro ainda es teu próprio trono
 
 [Chorus]
 Fecho os olhos e volto
-ao unico lugar que me ficou
+ao único lugar que me ficou
 Fecho os olhos e estou inteira
-sem espelho, sem mascara, sem dor
+sem espelho, sem máscara, sem dor
 Fecho os olhos
 e encontro quem la ficou
 
 [Bridge]
 O mundo pede-te aberta
 o ritual pede-te fechada
-So um momento, so uma respiracao
+Só um momento, só uma respiracao
 e tu de volta — sem desconto, sem fachada
 
 [Outro]
@@ -533,46 +533,46 @@ sem desconto`,
   // ALBUM 4: GRACA (receiving what you didn't earn, softening)
   // ─────────────────────────────────────────────
 
-  "espiritual-graca/1": `[Verse 1]
-Nao fiz nada para merecer
-nao rezei nao paguei nenhum preco
+  "espiritual-graça/1": `[Verse 1]
+Não fiz nada para merecer
+não rezei não paguei nenhum preço
 E no entanto chegou de mansinho
 e encheu-me o peito como um especo
 
 [Verse 2]
 Tremi como quem apanha frio
-mas nao era frio — era assombro
+mas não era frio — era assombro
 Receber o que nunca pedi
 pesa mais do que o que eu carrego no ombro
 
 [Chorus]
-Nao mereci
+Não mereci
 e veio na mesma
-Nao mereci
+Não mereci
 e ficou na mesma
-A graca nao espera convite
+A graça não espera convite
 cai onde cai
 no justo no torto no vazio
-nao mereci — e so por isso choro
+não mereci — e só por isso choro
 
 [Verse 3]
-O susto de nao merecer nada
-e que nao te pede nenhuma razao
-O corpo aceita antes da cabeca
-e a cabeca rende-se entao
+O susto de não merecer nada
+e que não te pede nenhuma razao
+O corpo aceita antes da cabeça
+e a cabeça rende-se entao
 
 [Bridge]
-Deixei entrar o que nao chamei
+Deixei entrar o que não chamei
 abri uma porta sem ter chave
-Isto que sinto nao tem nome certo
-mas tem peso e tem cheiro e e suave
+Isto que sinto não tem nome certo
+mas tem peso é tem cheiro e e suave
 
 [Outro]
-Nao mereci
-e isso e o mais bonito
+Não mereci
+e isso é o mais bonito
 que alguma vez me aconteceu`,
 
-  "espiritual-graca/2": `[Verse 1]
+  "espiritual-graça/2": `[Verse 1]
 The armour didn't fall with drama
 it melted slow, like morning ice
 One day my shoulders just forgot
@@ -606,50 +606,50 @@ Not broken — open
 Something that can finally bend
 toward the light`,
 
-  "espiritual-graca/3": `[Verse 1]
-[Female] Estou de pe no meio do vazio
-os bracos caidos ao lado do corpo
-Nao rezei nao pedi nao chamei
+  "espiritual-graça/3": `[Verse 1]
+[Female] Estou de pé no meio do vazio
+os braços caidos ao lado do corpo
+Não rezei não pedi não chamei
 mas ouvi a tua voz no contorno
 
 [Chorus]
 [Both] Cai sobre mim
 [Male] como chuva que ninguem convocou
 [Female] Cai sobre mim
-[Male] sou a voz que o silencio mandou
-[Both] A graca nao escolhe o merecido
+[Male] sou a voz que o silêncio mandou
+[Both] A graça não escolhe o merecido
 cai no justo e no perdido
-Cai — e eu abro os bracos
+Cai — e eu abro os braços
 e deixo-me molhar
 
 [Verse 2]
-[Male] Sou a chuva que nao pede licenca
+[Male] Sou a chuva que não pede licença
 que molha o que estava seco por dentro
-Nao vim castigar nem recompensar
-so cair — e isso e o meu intento
+Não vim castigar nem recompensar
+só cair — e isso é o meu intento
 
 [Chorus]
 [Both] Cai sobre mim
 [Male] como chuva que ninguem convocou
 [Female] Cai sobre mim
-[Male] sou a voz que o silencio mandou
-[Both] A graca nao escolhe o merecido
+[Male] sou a voz que o silêncio mandou
+[Both] A graça não escolhe o merecido
 cai no justo e no perdido
-Cai — e eu abro os bracos
+Cai — e eu abro os braços
 e deixo-me molhar
 
 [Bridge]
 [Female] Aprendi a fugir da gentileza
 [Male] Aprendi a cair sem te avisar
-[Both] Mas aqui entre a chuva e o silencio
-ha um espaco que chama a descansar
+[Both] Mas aqui entre a chuva e o silêncio
+há um espaço que chama a descansar
 
 [Outro]
 [Female] Cai sobre mim
-[Male] Ja estou a cair
-[Both] E eu ja nao fujo da gentileza`,
+[Male] Já estou a cair
+[Both] E eu já não fujo da gentileza`,
 
-  "espiritual-graca/4": `[Verse 1]
+  "espiritual-graça/4": `[Verse 1]
 I did not earn this sunrise
 or the lungs that let me breathe
 This morning came regardless
@@ -683,49 +683,49 @@ and let the unearned stay
 [Outro]
 Unearned
 And that is why
-it is so tender`,
+it is só tender`,
 
   // ─────────────────────────────────────────────
   // ALBUM 5: SILENCIO SAGRADO (fullness of quietude)
   // ─────────────────────────────────────────────
 
-  "espiritual-silencio/1": `[Verse 1]
+  "espiritual-silêncio/1": `[Verse 1]
 Cala como o mar depois da onda
 como o corpo depois de chorar
-Nao e castigo nem abandono
-e o espaco antes de voltar
+Não e castigo nem abandono
+e o espaço antes de voltar
 
 [Verse 2]
 A boca fecha e o mundo respira
 os ombros pousam no seu lugar
-Nao precisas de dizer mais nada
+Não precisas de dizer mais nada
 para seres inteira de par
 
 [Chorus]
-Cala — por convite nao por ordem
-Cala — o silencio e teu lar
+Cala — por convite não por ordem
+Cala — o silêncio e teu lar
 Cala — a voz descansa entre ondas
 e volta mais limpa ao falar
 Cala
 
 [Verse 3]
-Nao ha nada perdido no silencio
-ha qualquer coisa que se encontra
+Não há nada perdido no silêncio
+há qualquer coisa que se encontra
 O que ficou e mais verdadeiro
 do que tudo o que a voz confronta
 
 [Bridge]
 A onda volta sempre para a margem
-mas o silencio entre ondas e o mar
-e nesse espaco quieto sem disfarce
-o mar se lembra do que e de verdade
+mas o silêncio entre ondas e o mar
+e nesse espaço quieto sem disfarce
+o mar se lembra do que é de verdade
 
 [Outro]
 Cala
 E ouve
 o que sobra quando a voz se vai`,
 
-  "espiritual-silencio/2": `[Verse 1]
+  "espiritual-silêncio/2": `[Verse 1]
 Sit still — not because it's peaceful
 but because the muscles learn
 to stop performing rest for others
@@ -761,43 +761,43 @@ Stillness is not a gift
 It is a skill
 Built with trembling hands`,
 
-  "espiritual-silencio/3": `[Verse 1]
-O quarto estava vazio e nao estava
+  "espiritual-silêncio/3": `[Verse 1]
+O quarto estava vazio é não estava
 tirei os moveis os quadros os sons
-E o que sobrou entre as quatro paredes
-pesava mais do que as proprias raizes e poes
+É o que sobrou entre as quatro paredes
+pesava mais do que as proprias raízes e poes
 
 [Verse 2]
 Desci as caixas todas para o corredor
-fiquei sozinha com o chao e o ar
-E ali no meio daquele nao-nada
+fiquei sozinha com o chão é o ar
+E ali no meio daquele não-nada
 percebi que nunca estive tao cheia de estar
 
 [Chorus]
-O vazio cheio — nao e contradicao
-O vazio cheio — e o que fica no chao
+O vazio cheio — não e contradicao
+O vazio cheio — e o que fica no chão
 Quando tiras tudo o que punhas la dentro
-descobres que o nada tem peso e intencao
+descobres que o nada tem peso é intencao
 O vazio cheio
 
 [Verse 3]
-Nao e falta — e espaco que respira
-nao e ausencia — e presenca a nu
+Não e falta — e espaço que respira
+não e ausência — e presença a nu
 O que eu chamava vazio era armadura
 o que sobrou quando a tirei sou eu
 
 [Bridge]
-O silencio nao e ausencia
-e presenca sem disfarce
-O vazio nao e falta
-e o espaco onde me reconheco na face
+O silêncio não e ausência
+e presença sem disfarce
+O vazio não e falta
+e o espaço onde me reconheco na face
 
 [Outro]
 Esvaziei tudo
 e fiquei cheia
 pela primeira vez`,
 
-  "espiritual-silencio/4": `[Verse 1]
+  "espiritual-silêncio/4": `[Verse 1]
 I used to think that silence
 was the sound of nothing there
 But silence has a texture
@@ -836,16 +836,16 @@ with everything that's tough
 I listened to the silence
 And it said my name`,
 
-  "espiritual-silencio/5": `[Verse 1]
-Nao tem tecto nem campainha
-nao tem vitral nem altar de pedra
-So o peito aberto na escuridao
-e o silencio que nele se entrega
+  "espiritual-silêncio/5": `[Verse 1]
+Não tem tecto nem campainha
+não tem vitral nem altar de pedra
+Só o peito aberto na escuridão
+e o silêncio que nele se entrega
 
 [Verse 2]
 A catedral mais alta que pisei
-nao tinha coluna nem nave
-tinha o espaco entre respiracoes
+não tinha coluna nem nave
+tinha o espaço entre respiracoes
 e uma luz que nenhuma vela trave
 
 [Chorus]
@@ -853,20 +853,20 @@ Catedral interior — sem arquitecto
 Catedral interior — sem projecto
 A nave e o meu peito a se abrir
 o altar e o meu centro quieto
-Catedral que nao precisa de ser vista
+Catedral que não precisa de ser vista
 para ser sagrada e ser real
 
 [Verse 3]
 Entrei muitas vezes sem saber
 que estava a entrar num templo
-Sentei no chao de pedra do meu corpo
-e encontrei o que nao tem exemplo
+Sentei no chão de pedra do meu corpo
+e encontrei o que não tem exemplo
 
 [Bridge]
-Nao precisas de ir a lado nenhum
+Não precisas de ir a lado nenhum
 o templo esta aqui
 Entre as tuas costelas e os teus olhos
-no silencio que te da a ti
+no silêncio que te da a ti
 
 [Outro]
 Entra
@@ -885,28 +885,28 @@ cada musculo uma suplicacao
 
 [Verse 2]
 Seguro o tecto com os ombros curvados
-Seguro o chao com os joelhos em brao
-Seguro o ar nos pulmoes contraidos
-como se largar fosse a minha traicao
+Seguro o chão com os joelhos em brao
+Seguro o ar nós pulmões contraidos
+como se largar fosse a minha traição
 
 [Chorus]
 Estou cansada de segurar
 o que nunca foi meu para ter
-Estou cansada de nao largar
+Estou cansada de não largar
 o que me parte sem eu perceber
-Ha um chao aqui por baixo dos meus pes
-que nao precisa que eu o segure
+Há um chão aqui por baixo dos meus pés
+que não precisa que eu o segure
 
 [Verse 3]
-Os bracos ja nao aguantam o peso
-mas a mente ainda nao sabe pousar
-E o corpo que pede com todo o seu tremor
-o que a cabeca nao consegue aceitar
+Os braços já não aguantam o peso
+mas a mente ainda não sabe pousar
+É o corpo que pede com todo o seu tremor
+o que a cabeça não consegue aceitar
 
 [Bridge]
-Os bracos tremem o peito fecha
+Os braços tremem o peito fecha
 os dentes cerram e o corpo cede
-Nao e fraqueza — e o peso a dizer
+Não e fraqueza — e o peso a dizer
 que nenhum corpo aguenta o que este pede
 
 [Outro]
@@ -953,38 +953,38 @@ I haven't landed yet
 And maybe that's the point`,
 
   "espiritual-entrega/3": `[Verse 1]
-Abro as maos e nao ha nada —
+Abro as mãos e não há nada —
 nem chave nem mapa nem razao
-So a pele e o ar entre os dedos
+Só a pele é o ar entre os dedos
 e o vazio que me cabe na mao
 
 [Verse 2]
-Nao tenho provas do que carregava
-nao tenho nada que possa mostrar
-So estas maos que ja aprenderam
+Não tenho provas do que carregava
+não tenho nada que possa mostrar
+Só estas mãos que já aprenderam
 a forma de largar e de estar
 
 [Chorus]
-Maos vazias — nao e pobreza e escolha
-Maos vazias — nao e perda e entrega
+Mãos vazias — não e pobreza e escolha
+Mãos vazias — não e perda e entrega
 Abertas como um peito que respira
-abertas onde o peso nao se apega
-Maos vazias — e assim que eu existo
+abertas onde o peso não se apega
+Mãos vazias — e assim que eu existo
 
 [Verse 3]
-O vazio das maos nao e falta
-e espaco para o que vem a seguir
-Nao preciso de segurar o mundo
+O vazio das mãos não e falta
+e espaço para o que vem a seguir
+Não preciso de segurar o mundo
 para saber que sou capaz de ir
 
 [Bridge]
 O que sobra quando largas tudo
 e o peso certo dos teus ossos
-e o som do teu coracao batendo
-sem pedir licenca nem propostos
+e o som do teu coração batendo
+sem pedir licença nem propostos
 
 [Outro]
-Nao preciso de segurar
+Não preciso de segurar
 para existir`,
 
   "espiritual-entrega/4": `[Verse 1]
@@ -1032,48 +1032,48 @@ and everything that follows after death
 trust the dark — it holds us all`,
 
   "espiritual-entrega/5": `[Verse 1]
-Ja nao nado contra a agua
-ja nao luto com a corrente fria
+Já não nado contra a água
+já não luto com a corrente fria
 O meu corpo virou margem
-e a margem virou a propria via
+e a margem virou a própria via
 
 [Verse 2]
-O rio nao tem pressa nem receio
-o rio nao pergunta se chega ao mar
+O rio não tem pressa nem receio
+o rio não pergunta se chega ao mar
 Vai porque ir e a sua natureza
-nao porque alguem o foi ensinar
+não porque alguem o foi ensinar
 
 [Chorus]
-Sou o rio — nao a pedra no caminho
-Sou o rio — nao a mao que agarra o fundo
-Sou o movimento — nao a margem que resiste
+Sou o rio — não a pedra no caminho
+Sou o rio — não a mao que agarra o fundo
+Sou o movimento — não a margem que resiste
 e o rio sabe ir por este mundo
 Sou o rio
 
 [Verse 3]
 O que era eu quando segurava tudo
 era um lago parado sem saida
-Agora que me movo com a agua
-descubro o que e estar viva
+Agora que me movo com a água
+descubro o que é estar viva
 
 [Bridge]
-A agua passa pelo peito
+A água passa pelo peito
 passa pelos joelhos e pelo que eu fui
-Leva o que ja nao preciso de ser
+Leva o que já não preciso de ser
 e deixa o que sempre foi meu aqui
 
 [Outro]
-Nao preciso de nadar
-quando sou a agua`,
+Não preciso de nadar
+quando sou a água`,
 
   // ─────────────────────────────────────────────
   // ALBUM 7: MAOS ABERTAS (giving without losing yourself)
   // ─────────────────────────────────────────────
 
-  "espiritual-maos-abertas/1": `[Verse 1]
-Dar nao e um acto de coragem
-Nao e titulo nem licao
-E a mao que pousa o pao na mesa
+  "espiritual-mãos-abertas/1": `[Verse 1]
+Dar não e um acto de coragem
+Não e titulo nem licao
+É a mao que pousa o pao na mesa
 Sem discurso, sem comocao
 
 [Verse 2]
@@ -1083,46 +1083,46 @@ Toma, e teu — tres palavras simples
 Que cabem todas num protesto
 
 [Chorus]
-Dar e so isto
+Dar e só isto
 A mao que se abre no ar
-Dar e so isto
+Dar e só isto
 O pao que passa de par em par
-Nao precisa de nome
-Nao precisa de altar
-So a mao, so o gesto
-So o pao sobre o lar
+Não precisa de nome
+Não precisa de altar
+Só a mao, só o gesto
+Só o pao sobre o lar
 
 [Verse 3]
-Nao guardo o recibo do que dei
-Nao peso o que recebi em troca
+Não guardo o recibo do que dei
+Não peso o que recebi em troca
 O gesto e inteiro por si mesmo
-A generosidade nao se choca
+A generosidade não se choca
 
 [Chorus]
-Dar e so isto
+Dar e só isto
 A mao que se abre no ar
-Dar e so isto
+Dar e só isto
 O pao que passa de par em par
-Nao precisa de nome
-Nao precisa de altar
-So a mao, so o gesto
-So o pao sobre o lar
+Não precisa de nome
+Não precisa de altar
+Só a mao, só o gesto
+Só o pao sobre o lar
 
 [Bridge]
-Nao me esvazio quando dou
-O poco nao seca na dacao
+Não me esvazio quando dou
+O poco não seca na dacao
 O que oferto ainda e meu
-Ate ao momento da entrega — entao
+Até ao momento da entrega — entao
 
 [Chorus]
-Dar e so isto
+Dar e só isto
 A mao que se abre no ar
-Dar e so isto
+Dar e só isto
 O pao que passa de par em par
-Nao precisa de nome
-Nao precisa de altar
-So a mao, so o gesto
-So o pao sobre o lar
+Não precisa de nome
+Não precisa de altar
+Só a mao, só o gesto
+Só o pao sobre o lar
 
 [Outro]
 A mao abre
@@ -1130,7 +1130,7 @@ O pao parte
 Nada se perde
 Nada se parte`,
 
-  "espiritual-maos-abertas/2": `[Verse 1 - Female]
+  "espiritual-mãos-abertas/2": `[Verse 1 - Female]
 I gave the morning, gave the night
 Gave until my spine went thin
 Poured the last drop into silence
@@ -1205,73 +1205,73 @@ Put the cup away
 You are not less
 For needing this today`,
 
-  "espiritual-maos-abertas/3": `[Verse 1]
-Entro na cozinha de manha cedo
-O chao ainda frio, o ar ainda escuro
-Mas os pes sabem o que fazer
-E o corpo move-se no compasso puro
+  "espiritual-mãos-abertas/3": `[Verse 1]
+Entro na cozinha de manhã cedo
+O chão ainda frio, o ar ainda escuro
+Mas os pés sabem o que fazer
+É o corpo move-se no compasso puro
 
 [Verse 2]
 Ponho a panela, mexo devagar
 Como se a colher fosse um instrumento
-Servir nao cansa quando e danca
+Servir não cansa quando e dança
 Cada gesto tem o seu momento
 
 [Chorus]
-Sirvo com os pes no chao
+Sirvo com os pés no chão
 Sirvo com o corpo inteiro
 Sirvo sem perder o fio
 Sirvo e sou eu — verdadeiro
-Nao e o peso do servir
+Não e o peso do servir
 Que me faz dobrar o joelho
-E a graca do servir
+É a graça do servir
 Que me faz brilhar no espelho
 
 [Verse 3]
-Ha quem sirva a medo, ha quem sirva a custo
-Ha quem confunda entrega com castigo
+Há quem sirva a medo, há quem sirva a custo
+Há quem confunda entrega com castigo
 Eu sirvo porque o corpo quer o gosto
 Porque a mesa farta e amigo
 
 [Verse 4]
-Marrabenta nos quadris quando carrego
+Marrabenta nós quadris quando carrego
 O prato que aquece a mao enquanto passo
-Deixo a musica entrar no que entrego
-Nao e trabalho — e abrir espaco
+Deixo a música entrar no que entrego
+Não e trabalho — e abrir espaço
 
 [Chorus]
-Sirvo com os pes no chao
+Sirvo com os pés no chão
 Sirvo com o corpo inteiro
 Sirvo sem perder o fio
 Sirvo e sou eu — verdadeiro
-Nao e o peso do servir
+Não e o peso do servir
 Que me faz dobrar o joelho
-E a graca do servir
+É a graça do servir
 Que me faz brilhar no espelho
 
 [Bridge]
 Digo basta quando chega a hora
-O basta tambem faz parte do oficio
+O basta também faz parte do oficio
 Servir bem exige que me honre
 Antes de honrar o servico
 
 [Chorus]
-Sirvo com os pes no chao
+Sirvo com os pés no chão
 Sirvo com o corpo inteiro
 Sirvo sem perder o fio
 Sirvo e sou eu — verdadeiro
-Nao e o peso do servir
+Não e o peso do servir
 Que me faz dobrar o joelho
-E a graca do servir
+É a graça do servir
 Que me faz brilhar no espelho
 
 [Outro]
 Sirvo porque quero
-Nao porque me rendem
-As maos servem livres
+Não porque me rendem
+As mãos servem livres
 Quando os pés compreendem`,
 
-  "espiritual-maos-abertas/4": `[Verse 1]
+  "espiritual-mãos-abertas/4": `[Verse 1]
 My hands are open to the morning light
 Not surrendered — just released
 Like a tree that holds its leaves all summer
@@ -1300,7 +1300,7 @@ But the fruit that drops from the branch feeds something
 And the branch still holds the moss
 
 [Verse 4]
-So my palms face up in the quiet
+Só my palms face up in the quiet
 Not in asking, not in prayer
 Just in being what I'm being
 Just in putting something there
@@ -1335,15 +1335,15 @@ Still rooted in the frost`,
   // ALBUM 8: RAIZ E CEU (feet on earth, head in stars)
   // ─────────────────────────────────────────────
 
-  "espiritual-raiz-ceu/1": `[Verse 1]
+  "espiritual-raiz-céu/1": `[Verse 1]
 A raiz trabalha no escuro
 sem palco e sem louvor
 ninguem fotografa o fundo
 ninguem te diz o seu valor
 
 [Verse 2]
-O que sustenta nao brilha
-o chao nao pede atencao
+O que sustenta não brilha
+o chão não pede atencao
 mas tudo o que se ergue acima
 nasce desta fundacao
 
@@ -1358,15 +1358,15 @@ pelo escuro que trabalha
 pelo fundo que tem vivido
 
 [Verse 3]
-Os meus pes conhecem barro
-as minhas maos conhecem terra
+Os meus pés conhecem barro
+as minhas mãos conhecem terra
 o que me segura ao mundo
-nao tem nome — e forca certa
+não tem nome — e força certa
 
 [Bridge]
-Antes de subir ha um descer
-antes da copa ha o enlameado
-antes da flor ha o que a fez
+Antes de subir há um descer
+antes da copa há o enlameado
+antes da flor há o que a fez
 o que nunca foi fotografado
 
 [Outro]
@@ -1375,7 +1375,7 @@ ninguem te ve
 mas e por ti
 que tudo cresce`,
 
-  "espiritual-raiz-ceu/2": `[Verse 1]
+  "espiritual-raiz-céu/2": `[Verse 1]
 I kept looking up for something wide
 some ceiling I could finally break
 but the sky was never overhead —
@@ -1413,48 +1413,48 @@ You are not beneath the sky
 You are the sky
 You carry it`,
 
-  "espiritual-raiz-ceu/3": `[Verse 1]
+  "espiritual-raiz-céu/3": `[Verse 1]
 A coluna e o eixo do mundo
 entre a lama e o mais azul
 a gravidade puxa em baixo
 a leveza chama do sul
 
 [Verse 2]
-Nao sou so o que me prende
-nao sou so o que me quer
+Não sou só o que me prende
+não sou só o que me quer
 sou a linha que os une
 sou o corpo inteiro a ser
 
 [Chorus]
 Vertical, vertical
-os pes na lama e funda
+os pés na lama e funda
 vertical, vertical
-a cabeca no ceu que abunda
-nao escolho um lado so —
+a cabeça no céu que abunda
+não escolho um lado só —
 sou o eixo entre os dois extremos
-o templo nao e la em cima
+o templo não e la em cima
 o templo e este corpo inteiro
 
 [Verse 3]
-A base dos pes no chao firme
-o topo da cabeca no ar
+A base dos pés no chão firme
+o topo da cabeça no ar
 tudo o que sou existe
 neste comprimento singular
 
 [Bridge]
-Nao preciso de subir para voar
-nao preciso de cair para enraizar
-sou a distancia que e medida
-do centro da terra ao ceu sem par
+Não preciso de subir para voar
+não preciso de cair para enraizar
+sou a distancia que é medida
+do centro da terra ao céu sem par
 
 [Outro]
 Vertical
-nem so raiz
-nem so ceu
+nem só raiz
+nem só céu
 sou o eixo
 sou eu`,
 
-  "espiritual-raiz-ceu/4": `[Verse 1]
+  "espiritual-raiz-céu/4": `[Verse 1]
 [Male]
 I am the weight of stone and root
 the patient dark below
@@ -1487,7 +1487,7 @@ he is the ground she calls home
 I used to call my weight a flaw
 a heaviness to mourn
 but she taught me that the root goes deep
-so the tree won't be torn
+só the tree won't be torn
 
 [Female]
 I used to call my lightness loss
@@ -1509,37 +1509,37 @@ and both is whole
 both
 and whole is home`,
 
-  "espiritual-raiz-ceu/5": `[Verse 1]
+  "espiritual-raiz-céu/5": `[Verse 1]
 Plantaram-me num lugar estranho
-num solo que nao escolhi
-mas as raizes foram fundo
+num solo que não escolhi
+mas as raízes foram fundo
 antes de eu saber de mim
 
 [Verse 2]
 Cresci torta contra o vento
 os galhos para o lado errado
-mas o tronco nao partiu —
+mas o tronco não partiu —
 ficou firme e ficou marcado
 
 [Chorus]
-Sou a arvore, sou a arvore
+Sou a árvore, sou a árvore
 raiz no escuro, copa no ar
-sou a arvore, sou a arvore
+sou a árvore, sou a árvore
 ninguem me plantou — fui eu a plantar
 dou sombra sem pedir nada
-alcanço o ceu sem me mover
+alcanço o céu sem me mover
 sou o que fica quando tudo passa
 sou o que cresce sem se perder
 
 [Verse 3]
-Os passaros nao ficam sempre
+Os passaros não ficam sempre
 as estacoes mudam a pele
-mas o centro nao se curva —
+mas o centro não se curva —
 o centro e o que me manteve
 
 [Bridge]
-Nao sou o fruto que cai
-nao sou a folha que parte
+Não sou o fruto que cai
+não sou a folha que parte
 sou o tronco que testemunha
 a beleza e o acidente
 
@@ -1548,15 +1548,15 @@ Enraizada
 e a crescer
 as duas coisas
 sao a mesma coisa
-sou a arvore
+sou a árvore
 sou inteira`,
 
   // ─────────────────────────────────────────────
   // ALBUM 9: AGUA VIVA (cleansing, rebirth, baptism without church)
   // ─────────────────────────────────────────────
 
-  "espiritual-agua-viva/1": `[Verse 1]
-Ha um sitio onde a agua nasce
+  "espiritual-água-viva/1": `[Verse 1]
+Há um sitio onde a água nasce
 antes de ter nome ou rumo
 antes de ser chuva ou fio
 antes de fazer consumo
@@ -1564,38 +1564,38 @@ antes de fazer consumo
 [Verse 2]
 Uma fenda entre as pedras frias
 um pulsar que vem de dentro
-a agua surge sem aviso
+a água surge sem aviso
 sem map e sem intento
 
 [Chorus]
 Fonte, fonte
 onde tudo comeca limpo
 fonte, fonte
-a agua ainda nao tem dono
-antes do nome ha o pulsar
-antes do rio ha o silencio
-a terra nao espera ser pedida —
+a água ainda não tem dono
+antes do nome há o pulsar
+antes do rio há o silêncio
+a terra não espera ser pedida —
 simplesmente da o que tem dentro
 
 [Verse 3]
-Encosta o ouvido ao chao duro
+Encosta o ouvido ao chão duro
 ouve o que corre por baixo
-a agua mais antiga do mundo
-e a que ainda nao chegou ao raio
+a água mais antiga do mundo
+e a que ainda não chegou ao raio
 
 [Bridge]
-Antes da sede ha a fonte
-antes da fonte ha a fisura
-antes da fisura ha o escuro
-e o escuro guarda a agua pura
+Antes da sede há a fonte
+antes da fonte há a fisura
+antes da fisura há o escuro
+e o escuro guarda a água pura
 
 [Outro]
-A fonte nao pede licenca
-nao espera quem a reclame
+A fonte não pede licença
+não espera quem a reclame
 nasce porque tem de nascer
 antes de ter nome — antes de ter fome`,
 
-  "espiritual-agua-viva/2": `[Verse 1]
+  "espiritual-água-viva/2": `[Verse 1]
 It's 3am and the kitchen's dark
 and I'm standing at the sink
 the tap is running over both my hands
@@ -1635,39 +1635,39 @@ you don't need the sea
 just the kitchen, just the 3am
 just the tap running free`,
 
-  "espiritual-agua-viva/3": `[Verse 1]
-Fecho os olhos na beira da agua
+  "espiritual-água-viva/3": `[Verse 1]
+Fecho os olhos na beira da água
 dobro os joelhos devagar
-nao ha padre nem promessa —
-so a coragem de mergulhar
+não há padre nem promessa —
+só a coragem de mergulhar
 
 [Verse 2]
-A agua cobre-me a cabeca
-o silencio e o mais antigo
-nao ha vela nem baptismo
-so o corpo como abrigo
+A água cobre-me a cabeça
+o silêncio e o mais antigo
+não há vela nem baptismo
+só o corpo como abrigo
 
 [Chorus]
 Mergulho, mergulho
-por baixo nao ha medo
+por baixo não há medo
 mergulho, mergulho
-por baixo ha so o que sou
+por baixo há só o que sou
 o corpo inteiro submerso
 no que eu sempre contornei
-a agua nao me afoga —
-a agua me reconhece
+a água não me afoga —
+a água me reconhece
 
 [Verse 3]
-O fundo nao e escuro
-o fundo e so quietude
-e no silencio submerso
-o coracao bate com plenitude
+O fundo não e escuro
+o fundo e só quietude
+e no silêncio submerso
+o coração bate com plenitude
 
 [Bridge]
-Nao e morte — e descida
-nao e fim — e um descer
+Não e morte — e descida
+não e fim — e um descer
 para o fundo onde se guarda
-o que eu nao quis ver
+o que eu não quis ver
 
 [Outro]
 Quando voltar a superficie
@@ -1675,7 +1675,7 @@ serei a mesma
 mas por dentro
 lavada`,
 
-  "espiritual-agua-viva/4": `[Verse 1]
+  "espiritual-água-viva/4": `[Verse 1]
 My lungs burned for air
 my arms fought the weight
 I pushed through the surface
@@ -1721,43 +1721,43 @@ for once`,
   // ─────────────────────────────────────────────
 
   "espiritual-amem/1": `[Verse 1]
-Pensei que o caminho era so meu
-que o peso so eu o sabia levar
-que a escuridao era privada
+Pensei que o caminho era só meu
+que o peso só eu o sabia levar
+que a escuridão era privada
 que ninguem ia reparar
 
 [Verse 2]
 Depois uma voz do meu lado
-disse baixinho: eu tambem
-e o peito abriu um espaco
-que nao sabia que tinha ninguem
+disse baixinho: eu também
+e o peito abriu um espaço
+que não sabia que tinha ninguem
 
 [Chorus]
-Sozinha nao — e o espanto
-sozinha nao — nao e fraqueza
-sozinha nao — e o choque de perceber
-que o meu silencio
+Sozinha não — e o espanto
+sozinha não — não e fraqueza
+sozinha não — e o choque de perceber
+que o meu silêncio
 tinha eco em outra dureza
-eu tambem, eu tambem —
+eu também, eu também —
 tres palavras que partem a armadura
-eu tambem, eu tambem —
-o que pensava ser so meu
+eu também, eu também —
+o que pensava ser só meu
 afinal e de outra criatura
 
 [Verse 3]
 A mao que me tocou o ombro
-nao pediu nada em troca
-nao explicou nem consolou —
-so ficou sem ser convoca
+não pediu nada em troca
+não explicou nem consolou —
+só ficou sem ser convoca
 
 [Bridge]
-Nao e que a dor desapareceu
-nao e que ficou mais leve
+Não e que a dor desapareceu
+não e que ficou mais leve
 e que de repente tinha nome
 e o nome de outra gente
 
 [Outro]
-Sozinha nao
+Sozinha não
 e a frase que me parte
 e me reconstroi
 ao mesmo tempo`,
@@ -1823,44 +1823,44 @@ And that was everything`,
 
   "espiritual-amem/3": `[Verse 1]
 Eu sozinha sou sussurro
-tu sozinha es sussurro tambem
+tu sozinha es sussurro também
 mas quando as duas abrimos a boca
 somos vento que ninguem contem
 
 [Verse 2]
-Nao e coro ensaiado nem palco
-nao e cancao com letra certa
+Não e coro ensaiado nem palco
+não e canção com letra certa
 e a voz que sai do peito fundo
 quando alguem toca a porta aberta
 
 [Chorus]
-Nos, nos
+Nos, nós
 a palavra que salva
-nos, nos
-o plural que nos basta
+nós, nós
+o plural que nós basta
 as vozes que se encontram
-no mesmo chao, no mesmo medo
+no mesmo chão, no mesmo medo
 na mesma verdade partilhada —
-nos, e isso e tudo o que e sagrado
+nós, e isso é tudo o que é sagrado
 
 [Verse 3]
-Nao precisamos de ser bonitas
-nao precisamos de ser fortes
+Não precisamos de ser bonitas
+não precisamos de ser fortes
 basta que as vozes se encostem
 antes de ficarmos surdas e absortas
 
 [Bridge]
 Abre a boca
 deixa sair o som cru
-nao importa se e bonito —
-importa que e teu, importa que e tu
+não importa se e bonito —
+importa que é teu, importa que é tu
 
 [Outro]
 Nos
 juntas
-de pes no chao
+de pés no chão
 de peito aberto
-nos`,
+nós`,
 
   "espiritual-amem/4": `[Verse 1]
 Sou um grao de areia
@@ -1869,37 +1869,37 @@ tao pequena que o vento
 me poderia tirar do que habite
 
 [Verse 2]
-Mas o grao nao esta sozinho
-ha milhoes que nao se veem
+Mas o grao não esta sozinho
+há milhoes que não se veem
 e juntos somos deserto —
-e o deserto e o que nos contem
+e o deserto e o que nós contem
 
 [Chorus]
 Grao, grao
 pequeno e necessario
 grao, grao
 invisivel e sagrado
-amem nao e o grito do estadio
+amem não e o grito do estadio
 amem e o sussurro que sai de dentro
-quando aceitas que es so um grao
+quando aceitas que es só um grao
 e que esse grao e o fundamento
 
 [Verse 3]
-Nao preciso de ser montanha
+Não preciso de ser montanha
 para que a terra me sinta sob o peso
 basta existir com o meu tamanho
 basta o simples gesto
 
 [Bridge]
 Um grao diz amem
-nao ao ceu — a si mesmo
-nao para ser ouvido —
-para nao perder o fio do que penso
+não ao céu — a si mesmo
+não para ser ouvido —
+para não perder o fio do que penso
 
 [Outro]
 Amem
-nao e o fim da oracao
-e o comeco
+não e o fim da oração
+e o começo
 de dizer sim
 ao que sou`,
 
@@ -1908,44 +1908,44 @@ ao que sou`,
   // ─────────────────────────────────────────────
 
   "espiritual-prece/1": `[Verse 1]
-Nao sei a quem dirijo
-nao sei se ha quem escute
-So sei que este joelho
-dobrou porque nao aguente
+Não sei a quem dirijo
+não sei se há quem escute
+Só sei que este joelho
+dobrou porque não aguente
 
 [Verse 2]
-As maos nao se juntam por fe
+As mãos não se juntam por fé
 juntam-se porque tremem
-A boca abre e nao sai voz
-so o ar que o desespero bebe
+A boca abre e não sai voz
+só o ar que o desespero bebe
 
 [Chorus]
 Pede — com o poco seco
 pede — com a voz que falha
 pede com o corpo em farrapos
 antes que a noite te engolha
-O chao recebe o grito
+O chão recebe o grito
 o ar carrega a dor
 Pede sem saber o nome
 de quem podes chamar
 
 [Verse 3]
-Nao e oracao bonita
-nao e fe nem disciplina
-E a carne que nao aguenta
+Não e oração bonita
+não e fé nem disciplina
+É a carne que não aguenta
 e a garganta que se afina
 
 [Bridge]
-Quando a vergonha ja saiu
-quando o orgulho ja nao tem peso
-o que resta e so o peito
+Quando a vergonha já saiu
+quando o orgulho já não tem peso
+o que resta e só o peito
 nu e aberto e aceso
 
 [Outro]
 Pede
 mesmo sem saber o que pedes
 pede
-porque o grito ja saiu`,
+porque o grito já saiu`,
 
   "espiritual-prece/2": `[Verse 1]
 I pressed my mouth against the dark
@@ -1988,36 +1988,36 @@ O desamparo e tao vasto
 que cabe o mundo
 
 [Verse 2]
-Os joelhos no chao de pedra
-as maos sem forca nenhuma
+Os joelhos no chão de pedra
+as mãos sem força nenhuma
 O peito aberto como ferida
-a boca que nao depura
+a boca que não depura
 
 [Chorus]
-Desamparo — chao sagrado
+Desamparo — chão sagrado
 desamparo — toca o real
-Nao ha catedral mais honesta
+Não há catedral mais honesta
 que este escuro total
 Onde ninguem chega com consolo
-onde o orgulho nao tem vez
+onde o orgulho não tem vez
 O desamparo e o templo
 o lugar onde o sagrado desce
 
 [Verse 3]
-Nao preciso de altar nem vela
+Não preciso de altar nem vela
 preciso deste frio
-Nao preciso de ritual
-so preciso deste rio
+Não preciso de ritual
+só preciso deste rio
 que corre mesmo quando
-a margem nao se ve
+a margem não se ve
 O desamparo e o templo
-o mais nobre que ha de pe
+o mais nobre que há de pé
 
 [Bridge]
-Vim com as maos vazias
+Vim com as mãos vazias
 vim com o corpo exausto
 Vim sem saber o que pedir
-vim so porque era o custo
+vim só porque era o custo
 
 [Outro]
 Rezo do fundo
@@ -2068,43 +2068,43 @@ we just stopped seeking
 [Both] home`,
 
   "espiritual-prece/5": `[Verse 1]
-Ja pedi com o grito
-ja pedi com o pranto
-Ja pedi ao silencio
-ja pedi ao espanto
+Já pedi com o grito
+já pedi com o pranto
+Já pedi ao silêncio
+já pedi ao espanto
 
 [Verse 2]
-Agora nao peco nada
-agora as maos estao no colo
-Nao e paz o que sinto
-e so o peso do solo
+Agora não peco nada
+agora as mãos estao no colo
+Não e paz o que sinto
+e só o peso do solo
 
 [Chorus]
-Ficar — isso e a ultima prece
+Ficar — isso é a última prece
 ficar — sem pedir nem saber
 Ficar com o corpo que tenho
 ficar com o que vai doer
-Nao e resignacao nem rendica
+Não e resignacao nem rendica
 e a carne que escolhe o real
 Ficar — essa e a prece
 ficar — no escuro total
 
 [Verse 3]
-Ja disse tudo o que sabia
-ja gritei tudo o que tinha
-Agora o silencio e meu
-e a noite e minha vizinha
+Já disse tudo o que sabia
+já gritei tudo o que tinha
+Agora o silêncio e meu
+e a noite é minha vizinha
 
 [Bridge]
-Nao ha mais palavras
-nao ha mais nomes
-O que resta e so o peito
+Não há mais palavras
+não há mais nomes
+O que resta e só o peito
 aberto como dois volumes
 
 [Outro]
-A ultima prece
-nao tem som
-e so presenca
+A última prece
+não tem som
+e só presença
 no escuro
 fico`,
 
@@ -2113,25 +2113,25 @@ fico`,
   // ─────────────────────────────────────────────
 
   "espiritual-centelha/1": `[Verse 1]
-Antes da chama ha um instante
+Antes da chama há um instante
 tao fino que mal existe
 Um tremor a meio do peito
 um arrepio que persiste
 
 [Verse 2]
-Nao e pensamento nem sinal
-nao e decisao nem escolha
-E o corpo que compreende
+Não e pensamento nem sinal
+não e decisao nem escolha
+É o corpo que compreende
 antes que a mente acolha
 
 [Chorus]
-Faisca — antes de ver ja sente
+Faisca — antes de ver já sente
 faisca — no centro do real
 Aqui onde o medo tem casa
 alguma coisa acendeu o farol
-Nao perguntes o que foi
-nao tentes dar-lhe nome
-A faisca nao pede licenca
+Não perguntes o que foi
+não tentes dar-lhe nome
+A faisca não pede licença
 atravessa o que dorme
 
 [Verse 3]
@@ -2147,7 +2147,7 @@ Deixa arder
 antes que o medo te aparde
 
 [Outro]
-A faisca nao pede permissao
+A faisca não pede permissao
 simplesmente
 acende`,
 
@@ -2192,9 +2192,9 @@ and the dark
 changed shape`,
 
   "espiritual-centelha/3": `[Verse 1]
-Nao e fogo que destroi portas
-nao e labaredas nem grito
-E o fogo que aquece as paredes
+Não e fogo que destroi portas
+não e labaredas nem grito
+É o fogo que aquece as paredes
 devagar e silencito
 
 [Verse 2]
@@ -2207,60 +2207,60 @@ o que era brasa agora pounda
 Incendio manso — arde sem pressa
 incendio manso — transforma sem dor
 Deixa o corpo aprender a temperatura
-do que e verdadeiro por amor
-Nao precisa de destruir para mudar
-nao precisa de gritar para ser real
+do que é verdadeiro por amor
+Não precisa de destruir para mudar
+não precisa de gritar para ser real
 Incendio manso — no teu ritmo
 incendio manso — devagar
 
 [Verse 3]
-A paciencia e o combustivel
+A paciência e o combustivel
 a confianca e o oxigenio
 O corpo sabe a velocidade certa
-tem a sua propria regencia
+tem a sua própria regencia
 
 [Bridge]
 Arde arde
-no teu ritmo proprio
+no teu ritmo próprio
 Arde arde
 sem precisar de ser notoria
 
 [Outro]
 Manso
-como so o fogo verdadeiro
+como só o fogo verdadeiro
 sabe ser`,
 
   "espiritual-centelha/4": `[Verse 1]
 Houve noites tao fechadas
 que esqueci que tinha luz
 Houve dias tao carregados
-que o peito nao abriu
+que o peito não abriu
 
 [Verse 2]
-Tiraram-me o nome e o lugar
-tiraram-me a voz e a saida
+Tiraram-me o nome é o lugar
+tiraram-me a voz é a saida
 Mas no fundo mais fundo do escuro
 ainda havia a centelha acendida
 
 [Chorus]
 Ainda brilha — depois de tudo
 ainda brilha — contra o escuro
-Nao e coragem nem teimosia
-e o fogo que e mais puro
-Podem tirar o que e de fora
+Não e coragem nem teimosia
+e o fogo que é mais puro
+Podem tirar o que é de fora
 ninguem tira o que nasceu
 Ainda brilha — e isso basta
 ainda brilha — este e o meu
 
 [Verse 3]
-Nao precisei de alimentar
-nao precisei de soprar
+Não precisei de alimentar
+não precisei de soprar
 Ela sobreviveu sozinha
 ao que tentou me apagar
 
 [Bridge]
-Esta luz nao se pede emprestada
-nao se vende nem se da
+Esta luz não se pede emprestada
+não se vende nem se da
 Nasceu comigo la dentro
 e comigo vai ficar
 
@@ -2274,15 +2274,15 @@ ainda brilha`,
   // ─────────────────────────────────────────────
 
   "espiritual-vastidao/1": `[Verse 1]
-De pe diante do oceano
+De pé diante do oceano
 as palavras param no dente
-A boca abre e nao sai nada
-so o sal que entra na mente
+A boca abre e não sai nada
+só o sal que entra na mente
 
 [Verse 2]
 Tao grande que o medo muda
 deixa de ser o que era
-Nao e panico que me invade
+Não e panico que me invade
 e a rendica que me espera
 
 [Chorus]
@@ -2290,26 +2290,26 @@ Oceano — mais largo que o meu nome
 oceano — mais fundo que a minha dor
 As coisas que carrego sao pequenas
 vistas daqui do teu clamor
-Nao preciso de ser imensa
+Não preciso de ser imensa
 preciso de ver o imenso
-Oceano — leva o que e demais
+Oceano — leva o que é demais
 oceano — o peso que dispensa
 
 [Verse 3]
-Fico de pe na beirada
-as ondas chegam aos pes
-Nao me pedem que eu seja grande
+Fico de pé na beirada
+as ondas chegam aos pés
+Não me pedem que eu seja grande
 pedem que eu esteja desta vez
 
 [Bridge]
 A minha historia e um canto de areia
 o oceano tem milhoes
-O alívio e nao ser o centro
-e so ser das suas accoes
+O alívio é não ser o centro
+e só ser das suas accoes
 
 [Outro]
-O mar nao pede nada
-so continua
+O mar não pede nada
+só continua
 e eu fico
 a olhar`,
 
@@ -2355,23 +2355,23 @@ was the only
 ground`,
 
   "espiritual-vastidao/3": `[Verse 1]
-O calcio nos meus ossos
+O calcio nós meus ossos
 veio de uma estrela morta
 O ferro no meu sangue
 nasceu de uma explosao torta
 
 [Verse 2]
 Cada celula construida
-de materia que ja ardeu
-Nao sou original nem nova
+de materia que já ardeu
+Não sou original nem nova
 sou o universo que se perdeu
 
 [Chorus]
 Poeira de estrelas — no peito de uma mulher
-poeira de estrelas — nos olhos que choram hoje
+poeira de estrelas — nós olhos que choram hoje
 A mesma materia que acendeu galaxias
 respira e palpita e se apoia
-Nao sou separada do que e imenso
+Não sou separada do que é imenso
 nunca fui uma ilha em si
 Poeira de estrelas — sou o cosmos
 poeira de estrelas — a respirar aqui
@@ -2379,14 +2379,14 @@ poeira de estrelas — a respirar aqui
 [Verse 3]
 A morte de uma estrela durou milenioes
 para fazer este ferro que corre
-O universo nao se apressou a criar-me
-a paciencia que o cosmos tem nao morre
+O universo não se apressou a criar-me
+a paciência que o cosmos tem não morre
 
 [Bridge]
-Nao es separada
+Não es separada
 nunca foste menor
 Es o universo que se dobra
-para ver a sua propria cor
+para ver a sua própria cor
 
 [Outro]
 Poeira
@@ -2401,7 +2401,7 @@ Smaller than the space I occupied
 before I learned to be ashamed
 
 [Verse 2]
-I spent so long expanding
+I spent só long expanding
 pushing edges, filling rooms
 Smallness felt like failure
 like the dark side of the moons
@@ -2435,34 +2435,34 @@ enough`,
 
   "espiritual-vastidao/5": `[Verse 1]
 Diziam que o peito e pequeno
-que so cabe o coracao
+que só cabe o coração
 Mas eu abri o meu devagar
 e coube a criacao
 
 [Verse 2]
 Coube a dor e coube o oceano
-coube o medo e coube a luz
-Coube o silencio de mil noites
+coube o medo é coube a luz
+Coube o silêncio de mil noites
 e o grito de quem se reduz
 
 [Chorus]
 Cabe tudo — dentro deste corpo
 cabe tudo — dentro deste peito
-O infinito nao esta la fora
+O infinito não esta la fora
 esta aqui no meu direito
 Onde as costelas guardam
-o que nao tem tamanho nem fim
+o que não tem tamanho nem fim
 Cabe tudo — sempre coube
 cabe tudo — dentro de mim
 
 [Verse 3]
 Cada respiracao e um universo
-a expandir sem pedir licenca
-O corpo e o vaso maior
+a expandir sem pedir licença
+O corpo é o vaso maior
 que a mente jamais compreenca
 
 [Bridge]
-Nao sou pequena demais
+Não sou pequena demais
 para o que o mundo me pede
 Sou vasta por dentro
 o cosmos aqui sucede
@@ -2470,9 +2470,9 @@ o cosmos aqui sucede
 [Outro]
 Cabe tudo
 sempre coube
-so nao sabia
+só não sabia
 que eu era
-o espaco`,
+o espaço`,
 
   // ─────────────────────────────────────────────
   // ALBUM 14: CATEDRAL (the body as sacred architecture)
@@ -2486,32 +2486,32 @@ E eco que guarda a alma
 
 [Verse 2]
 Entro descalca devagar
-As maos abertas pelo caminho
+As mãos abertas pelo caminho
 O barulho fica la fora
-Aqui dentro so me ouço a mim
+Aqui dentro só me ouço a mim
 
 [Chorus]
 Nave — o eco mora aqui
-Nave — o centro que e meu
-Quando o mundo nao tem chao
+Nave — o centro que é meu
+Quando o mundo não tem chão
 Esta sala tem o eu
 
 [Verse 3]
 As paredes respiram comigo
-O silencio tem o seu peso
-Nao e vazio — e presenca
+O silêncio tem o seu peso
+Não e vazio — e presença
 O mais velho dos regresses
 
 [Chorus]
 Nave — o eco mora aqui
-Nave — o centro que e meu
-Quando o mundo nao tem chao
+Nave — o centro que é meu
+Quando o mundo não tem chão
 Esta sala tem o eu
 
 [Bridge]
-Ha uma quietude que nao e morte
-Um espaco que nao e ausencia
-Entro aqui sem pedir licenca
+Há uma quietude que não e morte
+Um espaço que não e ausência
+Entro aqui sem pedir licença
 Esta nave e a minha heranca
 
 [Outro]
@@ -2565,42 +2565,42 @@ I walked through`,
   "espiritual-catedral/3": `[Verse 1]
 As costelas sao arcos
 Curvados sobre o sagrado
-Protegem o que nao tem nome
-O que pulsa o que e amado
+Protegem o que não tem nome
+O que pulsa o que é amado
 
 [Verse 2]
-Nao foram feitas de pedra
+Não foram feitas de pedra
 Mas aguentam tudo o que peso
 A arquitectura mais antiga
 Vive dentro deste peito
 
 [Chorus]
 Costelas — arcos do catedral
-O osso que guarda o que e real
-O coracao nao tem porta — tem osso
-E o osso nao cede ao que passa
+O osso que guarda o que é real
+O coração não tem porta — tem osso
+É o osso não cede ao que passa
 
 [Verse 3]
 Ponho a mao no peito esquerdo
 E sinto os arcos a respirar
 A catedral esta viva
-Nao precisa de outro lugar
+Não precisa de outro lugar
 
 [Chorus]
 Costelas — arcos do catedral
-O osso que guarda o que e real
-O coracao nao tem porta — tem osso
-E o osso nao cede ao que passa
+O osso que guarda o que é real
+O coração não tem porta — tem osso
+É o osso não cede ao que passa
 
 [Bridge]
 Quantas vezes curvei o corpo
 Quantas vezes o osso aguentou
-Nao foi tecto nem parede
+Não foi tecto nem parede
 Foi este arco que me salvou
 
 [Outro]
-Osso e silencio
-A mais velha oracao
+Osso e silêncio
+A mais velha oração
 As costelas respiram
 Ainda`,
 
@@ -2666,33 +2666,33 @@ Que sempre me deixaram de lado
 
 [Verse 2]
 Andei de joelhos no marmore
-Andei com a cabeca dobrada
-Ate que um dia me levantei
+Andei com a cabeça dobrada
+Até que um dia me levantei
 E pus a mao no peito — parei
 
 [Chorus]
 O altar e aqui — sempre esteve aqui
-Dentro do peito — nao no edificio
-O sagrado nao precisa de tecto
+Dentro do peito — não no edificio
+O sagrado não precisa de tecto
 O altar sou eu — esse e o inicio
 
 [Verse 3]
-Este corpo e o lugar mais real
+Este corpo é o lugar mais real
 Esta respiracao e o ritual
-Nao preciso de aprovacao
+Não preciso de aprovacao
 Para entrar no meu catedral
 
 [Chorus]
 O altar e aqui — sempre esteve aqui
-Dentro do peito — nao no edificio
-O sagrado nao precisa de tecto
+Dentro do peito — não no edificio
+O sagrado não precisa de tecto
 O altar sou eu — esse e o inicio
 
 [Bridge]
-Nao e arrogancia — e regresso
-Nao e rejeicao — e clareza
+Não e arrogancia — e regresso
+Não e rejeicao — e clareza
 O sagrado tem a forma do corpo
-Tem o peso e a textura desta espessura
+Tem o peso é a textura desta espessura
 
 [Outro]
 Aqui
@@ -2706,42 +2706,42 @@ O altar sou eu`,
   "espiritual-grao/1": `[Verse 1]
 Fui ensinada a ser mais
 A ocupar mais e dar mais
-Mas ha uma coisa que aprendi
+Mas há uma coisa que aprendi
 A custo do que me custou
 
 [Verse 2]
-Um corpo — so um
-Uma voz que e a minha
-Um lugar neste chao
-Uma vida que e so esta
+Um corpo — só um
+Uma voz que é a minha
+Um lugar neste chão
+Uma vida que é só esta
 
 [Chorus]
 Um — e isso chega
-Um — nao e pouco
+Um — não e pouco
 O numero mais corajoso
-E o numero que e eu
+É o numero que é eu
 
 [Verse 3]
-Nao preciso de ser multidao
-Nao preciso de ser montanha
+Não preciso de ser multidao
+Não preciso de ser montanha
 Preciso de ser isto aqui
-Esta e a unica campanha
+Esta e a única campanha
 
 [Chorus]
 Um — e isso chega
-Um — nao e pouco
+Um — não e pouco
 O numero mais corajoso
-E o numero que e eu
+É o numero que é eu
 
 [Bridge]
-Nao e derrota ser singular
-Nao e fraqueza ser finita
+Não e derrota ser singular
+Não e fraqueza ser finita
 Ser um e a forma mais honesta
 De existir — intacta e inteira
 
 [Outro]
 Um
-So um
+Só um
 E isso chega`,
 
   "espiritual-grao/2": `[Verse 1]
@@ -2787,9 +2787,9 @@ Without ambition
 Still and full`,
 
   "espiritual-grao/3": `[Verse 1]
-Nao sou o centro — nunca fui
+Não sou o centro — nunca fui
 Passei anos a fingir que era
-Mas a verdade e um alivio
+Mas a verdade é um alívio
 Maior do que qualquer quimera
 
 [Verse 2]
@@ -2799,28 +2799,28 @@ Uma nota no coro imenso
 Que canta antes e depois de mim
 
 [Chorus]
-Pertencer — nao e ser importante
+Pertencer — não e ser importante
 Pertencer — e ter lugar no real
-Fazer parte do que e maior que eu
+Fazer parte do que é maior que eu
 Esse e o descanso — e isso basta
 
 [Verse 3]
-O rio nao precisa desta gota
+O rio não precisa desta gota
 Mas corre melhor quando ela esta
 E esta gota precisa do rio
 Para saber onde vai chegar
 
 [Chorus]
-Pertencer — nao e ser importante
+Pertencer — não e ser importante
 Pertencer — e ter lugar no real
-Fazer parte do que e maior que eu
+Fazer parte do que é maior que eu
 Esse e o descanso — e isso basta
 
 [Bridge]
-Que alivio deixar de ser tudo
-Que descanso enorme nao ter de provar
+Que alívio deixar de ser tudo
+Que descanso enorme não ter de provar
 Pertenco sem merito sem esforco
-Pertenco — e isso e suficiente
+Pertenco — e isso é suficiente
 
 [Outro]
 Pertenco
@@ -2891,35 +2891,35 @@ And that is the whole story`,
   // ALBUM 16: MESMA AGUA (we are all the same water)
   // ─────────────────────────────────────────────
 
-  "espiritual-mesma-agua/1": `[Verse]
+  "espiritual-mesma-água/1": `[Verse]
 Uma gota no rio
-Nao sabe que e rio
+Não sabe que é rio
 Cai da chuva e pensa
 Que esta a cair sozinha
 
 [Verse]
-Mas o rio ja sabe
-Ja a sentiu chegar
-O rio nao pergunta
+Mas o rio já sabe
+Já a sentiu chegar
+O rio não pergunta
 O rio deixa entrar
 
 [Chorus]
-Somos a mesma agua
+Somos a mesma água
 A mesma sede a mesma sede
 O que corre em ti
-Ja correu em mim
+Já correu em mim
 
 [Bridge]
-Nao ha margem entre nos
-So a ilusao de pele
+Não há margem entre nós
+Só a ilusao de pele
 O teu suor e o meu
 Sabem ao mesmo sal
 
 [Outro]
-Uma so
-Sempre foi uma so`,
+Uma só
+Sempre foi uma só`,
 
-  "espiritual-mesma-agua/2": `[Verse]
+  "espiritual-mesma-água/2": `[Verse]
 You wash your face in the morning
 With the same water
 That fell on a stranger's roof last night
@@ -2949,38 +2949,38 @@ Finding its way home
 Same river
 Always the same`,
 
-  "espiritual-mesma-agua/3": `[Verse]
+  "espiritual-mesma-água/3": `[Verse]
 O mar e salgado
 Como os meus olhos
 Quando choro
-Nao invento agua nova
+Não invento água nova
 Choro o mar antigo
 
 [Verse]
-A minha avo chorou este sal
-E a mae dela tambem
+A minha avó chorou este sal
+É a mãe dela também
 Lagrimas velhas num rosto novo
-A agua nao esquece de onde vem
+A água não esquece de onde vem
 
 [Chorus]
 Sal
-O que me arde nos olhos
-E o mesmo que flutua no mar
+O que me arde nós olhos
+É o mesmo que flutua no mar
 Sal
-Nao ha lagrima sozinha
-Ha um oceano a chorar
+Não há lagrima sozinha
+Há um oceano a chorar
 
 [Bridge]
 Se a tua dor tem gosto
 Poe na lingua
-E o sabor de todas nos
+É o sabor de todas nós
 
 [Outro]
 Sal
 O mais antigo
 Dos lacos`,
 
-  "espiritual-mesma-agua/4": `[Verse]
+  "espiritual-mesma-água/4": `[Verse]
 Every creek feeds a river
 Every river finds the sea
 And the sea becomes the rain
@@ -3010,45 +3010,45 @@ Tributary
 Flowing into something
 We can't see from here`,
 
-  "espiritual-mesma-agua/5": `[Verse]
-Ha um lugar onde o rio
+  "espiritual-mesma-água/5": `[Verse]
+Há um lugar onde o rio
 Para de ter nome
-Onde a agua doce beija o sal
+Onde a água doce beija o sal
 E nenhuma resiste
 
 [Verse]
 Toda a minha vida
 Tentei ser margem
-Segurar a agua
+Segurar a água
 Dar-lhe forma e direcao
 
 [Chorus]
 Desaguar
 E chegar ao lugar
-Onde ja nao controlas
-E o mar te aceita igual
+Onde já não controlas
+É o mar te aceita igual
 Desaguar
 E deixar de ser rio
 Para ser parte do mar
 
 [Bridge]
-Nao e morrer
+Não e morrer
 E alargar
 Perder o nome
 Ganhar o mar
 
 [Outro]
 Desaguar
-O principio e o fim
-Sao a mesma agua`,
+O princípio e o fim
+Sao a mesma água`,
 
   // ─────────────────────────────────────────────
   // ALBUM 17: ALEM DO NOME (the divine beyond naming)
   // ─────────────────────────────────────────────
 
-  "espiritual-alem-nome/1": `[Verse]
+  "espiritual-além-nome/1": `[Verse]
 Disseram-me Deus
-E nao coube
+E não coube
 Disseram-me universo
 E soou a poster
 
@@ -3060,8 +3060,8 @@ E vi uma torneira
 
 [Chorus]
 Sem nome
-O que sinto nao tem nome
-E nao precisa
+O que sinto não tem nome
+E não precisa
 O peito sabe
 Antes da boca tentar
 
@@ -3076,7 +3076,7 @@ Sem nome
 Fica assim
 Sem nome`,
 
-  "espiritual-alem-nome/2": `[Verse]
+  "espiritual-além-nome/2": `[Verse]
 Not God
 That word carries too many buildings
 Too many rules written by men
@@ -3109,12 +3109,12 @@ Not light
 Not energy
 Just this`,
 
-  "espiritual-alem-nome/3": `[Verse]
-Ha um buraco no centro
+  "espiritual-além-nome/3": `[Verse]
+Há um buraco no centro
 De tudo o que sei
-Nao e falta
-Nao e ferida
-E espaco
+Não e falta
+Não e ferida
+E espaço
 
 [Verse]
 Tentei encher com nomes
@@ -3124,23 +3124,23 @@ Em cozinhas e em carros
 
 [Chorus]
 O buraco no meio
-Nao precisa de ser tapado
-Nao precisa de nome
-Nao precisa de mim
-So precisa de ficar
+Não precisa de ser tapado
+Não precisa de nome
+Não precisa de mim
+Só precisa de ficar
 Aberto
 
 [Bridge]
 Cabe tudo no vazio
 Se parares de ter medo dele
-O vazio nao e ausencia
-E o sitio onde cabe o que nao sabes
+O vazio não e ausência
+É o sitio onde cabe o que não sabes
 
 [Outro]
 O buraco no meio
-E a porta`,
+É a porta`,
 
-  "espiritual-alem-nome/4": `[Verse]
+  "espiritual-além-nome/4": `[Verse]
 Antes de Deus
 Antes de palavra
 Antes do pensamento
@@ -3148,8 +3148,8 @@ Formar a sua casca
 
 [Verse]
 Um som
-Que nao e som
-E vibracao no osso
+Que não e som
+E vibração no osso
 Antes do ouvido saber ouvir
 
 [Chorus]
@@ -3157,9 +3157,9 @@ Hum
 O som de antes
 Hum
 O som de tudo
-Nao e canto nao e reza
-E o corpo a vibrar
-Com o que nao sabe dizer
+Não e canto não e reza
+É o corpo a vibrar
+Com o que não sabe dizer
 
 [Bridge]
 Fecha a boca
@@ -3171,7 +3171,7 @@ Para dentro
 Hum
 E tudo
 E nada
-E o nome antes dos nomes`,
+É o nome antes dos nomes`,
 
   // ─────────────────────────────────────────────
   // ALBUM 18: RESPIRAR (breath as the most basic sacred act)
@@ -3179,34 +3179,34 @@ E o nome antes dos nomes`,
 
   "espiritual-respirar/1": `[Verse]
 O ar entra
-Nao porque eu mande
+Não porque eu mande
 Entra porque o corpo
 Ainda quer estar aqui
 
 [Verse]
-Cada inspiracao
-E um sim involuntario
+Cada inspiração
+É um sim involuntario
 O corpo diz sim
 Antes de eu decidir
 
 [Chorus]
 Inspira
 Recebe o mundo inteiro
-Num gesto que nao pensas
+Num gesto que não pensas
 Inspira
-O ar nao te pergunta
+O ar não te pergunta
 Se mereces
 
 [Bridge]
-Os pulmoes abrem
-Como maos
+Os pulmões abrem
+Como mãos
 A receber
-O que nao pediram
+O que não pediram
 
 [Outro]
 Inspira
 O milagre mais simples
-E o que fazes agora`,
+É o que fazes agora`,
 
   "espiritual-respirar/2": `[Verse]
 Between the in
@@ -3253,12 +3253,12 @@ Sem saber
 [Verse]
 Expiro a conversa de ontem
 Expiro a raiva guardada na mandibula
-Expiro o medo que morava nos ombros
+Expiro o medo que morava nós ombros
 Expiro e fico mais leve
 
 [Chorus]
 Expira
-Nao e perder
+Não e perder
 E devolver
 O que nunca foi teu
 Expira
@@ -3266,11 +3266,11 @@ O corpo sabe
 O que soltar
 
 [Bridge]
-Nao precisas de saber
+Não precisas de saber
 O que estas a largar
 O ar sabe
-Os pulmoes sabem
-Tu so precisas
+Os pulmões sabem
+Tu só precisas
 De deixar sair
 
 [Outro]
@@ -3318,8 +3318,8 @@ O corpo trabalhou por mim
 Enquanto eu dormia
 
 [Verse]
-Nao mandei nos pulmoes
-Nao contei as vezes
+Não mandei nós pulmões
+Não contei as vezes
 O peito subiu e desceu
 Como as mares
 
@@ -3329,18 +3329,18 @@ Sem decidir
 O corpo sabe
 O corpo cuida
 Respiro
-E o ritmo mais velho
+É o ritmo mais velho
 Que tenho
 
 [Bridge]
 Se o corpo confia no ar
-E o ar confia no corpo
+É o ar confia no corpo
 Talvez eu possa confiar
-Em alguma coisa tambem
+Em alguma coisa também
 
 [Outro]
 Respiro
-Nao porque mando
+Não porque mando
 Porque o corpo
 Ainda quer ficar`,
 
@@ -3350,35 +3350,35 @@ Ainda quer ficar`,
 
   "espiritual-cinza-semente/1": `[Verse]
 Queimou
-Nao ha outra palavra
+Não há outra palavra
 O que era
-Ja nao e
+Já não e
 
 [Verse]
-Nao me pecam para ver beleza nisto
-A cinza nao e bonita
+Não me pecam para ver beleza nisto
+A cinza não e bonita
 Cheira a fim
-E o fim nao e poetico
+É o fim não e poetico
 
 [Chorus]
 Queimou
-E eu fiquei de pe
+E eu fiquei de pé
 No meio do que sobrou
 Sem saber para onde ir
 Queimou
-E o chao ficou preto
-E os meus pes ficaram pretos
+É o chão ficou preto
+E os meus pés ficaram pretos
 E eu fiquei
 
 [Bridge]
 A verdade da cinza
-E que e quente
+E que é quente
 Ainda queima
 Quem tenta tocar cedo demais
 
 [Outro]
 Queimou
-E isso e tudo
+E isso é tudo
 Por agora
 E tudo`,
 
@@ -3424,9 +3424,9 @@ Algo abre
 Devagar como um segredo
 
 [Verse]
-A semente nao sabe
-Que vai ser arvore
-So sabe que o escuro
+A semente não sabe
+Que vai ser árvore
+Só sabe que o escuro
 E onde precisa de estar
 
 [Chorus]
@@ -3441,7 +3441,7 @@ Acontece sem testemunhas
 Tens medo do escuro
 Mas o escuro
 E onde tudo comeca
-Raizes nao precisam de sol
+Raizes não precisam de sol
 Para saber a direcao
 
 [Outro]
@@ -3455,7 +3455,7 @@ The first green
 Is almost nothing
 A tremble in the dirt
 A breath of colour
-So faint you might miss it
+Só faint you might miss it
 
 [Verse]
 After the fire
@@ -3490,7 +3490,7 @@ Refusing to stay empty`,
   // ALBUM 20: CHAMA ULTIMA (the eternal flame — what remains)
   // ─────────────────────────────────────────────
 
-  "espiritual-chama-ultima/1": `[Verse]
+  "espiritual-chama-última/1": `[Verse]
 Tira o nome
 Tira o emprego
 Tira a morada
@@ -3504,15 +3504,15 @@ Que dizem que te conhecem
 
 [Chorus]
 O que fica
-Quando nao sobra nada
+Quando não sobra nada
 O que fica
-E o que sempre esteve
+É o que sempre esteve
 Antes de tudo o que tiraram
-E o que nunca ninguem
+É o que nunca ninguem
 Conseguiu tocar
 
 [Bridge]
-Nao tenho medo
+Não tenho medo
 De ficar nua
 Tenho medo
 De descobrir
@@ -3521,12 +3521,12 @@ Que nua sou mais
 [Outro]
 Tira tudo
 E ve
-O que nao se tira`,
+O que não se tira`,
 
-  "espiritual-chama-ultima/2": `[Verse]
+  "espiritual-chama-última/2": `[Verse]
 An ember
 In the dark
-So small
+Só small
 You'd miss it
 If you weren't looking
 With your hands
@@ -3561,17 +3561,17 @@ Ember
 Still here
 Still here`,
 
-  "espiritual-chama-ultima/3": `[Verse]
+  "espiritual-chama-última/3": `[Verse]
 Debaixo da pele
 Debaixo do musculo
 Debaixo da gordura e do medo
-Ha osso
+Há osso
 
 [Verse]
-O osso nao mente
-Nao se esconde
-Nao finge ser mais do que e
-E a estrutura que segura
+O osso não mente
+Não se esconde
+Não finge ser mais do que é
+É a estrutura que segura
 O que o mundo ve
 
 [Chorus]
@@ -3580,9 +3580,9 @@ O que es antes de tudo
 Osso
 O que restas depois de tudo
 A parte de ti
-Que nao se queima
-Que nao se dobra
-Que nao pede desculpa
+Que não se queima
+Que não se dobra
+Que não pede desculpa
 
 [Bridge]
 Se alguma vez duvidares
@@ -3595,9 +3595,9 @@ Antes de teres nome
 [Outro]
 Osso
 O essencial
-Nao se veste`,
+Não se veste`,
 
-  "espiritual-chama-ultima/4": `[Verse]
+  "espiritual-chama-última/4": `[Verse]
 They said the fire was out
 They said the night had won
 They counted the ashes
@@ -3632,27 +3632,27 @@ Still burning
 That is not hope
 That is fact`,
 
-  "espiritual-chama-ultima/5": `[Verse]
-Nao e metafora
-Nao e imagem bonita
+  "espiritual-chama-última/5": `[Verse]
+Não e metafora
+Não e imagem bonita
 A chama que sou
 E real como fome
 
 [Verse]
-Arde nas maos
+Arde nas mãos
 Quando toco o que importa
 Arde no peito
 Quando digo a verdade
-Arde nos olhos
+Arde nós olhos
 Quando finalmente vejo
 
 [Chorus]
 Chama
-Nao a que ilumina os outros
+Não a que ilumina os outros
 Chama
 A que me queima primeiro a mim
-A que nao pedi
-A que nao controlo
+A que não pedi
+A que não controlo
 A que sou
 
 [Bridge]
@@ -3660,15 +3660,15 @@ Se me apagares
 Acendo
 Se me enterrares
 Brilho no escuro
-A chama nao e escolha
-E o que resta
+A chama não e escolha
+É o que resta
 Quando tudo o mais arde
 
 [Outro]
 Chama
-A ultima coisa
+A última coisa
 Que restas
-Quando ja nao restas nada
-E a chama`,
+Quando já não restas nada
+É a chama`,
 
 };

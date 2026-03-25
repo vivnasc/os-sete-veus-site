@@ -7,36 +7,36 @@
 export const NO_LYRICS: Record<string, string> = {
 
   // ─────────────────────────────────────────────
-  // NO DA HERANCA (Veu 1 — Sara + Helena/mae)
-  // O silencio herdado entre mae e filha
+  // NO DA HERANCA (Véu 1 — Sara + Helena/mãe)
+  // O silêncio herdado entre mãe e filha
   // ─────────────────────────────────────────────
 
   "no-heranca/1": `[Verse 1]
 Eu vi-te antes de te veres ao espelho
-Descalca pelo corredor a correr sem chao
-Tinhas nos olhos uma tempestade antiga
-Que eu nao sabia acalmar com a minha mao
+Descalca pelo corredor a correr sem chão
+Tinhas nós olhos uma tempestade antiga
+Que eu não sabia acalmar com a minha mao
 
 [Chorus]
-A mae que viu guardou a chuva inteira
-Coseu o ceu para nao te molhar
+A mãe que viu guardou a chuva inteira
+Coseu o céu para não te molhar
 Porque dizer era partir-te em dois pedacos
 E eu preferi calar a te partir ao luar
 
 [Verse 2]
 Os domingos foram caindo como folhas
-Cada almoco um ensaio de silencio e sal
-Tu cresceste a pensar que eu nao sabia
+Cada almoço um ensaio de silêncio e sal
+Tu cresceste a pensar que eu não sabia
 Eu envelheci a ver-te de longe no quintal
 
 [Bridge]
-Filha, eu vi cada mascara de vidro
+Filha, eu vi cada máscara de vidro
 Cada sorriso feito para agradar
 Cada vez que disseste estou bem
 Vi o tremor por baixo do teu olhar
 
 [Outro]
-A mae que viu
+A mãe que viu
 Sempre viu
 E agora que acordas
 Posso finalmente
@@ -74,32 +74,32 @@ Had to bloom from you`,
 
   "no-heranca/3": `[Verse 1]
 Duas mulheres numa cozinha em brasa
-O vapor sobe e o silencio tambem
+O vapor sobe e o silêncio também
 Tu sentas-te no lugar que sempre foi teu
-Eu fico de pe como quem vai e vem
+Eu fico de pé como quem vai e vem
 
 [Chorus]
 Duas mulheres frente a frente enfim
-O espelho partido entre as duas maos
+O espelho partido entre as duas mãos
 Tu es o rio que eu nunca atravessei
 Eu sou a margem que ficou em vao
 
 [Verse 2]
-Mae, que e que viste quando eu nao via
-Quando eu sorria e tu olhavas pro chao
+Mãe, que é que viste quando eu não via
+Quando eu sorria e tu olhavas pro chão
 Quando eu dizia que a vida era bonita
 E tu apertavas o pano contra a mao
 
 [Bridge]
-Nao preciso que me protejas mais
-Nao precisas que eu te perdoe
-Basta olharmo-nos sem o vidro
-Basta a verdade nua entre nos
+Não preciso que me protejas mais
+Não precisas que eu te perdoe
+Basta olharmo-nós sem o vidro
+Basta a verdade nua entre nós
 
 [Outro]
 Duas mulheres
 Finalmente juntas
-Sem veu no rosto
+Sem véu no rosto
 Sem guiao na boca`,
 
   "no-heranca/4": `[Verse 1]
@@ -109,15 +109,15 @@ Cada frase que engoli virou raiz amarga
 Cada verdade que calei virou luar
 
 [Chorus]
-O que nunca foi dito nao morreu
-Cresceu entre nos dois como hera na parede
+O que nunca foi dito não morreu
+Cresceu entre nós dois como hera na parede
 Subiu pelo reboco desta casa inteira
-E agora ja transborda e nao se prende
+E agora já transborda e não se prende
 
 [Verse 2]
-Tu tambem guardaste, eu sei de cor
+Tu também guardaste, eu sei de cor
 Vi-te engolir a resposta mil vezes
-A boca cheia do que nao se diz
+A boca cheia do que não se diz
 Os olhos cheios de mares e de preces
 
 [Bridge]
@@ -129,79 +129,79 @@ Para soltar o que ficou na prateleira
 [Outro]
 Estas palavras
 Guardadas tanto tempo
-Nao sao acusacao
+Não sao acusacao
 Sao sementes
 Que abrem o que ficou fechado
-Entre nos duas`,
+Entre nós duas`,
 
   "no-heranca/5": `[Verse 1]
-O fio que nos prendia era de seda e nevoeiro
-Feito de silencio e de boas intencoes
+O fio que nós prendia era de seda e nevoeiro
+Feito de silêncio e de boas intencoes
 Apertava sem doer, segurava sem se ver
-E nos duas confundimos esses nos com coracao
+E nós duas confundimos esses nós com coração
 
 [Chorus]
-Desatar nao e destruir o que era nosso
-Desatar e dar ao fio espaco e ar
-O no que nos unia era o mesmo no
-Que nos impedia de nos encontrar
+Desatar não e destruir o que era nosso
+Desatar e dar ao fio espaço e ar
+O no que nós unia era o mesmo no
+Que nós impedia de nós encontrar
 
 [Verse 2]
-Agora solto e sinto as maos vazias de ti
+Agora solto e sinto as mãos vazias de ti
 Mas e um vazio que finalmente e meu
-Tu soltas e descobres o mesmo ceu
-E o espaco entre nos ja nao e adeus
+Tu soltas e descobres o mesmo céu
+É o espaço entre nós já não e adeus
 
 [Bridge]
-O no que cai entre mae e filha
-Nao e um corte — e uma flor que se abre
+O no que cai entre mãe e filha
+Não e um corte — e uma flor que se abre
 O fio continua entre as duas
-Mas agora tem espaco para a tarde
+Mas agora tem espaço para a tarde
 
 [Outro]
 Desatamos
-E o que fica
-Nao e menos
+É o que fica
+Não e menos
 E mais verdadeiro
 Mais leve
 Mais inteiro`,
 
   // ─────────────────────────────────────────────
-  // NO DO SILENCIO (Veu 2 — Rui + Ana)
+  // NO DO SILENCIO (Véu 2 — Rui + Ana)
   // O que o medo calou entre eles
   // ─────────────────────────────────────────────
 
-  "no-silencio/1": `[Verse 1]
+  "no-silêncio/1": `[Verse 1]
 Sentados a mesa com o jantar a arrefecer
-O relogio marca o que nos nao dizemos
+O relógio marca o que nós não dizemos
 Tu olhas para o prato, eu olho para a janela
-E o silencio come o que nos dois comemos
+É o silêncio come o que nós dois comemos
 
 [Chorus]
-O que nao disse sentou-se entre nos
+O que não disse sentou-se entre nós
 Como um fantasma que rouba o ar
 Ocupa a cadeira, serve-se do vinho
-E nos fingimos nao o notar
+E nós fingimos não o notar
 
 [Verse 2]
-Ha quanto tempo ensaias no chuveiro
+Há quanto tempo ensaias no chuveiro
 A frase que morre antes do jantar
-Eu tambem ensaio palavras de agua
-Mas quando te vejo a voz nao quer chegar
+Eu também ensaio palavras de água
+Mas quando te vejo a voz não quer chegar
 
 [Bridge]
-O medo fez de nos dois actores
+O medo fez de nós dois actores
 Num palco onde ninguem aplaude
 Tu calas o que eu preciso ouvir
 Eu escondo o que tu precisas saber
 
 [Outro]
-O que nao disse
-Cresceu entre nos
+O que não disse
+Cresceu entre nós
 E agora transborda
-Do silencio`,
+Do silêncio`,
 
-  "no-silencio/2": `[Verse 1]
+  "no-silêncio/2": `[Verse 1]
 I told myself the quiet was a garden
 That every swallowed word would plant a seed
 That if I kept the silence deep enough
@@ -231,67 +231,67 @@ But I was only
 Hiding underneath
 My own roof`,
 
-  "no-silencio/3": `[Verse 1]
+  "no-silêncio/3": `[Verse 1]
 A boca seca, o peito a bater como mar
 Como quem salta de um penhasco para o sal
-A primeira palavra nao e grande nem bonita
+A primeira palavra não e grande nem bonita
 E apenas um tremor que sai do fundo animal
 
 [Chorus]
 A primeira palavra e um rio que rebenta
-E a voz que se parte ao meio como vidro
-E dizer eu tenho medo e ouvir o eco
+É a voz que se parte ao meio como vidro
+E dizer eu tenho medo é ouvir o eco
 E descobrir que tu tremias no mesmo sitio
 
 [Verse 2]
-Nao sabia que uma frase tao pequena
-Podia abrir a terra inteira entre nos dois
+Não sabia que uma frase tao pequena
+Podia abrir a terra inteira entre nós dois
 Um eu preciso de ti dito a meia-voz
 Que derreteu o gelo de tantos invernos sois
 
 [Bridge]
-Nao precisa de ser perfeita
-Nao precisa de ser flor nem poesia
-A primeira palavra so precisa
+Não precisa de ser perfeita
+Não precisa de ser flor nem poesia
+A primeira palavra só precisa
 De ser verdade crua e ser dizia
 
 [Outro]
 Quando a palavra sai
-O silencio nao morre
-Transforma-se em espaco
+O silêncio não morre
+Transforma-se em espaço
 Para a palavra que vem depois`,
 
-  "no-silencio/4": `[Verse 1]
+  "no-silêncio/4": `[Verse 1]
 Pensava que ouvir era esperar o meu momento
-De largar as frases que ja trazia ensaiadas
-Ouvir de verdade e terra firme
+De largar as frases que já trazia ensaiadas
+Ouvir de verdade é terra firme
 E ficar quieto quando a casa esta em chamadas
 
 [Chorus]
-Ouvir de verdade nao e concordar
-Nao e resolver o que arde nem consertar
-E estar contigo na escuridao
+Ouvir de verdade não e concordar
+Não e resolver o que arde nem consertar
+E estar contigo na escuridão
 Sem tentar acender nenhuma estrela no ar
 
 [Verse 2]
 Quando finalmente te ouvi de verdade
-Nao ouvi palavras — ouvi o teu peito
+Não ouvi palavras — ouvi o teu peito
 O suspiro antes de cada frase
 O tremor que escondes no teu jeito
 
 [Bridge]
-Tu tambem me ouves agora
-De um modo que eu nao conhecia
+Tu também me ouves agora
+De um modo que eu não conhecia
 Ouves o que eu digo com os olhos
-Ouves o que me cala pela noite e pelo dia
+Ouves o que me cala pela noite é pelo dia
 
 [Outro]
 Ouvir de verdade
-E a primeira ponte
+É a primeira ponte
 Para encontrar
-O que o silencio nos roubou`,
+O que o silêncio nós roubou`,
 
-  "no-silencio/5": `[Verse 1]
+  "no-silêncio/5": `[Verse 1]
 There was a time my voice lived underground
 A river pressed beneath the stones I said
 The polite laugh, the careful borrowed sound
@@ -324,40 +324,40 @@ To make room
 For its song`,
 
   // ─────────────────────────────────────────────
-  // NO DO SACRIFICIO (Veu 3 — Filipe + Luisa)
+  // NO DO SACRIFICIO (Véu 3 — Filipe + Luisa)
   // A culpa disfarcada de entrega
   // ─────────────────────────────────────────────
 
   "no-sacrificio/1": `[Verse 1]
-Dou-te o melhor lugar a mesa e o ultimo pao
+Dou-te o melhor lugar a mesa e o último pao
 Dou-te o casaco quando a chuva cai
 Dou-te as horas todas do meu corpo
-E fico nu como arvore em janeiro — sem folhas e sem pai
+E fico nu como árvore em janeiro — sem folhas e sem pai
 
 [Chorus]
-Dar ate esvaziar nao e amor
-E um rio que se seca para encher o mar
+Dar até esvaziar não e amor
+É um rio que se seca para encher o mar
 Cada gesto que te entreguei de cor
 Foi mais um pedaco meu a evaporar
 
 [Verse 2]
 Tu recebes e agradeces com os olhos
-Cheios de uma culpa que nao tem razao
+Cheios de uma culpa que não tem razao
 Porque cada vez que eu te dou tudo
-Tu sentes que me deves o coracao
+Tu sentes que me deves o coração
 
 [Bridge]
-Filipe, quando deste o ultimo sopro
+Filipe, quando deste o último sopro
 Quando ficaste oco como um tambor
-Eu olhei para ti e nao vi ternura
+Eu olhei para ti e não vi ternura
 Vi um homem a pagar-se sem ter valor
 
 [Outro]
-Dar ate esvaziar
-Nao e generosidade
+Dar até esvaziar
+Não e generosidade
 E medo antigo
-De nao valer nada
-De maos vazias`,
+De não valer nada
+De mãos vazias`,
 
   "no-sacrificio/2": `[Verse 1]
 Every gift was a receipt I kept inside
@@ -393,65 +393,65 @@ Without the vow
 Of keeping count`,
 
   "no-sacrificio/3": `[Verse 1]
-Nao sei receber sem procurar a conta
+Não sei receber sem procurar a conta
 Quando me das eu procuro a factura escondida
-Onde esta o preco, qual e a condicao
-O que e que vou pagar com a minha vida
+Onde esta o preço, qual é a condicao
+O que é que vou pagar com a minha vida
 
 [Chorus]
 Receber e ficar quieta
-Com as maos abertas e o peito ao sol
-E aceitar que alguem te de sem preco
+Com as mãos abertas e o peito ao sol
+E aceitar que alguem te de sem preço
 Como a chuva que cai sem protocolo
 
 [Verse 2]
 Das-me um beijo e eu pergunto o que devo
 Trazes-me flores e eu penso no que fiz
-Nao e humildade este recusar constante
+Não e humildade este recusar constante
 E medo de ser vista e ser feliz
 
 [Bridge]
-Receber nao e fraqueza nem divida
+Receber não e fraqueza nem divida
 Receber e abrir a porta sem questao
 E deixar entrar o sol que te procura
-Sem pedir recibo a cada estacao
+Sem pedir recibo a cada estação
 
 [Outro]
 Hoje recebo
-Sem perguntar o preco
+Sem perguntar o preço
 Hoje recebo
-E o gesto basta
+É o gesto basta
 Como a terra recebe a chuva
 Sem troca e sem conta`,
 
   "no-sacrificio/4": `[Verse 1]
-Nao sou metade a procura do teu corpo
-Nao sou o vazio que tu vens encher
-Sou arvore inteira antes de te encontrar
+Não sou metade a procura do teu corpo
+Não sou o vazio que tu vens encher
+Sou árvore inteira antes de te encontrar
 E tu eras jardim antes de me conhecer
 
 [Chorus]
 Dois inteiros que se escolhem
-Nao por fome mas por flor
+Não por fome mas por flor
 Dois que dao porque transbordam
-Nao porque tem medo da dor
+Não porque tem medo da dor
 
 [Verse 2]
-Ja nao preciso de me esvaziar
-Para provar que te mereco ao lado
-Ja nao precisas de recusar
-O que te oferecem de coracao aberto e grado
+Já não preciso de me esvaziar
+Para provar que te mereço ao lado
+Já não precisas de recusar
+O que te oferecem de coração aberto e grado
 
 [Bridge]
 O amor entre dois inteiros
-Nao pesa nem cobra nem mede
-E como agua entre duas margens
+Não pesa nem cobra nem mede
+E como água entre duas margens
 Corre livre e ninguem a prende
 
 [Outro]
 Dois inteiros
 Lado a lado
-Nao por carencia
+Não por carencia
 Por escolha
 Todos os dias
 A mesma escolha nova`,
@@ -476,7 +476,7 @@ I give you presence — not a performance
 
 [Bridge]
 And you give back in ways I never planted
-Not from guilt but from a well so deep
+Not from guilt but from a well só deep
 You give me laughter without any invoice
 You give me rest without stealing my sleep
 
@@ -491,33 +491,33 @@ And both reach the sea
 At last`,
 
   // ─────────────────────────────────────────────
-  // NO DA VERGONHA (Veu 4 — Vitor + Mariana)
-  // A mascara que caiu entre dois estranhos
+  // NO DA VERGONHA (Véu 4 — Vitor + Mariana)
+  // A máscara que caiu entre dois estranhos
   // ─────────────────────────────────────────────
 
   "no-vergonha/1": `[Verse 1]
 Encontrei-te num lugar sem mapa nem parede
 Sem nome, sem historia, sem moldura no olhar
 Tu olhaste para mim como quem ve o mar
-E eu nao tinha mascara para te entregar
+E eu não tinha máscara para te entregar
 
 [Chorus]
 Dois estranhos sem papel nem guiao
 Sem armadura, sem actuacao
 Tu sem a capa que vestias no mundo
-Eu sem o vidro que chamava coracao
+Eu sem o vidro que chamava coração
 
 [Verse 2]
-Disseste o teu nome e eu nao encontrei
-A forca que tu finges no corredor
-Eu disse o meu e tu nao reconheceste
+Disseste o teu nome é eu não encontrei
+A força que tu finges no corredor
+Eu disse o meu e tu não reconheceste
 A frieza que eu chamo de pudor
 
 [Bridge]
 O que acontece quando dois estranhos
 Se encontram sem a pele que vestiram
 Sem plateia, sem ensaio, sem palco
-So dois corpos que ainda nao mentiram
+Só dois corpos que ainda não mentiram
 
 [Outro]
 Dois estranhos
@@ -563,16 +563,16 @@ It's where the garden
 Starts to grow`,
 
   "no-vergonha/3": `[Verse 1]
-Ja nao sou o forte, ja nao es a fria
-Ja nao sou o que resolve, ja nao es a que nao sente
+Já não sou o forte, já não es a fria
+Já não sou o que resolve, já não es a que não sente
 Os papeis cairam como folhas secas
-E por baixo estava so a pele — transparente
+E por baixo estava só a pele — transparente
 
 [Chorus]
 Sem papeis, sem personagem
 Sem o guiao que decoramos a vida inteira
 O que sobra quando tiramos tudo
-E o que nunca nos deixamos — a alma nua e verdadeira
+É o que nunca nós deixamos — a alma nua e verdadeira
 
 [Verse 2]
 Tu sem a tua indiferenca
@@ -581,30 +581,30 @@ Eu sem a minha muralha
 Sou mais humano do que quero crer
 
 [Bridge]
-Os papeis protegiam-nos do olhar
+Os papeis protegiam-nós do olhar
 De sermos vistos como realmente somos
-Mas tambem nos impediam de tocar
+Mas também nós impediam de tocar
 A pele viva debaixo de tantos nomes
 
 [Outro]
 Sem papeis
 Pela primeira vez
-Nao sei quem sou
+Não sei quem sou
 Mas sei que existo
 E isso
 Basta e sobra`,
 
   "no-vergonha/4": `[Verse 1]
 Eu vejo-te por tras do que construiste
-Vejo o rapaz que fingia nao ter dor
-Vejo as maos que tremiam como folhas
+Vejo o rapaz que fingia não ter dor
+Vejo as mãos que tremiam como folhas
 Debaixo da mesa onde batias sem pudor
 
 [Chorus]
-Reconhecer nao e julgar nem condenar
+Reconhecer não e julgar nem condenar
 E olhar e dizer eu sei de cor
-Eu sei porque tambem tremo a noite
-Eu sei porque tambem calei o amor
+Eu sei porque também tremo a noite
+Eu sei porque também calei o amor
 
 [Verse 2]
 Tu ves-me por tras da minha invencao
@@ -614,7 +614,7 @@ Ves o fogo que eu chamava de vento
 
 [Bridge]
 Quando duas pessoas se reconhecem
-Nao e porque sao espelhos iguais
+Não e porque sao espelhos iguais
 E porque a ferida de uma
 Fala a lingua da outra sem sinais
 
@@ -622,8 +622,8 @@ Fala a lingua da outra sem sinais
 Eu vejo-te
 E tu a mim
 E neste ver
-Nao ha vergonha
-So um jardim
+Não há vergonha
+Só um jardim
 De reconhecimento`,
 
   "no-vergonha/5": `[Verse 1]
@@ -662,18 +662,18 @@ For all the wildflowers
 That bloom within`,
 
   // ─────────────────────────────────────────────
-  // NO DA SOLIDAO (Veu 5 — Isabel + Pedro)
+  // NO DA SOLIDAO (Véu 5 — Isabel + Pedro)
   // O controlo que isolou quem mais amava
   // ─────────────────────────────────────────────
 
-  "no-solidao/1": `[Verse 1]
-Construi uma ilha a volta de nos dois
+  "no-solidão/1": `[Verse 1]
+Construi uma ilha a volta de nós dois
 Cada regra era um muro de coral
 Tu ficavas seguro, eu ficava no centro
-E o mar ia fechando cada canal
+É o mar ia fechando cada canal
 
 [Chorus]
-Ilha que eu construi de amor e medo
+Ilha que eu construi de amor é medo
 Tao bonita vista de longe e de fora
 Quanto mais te segurava no segredo
 Mais te perdia a cada hora
@@ -681,24 +681,24 @@ Mais te perdia a cada hora
 [Verse 2]
 Os horarios, as listas, as rotinas
 Tudo era controlo a fingir de ternura
-Tu sorrias e eu nao via
+Tu sorrias e eu não via
 Que o teu sorriso era uma prisao madura
 
 [Bridge]
 Pedro, quando foi que o cuidar
 Se transformou em vigiar a tua porta
 Quando foi que amar-te
-Virou nao te deixar ir embora
+Virou não te deixar ir embora
 
 [Outro]
 A ilha que construi
-Para nos proteger do mar
+Para nós proteger do mar
 Acabou por ser
 A razao de te afastar`,
 
-  "no-solidao/2": `[Verse 1]
+  "no-solidão/2": `[Verse 1]
 I held you like a bird inside my palm
-So careful, so precise, so terrified
+Só careful, só precise, só terrified
 I thought that if I opened up my fingers
 The wind would steal you from my wounded side
 
@@ -727,60 +727,60 @@ Lost the very thing
 I was building walls
 To keep from going`,
 
-  "no-solidao/3": `[Verse 1]
-Abro as maos e nao sei o que fazer com elas
-Palmas pro ceu, vazias como o dia
+  "no-solidão/3": `[Verse 1]
+Abro as mãos e não sei o que fazer com elas
+Palmas pro céu, vazias como o dia
 Sem agenda, sem redea, sem controlo
-So eu e o vento que entra e que arrepia
+Só eu e o vento que entra e que arrepia
 
 [Chorus]
-Soltar e o gesto mais dificil que ha
-Nao porque nao saibas o caminho
+Soltar e o gesto mais dificil que há
+Não porque não saibas o caminho
 Mas porque ao soltar descobres enfim
-Que o que seguravas era o teu proprio espinho
+Que o que seguravas era o teu próprio espinho
 
 [Verse 2]
 Pedro, solto-te agora como quem solta um rio
-Nao para te perder — para te encontrar
+Não para te perder — para te encontrar
 Solto as regras, solto os medos velhos
 Solto a ideia do que deviamos amar
 
 [Bridge]
 E ao soltar descubro uma verdade
-Que as maos vazias nao sao maos sem forca
-Sao maos que finalmente podem tocar
-Sem garra, sem prisao — com pele e com graca
+Que as mãos vazias não sao mãos sem força
+Sao mãos que finalmente podem tocar
+Sem garra, sem prisao — com pele é com graça
 
 [Outro]
 Solto
 E ao soltar
 Descubro que o amor
-Nao se segura —
+Não se segura —
 Cultiva-se como flor`,
 
-  "no-solidao/4": `[Verse 1]
-Ja nao estou atras de ti nem tu de mim
-Ja nao verifico nem controlo mais a hora
+  "no-solidão/4": `[Verse 1]
+Já não estou atras de ti nem tu de mim
+Já não verifico nem controlo mais a hora
 Estamos no mesmo quarto pela primeira vez
 Sem que ninguem vigie a luz que vai la fora
 
 [Chorus]
 Lado a lado como duas arvores
 Que crescem juntas sem se sufocar
-As raizes tocam-se debaixo da terra
-Mas os ramos tem ceu para respirar
+As raízes tocam-se debaixo da terra
+Mas os ramos tem céu para respirar
 
 [Verse 2]
 Tu les o teu livro e eu leio o meu
 Tu sais e eu fico sem contar os minutos
-Tu voltas porque queres, nao porque chorei
-E isso e mais bonito que qualquer discurso
+Tu voltas porque queres, não porque chorei
+E isso é mais bonito que qualquer discurso
 
 [Bridge]
 Estar junto sem segurar nem apertar
-E a forma mais madura de se amar
-Nao e distancia, nao e frieza
-E confiar no chao que pisamos a par
+É a forma mais madura de se amar
+Não e distancia, não e frieza
+E confiar no chão que pisamos a par
 
 [Outro]
 Lado a lado
@@ -791,7 +791,7 @@ Ficar
 Como quem planta
 E espera a flor`,
 
-  "no-solidao/5": `[Verse 1]
+  "no-solidão/5": `[Verse 1]
 I lived inside a tower made of rules
 Convinced the walls were keeping danger out
 But when I looked through every tiny window
@@ -829,33 +829,33 @@ Was the bravest —
 I crossed`,
 
   // ─────────────────────────────────────────────
-  // NO DO VAZIO (Veu 6 — Lena + Sofia)
+  // NO DO VAZIO (Véu 6 — Lena + Sofia)
   // O desejo que esvaziou a amizade
   // ─────────────────────────────────────────────
 
   "no-vazio/1": `[Verse 1]
 Eramos inseparaveis, lembras-te Sofia
-Duas raparigas contra o mundo e o temporal
+Duas raparigas contra o mundo é o temporal
 Tu sabias os meus segredos de memoria
 Eu sabia o nome de cada medo teu — cada sinal
 
 [Chorus]
 Amigas como eramos antes da fome
 Antes de eu querer mais do que podias dar
-Antes de confundir a tua presenca
-Com o chao que eu nao sabia encontrar
+Antes de confundir a tua presença
+Com o chão que eu não sabia encontrar
 
 [Verse 2]
 Quando comecei a precisar de ti
-De uma forma que nao cabia em nenhum abrace
+De uma forma que não cabia em nenhum abrace
 Tu sentiste o peso antes da palavra
-E o espaco entre nos encheu-se de verdade
+É o espaço entre nós encheu-se de verdade
 
 [Bridge]
-O desejo nao foi de corpo — foi de alma
-Foi a fome de quem nao se sabe alimentar
-Quis que fosses o meu chao e o meu tecto
-E esqueci que tu tambem precisavas de andar
+O desejo não foi de corpo — foi de alma
+Foi a fome de quem não se sabe alimentar
+Quis que fosses o meu chão é o meu tecto
+E esqueci que tu também precisavas de andar
 
 [Outro]
 Amigas
@@ -901,26 +901,26 @@ In all that open space
 And bloom`,
 
   "no-vazio/3": `[Verse 1]
-O vazio esta aqui e eu nao fujo mais
-Nao ligo, nao como, nao preencho, nao distraio
+O vazio esta aqui e eu não fujo mais
+Não ligo, não como, não preencho, não distraio
 Sento-me no meio do que falta
 E descubro que o vazio tem o meu tamanho
 
 [Chorus]
 Sem preencher, sem fugir para longe
 Sem chamar ninguem para ocupar
-O espaco que e meu por dentro
+O espaço que é meu por dentro
 Aprendo finalmente a habitar
 
 [Verse 2]
 Antes o vazio era um monstro escuro
-Agora e so uma sala por pintar
+Agora e só uma sala por pintar
 Posso enche-la, posso deixa-la
 Posso entrar e sair sem me explicar
 
 [Bridge]
-Sofia, tu nao eras responsavel
-Por encher o que eu nao sabia conter
+Sofia, tu não eras responsavel
+Por encher o que eu não sabia conter
 O vazio era meu antes do teu nome
 E continua meu depois de te perder
 
@@ -928,37 +928,37 @@ E continua meu depois de te perder
 Sem preencher
 Descubro
 Que o vazio
-Nao e ausencia —
-E terra fertil
+Não e ausência —
+E terra fértil
 Para o que vem`,
 
   "no-vazio/4": `[Verse 1]
-Voltamos a encontrar-nos num cafe de outubro
+Voltamos a encontrar-nós num café de outubro
 Sem a fome, sem a pressa, sem a sede
 Tu olhas para mim como quem ve um rio
-E eu ja sei nadar sem a tua rede
+E eu já sei nadar sem a tua rede
 
 [Chorus]
 Reencontro sem exigir nem pedir
-Sem pedir que sejas o meu chao
+Sem pedir que sejas o meu chão
 Reencontro como quem volta
-A uma casa que nao e prisao
+A uma casa que não e prisao
 
 [Verse 2]
-Ja nao preciso que me salves da maré
-Ja nao preciso que me preenchas o jardim
-Preciso so que te sentes ao meu lado
-E me digas como tens andado — so assim
+Já não preciso que me salves da maré
+Já não preciso que me preenchas o jardim
+Preciso só que te sentes ao meu lado
+E me digas como tens andado — só assim
 
 [Bridge]
 O reencontro mais bonito
-Nao e o que apaga o que se partiu
-E o que olha para os estilhacos
+Não e o que apaga o que se partiu
+É o que olha para os estilhacos
 E diz eu sei — e mesmo assim estou aqui
 
 [Outro]
 Reencontro
-Nao e voltar atras
+Não e voltar atras
 E caminhar em frente
 Lado a lado
 Com os olhos
@@ -1002,25 +1002,25 @@ Left to give
 Like morning light`,
 
   // ─────────────────────────────────────────────
-  // NO DA PERTENCA (Veu 7 — Helena T. + Miguel C.)
-  // A separacao que reinventou o lar
+  // NO DA PERTENCA (Véu 7 — Helena T. + Miguel C.)
+  // A separação que reinventou o lar
   // ─────────────────────────────────────────────
 
   "no-pertenca/1": `[Verse 1]
 O lar que construimos tinha paredes grossas
-E um telhado que nao deixava entrar o ceu
+É um telhado que não deixava entrar o céu
 Tu dormias de um lado como uma ilha
-E o mar entre nos dois era so meu
+É o mar entre nós dois era só meu
 
 [Chorus]
-O lar que nos sufocava devagar
-Nao era feito de tijolo nem de cal
-Era feito do que nunca nos dissemos
-Era feito do silencio que faz mal
+O lar que nós sufocava devagar
+Não era feito de tijolo nem de cal
+Era feito do que nunca nós dissemos
+Era feito do silêncio que faz mal
 
 [Verse 2]
 Os moveis no lugar, os quadros na parede
-A rotina perfeita de quem ja desistiu
+A rotina perfeita de quem já desistiu
 Dois fantasmas educados numa casa bonita
 Onde o amor um dia morou e depois fugiu
 
@@ -1031,8 +1031,8 @@ Quando foi que voltar para casa
 Passou a ser entrar numa sala
 
 [Outro]
-O lar que nos sufocava
-Nao precisava de mais ar
+O lar que nós sufocava
+Não precisava de mais ar
 Precisava que alguem
 Tivesse a coragem de partir sem olhar`,
 
@@ -1072,10 +1072,10 @@ With an open door`,
 A casa esta vazia e eu estou aqui
 Com o eco dos meus passos no corredor
 Sem a tua respiracao de noite
-Sem o teu cafe, sem o teu calor
+Sem o teu café, sem o teu calor
 
 [Chorus]
-Sozinho nao e o mesmo que perdido
+Sozinho não e o mesmo que perdido
 Sozinho e descobrir que existo aqui
 Sem o reflexo dos teus olhos na janela
 Sem a moldura que fizeste para mim
@@ -1083,53 +1083,53 @@ Sem a moldura que fizeste para mim
 [Verse 2]
 Os primeiros dias foram longos como inverno
 Os primeiros sabados eternos como o mar
-Mas depois o silencio mudou de tom
-E o vazio tornou-se terra para semear
+Mas depois o silêncio mudou de tom
+É o vazio tornou-se terra para semear
 
 [Bridge]
-Neste vazio fertil descubro
-Coisas que nao sabia sobre mim
-Descubro que tenho uma voz propria
-Que nao precisa de ninguem para ter fim
+Neste vazio fértil descubro
+Coisas que não sabia sobre mim
+Descubro que tenho uma voz própria
+Que não precisa de ninguem para ter fim
 
 [Outro]
 Sozinho
 E pela primeira vez
-Nao e abandono
+Não e abandono
 E encontro
 Comigo mesmo
 Sem intermediario
 Sem medo`,
 
   "no-pertenca/4": `[Verse 1]
-Nao volto a construir a mesma casa
-Nao volto a por os quadros no mesmo lugar
+Não volto a construir a mesma casa
+Não volto a por os quadros no mesmo lugar
 Se recomecar e refazer de novo
 Que seja novo como o primeiro luar
 
 [Chorus]
-Reinventar nao e esquecer o que foi
+Reinventar não e esquecer o que foi
 E lembrar e escolher diferente
-E olhar para os estilhacos no chao
+E olhar para os estilhacos no chão
 E dizer obrigada — e seguir em frente
 
 [Verse 2]
 As paredes desta vez tem mais janelas
-O telhado desta vez deixa entrar o ceu
-A porta nao tem chave porque ninguem
-Precisa de fugir do que e seu
+O telhado desta vez deixa entrar o céu
+A porta não tem chave porque ninguem
+Precisa de fugir do que é seu
 
 [Bridge]
-Se nos encontrarmos outra vez
+Se nós encontrarmos outra vez
 Sera noutro jardim, noutro molde
-Nao no que fomos, nao no que partiu
-Mas no que cada um de nos resolve
+Não no que fomos, não no que partiu
+Mas no que cada um de nós resolve
 
 [Outro]
 Reinventar
 E construir
 Com o que aprendeste
-Nao contra o que viveste
+Não contra o que viveste
 Mas a partir dele
 Tijolo a tijolo
 Diferente e livre`,
