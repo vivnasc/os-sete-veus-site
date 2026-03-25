@@ -592,6 +592,7 @@ export default function AlbumProductionPage() {
   const [generatedClips, setGeneratedClips] = useState<Record<string, GeneratedClips>>({});
   const [editedTitles, setEditedTitles] = useState<Record<string, string>>({});
   const [trackVersions, setTrackVersions] = useState<Record<string, string[]>>({}); // key → version names
+  const [sunoModel, setSunoModel] = useState("V4_5");
   const pollingRef = useRef<Record<string, NodeJS.Timeout>>({});
   const titleSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
 
@@ -769,6 +770,7 @@ export default function AlbumProductionPage() {
           lyrics: track.lyrics,
           title: editedTitles[key] || track.title,
           instrumental: false,
+          model: sunoModel,
         }),
       });
 
@@ -1048,27 +1050,44 @@ export default function AlbumProductionPage() {
         {/* Filter + View Mode */}
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
           <ProductFilter active={filter} onChange={setFilter} />
-          <div className="flex gap-1 rounded-full bg-mundo-muted-dark/10 p-1">
-            <button
-              onClick={() => setViewMode("producao")}
-              className={`rounded-full px-4 py-2 text-xs font-sans uppercase tracking-wider transition-colors ${
-                viewMode === "producao"
-                  ? "bg-mundo-bg text-mundo-creme shadow-sm"
-                  : "text-mundo-muted hover:text-mundo-creme"
-              }`}
-            >
-              Produção
-            </button>
-            <button
-              onClick={() => setViewMode("letras")}
-              className={`rounded-full px-4 py-2 text-xs font-sans uppercase tracking-wider transition-colors ${
-                viewMode === "letras"
-                  ? "bg-mundo-bg text-mundo-creme shadow-sm"
-                  : "text-mundo-muted hover:text-mundo-creme"
-              }`}
-            >
-              Letras
-            </button>
+          <div className="flex items-center gap-3">
+            {/* Suno model selector */}
+            <div className="flex items-center gap-2">
+              <label className="text-[10px] uppercase tracking-wider text-mundo-muted">Modelo</label>
+              <select
+                value={sunoModel}
+                onChange={(e) => setSunoModel(e.target.value)}
+                className="rounded-lg border border-mundo-muted-dark/30 bg-mundo-bg px-3 py-1.5 text-xs text-mundo-creme focus:border-violet-500 focus:outline-none"
+              >
+                <option value="V3_5">Suno V3.5</option>
+                <option value="V4">Suno V4</option>
+                <option value="V4_5">Suno V4.5</option>
+                <option value="V5">Suno V5</option>
+              </select>
+            </div>
+
+            <div className="flex gap-1 rounded-full bg-mundo-muted-dark/10 p-1">
+              <button
+                onClick={() => setViewMode("producao")}
+                className={`rounded-full px-4 py-2 text-xs font-sans uppercase tracking-wider transition-colors ${
+                  viewMode === "producao"
+                    ? "bg-mundo-bg text-mundo-creme shadow-sm"
+                    : "text-mundo-muted hover:text-mundo-creme"
+                }`}
+              >
+                Produção
+              </button>
+              <button
+                onClick={() => setViewMode("letras")}
+                className={`rounded-full px-4 py-2 text-xs font-sans uppercase tracking-wider transition-colors ${
+                  viewMode === "letras"
+                    ? "bg-mundo-bg text-mundo-creme shadow-sm"
+                    : "text-mundo-muted hover:text-mundo-creme"
+                }`}
+              >
+                Letras
+              </button>
+            </div>
           </div>
         </div>
 
