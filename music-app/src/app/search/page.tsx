@@ -323,6 +323,7 @@ export default function SearchPage() {
                   { title: "Vida", sub: "Música do dia-a-dia", products: ["vida"] },
                   { title: "Cursos", sub: "Escola dos Véus", products: ["curso"] },
                   { title: "Livro", sub: "Livro filosófico", products: ["livro"] },
+                  { title: "Cosmic", sub: "O corpo como portal cósmico", products: ["cosmic"] },
                 ].map(({ title, sub, products }) => {
                   const albums = ALL_ALBUMS.filter(a => products.includes(a.product));
                   if (albums.length === 0) return null;

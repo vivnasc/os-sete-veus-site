@@ -155,6 +155,7 @@ function ProductFilter({
     { key: "curso", label: "Cursos" },
     { key: "espiritual", label: "Espiritual" },
     { key: "vida", label: "Vida" },
+    { key: "cosmic", label: "Cosmic" },
   ];
 
   return (
