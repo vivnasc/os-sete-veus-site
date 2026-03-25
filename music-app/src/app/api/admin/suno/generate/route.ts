@@ -54,12 +54,13 @@ export async function POST(req: NextRequest) {
 
     if (hasLyrics) {
       // Custom mode: prompt = lyrics, style = genre/style tags
+      // API.box/Suno limits style to 500 characters
       body.prompt = lyrics;
-      body.style = prompt;
+      body.style = prompt.length > 480 ? prompt.slice(0, 480).replace(/\s\S*$/, "") : prompt;
       body.title = title || "Sem titulo";
     } else {
       // Non-custom mode: prompt = free-form description
-      body.prompt = prompt;
+      body.prompt = prompt.length > 480 ? prompt.slice(0, 480).replace(/\s\S*$/, "") : prompt;
     }
 
     const jsonBody = JSON.stringify(body);

@@ -120,7 +120,7 @@ function mapStatus(status: string | undefined): string {
   if (!status) return "processing";
   const s = status.toLowerCase();
   if (s === "complete" || s === "completed" || s === "done" || s === "success") return "complete";
-  if (s === "error" || s === "failed") return "error";
-  if (s === "text" || s === "first" || s === "processing" || s === "pending") return "processing";
+  if (s.includes("fail") || s.includes("error") || s === "cancelled" || s === "canceled") return "error";
+  if (s === "text" || s === "first" || s === "processing" || s === "pending" || s === "queued" || s === "running") return "processing";
   return s;
 }
