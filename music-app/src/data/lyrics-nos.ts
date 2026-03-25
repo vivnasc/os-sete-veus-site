@@ -1071,7 +1071,7 @@ With an open door`,
   "no-pertenca/3": `[Verse 1]
 A casa está vazia e eu estou aqui
 Com o eco dos meus passos no corredor
-Sem a tua respiracao de noite
+Sem a tua respiração de noite
 Sem o teu café, sem o teu calor
 
 [Chorus]
