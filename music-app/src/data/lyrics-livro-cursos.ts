@@ -145,9 +145,9 @@ cada noite um novo abaco
 
 [Verse 2]
 Mas há um cansaco que não dorme
-que não cede com ferias nem verao
+que não cede com ferias nem verão
 Um peso que não mora no corpo
-mora na crença de que nunca basta o pao
+mora na crença de que nunca basta o pão
 
 [Chorus]
 Para — não há nada a conquistar
@@ -318,7 +318,7 @@ O ouro estava sempre fora
 e tu sempre longe da luz
 
 [Chorus]
-Os espelhos estao dourados
+Os espelhos estão dourados
 mas o ouro não é deles
 O que brilha não é o preço
 o que brilha es tu — sem véus
@@ -392,7 +392,7 @@ Podes honrar a sua historia
 e escrever outra com a tua mão
 
 [Outro]
-As raízes sao tuas
+As raízes são tuas
 mas a árvore podes escolher
 `,
 
@@ -468,22 +468,22 @@ Cresce no centro do teu peito
 e alimenta-se do que sentes
 
 [Verse 2]
-As raízes vao longe, tão longe
+As raízes vão longe, tão longe
 até avos que nunca viste
 Carregas o peso de historias
 que ninguém te pediu que ouvisse
 
 [Chorus]
-As raízes não sao correntes
+As raízes não são correntes
 mesmo quando parecem prender
-Sao a terra de onde vieste
+São a terra de onde vieste
 e podes ama-las e ainda assim crescer
 
 [Bridge]
 Olha para baixo, sem medo
 vê o que te sustenta no chão
 Nem tudo o que é raiz e prisão
-nem tudo o que é antigo e em vao
+nem tudo o que é antigo e em vão
 
 [Outro]
 O que veio antes de ti
@@ -600,7 +600,7 @@ e a sombra já não é prisão
 [Bridge]
 Honras tudo o que viveste
 honras quem veio antes de ti
-Mas agora os ramos sao teus
+Mas agora os ramos são teus
 e o céu começa aqui
 
 [Outro]
@@ -621,7 +621,7 @@ Depois o corpo inteiro entregue a metade
 
 [Verse 2]
 Acordaste um dia sem saber quem eras
-Sem opiniao própria, sem fome, sem voz
+Sem opinião própria, sem fome, sem voz
 O espelho mostrava o rosto de alguém
 que vivia apenas para ser de nós
 
@@ -751,8 +751,8 @@ Mas a paisagem já e outra
 e o antigo não volta — já não dói
 
 [Chorus]
-Cinzas não sao o fim da historia
-sao o que resta quando a mentira arde
+Cinzas não são o fim da historia
+são o que resta quando a mentira arde
 O que sobrevive ao fogo
 e o que era verdade — cedo ou tarde
 
@@ -934,7 +934,7 @@ A clareza não chega de repente
 chega como a respiração
 
 [Chorus]
-A clareza não é uma explosao
+A clareza não é uma explosão
 e uma brisa que limpa a vista
 Não precisas de ver tudo
 só o passo seguinte basta
@@ -1060,7 +1060,7 @@ e as janelas ainda te procuram
 
 [Chorus]
 Habitar e mais que estar
-e sentir o peso no colchao
+e sentir o peso no colchão
 E ouvir o sangue a correr
 e chamar-lhe gratidão
 
@@ -1184,7 +1184,7 @@ entre o amor é a ferida crua
 [Chorus]
 A porta e o acto mais sagrado
 decidir quem entra, quem fica
-Não é rejeicao, não é castigo
+Não é rejeição, não é castigo
 e a escolha de quem cuida
 
 [Bridge]
@@ -1297,8 +1297,8 @@ could not extinguish, only deepen
   "curso-flores-escuro/3": `[Verse 1]
 No meio do escuro nascem flores
 que ninguém plantou de propósito
-Não sao rosas nem sao lirios
-sao formas que não tem nome
+Não são rosas nem são lirios
+são formas que não tem nome
 
 [Verse 2]
 A beleza que cresce no luto
@@ -1315,8 +1315,8 @@ mesmo quando tu já não ousas
 [Bridge]
 Não arranques o que nasce
 não digas que é cedo de mais
-As flores do luto sao sagradas
-sao a prova de que ainda es capaz
+As flores do luto são sagradas
+são a prova de que ainda es capaz
 
 [Outro]
 Deixa florescer o que cresce
@@ -1360,7 +1360,7 @@ the garden lives because you stayed
   "curso-peso-chao/1": `[Verse 1]
 Há pedras nós teus ombros
 que carregas há tanto tempo
-que já não sabes se sao tuas
+que já não sabes se são tuas
 ou se nasceste com o peso
 
 [Verse 2]
@@ -1789,11 +1789,11 @@ sem precisar que ninguém me alinhe
 [Verse 2]
 O que era julgamento
 tornou-se reconhecimento
-O que era projeccao
-tornou-se integracao
+O que era projecção
+tornou-se integração
 
 [Chorus]
-Integracao
+Integração
 o outro como contexto
 não como identidade
 O espelho mostra-me inteira
@@ -2075,7 +2075,7 @@ and I belong
   // ═══════════════════════════════════════════
 
   "curso-chama/1": `[Verse 1]
-O vulcao está selado
+O vulcão está selado
 a superficie negra e fria
 Mandibula cerrada, punhos fechados
 a pressão cresce dia a dia
@@ -2083,12 +2083,12 @@ a pressão cresce dia a dia
 [Verse 2]
 Ensinaram-te que a raiva
 e feia, perigosa e ma
-Entao engoliste o fogo
+Então engoliste o fogo
 e chamaste-lhe calma — mas não está
 
 [Chorus]
 Selado, selado
-o vulcao que ninguém vê
+o vulcão que ninguém vê
 A raiva escondida
 e a que mais te vai corroer
 
@@ -2149,7 +2149,7 @@ A raiva como aliada
 que te ensina a não calar
 
 [Outro]
-O vulcao não explode
+O vulcão não explode
 quando o deixas respirar
 O fogo controlado
 e o mais bonito de guardar
@@ -2318,7 +2318,7 @@ e tu já nem sabes o que era teu
 Trabalhas até cair
 levantas-te e trabalhas mais
 O valor mede-se em horas
-e a exaustao mede-se em sinais
+e a exaustão mede-se em sinais
 
 [Chorus]
 Maquinas, maquinas
@@ -2490,7 +2490,7 @@ e ambas insistem
 [Verse 2]
 Sentada no jardim
 sem pressa de chegar
-Todas as estacoes sao agora
+Todas as estacoes são agora
 e agora e o único lugar
 
 [Chorus]
@@ -2611,7 +2611,7 @@ E saber que mereces
 sem pedir licença nem processo
 
 [Chorus]
-Hesitacao
+Hesitação
 entre o medo é a grandeza
 A coroa pesa menos
 do que o medo da tua inteireza
