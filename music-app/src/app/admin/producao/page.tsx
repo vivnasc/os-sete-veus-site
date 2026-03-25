@@ -169,6 +169,7 @@ function ProductFilter({
 }
 
 function formatTime(s: number) {
+  if (!s || !isFinite(s) || isNaN(s)) return "--:--";
   const m = Math.floor(s / 60);
   const sec = Math.floor(s % 60);
   return `${m}:${sec.toString().padStart(2, "0")}`;
@@ -184,7 +185,10 @@ function MiniPlayer({ src }: { src: string }) {
     const a = ref.current;
     if (!a) return;
     const onTime = () => setCurrent(a.currentTime);
-    const onMeta = () => setDuration(a.duration || 0);
+    const onMeta = () => {
+      const d = a.duration;
+      if (d && isFinite(d) && !isNaN(d)) setDuration(d);
+    };
     const onEnd = () => setPlaying(false);
     a.addEventListener("timeupdate", onTime);
     a.addEventListener("loadedmetadata", onMeta);
@@ -207,13 +211,14 @@ function MiniPlayer({ src }: { src: string }) {
 
   function seek(e: React.MouseEvent<HTMLDivElement>) {
     const a = ref.current;
-    if (!a || !duration) return;
+    if (!a || !duration || !isFinite(duration)) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
     a.currentTime = pct * duration;
   }
 
-  const pct = duration > 0 ? (current / duration) * 100 : 0;
+  const hasDuration = duration > 0 && isFinite(duration);
+  const pct = hasDuration ? (current / duration) * 100 : 0;
 
   return (
     <div className="mb-2">

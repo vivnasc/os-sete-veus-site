@@ -25,7 +25,7 @@ E eu preferi calar a te partir ao luar
 
 [Verse 2]
 Os domingos foram caindo como folhas
-Cada almoço um ensaio de silêncio e sal
+Cada almoço um ensaio de silêncio é sal
 Tu cresceste a pensar que eu não sabia
 Eu envelheci a ver-te de longe no quintal
 
@@ -104,7 +104,7 @@ Sem guiao na boca`,
 
   "no-herança/4": `[Verse 1]
 Guardei palavras como quem guarda porcelana
-Atras do vidro onde ninguem podia tocar
+Atras do vidro onde ninguém podia tocar
 Cada frase que engoli virou raiz amarga
 Cada verdade que calei virou luar
 
@@ -136,7 +136,7 @@ Entre nós duas`,
 
   "no-herança/5": `[Verse 1]
 O fio que nós prendia era de seda e nevoeiro
-Feito de silêncio e de boas intencoes
+Feito de silêncio é de boas intencoes
 Apertava sem doer, segurava sem se ver
 E nós duas confundimos esses nós com coração
 
@@ -191,7 +191,7 @@ Mas quando te vejo a voz não quer chegar
 
 [Bridge]
 O medo fez de nós dois actores
-Num palco onde ninguem aplaude
+Num palco onde ninguém aplaude
 Tu calas o que eu preciso ouvir
 Eu escondo o que tu precisas saber
 
@@ -244,7 +244,7 @@ E dizer eu tenho medo é ouvir o eco
 E descobrir que tu tremias no mesmo sitio
 
 [Verse 2]
-Não sabia que uma frase tao pequena
+Não sabia que uma frase tão pequena
 Podia abrir a terra inteira entre nós dois
 Um eu preciso de ti dito a meia-voz
 Que derreteu o gelo de tantos invernos sois
@@ -401,7 +401,7 @@ O que é que vou pagar com a minha vida
 [Chorus]
 Receber e ficar quieta
 Com as mãos abertas e o peito ao sol
-E aceitar que alguem te de sem preço
+E aceitar que alguém te de sem preço
 Como a chuva que cai sem protocolo
 
 [Verse 2]
@@ -446,7 +446,7 @@ O que te oferecem de coração aberto e grado
 O amor entre dois inteiros
 Não pesa nem cobra nem mede
 E como água entre duas margens
-Corre livre e ninguem a prende
+Corre livre e ninguém a prende
 
 [Outro]
 Dois inteiros
@@ -498,7 +498,7 @@ At last`,
   "no-vergonha/1": `[Verse 1]
 Encontrei-te num lugar sem mapa nem parede
 Sem nome, sem historia, sem moldura no olhar
-Tu olhaste para mim como quem ve o mar
+Tu olhaste para mim como quem vê o mar
 E eu não tinha máscara para te entregar
 
 [Chorus]
@@ -595,7 +595,7 @@ E isso
 Basta e sobra`,
 
   "no-vergonha/4": `[Verse 1]
-Eu vejo-te por tras do que construiste
+Eu vejo-te por trás do que construiste
 Vejo o rapaz que fingia não ter dor
 Vejo as mãos que tremiam como folhas
 Debaixo da mesa onde batias sem pudor
@@ -607,7 +607,7 @@ Eu sei porque também tremo a noite
 Eu sei porque também calei o amor
 
 [Verse 2]
-Tu ves-me por tras da minha invencao
+Tu vês-me por trás da minha invencao
 Ves a rapariga que fugia para dentro
 Ves o medo que eu chamava de distancia
 Ves o fogo que eu chamava de vento
@@ -674,7 +674,7 @@ Tu ficavas seguro, eu ficava no centro
 
 [Chorus]
 Ilha que eu construi de amor é medo
-Tao bonita vista de longe e de fora
+Tão bonita vista de longe e de fora
 Quanto mais te segurava no segredo
 Mais te perdia a cada hora
 
@@ -762,7 +762,7 @@ Cultiva-se como flor`,
 Já não estou atras de ti nem tu de mim
 Já não verifico nem controlo mais a hora
 Estamos no mesmo quarto pela primeira vez
-Sem que ninguem vigie a luz que vai la fora
+Sem que ninguém vigie a luz que vai lá fora
 
 [Chorus]
 Lado a lado como duas arvores
@@ -908,14 +908,14 @@ E descubro que o vazio tem o meu tamanho
 
 [Chorus]
 Sem preencher, sem fugir para longe
-Sem chamar ninguem para ocupar
+Sem chamar ninguém para ocupar
 O espaço que é meu por dentro
 Aprendo finalmente a habitar
 
 [Verse 2]
 Antes o vazio era um monstro escuro
 Agora e só uma sala por pintar
-Posso enche-la, posso deixa-la
+Posso enche-lá, posso deixa-lá
 Posso entrar e sair sem me explicar
 
 [Bridge]
@@ -935,7 +935,7 @@ Para o que vem`,
   "no-vazio/4": `[Verse 1]
 Voltamos a encontrar-nós num café de outubro
 Sem a fome, sem a pressa, sem a sede
-Tu olhas para mim como quem ve um rio
+Tu olhas para mim como quem vê um rio
 E eu já sei nadar sem a tua rede
 
 [Chorus]
@@ -1033,7 +1033,7 @@ Passou a ser entrar numa sala
 [Outro]
 O lar que nós sufocava
 Não precisava de mais ar
-Precisava que alguem
+Precisava que alguém
 Tivesse a coragem de partir sem olhar`,
 
   "no-pertenca/2": `[Verse 1]
@@ -1090,7 +1090,7 @@ Mas depois o silêncio mudou de tom
 Neste vazio fértil descubro
 Coisas que não sabia sobre mim
 Descubro que tenho uma voz própria
-Que não precisa de ninguem para ter fim
+Que não precisa de ninguém para ter fim
 
 [Outro]
 Sozinho
@@ -1116,7 +1116,7 @@ E dizer obrigada — e seguir em frente
 [Verse 2]
 As paredes desta vez tem mais janelas
 O telhado desta vez deixa entrar o céu
-A porta não tem chave porque ninguem
+A porta não tem chave porque ninguém
 Precisa de fugir do que é seu
 
 [Bridge]
