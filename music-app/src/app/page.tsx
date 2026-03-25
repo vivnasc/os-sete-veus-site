@@ -27,14 +27,14 @@ export default function MusicHomePage() {
 
   const all = allTracks();
   const whisper = all.filter(t => t.track.energy === "whisper").slice(0, 8);
-  const marrabenta = all.filter(t => t.track.flavor === "marrabenta").slice(0, 8);
+  const pulse = all.filter(t => t.track.energy === "pulse").slice(0, 8);
   const anthems = all.filter(t => t.track.energy === "anthem").slice(0, 8);
 
   // Featured: mix of energies
   const featured = [
     ...all.filter(t => t.track.energy === "anthem").slice(0, 3),
     ...all.filter(t => t.track.energy === "raw").slice(0, 2),
-    ...all.filter(t => t.track.flavor === "marrabenta").slice(0, 3),
+    ...all.filter(t => t.track.energy === "pulse").slice(0, 3),
   ].slice(0, 8);
 
   return (
@@ -162,16 +162,16 @@ export default function MusicHomePage() {
           </div>
         </section>
 
-        {/* Marrabenta */}
-        {marrabenta.length > 0 && (
+        {/* Pulse */}
+        {pulse.length > 0 && (
           <section>
             <div className="flex items-center justify-between mb-4">
-              <h2 className="font-display text-2xl font-semibold text-[#F5F0E6]">Marrabenta</h2>
-              <Link href="/lista/genero-marrabenta" className="text-xs text-[#C9A96E] hover:underline">Ver tudo</Link>
+              <h2 className="font-display text-2xl font-semibold text-[#F5F0E6]">Pulse</h2>
+              <Link href="/lista/energia-pulse" className="text-xs text-[#C9A96E] hover:underline">Ver tudo</Link>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-              {marrabenta.map(({ track, album }) => (
-                <TrackCard key={`mar-${album.slug}-${track.number}`} track={track} album={album} />
+              {pulse.map(({ track, album }) => (
+                <TrackCard key={`pul-${album.slug}-${track.number}`} track={track} album={album} />
               ))}
             </div>
           </section>
