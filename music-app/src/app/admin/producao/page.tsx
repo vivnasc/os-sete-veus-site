@@ -1196,6 +1196,42 @@ export default function AlbumProductionPage() {
               </div>
             </div>
 
+            {/* Bulk generate button */}
+            {(() => {
+              const pendingTracks = album.tracks.filter(t => {
+                const k = trackKey(album.slug, t.number);
+                const hasAudio = audioUrls[k] || t.audioUrl;
+                const isBusy = statuses[k] === "generating" || statuses[k] === "polling";
+                return !hasAudio && !isBusy && t.lyrics;
+              });
+              const busyCount = album.tracks.filter(t => {
+                const k = trackKey(album.slug, t.number);
+                return statuses[k] === "generating" || statuses[k] === "polling";
+              }).length;
+              return pendingTracks.length > 0 ? (
+                <div className="mb-4 flex items-center gap-3">
+                  <button
+                    onClick={() => {
+                      // Generate tracks sequentially with 2s delay between each
+                      pendingTracks.forEach((track, i) => {
+                        setTimeout(() => generateTrack(album.slug, track), i * 2000);
+                      });
+                    }}
+                    className="rounded-lg bg-violet-600 px-4 py-2 text-xs text-white transition hover:bg-violet-700"
+                  >
+                    Gerar todas ({pendingTracks.length} faixas)
+                  </button>
+                  {busyCount > 0 && (
+                    <span className="text-xs text-amber-400">{busyCount} em geração...</span>
+                  )}
+                </div>
+              ) : busyCount > 0 ? (
+                <div className="mb-4">
+                  <span className="text-xs text-amber-400">{busyCount} faixa(s) em geração...</span>
+                </div>
+              ) : null;
+            })()}
+
             <div className="space-y-3">
               {album.tracks.map((track) => {
                 const key = trackKey(album.slug, track.number);
