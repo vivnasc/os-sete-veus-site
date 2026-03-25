@@ -279,6 +279,7 @@ function TrackRow({
   onUpload,
   onRemove,
   onGenerate,
+  onCancel,
   onApproveClip,
   onApproveAsVersion,
   onUploadVersion,
@@ -294,6 +295,7 @@ function TrackRow({
   onUpload: (file: File) => void;
   onRemove: () => void;
   onGenerate: () => void;
+  onCancel: () => void;
   onApproveClip: (clipUrl: string, sunoTitle: string) => void;
   onApproveAsVersion: (clipUrl: string, sunoTitle: string, versionName: string, energy: string) => void;
   onUploadVersion: (file: File, versionName: string, energy: string) => void;
@@ -505,11 +507,22 @@ function TrackRow({
 
           {/* Polling indicator */}
           {isGenerating && !clipsReady && (
-            <div className="mt-3 flex items-center gap-2 rounded-lg bg-amber-950/30 p-3">
-              <div className="h-4 w-4 animate-spin rounded-full border-2 border-amber-400 border-t-transparent" />
-              <span className="text-xs text-amber-400">
-                {status === "generating" ? "A enviar para o Suno..." : "A aguardar geração (pode demorar 30-60s)..."}
-              </span>
+            <div className="mt-3 flex flex-col gap-1 rounded-lg bg-amber-950/30 p-3">
+              <div className="flex items-center gap-2">
+                <div className="h-4 w-4 animate-spin rounded-full border-2 border-amber-400 border-t-transparent" />
+                <span className="text-xs text-amber-400">
+                  {status === "generating" ? "A enviar para o Suno..." : "A aguardar geração (pode demorar 30-60s)..."}
+                </span>
+              </div>
+              {error && (
+                <span className="text-[10px] text-mundo-muted/60 font-mono">{error}</span>
+              )}
+              <button
+                onClick={onCancel}
+                className="mt-1 self-start text-[10px] text-red-400/70 underline hover:text-red-400"
+              >
+                Cancelar
+              </button>
             </div>
           )}
         </div>
@@ -646,20 +659,31 @@ export default function AlbumProductionPage() {
     }
 
     setStatuses((s) => ({ ...s, [key]: "polling" }));
+    setErrors((e) => ({ ...e, [key]: "" }));
 
     let pollCount = 0;
+    let lastPollInfo = "";
     const interval = setInterval(async () => {
       pollCount++;
       try {
         const res = await adminFetch(`/api/admin/suno/status?ids=${clipIds.join(",")}`);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        if (!res.ok) {
+          lastPollInfo = `Poll #${pollCount}: HTTP ${res.status}`;
+          setErrors((e) => ({ ...e, [key]: lastPollInfo }));
+          throw new Error(`HTTP ${res.status}`);
+        }
 
         const data = await res.json();
-        if (data.erro) throw new Error(data.erro);
+        if (data.erro) {
+          lastPollInfo = `Poll #${pollCount}: ${data.erro}`;
+          setErrors((e) => ({ ...e, [key]: lastPollInfo }));
+          throw new Error(data.erro);
+        }
 
-        // Log poll results for debugging
-        const clipStatuses = (data.clips || []).map((c: SunoClip) => `${c.status}${c.audioUrl ? " +audio" : ""}`);
-        console.log(`[poll #${pollCount}] ${key}:`, clipStatuses.join(", "));
+        // Show poll progress in the error field (as debug info)
+        const clipStatuses = (data.clips || []).map((c: SunoClip) => c.status);
+        lastPollInfo = `Poll #${pollCount}: ${clipStatuses.join(", ")}`;
+        setErrors((e) => ({ ...e, [key]: lastPollInfo }));
 
         // Check if any clip has an error
         const hasError = data.clips.some((c: SunoClip) => c.status === "error");
@@ -682,10 +706,10 @@ export default function AlbumProductionPage() {
             [key]: { clips: data.clips },
           }));
           setStatuses((s) => ({ ...s, [key]: "idle" }));
+          setErrors((e) => ({ ...e, [key]: "" }));
         }
       } catch (err) {
         console.warn(`[poll #${pollCount}] ${key} error:`, err);
-        // transient — continue polling
       }
     }, 5000);
 
@@ -699,7 +723,7 @@ export default function AlbumProductionPage() {
           if (s[key] === "polling") return { ...s, [key]: "error" };
           return s;
         });
-        setErrors((e) => ({ ...e, [key]: "Timeout — tenta de novo." }));
+        setErrors((e) => ({ ...e, [key]: `Timeout após 5 min. Último: ${lastPollInfo || "sem resposta"}` }));
       }
     }, 5 * 60 * 1000);
   }, []);
@@ -1161,6 +1185,16 @@ export default function AlbumProductionPage() {
                     onUpload={(file) => uploadTrack(album.slug, track, file)}
                     onRemove={() => removeTrack(album.slug, track.number)}
                     onGenerate={() => generateTrack(album.slug, track)}
+                    onCancel={() => {
+                      const k = trackKey(album.slug, track.number);
+                      if (pollingRef.current[k]) {
+                        clearInterval(pollingRef.current[k]);
+                        delete pollingRef.current[k];
+                      }
+                      setStatuses((s) => ({ ...s, [k]: "idle" }));
+                      setErrors((e) => ({ ...e, [k]: "" }));
+                      setGeneratedClips((g) => { const c = { ...g }; delete c[k]; return c; });
+                    }}
                     onApproveClip={(url, title) => approveClip(album.slug, track, url, title)}
                     onApproveAsVersion={(url, title, name, energy) => approveAsVersion(album.slug, track, url, title, name, energy)}
                     onUploadVersion={(file, name, energy) => uploadVersion(album.slug, track, file, name, energy)}
