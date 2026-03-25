@@ -3,19 +3,22 @@
 import { useEffect, useRef } from "react";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
 import { useLibrary } from "@/hooks/useLibrary";
+import { useLocalListeningData } from "@/hooks/useLocalListeningData";
 
 /**
  * Invisible component that tracks plays.
  * Records a listen when a new track starts playing (after 3 seconds).
+ * Tracks in Supabase (authenticated) AND localStorage (always).
  */
 export default function PlayTracker() {
   const { currentTrack, currentAlbum, isPlaying } = useMusicPlayer();
   const { addToRecents, userId } = useLibrary();
+  const { recordPlay } = useLocalListeningData();
   const trackedRef = useRef<string | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    if (!currentTrack || !currentAlbum || !isPlaying || !userId) {
+    if (!currentTrack || !currentAlbum || !isPlaying) {
       if (timerRef.current) {
         clearTimeout(timerRef.current);
         timerRef.current = null;
@@ -30,7 +33,19 @@ export default function PlayTracker() {
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = setTimeout(() => {
       trackedRef.current = key;
-      addToRecents(currentTrack.number, currentAlbum.slug);
+
+      // Always track in localStorage
+      recordPlay(
+        currentTrack.number,
+        currentAlbum.slug,
+        currentTrack.energy,
+        currentTrack.flavor
+      );
+
+      // Track in Supabase if authenticated
+      if (userId) {
+        addToRecents(currentTrack.number, currentAlbum.slug);
+      }
     }, 3000);
 
     return () => {
@@ -39,7 +54,7 @@ export default function PlayTracker() {
         timerRef.current = null;
       }
     };
-  }, [currentTrack, currentAlbum, isPlaying, userId, addToRecents]);
+  }, [currentTrack, currentAlbum, isPlaying, userId, addToRecents, recordPlay]);
 
   // Reset tracked ref when track changes
   useEffect(() => {
