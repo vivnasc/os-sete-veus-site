@@ -35,52 +35,38 @@ export async function GET(req: NextRequest) {
     const allClips: Record<string, unknown>[] = [];
 
     for (const taskId of taskIds) {
-      // API.box status endpoint
-      const res = await fetch(`${apiUrl}/api/v1/generate/record-info?taskId=${taskId}`, {
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-        },
+      // Try /api/suno/fetch first (API.box primary), fallback to /api/v1/generate/record-info
+      let res = await fetch(`${apiUrl}/api/suno/fetch?taskId=${taskId}`, {
+        headers: { Authorization: `Bearer ${apiKey}` },
       });
 
-      if (!res.ok) {
-        // Try alternative endpoint /api/suno/fetch
-        const altRes = await fetch(`${apiUrl}/api/suno/fetch?taskId=${taskId}`, {
+      if (res.status === 404) {
+        res = await fetch(`${apiUrl}/api/v1/generate/record-info?taskId=${taskId}`, {
           headers: { Authorization: `Bearer ${apiKey}` },
         });
+      }
 
-        if (altRes.ok) {
-          const altData = await altRes.json();
-          const altRecord = altData.data || altData;
-          const altSuno = altRecord.response?.sunoData || altRecord.sunoData || [];
-          const altItems = Array.isArray(altSuno) ? altSuno : [altSuno];
-          if (altItems.length > 0) {
-            allClips.push(...altItems);
-          } else {
-            allClips.push({
-              id: taskId,
-              status: altRecord.status || "processing",
-              audioUrl: null,
-              title: "",
-              duration: null,
-            });
-          }
-          continue;
-        }
-
+      if (!res.ok) {
+        allClips.push({
+          id: taskId,
+          status: "processing",
+          audioUrl: null,
+          title: "",
+          duration: null,
+        });
         continue;
       }
 
       const data = await res.json();
 
-      // API.box returns { code: 200, data: { taskId, sunoData: [...], status } }
+      // API.box returns { code: 200, data: { taskId, status, response: { sunoData: [...] } } }
       const record = data.data || data;
-      const sunoData = record.sunoData || record.suno_data || [];
+      const sunoData = record.response?.sunoData || record.sunoData || record.suno_data || [];
       const items = Array.isArray(sunoData) ? sunoData : [sunoData];
 
-      if (items.length > 0) {
+      if (items.length > 0 && items[0]?.id) {
         allClips.push(...items);
       } else {
-        // If no sunoData yet, return the task itself with its status
         allClips.push({
           id: taskId,
           status: record.status || "processing",
@@ -113,7 +99,7 @@ export async function GET(req: NextRequest) {
 function mapStatus(status: string | undefined): string {
   if (!status) return "processing";
   const s = status.toLowerCase();
-  if (s === "complete" || s === "completed" || s === "done") return "complete";
+  if (s === "complete" || s === "completed" || s === "done" || s === "success") return "complete";
   if (s === "error" || s === "failed") return "error";
   if (s === "text" || s === "first" || s === "processing" || s === "pending") return "processing";
   return s;
