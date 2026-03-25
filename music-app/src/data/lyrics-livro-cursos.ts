@@ -92,8 +92,8 @@ a sala antiga e a que mais te atrai
 [Chorus]
 Larga a cadeira, abre a janela
 O presente não precisa de permissão
-A liberdade não esta no que viveste
-esta no que fazes com a respiracao
+A liberdade não está no que viveste
+está no que fazes com a respiracao
 
 [Bridge]
 Não es o que te aconteceu
@@ -152,7 +152,7 @@ mora na crença de que nunca basta o pao
 [Chorus]
 Para — não há nada a conquistar
 A plenitude não é uma meta
-Esta aqui, no exacto lugar
+Está aqui, no exacto lugar
 onde largaste a bicicleta
 
 [Bridge]
@@ -301,7 +301,7 @@ o princípio e o presente
 export const CURSO_LYRICS: Record<string, string> = {
 
   // ═══════════════════════════════════════════
-  // OURO PROPRIO — "A tua relacao com dinheiro"
+  // OURO PROPRIO — "A tua relação com dinheiro"
   // Casa dos Espelhos Dourados
   // ═══════════════════════════════════════════
 
@@ -434,9 +434,9 @@ Hoje escolhes o que vales
 não pelo mundo, mas por dentro
 
 [Verse 2]
-O ouro não esta na conta
-não esta no que conquistaste
-Esta na forma como olhas
+O ouro não está na conta
+não está no que conquistaste
+Está na forma como olhas
 para tudo o que criaste
 
 [Chorus]
@@ -594,7 +594,7 @@ ilumina o que ela guardou
 [Chorus]
 Amanhece devagar
 não há pressa em recomeçar
-A árvore esta reorganizada
+A árvore está reorganizada
 e a sombra já não é prisão
 
 [Bridge]
@@ -872,7 +872,7 @@ cada direcao um segredo
 [Verse 2]
 Ficas parada no cruzamento
 a espera que o caminho fale
-Mas o caminho esta em silêncio
+Mas o caminho está em silêncio
 e o medo cresce em cada vale
 
 [Chorus]
@@ -940,7 +940,7 @@ Não precisas de ver tudo
 só o passo seguinte basta
 
 [Bridge]
-O nevoeiro esta a levantar
+O nevoeiro está a levantar
 não porque forcaste a vista
 Mas porque te deixaste estar
 e a verdade fez-se conquista
@@ -1122,7 +1122,7 @@ Mas o corpo sabia a verdade —
 cada sim custava uma peça tua inteira
 
 [Chorus]
-Sem muralha, sem proteccao
+Sem muralha, sem protecção
 o vento leva tudo o que tens
 A bondade sem limite
 e uma forma de sumir também
@@ -1382,7 +1382,7 @@ Olha para o que carregas
 e pergunta se e teu de facto
 
 [Outro]
-O caminho esta cheio de pedras
+O caminho está cheio de pedras
 mas nenhuma te pertence por lei
 `,
 
@@ -1481,7 +1481,7 @@ the stones remain but you do not
   // ═══════════════════════════════════════════
 
   "curso-voz-dentro/1": `[Verse 1]
-A sala esta vazia como o mar
+A sala está vazia como o mar
 as paredes esperam um som
 Sentaste-te no centro do silêncio
 e o silêncio fez-se teu tom
@@ -1495,8 +1495,8 @@ com a voz de todos menos tu no po
 [Chorus]
 O silêncio não é ausência
 e o espaço antes da verdade
-A sala vazia não esta vazia
-esta cheia da tua vontade
+A sala vazia não está vazia
+está cheia da tua vontade
 
 [Bridge]
 Não forces o primeiro som
@@ -1506,7 +1506,7 @@ e o ventre da tua resposta
 
 [Outro]
 A sala espera sem pressa
-o primeiro som sera teu
+o primeiro som será teu
 Como a chuva que espera a nuvem
 a tua voz espera o teu céu
 `,
@@ -1560,7 +1560,7 @@ sem te corrigires, sem meia
 
 [Bridge]
 Fala como falas sozinha
-quando ninguém te esta a ouvir
+quando ninguém te está a ouvir
 E essa a voz que procuravas
 e essa a voz que quer sair
 
@@ -1601,12 +1601,12 @@ sing, because the song is you
 `,
 
   // ═══════════════════════════════════════════
-  // O FIO INVISIVEL — "A ligacao entre todos nós"
+  // O FIO INVISIVEL — "A ligação entre todos nós"
   // Lago dos Reflexos Partilhados
   // ═══════════════════════════════════════════
 
   "curso-fio-invisivel/1": `[Verse 1]
-O lago esta parado como vidro
+O lago está parado como vidro
 a superficie não mostra nada
 Sozinha na margem do mundo
 sem reflexo e sem pegada
@@ -1620,8 +1620,8 @@ há fios que o silêncio teceu
 [Chorus]
 Superficie opaca
 que esconde o que nós liga
-Um fio invisivel
-que nenhuma distancia obriga
+Um fio invisível
+que nenhuma distância obriga
 
 [Bridge]
 Não precisas de o ver
@@ -1962,8 +1962,8 @@ but with the sound a whole heart makes
   "curso-teia/1": `[Verse 1]
 Fios por todo o lado
 entre arvores escuras
-Cada fio uma ligacao
-cada ligacao uma amarra dura
+Cada fio uma ligação
+cada ligação uma amarra dura
 
 [Verse 2]
 Pertencer custava-te a pele
@@ -2016,7 +2016,7 @@ freedom is choosing how to stay
   "curso-teia/3": `[Verse 1]
 A teia agora e bonita
 fios dourados entre arvores
-Cada ligacao e escolhida
+Cada ligação e escolhida
 cada pertenca sem dores
 
 [Verse 2]
@@ -2075,7 +2075,7 @@ and I belong
   // ═══════════════════════════════════════════
 
   "curso-chama/1": `[Verse 1]
-O vulcao esta selado
+O vulcao está selado
 a superficie negra e fria
 Mandibula cerrada, punhos fechados
 a pressão cresce dia a dia
@@ -2084,7 +2084,7 @@ a pressão cresce dia a dia
 Ensinaram-te que a raiva
 e feia, perigosa e ma
 Entao engoliste o fogo
-e chamaste-lhe calma — mas não esta
+e chamaste-lhe calma — mas não está
 
 [Chorus]
 Selado, selado
@@ -2367,7 +2367,7 @@ through everything unchecked
   "curso-oficio-ser/3": `[Verse 1]
 A oficina agora tem ritmo
 um ritmo que é teu e de mais ninguém
-A janela esta entreaberta
+A janela está entreaberta
 e lá fora há alguém
 
 [Verse 2]
@@ -2434,7 +2434,7 @@ num segundo sem fim
 [Verse 2]
 Corres de estação em estação
 sem parar para ver
-A primavera vira outono
+A primavera virá outono
 antes de a poderes viver
 
 [Chorus]
@@ -2543,7 +2543,7 @@ and neither now does me
   // ═══════════════════════════════════════════
 
   "curso-coroa/1": `[Verse 1]
-O trono esta coberto
+O trono está coberto
 de panos e de medo
 Pequena e encolhida
 viras-lhe as costas cedo
@@ -2660,7 +2660,7 @@ was the closing of your doors
   // ═══════════════════════════════════════════
 
   "curso-fome/1": `[Verse 1]
-A mesa esta vazia
+A mesa está vazia
 o prato não tem nada
 Sentada em frente ao silêncio
 faminta e calada

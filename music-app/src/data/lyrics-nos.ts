@@ -104,7 +104,7 @@ Sem guiao na boca`,
 
   "no-heranca/4": `[Verse 1]
 Guardei palavras como quem guarda porcelana
-Atras do vidro onde ninguém podia tocar
+Atrás do vidro onde ninguém podia tocar
 Cada frase que engoli virou raiz amarga
 Cada verdade que calei virou luar
 
@@ -265,7 +265,7 @@ Para a palavra que vem depois`,
 Pensava que ouvir era esperar o meu momento
 De largar as frases que já trazia ensaiadas
 Ouvir de verdade é terra firme
-E ficar quieto quando a casa esta em chamadas
+E ficar quieto quando a casa está em chamadas
 
 [Chorus]
 Ouvir de verdade não é concordar
@@ -395,7 +395,7 @@ Of keeping count`,
   "no-sacrificio/3": `[Verse 1]
 Não sei receber sem procurar a conta
 Quando me das eu procuro a factura escondida
-Onde esta o preço, qual é a condição
+Onde está o preço, qual é a condição
 O que é que vou pagar com a minha vida
 
 [Chorus]
@@ -609,7 +609,7 @@ Eu sei porque também calei o amor
 [Verse 2]
 Tu vês-me por trás da minha invencao
 Ves a rapariga que fugia para dentro
-Ves o medo que eu chamava de distancia
+Ves o medo que eu chamava de distância
 Ves o fogo que eu chamava de vento
 
 [Bridge]
@@ -734,7 +734,7 @@ Sem agenda, sem redea, sem controlo
 Só eu e o vento que entra e que arrepia
 
 [Chorus]
-Soltar e o gesto mais dificil que há
+Soltar e o gesto mais difícil que há
 Não porque não saibas o caminho
 Mas porque ao soltar descobres enfim
 Que o que seguravas era o teu próprio espinho
@@ -759,7 +759,7 @@ Não se segura —
 Cultiva-se como flor`,
 
   "no-solidao/4": `[Verse 1]
-Já não estou atras de ti nem tu de mim
+Já não estou atrás de ti nem tu de mim
 Já não verifico nem controlo mais a hora
 Estamos no mesmo quarto pela primeira vez
 Sem que ninguém vigie a luz que vai lá fora
@@ -779,7 +779,7 @@ E isso é mais bonito que qualquer discurso
 [Bridge]
 Estar junto sem segurar nem apertar
 É a forma mais madura de se amar
-Não é distancia, não é frieza
+Não é distância, não é frieza
 E confiar no chão que pisamos a par
 
 [Outro]
@@ -901,7 +901,7 @@ In all that open space
 And bloom`,
 
   "no-vazio/3": `[Verse 1]
-O vazio esta aqui e eu não fujo mais
+O vazio está aqui e eu não fujo mais
 Não ligo, não como, não preencho, não distraio
 Sento-me no meio do que falta
 E descubro que o vazio tem o meu tamanho
@@ -958,7 +958,7 @@ E diz eu sei — e mesmo assim estou aqui
 
 [Outro]
 Reencontro
-Não é voltar atras
+Não é voltar atrás
 E caminhar em frente
 Lado a lado
 Com os olhos
@@ -1069,7 +1069,7 @@ Where home is waiting
 With an open door`,
 
   "no-pertenca/3": `[Verse 1]
-A casa esta vazia e eu estou aqui
+A casa está vazia e eu estou aqui
 Com o eco dos meus passos no corredor
 Sem a tua respiracao de noite
 Sem o teu café, sem o teu calor

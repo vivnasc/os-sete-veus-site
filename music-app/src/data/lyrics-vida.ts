@@ -47,7 +47,7 @@ Já não precisa de cara
 
 [Outro]
 Um passo, só um
-O resto vem atras`,
+O resto vem atrás`,
 
   "vida-sangue-aceso/2": `[Verse 1]
 Something shifted in the spine
@@ -357,7 +357,7 @@ Só o corpo, simplesmente
 A barriga sobe e desce
 Como a mare sem lua
 Não há nada que acontece
-Que esta respiracao não sua
+Que está respiracao não sua
 
 [Chorus]
 O corpo respira
@@ -436,7 +436,7 @@ No que eu nunca vi
 
 [Outro]
 Cheio, cheio
-O vazio esta cheio
+O vazio está cheio
 Cheio de mim`,
 
   "vida-silencio-fertil/6": `[Verse 1]
@@ -713,7 +713,7 @@ Mais sagrada
 
 [Outro]
 Pronto
-Esta pronto
+Está pronto
 E eu descanso`,
 
 
@@ -722,7 +722,7 @@ E eu descanso`,
   // ─────────────────────────────────────────────
 
   "vida-rendicao/1": `[Verse 1]
-O telefone vira de face
+O telefone virá de face
 O ecra apaga a sua luz
 O dia pousa com a sua grace
 É o escuro me conduz
@@ -917,7 +917,7 @@ Os passaros cantam seus orgulhos
 Mas eu fico mais uma hora
 
 [Verse 2]
-Atras das palpebras e tudo morno
+Atrás das palpebras e tudo morno
 O nome ainda não voltou
 Não sou mãe nem dona do contorno
 Só o corpo que aqui ficou
@@ -1096,8 +1096,8 @@ Eu preparei-me para te amar
 Antes de te ver
 
 [Outro]
-Esta posta
-A mesa esta posta para ti`,
+Está posta
+A mesa está posta para ti`,
 
   "vida-pao-sal/2": `[Verse 1]
 The pot sits low, the lid askew
@@ -1181,7 +1181,7 @@ The oldest meditation`,
 O cheiro entra antes de mim
 Pela porta mal aberta
 Pao no forno, café sem fim
-A casa esta desperta
+A casa está desperta
 
 [Verse 2]
 Não é o lugar, sao as paredes
@@ -1241,7 +1241,7 @@ We're all here`,
 
   "vida-deriva/1": `[Verse 1]
 A chave roda na fechadura
-A porta fecha atras de mim
+A porta fecha atrás de mim
 O saco pesa a sua ternura
 De quem vai sem saber o fim
 
@@ -1488,7 +1488,7 @@ Electricos antes do choque
 O último centimetro treme
 Como corda de violino
 O ar entre nós e a semente
-De tudo o que sera destino
+De tudo o que será destino
 
 [Chorus]
 O espaço entre
@@ -1497,8 +1497,8 @@ O espaço entre
 E onde o desejo se rebele
 Não toco ainda
 Deixo o ar arder
-A distancia e linda
-Quando esta prestes a morrer
+A distância e linda
+Quando está prestes a morrer
 
 [Outro]
 Quase
@@ -1534,7 +1534,7 @@ Breathe out what I breathe in`,
 As mãos abrem sem reserva
 A pele fala o que eu não sei
 O corpo perde a sua cerca
-E eu entrego-me a esta lei
+E eu entrego-me a está lei
 
 [Verse 2]
 Não há mais máscara nem filtro
@@ -1713,7 +1713,7 @@ Como água que não tem sede
 
 [Chorus]
 A falta
-O peso do que já não esta
+O peso do que já não está
 A falta
 É a sombra mais real que há
 Mais pesada que o corpo
@@ -2075,7 +2075,7 @@ A mão encontra a pedra
 De não se desfazer em pedra
 
 [Outro]
-A pedra esta aqui
+A pedra está aqui
 Eu estou aqui`,
 
   "vida-ancora/6": `[Verse 1]
@@ -2171,7 +2171,7 @@ Não é castigo nem despacho
 O quarto vazio porque eu quis
 A ausência de som como um presente
 O silêncio feliz
-De quem esta inteiramente presente
+De quem está inteiramente presente
 
 [Chorus]
 O silêncio escolhido
@@ -2287,7 +2287,7 @@ A primeira gentileza
 A água quente
 Cura qualquer aspereza
 Não preciso de mais nada
-Que este vapor e esta pele
+Que este vapor e está pele
 A água e a mais sagrada
 Das coisas que o corpo pede
 
@@ -2541,7 +2541,7 @@ O corpo guarda o que a mente diz
 Que não merece mas que nunca escapa
 
 [Verse 2]
-Não é castigo esta marca
+Não é castigo está marca
 E prova de que sobrevivi
 O corpo escreve a sua arca
 Na pele de quem nunca desistiu de si
@@ -2557,7 +2557,7 @@ A cicatriz e o titulo
 Do livro que a vida me contou
 
 [Outro]
-Esta cicatriz
+Está cicatriz
 E minha e eu fico com ela`,
 
   "vida-rescaldo/6": `[Verse 1]
@@ -2600,7 +2600,7 @@ A palavra mais simples do momento
 Obrigada ao corpo que me trouxe
 Obrigada ao pao que está na mesa
 Obrigada a manhã que me ouve
-Obrigada a esta natureza
+Obrigada a está natureza
 
 [Chorus]
 Obrigada
@@ -2608,7 +2608,7 @@ A palavra mais pesada
 Obrigada
 Quando e dita com a alma toda
 Não há ritual mais puro
-Que esta silaba na boca
+Que está silaba na boca
 Obrigada ao futuro
 É a cada coisa que me toca
 
@@ -2656,7 +2656,7 @@ Que só as mãos no peito transporta
 
 [Chorus]
 Mãos no peito
-Sinto o que lá esta
+Sinto o que lá está
 Mãos no peito
 E tanto, tanto já
 Não preciso de templo
@@ -2761,7 +2761,7 @@ Everything I am`,
   "vida-linhagem/1": `[Verse 1]
 As mãos amassam como as dela
 O pulso gira no mesmo angulo
-Não aprendi esta maneira bela
+Não aprendi está maneira bela
 O sangue já sabia o vocabulo
 
 [Verse 2]
@@ -3023,7 +3023,7 @@ Let it go
 Let the water leave`,
 
   "vida-mare-viva/5": `[Verse 1]
-O fundo do mar esta exposto
+O fundo do mar está exposto
 As conchas, as criaturas, o chão
 O vazio mostra o seu rosto
 E não é feio, e clarificacao
@@ -3102,7 +3102,7 @@ Tudo volta a casa`,
 
 
   // ─────────────────────────────────────────────
-  // DESCALCA (celebrar, dancar, alegria)
+  // DESCALCA (celebrar, dançar, alegria)
   // ─────────────────────────────────────────────
 
   "vida-descalca/1": `[Verse 1]
@@ -3117,7 +3117,7 @@ O chão é teu, a noite é tua
 Tira os sapatos
 A liberdade é nua
 Os pés sabem o que a cabeça esquece
-Que a terra esta aqui em baixo
+Que a terra está aqui em baixo
 É o corpo agradece
 Cada passo descalco
 
@@ -3243,7 +3243,7 @@ Barefoot and infinite`,
 
   "vida-brasa-lenta/1": `[Verse 1]
 As mãos pousam no colo sem pressa
-A decisão ainda não esta pronta
+A decisão ainda não está pronta
 A paciência não é fraqueza
 É a força que ninguém conta
 
@@ -3362,7 +3362,7 @@ Embers
 The warmth that stays`,
 
   // ─────────────────────────────────────────────
-  // RAIZ MUDA (crescimento invisivel)
+  // RAIZ MUDA (crescimento invisível)
   // ─────────────────────────────────────────────
 
   "vida-raiz-muda/1": `[Verse 1]
@@ -3447,7 +3447,7 @@ Seeds just know`,
 
   "vida-raiz-muda/5": `[Verse 1]
 A fenda no solo onde o verde empurra
-A folha impossivel que moveu terra
+A folha impossível que moveu terra
 O primeiro sinal depois da penumbra
 Pequeno e frágil mas que nunca erra
 
