@@ -155,7 +155,8 @@ const FLAVOR_MODIFIERS: Record<TrackFlavor, string> = {
 function buildPromptWithFlavor(basePrompt: string, flavor: TrackFlavor | null): string {
   if (!flavor) return basePrompt;
   const mod = FLAVOR_MODIFIERS[flavor];
-  return mod ? `${basePrompt} ${mod}` : basePrompt;
+  // Flavor goes FIRST so it's not cut off by style condensing (200 char limit)
+  return mod ? `${mod} ${basePrompt}` : basePrompt;
 }
 
 // Retrocompatibilidade: BASE_STYLE = whisper (o default anterior)

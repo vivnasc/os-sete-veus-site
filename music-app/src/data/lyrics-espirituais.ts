@@ -1703,7 +1703,7 @@ e encontro quem lá ficou
 [Bridge]
 O mundo pede-te aberta
 o ritual pede-te fechada
-Só um momento, só uma respiracao
+Só um momento, só uma respiração
 e tu de volta — sem desconto, sem fachada
 
 [Outro]
@@ -2082,7 +2082,7 @@ Cabe tudo — sempre coube
 cabe tudo — dentro de mim
 
 [Verse 3]
-Cada respiracao e um universo
+Cada respiração e um universo
 a expandir sem pedir licença
 O corpo é o vaso maior
 que a mente jamais compreenca
@@ -2971,7 +2971,7 @@ O altar sou eu — esse e o inicio
 
 [Verse 3]
 Este corpo é o lugar mais real
-Está respiracao e o ritual
+Está respiração e o ritual
 Não preciso de aprovacao
 Para entrar na minha catedral
 
@@ -4297,7 +4297,7 @@ Era o espaço que eu deixava pouco a pouco
 [Bridge]
 Sente o vazio no esterno
 Não o empurres para longe
-É a respiracao que não se completa
+É a respiração que não se completa
 É o lugar onde o sagrado te esconde
 
 [Outro]
@@ -4312,7 +4312,7 @@ o corpo simplesmente abriu
 e tomou o que era teu
 
 [Verse 2]
-A respiracao não pede
+A respiração não pede
 não explica e não espera
 acontece enquanto dormes
 enquanto choras enquanto ceras

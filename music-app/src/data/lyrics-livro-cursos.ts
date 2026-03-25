@@ -36,7 +36,7 @@ e descobres que es tu a vela
 [Bridge]
 Não há mapa para este trilho
 não há guia que va a frente
-Só a tua respiracao
+Só a tua respiração
 e o silêncio que consente
 
 [Outro]
@@ -93,7 +93,7 @@ a sala antiga e a que mais te atrai
 Larga a cadeira, abre a janela
 O presente não precisa de permissão
 A liberdade não está no que viveste
-está no que fazes com a respiracao
+está no que fazes com a respiração
 
 [Bridge]
 Não es o que te aconteceu
@@ -867,7 +867,7 @@ you're the version that the flames believed through
 O nevoeiro e tão espesso
 que as mãos não veem os dedos
 Cada passo é um acto de fé
-cada direcao um segredo
+cada direcção um segredo
 
 [Verse 2]
 Ficas parada no cruzamento
@@ -931,7 +931,7 @@ com a paciência da evidencia
 Primeiro vem os contornos
 depois as cores, depois o chão
 A clareza não chega de repente
-chega como a respiracao
+chega como a respiração
 
 [Chorus]
 A clareza não é uma explosao

@@ -289,7 +289,7 @@ Rest now`,
   "vida-silencio-fertil/1": `[Verse 1]
 Sento-me no chão
 Os joelhos tocam a terra
-A coluna encontra a direcao
+A coluna encontra a direcção
 Que o dia inteiro enterra
 
 [Verse 2]
@@ -357,7 +357,7 @@ Só o corpo, simplesmente
 A barriga sobe e desce
 Como a mare sem lua
 Não há nada que acontece
-Que está respiracao não sua
+Que está respiração não sua
 
 [Chorus]
 O corpo respira
@@ -698,7 +698,7 @@ Algo que ontem não tinha lugar
 [Verse 2]
 Não há aplausos nem plateia
 Só o silêncio de quem fez
-A satisfacao que se ateia
+A satisfação que se ateia
 Na certeza de cada vez
 
 [Chorus]
@@ -835,7 +835,7 @@ A gravidade e uma ternura
 As pernas afundam na terra
 Os dedos perdem a vontade
 O peito encontra a sua serra
-De respiracao e saudade
+De respiração e saudade
 
 [Chorus]
 O peso bom
@@ -1018,7 +1018,7 @@ And the day begins`,
 De pé junto a janela
 A chávena quente na mão
 O dia estica a sua tela
-E eu escolho a direcao
+E eu escolho a direcção
 
 [Verse 2]
 Não é uma lista nem um plano
@@ -1028,7 +1028,7 @@ Para o norte do coração
 
 [Chorus]
 Intencao
-Sem força, só direcao
+Sem força, só direcção
 Intencao
 A bussola sem pressão
 Aponto para onde quero ir
@@ -1607,7 +1607,7 @@ Que hoje era o dia da inundacao
 
 [Chorus]
 Permissao
-Para desabar sem explicacao
+Para desabar sem explicação
 Permissao
 Para ser a chuva e a inundacao
 Não é fraqueza, não é derrota
@@ -2973,7 +2973,7 @@ Completely full`,
   "vida-mare-viva/3": `[Verse 1]
 No topo da onda o tempo para
 O corpo pesa zero entre dois mundos
-A respiracao suspende a sua cara
+A respiração suspende a sua cara
 E tudo fica imove nós segundos
 
 [Verse 2]
@@ -3040,7 +3040,7 @@ O chão depois da água ir
 Vazio fértil
 Onde tudo vai vir
 Não é falta, e espaço
-Não é perda, e preparacao
+Não é perda, e preparação
 O vazio é o braco
 Que se abre para a estação
 
@@ -3641,7 +3641,7 @@ Todas nós`,
 
   "vida-penumbra/1": `[Verse 1]
 O último azul antes do preto
-O céu segura a respiracao
+O céu segura a respiração
 As formas existem sem projecto
 Entre a luz é a escuridão
 
