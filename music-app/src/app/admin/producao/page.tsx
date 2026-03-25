@@ -74,6 +74,8 @@ type GeneratedClips = {
   clips: SunoClip[];
 };
 
+type VersionInfo = { name: string; audioUrl: string; energy: string };
+
 function trackKey(albumSlug: string, trackNum: number) {
   return `${albumSlug}-t${trackNum}`;
 }
@@ -254,7 +256,7 @@ function ClipApprovalRow({
   clip: SunoClip;
   clipIndex: number;
   hasMainAudio: boolean;
-  existingVersions: string[];
+  existingVersions: VersionInfo[];
   trackEnergy: string;
   onApproveMain: () => void;
   onApproveVersion: (name: string, energy: string) => void;
@@ -263,7 +265,7 @@ function ClipApprovalRow({
   const [versionName, setVersionName] = useState(`suno-v${clipIndex + 1}`);
   const [energy, setEnergy] = useState(trackEnergy || "whisper");
 
-  const nameExists = existingVersions.includes(versionName);
+  const nameExists = existingVersions.some(v => v.name === versionName);
 
   return (
     <div className="rounded-lg border border-mundo-muted-dark/20 bg-mundo-bg/50 p-3">
@@ -391,7 +393,7 @@ function TrackRow({
   onApproveAsVersion: (clipUrl: string, sunoTitle: string, versionName: string, energy: string, imageUrl?: string | null) => void;
   onUploadVersion: (file: File, versionName: string, energy: string, coverFile?: File | null) => void;
   audioUrl: string | null;
-  existingVersions: string[];
+  existingVersions: VersionInfo[];
   generatedClips: GeneratedClips | null;
   editedTitle: string | null;
   onTitleChange: (title: string) => void;
@@ -501,11 +503,15 @@ function TrackRow({
           {/* Existing versions + add more */}
           <div className="mt-2">
             {existingVersions.length > 0 && (
-              <div className="flex flex-wrap gap-1 mb-2">
+              <div className="space-y-2 mb-2">
                 {existingVersions.map((v) => (
-                  <span key={v} className="rounded bg-violet-900/30 px-2 py-0.5 text-[10px] text-violet-400">
-                    {v}
-                  </span>
+                  <div key={v.name} className="rounded-lg border border-violet-900/20 bg-violet-950/10 p-2">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="rounded bg-violet-900/30 px-2 py-0.5 text-[10px] text-violet-400">{v.name}</span>
+                      {v.energy && <span className="text-[9px] text-mundo-muted">{v.energy}</span>}
+                    </div>
+                    {v.audioUrl && <MiniPlayer src={v.audioUrl} />}
+                  </div>
                 ))}
               </div>
             )}
@@ -541,7 +547,7 @@ function TrackRow({
                     className="flex-1 rounded bg-mundo-bg px-2 py-1 text-xs text-mundo-creme border border-mundo-muted-dark/30 focus:border-violet-500 focus:outline-none"
                   />
                 </div>
-                {existingVersions.includes(versionUploadName) && (
+                {existingVersions.some(v => v.name === versionUploadName) && (
                   <p className="text-[10px] text-amber-400">"{versionUploadName}" já existe — será substituída.</p>
                 )}
                 <div className="flex gap-1">
@@ -707,7 +713,7 @@ export default function AlbumProductionPage() {
   const [audioUrls, setAudioUrls] = useState<Record<string, string>>({});
   const [generatedClips, setGeneratedClips] = useState<Record<string, GeneratedClips>>({});
   const [editedTitles, setEditedTitles] = useState<Record<string, string>>({});
-  const [trackVersions, setTrackVersions] = useState<Record<string, string[]>>({}); // key → version names
+  const [trackVersions, setTrackVersions] = useState<Record<string, VersionInfo[]>>({}); // key → versions
   const [sunoModel, setSunoModel] = useState("V4_5");
   const pollingRef = useRef<Record<string, NodeJS.Timeout>>({});
   const titleSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
@@ -752,11 +758,11 @@ export default function AlbumProductionPage() {
       .then((r) => r.json())
       .then((data) => {
         if (data.versions) {
-          const vMap: Record<string, string[]> = {};
-          for (const v of data.versions as { album_slug: string; track_number: number; version_name: string }[]) {
+          const vMap: Record<string, VersionInfo[]> = {};
+          for (const v of data.versions as { album_slug: string; track_number: number; version_name: string; audio_url: string; energy: string }[]) {
             const key = `${v.album_slug}-t${v.track_number}`;
             if (!vMap[key]) vMap[key] = [];
-            vMap[key].push(v.version_name);
+            vMap[key].push({ name: v.version_name, audioUrl: v.audio_url, energy: v.energy });
           }
           setTrackVersions(vMap);
         }
@@ -1013,8 +1019,8 @@ export default function AlbumProductionPage() {
       // Update local version list
       setTrackVersions((v) => {
         const existing = v[key] || [];
-        if (!existing.includes(versionName)) {
-          return { ...v, [key]: [...existing, versionName] };
+        if (!existing.some(e => e.name === versionName)) {
+          return { ...v, [key]: [...existing, { name: versionName, audioUrl: uploadUrl, energy }] };
         }
         return v;
       });
@@ -1074,8 +1080,8 @@ export default function AlbumProductionPage() {
       // Update local version list
       setTrackVersions((v) => {
         const existing = v[key] || [];
-        if (!existing.includes(versionName)) {
-          return { ...v, [key]: [...existing, versionName] };
+        if (!existing.some(e => e.name === versionName)) {
+          return { ...v, [key]: [...existing, { name: versionName, audioUrl: uploadUrl, energy }] };
         }
         return v;
       });
