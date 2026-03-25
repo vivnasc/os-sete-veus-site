@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { SUPABASE_URL } from "@/lib/supabase-server";
+import { createClient } from "@supabase/supabase-js";
 
 const BUCKET = "audios";
 
@@ -7,6 +8,8 @@ const BUCKET = "audios";
  * Proxy de streaming de audio.
  * Esconde o URL real do Supabase e adiciona headers anti-download.
  * GET /api/music/stream?album=espelho-ilusao&track=1
+ *
+ * Tries main file first (faixa-01.mp3), then falls back to first version.
  */
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
@@ -17,20 +20,40 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "album e track obrigatorios" }, { status: 400 });
   }
 
-  // Sanitize inputs
   const safeAlbum = album.replace(/[^a-z0-9-]/g, "");
   const safeTrack = String(parseInt(track, 10)).padStart(2, "0");
-
-  const storageUrl = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/albums/${safeAlbum}/faixa-${safeTrack}.mp3`;
-
   const rangeHeader = req.headers.get("range");
+  const fetchHeaders: HeadersInit = {};
+  if (rangeHeader) fetchHeaders["Range"] = rangeHeader;
 
-  const headers: HeadersInit = {};
-  if (rangeHeader) {
-    headers["Range"] = rangeHeader;
+  // Try main file first
+  const mainUrl = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/albums/${safeAlbum}/faixa-${safeTrack}.mp3`;
+  let upstream = await fetch(mainUrl, { headers: fetchHeaders });
+
+  // If main file doesn't exist, try to find a version
+  if (!upstream.ok && upstream.status !== 206) {
+    try {
+      const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+      const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+      if (url && key) {
+        const supabase = createClient(url, key);
+        const { data: files } = await supabase.storage
+          .from(BUCKET)
+          .list(`albums/${safeAlbum}`, { limit: 50 });
+
+        const versionFile = files?.find(f =>
+          f.name.startsWith(`faixa-${safeTrack}-`) && f.name.endsWith(".mp3")
+        );
+
+        if (versionFile) {
+          const versionUrl = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/albums/${safeAlbum}/${versionFile.name}`;
+          upstream = await fetch(versionUrl, { headers: fetchHeaders });
+        }
+      }
+    } catch {
+      // fallback silently
+    }
   }
-
-  const upstream = await fetch(storageUrl, { headers });
 
   if (!upstream.ok && upstream.status !== 206) {
     return NextResponse.json({ error: "Áudio não encontrado" }, { status: 404 });
@@ -39,12 +62,10 @@ export async function GET(req: NextRequest) {
   const responseHeaders = new Headers();
   responseHeaders.set("Content-Type", "audio/mpeg");
   responseHeaders.set("Accept-Ranges", "bytes");
-  responseHeaders.set("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+  responseHeaders.set("Cache-Control", "public, max-age=3600");
   responseHeaders.set("Content-Disposition", "inline");
-  // Prevent embedding/hotlinking
   responseHeaders.set("X-Content-Type-Options", "nosniff");
 
-  // Forward range headers for seeking
   const contentRange = upstream.headers.get("content-range");
   if (contentRange) responseHeaders.set("Content-Range", contentRange);
   const contentLength = upstream.headers.get("content-length");
