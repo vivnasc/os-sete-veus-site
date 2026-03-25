@@ -9,7 +9,7 @@ export const ESPELHO_LYRICS: Record<string, string> = {
   // ESPELHO DA ILUSAO (Véu 1 — awakening from illusion)
   // ─────────────────────────────────────────────
 
-  "espelho-ilusão/1": `[Verse 1]
+  "espelho-ilusao/1": `[Verse 1]
 A manhã entra de mansinho
 Pela fresta da persiana
 O meu corpo já conhece o caminho
@@ -52,7 +52,7 @@ Estou a acordar
 Devagar, devagar
 Estou a acordar`,
 
-  "espelho-ilusão/2": `[Verse 1]
+  "espelho-ilusao/2": `[Verse 1]
 I learned to smile before I learned to speak
 Wore my mother's worry like a chain
 Good girl, don't ask, don't wander, don't be weak
@@ -90,7 +90,7 @@ Stitch by stitch I find there's nothing wrong
 Underneath the coat, beneath it all
 I've been here all along`,
 
-  "espelho-ilusão/3": `[Verse 1]
+  "espelho-ilusao/3": `[Verse 1]
 Gira a chave, gira a mao
 Gira o dia sempre igual
 Gira a roda, gira o chão
@@ -134,7 +134,7 @@ Parei
 Parei
 E era eu`,
 
-  "espelho-ilusão/4": `[Verse 1]
+  "espelho-ilusao/4": `[Verse 1]
 O café arrefece entre as mãos
 A cozinha cheira a sempre
 Lembro-me de hortelã e limão
@@ -174,7 +174,7 @@ Vejo-o descer, desaparecer
 E as minhas mãos ficam a tremer
 Com a leveza de não ter`,
 
-  "espelho-ilusão/5": `[Verse 1]
+  "espelho-ilusao/5": `[Verse 1]
 My shoulders held it first, the ache
 Before I had a word for pain
 My ribs remembered what I lost
@@ -218,7 +218,7 @@ Feel the drum beneath the bone
 That's the rhythm of the truth
 You were never meant to carry alone`,
 
-  "espelho-ilusão/6": `[Verse 1]
+  "espelho-ilusao/6": `[Verse 1]
 A chuva cai e não tem pressa
 A lua nasce sem pedir licença
 A árvore não força a flor
@@ -262,7 +262,7 @@ Quieta como a manhã
 Fico aqui
 E deixo-me chegar`,
 
-  "espelho-ilusão/7": `[Verse 1]
+  "espelho-ilusao/7": `[Verse 1]
 Eu vi, eu vi
 O que não se pode des-ver
 O pano caiu no chão
@@ -1612,7 +1612,7 @@ Para deixar florescer`,
   // ESPELHO DA SEPARACAO (Véu 7 — distancing from yourself to belong)
   // ─────────────────────────────────────────────
 
-  "espelho-separação/1": `[Verse 1]
+  "espelho-separacao/1": `[Verse 1]
 Arredondei os cantos para caber na porta
 Limei as arestas para não magoar
 Fiz-me de água para caber no copo
@@ -1646,7 +1646,7 @@ Como a mare que sobe sem aviso
 Devagar, sem pedir licença
 Ao tamanho que sempre foi preciso`,
 
-  "espelho-separação/2": `[Verse 1]
+  "espelho-separacao/2": `[Verse 1]
 We share the bread, we share the bed
 We share the silence and the rain
 You know the way I like my tea
@@ -1680,7 +1680,7 @@ Or alone with grace
 But not this gentle war
 This almost-touching empty space`,
 
-  "espelho-separação/3": `[Verse 1]
+  "espelho-separacao/3": `[Verse 1]
 Há uma pergunta guardada há anos
 No fundo da gaveta dos lençóis
 Debaixo da rotina e dos enganos
@@ -1715,7 +1715,7 @@ Por este suspiro
 Por esta pergunta
 Que finalmente saiu`,
 
-  "espelho-separação/4": `[Verse 1]
+  "espelho-separacao/4": `[Verse 1]
 Não é um muro, e uma varanda
 De onde eu te vejo inteiro e tu me ves
 Não é uma fuga, e uma dança
@@ -1749,7 +1749,7 @@ Separar não é o fim
 Como duas luzes juntas
 Que brilham mais por ser`,
 
-  "espelho-separação/5": `[Verse 1]
+  "espelho-separacao/5": `[Verse 1]
 I opened up my hands and watched
 The autumn leaves come tumbling down
 The roles I wore like winter coats
@@ -1787,7 +1787,7 @@ Is mine forever
 What remains
 Is all`,
 
-  "espelho-separação/6": `[Verse 1]
+  "espelho-separacao/6": `[Verse 1]
 Há um caminho entre as costelas
 Que da para um sitio que eu conheco
 Um lugar com cheiro a terra molhada
@@ -1823,7 +1823,7 @@ Finalmente amada
 Por quem mais importa
 Por mim`,
 
-  "espelho-separação/7": `[Verse 1]
+  "espelho-separacao/7": `[Verse 1]
 Sete vezes a luz tentou entrar
 Sete vezes eu fechei a cortina
 Sete camadas de tecido fino

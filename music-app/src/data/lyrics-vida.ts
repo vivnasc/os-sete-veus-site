@@ -286,7 +286,7 @@ Rest now`,
   // SILÊNCIO FERTIL (meditação, pausa)
   // ─────────────────────────────────────────────
 
-  "vida-silêncio-fértil/1": `[Verse 1]
+  "vida-silencio-fertil/1": `[Verse 1]
 Sento-me no chão
 Os joelhos tocam a terra
 A coluna encontra a direcao
@@ -316,7 +316,7 @@ Só o agora a acontecer
 Sentada, cheguei
 Sentada, estou aqui`,
 
-  "vida-silêncio-fértil/2": `[Verse 1]
+  "vida-silencio-fertil/2": `[Verse 1]
 The ripples slow and slow and slow
 The surface finds its glass
 The thoughts that tumbled to and fro
@@ -347,7 +347,7 @@ Is written on the water's face
 [Outro]
 Still, still, still water`,
 
-  "vida-silêncio-fértil/3": `[Verse 1]
+  "vida-silencio-fertil/3": `[Verse 1]
 As costelas abrem como portas
 O ar entra frio e sai quente
 Não há mais palavras mortas
@@ -380,7 +380,7 @@ Inspira
 Expira
 Só isto`,
 
-  "vida-silêncio-fértil/4": `[Verse 1]
+  "vida-silencio-fertil/4": `[Verse 1]
 Between one thought and the next
 A gap opens like a door
 In that silence, nothing's vexed
@@ -412,7 +412,7 @@ In the everything silence gives
 Between, between
 The peace between`,
 
-  "vida-silêncio-fértil/5": `[Verse 1]
+  "vida-silencio-fertil/5": `[Verse 1]
 Pensei que estava vazio
 Sentei e esperei o pior
 Mas o vazio era um rio
@@ -439,7 +439,7 @@ Cheio, cheio
 O vazio esta cheio
 Cheio de mim`,
 
-  "vida-silêncio-fértil/6": `[Verse 1]
+  "vida-silencio-fertil/6": `[Verse 1]
 A bell rings through the fog
 A single note, a golden thread
 It finds me in the inner bog
@@ -465,7 +465,7 @@ From the silence unfurled
 I'm here
 The bell brought me here`,
 
-  "vida-silêncio-fértil/7": `[Verse 1]
+  "vida-silencio-fertil/7": `[Verse 1]
 Não há lugar para ir
 Não há nada para consertar
 O corpo pode existir
@@ -492,7 +492,7 @@ Nada para fazer
 Nada para ser
 Só estar`,
 
-  "vida-silêncio-fértil/8": `[Verse 1]
+  "vida-silencio-fertil/8": `[Verse 1]
 Fingers move, the blood returns
 Eyelids flutter to the light
 The room I left só long ago
@@ -2109,7 +2109,7 @@ I am solid ground`,
   // COMPANHIA PROPRIA (solidão escolhida)
   // ─────────────────────────────────────────────
 
-  "vida-companhia-própria/1": `[Verse 1]
+  "vida-companhia-propria/1": `[Verse 1]
 A mesa tem um prato só
 Um guardanapo, um copo, uma vela
 O empregado não sentiu do
@@ -2135,7 +2135,7 @@ Só com o meu calor
 Uma mesa
 Uma paz`,
 
-  "vida-companhia-própria/2": `[Verse 1]
+  "vida-companhia-propria/2": `[Verse 1]
 I make my own rain, my own shine
 My own wind that clears the sky
 I don't need another's sign
@@ -2161,7 +2161,7 @@ My own specific shade of grey
 My weather
 My world`,
 
-  "vida-companhia-própria/3": `[Verse 1]
+  "vida-companhia-propria/3": `[Verse 1]
 O telefone virado para baixo
 O silêncio que escolhi de propósito
 Não é castigo nem despacho
@@ -2187,7 +2187,7 @@ Só a minha própria canção
 Escolhi o silêncio
 E ele escolheu-me a mim`,
 
-  "vida-companhia-própria/4": `[Verse 1]
+  "vida-companhia-propria/4": `[Verse 1]
 I walk through my apartment slow
 I touch the walls, I fix the frames
 This room is full of what I know
@@ -2213,7 +2213,7 @@ And I am here by choice
 Full room
 Full life`,
 
-  "vida-companhia-própria/5": `[Verse 1]
+  "vida-companhia-propria/5": `[Verse 1]
 A vela acesa, o prato feito
 A música que eu escolhi
 Jantar sozinha e um direito
@@ -2239,7 +2239,7 @@ E eu sou o meu próprio caminho
 Só eu e o prato
 E e o suficiente`,
 
-  "vida-companhia-própria/6": `[Verse 1]
+  "vida-companhia-propria/6": `[Verse 1]
 I sat on the edge of the bed tonight
 And something landed in my chest
 Not sadness, something else, a light

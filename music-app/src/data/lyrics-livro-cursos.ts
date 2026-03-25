@@ -305,7 +305,7 @@ export const CURSO_LYRICS: Record<string, string> = {
   // Casa dos Espelhos Dourados
   // ═══════════════════════════════════════════
 
-  "curso-ouro-próprio/1": `[Verse 1]
+  "curso-ouro-proprio/1": `[Verse 1]
 Há uma sala cheia de espelhos
 onde o teu valor se reflecte
 Cada moldura tem um preço
@@ -336,7 +336,7 @@ O ouro sempre esteve dentro
 do peito que abandonavas
 `,
 
-  "curso-ouro-próprio/2": `[Verse 1]
+  "curso-ouro-proprio/2": `[Verse 1]
 The numbers sit there on the page
 like witnesses that cannot lie
 You learned to look the other way
@@ -367,7 +367,7 @@ They're just the footprints of your living
 not the verdict — just the how
 `,
 
-  "curso-ouro-próprio/3": `[Verse 1]
+  "curso-ouro-proprio/3": `[Verse 1]
 A tua mãe guardava moedas
 dentro de uma lata velha
 O teu pai nunca falou de contas
@@ -396,7 +396,7 @@ As raízes sao tuas
 mas a árvore podes escolher
 `,
 
-  "curso-ouro-próprio/4": `[Verse 1]
+  "curso-ouro-proprio/4": `[Verse 1]
 You were taught that wanting more
 was greedy, selfish, out of line
 That good women live with less
@@ -427,7 +427,7 @@ Like sunlight on an open palm
 it comes to those who let it through
 `,
 
-  "curso-ouro-próprio/5": `[Verse 1]
+  "curso-ouro-proprio/5": `[Verse 1]
 O espelho velho já não serve
 o reflexo era de outra era
 Hoje escolhes o que vales
@@ -1357,7 +1357,7 @@ the garden lives because you stayed
   // Caminho de Pedras
   // ═══════════════════════════════════════════
 
-  "curso-peso-chão/1": `[Verse 1]
+  "curso-peso-chao/1": `[Verse 1]
 Há pedras nós teus ombros
 que carregas há tanto tempo
 que já não sabes se sao tuas
@@ -1386,7 +1386,7 @@ O caminho esta cheio de pedras
 mas nenhuma te pertence por lei
 `,
 
-  "curso-peso-chão/2": `[Verse 1]
+  "curso-peso-chao/2": `[Verse 1]
 Your spine has curved beneath the load
 your shoulders lean into the wind
 You walk as if the ground might break
@@ -1417,7 +1417,7 @@ Your spine remembers standing tall
 like a tree remembers sky and wind
 `,
 
-  "curso-peso-chão/3": `[Verse 1]
+  "curso-peso-chao/3": `[Verse 1]
 A primeira pedra que pousaste
 fez um som que te assustou
 Tao habituada ao peso estavas
@@ -1446,7 +1446,7 @@ O chão aceita o que pousares
 e tu aceitas ser mais leve
 `,
 
-  "curso-peso-chão/4": `[Verse 1]
+  "curso-peso-chao/4": `[Verse 1]
 The stones lie scattered on the ground
 like monuments to what you bore
 Your shoulders rise, your lungs expand
@@ -1842,7 +1842,7 @@ who finally knows her name
   // Caverna dos Ecos Mudos
   // ═══════════════════════════════════════════
 
-  "curso-silêncio-grita/1": `[Verse 1]
+  "curso-silencio-grita/1": `[Verse 1]
 A caverna e silenciosa
 mas as paredes tem marcas
 Palavras que nunca foram ditas
@@ -1867,7 +1867,7 @@ Um rio que corre por baixo
 e espera por quem lhe de abrigo
 `,
 
-  "curso-silêncio-grita/2": `[Verse 1]
+  "curso-silencio-grita/2": `[Verse 1]
 The first word cracks the silence
 like a stone against the wall
 It echoes through the cavern
@@ -1898,7 +1898,7 @@ The first word held more courage
 than the silence held at all
 `,
 
-  "curso-silêncio-grita/3": `[Verse 1]
+  "curso-silencio-grita/3": `[Verse 1]
 Os ecos tornam-se dourados
 as paredes começam a vibrar
 O que era silêncio pesado
@@ -1923,7 +1923,7 @@ O que era medo de falar
 tornou-se força que germina
 `,
 
-  "curso-silêncio-grita/4": `[Verse 1]
+  "curso-silencio-grita/4": `[Verse 1]
 The walls are singing golden now
 the echoes freed at last
 Each word illuminates the shadow
@@ -2191,7 +2191,7 @@ not women dimming their own light
   // Ninho que Pesa
   // ═══════════════════════════════════════════
 
-  "curso-mulher-mãe/1": `[Verse 1]
+  "curso-mulher-mae/1": `[Verse 1]
 O ninho cresceu a tua volta
 até não se ver mais nada
 Só a mãe — nunca a mulher
@@ -2216,7 +2216,7 @@ Como uma raiz debaixo da neve
 espera a primavera que a inspira
 `,
 
-  "curso-mulher-mãe/2": `[Verse 1]
+  "curso-mulher-mae/2": `[Verse 1]
 Before the nest there was a woman
 with desires of her own
 With dreams that had no children in them
@@ -2245,7 +2245,7 @@ Remember her
 she remembers you
 `,
 
-  "curso-mulher-mãe/3": `[Verse 1]
+  "curso-mulher-mae/3": `[Verse 1]
 Duas formas no mesmo corpo
 mãe e mulher ao mesmo tempo
 Não é preciso escolher
@@ -2270,7 +2270,7 @@ Es as duas coisas
 e isso é o teu poder
 `,
 
-  "curso-mulher-mãe/4": `[Verse 1]
+  "curso-mulher-mae/4": `[Verse 1]
 The nest is whole and beautiful
 with space enough for all of me
 The mother and the woman
@@ -2425,7 +2425,7 @@ I am enough, and that is why
   // Jardim das Estacoes
   // ═══════════════════════════════════════════
 
-  "curso-relógio/1": `[Verse 1]
+  "curso-relogio/1": `[Verse 1]
 O relógio e gigante
 e governa o jardim
 As flores nascem e morrem
@@ -2450,7 +2450,7 @@ Que as flores não precisam de horas
 precisam só de quem as veste
 `,
 
-  "curso-relógio/2": `[Verse 1]
+  "curso-relogio/2": `[Verse 1]
 The clock is cracking now
 its hands are slowing down
 The flowers pause mid-bloom
@@ -2481,7 +2481,7 @@ the garden doesn't need the clock
 to know when flowers wake
 `,
 
-  "curso-relógio/3": `[Verse 1]
+  "curso-relogio/3": `[Verse 1]
 O relógio partiu
 e as estacoes coexistem
 Primavera e outono lado a lado
@@ -2506,7 +2506,7 @@ O presente e tudo o que tens
 e tudo o que podes sentir
 `,
 
-  "curso-relógio/4": `[Verse 1]
+  "curso-relogio/4": `[Verse 1]
 No clock, no rush, no running
 the garden breathes in time
 All seasons live together
