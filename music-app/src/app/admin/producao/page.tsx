@@ -835,9 +835,34 @@ export default function AlbumProductionPage() {
           clearInterval(pollingRef.current[key]);
           delete pollingRef.current[key];
 
+          // Auto-save clips as drafts (never lose generated music)
+          const savedClips = await Promise.all(
+            data.clips.map(async (c: SunoClip, idx: number) => {
+              if (!c.audioUrl) return c;
+              try {
+                const proxyRes = await adminFetch("/api/admin/proxy-download", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ url: c.audioUrl }),
+                });
+                if (proxyRes.ok) {
+                  const blob = await proxyRes.blob();
+                  if (blob.size > 1000) {
+                    const draftName = `drafts/${key}-v${idx + 1}.mp3`;
+                    const draftUrl = await uploadViaSignedUrl(blob, draftName);
+                    return { ...c, audioUrl: draftUrl, _saved: true };
+                  }
+                }
+              } catch {
+                // Draft save failed — keep original Suno URL
+              }
+              return c;
+            })
+          );
+
           setGeneratedClips((g) => ({
             ...g,
-            [key]: { clips: data.clips },
+            [key]: { clips: savedClips },
           }));
           setStatuses((s) => ({ ...s, [key]: "idle" }));
           setErrors((e) => ({ ...e, [key]: "" }));
