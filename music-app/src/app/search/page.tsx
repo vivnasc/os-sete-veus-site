@@ -86,7 +86,6 @@ const MOODS = [
 
 const GENRES = [
   { label: "Organic", slug: "organic" },
-  { label: "Marrabenta", slug: "marrabenta" },
   { label: "Afrobeat", slug: "afrobeat" },
   { label: "Bossa Nova", slug: "bossa" },
   { label: "Jazz", slug: "jazz" },
