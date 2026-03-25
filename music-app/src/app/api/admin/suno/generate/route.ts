@@ -13,7 +13,7 @@ import { requireAdmin } from "@/lib/admin-auth";
  * Non-custom mode: prompt=free description
  */
 
-const MAX_STYLE_LENGTH = 200; // Suno V4 style field limit
+const MAX_STYLE_LENGTH = 400; // API.box accepts up to 500
 const MAX_RETRIES = 2;
 const RETRY_DELAY_MS = 3000;
 
@@ -129,7 +129,7 @@ export async function POST(req: NextRequest) {
     const body: Record<string, unknown> = {
       customMode: hasLyrics,
       instrumental: instrumental ?? false,
-      model: model || "V4_5",
+      model: model || "V5",
       callBackUrl: `${appUrl}/api/admin/suno/callback`,
     };
 
