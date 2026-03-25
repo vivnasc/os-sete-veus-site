@@ -208,7 +208,7 @@ function ClipApprovalRow({
         {clip.title && <span className="text-xs text-mundo-creme">{clip.title}</span>}
         {clip.model && <span className="text-[10px] text-mundo-muted/50">{clip.model}</span>}
       </div>
-      <audio controls src={clip.audioUrl!} className="h-8 w-full mb-2" />
+      <audio controls src={clip.audioUrl!} preload="metadata" className="w-full mb-2" style={{ minHeight: 40 }} />
 
       {mode === "pick" ? (
         <div className="flex items-center gap-2">
