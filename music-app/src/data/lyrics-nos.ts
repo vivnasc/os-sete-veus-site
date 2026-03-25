@@ -167,7 +167,7 @@ Mais leve
 Mais inteiro`,
 
   // ─────────────────────────────────────────────
-  // NO DO SILENCIO (Véu 2 — Rui + Ana)
+  // NO DO SILÊNCIO (Véu 2 — Rui + Ana)
   // O que o medo calou entre eles
   // ─────────────────────────────────────────────
 
@@ -662,7 +662,7 @@ For all the wildflowers
 That bloom within`,
 
   // ─────────────────────────────────────────────
-  // NO DA SOLIDAO (Véu 5 — Isabel + Pedro)
+  // NO DA SOLIDÃO (Véu 5 — Isabel + Pedro)
   // O controlo que isolou quem mais amava
   // ─────────────────────────────────────────────
 

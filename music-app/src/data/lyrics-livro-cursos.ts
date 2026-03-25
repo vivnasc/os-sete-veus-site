@@ -1838,7 +1838,7 @@ who finally knows her name
 `,
 
   // ═══════════════════════════════════════════
-  // O SILENCIO QUE GRITA — "O que nunca foi dito"
+  // O SILÊNCIO QUE GRITA — "O que nunca foi dito"
   // Caverna dos Ecos Mudos
   // ═══════════════════════════════════════════
 
@@ -2421,7 +2421,7 @@ I am enough, and that is why
 `,
 
   // ═══════════════════════════════════════════
-  // O RELOGIO PARTIDO — "Libertar-se do tempo"
+  // O RELÓGIO PARTIDO — "Libertar-se do tempo"
   // Jardim das Estacoes
   // ═══════════════════════════════════════════
 

@@ -283,7 +283,7 @@ Rest now`,
 
 
   // ─────────────────────────────────────────────
-  // SILENCIO FERTIL (meditacao, pausa)
+  // SILÊNCIO FERTIL (meditacao, pausa)
   // ─────────────────────────────────────────────
 
   "vida-silêncio-fértil/1": `[Verse 1]

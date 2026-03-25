@@ -686,7 +686,7 @@ And that is why
 it is só tender`,
 
   // ─────────────────────────────────────────────
-  // ALBUM 5: SILENCIO SAGRADO (fullness of quietude)
+  // ALBUM 5: SILÊNCIO SAGRADO (fullness of quietude)
   // ─────────────────────────────────────────────
 
   "espiritual-silêncio/1": `[Verse 1]
@@ -1552,7 +1552,7 @@ sou a árvore
 sou inteira`,
 
   // ─────────────────────────────────────────────
-  // ALBUM 9: AGUA VIVA (cleansing, rebirth, baptism without church)
+  // ALBUM 9: ÁGUA VIVA (cleansing, rebirth, baptism without church)
   // ─────────────────────────────────────────────
 
   "espiritual-água-viva/1": `[Verse 1]
@@ -2888,7 +2888,7 @@ Enough
 And that is the whole story`,
 
   // ─────────────────────────────────────────────
-  // ALBUM 16: MESMA AGUA (we are all the same water)
+  // ALBUM 16: MESMA ÁGUA (we are all the same water)
   // ─────────────────────────────────────────────
 
   "espiritual-mesma-água/1": `[Verse]
