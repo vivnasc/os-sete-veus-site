@@ -1075,6 +1075,26 @@ const COSMIC_POEIRA: AlbumDef = {
   ],
 };
 
+const COSMIC_VASTO: AlbumDef = {
+  slug: "cosmic-vasto",
+  title: "Vasto",
+  subtitle: "O medo e a beleza de ser pequena. A vertigem de existir.",
+  product: "cosmic",
+  color: "#0a0a2e",
+  tracks: [
+    { number: 1, title: "Vertigem", description: "A vertigem de existir, de olhar para cima", lang: "PT", energy: "steady", prompt: cosmicPrompt("vertigo of existing, looking up at infinite sky", "dizzy, awed, humbled, alive", "swirling textures, building intensity, breathless vocal, cosmic vertigo", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "Small", description: "A beleza de ser pequena, o alívio de não importar", lang: "EN", energy: "whisper", prompt: cosmicPrompt("the beauty of being small, relief of insignificance", "relieved, free, peaceful, amused", "gentle, spacious, soft vocal, minimalist, freedom", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Céu Aberto", description: "Deitar no chão e olhar para o céu até desaparecer", lang: "PT", energy: "whisper", prompt: cosmicPrompt("lying on the ground looking up until you disappear into the sky", "vast, dissolving, peaceful, childlike", "ambient pads, open space, gentle vocal, sky-wide production", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "Infinite Tuesday", description: "O infinito numa terça-feira normal", lang: "EN", energy: "steady", prompt: cosmicPrompt("infinity appearing in the mundane, cosmic experience while peeling an orange", "wry, surprised, ordinary-sacred, warm", "acoustic guitar, conversational vocal, warm, kitchen-cosmic", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Humilde", description: "A humildade como libertação", lang: "PT", energy: "steady", prompt: cosmicPrompt("humility as freedom not weakness, being exactly the right size", "grounded, dignified, free, honest", "earthy rhythm, grounded bass, strong vocal, rooted production", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "The View From Here", description: "A vista do sítio mais pequeno do universo", lang: "EN", energy: "whisper", prompt: cosmicPrompt("seeing earth from space, perspective that makes everything kind", "cosmic perspective, gentle, compassionate, vast", "spacious ambient, distant vocal, cosmic reverb, gentle wonder", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "Grão", description: "Um grão de areia que é o universo inteiro", lang: "PT", energy: "raw", prompt: cosmicPrompt("a grain of sand containing the universe, small is complete", "simple, profound, still, accepting", "minimal, raw vocal, single instrument, vast silence", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 8, title: "Overwhelm", description: "Ser esmagada pela beleza, não pela dor", lang: "EN", energy: "anthem", prompt: cosmicPrompt("overwhelmed by beauty not pain, crying from grace", "overwhelmed, cracked open, grateful, raw", "building from quiet to powerful, swelling strings, cathartic vocal", "EN", "anthem"), durationSeconds: 270, audioUrl: null },
+    { number: 9, title: "Respiro", description: "Uma respiração que contém tudo", lang: "PT", energy: "whisper", prompt: cosmicPrompt("one breath containing everything, breathing as proof of deserving to exist", "meditative, present, grateful, universal", "breath textures, minimal piano, meditative vocal, silence", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 10, title: "Vast", description: "Vasta por dentro, pequena por fora", lang: "EN", energy: "steady", prompt: cosmicPrompt("vast on the inside, small on the outside, inner universe", "vast, contained, powerful, quiet", "deep production, expansive pads, intimate vocal, inner cosmos", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+  ],
+};
+
 const COSMIC_ETER: AlbumDef = {
   slug: "cosmic-eter",
   title: "Éter",
@@ -1178,6 +1198,7 @@ export const ALL_ALBUMS: Album[] = [
   // Romance
   ROMANCE_ALBUM,
   COSMIC_POEIRA,
+  COSMIC_VASTO,
   COSMIC_ETER,
   COSMIC_ORBITA,
 ].map(applyLyrics);

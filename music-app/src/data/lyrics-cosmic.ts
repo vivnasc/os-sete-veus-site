@@ -2581,4 +2581,512 @@ That danced
 That loved
 That was enough`,
 
+  // ─────────────────────────────────────────────
+  // VASTO — O medo e a beleza de ser pequena
+  // ─────────────────────────────────────────────
+
+  "cosmic-vasto/1": `[Verse 1]
+Olhei para cima e o chão fugiu
+O céu não tem fundo e eu também não
+A vertigem de existir
+É a mesma de cair — sem chão
+
+[Verse 2]
+Há tantas estrelas que me dói
+Não o pescoço — o peito
+Tanta beleza junta
+Devia ser defeito
+
+[Chorus]
+Vertigem
+De estar viva sem razão
+Vertigem
+De caber numa mão
+Do universo que não sabe o meu nome
+Que não nota se eu vou
+Vertigem — e é bonita
+Vertigem — e não parou
+
+[Verse 3]
+Não é medo — é espanto
+O corpo a perceber
+Que a vida é uma impossibilidade
+Que acontece sem pedir para ser
+
+[Chorus]
+Vertigem
+De estar viva sem razão
+Vertigem
+De caber numa mão
+Do universo que não sabe o meu nome
+Que não nota se eu vou
+Vertigem — e é bonita
+Vertigem — e não parou
+
+[Bridge]
+E se a vertigem é a resposta
+E se o tonto é o acordado
+E se quem nunca sentiu espanto
+Nunca esteve realmente parado
+
+[Outro]
+Vertigem
+Olho para cima
+E caio
+Para dentro`,
+
+  "cosmic-vasto/2": `[Verse 1]
+I am small enough to sit
+Inside a single beam of light
+Small enough to be forgotten
+By a Tuesday afternoon in sight
+
+[Verse 2]
+My problems fill my skull
+But from the moon they don't exist
+My heartbreak my rent my mother
+The universe would not be missed
+
+[Chorus]
+Small
+And what a relief that is
+Small
+Like the pause inside a kiss
+Not important enough to carry
+The weight of getting it right
+Small — and finally free
+To simply be here tonight
+
+[Verse 3]
+The ant does not apologise
+For being smaller than the tree
+The raindrop does not wish
+To be the sea
+
+[Chorus]
+Small
+And what a relief that is
+Small
+Like the pause inside a kiss
+Not important enough to carry
+The weight of getting it right
+Small — and finally free
+To simply be here tonight
+
+[Bridge]
+The ego wants enormity
+The soul just wants to rest
+Being small is not a failure
+It might be the bravest test
+
+[Outro]
+Small
+Not less
+Just small
+And free`,
+
+  "cosmic-vasto/3": `[Verse 1]
+Deitei-me no chão do quintal
+E deixei o céu entrar
+Primeiro nos olhos
+Depois nos pulmões — depois no lugar
+Onde guardo o que não sei dizer
+
+[Verse 2]
+As nuvens passaram por cima
+Sem pressa e sem destino
+E eu percebi que a minha vida
+Tem o mesmo desenho divino
+
+[Chorus]
+Céu aberto
+Deito-me e desapareço
+Céu aberto
+Quanto mais olho menos peço
+O céu não dá respostas
+Não promete e não consola
+Mas deitar no chão e olhar para cima
+É a minha melhor escola
+
+[Verse 3]
+As crianças fazem isto
+Sem pensar — sem saber porquê
+Deitam-se e olham para o nada
+E o nada ensina-as a ser
+
+[Chorus]
+Céu aberto
+Deito-me e desapareço
+Céu aberto
+Quanto mais olho menos peço
+O céu não dá respostas
+Não promete e não consola
+Mas deitar no chão e olhar para cima
+É a minha melhor escola
+
+[Bridge]
+Não preciso de ir a lado nenhum
+O infinito está aqui em cima
+Basta deitar e abrir os olhos
+Para o mundo perder a sua rima
+
+[Outro]
+Céu aberto
+Chão nas costas
+Nada a fazer
+Tudo a ser`,
+
+  "cosmic-vasto/4": `[Verse 1]
+The infinite showed up on Tuesday
+Between the laundry and the lunch
+Not in a temple or a vision
+Just a quiet cosmic hunch
+
+[Verse 2]
+I was peeling an orange
+When the skin between the world and me
+Got thin enough to notice
+That nothing is what it seemed to be
+
+[Chorus]
+Infinite Tuesday
+The sacred hides in the mundane
+Infinite Tuesday
+The cosmos lives in the plain
+Not in the mountain or the miracle
+But in the peeling of the fruit
+Infinite Tuesday
+The ordinary is the absolute
+
+[Verse 3]
+My daughter asked me why the sky is blue
+I said I don't know — honestly
+And for a moment we both stood there
+Touching infinity
+
+[Chorus]
+Infinite Tuesday
+The sacred hides in the mundane
+Infinite Tuesday
+The cosmos lives in the plain
+Not in the mountain or the miracle
+But in the peeling of the fruit
+Infinite Tuesday
+The ordinary is the absolute
+
+[Bridge]
+You don't need to climb the mountain
+To find what you're looking for
+Sometimes eternity
+Is standing at your kitchen door
+
+[Outro]
+Infinite
+Tuesday
+Just this
+Just here`,
+
+  "cosmic-vasto/5": `[Verse 1]
+A humildade não é curvar
+É abrir os braços ao tamanho real
+Sou pequena — e por isso livre
+Sou pó — e por isso imortal
+
+[Verse 2]
+Não preciso de ser grande
+Não preciso de marcar o mundo
+Preciso de ser honesta
+Com o meu lugar no fundo
+
+[Chorus]
+Humilde
+Não é fraco — é acordado
+Humilde
+É o mais corajoso estado
+Porque é preciso coragem
+Para ser o que se é
+Sem acrescentar, sem inflar
+Humilde — de pé
+
+[Verse 3]
+A montanha não se gaba
+Da sua altura ao sol
+O rio não se queixa
+De correr para baixo — sem farol
+
+[Chorus]
+Humilde
+Não é fraco — é acordado
+Humilde
+É o mais corajoso estado
+Porque é preciso coragem
+Para ser o que se é
+Sem acrescentar, sem inflar
+Humilde — de pé
+
+[Bridge]
+Os maiores mestres que conheci
+Tinham as mãos sujas de terra
+Os menores egos que encontrei
+Eram os que sabiam mais da guerra
+
+[Outro]
+Humilde
+Não é menos
+É exacto
+É real`,
+
+  "cosmic-vasto/6": `[Verse 1]
+From here the earth is a marble
+Blue and white and very small
+From here my house, my street, my grief
+Don't register at all
+
+[Verse 2]
+From here the wars are invisible
+The borders don't exist
+From here the only thing that's real
+Is that the planet is kissed
+By a star that doesn't know its name
+
+[Chorus]
+The view from here
+Is the kindest mirror I've found
+The view from here
+Makes every worry lose its sound
+I am a speck upon a speck
+Upon a speck of light
+The view from here
+Makes everything all right
+
+[Verse 3]
+If I could send this view
+To everyone who's afraid tonight
+This distance, this perspective
+This gentle cosmic sight
+
+[Chorus]
+The view from here
+Is the kindest mirror I've found
+The view from here
+Makes every worry lose its sound
+I am a speck upon a speck
+Upon a speck of light
+The view from here
+Makes everything all right
+
+[Bridge]
+Not because the pain doesn't matter
+But because from far enough away
+Everything looks like it's being held
+By something larger than the day
+
+[Outro]
+The view from here
+So far away
+So held
+So small
+So safe`,
+
+  "cosmic-vasto/7": `[Verse 1]
+Um grão de areia na minha mão
+Contém o mundo inteiro
+A mesma matéria que faz o sol
+Faz este grão — e faz-me a mim primeiro
+
+[Verse 2]
+Não é metáfora nem poesia
+É física — é real
+O pequeno contém o grande
+O particular é universal
+
+[Chorus]
+Grão
+Sou um grão — e isso basta
+Grão
+A praia inteira numa casta
+De areia que não quer ser mais
+Que não quer ser o mar
+Grão — completa
+No acto simples de estar
+
+[Verse 3]
+O universo não precisa
+Que eu seja maior do que sou
+Precisa que eu seja real
+No tamanho que me calhou
+
+[Chorus]
+Grão
+Sou um grão — e isso basta
+Grão
+A praia inteira numa casta
+De areia que não quer ser mais
+Que não quer ser o mar
+Grão — completa
+No acto simples de estar
+
+[Bridge]
+A grandeza não é tamanho
+É presença — é estar aqui
+Um grão presente vale mais
+Que uma montanha a dormir
+
+[Outro]
+Grão
+Presente
+Inteiro
+Aqui`,
+
+  "cosmic-vasto/8": `[Verse 1]
+I stood at the edge of the ocean
+And the beauty broke my chest
+Not gently like a sunrise
+But like something I'd suppressed
+
+[Verse 2]
+The tears came without warning
+Without sadness, without grief
+Just the body overwhelmed
+By something beyond belief
+
+[Chorus]
+Overwhelm
+Not by pain but by beauty
+Overwhelm
+The body doing its duty
+Of feeling everything
+When the mind says stop
+Overwhelm — the crack
+Where the universe gets in through the top
+
+[Verse 3]
+A child being born
+The first snow on the mountain
+A stranger being kind
+For no reason — like a fountain
+
+[Chorus]
+Overwhelm
+Not by pain but by beauty
+Overwhelm
+The body doing its duty
+Of feeling everything
+When the mind says stop
+Overwhelm — the crack
+Where the universe gets in through the top
+
+[Bridge]
+We have a word for being crushed by pain
+But not for being crushed by grace
+And yet the body responds the same
+Tears, shaking, surrender — the same face
+
+[Outro]
+Overwhelmed
+Not by sadness
+By how much
+There is to feel`,
+
+  "cosmic-vasto/9": `[Verse 1]
+Uma respiração contém
+O princípio e o fim do mundo
+Inspiro o que as árvores deram
+Expiro o que elas bebem do fundo
+
+[Verse 2]
+Nesta respiração há espaço
+Para tudo o que sou e não sou
+Para o medo e para a coragem
+Para o antes e para o depois — e para o agora que ficou
+
+[Chorus]
+Respiro
+E o universo entra em mim
+Respiro
+E o universo sai sem fim
+Uma respiração é tudo
+O que preciso para viver
+Uma respiração é prova
+De que eu mereço estar e ser
+
+[Verse 3]
+Os monges contam respirações
+Em vez de anos ou de horas
+E perceberam o que eu agora
+Percebo — que a vida são auroras
+Que entram e saem dos pulmões
+
+[Chorus]
+Respiro
+E o universo entra em mim
+Respiro
+E o universo sai sem fim
+Uma respiração é tudo
+O que preciso para viver
+Uma respiração é prova
+De que eu mereço estar e ser
+
+[Bridge]
+Não preciso de fazer nada
+Para merecer o ar
+Ele entra sem pedir licença
+Eu só preciso de o aceitar
+
+[Outro]
+Respiro
+Uma vez
+É tudo
+É suficiente`,
+
+  "cosmic-vasto/10": `[Verse 1]
+They call the universe vast
+Like it's out there beyond the glass
+But I am vast on the inside
+An ocean no one sees me pass
+
+[Verse 2]
+My thoughts alone could fill a sky
+My grief could drown a moon
+My love could heat a dying star
+My silence — an entire room
+
+[Chorus]
+Vast
+Not out there but in here
+Vast
+Small body holding the frontier
+Between what can be seen
+And what can only be felt
+Vast — the distance between
+My skin and where my soul has dwelt
+
+[Verse 3]
+The telescope points outward
+Looking for the edge of space
+But the deepest universe I know
+Is behind my sleeping face
+
+[Chorus]
+Vast
+Not out there but in here
+Vast
+Small body holding the frontier
+Between what can be seen
+And what can only be felt
+Vast — the distance between
+My skin and where my soul has dwelt
+
+[Bridge]
+Small outside
+Infinite within
+The biggest journey
+Is the one that starts with skin
+
+[Outro]
+Vast
+Inside
+Always
+Vast`,
+
 };
