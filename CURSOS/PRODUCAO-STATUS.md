@@ -22,7 +22,7 @@
 | **Scripts das aulas** | **EM CURSO** | **24/480 scripts escritos (Ouro Proprio completo — DRAFT)** |
 | **Manuais (PDF)** | **EM CURSO** | **1/20 manuais escritos (Ouro Proprio — DRAFT) + pipeline PDF** |
 | **Cadernos exercicios** | **EM CURSO** | **8/160 cadernos escritos (Ouro Proprio — DRAFT)** |
-| **Scripts YouTube** | **NAO INICIADO** | 0/~50 scripts (so titulos existem) |
+| **Scripts YouTube** | **EM CURSO** | **3/~50 scripts escritos (Ouro Proprio — DRAFT)** |
 | Audios (ElevenLabs) | NAO INICIADO | Depende dos scripts |
 | Visuais (ThinkDiffusion) | NAO INICIADO | Depende do LoRA + scripts |
 | LoRA treinado | NAO INICIADO | Infra pronta, modelo nao treinado |
@@ -138,7 +138,11 @@ Os 24 scripts e o manual do Ouro Proprio estao em DRAFT. A Vivianne deve reve-lo
 **OPCAO B — Continuar producao de conteudo do Ouro Proprio:**
 1. ~~Escrever o manual do Ouro Proprio~~ FEITO
 2. ~~Escrever os 8 cadernos de exercicios~~ FEITO
-3. Escrever os 2-3 scripts YouTube (`src/data/course-youtube/ouro-proprio.ts`)
+3. ~~Escrever os 3 scripts YouTube~~ FEITO
+
+**Todo o conteudo do Ouro Proprio esta em DRAFT. Proxima accao:**
+- Vivianne rever e aprovar tudo
+- Ou comecar o conteudo do Limite Sagrado
 
 **OPCAO C — Comecar o segundo curso:**
 Se o Ouro Proprio estiver aprovado, comecar os scripts do Limite Sagrado (`src/data/course-scripts/limite-sagrado.ts`).
@@ -163,7 +167,7 @@ src/data/course-workbooks/
   ...
 
 src/data/course-youtube/
-  ouro-proprio.ts          ← scripts dos 2-3 hooks YouTube
+  ouro-proprio.ts          ← scripts dos 3 hooks YouTube (DRAFT COMPLETO)
   ...
 ```
 
