@@ -1091,7 +1091,7 @@ export default function AlbumProductionPage() {
             if (proxyImg.ok) imgBlob = await proxyImg.blob();
           }
           if (imgBlob && imgBlob.size > 500) {
-            const imgFilename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-cover.jpg`;
+            const imgFilename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-cover.png`;
             await uploadViaSignedUrl(imgBlob, imgFilename);
           }
         } catch {
