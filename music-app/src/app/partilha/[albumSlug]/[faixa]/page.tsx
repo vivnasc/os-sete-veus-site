@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ALL_ALBUMS as ALBUMS } from "@/data/albums";
-import { getAlbumCover } from "@/lib/album-covers";
+import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
 import PartilhaClient from "./PartilhaClient";
 
 type Props = {
@@ -29,8 +29,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Veus" };
   }
 
-  const cover = getAlbumCover(album);
+  const albumCover = getAlbumCover(album);
+  // Track-specific Suno cover (absolute URL) — falls back to album pose
+  const trackCover = getTrackCoverUrl(album.slug, track.number);
+  const cover = trackCover || albumCover;
   const lyric = pickLyricLine(track.lyrics);
+
+  // OG image: use Suno cover directly if available (square, eye-catching)
+  // Fall back to dynamic text-based OG image
+  const ogImage = trackCover
+    ? trackCover
+    : `/api/og?album=${encodeURIComponent(album.slug)}&track=${track.number}`;
 
   // SEO misterioso e envolvente — convite, não descrição
   const title = lyric
@@ -51,9 +60,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "music.song",
       images: [
         {
-          url: cover,
-          width: 600,
-          height: 600,
+          url: ogImage,
+          width: 1200,
+          height: 630,
           alt: `${track.title} — ${album.title}`,
         },
       ],
@@ -62,7 +71,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title,
       description,
-      images: [cover],
+      images: [ogImage],
     },
   };
 }
@@ -81,7 +90,8 @@ export default async function PartilhaPage({ params }: Props) {
     );
   }
 
-  const cover = getAlbumCover(album);
+  const albumCoverPage = getAlbumCover(album);
+  const trackCoverPage = getTrackCoverUrl(album.slug, track.number);
   const lyricLine = pickLyricLine(track.lyrics);
 
   return (
@@ -92,7 +102,8 @@ export default async function PartilhaPage({ params }: Props) {
       trackNumber={track.number}
       trackTitle={track.title}
       trackDescription={track.description}
-      coverSrc={cover}
+      coverSrc={albumCoverPage}
+      trackCoverSrc={trackCoverPage || undefined}
       lyricLine={lyricLine}
     />
   );
