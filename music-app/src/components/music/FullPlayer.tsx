@@ -460,8 +460,8 @@ export default function FullPlayer() {
             </button>
           </div>
 
-          {/* Infinite mode toggle */}
-          <div className="flex justify-center mt-2">
+          {/* Infinite mode + Share */}
+          <div className="flex justify-center items-center gap-4 mt-2">
             <button
               onClick={toggleInfinite}
               className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] transition-colors ${
@@ -473,7 +473,16 @@ export default function FullPlayer() {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
                 <path d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.133-8-12.739-8-4.585 0-4.585 8 0 8 5.606 0 7.644-8 12.74-8z" />
               </svg>
-              {infinite ? "Infinito" : "Infinito"}
+              Infinito
+            </button>
+            <button
+              onClick={() => setShowShare(true)}
+              className="flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] text-[#666680] hover:text-[#a0a0b0] transition-colors"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+                <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" />
+              </svg>
+              Partilhar
             </button>
           </div>
         </div>
