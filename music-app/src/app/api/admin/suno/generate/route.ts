@@ -13,39 +13,57 @@ import { requireAdmin } from "@/lib/admin-auth";
  * Non-custom mode: prompt=free description
  */
 
-const MAX_STYLE_LENGTH = 300; // Flavor (~100) + base context (~200)
+const MAX_STYLE_LENGTH = 120; // Suno works best with short, clean style tags
 const MAX_RETRIES = 2;
 const RETRY_DELAY_MS = 3000;
 
 /**
- * Convert a verbose prompt description into concise Suno style tags.
- * Suno V4 custom mode expects short genre/style tags, not paragraphs.
- * Example input: "Contemporary organic-electronic, AwakeSoul. Warm female vocals..."
- * Example output: "contemporary organic-electronic, warm female vocals, soft piano, intimate, contemplative"
+ * Extract clean style tags from a verbose prompt.
+ * Suno V5 works best with short genre/mood tags, not paragraphs.
+ * Example: "ambient, female vocal, intimate, Portuguese, warm piano"
  */
-function condenseToStyleTags(prompt: string): string {
-  // Split on sentence boundaries and commas, extract key phrases
-  const fragments = prompt
-    .replace(/\. /g, ", ")
-    .replace(/\.\s*$/, "")
-    .split(",")
-    .map(s => s.trim())
-    .filter(s => s.length > 0 && s.length < 80) // skip overly long fragments
-    .filter(s => {
-      const lower = s.toLowerCase();
-      // Skip meta-instructions that aren't style tags
-      return !lower.includes("no autotune") &&
-             !lower.includes("clean vocal production") &&
-             !lower.includes("great for") &&
-             !lower.includes("theme:");
-    });
+function extractStyleTags(prompt: string): string {
+  // Common style keywords to look for
+  const keywords = [
+    // Genres
+    "ambient", "electronic", "organic", "pop", "folk", "jazz", "gospel",
+    "house", "afrobeat", "afropop", "bossa nova", "bossa",
+    "marrabenta", "mozambican",
+    // Instruments
+    "piano", "guitar", "acoustic guitar", "nylon guitar", "strings",
+    "synth", "bass", "drums", "percussion", "organ", "Rhodes",
+    "shaker", "choir",
+    // Mood/feel
+    "intimate", "ethereal", "contemplative", "raw", "powerful",
+    "driving", "gentle", "warm", "dark", "bright", "building",
+    "minimal", "spacious", "grounded", "cosmic", "dreamy",
+    "anthemic", "triumphant", "vulnerable", "tender", "haunting",
+    "rhythmic", "danceable", "hypnotic", "meditative",
+    // Production
+    "close-mic", "reverb", "lo-fi",
+    // Vocal
+    "female vocal", "female vocals", "warm female", "male vocal",
+    "duet", "whisper", "belted",
+    // Language
+    "Portuguese", "English",
+  ];
 
-  // Join and truncate at word boundary
-  let result = "";
-  for (const f of fragments) {
-    const next = result ? `${result}, ${f}` : f;
-    if (next.length > MAX_STYLE_LENGTH) break;
-    result = next;
+  const lower = prompt.toLowerCase();
+  const found: string[] = [];
+
+  // Extract matching keywords (longest first to avoid partial matches)
+  const sorted = [...keywords].sort((a, b) => b.length - a.length);
+  for (const kw of sorted) {
+    if (lower.includes(kw.toLowerCase()) && !found.some(f => f.toLowerCase().includes(kw.toLowerCase()) || kw.toLowerCase().includes(f.toLowerCase()))) {
+      found.push(kw);
+    }
+  }
+
+  let result = found.slice(0, 10).join(", ");
+
+  // Ensure under limit
+  if (result.length > MAX_STYLE_LENGTH) {
+    result = found.slice(0, 6).join(", ");
   }
 
   return result || prompt.slice(0, MAX_STYLE_LENGTH);
@@ -138,7 +156,7 @@ export async function POST(req: NextRequest) {
     if (hasLyrics) {
       // Custom mode: prompt = lyrics, style = concise genre tags
       body.prompt = lyrics;
-      body.style = condenseToStyleTags(prompt);
+      body.style = extractStyleTags(prompt);
       body.title = title || "Sem titulo";
     } else {
       body.prompt = prompt.length > 480 ? prompt.slice(0, 480) : prompt;

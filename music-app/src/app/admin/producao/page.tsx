@@ -194,23 +194,40 @@ function MiniPlayer({ src }: { src: string }) {
   useEffect(() => {
     const a = ref.current;
     if (!a) return;
-    const onTime = () => setCurrent(a.currentTime);
-    const onMeta = () => {
+
+    const checkDuration = () => {
       const d = a.duration;
-      if (d && isFinite(d) && !isNaN(d)) setDuration(d);
+      if (d && isFinite(d) && !isNaN(d) && d > 0) {
+        setDuration(d);
+      }
     };
-    const onEnd = () => setPlaying(false);
+
+    const onTime = () => {
+      setCurrent(a.currentTime);
+      // Keep checking duration during playback (streaming sources)
+      if (!duration || !isFinite(duration)) checkDuration();
+    };
+    const onEnd = () => { setPlaying(false); checkDuration(); };
+
     a.addEventListener("timeupdate", onTime);
-    a.addEventListener("loadedmetadata", onMeta);
-    a.addEventListener("durationchange", onMeta);
+    a.addEventListener("loadedmetadata", checkDuration);
+    a.addEventListener("durationchange", checkDuration);
+    a.addEventListener("canplaythrough", checkDuration);
     a.addEventListener("ended", onEnd);
+
+    // Force preload to get duration
+    a.preload = "auto";
+    a.load();
+
     return () => {
       a.removeEventListener("timeupdate", onTime);
-      a.removeEventListener("loadedmetadata", onMeta);
-      a.removeEventListener("durationchange", onMeta);
+      a.removeEventListener("loadedmetadata", checkDuration);
+      a.removeEventListener("durationchange", checkDuration);
+      a.removeEventListener("canplaythrough", checkDuration);
       a.removeEventListener("ended", onEnd);
     };
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [src]);
 
   function toggle() {
     const a = ref.current;
@@ -628,7 +645,10 @@ function TrackRow({
                     hasMainAudio={!!audioUrl}
                     existingVersions={existingVersions}
                     trackEnergy={track.energy}
-                    onApproveMain={() => onApproveClip(clip.audioUrl!, clip.title, clip.imageUrl || null)}
+                    onApproveMain={() => {
+                      if (!clip.audioUrl) { alert("Audio URL em falta. Tenta regenerar."); return; }
+                      onApproveClip(clip.audioUrl, clip.title, clip.imageUrl || null);
+                    }}
                     onApproveVersion={(name, energy) => onApproveAsVersion(clip.audioUrl!, clip.title, name, energy, clip.imageUrl || null)}
                   />
                 ))}
@@ -845,12 +865,46 @@ export default function AlbumProductionPage() {
           clearInterval(pollingRef.current[key]);
           delete pollingRef.current[key];
 
+          // Show clips immediately
           setGeneratedClips((g) => ({
             ...g,
             [key]: { clips: data.clips },
           }));
           setStatuses((s) => ({ ...s, [key]: "idle" }));
-          setErrors((e) => ({ ...e, [key]: "" }));
+          setErrors((e) => ({ ...e, [key]: "A guardar cópias..." }));
+
+          // Auto-save clips in background (fire-and-forget)
+          // This prevents losing music when Suno CDN URLs expire
+          (async () => {
+            const saved: SunoClip[] = [];
+            for (let idx = 0; idx < data.clips.length; idx++) {
+              const c = data.clips[idx] as SunoClip;
+              if (!c.audioUrl) { saved.push(c); continue; }
+              try {
+                const res = await adminFetch("/api/admin/proxy-download", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ url: c.audioUrl }),
+                });
+                if (res.ok) {
+                  const blob = await res.blob();
+                  if (blob.size > 1000) {
+                    const draftName = `drafts/${key}-v${idx + 1}.mp3`;
+                    const draftUrl = await uploadViaSignedUrl(blob, draftName);
+                    saved.push({ ...c, audioUrl: draftUrl });
+                    continue;
+                  }
+                }
+              } catch { /* keep original URL */ }
+              saved.push(c);
+            }
+            // Update clips with saved URLs
+            setGeneratedClips((g) => ({
+              ...g,
+              [key]: { clips: saved },
+            }));
+            setErrors((e) => ({ ...e, [key]: "" }));
+          })();
         }
       } catch (err) {
         console.warn(`[poll #${pollCount}] ${key} error:`, err);
@@ -952,20 +1006,29 @@ export default function AlbumProductionPage() {
     }
 
     try {
-      // Download audio via server proxy (bypasses CORS + validates size)
-      let audioRes = await adminFetch("/api/admin/proxy-download", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url: clipAudioUrl }),
-      });
-      // Fallback to direct fetch if proxy fails
-      if (!audioRes.ok) {
-        console.warn("Proxy download failed, trying direct fetch...");
-        audioRes = await fetch(clipAudioUrl);
+      // Try direct download first (faster, no server timeout risk)
+      let blob: Blob | null = null;
+      try {
+        const directRes = await fetch(clipAudioUrl);
+        if (directRes.ok) {
+          blob = await directRes.blob();
+        }
+      } catch {
+        // CORS blocked — try proxy
       }
-      if (!audioRes.ok) throw new Error(`Erro ao descarregar o áudio (${audioRes.status}).`);
-      const blob = await audioRes.blob();
-      if (blob.size < 1000) throw new Error(`Audio vazio (${blob.size} bytes). O URL do Suno pode ter expirado. Tenta regenerar.`);
+
+      // Fallback to server proxy if direct failed
+      if (!blob || blob.size < 1000) {
+        const proxyRes = await adminFetch("/api/admin/proxy-download", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ url: clipAudioUrl }),
+        });
+        if (!proxyRes.ok) throw new Error(`Download falhou (${proxyRes.status}). Tenta regenerar.`);
+        blob = await proxyRes.blob();
+      }
+
+      if (!blob || blob.size < 1000) throw new Error(`Audio vazio (${blob?.size || 0} bytes). O URL do Suno pode ter expirado. Tenta regenerar.`);
 
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}.mp3`;
       const url = await uploadViaSignedUrl(blob, filename);
