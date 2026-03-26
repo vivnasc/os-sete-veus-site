@@ -16,16 +16,29 @@ type Props = {
   trackTitle: string;
   trackDescription: string;
   coverSrc: string;
+  trackCoverSrc?: string;
   lyricLine?: string;
 };
 
 export default function PartilhaClient({
   albumSlug, albumTitle, albumColor,
   trackNumber, trackTitle, trackDescription,
-  coverSrc, lyricLine,
+  coverSrc, trackCoverSrc, lyricLine,
 }: Props) {
   const [isSubscriber, setIsSubscriber] = useState<boolean | null>(null);
   const [playing, setPlaying] = useState(false);
+  const [coverLoaded, setCoverLoaded] = useState<string | null>(null);
+
+  // Try to load track-specific Suno cover, fall back to album cover
+  useEffect(() => {
+    if (!trackCoverSrc) { setCoverLoaded(null); return; }
+    const img = new window.Image();
+    img.onload = () => setCoverLoaded(trackCoverSrc);
+    img.onerror = () => setCoverLoaded(null);
+    img.src = trackCoverSrc;
+  }, [trackCoverSrc]);
+
+  const displayCover = coverLoaded || coverSrc;
   const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -154,7 +167,7 @@ export default function PartilhaClient({
       <div className="relative z-10 w-full max-w-sm flex flex-col items-center text-center">
         {/* Album cover */}
         <div className="relative w-56 h-56 rounded-2xl overflow-hidden shadow-2xl mb-8">
-          <Image src={coverSrc} alt={albumTitle} fill className="object-cover" />
+          <Image src={displayCover} alt={albumTitle} fill className="object-cover" unoptimized={!!coverLoaded} />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         </div>
 
