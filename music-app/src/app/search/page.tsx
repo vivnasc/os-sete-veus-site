@@ -105,6 +105,22 @@ export default function SearchPage() {
   const inputRef = useRef<HTMLInputElement>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { currentTrack, currentAlbum } = useMusicPlayer();
+  const [publishedAlbums, setPublishedAlbums] = useState<Set<string>>(new Set());
+
+  // Load published tracks to know which albums have content
+  useEffect(() => {
+    fetch("/api/published-tracks")
+      .then(r => r.json())
+      .then(data => {
+        const slugs = new Set<string>();
+        for (const key of (data.tracks || []) as string[]) {
+          const match = key.match(/^(.+)-t\d+$/);
+          if (match) slugs.add(match[1]);
+        }
+        setPublishedAlbums(slugs);
+      })
+      .catch(() => {});
+  }, []);
 
   // Debounce
   useEffect(() => {
@@ -326,15 +342,23 @@ export default function SearchPage() {
                   { title: "Cosmic", sub: "O corpo como portal cósmico", products: ["cosmic"] },
                   { title: "Romance", sub: "Loranne apaixonada", products: ["romance"] },
                 ].map(({ title, sub, products }) => {
-                  const albums = ALL_ALBUMS.filter(a => products.includes(a.product));
+                  const albums = ALL_ALBUMS.filter(a => products.includes(a.product) && publishedAlbums.has(a.slug));
                   if (albums.length === 0) return null;
                   return (
                     <section key={title}>
                       <h2 className="text-sm font-semibold text-[#a0a0b0] uppercase tracking-wider mb-1">{title}</h2>
                       <p className="text-xs text-[#666680] mb-3">{sub}</p>
-                      <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                      <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2">
                         {albums.map(album => (
-                          <AlbumCard key={album.slug} album={album} />
+                          <Link key={album.slug} href={`/album/${album.slug}`} className="group text-center">
+                            <div
+                              className="aspect-square rounded-lg mb-1 flex items-center justify-center overflow-hidden"
+                              style={{ background: `linear-gradient(135deg, ${album.color}, ${album.color}88)` }}
+                            >
+                              <span className="text-[9px] text-white/60 font-medium px-1 truncate">{album.title.replace(/^O Espelho d[ao] |^O Nó d[ao] /,'')}</span>
+                            </div>
+                            <p className="text-[10px] text-[#999] truncate">{album.title}</p>
+                          </Link>
                         ))}
                       </div>
                     </section>
