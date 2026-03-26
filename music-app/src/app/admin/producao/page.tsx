@@ -881,67 +881,12 @@ export default function AlbumProductionPage() {
           clearInterval(pollingRef.current[key]);
           delete pollingRef.current[key];
 
-          // Show clips immediately
           setGeneratedClips((g) => ({
             ...g,
             [key]: { clips: data.clips },
           }));
           setStatuses((s) => ({ ...s, [key]: "idle" }));
-          setErrors((e) => ({ ...e, [key]: "A guardar cópias..." }));
-
-          // Auto-save clips in background (fire-and-forget)
-          // Saves audio + cover image so they never expire
-          (async () => {
-            const saved: SunoClip[] = [];
-            for (let idx = 0; idx < data.clips.length; idx++) {
-              const c = data.clips[idx] as SunoClip;
-              if (!c.audioUrl) { saved.push(c); continue; }
-              let savedAudioUrl = c.audioUrl;
-              let savedImageUrl = c.imageUrl || null;
-
-              // Save audio
-              try {
-                const res = await adminFetch("/api/admin/proxy-download", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({ url: c.audioUrl }),
-                });
-                if (res.ok) {
-                  const blob = await res.blob();
-                  if (blob.size > 1000) {
-                    const draftName = `drafts/${key}-v${idx + 1}.mp3`;
-                    savedAudioUrl = await uploadViaSignedUrl(blob, draftName);
-                  }
-                }
-              } catch { /* keep original */ }
-
-              // Save cover image
-              if (c.imageUrl) {
-                try {
-                  const imgRes = await adminFetch("/api/admin/proxy-download", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ url: c.imageUrl }),
-                  });
-                  if (imgRes.ok) {
-                    const imgBlob = await imgRes.blob();
-                    if (imgBlob.size > 500) {
-                      const imgName = `drafts/${key}-v${idx + 1}-cover.jpg`;
-                      savedImageUrl = await uploadViaSignedUrl(imgBlob, imgName);
-                    }
-                  }
-                } catch { /* keep original */ }
-              }
-
-              saved.push({ ...c, audioUrl: savedAudioUrl, imageUrl: savedImageUrl });
-            }
-            // Update clips with saved URLs
-            setGeneratedClips((g) => ({
-              ...g,
-              [key]: { clips: saved },
-            }));
-            setErrors((e) => ({ ...e, [key]: "" }));
-          })();
+          setErrors((e) => ({ ...e, [key]: "" }));
         }
       } catch (err) {
         console.warn(`[poll #${pollCount}] ${key} error:`, err);
