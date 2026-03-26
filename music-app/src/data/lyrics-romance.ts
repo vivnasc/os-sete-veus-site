@@ -848,7 +848,7 @@ Save me some`,
 Digo boa noite
 Mas quero dizer fica
 Digo está tudo bem
-Mas o peito contradiz a dica
+Mas o peito diz o contrário por baixo
 
 [Verse 2]
 Digo não faz mal
@@ -1056,7 +1056,7 @@ Say it right`,
 O teu lado da cama está frio
 A marca do teu corpo desapareceu
 Mas eu deito-me do meu lado
-Como se o teu ainda existisse — e eu sei que não sei
+Como se o teu ainda existisse — e assim é
 
 [Verse 2]
 Ponho a mão no vazio
@@ -1180,7 +1180,7 @@ Domingo — sem ti
 
 [Verse 3]
 Agora leio sozinha
-E o café aquece de mais
+E o café aquece demais
 Porque não há ninguém para me distrair
 Com perguntas banais
 
@@ -1366,13 +1366,13 @@ Same moon`,
 Ainda ponho a chaleira para dois
 Ainda aqueço a água a mais
 Ainda preparo a tua chávena
-Com o saquinho que tu mais gostavas — e paz
+Com o saquinho que tu mais gostavas
 
 [Verse 2]
 A tua chávena está no escorredor
 Com a asa para a direita como deixavas
 E eu lavo-a todas as semanas
-Mesmo que ninguém a use — como se me salvavas
+Mesmo que ninguém a use — como se voltasses
 
 [Chorus]
 O teu chá
@@ -1684,7 +1684,7 @@ Do que qualquer discurso mudo
 O olhar carrega peso
 Atravessa a roupa e a pose
 E chega àquele sítio
-Onde a pele se expõe — sem dose
+Onde a pele se expõe sem querer
 
 [Chorus]
 O olhar
@@ -1698,7 +1698,7 @@ O olhar
 
 [Verse 3]
 Quero mais desses olhares
-Que são tocas disfarçadas
+Que são toques disfarçados
 Que são beijos sem contacto
 Que são portas mal fechadas
 
@@ -2008,7 +2008,7 @@ O teu nome escrito no meu corpo lento
 As minhas coxas guardam o peso
 Das tuas mãos em noites de Verão
 E os meus lábios ainda sentem
-A pressão da tua pressão
+A tua boca na escuridão
 
 [Chorus]
 Marca
@@ -2208,11 +2208,11 @@ Da almofada — o corpo confiado
 Lado esquerdo
 Tu dormes sempre do lado esquerdo
 Lado esquerdo
-E eu conheço cada acerto
+E eu conheço cada gesto
 Do teu corpo adormecido
 Cada suspiro e cada volta
 Lado esquerdo
-A rotina mais bonita — a mais envolta
+A rotina mais bonita que habito
 
 [Verse 3]
 Se um dia fores embora
@@ -2224,17 +2224,17 @@ Com o teu lado esquerdo a persistir
 Lado esquerdo
 Tu dormes sempre do lado esquerdo
 Lado esquerdo
-E eu conheço cada acerto
+E eu conheço cada gesto
 Do teu corpo adormecido
 Cada suspiro e cada volta
 Lado esquerdo
-A rotina mais bonita — a mais envolta
+A rotina mais bonita que habito
 
 [Bridge]
 Saber de que lado alguém dorme
 É mais íntimo que um beijo
 É conhecer o corpo quando não decide
-Quando é só desejo sem ensejo
+Quando é só corpo a ser inteiro
 
 [Outro]
 Esquerdo
@@ -2297,7 +2297,7 @@ Word I know`,
 Gritámos na cozinha
 Até as paredes tremerem
 Dissemos coisas que doíam
-Como só quem se ama diz sem se preverem
+Como só quem se ama sabe dizer
 
 [Verse 2]
 Tu saíste para a varanda
@@ -2309,7 +2309,7 @@ E os olhos cheios de razão — e sem razão
 Discussão
 A que nos fez mais fortes
 Discussão
-Que abriu todas as portes
+Que abriu todas as portas
 Que estavam fechadas entre nós
 Com fechaduras de educação
 Discussão
@@ -2325,7 +2325,7 @@ Mas o gesto estava carregado
 Discussão
 A que nos fez mais fortes
 Discussão
-Que abriu todas as portes
+Que abriu todas as portas
 Que estavam fechadas entre nós
 Com fechaduras de educação
 Discussão
@@ -2404,8 +2404,8 @@ E risos e espanto
 [Verse 2]
 Cortas a cebola às rodelas
 Eu pico o alho ao acaso
-Tu mexes o molho
-Eu lambo a colher — passo a passo
+Tu mexes o molho devagar
+Eu provo e digo — falta um traço
 
 [Chorus]
 Avental
@@ -2421,7 +2421,7 @@ O altar mais doméstico e mais real
 O jantar fica salgado
 Ou queimamos o arroz
 Mas sentamos à mesa
-E comemos como se fosse atroz — e bom — e nós
+E comemos juntos — imperfeitos — nós
 
 [Chorus]
 Avental
@@ -2521,7 +2521,7 @@ Sem precisar de apagar
 O que doeu — porque doeu
 E fez parte do que somos
 Perdoar
-E escolher ficar — apesar de todos os tomos
+E escolher ficar — com tudo o que somos
 
 [Verse 3]
 Não é fraqueza — é a coisa
@@ -2537,13 +2537,13 @@ Sem precisar de apagar
 O que doeu — porque doeu
 E fez parte do que somos
 Perdoar
-E escolher ficar — apesar de todos os tomos
+E escolher ficar — com tudo o que somos
 
 [Bridge]
 O amor fácil é para os filmes
 O amor real tem cicatrizes
 E as cicatrizes não são defeitos
-São as provas de que viveste — sem disfarces
+São as provas de que ficaste — e insistes
 
 [Outro]
 Perdoo
