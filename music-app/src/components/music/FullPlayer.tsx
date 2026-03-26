@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
 import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
@@ -263,12 +262,10 @@ export default function FullPlayer() {
               {/* Small cover + title */}
               <div className="flex items-center gap-3 mb-8">
                 <div className="relative w-12 h-12 rounded-lg overflow-hidden shrink-0">
-                  <Image
+                  <img
                     src={trackCover || (currentAlbum ? getAlbumCover(currentAlbum) : "/poses/loranne-hero.png")}
                     alt={currentTrack.title}
-                    fill
-                    sizes="48px"
-                    className="object-cover"
+                    className="absolute inset-0 w-full h-full object-cover"
                   />
                 </div>
                 <div className="min-w-0">
@@ -309,12 +306,14 @@ export default function FullPlayer() {
                 )}
                 <div className="relative aspect-square rounded-xl shadow-2xl overflow-hidden">
                   {currentAlbum && (
-                    <Image
+                    <img
                       src={trackCover || getAlbumCover(currentAlbum)}
                       alt={currentTrack.title}
-                      fill
-                      sizes="224px"
-                      className="object-cover"
+                      className="absolute inset-0 w-full h-full object-cover"
+                      onError={(e) => {
+                        setTrackCover(null);
+                        (e.target as HTMLImageElement).src = getAlbumCover(currentAlbum!);
+                      }}
                     />
                   )}
                 </div>
