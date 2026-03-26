@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/admin-auth";
 
 /**
- * Generate album cover using Pollinations AI (free, no API key).
+ * Generate album cover — tries multiple free image APIs.
  * POST /api/admin/generate-cover
  * { album_slug, track_number, title, description, mood }
  */
@@ -17,27 +17,62 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ erro: "album_slug, track_number e title obrigatórios." }, { status: 400 });
     }
 
-    const prompt = `Album cover art for "${title}". ${description || mood || "contemplative, emotional"}. Abstract, atmospheric, cinematic. No text, no words, no letters. Modern music streaming cover art. Square format.`;
+    const keywords = `${title} ${description || ""} ${mood || "atmospheric"} abstract dark`;
 
-    // Pollinations AI — free, no API key needed
-    const encoded = encodeURIComponent(prompt);
-    const pollinationsUrl = `https://image.pollinations.ai/prompt/${encoded}?width=1024&height=1024&nologo=true`;
+    // Try multiple free sources
+    let imgBuffer: ArrayBuffer | null = null;
 
-    const imgRes = await fetch(pollinationsUrl);
-    if (!imgRes.ok) {
-      return NextResponse.json({ erro: `Pollinations: ${imgRes.status}` }, { status: 502 });
+    // 1. Try Pollinations AI
+    try {
+      const prompt = encodeURIComponent(`Album cover art for "${title}". ${description || "contemplative"}. Abstract, atmospheric, cinematic. No text. Square.`);
+      const res = await fetch(`https://image.pollinations.ai/prompt/${prompt}?width=1024&height=1024&nologo=true`, { signal: AbortSignal.timeout(30000) });
+      if (res.ok) {
+        const buf = await res.arrayBuffer();
+        if (buf.byteLength > 5000) imgBuffer = buf;
+      }
+    } catch { /* try next */ }
+
+    // 2. Try Stable Horde (free, community)
+    if (!imgBuffer) {
+      try {
+        const hordeRes = await fetch("https://stablehorde.net/api/v2/generate/async", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "apikey": "0000000000" },
+          body: JSON.stringify({
+            prompt: `album cover art, ${title}, ${description || "atmospheric"}, abstract, dark, cinematic, no text`,
+            params: { width: 512, height: 512, steps: 20 },
+          }),
+        });
+        if (hordeRes.ok) {
+          const { id } = await hordeRes.json();
+          // Poll for result (max 60s)
+          for (let i = 0; i < 12; i++) {
+            await new Promise(r => setTimeout(r, 5000));
+            const checkRes = await fetch(`https://stablehorde.net/api/v2/generate/status/${id}`);
+            if (checkRes.ok) {
+              const status = await checkRes.json();
+              if (status.done && status.generations?.[0]?.img) {
+                const imgUrl = status.generations[0].img;
+                const dlRes = await fetch(imgUrl);
+                if (dlRes.ok) {
+                  const buf = await dlRes.arrayBuffer();
+                  if (buf.byteLength > 5000) { imgBuffer = buf; break; }
+                }
+              }
+            }
+          }
+        }
+      } catch { /* try next */ }
     }
 
-    const imgBuffer = await imgRes.arrayBuffer();
-    if (imgBuffer.byteLength < 5000) {
-      return NextResponse.json({ erro: "Imagem gerada demasiado pequena." }, { status: 502 });
+    if (!imgBuffer) {
+      return NextResponse.json({ erro: "Nenhuma API de imagem disponível. Tenta mais tarde." }, { status: 502 });
     }
 
     // Upload to Supabase Storage
     const supabase = auth.supabase;
     const trackNum = String(track_number).padStart(2, "0");
 
-    // Try both paths
     for (const filename of [`albums/${album_slug}/faixa-${trackNum}-cover.jpg`, `${album_slug}/faixa-${trackNum}-cover.jpg`]) {
       const { error } = await supabase.storage
         .from("audios")
