@@ -63,6 +63,7 @@ type SunoClip = {
   id: string;
   status: string;
   audioUrl: string | null;
+  originalAudioUrl?: string | null; // Original Suno CDN URL (for upload)
   title: string;
   imageUrl?: string | null;
   duration?: number | null;
@@ -651,10 +652,11 @@ function TrackRow({
                     existingVersions={existingVersions}
                     trackEnergy={track.energy}
                     onApproveMain={() => {
-                      if (!clip.audioUrl) { alert("Audio URL em falta. Tenta regenerar."); return; }
-                      onApproveClip(clip.audioUrl, clip.title, clip.imageUrl || null);
+                      const url = clip.originalAudioUrl || clip.audioUrl;
+                      if (!url) { alert("Audio URL em falta. Tenta regenerar."); return; }
+                      onApproveClip(url, clip.title, clip.imageUrl || null);
                     }}
-                    onApproveVersion={(name, energy) => onApproveAsVersion(clip.audioUrl!, clip.title, name, energy, clip.imageUrl || null)}
+                    onApproveVersion={(name, energy) => onApproveAsVersion(clip.originalAudioUrl || clip.audioUrl!, clip.title, name, energy, clip.imageUrl || null)}
                   />
                 ))}
               </div>
@@ -880,10 +882,30 @@ export default function AlbumProductionPage() {
         if (allDone) {
           clearInterval(pollingRef.current[key]);
           delete pollingRef.current[key];
+          setErrors((e) => ({ ...e, [key]: "A descarregar clips..." }));
+
+          // Download all clips to browser memory immediately
+          // This prevents URLs expiring while you listen to one
+          const cached: SunoClip[] = [];
+          for (const c of data.clips as SunoClip[]) {
+            if (!c.audioUrl) { cached.push(c); continue; }
+            try {
+              const res = await fetch(c.audioUrl);
+              if (res.ok) {
+                const blob = await res.blob();
+                if (blob.size > 1000) {
+                  const localUrl = URL.createObjectURL(blob);
+                  cached.push({ ...c, audioUrl: localUrl, originalAudioUrl: c.audioUrl });
+                  continue;
+                }
+              }
+            } catch { /* keep original URL */ }
+            cached.push(c);
+          }
 
           setGeneratedClips((g) => ({
             ...g,
-            [key]: { clips: data.clips },
+            [key]: { clips: cached },
           }));
           setStatuses((s) => ({ ...s, [key]: "idle" }));
           setErrors((e) => ({ ...e, [key]: "" }));
