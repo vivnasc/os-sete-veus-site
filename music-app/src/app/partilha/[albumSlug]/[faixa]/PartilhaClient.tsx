@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 
-const PREVIEW_SECONDS = 60;
+const PREVIEW_SECONDS = 45;
 
 type Props = {
   albumSlug: string;
@@ -205,8 +205,8 @@ export default function PartilhaClient({
             </button>
           ) : (
             <div className="space-y-4">
-              <p className="text-sm text-[#F5F0E6]">Isto foi so o inicio.</p>
-              <p className="text-xs text-[#a0a0b0]">A faixa completa esta a tua espera.</p>
+              <p className="text-sm text-[#F5F0E6]">Isto foi apenas um fragmento.</p>
+              <p className="text-xs text-[#a0a0b0]">A faixa completa guarda o que falta ouvir.</p>
               <button
                 onClick={replay}
                 className="text-xs text-[#666680] hover:text-[#a0a0b0] transition-colors underline underline-offset-2"
@@ -223,7 +223,7 @@ export default function PartilhaClient({
           className="w-full py-4 rounded-xl font-medium text-sm text-center transition-all hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-lg"
           style={{ backgroundColor: albumColor, color: "#0D0D1A" }}
         >
-          Ouvir completo — cria a tua conta
+          Ouvir a faixa completa
         </Link>
 
         {/* Secondary CTA */}
@@ -231,7 +231,7 @@ export default function PartilhaClient({
           href="/"
           className="mt-3 w-full py-3 rounded-xl text-sm text-center bg-white/5 hover:bg-white/10 transition-colors text-[#a0a0b0]"
         >
-          Explorar mais musica
+          Descobrir Loranne
         </Link>
 
         {/* Share button */}

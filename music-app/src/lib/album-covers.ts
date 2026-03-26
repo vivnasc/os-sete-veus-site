@@ -137,6 +137,17 @@ export function getAlbumCover(album: Album): string {
   return "/poses/loranne-hero.png";
 }
 
+/**
+ * Tenta obter a capa da track do Supabase (guardada na aprovação via Suno).
+ * Retorna a URL pública se existir, ou undefined se não houver capa específica.
+ */
+export function getTrackCoverUrl(albumSlug: string, trackNumber: number): string {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  if (!supabaseUrl) return "";
+  const pad = String(trackNumber).padStart(2, "0");
+  return `${supabaseUrl}/storage/v1/object/public/audios/albums/${albumSlug}/faixa-${pad}-cover.jpg`;
+}
+
 /** Label para o badge do album — so o nome, sem prefixo */
 export function getAlbumBadge(album: Album): string | null {
   if (!album.veu) return null;
