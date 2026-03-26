@@ -86,7 +86,7 @@ export async function GET(req: NextRequest) {
             title: item.title || "",
             duration: item.duration || null,
             // Metadata from Suno
-            imageUrl: item.imageUrl || item.image_url || item.imageLargeUrl || item.image_large_url || null,
+            imageUrl: item.imageUrl || item.image_url || item.imageLargeUrl || item.image_large_url || item.coverUrl || item.cover_url || null,
             tags: item.tags || (item.metadata as Record<string, unknown>)?.tags || item.style || null,
             model: item.modelName || item.model_name || item.model || null,
             prompt: item.prompt || null,
