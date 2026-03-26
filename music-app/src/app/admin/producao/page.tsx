@@ -758,6 +758,8 @@ export default function AlbumProductionPage() {
   const lyricsSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
   const [trackVersions, setTrackVersions] = useState<Record<string, VersionInfo[]>>({}); // key → versions
   const [sunoModel, setSunoModel] = useState("V5");
+  const [fixCoversResult, setFixCoversResult] = useState<string | null>(null);
+  const [fixingCovers, setFixingCovers] = useState(false);
   const pollingRef = useRef<Record<string, NodeJS.Timeout>>({});
   const titleSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
 
@@ -1039,9 +1041,22 @@ export default function AlbumProductionPage() {
       // Download and upload Suno cover image if available
       if (imageUrl) {
         try {
-          const imgRes = await fetch(imageUrl);
-          if (imgRes.ok) {
-            const imgBlob = await imgRes.blob();
+          let imgBlob: Blob | null = null;
+          // Try direct download first
+          try {
+            const directImg = await fetch(imageUrl);
+            if (directImg.ok) imgBlob = await directImg.blob();
+          } catch { /* CORS — try proxy */ }
+          // Fallback to server proxy (same as audio)
+          if (!imgBlob || imgBlob.size < 500) {
+            const proxyImg = await adminFetch("/api/admin/proxy-download", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ url: imageUrl }),
+            });
+            if (proxyImg.ok) imgBlob = await proxyImg.blob();
+          }
+          if (imgBlob && imgBlob.size > 500) {
             const imgFilename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-cover.jpg`;
             await uploadViaSignedUrl(imgBlob, imgFilename);
           }
@@ -1280,6 +1295,28 @@ export default function AlbumProductionPage() {
                 </span>
               ) : null;
             })}
+            <button
+              onClick={async () => {
+                setFixingCovers(true);
+                setFixCoversResult(null);
+                try {
+                  const res = await adminFetch("/api/admin/fix-covers", { method: "POST" });
+                  const data = await res.json();
+                  setFixCoversResult(`${data.fixed} capas corrigidas, ${data.skipped} ignoradas, ${data.errors} erros`);
+                } catch (e: unknown) {
+                  setFixCoversResult(`Erro: ${e instanceof Error ? e.message : "desconhecido"}`);
+                } finally {
+                  setFixingCovers(false);
+                }
+              }}
+              disabled={fixingCovers}
+              className="rounded-full bg-amber-900/30 px-3 py-1 text-xs text-amber-400 hover:bg-amber-900/50 transition-colors disabled:opacity-50"
+            >
+              {fixingCovers ? "A corrigir capas..." : "Corrigir capas em falta"}
+            </button>
+            {fixCoversResult && (
+              <span className="text-xs text-amber-300">{fixCoversResult}</span>
+            )}
           </div>
         </div>
       </div>
