@@ -8,7 +8,7 @@ import { renderToBuffer } from "@react-pdf/renderer";
 import { writeFileSync } from "fs";
 
 // Force non-production to use local fonts
-process.env.NODE_ENV = "development";
+(process.env as Record<string, string>).NODE_ENV = "development";
 
 import { ManualPDF } from "../src/lib/pdf/manual-template";
 import { OURO_PROPRIO_MANUAL } from "../src/data/course-manuals/ouro-proprio";
