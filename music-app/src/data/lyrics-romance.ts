@@ -532,307 +532,103 @@ Grow ours
 Grow`,
 
   // ─────────────────────────────────────────────
-  // CARTA — Palavras que ficaram no corpo
+  // CARTA — Palavras não ditas, confissões
   // ─────────────────────────────────────────────
 
   "romance-carta/1": `[Verse 1]
-Escrevi-te uma carta às quatro da manhã
-Com as mãos a tremer e a caneta quase seca
-Contei-te coisas que a boca nunca disse
-Coisas que o peito guarda como quem enterra
+Tenho uma gaveta que não abro
+Com uma carta que não enviei
+Escrita com a mão a tremer
+Na noite em que quase te contei
 
 [Verse 2]
-Falei do cheiro da tua nuca em Setembro
-Do som que fazias ao respirar de noite
-Falei da vez que quase te disse tudo
-E engoli as palavras como quem engole sorte
+Dobrei-a em quatro partes
+Como quem dobra um segredo
+Pus o teu nome num canto
+E fechei a gaveta com medo
 
 [Chorus]
-Carta que não enviei
-Guardada entre o colchão e a parede
-Carta que não enviei
-Porque dizer a verdade
-Às vezes custa mais que a mentira
-Às vezes salva menos que o silêncio
-Carta que não enviei
-Mas que me escreveu por dentro
+A gaveta
+Guarda o que a boca não disse
+A gaveta
+Guarda o que o peito não quis
+Que saísse ao ar livre
+Que tocasse no real
+A gaveta — o cemitério
+De tudo o que eu senti a mais
 
 [Verse 3]
-Dobrei-a em quatro como quem dobra um segredo
-Pus-lhe o teu nome em letra pequena
-E guardei-a no sítio onde guardo
-Tudo o que me faz ter pena
+Há meses que o papel amarelece
+A tinta já quase não se lê
+Mas as palavras continuam vivas
+Como se soubessem mais do que eu sei
 
 [Chorus]
-Carta que não enviei
-Guardada entre o colchão e a parede
-Carta que não enviei
-Porque dizer a verdade
-Às vezes custa mais que a mentira
-Às vezes salva menos que o silêncio
-Carta que não enviei
-Mas que me escreveu por dentro
+A gaveta
+Guarda o que a boca não disse
+A gaveta
+Guarda o que o peito não quis
+Que saísse ao ar livre
+Que tocasse no real
+A gaveta — o cemitério
+De tudo o que eu senti a mais
 
 [Bridge]
-Talvez um dia a encontres
-Quando eu já não estiver
-E leias o que eu sentia
-Quando ainda sabia dizer
+Um dia vou abri-la
+Ou um dia vou queimá-la
+Mas hoje fica fechada
+Porque a verdade ainda me cala
 
 [Outro]
-Não enviei
-Mas escrevi
-E escrever
-Já foi dizer`,
+Fechada
+Guardada
+Escrita
+Nunca enviada
+Mas verdadeira`,
 
   "romance-carta/2": `[Verse 1]
-Dear you — I don't know your last name
-Or the way you take your coffee now
-I just know the shape your absence made
-And how my hands still remember how
+I typed it out at midnight
+Every word exactly right
+Then watched the cursor blink
+And held delete until the light
 
 [Verse 2]
-Dear you — I found your sweater yesterday
-Folded in the closet like a prayer
-It still smells like the argument
-We had on the stairs
-
-[Chorus]
-Dear you
-These words will never reach you
-Dear you
-But the writing had to happen
-Like rain has to fall
-Like breath has to leave the body
-Dear you — I'm writing to the wall
-But the wall is listening
-
-[Verse 3]
-Dear you — I saw someone who walks like you
-On the corner of the street we used to own
-I almost called your name
-Then remembered I was alone
-
-[Chorus]
-Dear you
-These words will never reach you
-Dear you
-But the writing had to happen
-Like rain has to fall
-Like breath has to leave the body
-Dear you — I'm writing to the wall
-But the wall is listening
-
-[Bridge]
-Maybe this letter is not for you
-Maybe it's for the me
-Who couldn't say it
-When saying it mattered
-
-[Outro]
-Dear you
-Dear me
-Dear the space
-Between what was felt
-And what was said`,
-
-  "romance-carta/3": `[Verse 1]
-Escreveste-me no pulso sem saber
-Uma frase que a pele não esquece
-Não foi com tinta — foi com toque
-E agora leio-te cada vez que adormeço
-
-[Verse 2]
-Tenho o teu nome tatuado
-Não no braço — no esterno
-No sítio onde a respiração começa
-E onde tudo o que sinto se faz eterno
-
-[Chorus]
-Tinta no corpo
-Palavras que a pele guarda
-Tinta no corpo
-A história que a boca tarda
-Não preciso de papel
-Quando tenho a tua marca
-Tinta no corpo
-O amor que a pele não descarta
-
-[Verse 3]
-As tuas mãos escreviam mapas
-Na minha barriga depois do banho
-Cada dedo era uma vírgula
-Cada beijo um novo parágrafo
-
-[Chorus]
-Tinta no corpo
-Palavras que a pele guarda
-Tinta no corpo
-A história que a boca tarda
-Não preciso de papel
-Quando tenho a tua marca
-Tinta no corpo
-O amor que a pele não descarta
-
-[Bridge]
-O corpo é o caderno
-Mais honesto que existe
-Não se pode apagar
-O que nele se inscreve e resiste
-
-[Outro]
-Tinta
-Na pele
-Na memória
-Na carne
-No sempre`,
-
-  "romance-carta/4": `[Verse 1]
-You wrote I love you once
-Between the grocery list and the phone bill
-I found it three months later
-Folded in your coat — and it was still
-
-[Verse 2]
-The most important words
-Are the ones that hide in margins
-In the PS of a birthday card
-In the space between your questions
-
-[Chorus]
-Between the lines
-That's where you live
-Between the lines
-That's what you give
-Not the declaration
-Not the grand romantic speech
-Between the lines
-In the things you cannot reach
-With your mouth
-
-[Verse 3]
-You never said I need you
-But you left the porch light on
-You never said don't go
-But you ironed my shirt at dawn
-
-[Chorus]
-Between the lines
-That's where you live
-Between the lines
-That's what you give
-Not the declaration
-Not the grand romantic speech
-Between the lines
-In the things you cannot reach
-With your mouth
-
-[Bridge]
-Some people love in capitals
-Bold and underlined
-You love in pencil marks
-In the margins of my mind
-
-[Outro]
-Between
-Not in the words
-But in the spaces
-Not in the ink
-But in the page`,
-
-  "romance-carta/5": `[Verse 1]
-Esta é a última página
-E eu não quero virar
-Porque depois disto
-Não há mais nada para contar
-
-[Verse 2]
-Reli-te tantas vezes
-Que já sei de cor as mentiras
-Os capítulos em que fingi
-Que as tuas saídas eram idas e vindas
-
-[Chorus]
-Última página
-E o livro não acaba bem
-Última página
-Sem surpresa, sem amém
-Sem reviravolta no último acto
-Sem herói que volta a tempo
-Última página
-E eu fecho-te — lento
-
-[Verse 3]
-Queria um final diferente
-Queria que a tinta mudasse
-Mas o que está escrito entre nós
-Não tem borracha que o apague
-
-[Chorus]
-Última página
-E o livro não acaba bem
-Última página
-Sem surpresa, sem amém
-Sem reviravolta no último acto
-Sem herói que volta a tempo
-Última página
-E eu fecho-te — lento
-
-[Bridge]
-Mas há uma coisa que aprendi
-Nos livros que doem a ler
-O final não é o mais importante
-É o que fizeste ao escrever
-
-[Outro]
-Fecho
-Respiro
-E começo
-Outra história`,
-
-  "romance-carta/6": `[Verse 1]
-I have seventeen drafts
-In the notes app of my phone
-Seventeen versions of I miss you
-That I've typed and then let go
-
-[Verse 2]
-One says I drove past our bench
-One says your mother called
-One says I smelled your shampoo
-On a stranger in the mall
+I wrote it three more times
+Each version closer to the bone
+Each version more dangerous
+Each version more alone
 
 [Chorus]
 Unsent
-Every version of the truth
+The drafts folder of my heart
 Unsent
-Every messy bit of proof
-That I'm not over this
-That the body hasn't quit
-Unsent — not because I don't mean it
-But because meaning it might break what's left
+Every failed attempt to start
+The conversation that could change
+Everything between us — or end it
+Unsent
+Because some truths are better tended
 
 [Verse 3]
-Draft twelve was three words long
-Draft four was almost cruel
-Draft nine was so damn honest
-It would've set fire to every rule
+The bravest one said simply
+I still think about your hands
+The worst one said I'm fine
+The honest one had no plans
 
 [Chorus]
 Unsent
-Every version of the truth
+The drafts folder of my heart
 Unsent
-Every messy bit of proof
-That I'm not over this
-That the body hasn't quit
-Unsent — not because I don't mean it
-But because meaning it might break what's left
+Every failed attempt to start
+The conversation that could change
+Everything between us — or end it
+Unsent
+Because some truths are better tended
 
 [Bridge]
-The bravest thing I ever wrote
-Was the message I deleted
-Three dots — then nothing
-And that nothing was completed
+Three dots appeared and vanished
+On your side of the screen
+Which means you also wrote
+Something you didn't mean — to keep
 
 [Outro]
 Unsent
@@ -841,377 +637,473 @@ Unfelt
 No — felt
 Just unsaid`,
 
-  "romance-carta/7": `[Verse 1]
-Conheço-te pela letra
-Antes de ler a frase
-A forma como o teu A se inclina
-Como se estivesse sempre a cair — com classe
+  "romance-carta/3": `[Verse 1]
+No chuveiro eu sou eloquente
+Tenho discursos de arrasar
+Digo tudo o que ensaiei
+Com a voz que a água não vai calar
 
 [Verse 2]
-A tua caligrafia tem pressa
-Mas guarda ternura nos is
-Pontos que parecem beijos
-Linhas que parecem raízes
+Explico-te o que sinto
+Com metáforas e com calma
+Digo-te que te amo assim
+Como quem abre a palma da alma
 
 [Chorus]
-Caligrafia
-Tão íntima como impressão digital
-Caligrafia
-Mais verdadeira que um postal
-Porque a mão não mente
-Quando a boca ensaia
-Caligrafia
-É o retrato que ninguém emoldura nem raia
+No chuveiro
+Sou poeta e sou valente
+No chuveiro
+Digo tudo o que a gente
+Não consegue cara a cara
+Com a boca seca e o medo
+No chuveiro — eu sou toda verdade
+E lá fora sou segredo
 
 [Verse 3]
-Guardei um bilhete teu
-Escrito num guardanapo
-Dizia só "volto já"
-E nunca ninguém escreveu tanto em tão pouco espaço
+Depois saio e seco o corpo
+E a coragem escorre com a água
+E quando te vejo na cozinha
+Digo só — bom dia — sem mágoa
 
 [Chorus]
-Caligrafia
-Tão íntima como impressão digital
-Caligrafia
-Mais verdadeira que um postal
-Porque a mão não mente
-Quando a boca ensaia
-Caligrafia
-É o retrato que ninguém emoldura nem raia
+No chuveiro
+Sou poeta e sou valente
+No chuveiro
+Digo tudo o que a gente
+Não consegue cara a cara
+Com a boca seca e o medo
+No chuveiro — eu sou toda verdade
+E lá fora sou segredo
 
 [Bridge]
-Vivemos na era do teclado
-Onde tudo é igual e limpo
-Mas a tua letra torta num papel
-É o luxo mais bonito que eu distingo
+Imagina se um dia
+Saísse do banho ainda molhada
+E te dissesse tudo
+Antes que a coragem evaporasse — toda encharcada
 
 [Outro]
-Escreve-me
-À mão
-Com erros
-Com pressa
-Com verdade`,
+No chuveiro
+Molhada
+Corajosa
+Lá fora
+Seca
+Muda`,
+
+  "romance-carta/4": `[Verse 1]
+I say your name to empty rooms
+Just to hear how it lands
+I practise the inflection
+The way my mouth expands
+
+[Verse 2]
+I rehearse the conversation
+Standing at the mirror's edge
+The part where I say I love you
+The part where I step off the ledge
+
+[Chorus]
+Rehearsal
+For a scene that never plays
+Rehearsal
+For the words I'll never raise
+In front of you — in daylight
+Where they'd have to be real
+Rehearsal
+For the things I'll never feel
+Brave enough to say
+
+[Verse 3]
+I've said it to the ceiling
+I've said it to the rain
+I've said it to your voicemail
+Just to hear your name again
+
+[Chorus]
+Rehearsal
+For a scene that never plays
+Rehearsal
+For the words I'll never raise
+In front of you — in daylight
+Where they'd have to be real
+Rehearsal
+For the things I'll never feel
+Brave enough to say
+
+[Bridge]
+What if love is not the saying
+But the thousand times you practised
+What if love is not the stage
+But the empty room — the actress
+
+[Outro]
+Rehearsal
+Empty room
+Your name
+My mouth
+Almost`,
+
+  "romance-carta/5": `[Verse 1]
+Calei durante anos
+O que agora me sufoca
+Guardei silêncios educados
+Enquanto apodrecia a boca
+
+[Verse 2]
+Calei quando devias saber
+Que eu tremia quando rias
+Calei o medo e o desejo
+Calei noites e calei dias
+
+[Chorus]
+Antes que seja tarde
+Antes que a voz se gaste
+Antes que a gaveta feche
+E o corpo se afaste
+Digo-te agora — tudo
+O que calei como quem sangra
+Antes que seja tarde
+E a verdade seja só palavra — magra
+
+[Verse 3]
+Não é bonito o que vou dizer
+Não é limpo nem ensaiado
+É cru como uma ferida aberta
+É urgente como um recado
+
+[Chorus]
+Antes que seja tarde
+Antes que a voz se gaste
+Antes que a gaveta feche
+E o corpo se afaste
+Digo-te agora — tudo
+O que calei como quem sangra
+Antes que seja tarde
+E a verdade seja só palavra — magra
+
+[Bridge]
+Não me interessa se é bonito
+Interessa-me se é verdade
+E a verdade tem pressa agora
+Porque a vida não tem piedade
+
+[Outro]
+Agora
+Antes
+Que o silêncio
+Me coma
+Inteira`,
+
+  "romance-carta/6": `[Verse 1]
+Twelve seconds of your voice
+Saved on a phone that's cracked
+You called to say you'd be late
+And I never called you back
+
+[Verse 2]
+You said hey it's me I'm running
+Behind but save me some
+And then the beep — and then the silence
+And then the years that followed — numb
+
+[Chorus]
+Twelve seconds
+Of your ordinary voice
+Twelve seconds
+That I guard like it's the last choice
+I'll ever have to hear you
+Say something unremarkable
+Twelve seconds
+The most sacred twelve seconds I know
+
+[Verse 3]
+I've memorised the breath
+Between the hey and it's me
+The background noise — a bus
+A Tuesday you can't see
+
+[Chorus]
+Twelve seconds
+Of your ordinary voice
+Twelve seconds
+That I guard like it's the last choice
+I'll ever have to hear you
+Say something unremarkable
+Twelve seconds
+The most sacred twelve seconds I know
+
+[Bridge]
+The extraordinary lives
+Inside the ordinary sound
+Of someone saying hey it's me
+Before the world turned round
+
+[Outro]
+Hey
+It's me
+I'm running
+Behind
+Save me some`,
+
+  "romance-carta/7": `[Verse 1]
+Digo boa noite
+Mas quero dizer fica
+Digo está tudo bem
+Mas o peito contradiz a dica
+
+[Verse 2]
+Digo não faz mal
+Quando faz todo o mal do mundo
+Digo vai em paz
+E por dentro vou ao fundo
+
+[Chorus]
+O que digo e o que sinto
+São dois andares do mesmo prédio
+O que digo e o que sinto
+Vivem no mesmo enredo
+Um de boca aberta
+O outro de porta fechada
+O que digo — é educado
+O que sinto — é uma emboscada
+
+[Verse 3]
+Digo que já superei
+E o corpo ri-se de mim
+Digo que não preciso de ti
+E a mão procura-te assim
+
+[Chorus]
+O que digo e o que sinto
+São dois andares do mesmo prédio
+O que digo e o que sinto
+Vivem no mesmo enredo
+Um de boca aberta
+O outro de porta fechada
+O que digo — é educado
+O que sinto — é uma emboscada
+
+[Bridge]
+E se um dia os dois andares
+Se encontrassem no corredor
+Se a boca dissesse o que o peito sente
+Sem filtro e sem pudor
+
+[Outro]
+O que digo
+O que sinto
+A distância
+Entre os dois
+É onde moro`,
 
   "romance-carta/8": `[Verse 1]
-Read me like you read a letter
-From someone you used to love
-Slowly — with your whole body leaning in
-Your breath held just above
+It's three AM and the dark
+Is the only confessional I trust
+The pillow hears the things
+I'd never say — the tender and the unjust
 
 [Verse 2]
-Read me like a page
-That might not be there tomorrow
-With attention that weighs something
-With tenderness borrowed from sorrow
+At three AM the armour falls
+The makeup and the pose
+I say things to the ceiling
+That daylight won't expose
 
 [Chorus]
-Read me
-Not the way the world reads me
-Quick scroll and move on
-Read me
-The way you read a sentence
-That changes what you've known
-Read me with your hands
-Read me with your spine
-Read me like I'm the last page
-And there's still time
+Three AM confessions
+When the truth comes uninvited
+Three AM confessions
+When the heart gets finally ignited
+By the dark — by the quiet
+By the hour nobody owns
+Three AM confessions
+Are the truest things I've known
 
 [Verse 3]
-I've been skimmed by so many eyes
-Liked but never understood
-Quoted out of context
-Praised but never really — good
+I confess I'm not over you
+I confess I check your name
+I confess the independence
+Is a carefully built frame
 
 [Chorus]
-Read me
-Not the way the world reads me
-Quick scroll and move on
-Read me
-The way you read a sentence
-That changes what you've known
-Read me with your hands
-Read me with your spine
-Read me like I'm the last page
-And there's still time
+Three AM confessions
+When the truth comes uninvited
+Three AM confessions
+When the heart gets finally ignited
+By the dark — by the quiet
+By the hour nobody owns
+Three AM confessions
+Are the truest things I've known
 
 [Bridge]
-I'm not asking to be finished
-I'm asking to be started
-To be opened at the right page
-By someone wholehearted
+By morning I'll deny it
+By coffee I'll be fine
+But right now at three AM
+Every word of this is mine
 
 [Outro]
-Read me
-Slowly
-All of it
-Even the parts
-I crossed out`,
+Three AM
+The only hour
+I don't lie
+To myself`,
 
   "romance-carta/9": `[Verse 1]
-Já tinha posto o ponto final
-Já tinha fechado o caderno
-Já tinha guardado a caneta
-No bolso do casaco de Inverno
+Mandei a mensagem às onze e vinte
+Viste às vinte e três
+E entre o visto e a resposta
+Cabe um universo inteiro de talvez
 
 [Verse 2]
-Mas depois aconteceu uma coisa
-Que não estava no guião
-Abriste uma porta que eu já tinha fechado
-E entraste sem pedir perdão
+O ponto azul acendeu
+E eu prendi a respiração
+Como se dois tiques azuis
+Fossem uma declaração
 
 [Chorus]
-Post Scriptum
-Depois de tudo o que escrevi
-Post Scriptum
-Depois de tudo o que vivi
-Há mais — há sempre mais
-Quando se pensa que acabou
-Post Scriptum
-O amor não respeita o ponto final que eu pus
+Visto às vinte e três
+E o silêncio que se segue
+Visto às vinte e três
+E o coração que prossegue
+A inventar razões
+Para a demora e para o vazio
+Visto às vinte e três
+O romance mais moderno — e mais frio
 
 [Verse 3]
-E agora o texto continua
-Numa letra que não é só minha
-Numa página que não estava no plano
-Numa tinta que brilha como vinha
+Começas a escrever
+Três pontos a dançar no ecrã
+Depois param — depois desaparecem
+E eu fico para amanhã
 
 [Chorus]
-Post Scriptum
-Depois de tudo o que escrevi
-Post Scriptum
-Depois de tudo o que vivi
-Há mais — há sempre mais
-Quando se pensa que acabou
-Post Scriptum
-O amor não respeita o ponto final que eu pus
+Visto às vinte e três
+E o silêncio que se segue
+Visto às vinte e três
+E o coração que prossegue
+A inventar razões
+Para a demora e para o vazio
+Visto às vinte e três
+O romance mais moderno — e mais frio
 
 [Bridge]
-Os melhores livros não acabam
-Na última página impressa
-Acabam dentro de quem leu
-Com uma frase que recomeça
+Os nossos avós escreviam cartas
+Esperavam semanas sem sinal
+Nós temos tudo instantâneo
+E a espera é exactamente igual
 
 [Outro]
-PS
-Não acabou
-PS
-Continua
-PS
-Estou aqui`,
+Visto
+Sem resposta
+Três pontos
+Que param
+O amor digital`,
 
   "romance-carta/10": `[Verse 1]
-I'm writing to someone I haven't met
-On paper that doesn't exist yet
-With ink made of all the patience
-I've been saving since the last regret
+I had a sentence ready
+Polished, perfect, true
+But when I opened my mouth
+The words refused to move through
 
 [Verse 2]
-I don't know your name or your hands
-Or the city where you'll find this page
-I just know you're out there reading
-Something that will bring you to my stage
+I've read a thousand poems
+I've memorised the greats
+But standing here in front of you
+Language simply breaks
 
 [Chorus]
-Love letter to no one
-To the one who's on the way
-Love letter to no one
-To the ordinary day
-When I'll look up from my coffee
-And you'll be standing in the door
-Love letter to no one
-Who I've been writing to
-Since before
+Words fail
+At the edge of something real
+Words fail
+When the body starts to feel
+More than syntax can contain
+More than grammar can arrange
+Words fail
+And the silence says it all
 
 [Verse 3]
-I promise you imperfect
-I promise you the mess
-I promise you the 3am version
-And the morning tenderness
+Maybe that's the proof
+That this is not a performance
+When the words run out
+What's left is raw importance
 
 [Chorus]
-Love letter to no one
-To the one who's on the way
-Love letter to no one
-To the ordinary day
-When I'll look up from my coffee
-And you'll be standing in the door
-Love letter to no one
-Who I've been writing to
-Since before
+Words fail
+At the edge of something real
+Words fail
+When the body starts to feel
+More than syntax can contain
+More than grammar can arrange
+Words fail
+And the silence says it all
 
 [Bridge]
-Every love that didn't work
-Was a sentence in this letter
-Every heartbreak taught my hand
-How to write you something better
+The greatest love I know
+Was never said out loud
+It was a hand — a look
+A staying in the crowd
 
 [Outro]
-Dear no one
-Dear someone
-Dear the love
-I haven't ruined yet
-Dear you
-Wherever you are
-I'm ready`,
+I love you
+More than the words
+I love you
+Which is why
+I can never quite
+Say it right`,
 
   // ─────────────────────────────────────────────
-  // SAUDADE — A distância que se sente no corpo
+  // SAUDADE — Distância, falta, longing
   // ─────────────────────────────────────────────
 
   "romance-saudade/1": `[Verse 1]
-A saudade não está na cabeça
-Está no fundo da barriga
-Naquele sítio onde a fome se confunde
-Com a falta antiga
+O teu lado da cama está frio
+A marca do teu corpo desapareceu
+Mas eu deito-me do meu lado
+Como se o teu ainda existisse — e eu sei que não sei
 
 [Verse 2]
-Sinto-te no joelho esquerdo
-Naquele músculo que dói quando chove
-Na tensão do maxilar
-Que aperta quando o corpo não se move
+Ponho a mão no vazio
+Onde estavas — quente e presente
+E o lençol devolve-me o nada
+Com uma paciência doente
 
 [Chorus]
-Saudade tem corpo
-Tem peso e tem temperatura
-Saudade tem corpo
-Dói como dói uma sutura
-Não é pensamento
-Não é memória — é carne
-Saudade tem corpo
-E o meu já sabe onde te guarne
+O lado vazio
+Pesa mais do que o ocupado
+O lado vazio
+Tem o peso de um passado
+Inteiro deitado ali
+Com a forma do teu corpo
+O lado vazio
+Não está vazio — está morto
 
 [Verse 3]
-Acordo com as costas curvadas
-Como se o teu peso ainda lá estivesse
-E passo o dia a carregar
-Alguém que já não aparece
+Às vezes ponho almofadas
+Para fingir que há volume
+Mas o corpo sabe a diferença
+Entre presença e um costume
 
 [Chorus]
-Saudade tem corpo
-Tem peso e tem temperatura
-Saudade tem corpo
-Dói como dói uma sutura
-Não é pensamento
-Não é memória — é carne
-Saudade tem corpo
-E o meu já sabe onde te guarne
+O lado vazio
+Pesa mais do que o ocupado
+O lado vazio
+Tem o peso de um passado
+Inteiro deitado ali
+Com a forma do teu corpo
+O lado vazio
+Não está vazio — está morto
 
 [Bridge]
-Dizem que passa
-Que o tempo trata
-Mas o corpo não tem calendário
-E a falta não tem data
+Vou aprender a dormir
+No meio da cama toda
+Mas por agora fico aqui
+Do meu lado — à tua moda
 
 [Outro]
-Saudade
-No osso
-Na pele
-Na boca
-Em todo o lado`,
+O lado vazio
+Ainda é teu
+Ainda quente
+Na minha cabeça
+Ainda presente`,
 
   "romance-saudade/2": `[Verse 1]
-There's a dent in the mattress
-Where you used to sleep
-A canyon shaped like your shoulder
-That my body still keeps
-
-[Verse 2]
-Your coffee mug is in the cupboard
-Handle turned the way you left it
-I haven't moved it in four months
-Like a museum exhibit
-
-[Chorus]
-The shape of gone
-Is not empty — it's full
-The shape of gone
-Has its own gravitational pull
-It bends the light around it
-It warps the air
-The shape of gone
-Is the proof that you were here
-
-[Verse 3]
-Your shoes left marks on the carpet
-By the door where you stood
-Two faded rectangles of nothing
-Where something holy stood
-
-[Chorus]
-The shape of gone
-Is not empty — it's full
-The shape of gone
-Has its own gravitational pull
-It bends the light around it
-It warps the air
-The shape of gone
-Is the proof that you were here
-
-[Bridge]
-Absence isn't nothing
-Absence is a sculpture
-Carved from all the things
-That used to be our culture
-
-[Outro]
-Gone
-But shaped
-Still here
-In the empty
-In the full`,
-
-  "romance-saudade/3": `[Verse 1]
-Lavei os lençóis e perdi-te
-O teu cheiro saiu com a espuma
-E fiquei ali parada
-Com a máquina a centrifugar a bruma
-
-[Verse 2]
-Ainda cheiras a sândalo e a sono
-A café derramado na toalha
-A sabonete barato e a pele
-Que ficou no algodão como uma mortalha
-
-[Chorus]
-O cheiro que ficou
-Depois de tudo o resto ir embora
-O cheiro que ficou
-Na almofada àquela hora
-Quando o nariz encontra o que a boca perdeu
-E o corpo inteiro lembra
-O cheiro que ficou
-É o último pedaço de quem te escreveu
-
-[Verse 3]
-Agora uso o teu perfume
-Ponho nos pulsos antes de dormir
-Não por vaidade — por saudade
-Por não te conseguir sentir
-
-[Chorus]
-O cheiro que ficou
-Depois de tudo o resto ir embora
-O cheiro que ficou
-Na almofada àquela hora
-Quando o nariz encontra o que a boca perdeu
-E o corpo inteiro lembra
-O cheiro que ficou
-É o último pedaço de quem te escreveu
-
-[Bridge]
-Os olhos mentem
-Os ouvidos esquecem
-Mas o nariz — o nariz
-Guarda tudo o que os outros não merecem
-
-[Outro]
-Cheiro
-Memória
-Pele
-Falta
-Sempre`,
-
-  "romance-saudade/4": `[Verse 1]
 I reach for you at 2am
 My hand lands on cold sheets
 The body doesn't know you're gone
@@ -1264,372 +1156,473 @@ Still turning
 To tell you
 Something`,
 
-  "romance-saudade/5": `[Verse 1]
-São três da manhã e a casa range
-Como se soubesse que estou acordada
-O frigorífico zumbe o teu nome
-A torneira pinga a tua chamada
+  "romance-saudade/3": `[Verse 1]
+Os domingos sem ti são mais compridos
+Têm mais horas e mais paredes
+A manhã arrasta-se pela sala
+Como um animal preso nas redes
 
 [Verse 2]
-A esta hora tudo piora
-O silêncio é mais gordo e mais cruel
-A almofada cheira a outro tempo
-E o escuro sabe a mel azedo e fiel
+Costumávamos ler na cama
+Tu o jornal, eu o romance
+O café esfriava entre nós
+Sem pressa e sem alcance
 
 [Chorus]
-Três da manhã
-A pior hora para ter saudades
-Três da manhã
-Quando caem todas as verdades
-Que de dia eu escondo bem
-Por trás de cafés e compromissos
-Três da manhã
-Onde eu desisto dos meus disfarces e feitiços
+Domingo
+O dia mais longo da semana
+Domingo
+Sem ti é uma campana
+Que toca num quarto vazio
+E ninguém vem atender
+Domingo — sem ti
+É só um dia a acontecer
 
 [Verse 3]
-Pego no telemóvel e olho
-Para o teu nome na lista de contactos
-Quase ligo — quase ligo sempre
-Mas ponho de lado os meus actos
+Agora leio sozinha
+E o café aquece de mais
+Porque não há ninguém para me distrair
+Com perguntas banais
 
 [Chorus]
-Três da manhã
-A pior hora para ter saudades
-Três da manhã
-Quando caem todas as verdades
-Que de dia eu escondo bem
-Por trás de cafés e compromissos
-Três da manhã
-Onde eu desisto dos meus disfarces e feitiços
+Domingo
+O dia mais longo da semana
+Domingo
+Sem ti é uma campana
+Que toca num quarto vazio
+E ninguém vem atender
+Domingo — sem ti
+É só um dia a acontecer
 
 [Bridge]
-De manhã vou estar bem
-Vou rir e ser adulta
-Mas agora às três
-Sou só uma miúda estúpida e oculta
+Segunda-feira salva-me
+O trabalho e o barulho
+Mas o domingo volta sempre
+Com a calma e com o orgulho
 
 [Outro]
-Três
-Da manhã
-A hora
-Em que sou
-Toda verdade`,
+Domingo
+Sem ti
+Comprido
+Quieto
+Teu`,
+
+  "romance-saudade/4": `[Verse 1]
+I found your jacket in the closet
+The brown one with the broken zip
+I put it on like armour
+And breathed you in — lip to lip
+
+[Verse 2]
+It smells like Sunday mornings
+And the walk we took in rain
+It smells like the argument
+We never had again
+
+[Chorus]
+The jacket
+Still carries your weather
+The jacket
+Holds us together
+In the lining and the collar
+In the pocket's quiet dust
+The jacket
+Is the last thing I trust
+To smell like you
+
+[Verse 3]
+I wear it to the market
+Where nobody knows my grief
+I look like a woman in a coat
+I feel like a woman seeking relief
+
+[Chorus]
+The jacket
+Still carries your weather
+The jacket
+Holds us together
+In the lining and the collar
+In the pocket's quiet dust
+The jacket
+Is the last thing I trust
+To smell like you
+
+[Bridge]
+One day the scent will fade
+And I'll just have a coat
+But right now it's a country
+Where your presence still floats
+
+[Outro]
+The jacket
+Your smell
+Your weather
+My skin
+Your ghost`,
+
+  "romance-saudade/5": `[Verse 1]
+O aeroporto é o sítio mais cruel
+Que alguém inventou para amar
+Uma porta que separa dois mundos
+E um vidro que não deixa tocar
+
+[Verse 2]
+O último abraço teve um peso
+Que os meus braços ainda carregam
+Apertei-te como quem aperta
+Uma coisa que as mãos não entregam
+
+[Chorus]
+Aeroporto
+A despedida que repito na cabeça
+Aeroporto
+A cena que o corpo não endireça
+O teu rosto a encolher
+Atrás do vidro da porta de embarque
+Aeroporto
+O sítio onde o amor desembarca — e parte
+
+[Verse 3]
+Revi essa cena mil vezes
+De mil ângulos diferentes
+Mas em nenhum deles eu corro
+Digo fica — como se nada fosse urgente
+
+[Chorus]
+Aeroporto
+A despedida que repito na cabeça
+Aeroporto
+A cena que o corpo não endireça
+O teu rosto a encolher
+Atrás do vidro da porta de embarque
+Aeroporto
+O sítio onde o amor desembarca — e parte
+
+[Bridge]
+Se eu pudesse voltar àquele chão
+De alcatifa cinzenta e néon
+Dizia-te o que calei
+Em vez de acenar — um adeus educado e bom
+
+[Outro]
+Aeroporto
+Vidro
+Partida
+Silêncio
+Adeus`,
 
   "romance-saudade/6": `[Verse 1]
-Your jacket's on the chair
-The one you wore in March
-It's been there seven months
-Like a monument — an arch
+It's midnight here and midnight there
+Seven hours apart but still
+We share the same dark sky
+The same moon on the windowsill
 
 [Verse 2]
-The book you left half-read
-Still open on page forty-three
-I put a bookmark in
-To save your place — for nobody
+You texted me a photo
+Of the moon above your street
+I stepped outside and found it
+Hanging low — almost at my feet
 
 [Chorus]
-Still here
-Everything you left is still here
-Still here
-Like a season that forgot to clear
-Your toothbrush by the sink
-Your socks behind the door
-Still here
-As if you just stepped out
-And you'll be back by four
+Same moon
+At least we have the same moon
+Same moon
+The only room
+That fits us both at once
+Without a ticket or a plane
+Same moon
+The only thing that doesn't change
 
 [Verse 3]
-The neighbours think I'm fine
-The garden looks maintained
-But the inside of this house
-Is a museum of the unexplained
+I wonder if you're looking up
+Right now — this very breath
+And if the moonlight on your face
+Looks anything like what I have left
 
 [Chorus]
-Still here
-Everything you left is still here
-Still here
-Like a season that forgot to clear
-Your toothbrush by the sink
-Your socks behind the door
-Still here
-As if you just stepped out
-And you'll be back by four
+Same moon
+At least we have the same moon
+Same moon
+The only room
+That fits us both at once
+Without a ticket or a plane
+Same moon
+The only thing that doesn't change
 
 [Bridge]
-I should pack your things
-That's what the books all say
-But every time I start
-I put them back the other way
+The sun divides us
+Gives you morning when I sleep
+But the moon — the moon is ours
+The only promise we can keep
 
 [Outro]
-Still here
-Still yours
-Still waiting
-Not for you
-For me to let go`,
+Same moon
+Same sky
+Different beds
+Same sigh
+Same moon`,
 
   "romance-saudade/7": `[Verse 1]
-Ando pelo mundo como metade
-Com um lado do peito mais vazio
-Como uma laranja cortada ao meio
-A secar devagar no frio
+Ainda ponho a chaleira para dois
+Ainda aqueço a água a mais
+Ainda preparo a tua chávena
+Com o saquinho que tu mais gostavas — e paz
 
 [Verse 2]
-O meu braço esquerdo não descansa
-Porque era o teu lado da cama
-A minha mão procura a tua anca
-E encontra só a grama
+A tua chávena está no escorredor
+Com a asa para a direita como deixavas
+E eu lavo-a todas as semanas
+Mesmo que ninguém a use — como se me salvavas
 
 [Chorus]
-Metade
-Ando pelo mundo como metade
-Metade
-Com esta estranha saudade
-De um corpo inteiro que existia
-Quando tu estavas ao lado
-Metade
-E a outra metade — está guardada
+O teu chá
+Ainda preparo o teu chá
+O teu chá
+Com mel e sem pressa — está
+Na bancada a arrefecer
+Como arrefece a esperança
+O teu chá
+A rotina que virou lembrança
 
 [Verse 3]
-As pessoas dizem que sou forte
-Que estou bem, que superei
-Mas por dentro ando tão partida
-Que já nem sei o que sei
+O gesto é mais forte que a razão
+A mão sabe o caminho de cor
+Chaleira, saquinho, mel, água
+Tudo menos o teu calor
 
 [Chorus]
-Metade
-Ando pelo mundo como metade
-Metade
-Com esta estranha saudade
-De um corpo inteiro que existia
-Quando tu estavas ao lado
-Metade
-E a outra metade — está guardada
+O teu chá
+Ainda preparo o teu chá
+O teu chá
+Com mel e sem pressa — está
+Na bancada a arrefecer
+Como arrefece a esperança
+O teu chá
+A rotina que virou lembrança
 
 [Bridge]
-Não quero ficar inteira sozinha
-Quero aprender a ser metade
-Que não precisa da outra parte
-Para ter dignidade
+Não é saudade — é o corpo
+Que não aprendeu a parar
+De fazer coisas para dois
+Quando já só sabe amar
 
 [Outro]
-Metade
-Mas de pé
-Metade
-Mas presente
-Metade
-Mas minha`,
+Chá para dois
+Só estou eu
+Mas o gesto
+Ainda é teu
+Ainda é teu`,
 
   "romance-saudade/8": `[Verse 1]
-Seven hundred miles between us
-I can feel every single one
-They sit on my chest at nighttime
-Like bricks beneath the sun
+Two thousand miles between your bed
+And the bed where I lie still
+Two thousand miles of empty air
+That my arms can never fill
 
 [Verse 2]
-I measure the distance in heartbeats
-In hours and in zones
-In the lag between your message
-And the weight inside my bones
+The distance has a texture
+Like wool against my throat
+It tightens every evening
+When I read your latest note
 
 [Chorus]
-The distance
-Is not empty space
-The distance
-Has a texture and a taste
-It's thick like honey
-Heavy like stone
-The distance
-Is the longest way
-To feel alone
+Distance
+The third person in this love
+Distance
+Always standing just above
+Our plans and our bodies
+Our time zones and our sleep
+Distance
+The thing we didn't choose to keep
 
 [Verse 3]
-My body doesn't understand
-That yours is somewhere else
-It still turns toward your voice
-The way a compass knows the pulse
+I know your morning happens
+While I'm turning off the light
+We share the same day differently
+You have my day's goodnight
 
 [Chorus]
-The distance
-Is not empty space
-The distance
-Has a texture and a taste
-It's thick like honey
-Heavy like stone
-The distance
-Is the longest way
-To feel alone
+Distance
+The third person in this love
+Distance
+Always standing just above
+Our plans and our bodies
+Our time zones and our sleep
+Distance
+The thing we didn't choose to keep
 
 [Bridge]
-If I could fold the map in half
-And press the two dots together
-Your city and mine would touch
-And the distance would be a feather
+If love were measured in kilometres
+Ours would circle the earth twice
+But love is measured in the staying
+And the staying has its price
 
 [Outro]
-Seven hundred miles
-And every single one
-Lives in my body
-Like a second skeleton`,
+Distance
+Between your hand
+And mine
+Is the longest
+Shortest line`,
 
   "romance-saudade/9": `[Verse 1]
-Volta
-Não como pedido — como oração
-Como quem acende uma vela
-E a coloca no peito em vez de no chão
+Voltei ao restaurante
+Onde jantámos em Julho
+Sentei-me na mesma mesa
+E pedi o mesmo barulho
 
 [Verse 2]
-Volta
-Não com promessas nem com planos
-Volta com o corpo que tens
-Com as mãos gastas e os enganos
+O empregado não se lembrava
+De nós — nem devia
+Éramos só dois clientes
+Numa terça-feira de chuva e magia
 
 [Chorus]
-Volta
-Como a maré volta à praia
-Volta
-Como a noite volta à calçada
-Não porque escolhe
-Mas porque é o caminho que conhece
-Volta
-Porque o meu corpo te reconhece
+Voltar
+Ao sítio onde fomos felizes — sozinha
+Voltar
+E descobrir que a cozinha
+Tem outro chefe e a mesa está noutro sítio
+E que nada ficou à espera
+Voltar
+E perceber que a felicidade era — era
 
 [Verse 3]
-Não preciso que fiques para sempre
-Não preciso de certezas nem de anéis
-Preciso que entres pela porta
-E te sentes como quem é fiel
+A rua parecia mais estreita
+A luz mais artificial
+O banco do jardim mais frio
+E eu — mais real
 
 [Chorus]
-Volta
-Como a maré volta à praia
-Volta
-Como a noite volta à calçada
-Não porque escolhe
-Mas porque é o caminho que conhece
-Volta
-Porque o meu corpo te reconhece
+Voltar
+Ao sítio onde fomos felizes — sozinha
+Voltar
+E descobrir que a cozinha
+Tem outro chefe e a mesa está noutro sítio
+E que nada ficou à espera
+Voltar
+E perceber que a felicidade era — era
 
 [Bridge]
-E se não voltares
-Eu aprendo a ser o mar
-Que não espera a maré
-Simplesmente sabe respirar
+Os sítios não guardam pessoas
+Guardam paredes e chão
+A memória é que insiste
+Em pôr-te em cada esquina e estação
 
 [Outro]
-Volta
-Ou não voltes
-Mas sabe
-Que a porta
-Nunca fechou`,
+Voltar
+Sozinha
+Ao mesmo sítio
+Diferente
+E seguir`,
 
   "romance-saudade/10": `[Verse 1]
-Home was never a city
-Never the house with the blue front door
-Home was the way your shoulder
-Became my living room floor
+They told me love moves on
+That time would wash the stain
+But here I am — still standing
+In the same spot — in the same rain
 
 [Verse 2]
-Home was your voice in the kitchen
-Singing the wrong words to every song
-Home was the space you made for me
-In a world where I didn't belong
+I didn't choose to linger
+The body chose for me
+It planted roots beside your name
+And grew into a tree
 
 [Chorus]
-Home was you
-Not the walls or the address
-Home was you
-Not the postcode or the mess
-It was the temperature of your presence
-The gravity of your skin
-Home was you
-And now I don't know
-Where to begin
+Still here
+After everything — still here
+Still here
+Not because I haven't tried to clear
+The room — the bed — the shelf
+But because the love outlived
+The one who left — and left me
+With a version of myself
+That's still here
 
 [Verse 3]
-I've tried other houses since
-Other cities — other beds
-But every room is just a room
-Without the things you said
+I've redecorated twice
+Changed the curtains and the locks
+But the feeling doesn't care
+About paint or clocks
 
 [Chorus]
-Home was you
-Not the walls or the address
-Home was you
-Not the postcode or the mess
-It was the temperature of your presence
-The gravity of your skin
-Home was you
-And now I don't know
-Where to begin
+Still here
+After everything — still here
+Still here
+Not because I haven't tried to clear
+The room — the bed — the shelf
+But because the love outlived
+The one who left — and left me
+With a version of myself
+That's still here
 
 [Bridge]
-Maybe home is not a person
-Maybe that was the mistake
-But my body disagrees
-With every morning that I wake
+Maybe still here is not defeat
+Maybe still here is the proof
+That what we had was big enough
+To outlast the roof
 
 [Outro]
-Home was you
-Home was you
-Home was you
-And now I'm building
-Something new`,
+Still here
+Not stuck
+Still here
+Not waiting
+Still here
+Still mine`,
 
   // ─────────────────────────────────────────────
-  // FOGO LENTO — O desejo que não arde, transforma
+  // FOGO LENTO — Desejo, paixão que constrói devagar
   // ─────────────────────────────────────────────
 
   "romance-fogo-lento/1": `[Verse 1]
-Não me toques depressa
-Não me acendas como fósforo
-Acende-me devagar
-Como quem sopra numa brasa com propósito
+O segundo antes do beijo
+É mais intenso que o beijo
+É o ar entre duas bocas
+Carregado de desejo
 
 [Verse 2]
-As tuas mãos sabem esperar
-Têm paciência de quem sabe
-Que o fogo melhor não é o que arde
-É o que transforma sem que se acabe
+Sinto a tua respiração
+A centímetros da minha
+O lábio inferior treme
+A distância é tão vizinha
 
 [Chorus]
-Fogo lento
-Que não queima — muda
-Fogo lento
-Que não grita — escuta
-Debaixo da pele há uma brasa
-Que não precisa de vento
-Fogo lento
-O desejo que tem o seu próprio tempo
+Antes do beijo
+Quando o corpo já sabe
+Antes do beijo
+Quando o ar se faz suave
+E tudo pára — o relógio
+A cidade — o pensamento
+Antes do beijo
+É o momento mais lento do momento
 
 [Verse 3]
-Quero arder contigo assim
-Sem pressa e sem alarme
-Ao ritmo do sangue nas veias
-Ao ritmo do corpo a transformar-me
+E se ficássemos aqui
+Para sempre neste quase
+Neste centímetro sagrado
+Onde o desejo não se desfaz
 
 [Chorus]
-Fogo lento
-Que não queima — muda
-Fogo lento
-Que não grita — escuta
-Debaixo da pele há uma brasa
-Que não precisa de vento
-Fogo lento
-O desejo que tem o seu próprio tempo
+Antes do beijo
+Quando o corpo já sabe
+Antes do beijo
+Quando o ar se faz suave
+E tudo pára — o relógio
+A cidade — o pensamento
+Antes do beijo
+É o momento mais lento do momento
 
 [Bridge]
-O mundo quer tudo rápido
-O prazer instantâneo e descartável
-Mas eu quero a chama que demora
-A certeza inabalável
+O beijo é bonito
+Mas o antes é divino
+O quase é mais poderoso
+Que o destino
 
 [Outro]
-Lento
-Lento
-Como quem sabe
-Que o melhor fogo
-É o que nunca se apaga`,
+Antes
+Quase
+Um centímetro
+De desejo
+Infinito`,
 
   "romance-fogo-lento/2": `[Verse 1]
 I knew before you touched me
@@ -1682,936 +1675,933 @@ The fire that lasts
 Is the fire that's kind`,
 
   "romance-fogo-lento/3": `[Verse 1]
-Não tenhas pressa
-A noite é comprida e é nossa
-Ninguém nos espera
-Nenhum relógio nos acossa
+Olhas-me do outro lado da sala
+Com olhos que dizem tudo
+Sem abrir a boca — dizes mais
+Do que qualquer discurso mudo
 
 [Verse 2]
-Pousa a mão no meu joelho
-Como quem pousa uma oração
-Deixa o silêncio fazer o trabalho
-Que não cabe na razão
+O olhar carrega peso
+Atravessa a roupa e a pose
+E chega àquele sítio
+Onde a pele se expõe — sem dose
 
 [Chorus]
-Demora
-Demora como o pôr-do-sol demora
-Demora
-Como a fruta que amadurece e não implora
-Temos a noite toda
-E mais a madrugada
-Demora — que o melhor do desejo
-É a estrada
+O olhar
+Quando os olhos dizem o que a boca não pode
+O olhar
+Que atravessa qualquer episódio
+Em público — rodeados de gente
+E ninguém vê o que se passa
+O olhar
+É a conversa mais quente sem uma só frase
 
 [Verse 3]
-Quero sentir cada segundo
-Entre a tua mão e a minha pele
-Esse espaço infinito
-Onde o ar ainda se aquece e gela
+Quero mais desses olhares
+Que são tocas disfarçadas
+Que são beijos sem contacto
+Que são portas mal fechadas
 
 [Chorus]
-Demora
-Demora como o pôr-do-sol demora
-Demora
-Como a fruta que amadurece e não implora
-Temos a noite toda
-E mais a madrugada
-Demora — que o melhor do desejo
-É a estrada
+O olhar
+Quando os olhos dizem o que a boca não pode
+O olhar
+Que atravessa qualquer episódio
+Em público — rodeados de gente
+E ninguém vê o que se passa
+O olhar
+É a conversa mais quente sem uma só frase
 
 [Bridge]
-Quem tem pressa
-Perde o gosto
-Quem demora
-Leva o rosto inteiro
+Há olhares que despem
+Mais do que as mãos
+Há olhares que tocam
+Mais do que os beijos vãos
 
 [Outro]
-Demora
-Fica
-Devagar
-Temos tempo
-Temos pele
-Temos ar`,
+Olha-me
+Assim
+Outra vez
+Sem palavras
+Sem fim`,
 
   "romance-fogo-lento/4": `[Verse 1]
-There's a pull beneath my sternum
-Something ancient — something true
-A force I can't negotiate
-A compass pointing straight at you
+It's not the clothes that come off
+It's the armour underneath
+The voice that drops its polish
+The jaw that unclenches its teeth
 
 [Verse 2]
-I tried to walk the other way
-I tried to call it something else
-But gravity doesn't care
-About the stories that we tell ourselves
+I watched you remove your watch
+Your ring — your daily face
+And what was left was someone
+I had never seen in this space
 
 [Chorus]
-Gravity
-Pulling me to you
-Gravity
-What am I supposed to do
-With a force that doesn't ask
-That doesn't bargain or explain
-Gravity
-The most beautiful kind of pain
+Undress
+More than the skin — the story
+Undress
+Not the body but the worry
+The version you perform for work
+The smile you wear for friends
+Undress
+Until the performance ends
 
 [Verse 3]
-You're not even trying
-You're just standing in the room
-And every atom in my body
-Leans towards you like a bloom
+I want to see you naked
+Not in the way the magazines mean
+I want to see you without
+The careful curated scene
 
 [Chorus]
-Gravity
-Pulling me to you
-Gravity
-What am I supposed to do
-With a force that doesn't ask
-That doesn't bargain or explain
-Gravity
-The most beautiful kind of pain
+Undress
+More than the skin — the story
+Undress
+Not the body but the worry
+The version you perform for work
+The smile you wear for friends
+Undress
+Until the performance ends
 
 [Bridge]
-Newton had it right
-Bodies attract
-The bigger the mass
-The harder the impact
+The bravest thing a body does
+Is not the standing tall
+It's the letting down of every guard
+And showing someone all
 
 [Outro]
-Falling
-Not down
-But towards
-Always towards
-Always you`,
+Undress
+The mask
+The voice
+The fear
+And let me see
+Who's here`,
 
   "romance-fogo-lento/5": `[Verse 1]
-Toca-me devagar
-Como quem lê em braille
-Cada poro é uma letra
-Cada arrepio um detalhe
+A cidade desligou as luzes
+Os carros pararam de passar
+A rua é só nossa agora
+E o silêncio sabe a luar
 
 [Verse 2]
-Não quero que este momento passe
-Como passam todos os outros
-Quero gravar cada gesto
-Nos meus ossos mais devotos
+Meia-noite e o teu corpo
+Tem outra temperatura
+A pele acorda diferente
+Quando a noite faz a cura
 
 [Chorus]
-Toca-me devagar
-Quero lembrar cada segundo
-Toca-me devagar
-Como se fosse o fim do mundo
-Não o fim que destrói
-Mas o que pára o tempo
-Toca-me devagar
-E faz de cada toque um sacramento
+Meia-noite
+A cidade dorme, nós não
+Meia-noite
+A hora da rendição
+Quando o dia já não manda
+E o corpo diz que sim
+Meia-noite
+Onde tudo começa por fim
 
 [Verse 3]
-As minhas costas são o mapa
-De tudo o que já senti
-Toca onde ninguém tocou
-E descobre o que há em mim
+As sombras no tecto mexem-se
+Ao ritmo da respiração
+E nós inventamos um mundo
+Que só existe na escuridão
 
 [Chorus]
-Toca-me devagar
-Quero lembrar cada segundo
-Toca-me devagar
-Como se fosse o fim do mundo
-Não o fim que destrói
-Mas o que pára o tempo
-Toca-me devagar
-E faz de cada toque um sacramento
+Meia-noite
+A cidade dorme, nós não
+Meia-noite
+A hora da rendição
+Quando o dia já não manda
+E o corpo diz que sim
+Meia-noite
+Onde tudo começa por fim
 
 [Bridge]
-A pressa é o contrário
-Do que o corpo quer dizer
-O corpo quer ser lido
-Não apenas percorrer
+De dia somos pessoas
+Com nomes e obrigações
+De noite somos só corpos
+Com instintos e sem razões
 
 [Outro]
-Devagar
-Com atenção
-Com as mãos
-Com intenção
-Devagar`,
+Meia-noite
+Nós dois
+O escuro
+O fogo
+O sim`,
 
   "romance-fogo-lento/6": `[Verse 1]
-Every time I get closer
-You move an inch away
-Not to run — but to keep
-The wanting in the play
+Your hands know things
+My mouth has never learned
+The geography of wanting
+The places that have burned
 
 [Verse 2]
-I've been reaching for your mouth
-For what feels like seventeen years
-The distance between our lips
-Is the sweetest of frontiers
+Your hands read me
+Like someone reads in braille
+Every bump and every tremor
+Every ridge and every trail
 
 [Chorus]
-Closer
-But never quite arriving
-Closer
-And that's what keeps it thriving
-The space between our bodies
-Is electric, not empty
-Closer
-Is the destination — not the ending
+Your hands
+Know me better than my name
+Your hands
+Speak a language without blame
+Without agenda without rush
+Without the clumsy words that fail
+Your hands
+Tell the story without the veil
 
 [Verse 3]
-I trace the edge of you
-Like a country I can't enter
-My passport is my patience
-And the border is the centre
+Other hands have touched me
+But yours — yours memorise
+Like cartographers of longing
+Drawing maps behind my eyes
 
 [Chorus]
-Closer
-But never quite arriving
-Closer
-And that's what keeps it thriving
-The space between our bodies
-Is electric, not empty
-Closer
-Is the destination — not the ending
+Your hands
+Know me better than my name
+Your hands
+Speak a language without blame
+Without agenda without rush
+Without the clumsy words that fail
+Your hands
+Tell the story without the veil
 
 [Bridge]
-If I ever finally get there
-I'm afraid the wanting dies
-So keep me one inch out
-Where the longing never lies
+If I could choose one thing to keep
+When everything else goes
+I'd choose the memory of your hands
+And how my body knows
 
 [Outro]
-Closer
-Just one inch
-Closer
-Always one inch
-Closer`,
+Your hands
+My skin
+A conversation
+That never ends
+Your hands`,
 
   "romance-fogo-lento/7": `[Verse 1]
-O suor é uma língua
-Que o corpo fala sem pudor
-A pele salgada e honesta
-Sem vírgulas e sem temor
+Quero
+E não peço desculpa por querer
+Quero com o corpo todo
+Quero com a pele a arder
 
 [Verse 2]
-Suamos como quem reza
-Em catedrais de lençóis
-O ritmo é antigo e sagrado
-Anterior a qualquer depois
+Quero
+Como as mulheres não deviam querer
+Sem pudor e sem recato
+Sem esperar que venhas preencher
 
 [Chorus]
-Suor
-Comunhão de corpos vivos
-Suor
-Os sacramentos mais primitivos
-Não é o perfume que seduz
-É a verdade da pele nua
-Suor
-A oração que o corpo sua
+Quero
+Digo-o com a boca cheia
+Quero
+Sem vergonha e sem cadeia
+Quero-te com as mãos abertas
+E os olhos bem abertos
+Quero — porque o desejo feminino
+Não é um pecado — é um acerto
 
 [Verse 3]
-Misturar o teu suor com o meu
-É a coisa mais íntima que sei
-Dois rios que se encontram
-Sem margem e sem lei
+Ensinaram-me a esperar
+A ser escolhida e a calar
+Mas o meu corpo tem vontade própria
+E não sabe recuar
 
 [Chorus]
-Suor
-Comunhão de corpos vivos
-Suor
-Os sacramentos mais primitivos
-Não é o perfume que seduz
-É a verdade da pele nua
-Suor
-A oração que o corpo sua
+Quero
+Digo-o com a boca cheia
+Quero
+Sem vergonha e sem cadeia
+Quero-te com as mãos abertas
+E os olhos bem abertos
+Quero — porque o desejo feminino
+Não é um pecado — é um acerto
 
 [Bridge]
-O mundo quer corpos limpos
-Perfumados e contidos
-Mas o amor de verdade
-Cheira a sal e a vividos
+O mundo quer mulheres quietas
+Que esperem e que aceitem
+Mas eu quero alto
+E não me importa que me rejeitem
 
 [Outro]
-Suor
-Sal
-Corpo
-Verdade
-Suor`,
+Quero
+Sem desculpa
+Sem licença
+Quero
+E isso basta`,
 
   "romance-fogo-lento/8": `[Verse 1]
-I came to you stitched together
-Thread by careful thread
-You took one look at the seams
-And pulled — until I shred
+The room is quiet now
+The sheets have lost their heat
+Your breathing has that rhythm
+That means you're almost asleep
 
 [Verse 2]
-Not violently — tenderly
-The way you peel a fruit
-Layer by careful layer
-Until you find the root
+My hand is on your chest
+Feeling the slow descend
+The body after wanting
+Is the gentlest kind of friend
 
 [Chorus]
-Unravel me
-I'm tired of holding shape
-Unravel me
-Like a knot that wants escape
-I've been so tightly wound
-For everyone else's sake
-Unravel me
-And let me finally break
-Into something softer
+Aftermath
+The silence after the storm
+Aftermath
+When the body returns to form
+Not the fire but the embers
+Not the hunger but the full
+Aftermath
+The most beautiful kind of lull
 
 [Verse 3]
-My armour was so beautiful
-Everyone admired the shine
-But underneath the metal
-Was a woman begging for the vine
+Your eyelids are half closed
+Your fingers barely curl
+In this quiet after everything
+I feel like the whole world
 
 [Chorus]
-Unravel me
-I'm tired of holding shape
-Unravel me
-Like a knot that wants escape
-I've been so tightly wound
-For everyone else's sake
-Unravel me
-And let me finally break
-Into something softer
+Aftermath
+The silence after the storm
+Aftermath
+When the body returns to form
+Not the fire but the embers
+Not the hunger but the full
+Aftermath
+The most beautiful kind of lull
 
 [Bridge]
-Surrender is not weakness
-It's the strongest thing I've done
-To let someone untangle me
-And still face the sun
+Nobody writes songs about this part
+The cooling down — the soft
+But this is where I love you most
+In the ordinary aloft
 
 [Outro]
-Unravel
-Untangle
-Undo
-And underneath
-Find something true`,
+After
+The fire
+The quiet
+The warm
+The still
+The us`,
 
   "romance-fogo-lento/9": `[Verse 1]
-São quatro da manhã
-E a tua respiração é a minha música
-O peito sobe e desce
-Na cadência mais específica
+Deixaste uma marca no meu ombro
+Onde a tua boca descansou
+Não é nódoa — é território
+Que o teu corpo reclamou
 
 [Verse 2]
-Estamos entre o desejo e o sono
-Naquele corredor dourado
-Onde o corpo já descansa
-Mas a pele ainda lembra o que foi dado
+Tenho as tuas impressões digitais
+Invisíveis na cintura
+E um mapa de beijos antigos
+Que a pele guarda com ternura
 
 [Chorus]
-Madrugada
-A hora entre o desejo e o sono
-Madrugada
-Onde o corpo é o seu próprio trono
-Já não se quer nada
-Já não se precisa de mais
-Madrugada
-Onde o amor é só o que ficou para trás
+Marca
+O que o teu corpo deixou no meu
+Marca
+Como assinatura — como breu
+Que não sai com água
+Que não sai com tempo
+Marca
+O teu nome escrito no meu corpo lento
 
 [Verse 3]
-A luz começa a entrar
-Pelos cantos da janela
-E nós ficamos assim
-Dois corpos numa aquarela
+As minhas coxas guardam o peso
+Das tuas mãos em noites de Verão
+E os meus lábios ainda sentem
+A pressão da tua pressão
 
 [Chorus]
-Madrugada
-A hora entre o desejo e o sono
-Madrugada
-Onde o corpo é o seu próprio trono
-Já não se quer nada
-Já não se precisa de mais
-Madrugada
-Onde o amor é só o que ficou para trás
+Marca
+O que o teu corpo deixou no meu
+Marca
+Como assinatura — como breu
+Que não sai com água
+Que não sai com tempo
+Marca
+O teu nome escrito no meu corpo lento
 
 [Bridge]
-As melhores horas não se vivem
-Vivem-se depois
-Quando o corpo já soltou
-O que prendia a dois
+O corpo é um arquivo
+De tudo o que se amou
+Cada marca é uma prova
+De alguém que chegou
 
 [Outro]
-Madrugada
-Dourada
-Quieta
-Nossa
-Só nossa`,
+Marca
+Tua
+Na minha pele
+Para sempre
+Tua`,
 
   "romance-fogo-lento/10": `[Verse 1]
-I don't want to burn alone
-I've done that — it was cold
-A fire for one is just destruction
-A fire for two is gold
+Again — the way the ocean
+Returns to the same shore
+Not because it chooses
+But because it can't ignore
 
 [Verse 2]
-I want the kind of flame
-That doesn't eat the house
-That warms the room and lights the dark
-And doesn't burn the spouse
+Again — your mouth on mine
+Like a song stuck on repeat
+Not the boring kind of stuck
+But the kind that makes the beat
 
 [Chorus]
-Burn with me
-Not to ashes — to light
-Burn with me
-Not to end — but ignite
-Something bigger than the two of us
-Something older than desire
-Burn with me
-And let's become the fire
+Again
+Again and again and again
+Again
+Like the sweetest kind of refrain
+Not tired — alive
+Not habit — desire
+Again
+The loop that feeds the fire
 
 [Verse 3]
-Every love I had before
-Was gasoline — fast and gone
-But this — this is the slow wood
-That keeps burning until dawn
+They say the new wears off
+That bodies lose their charge
+But ours keeps resetting
+Keeps growing — keeps growing large
 
 [Chorus]
-Burn with me
-Not to ashes — to light
-Burn with me
-Not to end — but ignite
-Something bigger than the two of us
-Something older than desire
-Burn with me
-And let's become the fire
+Again
+Again and again and again
+Again
+Like the sweetest kind of refrain
+Not tired — alive
+Not habit — desire
+Again
+The loop that feeds the fire
 
 [Bridge]
-The world says cool down
-Be rational — be safe
-But I've been safe my whole life
-And safe is just another cage
+I want the same thing tomorrow
+That I wanted yesterday
+The repetition is the proof
+That this isn't going away
 
 [Outro]
-Burn
-Together
-Bright
-Not out
-Never out
-Together`,
+Again
+Your mouth
+Again
+Your skin
+Again
+Begin`,
 
   // ─────────────────────────────────────────────
-  // NINHO — Amor doméstico, construir casa juntos
+  // NINHO — Construir casa juntos
   // ─────────────────────────────────────────────
 
   "romance-ninho/1": `[Verse 1]
-Compramos pratos brancos
-Sem padrão e sem história
-Os mais baratos da prateleira
-Sem pretensão nem glória
+Deste-me a chave num saco de plástico
+Sem cerimónia e sem anel
+Disseste — toma, para não teres de tocar
+Como se fosse o gesto mais cruel
 
 [Verse 2]
-E esses pratos brancos
-Agora guardam tudo o que vivemos
-O arroz que queimou no primeiro jantar
-As lágrimas e os extremos
+Mas eu senti o peso daquele metal
+Como quem sente o peso de um sim
+Não era uma chave — era uma entrada
+Para o sítio mais dentro de ti e de mim
 
 [Chorus]
-Ninho
-Construído do nada
-Ninho
-De coisas emprestadas
-Duas toalhas que não combinam
-Uma gaveta que não fecha bem
-Ninho
-O lugar mais bonito que alguém tem
+Chaves
+O dia em que me deste a chave
+Chaves
+O gesto mais grave
+Que alguém pode fazer sem palavras
+Sem contrato e sem juiz
+Chaves
+Disseste — entra quando quiseres — e eu quis
 
 [Verse 3]
-A parede do quarto ainda está nua
-Prometemos um quadro há seis meses
-Mas o espaço vazio é nosso
-Sem moldura e sem reveses
+Agora abro a tua porta
+Com a naturalidade de quem respira
+E cada vez que a chave roda
+É uma pequena declaração que não expira
 
 [Chorus]
-Ninho
-Construído do nada
-Ninho
-De coisas emprestadas
-Duas toalhas que não combinam
-Uma gaveta que não fecha bem
-Ninho
-O lugar mais bonito que alguém tem
+Chaves
+O dia em que me deste a chave
+Chaves
+O gesto mais grave
+Que alguém pode fazer sem palavras
+Sem contrato e sem juiz
+Chaves
+Disseste — entra quando quiseres — e eu quis
 
 [Bridge]
-Não é a casa — é o cheiro
-Não é o tecto — é o chão
-Onde os teus pés e os meus
-Fizeram o mesmo caminho sem guião
+Devolver uma chave
+É o contrário de amar
+Mas guardar uma chave
+É a coisa mais bonita de guardar
 
 [Outro]
-Ninho
-Nosso
-Imperfeito
-Nosso
-Bastante`,
+Chave
+Porta
+Entrada
+Confiança
+Tua`,
 
   "romance-ninho/2": `[Verse 1]
-There's nothing holy about a Sunday
-Except the way you yawn
-Stretch across the whole mattress
-Like a country being born
+Eggs — the free range kind
+Because you care about the chickens
+Oat milk — not the cheap one
+The one that slightly thickens
 
 [Verse 2]
-The coffee gets cold twice
-The toast goes in and comes back out
-We read different sections of the paper
-That's what love is about
+I know your list by heart now
+Better than your birthday
+Sourdough not sliced
+Bananas slightly green — halfway
 
 [Chorus]
-Sunday
-The church of doing nothing
-Sunday
-The gospel of just sitting
-No agenda and no shoes
-No one coming and no plans
-Sunday
-Is the holiest thing I understand
+Grocery list
+The love letter no one frames
+Grocery list
+Where devotion has no names
+Just items in a sequence
+That prove somebody knows
+How you like your mornings
+And the way your kitchen flows
 
 [Verse 3]
-Your leg is on my leg
-My foot is on your shin
-The sun is on the floor
-And all of God is in this room — come in
+You added something new last week
+Dark chocolate — seventy percent
+I didn't question it
+I bought it — and that's what loving meant
 
 [Chorus]
-Sunday
-The church of doing nothing
-Sunday
-The gospel of just sitting
-No agenda and no shoes
-No one coming and no plans
-Sunday
-Is the holiest thing I understand
+Grocery list
+The love letter no one frames
+Grocery list
+Where devotion has no names
+Just items in a sequence
+That prove somebody knows
+How you like your mornings
+And the way your kitchen flows
 
 [Bridge]
-Monday through Saturday
-I perform the world's demands
-But Sunday — Sunday belongs
-To the religion of your hands
+Romance is not the roses
+Romance is knowing that you're low
+On the weird yoghurt you like
+And buying two before you know
 
 [Outro]
-Sunday
-Lazy
-Holy
-Ordinary
-Ours`,
+Eggs
+Milk
+Bread
+Love
+The list
+Goes on`,
 
   "romance-ninho/3": `[Verse 1]
-O café está a passar
-E tu ainda dormes
-O cheiro sobe as escadas
-E entra nos teus sonhos enormes
+Tu dormes do lado esquerdo
+Eu durmo do direito
+E entre nós há um continente
+De lençol amassado e afeito
 
 [Verse 2]
-Corto a fruta em pedaços pequenos
-Da forma que tu gostas
-Ponho o mel ao lado
-E os guardanapos nas costas
+Conheço a tua posição de sono
+De cor e salteado
+O joelho dobrado, a mão debaixo
+Da almofada — o corpo confiado
 
 [Chorus]
-Café da manhã
-A linguagem de amor mais antiga
-Café da manhã
-O ritual que nos liga
-Não é o que se come
-É o acto de preparar
-Café da manhã
-É dizer eu amo-te sem falar
+Lado esquerdo
+Tu dormes sempre do lado esquerdo
+Lado esquerdo
+E eu conheço cada acerto
+Do teu corpo adormecido
+Cada suspiro e cada volta
+Lado esquerdo
+A rotina mais bonita — a mais envolta
 
 [Verse 3]
-Sentas-te com o cabelo torcido
-E os olhos ainda meio fechados
-E eu penso que este momento
-Vale mais que todos os passados
+Se um dia fores embora
+Vou continuar a dormir
+Do meu lado — à direita
+Com o teu lado esquerdo a persistir
 
 [Chorus]
-Café da manhã
-A linguagem de amor mais antiga
-Café da manhã
-O ritual que nos liga
-Não é o que se come
-É o acto de preparar
-Café da manhã
-É dizer eu amo-te sem falar
+Lado esquerdo
+Tu dormes sempre do lado esquerdo
+Lado esquerdo
+E eu conheço cada acerto
+Do teu corpo adormecido
+Cada suspiro e cada volta
+Lado esquerdo
+A rotina mais bonita — a mais envolta
 
 [Bridge]
-Os restaurantes caros
-Não sabem o que nós sabemos
-Que o amor se cozinha descalço
-Com o que temos
+Saber de que lado alguém dorme
+É mais íntimo que um beijo
+É conhecer o corpo quando não decide
+Quando é só desejo sem ensejo
 
 [Outro]
-Café
-Fruta
-Mesa
-Nós dois
-Basta`,
+Esquerdo
+Direito
+Juntos
+No meio
+O amor`,
 
   "romance-ninho/4": `[Verse 1]
-You left your glasses on my book
-Your charger tangled with mine
-The bathroom has two toothbrushes
-And both of them are signs
+It happened on a Wednesday
+Not a sunset — not a view
+You were cutting an onion badly
+And I thought — I love you
 
 [Verse 2]
-The fridge has your weird yoghurt
-The one that no one else would eat
-And next to it my leftovers
-From the thing I didn't complete
+It wasn't the grand occasion
+Not the dress or the wine
+It was the way you wiped your hands
+On the towel that was mine
 
 [Chorus]
-Small things
-Love lives in the small things
-Small things
-Not the diamond rings
-But the way you refill the soap
-Before it runs out
-Small things
-That's what love is about
+Ordinary
+The extraordinary of ordinary
+Ordinary
+Where the love is not the fairy
+Tale but the table
+Not the castle but the crumb
+Ordinary
+Is the bravest kind of kingdom
 
 [Verse 3]
-You set your alarm five minutes early
-So you can lie there being warm
-I pretend that I'm still sleeping
-So you'll hold me through the storm
+I love you in the morning
+With the coffee and the blur
+I love you in the traffic
+And the everything that was — and were
 
 [Chorus]
-Small things
-Love lives in the small things
-Small things
-Not the diamond rings
-But the way you refill the soap
-Before it runs out
-Small things
-That's what love is about
+Ordinary
+The extraordinary of ordinary
+Ordinary
+Where the love is not the fairy
+Tale but the table
+Not the castle but the crumb
+Ordinary
+Is the bravest kind of kingdom
 
 [Bridge]
-The big gestures get the movies
-The small ones get forever
-Nobody writes songs about refilling soap
-But that's the cleverest love letter
+The poets want the thunder
+The filmmakers want the rain
+But I want the Wednesday onion
+And the ordinary sane
 
 [Outro]
-Small things
-Quiet things
-Every day things
-Forever things
-Love things`,
+Ordinary
+Ordinary
+The most extraordinary
+Word I know`,
 
   "romance-ninho/5": `[Verse 1]
-Mandei fazer uma cópia
-Na loja da esquina
-Custou dois euros e trinta
-E mudou a minha rotina
+Gritámos na cozinha
+Até as paredes tremerem
+Dissemos coisas que doíam
+Como só quem se ama diz sem se preverem
 
 [Verse 2]
-Segurei-a na mão um dia inteiro
-Antes de te dar
-Uma chave é um pedaço de metal
-Ou é um modo de confiar
+Tu saíste para a varanda
+Eu fiquei a olhar para o chão
+Com a garganta a arder
+E os olhos cheios de razão — e sem razão
 
 [Chorus]
-Chave
-Dou-te a entrada de mim
-Chave
-Podes entrar quando quiseres — sim
-Não precisa de ser para sempre
-Não precisa de ser bonito
-Chave
-É o acto mais vulnerável que eu repito
+Discussão
+A que nos fez mais fortes
+Discussão
+Que abriu todas as portes
+Que estavam fechadas entre nós
+Com fechaduras de educação
+Discussão
+A coisa mais feia — e mais libertação
 
 [Verse 3]
-E se entrares e vires a desordem
-Os copos sujos e o caos
-Não te assustes — é assim que vivo
-Quando ninguém me faz de refém dos recados
+Voltaste com dois copos de água
+E sentaste-te ao meu lado
+Não disseste desculpa
+Mas o gesto estava carregado
 
 [Chorus]
-Chave
-Dou-te a entrada de mim
-Chave
-Podes entrar quando quiseres — sim
-Não precisa de ser para sempre
-Não precisa de ser bonito
-Chave
-É o acto mais vulnerável que eu repito
+Discussão
+A que nos fez mais fortes
+Discussão
+Que abriu todas as portes
+Que estavam fechadas entre nós
+Com fechaduras de educação
+Discussão
+A coisa mais feia — e mais libertação
 
 [Bridge]
-Dar uma chave a alguém
-É dizer que não tenho nada a esconder
-Ou que tenho tudo a esconder
-Mas prefiro que sejas tu a ver
+Os casais que nunca gritam
+Às vezes são os que mais calam
+Os que gritam e ficam
+São os que verdadeiramente se amam
 
 [Outro]
-Toma
-A chave
-A porta
-A casa
-A verdade`,
+Gritámos
+Ficámos
+Crescemos
+E a cozinha
+Ficou de pé`,
 
   "romance-ninho/6": `[Verse 1]
-You said I never listen
-I said you never talk
-We stood in the kitchen shouting
-Like two clocks that wouldn't walk
+The room is full of nothing
+Just the sound of us not speaking
+You reading — me knitting
+A silence so alive it's breathing
 
 [Verse 2]
-The plate didn't break
-It bounced — which made it worse
-A plate that breaks is dramatic
-A plate that bounces is a curse
+I glance at you and you don't notice
+And that's the highest praise
+To be so safe beside someone
+That looking up's a choice — not a phase
 
 [Chorus]
-The argument
-Is not the enemy of love
-The argument
-Is the proof of
-Two people staying in the room
-When the room is on fire
-The argument
-Is the ugly side of desire
+Silence together
+The rarest luxury I know
+Silence together
+Where the love can finally grow
+Without performance
+Without the need to fill the air
+Silence together
+Is the proof that we're still there
 
 [Verse 3]
-We slept on the same bed that night
-Backs turned like two parentheses
-A sentence that refused to close
-A war without its treaties
+Some people need the music
+Some people need the noise
+But we need nothing
+Just the room and all its poise
 
 [Chorus]
-The argument
-Is not the enemy of love
-The argument
-Is the proof of
-Two people staying in the room
-When the room is on fire
-The argument
-Is the ugly side of desire
+Silence together
+The rarest luxury I know
+Silence together
+Where the love can finally grow
+Without performance
+Without the need to fill the air
+Silence together
+Is the proof that we're still there
 
 [Bridge]
-In the morning you made coffee
-I said sorry with a nod
-We didn't solve the thing we fought about
-But we stayed — and that's enough
-And that's the hardest part of love
+The couples who keep talking
+Are sometimes talking past
+The couples who sit quiet
+Have found something that lasts
 
 [Outro]
-Fight
-Stay
-Break
-Mend
-That's the shape
-Of a love that doesn't end`,
+Silence
+Together
+Full
+Alive
+Ours`,
 
   "romance-ninho/7": `[Verse 1]
-Estamos sentados no sofá
-Sem televisão e sem conversa
-Só o som da chuva lá fora
-E a tua respiração diversa
+Pões o avental como quem veste armadura
+E eu sei que a cozinha vai ser um campo
+De cheiros e desastres
+E risos e espanto
 
 [Verse 2]
-Não preciso que fales
-Não preciso que preenchas
-O espaço entre nós dois
-É feito de coisas densas
+Cortas a cebola às rodelas
+Eu pico o alho ao acaso
+Tu mexes o molho
+Eu lambo a colher — passo a passo
 
 [Chorus]
-Silêncio a dois
-O luxo mais raro que existe
-Silêncio a dois
-Que não é triste
-É maduro — é completo
-É o lugar onde não preciso ser
-Nada além de alguém
-Que sabe estar e sabe ter
+Avental
+Cozinhar juntos é um ritual
+Avental
+Mais sagrado que um missal
+Porque se reza com as mãos
+Com cheiro a alho e a orégãos
+Avental
+O altar mais doméstico e mais real
 
 [Verse 3]
-As tuas mãos lêem um livro
-As minhas seguram um chá
-E entre nós não se diz nada
-E nesse nada está tudo o que há
+O jantar fica salgado
+Ou queimamos o arroz
+Mas sentamos à mesa
+E comemos como se fosse atroz — e bom — e nós
 
 [Chorus]
-Silêncio a dois
-O luxo mais raro que existe
-Silêncio a dois
-Que não é triste
-É maduro — é completo
-É o lugar onde não preciso ser
-Nada além de alguém
-Que sabe estar e sabe ter
+Avental
+Cozinhar juntos é um ritual
+Avental
+Mais sagrado que um missal
+Porque se reza com as mãos
+Com cheiro a alho e a orégãos
+Avental
+O altar mais doméstico e mais real
 
 [Bridge]
-Quando já não precisas de falar
-Para saber que alguém te ouve
-É porque a conversa já mudou
-Para um sítio onde tudo se resolve
+Os melhores pratos que conheço
+Não saíram de restaurantes
+Saíram de cozinhas pequenas
+Com duas pessoas descoordenadas — e amantes
 
 [Outro]
-Silêncio
-Contigo
-É a coisa
-Mais barulhenta
-Que conheço`,
+Avental
+Alho
+Fumo
+Riso
+Juntos
+Mesa`,
 
   "romance-ninho/8": `[Verse 1]
-You wash — I dry
-That's the deal we never made
-It just happened — like gravity
-Like the way that light will fade
+Somewhere underground
+Our roots have met and tangled
+Without us knowing when it started
+Without us knowing what we've handled
 
 [Verse 2]
-Your hands in the soapy water
-Mine waiting with the cloth
-We don't talk about the dishes
-We talk about everything else — or not
+Your mornings are my mornings now
+Your cold is my cold too
+The things that hurt you bruise me
+The things that feed you — I grew
 
 [Chorus]
-Dishes
-The most boring love song ever written
-Dishes
-But I'm absolutely smitten
-With the way your elbow bumps my arm
-With the steam between our faces
-Dishes
-Love in the most ordinary places
+Roots
+Growing together underground
+Roots
+Making the quietest sound
+Two lives becoming one foundation
+Two trees sharing the same ground
+Roots
+The part of love that can't be found
+But holds everything up
 
 [Verse 3]
-Sometimes you flick the water
-And I pretend to be annoyed
-And sometimes I'm genuinely annoyed
-And you pretend to avoid
+We didn't plant this garden
+We just stayed long enough
+For the ground beneath our feet
+To do what ground does — hold our stuff
 
 [Chorus]
-Dishes
-The most boring love song ever written
-Dishes
-But I'm absolutely smitten
-With the way your elbow bumps my arm
-With the steam between our faces
-Dishes
-Love in the most ordinary places
+Roots
+Growing together underground
+Roots
+Making the quietest sound
+Two lives becoming one foundation
+Two trees sharing the same ground
+Roots
+The part of love that can't be found
+But holds everything up
 
 [Bridge]
-If someone told me years ago
-That happiness was this
-Standing at a kitchen sink
-With a sponge and your bad puns — I'd dismiss
+What you see above the soil
+Is the part that gets the praise
+But it's the dark and tangled roots
+That get us through the days
 
 [Outro]
-Wash
-Dry
-Repeat
-The most ordinary
-Sacred
-Feat`,
+Roots
+Tangled
+Deep
+Ours
+Holding
+Everything`,
 
   "romance-ninho/9": `[Verse 1]
-Quero ver-te com cabelo branco
-E as mãos mais lentas
-Quero ver-te a esquecer as chaves
-E a perder-te nas ferramentas
+Perdoo-te sem esquecer
+Porque esquecer não é perdão
+Esquecer é amnésia
+Perdoar é uma decisão
 
 [Verse 2]
-Quero a versão de ti
-Que ainda não existe
-A que precisa de óculos
-E que tropeça e que insiste
+Perdoo-te a porta que bateste
+A palavra que disseste a mais
+Perdoo-te o silêncio de Março
+E a promessa que quebrou — como as demais
 
 [Chorus]
-Envelhecer
-Contigo é o plano inteiro
-Envelhecer
-Sem medo e sem dinheiro
-Com as rugas que o riso deixou
-Com as costas que já não aguentam
-Envelhecer
-Juntos — enquanto o tempo inventa
+Perdoar
+Sem esquecer — e ficar
+Perdoar
+Sem precisar de apagar
+O que doeu — porque doeu
+E fez parte do que somos
+Perdoar
+E escolher ficar — apesar de todos os tomos
 
 [Verse 3]
-O mundo canta o amor jovem
-O amor com pele lisa e fogo
-Mas eu quero o amor com dores nas costas
-E a memória a sair do jogo
+Não é fraqueza — é a coisa
+Mais musculosa que conheço
+Olhar para quem te magoou
+E dizer — fico — sem regresso
 
 [Chorus]
-Envelhecer
-Contigo é o plano inteiro
-Envelhecer
-Sem medo e sem dinheiro
-Com as rugas que o riso deixou
-Com as costas que já não aguentam
-Envelhecer
-Juntos — enquanto o tempo inventa
+Perdoar
+Sem esquecer — e ficar
+Perdoar
+Sem precisar de apagar
+O que doeu — porque doeu
+E fez parte do que somos
+Perdoar
+E escolher ficar — apesar de todos os tomos
 
 [Bridge]
-Velhice não é o fim
-É o sítio onde o amor se prova
-Não é bonito nem eficiente
-Mas é a coisa mais nova
+O amor fácil é para os filmes
+O amor real tem cicatrizes
+E as cicatrizes não são defeitos
+São as provas de que viveste — sem disfarces
 
 [Outro]
-Velhos
-Juntos
-Lentos
-Juntos
-Sempre
-Juntos`,
+Perdoo
+Fico
+Lembro
+E ainda assim
+Escolho-te`,
 
   "romance-ninho/10": `[Verse 1]
-Let's build something no one sees
-Not a house but the heat inside it
-Not a family but the feeling
-That makes a stranger finally find it
+Every morning is a vote
+A quiet revolution cast
+In the way I choose to stay
+In the way I choose the mast
 
 [Verse 2]
-Let's build something out of nothing
-Out of burnt toast and bad jokes
-Out of fights on Wednesday evenings
-And the silence after the smoke
+I've seen the flaws — the real ones
+The ones the dates don't show
+The temper and the silence
+And I'm still here — I know
 
 [Chorus]
-Build this
-Brick by invisible brick
-Build this
-With patience — not a trick
-Not the version for the photo
-Not the story for the friends
-Build this
-The thing that never trends
-But never ends
+Still choosing you
+Every ordinary day
+Still choosing you
+In the unromantic way
+Not because the options left
+But because the options stayed
+Still choosing you
+The bravest choice I've made
 
 [Verse 3]
-Let's build something that can hold
-The weight of real days
-Not a monument to love
-But a shelter from the blaze
+I choose you in the morning
+With the breath and with the bed
+I choose you in the argument
+I choose what's here — not what's ahead
 
 [Chorus]
-Build this
-Brick by invisible brick
-Build this
-With patience — not a trick
-Not the version for the photo
-Not the story for the friends
-Build this
-The thing that never trends
-But never ends
+Still choosing you
+Every ordinary day
+Still choosing you
+In the unromantic way
+Not because the options left
+But because the options stayed
+Still choosing you
+The bravest choice I've made
 
 [Bridge]
-I don't need the world to know
-What we've made between these walls
-I just need the walls to hold
-When everything else falls
+The world says love is lightning
+I say love is a decision
+Made at seven AM
+With the coffee and precision
 
 [Outro]
-Build this
-With me
-Slowly
-Badly
-Beautifully
-Build this`,
+Still choosing
+Still choosing
+Every day
+Every fight
+Every morning
+You`,
 
 };
