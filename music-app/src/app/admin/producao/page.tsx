@@ -1304,6 +1304,19 @@ export default function AlbumProductionPage() {
               </select>
             </div>
 
+            {/* Cleanup button */}
+            <button
+              onClick={async () => {
+                if (!confirm("Apagar todas as capas corruptas do Supabase?")) return;
+                const res = await adminFetch("/api/admin/cleanup-covers", { method: "POST" });
+                const data = await res.json();
+                alert(`${data.total || 0} capas corruptas apagadas.`);
+              }}
+              className="rounded-lg bg-red-900/30 px-3 py-1.5 text-[10px] text-red-400 hover:bg-red-900/50 transition"
+            >
+              Limpar capas
+            </button>
+
             <div className="flex gap-1 rounded-full bg-mundo-muted-dark/10 p-1">
               <button
                 onClick={() => setViewMode("producao")}
