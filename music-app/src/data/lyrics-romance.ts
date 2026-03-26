@@ -4,7 +4,7 @@ export const ROMANCE_LYRICS: Record<string, string> = {
   // PELE — Amor vivido na pele, sem clichés
   // ─────────────────────────────────────────────
 
-  "romance-pele/1": `[Verse 1]
+  "cosmic-romance/1": `[Verse 1]
 Não sei o teu nome todo
 Só sei o que as tuas mãos fazem
 Quando pousam nas minhas costas
@@ -53,7 +53,7 @@ Fica
 Não expliques
 Só fica`,
 
-  "romance-pele/2": `[Verse 1]
+  "cosmic-romance/2": `[Verse 1]
 You touched my wrist and something old
 Woke up beneath the skin
 Like a room that's been locked for years
@@ -103,7 +103,7 @@ Like I'm a page
 You want to memorise
 Before the light goes out`,
 
-  "romance-pele/3": `[Verse 1]
+  "cosmic-romance/3": `[Verse 1]
 Acordo com o teu cheiro na almofada
 E tu já não estás
 Mas o corpo ainda guarda
@@ -153,7 +153,7 @@ Tudo igual
 Tudo diferente
 Tudo`,
 
-  "romance-pele/4": `[Verse 1]
+  "cosmic-romance/4": `[Verse 1]
 I want to be the last thing you hear
 Before you fall asleep
 Not a word — just a breath
@@ -209,7 +209,7 @@ Like breath
 Like something
 That was always here`,
 
-  "romance-pele/5": `[Verse 1]
+  "cosmic-romance/5": `[Verse 1]
 Dança comigo na cozinha
 Com a luz do frigorífico aberta
 Com os pés descalços no chão frio
@@ -260,7 +260,7 @@ Descalços
 Imperfeitos
 Juntos`,
 
-  "romance-pele/6": `[Verse 1]
+  "cosmic-romance/6": `[Verse 1]
 There are things I cannot say
 With my mouth open
 So I say them with my hands
@@ -312,7 +312,7 @@ Just to hold
 Just to hold
 Just to hold`,
 
-  "romance-pele/7": `[Verse 1]
+  "cosmic-romance/7": `[Verse 1]
 Quando me olhas assim
 Com esse silêncio nos olhos
 Eu sei que estás a ler
@@ -364,7 +364,7 @@ Não fujas
 Vê-me
 Fica`,
 
-  "romance-pele/8": `[Verse 1]
+  "cosmic-romance/8": `[Verse 1]
 We built it from nothing
 Two strangers on a bus
 A glance that lasted half a second
@@ -421,7 +421,7 @@ No plan
 No end
 No apology`,
 
-  "romance-pele/9": `[Verse 1]
+  "cosmic-romance/9": `[Verse 1]
 Apaixonei-me pelo teu cansaço
 Pela forma como despes o dia
 Pelo suspiro entre a porta e o sofá
@@ -471,7 +471,7 @@ Amo-te cansado
 Amo-te real
 Amo-te ao lado`,
 
-  "romance-pele/10": `[Verse 1]
+  "cosmic-romance/10": `[Verse 1]
 If I could choose how this ends
 I would choose a kitchen table
 Two cups of tea gone cold

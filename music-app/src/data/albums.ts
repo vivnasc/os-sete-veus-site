@@ -1023,7 +1023,7 @@ const COSMIC_VIAGEM: AlbumDef = {
 };
 
 const ROMANCE_PELE: AlbumDef = {
-  slug: "romance-pele",
+  slug: "cosmic-romance",
   title: "Pele",
   subtitle: "Loranne apaixonada. Amor vivido na pele, sem clichés.",
   product: "romance",
