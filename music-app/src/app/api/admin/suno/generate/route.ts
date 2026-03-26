@@ -66,6 +66,11 @@ function extractStyleTags(prompt: string): string {
     result = found.slice(0, 6).join(", ");
   }
 
+  // Always append "full song" to encourage complete generation
+  if (result && !result.includes("full")) {
+    result += ", full song";
+  }
+
   return result || prompt.slice(0, MAX_STYLE_LENGTH);
 }
 
