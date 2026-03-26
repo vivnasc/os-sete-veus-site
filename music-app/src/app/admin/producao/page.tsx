@@ -194,23 +194,40 @@ function MiniPlayer({ src }: { src: string }) {
   useEffect(() => {
     const a = ref.current;
     if (!a) return;
-    const onTime = () => setCurrent(a.currentTime);
-    const onMeta = () => {
+
+    const checkDuration = () => {
       const d = a.duration;
-      if (d && isFinite(d) && !isNaN(d)) setDuration(d);
+      if (d && isFinite(d) && !isNaN(d) && d > 0) {
+        setDuration(d);
+      }
     };
-    const onEnd = () => setPlaying(false);
+
+    const onTime = () => {
+      setCurrent(a.currentTime);
+      // Keep checking duration during playback (streaming sources)
+      if (!duration || !isFinite(duration)) checkDuration();
+    };
+    const onEnd = () => { setPlaying(false); checkDuration(); };
+
     a.addEventListener("timeupdate", onTime);
-    a.addEventListener("loadedmetadata", onMeta);
-    a.addEventListener("durationchange", onMeta);
+    a.addEventListener("loadedmetadata", checkDuration);
+    a.addEventListener("durationchange", checkDuration);
+    a.addEventListener("canplaythrough", checkDuration);
     a.addEventListener("ended", onEnd);
+
+    // Force preload to get duration
+    a.preload = "auto";
+    a.load();
+
     return () => {
       a.removeEventListener("timeupdate", onTime);
-      a.removeEventListener("loadedmetadata", onMeta);
-      a.removeEventListener("durationchange", onMeta);
+      a.removeEventListener("loadedmetadata", checkDuration);
+      a.removeEventListener("durationchange", checkDuration);
+      a.removeEventListener("canplaythrough", checkDuration);
       a.removeEventListener("ended", onEnd);
     };
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [src]);
 
   function toggle() {
     const a = ref.current;
