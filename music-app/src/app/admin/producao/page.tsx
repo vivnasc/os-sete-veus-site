@@ -645,7 +645,10 @@ function TrackRow({
                     hasMainAudio={!!audioUrl}
                     existingVersions={existingVersions}
                     trackEnergy={track.energy}
-                    onApproveMain={() => onApproveClip(clip.audioUrl!, clip.title, clip.imageUrl || null)}
+                    onApproveMain={() => {
+                      if (!clip.audioUrl) { alert("Audio URL em falta. Tenta regenerar."); return; }
+                      onApproveClip(clip.audioUrl, clip.title, clip.imageUrl || null);
+                    }}
                     onApproveVersion={(name, energy) => onApproveAsVersion(clip.audioUrl!, clip.title, name, energy, clip.imageUrl || null)}
                   />
                 ))}
@@ -969,20 +972,29 @@ export default function AlbumProductionPage() {
     }
 
     try {
-      // Download audio via server proxy (bypasses CORS + validates size)
-      let audioRes = await adminFetch("/api/admin/proxy-download", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url: clipAudioUrl }),
-      });
-      // Fallback to direct fetch if proxy fails
-      if (!audioRes.ok) {
-        console.warn("Proxy download failed, trying direct fetch...");
-        audioRes = await fetch(clipAudioUrl);
+      // Try direct download first (faster, no server timeout risk)
+      let blob: Blob | null = null;
+      try {
+        const directRes = await fetch(clipAudioUrl);
+        if (directRes.ok) {
+          blob = await directRes.blob();
+        }
+      } catch {
+        // CORS blocked — try proxy
       }
-      if (!audioRes.ok) throw new Error(`Erro ao descarregar o áudio (${audioRes.status}).`);
-      const blob = await audioRes.blob();
-      if (blob.size < 1000) throw new Error(`Audio vazio (${blob.size} bytes). O URL do Suno pode ter expirado. Tenta regenerar.`);
+
+      // Fallback to server proxy if direct failed
+      if (!blob || blob.size < 1000) {
+        const proxyRes = await adminFetch("/api/admin/proxy-download", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ url: clipAudioUrl }),
+        });
+        if (!proxyRes.ok) throw new Error(`Download falhou (${proxyRes.status}). Tenta regenerar.`);
+        blob = await proxyRes.blob();
+      }
+
+      if (!blob || blob.size < 1000) throw new Error(`Audio vazio (${blob?.size || 0} bytes). O URL do Suno pode ter expirado. Tenta regenerar.`);
 
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}.mp3`;
       const url = await uploadViaSignedUrl(blob, filename);
