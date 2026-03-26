@@ -1095,6 +1095,26 @@ const COSMIC_VASTO: AlbumDef = {
   ],
 };
 
+const COSMIC_SINAL: AlbumDef = {
+  slug: "cosmic-sinal",
+  title: "Sinal",
+  subtitle: "Mensagens que não vêm em palavras. O corpo sabe primeiro.",
+  product: "cosmic",
+  color: "#1a0a20",
+  tracks: [
+    { number: 1, title: "Arrepio", description: "O arrepio que não tem causa — o corpo a avisar", lang: "PT", energy: "whisper", prompt: cosmicPrompt("goosebumps without cause, the body receiving signals", "alert, mysterious, somatic, trusting", "subtle textures, shiver sounds, intimate vocal, mysterious warmth", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "The Dream That Repeats", description: "O sonho que se repete todas as noites", lang: "EN", energy: "whisper", prompt: cosmicPrompt("recurring dream, the message you refuse to read, the door you never open", "haunting, patient, insistent, dreamlike", "dreamy reverb, soft piano, ethereal vocal, nocturnal textures", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Onze Onze", description: "Ver sempre o mesmo número — sinais no relógio", lang: "PT", energy: "steady", prompt: cosmicPrompt("seeing 11:11 everywhere, signs in numbers, synchronicity", "curious, alert, connected, wondering", "steady pulse, clockwork textures, warm vocal, pattern-like rhythm", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "Gut", description: "O estômago que sabe antes da cabeça", lang: "EN", energy: "steady", prompt: cosmicPrompt("gut feeling, the brain in the belly, intuition as neuroscience", "visceral, grounded, knowing, primal", "deep bass, gut-like pulse, grounded vocal, body-centred production", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Pressentimento", description: "Sentir antes de saber — o corpo como antena", lang: "PT", energy: "raw", prompt: cosmicPrompt("premonition, feeling before knowing, the body as antenna", "alert, ancestral, raw, trusting", "minimal, raw vocal, sparse production, tension and release", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "Birds", description: "Os pássaros como mensageiros", lang: "EN", energy: "steady", prompt: cosmicPrompt("birds as messengers, reading flight patterns, signs in nature", "observant, ancient, outdoor, wise", "natural textures, gentle rhythm, storytelling vocal, organic", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "O Cheiro", description: "O cheiro que aparece do nada e traz uma pessoa", lang: "PT", energy: "whisper", prompt: cosmicPrompt("phantom smell of a dead loved one, perfume appearing from nowhere", "haunting, tender, grieving, comforted", "soft piano, nostalgic warmth, emotional vocal, gentle grief", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 8, title: "Déjà Vu", description: "Já vivi isto — o tempo dobrado", lang: "EN", energy: "steady", prompt: cosmicPrompt("déjà vu, time folding, the glitch where the loop shows", "disorienting, curious, mind-bending, playful", "looping elements, glitch textures, intriguing vocal, time-bent production", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 9, title: "A Voz", description: "A voz interior que fala baixo mas nunca mente", lang: "PT", energy: "raw", prompt: cosmicPrompt("inner voice, the quiet truth that speaks only once, intuition", "still, honest, powerful, intimate", "silence as instrument, raw vocal, minimal piano, profound stillness", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 10, title: "Signs", description: "Todos os sinais que ignoramos e os que seguimos", lang: "EN", energy: "anthem", prompt: cosmicPrompt("signs everywhere, the universe in conversation, learning to notice", "open, grateful, declarative, awake", "building anthem, full arrangement, powerful vocal, awakening", "EN", "anthem"), durationSeconds: 300, audioUrl: null },
+  ],
+};
+
 const COSMIC_ETER: AlbumDef = {
   slug: "cosmic-eter",
   title: "Éter",
@@ -1199,6 +1219,7 @@ export const ALL_ALBUMS: Album[] = [
   ROMANCE_ALBUM,
   COSMIC_POEIRA,
   COSMIC_VASTO,
+  COSMIC_SINAL,
   COSMIC_ETER,
   COSMIC_ORBITA,
 ].map(applyLyrics);

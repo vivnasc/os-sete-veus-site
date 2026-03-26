@@ -3089,4 +3089,516 @@ Inside
 Always
 Vast`,
 
+  // ─────────────────────────────────────────────
+  // SINAL — Mensagens que não vêm em palavras
+  // ─────────────────────────────────────────────
+
+  "cosmic-sinal/1": `[Verse 1]
+O arrepio veio do nada
+Ninguém tocou, ninguém falou
+Estava na fila do supermercado
+E o corpo inteiro arrepiou
+
+[Verse 2]
+Não era frio nem era medo
+Era outra coisa — mais fundo
+Como se o corpo recebesse
+Uma mensagem de outro mundo
+
+[Chorus]
+Arrepio
+O corpo sabe antes de mim
+Arrepio
+O primeiro sinal, o primeiro sim
+Antes da razão, antes do porquê
+O corpo avisa — presta atenção
+Arrepio
+A linguagem mais antiga que há
+
+[Verse 3]
+Aprendi a ouvir o arrepio
+Em vez de o ignorar
+Às vezes diz foge
+Às vezes diz fica
+Às vezes diz — olha para lá
+
+[Chorus]
+Arrepio
+O corpo sabe antes de mim
+Arrepio
+O primeiro sinal, o primeiro sim
+Antes da razão, antes do porquê
+O corpo avisa — presta atenção
+Arrepio
+A linguagem mais antiga que há
+
+[Bridge]
+A ciência chama-lhe resposta pilomotora
+Eu chamo-lhe a voz mais velha
+Que me fala sem palavras
+Que me guia sem conselho
+
+[Outro]
+Arrepio
+Oiço-te
+Sigo-te
+Confio`,
+
+  "cosmic-sinal/2": `[Verse 1]
+The same dream every night this week
+The same house, the same stairs
+The same door that I never open
+The same someone standing there
+
+[Verse 2]
+I wake up with the feeling
+Of a hand upon my chest
+Not frightening — just insistent
+Like a letter never addressed
+
+[Chorus]
+The dream that repeats
+Is the message I refuse to read
+The dream that repeats
+Is the mouth of every need
+I've buried underneath the day
+Underneath the noise and the task
+The dream that repeats
+Is the question I forgot to ask
+
+[Verse 3]
+My therapist says it's just processing
+My mother says it's stress
+But something in the dream is patient
+And refuses to say less
+
+[Chorus]
+The dream that repeats
+Is the message I refuse to read
+The dream that repeats
+Is the mouth of every need
+I've buried underneath the day
+Underneath the noise and the task
+The dream that repeats
+Is the question I forgot to ask
+
+[Bridge]
+What if I opened the door tonight
+What if I let the dream complete
+What if the thing behind the door
+Is just myself — asking me to meet
+
+[Outro]
+The dream repeats
+Until I listen
+The door opens
+When I stop running`,
+
+  "cosmic-sinal/3": `[Verse 1]
+Onze e onze no relógio
+Outra vez — terceira vez hoje
+Pode ser coincidência
+Mas o corpo não se encolhe
+
+[Verse 2]
+Três e trinta e três na madrugada
+Acordo sem alarme e sem razão
+O relógio pisca o mesmo número
+Que eu vi na matrícula e na estação
+
+[Chorus]
+Onze onze
+O universo a mandar mensagens
+Onze onze
+Em todas as passagens
+No relógio, no recibo, na porta
+No número do autocarro que passou
+Onze onze
+Estou a ouvir — pode falar — estou
+
+[Verse 3]
+Pode ser que não signifique nada
+Pode ser o cérebro a procurar padrões
+Mas e se significar tudo
+E eu estiver a ignorar lições
+
+[Chorus]
+Onze onze
+O universo a mandar mensagens
+Onze onze
+Em todas as passagens
+No relógio, no recibo, na porta
+No número do autocarro que passou
+Onze onze
+Estou a ouvir — pode falar — estou
+
+[Bridge]
+Não sei o que quer dizer
+Mas sei que quando vejo
+Algo em mim alinha
+Como uma agulha a encontrar o norte — e o desejo
+
+[Outro]
+Onze onze
+Não sei porquê
+Mas sei
+Que sei`,
+
+  "cosmic-sinal/4": `[Verse 1]
+Before my head decided no
+My stomach had already turned
+Before the logic lined up right
+My gut had already learned
+
+[Verse 2]
+It's not a voice, it's lower
+Somewhere near the navel
+A clenching or a warming
+That no textbook can unravel
+
+[Chorus]
+Gut
+The brain between my hips
+Gut
+The truth beneath the lips
+Before I know I know
+The belly knows it first
+Gut — the oldest oracle
+The wisest and the worst
+
+[Verse 3]
+Every time I didn't listen
+Every wrong turn, every stay
+My gut had said it clearly
+And I chose to look away
+
+[Chorus]
+Gut
+The brain between my hips
+Gut
+The truth beneath the lips
+Before I know I know
+The belly knows it first
+Gut — the oldest oracle
+The wisest and the worst
+
+[Bridge]
+Five hundred million neurons
+Live inside my gut
+More than in my spinal cord
+The body's not a but — it's a therefore
+
+[Outro]
+Gut
+I hear you now
+Gut
+I trust you now
+Finally`,
+
+  "cosmic-sinal/5": `[Verse 1]
+Senti antes de saber
+Que algo ia mudar
+O corpo ficou diferente
+Antes de eu reparar
+
+[Verse 2]
+As mãos ficaram frias
+A respiração mudou
+Antes do telefonema
+O corpo já sabia o que passou
+
+[Chorus]
+Pressentimento
+O corpo como antena
+Pressentimento
+A mais antiga cena
+Antes do pensamento
+Antes da informação
+O corpo capta o sinal
+Da mais funda transmissão
+
+[Verse 3]
+A minha avó sabia sempre
+Quem ia bater à porta
+Dizia que sentia no joelho
+Que a visita estava morta — ou não
+
+[Chorus]
+Pressentimento
+O corpo como antena
+Pressentimento
+A mais antiga cena
+Antes do pensamento
+Antes da informação
+O corpo capta o sinal
+Da mais funda transmissão
+
+[Bridge]
+Não é magia — é atenção
+Ao que o corpo sempre soube
+É calar a cabeça o suficiente
+Para ouvir o que se move
+
+[Outro]
+Sinto antes de saber
+E já não tenho medo
+O corpo é o meu radar
+O meu mais velho segredo`,
+
+  "cosmic-sinal/6": `[Verse 1]
+The birds stopped singing first
+Two seconds before the car
+A silence so specific
+Like a breath before a scar
+
+[Verse 2]
+The pigeons fly in circles
+Before the earthquake comes
+The dogs howl at the ambulance
+Before it reaches someone's lungs
+
+[Chorus]
+Birds
+The messengers we forgot to read
+Birds
+The oldest language we don't need
+A dictionary to decode
+Just eyes to see the flight
+Birds — the living signs
+That say — pay attention tonight
+
+[Verse 3]
+My grandmother read the swallows
+Like a book she'd memorised
+She knew the rain, the wind, the frost
+Just by how they improvised
+
+[Chorus]
+Birds
+The messengers we forgot to read
+Birds
+The oldest language we don't need
+A dictionary to decode
+Just eyes to see the flight
+Birds — the living signs
+That say — pay attention tonight
+
+[Bridge]
+We built walls between us and the signs
+We built screens between us and the sky
+But the birds keep singing anyway
+For whoever still looks up as they walk by
+
+[Outro]
+Birds
+Still singing
+Still signing
+Still
+Waiting
+For us to look up`,
+
+  "cosmic-sinal/7": `[Verse 1]
+O cheiro apareceu do nada
+No corredor do escritório
+O perfume da minha avó
+Que morreu há dez anos — era notório
+
+[Verse 2]
+Não havia flores nem janela aberta
+Não havia explicação
+Mas o corpo reconheceu
+E o coração fez uma oração
+
+[Chorus]
+O cheiro
+Que não tem origem nem razão
+O cheiro
+Que traz alguém que já não tem chão
+Uma presença sem corpo
+Uma visita sem porta
+O cheiro — a prova
+De que o amor não morre — transporta
+
+[Verse 3]
+Às vezes é tabaco de cachimbo
+Às vezes é jasmim
+Às vezes é o sabão da infância
+Que me diz — estou aqui — estou a olhar por ti
+E eu sei que sim
+
+[Chorus]
+O cheiro
+Que não tem origem nem razão
+O cheiro
+Que traz alguém que já não tem chão
+Uma presença sem corpo
+Uma visita sem porta
+O cheiro — a prova
+De que o amor não morre — transporta
+
+[Bridge]
+Pode ser memória olfactiva
+Pode ser o cérebro a inventar
+Mas quando o cheiro chega
+Eu não quero explicar — quero chorar
+
+[Outro]
+O cheiro da minha avó
+Veio dizer-me
+Estou aqui
+Sempre estive`,
+
+  "cosmic-sinal/8": `[Verse 1]
+I've been here before
+This corner, this light, this word
+The exact same feeling
+Like a song I've already heard
+
+[Verse 2]
+My hand reached for the glass
+Before I decided to drink
+The body one second ahead
+Of what I was about to think
+
+[Chorus]
+Déjà vu
+The fold in time
+Déjà vu
+The crack in the mime
+Of living in a straight line
+When maybe time is round
+Déjà vu — the glitch
+Where the loop is found
+
+[Verse 3]
+My daughter said it first
+She said mum I've dreamed this day
+And I believed her instantly
+Because I'd dreamed it too — the same way
+
+[Chorus]
+Déjà vu
+The fold in time
+Déjà vu
+The crack in the mime
+Of living in a straight line
+When maybe time is round
+Déjà vu — the glitch
+Where the loop is found
+
+[Bridge]
+What if we've lived this all before
+And déjà vu is just the seam
+Where this version of the life
+Touches last night's dream
+
+[Outro]
+Already here
+Already lived
+Already known
+Still new`,
+
+  "cosmic-sinal/9": `[Verse 1]
+Há uma voz que fala baixo
+Mais baixo que o pensamento
+Mais baixo que a dúvida
+Mais baixo que o medo — no fundamento
+
+[Verse 2]
+Não grita, não insiste
+Não se repete se eu não ouço
+Diz uma vez — clara e curta
+E depois vai-se sem alvoroço
+
+[Chorus]
+A voz
+Que fala dentro do silêncio
+A voz
+Que não precisa de licêncio
+Não é a voz da cabeça
+Não é a voz da razão
+É a voz do sítio
+Anterior à minha última decisão
+
+[Verse 3]
+Quando segui a voz
+A vida abriu como uma porta
+Quando ignorei a voz
+A vida fechou — e ficou torta
+
+[Chorus]
+A voz
+Que fala dentro do silêncio
+A voz
+Que não precisa de licêncio
+Não é a voz da cabeça
+Não é a voz da razão
+É a voz do sítio
+Anterior à minha última decisão
+
+[Bridge]
+Para ouvi-la preciso de parar
+Parar de verdade — não fingir
+Parar os dedos, parar os olhos
+Parar de querer — e só ouvir
+
+[Outro]
+A voz
+Fala
+Eu finalmente
+Ouço`,
+
+  "cosmic-sinal/10": `[Verse 1]
+The feather on the pavement
+The song on the radio at the right time
+The stranger who said exactly
+What I needed — without a dime
+
+[Verse 2]
+The phone that rang before I called
+The name I saw three times today
+The book that fell open
+On the page that had something to say
+
+[Chorus]
+Signs
+Everywhere if I'm willing to see
+Signs
+The universe in conversation with me
+Not in thunder or in miracles
+But in the ordinary seam
+Signs — the quiet language
+Of a waking dream
+
+[Verse 3]
+I used to ignore them all
+Call them chance, call them noise
+But the more I pay attention
+The louder becomes the poise
+Of something that is speaking
+In a language made of coincidence
+
+[Chorus]
+Signs
+Everywhere if I'm willing to see
+Signs
+The universe in conversation with me
+Not in thunder or in miracles
+But in the ordinary seam
+Signs — the quiet language
+Of a waking dream
+
+[Bridge]
+I don't need to understand them all
+I just need to notice
+The way a dog notices a sound
+Before the human does — just focus
+
+[Outro]
+Signs
+Everywhere
+Always
+I just had to
+Open my eyes`,
+
 };
