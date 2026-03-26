@@ -749,6 +749,7 @@ export default function AlbumProductionPage() {
   const [generatedClips, setGeneratedClips] = useState<Record<string, GeneratedClips>>({});
   const [editedTitles, setEditedTitles] = useState<Record<string, string>>({});
   const [editedLyrics, setEditedLyrics] = useState<Record<string, string>>({});
+  const lyricsSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
   const [trackVersions, setTrackVersions] = useState<Record<string, VersionInfo[]>>({}); // key → versions
   const [sunoModel, setSunoModel] = useState("V5");
   const pollingRef = useRef<Record<string, NodeJS.Timeout>>({});
@@ -801,6 +802,16 @@ export default function AlbumProductionPage() {
             vMap[key].push({ name: v.version_name, audioUrl: v.audio_url, energy: v.energy });
           }
           setTrackVersions(vMap);
+        }
+      })
+      .catch(() => {});
+
+    // Load saved custom lyrics
+    adminFetch("/api/admin/track-lyrics")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.lyrics) {
+          setEditedLyrics((l) => ({ ...data.lyrics, ...l }));
         }
       })
       .catch(() => {});
@@ -1508,6 +1519,18 @@ export default function AlbumProductionPage() {
                     editedLyrics={editedLyrics[key] || null}
                     onLyricsChange={(lyrics) => {
                       setEditedLyrics((l) => ({ ...l, [key]: lyrics }));
+                      // Debounce save to DB (2s after last keystroke)
+                      if (lyricsSaveRef.current[key]) clearTimeout(lyricsSaveRef.current[key]);
+                      lyricsSaveRef.current[key] = setTimeout(() => {
+                        const match = key.match(/^(.+)-t(\d+)$/);
+                        if (match) {
+                          adminFetch("/api/admin/track-lyrics", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ album_slug: match[1], track_number: parseInt(match[2]), lyrics }),
+                          }).catch(() => {});
+                        }
+                      }, 2000);
                     }}
                   />
                 );
