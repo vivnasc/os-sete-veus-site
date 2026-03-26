@@ -2072,4 +2072,513 @@ Grow mine
 Grow ours
 Grow`,
 
+  // ─────────────────────────────────────────────
+  // POEIRA — Somos matéria antiga
+  // ─────────────────────────────────────────────
+
+  "cosmic-poeira/1": `[Verse 1]
+Este carbono que me faz
+Já foi estrela, já foi sol
+Já foi a folha de uma árvore
+Que caiu antes do arrebol
+
+[Verse 2]
+Cada átomo do meu corpo
+Viajou bilhões de anos
+Para chegar a esta forma
+A estes dedos, a estas mãos
+
+[Chorus]
+Carbono
+Não sou nova — sou antiga
+Carbono
+A matéria que me abriga
+Já foi fogo, já foi gelo
+Já foi fundo de oceano
+Carbono — eu sou o resultado
+De um acidente soberano
+
+[Verse 3]
+Quando morrer o carbono volta
+A ser outra coisa qualquer
+Talvez flor, talvez pedra
+Talvez filha de outra mulher
+
+[Chorus]
+Carbono
+Não sou nova — sou antiga
+Carbono
+A matéria que me abriga
+Já foi fogo, já foi gelo
+Já foi fundo de oceano
+Carbono — eu sou o resultado
+De um acidente soberano
+
+[Bridge]
+Nada em mim nasceu comigo
+Tudo foi emprestado pelo tempo
+E devolver não é morrer
+É mudar de instrumento
+
+[Outro]
+Carbono
+Emprestado
+Grato
+Breve`,
+
+  "cosmic-poeira/2": `[Verse 1]
+This body is a loan
+Signed by the universe
+No interest charged
+Just a date to return the verse
+
+[Verse 2]
+The lungs I use to breathe
+Belonged to clouds before
+The iron in my blood
+Was a supernova's core
+
+[Chorus]
+Borrowed
+Every cell on temporary lease
+Borrowed
+Nothing mine to keep
+Not the hair, not the teeth
+Not the name, not the grief
+Borrowed light
+In a borrowed body
+For a borrowed life
+
+[Verse 3]
+I hold my daughter's hand
+And feel the ancient chain
+Her calcium was mountain
+Her oxygen was rain
+
+[Chorus]
+Borrowed
+Every cell on temporary lease
+Borrowed
+Nothing mine to keep
+Not the hair, not the teeth
+Not the name, not the grief
+Borrowed light
+In a borrowed body
+For a borrowed life
+
+[Bridge]
+The most beautiful things
+Are the ones we cannot own
+A sunset, a breath, a child
+A body, a song, a home
+
+[Outro]
+Borrowed
+And grateful
+For every second
+Of the loan`,
+
+  "cosmic-poeira/3": `[Verse 1]
+A cinza não é o fim
+É o princípio disfarçado
+O que parece destruição
+É o solo a ser preparado
+
+[Verse 2]
+A floresta que ardeu
+No verão mais quente
+Já tem brotos verdes
+Entre o carvão e a semente
+
+[Chorus]
+Cinza
+Fertilidade escura
+Cinza
+A mais honesta cura
+Não é a fénix que renasce
+É mais simples do que isso
+É a vida a insistir
+No velho exercício
+
+[Verse 3]
+A minha mãe morreu no inverno
+E na primavera seguinte
+O jardim dela explodiu
+Como se soubesse que era urgente
+
+[Chorus]
+Cinza
+Fertilidade escura
+Cinza
+A mais honesta cura
+Não é a fénix que renasce
+É mais simples do que isso
+É a vida a insistir
+No velho exercício
+
+[Bridge]
+Não preciso de metáforas bonitas
+A cinza é cinza e é chão
+E do chão nasce tudo
+Incluindo a próxima canção
+
+[Outro]
+Cinza
+Não é fim
+É adubo
+Para o que vem`,
+
+  "cosmic-poeira/4": `[Verse 1]
+This valley was a river once
+These hills were ocean floor
+The stone beneath my feet
+Was something living long before
+
+[Verse 2]
+My grandmother's bones by now
+Are calcium in the soil
+The flowers on her grave
+Are drinking her old toil
+
+[Chorus]
+The river was here
+Before the road, before the town
+The river was here
+Before anyone wrote anything down
+Everything I stand on
+Was something else before
+The river was here
+And will be here once more
+
+[Verse 3]
+The house I live in
+Sits on ancient sea
+The fossils in the basement wall
+Are older than any memory
+
+[Chorus]
+The river was here
+Before the road, before the town
+The river was here
+Before anyone wrote anything down
+Everything I stand on
+Was something else before
+The river was here
+And will be here once more
+
+[Bridge]
+We think we build on solid ground
+But the ground remembers water
+And the water remembers ice
+And the ice remembers the first star
+That cracked open
+
+[Outro]
+The river was here
+Is here
+Will be here
+After all of us`,
+
+  "cosmic-poeira/5": `[Verse 1]
+O ferro no meu sangue
+Nasceu numa supernova
+Uma estrela que morreu
+Para eu ter vida nova
+
+[Verse 2]
+O cálcio nos meus dentes
+Veio do fundo do espaço
+O oxigénio que respiro
+É o último abraço
+De uma estrela que explodiu
+Há quatro bilhões de anos
+
+[Chorus]
+Herança de estrelas
+Sou filha do que explodiu
+Herança de estrelas
+De tudo o que já ardeu e não se extinguiu
+Não venho da minha mãe apenas
+Venho do cosmos inteiro
+Herança de estrelas
+O meu sangue é o universo primeiro
+
+[Verse 3]
+Quando olho para o céu
+Não estou a olhar para fora
+Estou a olhar para casa
+Para o sítio de onde vim
+
+[Chorus]
+Herança de estrelas
+Sou filha do que explodiu
+Herança de estrelas
+De tudo o que já ardeu e não se extinguiu
+Não venho da minha mãe apenas
+Venho do cosmos inteiro
+Herança de estrelas
+O meu sangue é o universo primeiro
+
+[Bridge]
+A solidão é uma mentira
+Estou ligada a cada sol
+A cada pedra, a cada rio
+A cada grão de girassol
+
+[Outro]
+Herança
+De estrelas mortas
+Que vivem
+Em mim`,
+
+  "cosmic-poeira/6": `[Verse 1]
+The apple core I threw away
+Will be a tree by spring
+The coffee grounds, the eggshell
+The quiet decomposing
+
+[Verse 2]
+My skin sheds thirty thousand cells
+Each hour without a sound
+A silent snowfall of myself
+Returning to the ground
+
+[Chorus]
+Compost
+The sacred art of falling apart
+Compost
+The bravest kind of start
+Not building up but breaking down
+Not rising but dissolving
+Compost — the holiest process
+Is the one that keeps revolving
+
+[Verse 3]
+The mystics talk of death and light
+Of souls ascending high
+But the humblest resurrection
+Is the worm beneath the sky
+
+[Chorus]
+Compost
+The sacred art of falling apart
+Compost
+The bravest kind of start
+Not building up but breaking down
+Not rising but dissolving
+Compost — the holiest process
+Is the one that keeps revolving
+
+[Bridge]
+I want my body when it's done
+To feed a garden not a stone
+I want to be the dirt
+That helps something else grow home
+
+[Outro]
+Compost
+Return me
+To the soil
+I came from`,
+
+  "cosmic-poeira/7": `[Verse 1]
+Fui moldada pelo primeiro grito
+E remoldada pela primeira perda
+Fui barro nas mãos da vida
+Que nunca me devolveu certa
+
+[Verse 2]
+Cada década uma forma nova
+Cada dor uma nova curva
+A menina tornou-se mulher
+Que tornou-se dúvida e depois procura
+
+[Chorus]
+Argila
+Nunca a forma final
+Argila
+O que parece defeito é sinal
+De que ainda estou a ser feita
+De que o molde ainda não fechou
+Argila — as mãos do tempo
+Ainda não acabaram o que começou
+
+[Verse 3]
+E se eu nunca ficar pronta
+E se a forma nunca parar
+E se o sentido da vida
+É estar sempre a mudar
+
+[Chorus]
+Argila
+Nunca a forma final
+Argila
+O que parece defeito é sinal
+De que ainda estou a ser feita
+De que o molde ainda não fechou
+Argila — as mãos do tempo
+Ainda não acabaram o que começou
+
+[Bridge]
+A cerâmica mais bonita
+Tem rachas douradas no meio
+A imperfeição é o ouro
+Que o tempo pôs sem receio
+
+[Outro]
+Argila
+Ainda mole
+Ainda a ser
+Ainda`,
+
+  "cosmic-poeira/8": `[Verse 1]
+There is a place inside the bone
+That remembers being stone
+A place inside the blood
+That remembers being alone
+In the dark before the sun
+
+[Verse 2]
+My hip aches when the weather turns
+A memory not mine
+Something older than my birth
+Responding to a sign
+
+[Chorus]
+Bones remember
+What the mind forgot
+Bones remember
+Every bruise, every knot
+The fall two lives ago
+The prayer on the cold stone floor
+Bones remember everything
+Even what we lived before
+
+[Verse 3]
+My daughter has my grandmother's walk
+The same tilt of the head
+The body carries forward
+What was never said
+
+[Chorus]
+Bones remember
+What the mind forgot
+Bones remember
+Every bruise, every knot
+The fall two lives ago
+The prayer on the cold stone floor
+Bones remember everything
+Even what we lived before
+
+[Bridge]
+I trust my skeleton
+More than my thoughts
+It has been here longer
+And it lies much less
+
+[Outro]
+The bones know
+I just had to get quiet
+Enough to listen`,
+
+  "cosmic-poeira/9": `[Verse 1]
+Chegou a hora de devolver
+O que nunca me pertenceu
+O oxigénio, o ferro, a água
+Tudo o que o universo me deu
+
+[Verse 2]
+Não é triste — é correcto
+Como devolver um livro à estante
+Li cada página duas vezes
+E sublinhei a mais importante
+
+[Chorus]
+Devolver
+Com gratidão e sem mágoa
+Devolver
+O fogo, o sal, a água
+Cada átomo volta ao todo
+Cada gota volta ao mar
+Devolver não é perder
+É deixar o universo respirar
+
+[Verse 3]
+O medo da morte é o medo
+De devolver o que foi emprestado
+Mas ninguém chora ao pôr-do-sol
+Por o dia ter acabado
+
+[Chorus]
+Devolver
+Com gratidão e sem mágoa
+Devolver
+O fogo, o sal, a água
+Cada átomo volta ao todo
+Cada gota volta ao mar
+Devolver não é perder
+É deixar o universo respirar
+
+[Bridge]
+Devolvo com as mãos abertas
+Devolvo com o peito cheio
+Devolvo a dor e a beleza
+Devolvo o medo e o anseio
+
+[Outro]
+Devolvo tudo
+Com amor
+E fico
+Parte de tudo`,
+
+  "cosmic-poeira/10": `[Verse 1]
+I am dust and I am fine with it
+Not the poetic kind
+The actual kind
+Under the bed, behind the door
+
+[Verse 2]
+Before I was a woman
+I was particles of things
+Bits of broken mountains
+Ash of unnamed things
+
+[Chorus]
+Dust
+The most honest word for what I am
+Dust
+No delusion and no scam
+I did not come from glory
+I came from what was left
+Dust — the universe's confetti
+After the party of its death
+
+[Verse 3]
+When they sweep me from the floor
+One day in some far year
+I hope the dust remembers
+That it briefly danced right here
+
+[Chorus]
+Dust
+The most honest word for what I am
+Dust
+No delusion and no scam
+I did not come from glory
+I came from what was left
+Dust — the universe's confetti
+After the party of its death
+
+[Bridge]
+Humility is not making yourself small
+It's knowing your actual size
+And being amazed
+That dust can open its eyes
+
+[Outro]
+Dust
+That danced
+That loved
+That was enough`,
+
 };

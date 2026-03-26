@@ -1055,6 +1055,26 @@ const COSMIC_ORBITA: AlbumDef = {
   ],
 };
 
+const COSMIC_POEIRA: AlbumDef = {
+  slug: "cosmic-poeira",
+  title: "Poeira",
+  subtitle: "Somos matéria antiga. Tudo o que sou já foi outra coisa.",
+  product: "cosmic",
+  color: "#1a1008",
+  tracks: [
+    { number: 1, title: "Carbono", description: "O carbono que já foi sol, já foi folha, agora é eu", lang: "PT", energy: "steady", prompt: cosmicPrompt("carbon cycle, atoms that were stars now forming a human body", "wondering, ancient, grateful, vast", "deep warm bass, steady rhythm, contemplative vocal, organic textures", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "Borrowed", description: "O corpo como empréstimo temporário", lang: "EN", energy: "whisper", prompt: cosmicPrompt("the body as a temporary loan from the universe, every cell borrowed", "humble, grateful, impermanent, tender", "soft piano, spacious reverb, gentle vocal, delicate production", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Cinza", description: "A cinza como fertilidade, não como fim", lang: "PT", energy: "steady", prompt: cosmicPrompt("ash as fertility, destruction as preparation for new life", "hopeful, grounded, earthy, resilient", "warm acoustic, earthy percussion, strong vocal, organic warmth", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "The River Was Here", description: "Este vale foi rio, este osso foi pedra", lang: "EN", energy: "steady", prompt: cosmicPrompt("geological memory, this valley was a river, everything was something else", "ancient, patient, geological, vast", "flowing textures, patient rhythm, storytelling vocal, water sounds", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Herança de Estrelas", description: "Herdar matéria de supernovas", lang: "PT", energy: "anthem", prompt: cosmicPrompt("inheriting matter from supernovas, iron in blood from dying stars", "triumphant, cosmic, connected, awed", "building anthem, strings, powerful vocal, cosmic grandeur", "PT", "anthem"), durationSeconds: 270, audioUrl: null },
+    { number: 6, title: "Compost", description: "A decomposição como acto sagrado", lang: "EN", energy: "steady", prompt: cosmicPrompt("decomposition as sacred creation, compost as holy process", "earthy, humble, accepting, cyclical", "organic textures, warm bass, grounded vocal, earth-toned production", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "Argila", description: "Ser moldada e remoldada, nunca a forma final", lang: "PT", energy: "raw", prompt: cosmicPrompt("being shaped like clay, never the final form, imperfection as gold", "vulnerable, accepting, evolving, beautiful", "minimal piano, raw vocal, spacious, kintsugi tenderness", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 8, title: "Bones Remember", description: "Os ossos guardam memória de outras vidas", lang: "EN", energy: "whisper", prompt: cosmicPrompt("bones carrying memory from past lives, the body remembering what the mind forgot", "haunting, ancestral, deep, somatic", "deep drone, bone-like percussion, intimate vocal, ancient textures", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 9, title: "Devolver", description: "Devolver ao universo o que foi emprestado", lang: "PT", energy: "whisper", prompt: cosmicPrompt("returning borrowed atoms to the universe, death as returning a library book", "peaceful, grateful, accepting, open", "soft piano, gentle strings, peaceful vocal, release", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 10, title: "Dust", description: "Poeira que dançou, que amou, que bastou", lang: "EN", energy: "steady", prompt: cosmicPrompt("dust as identity, humility as amazement, being dust that can open its eyes", "humble, amused, profound, grounded", "warm production, gentle groove, honest vocal, earned simplicity", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+  ],
+};
+
 const COSMIC_ETER: AlbumDef = {
   slug: "cosmic-eter",
   title: "Éter",
@@ -1157,6 +1177,7 @@ export const ALL_ALBUMS: Album[] = [
   COSMIC_VIAGEM,
   // Romance
   ROMANCE_ALBUM,
+  COSMIC_POEIRA,
   COSMIC_ETER,
   COSMIC_ORBITA,
 ].map(applyLyrics);
