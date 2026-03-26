@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ALL_ALBUMS as ALBUMS } from "@/data/albums";
-import { getAlbumCover } from "@/lib/album-covers";
+import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
 import PartilhaClient from "./PartilhaClient";
 
 type Props = {
