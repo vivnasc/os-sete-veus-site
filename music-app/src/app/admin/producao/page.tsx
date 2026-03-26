@@ -1057,7 +1057,7 @@ export default function AlbumProductionPage() {
             if (proxyImg.ok) imgBlob = await proxyImg.blob();
           }
           if (imgBlob && imgBlob.size > 500) {
-            const imgFilename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-cover.jpg`;
+            const imgFilename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-cover.png`;
             await uploadViaSignedUrl(imgBlob, imgFilename);
           }
         } catch {
@@ -1300,9 +1300,9 @@ export default function AlbumProductionPage() {
                 setFixingCovers(true);
                 setFixCoversResult(null);
                 try {
-                  const res = await adminFetch("/api/admin/fix-covers?force=true", { method: "POST" });
+                  const res = await adminFetch("/api/admin/fix-covers", { method: "POST" });
                   const data = await res.json();
-                  setFixCoversResult(`${data.fixed} capas corrigidas, ${data.skipped} ignoradas, ${data.errors} erros`);
+                  setFixCoversResult(`${data.deleted} capas de texto apagadas, ${data.errors} erros`);
                 } catch (e: unknown) {
                   setFixCoversResult(`Erro: ${e instanceof Error ? e.message : "desconhecido"}`);
                 } finally {
@@ -1310,9 +1310,9 @@ export default function AlbumProductionPage() {
                 }
               }}
               disabled={fixingCovers}
-              className="rounded-full bg-amber-900/30 px-3 py-1 text-xs text-amber-400 hover:bg-amber-900/50 transition-colors disabled:opacity-50"
+              className="rounded-full bg-red-900/30 px-3 py-1 text-xs text-red-400 hover:bg-red-900/50 transition-colors disabled:opacity-50"
             >
-              {fixingCovers ? "A corrigir capas..." : "Corrigir capas em falta"}
+              {fixingCovers ? "A apagar..." : "Apagar capas de texto"}
             </button>
             {fixCoversResult && (
               <span className="text-xs text-amber-300">{fixCoversResult}</span>

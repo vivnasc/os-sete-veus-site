@@ -145,7 +145,7 @@ export function getTrackCoverUrl(albumSlug: string, trackNumber: number): string
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   if (!supabaseUrl) return "";
   const pad = String(trackNumber).padStart(2, "0");
-  return `${supabaseUrl}/storage/v1/object/public/audios/albums/${albumSlug}/faixa-${pad}-cover.jpg`;
+  return `${supabaseUrl}/storage/v1/object/public/audios/albums/${albumSlug}/faixa-${pad}-cover.png`;
 }
 
 /** Label para o badge do album — so o nome, sem prefixo */
