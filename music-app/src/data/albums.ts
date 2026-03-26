@@ -50,6 +50,7 @@ import { LIVRO_LYRICS, CURSO_LYRICS } from "./lyrics-livro-cursos";
 import { ESPIRITUAL_LYRICS } from "./lyrics-espirituais";
 import { VIDA_LYRICS } from "./lyrics-vida";
 import { COSMIC_LYRICS } from "./lyrics-cosmic";
+import { ROMANCE_LYRICS } from "./lyrics-romance";
 
 const ALL_LYRICS: Record<string, string> = {
   ...ESPELHO_LYRICS,
@@ -59,6 +60,7 @@ const ALL_LYRICS: Record<string, string> = {
   ...ESPIRITUAL_LYRICS,
   ...VIDA_LYRICS,
   ...COSMIC_LYRICS,
+  ...ROMANCE_LYRICS,
 };
 
 function getLyrics(albumSlug: string, trackNumber: number): string {
@@ -168,6 +170,11 @@ const BASE_STYLE = ENERGY_STYLES.whisper;
 function cosmicPrompt(theme: string, emotion: string, production: string, lang: "PT" | "EN", energy: TrackEnergy = "whisper", flavor: TrackFlavor | null = null): string {
   const langNote = lang === "PT" ? "Lyrics in Portuguese." : "Lyrics in English.";
   return buildPromptWithFlavor(`${ENERGY_STYLES[energy]} ${langNote} Cosmic, vast, ethereal but grounded. Body as portal to the infinite. ${emotion}. ${production}. Theme: ${theme}.`, flavor);
+}
+
+function romancePrompt(theme: string, emotion: string, production: string, lang: "PT" | "EN", energy: TrackEnergy = "whisper", flavor: TrackFlavor | null = null): string {
+  const langNote = lang === "PT" ? "Lyrics in Portuguese." : "Lyrics in English.";
+  return buildPromptWithFlavor(`${ENERGY_STYLES[energy]} ${langNote} Intimate, raw, body-centred. Love as lived experience — specific, sensory, no clichés. ${emotion}. ${production}. Theme: ${theme}.`, flavor);
 }
 
 function espelhoPrompt(theme: string, emotion: string, production: string, lang: "PT" | "EN", energy: TrackEnergy = "whisper", flavor: TrackFlavor | null = null): string {
@@ -1015,23 +1022,103 @@ const COSMIC_VIAGEM: AlbumDef = {
   ],
 };
 
-const ROMANCE_ALBUM: AlbumDef = {
-  slug: "cosmic-romance",
-  title: "Romance",
+const ROMANCE_PELE: AlbumDef = {
+  slug: "romance-pele",
+  title: "Pele",
   subtitle: "Loranne apaixonada. Amor vivido na pele, sem clichés.",
   product: "romance",
   color: "#2e0a1a",
   tracks: [
-    { number: 1, title: "Chega Mais Perto", description: "Mais perto que a pele permite", lang: "PT", energy: "whisper", prompt: cosmicPrompt("intimacy, getting closer than skin allows, sacred closeness", "intimate, warm, vulnerable, magnetic", "soft ambient, close-mic vocal, gentle piano, breath sounds, warmth", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
-    { number: 2, title: "Skin on Skin", description: "A linguagem mais antiga", lang: "EN", energy: "steady", prompt: cosmicPrompt("touch as language, skin reading skin, body memory of touch", "sensual, reverent, tender, electric", "warm bass, gentle rhythm, intimate vocal, tactile textures", "EN", "steady"), durationSeconds: 240, audioUrl: null },
-    { number: 3, title: "Depois de Ti", description: "O quarto depois de alguém partir", lang: "PT", energy: "whisper", prompt: cosmicPrompt("the room after a lover leaves, warmth remaining, body memory", "longing, warm, bittersweet, sensory", "solo piano, spacious reverb, nostalgic vocal, morning light", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
-    { number: 4, title: "Stay", description: "Fica — não para sempre, só fica", lang: "EN", energy: "steady", prompt: cosmicPrompt("asking someone to stay, not forever but now, ordinary love", "vulnerable, honest, unhurried, warm", "acoustic guitar, gentle build, honest vocal, warm production", "EN", "steady"), durationSeconds: 240, audioUrl: null },
-    { number: 5, title: "Dança Comigo", description: "Dançar na cozinha com a luz do frigorífico", lang: "PT", energy: "steady", flavor: "bossa", prompt: cosmicPrompt("dancing in the kitchen, barefoot, imperfect love, ordinary magic", "playful, warm, grounded, joyful", "bossa rhythm, warm guitar, playful vocal, kitchen intimacy", "PT", "steady", "bossa"), durationSeconds: 240, audioUrl: null },
-    { number: 6, title: "Let Me Hold You", description: "Segurar sem consertar", lang: "EN", energy: "whisper", prompt: cosmicPrompt("holding someone without trying to fix them, gravity-like love", "tender, protective, vast, patient", "ambient pads, gentle vocal, spacious, gravity-like bass", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
-    { number: 7, title: "Vê-me", description: "Ser vista por inteiro — incluindo o escuro", lang: "PT", energy: "raw", prompt: cosmicPrompt("being truly seen by a lover, all of you including the dark parts", "raw, brave, exposed, intimate", "minimal, raw vocal close-mic, solo piano, vulnerability", "PT", "raw"), durationSeconds: 240, audioUrl: null },
-    { number: 8, title: "This Thing Between Us", description: "O amor que não pediu licença", lang: "EN", energy: "pulse", prompt: cosmicPrompt("unexpected love, the chaos of falling, no plan no permission", "electric, chaotic, unapologetic, alive", "driving beat, urgent vocal, building energy, unstoppable", "EN", "pulse"), durationSeconds: 240, audioUrl: null },
-    { number: 9, title: "Terça-Feira", description: "Amar o ordinário em alguém", lang: "PT", energy: "steady", prompt: cosmicPrompt("loving the ordinary in someone, Tuesday love, imperfect details", "warm, amused, tender, domestic", "warm acoustic, gentle groove, smiling vocal, intimate", "PT", "steady"), durationSeconds: 240, audioUrl: null },
-    { number: 10, title: "Grow Old With Me", description: "O amor que ninguém escreve músicas sobre", lang: "EN", energy: "anthem", prompt: cosmicPrompt("growing old together, ordinary love as revolution, choosing each other daily", "triumphant, peaceful, warm, eternal", "building from piano to full arrangement, anthem of quiet love", "EN", "anthem"), durationSeconds: 300, audioUrl: null },
+    { number: 1, title: "Chega Mais Perto", description: "Mais perto que a pele permite", lang: "PT", energy: "whisper", prompt: romancePrompt("intimacy, getting closer than skin allows, sacred closeness", "intimate, warm, vulnerable, magnetic", "soft ambient, close-mic vocal, gentle piano, breath sounds, warmth", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "Skin on Skin", description: "A linguagem mais antiga", lang: "EN", energy: "steady", prompt: romancePrompt("touch as language, skin reading skin, body memory of touch", "sensual, reverent, tender, electric", "warm bass, gentle rhythm, intimate vocal, tactile textures", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Depois de Ti", description: "O quarto depois de alguém partir", lang: "PT", energy: "whisper", prompt: romancePrompt("the room after a lover leaves, warmth remaining, body memory", "longing, warm, bittersweet, sensory", "solo piano, spacious reverb, nostalgic vocal, morning light", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "Stay", description: "Fica — não para sempre, só fica", lang: "EN", energy: "steady", prompt: romancePrompt("asking someone to stay, not forever but now, ordinary love", "vulnerable, honest, unhurried, warm", "acoustic guitar, gentle build, honest vocal, warm production", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Dança Comigo", description: "Dançar na cozinha com a luz do frigorífico", lang: "PT", energy: "steady", flavor: "bossa", prompt: romancePrompt("dancing in the kitchen, barefoot, imperfect love, ordinary magic", "playful, warm, grounded, joyful", "bossa rhythm, warm guitar, playful vocal, kitchen intimacy", "PT", "steady", "bossa"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "Let Me Hold You", description: "Segurar sem consertar", lang: "EN", energy: "whisper", prompt: romancePrompt("holding someone without trying to fix them, gravity-like love", "tender, protective, vast, patient", "ambient pads, gentle vocal, spacious, gravity-like bass", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "Vê-me", description: "Ser vista por inteiro — incluindo o escuro", lang: "PT", energy: "raw", prompt: romancePrompt("being truly seen by a lover, all of you including the dark parts", "raw, brave, exposed, intimate", "minimal, raw vocal close-mic, solo piano, vulnerability", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 8, title: "This Thing Between Us", description: "O amor que não pediu licença", lang: "EN", energy: "pulse", prompt: romancePrompt("unexpected love, the chaos of falling, no plan no permission", "electric, chaotic, unapologetic, alive", "driving beat, urgent vocal, building energy, unstoppable", "EN", "pulse"), durationSeconds: 240, audioUrl: null },
+    { number: 9, title: "Terça-Feira", description: "Amar o ordinário em alguém", lang: "PT", energy: "steady", prompt: romancePrompt("loving the ordinary in someone, Tuesday love, imperfect details", "warm, amused, tender, domestic", "warm acoustic, gentle groove, smiling vocal, intimate", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 10, title: "Grow Old With Me", description: "O amor que ninguém escreve músicas sobre", lang: "EN", energy: "anthem", prompt: romancePrompt("growing old together, ordinary love as revolution, choosing each other daily", "triumphant, peaceful, warm, eternal", "building from piano to full arrangement, anthem of quiet love", "EN", "anthem"), durationSeconds: 300, audioUrl: null },
+  ],
+};
+
+const ROMANCE_CARTA: AlbumDef = {
+  slug: "romance-carta",
+  title: "Carta",
+  subtitle: "Palavras que ficaram no corpo. Cartas que nunca foram enviadas.",
+  product: "romance",
+  color: "#1a1008",
+  tracks: [
+    { number: 1, title: "Carta Que Não Enviei", description: "Uma carta escrita mas nunca enviada", lang: "PT", energy: "whisper", prompt: romancePrompt("a love letter written but never sent, words trapped in the body", "aching, intimate, unfinished, tender", "solo piano, spacious reverb, breathy vocal, paper texture", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "Dear You", description: "Escrever a quem nunca vai ler", lang: "EN", energy: "steady", prompt: romancePrompt("writing to someone who will never read it, letters as ritual", "honest, resigned, warm, intimate", "acoustic guitar, gentle rhythm, honest vocal, warm production", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Tinta no Corpo", description: "Palavras escritas na pele em vez de papel", lang: "PT", energy: "steady", prompt: romancePrompt("words written on skin instead of paper, the body as letter", "sensual, poetic, embodied, deliberate", "warm bass, gentle groove, close-mic vocal, tactile textures", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "Between the Lines", description: "O que vive entre as palavras escritas", lang: "EN", energy: "whisper", prompt: romancePrompt("what lives between written words, the spaces that say everything", "subtle, yearning, intelligent, patient", "ambient pads, soft piano, intimate vocal, space as instrument", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Última Página", description: "A última página de uma história de amor", lang: "PT", energy: "raw", prompt: romancePrompt("the last page of a love story, ending that still bleeds", "raw, brave, final, bittersweet", "minimal piano, raw vocal close-mic, silence, vulnerability", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "Unsent", description: "O arquivo de mensagens nunca enviadas", lang: "EN", energy: "steady", prompt: romancePrompt("archive of unsent messages, the drafts folder of the heart", "wry, tender, self-aware, aching", "gentle rhythm, warm guitar, conversational vocal, intimate", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "Caligrafia", description: "Letra de mão tão íntima como impressão digital", lang: "PT", energy: "whisper", flavor: "bossa", prompt: romancePrompt("handwriting as intimate as fingerprints, penmanship as love act", "delicate, precise, warm, nostalgic", "bossa rhythm, nylon guitar, breathy vocal, vintage warmth", "PT", "whisper", "bossa"), durationSeconds: 240, audioUrl: null },
+    { number: 8, title: "Read Me", description: "Pedir para ser lida como uma carta", lang: "EN", energy: "pulse", prompt: romancePrompt("asking to be read like a letter, body as text, desire to be understood", "urgent, vulnerable, electric, brave", "driving beat, urgent vocal, building energy, plea as anthem", "EN", "pulse"), durationSeconds: 240, audioUrl: null },
+    { number: 9, title: "Post Scriptum", description: "O que vem depois do fim", lang: "PT", energy: "steady", prompt: romancePrompt("what comes after the ending, the PS that changes everything", "hopeful, surprising, warm, wise", "warm acoustic, gentle build, smiling vocal, light returning", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 10, title: "Love Letter to No One", description: "Uma carta de amor ao amor que ainda não veio", lang: "EN", energy: "anthem", prompt: romancePrompt("love letter to future love, writing to someone you havent met yet", "hopeful, vast, open, triumphant", "building from piano to full arrangement, anthem of hope and patience", "EN", "anthem"), durationSeconds: 300, audioUrl: null },
+  ],
+};
+
+const ROMANCE_SAUDADE: AlbumDef = {
+  slug: "romance-saudade",
+  title: "Saudade",
+  subtitle: "A distância que se sente no corpo. Falta que pesa como presença.",
+  product: "romance",
+  color: "#0a1a2e",
+  tracks: [
+    { number: 1, title: "Saudade Tem Corpo", description: "A saudade mora no corpo", lang: "PT", energy: "whisper", prompt: romancePrompt("saudade as physical sensation, longing that lives in the body", "aching, embodied, heavy, tender", "soft piano, spacious reverb, breathy vocal, weight in the low end", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "The Shape of Gone", description: "A forma que alguém deixa quando parte", lang: "EN", energy: "steady", prompt: romancePrompt("the shape someone leaves when they go, absence as presence", "melancholy, tender, observant, still", "gentle rhythm, warm strings, intimate vocal, empty spaces", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Cheiro Que Ficou", description: "O cheiro que ficou depois de partires", lang: "PT", energy: "steady", prompt: romancePrompt("the scent that stayed after you left, smell as memory trigger", "sensory, nostalgic, bittersweet, vivid", "warm bass, gentle groove, close-mic vocal, sensory textures", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "Phantom", description: "Membro fantasma do amor", lang: "EN", energy: "whisper", prompt: romancePrompt("phantom limb of love, feeling someone who isnt there anymore", "haunting, disoriented, tender, ghostly", "ambient pads, distant piano, ethereal vocal, ghost-like textures", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Três da Manhã", description: "As 3 da manhã — a pior hora para ter saudades", lang: "PT", energy: "raw", prompt: romancePrompt("3am longing, insomnia of missing, the worst hour to be alone", "raw, exposed, sleepless, desperate", "minimal piano, raw vocal close-mic, silence, night sounds", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "Still Here", description: "Ainda presente na cadeira vazia", lang: "EN", energy: "steady", prompt: romancePrompt("still present in the empty chair, absence that refuses to leave", "stubborn, warm, patient, melancholy", "acoustic guitar, gentle rhythm, warm vocal, domestic space", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "Metade", description: "Andar pelo mundo como metade", lang: "PT", energy: "steady", flavor: "marrabenta", prompt: romancePrompt("walking through the world as half, incompleteness as identity", "restless, yearning, grounded, warm", "marrabenta guitar groove, warm bass, yearning vocal, movement", "PT", "steady", "marrabenta"), durationSeconds: 240, audioUrl: null },
+    { number: 8, title: "The Distance", description: "A distância como peso físico", lang: "EN", energy: "whisper", prompt: romancePrompt("distance as physical weight, miles measured in the chest", "heavy, patient, vast, devoted", "spacious pads, deep bass, intimate vocal, vast production", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 9, title: "Volta", description: "Volta — não é pedido, é oração", lang: "PT", energy: "raw", prompt: romancePrompt("come back, not a plea but a prayer, surrender to longing", "raw, surrendered, brave, devotional", "solo piano, raw vocal, breath sounds, cathedral reverb", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 10, title: "Home Was You", description: "Casa nunca foi um lugar", lang: "EN", energy: "anthem", prompt: romancePrompt("home was never a place but a person, displacement after love", "triumphant, aching, vast, declared", "building from gentle to full, anthem of belonging, powerful vocal", "EN", "anthem"), durationSeconds: 300, audioUrl: null },
+  ],
+};
+
+const ROMANCE_FOGO_LENTO: AlbumDef = {
+  slug: "romance-fogo-lento",
+  title: "Fogo Lento",
+  subtitle: "O desejo que não arde — transforma. Paixão lenta, sem pressa.",
+  product: "romance",
+  color: "#2e1a0a",
+  tracks: [
+    { number: 1, title: "Fogo Lento", description: "Fogo lento que não queima — transforma", lang: "PT", energy: "whisper", prompt: romancePrompt("slow fire that doesnt burn but transforms, patient desire", "smouldering, patient, magnetic, warm", "soft ambient, warm bass, breathy vocal, ember-like textures", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "Slow Burn", description: "A antecipação é a coisa", lang: "EN", energy: "steady", prompt: romancePrompt("the anticipation is the thing, desire as slow build", "building, teasing, electric, patient", "gentle groove building slowly, warm layers, intimate vocal", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Demora", description: "Não tenhas pressa — temos a noite toda", lang: "PT", energy: "steady", flavor: "bossa", prompt: romancePrompt("take your time, we have all night, slowness as devotion", "unhurried, sensual, warm, present", "bossa rhythm, nylon guitar, warm vocal, candlelight intimacy", "PT", "steady", "bossa"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "Gravity", description: "Ser puxada para alguém — inevitável", lang: "EN", energy: "pulse", prompt: romancePrompt("being pulled towards someone, inevitable attraction, gravity of desire", "magnetic, urgent, unstoppable, alive", "driving bass, building rhythm, passionate vocal, gravitational pull", "EN", "pulse"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Toca-me Devagar", description: "Toca-me devagar, quero lembrar", lang: "PT", energy: "raw", prompt: romancePrompt("touch me slowly I want to remember every second, presence as desire", "raw, present, exposed, devotional", "minimal, close-mic vocal, solo piano, breath and silence", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "Closer", description: "Aproximar sem nunca chegar", lang: "EN", energy: "whisper", prompt: romancePrompt("getting closer but never arriving, desire as infinite approach", "teasing, yearning, suspended, electric", "ambient pads, gentle pulse, whispered vocal, suspended tension", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "Suor", description: "O suor como comunhão", lang: "PT", energy: "pulse", flavor: "afrobeat", prompt: romancePrompt("sweat as communion, bodies in rhythm, physical love as prayer", "driving, embodied, primal, sacred", "afrobeat groove, driving percussion, powerful vocal, body rhythm", "PT", "pulse", "afrobeat"), durationSeconds: 240, audioUrl: null },
+    { number: 8, title: "Unravel", description: "Desfazer-se nas mãos de alguém", lang: "EN", energy: "steady", prompt: romancePrompt("coming undone in someones hands, surrender as strength", "vulnerable, trusting, warm, dissolving", "warm layers, gentle rhythm, intimate vocal, unravelling textures", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 9, title: "Madrugada", description: "A hora entre o desejo e o sono", lang: "PT", energy: "whisper", prompt: romancePrompt("the hour between desire and sleep, 4am tenderness after love", "drowsy, satisfied, warm, golden", "soft ambient, gentle piano, sleepy vocal, golden hour", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 10, title: "Burn With Me", description: "Arder juntos — não até às cinzas, até à luz", lang: "EN", energy: "anthem", prompt: romancePrompt("burn together not to ashes but to light, passion as transformation", "triumphant, passionate, luminous, declared", "building from intimate to full, anthem of desire, powerful vocal, rising", "EN", "anthem"), durationSeconds: 300, audioUrl: null },
+  ],
+};
+
+const ROMANCE_NINHO: AlbumDef = {
+  slug: "romance-ninho",
+  title: "Ninho",
+  subtitle: "Amor doméstico. Construir casa com alguém, tijolo a tijolo.",
+  product: "romance",
+  color: "#1a0a08",
+  tracks: [
+    { number: 1, title: "Ninho", description: "Construir um ninho a partir do nada", lang: "PT", energy: "whisper", prompt: romancePrompt("building a nest from scratch, first home together, sacred domesticity", "tender, hopeful, warm, grounded", "soft piano, warm acoustic, gentle vocal, home sounds", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "Sunday", description: "A santidade de um domingo preguiçoso a dois", lang: "EN", energy: "steady", prompt: romancePrompt("lazy Sunday together, the holiness of doing nothing side by side", "peaceful, warm, amused, unhurried", "warm acoustic, gentle groove, smiling vocal, Sunday morning light", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Café da Manhã", description: "Fazer o pequeno-almoço como linguagem de amor", lang: "PT", energy: "steady", flavor: "bossa", prompt: romancePrompt("making breakfast as love language, coffee ritual, kitchen as temple", "warm, playful, domestic, rhythmic", "bossa rhythm, warm guitar, playful vocal, kitchen sounds", "PT", "steady", "bossa"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "Small Things", description: "O amor mora nas coisas pequenas", lang: "EN", energy: "whisper", prompt: romancePrompt("love lives in the small things, details as devotion", "delicate, observant, warm, grateful", "gentle piano, soft strings, intimate vocal, domestic warmth", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Chave", description: "Dar a chave da casa a alguém", lang: "PT", energy: "steady", prompt: romancePrompt("giving someone a key to your house, trust as a physical object", "vulnerable, decisive, warm, brave", "warm bass, acoustic guitar, honest vocal, key-turn moment", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "The Argument", description: "Discutir e ficar — isso é amor", lang: "EN", energy: "raw", prompt: romancePrompt("fighting and staying, the argument as proof of commitment", "raw, honest, frustrated, loving", "raw vocal, sparse piano, tension and release, real emotion", "EN", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "Silêncio a Dois", description: "O silêncio confortável entre duas pessoas", lang: "PT", energy: "whisper", prompt: romancePrompt("comfortable silence between two, not needing to fill the space", "peaceful, intimate, mature, golden", "minimal piano, spacious, gentle vocal, silence as instrument", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 8, title: "Dishes", description: "Lavar a loiça juntos como intimidade", lang: "EN", energy: "steady", flavor: "folk", prompt: romancePrompt("doing dishes together as intimacy, mundane tasks as love", "amused, warm, grounded, real", "folk guitar, warm rhythm, conversational vocal, domestic charm", "EN", "steady", "folk"), durationSeconds: 240, audioUrl: null },
+    { number: 9, title: "Envelhecer", description: "Envelhecer juntos — a canção de amor que ninguém escreve", lang: "PT", energy: "steady", prompt: romancePrompt("growing old together, wrinkles as love map, unsexy love song", "tender, wise, amused, eternal", "warm acoustic, gentle build, wise vocal, time passing gently", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 10, title: "Build This", description: "Vamos construir algo que ninguém vê", lang: "EN", energy: "anthem", prompt: romancePrompt("lets build something invisible, a life together, brick by brick", "triumphant, committed, vast, declared", "building from intimate to full, anthem of partnership, powerful vocal", "EN", "anthem"), durationSeconds: 300, audioUrl: null },
   ],
 };
 
@@ -1216,7 +1303,11 @@ export const ALL_ALBUMS: Album[] = [
   // Cosmic
   COSMIC_VIAGEM,
   // Romance
-  ROMANCE_ALBUM,
+  ROMANCE_PELE,
+  ROMANCE_CARTA,
+  ROMANCE_SAUDADE,
+  ROMANCE_FOGO_LENTO,
+  ROMANCE_NINHO,
   COSMIC_POEIRA,
   COSMIC_VASTO,
   COSMIC_SINAL,
