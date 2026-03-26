@@ -1073,9 +1073,22 @@ export default function AlbumProductionPage() {
       // Download and upload Suno cover image if available
       if (imageUrl) {
         try {
-          const imgRes = await fetch(imageUrl);
-          if (imgRes.ok) {
-            const imgBlob = await imgRes.blob();
+          let imgBlob: Blob | null = null;
+          // Try direct download first
+          try {
+            const directImg = await fetch(imageUrl);
+            if (directImg.ok) imgBlob = await directImg.blob();
+          } catch { /* CORS — try proxy */ }
+          // Fallback to server proxy (same as audio)
+          if (!imgBlob || imgBlob.size < 500) {
+            const proxyImg = await adminFetch("/api/admin/proxy-download", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ url: imageUrl }),
+            });
+            if (proxyImg.ok) imgBlob = await proxyImg.blob();
+          }
+          if (imgBlob && imgBlob.size > 500) {
             const imgFilename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-cover.jpg`;
             await uploadViaSignedUrl(imgBlob, imgFilename);
           }
