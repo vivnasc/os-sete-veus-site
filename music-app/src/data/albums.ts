@@ -1025,7 +1025,7 @@ const COSMIC_VIAGEM: AlbumDef = {
 const ROMANCE_PELE: AlbumDef = {
   slug: "cosmic-romance",
   title: "Pele",
-  subtitle: "Loranne apaixonada. Amor vivido na pele, sem clichés.",
+  subtitle: "A linguagem mais antiga. Toque, intimidade, pele contra pele.",
   product: "romance",
   color: "#2e0a1a",
   tracks: [
