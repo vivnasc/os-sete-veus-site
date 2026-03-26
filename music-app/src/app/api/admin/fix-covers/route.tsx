@@ -161,8 +161,9 @@ export async function POST(req: Request) {
   });
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function processTrack(
-  supabase: ReturnType<typeof createClient>,
+  supabase: any,
   bucket: string,
   albumSlug: string,
   trackNum: number,
