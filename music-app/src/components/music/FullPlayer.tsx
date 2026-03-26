@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
-import { getAlbumCover } from "@/lib/album-covers";
+import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
 import { useDownloads } from "@/hooks/useDownloads";
 import { useLibrary } from "@/hooks/useLibrary";
 import ShareModal from "./ShareModal";
@@ -43,9 +43,27 @@ export default function FullPlayer() {
   const [showShare, setShowShare] = useState(false);
   const [showQueue, setShowQueue] = useState(false);
   const [showSleep, setShowSleep] = useState(false);
+  const [showLyricsView, setShowLyricsView] = useState(false);
+  const [trackCover, setTrackCover] = useState<string | null>(null);
+  const lyricsScrollRef = useRef<HTMLDivElement>(null);
   const { saveTrack, removeTrack, getSaveState, isSaved } = useDownloads();
   const { isFavorite, toggleFavorite, userId } = useLibrary();
   const router = useRouter();
+
+  // ── Track-specific cover from Supabase ──
+  useEffect(() => {
+    if (!currentTrack || !currentAlbum) { setTrackCover(null); return; }
+    const url = getTrackCoverUrl(currentAlbum.slug, currentTrack.number);
+    if (!url) { setTrackCover(null); return; }
+    // Probe if the cover exists (HEAD request)
+    const img = new window.Image();
+    img.onload = () => setTrackCover(url);
+    img.onerror = () => setTrackCover(null);
+    img.src = url;
+  }, [currentTrack, currentAlbum]);
+
+  // Reset lyrics view on track change
+  useEffect(() => { setShowLyricsView(false); }, [currentTrack]);
 
   // ── Browser back button support ──
   // Push a history entry when the full player opens so that pressing
@@ -229,82 +247,141 @@ export default function FullPlayer() {
       {/* Scrollable content: art + info + lyrics */}
       <div className="relative z-10 flex-1 overflow-y-auto scrollbar-none px-6">
         <div className="max-w-md mx-auto pt-2 pb-4">
-          {/* Album art — compact */}
-          <div className="relative mx-auto w-48 sm:w-56">
-            {isPlaying && (
-              <div className="absolute inset-0 -m-4 flex items-center justify-center pointer-events-none">
-                <div
-                  className="w-full h-full rounded-2xl opacity-30 blur-[25px] animate-pulse"
-                  style={{ backgroundColor: albumColor }}
-                />
-              </div>
-            )}
-            <div className="relative aspect-square rounded-xl shadow-2xl overflow-hidden">
-              {currentAlbum && (
-                <Image
-                  src={getAlbumCover(currentAlbum)}
-                  alt={currentAlbum.title}
-                  fill
-                  sizes="224px"
-                  className="object-cover"
-                />
-              )}
-            </div>
-          </div>
 
-          {/* Track name + favorite + next */}
-          <div className="mt-5">
-            <div className="flex items-center justify-center gap-2">
-              <h2 className="font-display text-lg font-semibold text-[#F5F0E6]">
-                {currentTrack.title}
-              </h2>
-              {/* Favorite heart */}
+          {/* ── LYRICS FULL VIEW (Apple Music style) ── */}
+          {showLyricsView && hasLyrics ? (
+            <div ref={lyricsScrollRef} className="pb-8">
               <button
-                onClick={() => {
-                  if (!userId) { router.push("/login"); return; }
-                  if (currentAlbum) toggleFavorite(currentTrack.number, currentAlbum.slug);
-                }}
-                className="p-1 shrink-0 transition-colors"
-                title={isFavorite(currentTrack.number, currentAlbum?.slug || "") ? "Remover dos favoritos" : "Adicionar aos favoritos"}
+                onClick={() => setShowLyricsView(false)}
+                className="mb-6 flex items-center gap-1.5 text-xs text-[#666680] hover:text-[#a0a0b0] transition-colors"
               >
-                {isFavorite(currentTrack.number, currentAlbum?.slug || "") ? (
-                  <svg viewBox="0 0 24 24" fill="#e74c3c" stroke="#e74c3c" strokeWidth="2" className="h-5 w-5">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                  </svg>
-                ) : (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#a0a0b0" strokeWidth="2" className="h-5 w-5 hover:stroke-[#F5F0E6]">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                  </svg>
-                )}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+                Voltar
               </button>
-            </div>
-            <p className="text-sm text-[#a0a0b0] mt-0.5 text-center">{currentAlbum?.title}</p>
-            {nextTrack && (
-              <p className="text-xs text-[#666680] mt-1 text-center">
-                A seguir: {nextTrack.title}
-              </p>
-            )}
-          </div>
-
-          {/* Lyrics — always visible if available */}
-          {hasLyrics && (
-            <div className="mt-6 rounded-xl bg-white/5 p-5">
-              <p className="text-[10px] uppercase tracking-widest text-[#666680] mb-3">Letra</p>
-              <div className="space-y-2">
+              {/* Small cover + title */}
+              <div className="flex items-center gap-3 mb-8">
+                <div className="relative w-12 h-12 rounded-lg overflow-hidden shrink-0">
+                  <Image
+                    src={trackCover || (currentAlbum ? getAlbumCover(currentAlbum) : "/poses/loranne-hero.png")}
+                    alt={currentTrack.title}
+                    fill
+                    sizes="48px"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold text-[#F5F0E6] truncate">{currentTrack.title}</p>
+                  <p className="text-xs text-[#666680] truncate">{currentAlbum?.title}</p>
+                </div>
+              </div>
+              {/* Lyrics — large, centered, poetic */}
+              <div className="space-y-3 px-2">
                 {currentTrack.lyrics!.split("\n").map((line, i) => {
                   const isTag = line.startsWith("[");
                   if (isTag) return (
-                    <p key={i} className="text-[10px] uppercase tracking-widest text-[#666680] mt-4 first:mt-0">{line.replace(/[\[\]]/g, "")}</p>
+                    <p key={i} className="text-[10px] uppercase tracking-[0.2em] mt-8 first:mt-0" style={{ color: albumColor }}>
+                      {line.replace(/[\[\]]/g, "")}
+                    </p>
                   );
-                  if (!line.trim()) return <div key={i} className="h-2" />;
+                  if (!line.trim()) return <div key={i} className="h-3" />;
                   return (
-                    <p key={i} className="text-sm leading-relaxed text-[#F5F0E6]/80">
+                    <p key={i} className="text-lg leading-relaxed text-[#F5F0E6]/90 font-display">
                       {line}
                     </p>
                   );
                 })}
               </div>
             </div>
+          ) : (
+            <>
+              {/* ── NORMAL VIEW: art + info ── */}
+              {/* Album/track art */}
+              <div className="relative mx-auto w-48 sm:w-56">
+                {isPlaying && (
+                  <div className="absolute inset-0 -m-4 flex items-center justify-center pointer-events-none">
+                    <div
+                      className="w-full h-full rounded-2xl opacity-30 blur-[25px] animate-pulse"
+                      style={{ backgroundColor: albumColor }}
+                    />
+                  </div>
+                )}
+                <div className="relative aspect-square rounded-xl shadow-2xl overflow-hidden">
+                  {currentAlbum && (
+                    <Image
+                      src={trackCover || getAlbumCover(currentAlbum)}
+                      alt={currentTrack.title}
+                      fill
+                      sizes="224px"
+                      className="object-cover"
+                    />
+                  )}
+                </div>
+              </div>
+
+              {/* Track name + favorite + next */}
+              <div className="mt-5">
+                <div className="flex items-center justify-center gap-2">
+                  <h2 className="font-display text-lg font-semibold text-[#F5F0E6]">
+                    {currentTrack.title}
+                  </h2>
+                  {/* Favorite heart */}
+                  <button
+                    onClick={() => {
+                      if (!userId) { router.push("/login"); return; }
+                      if (currentAlbum) toggleFavorite(currentTrack.number, currentAlbum.slug);
+                    }}
+                    className="p-1 shrink-0 transition-colors"
+                    title={isFavorite(currentTrack.number, currentAlbum?.slug || "") ? "Remover dos favoritos" : "Adicionar aos favoritos"}
+                  >
+                    {isFavorite(currentTrack.number, currentAlbum?.slug || "") ? (
+                      <svg viewBox="0 0 24 24" fill="#e74c3c" stroke="#e74c3c" strokeWidth="2" className="h-5 w-5">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                      </svg>
+                    ) : (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="#a0a0b0" strokeWidth="2" className="h-5 w-5 hover:stroke-[#F5F0E6]">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                      </svg>
+                    )}
+                  </button>
+                </div>
+                <p className="text-sm text-[#a0a0b0] mt-0.5 text-center">{currentAlbum?.title}</p>
+                {nextTrack && (
+                  <p className="text-xs text-[#666680] mt-1 text-center">
+                    A seguir: {nextTrack.title}
+                  </p>
+                )}
+              </div>
+
+              {/* Lyrics preview + "Ver letra" button */}
+              {hasLyrics && (
+                <button
+                  onClick={() => setShowLyricsView(true)}
+                  className="mt-6 w-full rounded-xl bg-white/5 hover:bg-white/[0.08] transition-colors p-5 text-left group"
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <p className="text-[10px] uppercase tracking-widest text-[#666680]">Letra</p>
+                    <span className="text-[10px] uppercase tracking-widest text-[#666680] group-hover:text-[#a0a0b0] transition-colors">
+                      Ver completa
+                    </span>
+                  </div>
+                  <div className="space-y-1.5 max-h-24 overflow-hidden relative">
+                    {currentTrack.lyrics!.split("\n").slice(0, 8).map((line, i) => {
+                      const isTag = line.startsWith("[");
+                      if (isTag) return null;
+                      if (!line.trim()) return null;
+                      return (
+                        <p key={i} className="text-sm leading-relaxed text-[#F5F0E6]/60 truncate">
+                          {line}
+                        </p>
+                      );
+                    })}
+                    <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[#0D0D1A]/80 to-transparent" />
+                  </div>
+                </button>
+              )}
+            </>
           )}
         </div>
       </div>
@@ -383,8 +460,8 @@ export default function FullPlayer() {
             </button>
           </div>
 
-          {/* Infinite mode toggle */}
-          <div className="flex justify-center mt-2">
+          {/* Infinite mode + Share */}
+          <div className="flex justify-center items-center gap-4 mt-2">
             <button
               onClick={toggleInfinite}
               className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] transition-colors ${
@@ -396,7 +473,16 @@ export default function FullPlayer() {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
                 <path d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.133-8-12.739-8-4.585 0-4.585 8 0 8 5.606 0 7.644-8 12.74-8z" />
               </svg>
-              {infinite ? "Infinito" : "Infinito"}
+              Infinito
+            </button>
+            <button
+              onClick={() => setShowShare(true)}
+              className="flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] text-[#666680] hover:text-[#a0a0b0] transition-colors"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+                <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" />
+              </svg>
+              Partilhar
             </button>
           </div>
         </div>

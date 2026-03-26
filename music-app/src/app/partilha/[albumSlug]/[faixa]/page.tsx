@@ -14,7 +14,7 @@ function pickLyricLine(lyrics: string | undefined): string | undefined {
     return t.length > 15 && t.length < 100 && !t.startsWith("[");
   });
   if (lines.length === 0) return undefined;
-  // Deterministic: pick based on day
+  // Deterministic: pick based on day (frase do dia)
   const day = Math.floor(Date.now() / 86400000);
   return lines[day % lines.length].trim();
 }
@@ -30,8 +30,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const cover = getAlbumCover(album);
-  const title = `${track.title} — ${album.title} | Loranne`;
-  const description = track.description || `Ouve "${track.title}" do album ${album.title}. Musica original para a tua transformacao.`;
+  const lyric = pickLyricLine(track.lyrics);
+
+  // SEO misterioso e envolvente — convite, não descrição
+  const title = lyric
+    ? `"${lyric}" — Loranne`
+    : `${track.title} — Loranne`;
+  const description = track.description
+    ? `${track.description}. Ouve o que ninguem te diz em voz alta.`
+    : `Ha coisas que so se ouvem quando tudo o resto se cala.`;
 
   return {
     title,
@@ -39,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title,
       description,
-      siteName: "Veus",
+      siteName: "Veus by Loranne",
       locale: "pt_PT",
       type: "music.song",
       images: [
@@ -47,7 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url: cover,
           width: 600,
           height: 600,
-          alt: title,
+          alt: `${track.title} — ${album.title}`,
         },
       ],
     },
