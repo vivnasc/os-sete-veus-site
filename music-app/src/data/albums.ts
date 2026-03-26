@@ -1055,6 +1055,66 @@ const COSMIC_ORBITA: AlbumDef = {
   ],
 };
 
+const COSMIC_POEIRA: AlbumDef = {
+  slug: "cosmic-poeira",
+  title: "Poeira",
+  subtitle: "Somos matéria antiga. Tudo o que sou já foi outra coisa.",
+  product: "cosmic",
+  color: "#1a1008",
+  tracks: [
+    { number: 1, title: "Carbono", description: "O carbono que já foi sol, já foi folha, agora é eu", lang: "PT", energy: "steady", prompt: cosmicPrompt("carbon cycle, atoms that were stars now forming a human body", "wondering, ancient, grateful, vast", "deep warm bass, steady rhythm, contemplative vocal, organic textures", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "Borrowed", description: "O corpo como empréstimo temporário", lang: "EN", energy: "whisper", prompt: cosmicPrompt("the body as a temporary loan from the universe, every cell borrowed", "humble, grateful, impermanent, tender", "soft piano, spacious reverb, gentle vocal, delicate production", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Cinza", description: "A cinza como fertilidade, não como fim", lang: "PT", energy: "steady", prompt: cosmicPrompt("ash as fertility, destruction as preparation for new life", "hopeful, grounded, earthy, resilient", "warm acoustic, earthy percussion, strong vocal, organic warmth", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "The River Was Here", description: "Este vale foi rio, este osso foi pedra", lang: "EN", energy: "steady", prompt: cosmicPrompt("geological memory, this valley was a river, everything was something else", "ancient, patient, geological, vast", "flowing textures, patient rhythm, storytelling vocal, water sounds", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Herança de Estrelas", description: "Herdar matéria de supernovas", lang: "PT", energy: "anthem", prompt: cosmicPrompt("inheriting matter from supernovas, iron in blood from dying stars", "triumphant, cosmic, connected, awed", "building anthem, strings, powerful vocal, cosmic grandeur", "PT", "anthem"), durationSeconds: 270, audioUrl: null },
+    { number: 6, title: "Compost", description: "A decomposição como acto sagrado", lang: "EN", energy: "steady", prompt: cosmicPrompt("decomposition as sacred creation, compost as holy process", "earthy, humble, accepting, cyclical", "organic textures, warm bass, grounded vocal, earth-toned production", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "Argila", description: "Ser moldada e remoldada, nunca a forma final", lang: "PT", energy: "raw", prompt: cosmicPrompt("being shaped like clay, never the final form, imperfection as gold", "vulnerable, accepting, evolving, beautiful", "minimal piano, raw vocal, spacious, kintsugi tenderness", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 8, title: "Bones Remember", description: "Os ossos guardam memória de outras vidas", lang: "EN", energy: "whisper", prompt: cosmicPrompt("bones carrying memory from past lives, the body remembering what the mind forgot", "haunting, ancestral, deep, somatic", "deep drone, bone-like percussion, intimate vocal, ancient textures", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 9, title: "Devolver", description: "Devolver ao universo o que foi emprestado", lang: "PT", energy: "whisper", prompt: cosmicPrompt("returning borrowed atoms to the universe, death as returning a library book", "peaceful, grateful, accepting, open", "soft piano, gentle strings, peaceful vocal, release", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 10, title: "Dust", description: "Poeira que dançou, que amou, que bastou", lang: "EN", energy: "steady", prompt: cosmicPrompt("dust as identity, humility as amazement, being dust that can open its eyes", "humble, amused, profound, grounded", "warm production, gentle groove, honest vocal, earned simplicity", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+  ],
+};
+
+const COSMIC_VASTO: AlbumDef = {
+  slug: "cosmic-vasto",
+  title: "Vasto",
+  subtitle: "O medo e a beleza de ser pequena. A vertigem de existir.",
+  product: "cosmic",
+  color: "#0a0a2e",
+  tracks: [
+    { number: 1, title: "Vertigem", description: "A vertigem de existir, de olhar para cima", lang: "PT", energy: "steady", prompt: cosmicPrompt("vertigo of existing, looking up at infinite sky", "dizzy, awed, humbled, alive", "swirling textures, building intensity, breathless vocal, cosmic vertigo", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "Small", description: "A beleza de ser pequena, o alívio de não importar", lang: "EN", energy: "whisper", prompt: cosmicPrompt("the beauty of being small, relief of insignificance", "relieved, free, peaceful, amused", "gentle, spacious, soft vocal, minimalist, freedom", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Céu Aberto", description: "Deitar no chão e olhar para o céu até desaparecer", lang: "PT", energy: "whisper", prompt: cosmicPrompt("lying on the ground looking up until you disappear into the sky", "vast, dissolving, peaceful, childlike", "ambient pads, open space, gentle vocal, sky-wide production", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "Infinite Tuesday", description: "O infinito numa terça-feira normal", lang: "EN", energy: "steady", prompt: cosmicPrompt("infinity appearing in the mundane, cosmic experience while peeling an orange", "wry, surprised, ordinary-sacred, warm", "acoustic guitar, conversational vocal, warm, kitchen-cosmic", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Humilde", description: "A humildade como libertação", lang: "PT", energy: "steady", prompt: cosmicPrompt("humility as freedom not weakness, being exactly the right size", "grounded, dignified, free, honest", "earthy rhythm, grounded bass, strong vocal, rooted production", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "The View From Here", description: "A vista do sítio mais pequeno do universo", lang: "EN", energy: "whisper", prompt: cosmicPrompt("seeing earth from space, perspective that makes everything kind", "cosmic perspective, gentle, compassionate, vast", "spacious ambient, distant vocal, cosmic reverb, gentle wonder", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "Grão", description: "Um grão de areia que é o universo inteiro", lang: "PT", energy: "raw", prompt: cosmicPrompt("a grain of sand containing the universe, small is complete", "simple, profound, still, accepting", "minimal, raw vocal, single instrument, vast silence", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 8, title: "Overwhelm", description: "Ser esmagada pela beleza, não pela dor", lang: "EN", energy: "anthem", prompt: cosmicPrompt("overwhelmed by beauty not pain, crying from grace", "overwhelmed, cracked open, grateful, raw", "building from quiet to powerful, swelling strings, cathartic vocal", "EN", "anthem"), durationSeconds: 270, audioUrl: null },
+    { number: 9, title: "Respiro", description: "Uma respiração que contém tudo", lang: "PT", energy: "whisper", prompt: cosmicPrompt("one breath containing everything, breathing as proof of deserving to exist", "meditative, present, grateful, universal", "breath textures, minimal piano, meditative vocal, silence", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 10, title: "Vast", description: "Vasta por dentro, pequena por fora", lang: "EN", energy: "steady", prompt: cosmicPrompt("vast on the inside, small on the outside, inner universe", "vast, contained, powerful, quiet", "deep production, expansive pads, intimate vocal, inner cosmos", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+  ],
+};
+
+const COSMIC_SINAL: AlbumDef = {
+  slug: "cosmic-sinal",
+  title: "Sinal",
+  subtitle: "Mensagens que não vêm em palavras. O corpo sabe primeiro.",
+  product: "cosmic",
+  color: "#1a0a20",
+  tracks: [
+    { number: 1, title: "Arrepio", description: "O arrepio que não tem causa — o corpo a avisar", lang: "PT", energy: "whisper", prompt: cosmicPrompt("goosebumps without cause, the body receiving signals", "alert, mysterious, somatic, trusting", "subtle textures, shiver sounds, intimate vocal, mysterious warmth", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "The Dream That Repeats", description: "O sonho que se repete todas as noites", lang: "EN", energy: "whisper", prompt: cosmicPrompt("recurring dream, the message you refuse to read, the door you never open", "haunting, patient, insistent, dreamlike", "dreamy reverb, soft piano, ethereal vocal, nocturnal textures", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Onze Onze", description: "Ver sempre o mesmo número — sinais no relógio", lang: "PT", energy: "steady", prompt: cosmicPrompt("seeing 11:11 everywhere, signs in numbers, synchronicity", "curious, alert, connected, wondering", "steady pulse, clockwork textures, warm vocal, pattern-like rhythm", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "Gut", description: "O estômago que sabe antes da cabeça", lang: "EN", energy: "steady", prompt: cosmicPrompt("gut feeling, the brain in the belly, intuition as neuroscience", "visceral, grounded, knowing, primal", "deep bass, gut-like pulse, grounded vocal, body-centred production", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Pressentimento", description: "Sentir antes de saber — o corpo como antena", lang: "PT", energy: "raw", prompt: cosmicPrompt("premonition, feeling before knowing, the body as antenna", "alert, ancestral, raw, trusting", "minimal, raw vocal, sparse production, tension and release", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "Birds", description: "Os pássaros como mensageiros", lang: "EN", energy: "steady", prompt: cosmicPrompt("birds as messengers, reading flight patterns, signs in nature", "observant, ancient, outdoor, wise", "natural textures, gentle rhythm, storytelling vocal, organic", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "O Cheiro", description: "O cheiro que aparece do nada e traz uma pessoa", lang: "PT", energy: "whisper", prompt: cosmicPrompt("phantom smell of a dead loved one, perfume appearing from nowhere", "haunting, tender, grieving, comforted", "soft piano, nostalgic warmth, emotional vocal, gentle grief", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 8, title: "Déjà Vu", description: "Já vivi isto — o tempo dobrado", lang: "EN", energy: "steady", prompt: cosmicPrompt("déjà vu, time folding, the glitch where the loop shows", "disorienting, curious, mind-bending, playful", "looping elements, glitch textures, intriguing vocal, time-bent production", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 9, title: "A Voz", description: "A voz interior que fala baixo mas nunca mente", lang: "PT", energy: "raw", prompt: cosmicPrompt("inner voice, the quiet truth that speaks only once, intuition", "still, honest, powerful, intimate", "silence as instrument, raw vocal, minimal piano, profound stillness", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 10, title: "Signs", description: "Todos os sinais que ignoramos e os que seguimos", lang: "EN", energy: "anthem", prompt: cosmicPrompt("signs everywhere, the universe in conversation, learning to notice", "open, grateful, declarative, awake", "building anthem, full arrangement, powerful vocal, awakening", "EN", "anthem"), durationSeconds: 300, audioUrl: null },
+  ],
+};
+
 const COSMIC_ETER: AlbumDef = {
   slug: "cosmic-eter",
   title: "Éter",
@@ -1157,6 +1217,9 @@ export const ALL_ALBUMS: Album[] = [
   COSMIC_VIAGEM,
   // Romance
   ROMANCE_ALBUM,
+  COSMIC_POEIRA,
+  COSMIC_VASTO,
+  COSMIC_SINAL,
   COSMIC_ETER,
   COSMIC_ORBITA,
 ].map(applyLyrics);
