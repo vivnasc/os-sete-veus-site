@@ -652,11 +652,10 @@ function TrackRow({
                     existingVersions={existingVersions}
                     trackEnergy={track.energy}
                     onApproveMain={() => {
-                      const url = clip.originalAudioUrl || clip.audioUrl;
-                      if (!url) { alert("Audio URL em falta. Tenta regenerar."); return; }
-                      onApproveClip(url, clip.title, clip.imageUrl || null);
+                      if (!clip.audioUrl) { alert("Audio URL em falta. Tenta regenerar."); return; }
+                      onApproveClip(clip.audioUrl, clip.title, clip.imageUrl || null);
                     }}
-                    onApproveVersion={(name, energy) => onApproveAsVersion(clip.originalAudioUrl || clip.audioUrl!, clip.title, name, energy, clip.imageUrl || null)}
+                    onApproveVersion={(name, energy) => onApproveAsVersion(clip.audioUrl!, clip.title, name, energy, clip.imageUrl || null)}
                   />
                 ))}
               </div>
