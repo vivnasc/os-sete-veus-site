@@ -32,6 +32,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cover = getAlbumCover(album);
   const lyric = pickLyricLine(track.lyrics);
 
+  // Dynamic OG image — 1200x630 optimized for social sharing
+  const ogImage = `/api/og?album=${encodeURIComponent(album.slug)}&track=${track.number}`;
+
   // SEO misterioso e envolvente — convite, não descrição
   const title = lyric
     ? `"${lyric}" — Loranne`
@@ -51,9 +54,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "music.song",
       images: [
         {
-          url: cover,
-          width: 600,
-          height: 600,
+          url: ogImage,
+          width: 1200,
+          height: 630,
           alt: `${track.title} — ${album.title}`,
         },
       ],
@@ -62,7 +65,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title,
       description,
-      images: [cover],
+      images: [ogImage],
     },
   };
 }
