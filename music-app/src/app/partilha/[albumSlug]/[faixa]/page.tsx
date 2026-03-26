@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ALL_ALBUMS as ALBUMS } from "@/data/albums";
-import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
+import { getAlbumCover } from "@/lib/album-covers";
 import PartilhaClient from "./PartilhaClient";
 
 type Props = {
@@ -29,17 +29,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Veus" };
   }
 
-  const albumCover = getAlbumCover(album);
-  // Track-specific Suno cover (absolute URL) — falls back to album pose
-  const trackCover = getTrackCoverUrl(album.slug, track.number);
-  const cover = trackCover || albumCover;
   const lyric = pickLyricLine(track.lyrics);
 
-  // OG image: use Suno cover directly if available (square, eye-catching)
-  // Fall back to dynamic text-based OG image
-  const ogImage = trackCover
-    ? trackCover
-    : `/api/og?album=${encodeURIComponent(album.slug)}&track=${track.number}`;
+  // OG image: always use the dynamic generator (guaranteed to work)
+  // Track-specific Suno covers are probed client-side only
+  const ogImage = `/api/og?album=${encodeURIComponent(album.slug)}&track=${track.number}`;
 
   // SEO misterioso e envolvente — convite, não descrição
   const title = lyric
