@@ -795,8 +795,6 @@ export default function AlbumProductionPage() {
   const lyricsSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
   const [trackVersions, setTrackVersions] = useState<Record<string, VersionInfo[]>>({}); // key → versions
   const [sunoModel, setSunoModel] = useState("V5");
-  const [fixCoversResult, setFixCoversResult] = useState<string | null>(null);
-  const [fixingCovers, setFixingCovers] = useState(false);
   const pollingRef = useRef<Record<string, NodeJS.Timeout>>({});
   const titleSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
 
@@ -1094,7 +1092,7 @@ export default function AlbumProductionPage() {
             if (proxyImg.ok) imgBlob = await proxyImg.blob();
           }
           if (imgBlob && imgBlob.size > 500) {
-            const imgFilename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-cover.png`;
+            const imgFilename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-cover.jpg`;
             await uploadViaSignedUrl(imgBlob, imgFilename);
           }
         } catch {
@@ -1332,28 +1330,6 @@ export default function AlbumProductionPage() {
                 </span>
               ) : null;
             })}
-            <button
-              onClick={async () => {
-                setFixingCovers(true);
-                setFixCoversResult(null);
-                try {
-                  const res = await adminFetch("/api/admin/fix-covers", { method: "POST" });
-                  const data = await res.json();
-                  setFixCoversResult(`${data.deleted} capas de texto apagadas, ${data.errors} erros`);
-                } catch (e: unknown) {
-                  setFixCoversResult(`Erro: ${e instanceof Error ? e.message : "desconhecido"}`);
-                } finally {
-                  setFixingCovers(false);
-                }
-              }}
-              disabled={fixingCovers}
-              className="rounded-full bg-red-900/30 px-3 py-1 text-xs text-red-400 hover:bg-red-900/50 transition-colors disabled:opacity-50"
-            >
-              {fixingCovers ? "A apagar..." : "Apagar capas de texto"}
-            </button>
-            {fixCoversResult && (
-              <span className="text-xs text-amber-300">{fixCoversResult}</span>
-            )}
           </div>
         </div>
       </div>

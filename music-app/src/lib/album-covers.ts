@@ -138,14 +138,12 @@ export function getAlbumCover(album: Album): string {
 }
 
 /**
- * Tenta obter a capa da track do Supabase (guardada na aprovação via Suno).
- * Retorna a URL pública se existir, ou undefined se não houver capa específica.
+ * URL para a capa de uma track via stream proxy.
+ * O proxy tenta .jpg, .png, .jpeg, .webp no Supabase.
+ * Retorna sempre um URL — o caller deve fazer probe (Image onload/onerror).
  */
 export function getTrackCoverUrl(albumSlug: string, trackNumber: number): string {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  if (!supabaseUrl) return "";
-  const pad = String(trackNumber).padStart(2, "0");
-  return `${supabaseUrl}/storage/v1/object/public/audios/albums/${albumSlug}/faixa-${pad}-cover.png`;
+  return `/api/music/stream?album=${encodeURIComponent(albumSlug)}&track=${trackNumber}&type=cover`;
 }
 
 /** Label para o badge do album — so o nome, sem prefixo */

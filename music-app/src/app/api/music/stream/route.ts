@@ -5,16 +5,20 @@ import { createClient } from "@supabase/supabase-js";
 const BUCKET = "audios";
 
 /**
- * Proxy de streaming de audio.
+ * Proxy de streaming de audio e capas.
  * Esconde o URL real do Supabase e adiciona headers anti-download.
- * GET /api/music/stream?album=espelho-ilusao&track=1
+ *
+ * Audio: GET /api/music/stream?album=espelho-ilusao&track=1
+ * Cover: GET /api/music/stream?album=espelho-ilusao&track=1&type=cover
  *
  * Tries main file first (faixa-01.mp3), then falls back to first version.
+ * For covers, tries .jpg first then .png.
  */
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
   const album = searchParams.get("album");
   const track = searchParams.get("track");
+  const type = searchParams.get("type");
 
   if (!album || !track) {
     return NextResponse.json({ error: "album e track obrigatorios" }, { status: 400 });
@@ -22,6 +26,33 @@ export async function GET(req: NextRequest) {
 
   const safeAlbum = album.replace(/[^a-z0-9-]/g, "");
   const safeTrack = String(parseInt(track, 10)).padStart(2, "0");
+
+  // ── COVER IMAGE ──
+  if (type === "cover") {
+    const extensions = ["jpg", "png", "jpeg", "webp"];
+    for (const ext of extensions) {
+      for (const folder of [`albums/${safeAlbum}`, safeAlbum]) {
+        const url = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${folder}/faixa-${safeTrack}-cover.${ext}`;
+        const res = await fetch(url);
+        if (res.ok) {
+          const contentType = ext === "jpg" || ext === "jpeg" ? "image/jpeg"
+            : ext === "png" ? "image/png"
+            : "image/webp";
+          return new NextResponse(res.body, {
+            status: 200,
+            headers: {
+              "Content-Type": contentType,
+              "Cache-Control": "public, max-age=86400",
+              "Content-Length": res.headers.get("content-length") || "",
+            },
+          });
+        }
+      }
+    }
+    return NextResponse.json({ error: "Cover não encontrada" }, { status: 404 });
+  }
+
+  // ── AUDIO ──
   const version = searchParams.get("version");
   const safeVersion = version ? version.replace(/[^a-z0-9-]/g, "") : null;
   const rangeHeader = req.headers.get("range");
