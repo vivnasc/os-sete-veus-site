@@ -24,14 +24,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ erro: "album_slug, track_number e title obrigatórios." }, { status: 400 });
     }
 
-    // Build visual prompt — poetic, dark, warm, no text
-    const prompt = `Album cover art. Dark background (#0D0D1A to #1A1A2E).
-Feminine silhouette, faceless, warm terracotta and gold tones.
-Ethereal, poetic, intimate. No text, no words, no letters.
-Theme: "${title}" — ${description || mood || "contemplative, transformative"}.
-Style: editorial fine art photography meets digital art.
-Atmospheric, cinematic lighting. Mysterious and beautiful.
-Square format, high quality.`;
+    // Build visual prompt — Suno-style album cover
+    const prompt = `Album cover art for a song called "${title}".
+${description || mood || "contemplative, emotional"}.
+Abstract, atmospheric, cinematic. Beautiful textures and colors.
+No text, no words, no letters, no writing.
+Style: modern music streaming cover art, like Spotify or Apple Music.
+Evocative, emotional, artistic. Square format, high quality.`;
 
     // Call DALL-E 3
     const dalleRes = await fetch("https://api.openai.com/v1/images/generations", {
