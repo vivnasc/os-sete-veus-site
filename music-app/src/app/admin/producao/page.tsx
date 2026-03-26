@@ -299,8 +299,9 @@ function ClipApprovalRow({
         {clip.imageUrl && (
           <img
             src={clip.imageUrl}
-            alt={clip.title || "Suno cover"}
-            className="h-20 w-20 shrink-0 rounded-lg object-cover"
+            alt=""
+            className="h-20 w-20 shrink-0 rounded-lg object-cover bg-mundo-muted-dark/20"
+            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
           />
         )}
         <div className="flex-1 min-w-0">
