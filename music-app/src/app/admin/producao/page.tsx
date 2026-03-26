@@ -1334,7 +1334,7 @@ export default function AlbumProductionPage() {
                 setFixingCovers(true);
                 setFixCoversResult(null);
                 try {
-                  const res = await adminFetch("/api/admin/fix-covers", { method: "POST" });
+                  const res = await adminFetch("/api/admin/fix-covers?force=true", { method: "POST" });
                   const data = await res.json();
                   setFixCoversResult(`${data.fixed} capas corrigidas, ${data.skipped} ignoradas, ${data.errors} erros`);
                 } catch (e: unknown) {

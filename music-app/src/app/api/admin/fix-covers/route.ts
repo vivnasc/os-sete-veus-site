@@ -86,10 +86,14 @@ async function generateCoverImage(
   return response.arrayBuffer();
 }
 
-export async function POST() {
+export async function POST(req: Request) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
   if (!serviceKey) return NextResponse.json({ error: "No service key" }, { status: 500 });
+
+  // ?force=true to regenerate even if cover exists
+  const url = new URL(req.url);
+  const force = url.searchParams.get("force") === "true";
 
   const supabase = createClient(supabaseUrl, serviceKey);
   const bucket = "audios";
@@ -97,8 +101,11 @@ export async function POST() {
   const skipped: string[] = [];
   const errors: string[] = [];
 
-  const { data: albumFolders } = await supabase.storage.from(bucket).list("albums");
-  if (!albumFolders) return NextResponse.json({ error: "Cannot list albums/" }, { status: 500 });
+  // List all album folders in storage
+  const { data: albumFolders, error: listErr } = await supabase.storage.from(bucket).list("albums");
+  if (listErr || !albumFolders) {
+    return NextResponse.json({ error: `Cannot list albums/: ${listErr?.message}` }, { status: 500 });
+  }
 
   for (const folder of albumFolders) {
     if (!folder.name) continue;
@@ -108,69 +115,40 @@ export async function POST() {
     const { data: files } = await supabase.storage.from(bucket).list(`albums/${albumSlug}`);
     if (!files) continue;
 
+    // Find approved tracks (faixa-XX.mp3)
     const approvedTracks = files
       .filter(f => /^faixa-\d{2}\.mp3$/.test(f.name))
       .map(f => parseInt(f.name.match(/faixa-(\d{2})/)?.[1] || "0", 10))
       .filter(n => n > 0);
 
-    const existingCovers = new Set(
-      files
-        .filter(f => /^faixa-\d{2}-cover\.(jpg|png)$/.test(f.name))
-        .map(f => parseInt(f.name.match(/faixa-(\d{2})-cover/)?.[1] || "0", 10))
-    );
-
-    for (const trackNum of approvedTracks) {
-      const pad = String(trackNum).padStart(2, "0");
-      const finalPath = `albums/${albumSlug}/faixa-${pad}-cover.png`;
-
-      if (existingCovers.has(trackNum)) {
-        skipped.push(`${albumSlug}/${pad}`);
+    if (!force) {
+      // Check which already have covers
+      const existingCovers = new Set(
+        files
+          .filter(f => /^faixa-\d{2}-cover\.(jpg|png)$/.test(f.name))
+          .map(f => parseInt(f.name.match(/faixa-(\d{2})-cover/)?.[1] || "0", 10))
+      );
+      // Filter out tracks that already have covers
+      const tracksNeedingCovers = approvedTracks.filter(n => !existingCovers.has(n));
+      if (tracksNeedingCovers.length === 0) {
+        skipped.push(...approvedTracks.map(n => `${albumSlug}/${String(n).padStart(2, "0")}`));
         continue;
       }
-
-      // Strategy 1: Try draft cover
-      let uploaded = false;
-      try {
-        const { data: draftFiles } = await supabase.storage.from(bucket).list("drafts", {
-          search: `${albumSlug}-t${trackNum}-`,
-        });
-        const draftCover = draftFiles?.find(f => f.name.includes("-cover."));
-        if (draftCover) {
-          const { data: blob } = await supabase.storage.from(bucket).download(`drafts/${draftCover.name}`);
-          if (blob && blob.size > 500) {
-            const { error } = await supabase.storage.from(bucket).upload(finalPath, blob, {
-              contentType: "image/png",
-              upsert: true,
-            });
-            if (!error) { fixed.push(`${albumSlug}/${pad} (draft)`); uploaded = true; }
-          }
-        }
-      } catch { /* try strategy 2 */ }
-
-      // Strategy 2: Generate cover inline
-      if (!uploaded) {
-        try {
-          const track = album?.tracks.find(t => t.number === trackNum);
-          const title = track?.title || `Faixa ${trackNum}`;
-          const albumTitle = album?.title || albumSlug;
-          const color = album?.color || "#C9A96E";
-          const lyric = pickLyric(track?.lyrics);
-
-          const imageBuffer = await generateCoverImage(title, albumTitle, color, lyric);
-
-          const { error } = await supabase.storage.from(bucket).upload(finalPath, imageBuffer, {
-            contentType: "image/png",
-            upsert: true,
-          });
-          if (!error) {
-            fixed.push(`${albumSlug}/${pad} (generated)`);
-            uploaded = true;
-          } else {
-            errors.push(`${albumSlug}/${pad}: ${error.message}`);
-          }
-        } catch (e) {
-          errors.push(`${albumSlug}/${pad}: ${e instanceof Error ? e.message : "unknown"}`);
-        }
+      // Only process tracks that need covers
+      for (const trackNum of tracksNeedingCovers) {
+        const result = await processTrack(supabase, bucket, albumSlug, trackNum, album);
+        if (result.ok) fixed.push(result.msg);
+        else errors.push(result.msg);
+      }
+      // Count remaining as skipped
+      const processedSet = new Set(tracksNeedingCovers);
+      skipped.push(...approvedTracks.filter(n => !processedSet.has(n)).map(n => `${albumSlug}/${String(n).padStart(2, "0")}`));
+    } else {
+      // Force: regenerate ALL covers
+      for (const trackNum of approvedTracks) {
+        const result = await processTrack(supabase, bucket, albumSlug, trackNum, album);
+        if (result.ok) fixed.push(result.msg);
+        else errors.push(result.msg);
       }
     }
   }
@@ -181,4 +159,36 @@ export async function POST() {
     errors: errors.length,
     details: { fixed, skipped, errors },
   });
+}
+
+async function processTrack(
+  supabase: ReturnType<typeof createClient>,
+  bucket: string,
+  albumSlug: string,
+  trackNum: number,
+  album: (typeof ALL_ALBUMS)[number] | undefined
+): Promise<{ ok: boolean; msg: string }> {
+  const pad = String(trackNum).padStart(2, "0");
+  const finalPath = `albums/${albumSlug}/faixa-${pad}-cover.png`;
+
+  try {
+    const track = album?.tracks.find(t => t.number === trackNum);
+    const title = track?.title || `Faixa ${trackNum}`;
+    const albumTitle = album?.title || albumSlug;
+    const color = album?.color || "#C9A96E";
+    const lyric = pickLyric(track?.lyrics);
+
+    const imageBuffer = await generateCoverImage(title, albumTitle, color, lyric);
+
+    const { error } = await supabase.storage.from(bucket).upload(finalPath, imageBuffer, {
+      contentType: "image/png",
+      upsert: true,
+    });
+
+    if (error) return { ok: false, msg: `${albumSlug}/${pad}: ${error.message}` };
+    return { ok: true, msg: `${albumSlug}/${pad}` };
+  } catch (e) {
+    return { ok: false, msg: `${albumSlug}/${pad}: ${e instanceof Error ? e.message : "unknown"}` };
+  }
+}
 }
