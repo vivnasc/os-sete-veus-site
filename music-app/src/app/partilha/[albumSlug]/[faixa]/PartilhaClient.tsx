@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
+import { getShareUrl } from "@/lib/share-utils";
 
 const PREVIEW_SECONDS = 45;
 
@@ -112,10 +113,8 @@ export default function PartilhaClient({
   }
 
   async function shareThis() {
-    const shareUrl = typeof window !== "undefined"
-      ? `${window.location.origin}/partilha/${albumSlug}/${trackNumber}`
-      : "";
-    const shareText = `"${trackTitle}" — ${albumTitle} | Loranne`;
+    const shareUrl = getShareUrl(albumSlug, trackNumber);
+    const shareText = `"${trackTitle}" — Loranne`;
 
     if (typeof navigator !== "undefined" && navigator.share) {
       try {
@@ -220,8 +219,8 @@ export default function PartilhaClient({
         {/* Primary CTA */}
         <Link
           href="/registar"
-          className="w-full py-4 rounded-xl font-medium text-sm text-center transition-all hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-lg"
-          style={{ backgroundColor: albumColor, color: "#0D0D1A" }}
+          className="w-full py-4 rounded-xl font-medium text-sm text-center transition-all hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-lg border border-white/10"
+          style={{ backgroundColor: `${albumColor}40`, color: "#F5F0E6" }}
         >
           Ouvir a faixa completa
         </Link>
@@ -229,7 +228,7 @@ export default function PartilhaClient({
         {/* Secondary CTA */}
         <Link
           href="/"
-          className="mt-3 w-full py-3 rounded-xl text-sm text-center bg-white/5 hover:bg-white/10 transition-colors text-[#a0a0b0]"
+          className="mt-3 w-full py-3 rounded-xl text-sm text-center bg-white/5 hover:bg-white/10 transition-colors text-[#a0a0b0] border border-white/5"
         >
           Descobrir Loranne
         </Link>
