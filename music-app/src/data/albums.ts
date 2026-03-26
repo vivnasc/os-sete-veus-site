@@ -50,6 +50,7 @@ import { LIVRO_LYRICS, CURSO_LYRICS } from "./lyrics-livro-cursos";
 import { ESPIRITUAL_LYRICS } from "./lyrics-espirituais";
 import { VIDA_LYRICS } from "./lyrics-vida";
 import { COSMIC_LYRICS } from "./lyrics-cosmic";
+import { ROMANCE_LYRICS } from "./lyrics-romance";
 
 const ALL_LYRICS: Record<string, string> = {
   ...ESPELHO_LYRICS,
@@ -59,6 +60,7 @@ const ALL_LYRICS: Record<string, string> = {
   ...ESPIRITUAL_LYRICS,
   ...VIDA_LYRICS,
   ...COSMIC_LYRICS,
+  ...ROMANCE_LYRICS,
 };
 
 function getLyrics(albumSlug: string, trackNumber: number): string {
@@ -1015,10 +1017,10 @@ const COSMIC_VIAGEM: AlbumDef = {
   ],
 };
 
-const ROMANCE_ALBUM: AlbumDef = {
-  slug: "cosmic-romance",
-  title: "Romance",
-  subtitle: "Loranne apaixonada. Amor vivido na pele, sem clichés.",
+const ROMANCE_PELE: AlbumDef = {
+  slug: "romance-pele",
+  title: "Pele",
+  subtitle: "A linguagem mais antiga. Toque, intimidade, pele contra pele.",
   product: "romance",
   color: "#2e0a1a",
   tracks: [
@@ -1032,6 +1034,86 @@ const ROMANCE_ALBUM: AlbumDef = {
     { number: 8, title: "This Thing Between Us", description: "O amor que não pediu licença", lang: "EN", energy: "pulse", prompt: cosmicPrompt("unexpected love, the chaos of falling, no plan no permission", "electric, chaotic, unapologetic, alive", "driving beat, urgent vocal, building energy, unstoppable", "EN", "pulse"), durationSeconds: 240, audioUrl: null },
     { number: 9, title: "Terça-Feira", description: "Amar o ordinário em alguém", lang: "PT", energy: "steady", prompt: cosmicPrompt("loving the ordinary in someone, Tuesday love, imperfect details", "warm, amused, tender, domestic", "warm acoustic, gentle groove, smiling vocal, intimate", "PT", "steady"), durationSeconds: 240, audioUrl: null },
     { number: 10, title: "Grow Old With Me", description: "O amor que ninguém escreve músicas sobre", lang: "EN", energy: "anthem", prompt: cosmicPrompt("growing old together, ordinary love as revolution, choosing each other daily", "triumphant, peaceful, warm, eternal", "building from piano to full arrangement, anthem of quiet love", "EN", "anthem"), durationSeconds: 300, audioUrl: null },
+  ],
+};
+
+const ROMANCE_CARTA: AlbumDef = {
+  slug: "romance-carta",
+  title: "Carta",
+  subtitle: "Palavras não ditas. Confissões que ficaram na gaveta.",
+  product: "romance",
+  color: "#2e1a0a",
+  tracks: [
+    { number: 1, title: "A Gaveta", description: "A carta que nunca enviei", lang: "PT", energy: "whisper", prompt: cosmicPrompt("unsent love letter, words kept in a drawer, fear of confession", "vulnerable, aching, brave, intimate", "solo piano, intimate vocal, paper-thin production, silence", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "Unsent", description: "A mensagem apagada três vezes", lang: "EN", energy: "steady", prompt: cosmicPrompt("unsent messages, typed and deleted, drafts folder of love", "modern, wistful, relatable, tender", "gentle electronic, warm vocal, contemporary intimacy", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "No Chuveiro", description: "Discursos de amor ensaiados na água", lang: "PT", energy: "steady", prompt: cosmicPrompt("rehearsing love confessions in the shower, eloquent alone, mute in person", "wry, honest, warm, frustrated", "warm acoustic, flowing water textures, intimate vocal", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "Rehearsal", description: "Praticar o teu nome em salas vazias", lang: "EN", energy: "whisper", prompt: cosmicPrompt("saying someone's name to empty rooms, rehearsing confession", "lonely, tender, practising love", "minimal, intimate, close-mic vocal, empty room reverb", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Antes Que Seja Tarde", description: "Tudo o que calei — dito agora", lang: "PT", energy: "anthem", prompt: cosmicPrompt("before it's too late, saying everything held back, deathbed urgency", "urgent, brave, cathartic, powerful", "building from whisper to anthem, strings, powerful vocal", "PT", "anthem"), durationSeconds: 270, audioUrl: null },
+    { number: 6, title: "Twelve Seconds", description: "A mensagem de voz que nunca apagas", lang: "EN", energy: "raw", prompt: cosmicPrompt("voicemail from someone gone, twelve seconds of ordinary voice now sacred", "grief, tenderness, preservation, aching", "minimal, raw vocal, phone quality texture, vast silence", "EN", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "O Que Digo e o Que Sinto", description: "Dois andares do mesmo edifício", lang: "PT", energy: "steady", prompt: cosmicPrompt("saying goodnight when meaning stay, the gap between words and feelings", "frustrated, honest, yearning, dual", "warm groove, two vocal textures, intimate production", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 8, title: "Three AM Confessions", description: "A hora mais honesta", lang: "EN", energy: "whisper", prompt: cosmicPrompt("confessions at three AM, darkness as confessional, truths only said at night", "nocturnal, brave, intimate, whispered", "night textures, soft piano, close-mic whisper vocal", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 9, title: "Visto às Vinte e Três", description: "O romance escondido entre o visto e a resposta", lang: "PT", energy: "steady", prompt: cosmicPrompt("read receipts and delayed replies, love hidden in digital gaps", "modern, wry, relatable, bittersweet", "contemporary production, warm vocal, modern textures", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 10, title: "Words Fail", description: "Quando as palavras não chegam ao amor", lang: "EN", energy: "raw", prompt: cosmicPrompt("words failing at the edge of real love, silence as proof of depth", "awed, humble, defeated by love, surrendered", "minimal, raw vocal, earned silence, vast", "EN", "raw"), durationSeconds: 240, audioUrl: null },
+  ],
+};
+
+const ROMANCE_SAUDADE: AlbumDef = {
+  slug: "romance-saudade",
+  title: "Saudade",
+  subtitle: "Distância, falta, longing. O amor que dói porque existiu.",
+  product: "romance",
+  color: "#0a1a2e",
+  tracks: [
+    { number: 1, title: "O Lado Vazio", description: "O lado vazio da cama", lang: "PT", energy: "whisper", prompt: cosmicPrompt("the empty side of the bed, absence as presence", "aching, lonely, sensory, quiet", "soft piano, spacious, intimate vocal, bed-warmth textures", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "Phantom", description: "Sentir quem já não está", lang: "EN", energy: "whisper", prompt: cosmicPrompt("phantom touch, feeling someone who left, body memory of absent lover", "haunting, aching, sensory, ghostly", "ethereal pads, distant vocal, phantom textures", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Domingo", description: "Domingos sem ti são mais longos", lang: "PT", energy: "steady", prompt: cosmicPrompt("Sundays without you are longer, domestic absence, missing the ordinary", "slow, aching, domestic, bittersweet", "warm acoustic, sunday-morning feel, nostalgic vocal", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "The Jacket", description: "O casaco que ainda cheira a ti", lang: "EN", energy: "raw", prompt: cosmicPrompt("wearing someone's jacket after they leave, smell as memory", "intimate, grieving, comforted, raw", "minimal, raw vocal, close-mic, fabric warmth", "EN", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Aeroporto", description: "A despedida que repito na cabeça", lang: "PT", energy: "steady", prompt: cosmicPrompt("airport goodbye replayed endlessly, the last hug, departure gate", "urgent, replaying, desperate, tender", "building rhythm, emotional vocal, travel textures", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "Same Moon", description: "Pelo menos olhamos para a mesma lua", lang: "EN", energy: "steady", prompt: cosmicPrompt("looking at the same moon from different countries, long distance love", "connected, hopeful, aching, cosmic", "ambient, warm production, hopeful vocal, night sky", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "O Teu Chá", description: "Preparar chá para alguém que não vem", lang: "PT", energy: "raw", prompt: cosmicPrompt("making tea for someone who won't come, habit as grief, domestic loss", "devastating, quiet, habitual, tender", "minimal piano, raw vocal, kitchen silence, devastating calm", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 8, title: "Distance", description: "A distância como terceira pessoa na relação", lang: "EN", energy: "steady", prompt: cosmicPrompt("distance as the third person in a relationship, kilometres between bodies", "frustrated, honest, determined, aching", "driving rhythm, emotional vocal, distance textures", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 9, title: "Voltar", description: "Voltar ao sítio onde fomos felizes sozinha", lang: "PT", energy: "whisper", prompt: cosmicPrompt("returning alone to the place where you were happy together", "nostalgic, brave, bittersweet, healing", "gentle guitar, nostalgic vocal, place-memory textures", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 10, title: "Still Here", description: "O amor que fica depois de tudo", lang: "EN", energy: "anthem", prompt: cosmicPrompt("love that remains after someone leaves, enduring presence of absence", "triumphant, surviving, enduring, powerful", "building anthem, strings, powerful vocal, love that survives", "EN", "anthem"), durationSeconds: 300, audioUrl: null },
+  ],
+};
+
+const ROMANCE_FOGO_LENTO: AlbumDef = {
+  slug: "romance-fogo-lento",
+  title: "Fogo Lento",
+  subtitle: "Desejo. A paixão que constrói devagar e arde sem pressa.",
+  product: "romance",
+  color: "#2e0a0a",
+  tracks: [
+    { number: 1, title: "Antes do Beijo", description: "O segundo antes — mais intenso que o beijo", lang: "PT", energy: "whisper", prompt: cosmicPrompt("the second before a kiss, anticipation more intense than the act", "electric, suspended, magnetic, breathless", "minimal, breath textures, suspended rhythm, intimate whisper vocal", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "Slow Burn", description: "A paixão que não tem pressa", lang: "EN", energy: "steady", prompt: cosmicPrompt("desire building slowly, no rush, slow burn passion", "smouldering, patient, building, warm", "slow groove, warm bass, building tension, seductive vocal", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "O Olhar", description: "Quando o olhar diz o que a boca não pode", lang: "PT", energy: "steady", prompt: cosmicPrompt("the look across a room, eyes saying what mouths cannot", "electric, public-private, charged, silent", "warm groove, tension building, intimate vocal, heat", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "Undress", description: "Despir-se é mais do que tirar a roupa", lang: "EN", energy: "raw", prompt: cosmicPrompt("undressing as vulnerability, removing armour not just clothes", "brave, naked, intimate, sacred", "minimal, raw vocal, stripped production, vulnerable", "EN", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Meia-Noite", description: "A cidade dorme, nós não", lang: "PT", energy: "pulse", prompt: cosmicPrompt("midnight, the city sleeps but we don't, nighttime desire", "nocturnal, electric, urgent, secret", "night-time groove, pulsing bass, seductive vocal, midnight textures", "PT", "pulse"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "Your Hands", description: "As tuas mãos sabem coisas", lang: "EN", energy: "whisper", prompt: cosmicPrompt("hands that know your body, touch as knowledge, hands as language", "reverent, sensual, knowing, tender", "gentle, tactile textures, whispered vocal, hand-warmth", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "Quero", description: "Dizer quero sem pedir desculpa", lang: "PT", energy: "anthem", prompt: cosmicPrompt("wanting without apologising, female desire as declaration, unapologetic want", "bold, unapologetic, powerful, claiming", "driving beat, powerful vocal, bold production, claiming space", "PT", "anthem"), durationSeconds: 240, audioUrl: null },
+    { number: 8, title: "Aftermath", description: "O silêncio depois — os corpos a descansar", lang: "EN", energy: "whisper", prompt: cosmicPrompt("aftermath, bodies resting after intimacy, the quiet after", "peaceful, tender, satisfied, still", "ambient, breathing textures, gentle vocal, afterglow", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 9, title: "Marca", description: "A marca que o teu corpo deixou no meu", lang: "PT", energy: "steady", prompt: cosmicPrompt("the mark someone's body leaves on yours, imprints, body memory", "permanent, sensory, marked, owned", "warm production, body-percussion, intimate vocal", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 10, title: "Again", description: "Outra vez — sempre outra vez", lang: "EN", energy: "pulse", flavor: "afrobeat", prompt: cosmicPrompt("again and again, insatiable return, the loop of desire", "insatiable, joyful, rhythmic, celebratory", "afrobeat groove, joyful rhythm, celebrating desire, warm vocal", "EN", "pulse", "afrobeat"), durationSeconds: 240, audioUrl: null },
+  ],
+};
+
+const ROMANCE_NINHO: AlbumDef = {
+  slug: "romance-ninho",
+  title: "Ninho",
+  subtitle: "Construir casa juntos. O amor que fica quando a paixão vira rotina.",
+  product: "romance",
+  color: "#1a1a0a",
+  tracks: [
+    { number: 1, title: "Chaves", description: "O dia em que me deste a chave", lang: "PT", energy: "steady", prompt: cosmicPrompt("receiving a key to someone's home, the weight of a small metal object", "significant, quiet, monumental, domestic", "warm acoustic, steady rhythm, grounded vocal, key-like textures", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "Grocery List", description: "A lista de compras como carta de amor", lang: "EN", energy: "steady", prompt: cosmicPrompt("grocery list as love letter, domestic details as intimacy", "warm, amused, domestic-sacred, tender", "warm production, conversational vocal, kitchen warmth", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Lado Esquerdo", description: "Tu dormes sempre do lado esquerdo", lang: "PT", energy: "whisper", prompt: cosmicPrompt("sleeping sides, knowing which side of the bed is whose, routine as love", "intimate, habitual, tender, mapped", "soft piano, breathing textures, whisper vocal, bed warmth", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "Ordinary", description: "O extra-ordinário do ordinário", lang: "EN", energy: "steady", prompt: cosmicPrompt("the extraordinary inside the ordinary, love in the mundane", "grateful, observant, warm, wise", "gentle groove, warm vocal, kitchen-light production", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Discussão", description: "A discussão que nos fez mais fortes", lang: "PT", energy: "raw", prompt: cosmicPrompt("the argument that made us stronger, fighting as intimacy, repair", "raw, honest, messy, healing", "raw vocal, tense to tender, dynamic production, resolution", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "Silence Together", description: "O silêncio confortável — a melhor companhia", lang: "EN", energy: "whisper", prompt: cosmicPrompt("comfortable silence between lovers, being quiet together as highest intimacy", "peaceful, arrived, comfortable, deep", "minimal, spacious, gentle vocal, comfortable silence", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "Avental", description: "Cozinhar juntos como ritual sagrado", lang: "PT", energy: "steady", flavor: "bossa", prompt: cosmicPrompt("cooking together as sacred ritual, kitchen as temple, domestic love", "warm, rhythmic, domestic-sacred, joyful", "bossa rhythm, kitchen warmth, playful vocal, cooking sounds", "PT", "steady", "bossa"), durationSeconds: 240, audioUrl: null },
+    { number: 8, title: "Roots", description: "As raízes que cresceram juntas", lang: "EN", energy: "steady", prompt: cosmicPrompt("roots growing together underground, entangled lives, shared foundation", "grounded, deep, enduring, strong", "earthy bass, organic rhythm, rooted vocal, growth textures", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 9, title: "Perdoar", description: "Perdoar sem esquecer — e ficar", lang: "PT", energy: "raw", prompt: cosmicPrompt("forgiving without forgetting, choosing to stay, love as daily choice", "brave, honest, mature, tender", "raw vocal, building warmth, resolution, earned tenderness", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 10, title: "Still Choosing You", description: "Ainda te escolho — todos os dias", lang: "EN", energy: "anthem", prompt: cosmicPrompt("choosing someone every day, love as daily revolution, still choosing you", "triumphant, mature, powerful, arrived", "building anthem, full arrangement, declarative vocal, earned celebration", "EN", "anthem"), durationSeconds: 300, audioUrl: null },
   ],
 };
 
@@ -1216,7 +1298,11 @@ export const ALL_ALBUMS: Album[] = [
   // Cosmic
   COSMIC_VIAGEM,
   // Romance
-  ROMANCE_ALBUM,
+  ROMANCE_PELE,
+  ROMANCE_CARTA,
+  ROMANCE_SAUDADE,
+  ROMANCE_FOGO_LENTO,
+  ROMANCE_NINHO,
   COSMIC_POEIRA,
   COSMIC_VASTO,
   COSMIC_SINAL,
