@@ -69,7 +69,7 @@ export type Album = {
   slug: string;
   title: string;
   subtitle: string;
-  product: "espelho" | "no" | "livro" | "curso" | "espiritual" | "vida" | "cosmic";
+  product: "espelho" | "no" | "livro" | "curso" | "espiritual" | "vida" | "cosmic" | "romance";
   veu?: number;
   courseSlug?: string;
   color: string;
@@ -1015,6 +1015,26 @@ const COSMIC_VIAGEM: AlbumDef = {
   ],
 };
 
+const ROMANCE_ALBUM: AlbumDef = {
+  slug: "cosmic-romance",
+  title: "Romance",
+  subtitle: "Loranne apaixonada. Amor vivido na pele, sem clichés.",
+  product: "romance",
+  color: "#2e0a1a",
+  tracks: [
+    { number: 1, title: "Chega Mais Perto", description: "Mais perto que a pele permite", lang: "PT", energy: "whisper", prompt: cosmicPrompt("intimacy, getting closer than skin allows, sacred closeness", "intimate, warm, vulnerable, magnetic", "soft ambient, close-mic vocal, gentle piano, breath sounds, warmth", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 2, title: "Skin on Skin", description: "A linguagem mais antiga", lang: "EN", energy: "steady", prompt: cosmicPrompt("touch as language, skin reading skin, body memory of touch", "sensual, reverent, tender, electric", "warm bass, gentle rhythm, intimate vocal, tactile textures", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 3, title: "Depois de Ti", description: "O quarto depois de alguém partir", lang: "PT", energy: "whisper", prompt: cosmicPrompt("the room after a lover leaves, warmth remaining, body memory", "longing, warm, bittersweet, sensory", "solo piano, spacious reverb, nostalgic vocal, morning light", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 4, title: "Stay", description: "Fica — não para sempre, só fica", lang: "EN", energy: "steady", prompt: cosmicPrompt("asking someone to stay, not forever but now, ordinary love", "vulnerable, honest, unhurried, warm", "acoustic guitar, gentle build, honest vocal, warm production", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 5, title: "Dança Comigo", description: "Dançar na cozinha com a luz do frigorífico", lang: "PT", energy: "steady", flavor: "bossa", prompt: cosmicPrompt("dancing in the kitchen, barefoot, imperfect love, ordinary magic", "playful, warm, grounded, joyful", "bossa rhythm, warm guitar, playful vocal, kitchen intimacy", "PT", "steady", "bossa"), durationSeconds: 240, audioUrl: null },
+    { number: 6, title: "Let Me Hold You", description: "Segurar sem consertar", lang: "EN", energy: "whisper", prompt: cosmicPrompt("holding someone without trying to fix them, gravity-like love", "tender, protective, vast, patient", "ambient pads, gentle vocal, spacious, gravity-like bass", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+    { number: 7, title: "Vê-me", description: "Ser vista por inteiro — incluindo o escuro", lang: "PT", energy: "raw", prompt: cosmicPrompt("being truly seen by a lover, all of you including the dark parts", "raw, brave, exposed, intimate", "minimal, raw vocal close-mic, solo piano, vulnerability", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+    { number: 8, title: "This Thing Between Us", description: "O amor que não pediu licença", lang: "EN", energy: "pulse", prompt: cosmicPrompt("unexpected love, the chaos of falling, no plan no permission", "electric, chaotic, unapologetic, alive", "driving beat, urgent vocal, building energy, unstoppable", "EN", "pulse"), durationSeconds: 240, audioUrl: null },
+    { number: 9, title: "Terça-Feira", description: "Amar o ordinário em alguém", lang: "PT", energy: "steady", prompt: cosmicPrompt("loving the ordinary in someone, Tuesday love, imperfect details", "warm, amused, tender, domestic", "warm acoustic, gentle groove, smiling vocal, intimate", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+    { number: 10, title: "Grow Old With Me", description: "O amor que ninguém escreve músicas sobre", lang: "EN", energy: "anthem", prompt: cosmicPrompt("growing old together, ordinary love as revolution, choosing each other daily", "triumphant, peaceful, warm, eternal", "building from piano to full arrangement, anthem of quiet love", "EN", "anthem"), durationSeconds: 300, audioUrl: null },
+  ],
+};
+
 const COSMIC_ORBITA: AlbumDef = {
   slug: "cosmic-orbita",
   title: "Órbita",
@@ -1135,6 +1155,8 @@ export const ALL_ALBUMS: Album[] = [
   VIDA_PENUMBRA,
   // Cosmic
   COSMIC_VIAGEM,
+  // Romance
+  ROMANCE_ALBUM,
   COSMIC_ETER,
   COSMIC_ORBITA,
 ].map(applyLyrics);
