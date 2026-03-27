@@ -46,6 +46,11 @@
 - Modelo Suno default: V5 (V5.5 ainda nao disponivel no API.box)
 - CORS fix na aprovacao: covers do Suno agora guardadas via proxy fallback
 - Selector de modelo inclui V5.5 (para quando API.box suportar)
+- **Persona support implementado:**
+  - API: `POST /api/admin/suno/persona` — cria persona a partir de clip gerado
+  - Generate API: aceita `personaId` + `personaModel: "voice_persona"`
+  - UI: campo de persona no header da producao + botao "Criar Persona" em cada clip
+  - Fluxo: gerar track → ouvir → "Criar Persona" → personaId preenchido automaticamente → futuras geracoes usam essa voz
 
 ---
 
@@ -98,13 +103,16 @@
 ## Proximas Accoes
 
 ### Imediato (quando V5.5 disponivel no API.box)
-1. Adicionar suporte a Persona na pagina de producao
+1. ~~Adicionar suporte a Persona na pagina de producao~~ FEITO
 2. Criar Persona da Loranne a partir da melhor track
 3. Testar geracao com persona + V5.5
 4. Se aprovado, re-gerar catalogo completo
 
-### Player (quando houver tempo)
-- Melhorar UX das letras sincronizadas
+### Player
+- ~~Letras sincronizadas~~ FEITO (buildSyncedLyrics engine)
+- ~~Blur de fundo da capa~~ FEITO
+- ~~3 tabs (Capa/Letra/Fila)~~ FEITO
+- ~~Glow na linha activa~~ FEITO
 - Testar covers do Suno em novas aprovacoes
 - Verificar partilha WhatsApp com dominio de producao
 
@@ -134,6 +142,7 @@
 | `src/app/api/music/stream/route.ts` | Streaming audio + covers |
 | `src/app/api/og/route.tsx` | OG image dinamico |
 | `src/app/admin/producao/page.tsx` | Pagina de producao (gerar, aprovar) |
-| `src/app/api/admin/suno/generate/route.ts` | API de geracao Suno |
+| `src/app/api/admin/suno/generate/route.ts` | API de geracao Suno (aceita personaId) |
+| `src/app/api/admin/suno/persona/route.ts` | API de criacao de Persona |
 | `src/lib/album-covers.ts` | Capas albums + tracks |
 | `src/lib/share-utils.ts` | Short URLs + parse |
