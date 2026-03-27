@@ -22,10 +22,11 @@ export async function POST(req: NextRequest) {
     // Try multiple free sources
     let imgBuffer: ArrayBuffer | null = null;
 
-    // 1. Try Pollinations AI
+    // 1. Try Pollinations AI (add seed to force unique image each time)
     try {
+      const seed = Math.floor(Math.random() * 999999);
       const prompt = encodeURIComponent(`Album cover art for "${title}". ${description || "contemplative"}. Abstract, atmospheric, cinematic. No text. Square.`);
-      const res = await fetch(`https://image.pollinations.ai/prompt/${prompt}?width=1024&height=1024&nologo=true`, { signal: AbortSignal.timeout(30000) });
+      const res = await fetch(`https://image.pollinations.ai/prompt/${prompt}?width=1024&height=1024&nologo=true&seed=${seed}`, { signal: AbortSignal.timeout(30000) });
       if (res.ok) {
         const buf = await res.arrayBuffer();
         if (buf.byteLength > 5000) imgBuffer = buf;
