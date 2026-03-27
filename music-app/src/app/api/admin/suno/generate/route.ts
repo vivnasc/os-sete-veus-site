@@ -108,7 +108,7 @@ function buildStyle(energy?: string, flavor?: string, prompt?: string): string {
   let style = flavorMod ? `${flavorMod}, ${base}` : base;
 
   // Add language — African Portuguese accent is Loranne's identity
-  if (prompt?.includes("Portuguese")) style += ", Portuguese, African accent";
+  if (prompt?.includes("Portuguese")) style += ", Mozambican Portuguese";
   else if (prompt?.includes("English")) style += ", English";
 
   // Always add "full song"
