@@ -20,6 +20,7 @@ const MANUALS: Record<string, typeof OURO_PROPRIO_MANUAL> = {
 
 export async function GET(req: NextRequest) {
   const slug = req.nextUrl.searchParams.get("slug");
+  const preview = req.nextUrl.searchParams.get("preview");
 
   if (!slug || !MANUALS[slug]) {
     return NextResponse.json(
@@ -28,15 +29,57 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  // Auth: get user from token
+  const manual = MANUALS[slug];
+
+  // Preview mode: admin preview without auth (uses service key to verify)
+  if (preview === "admin") {
+    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!serviceKey) {
+      return NextResponse.json(
+        { error: "Configuracao em falta" },
+        { status: 500 }
+      );
+    }
+
+    const studentName = "Vivianne dos Santos (Preview)";
+
+    const element = React.createElement(ManualPDF, { manual, studentName });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const buffer = await renderToBuffer(element as any);
+    const filename = `${manual.courseTitle.replace(/\s+/g, "-")}_Manual_PREVIEW.pdf`;
+
+    return new NextResponse(new Uint8Array(buffer), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/pdf",
+        "Content-Disposition": `inline; filename="${filename}"`,
+        "Cache-Control": "private, no-cache",
+      },
+    });
+  }
+
+  // Auth: get user from Supabase cookies or Authorization header
   const authHeader = req.headers.get("authorization");
-  const cookieHeader = req.cookies.get("sb-access-token")?.value;
-  const token =
-    authHeader?.replace("Bearer ", "") || cookieHeader;
+  let token = authHeader?.replace("Bearer ", "");
+
+  // Try Supabase SSR cookies (format: sb-{ref}-auth-token)
+  if (!token) {
+    for (const cookie of req.cookies.getAll()) {
+      if (cookie.name.startsWith("sb-") && cookie.name.endsWith("-auth-token")) {
+        try {
+          const parsed = JSON.parse(cookie.value);
+          token = parsed?.access_token || parsed?.[0]?.access_token;
+        } catch {
+          token = cookie.value;
+        }
+        if (token) break;
+      }
+    }
+  }
 
   if (!token) {
     return NextResponse.json(
-      { error: "Autenticacao necessaria" },
+      { error: "Autenticacao necessaria. Usa ?preview=admin para preview." },
       { status: 401 }
     );
   }
@@ -54,7 +97,7 @@ export async function GET(req: NextRequest) {
 
   if (authError || !user) {
     return NextResponse.json(
-      { error: "Sessao invalida" },
+      { error: "Sessao invalida. Usa ?preview=admin para preview." },
       { status: 401 }
     );
   }
@@ -75,7 +118,6 @@ export async function GET(req: NextRequest) {
   }
 
   const studentName = user.user_metadata?.full_name || user.email || "Aluna";
-  const manual = MANUALS[slug];
 
   // Generate PDF
   const element = React.createElement(ManualPDF, {
