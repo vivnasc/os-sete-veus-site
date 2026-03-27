@@ -427,7 +427,7 @@ export default function RevisaoPage() {
           Manual PDF
         </h3>
         <a
-          href="/api/courses/manual?slug=ouro-proprio"
+          href="/api/courses/manual?slug=ouro-proprio&preview=admin"
           className="inline-block px-6 py-3 rounded bg-[#C9A96E] text-[#1A1A2E] font-medium text-sm hover:bg-[#D4A853] transition"
         >
           Descarregar Manual (PDF)
