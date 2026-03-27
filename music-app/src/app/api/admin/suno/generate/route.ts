@@ -28,7 +28,7 @@ function extractStyleTags(prompt: string): string {
     // Genres
     "ambient", "electronic", "organic", "pop", "folk", "jazz", "gospel",
     "house", "afrobeat", "afropop", "bossa nova", "bossa",
-    "marrabenta", "mozambican",
+    "marrabenta", "mozambican", "funk", "r&b", "funky",
     // Instruments
     "piano", "guitar", "acoustic guitar", "nylon guitar", "strings",
     "synth", "bass", "drums", "percussion", "organ", "Rhodes",
@@ -66,7 +66,58 @@ function extractStyleTags(prompt: string): string {
     result = found.slice(0, 6).join(", ");
   }
 
+  // Always append "full song" to encourage complete generation
+  if (result && !result.includes("full")) {
+    result += ", full song";
+  }
+
   return result || prompt.slice(0, MAX_STYLE_LENGTH);
+}
+
+/**
+ * Build a distinct, specific style string based on energy + flavor.
+ * Each combination produces a DIFFERENT sound, not generic "organic electronic".
+ */
+function buildStyle(energy?: string, flavor?: string, prompt?: string): string {
+  // Energy-specific base styles (each sounds DIFFERENT)
+  const energyStyles: Record<string, string> = {
+    whisper: "ambient, ethereal, soft female vocal, intimate, slow, dreamy",
+    steady: "mid-tempo, grounded, warm female vocal, acoustic, walking pace",
+    pulse: "upbeat, driving, strong female vocal, rhythmic, energetic, pop",
+    anthem: "powerful, anthemic, bold female vocal, big chorus, stadium, epic",
+    raw: "stripped-back, raw female vocal, minimal, vulnerable, close-mic",
+  };
+
+  // Flavor-specific overrides (completely change the genre)
+  const flavorStyles: Record<string, string> = {
+    organic: "",
+    marrabenta: "marrabenta, Mozambican guitar groove, shaker, danceable, warm bass",
+    afrobeat: "afrobeat, afropop, syncopated guitar, talking drums, West African groove",
+    bossa: "bossa nova, nylon guitar, brushed drums, Brazilian, swaying, velvet",
+    jazz: "jazz, Rhodes piano, walking bass, brushed cymbals, smoky, late-night",
+    folk: "acoustic folk, fingerpicked guitar, stomps, earthy, campfire, storytelling",
+    funk: "funk, R&B-pop, glossy, punchy drums, funky bassline, bright synth, dancefloor, 108 BPM",
+    house: "house, four-on-the-floor, deep bass, hi-hat, synth stabs, dance-floor",
+    gospel: "gospel, choir harmonies, organ, hand claps, uplifting, call-and-response",
+  };
+
+  const base = energyStyles[energy || "steady"] || energyStyles.steady;
+  const flavorMod = flavorStyles[flavor || "organic"] || "";
+
+  // Flavor takes priority — it defines the genre
+  let style = flavorMod ? `${flavorMod}, ${base}` : base;
+
+  // Add language — African Portuguese accent is Loranne's identity
+  if (prompt?.includes("Portuguese")) style += ", Mozambican Portuguese";
+  else if (prompt?.includes("English")) style += ", English";
+
+  // Always add "full song"
+  style += ", full song";
+
+  // Trim to 200 chars max
+  if (style.length > 200) style = style.slice(0, 200);
+
+  return style;
 }
 
 async function callSunoApi(
@@ -129,7 +180,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const { prompt, lyrics, instrumental, title, model, personaId, personaModel } = await req.json();
+    const { prompt, lyrics, instrumental, title, model, personaId, personaModel, energy, flavor } = await req.json();
 
     if (!prompt) {
       return NextResponse.json(
@@ -160,9 +211,9 @@ export async function POST(req: NextRequest) {
     }
 
     if (hasLyrics) {
-      // Custom mode: prompt = lyrics, style = concise genre tags
+      // Custom mode: prompt = lyrics, style = specific tags per energy+flavor
       body.prompt = lyrics;
-      body.style = extractStyleTags(prompt);
+      body.style = buildStyle(energy, flavor, prompt);
       body.title = title || "Sem titulo";
     } else {
       body.prompt = prompt.length > 480 ? prompt.slice(0, 480) : prompt;

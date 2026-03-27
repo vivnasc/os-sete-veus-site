@@ -63,6 +63,7 @@ type SunoClip = {
   id: string;
   status: string;
   audioUrl: string | null;
+  originalAudioUrl?: string | null; // Original Suno CDN URL (for upload)
   title: string;
   imageUrl?: string | null;
   duration?: number | null;
@@ -408,6 +409,7 @@ function ClipApprovalRow({
 
 function TrackRow({
   track,
+  albumSlug,
   status,
   error,
   onUpload,
@@ -427,6 +429,7 @@ function TrackRow({
   onLyricsChange,
 }: {
   track: AlbumTrack;
+  albumSlug: string;
   status: TrackStatus;
   error: string | null;
   onUpload: (file: File) => void;
@@ -752,6 +755,41 @@ function TrackRow({
               </button>
             )
           )}
+
+          {/* Generate cover */}
+          <button
+            onClick={async () => {
+              const btn = document.activeElement as HTMLButtonElement;
+              btn.disabled = true;
+              btn.textContent = "A gerar...";
+              try {
+                const res = await adminFetch("/api/admin/generate-cover", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    album_slug: albumSlug,
+                    track_number: track.number,
+                    title: editedTitle ?? track.title,
+                    description: track.description,
+                    mood: track.energy,
+                  }),
+                });
+                const data = await res.json();
+                if (data.ok) {
+                  btn.textContent = "Capa gerada!";
+                } else {
+                  btn.textContent = "Erro";
+                  alert(data.erro || "Erro ao gerar capa");
+                }
+              } catch {
+                btn.textContent = "Erro";
+              }
+              setTimeout(() => { btn.disabled = false; btn.textContent = "Gerar capa"; }, 3000);
+            }}
+            className="rounded-lg bg-mundo-muted-dark/20 px-3 py-1.5 text-xs text-mundo-muted hover:bg-mundo-muted-dark/30 transition"
+          >
+            Gerar capa
+          </button>
         </div>
       </div>
     </div>
@@ -898,68 +936,33 @@ export default function AlbumProductionPage() {
         if (allDone) {
           clearInterval(pollingRef.current[key]);
           delete pollingRef.current[key];
+          setErrors((e) => ({ ...e, [key]: "A descarregar clips..." }));
 
-          // Show clips immediately
+          // Download all clips to browser memory immediately
+          // This prevents URLs expiring while you listen to one
+          const cached: SunoClip[] = [];
+          for (const c of data.clips as SunoClip[]) {
+            if (!c.audioUrl) { cached.push(c); continue; }
+            try {
+              const res = await fetch(c.audioUrl);
+              if (res.ok) {
+                const blob = await res.blob();
+                if (blob.size > 1000) {
+                  const localUrl = URL.createObjectURL(blob);
+                  cached.push({ ...c, audioUrl: localUrl, originalAudioUrl: c.audioUrl });
+                  continue;
+                }
+              }
+            } catch { /* keep original URL */ }
+            cached.push(c);
+          }
+
           setGeneratedClips((g) => ({
             ...g,
-            [key]: { clips: data.clips },
+            [key]: { clips: cached },
           }));
           setStatuses((s) => ({ ...s, [key]: "idle" }));
-          setErrors((e) => ({ ...e, [key]: "A guardar cópias..." }));
-
-          // Auto-save clips in background (fire-and-forget)
-          // Saves audio + cover image so they never expire
-          (async () => {
-            const saved: SunoClip[] = [];
-            for (let idx = 0; idx < data.clips.length; idx++) {
-              const c = data.clips[idx] as SunoClip;
-              if (!c.audioUrl) { saved.push(c); continue; }
-              let savedAudioUrl = c.audioUrl;
-              let savedImageUrl = c.imageUrl || null;
-
-              // Save audio
-              try {
-                const res = await adminFetch("/api/admin/proxy-download", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({ url: c.audioUrl }),
-                });
-                if (res.ok) {
-                  const blob = await res.blob();
-                  if (blob.size > 1000) {
-                    const draftName = `drafts/${key}-v${idx + 1}.mp3`;
-                    savedAudioUrl = await uploadViaSignedUrl(blob, draftName);
-                  }
-                }
-              } catch { /* keep original */ }
-
-              // Save cover image
-              if (c.imageUrl) {
-                try {
-                  const imgRes = await adminFetch("/api/admin/proxy-download", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ url: c.imageUrl }),
-                  });
-                  if (imgRes.ok) {
-                    const imgBlob = await imgRes.blob();
-                    if (imgBlob.size > 500) {
-                      const imgName = `drafts/${key}-v${idx + 1}-cover.jpg`;
-                      savedImageUrl = await uploadViaSignedUrl(imgBlob, imgName);
-                    }
-                  }
-                } catch { /* keep original */ }
-              }
-
-              saved.push({ ...c, audioUrl: savedAudioUrl, imageUrl: savedImageUrl });
-            }
-            // Update clips with saved URLs
-            setGeneratedClips((g) => ({
-              ...g,
-              [key]: { clips: saved },
-            }));
-            setErrors((e) => ({ ...e, [key]: "" }));
-          })();
+          setErrors((e) => ({ ...e, [key]: "" }));
         }
       } catch (err) {
         console.warn(`[poll #${pollCount}] ${key} error:`, err);
@@ -1018,6 +1021,8 @@ export default function AlbumProductionPage() {
           title: editedTitles[key] || track.title,
           instrumental: false,
           model: sunoModel,
+          energy: track.energy,
+          flavor: track.flavor,
           ...(personaId ? { personaId, personaModel: "voice_persona" } : {}),
         }),
       });
@@ -1335,7 +1340,7 @@ export default function AlbumProductionPage() {
                 </span>
               ) : null;
             })}
-            {(["marrabenta", "afrobeat", "bossa", "jazz", "folk", "house", "gospel"] as TrackFlavor[]).map((f) => {
+            {(["marrabenta", "afrobeat", "bossa", "jazz", "folk", "funk", "house", "gospel"] as TrackFlavor[]).map((f) => {
               const count = ALL_ALBUMS.reduce(
                 (s, a) => s + a.tracks.filter((t) => t.flavor === f).length,
                 0
@@ -1399,6 +1404,19 @@ export default function AlbumProductionPage() {
                 <span className="text-[10px] text-amber-300">{personaResult}</span>
               )}
             </div>
+
+            {/* Cleanup button */}
+            <button
+              onClick={async () => {
+                if (!confirm("Apagar todas as capas corruptas do Supabase?")) return;
+                const res = await adminFetch("/api/admin/cleanup-covers", { method: "POST" });
+                const data = await res.json();
+                alert(`${data.total || 0} capas corruptas apagadas.`);
+              }}
+              className="rounded-lg bg-red-900/30 px-3 py-1.5 text-[10px] text-red-400 hover:bg-red-900/50 transition"
+            >
+              Limpar capas
+            </button>
 
             <div className="flex gap-1 rounded-full bg-mundo-muted-dark/10 p-1">
               <button
@@ -1573,6 +1591,7 @@ export default function AlbumProductionPage() {
                   <TrackRow
                     key={track.number}
                     track={track}
+                    albumSlug={album.slug}
                     status={statuses[key] || "idle"}
                     error={errors[key] || null}
                     audioUrl={audioUrls[key] || track.audioUrl || null}
