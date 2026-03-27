@@ -278,6 +278,7 @@ function ClipApprovalRow({
   trackEnergy,
   onApproveMain,
   onApproveVersion,
+  onCreatePersona,
 }: {
   clip: SunoClip;
   clipIndex: number;
@@ -286,6 +287,7 @@ function ClipApprovalRow({
   trackEnergy: string;
   onApproveMain: () => void;
   onApproveVersion: (name: string, energy: string) => void;
+  onCreatePersona?: (clipTaskId: string, clipAudioId: string) => void;
 }) {
   const [mode, setMode] = useState<"pick" | "version">("pick");
   const [versionName, setVersionName] = useState(`suno-v${clipIndex + 1}`);
@@ -339,6 +341,15 @@ function ClipApprovalRow({
               className="rounded-lg bg-mundo-muted-dark/20 px-3 py-1.5 text-xs text-mundo-muted transition hover:bg-mundo-muted-dark/30"
             >
               Substituir principal
+            </button>
+          )}
+          {onCreatePersona && clip.id && (
+            <button
+              onClick={() => onCreatePersona(String(clip.id), String(clip.id))}
+              className="rounded-lg bg-pink-900/30 px-3 py-1.5 text-xs text-pink-400 transition hover:bg-pink-900/50"
+              title="Criar persona com a voz deste clip"
+            >
+              Criar Persona
             </button>
           )}
         </div>
@@ -408,6 +419,7 @@ function TrackRow({
   onApproveClip,
   onApproveAsVersion,
   onUploadVersion,
+  onCreatePersona,
   audioUrl,
   existingVersions,
   generatedClips,
@@ -429,6 +441,7 @@ function TrackRow({
   onApproveClip: (clipUrl: string, sunoTitle: string, imageUrl: string | null) => void;
   onApproveAsVersion: (clipUrl: string, sunoTitle: string, versionName: string, energy: string, imageUrl?: string | null) => void;
   onUploadVersion: (file: File, versionName: string, energy: string, coverFile?: File | null) => void;
+  onCreatePersona?: (taskId: string, audioId: string) => void;
   audioUrl: string | null;
   existingVersions: VersionInfo[];
   generatedClips: GeneratedClips | null;
@@ -677,6 +690,7 @@ function TrackRow({
                       onApproveClip(clip.audioUrl, clip.title, clip.imageUrl || null);
                     }}
                     onApproveVersion={(name, energy) => onApproveAsVersion(clip.audioUrl!, clip.title, name, energy, clip.imageUrl || null)}
+                    onCreatePersona={onCreatePersona ? (taskId, audioId) => onCreatePersona(taskId, audioId) : undefined}
                   />
                 ))}
               </div>
@@ -815,6 +829,10 @@ export default function AlbumProductionPage() {
   const lyricsSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
   const [trackVersions, setTrackVersions] = useState<Record<string, VersionInfo[]>>({}); // key → versions
   const [sunoModel, setSunoModel] = useState("V5_5");
+  const [personaId, setPersonaId] = useState<string>("");
+  const [personaName, setPersonaName] = useState<string>("");
+  const [creatingPersona, setCreatingPersona] = useState(false);
+  const [personaResult, setPersonaResult] = useState<string | null>(null);
   const pollingRef = useRef<Record<string, NodeJS.Timeout>>({});
   const titleSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
 
@@ -1026,6 +1044,7 @@ export default function AlbumProductionPage() {
           energy: track.energy,
           flavor: track.flavor,
           customStyle: editedStyles[key] || null,
+          ...(personaId ? { personaId, personaModel: "voice_persona" } : {}),
         }),
       });
 
@@ -1378,6 +1397,35 @@ export default function AlbumProductionPage() {
               </select>
             </div>
 
+            {/* Persona selector */}
+            <div className="flex items-center gap-2">
+              <label className="text-[10px] uppercase tracking-wider text-mundo-muted">Persona</label>
+              <input
+                type="text"
+                value={personaId}
+                onChange={(e) => setPersonaId(e.target.value)}
+                placeholder="Sem persona"
+                className="rounded-lg border border-mundo-muted-dark/30 bg-mundo-bg px-3 py-1.5 text-xs text-mundo-creme focus:border-violet-500 focus:outline-none w-32"
+              />
+              {personaId && (
+                <button
+                  onClick={() => { setPersonaId(""); setPersonaName(""); }}
+                  className="text-[10px] text-red-400 hover:text-red-300"
+                >
+                  Limpar
+                </button>
+              )}
+              {personaName && (
+                <span className="text-[10px] text-green-400">{personaName}</span>
+              )}
+              {creatingPersona && (
+                <span className="text-[10px] text-amber-400 animate-pulse">A criar persona...</span>
+              )}
+              {personaResult && (
+                <span className="text-[10px] text-amber-300">{personaResult}</span>
+              )}
+            </div>
+
             {/* Cleanup button */}
             <button
               onClick={async () => {
@@ -1584,6 +1632,31 @@ export default function AlbumProductionPage() {
                     onApproveClip={(url, title, imgUrl) => approveClip(album.slug, track, url, title, imgUrl)}
                     onApproveAsVersion={(url, title, name, energy) => approveAsVersion(album.slug, track, url, title, name, energy)}
                     onUploadVersion={(file, name, energy, coverFile) => uploadVersion(album.slug, track, file, name, energy, coverFile)}
+                    onCreatePersona={async (taskId, audioId) => {
+                      const pName = window.prompt("Nome da persona (ex: Loranne Whisper):");
+                      if (!pName) return;
+                      setCreatingPersona(true);
+                      setPersonaResult(null);
+                      try {
+                        const res = await adminFetch("/api/admin/suno/persona", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({ taskId, audioId, name: pName, description: `Persona vocal da Loranne — ${pName}` }),
+                        });
+                        const data = await res.json();
+                        if (data.personaId) {
+                          setPersonaId(data.personaId);
+                          setPersonaName(data.name || pName);
+                          setPersonaResult(`Persona criada: ${data.personaId}`);
+                        } else {
+                          setPersonaResult(`Erro: ${data.error || "Sem personaId"}`);
+                        }
+                      } catch (e: unknown) {
+                        setPersonaResult(`Erro: ${e instanceof Error ? e.message : "desconhecido"}`);
+                      } finally {
+                        setCreatingPersona(false);
+                      }
+                    }}
                     existingVersions={trackVersions[key] || []}
                     generatedClips={generatedClips[key] || null}
                     editedTitle={editedTitles[key] || null}

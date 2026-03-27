@@ -247,13 +247,13 @@ export default function FullPlayer() {
 
       {/* ── CONTENT ── */}
       <div ref={lyricsContainerRef} className="relative z-10 flex-1 overflow-y-auto scrollbar-none">
-        <div className="max-w-md mx-auto px-6 pb-4">
+        <div className="max-w-md mx-auto px-6 pb-4 animate-[fadeIn_300ms_ease-out]" key={activeTab}>
 
           {/* ═══ COVER VIEW ═══ */}
           {activeTab === "cover" && (
             <div className="flex flex-col items-center pt-2">
               {/* BIG COVER — fills width */}
-              <div className="relative w-full max-w-[85vw] sm:max-w-[340px]">
+              <div className="relative w-full max-w-[90vw] sm:max-w-[360px]">
                 {isPlaying && (
                   <div className="absolute inset-0 -m-4 pointer-events-none">
                     <div className="w-full h-full rounded-3xl opacity-40 blur-[40px] animate-pulse" style={{ backgroundColor: albumColor }} />
@@ -331,10 +331,9 @@ export default function FullPlayer() {
                             ? "text-[22px] text-[#F5F0E6] font-bold scale-[1.02] origin-left"
                             : isPast
                             ? "text-lg text-[#F5F0E6]/25"
-                            : isFuture
-                            ? "text-lg text-[#F5F0E6]/40"
                             : "text-lg text-[#F5F0E6]/40"
                         }`}
+                        style={isActive ? { textShadow: `0 0 30px ${albumColor}60` } : undefined}
                       >
                         {line.text}
                       </p>

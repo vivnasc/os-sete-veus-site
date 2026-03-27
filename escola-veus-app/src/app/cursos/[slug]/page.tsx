@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { COURSES, getCourseBySlug } from "@/data/courses";
 import { getCategoryForCourse } from "@/data/course-categories";
+import { getTerritoryStyle } from "@/data/territory-themes";
 import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/hooks/useProgress";
 
@@ -24,6 +25,7 @@ export default function CursoPage() {
   }
 
   const category = getCategoryForCourse(slug);
+  const themeStyle = getTerritoryStyle(slug);
   const totalModules = course.modules.length;
   const completedCount = courseProgress?.modules_completed?.length ?? 0;
   const progressPct = Math.round((completedCount / totalModules) * 100);
@@ -35,7 +37,7 @@ export default function CursoPage() {
   };
 
   return (
-    <div className="mx-auto max-w-lg px-4 pt-8 pb-8">
+    <div className="mx-auto max-w-lg px-4 pt-8 pb-8" style={themeStyle}>
       {/* Back */}
       <Link
         href={isStarted ? "/" : "/cursos"}
@@ -66,20 +68,20 @@ export default function CursoPage() {
             <span className="text-xs text-escola-creme-50">
               {completedCount} de {totalModules} módulos
             </span>
-            <span className="text-xs font-medium text-escola-dourado">{progressPct}%</span>
+            <span className="text-xs font-medium" style={{ color: "var(--t-primary)" }}>{progressPct}%</span>
           </div>
           <div className="h-1.5 overflow-hidden rounded-full bg-escola-border">
             <div
-              className="h-full rounded-full bg-escola-dourado transition-all"
-              style={{ width: `${progressPct}%` }}
+              className="h-full rounded-full transition-all"
+              style={{ width: `${progressPct}%`, backgroundColor: "var(--t-primary)" }}
             />
           </div>
         </div>
       )}
 
       {isComplete && (
-        <div className="mb-6 rounded-xl border border-escola-dourado/30 bg-escola-dourado/5 p-4 text-center">
-          <p className="text-sm font-medium text-escola-dourado">Curso completo</p>
+        <div className="mb-6 rounded-xl border p-4 text-center" style={{ borderColor: "rgba(var(--t-primary-rgb), 0.3)", backgroundColor: "rgba(var(--t-primary-rgb), 0.05)" }}>
+          <p className="text-sm font-medium" style={{ color: "var(--t-primary)" }}>Curso completo</p>
           <Link
             href={`/cursos/${slug}/completo`}
             className="mt-1 text-xs text-escola-creme-50 hover:text-escola-creme"
@@ -91,7 +93,7 @@ export default function CursoPage() {
 
       {/* Arc */}
       <div className="mb-8 rounded-xl border border-escola-border bg-escola-card p-5">
-        <h2 className="mb-2 font-serif text-sm font-medium uppercase tracking-wide text-escola-dourado">
+        <h2 className="mb-2 font-serif text-sm font-medium uppercase tracking-wide" style={{ color: "var(--t-primary)" }}>
           Arco emocional
         </h2>
         <p className="text-sm leading-relaxed text-escola-creme-50">
@@ -232,7 +234,8 @@ export default function CursoPage() {
         <div className="mt-8">
           <button
             onClick={handleStart}
-            className="w-full rounded-lg bg-escola-dourado px-6 py-3 text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
+            className="w-full rounded-lg px-6 py-3 text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
+            style={{ backgroundColor: "var(--t-primary)" }}
           >
             Começar este curso
           </button>
@@ -243,7 +246,8 @@ export default function CursoPage() {
         <div className="mt-8">
           <Link
             href="/entrar"
-            className="block w-full rounded-lg bg-escola-dourado px-6 py-3 text-center text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
+            className="block w-full rounded-lg px-6 py-3 text-center text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
+            style={{ backgroundColor: "var(--t-primary)" }}
           >
             Entrar para começar
           </Link>

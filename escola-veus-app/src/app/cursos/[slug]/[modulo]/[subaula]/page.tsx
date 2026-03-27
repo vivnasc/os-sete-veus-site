@@ -6,6 +6,8 @@ import { getCourseBySlug } from "@/data/courses";
 import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/hooks/useProgress";
 import { useJournal } from "@/hooks/useJournal";
+import { VideoPlayer } from "@/components/escola/VideoPlayer";
+import { getTerritoryStyle } from "@/data/territory-themes";
 import { useState } from "react";
 
 export default function SubaulaPage() {
@@ -19,27 +21,29 @@ export default function SubaulaPage() {
     useProgress(slug);
 
   const course = getCourseBySlug(slug);
-  if (!course) return <NotFound msg="Curso não encontrado." />;
+  if (!course) return <NotFound msg="Curso nao encontrado." />;
 
   const mod = course.modules.find((m) => m.number === moduloNum);
-  if (!mod) return <NotFound msg="Módulo não encontrado." />;
+  if (!mod) return <NotFound msg="Modulo nao encontrado." />;
 
   const subIndex = mod.subLessons.findIndex((sl) => sl.letter === subaulaLetter);
   const sub = mod.subLessons[subIndex];
-  if (!sub) return <NotFound msg="Sub-aula não encontrada." />;
+  if (!sub) return <NotFound msg="Sub-aula nao encontrada." />;
 
   const isFreeTier = mod.number === 1;
   const hasAccess = isFreeTier || isSubscribed;
+  const themeStyle = getTerritoryStyle(slug);
 
   if (!hasAccess) {
     return (
-      <div className="mx-auto flex min-h-[60dvh] max-w-lg flex-col items-center justify-center px-4 text-center">
+      <div className="mx-auto flex min-h-[60dvh] max-w-lg flex-col items-center justify-center px-4 text-center" style={themeStyle}>
         <p className="mb-3 text-sm text-escola-creme-50">
-          Este módulo faz parte do curso completo.
+          Este modulo faz parte do curso completo.
         </p>
         <Link
           href="/subscrever"
-          className="inline-block rounded-lg bg-escola-dourado px-6 py-2.5 text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
+          className="inline-block rounded-lg px-6 py-2.5 text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
+          style={{ backgroundColor: "var(--t-primary)" }}
         >
           Subscrever para aceder
         </Link>
@@ -49,18 +53,19 @@ export default function SubaulaPage() {
 
   if (!isModuleAccessible(moduloNum)) {
     return (
-      <div className="mx-auto flex min-h-[60dvh] max-w-lg flex-col items-center justify-center px-4 text-center">
+      <div className="mx-auto flex min-h-[60dvh] max-w-lg flex-col items-center justify-center px-4 text-center" style={themeStyle}>
         <p className="mb-2 font-serif text-lg text-escola-creme">
-          Este módulo ainda não está acessível.
+          Este modulo ainda nao esta acessivel.
         </p>
         <p className="mb-6 text-sm text-escola-creme-50">
-          Completa o Módulo {moduloNum - 1} para desbloquear.
+          Completa o Modulo {moduloNum - 1} para desbloquear.
         </p>
         <Link
           href={`/cursos/${slug}/${moduloNum - 1}`}
-          className="text-sm text-escola-dourado hover:underline"
+          className="text-sm hover:underline"
+          style={{ color: "var(--t-primary)" }}
         >
-          Ir para Módulo {moduloNum - 1}
+          Ir para Modulo {moduloNum - 1}
         </Link>
       </div>
     );
@@ -73,7 +78,6 @@ export default function SubaulaPage() {
   const completed = isSublessonCompleted(moduloNum, subaulaLetter);
 
   const handleComplete = async () => {
-    // Ensure course is started
     await startCourse();
 
     const nextMod = isLastSub ? moduloNum : moduloNum;
@@ -81,7 +85,6 @@ export default function SubaulaPage() {
     await completeSublesson(moduloNum, subaulaLetter, nextMod, nextSub);
 
     if (isLastSub) {
-      // Go to caderno (workbook) or module complete
       if (mod.workbook) {
         router.push(`/cursos/${slug}/${moduloNum}/caderno`);
       } else {
@@ -93,23 +96,26 @@ export default function SubaulaPage() {
   };
 
   return (
-    <div className="mx-auto max-w-lg px-4 pt-8 pb-8">
+    <div className="mx-auto max-w-lg px-4 pt-8 pb-8" style={themeStyle}>
       {/* Breadcrumb */}
       <Link
         href={`/cursos/${slug}/${moduloNum}`}
         className="mb-6 inline-flex items-center gap-1 text-xs text-escola-creme-50 hover:text-escola-creme"
       >
-        <span>&larr;</span> Módulo {moduloNum}
+        <span>&larr;</span> Modulo {moduloNum}
       </Link>
 
       {/* Header */}
       <header className="mb-6">
         <div className="mb-2 flex items-center gap-2">
-          <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-escola-dourado/10 text-xs font-medium text-escola-dourado">
+          <span
+            className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-medium"
+            style={{ backgroundColor: "rgba(var(--t-primary-rgb), 0.1)", color: "var(--t-primary)" }}
+          >
             {sub.letter}
           </span>
           <span className="text-xs text-escola-creme-50">
-            Módulo {moduloNum} de {course.modules.length}
+            Modulo {moduloNum} de {course.modules.length}
           </span>
         </div>
         <h1 className="font-serif text-2xl font-semibold text-escola-creme">
@@ -117,17 +123,13 @@ export default function SubaulaPage() {
         </h1>
       </header>
 
-      {/* Video */}
-      <div className="mb-6 flex aspect-video items-center justify-center rounded-xl border border-escola-border bg-escola-card">
-        <div className="text-center">
-          <div className="mb-2 text-escola-dourado/40">
-            <svg className="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-              <polygon points="5 3 19 12 5 21 5 3" />
-            </svg>
-          </div>
-          <span className="text-sm text-escola-creme-50">Vídeo em breve</span>
-        </div>
-      </div>
+      {/* Video Player */}
+      <VideoPlayer
+        courseSlug={slug}
+        moduleNumber={moduloNum}
+        sublessonLetter={subaulaLetter}
+        fallbackDescription={sub.description}
+      />
 
       {/* Content */}
       <div className="mb-8 rounded-xl border border-escola-border bg-escola-card p-5">
@@ -151,23 +153,26 @@ export default function SubaulaPage() {
             {isLastSub ? (
               <Link
                 href={mod.workbook ? `/cursos/${slug}/${moduloNum}/caderno` : `/cursos/${slug}/${moduloNum}/completo`}
-                className="w-full rounded-lg bg-escola-dourado/10 px-6 py-3 text-center text-sm font-medium text-escola-dourado transition-opacity hover:opacity-90"
+                className="w-full rounded-lg px-6 py-3 text-center text-sm font-medium transition-opacity hover:opacity-90"
+                style={{ backgroundColor: "rgba(var(--t-primary-rgb), 0.1)", color: "var(--t-primary)" }}
               >
-                {mod.workbook ? "Ir para o caderno" : "Ver conclusão do módulo"}
+                {mod.workbook ? "Ir para o caderno" : "Ver conclusao do modulo"}
               </Link>
             ) : (
               <Link
                 href={`/cursos/${slug}/${moduloNum}/${nextSubLetter!.toLowerCase()}`}
-                className="w-full rounded-lg bg-escola-dourado/10 px-6 py-3 text-center text-sm font-medium text-escola-dourado transition-opacity hover:opacity-90"
+                className="w-full rounded-lg px-6 py-3 text-center text-sm font-medium transition-opacity hover:opacity-90"
+                style={{ backgroundColor: "rgba(var(--t-primary-rgb), 0.1)", color: "var(--t-primary)" }}
               >
-                Próxima sub-aula &rarr;
+                Proxima sub-aula &rarr;
               </Link>
             )}
           </div>
         ) : (
           <button
             onClick={handleComplete}
-            className="w-full rounded-lg bg-escola-dourado px-6 py-3 text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
+            className="w-full rounded-lg px-6 py-3 text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
+            style={{ backgroundColor: "var(--t-primary)" }}
           >
             {isLastSub
               ? (mod.workbook ? "Completar e ir para o caderno" : "Completar sub-aula")
@@ -191,7 +196,7 @@ export default function SubaulaPage() {
             href={`/cursos/${slug}/${moduloNum - 1}`}
             className="text-xs text-escola-creme-50 hover:text-escola-creme"
           >
-            &larr; Módulo {moduloNum - 1}
+            &larr; Modulo {moduloNum - 1}
           </Link>
         )}
         <span />
@@ -231,8 +236,11 @@ function MicroReflection({
         className="flex w-full items-center justify-between text-left"
       >
         <div>
-          <h3 className="text-xs uppercase tracking-wide text-escola-dourado">
-            Pausa para reflexão
+          <h3
+            className="text-xs uppercase tracking-wide"
+            style={{ color: "var(--t-primary, #C9A96E)" }}
+          >
+            Pausa para reflexao
           </h3>
           <p className="mt-1 text-sm text-escola-creme-50">
             O que te ficou desta sub-aula?
@@ -246,8 +254,9 @@ function MicroReflection({
           <textarea
             value={content}
             onChange={(e) => updateContent(e.target.value)}
-            placeholder="Escreve aqui... Este espaço é só teu."
-            className="min-h-[100px] w-full resize-y rounded-lg border border-escola-border bg-escola-bg px-4 py-3 font-serif text-sm leading-relaxed text-escola-creme placeholder:text-escola-creme-50 focus:border-escola-dourado/40 focus:outline-none"
+            placeholder="Escreve aqui... Este espaco e so teu."
+            className="min-h-[100px] w-full resize-y rounded-lg border border-escola-border bg-escola-bg px-4 py-3 font-serif text-sm leading-relaxed text-escola-creme placeholder:text-escola-creme-50 focus:outline-none"
+            style={{ borderColor: content.length > 0 ? "rgba(var(--t-primary-rgb), 0.3)" : undefined }}
           />
           <div className="mt-2 flex items-center justify-between">
             <span className="text-[10px] text-escola-creme-50">
