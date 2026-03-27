@@ -277,6 +277,7 @@ function ClipApprovalRow({
   trackEnergy,
   onApproveMain,
   onApproveVersion,
+  onCreatePersona,
 }: {
   clip: SunoClip;
   clipIndex: number;
@@ -285,6 +286,7 @@ function ClipApprovalRow({
   trackEnergy: string;
   onApproveMain: () => void;
   onApproveVersion: (name: string, energy: string) => void;
+  onCreatePersona?: (clipTaskId: string, clipAudioId: string) => void;
 }) {
   const [mode, setMode] = useState<"pick" | "version">("pick");
   const [versionName, setVersionName] = useState(`suno-v${clipIndex + 1}`);
@@ -338,6 +340,15 @@ function ClipApprovalRow({
               className="rounded-lg bg-mundo-muted-dark/20 px-3 py-1.5 text-xs text-mundo-muted transition hover:bg-mundo-muted-dark/30"
             >
               Substituir principal
+            </button>
+          )}
+          {onCreatePersona && clip.id && (
+            <button
+              onClick={() => onCreatePersona(String(clip.id), String(clip.id))}
+              className="rounded-lg bg-pink-900/30 px-3 py-1.5 text-xs text-pink-400 transition hover:bg-pink-900/50"
+              title="Criar persona com a voz deste clip"
+            >
+              Criar Persona
             </button>
           )}
         </div>
@@ -655,6 +666,36 @@ function TrackRow({
                       onApproveClip(clip.audioUrl, clip.title, clip.imageUrl || null);
                     }}
                     onApproveVersion={(name, energy) => onApproveAsVersion(clip.audioUrl!, clip.title, name, energy, clip.imageUrl || null)}
+                    onCreatePersona={async (taskId, audioId) => {
+                      const pName = prompt("Nome da persona (ex: Loranne Whisper):");
+                      if (!pName) return;
+                      setCreatingPersona(true);
+                      setPersonaResult(null);
+                      try {
+                        const res = await adminFetch("/api/admin/suno/persona", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({
+                            taskId,
+                            audioId,
+                            name: pName,
+                            description: `Persona vocal da Loranne — ${pName}`,
+                          }),
+                        });
+                        const data = await res.json();
+                        if (data.personaId) {
+                          setPersonaId(data.personaId);
+                          setPersonaName(data.name || pName);
+                          setPersonaResult(`Persona criada: ${data.personaId}`);
+                        } else {
+                          setPersonaResult(`Erro: ${data.error || "Sem personaId"}`);
+                        }
+                      } catch (e: unknown) {
+                        setPersonaResult(`Erro: ${e instanceof Error ? e.message : "desconhecido"}`);
+                      } finally {
+                        setCreatingPersona(false);
+                      }
+                    }}
                   />
                 ))}
               </div>
@@ -757,6 +798,10 @@ export default function AlbumProductionPage() {
   const lyricsSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
   const [trackVersions, setTrackVersions] = useState<Record<string, VersionInfo[]>>({}); // key → versions
   const [sunoModel, setSunoModel] = useState("V5_5");
+  const [personaId, setPersonaId] = useState<string>("");
+  const [personaName, setPersonaName] = useState<string>("");
+  const [creatingPersona, setCreatingPersona] = useState(false);
+  const [personaResult, setPersonaResult] = useState<string | null>(null);
   const pollingRef = useRef<Record<string, NodeJS.Timeout>>({});
   const titleSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
 
@@ -1000,6 +1045,7 @@ export default function AlbumProductionPage() {
           title: editedTitles[key] || track.title,
           instrumental: false,
           model: sunoModel,
+          ...(personaId ? { personaId, personaModel: "voice_persona" } : {}),
         }),
       });
 
@@ -1350,6 +1396,35 @@ export default function AlbumProductionPage() {
                 <option value="V4">Suno V4</option>
                 <option value="V3_5">Suno V3.5</option>
               </select>
+            </div>
+
+            {/* Persona selector */}
+            <div className="flex items-center gap-2">
+              <label className="text-[10px] uppercase tracking-wider text-mundo-muted">Persona</label>
+              <input
+                type="text"
+                value={personaId}
+                onChange={(e) => setPersonaId(e.target.value)}
+                placeholder="Sem persona"
+                className="rounded-lg border border-mundo-muted-dark/30 bg-mundo-bg px-3 py-1.5 text-xs text-mundo-creme focus:border-violet-500 focus:outline-none w-32"
+              />
+              {personaId && (
+                <button
+                  onClick={() => { setPersonaId(""); setPersonaName(""); }}
+                  className="text-[10px] text-red-400 hover:text-red-300"
+                >
+                  Limpar
+                </button>
+              )}
+              {personaName && (
+                <span className="text-[10px] text-green-400">{personaName}</span>
+              )}
+              {creatingPersona && (
+                <span className="text-[10px] text-amber-400 animate-pulse">A criar persona...</span>
+              )}
+              {personaResult && (
+                <span className="text-[10px] text-amber-300">{personaResult}</span>
+              )}
             </div>
 
             <div className="flex gap-1 rounded-full bg-mundo-muted-dark/10 p-1">

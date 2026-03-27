@@ -7,7 +7,7 @@ import { requireAdmin } from "@/lib/admin-auth";
  *   SUNO_API_URL — base URL (ex: https://apibox.erweima.ai)
  *   SUNO_API_KEY — Bearer token
  *
- * POST body: { prompt, lyrics?, instrumental?, title?, model? }
+ * POST body: { prompt, lyrics?, instrumental?, title?, model?, personaId?, personaModel? }
  *
  * Custom mode (lyrics present): prompt=lyrics, style=condensed tags from prompt
  * Non-custom mode: prompt=free description
@@ -129,7 +129,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const { prompt, lyrics, instrumental, title, model } = await req.json();
+    const { prompt, lyrics, instrumental, title, model, personaId, personaModel } = await req.json();
 
     if (!prompt) {
       return NextResponse.json(
@@ -152,6 +152,12 @@ export async function POST(req: NextRequest) {
       model: model || "V5_5",
       callBackUrl: `${appUrl}/api/admin/suno/callback`,
     };
+
+    // Persona support — consistent vocal identity
+    if (personaId) {
+      body.personaId = personaId;
+      body.personaModel = personaModel || "voice_persona";
+    }
 
     if (hasLyrics) {
       // Custom mode: prompt = lyrics, style = concise genre tags
