@@ -154,7 +154,7 @@ export async function POST(req: NextRequest) {
     const body: Record<string, unknown> = {
       customMode: hasLyrics,
       instrumental: instrumental ?? false,
-      model: model || "V5",
+      model: model || "V5_5",
       callBackUrl: `${appUrl}/api/admin/suno/callback`,
     };
 

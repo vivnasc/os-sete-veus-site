@@ -794,7 +794,7 @@ export default function AlbumProductionPage() {
   const [editedLyrics, setEditedLyrics] = useState<Record<string, string>>({});
   const lyricsSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
   const [trackVersions, setTrackVersions] = useState<Record<string, VersionInfo[]>>({}); // key → versions
-  const [sunoModel, setSunoModel] = useState("V5");
+  const [sunoModel, setSunoModel] = useState("V5_5");
   const pollingRef = useRef<Record<string, NodeJS.Timeout>>({});
   const titleSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
 
@@ -1338,6 +1338,7 @@ export default function AlbumProductionPage() {
                 <option value="V4">Suno V4</option>
                 <option value="V4_5">Suno V4.5</option>
                 <option value="V5">Suno V5</option>
+                <option value="V5_5">Suno V5.5</option>
               </select>
             </div>
 
