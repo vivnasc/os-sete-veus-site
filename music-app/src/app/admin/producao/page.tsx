@@ -756,7 +756,7 @@ export default function AlbumProductionPage() {
   const [editedLyrics, setEditedLyrics] = useState<Record<string, string>>({});
   const lyricsSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
   const [trackVersions, setTrackVersions] = useState<Record<string, VersionInfo[]>>({}); // key → versions
-  const [sunoModel, setSunoModel] = useState("V5");
+  const [sunoModel, setSunoModel] = useState("V5_5");
   const pollingRef = useRef<Record<string, NodeJS.Timeout>>({});
   const titleSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
 
@@ -1344,10 +1344,11 @@ export default function AlbumProductionPage() {
                 onChange={(e) => setSunoModel(e.target.value)}
                 className="rounded-lg border border-mundo-muted-dark/30 bg-mundo-bg px-3 py-1.5 text-xs text-mundo-creme focus:border-violet-500 focus:outline-none"
               >
-                <option value="V3_5">Suno V3.5</option>
-                <option value="V4">Suno V4</option>
-                <option value="V4_5">Suno V4.5</option>
+                <option value="V5_5">Suno V5.5</option>
                 <option value="V5">Suno V5</option>
+                <option value="V4_5">Suno V4.5</option>
+                <option value="V4">Suno V4</option>
+                <option value="V3_5">Suno V3.5</option>
               </select>
             </div>
 
