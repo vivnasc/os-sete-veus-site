@@ -114,12 +114,15 @@ export type TrackEnergy = "whisper" | "steady" | "pulse" | "anthem" | "raw";
 // gospel: gospel/espiritual, coral, como um hino de igreja
 export type TrackFlavor = "organic" | "marrabenta" | "afrobeat" | "bossa" | "jazz" | "folk" | "house" | "gospel";
 
+// Identidade vocal Loranne — moçambicana, não portuguesa europeia
+const LORANNE_VOICE = "Mozambican Portuguese accent, African lusophone warmth. NOT European Portuguese.";
+
 const ENERGY_STYLES: Record<TrackEnergy, string> = {
-  whisper: "Contemporary organic-electronic, AwakeSoul. Warm female vocals with poetic lyrics. Soft synth pads, piano, subtle percussion, strings. Intimate, contemplative, transformative. No autotune. Clean vocal production.",
-  steady: "Contemporary organic-electronic. Warm female vocals with poetic lyrics. Mid-tempo groove, grounded rhythm, acoustic guitar, warm bass, light percussion, piano accents. Walking pace, present, embodied. No autotune. Clean vocal production.",
-  pulse: "Contemporary pop-electronic, empowering. Strong female vocals with conviction. Driving beat, rhythmic synths, bass-forward, claps, energy builds. Upbeat, momentum, forward motion. Great for running or driving. No autotune. Clean vocal production.",
-  anthem: "Contemporary empowerment anthem. Powerful female vocals, declarative, full-chested. Big chorus, layered vocals, driving drums, rising strings, synth stabs. Bold, celebratory, unstoppable. Stadium energy meets intimacy. No autotune. Clean vocal production.",
-  raw: "Stripped-back emotional. Raw female vocals, close-mic, imperfect beauty. Minimal production — solo piano or guitar, breath sounds, silence as instrument. Vulnerable, unpolished, real. No autotune. Clean vocal production.",
+  whisper: `Contemporary organic-electronic, AwakeSoul. Warm female vocals with poetic lyrics. ${LORANNE_VOICE} Soft synth pads, piano, subtle percussion, strings. Intimate, contemplative, transformative. No autotune. Clean vocal production.`,
+  steady: `Contemporary organic-electronic. Warm female vocals with poetic lyrics. ${LORANNE_VOICE} Mid-tempo groove, grounded rhythm, acoustic guitar, warm bass, light percussion, piano accents. Walking pace, present, embodied. No autotune. Clean vocal production.`,
+  pulse: `Contemporary pop-electronic, empowering. Strong female vocals with conviction. ${LORANNE_VOICE} Driving beat, rhythmic synths, bass-forward, claps, energy builds. Upbeat, momentum, forward motion. No autotune. Clean vocal production.`,
+  anthem: `Contemporary empowerment anthem. Powerful female vocals, declarative, full-chested. ${LORANNE_VOICE} Big chorus, layered vocals, driving drums, rising strings, synth stabs. Bold, celebratory, unstoppable. Stadium energy meets intimacy. No autotune. Clean vocal production.`,
+  raw: `Stripped-back emotional. Raw female vocals, close-mic, imperfect beauty. ${LORANNE_VOICE} Minimal production — solo piano or guitar, breath sounds, silence as instrument. Vulnerable, unpolished, real. No autotune. Clean vocal production.`,
 };
 
 // ─────────────────────────────────────────────
@@ -138,11 +141,11 @@ const ENERGY_STYLES: Record<TrackEnergy, string> = {
 const MALE_VOCAL_IDENTITY = "Warm baritone male vocal, slightly husky, poetic and intimate. Same male voice throughout — consistent tone, never aggressive, never dominant. Sings in dialogue with the lead female vocal, entering on alternate verses, bridges, or low harmonies. Female vocal is ALWAYS predominant — she leads every chorus and opens/closes the song. Male vocal adds depth, never competes. No autotune. Clean vocal production.";
 
 const ENERGY_STYLES_DUET: Record<TrackEnergy, string> = {
-  whisper: `Contemporary organic-electronic, AwakeSoul. Warm female vocals leading with poetic lyrics, warm baritone male vocal entering on bridges and low harmonies. ${MALE_VOCAL_IDENTITY} Soft synth pads, piano, subtle percussion, strings. Intimate, contemplative, transformative.`,
-  steady: `Contemporary organic-electronic. Warm female vocals leading with poetic lyrics, warm baritone male vocal on alternate verses and harmonies. ${MALE_VOCAL_IDENTITY} Mid-tempo groove, grounded rhythm, acoustic guitar, warm bass, light percussion, piano accents. Walking pace, present, embodied.`,
-  pulse: `Contemporary pop-electronic, empowering. Strong female vocals leading with conviction, warm baritone male vocal responding on verses and bridges. ${MALE_VOCAL_IDENTITY} Driving beat, rhythmic synths, bass-forward, claps, energy builds. Upbeat, momentum, forward motion.`,
-  anthem: `Contemporary empowerment anthem. Powerful female vocals leading, declarative, full-chested. Warm baritone male vocal in call-and-response and bridge sections. ${MALE_VOCAL_IDENTITY} Big chorus, layered vocals, driving drums, rising strings, synth stabs. Bold, celebratory, unstoppable.`,
-  raw: `Stripped-back emotional. Raw female vocals leading, close-mic, imperfect beauty. Warm baritone male vocal on alternate verses, raw and exposed. ${MALE_VOCAL_IDENTITY} Minimal production — solo piano or guitar, breath sounds, silence as instrument. Vulnerable, unpolished, real.`,
+  whisper: `Contemporary organic-electronic, AwakeSoul. Warm female vocals leading with poetic lyrics. ${LORANNE_VOICE} Warm baritone male vocal entering on bridges and low harmonies. ${MALE_VOCAL_IDENTITY} Soft synth pads, piano, subtle percussion, strings. Intimate, contemplative, transformative.`,
+  steady: `Contemporary organic-electronic. Warm female vocals leading with poetic lyrics. ${LORANNE_VOICE} Warm baritone male vocal on alternate verses and harmonies. ${MALE_VOCAL_IDENTITY} Mid-tempo groove, grounded rhythm, acoustic guitar, warm bass, light percussion, piano accents. Walking pace, present, embodied.`,
+  pulse: `Contemporary pop-electronic, empowering. Strong female vocals leading with conviction. ${LORANNE_VOICE} Warm baritone male vocal responding on verses and bridges. ${MALE_VOCAL_IDENTITY} Driving beat, rhythmic synths, bass-forward, claps, energy builds. Upbeat, momentum, forward motion.`,
+  anthem: `Contemporary empowerment anthem. Powerful female vocals leading, declarative, full-chested. ${LORANNE_VOICE} Warm baritone male vocal in call-and-response and bridge sections. ${MALE_VOCAL_IDENTITY} Big chorus, layered vocals, driving drums, rising strings, synth stabs. Bold, celebratory, unstoppable.`,
+  raw: `Stripped-back emotional. Raw female vocals leading, close-mic, imperfect beauty. ${LORANNE_VOICE} Warm baritone male vocal on alternate verses, raw and exposed. ${MALE_VOCAL_IDENTITY} Minimal production — solo piano or guitar, breath sounds, silence as instrument. Vulnerable, unpolished, real.`,
 };
 
 // Modificadores de sabor — só aplicados quando o sabor não é"organic"
