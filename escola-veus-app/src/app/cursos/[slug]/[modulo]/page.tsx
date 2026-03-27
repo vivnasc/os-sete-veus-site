@@ -3,6 +3,7 @@
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { getCourseBySlug } from "@/data/courses";
+import { getTerritoryStyle } from "@/data/territory-themes";
 import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/hooks/useProgress";
 
@@ -17,6 +18,7 @@ export default function ModuloPage() {
   const course = getCourseBySlug(slug);
   if (!course) return <NotFound />;
 
+  const themeStyle = getTerritoryStyle(slug);
   const mod = course.modules.find((m) => m.number === moduloNum);
   if (!mod) return <NotFound />;
 
@@ -37,7 +39,7 @@ export default function ModuloPage() {
   );
 
   return (
-    <div className="mx-auto max-w-lg px-4 pt-8 pb-8">
+    <div className="mx-auto max-w-lg px-4 pt-8 pb-8" style={themeStyle}>
       {/* Back */}
       <Link
         href={`/cursos/${slug}`}
@@ -49,11 +51,11 @@ export default function ModuloPage() {
       {/* Header */}
       <header className="mb-6">
         <div className="mb-1 flex items-center gap-2">
-          <span className="text-xs text-escola-dourado/60">
-            Módulo {mod.number} de {course.modules.length}
+          <span className="text-xs" style={{ color: "var(--t-primary)", opacity: 0.6 }}>
+            Modulo {mod.number} de {course.modules.length}
           </span>
           {completed && (
-            <span className="rounded-full bg-escola-dourado/10 px-2 py-0.5 text-[10px] text-escola-dourado">
+            <span className="rounded-full px-2 py-0.5 text-[10px]" style={{ backgroundColor: "rgba(var(--t-primary-rgb), 0.1)", color: "var(--t-primary)" }}>
               completo
             </span>
           )}
@@ -101,8 +103,8 @@ export default function ModuloPage() {
               </div>
               <div className="h-1 overflow-hidden rounded-full bg-escola-border">
                 <div
-                  className="h-full rounded-full bg-escola-dourado transition-all"
-                  style={{ width: `${(completedSubs / totalSubs) * 100}%` }}
+                  className="h-full rounded-full transition-all"
+                  style={{ width: `${(completedSubs / totalSubs) * 100}%`, backgroundColor: "var(--t-primary)" }}
                 />
               </div>
             </div>
@@ -112,7 +114,8 @@ export default function ModuloPage() {
           {firstIncomplete && !completed && (
             <Link
               href={`/cursos/${slug}/${moduloNum}/${firstIncomplete.letter.toLowerCase()}`}
-              className="mb-6 block rounded-lg bg-escola-dourado px-6 py-3 text-center text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
+              className="mb-6 block rounded-lg px-6 py-3 text-center text-sm font-medium text-escola-bg transition-opacity hover:opacity-90"
+              style={{ backgroundColor: "var(--t-primary)" }}
             >
               {completedSubs === 0 ? "Começar" : "Continuar"} &rarr; Sub-aula {firstIncomplete.letter}
             </Link>
@@ -135,7 +138,7 @@ export default function ModuloPage() {
                     <span
                       className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-medium ${
                         subCompleted
-                          ? "bg-escola-dourado/20 text-escola-dourado"
+                          ? "bg-[rgba(var(--t-primary-rgb,201,169,110),0.2)] text-[var(--t-primary,#C9A96E)]"
                           : "bg-escola-bg text-escola-creme-50"
                       }`}
                     >
@@ -165,16 +168,17 @@ export default function ModuloPage() {
           {mod.workbook && (
             <Link
               href={`/cursos/${slug}/${moduloNum}/caderno`}
-              className="mt-4 block rounded-xl border border-escola-dourado/20 bg-escola-card p-4 transition-colors hover:border-escola-dourado/40"
+              className="mt-4 block rounded-xl border bg-escola-card p-4 transition-colors"
+              style={{ borderColor: "rgba(var(--t-primary-rgb), 0.2)" }}
             >
               <div className="flex items-center gap-3">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-escola-dourado/10">
-                  <svg className="h-3.5 w-3.5 text-escola-dourado" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full" style={{ backgroundColor: "rgba(var(--t-primary-rgb), 0.1)" }}>
+                  <svg className="h-3.5 w-3.5" style={{ color: "var(--t-primary)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
                 </span>
                 <div>
-                  <h3 className="text-xs uppercase tracking-wide text-escola-dourado">
+                  <h3 className="text-xs uppercase tracking-wide" style={{ color: "var(--t-primary)" }}>
                     Caderno de exercícios
                   </h3>
                   <p className="mt-0.5 text-sm text-escola-creme">{mod.workbook}</p>
@@ -187,7 +191,8 @@ export default function ModuloPage() {
           {completed && (
             <Link
               href={`/cursos/${slug}/${moduloNum}/completo`}
-              className="mt-4 block rounded-lg bg-escola-dourado/10 px-6 py-3 text-center text-sm font-medium text-escola-dourado"
+              className="mt-4 block rounded-lg px-6 py-3 text-center text-sm font-medium"
+              style={{ backgroundColor: "rgba(var(--t-primary-rgb), 0.1)", color: "var(--t-primary)" }}
             >
               Ver conclusão do módulo
             </Link>
