@@ -28,7 +28,7 @@ function extractStyleTags(prompt: string): string {
     // Genres
     "ambient", "electronic", "organic", "pop", "folk", "jazz", "gospel",
     "house", "afrobeat", "afropop", "bossa nova", "bossa",
-    "marrabenta", "mozambican",
+    "marrabenta", "mozambican", "funk", "r&b", "funky",
     // Instruments
     "piano", "guitar", "acoustic guitar", "nylon guitar", "strings",
     "synth", "bass", "drums", "percussion", "organ", "Rhodes",

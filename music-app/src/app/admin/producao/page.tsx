@@ -1306,7 +1306,7 @@ export default function AlbumProductionPage() {
                 </span>
               ) : null;
             })}
-            {(["marrabenta", "afrobeat", "bossa", "jazz", "folk", "house", "gospel"] as TrackFlavor[]).map((f) => {
+            {(["marrabenta", "afrobeat", "bossa", "jazz", "folk", "funk", "house", "gospel"] as TrackFlavor[]).map((f) => {
               const count = ALL_ALBUMS.reduce(
                 (s, a) => s + a.tracks.filter((t) => t.flavor === f).length,
                 0

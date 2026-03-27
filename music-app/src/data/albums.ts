@@ -110,9 +110,10 @@ export type TrackEnergy = "whisper" | "steady" | "pulse" | "anthem" | "raw";
 // bossa: bossa nova — suave, intimo, brasileiro/lusofono
 // jazz: jazz contemporaneo — intimo, improvisado, noturno
 // folk: folk acustico — guitarra, voz crua, terroso
+// funk: glossy R&B-pop funk, early-2000s, dancefloor-ready
 // house: house/dance, four-on-the-floor, como "Nada Me Faltara"
 // gospel: gospel/espiritual, coral, como um hino de igreja
-export type TrackFlavor = "organic" | "marrabenta" | "afrobeat" | "bossa" | "jazz" | "folk" | "house" | "gospel";
+export type TrackFlavor = "organic" | "marrabenta" | "afrobeat" | "bossa" | "jazz" | "folk" | "funk" | "house" | "gospel";
 
 const ENERGY_STYLES: Record<TrackEnergy, string> = {
   whisper: "Contemporary organic-electronic, AwakeSoul. Warm female vocals with poetic lyrics. Soft synth pads, piano, subtle percussion, strings. Intimate, contemplative, transformative. No autotune. Clean vocal production.",
@@ -153,6 +154,7 @@ const FLAVOR_MODIFIERS: Record<TrackFlavor, string> = {
   bossa: "Bossa nova influence, gentle nylon guitar, soft brushed drums, warm upright bass, intimate Brazilian feel, swaying rhythm, velvet vocal tone.",
   jazz: "Contemporary jazz influence, Rhodes piano, walking bass, brushed cymbals, smoky intimate club feel, improvised phrasing, late-night warmth.",
   folk: "Acoustic folk influence, fingerpicked guitar, warm earthy tone, stomps and claps, storytelling vocal, campfire intimacy, raw and grounded.",
+  funk: "Funk, Glossy Early-2000s R&B-Pop Hybrid at ~108 BPM, Female Vocals with smooth falsetto on the hook. Tight punchy drums, snappy claps, rubbery funky bassline, clean rhythm guitar licks, bright synth pads. Nostalgic, Funky, Rhythmic, Smooth, R&B, Clean, dancefloor-ready.",
   house: "House music influence, four-on-the-floor kick, deep bass, hi-hat groove, synth stabs, club warmth, dance-floor energy, infectious rhythmic drive.",
   gospel: "Gospel-inspired, choir harmonies, hand claps, organ warmth, uplifting spiritual energy, community singing feel, call-and-response vocals, celebratory, transcendent.",
 };
@@ -1344,6 +1346,7 @@ export const FLAVOR_LABELS: Record<TrackFlavor, { label: string; emoji: string; 
   bossa: { label: "Bossa Nova", emoji: "b", color: "bg-cyan-50 text-cyan-700" },
   jazz: { label: "Jazz", emoji: "j", color: "bg-indigo-50 text-indigo-600" },
   folk: { label: "Folk", emoji: "f", color: "bg-stone-50 text-stone-600" },
+  funk: { label: "Funk", emoji: "k", color: "bg-fuchsia-50 text-fuchsia-600" },
   house: { label: "House", emoji: "h", color: "bg-pink-50 text-pink-600" },
   gospel: { label: "Gospel", emoji: "g", color: "bg-yellow-50 text-yellow-700" },
 };
