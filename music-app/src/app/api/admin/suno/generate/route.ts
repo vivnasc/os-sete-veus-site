@@ -108,7 +108,7 @@ function buildStyle(energy?: string, flavor?: string, prompt?: string): string {
   let style = flavorMod ? `${flavorMod}, ${base}` : base;
 
   // Add language hint from prompt
-  if (prompt?.includes("Portuguese")) style += ", Portuguese";
+  if (prompt?.includes("Portuguese")) style += ", Mozambican Portuguese, African Portuguese accent";
   else if (prompt?.includes("English")) style += ", English";
 
   // Always add "full song"
