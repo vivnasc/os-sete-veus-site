@@ -417,6 +417,7 @@ function TrackRow({
   onApproveClip,
   onApproveAsVersion,
   onUploadVersion,
+  onCreatePersona,
   audioUrl,
   existingVersions,
   generatedClips,
@@ -435,6 +436,7 @@ function TrackRow({
   onApproveClip: (clipUrl: string, sunoTitle: string, imageUrl: string | null) => void;
   onApproveAsVersion: (clipUrl: string, sunoTitle: string, versionName: string, energy: string, imageUrl?: string | null) => void;
   onUploadVersion: (file: File, versionName: string, energy: string, coverFile?: File | null) => void;
+  onCreatePersona?: (taskId: string, audioId: string) => void;
   audioUrl: string | null;
   existingVersions: VersionInfo[];
   generatedClips: GeneratedClips | null;
@@ -666,36 +668,7 @@ function TrackRow({
                       onApproveClip(clip.audioUrl, clip.title, clip.imageUrl || null);
                     }}
                     onApproveVersion={(name, energy) => onApproveAsVersion(clip.audioUrl!, clip.title, name, energy, clip.imageUrl || null)}
-                    onCreatePersona={async (taskId, audioId) => {
-                      const pName = prompt("Nome da persona (ex: Loranne Whisper):");
-                      if (!pName) return;
-                      setCreatingPersona(true);
-                      setPersonaResult(null);
-                      try {
-                        const res = await adminFetch("/api/admin/suno/persona", {
-                          method: "POST",
-                          headers: { "Content-Type": "application/json" },
-                          body: JSON.stringify({
-                            taskId,
-                            audioId,
-                            name: pName,
-                            description: `Persona vocal da Loranne — ${pName}`,
-                          }),
-                        });
-                        const data = await res.json();
-                        if (data.personaId) {
-                          setPersonaId(data.personaId);
-                          setPersonaName(data.name || pName);
-                          setPersonaResult(`Persona criada: ${data.personaId}`);
-                        } else {
-                          setPersonaResult(`Erro: ${data.error || "Sem personaId"}`);
-                        }
-                      } catch (e: unknown) {
-                        setPersonaResult(`Erro: ${e instanceof Error ? e.message : "desconhecido"}`);
-                      } finally {
-                        setCreatingPersona(false);
-                      }
-                    }}
+                    onCreatePersona={onCreatePersona ? (taskId, audioId) => onCreatePersona(taskId, audioId) : undefined}
                   />
                 ))}
               </div>
@@ -1619,6 +1592,31 @@ export default function AlbumProductionPage() {
                     onApproveClip={(url, title, imgUrl) => approveClip(album.slug, track, url, title, imgUrl)}
                     onApproveAsVersion={(url, title, name, energy) => approveAsVersion(album.slug, track, url, title, name, energy)}
                     onUploadVersion={(file, name, energy, coverFile) => uploadVersion(album.slug, track, file, name, energy, coverFile)}
+                    onCreatePersona={async (taskId, audioId) => {
+                      const pName = window.prompt("Nome da persona (ex: Loranne Whisper):");
+                      if (!pName) return;
+                      setCreatingPersona(true);
+                      setPersonaResult(null);
+                      try {
+                        const res = await adminFetch("/api/admin/suno/persona", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({ taskId, audioId, name: pName, description: `Persona vocal da Loranne — ${pName}` }),
+                        });
+                        const data = await res.json();
+                        if (data.personaId) {
+                          setPersonaId(data.personaId);
+                          setPersonaName(data.name || pName);
+                          setPersonaResult(`Persona criada: ${data.personaId}`);
+                        } else {
+                          setPersonaResult(`Erro: ${data.error || "Sem personaId"}`);
+                        }
+                      } catch (e: unknown) {
+                        setPersonaResult(`Erro: ${e instanceof Error ? e.message : "desconhecido"}`);
+                      } finally {
+                        setCreatingPersona(false);
+                      }
+                    }}
                     existingVersions={trackVersions[key] || []}
                     generatedClips={generatedClips[key] || null}
                     editedTitle={editedTitles[key] || null}
