@@ -180,7 +180,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const { prompt, lyrics, instrumental, title, model, energy, flavor } = await req.json();
+    const { prompt, lyrics, instrumental, title, model, energy, flavor, customStyle } = await req.json();
 
     if (!prompt) {
       return NextResponse.json(
@@ -207,7 +207,7 @@ export async function POST(req: NextRequest) {
     if (hasLyrics) {
       // Custom mode: prompt = lyrics, style = specific tags per energy+flavor
       body.prompt = lyrics;
-      body.style = buildStyle(energy, flavor, prompt);
+      body.style = customStyle || buildStyle(energy, flavor, prompt);
       body.title = title || "Sem titulo";
     } else {
       body.prompt = prompt.length > 480 ? prompt.slice(0, 480) : prompt;

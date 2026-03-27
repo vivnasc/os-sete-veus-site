@@ -415,6 +415,8 @@ function TrackRow({
   onTitleChange,
   editedLyrics,
   onLyricsChange,
+  editedStyle,
+  onStyleChange,
 }: {
   track: AlbumTrack;
   albumSlug: string;
@@ -434,6 +436,8 @@ function TrackRow({
   onTitleChange: (title: string) => void;
   editedLyrics: string | null;
   onLyricsChange: (lyrics: string) => void;
+  editedStyle: string | null;
+  onStyleChange: (style: string) => void;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [showLyrics, setShowLyrics] = useState(false);
@@ -516,6 +520,21 @@ function TrackRow({
             <p className="mt-1 rounded bg-mundo-bg p-2 font-mono text-xs text-mundo-muted/80">
               {track.prompt}
             </p>
+          </details>
+
+          {/* Style editable */}
+          <details className="mt-1">
+            <summary className="cursor-pointer text-xs text-mundo-muted/60 hover:text-mundo-muted">
+              Ver style {editedStyle !== null && <span className="text-amber-400 ml-1">(editado)</span>}
+            </summary>
+            <input
+              type="text"
+              value={editedStyle ?? ""}
+              onChange={(e) => onStyleChange(e.target.value)}
+              placeholder="Ex: ambient, soft female vocal, intimate, Portuguese, full song"
+              className="mt-1 w-full rounded bg-mundo-bg px-3 py-2 font-mono text-xs text-mundo-muted/80 border border-mundo-muted-dark/20 focus:border-violet-500 focus:outline-none"
+            />
+            <p className="mt-1 text-[9px] text-mundo-muted/40">O style que vai para o Suno. Se vazio, é gerado automaticamente a partir de energy + flavor.</p>
           </details>
 
           {/* Lyrics expandable + editable */}
@@ -792,6 +811,7 @@ export default function AlbumProductionPage() {
   const [generatedClips, setGeneratedClips] = useState<Record<string, GeneratedClips>>({});
   const [editedTitles, setEditedTitles] = useState<Record<string, string>>({});
   const [editedLyrics, setEditedLyrics] = useState<Record<string, string>>({});
+  const [editedStyles, setEditedStyles] = useState<Record<string, string>>({});
   const lyricsSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
   const [trackVersions, setTrackVersions] = useState<Record<string, VersionInfo[]>>({}); // key → versions
   const [sunoModel, setSunoModel] = useState("V5_5");
@@ -1005,6 +1025,7 @@ export default function AlbumProductionPage() {
           model: sunoModel,
           energy: track.energy,
           flavor: track.flavor,
+          customStyle: editedStyles[key] || null,
         }),
       });
 
@@ -1591,6 +1612,8 @@ export default function AlbumProductionPage() {
                         }
                       }, 2000);
                     }}
+                    editedStyle={editedStyles[key] || null}
+                    onStyleChange={(style) => setEditedStyles((s) => ({ ...s, [key]: style }))}
                   />
                 );
               })}
