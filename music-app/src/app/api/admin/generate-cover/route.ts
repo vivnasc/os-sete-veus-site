@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
     // 1. Try Pollinations AI (add seed to force unique image each time)
     try {
       const seed = Math.floor(Math.random() * 999999);
-      const prompt = encodeURIComponent(`Album cover art for "${title}". ${description || "contemplative"}. Abstract, atmospheric, cinematic. No text. Square.`);
+      const prompt = encodeURIComponent(`Beautiful album cover art for a song called "${title}". ${description || "contemplative, warm"}. Warm golden light, soft tones, luminous, peaceful, feminine energy. Abstract beauty, soft textures, gentle colors. Hopeful, serene, tender. NO dark imagery, NO skulls, NO horror, NO evil. No text, no words. Square format.`);
       const res = await fetch(`https://image.pollinations.ai/prompt/${prompt}?width=1024&height=1024&nologo=true&seed=${seed}`, { signal: AbortSignal.timeout(30000) });
       if (res.ok) {
         const buf = await res.arrayBuffer();
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
           method: "POST",
           headers: { "Content-Type": "application/json", "apikey": "0000000000" },
           body: JSON.stringify({
-            prompt: `album cover art, ${title}, ${description || "atmospheric"}, abstract, dark, cinematic, no text`,
+            prompt: `beautiful album cover art, ${title}, ${description || "warm, peaceful"}, golden light, luminous, feminine, soft, hopeful, serene, no text`,
             params: { width: 512, height: 512, steps: 20 },
           }),
         });
