@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { ALL_ALBUMS as ALBUMS } from "@/data/albums";
+import { ALL_ALBUMS } from "@/data/albums";
 import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
-import PartilhaClient from "./PartilhaClient";
+import { parseShareCode } from "@/lib/share-utils";
+import PartilhaClient from "@/app/partilha/[albumSlug]/[faixa]/PartilhaClient";
 
 type Props = {
-  params: Promise<{ albumSlug: string; faixa: string }>;
+  params: Promise<{ code: string }>;
 };
 
 function pickLyricLine(lyrics: string | undefined): string | undefined {
@@ -14,28 +15,23 @@ function pickLyricLine(lyrics: string | undefined): string | undefined {
     return t.length > 15 && t.length < 100 && !t.startsWith("[");
   });
   if (lines.length === 0) return undefined;
-  // Deterministic: pick based on day (frase do dia)
   const day = Math.floor(Date.now() / 86400000);
   return lines[day % lines.length].trim();
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { albumSlug, faixa } = await params;
-  const trackNum = parseInt(faixa, 10);
-  const album = ALBUMS.find(a => a.slug === albumSlug);
-  const track = album?.tracks.find(t => t.number === trackNum);
+  const { code } = await params;
+  const parsed = parseShareCode(code);
+  if (!parsed) return { title: "Loranne — Veus" };
 
-  if (!album || !track) {
-    return { title: "Veus" };
-  }
+  const album = ALL_ALBUMS.find(a => a.slug === parsed.albumSlug);
+  const track = album?.tracks.find(t => t.number === parsed.trackNumber);
+  if (!album || !track) return { title: "Loranne — Veus" };
 
   const lyric = pickLyricLine(track.lyrics);
-
-  // OG image: always use the dynamic generator (guaranteed to work)
-  // Track-specific Suno covers are probed client-side only
   const ogImage = `/api/og?album=${encodeURIComponent(album.slug)}&track=${track.number}`;
 
-  // SEO misterioso e envolvente — convite, não descrição
+  // SEO misterioso — a frase convida, não descreve
   const title = lyric
     ? `"${lyric}" — Loranne`
     : `${track.title} — Loranne`;
@@ -52,14 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: "Veus by Loranne",
       locale: "pt_PT",
       type: "music.song",
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: `${track.title} — ${album.title}`,
-        },
-      ],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: `${track.title} — ${album.title}` }],
     },
     twitter: {
       card: "summary_large_image",
@@ -70,11 +59,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function PartilhaPage({ params }: Props) {
-  const { albumSlug, faixa } = await params;
-  const trackNum = parseInt(faixa, 10);
-  const album = ALBUMS.find(a => a.slug === albumSlug);
-  const track = album?.tracks.find(t => t.number === trackNum);
+export default async function ShortSharePage({ params }: Props) {
+  const { code } = await params;
+  const parsed = parseShareCode(code);
+
+  if (!parsed) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#0D0D1A]">
+        <p className="text-[#a0a0b0] text-lg">Faixa nao encontrada.</p>
+      </div>
+    );
+  }
+
+  const album = ALL_ALBUMS.find(a => a.slug === parsed.albumSlug);
+  const track = album?.tracks.find(t => t.number === parsed.trackNumber);
 
   if (!album || !track) {
     return (
@@ -84,8 +82,8 @@ export default async function PartilhaPage({ params }: Props) {
     );
   }
 
-  const albumCoverPage = getAlbumCover(album);
-  const trackCoverPage = getTrackCoverUrl(album.slug, track.number);
+  const cover = getAlbumCover(album);
+  const trackCoverUrl = getTrackCoverUrl(album.slug, track.number);
   const lyricLine = pickLyricLine(track.lyrics);
 
   return (
@@ -96,8 +94,8 @@ export default async function PartilhaPage({ params }: Props) {
       trackNumber={track.number}
       trackTitle={track.title}
       trackDescription={track.description}
-      coverSrc={albumCoverPage}
-      trackCoverSrc={trackCoverPage || undefined}
+      coverSrc={cover}
+      trackCoverSrc={trackCoverUrl || undefined}
       lyricLine={lyricLine}
     />
   );

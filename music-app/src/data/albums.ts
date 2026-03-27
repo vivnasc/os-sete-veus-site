@@ -118,7 +118,7 @@ export type TrackFlavor = "organic" | "marrabenta" | "afrobeat" | "bossa" | "jaz
 const ENERGY_STYLES: Record<TrackEnergy, string> = {
   whisper: "Contemporary organic-electronic, AwakeSoul. Warm female vocals with poetic lyrics. Soft synth pads, piano, subtle percussion, strings. Intimate, contemplative, transformative. No autotune. Clean vocal production.",
   steady: "Contemporary organic-electronic. Warm female vocals with poetic lyrics. Mid-tempo groove, grounded rhythm, acoustic guitar, warm bass, light percussion, piano accents. Walking pace, present, embodied. No autotune. Clean vocal production.",
-  pulse: "Contemporary pop-electronic, empowering. Strong female vocals with conviction. Driving beat, rhythmic synths, bass-forward, claps, energy builds. Upbeat, momentum, forward motion. Great for running or driving. No autotune. Clean vocal production.",
+  pulse: "Contemporary pop-electronic, empowering. Strong female vocals with conviction. Driving beat, rhythmic synths, bass-forward, claps, energy builds. Upbeat, momentum, forward motion. No autotune. Clean vocal production.",
   anthem: "Contemporary empowerment anthem. Powerful female vocals, declarative, full-chested. Big chorus, layered vocals, driving drums, rising strings, synth stabs. Bold, celebratory, unstoppable. Stadium energy meets intimacy. No autotune. Clean vocal production.",
   raw: "Stripped-back emotional. Raw female vocals, close-mic, imperfect beauty. Minimal production — solo piano or guitar, breath sounds, silence as instrument. Vulnerable, unpolished, real. No autotune. Clean vocal production.",
 };
@@ -173,6 +173,8 @@ function cosmicPrompt(theme: string, emotion: string, production: string, lang: 
   const langNote = lang === "PT" ? "Lyrics in Portuguese." : "Lyrics in English.";
   return buildPromptWithFlavor(`${ENERGY_STYLES[energy]} ${langNote} Cosmic, vast, ethereal but grounded. Body as portal to the infinite. ${emotion}. ${production}. Theme: ${theme}.`, flavor);
 }
+
+
 
 function espelhoPrompt(theme: string, emotion: string, production: string, lang: "PT" | "EN", energy: TrackEnergy = "whisper", flavor: TrackFlavor | null = null): string {
   const langNote = lang === "PT" ? "Lyrics in Portuguese." : "Lyrics in English.";

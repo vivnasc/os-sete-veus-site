@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { Album, AlbumTrack } from "@/data/albums";
+import { getShareUrl } from "@/lib/share-utils";
 
 type Props = {
   track: AlbumTrack;
@@ -23,18 +24,17 @@ function pickLyric(track: AlbumTrack): string | null {
 export default function ShareModal({ track, album, onClose }: Props) {
   const [copied, setCopied] = useState(false);
 
-  const shareUrl = typeof window !== "undefined"
-    ? `${window.location.origin}/partilha/${album.slug}/${track.number}`
-    : "";
-
+  const shareUrl = getShareUrl(album.slug, track.number);
   const lyric = pickLyric(track);
+
+  // Share text: poetic, no URL in the text body (WhatsApp shows OG preview)
   const shareText = lyric
     ? `"${lyric}"\n— ${track.title}, Loranne`
-    : `"${track.title}" — ${album.title} | Loranne`;
+    : `${track.title} — Loranne`;
 
   async function copyLink() {
     try {
-      await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
+      await navigator.clipboard.writeText(`${shareText}\n\n${shareUrl}`);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -53,6 +53,7 @@ export default function ShareModal({ track, album, onClose }: Props) {
   }
 
   function shareWhatsApp() {
+    // WhatsApp: send text + URL on separate line so OG preview renders cleanly
     const url = `https://wa.me/?text=${encodeURIComponent(`${shareText}\n\n${shareUrl}`)}`;
     window.open(url, "_blank");
   }
@@ -63,9 +64,7 @@ export default function ShareModal({ track, album, onClose }: Props) {
   }
 
   function shareInstagramStory() {
-    // Instagram doesn't have a direct share API for stories from web
-    // Best approach: copy the text and prompt user
-    navigator.clipboard.writeText(`${shareText}\n${shareUrl}`).then(() => {
+    navigator.clipboard.writeText(`${shareText}\n\n${shareUrl}`).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 3000);
     }).catch(() => {});

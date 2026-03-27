@@ -19,7 +19,7 @@ const RETRY_DELAY_MS = 3000;
 
 /**
  * Extract clean style tags from a verbose prompt.
- * Suno V5 works best with short genre/mood tags, not paragraphs.
+ * Suno V5.5 works best with short genre/mood tags, not paragraphs.
  * Example: "ambient, female vocal, intimate, Portuguese, warm piano"
  */
 function extractStyleTags(prompt: string): string {
@@ -200,7 +200,7 @@ export async function POST(req: NextRequest) {
     const body: Record<string, unknown> = {
       customMode: hasLyrics,
       instrumental: instrumental ?? false,
-      model: model || "V5",
+      model: model || "V5_5",
       callBackUrl: `${appUrl}/api/admin/suno/callback`,
     };
 
