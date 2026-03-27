@@ -1340,6 +1340,7 @@ export default function AlbumProductionPage() {
                 <option value="V4">Suno V4</option>
                 <option value="V4_5">Suno V4.5</option>
                 <option value="V5">Suno V5</option>
+                <option value="V5_5">Suno V5.5</option>
               </select>
             </div>
 
