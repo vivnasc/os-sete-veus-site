@@ -1003,6 +1003,8 @@ export default function AlbumProductionPage() {
           title: editedTitles[key] || track.title,
           instrumental: false,
           model: sunoModel,
+          energy: track.energy,
+          flavor: track.flavor,
         }),
       });
 
