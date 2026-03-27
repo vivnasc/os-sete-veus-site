@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
 import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
@@ -14,6 +14,51 @@ function fmt(s: number) {
   const m = Math.floor(s / 60);
   const sec = Math.floor(s % 60);
   return `${m}:${sec.toString().padStart(2, "0")}`;
+}
+
+// ── Lyrics sync engine ──
+// Distributes lyric lines across song duration with weighted timing
+// Chorus/Bridge sections get slightly more time per line
+type SyncedLine = { text: string; isTag: boolean; isEmpty: boolean; startTime: number; endTime: number };
+
+function buildSyncedLyrics(lyrics: string, totalDuration: number): SyncedLine[] {
+  if (!lyrics || totalDuration <= 0) return [];
+  const raw = lyrics.split("\n");
+  const lines: { text: string; isTag: boolean; isEmpty: boolean; weight: number }[] = [];
+
+  for (const line of raw) {
+    const trimmed = line.trim();
+    const isTag = trimmed.startsWith("[");
+    const isEmpty = !trimmed;
+    // Tags and empty lines get small weight (pauses), content lines get 1.0
+    // Chorus lines slightly longer (more emotional weight)
+    let weight = 0.15; // tag/empty
+    if (!isTag && !isEmpty) weight = 1.0;
+    lines.push({ text: trimmed, isTag, isEmpty, weight });
+  }
+
+  const totalWeight = lines.reduce((s, l) => s + l.weight, 0);
+  if (totalWeight === 0) return [];
+
+  // Leave 2s intro and 3s outro
+  const introTime = Math.min(2, totalDuration * 0.01);
+  const outroTime = Math.min(3, totalDuration * 0.02);
+  const availableDuration = totalDuration - introTime - outroTime;
+  const timePerWeight = availableDuration / totalWeight;
+
+  let currentTime = introTime;
+  return lines.map(l => {
+    const duration = l.weight * timePerWeight;
+    const result: SyncedLine = {
+      text: l.text,
+      isTag: l.isTag,
+      isEmpty: l.isEmpty,
+      startTime: currentTime,
+      endTime: currentTime + duration,
+    };
+    currentTime += duration;
+    return result;
+  });
 }
 
 type ViewTab = "cover" | "lyrics" | "queue";
@@ -46,6 +91,8 @@ export default function FullPlayer() {
   const [showSleep, setShowSleep] = useState(false);
   const [activeTab, setActiveTab] = useState<ViewTab>("cover");
   const [trackCover, setTrackCover] = useState<string | null>(null);
+  const lyricsContainerRef = useRef<HTMLDivElement>(null);
+  const activeLineRef = useRef<HTMLParagraphElement>(null);
   const { saveTrack, removeTrack, getSaveState, isSaved } = useDownloads();
   const { isFavorite, toggleFavorite, userId } = useLibrary();
   const router = useRouter();
@@ -61,8 +108,28 @@ export default function FullPlayer() {
     img.src = url;
   }, [currentTrack, currentAlbum]);
 
-  // Reset to cover view on track change
+  // Reset view on track change
   useEffect(() => { setActiveTab("cover"); }, [currentTrack]);
+
+  // ── Synced lyrics ──
+  const syncedLyrics = useMemo(() => {
+    if (!currentTrack?.lyrics || !duration) return [];
+    return buildSyncedLyrics(currentTrack.lyrics, duration);
+  }, [currentTrack?.lyrics, duration]);
+
+  const currentLineIndex = useMemo(() => {
+    if (syncedLyrics.length === 0) return -1;
+    for (let i = syncedLyrics.length - 1; i >= 0; i--) {
+      if (currentTime >= syncedLyrics[i].startTime) return i;
+    }
+    return -1;
+  }, [syncedLyrics, currentTime]);
+
+  // Auto-scroll lyrics to current line
+  useEffect(() => {
+    if (activeTab !== "lyrics" || !activeLineRef.current || !lyricsContainerRef.current) return;
+    activeLineRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, [currentLineIndex, activeTab]);
 
   // ── Browser back button ──
   const didPushState = useRef(false);
@@ -124,11 +191,10 @@ export default function FullPlayer() {
   const albumColor = currentAlbum?.color || "#C9A96E";
   const coverSrc = trackCover || (currentAlbum ? getAlbumCover(currentAlbum) : "/poses/loranne-hero.png");
   const hasLyrics = !!currentTrack.lyrics;
-
-  // Queue
   const currentIdx = queue.findIndex(t => t.number === currentTrack.number);
   const upcomingTracks = currentIdx >= 0 ? queue.slice(currentIdx + 1) : [];
   const nextTrack = upcomingTracks[0] || null;
+  const fav = isFavorite(currentTrack.number, currentAlbum?.slug || "");
 
   return (
     <>
@@ -138,30 +204,34 @@ export default function FullPlayer() {
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
       className="fixed inset-0 z-50 flex flex-col overflow-hidden transition-[transform,opacity] duration-200 ease-out"
-      style={{ background: `linear-gradient(180deg, ${albumColor}22 0%, #0D0D1A 40%)` }}
     >
-      {/* Background glow */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full opacity-15 blur-[120px] pointer-events-none"
-        style={{ backgroundColor: albumColor }}
-      />
+      {/* ── BLURRED COVER BACKGROUND ── */}
+      <div className="absolute inset-0 overflow-hidden">
+        <img
+          src={coverSrc}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover scale-110 blur-[60px] opacity-30"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0D0D1A]/70 via-[#0D0D1A]/85 to-[#0D0D1A]" />
+      </div>
 
       {/* ── HEADER ── */}
       <div className="relative z-10 flex items-center justify-between px-5 py-3 shrink-0">
         <button
           onClick={() => setShowFullPlayer(false)}
-          className="p-3 -ml-3 text-[#a0a0b0] hover:text-[#F5F0E6] transition-colors active:bg-white/5 rounded-xl"
-          aria-label="Fechar player"
+          className="p-2 -ml-2 text-[#a0a0b0] hover:text-[#F5F0E6] transition-colors active:scale-95 rounded-xl"
+          aria-label="Fechar"
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="h-6 w-6">
             <path d="M19 9l-7 7-7-7" />
           </svg>
         </button>
-        <div className="text-center min-w-0">
-          <p className="text-[10px] uppercase tracking-widest text-[#666680]">A ouvir do album</p>
-          <p className="text-xs font-medium text-[#a0a0b0] truncate">{currentAlbum?.title}</p>
+        <div className="text-center min-w-0 flex-1">
+          <p className="text-[9px] uppercase tracking-[0.2em] text-[#666680]">A ouvir</p>
+          <p className="text-[11px] font-medium text-[#a0a0b0] truncate">{currentAlbum?.title}</p>
         </div>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center">
           <button onClick={() => setShowSleep(true)} className="p-2 text-[#666680] hover:text-[#a0a0b0]">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
               <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
@@ -175,21 +245,21 @@ export default function FullPlayer() {
         </div>
       </div>
 
-      {/* ── SCROLLABLE CONTENT ── */}
-      <div className="relative z-10 flex-1 overflow-y-auto scrollbar-none">
-        <div className="max-w-md mx-auto px-6 pt-2 pb-4">
+      {/* ── CONTENT ── */}
+      <div ref={lyricsContainerRef} className="relative z-10 flex-1 overflow-y-auto scrollbar-none">
+        <div className="max-w-md mx-auto px-6 pb-4">
 
           {/* ═══ COVER VIEW ═══ */}
           {activeTab === "cover" && (
-            <>
-              {/* Big cover art */}
-              <div className="relative mx-auto" style={{ width: "min(80vw, 320px)" }}>
+            <div className="flex flex-col items-center pt-2">
+              {/* BIG COVER — fills width */}
+              <div className="relative w-full max-w-[85vw] sm:max-w-[340px]">
                 {isPlaying && (
-                  <div className="absolute inset-0 -m-6 flex items-center justify-center pointer-events-none">
-                    <div className="w-full h-full rounded-2xl opacity-30 blur-[30px] animate-pulse" style={{ backgroundColor: albumColor }} />
+                  <div className="absolute inset-0 -m-4 pointer-events-none">
+                    <div className="w-full h-full rounded-3xl opacity-40 blur-[40px] animate-pulse" style={{ backgroundColor: albumColor }} />
                   </div>
                 )}
-                <div className="relative aspect-square rounded-2xl shadow-2xl overflow-hidden">
+                <div className="relative aspect-square rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden">
                   <img
                     src={coverSrc}
                     alt={currentTrack.title}
@@ -202,106 +272,95 @@ export default function FullPlayer() {
                 </div>
               </div>
 
-              {/* Track name + favorite */}
-              <div className="mt-6 text-center">
-                <div className="flex items-center justify-center gap-2">
-                  <h2 className="font-display text-xl font-semibold text-[#F5F0E6]">{currentTrack.title}</h2>
+              {/* Track info */}
+              <div className="mt-6 w-full">
+                <div className="flex items-center justify-between">
+                  <div className="min-w-0 flex-1">
+                    <h2 className="font-display text-xl font-bold text-[#F5F0E6] truncate">{currentTrack.title}</h2>
+                    <p className="text-sm text-[#a0a0b0] truncate">{currentAlbum?.title}</p>
+                  </div>
                   <button
                     onClick={() => {
                       if (!userId) { router.push("/login"); return; }
                       if (currentAlbum) toggleFavorite(currentTrack.number, currentAlbum.slug);
                     }}
-                    className="p-1 shrink-0"
+                    className="p-2 shrink-0 transition-transform active:scale-90"
                   >
-                    <svg viewBox="0 0 24 24"
-                      fill={isFavorite(currentTrack.number, currentAlbum?.slug || "") ? "#e74c3c" : "none"}
-                      stroke={isFavorite(currentTrack.number, currentAlbum?.slug || "") ? "#e74c3c" : "#a0a0b0"}
-                      strokeWidth="2" className="h-5 w-5"
-                    >
+                    <svg viewBox="0 0 24 24" fill={fav ? "#e74c3c" : "none"} stroke={fav ? "#e74c3c" : "#a0a0b0"} strokeWidth="2" className="h-6 w-6">
                       <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                     </svg>
                   </button>
                 </div>
-                <p className="text-sm text-[#a0a0b0] mt-0.5">{currentAlbum?.title}</p>
                 {nextTrack && <p className="text-xs text-[#666680] mt-1">A seguir: {nextTrack.title}</p>}
-              </div>
-
-              {/* Save offline */}
-              {currentAlbum && (() => {
-                const state = getSaveState(currentAlbum.slug, currentTrack.number);
-                const saved = isSaved(currentAlbum.slug, currentTrack.number);
-                return (
-                  <div className="flex justify-center mt-3">
-                    <button
-                      onClick={() => saved ? removeTrack(currentAlbum!.slug, currentTrack.number) : saveTrack(currentTrack, currentAlbum!)}
-                      disabled={state === "saving"}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] transition-colors ${
-                        saved ? "bg-green-900/20 text-green-400" : "text-[#666680] hover:text-[#a0a0b0]"
-                      } disabled:opacity-50`}
-                    >
-                      {state === "saving" ? (
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5 animate-spin">
-                          <circle cx="12" cy="12" r="10" strokeDasharray="32" strokeDashoffset="12" />
-                        </svg>
-                      ) : (
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
-                          {saved
-                            ? <path d="M20 6L9 17l-5-5" />
-                            : <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
-                          }
-                        </svg>
-                      )}
-                      {saved ? "Guardado offline" : "Guardar offline"}
-                    </button>
-                  </div>
-                );
-              })()}
-            </>
-          )}
-
-          {/* ═══ LYRICS VIEW ═══ */}
-          {activeTab === "lyrics" && hasLyrics && (
-            <div className="pb-8">
-              {/* Mini cover + title */}
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0">
-                  <img src={coverSrc} alt={currentTrack.title} className="w-full h-full object-cover" />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-sm font-semibold text-[#F5F0E6] truncate">{currentTrack.title}</p>
-                  <p className="text-xs text-[#666680] truncate">{currentAlbum?.title}</p>
-                </div>
-              </div>
-              {/* Lyrics */}
-              <div className="space-y-3 px-1">
-                {currentTrack.lyrics!.split("\n").map((line: string, i: number) => {
-                  if (line.startsWith("[")) return (
-                    <p key={i} className="text-[10px] uppercase tracking-[0.2em] mt-8 first:mt-0" style={{ color: albumColor }}>
-                      {line.replace(/[\[\]]/g, "")}
-                    </p>
-                  );
-                  if (!line.trim()) return <div key={i} className="h-3" />;
-                  return <p key={i} className="text-lg leading-relaxed text-[#F5F0E6]/90 font-display">{line}</p>;
-                })}
               </div>
             </div>
           )}
-          {activeTab === "lyrics" && !hasLyrics && (
-            <div className="flex flex-col items-center justify-center py-20 text-center">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#666680" strokeWidth="1.5" className="h-12 w-12 mb-4">
-                <path d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
-              </svg>
-              <p className="text-sm text-[#666680]">Sem letra disponivel</p>
+
+          {/* ═══ LYRICS VIEW — TIME-SYNCED ═══ */}
+          {activeTab === "lyrics" && (
+            <div className="py-4 min-h-[50vh]">
+              {hasLyrics && syncedLyrics.length > 0 ? (
+                <div className="space-y-1">
+                  {syncedLyrics.map((line, i) => {
+                    const isActive = i === currentLineIndex;
+                    const isPast = i < currentLineIndex;
+                    const isFuture = i > currentLineIndex;
+
+                    if (line.isEmpty) return <div key={i} className="h-4" />;
+
+                    if (line.isTag) return (
+                      <p
+                        key={i}
+                        ref={isActive ? activeLineRef : undefined}
+                        className={`text-[10px] uppercase tracking-[0.25em] pt-6 pb-1 transition-all duration-500 ${
+                          isPast ? "opacity-30" : isActive ? "opacity-80" : "opacity-40"
+                        }`}
+                        style={{ color: albumColor }}
+                      >
+                        {line.text.replace(/[\[\]]/g, "")}
+                      </p>
+                    );
+
+                    return (
+                      <p
+                        key={i}
+                        ref={isActive ? activeLineRef : undefined}
+                        onClick={() => { if (line.startTime > 0) seek(line.startTime); }}
+                        className={`font-display leading-relaxed cursor-pointer transition-all duration-500 ${
+                          isActive
+                            ? "text-[22px] text-[#F5F0E6] font-bold scale-[1.02] origin-left"
+                            : isPast
+                            ? "text-lg text-[#F5F0E6]/25"
+                            : isFuture
+                            ? "text-lg text-[#F5F0E6]/40"
+                            : "text-lg text-[#F5F0E6]/40"
+                        }`}
+                      >
+                        {line.text}
+                      </p>
+                    );
+                  })}
+                  {/* Spacer for scrolling last lines to center */}
+                  <div className="h-[30vh]" />
+                </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center py-20 text-center">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#666680" strokeWidth="1.5" className="h-10 w-10 mb-3 opacity-50">
+                    <path d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
+                  </svg>
+                  <p className="text-sm text-[#666680]">Sem letra disponivel</p>
+                </div>
+              )}
             </div>
           )}
 
           {/* ═══ QUEUE VIEW ═══ */}
           {activeTab === "queue" && (
-            <div className="pb-8">
+            <div className="py-4">
               {/* Now playing */}
-              <p className="text-[10px] uppercase tracking-widest text-[#666680] mb-3">A tocar agora</p>
-              <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5 mb-6">
-                <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0">
+              <p className="text-[9px] uppercase tracking-[0.25em] text-[#666680] mb-3">A tocar</p>
+              <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/[0.06] mb-8">
+                <div className="w-11 h-11 rounded-xl overflow-hidden shrink-0 shadow-lg">
                   <img src={coverSrc} alt={currentTrack.title} className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -309,19 +368,19 @@ export default function FullPlayer() {
                   <p className="text-xs text-[#666680] truncate">{currentAlbum?.title}</p>
                 </div>
                 {isPlaying && (
-                  <div className="flex items-end gap-0.5 h-4 shrink-0">
-                    <div className="w-0.5 animate-pulse" style={{ height: "60%", backgroundColor: albumColor }} />
-                    <div className="w-0.5 animate-pulse" style={{ height: "100%", backgroundColor: albumColor, animationDelay: "0.2s" }} />
-                    <div className="w-0.5 animate-pulse" style={{ height: "40%", backgroundColor: albumColor, animationDelay: "0.4s" }} />
+                  <div className="flex items-end gap-[3px] h-4 shrink-0 mr-1">
+                    {[60, 100, 40, 80].map((h, j) => (
+                      <div key={j} className="w-[3px] rounded-full animate-pulse" style={{ height: `${h}%`, backgroundColor: albumColor, animationDelay: `${j * 0.15}s` }} />
+                    ))}
                   </div>
                 )}
               </div>
 
               {/* Up next */}
-              {upcomingTracks.length > 0 ? (
+              {upcomingTracks.length > 0 && (
                 <>
-                  <p className="text-[10px] uppercase tracking-widest text-[#666680] mb-3">A seguir</p>
-                  <div className="space-y-1">
+                  <p className="text-[9px] uppercase tracking-[0.25em] text-[#666680] mb-3">A seguir</p>
+                  <div className="space-y-0.5">
                     {upcomingTracks.map((track, i) => (
                       <button
                         key={`${track.number}-${i}`}
@@ -329,79 +388,72 @@ export default function FullPlayer() {
                           const album = currentAlbum || queueAlbum;
                           if (album) playTrack(track, album, queue);
                         }}
-                        className="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors text-left"
+                        className="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-white/[0.04] active:bg-white/[0.08] transition-colors text-left"
                       >
-                        <span className="text-xs text-[#666680] w-5 text-center shrink-0">{i + 1}</span>
+                        <span className="text-[11px] text-[#666680]/60 w-5 text-center tabular-nums shrink-0">{i + 1}</span>
                         <div className="flex-1 min-w-0">
                           <p className="text-sm text-[#F5F0E6] truncate">{track.title}</p>
-                          <p className="text-xs text-[#666680] truncate">{track.description}</p>
+                          <p className="text-[11px] text-[#666680] truncate">{track.description}</p>
                         </div>
-                        <span className="text-xs text-[#666680] tabular-nums shrink-0">{fmt(track.durationSeconds)}</span>
+                        <span className="text-[11px] text-[#666680]/60 tabular-nums shrink-0">{fmt(track.durationSeconds)}</span>
                       </button>
                     ))}
                   </div>
                 </>
-              ) : (
-                <div className="text-center py-12">
+              )}
+
+              {upcomingTracks.length === 0 && (
+                <div className="text-center py-16">
                   <p className="text-sm text-[#666680]">
-                    {infinite ? "Modo infinito — a proxima faixa sera escolhida automaticamente" : "Fim da fila"}
+                    {infinite ? "Modo infinito activo" : "Ultima faixa da fila"}
                   </p>
                 </div>
               )}
 
-              {/* Queue info badges */}
-              <div className="flex items-center justify-center gap-2 mt-6">
-                <span className="text-[10px] text-[#666680]">{queue.length} faixa{queue.length !== 1 ? "s" : ""}</span>
-                {shuffle && <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-white">Aleatorio</span>}
-                {infinite && <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-white">Infinito</span>}
-                {repeat !== "off" && <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-white">Repetir{repeat === "one" ? " 1" : ""}</span>}
+              {/* Queue badges */}
+              <div className="flex items-center justify-center gap-2 mt-8 flex-wrap">
+                <span className="text-[10px] text-[#666680]/60">{queue.length} faixa{queue.length !== 1 ? "s" : ""}</span>
+                {shuffle && <span className="text-[10px] px-2.5 py-1 rounded-full bg-white/[0.06] text-[#a0a0b0]">Aleatorio</span>}
+                {infinite && <span className="text-[10px] px-2.5 py-1 rounded-full bg-white/[0.06] text-[#a0a0b0]">Infinito</span>}
+                {repeat !== "off" && <span className="text-[10px] px-2.5 py-1 rounded-full bg-white/[0.06] text-[#a0a0b0]">Repetir{repeat === "one" ? " 1" : ""}</span>}
               </div>
             </div>
           )}
         </div>
       </div>
 
-      {/* ── TAB BAR (Apple Music style) ── */}
-      <div className="relative z-10 shrink-0 flex justify-center gap-1 px-6 pt-2">
-        <button
-          onClick={() => setActiveTab("cover")}
-          className={`px-4 py-1.5 rounded-full text-[11px] font-medium transition-colors ${
-            activeTab === "cover" ? "bg-white/10 text-white" : "text-[#666680] hover:text-[#a0a0b0]"
-          }`}
-        >
-          Capa
-        </button>
-        <button
-          onClick={() => setActiveTab("lyrics")}
-          className={`px-4 py-1.5 rounded-full text-[11px] font-medium transition-colors ${
-            activeTab === "lyrics" ? "bg-white/10 text-white" : "text-[#666680] hover:text-[#a0a0b0]"
-          }`}
-        >
-          Letra
-        </button>
-        <button
-          onClick={() => setActiveTab("queue")}
-          className={`px-4 py-1.5 rounded-full text-[11px] font-medium transition-colors ${
-            activeTab === "queue" ? "bg-white/10 text-white" : "text-[#666680] hover:text-[#a0a0b0]"
-          }`}
-        >
-          Fila
-        </button>
+      {/* ── TAB BAR ── */}
+      <div className="relative z-10 shrink-0 flex justify-center gap-1 px-6 pt-1.5 pb-1">
+        {(["cover", "lyrics", "queue"] as ViewTab[]).map(tab => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={`relative px-5 py-2 rounded-full text-[11px] font-medium transition-all duration-300 ${
+              activeTab === tab
+                ? "text-white"
+                : "text-[#666680] hover:text-[#a0a0b0]"
+            }`}
+          >
+            {activeTab === tab && (
+              <span className="absolute inset-0 rounded-full bg-white/10" style={{ boxShadow: `0 0 20px ${albumColor}20` }} />
+            )}
+            <span className="relative">
+              {tab === "cover" ? "Capa" : tab === "lyrics" ? "Letra" : "Fila"}
+            </span>
+          </button>
+        ))}
       </div>
 
       {/* ── FIXED BOTTOM: progress + controls ── */}
-      <div className="relative z-10 shrink-0 px-6 pb-6 pt-3 bg-gradient-to-t from-[#0D0D1A] via-[#0D0D1A]/95 to-transparent">
+      <div className="relative z-10 shrink-0 px-6 pb-6 pt-2">
         <div className="max-w-md mx-auto">
-          {/* Progress bar */}
+          {/* Progress */}
           <div className="mb-3">
             <input
-              type="range"
-              min={0}
-              max={duration || 0}
-              value={currentTime}
+              type="range" min={0} max={duration || 0} value={currentTime}
               onChange={e => seek(Number(e.target.value))}
               className="w-full h-1 appearance-none rounded-full cursor-pointer"
-              style={{ background: `linear-gradient(to right, ${albumColor} ${progress}%, rgba(255,255,255,0.1) ${progress}%)` }}
+              style={{ background: `linear-gradient(to right, ${albumColor} ${progress}%, rgba(255,255,255,0.08) ${progress}%)` }}
             />
             <div className="flex justify-between mt-1">
               <span className="text-[10px] text-[#666680] tabular-nums">{fmt(currentTime)}</span>
@@ -409,19 +461,19 @@ export default function FullPlayer() {
             </div>
           </div>
 
-          {/* Main controls */}
+          {/* Controls */}
           <div className="flex items-center justify-between">
             <button onClick={toggleShuffle} className={`p-2 transition-colors ${shuffle ? "text-white" : "text-[#666680] hover:text-[#a0a0b0]"}`}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
                 <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5" />
               </svg>
             </button>
-            <button onClick={previous} className="p-2 text-[#F5F0E6] hover:text-white transition-colors">
+            <button onClick={previous} className="p-3 text-[#F5F0E6] hover:text-white active:scale-90 transition-all">
               <svg viewBox="0 0 24 24" fill="currentColor" className="h-7 w-7"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" /></svg>
             </button>
             <button
               onClick={togglePlay}
-              className="flex h-16 w-16 items-center justify-center rounded-full text-[#0D0D1A] transition-transform hover:scale-105 active:scale-95"
+              className="flex h-16 w-16 items-center justify-center rounded-full text-[#0D0D1A] transition-transform hover:scale-105 active:scale-95 shadow-lg"
               style={{ backgroundColor: albumColor }}
             >
               {isPlaying ? (
@@ -430,7 +482,7 @@ export default function FullPlayer() {
                 <svg viewBox="0 0 24 24" fill="currentColor" className="ml-1 h-7 w-7"><path d="M8 5v14l11-7z" /></svg>
               )}
             </button>
-            <button onClick={next} className="p-2 text-[#F5F0E6] hover:text-white transition-colors">
+            <button onClick={next} className="p-3 text-[#F5F0E6] hover:text-white active:scale-90 transition-all">
               <svg viewBox="0 0 24 24" fill="currentColor" className="h-7 w-7"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" /></svg>
             </button>
             <button onClick={cycleRepeat} className={`p-2 relative transition-colors ${repeat !== "off" ? "text-white" : "text-[#666680] hover:text-[#a0a0b0]"}`}>
