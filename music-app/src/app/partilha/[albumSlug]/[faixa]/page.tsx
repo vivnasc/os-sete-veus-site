@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ALL_ALBUMS as ALBUMS } from "@/data/albums";
-import { getAlbumCover } from "@/lib/album-covers";
+import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
 import PartilhaClient from "./PartilhaClient";
 
 type Props = {
@@ -14,7 +14,7 @@ function pickLyricLine(lyrics: string | undefined): string | undefined {
     return t.length > 15 && t.length < 100 && !t.startsWith("[");
   });
   if (lines.length === 0) return undefined;
-  // Deterministic: pick based on day
+  // Deterministic: pick based on day (frase do dia)
   const day = Math.floor(Date.now() / 86400000);
   return lines[day % lines.length].trim();
 }
@@ -29,9 +29,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Veus" };
   }
 
-  const cover = getAlbumCover(album);
-  const title = `${track.title} — ${album.title} | Loranne`;
-  const description = track.description || `Ouve "${track.title}" do album ${album.title}. Musica original para a tua transformacao.`;
+  const lyric = pickLyricLine(track.lyrics);
+
+  // OG image: track cover from Supabase (absolute URL)
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+  const pad = String(track.number).padStart(2, "0");
+  const ogImage = `${supabaseUrl}/storage/v1/object/public/audios/albums/${album.slug}/faixa-${pad}-cover.jpg`;
+
+  // SEO misterioso e envolvente — convite, não descrição
+  const title = lyric
+    ? `"${lyric}" — Loranne`
+    : `${track.title} — Loranne`;
+  const description = track.description
+    ? `${track.description}. Ouve o que ninguem te diz em voz alta.`
+    : `Ha coisas que so se ouvem quando tudo o resto se cala.`;
 
   return {
     title,
@@ -39,15 +50,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title,
       description,
-      siteName: "Veus",
+      siteName: "Veus by Loranne",
       locale: "pt_PT",
       type: "music.song",
       images: [
         {
-          url: cover,
-          width: 600,
-          height: 600,
-          alt: title,
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${track.title} — ${album.title}`,
         },
       ],
     },
@@ -55,7 +66,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title,
       description,
-      images: [cover],
+      images: [ogImage],
     },
   };
 }
@@ -74,7 +85,8 @@ export default async function PartilhaPage({ params }: Props) {
     );
   }
 
-  const cover = getAlbumCover(album);
+  const albumCoverPage = getAlbumCover(album);
+  const trackCoverPage = getTrackCoverUrl(album.slug, track.number);
   const lyricLine = pickLyricLine(track.lyrics);
 
   return (
@@ -85,7 +97,8 @@ export default async function PartilhaPage({ params }: Props) {
       trackNumber={track.number}
       trackTitle={track.title}
       trackDescription={track.description}
-      coverSrc={cover}
+      coverSrc={albumCoverPage}
+      trackCoverSrc={trackCoverPage || undefined}
       lyricLine={lyricLine}
     />
   );

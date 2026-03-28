@@ -56,3 +56,6 @@ CURSOS/lora-training/logs/
 *.safetensors
 *.zip
 !public/downloads/*.zip
+
+# Generated preview PDFs
+CURSOS/*_PREVIEW.pdf

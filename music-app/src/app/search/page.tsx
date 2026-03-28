@@ -86,7 +86,10 @@ const MOODS = [
 
 const GENRES = [
   { label: "Organic", slug: "organic" },
-  { label: "Marrabenta", slug: "marrabenta" },
+  { label: "Afrobeat", slug: "afrobeat" },
+  { label: "Bossa Nova", slug: "bossa" },
+  { label: "Jazz", slug: "jazz" },
+  { label: "Folk", slug: "folk" },
   { label: "House", slug: "house" },
   { label: "Gospel", slug: "gospel" },
 ];
@@ -102,6 +105,22 @@ export default function SearchPage() {
   const inputRef = useRef<HTMLInputElement>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { currentTrack, currentAlbum } = useMusicPlayer();
+  const [publishedAlbums, setPublishedAlbums] = useState<Set<string>>(new Set());
+
+  // Load published tracks to know which albums have content
+  useEffect(() => {
+    fetch("/api/published-tracks")
+      .then(r => r.json())
+      .then(data => {
+        const slugs = new Set<string>();
+        for (const key of (data.tracks || []) as string[]) {
+          const match = key.match(/^(.+)-t\d+$/);
+          if (match) slugs.add(match[1]);
+        }
+        setPublishedAlbums(slugs);
+      })
+      .catch(() => {});
+  }, []);
 
   // Debounce
   useEffect(() => {
@@ -308,6 +327,44 @@ export default function SearchPage() {
                   ))}
                 </div>
               </section>
+            )}
+
+            {/* Browse by collection */}
+            {!activeFilter && (
+              <>
+                {[
+                  { title: "Espelhos", sub: "A transformação interior", products: ["espelho"] },
+                  { title: "Nós", sub: "Entre duas pessoas", products: ["no"] },
+                  { title: "Espiritual", sub: "O sagrado no corpo", products: ["espiritual"] },
+                  { title: "Vida", sub: "Música do dia-a-dia", products: ["vida"] },
+                  { title: "Cursos", sub: "Escola dos Véus", products: ["curso"] },
+                  { title: "Livro", sub: "Livro filosófico", products: ["livro"] },
+                  { title: "Cosmic", sub: "O corpo como portal cósmico", products: ["cosmic"] },
+                  { title: "Romance", sub: "Loranne apaixonada", products: ["romance"] },
+                ].map(({ title, sub, products }) => {
+                  const albums = ALL_ALBUMS.filter(a => products.includes(a.product) && publishedAlbums.has(a.slug));
+                  if (albums.length === 0) return null;
+                  return (
+                    <section key={title}>
+                      <h2 className="text-sm font-semibold text-[#a0a0b0] uppercase tracking-wider mb-1">{title}</h2>
+                      <p className="text-xs text-[#666680] mb-3">{sub}</p>
+                      <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2">
+                        {albums.map(album => (
+                          <Link key={album.slug} href={`/album/${album.slug}`} className="group text-center">
+                            <div
+                              className="aspect-square rounded-lg mb-1 flex items-center justify-center overflow-hidden"
+                              style={{ background: `linear-gradient(135deg, ${album.color}, ${album.color}88)` }}
+                            >
+                              <span className="text-[9px] text-white/60 font-medium px-1 truncate">{album.title.replace(/^O Espelho d[ao] |^O Nó d[ao] /,'')}</span>
+                            </div>
+                            <p className="text-[10px] text-[#999] truncate">{album.title}</p>
+                          </Link>
+                        ))}
+                      </div>
+                    </section>
+                  );
+                })}
+              </>
             )}
           </div>
         ) : !hasResults ? (

@@ -70,16 +70,6 @@ const GENERO_ORGANICO: CuratedList = {
   tracks: byFlavor("organic"),
 };
 
-const GENERO_MARRABENTA: CuratedList = {
-  slug: "genero-marrabenta",
-  title: "Marrabenta",
-  subtitle: "Ritmo moçambicano. Guitarra, shaker, groove quente.",
-  category: "genero",
-  color: "#e07a4a",
-  icon: "flame",
-  tracks: byFlavor("marrabenta"),
-};
-
 const GENERO_HOUSE: CuratedList = {
   slug: "genero-house",
   title: "House",
@@ -311,7 +301,6 @@ const TEMA_O_SILENCIO: CuratedList = {
 
 export const GENEROS: CuratedList[] = [
   GENERO_ORGANICO,
-  GENERO_MARRABENTA,
   GENERO_HOUSE,
   GENERO_GOSPEL,
 ];

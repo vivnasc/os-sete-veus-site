@@ -7,6 +7,7 @@ import { supabase } from "@/lib/supabase";
 import { detectEnergyFromVersion, ENERGY_OPTIONS } from "@/lib/version-energy";
 
 import { ADMIN_EMAIL } from "@/lib/admin-auth";
+import { adminFetch } from "@/lib/admin-fetch";
 
 type UploadState = "idle" | "uploading" | "done" | "error";
 
@@ -101,7 +102,7 @@ export default function UploadPage() {
   // Load audio status for all albums on mount (shows which tracks exist in storage)
   useEffect(() => {
     if (!authed) return;
-    fetch("/api/admin/audio-status")
+    adminFetch("/api/admin/audio-status")
       .then(r => r.ok ? r.json() : null)
       .then(data => {
         if (!data?.existing) return;
@@ -131,7 +132,7 @@ export default function UploadPage() {
 
     try {
       // Step 1: Get a signed upload URL from the server (uses service role key)
-      const signedRes = await fetch("/api/admin/signed-upload-url", {
+      const signedRes = await adminFetch("/api/admin/signed-upload-url", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ filename }),
@@ -169,7 +170,7 @@ export default function UploadPage() {
         const matchedTrack = album.tracks.find(t => trackKey(album.slug, t.number) === key);
         const energy = versionEnergy || matchedTrack?.energy || "whisper";
         try {
-          await fetch("/api/admin/track-versions", {
+          await adminFetch("/api/admin/track-versions", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -536,7 +537,7 @@ export default function UploadPage() {
         ) : (
           /* Album grid */
           <div className="space-y-8">
-            {(["espelho", "no", "livro", "curso"] as const).map(product => {
+            {(["espelho", "no", "livro", "curso", "espiritual"] as const).map(product => {
               const albumsInCategory = filteredAlbums.filter(a => a.product === product);
               if (albumsInCategory.length === 0) return null;
 
@@ -545,6 +546,7 @@ export default function UploadPage() {
                 no: "Nos",
                 livro: "Livro Filosofico",
                 curso: "Cursos",
+                espiritual: "Espiritual",
               };
 
               return (

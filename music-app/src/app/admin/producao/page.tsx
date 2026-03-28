@@ -14,6 +14,7 @@ import {
   type TrackFlavor,
 } from "@/data/albums";
 import { getAlbumCover } from "@/lib/album-covers";
+import { adminFetch } from "@/lib/admin-fetch";
 
 /** Read ID3 title from an MP3 File */
 async function readId3Title(file: File): Promise<string | null> {
@@ -27,7 +28,7 @@ async function readId3Title(file: File): Promise<string | null> {
 
 /** Save title to database */
 async function saveTitle(albumSlug: string, trackNumber: number, title: string, source: string) {
-  await fetch("/api/admin/track-metadata", {
+  await adminFetch("/api/admin/track-metadata", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ albumSlug, trackNumber, title, source }),
@@ -62,12 +63,19 @@ type SunoClip = {
   id: string;
   status: string;
   audioUrl: string | null;
+  originalAudioUrl?: string | null; // Original Suno CDN URL (for upload)
   title: string;
+  imageUrl?: string | null;
+  duration?: number | null;
+  tags?: string | null;
+  model?: string | null;
 };
 
 type GeneratedClips = {
   clips: SunoClip[];
 };
+
+type VersionInfo = { name: string; audioUrl: string; energy: string };
 
 function trackKey(albumSlug: string, trackNum: number) {
   return `${albumSlug}-t${trackNum}`;
@@ -97,8 +105,13 @@ function buildUploadForm(
  * Falls back to /api/admin/upload-audio for small files if signed URL fails.
  */
 async function uploadViaSignedUrl(blob: Blob, filename: string): Promise<string> {
+  // Validate blob has actual content
+  if (!blob.size || blob.size < 1000) {
+    throw new Error(`Ficheiro vazio ou demasiado pequeno (${blob.size} bytes). O download do Suno pode ter falhado.`);
+  }
+
   // Step 1: Get signed upload URL
-  const signedRes = await fetch("/api/admin/signed-upload-url", {
+  const signedRes = await adminFetch("/api/admin/signed-upload-url", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ filename }),
@@ -112,9 +125,10 @@ async function uploadViaSignedUrl(blob: Blob, filename: string): Promise<string>
   const { signedUrl } = await signedRes.json();
 
   // Step 2: Upload directly to Supabase Storage
+  const contentType = filename.endsWith(".mp3") ? "audio/mpeg" : blob.type || "application/octet-stream";
   const uploadRes = await fetch(signedUrl, {
     method: "PUT",
-    headers: { "Content-Type": "audio/mpeg" },
+    headers: { "Content-Type": contentType },
     body: blob,
   });
 
@@ -140,6 +154,10 @@ function ProductFilter({
     { key: "no", label: "Nos" },
     { key: "livro", label: "Livro" },
     { key: "curso", label: "Cursos" },
+    { key: "espiritual", label: "Espiritual" },
+    { key: "vida", label: "Vida" },
+    { key: "cosmic", label: "Cosmic" },
+    { key: "romance", label: "Romance" },
   ];
 
   return (
@@ -161,6 +179,97 @@ function ProductFilter({
   );
 }
 
+function formatTime(s: number) {
+  if (!s || !isFinite(s) || isNaN(s)) return "--:--";
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return `${m}:${sec.toString().padStart(2, "0")}`;
+}
+
+function MiniPlayer({ src }: { src: string }) {
+  const ref = useRef<HTMLAudioElement>(null);
+  const [playing, setPlaying] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [duration, setDuration] = useState(0);
+
+  useEffect(() => {
+    const a = ref.current;
+    if (!a) return;
+
+    const checkDuration = () => {
+      const d = a.duration;
+      if (d && isFinite(d) && !isNaN(d) && d > 0) {
+        setDuration(d);
+      }
+    };
+
+    const onTime = () => {
+      setCurrent(a.currentTime);
+      // Keep checking duration during playback (streaming sources)
+      if (!duration || !isFinite(duration)) checkDuration();
+    };
+    const onEnd = () => { setPlaying(false); checkDuration(); };
+
+    a.addEventListener("timeupdate", onTime);
+    a.addEventListener("loadedmetadata", checkDuration);
+    a.addEventListener("durationchange", checkDuration);
+    a.addEventListener("canplaythrough", checkDuration);
+    a.addEventListener("ended", onEnd);
+
+    // Force preload to get duration
+    a.preload = "auto";
+    a.load();
+
+    return () => {
+      a.removeEventListener("timeupdate", onTime);
+      a.removeEventListener("loadedmetadata", checkDuration);
+      a.removeEventListener("durationchange", checkDuration);
+      a.removeEventListener("canplaythrough", checkDuration);
+      a.removeEventListener("ended", onEnd);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [src]);
+
+  function toggle() {
+    const a = ref.current;
+    if (!a) return;
+    if (playing) { a.pause(); } else { a.play(); }
+    setPlaying(!playing);
+  }
+
+  function seek(e: React.MouseEvent<HTMLDivElement>) {
+    const a = ref.current;
+    if (!a || !duration || !isFinite(duration)) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    a.currentTime = pct * duration;
+  }
+
+  const hasDuration = duration > 0 && isFinite(duration);
+  const pct = hasDuration ? (current / duration) * 100 : 0;
+
+  return (
+    <div className="mb-2">
+      <audio ref={ref} src={src} preload="metadata" />
+      <div className="flex items-center gap-2">
+        <button onClick={toggle} className="shrink-0 text-mundo-creme hover:text-white">
+          {playing ? (
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><rect x="5" y="4" width="3" height="12" rx="1"/><rect x="12" y="4" width="3" height="12" rx="1"/></svg>
+          ) : (
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><polygon points="6,3 17,10 6,17"/></svg>
+          )}
+        </button>
+        <span className="shrink-0 text-[10px] font-mono text-mundo-muted w-8 text-right">{formatTime(current)}</span>
+        <div className="flex-1 h-2 rounded-full bg-mundo-muted-dark/30 cursor-pointer relative" onClick={seek}>
+          <div className="h-full rounded-full bg-violet-500 transition-all" style={{ width: `${pct}%` }} />
+          <div className="absolute top-1/2 -translate-y-1/2 h-3 w-3 rounded-full bg-white shadow" style={{ left: `${pct}%`, marginLeft: -6 }} />
+        </div>
+        <span className="shrink-0 text-[10px] font-mono text-mundo-muted w-8">{duration > 0 ? formatTime(duration) : "--:--"}</span>
+      </div>
+    </div>
+  );
+}
+
 function ClipApprovalRow({
   clip,
   clipIndex,
@@ -169,28 +278,46 @@ function ClipApprovalRow({
   trackEnergy,
   onApproveMain,
   onApproveVersion,
+  onCreatePersona,
 }: {
   clip: SunoClip;
   clipIndex: number;
   hasMainAudio: boolean;
-  existingVersions: string[];
+  existingVersions: VersionInfo[];
   trackEnergy: string;
   onApproveMain: () => void;
   onApproveVersion: (name: string, energy: string) => void;
+  onCreatePersona?: (clipTaskId: string, clipAudioId: string) => void;
 }) {
   const [mode, setMode] = useState<"pick" | "version">("pick");
   const [versionName, setVersionName] = useState(`suno-v${clipIndex + 1}`);
   const [energy, setEnergy] = useState(trackEnergy || "whisper");
 
-  const nameExists = existingVersions.includes(versionName);
+  const nameExists = existingVersions.some(v => v.name === versionName);
 
   return (
     <div className="rounded-lg border border-mundo-muted-dark/20 bg-mundo-bg/50 p-3">
+      <div className="flex gap-3">
+        {/* Suno cover image */}
+        {clip.imageUrl && (
+          <img
+            src={clip.imageUrl}
+            alt=""
+            className="h-20 w-20 shrink-0 rounded-lg object-cover bg-mundo-muted-dark/30"
+            onError={(e) => {
+              const img = e.target as HTMLImageElement;
+              img.style.background = "linear-gradient(135deg, #1a1a2e, #2e1a2e)";
+              img.removeAttribute("src");
+            }}
+          />
+        )}
+        <div className="flex-1 min-w-0">
       <div className="flex items-center gap-2 mb-2">
         <span className="text-[10px] text-mundo-muted font-mono">#{clipIndex + 1}</span>
         {clip.title && <span className="text-xs text-mundo-creme">{clip.title}</span>}
+        {clip.model && <span className="text-[10px] text-mundo-muted/50">{clip.model}</span>}
       </div>
-      <audio controls src={clip.audioUrl!} className="h-8 w-full mb-2" />
+      <MiniPlayer src={clip.audioUrl!} />
 
       {mode === "pick" ? (
         <div className="flex items-center gap-2">
@@ -214,6 +341,15 @@ function ClipApprovalRow({
               className="rounded-lg bg-mundo-muted-dark/20 px-3 py-1.5 text-xs text-mundo-muted transition hover:bg-mundo-muted-dark/30"
             >
               Substituir principal
+            </button>
+          )}
+          {onCreatePersona && clip.id && (
+            <button
+              onClick={() => onCreatePersona(String(clip.id), String(clip.id))}
+              className="rounded-lg bg-pink-900/30 px-3 py-1.5 text-xs text-pink-400 transition hover:bg-pink-900/50"
+              title="Criar persona com a voz deste clip"
+            >
+              Criar Persona
             </button>
           )}
         </div>
@@ -265,40 +401,60 @@ function ClipApprovalRow({
           </div>
         </div>
       )}
+        </div>{/* end flex-1 */}
+      </div>{/* end flex gap-3 */}
     </div>
   );
 }
 
 function TrackRow({
   track,
+  albumSlug,
   status,
   error,
   onUpload,
   onRemove,
   onGenerate,
+  onCancel,
   onApproveClip,
   onApproveAsVersion,
   onUploadVersion,
+  onCreatePersona,
   audioUrl,
   existingVersions,
   generatedClips,
   editedTitle,
   onTitleChange,
+  editedLyrics,
+  onLyricsChange,
+  editedStyle,
+  onStyleChange,
+  editedFlavor,
+  onFlavorChange,
 }: {
   track: AlbumTrack;
+  albumSlug: string;
   status: TrackStatus;
   error: string | null;
   onUpload: (file: File) => void;
   onRemove: () => void;
   onGenerate: () => void;
-  onApproveClip: (clipUrl: string, sunoTitle: string) => void;
-  onApproveAsVersion: (clipUrl: string, sunoTitle: string, versionName: string, energy: string) => void;
-  onUploadVersion: (file: File, versionName: string, energy: string) => void;
+  onCancel: () => void;
+  onApproveClip: (clipUrl: string, sunoTitle: string, imageUrl: string | null) => void;
+  onApproveAsVersion: (clipUrl: string, sunoTitle: string, versionName: string, energy: string, imageUrl?: string | null) => void;
+  onUploadVersion: (file: File, versionName: string, energy: string, coverFile?: File | null) => void;
+  onCreatePersona?: (taskId: string, audioId: string) => void;
   audioUrl: string | null;
-  existingVersions: string[];
+  existingVersions: VersionInfo[];
   generatedClips: GeneratedClips | null;
   editedTitle: string | null;
   onTitleChange: (title: string) => void;
+  editedLyrics: string | null;
+  onLyricsChange: (lyrics: string) => void;
+  editedStyle: string | null;
+  onStyleChange: (style: string) => void;
+  editedFlavor: TrackFlavor | null;
+  onFlavorChange: (flavor: TrackFlavor) => void;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [showLyrics, setShowLyrics] = useState(false);
@@ -311,7 +467,9 @@ function TrackRow({
   const [showVersionUpload, setShowVersionUpload] = useState(false);
   const [versionUploadName, setVersionUploadName] = useState("remix-1");
   const [versionUploadEnergy, setVersionUploadEnergy] = useState(track.energy || "whisper");
+  const [versionCoverFile, setVersionCoverFile] = useState<File | null>(null);
   const versionInputRef = useRef<HTMLInputElement>(null);
+  const coverInputRef = useRef<HTMLInputElement>(null);
 
   const isGenerating = status === "generating" || status === "polling";
   const hasClips = generatedClips && generatedClips.clips.length > 0;
@@ -321,8 +479,9 @@ function TrackRow({
   return (
     <div className="rounded-lg border border-mundo-muted-dark/30 bg-mundo-bg-light px-5 py-4">
       <div className="flex items-start gap-4">
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-mundo-muted-dark/10 font-mono text-sm text-mundo-muted">
+        <div className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-mundo-muted-dark/10 font-mono text-sm text-mundo-muted">
           {String(track.number).padStart(2, "0")}
+          <span className={`absolute -top-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-mundo-bg-light ${audioUrl ? "bg-green-500" : "bg-mundo-muted-dark/30"}`} />
         </div>
         <div className="min-w-0 flex-1">
           {/* Editable title */}
@@ -346,9 +505,14 @@ function TrackRow({
                 {ENERGY_LABELS[track.energy].emoji} {ENERGY_LABELS[track.energy].label}
               </span>
             )}
-            {track.flavor && track.flavor !== "organic" && (
-              <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${FLAVOR_LABELS[track.flavor].color}`}>
-                {FLAVOR_LABELS[track.flavor].emoji} {FLAVOR_LABELS[track.flavor].label}
+            {(editedFlavor || track.flavor) && (editedFlavor || track.flavor) !== "organic" && (
+              <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${FLAVOR_LABELS[editedFlavor || track.flavor || "organic"].color}`}>
+                {FLAVOR_LABELS[editedFlavor || track.flavor || "organic"].emoji} {FLAVOR_LABELS[editedFlavor || track.flavor || "organic"].label}
+              </span>
+            )}
+            {track.vocalMode === "duet" && (
+              <span className="rounded px-1.5 py-0.5 text-[10px] font-bold uppercase bg-pink-900/30 text-pink-400">
+                Dueto
               </span>
             )}
             {track.lyrics && (
@@ -362,7 +526,7 @@ function TrackRow({
           {/* Copy buttons — always visible */}
           <div className="mt-2 flex items-center gap-2">
             <CopyButton text={track.prompt} label="Copiar prompt" />
-            {track.lyrics && <CopyButton text={track.lyrics} label="Copiar letra" />}
+            {track.lyrics && <CopyButton text={editedLyrics ?? track.lyrics} label="Copiar letra" />}
           </div>
 
           {/* Prompt expandable */}
@@ -375,15 +539,56 @@ function TrackRow({
             </p>
           </details>
 
-          {/* Lyrics expandable */}
+          {/* Style editable — energy + flavor selectors + custom override */}
+          <details className="mt-1">
+            <summary className="cursor-pointer text-xs text-mundo-muted/60 hover:text-mundo-muted">
+              Ver style {editedStyle !== null && <span className="text-amber-400 ml-1">(editado)</span>}
+            </summary>
+            <div className="mt-2 space-y-2">
+              {/* Quick flavor change */}
+              <div className="flex flex-wrap gap-1">
+                {(Object.keys(FLAVOR_LABELS) as TrackFlavor[]).map((f) => (
+                  <button
+                    key={f}
+                    onClick={() => {
+                      // Update flavor in local state + generate matching style
+                      onStyleChange("");  // clear custom style to use auto
+                      onFlavorChange(f);
+                    }}
+                    className={`rounded px-2 py-0.5 text-[10px] font-bold uppercase transition ${
+                      (editedFlavor || track.flavor || "organic") === f
+                        ? FLAVOR_LABELS[f].color
+                        : "bg-mundo-muted-dark/10 text-mundo-muted hover:text-mundo-creme"
+                    }`}
+                  >
+                    {FLAVOR_LABELS[f].label}
+                  </button>
+                ))}
+              </div>
+              {/* Custom style override */}
+              <input
+                type="text"
+                value={editedStyle ?? ""}
+                onChange={(e) => onStyleChange(e.target.value)}
+                placeholder="Custom style override (vazio = automático)"
+                className="w-full rounded bg-mundo-bg px-3 py-2 font-mono text-xs text-mundo-muted/80 border border-mundo-muted-dark/20 focus:border-violet-500 focus:outline-none"
+              />
+              <p className="text-[9px] text-mundo-muted/40">Clica num flavor para mudar o som. Ou escreve um style manual.</p>
+            </div>
+          </details>
+
+          {/* Lyrics expandable + editable */}
           {track.lyrics && (
             <details className="mt-1" open={showLyrics} onToggle={(e) => setShowLyrics((e.target as HTMLDetailsElement).open)}>
               <summary className="cursor-pointer text-xs text-mundo-muted/60 hover:text-mundo-muted">
-                Ver letra
+                Ver letra {editedLyrics !== null && editedLyrics !== track.lyrics && <span className="text-amber-400 ml-1">(editada)</span>}
               </summary>
-              <pre className="mt-1 whitespace-pre-wrap rounded bg-mundo-bg p-3 font-mono text-xs text-mundo-muted/80 leading-relaxed max-h-64 overflow-y-auto">
-                {track.lyrics}
-              </pre>
+              <textarea
+                value={editedLyrics ?? track.lyrics}
+                onChange={(e) => onLyricsChange(e.target.value)}
+                className="mt-1 w-full whitespace-pre-wrap rounded bg-mundo-bg p-3 font-mono text-xs text-mundo-muted/80 leading-relaxed min-h-[16rem] max-h-[32rem] overflow-y-auto border border-mundo-muted-dark/20 focus:border-violet-500 focus:outline-none resize-y"
+                spellCheck={false}
+              />
             </details>
           )}
 
@@ -397,11 +602,15 @@ function TrackRow({
           {/* Existing versions + add more */}
           <div className="mt-2">
             {existingVersions.length > 0 && (
-              <div className="flex flex-wrap gap-1 mb-2">
+              <div className="space-y-2 mb-2">
                 {existingVersions.map((v) => (
-                  <span key={v} className="rounded bg-violet-900/30 px-2 py-0.5 text-[10px] text-violet-400">
-                    {v}
-                  </span>
+                  <div key={v.name} className="rounded-lg border border-violet-900/20 bg-violet-950/10 p-2">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="rounded bg-violet-900/30 px-2 py-0.5 text-[10px] text-violet-400">{v.name}</span>
+                      {v.energy && <span className="text-[9px] text-mundo-muted">{v.energy}</span>}
+                    </div>
+                    {v.audioUrl && <MiniPlayer src={v.audioUrl} />}
+                  </div>
                 ))}
               </div>
             )}
@@ -421,8 +630,9 @@ function TrackRow({
                   onChange={(e) => {
                     const f = e.target.files?.[0];
                     if (f && versionUploadName) {
-                      onUploadVersion(f, versionUploadName, versionUploadEnergy);
+                      onUploadVersion(f, versionUploadName, versionUploadEnergy, versionCoverFile);
                       setShowVersionUpload(false);
+                      setVersionCoverFile(null);
                     }
                   }}
                 />
@@ -436,7 +646,7 @@ function TrackRow({
                     className="flex-1 rounded bg-mundo-bg px-2 py-1 text-xs text-mundo-creme border border-mundo-muted-dark/30 focus:border-violet-500 focus:outline-none"
                   />
                 </div>
-                {existingVersions.includes(versionUploadName) && (
+                {existingVersions.some(v => v.name === versionUploadName) && (
                   <p className="text-[10px] text-amber-400">"{versionUploadName}" já existe — será substituída.</p>
                 )}
                 <div className="flex gap-1">
@@ -453,6 +663,28 @@ function TrackRow({
                       {ENERGY_LABELS[e].emoji} {ENERGY_LABELS[e].label}
                     </button>
                   ))}
+                </div>
+                {/* Cover image upload */}
+                <div className="flex items-center gap-2">
+                  <input
+                    ref={coverInputRef}
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(e) => {
+                      const f = e.target.files?.[0];
+                      if (f) setVersionCoverFile(f);
+                    }}
+                  />
+                  <button
+                    onClick={() => coverInputRef.current?.click()}
+                    className="rounded-lg bg-mundo-muted-dark/20 px-3 py-1.5 text-xs text-mundo-muted transition hover:bg-mundo-muted-dark/30"
+                  >
+                    {versionCoverFile ? `Capa: ${versionCoverFile.name.slice(0, 20)}` : "Adicionar capa (opcional)"}
+                  </button>
+                  {versionCoverFile && (
+                    <button onClick={() => setVersionCoverFile(null)} className="text-[10px] text-red-400 hover:text-red-300">Remover</button>
+                  )}
                 </div>
                 <button
                   onClick={() => versionInputRef.current?.click()}
@@ -480,8 +712,12 @@ function TrackRow({
                     hasMainAudio={!!audioUrl}
                     existingVersions={existingVersions}
                     trackEnergy={track.energy}
-                    onApproveMain={() => onApproveClip(clip.audioUrl!, clip.title)}
-                    onApproveVersion={(name, energy) => onApproveAsVersion(clip.audioUrl!, clip.title, name, energy)}
+                    onApproveMain={() => {
+                      if (!clip.audioUrl) { alert("Audio URL em falta. Tenta regenerar."); return; }
+                      onApproveClip(clip.audioUrl, clip.title, clip.imageUrl || null);
+                    }}
+                    onApproveVersion={(name, energy) => onApproveAsVersion(clip.audioUrl!, clip.title, name, energy, clip.imageUrl || null)}
+                    onCreatePersona={onCreatePersona ? (taskId, audioId) => onCreatePersona(taskId, audioId) : undefined}
                   />
                 ))}
               </div>
@@ -496,11 +732,22 @@ function TrackRow({
 
           {/* Polling indicator */}
           {isGenerating && !clipsReady && (
-            <div className="mt-3 flex items-center gap-2 rounded-lg bg-amber-950/30 p-3">
-              <div className="h-4 w-4 animate-spin rounded-full border-2 border-amber-400 border-t-transparent" />
-              <span className="text-xs text-amber-400">
-                {status === "generating" ? "A enviar para o Suno..." : "A aguardar geração (pode demorar 30-60s)..."}
-              </span>
+            <div className="mt-3 flex flex-col gap-1 rounded-lg bg-amber-950/30 p-3">
+              <div className="flex items-center gap-2">
+                <div className="h-4 w-4 animate-spin rounded-full border-2 border-amber-400 border-t-transparent" />
+                <span className="text-xs text-amber-400">
+                  {status === "generating" ? "A enviar para o Suno..." : "A aguardar geração (pode demorar 30-60s)..."}
+                </span>
+              </div>
+              {error && (
+                <span className="text-[10px] text-mundo-muted/60 font-mono">{error}</span>
+              )}
+              <button
+                onClick={onCancel}
+                className="mt-1 self-start text-[10px] text-red-400/70 underline hover:text-red-400"
+              >
+                Cancelar
+              </button>
             </div>
           )}
         </div>
@@ -554,6 +801,41 @@ function TrackRow({
               </button>
             )
           )}
+
+          {/* Generate cover */}
+          <button
+            onClick={async () => {
+              const btn = document.activeElement as HTMLButtonElement;
+              btn.disabled = true;
+              btn.textContent = "A gerar...";
+              try {
+                const res = await adminFetch("/api/admin/generate-cover", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    album_slug: albumSlug,
+                    track_number: track.number,
+                    title: editedTitle ?? track.title,
+                    description: track.description,
+                    mood: track.energy,
+                  }),
+                });
+                const data = await res.json();
+                if (data.ok) {
+                  btn.textContent = "Capa gerada!";
+                } else {
+                  btn.textContent = "Erro";
+                  alert(data.erro || "Erro ao gerar capa");
+                }
+              } catch {
+                btn.textContent = "Erro";
+              }
+              setTimeout(() => { btn.disabled = false; btn.textContent = "Gerar capa"; }, 3000);
+            }}
+            className="rounded-lg bg-mundo-muted-dark/20 px-3 py-1.5 text-xs text-mundo-muted hover:bg-mundo-muted-dark/30 transition"
+          >
+            Gerar capa
+          </button>
         </div>
       </div>
     </div>
@@ -569,13 +851,22 @@ export default function AlbumProductionPage() {
   const [audioUrls, setAudioUrls] = useState<Record<string, string>>({});
   const [generatedClips, setGeneratedClips] = useState<Record<string, GeneratedClips>>({});
   const [editedTitles, setEditedTitles] = useState<Record<string, string>>({});
-  const [trackVersions, setTrackVersions] = useState<Record<string, string[]>>({}); // key → version names
+  const [editedLyrics, setEditedLyrics] = useState<Record<string, string>>({});
+  const [editedStyles, setEditedStyles] = useState<Record<string, string>>({});
+  const [editedFlavors, setEditedFlavors] = useState<Record<string, TrackFlavor>>({});
+  const lyricsSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
+  const [trackVersions, setTrackVersions] = useState<Record<string, VersionInfo[]>>({}); // key → versions
+  const [sunoModel, setSunoModel] = useState("V5_5");
+  const [personaId, setPersonaId] = useState<string>("");
+  const [personaName, setPersonaName] = useState<string>("");
+  const [creatingPersona, setCreatingPersona] = useState(false);
+  const [personaResult, setPersonaResult] = useState<string | null>(null);
   const pollingRef = useRef<Record<string, NodeJS.Timeout>>({});
   const titleSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
 
   // Load existing audio status + saved titles on mount
   useEffect(() => {
-    fetch("/api/admin/audio-status")
+    adminFetch("/api/admin/audio-status")
       .then((r) => r.json())
       .then((data) => {
         if (data.existing) {
@@ -595,7 +886,7 @@ export default function AlbumProductionPage() {
       .catch(() => {});
 
     // Load saved custom titles
-    fetch("/api/admin/track-metadata")
+    adminFetch("/api/admin/track-metadata")
       .then((r) => r.json())
       .then((data) => {
         if (data.titles) {
@@ -609,17 +900,27 @@ export default function AlbumProductionPage() {
       .catch(() => {});
 
     // Load existing track versions
-    fetch("/api/admin/track-versions")
+    adminFetch("/api/admin/track-versions")
       .then((r) => r.json())
       .then((data) => {
         if (data.versions) {
-          const vMap: Record<string, string[]> = {};
-          for (const v of data.versions as { album_slug: string; track_number: number; version_name: string }[]) {
+          const vMap: Record<string, VersionInfo[]> = {};
+          for (const v of data.versions as { album_slug: string; track_number: number; version_name: string; audio_url: string; energy: string }[]) {
             const key = `${v.album_slug}-t${v.track_number}`;
             if (!vMap[key]) vMap[key] = [];
-            vMap[key].push(v.version_name);
+            vMap[key].push({ name: v.version_name, audioUrl: v.audio_url, energy: v.energy });
           }
           setTrackVersions(vMap);
+        }
+      })
+      .catch(() => {});
+
+    // Load saved custom lyrics
+    adminFetch("/api/admin/track-lyrics")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.lyrics) {
+          setEditedLyrics((l) => ({ ...data.lyrics, ...l }));
         }
       })
       .catch(() => {});
@@ -637,29 +938,82 @@ export default function AlbumProductionPage() {
     }
 
     setStatuses((s) => ({ ...s, [key]: "polling" }));
+    setErrors((e) => ({ ...e, [key]: "" }));
 
+    let pollCount = 0;
+    let lastPollInfo = "";
     const interval = setInterval(async () => {
+      pollCount++;
       try {
-        const res = await fetch(`/api/admin/suno/status?ids=${clipIds.join(",")}`);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const res = await adminFetch(`/api/admin/suno/status?ids=${clipIds.join(",")}`);
+        if (!res.ok) {
+          lastPollInfo = `Poll #${pollCount}: HTTP ${res.status}`;
+          setErrors((e) => ({ ...e, [key]: lastPollInfo }));
+          throw new Error(`HTTP ${res.status}`);
+        }
 
         const data = await res.json();
-        if (data.erro) throw new Error(data.erro);
+        if (data.erro) {
+          lastPollInfo = `Poll #${pollCount}: ${data.erro}`;
+          setErrors((e) => ({ ...e, [key]: lastPollInfo }));
+          throw new Error(data.erro);
+        }
+
+        // Show poll progress in the error field (as debug info)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const clipStatuses = (data.clips || []).map((c: any) => {
+          const raw = c.rawStatus ? ` (raw:${c.rawStatus})` : "";
+          const audio = c.audioUrl ? " +audio" : "";
+          return `${c.status}${raw}${audio}`;
+        });
+        lastPollInfo = `Poll #${pollCount}: ${clipStatuses.join(", ")}`;
+        setErrors((e) => ({ ...e, [key]: lastPollInfo }));
+
+        // Check if any clip has an error
+        const hasError = data.clips.some((c: SunoClip) => c.status === "error");
+        if (hasError) {
+          clearInterval(pollingRef.current[key]);
+          delete pollingRef.current[key];
+          setStatuses((s) => ({ ...s, [key]: "error" }));
+          setErrors((e) => ({ ...e, [key]: "Suno devolveu erro na geração." }));
+          return;
+        }
 
         const allDone = data.clips.every((c: SunoClip) => c.status === "complete" && c.audioUrl);
 
         if (allDone) {
           clearInterval(pollingRef.current[key]);
           delete pollingRef.current[key];
+          setErrors((e) => ({ ...e, [key]: "A descarregar clips..." }));
+
+          // Download all clips to browser memory immediately
+          // This prevents URLs expiring while you listen to one
+          const cached: SunoClip[] = [];
+          for (const c of data.clips as SunoClip[]) {
+            if (!c.audioUrl) { cached.push(c); continue; }
+            try {
+              const res = await fetch(c.audioUrl);
+              if (res.ok) {
+                const blob = await res.blob();
+                if (blob.size > 1000) {
+                  const localUrl = URL.createObjectURL(blob);
+                  cached.push({ ...c, audioUrl: localUrl, originalAudioUrl: c.audioUrl });
+                  continue;
+                }
+              }
+            } catch { /* keep original URL */ }
+            cached.push(c);
+          }
 
           setGeneratedClips((g) => ({
             ...g,
-            [key]: { clips: data.clips },
+            [key]: { clips: cached },
           }));
           setStatuses((s) => ({ ...s, [key]: "idle" }));
+          setErrors((e) => ({ ...e, [key]: "" }));
         }
-      } catch {
-        // transient
+      } catch (err) {
+        console.warn(`[poll #${pollCount}] ${key} error:`, err);
       }
     }, 5000);
 
@@ -673,7 +1027,7 @@ export default function AlbumProductionPage() {
           if (s[key] === "polling") return { ...s, [key]: "error" };
           return s;
         });
-        setErrors((e) => ({ ...e, [key]: "Timeout — tenta de novo." }));
+        setErrors((e) => ({ ...e, [key]: `Timeout após 5 min. Último: ${lastPollInfo || "sem resposta"}` }));
       }
     }, 5 * 60 * 1000);
   }, []);
@@ -693,6 +1047,7 @@ export default function AlbumProductionPage() {
     (s, a) => s + a.tracks.filter((t) => t.lyrics).length,
     0
   );
+  const totalVersions = Object.values(trackVersions).reduce((s, v) => s + v.length, 0);
 
   async function generateTrack(albumSlug: string, track: AlbumTrack) {
     const key = trackKey(albumSlug, track.number);
@@ -705,14 +1060,19 @@ export default function AlbumProductionPage() {
     });
 
     try {
-      const res = await fetch("/api/admin/suno/generate", {
+      const res = await adminFetch("/api/admin/suno/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           prompt: track.prompt,
-          lyrics: track.lyrics,
+          lyrics: editedLyrics[key] || track.lyrics,
           title: editedTitles[key] || track.title,
           instrumental: false,
+          model: sunoModel,
+          energy: track.energy,
+          flavor: editedFlavors[key] || track.flavor,
+          customStyle: editedStyles[key] || null,
+          ...(personaId ? { personaId, personaModel: "voice_persona" } : {}),
         }),
       });
 
@@ -745,7 +1105,7 @@ export default function AlbumProductionPage() {
     }
   }
 
-  async function approveClip(albumSlug: string, track: AlbumTrack, clipAudioUrl: string, sunoTitle: string) {
+  async function approveClip(albumSlug: string, track: AlbumTrack, clipAudioUrl: string, sunoTitle: string, imageUrl?: string | null) {
     const key = trackKey(albumSlug, track.number);
     setStatuses((s) => ({ ...s, [key]: "uploading" }));
 
@@ -756,12 +1116,59 @@ export default function AlbumProductionPage() {
     }
 
     try {
-      const audioRes = await fetch(clipAudioUrl);
-      if (!audioRes.ok) throw new Error("Erro ao descarregar o áudio.");
-      const blob = await audioRes.blob();
+      // Try direct download first (faster, no server timeout risk)
+      let blob: Blob | null = null;
+      try {
+        const directRes = await fetch(clipAudioUrl);
+        if (directRes.ok) {
+          blob = await directRes.blob();
+        }
+      } catch {
+        // CORS blocked — try proxy
+      }
+
+      // Fallback to server proxy if direct failed
+      if (!blob || blob.size < 1000) {
+        const proxyRes = await adminFetch("/api/admin/proxy-download", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ url: clipAudioUrl }),
+        });
+        if (!proxyRes.ok) throw new Error(`Download falhou (${proxyRes.status}). Tenta regenerar.`);
+        blob = await proxyRes.blob();
+      }
+
+      if (!blob || blob.size < 1000) throw new Error(`Audio vazio (${blob?.size || 0} bytes). O URL do Suno pode ter expirado. Tenta regenerar.`);
 
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}.mp3`;
       const url = await uploadViaSignedUrl(blob, filename);
+
+      // Download and upload Suno cover image if available
+      if (imageUrl) {
+        try {
+          let imgBlob: Blob | null = null;
+          // Try direct download first
+          try {
+            const directImg = await fetch(imageUrl);
+            if (directImg.ok) imgBlob = await directImg.blob();
+          } catch { /* CORS — try proxy */ }
+          // Fallback to server proxy (same as audio)
+          if (!imgBlob || imgBlob.size < 500) {
+            const proxyImg = await adminFetch("/api/admin/proxy-download", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ url: imageUrl }),
+            });
+            if (proxyImg.ok) imgBlob = await proxyImg.blob();
+          }
+          if (imgBlob && imgBlob.size > 500) {
+            const imgFilename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-cover.jpg`;
+            await uploadViaSignedUrl(imgBlob, imgFilename);
+          }
+        } catch {
+          // Image upload is optional — don't fail the approval
+        }
+      }
 
       setStatuses((s) => ({ ...s, [key]: "done" }));
       setAudioUrls((u) => ({ ...u, [key]: url }));
@@ -804,7 +1211,7 @@ export default function AlbumProductionPage() {
       const uploadUrl = await uploadViaSignedUrl(blob, filename);
 
       // Save version metadata to track_versions table
-      await fetch("/api/admin/track-versions", {
+      await adminFetch("/api/admin/track-versions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -824,8 +1231,8 @@ export default function AlbumProductionPage() {
       // Update local version list
       setTrackVersions((v) => {
         const existing = v[key] || [];
-        if (!existing.includes(versionName)) {
-          return { ...v, [key]: [...existing, versionName] };
+        if (!existing.some(e => e.name === versionName)) {
+          return { ...v, [key]: [...existing, { name: versionName, audioUrl: uploadUrl, energy }] };
         }
         return v;
       });
@@ -851,7 +1258,7 @@ export default function AlbumProductionPage() {
     }
   }
 
-  async function uploadVersion(albumSlug: string, track: AlbumTrack, file: File, versionName: string, energy: string) {
+  async function uploadVersion(albumSlug: string, track: AlbumTrack, file: File, versionName: string, energy: string, coverFile?: File | null) {
     const key = trackKey(albumSlug, track.number);
     setStatuses((s) => ({ ...s, [key]: "uploading" }));
 
@@ -860,8 +1267,17 @@ export default function AlbumProductionPage() {
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-${versionName}.mp3`;
       const uploadUrl = await uploadViaSignedUrl(file, filename);
 
+      // Upload cover image if provided
+      if (coverFile) {
+        try {
+          const ext = coverFile.name.split(".").pop() || "jpg";
+          const coverFilename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-${versionName}-cover.${ext}`;
+          await uploadViaSignedUrl(coverFile, coverFilename);
+        } catch { /* cover upload is optional */ }
+      }
+
       // Save version metadata
-      await fetch("/api/admin/track-versions", {
+      await adminFetch("/api/admin/track-versions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -876,8 +1292,8 @@ export default function AlbumProductionPage() {
       // Update local version list
       setTrackVersions((v) => {
         const existing = v[key] || [];
-        if (!existing.includes(versionName)) {
-          return { ...v, [key]: [...existing, versionName] };
+        if (!existing.some(e => e.name === versionName)) {
+          return { ...v, [key]: [...existing, { name: versionName, audioUrl: uploadUrl, energy }] };
         }
         return v;
       });
@@ -957,6 +1373,11 @@ export default function AlbumProductionPage() {
             <span className="rounded-full bg-green-900/30 px-3 py-1 text-xs text-green-400">
               {totalWithLyrics}/{totalTracks} com letra
             </span>
+            {totalVersions > 0 && (
+              <span className="rounded-full bg-violet-900/30 px-3 py-1 text-xs text-violet-400">
+                {totalVersions} versões
+              </span>
+            )}
             {(["whisper", "steady", "pulse", "anthem", "raw"] as TrackEnergy[]).map((e) => {
               const count = ALL_ALBUMS.reduce(
                 (s, a) => s + a.tracks.filter((t) => t.energy === e).length,
@@ -968,7 +1389,7 @@ export default function AlbumProductionPage() {
                 </span>
               ) : null;
             })}
-            {(["marrabenta", "house", "gospel"] as TrackFlavor[]).map((f) => {
+            {(["marrabenta", "afrobeat", "bossa", "jazz", "folk", "funk", "house", "gospel"] as TrackFlavor[]).map((f) => {
               const count = ALL_ALBUMS.reduce(
                 (s, a) => s + a.tracks.filter((t) => t.flavor === f).length,
                 0
@@ -987,27 +1408,87 @@ export default function AlbumProductionPage() {
         {/* Filter + View Mode */}
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
           <ProductFilter active={filter} onChange={setFilter} />
-          <div className="flex gap-1 rounded-full bg-mundo-muted-dark/10 p-1">
+          <div className="flex items-center gap-3">
+            {/* Suno model selector */}
+            <div className="flex items-center gap-2">
+              <label className="text-[10px] uppercase tracking-wider text-mundo-muted">Modelo</label>
+              <select
+                value={sunoModel}
+                onChange={(e) => setSunoModel(e.target.value)}
+                className="rounded-lg border border-mundo-muted-dark/30 bg-mundo-bg px-3 py-1.5 text-xs text-mundo-creme focus:border-violet-500 focus:outline-none"
+              >
+                <option value="V5_5">Suno V5.5</option>
+                <option value="V5">Suno V5</option>
+                <option value="V4_5">Suno V4.5</option>
+                <option value="V4">Suno V4</option>
+                <option value="V3_5">Suno V3.5</option>
+              </select>
+            </div>
+
+            {/* Persona selector */}
+            <div className="flex items-center gap-2">
+              <label className="text-[10px] uppercase tracking-wider text-mundo-muted">Persona</label>
+              <input
+                type="text"
+                value={personaId}
+                onChange={(e) => setPersonaId(e.target.value)}
+                placeholder="Sem persona"
+                className="rounded-lg border border-mundo-muted-dark/30 bg-mundo-bg px-3 py-1.5 text-xs text-mundo-creme focus:border-violet-500 focus:outline-none w-32"
+              />
+              {personaId && (
+                <button
+                  onClick={() => { setPersonaId(""); setPersonaName(""); }}
+                  className="text-[10px] text-red-400 hover:text-red-300"
+                >
+                  Limpar
+                </button>
+              )}
+              {personaName && (
+                <span className="text-[10px] text-green-400">{personaName}</span>
+              )}
+              {creatingPersona && (
+                <span className="text-[10px] text-amber-400 animate-pulse">A criar persona...</span>
+              )}
+              {personaResult && (
+                <span className="text-[10px] text-amber-300">{personaResult}</span>
+              )}
+            </div>
+
+            {/* Cleanup button */}
             <button
-              onClick={() => setViewMode("producao")}
-              className={`rounded-full px-4 py-2 text-xs font-sans uppercase tracking-wider transition-colors ${
-                viewMode === "producao"
-                  ? "bg-mundo-bg text-mundo-creme shadow-sm"
-                  : "text-mundo-muted hover:text-mundo-creme"
-              }`}
+              onClick={async () => {
+                if (!confirm("Apagar todas as capas corruptas do Supabase?")) return;
+                const res = await adminFetch("/api/admin/cleanup-covers", { method: "POST" });
+                const data = await res.json();
+                alert(`${data.total || 0} capas corruptas apagadas.`);
+              }}
+              className="rounded-lg bg-red-900/30 px-3 py-1.5 text-[10px] text-red-400 hover:bg-red-900/50 transition"
             >
-              Produção
+              Limpar capas
             </button>
-            <button
-              onClick={() => setViewMode("letras")}
-              className={`rounded-full px-4 py-2 text-xs font-sans uppercase tracking-wider transition-colors ${
-                viewMode === "letras"
-                  ? "bg-mundo-bg text-mundo-creme shadow-sm"
-                  : "text-mundo-muted hover:text-mundo-creme"
-              }`}
-            >
-              Letras
-            </button>
+
+            <div className="flex gap-1 rounded-full bg-mundo-muted-dark/10 p-1">
+              <button
+                onClick={() => setViewMode("producao")}
+                className={`rounded-full px-4 py-2 text-xs font-sans uppercase tracking-wider transition-colors ${
+                  viewMode === "producao"
+                    ? "bg-mundo-bg text-mundo-creme shadow-sm"
+                    : "text-mundo-muted hover:text-mundo-creme"
+                }`}
+              >
+                Produção
+              </button>
+              <button
+                onClick={() => setViewMode("letras")}
+                className={`rounded-full px-4 py-2 text-xs font-sans uppercase tracking-wider transition-colors ${
+                  viewMode === "letras"
+                    ? "bg-mundo-bg text-mundo-creme shadow-sm"
+                    : "text-mundo-muted hover:text-mundo-creme"
+                }`}
+              >
+                Letras
+              </button>
+            </div>
           </div>
         </div>
 
@@ -1090,15 +1571,67 @@ export default function AlbumProductionPage() {
                 <h2 className="font-display text-2xl text-mundo-creme">{album.title}</h2>
               </div>
               <p className="mt-1 text-mundo-muted">{album.subtitle}</p>
-              <div className="mt-2 flex items-center gap-3">
+              <div className="mt-2 flex flex-wrap items-center gap-3">
                 <span className="rounded bg-mundo-muted-dark/10 px-2 py-0.5 text-xs text-mundo-muted">
                   {album.product}{album.veu ? ` — Véu ${album.veu}` : ""}
                 </span>
                 <span className="text-xs text-mundo-muted/60">
                   {album.tracks.length} faixas · {Math.floor(album.tracks.reduce((s, t) => s + t.durationSeconds, 0) / 60)} min
                 </span>
+                {(() => {
+                  const albumDone = album.tracks.filter(t => statuses[trackKey(album.slug, t.number)] === "done").length;
+                  const albumVer = album.tracks.reduce((s, t) => s + (trackVersions[trackKey(album.slug, t.number)]?.length || 0), 0);
+                  return (
+                    <>
+                      <span className={`rounded px-2 py-0.5 text-xs font-medium ${albumDone === album.tracks.length ? "bg-green-900/30 text-green-400" : albumDone > 0 ? "bg-mundo-dourado/20 text-mundo-dourado" : "bg-mundo-muted-dark/10 text-mundo-muted/50"}`}>
+                        {albumDone}/{album.tracks.length} com audio
+                      </span>
+                      {albumVer > 0 && (
+                        <span className="rounded bg-violet-900/30 px-2 py-0.5 text-xs text-violet-400">
+                          {albumVer} versoes
+                        </span>
+                      )}
+                    </>
+                  );
+                })()}
               </div>
             </div>
+
+            {/* Bulk generate button */}
+            {(() => {
+              const pendingTracks = album.tracks.filter(t => {
+                const k = trackKey(album.slug, t.number);
+                const hasAudio = audioUrls[k] || t.audioUrl;
+                const isBusy = statuses[k] === "generating" || statuses[k] === "polling";
+                return !hasAudio && !isBusy && t.lyrics;
+              });
+              const busyCount = album.tracks.filter(t => {
+                const k = trackKey(album.slug, t.number);
+                return statuses[k] === "generating" || statuses[k] === "polling";
+              }).length;
+              return pendingTracks.length > 0 ? (
+                <div className="mb-4 flex items-center gap-3">
+                  <button
+                    onClick={() => {
+                      // Generate tracks sequentially with 2s delay between each
+                      pendingTracks.forEach((track, i) => {
+                        setTimeout(() => generateTrack(album.slug, track), i * 2000);
+                      });
+                    }}
+                    className="rounded-lg bg-violet-600 px-4 py-2 text-xs text-white transition hover:bg-violet-700"
+                  >
+                    Gerar todas ({pendingTracks.length} faixas)
+                  </button>
+                  {busyCount > 0 && (
+                    <span className="text-xs text-amber-400">{busyCount} em geração...</span>
+                  )}
+                </div>
+              ) : busyCount > 0 ? (
+                <div className="mb-4">
+                  <span className="text-xs text-amber-400">{busyCount} faixa(s) em geração...</span>
+                </div>
+              ) : null;
+            })()}
 
             <div className="space-y-3">
               {album.tracks.map((track) => {
@@ -1107,21 +1640,56 @@ export default function AlbumProductionPage() {
                   <TrackRow
                     key={track.number}
                     track={track}
+                    albumSlug={album.slug}
                     status={statuses[key] || "idle"}
                     error={errors[key] || null}
                     audioUrl={audioUrls[key] || track.audioUrl || null}
                     onUpload={(file) => uploadTrack(album.slug, track, file)}
                     onRemove={() => removeTrack(album.slug, track.number)}
                     onGenerate={() => generateTrack(album.slug, track)}
-                    onApproveClip={(url, title) => approveClip(album.slug, track, url, title)}
+                    onCancel={() => {
+                      const k = trackKey(album.slug, track.number);
+                      if (pollingRef.current[k]) {
+                        clearInterval(pollingRef.current[k]);
+                        delete pollingRef.current[k];
+                      }
+                      setStatuses((s) => ({ ...s, [k]: "idle" }));
+                      setErrors((e) => ({ ...e, [k]: "" }));
+                      setGeneratedClips((g) => { const c = { ...g }; delete c[k]; return c; });
+                    }}
+                    onApproveClip={(url, title, imgUrl) => approveClip(album.slug, track, url, title, imgUrl)}
                     onApproveAsVersion={(url, title, name, energy) => approveAsVersion(album.slug, track, url, title, name, energy)}
-                    onUploadVersion={(file, name, energy) => uploadVersion(album.slug, track, file, name, energy)}
+                    onUploadVersion={(file, name, energy, coverFile) => uploadVersion(album.slug, track, file, name, energy, coverFile)}
+                    onCreatePersona={async (taskId, audioId) => {
+                      const pName = window.prompt("Nome da persona (ex: Loranne Whisper):");
+                      if (!pName) return;
+                      setCreatingPersona(true);
+                      setPersonaResult(null);
+                      try {
+                        const res = await adminFetch("/api/admin/suno/persona", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({ taskId, audioId, name: pName, description: `Persona vocal da Loranne — ${pName}` }),
+                        });
+                        const data = await res.json();
+                        if (data.personaId) {
+                          setPersonaId(data.personaId);
+                          setPersonaName(data.name || pName);
+                          setPersonaResult(`Persona criada: ${data.personaId}`);
+                        } else {
+                          setPersonaResult(`Erro: ${data.error || "Sem personaId"}`);
+                        }
+                      } catch (e: unknown) {
+                        setPersonaResult(`Erro: ${e instanceof Error ? e.message : "desconhecido"}`);
+                      } finally {
+                        setCreatingPersona(false);
+                      }
+                    }}
                     existingVersions={trackVersions[key] || []}
                     generatedClips={generatedClips[key] || null}
                     editedTitle={editedTitles[key] || null}
                     onTitleChange={(title) => {
                       setEditedTitles((t) => ({ ...t, [key]: title }));
-                      // Debounce save to DB (1s after last keystroke)
                       if (titleSaveRef.current[key]) clearTimeout(titleSaveRef.current[key]);
                       titleSaveRef.current[key] = setTimeout(() => {
                         if (title && title !== track.title) {
@@ -1129,6 +1697,26 @@ export default function AlbumProductionPage() {
                         }
                       }, 1000);
                     }}
+                    editedLyrics={editedLyrics[key] || null}
+                    onLyricsChange={(lyrics) => {
+                      setEditedLyrics((l) => ({ ...l, [key]: lyrics }));
+                      // Debounce save to DB (2s after last keystroke)
+                      if (lyricsSaveRef.current[key]) clearTimeout(lyricsSaveRef.current[key]);
+                      lyricsSaveRef.current[key] = setTimeout(() => {
+                        const match = key.match(/^(.+)-t(\d+)$/);
+                        if (match) {
+                          adminFetch("/api/admin/track-lyrics", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ album_slug: match[1], track_number: parseInt(match[2]), lyrics }),
+                          }).catch(() => {});
+                        }
+                      }, 2000);
+                    }}
+                    editedStyle={editedStyles[key] || null}
+                    onStyleChange={(style) => setEditedStyles((s) => ({ ...s, [key]: style }))}
+                    editedFlavor={editedFlavors[key] || null}
+                    onFlavorChange={(flavor) => setEditedFlavors((f) => ({ ...f, [key]: flavor }))}
                   />
                 );
               })}
@@ -1144,6 +1732,10 @@ export default function AlbumProductionPage() {
                 (t) => statuses[trackKey(a.slug, t.number)] === "done"
               ).length;
               const withLyrics = a.tracks.filter((t) => t.lyrics).length;
+              const albumVersions = a.tracks.reduce(
+                (s, t) => s + (trackVersions[trackKey(a.slug, t.number)]?.length || 0),
+                0
+              );
               const totalMin = Math.floor(
                 a.tracks.reduce((s, t) => s + t.durationSeconds, 0) / 60
               );
@@ -1172,9 +1764,12 @@ export default function AlbumProductionPage() {
                       {withLyrics > 0 && (
                         <span className="text-[10px] text-green-400">{withLyrics} letras</span>
                       )}
-                      {done > 0 && (
-                        <span className="text-xs text-mundo-dourado">{done}/{a.tracks.length}</span>
+                      {albumVersions > 0 && (
+                        <span className="text-[10px] text-violet-400">{albumVersions} v.</span>
                       )}
+                      <span className={`text-xs font-medium ${done === a.tracks.length ? "text-green-400" : done > 0 ? "text-mundo-dourado" : "text-mundo-muted/40"}`}>
+                        {done}/{a.tracks.length} audio
+                      </span>
                     </div>
                   </div>
                   {(done > 0 || withLyrics > 0) && (

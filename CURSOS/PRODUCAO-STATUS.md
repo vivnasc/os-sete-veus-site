@@ -1,6 +1,6 @@
 # Escola dos Veus — Estado da Producao
 
-**Ultima actualizacao:** 2026-03-24
+**Ultima actualizacao:** 2026-03-25
 **Actualizado por:** Claude Code
 
 > Este ficheiro e a referencia unica de continuidade entre sessoes.
@@ -19,14 +19,14 @@
 | Admin de producao (UI) | COMPLETO | `/admin/cursos/producao/` — audio, imagem, video |
 | APIs de producao | COMPLETO | 6 API routes (audio, imagem, video, LoRA, test, assets) |
 | Imagens de referencia | PARCIAL | ~60 imagens em `CURSOS/imagens/` |
-| **Scripts das aulas** | **NAO INICIADO** | 0/480 scripts escritos |
-| **Manuais (PDF)** | **NAO INICIADO** | 0/20 manuais escritos |
-| **Cadernos exercicios** | **NAO INICIADO** | 0/160 cadernos escritos |
-| **Scripts YouTube** | **NAO INICIADO** | 0/~50 scripts (so titulos existem) |
+| **Scripts das aulas** | **EM CURSO** | **24/480 scripts escritos (Ouro Proprio completo — DRAFT)** |
+| **Manuais (PDF)** | **EM CURSO** | **1/20 manuais escritos (Ouro Proprio — DRAFT) + pipeline PDF** |
+| **Cadernos exercicios** | **EM CURSO** | **8/160 cadernos escritos (Ouro Proprio — DRAFT)** |
+| **Scripts YouTube** | **EM CURSO** | **3/~50 scripts escritos (Ouro Proprio — DRAFT)** |
 | Audios (ElevenLabs) | NAO INICIADO | Depende dos scripts |
 | Visuais (ThinkDiffusion) | NAO INICIADO | Depende do LoRA + scripts |
 | LoRA treinado | NAO INICIADO | Infra pronta, modelo nao treinado |
-| PDFs gerados | NAO INICIADO | Pipeline nao implementado |
+| PDFs gerados | EM CURSO | Pipeline implementado (`@react-pdf/renderer`) + API route |
 | Tabelas Supabase cursos | NAO EXISTE | Falta `course_content`, `course_assets` |
 
 ---
@@ -35,7 +35,7 @@
 
 ```
 FASE 1: CONTEUDO (onde estamos)
-  1.1 Scripts das aulas (480 sub-aulas)
+  1.1 Scripts das aulas (480 sub-aulas) ← OURO PROPRIO COMPLETO (draft)
   1.2 Manuais (20, um por curso)
   1.3 Cadernos de exercicios (160, 8 por curso)
   1.4 Scripts YouTube (2-3 por curso)
@@ -75,57 +75,77 @@ Razao: porta universal — dinheiro e o tema mais activador.
 
 | Modulo | Titulo | Scripts | Manual | Caderno | Audio | Visual |
 |--------|--------|---------|--------|---------|-------|--------|
-| 1 | O Extracto como Espelho | — | — | — | — | — |
-| 2 | A Heranca Financeira Emocional | — | — | — | — | — |
-| 3 | A Vergonha do Dinheiro | — | — | — | — | — |
-| 4 | Cobrar, Receber, Merecer | — | — | — | — | — |
-| 5 | Gastar em Ti | — | — | — | — | — |
-| 6 | Dinheiro e Relacoes | — | — | — | — | — |
-| 7 | Ganhar Mais Nao Resolve | — | — | — | — | — |
-| 8 | Dinheiro como Liberdade | — | — | — | — | — |
+| 1 | O Extracto como Espelho | DRAFT (3/3) | DRAFT | DRAFT | — | — |
+| 2 | A Heranca Financeira Emocional | DRAFT (3/3) | DRAFT | DRAFT | — | — |
+| 3 | A Vergonha do Dinheiro | DRAFT (3/3) | DRAFT | DRAFT | — | — |
+| 4 | Cobrar, Receber, Merecer | DRAFT (3/3) | DRAFT | DRAFT | — | — |
+| 5 | Gastar em Ti | DRAFT (3/3) | DRAFT | DRAFT | — | — |
+| 6 | Dinheiro e Relacoes | DRAFT (3/3) | DRAFT | DRAFT | — | — |
+| 7 | Ganhar Mais Nao Resolve | DRAFT (3/3) | DRAFT | DRAFT | — | — |
+| 8 | Dinheiro como Liberdade | DRAFT (3/3) | DRAFT | DRAFT | — | — |
 
 Legenda: — = nao iniciado | DRAFT = rascunho | APROVADO = Vivianne aprovou | PRODUZIDO = asset gerado
+
+### Resumo dos Scripts Escritos (sessao 2026-03-25)
+
+**Modulo 1 — O Extracto como Espelho:**
+- m1a: O medo de olhar — abrir o extracto sem desviar o olhar
+- m1b: Ler o extracto como um diario — cada linha conta uma historia emocional
+- m1c: O corpo e o dinheiro — onde o dinheiro vive no corpo
+
+**Modulo 2 — A Heranca Financeira Emocional:**
+- m2a: Os scripts de infancia — as frases sobre dinheiro absorvidas antes dos 10 anos
+- m2b: O que viste vs. o que ouviste — contradicoes entre palavras e actos dos pais
+- m2c: Reescrever os scripts — escolher conscientemente o que manter e largar
+
+**Modulo 3 — A Vergonha do Dinheiro:**
+- m3a: Vergonha de nao ter — quando a falta se torna identidade
+- m3b: Vergonha de querer mais — o pacto silencioso de querer pouco
+- m3c: Dinheiro e dignidade — separar valor pessoal de valor monetario
+
+**Modulo 4 — Cobrar, Receber, Merecer:**
+- m4a: O desconto automatico — baixar o preco antes de alguem pedir
+- m4b: A ligacao cobrar-merecer — o ciclo entre merecimento e cobranca
+- m4c: Receber sem devolver imediatamente — a dificuldade de aceitar sem compensar
+
+**Modulo 5 — Gastar em Ti:**
+- m5a: A hierarquia dos gastos — onde te colocas na lista de prioridades
+- m5b: Culpa e prazer — a culpa que impede o prazer de gastar em si
+- m5c: O investimento em ti como acto politico — investir em si como posicionamento
+
+**Modulo 6 — Dinheiro e Relacoes:**
+- m6a: Quem paga, manda? — poder escondido nas contas partilhadas
+- m6b: Dependencia financeira e medo — quando ficar e uma questao de contas
+- m6c: A conversa sobre dinheiro que evitas — o tabu do dinheiro nas relacoes
+
+**Modulo 7 — Ganhar Mais Nao Resolve:**
+- m7a: O buraco que o dinheiro nao enche — quando mais nao traz paz
+- m7b: Sabotagem financeira — o corpo que regressa ao que conhece
+- m7c: Suficiente: quando e suficiente? — a esteira de querer sempre mais
+
+**Modulo 8 — Dinheiro como Liberdade:**
+- m8a: De sobrevivencia a direccao — sair do modo reaccao
+- m8b: O mapa do futuro que queres financiar — saber para onde queres ir
+- m8c: Liberdade, nao acumulacao — dinheiro como ferramenta, nao como destino
 
 ---
 
 ## Proxima Accao (para a proxima sessao)
 
-**FASE 1.1 — Escrever os scripts do Ouro Proprio**
+**OPCAO A — Revisao pela Vivianne:**
+Os 24 scripts e o manual do Ouro Proprio estao em DRAFT. A Vivianne deve reve-los e marcar como APROVADO ou deixar notas de revisao.
 
-Comecar pelo Modulo 1, Sub-aula A: "O medo de olhar"
+**OPCAO B — Continuar producao de conteudo do Ouro Proprio:**
+1. ~~Escrever o manual do Ouro Proprio~~ FEITO
+2. ~~Escrever os 8 cadernos de exercicios~~ FEITO
+3. ~~Escrever os 3 scripts YouTube~~ FEITO
 
-Cada script deve ter estas seccoes (ver `course-guidelines.ts`):
-1. `pergunta_inicial` — Pergunta forte, reconhecivel no corpo
-2. `situacao_humana` — Cenario real, concreto (terca-feira, supermercado...)
-3. `revelacao_padrao` — O que esta por baixo, sem jargao
-4. `gesto_consciencia` — Algo pequeno, praticavel, ligado ao corpo
-5. `frase_final` — Uma frase que fica, cabe num post-it
+**Todo o conteudo do Ouro Proprio esta em DRAFT. Proxima accao:**
+- Vivianne rever e aprovar tudo
+- Ou comecar o conteudo do Limite Sagrado
 
-**Onde guardar:** Criar ficheiro `src/data/course-scripts/ouro-proprio.ts`
-Estrutura:
-```typescript
-export const OURO_PROPRIO_SCRIPTS = {
-  m1a: {
-    perguntaInicial: "...",
-    situacaoHumana: "...",
-    revelacaoPadrao: "...",
-    gestoCosciencia: "...",
-    fraseFinal: "...",
-    status: "draft" | "approved" | "produced"
-  },
-  m1b: { ... },
-  // ...
-}
-```
-
-**Tom de referencia:**
-- Calmo, proximo, filosofico
-- Fala a "tu"
-- Usa o corpo como referencia
-- Faz perguntas que ficam
-- Nunca diz "veu", "espelho" ou "no" como conceito
-- Vida real, nao teoria espiritual — e terca-feira, nao transcendencia
-- Frases proibidas: ver `course-guidelines.ts` → TONE_GUIDELINES.forbidden
+**OPCAO C — Comecar o segundo curso:**
+Se o Ouro Proprio estiver aprovado, comecar os scripts do Limite Sagrado (`src/data/course-scripts/limite-sagrado.ts`).
 
 ---
 
@@ -133,21 +153,21 @@ export const OURO_PROPRIO_SCRIPTS = {
 
 ```
 src/data/course-scripts/
-  ouro-proprio.ts          ← scripts das 24 sub-aulas
+  ouro-proprio.ts          ← scripts das 24 sub-aulas (DRAFT COMPLETO)
   limite-sagrado.ts        ← (futuro)
   arte-inteireza.ts        ← (futuro)
   ...
 
 src/data/course-manuals/
-  ouro-proprio.ts          ← conteudo do manual (8 capitulos)
+  ouro-proprio.ts          ← conteudo do manual (8 capitulos) (DRAFT COMPLETO)
   ...
 
 src/data/course-workbooks/
-  ouro-proprio.ts          ← conteudo dos 8 cadernos
+  ouro-proprio.ts          ← conteudo dos 8 cadernos (DRAFT COMPLETO)
   ...
 
 src/data/course-youtube/
-  ouro-proprio.ts          ← scripts dos 2-3 hooks YouTube
+  ouro-proprio.ts          ← scripts dos 3 hooks YouTube (DRAFT COMPLETO)
   ...
 ```
 
@@ -159,6 +179,11 @@ src/data/course-youtube/
 |----------|--------|
 | `src/data/courses.ts` | Estrutura dos 20 cursos (modulos, sub-aulas, titulos) |
 | `src/data/course-guidelines.ts` | Guidelines de producao (tom, estrutura, visual) |
+| `src/data/course-scripts/ouro-proprio.ts` | **24 scripts DRAFT do Ouro Proprio** |
+| `src/data/course-manuals/ouro-proprio.ts` | **Manual DRAFT do Ouro Proprio (8 capitulos)** |
+| `src/data/course-workbooks/ouro-proprio.ts` | **8 cadernos de exercicios DRAFT do Ouro Proprio** |
+| `src/lib/pdf/manual-template.tsx` | **Template PDF com identidade visual + licenca** |
+| `src/app/api/courses/manual/route.ts` | **API para gerar PDF personalizado** |
 | `src/data/territorios.ts` | 10 territorios visuais |
 | `src/types/course.ts` | Types TypeScript dos cursos |
 | `CLAUDE.md` | Arquitectura tecnica completa do projecto |

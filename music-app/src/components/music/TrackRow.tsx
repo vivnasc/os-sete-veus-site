@@ -151,6 +151,20 @@ export default function TrackRow({ track, album, isActive }: Props) {
           )}
         </button>
 
+        {/* Share button — visible, primary action */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            setShareOpen(true);
+          }}
+          className="p-1.5 shrink-0 text-[#666680] hover:text-[#a0a0b0] transition-colors"
+          title="Partilhar"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+            <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" />
+          </svg>
+        </button>
+
         {/* 3-dots menu */}
         <div className="relative shrink-0" ref={menuRef}>
           <button
@@ -201,7 +215,6 @@ export default function TrackRow({ track, album, isActive }: Props) {
                 onClick={(e) => {
                   e.stopPropagation();
                   setMenuOpen(false);
-                  if (!userId) { router.push("/login"); return; }
                   setPlaylistOpen(true);
                 }}
                 className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-[#F5F0E6] hover:bg-white/5 transition-colors text-left"

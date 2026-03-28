@@ -137,6 +137,15 @@ export function getAlbumCover(album: Album): string {
   return "/poses/loranne-hero.png";
 }
 
+/**
+ * URL para a capa de uma track via stream proxy.
+ * O proxy tenta .jpg, .png, .jpeg, .webp no Supabase.
+ * Retorna sempre um URL — o caller deve fazer probe (Image onload/onerror).
+ */
+export function getTrackCoverUrl(albumSlug: string, trackNumber: number): string {
+  return `/api/music/stream?album=${encodeURIComponent(albumSlug)}&track=${trackNumber}&type=cover`;
+}
+
 /** Label para o badge do album — so o nome, sem prefixo */
 export function getAlbumBadge(album: Album): string | null {
   if (!album.veu) return null;

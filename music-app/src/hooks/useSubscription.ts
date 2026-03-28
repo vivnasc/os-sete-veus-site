@@ -12,6 +12,8 @@ const PRICE = {
 
 export { PRICE as SUBSCRIPTION_PRICE };
 
+const ADMIN_EMAIL = "viv.saraiva@gmail.com";
+
 export function useSubscription() {
   const [status, setStatus] = useState<SubscriptionStatus>("loading");
   const [userId, setUserId] = useState<string | null>(null);
@@ -25,6 +27,12 @@ export function useSubscription() {
         return;
       }
       setUserId(user.id);
+
+      // Admin bypasses subscription gate
+      if (user.email === ADMIN_EMAIL) {
+        setStatus("active");
+        return;
+      }
 
       const { data: profile } = await supabase
         .from("music_subscriptions")
@@ -57,14 +65,14 @@ export function useSubscription() {
 
   const isPremium = status === "active";
 
-  const isTrackFree = useCallback((trackNumber: number): boolean => {
-    // Track 1 of every album is always free
-    return trackNumber === 1;
+  const isTrackFree = useCallback((_trackNumber: number): boolean => {
+    // All tracks are free — music is the funnel, not the product
+    return true;
   }, []);
 
-  const canPlay = useCallback((trackNumber: number): boolean => {
-    if (isPremium) return true;
-    return isTrackFree(trackNumber);
+  const canPlay = useCallback((_trackNumber: number): boolean => {
+    // All tracks playable by everyone
+    return true;
   }, [isPremium, isTrackFree]);
 
   return { status, isPremium, isTrackFree, canPlay, userId };
