@@ -64,7 +64,7 @@ export default function EntrarPage() {
     <div className="min-h-dvh flex flex-col items-center justify-center px-6">
       <Link href="/" className="mb-10">
         <Image
-          src="/Escola-dos-veus-favicon.png"
+          src="/escola_veus_favicon-192.png"
           alt="Escola dos Véus"
           width={64}
           height={64}
