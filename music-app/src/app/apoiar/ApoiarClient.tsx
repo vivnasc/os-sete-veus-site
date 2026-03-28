@@ -30,6 +30,17 @@ export default function ApoiarClient() {
       </div>
 
       <div className="relative z-10 w-full max-w-sm flex flex-col items-center text-center">
+        {/* Back button */}
+        <Link
+          href="/"
+          className="self-start mb-6 flex items-center gap-1.5 text-xs text-[#666680] hover:text-[#a0a0b0] transition-colors"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+          Voltar
+        </Link>
+
         {/* Logo */}
         <div className="mb-8">
           <Image src="/music_veus_faicon.png" alt="Veus" width={48} height={48} />
@@ -40,11 +51,11 @@ export default function ApoiarClient() {
           Apoiar a Loranne
         </h1>
         <p className="text-sm text-[#a0a0b0] leading-relaxed mb-2">
-          Toda a musica e gratuita. Sempre.
+          Toda a musica e gratuita. Sempre sera.
         </p>
         <p className="text-sm text-[#a0a0b0] leading-relaxed mb-8">
           Se alguma faixa te tocou, podes deixar o teu apoio.
-          Cada contribuicao ajuda a criar mais musica.
+          Cada contribuicao ajuda a criar mais musica e a manter tudo aberto.
         </p>
 
         {!method ? (
@@ -132,7 +143,7 @@ export default function ApoiarClient() {
               <div className="pt-2 border-t border-white/5">
                 <p className="text-xs text-[#666680]">
                   Envia via M-Pesa para o numero acima.
-                  Qualquer valor e bem-vindo.
+                  Qualquer valor e bem-vindo. Obrigada.
                 </p>
               </div>
             </div>
@@ -171,7 +182,7 @@ export default function ApoiarClient() {
         <div className="w-full rounded-2xl bg-white/[0.02] border border-white/5 p-5 mb-8">
           <p className="text-xs text-[#666680] italic text-center leading-relaxed">
             &ldquo;Cada nota que escrevo e um pedaco de mim que decido partilhar.
-            O teu apoio nao paga a musica — paga a coragem de a fazer.&rdquo;
+            O teu apoio nao paga a musica — paga a coragem de continuar.&rdquo;
           </p>
           <p className="text-[10px] text-[#666680] text-center mt-2">— Loranne</p>
         </div>
