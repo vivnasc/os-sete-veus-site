@@ -31,9 +31,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const lyric = pickLyricLine(track.lyrics);
 
-  // OG image: always use the dynamic generator (guaranteed to work)
-  // Track-specific Suno covers are probed client-side only
-  const ogImage = `/api/og?album=${encodeURIComponent(album.slug)}&track=${track.number}`;
+  // OG image: track cover from Supabase (absolute URL)
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+  const pad = String(track.number).padStart(2, "0");
+  const ogImage = `${supabaseUrl}/storage/v1/object/public/audios/albums/${album.slug}/faixa-${pad}-cover.jpg`;
 
   // SEO misterioso e envolvente — convite, não descrição
   const title = lyric
