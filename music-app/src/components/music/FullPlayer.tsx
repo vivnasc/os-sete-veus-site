@@ -17,46 +17,75 @@ function fmt(s: number) {
 }
 
 // ── Lyrics sync engine ──
-// Distributes lyric lines across song duration with weighted timing
-// Chorus/Bridge sections get slightly more time per line
+// Distributes lyric lines across song duration with structure-aware timing.
+// Accounts for intro, instrumental breaks between sections, and outro.
 type SyncedLine = { text: string; isTag: boolean; isEmpty: boolean; startTime: number; endTime: number };
 
 function buildSyncedLyrics(lyrics: string, totalDuration: number): SyncedLine[] {
   if (!lyrics || totalDuration <= 0) return [];
   const raw = lyrics.split("\n");
-  const lines: { text: string; isTag: boolean; isEmpty: boolean; weight: number }[] = [];
+
+  // Parse into sections first to understand structure
+  const lines: { text: string; isTag: boolean; isEmpty: boolean; weight: number; sectionBreak: boolean }[] = [];
+  let prevWasTag = false;
 
   for (const line of raw) {
     const trimmed = line.trim();
     const isTag = trimmed.startsWith("[");
     const isEmpty = !trimmed;
-    // Tags and empty lines get small weight (pauses), content lines get 1.0
-    // Chorus lines slightly longer (more emotional weight)
-    let weight = 0.15; // tag/empty
-    if (!isTag && !isEmpty) weight = 1.0;
-    lines.push({ text: trimmed, isTag, isEmpty, weight });
+
+    // A section tag marks a musical break (instrumental transition)
+    const sectionBreak = isTag && !prevWasTag && lines.length > 0;
+
+    let weight: number;
+    if (isTag) {
+      // Section headers: represent instrumental transition (~4-8s typically)
+      weight = 2.5;
+    } else if (isEmpty) {
+      // Empty lines within a section: small breath pause
+      weight = 0.4;
+    } else {
+      // Sung lyric line: ~3-5s per line depending on length
+      // Shorter lines are sung faster
+      weight = Math.max(0.6, Math.min(1.4, trimmed.length / 35));
+    }
+
+    lines.push({ text: trimmed, isTag, isEmpty, weight, sectionBreak });
+    prevWasTag = isTag;
   }
 
   const totalWeight = lines.reduce((s, l) => s + l.weight, 0);
   if (totalWeight === 0) return [];
 
-  // Leave 2s intro and 3s outro
-  const introTime = Math.min(2, totalDuration * 0.01);
-  const outroTime = Math.min(3, totalDuration * 0.02);
-  const availableDuration = totalDuration - introTime - outroTime;
-  const timePerWeight = availableDuration / totalWeight;
+  // Count section breaks to allocate instrumental time
+  const sectionBreaks = lines.filter(l => l.sectionBreak).length;
+
+  // Typical Suno song structure timing:
+  // - Intro: ~8-15s (before first lyrics)
+  // - Each section break: ~3-6s instrumental
+  // - Outro: ~10-20s (after last lyrics)
+  const introTime = Math.min(12, totalDuration * 0.05);
+  const outroTime = Math.min(20, totalDuration * 0.08);
+  const breakTime = sectionBreaks * Math.min(4, totalDuration * 0.02);
+  const lyricsDuration = totalDuration - introTime - outroTime - breakTime;
+  const timePerWeight = lyricsDuration / totalWeight;
 
   let currentTime = introTime;
   return lines.map(l => {
-    const duration = l.weight * timePerWeight;
+    // Add extra gap before section tags (instrumental break)
+    if (l.sectionBreak) {
+      currentTime += Math.min(4, totalDuration * 0.02);
+    }
+
+    const lineDuration = l.weight * timePerWeight;
     const result: SyncedLine = {
       text: l.text,
       isTag: l.isTag,
       isEmpty: l.isEmpty,
       startTime: currentTime,
-      endTime: currentTime + duration,
+      endTime: currentTime + lineDuration,
     };
-    currentTime += duration;
+    currentTime += lineDuration;
     return result;
   });
 }
