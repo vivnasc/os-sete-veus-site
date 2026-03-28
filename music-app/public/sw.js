@@ -12,7 +12,7 @@ const APP_SHELL = [
   "/library",
   "/search",
   "/manifest.json",
-  "/music_veus_faicon.png",
+  "/veus_music_favicon-192.png",
   "/music_veus_logoname.png",
 ];
 

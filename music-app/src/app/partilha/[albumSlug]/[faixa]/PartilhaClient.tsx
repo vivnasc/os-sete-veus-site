@@ -270,7 +270,7 @@ export default function PartilhaClient({
 
         {/* Branding */}
         <div className="mt-12 flex items-center gap-2 opacity-50">
-          <Image src="/music_veus_faicon.png" alt="Veus" width={20} height={20} />
+          <Image src="/veus_music_favicon-192.png" alt="Veus" width={20} height={20} />
           <span className="text-xs text-[#666680] tracking-wider">VEUS</span>
         </div>
       </div>
