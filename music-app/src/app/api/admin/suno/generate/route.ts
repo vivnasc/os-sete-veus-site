@@ -107,8 +107,8 @@ function buildStyle(energy?: string, flavor?: string, prompt?: string): string {
   // Flavor takes priority — it defines the genre
   let style = flavorMod ? `${flavorMod}, ${base}` : base;
 
-  // Add language — African Portuguese accent is Loranne's identity
-  if (prompt?.includes("Portuguese")) style += ", Mozambican Portuguese";
+  // Add language
+  if (prompt?.includes("Portuguese")) style += ", Portuguese";
   else if (prompt?.includes("English")) style += ", English";
 
   // Always add "full song"
@@ -180,7 +180,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const { prompt, lyrics, instrumental, title, model, personaId, personaModel, energy, flavor } = await req.json();
+    const { prompt, lyrics, instrumental, title, model, energy, flavor, customStyle, personaId, personaModel } = await req.json();
 
     if (!prompt) {
       return NextResponse.json(
@@ -213,7 +213,7 @@ export async function POST(req: NextRequest) {
     if (hasLyrics) {
       // Custom mode: prompt = lyrics, style = specific tags per energy+flavor
       body.prompt = lyrics;
-      body.style = buildStyle(energy, flavor, prompt);
+      body.style = customStyle || buildStyle(energy, flavor, prompt);
       body.title = title || "Sem titulo";
     } else {
       body.prompt = prompt.length > 480 ? prompt.slice(0, 480) : prompt;

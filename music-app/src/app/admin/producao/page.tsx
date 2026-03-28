@@ -427,6 +427,10 @@ function TrackRow({
   onTitleChange,
   editedLyrics,
   onLyricsChange,
+  editedStyle,
+  onStyleChange,
+  editedFlavor,
+  onFlavorChange,
 }: {
   track: AlbumTrack;
   albumSlug: string;
@@ -447,6 +451,10 @@ function TrackRow({
   onTitleChange: (title: string) => void;
   editedLyrics: string | null;
   onLyricsChange: (lyrics: string) => void;
+  editedStyle: string | null;
+  onStyleChange: (style: string) => void;
+  editedFlavor: TrackFlavor | null;
+  onFlavorChange: (flavor: TrackFlavor) => void;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [showLyrics, setShowLyrics] = useState(false);
@@ -497,9 +505,9 @@ function TrackRow({
                 {ENERGY_LABELS[track.energy].emoji} {ENERGY_LABELS[track.energy].label}
               </span>
             )}
-            {track.flavor && track.flavor !== "organic" && (
-              <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${FLAVOR_LABELS[track.flavor].color}`}>
-                {FLAVOR_LABELS[track.flavor].emoji} {FLAVOR_LABELS[track.flavor].label}
+            {(editedFlavor || track.flavor) && (editedFlavor || track.flavor) !== "organic" && (
+              <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${FLAVOR_LABELS[editedFlavor || track.flavor || "organic"].color}`}>
+                {FLAVOR_LABELS[editedFlavor || track.flavor || "organic"].emoji} {FLAVOR_LABELS[editedFlavor || track.flavor || "organic"].label}
               </span>
             )}
             {track.vocalMode === "duet" && (
@@ -529,6 +537,44 @@ function TrackRow({
             <p className="mt-1 rounded bg-mundo-bg p-2 font-mono text-xs text-mundo-muted/80">
               {track.prompt}
             </p>
+          </details>
+
+          {/* Style editable — energy + flavor selectors + custom override */}
+          <details className="mt-1">
+            <summary className="cursor-pointer text-xs text-mundo-muted/60 hover:text-mundo-muted">
+              Ver style {editedStyle !== null && <span className="text-amber-400 ml-1">(editado)</span>}
+            </summary>
+            <div className="mt-2 space-y-2">
+              {/* Quick flavor change */}
+              <div className="flex flex-wrap gap-1">
+                {(Object.keys(FLAVOR_LABELS) as TrackFlavor[]).map((f) => (
+                  <button
+                    key={f}
+                    onClick={() => {
+                      // Update flavor in local state + generate matching style
+                      onStyleChange("");  // clear custom style to use auto
+                      onFlavorChange(f);
+                    }}
+                    className={`rounded px-2 py-0.5 text-[10px] font-bold uppercase transition ${
+                      (editedFlavor || track.flavor || "organic") === f
+                        ? FLAVOR_LABELS[f].color
+                        : "bg-mundo-muted-dark/10 text-mundo-muted hover:text-mundo-creme"
+                    }`}
+                  >
+                    {FLAVOR_LABELS[f].label}
+                  </button>
+                ))}
+              </div>
+              {/* Custom style override */}
+              <input
+                type="text"
+                value={editedStyle ?? ""}
+                onChange={(e) => onStyleChange(e.target.value)}
+                placeholder="Custom style override (vazio = automático)"
+                className="w-full rounded bg-mundo-bg px-3 py-2 font-mono text-xs text-mundo-muted/80 border border-mundo-muted-dark/20 focus:border-violet-500 focus:outline-none"
+              />
+              <p className="text-[9px] text-mundo-muted/40">Clica num flavor para mudar o som. Ou escreve um style manual.</p>
+            </div>
           </details>
 
           {/* Lyrics expandable + editable */}
@@ -806,6 +852,8 @@ export default function AlbumProductionPage() {
   const [generatedClips, setGeneratedClips] = useState<Record<string, GeneratedClips>>({});
   const [editedTitles, setEditedTitles] = useState<Record<string, string>>({});
   const [editedLyrics, setEditedLyrics] = useState<Record<string, string>>({});
+  const [editedStyles, setEditedStyles] = useState<Record<string, string>>({});
+  const [editedFlavors, setEditedFlavors] = useState<Record<string, TrackFlavor>>({});
   const lyricsSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
   const [trackVersions, setTrackVersions] = useState<Record<string, VersionInfo[]>>({}); // key → versions
   const [sunoModel, setSunoModel] = useState("V5_5");
@@ -1022,7 +1070,8 @@ export default function AlbumProductionPage() {
           instrumental: false,
           model: sunoModel,
           energy: track.energy,
-          flavor: track.flavor,
+          flavor: editedFlavors[key] || track.flavor,
+          customStyle: editedStyles[key] || null,
           ...(personaId ? { personaId, personaModel: "voice_persona" } : {}),
         }),
       });
@@ -1664,6 +1713,10 @@ export default function AlbumProductionPage() {
                         }
                       }, 2000);
                     }}
+                    editedStyle={editedStyles[key] || null}
+                    onStyleChange={(style) => setEditedStyles((s) => ({ ...s, [key]: style }))}
+                    editedFlavor={editedFlavors[key] || null}
+                    onFlavorChange={(flavor) => setEditedFlavors((f) => ({ ...f, [key]: flavor }))}
                   />
                 );
               })}
