@@ -246,6 +246,16 @@ export default function PartilhaClient({
           Descobrir Loranne
         </Link>
 
+        {/* Funnel to main site */}
+        <a
+          href="https://seteveus.space"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-2 w-full py-3 text-sm text-center text-[#666680] hover:text-[#a0a0b0] transition-colors"
+        >
+          Conhecer Os Sete Véus
+        </a>
+
         {/* Share button */}
         <button
           onClick={shareThis}
