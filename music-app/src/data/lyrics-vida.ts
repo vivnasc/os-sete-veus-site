@@ -100,7 +100,7 @@ Das palavras que não se usam
 
 [Verse 2]
 Cada gota lava um peso
-Cada gota e uma oração
+Cada gota é uma oração
 Não preciso de um templo preso
 Quando o altar e o meu chão
 
@@ -469,7 +469,7 @@ O resto é invenção
 Que o corpo não trai
 
 [Verse 3]
-Cada inspiração e um mundo
+Cada inspiração é um mundo
 Cada expiração e adeus
 O corpo sabe no mais fundo
 Que respirar é o nome de Deus
@@ -851,13 +851,13 @@ Ao que eu não consigo falar
 [Verse 2]
 As teclas clicam no silêncio
 As palavras nascem sozinhas
-Cada frase e um acrescimo
+Cada frase é um acrescimo
 Ao caminho de pegadas minhas
 
 [Chorus]
 Tinta e papel
 Tinta e verdade
-Cada palavra e fiel
+Cada palavra é fiel
 A minha vontade
 O mundo para quando escrevo
 O tempo perde a forma
@@ -868,7 +868,7 @@ A tinta a contornar a norma
 [Chorus]
 Tinta e papel
 Tinta e verdade
-Cada palavra e fiel
+Cada palavra é fiel
 A minha vontade
 O mundo para quando escrevo
 O tempo perde a forma
@@ -1113,7 +1113,7 @@ Between here and there`,
 O corpo fica mais pesado
 Que o colchão que o segura
 Os braços são de chumbo dourado
-A gravidade e uma ternura
+A gravidade é uma ternura
 
 [Verse 2]
 As pernas afundam na terra
@@ -1328,7 +1328,7 @@ Always the same grace`,
   "vida-luz-crua/3": `[Verse 1]
 Os pés tocam o chão frio
 Um choque que acorda a pele
-A gravidade e um fio
+A gravidade é um fio
 Que me puxa para aquele
 
 [Verse 2]
@@ -1537,7 +1537,7 @@ Cada gesto é uma medalha
 De amor que não se destaca
 
 [Verse 2]
-A mesa posta e uma oração
+A mesa posta é uma oração
 Sem deus, sem templo, sem altar
 Só as mãos e a dedicação
 De quem prepara para amar
@@ -1854,7 +1854,7 @@ Passa como passa o que eu penso
 Paisagem
 Nada e tão denso
 Quando estas em movimento
-Cada colina e um pensamento
+Cada colina é um pensamento
 Que veio e foi
 E não deu mais tormento
 
@@ -1865,7 +1865,7 @@ Passa como passa o que eu penso
 Paisagem
 Nada e tão denso
 Quando estas em movimento
-Cada colina e um pensamento
+Cada colina é um pensamento
 Que veio e foi
 E não deu mais tormento
 
@@ -2029,7 +2029,7 @@ Mas voltei diferente`,
   "vida-corpo-a-corpo/1": `[Verse 1]
 Milimetro por milimetro
 O corpo desliza no sofa
-O ar entre nós e um espectro
+O ar entre nós é um espectro
 De tudo o que a boca não prova
 
 [Verse 2]
@@ -2043,8 +2043,8 @@ Aproximar
 Sem pressa, sem medo, sem voz
 Aproximar
 É o espaço derrete entre nós
-Cada centimetro e um universo
-Cada segundo e uma oração
+Cada centimetro é um universo
+Cada segundo é uma oração
 O último milimetro e o verso
 Que eu nunca soube de cor até agora não
 
@@ -2054,8 +2054,8 @@ Aproximar
 Sem pressa, sem medo, sem voz
 Aproximar
 É o espaço derrete entre nós
-Cada centimetro e um universo
-Cada segundo e uma oração
+Cada centimetro é um universo
+Cada segundo é uma oração
 O último milimetro e o verso
 Que eu nunca soube de cor até agora não
 
@@ -2279,7 +2279,7 @@ Permissão
 Para ser a chuva e a inundação
 Não é fraqueza, não é derrota
 É o corpo a cobrar o que lhe devem
-Cada lagrima e uma nota
+Cada lagrima é uma nota
 De tudo o que segurei para sempre
 
 
@@ -2290,7 +2290,7 @@ Permissão
 Para ser a chuva e a inundação
 Não é fraqueza, não é derrota
 É o corpo a cobrar o que lhe devem
-Cada lagrima e uma nota
+Cada lagrima é uma nota
 De tudo o que segurei para sempre
 
 [Outro]
@@ -2430,7 +2430,7 @@ A falta
 É a sombra mais real que há
 Mais pesada que o corpo
 Mais densa que a presença
-A ausência e um porto
+A ausência é um porto
 Onde nunca há sentenca
 
 
@@ -2441,7 +2441,7 @@ A falta
 É a sombra mais real que há
 Mais pesada que o corpo
 Mais densa que a presença
-A ausência e um porto
+A ausência é um porto
 Onde nunca há sentenca
 
 [Outro]
@@ -2694,7 +2694,7 @@ Dizer
 A voz que eu escondi
 Não é calma, não é gentil
 Mas e minha e e real
-Cada palavra e um projétil
+Cada palavra é um projétil
 De verdade sem igual
 
 
@@ -2705,7 +2705,7 @@ Dizer
 A voz que eu escondi
 Não é calma, não é gentil
 Mas e minha e e real
-Cada palavra e um projétil
+Cada palavra é um projétil
 De verdade sem igual
 
 [Bridge]
@@ -2850,8 +2850,8 @@ Cinco sentidos
 A ancora que me traz de volta
 Cinco sentidos
 A porta que se abre e não se solta
-O real e o que eu toco
-O real e o que eu vejo
+O real é o que eu toco
+O real é o que eu vejo
 Não preciso de mais nada pouco
 Só a certeza deste azulejo
 
@@ -2861,8 +2861,8 @@ Cinco sentidos
 A ancora que me traz de volta
 Cinco sentidos
 A porta que se abre e não se solta
-O real e o que eu toco
-O real e o que eu vejo
+O real é o que eu toco
+O real é o que eu vejo
 Não preciso de mais nada pouco
 Só a certeza deste azulejo
 
@@ -2910,7 +2910,7 @@ Just here`,
   "vida-ancora/5": `[Verse 1]
 No bolso há uma pedra lisa
 Que o polegar conhece de cor
-A superficie e uma divisa
+A superficie é uma divisa
 Entre o panico e o amor
 
 [Verse 2]
@@ -3446,7 +3446,7 @@ A almofada humida, a rotina
 De um dia que começa com ressaca
 
 [Verse 2]
-A chaleira e um acto de fé
+A chaleira é um acto de fé
 A chávena quente entre as mãos
 O silêncio já não é
 O que era antes das questoes
@@ -3604,7 +3604,7 @@ A cicatriz
 Não é vergonha, e historia
 A cicatriz
 É a mais honesta memoria
-Cada marca e um capitulo
+Cada marca é um capitulo
 Que o corpo não editou
 A cicatriz e o titulo
 Do livro que a vida me contou
@@ -3615,7 +3615,7 @@ A cicatriz
 Não é vergonha, e historia
 A cicatriz
 É a mais honesta memoria
-Cada marca e um capitulo
+Cada marca é um capitulo
 Que o corpo não editou
 A cicatriz e o titulo
 Do livro que a vida me contou
@@ -4067,7 +4067,7 @@ O que trouxeste
 É o que te faz quem vais ser
 O orgulho misturado com cansaco
 De quem não larga o que é seu
-Cada habito e um abraco
+Cada habito é um abraco
 De quem veio antes e já morreu
 
 
@@ -4078,7 +4078,7 @@ O que trouxeste
 É o que te faz quem vais ser
 O orgulho misturado com cansaco
 De quem não larga o que é seu
-Cada habito e um abraco
+Cada habito é um abraco
 De quem veio antes e já morreu
 
 [Outro]
@@ -5386,7 +5386,7 @@ Further than I'll ever know`,
 Duas mulheres numa mesa
 A mesma ferida diferente
 O choque do reconhecimento pesa
-E ao mesmo tempo e um presente
+E ao mesmo tempo é um presente
 
 [Verse 2]
 Os olhos encontram-se por cima do café
@@ -5482,7 +5482,7 @@ Every one of us`,
 
   "vida-ressonancia/5": `[Verse 1]
 A voz atravessa paredes
-Não é um grito, e uma frequência
+Não é um grito, é uma frequência
 Que encontra quem está nas redes
 Do mesmo sono, da mesma ausência
 
@@ -5619,7 +5619,7 @@ Faz tremer a estrada
 [Bridge]
 Os pés batem em unissono
 O sim viaja pelo ar
-O corpo inteiro e um hino
+O corpo inteiro é um hino
 Que ninguém nós vai calar
 
 [Outro]

@@ -176,7 +176,7 @@ Que nós impedia de nós encontrar
 
 [Verse 2]
 Agora solto e sinto as mãos vazias de ti
-Mas e um vazio que finalmente e meu
+Mas é um vazio que finalmente e meu
 Tu soltas e descobres o mesmo céu
 É o espaço entre nós já não é adeus
 
@@ -287,7 +287,7 @@ A primeira palavra não é grande nem bonita
 E apenas um tremor que sai do fundo animal
 
 [Chorus]
-A primeira palavra e um rio que rebenta
+A primeira palavra é um rio que rebenta
 É a voz que se parte ao meio como vidro
 E dizer eu tenho medo é ouvir o eco
 E descobrir que tu tremias no mesmo sitio
@@ -300,7 +300,7 @@ Que derreteu o gelo de tantos invernos sois
 
 
 [Chorus]
-A primeira palavra e um rio que rebenta
+A primeira palavra é um rio que rebenta
 É a voz que se parte ao meio como vidro
 E dizer eu tenho medo é ouvir o eco
 E descobrir que tu tremias no mesmo sitio

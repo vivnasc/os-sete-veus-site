@@ -1420,7 +1420,7 @@ Antes do peito havia o que não da para nomear
 
 [Verse 2]
 A boca abre e sai um hum
-Não é palavra e não é prece
+Não é palavra é não é prece
 É o corpo a lembrar ao espirito
 Que ainda existe que ainda aparece
 
@@ -2091,7 +2091,7 @@ Oceano — leva o que é demais
 oceano — o peso que dispensa
 
 [Bridge]
-A minha historia e um canto de areia
+A minha historia é um canto de areia
 o oceano tem milhoes
 O alívio e não ser o centro
 e só ser das suas accoes
@@ -2457,7 +2457,7 @@ Cabe tudo — sempre coube
 cabe tudo — dentro de mim
 
 [Verse 3]
-Cada respiração e um universo
+Cada respiração é um universo
 a expandir sem pedir licença
 O corpo é o vaso maior
 que a mente jamais compreenca

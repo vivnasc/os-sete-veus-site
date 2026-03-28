@@ -88,7 +88,7 @@ Let it flow like water through your hands
 the only truth is in the unfolding`,
 
   "livro-filosofico/3": `[Verse 1]
-A memoria e uma sala escura
+A memoria é uma sala escura
 com cadeiras viradas para trás
 Sentas-te e olhas o que já foi
 como se pudesses mudar o que já não faz
@@ -256,7 +256,7 @@ es o voo — não a aterragem
 [Bridge]
 Larga a ideia de chegar
 larga o mapa e a bussola
-O horizonte e um espelho
+O horizonte é um espelho
 que reflecte a tua pergunta
 
 [Outro]
@@ -3165,12 +3165,12 @@ becomes a conscious landscape`,
 Comer com atenção
 sem culpa, sem pressa
 Cada garfada e presença
-cada sabor e uma promessa
+cada sabor é uma promessa
 
 [Verse 2]
 O corpo não é inimigo
 o apetite não é defeito
-Comer e um acto de amor
+Comer é um acto de amor
 quando e feito com respeito
 
 [Chorus]
