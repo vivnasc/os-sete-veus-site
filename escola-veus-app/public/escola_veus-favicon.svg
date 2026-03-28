@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#18122B"/>
+      <stop offset="100%" stop-color="#0A0715"/>
+    </radialGradient>
+    <linearGradient id="p1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C9A96E"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <linearGradient id="p2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A78BFA"/>
+      <stop offset="100%" stop-color="#D4B87A"/>
+    </linearGradient>
+    <linearGradient id="p3" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#C9A96E" stop-opacity="0.7"/>
+    </linearGradient>
+    <linearGradient id="p4" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#DFC08A" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#6D28D9" stop-opacity="0.4"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feComposite in="SourceGraphic" in2="b" operator="over"/>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="12" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="512" height="512" fill="url(#bg)" rx="96"/>
+  
+  <!-- Ambient light -->
+  <circle cx="256" cy="256" r="90" fill="#8B5CF6" opacity="0.06" filter="url(#softGlow)"/>
+  
+  <!-- 7 petals arranged as a flower/mandala - representing the 7 véus/courses opening -->
+  <g transform="translate(256,256)" filter="url(#glow)">
+    
+    <!-- Petal 1 - top -->
+    <ellipse cx="0" cy="-100" rx="42" ry="95" transform="rotate(0)" fill="url(#p1)" opacity="0.92"/>
+    
+    <!-- Petal 2 -->
+    <ellipse cx="0" cy="-100" rx="42" ry="95" transform="rotate(51.4)" fill="url(#p2)" opacity="0.82"/>
+    
+    <!-- Petal 3 -->
+    <ellipse cx="0" cy="-100" rx="42" ry="95" transform="rotate(102.8)" fill="url(#p1)" opacity="0.72"/>
+    
+    <!-- Petal 4 -->
+    <ellipse cx="0" cy="-100" rx="42" ry="95" transform="rotate(154.3)" fill="url(#p3)" opacity="0.62"/>
+    
+    <!-- Petal 5 -->
+    <ellipse cx="0" cy="-100" rx="42" ry="95" transform="rotate(205.7)" fill="url(#p2)" opacity="0.52"/>
+    
+    <!-- Petal 6 -->
+    <ellipse cx="0" cy="-100" rx="42" ry="95" transform="rotate(257.1)" fill="url(#p4)" opacity="0.45"/>
+    
+    <!-- Petal 7 -->
+    <ellipse cx="0" cy="-100" rx="42" ry="95" transform="rotate(308.6)" fill="url(#p3)" opacity="0.38"/>
+    
+    <!-- Inner ring - knowledge/enlightenment -->
+    <circle cx="0" cy="0" r="38" fill="none" stroke="#C9A96E" stroke-width="3" opacity="0.6"/>
+    <circle cx="0" cy="0" r="28" fill="#C9A96E" opacity="0.25"/>
+    
+    <!-- Center core - bright -->
+    <circle cx="0" cy="0" r="16" fill="#C9A96E" opacity="0.85"/>
+    <circle cx="0" cy="0" r="9" fill="#FFFFFF" opacity="0.6"/>
+    <circle cx="0" cy="0" r="4" fill="#FFFFFF" opacity="0.9"/>
+  </g>
+</svg>
