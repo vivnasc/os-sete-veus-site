@@ -23,7 +23,7 @@ export default function NavBar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/music_veus_faicon.png"
+            src="/veus_music_favicon-192.png"
             alt="Veus"
             width={28}
             height={28}

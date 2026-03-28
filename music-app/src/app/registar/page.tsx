@@ -56,7 +56,7 @@ export default function RegistarPage() {
     <div className="min-h-screen bg-[#0D0D1A] flex flex-col items-center justify-center px-6">
       <Link href="/" className="mb-10">
         <Image
-          src="/music_veus_faicon.png"
+          src="/veus_music_favicon-192.png"
           alt="Veus"
           width={64}
           height={64}
