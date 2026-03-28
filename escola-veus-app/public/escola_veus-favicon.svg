@@ -29,24 +29,24 @@
   <!-- Background -->
   <rect width="512" height="512" fill="url(#bg)" rx="96"/>
 
-  <!-- 7 petals — scaled up 1.4x to fill the icon -->
+  <!-- 7 petals — scaled up, high opacity for visibility at small sizes -->
   <g transform="translate(256,256) scale(1.4)" filter="url(#glow)">
 
-    <ellipse cx="0" cy="-100" rx="46" ry="100" transform="rotate(0)" fill="url(#p1)" opacity="0.95"/>
-    <ellipse cx="0" cy="-100" rx="46" ry="100" transform="rotate(51.4)" fill="url(#p2)" opacity="0.88"/>
-    <ellipse cx="0" cy="-100" rx="46" ry="100" transform="rotate(102.8)" fill="url(#p1)" opacity="0.80"/>
-    <ellipse cx="0" cy="-100" rx="46" ry="100" transform="rotate(154.3)" fill="url(#p3)" opacity="0.72"/>
-    <ellipse cx="0" cy="-100" rx="46" ry="100" transform="rotate(205.7)" fill="url(#p2)" opacity="0.64"/>
-    <ellipse cx="0" cy="-100" rx="46" ry="100" transform="rotate(257.1)" fill="url(#p4)" opacity="0.56"/>
-    <ellipse cx="0" cy="-100" rx="46" ry="100" transform="rotate(308.6)" fill="url(#p3)" opacity="0.48"/>
+    <ellipse cx="0" cy="-100" rx="48" ry="102" transform="rotate(0)" fill="url(#p1)" opacity="1"/>
+    <ellipse cx="0" cy="-100" rx="48" ry="102" transform="rotate(51.4)" fill="url(#p2)" opacity="0.95"/>
+    <ellipse cx="0" cy="-100" rx="48" ry="102" transform="rotate(102.8)" fill="url(#p1)" opacity="0.90"/>
+    <ellipse cx="0" cy="-100" rx="48" ry="102" transform="rotate(154.3)" fill="url(#p3)" opacity="0.85"/>
+    <ellipse cx="0" cy="-100" rx="48" ry="102" transform="rotate(205.7)" fill="url(#p2)" opacity="0.80"/>
+    <ellipse cx="0" cy="-100" rx="48" ry="102" transform="rotate(257.1)" fill="url(#p4)" opacity="0.75"/>
+    <ellipse cx="0" cy="-100" rx="48" ry="102" transform="rotate(308.6)" fill="url(#p3)" opacity="0.70"/>
 
     <!-- Inner ring -->
-    <circle cx="0" cy="0" r="38" fill="none" stroke="#C9A96E" stroke-width="3" opacity="0.6"/>
-    <circle cx="0" cy="0" r="28" fill="#C9A96E" opacity="0.3"/>
+    <circle cx="0" cy="0" r="38" fill="none" stroke="#C9A96E" stroke-width="4" opacity="0.8"/>
+    <circle cx="0" cy="0" r="28" fill="#C9A96E" opacity="0.4"/>
 
     <!-- Center core — brighter -->
-    <circle cx="0" cy="0" r="18" fill="#C9A96E" opacity="0.9"/>
-    <circle cx="0" cy="0" r="10" fill="#FFFFFF" opacity="0.7"/>
+    <circle cx="0" cy="0" r="20" fill="#C9A96E" opacity="0.95"/>
+    <circle cx="0" cy="0" r="12" fill="#FFFFFF" opacity="0.8"/>
     <circle cx="0" cy="0" r="5" fill="#FFFFFF" opacity="0.95"/>
   </g>
 </svg>
