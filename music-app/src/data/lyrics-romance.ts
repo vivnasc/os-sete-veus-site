@@ -2604,4 +2604,62 @@ Every fight
 Every morning
 You`,
 
+  "cosmic-romance/11": `[Verse 1]
+Não te prometo a lua cheia
+Nem um jantar à luz de vela
+Prometo-te o sofá às nove
+E o teu riso a ver novela
+
+[Verse 2]
+Não quero o beijo do cinema
+Nem a carta de cem páginas
+Quero o beijo distraído
+Entre as tuas rotinas e as minhas
+
+[Chorus]
+Fica velho comigo
+No sítio onde o amor não brilha
+Fica velho comigo
+Na conta da luz e na pastilha
+Para a dor de cabeça das terças
+No cabelo branco que apareceu
+Fica velho comigo
+No amor que ninguém escreveu
+Mas que acorda todos os dias
+E escolhe ficar — como eu
+
+[Verse 3]
+Quero saber-te de cor
+Como sei o caminho de casa
+O teu suspiro antes de dormir
+A forma como dobras a toalha
+Não é paixão — é mais que isso
+É o chão debaixo da brasa
+
+[Chorus]
+Fica velho comigo
+No sítio onde o amor não brilha
+Fica velho comigo
+Na conta da luz e na pastilha
+Para a dor de cabeça das terças
+No cabelo branco que apareceu
+Fica velho comigo
+No amor que ninguém escreveu
+Mas que acorda todos os dias
+E escolhe ficar — como eu
+
+[Bridge]
+Quando era nova queria o trovão
+Queria tremer e arder e voar
+Agora quero o barulho da chuva
+No telhado — contigo a escutar
+
+[Outro]
+Fica
+Velho
+Quieto
+Meu
+Nosso
+Bruno`,
+
 };

@@ -79,13 +79,13 @@ function extractStyleTags(prompt: string): string {
  * Each combination produces a DIFFERENT sound, not generic "organic electronic".
  */
 function buildStyle(energy?: string, flavor?: string, prompt?: string): string {
-  // Energy-specific base styles (each sounds DIFFERENT)
-  const energyStyles: Record<string, string> = {
-    whisper: "ambient, ethereal, soft female vocal, intimate, slow, dreamy",
-    steady: "mid-tempo, grounded, warm female vocal, acoustic, walking pace",
-    pulse: "upbeat, driving, strong female vocal, rhythmic, energetic, pop",
-    anthem: "powerful, anthemic, bold female vocal, big chorus, stadium, epic",
-    raw: "stripped-back, raw female vocal, minimal, vulnerable, close-mic",
+  // Energy-specific base (short, just the energy feel)
+  const energyBase: Record<string, string> = {
+    whisper: "soft female vocal, intimate, slow",
+    steady: "mid-tempo, warm female vocal, grounded",
+    pulse: "upbeat, strong female vocal, driving, energetic",
+    anthem: "powerful, bold female vocal, big chorus, epic",
+    raw: "stripped-back, raw female vocal, minimal, close-mic",
   };
 
   // Flavor-specific overrides (completely change the genre)
@@ -101,11 +101,55 @@ function buildStyle(energy?: string, flavor?: string, prompt?: string): string {
     gospel: "gospel, choir harmonies, organ, hand claps, uplifting, call-and-response",
   };
 
-  const base = energyStyles[energy || "steady"] || energyStyles.steady;
+  const base = energyBase[energy || "steady"] || energyBase.steady;
   const flavorMod = flavorStyles[flavor || "organic"] || "";
 
-  // Flavor takes priority — it defines the genre
-  let style = flavorMod ? `${flavorMod}, ${base}` : base;
+  let style: string;
+
+  if (flavorMod) {
+    // Non-organic: flavor defines the genre
+    style = `${flavorMod}, ${base}`;
+  } else if (prompt) {
+    // Organic: extract UNIQUE production details from this track's prompt
+    // Each track has specific instruments, textures, moods in its prompt
+    const uniqueKeywords: string[] = [];
+    const instruments = [
+      "piano", "solo piano", "soft piano", "Rhodes", "guitar", "acoustic guitar",
+      "nylon guitar", "strings", "gentle strings", "synth", "synth pads",
+      "reverb pads", "bass", "warm bass", "deep bass", "drums", "percussion",
+      "subtle percussion", "organic percussion", "body percussion",
+      "shaker", "choir", "organ", "violin", "cello", "flute", "harp",
+      "breath sounds", "water textures", "tidal", "drone", "bells",
+    ];
+    const moods = [
+      "dreamy", "ethereal", "contemplative", "haunting", "spacious",
+      "building", "swelling", "flowing", "tidal", "nocturnal",
+      "meditative", "hypnotic", "cosmic", "ancient", "primal",
+      "tender", "fierce", "urgent", "patient", "volcanic",
+      "skeletal", "crystalline", "smoky", "dusty", "liquid",
+    ];
+    const lower = prompt.toLowerCase();
+    // Extract instruments mentioned in this specific track
+    for (const inst of instruments) {
+      if (lower.includes(inst) && !uniqueKeywords.some(k => k.includes(inst) || inst.includes(k))) {
+        uniqueKeywords.push(inst);
+        if (uniqueKeywords.length >= 4) break;
+      }
+    }
+    // Extract moods mentioned in this specific track
+    for (const mood of moods) {
+      if (lower.includes(mood) && !uniqueKeywords.includes(mood)) {
+        uniqueKeywords.push(mood);
+        if (uniqueKeywords.length >= 6) break;
+      }
+    }
+    // Combine: unique details + energy base
+    style = uniqueKeywords.length > 0
+      ? `${uniqueKeywords.join(", ")}, ${base}`
+      : base;
+  } else {
+    style = base;
+  }
 
   // Add language
   if (prompt?.includes("Portuguese")) style += ", Portuguese";
