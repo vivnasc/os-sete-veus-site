@@ -1078,7 +1078,7 @@ Não está vazio — está morto
 Às vezes ponho almofadas
 Para fingir que há volume
 Mas o corpo sabe a diferença
-Entre presença e um costume
+Entre presença é um costume
 
 [Chorus]
 O lado vazio

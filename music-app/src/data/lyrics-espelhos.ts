@@ -169,7 +169,7 @@ Quando é que o café ganhou
 [Verse 3]
 A colher gira dentro da chávena
 Como um relógio cansado
-Cada volta e uma semana inteira
+Cada volta é uma semana inteira
 De um destino emprestado
 
 [Chorus]
@@ -659,7 +659,7 @@ Devagar, devagar
 A cura não tem relógio
 Devagar, devagar
 Cada passo é uma oração
-Cada tremor e uma canção`,
+Cada tremor é uma canção`,
 
   // ─────────────────────────────────────────────
   // ESPELHO DA CULPA (Véu 3 — guilt for wanting more)
@@ -945,7 +945,7 @@ E eu nasci`,
 Não preciso de me partir ao meio
 Para ver o que trago cá dentro
 Não preciso de sangue nem de castigo
-Basta um espelho e um momento
+Basta um espelho é um momento
 
 [Verse 2]
 A culpa ensinou-me a ser dura
@@ -1232,9 +1232,9 @@ Escolho a que me serve está manhã
 Não por medo, mas por amor
 
 [Verse 2]
-A mãe que sou e um vestido lindo
+A mãe que sou é um vestido lindo
 Mas não é a minha pele toda
-A mulher que trabalha e uma moldura
+A mulher que trabalha é uma moldura
 Mas o quadro muda com a roda
 
 [Chorus]
@@ -1261,7 +1261,7 @@ Alguém que aprendeu a brincar
 [Bridge]
 A liberdade não é estar nua
 E poder vestir sem desaparecer
-E saber que cada máscara e um jogo
+E saber que cada máscara é um jogo
 E que o jogo não me faz perder
 
 [Outro]
@@ -1484,7 +1484,7 @@ E fez o que quis apesar de mim
 O castelo de vidro, tão bonito
 Partiu-se com a brisa do jardim
 E eu fiquei ali no meio dos cacos
-A perceber que o caos também e um hino
+A perceber que o caos também é um hino
 
 
 [Chorus]
@@ -1495,7 +1495,7 @@ E fez o que quis apesar de mim
 O castelo de vidro, tão bonito
 Partiu-se com a brisa do jardim
 E eu fiquei ali no meio dos cacos
-A perceber que o caos também e um hino
+A perceber que o caos também é um hino
 
 [Bridge]
 O vidro parte porque é vidro
@@ -1774,7 +1774,7 @@ Que empurra o chão, que parte a pedra
 Que diz eu existo e eu sou o futuro
 Mais pequena não, mais quieta não
 Mais invisível não, nunca mais
-O meu tamanho real e um segredo
+O meu tamanho real é um segredo
 Que o mundo ainda não viu, mas vai
 
 
@@ -1785,7 +1785,7 @@ Que empurra o chão, que parte a pedra
 Que diz eu existo e eu sou o futuro
 Mais pequena não, mais quieta não
 Mais invisível não, nunca mais
-O meu tamanho real e um segredo
+O meu tamanho real é um segredo
 Que o mundo ainda não viu, mas vai
 
 [Bridge]
@@ -1908,7 +1908,7 @@ Não cabe numa moldura de parede
 É teimoso como a seca que pede
 
 [Chorus]
-É meu, e meu, e meu
+É meu, é meu, é meu
 Como a voz, como a pele, como o sal
 Não precisa de licença
 Não precisa de sinal
@@ -1919,7 +1919,7 @@ Que não tenho de aprender
 
 
 [Chorus]
-É meu, e meu, e meu
+É meu, é meu, é meu
 Como a voz, como a pele, como o sal
 Não precisa de licença
 Não precisa de sinal
@@ -2012,7 +2012,7 @@ Eu era trovão e fiz-me eco
 Para caber na vida alheia
 Mas há uma mare que não obedece
 Há uma onda que vem de dentro
-Que diz o meu tamanho e imenso
+Que diz o meu tamanho é imenso
 E eu não me encolho mais, não, não me encolho
 
 
@@ -2023,7 +2023,7 @@ Eu era trovão e fiz-me eco
 Para caber na vida alheia
 Mas há uma mare que não obedece
 Há uma onda que vem de dentro
-Que diz o meu tamanho e imenso
+Que diz o meu tamanho é imenso
 E eu não me encolho mais, não, não me encolho
 
 [Bridge]
@@ -2130,9 +2130,9 @@ Por está pergunta
 Que finalmente saiu`,
 
   "espelho-separacao/4": `[Verse 1]
-Não é um muro, e uma varanda
+Não é um muro, é uma varanda
 De onde eu te vejo inteiro e tu me vês
-Não é uma fuga, e uma dança
+Não é uma fuga, é uma dança
 Com espaço entre os dois pés
 
 [Verse 2]
@@ -2312,9 +2312,9 @@ Na luz que sempre esteve aqui
 Debaixo de tanto, tanto, tanto
 
 [Bridge]
-Cada véu que cai e um rio
+Cada véu que cai é um rio
 Que corre para o mesmo mar
-Cada véu que cai e um beijo
+Cada véu que cai é um beijo
 Que eu me dou sem hesitar
 
 [Outro]

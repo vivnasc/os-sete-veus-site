@@ -526,7 +526,7 @@ At all`,
   // ─────────────────────────────────────────────
 
   "cosmic-eter/1": `[Verse 1]
-Estás na sala e eu estou na sala
+Estás na sala é eu estou na sala
 E entre nós há qualquer coisa densa
 Que não se vê nem se pode tocar
 Mas que pesa mais que qualquer sentença
