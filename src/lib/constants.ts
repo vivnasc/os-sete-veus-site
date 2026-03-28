@@ -54,7 +54,9 @@ export const COURSE_SLUGS = [
   "a-fome",
 ] as const;
 
-// Preços dos cursos (USD como base, Stripe não suporta MZN)
-export const COURSE_PRICING = {
-  individual: { usd: 49, mzn: 3100, brl: 199, eur: 46 },
+// Preços da subscrição (USD como base)
+export const SUBSCRIPTION_PRICING = {
+  monthly: { usd: 19, mzn: 1200, brl: 79, eur: 18 },
+  annual: { usd: 149, mzn: 9500, brl: 599, eur: 139 },
+  annualSavings: 35, // percentage
 } as const;

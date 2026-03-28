@@ -268,7 +268,7 @@ export default function CourseDashboard() {
               }}
               className="inline-block bg-mundo-violeta text-white px-8 py-3 rounded-lg font-sans hover:bg-mundo-violeta/80 transition-colors"
             >
-              Inscrever-me — $49
+              Subscrever — $19/mes
             </button>
           </div>
         </section>
