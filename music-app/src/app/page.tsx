@@ -25,7 +25,7 @@ export default function MusicHomePage() {
         </div>
         <div className="relative flex flex-col items-center text-center px-6 pt-6 pb-8">
           <Image src="/Loranne.png" alt="Loranne" width={200} height={250} className="h-36 w-auto rounded-2xl shadow-2xl ring-1 ring-white/10" priority />
-          <Image src="/music_veus_logoname.png" alt="Véus" width={200} height={80} className="h-10 w-auto mt-4" />
+          <Image src="/veus_music_favicon-192.png" alt="Véus" width={80} height={80} className="h-16 w-16 mt-4" />
           <p className="mt-1 text-xs text-[#C9A96E] tracking-widest font-display">by Loranne</p>
         </div>
       </div>

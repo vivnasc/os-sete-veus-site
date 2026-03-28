@@ -13,7 +13,7 @@ const APP_SHELL = [
   "/search",
   "/manifest.json",
   "/veus_music_favicon-192.png",
-  "/music_veus_logoname.png",
+  "/veus_music_favicon-512.png",
 ];
 
 self.addEventListener("install", (event) => {
