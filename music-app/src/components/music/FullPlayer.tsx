@@ -234,7 +234,7 @@ export default function FullPlayer() {
           {activeTab === "lyrics" && (
             <div className="py-4 min-h-[50vh]">
               {hasLyrics ? (
-                <div className="space-y-1 px-2">
+                <div className="space-y-1 px-2 lyrics-content" data-no-copy>
                   {currentTrack.lyrics!.split("\n").map((line: string, i: number) => {
                     const trimmed = line.trim();
                     const isTag = trimmed.startsWith("[");

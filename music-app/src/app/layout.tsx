@@ -5,6 +5,7 @@ import MiniPlayer from "@/components/music/MiniPlayer";
 import FullPlayer from "@/components/music/FullPlayer";
 import PlayTracker from "@/components/music/PlayTracker";
 import NoDownload from "@/components/music/NoDownload";
+import AuthGate from "@/components/music/AuthGate";
 import RegisterSW from "@/components/RegisterSW";
 import "./globals.css";
 
@@ -67,9 +68,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               >
                 Saltar para o conteudo
               </a>
-              <div id="main-content" className="pb-24" style={{ paddingTop: "env(safe-area-inset-top)" }}>
-                {children}
-              </div>
+              <AuthGate>
+                <div id="main-content" className="pb-24" style={{ paddingTop: "env(safe-area-inset-top)" }}>
+                  {children}
+                </div>
+              </AuthGate>
               <MiniPlayer />
               <FullPlayer />
               <PlayTracker />
