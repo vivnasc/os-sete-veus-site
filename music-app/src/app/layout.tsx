@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   icons: {
     icon: [
-      { url: "/veus_music-favicon.svg", type: "image/svg+xml" },
+      { url: "/veus_music-favicon.svg", type: "image/svg+xml", sizes: "any" },
       { url: "/veus_music_favicon-192.png", sizes: "192x192", type: "image/png" },
       { url: "/veus_music_favicon-512.png", sizes: "512x512", type: "image/png" },
     ],
