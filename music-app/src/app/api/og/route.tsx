@@ -146,7 +146,7 @@ export async function GET(req: NextRequest) {
             }}
           >
             <p style={{ fontSize: 14, color: "#666680", letterSpacing: "0.15em" }}>
-              VEUS
+              VÉUS
             </p>
           </div>
         </div>

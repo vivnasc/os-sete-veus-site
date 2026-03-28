@@ -24,13 +24,13 @@ export default function NavBar() {
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/veus_music_favicon-192.png"
-            alt="Veus"
+            alt="Véus"
             width={44}
             height={44}
             className="h-11 w-11"
           />
           <span className="font-display text-lg font-semibold text-[#C9A96E] tracking-wider">
-            VEUS
+            VÉUS
           </span>
         </Link>
 
