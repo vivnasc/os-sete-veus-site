@@ -25,9 +25,9 @@ export default function NavBar() {
           <Image
             src="/veus_music_favicon-192.png"
             alt="Veus"
-            width={36}
-            height={36}
-            className="h-9 w-9"
+            width={44}
+            height={44}
+            className="h-11 w-11"
           />
           <span className="font-display text-lg font-semibold text-[#C9A96E] tracking-wider">
             VEUS
