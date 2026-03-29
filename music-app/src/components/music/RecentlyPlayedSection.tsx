@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useLocalListeningData } from "@/hooks/useLocalListeningData";
 import { ALL_ALBUMS, type AlbumTrack, type Album } from "@/data/albums";
+import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
 
 function resolveTrack(
   trackNumber: number,
@@ -38,13 +39,17 @@ export default function RecentlyPlayedSection() {
             href={`/album/${album.slug}`}
             className="shrink-0 flex items-center gap-3 px-3 py-2 bg-white/[0.04] hover:bg-white/[0.08] rounded-lg transition-colors w-48"
           >
-            <div
-              className="h-10 w-10 shrink-0 rounded-md flex items-center justify-center"
-              style={{ background: `linear-gradient(135deg, ${album.color}, ${album.color}88)` }}
-            >
-              <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4 text-white/30">
-                <path d="M8 5v14l11-7z" />
-              </svg>
+            <div className="h-10 w-10 shrink-0 rounded-md overflow-hidden" style={{ background: `linear-gradient(135deg, ${album.color}, ${album.color}88)` }}>
+              <img
+                src={getTrackCoverUrl(album.slug, track.number)}
+                alt=""
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  const img = e.target as HTMLImageElement;
+                  img.onerror = null;
+                  img.src = getAlbumCover(album);
+                }}
+              />
             </div>
             <div className="min-w-0">
               <p className="text-xs font-medium text-[#F5F0E6] truncate">{track.title}</p>
