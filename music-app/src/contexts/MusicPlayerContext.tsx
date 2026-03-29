@@ -62,6 +62,7 @@ type MusicPlayerState = {
 type MusicPlayerActions = {
   playTrack: (track: AlbumTrack, album: Album, trackList?: AlbumTrack[]) => void;
   playAlbum: (album: Album, startIndex?: number) => void;
+  addToQueue: (tracks: AlbumTrack[], album: Album) => void;
   togglePlay: () => void;
   next: () => void;
   previous: () => void;
@@ -269,6 +270,36 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     playTrack(track, album, album.tracks);
   }, [playTrack]);
 
+  // Add tracks to play next (after current track)
+  const addToQueue = useCallback((tracks: AlbumTrack[], album: Album) => {
+    setState(s => {
+      if (!s.currentTrack) {
+        // Nothing playing — start playing the first track
+        const audio = audioRef.current;
+        if (audio && tracks[0]) {
+          setSourceAndPlay(audio, tracks[0], album, blobUrlRef);
+          return {
+            ...s,
+            currentTrack: tracks[0],
+            currentAlbum: album,
+            queue: tracks,
+            queueAlbum: album,
+            isPlaying: true,
+            showFullPlayer: true,
+            audioError: null,
+          };
+        }
+        return s;
+      }
+      // Insert after current track in queue
+      const currentIdx = s.queue.findIndex(t => t.number === s.currentTrack!.number);
+      const newQueue = [...s.queue];
+      const insertAt = currentIdx >= 0 ? currentIdx + 1 : newQueue.length;
+      newQueue.splice(insertAt, 0, ...tracks);
+      return { ...s, queue: newQueue };
+    });
+  }, []);
+
   const togglePlay = useCallback(() => {
     const audio = audioRef.current;
     if (!audio || !state.currentTrack) return;
@@ -361,6 +392,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
         ...state,
         playTrack,
         playAlbum,
+        addToQueue,
         togglePlay,
         next,
         previous,
