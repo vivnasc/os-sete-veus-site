@@ -11,10 +11,10 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Veus",
-    template: "%s | Veus",
+    default: "Véus by Loranne",
+    template: "%s — Véus",
   },
-  description: "Música original do universo Sete Véus. Banda sonora para a tua transformação.",
+  description: "A banda sonora da tua transformação. Música original de Loranne.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://music.seteveus.space"),
   manifest: "/manifest.json",
   icons: {

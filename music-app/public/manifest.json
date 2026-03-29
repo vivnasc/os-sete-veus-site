@@ -1,7 +1,7 @@
 {
-  "name": "Veus — Música Sete Véus",
-  "short_name": "Veus",
-  "description": "Música original do universo Sete Véus. Streaming e offline.",
+  "name": "Véus by Loranne",
+  "short_name": "Véus",
+  "description": "A banda sonora da tua transformação. Música original de Loranne.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0D0D1A",
