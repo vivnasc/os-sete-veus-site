@@ -29,7 +29,7 @@ export async function GET() {
         .list(prefix || undefined, { limit: 200 });
 
       for (const folder of folders || []) {
-        if (!folder.name || !folder.id) continue; // skip files, only folders
+        if (!folder.name) continue;
         // Skip non-album folders
         if (folder.name.startsWith("carousel-") || folder.name.startsWith("citacao-")) continue;
 
