@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ALL_ALBUMS } from "@/data/albums";
 import type { Album, AlbumTrack } from "@/data/albums";
+import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
 import { useMusicPlayer, formatTime as fmt } from "@/contexts/MusicPlayerContext";
 import { useTopTracks } from "@/hooks/useTopTracks";
 
@@ -92,6 +93,14 @@ export default function TopTracksSection() {
                 <span className="w-6 text-center text-xs font-medium text-[#666680] tabular-nums">
                   {idx + 1}
                 </span>
+                <div className="h-10 w-10 shrink-0 rounded-md overflow-hidden" style={{ background: `linear-gradient(135deg, ${album.color}, ${album.color}88)` }}>
+                  <img
+                    src={getTrackCoverUrl(album.slug, track.number)}
+                    alt=""
+                    className="w-full h-full object-cover"
+                    onError={(e) => { const img = e.target as HTMLImageElement; img.onerror = null; img.src = getAlbumCover(album); }}
+                  />
+                </div>
                 <div className="flex-1 min-w-0">
                   <p className={`text-sm font-medium truncate ${isActive ? "text-[#C9A96E]" : "text-[#F5F0E6]"}`}>
                     {track.title}
