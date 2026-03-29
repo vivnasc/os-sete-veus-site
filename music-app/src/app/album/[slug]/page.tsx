@@ -4,7 +4,9 @@ import { use } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ALL_ALBUMS as ALBUMS } from "@/data/albums";
+import { useState } from "react";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
+import AddToPlaylistModal from "@/components/music/AddToPlaylistModal";
 import { useSubscriptionGate } from "@/contexts/SubscriptionContext";
 import { useDownloads } from "@/hooks/useDownloads";
 import { getAlbumCover, getAlbumBadge } from "@/lib/album-covers";
@@ -19,7 +21,8 @@ function fmt(s: number) {
 export default function AlbumPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
   const album = ALBUMS.find(a => a.slug === slug);
-  const { currentTrack, currentAlbum, playAlbum } = useMusicPlayer();
+  const { currentTrack, currentAlbum, playAlbum, addToQueue } = useMusicPlayer();
+  const [showPlaylistModal, setShowPlaylistModal] = useState(false);
   const { isPremium, requestPlay } = useSubscriptionGate();
   const { saveAlbum, isSaved } = useDownloads();
 
@@ -151,15 +154,43 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
                     </button>
                   );
                 })()}
-                <Link
-                  href="/upload"
+                <button
+                  onClick={() => {
+                    if (navigator.share) {
+                      navigator.share({
+                        title: album.title,
+                        text: `${album.title} — Loranne`,
+                        url: `${window.location.origin}/album/${album.slug}`,
+                      }).catch(() => {});
+                    } else {
+                      navigator.clipboard.writeText(`${album.title} — Loranne\n${window.location.origin}/album/${album.slug}`);
+                    }
+                  }}
                   className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-sm text-[#a0a0b0] border border-white/10 hover:bg-white/5 transition-colors"
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
-                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" />
+                    <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" />
                   </svg>
-                  Carregar
-                </Link>
+                  Partilhar
+                </button>
+                <button
+                  onClick={() => addToQueue(album.tracks, album)}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-sm text-[#a0a0b0] border border-white/10 hover:bg-white/5 transition-colors"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
+                    <path d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  </svg>
+                  Tocar a seguir
+                </button>
+                <button
+                  onClick={() => setShowPlaylistModal(true)}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-sm text-[#a0a0b0] border border-white/10 hover:bg-white/5 transition-colors"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
+                    <path d="M4 6h16M4 10h16M4 14h10M4 18h7" />
+                  </svg>
+                  Adicionar a playlist
+                </button>
               </div>
             </div>
           </div>
@@ -189,6 +220,15 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
           </p>
         </div>
       </div>
+
+      {/* Playlist modal for album */}
+      {showPlaylistModal && (
+        <AddToPlaylistModal
+          trackNumber={album.tracks[0]?.number || 1}
+          albumSlug={album.slug}
+          onClose={() => setShowPlaylistModal(false)}
+        />
+      )}
     </div>
   );
 }
