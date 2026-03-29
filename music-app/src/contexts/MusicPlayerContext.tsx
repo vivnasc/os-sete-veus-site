@@ -3,6 +3,7 @@
 import { createContext, useContext, useState, useRef, useCallback, useEffect, type ReactNode } from "react";
 import { ALL_ALBUMS, type Album, type AlbumTrack } from "@/data/albums";
 import { getCachedAudioUrl } from "@/hooks/useDownloads";
+import { getAlbumCover } from "@/lib/album-covers";
 
 export function formatTime(s: number): string {
   if (!isFinite(s) || s < 0) return "0:00";
@@ -385,6 +386,31 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
   const clearAudioError = useCallback(() => {
     setState(s => ({ ...s, audioError: null }));
   }, []);
+
+  // ── MediaSession API — lock screen / notification controls ──
+  useEffect(() => {
+    if (!("mediaSession" in navigator) || !state.currentTrack) return;
+
+    const track = state.currentTrack;
+    const album = state.currentAlbum;
+    const coverUrl = album
+      ? `${window.location.origin}${getAlbumCover(album)}`
+      : `${window.location.origin}/icon-512.png`;
+
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: track.title,
+      artist: "Loranne",
+      album: album?.title || "Véus",
+      artwork: [
+        { src: coverUrl, sizes: "512x512", type: "image/png" },
+      ],
+    });
+
+    navigator.mediaSession.setActionHandler("play", () => togglePlay());
+    navigator.mediaSession.setActionHandler("pause", () => togglePlay());
+    navigator.mediaSession.setActionHandler("previoustrack", () => previous());
+    navigator.mediaSession.setActionHandler("nexttrack", () => next());
+  }, [state.currentTrack, state.currentAlbum, togglePlay, next, previous]);
 
   return (
     <MusicPlayerContext.Provider
