@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ALL_ALBUMS } from "@/data/albums";
@@ -9,6 +9,7 @@ import { useMusicPlayer, formatTime as fmt } from "@/contexts/MusicPlayerContext
 import { useLibrary } from "@/hooks/useLibrary";
 import { useDownloads } from "@/hooks/useDownloads";
 import { usePlaylists } from "@/hooks/usePlaylists";
+import { getAlbumCover } from "@/lib/album-covers";
 
 // ─────────────────────────────────────────────
 // Helpers
@@ -37,10 +38,21 @@ function timeAgo(iso: string) {
 // Component
 // ─────────────────────────────────────────────
 
-type Tab = "favoritos" | "playlists" | "recentes" | "offline";
+type Tab = "albums" | "favoritos" | "playlists" | "recentes" | "offline";
 
 export default function LibraryPage() {
-  const [activeTab, setActiveTab] = useState<Tab>("favoritos");
+  const [activeTab, setActiveTab] = useState<Tab>("albums");
+  const [publishedKeys, setPublishedKeys] = useState<Set<string>>(new Set());
+
+  // Fetch published tracks to determine which albums have audio
+  useEffect(() => {
+    fetch("/api/published-tracks")
+      .then(r => r.json())
+      .then((data: { tracks?: string[] }) => {
+        if (data.tracks) setPublishedKeys(new Set(data.tracks));
+      })
+      .catch(() => {});
+  }, []);
   const [creatingPlaylist, setCreatingPlaylist] = useState(false);
   const [newPlaylistName, setNewPlaylistName] = useState("");
   const { favorites, recents } = useLibrary();
@@ -78,7 +90,13 @@ export default function LibraryPage() {
     if (id) router.push(`/playlists/${id}`);
   }
 
-  const tabs: { key: Tab; label: string; icon?: React.ReactNode }[] = [
+  // Albums with at least one published track
+  const publishedAlbums = ALL_ALBUMS.filter(album =>
+    album.tracks.some(t => publishedKeys.has(`${album.slug}-t${t.number}`))
+  );
+
+  const tabs: { key: Tab; label: string; count?: number; icon?: React.ReactNode }[] = [
+    { key: "albums", label: "Albums", count: publishedAlbums.length },
     { key: "favoritos", label: "Favoritos" },
     { key: "playlists", label: "Playlists" },
     { key: "recentes", label: "Recentes" },
@@ -134,6 +152,45 @@ export default function LibraryPage() {
 
       {/* Body */}
       <div className="px-4 pb-32">
+        {/* ── ALBUMS PUBLICADOS ── */}
+        {activeTab === "albums" && (
+          publishedAlbums.length === 0 ? (
+            <div className="flex flex-col items-center justify-center pt-24 text-center">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#333350" strokeWidth="1.5" className="mb-4">
+                <path d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
+              </svg>
+              <p className="text-sm text-[#666680]">Nenhum album publicado ainda</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              {publishedAlbums.map(album => {
+                const publishedCount = album.tracks.filter(t => publishedKeys.has(`${album.slug}-t${t.number}`)).length;
+                return (
+                  <Link
+                    key={album.slug}
+                    href={`/album/${album.slug}`}
+                    className="group"
+                  >
+                    <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg mb-2">
+                      <img
+                        src={getAlbumCover(album)}
+                        alt={album.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      <div className="absolute bottom-2 left-2 right-2">
+                        <p className="text-xs text-white/80">{publishedCount}/{album.tracks.length} faixas</p>
+                      </div>
+                    </div>
+                    <p className="text-sm font-semibold text-[#F5F0E6] truncate">{album.title}</p>
+                    <p className="text-xs text-[#666680] truncate">{album.subtitle}</p>
+                  </Link>
+                );
+              })}
+            </div>
+          )
+        )}
+
         {/* ── FAVORITOS ── */}
         {activeTab === "favoritos" && (
           favorites.length === 0 ? (

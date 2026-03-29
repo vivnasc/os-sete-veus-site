@@ -151,15 +151,25 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
                     </button>
                   );
                 })()}
-                <Link
-                  href="/upload"
+                <button
+                  onClick={() => {
+                    if (navigator.share) {
+                      navigator.share({
+                        title: album.title,
+                        text: `${album.title} — Loranne`,
+                        url: `${window.location.origin}/album/${album.slug}`,
+                      }).catch(() => {});
+                    } else {
+                      navigator.clipboard.writeText(`${album.title} — Loranne\n${window.location.origin}/album/${album.slug}`);
+                    }
+                  }}
                   className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-sm text-[#a0a0b0] border border-white/10 hover:bg-white/5 transition-colors"
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
-                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" />
+                    <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" />
                   </svg>
-                  Carregar
-                </Link>
+                  Partilhar
+                </button>
               </div>
             </div>
           </div>
