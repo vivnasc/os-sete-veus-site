@@ -75,6 +75,7 @@ type MusicPlayerActions = {
   setShowFullPlayer: (v: boolean) => void;
   setShowLyrics: (v: boolean) => void;
   clearAudioError: () => void;
+  stop: () => void;
 };
 
 const MusicPlayerContext = createContext<(MusicPlayerState & MusicPlayerActions) | null>(null);
@@ -387,6 +388,30 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     setState(s => ({ ...s, audioError: null }));
   }, []);
 
+  const stop = useCallback(() => {
+    const audio = audioRef.current;
+    if (audio) {
+      audio.pause();
+      audio.src = "";
+    }
+    if (blobUrlRef.current) {
+      URL.revokeObjectURL(blobUrlRef.current);
+      blobUrlRef.current = null;
+    }
+    setState(s => ({
+      ...s,
+      currentTrack: null,
+      currentAlbum: null,
+      queue: [],
+      queueAlbum: null,
+      isPlaying: false,
+      currentTime: 0,
+      duration: 0,
+      showFullPlayer: false,
+      audioError: null,
+    }));
+  }, []);
+
   // ── MediaSession API — lock screen / notification controls ──
   useEffect(() => {
     if (!("mediaSession" in navigator) || !state.currentTrack) return;
@@ -430,6 +455,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
         setShowFullPlayer,
         setShowLyrics,
         clearAudioError,
+        stop,
       }}
     >
       {children}

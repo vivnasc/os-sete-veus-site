@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import type { Album, AlbumTrack } from "@/data/albums";
 import { getShareUrl } from "@/lib/share-utils";
+import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
+import { generateShareCard, downloadBlob, shareImage } from "@/lib/share-card";
 
 type Props = {
   track: AlbumTrack;
@@ -24,12 +26,65 @@ function pickLyric(track: AlbumTrack): string | null {
 export default function ShareModal({ track, album, onClose }: Props) {
   const [copied, setCopied] = useState(false);
   const [showTip, setShowTip] = useState<string | null>(null);
+  const [generating, setGenerating] = useState(false);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [cardBlob, setCardBlob] = useState<Blob | null>(null);
+  const [cardFormat, setCardFormat] = useState<"story" | "square">("story");
+  const previewRef = useRef<string | null>(null);
+
+  // Resolve best cover (track cover > album cover)
+  const [resolvedCover, setResolvedCover] = useState<string>(getAlbumCover(album));
+  useEffect(() => {
+    const trackCover = getTrackCoverUrl(album.slug, track.number);
+    const img = new Image();
+    img.onload = () => setResolvedCover(trackCover);
+    img.onerror = () => {}; // keep album cover
+    img.src = trackCover;
+  }, [album.slug, track.number]);
+
+  // Cleanup preview URL
+  useEffect(() => {
+    return () => {
+      if (previewRef.current) URL.revokeObjectURL(previewRef.current);
+    };
+  }, []);
 
   const shareUrl = getShareUrl(album.slug, track.number);
   const lyric = pickLyric(track);
   const shareText = lyric
     ? `"${lyric}"\n— ${track.title}, Loranne`
     : `${track.title} — Loranne`;
+
+  async function generateCard(format: "story" | "square") {
+    setGenerating(true);
+    setCardFormat(format);
+    try {
+      const blob = await generateShareCard(track, album, resolvedCover, format);
+      setCardBlob(blob);
+      if (previewRef.current) URL.revokeObjectURL(previewRef.current);
+      const url = URL.createObjectURL(blob);
+      previewRef.current = url;
+      setPreviewUrl(url);
+    } catch {
+      setShowTip("Erro ao gerar imagem. Tenta de novo.");
+      setTimeout(() => setShowTip(null), 3000);
+    } finally {
+      setGenerating(false);
+    }
+  }
+
+  async function handleShareImage() {
+    if (!cardBlob) return;
+    const shared = await shareImage(cardBlob, track);
+    if (!shared) {
+      downloadBlob(cardBlob, `${track.title} — Loranne.png`);
+    }
+  }
+
+  async function handleDownload() {
+    if (!cardBlob) return;
+    downloadBlob(cardBlob, `${track.title} — Loranne.png`);
+  }
 
   async function copyAll() {
     try {
@@ -53,7 +108,6 @@ export default function ShareModal({ track, album, onClose }: Props) {
   }
 
   function shareWhatsAppStatus() {
-    // WhatsApp Status can't be opened via URL — copy text and guide user
     navigator.clipboard.writeText(`${shareText}\n\n${shareUrl}`).then(() => {
       setShowTip("Texto copiado. Abre o WhatsApp → Status → Cola o texto.");
       setTimeout(() => setShowTip(null), 4000);
@@ -66,10 +120,16 @@ export default function ShareModal({ track, album, onClose }: Props) {
   }
 
   function shareInstagram() {
-    navigator.clipboard.writeText(`${shareText}\n\n${shareUrl}`).then(() => {
-      setShowTip("Texto copiado. Abre o Instagram → Story → Cola o texto.");
+    // Generate story card and prompt to save
+    if (!cardBlob) {
+      generateCard("story").then(() => {
+        setShowTip("Imagem pronta. Guarda e abre no Instagram → Story.");
+      });
+    } else {
+      downloadBlob(cardBlob, `${track.title} — Loranne.png`);
+      setShowTip("Imagem guardada. Abre o Instagram → Story → Selecciona a imagem.");
       setTimeout(() => setShowTip(null), 4000);
-    }).catch(() => {});
+    }
   }
 
   const hasNativeShare = typeof navigator !== "undefined" && typeof navigator.share === "function";
@@ -78,7 +138,7 @@ export default function ShareModal({ track, album, onClose }: Props) {
     <div className="fixed inset-0 z-60 flex items-end sm:items-center justify-center" onClick={onClose}>
       <div className="absolute inset-0 bg-black/60" />
       <div
-        className="relative w-full max-w-sm bg-[#1A1A2E] rounded-t-2xl sm:rounded-2xl p-6 border border-white/10"
+        className="relative w-full max-w-sm bg-[#1A1A2E] rounded-t-2xl sm:rounded-2xl p-6 border border-white/10 max-h-[90vh] overflow-y-auto"
         onClick={e => e.stopPropagation()}
       >
         <h3 className="font-display text-lg font-semibold text-[#F5F0E6] mb-1">Partilhar</h3>
@@ -94,7 +154,88 @@ export default function ShareModal({ track, album, onClose }: Props) {
           </div>
         )}
 
-        {/* Primary: Native Share (shows all options including WA Status on mobile) */}
+        {/* ─── VISUAL CARD SECTION ─── */}
+        <div className="mb-5 rounded-xl bg-white/[0.03] border border-white/5 p-4">
+          <p className="text-xs text-[#a0a0b0] mb-3">Imagem para stories e posts</p>
+
+          {/* Preview */}
+          {previewUrl && (
+            <div className="mb-3 flex justify-center">
+              <img
+                src={previewUrl}
+                alt="Share card"
+                className="rounded-lg shadow-lg"
+                style={{
+                  maxHeight: cardFormat === "story" ? 280 : 200,
+                  width: "auto",
+                }}
+              />
+            </div>
+          )}
+
+          {/* Format buttons */}
+          <div className="flex gap-2 mb-3">
+            <button
+              onClick={() => generateCard("story")}
+              disabled={generating}
+              className={`flex-1 py-2.5 rounded-lg text-xs font-medium transition-all ${
+                previewUrl && cardFormat === "story"
+                  ? "bg-white/10 text-[#F5F0E6] border border-white/20"
+                  : "bg-white/5 text-[#a0a0b0] hover:bg-white/10 border border-white/5"
+              } disabled:opacity-50`}
+            >
+              {generating && cardFormat === "story" ? (
+                <span className="animate-pulse">A gerar...</span>
+              ) : (
+                "Story (9:16)"
+              )}
+            </button>
+            <button
+              onClick={() => generateCard("square")}
+              disabled={generating}
+              className={`flex-1 py-2.5 rounded-lg text-xs font-medium transition-all ${
+                previewUrl && cardFormat === "square"
+                  ? "bg-white/10 text-[#F5F0E6] border border-white/20"
+                  : "bg-white/5 text-[#a0a0b0] hover:bg-white/10 border border-white/5"
+              } disabled:opacity-50`}
+            >
+              {generating && cardFormat === "square" ? (
+                <span className="animate-pulse">A gerar...</span>
+              ) : (
+                "Post (1:1)"
+              )}
+            </button>
+          </div>
+
+          {/* Save/Share image buttons */}
+          {cardBlob && (
+            <div className="flex gap-2">
+              <button
+                onClick={handleShareImage}
+                className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg text-xs font-medium transition-all text-[#0D0D1A]"
+                style={{ backgroundColor: album.color || "#C9A96E" }}
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+                  <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" />
+                </svg>
+                Partilhar imagem
+              </button>
+              <button
+                onClick={handleDownload}
+                className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg text-xs font-medium bg-white/5 text-[#a0a0b0] hover:bg-white/10 transition-colors border border-white/5"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                </svg>
+                Guardar
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* ─── LINK SHARING ─── */}
+
+        {/* Primary: Native Share */}
         {hasNativeShare && (
           <button
             onClick={nativeShare}
@@ -104,7 +245,7 @@ export default function ShareModal({ track, album, onClose }: Props) {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
               <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" />
             </svg>
-            Partilhar
+            Partilhar link
           </button>
         )}
 
