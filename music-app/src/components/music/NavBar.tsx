@@ -9,7 +9,7 @@ import { ADMIN_EMAIL } from "@/lib/admin-auth";
 const NAV_ITEMS = [
   { href: "/", label: "Explorar", icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1" },
   { href: "/search", label: "Buscar", icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" },
-  { href: "/library", label: "Biblioteca", icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" },
+  { href: "/library", label: "Biblioteca", icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" },
 ];
 
 export default function NavBar() {
@@ -52,6 +52,21 @@ export default function NavBar() {
               </Link>
             );
           })}
+
+          {/* Apoiar */}
+          <Link
+            href="/apoiar"
+            className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
+              pathname === "/apoiar"
+                ? "text-[#C9A96E] bg-[#C9A96E]/10"
+                : "text-[#C9A96E]/60 hover:text-[#C9A96E] hover:bg-[#C9A96E]/5"
+            }`}
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-5 w-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.562.562 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+            </svg>
+            <span className="hidden sm:inline">Apoiar</span>
+          </Link>
 
           {/* Admin links */}
           {isAdmin && (

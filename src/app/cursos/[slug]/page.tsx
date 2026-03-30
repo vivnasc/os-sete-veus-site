@@ -239,16 +239,25 @@ export default async function CourseLandingPage({ params }: PageProps) {
       {/* Pricing + CTA */}
       <section className="px-6 py-16 max-w-4xl mx-auto text-center">
         <p className="text-mundo-muted text-sm mb-2">
-          Curso completo:
+          Acesso a todos os cursos:
         </p>
-        <p className="text-4xl font-serif text-white mb-2">$49</p>
-        <p className="text-sm text-mundo-muted mb-8">USD / ~3100 MZN</p>
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-end mb-8">
+          <div>
+            <p className="text-4xl font-serif text-white">$19<span className="text-lg text-mundo-muted">/mes</span></p>
+            <p className="text-xs text-mundo-muted mt-1">~1.200 MZN</p>
+          </div>
+          <div className="text-mundo-muted text-sm">ou</div>
+          <div>
+            <p className="text-4xl font-serif text-white">$149<span className="text-lg text-mundo-muted">/ano</span></p>
+            <p className="text-xs text-mundo-muted mt-1">~9.500 MZN &middot; poupa 35%</p>
+          </div>
+        </div>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href={`/cursos/${slug}/dashboard`}
             className="inline-block bg-mundo-violeta text-white px-8 py-3 rounded-lg font-sans hover:bg-mundo-violeta/80 transition-colors"
           >
-            Inscrever-me
+            Subscrever
           </Link>
         </div>
       </section>

@@ -56,7 +56,7 @@ export default function HomePage() {
           {/* Favicon + nome */}
           <div className="mt-10 flex flex-col items-center gap-3">
             <Image
-              src="/Escola-dos-veus-favicon.png"
+              src="/escola_veus_favicon-192.png"
               alt=""
               width={80}
               height={80}

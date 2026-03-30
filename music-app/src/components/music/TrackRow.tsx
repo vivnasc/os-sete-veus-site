@@ -24,7 +24,7 @@ function fmt(s: number) {
 }
 
 export default function TrackRow({ track, album, isActive }: Props) {
-  const { playTrack, isPlaying, togglePlay } = useMusicPlayer();
+  const { playTrack, isPlaying, togglePlay, addToQueue } = useMusicPlayer();
   const { canPlay, isTrackFree, requestPlay } = useSubscriptionGate();
   const { saveTrack, removeTrack, getSaveState, isSaved } = useDownloads();
   const { isFavorite: isFav, toggleFavorite, userId } = useLibrary();
@@ -183,7 +183,20 @@ export default function TrackRow({ track, album, isActive }: Props) {
           </button>
 
           {menuOpen && (
-            <div className="absolute right-0 bottom-full mb-1 w-44 py-1 rounded-xl bg-[#1A1A2E] border border-white/10 shadow-xl z-40">
+            <div className="absolute right-0 bottom-full mb-1 w-48 py-1 rounded-xl bg-[#1A1A2E] border border-white/10 shadow-xl z-40">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setMenuOpen(false);
+                  addToQueue([track], album);
+                }}
+                className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-[#F5F0E6] hover:bg-white/5 transition-colors text-left"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4 text-[#a0a0b0]">
+                  <path d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                Tocar a seguir
+              </button>
               <button
                 onClick={(e) => {
                   e.stopPropagation();

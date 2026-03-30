@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback, useMemo } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
 import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
@@ -14,51 +14,6 @@ function fmt(s: number) {
   const m = Math.floor(s / 60);
   const sec = Math.floor(s % 60);
   return `${m}:${sec.toString().padStart(2, "0")}`;
-}
-
-// ── Lyrics sync engine ──
-// Distributes lyric lines across song duration with weighted timing
-// Chorus/Bridge sections get slightly more time per line
-type SyncedLine = { text: string; isTag: boolean; isEmpty: boolean; startTime: number; endTime: number };
-
-function buildSyncedLyrics(lyrics: string, totalDuration: number): SyncedLine[] {
-  if (!lyrics || totalDuration <= 0) return [];
-  const raw = lyrics.split("\n");
-  const lines: { text: string; isTag: boolean; isEmpty: boolean; weight: number }[] = [];
-
-  for (const line of raw) {
-    const trimmed = line.trim();
-    const isTag = trimmed.startsWith("[");
-    const isEmpty = !trimmed;
-    // Tags and empty lines get small weight (pauses), content lines get 1.0
-    // Chorus lines slightly longer (more emotional weight)
-    let weight = 0.15; // tag/empty
-    if (!isTag && !isEmpty) weight = 1.0;
-    lines.push({ text: trimmed, isTag, isEmpty, weight });
-  }
-
-  const totalWeight = lines.reduce((s, l) => s + l.weight, 0);
-  if (totalWeight === 0) return [];
-
-  // Leave 2s intro and 3s outro
-  const introTime = Math.min(2, totalDuration * 0.01);
-  const outroTime = Math.min(3, totalDuration * 0.02);
-  const availableDuration = totalDuration - introTime - outroTime;
-  const timePerWeight = availableDuration / totalWeight;
-
-  let currentTime = introTime;
-  return lines.map(l => {
-    const duration = l.weight * timePerWeight;
-    const result: SyncedLine = {
-      text: l.text,
-      isTag: l.isTag,
-      isEmpty: l.isEmpty,
-      startTime: currentTime,
-      endTime: currentTime + duration,
-    };
-    currentTime += duration;
-    return result;
-  });
 }
 
 type ViewTab = "cover" | "lyrics" | "queue";
@@ -91,8 +46,6 @@ export default function FullPlayer() {
   const [showSleep, setShowSleep] = useState(false);
   const [activeTab, setActiveTab] = useState<ViewTab>("cover");
   const [trackCover, setTrackCover] = useState<string | null>(null);
-  const lyricsContainerRef = useRef<HTMLDivElement>(null);
-  const activeLineRef = useRef<HTMLParagraphElement>(null);
   const { saveTrack, removeTrack, getSaveState, isSaved } = useDownloads();
   const { isFavorite, toggleFavorite, userId } = useLibrary();
   const router = useRouter();
@@ -111,25 +64,6 @@ export default function FullPlayer() {
   // Reset view on track change
   useEffect(() => { setActiveTab("cover"); }, [currentTrack]);
 
-  // ── Synced lyrics ──
-  const syncedLyrics = useMemo(() => {
-    if (!currentTrack?.lyrics || !duration) return [];
-    return buildSyncedLyrics(currentTrack.lyrics, duration);
-  }, [currentTrack?.lyrics, duration]);
-
-  const currentLineIndex = useMemo(() => {
-    if (syncedLyrics.length === 0) return -1;
-    for (let i = syncedLyrics.length - 1; i >= 0; i--) {
-      if (currentTime >= syncedLyrics[i].startTime) return i;
-    }
-    return -1;
-  }, [syncedLyrics, currentTime]);
-
-  // Auto-scroll lyrics to current line
-  useEffect(() => {
-    if (activeTab !== "lyrics" || !activeLineRef.current || !lyricsContainerRef.current) return;
-    activeLineRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
-  }, [currentLineIndex, activeTab]);
 
   // ── Browser back button ──
   const didPushState = useRef(false);
@@ -246,7 +180,7 @@ export default function FullPlayer() {
       </div>
 
       {/* ── CONTENT ── */}
-      <div ref={lyricsContainerRef} className="relative z-10 flex-1 overflow-y-auto scrollbar-none">
+      <div className="relative z-10 flex-1 overflow-y-auto scrollbar-none">
         <div className="max-w-md mx-auto px-6 pb-4 animate-[fadeIn_300ms_ease-out]" key={activeTab}>
 
           {/* ═══ COVER VIEW ═══ */}
@@ -296,51 +230,27 @@ export default function FullPlayer() {
             </div>
           )}
 
-          {/* ═══ LYRICS VIEW — TIME-SYNCED ═══ */}
+          {/* ═══ LYRICS VIEW ═══ */}
           {activeTab === "lyrics" && (
             <div className="py-4 min-h-[50vh]">
-              {hasLyrics && syncedLyrics.length > 0 ? (
-                <div className="space-y-1">
-                  {syncedLyrics.map((line, i) => {
-                    const isActive = i === currentLineIndex;
-                    const isPast = i < currentLineIndex;
-                    const isFuture = i > currentLineIndex;
-
-                    if (line.isEmpty) return <div key={i} className="h-4" />;
-
-                    if (line.isTag) return (
-                      <p
-                        key={i}
-                        ref={isActive ? activeLineRef : undefined}
-                        className={`text-[10px] uppercase tracking-[0.25em] pt-6 pb-1 transition-all duration-500 ${
-                          isPast ? "opacity-30" : isActive ? "opacity-80" : "opacity-40"
-                        }`}
-                        style={{ color: albumColor }}
-                      >
-                        {line.text.replace(/[\[\]]/g, "")}
+              {hasLyrics ? (
+                <div className="space-y-1 px-2 lyrics-content" data-no-copy>
+                  {currentTrack.lyrics!.split("\n").map((line: string, i: number) => {
+                    const trimmed = line.trim();
+                    const isTag = trimmed.startsWith("[");
+                    if (!trimmed) return <div key={i} className="h-4" />;
+                    if (isTag) return (
+                      <p key={i} className="text-[10px] uppercase tracking-[0.25em] pt-8 pb-2 first:pt-0" style={{ color: albumColor }}>
+                        {trimmed.replace(/[\[\]]/g, "")}
                       </p>
                     );
-
                     return (
-                      <p
-                        key={i}
-                        ref={isActive ? activeLineRef : undefined}
-                        onClick={() => { if (line.startTime > 0) seek(line.startTime); }}
-                        className={`font-display leading-relaxed cursor-pointer transition-all duration-500 ${
-                          isActive
-                            ? "text-[22px] text-[#F5F0E6] font-bold scale-[1.02] origin-left"
-                            : isPast
-                            ? "text-lg text-[#F5F0E6]/25"
-                            : "text-lg text-[#F5F0E6]/40"
-                        }`}
-                        style={isActive ? { textShadow: `0 0 30px ${albumColor}60` } : undefined}
-                      >
-                        {line.text}
+                      <p key={i} className="text-[18px] leading-[1.7] text-[#F5F0E6]/80 font-display">
+                        {trimmed}
                       </p>
                     );
                   })}
-                  {/* Spacer for scrolling last lines to center */}
-                  <div className="h-[30vh]" />
+                  <div className="h-[20vh]" />
                 </div>
               ) : (
                 <div className="flex flex-col items-center justify-center py-20 text-center">

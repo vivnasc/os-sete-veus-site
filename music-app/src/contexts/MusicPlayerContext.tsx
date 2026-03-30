@@ -3,6 +3,7 @@
 import { createContext, useContext, useState, useRef, useCallback, useEffect, type ReactNode } from "react";
 import { ALL_ALBUMS, type Album, type AlbumTrack } from "@/data/albums";
 import { getCachedAudioUrl } from "@/hooks/useDownloads";
+import { getAlbumCover } from "@/lib/album-covers";
 
 export function formatTime(s: number): string {
   if (!isFinite(s) || s < 0) return "0:00";
@@ -62,6 +63,7 @@ type MusicPlayerState = {
 type MusicPlayerActions = {
   playTrack: (track: AlbumTrack, album: Album, trackList?: AlbumTrack[]) => void;
   playAlbum: (album: Album, startIndex?: number) => void;
+  addToQueue: (tracks: AlbumTrack[], album: Album) => void;
   togglePlay: () => void;
   next: () => void;
   previous: () => void;
@@ -269,6 +271,36 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     playTrack(track, album, album.tracks);
   }, [playTrack]);
 
+  // Add tracks to play next (after current track)
+  const addToQueue = useCallback((tracks: AlbumTrack[], album: Album) => {
+    setState(s => {
+      if (!s.currentTrack) {
+        // Nothing playing — start playing the first track
+        const audio = audioRef.current;
+        if (audio && tracks[0]) {
+          setSourceAndPlay(audio, tracks[0], album, blobUrlRef);
+          return {
+            ...s,
+            currentTrack: tracks[0],
+            currentAlbum: album,
+            queue: tracks,
+            queueAlbum: album,
+            isPlaying: true,
+            showFullPlayer: true,
+            audioError: null,
+          };
+        }
+        return s;
+      }
+      // Insert after current track in queue
+      const currentIdx = s.queue.findIndex(t => t.number === s.currentTrack!.number);
+      const newQueue = [...s.queue];
+      const insertAt = currentIdx >= 0 ? currentIdx + 1 : newQueue.length;
+      newQueue.splice(insertAt, 0, ...tracks);
+      return { ...s, queue: newQueue };
+    });
+  }, []);
+
   const togglePlay = useCallback(() => {
     const audio = audioRef.current;
     if (!audio || !state.currentTrack) return;
@@ -355,12 +387,38 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     setState(s => ({ ...s, audioError: null }));
   }, []);
 
+  // ── MediaSession API — lock screen / notification controls ──
+  useEffect(() => {
+    if (!("mediaSession" in navigator) || !state.currentTrack) return;
+
+    const track = state.currentTrack;
+    const album = state.currentAlbum;
+    const coverUrl = album
+      ? `${window.location.origin}${getAlbumCover(album)}`
+      : `${window.location.origin}/icon-512.png`;
+
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: track.title,
+      artist: "Loranne",
+      album: album?.title || "Véus",
+      artwork: [
+        { src: coverUrl, sizes: "512x512", type: "image/png" },
+      ],
+    });
+
+    navigator.mediaSession.setActionHandler("play", () => togglePlay());
+    navigator.mediaSession.setActionHandler("pause", () => togglePlay());
+    navigator.mediaSession.setActionHandler("previoustrack", () => previous());
+    navigator.mediaSession.setActionHandler("nexttrack", () => next());
+  }, [state.currentTrack, state.currentAlbum, togglePlay, next, previous]);
+
   return (
     <MusicPlayerContext.Provider
       value={{
         ...state,
         playTrack,
         playAlbum,
+        addToQueue,
         togglePlay,
         next,
         previous,

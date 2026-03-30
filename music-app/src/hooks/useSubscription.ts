@@ -65,14 +65,14 @@ export function useSubscription() {
 
   const isPremium = status === "active";
 
-  const isTrackFree = useCallback((trackNumber: number): boolean => {
-    // Track 1 of every album is always free
-    return trackNumber === 1;
+  const isTrackFree = useCallback((_trackNumber: number): boolean => {
+    // All tracks are free — music is the funnel, not the product
+    return true;
   }, []);
 
-  const canPlay = useCallback((trackNumber: number): boolean => {
-    if (isPremium) return true;
-    return isTrackFree(trackNumber);
+  const canPlay = useCallback((_trackNumber: number): boolean => {
+    // All tracks playable by everyone
+    return true;
   }, [isPremium, isTrackFree]);
 
   return { status, isPremium, isTrackFree, canPlay, userId };

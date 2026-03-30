@@ -8,8 +8,8 @@ import Link from "next/link";
 import NavBar from "@/components/music/NavBar";
 
 export const metadata = {
-  title: "Véus",
-  description: "Música original do universo Sete Véus. Banda sonora para a tua transformação.",
+  title: "Explorar",
+  description: "A banda sonora da tua transformação. Música original de Loranne.",
 };
 
 export default function MusicHomePage() {

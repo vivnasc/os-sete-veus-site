@@ -5,15 +5,16 @@ import MiniPlayer from "@/components/music/MiniPlayer";
 import FullPlayer from "@/components/music/FullPlayer";
 import PlayTracker from "@/components/music/PlayTracker";
 import NoDownload from "@/components/music/NoDownload";
+import AuthGate from "@/components/music/AuthGate";
 import RegisterSW from "@/components/RegisterSW";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Véus",
-    template: "%s | Véus",
+    default: "Véus by Loranne",
+    template: "%s — Véus",
   },
-  description: "Música original do universo Sete Véus. Banda sonora para a tua transformação.",
+  description: "A banda sonora da tua transformação. Música original de Loranne.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://music.seteveus.space"),
   manifest: "/manifest.json",
   icons: {
@@ -67,9 +68,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               >
                 Saltar para o conteudo
               </a>
-              <div id="main-content" className="pb-24" style={{ paddingTop: "env(safe-area-inset-top)" }}>
-                {children}
-              </div>
+              <AuthGate>
+                <div id="main-content" className="pb-24" style={{ paddingTop: "env(safe-area-inset-top)" }}>
+                  {children}
+                </div>
+              </AuthGate>
               <MiniPlayer />
               <FullPlayer />
               <PlayTracker />

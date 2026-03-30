@@ -151,7 +151,7 @@ export default function Home() {
                 Ver os 10 cursos
               </Link>
               <p className="mt-4 text-xs text-[#606070]">
-                $49 USD por curso / ~3100 MZN
+                A partir de $19/mes &middot; Acesso a todos os cursos
               </p>
             </div>
           </ScrollReveal>

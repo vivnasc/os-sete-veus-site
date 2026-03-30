@@ -29,7 +29,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!album || !track) return { title: "Loranne — Veus" };
 
   const lyric = pickLyricLine(track.lyrics);
-  const ogImage = `/api/og?album=${encodeURIComponent(album.slug)}&track=${track.number}`;
+
+  // OG image: use track cover from Supabase (Pollinations/Suno artwork)
+  // Falls back to album pose if no cover exists
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+  const pad = String(track.number).padStart(2, "0");
+  const trackCoverUrl = `${supabaseUrl}/storage/v1/object/public/audios/albums/${album.slug}/faixa-${pad}-cover.jpg`;
+  const albumCover = getAlbumCover(album);
+  // Use absolute URL for album cover fallback
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://music.seteveus.space";
+  const ogImage = trackCoverUrl || `${baseUrl}${albumCover}`;
 
   // SEO misterioso — a frase convida, não descreve
   const title = lyric
