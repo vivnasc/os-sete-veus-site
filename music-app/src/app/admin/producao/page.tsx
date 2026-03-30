@@ -1467,6 +1467,35 @@ export default function AlbumProductionPage() {
               Limpar capas
             </button>
 
+            {/* Rename folder button */}
+            <button
+              onClick={async () => {
+                const from = prompt("Pasta de origem (ex: albums/cosmic-romance):");
+                if (!from) return;
+                const to = prompt("Pasta destino (ex: albums/romance-pele):");
+                if (!to) return;
+                if (!confirm(`Renomear "${from}" → "${to}"? Isto move todos os ficheiros.`)) return;
+                try {
+                  const res = await adminFetch("/api/admin/rename-folder", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ from, to }),
+                  });
+                  const data = await res.json();
+                  if (data.ok) {
+                    alert(`Renomeado! ${data.results?.length || 0} ficheiros movidos.\n${(data.results || []).join("\n")}`);
+                  } else {
+                    alert(`Erro: ${data.erro || "Falhou"}`);
+                  }
+                } catch (e) {
+                  alert(`Erro: ${e}`);
+                }
+              }}
+              className="rounded-lg bg-amber-900/30 px-3 py-1.5 text-[10px] text-amber-400 hover:bg-amber-900/50 transition"
+            >
+              Renomear pasta
+            </button>
+
             <div className="flex gap-1 rounded-full bg-mundo-muted-dark/10 p-1">
               <button
                 onClick={() => setViewMode("producao")}
