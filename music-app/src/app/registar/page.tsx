@@ -42,6 +42,13 @@ export default function RegistarPage() {
         setError(authError.message);
       }
     } else {
+      // Notify admin of new registration (fire and forget)
+      fetch("/api/notify-register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      }).catch(() => {});
+
       // Try to auto-login
       const { error: loginErr } = await supabase.auth.signInWithPassword({ email, password });
       if (!loginErr) {
