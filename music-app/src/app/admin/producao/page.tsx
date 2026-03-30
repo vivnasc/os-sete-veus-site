@@ -1116,29 +1116,33 @@ export default function AlbumProductionPage() {
     }
 
     try {
-      // Try direct download first (faster, no server timeout risk)
       let blob: Blob | null = null;
-      try {
-        const directRes = await fetch(clipAudioUrl);
-        if (directRes.ok) {
-          blob = await directRes.blob();
+      const isCached = clipAudioUrl.startsWith("blob:");
+
+      // If cached in memory (blob: URL), fetch directly — always works
+      if (isCached) {
+        const res = await fetch(clipAudioUrl);
+        if (res.ok) blob = await res.blob();
+      } else {
+        // Try direct download first
+        try {
+          const directRes = await fetch(clipAudioUrl);
+          if (directRes.ok) blob = await directRes.blob();
+        } catch { /* CORS blocked */ }
+
+        // Fallback to server proxy if direct failed
+        if (!blob || blob.size < 1000) {
+          const proxyRes = await adminFetch("/api/admin/proxy-download", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ url: clipAudioUrl }),
+          });
+          if (!proxyRes.ok) throw new Error(`Download falhou (${proxyRes.status}). Tenta regenerar.`);
+          blob = await proxyRes.blob();
         }
-      } catch {
-        // CORS blocked — try proxy
       }
 
-      // Fallback to server proxy if direct failed
-      if (!blob || blob.size < 1000) {
-        const proxyRes = await adminFetch("/api/admin/proxy-download", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ url: clipAudioUrl }),
-        });
-        if (!proxyRes.ok) throw new Error(`Download falhou (${proxyRes.status}). Tenta regenerar.`);
-        blob = await proxyRes.blob();
-      }
-
-      if (!blob || blob.size < 1000) throw new Error(`Audio vazio (${blob?.size || 0} bytes). O URL do Suno pode ter expirado. Tenta regenerar.`);
+      if (!blob || blob.size < 1000) throw new Error(`Audio vazio (${blob?.size || 0} bytes). Tenta regenerar.`);
 
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}.mp3`;
       const url = await uploadViaSignedUrl(blob, filename);
