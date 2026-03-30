@@ -49,6 +49,18 @@ export default function ShareModal({ track, album, onClose }: Props) {
     };
   }, []);
 
+  // ── Video hook (read-only — generated in production) ──
+  const [hookVideoUrl, setHookVideoUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch(`/api/music/hook-video?album=${encodeURIComponent(album.slug)}&track=${track.number}`)
+      .then(r => r.json())
+      .then(data => {
+        if (data.exists && data.videoUrl) setHookVideoUrl(data.videoUrl);
+      })
+      .catch(() => {});
+  }, [album.slug, track.number]);
+
   const shareUrl = getShareUrl(album.slug, track.number);
   const lyric = pickLyric(track);
   const shareText = lyric
@@ -232,6 +244,55 @@ export default function ShareModal({ track, album, onClose }: Props) {
             </div>
           )}
         </div>
+
+        {/* ─── VIDEO HOOK (if exists) ─── */}
+        {hookVideoUrl && (
+          <div className="mb-5 rounded-xl bg-white/[0.03] border border-white/5 p-4">
+            <p className="text-xs text-[#a0a0b0] mb-3">Video hook</p>
+            <video
+              src={hookVideoUrl}
+              className="w-full rounded-lg mb-3"
+              style={{ maxHeight: 280 }}
+              controls
+              playsInline
+              muted
+              loop
+            />
+            <div className="flex gap-2">
+              <a
+                href={hookVideoUrl}
+                download={`${track.title} — Loranne hook.mp4`}
+                className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg text-xs font-medium transition-all text-[#0D0D1A]"
+                style={{ backgroundColor: album.color || "#C9A96E" }}
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                </svg>
+                Guardar video
+              </a>
+              {typeof navigator !== "undefined" && navigator.share && (
+                <button
+                  onClick={async () => {
+                    try {
+                      const res = await fetch(hookVideoUrl);
+                      const blob = await res.blob();
+                      const file = new File([blob], `${track.title} — Loranne.mp4`, { type: "video/mp4" });
+                      if (navigator.canShare?.({ files: [file] })) {
+                        await navigator.share({ files: [file], title: track.title });
+                      }
+                    } catch { /* cancelled */ }
+                  }}
+                  className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg text-xs font-medium bg-white/5 text-[#a0a0b0] hover:bg-white/10 transition-colors border border-white/5"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+                    <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" />
+                  </svg>
+                  Partilhar
+                </button>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* ─── LINK SHARING ─── */}
 
