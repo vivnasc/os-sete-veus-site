@@ -4,7 +4,7 @@
  * Audio is cached separately in IndexedDB by the app code.
  */
 
-const CACHE_NAME = "veus-v2";
+const CACHE_NAME = "veus-v3";
 
 // App shell — pages and static assets to cache on install
 const APP_SHELL = [
@@ -59,11 +59,14 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Cache first for static assets (images, fonts, CSS, JS)
+  // Cache first for OUR static assets only (images, fonts, CSS, JS)
+  // Never cache external CDN images (Suno covers, etc.)
   if (
-    url.pathname.match(/\.(png|jpg|jpeg|svg|webp|woff2?|ttf|css|js)$/) ||
-    url.hostname === "fonts.googleapis.com" ||
-    url.hostname === "fonts.gstatic.com"
+    url.origin === self.location.origin &&
+    (
+      url.pathname.match(/\.(png|jpg|jpeg|svg|webp|woff2?|ttf|css|js)$/) ||
+      url.pathname.startsWith("/poses/")
+    )
   ) {
     event.respondWith(
       caches.match(event.request).then((cached) => {
@@ -73,6 +76,24 @@ self.addEventListener("fetch", (event) => {
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
           return response;
         });
+      })
+    );
+    return;
+  }
+
+  // Stale-while-revalidate for Google Fonts
+  if (
+    url.hostname === "fonts.googleapis.com" ||
+    url.hostname === "fonts.gstatic.com"
+  ) {
+    event.respondWith(
+      caches.match(event.request).then((cached) => {
+        const fetchPromise = fetch(event.request).then((response) => {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+          return response;
+        });
+        return cached || fetchPromise;
       })
     );
     return;
