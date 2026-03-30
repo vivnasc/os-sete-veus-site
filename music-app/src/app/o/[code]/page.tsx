@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const lyric = pickLyricLine(track.lyrics);
 
-  // OG image: use track cover from Supabase (Pollinations/Suno artwork)
+  // OG image: use track cover from Supabase (Suno artwork)
   // Falls back to album pose if no cover exists
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
   const pad = String(track.number).padStart(2, "0");

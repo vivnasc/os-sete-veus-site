@@ -42,7 +42,7 @@ export async function GET(req: NextRequest) {
             status: 200,
             headers: {
               "Content-Type": contentType,
-              "Cache-Control": "public, max-age=86400",
+              "Cache-Control": "public, max-age=300, s-maxage=300",
               "Content-Length": res.headers.get("content-length") || "",
             },
           });

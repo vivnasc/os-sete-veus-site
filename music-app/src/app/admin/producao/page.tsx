@@ -802,41 +802,6 @@ function TrackRow({
             )
           )}
 
-          {/* Generate cover */}
-          <button
-            onClick={async () => {
-              const btn = document.activeElement as HTMLButtonElement;
-              btn.disabled = true;
-              btn.textContent = "A gerar...";
-              try {
-                const res = await adminFetch("/api/admin/generate-cover", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({
-                    album_slug: albumSlug,
-                    track_number: track.number,
-                    title: editedTitle ?? track.title,
-                    description: track.description,
-                    mood: track.energy,
-                  }),
-                });
-                const data = await res.json();
-                if (data.ok) {
-                  btn.textContent = "Capa gerada!";
-                } else {
-                  btn.textContent = "Erro";
-                  alert(data.erro || "Erro ao gerar capa");
-                }
-              } catch {
-                btn.textContent = "Erro";
-              }
-              setTimeout(() => { btn.disabled = false; btn.textContent = "Gerar capa"; }, 3000);
-            }}
-            className="rounded-lg bg-mundo-muted-dark/20 px-3 py-1.5 text-xs text-mundo-muted hover:bg-mundo-muted-dark/30 transition"
-          >
-            Gerar capa
-          </button>
-
           {/* Generate animated reel (Canvas + Audio) */}
           <button
             id={`reel-btn-${albumSlug}-${track.number}`}
@@ -1520,18 +1485,6 @@ export default function AlbumProductionPage() {
             </div>
 
             {/* Cleanup button */}
-            <button
-              onClick={async () => {
-                if (!confirm("Apagar todas as capas corruptas do Supabase?")) return;
-                const res = await adminFetch("/api/admin/cleanup-covers", { method: "POST" });
-                const data = await res.json();
-                alert(`${data.total || 0} capas corruptas apagadas.`);
-              }}
-              className="rounded-lg bg-red-900/30 px-3 py-1.5 text-[10px] text-red-400 hover:bg-red-900/50 transition"
-            >
-              Limpar capas
-            </button>
-
             {/* Rename folder button */}
             <button
               onClick={async () => {
