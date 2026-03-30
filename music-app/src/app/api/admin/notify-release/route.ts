@@ -2,18 +2,17 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/admin-auth";
 
 /**
- * Notify all active subscribers about a new album release.
- * POST /api/admin/notify-release { albumTitle, albumSlug, message? }
+ * Notify admin about subscribers when publishing a new album.
+ * Sends WhatsApp numbers list to admin via Telegram for broadcast.
  *
- * Sends via Telegram to admin (summary) and email to subscribers (future).
- * For now: logs subscribers and notifies admin with count.
+ * POST /api/admin/notify-release { albumTitle, albumSlug }
  */
 export async function POST(req: NextRequest) {
   const auth = await requireAdmin(req);
   if (!auth.ok) return auth.response;
 
   try {
-    const { albumTitle, albumSlug, message } = await req.json();
+    const { albumTitle, albumSlug } = await req.json();
 
     if (!albumTitle || !albumSlug) {
       return NextResponse.json({ erro: "albumTitle e albumSlug obrigatórios." }, { status: 400 });
@@ -21,41 +20,46 @@ export async function POST(req: NextRequest) {
 
     const supabase = auth.supabase;
 
-    // Get all active subscribers
     const { data: subscribers, error } = await supabase
       .from("music_album_subscribers")
-      .select("email")
+      .select("whatsapp, name")
       .eq("active", true);
 
     if (error) {
       return NextResponse.json({ erro: error.message }, { status: 500 });
     }
 
-    const emails = (subscribers || []).map((s: { email: string }) => s.email);
+    const list = (subscribers || []) as { whatsapp: string; name: string | null }[];
 
-    // Notify admin via Telegram with subscriber count
     const botToken = process.env.TELEGRAM_BOT_TOKEN;
     const chatId = process.env.TELEGRAM_CHAT_ID;
 
     if (botToken && chatId) {
-      const customMsg = message ? `\n\n${message}` : "";
-      const telegramMsg = `🎶 Novo album publicado: <b>${albumTitle}</b>\n\n${emails.length} subscritores para notificar.${customMsg}\n\nEmails:\n${emails.join("\n") || "(nenhum)"}`;
+      const numberList = list.length > 0
+        ? list.map(s => `${s.whatsapp}${s.name ? ` (${s.name})` : ""}`).join("\n")
+        : "(nenhum subscritor)";
+
+      const msg = [
+        `🎶 <b>Novo album publicado: ${albumTitle}</b>`,
+        ``,
+        `${list.length} subscritores para notificar via WhatsApp:`,
+        ``,
+        numberList,
+        ``,
+        `Copia os numeros e cria um broadcast no WhatsApp.`,
+      ].join("\n");
 
       await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: telegramMsg,
-          parse_mode: "HTML",
-        }),
+        body: JSON.stringify({ chat_id: chatId, text: msg, parse_mode: "HTML" }),
       }).catch(() => {});
     }
 
     return NextResponse.json({
       ok: true,
-      subscriberCount: emails.length,
-      albumSlug,
+      subscriberCount: list.length,
+      subscribers: list,
     });
   } catch (err) {
     return NextResponse.json({ erro: String(err) }, { status: 500 });
