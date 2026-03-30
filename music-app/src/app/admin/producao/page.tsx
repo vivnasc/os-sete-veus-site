@@ -837,60 +837,65 @@ function TrackRow({
             Gerar capa
           </button>
 
-          {/* Generate video hook via Runway */}
+          {/* Generate animated reel (Canvas + Audio) */}
           <button
+            id={`reel-btn-${albumSlug}-${track.number}`}
             onClick={async () => {
-              const btn = document.activeElement as HTMLButtonElement;
+              const btn = document.getElementById(`reel-btn-${albumSlug}-${track.number}`) as HTMLButtonElement;
+              if (!btn) return;
               btn.disabled = true;
-              btn.textContent = "A enviar...";
+              btn.textContent = "A preparar...";
+
               try {
-                const res = await adminFetch("/api/admin/runway/generate", {
+                // Dynamic import to avoid loading reel-generator on page load
+                const { generateReel } = await import("@/lib/reel-generator");
+                const { getAlbumCover, getTrackCoverUrl } = await import("@/lib/album-covers");
+
+                const alb = ALL_ALBUMS.find(a => a.slug === albumSlug);
+                if (!alb) throw new Error("Album não encontrado");
+
+                // Try track cover first, fall back to album cover
+                let coverSrc = getAlbumCover(alb);
+                try {
+                  const trackCoverUrl = getTrackCoverUrl(albumSlug, track.number);
+                  const probe = await fetch(trackCoverUrl, { method: "HEAD" });
+                  if (probe.ok) coverSrc = trackCoverUrl;
+                } catch { /* use album cover */ }
+
+                const audioSrc = `/api/music/stream?album=${encodeURIComponent(albumSlug)}&track=${track.number}`;
+
+                const blob = await generateReel(track, alb, coverSrc, audioSrc, (p) => {
+                  btn.textContent = p.message;
+                });
+
+                btn.textContent = "A enviar...";
+
+                // Upload to Supabase
+                const form = new FormData();
+                form.append("albumSlug", albumSlug);
+                form.append("trackNumber", String(track.number));
+                form.append("video", blob, "reel.webm");
+
+                const res = await adminFetch("/api/admin/upload-reel", {
                   method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({
-                    albumSlug,
-                    trackNumber: track.number,
-                  }),
+                  body: form,
                 });
                 const data = await res.json();
-                if (data.status === "exists") {
-                  btn.textContent = "Hook existe";
-                } else if (data.taskId) {
-                  btn.textContent = "A gerar...";
-                  // Poll for completion
-                  const poll = setInterval(async () => {
-                    const sr = await adminFetch(
-                      `/api/admin/runway/status?taskId=${data.taskId}&album=${albumSlug}&track=${track.number}`
-                    );
-                    const sd = await sr.json();
-                    if (sd.status === "complete") {
-                      clearInterval(poll);
-                      btn.textContent = sd.stored ? "Hook guardado!" : "Hook pronto!";
-                      btn.disabled = false;
-                      setTimeout(() => { btn.textContent = "Gerar hook"; }, 3000);
-                    } else if (sd.status === "error") {
-                      clearInterval(poll);
-                      btn.textContent = "Erro";
-                      btn.disabled = false;
-                      alert(sd.error || "Runway falhou");
-                      setTimeout(() => { btn.textContent = "Gerar hook"; }, 3000);
-                    }
-                    // else still processing — keep polling
-                  }, 6000);
+
+                if (data.ok) {
+                  btn.textContent = "Reel guardado!";
                 } else {
-                  btn.textContent = "Erro";
-                  alert(data.erro || "Sem taskId");
-                  setTimeout(() => { btn.disabled = false; btn.textContent = "Gerar hook"; }, 3000);
+                  throw new Error(data.erro || "Upload falhou");
                 }
               } catch (e) {
                 btn.textContent = "Erro";
                 alert(String(e));
-                setTimeout(() => { btn.disabled = false; btn.textContent = "Gerar hook"; }, 3000);
               }
+              setTimeout(() => { btn.disabled = false; btn.textContent = "Gerar reel"; }, 3000);
             }}
             className="rounded-lg bg-violet-900/30 px-3 py-1.5 text-xs text-violet-400 hover:bg-violet-900/50 transition"
           >
-            Gerar hook
+            Gerar reel
           </button>
         </div>
       </div>
