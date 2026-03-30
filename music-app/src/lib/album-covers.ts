@@ -143,7 +143,9 @@ export function getAlbumCover(album: Album): string {
  * Retorna sempre um URL — o caller deve fazer probe (Image onload/onerror).
  */
 export function getTrackCoverUrl(albumSlug: string, trackNumber: number): string {
-  return `/api/music/stream?album=${encodeURIComponent(albumSlug)}&track=${trackNumber}&type=cover`;
+  // Cache-bust every 5 minutes so new covers appear quickly after approval
+  const cb = Math.floor(Date.now() / 300000);
+  return `/api/music/stream?album=${encodeURIComponent(albumSlug)}&track=${trackNumber}&type=cover&v=${cb}`;
 }
 
 /** Label para o badge do album — so o nome, sem prefixo */
