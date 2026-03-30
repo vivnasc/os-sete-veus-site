@@ -11,7 +11,6 @@ import { useSubscriptionGate } from "@/contexts/SubscriptionContext";
 import { useDownloads } from "@/hooks/useDownloads";
 import { getAlbumCover, getAlbumBadge } from "@/lib/album-covers";
 import TrackRow from "@/components/music/TrackRow";
-import SubscribeButton from "@/components/music/SubscribeButton";
 import { useAlbumVersions, type AlbumVersion } from "@/hooks/useAlbumVersions";
 import type { Album, AlbumTrack } from "@/data/albums";
 
@@ -271,7 +270,6 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
                   </svg>
                   Adicionar a playlist
                 </button>
-                <SubscribeButton albumSlug={album.slug} />
               </div>
             </div>
           </div>
