@@ -28,7 +28,7 @@ function extractStyleTags(prompt: string): string {
     // Genres
     "ambient", "electronic", "organic", "pop", "folk", "jazz", "gospel",
     "house", "afrobeat", "afropop", "bossa nova", "bossa",
-    "funk", "r&b", "funky",
+    "marrabenta", "mozambican", "funk", "r&b", "funky",
     // Instruments
     "piano", "guitar", "acoustic guitar", "nylon guitar", "strings",
     "synth", "bass", "drums", "percussion", "organ", "Rhodes",
@@ -91,7 +91,7 @@ function buildStyle(energy?: string, flavor?: string, prompt?: string): string {
   // Flavor-specific overrides (completely change the genre)
   const flavorStyles: Record<string, string> = {
     organic: "",
-    marrabenta: "danceable African rhythm, bright guitar groove, shaker, warm bass, percussive, joyful, body-moving",
+    marrabenta: "marrabenta, Mozambican guitar groove, shaker, danceable, warm bass",
     afrobeat: "afrobeat, afropop, syncopated guitar, talking drums, West African groove",
     bossa: "bossa nova, nylon guitar, brushed drums, Brazilian, swaying, velvet",
     jazz: "jazz, Rhodes piano, walking bass, brushed cymbals, smoky, late-night",

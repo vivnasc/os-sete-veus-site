@@ -1344,7 +1344,7 @@ export const ENERGY_LABELS: Record<TrackEnergy, { label: string; emoji: string; 
 // Labels e cores para o sabor musical (genero) de cada faixa
 export const FLAVOR_LABELS: Record<TrackFlavor, { label: string; emoji: string; color: string }> = {
   organic: { label: "Orgânico", emoji: "o", color: "bg-emerald-50 text-emerald-600" },
-  marrabenta: { label: "Marrabenta", emoji: "m", color: "bg-orange-50 text-orange-700" },
+  marrabenta: { label: "Dançável", emoji: "m", color: "bg-orange-50 text-orange-700" },
   afrobeat: { label: "Afrobeat", emoji: "a", color: "bg-amber-50 text-amber-700" },
   bossa: { label: "Bossa Nova", emoji: "b", color: "bg-cyan-50 text-cyan-700" },
   jazz: { label: "Jazz", emoji: "j", color: "bg-indigo-50 text-indigo-600" },
