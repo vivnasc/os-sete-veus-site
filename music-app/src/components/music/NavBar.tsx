@@ -21,17 +21,14 @@ export default function NavBar() {
     <nav className="sticky top-0 z-30 bg-[#0D0D1A]/90 backdrop-blur-xl border-b border-white/5" style={{ paddingTop: "env(safe-area-inset-top)" }}>
       <div className="max-w-screen-lg mx-auto px-6 flex items-center justify-between h-14">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center">
           <Image
             src="/veus_music_favicon-192.png"
             alt="Véus"
-            width={44}
-            height={44}
-            className="h-11 w-11"
+            width={36}
+            height={36}
+            className="h-9 w-9"
           />
-          <span className="font-display text-lg font-semibold text-[#C9A96E] tracking-wider">
-            VÉUS
-          </span>
         </Link>
 
         {/* Nav links */}
