@@ -28,12 +28,12 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Veus",
+    title: "Véus",
   },
   openGraph: {
-    title: "Veus",
+    title: "Véus",
     description: "Música original do universo Sete Véus. Banda sonora para a tua transformação.",
-    siteName: "Veus",
+    siteName: "Véus",
     locale: "pt_PT",
     type: "website",
   },

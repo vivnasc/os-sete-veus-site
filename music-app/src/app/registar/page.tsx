@@ -57,7 +57,7 @@ export default function RegistarPage() {
       <Link href="/" className="mb-10">
         <Image
           src="/veus_music_favicon-192.png"
-          alt="Veus"
+          alt="Véus"
           width={64}
           height={64}
           className="h-16 w-16"

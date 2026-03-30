@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const track = album?.tracks.find(t => t.number === trackNum);
 
   if (!album || !track) {
-    return { title: "Veus" };
+    return { title: "Véus" };
   }
 
   const lyric = pickLyricLine(track.lyrics);
