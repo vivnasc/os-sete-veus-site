@@ -836,6 +836,62 @@ function TrackRow({
           >
             Gerar capa
           </button>
+
+          {/* Generate video hook via Runway */}
+          <button
+            onClick={async () => {
+              const btn = document.activeElement as HTMLButtonElement;
+              btn.disabled = true;
+              btn.textContent = "A enviar...";
+              try {
+                const res = await adminFetch("/api/admin/runway/generate", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    albumSlug,
+                    trackNumber: track.number,
+                  }),
+                });
+                const data = await res.json();
+                if (data.status === "exists") {
+                  btn.textContent = "Hook existe";
+                } else if (data.taskId) {
+                  btn.textContent = "A gerar...";
+                  // Poll for completion
+                  const poll = setInterval(async () => {
+                    const sr = await adminFetch(
+                      `/api/admin/runway/status?taskId=${data.taskId}&album=${albumSlug}&track=${track.number}`
+                    );
+                    const sd = await sr.json();
+                    if (sd.status === "complete") {
+                      clearInterval(poll);
+                      btn.textContent = sd.stored ? "Hook guardado!" : "Hook pronto!";
+                      btn.disabled = false;
+                      setTimeout(() => { btn.textContent = "Gerar hook"; }, 3000);
+                    } else if (sd.status === "error") {
+                      clearInterval(poll);
+                      btn.textContent = "Erro";
+                      btn.disabled = false;
+                      alert(sd.error || "Runway falhou");
+                      setTimeout(() => { btn.textContent = "Gerar hook"; }, 3000);
+                    }
+                    // else still processing — keep polling
+                  }, 6000);
+                } else {
+                  btn.textContent = "Erro";
+                  alert(data.erro || "Sem taskId");
+                  setTimeout(() => { btn.disabled = false; btn.textContent = "Gerar hook"; }, 3000);
+                }
+              } catch (e) {
+                btn.textContent = "Erro";
+                alert(String(e));
+                setTimeout(() => { btn.disabled = false; btn.textContent = "Gerar hook"; }, 3000);
+              }
+            }}
+            className="rounded-lg bg-violet-900/30 px-3 py-1.5 text-xs text-violet-400 hover:bg-violet-900/50 transition"
+          >
+            Gerar hook
+          </button>
         </div>
       </div>
     </div>

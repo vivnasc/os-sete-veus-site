@@ -3,18 +3,21 @@ import { requireAdmin } from "@/lib/admin-auth";
 import { createClient } from "@supabase/supabase-js";
 
 const RUNWAY_API = "https://api.dev.runwayml.com/v1";
-const BUCKET = "audios"; // reuse existing bucket for all media
+const BUCKET = "audios";
 
 /**
- * Generate a video hook from a share card image using Runway Gen-3 Alpha.
+ * Generate a video hook from a track's cover image using Runway Gen-3 Alpha.
  *
  * POST /api/admin/runway/generate
- * { albumSlug, trackNumber, imageUrl, promptText?, duration? }
+ * { albumSlug, trackNumber, promptText?, duration?, ratio? }
+ *
+ * Uses the track's Suno cover stored in Supabase (faixa-XX-cover.jpg).
+ * If no cover found, falls back to imageBase64 if provided.
  *
  * Flow:
- * 1. Check if video already exists in Supabase → return it
- * 2. Send image to Runway API → get task ID
- * 3. Return task ID for polling
+ * 1. Check if hook video already exists → return it
+ * 2. Get cover image from Supabase Storage → convert to base64
+ * 3. Send to Runway API → return task ID for polling
  */
 export async function POST(req: NextRequest) {
   const auth = await requireAdmin(req);
@@ -26,39 +29,58 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const { albumSlug, trackNumber, imageBase64, promptText, duration } = await req.json();
+    const { albumSlug, trackNumber, imageBase64, promptText, duration, ratio } = await req.json();
 
-    if (!albumSlug || !trackNumber || !imageBase64) {
-      return NextResponse.json({ erro: "albumSlug, trackNumber e imageBase64 obrigatórios." }, { status: 400 });
+    if (!albumSlug || !trackNumber) {
+      return NextResponse.json({ erro: "albumSlug e trackNumber obrigatórios." }, { status: 400 });
     }
 
     const safeAlbum = albumSlug.replace(/[^a-z0-9-]/g, "");
     const safeTrack = String(parseInt(trackNumber, 10)).padStart(2, "0");
     const videoPath = `albums/${safeAlbum}/faixa-${safeTrack}-hook.mp4`;
 
-    // 1. Check if video already exists
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
     const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    const { data: existing } = await supabase.storage
-      .from(BUCKET)
-      .createSignedUrl(videoPath, 60);
+    // 1. Check if hook video already exists
+    const publicVideoUrl = `${supabaseUrl}/storage/v1/object/public/${BUCKET}/${videoPath}`;
+    const check = await fetch(publicVideoUrl, { method: "HEAD" });
+    if (check.ok) {
+      return NextResponse.json({
+        status: "exists",
+        videoUrl: publicVideoUrl,
+        message: "Video hook já existe.",
+      });
+    }
 
-    if (existing?.signedUrl) {
-      // Verify it actually exists by checking with a HEAD request
-      const check = await fetch(existing.signedUrl, { method: "HEAD" });
-      if (check.ok) {
-        const publicUrl = `${supabaseUrl}/storage/v1/object/public/${BUCKET}/${videoPath}`;
-        return NextResponse.json({
-          status: "exists",
-          videoUrl: publicUrl,
-          message: "Video já existe."
-        });
+    // 2. Get the cover image — try Supabase cover first, fallback to provided base64
+    let promptImage: string | null = null;
+
+    // Try Supabase cover (jpg, png)
+    for (const ext of ["jpg", "png", "jpeg", "webp"]) {
+      const coverPath = `albums/${safeAlbum}/faixa-${safeTrack}-cover.${ext}`;
+      const coverUrl = `${supabaseUrl}/storage/v1/object/public/${BUCKET}/${coverPath}`;
+      const coverRes = await fetch(coverUrl);
+      if (coverRes.ok) {
+        const blob = await coverRes.blob();
+        const buffer = Buffer.from(await blob.arrayBuffer());
+        const mimeType = blob.type || `image/${ext === "jpg" ? "jpeg" : ext}`;
+        promptImage = `data:${mimeType};base64,${buffer.toString("base64")}`;
+        break;
       }
     }
 
-    // 2. Send to Runway
+    // Fallback to provided base64
+    if (!promptImage && imageBase64) {
+      promptImage = imageBase64.startsWith("data:") ? imageBase64 : `data:image/png;base64,${imageBase64}`;
+    }
+
+    if (!promptImage) {
+      return NextResponse.json({ erro: "Sem capa. Aprova a faixa com capa do Suno primeiro." }, { status: 400 });
+    }
+
+    // 3. Send to Runway
     const res = await fetch(`${RUNWAY_API}/image_to_video`, {
       method: "POST",
       headers: {
@@ -68,10 +90,10 @@ export async function POST(req: NextRequest) {
       },
       body: JSON.stringify({
         model: "gen3a_turbo",
-        promptImage: imageBase64.startsWith("data:") ? imageBase64 : `data:image/png;base64,${imageBase64}`,
-        promptText: promptText || "Slow cinematic movement, gentle light particles floating, subtle camera push-in, ethereal atmosphere",
+        promptImage,
+        promptText: promptText || "Slow cinematic movement, gentle light particles floating, subtle camera push-in, ethereal and dreamy atmosphere",
         duration: duration || 5,
-        ratio: "720:1280", // portrait for stories
+        ratio: ratio || "720:1280",
         watermark: false,
       }),
     });
