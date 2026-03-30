@@ -3,7 +3,7 @@
 import { use } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ALL_ALBUMS as ALBUMS } from "@/data/albums";
+import { ALL_ALBUMS as ALBUMS, ENERGY_LABELS } from "@/data/albums";
 import { useState } from "react";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
 import AddToPlaylistModal from "@/components/music/AddToPlaylistModal";
@@ -11,11 +11,88 @@ import { useSubscriptionGate } from "@/contexts/SubscriptionContext";
 import { useDownloads } from "@/hooks/useDownloads";
 import { getAlbumCover, getAlbumBadge } from "@/lib/album-covers";
 import TrackRow from "@/components/music/TrackRow";
+import { useAlbumVersions, type AlbumVersion } from "@/hooks/useAlbumVersions";
+import type { Album, AlbumTrack } from "@/data/albums";
 
 function fmt(s: number) {
   const m = Math.floor(s / 60);
   const sec = Math.floor(s % 60);
   return `${m}:${sec.toString().padStart(2, "0")}`;
+}
+
+const ENERGY_DARK_COLORS: Record<string, string> = {
+  whisper: "text-blue-400 border-blue-400/30 bg-blue-400/10",
+  steady: "text-green-400 border-green-400/30 bg-green-400/10",
+  pulse: "text-orange-400 border-orange-400/30 bg-orange-400/10",
+  anthem: "text-red-400 border-red-400/30 bg-red-400/10",
+  raw: "text-purple-400 border-purple-400/30 bg-purple-400/10",
+};
+
+function VersionRow({
+  version,
+  track,
+  album,
+}: {
+  version: AlbumVersion;
+  track: AlbumTrack;
+  album: Album;
+}) {
+  const { playTrack, currentTrack, currentAlbum, isPlaying, togglePlay } = useMusicPlayer();
+  const label = ENERGY_LABELS[version.energy] || ENERGY_LABELS.whisper;
+  const colorClass = ENERGY_DARK_COLORS[version.energy] || ENERGY_DARK_COLORS.whisper;
+
+  const versionAudioUrl = `/api/music/stream?album=${encodeURIComponent(album.slug)}&track=${track.number}&version=${encodeURIComponent(version.version_name)}`;
+  const isActive =
+    currentTrack?.number === track.number &&
+    currentAlbum?.slug === album.slug &&
+    currentTrack?.audioUrl === versionAudioUrl;
+
+  function handlePlay() {
+    if (isActive) {
+      togglePlay();
+      return;
+    }
+    const versionTrack: AlbumTrack = {
+      ...track,
+      title: `${track.title} (${version.version_name})`,
+      audioUrl: versionAudioUrl,
+    };
+    playTrack(versionTrack, album);
+  }
+
+  return (
+    <button
+      onClick={handlePlay}
+      className="w-full flex items-center gap-3 px-4 py-2 pl-12 rounded-lg hover:bg-white/5 transition-colors text-left"
+    >
+      {/* Playing indicator or play icon */}
+      <div className="w-6 text-center shrink-0">
+        {isActive && isPlaying ? (
+          <div className="flex items-end justify-center gap-0.5 h-3">
+            <div className="w-0.5 bg-current animate-pulse" style={{ height: "60%", color: album.color }} />
+            <div className="w-0.5 bg-current animate-pulse" style={{ height: "100%", color: album.color, animationDelay: "0.2s" }} />
+            <div className="w-0.5 bg-current animate-pulse" style={{ height: "40%", color: album.color, animationDelay: "0.4s" }} />
+          </div>
+        ) : (
+          <svg viewBox="0 0 24 24" fill="currentColor" className="h-3 w-3 mx-auto text-[#666680]">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        )}
+      </div>
+
+      {/* Version name */}
+      <span className={`text-xs flex-1 truncate ${isActive ? "font-medium" : "text-[#a0a0b0]"}`}
+        style={isActive ? { color: album.color } : {}}
+      >
+        {version.version_name}
+      </span>
+
+      {/* Energy badge */}
+      <span className={`text-[10px] px-1.5 py-0.5 rounded-full border shrink-0 ${colorClass}`}>
+        {label.emoji} {label.label}
+      </span>
+    </button>
+  );
 }
 
 export default function AlbumPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -25,6 +102,8 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
   const [showPlaylistModal, setShowPlaylistModal] = useState(false);
   const { isPremium, requestPlay } = useSubscriptionGate();
   const { saveAlbum, isSaved } = useDownloads();
+  const { versionsForTrack, hasVersions } = useAlbumVersions(slug);
+  const [expandedTrack, setExpandedTrack] = useState<number | null>(null);
 
   if (!album) {
     return (
@@ -200,14 +279,59 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
       {/* Track list */}
       <div className="max-w-screen-lg mx-auto px-6 py-6">
         <div className="space-y-0.5">
-          {album.tracks.map(track => (
-            <TrackRow
-              key={track.number}
-              track={track}
-              album={album}
-              isActive={currentTrack?.number === track.number && currentAlbum?.slug === album.slug}
-            />
-          ))}
+          {album.tracks.map(track => {
+            const trackVersions = versionsForTrack(track.number);
+            const hasVer = trackVersions.length > 0;
+            const isExpanded = expandedTrack === track.number;
+
+            return (
+              <div key={track.number}>
+                <div className="flex items-center">
+                  <div className="flex-1 min-w-0">
+                    <TrackRow
+                      track={track}
+                      album={album}
+                      isActive={currentTrack?.number === track.number && currentAlbum?.slug === album.slug}
+                    />
+                  </div>
+                  {hasVer && (
+                    <button
+                      onClick={() => setExpandedTrack(isExpanded ? null : track.number)}
+                      className="shrink-0 p-2 text-[#666680] hover:text-[#a0a0b0] transition-colors"
+                      title={`${trackVersions.length} ${trackVersions.length === 1 ? "versão" : "versões"}`}
+                    >
+                      <div className="flex items-center gap-1">
+                        <span className="text-[10px]">{trackVersions.length}v</span>
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          className={`h-3 w-3 transition-transform ${isExpanded ? "rotate-180" : ""}`}
+                        >
+                          <path d="M6 9l6 6 6-6" />
+                        </svg>
+                      </div>
+                    </button>
+                  )}
+                </div>
+
+                {/* Expanded versions */}
+                {hasVer && isExpanded && (
+                  <div className="border-l-2 ml-8 mb-2" style={{ borderColor: `${albumColor}30` }}>
+                    {trackVersions.map(v => (
+                      <VersionRow
+                        key={v.version_name}
+                        version={v}
+                        track={track}
+                        album={album}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
 
         {/* Album footer */}
