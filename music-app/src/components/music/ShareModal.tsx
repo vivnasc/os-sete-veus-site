@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import type { Album, AlbumTrack } from "@/data/albums";
 import { getShareUrl } from "@/lib/share-utils";
 import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
 import { generateShareCard, downloadBlob, shareImage } from "@/lib/share-card";
+import { adminFetch } from "@/lib/admin-fetch";
 
 type Props = {
   track: AlbumTrack;
@@ -48,6 +49,101 @@ export default function ShareModal({ track, album, onClose }: Props) {
       if (previewRef.current) URL.revokeObjectURL(previewRef.current);
     };
   }, []);
+
+  // ── Video hook state ──
+  const [hookVideoUrl, setHookVideoUrl] = useState<string | null>(null);
+  const [hookStatus, setHookStatus] = useState<"idle" | "checking" | "generating" | "polling" | "done" | "error">("checking");
+  const [hookError, setHookError] = useState<string | null>(null);
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // Check if hook video already exists
+  useEffect(() => {
+    fetch(`/api/music/hook-video?album=${encodeURIComponent(album.slug)}&track=${track.number}`)
+      .then(r => r.json())
+      .then(data => {
+        if (data.exists && data.videoUrl) {
+          setHookVideoUrl(data.videoUrl);
+          setHookStatus("done");
+        } else {
+          setHookStatus("idle");
+        }
+      })
+      .catch(() => setHookStatus("idle"));
+  }, [album.slug, track.number]);
+
+  // Cleanup polling on unmount
+  useEffect(() => {
+    return () => { if (pollRef.current) clearInterval(pollRef.current); };
+  }, []);
+
+  const pollRunway = useCallback((taskId: string) => {
+    setHookStatus("polling");
+    pollRef.current = setInterval(async () => {
+      try {
+        const res = await adminFetch(
+          `/api/admin/runway/status?taskId=${encodeURIComponent(taskId)}&album=${encodeURIComponent(album.slug)}&track=${track.number}`
+        );
+        const data = await res.json();
+        if (data.status === "complete" && data.videoUrl) {
+          if (pollRef.current) clearInterval(pollRef.current);
+          setHookVideoUrl(data.videoUrl);
+          setHookStatus("done");
+        } else if (data.status === "error") {
+          if (pollRef.current) clearInterval(pollRef.current);
+          setHookError(data.error || "Falhou");
+          setHookStatus("error");
+        }
+        // else still processing — keep polling
+      } catch {
+        // Network error — keep trying
+      }
+    }, 6000); // Poll every 6 seconds (Runway recommends >= 5s)
+  }, [album.slug, track.number]);
+
+  async function generateHookVideo() {
+    if (hookStatus === "generating" || hookStatus === "polling") return;
+    setHookStatus("generating");
+    setHookError(null);
+
+    try {
+      // First generate the story card image to send to Runway
+      const blob = await generateShareCard(track, album, resolvedCover, "story");
+      const base64 = await new Promise<string>((resolve) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result as string);
+        reader.readAsDataURL(blob);
+      });
+
+      const res = await adminFetch("/api/admin/runway/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          albumSlug: album.slug,
+          trackNumber: track.number,
+          imageBase64: base64,
+          promptText: "Slow cinematic push-in, gentle floating light particles, ethereal warm glow, subtle parallax movement, dreamy atmosphere",
+        }),
+      });
+
+      const data = await res.json();
+
+      if (data.status === "exists" && data.videoUrl) {
+        setHookVideoUrl(data.videoUrl);
+        setHookStatus("done");
+        return;
+      }
+
+      if (data.taskId) {
+        pollRunway(data.taskId);
+      } else {
+        setHookError(data.erro || "Sem taskId");
+        setHookStatus("error");
+      }
+    } catch (err) {
+      setHookError(String(err));
+      setHookStatus("error");
+    }
+  }
 
   const shareUrl = getShareUrl(album.slug, track.number);
   const lyric = pickLyric(track);
@@ -228,6 +324,96 @@ export default function ShareModal({ track, album, onClose }: Props) {
                   <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
                 </svg>
                 Guardar
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* ─── VIDEO HOOK SECTION ─── */}
+        <div className="mb-5 rounded-xl bg-white/[0.03] border border-white/5 p-4">
+          <p className="text-xs text-[#a0a0b0] mb-3">Video hook para reels e stories</p>
+
+          {hookStatus === "checking" && (
+            <p className="text-xs text-[#666680] animate-pulse">A verificar...</p>
+          )}
+
+          {/* Video exists — show preview + download */}
+          {hookStatus === "done" && hookVideoUrl && (
+            <div>
+              <video
+                src={hookVideoUrl}
+                className="w-full rounded-lg mb-3"
+                style={{ maxHeight: 280 }}
+                controls
+                playsInline
+                muted
+                loop
+              />
+              <div className="flex gap-2">
+                <a
+                  href={hookVideoUrl}
+                  download={`${track.title} — Loranne hook.mp4`}
+                  className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg text-xs font-medium transition-all text-[#0D0D1A]"
+                  style={{ backgroundColor: album.color || "#C9A96E" }}
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                  </svg>
+                  Guardar video
+                </a>
+                {typeof navigator !== "undefined" && navigator.share && (
+                  <button
+                    onClick={async () => {
+                      try {
+                        const res = await fetch(hookVideoUrl);
+                        const blob = await res.blob();
+                        const file = new File([blob], `${track.title} — Loranne.mp4`, { type: "video/mp4" });
+                        if (navigator.canShare?.({ files: [file] })) {
+                          await navigator.share({ files: [file], title: track.title });
+                        }
+                      } catch { /* cancelled */ }
+                    }}
+                    className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg text-xs font-medium bg-white/5 text-[#a0a0b0] hover:bg-white/10 transition-colors border border-white/5"
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+                      <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" />
+                    </svg>
+                    Partilhar
+                  </button>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Generate button */}
+          {hookStatus === "idle" && (
+            <button
+              onClick={generateHookVideo}
+              className="w-full py-2.5 rounded-lg text-xs font-medium bg-white/5 text-[#a0a0b0] hover:bg-white/10 transition-colors border border-white/5"
+            >
+              Criar hook animado (5s)
+            </button>
+          )}
+
+          {/* Generating / polling */}
+          {(hookStatus === "generating" || hookStatus === "polling") && (
+            <div className="text-center py-3">
+              <div className="inline-block w-5 h-5 border-2 border-white/20 border-t-white/60 rounded-full animate-spin mb-2" />
+              <p className="text-xs text-[#a0a0b0]">
+                {hookStatus === "generating" ? "A enviar para o Runway..." : "A gerar video... pode demorar ~30s"}
+              </p>
+            </div>
+          )}
+
+          {/* Error */}
+          {hookStatus === "error" && (
+            <div>
+              <p className="text-xs text-red-400 mb-2">{hookError || "Erro ao gerar video"}</p>
+              <button
+                onClick={generateHookVideo}
+                className="text-xs text-[#a0a0b0] hover:text-[#F5F0E6] underline"
+              >
+                Tentar de novo
               </button>
             </div>
           )}
