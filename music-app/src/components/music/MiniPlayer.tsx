@@ -1,8 +1,9 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useMusicPlayer, formatTime } from "@/contexts/MusicPlayerContext";
-import { getAlbumCover } from "@/lib/album-covers";
+import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
 
 export default function MiniPlayer() {
   const {
@@ -22,10 +23,22 @@ export default function MiniPlayer() {
     stop,
   } = useMusicPlayer();
 
+  // Track-specific cover (Suno artwork)
+  const [trackCover, setTrackCover] = useState<string | null>(null);
+  useEffect(() => {
+    if (!currentAlbum || !currentTrack) { setTrackCover(null); return; }
+    const url = getTrackCoverUrl(currentAlbum.slug, currentTrack.number);
+    const img = new window.Image();
+    img.onload = () => setTrackCover(url);
+    img.onerror = () => setTrackCover(null);
+    img.src = url;
+  }, [currentAlbum?.slug, currentTrack?.number]);
+
   if (!currentTrack) return null;
 
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
   const albumColor = currentAlbum?.color || "#C9A96E";
+  const coverSrc = trackCover || (currentAlbum ? getAlbumCover(currentAlbum) : "/poses/loranne-hero.png");
 
   // Find next track in queue
   const currentIdx = queue.findIndex(t => t.number === currentTrack.number);
@@ -54,26 +67,19 @@ export default function MiniPlayer() {
 
       <div className="bg-[#1A1A2E]/95 backdrop-blur-xl border-t border-white/5">
         <div className="mx-auto max-w-screen-lg px-4 py-3 flex items-center gap-3">
-          {/* Album art thumbnail */}
+          {/* Album art thumbnail — uses track cover if available */}
           <button
             onClick={() => setShowFullPlayer(true)}
             className="h-11 w-11 shrink-0 rounded-lg shadow-lg overflow-hidden relative"
           >
-            {currentAlbum ? (
-              <Image
-                src={getAlbumCover(currentAlbum)}
-                alt={currentAlbum.title}
-                fill
-                sizes="44px"
-                className="object-cover"
-              />
-            ) : (
-              <div className="flex h-full w-full items-center justify-center" style={{ backgroundColor: albumColor }}>
-                <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 text-white/60">
-                  <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
-                </svg>
-              </div>
-            )}
+            <Image
+              src={coverSrc}
+              alt={currentTrack.title}
+              fill
+              sizes="44px"
+              className="object-cover"
+              unoptimized={!!trackCover}
+            />
           </button>
 
           {/* Track info + next track */}
