@@ -19,6 +19,7 @@ export default function MiniPlayer() {
     previous,
     setShowFullPlayer,
     clearAudioError,
+    stop,
   } = useMusicPlayer();
 
   if (!currentTrack) return null;
@@ -128,6 +129,17 @@ export default function MiniPlayer() {
           <span className="hidden sm:block text-xs text-[#666680] tabular-nums w-20 text-right">
             {formatTime(currentTime)} / {formatTime(duration)}
           </span>
+
+          {/* Close */}
+          <button
+            onClick={(e) => { e.stopPropagation(); stop(); }}
+            className="p-1.5 text-[#666680] hover:text-[#a0a0b0] transition-colors"
+            aria-label="Fechar player"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
         </div>
       </div>
     </div>
