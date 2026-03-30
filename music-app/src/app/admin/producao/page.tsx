@@ -105,9 +105,10 @@ function buildUploadForm(
  * Falls back to /api/admin/upload-audio for small files if signed URL fails.
  */
 async function uploadViaSignedUrl(blob: Blob, filename: string): Promise<string> {
-  // Validate blob has actual content
-  if (!blob.size || blob.size < 1000) {
-    throw new Error(`Ficheiro vazio ou demasiado pequeno (${blob.size} bytes). O download do Suno pode ter falhado.`);
+  // Validate blob has actual content (images can be smaller than audio)
+  const minSize = filename.endsWith(".mp3") ? 1000 : 500;
+  if (!blob.size || blob.size < minSize) {
+    throw new Error(`Ficheiro vazio ou demasiado pequeno (${blob.size} bytes). O download pode ter falhado.`);
   }
 
   // Step 1: Get signed upload URL
@@ -1180,22 +1181,43 @@ export default function AlbumProductionPage() {
           // Try direct download first
           try {
             const directImg = await fetch(imageUrl);
-            if (directImg.ok) imgBlob = await directImg.blob();
+            if (directImg.ok) {
+              imgBlob = await directImg.blob();
+              console.log(`[cover] Direct download OK: ${imgBlob.size} bytes`);
+            }
           } catch { /* CORS — try proxy */ }
           // Fallback to server proxy (same as audio)
           if (!imgBlob || imgBlob.size < 500) {
+            console.log("[cover] Direct failed, trying proxy...");
             const proxyImg = await adminFetch("/api/admin/proxy-download", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ url: imageUrl }),
             });
-            if (proxyImg.ok) imgBlob = await proxyImg.blob();
+            if (proxyImg.ok) {
+              imgBlob = await proxyImg.blob();
+              console.log(`[cover] Proxy download: ${imgBlob.size} bytes`);
+            } else {
+              console.log(`[cover] Proxy failed: ${proxyImg.status}`);
+            }
           }
           if (imgBlob && imgBlob.size > 500) {
             const imgFilename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-cover.jpg`;
+            // Force overwrite — delete old file first via admin API
+            try {
+              await adminFetch("/api/admin/delete-file", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ path: imgFilename }),
+              });
+            } catch { /* may not exist — fine */ }
             await uploadViaSignedUrl(imgBlob, imgFilename);
+            console.log(`[cover] Uploaded: ${imgFilename} (${imgBlob.size} bytes)`);
+          } else {
+            console.warn(`[cover] No valid image to upload (imageUrl: ${imageUrl})`);
           }
-        } catch {
+        } catch (coverErr) {
+          console.error("[cover] Failed:", coverErr);
           // Image upload is optional — don't fail the approval
         }
       }
