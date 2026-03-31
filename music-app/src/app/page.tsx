@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import NavBar from "@/components/music/NavBar";
 import SubscribeSection from "@/components/music/SubscribeSection";
+import LiveReviewsFeed from "@/components/music/LiveReviewsFeed";
 
 export const metadata = {
   title: "Explorar",
@@ -39,6 +40,8 @@ export default function MusicHomePage() {
         <ParaTiSection />
         <NovidadesSection />
         <TopTracksSection />
+
+        <LiveReviewsFeed />
 
         {/* Subscribe for new releases */}
         <SubscribeSection />
