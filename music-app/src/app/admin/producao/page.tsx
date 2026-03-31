@@ -386,17 +386,74 @@ function ClipApprovalRow({
                   const data = await res.json();
                   if (data.ok) {
                     btn.textContent = "Reel OK!";
-                    // Show preview
                     const parent = btn.parentElement;
                     if (parent && data.videoUrl) {
+                      // Store blob for direct sharing
+                      const reelBlob = blob;
+                      const reelUrl = data.videoUrl;
+
+                      const container = document.createElement("div");
+                      container.style.cssText = "margin-top:6px";
+
                       const vid = document.createElement("video");
-                      vid.src = data.videoUrl;
+                      vid.src = reelUrl;
                       vid.controls = true;
                       vid.playsInline = true;
                       vid.muted = true;
                       vid.loop = true;
-                      vid.style.cssText = "max-height:120px;border-radius:6px;margin-top:4px;width:100%";
-                      parent.appendChild(vid);
+                      vid.style.cssText = "max-height:120px;border-radius:6px;width:100%";
+                      container.appendChild(vid);
+
+                      const actions = document.createElement("div");
+                      actions.style.cssText = "display:flex;gap:6px;margin-top:6px;flex-wrap:wrap";
+
+                      // Share button (WhatsApp Status / Instagram Reels)
+                      const shareBtn = document.createElement("button");
+                      shareBtn.textContent = "Partilhar";
+                      shareBtn.style.cssText = "font-size:11px;padding:4px 12px;border-radius:6px;background:#C9A96E;color:#0D0D1A;font-weight:600;border:none;cursor:pointer";
+                      shareBtn.onclick = async () => {
+                        const file = new File([reelBlob], `${t.title} — Loranne.webm`, { type: reelBlob.type });
+                        const caption = `"${t.description}"\n${t.title} — Loranne\nmusic.seteveus.space`;
+                        if (navigator.share && navigator.canShare?.({ files: [file] })) {
+                          await navigator.share({ files: [file], title: t.title, text: caption }).catch(() => {});
+                        } else {
+                          // Fallback: copy caption + download video
+                          navigator.clipboard.writeText(caption).catch(() => {});
+                          const a = document.createElement("a");
+                          a.href = URL.createObjectURL(reelBlob);
+                          a.download = file.name;
+                          a.click();
+                          alert("Video guardado. Legenda copiada.\nAbre o WhatsApp Status ou Instagram Reels e selecciona o video.");
+                        }
+                      };
+                      actions.appendChild(shareBtn);
+
+                      // Download
+                      const dlBtn = document.createElement("a");
+                      dlBtn.href = reelUrl;
+                      dlBtn.download = `${t.title} — Loranne.webm`;
+                      dlBtn.textContent = "Guardar";
+                      dlBtn.style.cssText = "font-size:11px;padding:4px 12px;border-radius:6px;background:rgba(255,255,255,0.05);color:#a0a0b0;border:1px solid rgba(255,255,255,0.1);text-decoration:none;cursor:pointer";
+                      actions.appendChild(dlBtn);
+
+                      // Delete
+                      const delBtn = document.createElement("button");
+                      delBtn.textContent = "Apagar";
+                      delBtn.style.cssText = "font-size:11px;padding:4px 12px;border-radius:6px;background:none;color:#f87171;border:none;cursor:pointer";
+                      delBtn.onclick = async () => {
+                        if (!confirm("Apagar este reel?")) return;
+                        const safeT = String(trackNumber).padStart(2, "0");
+                        await adminFetch("/api/admin/clear-covers", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({ albumSlug, pattern: `faixa-${safeT}-reel` }),
+                        });
+                        container.innerHTML = "<p style='font-size:10px;color:#a0a0b0;margin-top:4px'>Reel apagado</p>";
+                      };
+                      actions.appendChild(delBtn);
+
+                      container.appendChild(actions);
+                      parent.appendChild(container);
                     }
                   } else throw new Error(data.erro || "Falhou");
                 } catch (e) {
@@ -995,6 +1052,8 @@ function TrackRow({
                   btn.textContent = "Reel guardado!";
                   if (resultDiv) {
                     resultDiv.innerHTML = "";
+                    const reelBlob = blob;
+
                     const vid = document.createElement("video");
                     vid.src = data.videoUrl;
                     vid.controls = true;
@@ -1003,17 +1062,42 @@ function TrackRow({
                     vid.loop = true;
                     vid.style.cssText = "max-height:160px;border-radius:8px;margin-top:6px;width:100%";
                     resultDiv.appendChild(vid);
+
                     const actions = document.createElement("div");
-                    actions.style.cssText = "display:flex;gap:8px;margin-top:4px;align-items:center";
+                    actions.style.cssText = "display:flex;gap:6px;margin-top:6px;flex-wrap:wrap";
+
+                    // Share
+                    const shareBtn = document.createElement("button");
+                    shareBtn.textContent = "Partilhar";
+                    shareBtn.style.cssText = "font-size:11px;padding:4px 12px;border-radius:6px;background:#C9A96E;color:#0D0D1A;font-weight:600;border:none;cursor:pointer";
+                    shareBtn.onclick = async () => {
+                      const file = new File([reelBlob], `${track.title} — Loranne.webm`, { type: reelBlob.type });
+                      const caption = `"${track.description}"\n${track.title} — Loranne\nmusic.seteveus.space`;
+                      if (navigator.share && navigator.canShare?.({ files: [file] })) {
+                        await navigator.share({ files: [file], title: track.title, text: caption }).catch(() => {});
+                      } else {
+                        navigator.clipboard.writeText(caption).catch(() => {});
+                        const a = document.createElement("a");
+                        a.href = URL.createObjectURL(reelBlob);
+                        a.download = file.name;
+                        a.click();
+                        alert("Video guardado. Legenda copiada.\nAbre o WhatsApp Status ou Instagram Reels e selecciona o video.");
+                      }
+                    };
+                    actions.appendChild(shareBtn);
+
+                    // Download
                     const dl = document.createElement("a");
                     dl.href = data.videoUrl;
-                    dl.download = `reel-${track.number}.webm`;
-                    dl.textContent = "Descarregar";
-                    dl.style.cssText = "font-size:10px;color:#8B5CF6";
+                    dl.download = `${track.title} — Loranne.webm`;
+                    dl.textContent = "Guardar";
+                    dl.style.cssText = "font-size:11px;padding:4px 12px;border-radius:6px;background:rgba(255,255,255,0.05);color:#a0a0b0;border:1px solid rgba(255,255,255,0.1);text-decoration:none";
                     actions.appendChild(dl);
+
+                    // Delete
                     const del = document.createElement("button");
-                    del.textContent = "Apagar reel";
-                    del.style.cssText = "font-size:10px;color:#f87171;cursor:pointer;background:none;border:none";
+                    del.textContent = "Apagar";
+                    del.style.cssText = "font-size:11px;padding:4px 12px;border-radius:6px;background:none;color:#f87171;border:none;cursor:pointer";
                     del.onclick = async () => {
                       if (!confirm("Apagar este reel?")) return;
                       const safeT = String(track.number).padStart(2, "0");

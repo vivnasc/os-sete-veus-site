@@ -265,13 +265,13 @@ export async function generateReel(
       }
     }
 
-    // Artist — fades in (2.5s-3.5s)
+    // Artist — elegant serif
     const artistProgress = clamp((elapsed - 2.5) / 1, 0, 1);
     if (artistProgress > 0) {
       ctx.globalAlpha = artistProgress;
-      ctx.font = "400 20px sans-serif";
-      ctx.fillStyle = "#a0a0b0";
-      ctx.fillText("Loranne", REEL_W / 2, textBaseY + (lyric ? 200 : 130));
+      ctx.font = "italic 28px 'Cormorant Garamond', 'Georgia', serif";
+      ctx.fillStyle = "#C9A96E";
+      ctx.fillText("L o r a n n e", REEL_W / 2, textBaseY + (lyric ? 200 : 130));
     }
 
     // Branding + link
