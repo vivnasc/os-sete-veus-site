@@ -92,26 +92,16 @@ export async function generateReel(
 
   report("loading", 0.3, "A carregar audio...");
 
-  // Fetch audio as blob first to avoid CORS issues with MediaElementSource
+  // Fetch audio and decode as AudioBuffer — no autoplay restrictions
   const audioResponse = await fetch(audioSrc);
   if (!audioResponse.ok) throw new Error("Audio nao disponivel");
-  const audioBlob = await audioResponse.blob();
-  const audioBlobUrl = URL.createObjectURL(audioBlob);
+  const audioArrayBuffer = await audioResponse.arrayBuffer();
 
   const audioCtx = new AudioContext();
-  const audioEl = new Audio();
-  audioEl.src = audioBlobUrl;
+  const audioBuffer = await audioCtx.decodeAudioData(audioArrayBuffer);
 
-  await new Promise<void>((resolve, reject) => {
-    const timeout = setTimeout(() => reject(new Error("Audio demorou demais a carregar")), 15000);
-    audioEl.oncanplaythrough = () => { clearTimeout(timeout); resolve(); };
-    audioEl.onerror = () => { clearTimeout(timeout); reject(new Error("Audio falhou")); };
-    audioEl.load();
-  });
-
-  // Skip to 30s mark for the best part
-  const startTime = Math.min(30, Math.max(0, audioEl.duration - REEL_DURATION - 5));
-  audioEl.currentTime = startTime;
+  // Start from 30s mark for the best part
+  const startOffset = Math.min(30, Math.max(0, audioBuffer.duration - REEL_DURATION - 5));
 
   report("loading", 0.6, "A configurar gravacao...");
 
@@ -121,11 +111,12 @@ export async function generateReel(
   const ctx = canvas.getContext("2d")!;
 
   const canvasStream = canvas.captureStream(FPS);
-  const audioSource = audioCtx.createMediaElementSource(audioEl);
+
+  // Play audio via BufferSource → MediaStreamDestination (no autoplay needed)
+  const bufferSource = audioCtx.createBufferSource();
+  bufferSource.buffer = audioBuffer;
   const destination = audioCtx.createMediaStreamDestination();
-  audioSource.connect(destination);
-  // Don't connect to speakers — silent recording, no autoplay issues
-  // audioSource.connect(audioCtx.destination);
+  bufferSource.connect(destination);
 
   const combined = new MediaStream([
     ...canvasStream.getVideoTracks(),
@@ -258,9 +249,7 @@ export async function generateReel(
 
     recorder.onstop = () => {
       report("finalizing", 0.95, "A finalizar...");
-      audioEl.pause();
-      URL.revokeObjectURL(audioBlobUrl);
-      try { audioSource.disconnect(); audioCtx.close(); } catch {}
+      try { bufferSource.stop(); bufferSource.disconnect(); audioCtx.close(); } catch {}
 
       const type = mimeType.includes("mp4") ? "video/mp4" : "video/webm";
       const blob = new Blob(chunks, { type });
@@ -275,32 +264,24 @@ export async function generateReel(
     };
 
     recorder.onerror = () => {
-      audioEl.pause();
-      URL.revokeObjectURL(audioBlobUrl);
-      reject(new Error("MediaRecorder falhou. Tenta num browser desktop (Chrome)."));
+      try { bufferSource.stop(); audioCtx.close(); } catch {}
+      reject(new Error("MediaRecorder falhou. Tenta num browser desktop."));
     };
 
     recorder.start(500);
+    bufferSource.start(0, startOffset, REEL_DURATION);
 
-    // Use setInterval instead of requestAnimationFrame — works when tab is in background
-    audioEl.play().then(() => {
-      const startTs = performance.now();
-
-      const interval = setInterval(() => {
-        const elapsed = (performance.now() - startTs) / 1000;
-
-        if (elapsed >= REEL_DURATION) {
-          clearInterval(interval);
-          recorder.stop();
-          return;
-        }
-
-        report("recording", elapsed / REEL_DURATION, `A gravar... ${Math.round(elapsed)}s / ${REEL_DURATION}s`);
-        drawFrame(elapsed);
-      }, 1000 / FPS);
-    }).catch((err) => {
-      reject(new Error(`Audio nao tocou: ${err.message}. Tenta clicar na pagina primeiro.`));
-    });
+    const startTs = performance.now();
+    const interval = setInterval(() => {
+      const elapsed = (performance.now() - startTs) / 1000;
+      if (elapsed >= REEL_DURATION) {
+        clearInterval(interval);
+        recorder.stop();
+        return;
+      }
+      report("recording", elapsed / REEL_DURATION, `A gravar... ${Math.round(elapsed)}s / ${REEL_DURATION}s`);
+      drawFrame(elapsed);
+    }, 1000 / FPS);
 
     drawFrame(0);
   });
