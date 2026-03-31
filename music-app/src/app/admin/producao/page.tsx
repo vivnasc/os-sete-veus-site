@@ -1734,6 +1734,46 @@ export default function AlbumProductionPage() {
                   >
                     Gerar todas ({pendingTracks.length} faixas)
                   </button>
+                  <button
+                    onClick={async () => {
+                      const btn = document.getElementById(`save-covers-${album.slug}`) as HTMLButtonElement;
+                      if (btn) { btn.disabled = true; btn.textContent = "A guardar..."; }
+                      let saved = 0;
+                      let failed = 0;
+                      // Go through all tracks with generated clips that have imageUrl
+                      for (const track of album.tracks) {
+                        const key = trackKey(album.slug, track.number);
+                        const clips = generatedClips[key]?.clips || [];
+                        const clipWithImage = clips.find(c => c.imageUrl);
+                        if (clipWithImage?.imageUrl) {
+                          try {
+                            const res = await adminFetch("/api/admin/proxy-download", {
+                              method: "POST",
+                              headers: { "Content-Type": "application/json" },
+                              body: JSON.stringify({ url: clipWithImage.imageUrl }),
+                            });
+                            if (res.ok) {
+                              const blob = await res.blob();
+                              if (blob.size > 500) {
+                                const filename = `albums/${album.slug}/faixa-${String(track.number).padStart(2, "0")}-cover.jpg`;
+                                await uploadViaSignedUrl(blob, filename);
+                                saved++;
+                              } else { failed++; }
+                            } else { failed++; }
+                          } catch { failed++; }
+                        }
+                      }
+                      if (btn) {
+                        btn.textContent = `${saved} capas guardadas${failed ? `, ${failed} falharam` : ""}`;
+                        btn.disabled = false;
+                        setTimeout(() => { btn.textContent = "Guardar capas"; }, 4000);
+                      }
+                    }}
+                    id={`save-covers-${album.slug}`}
+                    className="rounded-lg bg-amber-600/80 px-4 py-2 text-xs text-white transition hover:bg-amber-700"
+                  >
+                    Guardar capas
+                  </button>
                   {busyCount > 0 && (
                     <span className="text-xs text-amber-400">{busyCount} em geração...</span>
                   )}
