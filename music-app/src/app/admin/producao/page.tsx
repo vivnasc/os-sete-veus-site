@@ -1990,6 +1990,29 @@ export default function AlbumProductionPage() {
                   );
                 })()}
               </div>
+
+              {/* Download for DistroKid */}
+              <button
+                id={`distro-btn-${album.slug}`}
+                onClick={async () => {
+                  const btn = document.getElementById(`distro-btn-${album.slug}`) as HTMLButtonElement;
+                  btn.disabled = true;
+                  try {
+                    const { downloadAlbumForDistribution } = await import("@/lib/album-download");
+                    await downloadAlbumForDistribution(album, (p) => {
+                      btn.textContent = `${p.phase} (${p.current}/${p.total})`;
+                    });
+                    btn.textContent = "ZIP pronto!";
+                  } catch (e) {
+                    btn.textContent = "Erro";
+                    alert(String(e));
+                  }
+                  setTimeout(() => { btn.disabled = false; btn.textContent = "DistroKid ZIP"; }, 3000);
+                }}
+                className="mt-3 rounded-lg bg-green-700 px-4 py-2.5 text-sm min-h-[44px] font-medium text-white hover:bg-green-800 transition"
+              >
+                DistroKid ZIP
+              </button>
             </div>
 
             {/* Bulk generate button */}
