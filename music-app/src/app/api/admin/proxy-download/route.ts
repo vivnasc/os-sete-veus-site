@@ -16,7 +16,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ erro: "URL em falta." }, { status: 400 });
     }
 
-    const res = await fetch(url);
+    // Force no-cache to avoid stale CDN responses
+    const res = await fetch(url, { cache: "no-store" });
     if (!res.ok) {
       return NextResponse.json(
         { erro: `Download falhou: ${res.status} ${res.statusText}` },
