@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { ALL_ALBUMS, type AlbumTrack, type Album } from "@/data/albums";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
+import { useCustomTitles } from "@/hooks/useCustomTitles";
 import { supabase } from "@/lib/supabase";
 
 const GHOST_NAMES = [
@@ -70,12 +71,12 @@ type Review = {
   timeAgo: string;
 };
 
-function getTracks(): TrackInfo[] {
+function getTracks(getTitle: (slug: string, num: number, fallback: string) => string): TrackInfo[] {
   const tracks: TrackInfo[] = [];
   for (const album of ALL_ALBUMS) {
     for (const track of album.tracks) {
       if (track.audioUrl || track.lyrics) {
-        tracks.push({ title: track.title, albumSlug: album.slug, albumTitle: album.title, trackNumber: track.number, track, album });
+        tracks.push({ title: getTitle(album.slug, track.number, track.title), albumSlug: album.slug, albumTitle: album.title, trackNumber: track.number, track, album });
       }
     }
   }
@@ -141,6 +142,7 @@ export default function LiveReviewsFeed() {
   const [userName, setUserName] = useState<string | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const { playTrack } = useMusicPlayer();
+  const { getTitle } = useCustomTitles();
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
@@ -149,7 +151,7 @@ export default function LiveReviewsFeed() {
   }, []);
 
   useEffect(() => {
-    const tracks = getTracks();
+    const tracks = getTracks(getTitle);
     if (tracks.length < 5) return;
     const hourSeed = Math.floor(Date.now() / 3600000);
     const initial = Array.from({ length: 6 }, (_, i) => generateReview(hourSeed * 100 + i, tracks));
@@ -158,7 +160,7 @@ export default function LiveReviewsFeed() {
     let counter = initial.length;
     intervalRef.current = setInterval(() => {
       counter++;
-      const newReview = generateReview(hourSeed * 100 + counter, getTracks());
+      const newReview = generateReview(hourSeed * 100 + counter, getTracks(getTitle));
       setReviews(prev => [newReview, ...prev].slice(0, 15));
     }, 20000);
 
