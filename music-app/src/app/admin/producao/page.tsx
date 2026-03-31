@@ -631,6 +631,39 @@ function TrackRow({
             <audio controls src={audioUrl} className="mt-2 h-8 w-full max-w-xs" />
           )}
 
+          {/* Upload/replace cover image */}
+          {audioUrl && (
+            <div className="mt-2 flex items-center gap-2">
+              <input
+                type="file"
+                accept="image/*"
+                id={`cover-upload-${albumSlug}-${track.number}`}
+                className="hidden"
+                onChange={async (e) => {
+                  const file = e.target.files?.[0];
+                  if (!file) return;
+                  const label = document.getElementById(`cover-label-${albumSlug}-${track.number}`);
+                  if (label) label.textContent = "A enviar...";
+                  try {
+                    const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-cover.jpg`;
+                    await uploadViaSignedUrl(file, filename);
+                    if (label) label.textContent = "Capa guardada!";
+                  } catch {
+                    if (label) label.textContent = "Erro";
+                  }
+                  setTimeout(() => { if (label) label.textContent = "Carregar capa"; }, 2000);
+                }}
+              />
+              <label
+                id={`cover-label-${albumSlug}-${track.number}`}
+                htmlFor={`cover-upload-${albumSlug}-${track.number}`}
+                className="cursor-pointer rounded-lg bg-mundo-muted-dark/20 px-3 py-1.5 text-xs text-mundo-muted hover:bg-mundo-muted-dark/30 transition"
+              >
+                Carregar capa
+              </label>
+            </div>
+          )}
+
           {/* Existing versions + add more */}
           <div className="mt-2">
             {existingVersions.length > 0 && (
