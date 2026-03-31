@@ -1,0 +1,25 @@
+{
+  "name": "video-pipeline",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "tsx src/index.ts generate",
+    "status": "tsx src/index.ts status",
+    "estimate": "tsx src/index.ts estimate",
+    "test:decompose": "tsx src/test-decompose.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "@runwayml/sdk": "^1.0.0",
+    "elevenlabs": "^1.56.0",
+    "fluent-ffmpeg": "^2.1.3",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "@types/fluent-ffmpeg": "^2.1.27",
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}

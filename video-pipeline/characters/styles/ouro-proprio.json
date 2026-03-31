@@ -1,0 +1,22 @@
+{
+  "courseId": "ouro-proprio",
+  "name": "Ouro Próprio",
+  "territory": "A Casa dos Espelhos Dourados",
+  "palette": {
+    "primary": "#C9A96E",
+    "secondary": "#C4745A",
+    "accent": "#D4A853",
+    "background": "#1A1A2E"
+  },
+  "mood": "contemplativo, íntimo, revelador",
+  "visual_keywords": [
+    "golden mirrors",
+    "warm amber light",
+    "veiled reflections",
+    "dark room with gilded frames",
+    "soft gold dust particles",
+    "covered mirrors revealing slowly",
+    "distorted reflections becoming clear",
+    "dawn light through amber glass"
+  ]
+}
