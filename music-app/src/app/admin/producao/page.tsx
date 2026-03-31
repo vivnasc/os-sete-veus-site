@@ -965,8 +965,38 @@ function TrackRow({
                 if (data.ok && data.videoUrl) {
                   btn.textContent = "Reel guardado!";
                   if (resultDiv) {
-                    resultDiv.innerHTML = `<video src="${data.videoUrl}" controls playsinline muted loop style="max-height:160px;border-radius:8px;margin-top:6px;width:100%"></video>
-                    <a href="${data.videoUrl}" download style="display:inline-block;margin-top:4px;font-size:10px;color:#8B5CF6">Descarregar reel</a>`;
+                    resultDiv.innerHTML = "";
+                    const vid = document.createElement("video");
+                    vid.src = data.videoUrl;
+                    vid.controls = true;
+                    vid.playsInline = true;
+                    vid.muted = true;
+                    vid.loop = true;
+                    vid.style.cssText = "max-height:160px;border-radius:8px;margin-top:6px;width:100%";
+                    resultDiv.appendChild(vid);
+                    const actions = document.createElement("div");
+                    actions.style.cssText = "display:flex;gap:8px;margin-top:4px;align-items:center";
+                    const dl = document.createElement("a");
+                    dl.href = data.videoUrl;
+                    dl.download = `reel-${track.number}.webm`;
+                    dl.textContent = "Descarregar";
+                    dl.style.cssText = "font-size:10px;color:#8B5CF6";
+                    actions.appendChild(dl);
+                    const del = document.createElement("button");
+                    del.textContent = "Apagar reel";
+                    del.style.cssText = "font-size:10px;color:#f87171;cursor:pointer;background:none;border:none";
+                    del.onclick = async () => {
+                      if (!confirm("Apagar este reel?")) return;
+                      const safeT = String(track.number).padStart(2, "0");
+                      await adminFetch("/api/admin/clear-covers", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ albumSlug, pattern: `faixa-${safeT}-reel` }),
+                      });
+                      resultDiv.innerHTML = "<p style='font-size:10px;color:#a0a0b0;margin-top:4px'>Reel apagado</p>";
+                    };
+                    actions.appendChild(del);
+                    resultDiv.appendChild(actions);
                   }
                 } else {
                   throw new Error(data.erro || "Upload falhou");
