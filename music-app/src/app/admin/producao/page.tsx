@@ -276,6 +276,8 @@ function ClipApprovalRow({
   hasMainAudio,
   existingVersions,
   trackEnergy,
+  albumSlug,
+  trackNumber,
   onApproveMain,
   onApproveVersion,
   onCreatePersona,
@@ -285,6 +287,8 @@ function ClipApprovalRow({
   hasMainAudio: boolean;
   existingVersions: VersionInfo[];
   trackEnergy: string;
+  albumSlug: string;
+  trackNumber: number;
   onApproveMain: () => void;
   onApproveVersion: (name: string, energy: string) => void;
   onCreatePersona?: (clipTaskId: string, clipAudioId: string) => void;
@@ -298,18 +302,46 @@ function ClipApprovalRow({
   return (
     <div className="rounded-lg border border-mundo-muted-dark/20 bg-mundo-bg/50 p-3">
       <div className="flex gap-3">
-        {/* Suno cover image */}
+        {/* Suno cover image + save button */}
         {clip.imageUrl && (
-          <img
-            src={clip.imageUrl}
-            alt=""
-            className="h-20 w-20 shrink-0 rounded-lg object-cover bg-mundo-muted-dark/30"
-            onError={(e) => {
-              const img = e.target as HTMLImageElement;
-              img.style.background = "linear-gradient(135deg, #1a1a2e, #2e1a2e)";
-              img.removeAttribute("src");
-            }}
-          />
+          <div className="shrink-0 flex flex-col items-center gap-1">
+            <img
+              src={clip.imageUrl}
+              alt=""
+              className="h-20 w-20 rounded-lg object-cover bg-mundo-muted-dark/30"
+              onError={(e) => {
+                const img = e.target as HTMLImageElement;
+                img.style.background = "linear-gradient(135deg, #1a1a2e, #2e1a2e)";
+                img.removeAttribute("src");
+              }}
+            />
+            <button
+              onClick={async () => {
+                const btn = document.activeElement as HTMLButtonElement;
+                btn.disabled = true;
+                btn.textContent = "...";
+                try {
+                  const proxyRes = await adminFetch("/api/admin/proxy-download", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ url: clip.imageUrl }),
+                  });
+                  if (!proxyRes.ok) throw new Error("Download falhou");
+                  const blob = await proxyRes.blob();
+                  if (blob.size < 500) throw new Error("Imagem vazia");
+                  const filename = `albums/${albumSlug}/faixa-${String(trackNumber).padStart(2, "0")}-cover.jpg`;
+                  await uploadViaSignedUrl(blob, filename);
+                  btn.textContent = "OK";
+                } catch {
+                  btn.textContent = "Erro";
+                }
+                setTimeout(() => { btn.disabled = false; btn.textContent = "Capa"; }, 2000);
+              }}
+              className="text-[9px] text-violet-400 hover:text-violet-300 transition"
+            >
+              Capa
+            </button>
+          </div>
         )}
         <div className="flex-1 min-w-0">
       <div className="flex items-center gap-2 mb-2">
@@ -712,6 +744,8 @@ function TrackRow({
                     hasMainAudio={!!audioUrl}
                     existingVersions={existingVersions}
                     trackEnergy={track.energy}
+                    albumSlug={albumSlug}
+                    trackNumber={track.number}
                     onApproveMain={() => {
                       if (!clip.audioUrl) { alert("Audio URL em falta. Tenta regenerar."); return; }
                       onApproveClip(clip.audioUrl, clip.title, clip.imageUrl || null);
