@@ -56,26 +56,15 @@ const TEMPLATES = [
   "voltei ao {album}",
 ];
 
-// English reactions for EN tracks
-const EN_TEMPLATES = [
-  "listening to {track}",
-  "{track} on repeat",
-  "just discovered this",
-  "added to my playlist",
-  "{track}. beautiful.",
-  "the voice in this one",
-  "shared with a friend",
-  "good for late nights",
-];
 
 type Review = { id: number; user: string; text: string; timeAgo: string };
 
-function getTracksWithAudio(): { title: string; album: string; lang: string }[] {
-  const tracks: { title: string; album: string; lang: string }[] = [];
+function getTracksWithAudio(): { title: string; album: string }[] {
+  const tracks: { title: string; album: string }[] = [];
   for (const album of ALL_ALBUMS) {
     for (const track of album.tracks) {
       if (track.audioUrl || track.lyrics) {
-        tracks.push({ title: track.title, album: album.title, lang: track.lang });
+        tracks.push({ title: track.title, album: album.title });
       }
     }
   }
@@ -95,9 +84,7 @@ function generateReview(id: number, tracks: { title: string; album: string; lang
 
   const user = NAMES[Math.floor(r1 * NAMES.length)];
   const track = tracks[Math.floor(r2 * tracks.length)];
-
-  const templates = track.lang === "EN" && r4 > 0.5 ? EN_TEMPLATES : TEMPLATES;
-  const template = templates[Math.floor(r3 * templates.length)];
+  const template = TEMPLATES[Math.floor(r3 * TEMPLATES.length)];
 
   const text = template
     .replace("{track}", track.title)
