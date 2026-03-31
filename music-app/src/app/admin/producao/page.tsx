@@ -337,9 +337,9 @@ function ClipApprovalRow({
                 }
                 setTimeout(() => { btn.disabled = false; btn.textContent = "Capa"; }, 2000);
               }}
-              className="text-[9px] text-violet-400 hover:text-violet-300 transition"
+              className="rounded bg-amber-600/80 px-2 py-1 text-[10px] font-medium text-white hover:bg-amber-700 transition"
             >
-              Capa
+              Guardar capa
             </button>
           </div>
         )}
@@ -1733,46 +1733,6 @@ export default function AlbumProductionPage() {
                     className="rounded-lg bg-violet-600 px-4 py-2 text-xs text-white transition hover:bg-violet-700"
                   >
                     Gerar todas ({pendingTracks.length} faixas)
-                  </button>
-                  <button
-                    onClick={async () => {
-                      const btn = document.getElementById(`save-covers-${album.slug}`) as HTMLButtonElement;
-                      if (btn) { btn.disabled = true; btn.textContent = "A guardar..."; }
-                      let saved = 0;
-                      let failed = 0;
-                      // Go through all tracks with generated clips that have imageUrl
-                      for (const track of album.tracks) {
-                        const key = trackKey(album.slug, track.number);
-                        const clips = generatedClips[key]?.clips || [];
-                        const clipWithImage = clips.find(c => c.imageUrl);
-                        if (clipWithImage?.imageUrl) {
-                          try {
-                            const res = await adminFetch("/api/admin/proxy-download", {
-                              method: "POST",
-                              headers: { "Content-Type": "application/json" },
-                              body: JSON.stringify({ url: clipWithImage.imageUrl }),
-                            });
-                            if (res.ok) {
-                              const blob = await res.blob();
-                              if (blob.size > 500) {
-                                const filename = `albums/${album.slug}/faixa-${String(track.number).padStart(2, "0")}-cover.jpg`;
-                                await uploadViaSignedUrl(blob, filename);
-                                saved++;
-                              } else { failed++; }
-                            } else { failed++; }
-                          } catch { failed++; }
-                        }
-                      }
-                      if (btn) {
-                        btn.textContent = `${saved} capas guardadas${failed ? `, ${failed} falharam` : ""}`;
-                        btn.disabled = false;
-                        setTimeout(() => { btn.textContent = "Guardar capas"; }, 4000);
-                      }
-                    }}
-                    id={`save-covers-${album.slug}`}
-                    className="rounded-lg bg-amber-600/80 px-4 py-2 text-xs text-white transition hover:bg-amber-700"
-                  >
-                    Guardar capas
                   </button>
                   {busyCount > 0 && (
                     <span className="text-xs text-amber-400">{busyCount} em geração...</span>
