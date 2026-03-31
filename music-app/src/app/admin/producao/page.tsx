@@ -1063,15 +1063,45 @@ function TrackRow({
                     vid.style.cssText = "max-height:160px;border-radius:8px;margin-top:6px;width:100%";
                     resultDiv.appendChild(vid);
 
-                    // Caption — ready to copy
+                    // Caption — ready to copy with hashtags
                     const lyricLines = track.lyrics?.split("\n").filter((l: string) => {
                       const t = l.trim();
                       return t.length > 15 && t.length < 80 && !t.startsWith("[");
                     }) || [];
                     const lyric = lyricLines.length > 0 ? lyricLines[Math.floor(Date.now() / 86400000) % lyricLines.length].trim() : "";
+
+                    const baseHashtags = "#loranne #veus #musicanova #sentir #consciência #artistaindependente";
+                    const energyTags: Record<string, string> = {
+                      whisper: "#intimate #calma #profundo",
+                      steady: "#groove #sentirestar #flow",
+                      pulse: "#energia #dança #ritmo",
+                      anthem: "#poder #hino #força",
+                      raw: "#cru #acústico #verdade",
+                    };
+                    const productTags: Record<string, string> = {
+                      espelho: "#despertar #autoconhecimento #espelho",
+                      no: "#relações #amor #conexão",
+                      livro: "#despertar #filosofia #consciência",
+                      espiritual: "#sagrado #corpo #oração",
+                      vida: "#vidareal #quotidiano #sentir",
+                      cosmic: "#cósmico #viagem #infinito",
+                      romance: "#amor #paixão #intimidade",
+                      curso: "#transformação #aprender #crescer",
+                    };
+                    const albumObj = ALL_ALBUMS.find(a => a.slug === albumSlug);
+                    const tags = [
+                      baseHashtags,
+                      energyTags[track.energy] || "",
+                      productTags[albumObj?.product || ""] || "",
+                      track.flavor === "marrabenta" ? "#tropical #dançável" : "",
+                      track.flavor === "gospel" ? "#gospel #fé" : "",
+                      track.flavor === "bossa" ? "#bossanova #suave" : "",
+                      "#ouveoqueninguémdiz #musicaqueacorda",
+                    ].filter(Boolean).join(" ");
+
                     const caption = lyric
-                      ? `"${lyric}"\n\n${track.title} — Loranne\nmusic.seteveus.space`
-                      : `${track.title} — Loranne\n${track.description}\nmusic.seteveus.space`;
+                      ? `"${lyric}"\n\n${track.title} — Loranne\n${albumObj?.title || ""}\nmusic.seteveus.space\n\n${tags}`
+                      : `${track.title} — Loranne\n${track.description}\nmusic.seteveus.space\n\n${tags}`;
 
                     const captionDiv = document.createElement("div");
                     captionDiv.style.cssText = "margin-top:8px;padding:8px 12px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:8px;position:relative";
