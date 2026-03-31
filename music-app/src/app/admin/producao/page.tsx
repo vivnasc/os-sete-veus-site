@@ -302,19 +302,18 @@ function ClipApprovalRow({
   return (
     <div className="rounded-lg border border-mundo-muted-dark/20 bg-mundo-bg/50 p-3">
       <div className="flex gap-3">
-        {/* Suno cover image + save button */}
+        {/* Suno cover image via proxy (same-origin for canvas capture) */}
         {clip.imageUrl && (
           <div className="shrink-0 flex flex-col items-center gap-1">
             <img
               id={`clip-img-${albumSlug}-${trackNumber}-${clipIndex}`}
-              src={clip.imageUrl}
-              crossOrigin="anonymous"
+              src={`/api/admin/proxy-image?url=${encodeURIComponent(clip.imageUrl)}`}
               alt=""
               className="h-20 w-20 rounded-lg object-cover bg-mundo-muted-dark/30"
               onError={(e) => {
+                // Fallback to direct URL if proxy fails
                 const img = e.target as HTMLImageElement;
-                img.style.background = "linear-gradient(135deg, #1a1a2e, #2e1a2e)";
-                img.removeAttribute("src");
+                if (!img.src.includes(clip.imageUrl!)) img.src = clip.imageUrl!;
               }}
             />
             <button
@@ -323,38 +322,21 @@ function ClipApprovalRow({
                 btn.disabled = true;
                 btn.textContent = "...";
                 try {
-                  // Capture the VISIBLE image from the DOM — no CDN download, no cache
                   const imgEl = document.getElementById(`clip-img-${albumSlug}-${trackNumber}-${clipIndex}`) as HTMLImageElement;
                   if (!imgEl || !imgEl.naturalWidth) throw new Error("Imagem nao carregada");
                   const canvas = document.createElement("canvas");
                   canvas.width = imgEl.naturalWidth;
                   canvas.height = imgEl.naturalHeight;
-                  const ctx = canvas.getContext("2d")!;
-                  ctx.drawImage(imgEl, 0, 0);
+                  canvas.getContext("2d")!.drawImage(imgEl, 0, 0);
                   const blob = await new Promise<Blob>((resolve, reject) => {
-                    canvas.toBlob(b => b ? resolve(b) : reject(new Error("Canvas export falhou")), "image/jpeg", 0.92);
+                    canvas.toBlob(b => b ? resolve(b) : reject(new Error("Falhou")), "image/jpeg", 0.92);
                   });
                   const filename = `albums/${albumSlug}/faixa-${String(trackNumber).padStart(2, "0")}-cover.jpg`;
                   await uploadViaSignedUrl(blob, filename);
                   btn.textContent = "OK!";
                 } catch (e) {
-                  // Fallback: try proxy download if canvas fails (CORS)
-                  try {
-                    const proxyRes = await adminFetch("/api/admin/proxy-download", {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({ url: clip.imageUrl }),
-                    });
-                    if (!proxyRes.ok) throw new Error("Proxy falhou");
-                    const blob = await proxyRes.blob();
-                    if (blob.size < 500) throw new Error("Vazio");
-                    const filename = `albums/${albumSlug}/faixa-${String(trackNumber).padStart(2, "0")}-cover.jpg`;
-                    await uploadViaSignedUrl(blob, filename);
-                    btn.textContent = "OK!";
-                  } catch {
-                    btn.textContent = "Erro";
-                    alert(String(e));
-                  }
+                  btn.textContent = "Erro";
+                  alert(String(e));
                 }
                 setTimeout(() => { btn.disabled = false; btn.textContent = "Guardar capa"; }, 2000);
               }}
