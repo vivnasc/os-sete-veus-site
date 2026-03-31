@@ -322,16 +322,13 @@ function ClipApprovalRow({
                 btn.disabled = true;
                 btn.textContent = "...";
                 try {
-                  const imgEl = document.getElementById(`clip-img-${albumSlug}-${trackNumber}-${clipIndex}`) as HTMLImageElement;
-                  if (!imgEl || !imgEl.naturalWidth) throw new Error("Imagem nao carregada");
-                  const canvas = document.createElement("canvas");
-                  canvas.width = imgEl.naturalWidth;
-                  canvas.height = imgEl.naturalHeight;
-                  canvas.getContext("2d")!.drawImage(imgEl, 0, 0);
-                  const blob = await new Promise<Blob>((resolve, reject) => {
-                    canvas.toBlob(b => b ? resolve(b) : reject(new Error("Falhou")), "image/jpeg", 0.92);
-                  });
-                  // Upload via server with real upsert (replaces existing)
+                  // Download full-size image via proxy (not thumbnail from DOM)
+                  const proxyUrl = `/api/admin/proxy-image?url=${encodeURIComponent(clip.imageUrl!)}`;
+                  const imgRes = await fetch(proxyUrl);
+                  if (!imgRes.ok) throw new Error("Download falhou");
+                  const blob = await imgRes.blob();
+                  if (blob.size < 1000) throw new Error(`Imagem muito pequena (${blob.size} bytes)`);
+                  // Upload with real upsert
                   const form = new FormData();
                   form.append("albumSlug", albumSlug);
                   form.append("trackNumber", String(trackNumber));
@@ -339,16 +336,7 @@ function ClipApprovalRow({
                   const res = await adminFetch("/api/admin/upload-cover", { method: "POST", body: form });
                   const data = await res.json();
                   if (!data.ok) throw new Error(data.erro || "Falhou");
-                  btn.textContent = "OK!";
-                  // Show what's now in Supabase to confirm
-                  const parent = btn.parentElement;
-                  if (parent && data.url) {
-                    const check = document.createElement("img");
-                    check.src = `${data.url}?t=${Date.now()}`;
-                    check.style.cssText = "width:80px;height:80px;object-fit:cover;border-radius:8px;margin-top:4px;border:2px solid #22c55e";
-                    check.title = "Imagem no Supabase agora";
-                    parent.appendChild(check);
-                  }
+                  btn.textContent = `OK! (${Math.round(blob.size/1024)}KB)`;
                 } catch (e) {
                   btn.textContent = "Erro";
                   alert(String(e));
@@ -1341,39 +1329,20 @@ export default function AlbumProductionPage() {
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}.mp3`;
       const url = await uploadViaSignedUrl(blob, filename);
 
-      // Save Suno cover — capture from DOM, upload via server with real upsert
+      // Save Suno cover — full-size via proxy + upload with upsert
       if (imageUrl) {
         try {
-          let imgBlob: Blob | null = null;
-          // Capture from visible <img> in DOM
-          const clips = generatedClips[key]?.clips || [];
-          const clipIdx = clips.findIndex(c => c.audioUrl === clipAudioUrl);
-          if (clipIdx >= 0) {
-            const imgEl = document.getElementById(`clip-img-${albumSlug}-${track.number}-${clipIdx}`) as HTMLImageElement;
-            if (imgEl && imgEl.naturalWidth > 0) {
-              const canvas = document.createElement("canvas");
-              canvas.width = imgEl.naturalWidth;
-              canvas.height = imgEl.naturalHeight;
-              canvas.getContext("2d")!.drawImage(imgEl, 0, 0);
-              imgBlob = await new Promise<Blob | null>(r => canvas.toBlob(b => r(b), "image/jpeg", 0.92));
+          const proxyUrl = `/api/admin/proxy-image?url=${encodeURIComponent(imageUrl)}`;
+          const imgRes = await fetch(proxyUrl);
+          if (imgRes.ok) {
+            const imgBlob = await imgRes.blob();
+            if (imgBlob.size > 1000) {
+              const form = new FormData();
+              form.append("albumSlug", albumSlug);
+              form.append("trackNumber", String(track.number));
+              form.append("image", imgBlob, "cover.jpg");
+              await adminFetch("/api/admin/upload-cover", { method: "POST", body: form });
             }
-          }
-          // Fallback: proxy download
-          if (!imgBlob || imgBlob.size < 500) {
-            const proxyImg = await adminFetch("/api/admin/proxy-download", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ url: imageUrl }),
-            });
-            if (proxyImg.ok) imgBlob = await proxyImg.blob();
-          }
-          if (imgBlob && imgBlob.size > 500) {
-            // Use direct upload with upsert:true (not signed URL)
-            const form = new FormData();
-            form.append("albumSlug", albumSlug);
-            form.append("trackNumber", String(track.number));
-            form.append("image", imgBlob, "cover.jpg");
-            await adminFetch("/api/admin/upload-cover", { method: "POST", body: form });
           }
         } catch {
           // Image upload is optional — don't fail the approval
