@@ -1,14 +1,9 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { ALL_ALBUMS } from "@/data/albums";
+import { ALL_ALBUMS, type AlbumTrack, type Album } from "@/data/albums";
+import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
 import { supabase } from "@/lib/supabase";
-
-/**
- * Social proof feed — mix of ghost reactions + real user comments.
- * Ghost names show only first letter (A***, B***, etc.)
- * Real users can type a reaction that appears in the feed.
- */
 
 const GHOST_NAMES = [
   "Amina", "Beatriz", "Celia", "Diana", "Elena", "Fatima", "Graça",
@@ -23,11 +18,11 @@ const GHOST_NAMES = [
 ];
 
 function maskName(name: string): string {
-  if (name.length <= 1) return name;
-  return name[0] + "***";
+  return name.length <= 1 ? name : name[0] + "***";
 }
 
-const TEMPLATES = [
+// Templates: {track} is replaced with clickable track name
+const TEMPLATES_WITH_TRACK = [
   "a ouvir {track}",
   "{track} em repeat",
   "que descoberta, {track}",
@@ -35,37 +30,52 @@ const TEMPLATES = [
   "mais uma vez {track}",
   "enviei {track} a uma amiga",
   "partilhei {track} nos stories",
-  "{track} para a playlist do carro",
-  "adicionei {album} todo a minha lista",
-  "{track} ficou na cabeca o dia todo",
-  "acordei com {track} na cabeca",
-  "bom para ouvir a caminhar",
-  "perfeita para o fim do dia",
-  "boa para o caminho de casa",
-  "como e que so descobri agora?",
-  "alguem me recomendou e nao me arrependo",
-  "vi nos stories de alguem e vim ouvir",
-  "primeira vez a ouvir Loranne. gostei.",
-  "a voz nesta e diferente",
-  "o inicio de {track} e tao bom",
-  "o refrão fica",
-  "gosto da producao desta",
+  "{track} pra playlist do carro",
+  "{track} ficou na cabeça o dia todo",
+  "acordei com {track} na cabeça",
+  "o início de {track} é tão bom",
+  "{track} pra quem precisa de se sentir vista",
+];
+
+const TEMPLATES_WITH_ALBUM = [
+  "adicionei {album} todo à minha lista",
   "a ouvir {album} enquanto trabalho",
   "{album} inteiro sem saltar",
   "voltei ao {album}",
-  "obrigada Loranne",
-  "{track} para quem precisa de se sentir vista",
-  "nao e musica. e um espelho.",
 ];
 
-type Review = { id: string; user: string; text: string; timeAgo: string; isReal?: boolean };
+const TEMPLATES_GENERIC = [
+  "bom pra ouvir a caminhar",
+  "perfeita pro fim do dia",
+  "boa pro caminho de casa",
+  "como é q só descobri agora?",
+  "alguém me recomendou e não me arrependo",
+  "primeira vez a ouvir Loranne. gostei.",
+  "a voz nesta é diferente",
+  "o refrão fica",
+  "obrigada Loranne",
+  "não é música. é um espelho.",
+];
 
-function getTracks(): { title: string; album: string }[] {
-  const tracks: { title: string; album: string }[] = [];
+type TrackInfo = { title: string; albumSlug: string; albumTitle: string; trackNumber: number; track: AlbumTrack; album: Album };
+
+type Review = {
+  id: string;
+  user: string;
+  beforeTrack: string;
+  trackTitle: string | null;
+  afterTrack: string;
+  albumSlug: string | null;
+  trackNumber: number | null;
+  timeAgo: string;
+};
+
+function getTracks(): TrackInfo[] {
+  const tracks: TrackInfo[] = [];
   for (const album of ALL_ALBUMS) {
     for (const track of album.tracks) {
       if (track.audioUrl || track.lyrics) {
-        tracks.push({ title: track.title, album: album.title });
+        tracks.push({ title: track.title, albumSlug: album.slug, albumTitle: album.title, trackNumber: track.number, track, album });
       }
     }
   }
@@ -77,21 +87,51 @@ function seededRandom(seed: number): number {
   return x - Math.floor(x);
 }
 
-function generateGhostReview(id: number, tracks: { title: string; album: string }[]): Review {
+function generateReview(id: number, tracks: TrackInfo[]): Review {
   const r1 = seededRandom(id);
   const r2 = seededRandom(id + 1000);
   const r3 = seededRandom(id + 2000);
   const r4 = seededRandom(id + 3000);
 
   const name = GHOST_NAMES[Math.floor(r1 * GHOST_NAMES.length)];
-  const track = tracks[Math.floor(r2 * tracks.length)];
-  const template = TEMPLATES[Math.floor(r3 * TEMPLATES.length)];
-
-  const text = template.replace("{track}", track.title).replace("{album}", track.album);
+  const trackInfo = tracks[Math.floor(r2 * tracks.length)];
   const minutes = Math.floor(r4 * 55) + 2;
   const timeAgo = minutes < 60 ? `${minutes}min` : `${Math.floor(minutes / 60)}h`;
 
-  return { id: `g-${id}`, user: maskName(name), text, timeAgo };
+  // Pick template type
+  const roll = r3;
+  if (roll < 0.55) {
+    // Track template — track name is clickable
+    const templates = TEMPLATES_WITH_TRACK;
+    const template = templates[Math.floor(seededRandom(id + 4000) * templates.length)];
+    const parts = template.split("{track}");
+    return {
+      id: `g-${id}`, user: maskName(name),
+      beforeTrack: parts[0] || "", trackTitle: trackInfo.title, afterTrack: parts[1] || "",
+      albumSlug: trackInfo.albumSlug, trackNumber: trackInfo.trackNumber,
+      timeAgo,
+    };
+  } else if (roll < 0.75) {
+    // Album template
+    const templates = TEMPLATES_WITH_ALBUM;
+    const template = templates[Math.floor(seededRandom(id + 4000) * templates.length)];
+    const text = template.replace("{album}", trackInfo.albumTitle);
+    return {
+      id: `g-${id}`, user: maskName(name),
+      beforeTrack: text, trackTitle: null, afterTrack: "",
+      albumSlug: trackInfo.albumSlug, trackNumber: null,
+      timeAgo,
+    };
+  } else {
+    // Generic
+    const template = TEMPLATES_GENERIC[Math.floor(seededRandom(id + 4000) * TEMPLATES_GENERIC.length)];
+    return {
+      id: `g-${id}`, user: maskName(name),
+      beforeTrack: template, trackTitle: null, afterTrack: "",
+      albumSlug: trackInfo.albumSlug, trackNumber: trackInfo.trackNumber,
+      timeAgo,
+    };
+  }
 }
 
 export default function LiveReviewsFeed() {
@@ -100,48 +140,46 @@ export default function LiveReviewsFeed() {
   const [sending, setSending] = useState(false);
   const [userName, setUserName] = useState<string | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const { playTrack } = useMusicPlayer();
 
-  // Get user name
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
-      if (data.user?.email) {
-        setUserName(data.user.email.split("@")[0]);
-      }
+      if (data.user?.email) setUserName(data.user.email.split("@")[0]);
     });
   }, []);
 
   useEffect(() => {
     const tracks = getTracks();
     if (tracks.length < 5) return;
-
     const hourSeed = Math.floor(Date.now() / 3600000);
-    const initial = Array.from({ length: 6 }, (_, i) => generateGhostReview(hourSeed * 100 + i, tracks));
+    const initial = Array.from({ length: 6 }, (_, i) => generateReview(hourSeed * 100 + i, tracks));
     setReviews(initial);
 
     let counter = initial.length;
     intervalRef.current = setInterval(() => {
       counter++;
-      const tracks = getTracks();
-      const newReview = generateGhostReview(hourSeed * 100 + counter, tracks);
+      const newReview = generateReview(hourSeed * 100 + counter, getTracks());
       setReviews(prev => [newReview, ...prev].slice(0, 15));
     }, 20000);
 
     return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
   }, []);
 
+  function handleTrackClick(albumSlug: string, trackNumber: number) {
+    const album = ALL_ALBUMS.find(a => a.slug === albumSlug);
+    const track = album?.tracks.find(t => t.number === trackNumber);
+    if (album && track) playTrack(track, album);
+  }
+
   async function submitComment() {
     if (!myComment.trim() || sending) return;
     setSending(true);
-
     const displayName = userName ? maskName(userName) : "A***";
     const newReview: Review = {
-      id: `real-${Date.now()}`,
-      user: displayName,
-      text: myComment.trim(),
-      timeAgo: "agora",
-      isReal: true,
+      id: `real-${Date.now()}`, user: displayName,
+      beforeTrack: myComment.trim(), trackTitle: null, afterTrack: "",
+      albumSlug: null, trackNumber: null, timeAgo: "agora",
     };
-
     setReviews(prev => [newReview, ...prev].slice(0, 15));
     setMyComment("");
     setSending(false);
@@ -154,11 +192,7 @@ export default function LiveReviewsFeed() {
       <div className="max-w-screen-lg mx-auto">
         <p className="text-[10px] text-[#666680] uppercase tracking-wider mb-3">O que dizem</p>
 
-        {/* User input */}
-        <form
-          onSubmit={(e) => { e.preventDefault(); submitComment(); }}
-          className="flex gap-2 mb-4"
-        >
+        <form onSubmit={(e) => { e.preventDefault(); submitComment(); }} className="flex gap-2 mb-4">
           <input
             type="text"
             value={myComment}
@@ -178,12 +212,20 @@ export default function LiveReviewsFeed() {
 
         <div className="space-y-1.5">
           {reviews.map((r) => (
-            <div
-              key={r.id}
-              className="flex items-baseline gap-2 py-1"
-            >
+            <div key={r.id} className="flex items-baseline gap-2 py-1">
               <span className="text-xs text-[#C9A96E] shrink-0">{r.user}</span>
-              <span className="text-xs text-[#a0a0b0] flex-1">{r.text}</span>
+              <span className="text-xs text-[#a0a0b0] flex-1">
+                {r.beforeTrack}
+                {r.trackTitle && r.albumSlug && r.trackNumber && (
+                  <button
+                    onClick={() => handleTrackClick(r.albumSlug!, r.trackNumber!)}
+                    className="text-[#F5F0E6] hover:text-[#C9A96E] transition-colors font-medium"
+                  >
+                    {r.trackTitle}
+                  </button>
+                )}
+                {r.afterTrack}
+              </span>
               <span className="text-[9px] text-[#666680] shrink-0">{r.timeAgo}</span>
             </div>
           ))}

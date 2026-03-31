@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ALL_ALBUMS, type Album } from "@/data/albums";
-import { getAlbumCover } from "@/lib/album-covers";
+import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
 
 /**
  * Shows recently published ALBUMS (not individual tracks).
@@ -49,9 +49,10 @@ export default function NovidadesSection() {
           >
             <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg mb-2">
               <img
-                src={getAlbumCover(album)}
+                src={getTrackCoverUrl(album.slug, 1)}
                 alt={album.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                onError={(e) => { (e.target as HTMLImageElement).src = getAlbumCover(album); }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
               <div className="absolute bottom-2 left-2">

@@ -9,7 +9,7 @@ import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
 import AddToPlaylistModal from "@/components/music/AddToPlaylistModal";
 import { useSubscriptionGate } from "@/contexts/SubscriptionContext";
 import { useDownloads } from "@/hooks/useDownloads";
-import { getAlbumCover, getAlbumBadge } from "@/lib/album-covers";
+import { getAlbumCover, getAlbumBadge, getTrackCoverUrl } from "@/lib/album-covers";
 import TrackRow from "@/components/music/TrackRow";
 import { useAlbumVersions, type AlbumVersion } from "@/hooks/useAlbumVersions";
 import type { Album, AlbumTrack } from "@/data/albums";
@@ -121,7 +121,8 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
   const totalDuration = album.tracks.reduce((acc, t) => acc + t.durationSeconds, 0);
   const totalMinutes = Math.ceil(totalDuration / 60);
   const albumColor = album.color;
-  const cover = getAlbumCover(album);
+  const sunoCover = getTrackCoverUrl(album.slug, 1);
+  const poseCover = getAlbumCover(album);
   const badge = getAlbumBadge(album);
 
   return (
@@ -130,12 +131,11 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
       <div className="relative overflow-hidden">
         {/* Background image blur */}
         <div className="absolute inset-0">
-          <Image
-            src={cover}
+          <img
+            src={sunoCover}
             alt=""
-            fill
-            className="object-cover blur-[60px] scale-110 opacity-30"
-            priority
+            className="absolute inset-0 w-full h-full object-cover blur-[60px] scale-110 opacity-30"
+            onError={(e) => { (e.target as HTMLImageElement).src = poseCover; }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0D0D1A]/50 via-[#0D0D1A]/80 to-[#0D0D1A]" />
         </div>
@@ -154,13 +154,11 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
           <div className="flex flex-col sm:flex-row gap-6 items-start">
             {/* Album art */}
             <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-xl shadow-2xl shrink-0 overflow-hidden relative">
-              <Image
-                src={cover}
+              <img
+                src={sunoCover}
                 alt={album.title}
-                fill
-                sizes="224px"
-                className="object-cover"
-                priority
+                className="absolute inset-0 w-full h-full object-cover"
+                onError={(e) => { (e.target as HTMLImageElement).src = poseCover; }}
               />
               <div
                 className="absolute inset-0 opacity-20 mix-blend-multiply"
