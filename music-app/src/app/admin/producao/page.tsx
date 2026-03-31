@@ -1694,6 +1694,18 @@ export default function AlbumProductionPage() {
               Renomear pasta
             </button>
 
+            <button
+              onClick={async () => {
+                if (!confirm("Apagar todas as capas antigas (caminho sem albums/)?")) return;
+                const res = await adminFetch("/api/admin/cleanup-old-covers", { method: "POST" });
+                const data = await res.json();
+                alert(`${data.deleted || 0} capas antigas apagadas.\n${(data.details || []).join("\n") || "Nenhuma encontrada."}`);
+              }}
+              className="rounded-lg bg-red-900/30 px-3 py-1.5 text-[10px] text-red-400 hover:bg-red-900/50 transition"
+            >
+              Limpar capas fantasma
+            </button>
+
             <div className="flex gap-1 rounded-full bg-mundo-muted-dark/10 p-1">
               <button
                 onClick={() => setViewMode("producao")}
