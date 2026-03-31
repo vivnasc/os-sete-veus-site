@@ -278,6 +278,8 @@ function ClipApprovalRow({
   trackEnergy,
   albumSlug,
   trackNumber,
+  isSelected,
+  onSelect,
   onApproveMain,
   onApproveVersion,
   onCreatePersona,
@@ -289,6 +291,8 @@ function ClipApprovalRow({
   trackEnergy: string;
   albumSlug: string;
   trackNumber: number;
+  isSelected: boolean;
+  onSelect: () => void;
   onApproveMain: () => void;
   onApproveVersion: (name: string, energy: string) => void;
   onCreatePersona?: (clipTaskId: string, clipAudioId: string) => void;
@@ -300,8 +304,16 @@ function ClipApprovalRow({
   const nameExists = existingVersions.some(v => v.name === versionName);
 
   return (
-    <div className="rounded-lg border border-mundo-muted-dark/20 bg-mundo-bg/50 p-3">
+    <div className={`rounded-lg border p-3 transition-colors cursor-pointer ${isSelected ? "border-green-500/50 bg-green-950/20" : "border-mundo-muted-dark/20 bg-mundo-bg/50"}`} onClick={onSelect}>
       <div className="flex gap-3">
+        {/* Selection indicator */}
+        <div className="shrink-0 pt-1">
+          <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${isSelected ? "border-green-500 bg-green-500" : "border-mundo-muted-dark/40"}`}>
+            {isSelected && (
+              <svg viewBox="0 0 24 24" fill="white" className="h-3 w-3"><path d="M20 6L9 17l-5-5" /></svg>
+            )}
+          </div>
+        </div>
         {/* Suno cover image */}
         {clip.imageUrl ? (
           <div className="shrink-0 flex flex-col items-center gap-1">
@@ -515,6 +527,8 @@ function TrackRow({
   audioUrl,
   existingVersions,
   generatedClips,
+  selectedClipIndex,
+  onSelectClip,
   editedTitle,
   onTitleChange,
   editedLyrics,
@@ -539,6 +553,8 @@ function TrackRow({
   audioUrl: string | null;
   existingVersions: VersionInfo[];
   generatedClips: GeneratedClips | null;
+  selectedClipIndex: number;
+  onSelectClip: (idx: number) => void;
   editedTitle: string | null;
   onTitleChange: (title: string) => void;
   editedLyrics: string | null;
@@ -839,6 +855,8 @@ function TrackRow({
                     trackEnergy={track.energy}
                     albumSlug={albumSlug}
                     trackNumber={track.number}
+                    isSelected={selectedClipIndex === idx}
+                    onSelect={() => onSelectClip(idx)}
                     onApproveMain={() => {
                       if (!clip.audioUrl) { alert("Audio URL em falta. Tenta regenerar."); return; }
                       onApproveClip(clip.audioUrl, clip.title, clip.imageUrl || null);
@@ -1037,6 +1055,7 @@ export default function AlbumProductionPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [audioUrls, setAudioUrls] = useState<Record<string, string>>({});
   const [generatedClips, setGeneratedClips] = useState<Record<string, GeneratedClips>>({});
+  const [selectedClipIdx, setSelectedClipIdx] = useState<Record<string, number>>({});
   const [editedTitles, setEditedTitles] = useState<Record<string, string>>({});
   const [editedLyrics, setEditedLyrics] = useState<Record<string, string>>({});
   const [editedStyles, setEditedStyles] = useState<Record<string, string>>({});
@@ -1846,6 +1865,45 @@ export default function AlbumProductionPage() {
               ) : null;
             })()}
 
+            {/* Bulk approve — approve selected clips for all tracks */}
+            {(() => {
+              const readyTracks = album.tracks.filter(t => {
+                const k = trackKey(album.slug, t.number);
+                const clips = generatedClips[k]?.clips || [];
+                return clips.some(c => c.audioUrl);
+              });
+              if (readyTracks.length === 0) return null;
+              return (
+                <div className="mb-4 flex items-center gap-3">
+                  <button
+                    onClick={async () => {
+                      const btn = document.getElementById(`bulk-approve-${album.slug}`) as HTMLButtonElement;
+                      if (btn) { btn.disabled = true; btn.textContent = "A aprovar..."; }
+                      let done = 0;
+                      for (const t of readyTracks) {
+                        const k = trackKey(album.slug, t.number);
+                        const clips = generatedClips[k]?.clips || [];
+                        const idx = selectedClipIdx[k] ?? 0;
+                        const clip = clips[idx] || clips[0];
+                        if (clip?.audioUrl) {
+                          await approveClip(album.slug, t, clip.audioUrl, clip.title, clip.imageUrl || null);
+                          done++;
+                          if (btn) btn.textContent = `A aprovar... ${done}/${readyTracks.length}`;
+                        }
+                      }
+                      if (btn) { btn.textContent = `${done} aprovadas!`; btn.disabled = false; }
+                      setTimeout(() => { if (btn) btn.textContent = `Aprovar todas (${readyTracks.length})`; }, 3000);
+                    }}
+                    id={`bulk-approve-${album.slug}`}
+                    className="rounded-lg bg-green-600 px-4 py-2 text-xs text-white transition hover:bg-green-700"
+                  >
+                    Aprovar todas ({readyTracks.length} faixas)
+                  </button>
+                  <span className="text-[10px] text-mundo-muted">Clica no clip que preferes em cada faixa antes de aprovar</span>
+                </div>
+              );
+            })()}
+
             <div className="space-y-3">
               {album.tracks.map((track) => {
                 const key = trackKey(album.slug, track.number);
@@ -1900,6 +1958,8 @@ export default function AlbumProductionPage() {
                     }}
                     existingVersions={trackVersions[key] || []}
                     generatedClips={generatedClips[key] || null}
+                    selectedClipIndex={selectedClipIdx[key] ?? 0}
+                    onSelectClip={(idx) => setSelectedClipIdx(s => ({ ...s, [key]: idx }))}
                     editedTitle={editedTitles[key] || null}
                     onTitleChange={(title) => {
                       setEditedTitles((t) => ({ ...t, [key]: title }));
