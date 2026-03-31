@@ -98,7 +98,7 @@ function buildStyle(energy?: string, flavor?: string, prompt?: string): string {
     folk: "acoustic folk, fingerpicked guitar, stomps, earthy, campfire, storytelling",
     funk: "funk, R&B-pop, glossy, punchy drums, funky bassline, bright synth, dancefloor, 108 BPM",
     house: "house, four-on-the-floor, deep bass, hi-hat, synth stabs, dance-floor",
-    gospel: "gospel, choir harmonies, organ, hand claps, uplifting, call-and-response",
+    gospel: "Gospel-pop power anthem, female vocals, steady tom-driven build, pulsing synth stabs, rising strings, half-time pre-chorus, stadium chorus with big kick, claps, soaring choir harmonies, piano, organ, contemporary, clean",
   };
 
   const base = energyBase[energy || "steady"] || energyBase.steady;
