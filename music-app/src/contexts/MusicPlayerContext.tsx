@@ -418,7 +418,11 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
 
     const track = state.currentTrack;
     const album = state.currentAlbum;
-    const coverUrl = album
+    // Track-specific Suno cover (via stream proxy), fallback to album pose
+    const trackCoverUrl = album
+      ? `${window.location.origin}/api/music/stream?album=${encodeURIComponent(album.slug)}&track=${track.number}&type=cover`
+      : null;
+    const albumCoverUrl = album
       ? `${window.location.origin}${getAlbumCover(album)}`
       : `${window.location.origin}/icon-512.png`;
 
@@ -427,7 +431,8 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       artist: "Loranne",
       album: album?.title || "Véus",
       artwork: [
-        { src: coverUrl, sizes: "512x512", type: "image/png" },
+        ...(trackCoverUrl ? [{ src: trackCoverUrl, sizes: "512x512", type: "image/jpeg" }] : []),
+        { src: albumCoverUrl, sizes: "512x512", type: "image/png" },
       ],
     });
 
