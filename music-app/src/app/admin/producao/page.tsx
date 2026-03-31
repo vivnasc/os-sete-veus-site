@@ -841,25 +841,25 @@ function TrackRow({
             id={`reel-btn-${albumSlug}-${track.number}`}
             onClick={async () => {
               const btn = document.getElementById(`reel-btn-${albumSlug}-${track.number}`) as HTMLButtonElement;
+              const resultDiv = document.getElementById(`reel-result-${albumSlug}-${track.number}`);
               if (!btn) return;
               btn.disabled = true;
               btn.textContent = "A preparar...";
+              if (resultDiv) resultDiv.innerHTML = "";
 
               try {
-                // Dynamic import to avoid loading reel-generator on page load
                 const { generateReel } = await import("@/lib/reel-generator");
                 const { getAlbumCover, getTrackCoverUrl } = await import("@/lib/album-covers");
 
                 const alb = ALL_ALBUMS.find(a => a.slug === albumSlug);
                 if (!alb) throw new Error("Album não encontrado");
 
-                // Try track cover first, fall back to album cover
                 let coverSrc = getAlbumCover(alb);
                 try {
                   const trackCoverUrl = getTrackCoverUrl(albumSlug, track.number);
                   const probe = await fetch(trackCoverUrl, { method: "HEAD" });
                   if (probe.ok) coverSrc = trackCoverUrl;
-                } catch { /* use album cover */ }
+                } catch {}
 
                 const audioSrc = `/api/music/stream?album=${encodeURIComponent(albumSlug)}&track=${track.number}`;
 
@@ -869,7 +869,6 @@ function TrackRow({
 
                 btn.textContent = "A enviar...";
 
-                // Upload to Supabase
                 const form = new FormData();
                 form.append("albumSlug", albumSlug);
                 form.append("trackNumber", String(track.number));
@@ -881,21 +880,26 @@ function TrackRow({
                 });
                 const data = await res.json();
 
-                if (data.ok) {
+                if (data.ok && data.videoUrl) {
                   btn.textContent = "Reel guardado!";
+                  if (resultDiv) {
+                    resultDiv.innerHTML = `<video src="${data.videoUrl}" controls playsinline muted loop style="max-height:160px;border-radius:8px;margin-top:6px;width:100%"></video>
+                    <a href="${data.videoUrl}" download style="display:inline-block;margin-top:4px;font-size:10px;color:#8B5CF6">Descarregar reel</a>`;
+                  }
                 } else {
                   throw new Error(data.erro || "Upload falhou");
                 }
               } catch (e) {
                 btn.textContent = "Erro";
-                alert(String(e));
+                if (resultDiv) resultDiv.innerHTML = `<p style="font-size:10px;color:#f87171;margin-top:4px">${String(e)}</p>`;
               }
-              setTimeout(() => { btn.disabled = false; btn.textContent = "Gerar reel"; }, 3000);
+              btn.disabled = false;
             }}
             className="rounded-lg bg-violet-900/30 px-3 py-1.5 text-xs text-violet-400 hover:bg-violet-900/50 transition"
           >
             Gerar reel
           </button>
+          <div id={`reel-result-${albumSlug}-${track.number}`}></div>
         </div>
       </div>
     </div>
