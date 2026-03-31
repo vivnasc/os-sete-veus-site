@@ -1783,6 +1783,27 @@ export default function AlbumProductionPage() {
               Limpar capas fantasma
             </button>
 
+            <button
+              onClick={async () => {
+                const title = prompt("Titulo da notificacao:", "Nova musica");
+                if (!title) return;
+                const body = prompt("Mensagem:", "Loranne lancou musica nova. Vem ouvir.");
+                if (!body) return;
+                const url = prompt("Link (ex: /album/espelho-ilusao):", "/");
+                const res = await adminFetch("/api/admin/push-notify", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ title, body, url: url || "/" }),
+                });
+                const data = await res.json();
+                if (data.ok) alert(`Enviado a ${data.sent} subscritores (${data.failed} falharam)`);
+                else alert(data.erro || "Erro");
+              }}
+              className="rounded-lg bg-blue-900/30 px-3 py-1.5 text-[10px] text-blue-400 hover:bg-blue-900/50 transition"
+            >
+              Push notificacao
+            </button>
+
             <div className="flex gap-1 rounded-full bg-mundo-muted-dark/10 p-1">
               <button
                 onClick={() => setViewMode("producao")}

@@ -7,6 +7,7 @@ import PlayTracker from "@/components/music/PlayTracker";
 import NoDownload from "@/components/music/NoDownload";
 import AuthGate from "@/components/music/AuthGate";
 import RegisterSW from "@/components/RegisterSW";
+import PushPrompt from "@/components/music/PushPrompt";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -78,6 +79,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <PlayTracker />
               <NoDownload />
               <RegisterSW />
+              <PushPrompt />
             </div>
           </SubscriptionProvider>
         </MusicPlayerProvider>
