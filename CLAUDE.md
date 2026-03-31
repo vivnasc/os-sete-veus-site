@@ -1,5 +1,20 @@
 # Os Sete Véus — Visão Completa do Projecto
 
+## REGRAS DE DEPLOY — LER ANTES DE QUALQUER PUSH
+
+**O Vercel tem limite de 100 deploys/dia no plano Hobby. Cada push ao main = 1 deploy. NUNCA desperdicar deploys.**
+
+1. **NUNCA fazer push de fixes incrementais.** Pensar, testar localmente, e so fazer push quando TUDO funciona.
+2. **Acumular todas as alteracoes num unico commit.** Nao fazer 10 commits para resolver 1 problema.
+3. **Testar TypeScript antes de push:** `npx tsc --noEmit` — se falhar, NAO fazer push.
+4. **Testar build antes de push:** `npx next build` — se falhar, NAO fazer push.
+5. **Maximo 3-5 deploys por sessao.** Se precisar de mais, algo esta errado com o planeamento.
+6. **Usar branches + PR para agrupar trabalho.** Nao fazer push directo ao main.
+7. **Pensar ANTES de agir.** Diagnosticar o problema, identificar a causa raiz, e corrigir de uma vez — nao adivinhar com tentativa e erro.
+8. **Quando algo nao funciona:** parar, ler o codigo, perceber porque, e so depois corrigir. Nao empilhar fixes em cima de fixes.
+9. **Signed upload URLs do Supabase NAO suportam upsert.** Para substituir ficheiros existentes, usar `supabase.storage.upload()` com `upsert: true` no servidor (endpoint `/api/admin/upload-cover`).
+10. **Capas do Suno:** guardam-se em `albums/{slug}/faixa-{XX}-cover.jpg`. O stream proxy so procura neste caminho.
+
 ## Inicio de Sessao
 
 **1. Verificar notas de revisao pendentes:**
