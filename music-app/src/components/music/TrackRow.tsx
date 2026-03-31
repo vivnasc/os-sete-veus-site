@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
 import { useSubscriptionGate } from "@/contexts/SubscriptionContext";
@@ -9,6 +10,7 @@ import { useLibrary } from "@/hooks/useLibrary";
 import ShareModal from "./ShareModal";
 import AddToPlaylistModal from "./AddToPlaylistModal";
 import type { Album, AlbumTrack } from "@/data/albums";
+import { getTrackCoverUrl, getAlbumCover } from "@/lib/album-covers";
 
 type Props = {
   track: AlbumTrack;
@@ -38,6 +40,16 @@ export default function TrackRow({ track, album, isActive }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [shareOpen, setShareOpen] = useState(false);
   const [playlistOpen, setPlaylistOpen] = useState(false);
+  const [trackCover, setTrackCover] = useState<string | null>(null);
+
+  // Probe for Suno cover
+  useEffect(() => {
+    const url = getTrackCoverUrl(album.slug, track.number);
+    const img = new window.Image();
+    img.onload = () => setTrackCover(url);
+    img.onerror = () => {};
+    img.src = url;
+  }, [album.slug, track.number]);
   const menuRef = useRef<HTMLDivElement>(null);
 
   // Close menu on click outside
@@ -92,6 +104,15 @@ export default function TrackRow({ track, album, isActive }: Props) {
               {track.number}
             </span>
           )}
+        </div>
+
+        {/* Track cover thumbnail */}
+        <div className="h-10 w-10 shrink-0 rounded-md overflow-hidden relative bg-white/5">
+          <img
+            src={trackCover || getAlbumCover(album)}
+            alt=""
+            className="h-full w-full object-cover"
+          />
         </div>
 
         {/* Track info */}
