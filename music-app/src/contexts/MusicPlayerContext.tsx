@@ -107,25 +107,84 @@ async function setSourceAndPlay(
   audio.play().catch(() => {});
 }
 
+// Persist queue to localStorage
+const QUEUE_KEY = "veus:player-queue";
+
+function saveQueue(state: MusicPlayerState) {
+  try {
+    if (!state.currentTrack || !state.currentAlbum) {
+      localStorage.removeItem(QUEUE_KEY);
+      return;
+    }
+    localStorage.setItem(QUEUE_KEY, JSON.stringify({
+      trackNumber: state.currentTrack.number,
+      albumSlug: state.currentAlbum.slug,
+      queue: state.queue.map(t => ({ number: t.number, albumSlug: (t as QueueTrack).albumSlug })),
+      queueAlbumSlug: state.queueAlbum?.slug || null,
+      shuffle: state.shuffle,
+      repeat: state.repeat,
+      infinite: state.infinite,
+    }));
+  } catch {}
+}
+
+function loadQueue(): Partial<MusicPlayerState> | null {
+  try {
+    const raw = localStorage.getItem(QUEUE_KEY);
+    if (!raw) return null;
+    const saved = JSON.parse(raw);
+    const album = ALL_ALBUMS.find(a => a.slug === saved.albumSlug);
+    const track = album?.tracks.find(t => t.number === saved.trackNumber);
+    if (!album || !track) return null;
+
+    const queueAlbum = saved.queueAlbumSlug ? ALL_ALBUMS.find(a => a.slug === saved.queueAlbumSlug) || album : album;
+    const queue: QueueTrack[] = (saved.queue || []).map((q: { number: number; albumSlug?: string }) => {
+      const qa = q.albumSlug ? ALL_ALBUMS.find(a => a.slug === q.albumSlug) : queueAlbum;
+      const qt = qa?.tracks.find(t => t.number === q.number);
+      return qt ? { ...qt, albumSlug: qa?.slug } : null;
+    }).filter(Boolean) as QueueTrack[];
+
+    return {
+      currentTrack: track,
+      currentAlbum: album,
+      queue: queue.length > 0 ? queue : album.tracks,
+      queueAlbum: queueAlbum,
+      shuffle: saved.shuffle || false,
+      repeat: saved.repeat || "off",
+      infinite: saved.infinite || false,
+    };
+  } catch { return null; }
+}
+
 export function MusicPlayerProvider({ children }: { children: ReactNode }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const blobUrlRef = useRef<string | null>(null);
-  const [state, setState] = useState<MusicPlayerState>({
-    currentTrack: null,
-    currentAlbum: null,
-    queue: [],
-    queueAlbum: null,
-    isPlaying: false,
-    currentTime: 0,
-    duration: 0,
-    volume: 1,
-    shuffle: false,
-    infinite: false,
-    repeat: "off",
-    showFullPlayer: false,
-    showLyrics: false,
-    audioError: null,
+  const [state, setState] = useState<MusicPlayerState>(() => {
+    const base: MusicPlayerState = {
+      currentTrack: null,
+      currentAlbum: null,
+      queue: [],
+      queueAlbum: null,
+      isPlaying: false,
+      currentTime: 0,
+      duration: 0,
+      volume: 1,
+      shuffle: false,
+      infinite: false,
+      repeat: "off",
+      showFullPlayer: false,
+      showLyrics: false,
+      audioError: null,
+    };
+    if (typeof window === "undefined") return base;
+    const saved = loadQueue();
+    return saved ? { ...base, ...saved } : base;
   });
+
+  // Persist queue changes
+  useEffect(() => {
+    saveQueue(state);
+  }, [state.currentTrack, state.currentAlbum, state.queue, state.shuffle, state.repeat, state.infinite]);
 
   useEffect(() => {
     if (!audioRef.current) {
