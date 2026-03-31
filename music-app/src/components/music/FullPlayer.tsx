@@ -382,8 +382,8 @@ export default function FullPlayer() {
             </button>
             <button
               onClick={togglePlay}
-              className="flex h-16 w-16 items-center justify-center rounded-full text-[#0D0D1A] transition-transform hover:scale-105 active:scale-95 shadow-lg"
-              style={{ backgroundColor: albumColor }}
+              className="flex h-16 w-16 items-center justify-center rounded-full text-[#0D0D1A] transition-transform hover:scale-105 active:scale-95 shadow-lg ring-1 ring-white/20"
+              style={{ backgroundColor: "#F5F0E6" }}
             >
               {isPlaying ? (
                 <svg viewBox="0 0 24 24" fill="currentColor" className="h-7 w-7"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" /></svg>

@@ -111,7 +111,7 @@ export default function MiniPlayer() {
             <button
               onClick={togglePlay}
               className="flex h-9 w-9 items-center justify-center rounded-full text-[#0D0D1A] transition-transform hover:scale-105"
-              style={{ backgroundColor: albumColor }}
+              style={{ backgroundColor: "#F5F0E6" }}
               aria-label={isPlaying ? "Pausar" : "Reproduzir"}
             >
               {isPlaying ? (

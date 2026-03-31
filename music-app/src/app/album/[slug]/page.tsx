@@ -193,7 +193,7 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
                 <button
                   onClick={() => playAlbum(album)}
                   className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium text-[#0D0D1A] transition-transform hover:scale-105"
-                  style={{ backgroundColor: albumColor }}
+                  style={{ backgroundColor: "#F5F0E6" }}
                 >
                   <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
                     <path d="M8 5v14l11-7z" />
