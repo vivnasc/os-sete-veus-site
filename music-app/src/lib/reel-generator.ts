@@ -314,28 +314,114 @@ export async function generateReel(
     ctx.globalAlpha = 1;
   }
 
-  return new Promise<Blob>((resolve, reject) => {
-    report("recording", 0, "A gravar reel... 0s / 15s");
+  // Try WebCodecs + mp4-muxer for real MP4 (Chrome/Edge 94+)
+  if (typeof VideoEncoder !== "undefined") {
+    report("recording", 0, "A gravar reel (MP4)...");
+    const { Muxer, ArrayBufferTarget } = await import("mp4-muxer");
+    const target = new ArrayBufferTarget();
+    const muxer = new Muxer({
+      target,
+      video: { codec: "avc", width: REEL_W, height: REEL_H },
+      audio: { codec: "aac", numberOfChannels: audioBuffer.numberOfChannels, sampleRate: audioBuffer.sampleRate },
+      fastStart: "in-memory",
+    });
 
+    // Encode video frames
+    const encoder = new VideoEncoder({
+      output: (chunk, meta) => muxer.addVideoChunk(chunk, meta),
+      error: () => {},
+    });
+    encoder.configure({
+      codec: "avc1.42001f",
+      width: REEL_W,
+      height: REEL_H,
+      bitrate: 2_000_000,
+      framerate: FPS,
+    });
+
+    const totalFrames = REEL_DURATION * FPS;
+    for (let i = 0; i < totalFrames; i++) {
+      const elapsed = i / FPS;
+      drawFrame(elapsed);
+      const frame = new VideoFrame(canvas, { timestamp: i * (1_000_000 / FPS) });
+      encoder.encode(frame, { keyFrame: i % (FPS * 2) === 0 });
+      frame.close();
+      if (i % FPS === 0) report("recording", i / totalFrames, `A gravar... ${Math.round(elapsed)}s / ${REEL_DURATION}s`);
+    }
+    await encoder.flush();
+    encoder.close();
+
+    // Encode audio
+    report("finalizing", 0.8, "A processar audio...");
+    const audioEncoder = new AudioEncoder({
+      output: (chunk, meta) => muxer.addAudioChunk(chunk, meta),
+      error: () => {},
+    });
+    audioEncoder.configure({
+      codec: "mp4a.40.2",
+      numberOfChannels: audioBuffer.numberOfChannels,
+      sampleRate: audioBuffer.sampleRate,
+      bitrate: 128000,
+    });
+
+    // Extract audio samples for the reel duration
+    const channels = audioBuffer.numberOfChannels;
+    const sampleRate = audioBuffer.sampleRate;
+    const startSample = Math.floor(startOffset * sampleRate);
+    const numSamples = Math.floor(REEL_DURATION * sampleRate);
+    const audioData = new Float32Array(numSamples * channels);
+    for (let ch = 0; ch < channels; ch++) {
+      const channelData = audioBuffer.getChannelData(ch);
+      for (let i = 0; i < numSamples; i++) {
+        const srcIdx = startSample + i;
+        if (srcIdx < channelData.length) {
+          audioData[i * channels + ch] = channelData[srcIdx];
+        }
+      }
+    }
+
+    const chunkSize = sampleRate; // 1 second chunks
+    for (let offset = 0; offset < numSamples; offset += chunkSize) {
+      const size = Math.min(chunkSize, numSamples - offset);
+      const chunk = new AudioData({
+        format: "f32-planar" as AudioSampleFormat,
+        sampleRate,
+        numberOfFrames: size,
+        numberOfChannels: channels,
+        timestamp: (offset / sampleRate) * 1_000_000,
+        data: audioData.slice(offset * channels, (offset + size) * channels),
+      });
+      audioEncoder.encode(chunk);
+      chunk.close();
+    }
+    await audioEncoder.flush();
+    audioEncoder.close();
+
+    muxer.finalize();
+    const blob = new Blob([target.buffer], { type: "video/mp4" });
+    try { bufferSource.disconnect(); audioCtx.close(); } catch {}
+    report("done", 1, `Reel MP4 pronto! (${(blob.size / 1024 / 1024).toFixed(1)}MB)`);
+    return blob;
+  }
+
+  // Fallback: MediaRecorder (WebM)
+  report("recording", 0, "A gravar reel (WebM)...");
+  return new Promise<Blob>((resolve, reject) => {
     recorder.onstop = () => {
       report("finalizing", 0.95, "A finalizar...");
       try { bufferSource.stop(); bufferSource.disconnect(); audioCtx.close(); } catch {}
-
-      const type = mimeType.includes("mp4") ? "video/mp4" : "video/webm";
-      const blob = new Blob(chunks, { type });
-
+      const blob = new Blob(chunks, { type: "video/mp4" });
       if (blob.size < 1000) {
-        reject(new Error(`Reel vazio (${blob.size} bytes). Browser pode nao suportar gravacao de video.`));
+        reject(new Error(`Reel vazio (${blob.size} bytes).`));
         return;
       }
-
       report("done", 1, `Reel pronto! (${(blob.size / 1024 / 1024).toFixed(1)}MB)`);
       resolve(blob);
     };
 
     recorder.onerror = () => {
       try { bufferSource.stop(); audioCtx.close(); } catch {}
-      reject(new Error("MediaRecorder falhou. Tenta num browser desktop."));
+      reject(new Error("Gravacao falhou."));
     };
 
     recorder.start(500);

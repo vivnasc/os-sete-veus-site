@@ -44,7 +44,7 @@ function CopyButton({ text, label = "Copiar" }: { text: string; label?: string }
         setCopied(true);
         setTimeout(() => setCopied(false), 1500);
       }}
-      className={`shrink-0 rounded px-2.5 py-1 text-[11px] font-medium transition ${
+      className={`shrink-0 rounded px-3 py-2 text-xs font-medium transition min-h-[44px] ${
         copied
           ? "bg-green-800/40 text-green-400"
           : "bg-mundo-muted-dark/20 text-mundo-muted hover:bg-mundo-muted-dark/40 hover:text-mundo-creme"
@@ -356,7 +356,7 @@ function ClipApprovalRow({
                 }
                 setTimeout(() => { btn.disabled = false; btn.textContent = "Guardar capa"; }, 2000);
               }}
-              className="rounded bg-amber-600/80 px-2 py-1 text-[10px] font-medium text-white hover:bg-amber-700 transition"
+              className="rounded-lg bg-amber-600/80 px-3 py-2 text-xs font-medium text-white hover:bg-amber-700 transition min-h-[44px]"
             >
               Guardar capa
             </button>
@@ -462,7 +462,7 @@ function ClipApprovalRow({
                 }
                 setTimeout(() => { btn.disabled = false; btn.textContent = "Reel"; }, 3000);
               }}
-              className="rounded bg-violet-600/80 px-2 py-1 text-[10px] font-medium text-white hover:bg-violet-700 transition"
+              className="rounded-lg bg-violet-600/80 px-3 py-2 text-xs font-medium text-white hover:bg-violet-700 transition min-h-[44px]"
             >
               Reel
             </button>
@@ -485,21 +485,21 @@ function ClipApprovalRow({
           {!hasMainAudio && (
             <button
               onClick={onApproveMain}
-              className="rounded-lg bg-mundo-dourado px-3 py-1.5 text-xs text-white transition hover:bg-mundo-dourado/80"
+              className="rounded-lg bg-mundo-dourado px-4 py-2.5 text-sm min-h-[44px] text-white transition hover:bg-mundo-dourado/80"
             >
               Aprovar principal
             </button>
           )}
           <button
             onClick={() => setMode("version")}
-            className="rounded-lg bg-violet-600 px-3 py-1.5 text-xs text-white transition hover:bg-violet-700"
+            className="rounded-lg bg-violet-600 px-4 py-2.5 text-sm min-h-[44px] text-white transition hover:bg-violet-700"
           >
             Guardar versão
           </button>
           {hasMainAudio && (
             <button
               onClick={onApproveMain}
-              className="rounded-lg bg-mundo-muted-dark/20 px-3 py-1.5 text-xs text-mundo-muted transition hover:bg-mundo-muted-dark/30"
+              className="rounded-lg bg-mundo-muted-dark/20 px-4 py-2.5 text-sm min-h-[44px] text-mundo-muted transition hover:bg-mundo-muted-dark/30"
             >
               Substituir principal
             </button>
@@ -507,7 +507,7 @@ function ClipApprovalRow({
           {onCreatePersona && clip.id && (
             <button
               onClick={() => onCreatePersona(String(clip.id), String(clip.id))}
-              className="rounded-lg bg-pink-900/30 px-3 py-1.5 text-xs text-pink-400 transition hover:bg-pink-900/50"
+              className="rounded-lg bg-pink-900/30 px-4 py-2.5 text-sm min-h-[44px] text-pink-400 transition hover:bg-pink-900/50"
               title="Criar persona com a voz deste clip"
             >
               Criar Persona
@@ -522,7 +522,7 @@ function ClipApprovalRow({
               value={versionName}
               onChange={(e) => setVersionName(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ""))}
               placeholder="nome-da-versão"
-              className="flex-1 rounded-lg bg-mundo-bg px-3 py-1.5 text-xs text-mundo-creme border border-mundo-muted-dark/30 focus:border-violet-500 focus:outline-none"
+              className="flex-1 rounded-lg bg-mundo-bg px-4 py-2.5 text-sm min-h-[44px] text-mundo-creme border border-mundo-muted-dark/30 focus:border-violet-500 focus:outline-none"
             />
           </div>
           {nameExists && (
@@ -533,7 +533,7 @@ function ClipApprovalRow({
               <button
                 key={e}
                 onClick={() => setEnergy(e)}
-                className={`rounded px-2 py-1 text-[10px] font-bold uppercase transition ${
+                className={`rounded-lg px-3 py-2 text-xs font-bold uppercase min-h-[44px] transition ${
                   energy === e
                     ? ENERGY_LABELS[e].color
                     : "bg-mundo-muted-dark/10 text-mundo-muted hover:text-mundo-creme"
@@ -549,7 +549,7 @@ function ClipApprovalRow({
                 if (versionName) onApproveVersion(versionName, energy);
               }}
               disabled={!versionName}
-              className="rounded-lg bg-violet-600 px-3 py-1.5 text-xs text-white transition hover:bg-violet-700 disabled:opacity-50"
+              className="rounded-lg bg-violet-600 px-4 py-2.5 text-sm min-h-[44px] text-white transition hover:bg-violet-700 disabled:opacity-50"
             >
               Guardar "{versionName}"
             </button>
@@ -696,7 +696,7 @@ function TrackRow({
 
           {/* Prompt expandable */}
           <details className="mt-2">
-            <summary className="cursor-pointer text-xs text-mundo-muted/60 hover:text-mundo-muted">
+            <summary className="cursor-pointer text-sm text-mundo-muted/60 hover:text-mundo-muted py-2 min-h-[44px]">
               Ver prompt
             </summary>
             <p className="mt-1 rounded bg-mundo-bg p-2 font-mono text-xs text-mundo-muted/80">
@@ -706,7 +706,7 @@ function TrackRow({
 
           {/* Style editable — energy + flavor selectors + custom override */}
           <details className="mt-1">
-            <summary className="cursor-pointer text-xs text-mundo-muted/60 hover:text-mundo-muted">
+            <summary className="cursor-pointer text-sm text-mundo-muted/60 hover:text-mundo-muted py-2 min-h-[44px]">
               Ver style {editedStyle !== null && <span className="text-amber-400 ml-1">(editado)</span>}
             </summary>
             <div className="mt-2 space-y-2">
@@ -738,14 +738,14 @@ function TrackRow({
                 placeholder="Custom style override (vazio = automático)"
                 className="w-full rounded bg-mundo-bg px-3 py-2 font-mono text-xs text-mundo-muted/80 border border-mundo-muted-dark/20 focus:border-violet-500 focus:outline-none"
               />
-              <p className="text-[9px] text-mundo-muted/40">Clica num flavor para mudar o som. Ou escreve um style manual.</p>
+              <p className="text-xs text-mundo-muted/40">Clica num flavor para mudar o som. Ou escreve um style manual.</p>
             </div>
           </details>
 
           {/* Lyrics expandable + editable */}
           {track.lyrics && (
             <details className="mt-1" open={showLyrics} onToggle={(e) => setShowLyrics((e.target as HTMLDetailsElement).open)}>
-              <summary className="cursor-pointer text-xs text-mundo-muted/60 hover:text-mundo-muted">
+              <summary className="cursor-pointer text-sm text-mundo-muted/60 hover:text-mundo-muted py-2 min-h-[44px]">
                 Ver letra {editedLyrics !== null && editedLyrics !== track.lyrics && <span className="text-amber-400 ml-1">(editada)</span>}
               </summary>
               <textarea
@@ -790,7 +790,7 @@ function TrackRow({
               <label
                 id={`cover-label-${albumSlug}-${track.number}`}
                 htmlFor={`cover-upload-${albumSlug}-${track.number}`}
-                className="cursor-pointer rounded-lg bg-mundo-muted-dark/20 px-3 py-1.5 text-xs text-mundo-muted hover:bg-mundo-muted-dark/30 transition"
+                className="cursor-pointer rounded-lg bg-mundo-muted-dark/20 px-4 py-2.5 text-sm min-h-[44px] text-mundo-muted hover:bg-mundo-muted-dark/30 transition"
               >
                 Carregar capa
               </label>
@@ -805,7 +805,7 @@ function TrackRow({
                   <div key={v.name} className="rounded-lg border border-violet-900/20 bg-violet-950/10 p-2">
                     <div className="flex items-center gap-2 mb-1">
                       <span className="rounded bg-violet-900/30 px-2 py-0.5 text-[10px] text-violet-400">{v.name}</span>
-                      {v.energy && <span className="text-[9px] text-mundo-muted">{v.energy}</span>}
+                      {v.energy && <span className="text-xs text-mundo-muted">{v.energy}</span>}
                     </div>
                     {v.audioUrl && <MiniPlayer src={v.audioUrl} />}
                   </div>
@@ -814,7 +814,7 @@ function TrackRow({
             )}
             <button
               onClick={() => setShowVersionUpload(!showVersionUpload)}
-              className="text-[11px] text-violet-400 hover:text-violet-300 transition"
+              className="text-sm text-violet-400 hover:text-violet-300 py-2 min-h-[44px] transition"
             >
               + Adicionar versão / remix
             </button>
@@ -852,7 +852,7 @@ function TrackRow({
                     <button
                       key={e}
                       onClick={() => setVersionUploadEnergy(e)}
-                      className={`rounded px-2 py-1 text-[10px] font-bold uppercase transition ${
+                      className={`rounded-lg px-3 py-2 text-xs font-bold uppercase min-h-[44px] transition ${
                         versionUploadEnergy === e
                           ? ENERGY_LABELS[e].color
                           : "bg-mundo-muted-dark/10 text-mundo-muted hover:text-mundo-creme"
@@ -876,7 +876,7 @@ function TrackRow({
                   />
                   <button
                     onClick={() => coverInputRef.current?.click()}
-                    className="rounded-lg bg-mundo-muted-dark/20 px-3 py-1.5 text-xs text-mundo-muted transition hover:bg-mundo-muted-dark/30"
+                    className="rounded-lg bg-mundo-muted-dark/20 px-4 py-2.5 text-sm min-h-[44px] text-mundo-muted transition hover:bg-mundo-muted-dark/30"
                   >
                     {versionCoverFile ? `Capa: ${versionCoverFile.name.slice(0, 20)}` : "Adicionar capa (opcional)"}
                   </button>
@@ -887,7 +887,7 @@ function TrackRow({
                 <button
                   onClick={() => versionInputRef.current?.click()}
                   disabled={!versionUploadName}
-                  className="rounded-lg bg-violet-600 px-3 py-1.5 text-xs text-white transition hover:bg-violet-700 disabled:opacity-50"
+                  className="rounded-lg bg-violet-600 px-4 py-2.5 text-sm min-h-[44px] text-white transition hover:bg-violet-700 disabled:opacity-50"
                 >
                   Escolher MP3
                 </button>
@@ -985,7 +985,7 @@ function TrackRow({
             audioUrl ? (
               <button
                 onClick={onRemove}
-                className="rounded-lg bg-red-900/30 px-3 py-1.5 text-xs text-red-400 transition hover:bg-red-900/50"
+                className="rounded-lg bg-red-900/30 px-4 py-2.5 text-sm min-h-[44px] text-red-400 transition hover:bg-red-900/50"
               >
                 Remover
               </button>
@@ -1120,7 +1120,7 @@ function TrackRow({
               }
               btn.disabled = false;
             }}
-            className="rounded-lg bg-violet-900/30 px-3 py-1.5 text-xs text-violet-400 hover:bg-violet-900/50 transition"
+            className="rounded-lg bg-violet-900/30 px-4 py-2.5 text-sm min-h-[44px] text-violet-400 hover:bg-violet-900/50 transition"
           >
             Gerar reel
           </button>
@@ -1702,7 +1702,7 @@ export default function AlbumProductionPage() {
               <select
                 value={sunoModel}
                 onChange={(e) => setSunoModel(e.target.value)}
-                className="rounded-lg border border-mundo-muted-dark/30 bg-mundo-bg px-3 py-1.5 text-xs text-mundo-creme focus:border-violet-500 focus:outline-none"
+                className="rounded-lg border border-mundo-muted-dark/30 bg-mundo-bg px-4 py-2.5 text-sm min-h-[44px] text-mundo-creme focus:border-violet-500 focus:outline-none"
               >
                 <option value="V5_5">Suno V5.5</option>
                 <option value="V5">Suno V5</option>
@@ -1720,7 +1720,7 @@ export default function AlbumProductionPage() {
                 value={personaId}
                 onChange={(e) => setPersonaId(e.target.value)}
                 placeholder="Sem persona"
-                className="rounded-lg border border-mundo-muted-dark/30 bg-mundo-bg px-3 py-1.5 text-xs text-mundo-creme focus:border-violet-500 focus:outline-none w-32"
+                className="rounded-lg border border-mundo-muted-dark/30 bg-mundo-bg px-4 py-2.5 text-sm min-h-[44px] text-mundo-creme focus:border-violet-500 focus:outline-none w-32"
               />
               {personaId && (
                 <button
@@ -1766,7 +1766,7 @@ export default function AlbumProductionPage() {
                   alert(`Erro: ${e}`);
                 }
               }}
-              className="rounded-lg bg-amber-900/30 px-3 py-1.5 text-[10px] text-amber-400 hover:bg-amber-900/50 transition"
+              className="rounded-lg bg-amber-900/30 px-4 py-2.5 text-xs min-h-[44px] text-amber-400 hover:bg-amber-900/50 transition"
             >
               Renomear pasta
             </button>
@@ -1778,7 +1778,7 @@ export default function AlbumProductionPage() {
                 const data = await res.json();
                 alert(`${data.deleted || 0} capas antigas apagadas.\n${(data.details || []).join("\n") || "Nenhuma encontrada."}`);
               }}
-              className="rounded-lg bg-red-900/30 px-3 py-1.5 text-[10px] text-red-400 hover:bg-red-900/50 transition"
+              className="rounded-lg bg-red-900/30 px-4 py-2.5 text-xs min-h-[44px] text-red-400 hover:bg-red-900/50 transition"
             >
               Limpar capas fantasma
             </button>
@@ -1799,7 +1799,7 @@ export default function AlbumProductionPage() {
                 if (data.ok) alert(`Enviado a ${data.sent} subscritores (${data.failed} falharam)`);
                 else alert(data.erro || "Erro");
               }}
-              className="rounded-lg bg-blue-900/30 px-3 py-1.5 text-[10px] text-blue-400 hover:bg-blue-900/50 transition"
+              className="rounded-lg bg-blue-900/30 px-4 py-2.5 text-xs min-h-[44px] text-blue-400 hover:bg-blue-900/50 transition"
             >
               Push notificacao
             </button>

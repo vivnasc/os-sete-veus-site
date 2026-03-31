@@ -11,6 +11,7 @@ import ShareModal from "./ShareModal";
 import AddToPlaylistModal from "./AddToPlaylistModal";
 import type { Album, AlbumTrack } from "@/data/albums";
 import { getTrackCoverUrl, getAlbumCover } from "@/lib/album-covers";
+import { useCustomTitles } from "@/hooks/useCustomTitles";
 
 type Props = {
   track: AlbumTrack;
@@ -30,8 +31,10 @@ export default function TrackRow({ track, album, isActive }: Props) {
   const { canPlay, isTrackFree, requestPlay } = useSubscriptionGate();
   const { saveTrack, removeTrack, getSaveState, isSaved } = useDownloads();
   const { isFavorite: isFav, toggleFavorite, userId } = useLibrary();
+  const { getTitle } = useCustomTitles();
   const router = useRouter();
   const albumColor = album.color || "#C9A96E";
+  const displayTitle = getTitle(album.slug, track.number, track.title);
   const locked = !canPlay(track.number);
   const favorited = isFav(track.number, album.slug);
   const saveState = getSaveState(album.slug, track.number);
@@ -112,7 +115,7 @@ export default function TrackRow({ track, album, isActive }: Props) {
             className={`text-sm truncate ${isActive ? "font-semibold" : "text-[#F5F0E6]"}`}
             style={isActive ? { color: albumColor } : {}}
           >
-            {track.title}
+            {displayTitle}
           </p>
           <p className="text-xs text-[#666680] truncate">{track.description}</p>
         </div>
