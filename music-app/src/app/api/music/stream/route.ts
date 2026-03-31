@@ -31,7 +31,7 @@ export async function GET(req: NextRequest) {
   if (type === "cover") {
     const extensions = ["jpg", "png", "jpeg", "webp"];
     for (const ext of extensions) {
-      for (const folder of [`albums/${safeAlbum}`, safeAlbum]) {
+      for (const folder of [`albums/${safeAlbum}`]) {
         const url = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${folder}/faixa-${safeTrack}-cover.${ext}`;
         const res = await fetch(url);
         if (res.ok) {
