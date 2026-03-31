@@ -22,7 +22,10 @@ function pickLyric(track: AlbumTrack): string | null {
 function loadImage(src: string): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
     const img = new Image();
-    img.crossOrigin = "anonymous";
+    // Only set crossOrigin for external URLs
+    if (src.startsWith("http") && !src.includes(window.location.host)) {
+      img.crossOrigin = "anonymous";
+    }
     img.onload = () => resolve(img);
     img.onerror = () => reject(new Error(`Failed to load: ${src}`));
     img.src = src;
