@@ -28,7 +28,6 @@ export async function GET(req: NextRequest) {
   const color = album?.color || "#C9A96E";
   const lyric = pickLyric(track?.lyrics);
 
-  // Build cover URL from Supabase
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
   const pad = String(trackNum).padStart(2, "0");
   const coverUrl = `${supabaseUrl}/storage/v1/object/public/audios/albums/${albumSlug}/faixa-${pad}-cover.jpg`;
@@ -44,103 +43,91 @@ export async function GET(req: NextRequest) {
           background: "#0D0D1A",
           fontFamily: "serif",
           position: "relative",
-          padding: "40px",
+          padding: "50px",
         }}
       >
-        {/* Glow */}
+        {/* Background glow */}
         <div
           style={{
             position: "absolute",
-            top: "0",
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "800px",
-            height: "500px",
+            top: "-50px",
+            left: "30%",
+            width: "500px",
+            height: "400px",
             borderRadius: "50%",
             background: color,
-            opacity: 0.12,
-            filter: "blur(120px)",
+            opacity: 0.15,
+            filter: "blur(100px)",
           }}
         />
 
-        {/* Cover image */}
-        <div style={{ display: "flex", flexShrink: 0, marginRight: 50 }}>
+        {/* Cover + play button */}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0, marginRight: 50, position: "relative" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={coverUrl}
             alt=""
-            width={280}
-            height={280}
+            width={300}
+            height={300}
             style={{
-              borderRadius: 20,
+              borderRadius: 24,
               objectFit: "cover",
-              boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
+              boxShadow: "0 25px 80px rgba(0,0,0,0.6)",
             }}
           />
+          {/* Play button overlay */}
+          <div style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 64,
+            height: 64,
+            borderRadius: "50%",
+            background: "rgba(255,255,255,0.2)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}>
+            <div style={{
+              width: 0,
+              height: 0,
+              borderLeft: "22px solid rgba(255,255,255,0.9)",
+              borderTop: "14px solid transparent",
+              borderBottom: "14px solid transparent",
+              marginLeft: 4,
+            }} />
+          </div>
         </div>
 
-        {/* Text */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            flex: 1,
-            position: "relative",
-          }}
-        >
-          <p
-            style={{
-              fontSize: 18,
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              color: "#666680",
-              marginBottom: 12,
-            }}
-          >
+        {/* Text content */}
+        <div style={{ display: "flex", flexDirection: "column", flex: 1, position: "relative" }}>
+          <p style={{ fontSize: 18, letterSpacing: "0.15em", textTransform: "uppercase", color, marginBottom: 8 }}>
             {albumTitle}
           </p>
 
-          <h1
-            style={{
-              fontSize: 52,
-              fontWeight: 700,
-              color: "#F5F0E6",
-              lineHeight: 1.1,
-              marginBottom: 16,
-              maxWidth: 600,
-            }}
-          >
+          <h1 style={{ fontSize: 56, fontWeight: 700, color: "#F5F0E6", lineHeight: 1.1, marginBottom: 16, maxWidth: 550 }}>
             {title}
           </h1>
 
           {lyric && (
-            <p
-              style={{
-                fontSize: 22,
-                fontStyle: "italic",
-                color: `${color}cc`,
-                marginBottom: 16,
-                maxWidth: 550,
-              }}
-            >
+            <p style={{ fontSize: 24, fontStyle: "italic", color: "#F5F0E6", opacity: 0.7, marginBottom: 16, maxWidth: 500 }}>
               &ldquo;{lyric}&rdquo;
             </p>
           )}
 
-          <p style={{ fontSize: 20, color: "#a0a0b0" }}>
-            Loranne
-          </p>
-
-          <p style={{ fontSize: 13, color: "#666680", letterSpacing: "0.15em", marginTop: 24 }}>
-            VÉUS
-          </p>
+          <div style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 8 }}>
+            <p style={{ fontSize: 22, color: "#C9A96E", fontStyle: "italic" }}>
+              Loranne
+            </p>
+            <div style={{ width: 1, height: 20, background: "#666680" }} />
+            <p style={{ fontSize: 14, color: "#666680", letterSpacing: "0.15em" }}>
+              VÉUS
+            </p>
+          </div>
         </div>
       </div>
     ),
-    {
-      width: 1200,
-      height: 630,
-    }
+    { width: 1200, height: 630 }
   );
 }

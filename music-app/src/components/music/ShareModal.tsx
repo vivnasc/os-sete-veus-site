@@ -67,6 +67,12 @@ export default function ShareModal({ track, album, onClose }: Props) {
     ? `"${lyric}"\n— ${track.title}, Loranne`
     : `${track.title} — Loranne`;
 
+  // Auto-generate story card on open
+  useEffect(() => {
+    generateCard("story");
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [resolvedCover]);
+
   async function generateCard(format: "story" | "square") {
     setGenerating(true);
     setCardFormat(format);

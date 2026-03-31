@@ -94,6 +94,12 @@ export default function PartilhaClient({
     audio.addEventListener("ended", onEnded);
     audio.addEventListener("error", onError);
 
+    // Auto-play on load (will work if user has interacted with the page before)
+    audio.play().catch(() => {
+      // Autoplay blocked — user will tap play manually
+    });
+    if (!playing) setPlaying(true);
+
     return () => {
       audio.pause();
       audio.removeEventListener("timeupdate", onTime);
@@ -165,8 +171,13 @@ export default function PartilhaClient({
       />
 
       <div className="relative z-10 w-full max-w-sm flex flex-col items-center text-center">
+        {/* Preview badge */}
+        <div className="mb-4 px-4 py-1.5 rounded-full bg-white/5 border border-white/10">
+          <p className="text-[11px] text-[#a0a0b0] tracking-wider">PREVIEW 45s</p>
+        </div>
+
         {/* Album cover */}
-        <div className="relative w-56 h-56 rounded-2xl overflow-hidden shadow-2xl mb-8">
+        <div className="relative w-64 h-64 rounded-2xl overflow-hidden shadow-2xl mb-8">
           <Image src={displayCover} alt={albumTitle} fill className="object-cover" unoptimized={!!coverLoaded} />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         </div>
