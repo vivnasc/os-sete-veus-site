@@ -341,6 +341,55 @@ function ClipApprovalRow({
             >
               Guardar capa
             </button>
+            <button
+              id={`clip-reel-${albumSlug}-${trackNumber}-${clipIndex}`}
+              onClick={async () => {
+                const btn = document.getElementById(`clip-reel-${albumSlug}-${trackNumber}-${clipIndex}`) as HTMLButtonElement;
+                if (!btn) return;
+                btn.disabled = true;
+                btn.textContent = "...";
+                try {
+                  const { generateReel } = await import("@/lib/reel-generator");
+                  const alb = ALL_ALBUMS.find(a => a.slug === albumSlug);
+                  if (!alb) throw new Error("Album nao encontrado");
+                  const t = alb.tracks.find(tr => tr.number === trackNumber);
+                  if (!t) throw new Error("Faixa nao encontrada");
+                  const audioSrc = `/api/music/stream?album=${encodeURIComponent(albumSlug)}&track=${trackNumber}`;
+                  const blob = await generateReel(t, alb, clip.imageUrl!, audioSrc, (p) => {
+                    btn.textContent = p.message;
+                  });
+                  btn.textContent = "A enviar...";
+                  const form = new FormData();
+                  form.append("albumSlug", albumSlug);
+                  form.append("trackNumber", String(trackNumber));
+                  form.append("video", blob, "reel.webm");
+                  const res = await adminFetch("/api/admin/upload-reel", { method: "POST", body: form });
+                  const data = await res.json();
+                  if (data.ok) {
+                    btn.textContent = "Reel OK!";
+                    // Show preview
+                    const parent = btn.parentElement;
+                    if (parent && data.videoUrl) {
+                      const vid = document.createElement("video");
+                      vid.src = data.videoUrl;
+                      vid.controls = true;
+                      vid.playsInline = true;
+                      vid.muted = true;
+                      vid.loop = true;
+                      vid.style.cssText = "max-height:120px;border-radius:6px;margin-top:4px;width:100%";
+                      parent.appendChild(vid);
+                    }
+                  } else throw new Error(data.erro || "Falhou");
+                } catch (e) {
+                  btn.textContent = "Erro";
+                  alert(String(e));
+                }
+                setTimeout(() => { btn.disabled = false; btn.textContent = "Reel"; }, 3000);
+              }}
+              className="rounded bg-violet-600/80 px-2 py-1 text-[10px] font-medium text-white hover:bg-violet-700 transition"
+            >
+              Reel
+            </button>
           </div>
         )}
         <div className="flex-1 min-w-0">
