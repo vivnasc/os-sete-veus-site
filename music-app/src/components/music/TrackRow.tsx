@@ -40,16 +40,6 @@ export default function TrackRow({ track, album, isActive }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [shareOpen, setShareOpen] = useState(false);
   const [playlistOpen, setPlaylistOpen] = useState(false);
-  const [trackCover, setTrackCover] = useState<string | null>(null);
-
-  // Probe for Suno cover
-  useEffect(() => {
-    const url = getTrackCoverUrl(album.slug, track.number);
-    const img = new window.Image();
-    img.onload = () => setTrackCover(url);
-    img.onerror = () => {};
-    img.src = url;
-  }, [album.slug, track.number]);
   const menuRef = useRef<HTMLDivElement>(null);
 
   // Close menu on click outside
@@ -109,9 +99,10 @@ export default function TrackRow({ track, album, isActive }: Props) {
         {/* Track cover thumbnail */}
         <div className="h-10 w-10 shrink-0 rounded-md overflow-hidden relative bg-white/5">
           <img
-            src={trackCover || getAlbumCover(album)}
+            src={getTrackCoverUrl(album.slug, track.number)}
             alt=""
             className="h-full w-full object-cover"
+            onError={(e) => { (e.target as HTMLImageElement).src = getAlbumCover(album); }}
           />
         </div>
 
