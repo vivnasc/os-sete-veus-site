@@ -1,13 +1,13 @@
 /**
  * Generate animated reels (Canvas + Audio) for social media sharing.
  * Creates a 15s video with cover animation + track audio.
- * Uses MediaRecorder API — works in modern browsers.
  */
 
 import type { Album, AlbumTrack } from "@/data/albums";
+import { getSharePath } from "@/lib/share-utils";
 
 const REEL_DURATION = 15;
-const REEL_W = 720;  // Smaller for mobile compatibility
+const REEL_W = 720;
 const REEL_H = 1280;
 const FPS = 24;
 
@@ -70,18 +70,36 @@ function getBestMime(): string {
   return "video/webm";
 }
 
+// Floating light particles
+type Particle = { x: number; y: number; r: number; speed: number; opacity: number; phase: number };
+
+function createParticles(count: number): Particle[] {
+  return Array.from({ length: count }, () => ({
+    x: Math.random() * REEL_W,
+    y: Math.random() * REEL_H,
+    r: 1 + Math.random() * 3,
+    speed: 0.3 + Math.random() * 0.8,
+    opacity: 0.1 + Math.random() * 0.4,
+    phase: Math.random() * Math.PI * 2,
+  }));
+}
+
 export type ReelProgress = {
   phase: "loading" | "recording" | "finalizing" | "done" | "error";
   progress: number;
   message: string;
 };
 
+/**
+ * @param audioStartSeconds — second to start the audio clip from (default: 30)
+ */
 export async function generateReel(
   track: AlbumTrack,
   album: Album,
   coverSrc: string,
   audioSrc: string,
   onProgress?: (p: ReelProgress) => void,
+  audioStartSeconds?: number,
 ): Promise<Blob> {
   const report = (phase: ReelProgress["phase"], progress: number, message: string) => {
     onProgress?.({ phase, progress, message });
@@ -92,7 +110,6 @@ export async function generateReel(
 
   report("loading", 0.3, "A carregar audio...");
 
-  // Fetch audio and decode as AudioBuffer — no autoplay restrictions
   const audioResponse = await fetch(audioSrc);
   if (!audioResponse.ok) throw new Error("Audio nao disponivel");
   const audioArrayBuffer = await audioResponse.arrayBuffer();
@@ -100,8 +117,9 @@ export async function generateReel(
   const audioCtx = new AudioContext();
   const audioBuffer = await audioCtx.decodeAudioData(audioArrayBuffer);
 
-  // Start from 30s mark for the best part
-  const startOffset = Math.min(30, Math.max(0, audioBuffer.duration - REEL_DURATION - 5));
+  const startOffset = audioStartSeconds !== undefined
+    ? Math.min(audioStartSeconds, Math.max(0, audioBuffer.duration - REEL_DURATION))
+    : Math.min(30, Math.max(0, audioBuffer.duration - REEL_DURATION - 5));
 
   report("loading", 0.6, "A configurar gravacao...");
 
@@ -112,7 +130,6 @@ export async function generateReel(
 
   const canvasStream = canvas.captureStream(FPS);
 
-  // Play audio via BufferSource → MediaStreamDestination (no autoplay needed)
   const bufferSource = audioCtx.createBufferSource();
   bufferSource.buffer = audioBuffer;
   const destination = audioCtx.createMediaStreamDestination();
@@ -136,91 +153,131 @@ export async function generateReel(
 
   const color = album.color || "#C9A96E";
   const lyric = pickLyric(track);
-  const coverSize = Math.round(REEL_W * 0.7);
-  const coverX = (REEL_W - coverSize) / 2;
-  const coverBaseY = Math.round(REEL_H * 0.15);
+  const coverSize = Math.round(REEL_W * 0.75);
+  const coverBaseX = (REEL_W - coverSize) / 2;
+  const coverBaseY = Math.round(REEL_H * 0.12);
+  const particles = createParticles(30);
 
   function drawFrame(elapsed: number) {
     const t = elapsed / REEL_DURATION;
 
+    // Background
     ctx.fillStyle = "#0D0D1A";
     ctx.fillRect(0, 0, REEL_W, REEL_H);
 
-    // Glow
-    const glowIntensity = 0.12 + 0.06 * Math.sin(elapsed * 0.8);
-    const glow = ctx.createRadialGradient(REEL_W / 2, REEL_H * 0.25, 0, REEL_W / 2, REEL_H * 0.25, REEL_W * 0.6);
-    glow.addColorStop(0, color + Math.round(glowIntensity * 255).toString(16).padStart(2, "0"));
+    // Pulsing glow behind cover
+    const glowPulse = 0.15 + 0.1 * Math.sin(elapsed * 1.2);
+    const glowSize = REEL_W * (0.5 + 0.1 * Math.sin(elapsed * 0.6));
+    const glow = ctx.createRadialGradient(REEL_W / 2, coverBaseY + coverSize / 2, coverSize * 0.3, REEL_W / 2, coverBaseY + coverSize / 2, glowSize);
+    glow.addColorStop(0, color + Math.round(glowPulse * 255).toString(16).padStart(2, "0"));
     glow.addColorStop(1, "transparent");
     ctx.fillStyle = glow;
     ctx.fillRect(0, 0, REEL_W, REEL_H);
 
-    // Cover — slow zoom
-    const zoom = 1 + 0.06 * easeInOut(t);
+    // Floating particles
+    ctx.save();
+    for (const p of particles) {
+      const py = (p.y - elapsed * p.speed * 40 + REEL_H * 2) % REEL_H;
+      const flickr = 0.5 + 0.5 * Math.sin(elapsed * 2 + p.phase);
+      ctx.globalAlpha = p.opacity * flickr * clamp(t * 4, 0, 1);
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(p.x, py, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+
+    // Cover — visible zoom (1.0 → 1.2) + slight vertical drift
+    const zoom = 1 + 0.2 * easeInOut(t);
     const zoomedSize = coverSize * zoom;
-    const zoomOffset = (zoomedSize - coverSize) / 2;
+    const zoomOffsetX = (zoomedSize - coverSize) / 2;
+    const driftY = -15 * easeInOut(t); // slow upward drift
 
     ctx.save();
     ctx.beginPath();
-    ctx.roundRect(coverX, coverBaseY, coverSize, coverSize, 24);
+    ctx.roundRect(coverBaseX, coverBaseY, coverSize, coverSize, 20);
     ctx.clip();
+
+    // Shadow inside
     const scale = Math.max(zoomedSize / coverImg.width, zoomedSize / coverImg.height);
     const dw = coverImg.width * scale;
     const dh = coverImg.height * scale;
-    ctx.drawImage(coverImg, coverX - zoomOffset - (dw - zoomedSize) / 2, coverBaseY - zoomOffset * 0.3 - (dh - zoomedSize) / 2, dw, dh);
-    ctx.fillStyle = color + "10";
-    ctx.fillRect(coverX - zoomOffset, coverBaseY, zoomedSize, zoomedSize);
+    ctx.drawImage(
+      coverImg,
+      coverBaseX - zoomOffsetX - (dw - zoomedSize) / 2,
+      coverBaseY + driftY - (dh - zoomedSize) / 2,
+      dw,
+      dh,
+    );
+
+    // Subtle color wash
+    ctx.fillStyle = color + "08";
+    ctx.fillRect(coverBaseX, coverBaseY, coverSize, coverSize);
     ctx.restore();
 
-    // Text
-    ctx.textAlign = "center";
-    const textBaseY = coverBaseY + coverSize + 60;
+    // Cover shadow
+    ctx.save();
+    ctx.globalAlpha = 0.3;
+    const shadowGrad = ctx.createLinearGradient(0, coverBaseY + coverSize - 10, 0, coverBaseY + coverSize + 40);
+    shadowGrad.addColorStop(0, "#0D0D1A");
+    shadowGrad.addColorStop(1, "transparent");
+    ctx.fillStyle = shadowGrad;
+    ctx.fillRect(coverBaseX, coverBaseY + coverSize - 10, coverSize, 50);
+    ctx.restore();
 
-    // Album name
-    const albumAlpha = clamp((elapsed - 0.5) / 1, 0, 1);
-    if (albumAlpha > 0) {
-      ctx.globalAlpha = albumAlpha;
+    // ── Text ──
+    ctx.textAlign = "center";
+    const textBaseY = coverBaseY + coverSize + 50;
+
+    // Album name — slides up + fades in (0.5s-1.5s)
+    const albumProgress = clamp((elapsed - 0.5) / 1, 0, 1);
+    if (albumProgress > 0) {
+      const slideUp = 20 * (1 - easeInOut(albumProgress));
+      ctx.globalAlpha = albumProgress;
       ctx.font = "500 18px sans-serif";
       ctx.fillStyle = "#666680";
-      ctx.fillText(album.title.toUpperCase(), REEL_W / 2, textBaseY);
+      ctx.fillText(album.title.toUpperCase(), REEL_W / 2, textBaseY + slideUp);
     }
 
-    // Track title
-    const titleAlpha = clamp((elapsed - 1.5) / 1, 0, 1);
-    if (titleAlpha > 0) {
-      ctx.globalAlpha = titleAlpha;
-      ctx.font = "bold 42px serif";
+    // Track title — slides up + fades in (1.5s-2.5s)
+    const titleProgress = clamp((elapsed - 1.5) / 1, 0, 1);
+    if (titleProgress > 0) {
+      const slideUp = 25 * (1 - easeInOut(titleProgress));
+      ctx.globalAlpha = titleProgress;
+      ctx.font = "bold 44px serif";
       ctx.fillStyle = "#F5F0E6";
-      const titleLines = wrapText(ctx, track.title, REEL_W - 80);
-      let y = textBaseY + 50;
-      for (const line of titleLines) { ctx.fillText(line, REEL_W / 2, y); y += 52; }
+      const titleLines = wrapText(ctx, track.title, REEL_W - 60);
+      let y = textBaseY + 50 + slideUp;
+      for (const line of titleLines) { ctx.fillText(line, REEL_W / 2, y); y += 54; }
     }
 
-    // Lyric
+    // Lyric — slides up + fades in (3s-4.5s)
     if (lyric) {
-      const lyricAlpha = clamp((elapsed - 3) / 1.5, 0, 1);
-      if (lyricAlpha > 0) {
-        ctx.globalAlpha = lyricAlpha;
+      const lyricProgress = clamp((elapsed - 3) / 1.5, 0, 1);
+      if (lyricProgress > 0) {
+        const slideUp = 20 * (1 - easeInOut(lyricProgress));
+        ctx.globalAlpha = lyricProgress;
         ctx.font = "italic 22px serif";
         ctx.fillStyle = color + "cc";
-        const lyricLines = wrapText(ctx, `"${lyric}"`, REEL_W - 100);
-        let y = textBaseY + 130;
+        const lyricLines = wrapText(ctx, `"${lyric}"`, REEL_W - 80);
+        let y = textBaseY + 140 + slideUp;
         for (const line of lyricLines) { ctx.fillText(line, REEL_W / 2, y); y += 30; }
       }
     }
 
-    // Artist
-    const artistAlpha = clamp((elapsed - 2.5) / 1, 0, 1);
-    if (artistAlpha > 0) {
-      ctx.globalAlpha = artistAlpha;
+    // Artist — fades in (2.5s-3.5s)
+    const artistProgress = clamp((elapsed - 2.5) / 1, 0, 1);
+    if (artistProgress > 0) {
+      ctx.globalAlpha = artistProgress;
       ctx.font = "400 20px sans-serif";
       ctx.fillStyle = "#a0a0b0";
-      ctx.fillText("Loranne", REEL_W / 2, textBaseY + (lyric ? 190 : 130));
+      ctx.fillText("Loranne", REEL_W / 2, textBaseY + (lyric ? 200 : 130));
     }
 
-    // Branding
-    const brandAlpha = clamp((elapsed - 4) / 1, 0, 1);
-    if (brandAlpha > 0) {
-      ctx.globalAlpha = brandAlpha;
+    // Branding + link
+    const brandProgress = clamp((elapsed - 4) / 1, 0, 1);
+    if (brandProgress > 0) {
+      ctx.globalAlpha = brandProgress;
       const brandY = REEL_H - 80;
       ctx.strokeStyle = color + "40";
       ctx.lineWidth = 1;
@@ -231,12 +288,23 @@ export async function generateReel(
       ctx.font = "500 16px sans-serif";
       ctx.fillStyle = "#666680";
       ctx.fillText("VÉUS", REEL_W / 2, brandY);
+      // Link
+      const sharePath = getSharePath(album.slug, track.number);
+      ctx.font = "400 16px sans-serif";
+      ctx.fillStyle = "#a0a0b0";
+      ctx.fillText(`music.seteveus.space${sharePath}`, REEL_W / 2, brandY + 25);
     }
 
-    // Fade out last 2s
+    // Fade in from black (first 1s)
+    if (elapsed < 1) {
+      ctx.globalAlpha = 1 - elapsed;
+      ctx.fillStyle = "#0D0D1A";
+      ctx.fillRect(0, 0, REEL_W, REEL_H);
+    }
+
+    // Fade out to black (last 2s)
     if (elapsed > REEL_DURATION - 2) {
-      const fadeOut = clamp((REEL_DURATION - elapsed) / 2, 0, 1);
-      ctx.globalAlpha = 1 - fadeOut;
+      ctx.globalAlpha = 1 - clamp((REEL_DURATION - elapsed) / 2, 0, 1);
       ctx.fillStyle = "#0D0D1A";
       ctx.fillRect(0, 0, REEL_W, REEL_H);
     }
