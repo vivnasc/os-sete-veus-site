@@ -4,6 +4,7 @@
  */
 
 import type { Album, AlbumTrack } from "@/data/albums";
+import { getSharePath } from "@/lib/share-utils";
 
 type CardFormat = "story" | "square";
 
@@ -148,13 +149,21 @@ export async function generateShareCard(
   ctx.fillStyle = "#a0a0b0";
   ctx.fillText("Loranne", W / 2, titleY + 40);
 
-  // -- Branding (bottom)
+  // -- Link + Branding (bottom)
   const brandY = H - (format === "story" ? 120 : 60);
+  const sharePath = getSharePath(album.slug, track.number);
+  const linkText = `music.seteveus.space${sharePath}`;
+
   ctx.font = "500 22px sans-serif";
   ctx.fillStyle = "#666680";
   ctx.letterSpacing = "4px";
   ctx.fillText("VÉUS", W / 2, brandY);
   ctx.letterSpacing = "0px";
+
+  // Link
+  ctx.font = "400 20px sans-serif";
+  ctx.fillStyle = "#a0a0b0";
+  ctx.fillText(linkText, W / 2, brandY + 30);
 
   // -- Decorative line
   ctx.strokeStyle = color + "40";

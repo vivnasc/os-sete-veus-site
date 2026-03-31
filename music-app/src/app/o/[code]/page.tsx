@@ -30,15 +30,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const lyric = pickLyricLine(track.lyrics);
 
-  // OG image: use track cover from Supabase (Suno artwork)
-  // Falls back to album pose if no cover exists
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-  const pad = String(track.number).padStart(2, "0");
-  const trackCoverUrl = `${supabaseUrl}/storage/v1/object/public/audios/albums/${album.slug}/faixa-${pad}-cover.jpg`;
-  const albumCover = getAlbumCover(album);
-  // Use absolute URL for album cover fallback
+  // OG image: use dynamic OG image generator (works with WhatsApp/social crawlers)
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://music.seteveus.space";
-  const ogImage = trackCoverUrl || `${baseUrl}${albumCover}`;
+  const ogImage = `${baseUrl}/api/og?album=${encodeURIComponent(album.slug)}&track=${track.number}`;
 
   // SEO misterioso — a frase convida, não descreve
   const title = lyric
