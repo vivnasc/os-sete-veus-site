@@ -340,6 +340,15 @@ function ClipApprovalRow({
                   const data = await res.json();
                   if (!data.ok) throw new Error(data.erro || "Falhou");
                   btn.textContent = "OK!";
+                  // Show what's now in Supabase to confirm
+                  const parent = btn.parentElement;
+                  if (parent && data.url) {
+                    const check = document.createElement("img");
+                    check.src = `${data.url}?t=${Date.now()}`;
+                    check.style.cssText = "width:80px;height:80px;object-fit:cover;border-radius:8px;margin-top:4px;border:2px solid #22c55e";
+                    check.title = "Imagem no Supabase agora";
+                    parent.appendChild(check);
+                  }
                 } catch (e) {
                   btn.textContent = "Erro";
                   alert(String(e));
