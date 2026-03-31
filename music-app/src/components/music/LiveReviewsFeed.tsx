@@ -71,11 +71,11 @@ type Review = {
   timeAgo: string;
 };
 
-function getTracks(getTitle: (slug: string, num: number, fallback: string) => string): TrackInfo[] {
+function getTracks(getTitle: (slug: string, num: number, fallback: string) => string, publishedKeys: Set<string>): TrackInfo[] {
   const tracks: TrackInfo[] = [];
   for (const album of ALL_ALBUMS) {
     for (const track of album.tracks) {
-      if (track.audioUrl || track.lyrics) {
+      if (publishedKeys.has(`${album.slug}-t${track.number}`)) {
         tracks.push({ title: getTitle(album.slug, track.number, track.title), albumSlug: album.slug, albumTitle: album.title, trackNumber: track.number, track, album });
       }
     }
@@ -143,16 +143,22 @@ export default function LiveReviewsFeed() {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const { playTrack } = useMusicPlayer();
   const { getTitle } = useCustomTitles();
+  const [publishedKeys, setPublishedKeys] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
       if (data.user?.email) setUserName(data.user.email.split("@")[0]);
     });
+    fetch("/api/published-tracks")
+      .then(r => r.json())
+      .then(d => setPublishedKeys(new Set(d.tracks || [])))
+      .catch(() => {});
   }, []);
 
   useEffect(() => {
-    const tracks = getTracks(getTitle);
-    if (tracks.length < 5) return;
+    if (publishedKeys.size === 0) return;
+    const tracks = getTracks(getTitle, publishedKeys);
+    if (tracks.length < 3) return;
     const hourSeed = Math.floor(Date.now() / 3600000);
     const initial = Array.from({ length: 6 }, (_, i) => generateReview(hourSeed * 100 + i, tracks));
     setReviews(initial);
@@ -160,12 +166,12 @@ export default function LiveReviewsFeed() {
     let counter = initial.length;
     intervalRef.current = setInterval(() => {
       counter++;
-      const newReview = generateReview(hourSeed * 100 + counter, getTracks(getTitle));
+      const newReview = generateReview(hourSeed * 100 + counter, getTracks(getTitle, publishedKeys));
       setReviews(prev => [newReview, ...prev].slice(0, 15));
     }, 20000);
 
     return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
-  }, []);
+  }, [publishedKeys, getTitle]);
 
   function handleTrackClick(albumSlug: string, trackNumber: number) {
     const album = ALL_ALBUMS.find(a => a.slug === albumSlug);
