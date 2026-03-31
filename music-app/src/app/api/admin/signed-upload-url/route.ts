@@ -20,30 +20,16 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ erro: "filename obrigatorio." }, { status: 400 });
     }
 
-    // Create signed upload URL (valid for 2 minutes)
+    // Always use upsert — covers get replaced when tracks are re-approved
     const { data, error } = await supabase.storage
       .from(BUCKET)
-      .createSignedUploadUrl(filename);
+      .createSignedUploadUrl(filename, { upsert: true });
 
     if (error) {
-      // If file already exists, we need to use upsert approach
-      // Fall back to generating a signed URL for overwrite
-      const { data: uploadData, error: uploadError } = await supabase.storage
-        .from(BUCKET)
-        .createSignedUploadUrl(filename, { upsert: true });
-
-      if (uploadError) {
-        return NextResponse.json(
-          { erro: "Erro ao gerar URL: " + uploadError.message },
-          { status: 500 }
-        );
-      }
-
-      return NextResponse.json({
-        signedUrl: uploadData.signedUrl,
-        token: uploadData.token,
-        path: uploadData.path,
-      });
+      return NextResponse.json(
+        { erro: "Erro ao gerar URL: " + error.message },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({
