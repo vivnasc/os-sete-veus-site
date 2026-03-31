@@ -302,20 +302,22 @@ function ClipApprovalRow({
   return (
     <div className="rounded-lg border border-mundo-muted-dark/20 bg-mundo-bg/50 p-3">
       <div className="flex gap-3">
-        {/* Suno cover image via proxy (same-origin for canvas capture) */}
+        {/* Suno cover image via proxy */}
         {clip.imageUrl && (
           <div className="shrink-0 flex flex-col items-center gap-1">
-            <img
-              id={`clip-img-${albumSlug}-${trackNumber}-${clipIndex}`}
-              src={`/api/admin/proxy-image?url=${encodeURIComponent(clip.imageUrl)}`}
-              alt=""
-              className="h-20 w-20 rounded-lg object-cover bg-mundo-muted-dark/30"
-              onError={(e) => {
-                // Fallback to direct URL if proxy fails
+            <a href={clip.imageUrl} target="_blank" rel="noopener noreferrer" title="Abrir imagem original do Suno">
+              <img
+                id={`clip-img-${albumSlug}-${trackNumber}-${clipIndex}`}
+                src={`/api/admin/proxy-image?url=${encodeURIComponent(clip.imageUrl)}`}
+                alt=""
+                className="h-20 w-20 rounded-lg object-cover bg-mundo-muted-dark/30 cursor-pointer ring-1 ring-transparent hover:ring-violet-500"
+                onError={(e) => {
+                  // Fallback to direct URL if proxy fails
                 const img = e.target as HTMLImageElement;
                 if (!img.src.includes(clip.imageUrl!)) img.src = clip.imageUrl!;
               }}
             />
+            </a>
             <button
               onClick={async () => {
                 const btn = document.activeElement as HTMLButtonElement;
