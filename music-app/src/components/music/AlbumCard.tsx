@@ -1,17 +1,28 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import type { Album } from "@/data/albums";
-import { getAlbumCover, getAlbumBadge } from "@/lib/album-covers";
+import { getAlbumCover, getAlbumBadge, getTrackCoverUrl } from "@/lib/album-covers";
 
 type Props = {
   album: Album;
 };
 
 export default function AlbumCard({ album }: Props) {
-  const cover = getAlbumCover(album);
+  const fallback = getAlbumCover(album);
   const badge = getAlbumBadge(album);
+  const [cover, setCover] = useState(fallback);
+
+  // Try to load Suno cover from first track
+  useEffect(() => {
+    const url = getTrackCoverUrl(album.slug, 1);
+    const img = new window.Image();
+    img.onload = () => setCover(url);
+    img.onerror = () => {}; // keep fallback
+    img.src = url;
+  }, [album.slug]);
 
   return (
     <Link
@@ -25,6 +36,7 @@ export default function AlbumCard({ album }: Props) {
           fill
           sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
           className="object-cover"
+          unoptimized={cover !== fallback}
         />
         {/* Color overlay for brand identity */}
         <div
