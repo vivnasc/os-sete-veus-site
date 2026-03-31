@@ -331,8 +331,14 @@ function ClipApprovalRow({
                   const blob = await new Promise<Blob>((resolve, reject) => {
                     canvas.toBlob(b => b ? resolve(b) : reject(new Error("Falhou")), "image/jpeg", 0.92);
                   });
-                  const filename = `albums/${albumSlug}/faixa-${String(trackNumber).padStart(2, "0")}-cover.jpg`;
-                  await uploadViaSignedUrl(blob, filename);
+                  // Upload via server with real upsert (replaces existing)
+                  const form = new FormData();
+                  form.append("albumSlug", albumSlug);
+                  form.append("trackNumber", String(trackNumber));
+                  form.append("image", blob, "cover.jpg");
+                  const res = await adminFetch("/api/admin/upload-cover", { method: "POST", body: form });
+                  const data = await res.json();
+                  if (!data.ok) throw new Error(data.erro || "Falhou");
                   btn.textContent = "OK!";
                 } catch (e) {
                   btn.textContent = "Erro";
@@ -1326,11 +1332,11 @@ export default function AlbumProductionPage() {
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}.mp3`;
       const url = await uploadViaSignedUrl(blob, filename);
 
-      // Save Suno cover image — capture from DOM first, proxy fallback
+      // Save Suno cover — capture from DOM, upload via server with real upsert
       if (imageUrl) {
         try {
           let imgBlob: Blob | null = null;
-          // Try capturing from the visible <img> element in the DOM (bypasses all cache)
+          // Capture from visible <img> in DOM
           const clips = generatedClips[key]?.clips || [];
           const clipIdx = clips.findIndex(c => c.audioUrl === clipAudioUrl);
           if (clipIdx >= 0) {
@@ -1343,7 +1349,7 @@ export default function AlbumProductionPage() {
               imgBlob = await new Promise<Blob | null>(r => canvas.toBlob(b => r(b), "image/jpeg", 0.92));
             }
           }
-          // Fallback: server proxy
+          // Fallback: proxy download
           if (!imgBlob || imgBlob.size < 500) {
             const proxyImg = await adminFetch("/api/admin/proxy-download", {
               method: "POST",
@@ -1353,8 +1359,12 @@ export default function AlbumProductionPage() {
             if (proxyImg.ok) imgBlob = await proxyImg.blob();
           }
           if (imgBlob && imgBlob.size > 500) {
-            const imgFilename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-cover.jpg`;
-            await uploadViaSignedUrl(imgBlob, imgFilename);
+            // Use direct upload with upsert:true (not signed URL)
+            const form = new FormData();
+            form.append("albumSlug", albumSlug);
+            form.append("trackNumber", String(track.number));
+            form.append("image", imgBlob, "cover.jpg");
+            await adminFetch("/api/admin/upload-cover", { method: "POST", body: form });
           }
         } catch {
           // Image upload is optional — don't fail the approval
