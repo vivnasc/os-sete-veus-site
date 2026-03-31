@@ -180,7 +180,7 @@ export default function LiveReviewsFeed() {
           {reviews.map((r) => (
             <div
               key={r.id}
-              className={`flex items-baseline gap-2 py-1 ${r.isReal ? "bg-white/[0.02] rounded-lg px-2 -mx-2" : ""}`}
+              className="flex items-baseline gap-2 py-1"
             >
               <span className="text-xs text-[#C9A96E] shrink-0">{r.user}</span>
               <span className="text-xs text-[#a0a0b0] flex-1">{r.text}</span>
