@@ -4556,10 +4556,10 @@ Já pedi ao silêncio
 já pedi ao espanto
 
 [Verse 2]
-Agora não peco nada
+Agora não peço nada
 agora as mãos estão no colo
 Não é paz o que sinto
-e só o peso do solo
+é só o peso do corpo no solo
 
 [Chorus]
 Ficar — isso é a última prece
@@ -4567,15 +4567,15 @@ ficar — sem pedir nem saber
 Ficar com o corpo que tenho
 ficar com o que vai doer
 Não é resignação nem rendição
-e a carne que escolhe o real
-Ficar — essa e a prece
+é a carne que escolhe o real
+Ficar — essa é a prece
 ficar — no escuro total
 
 [Verse 3]
 Já disse tudo o que sabia
 já gritei tudo o que tinha
 Agora o silêncio é meu
-e a noite e minha vizinha
+a noite agora é minha vizinha
 
 [Chorus]
 Ficar — isso é a última prece
@@ -4583,20 +4583,20 @@ ficar — sem pedir nem saber
 Ficar com o corpo que tenho
 ficar com o que vai doer
 Não é resignação nem rendição
-e a carne que escolhe o real
-Ficar — essa e a prece
+é a carne que escolhe o real
+Ficar — essa é a prece
 ficar — no escuro total
 
 [Bridge]
 Não há mais palavras
 não há mais nomes
-O que resta e só o peito
-aberto como dois volumes
+O que resta é só o peito
+aberto como dois pulmões
 
 [Outro]
 A última prece
 não tem som
-e só presença
+é só presença
 no escuro
 fico`,
 
