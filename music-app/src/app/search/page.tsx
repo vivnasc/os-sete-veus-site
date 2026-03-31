@@ -348,17 +348,9 @@ export default function SearchPage() {
                     <section key={title}>
                       <h2 className="text-sm font-semibold text-[#a0a0b0] uppercase tracking-wider mb-1">{title}</h2>
                       <p className="text-xs text-[#666680] mb-3">{sub}</p>
-                      <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2">
+                      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
                         {albums.map(album => (
-                          <Link key={album.slug} href={`/album/${album.slug}`} className="group text-center">
-                            <div
-                              className="aspect-square rounded-lg mb-1 flex items-center justify-center overflow-hidden"
-                              style={{ background: `linear-gradient(135deg, ${album.color}, ${album.color}88)` }}
-                            >
-                              <span className="text-[9px] text-white/60 font-medium px-1 truncate">{album.title.replace(/^O Espelho d[ao] |^O Nó d[ao] /,'')}</span>
-                            </div>
-                            <p className="text-[10px] text-[#999] truncate">{album.title}</p>
-                          </Link>
+                          <AlbumCard key={album.slug} album={album} />
                         ))}
                       </div>
                     </section>

@@ -10,6 +10,7 @@ import { useLibrary } from "@/hooks/useLibrary";
 import { useDownloads } from "@/hooks/useDownloads";
 import { usePlaylists } from "@/hooks/usePlaylists";
 import { getAlbumCover } from "@/lib/album-covers";
+import AlbumCard from "@/components/music/AlbumCard";
 
 // ─────────────────────────────────────────────
 // Helpers
@@ -163,30 +164,9 @@ export default function LibraryPage() {
             </div>
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-              {publishedAlbums.map(album => {
-                const publishedCount = album.tracks.filter(t => publishedKeys.has(`${album.slug}-t${t.number}`)).length;
-                return (
-                  <Link
-                    key={album.slug}
-                    href={`/album/${album.slug}`}
-                    className="group"
-                  >
-                    <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg mb-2">
-                      <img
-                        src={getAlbumCover(album)}
-                        alt={album.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                      <div className="absolute bottom-2 left-2 right-2">
-                        <p className="text-xs text-white/80">{publishedCount}/{album.tracks.length} faixas</p>
-                      </div>
-                    </div>
-                    <p className="text-sm font-semibold text-[#F5F0E6] truncate">{album.title}</p>
-                    <p className="text-xs text-[#666680] truncate">{album.subtitle}</p>
-                  </Link>
-                );
-              })}
+              {publishedAlbums.map(album => (
+                <AlbumCard key={album.slug} album={album} />
+              ))}
             </div>
           )
         )}
