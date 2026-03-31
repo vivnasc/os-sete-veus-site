@@ -302,8 +302,8 @@ function ClipApprovalRow({
   return (
     <div className="rounded-lg border border-mundo-muted-dark/20 bg-mundo-bg/50 p-3">
       <div className="flex gap-3">
-        {/* Suno cover image via proxy */}
-        {clip.imageUrl && (
+        {/* Suno cover image */}
+        {clip.imageUrl ? (
           <div className="shrink-0 flex flex-col items-center gap-1">
             <a href={clip.imageUrl} target="_blank" rel="noopener noreferrer" title="Abrir imagem original do Suno">
               <img
@@ -312,11 +312,10 @@ function ClipApprovalRow({
                 alt=""
                 className="h-20 w-20 rounded-lg object-cover bg-mundo-muted-dark/30 cursor-pointer ring-1 ring-transparent hover:ring-violet-500"
                 onError={(e) => {
-                  // Fallback to direct URL if proxy fails
-                const img = e.target as HTMLImageElement;
-                if (!img.src.includes(clip.imageUrl!)) img.src = clip.imageUrl!;
-              }}
-            />
+                  const img = e.target as HTMLImageElement;
+                  if (!img.src.includes(clip.imageUrl!)) img.src = clip.imageUrl!;
+                }}
+              />
             </a>
             <button
               onClick={async () => {
@@ -398,6 +397,10 @@ function ClipApprovalRow({
             >
               Reel
             </button>
+          </div>
+        ) : (
+          <div className="h-20 w-20 shrink-0 rounded-lg bg-mundo-muted-dark/20 flex items-center justify-center">
+            <span className="text-[8px] text-mundo-muted/40">Sem capa</span>
           </div>
         )}
         <div className="flex-1 min-w-0">
