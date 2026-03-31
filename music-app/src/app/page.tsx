@@ -6,6 +6,7 @@ import NovidadesSection from "@/components/music/NovidadesSection";
 import Image from "next/image";
 import Link from "next/link";
 import NavBar from "@/components/music/NavBar";
+import SubscribeSection from "@/components/music/SubscribeSection";
 
 export const metadata = {
   title: "Explorar",
@@ -38,6 +39,9 @@ export default function MusicHomePage() {
         <ParaTiSection />
         <NovidadesSection />
         <TopTracksSection />
+
+        {/* Subscribe for new releases */}
+        <SubscribeSection />
 
         {/* CTA para explorar — quando não há conteúdo pessoal ainda */}
         <div className="text-center py-6">
