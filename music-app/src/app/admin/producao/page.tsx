@@ -1063,6 +1063,34 @@ function TrackRow({
                     vid.style.cssText = "max-height:160px;border-radius:8px;margin-top:6px;width:100%";
                     resultDiv.appendChild(vid);
 
+                    // Caption — ready to copy
+                    const lyricLines = track.lyrics?.split("\n").filter((l: string) => {
+                      const t = l.trim();
+                      return t.length > 15 && t.length < 80 && !t.startsWith("[");
+                    }) || [];
+                    const lyric = lyricLines.length > 0 ? lyricLines[Math.floor(Date.now() / 86400000) % lyricLines.length].trim() : "";
+                    const caption = lyric
+                      ? `"${lyric}"\n\n${track.title} — Loranne\nmusic.seteveus.space`
+                      : `${track.title} — Loranne\n${track.description}\nmusic.seteveus.space`;
+
+                    const captionDiv = document.createElement("div");
+                    captionDiv.style.cssText = "margin-top:8px;padding:8px 12px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:8px;position:relative";
+                    const captionText = document.createElement("p");
+                    captionText.textContent = caption;
+                    captionText.style.cssText = "font-size:12px;color:#a0a0b0;white-space:pre-line;line-height:1.5";
+                    captionDiv.appendChild(captionText);
+                    const copyBtn = document.createElement("button");
+                    copyBtn.textContent = "Copiar";
+                    copyBtn.style.cssText = "position:absolute;top:6px;right:6px;font-size:10px;padding:2px 8px;border-radius:4px;background:rgba(201,169,110,0.2);color:#C9A96E;border:none;cursor:pointer";
+                    copyBtn.onclick = (e) => {
+                      e.stopPropagation();
+                      navigator.clipboard.writeText(caption);
+                      copyBtn.textContent = "Copiado";
+                      setTimeout(() => { copyBtn.textContent = "Copiar"; }, 1500);
+                    };
+                    captionDiv.appendChild(copyBtn);
+                    resultDiv.appendChild(captionDiv);
+
                     const actions = document.createElement("div");
                     actions.style.cssText = "display:flex;gap:6px;margin-top:6px;flex-wrap:wrap";
 
