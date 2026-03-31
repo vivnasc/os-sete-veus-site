@@ -306,7 +306,9 @@ function ClipApprovalRow({
         {clip.imageUrl && (
           <div className="shrink-0 flex flex-col items-center gap-1">
             <img
+              id={`clip-img-${albumSlug}-${trackNumber}-${clipIndex}`}
               src={clip.imageUrl}
+              crossOrigin="anonymous"
               alt=""
               className="h-20 w-20 rounded-lg object-cover bg-mundo-muted-dark/30"
               onError={(e) => {
@@ -321,21 +323,40 @@ function ClipApprovalRow({
                 btn.disabled = true;
                 btn.textContent = "...";
                 try {
-                  const proxyRes = await adminFetch("/api/admin/proxy-download", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ url: clip.imageUrl }),
+                  // Capture the VISIBLE image from the DOM — no CDN download, no cache
+                  const imgEl = document.getElementById(`clip-img-${albumSlug}-${trackNumber}-${clipIndex}`) as HTMLImageElement;
+                  if (!imgEl || !imgEl.naturalWidth) throw new Error("Imagem nao carregada");
+                  const canvas = document.createElement("canvas");
+                  canvas.width = imgEl.naturalWidth;
+                  canvas.height = imgEl.naturalHeight;
+                  const ctx = canvas.getContext("2d")!;
+                  ctx.drawImage(imgEl, 0, 0);
+                  const blob = await new Promise<Blob>((resolve, reject) => {
+                    canvas.toBlob(b => b ? resolve(b) : reject(new Error("Canvas export falhou")), "image/jpeg", 0.92);
                   });
-                  if (!proxyRes.ok) throw new Error("Download falhou");
-                  const blob = await proxyRes.blob();
-                  if (blob.size < 500) throw new Error("Imagem vazia");
                   const filename = `albums/${albumSlug}/faixa-${String(trackNumber).padStart(2, "0")}-cover.jpg`;
                   await uploadViaSignedUrl(blob, filename);
-                  btn.textContent = "OK";
-                } catch {
-                  btn.textContent = "Erro";
+                  btn.textContent = "OK!";
+                } catch (e) {
+                  // Fallback: try proxy download if canvas fails (CORS)
+                  try {
+                    const proxyRes = await adminFetch("/api/admin/proxy-download", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ url: clip.imageUrl }),
+                    });
+                    if (!proxyRes.ok) throw new Error("Proxy falhou");
+                    const blob = await proxyRes.blob();
+                    if (blob.size < 500) throw new Error("Vazio");
+                    const filename = `albums/${albumSlug}/faixa-${String(trackNumber).padStart(2, "0")}-cover.jpg`;
+                    await uploadViaSignedUrl(blob, filename);
+                    btn.textContent = "OK!";
+                  } catch {
+                    btn.textContent = "Erro";
+                    alert(String(e));
+                  }
                 }
-                setTimeout(() => { btn.disabled = false; btn.textContent = "Capa"; }, 2000);
+                setTimeout(() => { btn.disabled = false; btn.textContent = "Guardar capa"; }, 2000);
               }}
               className="rounded bg-amber-600/80 px-2 py-1 text-[10px] font-medium text-white hover:bg-amber-700 transition"
             >
@@ -1323,21 +1344,35 @@ export default function AlbumProductionPage() {
       const filename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}.mp3`;
       const url = await uploadViaSignedUrl(blob, filename);
 
-      // Download and upload Suno cover image if available
+      // Save Suno cover image — capture from DOM first, proxy fallback
       if (imageUrl) {
         try {
-          // ALWAYS use server proxy — browser cache causes stale images
-          const proxyImg = await adminFetch("/api/admin/proxy-download", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ url: imageUrl }),
-          });
-          if (proxyImg.ok) {
-            const imgBlob = await proxyImg.blob();
-            if (imgBlob && imgBlob.size > 500) {
-              const imgFilename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-cover.jpg`;
-              await uploadViaSignedUrl(imgBlob, imgFilename);
+          let imgBlob: Blob | null = null;
+          // Try capturing from the visible <img> element in the DOM (bypasses all cache)
+          const clips = generatedClips[key]?.clips || [];
+          const clipIdx = clips.findIndex(c => c.audioUrl === clipAudioUrl);
+          if (clipIdx >= 0) {
+            const imgEl = document.getElementById(`clip-img-${albumSlug}-${track.number}-${clipIdx}`) as HTMLImageElement;
+            if (imgEl && imgEl.naturalWidth > 0) {
+              const canvas = document.createElement("canvas");
+              canvas.width = imgEl.naturalWidth;
+              canvas.height = imgEl.naturalHeight;
+              canvas.getContext("2d")!.drawImage(imgEl, 0, 0);
+              imgBlob = await new Promise<Blob | null>(r => canvas.toBlob(b => r(b), "image/jpeg", 0.92));
             }
+          }
+          // Fallback: server proxy
+          if (!imgBlob || imgBlob.size < 500) {
+            const proxyImg = await adminFetch("/api/admin/proxy-download", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ url: imageUrl }),
+            });
+            if (proxyImg.ok) imgBlob = await proxyImg.blob();
+          }
+          if (imgBlob && imgBlob.size > 500) {
+            const imgFilename = `albums/${albumSlug}/faixa-${String(track.number).padStart(2, "0")}-cover.jpg`;
+            await uploadViaSignedUrl(imgBlob, imgFilename);
           }
         } catch {
           // Image upload is optional — don't fail the approval
