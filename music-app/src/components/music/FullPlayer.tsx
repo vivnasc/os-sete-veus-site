@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
 import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
@@ -8,6 +8,99 @@ import { useDownloads } from "@/hooks/useDownloads";
 import { useLibrary } from "@/hooks/useLibrary";
 import ShareModal from "./ShareModal";
 import SleepTimer from "./SleepTimer";
+
+/**
+ * Synced lyrics — highlights the current section based on playback time.
+ * Parses [Verse], [Chorus], etc. and estimates timing from total duration.
+ * Auto-scrolls to the active section.
+ */
+function SyncedLyrics({ lyrics, currentTime, duration, albumColor }: {
+  lyrics: string;
+  currentTime: number;
+  duration: number;
+  albumColor: string;
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const activeRef = useRef<HTMLDivElement>(null);
+
+  // Parse lyrics into sections
+  const sections = useMemo(() => {
+    const lines = lyrics.split("\n");
+    const result: { tag: string | null; lines: string[]; startLine: number }[] = [];
+    let current: { tag: string | null; lines: string[]; startLine: number } | null = null;
+
+    lines.forEach((line, i) => {
+      const trimmed = line.trim();
+      if (trimmed.startsWith("[")) {
+        if (current) result.push(current);
+        current = { tag: trimmed.replace(/[\[\]]/g, ""), lines: [], startLine: i };
+      } else if (trimmed) {
+        if (!current) current = { tag: null, lines: [], startLine: i };
+        current.lines.push(trimmed);
+      }
+    });
+    if (current) result.push(current);
+    return result;
+  }, [lyrics]);
+
+  // Estimate which section is active based on time
+  const totalTextLines = sections.reduce((s, sec) => s + sec.lines.length, 0);
+  const activeSectionIdx = useMemo(() => {
+    if (duration <= 0 || totalTextLines === 0) return 0;
+    const progress = currentTime / duration;
+    let linesSoFar = 0;
+    for (let i = 0; i < sections.length; i++) {
+      linesSoFar += sections[i].lines.length;
+      if (linesSoFar / totalTextLines >= progress) return i;
+    }
+    return sections.length - 1;
+  }, [currentTime, duration, sections, totalTextLines]);
+
+  // Auto-scroll to active section
+  useEffect(() => {
+    if (activeRef.current && containerRef.current) {
+      activeRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [activeSectionIdx]);
+
+  return (
+    <div ref={containerRef} className="space-y-1 px-2 lyrics-content" data-no-copy>
+      {sections.map((sec, i) => {
+        const isActive = i === activeSectionIdx;
+        const isPast = i < activeSectionIdx;
+        return (
+          <div
+            key={i}
+            ref={isActive ? activeRef : undefined}
+            className={`transition-opacity duration-700 ${isActive ? "opacity-100" : isPast ? "opacity-30" : "opacity-50"}`}
+          >
+            {sec.tag && (
+              <p
+                className="text-[10px] uppercase tracking-[0.25em] pt-8 pb-2"
+                style={{ color: isActive ? albumColor : "#666680" }}
+              >
+                {sec.tag}
+              </p>
+            )}
+            {sec.lines.map((line, j) => (
+              <p
+                key={j}
+                className={`text-[18px] leading-[1.7] font-display transition-all duration-500 ${
+                  isActive ? "text-[#F5F0E6]" : "text-[#F5F0E6]/40"
+                }`}
+                style={isActive ? { textShadow: `0 0 30px ${albumColor}20` } : {}}
+              >
+                {line}
+              </p>
+            ))}
+          </div>
+        );
+      })}
+      <div className="h-[20vh]" />
+    </div>
+  );
+}
+
 
 function fmt(s: number) {
   if (!isFinite(s) || s < 0) return "0:00";
@@ -234,24 +327,12 @@ export default function FullPlayer() {
           {activeTab === "lyrics" && (
             <div className="py-4 min-h-[50vh]">
               {hasLyrics ? (
-                <div className="space-y-1 px-2 lyrics-content" data-no-copy>
-                  {currentTrack.lyrics!.split("\n").map((line: string, i: number) => {
-                    const trimmed = line.trim();
-                    const isTag = trimmed.startsWith("[");
-                    if (!trimmed) return <div key={i} className="h-4" />;
-                    if (isTag) return (
-                      <p key={i} className="text-[10px] uppercase tracking-[0.25em] pt-8 pb-2 first:pt-0" style={{ color: albumColor }}>
-                        {trimmed.replace(/[\[\]]/g, "")}
-                      </p>
-                    );
-                    return (
-                      <p key={i} className="text-[18px] leading-[1.7] text-[#F5F0E6]/80 font-display">
-                        {trimmed}
-                      </p>
-                    );
-                  })}
-                  <div className="h-[20vh]" />
-                </div>
+                <SyncedLyrics
+                  lyrics={currentTrack.lyrics!}
+                  currentTime={currentTime}
+                  duration={duration}
+                  albumColor={albumColor}
+                />
               ) : (
                 <div className="flex flex-col items-center justify-center py-20 text-center">
                   <svg viewBox="0 0 24 24" fill="none" stroke="#666680" strokeWidth="1.5" className="h-10 w-10 mb-3 opacity-50">
