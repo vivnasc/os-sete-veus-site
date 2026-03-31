@@ -381,7 +381,7 @@ function ClipApprovalRow({
                   const form = new FormData();
                   form.append("albumSlug", albumSlug);
                   form.append("trackNumber", String(trackNumber));
-                  form.append("video", blob, "reel.webm");
+                  form.append("video", blob, blob.type.includes("mp4") ? "reel.mp4" : "reel.webm");
                   const res = await adminFetch("/api/admin/upload-reel", { method: "POST", body: form });
                   const data = await res.json();
                   if (data.ok) {
@@ -412,7 +412,7 @@ function ClipApprovalRow({
                       shareBtn.textContent = "Partilhar";
                       shareBtn.style.cssText = "font-size:11px;padding:4px 12px;border-radius:6px;background:#C9A96E;color:#0D0D1A;font-weight:600;border:none;cursor:pointer";
                       shareBtn.onclick = async () => {
-                        const file = new File([reelBlob], `${t.title} — Loranne.webm`, { type: reelBlob.type });
+                        const file = new File([reelBlob], `${t.title} — Loranne.mp4`, { type: "video/mp4" });
                         const caption = `"${t.description}"\n${t.title} — Loranne\nmusic.seteveus.space`;
                         if (navigator.share && navigator.canShare?.({ files: [file] })) {
                           await navigator.share({ files: [file], title: t.title, text: caption }).catch(() => {});
@@ -431,7 +431,7 @@ function ClipApprovalRow({
                       // Download
                       const dlBtn = document.createElement("a");
                       dlBtn.href = reelUrl;
-                      dlBtn.download = `${t.title} — Loranne.webm`;
+                      dlBtn.download = `${t.title} — Loranne.mp4`;
                       dlBtn.textContent = "Guardar";
                       dlBtn.style.cssText = "font-size:11px;padding:4px 12px;border-radius:6px;background:rgba(255,255,255,0.05);color:#a0a0b0;border:1px solid rgba(255,255,255,0.1);text-decoration:none;cursor:pointer";
                       actions.appendChild(dlBtn);
@@ -1040,7 +1040,7 @@ function TrackRow({
                 const form = new FormData();
                 form.append("albumSlug", albumSlug);
                 form.append("trackNumber", String(track.number));
-                form.append("video", blob, "reel.webm");
+                form.append("video", blob, blob.type.includes("mp4") ? "reel.mp4" : "reel.webm");
 
                 const res = await adminFetch("/api/admin/upload-reel", {
                   method: "POST",
@@ -1071,7 +1071,7 @@ function TrackRow({
                     shareBtn.textContent = "Partilhar";
                     shareBtn.style.cssText = "font-size:11px;padding:4px 12px;border-radius:6px;background:#C9A96E;color:#0D0D1A;font-weight:600;border:none;cursor:pointer";
                     shareBtn.onclick = async () => {
-                      const file = new File([reelBlob], `${track.title} — Loranne.webm`, { type: reelBlob.type });
+                      const file = new File([reelBlob], `${track.title} — Loranne.mp4`, { type: "video/mp4" });
                       const caption = `"${track.description}"\n${track.title} — Loranne\nmusic.seteveus.space`;
                       if (navigator.share && navigator.canShare?.({ files: [file] })) {
                         await navigator.share({ files: [file], title: track.title, text: caption }).catch(() => {});
@@ -1089,7 +1089,7 @@ function TrackRow({
                     // Download
                     const dl = document.createElement("a");
                     dl.href = data.videoUrl;
-                    dl.download = `${track.title} — Loranne.webm`;
+                    dl.download = `${track.title} — Loranne.mp4`;
                     dl.textContent = "Guardar";
                     dl.style.cssText = "font-size:11px;padding:4px 12px;border-radius:6px;background:rgba(255,255,255,0.05);color:#a0a0b0;border:1px solid rgba(255,255,255,0.1);text-decoration:none";
                     actions.appendChild(dl);
