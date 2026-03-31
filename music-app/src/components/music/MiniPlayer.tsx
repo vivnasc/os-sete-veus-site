@@ -65,13 +65,10 @@ export default function MiniPlayer() {
         />
       </div>
 
-      <div className="bg-[#1A1A2E]/95 backdrop-blur-xl border-t border-white/5">
+      <div className="bg-[#1A1A2E]/95 backdrop-blur-xl border-t border-white/5 cursor-pointer" onClick={() => setShowFullPlayer(true)}>
         <div className="mx-auto max-w-screen-lg px-4 py-3 flex items-center gap-3">
           {/* Album art thumbnail — uses track cover if available */}
-          <button
-            onClick={() => setShowFullPlayer(true)}
-            className="h-11 w-11 shrink-0 rounded-lg shadow-lg overflow-hidden relative"
-          >
+          <div className="h-11 w-11 shrink-0 rounded-lg shadow-lg overflow-hidden relative">
             <Image
               src={coverSrc}
               alt={currentTrack.title}
@@ -80,13 +77,10 @@ export default function MiniPlayer() {
               className="object-cover"
               unoptimized={!!trackCover}
             />
-          </button>
+          </div>
 
           {/* Track info + next track */}
-          <button
-            onClick={() => setShowFullPlayer(true)}
-            className="flex-1 min-w-0 text-left"
-          >
+          <div className="flex-1 min-w-0 text-left">
             <p className="text-sm font-medium text-[#F5F0E6] truncate">
               {currentTrack.title}
             </p>
@@ -99,33 +93,33 @@ export default function MiniPlayer() {
                 {currentAlbum?.title || "Sete Veus"}
               </p>
             )}
-          </button>
+          </div>
 
-          {/* Controls */}
-          <div className="flex items-center gap-2">
-            <button onClick={previous} className="p-1.5 text-[#a0a0b0] hover:text-[#F5F0E6] transition-colors" aria-label="Faixa anterior">
-              <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+          {/* Controls — stopPropagation to not open FullPlayer */}
+          <div className="flex items-center gap-2" onClick={e => e.stopPropagation()}>
+            <button onClick={previous} className="p-2 text-[#a0a0b0] hover:text-[#F5F0E6] transition-colors min-h-[44px]" aria-label="Faixa anterior">
+              <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
                 <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
               </svg>
             </button>
             <button
               onClick={togglePlay}
-              className="flex h-9 w-9 items-center justify-center rounded-full text-[#0D0D1A] transition-transform hover:scale-105"
+              className="flex h-11 w-11 items-center justify-center rounded-full text-[#0D0D1A] transition-transform hover:scale-105"
               style={{ backgroundColor: "#F5F0E6" }}
               aria-label={isPlaying ? "Pausar" : "Reproduzir"}
             >
               {isPlaying ? (
-                <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
                   <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
                 </svg>
               ) : (
-                <svg viewBox="0 0 24 24" fill="currentColor" className="ml-0.5 h-4 w-4">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="ml-0.5 h-5 w-5">
                   <path d="M8 5v14l11-7z" />
                 </svg>
               )}
             </button>
-            <button onClick={next} className="p-1.5 text-[#a0a0b0] hover:text-[#F5F0E6] transition-colors" aria-label="Próxima faixa">
-              <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+            <button onClick={next} className="p-2 text-[#a0a0b0] hover:text-[#F5F0E6] transition-colors min-h-[44px]" aria-label="Próxima faixa">
+              <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
                 <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
               </svg>
             </button>
@@ -139,10 +133,10 @@ export default function MiniPlayer() {
           {/* Close */}
           <button
             onClick={(e) => { e.stopPropagation(); stop(); }}
-            className="p-1.5 text-[#666680] hover:text-[#a0a0b0] transition-colors"
+            className="p-2 text-[#666680] hover:text-[#a0a0b0] transition-colors min-h-[44px]"
             aria-label="Fechar player"
           >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
               <path d="M18 6L6 18M6 6l12 12" />
             </svg>
           </button>
