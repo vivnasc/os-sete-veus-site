@@ -170,26 +170,46 @@ export default function AdminReelsPage() {
     a.click();
   }
 
+  function buildCaption(exp: Experience, nos?: NosBook | null): string {
+    const lines = [
+      `${exp.title}`,
+      `"${exp.subtitle}"`,
+      "",
+      exp.description,
+    ];
+
+    if (nos) {
+      lines.push("", `~ Ao completar, desbloqueia ${nos.title}`);
+    }
+
+    lines.push(
+      "",
+      "seteveus.space",
+      "",
+      ".",
+      ".",
+      ".",
+      "",
+      "#seteveus #osseteveusdespertar #espelhos #ficçãotransformativa",
+      "#leitura #livros #livrosnovos #lancamento #novolivro",
+      "#autoconhecimento #crescimentopessoal #desenvolvimentopessoal",
+      "#reflexão #jornadadescoberta #vidaconsciente",
+      "#escritora #literaturaportugesa #ficçãoliterária",
+      "#moçambique #escritoramoçambicana #viviannedossantos",
+      "#bookstagram #booktok #livrosrecomendados #dicasdelivros",
+      "#leituraconsciente #livrosquetransformam #leituraquefazbem",
+    );
+
+    return lines.join("\n");
+  }
+
   async function handleShare() {
     if (!reelBlob || !selectedSlug) return;
     const exp = experiences.find((e) => e.slug === selectedSlug);
     if (!exp) return;
 
     const nos = nosCollection.find((n) => n.espelhoSlug === selectedSlug);
-    const caption = [
-      `${exp.title}`,
-      `"${exp.subtitle}"`,
-      "",
-      exp.description,
-      "",
-      nos ? `~ ${nos.title} desbloqueia ao completar` : "",
-      "",
-      `seteveus.space/experiencias/${exp.slug}`,
-      "",
-      "#seteveus #espelhos #ficçãotransformativa #leitura #autoconhecimento",
-    ]
-      .filter(Boolean)
-      .join("\n");
+    const caption = buildCaption(exp, nos);
 
     if (navigator.share) {
       try {
@@ -208,7 +228,7 @@ export default function AdminReelsPage() {
     // Fallback: copy caption + download
     await navigator.clipboard.writeText(caption);
     handleDownload();
-    alert("Legenda copiada. Video descarregado. Abre o WhatsApp Status ou Instagram Reels.");
+    alert("Legenda copiada. Video descarregado. Abre o Instagram Reels e cola a legenda.");
   }
 
   if (authLoading || !isAdmin) return null;
@@ -422,6 +442,33 @@ export default function AdminReelsPage() {
                 ? `${(reelBlob.size / 1024 / 1024).toFixed(1)} MB — ${reelBlob.type}`
                 : ""}
             </p>
+
+            {/* Caption for Instagram */}
+            {selectedExp && (() => {
+              const nos = nosCollection.find((n) => n.espelhoSlug === selectedSlug);
+              const caption = buildCaption(selectedExp, nos);
+              return (
+                <div className="mt-6">
+                  <div className="flex items-center justify-between">
+                    <p className="text-sm font-medium text-cream">Legenda para Instagram</p>
+                    <button
+                      onClick={() => {
+                        navigator.clipboard.writeText(caption);
+                        const btn = document.getElementById("copy-caption-btn");
+                        if (btn) { btn.textContent = "Copiada!"; setTimeout(() => { btn.textContent = "Copiar"; }, 2000); }
+                      }}
+                      id="copy-caption-btn"
+                      className="rounded-lg border border-brown-600 px-3 py-1 text-xs text-cream hover:bg-brown-700"
+                    >
+                      Copiar
+                    </button>
+                  </div>
+                  <pre className="mt-2 max-h-[300px] overflow-y-auto whitespace-pre-wrap rounded-lg bg-brown-900 p-4 text-xs leading-relaxed text-brown-300 border border-brown-700">
+                    {caption}
+                  </pre>
+                </div>
+              );
+            })()}
           </div>
         )}
       </div>
