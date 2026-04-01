@@ -60,7 +60,8 @@ export default function RegistarPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0D0D1A] flex flex-col items-center justify-center px-6">
+    <div className="min-h-screen bg-[#0D0D1A] flex flex-col items-center justify-center px-6 py-12">
+      <div style={{ width: "100%", maxWidth: "24rem" }} className="mx-auto flex flex-col items-center">
       <Link href="/" className="mb-10">
         <Image
           src="/veus_music_favicon-192.png"
@@ -71,7 +72,7 @@ export default function RegistarPage() {
         />
       </Link>
 
-      <div className="max-w-sm w-full">
+      <div className="w-full">
         <h1 className="font-display text-2xl font-semibold text-[#F5F0E6] text-center mb-2">
           Cria a tua conta
         </h1>
@@ -160,6 +161,7 @@ export default function RegistarPage() {
             Voltar a explorar
           </Link>
         </div>
+      </div>
       </div>
     </div>
   );

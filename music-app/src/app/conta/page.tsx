@@ -35,7 +35,7 @@ export default function ContaPage() {
   return (
     <div className="min-h-screen">
       <NavBar />
-      <div className="max-w-md mx-auto px-6 pt-12 pb-32">
+      <div className="mx-auto px-6 pt-12 pb-32" style={{ maxWidth: "28rem" }}>
         <h1 className="font-display text-2xl font-semibold text-[#F5F0E6] mb-8">A tua conta</h1>
 
         {/* Email */}

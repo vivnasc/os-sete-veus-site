@@ -45,7 +45,7 @@ export default function ApoiarClient() {
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[400px] h-[400px] rounded-full bg-[#C9A96E] blur-[120px]" />
       </div>
 
-      <div className="relative z-10 w-full max-w-sm flex flex-col items-center text-center">
+      <div className="relative z-10 w-full flex flex-col items-center text-center" style={{ maxWidth: "24rem" }}>
         {/* Back button */}
         <Link
           href="/"
