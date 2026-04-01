@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
 import { ALL_ALBUMS } from "@/data/albums";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 function pickLyric(lyrics: string | undefined): string | null {
   if (!lyrics) return null;
