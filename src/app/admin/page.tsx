@@ -333,6 +333,12 @@ export default function AdminPage() {
             href="/painel/marca"
             icon="◆"
           />
+          <ActionCard
+            title="Reels de Lancamento"
+            description="Gerar reels verticais para novos Espelhos"
+            href="/admin/reels"
+            icon="▶"
+          />
         </div>
 
         {/* ── Sistema ── */}

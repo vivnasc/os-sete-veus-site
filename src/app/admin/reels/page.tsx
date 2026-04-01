@@ -1,0 +1,390 @@
+"use client";
+
+import { useEffect, useState, useRef } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/components/AuthProvider";
+import { getExperiencesLive, type Experience } from "@/data/experiences";
+import { getNosCollectionLive, type NosBook } from "@/data/nos-collection";
+import { supabase } from "@/lib/supabase";
+import {
+  generateLaunchReel,
+  type LaunchReelProgress,
+} from "@/lib/launch-reel-generator";
+
+const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
+
+// Map experience slug to music-app album slug
+const ALBUM_SLUG_MAP: Record<string, string> = {
+  "veu-da-ilusao": "espelho-ilusao",
+  "veu-do-medo": "espelho-medo",
+  "veu-da-culpa": "espelho-culpa",
+  "veu-da-identidade": "espelho-identidade",
+  "veu-do-controlo": "espelho-controlo",
+  "veu-do-desejo": "espelho-desejo",
+  "veu-da-separacao": "espelho-separacao",
+};
+
+type AudioTrack = {
+  name: string;
+  number: string;
+  url: string;
+};
+
+export default function AdminReelsPage() {
+  const { user, profile, loading: authLoading } = useAuth();
+  const router = useRouter();
+  const isAdmin =
+    profile?.is_admin || ADMIN_EMAILS.includes(user?.email || "");
+
+  const [selectedSlug, setSelectedSlug] = useState("");
+  const [audioTracks, setAudioTracks] = useState<AudioTrack[]>([]);
+  const [selectedTrack, setSelectedTrack] = useState<string>("");
+  const [loadingTracks, setLoadingTracks] = useState(false);
+  const [tagline, setTagline] = useState("");
+  const [progress, setProgress] = useState<LaunchReelProgress | null>(null);
+  const [reelBlob, setReelBlob] = useState<Blob | null>(null);
+  const [reelUrl, setReelUrl] = useState<string | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const experiences = getExperiencesLive();
+  const nosCollection = getNosCollectionLive();
+
+  useEffect(() => {
+    if (!authLoading && (!user || !isAdmin)) {
+      router.push("/entrar");
+    }
+  }, [user, isAdmin, authLoading, router]);
+
+  // Load available audio tracks when experience changes
+  useEffect(() => {
+    if (!selectedSlug) {
+      setAudioTracks([]);
+      setSelectedTrack("");
+      return;
+    }
+    loadAudioTracks(selectedSlug);
+  }, [selectedSlug]);
+
+  async function loadAudioTracks(slug: string) {
+    setLoadingTracks(true);
+    setAudioTracks([]);
+    setSelectedTrack("");
+
+    const albumSlug = ALBUM_SLUG_MAP[slug];
+    if (!albumSlug) {
+      setLoadingTracks(false);
+      return;
+    }
+
+    try {
+      const { data, error } = await supabase.storage
+        .from("audios")
+        .list(`albums/${albumSlug}`, { limit: 50 });
+
+      if (error || !data) {
+        setLoadingTracks(false);
+        return;
+      }
+
+      const tracks: AudioTrack[] = data
+        .filter(
+          (f) =>
+            f.name.match(/^faixa-\d+\.mp3$/) && f.name !== "faixa-00.mp3"
+        )
+        .map((f) => {
+          const num = f.name.replace("faixa-", "").replace(".mp3", "");
+          const url = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audios/albums/${albumSlug}/${f.name}`;
+          return { name: `Faixa ${parseInt(num)}`, number: num, url };
+        })
+        .sort((a, b) => a.number.localeCompare(b.number));
+
+      setAudioTracks(tracks);
+      if (tracks.length > 0) setSelectedTrack(tracks[0].url);
+    } catch {
+      // ignore
+    }
+    setLoadingTracks(false);
+  }
+
+  async function handleGenerate() {
+    if (!selectedSlug) return;
+
+    const exp = experiences.find((e) => e.slug === selectedSlug);
+    if (!exp) return;
+
+    const nos = nosCollection.find((n) => n.espelhoSlug === selectedSlug);
+
+    // Clean up previous reel
+    if (reelUrl) URL.revokeObjectURL(reelUrl);
+    setReelBlob(null);
+    setReelUrl(null);
+
+    try {
+      const blob = await generateLaunchReel({
+        experience: exp,
+        nos: nos || null,
+        coverSrc: exp.image,
+        nosCoverSrc: nos?.image || null,
+        audioSrc: selectedTrack || null,
+        tagline: tagline || undefined,
+        onProgress: setProgress,
+      });
+
+      setReelBlob(blob);
+      const url = URL.createObjectURL(blob);
+      setReelUrl(url);
+    } catch (err) {
+      setProgress({
+        phase: "error",
+        progress: 0,
+        message: `Erro: ${err instanceof Error ? err.message : "desconhecido"}`,
+      });
+    }
+  }
+
+  function handleDownload() {
+    if (!reelBlob || !selectedSlug) return;
+    const exp = experiences.find((e) => e.slug === selectedSlug);
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(reelBlob);
+    a.download = `reel-lancamento-${exp?.title || selectedSlug}.mp4`;
+    a.click();
+  }
+
+  async function handleShare() {
+    if (!reelBlob || !selectedSlug) return;
+    const exp = experiences.find((e) => e.slug === selectedSlug);
+    if (!exp) return;
+
+    const nos = nosCollection.find((n) => n.espelhoSlug === selectedSlug);
+    const caption = [
+      `${exp.title}`,
+      `"${exp.subtitle}"`,
+      "",
+      exp.description,
+      "",
+      nos ? `~ ${nos.title} desbloqueia ao completar` : "",
+      "",
+      `seteveus.space/experiencias/${exp.slug}`,
+      "",
+      "#seteveus #espelhos #ficçãotransformativa #leitura #autoconhecimento",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    if (navigator.share) {
+      try {
+        const file = new File(
+          [reelBlob],
+          `${exp.title} — Lancamento.mp4`,
+          { type: "video/mp4" }
+        );
+        await navigator.share({ title: exp.title, text: caption, files: [file] });
+        return;
+      } catch {
+        // fallback below
+      }
+    }
+
+    // Fallback: copy caption + download
+    await navigator.clipboard.writeText(caption);
+    handleDownload();
+    alert("Legenda copiada. Video descarregado. Abre o WhatsApp Status ou Instagram Reels.");
+  }
+
+  if (authLoading || !isAdmin) return null;
+
+  const selectedExp = experiences.find((e) => e.slug === selectedSlug);
+
+  return (
+    <div className="min-h-screen bg-brown-900 px-6 py-12">
+      <div className="mx-auto max-w-2xl">
+        <h1 className="font-serif text-3xl text-cream">Reels de Lancamento</h1>
+        <p className="mt-2 text-sm text-brown-300">
+          Gera reels verticais (15s) para anunciar novos Espelhos nas redes sociais.
+        </p>
+
+        {/* Experience selector */}
+        <div className="mt-8">
+          <label className="block text-sm text-brown-400">Espelho</label>
+          <select
+            value={selectedSlug}
+            onChange={(e) => setSelectedSlug(e.target.value)}
+            className="mt-1 w-full rounded-lg border border-brown-700 bg-brown-800 px-4 py-3 text-cream"
+          >
+            <option value="">Selecionar Espelho...</option>
+            {experiences.map((exp) => (
+              <option key={exp.slug} value={exp.slug}>
+                {exp.number}. {exp.title}{" "}
+                {exp.status === "available" ? "" : `(${exp.launchLabel})`}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Audio selector */}
+        {selectedSlug && (
+          <div className="mt-6">
+            <label className="block text-sm text-brown-400">
+              Audio (da music-app)
+            </label>
+            {loadingTracks ? (
+              <p className="mt-2 text-sm text-brown-500">A procurar faixas...</p>
+            ) : audioTracks.length > 0 ? (
+              <>
+                <select
+                  value={selectedTrack}
+                  onChange={(e) => setSelectedTrack(e.target.value)}
+                  className="mt-1 w-full rounded-lg border border-brown-700 bg-brown-800 px-4 py-3 text-cream"
+                >
+                  {audioTracks.map((t) => (
+                    <option key={t.number} value={t.url}>
+                      {t.name}
+                    </option>
+                  ))}
+                </select>
+                {selectedTrack && (
+                  <audio
+                    src={selectedTrack}
+                    controls
+                    className="mt-2 w-full"
+                  />
+                )}
+              </>
+            ) : (
+              <p className="mt-2 text-sm text-brown-500">
+                Nenhuma faixa aprovada para este album.
+                Gera primeiro na music-app.
+              </p>
+            )}
+          </div>
+        )}
+
+        {/* Tagline override */}
+        {selectedSlug && (
+          <div className="mt-6">
+            <label className="block text-sm text-brown-400">
+              Frase (opcional — usa a descricao por defeito)
+            </label>
+            <textarea
+              value={tagline}
+              onChange={(e) => setTagline(e.target.value)}
+              placeholder={selectedExp?.description || ""}
+              rows={2}
+              className="mt-1 w-full rounded-lg border border-brown-700 bg-brown-800 px-4 py-3 text-cream placeholder:text-brown-600"
+            />
+          </div>
+        )}
+
+        {/* Preview info */}
+        {selectedExp && (
+          <div className="mt-6 rounded-xl border border-brown-700 bg-brown-800/50 p-5">
+            <div className="flex items-start gap-4">
+              <div
+                className="h-3 w-3 shrink-0 rounded-full mt-1"
+                style={{ backgroundColor: selectedExp.color }}
+              />
+              <div>
+                <p className="text-sm text-brown-400">
+                  Espelho {selectedExp.number} de 7
+                </p>
+                <p className="font-serif text-lg text-cream">
+                  {selectedExp.title}
+                </p>
+                <p className="font-serif text-sm italic text-brown-300">
+                  {selectedExp.subtitle}
+                </p>
+                {(() => {
+                  const nos = nosCollection.find(
+                    (n) => n.espelhoSlug === selectedSlug
+                  );
+                  return nos ? (
+                    <p className="mt-2 text-xs text-brown-500">
+                      ~ {nos.title} ({nos.subtitle})
+                    </p>
+                  ) : null;
+                })()}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Generate button */}
+        {selectedSlug && (
+          <button
+            onClick={handleGenerate}
+            disabled={
+              progress?.phase === "recording" ||
+              progress?.phase === "loading" ||
+              progress?.phase === "finalizing"
+            }
+            className="mt-6 w-full rounded-lg px-6 py-3 font-sans text-sm font-medium uppercase tracking-wider text-brown-900 transition-colors disabled:opacity-50"
+            style={{ backgroundColor: selectedExp?.color || "#c9b896" }}
+          >
+            {progress?.phase === "recording" || progress?.phase === "loading"
+              ? progress.message
+              : progress?.phase === "finalizing"
+                ? "A finalizar..."
+                : "Gerar Reel de Lancamento"}
+          </button>
+        )}
+
+        {/* Progress */}
+        {progress && progress.phase !== "done" && progress.phase !== "error" && (
+          <div className="mt-4">
+            <div className="h-2 overflow-hidden rounded-full bg-brown-800">
+              <div
+                className="h-full rounded-full transition-all"
+                style={{
+                  width: `${Math.round(progress.progress * 100)}%`,
+                  backgroundColor: selectedExp?.color || "#c9b896",
+                }}
+              />
+            </div>
+            <p className="mt-1 text-xs text-brown-500">{progress.message}</p>
+          </div>
+        )}
+
+        {/* Error */}
+        {progress?.phase === "error" && (
+          <p className="mt-4 text-sm text-red-400">{progress.message}</p>
+        )}
+
+        {/* Result */}
+        {reelUrl && (
+          <div className="mt-8 rounded-xl border border-brown-700 bg-brown-800/50 p-6">
+            <p className="text-sm font-medium text-cream">Reel pronto</p>
+            <video
+              ref={videoRef}
+              src={reelUrl}
+              controls
+              loop
+              playsInline
+              className="mx-auto mt-4 max-h-[500px] rounded-lg"
+            />
+            <div className="mt-4 flex gap-3">
+              <button
+                onClick={handleShare}
+                className="flex-1 rounded-lg px-4 py-2.5 text-sm font-medium text-brown-900"
+                style={{ backgroundColor: selectedExp?.color || "#c9b896" }}
+              >
+                Partilhar
+              </button>
+              <button
+                onClick={handleDownload}
+                className="flex-1 rounded-lg border border-brown-600 px-4 py-2.5 text-sm text-cream hover:bg-brown-800"
+              >
+                Descarregar
+              </button>
+            </div>
+            <p className="mt-3 text-xs text-brown-500">
+              {reelBlob
+                ? `${(reelBlob.size / 1024 / 1024).toFixed(1)} MB — ${reelBlob.type}`
+                : ""}
+            </p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
