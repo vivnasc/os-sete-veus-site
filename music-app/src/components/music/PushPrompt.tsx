@@ -53,8 +53,10 @@ export default function PushPrompt() {
         }),
       });
 
+      localStorage.setItem("veus:push-dismissed", "1");
       setShow(false);
     } catch {
+      localStorage.setItem("veus:push-dismissed", "1");
       setShow(false);
     }
     setSubscribing(false);
