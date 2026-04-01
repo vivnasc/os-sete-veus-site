@@ -318,7 +318,6 @@ export async function generateReel(
 
   // Try WebCodecs + mp4-muxer for real MP4 (Chrome/Edge 94+)
   if (typeof VideoEncoder !== "undefined") {
-   try {
     report("recording", 0, "A gravar reel (MP4)...");
     const { Muxer, ArrayBufferTarget } = await import("mp4-muxer");
     const target = new ArrayBufferTarget();
@@ -405,10 +404,6 @@ export async function generateReel(
     try { bufferSource.disconnect(); audioCtx.close(); } catch {}
     report("done", 1, `Reel MP4 pronto! (${(blob.size / 1024 / 1024).toFixed(1)}MB)`);
     return blob;
-   } catch (webCodecsErr) {
-    // WebCodecs failed (e.g. mobile browser) — fall through to MediaRecorder
-    console.warn("WebCodecs falhou, a usar MediaRecorder:", webCodecsErr);
-   }
   }
 
   // Fallback: MediaRecorder (WebM)
