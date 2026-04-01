@@ -238,7 +238,7 @@ export async function generateReel(
     if (albumProgress > 0) {
       const slideUp = 20 * (1 - easeInOut(albumProgress));
       ctx.globalAlpha = albumProgress;
-      ctx.font = "500 28px sans-serif";
+      ctx.font = "500 18px sans-serif";
       ctx.fillStyle = "#666680";
       ctx.fillText(album.title.toUpperCase(), REEL_W / 2, textBaseY + slideUp);
     }
@@ -248,11 +248,11 @@ export async function generateReel(
     if (titleProgress > 0) {
       const slideUp = 25 * (1 - easeInOut(titleProgress));
       ctx.globalAlpha = titleProgress;
-      ctx.font = "bold 64px serif";
+      ctx.font = "bold 44px serif";
       ctx.fillStyle = "#F5F0E6";
       const titleLines = wrapText(ctx, track.title, REEL_W - 60);
       let y = textBaseY + 50 + slideUp;
-      for (const line of titleLines) { ctx.fillText(line, REEL_W / 2, y); y += 76; }
+      for (const line of titleLines) { ctx.fillText(line, REEL_W / 2, y); y += 54; }
     }
 
     // Lyric — slides up + fades in (3s-4.5s)
@@ -261,11 +261,11 @@ export async function generateReel(
       if (lyricProgress > 0) {
         const slideUp = 20 * (1 - easeInOut(lyricProgress));
         ctx.globalAlpha = lyricProgress;
-        ctx.font = "italic 32px serif";
+        ctx.font = "italic 22px serif";
         ctx.fillStyle = color + "cc";
         const lyricLines = wrapText(ctx, `"${lyric}"`, REEL_W - 80);
         let y = textBaseY + 140 + slideUp;
-        for (const line of lyricLines) { ctx.fillText(line, REEL_W / 2, y); y += 42; }
+        for (const line of lyricLines) { ctx.fillText(line, REEL_W / 2, y); y += 30; }
       }
     }
 
@@ -273,7 +273,7 @@ export async function generateReel(
     const artistProgress = clamp((elapsed - 2.5) / 1, 0, 1);
     if (artistProgress > 0) {
       ctx.globalAlpha = artistProgress;
-      ctx.font = "italic 36px 'Cormorant Garamond', 'Georgia', serif";
+      ctx.font = "italic 28px 'Cormorant Garamond', 'Georgia', serif";
       ctx.fillStyle = "#C9A96E";
       ctx.fillText("L o r a n n e", REEL_W / 2, textBaseY + (lyric ? 200 : 130));
     }
@@ -289,12 +289,12 @@ export async function generateReel(
       ctx.moveTo(REEL_W / 2 - 40, brandY - 20);
       ctx.lineTo(REEL_W / 2 + 40, brandY - 20);
       ctx.stroke();
-      ctx.font = "500 24px sans-serif";
+      ctx.font = "500 16px sans-serif";
       ctx.fillStyle = "#666680";
       ctx.fillText("VÉUS", REEL_W / 2, brandY);
       // Link
       const sharePath = getSharePath(album.slug, track.number);
-      ctx.font = "400 22px sans-serif";
+      ctx.font = "400 16px sans-serif";
       ctx.fillStyle = "#a0a0b0";
       ctx.fillText(`music.seteveus.space${sharePath}`, REEL_W / 2, brandY + 25);
     }
@@ -337,7 +337,7 @@ export async function generateReel(
       codec: "avc1.640028",
       width: REEL_W,
       height: REEL_H,
-      bitrate: 4_000_000,
+      bitrate: 2_000_000,
       framerate: FPS,
     });
 
