@@ -510,6 +510,17 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     navigator.mediaSession.setActionHandler("nexttrack", () => next());
   }, [state.currentTrack, state.currentAlbum, togglePlay, next, previous]);
 
+  // ── Pause when app closed / hidden (PWA) ──
+  useEffect(() => {
+    const onVisChange = () => {
+      if (document.hidden && audioRef.current && !audioRef.current.paused) {
+        audioRef.current.pause();
+      }
+    };
+    document.addEventListener("visibilitychange", onVisChange);
+    return () => document.removeEventListener("visibilitychange", onVisChange);
+  }, []);
+
   return (
     <MusicPlayerContext.Provider
       value={{
