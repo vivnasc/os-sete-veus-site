@@ -148,7 +148,7 @@ export default function Home() {
                 href="/cursos"
                 className="inline-block rounded-md border-2 border-[#8B5CF6] bg-[#8B5CF6] px-8 py-3.5 font-sans text-[0.8rem] font-medium uppercase tracking-[0.15em] text-white transition-all hover:bg-transparent hover:text-[#8B5CF6]"
               >
-                Ver os 10 cursos
+                Ver os 20 cursos
               </Link>
               <p className="mt-4 text-xs text-[#606070]">
                 A partir de $19/mes &middot; Acesso a todos os cursos
