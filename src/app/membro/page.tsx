@@ -4,7 +4,7 @@ import { useAuth } from "@/components/AuthProvider";
 import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { chapters as ilusaoChapters } from "@/data/ebook";
-import { experiences } from "@/data/experiences";
+import { getExperiencesLive } from "@/data/experiences";
 import { getNosForEspelho } from "@/data/nos-collection";
 import { loadEspelho, espelhoProgressKey, loadNos, nosProgressKey } from "@/lib/content-registry";
 import { supabase } from "@/lib/supabase";
@@ -22,6 +22,7 @@ type EspelhoInfo = {
 };
 
 export default function MembroDashboard() {
+  const experiences = getExperiencesLive();
   const { user, profile, loading: authLoading, refreshProfile } = useAuth();
   const router = useRouter();
   const [readingProgress, setReadingProgress] = useState<Record<string, boolean>>({});

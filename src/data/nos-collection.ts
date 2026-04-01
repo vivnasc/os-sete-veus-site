@@ -36,7 +36,7 @@ export type NosBook = {
 
 // Status calculado dinamicamente: segue o Espelho correspondente.
 // Um Nó fica "available" quando o Espelho é publicado E o dataFile existe.
-import { experiences } from "@/data/experiences";
+import { experiences, computeLiveStatus } from "@/data/experiences";
 
 const _nosCollection: NosBook[] = [
   {
@@ -174,31 +174,45 @@ const _nosCollection: NosBook[] = [
   },
 ];
 
-// Exporta array com status calculado: Nó fica available se Espelho publicado + dataFile existe
-export const nosCollection: NosBook[] = _nosCollection.map((n) => {
-  if (n.status === "available") return n;
-  if (!n.dataFile) return n; // Nó não escrito → mantém coming_soon
+// Dados raw — status estático. Usar getNosCollectionLive() para status real.
+export const nosCollection = _nosCollection;
 
-  // Verificar se o Espelho correspondente já está available
+/**
+ * Calcula o status de um Nó em runtime (segue o Espelho correspondente).
+ */
+export function computeNosLiveStatus(n: NosBook): "available" | "coming_soon" {
+  if (n.status === "available") return "available";
+  if (!n.dataFile) return "coming_soon";
   const espelho = experiences.find((e) => e.slug === n.espelhoSlug);
-  if (espelho && espelho.status === "available") {
-    return { ...n, status: "available" as const };
-  }
-  return n;
-});
-
-export function getNosBook(slug: string) {
-  return nosCollection.find((n) => n.slug === slug);
-}
-
-export function getNosForEspelho(espelhoSlug: string) {
-  return nosCollection.find((n) => n.espelhoSlug === espelhoSlug);
+  if (espelho && computeLiveStatus(espelho) === "available") return "available";
+  return "coming_soon";
 }
 
 /**
- * Retorna Nós disponíveis.
- * O status já é calculado automaticamente no array nosCollection.
+ * Retorna todos os Nós com status calculado em runtime.
+ */
+export function getNosCollectionLive(): NosBook[] {
+  return _nosCollection.map((n) => ({
+    ...n,
+    status: computeNosLiveStatus(n),
+  }));
+}
+
+export function getNosBook(slug: string) {
+  const n = _nosCollection.find((n) => n.slug === slug);
+  if (!n) return undefined;
+  return { ...n, status: computeNosLiveStatus(n) };
+}
+
+export function getNosForEspelho(espelhoSlug: string) {
+  const n = _nosCollection.find((n) => n.espelhoSlug === espelhoSlug);
+  if (!n) return undefined;
+  return { ...n, status: computeNosLiveStatus(n) };
+}
+
+/**
+ * Retorna Nós disponíveis (com status calculado em runtime).
  */
 export function getAvailableNos() {
-  return nosCollection.filter((n) => n.status === "available");
+  return getNosCollectionLive().filter((n) => n.status === "available");
 }

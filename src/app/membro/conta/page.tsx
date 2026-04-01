@@ -4,7 +4,7 @@ import { useAuth } from "@/components/AuthProvider";
 import { useEffect, useState, useCallback } from "react";
 import { supabase } from "@/lib/supabase";
 import { chapters } from "@/data/ebook";
-import { experiences } from "@/data/experiences";
+import { getExperiencesLive } from "@/data/experiences";
 import Link from "next/link";
 
 type Purchase = {
@@ -13,6 +13,7 @@ type Purchase = {
 };
 
 export default function ContaPage() {
+  const experiences = getExperiencesLive();
   const { user, signOut } = useAuth();
   const [purchases, setPurchases] = useState<Purchase[]>([]);
   const [readingProgress, setReadingProgress] = useState<Record<string, boolean>>({});

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { experiences } from "@/data/experiences";
-import { nosCollection } from "@/data/nos-collection";
+import { getExperiencesLive } from "@/data/experiences";
+import { getNosCollectionLive } from "@/data/nos-collection";
 
 export const metadata: Metadata = {
   title: "Colecção Espelhos — Ficção de Transformação Interior",
@@ -11,6 +11,9 @@ export const metadata: Metadata = {
 };
 
 export default function OsSeteVeusPage() {
+  const experiences = getExperiencesLive();
+  const nosCollection = getNosCollectionLive();
+
   return (
     <>
       {/* Hero — dark */}

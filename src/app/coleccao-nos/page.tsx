@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { nosCollection, NOS_PRICING } from "@/data/nos-collection";
+import { getNosCollectionLive, NOS_PRICING } from "@/data/nos-collection";
 
 export const metadata: Metadata = {
   title: "Colecção Nós — Ficção Relacional",
@@ -20,6 +20,7 @@ const espelhoNames: Record<number, string> = {
 };
 
 export default function ColeccaoNosPage() {
+  const nosCollection = getNosCollectionLive();
   return (
     <>
       {/* Hero — dark with warm accent */}
