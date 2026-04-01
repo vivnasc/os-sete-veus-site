@@ -8,6 +8,7 @@ import { useDownloads } from "@/hooks/useDownloads";
 import { useLibrary } from "@/hooks/useLibrary";
 import ShareModal from "./ShareModal";
 import SleepTimer from "./SleepTimer";
+import { useCustomLyrics } from "@/hooks/useCustomLyrics";
 
 /**
  * Synced lyrics — highlights the current section based on playback time.
@@ -141,6 +142,7 @@ export default function FullPlayer() {
   const [trackCover, setTrackCover] = useState<string | null>(null);
   const { saveTrack, removeTrack, getSaveState, isSaved } = useDownloads();
   const { isFavorite, toggleFavorite, userId } = useLibrary();
+  const { getLyrics: getCustomLyrics } = useCustomLyrics();
   const router = useRouter();
 
   // ── Track-specific cover ──
@@ -217,7 +219,10 @@ export default function FullPlayer() {
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
   const albumColor = currentAlbum?.color || "#C9A96E";
   const coverSrc = trackCover || (currentAlbum ? getAlbumCover(currentAlbum) : "/poses/loranne-hero.png");
-  const hasLyrics = !!currentTrack.lyrics;
+  const resolvedLyrics = currentAlbum
+    ? getCustomLyrics(currentAlbum.slug, currentTrack.number, currentTrack.lyrics || "")
+    : currentTrack.lyrics || "";
+  const hasLyrics = !!resolvedLyrics;
   const currentIdx = queue.findIndex(t => t.number === currentTrack.number);
   const upcomingTracks = currentIdx >= 0 ? queue.slice(currentIdx + 1) : [];
   const nextTrack = upcomingTracks[0] || null;
@@ -328,7 +333,7 @@ export default function FullPlayer() {
             <div className="py-4 min-h-[50vh]">
               {hasLyrics ? (
                 <SyncedLyrics
-                  lyrics={currentTrack.lyrics!}
+                  lyrics={resolvedLyrics}
                   currentTime={currentTime}
                   duration={duration}
                   albumColor={albumColor}

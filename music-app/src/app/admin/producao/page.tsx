@@ -13,8 +13,9 @@ import {
   type TrackEnergy,
   type TrackFlavor,
 } from "@/data/albums";
-import { getAlbumCover } from "@/lib/album-covers";
+import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
 import { adminFetch } from "@/lib/admin-fetch";
+import { useAlbumCovers } from "@/hooks/useAlbumCovers";
 
 /** Read ID3 title from an MP3 File */
 async function readId3Title(file: File): Promise<string | null> {
@@ -594,6 +595,8 @@ function TrackRow({
   onStyleChange,
   editedFlavor,
   onFlavorChange,
+  isAlbumCover,
+  onSetAlbumCover,
 }: {
   track: AlbumTrack;
   albumSlug: string;
@@ -620,6 +623,8 @@ function TrackRow({
   onStyleChange: (style: string) => void;
   editedFlavor: TrackFlavor | null;
   onFlavorChange: (flavor: TrackFlavor) => void;
+  isAlbumCover: boolean;
+  onSetAlbumCover: () => void;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [showLyrics, setShowLyrics] = useState(false);
@@ -794,6 +799,16 @@ function TrackRow({
               >
                 Carregar capa
               </label>
+              <button
+                className={`rounded-lg px-3 py-2.5 text-[11px] min-h-[44px] transition ${
+                  isAlbumCover
+                    ? "bg-violet-600/40 text-violet-300"
+                    : "bg-mundo-muted-dark/20 text-mundo-muted hover:bg-violet-900/20"
+                }`}
+                onClick={onSetAlbumCover}
+              >
+                {isAlbumCover ? "★ Capa do álbum" : "Usar como capa"}
+              </button>
             </div>
           )}
 
@@ -1215,6 +1230,7 @@ export default function AlbumProductionPage() {
   const [personaResult, setPersonaResult] = useState<string | null>(null);
   const pollingRef = useRef<Record<string, NodeJS.Timeout>>({});
   const titleSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
+  const { getCoverTrack, setCoverTrack } = useAlbumCovers();
 
   // Load existing audio status + saved titles on mount
   useEffect(() => {
@@ -2190,6 +2206,11 @@ export default function AlbumProductionPage() {
                     onStyleChange={(style) => setEditedStyles((s) => ({ ...s, [key]: style }))}
                     editedFlavor={editedFlavors[key] || null}
                     onFlavorChange={(flavor) => setEditedFlavors((f) => ({ ...f, [key]: flavor }))}
+                    isAlbumCover={getCoverTrack(album.slug) === track.number}
+                    onSetAlbumCover={async () => {
+                      const ok = await setCoverTrack(album.slug, track.number);
+                      if (ok) alert(`Capa do álbum → faixa ${track.number}`);
+                    }}
                   />
                 );
               })}
