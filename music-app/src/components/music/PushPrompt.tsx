@@ -9,7 +9,6 @@ import { supabase } from "@/lib/supabase";
  */
 export default function PushPrompt() {
   const [show, setShow] = useState(false);
-  const [subscribing, setSubscribing] = useState(false);
 
   useEffect(() => {
     // Don't show if: no support, already subscribed, or dismissed
@@ -84,10 +83,9 @@ export default function PushPrompt() {
           </button>
           <button
             onClick={subscribe}
-            disabled={subscribing}
-            className="px-4 py-2 rounded-full bg-[#C9A96E] text-[#0D0D1A] text-xs font-semibold hover:bg-[#d4b87a] transition-colors active:scale-95 disabled:opacity-50"
+            className="px-4 py-2 rounded-full bg-[#C9A96E] text-[#0D0D1A] text-xs font-semibold hover:bg-[#d4b87a] transition-colors active:scale-95"
           >
-            {subscribing ? "..." : "Sim"}
+            Sim
           </button>
         </div>
       </div>

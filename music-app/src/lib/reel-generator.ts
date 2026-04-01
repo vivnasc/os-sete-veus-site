@@ -104,7 +104,6 @@ export async function generateReel(
   audioSrc: string,
   onProgress?: (p: ReelProgress) => void,
   audioStartSeconds?: number,
-  fetchHeaders?: HeadersInit,
 ): Promise<Blob> {
   const report = (phase: ReelProgress["phase"], progress: number, message: string) => {
     onProgress?.({ phase, progress, message });
@@ -115,7 +114,7 @@ export async function generateReel(
 
   report("loading", 0.3, "A carregar audio...");
 
-  const audioResponse = await fetch(audioSrc, fetchHeaders ? { headers: fetchHeaders } : undefined);
+  const audioResponse = await fetch(audioSrc);
   if (!audioResponse.ok) throw new Error("Audio nao disponivel");
   const audioArrayBuffer = await audioResponse.arrayBuffer();
 
@@ -335,7 +334,7 @@ export async function generateReel(
       error: () => {},
     });
     encoder.configure({
-      codec: "avc1.640032",
+      codec: "avc1.42001f",
       width: REEL_W,
       height: REEL_H,
       bitrate: 4_000_000,
