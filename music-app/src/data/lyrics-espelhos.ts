@@ -685,7 +685,7 @@ Tem o peso da fé
 Mas não é minha, não é minha
 Eu aprendi a repeti-la
 Até esquecer que a garganta
-Tinha outra música por dizer
+Tinha outra voz, mais tranquila
 
 [Verse 3]
 O sol entra pela janela
@@ -774,7 +774,7 @@ O outro é o princípio de um festival
 Eu confundi durante anos
 O descanso com a felicidade
 O dever cumprido com o desejo
-A gaiola aberta com a liberdade
+A gaiola aberta com a vastidão
 Mas há qualquer coisa que brilha
 Que não vem do fim de uma tarefa
 Vem do fundo, vem da barriga
@@ -785,7 +785,7 @@ Vem do lugar onde a vida é festa
 Eu confundi durante anos
 O descanso com a felicidade
 O dever cumprido com o desejo
-A gaiola aberta com a liberdade
+A gaiola aberta com a vastidão
 Mas há qualquer coisa que brilha
 Que não vem do fim de uma tarefa
 Vem do fundo, vem da barriga
@@ -913,8 +913,8 @@ Mas eu abro as mãos devagar
 E deixo cair no chão
 Tudo o que nunca foi meu
 Tudo o que eu chamava obrigação
-E o chão recebe sem julgar
-E o ar entra nos pulmões
+O chão recebe sem julgar
+O ar entra nos pulmões
 E o espaço que aparece
 Tem o tamanho de mil perdões
 
@@ -924,8 +924,8 @@ Mas eu abro as mãos devagar
 E deixo cair no chão
 Tudo o que nunca foi meu
 Tudo o que eu chamava obrigação
-E o chão recebe sem julgar
-E o ar entra nos pulmões
+O chão recebe sem julgar
+O ar entra nos pulmões
 E o espaço que aparece
 Tem o tamanho de mil perdões
 
