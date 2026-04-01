@@ -147,7 +147,7 @@ export const chapters: Chapter[] = [
       "O silêncio que se seguiu foi diferente dos silêncios habituais entre eles. Não era o silêncio confortável de dois corpos que partilham espaço. Era um silêncio de choque, fino e cortante, e Luísa viu-o atravessar o rosto de Filipe como uma sombra.",
       "— Não entendo — disse ele, devagar, com a voz de quem procura sentido nas palavras e não encontra. — Queres que eu pare de cuidar de ti?",
       "— Quero que pares de te sacrificar por mim. São coisas diferentes.",
-      "Filipe recuou na cadeira. Não fisicamente — o corpo ficou exactamente no mesmo sítio — mas algo dentro dele recuou, como se as palavras de Luísa tivessem atingido uma estrutura que ele julgava invisível e mostrado que era, afinal, completamente visível.",
+      "Filipe recuou na cadeira. Não fisicamente — o corpo ficou exactamente no mesmo sítio — mas algo dentro dele recuou.",
       "— Eu não me sacrifico. Eu gosto de fazer estas coisas.",
       "— Eu sei que gostas. Mas pergunta-te porquê. Pergunta-te o que acontece dentro de ti quando eu digo que não precisavas de ter feito. O que sentes quando eu digo que podia ter tratado sozinha.",
       "Filipe não respondeu. Luísa viu as mãos dele fecharem-se sobre a mesa, devagar, os dedos a enrolarem-se como pétalas que se fecham quando o sol desaparece.",
@@ -155,7 +155,7 @@ export const chapters: Chapter[] = [
       "A frase saiu quase inaudível.",
       "Luísa estendeu a mão sobre a mesa e tocou-lhe os dedos fechados. Ele não abriu a mão imediatamente. Demorou. Mas abriu.",
       "— Tu és suficiente, Filipe. Sem as panquecas. Sem o jantar. Sem nada disto. És suficiente como estás, sentado nesta cadeira, sem fazer nada.",
-      "Ele olhou para ela e os olhos estavam húmidos, não de choro — Filipe não chorava, ou pelo menos não se permitia chorar — mas de algo que vinha de mais fundo do que as lágrimas, algo que se assemelhava ao alívio de quem ouve uma coisa que precisava de ouvir há trinta e cinco anos.",
+      "Ele olhou para ela e os olhos estavam húmidos, não de choro — Filipe não chorava, ou pelo menos não se permitia chorar — mas de algo que vinha de mais fundo do que as lágrimas, algo que se assemelhava a alívio.",
     ],
     reflection: {
       prompt:
