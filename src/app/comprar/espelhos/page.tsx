@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/components/AuthProvider'
-import { experiences, PRICING } from '@/data/experiences'
+import { getExperiencesLive, PRICING } from '@/data/experiences'
 import Image from 'next/image'
 import { nosCollection, NOS_PRICING } from '@/data/nos-collection'
 import type { Experience } from '@/data/experiences'
@@ -22,6 +22,7 @@ export default function ComprarPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
+  const experiences = getExperiencesLive()
   const available = experiences.filter((e) => e.status === 'available')
   const upcoming = experiences.filter((e) => e.status !== 'available')
 

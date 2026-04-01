@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { experiences, quizVeilToExperience, PRICING } from "@/data/experiences";
+import { getExperiencesLive, quizVeilToExperience, PRICING } from "@/data/experiences";
 
 type Props = {
   completedVeilSlug: string;
 };
 
 export default function CeremonyUpsell({ completedVeilSlug }: Props) {
+  const experiences = getExperiencesLive();
   // Try to get quiz result from localStorage for personalized recommendation
   let recommendedSlug: string | null = null;
 
