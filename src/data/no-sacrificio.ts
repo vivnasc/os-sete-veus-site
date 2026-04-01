@@ -188,7 +188,7 @@ export const chapters: Chapter[] = [
       "— Está bom — disse Filipe ao provar a massa de Luísa, e forçou-se a não acrescentar nada. Luísa sorriu, e o sorriso tinha uma fragilidade que ele raramente lhe via.",
       "— Não está. Mas obrigada por comeres.",
       "Riram. Um riso pequeno, quase envergonhado, como dois adolescentes a aprenderem a estar juntos pela primeira vez. E nesse riso havia algo que não existia nos jantares perfeitos de Filipe: havia verdade. Havia dois adultos a mostrarem-se imperfeitos um ao outro sem a armadura do sacrifício ou da independência.",
-      "Filipe percebeu, nessa noite, que a massa sem jeito de Luísa era o acto mais generoso que alguém fizera por ele. Porque escolhera ser vista na imperfeição em vez de se esconder na competência. Era exactamente o que ele nunca se permitia fazer.",
+      "Filipe percebeu, nessa noite, que a massa sem jeito de Luísa era o acto mais generoso que alguém fizera por ele.",
     ],
     reflection: {
       prompt:
@@ -254,10 +254,10 @@ export const chapters: Chapter[] = [
       "***",
       "O nó não desapareceu. Talvez nunca desapareça completamente — talvez haja nós que se tornam parte da textura de uma relação, marcas que lembram o caminho percorrido. Mas afrouxou. Afrouxou o suficiente para que dois corpos pudessem respirar dentro dele sem se sufocar.",
       "Filipe continuou a cozinhar. Gostava de cozinhar, e isso não era o problema — o problema nunca fora o acto, mas a motivação. Quando cozinhava agora, cozinhava porque queria, não porque precisava de provar que merecia estar ali. E nos dias em que não queria, não cozinhava. E nos dias em que não cozinhava, o mundo não acabava. E nos dias em que o mundo não acabava apesar de ele não ter feito nada, Filipe sentia um espanto quieto que se parecia com liberdade.",
-      "Luísa deixou de sentir que devia. Deixou de medir o que recebia contra o que dava, deixou de carregar a contabilidade emocional que a exauria. Deixou de medir o que recebia contra o que dava.",
+      "Luísa deixou de sentir que devia. Deixou de carregar a contabilidade emocional que a exauria.",
       "Numa manhã de Domingo, os dois ficaram na cama até às dez. Não fizeram nada. Não houve panquecas, não houve café elaborado, não houve mesa posta. Ficaram deitados a conversar sobre coisas sem importância — um filme que tinham visto, um sítio que queriam visitar, o barulho estranho que o frigorífico fazia à noite — e entre as coisas sem importância, nos espaços entre as palavras, havia algo que antes não existia: havia leveza. A leveza de dois corpos que finalmente se permitiam não fazer nada juntos.",
-      "Filipe olhou para Luísa e pensou em Graça. Pensou na mãe que nunca se permitira uma manhã assim, que nunca ficara na cama até às dez, que nunca soubera o que era existir sem produzir. Sentiu uma ternura imensa por ela — e pela primeira vez, sentiu também uma ternura imensa por si próprio. Pelo menino que aprendera a merecer amor através do trabalho e que agora, aos trinta e cinco anos, começava lentamente a desaprender.",
-      "Luísa estendeu a mão e tocou-lhe o rosto. Filipe fechou os olhos. E naquele gesto simples, o nó do sacrifício afrouxou mais uma volta.",
+      "Filipe olhou para Luísa e pensou em Graça. Pensou na mãe que nunca se permitira uma manhã assim, que nunca ficara na cama até às dez, que nunca soubera o que era existir sem produzir. Uma ternura imensa por ela — e pela primeira vez, por si próprio. Pelo menino que aprendera a merecer amor através do trabalho e que agora, aos trinta e cinco anos, começava lentamente a desaprender.",
+      "Luísa estendeu a mão e tocou-lhe o rosto. Filipe fechou os olhos. E naquele gesto simples o nó do sacrifício afrouxou mais uma volta.",
     ],
     reflection: {
       prompt:
