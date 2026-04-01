@@ -27,15 +27,21 @@ export default function PushPrompt() {
     setSubscribing(true);
     try {
       const permission = await Notification.requestPermission();
+      localStorage.setItem("veus:push-dismissed", "1");
+
       if (permission !== "granted") {
-        localStorage.setItem("veus:push-dismissed", "1");
         setShow(false);
+        setSubscribing(false);
         return;
       }
 
       const reg = await navigator.serviceWorker.ready;
       const vapidKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
-      if (!vapidKey) { setShow(false); return; }
+      if (!vapidKey) {
+        setShow(false);
+        setSubscribing(false);
+        return;
+      }
 
       const sub = await reg.pushManager.subscribe({
         userVisibleOnly: true,
@@ -52,14 +58,12 @@ export default function PushPrompt() {
           userId: data.user?.id || null,
         }),
       });
-
-      localStorage.setItem("veus:push-dismissed", "1");
-      setShow(false);
     } catch {
-      localStorage.setItem("veus:push-dismissed", "1");
+      // Subscription failed — dismiss anyway
+    } finally {
       setShow(false);
+      setSubscribing(false);
     }
-    setSubscribing(false);
   }
 
   function dismiss() {

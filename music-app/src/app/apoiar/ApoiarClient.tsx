@@ -5,19 +5,35 @@ import Link from "next/link";
 import Image from "next/image";
 
 const MPESA_NUMBER = "851006473";
-const PAYPAL_EMAIL = "viv.saraiva@gmail.com";
+const PAYPAL_LINK = "https://paypal.me/vivsaraiva";
 const SITE_URL = "https://seteveus.space";
 
-const AMOUNTS = [100, 250, 500, 1000]; // MZN
+const MZN_AMOUNTS = [100, 250, 500, 1000];
+const USD_AMOUNTS = [3, 7, 15, 30];
+
+const IMPACT_MESSAGES: Record<number, string> = {
+  3: "Cobre uma hora de producao de audio.",
+  7: "Financia uma faixa nova completa.",
+  15: "Paga a masterizacao de um album inteiro.",
+  30: "Sustenta um mes de criacao musical.",
+};
+
+const MZN_IMPACT: Record<number, string> = {
+  100: "Ajuda a manter os servidores activos.",
+  250: "Cobre uma hora de producao.",
+  500: "Financia uma faixa nova.",
+  1000: "Sustenta uma semana de criacao.",
+};
 
 export default function ApoiarClient() {
   const [method, setMethod] = useState<"mpesa" | "paypal" | null>(null);
   const [copied, setCopied] = useState(false);
-  const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
+  const [selectedMzn, setSelectedMzn] = useState<number | null>(null);
+  const [selectedUsd, setSelectedUsd] = useState<number | null>(null);
 
-  async function copyMpesa() {
+  async function copyText(text: string) {
     try {
-      await navigator.clipboard.writeText(MPESA_NUMBER);
+      await navigator.clipboard.writeText(text);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch { /* fallback */ }
@@ -29,7 +45,7 @@ export default function ApoiarClient() {
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[400px] h-[400px] rounded-full bg-[#C9A96E] blur-[120px]" />
       </div>
 
-      <div className="relative z-10 w-full max-w-sm flex flex-col items-center text-center">
+      <div className="relative z-10 w-full flex flex-col items-center text-center" style={{ maxWidth: "24rem" }}>
         {/* Back button */}
         <Link
           href="/"
@@ -42,8 +58,15 @@ export default function ApoiarClient() {
         </Link>
 
         {/* Logo */}
-        <div className="mb-8">
+        <div className="mb-6">
           <Image src="/music_veus_faicon.png" alt="Veus" width={48} height={48} />
+        </div>
+
+        {/* Star badge */}
+        <div className="mb-6 w-16 h-16 rounded-full bg-[#C9A96E]/10 flex items-center justify-center">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="1.5" className="h-8 w-8">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.562.562 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+          </svg>
         </div>
 
         {/* Message */}
@@ -51,12 +74,47 @@ export default function ApoiarClient() {
           Apoiar a Loranne
         </h1>
         <p className="text-sm text-[#a0a0b0] leading-relaxed mb-2">
-          Toda a música é gratuita. Sempre será.
+          Toda a musica e gratuita. Sempre sera.
         </p>
-        <p className="text-sm text-[#a0a0b0] leading-relaxed mb-8">
-          Se alguma faixa te tocou, podes deixar o teu apoio.
-          Cada contribuição ajuda a criar mais música e a manter tudo aberto.
+        <p className="text-sm text-[#a0a0b0] leading-relaxed mb-3">
+          Nao ha paywall, nao ha anuncios, nao ha truques.
+          Apenas uma artista independente a criar com o coracao.
         </p>
+        <p className="text-sm text-[#F5F0E6]/80 leading-relaxed mb-8">
+          Se alguma faixa te tocou, o teu apoio ajuda a criar mais
+          e a manter tudo aberto para quem precisar de ouvir.
+        </p>
+
+        {/* Supporter benefits */}
+        <div className="w-full rounded-2xl bg-[#C9A96E]/5 border border-[#C9A96E]/10 p-4 mb-8">
+          <p className="text-[10px] uppercase tracking-widest text-[#C9A96E]/60 mb-3">Quem apoia recebe</p>
+          <div className="space-y-2 text-left">
+            <div className="flex items-center gap-2.5">
+              <svg viewBox="0 0 24 24" fill="#C9A96E" className="h-3.5 w-3.5 shrink-0">
+                <path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.562.562 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+              </svg>
+              <span className="text-sm text-[#F5F0E6]/80">Distintivo de apoiante na conta</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <svg viewBox="0 0 24 24" fill="#C9A96E" className="h-3.5 w-3.5 shrink-0">
+                <path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.562.562 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+              </svg>
+              <span className="text-sm text-[#F5F0E6]/80">Acesso antecipado a faixas novas</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <svg viewBox="0 0 24 24" fill="#C9A96E" className="h-3.5 w-3.5 shrink-0">
+                <path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.562.562 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+              </svg>
+              <span className="text-sm text-[#F5F0E6]/80">Nome nos creditos (se quiseres)</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <svg viewBox="0 0 24 24" fill="#C9A96E" className="h-3.5 w-3.5 shrink-0">
+                <path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.562.562 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+              </svg>
+              <span className="text-sm text-[#F5F0E6]/80">A gratidao eterna da Loranne</span>
+            </div>
+          </div>
+        </div>
 
         {!method ? (
           <>
@@ -71,7 +129,7 @@ export default function ApoiarClient() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-[#F5F0E6]">M-Pesa</p>
-                  <p className="text-xs text-[#666680]">Envia para {MPESA_NUMBER}</p>
+                  <p className="text-xs text-[#666680]">Mocambique — MZN</p>
                 </div>
               </button>
 
@@ -84,7 +142,7 @@ export default function ApoiarClient() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-[#F5F0E6]">PayPal</p>
-                  <p className="text-xs text-[#666680]">Envia para {PAYPAL_EMAIL}</p>
+                  <p className="text-xs text-[#666680]">Internacional — USD, EUR, BRL</p>
                 </div>
               </button>
             </div>
@@ -100,13 +158,13 @@ export default function ApoiarClient() {
 
             {/* Amount suggestions */}
             <p className="text-[10px] uppercase tracking-widest text-[#666680] mb-3">Valor sugerido (MZN)</p>
-            <div className="grid grid-cols-4 gap-2 mb-6">
-              {AMOUNTS.map(a => (
+            <div className="grid grid-cols-4 gap-2 mb-2">
+              {MZN_AMOUNTS.map(a => (
                 <button
                   key={a}
-                  onClick={() => setSelectedAmount(a)}
+                  onClick={() => setSelectedMzn(a)}
                   className={`py-2.5 rounded-xl text-sm font-medium transition-all ${
-                    selectedAmount === a
+                    selectedMzn === a
                       ? "bg-[#C9A96E]/20 text-[#C9A96E] border border-[#C9A96E]/30"
                       : "bg-white/[0.04] text-[#a0a0b0] border border-white/5 hover:bg-white/[0.08]"
                   }`}
@@ -115,15 +173,19 @@ export default function ApoiarClient() {
                 </button>
               ))}
             </div>
+            {selectedMzn && MZN_IMPACT[selectedMzn] && (
+              <p className="text-xs text-[#C9A96E]/60 mb-4 h-5">{MZN_IMPACT[selectedMzn]}</p>
+            )}
+            {!selectedMzn && <div className="h-5 mb-4" />}
 
             {/* MPesa instructions */}
             <div className="w-full rounded-2xl bg-white/[0.04] border border-white/5 p-5 text-left space-y-4">
               <div>
-                <p className="text-[10px] uppercase tracking-widest text-[#666680] mb-1">Número M-Pesa</p>
+                <p className="text-[10px] uppercase tracking-widest text-[#666680] mb-1">Numero M-Pesa</p>
                 <div className="flex items-center gap-3">
                   <p className="text-xl font-bold text-[#F5F0E6] tracking-wider">{MPESA_NUMBER}</p>
                   <button
-                    onClick={copyMpesa}
+                    onClick={() => copyText(MPESA_NUMBER)}
                     className="px-3 py-1 rounded-lg bg-white/5 text-xs text-[#a0a0b0] hover:text-[#F5F0E6] transition-colors"
                   >
                     {copied ? "Copiado" : "Copiar"}
@@ -134,16 +196,16 @@ export default function ApoiarClient() {
                 <p className="text-[10px] uppercase tracking-widest text-[#666680] mb-1">Nome</p>
                 <p className="text-sm text-[#F5F0E6]">Vivianne dos Santos</p>
               </div>
-              {selectedAmount && (
+              {selectedMzn && (
                 <div>
                   <p className="text-[10px] uppercase tracking-widest text-[#666680] mb-1">Valor</p>
-                  <p className="text-sm text-[#F5F0E6]">{selectedAmount} MZN</p>
+                  <p className="text-sm text-[#F5F0E6]">{selectedMzn} MZN</p>
                 </div>
               )}
               <div className="pt-2 border-t border-white/5">
                 <p className="text-xs text-[#666680]">
-                  Envia via M-Pesa para o número acima.
-                  Qualquer valor é bem-vindo. Obrigada.
+                  Envia via M-Pesa para o numero acima.
+                  Qualquer valor e bem-vindo. Obrigada.
                 </p>
               </div>
             </div>
@@ -157,22 +219,41 @@ export default function ApoiarClient() {
               &larr; Voltar
             </button>
 
+            {/* Amount suggestions (USD) */}
+            <p className="text-[10px] uppercase tracking-widest text-[#666680] mb-3">Valor sugerido (USD)</p>
+            <div className="grid grid-cols-4 gap-2 mb-2">
+              {USD_AMOUNTS.map(a => (
+                <button
+                  key={a}
+                  onClick={() => setSelectedUsd(a)}
+                  className={`py-2.5 rounded-xl text-sm font-medium transition-all ${
+                    selectedUsd === a
+                      ? "bg-[#0070BA]/20 text-[#0070BA] border border-[#0070BA]/30"
+                      : "bg-white/[0.04] text-[#a0a0b0] border border-white/5 hover:bg-white/[0.08]"
+                  }`}
+                >
+                  ${a}
+                </button>
+              ))}
+            </div>
+            {selectedUsd && IMPACT_MESSAGES[selectedUsd] && (
+              <p className="text-xs text-[#0070BA]/60 mb-4 h-5">{IMPACT_MESSAGES[selectedUsd]}</p>
+            )}
+            {!selectedUsd && <div className="h-5 mb-4" />}
+
             {/* PayPal */}
             <div className="w-full rounded-2xl bg-white/[0.04] border border-white/5 p-5 text-left space-y-4">
-              <div>
-                <p className="text-[10px] uppercase tracking-widest text-[#666680] mb-1">PayPal</p>
-                <p className="text-sm text-[#F5F0E6]">{PAYPAL_EMAIL}</p>
-              </div>
               <a
-                href={`https://paypal.me/vivsaraiva`}
+                href={selectedUsd ? `${PAYPAL_LINK}/${selectedUsd}USD` : PAYPAL_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full py-3 rounded-xl bg-[#0070BA] text-white text-sm font-medium text-center transition-all hover:bg-[#005EA6] active:scale-[0.98]"
+                className="block w-full py-3.5 rounded-xl bg-[#0070BA] text-white text-sm font-medium text-center transition-all hover:bg-[#005EA6] active:scale-[0.98]"
               >
-                Abrir PayPal
+                {selectedUsd ? `Enviar $${selectedUsd} via PayPal` : "Abrir PayPal"}
               </a>
               <p className="text-xs text-[#666680] text-center">
-                Qualquer valor. Sem mínimo.
+                Aceita USD, EUR, BRL e outras moedas.
+                Qualquer valor. Sem minimo.
               </p>
             </div>
           </div>
@@ -181,10 +262,36 @@ export default function ApoiarClient() {
         {/* Gratitude */}
         <div className="w-full rounded-2xl bg-white/[0.02] border border-white/5 p-5 mb-8">
           <p className="text-xs text-[#666680] italic text-center leading-relaxed">
-            &ldquo;Cada nota que escrevo é um pedaço de mim que decido partilhar.
-            O teu apoio não paga a música — paga a coragem de continuar.&rdquo;
+            &ldquo;Cada nota que escrevo e um pedaco de mim que decido partilhar.
+            O teu apoio nao paga a musica — paga a coragem de continuar.&rdquo;
           </p>
           <p className="text-[10px] text-[#666680] text-center mt-2">— Loranne</p>
+        </div>
+
+        {/* Transparency */}
+        <div className="w-full mb-8">
+          <p className="text-[10px] uppercase tracking-widest text-[#666680] mb-3 text-center">Para onde vai o teu apoio</p>
+          <div className="space-y-2">
+            {[
+              { label: "Producao musical (audio, masterizacao)", pct: 40 },
+              { label: "Servidores e plataforma", pct: 25 },
+              { label: "Distribuicao nas plataformas de streaming", pct: 20 },
+              { label: "Novas faixas e experiencias", pct: 15 },
+            ].map(item => (
+              <div key={item.label}>
+                <div className="flex justify-between text-xs mb-1">
+                  <span className="text-[#a0a0b0]">{item.label}</span>
+                  <span className="text-[#666680]">{item.pct}%</span>
+                </div>
+                <div className="h-1 rounded-full bg-white/5">
+                  <div
+                    className="h-full rounded-full bg-[#C9A96E]/30"
+                    style={{ width: `${item.pct}%` }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Funnel to main site */}
@@ -195,7 +302,7 @@ export default function ApoiarClient() {
             rel="noopener noreferrer"
             className="block w-full py-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/5 text-sm text-center text-[#a0a0b0] hover:text-[#F5F0E6] transition-all"
           >
-            Conhecer Os Sete Véus
+            Conhecer Os Sete Veus
           </a>
           <Link
             href="/"

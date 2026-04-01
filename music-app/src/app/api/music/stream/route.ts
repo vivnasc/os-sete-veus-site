@@ -15,21 +15,29 @@ async function getAuthUser(req: NextRequest) {
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (!anonKey) return null;
 
-  // Extract token from Authorization header or cookie
+  // Extract token: Authorization header > veus-token cookie > Supabase cookie
   let token: string | null = null;
   const authHeader = req.headers.get("authorization");
   if (authHeader?.startsWith("Bearer ")) {
     token = authHeader.slice(7);
-  } else {
+  }
+  if (!token) {
     const cookie = req.headers.get("cookie");
     if (cookie) {
-      const match = cookie.match(/sb-[^-]+-auth-token=([^;]+)/);
-      if (match) {
-        try {
-          const parsed = JSON.parse(decodeURIComponent(match[1]));
-          token = Array.isArray(parsed) ? parsed[0] : parsed;
-        } catch {
-          token = decodeURIComponent(match[1]);
+      // Check app-specific cookie first (set by AuthGate from localStorage session)
+      const veusMatch = cookie.match(/veus-token=([^;]+)/);
+      if (veusMatch) {
+        token = decodeURIComponent(veusMatch[1]);
+      } else {
+        // Fallback to Supabase cookie (if using @supabase/ssr)
+        const sbMatch = cookie.match(/sb-[^-]+-auth-token=([^;]+)/);
+        if (sbMatch) {
+          try {
+            const parsed = JSON.parse(decodeURIComponent(sbMatch[1]));
+            token = Array.isArray(parsed) ? parsed[0] : parsed;
+          } catch {
+            token = decodeURIComponent(sbMatch[1]);
+          }
         }
       }
     }

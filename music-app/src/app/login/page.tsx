@@ -61,18 +61,18 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0D0D1A] flex flex-col items-center justify-center px-6">
-      <Link href="/" className="mb-10">
-        <Image
-          src="/veus_music_favicon-192.png"
-          alt="Véus"
-          width={64}
-          height={64}
-          className="h-16 w-16"
-        />
-      </Link>
+    <div className="min-h-screen bg-[#0D0D1A] flex flex-col items-center justify-center px-6 py-12">
+      <div style={{ width: "100%", maxWidth: "24rem" }} className="mx-auto flex flex-col items-center">
+        <Link href="/" className="mb-10">
+          <Image
+            src="/veus_music_favicon-192.png"
+            alt="Véus"
+            width={64}
+            height={64}
+            className="h-16 w-16"
+          />
+        </Link>
 
-      <div className="max-w-sm w-full">
         <h1 className="font-display text-2xl font-semibold text-[#F5F0E6] text-center mb-2">
           Entra na tua biblioteca
         </h1>
@@ -80,7 +80,7 @@ export default function LoginPage() {
           Guarda favoritos, ouve offline e reencontra o que já ouviste.
         </p>
 
-        <form onSubmit={handleLogin} className="space-y-4">
+        <form onSubmit={handleLogin} className="space-y-4 w-full">
           <div>
             <label htmlFor="email" className="block text-xs text-[#a0a0b0] mb-1.5">
               Email
