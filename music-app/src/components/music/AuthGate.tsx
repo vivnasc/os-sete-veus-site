@@ -8,21 +8,9 @@ import { supabase } from "@/lib/supabase";
  * Requires authentication to use the app.
  * Public routes (login, register, share pages) are exempt.
  * Music is free but you need an account to listen.
- *
- * Also syncs the Supabase access token to a cookie so that
- * <audio> elements (which can't send custom headers) can
- * authenticate with the stream proxy.
  */
 
 const PUBLIC_ROUTES = ["/login", "/registar", "/partilha", "/o/", "/apoiar"];
-
-function syncTokenCookie(accessToken: string | null) {
-  if (accessToken) {
-    document.cookie = `veus-token=${accessToken}; path=/; max-age=3600; SameSite=Lax`;
-  } else {
-    document.cookie = "veus-token=; path=/; max-age=0; SameSite=Lax";
-  }
-}
 
 export default function AuthGate({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -39,19 +27,16 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    supabase.auth.getSession().then(({ data }) => {
-      if (data.session?.user) {
+    supabase.auth.getUser().then(({ data }) => {
+      if (data.user) {
         setAuthed(true);
-        syncTokenCookie(data.session.access_token);
       } else {
-        syncTokenCookie(null);
         router.replace("/login");
       }
       setChecked(true);
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      syncTokenCookie(session?.access_token || null);
       if (session?.user) {
         setAuthed(true);
       } else if (!isPublic) {

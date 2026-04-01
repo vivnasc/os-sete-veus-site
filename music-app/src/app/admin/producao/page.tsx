@@ -15,13 +15,6 @@ import {
 } from "@/data/albums";
 import { getAlbumCover } from "@/lib/album-covers";
 import { adminFetch } from "@/lib/admin-fetch";
-import { supabase } from "@/lib/supabase";
-
-/** Get auth headers for stream endpoint */
-async function getStreamAuthHeaders(): Promise<HeadersInit> {
-  const { data: { session } } = await supabase.auth.getSession();
-  return session?.access_token ? { Authorization: `Bearer ${session.access_token}` } : {};
-}
 
 /** Read ID3 title from an MP3 File */
 async function readId3Title(file: File): Promise<string | null> {
@@ -381,23 +374,23 @@ function ClipApprovalRow({
                   const t = alb.tracks.find(tr => tr.number === trackNumber);
                   if (!t) throw new Error("Faixa nao encontrada");
                   const audioSrc = `/api/music/stream?album=${encodeURIComponent(albumSlug)}&track=${trackNumber}`;
-                  const authHeaders = await getStreamAuthHeaders();
                   const blob = await generateReel(t, alb, clip.imageUrl!, audioSrc, (p) => {
                     btn.textContent = p.message;
-                  }, undefined, authHeaders);
+                  });
                   btn.textContent = "A enviar...";
-                  const safeAlbum = albumSlug.replace(/[^a-z0-9-]/g, "");
-                  const safeTrack = String(trackNumber).padStart(2, "0");
-                  const ext = blob.type.includes("mp4") ? "mp4" : "webm";
-                  const reelFilename = `albums/${safeAlbum}/faixa-${safeTrack}-reel.${ext}`;
-                  const videoUrl = await uploadViaSignedUrl(blob, reelFilename);
-                  {
+                  const form = new FormData();
+                  form.append("albumSlug", albumSlug);
+                  form.append("trackNumber", String(trackNumber));
+                  form.append("video", blob, blob.type.includes("mp4") ? "reel.mp4" : "reel.webm");
+                  const res = await adminFetch("/api/admin/upload-reel", { method: "POST", body: form });
+                  const data = await res.json();
+                  if (data.ok) {
                     btn.textContent = "Reel OK!";
                     const parent = btn.parentElement;
-                    if (parent && videoUrl) {
+                    if (parent && data.videoUrl) {
                       // Store blob for direct sharing
                       const reelBlob = blob;
-                      const reelUrl = videoUrl;
+                      const reelUrl = data.videoUrl;
 
                       const container = document.createElement("div");
                       container.style.cssText = "margin-top:6px";
@@ -462,7 +455,7 @@ function ClipApprovalRow({
                       container.appendChild(actions);
                       parent.appendChild(container);
                     }
-                  }
+                  } else throw new Error(data.erro || "Falhou");
                 } catch (e) {
                   btn.textContent = "Erro";
                   alert(String(e));
@@ -764,7 +757,7 @@ function TrackRow({
             </details>
           )}
 
-          {error && <p className="mt-2 text-xs text-red-500 break-all">{error}</p>}
+          {error && <p className="mt-2 text-xs text-red-500">{error}</p>}
 
           {/* Current audio */}
           {audioUrl && !hasClips && (
@@ -1037,28 +1030,32 @@ function TrackRow({
                 } catch {}
 
                 const audioSrc = `/api/music/stream?album=${encodeURIComponent(albumSlug)}&track=${track.number}`;
-                const authHeaders = await getStreamAuthHeaders();
 
                 const blob = await generateReel(track, alb, coverSrc, audioSrc, (p) => {
                   btn.textContent = p.message;
-                }, undefined, authHeaders);
+                });
 
                 btn.textContent = "A enviar...";
 
-                const safeAlb = albumSlug.replace(/[^a-z0-9-]/g, "");
-                const safeTrk = String(track.number).padStart(2, "0");
-                const reelExt = blob.type.includes("mp4") ? "mp4" : "webm";
-                const reelPath = `albums/${safeAlb}/faixa-${safeTrk}-reel.${reelExt}`;
-                const reelVideoUrl = await uploadViaSignedUrl(blob, reelPath);
+                const form = new FormData();
+                form.append("albumSlug", albumSlug);
+                form.append("trackNumber", String(track.number));
+                form.append("video", blob, blob.type.includes("mp4") ? "reel.mp4" : "reel.webm");
 
-                {
+                const res = await adminFetch("/api/admin/upload-reel", {
+                  method: "POST",
+                  body: form,
+                });
+                const data = await res.json();
+
+                if (data.ok && data.videoUrl) {
                   btn.textContent = "Reel guardado!";
                   if (resultDiv) {
                     resultDiv.innerHTML = "";
                     const reelBlob = blob;
 
                     const vid = document.createElement("video");
-                    vid.src = reelVideoUrl;
+                    vid.src = data.videoUrl;
                     vid.controls = true;
                     vid.playsInline = true;
                     vid.muted = true;
@@ -1149,7 +1146,7 @@ function TrackRow({
 
                     // Download
                     const dl = document.createElement("a");
-                    dl.href = reelVideoUrl;
+                    dl.href = data.videoUrl;
                     dl.download = `${track.title} — Loranne.mp4`;
                     dl.textContent = "Guardar";
                     dl.style.cssText = "font-size:11px;padding:4px 12px;border-radius:6px;background:rgba(255,255,255,0.05);color:#a0a0b0;border:1px solid rgba(255,255,255,0.1);text-decoration:none";
@@ -1172,6 +1169,8 @@ function TrackRow({
                     actions.appendChild(del);
                     resultDiv.appendChild(actions);
                   }
+                } else {
+                  throw new Error(data.erro || "Upload falhou");
                 }
               } catch (e) {
                 btn.textContent = "Erro";
@@ -1693,7 +1692,7 @@ export default function AlbumProductionPage() {
     <div className="min-h-screen bg-mundo-bg">
       {/* Header */}
       <div className="border-b border-mundo-muted-dark/30 bg-mundo-bg-light/50">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 py-8 overflow-x-hidden">
+        <div className="mx-auto max-w-5xl px-6 py-8">
           <Link
             href="/"
             className="mb-4 inline-block text-sm text-mundo-muted hover:text-mundo-creme"
@@ -1750,7 +1749,7 @@ export default function AlbumProductionPage() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 py-10 overflow-x-hidden">
+      <div className="mx-auto max-w-5xl px-6 py-10">
         {/* Filter + View Mode */}
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
           <ProductFilter active={filter} onChange={setFilter} />
