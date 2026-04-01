@@ -366,7 +366,7 @@ export async function generateReel(
       bitrate: 128000,
     });
 
-    // Extract audio samples for the reel duration
+    // Extract audio samples for the reel duration (planar layout)
     const channels = audioBuffer.numberOfChannels;
     const sampleRate = audioBuffer.sampleRate;
     const startSample = Math.floor(startOffset * sampleRate);
@@ -377,7 +377,7 @@ export async function generateReel(
       for (let i = 0; i < numSamples; i++) {
         const srcIdx = startSample + i;
         if (srcIdx < channelData.length) {
-          audioData[i * channels + ch] = channelData[srcIdx];
+          audioData[ch * numSamples + i] = channelData[srcIdx];
         }
       }
     }
@@ -385,13 +385,17 @@ export async function generateReel(
     const chunkSize = sampleRate; // 1 second chunks
     for (let offset = 0; offset < numSamples; offset += chunkSize) {
       const size = Math.min(chunkSize, numSamples - offset);
+      const planarChunk = new Float32Array(size * channels);
+      for (let ch = 0; ch < channels; ch++) {
+        planarChunk.set(audioData.subarray(ch * numSamples + offset, ch * numSamples + offset + size), ch * size);
+      }
       const chunk = new AudioData({
         format: "f32-planar" as AudioSampleFormat,
         sampleRate,
         numberOfFrames: size,
         numberOfChannels: channels,
         timestamp: (offset / sampleRate) * 1_000_000,
-        data: audioData.slice(offset * channels, (offset + size) * channels),
+        data: planarChunk,
       });
       audioEncoder.encode(chunk);
       chunk.close();
