@@ -18,10 +18,17 @@
 import type { Experience } from "@/data/experiences";
 import type { NosBook } from "@/data/nos-collection";
 
-const REEL_W = 1080;
-const REEL_H = 1920;
+export type ReelFormat = "reels" | "status";
+
+const FORMATS: Record<ReelFormat, { w: number; h: number; label: string }> = {
+  reels: { w: 1080, h: 1350, label: "Instagram Reels (4:5)" },
+  status: { w: 1080, h: 1920, label: "WhatsApp Status (9:16)" },
+};
+
 const FPS = 24;
 const REEL_DURATION = 15;
+
+export { FORMATS };
 
 export type LaunchReelProgress = {
   phase: "loading" | "recording" | "finalizing" | "done" | "error";
@@ -34,8 +41,9 @@ export type LaunchReelOptions = {
   nos?: NosBook | null;
   coverSrc: string;
   nosCoverSrc?: string | null;
-  audioSrc?: string | null; // URL to audio file (from Supabase storage)
+  audioSrc?: string | null;
   tagline?: string;
+  format?: ReelFormat;
   onProgress?: (p: LaunchReelProgress) => void;
 };
 
@@ -78,10 +86,10 @@ function wrapText(ctx: CanvasRenderingContext2D, text: string, maxWidth: number)
 
 type Particle = { x: number; y: number; r: number; speed: number; opacity: number; phase: number };
 
-function createParticles(count: number): Particle[] {
+function createParticles(count: number, w: number, h: number): Particle[] {
   return Array.from({ length: count }, () => ({
-    x: Math.random() * REEL_W,
-    y: Math.random() * REEL_H,
+    x: Math.random() * w,
+    y: Math.random() * h,
     r: 1 + Math.random() * 2.5,
     speed: 0.2 + Math.random() * 0.5,
     opacity: 0.08 + Math.random() * 0.25,
@@ -92,8 +100,11 @@ function createParticles(count: number): Particle[] {
 // --- Main generator ---
 
 export async function generateLaunchReel(options: LaunchReelOptions): Promise<Blob> {
-  const { experience, nos, coverSrc, nosCoverSrc, audioSrc, tagline, onProgress } = options;
+  const { experience, nos, coverSrc, nosCoverSrc, audioSrc, tagline, format = "reels", onProgress } = options;
   const color = experience.color;
+  const fmt = FORMATS[format];
+  const REEL_W = fmt.w;
+  const REEL_H = fmt.h;
 
   const report = (phase: LaunchReelProgress["phase"], progress: number, message: string) => {
     onProgress?.({ phase, progress, message });
@@ -127,18 +138,25 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
   canvas.height = REEL_H;
   const ctx = canvas.getContext("2d")!;
 
-  const particles = createParticles(25);
+  const particles = createParticles(25, REEL_W, REEL_H);
   const displayTagline = tagline || experience.description;
 
+  // Scale factor relative to 1920 height (status format)
+  const isCompact = format === "reels"; // 4:5 has less vertical space
+  const coverScale = isCompact ? 0.35 : 0.48;
+
   // Book cover dimensions (3:4 ratio, portrait)
-  const coverW = Math.round(REEL_W * 0.48);
+  const coverW = Math.round(REEL_W * coverScale);
   const coverH = Math.round(coverW * 1.5);
   const coverX = (REEL_W - coverW) / 2;
-  const coverY = Math.round(REEL_H * 0.06);
+  const coverY = Math.round(REEL_H * 0.05);
 
   // Nó mini cover
-  const nosW = 60;
-  const nosH = 90;
+  const nosW = isCompact ? 50 : 60;
+  const nosH = isCompact ? 75 : 90;
+
+  // Font scaling for compact format
+  const fs = (size: number) => isCompact ? Math.round(size * 0.85) : size;
 
   function drawFrame(elapsed: number) {
     const t = elapsed / REEL_DURATION;
@@ -211,14 +229,15 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
 
     // --- Text area ---
     ctx.textAlign = "center";
-    const textBaseY = coverY + coverH + 60;
+    const textBaseY = coverY + coverH + (isCompact ? 35 : 60);
+    const gap = isCompact ? 0.75 : 1; // vertical spacing multiplier
 
     // "ESPELHO 3 DE 7" label (0.5-2s)
     const labelProgress = clamp((elapsed - 0.5) / 1, 0, 1);
     if (labelProgress > 0) {
       const slideUp = 15 * (1 - easeInOut(labelProgress));
       ctx.globalAlpha = labelProgress;
-      ctx.font = "500 22px sans-serif";
+      ctx.font = `500 ${fs(22)}px sans-serif`;
       ctx.letterSpacing = "6px";
       ctx.fillStyle = color;
       ctx.fillText(`ESPELHO ${experience.number} DE 7`, REEL_W / 2, textBaseY + slideUp);
@@ -230,11 +249,11 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
     if (titleProgress > 0) {
       const slideUp = 25 * (1 - easeInOut(titleProgress));
       ctx.globalAlpha = titleProgress;
-      ctx.font = "bold 52px 'Cormorant Garamond', Georgia, serif";
+      ctx.font = `bold ${fs(52)}px 'Cormorant Garamond', Georgia, serif`;
       ctx.fillStyle = "#F5F0E6";
       const titleLines = wrapText(ctx, experience.title, REEL_W - 100);
-      let y = textBaseY + 70 + slideUp;
-      for (const line of titleLines) { ctx.fillText(line, REEL_W / 2, y); y += 62; }
+      let y = textBaseY + Math.round(60 * gap) + slideUp;
+      for (const line of titleLines) { ctx.fillText(line, REEL_W / 2, y); y += Math.round(58 * gap); }
     }
 
     // Subtitle (3.5-5s)
@@ -242,9 +261,9 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
     if (subProgress > 0) {
       const slideUp = 20 * (1 - easeInOut(subProgress));
       ctx.globalAlpha = subProgress;
-      ctx.font = "italic 30px 'Cormorant Garamond', Georgia, serif";
+      ctx.font = `italic ${fs(30)}px 'Cormorant Garamond', Georgia, serif`;
       ctx.fillStyle = color + "dd";
-      ctx.fillText(experience.subtitle, REEL_W / 2, textBaseY + 160 + slideUp);
+      ctx.fillText(experience.subtitle, REEL_W / 2, textBaseY + Math.round(140 * gap) + slideUp);
     }
 
     // Tagline / description (5.5-8s)
@@ -253,11 +272,11 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
     if (tagProgress > 0 && tagFadeOut > 0) {
       const slideUp = 20 * (1 - easeInOut(tagProgress));
       ctx.globalAlpha = tagProgress * tagFadeOut;
-      ctx.font = "italic 26px 'Cormorant Garamond', Georgia, serif";
+      ctx.font = `italic ${fs(26)}px 'Cormorant Garamond', Georgia, serif`;
       ctx.fillStyle = "#c0b8a8";
       const tagLines = wrapText(ctx, `"${displayTagline}"`, REEL_W - 140);
-      let y = textBaseY + 240 + slideUp;
-      for (const line of tagLines) { ctx.fillText(line, REEL_W / 2, y); y += 36; }
+      let y = textBaseY + Math.round(210 * gap) + slideUp;
+      for (const line of tagLines) { ctx.fillText(line, REEL_W / 2, y); y += Math.round(34 * gap); }
     }
 
     // Nó teaser (8-10.5s)
@@ -267,7 +286,7 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
       if (nosProgress > 0 && nosFadeOut > 0) {
         const alpha = nosProgress * nosFadeOut;
         const slideUp = 15 * (1 - easeInOut(nosProgress));
-        const nosY = textBaseY + 280 + slideUp;
+        const nosY = textBaseY + Math.round(250 * gap) + slideUp;
 
         // Background card
         ctx.save();
@@ -290,13 +309,13 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
         // Nó text
         ctx.globalAlpha = alpha;
         ctx.textAlign = "left";
-        ctx.font = "500 18px sans-serif";
+        ctx.font = `500 ${fs(18)}px sans-serif`;
         ctx.fillStyle = nos.color;
         ctx.fillText("NO CORRESPONDENTE", REEL_W / 2 - 145, nosY + 22);
-        ctx.font = "italic 24px 'Cormorant Garamond', Georgia, serif";
+        ctx.font = `italic ${fs(24)}px 'Cormorant Garamond', Georgia, serif`;
         ctx.fillStyle = "#F5F0E6";
         ctx.fillText(nos.title, REEL_W / 2 - 145, nosY + 52);
-        ctx.font = "16px sans-serif";
+        ctx.font = `${fs(16)}px sans-serif`;
         ctx.fillStyle = "#888";
         ctx.fillText(nos.subtitle, REEL_W / 2 - 145, nosY + 76);
         ctx.textAlign = "center";
@@ -310,42 +329,43 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
       ctx.globalAlpha = ctaProgress;
 
       // Pill button
-      const btnW = 420;
-      const btnH = 60;
+      const btnW = isCompact ? 360 : 420;
+      const btnH = isCompact ? 50 : 60;
       const btnX = (REEL_W - btnW) / 2;
-      const btnY = REEL_H - 260 + slideUp;
+      const btnY = REEL_H - (isCompact ? 180 : 260) + slideUp;
 
       ctx.fillStyle = color;
       ctx.beginPath();
       ctx.roundRect(btnX, btnY, btnW, btnH, 30);
       ctx.fill();
 
-      ctx.font = "600 24px sans-serif";
+      ctx.font = `600 ${fs(24)}px sans-serif`;
       ctx.fillStyle = "#0D0D1A";
       ctx.letterSpacing = "3px";
-      ctx.fillText("DISPONIVEL AGORA", REEL_W / 2, btnY + 40);
+      ctx.fillText("DISPONIVEL AGORA", REEL_W / 2, btnY + (isCompact ? 33 : 40));
       ctx.letterSpacing = "0px";
     }
 
     // URL + branding (11.5-13s)
+    const brandOffset = isCompact ? 80 : 130;
     const brandProgress = clamp((elapsed - 11.5) / 1, 0, 1);
     if (brandProgress > 0) {
       ctx.globalAlpha = brandProgress;
-      ctx.font = "400 22px sans-serif";
+      ctx.font = `400 ${fs(22)}px sans-serif`;
       ctx.fillStyle = "#888";
-      ctx.fillText("seteveus.space", REEL_W / 2, REEL_H - 130);
+      ctx.fillText("seteveus.space", REEL_W / 2, REEL_H - brandOffset);
 
       // Decorative line
       ctx.strokeStyle = color + "40";
       ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.moveTo(REEL_W / 2 - 50, REEL_H - 90);
-      ctx.lineTo(REEL_W / 2 + 50, REEL_H - 90);
+      ctx.moveTo(REEL_W / 2 - 50, REEL_H - brandOffset + 40);
+      ctx.lineTo(REEL_W / 2 + 50, REEL_H - brandOffset + 40);
       ctx.stroke();
 
-      ctx.font = "italic 20px 'Cormorant Garamond', Georgia, serif";
+      ctx.font = `italic ${fs(20)}px 'Cormorant Garamond', Georgia, serif`;
       ctx.fillStyle = "#666";
-      ctx.fillText("Vivianne dos Santos", REEL_W / 2, REEL_H - 65);
+      ctx.fillText("Vivianne dos Santos", REEL_W / 2, REEL_H - brandOffset + 65);
     }
 
     // Fade in (first 1s)

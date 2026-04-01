@@ -8,7 +8,9 @@ import { getNosCollectionLive, type NosBook } from "@/data/nos-collection";
 import { supabase } from "@/lib/supabase";
 import {
   generateLaunchReel,
+  FORMATS,
   type LaunchReelProgress,
+  type ReelFormat,
 } from "@/lib/launch-reel-generator";
 
 const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
@@ -41,6 +43,7 @@ export default function AdminReelsPage() {
   const [selectedTrack, setSelectedTrack] = useState<string>("");
   const [localAudioUrl, setLocalAudioUrl] = useState<string>("");
   const [loadingTracks, setLoadingTracks] = useState(false);
+  const [reelFormat, setReelFormat] = useState<ReelFormat>("reels");
   const [tagline, setTagline] = useState("");
   const [progress, setProgress] = useState<LaunchReelProgress | null>(null);
   const [reelBlob, setReelBlob] = useState<Blob | null>(null);
@@ -146,6 +149,7 @@ export default function AdminReelsPage() {
         nosCoverSrc: nos?.image || null,
         audioSrc: localAudioUrl || selectedTrack || null,
         tagline: tagline || undefined,
+        format: reelFormat,
         onProgress: setProgress,
       });
 
@@ -333,6 +337,29 @@ export default function AdminReelsPage() {
               rows={2}
               className="mt-1 w-full rounded-lg border border-brown-700 bg-brown-800 px-4 py-3 text-cream placeholder:text-brown-600"
             />
+          </div>
+        )}
+
+        {/* Format selector */}
+        {selectedSlug && (
+          <div className="mt-6">
+            <label className="block text-sm text-brown-400">Formato</label>
+            <div className="mt-2 flex gap-3">
+              {(Object.entries(FORMATS) as [ReelFormat, typeof FORMATS[ReelFormat]][]).map(([key, fmt]) => (
+                <button
+                  key={key}
+                  onClick={() => setReelFormat(key)}
+                  className={`flex-1 rounded-lg border px-4 py-3 text-left transition-colors ${
+                    reelFormat === key
+                      ? "border-cream/40 bg-brown-700 text-cream"
+                      : "border-brown-700 bg-brown-800 text-brown-400 hover:border-brown-600"
+                  }`}
+                >
+                  <p className="text-sm font-medium">{fmt.label}</p>
+                  <p className="text-xs opacity-60">{fmt.w}x{fmt.h}</p>
+                </button>
+              ))}
+            </div>
           </div>
         )}
 
