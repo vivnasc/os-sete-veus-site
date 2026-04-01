@@ -112,6 +112,7 @@ export type DownloadProgress = {
 export async function downloadAlbumForDistribution(
   album: Album,
   onProgress?: (p: DownloadProgress) => void,
+  getTitle?: (slug: string, num: number, fallback: string) => string,
 ): Promise<void> {
   const zip = new JSZip();
   const total = album.tracks.length;
@@ -122,18 +123,17 @@ export async function downloadAlbumForDistribution(
   for (let i = 0; i < album.tracks.length; i++) {
     const track = album.tracks[i];
     const padNum = String(track.number).padStart(2, "0");
-    onProgress?.({ phase: `A converter faixa ${padNum} — ${track.title}`, current: i + 1, total: total + 2 });
+    const title = getTitle ? getTitle(album.slug, track.number, track.title) : track.title;
+    onProgress?.({ phase: `A converter faixa ${padNum} — ${title}`, current: i + 1, total: total + 2 });
 
     const streamUrl = `/api/music/stream?album=${encodeURIComponent(album.slug)}&track=${track.number}`;
     const mp3Res = await fetch(streamUrl);
-    if (!mp3Res.ok) {
-      // Skip tracks without audio
-      continue;
-    }
+    if (!mp3Res.ok) continue;
     const mp3Blob = await mp3Res.blob();
     const wavBlob = await mp3ToWav(mp3Blob);
 
-    zip.file(`${folderName}/${padNum} - ${track.title}.wav`, wavBlob);
+    const safeTitle = title.replace(/[<>:"/\\|?*]/g, "-");
+    zip.file(`${folderName}/${padNum} - ${safeTitle}.wav`, wavBlob);
   }
 
   // 2. Cover image (3000x3000)
@@ -155,7 +155,10 @@ export async function downloadAlbumForDistribution(
     `Ano: ${new Date().getFullYear()}`,
     ``,
     `Faixas:`,
-    ...album.tracks.map(t => `${String(t.number).padStart(2, "0")}. ${t.title} (${t.lang === "PT" ? "Português" : "English"}) — ${Math.floor(t.durationSeconds / 60)}:${String(t.durationSeconds % 60).padStart(2, "0")}`),
+    ...album.tracks.map(t => {
+      const title = getTitle ? getTitle(album.slug, t.number, t.title) : t.title;
+      return `${String(t.number).padStart(2, "0")}. ${title} (${t.lang === "PT" ? "Português" : "English"}) — ${Math.floor(t.durationSeconds / 60)}:${String(t.durationSeconds % 60).padStart(2, "0")}`;
+    }),
     ``,
     `Distribuido via DistroKid`,
     `© ${new Date().getFullYear()} ${artistName}`,

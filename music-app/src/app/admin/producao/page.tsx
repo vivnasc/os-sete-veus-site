@@ -1999,9 +1999,17 @@ export default function AlbumProductionPage() {
                   btn.disabled = true;
                   try {
                     const { downloadAlbumForDistribution } = await import("@/lib/album-download");
+                    // Fetch custom titles
+                    let titleMap: Record<string, string> = {};
+                    try {
+                      const titlesRes = await fetch("/api/music/titles");
+                      const titlesData = await titlesRes.json();
+                      titleMap = titlesData.titles || {};
+                    } catch {}
+                    const getTitle = (slug: string, num: number, fallback: string) => titleMap[`${slug}-t${num}`] || fallback;
                     await downloadAlbumForDistribution(album, (p) => {
                       btn.textContent = `${p.phase} (${p.current}/${p.total})`;
-                    });
+                    }, getTitle);
                     btn.textContent = "ZIP pronto!";
                   } catch (e) {
                     btn.textContent = "Erro";
