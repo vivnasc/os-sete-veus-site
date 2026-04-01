@@ -334,7 +334,7 @@ export async function generateReel(
       error: () => {},
     });
     encoder.configure({
-      codec: "avc1.42001f",
+      codec: "avc1.640028",
       width: REEL_W,
       height: REEL_H,
       bitrate: 4_000_000,
