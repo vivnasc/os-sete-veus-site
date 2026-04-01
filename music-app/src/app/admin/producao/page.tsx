@@ -141,6 +141,15 @@ async function uploadViaSignedUrl(blob: Blob, filename: string): Promise<string>
   return `${supabaseUrl}/storage/v1/object/public/audios/${filename}`;
 }
 
+/** Upload reel via signed URL (bypasses Vercel 4.5MB limit) */
+async function uploadReelDirect(blob: Blob, albumSlug: string, trackNumber: number): Promise<string> {
+  const safeAlbum = albumSlug.replace(/[^a-z0-9-]/g, "");
+  const safeTrack = String(trackNumber).padStart(2, "0");
+  const ext = blob.type.includes("mp4") ? "mp4" : "webm";
+  const filename = `albums/${safeAlbum}/faixa-${safeTrack}-reel.${ext}`;
+  return uploadViaSignedUrl(blob, filename);
+}
+
 function ProductFilter({
   active,
   onChange,
@@ -381,16 +390,13 @@ function ClipApprovalRow({
                   const form = new FormData();
                   form.append("albumSlug", albumSlug);
                   form.append("trackNumber", String(trackNumber));
-                  form.append("video", blob, blob.type.includes("mp4") ? "reel.mp4" : "reel.webm");
-                  const res = await adminFetch("/api/admin/upload-reel", { method: "POST", body: form });
-                  const data = await res.json();
-                  if (data.ok) {
+                  const videoUrl = await uploadReelDirect(blob, albumSlug, trackNumber);
+                  {
                     btn.textContent = "Reel OK!";
                     const parent = btn.parentElement;
-                    if (parent && data.videoUrl) {
-                      // Store blob for direct sharing
+                    if (parent && videoUrl) {
                       const reelBlob = blob;
-                      const reelUrl = data.videoUrl;
+                      const reelUrl = videoUrl;
 
                       const container = document.createElement("div");
                       container.style.cssText = "margin-top:6px;max-width:180px";
@@ -455,7 +461,7 @@ function ClipApprovalRow({
                       container.appendChild(actions);
                       parent.appendChild(container);
                     }
-                  } else throw new Error(data.erro || "Falhou");
+                  }
                 } catch (e) {
                   btn.textContent = "Erro";
                   alert(String(e));
@@ -1041,24 +1047,16 @@ function TrackRow({
                 btn.textContent = "A enviar...";
 
                 const form = new FormData();
-                form.append("albumSlug", albumSlug);
-                form.append("trackNumber", String(track.number));
-                form.append("video", blob, blob.type.includes("mp4") ? "reel.mp4" : "reel.webm");
+                const reelVideoUrl = await uploadReelDirect(blob, albumSlug, track.number);
 
-                const res = await adminFetch("/api/admin/upload-reel", {
-                  method: "POST",
-                  body: form,
-                });
-                const data = await res.json();
-
-                if (data.ok && data.videoUrl) {
+                {
                   btn.textContent = "Reel guardado!";
                   if (resultDiv) {
                     resultDiv.innerHTML = "";
                     const reelBlob = blob;
 
                     const vid = document.createElement("video");
-                    vid.src = data.videoUrl;
+                    vid.src = reelVideoUrl;
                     vid.controls = true;
                     vid.playsInline = true;
                     vid.muted = true;
@@ -1149,7 +1147,7 @@ function TrackRow({
 
                     // Download
                     const dl = document.createElement("a");
-                    dl.href = data.videoUrl;
+                    dl.href = reelVideoUrl;
                     dl.download = `${track.title} — Loranne.mp4`;
                     dl.textContent = "Guardar";
                     dl.style.cssText = "font-size:11px;padding:4px 12px;border-radius:6px;background:rgba(255,255,255,0.05);color:#a0a0b0;border:1px solid rgba(255,255,255,0.1);text-decoration:none";
@@ -1172,8 +1170,6 @@ function TrackRow({
                     actions.appendChild(del);
                     resultDiv.appendChild(actions);
                   }
-                } else {
-                  throw new Error(data.erro || "Upload falhou");
                 }
               } catch (e) {
                 btn.textContent = "Erro";
@@ -2103,6 +2099,61 @@ export default function AlbumProductionPage() {
                 </div>
               );
             })()}
+
+            {/* Bulk reel generation */}
+            <div className="mb-4 flex items-center gap-2 flex-wrap">
+              {(["status", "insta"] as const).map((reelType) => (
+                <button
+                  key={reelType}
+                  id={`bulk-reel-${reelType}-${album.slug}`}
+                  onClick={async () => {
+                    const btn = document.getElementById(`bulk-reel-${reelType}-${album.slug}`) as HTMLButtonElement;
+                    if (!btn) return;
+                    btn.disabled = true;
+
+                    const { generateReel, REEL_SIZE_STATUS, REEL_SIZE_INSTA } = await import("@/lib/reel-generator");
+                    const { getAlbumCover, getTrackCoverUrl } = await import("@/lib/album-covers");
+                    const reelSize = reelType === "insta" ? REEL_SIZE_INSTA : REEL_SIZE_STATUS;
+                    const alb = ALL_ALBUMS.find(a => a.slug === album.slug);
+                    if (!alb) { btn.disabled = false; return; }
+
+                    const tracksWithAudio = alb.tracks.filter(t => t.audioUrl);
+                    let done = 0;
+                    let errors = 0;
+
+                    for (const t of tracksWithAudio) {
+                      btn.textContent = `${done}/${tracksWithAudio.length}...`;
+                      try {
+                        let coverSrc = getAlbumCover(alb);
+                        try {
+                          const tcUrl = getTrackCoverUrl(album.slug, t.number);
+                          const probe = await fetch(tcUrl, { method: "HEAD" });
+                          if (probe.ok) coverSrc = tcUrl;
+                        } catch {}
+
+                        const audioSrc = `/api/music/stream?album=${encodeURIComponent(album.slug)}&track=${t.number}`;
+                        const blob = await generateReel(t, alb, coverSrc, audioSrc, (p) => {
+                          btn.textContent = `${done}/${tracksWithAudio.length} — ${p.message}`;
+                        }, undefined, reelSize);
+
+                        await uploadReelDirect(blob, album.slug, t.number);
+                        done++;
+                      } catch {
+                        errors++;
+                      }
+                    }
+
+                    btn.textContent = `${done} reels${errors ? ` (${errors} erros)` : ""}`;
+                    btn.disabled = false;
+                    setTimeout(() => { btn.textContent = reelType === "status" ? "Reels Status" : "Reels Insta"; }, 4000);
+                  }}
+                  className="rounded-lg bg-violet-900/30 px-3 py-1.5 text-xs text-violet-400 hover:bg-violet-900/50 transition"
+                >
+                  {reelType === "status" ? "Reels Status" : "Reels Insta"}
+                </button>
+              ))}
+              <span className="text-[10px] text-mundo-muted">Gera reels para todas as faixas com audio</span>
+            </div>
 
             <div className="space-y-3">
               {album.tracks.map((track) => {
