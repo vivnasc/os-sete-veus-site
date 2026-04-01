@@ -386,20 +386,18 @@ function ClipApprovalRow({
                     btn.textContent = p.message;
                   }, undefined, authHeaders);
                   btn.textContent = "A enviar...";
-                  const form = new FormData();
-                  form.append("albumSlug", albumSlug);
-                  form.append("trackNumber", String(trackNumber));
-                  form.append("video", blob, blob.type.includes("mp4") ? "reel.mp4" : "reel.webm");
-                  const res = await adminFetch("/api/admin/upload-reel", { method: "POST", body: form });
-                  if (!res.ok) throw new Error(`Upload falhou: ${res.status} ${res.statusText}`);
-                  const data = await res.json();
-                  if (data.ok) {
+                  const safeAlbum = albumSlug.replace(/[^a-z0-9-]/g, "");
+                  const safeTrack = String(trackNumber).padStart(2, "0");
+                  const ext = blob.type.includes("mp4") ? "mp4" : "webm";
+                  const reelFilename = `albums/${safeAlbum}/faixa-${safeTrack}-reel.${ext}`;
+                  const videoUrl = await uploadViaSignedUrl(blob, reelFilename);
+                  {
                     btn.textContent = "Reel OK!";
                     const parent = btn.parentElement;
-                    if (parent && data.videoUrl) {
+                    if (parent && videoUrl) {
                       // Store blob for direct sharing
                       const reelBlob = blob;
-                      const reelUrl = data.videoUrl;
+                      const reelUrl = videoUrl;
 
                       const container = document.createElement("div");
                       container.style.cssText = "margin-top:6px";
@@ -464,7 +462,7 @@ function ClipApprovalRow({
                       container.appendChild(actions);
                       parent.appendChild(container);
                     }
-                  } else throw new Error(data.erro || "Falhou");
+                  }
                 } catch (e) {
                   btn.textContent = "Erro";
                   alert(String(e));
@@ -1047,26 +1045,20 @@ function TrackRow({
 
                 btn.textContent = "A enviar...";
 
-                const form = new FormData();
-                form.append("albumSlug", albumSlug);
-                form.append("trackNumber", String(track.number));
-                form.append("video", blob, blob.type.includes("mp4") ? "reel.mp4" : "reel.webm");
+                const safeAlb = albumSlug.replace(/[^a-z0-9-]/g, "");
+                const safeTrk = String(track.number).padStart(2, "0");
+                const reelExt = blob.type.includes("mp4") ? "mp4" : "webm";
+                const reelPath = `albums/${safeAlb}/faixa-${safeTrk}-reel.${reelExt}`;
+                const reelVideoUrl = await uploadViaSignedUrl(blob, reelPath);
 
-                const res = await adminFetch("/api/admin/upload-reel", {
-                  method: "POST",
-                  body: form,
-                });
-                if (!res.ok) throw new Error(`Upload falhou: ${res.status} ${res.statusText}`);
-                const data = await res.json();
-
-                if (data.ok && data.videoUrl) {
+                {
                   btn.textContent = "Reel guardado!";
                   if (resultDiv) {
                     resultDiv.innerHTML = "";
                     const reelBlob = blob;
 
                     const vid = document.createElement("video");
-                    vid.src = data.videoUrl;
+                    vid.src = reelVideoUrl;
                     vid.controls = true;
                     vid.playsInline = true;
                     vid.muted = true;
@@ -1157,7 +1149,7 @@ function TrackRow({
 
                     // Download
                     const dl = document.createElement("a");
-                    dl.href = data.videoUrl;
+                    dl.href = reelVideoUrl;
                     dl.download = `${track.title} — Loranne.mp4`;
                     dl.textContent = "Guardar";
                     dl.style.cssText = "font-size:11px;padding:4px 12px;border-radius:6px;background:rgba(255,255,255,0.05);color:#a0a0b0;border:1px solid rgba(255,255,255,0.1);text-decoration:none";
@@ -1180,8 +1172,6 @@ function TrackRow({
                     actions.appendChild(del);
                     resultDiv.appendChild(actions);
                   }
-                } else {
-                  throw new Error(data.erro || "Upload falhou");
                 }
               } catch (e) {
                 btn.textContent = "Erro";
