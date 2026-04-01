@@ -201,14 +201,30 @@ const _experiences: Experience[] = [
   },
 ];
 
-// Exporta array com status calculado automaticamente por data
-export const experiences: Experience[] = _experiences.map((e) => {
-  if (e.status === "available" || !e.launchDate) return e;
+// Dados raw — o status aqui é o valor estático definido à mão.
+// Para obter o status real (baseado na data actual), usar getExperiencesLive().
+export const experiences = _experiences;
+
+/**
+ * Calcula o status de um Espelho em runtime (não no build).
+ */
+export function computeLiveStatus(exp: Experience): ExperienceStatus {
+  if (exp.status === "available" || !exp.launchDate) return exp.status;
   const now = new Date();
-  const launch = new Date(e.launchDate);
-  if (now >= launch) return { ...e, status: "available" as ExperienceStatus };
-  return e;
-});
+  const launch = new Date(exp.launchDate);
+  return now >= launch ? "available" : exp.status;
+}
+
+/**
+ * Retorna todos os Espelhos com status calculado em runtime.
+ * Usar SEMPRE que o status importa (páginas, filtros, gates).
+ */
+export function getExperiencesLive(): Experience[] {
+  return _experiences.map((e) => ({
+    ...e,
+    status: computeLiveStatus(e),
+  }));
+}
 
 // Map quiz veil index to experience slug
 export const quizVeilToExperience: Record<number, string> = {
@@ -222,7 +238,9 @@ export const quizVeilToExperience: Record<number, string> = {
 };
 
 export function getExperience(slug: string) {
-  return experiences.find((e) => e.slug === slug);
+  const exp = _experiences.find((e) => e.slug === slug);
+  if (!exp) return undefined;
+  return { ...exp, status: computeLiveStatus(exp) };
 }
 
 /**

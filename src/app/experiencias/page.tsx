@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { experiences } from "@/data/experiences";
+import { getExperiencesLive } from "@/data/experiences";
 import ScrollReveal from "@/components/ScrollReveal";
 import WaitlistForm from "@/components/WaitlistForm";
 
@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 };
 
 export default function ExperienciasPage() {
-  // Apenas Espelho da Ilusão está publicado
-  const published = experiences.filter((e) => e.slug === "veu-da-ilusao");
-  const upcoming = experiences.filter((e) => e.slug !== "veu-da-ilusao");
+  const experiences = getExperiencesLive();
+  const published = experiences.filter((e) => e.status === "available");
+  const upcoming = experiences.filter((e) => e.status !== "available");
 
   return (
     <>
@@ -209,7 +209,7 @@ export default function ExperienciasPage() {
               <ScrollReveal key={exp.slug} delay={0.08 * i}>
                 <div
                   className={`flex items-center gap-4 rounded-2xl border px-5 py-4 transition-all ${
-                    exp.slug === "veu-da-ilusao"
+                    exp.status === "available"
                       ? "border-sage/30 bg-sage/10"
                       : "border-brown-700/30 bg-brown-800/50"
                   }`}
@@ -218,14 +218,14 @@ export default function ExperienciasPage() {
                     className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-serif text-sm font-bold text-white"
                     style={{
                       backgroundColor:
-                        exp.slug === "veu-da-ilusao" ? exp.color : exp.color + "50",
+                        exp.status === "available" ? exp.color : exp.color + "50",
                     }}
                   >
                     {exp.number}
                   </span>
                   <div className="flex-1">
                     <h3
-                      className={`font-serif text-base ${exp.slug === "veu-da-ilusao" ? "text-cream" : "text-brown-300"}`}
+                      className={`font-serif text-base ${exp.status === "available" ? "text-cream" : "text-brown-300"}`}
                     >
                       {exp.title}
                     </h3>
@@ -234,7 +234,7 @@ export default function ExperienciasPage() {
                     </p>
                   </div>
                   <div className="shrink-0 text-right">
-                    {exp.slug === "veu-da-ilusao" ? (
+                    {exp.status === "available" ? (
                       <Link
                         href="/comprar/espelhos"
                         className="rounded-full bg-sage px-4 py-1.5 font-sans text-[0.6rem] uppercase tracking-[0.12em] text-white hover:bg-sage-dark"

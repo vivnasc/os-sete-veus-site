@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { experiences, quizVeilToExperience, PRICING } from "@/data/experiences";
+import { getExperiencesLive, quizVeilToExperience, PRICING } from "@/data/experiences";
 
 const questions = [
   {
@@ -119,6 +119,7 @@ const veus = [
 type Answer = "sim" | "talvez" | "nao";
 
 export default function TestePage() {
+  const experiences = getExperiencesLive();
   const [started, setStarted] = useState(false);
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>([]);
