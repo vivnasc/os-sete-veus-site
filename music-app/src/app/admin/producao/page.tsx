@@ -1005,10 +1005,12 @@ function TrackRow({
           )}
 
           {/* Generate animated reel (Canvas + Audio) */}
+          {(["status", "insta"] as const).map((reelType) => (
           <button
-            id={`reel-btn-${albumSlug}-${track.number}`}
+            key={reelType}
+            id={`reel-btn-${reelType}-${albumSlug}-${track.number}`}
             onClick={async () => {
-              const btn = document.getElementById(`reel-btn-${albumSlug}-${track.number}`) as HTMLButtonElement;
+              const btn = document.getElementById(`reel-btn-${reelType}-${albumSlug}-${track.number}`) as HTMLButtonElement;
               const resultDiv = document.getElementById(`reel-result-${albumSlug}-${track.number}`);
               if (!btn) return;
               btn.disabled = true;
@@ -1016,7 +1018,8 @@ function TrackRow({
               if (resultDiv) resultDiv.innerHTML = "";
 
               try {
-                const { generateReel } = await import("@/lib/reel-generator");
+                const { generateReel, REEL_SIZE_STATUS, REEL_SIZE_INSTA } = await import("@/lib/reel-generator");
+                const reelSize = reelType === "insta" ? REEL_SIZE_INSTA : REEL_SIZE_STATUS;
                 const { getAlbumCover, getTrackCoverUrl } = await import("@/lib/album-covers");
 
                 const alb = ALL_ALBUMS.find(a => a.slug === albumSlug);
@@ -1033,7 +1036,7 @@ function TrackRow({
 
                 const blob = await generateReel(track, alb, coverSrc, audioSrc, (p) => {
                   btn.textContent = p.message;
-                });
+                }, undefined, reelSize);
 
                 btn.textContent = "A enviar...";
 
@@ -1180,8 +1183,9 @@ function TrackRow({
             }}
             className="rounded-lg bg-violet-900/30 px-3 py-1.5 text-xs text-violet-400 hover:bg-violet-900/50 transition"
           >
-            Gerar reel
+            {reelType === "status" ? "Reel Status" : "Reel Insta"}
           </button>
+          ))}
           <div id={`reel-result-${albumSlug}-${track.number}`} style={{ maxWidth: "240px" }}></div>
         </div>
       </div>
