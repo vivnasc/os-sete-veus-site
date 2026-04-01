@@ -45,8 +45,8 @@ export default function PartilhaClient({
   const [ended, setEnded] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  // Build stream URL (works even when audioUrl in data is null)
-  const streamUrl = `/api/music/stream?album=${encodeURIComponent(albumSlug)}&track=${trackNumber}`;
+  // Build stream URL — preview mode for unauthenticated share pages
+  const streamUrl = `/api/music/stream?album=${encodeURIComponent(albumSlug)}&track=${trackNumber}&preview=1`;
 
   useEffect(() => {
     supabase.auth.getUser().then(async ({ data }) => {
