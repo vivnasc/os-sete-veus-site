@@ -683,15 +683,15 @@ Tem a boca da minha mãe
 Tem os olhos do padre
 Tem o peso da fé
 Mas não é minha, não é minha
-Eu aprendi a repeti-lá
+Eu aprendi a repeti-la
 Até esquecer que a garganta
-Tinha outra música mais tranquila
+Tinha outra música por dizer
 
 [Verse 3]
 O sol entra pela janela
-É a voz diz que não o mereço
+E a voz diz que não o mereço
 A chuva cai no meu cabelo
-É a voz diz que o prazer tem preço
+E a voz diz que o prazer tem preço
 
 [Chorus]
 Essa voz, essa voz
@@ -737,7 +737,7 @@ When the woman is the one who shakes
 [Verse 3]
 She learned to vanish into kindness
 To fold herself into the need
-To make herself só very useful
+To make herself so very useful
 She forgot she was a seed
 
 [Chorus]
@@ -767,8 +767,8 @@ Mas o peito ainda tinha espelhos
 [Verse 2]
 O alívio sabe a água morna
 A alegria sabe a fruta do quintal
-Um e o fim de uma obrigação
-O outro e o princípio de um festival
+Um é o fim de uma obrigação
+O outro é o princípio de um festival
 
 [Chorus]
 Eu confundi durante anos
@@ -795,7 +795,7 @@ Vem do lugar onde a vida é festa
 Não quero só o suspiro do fim
 Quero o arrepio do inicio
 Não quero só o alívio
-Quero a dança, o salto, o precipicio
+Quero a dança, o salto, o precipício
 
 [Outro]
 Hoje acordei e não fiz a lista
@@ -816,10 +816,10 @@ Disse sim quando queria gritar
 E chamou-lhe amor, chamou-lhe abrigo
 
 [Chorus]
-E eu carrego está pedra que não é minha
+E eu carrego esta pedra que não é minha
 De mãe para filha, de filha para neta
-Está culpa antiga como a chuva
-De querer mais do que a vida nós deixa
+Esta culpa antiga como a chuva
+De querer mais do que a vida nos deixa
 De querer mais do que elas puderam
 De dizer não quando ninguém dizia
 De viver alto, de sonhar longe
@@ -832,10 +832,10 @@ Posso honrar as mãos da minha avó
 E ter as minhas mãos livres e quentes
 
 [Chorus]
-E eu carrego está pedra que não é minha
+E eu carrego esta pedra que não é minha
 De mãe para filha, de filha para neta
-Está culpa antiga como a chuva
-De querer mais do que a vida nós deixa
+Esta culpa antiga como a chuva
+De querer mais do que a vida nos deixa
 
 [Bridge]
 Avó, perdoa-me por querer o sol
@@ -867,7 +867,7 @@ But the birds don't earn the morning
 And the river doesn't pay for rain
 The wildflower grows without permission
 And still the sun comes back again
-Só tell me, tell me, who decided
+So tell me, tell me, who decided
 That my breath must have a price
 That my rest must be a trophy
 And my joy must be earned twice
@@ -892,7 +892,7 @@ And never thinks to earn the day
 
 [Outro]
 I deserve the light
-Not because I'vê earned my stay
+Not because I've earned my stay
 But because I'm here
 And here was never mine to pay`,
 
@@ -913,10 +913,10 @@ Mas eu abro as mãos devagar
 E deixo cair no chão
 Tudo o que nunca foi meu
 Tudo o que eu chamava obrigação
-É o chão recebe sem julgar
-É o ar entra nós pulmões
-É o espaço que aparece
-Tem o tamanho de mil perdoes
+E o chão recebe sem julgar
+E o ar entra nos pulmões
+E o espaço que aparece
+Tem o tamanho de mil perdões
 
 
 [Chorus]
@@ -924,20 +924,20 @@ Mas eu abro as mãos devagar
 E deixo cair no chão
 Tudo o que nunca foi meu
 Tudo o que eu chamava obrigação
-É o chão recebe sem julgar
-É o ar entra nós pulmões
-É o espaço que aparece
-Tem o tamanho de mil perdoes
+E o chão recebe sem julgar
+E o ar entra nos pulmões
+E o espaço que aparece
+Tem o tamanho de mil perdões
 
 [Bridge]
 Pousar não é abandonar
-E dar ao corpo o que lhe pertence
-E dizer aos ombros cansados
+É dar ao corpo o que lhe pertence
+É dizer aos ombros cansados
 Podem descansar, não há urgência
 
 [Outro]
 Pousei
-É o mundo não caiu
+E o mundo não caiu
 Pousei
 E eu nasci`,
 
@@ -945,7 +945,7 @@ E eu nasci`,
 Não preciso de me partir ao meio
 Para ver o que trago cá dentro
 Não preciso de sangue nem de castigo
-Basta um espelho é um momento
+Basta um espelho e um momento
 
 [Verse 2]
 A culpa ensinou-me a ser dura
@@ -978,7 +978,7 @@ E toca-me como quem vive
 Há uma força que não grita
 Que não parte, que não dói
 Que chega de mansinho como a brisa
-É cura tudo o que a raiva não curou
+E cura tudo o que a raiva não curou
 
 [Outro]
 Ponho a mão no peito
