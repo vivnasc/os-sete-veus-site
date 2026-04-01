@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Album } from "@/data/albums";
 import { getAlbumCover, getAlbumBadge, getTrackCoverUrl } from "@/lib/album-covers";
+import { useAlbumCovers } from "@/hooks/useAlbumCovers";
 
 type Props = {
   album: Album;
@@ -14,15 +15,17 @@ export default function AlbumCard({ album }: Props) {
   const fallback = getAlbumCover(album);
   const badge = getAlbumBadge(album);
   const [cover, setCover] = useState(fallback);
+  const { getCoverTrack } = useAlbumCovers();
+  const coverTrack = getCoverTrack(album.slug);
 
-  // Try to load Suno cover from first track
+  // Try to load Suno cover from selected track (default: 1)
   useEffect(() => {
-    const url = getTrackCoverUrl(album.slug, 1);
+    const url = getTrackCoverUrl(album.slug, coverTrack);
     const img = new window.Image();
     img.onload = () => setCover(url);
     img.onerror = () => {}; // keep fallback
     img.src = url;
-  }, [album.slug]);
+  }, [album.slug, coverTrack]);
 
   return (
     <Link
