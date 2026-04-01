@@ -131,10 +131,10 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
   const displayTagline = tagline || experience.description;
 
   // Book cover dimensions (3:4 ratio, portrait)
-  const coverW = Math.round(REEL_W * 0.55);
+  const coverW = Math.round(REEL_W * 0.48);
   const coverH = Math.round(coverW * 1.5);
   const coverX = (REEL_W - coverW) / 2;
-  const coverY = Math.round(REEL_H * 0.08);
+  const coverY = Math.round(REEL_H * 0.06);
 
   // Nó mini cover
   const nosW = 60;
@@ -211,14 +211,14 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
 
     // --- Text area ---
     ctx.textAlign = "center";
-    const textBaseY = coverY + coverH + 40;
+    const textBaseY = coverY + coverH + 60;
 
     // "ESPELHO 3 DE 7" label (0.5-2s)
     const labelProgress = clamp((elapsed - 0.5) / 1, 0, 1);
     if (labelProgress > 0) {
       const slideUp = 15 * (1 - easeInOut(labelProgress));
       ctx.globalAlpha = labelProgress;
-      ctx.font = "500 24px sans-serif";
+      ctx.font = "500 22px sans-serif";
       ctx.letterSpacing = "6px";
       ctx.fillStyle = color;
       ctx.fillText(`ESPELHO ${experience.number} DE 7`, REEL_W / 2, textBaseY + slideUp);
@@ -230,11 +230,11 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
     if (titleProgress > 0) {
       const slideUp = 25 * (1 - easeInOut(titleProgress));
       ctx.globalAlpha = titleProgress;
-      ctx.font = "bold 56px 'Cormorant Garamond', Georgia, serif";
+      ctx.font = "bold 52px 'Cormorant Garamond', Georgia, serif";
       ctx.fillStyle = "#F5F0E6";
-      const titleLines = wrapText(ctx, experience.title, REEL_W - 80);
-      let y = textBaseY + 55 + slideUp;
-      for (const line of titleLines) { ctx.fillText(line, REEL_W / 2, y); y += 66; }
+      const titleLines = wrapText(ctx, experience.title, REEL_W - 100);
+      let y = textBaseY + 70 + slideUp;
+      for (const line of titleLines) { ctx.fillText(line, REEL_W / 2, y); y += 62; }
     }
 
     // Subtitle (3.5-5s)
@@ -242,9 +242,9 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
     if (subProgress > 0) {
       const slideUp = 20 * (1 - easeInOut(subProgress));
       ctx.globalAlpha = subProgress;
-      ctx.font = "italic 32px 'Cormorant Garamond', Georgia, serif";
+      ctx.font = "italic 30px 'Cormorant Garamond', Georgia, serif";
       ctx.fillStyle = color + "dd";
-      ctx.fillText(experience.subtitle, REEL_W / 2, textBaseY + 130 + slideUp);
+      ctx.fillText(experience.subtitle, REEL_W / 2, textBaseY + 160 + slideUp);
     }
 
     // Tagline / description (5.5-8s)
@@ -253,11 +253,11 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
     if (tagProgress > 0 && tagFadeOut > 0) {
       const slideUp = 20 * (1 - easeInOut(tagProgress));
       ctx.globalAlpha = tagProgress * tagFadeOut;
-      ctx.font = "italic 28px 'Cormorant Garamond', Georgia, serif";
+      ctx.font = "italic 26px 'Cormorant Garamond', Georgia, serif";
       ctx.fillStyle = "#c0b8a8";
-      const tagLines = wrapText(ctx, `"${displayTagline}"`, REEL_W - 120);
-      let y = textBaseY + 190 + slideUp;
-      for (const line of tagLines) { ctx.fillText(line, REEL_W / 2, y); y += 38; }
+      const tagLines = wrapText(ctx, `"${displayTagline}"`, REEL_W - 140);
+      let y = textBaseY + 240 + slideUp;
+      for (const line of tagLines) { ctx.fillText(line, REEL_W / 2, y); y += 36; }
     }
 
     // Nó teaser (8-10.5s)
@@ -267,7 +267,7 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
       if (nosProgress > 0 && nosFadeOut > 0) {
         const alpha = nosProgress * nosFadeOut;
         const slideUp = 15 * (1 - easeInOut(nosProgress));
-        const nosY = textBaseY + 200 + slideUp;
+        const nosY = textBaseY + 280 + slideUp;
 
         // Background card
         ctx.save();
