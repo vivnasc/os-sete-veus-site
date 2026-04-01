@@ -7,8 +7,8 @@ import type { Album, AlbumTrack } from "@/data/albums";
 import { getSharePath } from "@/lib/share-utils";
 
 const REEL_DURATION = 15;
-const REEL_W = 720;
-const REEL_H = 1280;
+const REEL_W = 1080;
+const REEL_H = 1920;
 const FPS = 24;
 
 function pickLyric(track: AlbumTrack): string | null {
@@ -334,7 +334,7 @@ export async function generateReel(
       error: () => {},
     });
     encoder.configure({
-      codec: "avc1.42001f",
+      codec: "avc1.640028",
       width: REEL_W,
       height: REEL_H,
       bitrate: 2_000_000,
