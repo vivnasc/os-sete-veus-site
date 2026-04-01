@@ -8,7 +8,9 @@ import { getNosCollectionLive, type NosBook } from "@/data/nos-collection";
 import { supabase } from "@/lib/supabase";
 import {
   generateLaunchReel,
+  FORMATS,
   type LaunchReelProgress,
+  type ReelFormat,
 } from "@/lib/launch-reel-generator";
 
 const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
@@ -41,6 +43,7 @@ export default function AdminReelsPage() {
   const [selectedTrack, setSelectedTrack] = useState<string>("");
   const [localAudioUrl, setLocalAudioUrl] = useState<string>("");
   const [loadingTracks, setLoadingTracks] = useState(false);
+  const [reelFormat, setReelFormat] = useState<ReelFormat>("reels");
   const [tagline, setTagline] = useState("");
   const [progress, setProgress] = useState<LaunchReelProgress | null>(null);
   const [reelBlob, setReelBlob] = useState<Blob | null>(null);
@@ -146,6 +149,7 @@ export default function AdminReelsPage() {
         nosCoverSrc: nos?.image || null,
         audioSrc: localAudioUrl || selectedTrack || null,
         tagline: tagline || undefined,
+        format: reelFormat,
         onProgress: setProgress,
       });
 
@@ -170,26 +174,46 @@ export default function AdminReelsPage() {
     a.click();
   }
 
+  function buildCaption(exp: Experience, nos?: NosBook | null): string {
+    const lines = [
+      `${exp.title}`,
+      `"${exp.subtitle}"`,
+      "",
+      exp.description,
+    ];
+
+    if (nos) {
+      lines.push("", `~ Ao completar, desbloqueia ${nos.title}`);
+    }
+
+    lines.push(
+      "",
+      "seteveus.space",
+      "",
+      ".",
+      ".",
+      ".",
+      "",
+      "#seteveus #osseteveusdespertar #espelhos #ficçãotransformativa",
+      "#leitura #livros #livrosnovos #lancamento #novolivro",
+      "#autoconhecimento #crescimentopessoal #desenvolvimentopessoal",
+      "#reflexão #jornadadescoberta #vidaconsciente",
+      "#escritora #literaturaportugesa #ficçãoliterária",
+      "#moçambique #escritoramoçambicana #viviannedossantos",
+      "#bookstagram #booktok #livrosrecomendados #dicasdelivros",
+      "#leituraconsciente #livrosquetransformam #leituraquefazbem",
+    );
+
+    return lines.join("\n");
+  }
+
   async function handleShare() {
     if (!reelBlob || !selectedSlug) return;
     const exp = experiences.find((e) => e.slug === selectedSlug);
     if (!exp) return;
 
     const nos = nosCollection.find((n) => n.espelhoSlug === selectedSlug);
-    const caption = [
-      `${exp.title}`,
-      `"${exp.subtitle}"`,
-      "",
-      exp.description,
-      "",
-      nos ? `~ ${nos.title} desbloqueia ao completar` : "",
-      "",
-      `seteveus.space/experiencias/${exp.slug}`,
-      "",
-      "#seteveus #espelhos #ficçãotransformativa #leitura #autoconhecimento",
-    ]
-      .filter(Boolean)
-      .join("\n");
+    const caption = buildCaption(exp, nos);
 
     if (navigator.share) {
       try {
@@ -208,7 +232,7 @@ export default function AdminReelsPage() {
     // Fallback: copy caption + download
     await navigator.clipboard.writeText(caption);
     handleDownload();
-    alert("Legenda copiada. Video descarregado. Abre o WhatsApp Status ou Instagram Reels.");
+    alert("Legenda copiada. Video descarregado. Abre o Instagram Reels e cola a legenda.");
   }
 
   if (authLoading || !isAdmin) return null;
@@ -313,6 +337,29 @@ export default function AdminReelsPage() {
               rows={2}
               className="mt-1 w-full rounded-lg border border-brown-700 bg-brown-800 px-4 py-3 text-cream placeholder:text-brown-600"
             />
+          </div>
+        )}
+
+        {/* Format selector */}
+        {selectedSlug && (
+          <div className="mt-6">
+            <label className="block text-sm text-brown-400">Formato</label>
+            <div className="mt-2 flex gap-3">
+              {(Object.entries(FORMATS) as [ReelFormat, typeof FORMATS[ReelFormat]][]).map(([key, fmt]) => (
+                <button
+                  key={key}
+                  onClick={() => setReelFormat(key)}
+                  className={`flex-1 rounded-lg border px-4 py-3 text-left transition-colors ${
+                    reelFormat === key
+                      ? "border-cream/40 bg-brown-700 text-cream"
+                      : "border-brown-700 bg-brown-800 text-brown-400 hover:border-brown-600"
+                  }`}
+                >
+                  <p className="text-sm font-medium">{fmt.label}</p>
+                  <p className="text-xs opacity-60">{fmt.w}x{fmt.h}</p>
+                </button>
+              ))}
+            </div>
           </div>
         )}
 
@@ -422,6 +469,33 @@ export default function AdminReelsPage() {
                 ? `${(reelBlob.size / 1024 / 1024).toFixed(1)} MB — ${reelBlob.type}`
                 : ""}
             </p>
+
+            {/* Caption for Instagram */}
+            {selectedExp && (() => {
+              const nos = nosCollection.find((n) => n.espelhoSlug === selectedSlug);
+              const caption = buildCaption(selectedExp, nos);
+              return (
+                <div className="mt-6">
+                  <div className="flex items-center justify-between">
+                    <p className="text-sm font-medium text-cream">Legenda para Instagram</p>
+                    <button
+                      onClick={() => {
+                        navigator.clipboard.writeText(caption);
+                        const btn = document.getElementById("copy-caption-btn");
+                        if (btn) { btn.textContent = "Copiada!"; setTimeout(() => { btn.textContent = "Copiar"; }, 2000); }
+                      }}
+                      id="copy-caption-btn"
+                      className="rounded-lg border border-brown-600 px-3 py-1 text-xs text-cream hover:bg-brown-700"
+                    >
+                      Copiar
+                    </button>
+                  </div>
+                  <pre className="mt-2 max-h-[300px] overflow-y-auto whitespace-pre-wrap rounded-lg bg-brown-900 p-4 text-xs leading-relaxed text-brown-300 border border-brown-700">
+                    {caption}
+                  </pre>
+                </div>
+              );
+            })()}
           </div>
         )}
       </div>
