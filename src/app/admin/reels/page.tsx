@@ -39,6 +39,7 @@ export default function AdminReelsPage() {
   const [selectedSlug, setSelectedSlug] = useState("");
   const [audioTracks, setAudioTracks] = useState<AudioTrack[]>([]);
   const [selectedTrack, setSelectedTrack] = useState<string>("");
+  const [localAudioUrl, setLocalAudioUrl] = useState<string>("");
   const [loadingTracks, setLoadingTracks] = useState(false);
   const [tagline, setTagline] = useState("");
   const [progress, setProgress] = useState<LaunchReelProgress | null>(null);
@@ -76,33 +77,51 @@ export default function AdminReelsPage() {
       return;
     }
 
+    const baseUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audios/albums/${albumSlug}`;
+
     try {
-      const { data, error } = await supabase.storage
+      // Try Supabase storage listing first
+      const { data } = await supabase.storage
         .from("audios")
         .list(`albums/${albumSlug}`, { limit: 50 });
 
-      if (error || !data) {
+      if (data && data.length > 0) {
+        const tracks: AudioTrack[] = data
+          .filter(
+            (f) =>
+              f.name.match(/^faixa-\d+\.mp3$/) && f.name !== "faixa-00.mp3"
+          )
+          .map((f) => {
+            const num = f.name.replace("faixa-", "").replace(".mp3", "");
+            return { name: `Faixa ${parseInt(num)}`, number: num, url: `${baseUrl}/${f.name}` };
+          })
+          .sort((a, b) => a.number.localeCompare(b.number));
+
+        setAudioTracks(tracks);
+        if (tracks.length > 0) setSelectedTrack(tracks[0].url);
         setLoadingTracks(false);
         return;
       }
-
-      const tracks: AudioTrack[] = data
-        .filter(
-          (f) =>
-            f.name.match(/^faixa-\d+\.mp3$/) && f.name !== "faixa-00.mp3"
-        )
-        .map((f) => {
-          const num = f.name.replace("faixa-", "").replace(".mp3", "");
-          const url = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audios/albums/${albumSlug}/${f.name}`;
-          return { name: `Faixa ${parseInt(num)}`, number: num, url };
-        })
-        .sort((a, b) => a.number.localeCompare(b.number));
-
-      setAudioTracks(tracks);
-      if (tracks.length > 0) setSelectedTrack(tracks[0].url);
     } catch {
-      // ignore
+      // Listing failed — fallback to probing public URLs
     }
+
+    // Fallback: probe tracks 1-10 with HEAD requests
+    const found: AudioTrack[] = [];
+    const probes = Array.from({ length: 10 }, (_, i) => {
+      const num = String(i + 1).padStart(2, "0");
+      const url = `${baseUrl}/faixa-${num}.mp3`;
+      return fetch(url, { method: "HEAD" })
+        .then((r) => {
+          if (r.ok) found.push({ name: `Faixa ${i + 1}`, number: num, url });
+        })
+        .catch(() => {});
+    });
+    await Promise.all(probes);
+
+    found.sort((a, b) => a.number.localeCompare(b.number));
+    setAudioTracks(found);
+    if (found.length > 0) setSelectedTrack(found[0].url);
     setLoadingTracks(false);
   }
 
@@ -125,7 +144,7 @@ export default function AdminReelsPage() {
         nos: nos || null,
         coverSrc: exp.image,
         nosCoverSrc: nos?.image || null,
-        audioSrc: selectedTrack || null,
+        audioSrc: localAudioUrl || selectedTrack || null,
         tagline: tagline || undefined,
         onProgress: setProgress,
       });
@@ -226,7 +245,7 @@ export default function AdminReelsPage() {
         {selectedSlug && (
           <div className="mt-6">
             <label className="block text-sm text-brown-400">
-              Audio (da music-app)
+              Audio
             </label>
             {loadingTracks ? (
               <p className="mt-2 text-sm text-brown-500">A procurar faixas...</p>
@@ -234,7 +253,7 @@ export default function AdminReelsPage() {
               <>
                 <select
                   value={selectedTrack}
-                  onChange={(e) => setSelectedTrack(e.target.value)}
+                  onChange={(e) => { setSelectedTrack(e.target.value); setLocalAudioUrl(""); }}
                   className="mt-1 w-full rounded-lg border border-brown-700 bg-brown-800 px-4 py-3 text-cream"
                 >
                   {audioTracks.map((t) => (
@@ -243,9 +262,9 @@ export default function AdminReelsPage() {
                     </option>
                   ))}
                 </select>
-                {selectedTrack && (
+                {(localAudioUrl || selectedTrack) && (
                   <audio
-                    src={selectedTrack}
+                    src={localAudioUrl || selectedTrack}
                     controls
                     className="mt-2 w-full"
                   />
@@ -253,10 +272,31 @@ export default function AdminReelsPage() {
               </>
             ) : (
               <p className="mt-2 text-sm text-brown-500">
-                Nenhuma faixa aprovada para este album.
-                Gera primeiro na music-app.
+                Nenhuma faixa encontrada no Supabase. Usa o upload abaixo.
               </p>
             )}
+            {/* File upload fallback */}
+            <div className="mt-3">
+              <label className="block text-xs text-brown-500 mb-1">
+                Ou carrega um ficheiro MP3:
+              </label>
+              <input
+                type="file"
+                accept="audio/mpeg,audio/mp3"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) {
+                    const url = URL.createObjectURL(file);
+                    setLocalAudioUrl(url);
+                    setSelectedTrack("");
+                  }
+                }}
+                className="w-full text-sm text-brown-400 file:mr-3 file:rounded-lg file:border-0 file:bg-brown-700 file:px-4 file:py-2 file:text-sm file:text-cream hover:file:bg-brown-600"
+              />
+              {localAudioUrl && (
+                <audio src={localAudioUrl} controls className="mt-2 w-full" />
+              )}
+            </div>
           </div>
         )}
 
