@@ -104,6 +104,7 @@ export async function generateReel(
   audioSrc: string,
   onProgress?: (p: ReelProgress) => void,
   audioStartSeconds?: number,
+  fetchHeaders?: HeadersInit,
 ): Promise<Blob> {
   const report = (phase: ReelProgress["phase"], progress: number, message: string) => {
     onProgress?.({ phase, progress, message });
@@ -114,7 +115,7 @@ export async function generateReel(
 
   report("loading", 0.3, "A carregar audio...");
 
-  const audioResponse = await fetch(audioSrc);
+  const audioResponse = await fetch(audioSrc, fetchHeaders ? { headers: fetchHeaders } : undefined);
   if (!audioResponse.ok) throw new Error("Audio nao disponivel");
   const audioArrayBuffer = await audioResponse.arrayBuffer();
 

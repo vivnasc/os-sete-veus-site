@@ -15,6 +15,13 @@ import {
 } from "@/data/albums";
 import { getAlbumCover } from "@/lib/album-covers";
 import { adminFetch } from "@/lib/admin-fetch";
+import { supabase } from "@/lib/supabase";
+
+/** Get auth headers for stream endpoint */
+async function getStreamAuthHeaders(): Promise<HeadersInit> {
+  const { data: { session } } = await supabase.auth.getSession();
+  return session?.access_token ? { Authorization: `Bearer ${session.access_token}` } : {};
+}
 
 /** Read ID3 title from an MP3 File */
 async function readId3Title(file: File): Promise<string | null> {
@@ -374,15 +381,17 @@ function ClipApprovalRow({
                   const t = alb.tracks.find(tr => tr.number === trackNumber);
                   if (!t) throw new Error("Faixa nao encontrada");
                   const audioSrc = `/api/music/stream?album=${encodeURIComponent(albumSlug)}&track=${trackNumber}`;
+                  const authHeaders = await getStreamAuthHeaders();
                   const blob = await generateReel(t, alb, clip.imageUrl!, audioSrc, (p) => {
                     btn.textContent = p.message;
-                  });
+                  }, undefined, authHeaders);
                   btn.textContent = "A enviar...";
                   const form = new FormData();
                   form.append("albumSlug", albumSlug);
                   form.append("trackNumber", String(trackNumber));
                   form.append("video", blob, blob.type.includes("mp4") ? "reel.mp4" : "reel.webm");
                   const res = await adminFetch("/api/admin/upload-reel", { method: "POST", body: form });
+                  if (!res.ok) throw new Error(`Upload falhou: ${res.status} ${res.statusText}`);
                   const data = await res.json();
                   if (data.ok) {
                     btn.textContent = "Reel OK!";
@@ -1030,10 +1039,11 @@ function TrackRow({
                 } catch {}
 
                 const audioSrc = `/api/music/stream?album=${encodeURIComponent(albumSlug)}&track=${track.number}`;
+                const authHeaders = await getStreamAuthHeaders();
 
                 const blob = await generateReel(track, alb, coverSrc, audioSrc, (p) => {
                   btn.textContent = p.message;
-                });
+                }, undefined, authHeaders);
 
                 btn.textContent = "A enviar...";
 
@@ -1046,6 +1056,7 @@ function TrackRow({
                   method: "POST",
                   body: form,
                 });
+                if (!res.ok) throw new Error(`Upload falhou: ${res.status} ${res.statusText}`);
                 const data = await res.json();
 
                 if (data.ok && data.videoUrl) {
