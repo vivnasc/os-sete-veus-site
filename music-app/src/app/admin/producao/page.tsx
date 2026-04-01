@@ -393,7 +393,7 @@ function ClipApprovalRow({
                       const reelUrl = data.videoUrl;
 
                       const container = document.createElement("div");
-                      container.style.cssText = "margin-top:6px";
+                      container.style.cssText = "margin-top:6px;max-width:180px";
 
                       const vid = document.createElement("video");
                       vid.src = reelUrl;
@@ -1060,7 +1060,7 @@ function TrackRow({
                     vid.playsInline = true;
                     vid.muted = true;
                     vid.loop = true;
-                    vid.style.cssText = "max-height:160px;border-radius:8px;margin-top:6px;width:100%";
+                    vid.style.cssText = "max-height:120px;border-radius:6px;margin-top:6px;width:100%";
                     resultDiv.appendChild(vid);
 
                     // Caption — ready to copy with hashtags
@@ -1182,7 +1182,7 @@ function TrackRow({
           >
             Gerar reel
           </button>
-          <div id={`reel-result-${albumSlug}-${track.number}`}></div>
+          <div id={`reel-result-${albumSlug}-${track.number}`} style={{ maxWidth: "240px" }}></div>
         </div>
       </div>
     </div>
