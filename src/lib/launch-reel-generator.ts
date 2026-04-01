@@ -432,27 +432,37 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
       // Start from 20s into the track (or beginning if shorter)
       const startSample = Math.floor(Math.min(20, Math.max(0, audioBuffer.duration - REEL_DURATION)) * sampleRate);
       const numSamples = Math.floor(REEL_DURATION * sampleRate);
+
+      // Build planar audio: [ch0_sample0, ch0_sample1, ..., ch1_sample0, ch1_sample1, ...]
       const audioData = new Float32Array(numSamples * channels);
       for (let ch = 0; ch < channels; ch++) {
         const channelData = audioBuffer.getChannelData(ch);
+        const chOffset = ch * numSamples;
         for (let i = 0; i < numSamples; i++) {
           const srcIdx = startSample + i;
           if (srcIdx < channelData.length) {
-            audioData[i * channels + ch] = channelData[srcIdx];
+            audioData[chOffset + i] = channelData[srcIdx];
           }
         }
       }
 
-      const chunkSize = sampleRate;
+      const chunkSize = sampleRate; // 1 second chunks
       for (let offset = 0; offset < numSamples; offset += chunkSize) {
         const size = Math.min(chunkSize, numSamples - offset);
+        // For planar: extract [ch0 chunk, ch1 chunk] contiguously
+        const chunkData = new Float32Array(size * channels);
+        for (let ch = 0; ch < channels; ch++) {
+          const srcStart = ch * numSamples + offset;
+          const dstStart = ch * size;
+          chunkData.set(audioData.subarray(srcStart, srcStart + size), dstStart);
+        }
         const chunk = new AudioData({
           format: "f32-planar" as AudioSampleFormat,
           sampleRate,
           numberOfFrames: size,
           numberOfChannels: channels,
           timestamp: (offset / sampleRate) * 1_000_000,
-          data: audioData.slice(offset * channels, (offset + size) * channels),
+          data: chunkData,
         });
         audioEncoder.encode(chunk);
         chunk.close();
