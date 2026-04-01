@@ -51,6 +51,7 @@ import { ESPIRITUAL_LYRICS } from "./lyrics-espirituais";
 import { VIDA_LYRICS } from "./lyrics-vida";
 import { COSMIC_LYRICS } from "./lyrics-cosmic";
 import { ROMANCE_LYRICS } from "./lyrics-romance";
+import { EXPANSAO_LYRICS } from "./lyrics-expansao";
 
 const ALL_LYRICS: Record<string, string> = {
   ...ESPELHO_LYRICS,
@@ -61,6 +62,7 @@ const ALL_LYRICS: Record<string, string> = {
   ...VIDA_LYRICS,
   ...COSMIC_LYRICS,
   ...ROMANCE_LYRICS,
+  ...EXPANSAO_LYRICS,
 };
 
 function getLyrics(albumSlug: string, trackNumber: number): string {
