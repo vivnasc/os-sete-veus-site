@@ -10,8 +10,8 @@ const REEL_DURATION = 15;
 const FPS = 24;
 
 // Presets
-export const REEL_SIZE_STATUS = { w: 720, h: 1280 } as const;  // WhatsApp Status
-export const REEL_SIZE_INSTA = { w: 1080, h: 1920 } as const;  // Instagram Reels
+export const REEL_SIZE_STATUS = { w: 720, h: 1280 } as const;  // WhatsApp Status (9:16)
+export const REEL_SIZE_INSTA = { w: 1080, h: 1080 } as const;  // Instagram Post (1:1)
 
 function pickLyric(track: AlbumTrack): string | null {
   if (!track.lyrics) return null;
@@ -162,9 +162,10 @@ export async function generateReel(
 
   const color = album.color || "#C9A96E";
   const lyric = pickLyric(track);
-  const coverSize = Math.round(REEL_W * 0.75);
+  const isSquare = REEL_W === REEL_H;
+  const coverSize = Math.round(REEL_W * (isSquare ? 0.55 : 0.75));
   const coverBaseX = (REEL_W - coverSize) / 2;
-  const coverBaseY = Math.round(REEL_H * 0.12);
+  const coverBaseY = Math.round(REEL_H * (isSquare ? 0.05 : 0.12));
   const particles = createParticles(30, REEL_W, REEL_H);
 
   function drawFrame(elapsed: number) {
@@ -236,14 +237,16 @@ export async function generateReel(
 
     // ── Text ──
     ctx.textAlign = "center";
-    const textBaseY = coverBaseY + coverSize + 50;
+    const textGap = isSquare ? 25 : 50;
+    const textBaseY = coverBaseY + coverSize + textGap;
+    const fontScale = isSquare ? 0.75 : 1;
 
     // Album name — slides up + fades in (0.5s-1.5s)
     const albumProgress = clamp((elapsed - 0.5) / 1, 0, 1);
     if (albumProgress > 0) {
       const slideUp = 20 * (1 - easeInOut(albumProgress));
       ctx.globalAlpha = albumProgress;
-      ctx.font = "500 18px sans-serif";
+      ctx.font = `500 ${Math.round(18 * fontScale)}px sans-serif`;
       ctx.fillStyle = "#666680";
       ctx.fillText(album.title.toUpperCase(), REEL_W / 2, textBaseY + slideUp);
     }
@@ -253,11 +256,12 @@ export async function generateReel(
     if (titleProgress > 0) {
       const slideUp = 25 * (1 - easeInOut(titleProgress));
       ctx.globalAlpha = titleProgress;
-      ctx.font = "bold 44px serif";
+      const titleSize = Math.round(44 * fontScale);
+      ctx.font = `bold ${titleSize}px serif`;
       ctx.fillStyle = "#F5F0E6";
       const titleLines = wrapText(ctx, track.title, REEL_W - 60);
-      let y = textBaseY + 50 + slideUp;
-      for (const line of titleLines) { ctx.fillText(line, REEL_W / 2, y); y += 54; }
+      let y = textBaseY + Math.round(50 * fontScale) + slideUp;
+      for (const line of titleLines) { ctx.fillText(line, REEL_W / 2, y); y += Math.round(54 * fontScale); }
     }
 
     // Lyric — slides up + fades in (3s-4.5s)
@@ -266,11 +270,11 @@ export async function generateReel(
       if (lyricProgress > 0) {
         const slideUp = 20 * (1 - easeInOut(lyricProgress));
         ctx.globalAlpha = lyricProgress;
-        ctx.font = "italic 22px serif";
+        ctx.font = `italic ${Math.round(22 * fontScale)}px serif`;
         ctx.fillStyle = color + "cc";
         const lyricLines = wrapText(ctx, `"${lyric}"`, REEL_W - 80);
-        let y = textBaseY + 140 + slideUp;
-        for (const line of lyricLines) { ctx.fillText(line, REEL_W / 2, y); y += 30; }
+        let y = textBaseY + Math.round(140 * fontScale) + slideUp;
+        for (const line of lyricLines) { ctx.fillText(line, REEL_W / 2, y); y += Math.round(30 * fontScale); }
       }
     }
 
@@ -278,9 +282,9 @@ export async function generateReel(
     const artistProgress = clamp((elapsed - 2.5) / 1, 0, 1);
     if (artistProgress > 0) {
       ctx.globalAlpha = artistProgress;
-      ctx.font = "italic 28px 'Cormorant Garamond', 'Georgia', serif";
+      ctx.font = `italic ${Math.round(28 * fontScale)}px 'Cormorant Garamond', 'Georgia', serif`;
       ctx.fillStyle = "#C9A96E";
-      ctx.fillText("L o r a n n e", REEL_W / 2, textBaseY + (lyric ? 200 : 130));
+      ctx.fillText("L o r a n n e", REEL_W / 2, textBaseY + Math.round((lyric ? 200 : 130) * fontScale));
     }
 
     // Branding + link
