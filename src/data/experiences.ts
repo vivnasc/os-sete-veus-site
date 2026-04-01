@@ -98,7 +98,7 @@ const _experiences: Experience[] = [
     color: "#b07a7a",
     colorBg: "#faf5f5",
     status: "coming_soon",
-    launchDate: "2026-04-15",
+    launchDate: "2026-04-01",
     launchLabel: "Abril 2026",
     chapters: 7,
     practices: 4,
