@@ -14,12 +14,14 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   background: var(--color-mundo-bg);
   color: var(--color-mundo-creme);
   font-family: var(--font-sans);
+  overflow-x: hidden;
 }
 
 ::selection {
