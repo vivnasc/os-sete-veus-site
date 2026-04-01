@@ -21,7 +21,7 @@ import type { NosBook } from "@/data/nos-collection";
 export type ReelFormat = "reels" | "status";
 
 const FORMATS: Record<ReelFormat, { w: number; h: number; label: string }> = {
-  reels: { w: 1080, h: 1350, label: "Instagram Reels (4:5)" },
+  reels: { w: 1080, h: 1080, label: "Instagram (1:1)" },
   status: { w: 1080, h: 1920, label: "WhatsApp Status (9:16)" },
 };
 
@@ -141,22 +141,21 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
   const particles = createParticles(25, REEL_W, REEL_H);
   const displayTagline = tagline || experience.description;
 
-  // Scale factor relative to 1920 height (status format)
-  const isCompact = format === "reels"; // 4:5 has less vertical space
-  const coverScale = isCompact ? 0.35 : 0.48;
+  // Square (1:1) vs tall (9:16) layout
+  const isSquare = format === "reels";
 
-  // Book cover dimensions (3:4 ratio, portrait)
-  const coverW = Math.round(REEL_W * coverScale);
+  // Book cover dimensions
+  const coverW = isSquare ? Math.round(REEL_W * 0.3) : Math.round(REEL_W * 0.48);
   const coverH = Math.round(coverW * 1.5);
-  const coverX = (REEL_W - coverW) / 2;
-  const coverY = Math.round(REEL_H * 0.05);
+  const coverX = isSquare ? Math.round(REEL_W * 0.06) : (REEL_W - coverW) / 2;
+  const coverY = isSquare ? Math.round((REEL_H - coverH) / 2) : Math.round(REEL_H * 0.05);
 
   // Nó mini cover
-  const nosW = isCompact ? 50 : 60;
-  const nosH = isCompact ? 75 : 90;
+  const nosW = isSquare ? 40 : 60;
+  const nosH = isSquare ? 60 : 90;
 
-  // Font scaling for compact format
-  const fs = (size: number) => isCompact ? Math.round(size * 0.85) : size;
+  // Font scaling for square format
+  const fs = (size: number) => isSquare ? Math.round(size * 0.8) : size;
 
   function drawFrame(elapsed: number) {
     const t = elapsed / REEL_DURATION;
@@ -228,9 +227,12 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
     }
 
     // --- Text area ---
-    ctx.textAlign = "center";
-    const textBaseY = coverY + coverH + (isCompact ? 35 : 60);
-    const gap = isCompact ? 0.75 : 1; // vertical spacing multiplier
+    // Square: text to the right of cover. Tall: text below cover.
+    const textX = isSquare ? coverX + coverW + Math.round(REEL_W * 0.06) : REEL_W / 2;
+    const textBaseY = isSquare ? coverY + 10 : coverY + coverH + 60;
+    const textMaxW = isSquare ? REEL_W - textX - 40 : REEL_W - 100;
+    ctx.textAlign = isSquare ? "left" : "center";
+    const gap = isSquare ? 0.65 : 1; // vertical spacing multiplier
 
     // "ESPELHO 3 DE 7" label (0.5-2s)
     const labelProgress = clamp((elapsed - 0.5) / 1, 0, 1);
@@ -240,7 +242,7 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
       ctx.font = `500 ${fs(22)}px sans-serif`;
       ctx.letterSpacing = "6px";
       ctx.fillStyle = color;
-      ctx.fillText(`ESPELHO ${experience.number} DE 7`, REEL_W / 2, textBaseY + slideUp);
+      ctx.fillText(`ESPELHO ${experience.number} DE 7`, textX, textBaseY + slideUp);
       ctx.letterSpacing = "0px";
     }
 
@@ -251,9 +253,9 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
       ctx.globalAlpha = titleProgress;
       ctx.font = `bold ${fs(52)}px 'Cormorant Garamond', Georgia, serif`;
       ctx.fillStyle = "#F5F0E6";
-      const titleLines = wrapText(ctx, experience.title, REEL_W - 100);
+      const titleLines = wrapText(ctx, experience.title, textMaxW);
       let y = textBaseY + Math.round(60 * gap) + slideUp;
-      for (const line of titleLines) { ctx.fillText(line, REEL_W / 2, y); y += Math.round(58 * gap); }
+      for (const line of titleLines) { ctx.fillText(line, textX, y); y += Math.round(58 * gap); }
     }
 
     // Subtitle (3.5-5s)
@@ -263,7 +265,9 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
       ctx.globalAlpha = subProgress;
       ctx.font = `italic ${fs(30)}px 'Cormorant Garamond', Georgia, serif`;
       ctx.fillStyle = color + "dd";
-      ctx.fillText(experience.subtitle, REEL_W / 2, textBaseY + Math.round(140 * gap) + slideUp);
+      const subLines = wrapText(ctx, experience.subtitle, textMaxW);
+      let y = textBaseY + Math.round(140 * gap) + slideUp;
+      for (const line of subLines) { ctx.fillText(line, textX, y); y += Math.round(36 * gap); }
     }
 
     // Tagline / description (5.5-8s)
@@ -274,9 +278,9 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
       ctx.globalAlpha = tagProgress * tagFadeOut;
       ctx.font = `italic ${fs(26)}px 'Cormorant Garamond', Georgia, serif`;
       ctx.fillStyle = "#c0b8a8";
-      const tagLines = wrapText(ctx, `"${displayTagline}"`, REEL_W - 140);
+      const tagLines = wrapText(ctx, `"${displayTagline}"`, textMaxW);
       let y = textBaseY + Math.round(210 * gap) + slideUp;
-      for (const line of tagLines) { ctx.fillText(line, REEL_W / 2, y); y += Math.round(34 * gap); }
+      for (const line of tagLines) { ctx.fillText(line, textX, y); y += Math.round(34 * gap); }
     }
 
     // Nó teaser (8-10.5s)
@@ -288,37 +292,69 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
         const slideUp = 15 * (1 - easeInOut(nosProgress));
         const nosY = textBaseY + Math.round(250 * gap) + slideUp;
 
-        // Background card
-        ctx.save();
-        ctx.globalAlpha = alpha * 0.15;
-        ctx.fillStyle = nos.color;
-        ctx.beginPath();
-        ctx.roundRect(REEL_W / 2 - 250, nosY - 15, 500, nosH + 30, 10);
-        ctx.fill();
-        ctx.restore();
+        if (isSquare) {
+          // Square: Nó card in the text column
+          const cardX = textX;
+          const cardW = textMaxW;
 
-        // Mini cover
-        ctx.save();
-        ctx.globalAlpha = alpha;
-        ctx.beginPath();
-        ctx.roundRect(REEL_W / 2 - 220, nosY, nosW, nosH, 6);
-        ctx.clip();
-        ctx.drawImage(nosImg, REEL_W / 2 - 220, nosY, nosW, nosH);
-        ctx.restore();
+          ctx.save();
+          ctx.globalAlpha = alpha * 0.15;
+          ctx.fillStyle = nos.color;
+          ctx.beginPath();
+          ctx.roundRect(cardX, nosY - 15, cardW, nosH + 30, 10);
+          ctx.fill();
+          ctx.restore();
 
-        // Nó text
-        ctx.globalAlpha = alpha;
-        ctx.textAlign = "left";
-        ctx.font = `500 ${fs(18)}px sans-serif`;
-        ctx.fillStyle = nos.color;
-        ctx.fillText("NO CORRESPONDENTE", REEL_W / 2 - 145, nosY + 22);
-        ctx.font = `italic ${fs(24)}px 'Cormorant Garamond', Georgia, serif`;
-        ctx.fillStyle = "#F5F0E6";
-        ctx.fillText(nos.title, REEL_W / 2 - 145, nosY + 52);
-        ctx.font = `${fs(16)}px sans-serif`;
-        ctx.fillStyle = "#888";
-        ctx.fillText(nos.subtitle, REEL_W / 2 - 145, nosY + 76);
-        ctx.textAlign = "center";
+          // Mini cover
+          ctx.save();
+          ctx.globalAlpha = alpha;
+          ctx.beginPath();
+          ctx.roundRect(cardX + 10, nosY, nosW, nosH, 6);
+          ctx.clip();
+          ctx.drawImage(nosImg, cardX + 10, nosY, nosW, nosH);
+          ctx.restore();
+
+          // Nó text
+          ctx.globalAlpha = alpha;
+          ctx.textAlign = "left";
+          ctx.font = `500 ${fs(18)}px sans-serif`;
+          ctx.fillStyle = nos.color;
+          ctx.fillText("NO CORRESPONDENTE", cardX + nosW + 20, nosY + 20);
+          ctx.font = `italic ${fs(22)}px 'Cormorant Garamond', Georgia, serif`;
+          ctx.fillStyle = "#F5F0E6";
+          ctx.fillText(nos.title, cardX + nosW + 20, nosY + 46);
+          ctx.textAlign = isSquare ? "left" : "center";
+        } else {
+          // Tall: centered Nó card
+          ctx.save();
+          ctx.globalAlpha = alpha * 0.15;
+          ctx.fillStyle = nos.color;
+          ctx.beginPath();
+          ctx.roundRect(REEL_W / 2 - 250, nosY - 15, 500, nosH + 30, 10);
+          ctx.fill();
+          ctx.restore();
+
+          ctx.save();
+          ctx.globalAlpha = alpha;
+          ctx.beginPath();
+          ctx.roundRect(REEL_W / 2 - 220, nosY, nosW, nosH, 6);
+          ctx.clip();
+          ctx.drawImage(nosImg, REEL_W / 2 - 220, nosY, nosW, nosH);
+          ctx.restore();
+
+          ctx.globalAlpha = alpha;
+          ctx.textAlign = "left";
+          ctx.font = `500 ${fs(18)}px sans-serif`;
+          ctx.fillStyle = nos.color;
+          ctx.fillText("NO CORRESPONDENTE", REEL_W / 2 - 145, nosY + 22);
+          ctx.font = `italic ${fs(24)}px 'Cormorant Garamond', Georgia, serif`;
+          ctx.fillStyle = "#F5F0E6";
+          ctx.fillText(nos.title, REEL_W / 2 - 145, nosY + 52);
+          ctx.font = `${fs(16)}px sans-serif`;
+          ctx.fillStyle = "#888";
+          ctx.fillText(nos.subtitle, REEL_W / 2 - 145, nosY + 76);
+          ctx.textAlign = "center";
+        }
       }
     }
 
@@ -329,10 +365,10 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
       ctx.globalAlpha = ctaProgress;
 
       // Pill button
-      const btnW = isCompact ? 360 : 420;
-      const btnH = isCompact ? 50 : 60;
-      const btnX = (REEL_W - btnW) / 2;
-      const btnY = REEL_H - (isCompact ? 180 : 260) + slideUp;
+      const btnW = isSquare ? 340 : 420;
+      const btnH = isSquare ? 46 : 60;
+      const btnX = isSquare ? textX : (REEL_W - btnW) / 2;
+      const btnY = REEL_H - (isSquare ? 150 : 260) + slideUp;
 
       ctx.fillStyle = color;
       ctx.beginPath();
@@ -342,30 +378,35 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
       ctx.font = `600 ${fs(24)}px sans-serif`;
       ctx.fillStyle = "#0D0D1A";
       ctx.letterSpacing = "3px";
-      ctx.fillText("DISPONIVEL AGORA", REEL_W / 2, btnY + (isCompact ? 33 : 40));
+      ctx.textAlign = "center";
+      ctx.fillText("DISPONIVEL AGORA", btnX + btnW / 2, btnY + (isSquare ? 30 : 40));
       ctx.letterSpacing = "0px";
+      ctx.textAlign = isSquare ? "left" : "center";
     }
 
     // URL + branding (11.5-13s)
-    const brandOffset = isCompact ? 80 : 130;
+    const brandOffset = isSquare ? 55 : 130;
+    const brandCenterX = isSquare ? textX + textMaxW / 2 : REEL_W / 2;
     const brandProgress = clamp((elapsed - 11.5) / 1, 0, 1);
     if (brandProgress > 0) {
       ctx.globalAlpha = brandProgress;
-      ctx.font = `400 ${fs(22)}px sans-serif`;
+      ctx.textAlign = "center";
+      ctx.font = `400 ${fs(20)}px sans-serif`;
       ctx.fillStyle = "#888";
-      ctx.fillText("seteveus.space", REEL_W / 2, REEL_H - brandOffset);
+      ctx.fillText("seteveus.space", brandCenterX, REEL_H - brandOffset);
 
       // Decorative line
       ctx.strokeStyle = color + "40";
       ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.moveTo(REEL_W / 2 - 50, REEL_H - brandOffset + 40);
-      ctx.lineTo(REEL_W / 2 + 50, REEL_H - brandOffset + 40);
+      ctx.moveTo(brandCenterX - 40, REEL_H - brandOffset + 20);
+      ctx.lineTo(brandCenterX + 40, REEL_H - brandOffset + 20);
       ctx.stroke();
 
-      ctx.font = `italic ${fs(20)}px 'Cormorant Garamond', Georgia, serif`;
+      ctx.font = `italic ${fs(18)}px 'Cormorant Garamond', Georgia, serif`;
       ctx.fillStyle = "#666";
-      ctx.fillText("Vivianne dos Santos", REEL_W / 2, REEL_H - brandOffset + 65);
+      ctx.fillText("Vivianne dos Santos", brandCenterX, REEL_H - brandOffset + 40);
+      ctx.textAlign = isSquare ? "left" : "center";
     }
 
     // Fade in (first 1s)
