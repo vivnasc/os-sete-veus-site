@@ -113,6 +113,7 @@ export async function downloadAlbumForDistribution(
   album: Album,
   onProgress?: (p: DownloadProgress) => void,
   getTitle?: (slug: string, num: number, fallback: string) => string,
+  coverTrackNumber?: number,
 ): Promise<void> {
   const zip = new JSZip();
   const total = album.tracks.length;
@@ -139,7 +140,8 @@ export async function downloadAlbumForDistribution(
   // 2. Cover image (3000x3000)
   onProgress?.({ phase: "A preparar capa (3000x3000)", current: total + 1, total: total + 2 });
   try {
-    const coverUrl = `/api/music/stream?album=${encodeURIComponent(album.slug)}&track=1&type=cover`;
+    const coverNum = coverTrackNumber || 1;
+    const coverUrl = `/api/music/stream?album=${encodeURIComponent(album.slug)}&track=${coverNum}&type=cover`;
     const coverBlob = await upscaleCover(coverUrl);
     zip.file(`${folderName}/cover.jpg`, coverBlob);
   } catch {

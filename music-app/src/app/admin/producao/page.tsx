@@ -2007,9 +2007,11 @@ export default function AlbumProductionPage() {
                       titleMap = titlesData.titles || {};
                     } catch {}
                     const getTitle = (slug: string, num: number, fallback: string) => titleMap[`${slug}-t${num}`] || fallback;
+                    const coverTrack = prompt(`Capa do album — qual faixa? (1-${album.tracks.length})`, "1");
+                    const coverTrackNum = coverTrack ? parseInt(coverTrack, 10) : 1;
                     await downloadAlbumForDistribution(album, (p) => {
                       btn.textContent = `${p.phase} (${p.current}/${p.total})`;
-                    }, getTitle);
+                    }, getTitle, coverTrackNum);
                     btn.textContent = "ZIP pronto!";
                   } catch (e) {
                     btn.textContent = "Erro";
