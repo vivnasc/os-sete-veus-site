@@ -8,6 +8,7 @@ import NoDownload from "@/components/music/NoDownload";
 import AuthGate from "@/components/music/AuthGate";
 import RegisterSW from "@/components/RegisterSW";
 import PushPrompt from "@/components/music/PushPrompt";
+import DonationNudge from "@/components/music/DonationNudge";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -77,6 +78,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <MiniPlayer />
               <FullPlayer />
               <PlayTracker />
+              <DonationNudge />
               <NoDownload />
               <RegisterSW />
               <PushPrompt />

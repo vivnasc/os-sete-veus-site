@@ -6,12 +6,14 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { useLibrary } from "@/hooks/useLibrary";
 import { useSubscriptionGate } from "@/contexts/SubscriptionContext";
+import { useSupporterStatus } from "@/hooks/useSupporterStatus";
 import NavBar from "@/components/music/NavBar";
 
 export default function ContaPage() {
   const router = useRouter();
   const { userId, favorites, recents } = useLibrary();
   const { isPremium, requestPlay } = useSubscriptionGate();
+  const { isSupporter, supporterSince } = useSupporterStatus();
   const [email, setEmail] = useState<string | null>(null);
 
   useEffect(() => {
@@ -59,6 +61,31 @@ export default function ContaPage() {
               >
                 Subscrever Veus Music
               </button>
+            </div>
+          )}
+        </div>
+
+        {/* Supporter status */}
+        <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5 mb-4">
+          <p className="text-xs text-[#666680] mb-1">Apoio</p>
+          {isSupporter ? (
+            <div className="flex items-center gap-2">
+              <svg viewBox="0 0 24 24" fill="#C9A96E" className="h-4 w-4">
+                <path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.562.562 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+              </svg>
+              <p className="text-sm text-[#C9A96E]">Apoiante da Loranne</p>
+              {supporterSince && (
+                <span className="text-[10px] text-[#666680]">
+                  desde {new Date(supporterSince).toLocaleDateString("pt")}
+                </span>
+              )}
+            </div>
+          ) : (
+            <div>
+              <p className="text-sm text-[#a0a0b0] mb-2">Toda a musica e gratuita, para sempre.</p>
+              <a href="/apoiar" className="text-sm text-[#C9A96E] hover:underline">
+                Quero apoiar a Loranne
+              </a>
             </div>
           )}
         </div>
