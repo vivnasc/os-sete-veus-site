@@ -7,9 +7,11 @@ import type { Album, AlbumTrack } from "@/data/albums";
 import { getSharePath } from "@/lib/share-utils";
 
 const REEL_DURATION = 15;
-const REEL_W = 720;
-const REEL_H = 1280;
 const FPS = 24;
+
+// Presets
+export const REEL_SIZE_STATUS = { w: 720, h: 1280 } as const;  // WhatsApp Status
+export const REEL_SIZE_INSTA = { w: 1080, h: 1920 } as const;  // Instagram Reels
 
 function pickLyric(track: AlbumTrack): string | null {
   if (!track.lyrics) return null;
@@ -77,10 +79,10 @@ function getBestMime(): string {
 // Floating light particles
 type Particle = { x: number; y: number; r: number; speed: number; opacity: number; phase: number };
 
-function createParticles(count: number): Particle[] {
+function createParticles(count: number, w: number, h: number): Particle[] {
   return Array.from({ length: count }, () => ({
-    x: Math.random() * REEL_W,
-    y: Math.random() * REEL_H,
+    x: Math.random() * w,
+    y: Math.random() * h,
     r: 1 + Math.random() * 3,
     speed: 0.3 + Math.random() * 0.8,
     opacity: 0.1 + Math.random() * 0.4,
@@ -104,7 +106,10 @@ export async function generateReel(
   audioSrc: string,
   onProgress?: (p: ReelProgress) => void,
   audioStartSeconds?: number,
+  size: { w: number; h: number } = REEL_SIZE_STATUS,
 ): Promise<Blob> {
+  const REEL_W = size.w;
+  const REEL_H = size.h;
   const report = (phase: ReelProgress["phase"], progress: number, message: string) => {
     onProgress?.({ phase, progress, message });
   };
@@ -160,7 +165,7 @@ export async function generateReel(
   const coverSize = Math.round(REEL_W * 0.75);
   const coverBaseX = (REEL_W - coverSize) / 2;
   const coverBaseY = Math.round(REEL_H * 0.12);
-  const particles = createParticles(30);
+  const particles = createParticles(30, REEL_W, REEL_H);
 
   function drawFrame(elapsed: number) {
     const t = elapsed / REEL_DURATION;
@@ -333,11 +338,13 @@ export async function generateReel(
       output: (chunk, meta) => muxer.addVideoChunk(chunk, meta),
       error: () => {},
     });
+    // Level 3.1 for 720x1280, level 4.0 for 1080x1920
+    const avcCodec = REEL_W * REEL_H > 921600 ? "avc1.640028" : "avc1.42001f";
     encoder.configure({
-      codec: "avc1.42001f",
+      codec: avcCodec,
       width: REEL_W,
       height: REEL_H,
-      bitrate: 2_000_000,
+      bitrate: REEL_W > 720 ? 4_000_000 : 2_000_000,
       framerate: FPS,
     });
 
