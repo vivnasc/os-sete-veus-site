@@ -394,7 +394,7 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
       error: () => {},
     });
     encoder.configure({
-      codec: "avc1.42001f",
+      codec: "avc1.640033",
       width: REEL_W,
       height: REEL_H,
       bitrate: 4_000_000,
