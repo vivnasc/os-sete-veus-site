@@ -4,12 +4,53 @@ import { createClient } from "@supabase/supabase-js";
 
 const BUCKET = "audios";
 
+/** ~45 seconds of 128kbps MP3 = ~720KB. Cap previews at 750KB. */
+const PREVIEW_BYTE_LIMIT = 750_000;
+
+/**
+ * Verify the request comes from an authenticated user.
+ * Returns the user or null.
+ */
+async function getAuthUser(req: NextRequest) {
+  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!anonKey) return null;
+
+  // Extract token from Authorization header or cookie
+  let token: string | null = null;
+  const authHeader = req.headers.get("authorization");
+  if (authHeader?.startsWith("Bearer ")) {
+    token = authHeader.slice(7);
+  } else {
+    const cookie = req.headers.get("cookie");
+    if (cookie) {
+      const match = cookie.match(/sb-[^-]+-auth-token=([^;]+)/);
+      if (match) {
+        try {
+          const parsed = JSON.parse(decodeURIComponent(match[1]));
+          token = Array.isArray(parsed) ? parsed[0] : parsed;
+        } catch {
+          token = decodeURIComponent(match[1]);
+        }
+      }
+    }
+  }
+  if (!token) return null;
+
+  const client = createClient(SUPABASE_URL, anonKey, {
+    auth: { persistSession: false },
+    global: { headers: { Authorization: `Bearer ${token}` } },
+  });
+  const { data: { user } } = await client.auth.getUser();
+  return user;
+}
+
 /**
  * Proxy de streaming de audio e capas.
- * Esconde o URL real do Supabase e adiciona headers anti-download.
+ * Esconde o URL real do Supabase e protege faixas completas.
  *
- * Audio: GET /api/music/stream?album=espelho-ilusao&track=1
- * Cover: GET /api/music/stream?album=espelho-ilusao&track=1&type=cover
+ * Audio (requer login): GET /api/music/stream?album=espelho-ilusao&track=1
+ * Preview (publico, ~45s): GET /api/music/stream?album=espelho-ilusao&track=1&preview=1
+ * Cover (publico):         GET /api/music/stream?album=espelho-ilusao&track=1&type=cover
  *
  * Tries main file first (faixa-01.mp3), then falls back to first version.
  * For covers, tries .jpg first then .png.
@@ -53,18 +94,36 @@ export async function GET(req: NextRequest) {
   }
 
   // ── AUDIO ──
+  const isPreview = searchParams.get("preview") === "1";
+
+  // Full tracks require authentication
+  if (!isPreview) {
+    const user = await getAuthUser(req);
+    if (!user) {
+      return NextResponse.json(
+        { error: "Autenticação necessária para ouvir faixas completas." },
+        { status: 401 }
+      );
+    }
+  }
+
   const version = searchParams.get("version");
   const safeVersion = version ? version.replace(/[^a-z0-9-]/g, "") : null;
   const rangeHeader = req.headers.get("range");
   const fetchHeaders: HeadersInit = {};
-  if (rangeHeader) fetchHeaders["Range"] = rangeHeader;
+  // For previews, only fetch the first chunk (ignore client range requests)
+  if (isPreview) {
+    fetchHeaders["Range"] = `bytes=0-${PREVIEW_BYTE_LIMIT}`;
+  } else if (rangeHeader) {
+    fetchHeaders["Range"] = rangeHeader;
+  }
 
   // If specific version requested, serve it directly
   if (safeVersion) {
     const versionUrl = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/albums/${safeAlbum}/faixa-${safeTrack}-${safeVersion}.mp3`;
     const upstream = await fetch(versionUrl, { headers: fetchHeaders });
     if (upstream.ok || upstream.status === 206) {
-      return buildResponse(upstream);
+      return buildResponse(upstream, isPreview);
     }
     return NextResponse.json({ error: "Versão não encontrada" }, { status: 404 });
   }
@@ -117,17 +176,31 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Áudio não encontrado" }, { status: 404 });
   }
 
-  return buildResponse(upstream);
+  return buildResponse(upstream, isPreview);
 }
 
-function buildResponse(upstream: Response) {
+function buildResponse(upstream: Response, isPreview = false) {
   const responseHeaders = new Headers();
   responseHeaders.set("Content-Type", "audio/mpeg");
-  responseHeaders.set("Accept-Ranges", "bytes");
-  responseHeaders.set("Cache-Control", "public, max-age=3600");
+  responseHeaders.set("Cache-Control", isPreview ? "public, max-age=300" : "private, no-store");
   responseHeaders.set("Content-Disposition", "inline");
   responseHeaders.set("X-Content-Type-Options", "nosniff");
 
+  // Anti-download / anti-scrape headers
+  responseHeaders.set("X-Robots-Tag", "noindex, nofollow, noarchive");
+
+  if (isPreview) {
+    // Preview: no range support, fixed size
+    const contentLength = upstream.headers.get("content-length");
+    if (contentLength) responseHeaders.set("Content-Length", contentLength);
+    return new NextResponse(upstream.body, {
+      status: 200,
+      headers: responseHeaders,
+    });
+  }
+
+  // Full track: support range requests
+  responseHeaders.set("Accept-Ranges", "bytes");
   const contentRange = upstream.headers.get("content-range");
   if (contentRange) responseHeaders.set("Content-Range", contentRange);
   const contentLength = upstream.headers.get("content-length");
