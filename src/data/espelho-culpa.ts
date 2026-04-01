@@ -278,8 +278,8 @@ export const chapters: Chapter[] = [
       "Outra mensagem: \"És o único que pode ajudar.\"",
       "*Sou*, pensou. *Mas devia ser?*",
       "Não respondeu. Desligou o telemóvel — gesto radical que nunca fizera porque estar sempre disponível era parte da função.",
-      "E ficou ali sentado no sofá, sozinho no apartamento que não era verdadeiramente seu, rodeado de silêncio que amplificava cada pensamento que passara anos a suprimir através de trabalho constante.",
-      "E Filipe, pela primeira vez, permitiu-se considerar que talvez pudesse dizer não.",
+      "Ficou ali sentado no sofá, sozinho no apartamento que não era verdadeiramente seu, rodeado de silêncio que amplificava cada pensamento que passara anos a suprimir através de trabalho constante.",
+      "E pela primeira vez, permitiu-se considerar que talvez pudesse dizer não.",
     ],
     reflection: {
       prompt: "Reconheces a voz de Luísa na tua vida -- alguém que te disse a verdade que não querias ouvir?",
