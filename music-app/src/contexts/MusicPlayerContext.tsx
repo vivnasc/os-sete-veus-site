@@ -237,9 +237,14 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
         return prev;
       }
 
-      const currentIdx = prev.queue.findIndex(t => t.number === prev.currentTrack?.number && (
-        !(t as QueueTrack).albumSlug || (t as QueueTrack).albumSlug === prev.currentAlbum?.slug
-      ));
+      const currentIdx = prev.queue.findIndex(t => {
+        if (t.number !== prev.currentTrack?.number) return false;
+        const trackAlbum = (t as QueueTrack).albumSlug;
+        const currentAlbum = prev.currentAlbum?.slug;
+        // Match by albumSlug if available, otherwise by position
+        if (trackAlbum && currentAlbum) return trackAlbum === currentAlbum;
+        return true;
+      });
       let nextIdx: number;
 
       if (prev.shuffle) {
@@ -385,9 +390,13 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     }
 
     setState(prev => {
-      const currentIdx = prev.queue.findIndex(t => t.number === prev.currentTrack?.number && (
-        !(t as QueueTrack).albumSlug || (t as QueueTrack).albumSlug === prev.currentAlbum?.slug
-      ));
+      const currentIdx = prev.queue.findIndex(t => {
+        if (t.number !== prev.currentTrack?.number) return false;
+        const trackAlbum = (t as QueueTrack).albumSlug;
+        const currentAlbum = prev.currentAlbum?.slug;
+        if (trackAlbum && currentAlbum) return trackAlbum === currentAlbum;
+        return true;
+      });
       const prevIdx = currentIdx - 1;
       if (prevIdx < 0) {
         audio.currentTime = 0;
