@@ -12,6 +12,8 @@ import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
 export default function NovidadesSection() {
   const [albums, setAlbums] = useState<{ album: Album; trackCount: number }[]>([]);
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     fetch("/api/published-tracks")
       .then((r) => r.json())
@@ -30,10 +32,27 @@ export default function NovidadesSection() {
         }
         setAlbums(items.reverse().slice(0, 8));
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => setLoading(false));
   }, []);
 
-  if (albums.length === 0) return null;
+  if (!loading && albums.length === 0) return null;
+
+  if (loading) {
+    return (
+      <section>
+        <div className="h-7 w-32 rounded bg-white/5 animate-pulse mb-4" />
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {[1,2,3,4].map(i => (
+            <div key={i}>
+              <div className="aspect-square rounded-xl bg-white/5 animate-pulse mb-2" />
+              <div className="h-4 w-24 rounded bg-white/5 animate-pulse" />
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section>

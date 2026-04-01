@@ -143,9 +143,9 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
         <div className="relative px-6 pt-12 pb-8 max-w-screen-lg mx-auto">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-xs text-[#666680] hover:text-[#a0a0b0] transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-sm text-[#666680] hover:text-[#a0a0b0] transition-colors mb-8 py-3 pr-4 min-h-[44px] -ml-2"
           >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
             Voltar
