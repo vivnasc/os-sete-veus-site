@@ -187,7 +187,7 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
               </div>
 
               {/* Play all + upload buttons */}
-              <div className="mt-6 flex items-center gap-3">
+              <div className="mt-6 flex flex-wrap items-center gap-2 sm:gap-3">
                 <button
                   onClick={() => playAlbum(album)}
                   className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium text-[#0D0D1A] transition-transform hover:scale-105"

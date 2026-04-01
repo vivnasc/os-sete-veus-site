@@ -59,7 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased">
+      <body className="antialiased overflow-x-hidden">
         <MusicPlayerProvider>
           <SubscriptionProvider>
             <div className="min-h-screen bg-[#0D0D1A] text-[#F5F0E6]">
