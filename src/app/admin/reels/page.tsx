@@ -8,7 +8,9 @@ import { getNosCollectionLive, type NosBook } from "@/data/nos-collection";
 import { supabase } from "@/lib/supabase";
 import {
   generateLaunchReel,
+  FORMATS,
   type LaunchReelProgress,
+  type ReelFormat,
 } from "@/lib/launch-reel-generator";
 
 const ADMIN_EMAILS = ["viv.saraiva@gmail.com"];
@@ -39,7 +41,9 @@ export default function AdminReelsPage() {
   const [selectedSlug, setSelectedSlug] = useState("");
   const [audioTracks, setAudioTracks] = useState<AudioTrack[]>([]);
   const [selectedTrack, setSelectedTrack] = useState<string>("");
+  const [localAudioUrl, setLocalAudioUrl] = useState<string>("");
   const [loadingTracks, setLoadingTracks] = useState(false);
+  const [reelFormat, setReelFormat] = useState<ReelFormat>("reels");
   const [tagline, setTagline] = useState("");
   const [progress, setProgress] = useState<LaunchReelProgress | null>(null);
   const [reelBlob, setReelBlob] = useState<Blob | null>(null);
@@ -76,33 +80,51 @@ export default function AdminReelsPage() {
       return;
     }
 
+    const baseUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audios/albums/${albumSlug}`;
+
     try {
-      const { data, error } = await supabase.storage
+      // Try Supabase storage listing first
+      const { data } = await supabase.storage
         .from("audios")
         .list(`albums/${albumSlug}`, { limit: 50 });
 
-      if (error || !data) {
+      if (data && data.length > 0) {
+        const tracks: AudioTrack[] = data
+          .filter(
+            (f) =>
+              f.name.match(/^faixa-\d+\.mp3$/) && f.name !== "faixa-00.mp3"
+          )
+          .map((f) => {
+            const num = f.name.replace("faixa-", "").replace(".mp3", "");
+            return { name: `Faixa ${parseInt(num)}`, number: num, url: `${baseUrl}/${f.name}` };
+          })
+          .sort((a, b) => a.number.localeCompare(b.number));
+
+        setAudioTracks(tracks);
+        if (tracks.length > 0) setSelectedTrack(tracks[0].url);
         setLoadingTracks(false);
         return;
       }
-
-      const tracks: AudioTrack[] = data
-        .filter(
-          (f) =>
-            f.name.match(/^faixa-\d+\.mp3$/) && f.name !== "faixa-00.mp3"
-        )
-        .map((f) => {
-          const num = f.name.replace("faixa-", "").replace(".mp3", "");
-          const url = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audios/albums/${albumSlug}/${f.name}`;
-          return { name: `Faixa ${parseInt(num)}`, number: num, url };
-        })
-        .sort((a, b) => a.number.localeCompare(b.number));
-
-      setAudioTracks(tracks);
-      if (tracks.length > 0) setSelectedTrack(tracks[0].url);
     } catch {
-      // ignore
+      // Listing failed — fallback to probing public URLs
     }
+
+    // Fallback: probe tracks 1-10 with HEAD requests
+    const found: AudioTrack[] = [];
+    const probes = Array.from({ length: 10 }, (_, i) => {
+      const num = String(i + 1).padStart(2, "0");
+      const url = `${baseUrl}/faixa-${num}.mp3`;
+      return fetch(url, { method: "HEAD" })
+        .then((r) => {
+          if (r.ok) found.push({ name: `Faixa ${i + 1}`, number: num, url });
+        })
+        .catch(() => {});
+    });
+    await Promise.all(probes);
+
+    found.sort((a, b) => a.number.localeCompare(b.number));
+    setAudioTracks(found);
+    if (found.length > 0) setSelectedTrack(found[0].url);
     setLoadingTracks(false);
   }
 
@@ -125,8 +147,9 @@ export default function AdminReelsPage() {
         nos: nos || null,
         coverSrc: exp.image,
         nosCoverSrc: nos?.image || null,
-        audioSrc: selectedTrack || null,
+        audioSrc: localAudioUrl || selectedTrack || null,
         tagline: tagline || undefined,
+        format: reelFormat,
         onProgress: setProgress,
       });
 
@@ -151,26 +174,46 @@ export default function AdminReelsPage() {
     a.click();
   }
 
+  function buildCaption(exp: Experience, nos?: NosBook | null): string {
+    const lines = [
+      `${exp.title}`,
+      `"${exp.subtitle}"`,
+      "",
+      exp.description,
+    ];
+
+    if (nos) {
+      lines.push("", `~ Ao completar, desbloqueia ${nos.title}`);
+    }
+
+    lines.push(
+      "",
+      "seteveus.space",
+      "",
+      ".",
+      ".",
+      ".",
+      "",
+      "#seteveus #osseteveusdespertar #espelhos #ficçãotransformativa",
+      "#leitura #livros #livrosnovos #lancamento #novolivro",
+      "#autoconhecimento #crescimentopessoal #desenvolvimentopessoal",
+      "#reflexão #jornadadescoberta #vidaconsciente",
+      "#escritora #literaturaportugesa #ficçãoliterária",
+      "#moçambique #escritoramoçambicana #viviannedossantos",
+      "#bookstagram #booktok #livrosrecomendados #dicasdelivros",
+      "#leituraconsciente #livrosquetransformam #leituraquefazbem",
+    );
+
+    return lines.join("\n");
+  }
+
   async function handleShare() {
     if (!reelBlob || !selectedSlug) return;
     const exp = experiences.find((e) => e.slug === selectedSlug);
     if (!exp) return;
 
     const nos = nosCollection.find((n) => n.espelhoSlug === selectedSlug);
-    const caption = [
-      `${exp.title}`,
-      `"${exp.subtitle}"`,
-      "",
-      exp.description,
-      "",
-      nos ? `~ ${nos.title} desbloqueia ao completar` : "",
-      "",
-      `seteveus.space/experiencias/${exp.slug}`,
-      "",
-      "#seteveus #espelhos #ficçãotransformativa #leitura #autoconhecimento",
-    ]
-      .filter(Boolean)
-      .join("\n");
+    const caption = buildCaption(exp, nos);
 
     if (navigator.share) {
       try {
@@ -189,7 +232,7 @@ export default function AdminReelsPage() {
     // Fallback: copy caption + download
     await navigator.clipboard.writeText(caption);
     handleDownload();
-    alert("Legenda copiada. Video descarregado. Abre o WhatsApp Status ou Instagram Reels.");
+    alert("Legenda copiada. Video descarregado. Abre o Instagram Reels e cola a legenda.");
   }
 
   if (authLoading || !isAdmin) return null;
@@ -226,7 +269,7 @@ export default function AdminReelsPage() {
         {selectedSlug && (
           <div className="mt-6">
             <label className="block text-sm text-brown-400">
-              Audio (da music-app)
+              Audio
             </label>
             {loadingTracks ? (
               <p className="mt-2 text-sm text-brown-500">A procurar faixas...</p>
@@ -234,7 +277,7 @@ export default function AdminReelsPage() {
               <>
                 <select
                   value={selectedTrack}
-                  onChange={(e) => setSelectedTrack(e.target.value)}
+                  onChange={(e) => { setSelectedTrack(e.target.value); setLocalAudioUrl(""); }}
                   className="mt-1 w-full rounded-lg border border-brown-700 bg-brown-800 px-4 py-3 text-cream"
                 >
                   {audioTracks.map((t) => (
@@ -243,9 +286,9 @@ export default function AdminReelsPage() {
                     </option>
                   ))}
                 </select>
-                {selectedTrack && (
+                {(localAudioUrl || selectedTrack) && (
                   <audio
-                    src={selectedTrack}
+                    src={localAudioUrl || selectedTrack}
                     controls
                     className="mt-2 w-full"
                   />
@@ -253,10 +296,31 @@ export default function AdminReelsPage() {
               </>
             ) : (
               <p className="mt-2 text-sm text-brown-500">
-                Nenhuma faixa aprovada para este album.
-                Gera primeiro na music-app.
+                Nenhuma faixa encontrada no Supabase. Usa o upload abaixo.
               </p>
             )}
+            {/* File upload fallback */}
+            <div className="mt-3">
+              <label className="block text-xs text-brown-500 mb-1">
+                Ou carrega um ficheiro MP3:
+              </label>
+              <input
+                type="file"
+                accept="audio/mpeg,audio/mp3"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) {
+                    const url = URL.createObjectURL(file);
+                    setLocalAudioUrl(url);
+                    setSelectedTrack("");
+                  }
+                }}
+                className="w-full text-sm text-brown-400 file:mr-3 file:rounded-lg file:border-0 file:bg-brown-700 file:px-4 file:py-2 file:text-sm file:text-cream hover:file:bg-brown-600"
+              />
+              {localAudioUrl && (
+                <audio src={localAudioUrl} controls className="mt-2 w-full" />
+              )}
+            </div>
           </div>
         )}
 
@@ -273,6 +337,29 @@ export default function AdminReelsPage() {
               rows={2}
               className="mt-1 w-full rounded-lg border border-brown-700 bg-brown-800 px-4 py-3 text-cream placeholder:text-brown-600"
             />
+          </div>
+        )}
+
+        {/* Format selector */}
+        {selectedSlug && (
+          <div className="mt-6">
+            <label className="block text-sm text-brown-400">Formato</label>
+            <div className="mt-2 flex gap-3">
+              {(Object.entries(FORMATS) as [ReelFormat, typeof FORMATS[ReelFormat]][]).map(([key, fmt]) => (
+                <button
+                  key={key}
+                  onClick={() => setReelFormat(key)}
+                  className={`flex-1 rounded-lg border px-4 py-3 text-left transition-colors ${
+                    reelFormat === key
+                      ? "border-cream/40 bg-brown-700 text-cream"
+                      : "border-brown-700 bg-brown-800 text-brown-400 hover:border-brown-600"
+                  }`}
+                >
+                  <p className="text-sm font-medium">{fmt.label}</p>
+                  <p className="text-xs opacity-60">{fmt.w}x{fmt.h}</p>
+                </button>
+              ))}
+            </div>
           </div>
         )}
 
@@ -382,6 +469,33 @@ export default function AdminReelsPage() {
                 ? `${(reelBlob.size / 1024 / 1024).toFixed(1)} MB — ${reelBlob.type}`
                 : ""}
             </p>
+
+            {/* Caption for Instagram */}
+            {selectedExp && (() => {
+              const nos = nosCollection.find((n) => n.espelhoSlug === selectedSlug);
+              const caption = buildCaption(selectedExp, nos);
+              return (
+                <div className="mt-6">
+                  <div className="flex items-center justify-between">
+                    <p className="text-sm font-medium text-cream">Legenda para Instagram</p>
+                    <button
+                      onClick={() => {
+                        navigator.clipboard.writeText(caption);
+                        const btn = document.getElementById("copy-caption-btn");
+                        if (btn) { btn.textContent = "Copiada!"; setTimeout(() => { btn.textContent = "Copiar"; }, 2000); }
+                      }}
+                      id="copy-caption-btn"
+                      className="rounded-lg border border-brown-600 px-3 py-1 text-xs text-cream hover:bg-brown-700"
+                    >
+                      Copiar
+                    </button>
+                  </div>
+                  <pre className="mt-2 max-h-[300px] overflow-y-auto whitespace-pre-wrap rounded-lg bg-brown-900 p-4 text-xs leading-relaxed text-brown-300 border border-brown-700">
+                    {caption}
+                  </pre>
+                </div>
+              );
+            })()}
           </div>
         )}
       </div>

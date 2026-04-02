@@ -12,6 +12,7 @@ import { useDownloads } from "@/hooks/useDownloads";
 import { getAlbumCover, getAlbumBadge, getTrackCoverUrl } from "@/lib/album-covers";
 import TrackRow from "@/components/music/TrackRow";
 import { useAlbumVersions, type AlbumVersion } from "@/hooks/useAlbumVersions";
+import { useAlbumCovers } from "@/hooks/useAlbumCovers";
 import type { Album, AlbumTrack } from "@/data/albums";
 
 function fmt(s: number) {
@@ -103,6 +104,7 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
   const { isPremium, requestPlay } = useSubscriptionGate();
   const { saveAlbum, isSaved } = useDownloads();
   const { versionsForTrack, hasVersions } = useAlbumVersions(slug);
+  const { getCoverTrack } = useAlbumCovers();
   const [expandedTrack, setExpandedTrack] = useState<number | null>(null);
 
   if (!album) {
@@ -121,7 +123,7 @@ export default function AlbumPage({ params }: { params: Promise<{ slug: string }
   const totalDuration = album.tracks.reduce((acc, t) => acc + t.durationSeconds, 0);
   const totalMinutes = Math.ceil(totalDuration / 60);
   const albumColor = album.color;
-  const sunoCover = getTrackCoverUrl(album.slug, 1);
+  const sunoCover = getTrackCoverUrl(album.slug, getCoverTrack(album.slug));
   const poseCover = getAlbumCover(album);
   const badge = getAlbumBadge(album);
 

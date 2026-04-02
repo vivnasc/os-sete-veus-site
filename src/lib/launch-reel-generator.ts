@@ -18,10 +18,17 @@
 import type { Experience } from "@/data/experiences";
 import type { NosBook } from "@/data/nos-collection";
 
-const REEL_W = 1080;
-const REEL_H = 1920;
+export type ReelFormat = "reels" | "status";
+
+const FORMATS: Record<ReelFormat, { w: number; h: number; label: string }> = {
+  reels: { w: 1080, h: 1080, label: "Instagram (1:1)" },
+  status: { w: 1080, h: 1920, label: "WhatsApp Status (9:16)" },
+};
+
 const FPS = 24;
 const REEL_DURATION = 15;
+
+export { FORMATS };
 
 export type LaunchReelProgress = {
   phase: "loading" | "recording" | "finalizing" | "done" | "error";
@@ -34,8 +41,9 @@ export type LaunchReelOptions = {
   nos?: NosBook | null;
   coverSrc: string;
   nosCoverSrc?: string | null;
-  audioSrc?: string | null; // URL to audio file (from Supabase storage)
+  audioSrc?: string | null;
   tagline?: string;
+  format?: ReelFormat;
   onProgress?: (p: LaunchReelProgress) => void;
 };
 
@@ -78,10 +86,10 @@ function wrapText(ctx: CanvasRenderingContext2D, text: string, maxWidth: number)
 
 type Particle = { x: number; y: number; r: number; speed: number; opacity: number; phase: number };
 
-function createParticles(count: number): Particle[] {
+function createParticles(count: number, w: number, h: number): Particle[] {
   return Array.from({ length: count }, () => ({
-    x: Math.random() * REEL_W,
-    y: Math.random() * REEL_H,
+    x: Math.random() * w,
+    y: Math.random() * h,
     r: 1 + Math.random() * 2.5,
     speed: 0.2 + Math.random() * 0.5,
     opacity: 0.08 + Math.random() * 0.25,
@@ -92,8 +100,11 @@ function createParticles(count: number): Particle[] {
 // --- Main generator ---
 
 export async function generateLaunchReel(options: LaunchReelOptions): Promise<Blob> {
-  const { experience, nos, coverSrc, nosCoverSrc, audioSrc, tagline, onProgress } = options;
+  const { experience, nos, coverSrc, nosCoverSrc, audioSrc, tagline, format = "reels", onProgress } = options;
   const color = experience.color;
+  const fmt = FORMATS[format];
+  const REEL_W = fmt.w;
+  const REEL_H = fmt.h;
 
   const report = (phase: LaunchReelProgress["phase"], progress: number, message: string) => {
     onProgress?.({ phase, progress, message });
@@ -127,18 +138,24 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
   canvas.height = REEL_H;
   const ctx = canvas.getContext("2d")!;
 
-  const particles = createParticles(25);
+  const particles = createParticles(25, REEL_W, REEL_H);
   const displayTagline = tagline || experience.description;
 
-  // Book cover dimensions (3:4 ratio, portrait)
-  const coverW = Math.round(REEL_W * 0.55);
+  // Square (1:1) vs tall (9:16) layout
+  const isSquare = format === "reels";
+
+  // Book cover dimensions
+  const coverW = isSquare ? Math.round(REEL_W * 0.3) : Math.round(REEL_W * 0.48);
   const coverH = Math.round(coverW * 1.5);
-  const coverX = (REEL_W - coverW) / 2;
-  const coverY = Math.round(REEL_H * 0.08);
+  const coverX = isSquare ? Math.round(REEL_W * 0.06) : (REEL_W - coverW) / 2;
+  const coverY = isSquare ? Math.round((REEL_H - coverH) / 2) : Math.round(REEL_H * 0.05);
 
   // Nó mini cover
-  const nosW = 60;
-  const nosH = 90;
+  const nosW = isSquare ? 40 : 60;
+  const nosH = isSquare ? 60 : 90;
+
+  // Font scaling for square format
+  const fs = (size: number) => isSquare ? Math.round(size * 0.8) : size;
 
   function drawFrame(elapsed: number) {
     const t = elapsed / REEL_DURATION;
@@ -210,18 +227,22 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
     }
 
     // --- Text area ---
-    ctx.textAlign = "center";
-    const textBaseY = coverY + coverH + 40;
+    // Square: text to the right of cover. Tall: text below cover.
+    const textX = isSquare ? coverX + coverW + Math.round(REEL_W * 0.06) : REEL_W / 2;
+    const textBaseY = isSquare ? coverY + 10 : coverY + coverH + 60;
+    const textMaxW = isSquare ? REEL_W - textX - 40 : REEL_W - 100;
+    ctx.textAlign = isSquare ? "left" : "center";
+    const gap = isSquare ? 0.65 : 1; // vertical spacing multiplier
 
     // "ESPELHO 3 DE 7" label (0.5-2s)
     const labelProgress = clamp((elapsed - 0.5) / 1, 0, 1);
     if (labelProgress > 0) {
       const slideUp = 15 * (1 - easeInOut(labelProgress));
       ctx.globalAlpha = labelProgress;
-      ctx.font = "500 24px sans-serif";
+      ctx.font = `500 ${fs(22)}px sans-serif`;
       ctx.letterSpacing = "6px";
       ctx.fillStyle = color;
-      ctx.fillText(`ESPELHO ${experience.number} DE 7`, REEL_W / 2, textBaseY + slideUp);
+      ctx.fillText(`ESPELHO ${experience.number} DE 7`, textX, textBaseY + slideUp);
       ctx.letterSpacing = "0px";
     }
 
@@ -230,11 +251,11 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
     if (titleProgress > 0) {
       const slideUp = 25 * (1 - easeInOut(titleProgress));
       ctx.globalAlpha = titleProgress;
-      ctx.font = "bold 56px 'Cormorant Garamond', Georgia, serif";
+      ctx.font = `bold ${fs(52)}px 'Cormorant Garamond', Georgia, serif`;
       ctx.fillStyle = "#F5F0E6";
-      const titleLines = wrapText(ctx, experience.title, REEL_W - 80);
-      let y = textBaseY + 55 + slideUp;
-      for (const line of titleLines) { ctx.fillText(line, REEL_W / 2, y); y += 66; }
+      const titleLines = wrapText(ctx, experience.title, textMaxW);
+      let y = textBaseY + Math.round(60 * gap) + slideUp;
+      for (const line of titleLines) { ctx.fillText(line, textX, y); y += Math.round(58 * gap); }
     }
 
     // Subtitle (3.5-5s)
@@ -242,9 +263,11 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
     if (subProgress > 0) {
       const slideUp = 20 * (1 - easeInOut(subProgress));
       ctx.globalAlpha = subProgress;
-      ctx.font = "italic 32px 'Cormorant Garamond', Georgia, serif";
+      ctx.font = `italic ${fs(30)}px 'Cormorant Garamond', Georgia, serif`;
       ctx.fillStyle = color + "dd";
-      ctx.fillText(experience.subtitle, REEL_W / 2, textBaseY + 130 + slideUp);
+      const subLines = wrapText(ctx, experience.subtitle, textMaxW);
+      let y = textBaseY + Math.round(140 * gap) + slideUp;
+      for (const line of subLines) { ctx.fillText(line, textX, y); y += Math.round(36 * gap); }
     }
 
     // Tagline / description (5.5-8s)
@@ -253,11 +276,11 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
     if (tagProgress > 0 && tagFadeOut > 0) {
       const slideUp = 20 * (1 - easeInOut(tagProgress));
       ctx.globalAlpha = tagProgress * tagFadeOut;
-      ctx.font = "italic 28px 'Cormorant Garamond', Georgia, serif";
+      ctx.font = `italic ${fs(26)}px 'Cormorant Garamond', Georgia, serif`;
       ctx.fillStyle = "#c0b8a8";
-      const tagLines = wrapText(ctx, `"${displayTagline}"`, REEL_W - 120);
-      let y = textBaseY + 190 + slideUp;
-      for (const line of tagLines) { ctx.fillText(line, REEL_W / 2, y); y += 38; }
+      const tagLines = wrapText(ctx, `"${displayTagline}"`, textMaxW);
+      let y = textBaseY + Math.round(210 * gap) + slideUp;
+      for (const line of tagLines) { ctx.fillText(line, textX, y); y += Math.round(34 * gap); }
     }
 
     // Nó teaser (8-10.5s)
@@ -267,39 +290,71 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
       if (nosProgress > 0 && nosFadeOut > 0) {
         const alpha = nosProgress * nosFadeOut;
         const slideUp = 15 * (1 - easeInOut(nosProgress));
-        const nosY = textBaseY + 200 + slideUp;
+        const nosY = textBaseY + Math.round(250 * gap) + slideUp;
 
-        // Background card
-        ctx.save();
-        ctx.globalAlpha = alpha * 0.15;
-        ctx.fillStyle = nos.color;
-        ctx.beginPath();
-        ctx.roundRect(REEL_W / 2 - 250, nosY - 15, 500, nosH + 30, 10);
-        ctx.fill();
-        ctx.restore();
+        if (isSquare) {
+          // Square: Nó card in the text column
+          const cardX = textX;
+          const cardW = textMaxW;
 
-        // Mini cover
-        ctx.save();
-        ctx.globalAlpha = alpha;
-        ctx.beginPath();
-        ctx.roundRect(REEL_W / 2 - 220, nosY, nosW, nosH, 6);
-        ctx.clip();
-        ctx.drawImage(nosImg, REEL_W / 2 - 220, nosY, nosW, nosH);
-        ctx.restore();
+          ctx.save();
+          ctx.globalAlpha = alpha * 0.15;
+          ctx.fillStyle = nos.color;
+          ctx.beginPath();
+          ctx.roundRect(cardX, nosY - 15, cardW, nosH + 30, 10);
+          ctx.fill();
+          ctx.restore();
 
-        // Nó text
-        ctx.globalAlpha = alpha;
-        ctx.textAlign = "left";
-        ctx.font = "500 18px sans-serif";
-        ctx.fillStyle = nos.color;
-        ctx.fillText("NO CORRESPONDENTE", REEL_W / 2 - 145, nosY + 22);
-        ctx.font = "italic 24px 'Cormorant Garamond', Georgia, serif";
-        ctx.fillStyle = "#F5F0E6";
-        ctx.fillText(nos.title, REEL_W / 2 - 145, nosY + 52);
-        ctx.font = "16px sans-serif";
-        ctx.fillStyle = "#888";
-        ctx.fillText(nos.subtitle, REEL_W / 2 - 145, nosY + 76);
-        ctx.textAlign = "center";
+          // Mini cover
+          ctx.save();
+          ctx.globalAlpha = alpha;
+          ctx.beginPath();
+          ctx.roundRect(cardX + 10, nosY, nosW, nosH, 6);
+          ctx.clip();
+          ctx.drawImage(nosImg, cardX + 10, nosY, nosW, nosH);
+          ctx.restore();
+
+          // Nó text
+          ctx.globalAlpha = alpha;
+          ctx.textAlign = "left";
+          ctx.font = `500 ${fs(18)}px sans-serif`;
+          ctx.fillStyle = nos.color;
+          ctx.fillText("NO CORRESPONDENTE", cardX + nosW + 20, nosY + 20);
+          ctx.font = `italic ${fs(22)}px 'Cormorant Garamond', Georgia, serif`;
+          ctx.fillStyle = "#F5F0E6";
+          ctx.fillText(nos.title, cardX + nosW + 20, nosY + 46);
+          ctx.textAlign = isSquare ? "left" : "center";
+        } else {
+          // Tall: centered Nó card
+          ctx.save();
+          ctx.globalAlpha = alpha * 0.15;
+          ctx.fillStyle = nos.color;
+          ctx.beginPath();
+          ctx.roundRect(REEL_W / 2 - 250, nosY - 15, 500, nosH + 30, 10);
+          ctx.fill();
+          ctx.restore();
+
+          ctx.save();
+          ctx.globalAlpha = alpha;
+          ctx.beginPath();
+          ctx.roundRect(REEL_W / 2 - 220, nosY, nosW, nosH, 6);
+          ctx.clip();
+          ctx.drawImage(nosImg, REEL_W / 2 - 220, nosY, nosW, nosH);
+          ctx.restore();
+
+          ctx.globalAlpha = alpha;
+          ctx.textAlign = "left";
+          ctx.font = `500 ${fs(18)}px sans-serif`;
+          ctx.fillStyle = nos.color;
+          ctx.fillText("NO CORRESPONDENTE", REEL_W / 2 - 145, nosY + 22);
+          ctx.font = `italic ${fs(24)}px 'Cormorant Garamond', Georgia, serif`;
+          ctx.fillStyle = "#F5F0E6";
+          ctx.fillText(nos.title, REEL_W / 2 - 145, nosY + 52);
+          ctx.font = `${fs(16)}px sans-serif`;
+          ctx.fillStyle = "#888";
+          ctx.fillText(nos.subtitle, REEL_W / 2 - 145, nosY + 76);
+          ctx.textAlign = "center";
+        }
       }
     }
 
@@ -310,42 +365,48 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
       ctx.globalAlpha = ctaProgress;
 
       // Pill button
-      const btnW = 420;
-      const btnH = 60;
-      const btnX = (REEL_W - btnW) / 2;
-      const btnY = REEL_H - 260 + slideUp;
+      const btnW = isSquare ? 340 : 420;
+      const btnH = isSquare ? 46 : 60;
+      const btnX = isSquare ? textX : (REEL_W - btnW) / 2;
+      const btnY = REEL_H - (isSquare ? 150 : 260) + slideUp;
 
       ctx.fillStyle = color;
       ctx.beginPath();
       ctx.roundRect(btnX, btnY, btnW, btnH, 30);
       ctx.fill();
 
-      ctx.font = "600 24px sans-serif";
+      ctx.font = `600 ${fs(24)}px sans-serif`;
       ctx.fillStyle = "#0D0D1A";
       ctx.letterSpacing = "3px";
-      ctx.fillText("DISPONIVEL AGORA", REEL_W / 2, btnY + 40);
+      ctx.textAlign = "center";
+      ctx.fillText("DISPONIVEL AGORA", btnX + btnW / 2, btnY + (isSquare ? 30 : 40));
       ctx.letterSpacing = "0px";
+      ctx.textAlign = isSquare ? "left" : "center";
     }
 
     // URL + branding (11.5-13s)
+    const brandOffset = isSquare ? 55 : 130;
+    const brandCenterX = isSquare ? textX + textMaxW / 2 : REEL_W / 2;
     const brandProgress = clamp((elapsed - 11.5) / 1, 0, 1);
     if (brandProgress > 0) {
       ctx.globalAlpha = brandProgress;
-      ctx.font = "400 22px sans-serif";
+      ctx.textAlign = "center";
+      ctx.font = `400 ${fs(20)}px sans-serif`;
       ctx.fillStyle = "#888";
-      ctx.fillText("seteveus.space", REEL_W / 2, REEL_H - 130);
+      ctx.fillText("seteveus.space", brandCenterX, REEL_H - brandOffset);
 
       // Decorative line
       ctx.strokeStyle = color + "40";
       ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.moveTo(REEL_W / 2 - 50, REEL_H - 90);
-      ctx.lineTo(REEL_W / 2 + 50, REEL_H - 90);
+      ctx.moveTo(brandCenterX - 40, REEL_H - brandOffset + 20);
+      ctx.lineTo(brandCenterX + 40, REEL_H - brandOffset + 20);
       ctx.stroke();
 
-      ctx.font = "italic 20px 'Cormorant Garamond', Georgia, serif";
+      ctx.font = `italic ${fs(18)}px 'Cormorant Garamond', Georgia, serif`;
       ctx.fillStyle = "#666";
-      ctx.fillText("Vivianne dos Santos", REEL_W / 2, REEL_H - 65);
+      ctx.fillText("Vivianne dos Santos", brandCenterX, REEL_H - brandOffset + 40);
+      ctx.textAlign = isSquare ? "left" : "center";
     }
 
     // Fade in (first 1s)
@@ -394,7 +455,7 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
       error: () => {},
     });
     encoder.configure({
-      codec: "avc1.42001f",
+      codec: "avc1.640033",
       width: REEL_W,
       height: REEL_H,
       bitrate: 4_000_000,
@@ -432,27 +493,37 @@ export async function generateLaunchReel(options: LaunchReelOptions): Promise<Bl
       // Start from 20s into the track (or beginning if shorter)
       const startSample = Math.floor(Math.min(20, Math.max(0, audioBuffer.duration - REEL_DURATION)) * sampleRate);
       const numSamples = Math.floor(REEL_DURATION * sampleRate);
+
+      // Build planar audio: [ch0_sample0, ch0_sample1, ..., ch1_sample0, ch1_sample1, ...]
       const audioData = new Float32Array(numSamples * channels);
       for (let ch = 0; ch < channels; ch++) {
         const channelData = audioBuffer.getChannelData(ch);
+        const chOffset = ch * numSamples;
         for (let i = 0; i < numSamples; i++) {
           const srcIdx = startSample + i;
           if (srcIdx < channelData.length) {
-            audioData[i * channels + ch] = channelData[srcIdx];
+            audioData[chOffset + i] = channelData[srcIdx];
           }
         }
       }
 
-      const chunkSize = sampleRate;
+      const chunkSize = sampleRate; // 1 second chunks
       for (let offset = 0; offset < numSamples; offset += chunkSize) {
         const size = Math.min(chunkSize, numSamples - offset);
+        // For planar: extract [ch0 chunk, ch1 chunk] contiguously
+        const chunkData = new Float32Array(size * channels);
+        for (let ch = 0; ch < channels; ch++) {
+          const srcStart = ch * numSamples + offset;
+          const dstStart = ch * size;
+          chunkData.set(audioData.subarray(srcStart, srcStart + size), dstStart);
+        }
         const chunk = new AudioData({
           format: "f32-planar" as AudioSampleFormat,
           sampleRate,
           numberOfFrames: size,
           numberOfChannels: channels,
           timestamp: (offset / sampleRate) * 1_000_000,
-          data: audioData.slice(offset * channels, (offset + size) * channels),
+          data: chunkData,
         });
         audioEncoder.encode(chunk);
         chunk.close();

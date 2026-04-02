@@ -13,8 +13,9 @@ import {
   type TrackEnergy,
   type TrackFlavor,
 } from "@/data/albums";
-import { getAlbumCover } from "@/lib/album-covers";
+import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
 import { adminFetch } from "@/lib/admin-fetch";
+import { useAlbumCovers } from "@/hooks/useAlbumCovers";
 
 /** Read ID3 title from an MP3 File */
 async function readId3Title(file: File): Promise<string | null> {
@@ -44,7 +45,7 @@ function CopyButton({ text, label = "Copiar" }: { text: string; label?: string }
         setCopied(true);
         setTimeout(() => setCopied(false), 1500);
       }}
-      className={`shrink-0 rounded px-3 py-2 text-xs font-medium transition min-h-[44px] ${
+      className={`shrink-0 rounded px-3 py-2 text-xs font-medium transition ${
         copied
           ? "bg-green-800/40 text-green-400"
           : "bg-mundo-muted-dark/20 text-mundo-muted hover:bg-mundo-muted-dark/40 hover:text-mundo-creme"
@@ -139,6 +140,15 @@ async function uploadViaSignedUrl(blob: Blob, filename: string): Promise<string>
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://tdytdamtfillqyklgrmb.supabase.co";
   return `${supabaseUrl}/storage/v1/object/public/audios/${filename}`;
+}
+
+/** Upload reel via signed URL (bypasses Vercel 4.5MB limit) */
+async function uploadReelDirect(blob: Blob, albumSlug: string, trackNumber: number): Promise<string> {
+  const safeAlbum = albumSlug.replace(/[^a-z0-9-]/g, "");
+  const safeTrack = String(trackNumber).padStart(2, "0");
+  const ext = blob.type.includes("mp4") ? "mp4" : "webm";
+  const filename = `albums/${safeAlbum}/faixa-${safeTrack}-reel.${ext}`;
+  return uploadViaSignedUrl(blob, filename);
 }
 
 function ProductFilter({
@@ -356,7 +366,7 @@ function ClipApprovalRow({
                 }
                 setTimeout(() => { btn.disabled = false; btn.textContent = "Guardar capa"; }, 2000);
               }}
-              className="rounded-lg bg-amber-600/80 px-3 py-2 text-xs font-medium text-white hover:bg-amber-700 transition min-h-[44px]"
+              className="rounded-lg bg-amber-600/80 px-3 py-2 text-xs font-medium text-white hover:bg-amber-700 transition"
             >
               Guardar capa
             </button>
@@ -381,19 +391,16 @@ function ClipApprovalRow({
                   const form = new FormData();
                   form.append("albumSlug", albumSlug);
                   form.append("trackNumber", String(trackNumber));
-                  form.append("video", blob, blob.type.includes("mp4") ? "reel.mp4" : "reel.webm");
-                  const res = await adminFetch("/api/admin/upload-reel", { method: "POST", body: form });
-                  const data = await res.json();
-                  if (data.ok) {
+                  const videoUrl = await uploadReelDirect(blob, albumSlug, trackNumber);
+                  {
                     btn.textContent = "Reel OK!";
                     const parent = btn.parentElement;
-                    if (parent && data.videoUrl) {
-                      // Store blob for direct sharing
+                    if (parent && videoUrl) {
                       const reelBlob = blob;
-                      const reelUrl = data.videoUrl;
+                      const reelUrl = videoUrl;
 
                       const container = document.createElement("div");
-                      container.style.cssText = "margin-top:6px";
+                      container.style.cssText = "margin-top:6px;max-width:180px";
 
                       const vid = document.createElement("video");
                       vid.src = reelUrl;
@@ -455,14 +462,14 @@ function ClipApprovalRow({
                       container.appendChild(actions);
                       parent.appendChild(container);
                     }
-                  } else throw new Error(data.erro || "Falhou");
+                  }
                 } catch (e) {
                   btn.textContent = "Erro";
                   alert(String(e));
                 }
                 setTimeout(() => { btn.disabled = false; btn.textContent = "Reel"; }, 3000);
               }}
-              className="rounded-lg bg-violet-600/80 px-3 py-2 text-xs font-medium text-white hover:bg-violet-700 transition min-h-[44px]"
+              className="rounded-lg bg-violet-600/80 px-3 py-2 text-xs font-medium text-white hover:bg-violet-700 transition"
             >
               Reel
             </button>
@@ -485,21 +492,21 @@ function ClipApprovalRow({
           {!hasMainAudio && (
             <button
               onClick={onApproveMain}
-              className="rounded-lg bg-mundo-dourado px-4 py-2.5 text-sm min-h-[44px] text-white transition hover:bg-mundo-dourado/80"
+              className="rounded-lg bg-mundo-dourado px-3 py-1.5 text-xs text-white transition hover:bg-mundo-dourado/80"
             >
               Aprovar principal
             </button>
           )}
           <button
             onClick={() => setMode("version")}
-            className="rounded-lg bg-violet-600 px-4 py-2.5 text-sm min-h-[44px] text-white transition hover:bg-violet-700"
+            className="rounded-lg bg-violet-600 px-3 py-1.5 text-xs text-white transition hover:bg-violet-700"
           >
             Guardar versão
           </button>
           {hasMainAudio && (
             <button
               onClick={onApproveMain}
-              className="rounded-lg bg-mundo-muted-dark/20 px-4 py-2.5 text-sm min-h-[44px] text-mundo-muted transition hover:bg-mundo-muted-dark/30"
+              className="rounded-lg bg-mundo-muted-dark/20 px-3 py-1.5 text-xs text-mundo-muted transition hover:bg-mundo-muted-dark/30"
             >
               Substituir principal
             </button>
@@ -507,7 +514,7 @@ function ClipApprovalRow({
           {onCreatePersona && clip.id && (
             <button
               onClick={() => onCreatePersona(String(clip.id), String(clip.id))}
-              className="rounded-lg bg-pink-900/30 px-4 py-2.5 text-sm min-h-[44px] text-pink-400 transition hover:bg-pink-900/50"
+              className="rounded-lg bg-pink-900/30 px-3 py-1.5 text-xs text-pink-400 transition hover:bg-pink-900/50"
               title="Criar persona com a voz deste clip"
             >
               Criar Persona
@@ -522,7 +529,7 @@ function ClipApprovalRow({
               value={versionName}
               onChange={(e) => setVersionName(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ""))}
               placeholder="nome-da-versão"
-              className="flex-1 rounded-lg bg-mundo-bg px-4 py-2.5 text-sm min-h-[44px] text-mundo-creme border border-mundo-muted-dark/30 focus:border-violet-500 focus:outline-none"
+              className="flex-1 rounded-lg bg-mundo-bg px-3 py-1.5 text-xs text-mundo-creme border border-mundo-muted-dark/30 focus:border-violet-500 focus:outline-none"
             />
           </div>
           {nameExists && (
@@ -533,7 +540,7 @@ function ClipApprovalRow({
               <button
                 key={e}
                 onClick={() => setEnergy(e)}
-                className={`rounded-lg px-3 py-2 text-xs font-bold uppercase min-h-[44px] transition ${
+                className={`rounded-lg px-3 py-2 text-xs font-bold uppercase transition ${
                   energy === e
                     ? ENERGY_LABELS[e].color
                     : "bg-mundo-muted-dark/10 text-mundo-muted hover:text-mundo-creme"
@@ -549,7 +556,7 @@ function ClipApprovalRow({
                 if (versionName) onApproveVersion(versionName, energy);
               }}
               disabled={!versionName}
-              className="rounded-lg bg-violet-600 px-4 py-2.5 text-sm min-h-[44px] text-white transition hover:bg-violet-700 disabled:opacity-50"
+              className="rounded-lg bg-violet-600 px-3 py-1.5 text-xs text-white transition hover:bg-violet-700 disabled:opacity-50"
             >
               Guardar "{versionName}"
             </button>
@@ -594,6 +601,8 @@ function TrackRow({
   onStyleChange,
   editedFlavor,
   onFlavorChange,
+  isAlbumCover,
+  onSetAlbumCover,
 }: {
   track: AlbumTrack;
   albumSlug: string;
@@ -620,6 +629,8 @@ function TrackRow({
   onStyleChange: (style: string) => void;
   editedFlavor: TrackFlavor | null;
   onFlavorChange: (flavor: TrackFlavor) => void;
+  isAlbumCover: boolean;
+  onSetAlbumCover: () => void;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [showLyrics, setShowLyrics] = useState(false);
@@ -696,7 +707,7 @@ function TrackRow({
 
           {/* Prompt expandable */}
           <details className="mt-2">
-            <summary className="cursor-pointer text-sm text-mundo-muted/60 hover:text-mundo-muted py-2 min-h-[44px]">
+            <summary className="cursor-pointer text-sm text-mundo-muted/60 hover:text-mundo-muted py-2">
               Ver prompt
             </summary>
             <p className="mt-1 rounded bg-mundo-bg p-2 font-mono text-xs text-mundo-muted/80">
@@ -706,7 +717,7 @@ function TrackRow({
 
           {/* Style editable — energy + flavor selectors + custom override */}
           <details className="mt-1">
-            <summary className="cursor-pointer text-sm text-mundo-muted/60 hover:text-mundo-muted py-2 min-h-[44px]">
+            <summary className="cursor-pointer text-sm text-mundo-muted/60 hover:text-mundo-muted py-2">
               Ver style {editedStyle !== null && <span className="text-amber-400 ml-1">(editado)</span>}
             </summary>
             <div className="mt-2 space-y-2">
@@ -745,7 +756,7 @@ function TrackRow({
           {/* Lyrics expandable + editable */}
           {track.lyrics && (
             <details className="mt-1" open={showLyrics} onToggle={(e) => setShowLyrics((e.target as HTMLDetailsElement).open)}>
-              <summary className="cursor-pointer text-sm text-mundo-muted/60 hover:text-mundo-muted py-2 min-h-[44px]">
+              <summary className="cursor-pointer text-sm text-mundo-muted/60 hover:text-mundo-muted py-2">
                 Ver letra {editedLyrics !== null && editedLyrics !== track.lyrics && <span className="text-amber-400 ml-1">(editada)</span>}
               </summary>
               <textarea
@@ -790,10 +801,20 @@ function TrackRow({
               <label
                 id={`cover-label-${albumSlug}-${track.number}`}
                 htmlFor={`cover-upload-${albumSlug}-${track.number}`}
-                className="cursor-pointer rounded-lg bg-mundo-muted-dark/20 px-4 py-2.5 text-sm min-h-[44px] text-mundo-muted hover:bg-mundo-muted-dark/30 transition"
+                className="cursor-pointer rounded-lg bg-mundo-muted-dark/20 px-3 py-1.5 text-xs text-mundo-muted hover:bg-mundo-muted-dark/30 transition"
               >
                 Carregar capa
               </label>
+              <button
+                className={`rounded-lg px-3 py-2.5 text-[11px] min-h-[44px] transition ${
+                  isAlbumCover
+                    ? "bg-violet-600/40 text-violet-300"
+                    : "bg-mundo-muted-dark/20 text-mundo-muted hover:bg-violet-900/20"
+                }`}
+                onClick={onSetAlbumCover}
+              >
+                {isAlbumCover ? "★ Capa do álbum" : "Usar como capa"}
+              </button>
             </div>
           )}
 
@@ -814,7 +835,7 @@ function TrackRow({
             )}
             <button
               onClick={() => setShowVersionUpload(!showVersionUpload)}
-              className="text-sm text-violet-400 hover:text-violet-300 py-2 min-h-[44px] transition"
+              className="text-sm text-violet-400 hover:text-violet-300 py-2 transition"
             >
               + Adicionar versão / remix
             </button>
@@ -852,7 +873,7 @@ function TrackRow({
                     <button
                       key={e}
                       onClick={() => setVersionUploadEnergy(e)}
-                      className={`rounded-lg px-3 py-2 text-xs font-bold uppercase min-h-[44px] transition ${
+                      className={`rounded-lg px-3 py-2 text-xs font-bold uppercase transition ${
                         versionUploadEnergy === e
                           ? ENERGY_LABELS[e].color
                           : "bg-mundo-muted-dark/10 text-mundo-muted hover:text-mundo-creme"
@@ -876,7 +897,7 @@ function TrackRow({
                   />
                   <button
                     onClick={() => coverInputRef.current?.click()}
-                    className="rounded-lg bg-mundo-muted-dark/20 px-4 py-2.5 text-sm min-h-[44px] text-mundo-muted transition hover:bg-mundo-muted-dark/30"
+                    className="rounded-lg bg-mundo-muted-dark/20 px-3 py-1.5 text-xs text-mundo-muted transition hover:bg-mundo-muted-dark/30"
                   >
                     {versionCoverFile ? `Capa: ${versionCoverFile.name.slice(0, 20)}` : "Adicionar capa (opcional)"}
                   </button>
@@ -887,7 +908,7 @@ function TrackRow({
                 <button
                   onClick={() => versionInputRef.current?.click()}
                   disabled={!versionUploadName}
-                  className="rounded-lg bg-violet-600 px-4 py-2.5 text-sm min-h-[44px] text-white transition hover:bg-violet-700 disabled:opacity-50"
+                  className="rounded-lg bg-violet-600 px-3 py-1.5 text-xs text-white transition hover:bg-violet-700 disabled:opacity-50"
                 >
                   Escolher MP3
                 </button>
@@ -985,7 +1006,7 @@ function TrackRow({
             audioUrl ? (
               <button
                 onClick={onRemove}
-                className="rounded-lg bg-red-900/30 px-4 py-2.5 text-sm min-h-[44px] text-red-400 transition hover:bg-red-900/50"
+                className="rounded-lg bg-red-900/30 px-3 py-1.5 text-xs text-red-400 transition hover:bg-red-900/50"
               >
                 Remover
               </button>
@@ -1005,10 +1026,12 @@ function TrackRow({
           )}
 
           {/* Generate animated reel (Canvas + Audio) */}
+          {(["status", "insta"] as const).map((reelType) => (
           <button
-            id={`reel-btn-${albumSlug}-${track.number}`}
+            key={reelType}
+            id={`reel-btn-${reelType}-${albumSlug}-${track.number}`}
             onClick={async () => {
-              const btn = document.getElementById(`reel-btn-${albumSlug}-${track.number}`) as HTMLButtonElement;
+              const btn = document.getElementById(`reel-btn-${reelType}-${albumSlug}-${track.number}`) as HTMLButtonElement;
               const resultDiv = document.getElementById(`reel-result-${albumSlug}-${track.number}`);
               if (!btn) return;
               btn.disabled = true;
@@ -1016,7 +1039,8 @@ function TrackRow({
               if (resultDiv) resultDiv.innerHTML = "";
 
               try {
-                const { generateReel } = await import("@/lib/reel-generator");
+                const { generateReel, REEL_SIZE_STATUS, REEL_SIZE_INSTA } = await import("@/lib/reel-generator");
+                const reelSize = reelType === "insta" ? REEL_SIZE_INSTA : REEL_SIZE_STATUS;
                 const { getAlbumCover, getTrackCoverUrl } = await import("@/lib/album-covers");
 
                 const alb = ALL_ALBUMS.find(a => a.slug === albumSlug);
@@ -1033,34 +1057,26 @@ function TrackRow({
 
                 const blob = await generateReel(track, alb, coverSrc, audioSrc, (p) => {
                   btn.textContent = p.message;
-                });
+                }, undefined, reelSize);
 
                 btn.textContent = "A enviar...";
 
                 const form = new FormData();
-                form.append("albumSlug", albumSlug);
-                form.append("trackNumber", String(track.number));
-                form.append("video", blob, blob.type.includes("mp4") ? "reel.mp4" : "reel.webm");
+                const reelVideoUrl = await uploadReelDirect(blob, albumSlug, track.number);
 
-                const res = await adminFetch("/api/admin/upload-reel", {
-                  method: "POST",
-                  body: form,
-                });
-                const data = await res.json();
-
-                if (data.ok && data.videoUrl) {
+                {
                   btn.textContent = "Reel guardado!";
                   if (resultDiv) {
                     resultDiv.innerHTML = "";
                     const reelBlob = blob;
 
                     const vid = document.createElement("video");
-                    vid.src = data.videoUrl;
+                    vid.src = reelVideoUrl;
                     vid.controls = true;
                     vid.playsInline = true;
                     vid.muted = true;
                     vid.loop = true;
-                    vid.style.cssText = "max-height:160px;border-radius:8px;margin-top:6px;width:100%";
+                    vid.style.cssText = "max-height:120px;border-radius:6px;margin-top:6px;width:100%";
                     resultDiv.appendChild(vid);
 
                     // Caption — ready to copy with hashtags
@@ -1146,7 +1162,7 @@ function TrackRow({
 
                     // Download
                     const dl = document.createElement("a");
-                    dl.href = data.videoUrl;
+                    dl.href = reelVideoUrl;
                     dl.download = `${track.title} — Loranne.mp4`;
                     dl.textContent = "Guardar";
                     dl.style.cssText = "font-size:11px;padding:4px 12px;border-radius:6px;background:rgba(255,255,255,0.05);color:#a0a0b0;border:1px solid rgba(255,255,255,0.1);text-decoration:none";
@@ -1169,8 +1185,6 @@ function TrackRow({
                     actions.appendChild(del);
                     resultDiv.appendChild(actions);
                   }
-                } else {
-                  throw new Error(data.erro || "Upload falhou");
                 }
               } catch (e) {
                 btn.textContent = "Erro";
@@ -1178,11 +1192,12 @@ function TrackRow({
               }
               btn.disabled = false;
             }}
-            className="rounded-lg bg-violet-900/30 px-4 py-2.5 text-sm min-h-[44px] text-violet-400 hover:bg-violet-900/50 transition"
+            className="rounded-lg bg-violet-900/30 px-3 py-1.5 text-xs text-violet-400 hover:bg-violet-900/50 transition"
           >
-            Gerar reel
+            {reelType === "status" ? "Reel Status" : "Reel Insta"}
           </button>
-          <div id={`reel-result-${albumSlug}-${track.number}`}></div>
+          ))}
+          <div id={`reel-result-${albumSlug}-${track.number}`} style={{ maxWidth: "240px" }}></div>
         </div>
       </div>
     </div>
@@ -1211,6 +1226,7 @@ export default function AlbumProductionPage() {
   const [personaResult, setPersonaResult] = useState<string | null>(null);
   const pollingRef = useRef<Record<string, NodeJS.Timeout>>({});
   const titleSaveRef = useRef<Record<string, NodeJS.Timeout>>({});
+  const { getCoverTrack, setCoverTrack } = useAlbumCovers();
 
   // Load existing audio status + saved titles on mount
   useEffect(() => {
@@ -1760,7 +1776,7 @@ export default function AlbumProductionPage() {
               <select
                 value={sunoModel}
                 onChange={(e) => setSunoModel(e.target.value)}
-                className="rounded-lg border border-mundo-muted-dark/30 bg-mundo-bg px-4 py-2.5 text-sm min-h-[44px] text-mundo-creme focus:border-violet-500 focus:outline-none"
+                className="rounded-lg border border-mundo-muted-dark/30 bg-mundo-bg px-3 py-1.5 text-xs text-mundo-creme focus:border-violet-500 focus:outline-none"
               >
                 <option value="V5_5">Suno V5.5</option>
                 <option value="V5">Suno V5</option>
@@ -1778,7 +1794,7 @@ export default function AlbumProductionPage() {
                 value={personaId}
                 onChange={(e) => setPersonaId(e.target.value)}
                 placeholder="Sem persona"
-                className="rounded-lg border border-mundo-muted-dark/30 bg-mundo-bg px-4 py-2.5 text-sm min-h-[44px] text-mundo-creme focus:border-violet-500 focus:outline-none w-32"
+                className="rounded-lg border border-mundo-muted-dark/30 bg-mundo-bg px-3 py-1.5 text-xs text-mundo-creme focus:border-violet-500 focus:outline-none w-32"
               />
               {personaId && (
                 <button
@@ -1824,7 +1840,7 @@ export default function AlbumProductionPage() {
                   alert(`Erro: ${e}`);
                 }
               }}
-              className="rounded-lg bg-amber-900/30 px-4 py-2.5 text-xs min-h-[44px] text-amber-400 hover:bg-amber-900/50 transition"
+              className="rounded-lg bg-amber-900/30 px-4 py-2.5 text-xs text-amber-400 hover:bg-amber-900/50 transition"
             >
               Renomear pasta
             </button>
@@ -1836,7 +1852,7 @@ export default function AlbumProductionPage() {
                 const data = await res.json();
                 alert(`${data.deleted || 0} capas antigas apagadas.\n${(data.details || []).join("\n") || "Nenhuma encontrada."}`);
               }}
-              className="rounded-lg bg-red-900/30 px-4 py-2.5 text-xs min-h-[44px] text-red-400 hover:bg-red-900/50 transition"
+              className="rounded-lg bg-red-900/30 px-4 py-2.5 text-xs text-red-400 hover:bg-red-900/50 transition"
             >
               Limpar capas fantasma
             </button>
@@ -1857,7 +1873,7 @@ export default function AlbumProductionPage() {
                 if (data.ok) alert(`Enviado a ${data.sent} subscritores (${data.failed} falharam)`);
                 else alert(data.erro || "Erro");
               }}
-              className="rounded-lg bg-blue-900/30 px-4 py-2.5 text-xs min-h-[44px] text-blue-400 hover:bg-blue-900/50 transition"
+              className="rounded-lg bg-blue-900/30 px-4 py-2.5 text-xs text-blue-400 hover:bg-blue-900/50 transition"
             >
               Push notificacao
             </button>
@@ -2019,7 +2035,7 @@ export default function AlbumProductionPage() {
                   }
                   setTimeout(() => { btn.disabled = false; btn.textContent = "DistroKid ZIP"; }, 3000);
                 }}
-                className="mt-3 rounded-lg bg-green-700 px-4 py-2.5 text-sm min-h-[44px] font-medium text-white hover:bg-green-800 transition"
+                className="mt-3 rounded-lg bg-green-700 px-3 py-1.5 text-xs font-medium text-white hover:bg-green-800 transition"
               >
                 DistroKid ZIP
               </button>
@@ -2099,6 +2115,61 @@ export default function AlbumProductionPage() {
                 </div>
               );
             })()}
+
+            {/* Bulk reel generation */}
+            <div className="mb-4 flex items-center gap-2 flex-wrap">
+              {(["status", "insta"] as const).map((reelType) => (
+                <button
+                  key={reelType}
+                  id={`bulk-reel-${reelType}-${album.slug}`}
+                  onClick={async () => {
+                    const btn = document.getElementById(`bulk-reel-${reelType}-${album.slug}`) as HTMLButtonElement;
+                    if (!btn) return;
+                    btn.disabled = true;
+
+                    const { generateReel, REEL_SIZE_STATUS, REEL_SIZE_INSTA } = await import("@/lib/reel-generator");
+                    const { getAlbumCover, getTrackCoverUrl } = await import("@/lib/album-covers");
+                    const reelSize = reelType === "insta" ? REEL_SIZE_INSTA : REEL_SIZE_STATUS;
+                    const alb = ALL_ALBUMS.find(a => a.slug === album.slug);
+                    if (!alb) { btn.disabled = false; return; }
+
+                    const tracksWithAudio = alb.tracks.filter(t => t.audioUrl);
+                    let done = 0;
+                    let errors = 0;
+
+                    for (const t of tracksWithAudio) {
+                      btn.textContent = `${done}/${tracksWithAudio.length}...`;
+                      try {
+                        let coverSrc = getAlbumCover(alb);
+                        try {
+                          const tcUrl = getTrackCoverUrl(album.slug, t.number);
+                          const probe = await fetch(tcUrl, { method: "HEAD" });
+                          if (probe.ok) coverSrc = tcUrl;
+                        } catch {}
+
+                        const audioSrc = `/api/music/stream?album=${encodeURIComponent(album.slug)}&track=${t.number}`;
+                        const blob = await generateReel(t, alb, coverSrc, audioSrc, (p) => {
+                          btn.textContent = `${done}/${tracksWithAudio.length} — ${p.message}`;
+                        }, undefined, reelSize);
+
+                        await uploadReelDirect(blob, album.slug, t.number);
+                        done++;
+                      } catch {
+                        errors++;
+                      }
+                    }
+
+                    btn.textContent = `${done} reels${errors ? ` (${errors} erros)` : ""}`;
+                    btn.disabled = false;
+                    setTimeout(() => { btn.textContent = reelType === "status" ? "Reels Status" : "Reels Insta"; }, 4000);
+                  }}
+                  className="rounded-lg bg-violet-900/30 px-3 py-1.5 text-xs text-violet-400 hover:bg-violet-900/50 transition"
+                >
+                  {reelType === "status" ? "Reels Status" : "Reels Insta"}
+                </button>
+              ))}
+              <span className="text-[10px] text-mundo-muted">Gera reels para todas as faixas com audio</span>
+            </div>
 
             <div className="space-y-3">
               {album.tracks.map((track) => {
@@ -2186,6 +2257,11 @@ export default function AlbumProductionPage() {
                     onStyleChange={(style) => setEditedStyles((s) => ({ ...s, [key]: style }))}
                     editedFlavor={editedFlavors[key] || null}
                     onFlavorChange={(flavor) => setEditedFlavors((f) => ({ ...f, [key]: flavor }))}
+                    isAlbumCover={getCoverTrack(album.slug) === track.number}
+                    onSetAlbumCover={async () => {
+                      const ok = await setCoverTrack(album.slug, track.number);
+                      if (ok) alert(`Capa do álbum → faixa ${track.number}`);
+                    }}
                   />
                 );
               })}

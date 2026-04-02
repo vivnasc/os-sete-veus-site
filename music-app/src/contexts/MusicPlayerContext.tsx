@@ -4,6 +4,7 @@ import { createContext, useContext, useState, useRef, useCallback, useEffect, ty
 import { ALL_ALBUMS, type Album, type AlbumTrack } from "@/data/albums";
 import { getCachedAudioUrl } from "@/hooks/useDownloads";
 import { getAlbumCover } from "@/lib/album-covers";
+import { supabase } from "@/lib/supabase";
 
 export function formatTime(s: number): string {
   if (!isFinite(s) || s < 0) return "0:00";
@@ -483,6 +484,16 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       audioError: null,
     }));
   }, []);
+
+  // ── Stop audio on logout ──
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+      if (event === "SIGNED_OUT") {
+        stop();
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, [stop]);
 
   // ── MediaSession API — lock screen / notification controls ──
   useEffect(() => {

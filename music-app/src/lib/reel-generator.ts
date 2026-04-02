@@ -7,9 +7,11 @@ import type { Album, AlbumTrack } from "@/data/albums";
 import { getSharePath } from "@/lib/share-utils";
 
 const REEL_DURATION = 15;
-const REEL_W = 1080;
-const REEL_H = 1920;
 const FPS = 24;
+
+// Presets
+export const REEL_SIZE_STATUS = { w: 720, h: 1280 } as const;  // WhatsApp Status (9:16)
+export const REEL_SIZE_INSTA = { w: 1080, h: 1080 } as const;  // Instagram Post (1:1)
 
 function pickLyric(track: AlbumTrack): string | null {
   if (!track.lyrics) return null;
@@ -77,10 +79,10 @@ function getBestMime(): string {
 // Floating light particles
 type Particle = { x: number; y: number; r: number; speed: number; opacity: number; phase: number };
 
-function createParticles(count: number): Particle[] {
+function createParticles(count: number, w: number, h: number): Particle[] {
   return Array.from({ length: count }, () => ({
-    x: Math.random() * REEL_W,
-    y: Math.random() * REEL_H,
+    x: Math.random() * w,
+    y: Math.random() * h,
     r: 1 + Math.random() * 3,
     speed: 0.3 + Math.random() * 0.8,
     opacity: 0.1 + Math.random() * 0.4,
@@ -104,7 +106,10 @@ export async function generateReel(
   audioSrc: string,
   onProgress?: (p: ReelProgress) => void,
   audioStartSeconds?: number,
+  size: { w: number; h: number } = REEL_SIZE_STATUS,
 ): Promise<Blob> {
+  const REEL_W = size.w;
+  const REEL_H = size.h;
   const report = (phase: ReelProgress["phase"], progress: number, message: string) => {
     onProgress?.({ phase, progress, message });
   };
@@ -157,10 +162,11 @@ export async function generateReel(
 
   const color = album.color || "#C9A96E";
   const lyric = pickLyric(track);
-  const coverSize = Math.round(REEL_W * 0.75);
+  const isSquare = REEL_W === REEL_H;
+  const coverSize = Math.round(REEL_W * (isSquare ? 0.55 : 0.75));
   const coverBaseX = (REEL_W - coverSize) / 2;
-  const coverBaseY = Math.round(REEL_H * 0.12);
-  const particles = createParticles(30);
+  const coverBaseY = Math.round(REEL_H * (isSquare ? 0.05 : 0.12));
+  const particles = createParticles(30, REEL_W, REEL_H);
 
   function drawFrame(elapsed: number) {
     const t = elapsed / REEL_DURATION;
@@ -231,14 +237,16 @@ export async function generateReel(
 
     // ── Text ──
     ctx.textAlign = "center";
-    const textBaseY = coverBaseY + coverSize + 50;
+    const textGap = isSquare ? 25 : 50;
+    const textBaseY = coverBaseY + coverSize + textGap;
+    const fontScale = isSquare ? 0.75 : 1;
 
     // Album name — slides up + fades in (0.5s-1.5s)
     const albumProgress = clamp((elapsed - 0.5) / 1, 0, 1);
     if (albumProgress > 0) {
       const slideUp = 20 * (1 - easeInOut(albumProgress));
       ctx.globalAlpha = albumProgress;
-      ctx.font = "500 28px sans-serif";
+      ctx.font = `500 ${Math.round(18 * fontScale)}px sans-serif`;
       ctx.fillStyle = "#666680";
       ctx.fillText(album.title.toUpperCase(), REEL_W / 2, textBaseY + slideUp);
     }
@@ -248,11 +256,12 @@ export async function generateReel(
     if (titleProgress > 0) {
       const slideUp = 25 * (1 - easeInOut(titleProgress));
       ctx.globalAlpha = titleProgress;
-      ctx.font = "bold 64px serif";
+      const titleSize = Math.round(44 * fontScale);
+      ctx.font = `bold ${titleSize}px serif`;
       ctx.fillStyle = "#F5F0E6";
       const titleLines = wrapText(ctx, track.title, REEL_W - 60);
-      let y = textBaseY + 50 + slideUp;
-      for (const line of titleLines) { ctx.fillText(line, REEL_W / 2, y); y += 76; }
+      let y = textBaseY + Math.round(50 * fontScale) + slideUp;
+      for (const line of titleLines) { ctx.fillText(line, REEL_W / 2, y); y += Math.round(54 * fontScale); }
     }
 
     // Lyric — slides up + fades in (3s-4.5s)
@@ -261,11 +270,11 @@ export async function generateReel(
       if (lyricProgress > 0) {
         const slideUp = 20 * (1 - easeInOut(lyricProgress));
         ctx.globalAlpha = lyricProgress;
-        ctx.font = "italic 32px serif";
+        ctx.font = `italic ${Math.round(22 * fontScale)}px serif`;
         ctx.fillStyle = color + "cc";
         const lyricLines = wrapText(ctx, `"${lyric}"`, REEL_W - 80);
-        let y = textBaseY + 140 + slideUp;
-        for (const line of lyricLines) { ctx.fillText(line, REEL_W / 2, y); y += 42; }
+        let y = textBaseY + Math.round(140 * fontScale) + slideUp;
+        for (const line of lyricLines) { ctx.fillText(line, REEL_W / 2, y); y += Math.round(30 * fontScale); }
       }
     }
 
@@ -273,9 +282,9 @@ export async function generateReel(
     const artistProgress = clamp((elapsed - 2.5) / 1, 0, 1);
     if (artistProgress > 0) {
       ctx.globalAlpha = artistProgress;
-      ctx.font = "italic 36px 'Cormorant Garamond', 'Georgia', serif";
+      ctx.font = `italic ${Math.round(28 * fontScale)}px 'Cormorant Garamond', 'Georgia', serif`;
       ctx.fillStyle = "#C9A96E";
-      ctx.fillText("L o r a n n e", REEL_W / 2, textBaseY + (lyric ? 200 : 130));
+      ctx.fillText("L o r a n n e", REEL_W / 2, textBaseY + Math.round((lyric ? 200 : 130) * fontScale));
     }
 
     // Branding + link
@@ -289,12 +298,12 @@ export async function generateReel(
       ctx.moveTo(REEL_W / 2 - 40, brandY - 20);
       ctx.lineTo(REEL_W / 2 + 40, brandY - 20);
       ctx.stroke();
-      ctx.font = "500 24px sans-serif";
+      ctx.font = "500 16px sans-serif";
       ctx.fillStyle = "#666680";
       ctx.fillText("VÉUS", REEL_W / 2, brandY);
       // Link
       const sharePath = getSharePath(album.slug, track.number);
-      ctx.font = "400 22px sans-serif";
+      ctx.font = "400 16px sans-serif";
       ctx.fillStyle = "#a0a0b0";
       ctx.fillText(`music.seteveus.space${sharePath}`, REEL_W / 2, brandY + 25);
     }
@@ -333,11 +342,13 @@ export async function generateReel(
       output: (chunk, meta) => muxer.addVideoChunk(chunk, meta),
       error: () => {},
     });
+    // Level 3.1 for 720x1280, level 4.0 for 1080x1920
+    const avcCodec = REEL_W * REEL_H > 921600 ? "avc1.640028" : "avc1.42001f";
     encoder.configure({
-      codec: "avc1.640032",
+      codec: avcCodec,
       width: REEL_W,
       height: REEL_H,
-      bitrate: 4_000_000,
+      bitrate: REEL_W > 720 ? 4_000_000 : 2_000_000,
       framerate: FPS,
     });
 
@@ -366,7 +377,7 @@ export async function generateReel(
       bitrate: 128000,
     });
 
-    // Extract audio samples for the reel duration
+    // Extract audio samples for the reel duration (planar layout)
     const channels = audioBuffer.numberOfChannels;
     const sampleRate = audioBuffer.sampleRate;
     const startSample = Math.floor(startOffset * sampleRate);
@@ -377,7 +388,7 @@ export async function generateReel(
       for (let i = 0; i < numSamples; i++) {
         const srcIdx = startSample + i;
         if (srcIdx < channelData.length) {
-          audioData[i * channels + ch] = channelData[srcIdx];
+          audioData[ch * numSamples + i] = channelData[srcIdx];
         }
       }
     }
@@ -385,13 +396,17 @@ export async function generateReel(
     const chunkSize = sampleRate; // 1 second chunks
     for (let offset = 0; offset < numSamples; offset += chunkSize) {
       const size = Math.min(chunkSize, numSamples - offset);
+      const planarChunk = new Float32Array(size * channels);
+      for (let ch = 0; ch < channels; ch++) {
+        planarChunk.set(audioData.subarray(ch * numSamples + offset, ch * numSamples + offset + size), ch * size);
+      }
       const chunk = new AudioData({
         format: "f32-planar" as AudioSampleFormat,
         sampleRate,
         numberOfFrames: size,
         numberOfChannels: channels,
         timestamp: (offset / sampleRate) * 1_000_000,
-        data: audioData.slice(offset * channels, (offset + size) * channels),
+        data: planarChunk,
       });
       audioEncoder.encode(chunk);
       chunk.close();
