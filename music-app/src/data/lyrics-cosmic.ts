@@ -3070,4 +3070,402 @@ Always
 I just had to
 Open my eyes`,
 
+  // ─────────────────────────────────────────────
+  // ALBUM: RAIZ VERMELHA
+  // ─────────────────────────────────────────────
+
+  "cosmic-raiz-vermelha/1": `[Verse 1]
+Nasci numa terra de pó vermelho
+Antes de ter nome já tinha chão
+Os pés descalços sabiam o caminho
+Antes de eu saber o que era direcção
+
+[Verse 2]
+O embondeiro guardava os segredos
+Das mulheres que vieram antes de mim
+Cada raiz era uma avó calada
+Cada folha um início sem fim
+
+[Chorus]
+Terra vermelha, terra mãe
+Pintaste-me os pés antes dos sapatos
+Pintaste-me a alma antes da fé
+E eu carrego-te em todos os retratos
+
+[Verse 3]
+O sol nascia mais devagar ali
+Como se o dia soubesse esperar
+A manhã tinha cheiro a carvão
+E o entardecer sabia a luar
+
+[Chorus]
+Terra vermelha, terra mãe
+Pintaste-me os pés antes dos sapatos
+Pintaste-me a alma antes da fé
+E eu carrego-te em todos os retratos
+
+[Bridge]
+Posso morar longe
+Posso vestir frio
+Mas quando fecho os olhos
+Volto ao rio
+
+[Outro]
+Terra vermelha
+No sangue
+Nos sonhos
+Em mim`,
+
+  "cosmic-raiz-vermelha/2": `[Verse 1]
+The plane took off and I pressed my face
+Against the glass to hold the ground
+My mother's hands were folded prayer
+My father's voice the only sound
+
+[Verse 2]
+I learned to say the right hello
+To swallow vowels that tasted strange
+To smile when they mispronounced my name
+And call displacement rearrange
+
+[Chorus]
+Diaspora — the longest word
+For leaving with your body but
+Your soul stays one more night
+Folding clothes into a past
+That doesn't fit the suitcase right
+Diaspora — the quiet art
+Of living with a split-screen heart
+
+[Verse 3]
+I built a life in borrowed cold
+I learned to love a greyer sky
+But every August something breaks
+A smell, a song — and I know why
+
+[Bridge]
+They ask me where I'm from
+And I say two places at once
+Neither fully mine
+Both running through my blood
+
+[Outro]
+Diaspora
+Is not a place
+It's the distance
+Between two heartbeats`,
+
+  "cosmic-raiz-vermelha/3": `[Verse 1]
+Sonho em changana
+Acordo em português
+Trabalho em inglês
+E rezo em silêncio
+
+[Verse 2]
+Há palavras que não têm tradução
+Saudade já disseram que é nossa
+Mas existe outra mais funda
+Que só a minha avó sabia pronunciar
+
+[Chorus]
+A língua mãe não morre
+Mora no fundo da garganta
+No lugar onde o choro começa
+Antes de virar palavra
+A língua mãe não pede licença
+Aparece no sonho, no susto, no amor
+Nos sons que escapam quando o corpo
+Fala mais alto que o doutor
+
+[Verse 3]
+Ensinei a minha filha a dizer obrigada
+Em três línguas diferentes
+Mas a palavra que ela diz a chorar
+Não está em nenhum dicionário
+
+[Bridge]
+O meu sotaque é um mapa
+Quem ouve sabe de onde vim
+Já tentei apagar as marcas
+Hoje são o melhor de mim
+
+[Outro]
+Sonho em changana
+É aí que moro
+É aí que sou`,
+
+  "cosmic-raiz-vermelha/4": `[Verse 1]
+Before they heard my voice
+They saw my skin
+Drew conclusions from the outside in
+A passport made of pigment
+Stamped at birth
+
+[Verse 2]
+In some rooms I am exotic
+In some rooms I disappear
+In some rooms I am the question
+No one dares to ask out here
+
+[Chorus]
+The colour of my skin
+Is a map I didn't draw
+But I've walked every line
+And I've loved every flaw
+Don't read me like a headline
+Don't wear me like a cause
+The colour of my skin
+Is the oldest thing I own
+And the deepest thing I know
+And the closest thing to home
+
+[Verse 3]
+My daughter asked me why
+Her hair is different in the rain
+I told her baby, you are weather
+You are sun and you are storm
+
+[Bridge]
+I am not your narrative
+I am not your guilt
+I am the woman standing here
+With the house my mother built
+
+[Outro]
+My skin
+My map
+My home`,
+
+  "cosmic-raiz-vermelha/5": `[Verse 1]
+A capulana da minha mãe
+Cheirava a amendoim e sol
+Amarrava-me às costas dela
+E o mundo era um caracol
+
+[Verse 2]
+A capulana da minha avó
+Embrulhava os mortos e os vivos
+Cobria a vergonha e a festa
+Secava os olhos fugitivos
+
+[Chorus]
+Capulana — segundo coração
+Que envolve o ventre e o pranto
+Capulana — segunda pele
+Que carrega tanto, tanto
+Do berço à cova
+Do altar ao chão
+A capulana é a mão
+Que nunca larga a mão
+
+[Verse 3]
+Hoje moro num país de algodão branco
+De roupa que não tem memória
+Mas guardo uma capulana dobrada
+Na gaveta mais secreta da minha história
+
+[Bridge]
+Quando nasce a minha filha
+Já sei o que lhe dou
+Não é ouro nem é nome
+É o pano que me embalou
+
+[Outro]
+Capulana
+Enrola-me
+Outra vez`,
+
+  "cosmic-raiz-vermelha/6": `[Verse 1]
+They named the streets in someone else's tongue
+They drew the borders with a foreign pen
+They built a church on top of every song
+And called it civilisation — amen
+
+[Verse 2]
+My grandmother remembers other names
+For rivers, mountains, seasons, stars
+The map they gave us erased hers
+But memory doesn't need a car
+
+[Chorus]
+Borrowed land, borrowed flag
+Borrowed God, borrowed shame
+But the soil remembers
+What the books forgot to name
+And the roots grow underneath
+Every road they ever paved
+Borrowed land — but the heartbeat
+Was never, never enslaved
+
+[Bridge]
+I don't carry anger like a weapon
+I carry it like a lantern in the dark
+To see what was taken
+And to plant where they left a mark
+
+[Outro]
+The land remembers
+Even when we forget
+The land remembers`,
+
+  "cosmic-raiz-vermelha/7": `[Verse 1]
+A minha avó nunca andou de avião
+Nunca viu neve, nunca viu o mar gelado
+Mas sabia o nome de cada planta
+E o remédio para o coração cansado
+
+[Verse 2]
+Sentava-me no colo e dizia
+Escuta, filha, escuta bem
+O vento conta o que vai acontecer
+Se souberes ouvir além
+
+[Chorus]
+A avó sabia
+Sem diploma, sem papel
+Sabia pelo cheiro
+Se a chuva vinha ou não
+A avó sabia
+Com as mãos no pilão
+Que o mundo gira
+Mas a casa é o chão
+
+[Verse 3]
+Hoje tenho três diplomas
+E não sei ler o céu
+A avó lia as nuvens
+Como eu leio um email
+
+[Bridge]
+Avó, diz-me outra vez
+Como se planta no seco
+Como se ama sem medo
+Como se vive sem preço
+
+[Outro]
+Ela sabia
+Sempre soube
+E eu
+Estou a aprender a ouvir`,
+
+  "cosmic-raiz-vermelha/8": `[Verse 1]
+I flew twelve hours to come back home
+The air was thicker than I remembered
+The mango tree in the backyard
+Had grown and I had grown and nothing
+Was the same
+
+[Verse 2]
+My cousin's children didn't know my face
+My aunt had moved, the wall was painted blue
+The neighbour's dog was gone, the church was loud
+And home was true but also brand new
+
+[Chorus]
+Return — the word that lies
+As if you can go back
+To the place you left
+As if time stood still
+While you were learning to forget
+Return — is meeting someone
+You used to be
+In a place that used to be
+Exactly what you need
+
+[Bridge]
+The mango tree is smaller now
+Or maybe I grew tall
+Either way the fruit still falls
+And the children catch them all
+
+[Outro]
+I came back
+And home
+Came back to me
+Changed
+But still
+Mine`,
+
+  "cosmic-raiz-vermelha/9": `[Verse 1]
+A machamba da minha mãe
+Ficava atrás da casa velha
+As couves cresciam tão verdes
+Que pareciam ter vergonha da pobreza
+
+[Verse 2]
+Ela ajoelhava-se ao nascer do sol
+Com as mãos na terra como quem reza
+Dizia que plantar é acreditar
+Que amanhã ainda existe com certeza
+
+[Chorus]
+Machamba — oração de terra
+Semente — acto de fé
+Colheita — a prova de que o tempo
+Sabe mais do que a gente crê
+Machamba — as mãos da minha mãe
+Sujas de futuro e de raiz
+Machamba — a catedral mais linda
+Que alguém feliz construiu
+
+[Verse 3]
+Agora moro num apartamento
+Com vasos de plástico na varanda
+Mas às vezes meto as mãos na terra
+E a minha mãe aparece — e canta
+
+[Bridge]
+Plantar não é só comida
+É dizer ao mundo: fico
+É pôr o joelho no chão
+E acreditar no que é antigo
+
+[Outro]
+Machamba
+Oração
+Raiz
+Futuro`,
+
+  "cosmic-raiz-vermelha/10": `[Verse 1]
+They asked for my papers at the border
+They asked for my reasons at the door
+They asked me to prove I belonged
+As if roots need to fill a form
+
+[Verse 2]
+I've lived in five cities, four languages
+Three time zones, two heartbreaks, one name
+And everywhere I went
+The ground recognized my flame
+
+[Chorus]
+The red root needs no passport
+It travels through the blood
+It crosses every ocean
+It survives every flood
+The red root doesn't argue
+It doesn't beg to stay
+It grows beneath the concrete
+And it blooms anyway
+The red root — is mine
+The red root — is home
+The red root — is the song
+I was born to own
+
+[Bridge]
+I am the daughter of red soil
+I am the seed of stubborn trees
+I am the granddaughter of women
+Who planted on their knees
+
+[Outro]
+Red root
+Wherever I go
+Red root
+Wherever I land
+Red root
+I carry you
+In my blood
+In my hands`,
+
 };

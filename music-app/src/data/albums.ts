@@ -1359,6 +1359,23 @@ const ROMANCE_DUAS_VOZES: AlbumDef = { slug: "romance-duas-vozes", title: "Duas 
 ]};
 
 // ─────────────────────────────────────────────
+// EXPANSÃO 2 — Novos territórios (10 álbuns, 100 faixas)
+// ─────────────────────────────────────────────
+
+const COSMIC_RAIZ_VERMELHA: AlbumDef = { slug: "cosmic-raiz-vermelha", title: "Raiz Vermelha", subtitle: "A terra que te fez. A diáspora que te levou. A raiz que ficou.", product: "cosmic", color: "#8B2500", tracks: [
+  { number: 1, title: "Terra Vermelha", description: "O chão que te pintou os pés antes de teres nome", lang: "PT", energy: "whisper", flavor: "marrabenta", prompt: cosmicPrompt("red earth of Africa, soil that coloured your feet before you had a name, Mozambican childhood", "ancient, grounding, nostalgic, earthy", "soft marrabenta guitar, earth percussion, intimate vocal, red warmth", "PT", "whisper", "marrabenta"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "Diaspora", description: "Partir com o corpo — a alma fica mais um dia", lang: "EN", energy: "steady", prompt: cosmicPrompt("diaspora, leaving with the body but the soul stays one more day, airports and goodbyes", "torn, heavy, dual, displaced", "warm groove, walking bass, diasporic textures, yearning vocal, suitcase weight", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+  { number: 3, title: "Língua Mãe", description: "A língua que sonhas não é a que falas no trabalho", lang: "PT", energy: "steady", prompt: cosmicPrompt("mother tongue, dreaming in one language working in another, words that have no translation", "intimate, cultural, tender, displaced", "gentle guitar, warm bass, intimate vocal, language as territory", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+  { number: 4, title: "Colour of My Skin", description: "A pele como passaporte, como mapa, como casa", lang: "EN", energy: "raw", prompt: cosmicPrompt("skin colour as passport as map as home, what they see before they hear you", "raw, political, proud, tender", "minimal piano, raw vocal, space for words to land, honest and bare", "EN", "raw"), durationSeconds: 240, audioUrl: null },
+  { number: 5, title: "Capulana", description: "O pano que embala, que veste, que enterra", lang: "PT", energy: "steady", flavor: "afrobeat", prompt: cosmicPrompt("capulana cloth, wraps babies wraps bodies wraps dreams, Mozambican women's fabric", "warm, ancestral, cyclical, maternal", "afrobeat groove, warm guitar, celebrating percussion, grounded vocal", "PT", "steady", "afrobeat"), durationSeconds: 240, audioUrl: null },
+  { number: 6, title: "Borrowed Land", description: "Toda a terra é emprestada — mas esta dói mais", lang: "EN", energy: "whisper", prompt: cosmicPrompt("colonial inheritance, borrowed land, someone else's flag on your soil, generational displacement", "heavy, contemplative, unresolved, dignified", "ambient pads, slow strings, contemplative vocal, colonial weight", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+  { number: 7, title: "A Avó Sabia", description: "A avó que nunca saiu do bairro sabia mais que o mundo", lang: "PT", energy: "steady", flavor: "folk", vocalMode: "duet", prompt: cosmicPrompt("grandmother's wisdom, she never left the neighbourhood but knew everything, oral tradition", "wise, warm, intergenerational, grounding", "folk guitar, warm percussion, duet vocal grandmother-granddaughter feel, wisdom textures", "PT", "steady", "folk"), durationSeconds: 270, audioUrl: null },
+  { number: 8, title: "Return", description: "Voltar a casa e perceber que casa também mudou", lang: "EN", energy: "anthem", prompt: cosmicPrompt("returning home and finding it changed, you changed too, the mango tree is smaller", "bittersweet, powerful, aching, real", "building anthem, African percussion meets modern production, powerful vocal, homecoming", "EN", "anthem"), durationSeconds: 270, audioUrl: null },
+  { number: 9, title: "Machamba", description: "A horta como oração — plantar é acreditar em amanhã", lang: "PT", energy: "steady", flavor: "marrabenta", prompt: cosmicPrompt("machamba garden as prayer, planting is believing in tomorrow, grandmother's hands in soil", "grounding, cyclical, hopeful, ancestral", "marrabenta rhythm, organic percussion, grounded vocal, soil-to-soul", "PT", "steady", "marrabenta"), durationSeconds: 240, audioUrl: null },
+  { number: 10, title: "Red Root", description: "A raiz não pede passaporte — vai contigo", lang: "EN", energy: "anthem", flavor: "afrobeat", prompt: cosmicPrompt("the root needs no passport, it travels with you, identity cannot be taken", "triumphant, proud, rooted, free", "full afrobeat production, driving rhythm, celebratory vocal, roots anthem", "EN", "anthem", "afrobeat"), durationSeconds: 300, audioUrl: null },
+]};
+
+// ─────────────────────────────────────────────
 // EXPORT
 // ─────────────────────────────────────────────
 
@@ -1460,6 +1477,8 @@ export const ALL_ALBUMS: Album[] = [
   VIDA_PRIMEIRO_PASSO,
   ESPIRITUAL_ESPELHO_PARTIDO,
   ROMANCE_DUAS_VOZES,
+  // Expansão 2 — Novos territórios
+  COSMIC_RAIZ_VERMELHA,
 ].map(applyLyrics);
 
 // Helpers
