@@ -249,10 +249,9 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       let nextIdx: number;
 
       if (prev.shuffle) {
-        const available = prev.queue.filter((_, i) => i !== currentIdx);
-        if (available.length === 0) return { ...prev, isPlaying: false };
-        const randomTrack = available[Math.floor(Math.random() * available.length)];
-        nextIdx = prev.queue.indexOf(randomTrack);
+        const availableIndices = prev.queue.map((_, i) => i).filter(i => i !== currentIdx);
+        if (availableIndices.length === 0) return { ...prev, isPlaying: false };
+        nextIdx = availableIndices[Math.floor(Math.random() * availableIndices.length)];
       } else {
         nextIdx = currentIdx + 1;
       }
@@ -359,7 +358,12 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
         return s;
       }
       // Insert after current track in queue
-      const currentIdx = s.queue.findIndex(t => t.number === s.currentTrack!.number);
+      const currentIdx = s.queue.findIndex(t => {
+        if (t.number !== s.currentTrack!.number) return false;
+        const tAlbum = (t as QueueTrack).albumSlug;
+        if (tAlbum && s.currentAlbum) return tAlbum === s.currentAlbum.slug;
+        return true;
+      });
       const newQueue = [...s.queue];
       const insertAt = currentIdx >= 0 ? currentIdx + 1 : newQueue.length;
       newQueue.splice(insertAt, 0, ...tracks);
@@ -521,16 +525,32 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     navigator.mediaSession.setActionHandler("nexttrack", () => next());
   }, [state.currentTrack, state.currentAlbum, togglePlay, next, previous]);
 
-  // ── Pause when app closed / hidden (PWA) ──
+  // ── Wake Lock — keep audio playing when screen locks ──
   useEffect(() => {
-    const onVisChange = () => {
-      if (document.hidden && audioRef.current && !audioRef.current.paused) {
-        audioRef.current.pause();
-      }
-    };
-    document.addEventListener("visibilitychange", onVisChange);
-    return () => document.removeEventListener("visibilitychange", onVisChange);
-  }, []);
+    if (!("wakeLock" in navigator)) return;
+    let wakeLock: WakeLockSentinel | null = null;
+
+    async function requestWakeLock() {
+      try {
+        wakeLock = await navigator.wakeLock.request("screen");
+      } catch { /* Wake lock not available */ }
+    }
+
+    if (state.isPlaying) {
+      requestWakeLock();
+      const onVisibility = () => {
+        if (document.visibilityState === "visible" && state.isPlaying) {
+          requestWakeLock();
+        }
+      };
+      document.addEventListener("visibilitychange", onVisibility);
+      return () => {
+        document.removeEventListener("visibilitychange", onVisibility);
+        if (wakeLock) wakeLock.release().catch(() => {});
+      };
+    }
+    return () => { if (wakeLock) wakeLock.release().catch(() => {}); };
+  }, [state.isPlaying]);
 
   return (
     <MusicPlayerContext.Provider

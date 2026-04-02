@@ -768,7 +768,7 @@ function TrackRow({
             </details>
           )}
 
-          {error && <p className="mt-2 text-xs text-red-500">{error}</p>}
+          {error && <p className="mt-2 text-xs text-red-500 break-all">{error}</p>}
 
           {/* Current audio */}
           {audioUrl && !hasClips && (
@@ -1708,7 +1708,7 @@ export default function AlbumProductionPage() {
     <div className="min-h-screen bg-mundo-bg">
       {/* Header */}
       <div className="border-b border-mundo-muted-dark/30 bg-mundo-bg-light/50">
-        <div className="mx-auto max-w-5xl px-6 py-8">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 py-8 overflow-x-hidden">
           <Link
             href="/"
             className="mb-4 inline-block text-sm text-mundo-muted hover:text-mundo-creme"
@@ -1765,7 +1765,7 @@ export default function AlbumProductionPage() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-5xl px-6 py-10">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 py-10 overflow-x-hidden">
         {/* Filter + View Mode */}
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
           <ProductFilter active={filter} onChange={setFilter} />

@@ -120,7 +120,7 @@ export async function generateReel(
   report("loading", 0.3, "A carregar audio...");
 
   const audioResponse = await fetch(audioSrc);
-  if (!audioResponse.ok) throw new Error("Audio nao disponivel");
+  if (!audioResponse.ok) throw new Error(`Audio nao disponivel (${audioResponse.status} — ${audioSrc})`);
   const audioArrayBuffer = await audioResponse.arrayBuffer();
 
   const audioCtx = new AudioContext();
