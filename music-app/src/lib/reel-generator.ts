@@ -326,7 +326,11 @@ export async function generateReel(
   }
 
   // Try WebCodecs + mp4-muxer for real MP4 (Chrome/Edge 94+)
+  // Wrapped in try-catch: mobile Safari may have VideoEncoder but mp4-muxer
+  // crashes on null decoderConfig.colorSpace — fallback to MediaRecorder
+  let webCodecsOk = false;
   if (typeof VideoEncoder !== "undefined") {
+    try {
     report("recording", 0, "A gravar reel (MP4)...");
     const { Muxer, ArrayBufferTarget } = await import("mp4-muxer");
     const target = new ArrayBufferTarget();
@@ -340,7 +344,7 @@ export async function generateReel(
     // Encode video frames
     const encoder = new VideoEncoder({
       output: (chunk, meta) => muxer.addVideoChunk(chunk, meta),
-      error: () => {},
+      error: (err) => { console.error("VideoEncoder error:", err); },
     });
     // Level 3.1 for 720x1280, level 4.0 for 1080x1920
     const avcCodec = REEL_W * REEL_H > 921600 ? "avc1.640028" : "avc1.42001f";
@@ -419,6 +423,10 @@ export async function generateReel(
     try { bufferSource.disconnect(); audioCtx.close(); } catch {}
     report("done", 1, `Reel MP4 pronto! (${(blob.size / 1024 / 1024).toFixed(1)}MB)`);
     return blob;
+    } catch (webCodecsErr) {
+      console.warn("WebCodecs failed, falling back to MediaRecorder:", webCodecsErr);
+      report("recording", 0, "MP4 falhou — a tentar WebM...");
+    }
   }
 
   // Fallback: MediaRecorder (WebM)
