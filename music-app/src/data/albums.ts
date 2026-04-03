@@ -1375,6 +1375,19 @@ const COSMIC_RAIZ_VERMELHA: AlbumDef = { slug: "cosmic-raiz-vermelha", title: "R
   { number: 10, title: "Red Root", description: "A raiz vai contigo para onde fores", lang: "EN", energy: "anthem", prompt: cosmicPrompt("the root travels with you, identity as inner compass, wherever you go your roots come too", "triumphant, proud, warm, free", "full warm production, building drums, celebratory vocal, roots anthem", "EN", "anthem"), durationSeconds: 300, audioUrl: null },
 ]};
 
+const ROMANCE_IRMAS: AlbumDef = { slug: "romance-irmas", title: "Irmãs", subtitle: "A família que se escolhe. O amor que não precisa de sangue.", product: "romance", color: "#C4745A", tracks: [
+  { number: 1, title: "A Primeira", description: "A amiga que te viu antes de te veres a ti mesma", lang: "PT", energy: "whisper", prompt: cosmicPrompt("the first real friend, the one who saw you before you saw yourself, childhood bond", "tender, nostalgic, warm, intimate", "soft piano, gentle strings, intimate vocal, childhood warmth", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "She Knows", description: "O olhar que dispensa palavras — ela sabe", lang: "EN", energy: "steady", prompt: cosmicPrompt("the friend who reads your face across the room, no words needed, she just knows", "warm, knowing, complicit, gentle", "warm groove, gentle guitar, walking bass, knowing vocal, intimate", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+  { number: 3, title: "Mesa de Cozinha", description: "Vinho, verdade e gargalhadas às 2h da manhã", lang: "PT", energy: "steady", flavor: "bossa", prompt: cosmicPrompt("kitchen table at 2am, wine, truth, laughter, the conversations that save you, female friendship", "warm, intimate, slightly tipsy, honest, joyful", "bossa rhythm, warm guitar, intimate vocal, kitchen-table warmth, gentle joy", "PT", "steady", "bossa"), durationSeconds: 240, audioUrl: null },
+  { number: 4, title: "Holding Space", description: "Segurar sem consertar — estar lá é o suficiente", lang: "EN", energy: "whisper", prompt: cosmicPrompt("holding space for a friend in pain, not fixing just being present, female tenderness", "gentle, still, present, patient", "soft piano, spacious production, gentle vocal, silence as warmth", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+  { number: 5, title: "Riso", description: "O riso que cura — gargalhadas como terapia", lang: "PT", energy: "pulse", flavor: "funk", prompt: cosmicPrompt("laughter as medicine, the friend who makes you laugh until you cry, joy as healing", "joyful, bright, infectious, light", "funky R&B groove, bright production, layered vocals on chorus, joyful vocal, celebration", "PT", "pulse", "funk"), durationSeconds: 240, audioUrl: null },
+  { number: 6, title: "The Ugly Cry", description: "Chorar sem vergonha ao telefone com ela", lang: "EN", energy: "raw", prompt: cosmicPrompt("ugly crying on the phone with your best friend at midnight, no masks, raw vulnerability", "raw, vulnerable, safe, releasing", "minimal piano, raw vocal close-mic, breath sounds, earned tenderness", "EN", "raw"), durationSeconds: 240, audioUrl: null },
+  { number: 7, title: "Orgulho", description: "Quando ela brilha e tu sentes orgulho, não inveja", lang: "PT", energy: "steady", prompt: cosmicPrompt("pride in a friend's success, celebrating her light without dimming yours, female solidarity", "warm, proud, generous, luminous", "warm acoustic, gentle build, proud vocal, celebratory warmth", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+  { number: 8, title: "Separate Lives", description: "Vidas diferentes, amor intacto", lang: "EN", energy: "steady", flavor: "jazz", prompt: cosmicPrompt("friends whose lives diverged, different cities different paths, but love intact, reunion coffee", "bittersweet, warm, mature, real", "jazz piano, walking bass, intimate vocal, late-night reunion warmth", "EN", "steady", "jazz"), durationSeconds: 240, audioUrl: null },
+  { number: 9, title: "Dança Descalça", description: "Dançar juntas na sala sem razão — alegria pura", lang: "PT", energy: "anthem", flavor: "marrabenta", prompt: cosmicPrompt("dancing barefoot in the living room with your best friend, pure joy, no reason needed", "joyful, free, celebratory, dancing, light", "marrabenta fusion groove, warm guitar, community chorus feel, joyful vocal, dancing energy", "PT", "anthem", "marrabenta"), durationSeconds: 270, audioUrl: null },
+  { number: 10, title: "Sisters", description: "Irmãs de escolha — a família que se constrói", lang: "EN", energy: "anthem", flavor: "gospel", prompt: cosmicPrompt("sisters by choice not blood, chosen family, the women who built you, gratitude anthem", "triumphant, grateful, powerful, warm, community", "gospel-inspired anthem, choir harmonies on chorus, powerful vocal, celebratory, sisterhood", "EN", "anthem", "gospel"), durationSeconds: 300, audioUrl: null },
+]};
+
 // ─────────────────────────────────────────────
 // EXPORT
 // ─────────────────────────────────────────────
@@ -1479,6 +1492,7 @@ export const ALL_ALBUMS: Album[] = [
   ROMANCE_DUAS_VOZES,
   // Expansão 2 — Novos territórios
   COSMIC_RAIZ_VERMELHA,
+  ROMANCE_IRMAS,
 ].map(applyLyrics);
 
 // Helpers
