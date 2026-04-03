@@ -10,7 +10,7 @@ import { supabase } from "@/lib/supabase";
  * Music is free but you need an account to listen.
  */
 
-const PUBLIC_ROUTES = ["/login", "/registar", "/partilha", "/o/", "/apoiar"];
+const PUBLIC_ROUTES = ["/login", "/registar", "/partilha", "/o/", "/apoiar", "/album/", "/inspira", "/offline"];
 
 export default function AuthGate({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
