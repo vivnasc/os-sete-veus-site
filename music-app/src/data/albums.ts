@@ -151,7 +151,7 @@ const ENERGY_STYLES_DUET: Record<TrackEnergy, string> = {
 // Modificadores de sabor — só aplicados quando o sabor não é"organic"
 const FLAVOR_MODIFIERS: Record<TrackFlavor, string> = {
   organic: "",
-  marrabenta: "Marrabenta Mozambican groove, Neyma style, guitar-driven danceable rhythm, shaker percussion, warm bass, joyful and grounded.",
+  marrabenta: "Mozambican marrabenta fusion with afro-pop, mid-tempo (100-110 BPM), guitar-driven but smoother groove, inspired by Neyma We Can Love, maintaining rhythmic repetition but with modern soft production, warm bass, joyful and grounded.",
   afrobeat: "Afrobeat influence, Afropop groove, syncopated guitar, talking drum patterns, warm bass groove, danceable West African feel, joyful and grounded.",
   bossa: "Bossa nova influence, gentle nylon guitar, soft brushed drums, warm upright bass, intimate Brazilian feel, swaying rhythm, velvet vocal tone.",
   jazz: "Contemporary jazz influence, Rhodes piano, walking bass, brushed cymbals, smoky intimate club feel, improvised phrasing, late-night warmth.",
