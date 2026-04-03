@@ -5926,4 +5926,1031 @@ The most spacious place
 Between
 Where everything begins`,
 
+  // ─────────────────────────────────────────────
+  // ALBUM: ESPELHO D'ÁGUA
+  // ─────────────────────────────────────────────
+
+  "vida-espelho-agua/1": `[Verse 1]
+Aos vinte tinha pressa de chegar
+Aos trinta tinha medo de falhar
+Aos quarenta sentei-me numa cadeira
+E finalmente comecei a respirar
+
+[Verse 2]
+Deixei de pedir desculpa pelo espaço
+Deixei de encolher a voz na sala
+Quarenta é a idade onde o corpo diz
+Chega — agora a história é minha, e é gala
+
+[Chorus]
+Quarenta
+É quando finalmente começas
+A ser quem sempre foste
+Sem pedir licença
+Quarenta
+Não é declínio — é clareza
+É a primeira manhã
+Sem pressa
+
+[Bridge]
+Dizem que a juventude é o melhor
+Quem diz isso nunca teve quarenta
+Nunca sentiu a paz de quem já sabe
+Que o essencial não se inventa
+
+[Outro]
+Quarenta
+O começo
+Do melhor
+De mim`,
+
+  "vida-espelho-agua/2": `[Verse 1]
+I found it on a Tuesday
+In the mirror by the door
+A single strand of silver
+I had never seen before
+
+[Verse 2]
+My first thought was to pull it
+My second was to stare
+My third was — wait, what if
+This is the crown I earned to wear
+
+[Chorus]
+Silver — not surrender
+Silver — not decline
+Silver is the colour
+Of a life that's lived
+Not a life that's fine
+Silver in the morning
+Silver in the rain
+Every strand a story
+Every strand contains
+A laugh, a loss, a lesson
+That the mirror can't explain
+
+[Bridge]
+My mother hid her greys
+Beneath a box of auburn dye
+But I want my daughter
+To see what it looks like
+When a woman doesn't hide
+
+[Outro]
+Silver
+My crown
+Unearned by anyone else
+Only mine`,
+
+  "vida-espelho-agua/3": `[Verse 1]
+Esta ruga ao lado do olho
+É do verão que passámos no Algarve
+Esta marca na testa
+É da noite em que o teu pai não voltou cedo
+
+[Verse 2]
+Este vinco entre as sobrancelhas
+É de mil decisões difíceis
+Esta linha junto à boca
+É de rir até perder as forças
+
+[Chorus]
+Mapa — o meu rosto é um mapa
+De todos os sítios onde estive
+Mapa — cada ruga é uma estrada
+Que eu percorri enquanto vive
+Não me tirem as marcas
+Não me alisem a história
+Cada linha é um capítulo
+Da minha própria glória
+
+[Bridge]
+As revistas dizem: apaga
+A publicidade diz: esconde
+Mas eu digo: lê
+Lê o meu rosto
+Está tudo lá — quem fui
+Quem sou, e onde
+
+[Outro]
+Mapa
+Lê-me
+Estou toda aqui`,
+
+  "vida-espelho-agua/4": `[Verse 1]
+It started in the supermarket
+No one held the door
+Then the waiter looked past me
+Like I wasn't there before
+
+[Verse 2]
+At fifty the world decided
+I was furniture, not fire
+A woman past her season
+Too old to be desired
+
+[Chorus]
+But invisible
+Was the best thing that happened
+Invisible
+Means nobody's watching
+I can dance in the rain
+I can sing in the street
+I can be completely myself
+From my head to my feet
+Invisible — turned out to be
+The most visible I've ever been to me
+
+[Bridge]
+While they stopped looking
+I started seeing
+While they moved on
+I started being
+The woman I was too watched
+Too judged, too seen
+To ever be
+
+[Outro]
+Invisible
+To them
+Luminous
+To me`,
+
+  "vida-espelho-agua/5": `[Verse 1]
+Acordei a arder por dentro
+Não era febre, não era medo
+Era o corpo a mudar de estação
+Como uma árvore que larga em segredo
+
+[Verse 2]
+O médico chamou-lhe transição
+Eu chamo-lhe uma revolução silenciosa
+O corpo que criou agora descansa
+E nessa pausa — qualquer coisa luminosa
+
+[Chorus]
+Maré — o corpo muda de ritmo
+Maré — não é o fim, é a viragem
+Maré — como o mar que recua
+Para voltar com mais coragem
+Não é perda, é transformação
+Não é menos, é outro tom
+A maré que sobe e desce
+É o corpo a compor outra canção
+
+[Bridge]
+Às mulheres que atravessam
+Esta maré em silêncio
+Vocês não estão a apagar-se
+Estão a nascer de novo
+No vosso próprio incêndio
+
+[Outro]
+Maré
+Mudança
+Não é fim
+É recomeço`,
+
+  "vida-espelho-agua/6": `[Verse 1]
+I used to rush through mornings
+Like a train that couldn't stop
+Now I sit with my coffee
+And I watch the curtain drop
+
+[Verse 2]
+The light comes in more gently
+When you're not trying to race
+The bread tastes like a poem
+When you give it time and space
+
+[Chorus]
+Slower now
+And everything is clearer
+Slower now
+And everything is nearer
+The bird outside my window
+Was there every single day
+I just never heard it singing
+Until I learned to stay
+Slower now — is not less
+Slower now — is finally yes
+
+[Bridge]
+The young me would have laughed
+At this woman by the window
+But the young me never knew
+How beautiful it is to be still
+And still be growing
+
+[Outro]
+Slower
+Softer
+Closer
+Home`,
+
+  "vida-espelho-agua/7": `[Verse 1]
+Esta cicatriz no joelho
+É de uma bicicleta aos sete
+Estas estrias na barriga
+São de um amor que cresceu dentro
+
+[Verse 2]
+Esta mancha no ombro
+É de um verão que não esqueci
+Esta pele mais fina nos braços
+É do tempo que vivi
+
+[Chorus]
+Pele vivida
+Conta histórias que a boca não diz
+Pele vivida
+É o diário mais honesto que eu fiz
+Cada marca é um dia
+Que eu escolhi viver
+Cada cicatriz é a prova
+De que vale a pena ser
+
+[Bridge]
+Não preciso de pele nova
+A que tenho já viu tanto
+Já sentiu o sol e a chuva
+Já guardou segredo e pranto
+É a pele mais rica
+Que eu alguma vez vou ter
+
+[Outro]
+Vivida
+Marcada
+Bonita
+Minha`,
+
+  "vida-espelho-agua/8": `[Verse 1]
+The mirror said: you're fading
+The mirror said: too late
+The mirror said: the best of you
+Has passed its expiry date
+
+[Verse 2]
+But the mirror only shows
+The surface of the skin
+It doesn't show the fire
+That's been building from within
+
+[Chorus]
+The mirror lied
+Beauty was never in the glass
+The mirror lied
+Beauty was in the living
+In the standing, in the falling
+In the getting up again
+The mirror lied
+Beauty was in the rain
+Beauty was in the wrinkle
+That you got from laughing hard
+Beauty was always here
+Not in the mirror — in the yard
+Where you planted things and watched them grow
+
+[Bridge]
+I am done with glass
+I am done with light
+That only shows the outside
+I choose the kind of sight
+That sees from the inside out
+And from there
+I am magnificent
+
+[Outro]
+The mirror lied
+I didn't
+I am beautiful
+Because I lived`,
+
+  "vida-espelho-agua/9": `[Verse 1]
+O vinho novo é verde e impaciente
+Tropeça na língua, não sabe esperar
+O vinho velho é calmo e tem corpo
+Sabe exactamente quando falar
+
+[Verse 2]
+Não me comparem a um fruto de verão
+Que brilha um dia e depois apodrece
+Eu sou vindima — quanto mais o tempo passa
+Mais fundo é o sabor que me aparece
+
+[Chorus]
+Vindima — como o vinho
+Melhor com o tempo
+Vindima — não apresso
+Não me envergonho do que sinto
+Cada ano que passa
+Acrescenta uma camada
+E a mulher que eu sou hoje
+É a mais rica que já fui
+Sem tirar nada
+
+[Bridge]
+Vintage não é insulto
+É o maior dos elogios
+É dizer: passaste por tudo
+E ficaste inteira
+Com os teus próprios critérios
+
+[Outro]
+Vindima
+Ano bom
+Safra rara
+Sou eu`,
+
+  "vida-espelho-agua/10": `[Verse 1]
+They said the best years are behind me
+They said the bloom has left the rose
+But here I am at fifty-five
+More alive than anyone knows
+
+[Verse 2]
+I've buried friends and raised children
+I've lost a marriage, found myself
+I've cried in airports, laughed in kitchens
+And I'm still here — on this shelf
+
+[Chorus]
+Still here — stronger than the story
+Still here — lighter than before
+Still here — with less to prove
+And so much more to explore
+Still here — not despite the years
+But because of every one
+Still here — still standing
+Still becoming
+Still not done
+
+[Bridge]
+To every woman who wonders
+If the best is really past
+I promise you — the woman you're becoming
+Is the one that's built to last
+
+[Outro]
+Still here
+Still me
+Still growing
+Still free`,
+
+  // ─────────────────────────────────────────────
+  // ALBUM: MOEDA
+  // ─────────────────────────────────────────────
+
+  "vida-moeda/1": `[Verse 1]
+A minha mãe contava moedas
+Na mesa da cozinha ao domingo
+Separava o que chegava
+Do que ficava em suspenso, em limbo
+
+[Verse 2]
+Nunca disse que era pobre
+Disse que estava a gerir
+E eu herdei esse silêncio
+Que se disfarça de sorrir
+
+[Chorus]
+Herança invisível
+O medo que não se fala
+A conta que nunca chega
+A vergonha que se cala
+Herança invisível
+Não vem no testamento
+Vem no estômago apertado
+Cada vez que abro um extracto
+
+[Bridge]
+Não herdei dívidas
+Herdei o medo delas
+E desaprender o medo
+É mais difícil do que pagar as velas
+
+[Outro]
+Herdei
+O medo
+Mas não herdei
+O fim`,
+
+  "vida-moeda/2": `[Verse 1]
+They said get a real job
+They said art won't pay the rent
+They said passion is a hobby
+Not a way to pay the rent
+
+[Verse 2]
+But I chose the road with no map
+And the salary with no name
+Some months I eat like a queen
+Some months I eat my shame
+
+[Chorus]
+The price — of choosing what you love
+Is sleeping with the doubt
+The price — of following the fire
+Is never knowing how it turns out
+But the price of not trying
+Is a life that's comfortable and dead
+And I'd rather be alive and broke
+Than buried in a well-made bed
+
+[Bridge]
+To everyone who chose the risk
+Who said yes when the world said no
+The price is real, the fear is real
+But so is the glow
+
+[Outro]
+I chose
+And I'd choose again
+Every time`,
+
+  "vida-moeda/3": `[Verse 1]
+No restaurante divido a conta
+No supermercado faço as contas
+Em casa pago a renda sozinha
+E o orgulho tem a forma de pontas
+
+[Verse 2]
+Ninguém me compra o jantar
+Ninguém me paga a luz
+Eu sou a minha própria empresa
+E o lucro sou eu que produz
+
+[Chorus]
+Conta — a minha
+Conta — sozinha
+Não é solidão — é poder
+Pagar a própria conta
+É a forma mais silenciosa
+De dizer: eu existo
+Eu valho
+Eu decido o que como
+E a que mesa me sento
+
+[Outro]
+A conta
+É minha
+E pago-a
+Com orgulho`,
+
+  "vida-moeda/4": `[Verse 1]
+They told me girls don't want too much
+They told me hunger is for men
+They told me quiet is more attractive
+Than the word ambition on my pen
+
+[Verse 2]
+But I want the corner office
+And the microphone and the stage
+And the book deal and the freedom
+To fill every single page
+
+[Chorus]
+Ambition — is not a dirty word
+When it comes from a woman's mouth
+Ambition — is the compass
+Pointing firmly to the south
+Where the fire is, where the gold is
+Where the voice gets loud
+Ambition — I refuse to whisper
+I was born to say it proud
+
+[Bridge]
+My grandmother's ambition
+Was to feed her children well
+My mother's ambition
+Was to leave the place she fell
+And mine — is everything
+They couldn't have
+And everything they'd celebrate
+If they could see me now
+
+[Outro]
+Ambitious
+Unapologetic
+Hungry
+Mine`,
+
+  "vida-moeda/5": `[Verse 1]
+Primeiro foi o sono
+Que deixou de vir
+Depois foi o apetite
+Que deixou de existir
+
+[Verse 2]
+O corpo dizia pára
+Mas a cabeça dizia mais
+Até ao dia em que as pernas
+Disseram: não vais
+
+[Chorus]
+Burnout — não é fraqueza
+É o corpo a dizer a verdade
+Burnout — é a factura
+De uma vida sem piedade
+O dia em que caí
+Foi o dia mais honesto
+O corpo disse chega
+E o mundo disse: presto
+
+[Bridge]
+Agora ouço o corpo
+Antes de ele gritar
+Agora paro
+Antes de precisar de parar
+
+[Outro]
+Parei
+E o mundo
+Continuou
+E eu
+Também
+Mais devagar`,
+
+  "vida-moeda/6": `[Verse 1]
+My payslip says a number
+But my worth says something else
+My payslip doesn't know
+What I carry on my shelves
+
+[Verse 2]
+The kindness in the morning
+The patience after nine
+The laughter I bring home
+That no currency can define
+
+[Chorus]
+Worth — is not a number
+Worth — is not a raise
+Worth — is the way you hold the room
+On the darkest days
+Worth — is the friend who calls you first
+Worth — is the child who runs to you
+Worth — cannot be deposited
+But it's the richest thing I knew
+
+[Bridge]
+The bank account goes up and down
+Like weather, like the sea
+But the value I carry inside
+Has never wavered — not for me
+
+[Outro]
+Worth
+More than the number
+Worth
+More than gold
+Worth`,
+
+  "vida-moeda/7": `[Verse 1]
+São sete da tarde
+O arroz está a cozer
+As crianças estão a fazer barulho
+E a mesa está por pôr
+
+[Verse 2]
+Trabalhei o dia inteiro
+As mãos cansadas, os pés também
+Mas quando ponho o prato na mesa
+Sei que valeu — por quem
+
+[Chorus]
+Mesa posta — é dignidade
+Mesa posta — é amor em acção
+Não importa se é simples
+Se é arroz ou se é pão
+Mesa posta — é dizer
+Eu sustento esta casa
+Com as minhas duas mãos
+Mesa posta — é a oração
+Mais bonita que existe
+A de quem alimenta
+Sem pedir nada em troca
+
+[Outro]
+Mesa posta
+Mãos cansadas
+Coração cheio
+Basta`,
+
+  "vida-moeda/8": `[Verse 1]
+I wore productivity like armour
+I wore busy like a crown
+Every minute accounted for
+Every rest felt like a letdown
+
+[Verse 2]
+Then one Sunday I did nothing
+And the sky didn't fall apart
+The emails went unanswered
+And I rediscovered my heart
+
+[Chorus]
+Let go of the hustle
+Let go of the grind
+The most productive thing I did
+Was leave the work behind
+Rest is not a weakness
+Rest is not a waste
+Rest is the rebellion
+Of a woman done with haste
+Let go — of proving
+Let go — of performing
+The best version of myself
+Is the one that's done performing
+
+[Outro]
+I rested
+And became
+More
+Not less`,
+
+  "vida-moeda/9": `[Verse 1]
+Tenho pouco no banco
+Mas tenho saúde no corpo
+Tenho riso na mesa
+E tempo para ver o sol pôr-se
+
+[Verse 2]
+Tenho uma amiga que atende
+Às três da manhã sem perguntar
+Tenho um filho que me abraça
+Sem eu precisar de mandar
+
+[Chorus]
+Abundância — não se conta
+Abundância — não se mede
+A riqueza mais bonita
+É a que nunca se vende
+Saúde, riso, tempo
+Sono tranquilo e pão quente
+Abundância — é olhar à volta
+E saber que o que tenho
+É mais do que suficiente
+
+[Outro]
+Rico
+Quem tem
+O que o dinheiro
+Não compra`,
+
+  "vida-moeda/10": `[Verse 1]
+I bought a course, they laughed
+I bought a book, they shrugged
+I bought myself an hour of silence
+And they said I was not enough
+
+[Verse 2]
+But every penny that I spent
+On knowing who I am
+Came back a hundredfold
+In ways they'll never understand
+
+[Chorus]
+Invest in yourself
+It pays forever
+Invest in yourself
+The market doesn't matter
+When the currency is courage
+And the interest is peace
+Invest in yourself
+The one investment that will never cease
+Invest in the woman
+Invest in the dream
+Invest in the quiet voice
+That says: you're worth more than you seem
+
+[Outro]
+The best investment
+I ever made
+Was me`,
+
+  // ─────────────────────────────────────────────
+  // ALBUM: FESTA
+  // ─────────────────────────────────────────────
+
+  "vida-festa/1": `[Verse 1]
+Acordei e o sol já estava
+A pintar a parede de ouro
+Não há nada de especial hoje
+E isso é o maior tesouro
+
+[Verse 2]
+O café sabe melhor
+Quando não há nenhuma pressa
+A manhã estende-se como gata
+E o dia é uma promessa
+
+[Chorus]
+Manhã bonita
+Sem razão, sem motivo
+Manhã bonita
+Porque estou viva
+E o sol entrou sem pedir licença
+E o pássaro cantou sem plateia
+Manhã bonita
+É a festa que ninguém organiza
+Mas que acontece — sempre que abro os olhos
+
+[Outro]
+Manhã
+Sol
+Café
+Basta`,
+
+  "vida-festa/2": `[Verse 1]
+I took my shoes off on the lawn
+And the grass remembered my feet
+I was seven again for a second
+And the world was soft and sweet
+
+[Verse 2]
+I ran without a reason
+I spun without a plan
+The neighbours watched from the window
+And I didn't give a damn
+
+[Chorus]
+Barefoot — on the earth
+Barefoot — like a birth
+Every step a homecoming
+Every blade a friend
+Barefoot — is the fastest way
+To remember how it feels
+To be alive without a schedule
+And to know that joy is real
+
+[Bridge]
+We spend so much time
+In shoes that pinch and bind
+Take them off
+Take them off
+And leave the world behind
+
+[Outro]
+Barefoot
+Free
+Seven again
+Alive`,
+
+  "vida-festa/3": `[Verse 1]
+A cebola está a fritar
+E eu estou a cantar Whitney Houston
+A colher de pau é o microfone
+E a cozinha é o Madison
+
+[Verse 2]
+O molho salpica a camisa
+E eu não quero saber
+Estou no refrão mais alto
+E o fogão sabe a prazer
+
+[Chorus]
+Cozinhar a cantar
+É a terapia mais barata
+Cozinhar a cantar
+É a alma que se desata
+Não importa se desafino
+Não importa se queimo o arroz
+O que importa é que neste momento
+Estou viva — e tenho voz
+
+[Bridge]
+A minha filha ri-se de mim
+O meu cão sai da cozinha
+Mas eu continuo a cantar
+Porque a cozinha é minha — e a alegria é minha
+
+[Outro]
+Cozinha
+Canção
+Colher de pau
+Coração`,
+
+  "vida-festa/4": `[Verse 1]
+The sun is going down
+But not like an ending
+More like the world is blushing
+Before it goes to sleep
+
+[Verse 2]
+Everything turns gold
+The buildings, the trees, your skin
+This is the hour when the world
+Forgives itself for everything
+
+[Chorus]
+Golden hour
+When the light says: look
+Golden hour
+When the world becomes a book
+Written in honey and amber
+And the softest kind of flame
+Golden hour — no filter needed
+Golden hour — nothing to explain
+Just the light
+Saying: you are beautiful
+Exactly as you are
+Right now
+
+[Outro]
+Golden
+Just
+Like
+This`,
+
+  "vida-festa/5": `[Verse 1]
+Chove — e toda a gente corre
+Eu paro — e olho para as poças
+São espelhos invertidos
+Onde o céu cabe nas nossas
+
+[Verse 2]
+Salto com os dois pés
+Como se tivesse cinco anos
+A água sobe e molha tudo
+E eu rio dos meus próprios enganos
+
+[Chorus]
+Saltar — nas poças de chuva
+Saltar — porque sim
+Saltar — porque a vida é curta
+E as poças são para mim
+Quem disse que os adultos
+Não podem ser crianças
+Quem disse que a dignidade
+Não cabe nas danças
+De quem salta descalça
+Na chuva de abril
+
+[Outro]
+Salto
+Rio
+Molho-me
+Vivo`,
+
+  "vida-festa/6": `[Verse 1]
+I was standing at the bus stop
+When the sun broke through the grey
+And for no reason I could name
+I started crying in the way
+
+[Verse 2]
+Not from sadness, not from pain
+But from the overwhelming proof
+That I am here, that I am breathing
+And that is enough
+
+[Chorus]
+Alive — that's all I need to be
+Alive — and the world opens up for me
+The air in my lungs
+Is a symphony
+The ground beneath my feet
+Is a love letter to me
+Alive — I don't need a reason
+Alive — I don't need a season
+I just need this breath
+This moment
+This heartbeat
+To know that I am
+Exactly where I'm meant to be
+
+[Outro]
+Alive
+Here
+Now
+Grateful
+Always`,
+
+  "vida-festa/7": `[Verse 1]
+É de baunilha com pepitas
+Derrete-me no queixo
+Estou sentada no passeio
+E o mundo está perfeito
+
+[Verse 2]
+Passa uma criança e olha
+Com aqueles olhos grandes
+Eu sorrio e ela sorri
+E o gelado faz-nos cúmplices
+
+[Chorus]
+Gelado — o prazer mais simples
+Gelado — que derrete como o tempo
+Gelado — na rua como criança
+Sem pressa e sem tormento
+As coisas mais bonitas da vida
+Cabem numa bola de gelado
+A alegria não é complicada
+É fria, é doce — e é comprada
+Por moedas no bolso
+Nada mais
+
+[Outro]
+Gelado
+Sol
+Rua
+Sorrir`,
+
+  "vida-festa/8": `[Verse 1]
+The bass hits my chest
+Before it hits my ears
+My feet start moving
+And I forget my fears
+
+[Verse 2]
+I don't know anyone here
+And nobody knows me
+I'm just a body in the crowd
+Finally free
+
+[Chorus]
+Dance floor — is my church
+Dance floor — is my prayer
+Where the rhythm takes my thoughts
+And leaves me lighter than air
+Dance floor — I close my eyes
+Dance floor — I disappear
+Into the beat, into the bass
+Into the most honest version of here
+No name, no face
+Just the dance
+Just the space
+
+[Outro]
+Dance
+Lose yourself
+Find yourself
+Dance`,
+
+  "vida-festa/9": `[Verse 1]
+Começou com um sorriso
+Depois foi um som estranho
+Depois abri a boca
+E saiu um riso tamanho
+
+[Verse 2]
+Ela olhou para mim
+Eu olhei para ela
+E as duas caímos
+Como quem cai de uma estrela
+
+[Chorus]
+Gargalhada — a que dói na barriga
+Gargalhada — a que molha os olhos
+Gargalhada — a que não te deixa
+Respirar nem pedir socorro
+A melhor dor do mundo
+É o riso que não pára
+A melhor medicina
+É a amiga que declara
+Guerra ao silêncio
+Com uma piada estúpida
+Às três da manhã
+
+[Outro]
+Rir
+Até doer
+Rir
+Até viver`,
+
+  "vida-festa/10": `[Verse 1]
+Thank you for the morning
+That I didn't have to earn
+Thank you for the coffee
+And the lessons I will learn
+
+[Verse 2]
+Thank you for the people
+Who stayed when they could go
+Thank you for the body
+That carries me through snow
+
+[Chorus]
+Thank you — for everything
+Thank you — for nothing in particular
+Thank you — for the ordinary
+Tuesday afternoon spectacular
+For the bread, the rain, the blanket
+For the friend who texts at noon
+For the moon that shows up nightly
+Like a quiet silver tune
+Thank you — is the simplest prayer
+Thank you — is the truest song
+Thank you — for this life
+Imperfect, messy, and exactly where I belong
+
+[Outro]
+Thank you
+For all of it
+Every single
+Beautiful
+Ordinary
+Day`,
+
 };

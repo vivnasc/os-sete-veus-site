@@ -3006,6 +3006,305 @@ Na sala
 A rir
 Vivas`,
 
+  // ─────────────────────────────────────────────
+  // ALBUM: MEU
+  // ─────────────────────────────────────────────
+
+  "romance-meu/1": `[Verse 1]
+A casa está em silêncio
+A porta está fechada
+O telemóvel no modo avião
+E eu — finalmente — não preciso de mais nada
+
+[Verse 2]
+O lençol é fresco
+A luz é pouca
+A noite é minha
+E a solidão é doce na boca
+
+[Chorus]
+Sozinha
+Não é vazio — é escolha
+Sozinha
+É o luxo de quem se conhece
+Ninguém a pedir, ninguém a esperar
+Só eu e o silêncio
+E o prazer de respirar
+
+[Outro]
+Sozinha
+Inteira
+Minha`,
+
+  "romance-meu/2": `[Verse 1]
+I know the map by heart now
+Every hill, every turn
+I know where the fire starts
+And I know where it burns
+
+[Verse 2]
+No one taught me this
+I learned alone at night
+The language of my body
+Written in its own light
+
+[Chorus]
+My own hands
+Know the way home
+My own hands
+Need no permission
+No direction, no instruction
+Just the quiet revolution
+Of a woman who knows
+What she wants
+And gives it to herself
+My own hands — my own temple
+My own hands — my own wealth
+
+[Outro]
+My hands
+My map
+My way
+Home`,
+
+  "romance-meu/3": `[Verse 1]
+Ensinaram-me a pedir desculpa
+Pelo desejo que sentia
+Ensinaram-me que o prazer feminino
+Era pecado ou fantasia
+
+[Verse 2]
+Desaprendi tudo isso
+Numa noite de coragem
+O meu corpo não é culpado
+O meu prazer não é selvagem
+
+[Chorus]
+Sem vergonha
+O prazer é meu por direito
+Sem vergonha
+Não preciso de um peito
+Que não seja o meu para sentir
+Sem vergonha
+É o mais bonito que posso dizer
+A uma menina que está a crescer
+Sem vergonha — é teu
+Sem vergonha — é bom
+Sem vergonha — é o teu próprio som
+
+[Outro]
+Meu
+Sem explicação
+Meu
+Sem permissão
+Meu`,
+
+  "romance-meu/4": `[Verse 1]
+The water's hot, the candles lit
+The door is locked, the world is out
+I sink below the surface
+And I remember what I'm about
+
+[Verse 2]
+Not a mother, not a worker
+Not a daughter, not a wife
+Just a body in the water
+Just the oldest form of life
+
+[Chorus]
+The bath — my temple
+Where I worship no one else
+The bath — where I am sacred
+Where I am myself
+The water holds me
+Like the first water ever did
+Before names, before shame
+Before anyone told me to hide
+What I am
+
+[Outro]
+Water
+Warmth
+Me
+Enough`,
+
+  "romance-meu/5": `[Verse 1]
+Parei em frente ao espelho
+Sem roupa, sem pressa, sem luz forte
+Olhei para o meu corpo
+Como quem olha para um mapa do norte
+
+[Verse 2]
+Vi as marcas todas
+As curvas, as falhas, as surpresas
+E pela primeira vez
+Não vi defeitos — vi certezas
+
+[Chorus]
+Espelho — sem julgamento
+Espelho — só admiração
+Este corpo carregou-me
+Por cada estação
+Cada cicatriz é uma medalha
+Cada curva é uma decisão
+Este corpo é a casa
+Onde vivo — e é mansão
+
+[Outro]
+Olho
+E gosto
+Do que vejo
+Finalmente`,
+
+  "romance-meu/6": `[Verse 1]
+Nobody gave me permission
+To feel this good alone
+Nobody signed a paper
+Saying this body is my own
+
+[Verse 2]
+I waited years for someone
+To tell me it was fine
+To want, to feel, to tremble
+On nobody's clock but mine
+
+[Chorus]
+Permission — I give it to myself
+Permission — I don't need your shelf
+Of rules, of shoulds, of proper ways
+Permission — is the word I say
+When I close my eyes
+And let the wanting stay
+Permission granted
+By me
+To me
+Today
+
+[Outro]
+Permitted
+Wanted
+Free
+Mine`,
+
+  "romance-meu/7": `[Verse 1]
+São dez da manhã de um domingo
+Não tenho nada para fazer
+O sol entra pela janela
+E o lençol sabe a prazer
+
+[Verse 2]
+Não há lista, não há pressa
+Não há relógio na parede
+Só o corpo esticado
+E a manhã que se estende
+
+[Chorus]
+Domingo — o dia mais honesto
+Domingo — sem produtividade
+Só o corpo e o lençol
+E uma preguiça com saudade
+Domingo — é o altar
+De quem aprendeu a parar
+E a deitar-se no tempo
+Como quem se deita no mar
+
+[Outro]
+Domingo
+Sol
+Lençol
+Nada
+Tudo`,
+
+  "romance-meu/8": `[Verse 1]
+They planted me in rows
+They trimmed me into shape
+They called me beautiful
+When I was small and straight
+
+[Verse 2]
+But something in me pushed
+Past every fence and wall
+And now I grow where I choose
+And I answer to no call
+
+[Chorus]
+Wildflower — not a garden rose
+Wildflower — nobody chose
+The colour or the height
+Wildflower — I grow toward the light
+Not the light they point
+But the one I find
+Wildflower — untamed, undefined
+Wildflower — the most beautiful design
+Is the one that's mine
+
+[Outro]
+Wild
+Untrimmed
+Unplanned
+Alive`,
+
+  "romance-meu/9": `[Verse 1]
+Não preciso de mais ninguém
+Para acender esta chama
+O fogo que arde em mim
+Não precisa de outra cama
+
+[Verse 2]
+É meu este calor
+É minha esta brasa
+O corpo que sou inteira
+É o corpo que é casa
+
+[Chorus]
+Fogo meu — que arde sozinho
+Fogo meu — que não se apaga
+Fogo meu — que não depende
+De nenhuma outra mão vaga
+Eu sou a lenha e a faísca
+Eu sou o ar e a lareira
+Fogo meu — completo
+Fogo meu — à minha maneira
+
+[Outro]
+Fogo
+Meu
+Sempre
+Aceso`,
+
+  "romance-meu/10": `[Verse 1]
+I spent twenty years believing
+I was half of something whole
+Waiting for the other piece
+To fill the missing role
+
+[Verse 2]
+Then one morning in the mirror
+I saw a woman standing tall
+And realised the missing piece
+Was never missing after all
+
+[Chorus]
+Enough — I am enough
+Complete before the ring
+Enough — I am enough
+A whole entire thing
+Not half, not almost
+Not waiting for the rest
+Enough — the word I whisper
+When I lay my hand upon my chest
+Enough — I am the answer
+To the question I forgot to ask
+Enough — was always here
+Behind the mask
+
+[Outro]
+Enough
+Complete
+Whole
+Mine
+Always`,
+
   "romance-irmas/10": `[Verse 1]
 We were not born from the same blood
 But we were forged in the same fire
