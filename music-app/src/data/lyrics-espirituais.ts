@@ -5514,4 +5514,665 @@ Unbroken
 Unstoppable
 Mine`,
 
+  // ─────────────────────────────────────────────
+  // ALBUM: NEVOEIRO
+  // ─────────────────────────────────────────────
+
+  "espiritual-nevoeiro/1": `[Verse 1]
+Hoje não consigo
+Não há razão, não há nome
+É só um peso que acordou comigo
+E que come o que eu como
+
+[Verse 2]
+A cama é um país
+De onde não consigo emigrar
+Os lençóis prendem-me os pés
+E o tecto é tudo o que sei olhar
+
+[Chorus]
+Não consigo — e não preciso de explicar
+Não consigo — não é preguiça nem falta de ar
+É o corpo a dizer: hoje não
+É a alma a pedir: fica
+Não consigo — e isso também é humano
+Não consigo — e amanhã talvez consiga
+
+[Outro]
+Hoje não
+E está tudo bem
+Hoje não`,
+
+  "espiritual-nevoeiro/2": `[Verse 1]
+The sky is blue but I see grey
+The coffee's warm but I feel cold
+Everyone asks how I'm doing
+I say fine — the oldest lie I've told
+
+[Verse 2]
+It's not sadness, it's the absence
+Of the colour from the room
+Like someone turned the saturation down
+And forgot to turn it back to bloom
+
+[Chorus]
+Fog — not darkness, something softer
+Fog — where edges disappear
+Not a storm, not a drama
+Just the quiet theft of clear
+Fog — I walk through it slowly
+Fog — I trust it has an end
+Even when I cannot see it
+I believe the light will bend
+
+[Outro]
+Fog
+Will lift
+It always does
+I wait`,
+
+  "espiritual-nevoeiro/3": `[Verse 1]
+O primeiro comprimido
+Ficou na palma da mão
+Dez minutos a olhar
+Como se fosse uma decisão
+
+[Verse 2]
+Engoli com água e vergonha
+Como se fosse uma derrota
+Mas no dia seguinte o sol
+Tinha uma cor que eu tinha esquecido — e era nota
+
+[Chorus]
+Medicação — não é fraqueza
+Medicação — é a ponte
+Entre o escuro e a luz
+Entre o vale e o monte
+Não me envergonho do comprimido
+Que me devolveu as manhãs
+Não me envergonho da ajuda
+Que fez com que eu chegasse a amanhã
+
+[Bridge]
+Ao meu pai que nunca pediu ajuda
+Ao meu tio que se escondeu
+Digo: havia um comprimido
+Que podia ter sido o teu
+Sem vergonha
+
+[Outro]
+A ponte
+Existe
+E eu
+Atravessei`,
+
+  "espiritual-nevoeiro/4": `[Verse 1]
+The room is small, the chair is soft
+The clock ticks louder than it should
+She asks me how I feel
+And I say something I never thought I would
+
+[Verse 2]
+The truth — out loud — in air
+Not written, not rehearsed
+Just the sound of someone saying
+What they've held for years
+And finding that the room
+Doesn't collapse, and neither do I
+
+[Chorus]
+Therapy — is the room
+Where the truth has a chair
+Therapy — is the hour
+Where I'm allowed to care
+About myself, about the mess
+About the parts I never dress
+In front of anyone
+Therapy — is not fixing
+Therapy — is witnessing
+What was always there
+
+[Outro]
+I spoke
+And the walls
+Held
+And so did I`,
+
+  "espiritual-nevoeiro/5": `[Verse 1]
+O coração dispara
+E não há perigo nenhum
+A cabeça diz que há incêndio
+Mas o corpo é o único alarme sem razão
+
+[Verse 2]
+As mãos suam, o peito aperta
+O ar é pouco e o mundo é grande
+Quero sair mas estou presa
+Num corpo que grita sem pedir a ninguém que mande
+
+[Chorus]
+Ansiedade — o fogo falso
+Ansiedade — o alarme sem fumo
+Mas o medo é real no corpo
+E o peito é real no sumo
+Respira — como quem conta até dez
+Respira — como quem reza sem voz
+Respira — o alarme vai passar
+Respira — e o corpo vai lembrar
+Que está seguro, que está aqui
+Que o perigo é só memória
+
+[Outro]
+Respira
+O alarme
+Passa
+Sempre passa`,
+
+  "espiritual-nevoeiro/6": `[Verse 1]
+After the flood
+The water pulls back slowly
+The mud is everywhere
+But the sky is holy
+
+[Verse 2]
+I sit on the front step
+With coffee and the dawn
+The worst is over now
+And I am tired but not gone
+
+[Chorus]
+Still water — after the storm
+Still water — earned and warm
+Not the peace of never breaking
+But the peace of having broken
+And choosing to be whole
+Still water — is the deepest kind
+Of beautiful I know
+
+[Bridge]
+The strongest trees
+Are the ones that weathered wind
+And the calmest hearts
+Are the ones that learned to swim
+
+[Outro]
+Still
+After everything
+Still
+Here`,
+
+  "espiritual-nevoeiro/7": `[Verse 1]
+Estive um ano a ensaiar
+A frase mais difícil do mundo
+Três palavras pequenas
+Que pesam mais que tudo
+
+[Verse 2]
+Preciso de ajuda
+Disse — e o chão não se abriu
+O céu não caiu
+E alguém disse: estou aqui
+
+[Chorus]
+Pedir ajuda
+É a frase mais corajosa
+Que alguém pode dizer
+Pedir ajuda
+Não é fraqueza — é a prova
+De que queres viver
+Pedir ajuda
+É a mão que se abre
+Quando já não aguenta o peso
+Pedir ajuda
+É o primeiro passo
+Para sair do avesso
+
+[Outro]
+Preciso
+De ajuda
+E dissê-lo
+Foi o começo
+De me salvar`,
+
+  "espiritual-nevoeiro/8": `[Verse 1]
+Today was a good day
+Not great, not shining, just good
+I ate breakfast and I meant it
+I stood up because I could
+
+[Verse 2]
+I smiled and the smile was real
+Not performed, not for show
+I noticed a flower on the way home
+And I walked a little slow
+
+[Chorus]
+Good days — they exist
+Good days — count them like gold
+Not every day is a mountain
+Some are just a gentle fold
+In the fabric of a life
+That's learning to unfold
+Good days — are not the absence of bad
+Good days — are the proof
+That the fog can lift
+And the heart can shift
+And the light — was always there
+Beneath the grey
+
+[Outro]
+Today was good
+That's enough
+Today was good`,
+
+  "espiritual-nevoeiro/9": `[Verse 1]
+Ninguém vê a cicatriz
+Porque não está na pele
+Está algures entre o peito
+E o sítio onde o medo se mantém de pé
+
+[Verse 2]
+Se eu dissesse onde me dói
+Ninguém saberia apontar
+É uma dor sem morada
+Sem raio-x, sem lugar
+
+[Chorus]
+Cicatriz invisível
+A dor que não se mostra
+Cicatriz invisível
+A ferida mais nossa
+Não há penso que sirva
+Não há gesso que tape
+Só a coragem de dizer
+Dói aqui — mesmo que ninguém saiba onde é
+
+[Bridge]
+A quem carrega uma dor
+Que não se vê no corpo
+Eu sei — eu também carrego
+E o peso é real
+Mesmo sem contorno
+
+[Outro]
+Dói
+Sem se ver
+E é real
+Sempre foi`,
+
+  "espiritual-nevoeiro/10": `[Verse 1]
+First it was a crack
+In the ceiling of the dark
+Then it was a line
+Like a slow and patient spark
+
+[Verse 2]
+Then it was a glow
+Behind the curtain of the night
+And then — without a warning
+The whole room filled with light
+
+[Chorus]
+Light returns — it always does
+Light returns — like a stubborn friend
+Who knocks and knocks and knocks
+Until you let her in
+Light returns — not because you earned it
+Light returns — not because you're fixed
+But because the dark was never permanent
+It was just a room
+That hadn't found its switch
+Light returns — I promise you
+Light returns
+
+[Bridge]
+To everyone still in the fog
+To everyone still in the grey
+The light is not gone
+It's just on its way
+
+[Outro]
+Light
+Returns
+Always
+Always
+Returns`,
+
+  // ─────────────────────────────────────────────
+  // ALBUM: FREQUÊNCIA
+  // ─────────────────────────────────────────────
+
+  "espiritual-frequencia/1": `[Verse 1]
+São sete da manhã e a cabeça já começou
+Dez ideias ao mesmo tempo
+Uma lista que se perdeu
+E um pensamento que não acabou
+
+[Verse 2]
+O rádio lá dentro não se desliga
+Muda de estação sozinho
+Passo do génio à catástrofe
+Num único caminho
+
+[Chorus]
+Barulho de dentro
+O rádio que ninguém ouve
+Barulho de dentro
+Dez canais ao mesmo tempo
+Às vezes é caos
+Às vezes é génio
+E eu estou ali no meio
+A tentar encontrar o volume certo
+
+[Outro]
+O barulho
+É meu
+Aprendo
+A ouvir`,
+
+  "espiritual-frequencia/2": `[Verse 1]
+The world went quiet
+Not because it stopped
+But because I found the thing
+That made everything else drop
+
+[Verse 2]
+Hours pass like minutes
+The clock forgets to tick
+I'm inside the work, the art, the thought
+And nothing else can stick
+
+[Chorus]
+Hyperfocus — the world disappears
+Hyperfocus — the gift nobody sees
+When the chaos turns to crystal
+And the noise becomes a breeze
+Hyperfocus — is the superpower
+Hidden in the storm
+The moment when the different brain
+Becomes its truest form
+
+[Bridge]
+They call it disorder
+But in this moment
+I am more ordered
+Than the world has ever been
+
+[Outro]
+Focused
+Still
+Perfect
+Flow`,
+
+  "espiritual-frequencia/3": `[Verse 1]
+De manhã visto a máscara
+Que sorri na hora certa
+Que fala no tom certo
+Que parece estar desperta
+
+[Verse 2]
+Ninguém sabe o esforço
+Que é parecer normal
+Controlar cada gesto
+Como se fosse um animal
+Treinado para o palco
+De uma vida que não é real
+
+[Chorus]
+Máscara — a que uso para caber
+Máscara — a que visto para viver
+Num mundo que não foi feito
+Para a forma como penso
+Máscara — estou cansada
+De fingir que sou como o resto
+Hoje quero tirá-la
+E respirar por inteiro
+
+[Outro]
+Tiro
+A máscara
+E debaixo
+Estou eu
+Inteira
+Diferente
+Perfeita`,
+
+  "espiritual-frequencia/4": `[Verse 1]
+The doctor said three letters
+And the room rearranged
+Thirty years of wondering
+Suddenly explained
+
+[Verse 2]
+I cried but not from sadness
+I cried because the weight
+Of thinking I was broken
+Dissolved into a name
+
+[Chorus]
+Late diagnosis — is grief and relief
+In the very same breath
+It's mourning the girl
+Who struggled in silence
+While celebrating the woman
+Who finally makes sense
+Late diagnosis — is the map
+That arrives after the journey
+But at least — at last
+I know why the road
+Was never quite straight
+
+[Bridge]
+To everyone who got the answer late
+Who spent years performing normal
+Who smiled through the confusion
+Your diagnosis is not a label
+It's a homecoming
+
+[Outro]
+Now I know
+And knowing
+Changes
+Everything`,
+
+  "espiritual-frequencia/5": `[Verse 1]
+O supermercado é demasiado
+As luzes, os sons, as cores
+O corpo quer fugir
+De mil pequenos horrores
+
+[Verse 2]
+A festa é demasiada
+As vozes todas ao mesmo tempo
+Sorrio mas por dentro
+Estou a contar cada momento
+
+[Chorus]
+Sobrecarga — quando o mundo é demasiado
+Sobrecarga — quando o corpo diz já chega
+Não é frescura nem drama
+É o sistema a pedir trégua
+Sobrecarga — preciso de escuro
+Preciso de silêncio
+Preciso de um canto
+Onde o mundo pare de ser imenso
+
+[Bridge]
+Vou para o carro
+Fecho os olhos
+Respiro dez vezes
+E o mundo volta
+Ao tamanho certo
+
+[Outro]
+Respiro
+O mundo encolhe
+Respiro
+E cabe outra vez`,
+
+  "espiritual-frequencia/6": `[Verse 1]
+They said I was too much
+Too fast, too loud, too scattered
+They said I needed fixing
+As if the way I'm wired mattered
+Less than theirs
+
+[Verse 2]
+But I'm not a broken version
+Of the way they think
+I'm a different model
+Running different software
+On a different frequency
+
+[Chorus]
+Different wiring — not less, just other
+Different wiring — not broken, just another
+Way to see the world
+Another way to feel
+Different wiring — is what makes me
+The most creative version of real
+Not a malfunction
+Not a mislabel
+Just a brain
+That reads a different table
+
+[Outro]
+Different
+Not less
+Different
+Magnificent`,
+
+  "espiritual-frequencia/7": `[Verse 1]
+Passei anos a sentir-me de fora
+Como quem olha pela janela
+Até que entrei numa sala
+E toda a gente pensava como ela
+
+[Verse 2]
+Contei uma história e riram
+Não de mim — comigo
+Disseram: eu também
+E o silêncio virou abrigo
+
+[Chorus]
+A tribo — onde finalmente cabes
+A tribo — onde não precisas de explicar
+Porque todos já sabem
+O que é ter a cabeça a voar
+A tribo — não é perfeita
+Mas é minha
+E pela primeira vez
+A cadeira tem o tamanho
+Da minha própria coluna
+
+[Outro]
+Tribo
+Encontrei-vos
+Finalmente
+Casa`,
+
+  "espiritual-frequencia/8": `[Verse 1]
+My mind connects the dots
+That nobody else can see
+The link between the song
+The colour and the tree
+
+[Verse 2]
+I see patterns in the chaos
+Music in the noise
+Bridges between islands
+That the world calls empty voids
+
+[Chorus]
+Beautiful mind — that sees what others miss
+Beautiful mind — that lives in the abyss
+Between two thoughts that nobody connects
+And finds a universe of light
+Beautiful mind — the gift is in the chaos
+Beautiful mind — the art is in the mess
+The most creative thing about me
+Is the thing they called a flaw
+
+[Bridge]
+Every inventor, every artist
+Every visionary who changed the game
+Had a mind that didn't fit the mould
+And refused to feel the shame
+
+[Outro]
+Beautiful
+Because
+It's different
+Not despite`,
+
+  "espiritual-frequencia/9": `[Verse 1]
+O mundo corre a cem
+Eu vou a sessenta e cinco
+Não é lentidão — é escolha
+De um ritmo mais bonito
+
+[Verse 2]
+Chego atrasada às vezes
+Perco as chaves três vezes por dia
+Mas também vejo o pôr do sol
+Que toda a gente com pressa perdia
+
+[Chorus]
+Meu ritmo — o relógio é meu
+Meu ritmo — a agenda sou eu
+Não vou ao compasso do mundo
+Vou ao compasso do peito
+Meu ritmo — não é defeito
+É a forma mais honesta
+De viver sem fingir
+Que caber no molde
+É mais importante que existir
+
+[Outro]
+Meu ritmo
+Meu tempo
+Meu compasso
+Meu`,
+
+  "espiritual-frequencia/10": `[Verse 1]
+They call it disorder
+I call it another station
+A frequency so rare
+It sounds like imagination
+
+[Verse 2]
+Not everyone can hear it
+Not everyone will try
+But those who tune in
+Discover they can fly
+
+[Chorus]
+Frequency — not a flaw, a signal
+Frequency — not a break, a song
+A different way of hearing
+What the world gets wrong
+Frequency — mine is set to wonder
+Frequency — mine is set to awe
+The most beautiful reception
+That I ever saw
+Is the one that comes from brains
+That refused to be the same
+
+[Bridge]
+To every mind that wanders
+To every heart that races
+To every soul that doesn't fit
+The world's expected spaces
+Your frequency — is rare
+Your frequency — is gold
+Your frequency — is the story
+That has never yet been told
+
+[Outro]
+Frequency
+Rare
+Beautiful
+Mine
+Ours`,
+
 };

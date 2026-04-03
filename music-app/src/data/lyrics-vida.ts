@@ -6953,4 +6953,313 @@ Beautiful
 Ordinary
 Day`,
 
+  // ─────────────────────────────────────────────
+  // ALBUM: ECRÃ
+  // ─────────────────────────────────────────────
+
+  "vida-ecra/1": `[Verse 1]
+O polegar desce
+Desce sem pensar
+Como quem respira
+Sem saber parar
+
+[Verse 2]
+Mais uma foto
+Mais um vídeo
+Mais uma vida
+Que não é a minha mas parece
+
+[Chorus]
+Scroll — o gesto mais vazio
+Scroll — a fome que não enche
+Scroll — uma hora desapareceu
+E o polegar continua
+Sem saber porquê
+Scroll — larga
+Scroll — olha para cima
+O tecto é mais bonito
+Do que qualquer timeline
+
+[Outro]
+Larguei
+O telefone
+E encontrei
+O tecto
+E o silêncio`,
+
+  "vida-ecra/2": `[Verse 1]
+Ding — my pocket vibrates
+Ding — my attention breaks
+Ding — I was mid-sentence
+Now I've lost what was at stake
+
+[Verse 2]
+The bell owns me more
+Than any boss I've had
+It rings and I respond
+Like a reflex, not a choice — how sad
+
+[Chorus]
+Notification — the digital leash
+Notification — the modern bell
+That rings and rings and rings
+Until you can't tell
+The difference between urgent
+And the noise that sells
+Notification — off
+Notification — mute
+The most rebellious thing I did today
+Was leave my phone on silent
+And go out to play
+
+[Outro]
+Silent
+Free
+Present
+Here`,
+
+  "vida-ecra/3": `[Verse 1]
+Ela tem a casa perfeita
+Ele tem a viagem perfeita
+Eles têm o amor perfeito
+E eu tenho — uma meia sem par no estendal
+
+[Verse 2]
+Fecho o telefone
+E olho à volta
+A minha vida é bonita
+Só não tem filtro — é a versão solta
+
+[Chorus]
+Comparação — a ladra mais silenciosa
+Comparação — que rouba sem entrar
+Rouba a alegria do que tens
+Para te mostrar o que não está
+Comparação — fecho a app
+E abro os olhos
+A minha vida não tem likes
+Mas tem recantos e tem olhos
+Que me olham com amor real
+
+[Outro]
+Fecho
+A app
+Abro
+A vida`,
+
+  "vida-ecra/4": `[Verse 1]
+I turned the phone off
+And the birds came back
+Not that they had left
+But I couldn't hear through the crack
+
+[Verse 2]
+The tree was always there
+The sun was always warm
+But I was somewhere else
+Inside a digital storm
+
+[Chorus]
+Offline — is the new luxury
+Offline — is the new prayer
+The world without a screen
+Is softer, wider, rare
+Offline — the coffee tastes of coffee
+Offline — the friend has a real face
+Offline — is not a loss
+It's the rediscovery of space
+
+[Outro]
+Offline
+The birds
+The sun
+The friend
+Real`,
+
+  "vida-ecra/5": `[Verse 1]
+Parei a meio do jantar
+Para tirar uma foto ao prato
+Quando olhei para cima
+Já ninguém estava sentado
+
+[Verse 2]
+Tinha a foto perfeita
+Mas perdi o momento real
+A conversa, o riso, o sal
+Tudo sacrificado ao altar digital
+
+[Chorus]
+Fotografia — rouba o momento
+Que tenta guardar
+Fotografia — o olho no ecrã
+Perde o olhar
+Baixa o telefone
+Guarda com os olhos
+Os melhores momentos
+São os que não têm registo
+Só memória e sol
+
+[Outro]
+Guardei
+Nos olhos
+Não no ecrã
+E ficou
+Para sempre`,
+
+  "vida-ecra/6": `[Verse 1]
+She posted without a filter
+And the comments were unkind
+She posted with her wrinkles
+And her Monday-morning mind
+
+[Verse 2]
+But somewhere in the scrolling
+A woman stopped and cried
+Because she finally saw someone
+Who looked like what she hides
+
+[Chorus]
+Real face — is the bravest post
+Real face — without the glow
+The skin that's lived, the lines that grew
+The face you're scared to show
+Real face — is a revolution
+Real face — is a door
+That says: come in, you're safe here
+You don't have to perform anymore
+
+[Outro]
+Real
+Unfiltered
+Brave
+Enough`,
+
+  "vida-ecra/7": `[Verse 1]
+Comprei papel e um envelope
+E uma caneta que mancha os dedos
+Sentei-me à mesa
+E escrevi devagar — sem medos
+
+[Verse 2]
+A letra é torta, a tinta borra
+Mas cada palavra pesa mais
+Do que mil mensagens digitais
+Porque esta — demorou — e isso é demais
+
+[Chorus]
+Carta — a intimidade que o email matou
+Carta — o tempo que a pressa roubou
+Tinta no papel como sangue na veia
+Uma carta é um abraço
+Que demora a chegar
+Mas quando chega
+Fica para sempre na gaveta
+E no coração
+
+[Outro]
+Escrevi
+À mão
+Devagar
+E cada letra
+Era amor`,
+
+  "vida-ecra/8": `[Verse 1]
+She falls asleep with blue light
+On her face, a tiny moon
+The stories come from strangers
+Not from me — and not from June
+
+[Verse 2]
+I used to sing to her at night
+My voice, my warmth, my tune
+Now the algorithm sings
+And she sleeps inside a cocoon
+
+[Chorus]
+Digital lullaby — who sings to our children now
+Digital lullaby — who tells them how
+The world works, where the love lives
+And why the dark is safe
+Digital lullaby — I want my voice back
+I want the creak of the chair
+I want the warmth of the room
+Without a single glare
+
+[Bridge]
+Tonight I'll put the screen away
+And I'll sit beside her bed
+And I'll sing the song my mother sang
+Until the stars have read
+Every note — to both of us
+And the glow is gold, not blue
+
+[Outro]
+Tonight
+I sing
+No screen
+Just us`,
+
+  "vida-ecra/9": `[Verse 1]
+Olha para mim
+Não para o telefone
+Olha para mim
+Sem desviar quando apita
+
+[Verse 2]
+Olha para mim
+Como se eu fosse
+A única notificação
+Que vale a pena abrir
+
+[Chorus]
+Olhos nos olhos — a revolução mais simples
+Olhos nos olhos — o acto mais radical
+Num mundo de ecrãs
+Olhar para alguém
+É o mais bonito dos sinais
+Olhos nos olhos — é dizer
+Existes — e eu estou aqui
+Inteira, presente
+Sem dividir com mais ninguém
+Este momento que é só teu
+
+[Outro]
+Olha
+Para mim
+E eu olho
+Para ti
+Basta`,
+
+  "vida-ecra/10": `[Verse 1]
+I turned off everything
+The screen, the news, the noise
+I opened the window
+And I heard the world's own voice
+
+[Verse 2]
+The rain was falling gently
+The dog next door was barking
+A child was laughing somewhere
+And my heart — was finally parking
+
+[Chorus]
+Unplug — and the world comes back
+Unplug — and the colours crack
+Open like a morning after rain
+Everything is brighter
+Everything is strange
+And beautiful, and unfiltered
+And unnamed
+Unplug — the bravest thing
+Is to be bored
+And let the silence sing
+
+[Outro]
+Unplugged
+And the world
+Was right here
+All along
+Waiting
+For me`,
+
 };
