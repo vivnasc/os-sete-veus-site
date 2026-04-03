@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useMusicPlayer, formatTime } from "@/contexts/MusicPlayerContext";
+import { useCustomTitles } from "@/hooks/useCustomTitles";
 import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
 
 export default function MiniPlayer() {
@@ -34,8 +35,11 @@ export default function MiniPlayer() {
     img.src = url;
   }, [currentAlbum?.slug, currentTrack?.number]);
 
+  const { getTitle } = useCustomTitles();
+
   if (!currentTrack) return null;
 
+  const displayTitle = getTitle(currentAlbum?.slug || "", currentTrack.number, currentTrack.title);
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
   const albumColor = currentAlbum?.color || "#C9A96E";
   const coverSrc = trackCover || (currentAlbum ? getAlbumCover(currentAlbum) : "/poses/loranne-hero.png");
@@ -71,7 +75,7 @@ export default function MiniPlayer() {
           <div className="h-11 w-11 shrink-0 rounded-lg shadow-lg overflow-hidden relative">
             <Image
               src={coverSrc}
-              alt={currentTrack.title}
+              alt={displayTitle}
               fill
               sizes="44px"
               className="object-cover"
@@ -82,7 +86,7 @@ export default function MiniPlayer() {
           {/* Track info + next track */}
           <div className="flex-1 min-w-0 text-left">
             <p className="text-sm font-medium text-[#F5F0E6] truncate">
-              {currentTrack.title}
+              {displayTitle}
             </p>
             {nextTrack ? (
               <p className="text-xs text-[#666680] truncate">
