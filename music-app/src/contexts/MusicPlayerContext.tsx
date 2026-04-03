@@ -509,8 +509,19 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       ? `${window.location.origin}${getAlbumCover(album)}`
       : `${window.location.origin}/icon-512.png`;
 
+    // Fetch custom title if available
+    let displayTitle = track.title;
+    try {
+      const cached = sessionStorage.getItem("veus:titles");
+      if (cached) {
+        const titles = JSON.parse(cached);
+        const key = `${album?.slug}-t${track.number}`;
+        if (titles[key]) displayTitle = titles[key];
+      }
+    } catch {}
+
     navigator.mediaSession.metadata = new MediaMetadata({
-      title: track.title,
+      title: displayTitle,
       artist: "Loranne",
       album: album?.title || "Véus",
       artwork: [

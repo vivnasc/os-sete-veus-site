@@ -21,6 +21,7 @@ export function useCustomTitles() {
         const map: TitleMap = data.titles || {};
         cachedTitles = map;
         setTitles(map);
+        try { sessionStorage.setItem("veus:titles", JSON.stringify(map)); } catch {}
       })
       .catch(() => {});
   }, []);

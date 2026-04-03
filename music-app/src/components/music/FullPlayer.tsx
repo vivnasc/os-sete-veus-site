@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
+import { useCustomTitles } from "@/hooks/useCustomTitles";
 import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
 import { useDownloads } from "@/hooks/useDownloads";
 import { useLibrary } from "@/hooks/useLibrary";
@@ -142,6 +143,8 @@ export default function FullPlayer() {
   const [trackCover, setTrackCover] = useState<string | null>(null);
   const { saveTrack, removeTrack, getSaveState, isSaved } = useDownloads();
   const { isFavorite, toggleFavorite, userId } = useLibrary();
+  const { getTitle } = useCustomTitles();
+  const displayTitle = currentTrack ? getTitle(currentAlbum?.slug || "", currentTrack.number, currentTrack.title) : "";
   const { getLyrics: getCustomLyrics } = useCustomLyrics();
   const router = useRouter();
 
@@ -294,7 +297,7 @@ export default function FullPlayer() {
                 <div className="relative aspect-square rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden">
                   <img
                     src={coverSrc}
-                    alt={currentTrack.title}
+                    alt={displayTitle}
                     className="absolute inset-0 w-full h-full object-cover"
                     onError={(e) => {
                       setTrackCover(null);
@@ -308,7 +311,7 @@ export default function FullPlayer() {
               <div className="mt-6 w-full">
                 <div className="flex items-center justify-between">
                   <div className="min-w-0 flex-1">
-                    <h2 className="font-display text-xl font-bold text-[#F5F0E6] truncate">{currentTrack.title}</h2>
+                    <h2 className="font-display text-xl font-bold text-[#F5F0E6] truncate">{displayTitle}</h2>
                     <p className="text-sm text-[#a0a0b0] truncate">{currentAlbum?.title}</p>
                   </div>
                   <button
@@ -356,10 +359,10 @@ export default function FullPlayer() {
               <p className="text-[9px] uppercase tracking-[0.25em] text-[#666680] mb-3">A tocar</p>
               <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/[0.06] mb-8">
                 <div className="w-11 h-11 rounded-xl overflow-hidden shrink-0 shadow-lg">
-                  <img src={coverSrc} alt={currentTrack.title} className="w-full h-full object-cover" />
+                  <img src={coverSrc} alt={displayTitle} className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-semibold truncate" style={{ color: albumColor }}>{currentTrack.title}</p>
+                  <p className="text-sm font-semibold truncate" style={{ color: albumColor }}>{displayTitle}</p>
                   <p className="text-xs text-[#666680] truncate">{currentAlbum?.title}</p>
                 </div>
                 {isPlaying && (
