@@ -5134,4 +5134,384 @@ nua de tudo o que foi
 O dia acaba onde começa
 a única que ninguém me dói`,
 
+  // ─────────────────────────────────────────────
+  // ALBUM: VENTRE
+  // ─────────────────────────────────────────────
+
+  "espiritual-ventre/1": `[Verse 1]
+Antes de saber o teu nome
+O meu corpo já te fazia espaço
+As ancas alargavam em silêncio
+O sono mudou de compasso
+
+[Verse 2]
+Não foi a cabeça que decidiu
+Foi qualquer coisa mais antiga
+Uma maré por baixo da pele
+Uma memória que me obriga
+
+[Chorus]
+Antes de ti
+O corpo já sabia
+Antes de ti
+Já havia uma canção
+Que eu não tinha escrito
+Mas que já existia
+Algures entre o peito
+E a imaginação
+
+[Bridge]
+Ainda não sei o que vem
+Ainda não sei quem serás
+Mas o corpo prepara-se
+Como quem arruma a casa
+Para quem ainda não tem morada
+
+[Outro]
+Antes de ti
+Já eras
+De alguma forma
+Já eras`,
+
+  "espiritual-ventre/2": `[Verse 1]
+The room was cold and the gel was cold
+And the screen was grey and small
+Then a sound appeared — not mine
+Not a drum, not a bell, not a call
+
+[Verse 2]
+A tiny percussion inside of me
+A rhythm I didn't compose
+A heartbeat separate from my own
+And the whole world froze
+
+[Chorus]
+Heartbeat — the first proof
+That I'm not alone in here
+Heartbeat — so tiny
+But louder than any fear
+The doctor said it's normal
+The doctor said it's fine
+But nothing will ever be normal
+After hearing yours inside mine
+
+[Bridge]
+I walked out into the street
+And the city looked brand new
+Every person walking past
+Was someone's heartbeat too
+
+[Outro]
+Heartbeat
+Tiny drum
+I hear you
+I'm coming`,
+
+  "espiritual-ventre/3": `[Verse 1]
+Ninguém te avisa
+Que o corpo se abre como a terra
+Que a dor é um portal
+E a coragem é uma guerra
+
+[Verse 2]
+Segurei a mão de alguém
+Ou de ninguém, já não me lembro
+Só sei que o corpo sabia
+O que fazer em cada membro
+
+[Chorus]
+Corpo partido
+Não é fraqueza — é passagem
+Corpo partido
+É a coragem mais antiga
+Cada mulher que pariu
+Abriu um caminho na pedra
+Cada mulher que pariu
+Sabe o que é ser a porta
+E a casa ao mesmo tempo
+
+[Bridge]
+Gritei — e o grito
+Era mais velho do que eu
+Era o grito de todas as mulheres
+Que vieram antes de mim
+E disseram: vai, não pares
+O mundo começa assim
+
+[Outro]
+Parti
+E nasci
+Outra vez`,
+
+  "espiritual-ventre/4": `[Verse 1]
+The room was painted yellow
+For someone who never came
+The mobile turns in silence
+Above an empty name
+
+[Verse 2]
+They say it happens often
+They say the body knows
+But knowing doesn't stop the flood
+And knowing doesn't close
+
+[Chorus]
+Empty room
+With a crib that holds the air
+Empty room
+With a love that has nowhere to wear
+I carried you for weeks
+Inside a body made of hope
+And now I carry you
+Inside a body made of rope
+That holds — but barely
+That breathes — but barely
+That lives — but not the same
+
+[Bridge]
+I will not say it happened for a reason
+Because some things don't have one
+I will just say you existed
+Brief as dawn
+And you were loved
+Before you were gone
+
+[Outro]
+I will plant something
+In the garden
+Where your room would have been
+And I will water it
+Every morning
+Like a prayer
+For what could have been`,
+
+  "espiritual-ventre/5": `[Verse 1]
+São três da manhã
+O mundo inteiro dorme
+Menos eu e esta boca pequena
+Que procura o que é enorme
+
+[Verse 2]
+O cansaço é um rio
+Que corre por dentro dos ossos
+Mas este momento é só nosso
+Entre todos os outros destroços
+
+[Chorus]
+Leite — a primeira palavra
+Que o corpo fala sem voz
+Leite — a oração mais velha
+Que passa de nós para nós
+Às três da manhã
+Com a lua de testemunha
+O mundo é só este quarto
+E esta fome tão miúda
+
+[Bridge]
+Amanhã não me vou lembrar
+Que noite foi, que hora era
+Mas o meu corpo vai guardar
+Este calor de primavera
+No escuro, contigo
+A mais bela das esperas
+
+[Outro]
+Dorme
+Eu estou aqui
+Dorme
+Que o leite sabe a casa`,
+
+  "espiritual-ventre/6": `[Verse 1]
+They call me mama in the morning
+And darling in the night
+But somewhere in between the names
+I lost the one that's mine by right
+
+[Verse 2]
+I love this life I'm building
+I love these hands that hold
+But I refuse to disappear
+Into a story others told
+
+[Chorus]
+Still a woman
+Before I am a mother
+Still a woman
+With dreams that aren't for another
+I will not shrink to fit the frame
+They built for those who bear the name
+Still a woman — with fire
+Still a woman — with want
+Still a woman — with a self
+That motherhood will never haunt
+
+[Bridge]
+I can be devoted
+And still be free
+I can love my children
+And still love me
+These are not opposites
+These are not at war
+I am the ocean
+I am the shore
+
+[Outro]
+Still
+A woman
+First
+And always`,
+
+  "espiritual-ventre/7": `[Verse 1]
+Dizem-me que vou mudar de ideias
+Dizem-me que é diferente quando é teu
+Dizem-me que uma mulher sem filhos
+É um jardim que não cresceu
+
+[Verse 2]
+Mas eu sou um jardim de outra espécie
+Com flores que não precisam de semente
+Tenho frutos que são livros, mãos e pontes
+E o meu ventre é meu — não da gente
+
+[Chorus]
+A escolha
+De não ser mãe também é sagrada
+A escolha
+Não precisa de ser explicada
+Não é falta, não é medo
+Não é egoísmo nem defeito
+É a liberdade de viver
+Um corpo inteiro, com respeito
+
+[Bridge]
+Às mulheres que escolheram
+Um caminho sem berço
+O meu amor não tem condições
+E o vosso ventre tem o mesmo verso
+Que o meu — é vosso
+Só vosso
+Sempre vosso
+
+[Outro]
+Inteira
+Sem filhos
+Inteira
+Com tudo`,
+
+  "espiritual-ventre/8": `[Verse 1]
+My mother sang a song to me
+In a language she half-remembered
+A melody from her own mother
+From a kitchen in September
+
+[Verse 2]
+I didn't know the words back then
+I just knew the warmth they carried
+Now I sing them to my daughter
+And the melody gets married
+
+[Chorus]
+Lullaby — the thread that doesn't break
+Lullaby — the river that keeps flowing
+From the mouth of every mother
+To the ear of every child
+Lullaby — the oldest song on earth
+Lullaby — the gentlest thing I know
+I sing it and my grandmother appears
+In the room, in the glow
+
+[Bridge]
+When I forget the words
+I hum the shape of them
+And my daughter hums them back
+And the chain begins again
+
+[Outro]
+Hush now
+The same hush
+My mother's mother
+Whispered once
+Hush
+And be held`,
+
+  "espiritual-ventre/9": `[Verse 1]
+Começou com um soluço
+Pequeno como uma semente
+Depois os olhos brilharam
+E a boca ficou diferente
+
+[Verse 2]
+Não foi um riso perfeito
+Foi um som entre o espanto e o ar
+Como se o mundo todo coubesse
+No acto mais simples de amar
+
+[Chorus]
+A primeira gargalhada
+É o som mais bonito que existe
+A primeira gargalhada
+É a prova de que nada é triste
+Para sempre
+Nem a noite mais comprida
+Nem o parto mais difícil
+Nem a espera mais sofrida
+A primeira gargalhada
+Paga tudo
+Cura tudo
+Muda tudo
+
+[Bridge]
+Ris-te de quê, meu amor?
+Do tecto? Da luz? Do meu nariz?
+Não importa a razão
+Importa que já sabes
+O que é ser feliz
+
+[Outro]
+Ri
+Outra vez
+Ri
+Que o mundo precisa
+Desse som`,
+
+  "espiritual-ventre/10": `[Verse 1]
+My mother's mother carried water
+Three miles before the sun
+Her mother's mother carried children
+And a country on the run
+
+[Verse 2]
+My mother carried silence
+And the courage to break free
+She carried me across an ocean
+So that I could carry me
+
+[Chorus]
+Lineage — the chain of women
+Who refused to let the line go dark
+Lineage — the quiet army
+Of mothers who carried every spark
+From hand to hand to hand to hand
+From womb to womb to womb
+Every woman in this chain
+Made room — for you, for me
+For every child who breathes
+Because a woman once believed
+
+[Bridge]
+I stand here at the end of a line
+That stretches back beyond my name
+And every step I take
+Is built on every woman's flame
+I am not self-made
+I am grandmother-made
+I am mother-made
+I am woman-made
+
+[Outro]
+Lineage
+Unbroken
+Unstoppable
+Mine`,
+
 };

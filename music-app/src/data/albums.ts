@@ -1388,6 +1388,19 @@ const ROMANCE_IRMAS: AlbumDef = { slug: "romance-irmas", title: "Irmãs", subtit
   { number: 10, title: "Sisters", description: "Irmãs de escolha — a família que se constrói", lang: "EN", energy: "anthem", flavor: "gospel", prompt: cosmicPrompt("sisters by choice not blood, chosen family, the women who built you, gratitude anthem", "triumphant, grateful, powerful, warm, community", "gospel-inspired anthem, choir harmonies on chorus, powerful vocal, celebratory, sisterhood", "EN", "anthem", "gospel"), durationSeconds: 300, audioUrl: null },
 ]};
 
+const ESPIRITUAL_VENTRE: AlbumDef = { slug: "espiritual-ventre", title: "Ventre", subtitle: "Criar vida. Perder vida. Ser a casa de alguém antes de ser a tua.", product: "espiritual", color: "#C4745A", tracks: [
+  { number: 1, title: "Antes de Ti", description: "O corpo que se prepara sem saber para quê", lang: "PT", energy: "whisper", prompt: spiritualPrompt("the body preparing for motherhood before the mind knows, intuition, the body that whispers", "tender, anticipating, sacred, quiet", "soft piano, warm pads, intimate vocal, breath textures, sacred quiet", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+  { number: 2, title: "Heartbeat", description: "A primeira vez que ouves o coração — o mundo pára", lang: "EN", energy: "whisper", prompt: spiritualPrompt("hearing the heartbeat for the first time on the ultrasound, the world stopping, tears of wonder", "overwhelming, sacred, tender, awe", "heartbeat rhythm, soft production, emotional vocal, wonder and tears", "EN", "whisper"), durationSeconds: 240, audioUrl: null },
+  { number: 3, title: "Corpo Partido", description: "O corpo que se abre para dar passagem — coragem animal", lang: "PT", energy: "raw", prompt: spiritualPrompt("the body splitting open in birth, animal courage, primal strength, transformation through pain", "primal, powerful, raw, sacred", "minimal production, raw vocal, building intensity, primal energy", "PT", "raw"), durationSeconds: 240, audioUrl: null },
+  { number: 4, title: "Empty Room", description: "A perda que não tem funeral — o luto invisível", lang: "EN", energy: "raw", prompt: spiritualPrompt("miscarriage, loss without funeral, invisible grief, the empty room that was going to be theirs", "devastating, quiet, gentle, honest", "minimal piano, raw vocal, space and silence, tender devastation", "EN", "raw"), durationSeconds: 260, audioUrl: null },
+  { number: 5, title: "Leite", description: "Dar de mamar às três da manhã — sozinha com o universo", lang: "PT", energy: "whisper", prompt: spiritualPrompt("breastfeeding at 3am, alone with the universe and a small mouth, sacred exhaustion", "exhausted, sacred, tender, nocturnal", "soft nocturnal production, gentle vocal, lullaby-adjacent, 3am warmth", "PT", "whisper"), durationSeconds: 240, audioUrl: null },
+  { number: 6, title: "Still a Woman", description: "Mãe sim — mas antes de mãe, mulher", lang: "EN", energy: "steady", prompt: spiritualPrompt("still a woman before being a mother, not disappearing into motherhood, keeping yourself", "assertive, warm, honest, reclaiming", "warm groove, steady rhythm, confident vocal, reclaiming production", "EN", "steady"), durationSeconds: 240, audioUrl: null },
+  { number: 7, title: "A Escolha", description: "Não ser mãe também é sagrado — a escolha que ninguém respeita", lang: "PT", energy: "steady", prompt: spiritualPrompt("choosing not to be a mother, the choice nobody respects, wholeness without children", "dignified, peaceful, firm, free", "warm acoustic, steady rhythm, confident vocal, dignified warmth", "PT", "steady"), durationSeconds: 240, audioUrl: null },
+  { number: 8, title: "Lullaby", description: "A canção que a tua mãe cantou e tu agora cantas", lang: "EN", energy: "whisper", flavor: "folk", prompt: spiritualPrompt("singing the same lullaby your mother sang, the chain of tenderness across generations", "tender, intergenerational, warm, cyclical", "folk guitar, gentle vocal, lullaby rhythm, warm intergenerational tenderness", "EN", "whisper", "folk"), durationSeconds: 270, audioUrl: null },
+  { number: 9, title: "Primeira Gargalhada", description: "O primeiro riso do bebé — o som mais bonito do mundo", lang: "PT", energy: "steady", flavor: "bossa", prompt: spiritualPrompt("baby's first laugh, the most beautiful sound in the world, pure joy of new life", "joyful, bright, pure, celebratory", "bossa rhythm, warm guitar, joyful vocal, bright and pure production", "PT", "steady", "bossa"), durationSeconds: 240, audioUrl: null },
+  { number: 10, title: "Lineage", description: "A corrente de mulheres que te trouxeram até aqui", lang: "EN", energy: "anthem", flavor: "gospel", prompt: spiritualPrompt("the chain of women who carried life to bring you here, lineage, gratitude, mothers of mothers", "powerful, grateful, ancestral, triumphant", "gospel-inspired anthem, choir harmonies, powerful vocal, lineage celebration", "EN", "anthem", "gospel"), durationSeconds: 300, audioUrl: null },
+]};
+
 // ─────────────────────────────────────────────
 // EXPORT
 // ─────────────────────────────────────────────
@@ -1493,6 +1506,7 @@ export const ALL_ALBUMS: Album[] = [
   // Expansão 2 — Novos territórios
   COSMIC_RAIZ_VERMELHA,
   ROMANCE_IRMAS,
+  ESPIRITUAL_VENTRE,
 ].map(applyLyrics);
 
 // Helpers
