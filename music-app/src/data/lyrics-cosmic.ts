@@ -3117,43 +3117,42 @@ Nos sonhos
 Em mim`,
 
   "cosmic-raiz-vermelha/2": `[Verse 1]
-The plane took off and I pressed my face
-Against the glass to hold the ground
-My mother's hands were folded prayer
-My father's voice the only sound
+They ask me where I'm from
+And I smile because the answer
+Is a map with no borders
+A song with two choruses
 
 [Verse 2]
-I learned to say the right hello
-To swallow vowels that tasted strange
-To smile when they mispronounced my name
-And call displacement rearrange
+I drink coffee like my mother
+I say sorry like my father's country
+I dream in colours that don't have
+A name in either language
 
 [Chorus]
-Diaspora — the longest word
-For leaving with your body but
-Your soul stays one more night
-Folding clothes into a past
-That doesn't fit the suitcase right
-Diaspora — the quiet art
-Of living with a split-screen heart
+In between — that's where I live
+Not from here, not from there
+But from both, but from all
+In between — is not a lack
+It's the widest room of all
+Where two worlds meet
+And neither has to fall
 
 [Verse 3]
-I built a life in borrowed cold
-I learned to love a greyer sky
-But every August something breaks
-A smell, a song — and I know why
+My children will carry this too
+This gentle question in the bones
+And I hope they wear it lightly
+Like a coat with many homes
 
 [Bridge]
-They ask me where I'm from
-And I say two places at once
-Neither fully mine
-Both running through my blood
+I used to think I had to choose
+A flag, a side, a single name
+But the river doesn't choose its banks
+It loves them both the same
 
 [Outro]
-Diaspora
-Is not a place
-It's the distance
-Between two heartbeats`,
+In between
+Is the most honest
+Place I know`,
 
   "cosmic-raiz-vermelha/3": `[Verse 1]
 Sonho em changana
@@ -3195,46 +3194,45 @@ Sonho em changana
 É aí que sou`,
 
   "cosmic-raiz-vermelha/4": `[Verse 1]
-Before they heard my voice
-They saw my skin
-Drew conclusions from the outside in
-A passport made of pigment
-Stamped at birth
+They want a simple answer
+A box, a tick, a line
+But I was made of overlapping maps
+And every border is mine
 
 [Verse 2]
-In some rooms I am exotic
-In some rooms I disappear
-In some rooms I am the question
-No one dares to ask out here
+My grandmother spoke one tongue
+My father learned another
+My mother mixed them both in prayers
+And I am all of them together
 
 [Chorus]
-The colour of my skin
-Is a map I didn't draw
-But I've walked every line
-And I've loved every flaw
-Don't read me like a headline
-Don't wear me like a cause
-The colour of my skin
-Is the oldest thing I own
-And the deepest thing I know
-And the closest thing to home
+A thousand shades
+Not black, not white
+A thousand shades of morning light
+You can't reduce me to a flag
+Or fold me into one small page
+A thousand shades
+That's what I am
+A thousand shades
+And every one is home
 
 [Verse 3]
-My daughter asked me why
-Her hair is different in the rain
-I told her baby, you are weather
-You are sun and you are storm
+My friend said pick a side
+I said I am the side
+I am the bridge between two gardens
+And from here the view is wide
 
 [Bridge]
-I am not your narrative
-I am not your guilt
-I am the woman standing here
-With the house my mother built
+The richest soil is always mixed
+The strongest trees have deepest roots
+And the deepest roots
+Don't care about the name above the fruit
 
 [Outro]
-My skin
-My map
-My home`,
+A thousand shades
+All mine
+All beautiful
+All true`,
 
   "cosmic-raiz-vermelha/5": `[Verse 1]
 A capulana da minha mãe
@@ -3276,37 +3274,37 @@ Enrola-me
 Outra vez`,
 
   "cosmic-raiz-vermelha/6": `[Verse 1]
-They named the streets in someone else's tongue
-They drew the borders with a foreign pen
-They built a church on top of every song
-And called it civilisation — amen
+I write about a place I didn't build
+I sing about a soil I sometimes visit
+I carry someone else's memories
+Like borrowed photographs — but they're exquisite
 
 [Verse 2]
-My grandmother remembers other names
-For rivers, mountains, seasons, stars
-The map they gave us erased hers
-But memory doesn't need a car
+I know the names of streets I've never walked
+I know the taste of fruit from someone's story
+I am not the protagonist of this land
+But I can be the witness to its glory
 
 [Chorus]
-Borrowed land, borrowed flag
-Borrowed God, borrowed shame
-But the soil remembers
-What the books forgot to name
-And the roots grow underneath
-Every road they ever paved
-Borrowed land — but the heartbeat
-Was never, never enslaved
+Honouring — without possessing
+Loving — without claiming rights
+Honouring — the way the moon
+Honours the sun with borrowed light
+You don't have to own a garden
+To admire how it grows
+You don't have to be the river
+To love the way it flows
 
 [Bridge]
-I don't carry anger like a weapon
-I carry it like a lantern in the dark
-To see what was taken
-And to plant where they left a mark
+Some things are not mine to tell
+But they are mine to hold with care
+To pass along with gentle hands
+And say — I'm glad that this is there
 
 [Outro]
-The land remembers
-Even when we forget
-The land remembers`,
+Honouring
+Is the quietest
+Form of love`,
 
   "cosmic-raiz-vermelha/7": `[Verse 1]
 A minha avó nunca andou de avião
@@ -3349,123 +3347,126 @@ E eu
 Estou a aprender a ouvir`,
 
   "cosmic-raiz-vermelha/8": `[Verse 1]
-I flew twelve hours to come back home
-The air was thicker than I remembered
-The mango tree in the backyard
-Had grown and I had grown and nothing
-Was the same
+She put the seed into the ground
+Like dropping a letter in the post
+Trusting that the earth would open it
+And answer with a host
 
 [Verse 2]
-My cousin's children didn't know my face
-My aunt had moved, the wall was painted blue
-The neighbour's dog was gone, the church was loud
-And home was true but also brand new
+No guarantee of rain or sun
+No contract with the soil
+But every morning she returned
+With patience and with toil
 
 [Chorus]
-Return — the word that lies
-As if you can go back
-To the place you left
-As if time stood still
-While you were learning to forget
-Return — is meeting someone
-You used to be
-In a place that used to be
-Exactly what you need
+The garden is the oldest prayer
+The hands that plant believe
+That something green will rise
+From what we cannot see
+The garden doesn't need a church
+The garden doesn't need a name
+It only needs a woman
+Who is brave enough to claim
+Tomorrow — tomorrow exists
+Tomorrow — I plant for it
 
 [Bridge]
-The mango tree is smaller now
-Or maybe I grew tall
-Either way the fruit still falls
-And the children catch them all
+My mother plants tomatoes
+On a balcony in the cold
+And every red fruit that arrives
+Is a story being told
+That hope is not a feeling
+It's a verb — it's what you do
+When you put a seed in dirt
+And say I still believe in you
 
 [Outro]
-I came back
-And home
-Came back to me
-Changed
-But still
-Mine`,
+Plant
+And wait
+And trust
+The garden always answers`,
 
   "cosmic-raiz-vermelha/9": `[Verse 1]
-A machamba da minha mãe
-Ficava atrás da casa velha
-As couves cresciam tão verdes
-Que pareciam ter vergonha da pobreza
+Sou filha do sol e da chuva
+Sou neta do mar e do pó
+Sou feita de tantas histórias
+Que nunca vou ser uma só
 
 [Verse 2]
-Ela ajoelhava-se ao nascer do sol
-Com as mãos na terra como quem reza
-Dizia que plantar é acreditar
-Que amanhã ainda existe com certeza
+Tenho o riso da minha tia
+O silêncio do meu avô
+A teimosia da minha mãe
+E um coração que não se dobrou
 
 [Chorus]
-Machamba — oração de terra
-Semente — acto de fé
-Colheita — a prova de que o tempo
-Sabe mais do que a gente crê
-Machamba — as mãos da minha mãe
-Sujas de futuro e de raiz
-Machamba — a catedral mais linda
-Que alguém feliz construiu
+Todos os tons
+Todos os tons que eu sou
+Não me peçam para escolher
+Um só nome, uma só cor
+Todos os tons
+Vivem em mim sem medo
+Sou o arco-íris inteiro
+Não sou só o azul do céu
 
 [Verse 3]
-Agora moro num apartamento
-Com vasos de plástico na varanda
-Mas às vezes meto as mãos na terra
-E a minha mãe aparece — e canta
+Danço na cozinha descalça
+Com sotaque de dois países
+Choro em português
+E rio em todas as línguas felizes
 
 [Bridge]
-Plantar não é só comida
-É dizer ao mundo: fico
-É pôr o joelho no chão
-E acreditar no que é antigo
+Se me perguntam de onde sou
+Eu digo: sou de todos os lugares
+Que me fizeram rir
+E de todas as mesas
+Que me deram de comer
 
 [Outro]
-Machamba
-Oração
-Raiz
-Futuro`,
+Todos os tons
+Todas as cores
+Toda eu
+Inteira
+Livre`,
 
   "cosmic-raiz-vermelha/10": `[Verse 1]
-They asked for my papers at the border
-They asked for my reasons at the door
-They asked me to prove I belonged
-As if roots need to fill a form
+Wherever I have slept
+The root was there beneath the bed
+Wherever I have wept
+The root was what I held instead
 
 [Verse 2]
-I've lived in five cities, four languages
-Three time zones, two heartbreaks, one name
-And everywhere I went
-The ground recognized my flame
+It doesn't need a map or stamp
+It doesn't need a flag or song
+It's quieter than all of that
+It's just the place where I belong
 
 [Chorus]
-The red root needs no passport
-It travels through the blood
-It crosses every ocean
-It survives every flood
-The red root doesn't argue
-It doesn't beg to stay
-It grows beneath the concrete
-And it blooms anyway
-The red root — is mine
-The red root — is home
-The red root — is the song
-I was born to own
+The red root goes where I go
+It doesn't need to prove a thing
+It lives inside the laughter
+And the way I start to sing
+The red root is my compass
+When the world is turning fast
+It whispers: you are rooted
+And the roots are built to last
+Red root — wherever I go
+Red root — I'm never alone
 
 [Bridge]
-I am the daughter of red soil
-I am the seed of stubborn trees
+I am the daughter of warm soil
+And cold mornings and hot tea
 I am the granddaughter of women
-Who planted on their knees
+Who believed in what could be
+And I carry their believing
+Like a lantern in my chest
+And wherever life may take me
+I am rooted, I am blessed
 
 [Outro]
 Red root
-Wherever I go
-Red root
-Wherever I land
-Red root
-I carry you
-In my blood
-In my hands`,
+In my laughter
+In my hands
+In my children's eyes
+Wherever I land`,
 
 };
