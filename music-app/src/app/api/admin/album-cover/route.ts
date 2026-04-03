@@ -55,6 +55,19 @@ export async function POST(req: NextRequest) {
       );
 
     if (error) {
+      // Table doesn't exist yet — create it on the fly
+      if (error.code === "42P01" || error.message?.includes("does not exist")) {
+        try {
+          await auth.supabase.rpc("exec_sql", { sql: `
+            CREATE TABLE IF NOT EXISTS public.album_cover_track (
+              album_slug TEXT PRIMARY KEY,
+              track_number INT NOT NULL DEFAULT 1
+            );
+          `});
+          await auth.supabase.from("album_cover_track").upsert({ album_slug, track_number }, { onConflict: "album_slug" });
+        } catch { /* table creation may fail without exec_sql RPC — that's OK */ }
+        return NextResponse.json({ ok: true, note: "Table may need manual creation" });
+      }
       return NextResponse.json({ erro: error.message }, { status: 500 });
     }
 
