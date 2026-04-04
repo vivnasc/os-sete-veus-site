@@ -44,102 +44,103 @@ function pickVerse(slug: string, trackNum: number): string {
 const PLAN: DayPlan[] = [
   // ── SEMANA 1: Lancamento "Os Sete Temas do Despertar" ──
   { date: "2026-04-01", actions: [
-    { type: "reel", label: "Reel — O Convite", albumSlug: "livro-filosofico", trackNumber: 1, caption: '"Há uma porta que não se vê / no centro exacto do teu peito"\n\nO Convite — Loranne\nOs Sete Temas do Despertar\nmusic.seteveus.space\n\n#loranne #veus #despertar #musicanova #oconvite #sentir #consciência #ouveoqueninguémdiz' },
+    { type: "reel", label: "Reel — O Convite", albumSlug: "livro-filosofico", trackNumber: 1, caption: '"Há uma porta que não se vê\nno centro exacto do teu peito"\n\nO Convite — Loranne\nOs Sete Temas do Despertar\nmusic.seteveus.space\n\n#loranne #veus #despertar #oconvite #sentir #ouveoqueninguémdiz' },
   ]},
   { date: "2026-04-02", actions: [
-    { type: "carrossel", label: "Carrossel — Os Sete Temas do Despertar", albumSlug: "livro-filosofico", caption: "O primeiro álbum da Loranne está no mundo.\n\n9 faixas. 9 camadas.\nCada uma dissolve o que já não serve.\n\nOuve — e vê o que estava invisível.\n\n🎧 Link na bio\n\n#loranne #veus #musicanova #despertar #autoconhecimento #artistaindependente" },
+    { type: "carrossel", label: "Carrossel — Os Sete Temas do Despertar", albumSlug: "livro-filosofico" },
   ]},
   { date: "2026-04-03", actions: [
-    { type: "story", label: "Story — verso de A Cadeira Vazia", albumSlug: "livro-filosofico", trackNumber: 3, caption: '"A memória é uma sala escura / com cadeiras viradas para trás"' },
+    { type: "story", label: "Story — verso de A Cadeira Vazia", albumSlug: "livro-filosofico", trackNumber: 3 },
   ]},
   { date: "2026-04-04", actions: [
-    { type: "reel", label: "Reel — The Fertile Dark", albumSlug: "livro-filosofico", trackNumber: 6, caption: '"Let the emptiness be full / of all the things you cannot name"\n\nThe Fertile Dark — Loranne\nmusic.seteveus.space\n\n#loranne #veus #thefertiledark #despertar #sentir #consciência' },
+    { type: "reel", label: "Reel — The Fertile Dark", albumSlug: "livro-filosofico", trackNumber: 6, caption: '"Let the emptiness be full\nof all the things you cannot name\nThe fertile dark will hold your roots\nuntil you bloom without the shame"\n\nThe Fertile Dark — Loranne\nmusic.seteveus.space\n\n#loranne #veus #thefertiledark #despertar #emptiness #bloom' },
   ]},
   { date: "2026-04-05", actions: [
-    { type: "story", label: "Story — Pre-encomenda disponivel", albumSlug: "livro-filosofico", caption: "Os Sete Temas do Despertar\nPré-encomenda disponível no iTunes e Amazon\n\n🎧 music.seteveus.space" },
+    { type: "story", label: "Story — Pre-encomenda disponivel", albumSlug: "livro-filosofico" },
   ]},
   { date: "2026-04-06", actions: [
-    { type: "post", label: "Post — sobre o album", albumSlug: "livro-filosofico", caption: "Há coisas que toda a gente sente e quase ninguém diz.\n\nEste álbum nasceu desse silêncio.\n\n9 faixas. Cada uma é uma camada.\nCada camada dissolve o que já não serve.\n\nO Convite. A Cadeira Vazia. O Horizonte. O Reflexo Final.\n\nOuve — e vê o que estava invisível.\n\n🎧 Link na bio\n\n#loranne #veus #musicanova #despertar #autoconhecimento #artistaindependente #sentir #consciência #ouveoqueninguémdiz" },
+    { type: "post", label: "Post — sobre o album", albumSlug: "livro-filosofico", caption: "Ha coisas que toda a gente sente e quase ninguem diz.\n\nO aperto na garganta quando queres falar e nao consegues.\nA exaustao que nao passa com ferias.\nO espelho que te mostra alguem que nao reconheces.\n\nEste album nasceu desse silencio.\n\n9 faixas. Cada uma e uma camada.\nO Convite abre a porta.\nA Cadeira Vazia senta-te com o que foi.\nThe Fertile Dark mostra que o vazio nao e castigo.\nO Reflexo Final devolve-te a ti.\n\nNao e musica para agradar.\nE musica para quem precisa de se ouvir.\n\nmusic.seteveus.space\n\n#loranne #veus #despertar #sentir #autoconhecimento #ouveoqueninguémdiz" },
   ]},
 
   // ── SEMANA 2: Album no ar + Espelho da Ilusao ──
   { date: "2026-04-07", actions: [
-    { type: "reel", label: "Reel — O Horizonte", albumSlug: "livro-filosofico", trackNumber: 7, caption: '"Não há destino, não há fim / A consciência não tem margem"\n\nO Horizonte — Loranne\nmusic.seteveus.space\n\n#loranne #veus #ohorizonte #filosofia #sentir' },
+    { type: "reel", label: "Reel — O Horizonte", albumSlug: "livro-filosofico", trackNumber: 7, caption: '"Nao ha destino, nao ha fim\nA consciencia nao tem margem\nEs o oceano, nao a costa\nes o voo — nao a aterragem"\n\nO Horizonte — Loranne\nmusic.seteveus.space\n\n#loranne #veus #ohorizonte #consciência #caminho' },
   ]},
   { date: "2026-04-08", actions: [
-    { type: "post", label: "Post — Album no Spotify e Apple Music", albumSlug: "livro-filosofico", caption: "Os Sete Temas do Despertar já está no Spotify, Apple Music, e em 50+ plataformas.\n\n9 faixas que perguntam o que nunca te perguntaram.\n\nOuve — e vê o que estava invisível.\n\n🎧 Link na bio\n\n#loranne #veus #spotify #applemusic #musicanova" },
+    { type: "post", label: "Post — Album no Spotify e Apple Music", albumSlug: "livro-filosofico", caption: "Os Sete Temas do Despertar ja esta no Spotify, Apple Music, e em 50+ plataformas.\n\nNao e um album de respostas.\nE um album de perguntas que ninguem te fez.\n\nO que resta quando largas o que pensavas ser?\nO que vive debaixo do cansaco?\nO que acontece quando paras de fugir do vazio?\n\n9 faixas. Portugues e ingles.\nA voz que diz o que o corpo ja sabe.\n\nmusic.seteveus.space\n\n#loranne #veus #spotify #applemusic #despertar" },
     { type: "story", label: "Story — screenshot do Spotify", albumSlug: "livro-filosofico" },
   ]},
   { date: "2026-04-09", actions: [
-    { type: "story", label: "Story — O que dizem os ouvintes", albumSlug: "livro-filosofico", caption: "Partilha screenshot do feed 'O que dizem' da app" },
+    { type: "story", label: "Story — O que dizem os ouvintes", albumSlug: "livro-filosofico" },
   ]},
   { date: "2026-04-10", actions: [
-    { type: "reel", label: "Reel — O Reflexo Final", albumSlug: "livro-filosofico", trackNumber: 9, caption: '"Olha devagar, sem pressa / O reflexo já não mente / És tu — sempre foste tu"\n\nO Reflexo Final — Loranne\nmusic.seteveus.space\n\n#loranne #veus #oreflexofinal #despertar' },
+    { type: "reel", label: "Reel — O Reflexo Final", albumSlug: "livro-filosofico", trackNumber: 9, caption: '"Olha devagar, sem pressa\nO reflexo ja nao mente\nEs tu — sempre foste tu\no principio e o presente"\n\nO Reflexo Final — Loranne\nmusic.seteveus.space\n\n#loranne #veus #oreflexofinal #reflexo #verdade' },
   ]},
   { date: "2026-04-11", actions: [
-    { type: "carrossel", label: "Carrossel — O Espelho da Ilusão", albumSlug: "espelho-ilusao" },
-    { type: "reel", label: "Reel — Despertar", albumSlug: "espelho-ilusao", trackNumber: 1 },
+    { type: "carrossel", label: "Carrossel — O Espelho da Ilusao", albumSlug: "espelho-ilusao" },
+    { type: "reel", label: "Reel — Despertar (Espelho da Ilusao)", albumSlug: "espelho-ilusao", trackNumber: 1, caption: '"Algo treme ca por dentro\nAlgo quer nascer\nComo a flor que parte o cimento\nSo pra poder viver"\n\nDespertar — Loranne\nO Espelho da Ilusao\nmusic.seteveus.space\n\n#loranne #veus #espelhodailusao #despertar #acordar' },
   ]},
   { date: "2026-04-12", actions: [
-    { type: "story", label: "Story — Poll: qual faixa te tocou mais?", albumSlug: "livro-filosofico", caption: "Qual faixa te tocou mais?\n□ O Convite\n□ The Fertile Dark\n□ O Reflexo Final\n□ Outra" },
+    { type: "story", label: "Story — Poll: qual faixa te tocou mais?", albumSlug: "livro-filosofico" },
   ]},
   { date: "2026-04-13", actions: [
-    { type: "reel", label: "Reel — Honestidade Quieta (domingo calmo)", albumSlug: "espelho-ilusao", trackNumber: 6 },
+    { type: "reel", label: "Reel — Honestidade Quieta (domingo calmo)", albumSlug: "espelho-ilusao", trackNumber: 6, caption: '"Nao preciso de ser mais\nNao preciso de mudar\nSo preciso deste instante\nQuieto como o fundo do mar"\n\nHonestidade Quieta — Loranne\nmusic.seteveus.space\n\n#loranne #veus #honestidade #silencio #calma #domingo' },
   ]},
 
   // ── SEMANA 3: Espelhos ──
   { date: "2026-04-14", actions: [
-    { type: "reel", label: "Reel — O Véu Cai", albumSlug: "espelho-ilusao", trackNumber: 7, caption: '"O véu cai e eu danço na luz / O véu cai e não dói"\n\nO Véu Cai — Loranne\nmusic.seteveus.space\n\n#loranne #veus #oveucai #despertar #transformação' },
+    { type: "reel", label: "Reel — O Veu Cai", albumSlug: "espelho-ilusao", trackNumber: 7, caption: '"O veu cai e eu danco na luz\nO veu cai e nao doi\nO veu cai e debaixo do medo\nSo havia eu, so havia eu"\n\nO Veu Cai — Loranne\nmusic.seteveus.space\n\n#loranne #veus #oveucai #transformação #liberdade' },
   ]},
   { date: "2026-04-15", actions: [
-    { type: "post", label: "Post — O que é um véu?", albumSlug: "espelho-ilusao", caption: "O que é um véu?\n\nNão é mentira. Não é fraqueza.\nÉ o que se coloca entre ti e o que já sabes.\n\nA ilusão de que não és suficiente.\nO medo de que a verdade doa.\nA culpa que disfarça de cuidado.\n\nCada véu cai quando olhas.\nNão quando lutas — quando paras.\n\n7 espelhos. 7 véus.\nA Loranne canta o que ninguém te diz.\n\n🎧 music.seteveus.space\n\n#loranne #veus #espelhos #autoconhecimento" },
+    { type: "post", label: "Post — O que e um veu?", albumSlug: "espelho-ilusao", caption: "O que e um veu?\n\nNao e mentira. Nao e fraqueza.\nE o que se coloca entre ti e o que ja sabes.\n\nA ilusao de que nao es suficiente.\nO medo de que a verdade doa.\nA culpa que se disfarca de cuidado.\n\nHa 7 veus.\nA Loranne canta cada um deles.\n\nO primeiro — o da ilusao — e sobre o momento em que percebes que a vida que vives nao e tua. Que vestiste uma pele emprestada. Que a flor que es ficou debaixo do cimento.\n\nCada veu cai quando olhas.\nNao quando lutas — quando paras.\n\nmusic.seteveus.space\n\n#loranne #veus #espelhos #autoconhecimento #ilusao #despertar" },
   ]},
   { date: "2026-04-16", actions: [
     { type: "story", label: "Story — preview Espelho do Medo", albumSlug: "espelho-medo" },
   ]},
   { date: "2026-04-17", actions: [
-    { type: "reel", label: "Reel — faixa do Espelho do Medo", albumSlug: "espelho-medo", trackNumber: 1 },
+    { type: "reel", label: "Reel — Quem Me Ensinou a Ter Medo", albumSlug: "espelho-medo", trackNumber: 1, caption: '"Quem me ensinou a ter tanto medo\nDe cair, de errar, de sangrar\nQuem me embrulhou em tanto segredo\nQue esqueci como e respirar"\n\nQuem Me Ensinou — Loranne\nO Espelho do Medo\nmusic.seteveus.space\n\n#loranne #veus #espelhodomedo #medo #coragem' },
   ]},
   { date: "2026-04-18", actions: [
     { type: "carrossel", label: "Carrossel — O Espelho do Medo", albumSlug: "espelho-medo" },
   ]},
   { date: "2026-04-19", actions: [
-    { type: "story", label: "Story — Inspira a Loranne", albumSlug: "espelho-ilusao", caption: "Que tema queres que a Loranne cante?\n\nmusic.seteveus.space/inspira" },
+    { type: "story", label: "Story — Inspira a Loranne", albumSlug: "espelho-ilusao" },
   ]},
   { date: "2026-04-20", actions: [
-    { type: "reel", label: "Reel — faixa calma para domingo", albumSlug: "espelho-ilusao", trackNumber: 2 },
+    { type: "reel", label: "Reel — The Fabric Falls (domingo)", albumSlug: "espelho-ilusao", trackNumber: 2, caption: '"There\'s a thread that\'s coming loose tonight\nA sleeve that\'s slipping off my shoulder bone\nI\'m standing in a strange and tender light\nAnd for the first time I can feel my own"\n\nThe Fabric Falls — Loranne\nmusic.seteveus.space\n\n#loranne #veus #thefabricfalls #tender #awakening' },
   ]},
 
-  // ── SEMANA 4: Expansão ──
+  // ── SEMANA 4: Expansao — Culpa + No da Heranca ──
   { date: "2026-04-21", actions: [
-    { type: "reel", label: "Reel — faixa Cosmic ou Romance", albumSlug: "cosmic-viagem", trackNumber: 1 },
+    { type: "reel", label: "Reel — A Mae Que Viu (No da Heranca)", albumSlug: "no-heranca", trackNumber: 1, caption: '"A mae que viu guardou a chuva inteira\nCoseu o ceu para nao te molhar\nPorque dizer era partir-te em dois pedacos\nE eu preferi calar a te partir ao luar"\n\nA Mae Que Viu — Loranne\nO No da Heranca\nmusic.seteveus.space\n\n#loranne #veus #nodaheranca #mae #silencio #heranca' },
   ]},
   { date: "2026-04-22", actions: [
-    { type: "post", label: "Post — Loranne em 50+ plataformas", albumSlug: "livro-filosofico", caption: "A música da Loranne já está em 50+ plataformas.\nSpotify. Apple Music. YouTube Music. Amazon. Deezer.\n\nOnde quer que estejas, a voz chega.\n\n🎧 music.seteveus.space\n\n#loranne #veus #streaming #musicanova" },
+    { type: "post", label: "Post — O que e um No?", albumSlug: "no-heranca", caption: "Primeiro vem o Espelho — o que vejo quando olho para mim.\nDepois vem o No — o que se passa entre mim e quem eu amo.\n\nO No da Heranca e sobre maes e filhas.\nSobre o silencio que se herda como se fosse sangue.\nSobre a mulher que viu tudo e calou por amor.\nSobre a filha que cresceu a pensar que a mae nao sabia.\n\nDuas mulheres. Uma cozinha. Anos de coisas por dizer.\n\nHa um fio de seda e nevoeiro entre elas.\nDesatar nao e destruir.\nE dar espaco ao que sempre esteve la.\n\nmusic.seteveus.space\n\n#loranne #veus #nodaheranca #maeefilha #silencio #heranca #desatar" },
   ]},
   { date: "2026-04-23", actions: [
-    { type: "story", label: "Story — behind the scenes (produção)", albumSlug: "espelho-culpa" },
+    { type: "story", label: "Story — behind the scenes (producao)", albumSlug: "espelho-culpa" },
   ]},
   { date: "2026-04-24", actions: [
-    { type: "reel", label: "Reel — faixa tropical/dançável", albumSlug: "espelho-ilusao", trackNumber: 5 },
+    { type: "reel", label: "Reel — O Medo Vestiu-se de Elegancia", albumSlug: "espelho-medo", trackNumber: 3, caption: '"O medo vestiu-se de elegancia\nPos gravata e disse espera mais um pouco\nE eu esperei, com tanta graca\nQue ninguem reparou que eu estava louca\nDe vontade de correr"\n\nElegancia — Loranne\nO Espelho do Medo\nmusic.seteveus.space\n\n#loranne #veus #elegancia #medo #procrastinação #saltar' },
   ]},
   { date: "2026-04-25", actions: [
-    { type: "carrossel", label: "Carrossel — Viagem (Cosmic)", albumSlug: "cosmic-viagem" },
+    { type: "carrossel", label: "Carrossel — O Espelho da Culpa", albumSlug: "espelho-culpa" },
   ]},
   { date: "2026-04-26", actions: [
-    { type: "story", label: "Story — Playlist fim de semana", albumSlug: "cosmic-viagem", caption: "Playlist para o fim de semana 🎧\nmusic.seteveus.space" },
+    { type: "story", label: "Story — Playlist fim de semana", albumSlug: "espelho-ilusao" },
   ]},
   { date: "2026-04-27", actions: [
-    { type: "reel", label: "Reel — faixa gospel para domingo", albumSlug: "espelho-ilusao", trackNumber: 7 },
+    { type: "reel", label: "Reel — Desatar (No da Heranca, domingo)", albumSlug: "no-heranca", trackNumber: 5, caption: '"Desatar nao e destruir o que era nosso\nDesatar e dar ao fio espaco e ar\nO no que nos unia era o mesmo no\nQue nos impedia de nos encontrar"\n\nDesatar — Loranne\nO No da Heranca\nmusic.seteveus.space\n\n#loranne #veus #desatar #heranca #liberdade #domingo' },
   ]},
   { date: "2026-04-28", actions: [
-    { type: "post", label: "Post — 782 faixas, 103 albums, 1 voz", albumSlug: "livro-filosofico", caption: "782 faixas. 103 álbuns. 1 voz.\n\nA Loranne não canta para agradar.\nCanta para quem precisa de se ouvir.\n\n🎧 music.seteveus.space\n\n#loranne #veus #musicanova #artistaindependente" },
+    { type: "post", label: "Post — Pergunta ao publico", albumSlug: "espelho-culpa", caption: "Ha uma voz que mora entre os ossos.\nQue acorda antes de ti de manha.\nQue diz levanta-te, nao descansas.\nQue diz que a tua paz e uma mentira.\n\nConheces essa voz?\n\nDe quem e? Da tua mae? De um professor? De um deus que te ensinaram a temer?\n\nO Espelho da Culpa e sobre isso.\nSobre a voz que nao e tua mas que repetes ha tanto tempo que ja parece tua.\n\nE se a deixasses falar — e simplesmente nao obedecesses?\n\nmusic.seteveus.space\n\n#loranne #veus #espelhodaculpa #culpa #voz #silencio #pergunta" },
   ]},
   { date: "2026-04-29", actions: [
-    { type: "reel", label: "Reel — melhor faixa da semana", albumSlug: "espelho-ilusao", trackNumber: 3 },
+    { type: "reel", label: "Reel — A Roda (Espelho da Ilusao)", albumSlug: "espelho-ilusao", trackNumber: 3, caption: '"Roda, roda, roda sem parar\nQuem e esta mulher que vive no meu lugar\nRoda, roda, roda sem sentir\nHa alguem ca dentro a pedir pra sair"\n\nA Roda — Loranne\nO Espelho da Ilusao\nmusic.seteveus.space\n\n#loranne #veus #aroda #rotina #acordar #sair' },
   ]},
   { date: "2026-04-30", actions: [
-    { type: "story", label: "Story — Maio vem aí (teaser)", albumSlug: "espelho-culpa", caption: "Maio vem aí.\nNovos álbuns. Novos véus.\n\nmusic.seteveus.space" },
+    { type: "post", label: "Post — Balanco de Abril + teaser Maio", albumSlug: "livro-filosofico", caption: "Abril foi o mes em que a Loranne chegou ao mundo.\n\nOs Sete Temas do Despertar.\nO Espelho da Ilusao.\nO Espelho do Medo.\nO Espelho da Culpa.\nO No da Heranca.\n\n5 albuns. Dezenas de faixas.\nCada uma escrita para quem precisa de se ver.\n\nMaio traz mais.\nMais espelhos. Mais nos. Mais veus por cair.\n\nObrigada a quem ouviu.\nObrigada a quem sentiu.\n\nmusic.seteveus.space\n\n#loranne #veus #abril #despertar #obrigada #maio" },
+    { type: "story", label: "Story — Maio vem ai (teaser)", albumSlug: "espelho-culpa" },
   ]},
 ];
 
