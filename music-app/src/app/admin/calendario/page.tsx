@@ -80,7 +80,7 @@ const PLAN: DayPlan[] = [
     { type: "reel", label: "Reel — Sangue Aceso", albumSlug: "vida-sangue-aceso", trackNumber: 1, caption: '"O primeiro passo doi\nO segundo ja nao para\nO corpo acorda e depois\nJa nao precisa de cara"\n\nSangue Aceso — Loranne\nmusic.seteveus.space\n\n#loranne #veus #sangueaceso #corpo #acordar' },
   ]},
   { date: "2026-04-12", actions: [
-    { type: "story", label: "Story — Poll: qual album queres ouvir?", albumSlug: "cosmic-viagem" },
+    { type: "reel", label: "Reel — The Body Keeps the Tale", albumSlug: "espelho-ilusao", trackNumber: 5, caption: '"Oh, the body keeps the tale\nWritten underneath the skin\nEvery scar\'s a letter sent\nFrom the girl I\'ve always been"\n\nThe Body Keeps the Tale — Loranne\nmusic.seteveus.space\n\n#loranne #veus #body #skin #memoria' },
   ]},
   { date: "2026-04-13", actions: [
     { type: "reel", label: "Reel — Rendicao (domingo)", albumSlug: "vida-rendicao", trackNumber: 5, caption: '"O corpo fica mais pesado\nQue o colchao que o segura\nOs bracos sao de chumbo dourado\nA gravidade e uma ternura"\n\nRendicao — Loranne\nmusic.seteveus.space\n\n#loranne #veus #rendicao #descanso #domingo' },
@@ -104,7 +104,7 @@ const PLAN: DayPlan[] = [
     { type: "reel", label: "Reel — Ressurreicao (Estacoes)", albumSlug: "vida-estacoes", trackNumber: 1, caption: '"Houve um tempo em que fiquei deitada\ndentro de mim mesma, pedra sobre pedra\nO corpo pesado como terra molhada\no peito fechado como quem nao medra"\n\nEstacoes — Loranne\nmusic.seteveus.space\n\n#loranne #veus #estacoes #renascer #primavera' },
   ]},
   { date: "2026-04-19", actions: [
-    { type: "story", label: "Story — Inspira a Loranne", albumSlug: "cosmic-viagem" },
+    { type: "reel", label: "Reel — Mascara (Frequencia)", albumSlug: "espiritual-frequencia", trackNumber: 3, caption: '"De manha visto a mascara\nQue sorri na hora certa\nQue fala no tom certo\nQue parece estar desperta\nAntes mesmo de sair\nJa ensaiei quem vou ser"\n\nFrequencia — Loranne\nmusic.seteveus.space\n\n#loranne #veus #frequencia #mascara #neurodivergente' },
   ]},
   { date: "2026-04-20", actions: [
     { type: "reel", label: "Reel — Honestidade Quieta (domingo)", albumSlug: "espelho-ilusao", trackNumber: 6, caption: '"Nao preciso de ser mais\nNao preciso de mudar\nSo preciso deste instante\nQuieto como o fundo do mar"\n\nHonestidade Quieta — Loranne\nmusic.seteveus.space\n\n#loranne #veus #honestidade #calma #domingo' },
@@ -128,13 +128,13 @@ const PLAN: DayPlan[] = [
     { type: "reel", label: "Reel — Heranca das avos", albumSlug: "espelho-culpa", trackNumber: 4, caption: '"A minha avo lavava roupa no rio\nCom as maos rachadas e o ventre cheio\nNunca disse quero, nunca disse eu\nMorreu com os sonhos ainda no seio"\n\nHeranca — Loranne\nmusic.seteveus.space\n\n#loranne #veus #heranca #avos #mulheres' },
   ]},
   { date: "2026-04-26", actions: [
-    { type: "story", label: "Story — Playlist fim de semana", albumSlug: "cosmic-viagem" },
+    { type: "story", label: "Story — verso Desatar", albumSlug: "no-heranca", trackNumber: 5 },
   ]},
   { date: "2026-04-27", actions: [
     { type: "reel", label: "Reel — Luz Crua (domingo manha)", albumSlug: "vida-luz-crua", trackNumber: 1, caption: '"Antes de abrir os olhos\nO mundo ja existe la fora\nOs passaros cantam seus orgulhos\nMas eu fico mais uma hora"\n\nLuz Crua — Loranne\nmusic.seteveus.space\n\n#loranne #veus #luzcrua #manha #domingo' },
   ]},
   { date: "2026-04-28", actions: [
-    { type: "post", label: "Post — Pergunta ao publico", albumSlug: "espelho-ilusao", caption: "\"Roda, roda, roda sem parar\nQuem e esta mulher que vive no meu lugar\nRoda, roda, roda sem sentir\nHa alguem ca dentro a pedir pra sair\"\n\nJa te sentiste assim?\nA viver no automatico. A sorrir no sitio certo. A responder o que esperam.\n\nE depois um dia — paras.\n\nQual foi o momento em que paraste?\nEscreve nos comentarios.\n\nmusic.seteveus.space\n\n#loranne #veus #aroda #pergunta #ouve" },
+    { type: "post", label: "Post — verso A Roda", albumSlug: "espelho-ilusao", caption: "\"Roda, roda, roda sem parar\nQuem e esta mulher que vive no meu lugar\nRoda, roda, roda sem sentir\nHa alguem ca dentro a pedir pra sair\"\n\nHa uma cancao para o momento em que percebes que estas a viver no automatico.\nO sorriso certo. A resposta certa. A vida certa.\nTudo certo — menos tu.\n\nA Roda. Poe nos phones.\n\nmusic.seteveus.space\n\n#loranne #veus #aroda #automatico #ouve" },
   ]},
   { date: "2026-04-29", actions: [
     { type: "reel", label: "Reel — O Reflexo Final", albumSlug: "livro-filosofico", trackNumber: 9, caption: '"Olha devagar, sem pressa\nO reflexo ja nao mente\nEs tu — sempre foste tu\no principio e o presente"\n\nO Reflexo Final — Loranne\nmusic.seteveus.space\n\n#loranne #veus #reflexo #verdade' },
