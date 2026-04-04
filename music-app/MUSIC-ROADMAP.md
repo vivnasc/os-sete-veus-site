@@ -10,32 +10,32 @@
 
 Prioridade: alegria, desporto, chill, texturas do quotidiano, relacoes.
 
-| # | Titulo | Coleccao | Tema | Sabores sugeridos |
-|---|--------|----------|------|-------------------|
-| 1 | Riso | vida | Gargalhadas, tolice, brincar — o album mais leve | funk, bossa |
-| 2 | Corrida | vida | Correr — asfalto, respiracao, endorfinas, a conversa contigo mesma | house, pulse |
-| 3 | Piscina | vida | Natacao — agua, silencio debaixo de agua, bracos que cortam, paz | whisper, steady |
-| 4 | Iron | vida | Ginasio, pesos, forca feminina, o corpo que se constroi | house, pulse |
-| 5 | Chill | vida | House chill, sunset sessions, after-workout calm, corpo em paz | house, bossa |
-| 6 | Flow | vida | Yoga, pilates, tai chi, o corpo que flui sem forca | whisper, steady |
-| 7 | Mesa | vida | Comida, cozinhar, refeicoes em familia, vinho, comunhao | bossa, folk |
-| 8 | Verao | vida | Calor, praia, sal na pele, cigarras, tempo suspenso | house, marrabenta |
-| 9 | Inverno | vida | Frio, cobertores, chuva na janela, sopa, solidao que cura | whisper, jazz |
-| 10 | Manha | vida | Rituais matinais, primeiro cafe, luz na pele | bossa, steady |
-| 11 | Noite | vida | Passeios nocturnos, luzes da cidade, pensamentos as 3h | jazz, house |
-| 12 | Danca | espiritual | O corpo que se move antes da mente perceber | house, funk, marrabenta |
-| 13 | Gratidao | espiritual | Obrigada como pratica, nao platitude | gospel, folk |
-| 14 | Curiosidade | cosmic | O espanto de perguntar porque — perguntas de crianca | steady, whisper |
-| 15 | Ancestrais | cosmic | Os mortos que vivem em nos, raizes, memoria do ADN | folk, gospel |
-| 16 | Irmaos | romance | Irmaos — brigas, proteccao, reencontro | steady, raw |
-| 17 | Pai | romance | Pais — ausencia, silencio, o que nunca disseram | raw, whisper |
-| 18 | Primeiro Dia | vida | Primeiros dias — escola, emprego, cidade | steady, pulse |
-| 19 | Casamento | vida | Votos, pes frios, dancar mal, promessas publicas | bossa, anthem |
-| 20 | Sunset | vida | House chill puro — por do sol, varanda, vinho, serenidade | house |
+| # | Titulo | Slug | Coleccao | Tema | Sabores sugeridos |
+|---|--------|------|----------|------|-------------------|
+| 1 | Boca Aberta | vida-boca-aberta | vida | Gargalhadas, tolice, brincar — o album mais leve | funk, bossa |
+| 2 | Asfalto Vivo | vida-asfalto-vivo | vida | Correr — asfalto, respiracao, endorfinas, a conversa contigo mesma | house, pulse |
+| 3 | Azul Fundo | vida-azul-fundo | vida | Natacao — agua, silencio debaixo de agua, bracos que cortam, paz | whisper, steady |
+| 4 | Barra Carregada | vida-barra-carregada | vida | Ginasio, pesos, forca feminina, o corpo que se constroi | house, pulse |
+| 5 | Luz Mansa | vida-luz-mansa | vida | House chill, sunset sessions, after-workout calm, corpo em paz | house, bossa |
+| 6 | Corpo Aberto | vida-corpo-aberto | vida | Yoga, pilates, tai chi, o corpo que flui sem forca | whisper, steady |
+| 7 | Toalha Posta | vida-toalha-posta | vida | Comida, cozinhar, refeicoes em familia, vinho, comunhao | bossa, folk |
+| 8 | Sal na Pele | vida-sal-na-pele | vida | Calor, praia, sal na pele, cigarras, tempo suspenso | house, marrabenta |
+| 9 | Abrigo | vida-abrigo | vida | Frio, cobertores, chuva na janela, sopa, solidao que cura | whisper, jazz |
+| 10 | Primeira Luz | vida-primeira-luz | vida | Rituais matinais, primeiro cafe, luz na pele | bossa, steady |
+| 11 | Lua Acordada | vida-lua-acordada | vida | Passeios nocturnos, luzes da cidade, pensamentos as 3h | jazz, house |
+| 12 | Pés Descalços | vida-pes-descalcos | espiritual | O corpo que se move antes da mente perceber | house, funk, marrabenta |
+| 13 | Mãos Juntas | vida-maos-juntas | espiritual | Obrigada como pratica, nao platitude | gospel, folk |
+| 14 | Olhos de Criança | vida-olhos-de-crianca | cosmic | O espanto de perguntar porque — perguntas de crianca | steady, whisper |
+| 15 | Sangue Antigo | vida-sangue-antigo | cosmic | Os mortos que vivem em nos, raizes, memoria do ADN | folk, gospel |
+| 16 | Mesmo Sangue | vida-mesmo-sangue | romance | Irmaos — brigas, proteccao, reencontro | steady, raw |
+| 17 | Sombra do Pai | vida-sombra-do-pai | romance | Pais — ausencia, silencio, o que nunca disseram | raw, whisper |
+| 18 | Porta Aberta | vida-porta-aberta | vida | Primeiros dias — escola, emprego, cidade | steady, pulse |
+| 19 | Nó de Ouro | vida-no-de-ouro | vida | Votos, pes frios, dancar mal, promessas publicas | bossa, anthem |
+| 20 | Varanda Quente | vida-varanda-quente | vida | House chill puro — por do sol, varanda, vinho, serenidade | house |
 
 ### Notas Fase 1:
-- 4 albuns de desporto/corpo (Corrida, Piscina, Iron, Flow)
-- 2 albuns house/chill puros (Chill, Sunset)
+- 4 albuns de desporto/corpo (Asfalto Vivo, Azul Fundo, Barra Carregada, Corpo Aberto)
+- 2 albuns house/chill puros (Luz Mansa, Sunset)
 - Retirados da versao anterior: Quintal, Primavera, Outono, Vizinhos, Cabelo, Funeral (passam para fases seguintes)
 - Tom dominante: LEVE (14/20 albuns sao alegres ou serenos)
 
@@ -45,26 +45,26 @@ Prioridade: alegria, desporto, chill, texturas do quotidiano, relacoes.
 
 | # | Titulo | Coleccao | Tema | Sabores sugeridos |
 |---|--------|----------|------|-------------------|
-| 21 | Ciume | espiritual | Ciume como espelho — o que revela, como arde | raw, steady |
-| 22 | Tedio | vida | Tardes vazias, a beleza do nada | jazz, whisper |
-| 23 | Nostalgia | cosmic | Saudade de um tempo que talvez nunca existiu | bossa, whisper |
-| 24 | Wonder | cosmic | Espanto, olhar as estrelas, a primeira neve | whisper, steady |
-| 25 | Vergonha | espiritual | Vergonha do corpo, da classe, da cultura — libertacao | raw, anthem |
-| 26 | Esperanca | espiritual | Esperanca como sobrevivencia teimosa | gospel, anthem |
-| 27 | Raiva Mansa | espiritual | A raiva que as mulheres engolem — liberta-la | pulse, raw |
-| 28 | Alegria Sem Razao | vida | Dancar na cozinha, rir de nada | funk, marrabenta |
-| 29 | Medo Bonito | espiritual | Palco, primeiro beijo, saltar de penhasco | pulse, raw |
-| 30 | Silencio | cosmic | Silencio como som, meditacao, o nao-dito | whisper |
-| 31 | Perdao | espiritual | Perdoar como liberdade — outros e a si mesma | gospel, whisper |
-| 32 | Saudade Boa | romance | A saudade doce de quem amas e esta bem | bossa, steady |
-| 33 | Coragem Pequena | vida | Pequenos actos de bravura — dizer nao, ficar, partir | steady, raw |
-| 34 | Quintal | vida | Jardim, animais, passaros, pes descalcos na relva | folk, bossa |
-| 35 | Ternura | romance | Toques suaves, beijos na testa, maos dadas aos 80 | whisper, bossa |
-| 36 | Trail | vida | Trail running, montanha, natureza, lama, liberdade | pulse, house |
-| 37 | Saudade do Futuro | cosmic | Saudade do que ainda nao aconteceu — sonhos | whisper, steady |
-| 38 | Euforia | vida | A euforia — apaixonar, promocao, golos, resultados | anthem, funk |
-| 39 | Paz | espiritual | Paz interior como pratica, respiracao a respiracao | whisper, bossa |
-| 40 | Bussola | espiritual | Intuicao, o corpo que sabe antes da mente | steady, whisper |
+| 21 | Espelho Verde | espiritual | Ciume como espelho — o que revela, como arde | raw, steady |
+| 22 | Tardes Vazias | vida | Tardes vazias, a beleza do nada | jazz, whisper |
+| 23 | Fotografia Velha | cosmic | Saudade de um tempo que talvez nunca existiu | bossa, whisper |
+| 24 | Olhos Arregalados | cosmic | Espanto, olhar as estrelas, a primeira neve | whisper, steady |
+| 25 | Pele Exposta | espiritual | Vergonha do corpo, da classe, da cultura — libertacao | raw, anthem |
+| 26 | Teimosa | espiritual | Esperanca como sobrevivencia teimosa | gospel, anthem |
+| 27 | Fogo Engolido | espiritual | A raiva que as mulheres engolem — liberta-la | pulse, raw |
+| 28 | Sem Motivo | vida | Dancar na cozinha, rir de nada | funk, marrabenta |
+| 29 | Salto Bonito | espiritual | Palco, primeiro beijo, saltar de penhasco | pulse, raw |
+| 30 | Sala Vazia | cosmic | Silencio como som, meditacao, o nao-dito | whisper |
+| 31 | Mãos Abertas | espiritual | Perdoar como liberdade — outros e a si mesma | gospel, whisper |
+| 32 | Longe e Bem | romance | A saudade doce de quem amas e esta bem | bossa, steady |
+| 33 | Passo Pequeno | vida | Pequenos actos de bravura — dizer nao, ficar, partir | steady, raw |
+| 34 | Terra Molhada | vida | Jardim, animais, passaros, pes descalcos na relva | folk, bossa |
+| 35 | Beijo na Testa | romance | Toques suaves, beijos na testa, maos dadas aos 80 | whisper, bossa |
+| 36 | Lama e Céu | vida | Trail running, montanha, natureza, lama, liberdade | pulse, house |
+| 37 | Amanhã Inventado | cosmic | Saudade do que ainda nao aconteceu — sonhos | whisper, steady |
+| 38 | Combustão | vida | A euforia — apaixonar, promocao, golos, resultados | anthem, funk |
+| 39 | Água Parada | espiritual | Paz interior como pratica, respiracao a respiracao | whisper, bossa |
+| 40 | Norte Interno | espiritual | Intuicao, o corpo que sabe antes da mente | steady, whisper |
 
 ### Notas Fase 2:
 - Trail (montanha/natureza desportiva) adiciona mais desporto outdoor
@@ -76,26 +76,26 @@ Prioridade: alegria, desporto, chill, texturas do quotidiano, relacoes.
 
 | # | Titulo | Coleccao | Tema | Sabores sugeridos |
 |---|--------|----------|------|-------------------|
-| 41 | Crianca | vida | Joelhos esfolados, amigos imaginarios, magia | folk, steady |
-| 42 | Adolescencia | vida | Acne, primeiro desgosto, rebeliao, paredes do quarto | pulse, raw |
-| 43 | Universidade | vida | Noites tardias, vinho barato, encontrar a tribo | funk, house |
-| 44 | Trinta | vida | A decada onde paras de fingir | steady, anthem |
-| 45 | Meia-Idade | vida | Reinvencao, sabedoria a substituir juventude | jazz, steady |
-| 46 | Avo | romance | Receitas, colo, historias, o cheiro da casa dela | folk, whisper |
-| 47 | Professor | vida | O professor que mudou tudo, aprender a ver | steady, raw |
-| 48 | Colega | vida | Aliados no trabalho, rivais, amizade de escritorio | steady, bossa |
-| 49 | Sogra | romance | Navegar familias que nao sao tuas | steady, raw |
-| 50 | Primeiro Amor | romance | Desajeitado, electrico, inesquecivel | pulse, whisper |
-| 51 | Ultimo Amor | romance | O amor inesperado, segundas chances | bossa, anthem |
-| 52 | Amor Proibido | romance | Regras sociais, distancia, timing | raw, pulse |
-| 53 | Amor a Distancia | romance | Ecras, aeroportos, contagens decrescentes | steady, whisper |
-| 54 | Reforma | vida | E agora? Identidade depois do trabalho | jazz, whisper |
-| 55 | Futebol | vida | A bancada, o golo do filho, o orgulho, a chuva no campo, a equipa | house, anthem |
-| 56 | Recomeço | vida | Comecar de novo aos 40, 50, 60 — nunca e tarde | anthem, gospel |
-| 57 | Filho | romance | Filhos como relacao — larga-los, ve-los partir | raw, whisper |
-| 58 | Carta ao Passado | cosmic | Cartas a versoes anteriores de ti mesma | whisper, steady |
-| 59 | Desconhecido | cosmic | Estranhos que mudam a tua vida — um olhar, uma frase | steady, raw |
-| 60 | Ritual | espiritual | Rituais diarios como ancora — cafe, banho, caminhada | bossa, folk |
+| 41 | Joelhos Esfolados | vida | Joelhos esfolados, amigos imaginarios, magia | folk, steady |
+| 42 | Paredes do Quarto | vida | Acne, primeiro desgosto, rebeliao, paredes do quarto | pulse, raw |
+| 43 | Vinho Barato | vida | Noites tardias, vinho barato, encontrar a tribo | funk, house |
+| 44 | Máscara Pousada | vida | A decada onde paras de fingir | steady, anthem |
+| 45 | Fruto Tardio | vida | Reinvencao, sabedoria a substituir juventude | jazz, steady |
+| 46 | Colo | romance | Receitas, colo, historias, o cheiro da casa dela | folk, whisper |
+| 47 | Giz e Voz | vida | O professor que mudou tudo, aprender a ver | steady, raw |
+| 48 | Café da Máquina | vida | Aliados no trabalho, rivais, amizade de escritorio | steady, bossa |
+| 49 | Casa Alheia | romance | Navegar familias que nao sao tuas | steady, raw |
+| 50 | Mãos a Tremer | romance | Desajeitado, electrico, inesquecivel | pulse, whisper |
+| 51 | Última Porta | romance | O amor inesperado, segundas chances | bossa, anthem |
+| 52 | Fogo Quieto | romance | Regras sociais, distancia, timing | raw, pulse |
+| 53 | Fuso Horário | romance | Ecras, aeroportos, contagens decrescentes | steady, whisper |
+| 54 | Mesa Vazia | vida | E agora? Identidade depois do trabalho | jazz, whisper |
+| 55 | Bancada | vida | A bancada, o golo do filho, o orgulho, a chuva no campo, a equipa | house, anthem |
+| 56 | Página em Branco | vida | Comecar de novo aos 40, 50, 60 — nunca e tarde | anthem, gospel |
+| 57 | Mão que Larga | romance | Filhos como relacao — larga-los, ve-los partir | raw, whisper |
+| 58 | Carta Antiga | cosmic | Cartas a versoes anteriores de ti mesma | whisper, steady |
+| 59 | Rosto sem Nome | cosmic | Estranhos que mudam a tua vida — um olhar, uma frase | steady, raw |
+| 60 | Gesto Sagrado | espiritual | Rituais diarios como ancora — cafe, banho, caminhada | bossa, folk |
 
 ### Notas Fase 3:
 - Futebol: a mae na bancada, o golo do filho, a equipa como familia
@@ -123,7 +123,7 @@ Prioridade: alegria, desporto, chill, texturas do quotidiano, relacoes.
 | N. Seasonal Sport | Maratonas, triatlos, retiros fitness, competicoes, superacao | 10 | 100 |
 
 ### Albuns de desporto previstos no total:
-- Fase 1: Corrida, Piscina, Iron, Flow (4)
+- Fase 1: Asfalto Vivo, Azul Fundo, Barra Carregada, Corpo Aberto (4)
 - Fase 2: Trail (1)
 - Fase 3: Futebol (1)
 - Fase 4 Cluster C: Ciclismo, Boxe, Escalada, Danca Desportiva, etc. (10+)
@@ -131,7 +131,7 @@ Prioridade: alegria, desporto, chill, texturas do quotidiano, relacoes.
 - **Total desporto: ~26 albuns, ~260 faixas**
 
 ### Albuns house/chill previstos no total:
-- Fase 1: Chill, Sunset (2)
+- Fase 1: Luz Mansa, Sunset (2)
 - Fase 2: Euforia tem house elements (1)
 - Fase 3: Universidade, Surf (2)
 - Fase 4 Cluster L: 20 albuns puros house/chill
