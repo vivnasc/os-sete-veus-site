@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ALL_ALBUMS } from "@/data/albums";
+import { adminFetch } from "@/lib/admin-fetch";
 
 type ContentAction = {
   type: "reel" | "carrossel" | "story" | "post" | "partilha";
@@ -176,12 +177,16 @@ function isPast(iso: string): boolean {
 }
 
 export default function CalendarPage() {
-  const [doneState, setDoneState] = useState<Record<string, boolean>>(() => {
-    if (typeof window === "undefined") return {};
-    try { return JSON.parse(localStorage.getItem("veus:content-calendar") || "{}"); } catch { return {}; }
-  });
-
+  const [doneState, setDoneState] = useState<Record<string, boolean>>({});
   const [expandedCaption, setExpandedCaption] = useState<string | null>(null);
+
+  // Load from localStorage on mount (client-only)
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("veus:content-calendar");
+      if (saved) setDoneState(JSON.parse(saved));
+    } catch {}
+  }, []);
 
   function toggleDone(key: string) {
     setDoneState(prev => {
@@ -255,7 +260,7 @@ export default function CalendarPage() {
                               done ? "border-green-500 bg-green-500" : "border-current/40"
                             }`}
                           >
-                            {done && <svg viewBox="0 0 24 24" fill="white" className="h-4 w-4"><path d="M20 6L9 17l-5-5" /></svg>}
+                            {done && <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4"><path d="M20 6L9 17l-5-5" /></svg>}
                           </button>
 
                           <div className="flex-1 min-w-0">
