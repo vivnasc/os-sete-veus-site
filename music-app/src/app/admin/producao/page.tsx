@@ -171,12 +171,12 @@ function ProductFilter({
   ];
 
   return (
-    <div className="flex gap-1 rounded-full bg-mundo-muted-dark/10 p-1">
+    <div className="flex gap-1 rounded-full bg-mundo-muted-dark/10 p-1 overflow-x-auto scrollbar-none -mx-4 px-4">
       {tabs.map((t) => (
         <button
           key={t.key}
           onClick={() => onChange(t.key)}
-          className={`rounded-full px-4 py-2 text-xs font-sans uppercase tracking-wider transition-colors ${
+          className={`rounded-full px-4 py-2 text-xs font-sans uppercase tracking-wider transition-colors whitespace-nowrap shrink-0 ${
             active === t.key
               ? "bg-mundo-bg text-mundo-creme shadow-sm"
               : "text-mundo-muted hover:text-mundo-creme"
