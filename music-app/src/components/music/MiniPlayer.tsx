@@ -16,6 +16,7 @@ export default function MiniPlayer() {
     duration,
     shuffle,
     audioError,
+    previewExpired,
     togglePlay,
     next,
     previous,
@@ -52,6 +53,15 @@ export default function MiniPlayer() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40" style={{ paddingBottom: "env(safe-area-inset-bottom)" }} role="region" aria-label="Mini player">
+      {/* Preview expired — CTA to register */}
+      {previewExpired && (
+        <div className="bg-[#C9A96E]/95 backdrop-blur-sm px-4 py-3 flex items-center justify-between">
+          <p className="text-sm text-[#0D0D1A] font-medium">Cria conta gratis para ouvir sem limites</p>
+          <a href="/registar" className="ml-3 px-4 py-1.5 rounded-full bg-[#0D0D1A] text-[#C9A96E] text-xs font-semibold shrink-0">
+            Registar
+          </a>
+        </div>
+      )}
       {/* Audio error toast */}
       {audioError && (
         <div className="bg-red-900/90 backdrop-blur-sm px-4 py-2.5 flex items-center justify-between">
