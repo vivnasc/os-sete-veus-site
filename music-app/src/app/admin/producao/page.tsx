@@ -806,6 +806,24 @@ function TrackRow({
                 Carregar capa
               </label>
               <button
+                onClick={async () => {
+                  const { generateShareCard, downloadBlob } = await import("@/lib/share-card");
+                  const { getAlbumCover, getTrackCoverUrl } = await import("@/lib/album-covers");
+                  const alb = ALL_ALBUMS.find(a => a.slug === albumSlug);
+                  if (!alb) return;
+                  let cover = getAlbumCover(alb);
+                  try {
+                    const probe = await fetch(getTrackCoverUrl(albumSlug, track.number), { method: "HEAD" });
+                    if (probe.ok) cover = getTrackCoverUrl(albumSlug, track.number);
+                  } catch {}
+                  const blob = await generateShareCard(track, alb, cover, "story");
+                  downloadBlob(blob, `Story — ${track.title}.png`);
+                }}
+                className="rounded-lg bg-amber-700/30 px-3 py-1.5 text-xs text-amber-400 hover:bg-amber-700/50 transition min-h-[44px]"
+              >
+                Story
+              </button>
+              <button
                 className={`rounded-lg px-3 py-2.5 text-[11px] min-h-[44px] transition ${
                   isAlbumCover
                     ? "bg-violet-600/40 text-violet-300"
