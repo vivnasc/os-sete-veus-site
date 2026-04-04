@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ALL_ALBUMS, type Album } from "@/data/albums";
 import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
+import { useAlbumCovers } from "@/hooks/useAlbumCovers";
 
 /**
  * Shows recently published ALBUMS (not individual tracks).
@@ -11,7 +12,7 @@ import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
  */
 export default function NovidadesSection() {
   const [albums, setAlbums] = useState<{ album: Album; trackCount: number }[]>([]);
-
+  const { getCoverTrack } = useAlbumCovers();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -68,7 +69,7 @@ export default function NovidadesSection() {
           >
             <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg mb-2">
               <img
-                src={getTrackCoverUrl(album.slug, 1)}
+                src={getTrackCoverUrl(album.slug, getCoverTrack(album.slug))}
                 alt={album.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 onError={(e) => { (e.target as HTMLImageElement).src = getAlbumCover(album); }}
