@@ -56,7 +56,7 @@ export default function LoginPage() {
         setError(authError.message);
       }
     } else {
-      router.push("/library");
+      router.push("/");
     }
   }
 
