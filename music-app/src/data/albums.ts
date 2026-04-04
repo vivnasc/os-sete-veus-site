@@ -1619,6 +1619,17 @@ export const ALL_ALBUMS: Album[] = [
   VIDA_ECRA,
   COSMIC_PORTO,
   ESPIRITUAL_FREQUENCIA,
+  // Fase 1 — desporto, chill, alegria, texturas
+  VIDA_RISO,
+  VIDA_CORRIDA,
+  VIDA_PISCINA,
+  VIDA_IRON,
+  VIDA_CHILL,
+  VIDA_FLOW,
+  VIDA_MESA_F1,
+  VIDA_VERAO,
+  VIDA_INVERNO,
+  VIDA_MANHA_F1,
 ].map(applyLyrics);
 
 // Helpers

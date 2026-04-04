@@ -159,5 +159,16 @@ Prioridade: alegria, desporto, chill, texturas do quotidiano, relacoes.
 - Duetos com voz masculina: ~20-25% das faixas, concentrados em Romance e Nos
 - Marrabenta: usar o prompt que funciona ("Mozambican marrabenta fusion with afro-pop, mid-tempo 100-110 BPM, Neyma We Can Love")
 - House/chill: usar house flavor para tracks de desporto, sunset, pool, driving
+- Estrutura obrigatoria das letras:
+  ```
+  [Verse 1]
+  [Verse 2]
+  [Chorus]
+  [Verse 3]
+  [Chorus]
+  [Bridge]
+  [Chorus] (final — opcional suave)
+  [Outro]
+  ```
 - Voz tem sotaque europeu — evitar folclore puro, preferir fusao contemporanea
 - Identidade: "mil tons de cinza" — nunca preto/branco, sempre nuance
