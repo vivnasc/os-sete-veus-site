@@ -59,6 +59,8 @@ type MusicPlayerState = {
   showFullPlayer: boolean;
   showLyrics: boolean;
   audioError: string | null;
+  previewMode: boolean;
+  previewExpired: boolean;
 };
 
 type MusicPlayerActions = {
@@ -74,6 +76,7 @@ type MusicPlayerActions = {
   toggleInfinite: () => void;
   cycleRepeat: () => void;
   setShowFullPlayer: (v: boolean) => void;
+  clearPreviewExpired: () => void;
   setShowLyrics: (v: boolean) => void;
   clearAudioError: () => void;
   stop: () => void;
@@ -176,6 +179,8 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       showFullPlayer: false,
       showLyrics: false,
       audioError: null,
+      previewMode: false,
+      previewExpired: false,
     };
     if (typeof window === "undefined") return base;
     const saved = loadQueue();
@@ -194,7 +199,15 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     }
     const audio = audioRef.current;
 
-    const onTime = () => setState(s => ({ ...s, currentTime: audio.currentTime }));
+    const PREVIEW_LIMIT = 45;
+    const onTime = () => setState(s => {
+      // Preview mode: pause at 45s for non-logged users
+      if (s.previewMode && audio.currentTime >= PREVIEW_LIMIT) {
+        audio.pause();
+        return { ...s, currentTime: audio.currentTime, isPlaying: false, previewExpired: true };
+      }
+      return { ...s, currentTime: audio.currentTime };
+    });
     const onMeta = () => setState(s => ({ ...s, duration: audio.duration }));
     const onEnded = () => handleEnded();
     const onPlay = () => setState(s => ({ ...s, isPlaying: true }));
@@ -215,6 +228,11 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     audio.addEventListener("play", onPlay);
     audio.addEventListener("pause", onPause);
     audio.addEventListener("error", onError);
+
+    // Check auth — preview mode for non-logged users
+    supabase.auth.getUser().then(({ data }) => {
+      setState(s => ({ ...s, previewMode: !data.user }));
+    });
 
     return () => {
       audio.removeEventListener("timeupdate", onTime);
@@ -300,6 +318,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
         currentTrack: nextTrack,
         currentAlbum: album,
         isPlaying: !!(nextTrack && album),
+        previewExpired: false,
       };
     });
   }, []);
@@ -454,6 +473,10 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     setState(s => ({ ...s, audioError: null }));
   }, []);
 
+  const clearPreviewExpired = useCallback(() => {
+    setState(s => ({ ...s, previewExpired: false }));
+  }, []);
+
   const stop = useCallback(() => {
     const audio = audioRef.current;
     if (audio) {
@@ -480,9 +503,12 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
 
   // ── Stop audio on logout ──
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       if (event === "SIGNED_OUT") {
         stop();
+        setState(s => ({ ...s, previewMode: true }));
+      } else if (session?.user) {
+        setState(s => ({ ...s, previewMode: false, previewExpired: false }));
       }
     });
     return () => subscription.unsubscribe();
@@ -574,6 +600,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
         setShowFullPlayer,
         setShowLyrics,
         clearAudioError,
+        clearPreviewExpired,
         stop,
       }}
     >
