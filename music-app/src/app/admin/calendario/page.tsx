@@ -290,6 +290,59 @@ export default function CalendarPage() {
                                 </button>
                               </div>
                             )}
+
+                            {/* Action buttons */}
+                            <div className="mt-2 flex flex-wrap gap-2">
+                              {action.type === "story" && action.trackNumber && (
+                                <button
+                                  onClick={async () => {
+                                    const { generateShareCard, downloadBlob } = await import("@/lib/share-card");
+                                    const { getAlbumCover, getTrackCoverUrl } = await import("@/lib/album-covers");
+                                    const alb = ALL_ALBUMS.find(a => a.slug === action.albumSlug);
+                                    if (!alb) return;
+                                    const track = alb.tracks.find(t => t.number === action.trackNumber);
+                                    if (!track) return;
+                                    let cover = getAlbumCover(alb);
+                                    try {
+                                      const probe = await fetch(getTrackCoverUrl(alb.slug, track.number), { method: "HEAD" });
+                                      if (probe.ok) cover = getTrackCoverUrl(alb.slug, track.number);
+                                    } catch {}
+                                    const blob = await generateShareCard(track, alb, cover, "story");
+                                    downloadBlob(blob, `Story — ${track.title}.png`);
+                                  }}
+                                  className="px-3 py-1.5 rounded-lg bg-amber-600/30 text-amber-400 text-xs min-h-[44px]"
+                                >
+                                  Gerar Story
+                                </button>
+                              )}
+                              {action.type === "reel" && action.trackNumber && (
+                                <Link
+                                  href={`/admin/producao?album=${action.albumSlug}`}
+                                  className="px-3 py-1.5 rounded-lg bg-violet-600/30 text-violet-400 text-xs min-h-[44px] flex items-center"
+                                >
+                                  Gerar Reel
+                                </Link>
+                              )}
+                              {action.type === "carrossel" && (
+                                <button
+                                  onClick={async () => {
+                                    const { generateCarousel } = await import("@/lib/carousel-generator");
+                                    const { getAlbumCover, getTrackCoverUrl } = await import("@/lib/album-covers");
+                                    const alb = ALL_ALBUMS.find(a => a.slug === action.albumSlug);
+                                    if (!alb) return;
+                                    let cover = getAlbumCover(alb);
+                                    try {
+                                      const probe = await fetch(getTrackCoverUrl(alb.slug, 1), { method: "HEAD" });
+                                      if (probe.ok) cover = getTrackCoverUrl(alb.slug, 1);
+                                    } catch {}
+                                    await generateCarousel(alb, cover);
+                                  }}
+                                  className="px-3 py-1.5 rounded-lg bg-pink-600/30 text-pink-400 text-xs min-h-[44px]"
+                                >
+                                  Gerar Carrossel
+                                </button>
+                              )}
+                            </div>
                           </div>
 
                           {/* Quick link to production */}
