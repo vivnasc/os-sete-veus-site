@@ -2039,6 +2039,39 @@ export default function AlbumProductionPage() {
               >
                 DistroKid ZIP
               </button>
+
+              <button
+                id={`carousel-btn-${album.slug}`}
+                onClick={async () => {
+                  const btn = document.getElementById(`carousel-btn-${album.slug}`) as HTMLButtonElement;
+                  btn.disabled = true;
+                  try {
+                    const { generateCarousel } = await import("@/lib/carousel-generator");
+                    const { getAlbumCover, getTrackCoverUrl } = await import("@/lib/album-covers");
+                    let coverSrc = getAlbumCover(album);
+                    try {
+                      const coverTrackNum = getCoverTrack(album.slug);
+                      const probe = await fetch(getTrackCoverUrl(album.slug, coverTrackNum), { method: "HEAD" });
+                      if (probe.ok) coverSrc = getTrackCoverUrl(album.slug, coverTrackNum);
+                    } catch {}
+                    let titleMap: Record<string, string> = {};
+                    try {
+                      const r = await fetch("/api/music/titles");
+                      titleMap = (await r.json()).titles || {};
+                    } catch {}
+                    const getTitle = (s: string, n: number, f: string) => titleMap[`${s}-t${n}`] || f;
+                    await generateCarousel(album, coverSrc, (msg) => { btn.textContent = msg; }, getTitle);
+                    btn.textContent = "Pronto!";
+                  } catch (e) {
+                    btn.textContent = "Erro";
+                    alert(String(e));
+                  }
+                  setTimeout(() => { btn.disabled = false; btn.textContent = "Carrossel IG"; }, 3000);
+                }}
+                className="mt-3 rounded-lg bg-pink-700 px-3 py-1.5 text-xs font-medium text-white hover:bg-pink-800 transition"
+              >
+                Carrossel IG
+              </button>
             </div>
 
             {/* Bulk generate button */}
