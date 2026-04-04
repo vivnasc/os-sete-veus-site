@@ -90,7 +90,7 @@ Prioridade: alegria, desporto, chill, texturas do quotidiano, relacoes.
 | 52 | Amor Proibido | romance | Regras sociais, distancia, timing | raw, pulse |
 | 53 | Amor a Distancia | romance | Ecras, aeroportos, contagens decrescentes | steady, whisper |
 | 54 | Reforma | vida | E agora? Identidade depois do trabalho | jazz, whisper |
-| 55 | Surf | vida | Ondas, sal, paciencia, esperar o momento certo | house, steady |
+| 55 | Futebol | vida | A bancada, o golo do filho, o orgulho, a chuva no campo, a equipa | house, anthem |
 | 56 | Recomeço | vida | Comecar de novo aos 40, 50, 60 — nunca e tarde | anthem, gospel |
 | 57 | Filho | romance | Filhos como relacao — larga-los, ve-los partir | raw, whisper |
 | 58 | Carta ao Passado | cosmic | Cartas a versoes anteriores de ti mesma | whisper, steady |
@@ -98,7 +98,7 @@ Prioridade: alegria, desporto, chill, texturas do quotidiano, relacoes.
 | 60 | Ritual | espiritual | Rituais diarios como ancora — cafe, banho, caminhada | bossa, folk |
 
 ### Notas Fase 3:
-- Surf adiciona desporto aquatico
+- Futebol: a mae na bancada, o golo do filho, a equipa como familia
 - Universidade e Adolescencia trazem house/funk para publico mais jovem
 
 ---
@@ -125,7 +125,7 @@ Prioridade: alegria, desporto, chill, texturas do quotidiano, relacoes.
 ### Albuns de desporto previstos no total:
 - Fase 1: Corrida, Piscina, Iron, Flow (4)
 - Fase 2: Trail (1)
-- Fase 3: Surf (1)
+- Fase 3: Futebol (1)
 - Fase 4 Cluster C: Ciclismo, Boxe, Escalada, Danca Desportiva, etc. (10+)
 - Fase 4 Cluster N: Maratonas, Triatlos, Retiros (10)
 - **Total desporto: ~26 albuns, ~260 faixas**
