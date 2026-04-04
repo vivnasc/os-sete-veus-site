@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { adminFetch } from "@/lib/admin-fetch";
 
 type CoverMap = Record<string, number>; // albumSlug → track number
 
@@ -30,7 +31,7 @@ export function useAlbumCovers() {
   }, [covers]);
 
   const setCoverTrack = useCallback(async (albumSlug: string, trackNumber: number) => {
-    const res = await fetch("/api/admin/album-cover", {
+    const res = await adminFetch("/api/admin/album-cover", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ album_slug: albumSlug, track_number: trackNumber }),
