@@ -24,7 +24,8 @@ export default function NovidadesSection() {
       const album = ALL_ALBUMS.find(a => a.slug === slug);
       if (album) items.push({ album, trackCount: count });
     }
-    return items.reverse().slice(0, 8);
+    items.sort((a, b) => ALL_ALBUMS.indexOf(b.album) - ALL_ALBUMS.indexOf(a.album));
+    return items.slice(0, 8);
   })();
 
   if (!loading && albums.length === 0) return null;
@@ -33,7 +34,7 @@ export default function NovidadesSection() {
     return (
       <section>
         <div className="h-7 w-32 rounded bg-white/5 animate-pulse mb-4" />
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
           {[1,2,3,4].map(i => (
             <div key={i}>
               <div className="aspect-square rounded-xl bg-white/5 animate-pulse mb-2" />
@@ -50,7 +51,7 @@ export default function NovidadesSection() {
       <h2 className="font-display text-2xl font-semibold text-[#F5F0E6] mb-4">
         Novidades
       </h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
         {albums.map(({ album, trackCount }) => (
           <Link
             key={`nov-${album.slug}`}

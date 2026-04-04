@@ -260,7 +260,6 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
         if (t.number !== prev.currentTrack?.number) return false;
         const trackAlbum = (t as QueueTrack).albumSlug;
         const currentAlbum = prev.currentAlbum?.slug;
-        // Match by albumSlug if available, otherwise by position
         if (trackAlbum && currentAlbum) return trackAlbum === currentAlbum;
         return true;
       });
@@ -278,7 +277,6 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
         if (prev.repeat === "all") {
           nextIdx = 0;
         } else if (prev.infinite && prev.currentTrack) {
-          // Infinite mode: pick a random track with same energy from all albums
           const currentEnergy = prev.currentTrack.energy;
           const allTracks = ALL_ALBUMS.flatMap(a =>
             a.tracks.map(t => ({ ...t, albumSlug: a.slug } as QueueTrack))
@@ -290,12 +288,9 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
             const pick = sameEnergy[Math.floor(Math.random() * sameEnergy.length)];
             const pickAlbum = ALL_ALBUMS.find(a => a.slug === pick.albumSlug);
             if (pickAlbum) {
-              // Add to queue and play
               const newQueue = [...prev.queue, pick];
-              const audio = audioRef.current;
-              if (audio) {
-                setSourceAndPlay(audio, pick, pickAlbum, blobUrlRef);
-              }
+              // Fire async play outside setState
+              setTimeout(() => setSourceAndPlay(audioRef.current!, pick, pickAlbum, blobUrlRef), 0);
               return {
                 ...prev,
                 currentTrack: pick,
@@ -314,10 +309,8 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       const nextTrack = prev.queue[nextIdx];
       const album = resolveAlbumForTrack(nextTrack, prev.queueAlbum);
       if (nextTrack && album) {
-        const audio = audioRef.current;
-        if (audio) {
-          setSourceAndPlay(audio, nextTrack, album, blobUrlRef);
-        }
+        // Fire async play outside setState
+        setTimeout(() => setSourceAndPlay(audioRef.current!, nextTrack, album, blobUrlRef), 0);
       }
 
       return {
