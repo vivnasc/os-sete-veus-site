@@ -308,12 +308,7 @@ export async function generateReel(
       ctx.fillText(`music.seteveus.space${sharePath}`, REEL_W / 2, brandY + 25);
     }
 
-    // Fade in from black (first 1s)
-    if (elapsed < 1) {
-      ctx.globalAlpha = 1 - elapsed;
-      ctx.fillStyle = "#0D0D1A";
-      ctx.fillRect(0, 0, REEL_W, REEL_H);
-    }
+    // NO fade-in from black — first frame shows cover (Instagram thumbnail)
 
     // Fade out to black (last 2s)
     if (elapsed > REEL_DURATION - 2) {
