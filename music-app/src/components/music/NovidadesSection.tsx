@@ -5,43 +5,28 @@ import Link from "next/link";
 import { ALL_ALBUMS, type Album } from "@/data/albums";
 import { getAlbumCover, getTrackCoverUrl } from "@/lib/album-covers";
 import { useAlbumCovers } from "@/hooks/useAlbumCovers";
+import { usePublishedTracks } from "@/hooks/usePublishedTracks";
 
-/**
- * Shows recently published ALBUMS (not individual tracks).
- * Groups published tracks by album and shows unique albums.
- */
 export default function NovidadesSection() {
-  const [albums, setAlbums] = useState<{ album: Album; trackCount: number }[]>([]);
   const { getCoverTrack } = useAlbumCovers();
-  const [loading, setLoading] = useState(true);
+  const { publishedKeys, loading } = usePublishedTracks();
 
-  useEffect(() => {
-    fetch("/api/published-tracks")
-      .then((r) => r.json())
-      .then((data) => {
-        const counts = new Map<string, number>();
-        for (const key of (data.tracks || []) as string[]) {
-          const match = key.match(/^(.+)-t(\d+)$/);
-          if (!match) continue;
-          const slug = match[1];
-          counts.set(slug, (counts.get(slug) || 0) + 1);
-        }
-        const items: { album: Album; trackCount: number }[] = [];
-        for (const [slug, count] of counts) {
-          const album = ALL_ALBUMS.find(a => a.slug === slug);
-          if (album) items.push({ album, trackCount: count });
-        }
-        // Sort by position in ALL_ALBUMS (later = newer release)
-        items.sort((a, b) => {
-          const ai = ALL_ALBUMS.indexOf(a.album);
-          const bi = ALL_ALBUMS.indexOf(b.album);
-          return bi - ai; // newest first
-        });
-        setAlbums(items.slice(0, 8));
-      })
-      .catch(() => {})
-      .finally(() => setLoading(false));
-  }, []);
+  const albums = (() => {
+    if (publishedKeys.size === 0) return [];
+    const counts = new Map<string, number>();
+    for (const key of publishedKeys) {
+      const match = key.match(/^(.+)-t(\d+)$/);
+      if (!match) continue;
+      counts.set(match[1], (counts.get(match[1]) || 0) + 1);
+    }
+    const items: { album: Album; trackCount: number }[] = [];
+    for (const [slug, count] of counts) {
+      const album = ALL_ALBUMS.find(a => a.slug === slug);
+      if (album) items.push({ album, trackCount: count });
+    }
+    items.sort((a, b) => ALL_ALBUMS.indexOf(b.album) - ALL_ALBUMS.indexOf(a.album));
+    return items.slice(0, 8);
+  })();
 
   if (!loading && albums.length === 0) return null;
 

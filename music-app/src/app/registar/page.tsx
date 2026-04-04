@@ -52,7 +52,7 @@ export default function RegistarPage() {
       // Try to auto-login
       const { error: loginErr } = await supabase.auth.signInWithPassword({ email, password });
       if (!loginErr) {
-        router.push("/library");
+        router.push("/");
       } else {
         router.push("/login");
       }

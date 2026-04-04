@@ -5,6 +5,7 @@ import { ALL_ALBUMS, type AlbumTrack, type Album } from "@/data/albums";
 import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
 import { useCustomTitles } from "@/hooks/useCustomTitles";
 import { supabase } from "@/lib/supabase";
+import { usePublishedTracks } from "@/hooks/usePublishedTracks";
 
 const GHOST_NAMES = [
   "Amina", "Beatriz", "Celia", "Diana", "Elena", "Fatima", "Graça",
@@ -143,16 +144,12 @@ export default function LiveReviewsFeed() {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const { playTrack } = useMusicPlayer();
   const { getTitle } = useCustomTitles();
-  const [publishedKeys, setPublishedKeys] = useState<Set<string>>(new Set());
+  const { publishedKeys } = usePublishedTracks();
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
       if (data.user?.email) setUserName(data.user.email.split("@")[0]);
     });
-    fetch("/api/published-tracks")
-      .then(r => r.json())
-      .then(d => setPublishedKeys(new Set(d.tracks || [])))
-      .catch(() => {});
   }, []);
 
   useEffect(() => {
