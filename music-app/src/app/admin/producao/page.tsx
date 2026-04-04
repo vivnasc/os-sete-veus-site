@@ -1845,6 +1845,13 @@ export default function AlbumProductionPage() {
               Renomear pasta
             </button>
 
+            <Link
+              href="/admin/calendario"
+              className="rounded-lg bg-blue-900/30 px-4 py-2.5 text-xs min-h-[44px] text-blue-400 hover:bg-blue-900/50 transition flex items-center"
+            >
+              Calendario
+            </Link>
+
             <button
               onClick={async () => {
                 if (!confirm("Apagar todas as capas antigas (caminho sem albums/)?")) return;
