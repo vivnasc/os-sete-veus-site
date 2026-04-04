@@ -67,7 +67,6 @@ const PLAN: DayPlan[] = [
     { type: "reel", label: "Reel — Vertigem (Vasto)", albumSlug: "cosmic-vasto", trackNumber: 1, caption: '"Olhei para cima e o chao fugiu\nO ceu nao tem fundo e eu tambem nao\nA vertigem de existir\nE a mesma de cair — sem chao"\n\nVertigem — Loranne\nVasto\nmusic.seteveus.space\n\n#loranne #veus #vasto #vertigem #ceu' },
   ]},
   { date: "2026-04-08", actions: [
-    { type: "post", label: "Post — Loranne em todo o lado", albumSlug: "livro-filosofico", caption: "Ja esta em todo o lado.\nSpotify. Apple Music. Amazon. YouTube Music. Deezer.\n50+ plataformas.\n\nPoe os phones.\nFecha os olhos.\nDa-lhe 9 minutos.\n\nSe nao sentires nada, nao e para ti.\nMas se sentires — ouve outra vez.\n\nmusic.seteveus.space\n\n#loranne #veus #spotify #applemusic #ouve" },
     { type: "reel", label: "Reel — The Impermanence of You", albumSlug: "livro-filosofico", trackNumber: 2, caption: '"Nothing stays — nothing was meant to stay\nThe self you grip is made of rain\nLet the permanence dissolve like morning\nand find what lives beneath the pain"\n\nThe Impermanence of You — Loranne\nmusic.seteveus.space\n\n#loranne #veus #impermanence #letgo' },
   ]},
   { date: "2026-04-09", actions: [
@@ -95,10 +94,9 @@ const PLAN: DayPlan[] = [
   ]},
   { date: "2026-04-16", actions: [
     { type: "reel", label: "Reel — Sinal", albumSlug: "cosmic-sinal", trackNumber: 1, caption: '"O arrepio veio do nada\nNinguem tocou, ninguem falou\nEstava na fila do supermercado\nE o corpo inteiro arrepiou"\n\nSinal — Loranne\nmusic.seteveus.space\n\n#loranne #veus #sinal #arrepio #corpo' },
-    { type: "reel", label: "Reel — Intimidade (Pele)", albumSlug: "cosmic-romance", trackNumber: 7, caption: '"A coisa mais intima que fiz\nNao foi tirar a roupa\nFoi deixar alguem ver a cara\nQue eu faco quando estou sozinha"\n\nPele — Loranne\nmusic.seteveus.space\n\n#loranne #veus #pele #intimidade #amor' },
   ]},
   { date: "2026-04-17", actions: [
-    { type: "carrossel", label: "Carrossel — Pele", albumSlug: "cosmic-romance", caption: "Pele.\n10 faixas sobre a linguagem mais antiga.\n\n\"A coisa mais intima que fiz\nNao foi tirar a roupa\nFoi deixar alguem ver a cara\nQue eu faco quando estou sozinha\"\n\nPara ouvir a dois. Ou sozinha a pensar em alguem.\n\nmusic.seteveus.space\n\n#loranne #veus #pele #intimidade #ouve" },
+    { type: "carrossel", label: "Carrossel — Pele", albumSlug: "cosmic-romance", caption: "Pele.\n10 faixas sobre a linguagem mais antiga.\n\n\"Apaixonei-me pelo teu cansaco\nPela forma como despes o dia\nPelo suspiro entre a porta e o sofa\nPela tua falta de energia\"\n\nPara ouvir a dois. Ou sozinha a pensar em alguem.\n\nmusic.seteveus.space\n\n#loranne #veus #pele #amor #ouve" },
   ]},
   { date: "2026-04-18", actions: [
     { type: "reel", label: "Reel — Ressurreicao (Estacoes)", albumSlug: "vida-estacoes", trackNumber: 1, caption: '"Houve um tempo em que fiquei deitada\ndentro de mim mesma, pedra sobre pedra\nO corpo pesado como terra molhada\no peito fechado como quem nao medra"\n\nEstacoes — Loranne\nmusic.seteveus.space\n\n#loranne #veus #estacoes #renascer #primavera' },
@@ -119,10 +117,9 @@ const PLAN: DayPlan[] = [
   ]},
   { date: "2026-04-23", actions: [
     { type: "reel", label: "Reel — Permission", albumSlug: "espelho-culpa", trackNumber: 5, caption: '"But the birds don\'t earn the morning\nAnd the river doesn\'t pay for rain\nThe wildflower grows without permission\nAnd still the sun comes back again"\n\nPermission — Loranne\nmusic.seteveus.space\n\n#loranne #veus #permission #liberdade' },
-    { type: "reel", label: "Reel — O Circulo", albumSlug: "o-circulo", trackNumber: 1, caption: '"Quando acabam as palavras todas\nE o silencio fica so\nHa qualquer coisa ainda acesa\nQue nao sabe dizer adeus"\n\nO Circulo — Loranne\nmusic.seteveus.space\n\n#loranne #veus #ocirculo #silencio' },
   ]},
   { date: "2026-04-24", actions: [
-    { type: "carrossel", label: "Carrossel — O Circulo", albumSlug: "o-circulo", caption: "O Circulo.\nNao estas sozinha — a dor tem eco, o eco tem nome.\n\n\"Quando acabam as palavras todas\nE o silencio fica so\nHa qualquer coisa ainda acesa\nQue nao sabe dizer adeus\"\n\nmusic.seteveus.space\n\n#loranne #veus #ocirculo #comunidade #ouve" },
+    { type: "reel", label: "Reel — O Circulo", albumSlug: "o-circulo", trackNumber: 1, caption: '"Quando acabam as palavras todas\nE o silencio fica so\nHa qualquer coisa ainda acesa\nQue nao sabe dizer adeus"\n\nO Circulo — Loranne\nmusic.seteveus.space\n\n#loranne #veus #ocirculo #silencio' },
   ]},
   { date: "2026-04-25", actions: [
     { type: "reel", label: "Reel — Heranca das avos", albumSlug: "espelho-culpa", trackNumber: 4, caption: '"A minha avo lavava roupa no rio\nCom as maos rachadas e o ventre cheio\nNunca disse quero, nunca disse eu\nMorreu com os sonhos ainda no seio"\n\nHeranca — Loranne\nmusic.seteveus.space\n\n#loranne #veus #heranca #avos #mulheres' },
@@ -134,14 +131,13 @@ const PLAN: DayPlan[] = [
     { type: "reel", label: "Reel — Luz Crua (domingo manha)", albumSlug: "vida-luz-crua", trackNumber: 1, caption: '"Antes de abrir os olhos\nO mundo ja existe la fora\nOs passaros cantam seus orgulhos\nMas eu fico mais uma hora"\n\nLuz Crua — Loranne\nmusic.seteveus.space\n\n#loranne #veus #luzcrua #manha #domingo' },
   ]},
   { date: "2026-04-28", actions: [
-    { type: "post", label: "Post — verso A Roda", albumSlug: "espelho-ilusao", caption: "\"Roda, roda, roda sem parar\nQuem e esta mulher que vive no meu lugar\nRoda, roda, roda sem sentir\nHa alguem ca dentro a pedir pra sair\"\n\nHa uma cancao para o momento em que percebes que estas a viver no automatico.\nO sorriso certo. A resposta certa. A vida certa.\nTudo certo — menos tu.\n\nA Roda. Poe nos phones.\n\nmusic.seteveus.space\n\n#loranne #veus #aroda #automatico #ouve" },
+    { type: "reel", label: "Reel — Devagar (Espelho do Medo)", albumSlug: "espelho-medo", trackNumber: 7, caption: '"Devagar como a lua sobe\nDevagar como a mare vem\nDevagar como a ferida fecha\nDevagar como quem quer bem"\n\nDevagar — Loranne\nmusic.seteveus.space\n\n#loranne #veus #devagar #calma' },
   ]},
   { date: "2026-04-29", actions: [
-    { type: "reel", label: "Reel — O Reflexo Final", albumSlug: "livro-filosofico", trackNumber: 9, caption: '"Olha devagar, sem pressa\nO reflexo ja nao mente\nEs tu — sempre foste tu\no principio e o presente"\n\nO Reflexo Final — Loranne\nmusic.seteveus.space\n\n#loranne #veus #reflexo #verdade' },
+    { type: "post", label: "Post — verso A Roda", albumSlug: "espelho-ilusao", caption: "\"Roda, roda, roda sem parar\nQuem e esta mulher que vive no meu lugar\nRoda, roda, roda sem sentir\nHa alguem ca dentro a pedir pra sair\"\n\nHa uma cancao para o momento em que percebes que estas a viver no automatico.\nO sorriso certo. A resposta certa. A vida certa.\nTudo certo — menos tu.\n\nA Roda. Poe nos phones.\n\nmusic.seteveus.space\n\n#loranne #veus #aroda #automatico #ouve" },
   ]},
   { date: "2026-04-30", actions: [
-    { type: "post", label: "Post — Balanco de Abril", albumSlug: "livro-filosofico", caption: "Abril em numeros.\n13 albuns no ar. 2 linguas. 0 regras.\n\nCantei sobre o corpo que acorda antes de ti.\nSobre o ceu que nao tem fundo.\nSobre o teu lado da cama que ficou frio.\nSobre avos que morreram com os sonhos no seio.\nSobre o prato no micro-ondas e a mao que segura o copo como uma oracao.\nSobre o arrepio na fila do supermercado.\n\nObrigada a quem ouviu no escuro.\nA quem me mandou mensagem a dizer \"como e que sabes?\"\n\nNao sei. Sinto. E depois canto.\n\nMaio traz mais.\n\nmusic.seteveus.space\n\n#loranne #veus #abril #obrigada #maio" },
-    { type: "reel", label: "Reel — Devagar (Espelho do Medo)", albumSlug: "espelho-medo", trackNumber: 7, caption: '"Devagar como a lua sobe\nDevagar como a mare vem\nDevagar como a ferida fecha\nDevagar como quem quer bem"\n\nDevagar — Loranne\nmusic.seteveus.space\n\n#loranne #veus #devagar #calma' },
+    { type: "reel", label: "Reel — O Reflexo Final", albumSlug: "livro-filosofico", trackNumber: 9, caption: '"Olha devagar, sem pressa\nO reflexo ja nao mente\nEs tu — sempre foste tu\no principio e o presente"\n\nO Reflexo Final — Loranne\nmusic.seteveus.space\n\n#loranne #veus #reflexo #verdade' },
   ]},
 ];
 
