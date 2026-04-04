@@ -59,3 +59,4 @@ CURSOS/lora-training/logs/
 
 # Generated preview PDFs
 CURSOS/*_PREVIEW.pdf
+.claude/worktrees/
