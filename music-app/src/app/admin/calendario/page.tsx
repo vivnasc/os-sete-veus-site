@@ -47,7 +47,7 @@ const PLAN: DayPlan[] = [
     { type: "reel", label: "Reel — O Convite", albumSlug: "livro-filosofico", trackNumber: 1, caption: '"Há uma porta que não se vê\nno centro exacto do teu peito"\n\nO Convite — Loranne\nOs Sete Temas do Despertar\nmusic.seteveus.space\n\n#loranne #veus #despertar #oconvite #sentir #ouveoqueninguémdiz' },
   ]},
   { date: "2026-04-02", actions: [
-    { type: "carrossel", label: "Carrossel — Os Sete Temas do Despertar", albumSlug: "livro-filosofico" },
+    { type: "carrossel", label: "Carrossel — Os Sete Temas do Despertar", albumSlug: "livro-filosofico", caption: "Os Sete Temas do Despertar.\n9 faixas. O primeiro album da Loranne.\n\n1. O Convite\n2. The Impermanence of You\n3. A Cadeira Vazia\n4. The Whirlwind\n5. A Plenitude que Ja Esta\n6. The Fertile Dark\n7. O Horizonte\n8. The Reunion\n9. O Reflexo Final\n\nCada faixa e uma camada.\nTira uma e ve o que aparece por baixo.\n\nmusic.seteveus.space\n\n#loranne #veus #despertar #albumcompleto #ouve" },
   ]},
   { date: "2026-04-03", actions: [
     { type: "story", label: "Story — verso de A Cadeira Vazia", albumSlug: "livro-filosofico", trackNumber: 3 },
@@ -77,7 +77,7 @@ const PLAN: DayPlan[] = [
     { type: "reel", label: "Reel — O Reflexo Final", albumSlug: "livro-filosofico", trackNumber: 9, caption: '"Olha devagar, sem pressa\nO reflexo ja nao mente\nEs tu — sempre foste tu\no principio e o presente"\n\nO Reflexo Final — Loranne\nmusic.seteveus.space\n\n#loranne #veus #oreflexofinal #reflexo #verdade' },
   ]},
   { date: "2026-04-11", actions: [
-    { type: "carrossel", label: "Carrossel — O Espelho da Ilusao", albumSlug: "espelho-ilusao" },
+    { type: "carrossel", label: "Carrossel — O Espelho da Ilusao", albumSlug: "espelho-ilusao", caption: "O Espelho da Ilusao.\n7 faixas sobre o momento em que acordas.\n\n\"Algo treme ca por dentro\nAlgo quer nascer\nComo a flor que parte o cimento\nSo pra poder viver\"\n\nHa um antes e um depois de ouvires este album.\nO antes e confortavel.\nO depois e teu.\n\nmusic.seteveus.space\n\n#loranne #veus #espelhodailusao #acordar #ouve" },
     { type: "reel", label: "Reel — Despertar (Espelho da Ilusao)", albumSlug: "espelho-ilusao", trackNumber: 1, caption: '"Algo treme ca por dentro\nAlgo quer nascer\nComo a flor que parte o cimento\nSo pra poder viver"\n\nDespertar — Loranne\nO Espelho da Ilusao\nmusic.seteveus.space\n\n#loranne #veus #espelhodailusao #despertar #acordar' },
   ]},
   { date: "2026-04-12", actions: [
@@ -101,7 +101,7 @@ const PLAN: DayPlan[] = [
     { type: "reel", label: "Reel — Quem Me Ensinou a Ter Medo", albumSlug: "espelho-medo", trackNumber: 1, caption: '"Quem me ensinou a ter tanto medo\nDe cair, de errar, de sangrar\nQuem me embrulhou em tanto segredo\nQue esqueci como e respirar"\n\nQuem Me Ensinou — Loranne\nO Espelho do Medo\nmusic.seteveus.space\n\n#loranne #veus #espelhodomedo #medo #coragem' },
   ]},
   { date: "2026-04-18", actions: [
-    { type: "carrossel", label: "Carrossel — O Espelho do Medo", albumSlug: "espelho-medo" },
+    { type: "carrossel", label: "Carrossel — O Espelho do Medo", albumSlug: "espelho-medo", caption: "O Espelho do Medo.\n7 faixas sobre tudo o que nao fizeste por medo.\n\n\"A porta range como quem pede\nQue alguem a empurre devagar\nNao precisa de forca nem de pressa\nSo de um corpo que se atreva a entrar\"\n\nA porta esta aberta.\nO vento entra.\nE tu?\n\nmusic.seteveus.space\n\n#loranne #veus #espelhodomedo #medo #coragem #ouve" },
   ]},
   { date: "2026-04-19", actions: [
     { type: "story", label: "Story — Inspira a Loranne", albumSlug: "espelho-ilusao" },
@@ -124,7 +124,7 @@ const PLAN: DayPlan[] = [
     { type: "reel", label: "Reel — O Medo Vestiu-se de Elegancia", albumSlug: "espelho-medo", trackNumber: 3, caption: '"O medo vestiu-se de elegancia\nPos gravata e disse espera mais um pouco\nE eu esperei, com tanta graca\nQue ninguem reparou que eu estava louca\nDe vontade de correr"\n\nElegancia — Loranne\nO Espelho do Medo\nmusic.seteveus.space\n\n#loranne #veus #elegancia #medo #procrastinação #saltar' },
   ]},
   { date: "2026-04-25", actions: [
-    { type: "carrossel", label: "Carrossel — O Espelho da Culpa", albumSlug: "espelho-culpa" },
+    { type: "carrossel", label: "Carrossel — O Espelho da Culpa", albumSlug: "espelho-culpa", caption: "O Espelho da Culpa.\n7 faixas sobre a voz que diz que nao mereces.\n\n\"Eu abro as maos devagar\nE deixo cair no chao\nTudo o que nunca foi meu\nTudo o que eu chamava obrigacao\"\n\nHa coisas que carregas que nunca foram tuas.\nEste album e o momento em que poisas.\n\nmusic.seteveus.space\n\n#loranne #veus #espelhodaculpa #culpa #largar #ouve" },
   ]},
   { date: "2026-04-26", actions: [
     { type: "story", label: "Story — Playlist fim de semana", albumSlug: "espelho-ilusao" },
