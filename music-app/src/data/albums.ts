@@ -1637,6 +1637,21 @@ const ESPIRITUAL_VENTRE: AlbumDef = { slug: "espiritual-ventre", title: "Ventre"
   { number: 10, title: "Lineage", description: "A corrente de mulheres que te trouxeram até aqui", lang: "EN", energy: "anthem", flavor: "gospel", prompt: spiritualPrompt("the chain of women who carried life to bring you here, lineage, gratitude, mothers of mothers", "powerful, grateful, ancestral, triumphant", "gospel-inspired anthem, choir harmonies, powerful vocal, lineage celebration", "EN", "anthem", "gospel"), durationSeconds: 300, audioUrl: null },
 ]};
 
+// --- FASE 1b — noite, dança, gratidão, relações, começos ---
+
+const VIDA_LUA_ACORDADA = vidaAlbum("vida-lua-acordada", "Lua Acordada", "A cidade que só existe quando todos dormem", "#1A1A3E", [
+  { number: 1, title: "Passos na Calçada", description: "O som dos teus passos quando a cidade é só tua", lang: "PT", energy: "steady", flavor: "jazz", prompt: vidaPrompt("walking alone at night, footsteps on cobblestones, empty streets, the city belongs to you", "contemplative, free, nocturnally alive", "jazz piano, soft brush drums, walking bass, nocturnal vocal", "PT", "steady", "jazz"), durationSeconds: 240 },
+  { number: 2, title: "Neon", description: "The stories that neon signs tell at 2am", lang: "EN", energy: "steady", flavor: "house", prompt: vidaPrompt("neon signs reflected in puddles, late night city glow, urban poetry at 2am", "electric, atmospheric, beautifully lonely", "deep house groove, warm synth pads, neon-like arpeggios, steady vocal", "EN", "steady", "house"), durationSeconds: 240 },
+  { number: 3, title: "Insónia Doce", description: "A insónia que traz as melhores ideias", lang: "PT", energy: "whisper", prompt: vidaPrompt("sweet insomnia, the ideas that come at 3am, mind alive while the world sleeps", "creative, restless, gently electric", "soft ambient pads, minimal piano, nocturnal textures, whisper vocal", "PT", "whisper"), durationSeconds: 240 },
+  { number: 4, title: "Night Bus", description: "The strangers who share your midnight ride", lang: "EN", energy: "steady", prompt: vidaPrompt("riding the night bus, strangers sharing silence, city moving past windows, nocturnal commuters", "communal, quiet, warmly anonymous", "mellow groove, soft keys, gentle bass, steady reflective vocal", "EN", "steady"), durationSeconds: 240 },
+  { number: 5, title: "Lua Cheia", description: "A lua que te faz parar no meio da rua", lang: "PT", energy: "whisper", flavor: "bossa", prompt: vidaPrompt("full moon making you stop in the street, moonlight on rooftops, lunar pull, night wonder", "awestruck, mystical, quietly overwhelmed", "bossa guitar, soft pads, lunar textures, whisper vocal", "PT", "whisper", "bossa"), durationSeconds: 240 },
+  { number: 6, title: "Last Drink", description: "The conversation that only happens at closing time", lang: "EN", energy: "steady", flavor: "jazz", prompt: vidaPrompt("last drink at a bar, closing time conversation, truth that comes with midnight, honest late-night talk", "honest, warm, slightly drunk on truth", "jazz piano, warm bass, intimate vocal, late-night bar ambience", "EN", "steady", "jazz"), durationSeconds: 240 },
+  { number: 7, title: "Madrugada", description: "A hora em que o mundo muda de turno", lang: "PT", energy: "whisper", prompt: vidaPrompt("the hours between 3am and 5am, world changing shifts, bakers starting, night workers ending", "liminal, sacred, beautifully between", "ambient textures, soft piano, dawn-approaching pads, whisper vocal", "PT", "whisper"), durationSeconds: 240 },
+  { number: 8, title: "Streetlight", description: "The pools of light that guide you home", lang: "EN", energy: "steady", flavor: "house", prompt: vidaPrompt("walking under streetlights, pools of orange light, shadows and safety, urban night poetry", "safe, rhythmic, warmly guided", "deep house pads, soft beat, warm bass, streetlight synths, steady vocal", "EN", "steady", "house"), durationSeconds: 240 },
+  { number: 9, title: "Janela Acesa", description: "A janela acesa no prédio — quem está acordado como tu?", lang: "PT", energy: "steady", prompt: vidaPrompt("seeing a lit window at night, wondering who else is awake, shared insomnia, nocturnal connection", "curious, tender, connected in solitude", "soft keys, gentle groove, warm bass, wondering vocal", "PT", "steady"), durationSeconds: 240 },
+  { number: 10, title: "Dawn", description: "The reward for those who stayed awake", lang: "EN", energy: "anthem", flavor: "gospel", prompt: vidaPrompt("watching dawn arrive after a full night, first light as reward, the beauty of having stayed awake", "triumphant, grateful, luminously tired", "gospel choir, building arrangement, dawn textures, powerful anthem vocal", "EN", "anthem", "gospel"), durationSeconds: 260 },
+]);
+
 // ─────────────────────────────────────────────
 // EXPORT
 // ─────────────────────────────────────────────
@@ -1762,6 +1777,18 @@ export const ALL_ALBUMS: Album[] = [
   VIDA_PISCINA,
   VIDA_IRON,
   VIDA_CHILL,
+  // Fase 1b — noite, dança, gratidão, relações, começos
+  VIDA_LUA_ACORDADA,
+  // TODO: Fase 1b restante (9 álbuns por criar — definições + letras)
+  // VIDA_PES_DESCALCOS,
+  // VIDA_MAOS_JUNTAS,
+  // VIDA_OLHOS_CRIANCA,
+  // VIDA_SANGUE_ANTIGO,
+  // VIDA_MESMO_SANGUE,
+  // VIDA_SOMBRA_PAI,
+  // VIDA_PORTA_ABERTA,
+  // VIDA_NO_DE_OURO,
+  // VIDA_VARANDA_QUENTE,
 ].map(applyLyrics);
 
 // Helpers
