@@ -471,7 +471,7 @@ export default function Home() {
           <div className="items-center gap-12 md:flex">
             <ScrollReveal variant="fadeLeft" className="shrink-0 text-center md:text-left">
               <Image
-                src="/images/vivianne.jpg.jpeg"
+                src="/images/vivianne-2026.jpeg"
                 alt="Vivianne dos Santos"
                 width={200}
                 height={260}
